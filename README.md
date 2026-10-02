@@ -4,9 +4,9 @@ Three complete, local card-game studies for learning game design and having fun 
 
 | Playable game                               | Core loop                                                                             | Curated content                                                                                    |
 | ------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| **Blindside** · Balatro                     | Build poker hands, score ordered effects, shop and beat eight antes / 24 blinds       | 40 Jokers, 18 consumables, eight boss definitions                                                  |
+| **Blindside** · Balatro                     | Build poker hands, score ordered effects, shop and beat eight antes / 24 blinds       | 52 Jokers, 18 consumables, eight boss definitions                                                  |
 | **Slay the Spire** · Ironclad               | Read enemy intent, spend energy, shape a deck and choose a route through three acts   | 57 obtainable cards, six status/curse definitions, 32 relics, eight potions, three boss encounters |
-| **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals | 36 recruits across six tiers, four tokens, three heroes, finite shared pool                        |
+| **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals | 48 recruits across six tiers, four tokens, three heroes, finite shared pool                        |
 
 Blindside and Last Hearth use original content names. Slay the Spire uses original-game identities and researched mechanics with a curated Ironclad pool; all illustrations and code are local. These are curated studies with explicit simplifications, not exact commercial-game replicas.
 
@@ -36,6 +36,8 @@ Start with [architecture](docs/architecture.md), then [make a mod](docs/modding.
 [Research home](docs/research/README.md) holds mechanisms, sources, exact local timing, design questions and playtest notes for every game. [Settled decisions](docs/decisions.md) records scope; [completion evidence](docs/completion.md) maps requirements to checks.
 
 [SVG card artwork](docs/card-art.md) documents the shared visual primitives and each game's illustration layers. Run `npm run assets:export` to browse and save standalone SVGs from `test-results/card-art/index.html`.
+
+[Card suite expansion](docs/card-expansion.md) lists the twelve new Jokers, twelve new recruits, and the new Silent illustrations.
 
 | Area                                               | Responsibility                                                       |
 | -------------------------------------------------- | -------------------------------------------------------------------- |

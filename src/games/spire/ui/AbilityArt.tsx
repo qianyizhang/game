@@ -1,6 +1,7 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { ArtGlyph, ArtScene } from '../../../shared/art/CardArt';
 import type { CardDefinition } from '../domain/types';
+import { silentScenes } from './SilentArt';
 
 // A restrained print palette: lit edges, broad shadow planes, and one warm accent.
 const ink = '#dfd0b0';
@@ -1068,6 +1069,28 @@ const scenes: Record<string, ReactNode> = {
       <path d="m80 29-7 12 12 8-10 13" fill="none" stroke={shadow} strokeWidth="1.7" />
     </>
   ),
+  void: (
+    <>
+      <path d="M23 80Q11 29 70 17q44-7 65 30-33-27-66-14Q31 46 40 80Z" fill={shade} />
+      <path d="M135 41q23 40-29 59-43 13-76-17 38 20 69 5 35-14 36-47Z" fill={sea} opacity=".65" />
+      <ellipse cx="80" cy="57" rx="36" ry="29" transform="rotate(-28 80 57)" fill={shadow} />
+      <path
+        d="M44 65Q38 39 72 28m16-1q20-1 31 14M47 81q34 23 69-9"
+        fill="none"
+        stroke={ink}
+        strokeWidth=".8"
+        opacity=".7"
+      />
+      <path d="m31 26 12 5-2 9-10-4Zm93 56 9 5-8 11-5-10ZM99 14l3 8-6-2Z" fill={copper} />
+      <path
+        d="m52 50 15 4-7 9 13-3m36-11-13 10 7 2-17 6"
+        fill="none"
+        stroke={sea}
+        strokeWidth="1"
+        opacity=".65"
+      />
+    </>
+  ),
   regret: (
     <>
       <Echo>
@@ -1088,8 +1111,11 @@ export function AbilityArt({
   upgraded?: boolean;
   className?: string;
 }) {
-  const palette =
-    definition.kind === 'attack'
+  const palette = silentScenes[definition.id]
+    ? definition.kind === 'power'
+      ? 'moss'
+      : 'slate'
+    : definition.kind === 'attack'
       ? 'ember'
       : definition.kind === 'skill'
         ? 'tide'
@@ -1108,7 +1134,7 @@ export function AbilityArt({
             : 'hills'
       }
     >
-      {scenes[definition.id] ?? <Glyph kind="book" />}
+      {silentScenes[definition.id] ?? scenes[definition.id] ?? <Glyph kind="book" />}
       {upgraded && (
         <g fill="none" stroke={ink} strokeWidth=".7" opacity=".6">
           <path d="M8 22V8H22M138 8H152V22M8 90V104H22M138 104H152V90" />

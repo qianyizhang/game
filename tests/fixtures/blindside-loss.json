@@ -1,63 +1,18 @@
 {
   "game": "blindside",
-  "version": 1,
-  "seed": "MOD-01",
+  "version": 2,
+  "seed": "EXPANSION-LOSS",
   "commands": [
     {
       "type": "startBlind"
     },
     {
       "type": "play",
-      "cards": ["card-22", "card-12", "card-36", "card-8", "card-24"]
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
+      "cards": ["card-44"]
     },
     {
       "type": "play",
-      "cards": ["card-23", "card-33", "card-47", "card-24", "card-48"]
-    },
-    {
-      "type": "buy",
-      "offerId": "offer-61"
-    },
-    {
-      "type": "buy",
-      "offerId": "offer-63"
-    },
-    {
-      "type": "buy",
-      "offerId": "offer-60"
-    },
-    {
-      "type": "moveJoker",
-      "id": "joker-69",
-      "direction": -1
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "discard",
-      "cards": ["card-15", "card-41", "card-47", "card-25"]
-    },
-    {
-      "type": "play",
-      "cards": ["card-27", "card-30", "card-29", "card-2", "card-13"]
-    },
-    {
-      "type": "discard",
-      "cards": ["card-33", "card-22", "card-50", "card-46", "card-20"]
-    },
-    {
-      "type": "discard",
-      "cards": ["card-4", "card-12", "card-3", "card-42"]
+      "cards": ["card-42"]
     },
     {
       "type": "play",
@@ -65,11 +20,7 @@
     },
     {
       "type": "play",
-      "cards": ["card-26"]
-    },
-    {
-      "type": "play",
-      "cards": ["card-23"]
+      "cards": ["card-12"]
     }
   ]
 }

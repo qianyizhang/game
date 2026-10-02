@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ArtGlyph, ArtScene } from '../../../shared/art/CardArt';
 import type { Suit } from '../domain/types';
+import { expansionJokerArt } from './ExpansionArtwork';
 import './artwork.css';
 
 const ink = '#28493d';
@@ -839,7 +840,7 @@ export function JokerArt({ id, className = '' }: { id: string; className?: strin
     >
       <PrintGround />
       <g stroke={ink} strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round">
-        <JokerMotif id={id} />
+        {expansionJokerArt[id] ?? <JokerMotif id={id} />}
       </g>
     </ArtScene>
   );

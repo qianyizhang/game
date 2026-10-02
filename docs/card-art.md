@@ -20,7 +20,7 @@ Pass an output directory when needed:
 npm run assets:export -- /tmp/card-workshop-art
 ```
 
-The current set exports **349 SVGs**: 52 playing cards, 40 Jokers, 18 consumables, 8 bosses, 63 Spire cards, 57 upgraded Spire cards, 40 minions, 40 golden minions and 31 shared glyphs. Counts follow the live content registries when the exporter runs. Statuses and curses do not get upgrade exports. Exported playing cards include a cream face, corner ranks and suit pips; the other exports are illustrations, with gameplay text and stats supplied by the game's accessible HTML controls.
+The card/recruit expansion exports **385 SVGs** with the original Spire registry. When the separate Silent and Void content definitions are included, the combined set exports **463 SVGs**: 52 playing cards, 52 Jokers, 18 consumables, 8 bosses, 103 Spire cards, 95 upgraded Spire cards, 52 minions, 52 golden minions and 31 shared glyphs. The prepared Silent illustrations activate by card ID; they do not supply those cards' rules. Counts follow the live content registries when the exporter runs. Tokens, statuses and curses do not get upgrade exports. Exported playing cards include a cream face, corner ranks and suit pips; the other exports are illustrations, with gameplay text and stats supplied by the game's accessible HTML controls.
 
 Generated files live under the ignored `test-results/` directory by default. The editable source is the durable asset library; regenerate the cabinet after artwork or content changes.
 
@@ -34,6 +34,9 @@ Generated files live under the ignored `test-results/` directory by default. The
 | Last Hearth              | `src/games/battlegrounds/ui/MinionArt.tsx`             | Creature anatomy, mechanical chassis, elemental bodies, equipment and golden accents                                    |
 | Creature illustrations   | `src/games/battlegrounds/ui/CreatureIllustrations.tsx` | Individually drawn phoenix, hydra, wolf, panther and bear compositions, with curved plumage and a reusable serpent head |
 | Demon illustrations      | `src/games/battlegrounds/ui/FiendIllustrations.tsx`    | Distinct imp, matron, watcher and horned patron anatomy, with soul flames and equipment                                 |
+| Expanded Jokers          | `src/games/balatro/ui/ExpansionArtwork.tsx`            | Twelve engraved still lifes and theatrical subjects, using the original four printing inks                              |
+| Silent illustrations     | `src/games/spire/ui/SilentArt.tsx`                     | Thirty-nine action scenes composed from curved daggers, flasks, vapor, leather boots, cards and a bone mask             |
+| Expanded recruits        | `src/games/battlegrounds/ui/ExpansionPortraits.tsx`    | Twelve distinct recruit silhouettes, including a beetle, heron, moth, stag, roc and tortoise                            |
 | Export catalogue         | `scripts/card-art-catalogue.tsx`                       | Renders the same components against the content registries; adds a full playing-card face for export                    |
 
 `ArtScene` uses a `160 × 112` view box. `ArtGlyph` objects are drawn in a `100 × 100` local coordinate system; `x` and `y` locate the top-left corner and `size` scales the object. Surround glyphs with custom paths or transform groups to build a new composition:
@@ -60,4 +63,6 @@ Inline artwork is decorative (`aria-hidden`, non-focusable); its card retains th
 
 ## Verification scope
 
-The artwork browser checks cover every rendered collection, all 349 standalone SVGs decoding without app CSS, cabinet filtering, phone overflow, and keyboard selection of illustrated playing cards. Existing browser suites cover buying, reordering, recruitment, combat playback and save/resume. These checks complement visual inspection of the resulting screenshots; they do not assess game balance or replace rule tests.
+The artwork browser checks cover every rendered collection, standalone SVG decoding without app CSS, cabinet filtering, phone overflow, and keyboard selection of illustrated playing cards. Existing browser suites cover buying, reordering, recruitment, combat playback and save/resume. These checks complement visual inspection of the resulting screenshots; they do not assess game balance or replace rule tests.
+
+The [card expansion](card-expansion.md) adds playable Blindside and Hearth content using existing rules hooks. Its Silent and Void illustrations support the separate Spire mechanism expansion. Keep the content pack and illustration modules separate so either can be refined without changing the other.

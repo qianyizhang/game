@@ -2,6 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { bgSession } from '../../src/games/battlegrounds/application/session';
 import type { BGCommand, BGState } from '../../src/games/battlegrounds/domain/types';
+import { MINIONS } from '../../src/games/battlegrounds/content/minions';
 
 async function saved(page: Page) {
   return bgSession.decode(
@@ -54,7 +55,7 @@ test('Battlegrounds recruitment, combat playback, save/resume and navigation', a
   await page.getByRole('button', { name: /Hero power/ }).click();
   expect((await saved(page)).state.players[0].powerUsed).toBe(true);
   await page.getByRole('button', { name: 'Collection', exact: true }).click();
-  await expect(page.locator('.minion-catalogue .minion-card')).toHaveCount(40);
+  await expect(page.locator('.minion-catalogue .minion-card')).toHaveCount(MINIONS.length);
   await page.getByRole('button', { name: 'Rules & workshop' }).click();
   await expect(page.getByRole('heading', { name: 'Automatic combat' })).toBeVisible();
   const hearth = await saved(page);

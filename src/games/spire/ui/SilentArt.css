@@ -1,0 +1,4 @@
+/* Keep the Silent's pale title and upgrade text readable on her green card frame. */
+.spire-theme .ability-card.silent {
+  background: #254034;
+}
