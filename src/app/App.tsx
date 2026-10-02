@@ -102,7 +102,13 @@ function Workshop() {
   );
 }
 
-export default function App({ onSwitch }: { onSwitch: (id: GameId) => void }) {
+export default function App({
+  onSwitch,
+  onChallenges,
+}: {
+  onSwitch: (id: GameId) => void;
+  onChallenges: () => void;
+}) {
   const game = useSession();
   const run = game.session.run;
   const [view, setView] = useState<View>('table');
@@ -167,6 +173,9 @@ export default function App({ onSwitch }: { onSwitch: (id: GameId) => void }) {
           <span className="game-dot" />
         </button>
         <div className="nav-divider" />
+        <button className="nav-link" data-challenge-entry onClick={onChallenges}>
+          ◇ Challenges
+        </button>
         <button
           className={`nav-link ${view === 'collection' ? 'active' : ''}`}
           onClick={() => setView('collection')}

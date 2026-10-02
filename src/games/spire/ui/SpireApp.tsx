@@ -15,7 +15,13 @@ import { Playback } from '../../../shared/Playback';
 import { Resolution } from './Resolution';
 import { WorkshopTools } from '../../../app/WorkshopTools';
 import { SPIRE_SCENARIOS } from '../application/scenario';
-export function SpireApp({ onSwitch }: { onSwitch: (id: GameId) => void }) {
+export function SpireApp({
+  onSwitch,
+  onChallenges,
+}: {
+  onSwitch: (id: GameId) => void;
+  onChallenges: () => void;
+}) {
   const game = useLocalGame(spireSession, 'IRONCLAD-01'),
     run = game.state;
   const [view, setView] = useState<'play' | 'collection' | 'guide'>('play');
@@ -30,6 +36,7 @@ export function SpireApp({ onSwitch }: { onSwitch: (id: GameId) => void }) {
       subtitle={`${run.character === 'silent' ? 'Silent' : 'Ironclad'} · Ascension ${run.ascension}`}
       gameId="spire"
       onSwitch={onSwitch}
+      onChallenges={onChallenges}
       controls={game}
       tools={
         <WorkshopTools
