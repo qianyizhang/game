@@ -1,10 +1,3 @@
-.spire-theme {
-  --accent: #994236;
-  --accent-light: #f1e1ce;
-  --ink: #302824;
-  --green: #a65742;
-  --paper: #f2eddf;
-}
 .spire-theme .table-area {
   background: #eae5d7;
 }
@@ -16,10 +9,6 @@
 }
 .spire-theme .relic-rack {
   background: #ded8c7;
-}
-.spire-theme .relic-rack span {
-  border-color: #b3a17b;
-  background: #eae2ca;
 }
 .spire-theme .adventure-notice {
   font-size: 12px;
@@ -102,12 +91,6 @@
 .spire-theme .ability-card.curse {
   background: #4c4651;
 }
-.spire-theme .ability-card:hover:not(:disabled) {
-  transform: translateY(-5px);
-  box-shadow:
-    0 6px 0 #392329,
-    0 12px 18px #241b1535;
-}
 .spire-theme .ability-grid {
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 24px 16px;
@@ -132,10 +115,6 @@
 }
 .spire-theme .sts-battle .combat-top {
   padding: 15px 20px;
-}
-.spire-theme .sts-battle .combat-top p {
-  font-size: 12px;
-  margin: 4px 0;
 }
 .sts-battlefield {
   display: flex;
@@ -212,6 +191,7 @@
 }
 .spire-theme .enemy small,
 .spire-theme .status-line {
+  color: #76523d;
   font-size: 10px;
   line-height: 1.4;
 }
@@ -542,6 +522,10 @@
   }
   .spire-theme .battle-hand {
     gap: 14px 10px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
   }
   .spire-theme .ability-card {
     width: 145px;
@@ -572,9 +556,17 @@
   .spire-theme .adventure-resources {
     font-size: 12px;
   }
+  .spire-theme .battle-hand .ability-card {
+    flex: 0 0 145px;
+    scroll-snap-align: start;
+  }
 }
 /* Keep the parchment play surface readable inside the dark workshop shell. */
 .spire-theme {
+  --accent: #994236;
+  --accent-light: #f1e1ce;
+  --green: #a65742;
+  --paper: #f2eddf;
   --ink: #eff0e2;
 }
 .spire-theme .table-area,
@@ -603,12 +595,16 @@
   color: #943e35;
 }
 .spire-theme .relic-rack span {
+  border-color: #b3a17b;
+  background: #eae2ca;
   color: #74572f;
 }
 .spire-theme .sts-battle .combat-top p {
+  font-size: 12px;
+  margin: 4px 0;
   color: #716553;
 }
-.spire-theme .table-area button:not(.ability-card):not(.enemy):not(.sts-map-node) {
+.spire-theme .table-area button:not(.ability-card):not(.enemy):not(.sts-map-node):not(.primary) {
   background: #dfd3b9;
   color: #493b2d;
   border-color: #b4a284;
@@ -619,6 +615,10 @@
   border-color: #794034;
 }
 .spire-theme .ability-card:hover:not(:disabled) {
+  transform: translateY(-5px);
+  box-shadow:
+    0 6px 0 #392329,
+    0 12px 18px #241b1535;
   background: linear-gradient(145deg, #a34c43, #6c3034);
 }
 .spire-theme .table-area .ability-card .eyebrow,

@@ -152,3 +152,38 @@ test('Spire boss relic tradeoffs, suspended card choice, and legacy save isolati
     'legacy-save-kept',
   );
 });
+
+test('phone map edges reach their rooms and the combat hand scrolls within the viewport', async ({
+  page,
+}, info) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await page.getByLabel('Choose game').selectOption('spire');
+  await page.getByRole('button', { name: 'Obtain +8 Max HP', exact: true }).click();
+  const distances = await page.locator('.sts-map-canvas').evaluate((canvas) => {
+    const line = canvas.querySelector('line')!;
+    const matrix = line.getScreenCTM()!;
+    return (['from', 'to'] as const).map((side, index) => {
+      const node = canvas
+        .querySelector(`[data-node-id="${line.dataset[side]}"]`)!
+        .getBoundingClientRect();
+      const point = new DOMPoint(
+        index ? line.x2.baseVal.value : line.x1.baseVal.value,
+        index ? line.y2.baseVal.value : line.y1.baseVal.value,
+      ).matrixTransform(matrix);
+      return Math.hypot(point.x - node.x - node.width / 2, point.y - node.y - node.height / 2);
+    });
+  });
+  expect(distances.every((distance) => distance < 2)).toBe(true);
+  await page.screenshot({ path: info.outputPath('spire-phone-map.png'), fullPage: true });
+  await page.getByRole('button', { name: 'Floor 1 lane 1 fight' }).click();
+  const hand = page.getByRole('region', { name: 'Cards in hand' });
+  expect(await hand.evaluate((el) => el.scrollWidth > el.clientWidth)).toBe(true);
+  const last = hand.locator('.ability-card').last();
+  await last.scrollIntoViewIfNeeded();
+  expect(await hand.evaluate((el) => el.scrollLeft)).toBeGreaterThan(0);
+  await last.click();
+  await expect(page.getByRole('alert')).toHaveCount(0);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: info.outputPath('spire-phone-hand.png'), fullPage: true });
+});

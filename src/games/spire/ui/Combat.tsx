@@ -5,11 +5,7 @@ import { combatCardCost, intentText } from '../domain/combat';
 import type { SpireCommand, SpireState } from '../domain/types';
 import { AbilityCard } from './Card';
 import { Portrait } from './Portrait';
-const statusText = (values: Record<string, number>) =>
-  Object.entries(values)
-    .filter(([, v]) => v !== 0)
-    .map(([k, v]) => `${k.replace(/([A-Z])/g, ' $1')} ${v}`)
-    .join(' · ');
+import { statusText, powerText, enemyPowerText } from './statuses';
 export function Battle({
   run,
   dispatch,
@@ -51,7 +47,7 @@ export function Battle({
             ♥ {run.hp}/{run.maxHp} · ◈ {combat.player.block} Block
           </span>
           <small>{statusText(combat.player.status)}</small>
-          <small>{statusText(combat.powers)}</small>
+          <small>{powerText(combat.powers)}</small>
           {combat.noDraw && <small>No Draw this turn</small>}
           {combat.rage > 0 && <small>Rage {combat.rage}</small>}
         </div>
@@ -64,6 +60,7 @@ export function Battle({
                 key={enemy.id}
                 onClick={() => onTarget(enemy.id)}
                 aria-label={`Target ${ENEMY_BY_ID[enemy.definitionId].name}`}
+                aria-pressed={targetId === enemy.id}
               >
                 <span className="intent">{intentText(enemy, combat)}</span>
                 <Portrait id={enemy.definitionId} />
@@ -71,10 +68,15 @@ export function Battle({
                 <span className="enemy-hp">
                   ♥ {enemy.hp}/{enemy.maxHp} {enemy.block > 0 ? `· ◈ ${enemy.block}` : ''}
                 </span>
-                <meter min="0" max={enemy.maxHp} value={enemy.hp} />
+                <meter
+                  aria-label={`${ENEMY_BY_ID[enemy.definitionId].name} health`}
+                  min="0"
+                  max={enemy.maxHp}
+                  value={enemy.hp}
+                />
                 <span className="status-line">{statusText(enemy.status)}</span>
                 <small title={ENEMY_BY_ID[enemy.definitionId].description}>
-                  {statusText(enemy.powers)}
+                  {enemyPowerText(enemy)}
                 </small>
               </button>
             ))}
@@ -88,7 +90,7 @@ export function Battle({
               ? 'put on top of your draw pile'
               : combat.choice.action}
           </h3>
-          <div className="battle-hand">
+          <div className="battle-hand" role="region" aria-label="Cards in hand">
             {combat.choice.options.map((id) => (
               <AbilityCard
                 key={id}
@@ -101,7 +103,7 @@ export function Battle({
           </div>
         </div>
       ) : (
-        <div className="battle-hand">
+        <div className="battle-hand" role="region" aria-label="Cards in hand">
           {combat.hand.map((id) => {
             const card = combat.cards[id],
               definition = CARD_BY_ID[card.definitionId],
