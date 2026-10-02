@@ -26,9 +26,9 @@ function reserve(run: BGState, definitionId: string): Unit {
 }
 
 describe('Battlegrounds economy and ownership', () => {
-  it('has eight recruits at each tier and an eight-player shared supply', () => {
-    expect(RECRUITS).toHaveLength(48);
-    for (let i = 1; i <= 6; i++) expect(RECRUITS.filter((m) => m.tier === i)).toHaveLength(8);
+  it('has ten recruits at each tier and an eight-player shared supply', () => {
+    expect(RECRUITS).toHaveLength(60);
+    for (let i = 1; i <= 6; i++) expect(RECRUITS.filter((m) => m.tier === i)).toHaveLength(10);
     const run = recruit();
     expect(run.players).toHaveLength(8);
     expect(run.players[0].gold).toBe(3);

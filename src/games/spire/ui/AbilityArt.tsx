@@ -2,6 +2,7 @@ import type { ComponentProps, ReactNode } from 'react';
 import { ArtGlyph, ArtScene } from '../../../shared/art/CardArt';
 import type { CardDefinition } from '../domain/types';
 import { silentScenes } from './SilentArt';
+import { silentUpgradeScenes } from './SilentUpgradeArt';
 
 // A restrained print palette: lit edges, broad shadow planes, and one warm accent.
 const ink = '#dfd0b0';
@@ -1134,7 +1135,9 @@ export function AbilityArt({
             : 'hills'
       }
     >
-      {silentScenes[definition.id] ?? scenes[definition.id] ?? <Glyph kind="book" />}
+      {(upgraded ? silentUpgradeScenes[definition.id] : undefined) ??
+        silentScenes[definition.id] ??
+        scenes[definition.id] ?? <Glyph kind="book" />}
       {upgraded && (
         <g fill="none" stroke={ink} strokeWidth=".7" opacity=".6">
           <path d="M8 22V8H22M138 8H152V22M8 90V104H22M138 104H152V90" />

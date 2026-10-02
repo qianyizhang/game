@@ -20,7 +20,7 @@ Pass an output directory when needed:
 npm run assets:export -- /tmp/card-workshop-art
 ```
 
-The card/recruit expansion exports **385 SVGs** with the original Spire registry. When the separate Silent and Void content definitions are included, the combined set exports **463 SVGs**: 52 playing cards, 52 Jokers, 18 consumables, 8 bosses, 103 Spire cards, 95 upgraded Spire cards, 52 minions, 52 golden minions and 31 shared glyphs. The prepared Silent illustrations activate by card ID; they do not supply those cards' rules. Counts follow the live content registries when the exporter runs. Tokens, statuses and curses do not get upgrade exports. Exported playing cards include a cream face, corner ranks and suit pips; the other exports are illustrations, with gameplay text and stats supplied by the game's accessible HTML controls.
+The current catalogue exports **511 SVGs**: 52 playing cards, 60 Jokers, 18 consumables, 8 bosses, 6 packs, 6 vouchers, 4 tags, 103 Spire cards, 95 upgraded Spire cards, 64 minions, 64 golden minions and 31 shared glyphs. Counts follow the live content registries. Tokens, statuses and curses do not get upgrade exports. Exported playing cards include a cream face, corner ranks and suit pips; the other exports are illustrations, with gameplay text and stats supplied by accessible HTML controls. [Night Market](night-market.md) adds 48 exports and gives twelve Silent upgrades distinct compositions.
 
 Generated files live under the ignored `test-results/` directory by default. The editable source is the durable asset library; regenerate the cabinet after artwork or content changes.
 
@@ -66,3 +66,5 @@ Inline artwork is decorative (`aria-hidden`, non-focusable); its card retains th
 The artwork browser checks cover every rendered collection, standalone SVG decoding without app CSS, cabinet filtering, phone overflow, and keyboard selection of illustrated playing cards. Existing browser suites cover buying, reordering, recruitment, combat playback and save/resume. These checks complement visual inspection of the resulting screenshots; they do not assess game balance or replace rule tests.
 
 The [card expansion](card-expansion.md) adds playable Blindside and Hearth content using existing rules hooks. Its Silent and Void illustrations support the separate Spire mechanism expansion. Keep the content pack and illustration modules separate so either can be refined without changing the other.
+
+Night Market components live in `NightMarketArtwork.tsx`, `ShopArt.tsx`, `NightMarketPortraits.tsx` and `SilentUpgradeArt.tsx`. `MarketPrimitives.tsx` shares engraved shop objects; `SilentPrimitives.tsx` shares the Silent scene objects without changing existing base artwork.

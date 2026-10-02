@@ -4,6 +4,7 @@ import { CONSUMABLE_BY_ID } from '../content/consumables';
 import { HANDS } from '../domain/poker';
 import type { Command, RunState } from '../domain/types';
 import { PlayingCard } from './Card';
+import { ShopArt } from './ShopArt';
 import { JokerArt, ConsumableArt } from './Artwork';
 type Props = { run: RunState; dispatch: (command: Command) => boolean };
 export function SkipBlind({ run, dispatch }: Props) {
@@ -12,6 +13,7 @@ export function SkipBlind({ run, dispatch }: Props) {
     definition = TAGS[tag.id];
   return (
     <div className="skip-offer">
+      <ShopArt kind="tag" id={tag.id} />
       <strong>
         {definition.name}
         {tag.id === 'orbital' ? ` · ${HANDS[tag.hand].name}` : ''}
@@ -29,6 +31,7 @@ export function ShopExtras({ run, dispatch }: Props) {
       <div className="extras-grid">
         {run.voucherOffer && (
           <article>
+            <ShopArt kind="voucher" id={run.voucherOffer} />
             <span className="eyebrow">ONE OFFER PER ANTE</span>
             <h3>{VOUCHER_BY_ID[run.voucherOffer].name}</h3>
             <p>{VOUCHER_BY_ID[run.voucherOffer].text}</p>
@@ -41,6 +44,7 @@ export function ShopExtras({ run, dispatch }: Props) {
           const pack = PACK_BY_ID[offer.definitionId];
           return (
             <article key={offer.id}>
+              <ShopArt kind="pack" id={pack.id} />
               <span className="eyebrow">OPEN & CHOOSE</span>
               <h3>{pack.name}</h3>
               <p>
@@ -111,11 +115,15 @@ export function OwnedVouchers({ run }: Pick<Props, 'run'>) {
     <div className="voucher-rack">
       {run.vouchers.map((id) => (
         <span key={id} title={VOUCHER_BY_ID[id].text}>
+          <ShopArt kind="voucher" id={id} />
           {VOUCHER_BY_ID[id].name}
         </span>
       ))}
       {run.tags.map((_, i) => (
-        <span key={`tag-${i}`}>Next boss: +$25</span>
+        <span key={`tag-${i}`}>
+          <ShopArt kind="tag" id="investment" />
+          Next boss: +$25
+        </span>
       ))}
     </div>
   );

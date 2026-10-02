@@ -4,9 +4,9 @@ Three complete, local card-game studies for learning game design and having fun 
 
 | Playable game                               | Core loop                                                                                      | Curated content                                                                     |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| **Blindside** · Balatro                     | Build poker hands, score ordered effects, shop and beat eight antes, with optional blind skips | 52 Jokers, 18 consumables, six packs, six vouchers, four skip tags, eight bosses    |
+| **Blindside** · Balatro                     | Build poker hands, score ordered effects, shop and beat eight antes, with optional blind skips | 60 Jokers, 18 consumables, six packs, six vouchers, four skip tags, eight bosses    |
 | **Slay the Spire** · Ironclad & Silent      | Read enemy intent, spend energy, shape a deck and choose a route through three acts            | 95 obtainable cards, 33 relics, eight potions, nine boss encounters, Ascensions 0–5 |
-| **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals          | 48 recruits across six tiers, four tokens, three heroes, finite shared pool         |
+| **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals          | 60 recruits across six tiers, four tokens, three heroes, finite shared pool         |
 
 Blindside and Last Hearth use original content names. Slay the Spire uses original-game identities and researched mechanics with curated Ironclad and Silent pools; all illustrations and code are local. These are curated studies with explicit simplifications, not exact commercial-game replicas.
 
@@ -74,3 +74,5 @@ npm run format        # format source, fixtures and documentation
 On this Mac, browser-launching agent commands require approved execution outside the restricted sandbox. Ordinary checks remain sandboxed. The harness stops at the first startup failure and never uses a personal Chrome profile.
 
 Simulations write ignored evidence under `test-results/simulation/`, `test-results/spire/` and `test-results/battlegrounds/`. Browser evidence is isolated under `test-results/browser/`. Full legal winning command histories are kept in `tests/fixtures/`; browser tests import them to verify terminal UI. Those fixtures contain no injected money, health or cards. Policies use the same legal transitions. Spire uses one-command lookahead that can observe consequences of hidden draws, so it is not a fair-play benchmark; Last Hearth checks every recruitable definition's supply after every human action and resolved bot round.
+
+The [Night Market expansion](docs/night-market.md) adds new Joker and recruit builds, illustrated shop items and twelve distinct Silent upgrade scenes. Blindside and Hearth use rules v4; Spire remains v3.

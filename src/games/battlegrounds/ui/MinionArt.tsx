@@ -4,6 +4,7 @@ import type { Tribe } from '../domain/types';
 import { Bear, Hydra, Panther, Phoenix, Wolf } from './CreatureIllustrations';
 import { DemonPortrait } from './FiendIllustrations';
 import { expansionMinionArt } from './ExpansionPortraits';
+import { nightMarketMinionArt } from './NightMarketPortraits';
 
 const palettes = {
   beast: 'moss',
@@ -598,9 +599,9 @@ export function MinionArt({
                 : 'runes'
       }
     >
-      {expansionMinionArt[definitionId] ?? portraits[definitionId] ?? (
-        <HumanPortrait kind="squire" />
-      )}
+      {nightMarketMinionArt[definitionId] ??
+        expansionMinionArt[definitionId] ??
+        portraits[definitionId] ?? <HumanPortrait kind="squire" />}
       {golden && <Cut d="M12 103V91m0 12h12m112 0h12V91" color="#d8bf7b" width={1} opacity={0.8} />}
     </ArtScene>
   );

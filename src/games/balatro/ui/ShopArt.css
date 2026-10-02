@@ -1,0 +1,28 @@
+.extras-grid .shop-art {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  aspect-ratio: 10 / 7;
+  margin: 0 auto 12px;
+}
+.skip-offer .shop-art {
+  float: left;
+  width: 92px;
+  margin: 0 14px 8px 0;
+}
+.skip-offer::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.voucher-rack .shop-art {
+  width: 44px;
+  height: auto;
+  flex: 0 0 44px;
+}
+.voucher-rack > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}

@@ -4,6 +4,7 @@ import { validateJoker } from '../../../mods/validation';
 import { isFace } from '../domain/poker';
 import type { JokerDefinition, Suit } from '../domain/types';
 import { EXPANSION_JOKERS } from './expansion-jokers';
+import { NIGHT_MARKET_JOKERS } from './night-market-jokers';
 
 type Draft = Pick<JokerDefinition, 'id' | 'name' | 'description' | 'symbol'> &
   Partial<Omit<JokerDefinition, 'id' | 'name' | 'description' | 'symbol'>>;
@@ -340,6 +341,7 @@ const BASE_JOKERS: JokerDefinition[] = [
     rule: 'allScore',
   }),
   ...EXPANSION_JOKERS,
+  ...NIGHT_MARKET_JOKERS,
 ];
 
 export const JOKERS = assemble(BASE_JOKERS, blindsidePacks, (p) => p.jokers, validateJoker);

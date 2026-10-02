@@ -3,6 +3,7 @@ import { hearthPacks } from '../../../mods/hearth';
 import { validateMinion, validateHero } from '../../../mods/validation';
 import type { HeroDefinition, MinionDefinition, Tribe } from '../domain/types';
 import { EXPANSION_MINIONS } from './expansion-minions';
+import { NIGHT_MARKET_MINIONS } from './night-market-minions';
 type Draft = Omit<MinionDefinition, 'symbol'> & { symbol?: string };
 const glyphs: Record<Tribe, string> = {
   beast: '♞',
@@ -418,6 +419,7 @@ const BASE_MINIONS: MinionDefinition[] = [
     token: true,
   }),
   ...EXPANSION_MINIONS,
+  ...NIGHT_MARKET_MINIONS,
 ];
 
 export const MINIONS = assemble(BASE_MINIONS, hearthPacks, (p) => p.minions, validateMinion);
