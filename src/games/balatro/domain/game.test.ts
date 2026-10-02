@@ -18,9 +18,9 @@ function shop(): RunState {
 
 describe('run resources and lifecycle', () => {
   it('has the agreed unique, purchasable content pool', () => {
-    expect(JOKERS).toHaveLength(52);
+    expect(JOKERS).toHaveLength(60);
     expect(CONSUMABLES).toHaveLength(18);
-    expect(new Set([...JOKERS, ...CONSUMABLES].map((c) => c.id)).size).toBe(70);
+    expect(new Set([...JOKERS, ...CONSUMABLES].map((c) => c.id)).size).toBe(78);
   });
   it('is seed-deterministic and conserves card zones', () => {
     let run = apply(createRun('SAME'), { type: 'startBlind' });

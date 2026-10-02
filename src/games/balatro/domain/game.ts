@@ -15,7 +15,7 @@ import {
   prepareTags,
   shopPrice,
 } from './shopExtras';
-export const RULES_VERSION = 3;
+export const RULES_VERSION = 4;
 export const JOKER_LIMIT = 5;
 export const CONSUMABLE_LIMIT = 2;
 const note = (run: RunState, message: string) => {

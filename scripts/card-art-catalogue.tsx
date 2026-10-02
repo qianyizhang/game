@@ -8,6 +8,8 @@ import {
 } from '../src/games/balatro/ui/Artwork';
 import { AbilityArt } from '../src/games/spire/ui/AbilityArt';
 import { MinionArt } from '../src/games/battlegrounds/ui/MinionArt';
+import { ShopArt } from '../src/games/balatro/ui/ShopArt';
+import { PACKS, VOUCHERS, TAGS } from '../src/games/balatro/content/shop';
 import { JOKERS } from '../src/games/balatro/content/jokers';
 import { CONSUMABLES } from '../src/games/balatro/content/consumables';
 import { BOSSES } from '../src/games/balatro/content/blinds';
@@ -83,6 +85,24 @@ export function cardArtCatalogue(): Asset[] {
       group: 'Blindside · Jokers',
       name: card.name,
       node: <JokerArt id={card.id} />,
+    })),
+    ...PACKS.map((pack) => ({
+      id: `blindside/packs/${pack.id}`,
+      group: 'Blindside · Packs',
+      name: pack.name,
+      node: <ShopArt kind="pack" id={pack.id} />,
+    })),
+    ...VOUCHERS.map((voucher) => ({
+      id: `blindside/vouchers/${voucher.id}`,
+      group: 'Blindside · Vouchers',
+      name: voucher.name,
+      node: <ShopArt kind="voucher" id={voucher.id} />,
+    })),
+    ...Object.entries(TAGS).map(([id, tag]) => ({
+      id: `blindside/tags/${id}`,
+      group: 'Blindside · Tags',
+      name: tag.name,
+      node: <ShopArt kind="tag" id={id} />,
     })),
     ...CONSUMABLES.map((card) => ({
       id: `blindside/consumables/${card.id}`,

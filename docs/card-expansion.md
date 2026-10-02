@@ -1,5 +1,7 @@
 # Card suite expansion
 
+This records the first expansion. The subsequent [Night Market set](night-market.md) grows the live pools to 60 Jokers and 60 recruits and the export catalogue to 511 SVGs.
+
 This addition supplies **12 Blindside Jokers**, **12 Last Hearth recruits**, and their original SVG illustrations. It also supplies illustrations for the concurrent Spire expansion's **39 Silent cards and Void status**. Spire card effects, character rules and encounters belong to that separate feature work.
 
 ## Blindside
