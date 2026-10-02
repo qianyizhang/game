@@ -54,6 +54,8 @@ Start with [architecture](docs/architecture.md), then [make a mod](docs/modding.
 
 **[Challenges](docs/challenges.md)** offers three short tactical puzzles: Joker order, Artifact/Poison sequencing and warband positioning. Optional hints, authoritative decision reviews and retries from a chosen decision help you compare attempts. Challenge progress saves separately from normal runs and practice branches.
 
+**[Playing engines](docs/engines.md)** provides typed action enumeration and authoritative command execution for all three games. Run `npm run engine:challenges` to search the live puzzles and export verified solutions for challenge import/review. This bounded solver uses full seeded state, including hidden information.
+
 Mods are trusted local TypeScript edits in `src/mods/`. Change a definition, keep its text consistent, bump that game's rules version if replay meaning changes, and start a fresh run. Rules versions deliberately reject incompatible histories; there are no automatic migrations or arbitrary third-party plugin loading.
 
 ## Scope and differences

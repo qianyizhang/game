@@ -69,16 +69,16 @@ export default function Hub() {
   };
   return (
     <ContentBoundary key={game}>
-      <Suspense
-        key={game}
-        fallback={
-          <main className="game-loading">
-            <GamePicker current={game} onSwitch={change} />
-            <p role="status">Opening your table…</p>
-          </main>
-        }
-      >
-        <div hidden={challengeOpen}>
+      <div hidden={challengeOpen}>
+        <Suspense
+          key={game}
+          fallback={
+            <main className="game-loading">
+              <GamePicker current={game} onSwitch={change} />
+              <p role="status">Opening your table…</p>
+            </main>
+          }
+        >
           {game === 'spire' ? (
             <SpireApp onSwitch={change} onChallenges={() => showChallenges(true)} />
           ) : game === 'battlegrounds' ? (
@@ -86,9 +86,20 @@ export default function Hub() {
           ) : (
             <BalatroApp onSwitch={change} onChallenges={() => showChallenges(true)} />
           )}
-        </div>
-        {challengeOpen && <Challenges onExit={() => showChallenges(false)} />}
-      </Suspense>
+        </Suspense>
+      </div>
+      {challengeOpen && (
+        <Suspense
+          fallback={
+            <main className="game-loading">
+              <button onClick={() => showChallenges(false)}>← Return to my run</button>
+              <p role="status">Opening challenges…</p>
+            </main>
+          }
+        >
+          <Challenges onExit={() => showChallenges(false)} />
+        </Suspense>
+      )}
     </ContentBoundary>
   );
 }

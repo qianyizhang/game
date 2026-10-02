@@ -42,6 +42,12 @@ test('standalone SVG assets load without app CSS and the cabinet filters by coll
   await page.getByLabel('Find an illustration').fill('sword');
   await expect(page.locator('.asset:visible')).toHaveCount(1);
   await expect(page.locator('.asset:visible')).toHaveAttribute('href', 'primitives/sword.svg');
+  await page.getByLabel('Find an illustration').fill('no-such-illustration');
+  await expect(page.locator('#count')).toHaveText('0 illustrations');
+  await expect(page.locator('#empty')).toBeVisible();
+  await page.getByLabel('Find an illustration').fill('  SWORD  ');
+  await expect(page.locator('.asset:visible')).toHaveCount(1);
+  await expect(page.locator('#empty')).toBeHidden();
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);

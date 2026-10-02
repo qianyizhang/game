@@ -6,7 +6,7 @@ interface Controls {
   clearError: () => void;
   saveStatus: string;
   download: () => void;
-  restore: (text: string) => boolean;
+  importFile: (file: File) => Promise<boolean>;
   restart: (seed: string) => void;
 }
 export function GameShell({
@@ -62,6 +62,7 @@ export function GameShell({
         </a>
         <GamePicker current={gameId} onSwitch={onSwitch} />
         <button
+          aria-current={view === 'play' ? 'page' : undefined}
           className={`game-choice ${view === 'play' ? 'selected' : ''}`}
           onClick={() => onView('play')}
         >
@@ -77,6 +78,7 @@ export function GameShell({
         </button>
         <button
           aria-label="Collection"
+          aria-current={view === 'collection' ? 'page' : undefined}
           className={`nav-link ${view === 'collection' ? 'active' : ''}`}
           onClick={() => onView('collection')}
         >
@@ -84,6 +86,7 @@ export function GameShell({
         </button>
         <button
           aria-label="Rules & workshop"
+          aria-current={view === 'guide' ? 'page' : undefined}
           className={`nav-link ${view === 'guide' ? 'active' : ''}`}
           onClick={() => onView('guide')}
         >
@@ -138,9 +141,8 @@ export function GameShell({
             const input = e.currentTarget;
             const selected = input.files?.[0];
             if (!selected) return;
-            const text = selected.size > 2_000_000 ? ' '.repeat(2_000_001) : await selected.text();
-            if (controls.restore(text)) onView('play');
             input.value = '';
+            if (await controls.importFile(selected)) onView('play');
           }}
         />
         {children}

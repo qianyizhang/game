@@ -162,6 +162,7 @@ export default function App({
         <GamePicker current="balatro" onSwitch={onSwitch} />
         <p className="sidebar-label">ON THE TABLE</p>
         <button
+          aria-current={view === 'table' ? 'page' : undefined}
           className={`game-choice ${view === 'table' ? 'selected' : ''}`}
           onClick={() => setView('table')}
         >
@@ -177,12 +178,14 @@ export default function App({
           ◇ Challenges
         </button>
         <button
+          aria-current={view === 'collection' ? 'page' : undefined}
           className={`nav-link ${view === 'collection' ? 'active' : ''}`}
           onClick={() => setView('collection')}
         >
           <span>▦</span>Collection <small>{JOKERS.length + CONSUMABLES.length}</small>
         </button>
         <button
+          aria-current={view === 'workshop' ? 'page' : undefined}
           className={`nav-link ${view === 'workshop' ? 'active' : ''}`}
           onClick={() => setView('workshop')}
         >
@@ -247,18 +250,14 @@ export default function App({
           type="file"
           accept=".json,application/json"
           onChange={async (event) => {
-            const picked = event.target.files?.[0];
+            const input = event.currentTarget;
+            const picked = input.files?.[0];
+            input.value = '';
             if (!picked) return;
-            if (picked.size > 2_000_000) {
-              game.restore(' '.repeat(2_000_001));
-              event.target.value = '';
-              return;
-            }
-            if (game.restore(await picked.text())) {
+            if (await game.importFile(picked)) {
               setSelected([]);
               setView('table');
             }
-            event.target.value = '';
           }}
         />
         {view === 'table' ? (
@@ -306,6 +305,7 @@ export default function App({
       <dialog
         ref={dialog}
         className="new-run-dialog"
+        aria-labelledby="blindside-new-run-title"
         onCancel={() => setShowNewRun(false)}
         onClick={(event) => {
           if (event.target === dialog.current) setShowNewRun(false);
@@ -329,7 +329,7 @@ export default function App({
             ×
           </button>
           <p className="eyebrow">A FRESH DECK</p>
-          <h2>What will you build?</h2>
+          <h2 id="blindside-new-run-title">What will you build?</h2>
           <p className="muted">
             A seed recreates the same starting conditions. Your current run will be replaced; export
             it first if you want to keep it.

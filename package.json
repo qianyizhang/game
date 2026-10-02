@@ -15,7 +15,8 @@
     "format:check": "prettier --check .",
     "playtest": "vitest run --config vitest.playtest.config.ts",
     "assets:export": "node scripts/export-card-art.mjs",
-    "playtest:compare": "node scripts/compare-playtests.mjs"
+    "playtest:compare": "node scripts/compare-playtests.mjs",
+    "engine:challenges": "node scripts/solve-challenges.mjs"
   },
   "dependencies": {
     "react": "19.3.0",

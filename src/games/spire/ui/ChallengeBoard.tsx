@@ -4,6 +4,7 @@ import type { SpireCommand, SpireState } from '../domain/types';
 import { Battle } from './Combat';
 import { Resolution } from './Resolution';
 import { Playback } from '../../../shared/Playback';
+import { ChallengeSymbol } from '../../../shared/art/ChallengeArt';
 
 export function SpireChallengeBoard({
   state,
@@ -23,6 +24,7 @@ export function SpireChallengeBoard({
       {!finished && state.combat && (
         <>
           <p className="challenge-relic">
+            <ChallengeSymbol kind="stone" />
             <span>Oddly Smooth Stone · You begin with 1 Dexterity.</span>
           </p>
           <Battle run={state} dispatch={dispatch} targetId={targetId} onTarget={setTarget} />

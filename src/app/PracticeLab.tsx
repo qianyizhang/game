@@ -255,15 +255,7 @@ export function PracticeLab<S extends { seed: string }, C>({
           const file = input.files?.[0];
           input.value = '';
           if (!file) return;
-          if (file.size > 2_000_000) {
-            setNotice('Practice replay exceeds 2 MB.');
-            return;
-          }
-          try {
-            if (game.openPractice(await file.text())) close();
-          } catch {
-            setNotice('Could not read this replay file. Choose the file again to retry.');
-          }
+          if (await game.importFile(file, true)) close();
         }}
       />
       {library.map((branch, i) => (
