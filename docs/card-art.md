@@ -4,7 +4,7 @@ The three games render original vector illustrations directly from React compone
 
 ## Visual direction
 
-Use a clear silhouette and a small number of deliberate shadow planes. Complex creatures work as cropped heads or busts; small whole-body figures lose anatomy at hand and warband sizes. Blindside uses cream paper, classical profiles and a few printing inks. Spire uses forged metal, asymmetric cloth folds and muted copper. Last Hearth uses distinct species silhouettes and sculpted fantasy portraits.
+Use a clear silhouette and a small number of deliberate shadow planes. Choose the framing around the creature's identity: a phoenix needs its wings, chest and trailing plumage; a hydra needs separate neck arcs; a feline needs a short muzzle and a broad brow. Cropped portraits suit some creatures, but should not become the default for every subject. Use curved contours, overlapping forms and selective hard edges rather than reducing all anatomy to angular panels. Blindside uses cream paper, classical profiles and a few printing inks. Spire uses forged metal, asymmetric cloth folds and muted copper. Last Hearth combines creature portraits with larger flight and serpentine compositions.
 
 Keep one dominant subject in each illustration. Supporting effects should sit behind it at lower contrast. Fine engraving describes a material; it should not compete with the contour. Avoid uniform heavy outlines, smiling symbol faces, stick limbs, and a scatter of equally prominent accessories.
 
@@ -26,13 +26,15 @@ Generated files live under the ignored `test-results/` directory by default. The
 
 ## Composition layers
 
-| Layer                    | Source                                     | Responsibility                                                                                                |
-| ------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
-| Shared scene and objects | `src/shared/art/CardArt.tsx`               | Seven color palettes, four backdrops, 31 reusable glyphs                                                      |
-| Blindside                | `src/games/balatro/ui/Artwork.tsx`         | Suit paths, rank-count pip layouts, mirrored court portraits, illustrated Joker/tool/planet/boss combinations |
-| Slay the Spire           | `src/games/spire/ui/AbilityArt.tsx`        | Blades, fists, helmets, cloaks and other objects composed into individual action scenes; upgrade ornaments    |
-| Last Hearth              | `src/games/battlegrounds/ui/MinionArt.tsx` | Creature anatomy, mechanical chassis, elemental bodies, equipment and golden accents                          |
-| Export catalogue         | `scripts/card-art-catalogue.tsx`           | Renders the same components against the content registries; adds a full playing-card face for export          |
+| Layer                    | Source                                                 | Responsibility                                                                                                          |
+| ------------------------ | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| Shared scene and objects | `src/shared/art/CardArt.tsx`                           | Seven color palettes, four backdrops, 31 reusable glyphs                                                                |
+| Blindside                | `src/games/balatro/ui/Artwork.tsx`                     | Suit paths, rank-count pip layouts, mirrored court portraits, illustrated Joker/tool/planet/boss combinations           |
+| Slay the Spire           | `src/games/spire/ui/AbilityArt.tsx`                    | Blades, fists, helmets, cloaks and other objects composed into individual action scenes; upgrade ornaments              |
+| Last Hearth              | `src/games/battlegrounds/ui/MinionArt.tsx`             | Creature anatomy, mechanical chassis, elemental bodies, equipment and golden accents                                    |
+| Creature illustrations   | `src/games/battlegrounds/ui/CreatureIllustrations.tsx` | Individually drawn phoenix, hydra, wolf, panther and bear compositions, with curved plumage and a reusable serpent head |
+| Demon illustrations      | `src/games/battlegrounds/ui/FiendIllustrations.tsx`    | Distinct imp, matron, watcher and horned patron anatomy, with soul flames and equipment                                 |
+| Export catalogue         | `scripts/card-art-catalogue.tsx`                       | Renders the same components against the content registries; adds a full playing-card face for export                    |
 
 `ArtScene` uses a `160 × 112` view box. `ArtGlyph` objects are drawn in a `100 × 100` local coordinate system; `x` and `y` locate the top-left corner and `size` scales the object. Surround glyphs with custom paths or transform groups to build a new composition:
 

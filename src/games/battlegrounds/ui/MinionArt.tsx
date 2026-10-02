@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import { ArtScene } from '../../../shared/art/CardArt';
 import type { Tribe } from '../domain/types';
+import { Bear, Hydra, Panther, Phoenix, Wolf } from './CreatureIllustrations';
+import { DemonPortrait } from './FiendIllustrations';
 
 const palettes = {
   beast: 'moss',
@@ -49,89 +51,17 @@ function Eye({ d = 'M96 42q9-5 17-2l-9 4Z', color = '#d3c797' }: { d?: string; c
   );
 }
 
-function Fur({ dark = false }: { dark?: boolean }) {
-  return (
-    <Cut
-      d="m58 73-8 13m12-8-9 17m16-15-8 17m13-12-7 15m14-10-5 11m13-9-3 10m-26-20-5 8m12-3-4 8m12-2-3 7"
-      color={dark ? shadow : bone}
-      opacity={0.35}
-    />
-  );
-}
-
-type Animal = 'wolf' | 'panther' | 'hyena' | 'rat' | 'bear' | 'croc';
 function AnimalPortrait({
   species,
-  coat = '#707e60',
-  pale = '#a6b28a',
-  elder = false,
-  young = false,
-  pack = false,
+  coat,
+  pale,
 }: {
-  species: Animal;
-  coat?: string;
-  pale?: string;
-  elder?: boolean;
-  young?: boolean;
-  pack?: boolean;
+  species: 'hyena' | 'rat' | 'croc';
+  coat: string;
+  pale: string;
 }) {
   return (
     <g>
-      {elder && (
-        <g fill="#847952">
-          <path d="M68 41Q42 21 28 12l15 24-19-7 25 19-17 4 35 7Z" />
-          <path d="M76 35Q75 15 88 2l-2 18 14-7-13 17 9 2-18 11Z" />
-        </g>
-      )}
-      {species === 'wolf' && (
-        <>
-          <path
-            d="M23 112Q31 88 48 75l7-20 13-11L64 9q19 7 29 25 18-8 26 3 9 7 12 18l-6 7 25 6q0 15-21 21l-13 4-10 19Z"
-            fill={shadow}
-          />
-          <path
-            d="M34 112Q41 89 61 68l14-24-6-26q13 8 20 22 18-10 27 3 6 6 7 13l-7 6 26 10q-3 9-31 13l-16 27Z"
-            fill={coat}
-          />
-          <path d="m73 23 9 18-10 13Z" fill="#363e32" />
-          <path
-            d="M86 44q20-13 30-1 5 5 7 13l-15 6q13 8 33 10l-15 5-24-10-14 7-13-7Z"
-            fill={pale}
-          />
-          <path
-            d="M77 60 73 77 62 82l10 1-15 14 14-6-9 21h39l16-29-17 4-13-5 6-12Z"
-            fill={pale}
-            opacity=".8"
-          />
-          <path d="m136 68 13 1-7 10-10-4Z" fill={shadow} />
-          <path d="M108 80q16 3 29-5l-13 12-21 4Z" fill={shadow} />
-          <Eye d="M102 50q7-3 13-1l-8 2Z" />
-          <Cut d="m90 45 10-8m-6 24 11-6m-4 24 16 2m-39-9-6 10m1-22-9 9" />
-          <Fur />
-          {pack && (
-            <>
-              <path d="M48 99q25 10 53-1l-5 14H43Z" fill="#776849" />
-              <Cut d="M49 103q24 8 49-1" color="#c4ad72" width={1.2} />
-            </>
-          )}
-        </>
-      )}
-      {species === 'panther' && (
-        <>
-          <path
-            d="M21 112Q28 88 53 76l9-24q-13-20-5-29 15-6 27 11 24-11 41 7l9 17-9 7 23 10q-4 19-35 23l-11 14Z"
-            fill={shadow}
-          />
-          <path
-            d="M37 112q4-24 28-36l9-28Q61 33 66 28q9-4 17 13 26-12 39 8l5 9-12 10 26 10q-10 12-38 15l-10 19Z"
-            fill={coat}
-          />
-          <path d="M91 42q19-6 31 10l5 6-16 12q14 4 17 10l-25 7-16-15Z" fill={pale} opacity=".36" />
-          <path d="m131 72 16 2-8 9-12-3Z" fill={shadow} />
-          <Eye d="M103 56q9-3 16-1l-9 2Z" color="#c7be72" />
-          <Cut d="m109 83 21 1m-18 5 17 3m-17-15 18-5M76 40l-4-8M60 84q-9 13-10 23" opacity={0.5} />
-        </>
-      )}
       {species === 'hyena' && (
         <>
           <path
@@ -174,26 +104,6 @@ function AnimalPortrait({
           />
         </>
       )}
-      {species === 'bear' && (
-        <g transform={young ? 'translate(9 10) scale(.92)' : undefined}>
-          <path
-            d="M8 112Q17 85 38 72l17-27Q45 28 56 24q12-5 20 10 13-5 27 0 12-14 22-5 6 8-9 18 17 14 15 29l-10 20-17 16Z"
-            fill={shadow}
-          />
-
-          <path
-            d="M24 112Q29 88 52 77l12-27Q54 34 59 30q9-4 16 13 16-8 27 0 13-15 17-11 3 6-12 17 19 16 15 30-3 11-25 33Z"
-            fill={coat}
-          />
-          <path d="M76 43q16-10 30 0l9 20-8 9-14-6-12 8-12-12Z" fill={pale} opacity=".55" />
-          <path d="M88 67q17-8 29 8 6 19-15 22-16-3-17-15Z" fill={pale} />
-          <path d="M97 76q11-4 19 2l-8 9-11-4Z" fill={shadow} />
-          <Eye d="M95 58q8-3 14-1l-8 2Z" />
-          <Eye d="M73 60q6-3 10-1l-5 2Z" />
-          <Cut d="m104 87-1 7 9-2m-20 2-6-3M57 64l-7 15m13-7-7 16m10-7-6 17" />
-          <Fur />
-        </g>
-      )}
       {species === 'croc' && (
         <>
           <path d="M7 112 23 83 44 57l19-21 28-6 18 17 42 12-3 17-45 16-20 20Z" fill={shadow} />
@@ -210,55 +120,6 @@ function AnimalPortrait({
           <Cut d="m55 73 6 4 6-9 7 3m-24 18 7 4 7-9 7 2m-22 18 6 3 8-8m44-32 26 5" />
         </>
       )}
-    </g>
-  );
-}
-
-function Hydra() {
-  return (
-    <g>
-      <path
-        d="M24 112q-7-28 15-48 9-11 5-23l10-12 18 9-1 17-14 9q-14 17 8 48Zm37 0q15-31 7-51Q46 24 72 10l20-1 18 14-8 15-22 7q-8 12 5 36l15 31Zm37 0q25-28 19-45l-13-12 1-15 21-6 19 13-4 16-16 8q15 24 3 41Z"
-        fill={shadow}
-      />
-
-      <path
-        d="M31 112q-7-27 19-45l11-15-4-9-11 2 6-10 14 7-2 12-14 12q-14 20 17 46Zm43 0q14-29 3-51-25-33-3-43l15-2 12 11-5 8-17 3q-16 16-2 40l13 34Zm33 0q19-31 11-48l-7-12 5-8 13-3 10 10-4 9-16 4q18 26 1 48Z"
-        fill="#6c846c"
-      />
-      <path d="M75 22 88 19l9 9-21 5ZM116 48l13-5 6 8-18 5ZM48 45l8-8 7 9-9 5Z" fill="#a8b29a" />
-      <Eye d="M81 25h12l-8 4Z" />
-      <Eye d="M124 48h10l-7 3Z" />
-      <Eye d="m52 44 9-1-6 3Z" />
-      <Cut
-        d="M67 65q18 20 17 39M47 74q-7 17 7 31m70-26q10 16-3 26m-47-9 7-3m-7-5 7-3m-4-6 7-3"
-        color="#b4b799"
-      />
-    </g>
-  );
-}
-function Phoenix() {
-  return (
-    <g>
-      <path
-        d="M27 112 12 29q33 4 62 37L71 36l14-18 27 3-6 18-18 11 10 20q26-32 54-36l-17 78Z"
-        fill="#312827"
-      />
-      <path
-        d="M35 112 19 39q28 10 52 39L78 43l9-17 17 1-8 9-17 7 17 44q17-29 47-43l-15 68Z"
-        fill="#82553e"
-      />
-      <path d="M65 112 50 77l27 20-9-30 22 25 8-25 6 34 20-22-7 33Z" fill="#b88354" />
-      <path d="M81 38 88 26l13 2-11 9-9 16-6 19-5-2 4-20Z" fill="#dfbb78" />
-      <path d="m98 27 16 5-15 6Z" fill="#a8987b" />
-      <Eye d="m88 30 10-1-7 4Z" />
-      <Cut
-        d="M23 48 49 105m-21-40 31 45m-20-31 28 31M137 55l-23 48m14-27-22 30m12-14-15 16M83 65l7 20"
-        color="#d9b781"
-        width={1}
-        opacity={0.65}
-      />
-      <path d="M80 24q-3-11 9-20l-2 15 13-12-7 17Z" fill="#b99460" />
     </g>
   );
 }
@@ -465,133 +326,6 @@ function MetalPortrait({ kind }: { kind: Machine }) {
   );
 }
 
-type Demon = 'imp' | 'matron' | 'juggler' | 'watcher' | 'infernal' | 'devourer';
-function DemonPortrait({ kind }: { kind: Demon }) {
-  const broad = kind === 'devourer' || kind === 'watcher';
-  const skin = kind === 'infernal' ? '#8d6366' : kind === 'matron' ? '#8d7b95' : '#796784';
-  return (
-    <g>
-      <path
-        d={
-          {
-            imp: 'M64 39Q27 30 35 8 42 27 74 28Zm32-10q24-2 32-19 6 26-20 35Z',
-            matron: 'M65 37Q35 19 52 0q-8 23  27 25Z',
-            juggler: 'M65 40Q16 35 24 7 37 28 74 29Zm35-9 13-22 14 7-19 22Z',
-            watcher: 'M58 41Q13 36 25 0 31 26 68 26Zm44-11Q136 20 134 0q17 36-27 47Z',
-            infernal: 'M63 41Q15 43 20 17q7 13 40 5l14 10Zm37-11Q129 11 133 0q9 31-25 45Z',
-            devourer: 'M61 42Q22 52 14 26q15 14 47-1l15 11Zm41-14q35-15 42-10 2 28-34 30Z',
-          }[kind]
-        }
-        fill="#34303b"
-      />
-      <path
-        d={
-          {
-            imp: 'M64 33Q41 26 39 15q3 15 26 22Zm40-4q15-5 21-12-1 14-19 18Z',
-            matron: 'M63 30Q46 15 50 7q-10 18 14 30Zm39-1q15-15 14-21 8 8-10 29Z',
-            juggler: 'M62 34Q35 30 28 17q-1 19 34 24Zm44-8 8-12 7 3-12 15Z',
-            watcher: 'M56 35Q31 29 29 14q-3 22 28 27Zm51-2q19-9 24-20 3 22-23 27Z',
-            infernal: 'M59 32Q36 38 26 26q10 19 36 12Zm47-1q23-12 26-23 2 23-23 31Z',
-            devourer: 'M54 35Q31 44 21 33q8 18 36 9Zm55-2q25-11 28-8-3 12-27 15Z',
-          }[kind]
-        }
-        fill="#ab9a84"
-      />
-      {!broad && <path d="M18 112q5-28 35-40l12-43 23-13 23 14 6 39 24 14 13 29Z" fill="#292530" />}
-      {broad && <path d="M9 112q9-29 38-40l9-35 27-18 29 18 7 32q34 12 37 43Z" fill="#292530" />}
-      {!broad && <path d="M34 112q6-21 27-34l12-44 15-9 15 11 6 40 24 17 6 19Z" fill={skin} />}
-
-      {broad && <path d="M25 112q6-24 32-32l7-39 19-13 21 15 5 34 26 19 5 16Z" fill={skin} />}
-      <path
-        d={
-          {
-            imp: 'M59 34Q80 19 105 33l8 22q-3 29-27 40L62 70Z',
-            matron: 'M69 32Q87 16 103 32l4 27q-3 26-18 37L70 73Z',
-            juggler: 'M69 28Q88 20 101 36l2 29-17 24q-17-8-22-28Z',
-            watcher: 'M54 42Q65 21 88 24q27 7 31 29l-10 24-24 17-24-11Z',
-            infernal: 'M67 29Q91 20 108 41l2 22-17 25q-25-10-29-31Z',
-            devourer: 'M50 44Q62 25 87 24q29 8 34 33l-4 22q-12 20-32 18L57 83Z',
-          }[kind]
-        }
-        fill={skin}
-      />
-      <path
-        d={
-          {
-            imp: 'M66 39q16-14 34-5l5 23-13 22-18-3-12-18Z',
-            matron: 'M77 30q10-7 21 3l3 26-12 28-10-10-7-23Z',
-            juggler: 'M76 31q15-5 22 12l-6 29-8 10-12-25Z',
-            watcher: 'M60 45q13-16 33-12l17 22-13 22-14 10-20-15Z',
-            infernal: 'M76 31q18-7 28 14l-8 23-9 13-17-15Z',
-            devourer: 'M61 43q17-14 37-5l11 21-9 19-17 12-20-13Z',
-          }[kind]
-        }
-        fill="#a08d9d"
-      />
-      <path d="M86 42 98 48l-7 19-7-2 6-9Z" fill="#554359" />
-      <path d="M67 48 81 51l-8 9-11-7Zm23 3 18-5-4 12-14 3Z" fill="#322633" />
-      <Eye d="m69 52 9 1-6 3Z" color="#d5bd8a" />
-      <Eye d="m92 53 12-4-6 6Z" color="#d5bd8a" />
-      <path d="M74 74q14-4 24-3l-5 3-17 2Z" fill="#342435" />
-      <path d="M74 81q10 6 22-2l-5 16-7 7-8-12Z" fill="#55435b" />
-      <path d="M34 112 49 86l16-8 11 25 12-5 14-22 23 18 13 18Z" fill="#443b4c" />
-      <Cut
-        d="M48 95l12-7 11 21m39-24 14 13 4 11M67 36l6-4m24 0 6 8m-33 28 4 3m20-3 6-4"
-        color="#bba9b4"
-        opacity={0.45}
-      />
-      {kind === 'imp' && (
-        <>
-          <path d="M49 75 31 48l7-25 14 25 8 5Zm65-19 21-24 4 29-16 20Z" fill="#42354e" />
-          <Cut d="m34 42 17 23m82-17-11 20" color="#9b83a1" />
-        </>
-      )}
-      {kind === 'matron' && (
-        <>
-          <path d="M52 33q16-25 39-22l-21 20-11 44-11 37H22q3-23 25-35Z" fill="#4f445d" />
-          <path d="M99 24q22 16 14 49l21 39h-25L98 78l9-29Z" fill="#4f445d" />
-          <path d="M68 93q15 8 31-6l-12 20Z" fill="#af9b79" />
-          <Cut d="M50 74 35 106m26-15-8 20m50-18 7 15" />
-        </>
-      )}
-      {kind === 'juggler' && (
-        <>
-          <path
-            d="M12 88q-8-17 8-34 8-9 5-20 15 18 5 33-14 11-10 26Z"
-            fill="#a495b3"
-            opacity=".7"
-          />
-          <path d="M137 84q14-15 4-28-5-9 2-20-20 9-16 25 9 11 3 22Z" fill="#a495b3" opacity=".7" />
-          <Cut d="M16 75q-2-10 7-19m113 14q0-8-4-13" color="#d1c4d7" />
-          <path d="M46 112 39 92l11-13 5 3-4 10 10 20Z" fill={skin} />
-        </>
-      )}
-      {kind === 'watcher' && (
-        <>
-          <path d="M68 36q14-14 31 0-17 13-31 0Z" fill="#42344a" />
-          <path d="M75 36q8-7 17 0-9 7-17 0Z" fill="#d0b288" />
-          <path d="M83 31v10" stroke="#40314a" strokeWidth="3" />
-          <path d="M43 91 63 78l-1 26-10 8H32Zm67-11 18 17 8 15h-24l-9-9Z" fill="#4f445b" />
-        </>
-      )}
-      {kind === 'infernal' && (
-        <>
-          <path d="M31 112 41 50l7-3 1 65Z" fill="#775d4d" />
-          <path d="M44 54Q18 40 21 13 33 35 48 31Z" fill="#bfa276" />
-          <Cut d="M26 24q5 17 16 21" color="#ead3a4" />
-          <path d="M52 88 65 78l8 24-7 10H35Z" fill="#817153" />
-        </>
-      )}
-      {kind === 'devourer' && (
-        <>
-          <path d="M61 66q-18-4-14-22 4 12 19 9Zm44-12q18-8 18-22 14 27-15 33Z" fill="#b6aa8d" />
-          <path d="M49 92 60 78l10 16-6 18H33Zm63-11 17 15 9 16h-21l-13-14Z" fill="#676054" />
-          <Cut d="m54 94 8-9m51 9 7 6" color="#c1b89c" width={1.1} />
-        </>
-      )}
-    </g>
-  );
-}
 function Wisp() {
   return (
     <g>
@@ -796,13 +530,13 @@ function Amalgam() {
 }
 
 const portraits: Record<string, ReactNode> = {
-  stray: <AnimalPortrait species="wolf" />,
+  stray: <Wolf />,
   pup: <MetalPortrait kind="pup" />,
   imp: <DemonPortrait kind="imp" />,
   spark: <ElementPortrait kind="spark" />,
   squire: <HumanPortrait kind="squire" />,
-  cat: <AnimalPortrait species="panther" coat="#4b6258" pale="#94a88f" />,
-  leader: <AnimalPortrait species="wolf" coat="#526f61" pale="#b4b59a" pack />,
+  cat: <Panther />,
+  leader: <Wolf coat="#526f61" pale="#b4b59a" pack />,
   harvester: <MetalPortrait kind="harvester" />,
   matron: <DemonPortrait kind="matron" />,
   molten: <ElementPortrait kind="molten" />,
@@ -819,20 +553,20 @@ const portraits: Record<string, ReactNode> = {
   watcher: <DemonPortrait kind="watcher" />,
   dancer: <ElementPortrait kind="dancer" />,
   menagerie: <HumanPortrait kind="menagerie" />,
-  mother: <AnimalPortrait species="bear" coat="#697c60" pale="#a4ad8c" />,
+  mother: <Bear />,
   croc: <AnimalPortrait species="croc" coat="#6f8371" pale="#a7b399" />,
   egg: <MetalPortrait kind="egg" />,
   infernal: <DemonPortrait kind="infernal" />,
   cyclone: <ElementPortrait kind="cyclone" />,
   baron: <HumanPortrait kind="baron" />,
   phoenix: <Phoenix />,
-  wolf: <AnimalPortrait species="wolf" coat="#607362" pale="#c3c6a6" elder />,
+  wolf: <Wolf coat="#607362" pale="#c3c6a6" elder />,
   reaper: <MetalPortrait kind="reaper" />,
   devourer: <DemonPortrait kind="devourer" />,
   elder: <ElementPortrait kind="elder" />,
   amalgam: <Amalgam />,
   colossus: <MetalPortrait kind="colossus" />,
-  cub: <AnimalPortrait species="bear" coat="#8c9575" pale="#c0bba0" young />,
+  cub: <Bear young />,
   scrap: <MetalPortrait kind="scrap" />,
   wisp: <Wisp />,
   drake: <MetalPortrait kind="drake" />,
@@ -850,15 +584,17 @@ export function MinionArt({
   return (
     <ArtScene
       className="minion-portrait"
-      palette={golden ? 'gold' : palettes[tribe]}
+      palette={golden ? 'gold' : definitionId === 'phoenix' ? 'ember' : palettes[tribe]}
       variant={
-        tribe === 'beast'
-          ? 'hills'
-          : tribe === 'demon'
-            ? 'night'
-            : tribe === 'mech'
-              ? 'rays'
-              : 'runes'
+        definitionId === 'phoenix'
+          ? 'rays'
+          : tribe === 'beast'
+            ? 'hills'
+            : tribe === 'demon'
+              ? 'night'
+              : tribe === 'mech'
+                ? 'rays'
+                : 'runes'
       }
     >
       {portraits[definitionId] ?? <HumanPortrait kind="squire" />}
