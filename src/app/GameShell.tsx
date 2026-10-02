@@ -20,6 +20,7 @@ export function GameShell({
   onView,
   defaultSeed,
   tools,
+  onChallenges,
 }: {
   title: string;
   subtitle: string;
@@ -31,6 +32,7 @@ export function GameShell({
   onView: (view: 'play' | 'collection' | 'guide') => void;
   defaultSeed: string;
   tools?: ReactNode;
+  onChallenges: () => void;
 }) {
   const [newRun, setNewRun] = useState(false);
   const [seed, setSeed] = useState('');
@@ -70,6 +72,9 @@ export function GameShell({
           </div>
         </button>
         <div className="nav-divider" />
+        <button className="nav-link" data-challenge-entry onClick={onChallenges}>
+          ◇ Challenges
+        </button>
         <button
           aria-label="Collection"
           className={`nav-link ${view === 'collection' ? 'active' : ''}`}

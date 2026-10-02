@@ -1,9 +1,10 @@
 import { ContentBoundary } from './ContentBoundary';
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { GamePicker, type GameId } from './GamePicker';
 import './Hub.css';
 
 const BalatroApp = lazy(() => import('./App'));
+const Challenges = lazy(() => import('./Challenges'));
 const SpireApp = lazy(() =>
   import('../games/spire/ui/SpireApp').then((module) => ({ default: module.SpireApp })),
 );
@@ -15,6 +16,33 @@ const BattlegroundsApp = lazy(() =>
 
 const KEY = 'card-workshop.active-game';
 export default function Hub() {
+  const challengeEntry = useRef<HTMLElement | null>(null);
+  const restoreFocus = useRef(false);
+  const [challengeOpen, setChallengeOpen] = useState(() => {
+    try {
+      return localStorage.getItem('card-workshop.screen') === 'challenges';
+    } catch {
+      return false;
+    }
+  });
+  const showChallenges = (open: boolean) => {
+    if (open) challengeEntry.current = document.activeElement as HTMLElement | null;
+    else restoreFocus.current = true;
+    setChallengeOpen(open);
+    try {
+      localStorage.setItem('card-workshop.screen', open ? 'challenges' : 'game');
+    } catch {
+      /* Navigation still works without storage. */
+    }
+  };
+  useEffect(() => {
+    if (!challengeOpen && restoreFocus.current) {
+      restoreFocus.current = false;
+      const entry = challengeEntry.current;
+      if (entry?.isConnected && entry !== document.body) entry.focus();
+      else document.querySelector<HTMLElement>('[data-challenge-entry]')?.focus();
+    }
+  }, [challengeOpen]);
   const [game, setGame] = useState<GameId>(() => {
     try {
       const saved = localStorage.getItem(KEY);
@@ -29,8 +57,8 @@ export default function Hub() {
       spire: 'Slay the Spire',
       battlegrounds: 'Last Hearth',
     };
-    document.title = `${names[game]} · Card Workshop`;
-  }, [game]);
+    document.title = `${challengeOpen ? 'Challenges' : names[game]} · Card Workshop`;
+  }, [game, challengeOpen]);
   const change = (id: GameId) => {
     setGame(id);
     try {
@@ -50,13 +78,16 @@ export default function Hub() {
           </main>
         }
       >
-        {game === 'spire' ? (
-          <SpireApp onSwitch={change} />
-        ) : game === 'battlegrounds' ? (
-          <BattlegroundsApp onSwitch={change} />
-        ) : (
-          <BalatroApp onSwitch={change} />
-        )}
+        <div hidden={challengeOpen}>
+          {game === 'spire' ? (
+            <SpireApp onSwitch={change} onChallenges={() => showChallenges(true)} />
+          ) : game === 'battlegrounds' ? (
+            <BattlegroundsApp onSwitch={change} onChallenges={() => showChallenges(true)} />
+          ) : (
+            <BalatroApp onSwitch={change} onChallenges={() => showChallenges(true)} />
+          )}
+        </div>
+        {challengeOpen && <Challenges onExit={() => showChallenges(false)} />}
       </Suspense>
     </ContentBoundary>
   );

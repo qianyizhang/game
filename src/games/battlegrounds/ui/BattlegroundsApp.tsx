@@ -13,7 +13,13 @@ import { POOL_COPIES } from '../domain/recruitment';
 import { MinionCard } from './MinionCard';
 import { CombatPlayer } from './CombatPlayer';
 
-export function BattlegroundsApp({ onSwitch }: { onSwitch: (id: GameId) => void }) {
+export function BattlegroundsApp({
+  onSwitch,
+  onChallenges,
+}: {
+  onSwitch: (id: GameId) => void;
+  onChallenges: () => void;
+}) {
   const game = useLocalGame(bgSession, 'HEARTH-01');
   const run = game.state;
   const player = run.players[0];
@@ -33,6 +39,7 @@ export function BattlegroundsApp({ onSwitch }: { onSwitch: (id: GameId) => void 
       subtitle="A Battlegrounds study"
       gameId="battlegrounds"
       onSwitch={onSwitch}
+      onChallenges={onChallenges}
       controls={game}
       tools={
         <WorkshopTools
