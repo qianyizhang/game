@@ -164,11 +164,49 @@ function Umbrella() {
 
 function Nest() {
   return (
-    <g>
-      <path d="M40 64Q80 99 120 64L110 85Q80 106 50 85Z" fill={gold} />
-      <path d="m45 74 65 13m-58-5 59-9m-52 16 43-17m-42 15 39-12" fill="none" />
-      <ellipse cx="80" cy="58" rx="18" ry="25" fill={paper} />
-      <path d="M70 68 90 46m-17 29 15-17" opacity=".3" />
+    <g strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M33 69Q45 56 79 59Q110 54 128 66Q112 79 80 81Q49 80 33 69Z" fill={ink} />
+      <path
+        d="M39 62Q70 70 113 60M34 67Q76 54 127 68M47 58L100 72M43 72L112 56"
+        fill="none"
+        stroke={gold}
+        strokeWidth="1.4"
+      />
+      <path
+        d="M64 53C62 38 72 22 81 22C91 22 100 42 99 55C98 70 91 75 79 75C67 74 62 66 64 53Z"
+        fill={paper}
+      />
+      <path
+        d="M84 24C93 34 97 48 93 60Q90 71 76 73Q93 79 98 62C103 48 92 24 84 24Z"
+        fill={gold}
+        stroke="none"
+        opacity=".58"
+      />
+      <path d="M69 49Q69 34 78 28" fill="none" stroke={gold} strokeWidth=".7" />
+      <g fill={gold} stroke="none">
+        <ellipse cx="76" cy="57" rx="1.4" ry=".9" />
+        <ellipse cx="84" cy="44" rx=".9" ry="1.4" />
+        <circle cx="72" cy="48" r=".65" />
+        <circle cx="88" cy="61" r=".8" />
+        <ellipse cx="79" cy="64" rx=".65" ry="1" />
+      </g>
+      <path d="M35 68Q81 87 125 65L119 79Q110 94 80 95Q49 91 40 80Z" fill={gold} />
+      <path
+        d="M37 73Q75 95 121 74M42 80Q76 98 113 83M45 68Q79 84 118 67M33 70Q78 79 130 64M46 88Q81 83 119 73M50 75Q78 85 107 91M36 79Q76 79 122 69"
+        fill="none"
+        stroke={ink}
+        strokeWidth=".8"
+      />
+      <path
+        d="M44 73Q67 85 91 84M61 91Q83 95 102 87M89 77L119 69"
+        fill="none"
+        stroke={paper}
+        strokeWidth="1"
+      />
+      <path d="M36 87Q45 76 35 58M116 85Q124 83 130 76" fill="none" />
+      <path d="M36 65Q22 62 27 48Q38 52 36 65Z" fill={coral} />
+      <path d="M29 53L35 63" stroke={paper} strokeWidth=".65" />
+      <path d="M50 99H110" fill="none" stroke={gold} strokeWidth=".7" />
     </g>
   );
 }
@@ -546,24 +584,46 @@ function JokerMotif({ id }: { id: string }): ReactNode {
       );
     case 'sculptor':
       return (
-        <g strokeWidth="1.2">
-          <path d="M43 80H97V93H43Z" fill={ink} />
+        <g strokeWidth=".85" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M38 84H103V92H38ZM43 92H99V97H43Z" fill={ink} />
           <path
-            d="M48 80V70C48 62 57 60 61 55L62 45C53 40 51 31 54 22C57 12 69 9 78 16L82 25L88 34L82 37L82 42L77 47L72 47V55C74 60 86 63 89 70L92 80Z"
+            d="M43 84L45 73Q48 65 60 62L66 55L66 47Q54 41 55 29Q54 15 68 12Q82 8 88 20L90 29L96 38L90 40L89 45L85 50L77 50V58Q82 65 94 69L98 84Z"
             fill={paper}
           />
           <path
-            d="M53 30C50 20 58 12 68 12L78 16L75 22L66 20L61 27L62 41L56 37Z"
+            d="M65 48L67 59L58 68L59 81L48 82L49 73Q56 69 63 64L71 58L72 48Z"
             fill={gold}
             stroke="none"
+            opacity=".65"
           />
           <path
-            d="M59 18L66 15M56 24L62 20M56 30L61 26M59 38L62 34M72 27L77 27M75 41H81M62 55L72 55M54 73L63 62M59 77L67 65M65 79L72 70"
+            d="M77 51L77 59L85 66L80 75L94 81L94 72Q83 67 74 60L73 50Z"
+            fill={gold}
+            stroke="none"
+            opacity=".45"
+          />
+          <path
+            d="M57 36Q49 23 59 14Q68 6 79 12L86 18L83 25Q77 22 73 26L70 34L65 33L65 43L61 42Z"
+            fill={gold}
+          />
+          <path
+            d="M58 23Q56 17 63 15M60 29Q56 25 62 22M64 18Q64 12 70 13M68 22Q65 17 71 17M73 15Q76 11 80 17M76 23Q73 18 78 19M62 32Q65 29 68 32M61 36Q58 31 62 30"
+            fill="none"
+            stroke={paper}
+            strokeWidth=".9"
+          />
+          <path
+            d="M76 30Q80 28 85 30M78 32L83 32M85 32L86 38L89 39M82 43H88M79 47H85M64 34Q68 31 68 37L65 40M54 74L62 69L66 78M72 65L76 73L70 81M81 77L86 83"
             fill="none"
           />
-          <path d="M99 76L121 31L126 34L107 80Z" fill={gold} />
-          <path d="M117 26L119 18L138 27L136 35Z" fill={coral} />
-          <path d="M99 81L111 83M112 92H126M31 57L38 54M32 62L38 61" fill="none" />
+          <path d="M105 82L117 44L121 46L111 84Z" fill={gold} />
+          <path d="M114 42L121 25L125 26L120 45Z" fill={ink} />
+          <path d="M100 25L103 17L133 25L131 34Z" fill={coral} />
+          <path
+            d="M105 20L104 25L128 31M105 85L110 87M120 91L126 89M30 75L34 78M98 56L100 61"
+            fill="none"
+            stroke={gold}
+          />
         </g>
       );
     case 'runner':

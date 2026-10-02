@@ -24,7 +24,7 @@ function Glyph({
   size?: number;
   color?: string;
 }) {
-  // Emberpath uses a continuous silhouette language for its large focal symbols.
+  // Spire uses continuous silhouettes for its large focal symbols.
   const figures: Partial<Record<GlyphKind, ReactNode>> = {
     shield: (
       <>
@@ -185,45 +185,58 @@ function Impact({ x = 100, y = 49, size = 1 }: { x?: number; y?: number; size?: 
 }
 function Fist({ x = 49, y = 24, scale = 1 }: { x?: number; y?: number; scale?: number }) {
   return (
-    <g transform={`translate(${x} ${y}) scale(${scale})`}>
-      <g transform="rotate(-9 34 45)">
-        <path d="M11 83 19 59 10 42 13 28 26 17 52 19 64 31 65 45 52 60 41 86Z" fill={shade} />
-        <path d="M13 28 26 17 52 19 61 28 51 36 23 38 10 42Z" fill={metal} />
-        <path d="M13 28 26 17 52 19 47 23 27 22 19 32Z" fill={ink} />
-        <path d="M23 38 51 36 61 28 65 45 52 60 25 63 15 48Z" fill={metal} />
-        <path d="M51 36 61 28 65 45 52 60 41 60 45 49Z" fill={shade} />
-        <path d="M14 29 24 21 29 27 23 35Z" fill={ink} opacity=".65" />
-        <path d="M25 23 34 21 38 28 30 35Z" fill={ink} opacity=".55" />
-        <path d="M35 22 44 23 47 29 40 36Z" fill={metal} />
-        <path d="M45 24 52 24 59 29 51 35Z" fill={metal} />
+    <g
+      transform={`translate(${x} ${y}) scale(${scale})`}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <g transform="rotate(-12 33 47)">
+        {/* Four curling fingers, a crossing thumb, and overlapping wrist lames. */}
         <path
-          d="m24 22 6 13m4-14 6 15m4-13 7 12M19 36l33-2"
-          fill="none"
-          stroke={shade}
-          strokeWidth=".7"
+          d="M12 83L19 60Q11 53 9 44L8 30Q7 22 14 19Q18 15 24 16Q27 9 35 12Q42 9 48 16Q56 15 60 24L61 36Q59 50 49 60L49 84Z"
+          fill={shadow}
+        />
+        <path d="M15 39L51 30L58 34Q59 49 46 59L23 62L14 48Z" fill={shade} />
+        <path d="M12 28Q11 22 17 21Q22 19 25 24L26 38L23 46L16 45Z" fill={metal} />
+        <path d="M25 21Q24 15 30 15Q36 13 38 19L38 37L34 42L27 41Z" fill={metal} />
+        <path d="M38 20Q38 15 43 16Q48 17 49 23L49 35L44 40L38 38Z" fill={metal} />
+        <path d="M49 24Q49 19 54 22Q58 25 58 29L56 36L49 38Z" fill={metal} />
+        <path
+          d="M12 28Q13 22 18 23L23 26L23 31L14 32ZM26 21Q27 16 32 17L36 21V27L27 27ZM40 21Q43 18 46 23L47 28L40 28ZM51 25Q54 22 56 28L56 31L51 32Z"
+          fill={ink}
         />
         <path
-          d="M16 49Q14 41 23 38Q28 37 35 42L46 49Q49 52 42 57L31 61Q22 60 16 49Z"
+          d="M14 34L23 33M16 39L24 38M28 30L36 30M28 35H35M41 31L47 31M40 35L46 35M51 34L55 33"
+          fill="none"
+          stroke={shade}
+          strokeWidth=".75"
+        />
+        <path
+          d="M17 46L23 47L27 43L33 44L39 40L44 42L51 39Q49 50 42 53L33 58L24 57Z"
           fill={metal}
         />
-        <path d="M16 47Q15 40 23 38Q28 37 35 42L46 49Q36 45 30 44Q22 43 16 47Z" fill={ink} />
         <path
-          d="M17 50Q23 56 31 57L42 53M22 42Q25 40 29 43M29 58l2 3"
-          fill="none"
-          stroke={shade}
-          strokeWidth=".7"
+          d="M14 36Q17 34 21 36L31 43Q35 43 39 47Q42 51 38 54L31 58Q22 58 18 52L12 44Q10 38 14 36Z"
+          fill={shade}
         />
-        <path d="M25 63 52 60 48 69 21 73Z" fill={copper} />
-        <path d="M21 73 48 69 41 86 11 83Z" fill={shade} />
-        <path d="M19 73 24 64 29 64 21 83 14 82Z" fill={metal} />
         <path
-          d="M29 66 47 64M27 71 43 69M24 76 41 74M22 81 39 79"
-          fill="none"
-          stroke={shadow}
-          strokeWidth=".7"
+          d="M14 37Q17 35 21 38L28 44Q35 44 38 48L37 52L30 56Q24 56 21 52L14 44Q12 40 14 37Z"
+          fill={metal}
         />
-        <path d="M17 82 25 64M44 61l-4 1" stroke={ink} strokeWidth=".65" />
-        <circle cx="45" cy="66" r="1" fill={ink} />
+        <path d="M14 38Q17 36 20 39L27 45L35 47L37 50L30 48L22 45L16 40Z" fill={ink} />
+        <path d="M23 46Q26 46 28 49M30 55L33 50" fill="none" stroke={shade} strokeWidth=".8" />
+        <path d="M22 61L46 58L48 65Q32 73 18 68Z" fill={copper} />
+        <path d="M19 68Q33 73 48 65L49 72Q34 80 16 75Z" fill={metal} />
+        <path d="M17 74Q31 80 49 72L51 83Q34 91 12 83Z" fill={shade} />
+        <path d="M20 70L16 81Q23 84 28 83L29 75Z" fill={metal} />
+        <path
+          d="M22 62Q33 65 45 60M20 69Q33 73 47 67M17 76Q34 82 49 75M17 82L26 84"
+          fill="none"
+          stroke={ink}
+          strokeWidth=".65"
+        />
+        <circle cx="42" cy="63" r="1" fill={ink} />
+        <circle cx="25" cy="64" r=".9" fill={ink} />
       </g>
     </g>
   );
@@ -231,31 +244,57 @@ function Fist({ x = 49, y = 24, scale = 1 }: { x?: number; y?: number; scale?: n
 function Helmet({ x = 80, y = 53, ghost = false }: { x?: number; y?: number; ghost?: boolean }) {
   const light = ghost ? sea : ink;
   return (
-    <g transform={`translate(${x} ${y})`}>
+    <g transform={`translate(${x} ${y})`} strokeLinecap="round" strokeLinejoin="round">
+      {/* Curved skull, pivoting visor, cheek plate and nested gorget form an actual suit of armor. */}
+      <path d="M-30-7Q-42-26-26-41Q-9-53 8-42L14-35Q-11-44-22-29Z" fill={ghost ? shade : copper} />
       <path
-        d="M-28 9Q-46-16-24-37Q-5-54 14-34L8-28Q-13-42-25-23Z"
-        fill={copper}
-        opacity={ghost ? 0.4 : 0.8}
-      />
-      <path
-        d="M-28 17-27-8Q-23-32-5-35Q17-36 27-19L24-6 38 0 31 8 33 25 15 35-7 32-19 36Z"
-        fill={metal}
-      />
-      <path d="M-27-8Q-23-32-5-35Q11-35 18-26L-2-22-12-5-13 17-25 26Z" fill={light} />
-      <path d="M-2-22 18-26 27-19 24-6 10-2Z" fill={shade} />
-      <path d="M-13 17-12-5 10-2 14 10 3 17 8 33-7 32Z" fill={shade} />
-      <path d="M10-2 24-6 38 0 26 3 14 7Z" fill={light} />
-      <path d="M14 10 31 8 33 25 15 35 8 33 3 17Z" fill={metal} />
-      <path d="m15 12 14-1-1 3-12 3Z" fill={shadow} />
-      <path d="M16 22 19 29M21 20 24 27M26 18 28 24" stroke={shadow} strokeWidth=".85" />
-      <path
-        d="M-22-10Q-21-27-4-30M-22 19-19 27M-7-18 4-22M13 34 28 26"
+        d="M-29-19Q-34-31-21-39Q-8-45 3-40"
         fill="none"
         stroke={light}
-        strokeWidth=".8"
+        strokeWidth=".65"
+        opacity=".55"
       />
-      <path d="M-14 29-12 34-3 34 9 39 25 35 16 43-8 41-21 36Z" fill={copper} opacity=".65" />
-      <circle cx="7" cy="7" r="1.2" fill={light} />
+      <path
+        d="M-29 13Q-34-7-23-27Q-14-41 6-35Q24-31 29-16L32-7L37-3L34 11Q29 29 13 37L-10 34L-28 23Z"
+        fill={shadow}
+      />
+      <path
+        d="M-26 10Q-31-8-21-24Q-12-36 6-31Q20-28 25-15L28-6L18 0L-6 7L-12 25L-24 20Z"
+        fill={metal}
+      />
+      <path
+        d="M-25 2Q-26-17-13-26Q-5-32 7-29Q-9-27-11-12L-10-1L-18 9L-18 21L-25 18Z"
+        fill={light}
+      />
+      <path d="M-3-31Q7-31 17-23L25-13L15-10L3-13L-5-10Q-8-22-3-31Z" fill={shade} />
+      <path d="M-5-29Q0-21 0-10M-23-8Q-22-19-13-25" fill="none" stroke={light} strokeWidth=".8" />
+      <path d="M-13 1Q5-6 25-12L34-5L31 1Q7 6-9 9Z" fill={shadow} />
+      <path d="M-12 0Q6-9 25-13L32-7Q13-8-8 4Z" fill={light} />
+      <path d="M-6 9Q14 7 33-2L30 16Q24 30 11 33L-5 24Z" fill={metal} />
+      <path d="M14 8L33-2L30 16Q23 29 13 32L15 21Z" fill={shade} />
+      <path d="M-3 11Q4 11 12 8L11 22L5 28L-2 23Z" fill={light} opacity=".75" />
+      <path d="M-12 6Q-2 3 0 11Q-1 17-9 19L-14 28L-23 23L-22 14Z" fill={shade} />
+      <circle cx="-8" cy="11" r="4.2" fill={metal} />
+      <circle cx="-8" cy="11" r="2.7" fill={light} />
+      <circle cx="-8" cy="11" r="1" fill={shade} />
+      <path
+        d="M-21 25L-7 31L11 35L27 26L24 33L11 40L-9 36L-25 30Z"
+        fill={copper}
+        opacity={ghost ? '.45' : '.85'}
+      />
+      <path d="M-23 31L-8 36L11 40L24 34L22 40L10 45L-10 41L-28 36Z" fill={shade} />
+      <path
+        d="M-22 31L-8 36L10 40L22 36M-25 36L-10 41L10 45M17 29Q25 23 28 14"
+        fill="none"
+        stroke={light}
+        strokeWidth=".7"
+      />
+      <g fill={shadow}>
+        <ellipse cx="19" cy="14" rx=".9" ry="1.2" />
+        <ellipse cx="24" cy="11" rx=".8" ry="1.1" />
+        <ellipse cx="18" cy="20" rx=".9" ry="1.1" />
+        <ellipse cx="23" cy="17" rx=".8" ry="1.1" />
+      </g>
     </g>
   );
 }
@@ -379,34 +418,58 @@ function Scythe() {
   );
 }
 function Cloak({ demon = false }: { demon?: boolean }) {
+  const cloth = demon ? '#aa6b55' : '#66857e';
+  const lit = demon ? '#d29a72' : '#a6bab0';
   return (
-    <g>
+    <g strokeLinecap="round" strokeLinejoin="round">
       <path
-        d="M28 102Q45 72 50 44L64 29 83 29 98 47 108 66Q113 84 145 101Z"
-        fill={demon ? copper : shade}
+        d="M22 105Q39 82 45 56Q47 40 62 33L87 31Q107 44 109 62Q111 85 146 104Q120 110 100 100L78 110L58 101Q38 111 22 105Z"
+        fill={shadow}
       />
-      <path d="M64 31 52 47 51 68 31 102 64 94 72 61 79 34Z" fill={demon ? shade : metal} />
-      <path d="M83 33 98 49 98 71 119 101 95 94 81 58Z" fill={demon ? shadow : sea} opacity=".65" />
-      <path d="M70 53 65 94 81 103 89 94 82 53Z" fill={shadow} />
-      <path d="M50 44Q48 20 67 9Q87 4 95 28L89 43 79 37 65 42Z" fill={demon ? copper : metal} />
-      <path d="M67 9Q87 4 95 28L89 43 79 37 81 22Z" fill={shade} />
-      <path d="M56 34 65 20 80 18 89 30 78 40 64 39Z" fill={shadow} />
+      <path d="M26 101Q46 84 50 56Q51 44 63 38L72 53Q59 77 62 98L45 101L38 98Z" fill={cloth} />
       <path
-        d="M56 32 65 20 80 18M52 49 49 72 37 94M86 55 94 84 103 93M66 71 61 92"
+        d="M86 37Q104 43 103 64Q107 88 138 103Q116 104 105 94L98 97Q84 81 83 59Z"
+        fill={cloth}
+      />
+      <path d="M87 48Q91 74 100 91L109 97Q98 78 99 63L93 45Z" fill={lit} />
+      <path d="M60 47Q51 71 50 91L41 98Q53 96 57 91L70 51Z" fill={lit} />
+      <path d="M68 55Q65 78 66 98L78 106L89 97Q83 78 82 55Z" fill="#203432" />
+      <path
+        d="M64 72Q60 88 64 97M88 69Q92 90 99 96M42 84Q47 74 48 65M112 92Q119 99 130 100"
+        fill="none"
+        stroke={lit}
+        strokeWidth=".7"
+        opacity=".6"
+      />
+      <path
+        d="M51 49Q44 26 63 15Q72 10 78 5Q80 15 91 21Q105 36 94 51L81 61L70 57L62 51Z"
+        fill={cloth}
+      />
+      <path d="M76 13Q54 23 55 41L61 50L70 54L72 48L60 41Q60 28 76 20Z" fill={lit} />
+      <path d="M80 17Q97 27 95 39L89 51L81 58L78 50L87 40Q90 31 80 23Z" fill={shade} />
+      <path d="M74 24Q82 23 87 34L83 44L76 49L63 42Q62 32 74 24Z" fill={shadow} />
+      <path
+        d="M63 39Q66 29 73 26M82 22Q91 28 92 36M55 48L62 53"
         fill="none"
         stroke={ink}
-        strokeWidth=".7"
-        opacity=".55"
+        strokeWidth=".6"
+        opacity=".6"
       />
-      <path d="M57 47 64 41 70 48 64 54Z" fill={copper} />
+      <path d="M61 55Q69 59 81 57" fill="none" stroke={copper} strokeWidth=".9" />
+      <circle cx="62" cy="55" r="3.5" fill={copper} />
+      <circle cx="62" cy="55" r="2" stroke={ink} strokeWidth=".6" />
       {demon && (
-        <>
-          <path d="M62 21Q36 11 45-5Q43 9 69 12ZM84 14Q112 5 112-4Q121 13 91 24Z" fill={metal} />
-          <path d="M65 19 79 13 88 22 83 31 77 40 68 32Z" fill={shade} />
-          <path d="M65 19 79 13 76 24 69 26 68 32Z" fill={ink} />
-          <path d="m76 24 7-3-1 5-5 2ZM77 29l-3 6 5-2Z" fill={shadow} />
-          <path d="M98 47 111 38 109 58 121 63 106 69Z" fill={metal} />
-        </>
+        <g>
+          <path
+            d="M67 29C42 25 39 8 49 2C45 18 62 17 71 18ZM82 17C98 19 110 9 108 1C121 17 104 30 88 29Z"
+            fill={metal}
+          />
+          <path d="M66 28Q77 18 87 28L84 42L76 49L67 40Z" fill={shade} />
+          <path d="M69 29L77 24L75 34L71 38L75 45L69 39Z" fill={ink} />
+          <path d="M69 32L74 34L71 37ZM79 34L85 31L83 36L79 37Z" fill={shadow} />
+          <path d="M77 37L74 43L78 42ZM73 45L79 44" fill={shadow} />
+          <path d="M103 52L112 47L112 57L120 61L105 68Z" fill={metal} />
+        </g>
       )}
     </g>
   );
