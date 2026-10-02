@@ -1,5 +1,7 @@
 import type { Observer } from './evidence/types';
 import { contentDigest, type ContentPin } from './contentPack';
+
+export const MAX_REPLAY_SIZE = 2_000_000;
 export interface Replay<C> {
   content?: readonly ContentPin[];
   mode?: 'practice';
@@ -58,7 +60,7 @@ export function replayCodec<S extends { seed: string }, C>(rules: Rules<S, C>, p
         };
   };
   const decode = (text: string): Session<S, C> => {
-    if (text.length > 2_000_000) throw new Error('Save is too large (maximum 2 MB).');
+    if (text.length > MAX_REPLAY_SIZE) throw new Error('Save is too large (maximum 2 MB).');
     const value = JSON.parse(text) as Partial<Replay<C>>;
     if (!value || value.game !== rules.game || value.version !== rules.version)
       throw new Error('Incompatible game or rules version.');

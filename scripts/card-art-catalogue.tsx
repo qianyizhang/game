@@ -17,6 +17,12 @@ import { SUITS, type Suit } from '../src/games/balatro/domain/types';
 import { CARDS } from '../src/games/spire/content/cards';
 import { MINIONS } from '../src/games/battlegrounds/content/minions';
 import type { ReactNode } from 'react';
+import {
+  ChallengeArt,
+  ChallengeSymbol,
+  CHALLENGE_PLATES,
+  CHALLENGE_SYMBOLS,
+} from '../src/shared/art/ChallengeArt';
 
 type Asset = { id: string; group: string; name: string; node: ReactNode };
 
@@ -80,6 +86,18 @@ export function cardArtCatalogue(): Asset[] {
     'seed',
   ];
   return [
+    ...CHALLENGE_PLATES.map(([id, name]) => ({
+      id: `challenges/${id}`,
+      group: 'Challenges · Plates',
+      name,
+      node: <ChallengeArt id={id} />,
+    })),
+    ...CHALLENGE_SYMBOLS.map((kind) => ({
+      id: `challenges/symbols/${kind}`,
+      group: 'Challenges · Symbols',
+      name: kind === 'stone' ? 'Oddly Smooth Stone' : kind,
+      node: <ChallengeSymbol kind={kind} />,
+    })),
     ...JOKERS.map((card) => ({
       id: `blindside/jokers/${card.id}`,
       group: 'Blindside · Jokers',

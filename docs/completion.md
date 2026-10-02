@@ -1,6 +1,6 @@
 # Completion evidence
 
-The six accepted workshop improvements are implemented on the three independent game engines. Rules versions are **3**; content manifests and separate practice saves make compatibility explicit. Research notes describe the curated content and fidelity limits.
+The six accepted workshop improvements are implemented on the three independent game engines. This page records the initial **v3** workshop delivery. The later [Night Market expansion](night-market.md) advances Blindside and Last Hearth to **v4**; Spire remains **v3**. Content manifests and separate practice saves make compatibility explicit. Research notes describe the curated content and fidelity limits.
 
 | Area               | Delivered                                                                                                                                | Evidence                                                                                                                                     |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -26,6 +26,18 @@ Final cleanup separates the practice panel from the dialog shell, archives unrea
 
 Browser tests click representative actions and import legal full-run histories for late-game screens. They do not click every command of all 32 runs. The Spire development policy uses one-command lookahead; none of these checks establishes human difficulty, fun or exhaustive commercial rule parity.
 
+## Integrated cleanup · 2026-10-03
+
+The current tree includes the Night Market content, [tactical challenges](challenges.md), [playing adapters and bounded solver](engines.md), and [challenge artwork](card-art.md#challenge-illustrations).
+
+- **`npm run check` passes:** 170 unit tests across 22 files, formatting, strict TypeScript and the production build.
+- **44 browser cases pass** with approved execution and disposable Chrome profiles. Added checks cover unreadable/oversized replay files, pending imports superseded by moves/imports/game switches, navigation state, named dialogs and returning from a loading challenge without losing table selection.
+- Challenge screenshots at **320, 768 and 1440 px** were inspected. Jokers wrap without overlap and show their complete effect text.
+- **3/3 live challenges** are solved and replay-validated by `npm run engine:challenges`. The solver uses full seeded state; it does not establish hidden-information playing strength.
+- **523 standalone SVGs** export and decode in the browser. Cabinet search handles empty results; each export removes its temporary build bundle.
+
+This cleanup changes presentation, import handling and export tooling; game rules and replay versions remain unchanged. Final browser screenshots are under the ignored `test-results/cleanup-final/` directory. The v3 simulation evidence below is historical and was not rerun for this cleanup.
+
 ## Evidence locations
 
 - `src/games/*/domain/*.test.ts`: mechanism and lifecycle regressions.
@@ -33,7 +45,7 @@ Browser tests click representative actions and import legal full-run histories f
 - `tests/browser/`: controls, art, persistence and responsive layout.
 - `test-results/workshop-polish/`: final check logs, browser screenshots/traces and comparison output, ignored by Git. The earlier full suite remains in `test-results/browser-final/`.
 - `test-results/workshop-polish/playtests/{simulation,spire,battlegrounds}/`: the isolated v3 command histories, summaries and automated evidence exports. Ordinary simulation runs write to `test-results/{simulation,spire,battlegrounds}/`.
-- `tests/fixtures/`: current v3 normal-run victory/defeat histories, without injected terminal state.
+- `tests/fixtures/`: normal-run victory/defeat histories pinned to each game's current rules version, without injected terminal state.
 - [Workshop v3 playtests](research/playtests/2026-10-02-workshop-v3.md): outcomes, methods and remaining human questions.
 
 Old saves/exports are preserved under their previous keys and are rejected as incompatible rather than silently replayed against changed mechanics. No automatic migration is provided. Original game seed compatibility and complete commercial content remain outside scope.

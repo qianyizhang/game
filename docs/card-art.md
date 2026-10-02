@@ -20,7 +20,7 @@ Pass an output directory when needed:
 npm run assets:export -- /tmp/card-workshop-art
 ```
 
-The current catalogue exports **511 SVGs**: 52 playing cards, 60 Jokers, 18 consumables, 8 bosses, 6 packs, 6 vouchers, 4 tags, 103 Spire cards, 95 upgraded Spire cards, 64 minions, 64 golden minions and 31 shared glyphs. Counts follow the live content registries. Tokens, statuses and curses do not get upgrade exports. Exported playing cards include a cream face, corner ranks and suit pips; the other exports are illustrations, with gameplay text and stats supplied by accessible HTML controls. [Night Market](night-market.md) adds 48 exports and gives twelve Silent upgrades distinct compositions.
+The current catalogue exports **523 SVGs**: 52 playing cards, 60 Jokers, 18 consumables, 8 bosses, 6 packs, 6 vouchers, 4 tags, 103 Spire cards, 95 upgraded Spire cards, 64 minions, 64 golden minions, 31 shared glyphs, 3 challenge plates and 9 challenge symbols. Counts follow the live content registries. Tokens, statuses and curses do not get upgrade exports. Exported playing cards include a cream face, corner ranks and suit pips; the other exports are illustrations, with gameplay text and stats supplied by accessible HTML controls. [Night Market](night-market.md) adds 48 exports and gives twelve Silent upgrades distinct compositions.
 
 Generated files live under the ignored `test-results/` directory by default. The editable source is the durable asset library; regenerate the cabinet after artwork or content changes.
 
@@ -68,3 +68,17 @@ The artwork browser checks cover every rendered collection, standalone SVG decod
 The [card expansion](card-expansion.md) adds playable Blindside and Hearth content using existing rules hooks. Its Silent and Void illustrations support the separate Spire mechanism expansion. Keep the content pack and illustration modules separate so either can be refined without changing the other.
 
 Night Market components live in `NightMarketArtwork.tsx`, `ShopArt.tsx`, `NightMarketPortraits.tsx` and `SilentUpgradeArt.tsx`. `MarketPrimitives.tsx` shares engraved shop objects; `SilentPrimitives.tsx` shares the Silent scene objects without changing existing base artwork.
+
+## Challenge illustrations
+
+`src/shared/art/ChallengeArt.tsx` contains three original **360 × 192** plates and nine **64 × 64** symbols. They use fixed geometry, cream highlights, restrained engraving and the existing games' green, sage and warm brown inks. Each plate suggests its puzzle's subject without showing a winning sequence.
+
+| Puzzle                  | Illustration                                                      |
+| ----------------------- | ----------------------------------------------------------------- |
+| The last multiplier     | A brass multiplier dial, engraved playing cards and stacked coins |
+| One layer of protection | A suspended ward prism, a poison flask and a protective orbit     |
+| Make room for the Cub   | A carved bear miniature, a warband banner and briar leaves        |
+
+The plates appear in the challenge library and puzzle briefs. Symbols accompany choice, resolution, retry, hint, completion, new and active states, save warnings, and Oddly Smooth Stone. Every inline SVG is decorative and non-focusable; the adjoining text and controls retain the information and accessible names. `ChallengeArtwork.tsx` maps the library's existing status labels to symbols. `challenge-art.css` owns the responsive illustration layout, including horizontal tablet tiles.
+
+The exporter includes both families under `challenges/` and `challenges/symbols/`. Run `npm run test:browser -- tests/browser/challenge-art.spec.ts tests/browser/challenges.spec.ts` for responsive artwork and puzzle interaction checks, using the approved macOS browser execution described in `AGENTS.md`. Review the resulting screenshots alongside enlarged and thumbnail SVG renders. This addition changes no gameplay definitions or rules versions.

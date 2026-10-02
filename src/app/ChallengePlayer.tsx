@@ -6,6 +6,7 @@ import {
   type Challenge,
 } from '../shared/challenges';
 import { downloadJSON } from './useLocalGame';
+import { ChallengeArt, ChallengeSymbol } from '../shared/art/ChallengeArt';
 import { useChallengeProgress } from './useChallengeProgress';
 
 export interface ChallengeBoardProps<S, C> {
@@ -53,6 +54,7 @@ export function ChallengePlayer<S extends { seed: string }, C>({
           <button onClick={onExit}>← All challenges</button>
           <span>{definition.gameName} · Tactical puzzle</span>
         </div>
+        <ChallengeArt id={definition.id} />
         <p className="eyebrow">ONE POSITION · ONE DECISION TO UNDERSTAND</p>
         <h1 ref={title} tabIndex={-1}>
           {definition.title}
@@ -66,6 +68,7 @@ export function ChallengePlayer<S extends { seed: string }, C>({
         <div className="challenge-actions">
           {!finished && (
             <button disabled={progress.current.hints >= definition.hints.length} onClick={showHint}>
+              <ChallengeSymbol kind="hint" />
               {progress.current.hints === definition.hints.length
                 ? 'All hints shown'
                 : progress.current.hints
@@ -117,11 +120,14 @@ export function ChallengePlayer<S extends { seed: string }, C>({
       {finished && (
         <section className={`challenge-review ${result.status}`} aria-label="Decision review">
           <div className="challenge-review-heading">
-            <div>
-              <p className="eyebrow">ATTEMPT REVIEW</p>
-              <h2 ref={reviewTitle} tabIndex={-1}>
-                {result.status === 'cleared' ? 'Challenge cleared' : 'Not yet'}
-              </h2>
+            <div className="challenge-review-title">
+              <ChallengeSymbol kind={result.status === 'cleared' ? 'cleared' : 'retry'} />
+              <div>
+                <p className="eyebrow">ATTEMPT REVIEW</p>
+                <h2 ref={reviewTitle} tabIndex={-1}>
+                  {result.status === 'cleared' ? 'Challenge cleared' : 'Not yet'}
+                </h2>
+              </div>
             </div>
             <span>
               {progress.current.hints} / {definition.hints.length} hints used
@@ -160,6 +166,7 @@ export function ChallengePlayer<S extends { seed: string }, C>({
           <p>{definition.explanation}</p>
           <div className="challenge-actions">
             <button className="primary" onClick={() => retry()}>
+              <ChallengeSymbol kind="retry" />
               Try another choice
             </button>
             <button onClick={onExit}>Choose another challenge</button>

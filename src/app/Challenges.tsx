@@ -9,6 +9,9 @@ import { HearthChallengeBoard } from '../games/battlegrounds/ui/ChallengeBoard';
 import { attemptResult, challengeKey, decodeChallenge, type Challenge } from '../shared/challenges';
 import { readChallengeArchive } from './useChallengeProgress';
 import './challenges.css';
+import './challenge-art.css';
+import { ChallengeArt, ChallengeSymbol } from '../shared/art/ChallengeArt';
+import { ChallengeStatus } from './ChallengeArtwork';
 
 const SELECTION = 'card-workshop.challenge-selection';
 const catalogue = [
@@ -107,11 +110,12 @@ export default function Challenges({ onExit }: { onExit: () => void }) {
                     <span className="challenge-number">0{index + 1}</span>
                     <span>{definition.gameName}</span>
                   </div>
+                  <ChallengeArt id={definition.id} />
                   <h2>{definition.title}</h2>
                   <p>{definition.objective}</p>
                   <div className="challenge-tile-bottom">
                     <span className={`challenge-progress${progress.cleared ? ' is-cleared' : ''}`}>
-                      {progress.label}
+                      <ChallengeStatus label={progress.label} />
                     </span>
                     <button
                       aria-label={`Open ${definition.title}`}
@@ -125,14 +129,17 @@ export default function Challenges({ onExit }: { onExit: () => void }) {
             </div>
             <section className="challenge-how">
               <div>
+                <ChallengeSymbol kind="choice" />
                 <strong>01 · Make a choice</strong>
                 <p>A prepared position and a concrete goal. Ask for a hint when you want one.</p>
               </div>
               <div>
+                <ChallengeSymbol kind="resolve" />
                 <strong>02 · See the consequence</strong>
                 <p>Read the scoring or combat events behind your result.</p>
               </div>
               <div>
+                <ChallengeSymbol kind="retry" />
                 <strong>03 · Try another line</strong>
                 <p>Retry the same position, or branch before a decision and compare attempts.</p>
               </div>

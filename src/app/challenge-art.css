@@ -1,0 +1,132 @@
+.challenge-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 15 / 8;
+  flex: none;
+}
+.challenge-symbol {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  flex: none;
+}
+.challenge-tile > .challenge-art {
+  margin: 16px 0 0;
+}
+.challenge-tile h2 {
+  margin-top: 22px;
+}
+.challenge-tile-top .challenge-number {
+  font-size: 32px;
+}
+.challenge-illustrated-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+}
+.challenge-illustrated-status .challenge-symbol {
+  width: 24px;
+  height: 24px;
+}
+.challenge-how > div > .challenge-symbol {
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+}
+.challenge-brief {
+  display: flow-root;
+}
+.challenge-brief > .challenge-art {
+  float: right;
+  width: 300px;
+  margin: 4px 0 20px 36px;
+}
+.challenge-brief > .challenge-goal {
+  display: flow-root;
+}
+.challenge-brief > .challenge-actions {
+  clear: both;
+}
+.challenge-actions button:has(.challenge-symbol) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.challenge-actions button > .challenge-symbol {
+  width: 24px;
+  height: 24px;
+}
+.challenge-review-heading > .challenge-review-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.challenge-review-title > .challenge-symbol {
+  width: 64px;
+  height: 64px;
+}
+.challenge-relic:has(.challenge-symbol) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.challenge-relic > .challenge-symbol {
+  width: 44px;
+  height: 44px;
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .challenge-tile {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    column-gap: 26px;
+    align-content: start;
+  }
+  .challenge-tile > .challenge-art {
+    grid-column: 1;
+    grid-row: 2 / 5;
+    align-self: center;
+    margin: 0;
+  }
+  .challenge-tile-top {
+    grid-column: 1 / -1;
+    margin-bottom: 16px;
+  }
+  .challenge-tile h2 {
+    margin: 0 0 12px;
+  }
+}
+@media (max-width: 760px) {
+  .challenge-brief > .challenge-art {
+    float: none;
+    width: min(100%, 360px);
+    margin: 0 0 24px;
+  }
+}
+@media (max-width: 600px) {
+  .challenge-how > div {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 14px;
+  }
+  .challenge-how > div > .challenge-symbol {
+    grid-row: 1 / 3;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+  }
+  .challenge-how > div > p {
+    grid-column: 2;
+  }
+  .challenge-review-heading > .challenge-review-title {
+    gap: 10px;
+  }
+  .challenge-review-title > .challenge-symbol {
+    width: 46px;
+    height: 46px;
+  }
+}

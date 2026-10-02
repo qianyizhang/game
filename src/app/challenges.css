@@ -196,11 +196,21 @@
   border-radius: 16px;
 }
 .challenge-table .joker-rack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
   justify-content: flex-start;
 }
 .challenge-table .owned-joker {
   width: 190px;
   flex: 0 0 190px;
+  max-width: 100%;
+  height: auto;
+  padding: 12px;
+}
+.challenge-table .owned-joker p {
+  font-size: 13px;
+  line-height: 1.5;
 }
 .challenge-table .owned-joker h3 {
   margin: 8px 0;

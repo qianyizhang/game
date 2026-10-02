@@ -1,6 +1,6 @@
 import { beginEvidence, recordAccepted } from '../shared/evidence/recorder';
-import { useMemo, useRef, useState } from 'react';
-import { replayCodec, type Session } from '../shared/replay';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { MAX_REPLAY_SIZE, replayCodec, type Session } from '../shared/replay';
 
 export function useLocalGame<S extends { seed: string }, C>(
   codec: ReturnType<typeof replayCodec<S, C>>,
@@ -30,9 +30,17 @@ export function useLocalGame<S extends { seed: string }, C>(
   const [error, setError] = useState(initial.error);
   const [saveStatus, setSaveStatus] = useState('Local play · autosave');
   const recovery = useRef(initial.recovery);
+  const importRequest = useRef(0);
+  useEffect(
+    () => () => {
+      importRequest.current++;
+    },
+    [],
+  );
   const session = practice ?? normal;
   const activeCodec = practice ? practiceCodec : codec;
   const persist = (next: Session<S, C>) => {
+    importRequest.current++;
     const isPractice = next.replay.mode === 'practice';
     if (isPractice) setPractice(next);
     else setNormal(next);
@@ -118,6 +126,19 @@ export function useLocalGame<S extends { seed: string }, C>(
       return false;
     }
   };
+  const importFile = async (file: File, practice = false) => {
+    const request = ++importRequest.current;
+    try {
+      if (file.size > MAX_REPLAY_SIZE) throw new Error('Save is too large (maximum 2 MB).');
+      const text = await file.text();
+      // Accepted actions, newer imports and leaving the game supersede an unfinished read.
+      if (request !== importRequest.current) return false;
+      return practice ? openPractice(text) : restore(text);
+    } catch (issue) {
+      if (request === importRequest.current) setError(`Import failed: ${String(issue)}`);
+      return false;
+    }
+  };
   const branch = (step: number) => {
     if (!Number.isInteger(step) || step < 0 || step > session.replay.commands.length) {
       setError('Choose a valid replay step.');
@@ -145,6 +166,7 @@ export function useLocalGame<S extends { seed: string }, C>(
     }
   };
   const returnToNormal = () => {
+    importRequest.current++;
     setTimelineRevision((v) => v + 1);
     setPractice(null);
     setError('');
@@ -176,6 +198,7 @@ export function useLocalGame<S extends { seed: string }, C>(
     dispatch,
     restart,
     restore,
+    importFile,
     download,
     error,
     clearError: () => setError(''),
