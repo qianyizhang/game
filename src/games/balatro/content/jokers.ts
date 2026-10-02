@@ -1,3 +1,6 @@
+import { assemble } from '../../../shared/contentPack';
+import { blindsidePacks } from '../../../mods/blindside';
+import { validateJoker } from '../../../mods/validation';
 import { isFace } from '../domain/poker';
 import type { JokerDefinition, Suit } from '../domain/types';
 import { EXPANSION_JOKERS } from './expansion-jokers';
@@ -22,7 +25,7 @@ const suitJoker = (suit: Suit, name: string, symbol: string) =>
   });
 
 /** Small pure hooks are the modding API. Context is read-only; return an effect. */
-export const JOKERS: JokerDefinition[] = [
+const BASE_JOKERS: JokerDefinition[] = [
   joker({
     id: 'spark',
     name: 'Spark',
@@ -339,6 +342,7 @@ export const JOKERS: JokerDefinition[] = [
   ...EXPANSION_JOKERS,
 ];
 
+export const JOKERS = assemble(BASE_JOKERS, blindsidePacks, (p) => p.jokers, validateJoker);
 export const JOKER_BY_ID = Object.fromEntries(JOKERS.map((item) => [item.id, item])) as Record<
   string,
   JokerDefinition

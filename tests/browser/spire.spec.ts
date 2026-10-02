@@ -1,8 +1,13 @@
+import { CARDS } from '../../src/games/spire/content/cards';
 import { expect, test, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { spireSession } from '../../src/games/spire/application/session';
 import { spirePolicy } from '../simulation/spire-policy';
 import type { SpireCommand } from '../../src/games/spire/domain/types';
+
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('card-workshop.playback-speed', '100'));
+});
 
 async function saved(page: Page) {
   return spireSession.decode(
@@ -84,7 +89,7 @@ test('Spire map, targeted combat, reward, save/resume and collection', async ({ 
   await page.reload();
   expect(await saved(page)).toEqual(before);
   await page.getByRole('button', { name: 'Collection', exact: true }).click();
-  await expect(page.locator('.ability-grid .ability-card')).toHaveCount(63);
+  await expect(page.locator('.ability-grid .ability-card')).toHaveCount(CARDS.length);
   await page.getByRole('button', { name: 'Rules & workshop' }).click();
   await expect(page.getByRole('heading', { name: 'Cards and timing' })).toBeVisible();
   expect(errors).toEqual([]);

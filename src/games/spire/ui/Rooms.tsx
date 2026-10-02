@@ -4,6 +4,7 @@ import { removalCost } from '../domain/rewards';
 import type { Potion, SpireCommand, SpireState } from '../domain/types';
 import { AbilityCard, DeckList } from './Card';
 import { Portrait } from './Portrait';
+import { ASCENSIONS } from '../domain/difficulty';
 export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCommand) => void }) {
   const event = (choice: string, card?: string) => dispatch({ type: 'event', choice, card });
   const option = (label: string, choice: string, disabled = false) => (
@@ -16,26 +17,77 @@ export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCo
       {run.phase === 'neow' && (
         <>
           <div className="sts-intro">
-            <Portrait id="ironclad" />
+            <Portrait id={run.character} />
             <div>
-              <p className="eyebrow">SLAY THE SPIRE · ASCENSION 0</p>
-              <h1>The Ironclad</h1>
-              <p>80 HP. A battered sword. A pact with a demon.</p>
+              <p className="eyebrow">SLAY THE SPIRE · ASCENSION {run.ascension}</p>
+              <h1>The {run.character === 'silent' ? 'Silent' : 'Ironclad'}</h1>
               <p>
-                Burning Blood restores 6 HP after combat. Build your deck, choose your route, and
-                defeat three bosses.
+                {run.character === 'silent'
+                  ? '70 HP. Poison, precision, and a handful of blades.'
+                  : '80 HP. A battered sword. A pact with a demon.'}
+              </p>
+              <p>
+                {run.character === 'silent'
+                  ? 'Ring of the Snake draws 2 additional cards at combat start.'
+                  : 'Burning Blood restores 6 HP after combat.'}{' '}
+                Build your deck, choose your route, and defeat three bosses.
               </p>
             </div>
           </div>
+          <div className="run-options">
+            <label>
+              Character{' '}
+              <select
+                aria-label="Character"
+                value={run.character}
+                onChange={(e) =>
+                  dispatch({
+                    type: 'configure',
+                    character: e.target.value as 'ironclad' | 'silent',
+                    ascension: run.ascension,
+                  })
+                }
+              >
+                <option value="ironclad">Ironclad</option>
+                <option value="silent">Silent</option>
+              </select>
+            </label>
+            <label>
+              Difficulty{' '}
+              <select
+                aria-label="Ascension"
+                value={run.ascension}
+                onChange={(e) =>
+                  dispatch({
+                    type: 'configure',
+                    character: run.character,
+                    ascension: Number(e.target.value),
+                  })
+                }
+              >
+                {ASCENSIONS.map((text, index) => (
+                  <option key={index} value={index}>
+                    Ascension {index} · {text}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          {run.ascension > 0 && (
+            <p className="muted">
+              Cumulative: {ASCENSIONS.slice(1, run.ascension + 1).join(' · ')}. All levels are
+              available for practice.
+            </p>
+          )}
           <h2>Neow’s blessing</h2>
           <p>Choose one blessing to begin your ascent.</p>
           <div className="event-options">
             {(
               [
-                ['maxHp', 'Obtain +8 Max HP'],
+                ['maxHp', `Obtain +${Math.floor(run.maxHp * 0.1)} Max HP`],
                 ['lament', 'Neow’s Lament · enemies in your first 3 combats have 1 HP'],
                 ['gold', 'Obtain 100 gold'],
-                ['bossSwap', 'Exchange Burning Blood for a random boss relic'],
+                ['bossSwap', 'Exchange your starter relic for a random boss relic'],
               ] as const
             ).map(([choice, label]) => (
               <button key={choice} onClick={() => dispatch({ type: 'neow', choice })}>
@@ -44,8 +96,7 @@ export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCo
             ))}
           </div>
           <p className="muted small">
-            Original Slay the Spire rules, with a curated Ironclad content set and original
-            illustrations.
+            Original Slay the Spire rules, with curated character pools and original illustrations.
           </p>
         </>
       )}
@@ -315,8 +366,8 @@ export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCo
           </p>
           <h1>{run.phase === 'won' ? 'Victory' : 'Defeat'}</h1>
           <p>
-            Ironclad · Act {run.act} · Room {run.row + 1} · {run.deck.length} cards ·{' '}
-            {run.relics.length} relics
+            {run.character === 'silent' ? 'Silent' : 'Ironclad'} · Ascension {run.ascension} · Act{' '}
+            {run.act} · Room {run.row + 1} · {run.deck.length} cards · {run.relics.length} relics
           </p>
           <p>
             {run.phase === 'won'

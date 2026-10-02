@@ -6,11 +6,11 @@ import { MinionCard } from './MinionCard';
 export function CombatPlayer({ result, opponent }: { result: CombatResult; opponent: string }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [speed, setSpeed] = useState(600);
   useEffect(() => {
     setIndex(0);
-    setPlaying(false);
+    setPlaying(true);
   }, [result]);
   useEffect(() => {
     if (!playing || index >= result.frames.length - 1) return;

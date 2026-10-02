@@ -6,7 +6,16 @@ import { HANDS } from './poker';
 import { contextFor, isDebuffed, scoreHand } from './scoring';
 import { SUITS, type Command, type HandType, type RunState, type Transition } from './types';
 
-export const RULES_VERSION = 2;
+import { PACK_BY_ID, VOUCHER_BY_ID, TAGS } from '../content/shop';
+import {
+  choosePack,
+  closePack,
+  openPack,
+  prepareShopExtras,
+  prepareTags,
+  shopPrice,
+} from './shopExtras';
+export const RULES_VERSION = 3;
 export const JOKER_LIMIT = 5;
 export const CONSUMABLE_LIMIT = 2;
 const note = (run: RunState, message: string) => {
@@ -17,8 +26,12 @@ const makeId = (run: RunState, prefix: string) => `${prefix}-${run.nextId++}`;
 const countRule = (run: RunState, rule: string) =>
   run.jokers.filter((j) => JOKER_BY_ID[j.definitionId].rule === rule).length;
 export const handSize = (run: RunState) =>
-  8 + countRule(run, 'extraCard') - (activeBoss(run) === 'narrow' ? 2 : 0);
-export const rerollPrice = (run: RunState) => 5 + run.rerolls;
+  8 +
+  Number(run.vouchers.includes('handSize')) +
+  countRule(run, 'extraCard') -
+  (activeBoss(run) === 'narrow' ? 2 : 0);
+export const rerollPrice = (run: RunState) =>
+  5 - (run.vouchers.includes('rerolls') ? 2 : 0) + run.rerolls;
 export const sellPrice = (paid: number) => Math.max(1, Math.floor(paid / 2));
 
 export function createRun(inputSeed: string): RunState {
@@ -53,6 +66,13 @@ export function createRun(inputSeed: string): RunState {
       number
     >,
     shop: [],
+    packs: [],
+    pack: null,
+    vouchers: [],
+    voucherOffer: null,
+    voucherAnte: 0,
+    skipTags: [],
+    tags: [],
     rerolls: 0,
     firstHandType: null,
     lastScore: null,
@@ -62,6 +82,7 @@ export function createRun(inputSeed: string): RunState {
   for (const suit of SUITS)
     for (let rank = 2; rank <= 14; rank++)
       run.deck.push({ id: makeId(run, 'card'), rank, suit, enhancement: 'plain' });
+  prepareTags(run);
   return run;
 }
 
@@ -88,7 +109,7 @@ function generateShop(run: RunState): void {
       id: makeId(run, 'offer'),
       kind: 'joker',
       definitionId: picked.id,
-      price: picked.price,
+      price: shopPrice(run, picked.price),
     });
   }
   const [consumables, next] = shuffle(CONSUMABLES, run.rng);
@@ -98,13 +119,13 @@ function generateShop(run: RunState): void {
       id: makeId(run, 'offer'),
       kind: 'consumable',
       definitionId: item.id,
-      price: item.price,
+      price: shopPrice(run, item.price),
     });
 }
 
 function winBlind(run: RunState): void {
   const reward = [3, 4, 5][run.blind];
-  const interest = Math.min(5, Math.floor(run.cash / 5));
+  const interest = Math.min(run.vouchers.includes('interest') ? 10 : 5, Math.floor(run.cash / 5));
   const jokerIncome = run.jokers.reduce(
     (sum, j) => sum + (JOKER_BY_ID[j.definitionId].income?.(run, j) ?? 0),
     0,
@@ -113,16 +134,19 @@ function winBlind(run: RunState): void {
     run.hand
       .map((id) => run.deck.find((c) => c.id === id)!)
       .filter((c) => c.enhancement === 'gold' && !isDebuffed(c, run)).length * 3;
-  const total = reward + run.handsLeft + interest + jokerIncome + goldIncome;
+  const tagIncome = run.blind === 2 ? run.tags.filter((t) => t === 'investment').length * 25 : 0;
+  if (run.blind === 2) run.tags = [];
+  const total = reward + run.handsLeft + interest + jokerIncome + goldIncome + tagIncome;
   run.cash += total;
   note(
     run,
-    `Blind cleared! +$${total}: $${reward} reward + $${run.handsLeft} spare hands + $${interest} interest + $${jokerIncome + goldIncome} card income.`,
+    `Blind cleared! +$${total}: $${reward} reward + $${run.handsLeft} spare hands + $${interest} interest + $${jokerIncome + goldIncome} card income + $${tagIncome} tags.`,
   );
   run.phase = run.ante === 8 && run.blind === 2 ? 'won' : 'shop';
   if (run.phase === 'shop') {
     run.rerolls = 0;
     generateShop(run);
+    prepareShopExtras(run);
   }
 }
 
@@ -138,15 +162,80 @@ export function transition(previous: RunState, command: Command): Transition {
   const reject = (error: string): Transition => ({ state: previous, error });
   if (run.phase === 'won' || run.phase === 'lost')
     return reject('This run is finished. Start a new seed to play again.');
+  if (
+    run.phase === 'pack' &&
+    !['choosePack', 'skipPack', 'sellJoker', 'sellConsumable', 'moveJoker'].includes(command.type)
+  )
+    return reject('Finish this pack first.');
   switch (command.type) {
+    case 'skipBlind': {
+      if (run.phase !== 'ready' || run.blind === 2)
+        return reject('Only a Small or Big Blind can be skipped.');
+      const tag = run.skipTags[run.blind];
+      run.blind++;
+      run.target = targetFor(run);
+      run.lastScore = null;
+      if (tag.id === 'investment') run.tags.push(tag.id);
+      if (tag.id === 'economy') run.cash += Math.min(run.cash, 40);
+      if (tag.id === 'orbital') run.levels[tag.hand] += 3;
+      if (tag.id === 'buffoon') openPack(run, 'megaBuffoon', 0, 'ready');
+      note(run, `Blind skipped: ${TAGS[tag.id].name}. No blind payout or shop.`);
+      break;
+    }
+    case 'buyPack': {
+      if (run.phase !== 'shop') return reject('Packs are sold in the shop.');
+      const offer = run.packs.find((p) => p.id === command.id);
+      if (!offer || run.cash < offer.price) return reject('Pack unavailable or insufficient cash.');
+      run.cash -= offer.price;
+      run.packs = run.packs.filter((p) => p.id !== offer.id);
+      openPack(run, offer.definitionId, offer.price, 'shop');
+      note(
+        run,
+        `Opened ${PACK_BY_ID[offer.definitionId].name}. Choose now; unused cards are discarded.`,
+      );
+      break;
+    }
+    case 'choosePack': {
+      if (run.phase !== 'pack') return reject('No pack is open.');
+      const error = choosePack(run, command.id);
+      if (error) return reject(error);
+      break;
+    }
+    case 'skipPack': {
+      if (run.phase !== 'pack') return reject('No pack is open.');
+      closePack(run);
+      note(run, 'Remaining pack cards discarded.');
+      break;
+    }
+    case 'buyVoucher': {
+      if (run.phase !== 'shop' || !run.voucherOffer || run.cash < 10)
+        return reject('Voucher unavailable or insufficient cash.');
+      const voucher = VOUCHER_BY_ID[run.voucherOffer];
+      run.cash -= 10;
+      run.vouchers.push(voucher.id);
+      run.voucherOffer = null;
+      if (voucher.id === 'discount') {
+        run.shop.forEach((offer) => {
+          offer.price = shopPrice(run, offer.price);
+        });
+        run.packs.forEach((offer) => {
+          offer.price = shopPrice(run, offer.price);
+        });
+      }
+      note(run, `${voucher.name} applies for the rest of this run.`);
+      break;
+    }
     case 'startBlind': {
       if (run.phase !== 'ready') return reject('The blind is not ready.');
       run.phase = 'playing';
       run.roundScore = 0;
       run.firstHandType = null;
       run.handsPlayed = 0;
-      run.handsLeft = 4 + countRule(run, 'extraHand');
-      run.discardsLeft = (activeBoss(run) === 'pinch' ? 1 : 3) + countRule(run, 'extraDiscard');
+      run.handsLeft = 4 + Number(run.vouchers.includes('extraHand')) + countRule(run, 'extraHand');
+      run.discardsLeft =
+        (activeBoss(run) === 'pinch' ? 1 : 3) +
+        Number(run.vouchers.includes('extraDiscard')) +
+        countRule(run, 'extraDiscard');
       run.target = targetFor(run);
       run.hand = [];
       run.discard = [];
@@ -320,8 +409,11 @@ export function transition(previous: RunState, command: Command): Transition {
       if (run.blind === 3) {
         run.ante++;
         run.blind = 0;
+        prepareTags(run);
       }
       run.phase = 'ready';
+      run.packs = [];
+      run.lastScore = null;
       run.hand = [];
       run.draw = [];
       run.discard = [];

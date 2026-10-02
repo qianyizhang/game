@@ -1,3 +1,6 @@
+import { assemble } from '../../../shared/contentPack';
+import { spirePacks } from '../../../mods/spire';
+import { validateEnemy, validateRelic } from '../../../mods/validation';
 import type {
   EnemyDefinition,
   EnemyEffect,
@@ -5,6 +8,7 @@ import type {
   RelicDefinition,
   Potion,
 } from '../domain/types';
+import { EXTRA_BOSSES } from './bosses';
 const hit = (amount: number, hits = 1): EnemyEffect => ({ type: 'damage', amount, hits });
 const block = (amount: number): EnemyEffect => ({ type: 'block', amount });
 const debuff = (
@@ -26,8 +30,7 @@ const junk = (card: string, amount: number): EnemyEffect => ({
 });
 const move = (name: string, ...effects: EnemyEffect[]): Intent => ({ name, effects });
 export const ACT_NAMES = ['The Exordium', 'The City', 'The Beyond'];
-export const BOSS_ENCOUNTERS = [['slimeBoss'], ['champ'], ['donu', 'deca']];
-export const ENEMIES: EnemyDefinition[] = [
+const BASE_ENEMIES: EnemyDefinition[] = [
   {
     id: 'cultist',
     name: 'Cultist',
@@ -452,11 +455,24 @@ export const ENEMIES: EnemyDefinition[] = [
     ],
   },
 ];
+export const ENEMIES = assemble(
+  [...BASE_ENEMIES, ...EXTRA_BOSSES],
+  spirePacks,
+  (p) => p.enemies,
+  validateEnemy,
+);
 export const ENEMY_BY_ID = Object.fromEntries(ENEMIES.map((e) => [e.id, e])) as Record<
   string,
   EnemyDefinition
 >;
-export const RELICS: RelicDefinition[] = [
+const BASE_RELICS: RelicDefinition[] = [
+  {
+    id: 'ringOfTheSnake',
+    name: 'Ring of the Snake',
+    symbol: '≈',
+    rarity: 'starter',
+    text: 'Draw 2 additional cards at the start of combat.',
+  },
   {
     id: 'burningBlood',
     name: 'Burning Blood',
@@ -682,6 +698,7 @@ export const RELICS: RelicDefinition[] = [
     text: 'Gain 25% more combat gold.',
   },
 ];
+export const RELICS = assemble(BASE_RELICS, spirePacks, (p) => p.relics, validateRelic);
 export const RELIC_BY_ID = Object.fromEntries(RELICS.map((r) => [r.id, r])) as Record<
   string,
   RelicDefinition

@@ -1,4 +1,6 @@
-export type Status = 'strength' | 'dexterity' | 'weak' | 'vulnerable' | 'frail' | 'artifact';
+export type Character = 'ironclad' | 'silent';
+export type Status =
+  'strength' | 'dexterity' | 'weak' | 'vulnerable' | 'frail' | 'artifact' | 'poison';
 export type Power =
   | 'metallicize'
   | 'demonForm'
@@ -9,7 +11,13 @@ export type Power =
   | 'combust'
   | 'combustHp'
   | 'rupture'
-  | 'fireBreathing';
+  | 'fireBreathing'
+  | 'noxiousFumes'
+  | 'accuracy'
+  | 'afterImage'
+  | 'infiniteBlades'
+  | 'envenom'
+  | 'thousandCuts';
 export type Rarity = 'basic' | 'common' | 'uncommon' | 'rare' | 'special';
 export type Effect =
   | {
@@ -24,6 +32,7 @@ export type Effect =
       strikeScale?: number;
       heal?: boolean;
       fatalMaxHp?: number;
+      poisonedTwice?: boolean;
     }
   | { type: 'block' | 'draw' | 'energy' | 'heal' | 'loseHp'; amount: number }
   | { type: 'status'; status: Status; amount: number; target: 'self' | 'enemy' | 'all' }
@@ -35,11 +44,22 @@ export type Effect =
       zone: 'hand' | 'draw' | 'discard';
       copySource?: boolean;
     }
-  | { type: 'choose'; action: 'exhaust' | 'topdeck' | 'upgrade'; random?: boolean }
+  | {
+      type: 'choose';
+      action: 'exhaust' | 'topdeck' | 'upgrade' | 'discard';
+      random?: boolean;
+      count?: number;
+    }
+  | { type: 'discardHand'; draw?: boolean }
+  | { type: 'multiplyPoison'; amount: number }
+  | { type: 'randomPoison'; amount: number; hits: number }
+  | { type: 'nextTurn'; stat: 'block' | 'energy' | 'draw'; amount: number }
+  | { type: 'blur'; amount: number }
   | { type: 'exhaustHand'; nonAttacks?: boolean; blockEach?: number; damageEach?: number }
   | { type: 'doubleBlock' | 'doubleStrength' | 'noDraw' }
   | { type: 'temporary'; stat: 'strength' | 'rage' | 'flameBarrier'; amount: number };
 export interface CardDefinition {
+  character?: Character;
   id: string;
   name: string;
   kind: 'attack' | 'skill' | 'power' | 'status' | 'curse';
@@ -59,6 +79,9 @@ export interface CardDefinition {
   starter?: boolean;
   token?: boolean;
   onlyAttacks?: boolean;
+  onDiscard?: { type: 'draw' | 'energy'; amount: number; upgradedAmount: number };
+  requiresDiscard?: boolean;
+  innateUpgrade?: boolean;
 }
 export interface Card {
   id: string;
@@ -97,8 +120,12 @@ export interface Enemy extends Fighter {
   turn: number;
   history: number[];
   powers: Record<string, number>;
+  stasisCard?: string;
+  ascension: number;
 }
 export interface RelicDefinition {
+  startBlock?: number;
+  startStrength?: number;
   id: string;
   name: string;
   symbol: string;
@@ -106,7 +133,7 @@ export interface RelicDefinition {
   rarity: 'starter' | 'common' | 'uncommon' | 'rare' | 'boss' | 'event';
 }
 export interface CardChoice {
-  action: 'exhaust' | 'topdeck' | 'upgrade';
+  action: 'exhaust' | 'topdeck' | 'upgrade' | 'discard';
   options: string[];
   effects: Effect[];
   sourceId: string;
@@ -138,6 +165,11 @@ export interface Combat {
   temporaryStrength: number;
   noDraw: boolean;
   choice: CardChoice | null;
+  timeWarpPending: boolean;
+  drawReduction: number;
+  nextTurn: { block: number; energy: number; draw: number };
+  blur: number;
+  discarded: number;
 }
 export type NodeKind = 'fight' | 'elite' | 'shop' | 'rest' | 'event' | 'treasure' | 'boss';
 export interface MapNode {
@@ -158,11 +190,16 @@ export interface ShopOffer {
 export type Potion =
   'fire' | 'block' | 'strength' | 'dexterity' | 'energy' | 'blood' | 'explosive' | 'weak';
 export interface SpireState {
+  practiceEncounter?: boolean;
+  resolution: { sequence: number; frames: ResolutionFrame[] };
   version: number;
   seed: string;
   rng: number;
   nextId: number;
-  character: 'ironclad';
+  character: Character;
+  ascension: number;
+  unknownChances: { fight: number; shop: number; treasure: number };
+  seenEvents: string[];
   phase:
     | 'neow'
     | 'map'
@@ -206,7 +243,28 @@ export interface SpireState {
   log: string[];
   notice: string;
 }
+export interface ResolutionFrame {
+  kind: 'damage' | 'block' | 'card' | 'trigger';
+  source: string;
+  detail: string;
+  target?: string;
+  amount?: number;
+  before?: number;
+  after?: number;
+  formula?: string;
+  snapshot: {
+    player: Fighter;
+    enemies: Enemy[];
+    energy: number;
+    turn: number;
+    hand: Card[];
+    draw: number;
+    discard: number;
+    exhaust: number;
+  };
+}
 export type SpireCommand =
+  | { type: 'configure'; character: Character; ascension: number }
   | { type: 'neow'; choice: 'maxHp' | 'lament' | 'gold' | 'bossSwap' }
   | { type: 'chooseNode'; id: string }
   | { type: 'playCard'; id: string; target?: string }

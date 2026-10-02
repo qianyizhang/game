@@ -1,5 +1,7 @@
 # Last Hearth: development playtest
 
+**Historical snapshot.** The current rules-v3 cohort is in [Workshop v3 playtests](2026-10-02-workshop-v3.md). Outcomes and fixtures below belong to the earlier rules/content revision.
+
 2026-10-02 · rules version 1 · `npm run playtest` · `tests/simulation/battlegrounds.test.ts`.
 
 Twelve fixed seeds rotate the three heroes. The test player uses the same visible-state purchasing heuristic as the seven opponents and submits legal commands. No health, offers, gold or minions are injected. Positioning is recorded as ordinary move commands.

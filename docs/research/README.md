@@ -2,11 +2,11 @@
 
 This is the home for understanding the games we are studying. Architecture explains how the code works; these notes explain what the game asks players to do and why the rules matter.
 
-| Game                      | Research                             | Implementation status              |
-| ------------------------- | ------------------------------------ | ---------------------------------- |
-| Balatro                   | [Core mechanisms](balatro.md)        | Implemented: Blindside             |
-| Slay the Spire 1          | [Core mechanisms](slay-the-spire.md) | Implemented: Ironclad, Ascension 0 |
-| Hearthstone Battlegrounds | [Core mechanisms](battlegrounds.md)  | Implemented: Last Hearth           |
+| Game                      | Research                             | Implementation status                            |
+| ------------------------- | ------------------------------------ | ------------------------------------------------ |
+| Balatro                   | [Core mechanisms](balatro.md)        | Implemented: Blindside                           |
+| Slay the Spire 1          | [Core mechanisms](slay-the-spire.md) | Implemented: Ironclad/Silent, A0–A5, nine bosses |
+| Hearthstone Battlegrounds | [Core mechanisms](battlegrounds.md)  | Implemented: Last Hearth                         |
 
 ## Evidence convention
 

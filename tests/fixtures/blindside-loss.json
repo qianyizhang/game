@@ -1,26 +1,97 @@
 {
   "game": "blindside",
-  "version": 2,
-  "seed": "EXPANSION-LOSS",
+  "version": 3,
+  "seed": "MOD-01",
   "commands": [
     {
       "type": "startBlind"
     },
     {
       "type": "play",
-      "cards": ["card-44"]
+      "cards": ["card-37", "card-50", "card-11", "card-24"]
+    },
+    {
+      "type": "buy",
+      "offerId": "offer-55"
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "discard",
+      "cards": ["card-6", "card-5", "card-29", "card-22"]
+    },
+    {
+      "type": "discard",
+      "cards": ["card-49", "card-31", "card-8", "card-45"]
+    },
+    {
+      "type": "discard",
+      "cards": ["card-1", "card-39", "card-35", "card-44"]
     },
     {
       "type": "play",
-      "cards": ["card-42"]
+      "cards": ["card-15", "card-11", "card-41", "card-37"]
     },
     {
       "type": "play",
-      "cards": ["card-14"]
+      "cards": ["card-12", "card-25"]
     },
     {
       "type": "play",
-      "cards": ["card-12"]
+      "cards": ["card-26", "card-52"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-23", "card-47", "card-50", "card-46", "card-9"]
+    },
+    {
+      "type": "buy",
+      "offerId": "offer-64"
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "discard",
+      "cards": ["card-41", "card-34", "card-38", "card-23"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-4", "card-17", "card-13", "card-26", "card-30"]
+    },
+    {
+      "type": "discard",
+      "cards": ["card-28", "card-25", "card-31", "card-15", "card-19"]
+    },
+    {
+      "type": "discard",
+      "cards": ["card-9", "card-27", "card-42", "card-3", "card-39"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-35"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-37"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-6"]
+    }
+  ],
+  "content": [
+    {
+      "id": "base",
+      "version": "3",
+      "digest": "ec835a8a"
     }
   ]
 }

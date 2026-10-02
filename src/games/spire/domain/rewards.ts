@@ -52,6 +52,7 @@ export function cardRewards(
   count?: number,
 ): string[] {
   const result: string[] = [];
+  const pool = REWARD_CARDS.filter((c) => !c.character || c.character === run.character);
   run.rewardUpgrades = [];
   for (let i = 0; i < (count ?? (run.relics.includes('bustedCrown') ? 1 : 3)); i++) {
     const value = roll(run) * 100;
@@ -65,10 +66,10 @@ export function cardRewards(
           : value < rare + uncommon
             ? 'uncommon'
             : 'common';
-    const candidates = REWARD_CARDS.filter((c) => c.rarity === rarity && !result.includes(c.id));
+    const candidates = pool.filter((c) => c.rarity === rarity && !result.includes(c.id));
     const selected = pick(
       run,
-      candidates.length ? candidates : REWARD_CARDS.filter((c) => !result.includes(c.id)),
+      candidates.length ? candidates : pool.filter((c) => !result.includes(c.id)),
     );
     if (!selected) break;
     result.push(selected.id);
@@ -87,7 +88,17 @@ export function rewardPotion(run: SpireState, boss = false): Potion | null {
   return success ? pick(run, Object.keys(POTIONS) as Potion[]) : null;
 }
 export function openShop(run: SpireState) {
-  const chosen = cardRewards(run, 'shop', 5);
+  const chosen: string[] = [];
+  for (const kind of ['attack', 'attack', 'skill', 'skill', 'power']) {
+    const pool = REWARD_CARDS.filter(
+      (c) => c.character === run.character && c.kind === kind && !chosen.includes(c.id),
+    );
+    const value = roll(run);
+    const rarity = value < 0.09 ? 'rare' : value < 0.46 ? 'uncommon' : 'common';
+    const preferred = pool.filter((c) => c.rarity === rarity);
+    if (pool.length) chosen.push(pick(run, preferred.length ? preferred : pool).id);
+  }
+  const sale = Math.floor(roll(run) * chosen.length);
   run.rewardUpgrades = [];
   run.shop = chosen.map((id, index) => {
     const card = REWARD_CARDS.find((c) => c.id === id)!;
@@ -96,7 +107,7 @@ export function openShop(run: SpireState) {
       id: nextId(run, 'offer'),
       kind: 'card' as const,
       definitionId: id,
-      price: Math.round(base * (0.9 + roll(run) * 0.2) * (index === 0 ? 0.5 : 1)),
+      price: Math.round(base * (0.9 + roll(run) * 0.2) * (index === sale ? 0.5 : 1)),
     };
   });
   const excluded = new Set<string>();
@@ -108,7 +119,12 @@ export function openShop(run: SpireState) {
         id: nextId(run, 'offer'),
         kind: 'relic',
         definitionId: id,
-        price: Math.round(150 * (0.9 + roll(run) * 0.2)),
+        price: Math.round(
+          { common: 150, uncommon: 250, rare: 300 }[
+            RELICS.find((r) => r.id === id)!.rarity as 'common' | 'uncommon' | 'rare'
+          ] *
+            (0.95 + roll(run) * 0.1),
+        ),
       });
     }
   }

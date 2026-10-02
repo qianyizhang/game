@@ -1,8 +1,9 @@
 import { CARD_BY_ID, cardCost } from '../content/cards';
-import { ENERGY_RELICS, ENEMY_BY_ID } from '../content/world';
+import { ENERGY_RELICS, ENEMY_BY_ID, RELIC_BY_ID } from '../content/world';
 import { chooseNextIntent, createEnemy, currentIntent, enemySpecial } from './enemies';
 import {
   aliveEnemies,
+  combatOngoing,
   applyStatus,
   gainBlock,
   heal,
@@ -40,6 +41,15 @@ export function combatCardCost(run: SpireState, id: string): number {
   if (definition.kind === 'skill' && run.combat!.powers.corruption) return 0;
   return cardCost(card.definitionId, card.upgraded);
 }
+export function attackExplanation(
+  base: number,
+  source: Fighter,
+  target: Fighter,
+  strengthScale = 1,
+  multiplier = 1,
+): string {
+  return `floor(max(0, ${base} base + ${source.status.strength} Strength × ${strengthScale}) × ${source.status.weak > 0 ? '0.75 Weak' : '1'} × ${target.status.vulnerable > 0 ? '1.5 Vulnerable' : '1'} × ${multiplier}) = ${attackDamage(base, source, target, strengthScale, multiplier)}`;
+}
 export function addGenerated(
   run: SpireState,
   definitionId: string,
@@ -64,7 +74,7 @@ export function drawCards(run: SpireState, count: number) {
     log(run, 'No Draw prevents drawing this turn.');
     return;
   }
-  for (let i = 0; i < count && c.player.hp > 0 && aliveEnemies(run).length; i++) {
+  for (let i = 0; i < count && c.player.hp > 0 && combatOngoing(run); i++) {
     if (c.hand.length >= 10) {
       log(run, 'Hand limit: additional draw stops.');
       return;
@@ -77,6 +87,11 @@ export function drawCards(run: SpireState, count: number) {
     const id = c.draw.shift();
     if (!id) return;
     c.hand.push(id);
+    if (c.cards[id].definitionId === 'void') c.energy = Math.max(0, c.energy - 1);
+    log(run, `Draw ${CARD_BY_ID[c.cards[id].definitionId].name}.`, {
+      kind: 'card',
+      source: 'Draw',
+    });
     if (
       c.powers.fireBreathing &&
       ['status', 'curse'].includes(CARD_BY_ID[c.cards[id].definitionId].kind)
@@ -84,6 +99,27 @@ export function drawCards(run: SpireState, count: number) {
       for (const enemy of aliveEnemies(run))
         hit(run, enemy, c.powers.fireBreathing, 'Fire Breathing');
     }
+  }
+}
+/** Only manual/card discards fire these hooks; ordinary end-turn cleanup does not. */
+export function discardCard(run: SpireState, id: string) {
+  const c = run.combat!;
+  if (!c.hand.includes(id)) return;
+  c.hand = c.hand.filter((card) => card !== id);
+  c.discard.push(id);
+  c.discarded++;
+  discardHook(run, id);
+}
+function discardHook(run: SpireState, id: string) {
+  const c = run.combat!;
+  const instance = c.cards[id],
+    definition = CARD_BY_ID[instance.definitionId];
+  log(run, `Discard ${definition.name}.`);
+  const hook = definition.onDiscard;
+  if (hook) {
+    const amount = instance.upgraded ? hook.upgradedAmount : hook.amount;
+    if (hook.type === 'draw') drawCards(run, amount);
+    else c.energy += amount;
   }
 }
 export function exhaustCard(run: SpireState, id: string) {
@@ -113,13 +149,21 @@ function playerAttack(
   const c = run.combat!;
   let healed = 0;
   const strikes = Object.values(c.cards).filter(
-    (card) => !c.exhaust.includes(card.id) && CARD_BY_ID[card.definitionId].name.includes('Strike'),
+    (card) =>
+      !c.exhaust.includes(card.id) &&
+      !c.enemies.some((e) => e.stasisCard === card.id) &&
+      CARD_BY_ID[card.definitionId].name.includes('Strike'),
   ).length;
   const base =
     (effect.fromBlock ? c.player.block : effect.amount) +
     (effect.strikeScale ?? 0) * strikes +
-    c.attackBonus;
-  for (let n = 0; n < (effect.xHits ? x : (effect.hits ?? 1)); n++) {
+    c.attackBonus +
+    (c.cards[c.resolving!]?.definitionId === 'shiv' ? c.powers.accuracy : 0);
+  const repeats =
+    effect.poisonedTwice && aliveEnemies(run).some((e) => e.id === targetId && e.status.poison > 0)
+      ? 2
+      : 1;
+  for (let n = 0; n < (effect.xHits ? x : (effect.hits ?? repeats)); n++) {
     if (c.player.hp <= 0 || !aliveEnemies(run).length) break;
     const targets = effect.all
       ? aliveEnemies(run)
@@ -136,8 +180,23 @@ function playerAttack(
         effect.strengthScale ?? 1,
         c.attackMultiplier * slow,
       );
-      const lost = hit(run, enemy, amount, CARD_BY_ID[c.cards[c.resolving!].definitionId].name);
+      const lost = hit(
+        run,
+        enemy,
+        amount,
+        CARD_BY_ID[c.cards[c.resolving!].definitionId].name,
+        false,
+        attackExplanation(
+          base,
+          c.player,
+          enemy,
+          effect.strengthScale ?? 1,
+          c.attackMultiplier * slow,
+        ),
+      );
       healed += lost;
+      if (lost > 0 && enemy.hp > 0 && c.powers.envenom)
+        applyStatus(enemy, 'poison', c.powers.envenom);
       if (lost > 0 && enemy.hp > 0 && enemy.powers.curlUp) {
         enemy.block += enemy.powers.curlUp;
         enemy.powers.curlUp = 0;
@@ -149,6 +208,7 @@ function playerAttack(
       if (enemy.powers.thorns) hit(run, c.player, enemy.powers.thorns, 'Thorns');
       if (
         enemy.hp === 0 &&
+        !enemy.powers.rebirthing &&
         effect.fatalMaxHp &&
         ENEMY_BY_ID[enemy.definitionId].kind !== 'summon'
       ) {
@@ -169,6 +229,16 @@ function finishCard(run: SpireState, id: string, exhaust: boolean) {
   if (definition.kind === 'power') c.powersPlayed.push(id);
   else if (exhaust) exhaustCard(run, id);
   else c.discard.push(id);
+  log(
+    run,
+    `${definition.name} → ${definition.kind === 'power' ? 'active Powers' : exhaust ? 'Exhaust' : 'discard'}.`,
+    { kind: 'card', source: definition.name },
+  );
+  if (c.timeWarpPending && c.player.hp > 0 && combatOngoing(run)) {
+    c.timeWarpPending = false;
+    log(run, 'Time Warp: the twelfth card has resolved. Your turn ends.');
+    endTurn(run);
+  }
 }
 /** A choice suspends the action, retaining the resolving card outside every pile. */
 function resolveCardEffects(
@@ -181,7 +251,7 @@ function resolveCardEffects(
 ): boolean {
   const c = run.combat!;
   for (const [index, effect] of effects.entries()) {
-    if (c.player.hp <= 0 || !aliveEnemies(run).length) break;
+    if (c.player.hp <= 0 || !combatOngoing(run)) break;
     const target = aliveEnemies(run).find((e) => e.id === targetId);
     switch (effect.type) {
       case 'damage':
@@ -237,6 +307,35 @@ function resolveCardEffects(
       case 'noDraw':
         c.noDraw = true;
         break;
+      case 'discardHand': {
+        const held = [...c.hand];
+        c.hand = [];
+        c.discard.push(...held);
+        c.discarded += held.length;
+        for (const id of held) discardHook(run, id);
+        if (effect.draw) drawCards(run, held.length);
+        break;
+      }
+      case 'multiplyPoison':
+        if (target && target.status.poison > 0)
+          applyStatus(target, 'poison', target.status.poison * (effect.amount - 1));
+        break;
+      case 'randomPoison':
+        for (let i = 0; i < effect.hits && aliveEnemies(run).length; i++)
+          applyStatus(pick(run, aliveEnemies(run)), 'poison', effect.amount);
+        break;
+      case 'nextTurn':
+        c.nextTurn[effect.stat] +=
+          effect.stat === 'block'
+            ? Math.floor(
+                Math.max(0, effect.amount + c.player.status.dexterity) *
+                  (c.player.status.frail > 0 ? 0.75 : 1),
+              )
+            : effect.amount;
+        break;
+      case 'blur':
+        c.blur += effect.amount;
+        break;
       case 'temporary':
         if (effect.stat === 'strength') {
           applyStatus(c.player, 'strength', effect.amount);
@@ -266,7 +365,10 @@ function resolveCardEffects(
         c.choice = {
           action: effect.action,
           options,
-          effects: effects.slice(index + 1),
+          effects: [
+            ...((effect.count ?? 1) > 1 ? [{ ...effect, count: effect.count! - 1 }] : []),
+            ...effects.slice(index + 1),
+          ],
           sourceId,
           targetId,
           exhaust,
@@ -306,6 +408,7 @@ export function chooseCard(run: SpireState, id: string): string | undefined {
   if (!choice || !choice.options.includes(id)) return 'Choose one of the highlighted cards.';
   c.choice = null;
   if (choice.action === 'exhaust') exhaustCard(run, id);
+  if (choice.action === 'discard') discardCard(run, id);
   if (choice.action === 'upgrade') c.cards[id].upgraded = true;
   if (choice.action === 'topdeck') {
     c.discard = c.discard.filter((card) => card !== id);
@@ -348,6 +451,24 @@ export function playCard(run: SpireState, id: string, targetId?: string): string
   c.hand = c.hand.filter((card) => card !== id);
   c.resolving = id;
   c.cardsPlayed++;
+  if (c.powers.afterImage) gainBlock(run, c.powers.afterImage);
+  if (c.powers.thousandCuts)
+    for (const enemy of aliveEnemies(run))
+      hit(run, enemy, c.powers.thousandCuts, 'A Thousand Cuts');
+  if (definition.requiresDiscard && c.discarded > 0) c.energy += 2;
+  for (const enemy of aliveEnemies(run)) {
+    if (enemy.definitionId === 'timeEater') {
+      enemy.powers.timeWarp = (enemy.powers.timeWarp + 1) % 12;
+      if (enemy.powers.timeWarp === 0) {
+        applyStatus(enemy, 'strength', 2);
+        c.timeWarpPending = true;
+      }
+    }
+    if (definition.kind === 'power' && enemy.powers.curiosity)
+      applyStatus(enemy, 'strength', enemy.powers.curiosity);
+    if (definition.kind === 'attack' && enemy.powers.sharpHide)
+      hit(run, c.player, enemy.powers.sharpHide, 'Sharp Hide');
+  }
   log(
     run,
     `Play ${definition.name}${instance.upgraded ? '+' : ''} (${cost === -2 ? x : cost} Energy).`,
@@ -408,6 +529,12 @@ function emptyPowers(): Record<Power, number> {
     combustHp: 0,
     rupture: 0,
     fireBreathing: 0,
+    noxiousFumes: 0,
+    accuracy: 0,
+    afterImage: 0,
+    infiniteBlades: 0,
+    envenom: 0,
+    thousandCuts: 0,
   };
 }
 export function startCombat(run: SpireState, encounter: string[]) {
@@ -435,6 +562,11 @@ export function startCombat(run: SpireState, encounter: string[]) {
     temporaryStrength: 0,
     noDraw: false,
     choice: null,
+    timeWarpPending: false,
+    drawReduction: 0,
+    nextTurn: { block: 0, energy: 0, draw: 0 },
+    blur: 0,
+    discarded: 0,
   };
   run.combat = c;
   run.phase = 'combat';
@@ -453,12 +585,22 @@ export function startCombat(run: SpireState, encounter: string[]) {
     run,
     run.deck.map((card) => card.id),
   );
+  c.draw.sort(
+    (a, b) =>
+      Number(!!(CARD_BY_ID[c.cards[b].definitionId].innateUpgrade && c.cards[b].upgraded)) -
+      Number(!!(CARD_BY_ID[c.cards[a].definitionId].innateUpgrade && c.cards[a].upgraded)),
+  );
   if (run.relics.includes('vajra')) applyStatus(c.player, 'strength', 1);
   if (run.relics.includes('oddlySmoothStone')) applyStatus(c.player, 'dexterity', 1);
   if (run.relics.includes('bagOfMarbles'))
     for (const enemy of c.enemies) applyStatus(enemy, 'vulnerable', 1);
   startPlayerTurn(run);
   if (run.relics.includes('anchor')) gainBlock(run, 10);
+  for (const id of run.relics) {
+    const relic = RELIC_BY_ID[id];
+    if (relic.startBlock) gainBlock(run, relic.startBlock);
+    if (relic.startStrength) applyStatus(c.player, 'strength', relic.startStrength);
+  }
   log(run, `Encounter: ${c.enemies.map((e) => ENEMY_BY_ID[e.definitionId].name).join(' + ')}.`);
 }
 function startPlayerTurn(run: SpireState) {
@@ -470,17 +612,35 @@ function startPlayerTurn(run: SpireState) {
   c.rage = 0;
   c.flameBarrier = 0;
   c.noDraw = false;
-  if (!c.powers.barricade) c.player.block = 0;
+  c.discarded = 0;
+  if (!c.powers.barricade && !c.blur) c.player.block = 0;
+  c.blur = Math.max(0, c.blur - 1);
   c.energy =
     3 +
     ENERGY_RELICS.filter((id) => run.relics.includes(id)).length +
-    (c.turn === 1 && run.relics.includes('lantern') ? 1 : 0);
+    (c.turn === 1 && run.relics.includes('lantern') ? 1 : 0) +
+    c.nextTurn.energy;
   if (run.relics.includes('happyFlower')) {
     run.relicCounters.happyFlower = ((run.relicCounters.happyFlower ?? 0) + 1) % 3;
     if (run.relicCounters.happyFlower === 0) c.energy++;
   }
   applyStatus(c.player, 'strength', c.powers.demonForm);
-  drawCards(run, 5 + (c.turn === 1 && run.relics.includes('bagOfPreparation') ? 2 : 0));
+  if (c.nextTurn.block) gainBlock(run, c.nextTurn.block);
+  if (c.powers.noxiousFumes)
+    for (const enemy of aliveEnemies(run)) applyStatus(enemy, 'poison', c.powers.noxiousFumes);
+  if (c.powers.infiniteBlades) addGenerated(run, 'shiv', c.powers.infiniteBlades, 'hand');
+  drawCards(
+    run,
+    5 +
+      (c.turn === 1
+        ? (run.relics.includes('bagOfPreparation') ? 2 : 0) +
+          (run.relics.includes('ringOfTheSnake') ? 2 : 0)
+        : 0) +
+      c.nextTurn.draw -
+      (c.drawReduction > 0 ? 1 : 0),
+  );
+  c.drawReduction = Math.max(0, c.drawReduction - 1);
+  c.nextTurn = { block: 0, energy: 0, draw: 0 };
   log(run, `Turn ${c.turn}: ${c.energy} Energy.`);
 }
 function enemyAttack(run: SpireState, enemy: Enemy, base: number, hits: number) {
@@ -491,6 +651,8 @@ function enemyAttack(run: SpireState, enemy: Enemy, base: number, hits: number) 
       c.player,
       attackDamage(base, enemy, c.player),
       ENEMY_BY_ID[enemy.definitionId].name,
+      false,
+      attackExplanation(base, enemy, c.player),
     );
     if (lost && enemy.definitionId === 'bookOfStabbing') addGenerated(run, 'wound', 1, 'discard');
     const retaliation = c.flameBarrier + (run.relics.includes('bronzeScales') ? 3 : 0);
@@ -504,7 +666,7 @@ export function endTurn(run: SpireState): string | undefined {
   for (const id of held) {
     if (c.player.hp <= 0) break;
     const def = CARD_BY_ID[c.cards[id].definitionId];
-    if (def.id === 'burn') hit(run, c.player, 2, 'Burn');
+    if (def.id === 'burn') hit(run, c.player, c.cards[id].upgraded ? 4 : 2, 'Burn');
     if (def.id === 'regret') loseCardHp(run, held.length, 'Regret');
   }
   // Ethereal exhaustion happens after end-turn hand triggers; exhaust draws join cleanup.
@@ -529,10 +691,16 @@ export function endTurn(run: SpireState): string | undefined {
   // Only enemies alive when their phase began get an action. Split children wait a turn.
   // Clear the entire enemy side before any ally can grant fresh Block.
   for (const enemy of aliveEnemies(run)) {
-    if (enemy.definitionId !== 'sphericGuardian') enemy.block = 0;
+    if (enemy.definitionId !== 'sphericGuardian' && !enemy.powers.retainBlock) enemy.block = 0;
+    enemy.powers.retainBlock = 0;
   }
   for (const enemy of [...c.enemies]) {
-    if (enemy.hp <= 0 || c.player.hp <= 0) continue;
+    if ((enemy.hp <= 0 && !enemy.powers.rebirthing) || c.player.hp <= 0) continue;
+    if (enemy.status.poison > 0 && !enemy.powers.rebirthing) {
+      hit(run, enemy, enemy.status.poison, 'Poison', true);
+      enemy.status.poison = Math.max(0, enemy.status.poison - 1);
+      if (enemy.hp <= 0 && !enemy.powers.rebirthing) continue;
+    }
     if (enemy.powers.malleable) enemy.powers.malleable = 3;
     const intent = currentIntent(enemy, c);
     log(run, `${ENEMY_BY_ID[enemy.definitionId].name}: ${intent.name}.`);
@@ -542,7 +710,7 @@ export function endTurn(run: SpireState): string | undefined {
     enemy.history.push(usedIndex);
     enemy.turn++;
     for (const effect of intent.effects) {
-      if (c.player.hp <= 0 || enemy.hp <= 0) break;
+      if (c.player.hp <= 0 || (enemy.hp <= 0 && !enemy.powers.rebirthing)) break;
       if (effect.type === 'damage') enemyAttack(run, enemy, effect.amount, effect.hits ?? 1);
       if (effect.type === 'block')
         enemy.block += Math.max(0, effect.amount + enemy.status.dexterity);
@@ -553,7 +721,14 @@ export function endTurn(run: SpireState): string | undefined {
           effect.amount,
           true,
         );
-      if (effect.type === 'generate') addGenerated(run, effect.card, effect.amount, effect.zone);
+      if (effect.type === 'generate')
+        addGenerated(
+          run,
+          effect.card,
+          effect.amount,
+          effect.zone,
+          effect.card === 'burn' && !!enemy.powers.upgradedBurns,
+        );
       if (effect.type === 'special') enemySpecial(run, enemy, effect.action, effect.amount ?? 0);
     }
     if (enemy.powers.ritual) {
@@ -561,6 +736,8 @@ export function endTurn(run: SpireState): string | undefined {
       else applyStatus(enemy, 'strength', enemy.powers.ritual);
     }
     if (enemy.powers.metallicize) enemy.block += enemy.powers.metallicize;
+    if (enemy.powers.regeneration && enemy.hp > 0)
+      enemy.hp = Math.min(enemy.maxHp, enemy.hp + enemy.powers.regeneration);
     if (enemy.powers.entangle) enemy.powers.entangle--;
     if (enemy.definitionId === 'nemesis') enemy.powers.intangible = enemy.turn % 2;
     if (enemy.definitionId === 'bookOfStabbing' && usedIndex === 0)
@@ -571,11 +748,11 @@ export function endTurn(run: SpireState): string | undefined {
   }
   tickDurations(c.player);
   for (const enemy of c.enemies) tickDurations(enemy);
-  if (c.player.hp > 0 && aliveEnemies(run).length) startPlayerTurn(run);
+  if (c.player.hp > 0 && combatOngoing(run)) startPlayerTurn(run);
 }
 /** Planned damage, before Block. Uses the same damage formula and sequential buff ordering. */
 export function intentText(enemy: Enemy, combat: Combat): string {
-  if (enemy.hp <= 0) return 'Defeated';
+  if (enemy.hp <= 0 && !enemy.powers.rebirthing) return 'Defeated';
   const source = structuredClone(enemy),
     target = structuredClone(combat.player);
   for (const earlier of combat.enemies) {
@@ -617,6 +794,16 @@ export function intentText(enemy: Enemy, combat: Combat): string {
             metallicize: `Metallicize ${effect.amount}`,
             thorns: `Thorns +${effect.amount}`,
             selfDestruct: 'Self-destruct',
+            sharpHide: 'Retaliate per Attack card',
+            offensiveMode: 'Return to offensive mode',
+            upgradeBurns: 'Upgrade all Burns',
+            spawnOrbs: 'Summon two Bronze Orbs',
+            spawnTorches: 'Replenish Torch Heads',
+            stasis: 'Steal a card',
+            supportAutomaton: `Automaton: ${effect.amount} Block`,
+            drawReduction: 'Draw one less next turn',
+            haste: 'Heal to half HP and cleanse',
+            rebirth: 'Revive with full HP',
           } as Record<string, string>
         )[effect.action] ?? effect.action
       );

@@ -112,7 +112,21 @@ export interface BossDefinition {
   description: string;
   symbol: string;
 }
-export type Phase = 'ready' | 'playing' | 'shop' | 'won' | 'lost';
+export type Phase = 'ready' | 'playing' | 'shop' | 'pack' | 'won' | 'lost';
+export type PackChoice =
+  | { id: string; kind: 'joker' | 'planet'; definitionId: string }
+  | { id: string; kind: 'card'; card: Card };
+export interface OpenPack {
+  definitionId: string;
+  choices: PackChoice[];
+  remaining: number;
+  returnTo: 'ready' | 'shop';
+  paid: number;
+}
+export interface SkipTag {
+  id: 'investment' | 'economy' | 'orbital' | 'buffoon';
+  hand: HandType;
+}
 export interface RunState {
   version: number;
   seed: string;
@@ -136,6 +150,13 @@ export interface RunState {
   consumables: OwnedConsumable[];
   levels: Record<HandType, number>;
   shop: Offer[];
+  packs: { id: string; definitionId: string; price: number }[];
+  pack: OpenPack | null;
+  vouchers: string[];
+  voucherOffer: string | null;
+  voucherAnte: number;
+  skipTags: SkipTag[];
+  tags: string[];
   rerolls: number;
   firstHandType: HandType | null;
   lastScore: ScoreResult | null;
@@ -143,6 +164,11 @@ export interface RunState {
   history: string[];
 }
 export type Command =
+  | { type: 'skipBlind' }
+  | { type: 'buyPack'; id: string }
+  | { type: 'choosePack'; id: string }
+  | { type: 'skipPack' }
+  | { type: 'buyVoucher' }
   | { type: 'startBlind' }
   | { type: 'play'; cards: string[] }
   | { type: 'discard'; cards: string[] }

@@ -1,3 +1,4 @@
+import { spirePacks } from '../../../mods/spire';
 import { useState } from 'react';
 import { GameShell } from '../../../app/GameShell';
 import type { GameId } from '../../../app/GamePicker';
@@ -10,6 +11,10 @@ import { AbilityCard, DeckList } from './Card';
 import { Battle } from './Combat';
 import { RouteMap } from './Map';
 import { Room } from './Rooms';
+import { Playback } from '../../../shared/Playback';
+import { Resolution } from './Resolution';
+import { WorkshopTools } from '../../../app/WorkshopTools';
+import { SPIRE_SCENARIOS } from '../application/scenario';
 export function SpireApp({ onSwitch }: { onSwitch: (id: GameId) => void }) {
   const game = useLocalGame(spireSession, 'IRONCLAD-01'),
     run = game.state;
@@ -22,18 +27,36 @@ export function SpireApp({ onSwitch }: { onSwitch: (id: GameId) => void }) {
   return (
     <GameShell
       title="Slay the Spire"
-      subtitle="Ironclad · Ascension 0"
+      subtitle={`${run.character === 'silent' ? 'Silent' : 'Ironclad'} · Ascension ${run.ascension}`}
       gameId="spire"
       onSwitch={onSwitch}
       controls={game}
+      tools={
+        <WorkshopTools
+          packs={spirePacks}
+          game={game}
+          scenarios={SPIRE_SCENARIOS}
+          summary={(s) => ({
+            Character: s.character,
+            Ascension: s.ascension,
+            Phase: s.phase,
+            Act: s.act,
+            Room: s.row + 1,
+            HP: s.hp,
+            Gold: s.gold,
+            Cards: s.deck.length,
+            Relics: s.relics.length,
+          })}
+        />
+      }
       view={view}
       onView={setView}
       defaultSeed="IRONCLAD-01"
     >
       {view === 'collection' ? (
         <main className="content-page">
-          <p className="eyebrow">IRONCLAD COLLECTION</p>
-          <h2>Strength. Block. Exhaust.</h2>
+          <p className="eyebrow">TWO CHARACTERS · TWO WAYS TO CLIMB</p>
+          <h2>Strength and steel. Poison and precision.</h2>
           <p className="muted">
             {CARDS.filter((c) => !c.token).length} obtainable cards · {RELICS.length} relics ·{' '}
             {Object.keys(POTIONS).length} potions
@@ -83,6 +106,12 @@ export function SpireApp({ onSwitch }: { onSwitch: (id: GameId) => void }) {
                 Choose Neow’s blessing, then climb three acts. Burning Blood heals 6 after every
                 combat.
               </p>
+              <h3>The Silent</h3>
+              <p>
+                Begin with 70 HP, five Strikes, five Defends, Survivor and Neutralize. Ring of the
+                Snake draws two extra cards on the first turn. Build around Poison, Shivs, discard
+                triggers or Dexterity.
+              </p>
               <h3>Your turn</h3>
               <p>
                 Refill 3 Energy and draw 5 cards. Select a target and play cards. End Turn discards
@@ -100,7 +129,9 @@ export function SpireApp({ onSwitch }: { onSwitch: (id: GameId) => void }) {
               <p>
                 Strength adds damage per hit; Weak reduces attack damage by 25%; Vulnerable
                 increases it by 50%. Dexterity adds Block from cards, and Frail reduces it by 25%.
-                Artifact blocks one debuff application.
+                Artifact blocks one debuff application. Poison deals HP damage at the start of each
+                enemy turn, then loses one stack. Blur preserves Block for the next turn. Manual
+                discards can trigger Reflex and Tactician; end-turn cleanup does not.
               </p>
             </article>
             <article>
@@ -113,15 +144,18 @@ export function SpireApp({ onSwitch }: { onSwitch: (id: GameId) => void }) {
               </p>
               <p>
                 Acts 1 and 2 end with a rare card choice and a boss relic choice. Read the relic’s
-                drawback. Ascension 0 restores all HP between acts.
+                drawback. Ascensions accumulate: more elites at A1, normal/elite/boss attack
+                increases at A2/A3/A4, and only 75% of missing HP restored between acts at A5. All
+                levels are available immediately.
               </p>
             </article>
             <article>
               <h3>This playable edition</h3>
               <p>
-                Ironclad, Ascension 0, with 57 obtainable cards, 32 relics, and curated enemies and
-                events. Boss route: Slime Boss → The Champ → Donu and Deca. Other characters,
-                Ascensions, keys, Act IV, and the remaining original content are not implemented.
+                Ironclad and Silent, Ascensions 0–5, curated card pools and all nine Act I–III boss
+                encounters. One boss is chosen per act and revealed on the map. Higher Ascensions,
+                other characters, keys, Act IV and the remaining original content are not
+                implemented.
               </p>
               <p>
                 Original code and illustrations; a local learning project, unaffiliated with Mega
@@ -138,7 +172,8 @@ export function SpireApp({ onSwitch }: { onSwitch: (id: GameId) => void }) {
             <div className="round-strip">
               <div>
                 <span className="eyebrow">
-                  IRONCLAD · ACT {run.act} / 3 · ROOM {Math.max(1, run.row + 1)} / 16
+                  {run.character.toUpperCase()} · A{run.ascension} · ACT {run.act} / 3 · ROOM{' '}
+                  {Math.max(1, run.row + 1)} / 16
                 </span>
                 <h2>{ACT_NAMES[run.act - 1]}</h2>
               </div>
@@ -161,41 +196,53 @@ export function SpireApp({ onSwitch }: { onSwitch: (id: GameId) => void }) {
             <div className="adventure-notice" role="status">
               {run.notice}
             </div>
-            {run.phase === 'map' ? (
-              <RouteMap run={run} dispatch={game.dispatch} />
-            ) : run.phase === 'combat' ? (
-              <Battle run={run} dispatch={game.dispatch} targetId={targetId} onTarget={setTarget} />
-            ) : (
-              <Room run={run} dispatch={game.dispatch} />
-            )}
-            <div className="potion-belt">
-              <span className="eyebrow">POTIONS {run.potions.length}/3</span>
-              {run.potions.map((p, index) => (
-                <div key={`${index}-${p}`}>
-                  <button
-                    title={POTIONS[p].text}
-                    disabled={run.phase !== 'combat' || !!run.combat?.choice}
-                    onClick={() =>
-                      game.dispatch({
-                        type: 'potion',
-                        index,
-                        target: POTIONS[p].target ? targetId : undefined,
-                      })
-                    }
-                  >
-                    {POTIONS[p].name}
-                  </button>
-                  <button
-                    aria-label={`Discard ${POTIONS[p].name}`}
-                    disabled={['won', 'lost'].includes(run.phase) || !!run.combat?.choice}
-                    onClick={() => game.dispatch({ type: 'discardPotion', index })}
-                  >
-                    ×
-                  </button>
-                </div>
-              ))}
-              {!run.potions.length && <small>Empty belt</small>}
-            </div>
+            <Playback
+              key={`${game.timelineRevision}-${run.seed}-${run.resolution.sequence}`}
+              frames={run.resolution.frames}
+              label="Combat resolution"
+              render={(frame) => <Resolution frame={frame} character={run.character} />}
+            >
+              {run.phase === 'map' ? (
+                <RouteMap run={run} dispatch={game.dispatch} />
+              ) : run.phase === 'combat' ? (
+                <Battle
+                  run={run}
+                  dispatch={game.dispatch}
+                  targetId={targetId}
+                  onTarget={setTarget}
+                />
+              ) : (
+                <Room run={run} dispatch={game.dispatch} />
+              )}
+              <div className="potion-belt">
+                <span className="eyebrow">POTIONS {run.potions.length}/3</span>
+                {run.potions.map((p, index) => (
+                  <div key={`${index}-${p}`}>
+                    <button
+                      title={POTIONS[p].text}
+                      disabled={run.phase !== 'combat' || !!run.combat?.choice}
+                      onClick={() =>
+                        game.dispatch({
+                          type: 'potion',
+                          index,
+                          target: POTIONS[p].target ? targetId : undefined,
+                        })
+                      }
+                    >
+                      {POTIONS[p].name}
+                    </button>
+                    <button
+                      aria-label={`Discard ${POTIONS[p].name}`}
+                      disabled={['won', 'lost'].includes(run.phase) || !!run.combat?.choice}
+                      onClick={() => game.dispatch({ type: 'discardPotion', index })}
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+                {!run.potions.length && <small>Empty belt</small>}
+              </div>
+            </Playback>
           </div>
           <aside className="inspector">
             <div className="inspector-tabs">

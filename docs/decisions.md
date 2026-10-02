@@ -18,3 +18,7 @@ Blindside preserves poker hand evaluation (including duplicate-card hands), chip
 Its content and balance are original. Each game’s simplifications and exact supported timing are recorded in README and its research note, rather than silently described as an exact clone. No copied game assets are required.
 
 References: [Balatro official FAQ](https://www.playbalatro.com/faq), [Slay the Spire official overview](https://www.megacrit.com/press-kits/slay-the-spire/), [Battlegrounds official introduction](https://hearthstone.blizzard.com/en-us/news/23156373/hearthstone-battlegrounds).
+
+## Accepted expansion
+
+The next build proceeds through Spire depth, combat clarity, replay lab, mods, other-game strategy and playtesting tools. The user expanded Spire scope to **all nine bosses, Ascensions 1–5 and the Silent**. Playback is fully paced by default with speed controls. Normal runs stay committed; rewind and custom scenarios live in a separate practice lab. Mods are readable validated local TypeScript packs with previews and replay version tracking. Evidence automatically records run summaries, picks/skips and encounter outcomes locally, with clear/export controls. These decisions supersede the initial Ironclad/A0-only scope above. See [workshop expansion](next-workshop.md).

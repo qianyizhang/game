@@ -44,10 +44,20 @@ Example: +20 mult followed by ×2 differs from ×2 followed by +20. The inspecto
 
 ## Deliberate first-release cuts
 
-No booster-pack selection, vouchers, seals, editions, blind skipping/tags, unlock progression, additional starting decks or endless mode. Direct consumable purchases cover deck edits and hand levels. Bosses, Joker values and target progression are curated for this smaller pool. Balance is provisional until humans play; automated completion proves reachability, not fun or original-game parity.
+No Arcana/Spectral packs, seals, editions, unlock progression, additional starting decks or endless mode. Direct consumable purchases cover deck edits and hand levels. Bosses, Joker values and target progression are curated for this smaller pool. Balance is provisional until humans play; automated completion proves reachability, not fun or original-game parity.
 
 ## Playtest notebook
 
 For each run, record seed, decisive purchases, intended build, loss/win point and a sentence about the least interesting decision. Compare identical seeds after a single balance change. Do not optimize only for bot win rate.
 
 Initial evidence: [2026-10-02 development playtest](playtests/2026-10-02-blindside.md).
+
+## Pack, voucher and tag strategy (v3)
+
+Two packs are offered per shop. Buying opens a committed immediate choice; unused options are discarded. Buffoon packs add Jokers subject to the five-slot limit, Celestial choices apply their planet immediately, and Standard choices add playing cards. Mega variants permit two choices. Rerolls affect ordinary stock, not packs or vouchers. These are local subsets of the [booster-pack mechanism](https://balatrogame.fandom.com/wiki/Booster_Packs), with curated card probabilities.
+
+A $10 voucher permanently changes a resource rule: hands, discards, hand size, interest cap, reroll cost or prices. One voucher is offered per ante; purchased vouchers cannot recur. This preserves the long-horizon tradeoff described in the [voucher reference](https://balatrogame.fandom.com/wiki/Vouchers), while using six local definitions.
+
+Small/Big Blinds display skip tags before entry. Skipping forfeits the blind payout, spare-hand income, interest and shop. Economy doubles cash up to a $40 gain; Orbital grants three levels to the shown hand; Buffoon opens a free Mega pack; Investment pays $25 after the next boss victory. Bosses cannot be skipped. [Tag reference](https://balatrogame.fandom.com/wiki/Tags).
+
+Experiment: is the displayed tag worth losing both a payout and a shop? Record the skip and the next boss result instead of comparing only immediate money. [Current v3 cohort](playtests/2026-10-02-workshop-v3.md).

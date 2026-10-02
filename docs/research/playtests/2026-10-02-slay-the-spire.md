@@ -1,5 +1,7 @@
 # Slay the Spire: Ironclad development playtest
 
+**Historical snapshot.** The current rules-v3 cohort is in [Workshop v3 playtests](2026-10-02-workshop-v3.md). Outcomes and fixtures below belong to the earlier rules/content revision.
+
 Rules: `slay-the-spire`, version **2**. Checked 2026-10-02. The cohort below uses unmodified content and only accepted commands; no injected HP, gold, cards or terminal states.
 
 ## Method

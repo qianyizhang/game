@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ACT_NAMES, BOSS_ENCOUNTERS, ENEMY_BY_ID } from '../content/world';
+import { ACT_NAMES, ENEMY_BY_ID } from '../content/world';
 import { availableNodes, MAP_ROWS } from '../domain/map';
 import type { NodeKind, SpireCommand, SpireState } from '../domain/types';
 export const nodeIcons: Record<NodeKind, string> = {
@@ -35,7 +35,12 @@ export function RouteMap({
         <h2>{ACT_NAMES[run.act - 1]}</h2>
         <p>Choose a highlighted room. Follow the dotted paths upward.</p>
         <p className="map-boss">
-          Boss: {BOSS_ENCOUNTERS[run.act - 1].map((id) => ENEMY_BY_ID[id].name).join(' & ')}
+          Boss:{' '}
+          {run.map
+            .find((n) => n.kind === 'boss')
+            ?.encounter.filter((id) => ENEMY_BY_ID[id].kind === 'boss')
+            .map((id) => ENEMY_BY_ID[id].name)
+            .join(' & ')}
         </p>
       </div>
       <div className="sts-map-scroll" ref={scroll}>

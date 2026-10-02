@@ -4,6 +4,10 @@ import { importReplay, SAVE_KEY } from '../../src/games/balatro/application/sess
 import { scoreHand } from '../../src/games/balatro/domain/scoring';
 import { JOKERS, JOKER_BY_ID } from '../../src/games/balatro/content/jokers';
 
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('card-workshop.playback-speed', '100'));
+});
+
 async function saved(page: Page) {
   const value = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
   return importReplay(value!);

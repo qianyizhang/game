@@ -19,6 +19,7 @@ export function GameShell({
   view,
   onView,
   defaultSeed,
+  tools,
 }: {
   title: string;
   subtitle: string;
@@ -29,6 +30,7 @@ export function GameShell({
   view: 'play' | 'collection' | 'guide';
   onView: (view: 'play' | 'collection' | 'guide') => void;
   defaultSeed: string;
+  tools?: ReactNode;
 }) {
   const [newRun, setNewRun] = useState(false);
   const [seed, setSeed] = useState('');
@@ -101,6 +103,7 @@ export function GameShell({
             <strong>{title.toUpperCase()}</strong>
           </div>
           <div className="topbar-actions">
+            {tools}
             <span className="save-status">
               <i />
               {controls.saveStatus}

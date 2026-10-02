@@ -1,4 +1,4 @@
-import { BOSS_ENCOUNTERS } from '../content/world';
+import { BOSS_POOLS } from '../content/bosses';
 import { pick, roll } from './state';
 import type { MapNode, NodeKind, SpireState } from './types';
 export const MAP_ROWS = 15;
@@ -58,7 +58,7 @@ export function generateMap(run: SpireState): MapNode[] {
             ? 'shop'
             : value < 0.42
               ? 'rest'
-              : value < 0.5
+              : value < 0.42 + (run.ascension >= 1 ? 0.128 : 0.08)
                 ? 'elite'
                 : 'fight';
       if ((node.row < 5 && ['elite', 'rest'].includes(kind)) || disallowed.includes(kind))
@@ -71,7 +71,7 @@ export function generateMap(run: SpireState): MapNode[] {
     row: 15,
     lane: 3,
     kind: 'boss',
-    encounter: [...BOSS_ENCOUNTERS[run.act - 1]],
+    encounter: [...pick<readonly string[]>(run, BOSS_POOLS[run.act - 1])],
     visited: false,
     next: [],
   };
@@ -110,7 +110,7 @@ const ELITES = [
   [['giantHead'], ['nemesis']],
 ];
 export function encounterFor(run: SpireState, kind: NodeKind): string[] {
-  if (kind === 'boss') return [...BOSS_ENCOUNTERS[run.act - 1]];
+  if (kind === 'boss') return [...run.map.find((n) => n.kind === 'boss')!.encounter];
   if (kind === 'elite') {
     const choices = ELITES[run.act - 1].filter((e) => e.join(',') !== run.lastElite);
     const encounter = pick(run, choices);

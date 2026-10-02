@@ -1,4 +1,4 @@
-import { hashSeed, shuffle } from '../../../shared/random';
+import { hashSeed } from '../../../shared/random';
 import { HEROES, RECRUITS } from '../content/minions';
 import { runBot } from './bots';
 import { resolveCombat } from './combat';
@@ -13,7 +13,7 @@ import {
 } from './recruitment';
 import type { BGCommand, BGState, Player } from './types';
 
-export const BG_VERSION = 2;
+export const BG_VERSION = 3;
 export function createBG(seedInput: string): BGState {
   const seed = seedInput.trim().slice(0, 64) || 'HEARTH-01';
   return {
@@ -27,6 +27,8 @@ export function createBG(seedInput: string): BGState {
     pool: Object.fromEntries(RECRUITS.map((m) => [m.id, POOL_COPIES[m.tier]])),
     ghost: [],
     ghostTier: 1,
+    pairings: [],
+    scouting: [],
     opponent: null,
     lastCombat: null,
     matchups: [],
@@ -50,11 +52,13 @@ function combatRound(run: BGState) {
   const alive = run.players.filter((p) => p.hp > 0);
   for (const player of alive) if (player.id !== 0) runBot(run, player);
   for (const player of alive) endRecruitment(player);
-  let pairing;
-  [pairing, run.rng] = shuffle(
-    alive.map((p) => p.id),
-    run.rng,
-  );
+  const pairing = run.pairings;
+  run.scouting = alive.map((p) => ({
+    playerId: p.id,
+    round: run.round,
+    tier: p.tier,
+    board: structuredClone(p.board),
+  }));
   run.matchups = [];
   run.lastCombat = null;
   for (let i = 0; i < pairing.length; i += 2) {

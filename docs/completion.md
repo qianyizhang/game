@@ -1,34 +1,39 @@
 # Completion evidence
 
-Verified 2026-10-02. The current Slay the Spire implementation replaces the earlier Emberpath prototype. All three games have playable victory/defeat lifecycles; the content subsets and fidelity limits remain explicit in their research notes.
+The six accepted workshop improvements are implemented on the three independent game engines. Rules versions are **3**; content manifests and separate practice saves make compatibility explicit. Research notes describe the curated content and fidelity limits.
 
-| Area             | Current implementation                                                                                                                                                                               | Evidence                                                                                                                                            |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Blindside        | Eight antes / 24 blinds, ordered scoring, 40 Jokers, 18 consumables, shops and deck editing                                                                                                          | Rule/replay tests, eight simulated runs, browser controls and terminal screens                                                                      |
-| Slay the Spire   | Original-game Ironclad at A0; three 15-room maps plus bosses; 57 obtainable cards, six statuses/curses, 32 relics, eight potions; Exhaust choices, enemy reactions, rewards and boss relic tradeoffs | 30 focused rule tests; six legal runs with two wins; browser combat, shops, campfires, boss chests, suspended-choice reload and victory/defeat      |
-| Last Hearth      | Eight-player lobby, seven bots, six tavern tiers, 36 recruits/four tokens, triples, shared finite supply, combat playback                                                                            | Combat/recruitment/accounting tests, 12 complete lobbies, browser recruitment and lifecycle                                                         |
-| Architecture     | Independent browser-free engines, typed content, application replay adapters and presentation                                                                                                        | TypeScript build; module ownership in architecture guide                                                                                            |
-| Persistence      | Per-game versioned command replays, validated imports, corruption recovery, isolated restarts                                                                                                        | Exact reconstruction of every simulated run; real browser imports and reloads; Emberpath v1 storage preserved                                       |
-| Interface/art    | Game switching, original SVG illustrations, searchable collections, desktop/phone layouts, keyboard-operable controls                                                                                | 18 browser tests; rendered desktop/phone screenshots inspected; phone map alignment and hand scrolling checked; SVG export and console-error checks |
-| Research/modding | Source-linked mechanics, executable local timing, named simplifications, module map and mod examples                                                                                                 | Documentation links resolve locally; current Spire research supersedes the hybrid design                                                            |
+| Area               | Delivered                                                                                                                                | Evidence                                                                                                                                     |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Spire depth        | Ironclad/Silent, A0–A5, all nine boss encounter families, Poison/Shiv/discard/defense cards, room/shop improvements                      | Boss/Silent/timing regressions; 12 complete seeded ascents with wins for both characters; card-zone conservation after every accepted action |
+| Combat clarity     | Paced authoritative frames, speed/pause/step/seek/skip controls, damage arithmetic and snapshots                                         | Immutable trace regression; browser controls leave the saved replay unchanged                                                                |
+| Practice lab       | Validated prefix reconstruction, separate branches/checkpoints, custom scenarios, import/export and normal-run return                    | Cross-game replay/scenario tests; browser verifies normal save bytes survive branching and invalid setup                                     |
+| Mods               | Trusted local typed packs, examples/previews, numeric/ID/reference checks and replay manifests                                           | Disabled/invalid/changed-data tests; all three enabled example packs exercised through real rules                                            |
+| Blindside strategy | Six immediate-choice packs, six permanent vouchers, four skip tags                                                                       | Atomic payment/choice, stock persistence, payout and skip regressions; phone pack/voucher interaction                                        |
+| Hearth strategy    | Fixed upcoming pairing, last-seen board scouting, composition/triple/positioning heuristics                                              | Snapshot isolation, bot decision tests, 12 complete lobbies with supply accounting                                                           |
+| Local evidence     | Automatic summaries, offered choices/skips and encounter outcomes; cohort filters, retention, export/clear; fixed-seed comparison script | Recorder/reload/cohort/denominator tests; browser export/clear preserves the normal save                                                     |
 
-## Gates
+## Checks
 
-- `npm run check`: **86 unit tests across seven files**, formatting, strict TypeScript and production build pass.
-- `npm run test:browser`: **18/18 pass**, with the repository startup guard and disposable Chrome profiles. Browser launching uses approved execution outside the restricted macOS sandbox.
-- `npm run playtest`: **three suites pass**, covering **26 completed runs** (8 Blindside + 6 Ironclad + 12 Last Hearth). Final states reconstruct exactly from exported accepted commands. Last Hearth also checks pool conservation throughout.
+Checked 2026-10-02–03 against the isolated workshop v3 commit snapshot, excluding concurrent Night Market and challenge work:
 
-Browser tests click representative real controls and import full legal run histories for late-game screens; they do not click every turn of all 26 runs. Simulations traverse those runs through the engine. The Spire development policy uses one-command lookahead and is not a fair-playing agent evaluation. Balance, human enjoyment and exhaustive commercial-game timing parity are not established by these checks.
+- **140 unit tests across 16 files** pass.
+- **32 seeded runs** complete and reconstruct exactly: 8 Blindside, 12 Spire, 12 Last Hearth. The three simulation suites pass.
+- **22 browser cases pass:** 21 in the suite plus the checkpoint recovery case in a targeted retest after correcting an ambiguous test selector. Coverage includes quota-failure export, practice isolation, paced playback, mod previews, evidence clearing and unreadable checkpoint preservation. Profiles are disposable; launch used approved execution outside the restricted macOS sandbox.
+- Desktop/phone screenshots for combat, cards, pack selection and the workshop were inspected. Existing layout, recovery, import/export and victory/defeat tests remain covered.
+- **`npm run check` passes:** formatting, strict TypeScript, all unit tests and the production build. Fixed-seed comparison self-check matches all 12 Spire pairs with zero metric deltas; local documentation links resolve.
+
+Final cleanup separates the practice panel from the dialog shell, archives unreadable checkpoint libraries before replacement, handles replay-file read failures, validates stored playback speeds and wraps long checkpoint names on phones. Game rules and seeded outcomes are unchanged by this cleanup.
+
+Browser tests click representative actions and import legal full-run histories for late-game screens. They do not click every command of all 32 runs. The Spire development policy uses one-command lookahead; none of these checks establishes human difficulty, fun or exhaustive commercial rule parity.
 
 ## Evidence locations
 
-- `src/games/*/domain/*.test.ts`: rules and interaction regressions.
-- `tests/browser/`: controls, illustrations, save/recovery and responsive-layout checks.
-- `tests/simulation/`: deterministic development policies and run checks.
-- `tests/fixtures/`: full legal winning/losing command histories, without injected terminal state.
-- `test-results/browser/`: regenerated screenshots and failure traces; ignored.
-- `test-results/{simulation,spire,battlegrounds}/`: regenerated replays and summaries; ignored.
-- [Ironclad playtest](research/playtests/2026-10-02-slay-the-spire.md): current Spire outcomes and limitations.
-- [Blindside playtest](research/playtests/2026-10-02-blindside.md) and [Last Hearth playtest](research/playtests/2026-10-02-last-hearth.md): other game cohorts.
+- `src/games/*/domain/*.test.ts`: mechanism and lifecycle regressions.
+- `src/shared/*.test.ts`, `src/shared/evidence/`, `src/mods/enabled.test.ts`: replay, compatibility, recording and live example-pack behavior.
+- `tests/browser/`: controls, art, persistence and responsive layout.
+- `test-results/workshop-polish/`: final check logs, browser screenshots/traces and comparison output, ignored by Git. The earlier full suite remains in `test-results/browser-final/`.
+- `test-results/workshop-polish/playtests/{simulation,spire,battlegrounds}/`: the isolated v3 command histories, summaries and automated evidence exports. Ordinary simulation runs write to `test-results/{simulation,spire,battlegrounds}/`.
+- `tests/fixtures/`: current v3 normal-run victory/defeat histories, without injected terminal state.
+- [Workshop v3 playtests](research/playtests/2026-10-02-workshop-v3.md): outcomes, methods and remaining human questions.
 
-The previous Emberpath report remains historical and is explicitly labeled superseded. Old Emberpath exports are incompatible with Slay the Spire v2; the implementation does not reinterpret them as a different game.
+Old saves/exports are preserved under their previous keys and are rejected as incompatible rather than silently replayed against changed mechanics. No automatic migration is provided. Original game seed compatibility and complete commercial content remain outside scope.

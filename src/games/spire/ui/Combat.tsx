@@ -41,8 +41,8 @@ export function Battle({
       </div>
       <div className="sts-battlefield">
         <div className="sts-hero">
-          <Portrait id="ironclad" />
-          <strong>Ironclad</strong>
+          <Portrait id={run.character} />
+          <strong>{run.character === 'silent' ? 'Silent' : 'Ironclad'}</strong>
           <span>
             ♥ {run.hp}/{run.maxHp} · ◈ {combat.player.block} Block
           </span>
@@ -53,11 +53,12 @@ export function Battle({
         </div>
         <div className="enemy-row">
           {combat.enemies
-            .filter((e) => e.hp > 0)
+            .filter((e) => e.hp > 0 || e.powers.rebirthing)
             .map((enemy) => (
               <button
                 className={`enemy ${targetId === enemy.id ? 'targeted' : ''}`}
                 key={enemy.id}
+                disabled={!!enemy.powers.rebirthing}
                 onClick={() => onTarget(enemy.id)}
                 aria-label={`Target ${ENEMY_BY_ID[enemy.definitionId].name}`}
                 aria-pressed={targetId === enemy.id}
@@ -93,6 +94,7 @@ export function Battle({
           <div className="battle-hand" role="region" aria-label="Cards in hand">
             {combat.choice.options.map((id) => (
               <AbilityCard
+                character={run.character}
                 key={id}
                 definition={CARD_BY_ID[combat.cards[id].definitionId]}
                 upgraded={combat.cards[id].upgraded}
@@ -110,6 +112,7 @@ export function Battle({
               cost = combatCardCost(run, id);
             return (
               <AbilityCard
+                character={run.character}
                 key={id}
                 definition={definition}
                 upgraded={card.upgraded}
@@ -161,6 +164,7 @@ export function Battle({
               )
               .map((id) => (
                 <AbilityCard
+                  character={run.character}
                   key={id}
                   definition={CARD_BY_ID[combat.cards[id].definitionId]}
                   upgraded={combat.cards[id].upgraded}

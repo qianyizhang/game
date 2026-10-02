@@ -7,6 +7,7 @@ const statusLabels: Record<Status, string> = {
   vulnerable: 'Vulnerable',
   frail: 'Frail',
   artifact: 'Artifact',
+  poison: 'Poison',
 };
 const powerLabels: Partial<Record<Power, string>> = {
   metallicize: 'Metallicize',
@@ -18,6 +19,12 @@ const powerLabels: Partial<Record<Power, string>> = {
   combust: 'Combust',
   rupture: 'Rupture',
   fireBreathing: 'Fire Breathing',
+  noxiousFumes: 'Noxious Fumes',
+  accuracy: 'Accuracy',
+  afterImage: 'After Image',
+  infiniteBlades: 'Infinite Blades',
+  envenom: 'Envenom',
+  thousandCuts: 'A Thousand Cuts',
 };
 const enemyLabels: Record<string, string> = {
   curlUp: 'Curl Up',
@@ -27,6 +34,10 @@ const enemyLabels: Record<string, string> = {
   enrage: 'Enrage',
   constrict: 'Constricted',
   metallicize: 'Metallicize',
+  modeShift: 'Mode Shift',
+  sharpHide: 'Sharp Hide',
+  curiosity: 'Curiosity',
+  regeneration: 'Regeneration',
 };
 export const statusText = (values: Record<Status, number>) =>
   Object.entries(statusLabels)
@@ -45,6 +56,8 @@ export function enemyPowerText(enemy: Enemy) {
   const labels = Object.entries(enemyLabels)
     .filter(([key]) => enemy.powers[key] > 0)
     .map(([key, label]) => `${label} ${enemy.powers[key]}`);
+  if (enemy.definitionId === 'timeEater') labels.push(`Time Warp ${enemy.powers.timeWarp}/12`);
+  if (enemy.stasisCard) labels.push('Card in Stasis');
   for (const [key, label] of [
     ['asleep', 'Asleep'],
     ['intangible', 'Intangible'],

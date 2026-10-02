@@ -1,6 +1,11 @@
+import { hearthEvidence } from './evidence';
 import { replayCodec } from '../../../shared/replay';
 import { BG_VERSION, createBG, transitionBG } from '../domain/game';
 import type { BGCommand } from '../domain/types';
+import { hearthScenario } from './scenario';
+import { pins } from '../../../shared/contentPack';
+import { hearthPacks } from '../../../mods/hearth';
+import { MINIONS, HEROES } from '../content/minions';
 
 export function isBGCommand(value: unknown): value is BGCommand {
   if (!value || typeof value !== 'object') return false;
@@ -8,7 +13,7 @@ export function isBGCommand(value: unknown): value is BGCommand {
   const id = (v: unknown) => typeof v === 'string' && v.length > 0 && v.length < 100;
   switch (c.type) {
     case 'chooseHero':
-      return ['forgekeeper', 'quartermaster', 'wildspeaker'].includes(String(c.hero));
+      return HEROES.some((h) => h.id === c.hero);
     case 'buy':
     case 'sell':
     case 'discover':
@@ -36,9 +41,12 @@ export function isBGCommand(value: unknown): value is BGCommand {
   }
 }
 export const bgSession = replayCodec({
+  evidence: hearthEvidence,
   game: 'last-hearth',
   version: BG_VERSION,
+  content: pins({ minions: MINIONS, heroes: HEROES }, hearthPacks, BG_VERSION),
   create: createBG,
+  createPractice: hearthScenario,
   transition: transitionBG,
   isCommand: isBGCommand,
 });

@@ -1,6 +1,8 @@
 import { ENEMY_BY_ID } from '../content/world';
 import { aliveEnemies, applyStatus, hit, log, nextId, pick, roll, statuses } from './state';
 import type { Combat, Enemy, Intent, SpireState } from './types';
+import { CARD_BY_ID } from '../content/cards';
+import { ascensionIntent } from './difficulty';
 
 export function createEnemy(run: SpireState, id: string, hp?: number): Enemy {
   const d = ENEMY_BY_ID[id];
@@ -17,6 +19,7 @@ export function createEnemy(run: SpireState, id: string, hp?: number): Enemy {
     turn: 0,
     history: [],
     powers: {},
+    ascension: run.ascension,
   };
   if (d.behavior === 'louse') enemy.powers.curlUp = 6;
   if (id === 'lagavulin') enemy.powers.asleep = 1;
@@ -24,18 +27,29 @@ export function createEnemy(run: SpireState, id: string, hp?: number): Enemy {
   if (id === 'spiker') enemy.powers.thorns = 3;
   if (id === 'orbWalker') enemy.powers.ritual = 3;
   if (id === 'giantHead') enemy.powers.slow = 1;
+  if (id === 'guardian') Object.assign(enemy.powers, { modeShift: 30, modeThreshold: 30 });
+  if (id === 'timeEater') enemy.powers.timeWarp = 0;
+  if (id === 'awakenedOne') {
+    Object.assign(enemy.powers, { curiosity: 1, regeneration: 10 });
+    if (run.ascension >= 4) enemy.status.strength = 2;
+  }
   return enemy;
 }
 /** Dynamic moves are derived from visible state, never rolled by the UI. */
 export function currentIntent(enemy: Enemy, combat: Combat): Intent {
   const d = ENEMY_BY_ID[enemy.definitionId];
+  if (enemy.powers.rebirthing) return d.intents[2];
   if (enemy.powers.woke) return { name: 'Stunned', effects: [] };
   const split = d.behavior?.startsWith('split') || d.behavior === 'slimeBoss';
   if (split && enemy.hp > 0 && enemy.hp <= enemy.maxHp / 2) return d.intents[d.intents.length - 1];
   // Champ reacts at the next enemy turn; his currently shown move remains until then.
   if (d.behavior === 'champ' && !enemy.powers.angered && enemy.hp <= enemy.maxHp / 2)
-    return d.intents[4];
-  const intent = structuredClone(d.intents[enemy.intentIndex]);
+    return ascensionIntent(enemy, d.intents[4], d.kind);
+  const intent = ascensionIntent(enemy, d.intents[enemy.intentIndex], d.kind);
+  if (d.behavior === 'hexaghost' && enemy.intentIndex === 1) {
+    const effect = intent.effects[0];
+    if (effect.type === 'damage') effect.amount = enemy.powers.divider ?? 1;
+  }
   if (enemy.definitionId === 'bookOfStabbing' && enemy.intentIndex === 0) {
     const damage = intent.effects[0];
     if (damage.type === 'damage') damage.hits = 2 + (enemy.powers.multiStabs ?? 0);
@@ -43,7 +57,10 @@ export function currentIntent(enemy: Enemy, combat: Combat): Intent {
   if (enemy.definitionId === 'giantHead' && enemy.intentIndex === 2) {
     const damage = intent.effects[0];
     if (damage.type === 'damage')
-      damage.amount = Math.min(60, 30 + Math.max(0, enemy.turn - 4) * 5);
+      damage.amount = Math.min(
+        enemy.ascension >= 3 ? 70 : 60,
+        (enemy.ascension >= 3 ? 40 : 30) + Math.max(0, enemy.turn - 4) * 5,
+      );
   }
   if (
     enemy.definitionId === 'centurion' &&
@@ -57,6 +74,10 @@ export function chooseNextIntent(run: SpireState, enemy: Enemy, initial = false)
     last = enemy.history.at(-1),
     twice = enemy.history.at(-2) === last;
   if (initial) {
+    if (d.behavior === 'timeEater' || d.behavior === 'bronzeOrb') {
+      chooseNextIntent(run, enemy);
+      return;
+    }
     if (d.behavior === 'sentry')
       enemy.intentIndex =
         run.combat!.enemies.filter((e) => e.definitionId === 'sentry').indexOf(enemy) === 1 ? 0 : 1;
@@ -78,6 +99,72 @@ export function chooseNextIntent(run: SpireState, enemy: Enemy, initial = false)
     return;
   }
   switch (d.behavior) {
+    case 'guardian':
+      enemy.intentIndex = last === 6 ? 3 : last === 3 ? 0 : (last ?? -1) + 1;
+      break;
+    case 'hexaghost': {
+      if (enemy.turn === 1) {
+        enemy.powers.divider = Math.floor(run.combat!.player.hp / 12) + 1;
+        enemy.intentIndex = 1;
+      } else enemy.intentIndex = [2, 3, 2, 4, 3, 2, 5][(enemy.turn - 2) % 7];
+      break;
+    }
+    case 'automaton':
+      enemy.intentIndex = [1, 2, 1, 2, 3, 4][(enemy.turn - 1) % 6];
+      break;
+    case 'bronzeOrb': {
+      const value = roll(run);
+      enemy.intentIndex =
+        !enemy.powers.stasisUsed && value < 0.75
+          ? 0
+          : value < (enemy.powers.stasisUsed ? 0.3 : 0.825)
+            ? 1
+            : 2;
+      if (twice && enemy.intentIndex === last) enemy.intentIndex = last === 1 ? 2 : 1;
+      break;
+    }
+    case 'collector': {
+      if (enemy.turn === 3) {
+        enemy.intentIndex = 3;
+        break;
+      }
+      const missing = aliveEnemies(run).filter((e) => e.definitionId === 'torchHead').length < 2;
+      const value = roll(run);
+      enemy.intentIndex = missing && value < 0.25 ? 0 : value < 0.7 ? 1 : 2;
+      if (enemy.intentIndex === 2 && last === 2) enemy.intentIndex = 1;
+      if (enemy.intentIndex === 1 && last === 1 && twice) enemy.intentIndex = 2;
+      break;
+    }
+    case 'timeEater': {
+      if (!enemy.powers.hasted && enemy.hp < enemy.maxHp / 2) {
+        enemy.intentIndex = 3;
+        break;
+      }
+      const choices = [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2].filter(
+        (i) => i !== last || (i === 0 && !twice),
+      );
+      enemy.intentIndex = pick(run, choices);
+      break;
+    }
+    case 'awakened':
+      enemy.intentIndex = enemy.powers.rebirthing
+        ? 2
+        : last === 2
+          ? 3
+          : enemy.powers.awakened
+            ? twice
+              ? last === 4
+                ? 5
+                : 4
+              : pick(run, [4, 5])
+            : last === 1
+              ? 0
+              : twice
+                ? 1
+                : roll(run) < 0.75
+                  ? 0
+                  : 1;
+      break;
     case 'cultist':
       enemy.intentIndex = 1;
       break;
@@ -89,9 +176,11 @@ export function chooseNextIntent(run: SpireState, enemy: Enemy, initial = false)
       break;
     }
     case 'louse':
-    case 'slaver':
     case 'snakePlant':
       enemy.intentIndex = last === 1 ? 0 : last === 0 && twice ? 1 : roll(run) < 0.75 ? 0 : 1;
+      break;
+    case 'slaver':
+      enemy.intentIndex = twice ? 1 - (last ?? 0) : roll(run) < 0.6 ? 0 : 1;
       break;
     case 'slime':
     case 'splitAcid':
@@ -148,7 +237,17 @@ export function chooseNextIntent(run: SpireState, enemy: Enemy, initial = false)
       enemy.intentIndex = last === 1 ? 0 : twice ? 1 : roll(run) < 0.85 ? 0 : 1;
       break;
     case 'redSlaver':
-      enemy.intentIndex = !enemy.powers.entangled && enemy.turn >= 2 ? 2 : last === 0 ? 1 : 0;
+      enemy.intentIndex = !enemy.powers.entangled
+        ? roll(run) < 0.25
+          ? 2
+          : last === 1 && twice
+            ? 0
+            : 1
+        : twice
+          ? 1 - (last ?? 0)
+          : roll(run) < 0.55
+            ? 1
+            : 0;
       break;
     case 'champ':
       if (enemy.powers.angered) {
@@ -196,6 +295,70 @@ export function chooseNextIntent(run: SpireState, enemy: Enemy, initial = false)
 export function enemySpecial(run: SpireState, enemy: Enemy, action: string, amount: number) {
   const combat = run.combat!;
   switch (action) {
+    case 'sharpHide':
+      enemy.powers.sharpHide = amount;
+      break;
+    case 'offensiveMode':
+      enemy.powers.sharpHide = 0;
+      enemy.powers.modeThreshold += 10;
+      enemy.powers.modeShift = enemy.powers.modeThreshold;
+      break;
+    case 'upgradeBurns':
+      enemy.powers.upgradedBurns = 1;
+      for (const card of Object.values(combat.cards))
+        if (card.definitionId === 'burn') card.upgraded = true;
+      break;
+    case 'spawnOrbs':
+    case 'spawnTorches': {
+      const id = action === 'spawnOrbs' ? 'bronzeOrb' : 'torchHead';
+      const count = 2 - aliveEnemies(run).filter((e) => e.definitionId === id).length;
+      for (let i = 0; i < count; i++) {
+        const child = createEnemy(run, id);
+        combat.enemies.push(child);
+        chooseNextIntent(run, child, true);
+      }
+      break;
+    }
+    case 'supportAutomaton': {
+      const boss = aliveEnemies(run).find((e) => e.definitionId === 'bronzeAutomaton');
+      if (boss) boss.block += amount;
+      break;
+    }
+    case 'stasis': {
+      enemy.powers.stasisUsed = 1;
+      const pile = combat.draw.length ? combat.draw : combat.discard;
+      const rank = { rare: 4, uncommon: 3, common: 2, basic: 1, special: 0 };
+      const rarity = (id: string) => rank[CARD_BY_ID[combat.cards[id].definitionId].rarity];
+      const best = Math.max(...pile.map(rarity));
+      const candidates = pile.filter((id) => rarity(id) === best);
+      if (!candidates.length) break;
+      enemy.stasisCard = pick(run, candidates);
+      pile.splice(pile.indexOf(enemy.stasisCard), 1);
+      log(
+        run,
+        `Stasis takes ${CARD_BY_ID[combat.cards[enemy.stasisCard].definitionId].name}. Defeat the Orb to recover it.`,
+      );
+      break;
+    }
+    case 'drawReduction':
+      if (combat.player.status.artifact) combat.player.status.artifact--;
+      else combat.drawReduction += amount;
+      break;
+    case 'haste':
+      enemy.hp = Math.max(enemy.hp, Math.floor(enemy.maxHp / 2));
+      enemy.powers.hasted = 1;
+      for (const status of ['weak', 'vulnerable', 'frail', 'poison'] as const)
+        enemy.status[status] = 0;
+      enemy.status.strength = Math.max(0, enemy.status.strength);
+      break;
+    case 'rebirth':
+      enemy.powers.rebirthing = 0;
+      enemy.powers.awakened = 1;
+      enemy.hp = enemy.maxHp;
+      for (const status of ['weak', 'vulnerable', 'frail', 'poison'] as const)
+        enemy.status[status] = 0;
+      enemy.status.strength = Math.max(0, enemy.status.strength);
+      break;
     case 'ritual':
       enemy.powers.ritual = amount;
       enemy.powers.ritualFresh = 1;

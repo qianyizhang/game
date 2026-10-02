@@ -1,8 +1,8 @@
+import { MINIONS } from '../../src/games/battlegrounds/content/minions';
 import { expect, test, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { bgSession } from '../../src/games/battlegrounds/application/session';
 import type { BGCommand, BGState } from '../../src/games/battlegrounds/domain/types';
-import { MINIONS } from '../../src/games/battlegrounds/content/minions';
 
 async function saved(page: Page) {
   return bgSession.decode(

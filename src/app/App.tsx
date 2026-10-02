@@ -1,3 +1,4 @@
+import { blindsidePacks } from '../mods/blindside';
 import { useEffect, useRef, useState } from 'react';
 import { useSession } from './useSession';
 import { scoreHand } from '../games/balatro/domain/scoring';
@@ -8,6 +9,9 @@ import { Collection } from '../games/balatro/ui/Collection';
 import { JOKERS } from '../games/balatro/content/jokers';
 import { CONSUMABLES } from '../games/balatro/content/consumables';
 import { GamePicker, type GameId } from './GamePicker';
+import { Playback } from '../shared/Playback';
+import { WorkshopTools } from './WorkshopTools';
+import { BLINDSIDE_SCENARIOS } from '../games/balatro/application/scenario';
 
 type View = 'table' | 'collection' | 'workshop';
 
@@ -194,6 +198,20 @@ export default function App({ onSwitch }: { onSwitch: (id: GameId) => void }) {
             <strong>{view === 'table' ? 'BLINDSIDE' : view.toUpperCase()}</strong>
           </div>
           <div className="topbar-actions">
+            <WorkshopTools
+              packs={blindsidePacks}
+              game={game.workbench}
+              scenarios={BLINDSIDE_SCENARIOS}
+              summary={(s) => ({
+                Phase: s.phase,
+                Ante: s.ante,
+                Blind: s.blind + 1,
+                Cash: s.cash,
+                Score: s.roundScore,
+                Cards: s.deck.length,
+                Jokers: s.jokers.length,
+              })}
+            />
             <span className="save-status">
               <i />
               {game.saveStatus}
@@ -236,14 +254,34 @@ export default function App({ onSwitch }: { onSwitch: (id: GameId) => void }) {
         />
         {view === 'table' ? (
           <main className="game-layout">
-            <Table
-              run={run}
-              selected={visibleSelection}
-              toggle={toggle}
-              dispatch={dispatch}
-              preview={preview}
-              newRun={() => setShowNewRun(true)}
-            />
+            <div>
+              <Playback
+                key={`${game.timelineRevision}-${run.seed}-${game.session.replay.commands.reduce((last, c, i) => (c.type === 'play' ? i : last), -1)}`}
+                frames={run.lastScore?.steps ?? []}
+                label="Scoring resolution"
+                render={(step) => (
+                  <>
+                    <div className="resolution-score">
+                      <span>{step.chips}</span> × <span>{Number(step.mult.toFixed(2))}</span>
+                    </div>
+                    <div className="resolution-explanation">
+                      <strong>{step.source}</strong>
+                      <p>{step.detail}</p>
+                    </div>
+                    <p>Scoring effects resolve from left to right.</p>
+                  </>
+                )}
+              >
+                <Table
+                  run={run}
+                  selected={visibleSelection}
+                  toggle={toggle}
+                  dispatch={dispatch}
+                  preview={preview}
+                  newRun={() => setShowNewRun(true)}
+                />
+              </Playback>
+            </div>
             <Inspector run={run} preview={preview} />
           </main>
         ) : (

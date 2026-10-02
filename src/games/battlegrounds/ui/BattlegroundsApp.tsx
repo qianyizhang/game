@@ -1,7 +1,11 @@
+import { Scouting } from './Scouting';
+import { hearthPacks } from '../../../mods/hearth';
 import { useState } from 'react';
 import { GameShell } from '../../../app/GameShell';
 import type { GameId } from '../../../app/GamePicker';
 import { useLocalGame } from '../../../app/useLocalGame';
+import { WorkshopTools } from '../../../app/WorkshopTools';
+import { HEARTH_SCENARIOS } from '../application/scenario';
 import { bgSession } from '../application/session';
 import { HEROES, MINIONS, MINION_BY_ID } from '../content/minions';
 import { makeUnit } from '../domain/units';
@@ -30,6 +34,22 @@ export function BattlegroundsApp({ onSwitch }: { onSwitch: (id: GameId) => void 
       gameId="battlegrounds"
       onSwitch={onSwitch}
       controls={game}
+      tools={
+        <WorkshopTools
+          packs={hearthPacks}
+          game={game}
+          scenarios={HEARTH_SCENARIOS}
+          summary={(s) => ({
+            Phase: s.phase,
+            Round: s.round,
+            HP: s.players[0].hp,
+            Tier: s.players[0].tier,
+            Gold: s.players[0].gold,
+            Board: s.players[0].board.length,
+            Players: s.players.filter((p) => p.hp > 0).length,
+          })}
+        />
+      }
       view={view}
       onView={setView}
       defaultSeed="HEARTH-01"
@@ -207,6 +227,7 @@ export function BattlegroundsApp({ onSwitch }: { onSwitch: (id: GameId) => void 
             )}
             {run.phase === 'recruit' && (
               <>
+                <Scouting run={run} />
                 <div className="tavern-tools">
                   <div>
                     <span className="eyebrow">{hero.name}</span>

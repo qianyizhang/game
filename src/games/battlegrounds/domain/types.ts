@@ -42,8 +42,9 @@ export interface Unit {
   copies: number;
   tripleReward: boolean;
 }
-export type HeroId = 'forgekeeper' | 'quartermaster' | 'wildspeaker';
+export type HeroId = string;
 export interface HeroDefinition {
+  boardBuff?: { attack: number; health: number };
   id: HeroId;
   name: string;
   symbol: string;
@@ -104,6 +105,8 @@ export interface BGState {
   pool: Record<string, number>;
   ghost: Unit[];
   ghostTier: number;
+  pairings: number[];
+  scouting: { playerId: number; round: number; tier: number; board: Unit[] }[];
   opponent: number | null;
   lastCombat: CombatResult | null;
   matchups: MatchSummary[];

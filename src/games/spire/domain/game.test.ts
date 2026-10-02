@@ -50,8 +50,8 @@ describe('Ironclad combat timing', () => {
       ...Array(4).fill('defend'),
       ...Array(5).fill('strike'),
     ]);
-    expect(CARDS.filter((c) => !c.token)).toHaveLength(57);
-    expect(RELICS).toHaveLength(32);
+    expect(CARDS.filter((c) => !c.token && c.character !== 'silent')).toHaveLength(57);
+    expect(RELICS).toHaveLength(33);
     expect(new Set(CARDS.map((c) => c.id)).size).toBe(CARDS.length);
   });
   it('adds Strength per hit, then multiplies and floors before Block', () => {
