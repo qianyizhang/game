@@ -1,0 +1,90 @@
+.blindside-art {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.blindside-poker-art {
+  position: absolute;
+  top: 11%;
+  left: 16%;
+  width: 68%;
+  height: 78%;
+  pointer-events: none;
+}
+
+.playing-card .card-corner {
+  z-index: 1;
+}
+
+.playing-card .card-corner small svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 2px auto 0;
+}
+
+.owned-joker .blindside-art {
+  height: auto;
+  margin: 0 0 7px;
+  box-shadow: 0 1px 0 #24443733;
+}
+
+.shop-card .blindside-art {
+  margin-bottom: 12px;
+  border: 1px solid #28493d26;
+}
+
+.catalogue-card .blindside-art {
+  margin: 16px 0 14px;
+  border: 1px solid #28493d26;
+}
+
+.pocket .blindside-art {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 42px;
+  object-fit: cover;
+}
+
+.blindside-emblem {
+  width: 126px;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 0 1px #8e9c6866;
+  border-radius: 5px;
+}
+
+.blindside-upcoming-art {
+  flex: 0 0 55px;
+  display: block;
+}
+
+.boss-banner .blindside-art {
+  display: inline-block;
+  width: 40px;
+  height: 28px;
+  vertical-align: middle;
+  margin-right: 7px;
+}
+
+@media (max-width: 700px) {
+  .owned-joker .blindside-art {
+    margin-bottom: 5px;
+  }
+
+  .catalogue-card .blindside-art {
+    margin-top: 20px;
+  }
+
+  .pocket .blindside-art {
+    flex-basis: 48px;
+    width: 48px;
+    height: 36px;
+  }
+
+  .playing-card .card-corner small svg {
+    width: 9px;
+    height: 9px;
+  }
+}

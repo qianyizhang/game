@@ -1,0 +1,617 @@
+{
+  "game": "last-hearth",
+  "version": 1,
+  "seed": "HEARTH-02",
+  "commands": [
+    {
+      "type": "chooseHero",
+      "hero": "quartermaster"
+    },
+    {
+      "type": "buy",
+      "id": "unit-2"
+    },
+    {
+      "type": "play",
+      "id": "unit-2",
+      "position": 0
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-80"
+    },
+    {
+      "type": "play",
+      "id": "unit-80",
+      "position": 1
+    },
+    {
+      "type": "buy",
+      "id": "unit-78"
+    },
+    {
+      "type": "play",
+      "id": "unit-78",
+      "position": 2
+    },
+    {
+      "type": "move",
+      "id": "unit-80",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-78",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-133"
+    },
+    {
+      "type": "play",
+      "id": "unit-133",
+      "position": 3
+    },
+    {
+      "type": "buy",
+      "id": "unit-136"
+    },
+    {
+      "type": "play",
+      "id": "unit-165",
+      "position": 2
+    },
+    {
+      "type": "discover",
+      "id": "unit-168"
+    },
+    {
+      "type": "play",
+      "id": "unit-168",
+      "position": 3
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-165",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-165",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-168",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-192"
+    },
+    {
+      "type": "play",
+      "id": "unit-192",
+      "position": 4
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-192",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-192",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-328"
+    },
+    {
+      "type": "play",
+      "id": "unit-328",
+      "position": 5
+    },
+    {
+      "type": "buy",
+      "id": "unit-331"
+    },
+    {
+      "type": "play",
+      "id": "unit-331",
+      "position": 6
+    },
+    {
+      "type": "buy",
+      "id": "unit-330"
+    },
+    {
+      "type": "sell",
+      "id": "unit-2"
+    },
+    {
+      "type": "play",
+      "id": "unit-330",
+      "position": 6
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-328",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-331",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-330",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "buy",
+      "id": "unit-427"
+    },
+    {
+      "type": "play",
+      "id": "unit-465",
+      "position": 5
+    },
+    {
+      "type": "discover",
+      "id": "unit-467"
+    },
+    {
+      "type": "play",
+      "id": "unit-467",
+      "position": 6
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-465",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-465",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-465",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-465",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-465",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-467",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-467",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-467",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-467",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buy",
+      "id": "unit-563"
+    },
+    {
+      "type": "sell",
+      "id": "unit-168"
+    },
+    {
+      "type": "play",
+      "id": "unit-563",
+      "position": 6
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buy",
+      "id": "unit-573"
+    },
+    {
+      "type": "play",
+      "id": "unit-574",
+      "position": 5
+    },
+    {
+      "type": "discover",
+      "id": "unit-576"
+    },
+    {
+      "type": "play",
+      "id": "unit-576",
+      "position": 6
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-563",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-574",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-574",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-574",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-576",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-576",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-823"
+    },
+    {
+      "type": "sell",
+      "id": "unit-330"
+    },
+    {
+      "type": "play",
+      "id": "unit-823",
+      "position": 6
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buy",
+      "id": "unit-877"
+    },
+    {
+      "type": "sell",
+      "id": "unit-574"
+    },
+    {
+      "type": "play",
+      "id": "unit-877",
+      "position": 6
+    },
+    {
+      "type": "move",
+      "id": "unit-576",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-563",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-576",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-563",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-563",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-877",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-877",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-877",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-877",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buy",
+      "id": "unit-1490"
+    },
+    {
+      "type": "sell",
+      "id": "unit-165"
+    },
+    {
+      "type": "play",
+      "id": "unit-1490",
+      "position": 6
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-1490",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    }
+  ]
+}

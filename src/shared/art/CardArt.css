@@ -1,0 +1,11 @@
+.card-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 10 / 7;
+  overflow: hidden;
+  border-radius: 8px;
+  pointer-events: none;
+  user-select: none;
+  flex-shrink: 0;
+}
