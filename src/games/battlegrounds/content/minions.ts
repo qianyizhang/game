@@ -1,4 +1,5 @@
 import type { HeroDefinition, MinionDefinition, Tribe } from '../domain/types';
+import { EXPANSION_MINIONS } from './expansion-minions';
 type Draft = Omit<MinionDefinition, 'symbol'> & { symbol?: string };
 const glyphs: Record<Tribe, string> = {
   beast: '♞',
@@ -413,6 +414,7 @@ export const MINIONS: MinionDefinition[] = [
     text: 'Summoned token. Not in the shared pool.',
     token: true,
   }),
+  ...EXPANSION_MINIONS,
 ];
 export const MINION_BY_ID = Object.fromEntries(MINIONS.map((m) => [m.id, m])) as Record<
   string,

@@ -2,6 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { resolve } from 'node:path';
 import { importReplay, SAVE_KEY } from '../../src/games/balatro/application/session';
 import { scoreHand } from '../../src/games/balatro/domain/scoring';
+import { JOKERS, JOKER_BY_ID } from '../../src/games/balatro/content/jokers';
 
 async function saved(page: Page) {
   const value = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
@@ -51,8 +52,14 @@ test('play, inspect, save, shop, buy, reorder, advance and resume', async ({ pag
   await expect(page.locator('.owned-joker')).toHaveCount(1);
   await affordable.first().click();
   await expect(page.locator('.owned-joker')).toHaveCount(2);
-  await page.getByRole('button', { name: 'Move Duet left' }).click();
-  await expect(page.locator('.owned-joker').first()).toContainText('Duet');
+  const previousOrder = (await saved(page)).run.jokers;
+  const movedName = JOKER_BY_ID[previousOrder[1].definitionId].name;
+  await page.getByRole('button', { name: `Move ${movedName} left`, exact: true }).click();
+  await expect(page.locator('.owned-joker').first()).toContainText(movedName);
+  expect((await saved(page)).run.jokers.map((j) => j.id)).toEqual([
+    previousOrder[1].id,
+    previousOrder[0].id,
+  ]);
   const before = await saved(page);
   await page.reload();
   expect(await saved(page)).toEqual(before);
@@ -73,7 +80,7 @@ test('play, inspect, save, shop, buy, reorder, advance and resume', async ({ pag
 test('collection, mod guide, export/import and new seed', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Collection' }).click();
-  await expect(page.locator('.catalogue-card')).toHaveCount(40);
+  await expect(page.locator('.catalogue-card')).toHaveCount(JOKERS.length);
   await page.getByRole('textbox', { name: 'Search collection' }).fill('Retrigger');
   await expect(page.getByRole('heading', { name: 'Little Echo' })).toBeVisible();
   await page.getByRole('textbox', { name: 'Search collection' }).fill('');

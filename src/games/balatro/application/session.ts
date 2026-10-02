@@ -1,7 +1,7 @@
 import { createRun, RULES_VERSION, transition } from '../domain/game';
 import type { Command, RunState } from '../domain/types';
 
-export const SAVE_KEY = 'card-workshop.blindside.v1';
+export const SAVE_KEY = 'card-workshop.blindside.v2';
 export interface Replay {
   game: 'blindside';
   version: number;

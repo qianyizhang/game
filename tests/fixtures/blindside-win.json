@@ -1,6 +1,6 @@
 {
   "game": "blindside",
-  "version": 1,
+  "version": 2,
   "seed": "FIRST-LIGHT",
   "commands": [
     {
@@ -16,11 +16,16 @@
     },
     {
       "type": "buy",
-      "offerId": "offer-54"
+      "offerId": "offer-53"
     },
     {
       "type": "buy",
-      "offerId": "offer-53"
+      "offerId": "offer-59"
+    },
+    {
+      "type": "useConsumable",
+      "id": "consumable-61",
+      "cards": []
     },
     {
       "type": "leaveShop"
@@ -30,7 +35,15 @@
     },
     {
       "type": "play",
-      "cards": ["card-28", "card-13", "card-15", "card-22", "card-10"]
+      "cards": ["card-28", "card-15"]
+    },
+    {
+      "type": "discard",
+      "cards": ["card-4", "card-44", "card-22", "card-45", "card-10"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-13", "card-39"]
     },
     {
       "type": "buy",
@@ -43,24 +56,87 @@
       "type": "startBlind"
     },
     {
-      "type": "play",
-      "cards": ["card-50", "card-29", "card-22", "card-16", "card-23"]
+      "type": "discard",
+      "cards": ["card-50", "card-5", "card-22", "card-23", "card-51"]
     },
     {
       "type": "play",
-      "cards": ["card-51", "card-36", "card-9", "card-35", "card-13"]
+      "cards": ["card-29", "card-16", "card-9", "card-35"]
+    },
+    {
+      "type": "buy",
+      "offerId": "offer-72"
     },
     {
       "type": "buy",
       "offerId": "offer-73"
     },
     {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "discard",
+      "cards": ["card-20", "card-37", "card-14", "card-41", "card-23"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-38", "card-25"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-19", "card-32"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-11", "card-1", "card-8", "card-10", "card-13"]
+    },
+    {
       "type": "buy",
-      "offerId": "offer-75"
+      "offerId": "offer-80"
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "play",
+      "cards": ["card-31", "card-46", "card-15", "card-33", "card-17"]
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "play",
+      "cards": ["card-5", "card-33", "card-4", "card-44", "card-20"]
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "play",
+      "cards": ["card-43", "card-1", "card-44", "card-33", "card-46"]
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "buy",
+      "offerId": "offer-114"
     },
     {
       "type": "useConsumable",
-      "id": "consumable-78",
+      "id": "consumable-115",
       "cards": []
     },
     {
@@ -71,21 +147,7 @@
     },
     {
       "type": "play",
-      "cards": ["card-20", "card-37", "card-14", "card-16", "card-23"]
-    },
-    {
-      "type": "buy",
-      "offerId": "offer-79"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-31", "card-46", "card-33"]
+      "cards": ["card-14", "card-17", "card-28", "card-44", "card-29"]
     },
     {
       "type": "sellJoker",
@@ -93,53 +155,11 @@
     },
     {
       "type": "buy",
-      "offerId": "offer-89"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-5", "card-33", "card-20"]
+      "offerId": "offer-119"
     },
     {
       "type": "buy",
-      "offerId": "offer-101"
-    },
-    {
-      "type": "useConsumable",
-      "id": "consumable-102",
-      "cards": []
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-1", "card-44", "card-33"]
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-48", "card-5", "card-12"]
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "buy",
-      "offerId": "offer-122"
+      "offerId": "offer-121"
     },
     {
       "type": "useConsumable",
@@ -147,46 +167,7 @@
       "cards": []
     },
     {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-13", "card-1", "card-38", "card-14", "card-9"]
-    },
-    {
-      "type": "sellJoker",
-      "id": "joker-94"
-    },
-    {
-      "type": "buy",
-      "offerId": "offer-126"
-    },
-    {
-      "type": "buy",
-      "offerId": "offer-131"
-    },
-    {
-      "type": "useConsumable",
-      "id": "consumable-133",
-      "cards": []
-    },
-    {
       "type": "reroll"
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "buy",
-      "offerId": "offer-145"
-    },
-    {
-      "type": "useConsumable",
-      "id": "consumable-148",
-      "cards": []
     },
     {
       "type": "leaveShop"
@@ -196,7 +177,22 @@
     },
     {
       "type": "play",
-      "cards": ["card-52", "card-26", "card-7"]
+      "cards": ["card-11", "card-36", "card-29", "card-42", "card-39"]
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "buy",
+      "offerId": "offer-143"
+    },
+    {
+      "type": "useConsumable",
+      "id": "consumable-146",
+      "cards": []
+    },
+    {
+      "type": "reroll"
     },
     {
       "type": "buy",
@@ -204,7 +200,7 @@
     },
     {
       "type": "useConsumable",
-      "id": "consumable-156",
+      "id": "consumable-154",
       "cards": []
     },
     {
@@ -215,10 +211,7 @@
     },
     {
       "type": "play",
-      "cards": ["card-13", "card-52", "card-35"]
-    },
-    {
-      "type": "reroll"
+      "cards": ["card-35", "card-5", "card-9", "card-29", "card-40"]
     },
     {
       "type": "reroll"
@@ -231,7 +224,32 @@
     },
     {
       "type": "play",
-      "cards": ["card-48", "card-6", "card-32"]
+      "cards": ["card-9", "card-49", "card-1", "card-35", "card-3"]
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "buy",
+      "offerId": "offer-182"
+    },
+    {
+      "type": "useConsumable",
+      "id": "consumable-183",
+      "cards": []
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "play",
+      "cards": ["card-44", "card-12", "card-21", "card-18", "card-46"]
+    },
+    {
+      "type": "reroll"
     },
     {
       "type": "reroll"
@@ -242,7 +260,7 @@
     },
     {
       "type": "buy",
-      "offerId": "offer-186"
+      "offerId": "offer-199"
     },
     {
       "type": "leaveShop"
@@ -252,26 +270,7 @@
     },
     {
       "type": "play",
-      "cards": ["card-18", "card-5", "card-10"]
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-29", "card-52", "card-3"]
-    },
-    {
-      "type": "reroll"
+      "cards": ["card-29", "card-36", "card-9", "card-35", "card-17"]
     },
     {
       "type": "reroll"
@@ -284,135 +283,122 @@
     },
     {
       "type": "play",
-      "cards": ["card-22", "card-46", "card-39"]
+      "cards": ["card-49", "card-16", "card-29", "card-14", "card-35"]
     },
     {
       "type": "play",
-      "cards": ["card-45", "card-5", "card-31"]
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-37", "card-52", "card-13"]
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-25", "card-9", "card-38"]
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-3", "card-11", "card-42"]
-    },
-    {
-      "type": "play",
-      "cards": ["card-15", "card-41", "card-37"]
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-50", "card-38", "card-12"]
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-24", "card-52", "card-13"]
-    },
-    {
-      "type": "play",
-      "cards": ["card-22", "card-39", "card-26"]
-    },
-    {
-      "type": "reroll"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "startBlind"
-    },
-    {
-      "type": "play",
-      "cards": ["card-10", "card-46", "card-37"]
-    },
-    {
-      "type": "play",
-      "cards": ["card-28", "card-41", "card-36"]
-    },
-    {
-      "type": "play",
-      "cards": ["card-14", "card-34", "card-27"]
+      "cards": ["card-20", "card-7", "card-21", "card-13", "card-32"]
     },
     {
       "type": "sellJoker",
-      "id": "joker-86"
+      "id": "joker-123"
     },
     {
       "type": "buy",
-      "offerId": "offer-343"
+      "offerId": "offer-221"
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "play",
+      "cards": ["card-22", "card-46", "card-39", "card-2", "card-45"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-5", "card-31", "card-41", "card-33", "card-40"]
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "play",
+      "cards": ["card-25", "card-15", "card-51", "card-24", "card-8"]
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "play",
+      "cards": ["card-25", "card-42", "card-38", "card-40", "card-30"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-44", "card-9", "card-31", "card-21", "card-19"]
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "play",
+      "cards": ["card-15", "card-3", "card-40", "card-17", "card-42"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-27", "card-11", "card-41", "card-37", "card-16"]
+    },
+    {
+      "type": "reroll"
     },
     {
       "type": "sellJoker",
-      "id": "joker-61"
+      "id": "joker-69"
     },
     {
       "type": "buy",
-      "offerId": "offer-340"
+      "offerId": "offer-301"
     },
     {
-      "type": "moveJoker",
-      "id": "joker-348",
-      "direction": -1
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "discard",
+      "cards": ["card-10", "card-5", "card-51"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-50", "card-27", "card-28", "card-29", "card-16"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-38", "card-12", "card-8", "card-26", "card-40"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-49", "card-15", "card-43", "card-19", "card-32"]
     },
     {
       "type": "reroll"
@@ -425,11 +411,55 @@
     },
     {
       "type": "play",
-      "cards": ["card-34", "card-47"]
+      "cards": ["card-13", "card-38", "card-30", "card-8", "card-21"]
     },
     {
       "type": "play",
-      "cards": ["card-25", "card-12"]
+      "cards": ["card-44", "card-24", "card-5", "card-34", "card-16"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-31", "card-14", "card-2", "card-32", "card-18"]
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "discard",
+      "cards": ["card-18"]
+    },
+    {
+      "type": "discard",
+      "cards": ["card-46"]
+    },
+    {
+      "type": "discard",
+      "cards": ["card-12"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-4", "card-42", "card-39", "card-40", "card-21"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-50", "card-29", "card-30", "card-28", "card-47"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-51", "card-19", "card-2", "card-44", "card-6"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-25", "card-20", "card-23", "card-10", "card-13"]
+    },
+    {
+      "type": "reroll"
     },
     {
       "type": "reroll"
@@ -442,19 +472,44 @@
     },
     {
       "type": "play",
-      "cards": ["card-26", "card-52"]
+      "cards": ["card-25", "card-4", "card-34", "card-40", "card-47"]
     },
     {
       "type": "play",
-      "cards": ["card-50", "card-11"]
+      "cards": ["card-36", "card-48", "card-12", "card-26", "card-39"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-33", "card-13", "card-7", "card-30", "card-2"]
+    },
+    {
+      "type": "reroll"
+    },
+    {
+      "type": "leaveShop"
+    },
+    {
+      "type": "startBlind"
+    },
+    {
+      "type": "play",
+      "cards": ["card-26", "card-52", "card-50", "card-36", "card-16"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-11", "card-3", "card-20", "card-17", "card-43"]
+    },
+    {
+      "type": "play",
+      "cards": ["card-37", "card-51", "card-35", "card-28", "card-12"]
     },
     {
       "type": "buy",
-      "offerId": "offer-374"
+      "offerId": "offer-373"
     },
     {
       "type": "useConsumable",
-      "id": "consumable-377",
+      "id": "consumable-376",
       "cards": []
     },
     {
@@ -468,31 +523,31 @@
     },
     {
       "type": "discard",
-      "cards": ["card-31", "card-22", "card-29", "card-37", "card-46"]
+      "cards": ["card-31", "card-37", "card-46"]
     },
     {
       "type": "discard",
-      "cards": ["card-7", "card-20", "card-40", "card-16", "card-32"]
+      "cards": ["card-7", "card-20", "card-49"]
     },
     {
       "type": "discard",
-      "cards": ["card-15", "card-39", "card-24", "card-34", "card-35"]
+      "cards": ["card-22", "card-40", "card-10"]
     },
     {
       "type": "play",
-      "cards": ["card-49", "card-10"]
+      "cards": ["card-29", "card-16", "card-15", "card-39", "card-34"]
     },
     {
       "type": "play",
-      "cards": ["card-51", "card-25"]
+      "cards": ["card-32", "card-51", "card-8", "card-13", "card-25"]
     },
     {
       "type": "play",
-      "cards": ["card-41", "card-28"]
+      "cards": ["card-24", "card-35", "card-41", "card-28", "card-12"]
     },
     {
       "type": "play",
-      "cards": ["card-13"]
+      "cards": ["card-45", "card-3", "card-27", "card-1", "card-26"]
     }
   ]
 }

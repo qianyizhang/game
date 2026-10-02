@@ -3,6 +3,7 @@ import { ArtScene } from '../../../shared/art/CardArt';
 import type { Tribe } from '../domain/types';
 import { Bear, Hydra, Panther, Phoenix, Wolf } from './CreatureIllustrations';
 import { DemonPortrait } from './FiendIllustrations';
+import { expansionMinionArt } from './ExpansionPortraits';
 
 const palettes = {
   beast: 'moss',
@@ -597,7 +598,9 @@ export function MinionArt({
                 : 'runes'
       }
     >
-      {portraits[definitionId] ?? <HumanPortrait kind="squire" />}
+      {expansionMinionArt[definitionId] ?? portraits[definitionId] ?? (
+        <HumanPortrait kind="squire" />
+      )}
       {golden && <Cut d="M12 103V91m0 12h12m112 0h12V91" color="#d8bf7b" width={1} opacity={0.8} />}
     </ArtScene>
   );

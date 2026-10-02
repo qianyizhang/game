@@ -1,20 +1,17 @@
 {
   "game": "last-hearth",
-  "version": 1,
-  "seed": "HEARTH-01",
+  "version": 2,
+  "seed": "EXPANSION-LOSS",
   "commands": [
     {
       "type": "chooseHero",
       "hero": "forgekeeper"
     },
     {
-      "type": "buy",
-      "id": "unit-2"
+      "type": "endRecruit"
     },
     {
-      "type": "play",
-      "id": "unit-2",
-      "position": 0
+      "type": "nextRound"
     },
     {
       "type": "endRecruit"
@@ -23,7 +20,10 @@
       "type": "nextRound"
     },
     {
-      "type": "upgrade"
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
     },
     {
       "type": "endRecruit"
@@ -32,179 +32,10 @@
       "type": "nextRound"
     },
     {
-      "type": "buy",
-      "id": "unit-73"
-    },
-    {
-      "type": "play",
-      "id": "unit-73",
-      "position": 1
-    },
-    {
-      "type": "power",
-      "target": "unit-2"
-    },
-    {
-      "type": "refresh"
-    },
-    {
       "type": "endRecruit"
     },
     {
       "type": "nextRound"
-    },
-    {
-      "type": "buy",
-      "id": "unit-131"
-    },
-    {
-      "type": "play",
-      "id": "unit-131",
-      "position": 2
-    },
-    {
-      "type": "buy",
-      "id": "unit-130"
-    },
-    {
-      "type": "play",
-      "id": "unit-130",
-      "position": 3
-    },
-    {
-      "type": "move",
-      "id": "unit-131",
-      "direction": -1
-    },
-    {
-      "type": "endRecruit"
-    },
-    {
-      "type": "nextRound"
-    },
-    {
-      "type": "buy",
-      "id": "unit-176"
-    },
-    {
-      "type": "play",
-      "id": "unit-176",
-      "position": 4
-    },
-    {
-      "type": "upgrade"
-    },
-    {
-      "type": "move",
-      "id": "unit-176",
-      "direction": -1
-    },
-    {
-      "type": "move",
-      "id": "unit-176",
-      "direction": -1
-    },
-    {
-      "type": "move",
-      "id": "unit-176",
-      "direction": -1
-    },
-    {
-      "type": "move",
-      "id": "unit-176",
-      "direction": -1
-    },
-    {
-      "type": "endRecruit"
-    },
-    {
-      "type": "nextRound"
-    },
-    {
-      "type": "upgrade"
-    },
-    {
-      "type": "power",
-      "target": "unit-73"
-    },
-    {
-      "type": "move",
-      "id": "unit-131",
-      "direction": -1
-    },
-    {
-      "type": "endRecruit"
-    },
-    {
-      "type": "nextRound"
-    },
-    {
-      "type": "buy",
-      "id": "unit-296"
-    },
-    {
-      "type": "play",
-      "id": "unit-296",
-      "position": 5
-    },
-    {
-      "type": "buy",
-      "id": "unit-295"
-    },
-    {
-      "type": "play",
-      "id": "unit-295",
-      "position": 6
-    },
-    {
-      "type": "power",
-      "target": "unit-73"
-    },
-    {
-      "type": "refresh"
-    },
-    {
-      "type": "refresh"
-    },
-    {
-      "type": "move",
-      "id": "unit-296",
-      "direction": -1
-    },
-    {
-      "type": "move",
-      "id": "unit-296",
-      "direction": -1
-    },
-    {
-      "type": "move",
-      "id": "unit-295",
-      "direction": -1
-    },
-    {
-      "type": "move",
-      "id": "unit-295",
-      "direction": -1
-    },
-    {
-      "type": "move",
-      "id": "unit-295",
-      "direction": -1
-    },
-    {
-      "type": "move",
-      "id": "unit-295",
-      "direction": -1
-    },
-    {
-      "type": "move",
-      "id": "unit-295",
-      "direction": -1
-    },
-    {
-      "type": "move",
-      "id": "unit-295",
-      "direction": -1
     },
     {
       "type": "endRecruit"

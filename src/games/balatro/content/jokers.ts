@@ -1,5 +1,6 @@
 import { isFace } from '../domain/poker';
 import type { JokerDefinition, Suit } from '../domain/types';
+import { EXPANSION_JOKERS } from './expansion-jokers';
 
 type Draft = Pick<JokerDefinition, 'id' | 'name' | 'description' | 'symbol'> &
   Partial<Omit<JokerDefinition, 'id' | 'name' | 'description' | 'symbol'>>;
@@ -335,6 +336,7 @@ export const JOKERS: JokerDefinition[] = [
     description: 'Every played card scores, including kickers.',
     rule: 'allScore',
   }),
+  ...EXPANSION_JOKERS,
 ];
 
 export const JOKER_BY_ID = Object.fromEntries(JOKERS.map((item) => [item.id, item])) as Record<
