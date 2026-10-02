@@ -16,7 +16,7 @@ export function GamePicker({
         onChange={(event) => onSwitch(event.target.value as GameId)}
       >
         <option value="balatro">♠ Blindside · Balatro</option>
-        <option value="spire">↑ Slay the Spire · Ironclad</option>
+        <option value="spire">↑ Slay the Spire</option>
         <option value="battlegrounds">⚑ Last Hearth · Battlegrounds</option>
       </select>
     </div>

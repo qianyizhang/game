@@ -1,9 +1,10 @@
 import { AbilityArt } from './AbilityArt';
 import { CARD_BY_ID, cardCost } from '../content/cards';
-import type { Card, CardDefinition, SpireState } from '../domain/types';
+import type { Card, CardDefinition, SpireState, Character } from '../domain/types';
 
 export function AbilityCard({
   definition,
+  character,
   upgraded = false,
   onClick,
   disabled,
@@ -11,6 +12,7 @@ export function AbilityCard({
   cost,
 }: {
   definition: CardDefinition;
+  character?: Character;
   upgraded?: boolean;
   onClick?: () => void;
   disabled?: boolean;
@@ -20,7 +22,7 @@ export function AbilityCard({
   const energy = cost ?? cardCost(definition.id, upgraded);
   return (
     <button
-      className={`ability-card ${definition.kind} rarity-${definition.rarity}${upgraded ? ' upgraded' : ''}`}
+      className={`ability-card ${definition.kind} ${definition.character ?? character ?? ''} rarity-${definition.rarity}${upgraded ? ' upgraded' : ''}`}
       onClick={onClick}
       disabled={disabled}
     >

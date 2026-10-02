@@ -6,6 +6,19 @@ import { availableNodes, transitionSpire } from '../../src/games/spire/domain/ga
 import { removalCost } from '../../src/games/spire/domain/rewards';
 import type { SpireCommand, SpireState } from '../../src/games/spire/domain/types';
 const priorities: Record<string, number> = {
+  noxiousFumes: 35,
+  footwork: 32,
+  afterImage: 34,
+  bladeDance: 26,
+  accuracy: 25,
+  backflip: 26,
+  deadlyPoison: 25,
+  catalyst: 28,
+  adrenaline: 30,
+  envenom: 27,
+  cripplingCloud: 28,
+  legSweep: 28,
+  dash: 26,
   demonForm: 35,
   inflame: 30,
   disarm: 29,
@@ -178,12 +191,14 @@ export function spirePolicy(run: SpireState): SpireCommand {
     return {
       type: 'chooseCard',
       id: [...c.choice.options].sort((a, b) =>
-        c.choice!.action === 'exhaust' ? priority(a) - priority(b) : priority(b) - priority(a),
+        ['exhaust', 'discard'].includes(c.choice!.action)
+          ? priority(a) - priority(b)
+          : priority(b) - priority(a),
       )[0],
     };
   }
   for (const [index, p] of run.potions.entries()) {
-    const target = [...enemies].sort((a, b) => a.hp + a.block - b.hp - b.block)[0].id;
+    const target = [...enemies].sort((a, b) => a.hp + a.block - b.hp - b.block)[0]?.id;
     if (['strength', 'dexterity'].includes(p)) return { type: 'potion', index };
     if (p === 'blood' && run.hp < run.maxHp * 0.7) return { type: 'potion', index };
     if (p === 'fire' && (enemies.some((e) => e.hp + e.block <= 20) || danger > c.player.block + 12))
@@ -212,6 +227,7 @@ export function spirePolicy(run: SpireState): SpireCommand {
           (e.hp - after.enemies[i].hp) * 0.85 +
           Math.max(0, e.block - after.enemies[i].block) * 0.75 +
           (after.enemies[i].hp === 0 && e.hp > 0 ? 18 : 0) +
+          (after.enemies[i].status.poison - e.status.poison) * 3 +
           (after.enemies[i].status.weak - e.status.weak) * 3 +
           (e.status.strength - after.enemies[i].status.strength) * 5 +
           (after.enemies[i].status.vulnerable - e.status.vulnerable) * 3,
@@ -222,6 +238,12 @@ export function spirePolicy(run: SpireState): SpireCommand {
           sum +
           (v - c.powers[key as keyof typeof c.powers]) *
             ({
+              noxiousFumes: 18,
+              afterImage: 12,
+              infiniteBlades: 10,
+              accuracy: 8,
+              envenom: 10,
+              thousandCuts: 8,
               demonForm: 25,
               metallicize: 12,
               feelNoPain: 7,
@@ -239,6 +261,7 @@ export function spirePolicy(run: SpireState): SpireCommand {
         (result.state.hp - run.hp) * 2 +
         Math.max(0, Math.min(danger - c.player.block, after.player.block - c.player.block)) * 1.5 +
         (after.player.status.strength - c.player.status.strength) * 7 +
+        (after.player.status.dexterity - c.player.status.dexterity) * 8 +
         powerValue +
         Math.max(0, after.energy - c.energy) * 5 +
         Math.max(0, after.hand.length - c.hand.length + 1) * 4 +
@@ -251,13 +274,39 @@ export function spirePolicy(run: SpireState): SpireCommand {
   }
   return best.command;
 }
-export function simulateSpire(seed: string) {
+export function simulateSpire(
+  seed: string,
+  character: SpireState['character'] = 'ironclad',
+  ascension = 0,
+) {
   let session = spireSession.create(seed);
+  if (character !== 'ironclad' || ascension)
+    session = spireSession.act(session, { type: 'configure', character, ascension }).session;
   for (let step = 0; step < 3000; step++) {
     if (['won', 'lost'].includes(session.state.phase)) return session;
     const r = spireSession.act(session, spirePolicy(session.state));
     if (r.error) throw new Error(`${seed} ${session.state.phase}: ${r.error}`);
     session = r.session;
+    const c = session.state.combat;
+    if (c) {
+      const zones = [
+        ...c.hand,
+        ...c.draw,
+        ...c.discard,
+        ...c.exhaust,
+        ...c.powersPlayed,
+        ...(c.resolving ? [c.resolving] : []),
+        ...c.enemies.flatMap((e) => (e.stasisCard ? [e.stasisCard] : [])),
+      ];
+      if (
+        new Set(zones).size !== zones.length ||
+        zones.length !== Object.keys(c.cards).length ||
+        zones.some((id) => !c.cards[id])
+      )
+        throw new Error(`${seed}: card zone conservation failed at ${step}`);
+      if (c.energy < 0 || c.hand.length > 10 || c.player.hp !== session.state.hp)
+        throw new Error(`${seed}: invalid combat resources at ${step}`);
+    }
   }
   throw new Error(`${seed} did not terminate`);
 }

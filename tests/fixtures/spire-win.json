@@ -1,7 +1,7 @@
 {
   "game": "slay-the-spire",
-  "version": 2,
-  "seed": "IRONCLAD-02",
+  "version": 3,
+  "seed": "IRONCLAD-06",
   "commands": [
     {
       "type": "neow",
@@ -13,17 +13,16 @@
     },
     {
       "type": "playCard",
+      "id": "card-9"
+    },
+    {
+      "type": "playCard",
       "id": "card-6"
     },
     {
       "type": "playCard",
-      "id": "card-2",
-      "target": "enemy-11"
-    },
-    {
-      "type": "playCard",
       "id": "card-4",
-      "target": "enemy-12"
+      "target": "enemy-11"
     },
     {
       "type": "endTurn"
@@ -43,47 +42,63 @@
     },
     {
       "type": "playCard",
-      "id": "card-1",
-      "target": "enemy-12"
-    },
-    {
-      "type": "playCard",
-      "id": "card-2",
-      "target": "enemy-12"
-    },
-    {
-      "type": "takeReward",
-      "card": "metallicize"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act1-1-0"
-    },
-    {
-      "type": "potion",
-      "index": 0
-    },
-    {
-      "type": "playCard",
-      "id": "card-10",
-      "target": "enemy-14"
+      "id": "card-4",
+      "target": "enemy-11"
     },
     {
       "type": "playCard",
       "id": "card-5",
-      "target": "enemy-14"
+      "target": "enemy-11"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-13"
+      "id": "card-10",
+      "target": "enemy-11"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-11"
+    },
+    {
+      "type": "takeReward",
+      "card": "shrugItOff"
+    },
+    {
+      "type": "chooseNode",
+      "id": "act1-1-1"
+    },
+    {
+      "type": "playCard",
+      "id": "card-10",
+      "target": "enemy-13"
+    },
+    {
+      "type": "playCard",
+      "id": "card-7"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-13"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
     },
     {
       "type": "playCard",
       "id": "card-1",
       "target": "enemy-14"
+    },
+    {
+      "type": "endTurn"
     },
     {
       "type": "playCard",
@@ -91,25 +106,41 @@
       "target": "enemy-14"
     },
     {
-      "type": "endTurn"
-    },
-    {
       "type": "playCard",
-      "id": "card-10",
-      "target": "enemy-14"
-    },
-    {
-      "type": "playCard",
-      "id": "card-5",
+      "id": "card-1",
       "target": "enemy-14"
     },
     {
       "type": "takeReward",
-      "card": "disarm"
+      "card": "inflame"
     },
     {
       "type": "chooseNode",
       "id": "act1-2-0"
+    },
+    {
+      "type": "event",
+      "choice": "donut"
+    },
+    {
+      "type": "chooseNode",
+      "id": "act1-3-0"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-16"
+    },
+    {
+      "type": "endTurn"
     },
     {
       "type": "playCard",
@@ -117,11 +148,12 @@
     },
     {
       "type": "playCard",
-      "id": "card-7"
+      "id": "card-3",
+      "target": "enemy-16"
     },
     {
       "type": "playCard",
-      "id": "card-2",
+      "id": "card-5",
       "target": "enemy-16"
     },
     {
@@ -134,15 +166,32 @@
     },
     {
       "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-17"
+      "id": "card-3",
+      "target": "enemy-16"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-13"
+      "id": "card-4",
+      "target": "enemy-16"
+    },
+    {
+      "type": "takeReward",
+      "card": "secondWind"
+    },
+    {
+      "type": "chooseNode",
+      "id": "act1-4-1"
+    },
+    {
+      "type": "potion",
+      "index": 0
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
     },
     {
       "type": "playCard",
@@ -151,58 +200,19 @@
     {
       "type": "playCard",
       "id": "card-4",
-      "target": "enemy-17"
+      "target": "enemy-18"
     },
     {
       "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-10",
-      "target": "enemy-17"
-    },
-    {
-      "type": "playCard",
-      "id": "card-2",
-      "target": "enemy-17"
-    },
-    {
-      "type": "takeReward",
-      "card": "cleave"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act1-3-0"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "playCard",
-      "id": "card-7"
-    },
-    {
-      "type": "playCard",
-      "id": "card-1",
-      "target": "enemy-19"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-19"
     },
     {
       "type": "playCard",
       "id": "card-5",
-      "target": "enemy-19"
+      "target": "enemy-18"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
     },
     {
       "type": "endTurn"
@@ -214,41 +224,32 @@
     },
     {
       "type": "playCard",
-      "id": "card-3",
+      "id": "card-9"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
       "target": "enemy-19"
     },
     {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "playCard",
-      "id": "card-2",
-      "target": "enemy-20"
-    },
-    {
-      "type": "playCard",
-      "id": "card-5",
-      "target": "enemy-20"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-1",
-      "target": "enemy-20"
-    },
-    {
       "type": "takeReward",
-      "card": "headbutt"
+      "card": "twinStrike"
     },
     {
       "type": "chooseNode",
-      "id": "act1-4-0"
+      "id": "act1-5-1"
+    },
+    {
+      "type": "rest",
+      "choice": "upgrade",
+      "card": "card-15"
+    },
+    {
+      "type": "chooseNode",
+      "id": "act1-6-1"
     },
     {
       "type": "event",
@@ -256,161 +257,51 @@
     },
     {
       "type": "chooseNode",
-      "id": "act1-5-1"
+      "id": "act1-7-1"
     },
     {
       "type": "playCard",
-      "id": "card-10",
-      "target": "enemy-25"
+      "id": "card-12"
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-25"
+      "id": "card-15"
     },
     {
-      "type": "chooseCard",
-      "id": "card-10"
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-21"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-13"
+      "id": "card-10",
+      "target": "enemy-21"
     },
     {
       "type": "playCard",
-      "id": "card-10",
-      "target": "enemy-26"
+      "id": "card-20",
+      "target": "enemy-21"
     },
     {
       "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-22"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-22"
     },
     {
       "type": "playCard",
       "id": "card-5",
-      "target": "enemy-26"
-    },
-    {
-      "type": "takeReward",
-      "card": null
-    },
-    {
-      "type": "chooseNode",
-      "id": "act1-6-2"
-    },
-    {
-      "type": "potion",
-      "index": 0,
-      "target": "enemy-27"
-    },
-    {
-      "type": "playCard",
-      "id": "card-10",
-      "target": "enemy-27"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-27"
-    },
-    {
-      "type": "chooseCard",
-      "id": "card-10"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-3",
-      "target": "enemy-27"
-    },
-    {
-      "type": "playCard",
-      "id": "card-6"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-28"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "playCard",
-      "id": "card-4",
-      "target": "enemy-28"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-1",
-      "target": "enemy-28"
-    },
-    {
-      "type": "playCard",
-      "id": "card-4",
-      "target": "enemy-28"
-    },
-    {
-      "type": "playCard",
-      "id": "card-3",
-      "target": "enemy-28"
-    },
-    {
-      "type": "takeReward",
-      "card": "demonForm"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act1-7-2"
-    },
-    {
-      "type": "playCard",
-      "id": "card-7"
-    },
-    {
-      "type": "playCard",
-      "id": "card-1",
-      "target": "enemy-32"
-    },
-    {
-      "type": "playCard",
-      "id": "card-4",
-      "target": "enemy-32"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-32"
-    },
-    {
-      "type": "chooseCard",
-      "id": "card-7"
-    },
-    {
-      "type": "playCard",
-      "id": "card-6"
+      "target": "enemy-22"
     },
     {
       "type": "endTurn"
@@ -418,16 +309,16 @@
     {
       "type": "playCard",
       "id": "card-10",
-      "target": "enemy-32"
+      "target": "enemy-23"
     },
     {
-      "type": "potion",
-      "index": 0,
-      "target": "enemy-32"
+      "type": "playCard",
+      "id": "card-1",
+      "target": "enemy-23"
     },
     {
       "type": "takeReward",
-      "card": null
+      "card": "disarm"
     },
     {
       "type": "chooseNode",
@@ -439,80 +330,78 @@
     },
     {
       "type": "chooseNode",
-      "id": "act1-9-2"
-    },
-    {
-      "type": "potion",
-      "index": 0,
-      "target": "enemy-33"
+      "id": "act1-9-1"
     },
     {
       "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
+      "id": "card-25",
+      "target": "enemy-26"
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-33"
-    },
-    {
-      "type": "chooseCard",
-      "id": "card-10"
+      "id": "card-2",
+      "target": "enemy-26"
     },
     {
       "type": "playCard",
       "id": "card-1",
-      "target": "enemy-34"
+      "target": "enemy-26"
     },
     {
       "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-26"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-26"
+    },
+    {
+      "type": "potion",
+      "index": 0,
+      "target": "enemy-26"
+    },
+    {
+      "type": "takeReward",
+      "card": "headbutt"
+    },
+    {
+      "type": "chooseNode",
+      "id": "act1-10-0"
     },
     {
       "type": "playCard",
       "id": "card-10",
-      "target": "enemy-34"
+      "target": "enemy-28"
     },
     {
       "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "takeReward",
-      "card": "uppercut"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act1-10-1"
-    },
-    {
-      "type": "event",
-      "choice": "pray"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act1-11-1"
-    },
-    {
-      "type": "playCard",
-      "id": "card-31"
+      "id": "card-4",
+      "target": "enemy-28"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-13"
+      "id": "card-15"
     },
     {
       "type": "playCard",
-      "id": "card-7"
+      "id": "card-27",
+      "target": "enemy-29"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-25"
     },
     {
       "type": "playCard",
@@ -523,25 +412,86 @@
     },
     {
       "type": "playCard",
-      "id": "card-36",
-      "target": "enemy-37"
+      "id": "card-1",
+      "target": "enemy-29"
+    },
+    {
+      "type": "takeReward",
+      "card": "feelNoPain"
+    },
+    {
+      "type": "chooseNode",
+      "id": "act1-11-0"
+    },
+    {
+      "type": "potion",
+      "index": 0,
+      "target": "enemy-31"
     },
     {
       "type": "playCard",
-      "id": "card-18"
+      "id": "card-25",
+      "target": "enemy-31"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-31"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-31"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-36",
-      "target": "enemy-40"
+      "id": "card-12"
     },
     {
       "type": "playCard",
-      "id": "card-3",
-      "target": "enemy-40"
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-31"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-31"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-10",
+      "target": "enemy-31"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-17"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-32"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-32"
     },
     {
       "type": "endTurn"
@@ -549,40 +499,135 @@
     {
       "type": "playCard",
       "id": "card-10",
-      "target": "enemy-41"
+      "target": "enemy-32"
     },
     {
       "type": "playCard",
-      "id": "card-18"
+      "id": "card-3",
+      "target": "enemy-32"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-33"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-20"
+    },
+    {
+      "type": "playCard",
+      "id": "card-9"
+    },
+    {
+      "type": "playCard",
+      "id": "card-1",
+      "target": "enemy-33"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-33"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-33"
     },
     {
       "type": "takeReward",
-      "card": "twinStrike"
+      "card": "heavyBlade"
     },
     {
       "type": "chooseNode",
       "id": "act1-12-1"
     },
     {
-      "type": "event",
-      "choice": "banana"
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-37"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "potion",
+      "index": 0
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-38"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-25"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-38"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-39"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-39"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-39"
+    },
+    {
+      "type": "takeReward",
+      "card": "pommelStrike"
     },
     {
       "type": "chooseNode",
       "id": "act1-13-0"
     },
     {
-      "type": "event",
-      "choice": "pray"
+      "type": "rest",
+      "choice": "upgrade",
+      "card": "card-25"
     },
     {
       "type": "chooseNode",
-      "id": "act1-14-0"
+      "id": "act1-14-1"
     },
     {
       "type": "rest",
       "choice": "upgrade",
-      "card": "card-31"
+      "card": "card-12"
     },
     {
       "type": "chooseNode",
@@ -590,13 +635,166 @@
     },
     {
       "type": "playCard",
-      "id": "card-36",
-      "target": "enemy-44"
+      "id": "card-41",
+      "target": "enemy-42"
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-44"
+      "id": "card-27",
+      "target": "enemy-42"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-41"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-42"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-42"
+    },
+    {
+      "type": "playCard",
+      "id": "card-1",
+      "target": "enemy-42"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-17"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-42"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-25",
+      "target": "enemy-42"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-42"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-46"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-46"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-12"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-47"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-47"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-47"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-47"
+    },
+    {
+      "type": "playCard",
+      "id": "temporary-45"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-48"
+    },
+    {
+      "type": "playCard",
+      "id": "card-1",
+      "target": "enemy-48"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-17"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-48"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-48"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-53"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-48"
     },
     {
       "type": "chooseCard",
@@ -607,81 +805,37 @@
     },
     {
       "type": "playCard",
-      "id": "card-13"
+      "id": "card-36",
+      "target": "enemy-54"
     },
     {
       "type": "playCard",
-      "id": "card-36",
-      "target": "enemy-44"
+      "id": "card-12"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-44"
+      "id": "card-20",
+      "target": "enemy-49"
     },
     {
       "type": "playCard",
-      "id": "card-18"
+      "id": "card-3",
+      "target": "enemy-49"
     },
     {
       "type": "playCard",
       "id": "card-5",
-      "target": "enemy-44"
+      "target": "enemy-49"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-36",
-      "target": "enemy-48"
-    },
-    {
-      "type": "playCard",
-      "id": "card-6"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-48"
-    },
-    {
-      "type": "chooseCard",
-      "id": "card-15"
-    },
-    {
-      "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-48"
-    },
-    {
-      "type": "playCard",
-      "id": "card-5",
-      "target": "enemy-48"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "playCard",
-      "id": "card-4",
+      "id": "card-1",
       "target": "enemy-49"
     },
     {
@@ -690,21 +844,8 @@
       "target": "enemy-49"
     },
     {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-56"
-    },
-    {
-      "type": "playCard",
-      "id": "card-3",
-      "target": "enemy-57"
-    },
-    {
       "type": "takeReward",
-      "card": "reaper"
+      "card": "feed"
     },
     {
       "type": "bossRelic",
@@ -716,55 +857,64 @@
     },
     {
       "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-59"
+      "id": "card-59",
+      "target": "enemy-60"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "playCard",
-      "id": "card-6"
-    },
-    {
-      "type": "playCard",
-      "id": "card-5",
-      "target": "enemy-59"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "potion",
-      "index": 0,
-      "target": "enemy-59"
-    },
-    {
-      "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-59"
-    },
-    {
-      "type": "playCard",
-      "id": "card-36",
-      "target": "enemy-59"
+      "id": "card-12"
     },
     {
       "type": "playCard",
       "id": "card-1",
-      "target": "enemy-59"
+      "target": "enemy-60"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-60"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-60"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-60"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-60"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-60"
+    },
+    {
+      "type": "playCard",
+      "id": "card-10",
+      "target": "enemy-60"
     },
     {
       "type": "takeReward",
@@ -775,109 +925,70 @@
       "id": "act2-1-1"
     },
     {
-      "type": "buy",
-      "id": "offer-65"
+      "type": "event",
+      "choice": "elegance"
     },
     {
-      "type": "buy",
-      "id": "offer-62"
+      "type": "chooseNode",
+      "id": "act2-2-2"
     },
     {
       "type": "buy",
       "id": "offer-63"
     },
     {
-      "type": "removeCard",
-      "id": "card-1"
+      "type": "buy",
+      "id": "offer-67"
     },
     {
       "type": "leaveShop"
     },
     {
       "type": "chooseNode",
-      "id": "act2-2-0"
+      "id": "act2-3-1"
     },
     {
       "type": "playCard",
-      "id": "card-36",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
       "target": "enemy-73"
     },
     {
       "type": "playCard",
-      "id": "card-72"
+      "id": "card-30"
     },
     {
       "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-73"
-    },
-    {
-      "type": "chooseCard",
-      "id": "card-36"
-    },
-    {
-      "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-73"
-    },
-    {
-      "type": "playCard",
-      "id": "card-5",
+      "id": "card-25",
       "target": "enemy-73"
     },
     {
       "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-73"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-71"
-    },
-    {
-      "type": "playCard",
-      "id": "card-3",
-      "target": "enemy-73"
-    },
-    {
-      "type": "playCard",
-      "id": "card-9"
-    },
-    {
-      "type": "playCard",
-      "id": "card-6"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-58"
     },
     {
       "type": "playCard",
       "id": "card-10",
+      "target": "enemy-73"
+    },
+    {
+      "type": "playCard",
+      "id": "card-1",
+      "target": "enemy-73"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-73"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
       "target": "enemy-73"
     },
     {
@@ -886,156 +997,59 @@
     },
     {
       "type": "chooseNode",
-      "id": "act2-3-1"
+      "id": "act2-4-0"
     },
     {
       "type": "playCard",
-      "id": "card-13"
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
     },
     {
       "type": "playCard",
       "id": "card-4",
-      "target": "enemy-78"
-    },
-    {
-      "type": "playCard",
-      "id": "card-3",
-      "target": "enemy-78"
+      "target": "enemy-74"
     },
     {
       "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "playCard",
-      "id": "card-6"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-78"
-    },
-    {
-      "type": "chooseCard",
-      "id": "card-58"
-    },
-    {
-      "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-78"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "playCard",
-      "id": "card-2",
-      "target": "enemy-78"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-58"
-    },
-    {
-      "type": "playCard",
-      "id": "card-72"
-    },
-    {
-      "type": "playCard",
-      "id": "card-5",
-      "target": "enemy-78"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-78"
-    },
-    {
-      "type": "takeReward",
-      "card": "heavyBlade"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act2-4-0"
-    },
-    {
-      "type": "potion",
-      "index": 0
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
     },
     {
       "type": "playCard",
       "id": "card-36",
-      "target": "enemy-80"
+      "target": "enemy-74"
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-80"
+      "id": "card-8"
     },
     {
-      "type": "chooseCard",
-      "id": "card-36"
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-74"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-31"
+      "id": "card-12"
     },
     {
       "type": "playCard",
-      "id": "card-6"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-10",
-      "target": "enemy-80"
-    },
-    {
-      "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-80"
+      "id": "card-59",
+      "target": "enemy-74"
     },
     {
       "type": "playCard",
       "id": "card-3",
-      "target": "enemy-80"
-    },
-    {
-      "type": "endTurn"
+      "target": "enemy-74"
     },
     {
       "type": "playCard",
-      "id": "card-71"
-    },
-    {
-      "type": "playCard",
-      "id": "card-58"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
+      "id": "card-5",
+      "target": "enemy-74"
     },
     {
       "type": "takeReward",
@@ -1046,16 +1060,163 @@
       "id": "act2-5-0"
     },
     {
-      "type": "event",
-      "choice": "leave"
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-75"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-75"
+    },
+    {
+      "type": "potion",
+      "index": 1
+    },
+    {
+      "type": "playCard",
+      "id": "card-25",
+      "target": "enemy-75"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-75"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-75"
+    },
+    {
+      "type": "playCard",
+      "id": "card-1",
+      "target": "enemy-75"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-7"
+    },
+    {
+      "type": "playCard",
+      "id": "card-8"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-75"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-75"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-75"
+    },
+    {
+      "type": "playCard",
+      "id": "card-9"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-17"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-75"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-20"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-75"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-75"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-75"
+    },
+    {
+      "type": "playCard",
+      "id": "card-7"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-75"
+    },
+    {
+      "type": "takeReward",
+      "card": "shockwave"
     },
     {
       "type": "chooseNode",
       "id": "act2-6-0"
     },
     {
-      "type": "rest",
-      "choice": "heal"
+      "type": "buy",
+      "id": "offer-83"
+    },
+    {
+      "type": "removeCard",
+      "id": "card-1"
+    },
+    {
+      "type": "leaveShop"
     },
     {
       "type": "chooseNode",
@@ -1063,74 +1224,113 @@
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-81"
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-91"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-91"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-90"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-92"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-36"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-92"
+    },
+    {
+      "type": "endTurn"
     },
     {
       "type": "playCard",
       "id": "card-72"
     },
     {
-      "type": "endTurn"
+      "type": "playCard",
+      "id": "card-25",
+      "target": "enemy-92"
     },
     {
       "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-36",
-      "target": "enemy-81"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
+      "id": "card-12"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-31"
+      "id": "card-20",
+      "target": "enemy-92"
+    },
+    {
+      "type": "playCard",
+      "id": "card-6"
+    },
+    {
+      "type": "playCard",
+      "id": "card-8"
     },
     {
       "type": "playCard",
       "id": "card-5",
-      "target": "enemy-81"
+      "target": "enemy-92"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "potion",
+      "index": 0
+    },
+    {
+      "type": "playCard",
+      "id": "card-78"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-92"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-93"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "playCard",
-      "id": "card-2",
-      "target": "enemy-82"
+      "id": "card-20",
+      "target": "enemy-93"
     },
     {
       "type": "playCard",
       "id": "card-4",
-      "target": "enemy-82"
-    },
-    {
-      "type": "playCard",
-      "id": "card-3",
-      "target": "enemy-82"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-71"
-    },
-    {
-      "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-82"
+      "target": "enemy-93"
     },
     {
       "type": "takeReward",
@@ -1138,7 +1338,7 @@
     },
     {
       "type": "chooseNode",
-      "id": "act2-8-1"
+      "id": "act2-8-0"
     },
     {
       "type": "takeTreasure",
@@ -1149,34 +1349,76 @@
       "id": "act2-9-1"
     },
     {
-      "type": "potion",
-      "index": 0
+      "type": "playCard",
+      "id": "card-90"
     },
     {
       "type": "playCard",
-      "id": "card-31"
+      "id": "card-78"
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-85"
+      "id": "card-25",
+      "target": "enemy-98"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-85"
-    },
-    {
-      "type": "playCard",
       "id": "card-3",
-      "target": "enemy-85"
+      "target": "enemy-98"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-98"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-12"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-98"
+    },
+    {
+      "type": "playCard",
+      "id": "card-10",
+      "target": "enemy-98"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-98"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-98"
     },
     {
       "type": "endTurn"
@@ -1184,11 +1426,7 @@
     {
       "type": "playCard",
       "id": "card-36",
-      "target": "enemy-85"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
+      "target": "enemy-98"
     },
     {
       "type": "takeReward",
@@ -1196,152 +1434,57 @@
     },
     {
       "type": "chooseNode",
-      "id": "act2-10-1"
+      "id": "act2-10-2"
     },
     {
-      "type": "potion",
-      "index": 0
+      "type": "rest",
+      "choice": "heal"
+    },
+    {
+      "type": "chooseNode",
+      "id": "act2-11-3"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-102"
+    },
+    {
+      "type": "playCard",
+      "id": "card-90"
     },
     {
       "type": "playCard",
       "id": "card-36",
-      "target": "enemy-86"
-    },
-    {
-      "type": "playCard",
-      "id": "card-58"
+      "target": "enemy-102"
     },
     {
       "type": "endTurn"
     },
     {
-      "type": "playCard",
-      "id": "card-31"
+      "type": "potion",
+      "index": 1
     },
     {
       "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-86"
-    },
-    {
-      "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-87"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-87"
-    },
-    {
-      "type": "chooseCard",
       "id": "card-15"
     },
     {
-      "type": "endTurn"
-    },
-    {
       "type": "playCard",
-      "id": "card-71"
-    },
-    {
-      "type": "playCard",
-      "id": "card-2",
-      "target": "enemy-87"
-    },
-    {
-      "type": "playCard",
-      "id": "card-4",
-      "target": "enemy-87"
-    },
-    {
-      "type": "takeReward",
-      "card": "feed"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act2-11-2"
-    },
-    {
-      "type": "event",
-      "choice": "pray"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act2-12-2"
-    },
-    {
-      "type": "buy",
-      "id": "offer-97"
-    },
-    {
-      "type": "removeCard",
-      "id": "card-2"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act2-13-1"
-    },
-    {
-      "type": "playCard",
-      "id": "card-58"
-    },
-    {
-      "type": "playCard",
-      "id": "card-90",
-      "target": "enemy-102"
-    },
-    {
-      "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-102"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
+      "id": "card-27",
       "target": "enemy-102"
     },
     {
       "type": "chooseCard",
-      "id": "card-72"
+      "id": "card-59"
     },
     {
       "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-102"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "potion",
-      "index": 0,
-      "target": "enemy-102"
+      "id": "card-12"
     },
     {
       "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-72"
-    },
-    {
-      "type": "playCard",
-      "id": "card-36",
+      "id": "card-59",
       "target": "enemy-102"
     },
     {
@@ -1349,20 +1492,7 @@
     },
     {
       "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "playCard",
-      "id": "card-4",
-      "target": "enemy-102"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-36",
-      "target": "enemy-102"
+      "id": "card-8"
     },
     {
       "type": "playCard",
@@ -1370,8 +1500,124 @@
       "target": "enemy-102"
     },
     {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-102"
+    },
+    {
+      "type": "playCard",
+      "id": "card-9"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-102"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-102"
+    },
+    {
       "type": "takeReward",
-      "card": "flameBarrier"
+      "card": null
+    },
+    {
+      "type": "chooseNode",
+      "id": "act2-12-2"
+    },
+    {
+      "type": "potion",
+      "index": 1
+    },
+    {
+      "type": "playCard",
+      "id": "card-78"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-103"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-25",
+      "target": "enemy-103"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-103"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-103"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-103"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-103"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-36"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-103"
+    },
+    {
+      "type": "playCard",
+      "id": "card-6"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-103"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-103"
+    },
+    {
+      "type": "takeReward",
+      "card": null
+    },
+    {
+      "type": "chooseNode",
+      "id": "act2-13-3"
+    },
+    {
+      "type": "event",
+      "choice": "leave"
     },
     {
       "type": "chooseNode",
@@ -1387,141 +1633,223 @@
     },
     {
       "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-107"
+      "id": "card-20",
+      "target": "enemy-108"
     },
     {
       "type": "playCard",
-      "id": "card-58"
+      "id": "card-78"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-108"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-107"
-    },
-    {
-      "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-107"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-10",
-      "target": "enemy-107"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-107"
-    },
-    {
-      "type": "chooseCard",
-      "id": "card-106"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-106"
+      "id": "card-30"
     },
     {
       "type": "playCard",
       "id": "card-36",
-      "target": "enemy-107"
+      "target": "enemy-108"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-108"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-71"
+      "id": "card-90"
     },
     {
       "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-107"
+      "id": "card-27",
+      "target": "enemy-108"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-72"
     },
     {
       "type": "playCard",
       "id": "card-10",
-      "target": "enemy-107"
+      "target": "enemy-108"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-107"
+      "id": "card-15"
     },
     {
       "type": "playCard",
-      "id": "card-18"
+      "id": "card-25",
+      "target": "enemy-108"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-108"
     },
     {
       "type": "playCard",
       "id": "card-5",
-      "target": "enemy-107"
+      "target": "enemy-108"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-108"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-107"
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-10",
+      "target": "enemy-108"
     },
     {
       "type": "playCard",
       "id": "card-3",
-      "target": "enemy-107"
-    },
-    {
-      "type": "playCard",
-      "id": "card-5",
-      "target": "enemy-107"
-    },
-    {
-      "type": "playCard",
-      "id": "card-8"
+      "target": "enemy-108"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-107"
+      "id": "card-36",
+      "target": "enemy-108"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-108"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-36"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-108"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-72"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-108"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-17"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-108"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-108"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-108"
+    },
+    {
+      "type": "playCard",
+      "id": "card-10",
+      "target": "enemy-108"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-108"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-108"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-108"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-41"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-108"
+    },
+    {
+      "type": "playCard",
+      "id": "card-6"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-108"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-108"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-108"
     },
     {
       "type": "takeReward",
-      "card": "immolate"
+      "card": "demonForm"
     },
     {
       "type": "bossRelic",
-      "id": "cursedKey"
+      "id": "sozu"
     },
     {
       "type": "chooseNode",
@@ -1532,208 +1860,279 @@
       "index": 0
     },
     {
-      "type": "playCard",
-      "id": "card-106"
+      "type": "potion",
+      "index": 0,
+      "target": "enemy-112"
     },
     {
       "type": "playCard",
-      "id": "card-18"
+      "id": "card-59",
+      "target": "enemy-111"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-110"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-72"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-110"
     },
     {
       "type": "playCard",
       "id": "card-3",
-      "target": "enemy-111"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-90",
       "target": "enemy-110"
     },
     {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-71"
-    },
-    {
-      "type": "playCard",
-      "id": "card-72"
-    },
-    {
-      "type": "playCard",
-      "id": "card-36",
-      "target": "enemy-109"
-    },
-    {
-      "type": "playCard",
-      "id": "card-5",
-      "target": "enemy-109"
-    },
-    {
       "type": "takeReward",
       "card": null
     },
     {
       "type": "chooseNode",
-      "id": "act3-1-1"
+      "id": "act3-1-0"
     },
     {
       "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "playCard",
-      "id": "card-106"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-36",
-      "target": "enemy-112"
+      "id": "card-109"
     },
     {
       "type": "playCard",
       "id": "card-10",
-      "target": "enemy-112"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
+      "target": "enemy-113"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-112"
-    },
-    {
-      "type": "takeReward",
-      "card": null
-    },
-    {
-      "type": "chooseNode",
-      "id": "act3-2-2"
+      "id": "card-30"
     },
     {
       "type": "playCard",
-      "id": "card-108"
+      "id": "card-12"
     },
     {
       "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "takeReward",
-      "card": null
-    },
-    {
-      "type": "chooseNode",
-      "id": "act3-3-3"
+      "id": "card-78"
     },
     {
       "type": "playCard",
-      "id": "card-108"
-    },
-    {
-      "type": "playCard",
-      "id": "card-106"
-    },
-    {
-      "type": "playCard",
-      "id": "card-72"
-    },
-    {
-      "type": "potion",
-      "index": 0
-    },
-    {
-      "type": "playCard",
-      "id": "card-90",
-      "target": "enemy-119"
+      "id": "card-20",
+      "target": "enemy-113"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-119"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-119"
-    },
-    {
-      "type": "takeReward",
-      "card": null
-    },
-    {
-      "type": "chooseNode",
-      "id": "act3-4-2"
-    },
-    {
-      "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-123"
-    },
-    {
-      "type": "playCard",
-      "id": "card-90",
-      "target": "enemy-123"
-    },
-    {
-      "type": "playCard",
-      "id": "card-10",
-      "target": "enemy-123"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-108"
-    },
-    {
-      "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-124"
+      "id": "card-27",
+      "target": "enemy-113"
     },
     {
       "type": "chooseCard",
-      "id": "card-108"
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-113"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-113"
+    },
+    {
+      "type": "takeReward",
+      "card": "battleTrance"
+    },
+    {
+      "type": "chooseNode",
+      "id": "act3-2-1"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-118"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-117"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-25",
+      "target": "enemy-117"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-90"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-116"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-117"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-117"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-109"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-117"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-117"
+    },
+    {
+      "type": "playCard",
+      "id": "card-7"
+    },
+    {
+      "type": "playCard",
+      "id": "card-8"
     },
     {
       "type": "playCard",
       "id": "card-5",
-      "target": "enemy-125"
+      "target": "enemy-117"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-117"
+    },
+    {
+      "type": "takeReward",
+      "card": "uppercut"
+    },
+    {
+      "type": "chooseNode",
+      "id": "act3-3-0"
+    },
+    {
+      "type": "event",
+      "choice": "idol"
+    },
+    {
+      "type": "chooseNode",
+      "id": "act3-4-1"
+    },
+    {
+      "type": "playCard",
+      "id": "card-109"
+    },
+    {
+      "type": "playCard",
+      "id": "card-17"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-90"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-124"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-124"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-124"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-72"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-124"
+    },
+    {
+      "type": "playCard",
+      "id": "card-78"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-124"
     },
     {
       "type": "takeReward",
@@ -1744,8 +2143,97 @@
       "id": "act3-5-1"
     },
     {
-      "type": "event",
-      "choice": "leave"
+      "type": "playCard",
+      "id": "card-90"
+    },
+    {
+      "type": "playCard",
+      "id": "card-10",
+      "target": "enemy-127"
+    },
+    {
+      "type": "playCard",
+      "id": "card-78"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-116"
+    },
+    {
+      "type": "playCard",
+      "id": "card-123",
+      "target": "enemy-127"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-127"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-123"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-127"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-123",
+      "target": "enemy-127"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-127"
+    },
+    {
+      "type": "playCard",
+      "id": "card-25",
+      "target": "enemy-127"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-109"
+    },
+    {
+      "type": "playCard",
+      "id": "card-72"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-127"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-127"
+    },
+    {
+      "type": "takeReward",
+      "card": null
     },
     {
       "type": "chooseNode",
@@ -1758,115 +2246,66 @@
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-129"
-    },
-    {
-      "type": "chooseCard",
-      "id": "card-36"
+      "id": "card-90"
     },
     {
       "type": "playCard",
-      "id": "card-72"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "potion",
-      "index": 0
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-129"
-    },
-    {
-      "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-129"
+      "id": "card-123",
+      "target": "enemy-128"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-106"
+      "id": "card-116"
     },
     {
       "type": "playCard",
-      "id": "card-58"
+      "id": "card-109"
     },
     {
       "type": "playCard",
-      "id": "card-90",
-      "target": "enemy-129"
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-128"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-108"
-    },
-    {
-      "type": "takeReward",
-      "card": "whirlwind"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act3-7-1"
+      "id": "card-78"
     },
     {
       "type": "playCard",
-      "id": "card-108"
+      "id": "card-41",
+      "target": "enemy-128"
     },
     {
       "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-138"
-    },
-    {
-      "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-138"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "potion",
-      "index": 0,
-      "target": "enemy-138"
-    },
-    {
-      "type": "playCard",
-      "id": "card-31"
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
-    },
-    {
-      "type": "playCard",
-      "id": "card-90",
-      "target": "enemy-138"
+      "id": "card-10",
+      "target": "enemy-128"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-138"
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-128"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-128"
     },
     {
       "type": "takeReward",
@@ -1874,72 +2313,155 @@
     },
     {
       "type": "chooseNode",
-      "id": "act3-8-0"
-    },
-    {
-      "type": "takeTreasure",
-      "skip": true
-    },
-    {
-      "type": "chooseNode",
-      "id": "act3-9-1"
-    },
-    {
-      "type": "buy",
-      "id": "offer-145"
-    },
-    {
-      "type": "removeCard",
-      "id": "card-3"
-    },
-    {
-      "type": "leaveShop"
-    },
-    {
-      "type": "chooseNode",
-      "id": "act3-10-0"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "playCard",
-      "id": "card-90",
-      "target": "enemy-153"
-    },
-    {
-      "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-151"
-    },
-    {
-      "type": "playCard",
-      "id": "card-72"
-    },
-    {
-      "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-151"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-31"
+      "id": "act3-7-2"
     },
     {
       "type": "playCard",
       "id": "card-36",
-      "target": "enemy-152"
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-137"
+      "id": "card-78"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-132"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-109"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-132"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-72"
+    },
+    {
+      "type": "playCard",
+      "id": "card-25",
+      "target": "enemy-132"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-90"
+    },
+    {
+      "type": "playCard",
+      "id": "card-123",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-10",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-116"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-132"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-116"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-17"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-132"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-123",
+      "target": "enemy-132"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-132"
     },
     {
       "type": "takeReward",
@@ -1947,56 +2469,126 @@
     },
     {
       "type": "chooseNode",
-      "id": "act3-11-0"
+      "id": "act3-8-1"
+    },
+    {
+      "type": "takeTreasure",
+      "skip": false
+    },
+    {
+      "type": "chooseNode",
+      "id": "act3-9-2"
     },
     {
       "type": "playCard",
-      "id": "card-137"
-    },
-    {
-      "type": "potion",
-      "index": 0
+      "id": "card-72"
     },
     {
       "type": "playCard",
-      "id": "card-108"
+      "id": "card-27",
+      "target": "enemy-133"
+    },
+    {
+      "type": "playCard",
+      "id": "card-116"
+    },
+    {
+      "type": "playCard",
+      "id": "card-90"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-13"
+      "id": "card-123",
+      "target": "enemy-133"
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-158"
-    },
-    {
-      "type": "chooseCard",
-      "id": "card-108"
+      "id": "card-41",
+      "target": "enemy-133"
     },
     {
       "type": "playCard",
-      "id": "card-58"
+      "id": "card-10",
+      "target": "enemy-133"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-108"
+      "id": "card-59",
+      "target": "enemy-133"
     },
     {
       "type": "playCard",
-      "id": "card-90",
-      "target": "enemy-158"
+      "id": "card-20",
+      "target": "enemy-133"
     },
     {
       "type": "playCard",
-      "id": "card-15",
-      "target": "enemy-158"
+      "id": "card-4",
+      "target": "enemy-133"
+    },
+    {
+      "type": "playCard",
+      "id": "card-78"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-133"
+    },
+    {
+      "type": "takeReward",
+      "card": null
+    },
+    {
+      "type": "chooseNode",
+      "id": "act3-10-2"
+    },
+    {
+      "type": "playCard",
+      "id": "card-72"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-134"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-134"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-134"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-109"
+    },
+    {
+      "type": "playCard",
+      "id": "card-90"
     },
     {
       "type": "playCard",
@@ -2007,20 +2599,20 @@
     },
     {
       "type": "playCard",
-      "id": "card-31"
+      "id": "card-78"
     },
     {
       "type": "playCard",
-      "id": "card-10",
-      "target": "enemy-158"
+      "id": "card-36",
+      "target": "enemy-135"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-136"
     },
     {
       "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-158"
     },
     {
       "type": "takeReward",
@@ -2028,23 +2620,111 @@
     },
     {
       "type": "chooseNode",
-      "id": "act3-12-1"
+      "id": "act3-11-1"
     },
     {
       "type": "event",
-      "choice": "leave"
+      "choice": "pray"
     },
     {
       "type": "chooseNode",
-      "id": "act3-13-2"
+      "id": "act3-12-0"
     },
     {
-      "type": "event",
-      "choice": "leave"
+      "type": "rest",
+      "choice": "heal"
     },
     {
       "type": "chooseNode",
-      "id": "act3-14-2"
+      "id": "act3-13-0"
+    },
+    {
+      "type": "playCard",
+      "id": "card-109"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-140"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-139"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-36"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-90"
+    },
+    {
+      "type": "playCard",
+      "id": "card-72"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-139"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-17"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-139"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-139"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-78"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-139"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-116"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-139"
+    },
+    {
+      "type": "takeReward",
+      "card": null
+    },
+    {
+      "type": "chooseNode",
+      "id": "act3-14-0"
     },
     {
       "type": "rest",
@@ -2056,43 +2736,31 @@
     },
     {
       "type": "playCard",
-      "id": "card-31"
+      "id": "card-90"
     },
     {
       "type": "playCard",
-      "id": "card-106"
+      "id": "card-27",
+      "target": "enemy-143"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "playCard",
+      "id": "card-15"
+    },
+    {
+      "type": "playCard",
+      "id": "card-30"
+    },
+    {
+      "type": "playCard",
+      "id": "card-7"
     },
     {
       "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-58"
-    },
-    {
-      "type": "playCard",
-      "id": "card-18"
-    },
-    {
-      "type": "playCard",
-      "id": "card-43",
-      "target": "enemy-161"
-    },
-    {
-      "type": "playCard",
-      "id": "card-5",
-      "target": "enemy-161"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-108"
-    },
-    {
-      "type": "playCard",
-      "id": "card-13"
     },
     {
       "type": "playCard",
@@ -2100,36 +2768,153 @@
     },
     {
       "type": "playCard",
-      "id": "card-24",
-      "target": "enemy-161"
-    },
-    {
-      "type": "chooseCard",
-      "id": "card-108"
+      "id": "card-109"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-137"
+      "id": "card-78"
+    },
+    {
+      "type": "playCard",
+      "id": "card-123",
+      "target": "enemy-143"
+    },
+    {
+      "type": "playCard",
+      "id": "card-25",
+      "target": "enemy-144"
     },
     {
       "type": "endTurn"
     },
     {
       "type": "playCard",
-      "id": "card-71"
+      "id": "card-17"
     },
     {
       "type": "playCard",
-      "id": "card-79",
-      "target": "enemy-162"
+      "id": "card-2",
+      "target": "enemy-144"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-36",
+      "target": "enemy-145"
+    },
+    {
+      "type": "playCard",
+      "id": "card-59",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-144"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-123",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-4",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-144"
+    },
+    {
+      "type": "endTurn"
     },
     {
       "type": "playCard",
       "id": "card-10",
-      "target": "enemy-161"
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-27",
+      "target": "enemy-144"
+    },
+    {
+      "type": "chooseCard",
+      "id": "card-10"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-12"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-20",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-123",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-5",
+      "target": "enemy-144"
+    },
+    {
+      "type": "endTurn"
+    },
+    {
+      "type": "playCard",
+      "id": "card-41",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-3",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-2",
+      "target": "enemy-144"
+    },
+    {
+      "type": "playCard",
+      "id": "card-17"
     },
     {
       "type": "endTurn"
@@ -2137,22 +2922,14 @@
     {
       "type": "playCard",
       "id": "card-5",
-      "target": "enemy-161"
-    },
+      "target": "enemy-144"
+    }
+  ],
+  "content": [
     {
-      "type": "playCard",
-      "id": "card-9"
-    },
-    {
-      "type": "playCard",
-      "id": "card-6"
-    },
-    {
-      "type": "endTurn"
-    },
-    {
-      "type": "playCard",
-      "id": "card-108"
+      "id": "base",
+      "version": "3",
+      "digest": "8192b770"
     }
   ]
 }

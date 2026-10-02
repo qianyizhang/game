@@ -51,9 +51,9 @@ Determinism only holds for the same rules/content version. Content edits are cod
 
 ## Why three engines
 
-Poker scoring, sequential player turns and simultaneous auto-combat have different timing requirements. The game folders keep those differences explicit. The shared `replayCodec` knows only creation, legal transitions and command validation; it does not know what an attack, card, turn or victory means. Blindside retains its original game-specific session implementation. Extracting another abstraction should solve observed duplication without hiding the rules.
+Poker scoring, sequential player turns and simultaneous auto-combat have different timing requirements. The game folders keep those differences explicit. The shared `replayCodec` knows only creation, legal transitions and command validation; it does not know what an attack, card, turn or victory means. Blindside retains a compatibility adapter around the shared codec. Extracting another abstraction should solve observed duplication without hiding the rules.
 
-`Hub.tsx` owns game selection and loads each game on demand through React lazy imports. Its loading screen keeps the game picker available; switching away from a loading game preserves the other game’s save. Browser tabs use the selected game’s title. `useSession.ts` adapts Blindside to browser storage; `useLocalGame.ts` adapts Slay the Spire and Last Hearth. The latter two share `GameShell.tsx`. Game saves have distinct keys and a versioned game identifier. Switching unmounts one UI and restores the other game's accepted-command history.
+`Hub.tsx` owns game selection and loads each game on demand through React lazy imports. Its loading screen keeps the game picker available; switching away from a loading game preserves the other game’s save. Browser tabs use the selected game’s title. `useLocalGame.ts` handles separate normal/practice storage for all games; `useSession.ts` adapts Blindside’s legacy call shape. Spire and Hearth share `GameShell.tsx`. Game saves have distinct keys and a versioned game identifier. Switching unmounts one UI and restores the other game's accepted-command history.
 
 ## Trace a Slay the Spire turn
 
@@ -76,13 +76,13 @@ Content selects typed `Effect` values. Existing effects compose without resolver
 - `domain/state.ts`: narrow mutations inside a cloned transition and explicit seeded randomness.
 - `ui/Card.tsx`, `Combat.tsx`, `Map.tsx`, `Rooms.tsx`: separate presentation surfaces.
 
-A suspended `CardChoice` holds the resolving card and remaining effects. Only `chooseCard` may proceed until that choice is resolved; it is fully replayable. The v2 save identity is `slay-the-spire`; old `emberpath.v1` storage is preserved separately and its exports are rejected as incompatible.
+A suspended `CardChoice` holds the resolving card and remaining effects. Only `chooseCard` may proceed until that choice is resolved; it is fully replayable. The v3 save identity is `slay-the-spire`; old `emberpath.v1` storage is preserved separately and its exports are rejected as incompatible.
 
 ## Trace a Last Hearth round
 
 1. `recruitAction` defines the economic boundary for human and bot commands: prices, available offers, targets, hand/board capacity, triples and Discover.
 2. The pool owns unallocated copies; offers, hands, boards and Discover own allocated copies. `supplyTotal` can reconstruct total ownership per definition. A golden carries the sum of its components' copies; tokens own none.
-3. `endRecruit` runs each living bot through the same boundary, then applies permanent end-recruitment effects. Lobby code selects opponents and hands cloned boards to `resolveCombat`.
+3. `endRecruit` runs each living bot through the same boundary, then applies permanent end-recruitment effects. Pairings were seeded at recruitment start. Lobby code stores last-seen scouting snapshots and hands cloned boards to `resolveCombat`.
 4. The resolver owns attack sweeps, RNG targeting, simultaneous damage, a death queue and summoned combat instances. Frames contain snapshots for the viewer. `record=false` skips frame allocation for AI-only battles without changing rules or RNG.
 5. Combat returns a result and updated RNG. Lobby code applies hero damage, fatigue and elimination. Wounds, temporary buffs, shield consumption and summoned tokens do not write back to recruitment boards.
 6. The UI steps through immutable frames. Advancing a frame is UI state; advancing a round is a recorded domain command.
@@ -111,3 +111,13 @@ Local import limits are 2 MB and 10,000 commands. Existing corrupt saves are ret
 - Slay the Spire tests pin zone conservation, damage/debuff timing, lethal cancellation, upgrades and act progression.
 - Last Hearth tests pin simultaneous combat, shield/poison/cleave/reborn, summons, triples, pool accounting and lobby termination.
 - Whole-run simulations use legal commands, include successful and failed runs, and reconstruct final states exactly. The Last Hearth cohort checks every definition’s supply after every action and round.
+
+## Workshop layers
+
+- `shared/Playback.tsx` is a presentation clock over authoritative frames. Spire frames include post-event fighter/card-zone snapshots and damage arithmetic; Blindside has scoring steps; Hearth retains its combat viewer. Pause, speed and stepping never dispatch game commands.
+- `shared/replay.ts` adds validated prefix reconstruction and a practice-only setup envelope. Each game’s `application/scenario.ts` validates its own inputs and builds state through normal domain helpers. Practice saves/checkpoints have distinct keys and are rejected by normal import.
+- `mods/*.ts` owns trusted local pack definitions. `shared/contentPack.ts` assembles registries and pins canonical data checksums; game-specific validators remain in `mods/validation.ts`. Game imports fail visibly through `ContentBoundary`. Hook semantics require explicit version bumps.
+- `games/*/application/evidence.ts` observes accepted before/command/after transitions. It interprets its own game, producing small common event/summary records. `shared/evidence/recorder.ts` accepts a storage port and bounds local retention. Recording uses wall time only outside the rules/replay state. Storage errors do not reject a legal game command.
+- `WorkshopTools` hosts `PracticeLab`, `ModsPanel` and `EvidencePanel`, keeping each panel’s state and controls local. Reporting never changes game state. Automated cohorts use the same observers and are explicitly labeled; the comparison script matches fixed seeds and excludes ambiguous pairs.
+
+New mechanics should stay in the owning game. The shared layers know how to store and display events; they do not determine combat, scoring, legal choices or game outcomes.

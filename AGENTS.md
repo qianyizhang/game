@@ -1,6 +1,6 @@
 # Card Workshop
 
-Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone Battlegrounds, in that order. The Hearthstone choice is Battlegrounds (tavern recruitment and automatic combat), not Tavern Brawl duels. All three are implemented: Blindside, Slay the Spire (Ironclad, Ascension 0) and Last Hearth. The original Slay the Spire implementation supersedes the earlier Emberpath hybrid.
+Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone Battlegrounds, in that order. The Hearthstone choice is Battlegrounds (tavern recruitment and automatic combat), not Tavern Brawl duels. All three are implemented: Blindside, Slay the Spire (Ironclad and Silent, Ascensions 0–5) and Last Hearth. The original Slay the Spire implementation supersedes the earlier Emberpath hybrid.
 
 ## Boundaries
 

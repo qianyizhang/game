@@ -1,3 +1,4 @@
+import { ContentBoundary } from './ContentBoundary';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { GamePicker, type GameId } from './GamePicker';
 import './Hub.css';
@@ -39,22 +40,24 @@ export default function Hub() {
     }
   };
   return (
-    <Suspense
-      key={game}
-      fallback={
-        <main className="game-loading">
-          <GamePicker current={game} onSwitch={change} />
-          <p role="status">Opening your table…</p>
-        </main>
-      }
-    >
-      {game === 'spire' ? (
-        <SpireApp onSwitch={change} />
-      ) : game === 'battlegrounds' ? (
-        <BattlegroundsApp onSwitch={change} />
-      ) : (
-        <BalatroApp onSwitch={change} />
-      )}
-    </Suspense>
+    <ContentBoundary key={game}>
+      <Suspense
+        key={game}
+        fallback={
+          <main className="game-loading">
+            <GamePicker current={game} onSwitch={change} />
+            <p role="status">Opening your table…</p>
+          </main>
+        }
+      >
+        {game === 'spire' ? (
+          <SpireApp onSwitch={change} />
+        ) : game === 'battlegrounds' ? (
+          <BattlegroundsApp onSwitch={change} />
+        ) : (
+          <BalatroApp onSwitch={change} />
+        )}
+      </Suspense>
+    </ContentBoundary>
   );
 }

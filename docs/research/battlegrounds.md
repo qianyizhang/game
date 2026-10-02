@@ -1,6 +1,6 @@
 # Hearthstone Battlegrounds → Last Hearth
 
-Status: implemented. Eight-player local lobby (human plus seven bots), six tavern tiers, 36 recruits, four tokens, three heroes, shared finite supply and combat playback. The agreed Hearthstone mode is **Battlegrounds: recruit and auto-battle**.
+Status: implemented. Eight-player local lobby (human plus seven bots), six tavern tiers, 48 recruits, four tokens, three heroes, shared finite supply and combat playback. The agreed Hearthstone mode is **Battlegrounds: recruit and auto-battle**.
 
 ## Dated reference
 
@@ -31,7 +31,7 @@ Triples preserve the sum of buffs from their three components, added to double b
 
 Source: [combat.ts](../../src/games/battlegrounds/domain/combat.ts). Recruitment lives in [recruitment.ts](../../src/games/battlegrounds/domain/recruitment.ts); lobby progression lives in [game.ts](../../src/games/battlegrounds/domain/game.ts).
 
-1. Finish bot recruitment and apply each player's permanent end-recruitment effects left to right. Shuffle the living players into pairs using explicit RNG. The odd player fights the latest eliminated warband's snapshot.
+1. Seed living-player pairings at recruitment start. Finish bot recruitment and apply each player's permanent end-recruitment effects left to right. Store the resulting public warbands as scouting snapshots and use the already selected pairings. The odd player fights the latest eliminated warband's snapshot.
 2. Deep-clone both boards. The larger board attacks first; equal sizes use a seeded coin flip.
 3. Alternate sides. Within each side, select the leftmost eligible minion not yet used in the current sweep. Start another sweep when all eligible survivors have attacked. New summons join the current sweep once; they never catch up on earlier sweeps. Zero-Attack minions skip attacking.
 4. Choose a random living Taunt, or any random opponent if there are no Taunts. Windfury makes two consecutive swings while the attacker survives.
@@ -65,3 +65,11 @@ Test the same two boards over many seeds before judging a position from one outc
 No network play, real-time recruiting timer, armor, opponent scouting before pairing, damage cap, seasonal spells, buddies, quests, anomalies, trinkets or current-season card pools. Poisonous is the simple reusable lethal keyword used by this study. Heroes, tribe pool, prices, stats and timing edge cases are original and documented above.
 
 [Development playtest](playtests/2026-10-02-last-hearth.md) records 12 seeded lobbies, both winning and losing, with per-action supply conservation and exact replay reconstruction. Unit tests cover combat interactions and recruitment accounting; browser tests exercise recruitment, playback, triples, Discover, save/import, victory and phone layout. Human fun and matchup balance remain open playtesting work.
+
+## Scouting and bot decisions (v3)
+
+The next opponent is known during recruitment. Its preview is the last completed round’s warband and tier, labeled with that round; it never displays that opponent’s upcoming purchases. Round one has no prior board. Ghost previews use the last eliminated board snapshot. These snapshots own no pool copies. Local random pairing does not implement the commercial recent-opponent exclusion system.
+
+Bots use legal recruitment commands and their own offers. They prioritize completing triples, value tribe support and death-effect combinations, preserve money when a refresh cannot lead to a purchase, freeze unaffordable triples, and temper upgrades at low HP. Positioning moves cleave/Windfury attackers forward and support behind them, keeping Taunt at an edge. These are inspectable heuristics, not a claim of expert or stronger-than-baseline play.
+
+The [v3 cohort](playtests/2026-10-02-workshop-v3.md) checks complete lobbies and supply conservation. Human experiments should test whether scouting changes a purchase, target or formation, and whether bot pressure supports multiple builds.

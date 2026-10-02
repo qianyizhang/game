@@ -1,3 +1,4 @@
+import { shuffle } from '../../../shared/random';
 import { random } from '../../../shared/random';
 import { HEROES, MINION_BY_ID, RECRUITS } from '../content/minions';
 import { buff, makeUnit, matchesTribe, summonHooks } from './units';
@@ -5,7 +6,7 @@ import type { BGCommand, BGState, Player, Unit } from './types';
 
 export const POOL_COPIES = [0, 16, 15, 13, 11, 9, 7];
 export const SHOP_SIZE = [0, 3, 4, 4, 5, 5, 6];
-const UPGRADE_COST = [0, 5, 7, 8, 9, 10, 0];
+export const UPGRADE_COST = [0, 5, 7, 8, 9, 10, 0];
 export const bgLog = (run: BGState, message: string) => {
   run.notice = message;
   run.log = [...run.log.slice(-99), message];
@@ -53,6 +54,10 @@ export function refreshShop(run: BGState, player: Player) {
   fillShop(run, player);
 }
 export function startRecruitment(run: BGState) {
+  [run.pairings, run.rng] = shuffle(
+    run.players.filter((p) => p.hp > 0).map((p) => p.id),
+    run.rng,
+  );
   for (const player of run.players.filter((p) => p.hp > 0)) {
     player.gold = Math.min(10, run.round + 2) + (player.hero === 'quartermaster' ? 1 : 0);
     player.powerUsed = false;
@@ -230,7 +235,10 @@ export function recruitAction(
       if (player.hero === 'quartermaster') return 'This hero power is passive.';
       if (player.powerUsed) return 'Hero power already used this round.';
       if (player.gold < hero.cost) return 'Not enough gold for the hero power.';
-      if (hero.targeted) {
+      if (hero.boardBuff) {
+        if (!player.board.length) return 'Recruit a minion first.';
+        for (const unit of player.board) buff(unit, hero.boardBuff.attack, hero.boardBuff.health);
+      } else if (hero.targeted) {
         const target = player.board.find((m) => m.id === command.target);
         if (!target) return 'Select a friendly minion.';
         buff(target, 1, 1);

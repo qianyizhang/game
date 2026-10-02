@@ -1,3 +1,6 @@
+import { assemble } from '../../../shared/contentPack';
+import { hearthPacks } from '../../../mods/hearth';
+import { validateMinion, validateHero } from '../../../mods/validation';
 import type { HeroDefinition, MinionDefinition, Tribe } from '../domain/types';
 import { EXPANSION_MINIONS } from './expansion-minions';
 type Draft = Omit<MinionDefinition, 'symbol'> & { symbol?: string };
@@ -13,7 +16,7 @@ const minion = (definition: Draft): MinionDefinition => ({
   symbol: glyphs[definition.tribe],
   ...definition,
 });
-export const MINIONS: MinionDefinition[] = [
+const BASE_MINIONS: MinionDefinition[] = [
   minion({
     id: 'stray',
     name: 'Briar Stray',
@@ -416,12 +419,14 @@ export const MINIONS: MinionDefinition[] = [
   }),
   ...EXPANSION_MINIONS,
 ];
+
+export const MINIONS = assemble(BASE_MINIONS, hearthPacks, (p) => p.minions, validateMinion);
 export const MINION_BY_ID = Object.fromEntries(MINIONS.map((m) => [m.id, m])) as Record<
   string,
   MinionDefinition
 >;
 export const RECRUITS = MINIONS.filter((m) => !m.token);
-export const HEROES: HeroDefinition[] = [
+const BASE_HEROES: HeroDefinition[] = [
   {
     id: 'forgekeeper',
     name: 'The Forgekeeper',
@@ -447,3 +452,12 @@ export const HEROES: HeroDefinition[] = [
     text: 'Once per round, pay 2 gold to give all friendly Beasts +1/+1 permanently.',
   },
 ];
+
+export const HEROES = assemble(BASE_HEROES, hearthPacks, (p) => p.heroes, validateHero);
+
+for (const minion of MINIONS)
+  for (const effect of [minion.battlecry, minion.deathrattle])
+    if (effect?.type === 'summon' && !Object.hasOwn(MINION_BY_ID, effect.card))
+      throw new Error(
+        `${minion.id}: summoned minion ${effect.card} does not exist in the active registry.`,
+      );

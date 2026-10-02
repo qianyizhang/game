@@ -1,4 +1,4 @@
-import { MINION_BY_ID } from '../content/minions';
+import { MINION_BY_ID, HEROES } from '../content/minions';
 import { recruitAction } from './recruitment';
 import { matchesTribe } from './units';
 import type { BGCommand, BGState, Player, Unit } from './types';
@@ -11,13 +11,25 @@ export function unitValue(unit: Unit, player: Player): number {
   const duplicates = [...player.board, ...player.hand].filter(
     (m) => !m.golden && m.definitionId === unit.definitionId,
   ).length;
+  const support = player.board.reduce((sum, ally) => {
+    if (ally.id === unit.id) return sum;
+    const d = MINION_BY_ID[ally.definitionId];
+    return (
+      sum +
+      (d.summonBuff && matchesTribe(unit, d.summonBuff.tribe) ? 3 : 0) +
+      (d.deathGrowth && matchesTribe(unit, d.deathGrowth.tribe) ? 2 : 0) +
+      (d.deathDamage && matchesTribe(unit, d.deathDamage.tribe) ? 2 : 0) +
+      (d.extraDeathrattle && definition.deathrattle ? 5 : 0)
+    );
+  }, 0);
   return (
+    support +
     unit.attack +
     unit.health * 0.75 +
     definition.tier * 1.5 +
     unit.keywords.length * 2 +
     (definition.deathrattle ? 3 : 0) +
-    (definition.endTurn ? 5 : 0) +
+    (definition.endTurn ? 3 + (definition.endTurn.type === 'self' ? 2 : friends * 2) : 0) +
     (definition.summonBuff || definition.deathGrowth || definition.deathDamage || definition.buyBuff
       ? friends * 2
       : 0) +
@@ -47,11 +59,18 @@ export function botDecision(run: BGState, player: Player, refreshes: number): BG
     if (unitValue(best, player) > unitValue(worst, player) + 1)
       return { type: 'sell', id: worst.id };
   }
+  const copies = (unit: Unit) =>
+    [...player.board, ...player.hand].filter(
+      (u) => !u.golden && !unit.golden && u.definitionId === unit.definitionId,
+    ).length;
+  const triple = player.shop.find((u) => copies(u) === 2);
+  if (triple && player.gold >= 3 && player.hand.length < 10) return { type: 'buy', id: triple.id };
   const upgradeAt = [0, 2, 4, 6, 8, 10];
   if (
     player.tier < 6 &&
     run.round >= upgradeAt[player.tier] &&
     player.gold >= player.upgradeCost &&
+    (player.hp > 15 || player.gold - player.upgradeCost >= 3) &&
     (player.board.length >= Math.min(5, run.round) || run.round === 2)
   )
     return { type: 'upgrade' };
@@ -77,7 +96,12 @@ export function botDecision(run: BGState, player: Player, refreshes: number): BG
     player.board.some((m) => matchesTribe(m, 'beast'))
   )
     return { type: 'power' };
-  if (player.gold >= 1 && refreshes < 5) return { type: 'refresh' };
+  const hero = HEROES.find((h) => h.id === player.hero)!;
+  if (!player.powerUsed && hero.boardBuff && player.board.length && player.gold >= hero.cost)
+    return { type: 'power' };
+  if (triple && player.gold < 3) return player.frozen ? null : { type: 'freeze' };
+  if (player.gold >= 1 && refreshes < 5 && (player.gold >= 4 || player.board.length >= 7))
+    return { type: 'refresh' };
   return null;
 }
 export function runBot(run: BGState, player: Player) {
@@ -96,10 +120,16 @@ export function runBot(run: BGState, player: Player) {
       return (
         unit.attack +
         (unit.keywords.includes('cleave') ? 20 : 0) +
+        (unit.keywords.includes('windfury') ? 8 : 0) +
         (d.deathrattle ? 4 : 0) -
         (d.summonBuff || d.deathGrowth || d.deathDamage || d.extraDeathrattle ? 30 : 0)
       );
     };
     return priority(b) - priority(a);
   });
+  // Keep vulnerable support away from a taunt's cleave-adjacent slot.
+  if (player.board.length >= 4) {
+    const taunt = player.board.findIndex((u) => u.keywords.includes('taunt'));
+    if (taunt > 0) player.board.unshift(player.board.splice(taunt, 1)[0]);
+  }
 }

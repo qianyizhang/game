@@ -1,4 +1,8 @@
+import { assemble } from '../../../shared/contentPack';
+import { spirePacks } from '../../../mods/spire';
+import { validateCard } from '../../../mods/validation';
 import type { CardDefinition, Effect } from '../domain/types';
+import { SILENT_CARDS } from './silent';
 const damage = (
   amount: number,
   extra: Omit<Extract<Effect, { type: 'damage' }>, 'type' | 'amount'> = {},
@@ -18,6 +22,7 @@ const power = (name: Extract<Effect, { type: 'power' }>['power'], amount = 1): E
 type Draft = Omit<CardDefinition, 'symbol' | 'family' | 'upgradeText' | 'rarity'> &
   Partial<Pick<CardDefinition, 'symbol' | 'family' | 'upgradeText' | 'rarity'>>;
 const card = (c: Draft): CardDefinition => ({
+  character: 'ironclad',
   symbol: c.kind === 'attack' ? '⚔' : c.kind === 'power' ? '✦' : '◈',
   family: 'Ironclad',
   rarity: 'common',
@@ -26,9 +31,10 @@ const card = (c: Draft): CardDefinition => ({
 });
 
 /** Original Slay the Spire 1 Ironclad identities and effects; curated pool, no cross-class cards. */
-export const CARDS: CardDefinition[] = [
+const BASE_CARDS: CardDefinition[] = [
   card({
     id: 'strike',
+    character: undefined,
     name: 'Strike',
     kind: 'attack',
     rarity: 'basic',
@@ -42,6 +48,7 @@ export const CARDS: CardDefinition[] = [
   }),
   card({
     id: 'defend',
+    character: undefined,
     name: 'Defend',
     kind: 'skill',
     rarity: 'basic',
@@ -785,7 +792,20 @@ export const CARDS: CardDefinition[] = [
     text: 'Unplayable. At turn end, lose HP equal to your hand size.',
     effects: [],
   }),
+  ...SILENT_CARDS,
+  card({
+    id: 'void',
+    name: 'Void',
+    kind: 'status',
+    rarity: 'special',
+    cost: -1,
+    token: true,
+    ethereal: true,
+    text: 'Unplayable. When drawn, lose 1 Energy. Ethereal.',
+    effects: [],
+  }),
 ];
+export const CARDS = assemble(BASE_CARDS, spirePacks, (p) => p.cards, validateCard);
 export const CARD_BY_ID = Object.fromEntries(CARDS.map((c) => [c.id, c])) as Record<
   string,
   CardDefinition
@@ -793,3 +813,10 @@ export const CARD_BY_ID = Object.fromEntries(CARDS.map((c) => [c.id, c])) as Rec
 export const REWARD_CARDS = CARDS.filter((c) => !c.starter && !c.token);
 export const cardCost = (id: string, upgraded: boolean) =>
   upgraded ? (CARD_BY_ID[id].upgradedCost ?? CARD_BY_ID[id].cost) : CARD_BY_ID[id].cost;
+
+for (const card of CARDS)
+  for (const effect of [...card.effects, ...(card.upgradedEffects ?? [])])
+    if (effect.type === 'generate' && !Object.hasOwn(CARD_BY_ID, effect.card))
+      throw new Error(
+        `${card.id}: generated card ${effect.card} does not exist in the active registry.`,
+      );

@@ -1,5 +1,7 @@
 # Blindside: first development playtest
 
+**Historical snapshot.** The current rules-v3 cohort is in [Workshop v3 playtests](2026-10-02-workshop-v3.md). Outcomes and fixtures below belong to the earlier rules/content revision.
+
 Date: 2026-10-02. Rules version: 1 (pre-release tuning). Source: `npm run playtest`, implemented in `tests/simulation/playtest.test.ts`.
 
 ## What was checked

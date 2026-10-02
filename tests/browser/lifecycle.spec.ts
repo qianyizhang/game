@@ -2,6 +2,10 @@ import { expect, test } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { spireSession } from '../../src/games/spire/application/session';
 
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('card-workshop.playback-speed', '100'));
+});
+
 test('all three legal losses render and restarting one game preserves the others', async ({
   page,
 }) => {

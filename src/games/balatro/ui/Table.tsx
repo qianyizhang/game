@@ -1,3 +1,4 @@
+import { ShopExtras, SkipBlind, PackChoice, OwnedVouchers } from './ShopExtras';
 import { activeBoss, currentBoss, targetFor } from '../content/blinds';
 import { CONSUMABLE_BY_ID } from '../content/consumables';
 import { JOKER_BY_ID } from '../content/jokers';
@@ -96,7 +97,9 @@ export function Table({ run, selected, toggle, dispatch, preview, newRun }: Prop
           </div>
         ))}
       </div>
+      <OwnedVouchers run={run} />
       <div className="playmat">
+        {run.phase === 'pack' && <PackChoice run={run} dispatch={dispatch} />}
         {run.phase === 'ready' && (
           <div className="blind-intro">
             <div className="blindside-emblem">
@@ -115,6 +118,7 @@ export function Table({ run, selected, toggle, dispatch, preview, newRun }: Prop
             <button className="primary large" onClick={() => dispatch({ type: 'startBlind' })}>
               Play {run.blind === 2 ? 'Boss' : ['Small', 'Big'][run.blind]} Blind <span>↗</span>
             </button>
+            <SkipBlind run={run} dispatch={dispatch} />
             <small className="muted">
               Four hands. Three discards. Find your combination.
               <br />
@@ -279,6 +283,7 @@ export function Table({ run, selected, toggle, dispatch, preview, newRun }: Prop
                 );
               })}
             </div>
+            <ShopExtras run={run} dispatch={dispatch} />
             <div className="shop-footer">
               <button
                 className="secondary"
@@ -288,7 +293,8 @@ export function Table({ run, selected, toggle, dispatch, preview, newRun }: Prop
                 ↻ Reroll · ${rerollPrice(run)}
               </button>
               <span className="muted small">
-                Save $5 to earn $1 interest next round. Interest caps at $5.
+                Save $5 to earn $1 interest next round. Interest caps at $
+                {run.vouchers.includes('interest') ? 10 : 5}.
               </span>
             </div>
           </div>
@@ -341,6 +347,7 @@ export function Table({ run, selected, toggle, dispatch, preview, newRun }: Prop
           const definition = CONSUMABLE_BY_ID[owned.definitionId];
           const usable =
             !isFinished &&
+            run.phase !== 'pack' &&
             (!definition.targets ||
               (run.phase === 'playing' &&
                 selected.length > 0 &&

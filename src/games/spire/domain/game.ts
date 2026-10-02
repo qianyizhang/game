@@ -17,6 +17,7 @@ import {
 import {
   addPermanentCard,
   aliveEnemies,
+  combatOngoing,
   applyStatus,
   gainBlock,
   heal,
@@ -27,28 +28,37 @@ import {
   roll,
   upgradeRandom,
 } from './state';
-import type { Potion, SpireCommand, SpireState } from './types';
+import type { Character, Potion, SpireCommand, SpireState } from './types';
 export { availableNodes } from './map';
-export const SPIRE_VERSION = 2;
-export function createSpire(seedInput: string): SpireState {
+export const SPIRE_VERSION = 3;
+export function createSpire(
+  seedInput: string,
+  options: { character?: Character; ascension?: number } = {},
+): SpireState {
   const seed = seedInput.trim().slice(0, 64) || 'IRONCLAD-01';
+  const character = options.character ?? 'ironclad';
+  const hp = character === 'silent' ? 70 : 80;
   const run: SpireState = {
+    resolution: { sequence: 0, frames: [] },
     version: SPIRE_VERSION,
     seed,
     rng: hashSeed(seed),
     nextId: 1,
-    character: 'ironclad',
+    character,
+    ascension: options.ascension ?? 0,
+    unknownChances: { fight: 10, shop: 3, treasure: 2 },
+    seenEvents: [],
     phase: 'neow',
     act: 1,
     row: -1,
     lane: null,
     map: [],
     currentNode: null,
-    hp: 80,
-    maxHp: 80,
+    hp,
+    maxHp: hp,
     gold: 99,
     deck: [],
-    relics: ['burningBlood'],
+    relics: [character === 'silent' ? 'ringOfTheSnake' : 'burningBlood'],
     relicCounters: {},
     potions: [],
     combat: null,
@@ -68,11 +78,14 @@ export function createSpire(seedInput: string): SpireState {
     event: '',
     eventDone: false,
     log: [],
-    notice: 'The Ironclad. A new ascent begins with Neow.',
+    notice: 'Choose your character and Ascension, then receive Neow’s blessing.',
   };
   for (let i = 0; i < 5; i++) addPermanentCard(run, 'strike');
-  for (let i = 0; i < 4; i++) addPermanentCard(run, 'defend');
-  addPermanentCard(run, 'bash');
+  for (let i = 0; i < (character === 'silent' ? 5 : 4); i++) addPermanentCard(run, 'defend');
+  if (character === 'silent') {
+    addPermanentCard(run, 'neutralize');
+    addPermanentCard(run, 'survivor');
+  } else addPermanentCard(run, 'bash');
   run.map = generateMap(run);
   return run;
 }
@@ -86,10 +99,15 @@ function nextAct(run: SpireState) {
   run.fightsThisAct = 0;
   run.lastEncounter = '';
   run.lastElite = '';
+  run.unknownChances = { fight: 10, shop: 3, treasure: 2 };
+  run.potionChance = 40;
   run.phase = 'map';
-  heal(run, run.maxHp);
+  heal(run, Math.round((run.maxHp - run.hp) * (run.ascension >= 5 ? 0.75 : 1)));
   run.map = generateMap(run);
-  log(run, `Act ${run.act}: recover all HP. Choose your next route.`);
+  log(
+    run,
+    `Act ${run.act}: recover ${run.ascension >= 5 ? '75%' : 'all'} of your missing HP. Choose your next route.`,
+  );
 }
 function checkCombat(run: SpireState) {
   if (run.phase !== 'combat' || !run.combat) return;
@@ -102,13 +120,21 @@ function checkCombat(run: SpireState) {
     );
     return;
   }
-  if (aliveEnemies(run).length) return;
+  if (combatOngoing(run)) return;
   const node = run.map.find((n) => n.id === run.currentNode);
   const kind = node?.kind === 'boss' ? 'boss' : node?.kind === 'elite' ? 'elite' : 'fight';
   healAfterCombat(run);
+  if (run.practiceEncounter) {
+    run.phase = 'won';
+    log(run, 'Practice encounter complete. Branch the replay to try a different approach.');
+    return;
+  }
   if (kind === 'boss' && run.act === 3) {
     run.phase = 'won';
-    log(run, 'Victory! The Ironclad has completed the three-act ascent.');
+    log(
+      run,
+      `Victory! The ${run.character === 'silent' ? 'Silent' : 'Ironclad'} has completed Ascension ${run.ascension}.`,
+    );
     return;
   }
   const gold =
@@ -119,7 +145,7 @@ function checkCombat(run: SpireState) {
   run.rewardRelic = kind === 'elite' ? randomRelic(run) : null;
   run.rewardPotion = rewardPotion(run, kind === 'boss');
   run.phase = 'reward';
-  log(run, `Victory. +${gold} gold. Choose a card or skip it; Burning Blood restores HP.`);
+  log(run, `Victory. +${gold} gold. Choose a card or skip it.`);
 }
 function chooseEvent(run: SpireState): string {
   const choices =
@@ -132,10 +158,14 @@ function chooseEvent(run: SpireState): string {
             'womanInBlue',
             ...(run.hp < run.maxHp / 2 || run.relics.includes('goldenIdol') ? ['moaiHead'] : []),
           ];
-  return pick(
-    run,
-    choices.filter((id) => id !== 'goldenIdol' || !run.relics.includes('goldenIdol')),
+  const eligible = choices.filter(
+    (id) =>
+      (id !== 'goldenIdol' || !run.relics.includes('goldenIdol')) && !run.seenEvents.includes(id),
   );
+  if (!eligible.length) return '';
+  const id = pick(run, eligible);
+  run.seenEvents.push(id);
+  return id;
 }
 function eventAction(run: SpireState, choice: string, cardId?: string): string | undefined {
   if (choice === 'leave') {
@@ -232,15 +262,26 @@ export function transitionSpire(
   command: SpireCommand,
 ): { state: SpireState; error?: string } {
   const run = structuredClone(previous);
+  run.resolution = { sequence: previous.resolution.sequence + 1, frames: [] };
   const reject = (error: string) => ({ state: previous, error });
   if (run.phase === 'won' || run.phase === 'lost')
     return reject('This run has ended. Start a new ascent.');
   if (run.phase === 'combat' && run.combat?.choice && command.type !== 'chooseCard')
     return reject('Resolve the pending card choice first.');
   switch (command.type) {
+    case 'configure':
+      if (
+        run.phase !== 'neow' ||
+        !['ironclad', 'silent'].includes(command.character) ||
+        !Number.isInteger(command.ascension) ||
+        command.ascension < 0 ||
+        command.ascension > 5
+      )
+        return reject('Choose a character and Ascension 0–5 before Neow.');
+      return { state: createSpire(run.seed, command) };
     case 'neow':
       if (run.phase !== 'neow') return reject('Neow has already granted a blessing.');
-      if (command.choice === 'maxHp') maxHp(run, 8);
+      if (command.choice === 'maxHp') maxHp(run, Math.floor(run.maxHp * 0.1));
       else if (command.choice === 'lament') grantRelic(run, 'neowsLament');
       else if (command.choice === 'gold') run.gold += 100;
       else if (command.choice === 'bossSwap') {
@@ -255,7 +296,31 @@ export function transitionSpire(
       if (run.phase !== 'map') return reject('Finish the current room first.');
       const node = availableNodes(run).find((n) => n.id === command.id);
       if (!node) return reject('That path is not connected to your current room.');
+      const previousKind = run.map.find((n) => n.id === run.currentNode)?.kind;
       node.visited = true;
+      if (node.kind === 'event') {
+        const value = roll(run) * 100;
+        const chance = run.unknownChances;
+        const shop = previousKind === 'shop' ? 0 : chance.shop;
+        node.kind =
+          value < chance.fight
+            ? 'fight'
+            : value < chance.fight + chance.treasure
+              ? 'treasure'
+              : value < chance.fight + chance.treasure + shop
+                ? 'shop'
+                : 'event';
+        for (const [key, base] of [
+          ['fight', 10],
+          ['treasure', 2],
+          ['shop', 3],
+        ] as const)
+          chance[key] = node.kind === key ? base : Math.min(100, chance[key] + base);
+        if (node.kind === 'event') {
+          run.event = chooseEvent(run);
+          if (!run.event) node.kind = 'fight';
+        }
+      }
       run.row = node.row;
       run.lane = node.lane;
       run.currentNode = node.id;
@@ -268,7 +333,6 @@ export function transitionSpire(
         log(run, `Enter ${node.kind}.`);
         if (node.kind === 'shop') openShop(run);
         if (node.kind === 'event') {
-          run.event = chooseEvent(run);
           run.eventDone = false;
         }
         if (node.kind === 'treasure') run.rewardRelic = randomRelic(run);
@@ -411,5 +475,14 @@ export function transitionSpire(
     default:
       return reject('Unknown command.');
   }
+  if (run.combat && run.resolution.frames.length)
+    log(
+      run,
+      run.combat.choice
+        ? 'Choose the next card to resolve this effect.'
+        : run.phase === 'combat'
+          ? 'Your next decision.'
+          : `Combat finished: ${run.phase}.`,
+    );
   return { state: run };
 }

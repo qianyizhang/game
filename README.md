@@ -2,13 +2,13 @@
 
 Three complete, local card-game studies for learning game design and having fun changing the rules. Choose a game from the sidebar; each keeps its own save.
 
-| Playable game                               | Core loop                                                                             | Curated content                                                                                    |
-| ------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| **Blindside** · Balatro                     | Build poker hands, score ordered effects, shop and beat eight antes / 24 blinds       | 52 Jokers, 18 consumables, eight boss definitions                                                  |
-| **Slay the Spire** · Ironclad               | Read enemy intent, spend energy, shape a deck and choose a route through three acts   | 57 obtainable cards, six status/curse definitions, 32 relics, eight potions, three boss encounters |
-| **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals | 48 recruits across six tiers, four tokens, three heroes, finite shared pool                        |
+| Playable game                               | Core loop                                                                                      | Curated content                                                                     |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **Blindside** · Balatro                     | Build poker hands, score ordered effects, shop and beat eight antes, with optional blind skips | 52 Jokers, 18 consumables, six packs, six vouchers, four skip tags, eight bosses    |
+| **Slay the Spire** · Ironclad & Silent      | Read enemy intent, spend energy, shape a deck and choose a route through three acts            | 95 obtainable cards, 33 relics, eight potions, nine boss encounters, Ascensions 0–5 |
+| **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals          | 48 recruits across six tiers, four tokens, three heroes, finite shared pool         |
 
-Blindside and Last Hearth use original content names. Slay the Spire uses original-game identities and researched mechanics with a curated Ironclad pool; all illustrations and code are local. These are curated studies with explicit simplifications, not exact commercial-game replicas.
+Blindside and Last Hearth use original content names. Slay the Spire uses original-game identities and researched mechanics with curated Ironclad and Silent pools; all illustrations and code are local. These are curated studies with explicit simplifications, not exact commercial-game replicas.
 
 ## Play locally
 
@@ -24,14 +24,14 @@ Open the local URL printed by Vite. Gameplay needs no account, backend, remote a
 ### First moves
 
 - **Blindside:** select 1–5 cards and play or discard. Reach the blind target before hands run out. Buy Jokers that reinforce a strategy; reorder them and inspect the scoring trace. Card enhancements, held effects and whole-hand effects have distinct stages.
-- **Slay the Spire:** choose Neow’s blessing, then a connected map node, select an enemy, and play cards within your energy budget. Read intent before ending the turn. Rewards can be skipped; upgrades, removal and rest shape the whole ascent. The inspector shows card zones and effect order.
+- **Slay the Spire:** choose Ironclad/Silent and Ascension 0–5, choose Neow’s blessing, then a connected map node, select an enemy, and play cards within your energy budget. Read intent before ending the turn. Rewards can be skipped; upgrades, removal and rest shape the whole ascent. The inspector shows card zones and effect order.
 - **Last Hearth:** choose a hero, buy a minion and deploy it from hand. Recruit costs 3 gold, refresh 1, sell 1, freeze free. Upgrade for stronger future offers. Three matching copies make a golden; play it for a higher-tier Discover. **Ready** resolves combat, with stepping and speed controls for studying what happened.
 
 Keyboard-operable buttons/selects and responsive layouts support desktop and phone. Wide hands and warbands scroll within their own panels. Desktop is the primary design target.
 
 ## Learn and modify
 
-Start with [architecture](docs/architecture.md), then [make a mod](docs/modding.md). Each game has its own rules, typed content, application session and UI under `src/games/`. Domain code runs without React or a browser; interfaces submit commands and render authoritative results. Only seeded randomness, replay envelopes and small UI utilities are shared.
+Start with [architecture](docs/architecture.md), then [make a mod](docs/modding.md). Each game has its own rules, typed content, application session and UI under `src/games/`. Domain code runs without React or a browser; interfaces submit commands and render authoritative results. Shared utilities handle seeded randomness, replay envelopes, presentation clocks, content validation and local evidence; each game keeps its own rules and observations.
 
 [Research home](docs/research/README.md) holds mechanisms, sources, exact local timing, design questions and playtest notes for every game. [Settled decisions](docs/decisions.md) records scope; [completion evidence](docs/completion.md) maps requirements to checks.
 
@@ -39,24 +39,26 @@ Start with [architecture](docs/architecture.md), then [make a mod](docs/modding.
 
 [Card suite expansion](docs/card-expansion.md) lists the twelve new Jokers, twelve new recruits, and the new Silent illustrations.
 
-| Area                                               | Responsibility                                                       |
-| -------------------------------------------------- | -------------------------------------------------------------------- |
-| `src/games/{balatro,spire,battlegrounds}/content/` | Card definitions, descriptions and tuning                            |
-| `src/games/*/domain/`                              | State, legal actions, timing, resource accounting and progression    |
-| `src/games/*/application/`                         | Game-specific replay validation and sessions                         |
-| `src/games/*/ui/`                                  | Game tables, cards, catalogues and inspectors                        |
-| `src/app/`                                         | Game navigation, browser storage and shared shell; Blindside's shell |
-| `src/shared/`                                      | Seeded RNG and the replay envelope used by the later games           |
-| `tests/simulation/`                                | Legal fixed-seed policies and run evidence                           |
-| `tests/browser/`                                   | Real controls, persistence and rendered layout checks                |
+| Area                                               | Responsibility                                                         |
+| -------------------------------------------------- | ---------------------------------------------------------------------- |
+| `src/games/{balatro,spire,battlegrounds}/content/` | Card definitions, descriptions and tuning                              |
+| `src/games/*/domain/`                              | State, legal actions, timing, resource accounting and progression      |
+| `src/games/*/application/`                         | Game-specific replay validation and sessions                           |
+| `src/games/*/ui/`                                  | Game tables, cards, catalogues and inspectors                          |
+| `src/app/`                                         | Game navigation, browser storage and shared shell; Blindside's shell   |
+| `src/shared/`                                      | Seeded RNG, replay envelope, content validation, playback and evidence |
+| `tests/simulation/`                                | Legal fixed-seed policies and run evidence                             |
+| `tests/browser/`                                   | Real controls, persistence and rendered layout checks                  |
 
-Mods are trusted local TypeScript edits. Change a definition, keep its text consistent, bump that game's rules version if replay meaning changes, and start a fresh run. Rules versions deliberately reject incompatible histories; there are no automatic migrations or arbitrary third-party plugin loading.
+**Practice lab** offers decision rewind, saved branches and validated custom scenarios in separate practice saves. **Content packs** previews trusted local TypeScript examples; **Playtesting** shows automatically recorded summaries, picks/skips and encounter outcomes, with export/clear controls.
+
+Mods are trusted local TypeScript edits in `src/mods/`. Change a definition, keep its text consistent, bump that game's rules version if replay meaning changes, and start a fresh run. Rules versions deliberately reject incompatible histories; there are no automatic migrations or arbitrary third-party plugin loading.
 
 ## Scope and differences
 
-- **Blindside:** original values, bosses and growth timing; no booster packs, vouchers, seals, editions, blind skips/tags, unlocks or endless mode. Growth happens after scoring. Direct consumable purchases support deck editing.
-- **Slay the Spire:** Ironclad at Ascension 0; 15 rooms plus a boss per act, with Slime Boss → The Champ → Donu/Deca. Curated enemies/events; no other classes, Ascension ladder, keys or Act IV. Enemy selection weights, shops and map generation have documented simplifications.
-- **Last Hearth:** curated foundational Battlegrounds, with sequential local bots; no network/timer, seasonal systems, armor or damage cap. Combat snapshots are isolated. Escalating fatigue after round 15 bounds the lobby; detailed death ordering is our documented local convention.
+- **Blindside:** immediate Buffoon/Celestial/Standard pack choices, permanent vouchers and Small/Big Blind skip tags. Original values, bosses and growth timing; no Arcana/Spectral packs, seals, editions, unlocks or endless mode.
+- **Slay the Spire:** Ironclad and Silent at A0–A5; 15 rooms plus a seeded boss per act. All nine boss encounter families are present. Curated cards/enemies/events; no other classes, A6–A20, keys or Act IV. HP, move weights, shops and map generation retain documented simplifications.
+- **Last Hearth:** curated foundational Battlegrounds, with composition-aware sequential local bots and last-seen opponent scouting; no network/timer, seasonal systems, armor or damage cap. Combat snapshots are isolated. Escalating fatigue after round 15 bounds the lobby; detailed death ordering is our documented local convention.
 
 The content supports several interacting builds in each game. Balance and human difficulty remain provisional; automated wins demonstrate reachable progression, not fun or parity with the originals.
 
@@ -65,10 +67,10 @@ The content supports several interacting builds in each game. Balance and human 
 ```sh
 npm run check          # formatting, rule/replay tests, strict TypeScript, production build
 npm run test:browser   # Chrome, disposable profile, once-per-run startup guard
-npm run playtest       # 8 Blindside + 6 Slay the Spire + 12 Last Hearth fixed-seed runs
+npm run playtest       # 8 Blindside + 12 Slay the Spire + 12 Last Hearth fixed-seed runs
 npm run format        # format source, fixtures and documentation
 ```
 
 On this Mac, browser-launching agent commands require approved execution outside the restricted sandbox. Ordinary checks remain sandboxed. The harness stops at the first startup failure and never uses a personal Chrome profile.
 
-Simulations write ignored evidence under `test-results/simulation/`, `test-results/spire/` and `test-results/battlegrounds/`. Browser evidence is isolated under `test-results/browser/`. Full legal winning command histories are kept in `tests/fixtures/`; browser tests import them to verify terminal UI. Those fixtures contain no injected money, health or cards. Policies use visible state and the same legal transitions; Last Hearth checks every recruitable definition's supply after every human action and resolved bot round.
+Simulations write ignored evidence under `test-results/simulation/`, `test-results/spire/` and `test-results/battlegrounds/`. Browser evidence is isolated under `test-results/browser/`. Full legal winning command histories are kept in `tests/fixtures/`; browser tests import them to verify terminal UI. Those fixtures contain no injected money, health or cards. Policies use the same legal transitions. Spire uses one-command lookahead that can observe consequences of hidden draws, so it is not a fair-play benchmark; Last Hearth checks every recruitable definition's supply after every human action and resolved bot round.

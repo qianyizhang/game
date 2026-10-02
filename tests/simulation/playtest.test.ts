@@ -1,3 +1,5 @@
+import { blindsideSession } from '../../src/games/balatro/application/session';
+import { automatedEvidence } from './evidence';
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { expect, it } from 'vitest';
 import { hashSeed, shuffle } from '../../src/shared/random';
@@ -159,8 +161,12 @@ it('finishes unmodified seeded runs and saves replayable evidence', () => {
     'MOD-01',
     'MOD-02',
   ];
+  const evidence: ReturnType<typeof automatedEvidence>[] = [];
   const summaries = seeds.map((seed) => {
     const session = simulate(seed);
+    evidence.push(
+      automatedEvidence(blindsideSession, { state: session.run, replay: session.replay }),
+    );
     expect(['won', 'lost']).toContain(session.run.phase);
     expect(importReplay(exportReplay(session)).run).toEqual(session.run);
     writeFileSync(`test-results/simulation/${seed}.json`, exportReplay(session));
@@ -175,6 +181,7 @@ it('finishes unmodified seeded runs and saves replayable evidence', () => {
       jokers: session.run.jokers.map((j) => j.definitionId),
     };
   });
+  writeFileSync('test-results/simulation/evidence.json', JSON.stringify(evidence, null, 2));
   writeFileSync('test-results/simulation/summary.json', JSON.stringify(summaries, null, 2));
   expect(summaries.some((run) => run.outcome === 'won')).toBe(true);
   console.table(summaries.map(({ jokers: _jokers, ...row }) => row));
