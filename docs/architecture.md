@@ -53,7 +53,7 @@ Determinism only holds for the same rules/content version. Content edits are cod
 
 Poker scoring, sequential player turns and simultaneous auto-combat have different timing requirements. The game folders keep those differences explicit. The shared `replayCodec` knows only creation, legal transitions and command validation; it does not know what an attack, card, turn or victory means. Blindside retains its original game-specific session implementation. Extracting another abstraction should solve observed duplication without hiding the rules.
 
-`Hub.tsx` owns game selection. `useSession.ts` adapts Blindside to browser storage; `useLocalGame.ts` adapts Slay the Spire and Last Hearth. The latter two share `GameShell.tsx`. Game saves have distinct keys and a versioned game identifier. Switching unmounts one UI and restores the other game's accepted-command history.
+`Hub.tsx` owns game selection and loads each game on demand through React lazy imports. Its loading screen keeps the game picker available; switching away from a loading game preserves the other game’s save. Browser tabs use the selected game’s title. `useSession.ts` adapts Blindside to browser storage; `useLocalGame.ts` adapts Slay the Spire and Last Hearth. The latter two share `GameShell.tsx`. Game saves have distinct keys and a versioned game identifier. Switching unmounts one UI and restores the other game's accepted-command history.
 
 ## Trace a Slay the Spire turn
 

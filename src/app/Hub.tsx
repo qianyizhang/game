@@ -1,8 +1,16 @@
-import { useState } from 'react';
-import BalatroApp from './App';
-import type { GameId } from './GamePicker';
-import { SpireApp } from '../games/spire/ui/SpireApp';
-import { BattlegroundsApp } from '../games/battlegrounds/ui/BattlegroundsApp';
+import { lazy, Suspense, useEffect, useState } from 'react';
+import { GamePicker, type GameId } from './GamePicker';
+import './Hub.css';
+
+const BalatroApp = lazy(() => import('./App'));
+const SpireApp = lazy(() =>
+  import('../games/spire/ui/SpireApp').then((module) => ({ default: module.SpireApp })),
+);
+const BattlegroundsApp = lazy(() =>
+  import('../games/battlegrounds/ui/BattlegroundsApp').then((module) => ({
+    default: module.BattlegroundsApp,
+  })),
+);
 
 const KEY = 'card-workshop.active-game';
 export default function Hub() {
@@ -14,6 +22,14 @@ export default function Hub() {
       return 'balatro';
     }
   });
+  useEffect(() => {
+    const names: Record<GameId, string> = {
+      balatro: 'Blindside',
+      spire: 'Slay the Spire',
+      battlegrounds: 'Last Hearth',
+    };
+    document.title = `${names[game]} · Card Workshop`;
+  }, [game]);
   const change = (id: GameId) => {
     setGame(id);
     try {
@@ -22,11 +38,23 @@ export default function Hub() {
       /* Game saves report storage failure separately. */
     }
   };
-  return game === 'spire' ? (
-    <SpireApp onSwitch={change} />
-  ) : game === 'battlegrounds' ? (
-    <BattlegroundsApp onSwitch={change} />
-  ) : (
-    <BalatroApp onSwitch={change} />
+  return (
+    <Suspense
+      key={game}
+      fallback={
+        <main className="game-loading">
+          <GamePicker current={game} onSwitch={change} />
+          <p role="status">Opening your table…</p>
+        </main>
+      }
+    >
+      {game === 'spire' ? (
+        <SpireApp onSwitch={change} />
+      ) : game === 'battlegrounds' ? (
+        <BattlegroundsApp onSwitch={change} />
+      ) : (
+        <BalatroApp onSwitch={change} />
+      )}
+    </Suspense>
   );
 }

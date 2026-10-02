@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { ACT_NAMES } from '../content/world';
-import { availableNodes } from '../domain/map';
+import { ACT_NAMES, BOSS_ENCOUNTERS, ENEMY_BY_ID } from '../content/world';
+import { availableNodes, MAP_ROWS } from '../domain/map';
 import type { NodeKind, SpireCommand, SpireState } from '../domain/types';
 export const nodeIcons: Record<NodeKind, string> = {
   fight: '⚔',
@@ -11,6 +11,9 @@ export const nodeIcons: Record<NodeKind, string> = {
   treasure: '▣',
   boss: '♛',
 };
+const canvasWidth = 492;
+const x = (lane: number) => 45 + lane * 67;
+const y = (row: number) => 65 + (MAP_ROWS - row) * 72;
 export function RouteMap({
   run,
   dispatch,
@@ -20,8 +23,8 @@ export function RouteMap({
 }) {
   const scroll = useRef<HTMLDivElement>(null);
   const available = availableNodes(run);
-  const x = (lane: number) => 45 + lane * 67;
-  const y = (row: number) => 65 + (15 - row) * 72;
+  const reachable = new Set(available.map((node) => node.id));
+  const nodesById = new Map(run.map.map((node) => [node.id, node]));
   useEffect(() => {
     if (scroll.current) scroll.current.scrollTop = Math.max(0, y(Math.max(0, run.row)) - 300);
   }, [run.act, run.row]);
@@ -31,16 +34,21 @@ export function RouteMap({
         <p className="eyebrow">ACT {run.act}</p>
         <h2>{ACT_NAMES[run.act - 1]}</h2>
         <p>Choose a highlighted room. Follow the dotted paths upward.</p>
+        <p className="map-boss">
+          Boss: {BOSS_ENCOUNTERS[run.act - 1].map((id) => ENEMY_BY_ID[id].name).join(' & ')}
+        </p>
       </div>
       <div className="sts-map-scroll" ref={scroll}>
         <div className="sts-map-canvas">
-          <svg viewBox="0 0 492 1220" aria-hidden="true">
+          <svg viewBox={`0 0 ${canvasWidth} 1220`} preserveAspectRatio="none" aria-hidden="true">
             {run.map.flatMap((n) =>
               n.next.map((id) => {
-                const to = run.map.find((m) => m.id === id)!;
+                const to = nodesById.get(id)!;
                 return (
                   <line
                     key={`${n.id}-${id}`}
+                    data-from={n.id}
+                    data-to={id}
                     x1={x(n.lane)}
                     y1={y(n.row)}
                     x2={x(to.lane)}
@@ -54,9 +62,10 @@ export function RouteMap({
           {run.map.map((node) => (
             <button
               key={node.id}
-              className={`sts-map-node ${node.kind} ${node.visited ? 'visited' : ''} ${available.some((n) => n.id === node.id) ? 'reachable' : ''}`}
-              style={{ left: `${(x(node.lane) / 492) * 100}%`, top: y(node.row) }}
-              disabled={!available.some((n) => n.id === node.id)}
+              className={`sts-map-node ${node.kind} ${node.visited ? 'visited' : ''} ${reachable.has(node.id) ? 'reachable' : ''}`}
+              data-node-id={node.id}
+              style={{ left: `${(x(node.lane) / canvasWidth) * 100}%`, top: y(node.row) }}
+              disabled={!reachable.has(node.id)}
               onClick={() => dispatch({ type: 'chooseNode', id: node.id })}
               aria-label={`Floor ${node.row + 1} lane ${node.lane + 1} ${node.kind}`}
               title={`${node.kind} · floor ${node.row + 1}`}

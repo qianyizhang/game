@@ -4,11 +4,10 @@ import App from './app/Hub';
 import './styles.css';
 import './adventure.css';
 import './hearth.css';
+import './spire.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
 );
-
-import './spire.css';
