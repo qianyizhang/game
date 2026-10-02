@@ -1,0 +1,814 @@
+.game-picker {
+  margin: -24px 0 22px;
+}
+.game-picker label {
+  display: block;
+  color: #9fb397;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+.game-picker select {
+  width: 100%;
+  border: 1px solid #55705a;
+  border-radius: 5px;
+  padding: 9px 5px;
+  color: #e3e8ca;
+  background: #18392e;
+  font:
+    10px system-ui,
+    sans-serif;
+}
+.spire-theme {
+  --gold: #ebbf76;
+  --orange: #ea9a65;
+}
+.spire-theme .workspace {
+  background: #28302b;
+  background-image: radial-gradient(ellipse at 35% 20%, #634c3544, transparent 70%);
+}
+.spire-theme .sidebar,
+.spire-theme .inspector {
+  background: #1d2c27;
+}
+.spire-theme .topbar {
+  background: #1e2c27;
+}
+.adventure-resources {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 16px;
+  color: #e1c282;
+  font-weight: 700;
+}
+.adventure-resources .health {
+  color: #efab92;
+}
+.relic-rack {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+}
+.relic-rack span {
+  border: 1px solid #697051;
+  border-radius: 20px;
+  font-size: 10px;
+  padding: 6px 10px;
+  color: #d9c9a0;
+}
+.adventure-notice {
+  padding: 11px 15px;
+  background: #101e1866;
+  border-left: 2px solid var(--gold);
+  font-size: 11px;
+  line-height: 1.6;
+  color: #d7ceb2;
+  margin: 20px 0;
+}
+.route-panel,
+.choice-panel,
+.combat-panel {
+  border: 1px solid #6a7154;
+  border-radius: 10px;
+  padding: 25px;
+  background: #26392c;
+}
+.route-panel > h2,
+.choice-panel h2 {
+  font:
+    30px Georgia,
+    serif;
+}
+.route-panel .eyebrow,
+.choice-panel .eyebrow {
+  color: var(--gold);
+}
+.route-map {
+  margin: 30px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.route-row {
+  display: grid;
+  grid-template-columns: 20px repeat(3, minmax(0, 1fr));
+  gap: 17px;
+  position: relative;
+}
+.floor-number {
+  display: grid;
+  place-items: center;
+  color: #82997b;
+  font:
+    italic 15px Georgia,
+    serif;
+}
+.route-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 6px;
+  border-color: #536347;
+  background: #1e3024;
+  text-transform: capitalize;
+}
+.route-node span {
+  font-size: 24px;
+}
+.route-node strong {
+  font-size: 10px;
+  font-weight: 500;
+}
+.route-node:disabled {
+  opacity: 0.5;
+}
+.route-node.reachable {
+  background: #544d30;
+  border-color: var(--gold);
+  color: #f4dfad;
+}
+.route-node.visited {
+  background: #3d573a;
+  opacity: 1;
+  color: #bfd3a5;
+}
+.route-node.reachable:hover {
+  background: #76603a;
+}
+.route-row:not(:last-child) .route-node::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  height: 12px;
+  border-left: 1px dashed #7d8961;
+}
+.combat-panel {
+  padding: 0;
+  overflow: hidden;
+}
+.combat-top {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  padding: 18px;
+  border-bottom: 1px solid #657052;
+}
+.energy-orb {
+  background: #eac574;
+  color: #3a3722;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 57px;
+  height: 57px;
+  border-radius: 50%;
+  font-size: 27px;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+.energy-orb small {
+  font-size: 7px;
+  letter-spacing: 0.05em;
+}
+.combat-top .eyebrow {
+  color: var(--gold);
+}
+.combat-top p {
+  font-size: 10px;
+  color: #afbea0;
+  margin: 6px 0 0;
+}
+.combat-top .primary {
+  margin-left: auto;
+  font-size: 12px;
+  white-space: nowrap;
+  padding: 11px 14px;
+}
+.enemy-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 14px;
+  padding: 25px 20px;
+}
+.enemy {
+  flex: 1;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  background: #1f3027;
+  border: 1px solid #5b6b53;
+  border-radius: 8px;
+}
+.enemy.targeted {
+  border: 2px solid var(--gold);
+  background: #4c4631;
+}
+.enemy.defeated {
+  opacity: 0.3;
+}
+.enemy-glyph {
+  font-size: 58px;
+  line-height: 1.2;
+  color: #dcc998;
+  margin-bottom: 14px;
+}
+.enemy strong {
+  font-size: 13px;
+}
+.enemy-hp {
+  font-size: 12px;
+  color: #e4baa1;
+  margin: 9px 0;
+}
+.intent {
+  font-size: 10px;
+  background: #69483b;
+  color: #f4ddbf;
+  padding: 8px;
+  line-height: 1.55;
+  border-radius: 4px;
+}
+.status-line {
+  font-size: 9px;
+  color: #b9d09b;
+  line-height: 1.5;
+  margin-top: 8px;
+  min-height: 13px;
+}
+.player-state {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 18px;
+  border-block: 1px solid #566549;
+  background: #1b2f27;
+  font-size: 11px;
+}
+.player-state strong {
+  color: #b5d8e0;
+}
+.player-state > span {
+  color: #d9c698;
+  font-size: 10px;
+}
+.player-state small {
+  font-size: 9px;
+  color: #a2b691;
+  white-space: nowrap;
+}
+.battle-hand {
+  display: flex;
+  gap: 10px;
+  padding: 22px 18px;
+  overflow-x: auto;
+  align-items: stretch;
+  min-height: 240px;
+}
+.ability-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 143px;
+  min-width: 0;
+  padding: 14px 11px 11px;
+  border-radius: 8px;
+  background: #e7d8b7;
+  color: #39422f;
+  border: 1px solid #d7c597;
+  text-align: center;
+  box-shadow: 0 4px 0 #0e201a55;
+  white-space: normal;
+}
+.ability-card:hover:not(:disabled) {
+  background: #f4e6c7;
+  transform: translateY(-4px);
+}
+.ability-card.power {
+  background: #d4c5dc;
+  border-color: #b9a3c8;
+}
+.ability-card.skill {
+  background: #c7d8c0;
+  border-color: #a8c0a2;
+}
+.ability-card.status {
+  background: #9faaa0;
+}
+.ability-card:disabled {
+  opacity: 0.64;
+}
+.ability-cost {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #f7eed0;
+  color: #374b2c;
+  border: 1px solid #779263;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+.ability-art {
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 18px 0 10px;
+  color: #666642;
+}
+.ability-card .eyebrow {
+  font-size: 7px;
+  color: #677051;
+  letter-spacing: 0.04em;
+}
+.ability-card > strong {
+  font:
+    700 14px Georgia,
+    serif;
+  margin: 6px 0 8px;
+}
+.ability-text {
+  font-size: 10px;
+  line-height: 1.6;
+  flex: 1;
+}
+.ability-card > small {
+  font-size: 8px;
+  color: #5c714f;
+  border-top: 1px solid #79936955;
+  padding-top: 8px;
+  margin-top: 12px;
+  width: 100%;
+  line-height: 1.6;
+}
+.ability-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 15px;
+  margin: 25px 0 40px;
+}
+.ability-grid .ability-card {
+  min-height: 260px;
+}
+.reward-cards {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 30px 0;
+}
+.reward-cards .ability-card {
+  min-height: 235px;
+  flex: 1;
+  max-width: 200px;
+}
+.choice-panel > .secondary {
+  display: block;
+  margin: 15px auto 0;
+}
+.choice-panel > h3 {
+  margin-top: 30px;
+  font-size: 15px;
+}
+.scene-symbol {
+  display: block;
+  text-align: center;
+  font:
+    70px Georgia,
+    serif;
+  color: var(--gold);
+  margin: 25px auto;
+}
+.event-options {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  max-width: 400px;
+  margin: 30px auto;
+}
+.event-options button {
+  padding: 16px;
+}
+.choice-panel.ending {
+  text-align: center;
+  padding: 40px 25px;
+}
+.ending h1 {
+  font:
+    42px Georgia,
+    serif;
+  color: var(--gold);
+}
+.reward-extra {
+  padding: 15px;
+  background: #72583255;
+  border-radius: 5px;
+  color: #e0cc9e;
+  font-size: 12px;
+}
+.deck-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.deck-list button {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 11px;
+  padding: 8px 10px;
+  text-align: left;
+}
+.deck-list button:disabled {
+  opacity: 1;
+  cursor: default;
+  background: transparent;
+  border-color: #52634755;
+}
+.deck-list small {
+  font-size: 9px;
+  white-space: nowrap;
+  color: #b7c39c;
+}
+.adventure-shop {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 25px;
+}
+.adventure-shop article {
+  background: #d4d4b0;
+  color: #30472f;
+  padding: 17px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+}
+.adventure-shop h3 {
+  font-size: 14px;
+}
+.adventure-shop p {
+  font-size: 11px;
+  line-height: 1.6;
+  flex: 1;
+}
+.adventure-shop button {
+  font-size: 10px;
+}
+.potion-belt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid #516447;
+}
+.potion-belt > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #536c4d;
+  padding: 6px 8px;
+  border-radius: 5px;
+  font-size: 10px;
+}
+.potion-belt button {
+  font-size: 9px;
+  padding: 4px 6px;
+}
+.seed-note {
+  font-size: 8px;
+  color: #98ab8c;
+  margin: 20px 0 0;
+  overflow-wrap: anywhere;
+}
+.wrap-tabs {
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+.wrap-tabs button {
+  font-size: 9px;
+}
+.zone-list p {
+  padding: 8px;
+  border-bottom: 1px solid #465c42;
+  font-size: 11px;
+}
+.inspector .deck-list {
+  margin-top: 20px;
+}
+@media (min-width: 1600px) {
+  .battle-hand .ability-card {
+    flex-basis: 156px;
+    min-height: 235px;
+  }
+  .ability-card > strong {
+    font-size: 16px;
+  }
+  .ability-text {
+    font-size: 11px;
+  }
+}
+@media (max-width: 1250px) {
+  .ability-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .adventure-resources {
+    gap: 10px;
+    font-size: 13px;
+  }
+  .combat-top {
+    gap: 10px;
+    padding: 14px;
+  }
+  .combat-top p {
+    font-size: 9px;
+  }
+  .combat-top .primary {
+    font-size: 10px;
+    padding: 10px;
+  }
+  .enemy-row {
+    padding: 18px 12px;
+    gap: 8px;
+  }
+  .enemy strong {
+    font-size: 11px;
+  }
+  .enemy-glyph {
+    font-size: 42px;
+  }
+  .player-state {
+    flex-wrap: wrap;
+  }
+  .ability-card {
+    flex-basis: 132px;
+  }
+  .adventure-shop {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .game-picker {
+    margin: 0 0 0 auto;
+    max-width: 160px;
+    order: 10;
+  }
+  .game-picker label {
+    display: none;
+  }
+  .game-picker select {
+    font-size: 9px;
+    padding: 8px 3px;
+  }
+  .sidebar {
+    flex-wrap: wrap;
+  }
+  .sidebar > .nav-link {
+    display: flex;
+    order: 11;
+    flex: 1;
+    justify-content: center;
+    margin: 0;
+  }
+  .sidebar .brand {
+    margin-right: auto;
+  }
+  .spire-theme .sidebar,
+  .battlegrounds-theme .sidebar {
+    flex-wrap: wrap;
+  }
+  .spire-theme .sidebar > .nav-link,
+  .battlegrounds-theme .sidebar > .nav-link {
+    display: flex;
+    order: 11;
+    flex: 1;
+    justify-content: center;
+    margin: 0;
+  }
+  .adventure-resources {
+    font-size: 12px;
+    gap: 10px;
+  }
+  .route-panel,
+  .choice-panel {
+    padding: 20px 14px;
+  }
+  .route-panel > h2,
+  .choice-panel h2 {
+    font-size: 26px;
+  }
+  .route-row {
+    grid-template-columns: 15px repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .combat-top {
+    gap: 9px;
+    padding: 12px;
+  }
+  .energy-orb {
+    width: 43px;
+    height: 43px;
+    font-size: 21px;
+  }
+  .energy-orb small {
+    font-size: 6px;
+  }
+  .combat-top .eyebrow {
+    font-size: 8px;
+  }
+  .combat-top p {
+    font-size: 8px;
+    max-width: 145px;
+  }
+  .enemy-row {
+    padding: 18px 10px;
+    gap: 8px;
+  }
+  .enemy {
+    padding: 12px 7px;
+  }
+  .enemy-glyph {
+    font-size: 35px;
+  }
+  .enemy strong {
+    font-size: 10px;
+  }
+  .enemy-hp {
+    font-size: 10px;
+  }
+  .intent {
+    font-size: 8px;
+    padding: 6px;
+  }
+  .status-line {
+    font-size: 8px;
+  }
+  .battle-hand {
+    padding: 17px 11px;
+    gap: 9px;
+    min-height: 225px;
+  }
+  .ability-card {
+    flex-basis: 137px;
+  }
+  .ability-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .ability-grid .ability-card {
+    min-height: 245px;
+  }
+  .reward-cards {
+    gap: 8px;
+    overflow: auto;
+    justify-content: flex-start;
+    margin: 20px 0;
+  }
+  .reward-cards .ability-card {
+    flex: 1 0 105px;
+    padding: 12px 8px;
+  }
+  .reward-cards .ability-card > strong {
+    font-size: 12px;
+  }
+  .reward-cards .ability-text {
+    font-size: 9px;
+  }
+  .potion-belt {
+    gap: 8px;
+  }
+  .potion-belt > .eyebrow {
+    width: 100%;
+    font-size: 8px;
+  }
+  .ending h1 {
+    font-size: 33px;
+  }
+  .adventure-shop {
+    gap: 9px;
+  }
+  .adventure-shop article {
+    padding: 12px;
+  }
+  .adventure-shop h3 {
+    font-size: 12px;
+  }
+  .adventure-shop p {
+    font-size: 10px;
+  }
+}
+
+/* Emberpath's engraved illustrations share the same scene on every card surface. */
+.ability-card {
+  background: linear-gradient(145deg, #f0dfbf, #dac8a7);
+  border-color: #c89a78;
+  box-shadow:
+    inset 0 0 0 3px #f9edcf88,
+    0 4px 0 #0e201a55;
+}
+.ability-card.skill {
+  background: linear-gradient(145deg, #dae5d5, #bfcfc2);
+  border-color: #7da89a;
+}
+.ability-card.power {
+  background: linear-gradient(145deg, #f3e2b1, #d6be83);
+  border-color: #b69051;
+}
+.ability-card.status,
+.ability-card.curse {
+  background: linear-gradient(145deg, #c6cbc2, #a5b1a8);
+  border-color: #7c8f86;
+}
+.ability-card.upgraded {
+  border-color: #edc56e;
+  box-shadow:
+    inset 0 0 0 3px #fbe3a777,
+    0 4px 0 #0e201a55;
+}
+.ability-art {
+  display: block;
+  width: 100%;
+  margin: 9px 0 10px;
+  line-height: 0;
+  border: 1px solid #313d3380;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 0 #fff3d655;
+}
+.ember-illustration {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 10 / 7;
+}
+.ability-cost {
+  z-index: 1;
+  background: #fff0ce;
+  color: #3f3327;
+  border: 1px solid #91654d;
+  box-shadow: 0 2px 3px #172a2744;
+}
+.ability-card .eyebrow {
+  color: #435247;
+  font-size: 8px;
+}
+.deck-list button {
+  align-items: center;
+  gap: 9px;
+  padding: 6px 8px;
+}
+.deck-card-art,
+.zone-card-art {
+  display: block;
+  flex: 0 0 48px;
+  width: 48px;
+  line-height: 0;
+  border: 1px solid #c4af7866;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.deck-card-name {
+  flex: 1;
+  min-width: 0;
+}
+.deck-list small {
+  margin-left: auto;
+}
+.zone-list p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.adventure-shop .shop-card-art {
+  width: calc(100% + 34px);
+  max-height: 138px;
+  object-fit: cover;
+  margin: -17px -17px 8px;
+  border-radius: 7px 7px 0 0;
+  border-bottom: 1px solid #5b7757;
+}
+@media (max-width: 700px) {
+  .adventure-shop .shop-card-art {
+    width: calc(100% + 24px);
+    max-height: 108px;
+    margin: -12px -12px 6px;
+  }
+  .reward-cards .ability-art {
+    margin-top: 11px;
+  }
+}

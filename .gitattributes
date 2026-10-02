@@ -1,0 +1,15 @@
+packages/dcc-workbench/sources/**/*.blend filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/sources/**/*.glb filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/subjects/**/*.blend filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/subjects/**/*.glb filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/assets/**/*.blend filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/assets/**/*.glb filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/assets/**/pose-samples.json filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/references/**/*.blend filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/references/**/*.glb filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/assets/canid/ash.json filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/assets/canid/refined/ash.json filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/assets/canid/moss.json filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/assets/canid/refined/moss.json filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/assets/canid/russet.json filter=lfs diff=lfs merge=lfs -text
+packages/dcc-workbench/assets/canid/refined/russet.json filter=lfs diff=lfs merge=lfs -text
