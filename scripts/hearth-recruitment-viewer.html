@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Last Hearth · Recruitment diagnostics</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font: 16px/1.5 system-ui;
+        color: #eae7dc;
+        background: #101719;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        max-width: 1180px;
+        margin: auto;
+        padding: 24px;
+      }
+      h1 {
+        font-size: 2rem;
+        line-height: 1.15;
+      }
+      h2 {
+        font-size: 1.1rem;
+        color: #ecd5a0;
+      }
+      p {
+        color: #b7c4c4;
+      }
+      header {
+        border-bottom: 1px solid #415150;
+        margin-bottom: 24px;
+      }
+      label {
+        display: block;
+        color: #b7c4c4;
+      }
+      select,
+      button {
+        font: inherit;
+        padding: 9px;
+        background: #213031;
+        color: inherit;
+        border: 1px solid #617271;
+        border-radius: 6px;
+        max-width: 100%;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.4;
+      }
+      input[type='range'] {
+        width: 100%;
+      }
+      .toolbar {
+        display: flex;
+        gap: 12px;
+        align-items: end;
+        flex-wrap: wrap;
+      }
+      .toolbar label {
+        flex: 1;
+        min-width: 180px;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+        gap: 18px;
+        margin-top: 20px;
+      }
+      .card {
+        background: #192426;
+        padding: 18px;
+        border: 1px solid #364647;
+        border-radius: 10px;
+        min-width: 0;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        font-size: 0.88rem;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 0.85rem;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #364647;
+      }
+      th {
+        color: #b7c4c4;
+      }
+      .scroll {
+        overflow-x: auto;
+      }
+      .pass {
+        color: #92d8b0;
+      }
+      .fail {
+        color: #eeac91;
+      }
+      small {
+        color: #a7b7b6;
+      }
+      .guard {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        border-bottom: 1px solid #364647;
+        padding: 5px 0;
+      }
+      .guard span {
+        overflow-wrap: anywhere;
+      }
+      a {
+        color: #c0e7df;
+      }
+      #context {
+        font-size: 1rem;
+        color: #eae7dc;
+      }
+      details {
+        margin-top: 24px;
+      }
+      #provenance {
+        font-size: 0.72rem;
+      }
+      @media (max-width: 500px) {
+        body {
+          padding: 14px;
+        }
+        h1 {
+          font-size: 1.6rem;
+        }
+        .toolbar button {
+          flex: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <small>LAST HEARTH / POLICY ENGINEERING</small>
+      <h1>Recruitment decision explorer</h1>
+      <p id="case"></p>
+      <p>
+        Inspect the recorded action and alternative proposals on the
+        <strong>same observed position</strong>. Alternatives do not simulate future turns or
+        predict placement. Values are heuristic units.
+      </p>
+    </header>
+    <div class="toolbar">
+      <button id="previous">Previous</button><button id="next">Next</button
+      ><label>Policy proposal<select id="policy"></select></label
+      ><button id="download">Download replay prefix</button>
+    </div>
+    <label for="timeline">Focal decision <span id="index"></span></label
+    ><input id="timeline" type="range" min="0" step="1" value="0" />
+    <h2 id="position"></h2>
+    <p id="context"></p>
+    <div class="cards">
+      <section class="card">
+        <h2>Recorded action</h2>
+        <pre id="recorded"></pre>
+        <h2>Selected proposal</h2>
+        <pre id="proposed"></pre>
+        <p id="reason"></p>
+        <h2>Frozen v1 proposal</h2>
+        <pre id="legacy"></pre>
+      </section>
+      <section class="card">
+        <h2>Intervention guards</h2>
+        <div id="guards"></div>
+        <h2>Replacement projection</h2>
+        <pre id="replacement"></pre>
+      </section>
+    </div>
+    <section class="card" style="margin-top: 18px">
+      <h2>Observed unit values</h2>
+      <p>
+        Components use the current board. Replacement improvement recalculates the offer after the
+        projected sale. Classic total includes its own composition and upgrade bonuses.
+      </p>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Unit / zone</th>
+              <th>Attack</th>
+              <th>Health × .8</th>
+              <th>Keywords</th>
+              <th>Deathrattle</th>
+              <th>Classic × .3</th>
+              <th>Tempo total</th>
+              <th>Classic total</th>
+            </tr>
+          </thead>
+          <tbody id="values"></tbody>
+        </table>
+      </div>
+    </section>
+    <details>
+      <summary>Evidence provenance and boundaries</summary>
+      <p>
+        Replay contains evaluator-only seed and lobby configuration. Each proposal was calculated
+        only from its detached per-seat policy observation. Hidden labels stay hidden from
+        proposals; this inspector is an evaluator surface. Downloaded prefixes replay accepted
+        commands; continuing them in the game uses the recorded v1 style preset, not the
+        experiment's v2 controller.
+      </p>
+      <pre id="provenance"></pre>
+    </details>
+    <script>
+      const data = /* INSPECTION_DATA */ null;
+      const $ = (id) => document.getElementById(id);
+      const show = (id, value) => {
+        $(id).textContent = typeof value === 'string' ? value : JSON.stringify(value, null, 2);
+      };
+      for (const [id, entry] of Object.entries(data.labels)) {
+        const option = document.createElement('option');
+        option.value = id;
+        option.textContent = entry.label + ' · ' + id;
+        $('policy').append(option);
+      }
+      $('policy').value = data.spec.policy;
+      show(
+        'case',
+        `${data.spec.hero} · seat ${data.spec.seat + 1} · ${data.spec.population} rivals · ${data.spec.visibility} labels · ${data.spec.policy} · placement ${data.placement ?? 'unfinished'}`,
+      );
+      show('provenance', { spec: data.spec, ...data.provenance });
+      let index = 0;
+      $('timeline').max = String(Math.max(0, data.steps.length - 1));
+      function render() {
+        const row = data.steps[index];
+        if (!row) {
+          show('position', 'No focal decisions');
+          return;
+        }
+        const proposal = row.proposals[$('policy').value],
+          d = proposal.diagnostics,
+          c = d.context;
+        show('index', `${index + 1} / ${data.steps.length}`);
+        show('position', `Step ${row.step} · round ${row.round}`);
+        show(
+          'context',
+          `HP ${c.hp} · tier ${c.tier} · gold ${c.gold} · board ${c.boardSize}/7 · hand ${c.handSize} · upgrade ${c.upgradeCost} gold · reserve ${c.survivalReserve} HP`,
+        );
+        show('recorded', row.recorded);
+        show('proposed', proposal.command);
+        show('reason', proposal.reason);
+        show('legacy', d.legacyDecision);
+        show('replacement', d.replacement ?? 'No replacement available');
+        $('guards').replaceChildren();
+        for (const guard of d.interventions) {
+          const title = document.createElement('p');
+          title.textContent = `${guard.id}: ${guard.selected ? 'SELECTED' : guard.enabled ? 'enabled' : 'disabled'} · ${guard.eligible ? 'eligible' : 'blocked'}`;
+          $('guards').append(title);
+          for (const [name, pass] of Object.entries(guard.checks)) {
+            const line = document.createElement('div');
+            line.className = 'guard';
+            const key = document.createElement('span');
+            key.textContent = name;
+            const result = document.createElement('strong');
+            result.className = pass ? 'pass' : 'fail';
+            result.textContent = pass ? 'PASS' : 'FAIL';
+            line.append(key, result);
+            $('guards').append(line);
+          }
+        }
+        $('values').replaceChildren();
+        for (const unit of d.unitValues) {
+          const tr = document.createElement('tr');
+          for (const value of [
+            `${unit.definitionId} · ${unit.zone} (${unit.id})`,
+            ...[
+              'attack',
+              'health',
+              'keywords',
+              'deathrattle',
+              'legacyContribution',
+              'tempoTotal',
+              'classicTotal',
+            ].map((k) => Number(unit.value[k].toFixed(3))),
+          ]) {
+            const td = document.createElement('td');
+            td.textContent = String(value);
+            tr.append(td);
+          }
+          $('values').append(tr);
+        }
+        $('timeline').value = String(index);
+        $('previous').disabled = index === 0;
+        $('next').disabled = index === data.steps.length - 1;
+        history.replaceState(null, '', `#step=${row.step}`);
+      }
+      function hash() {
+        const match = /^#step=(\d+)$/.exec(location.hash);
+        const found = match ? data.steps.findIndex((row) => row.step === Number(match[1])) : -1;
+        index = found >= 0 ? found : 0;
+        render();
+      }
+      $('previous').onclick = () => {
+        index = Math.max(0, index - 1);
+        render();
+      };
+      $('next').onclick = () => {
+        index = Math.min(data.steps.length - 1, index + 1);
+        render();
+      };
+      $('timeline').oninput = () => {
+        index = Number($('timeline').value);
+        render();
+      };
+      $('policy').onchange = render;
+      window.addEventListener('hashchange', hash);
+      $('download').onclick = () => {
+        const row = data.steps[index];
+        if (!row) return;
+        const prefix = { ...data.replay, commands: data.replay.commands.slice(0, row.step + 1) };
+        const url = URL.createObjectURL(
+          new Blob([JSON.stringify(prefix, null, 2)], { type: 'application/json' }),
+        );
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${data.spec.id}-through-step-${row.step}.json`;
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      };
+      hash();
+    </script>
+  </body>
+</html>
