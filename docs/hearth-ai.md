@@ -81,11 +81,15 @@ Lower placement is better; reported improvement is **baseline placement minus ca
 
 Development results may guide revisions. Once evaluation results are inspected, those seeds are no longer unseen for subsequent tuning; a new reserved cohort is needed for a fresh claim. Matching seeds does not force matching randomness after policies take different actions. This experiment measures performance against fixed local bots from one seat; it is not head-to-head play, self-play, original-game parity or evidence of human enjoyment.
 
-## Next bounded improvements
+## Further improvements
 
-1. Add recruitment-policy candidates and compute-matched ablations, keeping the initial policies frozen.
+1. Compare recruitment investment timing and immediate-strength choices, keeping released policies frozen.
 2. Separate opponent-model error from formation-search error using labelled evaluator-only diagnostics.
-3. Add configurable opponent leagues and seat rotation with an explicit replay contract.
+3. Extend the eight-seat arena with additional opponent leagues and compute-matched search policies.
 4. Apply the observation/protocol shape to Blindside and Spire while retaining game-owned mechanics.
 
 Verification is recorded in [completion evidence](completion.md). The [initial experiment](research/experiments/2026-10-04-hearth-ai-v1.md) completed all 50 lobbies; search did not demonstrate a mean-placement improvement on the reserved cohort, so the baseline is retained.
+
+## Eight-seat arena follow-up
+
+[Mixed Rivals and the arena](hearth-arena.md) add per-seat controllers, complete-lobby resolution, rotating recruitment priority and explicit rival preferences. The inspector always exposes configured styles; policy observations independently hide or disclose them. Arena journals record all seats and use a separate versioned envelope, preserving Classic v5. [The arena experiment](research/experiments/2026-10-04-hearth-arena-v1.md) compares recruitment policy and disclosure across all eight seat positions with fresh reserved seeds.

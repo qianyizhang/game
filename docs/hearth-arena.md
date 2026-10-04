@@ -52,7 +52,7 @@ The process binds one connection to the selected seat (0–7). Evaluator configu
 
 Always use the returned step and action IDs. A successful action may advance through other seats and a round boundary, so step numbers can jump. Responses include structured deltas across that transition. Stale steps, unknown actions, different-seat requests and inspector operations are rejected. Stdout contains policy-safe data; the separate evaluator directory receives the complete replay and verification receipt. The catalogue lists all available styles but does not expose their hidden assignment.
 
-The in-process evaluator can independently assign a controller to every seat. `decideRecruitment` consumes only a detached arena frame and its own style. `transitionArena` only applies commands; it does not know how to run a controller.
+Styles in the configuration declare the preset controllers; a human or external controller may submit any legal command without following that preset. The in-process evaluator can independently assign a controller to every seat. `decideRecruitment` consumes only a detached arena frame and its own style. `transitionArena` only applies commands; it does not know how to run a controller.
 
 ## Experiments
 
@@ -65,7 +65,13 @@ The plan reserves distinct v1-arena seed namespaces: **2 development blocks / 64
 
 **Primary:** mean focal placement, lower is better. **Secondary:** first-place count, top-four count and survival rounds. Report uncertainty across seed-block means; eight seat rotations sharing a seed are not eight independent observations. A whole block is excluded if any condition/seat is missing, duplicated, incomplete, failed, unverified or mismatched. Baseline disclosure must leave all gameplay commands unchanged.
 
-Before play, the script writes source revision, dirty status, SHA-256 source hashes, runtime, configuration digest and budgets. Each episode retains its full journal, receipt, decisions/reasons and the SHA-256 of every exact policy input frame. Frames can be reconstructed from replay prefixes; the compact trace does not store private evaluator state or duplicate entire observations. Replays are checked against exact final state and supply accounting is checked after every accepted recruitment/round command. Existing output directories are rejected.
+Before play, the script writes source revision, dirty status, SHA-256 source hashes, runtime, configuration digest and budgets. Each episode retains its full journal, receipt, decisions/reasons and the SHA-256 of every exact policy input frame. Frames can be reconstructed from replay prefixes; the compact trace does not store private evaluator state or duplicate entire observations. Replays are checked against exact final state and supply accounting is checked after every accepted recruitment/round command. Existing output directories are rejected. Audit saved episodes with:
+
+```sh
+node scripts/hearth-arena-audit.mjs test-results/ai/new-arena-evaluation
+```
+
+The audit reconstructs every policy input and decision, matches their recorded hashes and commands, and verifies final placements. It writes a separate `audit.json` without replacing experiment files.
 
 Different actions consume different parts of the seeded RNG stream. These experiments measure this local rival population under a specific recruitment schedule; they do not establish general competitive strength or human enjoyment. Evaluation outcomes do not automatically promote a policy or change Classic.
 

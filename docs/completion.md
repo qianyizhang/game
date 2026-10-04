@@ -61,3 +61,15 @@ The evaluated engine is pinned to `77dad48`; later selected-unit keyword labels 
 - [Workshop v3 playtests](research/playtests/2026-10-02-workshop-v3.md): outcomes, methods and remaining human questions.
 
 Old saves/exports are preserved under their previous keys and are rejected as incompatible rather than silently replayed against changed mechanics. No automatic migration is provided. Original game seed compatibility and complete commercial content remain outside scope.
+
+## Eight-seat arena and Mixed Rivals · 2026-10-04
+
+Implementation commit `de0675f` adds rotating recruitment priority, independent per-seat policy frames, a complete-lobby resolver, three new rival preferences and a separate Mixed Rivals save/replay envelope. The inspector always exposes configured identities; policy disclosure is independently configurable. Classic's full win/loss states match pre-arena `a185240` byte-for-byte. See the [arena contract](hearth-arena.md) and [frozen experiment](research/experiments/2026-10-04-hearth-arena-v1.md).
+
+- **199 unit tests across 30 files**, formatting, TypeScript and production build pass, including in an isolated archive of the owned commit.
+- **48 distinct browser scenarios covered:** 47 passed in the initial full suite; the new Mixed Rivals phone-layout case exposed inspector overflow. Both arena cases passed after the dialog fix. Screenshots were inspected; profiles were disposable and launches used approved execution. Artifacts: `test-results/browser-hearth-arena-v1/` and `test-results/browser-hearth-arena-v1-fixed/`.
+- **32 seeded lifecycle runs** pass and **3/3 challenges** remain solved. The external JSONL test controls seat 6 through a completed lobby and checks private-state redaction and stale/other-seat rejection.
+- **320/320 experiment lobbies** complete (64 development, 256 reserved), with eight unique placements, exact replay reconstruction and supply accounting. Independent audits match **295,712** input/decision/command rows. No runs fail, hit the limit or are excluded.
+- **Keep the baseline:** reserved mean placement is 3.0156 baseline, 5.5000 Tempo/hidden and 5.5938 Tempo/disclosed. This is evidence for retaining Classic, not a claim that the new rivals are stronger or more fun.
+
+Concurrent card-art files were excluded from the arena commits. Source manifests record their workspace status and exact executed hashes; the evaluated policy source did not change during the runs.
