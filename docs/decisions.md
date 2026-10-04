@@ -22,3 +22,7 @@ References: [Balatro official FAQ](https://www.playbalatro.com/faq), [Slay the S
 ## Accepted expansion
 
 The next build proceeds through Spire depth, combat clarity, replay lab, mods, other-game strategy and playtesting tools. The user expanded Spire scope to **all nine bosses, Ascensions 1–5 and the Silent**. Playback is fully paced by default with speed controls. Normal runs stay committed; rewind and custom scenarios live in a separate practice lab. Mods are readable validated local TypeScript packs with previews and replay version tracking. Evidence automatically records run summaries, picks/skips and encounter outcomes locally, with clear/export controls. These decisions supersede the initial Ironclad/A0-only scope above. See [workshop expansion](next-workshop.md).
+
+## Game depth and competitive AI · 2026-10-04
+
+The user set two tracks: deeper, more concrete gameplay, and observable AI-native engines with competitive policies developed through experiments. Human coaching is out of scope. [Development track](development-track.md) records the bounded roadmap. The first implementation grows Last Hearth from three to five heroes and establishes its public agent protocol and policy experiment; the original three-hero count above is superseded.
