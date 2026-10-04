@@ -15,6 +15,8 @@
     "format:check": "prettier --check .",
     "playtest": "vitest run --config vitest.playtest.config.ts",
     "assets:export": "node scripts/export-card-art.mjs",
+    "assets:scaffold": "node scripts/scaffold-card-art.mjs",
+    "assets:review": "node scripts/review-card-art.mjs",
     "playtest:compare": "node scripts/compare-playtests.mjs",
     "engine:challenges": "node scripts/solve-challenges.mjs",
     "engine:hearth": "node scripts/hearth-agent.mjs",

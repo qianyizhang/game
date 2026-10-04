@@ -35,7 +35,7 @@ Start with [architecture](docs/architecture.md), then [make a mod](docs/modding.
 
 [Research home](docs/research/README.md) holds mechanisms, sources, exact local timing, design questions and playtest notes for every game. [Settled decisions](docs/decisions.md) records scope; [completion evidence](docs/completion.md) maps requirements to checks.
 
-[SVG card artwork](docs/card-art.md) documents the shared visual primitives and each game's illustration layers. Run `npm run assets:export` to browse and save standalone SVGs from `test-results/card-art/index.html`.
+[The SVG art skill](skills/card-art/SKILL.md) defines the visual rules and review workflow; the [source map and tools](docs/card-art.md) cover renderers, scaffolding and before/after contact sheets. Run `npm run assets:export` to browse and save standalone SVGs from `test-results/card-art/index.html`.
 
 [Card suite expansion](docs/card-expansion.md) lists the twelve new Jokers, twelve new recruits, and the new Silent illustrations.
 
