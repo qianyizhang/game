@@ -13,7 +13,7 @@ import {
 } from './recruitment';
 import type { BGCommand, BGState, Player } from './types';
 
-export const BG_VERSION = 4;
+export const BG_VERSION = 5;
 export function createBG(seedInput: string): BGState {
   const seed = seedInput.trim().slice(0, 64) || 'HEARTH-01';
   return {

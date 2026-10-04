@@ -1,6 +1,6 @@
 {
   "game": "last-hearth",
-  "version": 4,
+  "version": 5,
   "seed": "HEARTH-01",
   "commands": [
     {
@@ -329,8 +329,8 @@
   "content": [
     {
       "id": "base",
-      "version": "4",
-      "digest": "3af65e95"
+      "version": "5",
+      "digest": "30d87f03"
     }
   ]
 }

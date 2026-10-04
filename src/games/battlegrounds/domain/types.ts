@@ -43,14 +43,24 @@ export interface Unit {
   tripleReward: boolean;
 }
 export type HeroId = string;
+export type HeroAbility =
+  | { type: 'income'; gold: number }
+  | {
+      type: 'buff';
+      target: 'friendly' | 'board' | 'tribe';
+      tribe?: Tribe;
+      attack: number;
+      health: number;
+      keyword?: Keyword;
+    }
+  | { type: 'recall' };
 export interface HeroDefinition {
-  boardBuff?: { attack: number; health: number };
   id: HeroId;
   name: string;
   symbol: string;
   text: string;
   cost: number;
-  targeted: boolean;
+  ability: HeroAbility;
 }
 export interface Player {
   id: number;

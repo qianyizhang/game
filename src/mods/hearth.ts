@@ -6,7 +6,7 @@ export const hearthPacks: ContentPack<{ minions: MinionDefinition[]; heroes: Her
     {
       id: 'workshop.hearth-examples',
       name: 'A growing warband',
-      version: '1.0.0',
+      version: '2.0.0',
       enabled: false,
       description: 'A tier-two Beast and a hero whose power strengthens the whole board.',
       source: 'src/mods/hearth.ts',
@@ -31,8 +31,7 @@ export const hearthPacks: ContentPack<{ minions: MinionDefinition[]; heroes: Her
             symbol: '❦',
             text: '2 gold: give your warband +1 Health. Once per round.',
             cost: 2,
-            targeted: false,
-            boardBuff: { attack: 0, health: 1 },
+            ability: { type: 'buff', target: 'board', attack: 0, health: 1 },
           },
         ],
       },

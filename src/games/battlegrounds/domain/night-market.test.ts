@@ -81,7 +81,7 @@ describe('Night Market recruitment and combat combinations', () => {
     expect(left).toEqual(before);
   });
   it('separates version 3 lobbies from the larger finite pool', () => {
-    expect(BG_VERSION).toBe(4);
+    expect(BG_VERSION).toBe(5);
     const session = bgSession.create('MARKET-LOBBY');
     expect(bgSession.decode(bgSession.encode(session))).toEqual(session);
     expect(() => bgSession.decode(JSON.stringify({ ...session.replay, version: 3 }))).toThrow(
