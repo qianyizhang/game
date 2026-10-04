@@ -16,7 +16,9 @@
     "playtest": "vitest run --config vitest.playtest.config.ts",
     "assets:export": "node scripts/export-card-art.mjs",
     "playtest:compare": "node scripts/compare-playtests.mjs",
-    "engine:challenges": "node scripts/solve-challenges.mjs"
+    "engine:challenges": "node scripts/solve-challenges.mjs",
+    "engine:hearth": "node scripts/hearth-agent.mjs",
+    "experiment:hearth": "node scripts/hearth-experiment.mjs"
   },
   "dependencies": {
     "react": "19.3.0",

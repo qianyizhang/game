@@ -6,7 +6,7 @@ Three complete, local card-game studies for learning game design and having fun 
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | **Blindside** · Balatro                     | Build poker hands, score ordered effects, shop and beat eight antes, with optional blind skips | 60 Jokers, 18 consumables, six packs, six vouchers, four skip tags, eight bosses    |
 | **Slay the Spire** · Ironclad & Silent      | Read enemy intent, spend energy, shape a deck and choose a route through three acts            | 95 obtainable cards, 33 relics, eight potions, nine boss encounters, Ascensions 0–5 |
-| **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals          | 60 recruits across six tiers, four tokens, three heroes, finite shared pool         |
+| **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals          | 60 recruits across six tiers, four tokens, five heroes, finite shared pool          |
 
 Blindside and Last Hearth use original content names. Slay the Spire uses original-game identities and researched mechanics with curated Ironclad and Silent pools; all illustrations and code are local. These are curated studies with explicit simplifications, not exact commercial-game replicas.
 
@@ -56,6 +56,8 @@ Start with [architecture](docs/architecture.md), then [make a mod](docs/modding.
 
 **[Playing engines](docs/engines.md)** provides typed action enumeration and authoritative command execution for all three games. Run `npm run engine:challenges` to search the live puzzles and export verified solutions for challenge import/review. This bounded solver uses full seeded state, including hidden information.
 
+**[Hearth AI experiments](docs/hearth-ai.md)** adds five typed hero powers, a player-visible agent protocol, structured decision traces, a full-run heuristic policy and sampled formation search. Run `npm run experiment:hearth -- development` for a paired cohort, or connect an external agent with `node scripts/hearth-agent.mjs`. The [development track](docs/development-track.md) separates game depth from competitive AI work.
+
 Mods are trusted local TypeScript edits in `src/mods/`. Change a definition, keep its text consistent, bump that game's rules version if replay meaning changes, and start a fresh run. Rules versions deliberately reject incompatible histories; there are no automatic migrations or arbitrary third-party plugin loading.
 
 ## Scope and differences
@@ -79,4 +81,4 @@ On this Mac, browser-launching agent commands require approved execution outside
 
 Simulations write ignored evidence under `test-results/simulation/`, `test-results/spire/` and `test-results/battlegrounds/`. Browser evidence is isolated under `test-results/browser/`. Full legal winning command histories are kept in `tests/fixtures/`; browser tests import them to verify terminal UI. Those fixtures contain no injected money, health or cards. Policies use the same legal transitions. Spire uses one-command lookahead that can observe consequences of hidden draws, so it is not a fair-play benchmark; Last Hearth checks every recruitable definition's supply after every human action and resolved bot round.
 
-The [Night Market expansion](docs/night-market.md) adds new Joker and recruit builds, illustrated shop items and twelve distinct Silent upgrade scenes. Blindside and Hearth use rules v4; Spire remains v3.
+The [Night Market expansion](docs/night-market.md) adds new Joker and recruit builds, illustrated shop items and twelve distinct Silent upgrade scenes. Blindside uses rules v4; Hearth now uses v5; Spire remains v3.

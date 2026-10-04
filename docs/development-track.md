@@ -14,11 +14,11 @@ Use one game end to end before extending the agent interface to the other two. L
 
 ## Next game features
 
-| Game | Bounded candidate | Design question |
-| --- | --- | --- |
-| Blindside | Distinct starting decks and a difficulty ladder | Do deck constraints produce different purchases, discards and risk decisions? |
-| Spire | A coherent encounter/event expansion for both existing characters | Do route, removal and drafting decisions respond to the next threat? |
-| Last Hearth | More recruitment plans and opponent policy variants | Can economic, tribe and positional strategies compete across heroes? |
+| Game        | Bounded candidate                                                 | Design question                                                               |
+| ----------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Blindside   | Distinct starting decks and a difficulty ladder                   | Do deck constraints produce different purchases, discards and risk decisions? |
+| Spire       | A coherent encounter/event expansion for both existing characters | Do route, removal and drafting decisions respond to the next threat?          |
+| Last Hearth | More recruitment plans and opponent policy variants               | Can economic, tribe and positional strategies compete across heroes?          |
 
 Each expansion needs an explicit interaction/timing contract, replay-version decision, legal-run checks and actual play review. Content quantity alone is not an acceptance criterion.
 

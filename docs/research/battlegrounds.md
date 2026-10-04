@@ -1,6 +1,6 @@
 # Hearthstone Battlegrounds → Last Hearth
 
-Status: implemented. Eight-player local lobby (human plus seven bots), six tavern tiers, 48 recruits, four tokens, three heroes, shared finite supply and combat playback. The agreed Hearthstone mode is **Battlegrounds: recruit and auto-battle**.
+Status: implemented. Eight-player local lobby (human plus seven bots), six tavern tiers, 60 recruits, four tokens, five heroes, shared finite supply and combat playback. The agreed Hearthstone mode is **Battlegrounds: recruit and auto-battle**.
 
 ## Dated reference
 
@@ -19,7 +19,7 @@ The community [Battlegrounds reference](https://hearthstone.wiki.gg/wiki/Battleg
 | Triples   | Three non-golden copies across hand and board become one golden in hand                    | Hold an imperfect pair or sell it for tempo                        |
 | Discover  | Playing a triple grants one of up to three distinct offers from the next tier, capped at 6 | Time the triple around a tavern upgrade                            |
 | Position  | Reorder before combat; select a recipient for targeted Battlecries                         | Protect support and choose which effects happen early              |
-| Heroes    | Targeted permanent buff, passive extra gold, or a Beast-wide buff                          | A small rule change alters the value of otherwise identical offers |
+| Heroes    | Targeted/tribe buffs, passive gold, recall or Taunt fortification                          | A small rule change alters the value of otherwise identical offers |
 
 Frozen offers survive the next round; empty offer slots fill from the pool at the current tier. A paid refresh replaces the offers and clears their freeze. This follows the community [freezing reference](https://hearthstone.wiki.gg/wiki/Battlegrounds#Freezing).
 
@@ -73,3 +73,9 @@ The next opponent is known during recruitment. Its preview is the last completed
 Bots use legal recruitment commands and their own offers. They prioritize completing triples, value tribe support and death-effect combinations, preserve money when a refresh cannot lead to a purchase, freeze unaffordable triples, and temper upgrades at low HP. Positioning moves cleave/Windfury attackers forward and support behind them, keeping Taunt at an edge. These are inspectable heuristics, not a claim of expert or stronger-than-baseline play.
 
 The [v3 cohort](playtests/2026-10-02-workshop-v3.md) checks complete lobbies and supply conservation. Human experiments should test whether scouting changes a purchase, target or formation, and whether bot pressure supports multiple builds.
+
+## Strategic hero powers and AI experiments (v5)
+
+The Archivist and Oathkeeper are original workshop content. Recall moves the same deployed unit into hand for 1 gold once per recruitment, retaining buffs, keywords and pool ownership. Replaying it triggers its Battlecry and summon hooks; a consumed golden Discover stays consumed. A full hand or pending Discover prevents the action without payment. Oathkeeper gives one friendly minion +3 Health and Taunt permanently for 1 gold once per recruitment. Both powers reset when a new recruitment round starts.
+
+The original three hero powers and both additions now use typed ability definitions. Opponents keep their original three-hero rotation. The [AI interface and experiment](../hearth-ai.md) uses public gameplay observations, independent combat samples and replay-verified full lobbies. Its search conditions on last-seen scouting; the debug supply inspector and live rival state are excluded from policy inputs.
