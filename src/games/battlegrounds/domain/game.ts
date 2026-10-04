@@ -11,7 +11,7 @@ import {
   returnUnits,
   startRecruitment,
 } from './recruitment';
-import type { BGCommand, BGState, Player } from './types';
+import type { BGCommand, BGState, CombatResult, Player } from './types';
 
 export const BG_VERSION = 5;
 export function createBG(seedInput: string): BGState {
@@ -51,6 +51,18 @@ function eliminate(run: BGState, player: Player, placement: number) {
 function combatRound(run: BGState) {
   const alive = run.players.filter((p) => p.hp > 0);
   for (const player of alive) if (player.id !== 0) runBot(run, player);
+  resolveLobbyCombat(run);
+}
+
+/** Shared combat timing; recruitment controllers stay outside the rules resolver. */
+export function resolveLobbyCombat(
+  run: BGState,
+  options: {
+    completeLobby?: boolean;
+    onCombat?: (left: number, right: number | null, result: CombatResult) => void;
+  } = {},
+) {
+  const alive = run.players.filter((p) => p.hp > 0);
   for (const player of alive) endRecruitment(player);
   const pairing = run.pairings;
   run.scouting = alive.map((p) => ({
@@ -60,7 +72,7 @@ function combatRound(run: BGState) {
     board: structuredClone(p.board),
   }));
   run.matchups = [];
-  run.lastCombat = null;
+  if (!options.completeLobby || run.players[0].hp > 0) run.lastCombat = null;
   for (let i = 0; i < pairing.length; i += 2) {
     const left = run.players[pairing[i]];
     const right = pairing[i + 1] === undefined ? null : run.players[pairing[i + 1]];
@@ -74,6 +86,7 @@ function combatRound(run: BGState) {
       run.rng,
       a.id === 0,
     );
+    options.onCombat?.(a.id, b?.id ?? null, result);
     run.rng = result.rng;
     a.hp -= result.damage[0];
     if (b) b.hp -= result.damage[1];
@@ -100,7 +113,10 @@ function combatRound(run: BGState) {
   if (survivors.length === 1) survivors[0].placement = 1;
   // In a simultaneous final fatigue elimination, the last-ranked player is the winner.
   const human = run.players[0];
-  if (human.placement === 1) {
+  if (options.completeLobby && survivors.length > 1) {
+    run.phase = 'combat';
+    bgLog(run, `Round ${run.round} resolved. ${survivors.length} players remain.`);
+  } else if (human.placement === 1) {
     run.phase = 'won';
     bgLog(run, 'First place. The last hearth belongs to you.');
   } else if (human.hp <= 0) {

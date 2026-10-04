@@ -85,15 +85,17 @@ export function observeHearth(session: HearthSession): HearthObservation {
 }
 
 /** Check recruitment with native rules, without resolving hypothetical lobby combats. */
-export function legalHearthCommands(state: BGState): BGCommand[] {
+export function legalHearthCommands(state: BGState, seat = 0): BGCommand[] {
   const commands: BGCommand[] = [];
-  for (const command of hearthCommands(state)) {
+  for (const command of hearthCommands(state, seat)) {
     if (state.phase !== 'recruit') commands.push(command);
     else if (command.type === 'endRecruit') {
-      if (!state.players[0].discover.length) commands.push(command);
+      if (!state.players[seat].discover.length) commands.push(command);
     } else {
-      const copy = structuredClone(state);
-      if (!recruitAction(copy, copy.players[0], command)) commands.push(command);
+      // Recruitment touches only the actor, supply, RNG, IDs and log. Avoid copying combat frames.
+      const copy = { ...state, pool: { ...state.pool }, log: [...state.log] };
+      const player = structuredClone(state.players[seat]);
+      if (!recruitAction(copy, player, command)) commands.push(command);
     }
   }
   return commands;
@@ -113,9 +115,10 @@ export function hearthFrame(session: HearthSession): HearthFrame {
 }
 
 export function hearthEvents(
-  before: HearthObservation,
-  after: HearthObservation,
+  before: Pick<HearthObservation, 'self' | 'phase' | 'round' | 'lastCombat'>,
+  after: Pick<HearthObservation, 'self' | 'phase' | 'round' | 'lastCombat'>,
   command: BGCommand,
+  combatResolved = command.type === 'endRecruit',
 ): HearthEvent[] {
   const events: HearthEvent[] = [];
   for (const name of ['gold', 'hp', 'tier'] as const) {
@@ -141,8 +144,7 @@ export function hearthEvents(
     if (JSON.stringify(previous) !== JSON.stringify(next))
       events.push({ type: 'unit', id, before: previous, after: next });
   }
-  if (command.type === 'endRecruit' && after.lastCombat)
-    events.push({ type: 'combat', result: after.lastCombat });
+  if (combatResolved && after.lastCombat) events.push({ type: 'combat', result: after.lastCombat });
   return events;
 }
 

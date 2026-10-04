@@ -1,4 +1,7 @@
 import { Scouting } from './Scouting';
+import { useMixedRivals } from './useMixedRivals';
+import { ArenaInspector } from './ArenaInspector';
+import { RIVAL_STYLES } from '../domain/arena';
 import { hearthPacks } from '../../../mods/hearth';
 import { useState } from 'react';
 import { GameShell } from '../../../app/GameShell';
@@ -20,7 +23,24 @@ export function BattlegroundsApp({
   onSwitch: (id: GameId) => void;
   onChallenges: () => void;
 }) {
-  const game = useLocalGame(bgSession, 'HEARTH-01');
+  const classic = useLocalGame(bgSession, 'HEARTH-01');
+  const [mode, setMode] = useState<'classic' | 'mixed'>(() => {
+    try {
+      return localStorage.getItem('card-workshop.hearth-mode') === 'mixed' ? 'mixed' : 'classic';
+    } catch {
+      return 'classic';
+    }
+  });
+  const mixed = useMixedRivals(mode === 'mixed');
+  const game = mode === 'classic' ? classic : mixed;
+  const chooseMode = (next: 'classic' | 'mixed') => {
+    setMode(next);
+    try {
+      localStorage.setItem('card-workshop.hearth-mode', next);
+    } catch {
+      /* Runs still export. */
+    }
+  };
   const run = game.state;
   const player = run.players[0];
   const [view, setView] = useState<'play' | 'collection' | 'guide'>('play');
@@ -42,25 +62,37 @@ export function BattlegroundsApp({
       onChallenges={onChallenges}
       controls={game}
       tools={
-        <WorkshopTools
-          packs={hearthPacks}
-          game={game}
-          scenarios={HEARTH_SCENARIOS}
-          summary={(s) => ({
-            Phase: s.phase,
-            Round: s.round,
-            HP: s.players[0].hp,
-            Tier: s.players[0].tier,
-            Gold: s.players[0].gold,
-            Board: s.players[0].board.length,
-            Players: s.players.filter((p) => p.hp > 0).length,
-          })}
-        />
+        mode === 'classic' ? (
+          <WorkshopTools
+            packs={hearthPacks}
+            game={classic}
+            scenarios={HEARTH_SCENARIOS}
+            summary={(s) => ({
+              Phase: s.phase,
+              Round: s.round,
+              HP: s.players[0].hp,
+              Tier: s.players[0].tier,
+              Gold: s.players[0].gold,
+              Board: s.players[0].board.length,
+              Players: s.players.filter((p) => p.hp > 0).length,
+            })}
+          />
+        ) : (
+          <ArenaInspector state={mixed.state} />
+        )
       }
       view={view}
       onView={setView}
       defaultSeed="HEARTH-01"
     >
+      <div className="tabs" role="group" aria-label="Lobby mode">
+        <button aria-pressed={mode === 'classic'} onClick={() => chooseMode('classic')}>
+          Classic
+        </button>
+        <button aria-pressed={mode === 'mixed'} onClick={() => chooseMode('mixed')}>
+          Mixed Rivals
+        </button>
+      </div>
       {view === 'collection' ? (
         <main className="content-page">
           <p className="eyebrow">THE LAST HEARTH COLLECTION</p>
@@ -199,7 +231,7 @@ export function BattlegroundsApp({
                 <span className="eyebrow">
                   ROUND {run.round} · {run.players.filter((p) => p.hp > 0).length} / 8 REMAIN
                 </span>
-                <h2>Last Hearth</h2>
+                <h2>{mode === 'mixed' ? 'Mixed Rivals' : 'Last Hearth'}</h2>
               </div>
               <div className="adventure-resources">
                 <span className="health">♥ {Math.max(0, player.hp)}</span>
@@ -232,7 +264,8 @@ export function BattlegroundsApp({
                 </div>
               </section>
             )}
-            {run.phase === 'recruit' && (
+            {mode === 'mixed' && mixed.waiting && <p role="status">Rivals are recruiting…</p>}
+            {run.phase === 'recruit' && !(mode === 'mixed' && mixed.waiting) && (
               <>
                 <Scouting run={run} />
                 <div className="tavern-tools">
@@ -506,6 +539,13 @@ export function BattlegroundsApp({
             {tab === 'Lobby' ? (
               <>
                 <h3>Eight seats at the hearth.</h3>
+                {mode === 'mixed' && (
+                  <p className="small muted">
+                    First to recruit:{' '}
+                    {run.players[mixed.state.arena.order[0]]?.name ?? 'choose a hero'}. Priority
+                    rotates each round; one seat finishes before the next starts.
+                  </p>
+                )}
                 <div className="lobby-list">
                   {[...run.players]
                     .sort((a, b) => (a.placement ?? 0) - (b.placement ?? 0) || b.hp - a.hp)
@@ -520,6 +560,11 @@ export function BattlegroundsApp({
                             {p.name}
                             {p.id === 0 ? ' (you)' : ''}
                           </strong>
+                          {mode === 'mixed' && mixed.state.arena.config && p.id !== 0 && (
+                            <small>
+                              {RIVAL_STYLES[mixed.state.arena.config.seats[p.id].style].label}
+                            </small>
+                          )}
                           <small>
                             {p.placement
                               ? `Place ${p.placement}`

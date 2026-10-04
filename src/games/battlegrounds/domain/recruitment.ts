@@ -54,12 +54,14 @@ export function refreshShop(run: BGState, player: Player) {
   player.frozen = false;
   fillShop(run, player);
 }
-export function startRecruitment(run: BGState) {
+export function startRecruitment(run: BGState, seatOrder?: readonly number[]) {
   [run.pairings, run.rng] = shuffle(
     run.players.filter((p) => p.hp > 0).map((p) => p.id),
     run.rng,
   );
-  for (const player of run.players.filter((p) => p.hp > 0)) {
+  for (const player of (seatOrder ? seatOrder.map((id) => run.players[id]) : run.players).filter(
+    (p) => p.hp > 0,
+  )) {
     const ability = HEROES.find((hero) => hero.id === player.hero)!.ability;
     player.gold = Math.min(10, run.round + 2) + (ability.type === 'income' ? ability.gold : 0);
     player.powerUsed = false;

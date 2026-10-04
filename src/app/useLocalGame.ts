@@ -76,25 +76,43 @@ export function useLocalGame<S extends { seed: string }, C>(
       ),
     );
   };
-  const dispatch = (command: C) => {
-    const result = activeCodec.act(session, command);
-    setError(result.error ?? '');
-    if (!result.error) {
-      persist(result.session);
-      observe(() =>
-        recordAccepted(
-          localStorage,
-          codec.rules,
-          session,
-          command,
-          result.session,
-          crypto.randomUUID(),
-          new Date().toISOString(),
-        ),
-      );
+  // A controller may submit several ordinary commands. Validate the whole batch before
+  // committing it, then record each accepted transition and persist one complete journal.
+  const dispatchMany = (commands: readonly C[]) => {
+    let current = session;
+    const accepted: { before: Session<S, C>; command: C; after: Session<S, C> }[] = [];
+    for (const command of commands) {
+      if (current.replay.commands.length >= 10000) {
+        setError('Replay command budget reached (10000).');
+        return false;
+      }
+      const result = activeCodec.act(current, command);
+      if (result.error) {
+        setError(result.error);
+        return false;
+      }
+      accepted.push({ before: current, command, after: result.session });
+      current = result.session;
     }
-    return !result.error;
+    setError('');
+    if (accepted.length) {
+      persist(current);
+      for (const { before, command, after } of accepted)
+        observe(() =>
+          recordAccepted(
+            localStorage,
+            codec.rules,
+            before,
+            command,
+            after,
+            crypto.randomUUID(),
+            new Date().toISOString(),
+          ),
+        );
+    }
+    return true;
   };
+  const dispatch = (command: C) => dispatchMany([command]);
   const restart = (seed: string) => {
     const next = activeCodec.create(seed);
     persist(next);
@@ -196,6 +214,7 @@ export function useLocalGame<S extends { seed: string }, C>(
     practiceCodec,
     isPractice: !!practice,
     dispatch,
+    dispatchMany,
     restart,
     restore,
     importFile,

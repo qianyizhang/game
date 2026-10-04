@@ -33,3 +33,9 @@ Each expansion needs an explicit interaction/timing contract, replay-version dec
 ## Completion record
 
 The five first-delivery stages are implemented in [Hearth AI](hearth-ai.md), with [verification receipts](completion.md) and a [frozen paired experiment](research/experiments/2026-10-04-hearth-ai-v1.md). The initial search candidate did not demonstrate an improvement on reserved seeds, so the heuristic baseline is retained. Proposed later slices remain future work.
+
+## Second delivery: eight-seat Hearth arena
+
+[Mixed Rivals and the arena](hearth-arena.md) implement rotating recruitment priority, complete-lobby resolution, per-seat controllers, explicit rival styles and an inspector separate from policy disclosure. Classic retains its v5 rules and saves. The new tempo, economy and composition preferences are experimental policies; they are not presumed stronger than the existing baseline. A fresh cohort crosses seat rotation with hidden/disclosed identities and reports uncertainty at the seed-block level.
+
+The next policy decision should follow that evidence: inspect recruitment failures before adding more search. Further content expansion and other-game agent adapters remain separate slices; human coaching remains outside this track.
