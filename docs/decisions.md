@@ -26,3 +26,9 @@ The next build proceeds through Spire depth, combat clarity, replay lab, mods, o
 ## Game depth and competitive AI · 2026-10-04
 
 The user set two tracks: deeper, more concrete gameplay, and observable AI-native engines with competitive policies developed through experiments. Human coaching is out of scope. [Development track](development-track.md) records the bounded roadmap. The first implementation grows Last Hearth from three to five heroes and establishes its public agent protocol and policy experiment; the original three-hero count above is superseded.
+
+## Hearth arena and rival disclosure · 2026-10-04
+
+The accepted next slice is an eight-seat policy arena plus Mixed Rivals. Recruitment priority rotates each round; each seat finishes before the next begins. Average placement is the primary objective, with first-place/top-four/survival secondary. Preserve Classic as a separate preset and save format. Record every seat's accepted commands so replay never reruns policies.
+
+The user's annotation separates architecture from policy experiments: rival identities must always be inspectable through the evaluator/inspector, while policy observations may hide or disclose them. Pin the visibility condition in experiment configuration and compare both conditions against identical initial rivals. All other recommendations from the decision round were accepted. See [arena contract](hearth-arena.md).
