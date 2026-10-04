@@ -1,0 +1,1338 @@
+{
+  "schema": "hearth.experiment-receipts.v1",
+  "date": "2026-10-04",
+  "decision": "Retain baseline; sampled positioning did not demonstrate a placement improvement in the reserved cohort.",
+  "cohorts": [
+    {
+      "cohort": "development",
+      "evidenceDirectory": "test-results/ai/hearth-v1-development-final",
+      "sourceRevision": "77dad48f696803b07ebfc1430734c9beab47d5f4",
+      "configurationDigest": "ff45d24df7ab7732cd2b37ab779bb703d83f39755b92b78836259e1deba9d57b",
+      "manifestSha256": "0cb7087a168544e42bce1b42097a0fe8a8aaaf85472b30b5fd6f63d4c682f56e",
+      "comparisonSha256": "998104ca861001f1d80c9c9d362b0967c80eae279e7343a4babd927d7b7fe82d",
+      "comparison": {
+        "cohort": "development",
+        "configurationDigest": "ff45d24df7ab7732cd2b37ab779bb703d83f39755b92b78836259e1deba9d57b",
+        "matchedPairs": 5,
+        "excluded": [],
+        "pairs": [
+          {
+            "environmentSeed": "HEARTH-DEV-20261004-1",
+            "hero": "forgekeeper",
+            "baseline": 5,
+            "candidate": 3,
+            "improvement": 2
+          },
+          {
+            "environmentSeed": "HEARTH-DEV-20261004-2",
+            "hero": "quartermaster",
+            "baseline": 6,
+            "candidate": 1,
+            "improvement": 5
+          },
+          {
+            "environmentSeed": "HEARTH-DEV-20261004-3",
+            "hero": "wildspeaker",
+            "baseline": 8,
+            "candidate": 8,
+            "improvement": 0
+          },
+          {
+            "environmentSeed": "HEARTH-DEV-20261004-4",
+            "hero": "archivist",
+            "baseline": 2,
+            "candidate": 3,
+            "improvement": -1
+          },
+          {
+            "environmentSeed": "HEARTH-DEV-20261004-5",
+            "hero": "oathkeeper",
+            "baseline": 3,
+            "candidate": 7,
+            "improvement": -4
+          }
+        ],
+        "baselineMeanPlacement": 4.8,
+        "candidateMeanPlacement": 4.4,
+        "meanPlacementImprovement": 0.4,
+        "standardError": 1.503329637837291,
+        "candidateBetter": 2,
+        "tied": 1,
+        "candidateWorse": 2,
+        "totalRuns": 10,
+        "failedRuns": 0,
+        "policies": [
+          {
+            "kind": "heuristic-v1",
+            "runs": 5,
+            "completed": 5,
+            "firstPlaces": 0,
+            "topFour": 2,
+            "simulations": 0,
+            "decisionMs": 21.94195999998813
+          },
+          {
+            "kind": "scout-search-v1",
+            "runs": 5,
+            "completed": 5,
+            "firstPlaces": 1,
+            "topFour": 3,
+            "simulations": 17888,
+            "decisionMs": 331.6524659999918
+          }
+        ],
+        "limits": [
+          "Single controlled seat against fixed local bots; not head-to-head or self-play.",
+          "Matched seeds may consume different RNG streams after different actions.",
+          "Search estimates condition on a last-seen board and do not predict opponent recruitment.",
+          "The paired sample does not establish general playing strength or human enjoyment."
+        ]
+      },
+      "receipts": [
+        {
+          "file": "01-forgekeeper-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "forgekeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-DEV-20261004-1",
+          "outcome": "lost",
+          "placement": 5,
+          "rounds": 11,
+          "commands": 114,
+          "simulations": 0,
+          "decisionMs": 4.2415010000002695,
+          "replayVerified": true,
+          "replaySha256": "25e0185868eb63d1782c5c12d3f5dea781fce4d42e42489353e43021cb025280",
+          "traceSha256": "722581c5a7185d7256a8bb37ef746cc5083ca1f641a35fcfcb93382697fbb6fb"
+        },
+        {
+          "file": "01-forgekeeper-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "forgekeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-DEV-20261004-1",
+          "outcome": "lost",
+          "placement": 3,
+          "rounds": 15,
+          "commands": 173,
+          "simulations": 4544,
+          "decisionMs": 90.5082899999993,
+          "replayVerified": true,
+          "replaySha256": "2a6bc0be2b1da81e4f72aa6f689765087923df3fb814a8acd0206671acaefdc7",
+          "traceSha256": "a8b704a6b74b292e81f6166db39c1f2f4378f26d7541030db3dde97f1def4fbf"
+        },
+        {
+          "file": "02-quartermaster-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "quartermaster",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-DEV-20261004-2",
+          "outcome": "lost",
+          "placement": 6,
+          "rounds": 11,
+          "commands": 131,
+          "simulations": 0,
+          "decisionMs": 4.128704000001562,
+          "replayVerified": true,
+          "replaySha256": "a5e01a058bfb5f8b14b79a8a20e431155a02107ef6a740331355ae28ee24c06d",
+          "traceSha256": "1a48fa7524868cc703197a14efeae2ebfc2dc50c3829ed63b5e75ffd9aba3bf8"
+        },
+        {
+          "file": "02-quartermaster-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "quartermaster",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-DEV-20261004-2",
+          "outcome": "won",
+          "placement": 1,
+          "rounds": 18,
+          "commands": 245,
+          "simulations": 5744,
+          "decisionMs": 103.98962499999652,
+          "replayVerified": true,
+          "replaySha256": "1a72369fc03f7ff7459300e351c353baa2377319f5e1e2f753f06cb37856becc",
+          "traceSha256": "8a45766ef5b14cfb74d3158f36f0616fc363f4e999ae1006339ec62cb924364c"
+        },
+        {
+          "file": "03-wildspeaker-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "wildspeaker",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-DEV-20261004-3",
+          "outcome": "lost",
+          "placement": 8,
+          "rounds": 9,
+          "commands": 83,
+          "simulations": 0,
+          "decisionMs": 2.332085999994888,
+          "replayVerified": true,
+          "replaySha256": "6242e1d68038bd47e3ff9c1036778756884dda168f00633a89cd008e04cbacf5",
+          "traceSha256": "55d064165575dc41027b2636903b2fc80765cb5a2d721c00dc4c5de79a32b55d"
+        },
+        {
+          "file": "03-wildspeaker-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "wildspeaker",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-DEV-20261004-3",
+          "outcome": "lost",
+          "placement": 8,
+          "rounds": 8,
+          "commands": 57,
+          "simulations": 1520,
+          "decisionMs": 27.13524999999572,
+          "replayVerified": true,
+          "replaySha256": "6b52ccb7d76ddcb5fd3c6b33a2c7d87014c9ccebcb009ee8481d52163b47cc6b",
+          "traceSha256": "7da7c42577e1be480f0f15bfd1e37b18d7f543b7379c913f617f7bea49684e8c"
+        },
+        {
+          "file": "04-archivist-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "archivist",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-DEV-20261004-4",
+          "outcome": "lost",
+          "placement": 2,
+          "rounds": 13,
+          "commands": 140,
+          "simulations": 0,
+          "decisionMs": 4.828664999989996,
+          "replayVerified": true,
+          "replaySha256": "576c9577104b9f7504e18365b787265f7d5f2045dc64e7b22078cb75b1f6189c",
+          "traceSha256": "144ea15c940e3ae4e46d50de283000a60364ba5a3217187f7738e78f6c3cf1ec"
+        },
+        {
+          "file": "04-archivist-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "archivist",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-DEV-20261004-4",
+          "outcome": "lost",
+          "placement": 3,
+          "rounds": 15,
+          "commands": 171,
+          "simulations": 4192,
+          "decisionMs": 76.13750400002755,
+          "replayVerified": true,
+          "replaySha256": "49da9c5a3eb297bd7391af02abfe5a8f14d4d30c35bda75301010491a4bc6742",
+          "traceSha256": "50ba3a0a1c6c07ffa2a66d09ddb44821ba3eb4edfb5ccff1c7690535baa9a7bd"
+        },
+        {
+          "file": "05-oathkeeper-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "oathkeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-DEV-20261004-5",
+          "outcome": "lost",
+          "placement": 3,
+          "rounds": 16,
+          "commands": 181,
+          "simulations": 0,
+          "decisionMs": 6.411004000001412,
+          "replayVerified": true,
+          "replaySha256": "ba2a4a41e5bf716adbce9daa0c4bef154b20aeb9674afd3793edbb90f9a42902",
+          "traceSha256": "06755c420c4748234fdf0f5f559bfb103f71c4341764b991dcd30ab218cef60b"
+        },
+        {
+          "file": "05-oathkeeper-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "oathkeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-DEV-20261004-5",
+          "outcome": "lost",
+          "placement": 7,
+          "rounds": 9,
+          "commands": 87,
+          "simulations": 1888,
+          "decisionMs": 33.88179699997272,
+          "replayVerified": true,
+          "replaySha256": "8fbbafaaf90c7b384f80e21ed5c3d3549d3894a3fa2013086ab75e8dc7975090",
+          "traceSha256": "71e5a2001de940f0671828ff6f03eeb0b4e42f73fe866e4254e785869331ff85"
+        }
+      ]
+    },
+    {
+      "cohort": "evaluation",
+      "evidenceDirectory": "test-results/ai/hearth-v1-evaluation",
+      "sourceRevision": "77dad48f696803b07ebfc1430734c9beab47d5f4",
+      "configurationDigest": "ff45d24df7ab7732cd2b37ab779bb703d83f39755b92b78836259e1deba9d57b",
+      "manifestSha256": "89361794defeddc5bc26c31a6738c5ff2c1f2f6104ad3717ec74e54c02129a69",
+      "comparisonSha256": "e04fd2f319a5ca1f9f08efe7540d0a8e9c453ed4ad790a5f7891c7a61191d376",
+      "comparison": {
+        "cohort": "evaluation",
+        "configurationDigest": "ff45d24df7ab7732cd2b37ab779bb703d83f39755b92b78836259e1deba9d57b",
+        "matchedPairs": 20,
+        "excluded": [],
+        "pairs": [
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-1",
+            "hero": "forgekeeper",
+            "baseline": 2,
+            "candidate": 5,
+            "improvement": -3
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-2",
+            "hero": "quartermaster",
+            "baseline": 8,
+            "candidate": 4,
+            "improvement": 4
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-3",
+            "hero": "wildspeaker",
+            "baseline": 4,
+            "candidate": 3,
+            "improvement": 1
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-4",
+            "hero": "archivist",
+            "baseline": 7,
+            "candidate": 4,
+            "improvement": 3
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-5",
+            "hero": "oathkeeper",
+            "baseline": 5,
+            "candidate": 5,
+            "improvement": 0
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-6",
+            "hero": "forgekeeper",
+            "baseline": 8,
+            "candidate": 7,
+            "improvement": 1
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-7",
+            "hero": "quartermaster",
+            "baseline": 1,
+            "candidate": 1,
+            "improvement": 0
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-8",
+            "hero": "wildspeaker",
+            "baseline": 6,
+            "candidate": 2,
+            "improvement": 4
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-9",
+            "hero": "archivist",
+            "baseline": 2,
+            "candidate": 2,
+            "improvement": 0
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-10",
+            "hero": "oathkeeper",
+            "baseline": 6,
+            "candidate": 8,
+            "improvement": -2
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-11",
+            "hero": "forgekeeper",
+            "baseline": 1,
+            "candidate": 4,
+            "improvement": -3
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-12",
+            "hero": "quartermaster",
+            "baseline": 2,
+            "candidate": 7,
+            "improvement": -5
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-13",
+            "hero": "wildspeaker",
+            "baseline": 4,
+            "candidate": 2,
+            "improvement": 2
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-14",
+            "hero": "archivist",
+            "baseline": 5,
+            "candidate": 6,
+            "improvement": -1
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-15",
+            "hero": "oathkeeper",
+            "baseline": 7,
+            "candidate": 4,
+            "improvement": 3
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-16",
+            "hero": "forgekeeper",
+            "baseline": 6,
+            "candidate": 6,
+            "improvement": 0
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-17",
+            "hero": "quartermaster",
+            "baseline": 4,
+            "candidate": 5,
+            "improvement": -1
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-18",
+            "hero": "wildspeaker",
+            "baseline": 6,
+            "candidate": 7,
+            "improvement": -1
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-19",
+            "hero": "archivist",
+            "baseline": 1,
+            "candidate": 8,
+            "improvement": -7
+          },
+          {
+            "environmentSeed": "HEARTH-EVAL-20261004-20",
+            "hero": "oathkeeper",
+            "baseline": 5,
+            "candidate": 3,
+            "improvement": 2
+          }
+        ],
+        "baselineMeanPlacement": 4.5,
+        "candidateMeanPlacement": 4.65,
+        "meanPlacementImprovement": -0.15,
+        "standardError": 0.6459387293739733,
+        "candidateBetter": 8,
+        "tied": 4,
+        "candidateWorse": 8,
+        "totalRuns": 40,
+        "failedRuns": 0,
+        "policies": [
+          {
+            "kind": "heuristic-v1",
+            "runs": 20,
+            "completed": 20,
+            "firstPlaces": 3,
+            "topFour": 9,
+            "simulations": 0,
+            "decisionMs": 77.43740899974885
+          },
+          {
+            "kind": "scout-search-v1",
+            "runs": 20,
+            "completed": 20,
+            "firstPlaces": 1,
+            "topFour": 10,
+            "simulations": 65280,
+            "decisionMs": 1122.0342300001403
+          }
+        ],
+        "limits": [
+          "Single controlled seat against fixed local bots; not head-to-head or self-play.",
+          "Matched seeds may consume different RNG streams after different actions.",
+          "Search estimates condition on a last-seen board and do not predict opponent recruitment.",
+          "The paired sample does not establish general playing strength or human enjoyment."
+        ]
+      },
+      "receipts": [
+        {
+          "file": "01-forgekeeper-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "forgekeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-1",
+          "outcome": "lost",
+          "placement": 2,
+          "rounds": 14,
+          "commands": 132,
+          "simulations": 0,
+          "decisionMs": 5.13187100000026,
+          "replayVerified": true,
+          "replaySha256": "703d55f3c4d37ca07bcfbdcc8213a855c3e6fb55eea612275f641c69c49343b8",
+          "traceSha256": "89adb15d6008949bc600032db154c05502a1c883d1e4219788d4edd39d350be6"
+        },
+        {
+          "file": "01-forgekeeper-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "forgekeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-1",
+          "outcome": "lost",
+          "placement": 5,
+          "rounds": 10,
+          "commands": 100,
+          "simulations": 2304,
+          "decisionMs": 55.300544000004265,
+          "replayVerified": true,
+          "replaySha256": "ac87ef8ccfc4c6ff74dbe1c1710bb1d74ca53be47a12bbf496d8f16fd76d3bef",
+          "traceSha256": "ce20882db43ea8fe96e84a4e4fb6747247f2824a91a6ced54de513d940a22aeb"
+        },
+        {
+          "file": "02-quartermaster-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "quartermaster",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-2",
+          "outcome": "lost",
+          "placement": 8,
+          "rounds": 8,
+          "commands": 65,
+          "simulations": 0,
+          "decisionMs": 1.7630450000060591,
+          "replayVerified": true,
+          "replaySha256": "6c0ec55e2f1a95ae8615a332a9ad9f4f8a473251a93f8813f1f6960a8a7800e4",
+          "traceSha256": "a2e2486421794b173f509acb308eda20f021edd745c37c2bc68a612d76416a5a"
+        },
+        {
+          "file": "02-quartermaster-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "quartermaster",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-2",
+          "outcome": "lost",
+          "placement": 4,
+          "rounds": 12,
+          "commands": 149,
+          "simulations": 3440,
+          "decisionMs": 62.53129400000216,
+          "replayVerified": true,
+          "replaySha256": "dcf6be138f25ee713209e2f92dbb1ca9096352df9effce40f4135dbc6a58162a",
+          "traceSha256": "7c96073732de09fa6841582cfae407f62f7e62c61be264c35e8a33d4617c0e56"
+        },
+        {
+          "file": "03-wildspeaker-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "wildspeaker",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-3",
+          "outcome": "lost",
+          "placement": 4,
+          "rounds": 12,
+          "commands": 113,
+          "simulations": 0,
+          "decisionMs": 3.7415780000046652,
+          "replayVerified": true,
+          "replaySha256": "4d12a9550d96b408d52e2ca12a08f8af28c50f9e10faa8b8d427b4e2754a66b7",
+          "traceSha256": "754587e8dc7908a6d5a8f21807ae48ad34fb25f4a1b5c1c81689b44b40d9487d"
+        },
+        {
+          "file": "03-wildspeaker-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "wildspeaker",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-3",
+          "outcome": "lost",
+          "placement": 3,
+          "rounds": 14,
+          "commands": 149,
+          "simulations": 3808,
+          "decisionMs": 67.48428500000045,
+          "replayVerified": true,
+          "replaySha256": "26f61a5fb70e4ce803716051c94e2cc4c1b16be0375e600a42be98d6bd9569a3",
+          "traceSha256": "7164b3e2c11b0ff6f486a03d0854d3b037f570be67662f56281829ecc63f6701"
+        },
+        {
+          "file": "04-archivist-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "archivist",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-4",
+          "outcome": "lost",
+          "placement": 7,
+          "rounds": 9,
+          "commands": 83,
+          "simulations": 0,
+          "decisionMs": 2.408125000007203,
+          "replayVerified": true,
+          "replaySha256": "a592f08a4803acf0dfcbe5e5dbff4faa03250a3bd1b97ecbcf522c63b16d5e5b",
+          "traceSha256": "6d864dde3db661d1f500b6d8317fd5adff661f21ddd7c08c39442acf4d0f2d7a"
+        },
+        {
+          "file": "04-archivist-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "archivist",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-4",
+          "outcome": "lost",
+          "placement": 4,
+          "rounds": 12,
+          "commands": 127,
+          "simulations": 3072,
+          "decisionMs": 50.41975100000309,
+          "replayVerified": true,
+          "replaySha256": "e5cff5429a4af2bc059447c3f8f0a5d2fa7c945fc88e8d7503211dee371e4959",
+          "traceSha256": "22e39f68dd72415f93076a70d68e44a747a7df1726e3b9e3481e543adcd9a511"
+        },
+        {
+          "file": "05-oathkeeper-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "oathkeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-5",
+          "outcome": "lost",
+          "placement": 5,
+          "rounds": 10,
+          "commands": 80,
+          "simulations": 0,
+          "decisionMs": 2.2252019999923505,
+          "replayVerified": true,
+          "replaySha256": "2e3ea9771924500538501c9766bef8a158913c317c34d2c67a26dbca65dfa3f6",
+          "traceSha256": "9758d1e9eb90f0405d1317369197872686fe714a0bdb775d8831cf750d1bdc15"
+        },
+        {
+          "file": "05-oathkeeper-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "oathkeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-5",
+          "outcome": "lost",
+          "placement": 5,
+          "rounds": 12,
+          "commands": 143,
+          "simulations": 3152,
+          "decisionMs": 56.765962000008585,
+          "replayVerified": true,
+          "replaySha256": "bd41e6ba7a12277b8fc64f50451003b6a6d2270617ff2b0b70635ede6f94a29a",
+          "traceSha256": "988725e559ee314fd2190bb9cef088b436ce6ea168290ecdf4eaeec225f9455d"
+        },
+        {
+          "file": "06-forgekeeper-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "forgekeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-6",
+          "outcome": "lost",
+          "placement": 8,
+          "rounds": 10,
+          "commands": 99,
+          "simulations": 0,
+          "decisionMs": 3.1390020000071672,
+          "replayVerified": true,
+          "replaySha256": "ff9c51e617a6ab502c4cb029b47c4474736f163dc047e9646f1f4369440fb432",
+          "traceSha256": "8ce4648e02169165b340426cc193b5672dc45830ca16b2b3240246651b39d2b6"
+        },
+        {
+          "file": "06-forgekeeper-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "forgekeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-6",
+          "outcome": "lost",
+          "placement": 7,
+          "rounds": 11,
+          "commands": 122,
+          "simulations": 2688,
+          "decisionMs": 42.73071499999787,
+          "replayVerified": true,
+          "replaySha256": "026279c5f094b911bcb1bd6190b6d5c2e56c4e96533a78c74f75a6b8a6255643",
+          "traceSha256": "02e59f1bd20604a924f93f2fad1be4d215660b14f17f0bec32c8717c1ceac19f"
+        },
+        {
+          "file": "07-quartermaster-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "quartermaster",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-7",
+          "outcome": "won",
+          "placement": 1,
+          "rounds": 13,
+          "commands": 137,
+          "simulations": 0,
+          "decisionMs": 4.48795700001574,
+          "replayVerified": true,
+          "replaySha256": "85450f62cbcbc811ec1cab719143b08065b156804f3db5945ac9583fadc71fb5",
+          "traceSha256": "26ae16787b79481a61e3da5e80827bdb1d018ba331767726f6e7966a0c86302a"
+        },
+        {
+          "file": "07-quartermaster-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "quartermaster",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-7",
+          "outcome": "won",
+          "placement": 1,
+          "rounds": 17,
+          "commands": 190,
+          "simulations": 5232,
+          "decisionMs": 84.78142000001026,
+          "replayVerified": true,
+          "replaySha256": "08c9bb8fadf1b72189efe3be56597af581d4128d56fcbd5a1837a1d3783acbe5",
+          "traceSha256": "1c0aac93f2afdac4e343c698a72a7525269d9654ec87054a07e1e5f3483a6a4c"
+        },
+        {
+          "file": "08-wildspeaker-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "wildspeaker",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-8",
+          "outcome": "lost",
+          "placement": 6,
+          "rounds": 10,
+          "commands": 100,
+          "simulations": 0,
+          "decisionMs": 2.853538999999728,
+          "replayVerified": true,
+          "replaySha256": "b6e8ab501db59115f21673e69d62285e25a1317611cdcb493f396fc693a2a38f",
+          "traceSha256": "926ea117a4bfd1fee6e81a408546a9398c51f3bbf75a2029dcd98061eb4e1985"
+        },
+        {
+          "file": "08-wildspeaker-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "wildspeaker",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-8",
+          "outcome": "lost",
+          "placement": 2,
+          "rounds": 17,
+          "commands": 187,
+          "simulations": 4976,
+          "decisionMs": 83.13141400003224,
+          "replayVerified": true,
+          "replaySha256": "ea42e2ef1a1d9e1eaee14ce8e21d350d371cdf5d6005f7baaeced7ab7f3eb0a2",
+          "traceSha256": "76c3073d84b41b6e7d31f2ae515444d12512e3d4af1c7da825a176998f42eb20"
+        },
+        {
+          "file": "09-archivist-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "archivist",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-9",
+          "outcome": "lost",
+          "placement": 2,
+          "rounds": 17,
+          "commands": 186,
+          "simulations": 0,
+          "decisionMs": 7.062954999964859,
+          "replayVerified": true,
+          "replaySha256": "1d01f0b86a88dc684638ac1e56179488be488501b8361070a6944e2cc1f7cad0",
+          "traceSha256": "b936120a877f8fad5432e56b0ced3b6be708179f096c8cbb5e81abf5285f3e22"
+        },
+        {
+          "file": "09-archivist-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "archivist",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-9",
+          "outcome": "lost",
+          "placement": 2,
+          "rounds": 16,
+          "commands": 189,
+          "simulations": 4608,
+          "decisionMs": 79.1168639999596,
+          "replayVerified": true,
+          "replaySha256": "bfc5970eba5f4bed49d92a09cba3852eea861dd7e1d307ad085774e258bf5a46",
+          "traceSha256": "f4939c959673c46782f244169c934d7c2de98c443a7123a08ad7f046b8d0f046"
+        },
+        {
+          "file": "10-oathkeeper-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "oathkeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-10",
+          "outcome": "lost",
+          "placement": 6,
+          "rounds": 10,
+          "commands": 90,
+          "simulations": 0,
+          "decisionMs": 2.4707030000136,
+          "replayVerified": true,
+          "replaySha256": "716cb7b85e46d23b2b9457aeb62748dc274330dc0a79a53218551e18cf90b94d",
+          "traceSha256": "839fa4a56df4ce4882da9283ae3dee1ea7dc30d85f5cfa6de438eaa8254b92e7"
+        },
+        {
+          "file": "10-oathkeeper-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "oathkeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-10",
+          "outcome": "lost",
+          "placement": 8,
+          "rounds": 8,
+          "commands": 82,
+          "simulations": 1632,
+          "decisionMs": 26.90258600001107,
+          "replayVerified": true,
+          "replaySha256": "12e94c091899c579adbcb39d078ae3dab8c11fbd9507e125b3fc8a6e6fee80c7",
+          "traceSha256": "7e5ad9f0d7e746134a381489cf97498b49ab793ef9169b5d9a3b5e3181bc9847"
+        },
+        {
+          "file": "11-forgekeeper-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "forgekeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-11",
+          "outcome": "won",
+          "placement": 1,
+          "rounds": 15,
+          "commands": 169,
+          "simulations": 0,
+          "decisionMs": 6.057913999953598,
+          "replayVerified": true,
+          "replaySha256": "9a32d212e449cf554ace3e98426ed5984569df4c7c2c39d289051670af0039a3",
+          "traceSha256": "e104ef50938ac9e931405113ae6b0553e6883bf1561ff198813170e8506b952b"
+        },
+        {
+          "file": "11-forgekeeper-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "forgekeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-11",
+          "outcome": "lost",
+          "placement": 4,
+          "rounds": 12,
+          "commands": 155,
+          "simulations": 3392,
+          "decisionMs": 58.66716799997812,
+          "replayVerified": true,
+          "replaySha256": "86bfcc40cabb52671d8ee1aad43a487f509ba0ed709f68eb01653ced033ace38",
+          "traceSha256": "c77d727c1642009c580ba5d34f8360677ed8b2877c13ce4c8eec564e373f3672"
+        },
+        {
+          "file": "12-quartermaster-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "quartermaster",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-12",
+          "outcome": "lost",
+          "placement": 2,
+          "rounds": 14,
+          "commands": 175,
+          "simulations": 0,
+          "decisionMs": 5.9227890000038315,
+          "replayVerified": true,
+          "replaySha256": "c498f85f1a48da7c548cb3cb2117e7d15496160d7ae66e68e2d0220dd8fe5635",
+          "traceSha256": "14b050f72979af041ff4199b095d001d25ec5e2844acb7f9207db5af371fa003"
+        },
+        {
+          "file": "12-quartermaster-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "quartermaster",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-12",
+          "outcome": "lost",
+          "placement": 7,
+          "rounds": 10,
+          "commands": 112,
+          "simulations": 2656,
+          "decisionMs": 44.07909299999301,
+          "replayVerified": true,
+          "replaySha256": "cd00b068dfc3be9679d199b66fb3ea44980325e4239c47d5a1a01a4b3c40bf7f",
+          "traceSha256": "86b634babb255910aea88a47b7bfa58f1dd76e46cfc875b5849f9af0a1afecea"
+        },
+        {
+          "file": "13-wildspeaker-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "wildspeaker",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-13",
+          "outcome": "lost",
+          "placement": 4,
+          "rounds": 12,
+          "commands": 121,
+          "simulations": 0,
+          "decisionMs": 3.81042100002378,
+          "replayVerified": true,
+          "replaySha256": "2830bd959ea3dc05cf22a6bfc1602b91922926e3c7a4a79ad4e738488fa98ea6",
+          "traceSha256": "5d2983ab7a485b56f6d2973d94f736c0ad7ddf04f32024e2912161329ec51937"
+        },
+        {
+          "file": "13-wildspeaker-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "wildspeaker",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-13",
+          "outcome": "lost",
+          "placement": 2,
+          "rounds": 17,
+          "commands": 194,
+          "simulations": 5008,
+          "decisionMs": 85.62626000000455,
+          "replayVerified": true,
+          "replaySha256": "0e79081f3d007bf51d942103d0c11f9adee8ca4d017f0742e4f0c82b837f8610",
+          "traceSha256": "2049ebf39bf23200a91a2be76f863d3480b2f0d173ee2ebd99f5cced192149b4"
+        },
+        {
+          "file": "14-archivist-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "archivist",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-14",
+          "outcome": "lost",
+          "placement": 5,
+          "rounds": 12,
+          "commands": 108,
+          "simulations": 0,
+          "decisionMs": 3.8900019999346114,
+          "replayVerified": true,
+          "replaySha256": "fafcb2a3025f37a2b573c832326c236a0575c2447781d671f82612897b2d9360",
+          "traceSha256": "0d0e16902453ecd6dc5772a218bb01e06e814c70f59d0ad9c8efdddf7c6fce78"
+        },
+        {
+          "file": "14-archivist-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "archivist",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-14",
+          "outcome": "lost",
+          "placement": 6,
+          "rounds": 11,
+          "commands": 117,
+          "simulations": 2784,
+          "decisionMs": 47.297414000015124,
+          "replayVerified": true,
+          "replaySha256": "8033c7071200176a80ff64914ef17e732a036b597cb17f178825a3193d26ad3b",
+          "traceSha256": "4a12631e23d8335fda6ce146d30ecc8b8b2e4d88e268e8d3265561334dcb6974"
+        },
+        {
+          "file": "15-oathkeeper-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "oathkeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-15",
+          "outcome": "lost",
+          "placement": 7,
+          "rounds": 9,
+          "commands": 82,
+          "simulations": 0,
+          "decisionMs": 2.3831260000588372,
+          "replayVerified": true,
+          "replaySha256": "62f870a45fa5fd71b7e2eec671b51cf51c2c90285f5754f0fe805ae74a61a702",
+          "traceSha256": "adf6cd2f9740bfe9f0961dbace3bba0fd90261c1d9f5ad9b4e0cba9dba291bf0"
+        },
+        {
+          "file": "15-oathkeeper-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "oathkeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-15",
+          "outcome": "lost",
+          "placement": 4,
+          "rounds": 14,
+          "commands": 176,
+          "simulations": 3808,
+          "decisionMs": 67.26750499998161,
+          "replayVerified": true,
+          "replaySha256": "2a21e9bde248058ecd96f0f54b3e2d02f338bc526f5a5e2f327a8788c6a3a6dc",
+          "traceSha256": "b76d6262f2777f6b6063f8bc094ebd00c8aad8f39d8fe367a70562bd43dae373"
+        },
+        {
+          "file": "16-forgekeeper-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "forgekeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-16",
+          "outcome": "lost",
+          "placement": 6,
+          "rounds": 10,
+          "commands": 89,
+          "simulations": 0,
+          "decisionMs": 2.6652099999628263,
+          "replayVerified": true,
+          "replaySha256": "771babc266a33615aa216badf51f46f99545ea013501ee0c8c4aee7edcc5fc60",
+          "traceSha256": "712490f01755d04ffed726bf9f0bf5bcb4c68ff454196f01c90f7b3d558c742a"
+        },
+        {
+          "file": "16-forgekeeper-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "forgekeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-16",
+          "outcome": "lost",
+          "placement": 6,
+          "rounds": 11,
+          "commands": 112,
+          "simulations": 2688,
+          "decisionMs": 44.68737600007444,
+          "replayVerified": true,
+          "replaySha256": "eae795ef94de046370d31f31f27a6fbc572340cf0a201a9d57e22e9861a77a18",
+          "traceSha256": "8440cc32752cbb6fcffbb001f1d4f605f89e64de568c60a8d5d6a2f9692772d1"
+        },
+        {
+          "file": "17-quartermaster-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "quartermaster",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-17",
+          "outcome": "lost",
+          "placement": 4,
+          "rounds": 13,
+          "commands": 141,
+          "simulations": 0,
+          "decisionMs": 5.063670000032289,
+          "replayVerified": true,
+          "replaySha256": "fbd3f151b9c415d8bc75655230f96b81c62b2f07d6292f4d106f73f6d6096cdf",
+          "traceSha256": "1280103149bb93b1cdc80f828a418c74bda79cb2437fe5e63c60dfdbc5e5c800"
+        },
+        {
+          "file": "17-quartermaster-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "quartermaster",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-17",
+          "outcome": "lost",
+          "placement": 5,
+          "rounds": 10,
+          "commands": 112,
+          "simulations": 2672,
+          "decisionMs": 46.67695800004003,
+          "replayVerified": true,
+          "replaySha256": "2a0f96eabcc8aade63f8210b06b8aad0cbd5c31cb93c81af2c8d0a808366b0c3",
+          "traceSha256": "c7927aa792a3bfcb118653159b0d261e2751e2cd34fe52d1bf6865f7901f1f9c"
+        },
+        {
+          "file": "18-wildspeaker-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "wildspeaker",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-18",
+          "outcome": "lost",
+          "placement": 6,
+          "rounds": 10,
+          "commands": 82,
+          "simulations": 0,
+          "decisionMs": 2.250917999946978,
+          "replayVerified": true,
+          "replaySha256": "a5025660d0e6f15ebcfe797a6371a6658ec51088fdf6c9609f70dd262f1b8984",
+          "traceSha256": "359656ba82a5aac028f738d4545387cca67ab93959b180829eeed48f00f1f2d6"
+        },
+        {
+          "file": "18-wildspeaker-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "wildspeaker",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-18",
+          "outcome": "lost",
+          "placement": 7,
+          "rounds": 8,
+          "commands": 53,
+          "simulations": 1632,
+          "decisionMs": 21.048497999989195,
+          "replayVerified": true,
+          "replaySha256": "3c2c2880baa723fef2d1fb0ce9956a43a38e28365c124513b3ad847d6cb81e8c",
+          "traceSha256": "9c7f026b001870cdda525ffaf2e65c7de827e901b631481658914e5afeaf915f"
+        },
+        {
+          "file": "19-archivist-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "archivist",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-19",
+          "outcome": "won",
+          "placement": 1,
+          "rounds": 18,
+          "commands": 201,
+          "simulations": 0,
+          "decisionMs": 7.429214999821852,
+          "replayVerified": true,
+          "replaySha256": "632a881ad9c6303c5901f9692976b26ff2e64afac50fafa08aaffb4725b5678f",
+          "traceSha256": "99ecbf744d0ed57246a0221a83cd66cade52c7187dfe9ece61d96d5653b964a7"
+        },
+        {
+          "file": "19-archivist-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "archivist",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-19",
+          "outcome": "lost",
+          "placement": 8,
+          "rounds": 9,
+          "commands": 89,
+          "simulations": 1904,
+          "decisionMs": 30.471791999967536,
+          "replayVerified": true,
+          "replaySha256": "2b5e8e5bef576186f7117e6016f3f6dd5a69cd648e7c76b522efbdb334e24434",
+          "traceSha256": "4cad2540ef1bc761a4c6332f53f5ade3c8ca2db05134f4d60952bc583cc458a8"
+        },
+        {
+          "file": "20-oathkeeper-heuristic-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "heuristic-v1",
+            "hero": "oathkeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-20",
+          "outcome": "lost",
+          "placement": 5,
+          "rounds": 11,
+          "commands": 92,
+          "simulations": 0,
+          "decisionMs": 2.680166999998619,
+          "replayVerified": true,
+          "replaySha256": "63f2a9b21a77fdc5ec1c8ca5db59401daadd5cd096be9ff335dfdc649ca6009b",
+          "traceSha256": "5d3027486fc62ef8edd16a51b402ae73c84f075a6f56e7773db7e9d69e6237e8"
+        },
+        {
+          "file": "20-oathkeeper-scout-search-v1",
+          "status": "complete",
+          "policy": {
+            "kind": "scout-search-v1",
+            "hero": "oathkeeper",
+            "seed": "HEARTH-POLICY-2026-10-04",
+            "samples": 16,
+            "maxOrders": 24
+          },
+          "environmentSeed": "HEARTH-EVAL-20261004-20",
+          "outcome": "lost",
+          "placement": 3,
+          "rounds": 14,
+          "commands": 182,
+          "simulations": 3824,
+          "decisionMs": 67.04733100006706,
+          "replayVerified": true,
+          "replaySha256": "6afa577c3a37856bd991cded03ab8bd0acf6c37b68b2e8c5cf2fff645678e641",
+          "traceSha256": "71f71f76d770ff3ae4a6e7a62d1f2ecce62e31cb366d30b5c3455ffd69d8ffb3"
+        }
+      ]
+    }
+  ]
+}
