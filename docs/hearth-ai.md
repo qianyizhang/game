@@ -88,4 +88,4 @@ Development results may guide revisions. Once evaluation results are inspected, 
 3. Add configurable opponent leagues and seat rotation with an explicit replay contract.
 4. Apply the observation/protocol shape to Blindside and Spire while retaining game-owned mechanics.
 
-Verification and initial measurements are recorded in [completion evidence](completion.md).
+Verification is recorded in [completion evidence](completion.md). The [initial experiment](research/experiments/2026-10-04-hearth-ai-v1.md) completed all 50 lobbies; search did not demonstrate a mean-placement improvement on the reserved cohort, so the baseline is retained.

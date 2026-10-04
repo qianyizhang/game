@@ -32,4 +32,4 @@ Each expansion needs an explicit interaction/timing contract, replay-version dec
 
 ## Completion record
 
-Implementation and verification receipts will be recorded with the delivered feature and experiment documentation. Proposed later slices are not claims of implemented behavior.
+The five first-delivery stages are implemented in [Hearth AI](hearth-ai.md), with [verification receipts](completion.md) and a [frozen paired experiment](research/experiments/2026-10-04-hearth-ai-v1.md). The initial search candidate did not demonstrate an improvement on reserved seeds, so the heuristic baseline is retained. Proposed later slices remain future work.

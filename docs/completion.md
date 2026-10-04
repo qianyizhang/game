@@ -38,6 +38,18 @@ The current tree includes the Night Market content, [tactical challenges](challe
 
 This cleanup changes presentation, import handling and export tooling; game rules and replay versions remain unchanged. Final browser screenshots are under the ignored `test-results/cleanup-final/` directory. The v3 simulation evidence below is historical and was not rerun for this cleanup.
 
+## Game depth and observable AI · 2026-10-04
+
+Last Hearth now has five heroes with typed abilities, including Archivist recall and Oathkeeper fortification. Hearth uses rules **v5**; old v4 save keys remain untouched. The agent interface exposes restricted observations, legal action IDs, structured transition events and a JSON-lines process. Two full-run policies and a reproducible paired experiment are documented in [Hearth AI](hearth-ai.md).
+
+- **186 unit tests across 26 files pass**, including full external-process play, hidden-state observation invariance, stale-action rejection, native legality parity, bounded deterministic search, retained failures and hero accounting. Formatting, strict TypeScript and the production build pass.
+- **46/46 browser cases pass** using approved execution and disposable Chrome profiles. After a final keyword-label visibility/accessibility fix, all **11 affected Hearth/challenge browser cases** and the build pass again. Both new hero powers and phone layouts were visually inspected; reload and v4-save preservation are covered.
+- **32 fixed-seed lifecycle runs** pass across all three games; **3/3 tactical challenges** remain solver-verified.
+- **50/50 AI experiment lobbies** complete and replay exactly with per-action pool conservation. The reserved 20-pair result is baseline mean placement **4.50** versus search **4.65**, with search better/tied/worse in **8/4/8** pairs. The candidate is not promoted as stronger. [Experiment report and receipts](research/experiments/2026-10-04-hearth-ai-v1.md) retain configuration, provenance, compute and uncertainty.
+- The two checked-in Hearth fixture histories were reconstructed through legal v5 commands; their previous winning/losing outcomes remain unchanged. Prior exports are preserved, not silently migrated.
+
+The evaluated engine is pinned to `77dad48`; later selected-unit keyword labels change only presentation. Raw experiment outputs are under `test-results/ai/`, full browser evidence under `test-results/hearth-ai-final-browser/`, and final keyword screenshots under `test-results/hearth-keywords-browser/`.
+
 ## Evidence locations
 
 - `src/games/*/domain/*.test.ts`: mechanism and lifecycle regressions.
