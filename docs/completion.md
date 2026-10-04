@@ -73,3 +73,15 @@ Implementation commit `de0675f` adds rotating recruitment priority, independent 
 - **Keep the baseline:** reserved mean placement is 3.0156 baseline, 5.5000 Tempo/hidden and 5.5938 Tempo/disclosed. This is evidence for retaining Classic, not a claim that the new rivals are stronger or more fun.
 
 Concurrent card-art files were excluded from the arena commits. Source manifests record their workspace status and exact executed hashes; the evaluated policy source did not change during the runs.
+
+## Recruitment ablations and decision diagnostics · 2026-10-04
+
+Implementation `f85353f` adds independent earlier-upgrade and replacement-spending interventions around frozen v1 controllers, a replay decision explorer and a bounded parallel run/audit harness. Game rules, content, save formats and default policies are unchanged. See the [protocol](hearth-recruitment-v2.md) and [complete experiment evidence](research/experiments/2026-10-04-hearth-recruitment-v2.md).
+
+- **212 unit tests / 33 files**, formatting, TypeScript and production build pass in an isolated snapshot of the owned implementation. Frozen v1 hashes, control replay parity, legal sale→buy→play accounting, hidden-state invariance, complete comparison grids, worker-count determinism and rejection of altered receipts are covered.
+- **2/2 focused browser checks** pass with disposable profiles and approved macOS execution. The viewer supports recorded/alternative proposals, exact replay-prefix download, step navigation and a phone layout. Screenshots were inspected. Artifacts: `test-results/browser-recruitment-v2/`.
+- **1,200/1,200 lobbies** complete: 400 development and 800 reserved, balancing five heroes, all eight seats and both rival populations. Exact final replay reconstruction and supply conservation pass. **240 disclosure negative-control pairs** preserve all gameplay commands. No failures, command-limit stops, exclusions or source drift.
+- Separate audits reproduce **1,074,229 decision rows**, including **122,557 focal diagnostic records**, and verify per-run metrics and comparison statistics. Raw evidence and two standalone viewer examples remain under `test-results/ai/hearth-recruitment-v2-*`; source and artifact hashes are retained in the checked-in machine record.
+- **Keep Classic:** earlier upgrades improve Tempo's reserved mean placement to 5.05 against Classic bots and 4.275 against hidden Mixed Rivals, but the Classic reference remains ahead at 4.60 and 3.625. Narrow replacement funding adds little; disclosure effects vary by variant. These are local population estimates across five seed blocks, not general strength claims.
+
+Concurrent artwork files were preserved and excluded from these commits. No reserved-outcome tuning or automatic policy promotion occurred.

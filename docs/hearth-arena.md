@@ -85,3 +85,7 @@ Different actions consume different parts of the seeded RNG stream. These experi
 - `ui/useMixedRivals.ts`: UI controller adapter; no authoritative rules in presentation.
 - `src/engines/hearth-arena-experiment.ts`: complete-lobby execution and blocked comparisons.
 - `scripts/hearth-arena-agent.mjs`, `scripts/hearth-arena-experiment.mjs`: process and experiment entry points.
+
+## Recruitment v2 diagnostics
+
+[Recruitment v2](hearth-recruitment-v2.md) adds an independent upgrade/spending factorial and a standalone replay decision explorer. It preserves every published v1 policy and the arena rules. The [reserved result](research/experiments/2026-10-04-hearth-recruitment-v2.md) improves Tempo through earlier upgrades but retains Classic as the default. Experimental v2 controller IDs are bound in receipts/traces; importing a journal prefix into the game continues with its recorded v1 style preset.
