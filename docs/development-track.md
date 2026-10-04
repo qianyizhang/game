@@ -41,3 +41,7 @@ The five first-delivery stages are implemented in [Hearth AI](hearth-ai.md), wit
 The next policy decision should follow that evidence: inspect recruitment failures before adding more search. Further content expansion and other-game agent adapters remain separate slices; human coaching remains outside this track.
 
 The [reserved arena evaluation](research/experiments/2026-10-04-hearth-arena-v1.md) completed 256/256 lobbies. Baseline mean placement was 3.0156 versus Tempo's 5.5000 hidden / 5.5938 disclosed; Classic remains the default. The next bounded policy slice should isolate upgrade cadence and unused-gold spending, with new reserved seeds.
+
+## Third delivery: recruitment ablations and diagnostics
+
+[Recruitment v2](hearth-recruitment-v2.md) freezes all v1 policies, adds independent upgrade-cadence and replacement-spending interventions, and provides a standalone replay decision explorer. A predeclared 400-lobby development grid and 800-lobby reserved grid balance all five heroes and all eight seats against both Classic and Mixed Rivals. Hidden/disclosed labels remain a separate evaluation condition. Classic stays the default pending evidence; tavern spells and other game-content expansion remain the next separate slice.

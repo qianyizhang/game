@@ -11,6 +11,7 @@ import {
   activeSeat,
   type ArenaConfig,
   type ArenaCommand,
+  type RivalStyle,
 } from '../games/battlegrounds/domain/arena';
 import { RECRUITS } from '../games/battlegrounds/content/minions';
 import { supplyTotal } from '../games/battlegrounds/domain/game';
@@ -43,7 +44,12 @@ export function runArenaEpisode(
   seed: string,
   config: ArenaConfig,
   focalSeat: number,
-  options: { maxCommands?: number; onDecision?: (row: ArenaTrace) => void } = {},
+  options: {
+    maxCommands?: number;
+    onDecision?: (row: ArenaTrace) => void;
+    /** Controller injection receives the same detached public frame as the default v1 policy. */
+    decide?: (frame: ArenaFrame, style: RivalStyle) => RecruitmentDecision;
+  } = {},
 ): ArenaReport {
   const budget = options.maxCommands ?? 6000;
   if (
@@ -69,7 +75,9 @@ export function runArenaEpisode(
       const seat = activeSeat(session.state);
       const input = seat === null ? null : arenaFrame(session, seat);
       const started = performance.now();
-      const decision = input ? decideRecruitment(input, config.seats[seat!].style) : null;
+      const decision = input
+        ? (options.decide ?? decideRecruitment)(input, config.seats[seat!].style)
+        : null;
       const elapsedMs = performance.now() - started;
       decisionMs += elapsedMs;
       if (
