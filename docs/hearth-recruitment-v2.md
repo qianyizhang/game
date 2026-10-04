@@ -68,3 +68,7 @@ Every episode checks supply conservation after accepted commands and reconstruct
 - `src/engines/hearth-recruitment-inspector.ts`: replay reconstruction and same-input proposals.
 - `scripts/hearth-recruitment-experiment.mjs`, `*-worker.mjs`, `*-pool.mjs`, `*-runtime.mjs`: bounded run/audit harness and source pins.
 - `scripts/hearth-recruitment-inspect.mjs`, `*-viewer.html`: standalone interactive viewer.
+
+## Verified result
+
+The [frozen development and reserved evaluation](research/experiments/2026-10-04-hearth-recruitment-v2.md) completed and audited **1,200/1,200 lobbies**. Earlier upgrades improved Tempo's reserved mean placement in both rival populations, but Classic retained the best mean. The narrowly enabled replacement-spending intervention added little. No policy was promoted or tuned after the outcomes; the report retains all denominators, block uncertainty, disclosure controls and diagnostic receipts.
