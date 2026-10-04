@@ -39,3 +39,5 @@ The five first-delivery stages are implemented in [Hearth AI](hearth-ai.md), wit
 [Mixed Rivals and the arena](hearth-arena.md) implement rotating recruitment priority, complete-lobby resolution, per-seat controllers, explicit rival styles and an inspector separate from policy disclosure. Classic retains its v5 rules and saves. The new tempo, economy and composition preferences are experimental policies; they are not presumed stronger than the existing baseline. A fresh cohort crosses seat rotation with hidden/disclosed identities and reports uncertainty at the seed-block level.
 
 The next policy decision should follow that evidence: inspect recruitment failures before adding more search. Further content expansion and other-game agent adapters remain separate slices; human coaching remains outside this track.
+
+The [reserved arena evaluation](research/experiments/2026-10-04-hearth-arena-v1.md) completed 256/256 lobbies. Baseline mean placement was 3.0156 versus Tempo's 5.5000 hidden / 5.5938 disclosed; Classic remains the default. The next bounded policy slice should isolate upgrade cadence and unused-gold spending, with new reserved seeds.

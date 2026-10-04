@@ -65,3 +65,7 @@ The search never reads hints, explanation text, known solution tests or prewritt
 - `tests/browser/engine.spec.ts`: import generated attempts into all three real challenge screens, inspect decisions, reload cleared progress and preserve the normal save.
 
 Run `npm run check`, `npm run engine:challenges`, and the browser test through the repository's approved macOS browser harness. No rules version bump is needed: engine code only submits existing commands and does not change replay meaning.
+
+## Multi-seat Hearth arena
+
+The [Hearth arena](hearth-arena.md) is a separate game-owned controller boundary. `arenaFrame(session, seat)` exposes legal recruitment actions for the active seat; `actArenaAgent` rejects stale or inactive-seat actions. `arenaSession` records configuration, every seat's recruitment commands and round advancement. Its pure transition resolves the whole lobby without executing policies. `inspectArena` exposes declared rival styles independently of hidden/disclosed policy observations. Classic's existing adapter and save format remain unchanged.
