@@ -1,0 +1,35 @@
+# Game depth and competitive AI
+
+Direction accepted 2026-10-04: make the games more fun, complex and concrete; make their engines observable and AI-native; develop competitive policies through reproducible experiments. Human coaching is outside this track.
+
+## First delivery: Last Hearth
+
+Use one game end to end before extending the agent interface to the other two. Last Hearth already has seven local opponents, finite supply, seeded combat and complete replay support.
+
+1. **Strategic hero powers.** Make hero abilities explicit typed content. Add the Archivist (return a friendly minion to hand, preserving buffs, to replay a Battlecry or rearrange board space) and Oathkeeper (give a chosen minion Taunt and permanent health). Test resource accounting, full hands, golden Discover consumption and power reset. Advance Hearth's rules version; preserve old save keys.
+2. **Observable agent boundary.** Expose a versioned observation with the player's own recruitment state, public lobby summaries, last-seen scouting and legal commands. Exclude the environment seed/RNG, private rival hands/shops, exact shared-pool counts and future outcomes. Provide explicit step numbers and structured transition deltas. Keep evaluator replay access separate.
+3. **External-agent protocol.** A local JSON-lines process accepts observations and versioned actions through stdin/stdout. Publish the content catalogue and command contract. Reject stale/invalid actions without advancing state. Save evaluator replays separately from policy responses. No model provider or billing dependency is required.
+4. **Competitive policy experiment.** Compare a deterministic recruitment/positioning baseline with a bounded sampled-combat positioning policy. Both receive the same restricted observations. Simulate only the publicly scouted board with independent policy RNG; label estimates as conditional on that potentially stale board. Record decisions, budgets, alternative scores, outcomes and replay validation.
+5. **Experiment discipline.** Freeze policy configuration before a reserved evaluation cohort. Match environment seeds and heroes, separate development and evaluation reports, preserve partial failures, report every denominator and policy compute. Do not turn a small paired sample into a general strength claim.
+
+## Next game features
+
+| Game | Bounded candidate | Design question |
+| --- | --- | --- |
+| Blindside | Distinct starting decks and a difficulty ladder | Do deck constraints produce different purchases, discards and risk decisions? |
+| Spire | A coherent encounter/event expansion for both existing characters | Do route, removal and drafting decisions respond to the next threat? |
+| Last Hearth | More recruitment plans and opponent policy variants | Can economic, tribe and positional strategies compete across heroes? |
+
+Each expansion needs an explicit interaction/timing contract, replay-version decision, legal-run checks and actual play review. Content quantity alone is not an acceptance criterion.
+
+## Next engine refactors
+
+- Add game-owned observation/action adapters to Blindside and Spire using the Hearth protocol shape; do not share their rules or reward functions.
+- Add policy leagues and seat rotation once the single-seat baseline is reproducible. Current local opponents are a fixed environment, not a self-play population.
+- Add richer structured combat events when a policy or experiment needs them; retain authoritative frames for playback.
+- Add experiment sweeps, held-out configurations and failure inspection on top of immutable reports. Keep simulator correctness, policy performance and human enjoyment as separate evidence.
+- Add model-backed agents through the same process boundary only after deterministic baselines establish cost and strength comparisons.
+
+## Completion record
+
+Implementation and verification receipts will be recorded with the delivered feature and experiment documentation. Proposed later slices are not claims of implemented behavior.
