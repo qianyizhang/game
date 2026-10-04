@@ -1,0 +1,8 @@
+{/* Backdrop: low contrast; support the subject's gesture. */}
+<g data-art-layer="backdrop" />
+{/* Silhouette: draw the identifying contour before its interior. */}
+<g data-art-layer="silhouette" />
+{/* Depth: overlap forms; establish light, midtone and shadow. */}
+<g data-art-layer="depth" />
+{/* Accents: sparse material engraving, highlights and effects. */}
+<g data-art-layer="accents" />

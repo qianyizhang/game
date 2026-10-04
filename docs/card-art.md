@@ -1,84 +1,64 @@
-# SVG card artwork
+# SVG assets: source map and tools
 
-The three games render original vector illustrations directly from React components. Artwork is presentation only: card identities, effects, scoring, randomness and saved replays still belong to the existing content and rules layers. There are no external image requests or image dependencies.
+The [Card Workshop art skill](../skills/card-art/SKILL.md) is the rulebook for composition, anatomy, variants and visual acceptance. This page covers source locations and tooling. Artwork is presentation only; definitions and game rules remain authoritative.
 
-## Visual direction
+## Source map
 
-Use a clear silhouette and a small number of deliberate shadow planes. Choose the framing around the creature's identity: a phoenix needs its wings, chest and trailing plumage; a hydra needs separate neck arcs; a feline needs a short muzzle and a broad brow. Cropped portraits suit some creatures, but should not become the default for every subject. Use curved contours, overlapping forms and selective hard edges rather than reducing all anatomy to angular panels. Blindside uses cream paper, classical profiles and a few printing inks. Spire uses forged metal, asymmetric cloth folds and muted copper. Last Hearth combines creature portraits with larger flight and serpentine compositions.
+Paths below are relative to the repository root. Extend the existing renderer for a content ID; the export catalogue renders those same components.
 
-Keep one dominant subject in each illustration. Supporting effects should sit behind it at lower contrast. Fine engraving describes a material; it should not compete with the contour. Avoid uniform heavy outlines, smiling symbol faces, stick limbs, and a scatter of equally prominent accessories.
+| Asset family                           | Entry point / reusable sources                                                                                                                           | Reference to study                                                                     |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Shared scenes                          | `src/shared/art/CardArt.tsx` · `ArtScene`, `ART_PALETTES`, `ArtGlyph`                                                                                    | Fixed 160 × 112 scenes; seven palettes and four backdrops                              |
+| Blindside cards, Jokers, tools, bosses | `src/games/balatro/ui/Artwork.tsx` · `ExpansionArtwork.tsx`, `NightMarketArtwork.tsx`                                                                    | `nightjar`: coherent bird profile, perch, restrained moon and engraving                |
+| Shop assets                            | `src/games/balatro/ui/ShopArt.tsx` · `MarketPrimitives.tsx`                                                                                              | Shared coins, tickets, stars and printing inks                                         |
+| Spire abilities                        | `src/games/spire/ui/AbilityArt.tsx` · `SilentArt.tsx`, `SilentUpgradeArt.tsx`, `SilentPrimitives.tsx`                                                    | `catalyst` base/upgrade: a recognizably related but distinct alchemy scene             |
+| Hearth creatures                       | `src/games/battlegrounds/ui/MinionArt.tsx` · `CreatureIllustrations.tsx`, `FiendIllustrations.tsx`, `ExpansionPortraits.tsx`, `NightMarketPortraits.tsx` | `Phoenix`: curved pinions, chest and trailing plumage; `Hydra`: separate neck gestures |
+| Challenges                             | `src/shared/art/ChallengeArt.tsx` · `src/app/ChallengeArtwork.tsx`, `src/app/challenge-art.css`                                                          | Three 360 × 192 plates and 64 × 64 symbols; illustrated status keeps its HTML label    |
+| Standalone export                      | `scripts/card-art-catalogue.tsx` · `scripts/export-card-art.mjs`                                                                                         | Content registry → live renderer → self-contained SVG + manifest                       |
 
-Review actual rendered contact sheets at enlarged and card sizes after changing geometry. In particular, interpolated SVG path coordinates need explicit separators: valid SVG syntax can still produce an unintended shape far outside the intended drawing. Compare related cards together so species, poses and effects remain distinguishable.
+`ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](card-expansion.md) and [Night Market](night-market.md) document their content sets.
 
-## Browse and save the assets
-
-Run `npm run assets:export`, then open `test-results/card-art/index.html`. The cabinet filters by game or category and searches by name. Select an illustration to open its standalone `.svg`; `manifest.json` lists each file, name, category and intrinsic size. The exported SVGs include their colors and work without the application's stylesheets. The exporter resolves scene color variables to literal values for compatibility with vector editors and SVG rasterizers.
-
-Pass an output directory when needed:
+## Scaffold and export
 
 ```sh
-npm run assets:export -- /tmp/card-workshop-art
+npm run assets:scaffold -- CopperKestrelArt src/games/battlegrounds/ui/CopperKestrelArt.tsx card
+npm run assets:export -- test-results/art-current
 ```
 
-The current catalogue exports **523 SVGs**: 52 playing cards, 60 Jokers, 18 consumables, 8 bosses, 6 packs, 6 vouchers, 4 tags, 103 Spire cards, 95 upgraded Spire cards, 64 minions, 64 golden minions, 31 shared glyphs, 3 challenge plates and 9 challenge symbols. Counts follow the live content registries. Tokens, statuses and curses do not get upgrade exports. Exported playing cards include a cream face, corner ranks and suit pips; the other exports are illustrations, with gameplay text and stats supplied by accessible HTML controls. [Night Market](night-market.md) adds 48 exports and gives twelve Silent upgrades distinct compositions.
+The scaffold accepts `card`, `plate` or `symbol`. It creates a formatted TSX component with backdrop, silhouette, depth and accent groups, calculates its shared-scene import, and refuses to overwrite a file. Draw the empty layers before integrating it. It changes no renderer, registry, stylesheet or rules automatically.
 
-Generated files live under the ignored `test-results/` directory by default. The editable source is the durable asset library; regenerate the cabinet after artwork or content changes.
+The exporter produces `manifest.json`, an offline `index.html` cabinet, and one `.svg` per entry. The manifest is the current count and ID authority; tokens, statuses and curses have no upgrade export. SVGs contain intrinsic dimensions, accessible labels and resolved palette colors. Export to separate directories for before/after review. Generated exports and reviews normally belong under ignored `test-results/`.
 
-## Composition layers
+## Repeatable review
 
-| Layer                    | Source                                                 | Responsibility                                                                                                          |
-| ------------------------ | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| Shared scene and objects | `src/shared/art/CardArt.tsx`                           | Seven color palettes, four backdrops, 31 reusable glyphs                                                                |
-| Blindside                | `src/games/balatro/ui/Artwork.tsx`                     | Suit paths, rank-count pip layouts, mirrored court portraits, illustrated Joker/tool/planet/boss combinations           |
-| Slay the Spire           | `src/games/spire/ui/AbilityArt.tsx`                    | Blades, fists, helmets, cloaks and other objects composed into individual action scenes; upgrade ornaments              |
-| Last Hearth              | `src/games/battlegrounds/ui/MinionArt.tsx`             | Creature anatomy, mechanical chassis, elemental bodies, equipment and golden accents                                    |
-| Creature illustrations   | `src/games/battlegrounds/ui/CreatureIllustrations.tsx` | Individually drawn phoenix, hydra, wolf, panther and bear compositions, with curved plumage and a reusable serpent head |
-| Demon illustrations      | `src/games/battlegrounds/ui/FiendIllustrations.tsx`    | Distinct imp, matron, watcher and horned patron anatomy, with soul flames and equipment                                 |
-| Expanded Jokers          | `src/games/balatro/ui/ExpansionArtwork.tsx`            | Twelve engraved still lifes and theatrical subjects, using the original four printing inks                              |
-| Silent illustrations     | `src/games/spire/ui/SilentArt.tsx`                     | Thirty-nine action scenes composed from curved daggers, flasks, vapor, leather boots, cards and a bone mask             |
-| Expanded recruits        | `src/games/battlegrounds/ui/ExpansionPortraits.tsx`    | Twelve distinct recruit silhouettes, including a beetle, heron, moth, stag, roc and tortoise                            |
-| Export catalogue         | `scripts/card-art-catalogue.tsx`                       | Renders the same components against the content registries; adds a full playing-card face for export                    |
+Before changing approved assets, export a baseline. After editing, export the current version and select IDs to inspect:
 
-`ArtScene` uses a `160 × 112` view box. `ArtGlyph` objects are drawn in a `100 × 100` local coordinate system; `x` and `y` locate the top-left corner and `size` scales the object. Surround glyphs with custom paths or transform groups to build a new composition:
+The helper needs an **existing Sharp module**. It looks in local Node dependencies; otherwise add `--sharp-module /absolute/path/to/sharp` to the review command below. In Codex desktop, locate the bundled package through `load_workspace_dependencies`. It installs nothing, launches no browser and fetches no assets. If no rasterizer is available, report that limitation and use an already permitted visual-review surface.
 
-```tsx
-<ArtScene palette="tide" variant="night">
-  <g transform="rotate(-20 80 56)">
-    <ArtGlyph kind="shield" x={45} y={20} size={72} />
-  </g>
-  <ArtGlyph kind="leaf" x={102} y={67} size={25} />
-</ArtScene>
+```sh
+npm run assets:export -- test-results/art-before
+# Edit the source artwork, then:
+npm run assets:export -- test-results/art-current
+npm run assets:review -- hearth/phoenix hearth/phoenix-golden \
+  --from test-results/art-current --before test-results/art-before \
+  --out test-results/phoenix-review
 ```
 
-Palettes: `ember`, `moss`, `tide`, `violet`, `gold`, `slate`, `rose`. Backdrops: `rays`, `night`, `runes`, `hills`. The game modules contain examples of more detailed layered figures and objects.
+It decodes **every SVG** in both manifests, compares rendered pixels by stable ID, and writes:
 
-## Editing a card
+- `sheet-01.png`, etc.: selected subjects enlarged and at native size, with before/after columns. Oversized images are reduced to fit and labelled.
+- `review.json`: renderer versions, decoded counts, added/removed/changed IDs, unchanged count and pixel hashes. Without `--before`, the comparison is explicitly absent.
 
-1. Find its stable content ID in the appropriate content registry.
-2. Edit the matching scene in that game's artwork module. Keep game-specific anatomy and motifs there; move a primitive into the shared module only when it has a useful general purpose.
-3. Review both a full card and a small hand/board thumbnail. Keep titles, costs, stats, descriptions and selected/golden states clear.
-4. Run `npm run assets:export` and `npm run test:browser -- tests/browser/artwork.spec.ts tests/browser/art-export.spec.ts`. Follow `AGENTS.md` for approved browser execution on macOS. `npm run check` remains the repository's full gate.
+Use a new `--out` directory for each review. Unknown IDs, malformed images, duplicate IDs and existing output directories fail visibly. A changed count includes expected revisions; judge whether those IDs belong to the requested scope. Pixel equality is specific to the recorded renderer, not proof of aesthetic quality or identical output on every platform. Inspect the sheets and the actual UI before accepting work.
 
-Inline artwork is decorative (`aria-hidden`, non-focusable); its card retains the accessible name and interaction. Standalone exports receive their own accessible label. Scenes avoid DOM IDs and random geometry so repeated cards are deterministic and never collide through SVG definitions. An illustration-only edit does not require a rules-version bump.
+## Verification
 
-## Verification scope
+`npm run check` covers formatting, unit tests and the production build. Choose browser coverage for the surface changed:
 
-The artwork browser checks cover every rendered collection, standalone SVG decoding without app CSS, cabinet filtering, phone overflow, and keyboard selection of illustrated playing cards. Existing browser suites cover buying, reordering, recruitment, combat playback and save/resume. These checks complement visual inspection of the resulting screenshots; they do not assess game balance or replace rule tests.
+| Surface                                     | Browser files under `tests/browser/`          |
+| ------------------------------------------- | --------------------------------------------- |
+| Cards, collections, keyboard selection      | `artwork.spec.ts`                             |
+| Export cabinet, standalone SVG decoding     | `art-export.spec.ts`                          |
+| Challenge art at phone/tablet/desktop sizes | `challenge-art.spec.ts`, `challenges.spec.ts` |
 
-The [card expansion](card-expansion.md) adds playable Blindside and Hearth content using existing rules hooks. Its Silent and Void illustrations support the separate Spire mechanism expansion. Keep the content pack and illustration modules separate so either can be refined without changing the other.
-
-Night Market components live in `NightMarketArtwork.tsx`, `ShopArt.tsx`, `NightMarketPortraits.tsx` and `SilentUpgradeArt.tsx`. `MarketPrimitives.tsx` shares engraved shop objects; `SilentPrimitives.tsx` shares the Silent scene objects without changing existing base artwork.
-
-## Challenge illustrations
-
-`src/shared/art/ChallengeArt.tsx` contains three original **360 × 192** plates and nine **64 × 64** symbols. They use fixed geometry, cream highlights, restrained engraving and the existing games' green, sage and warm brown inks. Each plate suggests its puzzle's subject without showing a winning sequence.
-
-| Puzzle                  | Illustration                                                      |
-| ----------------------- | ----------------------------------------------------------------- |
-| The last multiplier     | A brass multiplier dial, engraved playing cards and stacked coins |
-| One layer of protection | A suspended ward prism, a poison flask and a protective orbit     |
-| Make room for the Cub   | A carved bear miniature, a warband banner and briar leaves        |
-
-The plates appear in the challenge library and puzzle briefs. Symbols accompany choice, resolution, retry, hint, completion, new and active states, save warnings, and Oddly Smooth Stone. Every inline SVG is decorative and non-focusable; the adjoining text and controls retain the information and accessible names. `ChallengeArtwork.tsx` maps the library's existing status labels to symbols. `challenge-art.css` owns the responsive illustration layout, including horizontal tablet tiles.
-
-The exporter includes both families under `challenges/` and `challenges/symbols/`. Run `npm run test:browser -- tests/browser/challenge-art.spec.ts tests/browser/challenges.spec.ts` for responsive artwork and puzzle interaction checks, using the approved macOS browser execution described in `AGENTS.md`. Review the resulting screenshots alongside enlarged and thumbnail SVG renders. This addition changes no gameplay definitions or rules versions.
+Follow `AGENTS.md` for approved browser execution on macOS and disposable profiles. Respect any session-specific access restrictions. A blocked browser check is not a failed game assertion; the raster helper supplements UI review, it does not replace it.

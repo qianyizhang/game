@@ -14,6 +14,8 @@ Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone B
 
 ## Checks
 
+For SVG asset creation or refinement, read [the Card Workshop art skill](skills/card-art/SKILL.md). It contains the art direction, scaffold and visual review workflow; [the source map](docs/card-art.md) locates the renderers and export integration.
+
 `npm run check` runs unit tests and the production build. `npm run test:browser` runs the disposable-profile browser suite with a single startup guard.
 
 On this Mac, request approved execution outside the restricted command sandbox from the first browser-launching test command (`sandbox_permissions: require_escalated`). Ordinary checks stay sandboxed. Never use personal profiles, kill unrelated browsers, or retry unchanged LaunchServices/WindowServer startup failures. Headless and `--no-sandbox` do not fix outer sandbox permissions. Report blocked verification accurately.
