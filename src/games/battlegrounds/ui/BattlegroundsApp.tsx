@@ -10,7 +10,7 @@ import { bgSession } from '../application/session';
 import { HEROES, MINIONS, MINION_BY_ID } from '../content/minions';
 import { makeUnit } from '../domain/units';
 import { POOL_COPIES } from '../domain/recruitment';
-import { MinionCard } from './MinionCard';
+import { MinionCard, minionKeywordText } from './MinionCard';
 import { CombatPlayer } from './CombatPlayer';
 
 export function BattlegroundsApp({
@@ -378,6 +378,9 @@ export function BattlegroundsApp({
                         {MINION_BY_ID[target.definitionId].text}
                         {target.golden ? ' Double stats and bonuses; summons golden tokens.' : ''}
                       </span>
+                      {target.keywords.length > 0 && (
+                        <span>Active keywords: {minionKeywordText(target)}</span>
+                      )}
                     </div>
                   )}
                   <div className="hand-header">

@@ -130,6 +130,7 @@ for (const hero of ['archivist', 'oathkeeper']) {
     } else {
       expect(after.board[0].health).toBe(before.board[0].health + 3);
       expect(after.board[0].keywords).toContain('taunt');
+      await expect(page.locator('.selected-minion-detail')).toContainText('Taunt');
     }
     const snapshot = await saved(page);
     await page.reload();
