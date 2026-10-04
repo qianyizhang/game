@@ -434,7 +434,7 @@ const BASE_HEROES: HeroDefinition[] = [
     name: 'The Forgekeeper',
     symbol: '⚒',
     cost: 1,
-    targeted: true,
+    ability: { type: 'buff', target: 'friendly', attack: 1, health: 1 },
     text: 'Once per round, pay 1 gold to give a friendly minion +1/+1 permanently.',
   },
   {
@@ -442,7 +442,7 @@ const BASE_HEROES: HeroDefinition[] = [
     name: 'The Quartermaster',
     symbol: '¢',
     cost: 0,
-    targeted: false,
+    ability: { type: 'income', gold: 1 },
     text: 'Passive: start each recruitment with 1 extra gold (maximum 11).',
   },
   {
@@ -450,8 +450,24 @@ const BASE_HEROES: HeroDefinition[] = [
     name: 'The Wildspeaker',
     symbol: '❧',
     cost: 2,
-    targeted: false,
+    ability: { type: 'buff', target: 'tribe', tribe: 'beast', attack: 1, health: 1 },
     text: 'Once per round, pay 2 gold to give all friendly Beasts +1/+1 permanently.',
+  },
+  {
+    id: 'archivist',
+    name: 'The Archivist',
+    symbol: '↶',
+    cost: 1,
+    ability: { type: 'recall' },
+    text: 'Once per round, pay 1 gold to return a friendly minion to your hand. Keep its buffs; replay its Battlecry. Golden Discover rewards do not reset.',
+  },
+  {
+    id: 'oathkeeper',
+    name: 'The Oathkeeper',
+    symbol: '⛨',
+    cost: 1,
+    ability: { type: 'buff', target: 'friendly', attack: 0, health: 3, keyword: 'taunt' },
+    text: 'Once per round, pay 1 gold to give a friendly minion +3 Health and Taunt permanently.',
   },
 ];
 

@@ -245,11 +245,11 @@ export function BattlegroundsApp({
                       pending ||
                       player.powerUsed ||
                       player.gold < hero.cost ||
-                      player.hero === 'quartermaster'
+                      hero.ability.type === 'income'
                     }
                     onClick={() => game.dispatch({ type: 'power', target: target?.id })}
                   >
-                    {player.hero === 'quartermaster'
+                    {hero.ability.type === 'income'
                       ? 'Passive active'
                       : player.powerUsed
                         ? 'Power used'

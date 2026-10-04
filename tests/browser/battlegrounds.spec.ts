@@ -100,3 +100,47 @@ test('Battlegrounds triples, Discover, legal victory, invalid import and phone c
   await page.getByRole('button', { name: 'Collection', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Build a warband with a plan.' })).toBeVisible();
 });
+
+for (const hero of ['archivist', 'oathkeeper']) {
+  test(`${hero} power is playable, persisted and isolated from v4 saves`, async ({
+    page,
+  }, info) => {
+    await page.goto('/');
+    await page.evaluate(() =>
+      localStorage.setItem('card-workshop.last-hearth.v4', 'legacy-save-preserved'),
+    );
+    await page.getByLabel('Choose game').selectOption('battlegrounds');
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.getByRole('button', { name: new RegExp(`The ${hero}`, 'i') }).click();
+    await page.locator('.tavern-offers button').first().click();
+    await page.locator('.recruit-hand button').first().click();
+    await page.getByRole('button', { name: 'Ready · fight →' }).click();
+    await page.getByRole('button', { name: /Return to tavern/ }).click();
+    const before = (await saved(page)).state.players[0];
+    await page.getByRole('button', { name: /Hero power/ }).click();
+    const after = (await saved(page)).state.players[0];
+    expect(after.powerUsed).toBe(true);
+    expect(after.gold).toBe(before.gold - 1);
+    if (hero === 'archivist') {
+      expect(after.hand[0]).toEqual(before.board[0]);
+      await page.locator('.recruit-hand button').first().click();
+      expect(
+        (await saved(page)).state.players[0].board.some((u) => u.id === before.board[0].id),
+      ).toBe(true);
+    } else {
+      expect(after.board[0].health).toBe(before.board[0].health + 3);
+      expect(after.board[0].keywords).toContain('taunt');
+    }
+    const snapshot = await saved(page);
+    await page.reload();
+    await expect(page.getByRole('button', { name: 'Power used', exact: true })).toBeVisible();
+    expect(await saved(page)).toEqual(snapshot);
+    expect(await page.evaluate(() => localStorage.getItem('card-workshop.last-hearth.v4'))).toBe(
+      'legacy-save-preserved',
+    );
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    await page.screenshot({ path: info.outputPath(`${hero}-phone.png`), fullPage: true });
+  });
+}

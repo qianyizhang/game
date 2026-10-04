@@ -61,7 +61,7 @@ Try an economy Joker with two different orders beside a multiplier. Explain the 
 
 ## Last Hearth: recruitment versus combat
 
-Custom minions use the same finite supply, triples, Battlecries, death effects and permanent end-recruitment growth as the base pool. The example hero uses the declarative `boardBuff` hook. Existing named hero behavior remains explicit in recruitment rules.
+Custom minions use the same finite supply, triples, Battlecries, death effects and permanent end-recruitment growth as the base pool. All heroes use a declarative `ability`: `income`, `buff` (friendly, board or tribe target, with an optional keyword), or `recall`. The example hero uses `{ type: 'buff', target: 'board', attack: 0, health: 1 }`. Recruitment validates and executes these abilities in `domain/heroes.ts`; new timing mechanisms belong in the domain. Hearth v5 replaces the earlier `boardBuff`/`targeted` fields, and the bundled example pack is version 2.0.0.
 
 Test a Beast growth card beside both a Beast and a Mech, then as a golden. Permanent gains must remain after combat; wounds and temporary summons must not. Check supply through purchase, triple formation, selling and elimination. A new trigger needs a defined place in the death queue and an interaction test for simultaneous deaths or full boards.
 

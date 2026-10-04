@@ -2,6 +2,7 @@ import { shuffle } from '../../../shared/random';
 import { random } from '../../../shared/random';
 import { HEROES, MINION_BY_ID, RECRUITS } from '../content/minions';
 import { buff, makeUnit, matchesTribe, summonHooks } from './units';
+import { applyHeroPower } from './heroes';
 import type { BGCommand, BGState, Player, Unit } from './types';
 
 export const POOL_COPIES = [0, 16, 15, 13, 11, 9, 7];
@@ -59,7 +60,8 @@ export function startRecruitment(run: BGState) {
     run.rng,
   );
   for (const player of run.players.filter((p) => p.hp > 0)) {
-    player.gold = Math.min(10, run.round + 2) + (player.hero === 'quartermaster' ? 1 : 0);
+    const ability = HEROES.find((hero) => hero.id === player.hero)!.ability;
+    player.gold = Math.min(10, run.round + 2) + (ability.type === 'income' ? ability.gold : 0);
     player.powerUsed = false;
     if (run.round > 1) player.upgradeCost = Math.max(0, player.upgradeCost - 1);
     if (!player.frozen) refreshShop(run, player);
@@ -232,24 +234,7 @@ export function recruitAction(
       }
     case 'power': {
       const hero = HEROES.find((h) => h.id === player.hero)!;
-      if (player.hero === 'quartermaster') return 'This hero power is passive.';
-      if (player.powerUsed) return 'Hero power already used this round.';
-      if (player.gold < hero.cost) return 'Not enough gold for the hero power.';
-      if (hero.boardBuff) {
-        if (!player.board.length) return 'Recruit a minion first.';
-        for (const unit of player.board) buff(unit, hero.boardBuff.attack, hero.boardBuff.health);
-      } else if (hero.targeted) {
-        const target = player.board.find((m) => m.id === command.target);
-        if (!target) return 'Select a friendly minion.';
-        buff(target, 1, 1);
-      } else {
-        const targets = player.board.filter((m) => matchesTribe(m, 'beast'));
-        if (!targets.length) return 'Recruit a Beast first.';
-        for (const target of targets) buff(target, 1, 1);
-      }
-      player.gold -= hero.cost;
-      player.powerUsed = true;
-      return;
+      return applyHeroPower(player, hero, command.target);
     }
     case 'discover': {
       const chosen = player.discover.find((m) => m.id === command.id);

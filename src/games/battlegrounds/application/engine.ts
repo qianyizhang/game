@@ -3,6 +3,7 @@ import { HEROES, MINION_BY_ID } from '../content/minions';
 import type { BGCommand, BGState } from '../domain/types';
 import type { PositioningCommand, PositioningState } from '../domain/challenge';
 import { bgSession } from './session';
+import { targetedHero } from '../domain/heroes';
 
 export function* hearthCommands(state: BGState): Generator<BGCommand> {
   if (state.phase === 'hero') {
@@ -25,7 +26,7 @@ export function* hearthCommands(state: BGState): Generator<BGCommand> {
     for (const unit of player.board) yield { type: 'sell', id: unit.id };
     for (const move of adjacentMoves(player.board.map((unit) => unit.id)))
       yield { type: 'move', ...move };
-    if (HEROES.find((hero) => hero.id === player.hero)?.targeted)
+    if (targetedHero(HEROES.find((hero) => hero.id === player.hero)!))
       for (const unit of player.board) yield { type: 'power', target: unit.id };
     else yield { type: 'power' };
     yield { type: 'refresh' };

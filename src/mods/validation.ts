@@ -58,8 +58,26 @@ export function validateMinion(d: MinionDefinition) {
 export function validateHero(d: HeroDefinition) {
   named(d);
   finite(d.cost, 'cost', 0, 10);
-  if (d.boardBuff) {
-    finite(d.boardBuff.attack, 'attack buff', 0, 20);
-    finite(d.boardBuff.health, 'health buff', 0, 20);
-  }
+  if (!Number.isInteger(d.cost)) throw new Error('hero cost must be an integer.');
+  const ability = d.ability;
+  if (ability.type === 'income') {
+    finite(ability.gold, 'income', 0, 5);
+    if (!Number.isInteger(ability.gold) || d.cost !== 0)
+      throw new Error('passive income needs integer gold and zero cost.');
+  } else if (ability.type === 'buff') {
+    finite(ability.attack, 'attack buff', 0, 20);
+    finite(ability.health, 'health buff', 0, 20);
+    if (!['friendly', 'board', 'tribe'].includes(ability.target))
+      throw new Error('invalid hero buff target.');
+    if (
+      ability.target === 'tribe' &&
+      !['beast', 'mech', 'demon', 'elemental', 'neutral', 'all'].includes(ability.tribe ?? '')
+    )
+      throw new Error('tribe buffs require a supported tribe.');
+    if (
+      ability.keyword &&
+      !['taunt', 'shield', 'windfury', 'cleave', 'poison', 'reborn'].includes(ability.keyword)
+    )
+      throw new Error('invalid hero keyword.');
+  } else if (ability.type !== 'recall') throw new Error('invalid hero ability.');
 }

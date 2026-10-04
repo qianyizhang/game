@@ -37,7 +37,11 @@ export function unitValue(unit: Unit, player: Player): number {
     (duplicates === 2 ? 14 : duplicates === 1 ? 3 : 0)
   );
 }
-export function botDecision(run: BGState, player: Player, refreshes: number): BGCommand | null {
+export function botDecision(
+  run: Pick<BGState, 'round'>,
+  player: Player,
+  refreshes: number,
+): BGCommand | null {
   if (player.discover.length)
     return {
       type: 'discover',
@@ -84,21 +88,27 @@ export function botDecision(run: BGState, player: Player, refreshes: number): BG
     )
       return { type: 'buy', id: best.id };
   }
-  if (!player.powerUsed && player.hero === 'forgekeeper' && player.gold >= 1 && player.board.length)
-    return {
-      type: 'power',
-      target: [...player.board].sort((a, b) => unitValue(b, player) - unitValue(a, player))[0].id,
-    };
-  if (
-    !player.powerUsed &&
-    player.hero === 'wildspeaker' &&
-    player.gold >= 2 &&
-    player.board.some((m) => matchesTribe(m, 'beast'))
-  )
-    return { type: 'power' };
   const hero = HEROES.find((h) => h.id === player.hero)!;
-  if (!player.powerUsed && hero.boardBuff && player.board.length && player.gold >= hero.cost)
-    return { type: 'power' };
+  const ability = hero.ability;
+  if (!player.powerUsed && player.gold >= hero.cost) {
+    if (ability.type === 'recall' && player.hand.length < 10) {
+      const target = [...player.board]
+        .filter((unit) => MINION_BY_ID[unit.definitionId].battlecry)
+        .sort((a, b) => unitValue(b, player) - unitValue(a, player))[0];
+      if (target) return { type: 'power', target: target.id };
+    }
+    if (ability.type === 'buff') {
+      const targets = player.board.filter(
+        (unit) => ability.target !== 'tribe' || matchesTribe(unit, ability.tribe),
+      );
+      if (targets.length) {
+        const target = [...targets].sort((a, b) => unitValue(b, player) - unitValue(a, player))[0];
+        return ability.target === 'friendly'
+          ? { type: 'power', target: target.id }
+          : { type: 'power' };
+      }
+    }
+  }
   if (triple && player.gold < 3) return player.frozen ? null : { type: 'freeze' };
   if (player.gold >= 1 && refreshes < 5 && (player.gold >= 4 || player.board.length >= 7))
     return { type: 'refresh' };
@@ -113,8 +123,14 @@ export function runBot(run: BGState, player: Player) {
     if (error) throw new Error(`Bot ${player.id} attempted an illegal action: ${error}`);
     if (command.type === 'refresh') refreshes++;
   }
+  player.board = baselineOrder(player.board);
+}
+
+/** A pure order proposal shared by the fixed bots and the observable baseline agent. */
+export function baselineOrder(input: readonly Unit[]): Unit[] {
+  const board = [...input];
   // Deterministic positioning: early cleave/high-attack units, support engines behind them.
-  player.board.sort((a, b) => {
+  board.sort((a, b) => {
     const priority = (unit: Unit) => {
       const d = MINION_BY_ID[unit.definitionId];
       return (
@@ -128,8 +144,9 @@ export function runBot(run: BGState, player: Player) {
     return priority(b) - priority(a);
   });
   // Keep vulnerable support away from a taunt's cleave-adjacent slot.
-  if (player.board.length >= 4) {
-    const taunt = player.board.findIndex((u) => u.keywords.includes('taunt'));
-    if (taunt > 0) player.board.unshift(player.board.splice(taunt, 1)[0]);
+  if (board.length >= 4) {
+    const taunt = board.findIndex((u) => u.keywords.includes('taunt'));
+    if (taunt > 0) board.unshift(board.splice(taunt, 1)[0]);
   }
+  return board;
 }
