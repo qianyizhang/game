@@ -80,6 +80,8 @@ The first delegated Spiral/Vajra/Hydra review exposed failures that palette and 
 
 The user rejected the earlier **Nightjar and Hydra** on 2026-10-06, overruling the favorable technical/construction review. The subsequent living Hydra received the explicit response **“this is much better”** and a request to reuse its methodology. That version is the accepted direction and quality reference for further creature work; its earlier bronze versions remain failure examples. This is not blanket approval of every detail or of the other creatures. Catalyst, Phoenix, Spiral and Vajra remain useful material/presentation comparisons.
 
+The separate independent Nightjar/Hydra research trial was rejected on 2026-10-06. Its experimental models, comparison viewer and generated artifacts were discarded; they are not gallery replacements or accepted references. The comparison practices below are retained as review methods, not evidence that the trial produced better art.
+
 | Subject  | Retain                                                                                                      | Failure to avoid                                                                                        |
 | -------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Nightjar | Continuous crown-to-breast gesture, folded planes fitted to the body, descending tail, light curved support | Separate head blob, a stuffed oval, wing pillows, detached eye beads, thick branched logs               |
@@ -119,6 +121,12 @@ Keep the brief small: **subject / physical interpretation / gesture / identifyin
 5. Deliver a preview and say what changed and what remains approximate. Use “reviewed” for the author's own inspection; reserve “approved” for an actual user decision. Do not declare a masterpiece or photorealism on the basis of implementation effort.
 
 Retain screenshots and recordings under a named, ignored `test-results/` review directory. Source geometry, materials, this rulebook and linked workflows are durable. When a user explicitly accepts or rejects a direction, update the relevant example here rather than accumulating contradictory rules in several files.
+
+For a side-by-side comparison:
+
+- **Match the view.** Use the same camera, light, animation time and subject framing; swap panel positions before deciding. Fitting each model to its maximum bounds is not physical-scale matching, and different supports can distort apparent creature size.
+- **Separate structure from finish.** Inspect silhouette first, neutral clay under raking light second, and materials last. Check front, side and rear so texture and a flattering angle cannot conceal weak form.
+- **Isolate the next change.** Changing anatomy, pose and materials together tests an overall direction. To learn which change helped, compare one factor at a time and record a concrete observation with the subject, view and display mode. These controls guide judgment; they do not produce an automatic aesthetic winner.
 
 ## Guided delegation trials
 
