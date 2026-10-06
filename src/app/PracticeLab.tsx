@@ -1,3 +1,4 @@
+import { WorkshopArt } from '../shared/art/WorkshopArt';
 import { useMemo, useRef, useState } from 'react';
 import { downloadJSON, type useLocalGame } from './useLocalGame';
 
@@ -87,12 +88,17 @@ export function PracticeLab<S extends { seed: string }, C>({
   };
   return (
     <>
-      <p className="eyebrow">REPLAY · BRANCH · EXPERIMENT</p>
-      <h1>Practice lab</h1>
-      <p>
-        Your normal run stays committed. Branches and custom scenarios use separate saves and cannot
-        be imported as normal runs.
-      </p>
+      <div className="feature-intro">
+        <div>
+          <p className="eyebrow">REPLAY · BRANCH · EXPERIMENT</p>
+          <h1>Practice lab</h1>
+          <p>
+            Your normal run stays committed. Branches and custom scenarios use separate saves and
+            cannot be imported as normal runs.
+          </p>
+        </div>
+        <WorkshopArt kind="practice" />
+      </div>
       {game.error && (
         <p role="alert" className="error-banner">
           {game.error}

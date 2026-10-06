@@ -1,3 +1,6 @@
+import { HeroArt, HeroPowerArt } from './HeroArt';
+import { WorkshopSymbol } from '../../../shared/art/WorkshopArt';
+import { rivalArtKind } from './rivalArt';
 import { Scouting } from './Scouting';
 import { useMixedRivals } from './useMixedRivals';
 import { ArenaInspector } from './ArenaInspector';
@@ -255,7 +258,7 @@ export function BattlegroundsApp({
                       key={h.id}
                       onClick={() => game.dispatch({ type: 'chooseHero', hero: h.id })}
                     >
-                      <span>{h.symbol}</span>
+                      <HeroArt id={h.id} />
                       <h3>{h.name}</h3>
                       <p>{h.text}</p>
                       <strong>Choose hero →</strong>
@@ -269,6 +272,7 @@ export function BattlegroundsApp({
               <>
                 <Scouting run={run} />
                 <div className="tavern-tools">
+                  <HeroPowerArt id={hero.id} />
                   <div>
                     <span className="eyebrow">{hero.name}</span>
                     <p>{hero.text}</p>
@@ -554,7 +558,7 @@ export function BattlegroundsApp({
                         className={`${p.id === 0 ? 'you' : ''} ${p.hp <= 0 ? 'eliminated' : ''}`}
                         key={p.id}
                       >
-                        <span>{HEROES.find((h) => h.id === p.hero)!.symbol}</span>
+                        <HeroArt id={p.hero} />
                         <div>
                           <strong>
                             {p.name}
@@ -562,6 +566,9 @@ export function BattlegroundsApp({
                           </strong>
                           {mode === 'mixed' && mixed.state.arena.config && p.id !== 0 && (
                             <small>
+                              <WorkshopSymbol
+                                kind={rivalArtKind(mixed.state.arena.config.seats[p.id].style)}
+                              />
                               {RIVAL_STYLES[mixed.state.arena.config.seats[p.id].style].label}
                             </small>
                           )}

@@ -16,7 +16,18 @@ Paths below are relative to the repository root. Extend the existing renderer fo
 | Challenges                             | `src/shared/art/ChallengeArt.tsx` · `src/app/ChallengeArtwork.tsx`, `src/app/challenge-art.css`                                                          | Three 360 × 192 plates and 64 × 64 symbols; illustrated status keeps its HTML label    |
 | Standalone export                      | `scripts/card-art-catalogue.tsx` · `scripts/export-card-art.mjs`                                                                                         | Content registry → live renderer → self-contained SVG + manifest                       |
 
-`ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](card-expansion.md) and [Night Market](night-market.md) document their content sets.
+Feature artwork extends the source map:
+
+| Asset family              | Entry point                                              | Composition / display size                                                                                      |
+| ------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Hearth heroes and powers  | `src/games/battlegrounds/ui/HeroArt.tsx`                 | Five 160 × 112 portraits and five 64 × 64 power symbols; portraits also appear in the lobby and rival inspector |
+| Spire characters          | `src/games/spire/ui/CharacterArt.tsx` via `Portrait.tsx` | Ironclad and Silent at 180 × 180; curved cloth, overlapping armor, diagonal weapons                             |
+| Spire relics and potions  | `src/games/spire/ui/WorldItemArt.tsx`                    | Distinct 64 × 64 objects, readable at 24 px in the rack and belt; unknown mod IDs use a marked fallback         |
+| Spire route and acts      | `src/games/spire/ui/SpireSceneArt.tsx`                   | Seven 64 × 64 room symbols and three 160 × 112 act scenes                                                       |
+| Workshop and rival styles | `src/shared/art/WorkshopArt.tsx`                         | Four 160 × 112 tool scenes and six 64 × 64 symbols; `rivalArt.ts` maps styles to symbols in presentation        |
+| Feature placement         | `src/shared/art/FeatureArt.css`                          | Scoped desktop/phone sizing; symbols remain decorative beside HTML labels                                       |
+
+`ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](card-expansion.md), [Night Market](night-market.md), and [feature artwork coverage](feature-art.md) document their sets.
 
 ## Scaffold and export
 
@@ -55,10 +66,13 @@ Use a new `--out` directory for each review. Unknown IDs, malformed images, dupl
 
 `npm run check` covers formatting, unit tests and the production build. Choose browser coverage for the surface changed:
 
-| Surface                                     | Browser files under `tests/browser/`          |
-| ------------------------------------------- | --------------------------------------------- |
-| Cards, collections, keyboard selection      | `artwork.spec.ts`                             |
-| Export cabinet, standalone SVG decoding     | `art-export.spec.ts`                          |
-| Challenge art at phone/tablet/desktop sizes | `challenge-art.spec.ts`, `challenges.spec.ts` |
+| Surface                                           | Browser files under `tests/browser/`            |
+| ------------------------------------------------- | ----------------------------------------------- |
+| Cards, collections, keyboard selection            | `artwork.spec.ts`                               |
+| Export cabinet, standalone SVG decoding           | `art-export.spec.ts`                            |
+| Challenge art at phone/tablet/desktop sizes       | `challenge-art.spec.ts`, `challenges.spec.ts`   |
+| Heroes, items, workshop tools, character contrast | `feature-art.spec.ts`                           |
+| Hero powers, Mixed Rivals, scouting, persistence  | `battlegrounds.spec.ts`, `hearth-arena.spec.ts` |
+| Spire rooms, map, shops, characters, practice     | `spire.spec.ts`, `expansion.spec.ts`            |
 
 Follow `AGENTS.md` for approved browser execution on macOS and disposable profiles. Respect any session-specific access restrictions. A blocked browser check is not a failed game assertion; the raster helper supplements UI review, it does not replace it.

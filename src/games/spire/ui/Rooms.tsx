@@ -1,3 +1,6 @@
+import { RelicArt, PotionArt } from './WorldItemArt';
+import { NodeArt } from './SpireSceneArt';
+import { WorkshopSymbol } from '../../../shared/art/WorkshopArt';
 import { CARD_BY_ID } from '../content/cards';
 import { POTIONS, RELIC_BY_ID } from '../content/world';
 import { removalCost } from '../domain/rewards';
@@ -53,7 +56,7 @@ export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCo
               </select>
             </label>
             <label>
-              Difficulty{' '}
+              Difficulty <WorkshopSymbol kind="ascension" />
               <select
                 aria-label="Ascension"
                 value={run.ascension}
@@ -107,13 +110,14 @@ export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCo
           <p>Take one, or skip to keep your deck focused.</p>
           {run.rewardRelic && (
             <p>
-              Relic: <strong>{RELIC_BY_ID[run.rewardRelic].name}</strong> —{' '}
+              <RelicArt id={run.rewardRelic} /> Relic:{' '}
+              <strong>{RELIC_BY_ID[run.rewardRelic].name}</strong> —{' '}
               {RELIC_BY_ID[run.rewardRelic].text}
             </p>
           )}
           {run.rewardPotion && (
             <p>
-              Potion: {POTIONS[run.rewardPotion].name}
+              <PotionArt id={run.rewardPotion} /> Potion: {POTIONS[run.rewardPotion].name}
               {run.potions.length >= 3 ? ' · belt full; discard a potion below to claim this.' : ''}
             </p>
           )}
@@ -143,7 +147,7 @@ export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCo
           <div className="sts-relic-choices">
             {run.bossRelics.map((id) => (
               <button key={id} onClick={() => dispatch({ type: 'bossRelic', id })}>
-                <span>{RELIC_BY_ID[id].symbol}</span>
+                <RelicArt id={id} />
                 <h3>{RELIC_BY_ID[id].name}</h3>
                 <p>{RELIC_BY_ID[id].text}</p>
               </button>
@@ -157,7 +161,7 @@ export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCo
       )}
       {run.phase === 'rest' && (
         <>
-          <span className="scene-symbol">♨</span>
+          <NodeArt kind="rest" />
           <p className="eyebrow">CAMPFIRE</p>
           <h2>Rest or Smith</h2>
           <button
@@ -186,7 +190,7 @@ export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCo
       )}
       {run.phase === 'treasure' && (
         <>
-          <span className="scene-symbol">▣</span>
+          <NodeArt kind="treasure" />
           <h2>A treasure chest</h2>
           <p>
             A relic waits inside.
@@ -235,6 +239,11 @@ export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCo
                     }
                     onClick={() => dispatch({ type: 'buy', id: o.id })}
                   >
+                    {o.kind === 'relic' ? (
+                      <RelicArt id={o.definitionId} />
+                    ) : (
+                      <PotionArt id={o.definitionId} />
+                    )}
                     <h3>{item.name}</h3>
                     <p>{item.text}</p>
                     <strong>{o.price} gold</strong>
@@ -258,7 +267,7 @@ export function Room({ run, dispatch }: { run: SpireState; dispatch: (c: SpireCo
       )}
       {run.phase === 'event' && (
         <>
-          <span className="scene-symbol">?</span>
+          <NodeArt kind="event" />
           <p className="eyebrow">AN UNEXPECTED ENCOUNTER</p>
           <h2>
             {

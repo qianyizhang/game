@@ -1,3 +1,13 @@
+import { RELICS, POTIONS, ACT_NAMES } from '../src/games/spire/content/world';
+import { RelicArt, PotionArt } from '../src/games/spire/ui/WorldItemArt';
+import { CharacterArt } from '../src/games/spire/ui/CharacterArt';
+import { ActArt, NodeArt, ROOM_KINDS } from '../src/games/spire/ui/SpireSceneArt';
+import {
+  WorkshopArt,
+  WorkshopSymbol,
+  WORKSHOP_SCENES,
+  WORKSHOP_SYMBOLS,
+} from '../src/shared/art/WorkshopArt';
 import { ArtGlyph, ArtScene, type ArtGlyphKind } from '../src/shared/art/CardArt';
 import {
   JokerArt,
@@ -15,7 +25,8 @@ import { CONSUMABLES } from '../src/games/balatro/content/consumables';
 import { BOSSES } from '../src/games/balatro/content/blinds';
 import { SUITS, type Suit } from '../src/games/balatro/domain/types';
 import { CARDS } from '../src/games/spire/content/cards';
-import { MINIONS } from '../src/games/battlegrounds/content/minions';
+import { HEROES, MINIONS } from '../src/games/battlegrounds/content/minions';
+import { HeroArt, HeroPowerArt } from '../src/games/battlegrounds/ui/HeroArt';
 import type { ReactNode } from 'react';
 import {
   ChallengeArt,
@@ -86,6 +97,62 @@ export function cardArtCatalogue(): Asset[] {
     'seed',
   ];
   return [
+    ...WORKSHOP_SCENES.map((kind) => ({
+      id: `workshop/${kind}`,
+      group: 'Workshop · Tools',
+      name: kind,
+      node: <WorkshopArt kind={kind} />,
+    })),
+    ...WORKSHOP_SYMBOLS.map((kind) => ({
+      id: `workshop/symbols/${kind}`,
+      group: 'Workshop · Symbols',
+      name: kind,
+      node: <WorkshopSymbol kind={kind} />,
+    })),
+    ...RELICS.map((relic) => ({
+      id: `spire/relics/${relic.id}`,
+      group: 'Slay the Spire · Relics',
+      name: relic.name,
+      node: <RelicArt id={relic.id} />,
+    })),
+    ...Object.entries(POTIONS).map(([id, potion]) => ({
+      id: `spire/potions/${id}`,
+      group: 'Slay the Spire · Potions',
+      name: potion.name,
+      node: <PotionArt id={id} />,
+    })),
+    ...(['ironclad', 'silent'] as const).map((id) => ({
+      id: `spire/characters/${id}`,
+      group: 'Slay the Spire · Characters',
+      name: id,
+      node: <CharacterArt id={id} />,
+    })),
+    ...ROOM_KINDS.map((kind) => ({
+      id: `spire/rooms/${kind}`,
+      group: 'Slay the Spire · Rooms',
+      name: kind,
+      node: <NodeArt kind={kind} />,
+    })),
+    ...ACT_NAMES.map((name, index) => ({
+      id: `spire/acts/${index + 1}`,
+      group: 'Slay the Spire · Acts',
+      name,
+      node: <ActArt act={index + 1} />,
+    })),
+    ...HEROES.flatMap((hero) => [
+      {
+        id: `hearth/heroes/${hero.id}`,
+        group: 'Last Hearth · Heroes',
+        name: hero.name,
+        node: <HeroArt id={hero.id} />,
+      },
+      {
+        id: `hearth/powers/${hero.id}`,
+        group: 'Last Hearth · Hero powers',
+        name: `${hero.name} · Power`,
+        node: <HeroPowerArt id={hero.id} />,
+      },
+    ]),
     ...CHALLENGE_PLATES.map(([id, name]) => ({
       id: `challenges/${id}`,
       group: 'Challenges · Plates',

@@ -1,16 +1,8 @@
+import { ActArt, NodeArt, ROOM_KINDS } from './SpireSceneArt';
 import { useEffect, useRef } from 'react';
 import { ACT_NAMES, ENEMY_BY_ID } from '../content/world';
 import { availableNodes, MAP_ROWS } from '../domain/map';
-import type { NodeKind, SpireCommand, SpireState } from '../domain/types';
-export const nodeIcons: Record<NodeKind, string> = {
-  fight: '⚔',
-  elite: '♜',
-  event: '?',
-  rest: '♨',
-  shop: '$',
-  treasure: '▣',
-  boss: '♛',
-};
+import type { SpireCommand, SpireState } from '../domain/types';
 const canvasWidth = 492;
 const x = (lane: number) => 45 + lane * 67;
 const y = (row: number) => 65 + (MAP_ROWS - row) * 72;
@@ -31,6 +23,7 @@ export function RouteMap({
   return (
     <section className="sts-map-panel">
       <div className="map-heading">
+        <ActArt act={run.act} />
         <p className="eyebrow">ACT {run.act}</p>
         <h2>{ACT_NAMES[run.act - 1]}</h2>
         <p>Choose a highlighted room. Follow the dotted paths upward.</p>
@@ -75,16 +68,16 @@ export function RouteMap({
               aria-label={`Floor ${node.row + 1} lane ${node.lane + 1} ${node.kind}`}
               title={`${node.kind} · floor ${node.row + 1}`}
             >
-              <span>{nodeIcons[node.kind]}</span>
+              <NodeArt kind={node.kind} />
               {node.visited && <small>✓</small>}
             </button>
           ))}
         </div>
       </div>
       <div className="sts-map-legend">
-        {Object.entries(nodeIcons).map(([kind, icon]) => (
+        {ROOM_KINDS.map((kind) => (
           <span key={kind}>
-            {icon} {kind}
+            <NodeArt kind={kind} /> {kind}
           </span>
         ))}
       </div>
