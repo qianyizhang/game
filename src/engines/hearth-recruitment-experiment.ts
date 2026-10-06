@@ -6,7 +6,7 @@ import {
 } from '../games/battlegrounds/ai/recruitment-v2';
 import { decideRecruitment } from '../games/battlegrounds/ai/recruitment-policy';
 import { mixedRivalsConfig, type StyleVisibility } from '../games/battlegrounds/domain/arena';
-import { arenaSession } from '../games/battlegrounds/application/arena';
+import { arenaSessionV1 as arenaSession } from '../games/battlegrounds/application/arena';
 import { runArenaEpisode, type ArenaReport, type ArenaTrace } from './hearth-arena-experiment';
 
 export type RecruitmentCohort = 'development' | 'evaluation';

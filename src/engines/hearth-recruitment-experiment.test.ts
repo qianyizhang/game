@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { arenaSession } from '../games/battlegrounds/application/arena';
+import { arenaSessionV1 as arenaSession } from '../games/battlegrounds/application/arena';
 import { decideRecruitment } from '../games/battlegrounds/ai/recruitment-policy';
 import { runArenaEpisode } from './hearth-arena-experiment';
 import {

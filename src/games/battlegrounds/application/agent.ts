@@ -6,6 +6,7 @@ import { recruitAction } from '../domain/recruitment';
 import type { BGCommand, BGState, Player, Unit } from '../domain/types';
 import { hearthCommands } from './engine';
 import { bgSession } from './session';
+import { TAVERN_SPELLS } from '../content/spells';
 
 export type HearthSession = Session<BGState, BGCommand>;
 export interface HearthObservation {
@@ -32,6 +33,7 @@ export interface HearthObservation {
 }
 export type HearthFrame = AgentFrame<HearthObservation, BGCommand>;
 export type HearthEvent =
+  | { type: 'tavern'; before: Player['tavern']; after: Player['tavern'] }
   | { type: 'resource'; name: 'gold' | 'hp' | 'tier'; before: number; after: number; delta: number }
   | { type: 'phase'; before: BGState['phase']; after: BGState['phase']; round: number }
   | {
@@ -121,6 +123,12 @@ export function hearthEvents(
   combatResolved = command.type === 'endRecruit',
 ): HearthEvent[] {
   const events: HearthEvent[] = [];
+  if (JSON.stringify(before.self.tavern) !== JSON.stringify(after.self.tavern))
+    events.push({
+      type: 'tavern',
+      before: structuredClone(before.self.tavern),
+      after: structuredClone(after.self.tavern),
+    });
   for (const name of ['gold', 'hp', 'tier'] as const) {
     const a = before.self[name],
       b = after.self[name];
@@ -176,5 +184,6 @@ export function hearthCatalogue() {
     content: bgSession.rules.content,
     heroes: HEROES,
     minions: MINIONS,
+    spells: TAVERN_SPELLS,
   });
 }

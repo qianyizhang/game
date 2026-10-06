@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { arenaFrame, arenaSession } from '../application/arena';
+import { arenaFrame, arenaSessionV1 as arenaSession } from '../application/arena';
 import { mixedRivalsConfig } from '../domain/arena';
 import { makeUnit } from '../domain/units';
 import { decideRecruitment } from './recruitment-policy';

@@ -85,3 +85,14 @@ Implementation `f85353f` adds independent earlier-upgrade and replacement-spendi
 - **Keep Classic:** earlier upgrades improve Tempo's reserved mean placement to 5.05 against Classic bots and 4.275 against hidden Mixed Rivals, but the Classic reference remains ahead at 4.60 and 3.625. Narrow replacement funding adds little; disclosure effects vary by variant. These are local population estimates across five seed blocks, not general strength claims.
 
 Concurrent artwork files were preserved and excluded from these commits. No reserved-outcome tuning or automatic policy promotion occurred.
+
+## Tavern spells closeout · 2026-10-06
+
+Eight spells are playable in both Hearth modes with explicit purchase/cast commands, shared hand capacity, seeded/frozen offers, delayed income and coupon timing. New games use rules v6 / arena v2. Historical fixtures, policy bytes, published evidence and old save keys are preserved through explicit v5/v1 study codecs. See the [spell contract and source map](tavern-spells.md).
+
+- **233 unit tests / 34 files**, formatting, strict TypeScript and production build pass.
+- **25/25 lifecycle lobbies**: 20 Classic across all five heroes and five complete Mixed Rivals lobbies; every accepted action checks supply/capacity and every final state replays exactly. These checks do not establish balance, enjoyment or policy strength.
+- **604 exported SVGs**, eight new spell subjects; all 596 earlier assets retain identical recorded pixel hashes. New artwork and real UI are inspected at desktop/phone sizes.
+- **57/57 browser checks pass** in the full suite, including all games, challenge playback, the export cabinet, historical decision explorer and new spell controls. Disposable Chrome profiles ran outside the restricted macOS command sandbox. Screenshots remain in `test-results/browser-tavern-spells-final/`. All four spell browser cases were rerun successfully after the action-enumeration cleanup, under `test-results/browser-tavern-spells-cleanup/`.
+
+The prior feature-art expansion is closed in `5784264`, with 212 unit tests/build and seven targeted artwork browser checks passing before its commit. Its 73 additions are included in the current catalogue.

@@ -29,6 +29,19 @@ export const hearthEvidence: Observer<BGState, BGCommand> = {
         name: 'Refresh shop',
         offered: player.shop.map((u) => u.definitionId),
       });
+    if (command.type === 'buySpell')
+      events.push({
+        kind: 'pick',
+        name: 'Tavern spell',
+        offered: [player.tavern!.offer!.definitionId],
+        choice: player.tavern!.offer!.definitionId,
+      });
+    if (command.type === 'castSpell')
+      events.push({
+        kind: 'action',
+        name: `Cast ${player.tavern!.hand.find((s) => s.id === command.id)!.definitionId}`,
+        metrics: { gold: after.players[0].gold },
+      });
     if (command.type === 'endRecruit')
       events.push({
         kind: 'encounter',

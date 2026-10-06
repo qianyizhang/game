@@ -4,7 +4,7 @@ import {
   type HearthFrame,
   type HearthEvent,
 } from '../games/battlegrounds/application/agent';
-import { bgSession } from '../games/battlegrounds/application/session';
+import { bgSessionV5 as bgSession } from '../games/battlegrounds/application/session';
 import {
   createHearthPolicy,
   type HearthPolicyConfig,

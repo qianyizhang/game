@@ -20,6 +20,7 @@ Feature artwork extends the source map:
 
 | Asset family              | Entry point                                              | Composition / display size                                                                                      |
 | ------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Hearth spells             | `src/games/battlegrounds/ui/TavernSpellArt.tsx`          | Eight 160 × 112 material subjects; spell cards retain cost, tier and effect labels                              |
 | Hearth heroes and powers  | `src/games/battlegrounds/ui/HeroArt.tsx`                 | Five 160 × 112 portraits and five 64 × 64 power symbols; portraits also appear in the lobby and rival inspector |
 | Spire characters          | `src/games/spire/ui/CharacterArt.tsx` via `Portrait.tsx` | Ironclad and Silent at 180 × 180; curved cloth, overlapping armor, diagonal weapons                             |
 | Spire relics and potions  | `src/games/spire/ui/WorldItemArt.tsx`                    | Distinct 64 × 64 objects, readable at 24 px in the rack and belt; unknown mod IDs use a marked fallback         |
@@ -66,13 +67,14 @@ Use a new `--out` directory for each review. Unknown IDs, malformed images, dupl
 
 `npm run check` covers formatting, unit tests and the production build. Choose browser coverage for the surface changed:
 
-| Surface                                           | Browser files under `tests/browser/`            |
-| ------------------------------------------------- | ----------------------------------------------- |
-| Cards, collections, keyboard selection            | `artwork.spec.ts`                               |
-| Export cabinet, standalone SVG decoding           | `art-export.spec.ts`                            |
-| Challenge art at phone/tablet/desktop sizes       | `challenge-art.spec.ts`, `challenges.spec.ts`   |
-| Heroes, items, workshop tools, character contrast | `feature-art.spec.ts`                           |
-| Hero powers, Mixed Rivals, scouting, persistence  | `battlegrounds.spec.ts`, `hearth-arena.spec.ts` |
-| Spire rooms, map, shops, characters, practice     | `spire.spec.ts`, `expansion.spec.ts`            |
+| Surface                                             | Browser files under `tests/browser/`            |
+| --------------------------------------------------- | ----------------------------------------------- |
+| Cards, collections, keyboard selection              | `artwork.spec.ts`                               |
+| Export cabinet, standalone SVG decoding             | `art-export.spec.ts`                            |
+| Challenge art at phone/tablet/desktop sizes         | `challenge-art.spec.ts`, `challenges.spec.ts`   |
+| Heroes, items, workshop tools, character contrast   | `feature-art.spec.ts`                           |
+| Tavern spell purchase, casting, hand and collection | `tavern-spells.spec.ts`                         |
+| Hero powers, Mixed Rivals, scouting, persistence    | `battlegrounds.spec.ts`, `hearth-arena.spec.ts` |
+| Spire rooms, map, shops, characters, practice       | `spire.spec.ts`, `expansion.spec.ts`            |
 
 Follow `AGENTS.md` for approved browser execution on macOS and disposable profiles. Respect any session-specific access restrictions. A blocked browser check is not a failed game assertion; the raster helper supplements UI review, it does not replace it.

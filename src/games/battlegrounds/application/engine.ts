@@ -4,6 +4,7 @@ import type { BGCommand, BGState } from '../domain/types';
 import type { PositioningCommand, PositioningState } from '../domain/challenge';
 import { bgSession } from './session';
 import { targetedHero } from '../domain/heroes';
+import { spellCandidates } from '../domain/spells';
 
 export function* hearthCommands(state: BGState, seat = 0): Generator<BGCommand> {
   if (state.phase === 'hero') {
@@ -11,6 +12,7 @@ export function* hearthCommands(state: BGState, seat = 0): Generator<BGCommand> 
   } else if (state.phase === 'combat') yield { type: 'nextRound' };
   else if (state.phase === 'recruit') {
     const player = state.players[seat];
+    yield* spellCandidates(player);
     for (const unit of player.discover) yield { type: 'discover', id: unit.id };
     for (const unit of player.shop) yield { type: 'buy', id: unit.id };
     for (const unit of player.hand) {

@@ -1,0 +1,922 @@
+{
+  "game": "last-hearth",
+  "version": 6,
+  "seed": "SPELLS-11",
+  "commands": [
+    {
+      "type": "chooseHero",
+      "hero": "forgekeeper"
+    },
+    {
+      "type": "buy",
+      "id": "unit-1"
+    },
+    {
+      "type": "play",
+      "id": "unit-1",
+      "position": 0
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-68"
+    },
+    {
+      "type": "play",
+      "id": "unit-68",
+      "position": 1
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-69"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-69",
+      "target": "unit-68"
+    },
+    {
+      "type": "power",
+      "target": "unit-68"
+    },
+    {
+      "type": "move",
+      "id": "unit-68",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-108"
+    },
+    {
+      "type": "play",
+      "id": "unit-108",
+      "position": 2
+    },
+    {
+      "type": "buy",
+      "id": "unit-105"
+    },
+    {
+      "type": "play",
+      "id": "unit-105",
+      "position": 3
+    },
+    {
+      "type": "move",
+      "id": "unit-108",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-146"
+    },
+    {
+      "type": "play",
+      "id": "unit-146",
+      "position": 4
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-195"
+    },
+    {
+      "type": "play",
+      "id": "unit-235",
+      "position": 3
+    },
+    {
+      "type": "discover",
+      "id": "unit-238"
+    },
+    {
+      "type": "play",
+      "id": "unit-238",
+      "position": 4
+    },
+    {
+      "type": "buy",
+      "id": "unit-197"
+    },
+    {
+      "type": "play",
+      "id": "unit-197",
+      "position": 5
+    },
+    {
+      "type": "power",
+      "target": "unit-197"
+    },
+    {
+      "type": "move",
+      "id": "unit-235",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-235",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-235",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-238",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-238",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-238",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-197",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-249"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-249"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "buy",
+      "id": "unit-248"
+    },
+    {
+      "type": "play",
+      "id": "unit-248",
+      "position": 6
+    },
+    {
+      "type": "power",
+      "target": "unit-238"
+    },
+    {
+      "type": "move",
+      "id": "unit-248",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-248",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-333"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-333"
+    },
+    {
+      "type": "power",
+      "target": "unit-238"
+    },
+    {
+      "type": "move",
+      "id": "unit-238",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-399"
+    },
+    {
+      "type": "sell",
+      "id": "unit-248"
+    },
+    {
+      "type": "play",
+      "id": "unit-399",
+      "position": 6
+    },
+    {
+      "type": "buy",
+      "id": "unit-400"
+    },
+    {
+      "type": "sell",
+      "id": "unit-1"
+    },
+    {
+      "type": "play",
+      "id": "unit-400",
+      "position": 6
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-401"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-401"
+    },
+    {
+      "type": "power",
+      "target": "unit-238"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buy",
+      "id": "unit-447"
+    },
+    {
+      "type": "sell",
+      "id": "unit-105"
+    },
+    {
+      "type": "play",
+      "id": "unit-447",
+      "position": 6
+    },
+    {
+      "type": "buy",
+      "id": "unit-444"
+    },
+    {
+      "type": "sell",
+      "id": "unit-235"
+    },
+    {
+      "type": "play",
+      "id": "unit-444",
+      "position": 6
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-449"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-449"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-399",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-399",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-400",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-400",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-447",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-447",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-447",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-447",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-444",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-444",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-444",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-444",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-444",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-444",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-589"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-589"
+    },
+    {
+      "type": "power",
+      "target": "unit-238"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-626"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-626"
+    },
+    {
+      "type": "buy",
+      "id": "unit-624"
+    },
+    {
+      "type": "sell",
+      "id": "unit-399"
+    },
+    {
+      "type": "play",
+      "id": "unit-624",
+      "position": 6
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buy",
+      "id": "unit-627"
+    },
+    {
+      "type": "sell",
+      "id": "unit-444"
+    },
+    {
+      "type": "play",
+      "id": "unit-627",
+      "position": 6
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "move",
+      "id": "unit-624",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-624",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-624",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-627",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-627",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-627",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-627",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-627",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-690"
+    },
+    {
+      "type": "play",
+      "id": "unit-721",
+      "position": 5
+    },
+    {
+      "type": "discover",
+      "id": "unit-724"
+    },
+    {
+      "type": "play",
+      "id": "unit-724",
+      "position": 6
+    },
+    {
+      "type": "buy",
+      "id": "unit-691"
+    },
+    {
+      "type": "sell",
+      "id": "unit-724"
+    },
+    {
+      "type": "play",
+      "id": "unit-691",
+      "position": 6
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-693"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-693"
+    },
+    {
+      "type": "power",
+      "target": "unit-627"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buy",
+      "id": "unit-725"
+    },
+    {
+      "type": "play",
+      "id": "unit-732",
+      "position": 5
+    },
+    {
+      "type": "discover",
+      "id": "unit-733"
+    },
+    {
+      "type": "play",
+      "id": "unit-733",
+      "position": 6
+    },
+    {
+      "type": "move",
+      "id": "unit-721",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-721",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-732",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-732",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-732",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-732",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-732",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-733",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-733",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-733",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-733",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-816"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-816"
+    },
+    {
+      "type": "power",
+      "target": "unit-732"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-837"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-837"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-844"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-844",
+      "target": "unit-732"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-851"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-851"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-904"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-904",
+      "target": "unit-732"
+    },
+    {
+      "type": "power",
+      "target": "unit-732"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-918"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-918",
+      "target": "unit-732"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-925"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-925"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-932"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-932"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-981"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-981"
+    },
+    {
+      "type": "power",
+      "target": "unit-732"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1009"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1009"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1016"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1016"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1058"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1058"
+    },
+    {
+      "type": "power",
+      "target": "unit-732"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1072"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1072",
+      "target": "unit-732"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1079"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1079",
+      "target": "unit-732"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1086"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1086"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1093"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1093"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1142"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1142"
+    },
+    {
+      "type": "power",
+      "target": "unit-732"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1156"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1156",
+      "target": "unit-732"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1163"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1163"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-1170"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-1170"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "refresh"
+    },
+    {
+      "type": "endRecruit"
+    }
+  ],
+  "content": [
+    {
+      "id": "base",
+      "version": "6",
+      "digest": "4a2950bf"
+    }
+  ]
+}

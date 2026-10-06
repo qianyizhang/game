@@ -1,3 +1,8 @@
+import { TavernSpells } from './TavernSpells';
+import { SpellCard } from './SpellCard';
+import { TAVERN_SPELLS } from '../content/spells';
+import { handSize, recruitPrice } from '../domain/spells';
+import './TavernSpells.css';
 import { HeroArt, HeroPowerArt } from './HeroArt';
 import { WorkshopSymbol } from '../../../shared/art/WorkshopArt';
 import { rivalArtKind } from './rivalArt';
@@ -102,8 +107,9 @@ export function BattlegroundsApp({
           <h2>Build a warband with a plan.</h2>
           <p className="muted">
             {MINIONS.filter((m) => !m.token).length} recruits across six tiers,{' '}
-            {MINIONS.filter((m) => m.token).length} summoned tokens, and {HEROES.length} heroes.
-            Golden minions double base stats and bonuses, and summon golden tokens.
+            {MINIONS.filter((m) => m.token).length} summoned tokens, and {HEROES.length} heroes,
+            plus {TAVERN_SPELLS.length} tavern spells. Golden minions double base stats and bonuses,
+            and summon golden tokens.
           </p>
           <div className="collection-controls">
             <input
@@ -124,6 +130,19 @@ export function BattlegroundsApp({
               ))}
             </select>
           </div>
+          <h3>Tavern spells · buy once, cast when ready</h3>
+          <div className="spell-catalogue">
+            {TAVERN_SPELLS.filter((spell) =>
+              `${spell.name} ${spell.text}`.toLowerCase().includes(query.toLowerCase()),
+            ).map((spell) => (
+              <SpellCard
+                key={spell.id}
+                spell={{ id: spell.id, definitionId: spell.id }}
+                mode="catalogue"
+              />
+            ))}
+          </div>
+          <h3>Minions</h3>
           <div className="minion-catalogue">
             {MINIONS.filter(
               (m) =>
@@ -164,6 +183,21 @@ export function BattlegroundsApp({
               </p>
             </article>
             <article>
+              <h3>Tavern spells</h3>
+              <p>
+                Each tavern has one seeded spell offer, separate from the finite minion pool.
+                Refresh replaces it; freeze keeps it while missing offers refill next round.
+                Upgrading changes future offers. Buy a spell into your hand, then cast for free
+                during recruitment or keep it for a later round.
+              </p>
+              <p>
+                Friendly buffs target your selected warband minion and stay permanent. Shop buffs
+                follow purchased or frozen minions. Coupons affect one minion purchase this round;
+                delayed gold arrives once next recruitment, above the normal income cap. Resolve
+                Discover before any other action.
+              </p>
+            </article>
+            <article>
               <h3>Triples and positioning</h3>
               <p>
                 Three non-golden copies across hand and board automatically become one golden minion
@@ -171,9 +205,10 @@ export function BattlegroundsApp({
                 (maximum 6). Battlecries happen on play; deathrattles happen in combat.
               </p>
               <p>
-                Seven board slots, ten hand slots. Place support minions behind attackers, use Taunt
-                to protect them, and aim Cleave through enemy formations. Golden bonuses double and
-                summons become golden tokens; Windfury still means two swings.
+                Seven board slots, ten hand slots shared by minions and spells. Place support
+                minions behind attackers, use Taunt to protect them, and aim Cleave through enemy
+                formations. Golden bonuses double and summons become golden tokens; Windfury still
+                means two swings.
               </p>
             </article>
             <article>
@@ -337,9 +372,9 @@ export function BattlegroundsApp({
                         <MinionCard
                           key={unit.id}
                           unit={unit}
-                          disabled={player.gold < 3 || player.hand.length >= 10}
+                          disabled={player.gold < recruitPrice(player) || handSize(player) >= 10}
                           onClick={() => game.dispatch({ type: 'buy', id: unit.id })}
-                          footnote="Recruit · 3 gold"
+                          footnote={`Recruit · ${recruitPrice(player)} gold`}
                         />
                       ))}
                       {!player.shop.length && (
@@ -357,6 +392,12 @@ export function BattlegroundsApp({
                     </button>
                   </section>
                 )}
+                <TavernSpells
+                  player={player}
+                  target={target}
+                  pending={pending}
+                  dispatch={game.dispatch}
+                />
                 <section className="warband-panel">
                   <div className="inventory-header">
                     <span className="eyebrow">YOUR WARBAND · {player.board.length}/7</span>
@@ -421,7 +462,9 @@ export function BattlegroundsApp({
                     </div>
                   )}
                   <div className="hand-header">
-                    <span className="eyebrow">IN HAND · {player.hand.length}/10</span>
+                    <span className="eyebrow">
+                      MINION HAND · {player.hand.length} · TOTAL {handSize(player)}/10
+                    </span>
                     <label>
                       Play position{' '}
                       <select
@@ -524,7 +567,8 @@ export function BattlegroundsApp({
               </>
             )}
             <p className="seed-note">
-              SEED {run.seed} · Finite shared supply · Separate combat snapshots
+              SEED {run.seed} · Hearth v{run.version} · Finite shared supply · Separate combat
+              snapshots
             </p>
           </div>
           <aside className="inspector">

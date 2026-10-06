@@ -43,6 +43,35 @@ export interface Unit {
   tripleReward: boolean;
 }
 export type HeroId = string;
+export interface TavernSpell {
+  id: string;
+  definitionId: string;
+}
+export type SpellEffect =
+  | { type: 'gold'; amount: number }
+  | { type: 'nextGold'; amount: number }
+  | { type: 'discount'; amount: number }
+  | {
+      type: 'buff';
+      zone: 'friendly' | 'board' | 'shop';
+      attack: number;
+      health: number;
+      keyword?: Keyword;
+    };
+export interface SpellDefinition {
+  id: string;
+  name: string;
+  tier: number;
+  cost: number;
+  text: string;
+  effect: SpellEffect;
+}
+export interface TavernState {
+  offer: TavernSpell | null;
+  hand: TavernSpell[];
+  nextGold: number;
+  discount: number;
+}
 export type HeroAbility =
   | { type: 'income'; gold: number }
   | {
@@ -78,6 +107,8 @@ export interface Player {
   discover: Unit[];
   eliminatedRound: number | null;
   placement: number | null;
+  /** Absent in frozen v5 studies; spells use no minion-pool copies. */
+  tavern?: TavernState;
 }
 export interface CombatUnit extends Unit {
   attacksTaken: number;
@@ -126,6 +157,8 @@ export interface BGState {
 export type BGCommand =
   | { type: 'chooseHero'; hero: HeroId }
   | { type: 'buy'; id: string }
+  | { type: 'buySpell'; id: string }
+  | { type: 'castSpell'; id: string; target?: string }
   | { type: 'play'; id: string; position: number; target?: string }
   | { type: 'sell'; id: string }
   | { type: 'move'; id: string; direction: -1 | 1 }

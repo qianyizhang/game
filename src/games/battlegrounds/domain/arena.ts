@@ -5,7 +5,7 @@ import { createBG, resolveLobbyCombat } from './game';
 import { bgLog, recruitAction, startRecruitment } from './recruitment';
 import type { BGCommand, BGState, Player } from './types';
 
-export const ARENA_VERSION = 1;
+export const ARENA_VERSION = 2;
 export const RIVAL_STYLES = {
   'baseline-v1': { label: 'Classic', description: 'The original value and upgrade heuristic.' },
   'tempo-v1': { label: 'Tempo', description: 'Fill the board and buy immediate combat strength.' },
@@ -57,12 +57,12 @@ export const publicLobby = (state: BGState): PublicSeat[] =>
     placement,
   }));
 
-export function createArena(seed: string): ArenaState {
-  const state = createBG(seed);
+export function createArena(seed: string, version: 1 | 2 = ARENA_VERSION): ArenaState {
+  const state = createBG(seed, version === 1 ? 5 : 6);
   return {
     ...state,
     arena: {
-      version: ARENA_VERSION,
+      version,
       config: null,
       order: [],
       cursor: 0,

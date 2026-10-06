@@ -1,6 +1,6 @@
 # Feature artwork coverage
 
-The feature expansion adds **73 SVG exports**, bringing the catalogue to **596** with the current content registries. Renderers are shared by the game and standalone exporter; the [source map](card-art.md) and [art skill](../skills/card-art/SKILL.md) govern future additions.
+The feature expansion added **73 SVG exports**, bringing the catalogue to **596 at delivery**. The subsequent [tavern spells](tavern-spells.md) add eight more, for **604 current exports**. Renderers are shared by the game and standalone exporter; the [source map](card-art.md) and [art skill](../skills/card-art/SKILL.md) govern future additions.
 
 | Feature                                           |                             Assets | In-game placement                                                                                       |
 | ------------------------------------------------- | ---------------------------------: | ------------------------------------------------------------------------------------------------------- |

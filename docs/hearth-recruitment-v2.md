@@ -1,6 +1,6 @@
 # Recruitment v2 and decision diagnostics
 
-Recruitment v2 tests two specific causes of Tempo's poor v1 placement. **Classic remains the default.** These are versioned experimental controllers, with an offline decision explorer and a fixed factorial comparison. Human coaching, tavern spells and broader search are outside this slice.
+Recruitment v2 tests two specific causes of Tempo's poor v1 placement. **Classic remains the default.** These are versioned experimental controllers, with an offline decision explorer and a fixed factorial comparison. Human coaching, tavern spells and broader search are outside this slice. The subsequent [spell expansion](tavern-spells.md) uses a separate v6/v2 gameplay environment; these experiments and the decision explorer explicitly retain v5/v1.
 
 ## Frozen policy controls
 
@@ -31,7 +31,7 @@ node scripts/hearth-recruitment-inspect.mjs \
 
 Open the standalone HTML. Step through focal decisions, switch among five policy proposals on the **same recorded input**, inspect guard failures and values, or download an accepted-command prefix. Alternatives do not simulate future consequences. The viewer verifies the receipt's replay hash, validates the journal and setup, and checks that the declared focal controller reproduces every recorded focal action. Its provenance includes the inspector bundle hash: it is a current reconstruction, not a replacement for the frozen experiment audit.
 
-The arena journal stores explicit commands and v1 style-family presets. A v2 controller ID belongs to the experiment receipt/trace, not the rules configuration. Importing a prefix into the game reproduces its commands; subsequent automatic turns use its v1 style preset. The viewer is an evaluator surface and includes the private environment seed/configuration in replay downloads; those are never supplied to the policy.
+The arena journal stores explicit commands and v1 style-family presets. A v2 controller ID belongs to the experiment receipt/trace, not the rules configuration. Downloaded prefixes are historical arena-v1/Hearth-v5 journals. Reconstruct them with `arenaSessionV1` or open them in a v1 checkout; the current arena-v2 UI rejects them as incompatible. In a v1 checkout, subsequent automatic turns use the recorded v1 style preset. The viewer is an evaluator surface and includes the private environment seed/configuration in replay downloads; those are never supplied to the policy.
 
 ## Frozen experiment design
 

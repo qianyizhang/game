@@ -16,7 +16,8 @@ test('all three legal losses render and restarting one game preserves the others
     ['battlegrounds', 'You placed #8.'],
   ]) {
     await page.getByLabel('Choose game').selectOption(game);
-    const name = game === 'balatro' ? 'blindside' : game;
+    const name =
+      game === 'balatro' ? 'blindside' : game === 'battlegrounds' ? 'battlegrounds-v6' : game;
     await page.getByLabel('Import replay file').setInputFiles(`tests/fixtures/${name}-loss.json`);
     await expect(page.getByRole('heading', { name: heading, exact: true })).toBeVisible();
   }

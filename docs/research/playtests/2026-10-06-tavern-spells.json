@@ -1,0 +1,433 @@
+{
+  "schema": "card-workshop.tavern-spells-lifecycle.v1",
+  "date": "2026-10-06",
+  "purpose": "Development lifecycle, replay, supply and UI checks; no strength or human-enjoyment inference.",
+  "rulesVersion": 6,
+  "arenaVersion": 2,
+  "sourceBaselineCommit": "57842643b1e21f7d5fd231672cf005c33c80dce6",
+  "sourceDigests": {
+    "package-lock.json": "2d33b89a657025e036050ddfc02192d381a372894835a4ed468e70e2f9c04d4e",
+    "package.json": "24b22b1e8baee3ba03744189d29e73ff597b6f4e4132a53d38013b5ea3653341",
+    "scripts/card-art-catalogue.tsx": "dbabbcc0fbae089abd1f87e34ecd18b42b886a673d07f60fc1a11759c3db9191",
+    "src/engines/hearth-arena-experiment.test.ts": "514320913c1f21a0c8ac281c1dbb630f9c4a2eacdf855621008e42d67447ae58",
+    "src/engines/hearth-arena-experiment.ts": "0a8a734b11135fd6ee41e67a3b6a804a4fb9cf32b3bee6f3021474b03bb2896a",
+    "src/engines/hearth-arena-protocol.test.ts": "d58ea68760d5b459b241c38b4fe012208a7c93cf573c93f945020791acbdeb9f",
+    "src/engines/hearth-experiment.ts": "95a2cf561e81f32f113e30e8e1c233ce0644aa6a6ae52a7b27ecd30a3f065a23",
+    "src/engines/hearth-protocol.test.ts": "c530b3e5b7e1ee64c4ebd1cd5caacaa7bb50aac50a8ea902352dc5a147a7de69",
+    "src/engines/hearth-recruitment-experiment.test.ts": "aa263dc1d5b3141ee85e0ff47d3a0399f46fa27d87f18fa3ba0595aab66d9fdf",
+    "src/engines/hearth-recruitment-experiment.ts": "b36f15973dbd19337e6430379a7fa8448d306164d29f0411d001865251705acc",
+    "src/engines/hearth-recruitment-harness.test.ts": "ccd4d53aaaf1e095b24318a92505b379cd17b9994eb3be63ab2c54937aff294d",
+    "src/engines/hearth-recruitment-inspector.ts": "2ac1e6fe0fa871b03887b3d294248487134f156f160fab681da92ad98d9a293d",
+    "src/engines/hearth-recruitment-runtime.ts": "5e96ddb6908c73dd7e5f2937d492efb83e8ded7ee34941c3474eefa1b6e22fc7",
+    "src/engines/hearth-runtime.ts": "3be2095b8a7d335b1b398f98ff11ee3410a318be8cca670d370427eb0dc29e95",
+    "src/games/battlegrounds/ai/policy.test.ts": "54d5a042c41b35489d208c2f7626358c457733c0b1623ebef4c3787fa781c447",
+    "src/games/battlegrounds/ai/policy.ts": "70671c6d6b6277ae8b25a0942b29a103ca22ab1d8821efe013f5bc54417a8140",
+    "src/games/battlegrounds/ai/recruitment-policy.test.ts": "8d5215037e0688c9fe396245229508a75a9439382ec96f913729f356df9d9865",
+    "src/games/battlegrounds/ai/recruitment-policy.ts": "64b77022aa385c9359fba9e7959b37ee0428e21bcb89695151938d1abdda3df1",
+    "src/games/battlegrounds/ai/recruitment-v2.test.ts": "d3d859cbc28493134ed463b1253c3999405ebd8968860482b5732421a32c28f0",
+    "src/games/battlegrounds/ai/recruitment-v2.ts": "5de0c9baca873af3c00f11fbfb5a4da1f62d76ffe0e1408d4af75c94bd99e0cb",
+    "src/games/battlegrounds/ai/spell-policy.ts": "b9ef27f6245720fa0038a1c2792fe7250f641bfc62757c3757af59f47375f2b4",
+    "src/games/battlegrounds/application/agent.test.ts": "54c6288174131c5787fb7cb9afe1480d91fa616ca20cbf60fbd0e66e5f70746b",
+    "src/games/battlegrounds/application/agent.ts": "56c3ed091437fcbc4d7a39a5bbc513ad7fbc10fd33768babd4d8dc71c8ba816e",
+    "src/games/battlegrounds/application/arena-controller.ts": "fbb9305585bf458f3c8e6212aaaa14d59d8bd09cb9e33123f2ad3b35a635a1f3",
+    "src/games/battlegrounds/application/arena.test.ts": "dbdc124b4a39036dce99ed8ee7099cab6aab841000ce68985c25c2e8186f9111",
+    "src/games/battlegrounds/application/arena.ts": "f05b808e57e58113ae0c292a86d70f2c02c574d1216571a64d817bff0e2e2d69",
+    "src/games/battlegrounds/application/challenges.ts": "ffcd5b3bcbf98989133ab8027ccf6b42c7bb4c7c6bdcf7fd2c6f326ef80dae01",
+    "src/games/battlegrounds/application/engine.ts": "294989b7b81390ba6abdd0889a03fe93c972efca85c50e527e4da661ab4a221b",
+    "src/games/battlegrounds/application/evidence.ts": "6017c5612d3a41d9c37458b39894317a851614df0676d8702e6e965e579bdc82",
+    "src/games/battlegrounds/application/scenario.ts": "c63cb273422d8afbc399c12ca2c06e4a7f5826b04788a1e65e52703254efb25b",
+    "src/games/battlegrounds/application/session.ts": "d39acbb6c1a07d2a20173a374bb2e016c0e452aeb5e5219ee506f2b656ebc14a",
+    "src/games/battlegrounds/content/expansion-minions.ts": "66438fd84774b1d9c06d9734961cc32e2a6157b8761b7cf11475ef577b00d8dd",
+    "src/games/battlegrounds/content/minions.ts": "f9f1a3481b0aef24ce83f02578c71bff7412e5bf28f56aa1c22cbc2468ac5ac5",
+    "src/games/battlegrounds/content/night-market-minions.ts": "dba114577ce3c19a4ac563335ff68444e0d41e63f9cddd1b33cfb7c586c41579",
+    "src/games/battlegrounds/content/spells.ts": "e8854d2d58de89a08caf16e86a32a4251d53b019ba26c54cf533da0e1f8d8a1c",
+    "src/games/battlegrounds/domain/arena.ts": "cc24520d2291c652686cf075fea1c8a4eb7beb7e49774121815c2c81aa409d6c",
+    "src/games/battlegrounds/domain/bots.ts": "962defd36701d8e425ed58b50498ebcb08c450340309957c12ef71fb33f655f8",
+    "src/games/battlegrounds/domain/card-expansion.test.ts": "53250f77bf0c6e466ea0431e29f85616460cf7e4e49f0385deb477d57352dc39",
+    "src/games/battlegrounds/domain/challenge.ts": "b935d38c52c3f93ed60956680fe72dfcc4d17cf6fdd4cccd49726bbda25a1008",
+    "src/games/battlegrounds/domain/combat.test.ts": "bf03f3493f4d25b484c3ab3b797907aee7910901d1cbf4c0c9a71a69fd14e23c",
+    "src/games/battlegrounds/domain/combat.ts": "06ac34753ec2b8f25f61130ca22426a989d3b197ba674008d180e33bb8f4be47",
+    "src/games/battlegrounds/domain/commands.ts": "57c0e97a38d5ffa9e938792351a670d651f1526378c24a0edd8e6f58178b8a7e",
+    "src/games/battlegrounds/domain/game.test.ts": "e484f1372a432e07def0fe4ef9c7fb9eb2e636eb7ee1df459386b41ffa3a04eb",
+    "src/games/battlegrounds/domain/game.ts": "56b800384ee82b6d4a222a30313ac802d4d6f8a3c2b60587474d10c424f3ab4b",
+    "src/games/battlegrounds/domain/heroes.test.ts": "31f8699a3e56fe8d8becefde03a7f522737aeafb85213c47bc6f3ee97c838189",
+    "src/games/battlegrounds/domain/heroes.ts": "e6955cd878f8356503595aeb03cbd6367ab256a3855fd55ae7f26d2fe7b76857",
+    "src/games/battlegrounds/domain/night-market.test.ts": "9e65c36cccf6cdeed5366be79d5eb024e783f02cba2ee4442a8d2e06f2f5b56a",
+    "src/games/battlegrounds/domain/recruitment.ts": "483f07a925d91d7eac67210c869ce79038f07f42bfdbe50162c0b9449c50c3a4",
+    "src/games/battlegrounds/domain/spell-controller.ts": "4263a0c38270179e10281455731d97260697fd0b06de12df3f7afa8275b95a21",
+    "src/games/battlegrounds/domain/spells.test.ts": "6cd89df5d7cb21e1dafd2bc6684f35294f95839710d85d4f5392eb9a2fea3c0d",
+    "src/games/battlegrounds/domain/spells.ts": "45edef6eed5c53bcf13b14f995ccd2b0496021bea6b3a545fdcf8f3c9c7ab1e0",
+    "src/games/battlegrounds/domain/strategy.test.ts": "85fb7fdd190a20d28045ca7befc1d0c1228d98637e7baca5f77ee8844e06e9af",
+    "src/games/battlegrounds/domain/types.ts": "d8915b25f4d8382497635047e12e82b68703e7d823c94a509aed28fe21c140ff",
+    "src/games/battlegrounds/domain/units.ts": "bbb1645c677441553a0007fffb64a2490ac2181af256c7ea3c47e4d117fa2e4e",
+    "src/games/battlegrounds/ui/ArenaInspector.tsx": "e3b23647a37dd9f73c64737f853ef84e74887562eb85f5b953863412453d8166",
+    "src/games/battlegrounds/ui/BattlegroundsApp.tsx": "595a2899332814f73916d9bbe06e6337d2681becc2217c45d60a89c94f83118a",
+    "src/games/battlegrounds/ui/ChallengeBoard.tsx": "3167fc3b271b91933ccb8a3481dd53e6720125e0b8474fda00808e89d91995ab",
+    "src/games/battlegrounds/ui/CombatPlayer.tsx": "ff2f6c1af8b2bf0f545eae1c83a39a59795a344497f60ecdc92577b7f2f40444",
+    "src/games/battlegrounds/ui/CreatureIllustrations.tsx": "4bb6e01c76328d7a19eeed4e651a20163fcd9deb9c7ef127ef5e71facaef108e",
+    "src/games/battlegrounds/ui/ExpansionPortraits.tsx": "1501de73493de89adc3378d1774aa35a2bdabba2bfab7b885549fd09b68c45fa",
+    "src/games/battlegrounds/ui/FiendIllustrations.tsx": "24b9b259d375da6aa97dae76113994f4dc0291d2eefcde6fe3313167cddad1dc",
+    "src/games/battlegrounds/ui/HeroArt.tsx": "f2c3c90eafcd747699c6613d7f559d3342e99227b53cc92d0e2820a19ef4271e",
+    "src/games/battlegrounds/ui/MinionArt.tsx": "b503d57ebdd2729c6758970ab3684ab7ba7470c88a859f04741a059836e2d462",
+    "src/games/battlegrounds/ui/MinionCard.tsx": "600fbff38b5f46765164eccc6c688d8dbdf8587b054ee96ca7f39d5f48a6d1bd",
+    "src/games/battlegrounds/ui/NightMarketPortraits.tsx": "1ce962886d0ba19d2928ede5f6bc306e3170e4ed21380ba2887985d43ba25a34",
+    "src/games/battlegrounds/ui/Scouting.tsx": "7cc268f444fe86bdcb3fc0b3a4d4be850493cffe0871862673b29d4e1a505fb8",
+    "src/games/battlegrounds/ui/SpellCard.tsx": "242aeaf3242c8b0e8404681dd327c31bd73926cb7cce7d9bcd6f482ca0a17f8f",
+    "src/games/battlegrounds/ui/TavernSpellArt.tsx": "19bd21c2e394730cec1ca6a0e4123314dfb688e4b323576f68f2190c404740fe",
+    "src/games/battlegrounds/ui/TavernSpells.css": "4459c33529e879aa21563c22f626730946407927289dac61f519d4a3dad7c46a",
+    "src/games/battlegrounds/ui/TavernSpells.tsx": "2a5f8654ee0f46fba9f8ebb04a42bd6d9e5cba06cb6da64ff3244f13067c37a1",
+    "src/games/battlegrounds/ui/rivalArt.ts": "d36365da7dd9ada656ed28acb0122d0b8515580d46ba5bdf07df92301e377c27",
+    "src/games/battlegrounds/ui/useMixedRivals.ts": "cfa924b0ee73d39008db97944b942ad65fd98f6cca72329f820da7eef928a1bc",
+    "src/mods/hearth.ts": "8a60f29179bfeeb26bf0ebd04eea05167c3699c723723da0d2cb60f0d9a84bda",
+    "src/mods/validation.ts": "1052d2cdc89c4e5b4ce8648553fc2f2d49a337b628c82613dc98f741aab15c5f",
+    "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+    "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+    "src/shared/replay.ts": "d1fdcf51ba9b1106c4b9a4f9bf3329296b8f2a5f11de63986f5cf052d648783d",
+    "scripts/hearth-recruitment-viewer.html": "70b6044013ec5daba27084e765b7ca597e092901d9c9e183306845b0e68764a2"
+  },
+  "content": [
+    {
+      "id": "base",
+      "version": "6",
+      "digest": "4a2950bf"
+    }
+  ],
+  "classic": {
+    "attempted": 20,
+    "completed": 20,
+    "commandCeilingPerEpisode": 2000,
+    "heroesBalanced": true,
+    "focalSpellCasts": 267,
+    "rows": [
+      {
+        "seed": "SPELLS-01",
+        "hero": "forgekeeper",
+        "outcome": "lost",
+        "placement": 3,
+        "rounds": 12,
+        "commands": 158,
+        "triples": 2,
+        "spellsCast": 18
+      },
+      {
+        "seed": "SPELLS-02",
+        "hero": "quartermaster",
+        "outcome": "lost",
+        "placement": 2,
+        "rounds": 18,
+        "commands": 299,
+        "triples": 5,
+        "spellsCast": 50
+      },
+      {
+        "seed": "SPELLS-03",
+        "hero": "wildspeaker",
+        "outcome": "lost",
+        "placement": 6,
+        "rounds": 9,
+        "commands": 74,
+        "triples": 1,
+        "spellsCast": 8
+      },
+      {
+        "seed": "SPELLS-04",
+        "hero": "archivist",
+        "outcome": "lost",
+        "placement": 4,
+        "rounds": 12,
+        "commands": 144,
+        "triples": 2,
+        "spellsCast": 12
+      },
+      {
+        "seed": "SPELLS-05",
+        "hero": "oathkeeper",
+        "outcome": "lost",
+        "placement": 5,
+        "rounds": 10,
+        "commands": 102,
+        "triples": 1,
+        "spellsCast": 7
+      },
+      {
+        "seed": "SPELLS-06",
+        "hero": "forgekeeper",
+        "outcome": "lost",
+        "placement": 3,
+        "rounds": 11,
+        "commands": 132,
+        "triples": 2,
+        "spellsCast": 14
+      },
+      {
+        "seed": "SPELLS-07",
+        "hero": "quartermaster",
+        "outcome": "won",
+        "placement": 1,
+        "rounds": 13,
+        "commands": 180,
+        "triples": 3,
+        "spellsCast": 22
+      },
+      {
+        "seed": "SPELLS-08",
+        "hero": "wildspeaker",
+        "outcome": "lost",
+        "placement": 7,
+        "rounds": 9,
+        "commands": 81,
+        "triples": 1,
+        "spellsCast": 10
+      },
+      {
+        "seed": "SPELLS-09",
+        "hero": "archivist",
+        "outcome": "lost",
+        "placement": 7,
+        "rounds": 9,
+        "commands": 95,
+        "triples": 1,
+        "spellsCast": 6
+      },
+      {
+        "seed": "SPELLS-10",
+        "hero": "oathkeeper",
+        "outcome": "lost",
+        "placement": 8,
+        "rounds": 8,
+        "commands": 68,
+        "triples": 0,
+        "spellsCast": 2
+      },
+      {
+        "seed": "SPELLS-11",
+        "hero": "forgekeeper",
+        "outcome": "won",
+        "placement": 1,
+        "rounds": 16,
+        "commands": 225,
+        "triples": 3,
+        "spellsCast": 28
+      },
+      {
+        "seed": "SPELLS-12",
+        "hero": "quartermaster",
+        "outcome": "lost",
+        "placement": 3,
+        "rounds": 14,
+        "commands": 238,
+        "triples": 6,
+        "spellsCast": 31
+      },
+      {
+        "seed": "SPELLS-13",
+        "hero": "wildspeaker",
+        "outcome": "lost",
+        "placement": 5,
+        "rounds": 9,
+        "commands": 73,
+        "triples": 0,
+        "spellsCast": 5
+      },
+      {
+        "seed": "SPELLS-14",
+        "hero": "archivist",
+        "outcome": "lost",
+        "placement": 8,
+        "rounds": 8,
+        "commands": 81,
+        "triples": 1,
+        "spellsCast": 6
+      },
+      {
+        "seed": "SPELLS-15",
+        "hero": "oathkeeper",
+        "outcome": "lost",
+        "placement": 4,
+        "rounds": 11,
+        "commands": 133,
+        "triples": 3,
+        "spellsCast": 13
+      },
+      {
+        "seed": "SPELLS-16",
+        "hero": "forgekeeper",
+        "outcome": "lost",
+        "placement": 7,
+        "rounds": 9,
+        "commands": 96,
+        "triples": 1,
+        "spellsCast": 4
+      },
+      {
+        "seed": "SPELLS-17",
+        "hero": "quartermaster",
+        "outcome": "lost",
+        "placement": 4,
+        "rounds": 11,
+        "commands": 156,
+        "triples": 2,
+        "spellsCast": 14
+      },
+      {
+        "seed": "SPELLS-18",
+        "hero": "wildspeaker",
+        "outcome": "lost",
+        "placement": 7,
+        "rounds": 9,
+        "commands": 90,
+        "triples": 0,
+        "spellsCast": 10
+      },
+      {
+        "seed": "SPELLS-19",
+        "hero": "archivist",
+        "outcome": "lost",
+        "placement": 7,
+        "rounds": 7,
+        "commands": 63,
+        "triples": 0,
+        "spellsCast": 3
+      },
+      {
+        "seed": "SPELLS-20",
+        "hero": "oathkeeper",
+        "outcome": "lost",
+        "placement": 7,
+        "rounds": 8,
+        "commands": 75,
+        "triples": 0,
+        "spellsCast": 4
+      }
+    ]
+  },
+  "arena": {
+    "attempted": 5,
+    "completed": 5,
+    "commandCeilingPerLobby": 6000,
+    "maxActionsPerSeatTurn": 120,
+    "policyLabels": "hidden",
+    "allSeatSpellCasts": 629,
+    "rows": [
+      {
+        "seed": "SPELLS-ARENA-1",
+        "hero": "forgekeeper",
+        "commands": 1082,
+        "rounds": 13,
+        "placements": [3, 8, 5, 7, 1, 4, 6, 2],
+        "spellsCast": 114
+      },
+      {
+        "seed": "SPELLS-ARENA-2",
+        "hero": "quartermaster",
+        "commands": 1101,
+        "rounds": 15,
+        "placements": [1, 7, 4, 3, 6, 8, 2, 5],
+        "spellsCast": 126
+      },
+      {
+        "seed": "SPELLS-ARENA-3",
+        "hero": "wildspeaker",
+        "commands": 1010,
+        "rounds": 14,
+        "placements": [8, 7, 6, 2, 4, 5, 3, 1],
+        "spellsCast": 121
+      },
+      {
+        "seed": "SPELLS-ARENA-4",
+        "hero": "archivist",
+        "commands": 1044,
+        "rounds": 16,
+        "placements": [1, 7, 4, 6, 8, 3, 5, 2],
+        "spellsCast": 133
+      },
+      {
+        "seed": "SPELLS-ARENA-5",
+        "hero": "oathkeeper",
+        "commands": 1090,
+        "rounds": 15,
+        "placements": [2, 3, 7, 4, 8, 5, 1, 6],
+        "spellsCast": 135
+      }
+    ]
+  },
+  "replayDigests": {
+    "test-results/tavern-spells-playtest/SPELLS-01.json": "3ed3dbd2386b24d8ddc7a27bdf44c65391aa2d1c04b57e63f42aef5b1ebfdc80",
+    "test-results/tavern-spells-playtest/SPELLS-02.json": "6dbd63440a1b5fcd097e4ea4fe496050c1aaf34f5c787dcccfed9f72d43ef2c6",
+    "test-results/tavern-spells-playtest/SPELLS-03.json": "3c43573a5905f40a0ca577e07b7aa53beda1d31673f0d76b0c0e0e7c304bcdca",
+    "test-results/tavern-spells-playtest/SPELLS-04.json": "8a24b2109d4377a221dc5554059a3df8d9fe1f141422e25af18ebaacf4efbfa2",
+    "test-results/tavern-spells-playtest/SPELLS-05.json": "9e963e9f36e318e97ddc1e363b0d3bfabded08155afb8e3c65e42e0473380e90",
+    "test-results/tavern-spells-playtest/SPELLS-06.json": "01a666526e8c4e350dcc6848488349ab8452ecfbbf4cd730767f1c5db2d81e66",
+    "test-results/tavern-spells-playtest/SPELLS-07.json": "fb068052c09f31234a788272610922c42ce05ceeefda71f52a293b53648bdd8e",
+    "test-results/tavern-spells-playtest/SPELLS-08.json": "455f9cdb0862b12f66114105966dae17a3b2c0cf7af7440bd267f2a7d9ad4d85",
+    "test-results/tavern-spells-playtest/SPELLS-09.json": "35661ad034ce524187a2486acac5bcdf5b204a50a997236bfc9b8cc585109355",
+    "test-results/tavern-spells-playtest/SPELLS-10.json": "420ea288674cf5d987bd2f6d758a92a4e64e587f62207178b7b786e8f1c3866e",
+    "test-results/tavern-spells-playtest/SPELLS-11.json": "4bbdb8a552b5d0bd5403a5139ba8346520ba8c66ee58f498ad79d7107604080d",
+    "test-results/tavern-spells-playtest/SPELLS-12.json": "a1b628244b2846cd93e896f38ef0291c9d132ae254428a909975d0e985604a7c",
+    "test-results/tavern-spells-playtest/SPELLS-13.json": "b9d19f7eda920f395a062f0cb42c4d80b4b157a6393a57c2f7cd01617eacf589",
+    "test-results/tavern-spells-playtest/SPELLS-14.json": "87272cf6f53069e99bbbec8351dab4298620c4046569961884ab35b8adb0008c",
+    "test-results/tavern-spells-playtest/SPELLS-15.json": "3ae20bc9573708868dd533688b526c0b00d3a59872201d1b9c57f8e0fee8cffc",
+    "test-results/tavern-spells-playtest/SPELLS-16.json": "0598c5577e780843c161ced6d65d5ee8d369a00e80603dcf49e155748edd7f26",
+    "test-results/tavern-spells-playtest/SPELLS-17.json": "00f55f6cef924430e91b07608a2a33aec0e23d092458fd1a635213d97e5ebcd6",
+    "test-results/tavern-spells-playtest/SPELLS-18.json": "bc80bd8a6a5fdb455827acac51e4dba2da27dcf8036fc37c6b0d37ebe1eedb97",
+    "test-results/tavern-spells-playtest/SPELLS-19.json": "3bbe4188bddde821b9f8ecf9ba01f4e3632c464455fa743582bb9bf332f6f631",
+    "test-results/tavern-spells-playtest/SPELLS-20.json": "01a160446ae99d8a3a7524bb2331ddf4dbc8268330fbde597bfc7a297170ecf6",
+    "test-results/tavern-spells-arena-playtest/SPELLS-ARENA-1.json": "ca5d73e54115055c74562bbe97172a7898a588e50531e1c1eb5ac6bdbce7e5b8",
+    "test-results/tavern-spells-arena-playtest/SPELLS-ARENA-2.json": "5a31ca95b3d4a944c52de80f9b2139fdcb021acd590aecc03167722b6bd65cbd",
+    "test-results/tavern-spells-arena-playtest/SPELLS-ARENA-3.json": "96a9845073dd8c4912fce290d81827b09788bbe5257258e0df86e47e2526c907",
+    "test-results/tavern-spells-arena-playtest/SPELLS-ARENA-4.json": "caba281ea81372ca8a06e43a09e9fe8e077cbdb0c658cc56ad2de783cc7ae619",
+    "test-results/tavern-spells-arena-playtest/SPELLS-ARENA-5.json": "ca8f7842cc6a538323189445794d4bb98b9440e1b697e73037dd90ea9c7afc6a"
+  },
+  "fixtureDigests": {
+    "tests/fixtures/battlegrounds-win.json": "e99e20e6b75eaaa8cd83f951d5249f5963124c709760d6485aae90185117e9c8",
+    "tests/fixtures/battlegrounds-v6-win.json": "9e7d2f84fb8c20fed481890022c601182d06de94ff362bb4249144713faf70f0",
+    "tests/fixtures/battlegrounds-loss.json": "d90a036892c8fdba626bdf6ad0db736f841046951a6d4f2a82f6260c3934cdb4",
+    "tests/fixtures/battlegrounds-v6-loss.json": "d958cbf007799fd9cfd417b650de9f6b1dcba0c5695b789e74094e412a5d2ee7"
+  },
+  "verification": {
+    "unitTests": 233,
+    "unitFiles": 34,
+    "formatting": "pass",
+    "typescriptAndBuild": "pass",
+    "browserFullSuite": {
+      "passed": 57,
+      "attempted": 57,
+      "output": "test-results/browser-tavern-spells-final"
+    },
+    "providerCalls": 0,
+    "searchSimulations": 0,
+    "postCleanupReconstruction": {
+      "attempted": 25,
+      "passed": 25,
+      "note": "Current cleanup sources reconstruct all recorded accepted histories and reproduce their stored outcome/round/command summaries."
+    },
+    "browserSpellCleanup": {
+      "attempted": 4,
+      "passed": 4,
+      "output": "test-results/browser-tavern-spells-cleanup"
+    }
+  },
+  "artReview": {
+    "file": "test-results/tavern-spells-art-review/review.json",
+    "sha256": "80cf2e489a3ada9db56c0f58ce2d415c8901d191f2f3112041cd33b65ef51834",
+    "decoded": {
+      "current": 604,
+      "before": 596
+    },
+    "comparison": {
+      "added": [
+        "hearth/spells/pocket-change",
+        "hearth/spells/promissory-note",
+        "hearth/spells/whetstone",
+        "hearth/spells/hearth-bread",
+        "hearth/spells/guard-oath",
+        "hearth/spells/market-polish",
+        "hearth/spells/recruit-coupon",
+        "hearth/spells/warband-banner"
+      ],
+      "removed": [],
+      "changed": [],
+      "unchanged": 596
+    }
+  }
+}

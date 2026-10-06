@@ -1,4 +1,7 @@
-export { arenaSession, arenaFrame } from '../games/battlegrounds/application/arena';
+export {
+  arenaSessionV1 as arenaSession,
+  arenaFrame,
+} from '../games/battlegrounds/application/arena';
 export { decideRecruitment } from '../games/battlegrounds/ai/recruitment-policy';
 export {
   decideRecruitmentV2,

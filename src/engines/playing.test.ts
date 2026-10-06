@@ -48,7 +48,7 @@ describe('playing adapters delegate legality and keep normal replays intact', ()
   it('covers decision kinds throughout all three complete recorded runs', () => {
     lifecycle('blindside', blindsideSession, blindsideEngine);
     lifecycle('spire', spireSession, spireEngine);
-    lifecycle('battlegrounds', bgSession, hearthEngine);
+    lifecycle('battlegrounds-v6', bgSession, hearthEngine);
   });
   it('enumerates Blindside subsets, consumable targets and pack choices without spending resources', () => {
     const codec = replayCodec(blindsideSession.rules, true);
