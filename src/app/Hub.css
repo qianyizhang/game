@@ -16,3 +16,15 @@
   color: #a8b9aa;
   font-size: 14px;
 }
+
+.art-studio-entry {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 30;
+  background: #f0d19b;
+  color: #172b25;
+  border-color: #c4a66e;
+  box-shadow: 0 6px 24px #0006;
+  font-size: 12px;
+}

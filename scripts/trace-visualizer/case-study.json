@@ -1,0 +1,330 @@
+{
+  "title": "How the sculptures took shape",
+  "subtitle": "Three chats: from procedural sculptures to a living Hydra, then a guided bird trial and direct finishing.",
+  "threads": [
+    {
+      "id": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+      "role": "Initial maker"
+    },
+    {
+      "id": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+      "role": "Reviewer / later maker"
+    },
+    {
+      "id": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+      "role": "Delegated maker · GPT-6.1-Sol",
+      "parent": "01a10fdd-5168-77d2-9e4e-725eb816318a"
+    },
+    {
+      "id": "01a11074-276e-7832-9a72-b648659e3235",
+      "role": "Living-creature maker / bird reviewer"
+    },
+    {
+      "id": "01a110d4-2ece-78a0-9310-612920967f4d",
+      "role": "Nightjar maker · Sol 6.1 high effort",
+      "parent": "01a11074-276e-7832-9a72-b648659e3235"
+    },
+    {
+      "id": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+      "role": "Phoenix maker · Sol 6.1 high effort",
+      "parent": "01a11074-276e-7832-9a72-b648659e3235"
+    }
+  ],
+  "documents": [
+    "docs/art-review-sol-2026-10-06.md",
+    "docs/creature-redesign-2026-10-06.md",
+    "docs/art-direction.md",
+    "docs/art-review-sol61-creatures-2026-10-06.md",
+    "test-results/sol61-creatures-delivery/nightjar-roundtrip.json",
+    "test-results/sol61-creatures-delivery/phoenix-roundtrip.json",
+    "test-results/sol61-creatures-delivery/hydra-roundtrip.json"
+  ],
+  "stages": [
+    {
+      "title": "The first three sculptures",
+      "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+      "status": "Built",
+      "question": "Turn existing illustrations into 3D examples.",
+      "change": "Nightjar, Catalyst and Phoenix became procedural Three.js models, with orbit controls and GLB / PNG export.",
+      "finding": "Functional gallery checks passed. The next user request challenged the inflated forms.",
+      "lesson": "A working renderer establishes that an object can be viewed and exported; it does not establish its artistic quality.",
+      "capture": "art3d-before-animation",
+      "source": null
+    },
+    {
+      "title": "Less balloon-like; add motion",
+      "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+      "status": "Revised",
+      "question": "Make them more realistic and animate the models.",
+      "change": "Tapered forms, thin feather vanes and material textures replaced rounded masses. Animation clips and downloadable loops were added.",
+      "finding": "The next request still described the result as a doodle.",
+      "lesson": "Adding detail and motion did not settle the design problem.",
+      "capture": "art3d-polish-before"
+    },
+    {
+      "title": "A first sculptural polish",
+      "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+      "status": "Revised",
+      "question": "Polish the work into an artist's masterpiece.",
+      "change": "Broader Phoenix feather fans, quieter bronze, a resting Nightjar and fitted Catalyst metalwork.",
+      "finding": "The user rejected the overall result as childish in the next chat.",
+      "lesson": "The maker's favorable completion report was not user acceptance.",
+      "capture": "art-direction-before",
+      "source": "art-direction-before"
+    },
+    {
+      "title": "An independent review & rulebook",
+      "turn": "01a10fdd-5342-76c3-9dff-fd4f9f92107e",
+      "status": "Reviewer revised",
+      "question": "Fix the work and consolidate an aesthetic rulebook.",
+      "change": "Continuous bird bodies, asymmetric Phoenix wings, clearer glass and restrained motion. The rulebook was linked from project guidance.",
+      "finding": "Multi-view review caught a gap between Nightjar's belly and legs after the initial checks passed.",
+      "lesson": "Reviewing different views exposed defects hidden by a favorable camera.",
+      "capture": "art-direction-final"
+    },
+    {
+      "title": "Round 1 · broken construction",
+      "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+      "anchor": "The first round does",
+      "status": "Reviewer rejected",
+      "question": "Delegate Spiral, Vajra and Hydra to Sol, then audit and iterate.",
+      "change": "Sol introduced a loft helper and three new procedural studies.",
+      "finding": "Hydra had cut-open surfaces; Spiral read as a coil; Vajra's mount missed its load. Inward face winding was identified.",
+      "lesson": "Correct surface orientation and physical contact before refining appearance.",
+      "capture": "sol-audit-round1"
+    },
+    {
+      "title": "Round 2 · correct but generic",
+      "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+      "anchor": "The second round fixes",
+      "status": "Reviewer rejected",
+      "question": "Repair topology and supports.",
+      "change": "Face winding, cross sections, overlapping whorls and support contact were corrected.",
+      "finding": "The result still read as inflated masses, tubes and generic cages.",
+      "lesson": "Topology fixes do not create a distinctive silhouette or convincing anatomy.",
+      "capture": "sol-audit-round2",
+      "source": "sol-audit-round2-source"
+    },
+    {
+      "title": "Round 3 · specific forms",
+      "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+      "anchor": "The third round is",
+      "status": "Revise",
+      "question": "Resolve anatomy and object construction before decoration.",
+      "change": "A visible shell aperture, fitted Vajra grip and prongs, and a shared Hydra shoulder surface.",
+      "finding": "Faceted skin, head seams, fitting gaps and pedestal intersections remained.",
+      "lesson": "Inspect joins, shading and contact across views and motion samples.",
+      "capture": "sol-audit-round3",
+      "source": "sol-audit-round3-source"
+    },
+    {
+      "title": "Round 4 · two accepted, one held",
+      "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+      "anchor": "Spiral and Vajra are now close",
+      "status": "Mixed reviewer decision",
+      "question": "Repair joins and support behavior.",
+      "change": "Spiral and Vajra reached the reviewer's standard; Hydra received a further anatomy brief.",
+      "finding": "Hydra's side view exposed a flat torso, crescent legs and segmented feet.",
+      "lesson": "Judge the complete creature's gesture before polishing its head.",
+      "capture": "sol-audit-round4",
+      "source": "sol-audit-round4-source"
+    },
+    {
+      "title": "Round 5 · reviewer acceptance",
+      "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+      "anchor": "Hydra now passes",
+      "status": "Reviewer accepted · later user-rejected",
+      "question": "Rebuild Hydra's connected body and limbs.",
+      "change": "An implicit surface joined torso, pelvis, tail, legs and paws. Sol removed jagged brow additions in self-review.",
+      "finding": "The reviewer accepted Hydra. This historical decision was later overturned by the user.",
+      "lesson": "Reviewer acceptance and user approval are different events.",
+      "capture": "sol-audit-round5",
+      "source": "sol-audit-round5-source"
+    },
+    {
+      "title": "The export gate still failed",
+      "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+      "anchor": "The final checks found an export bug",
+      "status": "Export repaired",
+      "question": "Verify all six downloads and animation playback.",
+      "change": "Sol shared a prepacked roughness / metalness texture so GLB export could handle the DataTexture.",
+      "finding": "The first full run failed 1 of 17 checks; the final run passed all 17. Those are historical recorded results.",
+      "lesson": "A convincing render can still have a broken deliverable.",
+      "capture": "sol-audit-final",
+      "source": "sol-audit-final-source"
+    },
+    {
+      "title": "The user changes the criterion",
+      "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+      "anchor": "Yes—that’s the distinction",
+      "status": "User rejected",
+      "question": "The creatures feel like pieces of wood logs stuck together; prioritize style and cohesive design.",
+      "change": "The revision brief shifted from literal anatomy toward weight, motion, negative space and a unified sculptural gesture. The capture here shows the pre-rebuild work that prompted the rejection.",
+      "finding": "Earlier repairs had optimized connected anatomy and detail without resolving posture and dynamics.",
+      "lesson": "This user correction supersedes the earlier positive review.",
+      "capture": "sol-audit-final",
+      "source": "creature-redo-baseline"
+    },
+    {
+      "title": "Rebuild around gesture",
+      "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+      "anchor": "I rebuilt both around",
+      "status": "Rebuilt · Hydra later user-rejected",
+      "question": "Give each creature a coherent gesture and bronze-sculpture style.",
+      "change": "Nightjar gained a continuous raised head/body curve and descending tail. Hydra became a coiled base with unequal sweeping necks.",
+      "finding": "Review caught ignored depth offsets and a floating eye; fixes and export checks followed. In the next chat, the user still described this Hydra as an overly simplified toy.",
+      "lesson": "The result is a new composition, not proof that the final aesthetic goal was met.",
+      "capture": "creature-redo-finish",
+      "fallbackCapture": "creature-redo-final",
+      "source": "creature-redo-source"
+    },
+    {
+      "title": "Hydra · from sculpture to predator",
+      "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+      "anchor": "The first rebuild now has",
+      "status": "Rebuilt · rendered review pending",
+      "question": "The bronze Hydra still feels like an overly simplified toy. Bring it alive.",
+      "change": "A coiled marsh predator replaces the bronze object: continuous skin, separate neck bone chains, hinged jaws, fitted teeth and gums, moss-green scales and worn horn.",
+      "finding": "The first render improved silhouette and expression, but stretched coil texture and overly regular throat plates remained.",
+      "lesson": "Choose distinct head intentions and build anatomy that supports them.",
+      "subject": "hydra",
+      "capture": "hydra-living-round1"
+    },
+    {
+      "title": "Hydra · enlarged review exposes seams",
+      "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+      "anchor": "The enlarged view exposed",
+      "status": "Surface revision",
+      "question": "Review the creature beyond its flattering main view.",
+      "change": "The necks bend independently while the coil stays planted. Armor, facial surfaces and texture transitions receive a close review.",
+      "finding": "An enlarged view exposed a seam where the necks merged into the chest; it was easy to miss at normal size.",
+      "lesson": "Inspect enlarged pixels as well as the full silhouette.",
+      "subject": "hydra",
+      "capture": "hydra-living-round3"
+    },
+    {
+      "title": "Hydra · verify the exported creature",
+      "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+      "anchor": "The export fix passes",
+      "status": "Export repaired · delivered",
+      "question": "Verify that the living rig and materials survive delivery.",
+      "change": "A normal-texture export failure was repaired, then the animated GLB was reloaded and compared with the live model.",
+      "finding": "The session reported sampled vertex agreement within 0.0001 model units, a playable six-second video, 249 unit tests and a production build. These are historical checks.",
+      "lesson": "A successful download is weaker evidence than reloading and comparing the delivered model.",
+      "subject": "hydra",
+      "capture": "hydra-delivery",
+      "source": "sol61-creature-baseline-source"
+    },
+    {
+      "title": "User response · “much better”",
+      "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+      "anchor": "this is much better",
+      "status": "Positive user feedback · Hydra",
+      "question": "Record the successful method and apply it to both birds; trial guided Sol 6.1.",
+      "change": "The user positively received the living Hydra and selected both Nightjar and Phoenix. The rulebook gained living-moment, expression, detail-scale, support-motion and export-review guidance.",
+      "finding": "Two Sol 6.1 workers at high effort received separate bird ownership. This is an observational collaboration trial, not a controlled model comparison.",
+      "lesson": "This feedback applies to the new living Hydra, not to the earlier rejected bronze model.",
+      "subject": "hydra",
+      "capture": "hydra-delivery"
+    },
+    {
+      "title": "Bird round 1 · construction before texture",
+      "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+      "anchor": "Nightjar’s first review exposed",
+      "status": "Both construction candidates revised",
+      "question": "Build a listening Nightjar and an asymmetric living Phoenix around the accepted Hydra method.",
+      "change": "Sol supplied new anatomy and anchored rigs. The parent integrated the modules and reviewed frozen construction candidates.",
+      "finding": "Nightjar had a disconnected leg, raised branch and weak folded wings. Phoenix retained thick arm bands, thigh caps, a bottle-shaped neck and cupped feather rows.",
+      "lesson": "Reject structural defects before accepting surface polish.",
+      "captures": ["sol61-nightjar-round1", "sol61-phoenix-round1"],
+      "sources": ["sol61-nightjar-round1-source", "sol61-phoenix-round1-source"],
+      "subject": "nightjar",
+      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"]
+    },
+    {
+      "title": "Bird round 2 · clearer form, unfinished craft",
+      "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+      "anchor": "Nightjar’s second pass fixes",
+      "status": "Construction improved · materials authorized",
+      "question": "Repair contact, seams and the main feather groups.",
+      "change": "Nightjar gained connected feet and clearer folded wings. Phoenix gained unequal wing heights and a curved neck profile.",
+      "finding": "Nightjar still had a long bare neck and smooth body; Phoenix retained exposed shoulder tubes and regular feather curtains. Neither had final acceptance.",
+      "lesson": "Permission to develop materials does not mean the visual target is met.",
+      "captures": ["sol61-nightjar-round2", "sol61-phoenix-round2"],
+      "sources": ["sol61-nightjar-round2-source", "sol61-phoenix-round2-source"],
+      "subject": "phoenix",
+      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"]
+    },
+    {
+      "title": "Bird round 3 · texture is judged in pixels",
+      "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+      "anchor": "Nightjar’s material review exposed",
+      "status": "Both material candidates rejected",
+      "question": "Make regional plumage readable at enlarged viewing sizes.",
+      "change": "Surface maps and relief were added, then compared with the actual rendered appearance.",
+      "finding": "Nightjar showed rectangular camouflage patches from abrupt texture-formula changes. Phoenix showed corrugated breast relief, regular strips and weak visible fine detail.",
+      "lesson": "Having texture maps is not evidence of successful texture.",
+      "captures": ["sol61-nightjar-round3", "sol61-phoenix-round3"],
+      "sources": ["sol61-nightjar-round3-source", "sol61-phoenix-round3-source"],
+      "subject": "nightjar",
+      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"]
+    },
+    {
+      "title": "Bird round 4 · guidance reaches a limit",
+      "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+      "anchor": "Nightjar’s fourth pass is cleaner",
+      "status": "Below target · parent takeover",
+      "question": "Assess whether guided Sol alone reaches the Hydra reference.",
+      "change": "Sol corrected the texture grid and improved posture, grips and tails through four guided rounds per bird. Both authors froze their candidates for handoff.",
+      "finding": "Nightjar retained aligned strokes, leaf-like wings and a pipe-like branch. Phoenix retained exposed rear spars, planar shoulder leaves and simplified basalt. The parent took over both finishes.",
+      "lesson": "The final birds must be attributed to mixed authorship; guidance alone did not reach the reviewer’s target.",
+      "captures": ["sol61-nightjar-round4", "sol61-phoenix-round4"],
+      "sources": ["sol61-nightjar-round4-source", "sol61-phoenix-round4-source"],
+      "subject": "phoenix",
+      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"]
+    },
+    {
+      "title": "Nightjar · direct parent finishing",
+      "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+      "anchor": "Nightjar now also has a fitted blink",
+      "status": "Mixed authorship · parent finished",
+      "question": "Preserve Sol’s construction and rig while improving face, feathers and perch.",
+      "change": "The parent rebuilt the feather atlas, added a pale throat, dark eye field, wider gape and bill bristles, and authored a short blink. A cap-like eyelid was rejected and replaced with slit closure.",
+      "finding": "Final review retained limits in the broad folded vanes and regular mottling; the result was not declared equal to Hydra or user-approved.",
+      "lesson": "Record the ownership handoff instead of crediting a guided worker with the parent’s final artwork.",
+      "subject": "nightjar",
+      "captureSubjects": ["nightjar"],
+      "capture": "sol61-creatures-delivery",
+      "source": "sol61-nightjar-final2-source"
+    },
+    {
+      "title": "Phoenix · direct parent finishing",
+      "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+      "anchor": "Both birds are ready for final verification",
+      "status": "Mixed authorship · parent finished",
+      "question": "Resolve the rear wing spar, material detail and support before delivery.",
+      "change": "The parent replaced surface maps, refitted breast and shoulder plumage around curved arm surfaces, and fractured the basalt support. Mobile captions received separate space.",
+      "finding": "A first planar shoulder wrap intersected and was revised. Flight rows and tail vanes still remained simpler than the Hydra reference.",
+      "lesson": "Inspect the rear and enlarged views after the final handoff; preserve unresolved limits.",
+      "subject": "phoenix",
+      "captureSubjects": ["phoenix"],
+      "capture": "sol61-creatures-delivery",
+      "source": "sol61-phoenix-parent3-source"
+    },
+    {
+      "title": "Delivery · animation and materials round-trip",
+      "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+      "anchor": "All **252 unit tests**",
+      "status": "Technical checks passed · bird approval unrecorded",
+      "question": "Validate the files a viewer will actually receive.",
+      "change": "Each creature’s exported GLB was reloaded. Sampled vertices and animated node matrices were compared; original/imported material pairs were rendered under identical lighting. Nightjar sampling included blink closure.",
+      "finding": "Historical final receipts report 252 unit tests and 11 browser tests. Maximum sampled vertex errors: Nightjar 5.73e-8, Phoenix 4.76e-8, Hydra 7.12e-8 model units; node-matrix error was zero.",
+      "lesson": "These checks establish delivery behavior, not equal artistic quality or final user approval.",
+      "subject": "phoenix",
+      "capture": "sol61-creatures-delivery",
+      "source": "sol61-creatures-delivery/source/src/art3d",
+      "comparison": "roundtrip"
+    }
+  ],
+  "outcome": "The living Hydra received positive user feedback. The final Nightjar and Phoenix remain parent-reviewed; subsequent user approval is not recorded."
+}

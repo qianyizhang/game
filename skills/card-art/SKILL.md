@@ -1,11 +1,11 @@
 ---
 name: card-art
-description: Create, extend, or refine Card Workshop's code-native SVG cards, creatures, challenge plates, and visual primitives. Use for this repository's vector artwork and visual review, not game mechanics or raster image generation.
+description: Create or refine Card Workshop SVG illustrations and 3D object studies. Use for artwork, materials, composition and visual review in this repository, not game mechanics or standalone raster generation.
 ---
 
 # Card Workshop art
 
-Make a distinct, readable illustration and review it in its actual UI. The direction is restrained, engraved fantasy: deliberate silhouettes, curved anatomy, overlapping material planes and a few printing inks. Draw and review directly unless the user requests delegation.
+Make a distinct, readable subject and review it in its actual UI. Read the [aesthetic rulebook](../../docs/art-direction.md) for the shared direction, medium-specific criteria and visual acceptance. It is the single visual standard. Draw and review directly unless the user requests delegation.
 
 ## Establish the subject
 
@@ -15,16 +15,13 @@ Keep a brief in working notes:
 
 > **ID / subject / pose or action / identifying contour / material + light / approved sibling / variant difference / display size.**
 
-For a set, draw and inspect its hardest or most representative subject before repeating the approach.
+For a set, draw and inspect its hardest or most representative subject before repeating the approach. For living subjects, follow the rulebook’s “From blockout to a living subject” sequence: interpretation and gesture, anatomical transitions, surface hierarchy, fitted motion, then multi-view and export review.
 
-## Visual rules
+When delegation is requested, use the rulebook's “Guided delegation trials” protocol. Record the model/effort, ownership and parent interventions; distinguish the guided result from unaided model capability. Require a front/side/rear construction review before surface polish; review the returned pixels independently and send specific defects back to the author. Keep the shared rulebook authoritative rather than copying a second aesthetic checklist into the task.
 
-- **Silhouette first.** One dominant subject; supporting effects stay quieter and behind it. Leave breathing room around identifying contours. Avoid defaulting every creature to a cropped portrait.
-- **Anatomy carries identity.** Curve bodies and overlap forms; reserve hard edges for beaks, blades and armor. Phoenix: separated wings, coherent chest, flowing tail. Hydra: distinct neck arcs. Feline: short muzzle, broad brow. Avoid symbol faces, stick limbs and uniformly triangular bodies.
-- **Shape creates depth.** Establish light, midtone and shadow before engraving. Interior lines describe material without competing with the contour. Do not outline every plane with the same heavy stroke.
-- **Primitives serve a composition.** Reuse flasks, feathers or coins, but change proportion, overlap, angle and negative space to create a gesture. Avoid pictogram collages. Share a primitive after a useful second application; keep species anatomy in its game module.
-- **Respect family inks.** Blindside: cream, forest ink, ochre, restrained coral. Spire: forged metal, asymmetric cloth, muted copper; Silent adds sage, poison green and plum. Hearth: natural creature colors, selective gold, flight and serpentine poses. Reuse palette constants.
-- **Variants remain recognizable.** Golden accents preserve anatomy. A requested distinct upgrade changes action, pose or supporting objects, not only tint. Compare base and variant together. Puzzle art suggests its subject without revealing the solution.
+## Choose the medium
+
+For SVG illustrations, follow the build and export workflow below. For 3D studies, use the [3D source map and verification](../../docs/art3d.md); preserve exportable geometry, animation bindings, reduced motion and camera fit. Review still structure before animating. SVG export is necessary only when SVG sources change.
 
 ## Build
 
@@ -43,6 +40,6 @@ Use explicit colors or established scene variables. Separate interpolated coordi
 1. **Keep a baseline.** Export approved art before editing; use separate directories for concurrent reviews.
 2. **Inspect pixels at two sizes.** The [review helper](../../docs/card-art.md#repeatable-review) creates enlarged/native-size sheets and before/after comparisons. Check identity, anatomy, material, clutter and consistency. Reject an enlarged-image improvement that regresses at card size. Pixel equality and successful decoding do not establish quality.
 3. **Inspect the actual UI yourself.** Check the full card and smallest hand/board view, text/stats, selected/golden states and phone layout. Preserve accessible control names.
-4. **Verify scope.** Run `npm run check`, export all assets and run the [relevant browser checks](../../docs/card-art.md#verification). Follow `AGENTS.md` for browser execution; report blocked checks. Investigate unexpected changed or missing IDs. Repeat checks after material fixes, not to accumulate passing runs.
+4. **Verify scope.** Run `npm run check`, export all assets when SVG sources changed, and run the [relevant browser checks](../../docs/card-art.md#verification). Follow `AGENTS.md` for browser execution; report blocked checks. Investigate unexpected changed or missing IDs. Repeat checks after material fixes, not to accumulate passing runs.
 
 Finish with a preview, the changes, verification and material limitations. Keep generated reviews under ignored `test-results/`; components, catalogue integration and this skill are the durable sources.

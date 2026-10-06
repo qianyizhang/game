@@ -5,6 +5,7 @@ import './Hub.css';
 
 const BalatroApp = lazy(() => import('./App'));
 const Challenges = lazy(() => import('./Challenges'));
+const ArtStudio = lazy(() => import('../art3d/ArtStudio'));
 const SpireApp = lazy(() =>
   import('../games/spire/ui/SpireApp').then((module) => ({ default: module.SpireApp })),
 );
@@ -16,6 +17,27 @@ const BattlegroundsApp = lazy(() =>
 
 const KEY = 'card-workshop.active-game';
 export default function Hub() {
+  const [artOpen, setArtOpen] = useState(
+    () => new URLSearchParams(location.search).get('art') === '3d',
+  );
+  const artEntry = useRef<HTMLButtonElement>(null);
+  const artRestoreFocus = useRef(false);
+  const showArt = (open: boolean) => {
+    setArtOpen(open);
+    const url = new URL(location.href);
+    if (open) url.searchParams.set('art', '3d');
+    else {
+      url.searchParams.delete('art');
+      artRestoreFocus.current = true;
+    }
+    history.replaceState(null, '', url);
+  };
+  useEffect(() => {
+    if (!artOpen && artRestoreFocus.current) {
+      artRestoreFocus.current = false;
+      artEntry.current?.focus();
+    }
+  }, [artOpen]);
   const challengeEntry = useRef<HTMLElement | null>(null);
   const restoreFocus = useRef(false);
   const [challengeOpen, setChallengeOpen] = useState(() => {
@@ -57,8 +79,8 @@ export default function Hub() {
       spire: 'Slay the Spire',
       battlegrounds: 'Last Hearth',
     };
-    document.title = `${challengeOpen ? 'Challenges' : names[game]} · Card Workshop`;
-  }, [game, challengeOpen]);
+    document.title = `${artOpen ? '3D Object Studies' : challengeOpen ? 'Challenges' : names[game]} · Card Workshop`;
+  }, [game, challengeOpen, artOpen]);
   const change = (id: GameId) => {
     setGame(id);
     try {
@@ -69,35 +91,51 @@ export default function Hub() {
   };
   return (
     <ContentBoundary key={game}>
-      <div hidden={challengeOpen}>
-        <Suspense
-          key={game}
-          fallback={
-            <main className="game-loading">
-              <GamePicker current={game} onSwitch={change} />
-              <p role="status">Opening your table…</p>
-            </main>
-          }
-        >
-          {game === 'spire' ? (
-            <SpireApp onSwitch={change} onChallenges={() => showChallenges(true)} />
-          ) : game === 'battlegrounds' ? (
-            <BattlegroundsApp onSwitch={change} onChallenges={() => showChallenges(true)} />
-          ) : (
-            <BalatroApp onSwitch={change} onChallenges={() => showChallenges(true)} />
-          )}
-        </Suspense>
+      <div hidden={artOpen}>
+        <div hidden={challengeOpen}>
+          <Suspense
+            key={game}
+            fallback={
+              <main className="game-loading">
+                <GamePicker current={game} onSwitch={change} />
+                <p role="status">Opening your table…</p>
+              </main>
+            }
+          >
+            {game === 'spire' ? (
+              <SpireApp onSwitch={change} onChallenges={() => showChallenges(true)} />
+            ) : game === 'battlegrounds' ? (
+              <BattlegroundsApp onSwitch={change} onChallenges={() => showChallenges(true)} />
+            ) : (
+              <BalatroApp onSwitch={change} onChallenges={() => showChallenges(true)} />
+            )}
+          </Suspense>
+        </div>
+        {challengeOpen && (
+          <Suspense
+            fallback={
+              <main className="game-loading">
+                <button onClick={() => showChallenges(false)}>← Return to my run</button>
+                <p role="status">Opening challenges…</p>
+              </main>
+            }
+          >
+            <Challenges onExit={() => showChallenges(false)} />
+          </Suspense>
+        )}
+        <button ref={artEntry} className="art-studio-entry" onClick={() => showArt(true)}>
+          ↗ 3D art gallery
+        </button>
       </div>
-      {challengeOpen && (
+      {artOpen && (
         <Suspense
           fallback={
             <main className="game-loading">
-              <button onClick={() => showChallenges(false)}>← Return to my run</button>
-              <p role="status">Opening challenges…</p>
+              <p role="status">Opening object studies…</p>
             </main>
           }
         >
-          <Challenges onExit={() => showChallenges(false)} />
+          <ArtStudio onExit={() => showArt(false)} />
         </Suspense>
       )}
     </ContentBoundary>

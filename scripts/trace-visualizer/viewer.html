@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Creation trace</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f5f3ed;
+        --ink: #202c2b;
+        --muted: #626b66;
+        --line: #d5d9d0;
+        --accent: #9e422d;
+        --green: #256b59;
+        --panel: #fffefa;
+        --nav: #1e302e;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          15px/1.55 -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button,
+      select {
+        cursor: pointer;
+      }
+      button,
+      a,
+      input,
+      select,
+      summary {
+        outline-offset: 4px;
+      }
+      button {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--ink);
+        border-radius: 6px;
+        padding: 8px 13px;
+      }
+      button:hover {
+        border-color: var(--accent);
+      }
+      button:disabled {
+        opacity: 0.45;
+        cursor: default;
+      }
+      a {
+        color: var(--accent);
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+      h1 {
+        font:
+          500 clamp(28px, 3.3vw, 46px)/1.15 Georgia,
+          serif;
+        letter-spacing: -1px;
+      }
+      h2 {
+        font:
+          500 30px/1.2 Georgia,
+          serif;
+        margin: 9px 0 16px;
+      }
+      h3 {
+        font-size: 14px;
+      }
+      header {
+        padding: 30px 38px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+      .intro {
+        max-width: 750px;
+        color: var(--muted);
+        margin-top: 12px;
+      }
+      .topline {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .local {
+        font-size: 12px;
+        white-space: nowrap;
+        color: var(--green);
+        padding-top: 5px;
+      }
+      .tabs {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 22px;
+      }
+      .tabs button {
+        border: 0;
+        border-radius: 0;
+        padding: 12px 0;
+        background: none;
+        border-bottom: 3px solid transparent;
+        font-weight: 600;
+      }
+      .tabs button[aria-pressed='true'] {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      main {
+        max-width: 1700px;
+        margin: auto;
+      }
+      .story {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+      }
+      aside {
+        background: var(--nav);
+        color: #e4ebe4;
+        padding: 24px 16px;
+        min-width: 0;
+      }
+      aside {
+        align-self: start;
+        max-height: 100vh;
+        overflow-y: auto;
+      }
+      .aside-title {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin: 0 12px 18px;
+        color: #b6c8c0;
+      }
+      .steps {
+        display: grid;
+        gap: 5px;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 27px 1fr;
+        gap: 10px;
+        align-items: start;
+        text-align: left;
+        border: 0;
+        background: none;
+        color: #c4d1ca;
+        padding: 11px 10px;
+        line-height: 1.4;
+        width: 100%;
+      }
+      .step[aria-current='step'] {
+        background: #354b45;
+        color: #fff6df;
+      }
+      .step small {
+        display: block;
+        color: #aebfb6;
+        font-size: 11px;
+        margin-top: 4px;
+      }
+      .step .num {
+        font:
+          13px ui-monospace,
+          monospace;
+        color: #cfad7c;
+        margin-top: 2px;
+      }
+      .detail {
+        padding: 30px 36px;
+        min-width: 0;
+      }
+      .stage-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+      }
+      .status {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .step-count {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .lead {
+        font-size: 17px;
+        max-width: 850px;
+        margin-bottom: 22px;
+      }
+      .explanation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin: 24px 0;
+      }
+      .explanation h3 {
+        color: var(--accent);
+        margin-bottom: 7px;
+      }
+      .lesson {
+        border-left: 3px solid var(--accent);
+        padding: 3px 0 3px 15px;
+        margin: 24px 0;
+        font:
+          20px/1.45 Georgia,
+          serif;
+      }
+      .controls {
+        display: flex;
+        gap: 14px;
+        align-items: end;
+        flex-wrap: wrap;
+        margin: 20px 0;
+      }
+      .controls label {
+        display: grid;
+        gap: 5px;
+        font-size: 12px;
+        font-weight: 600;
+        max-width: 100%;
+      }
+      select,
+      input {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 9px 10px;
+        border-radius: 5px;
+        color: var(--ink);
+        max-width: 100%;
+        min-width: 0;
+      }
+      .comparisons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      figure {
+        margin: 0;
+        min-width: 0;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .image-box {
+        background: #172022;
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .image-box img {
+        width: 100%;
+        height: auto;
+        max-height: 490px;
+        object-fit: contain;
+        display: block;
+      }
+      .image-box p {
+        padding: 30px;
+        color: #d7dfd9;
+        text-align: center;
+      }
+      figcaption {
+        padding: 13px 16px;
+      }
+      .caption-label {
+        font-size: 11px;
+        color: var(--accent);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .caption-title {
+        font-weight: 600;
+        font-size: 14px;
+        margin-top: 4px;
+      }
+      .small {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .provenance {
+        overflow-wrap: anywhere;
+        font:
+          11px/1.5 ui-monospace,
+          monospace;
+        margin-top: 8px;
+        color: var(--muted);
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 20px 0;
+      }
+      .primary {
+        background: var(--nav);
+        color: #f4f5ee;
+        border-color: var(--nav);
+      }
+      details {
+        border-top: 1px solid var(--line);
+        padding: 14px 0;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+        overflow-wrap: anywhere;
+      }
+      blockquote {
+        margin: 15px 0;
+        padding: 18px;
+        background: var(--panel);
+        border-left: 3px solid var(--line);
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+      pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        background: #edf0e9;
+        padding: 15px;
+        border-radius: 6px;
+        font:
+          12px/1.55 ui-monospace,
+          SFMono-Regular,
+          monospace;
+        max-height: 620px;
+        overflow: auto;
+      }
+      .full-panel {
+        padding: 32px 38px;
+      }
+      .panel-heading {
+        max-width: 850px;
+      }
+      .event {
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+      }
+      .event-meta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 6px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .kind {
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--green);
+        font-weight: 700;
+      }
+      .event details {
+        padding: 0;
+        border: 0;
+      }
+      .event summary {
+        font-weight: 500;
+        font-size: 14px;
+      }
+      .empty {
+        padding: 30px;
+        color: var(--muted);
+        text-align: center;
+      }
+      .count {
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+      .diff-add {
+        color: #216247;
+        background: #e0ede1;
+        display: block;
+      }
+      .diff-remove {
+        color: #8b3b31;
+        background: #f3e2dc;
+        display: block;
+      }
+      .diff-line {
+        display: block;
+      }
+      .warning {
+        padding: 12px 15px;
+        background: #eee5d4;
+        color: #65491c;
+        font-size: 13px;
+        border-radius: 5px;
+        margin: 15px 0;
+      }
+      .thread-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin: 24px 0;
+      }
+      .thread {
+        border-top: 3px solid var(--green);
+        padding-top: 10px;
+        overflow-wrap: anywhere;
+      }
+      .thread p {
+        font-size: 13px;
+        margin: 5px 0;
+      }
+      .source-intro {
+        margin-bottom: 18px;
+      }
+      .pager {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 22px;
+      }
+      footer {
+        padding: 20px 38px;
+        border-top: 1px solid var(--line);
+        font-size: 12px;
+        color: var(--muted);
+      }
+      [hidden] {
+        display: none !important;
+      }
+      @media (max-width: 950px) {
+        .story {
+          grid-template-columns: 230px minmax(0, 1fr);
+        }
+        .detail {
+          padding: 24px;
+        }
+        .comparisons {
+          grid-template-columns: 1fr;
+        }
+        .thread-list {
+          grid-template-columns: 1fr;
+        }
+        .topline {
+          display: block;
+        }
+        .local {
+          margin-top: 12px;
+        }
+        .explanation {
+          gap: 18px;
+        }
+      }
+      @media (max-width: 640px) {
+        aside {
+          position: static;
+          max-height: 390px;
+        }
+        header,
+        .full-panel {
+          padding: 24px 18px 0;
+        }
+        .full-panel {
+          padding-bottom: 24px;
+        }
+        .tabs {
+          gap: 18px;
+        }
+        .story {
+          display: block;
+        }
+        aside {
+          padding: 16px;
+        }
+        .steps {
+          grid-template-columns: 1fr 1fr;
+          gap: 4px;
+        }
+        .step {
+          font-size: 12px;
+          padding: 8px;
+          grid-template-columns: 20px 1fr;
+          gap: 5px;
+        }
+        .step small {
+          font-size: 10px;
+        }
+        .aside-title {
+          margin-bottom: 10px;
+        }
+        .detail {
+          padding: 24px 18px;
+        }
+        .explanation {
+          grid-template-columns: 1fr;
+        }
+        .controls label {
+          width: 100%;
+        }
+        .controls select,
+        .controls input {
+          width: 100%;
+          font-size: 16px;
+        }
+        h2 {
+          font-size: 27px;
+        }
+        .stage-top {
+          align-items: start;
+        }
+        footer {
+          padding: 18px;
+        }
+        .local {
+          white-space: normal;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="topline">
+        <div>
+          <div class="eyebrow">Creation trace / 3D studies</div>
+          <h1 id="title"></h1>
+          <p class="intro" id="subtitle"></p>
+        </div>
+        <div class="local">● Local evidence · read only</div>
+      </div>
+      <nav class="tabs" aria-label="Trace views">
+        <button data-tab="story" aria-pressed="true">Creation story</button
+        ><button data-tab="compare" aria-pressed="false">Compare revisions</button
+        ><button data-tab="events" aria-pressed="false">Recorded actions</button
+        ><button data-tab="sources" aria-pressed="false">Source & provenance</button>
+      </nav>
+    </header>
+    <main>
+      <section id="story" class="story">
+        <aside>
+          <p class="aside-title">The revision path</p>
+          <nav class="steps" id="steps" aria-label="Creation stages"></nav>
+        </aside>
+        <article class="detail">
+          <div class="stage-top">
+            <span id="stage-status" class="status"></span
+            ><span id="step-count" class="step-count"></span>
+          </div>
+          <h2 id="stage-title"></h2>
+          <p class="lead" id="question"></p>
+          <div class="controls">
+            <label>Stage subject<select id="story-subject"></select></label>
+          </div>
+          <div id="story-images" class="comparisons"></div>
+          <div class="explanation">
+            <section>
+              <h3>What changed</h3>
+              <p id="change"></p>
+            </section>
+            <section>
+              <h3>What the review found</h3>
+              <p id="finding"></p>
+            </section>
+          </div>
+          <p id="lesson" class="lesson"></p>
+          <details>
+            <summary>Read the recorded statement behind this stage</summary>
+            <blockquote id="quote"></blockquote>
+            <p class="provenance" id="anchor"></p>
+          </details>
+          <div class="actions">
+            <button id="show-events" class="primary">Inspect this turn’s actions</button
+            ><button id="show-source">Inspect retained source changes</button
+            ><a id="open-chat">Open source chat ↗</a>
+          </div>
+          <div class="pager">
+            <button id="prev">← Previous stage</button><button id="next">Next stage →</button>
+          </div>
+        </article>
+      </section>
+      <section id="compare" class="full-panel" hidden>
+        <div class="panel-heading">
+          <div class="eyebrow">Compare the retained renders</div>
+          <h2>See what actually changed.</h2>
+          <p>
+            Choose two revisions of the same subject and view. Camera, lighting and framing may
+            differ. These are saved captures, not reconstructed historical renders.
+          </p>
+        </div>
+        <div class="controls">
+          <label>Subject<select id="subject"></select></label
+          ><label
+            >View<select id="angle">
+              <option value="hero">Hero / main view</option>
+              <option value="side">Side</option>
+              <option value="back">Back</option>
+              <option value="large">Enlarged</option>
+              <option value="roundtrip-live">Round-trip · live</option>
+              <option value="roundtrip-exported">Round-trip · exported</option>
+            </select></label
+          ><label>Before<select id="before"></select></label
+          ><label>After<select id="after"></select></label>
+        </div>
+        <div id="compare-images" class="comparisons"></div>
+        <p id="compare-status" class="small" aria-live="polite"></p>
+      </section>
+      <section id="events" class="full-panel" hidden>
+        <div class="panel-heading">
+          <div class="eyebrow">Inspectable records</div>
+          <h2>From instruction to action.</h2>
+          <p>
+            Exact visible messages, commands, available outputs and recorded patches. Sequence is
+            preserved within each turn. Overlapping agent turns are grouped, not presented as a
+            precise interleaving.
+          </p>
+        </div>
+        <div class="controls">
+          <label>Turn / agent<select id="turn-filter"></select></label
+          ><label
+            >Record type<select id="kind">
+              <option value="all">All visible records</option>
+              <option value="request">User requests</option>
+              <option value="message">Progress & completion</option>
+              <option value="edit">Recorded patches</option>
+              <option value="command">Commands & outputs</option>
+              <option value="image">Image inspections</option>
+              <option value="delegation">Delegation</option>
+              <option value="reference">Reference lookups</option>
+            </select></label
+          ><label
+            >Search text, output or file<input
+              id="search"
+              type="search"
+              placeholder="e.g. roughness, Hydra, models.ts"
+          /></label>
+        </div>
+        <p class="count" id="event-count" role="status"></p>
+        <div id="event-list"></div>
+        <div class="pager">
+          <button id="event-prev">← Previous records</button
+          ><span id="event-page" class="small"></span
+          ><button id="event-next">More records →</button>
+        </div>
+      </section>
+      <section id="sources" class="full-panel" hidden>
+        <div class="panel-heading">
+          <div class="eyebrow">Evidence, with its limits</div>
+          <h2>Inspect the source behind a revision.</h2>
+          <p>
+            Source snapshots are the files retained by the earlier sessions. A diff compares
+            available snapshots; it is not guaranteed to be one atomic edit or the exact state used
+            for every image.
+          </p>
+        </div>
+        <div class="controls">
+          <label>Revision<select id="source-stage"></select></label
+          ><label>Source file<select id="source-file"></select></label
+          ><label
+            >Display<select id="source-mode">
+              <option value="diff">Changes from previous retained snapshot</option>
+              <option value="full">Full retained source</option>
+            </select></label
+          >
+        </div>
+        <p id="source-meta" class="provenance source-intro"></p>
+        <pre id="source-code"></pre>
+        <h3>Who did what</h3>
+        <div id="threads" class="thread-list"></div>
+        <details open>
+          <summary>Coverage and interpretation</summary>
+          <div class="warning">
+            Story explanations are a curated reading of the records. Reviewer acceptance, user
+            approval and technical success are separate. <span id="outcome"></span>
+          </div>
+          <p>
+            Private reasoning is excluded. Commands are displayed as text and are never executed.
+            Some outputs and patches were truncated by the source tool; those records are labeled.
+            Shell-based writes appear under commands, so “Recorded patches” is not a complete file
+            history.
+          </p>
+          <p style="margin-top: 12px">
+            Per-event timestamps are unavailable in these exports. Only turn start/end times and
+            original within-turn order are retained. The recorded turns of all three delegated
+            makers are included, but conversation/tool exports may omit some incoming delegation
+            messages.
+          </p>
+          <p style="margin-top: 12px">
+            Evidence files were collected from existing paths now. Their hashes identify collected
+            bytes, not proof that those paths were immutable at the original review time. Missing
+            captures stay missing. Generated output contains local conversation excerpts; it is
+            ignored by Git and has not been published.
+          </p>
+          <p id="collection" class="provenance"></p>
+          <a href="manifest.json">Open evidence manifest</a>
+        </details>
+        <div id="documents"></div>
+      </section>
+    </main>
+    <footer>
+      Read the work as a sequence of decisions. A passing test, a favorable review and your approval
+      each answer a different question.
+    </footer>
+    <script>
+      'use strict';
+      const DATA = /*TRACE_DATA*/ null;
+      const $ = (id) => document.getElementById(id);
+      const node = (tag, text, className) => {
+        const el = document.createElement(tag);
+        if (text !== undefined) el.textContent = text;
+        if (className) el.className = className;
+        return el;
+      };
+      const turns = DATA.threads.flatMap((t) => t.turns).sort((a, b) => a.startedAt - b.startedAt);
+      const events = turns.flatMap((t) => t.events);
+      let stage = 0,
+        page = 0;
+      const pageSize = 35;
+      const params = new URLSearchParams(location.hash.slice(1));
+      const requested = Number(params.get('stage') ?? 0);
+      if (Number.isInteger(requested) && requested >= 0 && requested < DATA.stages.length)
+        stage = requested;
+      $('title').textContent = DATA.title;
+      $('subtitle').textContent = DATA.subtitle;
+      function option(select, value, label) {
+        const o = node('option', label);
+        o.value = String(value);
+        select.append(o);
+      }
+      function tab(name) {
+        if (!['story', 'compare', 'events', 'sources'].includes(name)) name = 'story';
+        for (const b of document.querySelectorAll('[data-tab]'))
+          b.setAttribute('aria-pressed', String(b.dataset.tab === name));
+        for (const id of ['story', 'compare', 'events', 'sources']) $(id).hidden = id !== name;
+        history.replaceState(null, '', `#stage=${stage}&view=${name}`);
+      }
+      for (const button of document.querySelectorAll('[data-tab]'))
+        button.onclick = () => tab(button.dataset.tab);
+      function imageFigure(s, subject, angle, label) {
+        const f = node('figure');
+        const box = node('div', undefined, 'image-box');
+        const capture = s?.captures.find((c) => c.subject === subject && c.angle === angle);
+        if (capture) {
+          const img = node('img');
+          img.src = capture.url;
+          img.alt = `${subject}, ${angle}, ${s.title}`;
+          img.loading = 'lazy';
+          img.onerror = () => {
+            box.replaceChildren(node('p', 'Capture unavailable at this path.'));
+          };
+          box.append(img);
+        } else
+          box.append(node('p', `No retained ${angle} capture of ${subject} for this revision.`));
+        f.append(box);
+        const caption = node('figcaption');
+        caption.append(
+          node('div', label, 'caption-label'),
+          node('div', s?.title ?? 'No earlier capture', 'caption-title'),
+        );
+        if (s) caption.append(node('p', s.status, 'small'));
+        if (capture) {
+          const link = node('a', 'Open full capture ↗');
+          link.href = capture.url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          caption.append(link, node('p', capture.path, 'provenance'));
+        }
+        f.append(caption);
+        return f;
+      }
+      function renderStory() {
+        const s = DATA.stages[stage];
+        for (const b of $('steps').children) {
+          if (Number(b.dataset.stage) === stage) b.setAttribute('aria-current', 'step');
+          else b.removeAttribute('aria-current');
+        }
+        $('stage-title').textContent = s.title;
+        $('stage-status').textContent = s.status;
+        $('step-count').textContent = `${stage + 1} / ${DATA.stages.length}`;
+        for (const k of ['question', 'change', 'finding', 'lesson', 'quote'])
+          $(k).textContent = s[k];
+        $('anchor').textContent = `${s.threadId} / ${s.turn} / ${s.anchorId}`;
+        $('open-chat').href = `codex://threads/${s.threadId}`;
+        $('prev').disabled = stage === 0;
+        $('next').disabled = stage === DATA.stages.length - 1;
+        $('story-subject').replaceChildren();
+        for (const subject of [...new Set(s.captures.map((c) => c.subject))])
+          option($('story-subject'), subject, subject[0].toUpperCase() + subject.slice(1));
+        $('story-subject').value =
+          s.subject ?? (s.captures.some((c) => c.subject === 'hydra') ? 'hydra' : 'nightjar');
+        renderStoryImages();
+        $('source-stage').value = String(stage);
+        renderSourceFiles();
+      }
+      function renderStoryImages() {
+        const s = DATA.stages[stage];
+        const subject = $('story-subject').value;
+        if (s.comparison === 'roundtrip') {
+          $('story-images').replaceChildren(
+            imageFigure(s, subject, 'roundtrip-live', 'Live model · neutral lighting'),
+            imageFigure(s, subject, 'roundtrip-exported', 'Reloaded GLB · same lighting'),
+          );
+          return;
+        }
+        const previous = DATA.stages
+          .slice(0, stage)
+          .findLast((x) => x.captures.some((c) => c.subject === subject && c.angle === 'hero'));
+        $('story-images').replaceChildren(
+          imageFigure(previous, subject, 'hero', 'Earlier retained revision'),
+          imageFigure(s, subject, 'hero', 'This revision'),
+        );
+      }
+      $('story-subject').onchange = renderStoryImages;
+      function chooseStage(i) {
+        stage = i;
+        renderStory();
+        tab('story');
+      }
+      DATA.stages.forEach((s, i) => {
+        const b = node('button', undefined, 'step');
+        b.dataset.stage = i;
+        b.append(node('span', String(i + 1).padStart(2, '0'), 'num'));
+        const text = node('span', s.title);
+        text.append(node('small', s.status));
+        b.append(text);
+        b.onclick = () => chooseStage(i);
+        $('steps').append(b);
+        option($('source-stage'), i, s.title);
+      });
+      $('prev').onclick = () => chooseStage(stage - 1);
+      $('next').onclick = () => chooseStage(stage + 1);
+      for (const s of ['hydra', 'nightjar', 'spiral', 'vajra', 'phoenix', 'catalyst'])
+        option($('subject'), s, s[0].toUpperCase() + s.slice(1));
+      function compareOptions() {
+        const available = DATA.stages.filter((s) =>
+          s.captures.some((c) => c.subject === $('subject').value),
+        );
+        for (const id of ['before', 'after']) {
+          const old = $(id).value;
+          $(id).replaceChildren();
+          available.forEach((s) => option($(id), s.id, s.title));
+          if (available.some((s) => String(s.id) === old)) $(id).value = old;
+          else $(id).value = String(id === 'before' ? available[0]?.id : available.at(-1)?.id);
+        }
+        renderCompare();
+      }
+      function renderCompare() {
+        const a = DATA.stages[Number($('before').value)],
+          b = DATA.stages[Number($('after').value)],
+          subject = $('subject').value,
+          angle = $('angle').value;
+        $('compare-images').replaceChildren(
+          imageFigure(a, subject, angle, 'Before'),
+          imageFigure(b, subject, angle, 'After'),
+        );
+        $('compare-status').textContent =
+          `${subject} · ${angle} · ${a?.title ?? 'Unavailable'} → ${b?.title ?? 'Unavailable'}`;
+      }
+      $('subject').onchange = compareOptions;
+      for (const id of ['angle', 'before', 'after']) $(id).onchange = renderCompare;
+      option($('turn-filter'), 'all', 'All included turns / agents');
+      for (const t of turns) {
+        const th = DATA.threads.find((x) => x.id === t.threadId);
+        const date = new Date(t.startedAt * 1000).toLocaleTimeString('en-GB', {
+          timeZone: 'Asia/Shanghai',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+        option(
+          $('turn-filter'),
+          t.id,
+          `${date} CST · ${th.role} · ${(t.events.find((e) => e.kind === 'request')?.text ?? t.events.find((e) => e.kind === 'message')?.text ?? 'Delegated implementation').slice(0, 65)}`,
+        );
+      }
+      function renderEvents(focusId) {
+        const q = $('search').value.toLowerCase();
+        const filtered = events.filter(
+          (e) =>
+            ($('turn-filter').value === 'all' || e.turnId === $('turn-filter').value) &&
+            ($('kind').value === 'all' || e.kind === $('kind').value) &&
+            `${e.title}\n${e.text}\n${e.output ?? ''}`.toLowerCase().includes(q),
+        );
+        if (focusId) {
+          const idx = filtered.findIndex((e) => e.id === focusId);
+          if (idx >= 0) page = Math.floor(idx / pageSize);
+        }
+        page = Math.max(0, Math.min(page, Math.ceil(filtered.length / pageSize) - 1));
+        $('event-count').textContent =
+          `${filtered.length} matching records · ${events.length} included records total`;
+        $('event-list').replaceChildren();
+        for (const e of filtered.slice(page * pageSize, (page + 1) * pageSize)) {
+          const row = node('article', undefined, 'event');
+          row.id = `record-${e.id}`;
+          const meta = node('div', undefined, 'event-meta');
+          meta.append(
+            node('span', e.kind, 'kind'),
+            node('span', e.role),
+            node('span', `Turn ${e.turnId.slice(0, 8)} · record ${e.ordinal}`),
+          );
+          if (e.exitCode !== undefined && e.exitCode !== null)
+            meta.append(node('span', `Exit ${e.exitCode} · ${e.durationMs ?? '?'} ms`));
+          row.append(meta);
+          const d = node('details');
+          d.open = e.id === focusId;
+          d.append(node('summary', e.title));
+          if (e.truncated)
+            d.append(node('p', 'Excerpt truncated in the source export.', 'warning'));
+          d.append(node('pre', e.text));
+          if (e.output !== undefined) {
+            d.append(node('h3', 'Recorded output'), node('pre', e.output));
+          }
+          d.append(node('p', `${e.threadId} / ${e.turnId} / ${e.id}`, 'provenance'));
+          row.append(d);
+          $('event-list').append(row);
+        }
+        if (!filtered.length)
+          $('event-list').append(node('p', 'No records match these filters.', 'empty'));
+        $('event-prev').disabled = page === 0;
+        $('event-next').disabled = (page + 1) * pageSize >= filtered.length;
+        $('event-page').textContent =
+          `Page ${filtered.length ? page + 1 : 0} / ${Math.ceil(filtered.length / pageSize)}`;
+      }
+      for (const id of ['turn-filter', 'kind'])
+        $(id).onchange = () => {
+          page = 0;
+          renderEvents();
+        };
+      $('search').oninput = () => {
+        page = 0;
+        renderEvents();
+      };
+      $('event-prev').onclick = () => {
+        page--;
+        renderEvents();
+      };
+      $('event-next').onclick = () => {
+        page++;
+        renderEvents();
+      };
+      $('show-events').onclick = () => {
+        const s = DATA.stages[stage];
+        $('turn-filter').value = s.turn;
+        $('kind').value = 'all';
+        $('search').value = '';
+        renderEvents(s.anchorId);
+        tab('events');
+        document.getElementById(`record-${s.anchorId}`)?.scrollIntoView({ block: 'center' });
+      };
+      function renderSourceFiles() {
+        const s = DATA.stages[Number($('source-stage').value)];
+        $('source-file').replaceChildren();
+        for (const [i, f] of s.sources.entries()) option($('source-file'), i, f.name);
+        $('source-file').disabled = !s.sources.length;
+        renderSource();
+      }
+      function renderSource() {
+        const s = DATA.stages[Number($('source-stage').value)],
+          f = s.sources[Number($('source-file').value)];
+        $('source-code').replaceChildren();
+        if (!f) {
+          $('source-meta').textContent =
+            'No source snapshot is attached to this stage. Inspect recorded commands and patches for the available edit evidence.';
+          $('source-code').textContent = 'No retained source snapshot.';
+          return;
+        }
+        $('source-meta').textContent = `${f.path}\nSHA-256 ${f.sha256}`;
+        let text = f.text;
+        if ($('source-mode').value === 'diff') {
+          text =
+            f.diff?.text ??
+            'No earlier retained snapshot of this file is attached. Choose Full retained source to inspect it.';
+          if (f.diff)
+            $('source-meta').textContent +=
+              `\nCompared with: ${DATA.stages[f.diff.fromStage].title}`;
+        }
+        for (const line of text.split('\n'))
+          $('source-code').append(
+            node(
+              'span',
+              line || ' ',
+              line.startsWith('+')
+                ? 'diff-add'
+                : line.startsWith('-')
+                  ? 'diff-remove'
+                  : 'diff-line',
+            ),
+          );
+      }
+      $('source-stage').onchange = renderSourceFiles;
+      $('source-file').onchange = renderSource;
+      $('source-mode').onchange = renderSource;
+      $('show-source').onclick = () => {
+        $('source-stage').value = String(stage);
+        renderSourceFiles();
+        tab('sources');
+      };
+      for (const t of DATA.threads) {
+        const box = node('div', undefined, 'thread');
+        box.append(node('h3', t.role));
+        const a = node('a', t.title);
+        a.href = `codex://threads/${t.id}`;
+        box.append(
+          a,
+          node(
+            'p',
+            `${t.turns.length} turns · ${t.turns.reduce((n, x) => n + x.events.length, 0)} visible records`,
+          ),
+        );
+        if (t.parent)
+          box.append(node('p', 'Delegated by the reviewer. Its turns overlap the review turn.'));
+        $('threads').append(box);
+      }
+      $('outcome').textContent = DATA.outcome ?? 'Final user approval is not recorded.';
+      $('collection').textContent =
+        `Collected ${DATA.collectedAt}\n${DATA.media.length} copied captures; input and asset SHA-256 hashes are in manifest.json.`;
+      for (const d of DATA.documents) {
+        const section = node('details');
+        section.append(
+          node('summary', d.path + ' · collected document'),
+          node(
+            'p',
+            'This is the document as collected now, not a version from each historical stage.',
+            'small',
+          ),
+          node('pre', d.text),
+          node('p', `SHA-256 ${d.sha256}`, 'provenance'),
+        );
+        $('documents').append(section);
+      }
+      renderStory();
+      compareOptions();
+      renderEvents();
+      tab(params.get('view') ?? 'story');
+    </script>
+  </body>
+</html>
