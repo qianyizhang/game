@@ -228,6 +228,8 @@
 .sts-room {
   padding: 36px !important;
   min-height: 430px;
+  background: #ebe2cd;
+  border-color: #b9aa89;
 }
 .sts-intro {
   display: flex;

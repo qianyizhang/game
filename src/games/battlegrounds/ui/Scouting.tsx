@@ -1,3 +1,5 @@
+import { MinionArt } from './MinionArt';
+import { WorkshopSymbol } from '../../../shared/art/WorkshopArt';
 import type { BGState } from '../domain/types';
 import { MINION_BY_ID } from '../content/minions';
 export function Scouting({ run }: { run: BGState }) {
@@ -7,7 +9,8 @@ export function Scouting({ run }: { run: BGState }) {
   return (
     <aside className="scouting">
       <strong>
-        Next opponent: {opponent === undefined ? 'Ghost warband' : run.players[opponent].name}
+        <WorkshopSymbol kind="scout" /> Next opponent:{' '}
+        {opponent === undefined ? 'Ghost warband' : run.players[opponent].name}
       </strong>
       {opponent === undefined ? (
         <p>A snapshot of the most recently eliminated warband · tier {run.ghostTier}.</p>
@@ -22,6 +25,11 @@ export function Scouting({ run }: { run: BGState }) {
       <div className="scout-units">
         {(opponent === undefined ? run.ghost : (seen?.board ?? [])).map((u) => (
           <span key={u.id}>
+            <MinionArt
+              definitionId={u.definitionId}
+              tribe={MINION_BY_ID[u.definitionId].tribe}
+              golden={u.golden}
+            />
             <strong>
               {MINION_BY_ID[u.definitionId].name}
               {u.golden ? ' ★' : ''}

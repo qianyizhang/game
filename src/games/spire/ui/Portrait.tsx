@@ -1,25 +1,13 @@
+import { CharacterArt } from './CharacterArt';
 /** Original, code-drawn silhouettes: no commercial art assets. */
 export function Portrait({ id }: { id: string }) {
+  if (id === 'ironclad' || id === 'silent') return <CharacterArt id={id} />;
   const slime = /slime/i.test(id),
-    machine = /sentr|sphere|donu|deca|orb|guardian/i.test(id),
-    hero = id === 'ironclad';
+    machine = /sentr|sphere|donu|deca|orb|guardian/i.test(id);
   return (
-    <svg
-      className={`fighter-portrait ${hero ? 'ironclad' : ''}`}
-      viewBox="0 0 180 180"
-      aria-hidden="true"
-    >
+    <svg className="fighter-portrait" viewBox="0 0 180 180" aria-hidden="true" focusable="false">
       <ellipse cx="90" cy="162" rx="66" ry="10" fill="#000" opacity=".25" />
-      {id === 'silent' ? (
-        <g stroke="#192f29" strokeWidth="3">
-          <path d="M88 17Q139 39 135 104L156 157H27L47 101Q46 40 88 17Z" fill="#426d56" />
-          <path d="M66 47 111 42 121 77 106 104 78 99 59 72Z" fill="#eadfc3" />
-          <path d="m62 44-11-24 26 21m31 0 20-27-8 35" fill="#eadfc3" />
-          <path d="m74 68 12 4m10-2 13-7M83 87l19-2" stroke="#29332c" strokeWidth="5" />
-          <path d="M65 115 38 143 47 149 81 119m29-5 29 22 4-8-22-26" fill="#8ba289" />
-          <path d="m39 142-15-41-4-25 29 61m89-3 18-42 4-16 4 31-16 37" fill="#cad9d0" />
-        </g>
-      ) : /louse|jawWorm|snakePlant|lagavulin/i.test(id) ? (
+      {/louse|jawWorm|snakePlant|lagavulin/i.test(id) ? (
         <g stroke="#34342d" strokeWidth="3">
           <path
             d="M30 145Q14 86 47 71Q58 37 92 62Q120 42 143 86L155 145Z"
@@ -91,15 +79,12 @@ export function Portrait({ id }: { id: string }) {
         </g>
       ) : (
         <g>
-          <path
-            d="M72 71Q44 94 36 154L102 143 142 158 125 78Z"
-            fill={hero ? '#912f32' : '#49434f'}
-          />
-          <path d="M69 78 107 74 122 112 95 124 65 114Z" fill={hero ? '#c89278' : '#9a8c78'} />
+          <path d="M72 71Q44 94 36 154L102 143 142 158 125 78Z" fill="#49434f" />
+          <path d="M69 78 107 74 122 112 95 124 65 114Z" fill="#9a8c78" />
           <path d="M70 111 61 158 80 162 93 128 102 163 124 160 115 116Z" fill="#35313d" />
           <path
             d="M76 32 108 27 121 48 107 76 79 69 67 49Z"
-            fill={hero ? '#e4d6b7' : '#8d806d'}
+            fill="#8d806d"
             stroke="#2a2834"
             strokeWidth="3"
           />
@@ -112,7 +97,7 @@ export function Portrait({ id }: { id: string }) {
           <path
             d="M64 83 45 113 54 121 79 92M114 83l23 29"
             fill="none"
-            stroke={hero ? '#c89278' : '#9a8c78'}
+            stroke="#9a8c78"
             strokeWidth="15"
           />
           <path
@@ -122,7 +107,7 @@ export function Portrait({ id }: { id: string }) {
             strokeWidth="3"
           />
           <path d="m119 115 28 8" stroke="#c69854" strokeWidth="7" />
-          {!hero && <path d="m70 37-17-22 26 15m25-5 28-15-16 30" fill="#c4aa7a" />}
+          <path d="m70 37-17-22 26 15m25-5 28-15-16 30" fill="#c4aa7a" />
         </g>
       )}
     </svg>

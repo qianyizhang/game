@@ -1,3 +1,4 @@
+import { WorkshopArt } from '../shared/art/WorkshopArt';
 import { useState } from 'react';
 import { contentDigest } from '../shared/contentPack';
 import {
@@ -49,13 +50,18 @@ export function EvidencePanel({ game }: { game: string }) {
       }
   return (
     <section>
-      <p className="eyebrow">LOCAL EVIDENCE</p>
-      <h1>Playtesting workbench</h1>
-      <p>
-        Accepted choices and encounter outcomes record automatically on this device. Normal play,
-        practice, and imported runs have separate cohorts. Counts describe this sample; they do not
-        measure how fun or balanced a card is.
-      </p>
+      <div className="feature-intro">
+        <div>
+          <p className="eyebrow">LOCAL EVIDENCE</p>
+          <h1>Playtesting workbench</h1>
+          <p>
+            Accepted choices and encounter outcomes record automatically on this device. Normal
+            play, practice, and imported runs have separate cohorts. Counts describe this sample;
+            they do not measure how fun or balanced a card is.
+          </p>
+        </div>
+        <WorkshopArt kind="evidence" />
+      </div>
       <div className="lab-actions">
         <button
           onClick={() => {

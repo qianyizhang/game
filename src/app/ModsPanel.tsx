@@ -1,3 +1,4 @@
+import { WorkshopArt } from '../shared/art/WorkshopArt';
 import type { ContentPack, ContentPin } from '../shared/contentPack';
 
 interface Preview {
@@ -23,16 +24,21 @@ export function ModsPanel({
 }) {
   return (
     <section className="mods-panel">
-      <p className="eyebrow">TRUSTED LOCAL TYPESCRIPT</p>
-      <h2>Content packs</h2>
-      <p>
-        Edit an example’s source, set <code>enabled: true</code>, then start a fresh run. Data
-        validates when loaded. Change the pack version when changing a hook’s behavior.
-      </p>
-      <p className="muted">
-        Enabled packs get separate saves. A replay needs matching rules, pack versions, and content
-        data. Imports never execute code.
-      </p>
+      <div className="feature-intro">
+        <div>
+          <p className="eyebrow">TRUSTED LOCAL TYPESCRIPT</p>
+          <h2>Content packs</h2>
+          <p>
+            Edit an example’s source, set <code>enabled: true</code>, then start a fresh run. Data
+            validates when loaded. Change the pack version when changing a hook’s behavior.
+          </p>
+          <p className="muted">
+            Enabled packs get separate saves. A replay needs matching rules, pack versions, and
+            content data. Imports never execute code.
+          </p>
+        </div>
+        <WorkshopArt kind="packs" />
+      </div>
       {packs.map((pack) => (
         <article key={pack.id} className="pack-card">
           <header>

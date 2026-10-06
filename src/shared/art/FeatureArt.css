@@ -1,0 +1,183 @@
+/* Shared sizing stays explicit: inline art never owns labels or hit targets. */
+.world-item-art,
+.node-art,
+.workshop-symbol,
+.hero-power-art {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+.hero-choices .hero-art {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  border-radius: 5px;
+}
+.lobby-list .hero-art {
+  width: 56px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+.lobby-list .workshop-symbol {
+  width: 18px;
+  height: 18px;
+  margin-right: 3px;
+}
+.tavern-tools > .hero-power-art {
+  width: 52px;
+  height: 52px;
+}
+.scouting > strong .workshop-symbol {
+  width: 26px;
+  height: 26px;
+  margin-right: 4px;
+}
+.scout-units > span > .minion-portrait {
+  display: block;
+  width: 88px;
+  height: auto;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+.feature-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.feature-intro > .workshop-art {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.arena-inspector > .workshop-art {
+  float: right;
+  width: 200px;
+  height: auto;
+  margin: 0 12px 20px 24px;
+  border-radius: 6px;
+}
+.arena-inspector > ol {
+  clear: both;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.arena-inspector li {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.arena-inspector li .hero-art {
+  float: left;
+  width: 72px;
+  height: auto;
+  margin: 0 12px 8px 0;
+  border-radius: 4px;
+}
+.arena-inspector li p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.arena-inspector li .workshop-symbol {
+  width: 24px;
+  height: 24px;
+  margin-right: 3px;
+}
+.catalogue-card > .world-item-art,
+.sts-relic-choices .world-item-art {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 10px;
+}
+.relic-rack .world-item-art,
+.potion-belt .world-item-art {
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+}
+.sts-room > .node-art {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 12px;
+}
+.sts-map-node > .node-art {
+  width: 36px;
+  height: 36px;
+}
+.sts-map-node.boss > .node-art {
+  width: 48px;
+  height: 48px;
+}
+.sts-map-node:disabled:not(.visited) > .node-art {
+  opacity: 0.6;
+}
+.sts-map-legend .node-art {
+  width: 24px;
+  height: 24px;
+}
+.map-heading > .act-art {
+  display: block;
+  width: 176px;
+  height: auto;
+  margin: 0 auto 16px;
+  border-radius: 6px;
+}
+.run-options .workshop-symbol {
+  width: 24px;
+  height: 24px;
+}
+@media (max-width: 700px) {
+  .feature-intro {
+    grid-template-columns: minmax(0, 1fr) 90px;
+    gap: 4px 12px;
+  }
+  .feature-intro > div {
+    display: contents;
+  }
+  .feature-intro > div > p {
+    grid-column: 1 / -1;
+  }
+  .feature-intro > div > .eyebrow,
+  .feature-intro > div > h1,
+  .feature-intro > div > h2 {
+    grid-column: 1;
+  }
+  .feature-intro > .workshop-art {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+  .feature-intro h1,
+  .feature-intro h2 {
+    margin-block: 8px;
+  }
+  .hero-choices > button {
+    grid-template-columns: 100px minmax(0, 1fr);
+    padding: 16px;
+    gap: 0 14px;
+  }
+  .hero-choices .hero-art {
+    grid-row: 1 / 4;
+  }
+  .hero-choices h3 {
+    font-size: 19px;
+  }
+  .arena-inspector > .workshop-art {
+    width: 120px;
+    margin-left: 12px;
+  }
+  .arena-inspector > ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tavern-tools > .hero-power-art {
+    width: 36px;
+    height: 36px;
+  }
+}

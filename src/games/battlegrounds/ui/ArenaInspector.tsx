@@ -1,3 +1,6 @@
+import { HeroArt } from './HeroArt';
+import { WorkshopArt, WorkshopSymbol } from '../../../shared/art/WorkshopArt';
+import { rivalArtKind } from './rivalArt';
 import { useEffect, useRef, useState } from 'react';
 import { inspectArena } from '../application/arena';
 import { RIVAL_STYLES, type ArenaState } from '../domain/arena';
@@ -27,7 +30,8 @@ export function ArenaInspector({ state }: { state: ArenaState }) {
           ×
         </button>
         {open && (
-          <section>
+          <section className="arena-inspector">
+            <WorkshopArt kind="arena" />
             <h2>Mixed Rivals inspector</h2>
             <p>
               Recruitment priority rotates each round. Every rival command is included in Export.
@@ -40,10 +44,12 @@ export function ArenaInspector({ state }: { state: ArenaState }) {
               <ol>
                 {state.arena.config.seats.map((seat, id) => (
                   <li key={id}>
+                    <HeroArt id={seat.hero} />
                     <strong>
                       {state.players[id].name} · {HEROES.find((h) => h.id === seat.hero)!.name}
                     </strong>
                     <p>
+                      {id !== 0 && <WorkshopSymbol kind={rivalArtKind(seat.style)} />}
                       {id === 0
                         ? 'Your seat'
                         : `${RIVAL_STYLES[seat.style].label}: ${RIVAL_STYLES[seat.style].description}`}

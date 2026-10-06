@@ -1,3 +1,4 @@
+import { RelicArt, PotionArt } from './WorldItemArt';
 import { spirePacks } from '../../../mods/spire';
 import { useState } from 'react';
 import { GameShell } from '../../../app/GameShell';
@@ -85,7 +86,7 @@ export function SpireApp({
           <div className="collection-grid">
             {RELICS.map((r) => (
               <article className="catalogue-card" key={r.id}>
-                <span className="catalogue-symbol">{r.symbol}</span>
+                <RelicArt id={r.id} />
                 <h3>{r.name}</h3>
                 <p>{r.text}</p>
               </article>
@@ -95,6 +96,7 @@ export function SpireApp({
           <div className="collection-grid">
             {Object.entries(POTIONS).map(([id, p]) => (
               <article className="catalogue-card" key={id}>
+                <PotionArt id={id} />
                 <h3>{p.name}</h3>
                 <p>{p.text}</p>
               </article>
@@ -195,7 +197,7 @@ export function SpireApp({
             <div className="relic-rack">
               {run.relics.map((id) => (
                 <span key={id} title={RELIC_BY_ID[id].text}>
-                  {RELIC_BY_ID[id].symbol} {RELIC_BY_ID[id].name}
+                  <RelicArt id={id} /> {RELIC_BY_ID[id].name}
                   {run.relicCounters[id] ? ` (${run.relicCounters[id]})` : ''}
                 </span>
               ))}
@@ -236,7 +238,7 @@ export function SpireApp({
                         })
                       }
                     >
-                      {POTIONS[p].name}
+                      <PotionArt id={p} /> {POTIONS[p].name}
                     </button>
                     <button
                       aria-label={`Discard ${POTIONS[p].name}`}
