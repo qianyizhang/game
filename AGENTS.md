@@ -14,7 +14,7 @@ Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone B
 
 ## Checks
 
-For SVG asset creation or refinement, read [the Card Workshop art skill](skills/card-art/SKILL.md). It contains the art direction, scaffold and visual review workflow; [the source map](docs/card-art.md) locates the renderers and export integration.
+For SVG or 3D artwork, read [the Card Workshop art skill](skills/card-art/SKILL.md) and the [aesthetic rulebook](docs/art-direction.md). The rulebook is the shared visual standard; the skill covers creation and review. [SVG sources](docs/card-art.md) and [3D sources](docs/art3d.md) locate renderers and export integration. Passing technical checks does not establish visual quality.
 
 `npm run check` runs unit tests and the production build. `npm run test:browser` runs the disposable-profile browser suite with a single startup guard.
 

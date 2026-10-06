@@ -1,6 +1,6 @@
 # SVG assets: source map and tools
 
-The [Card Workshop art skill](../skills/card-art/SKILL.md) is the rulebook for composition, anatomy, variants and visual acceptance. This page covers source locations and tooling. Artwork is presentation only; definitions and game rules remain authoritative.
+The [aesthetic rulebook](art-direction.md) defines composition, anatomy, materials, variants and visual acceptance across SVG and 3D. The [Card Workshop art skill](../skills/card-art/SKILL.md) routes the workflow. This page covers source locations and tooling. Artwork is presentation only; definitions and game rules remain authoritative.
 
 ## Source map
 

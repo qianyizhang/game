@@ -35,7 +35,11 @@ Start with [architecture](docs/architecture.md), then [make a mod](docs/modding.
 
 [Research home](docs/research/README.md) holds mechanisms, sources, exact local timing, design questions and playtest notes for every game. [Settled decisions](docs/decisions.md) records scope; [completion evidence](docs/completion.md) maps requirements to checks.
 
-[The SVG art skill](skills/card-art/SKILL.md) defines the visual rules and review workflow; the [source map and tools](docs/card-art.md) cover renderers, scaffolding and before/after contact sheets. Run `npm run assets:export` to browse and save standalone SVGs from `test-results/card-art/index.html`.
+[The Card Workshop art skill](skills/card-art/SKILL.md) defines the creation and review workflow for SVG and 3D artwork; the [aesthetic rulebook](docs/art-direction.md) is the shared visual standard. The [SVG source map and tools](docs/card-art.md) cover renderers, scaffolding and before/after contact sheets. Run `npm run assets:export` to browse and save standalone SVGs from `test-results/card-art/index.html`.
+
+The **[3D art gallery](docs/art3d.md)** contains six material studies: Nightjar, Catalyst, Phoenix, Hydra, Spiral and Vajra. The three creatures have authored motion, Catalyst has rising bubbles, and Spiral and Vajra use rigid display motion. Open **3D art gallery** from a table, or `/?art=3d`, to orbit, pause/scrub motion, inspect supported layers and download animated GLB models, six-second WebM loops or PNG images.
+
+The **[creation trace visualizer](docs/trace-visualizer.md)** is a separate local tool connecting requests, revisions, reviews, retained captures and source changes. Rebuilding the example requires local thread exports and evidence under ignored `test-results/`; `npm run test:trace` checks the reusable normalizer without those files and is included in `npm run check`.
 
 [Card suite expansion](docs/card-expansion.md) lists the twelve new Jokers, twelve new recruits, and the new Silent illustrations.
 
