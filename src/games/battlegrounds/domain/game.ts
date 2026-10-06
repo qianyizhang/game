@@ -1,6 +1,7 @@
 import { hashSeed } from '../../../shared/random';
 import { HEROES, RECRUITS } from '../content/minions';
 import { runBot } from './bots';
+import { runSpellBot } from './spell-controller';
 import { resolveCombat } from './combat';
 import {
   bgLog,
@@ -13,17 +14,20 @@ import {
 } from './recruitment';
 import type { BGCommand, BGState, CombatResult, Player } from './types';
 
-export const BG_VERSION = 5;
-export function createBG(seedInput: string): BGState {
+export const BG_VERSION = 6;
+export function createBG(seedInput: string, version: 5 | 6 = BG_VERSION): BGState {
   const seed = seedInput.trim().slice(0, 64) || 'HEARTH-01';
   return {
-    version: BG_VERSION,
+    version,
     seed,
     rng: hashSeed(seed),
     nextId: 1,
     phase: 'hero',
     round: 1,
-    players: Array.from({ length: 8 }, (_, id) => initialPlayer(id)),
+    players: Array.from({ length: 8 }, (_, id) => ({
+      ...initialPlayer(id),
+      ...(version >= 6 ? { tavern: { offer: null, hand: [], nextGold: 0, discount: 0 } } : {}),
+    })),
     pool: Object.fromEntries(RECRUITS.map((m) => [m.id, POOL_COPIES[m.tier]])),
     ghost: [],
     ghostTier: 1,
@@ -44,13 +48,15 @@ function eliminate(run: BGState, player: Player, placement: number) {
   player.hand = [];
   player.shop = [];
   player.discover = [];
+  if (player.tavern) player.tavern = { offer: null, hand: [], nextGold: 0, discount: 0 };
   player.eliminatedRound = run.round;
   player.placement = placement;
   bgLog(run, `${player.name} is eliminated in place ${placement}.`);
 }
 function combatRound(run: BGState) {
   const alive = run.players.filter((p) => p.hp > 0);
-  for (const player of alive) if (player.id !== 0) runBot(run, player);
+  for (const player of alive)
+    if (player.id !== 0) (player.tavern ? runSpellBot : runBot)(run, player);
   resolveLobbyCombat(run);
 }
 

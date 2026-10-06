@@ -9,6 +9,7 @@ export function isBGCommand(value: unknown): value is BGCommand {
     case 'chooseHero':
       return HEROES.some((h) => h.id === c.hero);
     case 'buy':
+    case 'buySpell':
     case 'sell':
     case 'discover':
       return id(c.id);
@@ -24,6 +25,8 @@ export function isBGCommand(value: unknown): value is BGCommand {
       return id(c.id) && (c.direction === -1 || c.direction === 1);
     case 'power':
       return c.target === undefined || id(c.target);
+    case 'castSpell':
+      return id(c.id) && (c.target === undefined || id(c.target));
     case 'refresh':
     case 'freeze':
     case 'upgrade':

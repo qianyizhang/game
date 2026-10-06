@@ -1,6 +1,6 @@
 # Last Hearth arena and Mixed Rivals
 
-Last Hearth now has a separate eight-seat policy arena. **Classic keeps rules v5, its existing save key and its original seven bots.** Mixed Rivals uses the arena's new replay envelope (`last-hearth-arena`, version 1) and records every seat's accepted commands. Replaying an arena journal never invokes policy code.
+Last Hearth has a separate eight-seat policy arena. Current Classic and Mixed Rivals include [tavern spells](tavern-spells.md), using Hearth rules **v6** and arena envelope **v2**. Old v5/v1 save keys remain untouched. The original experiment described below explicitly retains the v5/v1 codecs and frozen controllers. Replaying an arena journal never invokes policy code.
 
 ## Play and inspect
 

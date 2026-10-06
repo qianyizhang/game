@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { arenaFrame, arenaSession } from '../application/arena';
+import { arenaFrame, arenaSessionV1 as arenaSession } from '../application/arena';
 import { mixedRivalsConfig } from '../domain/arena';
 import { makeUnit } from '../domain/units';
 import { decideRecruitment } from './recruitment-policy';

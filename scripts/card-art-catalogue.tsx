@@ -1,3 +1,5 @@
+import { TAVERN_SPELLS } from '../src/games/battlegrounds/content/spells';
+import { TavernSpellArt } from '../src/games/battlegrounds/ui/TavernSpellArt';
 import { RELICS, POTIONS, ACT_NAMES } from '../src/games/spire/content/world';
 import { RelicArt, PotionArt } from '../src/games/spire/ui/WorldItemArt';
 import { CharacterArt } from '../src/games/spire/ui/CharacterArt';
@@ -138,6 +140,12 @@ export function cardArtCatalogue(): Asset[] {
       group: 'Slay the Spire · Acts',
       name,
       node: <ActArt act={index + 1} />,
+    })),
+    ...TAVERN_SPELLS.map((spell) => ({
+      id: `hearth/spells/${spell.id}`,
+      group: 'Last Hearth · Tavern spells',
+      name: spell.name,
+      node: <TavernSpellArt id={spell.id} />,
     })),
     ...HEROES.flatMap((hero) => [
       {

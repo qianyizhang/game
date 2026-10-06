@@ -3,6 +3,7 @@ import { random } from '../../../shared/random';
 import { HEROES, MINION_BY_ID, RECRUITS } from '../content/minions';
 import { buff, makeUnit, matchesTribe, summonHooks } from './units';
 import { applyHeroPower } from './heroes';
+import { fillSpellOffer, handSize, recruitPrice, spellAction } from './spells';
 import type { BGCommand, BGState, Player, Unit } from './types';
 
 export const POOL_COPIES = [0, 16, 15, 13, 11, 9, 7];
@@ -47,11 +48,13 @@ function fillShop(run: BGState, player: Player) {
     const unit = drawFromPool(run, player.tier);
     if (unit) player.shop.push(unit);
   }
+  fillSpellOffer(run, player);
 }
 export function refreshShop(run: BGState, player: Player) {
   returnUnits(run, player.shop);
   player.shop = [];
   player.frozen = false;
+  if (player.tavern) player.tavern.offer = null;
   fillShop(run, player);
 }
 export function startRecruitment(run: BGState, seatOrder?: readonly number[]) {
@@ -64,6 +67,11 @@ export function startRecruitment(run: BGState, seatOrder?: readonly number[]) {
   )) {
     const ability = HEROES.find((hero) => hero.id === player.hero)!.ability;
     player.gold = Math.min(10, run.round + 2) + (ability.type === 'income' ? ability.gold : 0);
+    if (player.tavern) {
+      player.gold += player.tavern.nextGold;
+      player.tavern.nextGold = 0;
+      player.tavern.discount = 0;
+    }
     player.powerUsed = false;
     if (run.round > 1) player.upgradeCost = Math.max(0, player.upgradeCost - 1);
     if (!player.frozen) refreshShop(run, player);
@@ -150,12 +158,17 @@ export function recruitAction(
   if (player.discover.length && command.type !== 'discover')
     return 'Choose your Discover reward first.';
   switch (command.type) {
+    case 'buySpell':
+    case 'castSpell':
+      return spellAction(player, command);
     case 'buy': {
       const unit = player.shop.find((m) => m.id === command.id);
       if (!unit) return 'That minion is not in the shop.';
-      if (player.gold < 3) return 'Recruiting costs 3 gold.';
-      if (player.hand.length >= 10) return 'Your hand is full.';
-      player.gold -= 3;
+      const price = recruitPrice(player);
+      if (player.gold < price) return `Recruiting costs ${price} gold.`;
+      if (handSize(player) >= 10) return 'Your hand is full.';
+      player.gold -= price;
+      if (player.tavern) player.tavern.discount = 0;
       player.shop = player.shop.filter((m) => m.id !== unit.id);
       player.hand.push(unit);
       for (const friendly of player.board) {
@@ -241,7 +254,7 @@ export function recruitAction(
     case 'discover': {
       const chosen = player.discover.find((m) => m.id === command.id);
       if (!chosen) return 'Choose an offered Discover minion.';
-      if (player.hand.length >= 10) return 'Your hand is full.';
+      if (handSize(player) >= 10) return 'Your hand is full.';
       returnUnits(
         run,
         player.discover.filter((m) => m.id !== chosen.id),

@@ -2,11 +2,11 @@
 
 Three complete, local card-game studies for learning game design and having fun changing the rules. Choose a game from the sidebar; each keeps its own save.
 
-| Playable game                               | Core loop                                                                                      | Curated content                                                                     |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| **Blindside** · Balatro                     | Build poker hands, score ordered effects, shop and beat eight antes, with optional blind skips | 60 Jokers, 18 consumables, six packs, six vouchers, four skip tags, eight bosses    |
-| **Slay the Spire** · Ironclad & Silent      | Read enemy intent, spend energy, shape a deck and choose a route through three acts            | 95 obtainable cards, 33 relics, eight potions, nine boss encounters, Ascensions 0–5 |
-| **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals          | 60 recruits across six tiers, four tokens, five heroes, finite shared pool          |
+| Playable game                               | Core loop                                                                                      | Curated content                                                                                 |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Blindside** · Balatro                     | Build poker hands, score ordered effects, shop and beat eight antes, with optional blind skips | 60 Jokers, 18 consumables, six packs, six vouchers, four skip tags, eight bosses                |
+| **Slay the Spire** · Ironclad & Silent      | Read enemy intent, spend energy, shape a deck and choose a route through three acts            | 95 obtainable cards, 33 relics, eight potions, nine boss encounters, Ascensions 0–5             |
+| **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals          | 60 recruits across six tiers, four tokens, five heroes, eight tavern spells, finite shared pool |
 
 Blindside and Last Hearth use original content names. Slay the Spire uses original-game identities and researched mechanics with curated Ironclad and Silent pools; all illustrations and code are local. These are curated studies with explicit simplifications, not exact commercial-game replicas.
 
@@ -81,4 +81,6 @@ On this Mac, browser-launching agent commands require approved execution outside
 
 Simulations write ignored evidence under `test-results/simulation/`, `test-results/spire/` and `test-results/battlegrounds/`. Browser evidence is isolated under `test-results/browser/`. Full legal winning command histories are kept in `tests/fixtures/`; browser tests import them to verify terminal UI. Those fixtures contain no injected money, health or cards. Policies use the same legal transitions. Spire uses one-command lookahead that can observe consequences of hidden draws, so it is not a fair-play benchmark; Last Hearth checks every recruitable definition's supply after every human action and resolved bot round.
 
-The [Night Market expansion](docs/night-market.md) adds new Joker and recruit builds, illustrated shop items and twelve distinct Silent upgrade scenes. Blindside uses rules v4; Hearth now uses v5; Spire remains v3.
+The [Night Market expansion](docs/night-market.md) adds new Joker and recruit builds, illustrated shop items and twelve distinct Silent upgrade scenes. Blindside uses rules v4; Hearth now uses v6; Spire remains v3.
+
+The [tavern spells expansion](docs/tavern-spells.md) adds buy/hold/cast decisions, delayed income, permanent buffs and shop manipulation in Classic and Mixed Rivals. Current saves use Hearth v6 / arena v2; historical AI experiments retain their explicit v5/v1 codecs and frozen policies.

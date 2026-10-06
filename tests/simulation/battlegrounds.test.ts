@@ -2,17 +2,19 @@ import { automatedEvidence } from './evidence';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { expect, it } from 'vitest';
 import { bgSession } from '../../src/games/battlegrounds/application/session';
-import { botDecision } from '../../src/games/battlegrounds/domain/bots';
+import { spellBotDecision as botDecision } from '../../src/games/battlegrounds/domain/spell-controller';
+import { HEROES } from '../../src/games/battlegrounds/content/minions';
+import { handSize } from '../../src/games/battlegrounds/domain/spells';
 import { MINION_BY_ID, RECRUITS } from '../../src/games/battlegrounds/content/minions';
 import { supplyTotal } from '../../src/games/battlegrounds/domain/game';
 import { POOL_COPIES } from '../../src/games/battlegrounds/domain/recruitment';
 import type { BGCommand, HeroId, Unit } from '../../src/games/battlegrounds/domain/types';
 
 it('finishes seeded lobbies using legal commands and conserves every pool after every action', () => {
-  mkdirSync('test-results/battlegrounds', { recursive: true });
+  mkdirSync('test-results/tavern-spells-playtest', { recursive: true });
   const evidence: ReturnType<typeof automatedEvidence>[] = [];
-  const summary = Array.from({ length: 12 }, (_, i) => {
-    const seed = `HEARTH-${String(i + 1).padStart(2, '0')}`;
+  const summary = Array.from({ length: 20 }, (_, i) => {
+    const seed = `SPELLS-${String(i + 1).padStart(2, '0')}`;
     let session = bgSession.create(seed);
     let refreshes = 0;
     let round = 0;
@@ -27,7 +29,7 @@ it('finishes seeded lobbies using legal commands and conserves every pool after 
       if (run.phase === 'hero')
         command = {
           type: 'chooseHero',
-          hero: (['forgekeeper', 'quartermaster', 'wildspeaker'] as HeroId[])[i % 3],
+          hero: HEROES[i % HEROES.length].id as HeroId,
         };
       else if (run.phase === 'combat') command = { type: 'nextRound' };
       else {
@@ -65,14 +67,14 @@ it('finishes seeded lobbies using legal commands and conserves every pool after 
       }
       for (const p of session.state.players) {
         expect(p.board.length).toBeLessThanOrEqual(7);
-        expect(p.hand.length).toBeLessThanOrEqual(10);
+        expect(handSize(p)).toBeLessThanOrEqual(10);
         expect(p.gold).toBeGreaterThanOrEqual(0);
       }
     }
     expect(['won', 'lost']).toContain(session.state.phase);
     evidence.push(automatedEvidence(bgSession, session));
     expect(bgSession.decode(bgSession.encode(session))).toEqual(session);
-    writeFileSync(`test-results/battlegrounds/${seed}.json`, bgSession.encode(session));
+    writeFileSync(`test-results/tavern-spells-playtest/${seed}.json`, bgSession.encode(session));
     return {
       seed,
       hero: session.state.players[0].hero,
@@ -81,10 +83,17 @@ it('finishes seeded lobbies using legal commands and conserves every pool after 
       rounds: session.state.round,
       commands: session.replay.commands.length,
       triples: session.replay.commands.filter((c) => c.type === 'discover').length,
+      spellsCast: session.replay.commands.filter((c) => c.type === 'castSpell').length,
     };
   });
-  writeFileSync('test-results/battlegrounds/evidence.json', JSON.stringify(evidence, null, 2));
-  writeFileSync('test-results/battlegrounds/summary.json', JSON.stringify(summary, null, 2));
+  writeFileSync(
+    'test-results/tavern-spells-playtest/evidence.json',
+    JSON.stringify(evidence, null, 2),
+  );
+  writeFileSync(
+    'test-results/tavern-spells-playtest/summary.json',
+    JSON.stringify(summary, null, 2),
+  );
   expect(summary.some((row) => row.outcome === 'won')).toBe(true);
   expect(summary.some((row) => row.outcome === 'lost')).toBe(true);
 }, 120_000);

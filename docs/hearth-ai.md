@@ -2,6 +2,8 @@
 
 Last Hearth now supports an external agent process, a public observation contract, structured decision traces and a bounded competitive-policy experiment. This is the first delivery of the [game depth and AI track](development-track.md). It adds no human coaching interface.
 
+Current gameplay and external-agent episodes use [tavern spells](tavern-spells.md), Hearth v6 / arena v2. The v5 mechanics and frozen AI experiment below are historical; their experiment runner retains an explicit v5 codec. Old save keys and evidence remain unchanged.
+
 ## Gameplay: strategic heroes, rules v5
 
 | Hero       | Power                                                                                                             | Decision                                                                        |
@@ -47,7 +49,7 @@ The process sends one `ready` response immediately. Stdout contains JSON lines o
 {"id":"done","op":"quit"}
 ```
 
-`observe` returns the current frame. `catalogue` returns public hero/minion definitions and content pins. To act, choose an ID from the current frame's action list. Stale steps, unknown actions and malformed requests return errors and do not advance the environment. The server accepts requests up to 64 KiB per line and at most 10,000 accepted commands per episode, matching the replay codec. `quit` or input EOF writes the evaluator's replay and verification receipt to the separate directory. Existing output directories are rejected.
+`observe` returns the current frame. `catalogue` returns public hero/minion/spell definitions and content pins. To act, choose an ID from the current frame's action list. Stale steps, unknown actions and malformed requests return errors and do not advance the environment. The server accepts requests up to 64 KiB per line and at most 10,000 accepted commands per episode, matching the replay codec. `quit` or input EOF writes the evaluator's replay and verification receipt to the separate directory. Existing output directories are rejected.
 
 Every accepted response includes the next frame and structured `events`: resource deltas; phase/round changes; units entering, leaving, changing stats or changing positions; and combat summaries. Replays continue to contain only authoritative accepted game commands. Process termination before normal shutdown may prevent the final replay write; use the experiment runner for per-decision durable traces.
 

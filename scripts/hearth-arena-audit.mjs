@@ -13,7 +13,7 @@ const names = (await readdir(root)).filter((name) => name.endsWith('.replay.json
 if (!names.length) throw new Error('No episode replays found.');
 const manifest = JSON.parse(await readFile(resolve(root, 'manifest.json'), 'utf8'));
 const started = performance.now();
-await withHearthRuntime(async ({ arenaSession, arenaFrame, decideRecruitment }) => {
+await withHearthRuntime(async ({ arenaSessionV1: arenaSession, arenaFrame, decideRecruitment }) => {
   let decisions = 0;
   const artifacts = {};
   for (const name of names) {

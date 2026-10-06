@@ -17,13 +17,22 @@ import {
 } from '../domain/arena';
 import type { Player } from '../domain/types';
 import { hearthEvents, legalHearthCommands, type HearthObservation } from './agent';
-import { bgSession } from './session';
+import { bgSession, bgSessionV5 } from './session';
+import { TAVERN_SPELLS } from '../content/spells';
 
 export const arenaSession = replayCodec({
   game: 'last-hearth-arena',
   version: ARENA_VERSION,
   content: bgSession.rules.content,
-  create: createArena,
+  create: (seed) => createArena(seed),
+  transition: transitionArena,
+  isCommand: isArenaCommand,
+});
+export const arenaSessionV1 = replayCodec({
+  game: 'last-hearth-arena',
+  version: 1,
+  content: bgSessionV5.rules.content,
+  create: (seed) => createArena(seed, 1),
   transition: transitionArena,
   isCommand: isArenaCommand,
 });
@@ -143,6 +152,7 @@ export function arenaCatalogue() {
     content: arenaSession.rules.content,
     heroes: HEROES,
     minions: MINIONS,
+    spells: TAVERN_SPELLS,
     styles: RIVAL_STYLES,
   });
 }

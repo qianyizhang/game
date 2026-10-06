@@ -1,4 +1,7 @@
-import { arenaFrame, arenaSession } from '../games/battlegrounds/application/arena';
+import {
+  arenaFrame,
+  arenaSessionV1 as arenaSession,
+} from '../games/battlegrounds/application/arena';
 import {
   decideRecruitmentV2,
   RECRUITMENT_POLICIES,

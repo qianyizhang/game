@@ -4,7 +4,7 @@ import {
 } from '../games/battlegrounds/ai/recruitment-policy';
 import {
   arenaFrame,
-  arenaSession,
+  arenaSessionV1 as arenaSession,
   type ArenaFrame,
 } from '../games/battlegrounds/application/arena';
 import {

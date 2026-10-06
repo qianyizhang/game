@@ -1,4 +1,4 @@
-import { decideRecruitment } from '../ai/recruitment-policy';
+import { decideSpellRecruitment } from '../ai/spell-policy';
 import { activeSeat, type ArenaCommand } from '../domain/arena';
 import { arenaFrame, arenaSession, type ArenaSession } from './arena';
 
@@ -18,7 +18,7 @@ export function advanceRivals(initial: ArenaSession, humanSeat = 0): ArenaComman
         : {
             type: 'seat',
             seat: seat!,
-            action: decideRecruitment(
+            action: decideSpellRecruitment(
               arenaFrame(session, seat!),
               state.arena.config!.seats[seat!].style,
             ).command,

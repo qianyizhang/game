@@ -1,0 +1,298 @@
+{
+  "game": "last-hearth",
+  "version": 6,
+  "seed": "SPELLS-10",
+  "commands": [
+    {
+      "type": "chooseHero",
+      "hero": "oathkeeper"
+    },
+    {
+      "type": "buy",
+      "id": "unit-1"
+    },
+    {
+      "type": "play",
+      "id": "unit-1",
+      "position": 0
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-69"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-69"
+    },
+    {
+      "type": "buy",
+      "id": "unit-65"
+    },
+    {
+      "type": "play",
+      "id": "unit-65",
+      "position": 1
+    },
+    {
+      "type": "buy",
+      "id": "unit-68"
+    },
+    {
+      "type": "play",
+      "id": "unit-68",
+      "position": 2
+    },
+    {
+      "type": "move",
+      "id": "unit-65",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-108"
+    },
+    {
+      "type": "play",
+      "id": "unit-108",
+      "position": 3
+    },
+    {
+      "type": "buy",
+      "id": "unit-106"
+    },
+    {
+      "type": "play",
+      "id": "unit-106",
+      "position": 4,
+      "target": "unit-108"
+    },
+    {
+      "type": "move",
+      "id": "unit-108",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-108",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-106",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-106",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "buy",
+      "id": "unit-148"
+    },
+    {
+      "type": "play",
+      "id": "unit-148",
+      "position": 5
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "power",
+      "target": "unit-148"
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "buy",
+      "id": "unit-233"
+    },
+    {
+      "type": "play",
+      "id": "unit-233",
+      "position": 6
+    },
+    {
+      "type": "buy",
+      "id": "unit-232"
+    },
+    {
+      "type": "sell",
+      "id": "unit-1"
+    },
+    {
+      "type": "play",
+      "id": "unit-232",
+      "position": 6
+    },
+    {
+      "type": "buy",
+      "id": "unit-231"
+    },
+    {
+      "type": "sell",
+      "id": "unit-106"
+    },
+    {
+      "type": "play",
+      "id": "unit-231",
+      "position": 6
+    },
+    {
+      "type": "buySpell",
+      "id": "spell-234"
+    },
+    {
+      "type": "castSpell",
+      "id": "spell-234",
+      "target": "unit-108"
+    },
+    {
+      "type": "move",
+      "id": "unit-108",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-233",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-233",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-232",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-232",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-231",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-231",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-231",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    },
+    {
+      "type": "nextRound"
+    },
+    {
+      "type": "upgrade"
+    },
+    {
+      "type": "buy",
+      "id": "unit-336"
+    },
+    {
+      "type": "sell",
+      "id": "unit-65"
+    },
+    {
+      "type": "play",
+      "id": "unit-336",
+      "position": 6
+    },
+    {
+      "type": "power",
+      "target": "unit-108"
+    },
+    {
+      "type": "move",
+      "id": "unit-336",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-336",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-336",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-336",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-336",
+      "direction": -1
+    },
+    {
+      "type": "move",
+      "id": "unit-336",
+      "direction": -1
+    },
+    {
+      "type": "endRecruit"
+    }
+  ],
+  "content": [
+    {
+      "id": "base",
+      "version": "6",
+      "digest": "4a2950bf"
+    }
+  ]
+}

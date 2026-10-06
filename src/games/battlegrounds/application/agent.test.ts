@@ -35,7 +35,7 @@ describe('Hearth policy boundary', () => {
   });
 
   it('matches native legality in hero, recruit, Discover, combat and terminal states', () => {
-    const replay = JSON.parse(readFileSync('tests/fixtures/battlegrounds-win.json', 'utf8'));
+    const replay = JSON.parse(readFileSync('tests/fixtures/battlegrounds-v6-win.json', 'utf8'));
     let session = bgSession.create(replay.seed);
     const covered = new Set<string>();
     const inspect = () => {
@@ -112,7 +112,7 @@ describe('Hearth policy boundary', () => {
   });
 
   it('records formation changes with before/after slots even when stats do not change', () => {
-    const replay = JSON.parse(readFileSync('tests/fixtures/battlegrounds-win.json', 'utf8'));
+    const replay = JSON.parse(readFileSync('tests/fixtures/battlegrounds-v6-win.json', 'utf8'));
     let session = bgSession.create(replay.seed);
     for (const command of replay.commands) {
       session = bgSession.act(session, command).session;

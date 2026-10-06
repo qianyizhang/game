@@ -10,7 +10,7 @@ async function saved(page: Page) {
   );
 }
 async function loadUntil(page: Page, predicate: (state: BGState) => boolean) {
-  const replay = JSON.parse(readFileSync('tests/fixtures/battlegrounds-win.json', 'utf8')) as {
+  const replay = JSON.parse(readFileSync('tests/fixtures/battlegrounds-v6-win.json', 'utf8')) as {
     seed: string;
     commands: BGCommand[];
   };

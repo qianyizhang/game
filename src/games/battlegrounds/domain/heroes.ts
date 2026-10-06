@@ -1,5 +1,6 @@
 import type { HeroDefinition, Player } from './types';
 import { buff, matchesTribe } from './units';
+import { handSize } from './spells';
 
 export function targetedHero(hero: HeroDefinition): boolean {
   return (
@@ -21,7 +22,7 @@ export function applyHeroPower(
   const target = player.board.find((unit) => unit.id === targetId);
   if (targetedHero(hero) && !target) return 'Select a friendly minion.';
   if (ability.type === 'recall') {
-    if (player.hand.length >= 10) return 'Your hand is full.';
+    if (handSize(player) >= 10) return 'Your hand is full.';
     player.board = player.board.filter((unit) => unit.id !== target!.id);
     // Moving the same unit preserves buffs, keywords, pool ownership, and the consumed
     // triple reward. Replaying a golden does not award another Discover.

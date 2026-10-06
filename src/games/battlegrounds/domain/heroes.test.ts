@@ -109,7 +109,7 @@ describe('strategic hero powers', () => {
         bgSession.decode(JSON.stringify({ ...power.session.replay, version: 4 })),
       ).toThrow('Incompatible');
     }
-    expect(bgSession.key).toBe('card-workshop.last-hearth.v5');
+    expect(bgSession.key).toBe('card-workshop.last-hearth.v6');
   });
 
   it('validates declarative powers including passive and targeted content', () => {
