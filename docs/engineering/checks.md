@@ -34,3 +34,9 @@ Each model's browser export case owns its 60-second budget, page and evidence di
 The inventory streams file hashes and retains every occurrence path. Equal bytes identify possible storage duplication; they do not establish which occurrence may be retired. Literal references are gathered from tracked text, so an absent reference leaves material unclassified and protected. Artist sources, source snapshots, backups and accepted evidence require their own explicit retirement authority.
 
 The report records its start/end times and checks each file for changes while reading. It is not an atomic snapshot of running producers. Retain audits in ignored session directories and refresh them after active output finishes. Only the independent receipt-based retention command can identify eligible automatic cleanup; it rechecks exact bytes before deletion.
+
+## CI coverage
+
+The checked-in workflow runs `npm run check` after clean npm/uv installs, then the full `npm run test:browser` suite with the disposable Chrome startup guard. Its 30-minute job budgets accommodate the measured full geometry/export workload; per-test assertions and budgets are unchanged. The workflow has read-only repository permissions and pins its actions by immutable revision.
+
+Private trace cases skip explicitly when their local exports are absent. Public synthetic trace cases remain part of CI. Blender authoring/export/render checks are local native integration evidence, separate from CI. A valid workflow file and passing local gates do not establish a successful remote Actions run or branch-protection configuration.
