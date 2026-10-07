@@ -1,4 +1,4 @@
-name: Maintenance slice
+name: Full repository checks
 
 on:
   push:
@@ -15,7 +15,7 @@ concurrency:
 jobs:
   maintenance:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
@@ -28,12 +28,12 @@ jobs:
           enable-cache: true
       - run: npm ci
       - run: uv sync --locked
-      - run: npm run check:maintenance
+      - run: npm run check
 
   browser:
     needs: maintenance
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
@@ -42,7 +42,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chrome
-      - run: npm run test:browser -- tests/browser/dcc-workbench.spec.ts tests/browser/shell.spec.ts
+      # Private trace cases skip explicitly when their local evidence is unavailable.
+      # Synthetic trace and all public application/art/export cases still run.
+      - run: npm run test:browser
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: failure()
         with:

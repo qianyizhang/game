@@ -13,3 +13,5 @@
 Keep accepted engineering decisions here. Working plans and handoffs live under ignored `.work/sessions/`; move only their enduring conclusions into these documents.
 
 [Documentation migration](documentation-migration.md) records consolidation and original-source recovery.
+
+[Artifact retention audit](artifact-retention-audit.md) records occurrence/uniqueness classifications and the decision to preserve the audited tree.
