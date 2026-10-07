@@ -46,7 +46,9 @@ test('market shop illustrations preserve purchases, tag labels and older saved r
   await page.goto('/');
   await expect(page.locator('.skip-offer .shop-art-tag')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Skip blind for this tag' })).toBeVisible();
-  const replay = JSON.parse(readFileSync('tests/fixtures/blindside-win.json', 'utf8'));
+  const replay = blindsideSession.decode(
+    readFileSync('tests/fixtures/blindside-win.json', 'utf8'),
+  ).replay;
   let session = blindsideSession.create(replay.seed);
   for (const command of replay.commands) {
     const result = blindsideSession.act(session, command);

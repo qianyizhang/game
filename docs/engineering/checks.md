@@ -2,22 +2,22 @@
 
 Use the exact Node/npm pins through `nvm use`, and the Python pin through `uv`. Browser and Blender launches on this Mac require approved execution outside the restricted sandbox; browser tests use disposable profiles and a once-per-run startup guard.
 
-| Command                            | Evidence it provides                                                                                                     |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `npm run check:maintenance`        | Formatting, lint, types, Python and tests for the adopted maintenance scope, inventory/link checks, and production build |
-| `npm run check`                    | The maintained gate plus whole-repository formatting and all application/geometry unit tests                             |
-| `npm run test:browser`             | Browser interaction, persistence, rendering and exported-artifact checks                                                 |
-| `npm run dcc -- verify`            | Current artist source, recipe and published GLB agree with their receipt                                                 |
-| `npm run maintenance -- inventory` | Read-only file occurrences, hashes, source/asset classifications and tracked-text references                             |
-| `npm run maintenance -- prune`     | Current retention eligibility, without deletion                                                                          |
+| Command                            | Evidence it provides                                                                                                       |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `npm run check:maintenance`        | Formatting, lint, types, Python and tests for the adopted maintenance scope, inventory/link checks, and production build   |
+| `npm run check`                    | The maintained gate plus whole-repository formatting and all application/geometry unit tests plus seeded simulation checks |
+| `npm run test:browser`             | Browser interaction, persistence, rendering and exported-artifact checks                                                   |
+| `npm run dcc -- verify`            | Current artist source, recipe and published GLB agree with their receipt                                                   |
+| `npm run maintenance -- inventory` | Read-only file occurrences, hashes, source/asset classifications and tracked-text references                               |
+| `npm run maintenance -- prune`     | Current retention eligibility, without deletion                                                                            |
 
 The migration inventory identifies code still awaiting the full maintenance contract. Passing the maintained slice alone does not establish a green application or browser suite. Local verification does not establish a remote CI result or aesthetic acceptance.
 
 ## Adopted static-check scope
 
-Typed ESLint covers all of `src`, including geometry, experiment code and their tests; root TypeScript checking covers the whole application and browser tests. The maintenance formatter covers these adopted directories. JSON enters as unknown data and is narrowed before access; rejected archives remain available for recovery. File import handlers use the existing caught-error import contract and preserve request cancellation/order semantics.
+Typed ESLint covers all of `src`, browser/simulation tests and root TypeScript configuration; root TypeScript checking covers the whole application and browser tests. The maintenance formatter covers these adopted directories. Each simulation writes a fresh uniquely named directory below `test-results`; earlier run bytes remain intact. The root full gate includes simulation checks. JSON enters as unknown data and is narrowed before access; rejected archives remain available for recovery. File import handlers use the existing caught-error import contract and preserve request cancellation/order semantics.
 
-The tools package includes the typed trace builder, normalizer, contracts and tests. Its legacy build entry point has a separate checked JavaScript project. The trace viewer template still contains inline JavaScript; browser coverage verifies its behavior, but static coverage of that inline runtime remains migration work.
+The tools package includes the typed trace builder, normalizer, contracts, SVG export/review/scaffold tools, comparison and challenge commands, and their tests. The SVG cabinet script is independently typechecked before embedding. Shared bundling uses declared repository entries and removes only its private temporary directory. Its legacy build entry point has a separate checked JavaScript project. The trace viewer template still contains inline JavaScript; browser coverage verifies its behavior, but static coverage of that inline runtime remains migration work.
 
 ## Geometry test budgets
 

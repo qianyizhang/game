@@ -1,3 +1,4 @@
+import { objectValue } from '../../src/shared/json';
 import { expect, test } from '@playwright/test';
 import { blindsideSession } from '../../src/games/balatro/application/session';
 import { spireSession } from '../../src/games/spire/application/session';
@@ -26,7 +27,7 @@ const games = [
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
-    const read = File.prototype.text;
+    const read = Reflect.get(File.prototype, 'text');
     File.prototype.text = async function () {
       if (this.name === 'unreadable.json') throw new Error('File read failed');
       if (this.name === 'delayed.json') {
@@ -76,7 +77,7 @@ for (const game of games) {
       await page.getByRole('button', { name: game.firstAction, exact: true }).click();
     else await page.locator('.hero-choices > button').first().click();
     const current = await page.evaluate((key) => localStorage.getItem(key), game.key);
-    expect(JSON.parse(current!).commands).toHaveLength(1);
+    expect(objectValue(JSON.parse(current!)).commands).toHaveLength(1);
     await page.evaluate(() =>
       (window as unknown as { releaseReplayImport: () => void }).releaseReplayImport(),
     );

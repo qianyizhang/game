@@ -7,10 +7,16 @@ import { resolve } from 'node:path';
 export function managedSource(path) {
   return (
     path === 'eslint.config.mjs' ||
+    /^(vite|vitest\.playtest|playwright)\.config\.ts$/.test(path) ||
+    /^tests\/.*\.ts$/.test(path) ||
     /^src\/.*\.tsx?$/.test(path) ||
     /^packages\/dcc-workbench\/src\/[^/]+\.tsx?$/.test(path) ||
-    /^packages\/workshop-tools\/(?:[^/]+\.mjs|trace\/[^/]+\.ts)$/.test(path) ||
+    /^packages\/workshop-tools\/.*\.(mjs|tsx?)$/.test(path) ||
     path === 'scripts/trace-visualizer/build.mjs' ||
+    /^scripts\/(export-card-art|review-card-art|scaffold-card-art|compare-playtests|solve-challenges)\.mjs$/.test(
+      path,
+    ) ||
+    path === 'scripts/card-art-catalogue.tsx' ||
     /^packages\/dcc-workbench\/blender\/(render_review|review_plan|test_review_plan)\.py$/.test(
       path,
     )

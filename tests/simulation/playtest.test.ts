@@ -1,6 +1,7 @@
+import { simulationOutput } from './output';
 import { blindsideSession } from '../../src/games/balatro/application/session';
 import { automatedEvidence } from './evidence';
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { expect, it } from 'vitest';
 import { hashSeed, shuffle } from '../../src/shared/random';
 import {
@@ -150,7 +151,7 @@ function simulate(seed: string): Session {
 }
 
 it('finishes unmodified seeded runs and saves replayable evidence', () => {
-  mkdirSync('test-results/simulation', { recursive: true });
+  const output = simulationOutput('simulation');
   const seeds = [
     'FIRST-LIGHT',
     'GARDEN',
@@ -169,7 +170,7 @@ it('finishes unmodified seeded runs and saves replayable evidence', () => {
     );
     expect(['won', 'lost']).toContain(session.run.phase);
     expect(importReplay(exportReplay(session)).run).toEqual(session.run);
-    writeFileSync(`test-results/simulation/${seed}.json`, exportReplay(session));
+    writeFileSync(`${output}/${seed}.json`, exportReplay(session));
     return {
       seed,
       outcome: session.run.phase,
@@ -181,8 +182,12 @@ it('finishes unmodified seeded runs and saves replayable evidence', () => {
       jokers: session.run.jokers.map((j) => j.definitionId),
     };
   });
-  writeFileSync('test-results/simulation/evidence.json', JSON.stringify(evidence, null, 2));
-  writeFileSync('test-results/simulation/summary.json', JSON.stringify(summaries, null, 2));
+  writeFileSync(`${output}/evidence.json`, JSON.stringify(evidence, null, 2));
+  writeFileSync(`${output}/summary.json`, JSON.stringify(summaries, null, 2));
   expect(summaries.some((run) => run.outcome === 'won')).toBe(true);
-  console.table(summaries.map(({ jokers: _jokers, ...row }) => row));
+  console.table(
+    summaries.map((summary) =>
+      Object.fromEntries(Object.entries(summary).filter(([key]) => key !== 'jokers')),
+    ),
+  );
 }, 120_000);

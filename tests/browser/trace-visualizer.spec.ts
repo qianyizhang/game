@@ -1,3 +1,4 @@
+import { parseCase } from '../../packages/workshop-tools/trace/contracts';
 import { relative, sep } from 'node:path';
 import { expect, test } from '@playwright/test';
 import { existsSync, readFileSync } from 'node:fs';
@@ -12,7 +13,9 @@ function bundleUrl(json: string): string {
     throw new Error('Trace bundle escaped repository');
   return '/' + path.split(sep).join('/');
 }
-const caseStudy = JSON.parse(readFileSync('packages/workshop-tools/trace/case-study.json', 'utf8'));
+const caseStudy = parseCase(
+  JSON.parse(readFileSync('packages/workshop-tools/trace/case-study.json', 'utf8')),
+);
 const inputsAvailable = caseStudy.threads.every((thread: { id: string }) =>
   existsSync(`test-results/trace-visualizer-input/${thread.id}.json`),
 );

@@ -1,5 +1,6 @@
+import { simulationOutput } from './output';
 import { expect, it } from 'vitest';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { arenaSession, arenaFrame } from '../../src/games/battlegrounds/application/arena';
 import { activeSeat, mixedRivalsConfig } from '../../src/games/battlegrounds/domain/arena';
 import { HEROES, RECRUITS } from '../../src/games/battlegrounds/content/minions';
@@ -9,8 +10,7 @@ import { handSize } from '../../src/games/battlegrounds/domain/spells';
 import { POOL_COPIES } from '../../src/games/battlegrounds/domain/recruitment';
 
 it('completes a v2 mixed lobby for each hero, preserving supply and exact journals', () => {
-  const root = 'test-results/tavern-spells-arena-playtest';
-  mkdirSync(root, { recursive: true });
+  const root = simulationOutput('tavern-spells-arena-playtest');
   const summary = HEROES.map((hero, index) => {
     const seed = `SPELLS-ARENA-${index + 1}`,
       config = mixedRivalsConfig(seed, hero.id, 'hidden');

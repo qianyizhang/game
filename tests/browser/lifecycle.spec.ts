@@ -68,7 +68,7 @@ test('a corrupt stored run is archived before replacement, and valid Spire impor
   const downloadEvent = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export', exact: true }).click();
   const download = await downloadEvent;
-  const exported = readFileSync((await download.path())!, 'utf8');
+  const exported = readFileSync(await download.path(), 'utf8');
   const expected = spireSession.decode(exported);
   await page.getByLabel('Import replay file').setInputFiles({
     name: 'export.json',

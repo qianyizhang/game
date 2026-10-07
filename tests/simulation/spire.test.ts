@@ -1,11 +1,12 @@
+import { simulationOutput } from './output';
 import { automatedEvidence } from './evidence';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { expect, it } from 'vitest';
 import { spireSession } from '../../src/games/spire/application/session';
 import { simulateSpire } from './spire-policy';
 
 it('completes and reconstructs full unmodified Spire ascents', () => {
-  mkdirSync('test-results/spire', { recursive: true });
+  const output = simulationOutput('spire');
   const evidence: ReturnType<typeof automatedEvidence>[] = [];
   const summary = [
     'IRONCLAD-01',
@@ -28,7 +29,7 @@ it('completes and reconstructs full unmodified Spire ascents', () => {
     );
     evidence.push(automatedEvidence(spireSession, session));
     expect(spireSession.decode(spireSession.encode(session))).toEqual(session);
-    writeFileSync(`test-results/spire/${seed}.json`, spireSession.encode(session));
+    writeFileSync(`${output}/${seed}.json`, spireSession.encode(session));
     return {
       seed,
       outcome: session.state.phase,
@@ -40,7 +41,7 @@ it('completes and reconstructs full unmodified Spire ascents', () => {
       commands: session.replay.commands.length,
     };
   });
-  writeFileSync('test-results/spire/evidence.json', JSON.stringify(evidence, null, 2));
-  writeFileSync('test-results/spire/summary.json', JSON.stringify(summary, null, 2));
+  writeFileSync(`${output}/evidence.json`, JSON.stringify(evidence, null, 2));
+  writeFileSync(`${output}/summary.json`, JSON.stringify(summary, null, 2));
   expect(summary.some((row) => row.outcome === 'won')).toBe(true);
 }, 120_000);

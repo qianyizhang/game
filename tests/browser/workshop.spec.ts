@@ -100,7 +100,7 @@ test('collection, mod guide, export/import and new seed', async ({ page }) => {
   const downloadEvent = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export', exact: true }).click();
   const download = await downloadEvent;
-  await page.getByLabel('Import replay file').setInputFiles((await download.path())!);
+  await page.getByLabel('Import replay file').setInputFiles(await download.path());
   expect(await saved(page)).toEqual(before);
   const corruptedFile = {
     name: 'bad.json',

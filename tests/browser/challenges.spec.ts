@@ -1,3 +1,4 @@
+import { objectValue } from '../../src/shared/json';
 import { expect, test, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { blindsideSession } from '../../src/games/balatro/application/session';
@@ -133,7 +134,7 @@ test('attempt export/import validates the puzzle and preserves progress on inval
   await page.getByRole('button', { name: 'Move Spark left' }).click();
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export attempts' }).click();
-  const exported = readFileSync((await (await download).path())!, 'utf8');
+  const exported = readFileSync(await (await download).path(), 'utf8');
   expect(
     decodeChallenge(jokerOrderChallenge, exported).current.session.replay.commands,
   ).toHaveLength(1);
@@ -145,8 +146,10 @@ test('attempt export/import validates the puzzle and preserves progress on inval
     buffer: Buffer.from(exported),
   });
   await expect(page.locator('.challenge-table .owned-joker').first()).toContainText('Spark');
-  const wrongRevision = JSON.parse(exported);
-  wrongRevision.current.challenge.revision++;
+  const wrongRevision = objectValue(JSON.parse(exported));
+  const pin = objectValue(objectValue(wrongRevision.current).challenge);
+  if (typeof pin.revision !== 'number') throw new Error('Expected puzzle revision');
+  pin.revision++;
   await page.getByLabel('Import challenge attempts').setInputFiles({
     name: 'old-puzzle.json',
     mimeType: 'application/json',
@@ -156,8 +159,8 @@ test('attempt export/import validates the puzzle and preserves progress on inval
   expect(
     await page.evaluate((key) => localStorage.getItem(key), challengeKey(jokerOrderChallenge)),
   ).toBe(exported);
-  const bad = JSON.parse(exported);
-  bad.current.replay.seed = 'WRONG';
+  const bad = objectValue(JSON.parse(exported));
+  objectValue(objectValue(bad.current).replay).seed = 'WRONG';
   await page.getByLabel('Import challenge attempts').setInputFiles({
     name: 'invalid.json',
     mimeType: 'application/json',
@@ -188,7 +191,7 @@ test('storage failure leaves a working, exportable attempt and phone library nav
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export attempts' }).click();
   expect(
-    decodeChallenge(jokerOrderChallenge, readFileSync((await (await download).path())!, 'utf8'))
+    decodeChallenge(jokerOrderChallenge, readFileSync(await (await download).path(), 'utf8'))
       .current.session.replay.commands,
   ).toHaveLength(1);
   await page.getByRole('button', { name: '← All challenges' }).click();
@@ -211,7 +214,7 @@ test('storage failure leaves a working, exportable attempt and phone library nav
 
 test('a delayed import cannot overwrite a newer move', async ({ page }) => {
   await page.addInitScript(() => {
-    const read = File.prototype.text;
+    const read = Reflect.get(File.prototype, 'text');
     File.prototype.text = async function () {
       if (this.name === 'delayed.json')
         await new Promise<void>((resolve) => {
@@ -224,7 +227,7 @@ test('a delayed import cannot overwrite a newer move', async ({ page }) => {
   await page.getByRole('button', { name: 'Open The last multiplier' }).click();
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export attempts' }).click();
-  const original = readFileSync((await (await download).path())!, 'utf8');
+  const original = readFileSync(await (await download).path(), 'utf8');
   await page.getByLabel('Import challenge attempts').setInputFiles({
     name: 'delayed.json',
     mimeType: 'application/json',

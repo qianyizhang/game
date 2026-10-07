@@ -1,3 +1,4 @@
+import { isMesh, isSkinnedMesh, isTexture } from '../../src/art3d/objects';
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import samples from '../../packages/dcc-workbench/assets/pose-samples.json';
@@ -10,7 +11,7 @@ export async function compareDccPoses() {
   mixer.clipAction(gltf.animations[0]).play();
   const skins: T.SkinnedMesh[] = [];
   gltf.scene.traverse((object) => {
-    if (object instanceof T.SkinnedMesh) skins.push(object);
+    if (isSkinnedMesh(object)) skins.push(object);
   });
   const evaluate = (seconds: number) => {
     mixer.setTime(seconds);
@@ -65,14 +66,13 @@ export async function compareDccPoses() {
   mixer.stopAllAction();
   mixer.uncacheRoot(gltf.scene);
   gltf.scene.traverse((object) => {
-    if (object instanceof T.Mesh) {
+    if (isMesh(object)) {
       object.geometry.dispose();
       for (const material of Array.isArray(object.material) ? object.material : [object.material]) {
-        for (const value of Object.values(material))
-          if (value instanceof T.Texture) value.dispose();
+        for (const value of Object.values(material)) if (isTexture(value)) value.dispose();
         material.dispose();
       }
-      if (object instanceof T.SkinnedMesh) object.skeleton.dispose();
+      if (isSkinnedMesh(object)) object.skeleton.dispose();
     }
   });
   return result;

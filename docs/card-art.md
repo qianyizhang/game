@@ -14,7 +14,7 @@ Paths below are relative to the repository root. Extend the existing renderer fo
 | Spire abilities                        | `src/games/spire/ui/AbilityArt.tsx` · `SilentArt.tsx`, `SilentUpgradeArt.tsx`, `SilentPrimitives.tsx`                                                    | `catalyst` base/upgrade: a recognizably related but distinct alchemy scene             |
 | Hearth creatures                       | `src/games/battlegrounds/ui/MinionArt.tsx` · `CreatureIllustrations.tsx`, `FiendIllustrations.tsx`, `ExpansionPortraits.tsx`, `NightMarketPortraits.tsx` | `Phoenix`: curved pinions, chest and trailing plumage; `Hydra`: separate neck gestures |
 | Challenges                             | `src/shared/art/ChallengeArt.tsx` · `src/app/ChallengeArtwork.tsx`, `src/app/challenge-art.css`                                                          | Three 360 × 192 plates and 64 × 64 symbols; illustrated status keeps its HTML label    |
-| Standalone export                      | `scripts/card-art-catalogue.tsx` · `scripts/export-card-art.mjs`                                                                                         | Content registry → live renderer → self-contained SVG + manifest                       |
+| Standalone export                      | `packages/workshop-tools/art/catalogue.tsx` · `export.ts`                                                                                                | Content registry → live renderer → self-contained SVG + manifest                       |
 
 Feature artwork extends the source map:
 
@@ -38,6 +38,8 @@ npm run assets:export -- test-results/art-current
 ```
 
 The scaffold accepts `card`, `plate` or `symbol`. It creates a formatted TSX component with backdrop, silhouette, depth and accent groups, calculates its shared-scene import, and refuses to overwrite a file. Draw the empty layers before integrating it. It changes no renderer, registry, stylesheet or rules automatically.
+
+All three commands resolve relative paths from the repository, even when called from another working directory. Export output must be a new directory; the default is `test-results/card-art-<UUID>/`. The old script paths remain checked compatibility entry points.
 
 The exporter produces `manifest.json`, an offline `index.html` cabinet, and one `.svg` per entry. The manifest is the current count and ID authority; tokens, statuses and curses have no upgrade export. SVGs contain intrinsic dimensions, accessible labels and resolved palette colors. Export to separate directories for before/after review. Generated exports and reviews normally belong under ignored `test-results/`.
 

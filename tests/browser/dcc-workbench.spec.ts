@@ -99,7 +99,7 @@ test('DCC exported skin reproduces Blender evaluated poses', async ({ page }, in
   await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
   const result = await page.evaluate(async () => {
     const path = '/tests/browser/dcc-roundtrip.ts';
-    const { compareDccPoses } = await import(/* @vite-ignore */ path);
+    const { compareDccPoses } = (await import(path)) as typeof import('./dcc-roundtrip');
     return compareDccPoses();
   });
   await writeFile(info.outputPath('blender-three-poses.json'), JSON.stringify(result, null, 2));

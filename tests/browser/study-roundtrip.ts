@@ -1,3 +1,4 @@
+import { isMesh, isSkinnedMesh } from '../../src/art3d/objects';
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { createStudy, disposeObject, type StudyId } from '../../src/art3d/models';
@@ -57,10 +58,10 @@ export async function compareStudyRoundtrip(id: StudyId, url: string) {
   exported.clipAction(loaded.animations[0]).play();
   const bodies: T.SkinnedMesh[] = [];
   original.traverse((node) => {
-    if (node instanceof T.SkinnedMesh) bodies.push(node);
+    if (isSkinnedMesh(node)) bodies.push(node);
   });
   const animated = [
-    ...new Set(clip.tracks.map((track) => T.PropertyBinding.parseTrackName(track.name).nodeName!)),
+    ...new Set(clip.tracks.map((track) => T.PropertyBinding.parseTrackName(track.name).nodeName)),
   ];
   let maxVertexError = 0,
     maxNodeError = 0;
@@ -122,8 +123,7 @@ export async function compareStudyRoundtrip(id: StudyId, url: string) {
       loaded.scene.updateMatrixWorld(true);
       for (const source of bodies) {
         const imported = loaded.scene.getObjectByName(source.name);
-        if (!(imported instanceof T.SkinnedMesh))
-          throw new Error(`Missing imported skin: ${source.name}`);
+        if (!isSkinnedMesh(imported)) throw new Error(`Missing imported skin: ${source.name}`);
         if (
           imported.geometry.attributes.position.count !== source.geometry.attributes.position.count
         )
@@ -169,7 +169,7 @@ export function captureStudyStructure(id: StudyId) {
   const clay = new T.MeshStandardMaterial({ color: '#8b8d85', roughness: 0.9 });
   const silhouette = new T.MeshBasicMaterial({ color: '#bbc1b6' });
   root.traverse((node) => {
-    if (node instanceof T.Mesh) {
+    if (isMesh(node)) {
       materials.set(node, node.material);
       node.material = clay;
     }
