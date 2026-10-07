@@ -24,3 +24,11 @@ Historical captures and comparison JSON remain under ignored `test-results/dcc-p
 The exporter emitted NumPy floating-point warnings. Finite numeric accessor, weight, loop and pose checks bounded the published result; they did not explain the warning. The pilot is not hand-retopologized production topology or a mobile performance benchmark. The heads are stylized, the crest sparse and the motion restrained. Construction guides do not regenerate the remeshed skin automatically; changes to procedural graphs or UVs require explicit re-baking.
 
 The original pilot also reported repository-wide formatting and Banner Bearer geometry failures. Current maintenance and application gates report their own results; this asset record makes no claim that the whole repository is green.
+
+## Maintenance migration verification — 2026-10-07
+
+The typed native/CLI migration re-exported the existing artist source without resaving it. The `.blend`, brief, GLB, authoring audit and pose samples remain byte-identical to the preceding delivery. The new receipt pins migrated code and the exact [preceding receipt](../../../packages/dcc-workbench/assets/receipts/872fbf5a08a52abb13b93d8cc92233625cc86b6faa02adf858b95add4913344f.json). Previous delivery bytes and source backups remain protected.
+
+Fresh checks passed: eight Python contract tests, seven DCC pipeline tests, 390 application/geometry tests, four seeded simulation checks and three DCC browser cases. The browser again compared 64 vertices at five times, with maximum sampled error 1.11001 × 10⁻⁶ model units. Captures and comparison JSON are under `test-results/migration-2026-10-07/typed-dcc-browser/`. Desktop, phone and clay captures were inspected; this maintenance verification does not change approval status.
+
+Four fresh native views match the preceding review's PNG headers and decompressed scanlines exactly. The evidence directory `test-results/disposable/dcc-review-20261007T112602Z-e6f9c0457f7c4dd99cdc06676bf1eda5/` is pinned against automatic pruning. The isolated builder smoke test created a separate source and valid export; it did not replace the artist source and is not evidence of byte-deterministic rebuilds.
