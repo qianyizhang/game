@@ -65,6 +65,14 @@ for (const name of studyNames) {
       .getByRole('button', { name: new RegExp(name) })
       .click();
     await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+    // Every legacy asset must still move; shared recording controls use representatives below.
+    await page.getByLabel('Animation timeline').fill('0');
+    const restPose = await page.locator('canvas').screenshot();
+    await page.getByLabel('Animation timeline').fill('0.75');
+    await expect(async () =>
+      expect((await page.locator('canvas').screenshot()).equals(restPose)).toBe(false),
+    ).toPass();
+    await page.getByLabel('Animation timeline').fill('0');
     await expect(page.getByRole('alert')).toHaveCount(0);
     await expect(page.locator('.source-art svg')).toBeVisible();
     if (
@@ -364,31 +372,8 @@ for (const name of studyNames) {
   });
 }
 
-for (const studyName of [
-  'Prowler',
-  'Wolf',
-  'Matriarch',
-  'Thornstag',
-  'Moonmoth',
-  'Bogtoad',
-  'Crocolisk',
-  'Scavenger',
-  'Guardian',
-  'Tortoise',
-  'Stormroc',
-  'Stray',
-  'Pack Caller',
-  'Cub',
-  'Amalgam',
-  'Imp',
-  'Matron',
-  'Juggler',
-  'Watcher',
-  'Herald',
-  'Patron',
-  'Squire',
-  'Banner Bearer',
-]) {
+// Shared startup policy: rigid object, skinned creature and expensive cold construction.
+for (const studyName of ['Vajra', 'Hydra', 'Banner Bearer']) {
   test(`${studyName} direct gallery link respects reduced motion`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(`/?art=3d&study=${studyName.toLowerCase().replaceAll(' ', '')}`);
@@ -409,7 +394,8 @@ for (const studyName of [
   });
 }
 
-for (const name of studyNames) {
+// Recorder/codec coverage: rigid, skinned, transparent and heavy scenes.
+for (const name of ['Vajra', 'Hydra', 'Catalyst', 'Banner Bearer']) {
   test(`${name} animation can be paused, scrubbed, and saved as a playable video`, async ({
     page,
   }, info) => {

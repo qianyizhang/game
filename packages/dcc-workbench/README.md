@@ -124,6 +124,20 @@ This is the fluent edit loop for the current source: **named control → inspect
 
 ## Modules and creation
 
+Run `npm run test:dcc:native` from the repository root after changing native authoring or
+export behavior. It uses `BLENDER_BIN`, the installed Blender app or the bundled package
+runtime, then the existing disposable-profile browser harness. On macOS the whole command
+requires approved execution outside the restricted sandbox. Ordinary Python checks remain
+sandboxed and do not replace this native gate.
+
+The gate copies the saved source into a fresh `test-results/dcc-native/edit-loop-*/source-edit/`
+directory, checks all twelve head controls at 0, 1.3, 1.5 and their restored values, and proves
+the clamping guard rejects a damaged key. It saves/reloads a Search muzzle edit, exports that
+copy and compares 64 native vertices at five times with the actual browser-loaded GLB.
+It never publishes the candidate and requires the original source, delivered GLB and receipt
+to retain their hashes. Evidence contains an editable source and is protected from disposable
+render pruning. The corresponding browser test explicitly skips without this native input.
+
 | Module                         | Interface and current reuse                                                                                                                                                            |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `blender/head_shape.py`        | Pure head-local shape offsets and three role presets. A small anatomical coordinate convention keeps muzzle, jaw and facial details aligned.                                           |

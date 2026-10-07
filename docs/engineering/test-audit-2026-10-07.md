@@ -57,6 +57,59 @@ At this slice's closeout, the complete shared gate was not green, and the full b
 
 The subsequent combined worktree review on 2026-10-07 resolved the DCC receipt mismatch and passed `npm run check`, including maintenance, 361 application/geometry cases and four simulations. Its selected gallery, DCC, comparison and shell browser run passed 88 of 89 cases; an incorrect accessible-name locator in a new comparison navigation assertion was corrected, then both comparison cases passed. All 89 selected cases are covered across those runs. Logs are under `test-results/worktree-review-2026-10-07/`. This is still a selected browser scope, not the entire browser suite.
 
+## Blender-first consolidation — 2026-10-07
+
+The user accepted the bounded follow-up and clarified that new 3D authoring is moving to
+the Blender package. [ADR 0003](decisions/0003-blender-first-authoring.md) records that
+direction. The earlier browser-cluster "keep" verdict was too broad: end-to-end scope alone
+does not justify repeating a shared behavior for every artwork.
+
+| Surface                           | Before             | After                                           | Retained failure coverage                                                                                                              |
+| --------------------------------- | ------------------ | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Legacy gallery delivery           | 29 journeys        | 29 journeys, now with per-asset scrubbed motion | Loading, visible motion, downloaded GLB validity/normals, source/export agreement where applicable, phone layout, saves and navigation |
+| Shared reduced-motion startup     | 23 journeys        | 3 representatives                               | Rigid Vajra, skinned Hydra and heavy Banner Bearer exercise the shared paused startup                                                  |
+| Shared recording                  | 29 journeys        | 4 representatives                               | Those three plus transparent Catalyst exercise actual capture, download, decoding and changing frames                                  |
+| Cub/Stray construction and motion | 6 cases in 2 files | 6 cases in one compatibility file               | Closed outward selected surfaces, valid weights, grounded supports, attached faces and anchored/moving tail                            |
+| Recorder lifecycle                | 6 cases            | 6 cases with looser scheduling expectations     | Cancellation/hidden state, render/start failure, successful output and resource release                                                |
+| Native Blender edit loop          | Ad hoc evidence    | Repeatable local `test:dcc:native` gate         | Control range, evaluated changes/restoration, clamping rejection, save/reload persistence, edited export and browser pose agreement    |
+
+The gallery browser matrix falls from **81 to 36 cases**, removing **45 repeated journeys**.
+All 29 supported assets retain their delivery and visible-motion checks. This change drops
+exhaustive per-asset recording and reduced-motion combinations deliberately; the ordinary
+gallery cases and selected representatives cover different contracts. No runtime saving is
+inferred from the case count.
+
+The [legacy compatibility file](../../src/art3d/legacy-creatures.test.ts) shares the two
+creatures' topology and weight checks, removes exact skinned-mesh/claw counts and arbitrary
+minimum sample counts, and uses a contact tolerance at the existing ground datum. It keeps
+six independently named regressions. Names and landmark coordinates remain localized
+legacy fixtures; no production rig abstraction was added for them. Other creature suites
+are retained until their own behavior review or asset migration. Artist sources and
+comparison baselines are unchanged.
+
+Temporary defect injection demonstrated rejection of a detached Cub nose, moving support
+and invalid skin weights. The injected copies were removed after the checks; their logs and
+the starting source hashes are under `test-results/testing-transition-2026-10-07/`.
+The normal-validity damaged-export check remains in the Cub browser journey.
+
+The native gate exercised all twelve controls at 0, 1.3, 1.5 and their restored values,
+checked actual evaluated mesh movement, rejected a clamped key, saved/reloaded a Search
+muzzle edit and loaded its fresh export in the browser. The published source, GLB and
+receipt retained their hashes. Its one browser case explicitly skips in ordinary runs
+without native input; that skip is not native coverage. The retained pure head mathematics
+tests remain useful fast checks but cannot replace this integration gate.
+
+Closeout verification passed `npm run check`: the maintained scope (including 14 Python
+files and 11 Python tests), 361 application/geometry cases in 62 files, and four seeded
+simulations. The final per-paw sampling adjustment also passed all six legacy cases and
+targeted lint/format checks. The selected gallery, DCC, comparison and shell browser run
+passed **44 cases**, with the native-only case explicitly skipped; `test:dcc:native`
+separately passed that case. Its maximum browser/native pose error was **9.19e-7 model
+units**, below the 1e-4 tolerance. Logs are under
+`test-results/testing-transition-2026-10-07/`; native source-copy and pose evidence is under
+`test-results/dcc-native/edit-loop-oXNTJq/source-edit/`. This verifies the selected browser
+scope and local native loop, not the entire browser suite or remote CI.
+
 ## Next bounded review
 
-For a creature cluster such as Cub/Stray, map each contact and fitting assertion to a visible failure, retain the irreducible motion regression, and replace construction-specific assertions only when a delivered-animation or matched-view check covers that failure. Investigate journey gaps before adding more fixture-restoration cases. There is no target deletion count, performance claim or unit-to-E2E ratio.
+Prioritize the next Blender asset's edit and delivery contracts. As legacy studies are replaced or removed from the UI, review their remaining construction tests for retirement alongside the replacement evidence. Investigate actual player-journey gaps before adding more fixture-restoration cases. There is no target deletion count, performance claim or unit-to-E2E ratio.

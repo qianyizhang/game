@@ -21,13 +21,23 @@ The tools package includes typed trace, SVG export/review/scaffold, comparison, 
 
 The DCC package checks its frontend and delivery CLI with typed ESLint and strict TypeScript. All native Python receives Ruff, strict mypy and pure entry-point/contract tests. Native builder smoke tests use an isolated candidate; export reads the saved artist source without resaving it. Fresh receipts pin current code and preserve preceding receipt bytes. GLB budgets, finite values, weights, loops and native pose metadata are checked before publication; browser tests independently compare evaluated Blender poses with Three.js. These checks establish technical compatibility, not aesthetic acceptance.
 
+## Native authoring gate
+
+`npm run test:dcc:native` is the local Blender edit-loop gate. It changes each head control
+in a fresh source copy, checks evaluated movement and restoration, rejects a deliberately
+clamped key, then saves/reloads an edit and exports it. The disposable-profile browser
+compares that edited export with 64 native vertices at five poses. Published source and
+delivery hashes must remain unchanged. Use approved execution outside the macOS sandbox;
+this command invokes both Blender and the repository's guarded browser harness. Native
+unavailability is blocked verification, not a passing ordinary Python/CI check.
+
 ## Geometry test budgets
 
 Vitest tests use at most two workers. Procedural geometry tests have a 15-second per-case budget; other application tests retain Vitest's five-second default. Retained geometry regressions verify connectivity, closed surfaces, skin weights, fitted motion and loop endpoints. Finite unit normals are inspected in all 29 gallery download journeys on the actual loaded GLB, with the preceding 0.0005 tolerance and a damaged-export negative control. The [test audit](test-audit-2026-10-07.md) records this replacement of the repeated source-construction checks.
 
 The budget follows the 2026-10-07 baseline: Banner Bearer construction alone measured about 5.4 seconds; the default concurrent suite reported eight five-second timeouts. A one-worker rerun passed six of those cases but still measured two Banner Bearer checks at about 5.1 seconds. Browser work overlapped those measurements. These timings justify a bounded geometry budget; they are not browser performance benchmarks. Future regressions require fresh measurements before changing these limits again.
 
-Each model's browser export case owns its 60-second budget, page and evidence directory. It verifies actual GLB contents and applicable source/export deformation comparisons, phone layout, saved-game bytes, return focus and re-entry. A single timeout no longer prevents later models from receiving their checks. The separate review captures and recording cases retain their own assertions.
+Each model's browser export case owns its 60-second budget, page and evidence directory. It verifies visible motion, actual GLB contents and applicable source/export deformation comparisons, phone layout, saved-game bytes, return focus and re-entry. A single timeout no longer prevents later models from receiving their checks. Shared reduced-motion startup uses three representatives (Vajra, Hydra, Banner Bearer); recording uses four (those three plus transparent Catalyst). The separate review captures retain their own assertions.
 
 ## Artifact inventory limits
 

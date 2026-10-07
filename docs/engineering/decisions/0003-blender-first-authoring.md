@@ -1,0 +1,3 @@
+# Blender-first 3D authoring
+
+Accepted by the user on 2026-10-07: move new 3D asset authoring toward the Blender/DCC package to support fluent editing of maintainable artist sources. TypeScript procedural studies remain a supported gallery and comparison surface during the transition, but new authoring and verification investment targets native edit/save/reload/export behavior. This accepts a separate local Blender runtime and native integration gate in exchange for editable sources; it does not migrate or delete existing artwork, weaken visual review, or make a delivery receipt evidence of aesthetic approval.

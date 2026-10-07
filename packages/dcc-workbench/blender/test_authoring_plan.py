@@ -21,6 +21,7 @@ class AuthoringPlanTests(unittest.TestCase):
             "author_components",
             "head_components",
             "scale_components",
+            "verify_edit_loop",
         ):
             importlib.import_module(name)
         self.assertNotIn("bpy", sys.modules)

@@ -132,6 +132,13 @@ For a side-by-side comparison:
 
 The long-term direction is artwork that can be created and edited fluently. Keep the editable source and its delivered model distinct.
 
+New 3D authoring develops in the Blender/DCC package. Existing TypeScript-built studies
+remain supported comparison and compatibility assets while available in the gallery;
+their construction patterns are not the template for new assets. Preserve their sources
+and accepted baselines as subjects move to Blender. The [testing policy](../engineering/testing.md#blender-authoring-and-legacy-compatibility)
+owns coverage and retirement rules. Neither procedural geometry checks nor native
+edit/export checks establish visual quality; the review order above still applies.
+
 - **Use semantic controls where parts must move together.** A muzzle edit should carry fitted lips, teeth and nostrils; avoid unrelated primitive sliders that break anatomy. Name assemblies by their role, and preserve direct mesh editing beneath the controls.
 - **Extract from actual variation.** The Hydra’s three head roles share one small cranial interface. Adapt that interface when another subject needs it before inventing a universal creature framework.
 - **Keep editing and regeneration explicit.** Export reads the saved artist source. Regeneration creates a fresh candidate, preserves a backup and states which manual edits it replaces. A construction guide is not a live dependency unless it actually drives the geometry.
