@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { objectValue } from '../shared/json';
 import { it, expect } from 'vitest';
 import { mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
@@ -7,9 +8,11 @@ import { execFileSync, spawnSync } from 'node:child_process';
 
 it('produces identical gameplay across worker counts and audits metrics against reconstructed decisions', () => {
   const directory = mkdtempSync(resolve(tmpdir(), 'recruitment-harness-test-'));
-  const cli = 'scripts/hearth-recruitment-experiment.mjs';
+  const cli = fileURLToPath(
+    new URL('../../scripts/hearth-recruitment-experiment.mjs', import.meta.url),
+  );
   const run = (...args: string[]) =>
-    execFileSync(process.execPath, [cli, ...args], { encoding: 'utf8' });
+    execFileSync(process.execPath, [cli, ...args], { encoding: 'utf8', cwd: directory });
   try {
     const serial = resolve(directory, 'serial'),
       parallel = resolve(directory, 'parallel');
@@ -37,6 +40,20 @@ it('produces identical gameplay across worker counts and audits metrics against 
     expect(
       objectValue(JSON.parse(readFileSync(resolve(serial, 'audit/audit.json'), 'utf8'))).lobbies,
     ).toBe(4);
+    const manifestPath = resolve(parallel, 'manifest.json');
+    const manifestBytes = readFileSync(manifestPath, 'utf8');
+    const manifest = objectValue(JSON.parse(manifestBytes));
+    const pins = objectValue(manifest.sourceDigests);
+    expect(pins['packages/workshop-tools/hearth/recruitment-worker.ts']).toMatch(/^[0-9a-f]{64}$/);
+    pins['packages/workshop-tools/hearth/recruitment-worker.ts'] = '0'.repeat(64);
+    writeFileSync(manifestPath, JSON.stringify(manifest));
+    const stale = spawnSync(process.execPath, [cli, 'audit', parallel, '1'], {
+      encoding: 'utf8',
+      cwd: directory,
+    });
+    expect(stale.status).not.toBe(0);
+    expect(stale.stderr).toContain('Frozen source mismatch');
+    writeFileSync(manifestPath, manifestBytes);
     const receipt = resolve(parallel, files[0].replace('.replay.json', '.receipt.json'));
     const data = objectValue(JSON.parse(readFileSync(receipt, 'utf8')));
     const metrics = objectValue(data.metrics);
@@ -46,11 +63,13 @@ it('produces identical gameplay across worker counts and audits metrics against 
     writeFileSync(receipt, JSON.stringify(data));
     const failure = spawnSync(process.execPath, [cli, 'audit', parallel, '1'], {
       encoding: 'utf8',
+      cwd: directory,
     });
     expect(failure.status).not.toBe(0);
     expect(failure.stderr).toContain('metric summary mismatch');
     const overwrite = spawnSync(process.execPath, [cli, 'smoke', serial, '1'], {
       encoding: 'utf8',
+      cwd: directory,
     });
     expect(overwrite.status).not.toBe(0);
     expect(overwrite.stderr).toContain('EEXIST');

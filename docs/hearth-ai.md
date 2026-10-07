@@ -70,7 +70,7 @@ npm run experiment:hearth -- development test-results/ai/my-development
 npm run experiment:hearth -- evaluation test-results/ai/my-evaluation
 ```
 
-The runner freezes its manifest before executing. Five development seeds and twenty separate reserved evaluation seeds rotate the five heroes; every seed/hero runs both policies. The default command budget is 2,000 per episode. Configuration is checked in at `scripts/hearth-experiment.mjs`.
+The runner freezes its manifest before executing. Five development seeds and twenty separate reserved evaluation seeds rotate the five heroes; every seed/hero runs both policies. The default command budget is 2,000 per episode. Configuration is checked in at `packages/workshop-tools/hearth/experiment.ts`; the original script is a compatibility entry point.
 
 Each output directory contains:
 

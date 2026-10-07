@@ -21,8 +21,6 @@
     "card-art-catalogue.tsx",
     "compare-playtests.mjs",
     "solve-challenges.mjs",
-    "hearth-agent.mjs",
-    "hearth-arena-agent.mjs",
-    "hearth-runtime.mjs"
+    "hearth*.mjs"
   ]
 }
