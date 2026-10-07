@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Repository checks and explicitly scoped artifact retention",
   "scripts": {
-    "test": "node --test *.test.mjs trace/*.test.ts art/*.test.ts experiments/*.test.ts",
+    "test": "node --test *.test.mjs trace/*.test.ts art/*.test.ts experiments/*.test.ts hearth/*.test.ts",
     "typecheck": "tsc -p tsconfig.json",
     "lint": "eslint . --max-warnings=0",
     "maintenance": "node cli.mjs"

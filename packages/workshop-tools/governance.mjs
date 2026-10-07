@@ -13,9 +13,10 @@ export function managedSource(path) {
     /^packages\/dcc-workbench\/src\/[^/]+\.tsx?$/.test(path) ||
     /^packages\/workshop-tools\/.*\.(mjs|tsx?)$/.test(path) ||
     path === 'scripts/trace-visualizer/build.mjs' ||
-    /^scripts\/(export-card-art|review-card-art|scaffold-card-art|compare-playtests|solve-challenges|hearth-agent|hearth-arena-agent|hearth-runtime)\.mjs$/.test(
+    /^scripts\/(export-card-art|review-card-art|scaffold-card-art|compare-playtests|solve-challenges)\.mjs$/.test(
       path,
     ) ||
+    /^scripts\/hearth[^/]*\.mjs$/.test(path) ||
     path === 'scripts/card-art-catalogue.tsx' ||
     /^packages\/dcc-workbench\/blender\/(render_review|review_plan|test_review_plan)\.py$/.test(
       path,

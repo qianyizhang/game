@@ -5,15 +5,7 @@
     "packages/dcc-workbench/blender/build_hydra.py",
     "packages/dcc-workbench/blender/export_asset.py",
     "packages/dcc-workbench/pipeline.mjs",
-    "packages/dcc-workbench/pipeline.test.mjs",
-    "scripts/hearth-arena-audit.mjs",
-    "scripts/hearth-arena-experiment.mjs",
-    "scripts/hearth-experiment.mjs",
-    "scripts/hearth-recruitment-experiment.mjs",
-    "scripts/hearth-recruitment-inspect.mjs",
-    "scripts/hearth-recruitment-pool.mjs",
-    "scripts/hearth-recruitment-runtime.mjs",
-    "scripts/hearth-recruitment-worker.mjs"
+    "packages/dcc-workbench/pipeline.test.mjs"
   ],
   "legacyDocs": [
     "docs/architecture.md",
