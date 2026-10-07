@@ -1,3 +1,4 @@
+import { objectValue } from '../shared/json';
 import { expect, it } from 'vitest';
 import { spawn } from 'node:child_process';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
@@ -6,6 +7,16 @@ import { join } from 'node:path';
 import { createInterface } from 'node:readline';
 import { decideRecruitment } from '../games/battlegrounds/ai/recruitment-policy';
 import { arenaSession, type ArenaFrame } from '../games/battlegrounds/application/arena';
+
+// This test drives the local protocol implementation and asserts its declared reply fields.
+interface Reply {
+  event?: string;
+  ok?: boolean;
+  id?: string;
+  error?: string;
+  frame: ArenaFrame;
+  catalogue: { heroes: { id: string }[] };
+}
 
 it('binds an external controller to seat 6, hides styles, and records a complete lobby', async () => {
   const root = await mkdtemp(join(tmpdir(), 'hearth-arena-protocol-'));
@@ -31,7 +42,7 @@ it('binds an external controller to seat 6, hides styles, and records a complete
     expect(line.value).not.toContain('SECRET-ARENA-PROTOCOL');
     expect(line.value).not.toContain('"rng"');
     expect(line.value).not.toContain('"style":');
-    return JSON.parse(line.value);
+    return JSON.parse(line.value) as Reply;
   };
   const request = (value: unknown) => {
     child.stdin.write(JSON.stringify(value) + '\n');
@@ -66,9 +77,9 @@ it('binds an external controller to seat 6, hides styles, and records a complete
     const replay = arenaSession.decode(await readFile(join(output, 'replay.json'), 'utf8'));
     expect(new Set(replay.state.players.map((p) => p.placement)).size).toBe(8);
     expect(replay.state.players[6].placement).toBe(frame.observation.self.placement);
-    expect(JSON.parse(await readFile(join(output, 'receipt.json'), 'utf8')).replayVerified).toBe(
-      true,
-    );
+    expect(
+      objectValue(JSON.parse(await readFile(join(output, 'receipt.json'), 'utf8'))).replayVerified,
+    ).toBe(true);
   } finally {
     lines.close();
     child.stdin.end();

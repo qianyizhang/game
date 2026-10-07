@@ -1,3 +1,4 @@
+import { isMesh, isSkinnedMesh, isTexture } from './objects';
 import * as T from 'three';
 import { spiral, vajra } from './newStudies';
 import { hydra } from './hydra';
@@ -990,7 +991,7 @@ export function createStudy(id: StudyId) {
   const geometries = new Set<T.BufferGeometry>();
   const normal = new T.Vector3();
   root.traverse((object) => {
-    if (object instanceof T.Mesh && !geometries.has(object.geometry)) {
+    if (isMesh(object) && !geometries.has(object.geometry)) {
       geometries.add(object.geometry);
       const normals = object.geometry.getAttribute('normal');
       if (normals)
@@ -1022,15 +1023,15 @@ export function disposeObject(root: T.Object3D) {
     textures = new Set<T.Texture>(),
     skeletons = new Set<T.Skeleton>();
   root.traverse((object) => {
-    if (object instanceof T.SkinnedMesh) skeletons.add(object.skeleton);
-    if (object instanceof T.Mesh) {
+    if (isSkinnedMesh(object)) skeletons.add(object.skeleton);
+    if (isMesh(object)) {
       geometries.add(object.geometry);
       for (const mat of Array.isArray(object.material) ? object.material : [object.material])
         materials.add(mat);
     }
   });
   materials.forEach((mat) => {
-    for (const value of Object.values(mat)) if (value instanceof T.Texture) textures.add(value);
+    for (const value of Object.values(mat)) if (isTexture(value)) textures.add(value);
     mat.dispose();
   });
   textures.forEach((texture) => texture.dispose());

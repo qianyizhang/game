@@ -512,12 +512,7 @@ export function crocolisk(root: T.Group) {
     const normal = new T.Vector3(side * 0.75, 0.38, 0.45).normalize();
     const center = new T.Vector3(side * 0.177, 0.111, 0.003);
     let s = 0;
-    while (
-      skull(...(center.clone().addScaledVector(normal, s).toArray() as [number, number, number])) <
-        0 &&
-      s < 0.2
-    )
-      s += 0.002;
+    while (skull(...center.clone().addScaledVector(normal, s).toArray()) < 0 && s < 0.2) s += 0.002;
     eye.position.copy(center.addScaledVector(normal, s - 0.006));
     eye.quaternion.setFromUnitVectors(new T.Vector3(0, 0, 1), normal);
     face.add(eye);

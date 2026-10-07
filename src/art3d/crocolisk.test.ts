@@ -1,3 +1,4 @@
+import { isMesh, isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -68,8 +69,8 @@ describe('Ancient Crocolisk structure and fitted motion', () => {
       const toes: T.Mesh[] = [],
         armor: T.SkinnedMesh[] = [];
       root.traverse((node) => {
-        if (node instanceof T.Mesh && node.name.startsWith('Crocolisk_Toe_')) toes.push(node);
-        if (node instanceof T.SkinnedMesh && node.name.includes('Scute_')) armor.push(node);
+        if (isMesh(node) && node.name.startsWith('Crocolisk_Toe_')) toes.push(node);
+        if (isSkinnedMesh(node) && node.name.includes('Scute_')) armor.push(node);
       });
       expect(toes).toHaveLength(18);
       expect(armor.length).toBeGreaterThan(30);

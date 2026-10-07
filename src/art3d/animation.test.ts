@@ -1,3 +1,4 @@
+import { isMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject, type StudyId } from './models';
@@ -44,7 +45,7 @@ describe('portable study animations', () => {
         expect(clip.tracks.length).toBeGreaterThanOrEqual(['spiral', 'vajra'].includes(id) ? 1 : 3);
         for (const track of clip.tracks) {
           const binding = T.PropertyBinding.parseTrackName(track.name);
-          expect(root.getObjectByName(binding.nodeName!)).toBeDefined();
+          expect(root.getObjectByName(binding.nodeName)).toBeDefined();
           const size = track.getValueSize();
           expect(Array.from(track.values).every(Number.isFinite)).toBe(true);
           expect(Array.from(track.values.slice(0, size))).toEqual(
@@ -88,7 +89,7 @@ describe('portable study animations', () => {
         expect(clip.tracks[0].name).toMatch(/_Display.quaternion$/);
         const meshes: T.Mesh[] = [];
         root.traverse((node) => {
-          if (node instanceof T.Mesh) meshes.push(node);
+          if (isMesh(node)) meshes.push(node);
         });
         root.updateMatrixWorld(true);
         const localTransforms = meshes.map((mesh) => mesh.matrix.clone());

@@ -1,3 +1,4 @@
+import { isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -104,7 +105,7 @@ describe('Imp Matron living assembly', () => {
       expect(hair.geometry.getAttribute('color')).toBeUndefined();
       let count = 0;
       root.traverse((o) => {
-        if (!(o instanceof T.SkinnedMesh)) return;
+        if (!isSkinnedMesh(o)) return;
         count++;
         const w = o.geometry.attributes.skinWeight,
           j = o.geometry.attributes.skinIndex;

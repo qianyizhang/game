@@ -1,3 +1,4 @@
+import { isMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -49,7 +50,7 @@ describe('Storm Roc fitted wings, body and grip', () => {
       const meshes: T.Mesh[] = [];
       root.traverse((o) => {
         if (
-          o instanceof T.Mesh &&
+          isMesh(o) &&
           /ContinuousPlumage|WingLeading|Primary_|Secondary_|Rectrix_/.test(o.name) &&
           !o.name.endsWith('_FineShaft')
         )
@@ -100,7 +101,7 @@ describe('Storm Roc fitted wings, body and grip', () => {
       const support = root.getObjectByName('Stormroc_RockAndGrip')!,
         fixed: T.Object3D[] = [];
       support.traverse((o) => {
-        if (o instanceof T.Mesh) fixed.push(o);
+        if (isMesh(o)) fixed.push(o);
       });
       const rest = fixed.map((o) => o.matrixWorld.clone());
       expect(fixed.filter((o) => /Claw_/.test(o.name))).toHaveLength(8);

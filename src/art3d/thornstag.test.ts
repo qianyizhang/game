@@ -1,3 +1,4 @@
+import { isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -34,7 +35,7 @@ describe('living Thornstag support and skin', () => {
       expect([...edges.values()].filter((count) => count !== 2)).toHaveLength(0);
       const skins: T.SkinnedMesh[] = [];
       root.traverse((node) => {
-        if (node instanceof T.SkinnedMesh) skins.push(node);
+        if (isSkinnedMesh(node)) skins.push(node);
       });
       for (const skin of skins) {
         const weights = skin.geometry.getAttribute('skinWeight');

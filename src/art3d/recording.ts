@@ -49,7 +49,14 @@ export async function recordLoop(
         } catch (stopError) {
           error ??= stopError;
         }
-        if (error) reject(error);
+        if (error)
+          reject(
+            error instanceof Error
+              ? error
+              : new Error(typeof error === 'string' ? error : 'Video recording failed.', {
+                  cause: error,
+                }),
+          );
         else if (!chunks.length)
           reject(new Error('No video frames were recorded. Please try again.'));
         else resolve(new Blob(chunks, { type: 'video/webm' }));

@@ -1,3 +1,4 @@
+import { objectValue } from '../shared/json';
 import { it, expect } from 'vitest';
 import { mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -26,17 +27,22 @@ it('produces identical gameplay across worker counts and audits metrics against 
           .trim()
           .split('\n')
           .map((line) => {
-            const row = JSON.parse(line);
+            const row = objectValue(JSON.parse(line));
             delete row.elapsedMs;
             return row;
           });
       expect(clean(resolve(serial, trace))).toEqual(clean(resolve(parallel, trace)));
     }
     run('audit', serial, '2');
-    expect(JSON.parse(readFileSync(resolve(serial, 'audit/audit.json'), 'utf8')).lobbies).toBe(4);
+    expect(
+      objectValue(JSON.parse(readFileSync(resolve(serial, 'audit/audit.json'), 'utf8'))).lobbies,
+    ).toBe(4);
     const receipt = resolve(parallel, files[0].replace('.replay.json', '.receipt.json'));
-    const data = JSON.parse(readFileSync(receipt, 'utf8'));
-    data.metrics.changedChoices++;
+    const data = objectValue(JSON.parse(readFileSync(receipt, 'utf8')));
+    const metrics = objectValue(data.metrics);
+    if (typeof metrics.changedChoices !== 'number')
+      throw new Error('Expected numeric changedChoices');
+    metrics.changedChoices++;
     writeFileSync(receipt, JSON.stringify(data));
     const failure = spawnSync(process.execPath, [cli, 'audit', parallel, '1'], {
       encoding: 'utf8',

@@ -1,3 +1,4 @@
+import { isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -12,7 +13,7 @@ describe('living Hydra deformation', () => {
     try {
       const skins: T.SkinnedMesh[] = [];
       root.traverse((node) => {
-        if (node instanceof T.SkinnedMesh) skins.push(node);
+        if (isSkinnedMesh(node)) skins.push(node);
       });
       expect(skins.length).toBeGreaterThan(3);
       for (const mesh of skins) {

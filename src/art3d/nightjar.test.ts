@@ -1,3 +1,4 @@
+import { isMesh, isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { nightjar, nightjarMotionTracks } from './nightjar';
@@ -13,12 +14,12 @@ function fixture() {
 function dispose(root: T.Group) {
   const materials = new Set<T.Material>();
   root.traverse((node) => {
-    if (node instanceof T.Mesh) {
+    if (isMesh(node)) {
       node.geometry.dispose();
       for (const mat of Array.isArray(node.material) ? node.material : [node.material])
         materials.add(mat);
     }
-    if (node instanceof T.SkinnedMesh) node.skeleton.dispose();
+    if (isSkinnedMesh(node)) node.skeleton.dispose();
   });
   for (const mat of materials) {
     if (mat instanceof T.MeshStandardMaterial) {
@@ -76,7 +77,7 @@ describe('living Nightjar construction regressions', () => {
       const support = root.getObjectByName('Nightjar_AnchoredRoost')!;
       const meshes: T.Mesh[] = [];
       support.traverse((node) => {
-        if (node instanceof T.Mesh) meshes.push(node);
+        if (isMesh(node)) meshes.push(node);
       });
       const original = meshes.map((node) => node.matrixWorld.clone());
       const branch = root.getObjectByName('Nightjar_NaturalThinBranch')!;

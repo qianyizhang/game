@@ -3,7 +3,6 @@ import { recordLoop } from './recording';
 
 let frames: Map<number, FrameRequestCallback>;
 let nextFrame: number;
-let recorder: FakeRecorder;
 let startError: Error | undefined;
 let documentEvents: EventTarget & { hidden: boolean };
 const stopTrack = vi.fn();
@@ -11,6 +10,7 @@ const captureStream = vi.fn(() => ({ getTracks: () => [{ stop: stopTrack }] }));
 const canvas = { captureStream } as unknown as HTMLCanvasElement;
 
 class FakeRecorder {
+  static instance: FakeRecorder;
   static isTypeSupported() {
     return true;
   }
@@ -19,7 +19,7 @@ class FakeRecorder {
   onerror: (() => void) | null = null;
   ondataavailable: ((event: { data: Blob }) => void) | null = null;
   constructor() {
-    recorder = this;
+    FakeRecorder.instance = this;
   }
   start() {
     if (startError) throw startError;
@@ -63,7 +63,7 @@ afterEach(() => {
 
 it('refuses cancelled or hidden captures before rendering or opening a stream', async () => {
   const controller = new AbortController();
-  const render = vi.fn();
+  const render = vi.fn<(seconds: number) => void>();
   controller.abort();
   await expect(recordLoop(canvas, render, 6, controller.signal)).rejects.toThrow('cancelled');
   documentEvents.hidden = true;
@@ -76,7 +76,7 @@ it('refuses cancelled or hidden captures before rendering or opening a stream', 
 
 it.each(['abort', 'hide'] as const)('stops drawing immediately on %s', async (reason) => {
   const controller = new AbortController();
-  const render = vi.fn();
+  const render = vi.fn<(seconds: number) => void>();
   const pending = recordLoop(canvas, render, 6, controller.signal);
   const rejected = expect(pending).rejects.toThrow('cancelled');
   if (reason === 'abort') controller.abort();
@@ -88,7 +88,7 @@ it.each(['abort', 'hide'] as const)('stops drawing immediately on %s', async (re
   frame(100);
   expect(render).toHaveBeenCalledTimes(1);
   await rejected;
-  expect(recorder.stop).toHaveBeenCalledTimes(1);
+  expect(FakeRecorder.instance.stop).toHaveBeenCalledTimes(1);
   expect(stopTrack).toHaveBeenCalledTimes(1);
 });
 
@@ -105,7 +105,7 @@ it('rejects render failures and releases the recorder and stream', async () => {
   expect(() => frame(100)).not.toThrow();
   await rejected;
   expect(frames.size).toBe(0);
-  expect(recorder.stop).toHaveBeenCalledTimes(1);
+  expect(FakeRecorder.instance.stop).toHaveBeenCalledTimes(1);
   expect(stopTrack).toHaveBeenCalledTimes(1);
 });
 
@@ -122,7 +122,7 @@ it('removes lifecycle listeners when the recorder cannot start', async () => {
 });
 
 it('returns a video and releases all resources after the final frame', async () => {
-  const render = vi.fn();
+  const render = vi.fn<(seconds: number) => void>();
   const pending = recordLoop(canvas, render, 6, new AbortController().signal);
   frame(100);
   frame(3100);

@@ -606,7 +606,7 @@ function grip(root: T.Group, index: number, material: T.Material) {
       {
         step,
         origin: bounds.min.toArray(),
-        cells: size.toArray().map((n) => Math.ceil(n / step)) as [number, number, number],
+        cells: size.toArray().map((n) => Math.ceil(n / step)),
       },
       () => new T.Color('#b89e81'),
     ),

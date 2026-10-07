@@ -1,3 +1,4 @@
+import { isMesh } from './objects';
 import { useEffect, useRef, useState } from 'react';
 import * as T from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -99,7 +100,7 @@ export function StudyViewer({
     };
     corners(new T.Box3(new T.Vector3(-1.35, -0.016, -1.35), new T.Vector3(1.35, 0.11, 1.35)));
     asset.traverse((object) => {
-      if (object instanceof T.Mesh) {
+      if (isMesh(object)) {
         object.geometry.computeBoundingBox();
         corners(object.geometry.boundingBox!, object.matrixWorld);
       }
@@ -312,7 +313,7 @@ export function StudyViewer({
         if (!previous || previous.seekVersion !== value.seekVersion) mixer.setTime(value.seek);
         explodeStudy(asset, value.exploded ? 1 : 0);
         asset.traverse((object) => {
-          if (object instanceof T.Mesh) {
+          if (isMesh(object)) {
             const materials = Array.isArray(object.material) ? object.material : [object.material];
             for (const material of materials)
               if (material instanceof T.MeshStandardMaterial) material.wireframe = value.wireframe;
