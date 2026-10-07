@@ -21,6 +21,7 @@
     "card-art-catalogue.tsx",
     "compare-playtests.mjs",
     "solve-challenges.mjs",
-    "hearth*.mjs"
+    "hearth*.mjs",
+    "../eslint.config.mjs"
   ]
 }
