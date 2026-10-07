@@ -12,9 +12,11 @@ Blindside and Last Hearth use original content names. Slay the Spire uses origin
 
 ## Play locally
 
-Use a modern Node.js installation (the pinned Vite release requires Node 20.19+ or 22.12+).
+Use the pinned Node 24 LTS and npm versions; `.nvmrc` and `.node-version` identify the exact release. Maintenance checks also use Python 3.12 through `uv`.
 
 ```sh
+nvm install
+nvm use
 npm ci
 npm run dev
 ```
@@ -30,6 +32,8 @@ Open the local URL printed by Vite. Gameplay needs no account, backend, remote a
 Keyboard-operable buttons/selects and responsive layouts support desktop and phone. Wide hands and warbands scroll within their own panels. Desktop is the primary design target.
 
 ## Learn and modify
+
+The [documentation home](docs/README.md) groups guides, engineering, art and research. [Maintenance governance](docs/engineering/maintenance.md) defines the current check coverage, migration boundary and document lifecycle.
 
 Start with [architecture](docs/architecture.md), then [make a mod](docs/modding.md). Each game has its own rules, typed content, application session and UI under `src/games/`. Domain code runs without React or a browser; interfaces submit commands and render authoritative results. Shared utilities handle seeded randomness, replay envelopes, presentation clocks, content validation and local evidence; each game keeps its own rules and observations.
 
@@ -88,3 +92,7 @@ Simulations write ignored evidence under `test-results/simulation/`, `test-resul
 The [Night Market expansion](docs/night-market.md) adds new Joker and recruit builds, illustrated shop items and twelve distinct Silent upgrade scenes. Blindside uses rules v4; Hearth now uses v6; Spire remains v3.
 
 The [tavern spells expansion](docs/tavern-spells.md) adds buy/hold/cast decisions, delayed income, permanent buffs and shop manipulation in Classic and Mixed Rivals. Current saves use Hearth v6 / arena v2; historical AI experiments retain their explicit v5/v1 codecs and frozen policies.
+
+## DCC workbench
+
+The private [`@card-workshop/dcc-workbench`](packages/dcc-workbench/README.md) package pilots a Blender authoring pipeline with Briar Hydra: concept brief → editable scene → animated GLB → browser inspection. Open **DCC workbench** from a game table or use `/?workbench=dcc`. Run `npm run dcc -- doctor` for Blender discovery and `npm run dcc -- verify` to check the published source/asset receipt. Blender is needed for authoring, not for viewing the delivered asset.

@@ -1,0 +1,13 @@
+{
+  "name": "@card-workshop/tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Repository checks and explicitly scoped artifact retention",
+  "scripts": {
+    "test": "node --test *.test.mjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint . --max-warnings=0",
+    "maintenance": "node cli.mjs"
+  }
+}

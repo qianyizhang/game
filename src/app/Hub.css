@@ -28,3 +28,15 @@
   box-shadow: 0 6px 24px #0006;
   font-size: 12px;
 }
+
+.dcc-workbench-entry {
+  position: fixed;
+  right: 20px;
+  bottom: 65px;
+  z-index: 30;
+  background: #21383a;
+  color: #e1dac2;
+  border: 1px solid #789083;
+  box-shadow: 0 6px 24px #0006;
+  font-size: 12px;
+}

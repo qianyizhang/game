@@ -3,3 +3,11 @@ dist
 test-results
 playwright-report
 package-lock.json
+packages/dcc-workbench/.runtime
+packages/dcc-workbench/assets
+.agents/skills
+.venv
+.work
+.mypy_cache
+.ruff_cache
+uv.lock

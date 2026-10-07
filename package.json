@@ -11,7 +11,7 @@
     "test:watch": "vitest",
     "test:trace": "node --test scripts/trace-visualizer/*.test.mjs",
     "test:browser": "playwright test",
-    "check": "npm run format:check && npm run test && npm run test:trace && npm run build",
+    "check": "npm run check:maintenance && npm run format:check && npm run test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "playtest": "vitest run --config vitest.playtest.config.ts",
@@ -21,7 +21,16 @@
     "playtest:compare": "node scripts/compare-playtests.mjs",
     "engine:challenges": "node scripts/solve-challenges.mjs",
     "engine:hearth": "node scripts/hearth-agent.mjs",
-    "experiment:hearth": "node scripts/hearth-experiment.mjs"
+    "experiment:hearth": "node scripts/hearth-experiment.mjs",
+    "dcc": "node packages/dcc-workbench/pipeline.mjs",
+    "test:dcc": "node --test packages/dcc-workbench/pipeline.test.mjs",
+    "maintenance": "node packages/workshop-tools/cli.mjs",
+    "lint:tools": "eslint packages/workshop-tools packages/dcc-workbench/src eslint.config.mjs --max-warnings=0",
+    "typecheck": "tsc --noEmit && npm run typecheck --workspaces --if-present",
+    "test:tools": "npm run test --workspace @card-workshop/tools",
+    "check:python": "uv run --locked ruff check && uv run --locked ruff format --check && uv run --locked mypy && uv run --locked python -m unittest discover -s packages/dcc-workbench/blender -p \"test_*.py\"",
+    "format:maintenance": "prettier --check packages/workshop-tools packages/dcc-workbench/README.md packages/dcc-workbench/src packages/dcc-workbench/package.json packages/dcc-workbench/tsconfig.json docs/README.md docs/guide docs/engineering docs/art maintenance .github AGENTS.md package.json eslint.config.mjs",
+    "check:maintenance": "npm run format:maintenance && npm run lint:tools && npm run typecheck && npm run check:python && npm run test:tools && npm run test:trace && npm run test:dcc && npm run maintenance -- check && npm run build"
   },
   "dependencies": {
     "react": "19.3.0",
@@ -29,15 +38,28 @@
     "three": "0.186.1"
   },
   "devDependencies": {
+    "@eslint/js": "10.0.1",
     "@playwright/test": "1.63.0",
-    "@types/node": "26.6.4",
+    "@types/node": "24.19.1",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@types/three": "0.186.0",
     "@vitejs/plugin-react": "6.1.1",
+    "eslint": "10.12.0",
+    "globals": "17.13.0",
     "prettier": "3.9.9",
-    "typescript": "7.0.2",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.1",
     "vite": "8.3.2",
     "vitest": "4.1.11"
-  }
+  },
+  "workspaces": [
+    "packages/dcc-workbench",
+    "packages/workshop-tools"
+  ],
+  "engines": {
+    "node": ">=24.21.0 <25",
+    "npm": ">=11.19.0 <12"
+  },
+  "packageManager": "npm@11.19.0"
 }
