@@ -49,7 +49,143 @@
       "finding": "Functional gallery checks passed. The next user request challenged the inflated forms.",
       "lesson": "A working renderer establishes that an object can be viewed and exported; it does not establish its artistic quality.",
       "capture": "art3d-before-animation",
-      "source": null
+      "source": null,
+      "id": "episode-01",
+      "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+      "anchorRef": {
+        "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+        "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+        "event": "msg_06dca88b921ea10b016ac47d9bd06887d0aba4ed3c3d2a9ae9",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+          "event": "01a10f83-91cb-7072-9398-be41dfa086cb",
+          "role": "request"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+          "event": "exec-10c515b8-6d27-4d76-8fd0-d2e9d6cebc1a",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+          "event": "exec-2cfa5468-c1e1-4fd3-92e6-983ca4605e8a",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+          "event": "exec-329c72d2-da12-40b9-ace9-7d5d68f48bad",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+          "event": "exec-18230794-0829-4367-804d-f0d6140bf7dc",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+          "event": "exec-46fe12c2-4f1c-4f0c-91ec-7bc6975ec4b3",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+          "event": "exec-5434efb7-217c-4ca4-b7bc-01cb3ad2b4f5",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+          "event": "msg_06dca88b921ea10b016ac47d9bd06887d0aba4ed3c3d2a9ae9",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "01a10fa7-fef0-7f40-997f-20d9494efb14",
+          "role": "feedback"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "role": "maker",
+          "contribution": "Construction and rendered review.",
+          "evidence": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+              "event": "msg_06dca88b921ea10b016ac47d9bd06887d0aba4ed3c3d2a9ae9",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [],
+      "artifactEvidence": {
+        "nightjar": {
+          "producedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+              "event": "exec-10c515b8-6d27-4d76-8fd0-d2e9d6cebc1a",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+              "event": "exec-329c72d2-da12-40b9-ace9-7d5d68f48bad",
+              "role": "inspection"
+            }
+          ]
+        },
+        "phoenix": {
+          "producedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+              "event": "exec-10c515b8-6d27-4d76-8fd0-d2e9d6cebc1a",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+              "event": "exec-2cfa5468-c1e1-4fd3-92e6-983ca4605e8a",
+              "role": "inspection"
+            }
+          ]
+        },
+        "catalyst": {
+          "producedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+              "event": "exec-10c515b8-6d27-4d76-8fd0-d2e9d6cebc1a",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10f83-89f1-7f92-a85d-a853ed80c117",
+              "event": "exec-18230794-0829-4367-804d-f0d6140bf7dc",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Less balloon-like; add motion",
@@ -59,7 +195,155 @@
       "change": "Tapered forms, thin feather vanes and material textures replaced rounded masses. Animation clips and downloadable loops were added.",
       "finding": "The next request still described the result as a doodle.",
       "lesson": "Adding detail and motion did not settle the design problem.",
-      "capture": "art3d-polish-before"
+      "capture": "art3d-polish-before",
+      "id": "episode-02",
+      "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+      "anchorRef": {
+        "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+        "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+        "event": "msg_06dca88b921ea10b016ac488b24ebc87d0b96f5e70013bda75",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "01a10fa7-fef0-7f40-997f-20d9494efb14",
+          "role": "request"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "exec-2771778c-c493-4bfe-9ec4-075e840fae91",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "exec-8fe24828-0ff4-49ea-a1d9-e4454554bc4d",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "msg_06dca88b921ea10b016ac4872db77487d0a896ba40b3222c82",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "msg_06dca88b921ea10b016ac487cdbc4c87d08749d36343e2e18c",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "exec-feead0b8-9cbe-4a3d-a9d1-4996457466db",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "exec-ba386231-8e44-4698-8e0a-1ea2d43c1a9f",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "exec-069dd6d3-fc11-4b4b-8106-f2aedbc1cb3f",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "exec-44c61e90-72ce-42ff-bd23-8eb80bb057a6",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+          "event": "msg_06dca88b921ea10b016ac488b24ebc87d0b96f5e70013bda75",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+          "event": "01a10fc2-ba98-7333-98af-88103e742942",
+          "role": "feedback"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "role": "maker",
+          "contribution": "Construction and rendered review.",
+          "evidence": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+              "event": "msg_06dca88b921ea10b016ac488b24ebc87d0b96f5e70013bda75",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [],
+      "artifactEvidence": {
+        "nightjar": {
+          "producedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+              "event": "exec-2771778c-c493-4bfe-9ec4-075e840fae91",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+              "event": "exec-ba386231-8e44-4698-8e0a-1ea2d43c1a9f",
+              "role": "inspection"
+            }
+          ]
+        },
+        "phoenix": {
+          "producedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+              "event": "exec-2771778c-c493-4bfe-9ec4-075e840fae91",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+              "event": "exec-44c61e90-72ce-42ff-bd23-8eb80bb057a6",
+              "role": "inspection"
+            }
+          ]
+        },
+        "catalyst": {
+          "producedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+              "event": "exec-2771778c-c493-4bfe-9ec4-075e840fae91",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10fa7-fead-7603-b85b-443e6c301e08",
+              "event": "exec-069dd6d3-fc11-4b4b-8106-f2aedbc1cb3f",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "A first sculptural polish",
@@ -70,7 +354,111 @@
       "finding": "The user rejected the overall result as childish in the next chat.",
       "lesson": "The maker's favorable completion report was not user acceptance.",
       "capture": "art-direction-before",
-      "source": "art-direction-before"
+      "source": "art-direction-before",
+      "id": "episode-03",
+      "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+      "anchorRef": {
+        "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+        "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+        "event": "msg_06dca88b921ea10b016ac491ea1e9c87d0944c0723d9f4fa68",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+          "event": "01a10fc2-ba98-7333-98af-88103e742942",
+          "role": "request"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+          "event": "exec-bed32fee-c597-4359-b02e-b4583d2dce05",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+          "event": "exec-17b9b429-190e-4c38-9bda-978a047b0084",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+          "event": "exec-d96ac83e-f81b-4c8c-9ca3-fece4ad33e2f",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+          "event": "msg_06dca88b921ea10b016ac48fc724f487d0aa34af260e1f3751",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+          "event": "exec-082fb6ef-f470-4071-b762-2802a3def4aa",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+          "event": "msg_06dca88b921ea10b016ac49115936087d0ad020b8b106ee773",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+          "event": "msg_06dca88b921ea10b016ac491ea1e9c87d0944c0723d9f4fa68",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fdd-5342-76c3-9dff-fd4f9f92107e",
+          "event": "01a10fdd-5cbc-73f0-b02a-e0b2de62af0d",
+          "role": "feedback"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+          "role": "maker",
+          "contribution": "Construction and rendered review.",
+          "evidence": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+              "event": "msg_06dca88b921ea10b016ac491ea1e9c87d0944c0723d9f4fa68",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [],
+      "artifactEvidence": {
+        "phoenix": {
+          "producedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+              "event": "exec-17b9b429-190e-4c38-9bda-978a047b0084",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": []
+        },
+        "nightjar": {
+          "producedBy": [
+            {
+              "thread": "01a10f83-880e-74c2-be08-de9fc6de23cd",
+              "turn": "01a10fc2-ba60-7391-b5ec-d22ce228d90c",
+              "event": "exec-d96ac83e-f81b-4c8c-9ca3-fece4ad33e2f",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": []
+        }
+      }
     },
     {
       "title": "An independent review & rulebook",
@@ -80,7 +468,70 @@
       "change": "Continuous bird bodies, asymmetric Phoenix wings, clearer glass and restrained motion. The rulebook was linked from project guidance.",
       "finding": "Multi-view review caught a gap between Nightjar's belly and legs after the initial checks passed.",
       "lesson": "Reviewing different views exposed defects hidden by a favorable camera.",
-      "capture": "art-direction-final"
+      "capture": "art-direction-final",
+      "id": "episode-04",
+      "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+      "anchorRef": {
+        "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+        "turn": "01a10fdd-5342-76c3-9dff-fd4f9f92107e",
+        "event": "msg_098f11be47bcf96a016ac495f9eca087d0a7cb86ddfd086caa",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fdd-5342-76c3-9dff-fd4f9f92107e",
+          "event": "01a10fdd-5cbc-73f0-b02a-e0b2de62af0d",
+          "role": "request"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fdd-5342-76c3-9dff-fd4f9f92107e",
+          "event": "msg_098f11be47bcf96a016ac492f9b30887d09b19afb2457e3b90",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fdd-5342-76c3-9dff-fd4f9f92107e",
+          "event": "msg_098f11be47bcf96a016ac494b8b42887d0b33f115ca23d5ca4",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fdd-5342-76c3-9dff-fd4f9f92107e",
+          "event": "msg_098f11be47bcf96a016ac49540502087d08ffed7509c68ac55",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fdd-5342-76c3-9dff-fd4f9f92107e",
+          "event": "msg_098f11be47bcf96a016ac49587eb5487d0abcab433d1f78a50",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fdd-5342-76c3-9dff-fd4f9f92107e",
+          "event": "msg_098f11be47bcf96a016ac495f9eca087d0a7cb86ddfd086caa",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "role": "maker",
+          "contribution": "Construction and rendered review.",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fdd-5342-76c3-9dff-fd4f9f92107e",
+              "event": "msg_098f11be47bcf96a016ac495f9eca087d0a7cb86ddfd086caa",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [],
+      "artifactEvidence": {}
     },
     {
       "title": "Round 1 · broken construction",
@@ -91,7 +542,191 @@
       "change": "Sol introduced a loft helper and three new procedural studies.",
       "finding": "Hydra had cut-open surfaces; Spiral read as a coil; Vajra's mount missed its load. Inward face winding was identified.",
       "lesson": "Correct surface orientation and physical contact before refining appearance.",
-      "capture": "sol-audit-round1"
+      "capture": "sol-audit-round1",
+      "id": "episode-05",
+      "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+      "anchorRef": {
+        "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+        "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+        "event": "msg_098f11be47bcf96a016ac49923844087d0b84e5c2fa657c998",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "01a10fef-c98b-7cc3-8750-1d4a42741ccc",
+          "role": "request"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "call_aerTlGRFtqXkeS6iVn5Nc6Dw",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-60169eb3-7cc2-40c8-9ae8-cd08098fc611",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-d40bd754-d0f8-42c5-a5f6-d44ec38baa51",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-afec31d6-fb71-4c65-8268-e7422b12a023",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-275c47d5-0715-42f1-a22a-4cc19ad0ac73",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-bf82a698-8644-4743-aba2-821d58058f15",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-c212748d-1336-451e-bdbb-1281989ed58b",
+          "role": "action"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49923844087d0b84e5c2fa657c998",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-4e89269f-fbfb-461e-90eb-c977fbf5738b",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-48779752-2c7b-4b4d-80dc-0325ca4328fe",
+          "role": "edit"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "role": "delegated_worker",
+          "contribution": "Spiral, Vajra and Hydra construction and revisions.",
+          "evidence": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-48779752-2c7b-4b4d-80dc-0325ca4328fe",
+              "role": "edit"
+            }
+          ]
+        },
+        {
+          "threadId": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "role": "reviewer",
+          "contribution": "Independent rendered review and export checks.",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49923844087d0b84e5c2fa657c998",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "body construction",
+          "subject": "hydra",
+          "assessment": "issue",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49923844087d0b84e5c2fa657c998",
+              "role": "assessment"
+            }
+          ],
+          "note": "Hydra had cut-open surfaces; Spiral read as a coil; Vajra's mount missed its load. Inward face winding was identified."
+        }
+      ],
+      "artifactEvidence": {
+        "hydra": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-4e89269f-fbfb-461e-90eb-c977fbf5738b",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-275c47d5-0715-42f1-a22a-4cc19ad0ac73",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-bf82a698-8644-4743-aba2-821d58058f15",
+              "role": "inspection"
+            }
+          ]
+        },
+        "spiral": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-4e89269f-fbfb-461e-90eb-c977fbf5738b",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-d40bd754-d0f8-42c5-a5f6-d44ec38baa51",
+              "role": "inspection"
+            }
+          ]
+        },
+        "vajra": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-4e89269f-fbfb-461e-90eb-c977fbf5738b",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-afec31d6-fb71-4c65-8268-e7422b12a023",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Round 2 · correct but generic",
@@ -103,7 +738,191 @@
       "finding": "The result still read as inflated masses, tubes and generic cages.",
       "lesson": "Topology fixes do not create a distinctive silhouette or convincing anatomy.",
       "capture": "sol-audit-round2",
-      "source": "sol-audit-round2-source"
+      "source": "sol-audit-round2-source",
+      "id": "episode-06",
+      "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+      "anchorRef": {
+        "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+        "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+        "event": "msg_098f11be47bcf96a016ac499f8232887d09cc9457483d59c6f",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49923844087d0b84e5c2fa657c998",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-c80453ef-c5e7-45ac-bc9d-aea68b964ced",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-3f84a740-c41e-4e80-ae27-e53ac7bf9dfd",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-002646e5-ef48-41df-bc85-e4b4efc0a946",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-b72c71a4-cce4-4613-920c-f9dd61ed2d26",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-769811bd-e1b8-45ac-b945-e5662459dbfe",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "call_bV56BTyphF60KkCyPUZSUFoG",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac499f8232887d09cc9457483d59c6f",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-f9b46ecf-71a1-47d6-8cfa-30ca260e65f6",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-f27dcb20-dcb8-4af0-916b-5b5432c82e36",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-f8be5323-b59e-4873-83b6-1ee9b213b748",
+          "role": "edit"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "role": "delegated_worker",
+          "contribution": "Spiral, Vajra and Hydra construction and revisions.",
+          "evidence": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-f8be5323-b59e-4873-83b6-1ee9b213b748",
+              "role": "edit"
+            }
+          ]
+        },
+        {
+          "threadId": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "role": "reviewer",
+          "contribution": "Independent rendered review and export checks.",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac499f8232887d09cc9457483d59c6f",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "body construction",
+          "subject": "hydra",
+          "assessment": "issue",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac499f8232887d09cc9457483d59c6f",
+              "role": "assessment"
+            }
+          ],
+          "note": "The result still read as inflated masses, tubes and generic cages."
+        }
+      ],
+      "artifactEvidence": {
+        "hydra": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-f9b46ecf-71a1-47d6-8cfa-30ca260e65f6",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-b72c71a4-cce4-4613-920c-f9dd61ed2d26",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-769811bd-e1b8-45ac-b945-e5662459dbfe",
+              "role": "inspection"
+            }
+          ]
+        },
+        "spiral": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-f9b46ecf-71a1-47d6-8cfa-30ca260e65f6",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-3f84a740-c41e-4e80-ae27-e53ac7bf9dfd",
+              "role": "inspection"
+            }
+          ]
+        },
+        "vajra": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-f9b46ecf-71a1-47d6-8cfa-30ca260e65f6",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-002646e5-ef48-41df-bc85-e4b4efc0a946",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Round 3 · specific forms",
@@ -115,7 +934,178 @@
       "finding": "Faceted skin, head seams, fitting gaps and pedestal intersections remained.",
       "lesson": "Inspect joins, shading and contact across views and motion samples.",
       "capture": "sol-audit-round3",
-      "source": "sol-audit-round3-source"
+      "source": "sol-audit-round3-source",
+      "id": "episode-07",
+      "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+      "anchorRef": {
+        "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+        "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+        "event": "msg_098f11be47bcf96a016ac49b19686887d0b11b4169853747de",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac499f8232887d09cc9457483d59c6f",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-34e2ba8f-c596-4e90-87d0-5a3116a4d4cf",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-b3d58975-f69f-4924-baf5-35205152e93d",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-2721e465-bbd2-4d15-895b-9ff35e825fd2",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-f65cd4a4-c26f-4516-944f-fb1c5dee409e",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-2834f9b1-6ce4-4da0-9419-5cfe6e82763a",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49b19686887d0b11b4169853747de",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-9b2581d0-432a-4fc9-ad11-4b97046fabf8",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-9b155c4c-0dde-40aa-8149-4cfb7f10369e",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-3f076b6c-a603-4f63-9958-ac931f96efcb",
+          "role": "edit"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "role": "delegated_worker",
+          "contribution": "Spiral, Vajra and Hydra construction and revisions.",
+          "evidence": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-3f076b6c-a603-4f63-9958-ac931f96efcb",
+              "role": "edit"
+            }
+          ]
+        },
+        {
+          "threadId": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "role": "reviewer",
+          "contribution": "Independent rendered review and export checks.",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49b19686887d0b11b4169853747de",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "body construction",
+          "subject": "hydra",
+          "assessment": "improved",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49b19686887d0b11b4169853747de",
+              "role": "assessment"
+            }
+          ],
+          "note": "Faceted skin, head seams, fitting gaps and pedestal intersections remained."
+        }
+      ],
+      "artifactEvidence": {
+        "hydra": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-9b2581d0-432a-4fc9-ad11-4b97046fabf8",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-f65cd4a4-c26f-4516-944f-fb1c5dee409e",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-2834f9b1-6ce4-4da0-9419-5cfe6e82763a",
+              "role": "inspection"
+            }
+          ]
+        },
+        "spiral": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-3f076b6c-a603-4f63-9958-ac931f96efcb",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-b3d58975-f69f-4924-baf5-35205152e93d",
+              "role": "inspection"
+            }
+          ]
+        },
+        "vajra": {
+          "producedBy": [],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-2721e465-bbd2-4d15-895b-9ff35e825fd2",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Round 4 · two accepted, one held",
@@ -127,7 +1117,210 @@
       "finding": "Hydra's side view exposed a flat torso, crescent legs and segmented feet.",
       "lesson": "Judge the complete creature's gesture before polishing its head.",
       "capture": "sol-audit-round4",
-      "source": "sol-audit-round4-source"
+      "source": "sol-audit-round4-source",
+      "id": "episode-08",
+      "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+      "anchorRef": {
+        "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+        "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+        "event": "msg_098f11be47bcf96a016ac49c9164c087d0abd136acde14c6a6",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49b19686887d0b11b4169853747de",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-c932091c-27ec-4d18-b70b-e236d3ca6c44",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-3bc26e16-5df3-4b50-84d6-4c09638a9a6b",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-522ff6c5-da58-4d35-a192-043cd9f63c93",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49c9164c087d0abd136acde14c6a6",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49ce790d487d09d6de2cd8fb20365",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-37eca211-9d73-4037-8c5e-27f6ef58a756",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-a3f1bfb2-b34e-4c77-840c-0ce9269c03ff",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-6c64706f-53a0-4a14-a672-72279df89990",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-2d098a01-1ee3-45ef-b313-b5af9aa77744",
+          "role": "edit"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "role": "delegated_worker",
+          "contribution": "Spiral, Vajra and Hydra construction and revisions.",
+          "evidence": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-2d098a01-1ee3-45ef-b313-b5af9aa77744",
+              "role": "edit"
+            }
+          ]
+        },
+        {
+          "threadId": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "role": "reviewer",
+          "contribution": "Independent rendered review and export checks.",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49ce790d487d09d6de2cd8fb20365",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "body construction",
+          "subject": "hydra",
+          "assessment": "issue",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49c9164c087d0abd136acde14c6a6",
+              "role": "assessment"
+            }
+          ],
+          "note": "Hydra's side view exposed a flat torso, crescent legs and segmented feet."
+        },
+        {
+          "criterion": "visual quality",
+          "subject": "spiral",
+          "assessment": "accepted",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49ce790d487d09d6de2cd8fb20365",
+              "role": "assessment"
+            }
+          ],
+          "note": "Independent reviewer accepted this subject."
+        },
+        {
+          "criterion": "visual quality",
+          "subject": "vajra",
+          "assessment": "accepted",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49ce790d487d09d6de2cd8fb20365",
+              "role": "assessment"
+            }
+          ],
+          "note": "Independent reviewer accepted this subject."
+        }
+      ],
+      "artifactEvidence": {
+        "spiral": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-a3f1bfb2-b34e-4c77-840c-0ce9269c03ff",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-3bc26e16-5df3-4b50-84d6-4c09638a9a6b",
+              "role": "inspection"
+            }
+          ]
+        },
+        "vajra": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-a3f1bfb2-b34e-4c77-840c-0ce9269c03ff",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-522ff6c5-da58-4d35-a192-043cd9f63c93",
+              "role": "inspection"
+            }
+          ]
+        },
+        "hydra": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-37eca211-9d73-4037-8c5e-27f6ef58a756",
+              "role": "edit"
+            },
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-a3f1bfb2-b34e-4c77-840c-0ce9269c03ff",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": []
+        }
+      }
     },
     {
       "title": "Round 5 · reviewer acceptance",
@@ -139,7 +1332,201 @@
       "finding": "The reviewer accepted Hydra. This historical decision was later overturned by the user.",
       "lesson": "Reviewer acceptance and user approval are different events.",
       "capture": "sol-audit-round5",
-      "source": "sol-audit-round5-source"
+      "source": "sol-audit-round5-source",
+      "id": "episode-09",
+      "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+      "anchorRef": {
+        "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+        "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+        "event": "msg_098f11be47bcf96a016ac49da2e9cc87d0939fede0c9e87ff5",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49ce790d487d09d6de2cd8fb20365",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49d3d8db887d081865cca1a02997b",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-1cb9caa9-d590-4524-a69c-048a4b842d3c",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-2d00f1c4-8f01-4a68-ab9f-131f4b0ca998",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-4dd40c7c-255b-4f2b-bd37-67c6d494ffc0",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-42b6eb24-9167-407d-a77f-3cc04a196b24",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49da2e9cc87d0939fede0c9e87ff5",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-3a85ccbb-d9e8-471f-95f5-27d19495f7a8",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-79396132-4016-4024-bddf-3c1b3acf0397",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-90fcf5f8-955e-4815-963f-500bae0d08ac",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-883b3613-c2f4-4c92-a0dc-2400074d8120",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "exec-335f06f7-9cfd-40eb-aec1-14e84ac563f5",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+          "event": "msg_0c02a67db7a41683016ac49dabe1cc87d09850c08e8e2e7749",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "role": "delegated_worker",
+          "contribution": "Spiral, Vajra and Hydra construction and revisions.",
+          "evidence": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "msg_0c02a67db7a41683016ac49dabe1cc87d09850c08e8e2e7749",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "role": "reviewer",
+          "contribution": "Independent rendered review and export checks.",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49da2e9cc87d0939fede0c9e87ff5",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "body construction",
+          "subject": "hydra",
+          "assessment": "accepted",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49da2e9cc87d0939fede0c9e87ff5",
+              "role": "assessment"
+            }
+          ],
+          "note": "Reviewer acceptance at round 5; later user rejection is preserved separately."
+        },
+        {
+          "criterion": "visual quality",
+          "subject": "hydra",
+          "assessment": "accepted",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49da2e9cc87d0939fede0c9e87ff5",
+              "role": "assessment"
+            }
+          ],
+          "note": "Reviewer acceptance only."
+        }
+      ],
+      "artifactEvidence": {
+        "hydra": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-3a85ccbb-d9e8-471f-95f5-27d19495f7a8",
+              "role": "edit"
+            },
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-79396132-4016-4024-bddf-3c1b3acf0397",
+              "role": "edit"
+            },
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a10ff0-efe6-7d22-8cc1-b7c197fddd1e",
+              "event": "exec-335f06f7-9cfd-40eb-aec1-14e84ac563f5",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-2d00f1c4-8f01-4a68-ab9f-131f4b0ca998",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-4dd40c7c-255b-4f2b-bd37-67c6d494ffc0",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-42b6eb24-9167-407d-a77f-3cc04a196b24",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "The export gate still failed",
@@ -151,7 +1538,187 @@
       "finding": "The first full run failed 1 of 17 checks; the final run passed all 17. Those are historical recorded results.",
       "lesson": "A convincing render can still have a broken deliverable.",
       "capture": "sol-audit-final",
-      "source": "sol-audit-final-source"
+      "source": "sol-audit-final-source",
+      "id": "episode-10",
+      "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+      "anchorRef": {
+        "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+        "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+        "event": "msg_098f11be47bcf96a016ac49e01c82c87d0bb8509cb6fd25d2e",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49da2e9cc87d0939fede0c9e87ff5",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49e01c82c87d0bb8509cb6fd25d2e",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-3a935ac5-3ab2-4051-ad98-3106eea29fb6",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49e4e148087d0aa14bd303dcad15c",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-e4c303f7-d4a3-4675-ac68-0576edcc0e37",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-f4703685-38e0-454d-a245-c13009701bb5",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "exec-db0739a9-87ef-48d5-ae3b-24ef6b0567e1",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+          "event": "msg_098f11be47bcf96a016ac49ed113bc87d09657ea042f598210",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a11009-1af0-7022-8ef5-569ab39a3ec6",
+          "event": "exec-958a9a71-31a9-4958-a8db-5ff3f8948d1e",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a11009-1af0-7022-8ef5-569ab39a3ec6",
+          "event": "exec-e7f265a6-bd3a-4fbf-b9c3-76ba0825d580",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "turn": "01a11009-1af0-7022-8ef5-569ab39a3ec6",
+          "event": "msg_0c02a67db7a41683016ac49e3775f887d0b68e76abdc0c0c3c",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+          "role": "delegated_worker",
+          "contribution": "Spiral, Vajra and Hydra construction and revisions.",
+          "evidence": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a11009-1af0-7022-8ef5-569ab39a3ec6",
+              "event": "msg_0c02a67db7a41683016ac49e3775f887d0b68e76abdc0c0c3c",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "role": "reviewer",
+          "contribution": "Independent rendered review and export checks.",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49ed113bc87d09657ea042f598210",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "export integrity",
+          "subject": "hydra",
+          "assessment": "issue",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49e01c82c87d0bb8509cb6fd25d2e",
+              "role": "assessment"
+            }
+          ],
+          "note": "Initial gate failed on roughness texture export."
+        },
+        {
+          "criterion": "export integrity",
+          "subject": "hydra",
+          "assessment": "passed",
+          "actor": "Recorded verification",
+          "basis": "verification",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-f4703685-38e0-454d-a245-c13009701bb5",
+              "role": "verification"
+            }
+          ],
+          "note": "Final recorded browser run; historical result, not a new check."
+        }
+      ],
+      "artifactEvidence": {
+        "hydra": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a11009-1af0-7022-8ef5-569ab39a3ec6",
+              "event": "exec-958a9a71-31a9-4958-a8db-5ff3f8948d1e",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "exec-e4c303f7-d4a3-4675-ac68-0576edcc0e37",
+              "role": "inspection"
+            }
+          ]
+        },
+        "spiral": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a11009-1af0-7022-8ef5-569ab39a3ec6",
+              "event": "exec-958a9a71-31a9-4958-a8db-5ff3f8948d1e",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": []
+        },
+        "vajra": {
+          "producedBy": [
+            {
+              "thread": "01a10ff0-ef81-79d0-9ac0-9b8eb0d84e2c",
+              "turn": "01a11009-1af0-7022-8ef5-569ab39a3ec6",
+              "event": "exec-958a9a71-31a9-4958-a8db-5ff3f8948d1e",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": []
+        }
+      }
     },
     {
       "title": "The user changes the criterion",
@@ -163,7 +1730,110 @@
       "finding": "Earlier repairs had optimized connected anatomy and detail without resolving posture and dynamics.",
       "lesson": "This user correction supersedes the earlier positive review.",
       "capture": "sol-audit-final",
-      "source": "creature-redo-baseline"
+      "source": "creature-redo-baseline",
+      "id": "episode-11",
+      "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+      "anchorRef": {
+        "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+        "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+        "event": "msg_098f11be47bcf96a016ac4a52689c087d0b8fd3269c3a748f3",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "01a1101a-fde8-7122-826d-0a22a5542db7",
+          "role": "request"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "msg_098f11be47bcf96a016ac4a292d01487d096cd102f8c74af4d",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "01a11025-1489-74b3-b713-f71272286aa9",
+          "role": "request"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "msg_098f11be47bcf96a016ac4a52689c087d0b8fd3269c3a748f3",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "role": "maker",
+          "contribution": "Construction and rendered review.",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+              "event": "msg_098f11be47bcf96a016ac4a52689c087d0b8fd3269c3a748f3",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "visual quality",
+          "subject": "hydra",
+          "assessment": "rejected",
+          "actor": "User",
+          "basis": "user",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+              "event": "01a11025-1489-74b3-b713-f71272286aa9",
+              "role": "feedback"
+            }
+          ],
+          "note": "User requests gesture and cohesive style; supersedes the earlier reviewer acceptance."
+        },
+        {
+          "criterion": "visual quality",
+          "subject": "nightjar",
+          "assessment": "rejected",
+          "actor": "User",
+          "basis": "user",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+              "event": "01a11025-1489-74b3-b713-f71272286aa9",
+              "role": "feedback"
+            }
+          ],
+          "note": "User requests gesture and cohesive style; supersedes the earlier reviewer acceptance."
+        }
+      ],
+      "signals": [
+        {
+          "note": "User rejection follows earlier reviewer acceptance. Inspect how the criterion changed.",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a10fef-c949-7d71-8337-35a4fd5b6784",
+              "event": "msg_098f11be47bcf96a016ac49da2e9cc87d0939fede0c9e87ff5",
+              "role": "assessment"
+            },
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+              "event": "01a11025-1489-74b3-b713-f71272286aa9",
+              "role": "feedback"
+            }
+          ]
+        }
+      ],
+      "artifactEvidence": {}
     },
     {
       "title": "Rebuild around gesture",
@@ -176,7 +1846,129 @@
       "lesson": "The result is a new composition, not proof that the final aesthetic goal was met.",
       "capture": "creature-redo-finish",
       "fallbackCapture": "creature-redo-final",
-      "source": "creature-redo-source"
+      "source": "creature-redo-source",
+      "id": "episode-12",
+      "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+      "anchorRef": {
+        "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+        "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+        "event": "msg_098f11be47bcf96a016ac4a98e17a487d099cb8fd429358600",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "01a11025-1489-74b3-b713-f71272286aa9",
+          "role": "request"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "msg_098f11be47bcf96a016ac4a52689c087d0b8fd3269c3a748f3",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "exec-123b8032-cfe9-47a7-9bd9-37050854d711",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "exec-3d6532f7-1d01-450e-8d6a-cb2ab587678f",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "exec-ce91c198-4299-48f3-92c2-60b6817ee05a",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "msg_098f11be47bcf96a016ac4a7ffafd887d0a5da9c0c206bc4ba",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "exec-26806727-7480-4da2-accf-7687c3dee908",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "exec-5ce4526e-d666-4293-9961-52d98093e38a",
+          "role": "edit"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "exec-e57d5046-71e8-48f0-8091-40c5253f9407",
+          "role": "verification"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "exec-13625c52-3c05-46ef-887a-129d3ea92401",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+          "event": "msg_098f11be47bcf96a016ac4a98e17a487d099cb8fd429358600",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+          "role": "maker",
+          "contribution": "Construction and rendered review.",
+          "evidence": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+              "event": "msg_098f11be47bcf96a016ac4a98e17a487d099cb8fd429358600",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "visual quality",
+          "subject": "hydra",
+          "assessment": "rejected",
+          "actor": "User",
+          "basis": "user",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "01a11075-1462-74d0-af49-8b3529566a4f",
+              "role": "feedback"
+            }
+          ],
+          "note": "Later user feedback on this bronze revision calls it an overly simplified toy."
+        }
+      ],
+      "artifactEvidence": {
+        "nightjar": {
+          "producedBy": [],
+          "inspectedBy": [
+            {
+              "thread": "01a10fdd-5168-77d2-9e4e-725eb816318a",
+              "turn": "01a1101a-fdae-7f40-b0af-b1be04595006",
+              "event": "exec-13625c52-3c05-46ef-887a-129d3ea92401",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Hydra · from sculpture to predator",
@@ -188,7 +1980,164 @@
       "finding": "The first render improved silhouette and expression, but stretched coil texture and overly regular throat plates remained.",
       "lesson": "Choose distinct head intentions and build anatomy that supports them.",
       "subject": "hydra",
-      "capture": "hydra-living-round1"
+      "capture": "hydra-living-round1",
+      "id": "episode-13",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+        "event": "msg_0b0b493fbd4465cc016ac4bb02cb9087d09a399d6079a5c7cd",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "01a11075-1462-74d0-af49-8b3529566a4f",
+          "role": "request"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "msg_0b0b493fbd4465cc016ac4b9f0203487d0934a2801a5052584",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-078f37b4-bcb6-430b-b429-a053e22f1a00",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-d2947bfc-908e-4d49-bb00-6fe1e5c3083e",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "msg_0b0b493fbd4465cc016ac4bb02cb9087d09a399d6079a5c7cd",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-39c2c9ac-bfd6-4992-9b39-41233352f369",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-b19835d7-d1c1-4316-b03d-1ab99e964b02",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-b760445e-2260-4028-a118-7e7aeac836f4",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-9b43d470-4576-4da1-b4eb-625c08ad0e10",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "msg_0b0b493fbd4465cc016ac4bb6b083887d0a26aea0abb047bf2",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "maker",
+          "contribution": "Construction and rendered review.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "msg_0b0b493fbd4465cc016ac4bb6b083887d0a26aea0abb047bf2",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "body construction",
+          "subject": "hydra",
+          "assessment": "improved",
+          "actor": "Maker report",
+          "basis": "maker",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "msg_0b0b493fbd4465cc016ac4bb6b083887d0a26aea0abb047bf2",
+              "role": "assessment"
+            }
+          ],
+          "note": "Maker reports stronger silhouette and attached armor."
+        },
+        {
+          "criterion": "surface texture",
+          "subject": "hydra",
+          "assessment": "issue",
+          "actor": "Maker report",
+          "basis": "maker",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "msg_0b0b493fbd4465cc016ac4bb6b083887d0a26aea0abb047bf2",
+              "role": "assessment"
+            }
+          ],
+          "note": "Stretched scales and regular throat plates remain."
+        }
+      ],
+      "artifactEvidence": {
+        "hydra": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-078f37b4-bcb6-430b-b429-a053e22f1a00",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-d2947bfc-908e-4d49-bb00-6fe1e5c3083e",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-b19835d7-d1c1-4316-b03d-1ab99e964b02",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-b760445e-2260-4028-a118-7e7aeac836f4",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-9b43d470-4576-4da1-b4eb-625c08ad0e10",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Hydra · enlarged review exposes seams",
@@ -200,7 +2149,130 @@
       "finding": "An enlarged view exposed a seam where the necks merged into the chest; it was easy to miss at normal size.",
       "lesson": "Inspect enlarged pixels as well as the full silhouette.",
       "subject": "hydra",
-      "capture": "hydra-living-round3"
+      "capture": "hydra-living-round3",
+      "id": "episode-14",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+        "event": "msg_0b0b493fbd4465cc016ac4bd378a2087d08f62cce861839b8c",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "msg_0b0b493fbd4465cc016ac4bb6b083887d0a26aea0abb047bf2",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-d0aab21f-6216-4eb4-8695-ea4d1e0996c7",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "msg_0b0b493fbd4465cc016ac4bc60dca487d0992ff72215ddfb2a",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-c08e7ab6-e414-45b0-b27e-c6bf577221a5",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-ec549338-2b26-44f8-aa84-6eedfcb488c2",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-cd7cc7ea-af5a-4be6-8260-c1bce0d05ceb",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "msg_0b0b493fbd4465cc016ac4bd378a2087d08f62cce861839b8c",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-8b5178a4-d5ae-4ca8-b7c9-b7737295499f",
+          "role": "edit"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "maker",
+          "contribution": "Construction and rendered review.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "msg_0b0b493fbd4465cc016ac4bd378a2087d08f62cce861839b8c",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "surface texture",
+          "subject": "hydra",
+          "assessment": "issue",
+          "actor": "Maker report",
+          "basis": "maker",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "msg_0b0b493fbd4465cc016ac4bd378a2087d08f62cce861839b8c",
+              "role": "assessment"
+            }
+          ],
+          "note": "Enlarged inspection exposed a chest/neck texture seam."
+        }
+      ],
+      "artifactEvidence": {
+        "hydra": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-d0aab21f-6216-4eb4-8695-ea4d1e0996c7",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-8b5178a4-d5ae-4ca8-b7c9-b7737295499f",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-ec549338-2b26-44f8-aa84-6eedfcb488c2",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-cd7cc7ea-af5a-4be6-8260-c1bce0d05ceb",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Hydra · verify the exported creature",
@@ -213,7 +2285,141 @@
       "lesson": "A successful download is weaker evidence than reloading and comparing the delivered model.",
       "subject": "hydra",
       "capture": "hydra-delivery",
-      "source": "sol61-creature-baseline-source"
+      "source": "sol61-creature-baseline-source",
+      "id": "episode-15",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+        "event": "msg_0b0b493fbd4465cc016ac4be412c2887d0a49bd487ec4f12f0",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "msg_0b0b493fbd4465cc016ac4bd378a2087d08f62cce861839b8c",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-8b5178a4-d5ae-4ca8-b7c9-b7737295499f",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "msg_0b0b493fbd4465cc016ac4bddb7b5087d092a4aad0d8e968d7",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-6731536a-7fef-43f3-a64b-c0913f829a43",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-627ead48-eaf9-44b3-93c0-0b7f9b8c1089",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-74294a1b-ab81-453f-8d18-189f36f9e88d",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-a167c64b-53d5-4f52-ac62-c468e60f877e",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "msg_0b0b493fbd4465cc016ac4be412c2887d0a49bd487ec4f12f0",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-445c15b0-240f-4e40-b57c-9272c6bf77bc",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "exec-3fd2f944-3ea8-4f34-85e5-c1189169a373",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+          "event": "msg_0b0b493fbd4465cc016ac4befc95dc87d091554ab5e8a75d89",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "maker",
+          "contribution": "Construction and rendered review.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "msg_0b0b493fbd4465cc016ac4befc95dc87d091554ab5e8a75d89",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "export integrity",
+          "subject": "hydra",
+          "assessment": "passed",
+          "actor": "Recorded verification",
+          "basis": "verification",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-a167c64b-53d5-4f52-ac62-c468e60f877e",
+              "role": "verification"
+            }
+          ],
+          "note": "Reloaded GLB and playback check after texture repair."
+        }
+      ],
+      "artifactEvidence": {
+        "hydra": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-8b5178a4-d5ae-4ca8-b7c9-b7737295499f",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-627ead48-eaf9-44b3-93c0-0b7f9b8c1089",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a11075-11a8-7340-993c-6daa1f6a0282",
+              "event": "exec-3fd2f944-3ea8-4f34-85e5-c1189169a373",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": []
+        }
+      }
     },
     {
       "title": "User response · “much better”",
@@ -225,7 +2431,105 @@
       "finding": "Two Sol 6.1 workers at high effort received separate bird ownership. This is an observational collaboration trial, not a controlled model comparison.",
       "lesson": "This feedback applies to the new living Hydra, not to the earlier rejected bronze model.",
       "subject": "hydra",
-      "capture": "hydra-delivery"
+      "capture": "hydra-delivery",
+      "id": "episode-16",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+        "event": "01a110d1-34d6-7ae2-acdd-45177018d6ad",
+        "role": "request"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "01a110d1-34d6-7ae2-acdd-45177018d6ad",
+          "role": "request"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-8860f7ae-b1bd-491f-adf8-b6809b38aa9f",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "01a110d3-2bb8-78b3-bac1-ebab96499cee",
+          "role": "request"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d1dd9e9c87d08f5eb6d10018f62e",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "call_KgFTCvQi0I9ab8jFD92qtPFs",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "call_l2Nl8HBcZg8WD2QnsYA10ETl",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d281405087d0b1150e926f11f585",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "maker",
+          "contribution": "Hydra author; bird reviewer and delegation owner.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d281405087d0b1150e926f11f585",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "user approval",
+          "subject": "hydra",
+          "assessment": "accepted",
+          "actor": "User",
+          "basis": "user",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "01a110d1-34d6-7ae2-acdd-45177018d6ad",
+              "role": "feedback"
+            }
+          ],
+          "note": "Positive feedback: “much better”; applies to the living Hydra."
+        }
+      ],
+      "artifactEvidence": {
+        "hydra": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-8860f7ae-b1bd-491f-adf8-b6809b38aa9f",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": []
+        }
+      }
     },
     {
       "title": "Bird round 1 · construction before texture",
@@ -239,7 +2543,304 @@
       "captures": ["sol61-nightjar-round1", "sol61-phoenix-round1"],
       "sources": ["sol61-nightjar-round1-source", "sol61-phoenix-round1-source"],
       "subject": "nightjar",
-      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"]
+      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"],
+      "id": "episode-17",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+        "event": "msg_0b0b493fbd4465cc016ac4d4dfe75887d0838b5ac8d09f3828",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d1dd9e9c87d08f5eb6d10018f62e",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "call_KgFTCvQi0I9ab8jFD92qtPFs",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "call_l2Nl8HBcZg8WD2QnsYA10ETl",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-8d58cb24-dfba-41c6-b8d9-6307ba3fefa5",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-f943881c-dbbd-4fc3-bb70-1f28c244a426",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-32061634-3e61-4595-a0d5-b3ac79d2d24d",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "call_IWwr2pjDuY3Qpvk5xYrluLuc",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d3aafa4887d0891cf4c755647ae0",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-d04aada2-e55c-4b5d-a7d3-30cad8fd21c3",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-c4d5152a-c06e-4e80-a4ac-339923e98389",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-6d2cf942-43c1-41e4-a055-2ba0b8a1ed66",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "call_9a4c0e9fe9fb4c82a5a89b8455c83224",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d4dfe75887d0838b5ac8d09f3828",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "exec-1319a0a4-e48f-4c32-8c96-fb9e9b280ed0",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "exec-69763c03-23da-46da-9c2a-b10a45b02686",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "msg_07c85bcdcc92b7fb016ac4d41f4eac87d0aea242b185c748dc",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+          "event": "exec-6dd489f4-ef2d-431f-8ad0-3c69e1318eea",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+          "event": "msg_02f7fce134afe21e016ac4d2f5f55087d0bc0d3a95f51810f0",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "role": "delegated_worker",
+          "contribution": "Nightjar: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "msg_07c85bcdcc92b7fb016ac4d41f4eac87d0aea242b185c748dc",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "role": "delegated_worker",
+          "contribution": "Phoenix: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+              "event": "msg_02f7fce134afe21e016ac4d2f5f55087d0bc0d3a95f51810f0",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "reviewer",
+          "contribution": "Integrates and reviews frozen worker candidates.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d4dfe75887d0838b5ac8d09f3828",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "body construction",
+          "subject": "nightjar",
+          "assessment": "issue",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d4dfe75887d0838b5ac8d09f3828",
+              "role": "assessment"
+            }
+          ],
+          "note": "Construction needs revision."
+        },
+        {
+          "criterion": "wing construction",
+          "subject": "nightjar",
+          "assessment": "issue",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d4dfe75887d0838b5ac8d09f3828",
+              "role": "assessment"
+            }
+          ],
+          "note": "Review statement describes both improvements and remaining form defects."
+        },
+        {
+          "criterion": "body construction",
+          "subject": "phoenix",
+          "assessment": "issue",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d3aafa4887d0891cf4c755647ae0",
+              "role": "assessment"
+            }
+          ],
+          "note": "Construction needs revision."
+        },
+        {
+          "criterion": "wing construction",
+          "subject": "phoenix",
+          "assessment": "issue",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d3aafa4887d0891cf4c755647ae0",
+              "role": "assessment"
+            }
+          ],
+          "note": "Review statement describes both improvements and remaining form defects."
+        }
+      ],
+      "limits": [
+        "Concurrent bird tracks; exact interleaving unavailable.",
+        "Final birds have mixed authorship. Later user approval is unrecorded."
+      ],
+      "artifactEvidence": {
+        "nightjar": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-d04aada2-e55c-4b5d-a7d3-30cad8fd21c3",
+              "role": "edit"
+            },
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "exec-1319a0a4-e48f-4c32-8c96-fb9e9b280ed0",
+              "role": "edit"
+            },
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "exec-69763c03-23da-46da-9c2a-b10a45b02686",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-c4d5152a-c06e-4e80-a4ac-339923e98389",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-6d2cf942-43c1-41e4-a055-2ba0b8a1ed66",
+              "role": "inspection"
+            }
+          ]
+        },
+        "phoenix": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-8d58cb24-dfba-41c6-b8d9-6307ba3fefa5",
+              "role": "edit"
+            },
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+              "event": "exec-6dd489f4-ef2d-431f-8ad0-3c69e1318eea",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-f943881c-dbbd-4fc3-bb70-1f28c244a426",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-32061634-3e61-4595-a0d5-b3ac79d2d24d",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Bird round 2 · clearer form, unfinished craft",
@@ -253,7 +2854,298 @@
       "captures": ["sol61-nightjar-round2", "sol61-phoenix-round2"],
       "sources": ["sol61-nightjar-round2-source", "sol61-phoenix-round2-source"],
       "subject": "phoenix",
-      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"]
+      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"],
+      "id": "episode-18",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+        "event": "msg_0b0b493fbd4465cc016ac4d665e5ec87d0842132560a0922c9",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d3aafa4887d0891cf4c755647ae0",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d4dfe75887d0838b5ac8d09f3828",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-7a753264-50c9-4a54-9182-b4c2b329770f",
+          "role": "action"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-e2f6007e-a75d-4a86-b824-ede9a4848d62",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-24f18aca-6ab3-4554-8f70-9c989ab89218",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-a3ee4ec1-8ee4-4348-8d68-18f43dc31839",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d51cc40087d0abb7aff3e3eccaa9",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-b21ce4e6-5a80-4f82-9b4e-ed9940acc5f4",
+          "role": "action"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-c8867233-5209-4b0b-bb61-d0a44f7945c3",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-b7af897a-4d22-4146-abe7-fff22c966032",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-46ab60a3-67b4-484d-9668-89a7e7821ced",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "call_13b99b4dc5764f479d1a874435dcbecb",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d665e5ec87d0842132560a0922c9",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "exec-b66ecea9-f0b6-4ce0-a188-38ad607b6de3",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "exec-37618c36-77f5-41a2-b9cd-4a632769286e",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "exec-2c652257-ce95-4d34-9fc3-dafc9f9ca1b6",
+          "role": "verification"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+          "event": "exec-c6c47959-2d98-4fdb-afb1-515ef0d8e1f3",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+          "event": "msg_02f7fce134afe21e016ac4d4df815087d0ab21bafc0f6fe69f",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "role": "delegated_worker",
+          "contribution": "Nightjar: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "exec-37618c36-77f5-41a2-b9cd-4a632769286e",
+              "role": "edit"
+            }
+          ]
+        },
+        {
+          "threadId": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "role": "delegated_worker",
+          "contribution": "Phoenix: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+              "event": "msg_02f7fce134afe21e016ac4d4df815087d0ab21bafc0f6fe69f",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "reviewer",
+          "contribution": "Integrates and reviews frozen worker candidates.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d665e5ec87d0842132560a0922c9",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "body construction",
+          "subject": "nightjar",
+          "assessment": "improved",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d665e5ec87d0842132560a0922c9",
+              "role": "assessment"
+            }
+          ],
+          "note": "Improved form; material work is permitted, final acceptance is not established."
+        },
+        {
+          "criterion": "wing construction",
+          "subject": "nightjar",
+          "assessment": "improved",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d665e5ec87d0842132560a0922c9",
+              "role": "assessment"
+            }
+          ],
+          "note": "Review statement describes both improvements and remaining form defects."
+        },
+        {
+          "criterion": "body construction",
+          "subject": "phoenix",
+          "assessment": "improved",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d51cc40087d0abb7aff3e3eccaa9",
+              "role": "assessment"
+            }
+          ],
+          "note": "Improved form; material work is permitted, final acceptance is not established."
+        },
+        {
+          "criterion": "wing construction",
+          "subject": "phoenix",
+          "assessment": "improved",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d51cc40087d0abb7aff3e3eccaa9",
+              "role": "assessment"
+            }
+          ],
+          "note": "Review statement describes both improvements and remaining form defects."
+        }
+      ],
+      "limits": [
+        "Concurrent bird tracks; exact interleaving unavailable.",
+        "Final birds have mixed authorship. Later user approval is unrecorded."
+      ],
+      "artifactEvidence": {
+        "nightjar": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-b21ce4e6-5a80-4f82-9b4e-ed9940acc5f4",
+              "role": "edit"
+            },
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "exec-b66ecea9-f0b6-4ce0-a188-38ad607b6de3",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-b7af897a-4d22-4146-abe7-fff22c966032",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-46ab60a3-67b4-484d-9668-89a7e7821ced",
+              "role": "inspection"
+            }
+          ]
+        },
+        "phoenix": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-7a753264-50c9-4a54-9182-b4c2b329770f",
+              "role": "edit"
+            },
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+              "event": "exec-c6c47959-2d98-4fdb-afb1-515ef0d8e1f3",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-24f18aca-6ab3-4554-8f70-9c989ab89218",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-a3ee4ec1-8ee4-4348-8d68-18f43dc31839",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Bird round 3 · texture is judged in pixels",
@@ -267,7 +3159,266 @@
       "captures": ["sol61-nightjar-round3", "sol61-phoenix-round3"],
       "sources": ["sol61-nightjar-round3-source", "sol61-phoenix-round3-source"],
       "subject": "nightjar",
-      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"]
+      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"],
+      "id": "episode-19",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+        "event": "msg_0b0b493fbd4465cc016ac4d7b4b1d487d0a8e65c7f856b3639",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d51cc40087d0abb7aff3e3eccaa9",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d665e5ec87d0842132560a0922c9",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-843a5aa9-e800-442a-91be-091669202fca",
+          "role": "action"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-0eb33b75-8bf7-4bd9-91c6-0188708bda6a",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-fa3b591d-f4ae-4f12-94a7-578ffd2e2ce0",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d6c7c31087d08b8e7d5b1a3bd0a1",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d767371087d0901d12e091456a62",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-c346aae9-94e4-4fb1-bd02-6d08422161c9",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-d18827cc-3118-4f9e-91d8-eef689f89b4e",
+          "role": "action"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "call_5SPMKbPrguGSlqKepZaGpwnK",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d7b4b1d487d0a8e65c7f856b3639",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "exec-f3036aeb-0ec3-439f-87a9-ebd6065248f3",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "msg_07c85bcdcc92b7fb016ac4d6e33d9c87d090bc3969f96fe00a",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "exec-ea3095e6-5d53-4b95-b05c-3b5acf5af883",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "exec-f60869c7-c7fd-4b41-bfe9-cd7c93bcd70c",
+          "role": "verification"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+          "event": "exec-43f9fa39-bdf5-4150-a7a8-e642752af0a2",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+          "event": "msg_02f7fce134afe21e016ac4d64d4db887d08a5a019b76110bfe",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+          "event": "exec-ca7381ce-a99d-4e7f-8217-0bb495f09060",
+          "role": "edit"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "role": "delegated_worker",
+          "contribution": "Nightjar: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "exec-ea3095e6-5d53-4b95-b05c-3b5acf5af883",
+              "role": "edit"
+            }
+          ]
+        },
+        {
+          "threadId": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "role": "delegated_worker",
+          "contribution": "Phoenix: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+              "event": "exec-ca7381ce-a99d-4e7f-8217-0bb495f09060",
+              "role": "edit"
+            }
+          ]
+        },
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "reviewer",
+          "contribution": "Integrates and reviews frozen worker candidates.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d7b4b1d487d0a8e65c7f856b3639",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "surface texture",
+          "subject": "nightjar",
+          "assessment": "rejected",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d7b4b1d487d0a8e65c7f856b3639",
+              "role": "assessment"
+            }
+          ],
+          "note": "Rendered material candidate falls below the reference; inspect the actual pixels."
+        },
+        {
+          "criterion": "surface texture",
+          "subject": "phoenix",
+          "assessment": "rejected",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d6c7c31087d08b8e7d5b1a3bd0a1",
+              "role": "assessment"
+            }
+          ],
+          "note": "Rendered material candidate falls below the reference; inspect the actual pixels."
+        }
+      ],
+      "limits": [
+        "Concurrent bird tracks; exact interleaving unavailable.",
+        "Final birds have mixed authorship. Later user approval is unrecorded."
+      ],
+      "artifactEvidence": {
+        "nightjar": {
+          "producedBy": [
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "exec-f3036aeb-0ec3-439f-87a9-ebd6065248f3",
+              "role": "edit"
+            },
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "exec-ea3095e6-5d53-4b95-b05c-3b5acf5af883",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-c346aae9-94e4-4fb1-bd02-6d08422161c9",
+              "role": "inspection"
+            }
+          ]
+        },
+        "phoenix": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-843a5aa9-e800-442a-91be-091669202fca",
+              "role": "edit"
+            },
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+              "event": "exec-43f9fa39-bdf5-4150-a7a8-e642752af0a2",
+              "role": "edit"
+            },
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+              "event": "exec-ca7381ce-a99d-4e7f-8217-0bb495f09060",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-0eb33b75-8bf7-4bd9-91c6-0188708bda6a",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-fa3b591d-f4ae-4f12-94a7-578ffd2e2ce0",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Bird round 4 · guidance reaches a limit",
@@ -281,7 +3432,317 @@
       "captures": ["sol61-nightjar-round4", "sol61-phoenix-round4"],
       "sources": ["sol61-nightjar-round4-source", "sol61-phoenix-round4-source"],
       "subject": "phoenix",
-      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"]
+      "sourceFiles": ["nightjar.ts", "phoenix.ts", "nightjar.test.ts", "phoenix.test.ts"],
+      "id": "episode-20",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+        "event": "msg_0b0b493fbd4465cc016ac4d858f05887d0ad04d5580b665221",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d7b4b1d487d0a8e65c7f856b3639",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-f1ce421b-506b-48ee-94d0-734ab31cb330",
+          "role": "action"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-b0abb3b4-3189-4bd6-adc1-68fb69057e27",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-f0865dc7-d057-4cc4-b931-df56e3f58dfc",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-fecbfaa0-f4fc-4208-812e-53f565adba9f",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d858f05887d0ad04d5580b665221",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-5a1e05d2-1e7d-4877-a981-8e29d332fb85",
+          "role": "action"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-1558d22e-9390-4795-894b-2d4fa5a85057",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-9d51e005-936a-46a2-a750-526514089381",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-c506bec2-7187-4829-8942-1bfe888d57d9",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "call_d7d09d8a3ea14eb1ab37872e749d1064",
+          "role": "handoff"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4dcd55ac887d0ab1cd8d08228fb08",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "exec-cab810a7-081b-4ae9-bf4c-bd6dc450640e",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "msg_07c85bcdcc92b7fb016ac4d862a2e087d0b5fc3e77b79d8c19",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+          "event": "exec-9e94f75c-5c63-4f68-8730-197e26d9f903",
+          "role": "edit"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110f7-c80f-7621-95a2-2ef94cbc5c93",
+          "event": "exec-5348054f-4c42-4e4e-bbf4-bb98c745bc55",
+          "role": "verification"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110f7-c80f-7621-95a2-2ef94cbc5c93",
+          "event": "msg_02f7fce134afe21e016ac4dbcf4cf087d0b5364009d1427dbf",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110f7-c80f-7621-95a2-2ef94cbc5c93",
+          "event": "msg_02f7fce134afe21e016ac4dc30cb4487d0ab2201a3a5f5790f",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "role": "delegated_worker",
+          "contribution": "Nightjar: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "msg_07c85bcdcc92b7fb016ac4d862a2e087d0b5fc3e77b79d8c19",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "role": "delegated_worker",
+          "contribution": "Phoenix: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110f7-c80f-7621-95a2-2ef94cbc5c93",
+              "event": "msg_02f7fce134afe21e016ac4dc30cb4487d0ab2201a3a5f5790f",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "parent",
+          "contribution": "Parent takeover: final geometry, materials and delivery review.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4dcd55ac887d0ab1cd8d08228fb08",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "visual quality",
+          "subject": "nightjar",
+          "assessment": "rejected",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d858f05887d0ad04d5580b665221",
+              "role": "assessment"
+            }
+          ],
+          "note": "Parent explicitly takes over because the fourth candidate remains below target."
+        },
+        {
+          "criterion": "surface texture",
+          "subject": "nightjar",
+          "assessment": "unresolved",
+          "actor": "Maker report",
+          "basis": "maker",
+          "evidence": [
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "msg_07c85bcdcc92b7fb016ac4d862a2e087d0b5fc3e77b79d8c19",
+              "role": "assessment"
+            }
+          ],
+          "note": "Worker handoff records remaining surface defects."
+        },
+        {
+          "criterion": "visual quality",
+          "subject": "phoenix",
+          "assessment": "rejected",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4dcd55ac887d0ab1cd8d08228fb08",
+              "role": "assessment"
+            }
+          ],
+          "note": "Parent explicitly takes over because the fourth candidate remains below target."
+        },
+        {
+          "criterion": "surface texture",
+          "subject": "phoenix",
+          "assessment": "unresolved",
+          "actor": "Maker report",
+          "basis": "maker",
+          "evidence": [
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110f7-c80f-7621-95a2-2ef94cbc5c93",
+              "event": "msg_02f7fce134afe21e016ac4dc30cb4487d0ab2201a3a5f5790f",
+              "role": "assessment"
+            }
+          ],
+          "note": "Worker handoff records remaining surface defects."
+        }
+      ],
+      "limits": [
+        "Concurrent bird tracks; exact interleaving unavailable.",
+        "Final birds have mixed authorship. Later user approval is unrecorded."
+      ],
+      "signals": [
+        {
+          "note": "Parent takeover after four guided worker rounds. The final artifacts have mixed authorship.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4d858f05887d0ad04d5580b665221",
+              "role": "handoff"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4dcd55ac887d0ab1cd8d08228fb08",
+              "role": "handoff"
+            }
+          ]
+        }
+      ],
+      "artifactEvidence": {
+        "nightjar": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-f1ce421b-506b-48ee-94d0-734ab31cb330",
+              "role": "edit"
+            },
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "exec-cab810a7-081b-4ae9-bf4c-bd6dc450640e",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-f0865dc7-d057-4cc4-b931-df56e3f58dfc",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-fecbfaa0-f4fc-4208-812e-53f565adba9f",
+              "role": "inspection"
+            }
+          ]
+        },
+        "phoenix": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-5a1e05d2-1e7d-4877-a981-8e29d332fb85",
+              "role": "edit"
+            },
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110d4-83ef-7263-876b-1f6de420bac7",
+              "event": "exec-9e94f75c-5c63-4f68-8730-197e26d9f903",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-9d51e005-936a-46a2-a750-526514089381",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-c506bec2-7187-4829-8942-1bfe888d57d9",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Nightjar · direct parent finishing",
@@ -295,7 +3756,275 @@
       "subject": "nightjar",
       "captureSubjects": ["nightjar"],
       "capture": "sol61-creatures-delivery",
-      "source": "sol61-nightjar-final2-source"
+      "source": "sol61-nightjar-final2-source",
+      "id": "episode-21",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+        "event": "msg_0b0b493fbd4465cc016ac4da1ed54487d09f0b773b32c6b359",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d858f05887d0ad04d5580b665221",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-7743097c-3a0f-447c-94ef-6963864c7706",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-a52f5af0-8275-41bb-be8b-d59113564262",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4d93c5bc487d08a0aa240a0941d56",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-d48f7558-1735-43bd-a471-5bda10cc764e",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-415a821e-4447-4b04-9544-44b6a8618502",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-5d2d0c0b-3ae1-4ccb-8086-b655e7643a22",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4da1ed54487d09f0b773b32c6b359",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-9585fd15-7ec2-42b5-9a58-8608695e294b",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-47b569a6-c87a-4bff-bc30-e3d128feff8e",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-302e0860-9361-4612-895f-49fc735364d6",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4daa6c24887d0bbba497b6bad972d",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-04317abf-f775-4539-ad2b-582b61e78cd9",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-bda0ef42-98b4-44af-8555-6f9246c23e89",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-d8a7d460-24f9-4629-a533-3c6d4a21e6e2",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4ddfe729087d0909bfc6e2124962c",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "msg_07c85bcdcc92b7fb016ac4d862a2e087d0b5fc3e77b79d8c19",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-d8e9842a-77e7-40db-8a86-e74c266a8247",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "role": "delegated_worker",
+          "contribution": "Nightjar: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "msg_07c85bcdcc92b7fb016ac4d862a2e087d0b5fc3e77b79d8c19",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "parent",
+          "contribution": "Parent takeover: final geometry, materials and delivery review.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4ddfe729087d0909bfc6e2124962c",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "blink construction",
+          "subject": "nightjar",
+          "assessment": "issue",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4daa6c24887d0bbba497b6bad972d",
+              "role": "assessment"
+            }
+          ],
+          "note": "Initial eyelid looked like a cap; revised to slit closure."
+        },
+        {
+          "criterion": "visual quality",
+          "subject": "nightjar",
+          "assessment": "unresolved",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4ddfe729087d0909bfc6e2124962c",
+              "role": "assessment"
+            }
+          ],
+          "note": "Direct finishing is recorded; Hydra-level quality from guidance alone is not established."
+        },
+        {
+          "criterion": "surface texture",
+          "subject": "nightjar",
+          "assessment": "unresolved",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-d8e9842a-77e7-40db-8a86-e74c266a8247",
+              "role": "assessment"
+            }
+          ],
+          "note": "Final review preserves broad folded vanes and somewhat regular mottling."
+        }
+      ],
+      "limits": [
+        "Concurrent bird tracks; exact interleaving unavailable.",
+        "Final birds have mixed authorship. Later user approval is unrecorded."
+      ],
+      "artifactEvidence": {
+        "nightjar": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-7743097c-3a0f-447c-94ef-6963864c7706",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-a52f5af0-8275-41bb-be8b-d59113564262",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-d48f7558-1735-43bd-a471-5bda10cc764e",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-415a821e-4447-4b04-9544-44b6a8618502",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-5d2d0c0b-3ae1-4ccb-8086-b655e7643a22",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-302e0860-9361-4612-895f-49fc735364d6",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-9585fd15-7ec2-42b5-9a58-8608695e294b",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-47b569a6-c87a-4bff-bc30-e3d128feff8e",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-bda0ef42-98b4-44af-8555-6f9246c23e89",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-d8a7d460-24f9-4629-a533-3c6d4a21e6e2",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Phoenix · direct parent finishing",
@@ -309,7 +4038,235 @@
       "subject": "phoenix",
       "captureSubjects": ["phoenix"],
       "capture": "sol61-creatures-delivery",
-      "source": "sol61-phoenix-parent3-source"
+      "source": "sol61-phoenix-parent3-source",
+      "id": "episode-22",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+        "event": "msg_0b0b493fbd4465cc016ac4ddfe729087d0909bfc6e2124962c",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4dcd55ac887d0ab1cd8d08228fb08",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-29772f22-fb34-41d1-8d69-02674544673b",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-361a3a30-2465-49e1-8c2a-251cf5844ae9",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-4623d7f4-9355-4f9d-ae7a-376a33264791",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4dd8bfeec87d0bd5504276a0b8b24",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-ce7f5bdb-1631-4d9f-8bcb-103e5b5adaa8",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-09e9751d-91ad-4317-9758-e93911816e77",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-90adb895-5710-4f61-80f7-725a37085959",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-db9ca688-3086-46ce-a920-6c035e4ddaf7",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-3b0b4110-3d70-41ef-9456-a39dbc29e661",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-ff559994-9830-43b5-a2a1-0e7999fed6bd",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-c54fe586-167f-4319-9ea2-aae9ac6546af",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4ddfe729087d0909bfc6e2124962c",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110f7-c80f-7621-95a2-2ef94cbc5c93",
+          "event": "msg_02f7fce134afe21e016ac4dc30cb4487d0ab2201a3a5f5790f",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-d8e9842a-77e7-40db-8a86-e74c266a8247",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "role": "delegated_worker",
+          "contribution": "Phoenix: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110f7-c80f-7621-95a2-2ef94cbc5c93",
+              "event": "msg_02f7fce134afe21e016ac4dc30cb4487d0ab2201a3a5f5790f",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "parent",
+          "contribution": "Parent takeover: final geometry, materials and delivery review.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4ddfe729087d0909bfc6e2124962c",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "wing construction",
+          "subject": "phoenix",
+          "assessment": "improved",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4ddfe729087d0909bfc6e2124962c",
+              "role": "assessment"
+            }
+          ],
+          "note": "Parent reports fitted shoulder feathers after correcting the exposed spar."
+        },
+        {
+          "criterion": "surface texture",
+          "subject": "phoenix",
+          "assessment": "unresolved",
+          "actor": "Parent reviewer",
+          "basis": "reviewer",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-d8e9842a-77e7-40db-8a86-e74c266a8247",
+              "role": "assessment"
+            }
+          ],
+          "note": "Final flight rows and trailing vanes remain simpler than the Hydra reference."
+        }
+      ],
+      "limits": [
+        "Concurrent bird tracks; exact interleaving unavailable.",
+        "Final birds have mixed authorship. Later user approval is unrecorded."
+      ],
+      "artifactEvidence": {
+        "phoenix": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-29772f22-fb34-41d1-8d69-02674544673b",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-ce7f5bdb-1631-4d9f-8bcb-103e5b5adaa8",
+              "role": "edit"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-db9ca688-3086-46ce-a920-6c035e4ddaf7",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-361a3a30-2465-49e1-8c2a-251cf5844ae9",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-4623d7f4-9355-4f9d-ae7a-376a33264791",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-09e9751d-91ad-4317-9758-e93911816e77",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-90adb895-5710-4f61-80f7-725a37085959",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-ff559994-9830-43b5-a2a1-0e7999fed6bd",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-c54fe586-167f-4319-9ea2-aae9ac6546af",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Delivery · animation and materials round-trip",
@@ -323,8 +4280,368 @@
       "subject": "phoenix",
       "capture": "sol61-creatures-delivery",
       "source": "sol61-creatures-delivery/source/src/art3d",
-      "comparison": "roundtrip"
+      "comparison": "roundtrip",
+      "id": "episode-23",
+      "thread": "01a11074-276e-7832-9a72-b648659e3235",
+      "anchorRef": {
+        "thread": "01a11074-276e-7832-9a72-b648659e3235",
+        "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+        "event": "msg_0b0b493fbd4465cc016ac4de756ba487d09dda5bae9ebc20eb",
+        "role": "assessment"
+      },
+      "evidence": [
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4ddfe729087d0909bfc6e2124962c",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-7e570a1a-f424-4661-a2ed-c44d936fc365",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-93e5f9d1-4a11-451f-b324-756a2f2d2356",
+          "role": "verification"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-eb8856f6-28c6-498c-ae06-80862048b767",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-f9790cbe-1c76-4532-96e8-62e5fc612cba",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-d10e4643-0e4f-4624-a1dd-b4f11f50936d",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-88e1ad9c-dcdd-4df1-8c3f-6c629d293eb9",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-d2fbddf8-0aab-47a1-a885-a64cb7ec759e",
+          "role": "action"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4de756ba487d09dda5bae9ebc20eb",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-f80e25a5-c9e4-48eb-b393-faff026c2321",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-36e39f0c-338d-46e4-a6be-5af2e82c64a2",
+          "role": "inspection"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "exec-eea74535-3ff5-4a30-af8b-382da0fbaaef",
+          "role": "edit"
+        },
+        {
+          "thread": "01a11074-276e-7832-9a72-b648659e3235",
+          "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+          "event": "msg_0b0b493fbd4465cc016ac4debe7ca887d088c69fe55597232c",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+          "event": "msg_07c85bcdcc92b7fb016ac4d862a2e087d0b5fc3e77b79d8c19",
+          "role": "assessment"
+        },
+        {
+          "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "turn": "01a110f7-c80f-7621-95a2-2ef94cbc5c93",
+          "event": "msg_02f7fce134afe21e016ac4dc30cb4487d0ab2201a3a5f5790f",
+          "role": "assessment"
+        }
+      ],
+      "actors": [
+        {
+          "threadId": "01a110d4-2ece-78a0-9310-612920967f4d",
+          "role": "delegated_worker",
+          "contribution": "Nightjar: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-2ece-78a0-9310-612920967f4d",
+              "turn": "01a110d4-2f29-7a53-97c7-33a21f31b7b3",
+              "event": "msg_07c85bcdcc92b7fb016ac4d862a2e087d0b5fc3e77b79d8c19",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+          "role": "delegated_worker",
+          "contribution": "Phoenix: construction and rig; four guided review rounds.",
+          "evidence": [
+            {
+              "thread": "01a110d4-838e-7522-8052-3fb3aa39fa9d",
+              "turn": "01a110f7-c80f-7621-95a2-2ef94cbc5c93",
+              "event": "msg_02f7fce134afe21e016ac4dc30cb4487d0ab2201a3a5f5790f",
+              "role": "assessment"
+            }
+          ]
+        },
+        {
+          "threadId": "01a11074-276e-7832-9a72-b648659e3235",
+          "role": "parent",
+          "contribution": "Parent takeover: final geometry, materials and delivery review.",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "msg_0b0b493fbd4465cc016ac4debe7ca887d088c69fe55597232c",
+              "role": "assessment"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "criterion": "export integrity",
+          "subject": "nightjar",
+          "assessment": "passed",
+          "actor": "Recorded verification",
+          "basis": "verification",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-93e5f9d1-4a11-451f-b324-756a2f2d2356",
+              "role": "verification"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-d2fbddf8-0aab-47a1-a885-a64cb7ec759e",
+              "role": "verification"
+            }
+          ],
+          "note": "Historical browser check includes animated GLB reload; not aesthetic equivalence."
+        },
+        {
+          "criterion": "user approval",
+          "subject": "nightjar",
+          "assessment": "unrecorded",
+          "actor": "Case curator",
+          "basis": "record_limit",
+          "evidence": [],
+          "note": "No later user approval of the final bird appears in the collected exports."
+        },
+        {
+          "criterion": "export integrity",
+          "subject": "phoenix",
+          "assessment": "passed",
+          "actor": "Recorded verification",
+          "basis": "verification",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-93e5f9d1-4a11-451f-b324-756a2f2d2356",
+              "role": "verification"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-d2fbddf8-0aab-47a1-a885-a64cb7ec759e",
+              "role": "verification"
+            }
+          ],
+          "note": "Historical browser check includes animated GLB reload; not aesthetic equivalence."
+        },
+        {
+          "criterion": "user approval",
+          "subject": "phoenix",
+          "assessment": "unrecorded",
+          "actor": "Case curator",
+          "basis": "record_limit",
+          "evidence": [],
+          "note": "No later user approval of the final bird appears in the collected exports."
+        },
+        {
+          "criterion": "export integrity",
+          "subject": "hydra",
+          "assessment": "passed",
+          "actor": "Recorded verification",
+          "basis": "verification",
+          "evidence": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-d2fbddf8-0aab-47a1-a885-a64cb7ec759e",
+              "role": "verification"
+            }
+          ],
+          "note": "Recorded final round-trip receipts with sampled error; not an aesthetic assessment."
+        }
+      ],
+      "limits": [
+        "Concurrent bird tracks; exact interleaving unavailable.",
+        "Final birds have mixed authorship. Later user approval is unrecorded."
+      ],
+      "artifactEvidence": {
+        "hydra": {
+          "producedBy": [],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-f80e25a5-c9e4-48eb-b393-faff026c2321",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-36e39f0c-338d-46e4-a6be-5af2e82c64a2",
+              "role": "inspection"
+            }
+          ]
+        },
+        "nightjar": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-eea74535-3ff5-4a30-af8b-382da0fbaaef",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-eb8856f6-28c6-498c-ae06-80862048b767",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-f9790cbe-1c76-4532-96e8-62e5fc612cba",
+              "role": "inspection"
+            }
+          ]
+        },
+        "phoenix": {
+          "producedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-eea74535-3ff5-4a30-af8b-382da0fbaaef",
+              "role": "edit"
+            }
+          ],
+          "inspectedBy": [
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-d10e4643-0e4f-4624-a1dd-b4f11f50936d",
+              "role": "inspection"
+            },
+            {
+              "thread": "01a11074-276e-7832-9a72-b648659e3235",
+              "turn": "01a110d1-349b-7660-9a84-86a86b8ce265",
+              "event": "exec-88e1ad9c-dcdd-4df1-8c3f-6c629d293eb9",
+              "role": "inspection"
+            }
+          ]
+        }
+      }
     }
   ],
-  "outcome": "The living Hydra received positive user feedback. The final Nightjar and Phoenix remain parent-reviewed; subsequent user approval is not recorded."
+  "outcome": "The living Hydra received positive user feedback. The final Nightjar and Phoenix remain parent-reviewed; subsequent user approval is not recorded.",
+  "sourceKeys": {
+    "test-results/art-direction-before/StudyViewer.tsx": "src/art3d/StudyViewer.tsx",
+    "test-results/art-direction-before/animation.ts": "src/art3d/animation.ts",
+    "test-results/art-direction-before/models.ts": "src/art3d/models.ts",
+    "test-results/sol-audit-round2-source/animation.ts": "src/art3d/animation.ts",
+    "test-results/sol-audit-round2-source/models.ts": "src/art3d/models.ts",
+    "test-results/sol-audit-round2-source/newStudies.ts": "src/art3d/newStudies.ts",
+    "test-results/sol-audit-round3-source/ArtStudio.tsx": "src/art3d/ArtStudio.tsx",
+    "test-results/sol-audit-round3-source/animation.ts": "src/art3d/animation.ts",
+    "test-results/sol-audit-round3-source/models.ts": "src/art3d/models.ts",
+    "test-results/sol-audit-round3-source/newStudies.ts": "src/art3d/newStudies.ts",
+    "test-results/sol-audit-round4-source/ArtStudio.tsx": "src/art3d/ArtStudio.tsx",
+    "test-results/sol-audit-round4-source/animation.ts": "src/art3d/animation.ts",
+    "test-results/sol-audit-round4-source/models.ts": "src/art3d/models.ts",
+    "test-results/sol-audit-round4-source/newStudies.ts": "src/art3d/newStudies.ts",
+    "test-results/sol-audit-round5-source/ArtStudio.tsx": "src/art3d/ArtStudio.tsx",
+    "test-results/sol-audit-round5-source/animation.ts": "src/art3d/animation.ts",
+    "test-results/sol-audit-round5-source/models.ts": "src/art3d/models.ts",
+    "test-results/sol-audit-round5-source/newStudies.ts": "src/art3d/newStudies.ts",
+    "test-results/sol-audit-final-source/ArtStudio.tsx": "src/art3d/ArtStudio.tsx",
+    "test-results/sol-audit-final-source/animation.ts": "src/art3d/animation.ts",
+    "test-results/sol-audit-final-source/models.ts": "src/art3d/models.ts",
+    "test-results/sol-audit-final-source/newStudies.ts": "src/art3d/newStudies.ts",
+    "test-results/creature-redo-baseline/animation.ts": "src/art3d/animation.ts",
+    "test-results/creature-redo-baseline/models.ts": "src/art3d/models.ts",
+    "test-results/creature-redo-baseline/newStudies.ts": "src/art3d/newStudies.ts",
+    "test-results/creature-redo-source/ArtStudio.css": "src/art3d/ArtStudio.css",
+    "test-results/creature-redo-source/animation.ts": "src/art3d/animation.ts",
+    "test-results/creature-redo-source/models.ts": "src/art3d/models.ts",
+    "test-results/creature-redo-source/newStudies.ts": "src/art3d/newStudies.ts",
+    "test-results/sol61-creature-baseline-source/StudyViewer.tsx": "src/art3d/StudyViewer.tsx",
+    "test-results/sol61-creature-baseline-source/animation.ts": "src/art3d/animation.ts",
+    "test-results/sol61-creature-baseline-source/hydra.ts": "src/art3d/hydra.ts",
+    "test-results/sol61-creature-baseline-source/models.ts": "src/art3d/models.ts",
+    "test-results/sol61-nightjar-round1-source/nightjar.ts": "src/art3d/nightjar.ts",
+    "test-results/sol61-phoenix-round1-source/phoenix.ts": "src/art3d/phoenix.ts",
+    "test-results/sol61-nightjar-round2-source/nightjar.ts": "src/art3d/nightjar.ts",
+    "test-results/sol61-phoenix-round2-source/phoenix.test.ts": "src/art3d/phoenix.test.ts",
+    "test-results/sol61-phoenix-round2-source/phoenix.ts": "src/art3d/phoenix.ts",
+    "test-results/sol61-nightjar-round3-source/nightjar.test.ts": "src/art3d/nightjar.test.ts",
+    "test-results/sol61-nightjar-round3-source/nightjar.ts": "src/art3d/nightjar.ts",
+    "test-results/sol61-phoenix-round3-source/phoenix.test.ts": "src/art3d/phoenix.test.ts",
+    "test-results/sol61-phoenix-round3-source/phoenix.ts": "src/art3d/phoenix.ts",
+    "test-results/sol61-nightjar-round4-source/nightjar.test.ts": "src/art3d/nightjar.test.ts",
+    "test-results/sol61-nightjar-round4-source/nightjar.ts": "src/art3d/nightjar.ts",
+    "test-results/sol61-phoenix-round4-source/phoenix.test.ts": "src/art3d/phoenix.test.ts",
+    "test-results/sol61-phoenix-round4-source/phoenix.ts": "src/art3d/phoenix.ts",
+    "test-results/sol61-nightjar-final2-source/animation.ts": "src/art3d/animation.ts",
+    "test-results/sol61-nightjar-final2-source/models.ts": "src/art3d/models.ts",
+    "test-results/sol61-nightjar-final2-source/nightjar.test.ts": "src/art3d/nightjar.test.ts",
+    "test-results/sol61-nightjar-final2-source/nightjar.ts": "src/art3d/nightjar.ts",
+    "test-results/sol61-phoenix-parent3-source/ArtStudio.css": "src/art3d/ArtStudio.css",
+    "test-results/sol61-phoenix-parent3-source/phoenix.ts": "src/art3d/phoenix.ts",
+    "test-results/sol61-creatures-delivery/source/src/art3d/ArtStudio.css": "src/art3d/ArtStudio.css",
+    "test-results/sol61-creatures-delivery/source/src/art3d/animation.ts": "src/art3d/animation.ts",
+    "test-results/sol61-creatures-delivery/source/src/art3d/models.ts": "src/art3d/models.ts",
+    "test-results/sol61-creatures-delivery/source/src/art3d/nightjar.test.ts": "src/art3d/nightjar.test.ts",
+    "test-results/sol61-creatures-delivery/source/src/art3d/nightjar.ts": "src/art3d/nightjar.ts",
+    "test-results/sol61-creatures-delivery/source/src/art3d/phoenix.test.ts": "src/art3d/phoenix.test.ts",
+    "test-results/sol61-creatures-delivery/source/src/art3d/phoenix.ts": "src/art3d/phoenix.ts"
+  },
+  "sourceSubjects": {
+    "src/art3d/hydra.ts": "hydra",
+    "src/art3d/nightjar.ts": "nightjar",
+    "src/art3d/phoenix.ts": "phoenix",
+    "src/art3d/phoenix.test.ts": "phoenix",
+    "src/art3d/nightjar.test.ts": "nightjar"
+  }
 }
