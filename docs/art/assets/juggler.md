@@ -14,7 +14,7 @@ The existing source portrait is the reference for the ear/horn contour, wingless
 
 The first clay pass established the raised-arm negative spaces but exposed protruding eyes, abrupt wrist transitions and shading bands on the limbs. The second pass recessed and flattened the eyes, extended each palm root inside its actual forearm direction, reduced the low pelvic bulge and widened the abdominal transition. Wider finite differences smooth skin normals without changing the contour. The two spirits now have different curves. A small exposed core tip at the flame base was buried inside its outer volume.
 
-Front, side and rear clay views cover the body-to-head transition, shoulders, elbows, wrists, ears and horn roots. The original and revised candidates are frozen in `test-results/juggler-construction-source/` and `juggler-structure2-source/`, with corresponding review directories. The final builder is frozen in `test-results/juggler-materials-source/`; the final multi-view, UI, motion and export captures are in `test-results/juggler-final/`.
+Front, side and rear clay views cover the body-to-head transition, shoulders, elbows, wrists, ears and horn roots.
 
 Matte violet skin, warmer pale facial planes, directional keratin and restrained emissive spirits separate the materials. The posture and spirits carry identity at phone size; the surface detail remains quiet. These are author observations, not user approval.
 
@@ -26,6 +26,6 @@ The body has an anchor/neck/head skin rig. Weighting explicitly excludes the rai
 
 The full stance and hands extend the original bust-length illustration. The spirits are opaque, gently emissive fantasy shapes with authored drift; this is not a fire simulation or a physical juggling trajectory. The restrained head/ear motion is authored animation. Materials may render differently in other GLB viewers. Original SVGs and game mechanics are preserved.
 
-Historical captures, snapshots and delivery receipts: `test-results/juggler-construction-source/`; `test-results/juggler-delivery/`; `test-results/juggler-final/`; `test-results/juggler-materials-source/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/juggler-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-juggler-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.

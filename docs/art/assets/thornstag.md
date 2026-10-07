@@ -18,7 +18,7 @@ The stag halts at a sound, holding one forehoof clear of the ground while three 
 | Pose revision       | The lifted far forehoof was partly hidden. Moved the lifted gesture to the near side and planted the opposite foreleg, making the halt readable in the main view.                                                                                                            |
 | Final color         | A head-space muzzle mask extended down onto the raised foreleg. Bounded it to the actual face; the pale throat remains a separate intentional region.                                                                                                                        |
 
-Snapshots and visual evidence are in `test-results/thornstag-construction/`, `thornstag-structure2/` and `thornstag-structure3/`. Final checks and captures are in `test-results/thornstag-final/`. Delivery images, GLB, video and source hashes are in `test-results/thornstag-delivery/`. Generated evidence is ignored; `src/art3d/thornstag.ts` and its tests are the durable sources.
+Generated evidence is ignored; `src/art3d/thornstag.ts` and its tests are the durable sources.
 
 ## Construction and motion
 
@@ -32,6 +32,6 @@ Pigment, normal and packed roughness textures remain embedded in the exported GL
 
 **Visual limits:** antlers, fur and small hoof/facial forms remain stylized. Separate terminal lofts preserve the fine antler tips; the crown is not one manufacturing-ready mesh. The stance remains fixed during the loop. Passing checks and author review do not establish user approval or equal visual quality to Hydra.
 
-Historical captures, snapshots and delivery receipts: `test-results/thornstag-construction/`; `test-results/thornstag-delivery/`; `test-results/thornstag-final/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/thornstag-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-thornstag-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.

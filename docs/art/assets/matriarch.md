@@ -17,7 +17,7 @@ A protective bear braces behind a low, watchful head. The high shoulders carry t
 | Surface             | Coarse relief made the coat look corrugated and exposed mapping transitions around the haunch. Reduced that relief and moved the subtle larger pigment variation into continuous object-space vertex color. Fine guard-hair texture remains quiet over the broad planes. |
 | Final               | Inspected the final material, neutral clay, silhouette, reverse view, enlarged face/body, phone framing, blink and motion samples. Exported and reloaded the animated model for geometry and material comparison.                                                        |
 
-Initial source snapshots and images are under `test-results/matriarch-construction/`, `matriarch-structure2/` and `matriarch-surface/`. Final receipts are under `test-results/matriarch-final/`. Delivery images, model, video and source hashes are in `test-results/matriarch-delivery/`. Generated evidence is ignored; the model and its tests are durable sources.
+Generated evidence is ignored; the model and its tests are durable sources.
 
 ## Construction and motion
 
@@ -33,6 +33,6 @@ Open `/?art=3d&study=matriarch`. The existing gallery supports animated GLB, PNG
 
 **Visual limits:** the fur is a surface approximation, with simplified broad forms and small facial details. The feet stay planted and the motion is deliberately restrained. Author review and passing checks do not establish user approval or equal visual quality to Hydra.
 
-Historical captures, snapshots and delivery receipts: `test-results/matriarch-construction/`; `test-results/matriarch-delivery/`; `test-results/matriarch-final/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/matriarch-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-matriarch-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.

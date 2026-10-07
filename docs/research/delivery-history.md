@@ -1,5 +1,7 @@
 # Historical delivery evidence
 
+**Availability after lean cleanup:** this is a dated delivery record. Superseded browser/regression output and older v3 simulation histories referenced below were retired. Published Hearth study evidence and frozen tavern-spell playtests remain; other historical output paths are not current navigation instructions. See [retained evidence and retirement results](../engineering/cleanup-triage.md).
+
 These are dated delivery observations through 2026-10-06, not the current repository gate. [Verification contracts](../engineering/checks.md) own current checks. Original research receipts remain unchanged.
 
 The six accepted workshop improvements are implemented on the three independent game engines. This page records the initial **v3** workshop delivery. The later [Night Market expansion](content-expansions.md) advances Blindside and Last Hearth to **v4**; Spire remains **v3**. Content manifests and separate practice saves make compatibility explicit. Research notes describe the curated content and fidelity limits.
@@ -38,7 +40,7 @@ The current tree includes the Night Market content, [tactical challenges](../gui
 - **3/3 live challenges** are solved and replay-validated by `npm run engine:challenges`. The solver uses full seeded state; it does not establish hidden-information playing strength.
 - **523 standalone SVGs** export and decode in the browser. Cabinet search handles empty results; each export removes its temporary build bundle.
 
-This cleanup changes presentation, import handling and export tooling; game rules and replay versions remain unchanged. Final browser screenshots are under the ignored `test-results/cleanup-final/` directory. The v3 simulation evidence below is historical and was not rerun for this cleanup.
+This cleanup changes presentation, import handling and export tooling; game rules and replay versions remain unchanged. Final browser screenshots were recorded under the ignored `test-results/cleanup-final/` directory. The v3 simulation evidence below is historical and was not rerun for this cleanup.
 
 ## Game depth and observable AI · 2026-10-04
 
@@ -50,14 +52,14 @@ Last Hearth now has five heroes with typed abilities, including Archivist recall
 - **50/50 AI experiment lobbies** complete and replay exactly with per-action pool conservation. The reserved 20-pair result is baseline mean placement **4.50** versus search **4.65**, with search better/tied/worse in **8/4/8** pairs. The candidate is not promoted as stronger. [Experiment report and receipts](experiments/2026-10-04-hearth-ai-v1.md) retain configuration, provenance, compute and uncertainty.
 - The two checked-in Hearth fixture histories were reconstructed through legal v5 commands; their previous winning/losing outcomes remain unchanged. Prior exports are preserved, not silently migrated.
 
-The evaluated engine is pinned to `77dad48`; later selected-unit keyword labels change only presentation. Raw experiment outputs are under `test-results/ai/`, full browser evidence under `test-results/hearth-ai-final-browser/`, and final keyword screenshots under `test-results/hearth-keywords-browser/`.
+The evaluated engine is pinned to `77dad48`; later selected-unit keyword labels change only presentation. Raw experiment outputs are under `test-results/ai/`, full browser evidence was recorded under `test-results/hearth-ai-final-browser/`, and final keyword screenshots were recorded under `test-results/hearth-keywords-browser/`.
 
 ## Evidence locations
 
 - `src/games/*/domain/*.test.ts`: mechanism and lifecycle regressions.
 - `src/shared/*.test.ts`, `src/shared/evidence/`, `src/mods/enabled.test.ts`: replay, compatibility, recording and live example-pack behavior.
 - `tests/browser/`: controls, art, persistence and responsive layout.
-- `test-results/workshop-polish/`: final check logs, browser screenshots/traces and comparison output, ignored by Git. The earlier full suite remains in `test-results/browser-final/`.
+- `test-results/workshop-polish/`: final check logs, browser screenshots/traces and comparison output, ignored by Git. The earlier full suite was recorded in `test-results/browser-final/`.
 - `test-results/workshop-polish/playtests/{simulation,spire,battlegrounds}/`: the isolated v3 command histories, summaries and automated evidence exports. Ordinary simulation runs write to `test-results/{simulation,spire,battlegrounds}/`.
 - `tests/fixtures/`: normal-run victory/defeat histories pinned to each game's current rules version, without injected terminal state.
 - [Workshop v3 playtests](playtests/2026-10-02-workshop-v3.md): outcomes, methods and remaining human questions.
@@ -95,6 +97,6 @@ Eight spells are playable in both Hearth modes with explicit purchase/cast comma
 - **233 unit tests / 34 files**, formatting, strict TypeScript and production build pass.
 - **25/25 lifecycle lobbies**: 20 Classic across all five heroes and five complete Mixed Rivals lobbies; every accepted action checks supply/capacity and every final state replays exactly. These checks do not establish balance, enjoyment or policy strength.
 - **604 exported SVGs**, eight new spell subjects; all 596 earlier assets retain identical recorded pixel hashes. New artwork and real UI are inspected at desktop/phone sizes.
-- **57/57 browser checks pass** in the full suite, including all games, challenge playback, the export cabinet, historical decision explorer and new spell controls. Disposable Chrome profiles ran outside the restricted macOS command sandbox. Screenshots remain in `test-results/browser-tavern-spells-final/`. All four spell browser cases were rerun successfully after the action-enumeration cleanup, under `test-results/browser-tavern-spells-cleanup/`.
+- **57/57 browser checks pass** in the full suite, including all games, challenge playback, the export cabinet, historical decision explorer and new spell controls. Disposable Chrome profiles ran outside the restricted macOS command sandbox. Screenshots were recorded in `test-results/browser-tavern-spells-final/`. All four spell browser cases were rerun successfully after the action-enumeration cleanup, under `test-results/browser-tavern-spells-cleanup/`.
 
 The prior feature-art expansion is closed in `5784264`, with 212 unit tests/build and seven targeted artwork browser checks passing before its commit. Its 73 additions are included in the current catalogue.

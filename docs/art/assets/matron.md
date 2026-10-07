@@ -20,12 +20,12 @@ Material inspection exposed a different error: the cutter for the gathering hand
 
 Materials separate matte plum cloth, pale skin, dark directional hair, pale horn and restrained bronze. The full-size and phone views preserve the horn/crown contour and unequal hands. Front, side and rear inspection covers the waist, cuffs, hair roots and hem; the blink and three motion poses check the assembled result. These are author observations, not user approval.
 
-Paired reimport review exposed blackened exported hair even after numerical and browser checks passed. The live material ignored vertex colors, while the GLB importer applied a leftover dark color attribute. Removing that unused attribute repaired the mismatch; a regression assertion guards it. Final appearance evidence is `test-results/matron-export-fixed/`, with the exact builder in `test-results/matron-export-fixed-source/`. Earlier `matron-final/` captures retain the rejected color defect. Numerical deformation checks did not detect this appearance failure.
+Paired reimport review exposed blackened exported hair even after numerical and browser checks passed. The live material ignored vertex colors, while the GLB importer applied a leftover dark color attribute. Removing that unused attribute repaired the mismatch; a regression assertion guards it. Earlier `matron-final/` captures retain the rejected color defect. Numerical deformation checks did not detect this appearance failure.
 
 ## Evidence and limits
 
 The full stance, hands and robe extend the original bust-length illustration. Her face is a stylized humanoid interpretation. The restrained six-second head/hair response is authored motion; the cloth remains still and is not a garment simulation. Original SVGs and game mechanics are preserved. Materials may render differently in other GLB viewers.
 
-Historical captures, snapshots and delivery receipts: `test-results/matron-construction-source/`; `test-results/matron-delivery/`; `test-results/matron-export-fixed/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/matron-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-matron-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.

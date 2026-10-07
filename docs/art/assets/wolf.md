@@ -18,7 +18,7 @@ A woodland sentry stands with its head raised to listen. The lifted muzzle and a
 | Surface 3           | Fusing many small locks into the body produced jagged, evenly tiled grooves. Rejected that pattern rather than masking it with texture.                                                                                                                                                                      |
 | Surface 4 and final | Replaced the rows with a few broad swept forms, reduced their side relief, and kept the fine coat quiet. The reverse view exposed an overextended rear hock; shortened that bend before final export.                                                                                                        |
 
-Construction evidence is under `test-results/wolf-construction/`, `wolf-clay/` and `wolf-structure2/`. Rejected surface passes are preserved under `wolf-surface1/` through `wolf-surface4/`. Final visual and functional receipts are in `test-results/wolf-final/`; delivery copies and a source hash manifest are in `test-results/wolf-delivery/`. The H.264 preview decodes at 994 × 674 for 6.033 seconds. These generated directories are ignored. `src/art3d/wolf.ts` is the durable model source.
+Rejected surface passes are preserved under `wolf-surface1/` through `wolf-surface4/`. The H.264 preview decodes at 994 × 674 for 6.033 seconds. These generated directories are ignored. `src/art3d/wolf.ts` is the durable model source.
 
 ## Construction and motion
 
@@ -32,6 +32,6 @@ Open `/?art=3d&study=wolf`. The original SVG remains beside the model. The stand
 
 **Visual limits:** the coat uses surface maps and simplified broad ruff forms rather than individual hairs. Small facial and paw forms remain stylized. Motion is restrained and all four paws stay planted. Passing technical checks and author review do not establish user approval or equivalence in visual quality to Hydra.
 
-Historical captures, snapshots and delivery receipts: `test-results/wolf-construction/`; `test-results/wolf-delivery/`; `test-results/wolf-final/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/wolf-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-wolf-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.
