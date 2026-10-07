@@ -21,7 +21,7 @@ The [Cornell Golden Eagle reference](https://www.allaboutbirds.org/guide/Golden_
 | Body and material | Head and breast contours looked tiled in the enlarged view. Reduced relief and color contrast, reserved the short head contours for the nape, and quieted the wing palette. Added local toe-shield markings.                                      |
 | Grip              | Testing all eight toe surfaces against the actual ledge found a small clearance under one toe. Lowered the grip assembly and fitted the tarsus endpoint to it; the tightened contact check passes.                                                |
 
-The first paired GLB review exposed a smooth exported rock where the live view had flat facets. Three.js material `flatShading` did not preserve those planes by itself. The correction stores independent face vertices and face normals in the geometry; a subject regression check now covers them. The corrected source is frozen in `test-results/stormroc-export-fixed-source/`.
+The first paired GLB review exposed a smooth exported rock where the live view had flat facets. Three.js material `flatShading` did not preserve those planes by itself. The correction stores independent face vertices and face normals in the geometry; a subject regression check now covers them.
 
 ## Construction and motion
 
@@ -37,6 +37,6 @@ Generated feather pigment, barb relief, roughness and toe-shield textures remain
 
 **Visual limits:** feather spacing, skull planes and the rock remain stylized; the small display loop does not fold or fly the wings. The wing envelope, vane overlap and nape simplify avian anatomy. Fine barbs, toe scales and facial detail diminish on a phone. Fitted parts and surface layers are display geometry rather than a manufacturing-ready unified mesh. Technical checks and author review do not establish user approval or equal visual quality to Hydra.
 
-Historical captures, snapshots and delivery receipts: `test-results/stormroc-construction/`; `test-results/stormroc-delivery/`; `test-results/stormroc-export-fixed-source/`; `test-results/stormroc-export-fixed/`; `test-results/stormroc-final/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/stormroc-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-stormroc-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.

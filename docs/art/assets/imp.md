@@ -20,6 +20,6 @@ The material pass uses plum skin with a pale facial/chest region, dark sockets, 
 
 The crouch and hands extend a bust-length SVG into an authored full body. The face remains a broad stylized fiend; its proportions and restrained six-second listening/flex loop are fantasy interpretation, not anatomical or flight evidence. The original in-game SVG is preserved. Texture and lighting appearance can differ in other GLB viewers.
 
-Historical captures, snapshots and delivery receipts: `test-results/imp-construction-source/`; `test-results/imp-delivery/`; `test-results/imp-final/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/imp-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-imp-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.

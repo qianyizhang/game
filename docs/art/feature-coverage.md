@@ -1,5 +1,7 @@
 # Feature artwork coverage
 
+**Historical coverage record:** the baseline exports, regression comparison and review captures described below were retired in the [lean cleanup](../engineering/cleanup-triage.md). Counts describe that recorded run, not a current export inventory. Current artwork source and export commands remain maintained.
+
 The feature expansion added **73 SVG exports**, bringing the catalogue to **596 at delivery**. The subsequent [tavern spells](../guide/tavern-spells.md) add eight more, for **604 current exports**. Renderers are shared by the game and standalone exporter; the [source map](svg.md) and [art skill](../../skills/card-art/SKILL.md) govern future additions.
 
 | Feature                                           |                             Assets | In-game placement                                                                                       |
@@ -24,8 +26,8 @@ Existing Blindside shop/card expansions, Hearth minions and golden variants, Spi
 
 ## Historical acceptance evidence
 
-The baseline at `test-results/feature-art-before` contains 523 exports. The current export at `test-results/feature-art-current` contains 596. `test-results/feature-art-regression/review.json` records **73 additions, zero removals, zero changed existing assets, and 523 identical pixel hashes** under its recorded Sharp renderer. This is a regression check, not an aesthetic score.
+The baseline formerly at `test-results/feature-art-before` contained 523 exports. The then-current export formerly at `test-results/feature-art-current` contained 596. The retired `test-results/feature-art-regression/review.json` recorded **73 additions, zero removals, zero changed existing assets, and 523 identical pixel hashes** under its recorded Sharp renderer. This is a regression check, not an aesthetic score.
 
-The art was inspected enlarged and at small sizes, then in the actual desktop and phone UI. Review sheets and screenshots remain under ignored `test-results/feature-art-*` and `test-results/feature-art/browser/`. Browser coverage uses the repository's disposable-profile harness; the export cabinet was not browser-tested in this session.
+The art was inspected enlarged and at small sizes, then in the actual desktop and phone UI. Review sheets and screenshots were recorded under ignored `test-results/feature-art-*` and `test-results/feature-art/browser/`. Browser coverage uses the repository's disposable-profile harness; the export cabinet was not browser-tested in this session.
 
 Run `npm run check`, export with `npm run assets:export -- test-results/art-current`, and use the relevant browser files listed in the source map. The manifest remains the authority for current counts as content grows.

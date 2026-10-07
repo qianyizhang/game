@@ -19,7 +19,7 @@ git show REVISION:ORIGINAL_PATH > /tmp/original-document.md
 shasum -a 256 /tmp/original-document.md
 ```
 
-The output must match the recorded digest. The local exact-byte backup under `.work/backups/full-migration-docs-2026-10-07/` is separately protected. Neither new prose nor a missing capture can replace original evidence.
+The output must match the recorded digest. The redundant local document copies were retired after verifying every byte against reachable Git blobs; the recovery metadata remains under `.work/backups/full-migration-docs-2026-10-07/`. Neither new prose nor a missing capture can replace original evidence.
 
 The private trace recipe retains four original art-document paths pinned to an earlier full Git revision. These historical references deliberately remain unchanged. Current navigation points to the new homes; recorded JSON source paths, frozen hashes, rule versions, data and old generated bundles are not rewritten.
 

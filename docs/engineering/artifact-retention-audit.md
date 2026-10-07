@@ -1,6 +1,6 @@
 # Artifact retention audit — 2026-10-07
 
-**Decision: retain the audited tree.** The guarded retention dry run found zero eligible deletions. Duplicate bytes, absence of a textual reference and ignored Git status do not authorize retirement. No artifacts were deleted by this sweep.
+**Historical inventory; retention decision superseded by [authorized lean cleanup](cleanup-triage.md).** The original decision was to retain the audited tree. The guarded retention dry run found zero eligible deletions. Duplicate bytes, absence of a textual reference and ignored Git status do not authorize retirement. No artifacts were deleted by this sweep.
 
 ## Observed inventory
 
@@ -25,4 +25,4 @@ The largest groups include current migration/commit verification, frozen AI repo
 - `.work/backups/` is outside the inventory roots and automatic deletion authority. Its original maintenance, DCC and document recovery records remain protected separately. DCC source/asset backups matched the original receipt; all 45 original document blobs matched the recorded hashes.
 - No deduplication links, bulk disposable registrations, source replacements or hash rewrites were made. The current artist `.blend`, published GLB, audit and poses remain byte-identical to the pre-migration delivery.
 
-The occurrence-level report and dry-run decisions are retained in the protected migration session as `artifact-inventory-final.json` and `retention-final.json`. [Inventory limits](checks.md#artifact-inventory-limits) and [maintenance governance](maintenance.md#retention-and-deletion-authority) define the reproducible commands and authority boundaries. A separate closure audit under `.work/audits/full-migration-final/` validates session hashes and the final retention dry run after promotion. Future output is outside this dated observation.
+The superseded migration inventory snapshots were retired. The lean-cleanup retirement manifest preserves per-file paths, hashes and dispositions, and this dated report preserves the original aggregate observation. [Inventory limits](checks.md#artifact-inventory-limits) and [maintenance governance](maintenance.md#retention-and-deletion-authority) define the reproducible commands and authority boundaries. A separate closure audit under `.work/audits/full-migration-final/` validates session hashes and the final retention dry run after promotion. Future output is outside this dated observation.

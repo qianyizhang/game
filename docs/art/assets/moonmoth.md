@@ -20,7 +20,7 @@ The [UF/IFAS Luna moth account](https://ask.ifas.ufl.edu/publication/IN737) info
 | Final pigment   | The first contour variation made the eyespots too triangular. Reduced that variation, retaining rounded rings with mild irregularity.                                                                                                                                                       |
 | Export repair   | The first full browser run found that the exporter's normal-map sign conversion tried to draw a DataTexture through a canvas image API. Prepacked the green channel and paired it with negative Y normal scale, matching the existing creature convention while preserving the live relief. |
 
-Frozen construction/material sources and screenshots are under `test-results/moonmoth-construction/`, `moonmoth-structure2/`, `moonmoth-materials/` and `moonmoth-materials2/`. The first full check and captures are under `test-results/moonmoth-final/`; final repaired-export checks and captures are under `test-results/moonmoth-export-fixed/`. Delivered images, GLB, video and source hashes are under `test-results/moonmoth-delivery/`. Generated evidence is ignored. The builder, integration, tests and this record are durable sources.
+Generated evidence is ignored. The builder, integration, tests and this record are durable sources.
 
 ## Structure, materials and motion
 
@@ -34,6 +34,6 @@ Open `/?art=3d&study=moonmoth`. The gallery presents the original SVG beside the
 
 **Visual limits:** wing scales, down and antenna filaments are stylized and become less distinct at phone size. Wing thickness is a display interpretation; there is no biological translucency or flight dynamics. The broad still-wing pose and relatively simple body remain visible limits. Passing tests and author review do not establish user approval or equal visual quality to Hydra.
 
-Historical captures, snapshots and delivery receipts: `test-results/moonmoth-construction/`; `test-results/moonmoth-delivery/`; `test-results/moonmoth-export-fixed/`; `test-results/moonmoth-final/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/moonmoth-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-moonmoth-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.

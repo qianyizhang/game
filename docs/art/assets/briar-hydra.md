@@ -19,7 +19,7 @@ The retained [reference description](../../../packages/dcc-workbench/references/
 
 The 2026-10-07 pilot review recorded five pipeline and six browser checks passing. Its independent Blender/Three.js comparison covered 64 vertices at five times, with maximum sampled position difference 1.11001 × 10⁻⁶ model units. These are historical observations, not a substitute for fresh validation after changes.
 
-Historical captures and comparison JSON remain under ignored `test-results/dcc-pilot/final-browser/`; neutral source renders remain under `test-results/dcc-pilot/native/`. They are protected, unclassified evidence. Missing local evidence must be reported as unavailable, not recreated and described as the historical run.
+Historical captures and comparison JSON remain under ignored `test-results/dcc-pilot/final-browser/`; neutral source renders remain under `test-results/dcc-pilot/native/`. These selected views and comparison records were retained during lean cleanup; duplicate downloaded assets and earlier test runs were removed. Missing local evidence must be reported as unavailable, not recreated and described as the historical run.
 
 The exporter emitted NumPy floating-point warnings. Finite numeric accessor, weight, loop and pose checks bounded the published result; they did not explain the warning. The pilot is not hand-retopologized production topology or a mobile performance benchmark. The heads are stylized, the crest sparse and the motion restrained. Construction guides do not regenerate the remeshed skin automatically; changes to procedural graphs or UVs require explicit re-baking.
 
@@ -27,7 +27,7 @@ The original pilot also reported repository-wide formatting and Banner Bearer ge
 
 ## Maintenance migration verification — 2026-10-07
 
-The typed native/CLI migration re-exported the existing artist source without resaving it. The `.blend`, brief, GLB, authoring audit and pose samples remain byte-identical to the preceding delivery. The new receipt pins migrated code and the exact [preceding receipt](../../../packages/dcc-workbench/assets/receipts/872fbf5a08a52abb13b93d8cc92233625cc86b6faa02adf858b95add4913344f.json). Previous delivery bytes and source backups remain protected.
+The typed native/CLI migration re-exported the existing artist source without resaving it. The `.blend`, brief, GLB, authoring audit and pose samples remain byte-identical to the preceding delivery. The new receipt pins migrated code and the exact [preceding receipt](../../../packages/dcc-workbench/assets/receipts/872fbf5a08a52abb13b93d8cc92233625cc86b6faa02adf858b95add4913344f.json). The earlier delivery bytes equal the current published asset/audit/poses, so their redundant archive was retired. The original receipt stays tracked. The user retained the later pilot backup at `test-results/dcc-backups/briar-hydra-1791340517816.blend` and retired the earlier one.
 
 Fresh checks passed: eight Python contract tests, seven DCC pipeline tests, 390 application/geometry tests, four seeded simulation checks and three DCC browser cases. The browser again compared 64 vertices at five times, with maximum sampled error 1.11001 × 10⁻⁶ model units. Captures and comparison JSON are under `test-results/migration-2026-10-07/typed-dcc-browser/`. Desktop, phone and clay captures were inspected; this maintenance verification does not change approval status.
 

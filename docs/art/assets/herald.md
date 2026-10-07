@@ -12,9 +12,9 @@ A standing herald addresses the room with an open hand while leaning toward a pl
 
 The first clay pass exposed horn-root caps, an open waist seam and an ankle pushing through the robe. The staff grip also had 60 open mesh edges where its wrist exceeded the sampling volume. Moving the horn roots inside the skull, fitting the robe to the coat’s radial surface, lowering the boot ankle and enlarging the grip’s sampling volume repaired those defects. Smaller cheek, jaw and brow relief gives the long face quieter planes.
 
-The first waist repair fit only one height; the rear view still showed competing surfaces below the top ring. Fitting at each overlapping height and keeping a small outer clearance removes that interference. The original neckline also let the bare chest cover the new lapels. Restricting the chest surface to the actual opening gives the cloth a fitted border. Broader normal gradients soften visible sleeve centerline bands. Earlier construction captures and their source snapshots remain under `test-results/herald-construction*`, `herald-structure2*`, `herald-materials-fixed*` and `herald-fitting*`.
+The first waist repair fit only one height; the rear view still showed competing surfaces below the top ring. Fitting at each overlapping height and keeping a small outer clearance removes that interference. The original neckline also let the bare chest cover the new lapels. Restricting the chest surface to the actual opening gives the cloth a fitted border. Broader normal gradients soften visible sleeve centerline bands.
 
-Two intermediate local edit errors prevented candidates from loading: a duplicate color variable and an unmatched helper-call parenthesis. Their failed logs remain separate from final evidence.
+Two intermediate local edit errors prevented candidates from loading: a duplicate color variable and an unmatched helper-call parenthesis. Those failed checks are part of the dated review history.
 
 ## Construction and motion
 
@@ -24,6 +24,6 @@ A three-bone anchor/neck/head rig carries the continuous neck and face. Horns, e
 
 The stance, lower robe, boots and hand gestures extend the original portrait. Small garment edges remain visibly sampled under close inspection. Other GLB viewers may shade the materials differently. Original SVGs, game rules and save formats remain unchanged.
 
-Historical captures, snapshots and delivery receipts: `test-results/herald-construction*`; `test-results/herald-final/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/herald-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-herald-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.

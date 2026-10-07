@@ -18,7 +18,7 @@ Replacing the raised iris disc with pigmentation on one continuous eye surface e
 
 The wrap needed two separate corrections. Its side-wall winding was opposite the intended outward orientation even though the rim directions were correct. Side walls were reversed independently, and tests now check signed volume, radial wall normals and both rim normals. Its fitted radius also briefly picked up the relaxed arm; fitting now uses only the torso and legs. Binary refinement of that radius removes visible stepped bands without changing the subject’s stance. Skin sampling around the eye rim was refined as well.
 
-Frozen builders and matching views are retained in `test-results/watcher-construction-source/`, `watcher-structure2-source/`, `watcher-structure3-source/`, `watcher-structure4-source/` and `watcher-materials-source/`, with corresponding capture directories. Failed candidates remain as review history rather than final delivery evidence.
+Failed candidates are described in the dated review history.
 
 ## Construction and motion
 
@@ -28,6 +28,6 @@ A three-bone anchor/neck/head rig deforms the skin and fitted jerkin. Horns, mou
 
 The stance, hands, leather interpretation and lower garment extend the original portrait. The eye is a stylized cyclopean interpretation; its restrained scan and blink are authored transforms. Close inspection still shows some sampled edges around the garment openings and eye corners. Materials may render differently in other GLB viewers. Original SVGs and game mechanics remain unchanged.
 
-Historical captures, snapshots and delivery receipts: `test-results/watcher-construction-source/`; `test-results/watcher-delivery/`; `test-results/watcher-lid-final/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/watcher-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-watcher-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.

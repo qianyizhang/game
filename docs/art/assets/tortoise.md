@@ -33,6 +33,6 @@ Locally generated shell pigment, growth-ring relief, skin scales and packed roug
 
 **Visual limits:** this remains a stylized display creature in one braced stance. Scute layout, growth rings and skin mapping simplify regional anatomy. The bridge stays dark beneath the overhanging shell; fine scales and plant details become less distinct on a phone. The fitted shell parts, plates, claws and foliage are display geometry rather than a manufacturing-ready unified mesh. Passing tests and author review do not establish user approval or equal visual quality to Hydra.
 
-Historical captures, snapshots and delivery receipts: `test-results/tortoise-construction/`; `test-results/tortoise-delivery/`; `test-results/tortoise-final/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/tortoise-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-tortoise-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.

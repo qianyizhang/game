@@ -29,6 +29,6 @@ Two skinned meshes share five bones: an anchor, neck, head and two tail frames. 
 
 **Visual limits:** limb transitions, eyelids and throat locks remain stylized. Fine coat strands, whiskers and digits diminish on a phone. The pose holds a raised paw throughout the loop. Fitted parts are display geometry rather than a manufacturing-ready unified mesh. Technical checks and author review do not establish user approval or equal visual quality to Hydra.
 
-Historical captures, snapshots and delivery receipts: `test-results/stray-construction/`; `test-results/stray-delivery/`; `test-results/stray-final/`. These retained occurrences remain protected; absent local artifacts must be reported as unavailable.
+Retained delivery: `test-results/stray-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-stray-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.
