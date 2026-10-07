@@ -5,7 +5,37 @@ import { createStudyClip, LOOP_SECONDS } from './animation';
 import { loft } from './newStudies';
 
 describe('portable study animations', () => {
-  for (const id of ['nightjar', 'catalyst', 'phoenix', 'hydra', 'spiral', 'vajra'] as StudyId[]) {
+  for (const id of [
+    'nightjar',
+    'catalyst',
+    'phoenix',
+    'hydra',
+    'spiral',
+    'vajra',
+    'prowler',
+    'wolf',
+    'matriarch',
+    'thornstag',
+    'moonmoth',
+    'bogtoad',
+    'crocolisk',
+    'scavenger',
+    'guardian',
+    'tortoise',
+    'stormroc',
+    'stray',
+    'packcaller',
+    'cub',
+    'amalgam',
+    'imp',
+    'matron',
+    'juggler',
+    'watcher',
+    'herald',
+    'patron',
+    'squire',
+    'bannerbearer',
+  ] as StudyId[]) {
     it(`${id} binds every track to a real node and loops without a pose jump`, () => {
       const root = createStudy(id);
       try {
