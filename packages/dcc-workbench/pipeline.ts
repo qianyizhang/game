@@ -205,6 +205,10 @@ const inputFiles = [
   'briefs/briar-hydra.json',
   'sources/briar-hydra.blend',
   'blender/build_hydra.py',
+  'blender/head_shape.py',
+  'blender/head_components.py',
+  'blender/scale_components.py',
+  'blender/author_components.py',
   'blender/export_asset.py',
   'blender/authoring_plan.py',
   'blender/native_types.py',
@@ -293,9 +297,9 @@ export function main(command = 'help', rebuild = false) {
     console.log(JSON.stringify(verify(), null, 2));
     return;
   }
-  if (!['doctor', 'build', 'export', 'render'].includes(command)) {
+  if (!['doctor', 'build', 'components', 'export', 'render'].includes(command)) {
     console.log(
-      'dcc doctor | build [--rebuild] | render | export | verify\nBuild creates the editable source once. Export preserves hand edits. --rebuild backs up and regenerates the source.',
+      'dcc doctor | build [--rebuild] | components | render | export | verify\nBuild creates the editable source once. Export preserves hand edits. --rebuild backs up and regenerates the source.',
     );
     return;
   }
@@ -321,6 +325,17 @@ export function main(command = 'help', rebuild = false) {
     renameSync(candidate, source);
   }
   if (!existsSync(source)) throw new Error('Missing editable source; run dcc build first.');
+  if (command === 'components') {
+    const sourceHash = hash(source);
+    const candidate = join(freshRun(), 'briar-hydra.blend');
+    runBlender(binary, 'author_components.py', source, candidate);
+    if (hash(source) !== sourceHash)
+      throw new Error('Artist source changed during component installation');
+    const backup = resolve(root, '../../test-results/dcc-backups');
+    mkdirSync(backup, { recursive: true });
+    copyFileSync(source, join(backup, `briar-hydra-before-components-${Date.now()}.blend`));
+    renameSync(candidate, source);
+  }
   if (command === 'render') {
     runBlender(binary, 'render_review.py', source);
     return;

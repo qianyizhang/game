@@ -7,6 +7,8 @@ import { readFileSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSy
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { root, verify, inspectGlb, readGlb } from './pipeline.mjs';
+import baseline from './references/comparison/baseline.json' with { type: 'json' };
+import qualityBaseline from './references/comparison/quality-baseline.json' with { type: 'json' };
 const brief = readBrief(readFileSync(join(root, 'briefs/briar-hydra.json'), 'utf8'));
 const bytes = () => readFileSync(join(root, 'assets/briar-hydra.glb'));
 await test('published source, brief, recipe and GLB hashes match the receipt', () => {
@@ -135,4 +137,26 @@ await test('publication preserves the artist bytes and chains the exact previous
   } finally {
     rmSync(temporary, { recursive: true, force: true });
   }
+});
+
+await test('comparison baselines retain their pinned bytes and distinct identities', () => {
+  assert.equal(
+    createHash('sha256')
+      .update(readFileSync(join(root, qualityBaseline.asset)))
+      .digest('hex'),
+    qualityBaseline.sha256,
+  );
+  for (const file of /** @type {const} */ ([
+    'references/comparison/accepted-hydra.glb',
+    'references/comparison/blender-before.glb',
+  ])) {
+    const content = readFileSync(join(root, file));
+    assert.equal(createHash('sha256').update(content).digest('hex'), baseline.sha256[file]);
+    assert.equal(readGlb(content).animations.length, 1);
+  }
+  assert.notEqual(
+    createHash('sha256').update(bytes()).digest('hex'),
+    baseline.sha256['references/comparison/blender-before.glb'],
+    'The before/after comparison must contain the gesture revision',
+  );
 });

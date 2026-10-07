@@ -68,3 +68,19 @@ def color_socket(value: object) -> ColorSocket:
     if not isinstance(value, ColorSocket):
         raise ValueError("Missing color shader socket")
     return value
+
+
+class PropertyUI(Protocol):
+    def update(self, *, min: float, max: float, description: str) -> None: ...
+
+
+@runtime_checkable
+class EditableProperties(Protocol):
+    def id_properties_ui(self, key: str) -> PropertyUI: ...
+
+
+def property_controls(value: object) -> EditableProperties:
+    """Generated stubs omit the native IDProperty UI manager return type."""
+    if not isinstance(value, EditableProperties):
+        raise ValueError("Missing native custom-property controls")
+    return value

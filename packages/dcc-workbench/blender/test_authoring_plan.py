@@ -14,7 +14,14 @@ from authoring_plan import animation_name, parse_request
 
 class AuthoringPlanTests(unittest.TestCase):
     def test_imports_do_not_require_or_initialize_blender(self) -> None:
-        for name in ("build_hydra", "export_asset", "native_types"):
+        for name in (
+            "build_hydra",
+            "export_asset",
+            "native_types",
+            "author_components",
+            "head_components",
+            "scale_components",
+        ):
             importlib.import_module(name)
         self.assertNotIn("bpy", sys.modules)
         self.assertNotIn("mathutils", sys.modules)

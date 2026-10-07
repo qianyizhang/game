@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "id": "briar-hydra",
-  "generatedAt": "2026-10-07T14:44:20.230Z",
+  "generatedAt": "2026-10-07T14:14:09.936Z",
   "blender": "4.5.14 LTS",
   "source": "sources/briar-hydra.blend",
   "asset": "assets/briar-hydra.glb",
   "stats": {
-    "bytes": 10421936,
+    "bytes": 10422040,
     "triangles": 108940,
     "meshes": 1,
     "materials": 8,
@@ -20,25 +20,25 @@
       }
     ]
   },
-  "previousReceipt": "assets/receipts/bdc5fa838880050cc5d9d3304a9a8a1c38e1f73cf2f4bfce7587a626a92951c3.json",
+  "previousReceipt": "assets/receipts/ef176cd381595b4b9f3f551028f92541ddccc0ba563487c5404753ebd1b4a0e7.json",
   "sha256": {
     "briefs/briar-hydra.json": "eb6e552a855351c6b6b20f31b8ddf1caa3d377ef7d38ed625c5dafe13c07ef46",
-    "sources/briar-hydra.blend": "0237f8efa119aacfd6d831f80d43a90b9302fd4875bca1219000ee1f0c9cba70",
+    "sources/briar-hydra.blend": "6f6a6f7d930d288b90d50e66ef1f557c27edbfd04fb72ffd62a6d16d4bd62c33",
     "blender/build_hydra.py": "36f00c196eeb650d242c35953e9fc2b2d711f4098f4944b6be11081903718987",
     "blender/head_shape.py": "2bf512df93c6e08afe1910f69e4deb2036cd6a14e0c30f7b971c7c2dd417250f",
-    "blender/head_components.py": "ac1ce3df90984aceb4aa59981ee83ddc74698a62d202436b90408a0c9393aaa6",
-    "blender/scale_components.py": "f3501667cf04eaa4201e11d7f010f3789d57a9281844e9d994ef938978b0ea39",
+    "blender/head_components.py": "3769ef482badcb56c9068ed4021078533053bd9cce2f2e6f510529b0c5de23bb",
+    "blender/scale_components.py": "dc3c082b8cb90637d61366366f53e16f654f868b861c779843aeb0b7133c8165",
     "blender/author_components.py": "2e57487a54e88ae644181a3e9acea07237d710108662602bb1fb1fd1d6d91c79",
-    "blender/export_asset.py": "9fc0a04937a02e0989585776d4a958d028044cd96908a1103e9f8eaae8510940",
+    "blender/export_asset.py": "b54b2bbe247e0f8e56776c7997bb9da268655e7d4050d8d0ebb76fe0af1dc7f2",
     "blender/authoring_plan.py": "b91d498dbc956e04a41475e483f2d92093140b6b3e6109905dd4eb2a70aeb50e",
     "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31",
     "pipeline.mjs": "085eee0376f80c6d06e30d2c51320deb88c430c1b50bc3144b834a88e007e4f4",
     "pipeline.ts": "58c175f6467db8a5b665eaf2b6f041d7677b96e605ff9ba61840e4ea92ee7fe1",
     "contracts.ts": "55ca267c1b0948df09cb13795124f3311ecdbeffa1860f9b1f4eac693a07d08b",
-    "assets/briar-hydra.glb": "b1c2472346d8753385a8bb0e02b9e877e20e2ec973d7ae8d7fe5097ed8a7051d",
+    "assets/briar-hydra.glb": "adc4c0451ad18fcee979b97da2822cf1908aefe3becd2bfd8b6504052087d50c",
     "assets/authoring.json": "1a9a15c78d6ca3bd86326d22bd7738dce2321c4442b4f5b460b66f4d2b11e1e6",
-    "assets/pose-samples.json": "8fffa4b2e55206b6f8775a8dc1378e44d7dad8f127090031275fcee5353993da",
-    "assets/receipts/bdc5fa838880050cc5d9d3304a9a8a1c38e1f73cf2f4bfce7587a626a92951c3.json": "bdc5fa838880050cc5d9d3304a9a8a1c38e1f73cf2f4bfce7587a626a92951c3"
+    "assets/pose-samples.json": "2587fe71fb272fce2dd1f4bc0d6b671aa97b8784958f8c257fed782d42a0d499",
+    "assets/receipts/ef176cd381595b4b9f3f551028f92541ddccc0ba563487c5404753ebd1b4a0e7.json": "ef176cd381595b4b9f3f551028f92541ddccc0ba563487c5404753ebd1b4a0e7"
   },
   "native": {
     "blender": "4.5.14 LTS",

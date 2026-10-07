@@ -128,6 +128,15 @@ For a side-by-side comparison:
 - **Separate structure from finish.** Inspect silhouette first, neutral clay under raking light second, and materials last. Check front, side and rear so texture and a flattering angle cannot conceal weak form.
 - **Isolate the next change.** Changing anatomy, pose and materials together tests an overall direction. To learn which change helped, compare one factor at a time and record a concrete observation with the subject, view and display mode. These controls guide judgment; they do not produce an automatic aesthetic winner.
 
+## Maintainable artist sources
+
+The long-term direction is artwork that can be created and edited fluently. Keep the editable source and its delivered model distinct.
+
+- **Use semantic controls where parts must move together.** A muzzle edit should carry fitted lips, teeth and nostrils; avoid unrelated primitive sliders that break anatomy. Name assemblies by their role, and preserve direct mesh editing beneath the controls.
+- **Extract from actual variation.** The Hydra’s three head roles share one small cranial interface. Adapt that interface when another subject needs it before inventing a universal creature framework.
+- **Keep editing and regeneration explicit.** Export reads the saved artist source. Regeneration creates a fresh candidate, preserves a backup and states which manual edits it replaces. A construction guide is not a live dependency unless it actually drives the geometry.
+- **Verify the edit loop.** Change a meaningful parameter in the native source, inspect the evaluated result, export it, and compare the reloaded deformation. Passing this check establishes maintainability of that operation, not aesthetic approval.
+
 ## Guided delegation trials
 
 Use delegation when the user requests it. Keep one author responsible for one subject, with the parent responsible for direction, independent pixel review and integration. Give the author the accepted sibling, a short construction brief, exact file ownership and the rulebook; do not let workers silently modify siblings or shared helpers.

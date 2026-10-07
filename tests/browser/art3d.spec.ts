@@ -147,6 +147,39 @@ for (const name of studyNames) {
     expect(gltf.animations[0].channels.length).toBeGreaterThan(0);
     for (const channel of gltf.animations[0].channels)
       expect(gltf.nodes[channel.target.node]).toBeDefined();
+    const normalsUrl = '/downloaded-study-normals.glb';
+    await page.route(`**${normalsUrl}`, (route) =>
+      route.fulfill({ body: bytes, contentType: 'model/gltf-binary' }),
+    );
+    const inspectNormals = (url: string) =>
+      page.evaluate(async (url) => {
+        const helper = '/tests/browser/study-normals.ts';
+        const { inspectStudyExportNormals } = (await import(
+          helper
+        )) as typeof import('./study-normals');
+        return inspectStudyExportNormals(url);
+      }, url);
+    const normals = await inspectNormals(normalsUrl);
+    expect(normals.meshCount).toBeGreaterThan(0);
+    expect(normals.normalCount).toBeGreaterThan(0);
+    await writeFile(info.outputPath('export-normals.json'), JSON.stringify(normals));
+    if (name === 'Cub') {
+      // Prove the delivery assertion catches a damaged file, not just a happy path.
+      const normalIndex = gltf.meshes[0].primitives[0].attributes.NORMAL;
+      const accessor = gltf.accessors[normalIndex];
+      expect(accessor.componentType).toBe(5126); // Current export fixture uses Float32.
+      const view = gltf.bufferViews[accessor.bufferView!];
+      const binaryHeader = 20 + jsonLength;
+      expect(bytes.readUInt32LE(binaryHeader + 4)).toBe(0x004e4942);
+      const offset = binaryHeader + 8 + view.byteOffset + accessor.byteOffset;
+      const damaged = Buffer.from(bytes);
+      for (let axis = 0; axis < 3; axis++) damaged.writeFloatLE(0, offset + axis * 4);
+      const damagedUrl = '/damaged-study-normal.glb';
+      await page.route(`**${damagedUrl}`, (route) =>
+        route.fulfill({ body: damaged, contentType: 'model/gltf-binary' }),
+      );
+      await expect(inspectNormals(damagedUrl)).rejects.toThrow('Invalid exported normal');
+    }
     if (
       [
         'Nightjar',
