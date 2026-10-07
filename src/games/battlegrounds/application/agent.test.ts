@@ -35,7 +35,9 @@ describe('Hearth policy boundary', () => {
   });
 
   it('matches native legality in hero, recruit, Discover, combat and terminal states', () => {
-    const replay = JSON.parse(readFileSync('tests/fixtures/battlegrounds-v6-win.json', 'utf8'));
+    const replay = bgSession.decode(
+      readFileSync('tests/fixtures/battlegrounds-v6-win.json', 'utf8'),
+    ).replay;
     let session = bgSession.create(replay.seed);
     const covered = new Set<string>();
     const inspect = () => {
@@ -87,11 +89,9 @@ describe('Hearth policy boundary', () => {
     expect(bgSession.decode(bgSession.encode(result.session))).toEqual(result.session);
     const capped = structuredClone(result.session);
     capped.replay.commands = Array.from({ length: 10000 }, () => ({ type: 'freeze' }));
-    expect(actHearthAgent(capped, { step: 10000, action: 'a0' })).toMatchObject({
-      session: capped,
-      events: [],
-      error: expect.stringContaining('budget'),
-    });
+    const rejected = actHearthAgent(capped, { step: 10000, action: 'a0' });
+    expect(rejected).toMatchObject({ session: capped, events: [] });
+    expect('error' in rejected ? rejected.error : undefined).toContain('budget');
   });
 
   it('exposes previous-round scouting instead of the private current opponent board', () => {
@@ -112,7 +112,9 @@ describe('Hearth policy boundary', () => {
   });
 
   it('records formation changes with before/after slots even when stats do not change', () => {
-    const replay = JSON.parse(readFileSync('tests/fixtures/battlegrounds-v6-win.json', 'utf8'));
+    const replay = bgSession.decode(
+      readFileSync('tests/fixtures/battlegrounds-v6-win.json', 'utf8'),
+    ).replay;
     let session = bgSession.create(replay.seed);
     for (const command of replay.commands) {
       session = bgSession.act(session, command).session;

@@ -43,6 +43,30 @@ describe('local evidence', () => {
     storage.removeItem(EVIDENCE_KEY);
     expect(readEvidence(storage)).toEqual([]);
   });
+  it('rejects malformed archive fields without replacing the retained input', () => {
+    const storage = memory();
+    const session = spireSession.create('INVALID-ARCHIVE');
+    beginEvidence(storage, spireSession.rules, session, 'human', 'one', 'now');
+    const row = readEvidence(storage)[0];
+    const invalid: unknown[] = [
+      null,
+      [null],
+      [{ ...row, mode: 1 }],
+      [{ ...row, source: {} }],
+      [{ ...row, steps: '0' }],
+      [{ ...row, content: [null] }],
+      [{ ...row, summary: [] }],
+      [{ ...row, summary: { ...row.summary, metrics: { score: 'high' } } }],
+      [{ ...row, events: [null] }],
+      [{ ...row, events: [{ kind: 'pick', name: 'Reward', step: 1, offered: [42] }] }],
+    ];
+    for (const value of invalid) {
+      const raw = JSON.stringify(value);
+      storage.setItem(EVIDENCE_KEY, raw);
+      expect(() => readEvidence(storage)).toThrow('Evidence archive is invalid');
+      expect(storage.getItem(EVIDENCE_KEY)).toBe(raw);
+    }
+  });
   it('separates practice and imports from normal human play', () => {
     const storage = memory(),
       lab = replayCodec(spireSession.rules, true),

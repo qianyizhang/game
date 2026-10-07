@@ -1,3 +1,4 @@
+import { isList } from '../shared/json';
 import { finite } from '../shared/contentPack';
 import type {
   CardDefinition,
@@ -12,8 +13,7 @@ const named = (d: { name: string }) => {
   if (!d.name.trim()) throw new Error('name is required.');
 };
 const effects = (items: readonly Effect[]) => {
-  if (!Array.isArray(items) || items.length > 30)
-    throw new Error('effects must have at most 30 entries.');
+  if (!isList(items) || items.length > 30) throw new Error('effects must have at most 30 entries.');
   for (const effect of items) {
     if ('amount' in effect) finite(effect.amount, 'effect amount', -99, 999);
     if ('hits' in effect && effect.hits !== undefined) finite(effect.hits, 'hits', 1, 20);

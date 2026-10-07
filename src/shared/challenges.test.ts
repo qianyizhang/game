@@ -1,3 +1,4 @@
+import { objectValue } from './json';
 import { describe, expect, it } from 'vitest';
 import {
   actChallenge,
@@ -144,22 +145,25 @@ describe('curated tactical challenges', () => {
   it('pins every exported attempt to its puzzle and revision, while reconstructing legacy archives', () => {
     const definition = jokerOrderChallenge;
     const current = beginChallenge(definition);
-    const archive = JSON.parse(encodeChallenge({ current, previous: current }));
-    expect(archive.current.challenge).toEqual({ id: definition.id, revision: definition.revision });
+    const archive = objectValue(JSON.parse(encodeChallenge({ current, previous: current })));
+    expect(objectValue(archive.current).challenge).toEqual({
+      id: definition.id,
+      revision: definition.revision,
+    });
     for (const field of ['current', 'previous']) {
       for (const pin of [
         { id: 'another-puzzle', revision: definition.revision },
         { id: definition.id, revision: definition.revision + 1 },
       ]) {
         const invalid = structuredClone(archive);
-        invalid[field].challenge = pin;
+        objectValue(invalid[field]).challenge = pin;
         expect(() => decodeChallenge(definition, JSON.stringify(invalid))).toThrow(
           'different challenge or puzzle revision',
         );
       }
     }
-    delete archive.current.challenge;
-    delete archive.previous.challenge;
+    delete objectValue(archive.current).challenge;
+    delete objectValue(archive.previous).challenge;
     expect(decodeChallenge(definition, JSON.stringify(archive))).toEqual({
       current,
       previous: current,
@@ -193,21 +197,24 @@ describe('curated tactical challenges', () => {
   it('saved attempts cannot swap setups, use prohibited commands, or continue past the goal', () => {
     const definition = jokerOrderChallenge;
     const attempt = beginChallenge(definition);
-    const saved = JSON.parse(encodeChallenge({ current: attempt }));
-    saved.current.replay.setup.cash = 999;
+    const saved = objectValue(JSON.parse(encodeChallenge({ current: attempt })));
+    const current = objectValue(saved.current);
+    const replay = objectValue(current.replay);
+    const setup = objectValue(replay.setup);
+    setup.cash = 999;
     expect(() => decodeChallenge(definition, JSON.stringify(saved))).toThrow(
       'different challenge position',
     );
-    saved.current.replay.setup.cash = 25;
-    saved.current.replay.commands = [{ type: 'discard', cards: [attempt.session.state.hand[0]] }];
+    setup.cash = 25;
+    replay.commands = [{ type: 'discard', cards: [attempt.session.state.hand[0]] }];
     expect(() => decodeChallenge(definition, JSON.stringify(saved))).toThrow('single-card play');
-    saved.current.replay.commands = [
+    replay.commands = [
       { type: 'play', cards: [attempt.session.state.hand[0]] },
       { type: 'sortHand', by: 'rank' },
     ];
     expect(() => decodeChallenge(definition, JSON.stringify(saved))).toThrow('finished');
-    saved.current.replay.commands = [];
-    saved.current.hints = 99;
+    replay.commands = [];
+    current.hints = 99;
     expect(() => decodeChallenge(definition, JSON.stringify(saved))).toThrow(
       'Invalid challenge progress',
     );

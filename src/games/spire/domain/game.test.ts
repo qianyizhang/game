@@ -47,8 +47,8 @@ describe('Ironclad combat timing', () => {
     });
     expect(r.deck.map((c) => c.definitionId).sort()).toEqual([
       'bash',
-      ...Array(4).fill('defend'),
-      ...Array(5).fill('strike'),
+      ...Array.from({ length: 4 }, () => 'defend'),
+      ...Array.from({ length: 5 }, () => 'strike'),
     ]);
     expect(CARDS.filter((c) => !c.token && c.character !== 'silent')).toHaveLength(57);
     expect(RELICS).toHaveLength(33);
@@ -210,7 +210,7 @@ describe('Ironclad combat timing', () => {
     expect(r.combat!.player.status.strength).toBe(2);
   });
   it('hand limit is 10 and temporary Anger copies never enter the permanent deck', () => {
-    const r = fight(Array(15).fill('anger'));
+    const r = fight(Array.from({ length: 15 }, () => 'anger'));
     drawCards(r, 20);
     expect(r.combat!.hand).toHaveLength(10);
     const before = structuredClone(r.deck);
@@ -305,7 +305,7 @@ describe('Enemy counterplay', () => {
 describe('Run lifecycle and replay', () => {
   it('creates connected 15-room maps, with guaranteed chest and final campfire', () => {
     for (let i = 0; i < 100; i++) {
-      let r = apply(createSpire(`MAP-${i}`), { type: 'neow', choice: 'maxHp' });
+      const r = apply(createSpire(`MAP-${i}`), { type: 'neow', choice: 'maxHp' });
       expect(r.map.filter((n) => n.row === 8).every((n) => n.kind === 'treasure')).toBe(true);
       expect(r.map.filter((n) => n.row === 14).every((n) => n.kind === 'rest')).toBe(true);
       for (let row = 0; row < 16; row++) {
@@ -385,7 +385,7 @@ describe('Run lifecycle and replay', () => {
     s = spireSession.act(s, { type: 'neow', choice: 'lament' }).session;
     s = spireSession.act(s, { type: 'chooseNode', id: availableNodes(s.state)[0].id }).session;
     expect(spireSession.decode(spireSession.encode(s))).toEqual(s);
-    const old = JSON.parse(spireSession.encode(s));
+    const old = structuredClone(s.replay);
     old.game = 'emberpath';
     old.version = 1;
     expect(() => spireSession.decode(JSON.stringify(old))).toThrow();

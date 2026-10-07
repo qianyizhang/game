@@ -1,3 +1,4 @@
+import { isList, isRecord } from '../shared/json';
 import { WorkshopArt } from '../shared/art/WorkshopArt';
 import { useMemo, useRef, useState } from 'react';
 import { downloadJSON, type useLocalGame } from './useLocalGame';
@@ -30,9 +31,9 @@ export function PracticeLab<S extends { seed: string }, C>({
       raw = localStorage.getItem(key);
       const saved: unknown = JSON.parse(raw ?? '[]');
       if (
-        !Array.isArray(saved) ||
+        !isList(saved) ||
         saved.length > 20 ||
-        saved.some((b) => !b || typeof b.name !== 'string' || typeof b.text !== 'string')
+        saved.some((b) => !isRecord(b) || typeof b.name !== 'string' || typeof b.text !== 'string')
       )
         throw new Error('Invalid checkpoint library.');
       return { library: saved as SavedBranch[], notice: '', recovery: null as string | null };
@@ -256,12 +257,14 @@ export function PracticeLab<S extends { seed: string }, C>({
         type="file"
         accept=".json"
         aria-label="Import practice replay"
-        onChange={async (e) => {
+        onChange={(e) => {
           const input = e.currentTarget;
           const file = input.files?.[0];
           input.value = '';
           if (!file) return;
-          if (await game.importFile(file, true)) close();
+          void game.importFile(file, true).then((imported) => {
+            if (imported) close();
+          });
         }}
       />
       {library.map((branch, i) => (

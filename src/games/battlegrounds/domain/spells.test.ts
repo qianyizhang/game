@@ -164,8 +164,8 @@ describe('tavern spell economy and timing', () => {
     expect(run.players[0].board.map((u) => u.attack)).toEqual(original.map((v) => v + 1));
   });
   it('shop buffs survive freezing and purchase, then contribute to a golden triple', () => {
-    let run = recruit(),
-      p = run.players[0];
+    let run = recruit();
+    const p = run.players[0];
     const d = p.shop[0].definitionId;
     const first = friendly(run, d, 'first'),
       second = friendly(run, d, 'second');

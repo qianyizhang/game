@@ -68,7 +68,7 @@ export function createArena(seed: string, version: 1 | 2 = ARENA_VERSION): Arena
       cursor: 0,
       turn: [],
       publicLobby: publicLobby(state),
-      combats: Array(8).fill(null),
+      combats: Array.from({ length: 8 }, () => null),
     },
   };
 }

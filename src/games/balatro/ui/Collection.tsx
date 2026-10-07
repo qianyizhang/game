@@ -9,7 +9,7 @@ export function Collection() {
   const [category, setCategory] = useState('Jokers');
   const items = category === 'Jokers' ? JOKERS : category === 'Consumables' ? CONSUMABLES : BOSSES;
   const filtered = items.filter((item) =>
-    `${item.name} ${item.description} ${'family' in item ? item.family : ''}`
+    `${item.name} ${item.description} ${'family' in item ? String(item.family) : ''}`
       .toLowerCase()
       .includes(query.toLowerCase()),
   );
@@ -54,7 +54,9 @@ export function Collection() {
               <BossArt id={item.id} />
             )}
             <span className="eyebrow">
-              {'family' in item && 'rarity' in item ? `${item.family} · ${item.rarity}` : category}
+              {'family' in item && 'rarity' in item
+                ? `${String(item.family)} · ${String(item.rarity)}`
+                : category}
             </span>
             <h3>{item.name}</h3>
             <p>{item.description}</p>

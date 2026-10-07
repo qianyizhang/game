@@ -1,3 +1,4 @@
+import { isRecord } from './json';
 import { contentDigest } from './contentPack';
 import type { replayCodec, Session } from './replay';
 
@@ -136,13 +137,13 @@ export function decodeChallenge<S extends { seed: string }, C>(
   text: string,
 ): ChallengeProgress<S, C> {
   if (text.length > MAX_CHALLENGE_BYTES) throw new Error('Challenge save is too large.');
-  const value = JSON.parse(text);
+  const value: unknown = JSON.parse(text);
   const decode = (raw: unknown): Attempt<S, C> => {
     if (!raw || typeof raw !== 'object') throw new Error('Invalid challenge attempt.');
     const data = raw as Record<string, unknown>;
     // Early workshop exports had no pin. Reconstruct those against today's full constraints.
     if (data.challenge !== undefined) {
-      const pin = data.challenge as Partial<Attempt<S, C>['challenge']> | null;
+      const pin = data.challenge as Partial<Attempt<S, C>['challenge']>;
       if (!pin || pin.id !== definition.id || pin.revision !== definition.revision)
         throw new Error('This attempt belongs to a different challenge or puzzle revision.');
     }
@@ -177,7 +178,7 @@ export function decodeChallenge<S extends { seed: string }, C>(
     }
     return { ...attempt, hints: Number(data.hints), ended: data.ended };
   };
-  if (!value || typeof value !== 'object') throw new Error('Invalid challenge save.');
+  if (!isRecord(value)) throw new Error('Invalid challenge save.');
   const cleared = value.cleared ? decode(value.cleared) : undefined;
   if (cleared && attemptResult(definition, cleared).status !== 'cleared')
     throw new Error('The saved completion does not meet this challenge goal.');

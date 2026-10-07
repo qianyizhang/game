@@ -13,6 +13,12 @@ Use the exact Node/npm pins through `nvm use`, and the Python pin through `uv`. 
 
 The migration inventory identifies code still awaiting the full maintenance contract. Passing the maintained slice alone does not establish a green application or browser suite. Local verification does not establish a remote CI result or aesthetic acceptance.
 
+## Adopted static-check scope
+
+Typed ESLint covers `src/app`, `src/games`, `src/shared` and `src/mods`, including their tests; root TypeScript checking covers the whole application and browser tests. The maintenance formatter covers these adopted directories. JSON enters as unknown data and is narrowed before access; rejected archives remain available for recovery. File import handlers use the existing caught-error import contract and preserve request cancellation/order semantics.
+
+The tools package includes the typed trace builder, normalizer, contracts and tests. Its legacy build entry point has a separate checked JavaScript project. The trace viewer template still contains inline JavaScript; browser coverage verifies its behavior, but static coverage of that inline runtime remains migration work.
+
 ## Geometry test budgets
 
 Unit tests use at most two workers. Procedural geometry tests have a 15-second per-case budget; other application tests retain Vitest's five-second default. Geometry assertions still verify connectivity, closed surfaces, normals, skin weights, fitted motion and loop endpoints.
