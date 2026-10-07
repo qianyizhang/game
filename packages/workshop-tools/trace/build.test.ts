@@ -159,3 +159,72 @@ await test('legacy CLI resolves declared inputs independently of the working dir
   assert.equal(receipt.episodes, 1);
   assert.ok(existsSync(resolve(f.output, 'index.html')));
 });
+
+await test('document pins retain exact Git bytes after edits or removal and never fall back', async (t) => {
+  const f = await fixture(t);
+  const git = (...args: string[]) =>
+    execFileSync('git', ['-C', f.root, ...args], { encoding: 'utf8' }).trim();
+  git('init', '--quiet');
+  await mkdir(resolve(f.root, 'docs'));
+  const original = 'Historical review: rejected. User approval remains unrecorded.\n';
+  await writeFile(resolve(f.root, 'docs/review.md'), original);
+  await symlink('review.md', resolve(f.root, 'docs/link.md'));
+  git('add', 'docs/review.md', 'docs/link.md');
+  git(
+    '-c',
+    'user.name=Trace fixture',
+    '-c',
+    'user.email=fixture@example.invalid',
+    '-c',
+    'commit.gpgsign=false',
+    '-c',
+    'core.hooksPath=/dev/null',
+    'commit',
+    '--quiet',
+    '-m',
+    'Retain review',
+  );
+  const revision = git('rev-parse', 'HEAD');
+  f.spec.documents = [{ path: 'docs/review.md', revision }];
+  await writeFile(resolve(f.root, 'docs/review.md'), 'Current text differs.');
+  const first = await buildCase(f);
+  assert.equal(first.documents[0].text, original);
+  assert.equal(first.documents[0].revision, revision);
+  assert.equal(first.documents[0].sha256, createHash('sha256').update(original).digest('hex'));
+  await rm(resolve(f.root, 'docs/review.md'));
+  f.output = resolve(f.root, 'removed-output');
+  assert.equal((await buildCase(f)).documents[0].text, original);
+  f.output = resolve(f.root, 'rejected-output');
+  for (const document of [
+    { path: 'docs/review.md', revision: '0'.repeat(40) },
+    { path: 'docs/absent.md', revision },
+    { path: 'docs/link.md', revision },
+    { path: '../outside.md', revision },
+    { path: 'docs/review.md', revision: 'HEAD' },
+    { path: 'docs/review.md', revision: git('rev-parse', `${revision}:docs/review.md`) },
+  ]) {
+    f.spec.documents = [document];
+    await assert.rejects(buildCase(f), /pinned document|Pinned document|Expected/);
+    assert.equal(existsSync(f.output), false);
+  }
+});
+
+await test('viewer payloads remain inert through runtime insertion and story prose is validated', async (t) => {
+  const f = await fixture(t);
+  f.spec.title = '/*TRACE_RUNTIME*/ </script><script>throw new Error("injected")</script>';
+  const data = await buildCase(f);
+  const html = await readFile(resolve(data.output, 'index.html'), 'utf8');
+  assert.equal((html.match(/<script\b/g) ?? []).length, 1);
+  assert.ok(html.includes('/*TRACE_RUNTIME*/ \\u003c/script>'));
+  assert.ok(html.includes('function restoreLocation()'));
+  for (const spec of [
+    { ...f.spec, outcome: { approval: 'invented' } },
+    { ...f.spec, stages: [{ ...f.spec.stages[0], status: ['ambiguous'] }] },
+    { ...f.spec, stages: [{ ...f.spec.stages[0], finding: 42 }] },
+  ]) {
+    await assert.rejects(
+      buildCase({ ...f, output: resolve(f.root, 'invalid-story'), spec }),
+      /Expected/,
+    );
+  }
+});

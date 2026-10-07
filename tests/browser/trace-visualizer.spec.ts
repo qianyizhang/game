@@ -36,6 +36,9 @@ test.describe('private sculpture case', () => {
     const errors: string[] = [];
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto(url);
+    await expect(page.locator('#documents')).toContainText(
+      '650cf196fc37e217349837040f95298f2645fdef',
+    );
     await expect(
       page.getByRole('heading', { name: 'How the sculptures took shape' }),
     ).toBeVisible();
@@ -233,6 +236,9 @@ test.describe('public synthetic behavior case', () => {
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto(fixtureUrl);
     await expect(page.locator('#coverage-summary')).toContainText('1 unsupported');
+    await expect(page.locator('#turn-filter option').filter({ hasText: 'Worker' })).toContainText(
+      'Time unknown',
+    );
     await expect(page.locator('#ownership')).toContainText('construction');
     await expect(page.locator('#ownership')).toContainText('exact interleaving unavailable');
     await expect(page.locator('#story-images')).toContainText('No retained hero capture');

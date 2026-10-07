@@ -9,7 +9,7 @@ export async function writeFixture(root: string) {
   const page = (id: string, items: unknown[]) => ({
     schemaVersion: 1,
     thread: { id, title: id },
-    turns: [{ id: 'turn', startedAt: 1, items }],
+    turns: [{ id: 'turn', ...(id === 'parent' ? { startedAt: 1 } : {}), items }],
   });
   await writeFile(
     resolve(input, 'parent.json'),

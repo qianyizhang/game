@@ -1,6 +1,6 @@
 # Workshop tools
 
-This private npm workspace owns repository governance and artifact retention. It runs on Node with explicit filesystem contracts; it does not import game rules or require a browser.
+This private npm workspace owns repository governance, artifact retention and offline build/experiment commands. It runs on Node with explicit filesystem contracts. Governance does not import game rules; experiment commands bundle the relevant game runtime deliberately.
 
 Use the pinned runtime with `nvm use` (or install it with `nvm install`), then run from the repository root:
 
@@ -20,13 +20,13 @@ npm run check:maintenance
 
 The DCC native render command is the first producer of closed disposable outputs. Other producers must adopt the same receipt contract deliberately. Session closure requires promotion targets. [Governance](../../docs/engineering/maintenance.md) is the authority for lifetimes and workflow.
 
-The package is checked with typed ESLint, TypeScript `checkJs` in strict mode, and Node tests covering destructive boundaries. It has no runtime dependencies. Root npm scripts remain the public entry points as more script families migrate here.
+The package is checked with typed ESLint, TypeScript `checkJs` in strict mode, and Node tests covering destructive boundaries. Runtime dependencies are supplied by the pinned root workspace lockfile. Root npm scripts remain the public entry points as more script families migrate here.
 
 ## Trace bundles
 
 `npm run trace:build -- [input-directory] [new-output-directory] [case-study.json]` builds a private offline evidence viewer. Relative arguments resolve from the repository root. A default invocation chooses a fresh ignored output directory; an explicit existing output is refused. The old `scripts/trace-visualizer/build.mjs` command delegates to the same checked implementation.
 
-The `trace/` modules validate unknown exports and case specifications, preserve observable record identities and omissions, and associate authored assessments with exact evidence. They execute through the pinned Node runtime with native TypeScript stripping and pass the package strict type/lint gate. `npm run test:trace` selects the trace tests; the package test command also includes them. See the [trace guide](../../docs/engineering/trace-visualizer.md) for schema, privacy, output and provenance boundaries.
+The `trace/` modules validate unknown exports and case specifications, preserve observable record identities and omissions, and associate authored assessments with exact evidence. They execute through the pinned Node runtime with native TypeScript stripping and pass the package strict type/lint gate. `npm run test:trace` selects the trace tests; the package test command also includes them. The browser runtime is separately typechecked and embedded in each offline bundle. Revision-pinned document references preserve original Git bytes through documentation moves. See the [trace guide](../../docs/engineering/trace-visualizer.md) for schema, privacy, output and provenance boundaries.
 
 ## SVG tools
 

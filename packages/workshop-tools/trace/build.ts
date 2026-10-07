@@ -1,3 +1,5 @@
+import { gitDocument } from './documents.ts';
+import ts from 'typescript';
 import { randomUUID } from 'node:crypto';
 import { freshOutput } from './output.ts';
 import {
@@ -273,10 +275,18 @@ async function buildInto({
     });
   }
   const documents = [];
-  for (const path of spec.documents ?? []) {
-    const full = await ownedFile(path);
-    const bytes = await readFile(full);
-    documents.push({ path, text: bytes.toString('utf8'), sha256: hash(bytes) });
+  for (const reference of spec.documents ?? []) {
+    const path = typeof reference === 'string' ? reference : reference.path;
+    const revision = typeof reference === 'string' ? undefined : reference.revision;
+    const bytes = revision
+      ? gitDocument(root, path, revision)
+      : await readFile(await ownedFile(path));
+    documents.push({
+      path,
+      ...(revision ? { revision } : {}),
+      text: bytes.toString('utf8'),
+      sha256: hash(bytes),
+    });
   }
   const data = {
     version: 2,
@@ -294,9 +304,17 @@ async function buildInto({
   const template = await readFile(resolve(here, 'viewer.html'), 'utf8');
   if (!/\/\*TRACE_DATA\*\/\s*null/.test(template))
     throw new Error('Missing template data placeholder');
+  if (!template.includes('/*TRACE_RUNTIME*/'))
+    throw new Error('Missing viewer runtime placeholder');
+  const runtime = ts.transpileModule(await readFile(resolve(here, 'viewer.ts'), 'utf8'), {
+    compilerOptions: { target: ts.ScriptTarget.ES2023, module: ts.ModuleKind.ESNext },
+  }).outputText;
+  // Insert source first: payload text may itself contain placeholder-looking strings.
   await writeFile(
     resolve(output, 'index.html'),
-    template.replace(/\/\*TRACE_DATA\*\/\s*null/, () => scriptJSON(data)),
+    template
+      .replace('/*TRACE_RUNTIME*/', () => runtime)
+      .replace(/\/\*TRACE_DATA\*\/\s*null/, () => scriptJSON(data)),
   );
   await writeFile(
     resolve(output, 'manifest.json'),
@@ -307,7 +325,11 @@ async function buildInto({
         media,
         artifacts,
         traceSources: threads.map(({ id, source, coverage }) => ({ id, source, coverage })),
-        documents: documents.map(({ path, sha256 }) => ({ path, sha256 })),
+        documents: documents.map(({ path, sha256, revision }) => ({
+          path,
+          sha256,
+          ...(revision ? { revision } : {}),
+        })),
         stages: stages.map((s) => ({
           id: s.id,
           title: s.title,

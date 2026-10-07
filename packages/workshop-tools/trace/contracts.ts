@@ -78,6 +78,12 @@ export interface Stage {
   [key: string]: unknown;
   id?: string;
   title: string;
+  status?: string;
+  question?: string;
+  change?: string;
+  finding?: string;
+  lesson?: string;
+  comparison?: string;
   turn: string;
   thread?: string;
   anchor?: string;
@@ -108,13 +114,14 @@ export interface Stage {
   subjects?: string[];
   limits?: string[];
 }
+export type DocumentRef = string | { path: string; revision: string };
 export interface CaseSpec {
   title: string;
   subtitle?: string;
-  outcome?: unknown;
+  outcome?: string;
   threads: Array<{ id: string; role?: string; parent?: string }>;
   stages: Stage[];
-  documents?: string[];
+  documents?: DocumentRef[];
   sourceKeys?: Record<string, string>;
   sourceSubjects?: Record<string, string>;
 }
@@ -200,7 +207,19 @@ function parseStage(value: unknown): Stage {
     turn: identity(item.turn, 'stage turn'),
     evidence: references(item.evidence, 'stage'),
   };
-  for (const key of ['id', 'thread', 'anchor', 'subject', 'sourceKey'] as const)
+  for (const key of [
+    'id',
+    'thread',
+    'anchor',
+    'subject',
+    'sourceKey',
+    'status',
+    'question',
+    'change',
+    'finding',
+    'lesson',
+    'comparison',
+  ] as const)
     if (item[key] !== undefined) result[key] = text(item[key], key);
   for (const key of ['capture', 'fallbackCapture', 'source'] as const)
     if (item[key] !== undefined) result[key] = item[key] === null ? null : text(item[key], key);
@@ -284,7 +303,7 @@ export function parseCase(value: unknown): CaseSpec {
   return {
     title: identity(item.title, 'case title'),
     subtitle: optionalText(item.subtitle, 'subtitle'),
-    outcome: item.outcome,
+    outcome: optionalText(item.outcome, 'outcome'),
     threads: list(item.threads, 'threads').map((value) => {
       const thread = record(value, 'source thread');
       return {
@@ -294,7 +313,27 @@ export function parseCase(value: unknown): CaseSpec {
       };
     }),
     stages: list(item.stages, 'stages').map(parseStage),
-    ...(item.documents === undefined ? {} : { documents: texts(item.documents, 'documents') }),
+    ...(item.documents === undefined
+      ? {}
+      : {
+          documents: list(item.documents, 'documents').map((value): DocumentRef => {
+            if (typeof value === 'string') return value;
+            const document = record(value, 'document');
+            const path = text(document.path, 'document path');
+            const revision = text(document.revision, 'document revision');
+            if (!/^[0-9a-f]{40}$/.test(revision))
+              throw new Error('Expected full Git commit revision');
+            if (
+              !path ||
+              path.includes('\\') ||
+              path.includes(':') ||
+              /[\x00-\x1f]/.test(path) ||
+              path.split('/').some((part) => !part || part === '.' || part === '..')
+            )
+              throw new Error('Expected repository-relative document path');
+            return { path, revision };
+          }),
+        }),
     ...(item.sourceKeys === undefined
       ? {}
       : { sourceKeys: stringMap(item.sourceKeys, 'sourceKeys') }),

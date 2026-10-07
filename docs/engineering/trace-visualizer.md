@@ -23,7 +23,7 @@ npm run trace:build -- INPUT_DIRECTORY NEW_OUTPUT_DIRECTORY CASE_STUDY_JSON
 
 Arguments resolve from the repository root, independent of the invoking directory. An explicit output directory must be new, inside that root and disjoint from input. Existing output and symlinked output parents are refused. A failed build removes only the fresh directory created by that invocation; previous evidence is preserved. The old `node scripts/trace-visualizer/build.mjs` entry point remains a checked compatibility wrapper.
 
-The maintained implementation, typed contracts, template and case recipe live in `packages/workshop-tools/trace/`. Node 24 executes its TypeScript modules directly; the tools package enforces strict TypeScript and typed ESLint before use.
+The maintained implementation, typed contracts, template and case recipe live in `packages/workshop-tools/trace/`. Node 24 executes its build modules directly. The separately typed viewer runtime is checked against the builder output and DOM elements, then emitted into the standalone HTML with the pinned TypeScript compiler. The tools package enforces strict TypeScript and typed ESLint for both sides. Missing turn timestamps stay unknown.
 
 Input files are `<thread-id>.json` exports of `read_thread` with `includeOutputs: true`, `schemaVersion: 1`, a `thread` object and `turns`. Collect all pages, combine turns once, then set `page.hasMore` to false. Incomplete pagination and duplicate identities fail the build. Keep private input and output under ignored `test-results/`; do not publish the generated HTML.
 
@@ -97,6 +97,8 @@ An episode-level `sourceKey` also works for one source. Two collected sources in
 
 Artifact records are generated per episode/subject with IDs such as `episode-20:nightjar`. Subjects can also be declared with `subjects` or `subject` when captures are missing. Optional episode `artifactEvidence[subject]` contains `producedBy` and `inspectedBy` reference arrays. Attach only established associations. Optional `artifactProvenance[subject]` can carry a retained `sourceArtifactId`, `buildReceipt`, camera/lighting knowledge or source pairing statement; do not upgrade unknown provenance without evidence. Hashes identify collected bytes, not historical immutability.
 
+Document references accept a repository-relative string (collect current bytes) or `{ "path": "docs/review.md", "revision": "<full-40-character-commit-hash>" }` (collect a regular Git blob at that local commit). Pinned references retain the original text even after its file is edited or moved. Missing commits/files, symbolic refs and symlinks fail; there is no fallback to current content and no network fetch. The document and manifest record its revision and SHA-256. A pinned collection version does not establish the document version at every historical episode. The sculpture recipe pins its four art documents before their documentation migration; existing bundles remain untouched.
+
 ## Add assessments
 
 An episode's `assessments` array contains objects like:
@@ -124,4 +126,4 @@ Statuses: `issue`, `improved`, `passed`, `accepted`, `rejected`, `not_checked`, 
 - Turn timing and within-turn ordinals are retained. Cross-thread event timestamps and exact concurrent interleaving are unavailable. Grouped records are not a precise multi-agent timeline; incoming handoff prompts may be absent.
 - Source snapshots and saved captures are collected as they exist now. Camera/lighting differences and unknown source-to-render pairing remain visible. No missing historical artifact is reconstructed or re-executed.
 - Technical checks quoted in the story are historical evidence, not fresh verification of aesthetic quality. New viewer tests verify navigation, evidence integrity and rendering behavior only.
-- `normalize.mjs` owns the explicit source adapter boundary. A future adapter should emit the same observable events, identity and coverage fields with its own source format/version; the viewer need not parse raw logs. No universal trace parser, backend or external observability service is involved.
+- `normalize.ts` owns the explicit source adapter boundary. A future adapter should emit the same observable events, identity and coverage fields with its own source format/version; the viewer need not parse raw logs. No universal trace parser, backend or external observability service is involved.
