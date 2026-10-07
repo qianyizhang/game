@@ -288,6 +288,10 @@
         color: #d7dfd9;
         text-align: center;
       }
+      figcaption > a {
+        display: block;
+        margin-top: 8px;
+      }
       figcaption {
         padding: 13px 16px;
       }
@@ -542,6 +546,241 @@
           white-space: normal;
         }
       }
+
+      .episode-layout {
+        display: grid;
+        grid-template-columns: minmax(300px, 0.9fr) minmax(340px, 1.1fr);
+        gap: 28px;
+        align-items: start;
+      }
+      .episode-copy,
+      .artifact-pane,
+      .events-main {
+        min-width: 0;
+      }
+      .artifact-pane {
+        position: sticky;
+        top: 16px;
+      }
+      .artifact-pane .comparisons {
+        gap: 10px;
+      }
+      .artifact-pane figcaption {
+        padding: 10px;
+      }
+      .artifact-pane .caption-title {
+        font-size: 12px;
+      }
+      .episode-copy .explanation {
+        grid-template-columns: 1fr;
+        margin-top: 0;
+        gap: 16px;
+      }
+      .ownership {
+        padding: 12px 0;
+        border-block: 1px solid var(--line);
+        margin-bottom: 18px;
+      }
+      .ownership p {
+        margin: 5px 0;
+        font-size: 13px;
+      }
+      .evidence-list {
+        display: grid;
+        gap: 7px;
+        margin-top: 12px;
+      }
+      .evidence-row {
+        text-align: left;
+        min-width: 0;
+        padding: 10px;
+      }
+      .evidence-row span {
+        display: block;
+        overflow-wrap: anywhere;
+      }
+      .evidence-row .excerpt {
+        font-size: 12px;
+        max-height: 3.1em;
+        overflow: hidden;
+      }
+      .fact-line {
+        margin: 12px 0;
+        color: var(--green);
+        font-size: 12px;
+      }
+      .assessment-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 12px 0;
+      }
+      .assessment-list button {
+        font-size: 12px;
+        text-align: left;
+      }
+      .matrix-scroll {
+        max-width: 100%;
+        overflow: auto;
+        margin: 18px 0;
+      }
+      table {
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 8px;
+        min-width: 125px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: var(--panel);
+      }
+      th:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        min-width: 155px;
+      }
+      td button {
+        display: block;
+        font-size: 12px;
+        padding: 6px;
+        margin: 3px 0;
+        width: 100%;
+      }
+      .coverage {
+        color: var(--muted);
+        font-size: 12px;
+        margin: 14px 0;
+      }
+      .coverage-details {
+        overflow-wrap: anywhere;
+      }
+      .selected-event {
+        border-left: 4px solid var(--accent);
+        padding-left: 12px;
+        background: var(--panel);
+      }
+      .episode-event {
+        border-right: 3px solid var(--green);
+        padding-right: 10px;
+      }
+      .events-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 28px;
+      }
+      #action-context {
+        position: sticky;
+        top: 16px;
+        align-self: start;
+      }
+      #action-context .image-box img {
+        max-height: 280px;
+      }
+      .drawer {
+        position: fixed;
+        z-index: 10;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-height: 42vh;
+        overflow: auto;
+        background: var(--panel);
+        border-top: 3px solid var(--accent);
+        box-shadow: 0 -8px 30px #202c2b22;
+        padding: 16px 28px;
+      }
+      .drawer-bar {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+        position: sticky;
+        top: -16px;
+        padding: 6px 0;
+        background: var(--panel);
+      }
+      .drawer-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 240px;
+        gap: 24px;
+        align-items: start;
+      }
+      #drawer-artifact {
+        position: sticky;
+        top: 50px;
+        min-width: 0;
+      }
+      #drawer-artifact img {
+        width: 100%;
+        height: 145px;
+        object-fit: contain;
+        background: #172022;
+        border-radius: 5px;
+      }
+      @media (max-width: 640px) {
+        .drawer-layout {
+          grid-template-columns: 1fr;
+        }
+        #drawer-artifact {
+          position: static;
+        }
+      }
+      .drawer h2 {
+        font-size: 22px;
+        margin: 0;
+      }
+      .drawer pre {
+        max-height: 260px;
+      }
+      body.drawer-open {
+        padding-bottom: 43vh;
+      }
+      button[aria-pressed='true'].evidence-row {
+        border-color: var(--accent);
+        background: #eee5d4;
+      }
+      @media (max-width: 1200px) {
+        .episode-layout {
+          grid-template-columns: 1fr;
+        }
+        .artifact-pane {
+          position: static;
+          grid-row: 1;
+        }
+        .artifact-pane .comparisons {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 950px) {
+        .events-layout {
+          display: block;
+        }
+        #action-context {
+          position: static;
+          margin-top: 24px;
+        }
+      }
+      @media (max-width: 640px) {
+        .artifact-pane .comparisons {
+          grid-template-columns: 1fr;
+        }
+        .drawer {
+          padding: 12px 18px;
+          max-height: 48vh;
+        }
+        .drawer-bar {
+          top: -12px;
+        }
+        .evidence-row {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -554,6 +793,7 @@
         </div>
         <div class="local">● Local evidence · read only</div>
       </div>
+      <p class="coverage" id="coverage-summary"></p>
       <nav class="tabs" aria-label="Trace views">
         <button data-tab="story" aria-pressed="true">Creation story</button
         ><button data-tab="compare" aria-pressed="false">Compare revisions</button
@@ -574,28 +814,48 @@
           </div>
           <h2 id="stage-title"></h2>
           <p class="lead" id="question"></p>
-          <div class="controls">
-            <label>Stage subject<select id="story-subject"></select></label>
+          <div class="episode-layout">
+            <div class="episode-copy">
+              <div class="ownership" id="ownership"></div>
+              <div class="explanation">
+                <section>
+                  <h3>What changed</h3>
+                  <p id="change"></p>
+                </section>
+                <section>
+                  <h3>What the review found</h3>
+                  <p id="finding"></p>
+                </section>
+              </div>
+              <div class="assessment-list" id="story-assessments"></div>
+              <p id="lesson" class="lesson"></p>
+              <p class="small" id="episode-limits"></p>
+              <div id="signals"></div>
+              <h3 style="margin-top: 20px">Episode evidence</h3>
+              <p class="fact-line" id="facts"></p>
+              <p class="small">
+                Curated consequential records; counts cover this selection only. Expand a record to
+                inspect it below.
+              </p>
+              <div id="episode-evidence" class="evidence-list"></div>
+            </div>
+            <div class="artifact-pane">
+              <div class="controls">
+                <label>Stage subject<select id="story-subject"></select></label>
+              </div>
+              <div id="story-images" class="comparisons"></div>
+              <p class="small" style="margin-top: 12px">
+                Saved captures. Source pairing unknown; camera and lighting may differ.
+              </p>
+            </div>
           </div>
-          <div id="story-images" class="comparisons"></div>
-          <div class="explanation">
-            <section>
-              <h3>What changed</h3>
-              <p id="change"></p>
-            </section>
-            <section>
-              <h3>What the review found</h3>
-              <p id="finding"></p>
-            </section>
-          </div>
-          <p id="lesson" class="lesson"></p>
           <details>
             <summary>Read the recorded statement behind this stage</summary>
             <blockquote id="quote"></blockquote>
             <p class="provenance" id="anchor"></p>
           </details>
           <div class="actions">
-            <button id="show-events" class="primary">Inspect this turn’s actions</button
+            <button id="show-events" class="primary">Inspect this episode’s actions</button
             ><button id="show-source">Inspect retained source changes</button
             ><a id="open-chat">Open source chat ↗</a>
           </div>
@@ -629,6 +889,18 @@
         </div>
         <div id="compare-images" class="comparisons"></div>
         <p id="compare-status" class="small" aria-live="polite"></p>
+        <h3 style="margin-top: 24px">Criterion × revision</h3>
+        <p class="small">
+          Authored assessments linked to recorded evidence. — means no assessment attached; cells
+          are never filled forward. Reviewer acceptance, user approval and technical checks remain
+          separate.
+        </p>
+        <div
+          id="criterion-matrix"
+          class="matrix-scroll"
+          tabindex="0"
+          aria-label="Criterion by revision comparison"
+        ></div>
       </section>
       <section id="events" class="full-panel" hidden>
         <div class="panel-heading">
@@ -640,32 +912,46 @@
             precise interleaving.
           </p>
         </div>
-        <div class="controls">
-          <label>Turn / agent<select id="turn-filter"></select></label
-          ><label
-            >Record type<select id="kind">
-              <option value="all">All visible records</option>
-              <option value="request">User requests</option>
-              <option value="message">Progress & completion</option>
-              <option value="edit">Recorded patches</option>
-              <option value="command">Commands & outputs</option>
-              <option value="image">Image inspections</option>
-              <option value="delegation">Delegation</option>
-              <option value="reference">Reference lookups</option>
-            </select></label
-          ><label
-            >Search text, output or file<input
-              id="search"
-              type="search"
-              placeholder="e.g. roughness, Hydra, models.ts"
-          /></label>
-        </div>
-        <p class="count" id="event-count" role="status"></p>
-        <div id="event-list"></div>
-        <div class="pager">
-          <button id="event-prev">← Previous records</button
-          ><span id="event-page" class="small"></span
-          ><button id="event-next">More records →</button>
+        <div class="events-layout">
+          <div class="events-main">
+            <p id="actions-coverage" class="coverage"></p>
+            <div class="controls">
+              <label
+                >Evidence scope<select id="episode-filter">
+                  <option value="all">All events</option>
+                  <option value="current">Current episode</option>
+                </select></label
+              >
+              <label>Thread / actor<select id="thread-filter"></select></label>
+              <label>Evidence role<select id="role-filter"></select></label>
+              <label>Turn / agent<select id="turn-filter"></select></label
+              ><label
+                >Record type<select id="kind">
+                  <option value="all">All visible records</option>
+                  <option value="request">User requests</option>
+                  <option value="message">Progress & completion</option>
+                  <option value="edit">Recorded patches</option>
+                  <option value="command">Commands & outputs</option>
+                  <option value="image">Image inspections</option>
+                  <option value="delegation">Delegation</option>
+                  <option value="reference">Reference lookups</option>
+                </select></label
+              ><label
+                >Search text, output or file<input
+                  id="search"
+                  type="search"
+                  placeholder="e.g. roughness, Hydra, models.ts"
+              /></label>
+            </div>
+            <p class="count" id="event-count" role="status"></p>
+            <div id="event-list"></div>
+            <div class="pager">
+              <button id="event-prev">← Previous records</button
+              ><span id="event-page" class="small"></span
+              ><button id="event-next">More records →</button>
+            </div>
+          </div>
+          <div id="action-context"></div>
         </div>
       </section>
       <section id="sources" class="full-panel" hidden>
@@ -716,12 +1002,23 @@
             captures stay missing. Generated output contains local conversation excerpts; it is
             ignored by Git and has not been published.
           </p>
+          <div id="coverage-details" class="coverage-details"></div>
           <p id="collection" class="provenance"></p>
           <a href="manifest.json">Open evidence manifest</a>
         </details>
         <div id="documents"></div>
       </section>
     </main>
+    <section id="evidence-drawer" class="drawer" aria-label="Evidence drawer" hidden>
+      <div class="drawer-bar">
+        <h2 id="drawer-title" tabindex="-1">Evidence</h2>
+        <button id="close-drawer">Close evidence ×</button>
+      </div>
+      <div class="drawer-layout">
+        <div id="drawer-content"></div>
+        <div id="drawer-artifact"></div>
+      </div>
+    </section>
     <footer>
       Read the work as a sequence of decisions. A passing test, a favorable review and your approval
       each answer a different question.
@@ -738,11 +1035,19 @@
       };
       const turns = DATA.threads.flatMap((t) => t.turns).sort((a, b) => a.startedAt - b.startedAt);
       const events = turns.flatMap((t) => t.events);
+      const eventMap = new Map(events.map((e) => [e.key, e]));
+      const refKey = (r) => JSON.stringify([r.thread, r.turn, r.event]);
+      const artifactMap = new Map(DATA.artifacts.map((a) => [a.id, a]));
+      let selectedEvent = null,
+        selectedAssessment = null,
+        drawerReturnFocus = null;
       let stage = 0,
         page = 0;
       const pageSize = 35;
       const params = new URLSearchParams(location.hash.slice(1));
-      const requested = Number(params.get('stage') ?? 0);
+      const requested = params.has('episode')
+        ? DATA.stages.findIndex((s) => s.id === params.get('episode'))
+        : Number(params.get('stage') ?? 0);
       if (Number.isInteger(requested) && requested >= 0 && requested < DATA.stages.length)
         stage = requested;
       $('title').textContent = DATA.title;
@@ -757,10 +1062,22 @@
         for (const b of document.querySelectorAll('[data-tab]'))
           b.setAttribute('aria-pressed', String(b.dataset.tab === name));
         for (const id of ['story', 'compare', 'events', 'sources']) $(id).hidden = id !== name;
-        history.replaceState(null, '', `#stage=${stage}&view=${name}`);
+        if (name === 'events') {
+          renderEvents(selectedEvent);
+          renderActionContext();
+        }
+        saveLocation(name);
       }
       for (const button of document.querySelectorAll('[data-tab]'))
-        button.onclick = () => tab(button.dataset.tab);
+        button.onclick = () => {
+          if (button.dataset.tab === 'compare') {
+            $('subject').value = $('story-subject').value;
+            compareOptions();
+            $('after').value = String(stage);
+            renderCompare();
+          }
+          tab(button.dataset.tab);
+        };
       function imageFigure(s, subject, angle, label) {
         const f = node('figure');
         const box = node('div', undefined, 'image-box');
@@ -782,7 +1099,15 @@
           node('div', label, 'caption-label'),
           node('div', s?.title ?? 'No earlier capture', 'caption-title'),
         );
-        if (s) caption.append(node('p', s.status, 'small'));
+        if (s) {
+          caption.append(node('p', s.status, 'small'));
+          const artifact = artifactMap.get(`${s.id}:${subject}`);
+          if (artifact) {
+            const b = node('button', 'Artifact identity');
+            b.onclick = () => openArtifact(artifact);
+            caption.append(b);
+          }
+        }
         if (capture) {
           const link = node('a', 'Open full capture ↗');
           link.href = capture.url;
@@ -793,12 +1118,492 @@
         f.append(caption);
         return f;
       }
+      function saveLocation(view) {
+        const q = new URLSearchParams({
+          episode: DATA.stages[stage].id,
+          stage: String(stage),
+          view: view ?? document.querySelector('[data-tab][aria-pressed="true"]').dataset.tab,
+        });
+        if (selectedEvent) q.set('event', selectedEvent);
+        if (selectedAssessment) q.set('assessment', selectedAssessment);
+        history.replaceState(null, '', '#' + q.toString());
+      }
+      function closeDrawer() {
+        $('evidence-drawer').hidden = true;
+        document.body.classList.remove('drawer-open');
+        selectedAssessment = null;
+        selectedEvent = null;
+        if (drawerReturnFocus?.isConnected) drawerReturnFocus.focus();
+      }
+      function drawer(
+        title,
+        artifact = artifactMap.get(`${DATA.stages[stage].id}:${$('story-subject').value}`),
+      ) {
+        if ($('evidence-drawer').hidden) drawerReturnFocus = document.activeElement;
+        $('drawer-title').textContent = title;
+        $('drawer-content').replaceChildren();
+        $('drawer-artifact').replaceChildren();
+        if (artifact) {
+          const capture = artifact.captures.find((c) => c.angle === 'hero') ?? artifact.captures[0];
+          $('drawer-artifact').append(
+            node('p', `Selected artifact · ${artifact.subject}`, 'small'),
+          );
+          if (capture) {
+            const img = node('img');
+            img.src = capture.url;
+            img.alt = `${artifact.subject}, ${DATA.stages[artifact.stageIndex].title}`;
+            $('drawer-artifact').append(img);
+          } else
+            $('drawer-artifact').append(
+              node('p', 'No retained capture for this artifact.', 'small'),
+            );
+          $('drawer-artifact').append(node('p', DATA.stages[artifact.stageIndex].title, 'small'));
+        }
+        $('evidence-drawer').hidden = false;
+        document.body.classList.add('drawer-open');
+        $('drawer-title').focus({ preventScroll: true });
+        return $('drawer-content');
+      }
+      function eventDetails(e, open = false) {
+        const d = node('details');
+        d.open = open;
+        d.append(node('summary', e.title));
+        if (e.sourceTruncated)
+          d.append(
+            node(
+              'p',
+              'Source truncated upstream. Expanding cannot recover omitted text.',
+              'warning',
+            ),
+          );
+        if (e.displayTruncated)
+          d.append(
+            node('p', 'Viewer preview shortened; full normalized value available below.', 'small'),
+          );
+        d.append(node('pre', e.text));
+        if (e.output !== undefined) {
+          const output = node('details');
+          output.append(node('summary', 'Recorded output'), node('pre', e.output));
+          d.append(output);
+        }
+        if (e.relatedThreads.length) {
+          d.append(node('h3', 'Related threads'));
+          for (const id of e.relatedThreads) {
+            const th = DATA.threads.find((t) => t.id === id),
+              a = node('a', `${th?.role ?? 'Uncollected thread'} · ${id}`);
+            a.href = `codex://threads/${encodeURIComponent(id)}`;
+            d.append(a, node('br'));
+          }
+        }
+        d.append(
+          node(
+            'p',
+            `${e.threadId} / ${e.turnId} / ${e.id}\nSource type: ${e.sourceType} · ordinal ${e.ordinal}`,
+            'provenance',
+          ),
+        );
+        const link = node('a', 'Open source chat ↗');
+        link.href = `codex://threads/${encodeURIComponent(e.threadId)}`;
+        d.append(link);
+        return d;
+      }
+      function evidenceButton(r) {
+        const e = eventMap.get(r.key ?? refKey(r)),
+          b = node('button', undefined, 'evidence-row');
+        b.dataset.eventKey = e.key;
+        b.setAttribute('aria-pressed', String(selectedEvent === e.key));
+        b.append(
+          node('span', (r.roles ?? [r.role]).join(' · '), 'kind'),
+          node(
+            'span',
+            `${e.role} · ${e.kind === 'command' ? 'Command & output' : e.title}`,
+            'small',
+          ),
+          node('span', e.preview.slice(0, 190), 'excerpt'),
+        );
+        b.onclick = () => openEvent(e.key);
+        return b;
+      }
+      function openEvent(key) {
+        const e = eventMap.get(key);
+        if (!e) return;
+        selectedEvent = key;
+        selectedAssessment = null;
+        const box = drawer(`${e.kind} · ${e.role}`);
+        box.append(
+          node('p', `Episode: ${DATA.stages[stage].title}`, 'small'),
+          eventDetails(e, true),
+        );
+        const actions = node('div', undefined, 'actions'),
+          raw = node('button', 'Open exact recorded action');
+        raw.onclick = () => openRaw(key);
+        actions.append(raw);
+        const s = DATA.stages[stage];
+        if (s.sources.length) {
+          const source = node('button', 'Retained source / diff');
+          source.onclick = () => openSourceEvidence(s);
+          actions.append(source);
+        }
+        box.append(actions);
+        saveLocation();
+        document
+          .querySelectorAll('[data-event-key]')
+          .forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.eventKey === key)));
+      }
+      function resetEventFilters() {
+        for (const id of ['turn-filter', 'thread-filter', 'episode-filter', 'role-filter', 'kind'])
+          $(id).value = 'all';
+        $('search').value = '';
+        page = 0;
+      }
+      function openRaw(key, reset = true) {
+        if (reset) resetEventFilters();
+        closeDrawer();
+        selectedEvent = key;
+        renderEvents(key);
+        renderActionContext();
+        tab('events');
+        const row = document.getElementById(`record-${encodeURIComponent(key)}`);
+        row?.scrollIntoView({ block: 'center' });
+      }
+      function renderActionContext() {
+        const s = DATA.stages[stage],
+          subject = $('story-subject').value;
+        $('action-context').replaceChildren(
+          node('h3', s.title),
+          node('p', 'Current episode · artifact context', 'small'),
+          imageFigure(s, subject, 'hero', 'Current revision'),
+        );
+        const back = node('button', 'Return to episode');
+        back.onclick = () => tab('story');
+        $('action-context').append(back);
+      }
+      function renderEpisode() {
+        const s = DATA.stages[stage];
+        $('ownership').replaceChildren(node('h3', 'Ownership / handoff'));
+        for (const a of s.actors) {
+          const th = DATA.threads.find((t) => t.id === a.threadId);
+          $('ownership').append(
+            node(
+              'p',
+              `${a.role.replaceAll('_', ' ')} · ${th.role}: ${a.contribution ?? 'Contribution unspecified.'}`,
+            ),
+          );
+        }
+        if (!s.actors.length)
+          $('ownership').append(node('p', 'Ownership not recorded for this episode.'));
+        if (new Set(s.evidence.map((r) => r.thread)).size > 1)
+          $('ownership').append(
+            node(
+              'p',
+              'Concurrent / exact interleaving unavailable. Evidence is grouped by role, not global time.',
+              'small',
+            ),
+          );
+        const f = s.facts;
+        $('facts').textContent =
+          `${f.commands} commands · ${f.fileEdits} patch records · ${f.imageInspections} image inspections · ${f.verificationCommands} verification commands · ${f.changedFiles.length} paths in patches · ${f.relatedThreads.length} related threads`;
+        $('episode-limits').textContent = (s.limits ?? []).join(' ');
+        $('episode-evidence').replaceChildren(...s.evidence.slice(0, 6).map(evidenceButton));
+        if (s.evidence.length > 6) {
+          const more = node('details');
+          more.append(node('summary', `Show ${s.evidence.length - 6} more episode records`));
+          const list = node('div', undefined, 'evidence-list');
+          list.append(...s.evidence.slice(6).map(evidenceButton));
+          more.append(list);
+          $('episode-evidence').append(more);
+        }
+        if (!s.evidence.length)
+          $('episode-evidence').append(node('p', 'No episode evidence attached.', 'empty'));
+        $('story-assessments').replaceChildren(...s.assessments.map((a) => assessmentButton(a)));
+        if (!s.assessments.length)
+          $('story-assessments').append(
+            node(
+              'p',
+              'No structured criterion assessment attached; see the recorded statements.',
+              'small',
+            ),
+          );
+        $('signals').replaceChildren();
+        for (const signal of s.signals) {
+          const d = node('details');
+          d.append(
+            node('summary', 'Thing to inspect: ' + signal.note),
+            node(
+              'p',
+              'Authored inspection signal, not an automatic root-cause conclusion.',
+              'small',
+            ),
+            ...signal.evidence.map(evidenceButton),
+          );
+          $('signals').append(d);
+        }
+        renderActionContext();
+      }
+      function assessmentButton(a, compact = false) {
+        const b = node(
+          'button',
+          compact
+            ? `${a.assessment.replaceAll('_', ' ')} · ${a.basis.replaceAll('_', ' ')}`
+            : `${a.subject} / ${a.criterion}: ${a.assessment.replaceAll('_', ' ')}`,
+        );
+        b.dataset.assessment = a.id;
+        b.onclick = () => openAssessment(a);
+        return b;
+      }
+      function openAssessment(a) {
+        const revision = artifactMap.get(a.artifactId);
+        if (revision && stage !== revision.stageIndex) {
+          stage = revision.stageIndex;
+          renderStory();
+        }
+        if (revision && !$('compare').hidden) {
+          $('after').value = String(revision.stageIndex);
+          renderCompare();
+        }
+        if (revision) {
+          $('story-subject').value = a.subject;
+          renderStoryImages();
+          renderActionContext();
+        }
+        selectedEvent = null;
+        selectedAssessment = a.id;
+        const box = drawer(`${a.criterion} · ${a.assessment.replaceAll('_', ' ')}`, revision),
+          artifact = artifactMap.get(a.artifactId);
+        box.append(
+          node('p', `${a.subject} · ${a.actor} · ${a.basis.replaceAll('_', ' ')} assessment`),
+          node('p', a.note ?? 'No additional note.'),
+          node('p', `Artifact revision: ${a.artifactId}`, 'provenance'),
+        );
+        if (artifact) {
+          box.append(node('p', DATA.stages[artifact.stageIndex].title, 'small'));
+          const b = node('button', 'Inspect artifact identity');
+          b.onclick = () => openArtifact(artifact);
+          box.append(b);
+        }
+        box.append(node('h3', 'Supporting evidence'));
+        if (a.evidence.length) box.append(...a.evidence.map(evidenceButton));
+        else
+          box.append(
+            node(
+              'p',
+              'No supporting event recorded. This cell describes an explicit record limit, not an inferred result.',
+              'warning',
+            ),
+          );
+        saveLocation();
+      }
+      function openArtifact(a) {
+        selectedEvent = null;
+        selectedAssessment = null;
+        const box = drawer(`Artifact · ${a.subject}`, a);
+        box.append(node('p', a.id, 'provenance'), node('p', a.limits.join(' '), 'warning'));
+        box.append(
+          node(
+            'p',
+            `Source pairing: ${a.provenance.sourcePairing}; camera ${a.provenance.cameraKnown ? 'documented' : 'unknown'}; lighting ${a.provenance.lightingKnown ? 'documented' : 'unknown'}.`,
+            'small',
+          ),
+        );
+        if (!a.captures.length) box.append(node('p', 'No retained capture.'));
+        for (const c of a.captures) {
+          const link = node('a', c.angle + ' · ' + c.path);
+          link.href = c.url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          box.append(link, node('p', 'SHA-256 ' + c.sha256, 'provenance'));
+        }
+        if (!a.sources.length)
+          box.append(
+            node(
+              'p',
+              'No subject-specific source snapshot attached. Source pairing remains unknown.',
+              'small',
+            ),
+          );
+        for (const f of a.sources)
+          box.append(node('p', `${f.path}\nKey ${f.sourceKey}\nSHA-256 ${f.sha256}`, 'provenance'));
+        const source = node('button', 'Inspect retained source / diff');
+        source.onclick = () => openSourceEvidence(DATA.stages[a.stageIndex]);
+        box.append(source);
+        for (const [label, refs] of [
+          ['Associated production records', a.producedBy],
+          ['Associated inspections', a.inspectedBy],
+        ]) {
+          box.append(node('h3', label));
+          box.append(...refs.map(evidenceButton));
+          if (!refs.length) box.append(node('p', 'No exact event attached.', 'small'));
+        }
+        saveLocation();
+      }
+      function openSourceEvidence(s) {
+        const box = drawer('Retained source · ' + s.title);
+        box.append(
+          node(
+            'p',
+            'Same-episode retained snapshots; exact source-to-render pairing is unknown.',
+            'warning',
+          ),
+        );
+        if (!s.sources.length) box.append(node('p', 'No retained source snapshot.'));
+        for (const f of s.sources) {
+          const d = node('details');
+          d.append(
+            node('summary', f.sourceKey),
+            node('p', `${f.path}\nSHA-256 ${f.sha256}`, 'provenance'),
+          );
+          d.append(
+            node('h3', 'Changes from previous retained snapshot'),
+            node('pre', f.diff?.text ?? 'No earlier snapshot for this source key.'),
+          );
+          const full = node('details');
+          full.append(node('summary', 'Full retained source'), node('pre', f.text));
+          d.append(full);
+          box.append(d);
+        }
+      }
+      function renderMatrix(subject) {
+        const rows = DATA.stages.filter((s) =>
+          s.artifacts.some((id) => artifactMap.get(id).subject === subject),
+        );
+        const criteria = [
+          ...new Set(
+            rows.flatMap((s) =>
+              s.assessments.filter((a) => a.subject === subject).map((a) => a.criterion),
+            ),
+          ),
+        ];
+        const table = node('table'),
+          caption = node('caption', `${subject}: recorded assessments across revisions`);
+        table.append(caption);
+        const head = node('thead'),
+          tr = node('tr');
+        tr.append(node('th', 'Criterion'));
+        for (const s of rows) {
+          const th = node('th', `${s.index + 1}. ${s.title}`);
+          th.scope = 'col';
+          tr.append(th);
+        }
+        head.append(tr);
+        table.append(head);
+        const body = node('tbody');
+        for (const criterion of criteria) {
+          const row = node('tr'),
+            th = node('th', criterion);
+          th.scope = 'row';
+          row.append(th);
+          for (const s of rows) {
+            const cell = node('td'),
+              assessments = s.assessments.filter(
+                (a) => a.subject === subject && a.criterion === criterion,
+              );
+            if (!assessments.length) cell.textContent = '—';
+            else cell.append(...assessments.map((a) => assessmentButton(a, true)));
+            row.append(cell);
+          }
+          body.append(row);
+        }
+        table.append(body);
+        $('criterion-matrix').replaceChildren(
+          criteria.length
+            ? table
+            : node('p', 'No criterion assessments attached for this subject.', 'empty'),
+        );
+      }
+      function initEvidence() {
+        option($('thread-filter'), 'all', 'All threads / actors');
+        for (const t of DATA.threads) option($('thread-filter'), t.id, t.role);
+        option($('role-filter'), 'all', 'All evidence roles');
+        for (const r of [
+          'request',
+          'feedback',
+          'plan',
+          'action',
+          'edit',
+          'artifact',
+          'inspection',
+          'verification',
+          'assessment',
+          'handoff',
+          'other',
+        ])
+          option($('role-filter'), r, r);
+        let total = 0,
+          normalized = 0,
+          unsupported = 0,
+          excluded = 0,
+          truncated = 0;
+        for (const t of DATA.threads) {
+          const c = t.coverage;
+          total += c.totalItems;
+          normalized += c.normalizedItems;
+          unsupported += c.unsupportedItems.reduce((n, g) => n + g.count, 0);
+          excluded += c.excludedItems.reduce((n, g) => n + g.count, 0);
+          truncated += c.truncatedItems;
+          const d = node('details');
+          d.append(
+            node('summary', `${t.role} · ${t.source.name} · schema ${t.source.rawSchemaVersion}`),
+            node(
+              'p',
+              `${c.normalizedItems}/${c.totalItems} items normalized; ${c.truncatedItems} source-truncated; ${c.displayTruncatedItems} shortened previews.`,
+            ),
+          );
+          for (const [label, groups] of [
+            ['Unsupported', c.unsupportedItems],
+            ['Intentionally excluded', c.excludedItems],
+          ])
+            for (const g of groups) {
+              const detail = node('details');
+              detail.append(
+                node('summary', `${label}: ${g.type} ×${g.count}`),
+                node(
+                  'pre',
+                  g.refs
+                    .map((r) => `${r.thread} / ${r.turn} / ${r.event} · ordinal ${r.ordinal}`)
+                    .join('\n'),
+                ),
+              );
+              d.append(detail);
+            }
+          if (!c.unsupportedItems.length)
+            d.append(
+              node(
+                'p',
+                'Unsupported source items: 0. This describes only the supplied export.',
+                'small',
+              ),
+            );
+          $('coverage-details').append(d);
+        }
+        const text = `${DATA.threads.length} actors · ${normalized}/${total} source items normalized · ${unsupported} unsupported · ${excluded} intentionally excluded · ${truncated} source-truncated`;
+        $('coverage-summary').textContent = text;
+        $('actions-coverage').textContent =
+          text + ' · Coverage describes the collected exports, not all historical activity.';
+        $('close-drawer').onclick = () => {
+          closeDrawer();
+          saveLocation();
+        };
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !$('evidence-drawer').hidden) {
+            closeDrawer();
+            saveLocation();
+          }
+        });
+      }
+
       function renderStory() {
         const s = DATA.stages[stage];
         for (const b of $('steps').children) {
           if (Number(b.dataset.stage) === stage) b.setAttribute('aria-current', 'step');
           else b.removeAttribute('aria-current');
         }
+        $('quote').parentElement.open = false;
+        const rail = $('steps').parentElement;
+        const activeStep = $('steps').children[stage];
+        rail.scrollTop = Math.max(
+          0,
+          activeStep.offsetTop - rail.offsetTop - rail.clientHeight * 0.25,
+        );
         $('stage-title').textContent = s.title;
         $('stage-status').textContent = s.status;
         $('step-count').textContent = `${stage + 1} / ${DATA.stages.length}`;
@@ -809,11 +1614,21 @@
         $('prev').disabled = stage === 0;
         $('next').disabled = stage === DATA.stages.length - 1;
         $('story-subject').replaceChildren();
-        for (const subject of [...new Set(s.captures.map((c) => c.subject))])
+        for (const subject of [
+          ...new Set([
+            ...s.captures.map((c) => c.subject),
+            ...s.artifacts.map((id) => artifactMap.get(id).subject),
+          ]),
+        ])
           option($('story-subject'), subject, subject[0].toUpperCase() + subject.slice(1));
         $('story-subject').value =
-          s.subject ?? (s.captures.some((c) => c.subject === 'hydra') ? 'hydra' : 'nightjar');
+          s.subject ??
+          (s.captures.some((c) => c.subject === 'hydra')
+            ? 'hydra'
+            : ($('story-subject').options[0]?.value ?? 'unknown'));
+        renderEpisode();
         renderStoryImages();
+        renderActionContext();
         $('source-stage').value = String(stage);
         renderSourceFiles();
       }
@@ -837,9 +1652,13 @@
       }
       $('story-subject').onchange = renderStoryImages;
       function chooseStage(i) {
+        closeDrawer();
+        selectedEvent = null;
+        selectedAssessment = null;
         stage = i;
         renderStory();
         tab('story');
+        window.scrollTo({ top: 0 });
       }
       DATA.stages.forEach((s, i) => {
         const b = node('button', undefined, 'step');
@@ -854,18 +1673,19 @@
       });
       $('prev').onclick = () => chooseStage(stage - 1);
       $('next').onclick = () => chooseStage(stage + 1);
-      for (const s of ['hydra', 'nightjar', 'spiral', 'vajra', 'phoenix', 'catalyst'])
+      for (const s of [...new Set(DATA.artifacts.map((a) => a.subject))])
         option($('subject'), s, s[0].toUpperCase() + s.slice(1));
       function compareOptions() {
         const available = DATA.stages.filter((s) =>
-          s.captures.some((c) => c.subject === $('subject').value),
+          s.artifacts.some((id) => artifactMap.get(id).subject === $('subject').value),
         );
         for (const id of ['before', 'after']) {
           const old = $(id).value;
           $(id).replaceChildren();
-          available.forEach((s) => option($(id), s.id, s.title));
-          if (available.some((s) => String(s.id) === old)) $(id).value = old;
-          else $(id).value = String(id === 'before' ? available[0]?.id : available.at(-1)?.id);
+          available.forEach((s) => option($(id), s.index, s.title));
+          if (available.some((s) => String(s.index) === old)) $(id).value = old;
+          else
+            $(id).value = String(id === 'before' ? available[0]?.index : available.at(-1)?.index);
         }
         renderCompare();
       }
@@ -880,6 +1700,7 @@
         );
         $('compare-status').textContent =
           `${subject} · ${angle} · ${a?.title ?? 'Unavailable'} → ${b?.title ?? 'Unavailable'}`;
+        renderMatrix(subject);
       }
       $('subject').onchange = compareOptions;
       for (const id of ['angle', 'before', 'after']) $(id).onchange = renderCompare;
@@ -893,20 +1714,26 @@
         });
         option(
           $('turn-filter'),
-          t.id,
+          JSON.stringify([t.threadId, t.id]),
           `${date} CST · ${th.role} · ${(t.events.find((e) => e.kind === 'request')?.text ?? t.events.find((e) => e.kind === 'message')?.text ?? 'Delegated implementation').slice(0, 65)}`,
         );
       }
       function renderEvents(focusId) {
+        const episodeRefs = new Map(DATA.stages[stage].evidence.map((r) => [r.key, r]));
         const q = $('search').value.toLowerCase();
         const filtered = events.filter(
           (e) =>
-            ($('turn-filter').value === 'all' || e.turnId === $('turn-filter').value) &&
+            ($('turn-filter').value === 'all' ||
+              JSON.stringify([e.threadId, e.turnId]) === $('turn-filter').value) &&
+            ($('thread-filter').value === 'all' || e.threadId === $('thread-filter').value) &&
+            ($('episode-filter').value === 'all' || episodeRefs.has(e.key)) &&
+            ($('role-filter').value === 'all' ||
+              episodeRefs.get(e.key)?.roles.includes($('role-filter').value)) &&
             ($('kind').value === 'all' || e.kind === $('kind').value) &&
             `${e.title}\n${e.text}\n${e.output ?? ''}`.toLowerCase().includes(q),
         );
         if (focusId) {
-          const idx = filtered.findIndex((e) => e.id === focusId);
+          const idx = filtered.findIndex((e) => e.key === focusId);
           if (idx >= 0) page = Math.floor(idx / pageSize);
         }
         page = Math.max(0, Math.min(page, Math.ceil(filtered.length / pageSize) - 1));
@@ -915,27 +1742,25 @@
         $('event-list').replaceChildren();
         for (const e of filtered.slice(page * pageSize, (page + 1) * pageSize)) {
           const row = node('article', undefined, 'event');
-          row.id = `record-${e.id}`;
+          row.id = `record-${encodeURIComponent(e.key)}`;
+          if (episodeRefs.has(e.key)) row.classList.add('episode-event');
+          if (e.key === selectedEvent) row.classList.add('selected-event');
           const meta = node('div', undefined, 'event-meta');
           meta.append(
             node('span', e.kind, 'kind'),
             node('span', e.role),
             node('span', `Turn ${e.turnId.slice(0, 8)} · record ${e.ordinal}`),
           );
+          if (episodeRefs.has(e.key))
+            meta.append(node('span', 'Episode: ' + episodeRefs.get(e.key).roles.join(', ')));
           if (e.exitCode !== undefined && e.exitCode !== null)
             meta.append(node('span', `Exit ${e.exitCode} · ${e.durationMs ?? '?'} ms`));
           row.append(meta);
-          const d = node('details');
-          d.open = e.id === focusId;
-          d.append(node('summary', e.title));
-          if (e.truncated)
-            d.append(node('p', 'Excerpt truncated in the source export.', 'warning'));
-          d.append(node('pre', e.text));
-          if (e.output !== undefined) {
-            d.append(node('h3', 'Recorded output'), node('pre', e.output));
-          }
-          d.append(node('p', `${e.threadId} / ${e.turnId} / ${e.id}`, 'provenance'));
+          const d = eventDetails(e, e.key === selectedEvent);
           row.append(d);
+          const inspect = node('button', 'Inspect evidence');
+          inspect.onclick = () => openEvent(e.key);
+          row.append(inspect);
           $('event-list').append(row);
         }
         if (!filtered.length)
@@ -945,7 +1770,7 @@
         $('event-page').textContent =
           `Page ${filtered.length ? page + 1 : 0} / ${Math.ceil(filtered.length / pageSize)}`;
       }
-      for (const id of ['turn-filter', 'kind'])
+      for (const id of ['turn-filter', 'thread-filter', 'episode-filter', 'role-filter', 'kind'])
         $(id).onchange = () => {
           page = 0;
           renderEvents();
@@ -963,13 +1788,9 @@
         renderEvents();
       };
       $('show-events').onclick = () => {
-        const s = DATA.stages[stage];
-        $('turn-filter').value = s.turn;
-        $('kind').value = 'all';
-        $('search').value = '';
-        renderEvents(s.anchorId);
-        tab('events');
-        document.getElementById(`record-${s.anchorId}`)?.scrollIntoView({ block: 'center' });
+        resetEventFilters();
+        $('episode-filter').value = 'current';
+        openRaw(refKey(DATA.stages[stage].anchorRef), false);
       };
       function renderSourceFiles() {
         const s = DATA.stages[Number($('source-stage').value)];
@@ -988,7 +1809,7 @@
           $('source-code').textContent = 'No retained source snapshot.';
           return;
         }
-        $('source-meta').textContent = `${f.path}\nSHA-256 ${f.sha256}`;
+        $('source-meta').textContent = `${f.path}\nSource key: ${f.sourceKey}\nSHA-256 ${f.sha256}`;
         let text = f.text;
         if ($('source-mode').value === 'diff') {
           text =
@@ -1052,10 +1873,35 @@
         );
         $('documents').append(section);
       }
-      renderStory();
-      compareOptions();
-      renderEvents();
-      tab(params.get('view') ?? 'story');
+      function restoreLocation() {
+        const q = new URLSearchParams(location.hash.slice(1));
+        const requested = q.has('episode')
+          ? DATA.stages.findIndex((s) => s.id === q.get('episode'))
+          : Number(q.get('stage') ?? 0);
+        closeDrawer();
+        if (Number.isInteger(requested) && requested >= 0 && requested < DATA.stages.length)
+          stage = requested;
+        renderStory();
+        compareOptions();
+        resetEventFilters();
+        selectedEvent = eventMap.has(q.get('event')) ? q.get('event') : null;
+        renderEvents(selectedEvent);
+        tab(q.get('view') ?? 'story');
+        if (selectedEvent) {
+          if (q.get('view') === 'events')
+            document
+              .getElementById(`record-${encodeURIComponent(selectedEvent)}`)
+              ?.scrollIntoView({ block: 'center' });
+          openEvent(selectedEvent);
+        } else window.scrollTo({ top: 0 });
+        const assessment = DATA.stages
+          .flatMap((s) => s.assessments)
+          .find((a) => a.id === q.get('assessment'));
+        if (assessment) openAssessment(assessment);
+      }
+      initEvidence();
+      restoreLocation();
+      window.addEventListener('hashchange', restoreLocation);
     </script>
   </body>
 </html>
