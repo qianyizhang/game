@@ -31,10 +31,22 @@
     }
   ],
   "documents": [
-    "docs/art-review-sol-2026-10-06.md",
-    "docs/creature-redesign-2026-10-06.md",
-    "docs/art-direction.md",
-    "docs/art-review-sol61-creatures-2026-10-06.md",
+    {
+      "path": "docs/art-review-sol-2026-10-06.md",
+      "revision": "650cf196fc37e217349837040f95298f2645fdef"
+    },
+    {
+      "path": "docs/creature-redesign-2026-10-06.md",
+      "revision": "650cf196fc37e217349837040f95298f2645fdef"
+    },
+    {
+      "path": "docs/art-direction.md",
+      "revision": "650cf196fc37e217349837040f95298f2645fdef"
+    },
+    {
+      "path": "docs/art-review-sol61-creatures-2026-10-06.md",
+      "revision": "650cf196fc37e217349837040f95298f2645fdef"
+    },
     "test-results/sol61-creatures-delivery/nightjar-roundtrip.json",
     "test-results/sol61-creatures-delivery/phoenix-roundtrip.json",
     "test-results/sol61-creatures-delivery/hydra-roundtrip.json"
