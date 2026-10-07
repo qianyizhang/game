@@ -33,31 +33,31 @@ const studyNames = [
   'Banner Bearer',
 ];
 
-test('3D studies render, export real meshes, and work on phone without changing saves', async ({
-  page,
-}, info) => {
-  // Construction and export work scale with the number of studies.
-  test.setTimeout(30_000 + studyNames.length * 5_000);
-  const errors: string[] = [];
-  const normalWarnings: string[] = [];
-  page.on('pageerror', (error) => errors.push(error.message));
-  page.on('console', (message) => {
-    if (message.text().includes('Creating normalized normal attribute'))
-      normalWarnings.push(message.text());
-  });
-  await page.goto('/');
-  const saves = await page.evaluate(() =>
-    JSON.stringify(
-      Object.fromEntries(
-        Object.entries(localStorage).filter(([key]) => key !== 'card-workshop.screen'),
+for (const name of studyNames) {
+  test(`${name} renders, exports real meshes, and works on phone without changing saves`, async ({
+    page,
+  }, info) => {
+    // Each study owns its browser/export budget; a slow subject cannot consume the next one.
+    test.setTimeout(60_000);
+    const errors: string[] = [];
+    const normalWarnings: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    page.on('console', (message) => {
+      if (message.text().includes('Creating normalized normal attribute'))
+        normalWarnings.push(message.text());
+    });
+    await page.goto('/');
+    const saves = await page.evaluate(() =>
+      JSON.stringify(
+        Object.fromEntries(
+          Object.entries(localStorage).filter(([key]) => key !== 'card-workshop.screen'),
+        ),
       ),
-    ),
-  );
-  await page.getByRole('button', { name: '3D art gallery' }).click();
-  await expect(page).toHaveURL(/art=3d/);
-  await expect(page.getByRole('heading', { name: 'From ink to object.' })).toBeVisible();
-  await page.getByRole('button', { name: 'Pause animation' }).click();
-  for (const name of studyNames) {
+    );
+    await page.getByRole('button', { name: '3D art gallery' }).click();
+    await expect(page).toHaveURL(/art=3d/);
+    await expect(page.getByRole('heading', { name: 'From ink to object.' })).toBeVisible();
+    await page.getByRole('button', { name: 'Pause animation' }).click();
     await page
       .getByRole('navigation', { name: 'Choose a 3D study' })
       .getByRole('button', { name: new RegExp(name) })
@@ -281,51 +281,53 @@ test('3D studies render, export real meshes, and work on phone without changing 
       );
     }
     if (name === 'Catalyst') expect(gltf.extensionsUsed).toContain('KHR_materials_transmission');
-  }
-  await page
-    .getByRole('navigation', { name: 'Choose a 3D study' })
-    .getByRole('button', { name: /Phoenix/ })
-    .click();
-  await page.getByRole('button', { name: 'Wireframe', exact: true }).click();
-  await page.getByRole('button', { name: 'Separate the layers' }).click();
-  await page.getByLabel('Lighting', { exact: true }).selectOption('moon');
-  await expect(page.getByRole('button', { name: 'Wireframe', exact: true })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
-  await page
-    .locator('.studio-stage')
-    .screenshot({ path: info.outputPath('phoenix-wireframe.png') });
-  await page.getByRole('button', { name: 'Wireframe', exact: true }).click();
-  await page.getByRole('button', { name: 'Separate the layers' }).click();
-  await page.getByLabel('Lighting', { exact: true }).selectOption('studio');
-  await page.setViewportSize({ width: 390, height: 844 });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
-  await page.locator('.art-studio').screenshot({ path: info.outputPath('phoenix-phone.png') });
-  const imageEvent = page.waitForEvent('download');
-  await page.getByRole('button', { name: 'Save image' }).click();
-  const image = await imageEvent;
-  await image.saveAs(info.outputPath(image.suggestedFilename()));
-  const png = await readFile(info.outputPath(image.suggestedFilename()));
-  expect(png.subarray(1, 4).toString()).toBe('PNG');
-  await page.getByRole('button', { name: 'My table' }).click();
-  await expect(page).not.toHaveURL(/art=3d/);
-  await expect(page.getByRole('button', { name: '3D art gallery' })).toBeFocused();
-  expect(
-    await page.evaluate(() =>
-      JSON.stringify(
-        Object.fromEntries(
-          Object.entries(localStorage).filter(([key]) => key !== 'card-workshop.screen'),
+    await page
+      .getByRole('navigation', { name: 'Choose a 3D study' })
+      .getByRole('button', { name: /Phoenix/ })
+      .click();
+    await page.getByRole('button', { name: 'Wireframe', exact: true }).click();
+    await page.getByRole('button', { name: 'Separate the layers' }).click();
+    await page.getByLabel('Lighting', { exact: true }).selectOption('moon');
+    await expect(page.getByRole('button', { name: 'Wireframe', exact: true })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    await page
+      .locator('.studio-stage')
+      .screenshot({ path: info.outputPath('phoenix-wireframe.png') });
+    await page.getByRole('button', { name: 'Wireframe', exact: true }).click();
+    await page.getByRole('button', { name: 'Separate the layers' }).click();
+    await page.getByLabel('Lighting', { exact: true }).selectOption('studio');
+    await page.setViewportSize({ width: 390, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+    await page.locator('.art-studio').screenshot({ path: info.outputPath('phoenix-phone.png') });
+    const imageEvent = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Save image' }).click();
+    const image = await imageEvent;
+    await image.saveAs(info.outputPath(image.suggestedFilename()));
+    const png = await readFile(info.outputPath(image.suggestedFilename()));
+    expect(png.subarray(1, 4).toString()).toBe('PNG');
+    await page.getByRole('button', { name: 'My table' }).click();
+    await expect(page).not.toHaveURL(/art=3d/);
+    await expect(page.getByRole('button', { name: '3D art gallery' })).toBeFocused();
+    expect(
+      await page.evaluate(() =>
+        JSON.stringify(
+          Object.fromEntries(
+            Object.entries(localStorage).filter(([key]) => key !== 'card-workshop.screen'),
+          ),
         ),
       ),
-    ),
-  ).toBe(saves);
-  await page.getByRole('button', { name: '3D art gallery' }).click();
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
-  expect(errors).toEqual([]);
-  expect(normalWarnings).toEqual([]);
-});
+    ).toBe(saves);
+    await page.getByRole('button', { name: '3D art gallery' }).click();
+    await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+    expect(errors).toEqual([]);
+    expect(normalWarnings).toEqual([]);
+  });
+}
 
 for (const studyName of [
   'Prowler',
