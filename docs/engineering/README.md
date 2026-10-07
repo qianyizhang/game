@@ -5,6 +5,7 @@
 - [Maintenance governance](maintenance.md) defines source ownership, checks and retention.
 - [Verification contracts](checks.md) define gate coverage, measured geometry budgets and inventory limits.
 - [Installed review skills](agent-skills.md) maps upstream conventions to the repository.
+- [Trace behavior debugger](trace-visualizer.md) connects curated episodes, records and retained artifacts.
 - [Tools package](../../packages/workshop-tools/README.md) documents maintenance commands.
 - [DCC package](../../packages/dcc-workbench/README.md) documents Blender authoring and delivery.
 

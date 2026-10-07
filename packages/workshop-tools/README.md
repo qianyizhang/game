@@ -21,3 +21,9 @@ npm run check:maintenance
 The DCC native render command is the first producer of closed disposable outputs. Other producers must adopt the same receipt contract deliberately. Session closure requires promotion targets. [Governance](../../docs/engineering/maintenance.md) is the authority for lifetimes and workflow.
 
 The package is checked with typed ESLint, TypeScript `checkJs` in strict mode, and Node tests covering destructive boundaries. It has no runtime dependencies. Root npm scripts remain the public entry points as more script families migrate here.
+
+## Trace bundles
+
+`npm run trace:build -- [input-directory] [new-output-directory] [case-study.json]` builds a private offline evidence viewer. Relative arguments resolve from the repository root. A default invocation chooses a fresh ignored output directory; an explicit existing output is refused. The old `scripts/trace-visualizer/build.mjs` command delegates to the same checked implementation.
+
+The `trace/` modules validate unknown exports and case specifications, preserve observable record identities and omissions, and associate authored assessments with exact evidence. They execute through the pinned Node runtime with native TypeScript stripping and pass the package strict type/lint gate. `npm run test:trace` selects the trace tests; the package test command also includes them. See the [trace guide](../../docs/engineering/trace-visualizer.md) for schema, privacy, output and provenance boundaries.

@@ -2,7 +2,11 @@ import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-const typedFiles = ['packages/workshop-tools/*.mjs', 'packages/dcc-workbench/src/*.{ts,tsx}'];
+const typedFiles = [
+  'packages/workshop-tools/**/*.{mjs,ts}',
+  'packages/dcc-workbench/src/*.{ts,tsx}',
+  'scripts/trace-visualizer/build.mjs',
+];
 
 export default [
   {

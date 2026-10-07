@@ -5,21 +5,25 @@ A local, read-only viewer for following how Codex changed an artifact in respons
 ## Build and open
 
 ```sh
-node scripts/trace-visualizer/build.mjs
+npm run trace:build
 npm run test:trace
 npm run check
 npm run test:browser -- tests/browser/trace-visualizer.spec.ts --output test-results/trace-visualizer-checks
 ```
 
-Open `test-results/trace-visualizer/index.html` directly, or visit `/test-results/trace-visualizer/index.html` through the repository development server. Keep its adjacent `assets/` and `manifest.json`. Browser tests on macOS require approved execution outside the restricted sandbox, with the existing startup guard and disposable profiles (`AGENTS.md`).
+The command reports the new bundle path as JSON. Open that `index.html` directly, or visit its repository-relative URL through the development server. Each default build uses a fresh `test-results/trace-visualizer-<id>/` directory. Keep its adjacent `assets/` and `manifest.json`. Browser tests on macOS require approved execution outside the restricted sandbox, with the existing startup guard and disposable profiles (`AGENTS.md`).
 
 The six private thread exports and historical artwork are already retained locally for this case. They are not committed. Case-specific browser tests skip explicitly when exports are absent; synthetic browser tests and all model tests work without private history. Tests use a separate output directory to preserve historical captures.
 
 Optional positional arguments:
 
 ```sh
-node scripts/trace-visualizer/build.mjs INPUT_DIRECTORY OUTPUT_DIRECTORY CASE_STUDY_JSON
+npm run trace:build -- INPUT_DIRECTORY NEW_OUTPUT_DIRECTORY CASE_STUDY_JSON
 ```
+
+Arguments resolve from the repository root, independent of the invoking directory. An explicit output directory must be new, inside that root and disjoint from input. Existing output and symlinked output parents are refused. A failed build removes only the fresh directory created by that invocation; previous evidence is preserved. The old `node scripts/trace-visualizer/build.mjs` entry point remains a checked compatibility wrapper.
+
+The maintained implementation, typed contracts, template and case recipe live in `packages/workshop-tools/trace/`. Node 24 executes its TypeScript modules directly; the tools package enforces strict TypeScript and typed ESLint before use.
 
 Input files are `<thread-id>.json` exports of `read_thread` with `includeOutputs: true`, `schemaVersion: 1`, a `thread` object and `turns`. Collect all pages, combine turns once, then set `page.hasMore` to false. Incomplete pagination and duplicate identities fail the build. Keep private input and output under ignored `test-results/`; do not publish the generated HTML.
 
@@ -56,7 +60,7 @@ Inspection signals are authored prompts to investigate, each with evidence. The 
 
 ## Add a case or episode
 
-Copy `scripts/trace-visualizer/case-study.json`. Declare source thread IDs, display roles and optional parent IDs. Use a stable episode `id`; `thread` and `turn` identify its statement anchor. Prefer an exact `anchorRef`; the older visible-statement substring `anchor` remains supported. Missing and ambiguous anchors fail clearly.
+Copy `packages/workshop-tools/trace/case-study.json`. Declare source thread IDs, display roles and optional parent IDs. Use a stable episode `id`; `thread` and `turn` identify its statement anchor. Prefer an exact `anchorRef`; the older visible-statement substring `anchor` remains supported. Missing and ambiguous anchors fail clearly.
 
 Every episode must provide an `evidence` array. An empty array is permitted when only its statement anchor is available; the builder includes that anchor. References identify an observable normalized event, not an ordinal guessed from a screenshot:
 
