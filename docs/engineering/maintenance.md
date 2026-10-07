@@ -31,6 +31,8 @@ Existing paths are listed individually in the migration inventory. New top-level
 
 ## Retention and deletion authority
 
+`npm run maintenance -- inventory` reports streamed content hashes, every occurrence path and tracked-text references for the artifact roots. It does not grant deletion authority. [Verification contracts](checks.md#artifact-inventory-limits) describe its consistency and reference limits.
+
 | Material                                                                     | Home                                                           | Lifetime                                        |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------- |
 | Active discussions and handoffs                                              | `.work/sessions/<session>/`                                    | Protected while open or pinned                  |

@@ -708,7 +708,9 @@ function hair(face: T.Group) {
     let line = -0.09 + 0.176 * smooth(z, 0.015, 0.112) + 0.08 * x * smooth(z, 0.02, 0.1);
     const side = smooth(Math.abs(x), 0.108, 0.142) * (1 - smooth(Math.abs(z + 0.01), 0.05, 0.095));
     line = T.MathUtils.lerp(line, Math.max(line, 0), side);
-    return Math.max(union(cap(x, y, z), sweep(x, y, z), 0.022), -skull(x, y, z) - 0.002, line - y);
+    // Bury the inner wall by more than two sampling steps. The thinner skull cut
+    // produced disconnected islands even though each island was individually closed.
+    return Math.max(union(cap(x, y, z), sweep(x, y, z), 0.022), -skull(x, y, z) - 0.012, line - y);
   };
   const g = sculptField(
     field,
