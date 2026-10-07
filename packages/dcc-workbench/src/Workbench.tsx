@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import Viewer, { type Playback, type Surface, type View } from './Viewer';
 import brief from '../briefs/briar-hydra.json';
 import manifest from '../assets/manifest.json';
@@ -6,6 +6,8 @@ import modelUrl from '../assets/briar-hydra.glb?url';
 import sourceUrl from '../sources/briar-hydra.blend?url';
 import beforeUrl from '../references/hydra-before.png';
 import './workbench.css';
+
+const HydraComparison = lazy(() => import('./HydraComparison'));
 
 const stages = ['Intent', 'Form', 'Surface', 'Motion', 'Delivery'] as const;
 type Stage = (typeof stages)[number];
@@ -80,6 +82,9 @@ function Gesture() {
   );
 }
 export default function Workbench({ onExit }: { onExit: () => void }) {
+  const [comparison, setComparison] = useState(
+    () => new URLSearchParams(location.search).get('compare') === 'hydra',
+  );
   const [stage, setStage] = useState<Stage>('Intent');
   const [options, setOptions] = useState<Playback>(() => ({
     playing: !matchMedia('(prefers-reduced-motion: reduce)').matches,
@@ -102,6 +107,19 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
     setStage(value);
     setOptions((o) => ({ ...o, surface: value === 'Form' ? 'Clay' : 'Material', rig: false }));
   };
+  const toggleComparison = (value: boolean) => {
+    const url = new URL(location.href);
+    if (value) url.searchParams.set('compare', 'hydra');
+    else url.searchParams.delete('compare');
+    history.replaceState(null, '', url);
+    setComparison(value);
+  };
+  if (comparison)
+    return (
+      <Suspense fallback={<p role="status">Loading Hydra comparison…</p>}>
+        <HydraComparison onBack={() => toggleComparison(false)} onExit={onExit} />
+      </Suspense>
+    );
   return (
     <main className="dcc-workbench">
       <header className="dcc-header">
@@ -128,6 +146,9 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
           <span>From a gesture to a living sculpture.</span>
         </p>
       </section>
+      <button className="dcc-compare-entry" onClick={() => toggleComparison(true)}>
+        Compare Hydra versions <span>Matched views · before & after ↗</span>
+      </button>
       <nav className="dcc-stages" aria-label="Asset development stages">
         {stages.map((value, i) => (
           <button key={value} aria-pressed={stage === value} onClick={() => chooseStage(value)}>
@@ -215,6 +236,15 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
                 <span>CONSTRUCTION</span>
                 <p>Editable Bezier gestures → fused voxel surface → subdivision finish.</p>
               </div>
+              <details>
+                <summary>Edit the head assemblies in Blender</summary>
+                <p>
+                  Select EDIT | Head.Scent, Head.Search or Head.Guard in the downloaded source.
+                  Object Properties → Custom Properties contains Muzzle reach, Cranial taper, Crown
+                  depth and Horn sweep. Fitted facial parts follow together.
+                </p>
+                <p>Save the source and export it to inspect your changes here.</p>
+              </details>
               <ul>
                 {brief.polish.slice(0, 3).map((text) => (
                   <li key={text}>{text}</li>

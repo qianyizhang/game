@@ -17,6 +17,7 @@ if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from authoring_plan import AuthoringRequest, animation_name, parse_request  # noqa: E402
+from head_components import install_heads  # noqa: E402
 from native_types import (  # noqa: E402
     active_object,
     color_socket,
@@ -26,6 +27,7 @@ from native_types import (  # noqa: E402
     present,
     require,
 )
+from scale_components import install_scales  # noqa: E402
 
 
 def build(request: AuthoringRequest) -> None:
@@ -673,6 +675,15 @@ def build(request: AuthoringRequest) -> None:
                     0.018 * sin(t + phase * 0.7) * influence,
                     0.028 * sin(t + phase - j * 0.25) * influence,
                 )
+                if i == 1 and j in (1, 2, 3):
+                    # Preserve the author-reviewed searching-role revision in fresh builds.
+                    offset = {
+                        1: (0.0528920367, -0.0974007770, 0.1300596744),
+                        2: (0.0608559698, -0.0522891097, 0.2087160945),
+                        3: (0.1081512943, 0.0589239262, 0.0750417858),
+                    }[j]
+                    for axis in range(3):
+                        pose_bone.rotation_euler[axis] += offset[axis]
                 pose_bone.keyframe_insert("rotation_euler", frame=f, group=f"Neck {i + 1}")
             pose_head = pose.bones[f"Head.{i}"]
             pose_head.rotation_mode = "XYZ"
@@ -718,6 +729,8 @@ def build(request: AuthoringRequest) -> None:
                 region.view_location = (0, 0, 1.4)
                 require(space.shading, bpy.types.View3DShading).type = "MATERIAL"
     scene.render.engine = "BLENDER_EEVEE_NEXT"
+    install_heads(asset, rig)
+    install_scales(asset, rig)
     bpy.ops.wm.save_as_mainfile(filepath=str(request.output), compress=True)
     print("DCC_SOURCE_SAVED", request.output)
 

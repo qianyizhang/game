@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "generatedAt": "2026-10-07T11:21:20.707Z",
+  "blender": "4.5.14 LTS",
+  "source": "sources/briar-hydra.blend",
+  "asset": "assets/briar-hydra.glb",
+  "stats": {
+    "bytes": 10165272,
+    "triangles": 102181,
+    "meshes": 1,
+    "materials": 8,
+    "textures": 2,
+    "joints": 22,
+    "animations": [
+      {
+        "name": "Marsh Vigil",
+        "seconds": 6,
+        "channels": 66
+      }
+    ]
+  },
+  "previousReceipt": "assets/receipts/872fbf5a08a52abb13b93d8cc92233625cc86b6faa02adf858b95add4913344f.json",
+  "sha256": {
+    "briefs/briar-hydra.json": "eb6e552a855351c6b6b20f31b8ddf1caa3d377ef7d38ed625c5dafe13c07ef46",
+    "sources/briar-hydra.blend": "4b65ee96ae44176fa323efc0d1689a42fe266c4e7f688f914bd2264066f85480",
+    "blender/build_hydra.py": "c3f597ce1742d61db4a67b003c28713ced75c1b24c0734e0a85b83fa05dcf8a7",
+    "blender/export_asset.py": "bc55cbcb9a16973f440811e68b09f94aa82bff99d2ff4c491257975945da2939",
+    "blender/authoring_plan.py": "b91d498dbc956e04a41475e483f2d92093140b6b3e6109905dd4eb2a70aeb50e",
+    "blender/native_types.py": "0ae4bb1885820513a54e8d31b3e371460cbfbb943b9b856245148a38cff39b65",
+    "pipeline.mjs": "085eee0376f80c6d06e30d2c51320deb88c430c1b50bc3144b834a88e007e4f4",
+    "pipeline.ts": "4be329fc3bdfb245430ef2f93f130305c752288a66d963271198320683d74e89",
+    "contracts.ts": "55ca267c1b0948df09cb13795124f3311ecdbeffa1860f9b1f4eac693a07d08b",
+    "assets/briar-hydra.glb": "f8df879efaae70e01d26efd6f83e9a94de82f7246944e52523ff181be6e19b14",
+    "assets/authoring.json": "9497bdb2070d5ef94a8f951494a260e4a3131663c23e6f87c6a0affb09a95e33",
+    "assets/pose-samples.json": "f7ba21c1a57d4af5946d8c54a0600d9b5b570bd618286b78e3c386ac715e1ed5",
+    "assets/receipts/872fbf5a08a52abb13b93d8cc92233625cc86b6faa02adf858b95add4913344f.json": "872fbf5a08a52abb13b93d8cc92233625cc86b6faa02adf858b95add4913344f"
+  },
+  "native": {
+    "blender": "4.5.14 LTS",
+    "features": "Bezier curves; voxel remesh; smooth; live subdivision; armature; F-curves; UV atlas; procedural pigment and normal bake",
+    "constructionCurves": 10,
+    "sourceMeshes": 241,
+    "liveSubdivisionModifiers": 4,
+    "packedImages": [
+      "Hydra | baked marsh pigment",
+      "Hydra | baked scale relief"
+    ],
+    "action": "Marsh Vigil",
+    "audit": {
+      "sampleFrames": [
+        1,
+        37,
+        73,
+        109,
+        145
+      ],
+      "fixedVertices": 7725,
+      "maxAnchorDrift": 0,
+      "maxLoopDifference": 0,
+      "maxMidpointDeformation": 0.0756553826609481
+    }
+  }
+}

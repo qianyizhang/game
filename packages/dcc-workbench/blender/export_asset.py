@@ -11,6 +11,7 @@ if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from authoring_plan import AuthoringRequest, parse_request  # noqa: E402
+from head_components import validate_heads  # noqa: E402
 from native_types import mesh_data, require  # noqa: E402
 
 
@@ -70,6 +71,8 @@ def export_asset(request: AuthoringRequest) -> None:
             if abs(sum(g.weight for g in v.groups) - 1) > 1e-4:
                 raise RuntimeError(f"Invalid weights: {obj.name}")
     scene.frame_set(1)
+    view_layer.update()
+    validate_heads(collection)
     authoring = {
         "blender": bpy.app.version_string,
         "features": scene.get("dcc_native_features", ""),
@@ -95,6 +98,10 @@ def export_asset(request: AuthoringRequest) -> None:
         bpy.ops.object.select_all(action="DESELECT")
         obj.select_set(True)
         view_layer.objects.active = obj
+        # Freeze the saved native control values only in this delivery copy.
+        # The artist source retains its shape keys, drivers and editable controls.
+        if mesh_data(obj).shape_keys:
+            bpy.ops.object.shape_key_remove(all=True, apply_mix=True)
         for modifier in list(obj.modifiers):
             if modifier.type != "ARMATURE":
                 bpy.ops.object.modifier_apply(modifier=modifier.name)

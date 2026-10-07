@@ -89,3 +89,50 @@ Build and export write fresh candidates. Export checks source stability, geometr
 - `src/` is the frontend entry. The application shell lazy-loads this private workspace package. The existing gallery does not depend on it.
 - Authoring happens locally through the CLI and Blender. The frontend has no filesystem write or arbitrary Python-execution bridge.
 - The retained source is suitable for further sculpting and rig work. It is not hand-retopologized production character topology, a biological model, or a complete LOD pipeline.
+
+## Matched Hydra comparison
+
+Choose **Compare Hydra versions** in the workbench, or open `/?workbench=dcc&compare=hydra`.
+The comparison starts paused in clay. Named front/side/back/portrait views, orbit/zoom,
+silhouette/clay/material display, a shared six-second timeline and **Swap sides** apply to
+both panels. **Accepted vs candidate** compares the preserved procedural delivery with the
+current Blender export; **Quality before / after** compares the preserved gesture revision with the current export; **Original pilot vs current** retains the earlier pilot comparison. Narrow screens stack equally sized views.
+
+One renderer, camera, lighting setup and clock govern both panels. The first-pose geometry
+is grounded once, without changing authored scale. Camera distance is fitted to the union
+of all four assets at five sampled times, including versions not currently displayed;
+switching pairs or sides never refits an individual subject. Raw model units are not a
+measured physical scale, and equal animation times are not equivalent anatomical poses.
+This is visual comparison evidence, not a benchmark of authoring tools.
+
+[Preserved reference hashes](references/comparison/baseline.json) pin the original baseline GLBs,
+the original procedural export's source hashes, and the Git revision containing the
+pre-revision Blender source. These baseline files are checked by `npm run test:dcc`.
+`tests/browser/hydra-comparison.spec.ts` covers the shared controls, loop closure, preserved
+saves, narrow layout, reduced motion and failed asset loading.
+
+The source and fresh-build recipe include the low-neck gesture and the semantic head modules described below. Hand edits still belong to the saved source; export never rebuilds it. The [asset record](../../docs/art/assets/briar-hydra.md) separates revisions, technical verification and user judgment.
+
+## Edit a head in Blender
+
+1. Open `sources/briar-hydra.blend`. In the Outliner, select **EDIT | Head.Search**, **EDIT | Head.Scent**, or **EDIT | Head.Guard**.
+2. In **Object Properties → Custom Properties**, adjust **Muzzle reach**, **Cranial taper**, **Crown depth**, or **Horn sweep**. Values range from 0 to 1.5; zero restores that aspect of the original source cage. The selected head’s 51 fitted meshes share these controls. The jaw, teeth, oral surfaces, eyes and brows follow coordinated anatomical transforms, while the existing animation remains editable on the rig.
+3. Use the **HEAD | Search/Scent/Guard** collections to find the meshes. Meshes retain native shape keys and armature modifiers. Edit their Basis or a named key when a parameter alone is insufficient; keep fitted parts in view.
+4. Save, then run `npm run dcc -- export` and review the browser comparison. Export verifies that each evaluated head shape matches its displayed control, then freezes the saved shape-key mix only in a delivery copy before simplification and skin export. The source retains its keys and drivers. Material/UV changes that affect the baked skin still require an explicit re-bake.
+
+This is the fluent edit loop for the current source: **named control → inspect in Blender → save → export → inspect the same deformation in the browser**. Sliders are authoring controls, not new browser morph targets.
+
+## Modules and creation
+
+| Module                         | Interface and current reuse                                                                                                                                                            |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `blender/head_shape.py`        | Pure head-local shape offsets and three role presets. A small anatomical coordinate convention keeps muzzle, jaw and facial details aligned.                                           |
+| `blender/head_components.py`   | `install_heads(collection, rig)` installs three named native assemblies, four controls each, and coordinated shape keys. It refuses to replace existing artist shape keys or controls. |
+| `blender/scale_components.py`  | `install_scales(collection, rig)` fits three editable flank/dorsal patches to their own skin regions and inherits skin weights. It rejects sibling-neck binding.                       |
+| `blender/author_components.py` | Installs modules into a fresh candidate copied from the existing artist source. It neither resets the scene nor replaces the animation.                                                |
+
+`npm run dcc -- components` is a one-time upgrade of an older Hydra source: it creates a fresh candidate, checks source stability, backs up the source, installs the candidate and exports it. On the current source it refuses a second installation; use its existing controls. Backups live under `test-results/dcc-backups/`. As with source edits, a failed export leaves the saved source requiring correction or restoration; the previous delivery is retained until candidate validation succeeds.
+
+Fresh `dcc build` also installs these modules. `build --rebuild` is an explicit full reconstruction with a source backup, and does not preserve later hand edits. The pure head deformation is reusable; the current installers deliberately know the Hydra rig names, anatomical frames and source materials. Reusing them for another creature requires an adapter for those contracts. This is a working three-head authoring system, not a general character generator or a retopology tool.
+
+The scale patches remain ordinary editable meshes. Their density and footprint are recipe choices in `scale_components.py`, not live sliders. Whole-body gesture, remeshed anatomy, UV changes and material baking remain distinct authoring work. The next extraction should follow another actual asset, keeping these interfaces small.

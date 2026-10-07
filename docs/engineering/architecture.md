@@ -1,5 +1,7 @@
 # Architecture: three independent games, four layers
 
+The [glossary](glossary.md) owns domain meanings. [Independent game rules](decisions/0001-independent-game-rules.md) and [accepted-command reconstruction](decisions/0002-reconstruct-from-accepted-commands.md) record the reasons for the established architectural choices below. Use the [testing policy](testing.md) when choosing verification surfaces.
+
 ## The dependency direction
 
 ```text

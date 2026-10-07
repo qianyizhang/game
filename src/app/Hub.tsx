@@ -29,6 +29,7 @@ export default function Hub() {
     if (open) url.searchParams.set('workbench', 'dcc');
     else {
       url.searchParams.delete('workbench');
+      url.searchParams.delete('compare');
       dccRestoreFocus.current = true;
     }
     history.replaceState(null, '', url);

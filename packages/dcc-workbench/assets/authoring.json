@@ -2,7 +2,7 @@
   "blender": "4.5.14 LTS",
   "features": "Bezier curves; voxel remesh; smooth; live subdivision; armature; F-curves; UV atlas; procedural pigment and normal bake",
   "constructionCurves": 10,
-  "sourceMeshes": 241,
+  "sourceMeshes": 244,
   "liveSubdivisionModifiers": 4,
   "packedImages": [
     "Hydra | baked marsh pigment",

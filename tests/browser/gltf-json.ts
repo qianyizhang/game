@@ -31,7 +31,12 @@ export function gltfJson(json: string) {
         ),
       })),
     })),
-    accessors: rows(data.accessors).map((accessor) => ({ count: index(accessor.count) })),
+    accessors: rows(data.accessors).map((accessor) => ({
+      count: index(accessor.count),
+      bufferView: optionalIndex(accessor.bufferView),
+      byteOffset: index(accessor.byteOffset ?? 0),
+      componentType: index(accessor.componentType),
+    })),
     animations: rows(data.animations).map((animation) => ({
       channels: rows(animation.channels).map((channel) => {
         const target = objectValue(channel.target);
@@ -52,6 +57,7 @@ export function gltfJson(json: string) {
     })),
     bufferViews: rows(data.bufferViews ?? []).map((view) => ({
       byteLength: index(view.byteLength),
+      byteOffset: index(view.byteOffset ?? 0),
     })),
     materials: rows(data.materials ?? []).map((material) => {
       const pbr =

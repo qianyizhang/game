@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "b843e37d4c2613c02fa13c81ff71fa02f5918ee3",
+  "acceptedExportOrigin": "test-results/hydra-delivery/hydra.glb",
+  "acceptedSourceHashes": {
+    "src/art3d/hydra.ts": "7cf8fe0901abb30557290e89800b59f06e8217a18db45426c65317f9eecc2b4d",
+    "src/art3d/hydra.test.ts": "ecadf98aeddcab745755e245b758e2737e5cca15483d84cc6d7cbde23349a190",
+    "src/art3d/newStudies.ts": "2ab1da8c22cfe2b615eeae0f601a1296c4595fa87437bf30af5177a5c58b72a3",
+    "src/art3d/models.ts": "8f40a2c403e825b0fd3577cdd0200dfac59e6fad5776f880a821582d82215e01",
+    "src/art3d/animation.ts": "f1b89edf575726c821feec2f5984e08f4ea196c5465413f9f676d1dce69d2f2f",
+    "src/art3d/animation.test.ts": "2184e4690af2343e1c5284650e3b274e4b915e659afac0ea2ccbd5882e826bab",
+    "src/art3d/StudyViewer.tsx": "87112af337eca6d1d921b69e8abfce0c3823e1508a284fbd75572e79097381db",
+    "tests/browser/art3d.spec.ts": "0499c17c40537bdd29edbbe74a2008734f78c27864038fd7790a8aae64d187bb",
+    "tests/browser/art3d-review.spec.ts": "d2ef2468287c1c22ec8491cd9459f92645eb31b4bcc205d6517bec2ea2c95d9a"
+  },
+  "sha256": {
+    "references/comparison/accepted-hydra.glb": "dee01f8d4cc3ef3b920c8adb84c70d5a2b2a7e738be8927c05565190be1f00fd",
+    "references/comparison/blender-before.glb": "f8df879efaae70e01d26efd6f83e9a94de82f7246944e52523ff181be6e19b14",
+    "sources/briar-hydra.blend": "4b65ee96ae44176fa323efc0d1689a42fe266c4e7f688f914bd2264066f85480"
+  },
+  "note": "The original Blender source is recoverable from sourceRevision. Baseline GLBs are immutable comparison inputs; current source and delivery may change."
+}

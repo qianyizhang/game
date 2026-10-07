@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "sourcePath": "test-results/hydra-components/gesture-source.blend",
+  "sourceSha256": "9b3f4a6a8aa208956672f8025d0098aeeba097bb6a2a82efee3ff37045aca4a5",
+  "asset": "references/comparison/blender-gesture.glb",
+  "sha256": "61d94d8f68e0a928624df347ee95f8990adf59042f8ffde346cdbe6c9a6e05f2",
+  "note": "Exact saved source and delivery before semantic head controls and fitted-scale quality pass; includes the low-neck gesture edit."
+}
