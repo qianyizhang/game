@@ -10,7 +10,7 @@
   "scripts": {
     "dcc": "node pipeline.mjs",
     "test": "node --test pipeline.test.mjs",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.tools.json"
   },
   "peerDependencies": {
     "react": "^19.3.0",

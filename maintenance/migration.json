@@ -1,12 +1,7 @@
 {
   "schemaVersion": 1,
   "reason": "Pre-existing source and document paths awaiting the next-session full sweep. Remove entries as coverage or homes are migrated; new work must be covered directly.",
-  "pendingSources": [
-    "packages/dcc-workbench/blender/build_hydra.py",
-    "packages/dcc-workbench/blender/export_asset.py",
-    "packages/dcc-workbench/pipeline.mjs",
-    "packages/dcc-workbench/pipeline.test.mjs"
-  ],
+  "pendingSources": [],
   "legacyDocs": [
     "docs/architecture.md",
     "docs/art-direction.md",

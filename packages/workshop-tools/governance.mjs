@@ -11,6 +11,7 @@ export function managedSource(path) {
     /^tests\/.*\.ts$/.test(path) ||
     /^src\/.*\.tsx?$/.test(path) ||
     /^packages\/dcc-workbench\/src\/[^/]+\.tsx?$/.test(path) ||
+    /^packages\/dcc-workbench\/[^/]+\.(ts|mjs)$/.test(path) ||
     /^packages\/workshop-tools\/.*\.(mjs|tsx?)$/.test(path) ||
     path === 'scripts/trace-visualizer/build.mjs' ||
     /^scripts\/(export-card-art|review-card-art|scaffold-card-art|compare-playtests|solve-challenges)\.mjs$/.test(
@@ -18,9 +19,7 @@ export function managedSource(path) {
     ) ||
     /^scripts\/hearth[^/]*\.mjs$/.test(path) ||
     path === 'scripts/card-art-catalogue.tsx' ||
-    /^packages\/dcc-workbench\/blender\/(render_review|review_plan|test_review_plan)\.py$/.test(
-      path,
-    )
+    /^packages\/dcc-workbench\/blender\/[^/]+\.py$/.test(path)
   );
 }
 

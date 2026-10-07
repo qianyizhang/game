@@ -9,7 +9,7 @@ Open **DCC workbench** from any game table, or visit `/?workbench=dcc`. Intent, 
 From the repository root:
 
 ```sh
-npm install
+npm ci
 npm run dev
 npm run dcc -- doctor
 npm run dcc -- verify
@@ -77,9 +77,11 @@ The before image in `references/` is a copy of the user-accepted living Hydra di
 
 The [durable asset record](../../docs/art/assets/briar-hydra.md) records review status, consequential revisions, historical evidence and remaining limits. The superseded session review has been consolidated there.
 
-## Maintained review renderer
+## Maintained native pipeline
 
-`npm run check:python` runs Ruff, strict mypy and pure contract tests for `render_review.py`, `review_plan.py` and their tests. The native `npm run dcc -- render` smoke test uses the loaded artist source, writes a new directory and never resaves it. The remaining builder/exporter scripts are explicitly pending migration; the existing published hashes remain intact.
+`npm run check:python` runs Ruff, strict mypy and pure contract tests for every Python file in `blender/`. Builder, exporter and renderer have explicit entry points; importing them does not load Blender or mutate a scene. Blender 4.5 uses Python 3.11, so native syntax remains compatible despite the separate Python 3.12 checker runtime. The typed delivery CLI and compatibility `pipeline.mjs` entry are covered by strict TypeScript, typed ESLint and publication tests.
+
+Build and export write fresh candidates. Export checks source stability, geometry, native audit and all 64 pose samples at five times before publishing. Every successful export retains the exact preceding manifest under `assets/receipts/<sha256>.json`, pins that receipt in the new manifest, and archives the preceding four delivery files under protected `test-results/dcc-delivery-history/<sha256>/`. Publication installs data before its receipt; interruption is detectable by `verify`, and the previous bytes remain recoverable. These histories are outside automatic pruning. Native rendering never resaves the artist source.
 
 ## Package boundary
 

@@ -8,6 +8,7 @@ const typedFiles = [
   '*.config.ts',
   'packages/workshop-tools/**/*.{mjs,ts,tsx}',
   'packages/dcc-workbench/src/*.{ts,tsx}',
+  'packages/dcc-workbench/*.{ts,mjs}',
   'scripts/trace-visualizer/build.mjs',
   'scripts/{export-card-art,review-card-art,scaffold-card-art,compare-playtests,solve-challenges}.mjs',
   'scripts/card-art-catalogue.tsx',
@@ -35,6 +36,15 @@ export default [
     languageOptions: {
       parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname },
       globals: { ...globals.node, ...globals.browser },
+    },
+  },
+  {
+    files: ['packages/dcc-workbench/*.{ts,mjs}'],
+    languageOptions: {
+      parserOptions: {
+        projectService: false,
+        project: './packages/dcc-workbench/tsconfig.tools.json',
+      },
     },
   },
 ];

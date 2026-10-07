@@ -4,11 +4,11 @@ The maintenance direction was accepted on 2026-10-07. This session implements a 
 
 ## Current slice and finish line
 
-`npm run check:maintenance` enforces formatting for the new homes and tools, typed ESLint and strict JavaScript/TypeScript checking for the tools package, DCC frontend, and all application, geometry and experiment sources under `src`, browser/simulation tests and root TypeScript configuration, Ruff and strict mypy for the DCC review renderer and its contract/tests, tooling/trace/DCC tests, inventory and local document links, root TypeScript checking and a production build. The GitHub maintenance workflow also runs the DCC and shell browser cases.
+`npm run check:maintenance` enforces formatting for the new homes and tools, typed ESLint and strict JavaScript/TypeScript checking for the tools package, DCC frontend and delivery CLI, and all application, geometry and experiment sources under `src`, browser/simulation tests and root TypeScript configuration, Ruff and strict mypy for all DCC native Python and contract/tests, tooling/trace/DCC tests, inventory and local document links, root TypeScript checking and a production build. The GitHub maintenance workflow also runs the DCC and shell browser cases.
 
 `npm run check` adds whole-repository formatting and the full existing application/geometry unit suite and seeded simulation checks. A green maintenance slice does not establish a green application suite or aesthetic acceptance. The next migration must expand coverage and resolve existing failures, not rename the slice gate as comprehensive.
 
-The initial Python scope is `render_review.py`, `review_plan.py` and `test_review_plan.py`. The builder and exporter remain pending. Generated Blender 4.5 stubs need one documented assignment exception for the Workbench engine enum; native rendering verifies that call. There is no blanket missing-import or untyped-file suppression.
+All eight Python files under `packages/dcc-workbench/blender` are checked. Native scripts retain Python 3.11 syntax for Blender 4.5 while the standalone checker uses pinned Python 3.12. Generated stubs need four documented assignment exceptions: Workbench and Cycles engine enums, and the sRGB and Non-Color image color-space names. Native rendering and isolated construction exercise these calls. There is no blanket missing-import or untyped-file suppression.
 
 The supported stack is **Node 24.21.0 LTS, npm 11.19.0, Python 3.12.13 and TypeScript 6.0.3**. Node/npm engines are enforced; `.node-version` and `.nvmrc` agree. Use `nvm install && nvm use`, `npm ci`, then `uv sync --locked`. The existing Blender 4.5 authoring runtime remains separate; its scripts retain compatibility with its embedded Python.
 
