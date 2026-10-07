@@ -15,3 +15,5 @@ Keep accepted engineering decisions here. Working plans and handoffs live under 
 [Documentation migration](documentation-migration.md) records consolidation and original-source recovery.
 
 [Artifact retention audit](artifact-retention-audit.md) records occurrence/uniqueness classifications and the decision to preserve the audited tree.
+
+[Maintenance migration closeout](maintenance-migration.md) records the completed seven-step sweep, validation and remaining scope boundaries.
