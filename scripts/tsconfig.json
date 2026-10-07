@@ -20,6 +20,9 @@
     "scaffold-card-art.mjs",
     "card-art-catalogue.tsx",
     "compare-playtests.mjs",
-    "solve-challenges.mjs"
+    "solve-challenges.mjs",
+    "hearth-agent.mjs",
+    "hearth-arena-agent.mjs",
+    "hearth-runtime.mjs"
   ]
 }

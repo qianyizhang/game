@@ -1,4 +1,4 @@
-import type { AgentChoice, AgentFrame } from '../../../shared/agent';
+import type { AgentFrame } from '../../../shared/agent';
 import { replayCodec, type Session } from '../../../shared/replay';
 import { HEROES, MINIONS } from '../content/minions';
 import {
@@ -124,7 +124,11 @@ export function arenaFrame(session: ArenaSession, seat: number): ArenaFrame {
     actions: commands.map((command, i) => ({ id: `a${i}`, command })),
   });
 }
-export function actArenaAgent(session: ArenaSession, seat: number, choice: AgentChoice) {
+export function actArenaAgent(
+  session: ArenaSession,
+  seat: number,
+  choice: { step: unknown; action: unknown },
+) {
   const frame = arenaFrame(session, seat);
   const reject = (error: string) => ({ session, frame, events: [], error });
   if (!Number.isSafeInteger(choice.step) || choice.step !== frame.step)

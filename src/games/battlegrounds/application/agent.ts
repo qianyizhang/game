@@ -1,4 +1,4 @@
-import type { AgentChoice, AgentFrame } from '../../../shared/agent';
+import type { AgentFrame } from '../../../shared/agent';
 import type { ContentPin } from '../../../shared/contentPack';
 import type { Session } from '../../../shared/replay';
 import { HEROES, MINIONS } from '../content/minions';
@@ -156,7 +156,7 @@ export function hearthEvents(
   return events;
 }
 
-export function actHearthAgent(session: HearthSession, choice: AgentChoice) {
+export function actHearthAgent(session: HearthSession, choice: { step: unknown; action: unknown }) {
   const frame = hearthFrame(session);
   const reject = (error: string) => ({ session, frame, events: [] as HearthEvent[], error });
   if (!Number.isSafeInteger(choice.step) || choice.step !== frame.step)

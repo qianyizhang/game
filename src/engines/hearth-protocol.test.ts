@@ -1,6 +1,7 @@
+import { fileURLToPath } from 'node:url';
 import { objectValue } from '../shared/json';
 import { expect, it } from 'vitest';
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -22,11 +23,11 @@ interface Reply {
 it('drives a complete external JSONL agent and preserves evaluator replay separately', async () => {
   const root = await mkdtemp(join(tmpdir(), 'hearth-protocol-test-'));
   const output = join(root, 'evaluator');
-  const child = spawn(
-    process.execPath,
-    ['scripts/hearth-agent.mjs', 'PRIVATE-PROTOCOL-SEED', output],
-    { stdio: ['pipe', 'pipe', 'pipe'] },
-  );
+  const script = fileURLToPath(new URL('../../scripts/hearth-agent.mjs', import.meta.url));
+  const child = spawn(process.execPath, [script, 'PRIVATE-PROTOCOL-SEED', output], {
+    cwd: root,
+    stdio: ['pipe', 'pipe', 'pipe'],
+  });
   let stderr = '';
   child.stderr.on('data', (chunk) => {
     stderr += String(chunk);
@@ -51,6 +52,14 @@ it('drives a complete external JSONL agent and preserves evaluator replay separa
   try {
     const ready = await receive();
     expect(ready.event).toBe('ready');
+    for (const invalid of [
+      null,
+      [],
+      { op: 'observe', id: 7 },
+      { op: 'act', step: '0', action: 'a0' },
+      { op: 'act', action: null },
+    ])
+      expect((await request(invalid)).ok).toBe(false);
     expect(ready.frame.step).toBe(0);
     child.stdin.write('{invalid json\n');
     expect((await receive()).ok).toBe(false);
@@ -86,6 +95,14 @@ it('drives a complete external JSONL agent and preserves evaluator replay separa
     expect((await request({ op: 'quit' })).event).toBe('closed');
     child.stdin.end();
     expect(await ended, stderr).toBe(0);
+    const replayBytes = await readFile(join(output, 'replay.json'));
+    const duplicate = spawnSync(process.execPath, [script, 'ANOTHER-SEED', output], {
+      cwd: root,
+      encoding: 'utf8',
+    });
+    expect(duplicate.status).toBe(1);
+    expect(duplicate.stderr).toContain('EEXIST');
+    expect(await readFile(join(output, 'replay.json'))).toEqual(replayBytes);
     const session = bgSession.decode(await readFile(join(output, 'replay.json'), 'utf8'));
     expect(session.state.players[0].placement).toBe(frame.observation.self.placement);
     expect(
