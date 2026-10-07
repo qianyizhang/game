@@ -23,4 +23,4 @@ The output must match the recorded digest. The local exact-byte backup under `.w
 
 The private trace recipe retains four original art-document paths pinned to an earlier full Git revision. These historical references deliberately remain unchanged. Current navigation points to the new homes; recorded JSON source paths, frozen hashes, rule versions, data and old generated bundles are not rewritten.
 
-Migration is not aesthetic acceptance, an experiment rerun, artifact-retirement authority or proof of remote CI. The protected sweep handoff remains open until its final verification and retention audit are complete.
+Migration is not aesthetic acceptance, an experiment rerun, artifact-retirement authority or proof of remote CI. The [sweep closeout](maintenance-migration.md) records completed verification and retention audit results.

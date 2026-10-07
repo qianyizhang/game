@@ -1,6 +1,6 @@
 # Maintenance governance
 
-The maintenance direction was accepted on 2026-10-07. The source and documentation migration has adopted the original backlog; final artifact and clean-checkout closeout remains tracked in the protected handoff. New maintained source must have enforced checks. The [migration inventory](../../maintenance/migration.json) is empty; new work must enter enforced scopes rather than extend a directory-wide exemption.
+The maintenance direction was accepted on 2026-10-07. The [completed migration](maintenance-migration.md) adopted the original backlog and passed full local, clean-checkout, browser and native verification. New maintained source must have enforced checks. The [migration inventory](../../maintenance/migration.json) is empty; new work must enter enforced scopes rather than extend a directory-wide exemption.
 
 ## Check scope and finish line
 
@@ -51,6 +51,6 @@ The DCC review renderer writes four PNGs into a fresh run directory and closes i
 - Per change: run the relevant maintained gate, expand coverage with the code, and update the authoritative documentation.
 - Weekly: review dependency-update PRs. npm and GitHub Actions are configured; review Python pins and regenerate `uv.lock` deliberately.
 - Monthly: execute the guarded local cleanup. Notify on actual deletion, failed checks or required user decisions; stay quiet when nothing is actionable.
-- Per completed session: promote lasting conclusions, resolve or hand off open work, then explicitly close temporary notes. The current migration handoff stays open until the sweep is finished.
+- Per completed session: promote lasting conclusions, resolve or hand off open work, then explicitly close temporary notes. Close a completed handoff only after its durable promotion is committed and its retained files are hashed.
 
 CI uses the same exact Node/Python version files as local checks; tools are pinned in npm and uv locks. Native Blender remains an authoring dependency, not a frontend-build dependency. Local browser and Blender launches follow the macOS execution rules in `AGENTS.md`.
