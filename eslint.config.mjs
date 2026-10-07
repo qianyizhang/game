@@ -4,9 +4,13 @@ import tseslint from 'typescript-eslint';
 
 const typedFiles = [
   'src/**/*.{ts,tsx}',
-  'packages/workshop-tools/**/*.{mjs,ts}',
+  'tests/**/*.ts',
+  '*.config.ts',
+  'packages/workshop-tools/**/*.{mjs,ts,tsx}',
   'packages/dcc-workbench/src/*.{ts,tsx}',
   'scripts/trace-visualizer/build.mjs',
+  'scripts/{export-card-art,review-card-art,scaffold-card-art,compare-playtests,solve-challenges}.mjs',
+  'scripts/card-art-catalogue.tsx',
 ];
 
 export default [

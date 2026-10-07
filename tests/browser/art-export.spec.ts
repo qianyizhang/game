@@ -1,17 +1,19 @@
 import { expect, test } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
+import { relative } from 'node:path';
 
 test('standalone SVG assets load without app CSS and the cabinet filters by collection', async ({
   page,
 }, info) => {
-  execFileSync(process.execPath, ['scripts/export-card-art.mjs'], { cwd: process.cwd() });
-  const manifest = JSON.parse(readFileSync('test-results/card-art/manifest.json', 'utf8')) as {
+  const output = info.outputPath('cabinet');
+  execFileSync(process.execPath, ['scripts/export-card-art.mjs', output]);
+  const manifest = JSON.parse(readFileSync(`${output}/manifest.json`, 'utf8')) as {
     file: string;
   }[];
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
-  await page.goto('/test-results/card-art/index.html');
+  await page.goto('/' + relative(process.cwd(), output).split('\\').join('/') + '/index.html');
   await expect(page.locator('.asset')).toHaveCount(manifest.length);
   // Decoding catches malformed SVGs and broken links across every exported asset.
   const failed = await page.locator('.asset img').evaluateAll(async (images) => {

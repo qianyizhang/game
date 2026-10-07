@@ -1,3 +1,4 @@
+import type { StudyId } from '../../src/art3d/models';
 import { expect, test } from '@playwright/test';
 import { writeFile } from 'node:fs/promises';
 
@@ -82,8 +83,10 @@ for (const name of [
       const structures = await page.evaluate(
         async (id) => {
           const helper = '/tests/browser/study-roundtrip.ts';
-          const { captureStudyStructure } = await import(helper);
-          return captureStudyStructure(id) as Record<string, string>;
+          const { captureStudyStructure } = (await import(
+            helper
+          )) as typeof import('./study-roundtrip');
+          return captureStudyStructure(id as StudyId);
         },
         name.toLowerCase().replaceAll(' ', ''),
       );

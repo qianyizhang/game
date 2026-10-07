@@ -1,16 +1,25 @@
 {
   "compilerOptions": {
     "target": "ES2023",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "allowJs": true,
     "checkJs": true,
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["node"],
+    "types": ["node", "vite/client"],
     "allowImportingTsExtensions": true,
-    "lib": ["ES2023"]
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx"
   },
-  "include": ["trace-visualizer/build.mjs"]
+  "include": [
+    "trace-visualizer/build.mjs",
+    "export-card-art.mjs",
+    "review-card-art.mjs",
+    "scaffold-card-art.mjs",
+    "card-art-catalogue.tsx",
+    "compare-playtests.mjs",
+    "solve-challenges.mjs"
+  ]
 }

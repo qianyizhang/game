@@ -1,3 +1,5 @@
+import { gltfJson } from './gltf-json';
+import type { StudyId } from '../../src/art3d/models';
 import { expect, test } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 
@@ -135,7 +137,7 @@ for (const name of studyNames) {
     expect(bytes.readUInt32LE(4)).toBe(2);
     expect(bytes.readUInt32LE(8)).toBe(bytes.length);
     const jsonLength = bytes.readUInt32LE(12);
-    const gltf = JSON.parse(bytes.toString('utf8', 20, 20 + jsonLength));
+    const gltf = gltfJson(bytes.toString('utf8', 20, 20 + jsonLength));
     expect(gltf.meshes.length).toBeGreaterThan(0);
     for (const mesh of gltf.meshes)
       for (const primitive of mesh.primitives) {
@@ -188,17 +190,17 @@ for (const name of studyNames) {
             material.pbrMetallicRoughness?.metallicRoughnessTexture,
         );
         expect(castMaterial).toBeDefined();
-        const packed = castMaterial.pbrMetallicRoughness.metallicRoughnessTexture;
-        const image = gltf.images[gltf.textures[packed.index].source];
+        const packed = castMaterial!.pbrMetallicRoughness!.metallicRoughnessTexture!;
+        const image = gltf.images[gltf.textures[packed.index].source!];
         expect(image.mimeType).toBe('image/png');
-        expect(gltf.bufferViews[image.bufferView].byteLength).toBeGreaterThan(0);
+        expect(gltf.bufferViews[image.bufferView!].byteLength).toBeGreaterThan(0);
       }
     }
     if (name === 'Hydra') {
       expect(gltf.skins.length).toBeGreaterThan(0);
       const skin = gltf.skins[0];
       expect(skin.joints).toHaveLength(28);
-      expect(gltf.accessors[skin.inverseBindMatrices].count).toBe(28);
+      expect(gltf.accessors[skin.inverseBindMatrices!].count).toBe(28);
       const tracks = gltf.animations[0].channels.map(
         (channel: { target: { node: number } }) => gltf.nodes[channel.target.node].name,
       );
@@ -207,11 +209,9 @@ for (const name of studyNames) {
         expect(tracks).toContain(`Hydra_Head_${neck}`);
         expect(tracks).toContain(`Hydra_Jaw_${neck}`);
       }
-      const body = gltf.nodes.find(
-        (node: { name: string }) => node.name === 'Hydra_Joined_Shoulder_And_Necks',
-      );
-      expect(body.skin).toBeDefined();
-      const primitive = gltf.meshes[body.mesh].primitives[0];
+      const body = gltf.nodes.find((node) => node.name === 'Hydra_Joined_Shoulder_And_Necks');
+      expect(body!.skin).toBeDefined();
+      const primitive = gltf.meshes[body!.mesh!].primitives[0];
       expect(primitive.attributes.JOINTS_0).toBeDefined();
       expect(primitive.attributes.WEIGHTS_0).toBeDefined();
     }
@@ -253,8 +253,10 @@ for (const name of studyNames) {
       const roundtrip = await page.evaluate(
         async ({ id, url }) => {
           const helper = '/tests/browser/study-roundtrip.ts';
-          const { compareStudyRoundtrip } = await import(helper);
-          return compareStudyRoundtrip(id, url);
+          const { compareStudyRoundtrip } = (await import(
+            helper
+          )) as typeof import('./study-roundtrip');
+          return compareStudyRoundtrip(id as StudyId, url);
         },
         { id, url },
       );

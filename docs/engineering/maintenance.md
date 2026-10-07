@@ -4,9 +4,9 @@ The maintenance direction was accepted on 2026-10-07. This session implements a 
 
 ## Current slice and finish line
 
-`npm run check:maintenance` enforces formatting for the new homes and tools, typed ESLint and strict JavaScript/TypeScript checking for the tools package, DCC frontend, and all application, geometry and experiment sources under `src`, Ruff and strict mypy for the DCC review renderer and its contract/tests, tooling/trace/DCC tests, inventory and local document links, root TypeScript checking and a production build. The GitHub maintenance workflow also runs the DCC and shell browser cases.
+`npm run check:maintenance` enforces formatting for the new homes and tools, typed ESLint and strict JavaScript/TypeScript checking for the tools package, DCC frontend, and all application, geometry and experiment sources under `src`, browser/simulation tests and root TypeScript configuration, Ruff and strict mypy for the DCC review renderer and its contract/tests, tooling/trace/DCC tests, inventory and local document links, root TypeScript checking and a production build. The GitHub maintenance workflow also runs the DCC and shell browser cases.
 
-`npm run check` adds whole-repository formatting and the full existing application unit suite. A green maintenance slice does not establish a green application suite or aesthetic acceptance. The next migration must expand coverage and resolve existing failures, not rename the slice gate as comprehensive.
+`npm run check` adds whole-repository formatting and the full existing application/geometry unit suite and seeded simulation checks. A green maintenance slice does not establish a green application suite or aesthetic acceptance. The next migration must expand coverage and resolve existing failures, not rename the slice gate as comprehensive.
 
 The initial Python scope is `render_review.py`, `review_plan.py` and `test_review_plan.py`. The builder and exporter remain pending. Generated Blender 4.5 stubs need one documented assignment exception for the Workbench engine enum; native rendering verifies that call. There is no blanket missing-import or untyped-file suppression.
 

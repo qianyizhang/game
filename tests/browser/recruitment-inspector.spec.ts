@@ -1,3 +1,5 @@
+import { objectValue } from '../../src/shared/json';
+import { replayEnvelope } from '../../src/engines/replay-envelope';
 import { expect, test } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
 import { mkdtempSync, readFileSync } from 'node:fs';
@@ -42,9 +44,9 @@ test('explores recorded decisions, policy alternatives and downloadable exact re
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download replay prefix' }).click();
   const download = await downloadPromise;
-  const prefix = JSON.parse(readFileSync((await download.path())!, 'utf8'));
+  const prefix = replayEnvelope(readFileSync(await download.path(), 'utf8'));
   expect(prefix.commands).toHaveLength(step + 1);
-  expect(prefix.commands.at(-1).action).toEqual(JSON.parse(recorded!));
+  expect(objectValue(prefix.commands.at(-1)).action).toEqual(JSON.parse(recorded!));
   await page.reload();
   await expect(page.locator('#position')).toContainText(`Step ${step} ·`);
   await page.goto(url + '#step=999999');

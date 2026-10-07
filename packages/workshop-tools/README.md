@@ -27,3 +27,17 @@ The package is checked with typed ESLint, TypeScript `checkJs` in strict mode, a
 `npm run trace:build -- [input-directory] [new-output-directory] [case-study.json]` builds a private offline evidence viewer. Relative arguments resolve from the repository root. A default invocation chooses a fresh ignored output directory; an explicit existing output is refused. The old `scripts/trace-visualizer/build.mjs` command delegates to the same checked implementation.
 
 The `trace/` modules validate unknown exports and case specifications, preserve observable record identities and omissions, and associate authored assessments with exact evidence. They execute through the pinned Node runtime with native TypeScript stripping and pass the package strict type/lint gate. `npm run test:trace` selects the trace tests; the package test command also includes them. See the [trace guide](../../docs/engineering/trace-visualizer.md) for schema, privacy, output and provenance boundaries.
+
+## SVG tools
+
+`npm run assets:export -- [new-output]` creates a fresh cabinet (default: `test-results/card-art-<UUID>`). It bundles the maintained React catalogue, emits self-contained SVGs and a manifest, and embeds the separately checked cabinet runtime. `npm run assets:review -- id ... --from export --out new-review [--before baseline] [--sharp-module absolute-path]` decodes the inputs with an existing Sharp installation. `--from` and `--out` are required; no renderer is installed automatically. Input asset symlinks may not escape the export directory. The review's pixel comparison is not aesthetic approval.
+
+`npm run assets:scaffold -- NameArt path/NameArt.tsx [card|plate|symbol]` creates a formatted empty drawing scaffold. It refuses an existing file, a path outside the repository, or a symlinked destination parent. Registration remains explicit.
+
+Relative CLI paths resolve from the repository root; explicit absolute export/review paths are supported. Output directories are created exclusively, and interrupted runs remain available for inspection. Only private, uniquely created runtime bundles are removed automatically. Compatibility scripts delegate to this package. These commands do not rewrite artist sources or an existing export directory. Vite, React, TypeScript and Prettier come from the root lockfile; Sharp remains an explicitly supplied optional adapter.
+
+## Headless comparison and challenge commands
+
+`npm run playtest:compare -- baseline.json candidate.json` validates comparison fields, pairs full runs by game/seed/mode/source/context/setup, and reports both content pins with candidate-minus-baseline metric differences. Missing, duplicate, partial and active runs stay excluded. Nonnumeric metrics and malformed evidence are rejected; this is not a general balance or playing-strength verdict.
+
+`npm run engine:challenges -- [new-output]` bundles the typed challenge solver and writes a new report plus verified solution archives. Relative paths resolve from the repository; the default output has a unique name below `test-results`. Existing directories are refused. Solving known seeded positions does not measure hidden-information strength.

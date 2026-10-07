@@ -1,3 +1,4 @@
+import { isList, objectValue } from '../../src/shared/json';
 import { expect, test, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { spireSession } from '../../src/games/spire/application/session';
@@ -56,11 +57,9 @@ test('Silent setup, paced events, safe practice branches, mod previews and local
   await expect(page.locator('.pack-card')).toContainText('disabled');
   await page.getByRole('button', { name: 'Playtesting', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Playtesting workbench' })).toBeVisible();
-  expect(
-    JSON.parse((await raw(page, EVIDENCE_KEY))!).some(
-      (r: { mode: string }) => r.mode === 'practice',
-    ),
-  ).toBe(true);
+  const evidence: unknown = JSON.parse((await raw(page, EVIDENCE_KEY))!);
+  if (!isList(evidence)) throw new Error('Expected evidence archive');
+  expect(evidence.some((row) => objectValue(row).mode === 'practice')).toBe(true);
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export all evidence' }).click();
   expect((await download).suggestedFilename()).toBe('card-workshop-evidence.json');
@@ -116,9 +115,9 @@ test('checkpoint recovery preserves unreadable data and restores a named branch'
   await page.getByRole('button', { name: 'Practice lab', exact: true }).click();
   const exported = page.waitForEvent('download');
   await page.getByRole('button', { name: `Export ${name}`, exact: true }).click();
-  const branch = JSON.parse(readFileSync((await (await exported).path())!, 'utf8'));
+  const branch = objectValue(JSON.parse(readFileSync(await (await exported).path(), 'utf8')));
   expect(branch.mode).toBe('practice');
-  expect(branch.commands).toEqual(JSON.parse(normal!).commands);
+  expect(branch.commands).toEqual(objectValue(JSON.parse(normal!)).commands);
 });
 
 test('Blindside booster choices and vouchers remain playable on a phone', async ({
@@ -126,7 +125,9 @@ test('Blindside booster choices and vouchers remain playable on a phone', async 
 }, info) => {
   await page.addInitScript(() => localStorage.setItem('card-workshop.playback-speed', '100'));
   await page.goto('/');
-  const replay = JSON.parse(readFileSync('tests/fixtures/blindside-win.json', 'utf8'));
+  const replay = blindsideSession.decode(
+    readFileSync('tests/fixtures/blindside-win.json', 'utf8'),
+  ).replay;
   let session = blindsideSession.create(replay.seed);
   for (const command of replay.commands) {
     session = blindsideSession.act(session, command).session;
@@ -184,7 +185,7 @@ test('storage failure keeps accepted play exportable and never claims it was sav
   );
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export', exact: true }).click();
-  const session = spireSession.decode(readFileSync((await (await download).path())!, 'utf8'));
+  const session = spireSession.decode(readFileSync(await (await download).path(), 'utf8'));
   expect(session.state.phase).toBe('map');
   expect(session.replay.commands).toHaveLength(1);
 });
