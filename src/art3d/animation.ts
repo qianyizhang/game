@@ -2,9 +2,55 @@ import * as T from 'three';
 import type { StudyId } from './models';
 import { phoenixMotionTracks } from './phoenix';
 import { nightjarMotionTracks } from './nightjar';
+import { prowlerMotionTracks } from './prowler';
+import { wolfMotionTracks } from './wolf';
+import { matriarchMotionTracks } from './matriarch';
+import { thornstagMotionTracks } from './thornstag';
+import { moonmothMotionTracks } from './moonmoth';
+import { bogtoadMotionTracks } from './bogtoad';
+import { crocoliskMotionTracks } from './crocolisk';
+import { scavengerMotionTracks } from './scavenger';
+import { guardianMotionTracks } from './guardian';
+import { tortoiseMotionTracks } from './tortoise';
+import { stormrocMotionTracks } from './stormroc';
+import { strayMotionTracks } from './stray';
+import { packcallerMotionTracks } from './packcaller';
+import { cubMotionTracks } from './cub';
+import { amalgamMotionTracks } from './amalgam';
+import { impMotionTracks } from './imp';
+import { matronMotionTracks } from './matron';
+import { jugglerMotionTracks } from './juggler';
+import { watcherMotionTracks } from './watcher';
+import { heraldMotionTracks } from './herald';
+import { patronMotionTracks } from './patron';
+import { squireMotionTracks } from './squire';
+import { bannerbearerMotionTracks } from './bannerbearer';
 
 export const LOOP_SECONDS = 6;
 export const MOTION_LABELS: Record<StudyId, string> = {
+  bannerbearer: 'Banner bearer · brace, watch & carry',
+  squire: 'Hearth squire · guard, glance & listen',
+  patron: 'Abyssal patron · consider, address & settle',
+  herald: 'Infernal herald · address, listen & settle',
+  watcher: 'Pit watcher · scan, listen & settle',
+  juggler: 'Soul juggler · attend, conjure & listen',
+  matron: 'Imp matron · regard, listen & settle',
+  imp: 'Coal imp · crouch, listen & flex',
+  amalgam: 'Wild amalgam · guard, flex & watch',
+  cub: 'Briar cub · reach, sniff & listen',
+  packcaller: 'Pack caller · call, listen & settle',
+  stray: 'Briar stray · hesitate, listen & scent',
+  stormroc: 'Storm roc · brace, flex & watch',
+  tortoise: 'Ancient tortoise · pause, turn & watch',
+  guardian: 'Nest guardian · rise, listen & scent',
+  scavenger: 'Briar scavenger · scent, listen & watch',
+  crocolisk: 'Ancient crocolisk · watch, breathe & settle',
+  bogtoad: 'Bog toad · breathe, blink & watch',
+  moonmoth: 'Moon moth · open, settle & sense',
+  thornstag: 'Thorn stag · halt, listen & turn',
+  matriarch: 'Briar matriarch · scent, listen & guard',
+  wolf: 'Greatwood wolf · listen, scent & watch',
+  prowler: 'Living prowler · stalk, listen & watch',
   nightjar: 'Living nightjar · listen, blink & settle',
   catalyst: 'Alchemy · rising gas bubbles',
   phoenix: 'Living firebird · stretch, settle & watch',
@@ -15,6 +61,144 @@ export const MOTION_LABELS: Record<StudyId, string> = {
 /** One sampled, seamless clip drives both the live mixer and animated GLB. */
 export function createStudyClip(root: T.Group, id: StudyId) {
   const times = Array.from({ length: 145 }, (_, i) => i / 24);
+  if (id === 'bannerbearer')
+    return new T.AnimationClip(
+      'bannerbearer_idle',
+      LOOP_SECONDS,
+      bannerbearerMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'squire')
+    return new T.AnimationClip(
+      'squire_idle',
+      LOOP_SECONDS,
+      squireMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'patron')
+    return new T.AnimationClip(
+      'patron_idle',
+      LOOP_SECONDS,
+      patronMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'herald')
+    return new T.AnimationClip(
+      'herald_idle',
+      LOOP_SECONDS,
+      heraldMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'watcher')
+    return new T.AnimationClip(
+      'watcher_idle',
+      LOOP_SECONDS,
+      watcherMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'juggler')
+    return new T.AnimationClip(
+      'juggler_idle',
+      LOOP_SECONDS,
+      jugglerMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'matron')
+    return new T.AnimationClip(
+      'matron_idle',
+      LOOP_SECONDS,
+      matronMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'imp')
+    return new T.AnimationClip(
+      'imp_idle',
+      LOOP_SECONDS,
+      impMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'amalgam')
+    return new T.AnimationClip(
+      'amalgam_idle',
+      LOOP_SECONDS,
+      amalgamMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'cub')
+    return new T.AnimationClip(
+      'cub_idle',
+      LOOP_SECONDS,
+      cubMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'packcaller')
+    return new T.AnimationClip(
+      'packcaller_idle',
+      LOOP_SECONDS,
+      packcallerMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'stray')
+    return new T.AnimationClip(
+      'stray_idle',
+      LOOP_SECONDS,
+      strayMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'stormroc')
+    return new T.AnimationClip(
+      'stormroc_idle',
+      LOOP_SECONDS,
+      stormrocMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'tortoise')
+    return new T.AnimationClip(
+      'tortoise_idle',
+      LOOP_SECONDS,
+      tortoiseMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'guardian')
+    return new T.AnimationClip(
+      'guardian_idle',
+      LOOP_SECONDS,
+      guardianMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'scavenger')
+    return new T.AnimationClip(
+      'scavenger_idle',
+      LOOP_SECONDS,
+      scavengerMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'crocolisk')
+    return new T.AnimationClip(
+      'crocolisk_idle',
+      LOOP_SECONDS,
+      crocoliskMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'bogtoad')
+    return new T.AnimationClip(
+      'bogtoad_idle',
+      LOOP_SECONDS,
+      bogtoadMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'moonmoth')
+    return new T.AnimationClip(
+      'moonmoth_idle',
+      LOOP_SECONDS,
+      moonmothMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'thornstag')
+    return new T.AnimationClip(
+      'thornstag_idle',
+      LOOP_SECONDS,
+      thornstagMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'matriarch')
+    return new T.AnimationClip(
+      'matriarch_idle',
+      LOOP_SECONDS,
+      matriarchMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'wolf')
+    return new T.AnimationClip(
+      'wolf_idle',
+      LOOP_SECONDS,
+      wolfMotionTracks(root, times, LOOP_SECONDS),
+    );
+  if (id === 'prowler')
+    return new T.AnimationClip(
+      'prowler_idle',
+      LOOP_SECONDS,
+      prowlerMotionTracks(root, times, LOOP_SECONDS),
+    );
   if (id === 'phoenix')
     return new T.AnimationClip(
       'phoenix_idle',

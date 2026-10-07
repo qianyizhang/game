@@ -10,7 +10,10 @@ import { LOOP_SECONDS, MOTION_LABELS } from './animation';
 import './ArtStudio.css';
 
 export default function ArtStudio({ onExit }: { onExit: () => void }) {
-  const [id, setId] = useState<StudyId>('phoenix');
+  const [id, setId] = useState<StudyId>(() => {
+    const requested = new URLSearchParams(location.search).get('study');
+    return STUDIES.find((study) => study.id === requested)?.id ?? 'phoenix';
+  });
   const [options, setOptions] = useState<ViewerOptions>(() => ({
     spin: false,
     motion: !matchMedia('(prefers-reduced-motion: reduce)').matches,
@@ -222,16 +225,97 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
               </button>
               <button
                 aria-pressed={options.exploded}
-                disabled={['hydra', 'spiral', 'vajra'].includes(id)}
+                disabled={[
+                  'hydra',
+                  'spiral',
+                  'vajra',
+                  'prowler',
+                  'wolf',
+                  'matriarch',
+                  'thornstag',
+                  'moonmoth',
+                  'bogtoad',
+                  'crocolisk',
+                  'scavenger',
+                  'guardian',
+                  'tortoise',
+                  'stormroc',
+                  'stray',
+                  'packcaller',
+                  'cub',
+                  'amalgam',
+                  'imp',
+                  'matron',
+                  'juggler',
+                  'watcher',
+                  'herald',
+                  'patron',
+                  'squire',
+                  'bannerbearer',
+                ].includes(id)}
                 title={
-                  ['hydra', 'spiral', 'vajra'].includes(id)
+                  [
+                    'hydra',
+                    'spiral',
+                    'vajra',
+                    'prowler',
+                    'wolf',
+                    'matriarch',
+                    'thornstag',
+                    'moonmoth',
+                    'bogtoad',
+                    'crocolisk',
+                    'scavenger',
+                    'guardian',
+                    'tortoise',
+                    'stormroc',
+                    'stray',
+                    'packcaller',
+                    'cub',
+                    'amalgam',
+                    'imp',
+                    'matron',
+                    'juggler',
+                    'watcher',
+                    'herald',
+                    'patron',
+                    'squire',
+                    'bannerbearer',
+                  ].includes(id)
                     ? 'This assembled object has no separable display layers.'
                     : undefined
                 }
                 onClick={() => update({ exploded: !options.exploded })}
               >
                 <span>
-                  {['hydra', 'spiral', 'vajra'].includes(id)
+                  {[
+                    'hydra',
+                    'spiral',
+                    'vajra',
+                    'prowler',
+                    'wolf',
+                    'matriarch',
+                    'thornstag',
+                    'moonmoth',
+                    'bogtoad',
+                    'crocolisk',
+                    'scavenger',
+                    'guardian',
+                    'tortoise',
+                    'stormroc',
+                    'stray',
+                    'packcaller',
+                    'cub',
+                    'amalgam',
+                    'imp',
+                    'matron',
+                    'juggler',
+                    'watcher',
+                    'herald',
+                    'patron',
+                    'squire',
+                    'bannerbearer',
+                  ].includes(id)
                     ? 'Layers assembled as one object'
                     : 'Separate the layers'}
                 </span>
@@ -292,6 +376,52 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
             <RelicArt id="vajra" />
           ) : id === 'hydra' ? (
             <MinionArt definitionId="hydra" tribe="beast" />
+          ) : id === 'bannerbearer' ? (
+            <MinionArt definitionId="banner" tribe="neutral" />
+          ) : id === 'squire' ? (
+            <MinionArt definitionId="squire" tribe="neutral" />
+          ) : id === 'patron' ? (
+            <MinionArt definitionId="devourer" tribe="demon" />
+          ) : id === 'herald' ? (
+            <MinionArt definitionId="infernal" tribe="demon" />
+          ) : id === 'watcher' ? (
+            <MinionArt definitionId="watcher" tribe="demon" />
+          ) : id === 'juggler' ? (
+            <MinionArt definitionId="juggler" tribe="demon" />
+          ) : id === 'matron' ? (
+            <MinionArt definitionId="matron" tribe="demon" />
+          ) : id === 'imp' ? (
+            <MinionArt definitionId="imp" tribe="demon" />
+          ) : id === 'amalgam' ? (
+            <MinionArt definitionId="amalgam" tribe="all" />
+          ) : id === 'cub' ? (
+            <MinionArt definitionId="cub" tribe="beast" />
+          ) : id === 'packcaller' ? (
+            <MinionArt definitionId="leader" tribe="beast" />
+          ) : id === 'stray' ? (
+            <MinionArt definitionId="stray" tribe="beast" />
+          ) : id === 'stormroc' ? (
+            <MinionArt definitionId="stormroc" tribe="elemental" />
+          ) : id === 'tortoise' ? (
+            <MinionArt definitionId="ancienttortoise" tribe="beast" />
+          ) : id === 'guardian' ? (
+            <MinionArt definitionId="rat" tribe="beast" />
+          ) : id === 'scavenger' ? (
+            <MinionArt definitionId="hyena" tribe="beast" />
+          ) : id === 'crocolisk' ? (
+            <MinionArt definitionId="croc" tribe="beast" />
+          ) : id === 'bogtoad' ? (
+            <MinionArt definitionId="bogtoad" tribe="beast" />
+          ) : id === 'moonmoth' ? (
+            <MinionArt definitionId="moonmoth" tribe="beast" />
+          ) : id === 'thornstag' ? (
+            <MinionArt definitionId="thornstag" tribe="beast" />
+          ) : id === 'matriarch' ? (
+            <MinionArt definitionId="mother" tribe="beast" />
+          ) : id === 'wolf' ? (
+            <MinionArt definitionId="wolf" tribe="beast" />
+          ) : id === 'prowler' ? (
+            <MinionArt definitionId="cat" tribe="beast" />
           ) : id === 'phoenix' ? (
             <MinionArt definitionId="phoenix" tribe="elemental" />
           ) : (

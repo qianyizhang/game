@@ -1,12 +1,43 @@
 import { expect, test } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 
-const studyNames = ['Nightjar', 'Catalyst', 'Phoenix', 'Hydra', 'Spiral', 'Vajra'];
+const studyNames = [
+  'Nightjar',
+  'Catalyst',
+  'Phoenix',
+  'Hydra',
+  'Spiral',
+  'Vajra',
+  'Prowler',
+  'Wolf',
+  'Matriarch',
+  'Thornstag',
+  'Moonmoth',
+  'Bogtoad',
+  'Crocolisk',
+  'Scavenger',
+  'Guardian',
+  'Tortoise',
+  'Stormroc',
+  'Stray',
+  'Pack Caller',
+  'Cub',
+  'Amalgam',
+  'Imp',
+  'Matron',
+  'Juggler',
+  'Watcher',
+  'Herald',
+  'Patron',
+  'Squire',
+  'Banner Bearer',
+];
 
 test('3D studies render, export real meshes, and work on phone without changing saves', async ({
   page,
 }, info) => {
-  test.setTimeout(90_000);
+  // Construction and export work scale with the number of studies.
+  test.setTimeout(30_000 + studyNames.length * 5_000);
   const errors: string[] = [];
   const normalWarnings: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
@@ -34,36 +65,65 @@ test('3D studies render, export real meshes, and work on phone without changing 
     await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
     await expect(page.getByRole('alert')).toHaveCount(0);
     await expect(page.locator('.source-art svg')).toBeVisible();
-    if (['Hydra', 'Spiral', 'Vajra'].includes(name))
+    if (
+      [
+        'Hydra',
+        'Spiral',
+        'Vajra',
+        'Prowler',
+        'Wolf',
+        'Matriarch',
+        'Thornstag',
+        'Moonmoth',
+        'Bogtoad',
+        'Crocolisk',
+        'Scavenger',
+        'Guardian',
+        'Tortoise',
+        'Stormroc',
+        'Stray',
+        'Pack Caller',
+        'Cub',
+        'Amalgam',
+        'Imp',
+        'Matron',
+        'Juggler',
+        'Watcher',
+        'Herald',
+        'Patron',
+        'Squire',
+        'Banner Bearer',
+      ].includes(name)
+    )
       await expect(
         page.getByRole('button', { name: 'Layers assembled as one object' }),
       ).toBeDisabled();
     else await expect(page.getByRole('button', { name: 'Separate the layers' })).toBeEnabled();
-    await page
-      .locator('.art-studio')
-      .screenshot({ path: info.outputPath(`${name.toLowerCase()}-desktop.png`) });
-    const before = await page
-      .locator('canvas')
-      .screenshot({ path: info.outputPath(`${name.toLowerCase()}-object.png`) });
+    await page.locator('.art-studio').screenshot({
+      path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-desktop.png`),
+    });
+    const before = await page.locator('canvas').screenshot({
+      path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-object.png`),
+    });
     await page.getByRole('button', { name: 'Side', exact: true }).click();
     await expect(async () => {
       expect((await page.locator('canvas').screenshot()).equals(before)).toBe(false);
     }).toPass();
     await page
       .locator('canvas')
-      .screenshot({ path: info.outputPath(`${name.toLowerCase()}-side.png`) });
+      .screenshot({ path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-side.png`) });
     await page.getByRole('button', { name: 'Front', exact: true }).click();
     await page
       .locator('canvas')
-      .screenshot({ path: info.outputPath(`${name.toLowerCase()}-front.png`) });
+      .screenshot({ path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-front.png`) });
     await page.getByRole('button', { name: 'Reset camera' }).click();
     await page.setViewportSize({ width: 390, height: 844 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    await page
-      .locator('.studio-stage')
-      .screenshot({ path: info.outputPath(`${name.toLowerCase()}-phone-stage.png`) });
+    await page.locator('.studio-stage').screenshot({
+      path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-phone-stage.png`),
+    });
     await page.setViewportSize({ width: 1440, height: 1080 });
     const modelEvent = page.waitForEvent('download');
     await page.getByRole('button', { name: 'Download 3D model' }).click();
@@ -85,7 +145,37 @@ test('3D studies render, export real meshes, and work on phone without changing 
     expect(gltf.animations[0].channels.length).toBeGreaterThan(0);
     for (const channel of gltf.animations[0].channels)
       expect(gltf.nodes[channel.target.node]).toBeDefined();
-    if (['Nightjar', 'Catalyst', 'Phoenix', 'Hydra'].includes(name))
+    if (
+      [
+        'Nightjar',
+        'Catalyst',
+        'Phoenix',
+        'Hydra',
+        'Prowler',
+        'Wolf',
+        'Matriarch',
+        'Thornstag',
+        'Moonmoth',
+        'Bogtoad',
+        'Crocolisk',
+        'Scavenger',
+        'Guardian',
+        'Tortoise',
+        'Stormroc',
+        'Stray',
+        'Pack Caller',
+        'Cub',
+        'Amalgam',
+        'Imp',
+        'Matron',
+        'Juggler',
+        'Watcher',
+        'Herald',
+        'Patron',
+        'Squire',
+        'Banner Bearer',
+      ].includes(name)
+    )
       expect(gltf.images.length).toBeGreaterThan(0);
     else {
       expect(gltf.animations[0].channels).toHaveLength(1);
@@ -125,8 +215,37 @@ test('3D studies render, export real meshes, and work on phone without changing 
       expect(primitive.attributes.JOINTS_0).toBeDefined();
       expect(primitive.attributes.WEIGHTS_0).toBeDefined();
     }
-    if (['Nightjar', 'Phoenix', 'Hydra'].includes(name)) {
-      const id = name.toLowerCase();
+    if (
+      [
+        'Nightjar',
+        'Phoenix',
+        'Hydra',
+        'Prowler',
+        'Wolf',
+        'Matriarch',
+        'Thornstag',
+        'Moonmoth',
+        'Bogtoad',
+        'Crocolisk',
+        'Scavenger',
+        'Guardian',
+        'Tortoise',
+        'Stormroc',
+        'Stray',
+        'Pack Caller',
+        'Cub',
+        'Amalgam',
+        'Imp',
+        'Matron',
+        'Juggler',
+        'Watcher',
+        'Herald',
+        'Patron',
+        'Squire',
+        'Banner Bearer',
+      ].includes(name)
+    ) {
+      const id = name.toLowerCase().replaceAll(' ', '');
       const url = `/${id}-roundtrip.glb`;
       await page.route(`**${url}`, (route) =>
         route.fulfill({ body: bytes, contentType: 'model/gltf-binary' }),
@@ -208,20 +327,50 @@ test('3D studies render, export real meshes, and work on phone without changing 
   expect(normalWarnings).toEqual([]);
 });
 
-test('direct gallery link respects reduced motion', async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/?art=3d');
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
-  await expect(page.getByRole('button', { name: 'Slow turntable' })).toHaveAttribute(
-    'aria-pressed',
-    'false',
-  );
-  await expect(page.getByRole('button', { name: 'Play animation' })).toHaveAttribute(
-    'aria-pressed',
-    'false',
-  );
-  await expect(page).toHaveTitle('3D Object Studies · Card Workshop');
-});
+for (const studyName of [
+  'Prowler',
+  'Wolf',
+  'Matriarch',
+  'Thornstag',
+  'Moonmoth',
+  'Bogtoad',
+  'Crocolisk',
+  'Scavenger',
+  'Guardian',
+  'Tortoise',
+  'Stormroc',
+  'Stray',
+  'Pack Caller',
+  'Cub',
+  'Amalgam',
+  'Imp',
+  'Matron',
+  'Juggler',
+  'Watcher',
+  'Herald',
+  'Patron',
+  'Squire',
+  'Banner Bearer',
+]) {
+  test(`${studyName} direct gallery link respects reduced motion`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto(`/?art=3d&study=${studyName.toLowerCase().replaceAll(' ', '')}`);
+    // Cold direct routes construct the implicit surfaces before mounting the gallery.
+    await expect(page.getByRole('region', { name: `${studyName} 3D study` })).toBeVisible({
+      timeout: 15_000,
+    });
+    await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+    await expect(page.getByRole('button', { name: 'Slow turntable' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    );
+    await expect(page.getByRole('button', { name: 'Play animation' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    );
+    await expect(page).toHaveTitle('3D Object Studies · Card Workshop');
+  });
+}
 
 for (const name of studyNames) {
   test(`${name} animation can be paused, scrubbed, and saved as a playable video`, async ({
@@ -245,9 +394,9 @@ for (const name of studyNames) {
     await expect(async () =>
       expect((await page.locator('canvas').screenshot()).equals(still)).toBe(false),
     ).toPass();
-    await page
-      .locator('.studio-stage')
-      .screenshot({ path: info.outputPath(`${name.toLowerCase()}-detail.png`) });
+    await page.locator('.studio-stage').screenshot({
+      path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-detail.png`),
+    });
     const videoEvent = page.waitForEvent('download');
     await page.getByRole('button', { name: 'Save animation loop' }).click();
     await expect(page.getByRole('button', { name: 'Recording…' })).toBeDisabled();

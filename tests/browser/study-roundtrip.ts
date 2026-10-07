@@ -65,7 +65,57 @@ export async function compareStudyRoundtrip(id: StudyId, url: string) {
   let maxVertexError = 0,
     maxNodeError = 0;
   try {
-    for (const time of [0, id === 'nightjar' ? 23 / 6 : 1.5, 4.5]) {
+    for (const time of [
+      0,
+      id === 'bannerbearer'
+        ? 3.85
+        : id === 'squire'
+          ? 3.8
+          : id === 'patron'
+            ? 3.9
+            : id === 'herald'
+              ? 3.7
+              : id === 'watcher'
+                ? 3.8
+                : id === 'juggler'
+                  ? 3.75
+                  : id === 'matron'
+                    ? 3.85
+                    : id === 'imp'
+                      ? 3.6
+                      : id === 'amalgam'
+                        ? 3.7
+                        : id === 'cub'
+                          ? 3.65
+                          : id === 'packcaller'
+                            ? 3.8
+                            : id === 'stray'
+                              ? 3.95
+                              : id === 'stormroc'
+                                ? 3.65
+                                : id === 'tortoise'
+                                  ? 3.9
+                                  : id === 'guardian'
+                                    ? 3.55
+                                    : id === 'scavenger'
+                                      ? 3.75
+                                      : id === 'crocolisk'
+                                        ? 4.1
+                                        : id === 'bogtoad'
+                                          ? 3.35
+                                          : id === 'nightjar'
+                                            ? 23 / 6
+                                            : id === 'prowler'
+                                              ? 3.8
+                                              : id === 'thornstag'
+                                                ? 4.3
+                                                : id === 'matriarch'
+                                                  ? 3.6
+                                                  : id === 'wolf'
+                                                    ? 4.15
+                                                    : 1.5,
+      4.5,
+    ]) {
       live.setTime(time);
       exported.setTime(time);
       original.updateMatrixWorld(true);
@@ -109,5 +159,54 @@ export async function compareStudyRoundtrip(id: StudyId, url: string) {
     exported.uncacheRoot(loaded.scene);
     disposeObject(original);
     disposeObject(loaded.scene);
+  }
+}
+
+/** Neutral construction views separate sculpture from pigment and cast shadows. */
+export function captureStudyStructure(id: StudyId) {
+  const root = createStudy(id),
+    materials = new Map<T.Mesh, T.Material | T.Material[]>();
+  const clay = new T.MeshStandardMaterial({ color: '#8b8d85', roughness: 0.9 });
+  const silhouette = new T.MeshBasicMaterial({ color: '#bbc1b6' });
+  root.traverse((node) => {
+    if (node instanceof T.Mesh) {
+      materials.set(node, node.material);
+      node.material = clay;
+    }
+  });
+  try {
+    const images: Record<string, string> = {};
+    for (const [name, angle] of [
+      ['clay-front', 0],
+      ['clay-side', Math.PI / 2],
+      ['clay-back', Math.PI],
+    ] as [string, number][]) {
+      root.rotation.y = angle;
+      root.updateMatrixWorld(true);
+      images[name] = renderPair(root, root).liveImage;
+      if (id === 'amalgam' && name === 'clay-side') {
+        for (const [mesh, material] of materials) mesh.material = material;
+        images['material-face'] = renderPair(root, root).liveImage;
+        for (const mesh of materials.keys()) mesh.material = clay;
+      }
+    }
+    root.rotation.y = 0;
+    if (id === 'tortoise') {
+      root.rotation.x = -Math.PI / 2;
+      root.updateMatrixWorld(true);
+      images['clay-underside'] = renderPair(root, root).liveImage;
+      for (const [mesh, material] of materials) mesh.material = material;
+      images.underside = renderPair(root, root).liveImage;
+      root.rotation.x = 0;
+    }
+    root.updateMatrixWorld(true);
+    for (const mesh of materials.keys()) mesh.material = silhouette;
+    images.silhouette = renderPair(root, root).liveImage;
+    return images;
+  } finally {
+    for (const [mesh, material] of materials) mesh.material = material;
+    clay.dispose();
+    silhouette.dispose();
+    disposeObject(root);
   }
 }
