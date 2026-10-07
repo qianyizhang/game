@@ -35,17 +35,17 @@ Keyboard-operable buttons/selects and responsive layouts support desktop and pho
 
 The [documentation home](docs/README.md) groups guides, engineering, art and research. [Maintenance governance](docs/engineering/maintenance.md) defines the current check coverage, migration boundary and document lifecycle.
 
-Start with [architecture](docs/architecture.md), then [make a mod](docs/modding.md). Each game has its own rules, typed content, application session and UI under `src/games/`. Domain code runs without React or a browser; interfaces submit commands and render authoritative results. Shared utilities handle seeded randomness, replay envelopes, presentation clocks, content validation and local evidence; each game keeps its own rules and observations.
+Start with [architecture](docs/engineering/architecture.md), then [make a mod](docs/guide/modding.md). Each game has its own rules, typed content, application session and UI under `src/games/`. Domain code runs without React or a browser; interfaces submit commands and render authoritative results. Shared utilities handle seeded randomness, replay envelopes, presentation clocks, content validation and local evidence; each game keeps its own rules and observations.
 
-[Research home](docs/research/README.md) holds mechanisms, sources, exact local timing, design questions and playtest notes for every game. [Settled decisions](docs/decisions.md) records scope; [completion evidence](docs/completion.md) maps requirements to checks.
+[Research home](docs/research/README.md) holds mechanisms, sources, exact local timing, design questions and playtest notes for every game. [Settled decisions](docs/engineering/decisions.md) records scope; [delivery history](docs/research/delivery-history.md) records dated checks; [verification contracts](docs/engineering/checks.md) defines the current gates.
 
-[The Card Workshop art skill](skills/card-art/SKILL.md) defines the creation and review workflow for SVG and 3D artwork; the [aesthetic rulebook](docs/art-direction.md) is the shared visual standard. The [SVG source map and tools](docs/card-art.md) cover renderers, scaffolding and before/after contact sheets. Run `npm run assets:export` to create a fresh standalone SVG cabinet; the command prints its path under `test-results/`.
+[The Card Workshop art skill](skills/card-art/SKILL.md) defines the creation and review workflow for SVG and 3D artwork; the [aesthetic rulebook](docs/art/art-direction.md) is the shared visual standard. The [SVG source map and tools](docs/art/svg.md) cover renderers, scaffolding and before/after contact sheets. Run `npm run assets:export` to create a fresh standalone SVG cabinet; the command prints its path under `test-results/`.
 
-The **[3D art gallery](docs/art3d.md)** contains six material studies: Nightjar, Catalyst, Phoenix, Hydra, Spiral and Vajra. The three creatures have authored motion, Catalyst has rising bubbles, and Spiral and Vajra use rigid display motion. Open **3D art gallery** from a table, or `/?art=3d`, to orbit, pause/scrub motion, inspect supported layers and download animated GLB models, six-second WebM loops or PNG images.
+The **[3D art gallery](docs/art/3d.md)** contains 29 exportable studies, including the living Hydra, Nightjar and Phoenix, later creature/figure conversions, Catalyst, Spiral and Vajra. Creatures and figures have authored loops; Catalyst has rising bubbles, while Spiral and Vajra use rigid display motion. Open **3D art gallery** from a table, or `/?art=3d`, to orbit, pause/scrub motion, inspect supported layers and download animated GLB models, six-second WebM loops or PNG images.
 
 The **[creation trace visualizer](docs/engineering/trace-visualizer.md)** is a separate local tool connecting requests, revisions, reviews, retained captures and source changes. Rebuilding the example requires local thread exports and evidence under ignored `test-results/`; `npm run test:trace` checks the reusable normalizer without those files and is included in `npm run check`.
 
-[Card suite expansion](docs/card-expansion.md) lists the twelve new Jokers, twelve new recruits, and the new Silent illustrations.
+[Card suite expansion](docs/research/content-expansions.md#card-suite-expansion) lists the twelve new Jokers, twelve new recruits, and the new Silent illustrations.
 
 | Area                                               | Responsibility                                                         |
 | -------------------------------------------------- | ---------------------------------------------------------------------- |
@@ -60,11 +60,11 @@ The **[creation trace visualizer](docs/engineering/trace-visualizer.md)** is a s
 
 **Practice lab** offers decision rewind, saved branches and validated custom scenarios in separate practice saves. **Content packs** previews trusted local TypeScript examples; **Playtesting** shows automatically recorded summaries, picks/skips and encounter outcomes, with export/clear controls.
 
-**[Challenges](docs/challenges.md)** offers three short tactical puzzles: Joker order, Artifact/Poison sequencing and warband positioning. Optional hints, authoritative decision reviews and retries from a chosen decision help you compare attempts. Challenge progress saves separately from normal runs and practice branches.
+**[Challenges](docs/guide/challenges.md)** offers three short tactical puzzles: Joker order, Artifact/Poison sequencing and warband positioning. Optional hints, authoritative decision reviews and retries from a chosen decision help you compare attempts. Challenge progress saves separately from normal runs and practice branches.
 
-**[Playing engines](docs/engines.md)** provides typed action enumeration and authoritative command execution for all three games. Run `npm run engine:challenges` to search the live puzzles and export verified solutions for challenge import/review. This bounded solver uses full seeded state, including hidden information.
+**[Playing engines](docs/guide/engines.md)** provides typed action enumeration and authoritative command execution for all three games. Run `npm run engine:challenges` to search the live puzzles and export verified solutions for challenge import/review. This bounded solver uses full seeded state, including hidden information.
 
-**[Hearth AI experiments](docs/hearth-ai.md)** adds five typed hero powers, a player-visible agent protocol, structured decision traces, a full-run heuristic policy and sampled formation search. Run `npm run experiment:hearth -- development` for a paired cohort, or connect an external agent with `node scripts/hearth-agent.mjs`. The [development track](docs/development-track.md) separates game depth from competitive AI work.
+**[Hearth AI experiments](docs/engineering/hearth-agents.md)** adds five typed hero powers, a player-visible agent protocol, structured decision traces, a full-run heuristic policy and sampled formation search. Run `npm run experiment:hearth -- development` for a paired cohort, or connect an external agent with `node scripts/hearth-agent.mjs`. The [development track](docs/engineering/roadmap.md) separates game depth from competitive AI work.
 
 Mods are trusted local TypeScript edits in `src/mods/`. Change a definition, keep its text consistent, bump that game's rules version if replay meaning changes, and start a fresh run. Rules versions deliberately reject incompatible histories; there are no automatic migrations or arbitrary third-party plugin loading.
 
@@ -89,9 +89,9 @@ On this Mac, browser-launching agent commands require approved execution outside
 
 Simulations write ignored evidence under `test-results/simulation/`, `test-results/spire/` and `test-results/battlegrounds/`. Browser evidence is isolated under `test-results/browser/`. Full legal winning command histories are kept in `tests/fixtures/`; browser tests import them to verify terminal UI. Those fixtures contain no injected money, health or cards. Policies use the same legal transitions. Spire uses one-command lookahead that can observe consequences of hidden draws, so it is not a fair-play benchmark; Last Hearth checks every recruitable definition's supply after every human action and resolved bot round.
 
-The [Night Market expansion](docs/night-market.md) adds new Joker and recruit builds, illustrated shop items and twelve distinct Silent upgrade scenes. Blindside uses rules v4; Hearth now uses v6; Spire remains v3.
+The [Night Market expansion](docs/research/content-expansions.md#night-market) adds new Joker and recruit builds, illustrated shop items and twelve distinct Silent upgrade scenes. Blindside uses rules v4; Hearth now uses v6; Spire remains v3.
 
-The [tavern spells expansion](docs/tavern-spells.md) adds buy/hold/cast decisions, delayed income, permanent buffs and shop manipulation in Classic and Mixed Rivals. Current saves use Hearth v6 / arena v2; historical AI experiments retain their explicit v5/v1 codecs and frozen policies.
+The [tavern spells expansion](docs/guide/tavern-spells.md) adds buy/hold/cast decisions, delayed income, permanent buffs and shop manipulation in Classic and Mixed Rivals. Current saves use Hearth v6 / arena v2; historical AI experiments retain their explicit v5/v1 codecs and frozen policies.
 
 ## DCC workbench
 

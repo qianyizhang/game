@@ -1,6 +1,6 @@
 # Card Workshop documentation
 
-Use the four theme homes below. Each points to current material while older paths are migrated in bounded slices.
+Use the four theme homes below. Current guides and contracts live here; research and art records label their historical conditions.
 
 | Home                                 | Read it for                                                |
 | ------------------------------------ | ---------------------------------------------------------- |

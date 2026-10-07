@@ -67,4 +67,4 @@ node scripts/hearth-arena-audit.mjs test-results/ai/new-arena-development
 node scripts/hearth-arena-audit.mjs test-results/ai/new-arena-evaluation
 ```
 
-Original evidence remains in ignored `test-results/ai/hearth-arena-v1-development/` and `test-results/ai/hearth-arena-v1-evaluation/`. Every episode has a full replay, decision/reason trace with exact input hashes, and a receipt. The deterministic outcomes and accepted commands reproduce; timing does not. Existing output directories and audit files are never overwritten. See the [arena contract](../../hearth-arena.md) for engine inspection, policy visibility and process use.
+Original evidence remains in ignored `test-results/ai/hearth-arena-v1-development/` and `test-results/ai/hearth-arena-v1-evaluation/`. Every episode has a full replay, decision/reason trace with exact input hashes, and a receipt. The deterministic outcomes and accepted commands reproduce; timing does not. Existing output directories and audit files are never overwritten. See the [arena contract](../../guide/hearth-arena.md) for engine inspection, policy visibility and process use.

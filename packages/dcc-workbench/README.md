@@ -73,7 +73,7 @@ npm run test:browser -- tests/browser/dcc-workbench.spec.ts tests/browser/shell.
 - An independent browser check matches 64 evaluated Blender vertices at five times against Three.js skinning. Browser checks also exercise playback, exact loop images, downloads, phone layout, reduced motion, error handling, return focus and save preservation.
 - Native review renders and browser review captures live under ignored `test-results/dcc-pilot/`. The source and published deliverables live in this package.
 
-The before image in `references/` is a copy of the user-accepted living Hydra direction from `test-results/hydra-delivery/hydra-hero.png`; it is a visual reference, not a frozen executable baseline or an equal-lighting comparison. The original builder remains `src/art3d/hydra.ts`. The [shared art rulebook](../../docs/art-direction.md) governs visual review. Passing checks establishes export/interaction behavior, not superior art or user approval.
+The before image in `references/` is a copy of the user-accepted living Hydra direction from `test-results/hydra-delivery/hydra-hero.png`; it is a visual reference, not a frozen executable baseline or an equal-lighting comparison. The original builder remains `src/art3d/hydra.ts`. The [shared art rulebook](../../docs/art/art-direction.md) governs visual review. Passing checks establishes export/interaction behavior, not superior art or user approval.
 
 The [durable asset record](../../docs/art/assets/briar-hydra.md) records review status, consequential revisions, historical evidence and remaining limits. The superseded session review has been consolidated there.
 

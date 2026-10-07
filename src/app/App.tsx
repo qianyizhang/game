@@ -76,8 +76,8 @@ function Workshop() {
             rewards a choice you currently ignore.
           </p>
           <p>
-            See <code>docs/modding.md</code> for a worked example, and <code>docs/research/</code>{' '}
-            for mechanisms, timing and design questions.
+            See <code>docs/guide/modding.md</code> for a worked example, and{' '}
+            <code>docs/research/</code> for mechanisms, timing and design questions.
           </p>
         </article>
         <article>
