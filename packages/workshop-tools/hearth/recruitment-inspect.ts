@@ -10,7 +10,7 @@ export async function runCli(args: string[]) {
   const [replayPath, receiptPath, output, ...extra] = args;
   if (!replayPath || !receiptPath || !output || extra.length)
     throw new Error(
-      'Usage: node scripts/hearth-recruitment-inspect.mjs <replay.json> <receipt.json> <new.html>',
+      'Usage: node packages/workshop-tools/hearth/recruitment-inspect.ts <replay.json> <receipt.json> <new.html>',
     );
   await withRecruitmentRuntime(async ({ runtime, bundleDigest }) => {
     const raw = await readFile(fromRoot(replayPath), 'utf8');

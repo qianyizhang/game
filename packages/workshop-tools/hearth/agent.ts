@@ -9,7 +9,7 @@ import { withHearthRuntime } from './runtime.ts';
 export async function runCli(args: string[]) {
   if (args.includes('--help')) {
     console.log(
-      'Usage: node scripts/hearth-agent.mjs [environment-seed] [new-evaluator-output-directory]\nJSONL requests: {"id":"1","op":"observe"}, {"op":"catalogue"}, {"op":"act","step":0,"action":"a0"}, {"op":"quit"}.\nOnly policy-safe frames go to stdout. Evaluator replay is written to the separate output directory.',
+      'Usage: node packages/workshop-tools/hearth/agent.ts [environment-seed] [new-evaluator-output-directory]\nJSONL requests: {"id":"1","op":"observe"}, {"op":"catalogue"}, {"op":"act","step":0,"action":"a0"}, {"op":"quit"}.\nOnly policy-safe frames go to stdout. Evaluator replay is written to the separate output directory.',
     );
     return;
   }

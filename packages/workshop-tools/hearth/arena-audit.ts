@@ -10,7 +10,9 @@ import { withHearthRuntime } from './runtime.ts';
 export async function runCli(args: string[]) {
   const [directory, ...extra] = args;
   if (!directory || extra.length)
-    throw new Error('Usage: node scripts/hearth-arena-audit.mjs <experiment-directory>');
+    throw new Error(
+      'Usage: node packages/workshop-tools/hearth/arena-audit.ts <experiment-directory>',
+    );
   const root = fromRoot(directory);
   const sha = (value: string | Uint8Array) => createHash('sha256').update(value).digest('hex');
   const names = (await readdir(root)).filter((name) => name.endsWith('.replay.json')).sort();

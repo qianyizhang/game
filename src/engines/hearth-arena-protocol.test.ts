@@ -22,7 +22,9 @@ interface Reply {
 it('binds an external controller to seat 6, hides styles, and records a complete lobby', async () => {
   const root = await mkdtemp(join(tmpdir(), 'hearth-arena-protocol-'));
   const output = join(root, 'evaluator');
-  const script = fileURLToPath(new URL('../../scripts/hearth-arena-agent.mjs', import.meta.url));
+  const script = fileURLToPath(
+    new URL('../../packages/workshop-tools/hearth/arena-agent.ts', import.meta.url),
+  );
   const child = spawn(process.execPath, [script, 'SECRET-ARENA-PROTOCOL', output, '6', 'hidden'], {
     cwd: root,
     stdio: ['pipe', 'pipe', 'pipe'],

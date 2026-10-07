@@ -11,7 +11,16 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "allowJs": true,
+    "checkJs": true
   },
-  "include": ["src", "tests", "vite.config.ts", "playwright.config.ts", "vitest.playtest.config.ts"]
+  "include": [
+    "src",
+    "tests",
+    "vite.config.ts",
+    "playwright.config.ts",
+    "vitest.playtest.config.ts",
+    "eslint.config.mjs"
+  ]
 }

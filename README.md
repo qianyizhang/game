@@ -64,7 +64,7 @@ The **[creation trace visualizer](docs/engineering/trace-visualizer.md)** is a s
 
 **[Playing engines](docs/guide/engines.md)** provides typed action enumeration and authoritative command execution for all three games. Run `npm run engine:challenges` to search the live puzzles and export verified solutions for challenge import/review. This bounded solver uses full seeded state, including hidden information.
 
-**[Hearth AI experiments](docs/engineering/hearth-agents.md)** adds five typed hero powers, a player-visible agent protocol, structured decision traces, a full-run heuristic policy and sampled formation search. Run `npm run experiment:hearth -- development` for a paired cohort, or connect an external agent with `node scripts/hearth-agent.mjs`. The [development track](docs/engineering/roadmap.md) separates game depth from competitive AI work.
+**[Hearth AI experiments](docs/engineering/hearth-agents.md)** adds five typed hero powers, a player-visible agent protocol, structured decision traces, a full-run heuristic policy and sampled formation search. Run `npm run experiment:hearth -- development` for a paired cohort, or connect an external agent with `node packages/workshop-tools/hearth/agent.ts`. The [development track](docs/engineering/roadmap.md) separates game depth from competitive AI work.
 
 Mods are trusted local TypeScript edits in `src/mods/`. Change a definition, keep its text consistent, bump that game's rules version if replay meaning changes, and start a fresh run. Rules versions deliberately reject incompatible histories; there are no automatic migrations or arbitrary third-party plugin loading.
 

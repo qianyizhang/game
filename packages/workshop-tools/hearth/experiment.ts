@@ -27,7 +27,7 @@ export async function runCli(args: string[]) {
   const [cohort, destination, ...extra] = args;
   if (cohort === '--help') {
     console.log(
-      'Usage: node scripts/hearth-experiment.mjs <development|evaluation> [new-output-directory]\nWrites the frozen manifest before running, then decision JSONL, replays, receipts and a paired comparison. Existing output directories are rejected.',
+      'Usage: node packages/workshop-tools/hearth/experiment.ts <development|evaluation> [new-output-directory]\nWrites the frozen manifest before running, then decision JSONL, replays, receipts and a paired comparison. Existing output directories are rejected.',
     );
     return;
   }

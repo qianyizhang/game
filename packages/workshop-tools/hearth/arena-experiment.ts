@@ -37,7 +37,7 @@ export async function runCli(args: string[]) {
   const [cohort, destination, ...extra] = args;
   if (cohort === '--help') {
     console.log(
-      'Usage: node scripts/hearth-arena-experiment.mjs <development|evaluation> [new-output-directory]\nWrites source-pinned manifest before running all seats and visibility conditions. Full replays, compact decision traces, receipts and seed-block comparisons are retained.',
+      'Usage: node packages/workshop-tools/hearth/arena-experiment.ts <development|evaluation> [new-output-directory]\nWrites source-pinned manifest before running all seats and visibility conditions. Full replays, compact decision traces, receipts and seed-block comparisons are retained.',
     );
     return;
   }

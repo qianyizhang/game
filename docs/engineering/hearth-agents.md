@@ -36,7 +36,7 @@ This is an explicit information contract for trusted policy implementations, not
 Start a fresh environment from the repository root:
 
 ```sh
-node scripts/hearth-agent.mjs MY-ENVIRONMENT-SEED test-results/agents/my-run
+node packages/workshop-tools/hearth/agent.ts MY-ENVIRONMENT-SEED test-results/agents/my-run
 # Interactive use is also available through npm run engine:hearth.
 ```
 
@@ -70,7 +70,7 @@ npm run experiment:hearth -- development test-results/ai/my-development
 npm run experiment:hearth -- evaluation test-results/ai/my-evaluation
 ```
 
-The runner freezes its manifest before executing. Five development seeds and twenty separate reserved evaluation seeds rotate the five heroes; every seed/hero runs both policies. The default command budget is 2,000 per episode. Configuration is checked in at `packages/workshop-tools/hearth/experiment.ts`; the original script is a compatibility entry point.
+The runner freezes its manifest before executing. Five development seeds and twenty separate reserved evaluation seeds rotate the five heroes; every seed/hero runs both policies. The default command budget is 2,000 per episode. Configuration is checked in at `packages/workshop-tools/hearth/experiment.ts`. The npm command invokes this implementation directly.
 
 Each output directory contains:
 
