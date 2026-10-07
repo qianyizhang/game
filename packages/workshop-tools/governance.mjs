@@ -7,7 +7,7 @@ import { resolve } from 'node:path';
 export function managedSource(path) {
   return (
     path === 'eslint.config.mjs' ||
-    /^src\/(app|games|shared|mods)\/.*\.tsx?$/.test(path) ||
+    /^src\/.*\.tsx?$/.test(path) ||
     /^packages\/dcc-workbench\/src\/[^/]+\.tsx?$/.test(path) ||
     /^packages\/workshop-tools\/(?:[^/]+\.mjs|trace\/[^/]+\.ts)$/.test(path) ||
     path === 'scripts/trace-visualizer/build.mjs' ||

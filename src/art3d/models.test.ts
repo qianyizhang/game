@@ -1,5 +1,5 @@
+import { isMesh } from './objects';
 import { expect, it } from 'vitest';
-import * as T from 'three';
 import { createStudy, disposeObject, STUDIES } from './models';
 
 for (const { id } of STUDIES) {
@@ -8,7 +8,7 @@ for (const { id } of STUDIES) {
     try {
       const invalid: string[] = [];
       root.traverse((object) => {
-        if (!(object instanceof T.Mesh)) return;
+        if (!isMesh(object)) return;
         const normals = object.geometry.getAttribute('normal');
         if (!normals) {
           invalid.push(object.name);

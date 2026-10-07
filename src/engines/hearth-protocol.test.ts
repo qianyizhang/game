@@ -1,3 +1,4 @@
+import { objectValue } from '../shared/json';
 import { expect, it } from 'vitest';
 import { spawn } from 'node:child_process';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
@@ -7,6 +8,16 @@ import { createInterface } from 'node:readline';
 import { createHearthPolicy } from '../games/battlegrounds/ai/policy';
 import { bgSession } from '../games/battlegrounds/application/session';
 import type { HearthFrame } from '../games/battlegrounds/application/agent';
+
+// This test drives the local protocol implementation and asserts its declared reply fields.
+interface Reply {
+  event?: string;
+  ok?: boolean;
+  id?: string;
+  error?: string;
+  frame: HearthFrame;
+  catalogue: { heroes: { id: string }[] };
+}
 
 it('drives a complete external JSONL agent and preserves evaluator replay separately', async () => {
   const root = await mkdtemp(join(tmpdir(), 'hearth-protocol-test-'));
@@ -31,7 +42,7 @@ it('drives a complete external JSONL agent and preserves evaluator replay separa
     if (line.done) throw new Error(`Agent ended unexpectedly: ${stderr}`);
     expect(line.value).not.toContain('PRIVATE-PROTOCOL-SEED');
     expect(line.value).not.toContain('"rng"');
-    return JSON.parse(line.value);
+    return JSON.parse(line.value) as Reply;
   };
   const request = async (value: unknown) => {
     child.stdin.write(JSON.stringify(value) + '\n');
@@ -77,9 +88,9 @@ it('drives a complete external JSONL agent and preserves evaluator replay separa
     expect(await ended, stderr).toBe(0);
     const session = bgSession.decode(await readFile(join(output, 'replay.json'), 'utf8'));
     expect(session.state.players[0].placement).toBe(frame.observation.self.placement);
-    expect(JSON.parse(await readFile(join(output, 'receipt.json'), 'utf8')).replayVerified).toBe(
-      true,
-    );
+    expect(
+      objectValue(JSON.parse(await readFile(join(output, 'receipt.json'), 'utf8'))).replayVerified,
+    ).toBe(true);
   } finally {
     lines.close();
     child.stdin.end();

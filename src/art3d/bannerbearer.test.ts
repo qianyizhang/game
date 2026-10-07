@@ -1,3 +1,4 @@
+import { isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -98,7 +99,7 @@ describe('Banner Bearer living assembly', () => {
       }
       const skins: T.SkinnedMesh[] = [];
       root.traverse((o) => {
-        if (o instanceof T.SkinnedMesh) skins.push(o);
+        if (isSkinnedMesh(o)) skins.push(o);
       });
       expect(skins).toHaveLength(2);
       for (const mesh of skins) {

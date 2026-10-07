@@ -1,3 +1,4 @@
+import { replayEnvelope } from './replay-envelope';
 import {
   RECRUITMENT_POLICIES,
   decideRecruitmentV2,
@@ -214,7 +215,7 @@ export function compareRecruitmentReports(
         )
           reason = 'Incomplete, failed or unverified lobby.';
         try {
-          const replay = JSON.parse(r.replay);
+          const replay = replayEnvelope(r.replay);
           if (
             JSON.stringify(r.spec) !== JSON.stringify(c) ||
             r.seed !== c.seed ||
@@ -246,8 +247,8 @@ export function compareRecruitmentReports(
             r.spec.visibility === 'disclosed',
         )!;
         if (
-          JSON.stringify(JSON.parse(hidden.replay).commands.slice(1)) !==
-          JSON.stringify(JSON.parse(visible.replay).commands.slice(1))
+          JSON.stringify(replayEnvelope(hidden.replay).commands.slice(1)) !==
+          JSON.stringify(replayEnvelope(visible.replay).commands.slice(1))
         )
           reason = 'Disclosure negative control changed gameplay.';
       }

@@ -1,3 +1,4 @@
+import { replayEnvelope } from './replay-envelope';
 import {
   actHearthAgent,
   hearthFrame,
@@ -152,8 +153,8 @@ export function compareHearthEpisodes(reports: readonly EpisodeReport[]) {
       baseline[0].policy.seed !== candidate[0].policy.seed ||
       baseline[0].policy.samples !== candidate[0].policy.samples ||
       baseline[0].policy.maxOrders !== candidate[0].policy.maxOrders ||
-      JSON.stringify(JSON.parse(baseline[0].replay).content) !==
-        JSON.stringify(JSON.parse(candidate[0].replay).content)
+      JSON.stringify(replayEnvelope(baseline[0].replay).content) !==
+        JSON.stringify(replayEnvelope(candidate[0].replay).content)
     ) {
       excluded.push({ key, reason: 'Policy configuration or content mismatch.' });
       continue;

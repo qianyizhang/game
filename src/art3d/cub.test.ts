@@ -1,3 +1,4 @@
+import { isMesh, isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -55,7 +56,7 @@ describe('Briar Cub anatomy, support and fittings', () => {
       }
       const skins: T.SkinnedMesh[] = [];
       root.traverse((o) => {
-        if (o instanceof T.SkinnedMesh) skins.push(o);
+        if (isSkinnedMesh(o)) skins.push(o);
       });
       expect(skins).toHaveLength(1);
       for (const skin of skins) {
@@ -113,7 +114,7 @@ describe('Briar Cub anatomy, support and fittings', () => {
         before = selected.map((i) => skin.getVertexPosition(i, new T.Vector3()));
       const claws: T.Mesh[] = [];
       root.traverse((o) => {
-        if (o instanceof T.Mesh && o.name.startsWith('Cub_Claw_')) claws.push(o);
+        if (isMesh(o) && o.name.startsWith('Cub_Claw_')) claws.push(o);
       });
       expect(claws).toHaveLength(20);
       const matrices = claws.map((o) => o.matrixWorld.clone());

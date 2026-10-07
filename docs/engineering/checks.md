@@ -15,7 +15,7 @@ The migration inventory identifies code still awaiting the full maintenance cont
 
 ## Adopted static-check scope
 
-Typed ESLint covers `src/app`, `src/games`, `src/shared` and `src/mods`, including their tests; root TypeScript checking covers the whole application and browser tests. The maintenance formatter covers these adopted directories. JSON enters as unknown data and is narrowed before access; rejected archives remain available for recovery. File import handlers use the existing caught-error import contract and preserve request cancellation/order semantics.
+Typed ESLint covers all of `src`, including geometry, experiment code and their tests; root TypeScript checking covers the whole application and browser tests. The maintenance formatter covers these adopted directories. JSON enters as unknown data and is narrowed before access; rejected archives remain available for recovery. File import handlers use the existing caught-error import contract and preserve request cancellation/order semantics.
 
 The tools package includes the typed trace builder, normalizer, contracts and tests. Its legacy build entry point has a separate checked JavaScript project. The trace viewer template still contains inline JavaScript; browser coverage verifies its behavior, but static coverage of that inline runtime remains migration work.
 

@@ -1,3 +1,5 @@
+import { objectValue } from '../shared/json';
+import { replayEnvelope } from './replay-envelope';
 import { expect, it } from 'vitest';
 import { arenaSessionV1 as arenaSession } from '../games/battlegrounds/application/arena';
 import { decideRecruitment } from '../games/battlegrounds/ai/recruitment-policy';
@@ -31,7 +33,7 @@ function fixtures(): RecruitmentReport[] {
       config,
       status: 'complete',
       placements,
-      survivalRounds: Array(8).fill(10),
+      survivalRounds: Array.from({ length: 8 }, () => 10),
       rounds: 10,
       commands: 1,
       decisionMs: 0,
@@ -80,7 +82,15 @@ it('computes factorial effects and uncertainty over five blocks, not 40 independ
   }
 });
 it('excludes complete blocks for missing, duplicate, failed, tampered and leaking cases', () => {
-  for (const failure of ['missing', 'duplicate', 'failed', 'config', 'labels', 'placement']) {
+  for (const failure of [
+    'missing',
+    'duplicate',
+    'failed',
+    'config',
+    'labels',
+    'placement',
+    'malformed',
+  ]) {
     const rows = fixtures();
     if (failure === 'missing') rows.shift();
     if (failure === 'duplicate') rows[0] = rows[1];
@@ -88,10 +98,11 @@ it('excludes complete blocks for missing, duplicate, failed, tampered and leakin
     if (failure === 'config') rows[0].config.visibilitySeat = 7;
     if (failure === 'labels') {
       const r = rows.find((r) => r.spec.visibility === 'disclosed')!;
-      const replay = JSON.parse(r.replay);
+      const replay = replayEnvelope(r.replay);
       replay.commands.push({ type: 'nextRound' });
       r.replay = JSON.stringify(replay);
     }
+    if (failure === 'malformed') rows[0].replay = '{"commands":null}';
     if (failure === 'placement') rows[0].placements[0] = 9;
     const result = compareRecruitmentReports(rows, 'evaluation');
     expect(result.includedLobbies, failure).toBe(640);
@@ -123,7 +134,7 @@ it('preserves v1 gameplay under injected control and reconstructs v2 proposals f
   expect(() =>
     inspectRecruitment(candidate.replay, { ...candidate.spec, seed: 'TAMPER' }),
   ).toThrow();
-  const bad = JSON.parse(candidate.replay);
-  bad.commands[0].config.visibility = 'disclosed';
+  const bad = replayEnvelope(candidate.replay);
+  objectValue(objectValue(bad.commands[0]).config).visibility = 'disclosed';
   expect(() => inspectRecruitment(JSON.stringify(bad), candidate.spec)).toThrow();
 }, 20000);

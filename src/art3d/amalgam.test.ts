@@ -1,3 +1,4 @@
+import { isMesh, isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -100,7 +101,7 @@ describe('Wild Amalgam living assembly', () => {
       ).toBe(1);
       let count = 0;
       root.traverse((o) => {
-        if (!(o instanceof T.SkinnedMesh)) return;
+        if (!isSkinnedMesh(o)) return;
         count++;
         const w = o.geometry.attributes.skinWeight,
           j = o.geometry.attributes.skinIndex;
@@ -156,7 +157,7 @@ describe('Wild Amalgam living assembly', () => {
         before = selected.map((i) => skin.getVertexPosition(i, new T.Vector3()));
       const claws: T.Mesh[] = [];
       root.traverse((o) => {
-        if (o instanceof T.Mesh && o.name.startsWith('Amalgam_Claw_')) claws.push(o);
+        if (isMesh(o) && o.name.startsWith('Amalgam_Claw_')) claws.push(o);
       });
       expect(claws).toHaveLength(12);
       const matrices = claws.map((o) => o.matrixWorld.clone());
@@ -292,9 +293,7 @@ describe('Wild Amalgam living assembly', () => {
       }
       for (const side of [-1, 1]) {
         const arm = root.getObjectByName(`Amalgam_WingFinger_${side}_0`) as T.SkinnedMesh;
-        const elbow = new T.Vector3(
-          ...((side > 0 ? [0.31, 1.65, 0.44] : [0.38, 1.38, -0.4]) as [number, number, number]),
-        );
+        const elbow = new T.Vector3(...(side > 0 ? [0.31, 1.65, 0.44] : [0.38, 1.38, -0.4]));
         let vertex = 0,
           distance = Infinity;
         for (let i = 0; i < arm.geometry.attributes.position.count; i++) {

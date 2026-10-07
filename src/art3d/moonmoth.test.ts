@@ -1,3 +1,4 @@
+import { isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -9,7 +10,7 @@ describe('Moon Moth wing construction and resting motion', () => {
     try {
       const wings: T.SkinnedMesh[] = [];
       root.traverse((node) => {
-        if (node instanceof T.SkinnedMesh) wings.push(node);
+        if (isSkinnedMesh(node)) wings.push(node);
       });
       expect(wings).toHaveLength(4);
       for (const wing of wings) {
@@ -75,7 +76,7 @@ describe('Moon Moth wing construction and resting motion', () => {
         )
           fixed.push(node);
         if (node.name.endsWith('_Anchor')) anchors.push(node);
-        if (node instanceof T.SkinnedMesh) wings.push(node);
+        if (isSkinnedMesh(node)) wings.push(node);
       });
       expect(fixed.filter((n) => n.name.includes('ClaspingLeg'))).toHaveLength(6);
       const frames = fixed.map((n) => n.matrixWorld.clone()),

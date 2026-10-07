@@ -1,3 +1,4 @@
+import { isMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -66,7 +67,7 @@ describe('Bog Toad crouch and breathing', () => {
       expect(Math.min(...rest.map((p) => p.y))).toBeCloseTo(0.105, 6);
       const toes: T.Mesh[] = [];
       root.traverse((n) => {
-        if (n instanceof T.Mesh && n.name.startsWith('Bogtoad_Toe_')) toes.push(n);
+        if (isMesh(n) && n.name.startsWith('Bogtoad_Toe_')) toes.push(n);
       });
       expect(toes).toHaveLength(18);
       const toeFrames = toes.map((n) => n.matrixWorld.clone());

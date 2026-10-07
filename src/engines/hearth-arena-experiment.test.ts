@@ -27,7 +27,7 @@ function block(seed: string): ArenaReport[] {
         config,
         status: 'complete' as const,
         placements,
-        survivalRounds: Array(8).fill(10),
+        survivalRounds: Array.from({ length: 8 }, () => 10),
         rounds: 10,
         commands: 1,
         decisionMs: 0,
@@ -61,6 +61,11 @@ it('excludes the whole block for missing, duplicate, failed, mismatched or leaki
   cases[3][0].config.seats[7].hero =
     cases[3][0].config.seats[7].hero === 'oathkeeper' ? 'archivist' : 'oathkeeper';
   cases[4][1].replay = JSON.stringify({ content: [], commands: [{}, { type: 'nextRound' }] });
+  for (const replay of ['null', '{"commands":null}', '{"commands":[null]}']) {
+    const malformed = structuredClone(valid);
+    malformed[0].replay = replay;
+    cases.push(malformed);
+  }
   for (const rows of cases) {
     const comparison = compareArenaEpisodes(rows);
     expect(comparison.includedLobbies).toBe(0);

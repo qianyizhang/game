@@ -1,3 +1,5 @@
+import { isRecord } from '../shared/json';
+import { replayEnvelope } from './replay-envelope';
 import {
   decideRecruitment,
   type RecruitmentDecision,
@@ -175,10 +177,10 @@ export function compareArenaEpisodes(reports: readonly ArenaReport[]) {
     let reason = '';
     try {
       for (const row of rows) {
-        const replay = JSON.parse(row.replay);
+        const replay = replayEnvelope(row.replay);
         if (
-          !Array.isArray(replay.commands) ||
-          replay.commands[0]?.type !== 'configure' ||
+          !isRecord(replay.commands[0]) ||
+          replay.commands[0].type !== 'configure' ||
           JSON.stringify(replay.commands[0].config) !== JSON.stringify(row.config)
         )
           reason = 'Replay and receipt configuration mismatch.';
@@ -222,15 +224,15 @@ export function compareArenaEpisodes(reports: readonly ArenaReport[]) {
                 i === seat ? { ...s, style: 'baseline-v1' } : s,
               ),
             },
-            content: JSON.parse(r.replay).content,
+            content: replayEnvelope(r.replay).content,
           }),
         );
         if (new Set(normalized).size !== 1 || quartet.some((r) => r.config.visibilitySeat !== seat))
           reason = 'Opponent, visibility scope or content mismatch.';
         // The baseline ignores labels; disclosure must not alter anyone else's information.
         if (
-          JSON.stringify(JSON.parse(quartet[0].replay).commands.slice(1)) !==
-          JSON.stringify(JSON.parse(quartet[1].replay).commands.slice(1))
+          JSON.stringify(replayEnvelope(quartet[0].replay).commands.slice(1)) !==
+          JSON.stringify(replayEnvelope(quartet[1].replay).commands.slice(1))
         )
           reason = 'Baseline disclosure negative control changed gameplay.';
       }

@@ -1,3 +1,4 @@
+import { isMesh, isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -104,8 +105,8 @@ describe('Ancient Tortoise shell, support and fittings', () => {
         claws: T.Object3D[] = [];
       root.traverse((n) => {
         if (
-          n instanceof T.Mesh &&
-          !(n instanceof T.SkinnedMesh) &&
+          isMesh(n) &&
+          !isSkinnedMesh(n) &&
           !n.name.startsWith('Tortoise_Orbit') &&
           !n.name.startsWith('Tortoise_Iris') &&
           !n.name.startsWith('Tortoise_Pupil') &&
@@ -168,7 +169,7 @@ describe('Ancient Tortoise shell, support and fittings', () => {
       root.updateMatrixWorld(true);
       const plates: T.Mesh[] = [];
       root.traverse((n) => {
-        if (n instanceof T.Mesh && n.name.startsWith('Tortoise_ForelegScute_')) plates.push(n);
+        if (isMesh(n) && n.name.startsWith('Tortoise_ForelegScute_')) plates.push(n);
       });
       expect(plates).toHaveLength(14);
       for (const plate of plates) {

@@ -1,3 +1,4 @@
+import { isMesh, isSkinnedMesh } from './objects';
 import { describe, expect, it } from 'vitest';
 import * as T from 'three';
 import { createStudy, disposeObject } from './models';
@@ -98,7 +99,7 @@ describe('Coal Imp living assembly', () => {
       );
       let count = 0;
       root.traverse((o) => {
-        if (!(o instanceof T.SkinnedMesh)) return;
+        if (!isSkinnedMesh(o)) return;
         count++;
         const w = o.geometry.attributes.skinWeight,
           j = o.geometry.attributes.skinIndex;
@@ -152,7 +153,7 @@ describe('Coal Imp living assembly', () => {
         before = selected.map((i) => body.getVertexPosition(i, new T.Vector3()));
       const fixed: T.Mesh[] = [];
       root.traverse((o) => {
-        if (o instanceof T.Mesh && /^Imp_(HandSkin|HandClaw|ToeClaw)_/.test(o.name)) fixed.push(o);
+        if (isMesh(o) && /^Imp_(HandSkin|HandClaw|ToeClaw)_/.test(o.name)) fixed.push(o);
       });
       expect(fixed).toHaveLength(16);
       const matrices = fixed.map((o) => o.matrixWorld.clone());
