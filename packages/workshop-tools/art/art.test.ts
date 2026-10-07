@@ -9,11 +9,11 @@ import { runCli as scaffold } from './scaffold.ts';
 import { inventory } from './review.ts';
 import type { Rasterizer } from './raster.ts';
 
-await test('legacy export works outside cwd, writes a standalone catalogue and refuses overwrite', async (t) => {
+await test('package export works outside cwd, writes a standalone catalogue and refuses overwrite', async (t) => {
   const root = await mkdtemp(resolve(tmpdir(), 'art-export-test-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   const output = resolve(root, 'export');
-  const command = fromRoot('scripts/export-card-art.mjs');
+  const command = fromRoot('packages/workshop-tools/art/export.ts');
   const args = [command, output];
   execFileSync(process.execPath, args, { cwd: tmpdir(), stdio: 'pipe' });
   const manifest = await readFile(resolve(output, 'manifest.json'));

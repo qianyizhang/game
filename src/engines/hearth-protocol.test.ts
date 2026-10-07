@@ -23,7 +23,9 @@ interface Reply {
 it('drives a complete external JSONL agent and preserves evaluator replay separately', async () => {
   const root = await mkdtemp(join(tmpdir(), 'hearth-protocol-test-'));
   const output = join(root, 'evaluator');
-  const script = fileURLToPath(new URL('../../scripts/hearth-agent.mjs', import.meta.url));
+  const script = fileURLToPath(
+    new URL('../../packages/workshop-tools/hearth/agent.ts', import.meta.url),
+  );
   const child = spawn(process.execPath, [script, 'PRIVATE-PROTOCOL-SEED', output], {
     cwd: root,
     stdio: ['pipe', 'pipe', 'pipe'],

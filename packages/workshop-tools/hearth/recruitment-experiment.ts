@@ -18,7 +18,7 @@ export async function runCli(args: string[]) {
   const [mode, destination, workersText = '2', ...extra] = args;
   if (mode === '--help') {
     console.log(
-      'Usage: node scripts/hearth-recruitment-experiment.mjs <development|evaluation|smoke|audit> <new-output-directory|existing-directory-for-audit> [workers 1–4]\nDevelopment: 400 lobbies. Evaluation: 800 fresh lobbies, five balanced heroes and eight seats. Smoke runs four development cases without strength estimates. Audit reconstructs every trace and diagnostic. Existing outputs are never overwritten.',
+      'Usage: node packages/workshop-tools/hearth/recruitment-experiment.ts <development|evaluation|smoke|audit> <new-output-directory|existing-directory-for-audit> [workers 1–4]\nDevelopment: 400 lobbies. Evaluation: 800 fresh lobbies, five balanced heroes and eight seats. Smoke runs four development cases without strength estimates. Audit reconstructs every trace and diagnostic. Existing outputs are never overwritten.',
     );
     return;
   }
@@ -41,10 +41,9 @@ export async function runCli(args: string[]) {
     const startedAt = new Date().toISOString(),
       started = performance.now();
     const scripts = [
-      ...['runtime', 'pool', 'worker', 'experiment'].flatMap((name) => [
-        `scripts/hearth-recruitment-${name}.mjs`,
-        `packages/workshop-tools/hearth/recruitment-${name}.ts`,
-      ]),
+      ...['runtime', 'pool', 'worker', 'experiment'].map(
+        (name) => `packages/workshop-tools/hearth/recruitment-${name}.ts`,
+      ),
       'packages/workshop-tools/hearth/contracts.ts',
       'packages/workshop-tools/io.ts',
     ];

@@ -9,7 +9,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 it('produces identical gameplay across worker counts and audits metrics against reconstructed decisions', () => {
   const directory = mkdtempSync(resolve(tmpdir(), 'recruitment-harness-test-'));
   const cli = fileURLToPath(
-    new URL('../../scripts/hearth-recruitment-experiment.mjs', import.meta.url),
+    new URL('../../packages/workshop-tools/hearth/recruitment-experiment.ts', import.meta.url),
   );
   const run = (...args: string[]) =>
     execFileSync(process.execPath, [cli, ...args], { encoding: 'utf8', cwd: directory });

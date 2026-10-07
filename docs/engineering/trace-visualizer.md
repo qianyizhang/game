@@ -21,7 +21,7 @@ Optional positional arguments:
 npm run trace:build -- INPUT_DIRECTORY NEW_OUTPUT_DIRECTORY CASE_STUDY_JSON
 ```
 
-Arguments resolve from the repository root, independent of the invoking directory. An explicit output directory must be new, inside that root and disjoint from input. Existing output and symlinked output parents are refused. A failed build removes only the fresh directory created by that invocation; previous evidence is preserved. The old `node scripts/trace-visualizer/build.mjs` entry point remains a checked compatibility wrapper.
+Arguments resolve from the repository root, independent of the invoking directory. An explicit output directory must be new, inside that root and disjoint from input. Existing output and symlinked output parents are refused. A failed build removes only the fresh directory created by that invocation; previous evidence is preserved. Use `npm run trace:build` or invoke `packages/workshop-tools/trace/build.ts` directly.
 
 The maintained implementation, typed contracts, template and case recipe live in `packages/workshop-tools/trace/`. Node 24 executes its build modules directly. The separately typed viewer runtime is checked against the builder output and DOM elements, then emitted into the standalone HTML with the pinned TypeScript compiler. The tools package enforces strict TypeScript and typed ESLint for both sides. Missing turn timestamps stay unknown.
 

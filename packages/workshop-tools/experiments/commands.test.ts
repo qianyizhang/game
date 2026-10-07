@@ -57,7 +57,7 @@ await test('challenge CLI works outside cwd and preserves an existing solution b
   const root = await mkdtemp(resolve(tmpdir(), 'challenge-cli-test-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   const output = resolve(root, 'solutions');
-  const args = [fromRoot('scripts/solve-challenges.mjs'), output];
+  const args = [fromRoot('packages/workshop-tools/experiments/solve-challenges.ts'), output];
   execFileSync(process.execPath, args, { cwd: tmpdir(), stdio: 'pipe' });
   const report = await readFile(resolve(output, 'report.json'));
   assert.match(report.toString(), /"status": "solved"/);

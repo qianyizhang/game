@@ -12,7 +12,7 @@ export async function runCli(args: string[]) {
     args;
   if (seed === '--help') {
     console.log(
-      'Usage: node scripts/hearth-arena-agent.mjs [environment-seed] [new-output-directory] [seat 0–7] [hidden|disclosed]\nJSONL: observe, catalogue, act {step,action}, quit. One process controls one fixed seat. Other seats and round advancement are journaled automatically. Inspector/configuration/replay are evaluator-only.',
+      'Usage: node packages/workshop-tools/hearth/arena-agent.ts [environment-seed] [new-output-directory] [seat 0–7] [hidden|disclosed]\nJSONL: observe, catalogue, act {step,action}, quit. One process controls one fixed seat. Other seats and round advancement are journaled automatically. Inspector/configuration/replay are evaluator-only.',
     );
     return;
   }

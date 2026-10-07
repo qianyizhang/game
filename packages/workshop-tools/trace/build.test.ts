@@ -141,7 +141,7 @@ await test('malformed input contracts fail before publication and failed builds 
   assert.equal(existsSync(f.output), false);
 });
 
-await test('legacy CLI resolves declared inputs independently of the working directory', async (t) => {
+await test('package CLI resolves declared inputs independently of the working directory', async (t) => {
   const root = fileURLToPath(new URL('../../../', import.meta.url));
   await mkdir(resolve(root, 'test-results'), { recursive: true });
   const fixtureRoot = await mkdtemp(resolve(root, 'test-results/trace-cli-'));
@@ -151,7 +151,7 @@ await test('legacy CLI resolves declared inputs independently of the working dir
   await writeFile(specPath, JSON.stringify(f.spec));
   const stdout = execFileSync(
     process.execPath,
-    [resolve(root, 'scripts/trace-visualizer/build.mjs'), f.input, f.output, specPath],
+    [resolve(root, 'packages/workshop-tools/trace/build.ts'), f.input, f.output, specPath],
     { cwd: tmpdir(), encoding: 'utf8' },
   );
   const receipt = record(JSON.parse(stdout));

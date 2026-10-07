@@ -25,7 +25,7 @@ The policy receives only `ArenaFrame`. No seed, full lobby state or evaluator in
 Each focal trace includes the legacy proposal, guard results, selected intervention, replacement projection and unit-value components. These explain the implemented heuristic; they are not causal attribution or win probabilities. Rival traces retain their v1 reasons. Exact input hashes permit reconstruction without storing duplicate full observations.
 
 ```sh
-node scripts/hearth-recruitment-inspect.mjs \
+node packages/workshop-tools/hearth/recruitment-inspect.ts \
   path/to/CASE.replay.json path/to/CASE.receipt.json /tmp/new-inspector.html
 ```
 
@@ -51,10 +51,10 @@ A seed block is excluded in full for missing, duplicate, failed, incomplete, unv
 ## Run and audit
 
 ```sh
-node scripts/hearth-recruitment-experiment.mjs smoke test-results/ai/new-recruitment-smoke 2
-node scripts/hearth-recruitment-experiment.mjs development test-results/ai/new-recruitment-development 2
-node scripts/hearth-recruitment-experiment.mjs evaluation test-results/ai/new-recruitment-evaluation 2
-node scripts/hearth-recruitment-experiment.mjs audit test-results/ai/new-recruitment-evaluation 2
+node packages/workshop-tools/hearth/recruitment-experiment.ts smoke test-results/ai/new-recruitment-smoke 2
+node packages/workshop-tools/hearth/recruitment-experiment.ts development test-results/ai/new-recruitment-development 2
+node packages/workshop-tools/hearth/recruitment-experiment.ts evaluation test-results/ai/new-recruitment-evaluation 2
+node packages/workshop-tools/hearth/recruitment-experiment.ts audit test-results/ai/new-recruitment-evaluation 2
 ```
 
 Every output directory must be new. Before games start, a manifest records the complete case list, plan/configuration hash, source revision/status, hashes of the actual headless dependency graph and harness, runtime, worker budget and bundle digest. UI-only concurrent edits are outside this graph. Outputs include per-case replay, receipt, compact JSONL decision trace, and a comparison. Failures remain in place. Source drift fails the run; no evidence is overwritten.
@@ -66,7 +66,7 @@ Every episode checks supply conservation after accepted commands and reconstruct
 - `src/games/battlegrounds/ai/recruitment-v2.ts`: versioned interventions and diagnostics.
 - `src/engines/hearth-recruitment-experiment.ts`: frozen grid, controller binding, complete-block comparison.
 - `src/engines/hearth-recruitment-inspector.ts`: replay reconstruction and same-input proposals.
-- `packages/workshop-tools/hearth/recruitment-*.ts`: checked run/audit harness and source pins; the original `scripts/hearth-recruitment-*.mjs` commands remain delegates.
+- `packages/workshop-tools/hearth/recruitment-*.ts`: checked run/audit harness and source pins. Historical reports retain their original source pins; reproduce those runs from their recorded revision.
 - `packages/workshop-tools/hearth/recruitment-inspect.ts`, `recruitment-viewer.ts` and `recruitment-viewer.html`: standalone interactive viewer behind the original inspect command.
 
 ## Verified result

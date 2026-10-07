@@ -7,7 +7,7 @@ test('standalone SVG assets load without app CSS and the cabinet filters by coll
   page,
 }, info) => {
   const output = info.outputPath('cabinet');
-  execFileSync(process.execPath, ['scripts/export-card-art.mjs', output]);
+  execFileSync(process.execPath, ['packages/workshop-tools/art/export.ts', output]);
   const manifest = JSON.parse(readFileSync(`${output}/manifest.json`, 'utf8')) as {
     file: string;
   }[];

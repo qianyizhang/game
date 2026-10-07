@@ -9,7 +9,7 @@ test.beforeAll(() => {
   const folder = mkdtempSync(resolve('test-results', 'recruitment-viewer-'));
   const output = resolve(folder, 'smoke');
   execFileSync(process.execPath, [
-    'scripts/hearth-recruitment-experiment.mjs',
+    'packages/workshop-tools/hearth/recruitment-experiment.ts',
     'smoke',
     output,
     '1',
@@ -17,7 +17,7 @@ test.beforeAll(() => {
   const id = '1-classic-hidden-seat0-tempo-both-v2';
   const html = resolve(output, 'inspector.html');
   execFileSync(process.execPath, [
-    'scripts/hearth-recruitment-inspect.mjs',
+    'packages/workshop-tools/hearth/recruitment-inspect.ts',
     resolve(output, id + '.replay.json'),
     resolve(output, id + '.receipt.json'),
     html,

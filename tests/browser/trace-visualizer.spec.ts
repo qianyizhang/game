@@ -27,7 +27,9 @@ test.describe('private sculpture case', () => {
   let url = '';
   test.beforeAll(() => {
     url = bundleUrl(
-      execFileSync(process.execPath, ['scripts/trace-visualizer/build.mjs'], { encoding: 'utf8' }),
+      execFileSync(process.execPath, ['packages/workshop-tools/trace/build.ts'], {
+        encoding: 'utf8',
+      }),
     );
   });
   test('creation story connects superseded review decisions to records and retained source', async ({
@@ -216,7 +218,7 @@ test.describe('public synthetic behavior case', () => {
           '-e',
           `
       import {writeFixture} from './packages/workshop-tools/trace/fixture.ts';
-      import {buildCase} from './scripts/trace-visualizer/build.mjs';
+      import {buildCase} from './packages/workshop-tools/trace/build.ts';
       import {resolve} from 'node:path';
       import {mkdir, mkdtemp} from 'node:fs/promises';
       await mkdir('test-results', {recursive: true});

@@ -39,7 +39,7 @@ The tempo policy uses disclosed Tempo opponents to raise its health reserve for 
 ## External controller
 
 ```sh
-node scripts/hearth-arena-agent.mjs PRIVATE-ENV-SEED /tmp/new-arena-run 6 hidden
+node packages/workshop-tools/hearth/arena-agent.ts PRIVATE-ENV-SEED /tmp/new-arena-run 6 hidden
 ```
 
 The process binds one connection to the selected seat (0–7). Evaluator configuration is provided at launch. Its seven rivals recruit automatically. The connection accepts JSON-lines `observe`, `catalogue`, `act` and `quit` requests:
@@ -57,8 +57,8 @@ Styles in the configuration declare the preset controllers; a human or external 
 ## Frozen v5/v1 experiments
 
 ```sh
-node scripts/hearth-arena-experiment.mjs development test-results/ai/new-arena-development
-node scripts/hearth-arena-experiment.mjs evaluation test-results/ai/new-arena-evaluation
+node packages/workshop-tools/hearth/arena-experiment.ts development test-results/ai/new-arena-development
+node packages/workshop-tools/hearth/arena-experiment.ts evaluation test-results/ai/new-arena-evaluation
 ```
 
 The plan reserves distinct v1-arena seed namespaces: **2 development blocks / 64 lobbies** and **8 evaluation blocks / 256 lobbies**. Each block rotates the focal hero and a fixed set of seven rivals through all eight seats, then compares baseline and tempo with hidden and disclosed labels. Opponents always have hidden labels. The hero varies across seed blocks; the eight evaluation blocks do not balance all five heroes equally.
@@ -68,7 +68,7 @@ The plan reserves distinct v1-arena seed namespaces: **2 development blocks / 64
 Before play, the script writes source revision, dirty status, SHA-256 source hashes, runtime, configuration digest and budgets. Each episode retains its full journal, receipt, decisions/reasons and the SHA-256 of every exact policy input frame. Frames can be reconstructed from replay prefixes; the compact trace does not store private evaluator state or duplicate entire observations. Replays are checked against exact final state and supply accounting is checked after every accepted recruitment/round command. Existing output directories are rejected. Audit saved episodes with:
 
 ```sh
-node scripts/hearth-arena-audit.mjs test-results/ai/new-arena-evaluation
+node packages/workshop-tools/hearth/arena-audit.ts test-results/ai/new-arena-evaluation
 ```
 
 The audit reconstructs every policy input and decision, matches their recorded hashes and commands, and verifies final placements. It writes a separate `audit.json` without replacing experiment files.
@@ -84,7 +84,7 @@ Different actions consume different parts of the seeded RNG stream. These experi
 - `ai/recruitment-policy.ts`: readable stateless recruitment policies.
 - `ui/useMixedRivals.ts`: UI controller adapter; no authoritative rules in presentation.
 - `src/engines/hearth-arena-experiment.ts`: complete-lobby execution and blocked comparisons.
-- `scripts/hearth-arena-agent.mjs`, `scripts/hearth-arena-experiment.mjs`: process and experiment entry points.
+- `packages/workshop-tools/hearth/arena-agent.ts`, `packages/workshop-tools/hearth/arena-experiment.ts`: process and experiment entry points.
 
 ## Recruitment v2 diagnostics
 
