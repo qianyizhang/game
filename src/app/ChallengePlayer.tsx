@@ -96,12 +96,13 @@ export function ChallengePlayer<S extends { seed: string }, C>({
           aria-label="Import challenge attempts"
           type="file"
           accept=".json,application/json"
-          onChange={async (event) => {
+          onChange={(event) => {
             const input = event.currentTarget;
             const selected = input.files?.[0];
             if (!selected) return;
-            await importFile(selected);
-            input.value = '';
+            void importFile(selected).then(() => {
+              input.value = '';
+            });
           }}
         />
         {!!progress.current.hints && (

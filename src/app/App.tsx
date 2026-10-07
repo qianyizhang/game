@@ -249,15 +249,17 @@ export default function App({
           aria-label="Import replay file"
           type="file"
           accept=".json,application/json"
-          onChange={async (event) => {
+          onChange={(event) => {
             const input = event.currentTarget;
             const picked = input.files?.[0];
             input.value = '';
             if (!picked) return;
-            if (await game.importFile(picked)) {
-              setSelected([]);
-              setView('table');
-            }
+            void game.importFile(picked).then((imported) => {
+              if (imported) {
+                setSelected([]);
+                setView('table');
+              }
+            });
           }}
         />
         {view === 'table' ? (

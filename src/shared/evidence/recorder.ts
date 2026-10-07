@@ -1,3 +1,4 @@
+import { isList, isRecord } from '../json';
 import { contentDigest } from '../contentPack';
 import type { Rules, Session } from '../replay';
 import type { RunEvidence } from './types';
@@ -7,41 +8,44 @@ export const MAX_RUNS = 100,
 export type StoragePort = Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
 export function readEvidence(storage: StoragePort): RunEvidence[] {
   const value: unknown = JSON.parse(storage.getItem(EVIDENCE_KEY) ?? '[]');
-  const strings = (v: unknown): v is string[] =>
-    Array.isArray(v) && v.every((s) => typeof s === 'string');
+  const strings = (v: unknown): v is string[] => isList(v) && v.every((s) => typeof s === 'string');
   const metrics = (v: unknown) =>
     !!v &&
     typeof v === 'object' &&
-    !Array.isArray(v) &&
+    !isList(v) &&
     Object.values(v).every((n) => typeof n === 'number' && Number.isFinite(n));
   if (
-    !Array.isArray(value) ||
+    !isList(value) ||
     value.length > MAX_RUNS ||
     value.some(
       (r) =>
-        !r ||
+        !isRecord(r) ||
         !['id', 'game', 'seed', 'tail', 'startedAt', 'updatedAt'].every(
           (k) => typeof r[k] === 'string',
         ) ||
-        !['normal', 'practice'].includes(r.mode) ||
-        !['human', 'imported', 'automated'].includes(r.source) ||
+        !(r.mode === 'normal' || r.mode === 'practice') ||
+        !(r.source === 'human' || r.source === 'imported' || r.source === 'automated') ||
         ![r.version, r.steps, r.startStep, r.droppedEvents].every(
-          (n) => Number.isInteger(n) && n >= 0,
+          (n) => typeof n === 'number' && Number.isInteger(n) && n >= 0,
         ) ||
-        !Array.isArray(r.content) ||
+        !isList(r.content) ||
         r.content.some(
-          (p: Record<string, unknown>) =>
-            !p || !['id', 'version', 'digest'].every((k) => typeof p[k] === 'string'),
+          (p) =>
+            !isRecord(p) || !['id', 'version', 'digest'].every((k) => typeof p[k] === 'string'),
         ) ||
-        !r.summary ||
-        !['active', 'won', 'lost'].includes(r.summary.outcome) ||
+        !isRecord(r.summary) ||
+        !(
+          r.summary.outcome === 'active' ||
+          r.summary.outcome === 'won' ||
+          r.summary.outcome === 'lost'
+        ) ||
         typeof r.summary.context !== 'string' ||
         !metrics(r.summary.metrics) ||
-        !Array.isArray(r.events) ||
+        !isList(r.events) ||
         r.events.length > MAX_EVENTS ||
         r.events.some(
-          (e: Record<string, unknown>) =>
-            !e ||
+          (e) =>
+            !isRecord(e) ||
             !['pick', 'skip', 'encounter', 'action'].includes(String(e.kind)) ||
             typeof e.name !== 'string' ||
             !Number.isInteger(e.step) ||

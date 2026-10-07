@@ -137,12 +137,14 @@ export function GameShell({
           className="visually-hidden"
           type="file"
           accept=".json,application/json"
-          onChange={async (e) => {
+          onChange={(e) => {
             const input = e.currentTarget;
             const selected = input.files?.[0];
             if (!selected) return;
             input.value = '';
-            if (await controls.importFile(selected)) onView('play');
+            void controls.importFile(selected).then((imported) => {
+              if (imported) onView('play');
+            });
           }}
         />
         {children}

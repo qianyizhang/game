@@ -29,9 +29,10 @@
     "typecheck": "tsc --noEmit && tsc -p scripts && npm run typecheck --workspaces --if-present",
     "test:tools": "npm run test --workspace @card-workshop/tools",
     "check:python": "uv run --locked ruff check && uv run --locked ruff format --check && uv run --locked mypy && uv run --locked python -m unittest discover -s packages/dcc-workbench/blender -p \"test_*.py\"",
-    "format:maintenance": "prettier --check packages/workshop-tools packages/dcc-workbench/README.md packages/dcc-workbench/src packages/dcc-workbench/package.json packages/dcc-workbench/tsconfig.json docs/README.md docs/guide docs/engineering docs/art maintenance .github AGENTS.md package.json eslint.config.mjs",
-    "check:maintenance": "npm run format:maintenance && npm run lint:tools && npm run typecheck && npm run check:python && npm run test:tools && npm run test:dcc && npm run maintenance -- check && npm run build",
-    "trace:build": "node packages/workshop-tools/trace/build.ts"
+    "format:maintenance": "prettier --check packages/workshop-tools packages/dcc-workbench/README.md packages/dcc-workbench/src packages/dcc-workbench/package.json packages/dcc-workbench/tsconfig.json docs/README.md docs/guide docs/engineering docs/art maintenance .github AGENTS.md package.json eslint.config.mjs src/app src/games src/shared src/mods",
+    "check:maintenance": "npm run format:maintenance && npm run lint:tools && npm run lint:app && npm run typecheck && npm run check:python && npm run test:tools && npm run test:dcc && npm run maintenance -- check && npm run build",
+    "trace:build": "node packages/workshop-tools/trace/build.ts",
+    "lint:app": "eslint src/app src/games src/shared src/mods --max-warnings=0"
   },
   "dependencies": {
     "react": "19.3.0",

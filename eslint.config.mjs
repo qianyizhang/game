@@ -3,6 +3,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 const typedFiles = [
+  'src/{app,games,shared,mods}/**/*.{ts,tsx}',
   'packages/workshop-tools/**/*.{mjs,ts}',
   'packages/dcc-workbench/src/*.{ts,tsx}',
   'scripts/trace-visualizer/build.mjs',

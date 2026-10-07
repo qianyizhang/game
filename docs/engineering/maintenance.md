@@ -4,7 +4,7 @@ The maintenance direction was accepted on 2026-10-07. This session implements a 
 
 ## Current slice and finish line
 
-`npm run check:maintenance` enforces formatting for the new homes and tools, typed ESLint and strict JavaScript/TypeScript checking for the tools package and DCC frontend, Ruff and strict mypy for the DCC review renderer and its contract/tests, tooling/trace/DCC tests, inventory and local document links, root TypeScript checking and a production build. The GitHub maintenance workflow also runs the DCC and shell browser cases.
+`npm run check:maintenance` enforces formatting for the new homes and tools, typed ESLint and strict JavaScript/TypeScript checking for the tools package, DCC frontend, and application/game/shared/mod sources, Ruff and strict mypy for the DCC review renderer and its contract/tests, tooling/trace/DCC tests, inventory and local document links, root TypeScript checking and a production build. The GitHub maintenance workflow also runs the DCC and shell browser cases.
 
 `npm run check` adds whole-repository formatting and the full existing application unit suite. A green maintenance slice does not establish a green application suite or aesthetic acceptance. The next migration must expand coverage and resolve existing failures, not rename the slice gate as comprehensive.
 
