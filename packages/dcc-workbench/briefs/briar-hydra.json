@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "title": "Briar Hydra",
+  "subtitle": "Three minds. One watchful body.",
+  "interpretation": "An old marsh predator interrupted at the water's edge.",
+  "gesture": "The central head rises to scent the air; the left head searches low, while the right guards the coil. Unequal neck arcs leave three deliberate windows of negative space.",
+  "polish": [
+    "Replace parallel upright necks with a forward-reaching S gesture and unequal head directions.",
+    "Sculpt a joined shoulder saddle and angular skull planes; bury the eyes under fitted brow ridges.",
+    "Use swept, ridged horns and a sparse dorsal crest instead of an evenly tiled ornament layer.",
+    "Keep the anchored coil quiet while necks, skulls and jaws answer each other."
+  ],
+  "palette": [
+    { "name": "Marsh skin", "color": "#536857" },
+    { "name": "Throat plates", "color": "#b4ad7d" },
+    { "name": "Weathered horn", "color": "#c5bc99" },
+    { "name": "Amber eye", "color": "#df9c39" }
+  ],
+  "nativeFeatures": [
+    "Bezier construction curves",
+    "Voxel Remesh + Smooth",
+    "Subdivision Surface",
+    "Armature + skin weights",
+    "Editable animation action",
+    "Procedural pigment baked to an image"
+  ],
+  "animation": { "name": "Marsh Vigil", "seconds": 6, "fps": 24 },
+  "budgets": { "maxTriangles": 180000, "maxBytes": 16000000, "maxJoints": 64 },
+  "reference": "The existing living Hydra is the accepted direction; this is a separate DCC interpretation, not a replacement or a pixel match.",
+  "reviewStatus": "Pilot · author review; user approval pending"
+}

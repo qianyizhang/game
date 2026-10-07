@@ -4,3 +4,8 @@ dist/
 playwright-report/
 test-results/
 .DS_Store
+.venv/
+.mypy_cache/
+.ruff_cache/
+__pycache__/
+.work/

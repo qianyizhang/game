@@ -1,0 +1,6 @@
+sources/*.blend1
+sources/*.blend2
+__pycache__/
+blender/__pycache__/
+.runtime/
+assets/*.pending.*

@@ -1,0 +1,19 @@
+{
+  "name": "@card-workshop/dcc-workbench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local concept-to-Blender-to-browser asset workbench",
+  "exports": {
+    ".": "./src/Workbench.tsx"
+  },
+  "scripts": {
+    "dcc": "node pipeline.mjs",
+    "test": "node --test pipeline.test.mjs",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "react": "^19.3.0",
+    "three": "^0.186.1"
+  }
+}
