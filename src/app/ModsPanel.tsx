@@ -104,7 +104,7 @@ export function ModsPanel({
       </table>
       <p>
         Use a custom practice scenario to try an enabled card, relic, enemy, or hero immediately.
-        Read <code>docs/modding.md</code> for the lifecycle and effect examples.
+        Read <code>docs/guide/modding.md</code> for the lifecycle and effect examples.
       </p>
     </section>
   );

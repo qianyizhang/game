@@ -5,11 +5,11 @@ description: Create or refine Card Workshop SVG illustrations and 3D object stud
 
 # Card Workshop art
 
-Make a distinct, readable subject and review it in its actual UI. Read the [aesthetic rulebook](../../docs/art-direction.md) for the shared direction, medium-specific criteria and visual acceptance. It is the single visual standard. Draw and review directly unless the user requests delegation.
+Make a distinct, readable subject and review it in its actual UI. Read the [aesthetic rulebook](../../docs/art/art-direction.md) for the shared direction, medium-specific criteria and visual acceptance. It is the single visual standard. Draw and review directly unless the user requests delegation.
 
 ## Establish the subject
 
-Inspect the diff and requested content IDs; preserve concurrent work. The [source map](../../docs/card-art.md) locates renderers, primitives and export integration. Extend the existing illustration implementation.
+Inspect the diff and requested content IDs; preserve concurrent work. The [source map](../../docs/art/svg.md) locates renderers, primitives and export integration. Extend the existing illustration implementation.
 
 Keep a brief in working notes:
 
@@ -21,7 +21,7 @@ When delegation is requested, use the rulebook's “Guided delegation trials” 
 
 ## Choose the medium
 
-For SVG illustrations, follow the build and export workflow below. For 3D studies, use the [3D source map and verification](../../docs/art3d.md); preserve exportable geometry, animation bindings, reduced motion and camera fit. Review still structure before animating. SVG export is necessary only when SVG sources change.
+For SVG illustrations, follow the build and export workflow below. For 3D studies, use the [3D source map and verification](../../docs/art/3d.md); preserve exportable geometry, animation bindings, reduced motion and camera fit. Review still structure before animating. SVG export is necessary only when SVG sources change.
 
 ## Build
 
@@ -38,8 +38,8 @@ Use explicit colors or established scene variables. Separate interpolated coordi
 ## Accept the result
 
 1. **Keep a baseline.** Export approved art before editing; use separate directories for concurrent reviews.
-2. **Inspect pixels at two sizes.** The [review helper](../../docs/card-art.md#repeatable-review) creates enlarged/native-size sheets and before/after comparisons. Check identity, anatomy, material, clutter and consistency. Reject an enlarged-image improvement that regresses at card size. Pixel equality and successful decoding do not establish quality.
+2. **Inspect pixels at two sizes.** The [review helper](../../docs/art/svg.md#repeatable-review) creates enlarged/native-size sheets and before/after comparisons. Check identity, anatomy, material, clutter and consistency. Reject an enlarged-image improvement that regresses at card size. Pixel equality and successful decoding do not establish quality.
 3. **Inspect the actual UI yourself.** Check the full card and smallest hand/board view, text/stats, selected/golden states and phone layout. Preserve accessible control names.
-4. **Verify scope.** Run `npm run check`, export all assets when SVG sources changed, and run the [relevant browser checks](../../docs/card-art.md#verification). Follow `AGENTS.md` for browser execution; report blocked checks. Investigate unexpected changed or missing IDs. Repeat checks after material fixes, not to accumulate passing runs.
+4. **Verify scope.** Run `npm run check`, export all assets when SVG sources changed, and run the [relevant browser checks](../../docs/art/svg.md#verification). Follow `AGENTS.md` for browser execution; report blocked checks. Investigate unexpected changed or missing IDs. Repeat checks after material fixes, not to accumulate passing runs.
 
 Finish with a preview, the changes, verification and material limitations. Keep generated reviews under ignored `test-results/`; components, catalogue integration and this skill are the durable sources.

@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "85462d4924c79328723ca6c30a2d32a3e12d568e",
+  "entries": [
+    {
+      "from": "docs/architecture.md",
+      "to": "docs/engineering/architecture.md",
+      "sha256": "8e14c5d8c1882e3ec308d7244741bd6170f704df4c15c4f8e31c4d670709e83d"
+    },
+    {
+      "from": "docs/art-direction.md",
+      "to": "docs/art/art-direction.md",
+      "sha256": "7d77afcb70742b167c84ace76ce0bd861403f8e2506384bcb02df818dc06ad63"
+    },
+    {
+      "from": "docs/art-review-amalgam-2026-10-07.md",
+      "to": "docs/art/assets/amalgam.md",
+      "sha256": "2983df5ae5cd770858e81b514d16fb0e16dc96087cf169d546401da3d25aeed0"
+    },
+    {
+      "from": "docs/art-review-bogtoad-2026-10-07.md",
+      "to": "docs/art/assets/bogtoad.md",
+      "sha256": "25529e78b29ac58bcd9c886930f22220757ba6be5bb4de310422efd333e0e46d"
+    },
+    {
+      "from": "docs/art-review-crocolisk-2026-10-07.md",
+      "to": "docs/art/assets/crocolisk.md",
+      "sha256": "d018cc19c513ff789e0a03b79b5fb18fdfa85d727e8daf35938c35579e477a9d"
+    },
+    {
+      "from": "docs/art-review-cub-2026-10-07.md",
+      "to": "docs/art/assets/cub.md",
+      "sha256": "2222e72c9cc0717c75c2b5401c8d406d64810ec5975e16662c083e4ac513970b"
+    },
+    {
+      "from": "docs/art-review-guardian-2026-10-07.md",
+      "to": "docs/art/assets/guardian.md",
+      "sha256": "15c19c39718e783ed12e95f8e047aa21d04fab645764a7205628e708ed626722"
+    },
+    {
+      "from": "docs/art-review-herald-2026-10-07.md",
+      "to": "docs/art/assets/herald.md",
+      "sha256": "2f51243d9429d2622ad952ce874920b8b55bb23e5d7e3616f90ba2e073f6547b"
+    },
+    {
+      "from": "docs/art-review-imp-2026-10-07.md",
+      "to": "docs/art/assets/imp.md",
+      "sha256": "c2bde4ca62ed3470f75cdaa3608043b48d7273af9cc22f6f70531a3c93acb1b2"
+    },
+    {
+      "from": "docs/art-review-juggler-2026-10-07.md",
+      "to": "docs/art/assets/juggler.md",
+      "sha256": "a8bd3a242fc36ae3bc59bffa0e2e4e6b338eb4955befe71397b8106b0c15c4f4"
+    },
+    {
+      "from": "docs/art-review-matriarch-2026-10-07.md",
+      "to": "docs/art/assets/matriarch.md",
+      "sha256": "f982d450931da8fc6ce6bedf0b13e3b675e3af34f3dea16aed5aac43aa089724"
+    },
+    {
+      "from": "docs/art-review-matron-2026-10-07.md",
+      "to": "docs/art/assets/matron.md",
+      "sha256": "20ad664bb9b095ff9a2ecd740828171946e3b42490585a9ce39c927d3d3c068a"
+    },
+    {
+      "from": "docs/art-review-moonmoth-2026-10-07.md",
+      "to": "docs/art/assets/moonmoth.md",
+      "sha256": "5877ac305380d07f7adc6b118f2f55d07852f25be0c1c9401ea6df4acee6975d"
+    },
+    {
+      "from": "docs/art-review-packcaller-2026-10-07.md",
+      "to": "docs/art/assets/packcaller.md",
+      "sha256": "5636b6d403ab69f697485e23da623a2ed9f634d8f1e5d7018b9c69f47cd93cd2"
+    },
+    {
+      "from": "docs/art-review-patron-2026-10-07.md",
+      "to": "docs/art/assets/patron.md",
+      "sha256": "f1bf01490449a4aa5b9d40efbfa11b9de3689b3dd663ba04ec2d16242fec6801"
+    },
+    {
+      "from": "docs/art-review-prowler-2026-10-07.md",
+      "to": "docs/art/assets/prowler.md",
+      "sha256": "8c383215443f78d024a946b99fd04f5505d9f53c9f9f883dd4c403ba708bfe40"
+    },
+    {
+      "from": "docs/art-review-scavenger-2026-10-07.md",
+      "to": "docs/art/assets/scavenger.md",
+      "sha256": "5af4cb9967d9d1974170014a479a327d97846fc22cea6d920de5a95e4160d204"
+    },
+    {
+      "from": "docs/art-review-sol-2026-10-06.md",
+      "to": "docs/art/creature-history.md",
+      "sha256": "94397b706c6138680cd2b200acc01737a7736c3053b2a9725e86a9e1b4d602c4"
+    },
+    {
+      "from": "docs/art-review-sol61-creatures-2026-10-06.md",
+      "to": "docs/art/creature-history.md",
+      "sha256": "9b138d86081b6d70b816eb156c3cb5f523791e88b7a3a76b2fc8615ec95fd7ea"
+    },
+    {
+      "from": "docs/art-review-squire-2026-10-07.md",
+      "to": "docs/art/assets/squire.md",
+      "sha256": "ec3b3f7aef1c7d1802b5753892e36121065f8d6e76c1ea6874b281a6996ffd6a"
+    },
+    {
+      "from": "docs/art-review-stormroc-2026-10-07.md",
+      "to": "docs/art/assets/stormroc.md",
+      "sha256": "b2d9f658d49a2448f8c54ff2034a8199fb163123968144a6e7a3eb2dcc4e2a83"
+    },
+    {
+      "from": "docs/art-review-stray-2026-10-07.md",
+      "to": "docs/art/assets/stray.md",
+      "sha256": "2d958f32c124d5c353bec8caa46bb8f27440e7a3091f5a9f800506b721f24a4a"
+    },
+    {
+      "from": "docs/art-review-thornstag-2026-10-07.md",
+      "to": "docs/art/assets/thornstag.md",
+      "sha256": "de17599a386f959f3bc444435ba445ecf554b9c1dd3e9e5b48eecd4909de7d44"
+    },
+    {
+      "from": "docs/art-review-tortoise-2026-10-07.md",
+      "to": "docs/art/assets/tortoise.md",
+      "sha256": "3cacb51cd9b9acd46e6cba55b1369c07a82895dcf1ec81e3b73b28cf714521e3"
+    },
+    {
+      "from": "docs/art-review-watcher-2026-10-07.md",
+      "to": "docs/art/assets/watcher.md",
+      "sha256": "3f40c95b4f5529e08f4ee0d3399c5039417588fa423f0f41a0173a9c9d308d13"
+    },
+    {
+      "from": "docs/art-review-wolf-2026-10-07.md",
+      "to": "docs/art/assets/wolf.md",
+      "sha256": "85315c4392135a8bbbdbe24ddd20f8f45227c5fd8c83bd893c496594e02cf828"
+    },
+    {
+      "from": "docs/art3d.md",
+      "to": "docs/art/3d.md",
+      "sha256": "7d972fafda1852bf5bf729388233796780a22402496de0b34c8f3c5e6cd25cb7"
+    },
+    {
+      "from": "docs/card-art.md",
+      "to": "docs/art/svg.md",
+      "sha256": "f12b8f7bfc02307460ce40eb8ba1d02f0df17db16190fdb6e7d50eaf17c8cbb7"
+    },
+    {
+      "from": "docs/card-expansion.md",
+      "to": "docs/research/content-expansions.md",
+      "sha256": "0f4f15f6fec5f1584201902aa64f7961f3b5f10c0df8c4155457d11102a73070"
+    },
+    {
+      "from": "docs/challenges.md",
+      "to": "docs/guide/challenges.md",
+      "sha256": "2109d17ce8917876ea7533aa87369130d950c721c4ddd794c9bbc8e2525f1e47"
+    },
+    {
+      "from": "docs/completion.md",
+      "to": "docs/research/delivery-history.md",
+      "sha256": "7084975971834c974f29403acc60684cdab4769dc8e2a93b9dadc17cac407aa0"
+    },
+    {
+      "from": "docs/creature-redesign-2026-10-06.md",
+      "to": "docs/art/creature-history.md",
+      "sha256": "5852d0e04913a285a1effb6afd9590ce956ad08165a5e23f98b0ccd667c68003"
+    },
+    {
+      "from": "docs/decisions.md",
+      "to": "docs/engineering/decisions.md",
+      "sha256": "925c9299554e812b02d9f800c885ef5e7404ac2d12e326ebeab07857fcf0c814"
+    },
+    {
+      "from": "docs/development-track.md",
+      "to": "docs/engineering/roadmap.md",
+      "sha256": "beef09f68c9610c21b97ff9a75da24041f70a0608d3ecec5ab6e3a9fe635741b"
+    },
+    {
+      "from": "docs/engines.md",
+      "to": "docs/guide/engines.md",
+      "sha256": "9e1064805af3c28ce71ecc419af5f91fcf60c12001893692a8874725ca3abe62"
+    },
+    {
+      "from": "docs/feature-art.md",
+      "to": "docs/art/feature-coverage.md",
+      "sha256": "adad347afbab8a1dc051458731b636454af8668275f4a50d5ffb79b4c3c5576f"
+    },
+    {
+      "from": "docs/hearth-ai.md",
+      "to": "docs/engineering/hearth-agents.md",
+      "sha256": "da7a9fca28998c05c22be592cc562d45a3dcd5c6c8eb3a99f3f220320c072785"
+    },
+    {
+      "from": "docs/hearth-arena.md",
+      "to": "docs/guide/hearth-arena.md",
+      "sha256": "ff98f9a26f6183ff81a4b0a128cd716d65a123b953dad47e1094b090dac967ed"
+    },
+    {
+      "from": "docs/hearth-recruitment-v2.md",
+      "to": "docs/research/hearth-recruitment-v2.md",
+      "sha256": "8672e6f3eaf369167fc33d5c43ea296240ce9ad728e43237eb77570d8c7c75c0"
+    },
+    {
+      "from": "docs/modding.md",
+      "to": "docs/guide/modding.md",
+      "sha256": "e991514de71fa22d0f49bcd80996fd8b2c328d69ec255f4ba90c2c5b10b1b1a8"
+    },
+    {
+      "from": "docs/next-workshop.md",
+      "to": "docs/engineering/roadmap.md",
+      "sha256": "730422d3067eefbe4762d8d8f4b9beba529462c80a952edf4c3a9e329246fc3e"
+    },
+    {
+      "from": "docs/night-market.md",
+      "to": "docs/research/content-expansions.md",
+      "sha256": "174e33d9b0db31c2d7f59ed21fb1a940e1708d874cee217b9826f78fc05574e3"
+    },
+    {
+      "from": "docs/tavern-spells.md",
+      "to": "docs/guide/tavern-spells.md",
+      "sha256": "ea69b313a6e3cd1b9617b6f7c41fd53ff9897ddd14c7b0fd2162928dc211e3bc"
+    },
+    {
+      "from": "docs/viz.md",
+      "to": "docs/engineering/trace-visualizer.md",
+      "sha256": "e2383d3be51146f626b6464eca8b23ea9b11bd2ee35a59b5c596792e0203d987"
+    },
+    {
+      "from": "docs/trace-visualizer.md",
+      "to": "docs/engineering/trace-visualizer.md",
+      "sourceRevision": "dac5a09f9e54f1fe208feaf2389f364f5ebd26e0",
+      "sha256": "3fe55d612d6bbd8fee219056821f82f145f9895dd9afb4f487c17a5a12114871"
+    }
+  ]
+}

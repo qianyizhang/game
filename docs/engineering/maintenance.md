@@ -1,12 +1,12 @@
 # Maintenance governance
 
-The maintenance direction was accepted on 2026-10-07. This session implements a vertical slice; the full migration belongs to the next session. New maintained source must have enforced checks. Existing debt is enumerated in [the migration inventory](../../maintenance/migration.json), so it cannot silently grow behind a directory-wide exclusion.
+The maintenance direction was accepted on 2026-10-07. The source and documentation migration has adopted the original backlog; final artifact and clean-checkout closeout remains tracked in the protected handoff. New maintained source must have enforced checks. The [migration inventory](../../maintenance/migration.json) is empty; new work must enter enforced scopes rather than extend a directory-wide exemption.
 
-## Current slice and finish line
+## Check scope and finish line
 
 `npm run check:maintenance` enforces formatting for the new homes and tools, typed ESLint and strict JavaScript/TypeScript checking for the tools package, DCC frontend and delivery CLI, and all application, geometry and experiment sources under `src`, browser/simulation tests and root TypeScript configuration, Ruff and strict mypy for all DCC native Python and contract/tests, tooling/trace/DCC tests, inventory and local document links, root TypeScript checking and a production build. The GitHub maintenance workflow also runs the DCC and shell browser cases.
 
-`npm run check` adds whole-repository formatting and the full existing application/geometry unit suite and seeded simulation checks. A green maintenance slice does not establish a green application suite or aesthetic acceptance. The next migration must expand coverage and resolve existing failures, not rename the slice gate as comprehensive.
+`npm run check` adds whole-repository formatting and the full existing application/geometry unit suite and seeded simulation checks. A green maintenance slice does not establish a green application suite or aesthetic acceptance. The two gates retain distinct scopes; full migration closeout also requires browser/native evidence and clean-checkout validation.
 
 All eight Python files under `packages/dcc-workbench/blender` are checked. Native scripts retain Python 3.11 syntax for Blender 4.5 while the standalone checker uses pinned Python 3.12. Generated stubs need four documented assignment exceptions: Workbench and Cycles engine enums, and the sRGB and Non-Color image color-space names. Native rendering and isolated construction exercise these calls. There is no blanket missing-import or untyped-file suppression.
 
@@ -27,7 +27,7 @@ TypeScript 7.0.2 is upstream stable, but `typescript-eslint@8.71.1` supports ver
 
 `docs/README.md` is the entry point. `guide/` owns current user behavior; `engineering/` owns architecture, maintenance and decisions; `art/` owns visual standards and asset records; `research/` owns mechanics, experiment protocols and findings. Package READMEs own their commands and integration contracts.
 
-Existing paths are listed individually in the migration inventory. New top-level review or completion documents fail the gate. Consolidate duplicate descriptions, then update inbound links in the same slice. Keep one authoritative rulebook. Durable documents describe current contracts or explicitly dated research, not a transcript of work.
+Original paths and hashes are preserved in the [documentation migration record](documentation-migration.md). New top-level review or completion documents fail the gate. Consolidate duplicate descriptions, then update inbound links in the same slice. Keep one authoritative rulebook. Durable documents describe current contracts or explicitly dated research, not a transcript of work.
 
 ## Retention and deletion authority
 

@@ -1,7 +1,8 @@
 # Engineering
 
-- [Architecture](../architecture.md) describes game ownership and the rules, application and presentation layers.
-- [Settled game decisions](../decisions.md) records accepted scope and superseded choices.
+- [Architecture](architecture.md) describes game ownership and the rules, application and presentation layers.
+- [Settled game decisions](decisions.md) records accepted scope and superseded choices.
+- [Development direction](roadmap.md) separates delivered scope, evidence-led next steps and future candidates.
 - [Maintenance governance](maintenance.md) defines source ownership, checks and retention.
 - [Verification contracts](checks.md) define gate coverage, measured geometry budgets and inventory limits.
 - [Installed review skills](agent-skills.md) maps upstream conventions to the repository.
@@ -10,3 +11,5 @@
 - [DCC package](../../packages/dcc-workbench/README.md) documents Blender authoring and delivery.
 
 Keep accepted engineering decisions here. Working plans and handoffs live under ignored `.work/sessions/`; move only their enduring conclusions into these documents.
+
+[Documentation migration](documentation-migration.md) records consolidation and original-source recovery.
