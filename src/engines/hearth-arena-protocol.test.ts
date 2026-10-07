@@ -1,6 +1,7 @@
+import { fileURLToPath } from 'node:url';
 import { objectValue } from '../shared/json';
 import { expect, it } from 'vitest';
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -21,11 +22,11 @@ interface Reply {
 it('binds an external controller to seat 6, hides styles, and records a complete lobby', async () => {
   const root = await mkdtemp(join(tmpdir(), 'hearth-arena-protocol-'));
   const output = join(root, 'evaluator');
-  const child = spawn(
-    process.execPath,
-    ['scripts/hearth-arena-agent.mjs', 'SECRET-ARENA-PROTOCOL', output, '6', 'hidden'],
-    { stdio: ['pipe', 'pipe', 'pipe'] },
-  );
+  const script = fileURLToPath(new URL('../../scripts/hearth-arena-agent.mjs', import.meta.url));
+  const child = spawn(process.execPath, [script, 'SECRET-ARENA-PROTOCOL', output, '6', 'hidden'], {
+    cwd: root,
+    stdio: ['pipe', 'pipe', 'pipe'],
+  });
   let stderr = '';
   child.stderr.on('data', (chunk) => {
     stderr += String(chunk);
@@ -51,6 +52,14 @@ it('binds an external controller to seat 6, hides styles, and records a complete
   try {
     const ready = await receive();
     expect(ready.event).toBe('ready');
+    for (const invalid of [
+      null,
+      [],
+      { op: 'observe', id: 7 },
+      { op: 'act', step: '0', action: 'a0' },
+      { op: 'act', action: null },
+    ])
+      expect((await request(invalid)).ok).toBe(false);
     expect(ready.frame.observation.self.id).toBe(6);
     expect((await request({ op: 'inspect' })).ok).toBe(false);
     expect((await request({ op: 'act', seat: 0, step: ready.frame.step, action: 'a0' })).ok).toBe(
@@ -74,6 +83,14 @@ it('binds an external controller to seat 6, hides styles, and records a complete
     await request({ op: 'quit' });
     child.stdin.end();
     expect(await ended, stderr).toBe(0);
+    const replayBytes = await readFile(join(output, 'replay.json'));
+    const duplicate = spawnSync(process.execPath, [script, 'ANOTHER-SEED', output], {
+      cwd: root,
+      encoding: 'utf8',
+    });
+    expect(duplicate.status).toBe(1);
+    expect(duplicate.stderr).toContain('EEXIST');
+    expect(await readFile(join(output, 'replay.json'))).toEqual(replayBytes);
     const replay = arenaSession.decode(await readFile(join(output, 'replay.json'), 'utf8'));
     expect(new Set(replay.state.players.map((p) => p.placement)).size).toBe(8);
     expect(replay.state.players[6].placement).toBe(frame.observation.self.placement);

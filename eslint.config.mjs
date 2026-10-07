@@ -11,6 +11,7 @@ const typedFiles = [
   'scripts/trace-visualizer/build.mjs',
   'scripts/{export-card-art,review-card-art,scaffold-card-art,compare-playtests,solve-challenges}.mjs',
   'scripts/card-art-catalogue.tsx',
+  'scripts/{hearth-agent,hearth-arena-agent,hearth-runtime}.mjs',
 ];
 
 export default [

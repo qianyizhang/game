@@ -13,7 +13,7 @@ export function managedSource(path) {
     /^packages\/dcc-workbench\/src\/[^/]+\.tsx?$/.test(path) ||
     /^packages\/workshop-tools\/.*\.(mjs|tsx?)$/.test(path) ||
     path === 'scripts/trace-visualizer/build.mjs' ||
-    /^scripts\/(export-card-art|review-card-art|scaffold-card-art|compare-playtests|solve-challenges)\.mjs$/.test(
+    /^scripts\/(export-card-art|review-card-art|scaffold-card-art|compare-playtests|solve-challenges|hearth-agent|hearth-arena-agent|hearth-runtime)\.mjs$/.test(
       path,
     ) ||
     path === 'scripts/card-art-catalogue.tsx' ||

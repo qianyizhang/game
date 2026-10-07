@@ -6,8 +6,6 @@
     "packages/dcc-workbench/blender/export_asset.py",
     "packages/dcc-workbench/pipeline.mjs",
     "packages/dcc-workbench/pipeline.test.mjs",
-    "scripts/hearth-agent.mjs",
-    "scripts/hearth-arena-agent.mjs",
     "scripts/hearth-arena-audit.mjs",
     "scripts/hearth-arena-experiment.mjs",
     "scripts/hearth-experiment.mjs",
@@ -15,8 +13,7 @@
     "scripts/hearth-recruitment-inspect.mjs",
     "scripts/hearth-recruitment-pool.mjs",
     "scripts/hearth-recruitment-runtime.mjs",
-    "scripts/hearth-recruitment-worker.mjs",
-    "scripts/hearth-runtime.mjs"
+    "scripts/hearth-recruitment-worker.mjs"
   ],
   "legacyDocs": [
     "docs/architecture.md",
