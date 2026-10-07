@@ -1,8 +1,18 @@
+import { relative, sep } from 'node:path';
 import { expect, test } from '@playwright/test';
 import { existsSync, readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 
-const caseStudy = JSON.parse(readFileSync('scripts/trace-visualizer/case-study.json', 'utf8'));
+function bundleUrl(json: string): string {
+  const value: unknown = JSON.parse(json);
+  if (!value || typeof value !== 'object' || !('file' in value) || typeof value.file !== 'string')
+    throw new Error('Expected trace bundle path');
+  const path = relative(process.cwd(), value.file);
+  if (path === '..' || path.startsWith('..' + sep))
+    throw new Error('Trace bundle escaped repository');
+  return '/' + path.split(sep).join('/');
+}
+const caseStudy = JSON.parse(readFileSync('packages/workshop-tools/trace/case-study.json', 'utf8'));
 const inputsAvailable = caseStudy.threads.every((thread: { id: string }) =>
   existsSync(`test-results/trace-visualizer-input/${thread.id}.json`),
 );
@@ -11,11 +21,12 @@ test.describe('private sculpture case', () => {
     !inputsAvailable,
     'Local example requires the authorized thread exports and artwork evidence.',
   );
+  let url = '';
   test.beforeAll(() => {
-    execFileSync(process.execPath, ['scripts/trace-visualizer/build.mjs']);
+    url = bundleUrl(
+      execFileSync(process.execPath, ['scripts/trace-visualizer/build.mjs'], { encoding: 'utf8' }),
+    );
   });
-
-  const url = '/test-results/trace-visualizer/index.html';
   test('creation story connects superseded review decisions to records and retained source', async ({
     page,
   }, info) => {
@@ -189,19 +200,29 @@ test.describe('private sculpture case', () => {
 });
 
 test.describe('public synthetic behavior case', () => {
+  let fixtureUrl = '';
   test.beforeAll(() => {
-    execFileSync(process.execPath, [
-      '--input-type=module',
-      '-e',
-      `
-      import {writeFixture} from './scripts/trace-visualizer/fixture.mjs';
+    fixtureUrl = bundleUrl(
+      execFileSync(
+        process.execPath,
+        [
+          '--input-type=module',
+          '-e',
+          `
+      import {writeFixture} from './packages/workshop-tools/trace/fixture.ts';
       import {buildCase} from './scripts/trace-visualizer/build.mjs';
       import {resolve} from 'node:path';
-      await buildCase(await writeFixture(resolve('test-results/trace-public-fixture')));
+      import {mkdir, mkdtemp} from 'node:fs/promises';
+      await mkdir('test-results', {recursive: true});
+      const root = await mkdtemp(resolve('test-results/trace-public-fixture-'));
+      const data = await buildCase(await writeFixture(root));
+      console.log(JSON.stringify({file: resolve(data.output, 'index.html')}));
     `,
-    ]);
+        ],
+        { encoding: 'utf8' },
+      ),
+    );
   });
-  const fixtureUrl = '/test-results/trace-public-fixture/output/index.html';
   test('episode evidence selects an exact cross-thread event and retains artifact context', async ({
     page,
   }) => {

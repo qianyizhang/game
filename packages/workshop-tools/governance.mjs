@@ -8,7 +8,8 @@ export function managedSource(path) {
   return (
     path === 'eslint.config.mjs' ||
     /^packages\/dcc-workbench\/src\/[^/]+\.tsx?$/.test(path) ||
-    /^packages\/workshop-tools\/[^/]+\.mjs$/.test(path) ||
+    /^packages\/workshop-tools\/(?:[^/]+\.mjs|trace\/[^/]+\.ts)$/.test(path) ||
+    path === 'scripts/trace-visualizer/build.mjs' ||
     /^packages\/dcc-workbench\/blender\/(render_review|review_plan|test_review_plan)\.py$/.test(
       path,
     )

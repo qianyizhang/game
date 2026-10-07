@@ -9,7 +9,7 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:trace": "node --test scripts/trace-visualizer/*.test.mjs",
+    "test:trace": "node --test packages/workshop-tools/trace/*.test.ts",
     "test:browser": "playwright test",
     "check": "npm run check:maintenance && npm run format:check && npm run test",
     "format": "prettier --write .",
@@ -25,12 +25,13 @@
     "dcc": "node packages/dcc-workbench/pipeline.mjs",
     "test:dcc": "node --test packages/dcc-workbench/pipeline.test.mjs",
     "maintenance": "node packages/workshop-tools/cli.mjs",
-    "lint:tools": "eslint packages/workshop-tools packages/dcc-workbench/src eslint.config.mjs --max-warnings=0",
-    "typecheck": "tsc --noEmit && npm run typecheck --workspaces --if-present",
+    "lint:tools": "eslint packages/workshop-tools packages/dcc-workbench/src scripts/trace-visualizer/build.mjs eslint.config.mjs --max-warnings=0",
+    "typecheck": "tsc --noEmit && tsc -p scripts && npm run typecheck --workspaces --if-present",
     "test:tools": "npm run test --workspace @card-workshop/tools",
     "check:python": "uv run --locked ruff check && uv run --locked ruff format --check && uv run --locked mypy && uv run --locked python -m unittest discover -s packages/dcc-workbench/blender -p \"test_*.py\"",
     "format:maintenance": "prettier --check packages/workshop-tools packages/dcc-workbench/README.md packages/dcc-workbench/src packages/dcc-workbench/package.json packages/dcc-workbench/tsconfig.json docs/README.md docs/guide docs/engineering docs/art maintenance .github AGENTS.md package.json eslint.config.mjs",
-    "check:maintenance": "npm run format:maintenance && npm run lint:tools && npm run typecheck && npm run check:python && npm run test:tools && npm run test:trace && npm run test:dcc && npm run maintenance -- check && npm run build"
+    "check:maintenance": "npm run format:maintenance && npm run lint:tools && npm run typecheck && npm run check:python && npm run test:tools && npm run test:dcc && npm run maintenance -- check && npm run build",
+    "trace:build": "node packages/workshop-tools/trace/build.ts"
   },
   "dependencies": {
     "react": "19.3.0",

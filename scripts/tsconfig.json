@@ -12,5 +12,5 @@
     "allowImportingTsExtensions": true,
     "lib": ["ES2023"]
   },
-  "include": ["**/*.mjs", "**/*.ts"]
+  "include": ["trace-visualizer/build.mjs"]
 }

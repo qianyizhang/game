@@ -24,12 +24,6 @@
     "scripts/review-card-art.mjs",
     "scripts/scaffold-card-art.mjs",
     "scripts/solve-challenges.mjs",
-    "scripts/trace-visualizer/build.mjs",
-    "scripts/trace-visualizer/build.test.mjs",
-    "scripts/trace-visualizer/fixture.mjs",
-    "scripts/trace-visualizer/model.mjs",
-    "scripts/trace-visualizer/normalize.mjs",
-    "scripts/trace-visualizer/normalize.test.mjs",
     "src/app/App.tsx",
     "src/app/ChallengeArtwork.tsx",
     "src/app/ChallengePlayer.tsx",
@@ -351,7 +345,6 @@
     "docs/next-workshop.md",
     "docs/night-market.md",
     "docs/tavern-spells.md",
-    "docs/trace-visualizer.md",
     "docs/viz.md"
   ]
 }

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { normalizeThread, scriptJSON } from './normalize.mjs';
-const fixture = (items) => ({
+import { normalizeThread, scriptJSON } from './normalize.ts';
+const fixture = (items: unknown[]) => ({
   schemaVersion: 1,
   thread: { id: 'thread' },
   page: { hasMore: false },
@@ -10,7 +10,7 @@ const fixture = (items) => ({
     { id: 'earlier', startedAt: 10, items: [] },
   ],
 });
-test('known records preserve provenance, order and stable IDs; omissions reconcile without private payloads', () => {
+await test('known records preserve provenance, order and stable IDs; omissions reconcile without private payloads', () => {
   const source = fixture([
     { id: 'r', type: 'reasoning', content: ['PRIVATE_SECRET'] },
     { id: 'unknown', type: 'futureEvent', payload: 'PRIVATE_SECRET' },
@@ -76,7 +76,7 @@ test('known records preserve provenance, order and stable IDs; omissions reconci
   assert.deepEqual(normalizeThread(source), result);
   assert.equal(result.source.name, 'ReadThreadExportAdapter');
 });
-test('viewer previews retain full normalized values and do not imply upstream truncation', () => {
+await test('viewer previews retain full normalized values and do not imply upstream truncation', () => {
   const e = normalizeThread(
     fixture([
       {
@@ -88,12 +88,13 @@ test('viewer previews retain full normalized values and do not imply upstream tr
     ]),
   ).turns[1].events[0];
   assert.equal(e.text.length, 17000);
+  assert.ok(e.output);
   assert.equal(e.output.length, 18000);
   assert.equal(e.preview.length, 1200);
   assert.equal(e.displayTruncated, true);
   assert.equal(e.sourceTruncated, false);
 });
-test('refuses incomplete pages, unsupported schemas and duplicate identities', () => {
+await test('refuses incomplete pages, unsupported schemas and duplicate identities', () => {
   const page = fixture([]);
   page.page.hasMore = true;
   assert.throws(() => normalizeThread(page), /paginated/);
@@ -109,7 +110,7 @@ test('refuses incomplete pages, unsupported schemas and duplicate identities', (
     /Duplicate event/,
   );
 });
-test('embedded transcript cannot terminate script or introduce HTML', () => {
+await test('embedded transcript cannot terminate script or introduce HTML', () => {
   const input = { text: '</script><img src=x onerror=alert(1)>\u2028' };
   assert.equal(scriptJSON(input).includes('<'), false);
   assert.deepEqual(JSON.parse(scriptJSON(input)), input);

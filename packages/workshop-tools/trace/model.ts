@@ -1,6 +1,6 @@
-import { eventKey } from './normalize.mjs';
+import type { EvidenceRef, ResolvedRef, Stage, TraceThread } from './contracts.ts';
+import { eventKey } from './normalize.ts';
 
-/** @typedef {{thread: string, turn: string, event: string, role: string}} EvidenceRef */
 export const evidenceRoles = [
   'request',
   'feedback',
@@ -26,12 +26,12 @@ const statuses = [
   'unknown',
   'unrecorded',
 ];
-export function createEvidenceResolver(threads) {
+export function createEvidenceResolver(threads: TraceThread[]) {
   const byThread = new Map(threads.map((t) => [t.id, t]));
   if (byThread.size !== threads.length) throw new Error('Duplicate thread identity');
-  return (refs, context = 'episode') => {
+  return (refs: EvidenceRef[], context = 'episode') => {
     if (!Array.isArray(refs)) throw new Error(`Missing evidence references: ${context}`);
-    const unique = new Map();
+    const unique = new Map<string, ResolvedRef>();
     for (const ref of refs) {
       const thread = byThread.get(ref.thread);
       if (!thread) throw new Error(`Unknown evidence thread ${ref.thread}: ${context}`);
@@ -56,7 +56,11 @@ export function createEvidenceResolver(threads) {
     return [...unique.values()];
   };
 }
-export function episodeModel(stage, threads, resolveRefs) {
+export function episodeModel(
+  stage: Stage & { id: string },
+  threads: TraceThread[],
+  resolveRefs: ReturnType<typeof createEvidenceResolver>,
+) {
   const context = stage.title;
   const evidence = resolveRefs(stage.evidence, context);
   const actors = (stage.actors ?? []).map((a) => {
@@ -107,14 +111,19 @@ export function episodeModel(stage, threads, resolveRefs) {
   const eventMap = new Map(
     threads.flatMap((t) => t.turns.flatMap((t) => t.events)).map((e) => [e.key, e]),
   );
-  const selected = all.map((r) => eventMap.get(r.key));
+  const eventFor = (key: string) => {
+    const event = eventMap.get(key);
+    if (!event) throw new Error(`Missing resolved event: ${key}`);
+    return event;
+  };
+  const selected = all.map((r) => eventFor(r.key));
   const facts = {
     commands: selected.filter((e) => e.kind === 'command').length,
     fileEdits: selected.filter((e) => e.kind === 'edit').length,
     imageInspections: selected.filter((e) => e.kind === 'image').length,
     relatedThreads: [...new Set(selected.flatMap((e) => e.relatedThreads))],
     verificationCommands: all.filter(
-      (r) => r.roles.includes('verification') && eventMap.get(r.key).kind === 'command',
+      (r) => r.roles.includes('verification') && eventFor(r.key).kind === 'command',
     ).length,
     changedFiles: [...new Set(selected.filter((e) => e.kind === 'edit').flatMap((e) => e.paths))],
   };

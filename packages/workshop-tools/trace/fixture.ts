@@ -1,11 +1,12 @@
+import type { CaseSpec } from './contracts.ts';
 /** Synthetic public fixture: browser coverage must not depend on private history. */
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-export async function writeFixture(root) {
+export async function writeFixture(root: string) {
   const input = resolve(root, 'input'),
     output = resolve(root, 'output');
   await mkdir(input, { recursive: true });
-  const page = (id, items) => ({
+  const page = (id: string, items: unknown[]) => ({
     schemaVersion: 1,
     thread: { id, title: id },
     turns: [{ id: 'turn', startedAt: 1, items }],
@@ -52,8 +53,13 @@ export async function writeFixture(root) {
       ]),
     ),
   );
-  const ref = (thread, event, role) => ({ thread, turn: 'turn', event, role });
-  const spec = {
+  const ref = (thread: string, event: string, role: string) => ({
+    thread,
+    turn: 'turn',
+    event,
+    role,
+  });
+  const spec: CaseSpec = {
     title: 'Synthetic behavior case',
     threads: [
       { id: 'parent', role: 'Parent' },
