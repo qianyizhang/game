@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { objectValue, isList } from '../../src/shared/json';
 
 test('DCC pilot carries the concept into an animated downloadable asset', async ({
   page,
@@ -104,6 +106,51 @@ test('DCC exported skin reproduces Blender evaluated poses', async ({ page }, in
   });
   await writeFile(info.outputPath('blender-three-poses.json'), JSON.stringify(result, null, 2));
   expect(result.sampleVertices).toBe(64);
+  expect(result.maxRestMatchError).toBeLessThan(0.0001);
+  expect(result.maxPoseError).toBeLessThan(0.0001);
+});
+
+test('DCC native saved edit reproduces its exported poses', async ({ page }, info) => {
+  const candidate = process.env.DCC_NATIVE_CANDIDATE;
+  test.skip(!candidate, 'Run npm run test:dcc:native for the local Blender edit loop.');
+  const raw = objectValue(
+    JSON.parse(await readFile(join(candidate!, 'pose-samples.json'), 'utf8')),
+  );
+  if (!isList(raw.samples)) throw new Error('Missing native poses');
+  const samples = raw.samples.map((value) => {
+    const pose = objectValue(value);
+    if (typeof pose.seconds !== 'number' || !Number.isFinite(pose.seconds) || !isList(pose.points))
+      throw new Error('Invalid native pose');
+    const points = pose.points.map((point) => {
+      if (
+        !isList(point) ||
+        point.length !== 3 ||
+        !point.every((n): n is number => typeof n === 'number' && Number.isFinite(n))
+      )
+        throw new Error('Invalid native point');
+      return point;
+    });
+    return { seconds: pose.seconds, points };
+  });
+  const url = '/native-edited-hydra.glb';
+  await page.route(`**${url}`, (route) =>
+    route.fulfill({
+      path: join(candidate!, 'briar-hydra.pending.glb'),
+      contentType: 'model/gltf-binary',
+    }),
+  );
+  await page.goto('/?workbench=dcc');
+  const result = await page.evaluate(
+    async ({ url, samples }) => {
+      const path = '/tests/browser/dcc-roundtrip.ts';
+      const { compareDccPoses } = (await import(path)) as typeof import('./dcc-roundtrip');
+      return compareDccPoses(url, { space: 'glTF world, Y up', samples });
+    },
+    { url, samples },
+  );
+  await writeFile(info.outputPath('native-edited-poses.json'), JSON.stringify(result, null, 2));
+  expect(result.sampleVertices).toBe(64);
+  expect(result.perPose).toHaveLength(5);
   expect(result.maxRestMatchError).toBeLessThan(0.0001);
   expect(result.maxPoseError).toBeLessThan(0.0001);
 });

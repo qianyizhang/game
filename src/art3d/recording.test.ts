@@ -85,8 +85,9 @@ it.each(['abort', 'hide'] as const)('stops drawing immediately on %s', async (re
     documentEvents.dispatchEvent(new Event('visibilitychange'));
   }
   expect(frames.size).toBe(0);
+  render.mockClear();
   frame(100);
-  expect(render).toHaveBeenCalledTimes(1);
+  expect(render).not.toHaveBeenCalled();
   await rejected;
   expect(FakeRecorder.instance.stop).toHaveBeenCalledTimes(1);
   expect(stopTrack).toHaveBeenCalledTimes(1);
@@ -128,7 +129,11 @@ it('returns a video and releases all resources after the final frame', async () 
   frame(3100);
   frame(6200);
   const result = await pending;
-  expect(render.mock.calls.map(([seconds]) => seconds)).toEqual([0, 0, 3, 6]);
+  const times = render.mock.calls.map(([seconds]) => seconds);
+  expect(times[0]).toBe(0);
+  expect(times.at(-1)).toBe(6);
+  expect(times.some((time) => time > 0 && time < 6)).toBe(true);
+  expect(times.every((time, i) => time >= (times[i - 1] ?? 0) && time <= 6)).toBe(true);
   expect(result.type).toBe('video/webm');
   expect(await result.text()).toBe('recorded frames');
   expect(frames.size).toBe(0);

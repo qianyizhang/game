@@ -24,6 +24,7 @@
     "experiment:hearth": "node packages/workshop-tools/hearth/experiment.ts",
     "dcc": "node packages/dcc-workbench/pipeline.mjs",
     "test:dcc": "node --test packages/dcc-workbench/pipeline.test.mjs",
+    "test:dcc:native": "node packages/dcc-workbench/verify-native.ts",
     "maintenance": "node packages/workshop-tools/cli.mjs",
     "lint:tools": "eslint packages/workshop-tools packages/dcc-workbench/src \"packages/dcc-workbench/*.{ts,mjs}\" eslint.config.mjs --max-warnings=0",
     "typecheck": "tsc --noEmit && npm run typecheck --workspaces --if-present",

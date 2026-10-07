@@ -15,6 +15,37 @@ Prefer end-to-end journeys and behavior at the game's command interface. A test 
 
 Use real local dependencies where practical. Introduce a fake only when it makes a relevant failure or timing condition controllable, and describe the behavior it stands in for. Expected results must come from the rule or fixture contract, rather than rerunning the implementation under test to compute the answer.
 
+## Shared behavior and asset-specific contracts
+
+Test shared viewer, recording and accessibility behavior on a small set of representatives
+chosen for distinct risks, such as rigid motion, skinning, transparency and heavy geometry.
+Repeating an end-to-end journey for every asset needs the same justification as repeating a
+unit test. Keep loading, delivered geometry/animation validity and visible motion coverage
+for every asset still offered to users. A representative matrix is an explicit coverage
+choice, not permission to silently drop per-asset delivery checks.
+
+Prefer outcomes over incidental construction: supported motion, fitted attachments and
+resource release matter; exact mesh counts, vertex counts, helper calls and intermediate
+callback sequences usually do not. A coordinate or name can remain in a narrow legacy
+regression when it locates a documented failure. Do not add production metadata or a new
+procedural abstraction solely to make an outgoing implementation's tests elegant.
+
+## Blender authoring and legacy compatibility
+
+The [Blender-first decision](decisions/0003-blender-first-authoring.md) directs new authoring
+investment to the DCC package. New native controls must be exercised in Blender through
+edit, evaluated deformation, save/reload, export and consumer reload. Pure mathematical
+checks and verification of an unchanged published GLB cannot establish that this loop works.
+The local `npm run test:dcc:native` gate uses a disposable source copy and checks that the
+published source and delivery remain unchanged. Its browser case is explicitly skipped in
+ordinary runs without that native candidate; CI is not credited with native execution.
+
+The TypeScript gallery is a compatibility surface while it remains available. Retain its
+delivery checks and named regressions, consolidate repeated machinery, and avoid expanding
+constructor-specific coverage. Retire remaining legacy tests with the corresponding user
+surface or a verified replacement, recording any deliberately dropped contract. This
+testing policy does not authorize deletion of artist sources, accepted baselines or evidence.
+
 ## Before adding or retaining a test
 
 - Name the failure it catches and the outcome that would be wrong.

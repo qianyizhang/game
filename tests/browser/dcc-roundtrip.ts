@@ -5,8 +5,8 @@ import samples from '../../packages/dcc-workbench/assets/pose-samples.json';
 import assetUrl from '../../packages/dcc-workbench/assets/briar-hydra.glb?url';
 
 /** Compare Blender's evaluated delivery vertices with Three.js, in the same world space. */
-export async function compareDccPoses() {
-  const gltf = await new GLTFLoader().loadAsync(assetUrl);
+export async function compareDccPoses(url = assetUrl, reference = samples) {
+  const gltf = await new GLTFLoader().loadAsync(url);
   const mixer = new T.AnimationMixer(gltf.scene);
   mixer.clipAction(gltf.animations[0]).play();
   const skins: T.SkinnedMesh[] = [];
@@ -28,7 +28,7 @@ export async function compareDccPoses() {
       position: point(mesh, index),
     })),
   );
-  const matches = samples.samples[0].points.map((p) => {
+  const matches = reference.samples[0].points.map((p) => {
     const target = new T.Vector3(...(p as [number, number, number]));
     let best = candidates[0];
     let error = Infinity;
@@ -42,7 +42,7 @@ export async function compareDccPoses() {
     return { ...best, error: Math.sqrt(error) };
   });
   let maxError = 0;
-  const perPose = samples.samples.map((pose) => {
+  const perPose = reference.samples.map((pose) => {
     evaluate(pose.seconds);
     let error = 0;
     for (let i = 0; i < matches.length; i++) {
