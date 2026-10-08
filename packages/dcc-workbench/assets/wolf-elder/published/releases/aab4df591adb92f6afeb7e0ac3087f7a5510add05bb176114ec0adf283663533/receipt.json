@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf-elder",
+  "definitionDigest": "3e2a1a546b2c0883356ba656020a910a4c1447e86b49dfa32bff6a29a9ecc0e7",
+  "candidate": {
+    "path": "candidate.json",
+    "sha256": "7e546de0a09159e5294ffcfe672fb1ede49d9804d22170dfba3cd8ea7d59e6e4"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "b206645a5cf9af9642a931be7c6a3799a4ff38e502efc7f97e420e0f24cc9eac"
+  },
+  "source": {
+    "path": "source.blend",
+    "sha256": "391f7a76fba52bef41f8cff6f9a852ef44053217e9b250e274a9ed929037347c"
+  },
+  "brief": {
+    "path": "brief.json",
+    "sha256": "60ce36367b109fa4669f9f7925187d6032545d52449d4d020af4158d337ae878"
+  },
+  "outputs": {
+    "model": {
+      "path": "model.glb",
+      "sha256": "38797f78de5a5e229f1b7e647b64a5abb7281436f48a96aadde923352a0e7708"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "191f4b639a37c4045ee9403b36ba2492ccdd70217f395d3f5ea0e8cbb699999e"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "5f7634528570ebc6e4bfa047e0b7ee729780313a907a258aab3fdea0e15de521"
+    }
+  },
+  "previous": null
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf-bloom",
+  "completed": true,
+  "sourceAndPublicationUnchanged": true,
+  "files": [
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/wolf-bloom/source.blend",
+      "sha256": "badec14cb795465150ecc95e76c928a5ce901a5f48c886b4a74b07cf2068c965",
+      "after": "badec14cb795465150ecc95e76c928a5ce901a5f48c886b4a74b07cf2068c965",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/wolf-bloom/published/current.json",
+      "sha256": null,
+      "after": null,
+      "unchanged": true
+    }
+  ]
+}

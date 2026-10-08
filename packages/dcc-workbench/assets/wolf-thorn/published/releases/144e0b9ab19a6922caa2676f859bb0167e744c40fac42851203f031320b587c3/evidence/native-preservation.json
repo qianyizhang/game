@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf-thorn",
+  "completed": true,
+  "sourceAndPublicationUnchanged": true,
+  "files": [
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/wolf-thorn/source.blend",
+      "sha256": "77d7b574d98871072a70c469f6c6d0eaf0399256e6ae2160b77d553719979c52",
+      "after": "77d7b574d98871072a70c469f6c6d0eaf0399256e6ae2160b77d553719979c52",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/wolf-thorn/published/current.json",
+      "sha256": null,
+      "after": null,
+      "unchanged": true
+    }
+  ]
+}

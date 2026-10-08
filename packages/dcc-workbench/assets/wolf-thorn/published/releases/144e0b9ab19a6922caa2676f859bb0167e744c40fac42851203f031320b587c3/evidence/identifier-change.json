@@ -1,0 +1,11 @@
+{
+  "before": "9bcc36d2d2260c87c6c7198024d7357b08173886aa36693afc5cac5827e7bb66",
+  "after": "77d7b574d98871072a70c469f6c6d0eaf0399256e6ae2160b77d553719979c52",
+  "mapping": {
+    "Thorn | canine -1": "Thorn_canine_-1",
+    "Thorn | scowling brow -1": "Thorn_scowling_brow_-1",
+    "Thorn | canine 1": "Thorn_canine_1",
+    "Thorn | scowling brow 1": "Thorn_scowling_brow_1"
+  },
+  "geometryAndMaterialsUnchanged": true
+}

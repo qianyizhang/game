@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf-elder",
+  "definitionDigest": "3e2a1a546b2c0883356ba656020a910a4c1447e86b49dfa32bff6a29a9ecc0e7",
+  "definition": {
+    "id": "wolf-elder",
+    "legacyStudyId": "wolf-elder",
+    "source": "subjects/wolf-elder/source.blend",
+    "brief": "subjects/wolf-elder/brief.json",
+    "native": {
+      "adapter": "blender/export_saved.py",
+      "dependencies": [
+        "blender/export_saved.py",
+        "blender/native_types.py",
+        "blender/saved_export_plan.py"
+      ]
+    },
+    "delivery": {
+      "profile": "skinned",
+      "animation": {
+        "name": "wolf_idle",
+        "seconds": 6,
+        "fps": 24
+      },
+      "directory": "assets/wolf-elder",
+      "model": "assets/wolf-elder/model.glb",
+      "audit": "assets/wolf-elder/authoring.json",
+      "poses": "assets/wolf-elder/pose-samples.json",
+      "manifest": "assets/wolf-elder/manifest.json",
+      "receipts": "assets/wolf-elder/receipts",
+      "publication": "assets/wolf-elder/published"
+    }
+  },
+  "inputs": {
+    "blender/export_saved.py": "ccc388de6b6ddd622c6884a7f65f9893e6a752f355b95c63af0b48f41a2243c6",
+    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31",
+    "blender/saved_export_plan.py": "c9d0858b8ae79fb7d85f0069010227fa3769c7f3f1604047dd277664411bfc42",
+    "contracts.ts": "3778dc4197634712de81808e45638f27be3d13a3a9b35d258ef8f9dededecb93",
+    "glb.ts": "752b2adbc98a0559577236a9399e2ecc1e83281ce32a82e1d0760cc48d7e13da",
+    "pipeline.mjs": "085eee0376f80c6d06e30d2c51320deb88c430c1b50bc3144b834a88e007e4f4",
+    "pipeline.ts": "17d75f1236d726a73c659bfa28a6cab6fbdbc87592289fd38c88c8aecbfc7952",
+    "registry.ts": "d6a06ef24b7cd16c5e840c218c57a6c6cab85455d8ba694e069a4d247f49bafa",
+    "releases.ts": "9306fa9b206f015a07f4e415154505a95116df5ae47c5aeec0428ee865526a86",
+    "subjects/wolf-elder/brief.json": "60ce36367b109fa4669f9f7925187d6032545d52449d4d020af4158d337ae878",
+    "subjects/wolf-elder/source.blend": "391f7a76fba52bef41f8cff6f9a852ef44053217e9b250e274a9ed929037347c"
+  },
+  "previous": null,
+  "origin": {
+    "kind": "exported"
+  },
+  "outputs": {
+    "model": {
+      "path": "wolf-elder.pending.glb",
+      "sha256": "38797f78de5a5e229f1b7e647b64a5abb7281436f48a96aadde923352a0e7708"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "191f4b639a37c4045ee9403b36ba2492ccdd70217f395d3f5ea0e8cbb699999e"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "5f7634528570ebc6e4bfa047e0b7ee729780313a907a258aab3fdea0e15de521"
+    }
+  },
+  "stats": {
+    "bytes": 7143156,
+    "triangles": 157652,
+    "meshes": 39,
+    "materials": 11,
+    "textures": 12,
+    "joints": 10,
+    "animations": [
+      {
+        "name": "wolf_idle",
+        "seconds": 6,
+        "channels": 34
+      }
+    ]
+  }
+}

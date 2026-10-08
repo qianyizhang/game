@@ -8,12 +8,17 @@ import { STUDIES, type StudyId } from './models';
 import { StudyViewer, download, type ViewerOptions, type ViewerAPI } from './StudyViewer';
 import { LOOP_SECONDS, MOTION_LABELS } from './animation';
 import { galleryDelivery } from './delivery';
+import { EVOLVED_WOLF_FORMS, WOLF_FORMS, isWolfForm, type WolfForm } from './wolfForms';
 import './ArtStudio.css';
 
 export default function ArtStudio({ onExit }: { onExit: () => void }) {
   const [id, setId] = useState<StudyId>(() => {
     const requested = new URLSearchParams(location.search).get('study');
     return STUDIES.find((study) => study.id === requested)?.id ?? 'phoenix';
+  });
+  const [form, setForm] = useState<WolfForm>(() => {
+    const requested = new URLSearchParams(location.search).get('form');
+    return isWolfForm(requested) ? requested : 'base';
   });
   const [options, setOptions] = useState<ViewerOptions>(() => ({
     spin: false,
@@ -33,13 +38,21 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
   const [time, setTime] = useState(0);
   const api = useRef<ViewerAPI | null>(null);
   const study = STUDIES.find((study) => study.id === id)!;
-  const delivery = galleryDelivery(id);
+  const activeForm = id === 'wolf' ? form : 'base';
+  const wolfForm = WOLF_FORMS[activeForm];
+  const delivery = galleryDelivery(id, activeForm);
+  const fileId = id === 'wolf' ? wolfForm.deliveryStudyId : id;
   const canSeparate = !delivery && ['nightjar', 'phoenix', 'catalyst'].includes(id);
   const duration = delivery ? (delivery.brief.animation?.seconds ?? 0) : LOOP_SECONDS;
   const update = (patch: Partial<ViewerOptions>) =>
     setOptions((current) => ({ ...current, ...patch }));
   const select = (id: StudyId) => {
     setId(id);
+    setForm('base');
+    const url = new URL(location.href);
+    url.searchParams.set('study', id);
+    url.searchParams.delete('form');
+    history.replaceState(null, '', url);
     setMessage('');
     setTime(0);
     update({
@@ -49,9 +62,19 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
       seekVersion: options.seekVersion + 1,
     });
   };
+  const selectForm = (next: WolfForm) => {
+    setForm(next);
+    setMessage('');
+    setTime(0);
+    update({ exploded: false, seek: 0, seekVersion: options.seekVersion + 1 });
+    const url = new URL(location.href);
+    url.searchParams.set('study', 'wolf');
+    if (next === 'base') url.searchParams.delete('form');
+    else url.searchParams.set('form', next);
+    history.replaceState(null, '', url);
+  };
   const saveVideo = async () => {
     if (!api.current || recording) return;
-    const fileId = id;
     setRecording(true);
     setMessage(`Recording one ${duration}-second loop…`);
     try {
@@ -65,7 +88,6 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
   };
   const save = async () => {
     if (!api.current || exporting) return;
-    const fileId = id;
     setExporting(true);
     setMessage('');
     try {
@@ -80,7 +102,12 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
     }
   };
   return (
-    <main className="art-studio" style={{ '--study-accent': study.accent } as React.CSSProperties}>
+    <main
+      className="art-studio"
+      style={
+        { '--study-accent': id === 'wolf' ? wolfForm.accent : study.accent } as React.CSSProperties
+      }
+    >
       <header className="studio-header">
         <button className="studio-return" onClick={onExit}>
           ← My table
@@ -102,6 +129,50 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
           <br />A little more room to exist.
         </p>
       </section>
+      {id === 'wolf' && (
+        <section className="wolf-forms" aria-label="Wolf forms">
+          <div className="wolf-forms-heading">
+            <div>
+              <p className="studio-eyebrow">ONE GUARDIAN / FOUR FORMS</p>
+              <h2>{wolfForm.title}</h2>
+            </div>
+            <button
+              aria-pressed={activeForm === 'base'}
+              disabled={recording || exporting}
+              onClick={() => selectForm('base')}
+            >
+              Original base
+            </button>
+          </div>
+          <fieldset disabled={recording || exporting} className="wolf-alignment">
+            <legend>Evolved alignment</legend>
+            <input
+              type="range"
+              aria-label="Wolf alignment"
+              aria-valuetext={activeForm === 'base' ? 'Base form selected' : wolfForm.label}
+              min="0"
+              max="2"
+              step="1"
+              value={activeForm === 'base' ? 1 : EVOLVED_WOLF_FORMS.indexOf(activeForm)}
+              disabled={EVOLVED_WOLF_FORMS.some((item) => !galleryDelivery('wolf', item))}
+              onChange={(event) => selectForm(EVOLVED_WOLF_FORMS[Number(event.target.value)])}
+            />
+            <div className="wolf-form-options">
+              {EVOLVED_WOLF_FORMS.map((item) => (
+                <button
+                  key={item}
+                  aria-pressed={activeForm === item}
+                  disabled={!galleryDelivery('wolf', item)}
+                  onClick={() => selectForm(item)}
+                >
+                  <strong>{WOLF_FORMS[item].label}</strong>
+                  <span>{WOLF_FORMS[item].title}</span>
+                </button>
+              ))}
+            </div>
+          </fieldset>
+        </section>
+      )}
       <div className="studio-workspace">
         <section className="studio-stage" aria-label={`${study.name} 3D study`}>
           <div className="stage-topline">
@@ -113,11 +184,13 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
               {String(STUDIES.length).padStart(2, '0')}
             </span>
           </div>
-          <StudyViewer id={id} options={options} api={api} onTime={setTime} />
+          <StudyViewer id={id} form={activeForm} options={options} api={api} onTime={setTime} />
           <div className="stage-caption">
             <span>
-              {study.name}
-              <small>{study.material}</small>
+              {id === 'wolf' && activeForm !== 'base' ? wolfForm.title : study.name}
+              <small>
+                {id === 'wolf' && activeForm !== 'base' ? wolfForm.material : study.material}
+              </small>
             </span>
             <span className="stage-gesture">
               DRAG TO ORBIT
@@ -166,7 +239,9 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
           </nav>
           <div className="study-info">
             <p className="studio-eyebrow">THE TRANSLATION</p>
-            <p>{study.description}</p>
+            <p>
+              {id === 'wolf' && activeForm !== 'base' ? wolfForm.description : study.description}
+            </p>
             <ul>
               {study.details.map((detail) => (
                 <li key={detail}>{detail}</li>
@@ -276,7 +351,7 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
             </button>
             <button
               onClick={() => {
-                if (api.current) download(api.current.png(), `${id}-study.png`);
+                if (api.current) download(api.current.png(), `${fileId}-study.png`);
               }}
             >
               Save image ↗

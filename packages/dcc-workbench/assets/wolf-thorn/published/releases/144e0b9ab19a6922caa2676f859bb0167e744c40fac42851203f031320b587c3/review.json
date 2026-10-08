@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf-thorn",
+  "candidateDigest": "0d4da868c7c244a13c83e78c7b7bf631b07c8144472c3d177b1804cacf606288",
+  "reviewer": {
+    "role": "parent",
+    "name": "Parent director — direct author and final reviewer; no independent reviewer by explicit user instruction"
+  },
+  "decision": "accepted",
+  "scope": "gallery",
+  "evidence": [
+    {
+      "view": "native-hero-material.png",
+      "reference": "evidence/native-hero-material.png",
+      "observation": "Parent directly inspected whole-form clay, seated asymmetric crown, continuous fur-root transition, pale throat, planted paws and heavy tail. Distinct alignment silhouette accepted. Native capture precedes identifier-only rename; linked receipt binds that change.",
+      "sha256": "47bbc0a026e688812461dba522e1520e5a02323616e0c1e44139b55493f987e3"
+    },
+    {
+      "view": "native-front-clay.png",
+      "reference": "evidence/native-front-clay.png",
+      "observation": "Parent directly inspected whole-form clay, seated asymmetric crown, continuous fur-root transition, pale throat, planted paws and heavy tail. Distinct alignment silhouette accepted. Native capture precedes identifier-only rename; linked receipt binds that change.",
+      "sha256": "068edd936765490647bbbb8945c431422de6e7a47722352f85307cf02a4177e6"
+    },
+    {
+      "view": "native-side-clay.png",
+      "reference": "evidence/native-side-clay.png",
+      "observation": "Parent directly inspected whole-form clay, seated asymmetric crown, continuous fur-root transition, pale throat, planted paws and heavy tail. Distinct alignment silhouette accepted. Native capture precedes identifier-only rename; linked receipt binds that change.",
+      "sha256": "abe36f8a5babd059674c00e5a9fdcfb28d2c988ccb68d868b09516cd487b80b7"
+    },
+    {
+      "view": "native-anatomical-rear-clay.png",
+      "reference": "evidence/native-anatomical-rear-clay.png",
+      "observation": "Parent directly inspected whole-form clay, seated asymmetric crown, continuous fur-root transition, pale throat, planted paws and heavy tail. Distinct alignment silhouette accepted. Native capture precedes identifier-only rename; linked receipt binds that change.",
+      "sha256": "76069d43e093b4f33ebda1f38dbacf1417c959d808f64eabad71bbb37e79290f"
+    },
+    {
+      "view": "native-capture.json",
+      "reference": "evidence/native-capture.json",
+      "observation": "Parent directly inspected whole-form clay, seated asymmetric crown, continuous fur-root transition, pale throat, planted paws and heavy tail. Distinct alignment silhouette accepted. Native capture precedes identifier-only rename; linked receipt binds that change.",
+      "sha256": "6c6e14f8360f07842a35be332e525c9443f72618c63c4cf5da995916fc01dab2"
+    },
+    {
+      "view": "native-motion-84.png",
+      "reference": "evidence/native-motion-84.png",
+      "observation": "Parent inspected fitted idle at frame 84: crown, fringe and facial attachments remain seated; paws stay planted.",
+      "sha256": "9bcc13f1b5304600488dd14886388832dbb63cd5e53c14c53cd3ab95a6cb5ba9"
+    },
+    {
+      "view": "identifier-change.json",
+      "reference": "evidence/identifier-change.json",
+      "observation": "Only new mesh identifiers changed after native capture to match consumer object lookup; no geometry or material edits.",
+      "sha256": "eb94018c09ca3f5b59ef1ba3b1a8358f47a439d30aafee2fa86e1130b56b5c85"
+    },
+    {
+      "view": "native-edit.json",
+      "reference": "evidence/native-edit.json",
+      "observation": "Existing saved-edit gate passed all declared Tail relax values, fixed anatomy, restore and save/reload on a disposable copy.",
+      "sha256": "b17f101609dd50f50c92e1c11cec9a6e7dedbc49cd16ec4088facabee067663c"
+    },
+    {
+      "view": "native-preservation.json",
+      "reference": "evidence/native-preservation.json",
+      "observation": "Production source and prior publication remained unchanged during native test.",
+      "sha256": "8767cf24ebee1279ba6aead743ecb3ef4a42676ac8a2d09cdcfc8d1bcdc64922"
+    },
+    {
+      "view": "consumer-native-three-poses.json",
+      "reference": "evidence/consumer-native-three-poses.json",
+      "observation": "Exact default GLB independently sampled in Three.js at five times and visually inspected by parent; phone framing complete. Numerical verification is separate from aesthetic acceptance.",
+      "sha256": "497757609916f2a9acdc180839a3a43c92523992ef298dc2f7b62d5af80d9d7d"
+    },
+    {
+      "view": "consumer-Front-Material-0.png",
+      "reference": "evidence/consumer-Front-Material-0.png",
+      "observation": "Exact default GLB independently sampled in Three.js at five times and visually inspected by parent; phone framing complete. Numerical verification is separate from aesthetic acceptance.",
+      "sha256": "e51b4b72a4ee980b973b85dac194b172890f77fcc17a292b8c2f6b786af9946f"
+    },
+    {
+      "view": "consumer-Front-Clay-3.png",
+      "reference": "evidence/consumer-Front-Clay-3.png",
+      "observation": "Exact default GLB independently sampled in Three.js at five times and visually inspected by parent; phone framing complete. Numerical verification is separate from aesthetic acceptance.",
+      "sha256": "a7e057bc6604301e76036aab5da61ff3cfbfa1e87df691b050db85508f59ef3b"
+    },
+    {
+      "view": "consumer-phone-material.png",
+      "reference": "evidence/consumer-phone-material.png",
+      "observation": "Exact default GLB independently sampled in Three.js at five times and visually inspected by parent; phone framing complete. Numerical verification is separate from aesthetic acceptance.",
+      "sha256": "5bcd6ef9756b181cc5b072e8c8dc9cefbbd040f062f64d30143b6a76e3109049"
+    }
+  ]
+}

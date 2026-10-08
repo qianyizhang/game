@@ -88,6 +88,83 @@
   border: 1px solid #414845;
   height: 740px;
 }
+.wolf-forms {
+  border: 1px solid #414845;
+  border-bottom: 0;
+  padding: 24px;
+  background: #1a211e;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 28px;
+}
+.wolf-forms-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.wolf-forms h2 {
+  font:
+    26px Georgia,
+    serif;
+  margin: 0;
+}
+.wolf-forms-heading button {
+  padding: 10px 14px;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.wolf-alignment {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.wolf-alignment legend {
+  font-size: 11px;
+  color: var(--studio-muted);
+  margin-bottom: 6px;
+}
+.wolf-alignment input {
+  width: 100%;
+  accent-color: var(--study-accent);
+}
+.wolf-form-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.wolf-form-options button {
+  padding: 9px 6px;
+  text-align: center;
+}
+.wolf-form-options strong,
+.wolf-form-options span {
+  display: block;
+}
+.wolf-form-options strong {
+  font-size: 12px;
+}
+.wolf-form-options span {
+  font-size: 10px;
+  color: var(--studio-muted);
+  margin-top: 4px;
+}
+.wolf-forms button[aria-pressed='true'] {
+  border-color: var(--study-accent);
+  background: #c1bf9c12;
+}
+@media (max-width: 760px) {
+  .wolf-forms {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 16px;
+    gap: 18px;
+  }
+  .wolf-forms h2 {
+    font-size: 23px;
+  }
+}
 .studio-stage {
   position: relative;
   min-height: 0;

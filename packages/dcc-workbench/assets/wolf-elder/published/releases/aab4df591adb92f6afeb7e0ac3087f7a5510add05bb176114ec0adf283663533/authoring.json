@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "kind": "saved-export",
+  "id": "wolf-elder",
+  "source": "subjects/wolf-elder/source.blend",
+  "sourceSha256": "391f7a76fba52bef41f8cff6f9a852ef44053217e9b250e274a9ed929037347c",
+  "sourceUnchangedByExport": true,
+  "blender": "4.5.14 LTS",
+  "profile": "skinned",
+  "collection": "DELIVERY | Elder Sentinel",
+  "animation": {
+    "name": "wolf_idle",
+    "seconds": 6.0,
+    "fps": 24
+  },
+  "audit": {
+    "sampleFrames": [
+      0.0,
+      36.0,
+      72.0,
+      108.0,
+      144.0
+    ],
+    "meshCount": 39,
+    "skinnedMeshCount": 2,
+    "rigidMeshCount": 37,
+    "maxSkinnedMotion": 0.0710123593739717,
+    "maxRigidMotion": 0.11716064966806378,
+    "maxLoopDifference": 0.0,
+    "maxSourceDeliveryDifference": 0.0,
+    "requireRigidMotion": true,
+    "motionTolerance": 1e-06,
+    "loopTolerance": 1e-05,
+    "objects": [
+      {
+        "name": "Wolf_BranchingAntlers",
+        "role": "rigid",
+        "maxMotion": 0.11716064966806378,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Catchlight_-1",
+        "role": "rigid",
+        "maxMotion": 0.0441647204402931,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Catchlight_1",
+        "role": "rigid",
+        "maxMotion": 0.03420207867662909,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ContinuousAnatomy",
+        "role": "skinned",
+        "maxMotion": 0.0710123593739717,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_EyeSocket_-1",
+        "role": "rigid",
+        "maxMotion": 0.04166911940810551,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_EyeSocket_1",
+        "role": "rigid",
+        "maxMotion": 0.03191248696872302,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_InnerEar_-1",
+        "role": "rigid",
+        "maxMotion": 0.04050059806702133,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_InnerEar_1",
+        "role": "rigid",
+        "maxMotion": 0.013597047904808217,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Iris_-1",
+        "role": "rigid",
+        "maxMotion": 0.0429520348948812,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Iris_1",
+        "role": "rigid",
+        "maxMotion": 0.03327510152059682,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_LeatherNose",
+        "role": "rigid",
+        "maxMotion": 0.0739055758625111,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Lip_-1",
+        "role": "rigid",
+        "maxMotion": 0.06390943731240438,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Lip_1",
+        "role": "rigid",
+        "maxMotion": 0.06301716564448742,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_LivingTail",
+        "role": "skinned",
+        "maxMotion": 0.02723990970298935,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Nostril_-1",
+        "role": "rigid",
+        "maxMotion": 0.07422000979516115,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Nostril_1",
+        "role": "rigid",
+        "maxMotion": 0.073361277298824,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Philtrum",
+        "role": "rigid",
+        "maxMotion": 0.07253717657559396,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_PointedEar_-1",
+        "role": "rigid",
+        "maxMotion": 0.04266192886290337,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_PointedEar_1",
+        "role": "rigid",
+        "maxMotion": 0.014364535591637403,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Pupil_-1",
+        "role": "rigid",
+        "maxMotion": 0.04345695972683071,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Pupil_1",
+        "role": "rigid",
+        "maxMotion": 0.0337800720812128,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_0_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_0_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_0_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_2_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_2_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_2_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_3_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_3_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_ToeCrease_3_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Whisker_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.0586783504066016,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Whisker_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.059153353807350435,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Whisker_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.05983960017467215,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Whisker_1_0",
+        "role": "rigid",
+        "maxMotion": 0.056522122775453126,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Whisker_1_1",
+        "role": "rigid",
+        "maxMotion": 0.05628769713583952,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Wolf_Whisker_1_2",
+        "role": "rigid",
+        "maxMotion": 0.056102548917471434,
+        "maxLoopDifference": 0.0
+      }
+    ]
+  }
+}

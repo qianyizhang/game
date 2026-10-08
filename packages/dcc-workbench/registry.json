@@ -168,6 +168,90 @@
         "receipts": "assets/wolf/receipts",
         "publication": "assets/wolf/published"
       }
+    },
+    "wolf-bloom": {
+      "legacyStudyId": "wolf-bloom",
+      "source": "subjects/wolf-bloom/source.blend",
+      "brief": "subjects/wolf-bloom/brief.json",
+      "native": {
+        "adapter": "blender/export_saved.py",
+        "dependencies": [
+          "blender/export_saved.py",
+          "blender/saved_export_plan.py",
+          "blender/native_types.py"
+        ]
+      },
+      "delivery": {
+        "profile": "skinned",
+        "animation": {
+          "name": "wolf_idle",
+          "seconds": 6,
+          "fps": 24
+        },
+        "directory": "assets/wolf-bloom",
+        "model": "assets/wolf-bloom/model.glb",
+        "audit": "assets/wolf-bloom/authoring.json",
+        "poses": "assets/wolf-bloom/pose-samples.json",
+        "manifest": "assets/wolf-bloom/manifest.json",
+        "receipts": "assets/wolf-bloom/receipts",
+        "publication": "assets/wolf-bloom/published"
+      }
+    },
+    "wolf-elder": {
+      "legacyStudyId": "wolf-elder",
+      "source": "subjects/wolf-elder/source.blend",
+      "brief": "subjects/wolf-elder/brief.json",
+      "native": {
+        "adapter": "blender/export_saved.py",
+        "dependencies": [
+          "blender/export_saved.py",
+          "blender/saved_export_plan.py",
+          "blender/native_types.py"
+        ]
+      },
+      "delivery": {
+        "profile": "skinned",
+        "animation": {
+          "name": "wolf_idle",
+          "seconds": 6,
+          "fps": 24
+        },
+        "directory": "assets/wolf-elder",
+        "model": "assets/wolf-elder/model.glb",
+        "audit": "assets/wolf-elder/authoring.json",
+        "poses": "assets/wolf-elder/pose-samples.json",
+        "manifest": "assets/wolf-elder/manifest.json",
+        "receipts": "assets/wolf-elder/receipts",
+        "publication": "assets/wolf-elder/published"
+      }
+    },
+    "wolf-thorn": {
+      "legacyStudyId": "wolf-thorn",
+      "source": "subjects/wolf-thorn/source.blend",
+      "brief": "subjects/wolf-thorn/brief.json",
+      "native": {
+        "adapter": "blender/export_saved.py",
+        "dependencies": [
+          "blender/export_saved.py",
+          "blender/saved_export_plan.py",
+          "blender/native_types.py"
+        ]
+      },
+      "delivery": {
+        "profile": "skinned",
+        "animation": {
+          "name": "wolf_idle",
+          "seconds": 6,
+          "fps": 24
+        },
+        "directory": "assets/wolf-thorn",
+        "model": "assets/wolf-thorn/model.glb",
+        "audit": "assets/wolf-thorn/authoring.json",
+        "poses": "assets/wolf-thorn/pose-samples.json",
+        "manifest": "assets/wolf-thorn/manifest.json",
+        "receipts": "assets/wolf-thorn/receipts",
+        "publication": "assets/wolf-thorn/published"
+      }
     }
   }
 }

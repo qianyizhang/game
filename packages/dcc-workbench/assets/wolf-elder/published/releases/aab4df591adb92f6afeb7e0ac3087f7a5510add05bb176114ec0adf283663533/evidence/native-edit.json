@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf-elder",
+  "sourceBeforeSha256": "391f7a76fba52bef41f8cff6f9a852ef44053217e9b250e274a9ed929037347c",
+  "sourceEditedSha256": "2074ca4cf2ffe2fe728de0c18edf5ed1a09d21a80e8fb2612fdc4af00ee5e5bc",
+  "control": {
+    "object": "EDIT | Tail",
+    "property": "Tail relax"
+  },
+  "original": 0.5,
+  "values": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "savedValue": 1.0,
+  "sampleFrames": [
+    0.0,
+    36.0,
+    72.0,
+    108.0,
+    144.0
+  ],
+  "sampleSeconds": [
+    0.0,
+    1.5,
+    3.0,
+    4.5,
+    6.0
+  ],
+  "moved": [
+    "Wolf_LivingTail"
+  ],
+  "fixed": [
+    "Wolf_BranchingAntlers",
+    "Wolf_Catchlight_-1",
+    "Wolf_Catchlight_1",
+    "Wolf_ContinuousAnatomy",
+    "Wolf_EyeSocket_-1",
+    "Wolf_EyeSocket_1",
+    "Wolf_InnerEar_-1",
+    "Wolf_InnerEar_1",
+    "Wolf_Iris_-1",
+    "Wolf_Iris_1",
+    "Wolf_LeatherNose",
+    "Wolf_Lip_-1",
+    "Wolf_Lip_1",
+    "Wolf_Nostril_-1",
+    "Wolf_Nostril_1",
+    "Wolf_Philtrum",
+    "Wolf_PointedEar_-1",
+    "Wolf_PointedEar_1",
+    "Wolf_Pupil_-1",
+    "Wolf_Pupil_1",
+    "Wolf_ToeCrease_0_0",
+    "Wolf_ToeCrease_0_1",
+    "Wolf_ToeCrease_0_2",
+    "Wolf_ToeCrease_1_0",
+    "Wolf_ToeCrease_1_1",
+    "Wolf_ToeCrease_1_2",
+    "Wolf_ToeCrease_2_0",
+    "Wolf_ToeCrease_2_1",
+    "Wolf_ToeCrease_2_2",
+    "Wolf_ToeCrease_3_0",
+    "Wolf_ToeCrease_3_1",
+    "Wolf_ToeCrease_3_2",
+    "Wolf_Whisker_-1_0",
+    "Wolf_Whisker_-1_1",
+    "Wolf_Whisker_-1_2",
+    "Wolf_Whisker_1_0",
+    "Wolf_Whisker_1_1",
+    "Wolf_Whisker_1_2"
+  ],
+  "tolerance": 1e-06,
+  "adjacentValueMotion": [
+    {
+      "Wolf_LivingTail": 0.08190200464623763
+    },
+    {
+      "Wolf_LivingTail": 0.08190207297402202
+    }
+  ],
+  "maxFixedDifference": 0.0,
+  "maxRestorationDifference": 0.0,
+  "maxReloadDifference": 0.0
+}

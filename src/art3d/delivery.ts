@@ -4,12 +4,14 @@ import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
 import type { AnimationClip, Group } from 'three';
 import { createStudy, disposeObject, type StudyId } from './models';
 import { createStudyClip } from './animation';
+import { WOLF_FORMS, type WolfForm } from './wolfForms';
 
 /** Only an explicit gallery review changes an existing study's default. */
-export function galleryDelivery(id: StudyId) {
+export function galleryDelivery(id: StudyId, form: WolfForm = 'base') {
+  const deliveryStudyId = id === 'wolf' ? WOLF_FORMS[form].deliveryStudyId : id;
   return Object.values(assets).find(
     (asset) =>
-      asset.legacyStudyId === id &&
+      asset.legacyStudyId === deliveryStudyId &&
       asset.info.kind === 'release' &&
       asset.info.reviewScope === 'gallery' &&
       asset.info.reviewDecision === 'accepted',
@@ -24,8 +26,12 @@ export interface LoadedStudy {
 }
 
 /** Each load owns its scene resources. Callers dispose late arrivals after cancellation. */
-export async function loadStudy(id: StudyId, signal: AbortSignal): Promise<LoadedStudy> {
-  const delivery = galleryDelivery(id);
+export async function loadStudy(
+  id: StudyId,
+  signal: AbortSignal,
+  form: WolfForm = 'base',
+): Promise<LoadedStudy> {
+  const delivery = galleryDelivery(id, form);
   if (delivery) {
     const response = await fetch(delivery.modelUrl, { signal });
     if (!response.ok) throw new Error(`Model download failed (${response.status})`);
@@ -47,6 +53,9 @@ export async function loadStudy(id: StudyId, signal: AbortSignal): Promise<Loade
       native: true,
       download: () => Promise.resolve(bytes.slice(0)),
     };
+  }
+  if (id === 'wolf' && form !== 'base') {
+    throw new Error(`The ${WOLF_FORMS[form].title} release is unavailable.`);
   }
   signal.throwIfAborted();
   const object = createStudy(id);

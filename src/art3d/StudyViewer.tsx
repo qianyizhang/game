@@ -5,6 +5,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { disposeObject, explodeStudy, type StudyId } from './models';
 import { loadStudy, type LoadedStudy } from './delivery';
 import { recordLoop } from './recording';
+import type { WolfForm } from './wolfForms';
 
 export type ViewerOptions = {
   spin: boolean;
@@ -33,11 +34,13 @@ export function download(data: Blob | string, name: string) {
 }
 export function StudyViewer({
   id,
+  form = 'base',
   options,
   api,
   onTime,
 }: {
   id: StudyId;
+  form?: WolfForm;
   options: ViewerOptions;
   api: React.RefObject<ViewerAPI | null>;
   onTime: (seconds: number) => void;
@@ -138,6 +141,7 @@ export function StudyViewer({
         }
       });
       element.dataset.delivery = loaded.native ? 'native' : 'procedural';
+      element.dataset.form = id === 'wolf' ? form : 'base';
       element.dataset.duration = String(duration);
       const bounds = new T.Box3().setFromObject(asset);
       bounds.expandByPoint(new T.Vector3(-1.35, -0.016, -1.35));
@@ -423,7 +427,7 @@ export function StudyViewer({
       frame = requestAnimationFrame(animate);
       return dispose;
     };
-    void loadStudy(id, loading.signal)
+    void loadStudy(id, loading.signal, form)
       .then((loaded) => {
         if (cancelled) {
           disposeObject(loaded.object);
@@ -443,7 +447,7 @@ export function StudyViewer({
       loading.abort();
       cleanup?.();
     };
-  }, [id, api]);
+  }, [id, form, api]);
   return (
     <div className="study-render" ref={host} data-ready={ready}>
       {!ready && !failed && (

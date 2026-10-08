@@ -1,0 +1,12 @@
+{
+  "before": "d9999d6bddb5d0b4399b67fafe59a969ebe6bd28510a1f27936241121b61bed4",
+  "after": "badec14cb795465150ecc95e76c928a5ce901a5f48c886b4a74b07cf2068c965",
+  "mapping": {
+    "Bloom | lanceolate leaf 0": "Bloom_lanceolate_leaf_0",
+    "Bloom | lanceolate leaf 1": "Bloom_lanceolate_leaf_1",
+    "Bloom | lanceolate leaf 2": "Bloom_lanceolate_leaf_2",
+    "Bloom | lanceolate leaf 3": "Bloom_lanceolate_leaf_3",
+    "Bloom | lanceolate leaf 4": "Bloom_lanceolate_leaf_4"
+  },
+  "geometryAndMaterialsUnchanged": true
+}
