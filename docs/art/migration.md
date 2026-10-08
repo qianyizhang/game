@@ -8,7 +8,7 @@ The [art rulebook](art-direction.md) owns the visual bar; the [testing policy](.
 
 ## Implementation boundary
 
-The [registry](../../packages/dcc-workbench/registry.json) registers **four native subjects**: `briar-hydra` → `hydra`, `nightjar` → `nightjar`, `phoenix` → `phoenix` and `stormroc` → `stormroc`. Their authoritative working sources and briefs are co-located under `subjects/<id>/`. Registry validation, saved-source export, sealed candidates, scoped parent review, immutable publication and conditional gallery loading are implemented. Publication status and final verification belong to the [native pilot record](assets/native-pilots.md) and [batch record](assets/native-batch-1.md); documentation does not confer user art approval.
+The [registry](../../packages/dcc-workbench/registry.json) registers **five native subjects**: `briar-hydra` → `hydra`, `nightjar` → `nightjar`, `phoenix` → `phoenix`, `stormroc` → `stormroc` and `prowler` → `prowler`. Their authoritative working sources and briefs are co-located under `subjects/<id>/`. Registry validation, saved-source export, sealed candidates, scoped parent review, immutable publication and conditional gallery loading are implemented. Publication status and final verification belong to the [native pilot record](assets/native-pilots.md), [batch record](assets/native-batch-1.md) and [Prowler trial](assets/native-prowler-trial.md); documentation does not confer user art approval.
 
 ## File responsibilities and current layout
 
@@ -67,7 +67,7 @@ Use disposable source copies for native checks; unavailable Blender means unavai
 
 ## Pilot and batch gate
 
-The [first batch](assets/native-batch-1.md) completed Phoenix and Storm Roc. Storm Roc required a user-authorized parent continuation after its original delegated adoption trial stopped. The [delegation protocol](delegation.md) preserves those outcomes separately and governs the next bounded subject trial. Existing publication and visual acceptance contracts remain in force.
+The [first batch](assets/native-batch-1.md) completed Phoenix and Storm Roc. Storm Roc required a user-authorized parent continuation after its original delegated adoption trial stopped. The [delegation protocol](delegation.md) preserves those outcomes separately and governs the next bounded subject trial. The subsequent [Prowler trial](assets/native-prowler-trial.md) completed a delegated native tail edit without parent modeling. Existing publication and visual acceptance contracts remain in force.
 
 Hydra and Nightjar are the two completed native pilots. Hydra preserves its accepted procedural geometry after two weaker reconstruction rounds; Nightjar selectively reconstructs the wing regions, roost and grip and proves a distinct native wing-control operation. Both are parent-accepted gallery defaults. A small rigid delivery fixture checks the unskinned profile without claiming another authored asset. Both guided artist trials used Sol 6.1 at high effort; the parent retained critique, representation choice, setup revision and integration ownership. After two successive revisions repeat the same dominant defect, reassess the representation or record a parent takeover rather than lowering the bar.
 
@@ -79,7 +79,7 @@ Run small groups in dependency order, revising shared tools between them. Stop e
 
 ## Planned cohort: 29 existing studies
 
-Inventory basis: [`STUDIES`](../../src/art3d/models.ts), checked on 2026-10-08. **26 creatures/humanoids** comprise **two native pilots, two completed batch subjects and 22 remaining subjects**; **three object studies are deferred**. Family labels identify likely representation risks and potential second uses, not a mandate to share one generator. Stages describe migration work, not the current artwork's aesthetic standing.
+Inventory basis: [`STUDIES`](../../src/art3d/models.ts), checked on 2026-10-08. **26 creatures/humanoids** comprise **two native pilots, two completed batch subjects, one completed follow-up trial and 21 remaining subjects**; **three object studies are deferred**. Family labels identify likely representation risks and potential second uses, not a mandate to share one generator. Stages describe migration work, not the current artwork's aesthetic standing.
 
 | Representation / reuse family          | Legacy study ID | Subject           | Migration stage                                                                         |
 | -------------------------------------- | --------------- | ----------------- | --------------------------------------------------------------------------------------- |
@@ -87,7 +87,7 @@ Inventory basis: [`STUDIES`](../../src/art3d/models.ts), checked on 2026-10-08. 
 | Plumage, fitted wings and grips        | `nightjar`      | Nightjar          | Native gallery default; parent accepted, user art approval unrecorded                   |
 | Plumage, fitted wings and grips        | `phoenix`       | Phoenix           | Native gallery default; parent accepted, user art approval unrecorded                   |
 | Plumage, fitted wings and grips        | `stormroc`      | Storm Roc         | Complete: parent-accepted native gallery; direct parent refinement after stopped trial  |
-| Fur, paws, muzzles and antlers         | `prowler`       | Alley Prowler     | Queued                                                                                  |
+| Fur, paws, muzzles and antlers         | `prowler`       | Alley Prowler     | Complete: delegated native tail edit; parent-accepted gallery                           |
 | Fur, paws, muzzles and antlers         | `wolf`          | Greatwood Wolf    | Queued                                                                                  |
 | Fur, paws, muzzles and antlers         | `matriarch`     | Briar Matriarch   | Queued                                                                                  |
 | Fur, paws, muzzles and antlers         | `thornstag`     | Thorn Stag        | Queued                                                                                  |

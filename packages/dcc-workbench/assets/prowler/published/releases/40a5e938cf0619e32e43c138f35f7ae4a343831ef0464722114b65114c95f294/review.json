@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "prowler",
+  "candidateDigest": "a266ae0ac4bc259ef1a0a9043045574e5c4112f60af341367a08cfd960e2565c",
+  "reviewer": {
+    "role": "parent",
+    "name": "Codex parent"
+  },
+  "decision": "accepted",
+  "scope": "gallery",
+  "evidence": [
+    {
+      "view": "Native default front clay",
+      "reference": "evidence/native-front-clay.png",
+      "observation": "Low forward stalk, compact haunch and turned head remain. Inherited smooth fur, rounded paws and eyelid relief remain explicit limits.",
+      "sha256": "b7f3a611c59fe49802d78dac535c4adba8e116228e7bbb5af441f6420c58a355"
+    },
+    {
+      "view": "Native default side clay",
+      "reference": "evidence/native-side-clay.png",
+      "observation": "Unequal paws and head turn remain; the tail is a continuous curled tube attached at the rump.",
+      "sha256": "76b54bfb6d2e68ac1406dc6091b612b2c78c46f35a1de3b4a60ef68286b4146f"
+    },
+    {
+      "view": "Native default rear clay",
+      "reference": "evidence/native-rear-clay.png",
+      "observation": "Continuous shoulder/haunch form and tapered tail are preserved; the default retains imported geometry.",
+      "sha256": "99a9e9331ef8796a0a834fc6a01e3c71b8674ee4f5eaf16bf144e39372a7416f"
+    },
+    {
+      "view": "Maximum tail edit side clay",
+      "reference": "evidence/native-tail-max-side.png",
+      "observation": "The distal tip rises visibly while proximal attachment, body and paws retain the low stalking gesture; no influence-boundary kink is visible.",
+      "sha256": "34481c2d469f4000237899692e919ba17653b011b822dfe62655b821b414cb73"
+    },
+    {
+      "view": "Maximum edit front material",
+      "reference": "evidence/native-tail-max-material.png",
+      "observation": "Forest coat, amber eyes and whiskers remain readable; original material style is retained.",
+      "sha256": "47e3f513cf3538be2291c64082a7be9383ed833b7bc14b14c5675ecbb79aab6f"
+    },
+    {
+      "view": "Worst sampled approach detail",
+      "reference": "evidence/tail-attachment-detail.png",
+      "observation": "The tail is visibly joined at the rump and passes outside the hindleg. Intentional inherited proximal overlap is retained, not treated as new penetration.",
+      "sha256": "5da8e08478098ecdea277b3cc3dc614a2b31fa5ccf94e8bf282d5ef8df2591f6"
+    },
+    {
+      "view": "Maximum edit at frame78",
+      "reference": "evidence/tail-motion-maximum.png",
+      "observation": "Curved tail remains continuous and separated from hindleg at the recorded maximum-displacement frame.",
+      "sha256": "7d8a18799d2af99f748d857ebc693dafe423527919d92c10915d9acd8c6de1af"
+    },
+    {
+      "view": "Default GLB front clay",
+      "reference": "evidence/browser-front-clay.png",
+      "observation": "The exported geometry retains the reviewed stance, connected anatomy and tail silhouette. Clay exposes inherited rounded paws and eyelid forms.",
+      "sha256": "0b2b10471d1c87f23f4952456c9c266896135cc5f920dc2694e76338a1b36ccf"
+    },
+    {
+      "view": "Default GLB side clay",
+      "reference": "evidence/browser-side-clay.png",
+      "observation": "The exported geometry retains the reviewed stance, connected anatomy and tail silhouette. Clay exposes inherited rounded paws and eyelid forms.",
+      "sha256": "3192dba8912c85035ac01ecb240464acfa161795aa66b7ba1df2f2fdce50043c"
+    },
+    {
+      "view": "Default GLB back clay",
+      "reference": "evidence/browser-back-clay.png",
+      "observation": "The exported geometry retains the reviewed stance, connected anatomy and tail silhouette. Clay exposes inherited rounded paws and eyelid forms.",
+      "sha256": "c3c91d12eaa57ce5302d19b824febed513d231f064df46705c61ba70b8d8f625"
+    },
+    {
+      "view": "Default GLB material at1.5seconds",
+      "reference": "evidence/browser-front-material.png",
+      "observation": "Coat, facial accents, grounded stance and low tail remain readable at the sampled idle pose.",
+      "sha256": "186bde839c9edc8349c469cb1a72f0aca0d72e05fdeaeaf5bf45b7049dd63701"
+    },
+    {
+      "view": "Default GLB rear at4.5seconds",
+      "reference": "evidence/browser-back-material.png",
+      "observation": "Tail remains outside the hindleg under sampled idle; the rear presentation is darker than front.",
+      "sha256": "e91dddfd6b21add816525bbd2afc3e01e8d2e33a0a0169903faec8186dfe8c33"
+    },
+    {
+      "view": "Default GLB phone-width preview",
+      "reference": "evidence/browser-phone.png",
+      "observation": "Whole feline and platform fit the390pixel preview; physical-device performance remains unmeasured.",
+      "sha256": "5ba833c4d61766d6f9d578439466d8f67edf423f7f62682552bab0c3ee2d5072"
+    },
+    {
+      "view": "Maintained native edit gate",
+      "reference": "evidence/native-edit.json",
+      "observation": "Tail moves at0/0.5/1 overfiveframes;43fixed meshes, restoration and save/reload differences arezero. Production source preserved.",
+      "sha256": "8c03ad8b7ddfaeda28a7da2e5a021bd8f2006e7c56cc302892ff5dc749999c66"
+    },
+    {
+      "view": "Default export/native agreement",
+      "reference": "evidence/default-browser-poses.json",
+      "observation": "44objects,2skinned/42rigid;704vertices perpose atfive times; maximum sampled error5.226391680327049e-7m. This is sampled agreement, not exhaustive animation proof.",
+      "sha256": "062663b22729fd9a74a30292b5c01a3f8aef0721afacbe87eeaabcde88cc880e"
+    },
+    {
+      "view": "Saved interior edit/browser agreement",
+      "reference": "evidence/edited-browser-poses.json",
+      "observation": "Saved Tail lift0.5 also matches browser deformation atfive times. Parent inspected clay and rear-material motion captures.",
+      "sha256": "062663b22729fd9a74a30292b5c01a3f8aef0721afacbe87eeaabcde88cc880e"
+    },
+    {
+      "view": "Author whole-geometry edit proof",
+      "reference": "evidence/author-native-proof.json",
+      "observation": "Frame0 terminal-cap rise0.1399784982m;967proximal vertices,43non-tail meshes, default/restoration/reload differenceszero. Maintained gate independently complements this author proof.",
+      "sha256": "b9043836ea8bd186e6730db0d65c1f8d9cf593f0c05ac2a8e1a021167a3f4ed4"
+    },
+    {
+      "view": "Discrete435pose clearance sweep",
+      "reference": "evidence/clearance-sweep.json",
+      "observation": "145integerframes times3values. Conservative whole-body clearance lowerbound0.06481m outside declared attachment; ground clearance0.06511m. Nominal15percent exclusion includes boundary triangles reaching15.56percent arclength; not a continuous-time collision guarantee.",
+      "sha256": "a1ab551becd48a59450d4b972470e12f8c07ee263f4f87a4719b05c80ddbd5c7"
+    },
+    {
+      "view": "Preserved raw attachment overlap",
+      "reference": "evidence/raw-attachment-sweep.json",
+      "observation": "Retains inherited proximal overlap rather than silently dropping the first sweep.69pairs perpose are reported unchanged; intentional rump attachment is distinct from distal clearance.",
+      "sha256": "86faa059c9dbdfe408605e5ac0d2ef425717e2a23e900c65d97a68a9c2ba41ec"
+    },
+    {
+      "view": "Independent Sol6.1high review",
+      "reference": "evidence/independent-review.json",
+      "observation": "Separate verifier inspected actual pixels before author assessment, verified40pins, and cleared the frozen candidate. This is not parent acceptance or user approval by itself.",
+      "sha256": "427b92d65d07948e73a29ac190f743ea22f503010707a29d57b752db4d2b0f15"
+    }
+  ]
+}

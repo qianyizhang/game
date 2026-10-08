@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "prowler",
+  "sourceBeforeSha256": "789f9bbb9ff46f04c165d7ffa72e35a16dc97af7b693f31350d792dec562e2ab",
+  "sourceEditedSha256": "d4d3e203961573dd1ffddd814cfa8c5e5e5bd7fa04a94010dea61acf930aeab3",
+  "control": {
+    "object": "EDIT | Tail",
+    "property": "Tail lift"
+  },
+  "original": 0.0,
+  "values": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "savedValue": 0.5,
+  "sampleFrames": [
+    0.0,
+    36.0,
+    72.0,
+    108.0,
+    144.0
+  ],
+  "sampleSeconds": [
+    0.0,
+    1.5,
+    3.0,
+    4.5,
+    6.0
+  ],
+  "moved": [
+    "Prowler_LivingTail"
+  ],
+  "fixed": [
+    "Prowler_Catchlight_-1",
+    "Prowler_Catchlight_1",
+    "Prowler_ContinuousAnatomy",
+    "Prowler_EarBowl_-1",
+    "Prowler_EarBowl_1",
+    "Prowler_EyeSocket_-1",
+    "Prowler_EyeSocket_1",
+    "Prowler_Follicle_-1_0",
+    "Prowler_Follicle_-1_1",
+    "Prowler_Follicle_-1_2",
+    "Prowler_Follicle_1_0",
+    "Prowler_Follicle_1_1",
+    "Prowler_Follicle_1_2",
+    "Prowler_Iris_-1",
+    "Prowler_Iris_1",
+    "Prowler_LeatherNose",
+    "Prowler_Mouth_-1",
+    "Prowler_Mouth_1",
+    "Prowler_Nostril_-1",
+    "Prowler_Nostril_1",
+    "Prowler_Philtrum",
+    "Prowler_Pupil_-1",
+    "Prowler_Pupil_1",
+    "Prowler_RoundedPinna_-1",
+    "Prowler_RoundedPinna_1",
+    "Prowler_ToeCrease_0_0",
+    "Prowler_ToeCrease_0_1",
+    "Prowler_ToeCrease_0_2",
+    "Prowler_ToeCrease_1_0",
+    "Prowler_ToeCrease_1_1",
+    "Prowler_ToeCrease_1_2",
+    "Prowler_ToeCrease_2_0",
+    "Prowler_ToeCrease_2_1",
+    "Prowler_ToeCrease_2_2",
+    "Prowler_ToeCrease_3_0",
+    "Prowler_ToeCrease_3_1",
+    "Prowler_ToeCrease_3_2",
+    "Prowler_Whisker_-1_0",
+    "Prowler_Whisker_-1_1",
+    "Prowler_Whisker_-1_2",
+    "Prowler_Whisker_1_0",
+    "Prowler_Whisker_1_1",
+    "Prowler_Whisker_1_2"
+  ],
+  "tolerance": 1e-06,
+  "adjacentValueMotion": [
+    {
+      "Prowler_LivingTail": 0.07000003514099964
+    },
+    {
+      "Prowler_LivingTail": 0.07000003514099964
+    }
+  ],
+  "maxFixedDifference": 0.0,
+  "maxRestorationDifference": 0.0,
+  "maxReloadDifference": 0.0
+}

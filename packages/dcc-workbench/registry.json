@@ -112,6 +112,34 @@
         "receipts": "assets/stormroc/receipts",
         "publication": "assets/stormroc/published"
       }
+    },
+    "prowler": {
+      "legacyStudyId": "prowler",
+      "source": "subjects/prowler/source.blend",
+      "brief": "subjects/prowler/brief.json",
+      "native": {
+        "adapter": "blender/export_saved.py",
+        "dependencies": [
+          "blender/export_saved.py",
+          "blender/saved_export_plan.py",
+          "blender/native_types.py"
+        ]
+      },
+      "delivery": {
+        "profile": "skinned",
+        "animation": {
+          "name": "prowler_idle",
+          "seconds": 6,
+          "fps": 24
+        },
+        "directory": "assets/prowler",
+        "model": "assets/prowler/model.glb",
+        "audit": "assets/prowler/authoring.json",
+        "poses": "assets/prowler/pose-samples.json",
+        "manifest": "assets/prowler/manifest.json",
+        "receipts": "assets/prowler/receipts",
+        "publication": "assets/prowler/published"
+      }
     }
   }
 }

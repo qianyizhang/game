@@ -1,0 +1,24 @@
+{
+  "asset": "prowler",
+  "delivery": {
+    "path": "packages/dcc-workbench/references/prowler/legacy-gallery.glb",
+    "sha256": "1a974712d1c806e3255b4ca1711a9a8623b97cf7c4e1e768c439fcc553eaf8a3"
+  },
+  "stats": {
+    "bytes": 6971352,
+    "triangles": 158456,
+    "meshes": 44,
+    "joints": 10
+  },
+  "sources": {
+    "src/art3d/prowler.ts": "a4a1ec7497fd8633bbf7cc321864c790d40be0e46a0c5e8b994194091244d704",
+    "src/art3d/animation.ts": "daedea163308461dad716e3c54c3fd026c3a13325ff599894b6a15000e8a431b",
+    "src/art3d/models.ts": "c0cb52a0a685248bcb17c44c2308f4724504de9298e66e459243d4c465da7e98"
+  },
+  "browser": {
+    "prowler-object.png": "707b97f9824d4713e6680af4a416a08a1bf2256e6424d9bd1e384e2a862aa957",
+    "prowler-side.png": "5ce8d7e5f6efbda1383390f6c52d81c5cf395fdc7aac63b1224bd40808aa3ae3",
+    "prowler-front.png": "c2442aee8121fa7a5d1a79f79352e3f675184ac79970a2ccfb9bae894da64363",
+    "prowler-phone-stage.png": "32b7930382ad827a5a6761d0718f423e31c3dd999daee6483d7b0eac44971314"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "review",
+  "at": "2026-10-08T09:25:40.844Z",
+  "package": "native-tail-gesture",
+  "reviewer": "prowler-reviewer",
+  "specHash": "480ac94cf4b9c7172a3819d2406093a02aa69c9bb8d6e41b8bf192da092451ac",
+  "candidate": {
+    "path": ".work/sessions/prowler-native-trial-2026-10-08/artist/candidate-manifest.json",
+    "sha256": "7d65cf9521e89685e4e210ee372dc7992aa289347fa7a9b1db32a5addb9f2adb"
+  },
+  "verdict": "clear",
+  "evidence": [
+    ".work/sessions/prowler-native-trial-2026-10-08/reviewer/verification-notes.json",
+    ".work/sessions/prowler-native-trial-2026-10-08/parent/verifier-handoff.md",
+    ".work/sessions/prowler-native-trial-2026-10-08/reviewer/audit-v3.json",
+    ".work/sessions/prowler-native-trial-2026-10-08/artist/author-manifest.json",
+    ".work/sessions/prowler-native-trial-2026-10-08/artist/brief.json",
+    ".work/sessions/prowler-native-trial-2026-10-08/artist/build_tail.py",
+    ".work/sessions/prowler-native-trial-2026-10-08/artist/sweep_clearance.py",
+    "test-results/prowler-native-trial/artist/native-proof.json",
+    "test-results/prowler-native-trial/artist/clearance-sweep.json",
+    "test-results/prowler-native-trial/artist/clearance-sweep-initial-attachment.json",
+    "test-results/prowler-native-trial/artist/default/front-clay.png",
+    "test-results/prowler-native-trial/artist/default/side-clay.png",
+    "test-results/prowler-native-trial/artist/default/rear-clay.png",
+    "test-results/prowler-native-trial/artist/maximum/front-clay.png",
+    "test-results/prowler-native-trial/artist/maximum/side-clay.png",
+    "test-results/prowler-native-trial/artist/maximum/rear-clay.png",
+    "test-results/prowler-native-trial/artist/maximum/front-material.png",
+    "test-results/prowler-native-trial/artist/maximum/rear-material.png",
+    "test-results/prowler-native-trial/artist/worst-approach/above-clay.png",
+    "test-results/prowler-native-trial/artist/worst-approach/rear-clay.png",
+    "test-results/prowler-native-trial/artist/worst-approach-marked/rear-clay.png",
+    "test-results/prowler-native-trial/artist/motion-extreme/rear-clay.png",
+    "test-results/prowler-native-trial/artist/motion-extreme/side-clay.png"
+  ],
+  "critique": "Clear this frozen tail-edit package for parent integration. Actual default front/side/rear clay retains the low stalking silhouette, continuous shoulder/haunch/root, unequal paws, turned head, ears and whiskers. Maximum side/rear clay shows a useful raised distal curl with continuous taper and no visible influence-boundary kink; maximum front/rear material retains coat and amber-eyed identity. Worst-approach above/rear clay and marked rear at value0/frame0 visibly separate the free tail from the haunch; motion-extreme rear/side at value1/frame78 retains root fit and whole-creature coherence. All40 manifest pins match. Recomputed imported topology cross-section centers and anchored sets agree with the centerline declaration. Recorded five-frame native proof gives0.139978498m frame0 cap lift, two approximately0.07m adjacent edit steps, and zero baseline/fixed/proximal/restoration/reload errors. The complete435-pose sweep records zero free-tail/body intersections, conservative body clearance >=0.064807782m and support clearance >=0.065107532m. Retain the raw69 inherited proximal attachment crossing pairs per pose as an explicit unchanged overlap, not a penetration-free whole-tail claim. Precision correction for final reporting: the exclusion selects faces with any vertex below15% arclength; boundary-straddling faces extend to15.5566407%, still wholly inside the unchanged anchored half and beyond the observed inherited contact maximum11.1122174%. No geometry repair requested. Integer-frame evidence does not prove arbitrary subframes; static native edit is not exported morph animation. Maintained native save/export/consumer agreement, GLB caps, phone/UI review and final parent gallery acceptance remain pending; this clearance does not substitute for those gates.",
+  "role": "independent candidate verifier",
+  "model": "gpt-6.1-sol",
+  "effort": "high"
+}

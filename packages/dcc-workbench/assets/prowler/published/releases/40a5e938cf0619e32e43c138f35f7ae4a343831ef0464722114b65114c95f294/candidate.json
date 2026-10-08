@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "prowler",
+  "definitionDigest": "b72c1d8793a50777ed9cbd9c23c7e49fe7f3b8ba630ec2e1a1c959cd3b2c6390",
+  "definition": {
+    "id": "prowler",
+    "legacyStudyId": "prowler",
+    "source": "subjects/prowler/source.blend",
+    "brief": "subjects/prowler/brief.json",
+    "native": {
+      "adapter": "blender/export_saved.py",
+      "dependencies": [
+        "blender/export_saved.py",
+        "blender/native_types.py",
+        "blender/saved_export_plan.py"
+      ]
+    },
+    "delivery": {
+      "profile": "skinned",
+      "animation": {
+        "name": "prowler_idle",
+        "seconds": 6,
+        "fps": 24
+      },
+      "directory": "assets/prowler",
+      "model": "assets/prowler/model.glb",
+      "audit": "assets/prowler/authoring.json",
+      "poses": "assets/prowler/pose-samples.json",
+      "manifest": "assets/prowler/manifest.json",
+      "receipts": "assets/prowler/receipts",
+      "publication": "assets/prowler/published"
+    }
+  },
+  "inputs": {
+    "blender/export_saved.py": "ccc388de6b6ddd622c6884a7f65f9893e6a752f355b95c63af0b48f41a2243c6",
+    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31",
+    "blender/saved_export_plan.py": "c9d0858b8ae79fb7d85f0069010227fa3769c7f3f1604047dd277664411bfc42",
+    "contracts.ts": "3778dc4197634712de81808e45638f27be3d13a3a9b35d258ef8f9dededecb93",
+    "glb.ts": "752b2adbc98a0559577236a9399e2ecc1e83281ce32a82e1d0760cc48d7e13da",
+    "pipeline.mjs": "085eee0376f80c6d06e30d2c51320deb88c430c1b50bc3144b834a88e007e4f4",
+    "pipeline.ts": "17d75f1236d726a73c659bfa28a6cab6fbdbc87592289fd38c88c8aecbfc7952",
+    "registry.ts": "d6a06ef24b7cd16c5e840c218c57a6c6cab85455d8ba694e069a4d247f49bafa",
+    "releases.ts": "9306fa9b206f015a07f4e415154505a95116df5ae47c5aeec0428ee865526a86",
+    "subjects/prowler/brief.json": "8df1d95de208075cfab5f6ebb8b389bbd9295fe4da54af99ef1769348e4690e9",
+    "subjects/prowler/source.blend": "789f9bbb9ff46f04c165d7ffa72e35a16dc97af7b693f31350d792dec562e2ab"
+  },
+  "previous": null,
+  "origin": {
+    "kind": "exported"
+  },
+  "outputs": {
+    "model": {
+      "path": "prowler.pending.glb",
+      "sha256": "e5d35b021a9c3fb66a6d8f3587167d3870aa963fe1e4f1565705a46361c053be"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "bb3266f2b27f88a6135b9ca86f869a61f159ae42f452e002eb7a854b415981b0"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "055dcb09d7c48f362403094a30cd6f08d753875956787671c02472aaa9d3e26f"
+    }
+  },
+  "stats": {
+    "bytes": 6491440,
+    "triangles": 158446,
+    "meshes": 44,
+    "materials": 11,
+    "textures": 9,
+    "joints": 10,
+    "animations": [
+      {
+        "name": "prowler_idle",
+        "seconds": 6,
+        "channels": 34
+      }
+    ]
+  }
+}

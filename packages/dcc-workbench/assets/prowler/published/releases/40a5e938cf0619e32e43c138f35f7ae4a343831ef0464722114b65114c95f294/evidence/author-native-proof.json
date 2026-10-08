@@ -1,0 +1,289 @@
+{
+  "specSha256": "480ac94cf4b9c7172a3819d2406093a02aa69c9bb8d6e41b8bf192da092451ac",
+  "sourceSha256": "789f9bbb9ff46f04c165d7ffa72e35a16dc97af7b693f31350d792dec562e2ab",
+  "editedSourceSha256": "0c6f34cc6542e86f46afc5e8cea4b86973c32d315caac2e75616a3d531a51f94",
+  "control": {
+    "object": "EDIT | Tail",
+    "property": "Tail lift"
+  },
+  "values": [
+    0,
+    0.5,
+    1
+  ],
+  "frames": [
+    0,
+    36,
+    72,
+    108,
+    144
+  ],
+  "maxValue0BaselineDifference": 0.0,
+  "adjacentValueMaximumMovement": [
+    0.07000003389731574,
+    0.07000003389731574
+  ],
+  "maxFixedDifference": 0.0,
+  "maxProximalAnchorDifference": 0.0,
+  "maxRestorationDifference": 0.0,
+  "maxReloadDifference": 0.0,
+  "savedReloadValue": 0.5,
+  "capCenters": [
+    {
+      "value": 0,
+      "frame": 0,
+      "center": [
+        0.18652701377868652,
+        0.839789628982544,
+        0.37351205945014954
+      ],
+      "displacement": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "value": 0,
+      "frame": 36,
+      "center": [
+        0.17658010125160217,
+        0.7874583601951599,
+        0.3707648515701294
+      ],
+      "displacement": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "value": 0,
+      "frame": 72,
+      "center": [
+        0.1783011555671692,
+        0.7204879522323608,
+        0.3266156315803528
+      ],
+      "displacement": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "value": 0,
+      "frame": 108,
+      "center": [
+        0.1844661980867386,
+        0.7725080847740173,
+        0.32923024892807007
+      ],
+      "displacement": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "value": 0,
+      "frame": 144,
+      "center": [
+        0.18652701377868652,
+        0.839789628982544,
+        0.37351205945014954
+      ],
+      "displacement": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "value": 0.5,
+      "frame": 0,
+      "center": [
+        0.18775448203086853,
+        0.839783251285553,
+        0.4435013234615326
+      ],
+      "displacement": [
+        0.0012274682521820068,
+        -6.377696990966797e-06,
+        0.06998926401138306
+      ]
+    },
+    {
+      "value": 0.5,
+      "frame": 36,
+      "center": [
+        0.18105566501617432,
+        0.7872797250747681,
+        0.44062143564224243
+      ],
+      "displacement": [
+        0.0044755637645721436,
+        -0.0001786351203918457,
+        0.06985658407211304
+      ]
+    },
+    {
+      "value": 0.5,
+      "frame": 72,
+      "center": [
+        0.17707368731498718,
+        0.7204816341400146,
+        0.39660489559173584
+      ],
+      "displacement": [
+        -0.0012274682521820068,
+        -6.318092346191406e-06,
+        0.06998926401138306
+      ]
+    },
+    {
+      "value": 0.5,
+      "frame": 108,
+      "center": [
+        0.17999064922332764,
+        0.7723294496536255,
+        0.3990868330001831
+      ],
+      "displacement": [
+        -0.00447554886341095,
+        -0.0001786351203918457,
+        0.06985658407211304
+      ]
+    },
+    {
+      "value": 0.5,
+      "frame": 144,
+      "center": [
+        0.18775448203086853,
+        0.839783251285553,
+        0.4435013234615326
+      ],
+      "displacement": [
+        0.0012274682521820068,
+        -6.377696990966797e-06,
+        0.06998926401138306
+      ]
+    },
+    {
+      "value": 1,
+      "frame": 0,
+      "center": [
+        0.18898195028305054,
+        0.839776873588562,
+        0.5134905576705933
+      ],
+      "displacement": [
+        0.0024549365043640137,
+        -1.2755393981933594e-05,
+        0.13997849822044373
+      ]
+    },
+    {
+      "value": 1,
+      "frame": 36,
+      "center": [
+        0.18553119897842407,
+        0.7871010899543762,
+        0.5104780197143555
+      ],
+      "displacement": [
+        0.0089510977268219,
+        -0.0003572702407836914,
+        0.13971316814422607
+      ]
+    },
+    {
+      "value": 1,
+      "frame": 72,
+      "center": [
+        0.17584621906280518,
+        0.7204751968383789,
+        0.4665941298007965
+      ],
+      "displacement": [
+        -0.0024549365043640137,
+        -1.2755393981933594e-05,
+        0.13997849822044373
+      ]
+    },
+    {
+      "value": 1,
+      "frame": 108,
+      "center": [
+        0.1755151003599167,
+        0.7721508145332336,
+        0.46894338726997375
+      ],
+      "displacement": [
+        -0.0089510977268219,
+        -0.0003572702407836914,
+        0.1397131383419037
+      ]
+    },
+    {
+      "value": 1,
+      "frame": 144,
+      "center": [
+        0.18898195028305054,
+        0.839776873588562,
+        0.5134905576705933
+      ],
+      "displacement": [
+        0.0024549365043640137,
+        -1.2755393981933594e-05,
+        0.13997849822044373
+      ]
+    }
+  ],
+  "frame0MaxCapLiftWorldZ": 0.13997849822044373,
+  "allFixedMeshes": [
+    "Prowler_Catchlight_-1",
+    "Prowler_Catchlight_1",
+    "Prowler_ContinuousAnatomy",
+    "Prowler_EarBowl_-1",
+    "Prowler_EarBowl_1",
+    "Prowler_EyeSocket_-1",
+    "Prowler_EyeSocket_1",
+    "Prowler_Follicle_-1_0",
+    "Prowler_Follicle_-1_1",
+    "Prowler_Follicle_-1_2",
+    "Prowler_Follicle_1_0",
+    "Prowler_Follicle_1_1",
+    "Prowler_Follicle_1_2",
+    "Prowler_Iris_-1",
+    "Prowler_Iris_1",
+    "Prowler_LeatherNose",
+    "Prowler_Mouth_-1",
+    "Prowler_Mouth_1",
+    "Prowler_Nostril_-1",
+    "Prowler_Nostril_1",
+    "Prowler_Philtrum",
+    "Prowler_Pupil_-1",
+    "Prowler_Pupil_1",
+    "Prowler_RoundedPinna_-1",
+    "Prowler_RoundedPinna_1",
+    "Prowler_ToeCrease_0_0",
+    "Prowler_ToeCrease_0_1",
+    "Prowler_ToeCrease_0_2",
+    "Prowler_ToeCrease_1_0",
+    "Prowler_ToeCrease_1_1",
+    "Prowler_ToeCrease_1_2",
+    "Prowler_ToeCrease_2_0",
+    "Prowler_ToeCrease_2_1",
+    "Prowler_ToeCrease_2_2",
+    "Prowler_ToeCrease_3_0",
+    "Prowler_ToeCrease_3_1",
+    "Prowler_ToeCrease_3_2",
+    "Prowler_Whisker_-1_0",
+    "Prowler_Whisker_-1_1",
+    "Prowler_Whisker_-1_2",
+    "Prowler_Whisker_1_0",
+    "Prowler_Whisker_1_1",
+    "Prowler_Whisker_1_2"
+  ]
+}

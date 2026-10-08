@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "kind": "saved-export",
+  "id": "prowler",
+  "source": "subjects/prowler/source.blend",
+  "sourceSha256": "789f9bbb9ff46f04c165d7ffa72e35a16dc97af7b693f31350d792dec562e2ab",
+  "sourceUnchangedByExport": true,
+  "blender": "4.5.14 LTS",
+  "profile": "skinned",
+  "collection": "DELIVERY | Alley Prowler",
+  "animation": {
+    "name": "prowler_idle",
+    "seconds": 6.0,
+    "fps": 24
+  },
+  "audit": {
+    "sampleFrames": [
+      0.0,
+      36.0,
+      72.0,
+      108.0,
+      144.0
+    ],
+    "meshCount": 44,
+    "skinnedMeshCount": 2,
+    "rigidMeshCount": 42,
+    "maxSkinnedMotion": 0.1292658100832451,
+    "maxRigidMotion": 0.05603947981256466,
+    "maxLoopDifference": 0.0,
+    "maxSourceDeliveryDifference": 0.0,
+    "requireRigidMotion": true,
+    "motionTolerance": 1e-06,
+    "loopTolerance": 1e-05,
+    "objects": [
+      {
+        "name": "Prowler_Catchlight_-1",
+        "role": "rigid",
+        "maxMotion": 0.04051251033038075,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Catchlight_1",
+        "role": "rigid",
+        "maxMotion": 0.03186877555307299,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ContinuousAnatomy",
+        "role": "skinned",
+        "maxMotion": 0.041965242147494586,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_EarBowl_-1",
+        "role": "rigid",
+        "maxMotion": 0.03539723988235032,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_EarBowl_1",
+        "role": "rigid",
+        "maxMotion": 0.012741090535237707,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_EyeSocket_-1",
+        "role": "rigid",
+        "maxMotion": 0.03934581802103156,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_EyeSocket_1",
+        "role": "rigid",
+        "maxMotion": 0.03019353031070645,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Follicle_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.041072014644155164,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Follicle_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.041238029196903725,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Follicle_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.041555653608792875,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Follicle_1_0",
+        "role": "rigid",
+        "maxMotion": 0.038518940774404875,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Follicle_1_1",
+        "role": "rigid",
+        "maxMotion": 0.037874192704916224,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Follicle_1_2",
+        "role": "rigid",
+        "maxMotion": 0.037287018786795814,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Iris_-1",
+        "role": "rigid",
+        "maxMotion": 0.039915460817142145,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Iris_1",
+        "role": "rigid",
+        "maxMotion": 0.031199362205981847,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_LeatherNose",
+        "role": "rigid",
+        "maxMotion": 0.04205035110100915,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_LivingTail",
+        "role": "skinned",
+        "maxMotion": 0.1292658100832451,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Mouth_-1",
+        "role": "rigid",
+        "maxMotion": 0.03966393795191823,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Mouth_1",
+        "role": "rigid",
+        "maxMotion": 0.03881112812587572,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Nostril_-1",
+        "role": "rigid",
+        "maxMotion": 0.040454070772197114,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Nostril_1",
+        "role": "rigid",
+        "maxMotion": 0.038881914180341016,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Philtrum",
+        "role": "rigid",
+        "maxMotion": 0.04070655802789483,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Pupil_-1",
+        "role": "rigid",
+        "maxMotion": 0.039896429716824416,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Pupil_1",
+        "role": "rigid",
+        "maxMotion": 0.03161135823766088,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_RoundedPinna_-1",
+        "role": "rigid",
+        "maxMotion": 0.038560045337928645,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_RoundedPinna_1",
+        "role": "rigid",
+        "maxMotion": 0.01635138901222979,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_0_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_0_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_0_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_2_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_2_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_2_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_3_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_3_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_ToeCrease_3_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Whisker_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.05157852196547044,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Whisker_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.05374815531919058,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Whisker_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.05603947981256466,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Whisker_1_0",
+        "role": "rigid",
+        "maxMotion": 0.04586750679332927,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Whisker_1_1",
+        "role": "rigid",
+        "maxMotion": 0.04646210822800301,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Prowler_Whisker_1_2",
+        "role": "rigid",
+        "maxMotion": 0.04709212067881034,
+        "maxLoopDifference": 0.0
+      }
+    ]
+  }
+}
