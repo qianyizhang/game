@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "stormroc",
+  "kind": "preserved-procedural-gallery",
+  "capturedOn": "2026-10-08",
+  "origin": "Actual gallery browser download before native migration; existing Stormroc delivered-file and motion roundtrip passed",
+  "stats": {
+    "stats": {
+      "bytes": 11331700,
+      "triangles": 276628,
+      "meshes": 446,
+      "materials": 8,
+      "textures": 8,
+      "joints": 3,
+      "animations": [
+        {
+          "name": "stormroc_idle",
+          "seconds": 6,
+          "channels": 9
+        }
+      ]
+    },
+    "distinctJoints": 3,
+    "skinDefinitions": 67,
+    "skinnedNodes": 67,
+    "meshNodes": 446,
+    "images": 8
+  },
+  "files": {
+    "legacy-front.png": "277a19b0a14c9c95628650db218f25093c2decc2cf6c4abfbadeef88ba5f4342",
+    "legacy-gallery.glb": "9337b28188cb668a599c16324c529bc017545798d024d3e1ce174f37bb041ac0",
+    "legacy-gallery.png": "3ca046f0ff27737d53c9e47e7fec0131aa03559bbb6ab9c48ef763daa035e743",
+    "legacy-side.png": "732faae7e5eed95414388894cf076d30f4538a41a334844942921da31cc3b4a9"
+  },
+  "sourcePins": {
+    "stormroc.ts": "99e5419c11c763967a457674881285a85c7205c9b26095565966e791716d7b38",
+    "stormroc.test.ts": "9c25788547c1416e10b9dbf029b37d152726c8290b1764d7ded92f3bf254c521",
+    "animation.ts": "daedea163308461dad716e3c54c3fd026c3a13325ff599894b6a15000e8a431b",
+    "models.ts": "c0cb52a0a685248bcb17c44c2308f4724504de9298e66e459243d4c465da7e98"
+  },
+  "sourceHome": "src/art3d/; exact source snapshots retained in protected .work/sessions/native-batch-1-2026-10-08/stormroc/baseline/",
+  "captureConditions": "Existing gallery studio camera/light at paused time0. Material views only; native matched clay review follows import.",
+  "verification": "test-results/native-batch-1/stormroc/baseline-gallery/art3d-Stormroc-renders-exp-e7a39-hone-without-changing-saves/stormroc-roundtrip.json",
+  "approvalLimit": "Preserved current gallery comparison; no new user art approval asserted."
+}
