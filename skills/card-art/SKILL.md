@@ -17,7 +17,7 @@ Keep a brief in working notes:
 
 For a set, draw and inspect its hardest or most representative subject before repeating the approach. For living subjects, follow the rulebook’s “From blockout to a living subject” sequence: interpretation and gesture, anatomical transitions, surface hierarchy, fitted motion, then multi-view and export review.
 
-When delegation is requested, read the [bounded delegation protocol](../../docs/art/delegation.md) before specification audit, author/verifier dispatch, repair or takeover. It owns the shared-spec handoffs, cumulative limits and Astra final gate. The rulebook remains the visual standard.
+When delegation is requested, read the [asset delegation protocol](../../docs/art/delegation.md) before specification audit, author/verifier dispatch, repair or takeover. It owns the shared-spec handoffs, cumulative limits and Astra final gate. The rulebook remains the visual standard.
 
 ## Choose the medium
 

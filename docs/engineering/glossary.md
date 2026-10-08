@@ -62,6 +62,18 @@ _Avoid_: Full state, when referring to a policy's permitted view.
 
 **Study**: One named artwork explored in the gallery, with its own physical interpretation and intended gesture.
 
+**Asset delegation protocol**: The agreed roles, handoffs, review authority and resource limits governing collaborative native-asset authoring.
+_Avoid_: Strategy, when referring specifically to these operating rules.
+
+**Asset delivery pipeline**: The technical sequence that turns an artist source into a verified candidate and a published asset release.
+_Avoid_: Delegation protocol, when referring to export and publication machinery.
+
+**Native asset trial**: One bounded execution of the asset delegation protocol for a single study, from baseline preparation through a recorded accepted or unfinished outcome.
+_Avoid_: Batch, when referring to one subject's trial.
+
+**Asset work package**: A bounded authoring assignment within a native asset trial, with an identified scope, attachment or motion interfaces and acceptance criteria. A trial may contain more than one package.
+_Avoid_: Trial, when referring only to one assignment within it.
+
 **Artist source**: The editable artwork from which a delivered model is produced.
 _Avoid_: Delivered model, when referring to the editable authoring source.
 
@@ -82,4 +94,4 @@ _Avoid_: Release, when the revision has not been promoted.
 
 ## Meaning authorities
 
-Definitions consolidate existing behavior from [architecture](architecture.md), [challenges](../guide/challenges.md), [arena contracts](../guide/hearth-arena.md), the [art rulebook](../art/art-direction.md) and [native asset migration](../art/migration.md). Detailed mechanics and implementation remain in those documents and the owning game. Sharpen definitions as actual ambiguities arise; keep implementation procedures out of this glossary.
+Definitions consolidate existing behavior from [architecture](architecture.md), [challenges](../guide/challenges.md), [arena contracts](../guide/hearth-arena.md), the [art rulebook](../art/art-direction.md), [native asset migration](../art/migration.md) and the [asset delegation protocol](../art/delegation.md). Detailed mechanics and implementation remain in those documents and the owning game. Sharpen definitions as actual ambiguities arise; keep implementation procedures out of this glossary.

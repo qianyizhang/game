@@ -1,4 +1,4 @@
-# Bounded art delegation
+# Asset delegation protocol
 
 This protocol governs bounded native-asset delegation. The original **Storm Roc adoption trial (2026-10-08)** stopped before repair authoring; a later explicit user instruction authorized parent refinement, followed by this scaffold revision and a new-model trial. Preserve the original trial's limits, receipts and outcome. The [batch retrospective](assets/native-batch-1.md) owns those results. Use the [rulebook](art-direction.md) for quality and [migration contract](migration.md) for publication. This is a workflow trial, not a model capability benchmark.
 
