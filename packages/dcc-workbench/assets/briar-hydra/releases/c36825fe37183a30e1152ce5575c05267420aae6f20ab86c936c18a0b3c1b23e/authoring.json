@@ -1,0 +1,25 @@
+{
+  "blender": "4.5.14 LTS",
+  "features": "Bezier curves; voxel remesh; smooth; live subdivision; armature; F-curves; UV atlas; procedural pigment and normal bake",
+  "constructionCurves": 10,
+  "sourceMeshes": 244,
+  "liveSubdivisionModifiers": 4,
+  "packedImages": [
+    "Hydra | baked marsh pigment",
+    "Hydra | baked scale relief"
+  ],
+  "action": "Marsh Vigil",
+  "audit": {
+    "sampleFrames": [
+      1,
+      37,
+      73,
+      109,
+      145
+    ],
+    "fixedVertices": 7725,
+    "maxAnchorDrift": 0.0,
+    "maxLoopDifference": 0.0,
+    "maxMidpointDeformation": 0.0756553826609481
+  }
+}

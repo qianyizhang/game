@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "candidateDigest": "45269d52290e29d5bf335dd999571e436d1cbba044cbaa832126f551d8e954dd",
+  "reviewer": {
+    "role": "parent",
+    "name": "Codex parent migration review"
+  },
+  "decision": "accepted",
+  "scope": "workbench",
+  "evidence": [
+    {
+      "view": "Retained workbench clay, 2026-10-07",
+      "reference": "evidence/clay.png",
+      "observation": "Independently inspected. Export SHA256 b1c2472346d8753385a8bb0e02b9e877e20e2ec973d7ae8d7fe5097ed8a7051d exactly matches existing pilot delivery. Preserve existing workbench baseline; heavy root mass and rodlike neck attachments remain below gallery target. This is not aesthetic promotion.",
+      "sha256": "d2b4b7057d9684ae8aa50121dbd22df101a65daed4cc8e652013fb91d0bccbf2"
+    },
+    {
+      "view": "Retained workbench material, 2026-10-07",
+      "reference": "evidence/material.png",
+      "observation": "Independently inspected same-byte baseline. Material, fitted mouths and existing display preserved. Workbench-only acceptance; later accepted-form Hydra remains a separate candidate.",
+      "sha256": "34eec2b92b3eeacbbf0bf5c8966a189525b08a0a2b3d01940b74654c1f154edd"
+    }
+  ]
+}

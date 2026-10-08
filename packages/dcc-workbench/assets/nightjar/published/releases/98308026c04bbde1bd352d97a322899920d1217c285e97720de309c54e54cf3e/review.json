@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "nightjar",
+  "candidateDigest": "84d43906dbbd6503128ba86a03d64d6df1c269bf2e8fbd090f82b3f7261dc509",
+  "reviewer": {
+    "role": "parent",
+    "name": "Codex parent"
+  },
+  "decision": "accepted",
+  "scope": "gallery",
+  "evidence": [
+    {
+      "view": "Delivered clay profile",
+      "reference": "evidence/browser-front-clay.png",
+      "observation": "Continuous head/body gesture and layered wing read at the consumer camera. The quiet perching silhouette remains intact.",
+      "sha256": "9d8462892d58d95bc5ab789dced72e1473ef0847d552205cdf31108d8b98fdf9"
+    },
+    {
+      "view": "Delivered opposite profile",
+      "reference": "evidence/browser-back-clay.png",
+      "observation": "Opposite wing and supports remain coherent at the sampled idle extreme. Native anatomical rear is inspected separately.",
+      "sha256": "36ae70435b1bb8a8795d6ee90bb2017bc637d195915508bd0a1708eb315dc94a"
+    },
+    {
+      "view": "Delivered material",
+      "reference": "evidence/browser-material.png",
+      "observation": "Muted mottled plumage and directional wing markings preserve the intended subject. Material does not mask the clay decisions.",
+      "sha256": "388f0c8e0b7c36b2a79e541fb3a12691713631bb92e3f651844e205434fec509"
+    },
+    {
+      "view": "390px browser framing",
+      "reference": "evidence/browser-phone.png",
+      "observation": "Complete bird and support are framed without clipping. This is layout evidence, not physical-phone performance.",
+      "sha256": "494af0352981dc545311e43fde3ce1efabf89f8673da52d2eb6ad5224ace0bbc"
+    },
+    {
+      "view": "Independent native-to-browser geometry",
+      "reference": "evidence/browser-poses.json",
+      "observation": "1360 points across 85 meshes at five poses agree within 2.483e-7 model units, including rigid attachments and skinned anatomy.",
+      "sha256": "8e1d8d56d5ad0f1bb334b0b10fc3469cd61a344feefe21b7ecfcedf8c184aadc"
+    },
+    {
+      "view": "Anatomical rear clay",
+      "reference": "evidence/native-rear-clay.png",
+      "observation": "Body-following mantle, shallow coverts and converging flight tips resolve the broad detached-crescent construction. Narrow paired tip clearance remains a visible stylization accepted for this delivery.",
+      "sha256": "2e9b8c37e9e82147508932159db9d23909b86407b604a16b915014d6eddfb9bb"
+    },
+    {
+      "view": "Native clay silhouette",
+      "reference": "evidence/native-side-clay.png",
+      "observation": "Low horizontal perching body has believable short supports; tail, bill and folded wings remain subordinate to the living mass.",
+      "sha256": "07e6604cf9620cd7704a364860ada25b44fb4b9c63bf31200dc3a77f180cac57"
+    },
+    {
+      "view": "Native material hero",
+      "reference": "evidence/native-hero-material.png",
+      "observation": "Regional wings and branch retain a quiet natural palette; this is a stylized gallery sculpture, not a claim of complete anatomical retopology.",
+      "sha256": "c9f26f6deb601d8c8b6edd038a2b4c976f66dd200215643920140be8b9959e39"
+    },
+    {
+      "view": "Enlarged grip at rest",
+      "reference": "evidence/native-grip-side.png",
+      "observation": "Forward digits and opposing toe wrap the branch and connect to the ankle. The previous floating front toes are resolved.",
+      "sha256": "f029ff8e14e9a42172842ee0c99d2196cbd0c78609f6197fe35ba9030c836df5"
+    },
+    {
+      "view": "Enlarged underside at idle extreme",
+      "reference": "evidence/native-grip-underside.png",
+      "observation": "Both grips remain attached through the ankle and short folded supports at the inspected extreme.",
+      "sha256": "ad6dd3dc22463c32e2ceb9cb3dab714e9250dd325ce5ee6e162f7946cd5f21b9"
+    },
+    {
+      "view": "Wing control maximum on preceding wing-identical source",
+      "reference": "evidence/wing-maximum-rear-clay.png",
+      "observation": "Maximum folded-wing edit preserves converging tips and mantle fit. This capture is from 1a9f8ac0; final-source fingerprints and full animation comparison prove the wing/control content unchanged after grip-only correction.",
+      "sha256": "5833d00a3be645e320df724268094f7ebfc5c7acae0428c237fd2660fee244fd"
+    },
+    {
+      "view": "Measured support contact",
+      "reference": "evidence/contact-review.json",
+      "observation": "Eight digits/halluces intersect the actual branch surface at all five sampled frames; support displacement is zero. Signed-distance probes complement visual inspection and are not exhaustive collision analysis.",
+      "sha256": "1bd9a136e1c454fabbe715e1a9d35e17c5fe4ea691f7ba1c7772640686fbb241"
+    },
+    {
+      "view": "Regional edit preservation",
+      "reference": "evidence/regional-preservation.json",
+      "observation": "All 44 wing meshes plus body and branch retain native fingerprints from the reviewed fold-path source; controls and pivot action associations are unchanged.",
+      "sha256": "10cc70700cbc1e0d5bea1ab223747638c21b1158244e5dabf24c51e303025cdc"
+    },
+    {
+      "view": "Animation and connection preservation",
+      "reference": "evidence/animation-and-attachments.json",
+      "observation": "Full action curves, keys, handles, interpolation, associations and scene clock are unchanged. Fourteen attachment probes intersect their targets at all five sampled frames.",
+      "sha256": "dd3daf12bb60389fdd18782a93149ba54e350a7e9c8a6ca7c857aa58af09bc7d"
+    },
+    {
+      "view": "Saved native semantic edit",
+      "reference": "evidence/native-edit.json",
+      "observation": "Fold settle values 0, 0.5 and 1 move the declared fitted wing probes while fixed probes stay still; restoration, edited save/reload and export passed.",
+      "sha256": "d39d55fcfbc9457b089eb932166396fb0e531b394344df424feafef3c88efd61"
+    },
+    {
+      "view": "Native gate isolation",
+      "reference": "evidence/production-preservation.json",
+      "observation": "The native edit gate preserved production source and then-current publication pins; it modified only the protected test copy.",
+      "sha256": "91b4dc7327041ada25842a5033bfc8064984bf9bce8ef39ba704196858929e76"
+    },
+    {
+      "view": "Frozen artist handoff",
+      "reference": "evidence/artist-freeze.json",
+      "observation": "Final source is 9f9dca76; artist self-review and evidence ownership remain distinct from this parent gallery verdict.",
+      "sha256": "6c993e48450a50f0619ee6ce8a9c1ee0672aa73671ca1dc78621a077d54732c0"
+    }
+  ]
+}

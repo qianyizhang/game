@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "briar-hydra": {
+      "legacyStudyId": "hydra",
+      "source": "subjects/briar-hydra/source.blend",
+      "brief": "subjects/briar-hydra/brief.json",
+      "native": {
+        "adapter": "blender/export_saved.py",
+        "dependencies": [
+          "blender/export_saved.py",
+          "blender/saved_export_plan.py",
+          "blender/native_types.py"
+        ]
+      },
+      "delivery": {
+        "profile": "skinned",
+        "animation": {
+          "name": "hydra_idle",
+          "seconds": 6,
+          "fps": 24
+        },
+        "directory": "assets",
+        "model": "assets/briar-hydra.glb",
+        "audit": "assets/authoring.json",
+        "poses": "assets/pose-samples.json",
+        "manifest": "assets/manifest.json",
+        "receipts": "assets/receipts",
+        "publication": "assets/briar-hydra"
+      }
+    },
+    "nightjar": {
+      "legacyStudyId": "nightjar",
+      "source": "subjects/nightjar/source.blend",
+      "brief": "subjects/nightjar/brief.json",
+      "native": {
+        "adapter": "blender/export_saved.py",
+        "dependencies": [
+          "blender/export_saved.py",
+          "blender/saved_export_plan.py",
+          "blender/native_types.py"
+        ]
+      },
+      "delivery": {
+        "profile": "skinned",
+        "animation": {
+          "name": "nightjar_idle",
+          "seconds": 6,
+          "fps": 24
+        },
+        "directory": "assets/nightjar",
+        "model": "assets/nightjar/model.glb",
+        "audit": "assets/nightjar/authoring.json",
+        "poses": "assets/nightjar/pose-samples.json",
+        "manifest": "assets/nightjar/manifest.json",
+        "receipts": "assets/nightjar/receipts",
+        "publication": "assets/nightjar/published"
+      }
+    }
+  }
+}

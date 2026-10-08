@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "nightjar",
+  "sourceBeforeSha256": "80e88802cf8e00a9b74effc5b85516c772f1001ccbd5b94176a5860836923761",
+  "sourceEditedSha256": "41f2bc5a754f07429ed9065d841e017d3ae6417649fc0ecc7c0cfb3cc012736e",
+  "control": {
+    "object": "EDIT | FoldedWing.1",
+    "property": "Fold fit"
+  },
+  "original": 1.0,
+  "values": [
+    0.0,
+    0.6,
+    1.2
+  ],
+  "savedValue": 0.6,
+  "sampleFrames": [
+    0.0,
+    36.0,
+    72.0,
+    108.0,
+    144.0
+  ],
+  "sampleSeconds": [
+    0.0,
+    1.5,
+    3.0,
+    4.5,
+    6.0
+  ],
+  "moved": [
+    "Nightjar_WingMantle_1",
+    "Nightjar_Primary_1_0",
+    "Nightjar_Secondary_1_0",
+    "Nightjar_Scapular_1_0"
+  ],
+  "fixed": [
+    "Mesh_0",
+    "Nightjar_SmallFittedBill",
+    "Nightjar_RecessedIris_1",
+    "Nightjar_NaturalThinBranch",
+    "Nightjar_WrappedToe_0_0",
+    "Nightjar_Scapular_-1_0"
+  ],
+  "tolerance": 1e-06,
+  "adjacentValueMotion": [
+    {
+      "Nightjar_WingMantle_1": 0.052252077878014676,
+      "Nightjar_Primary_1_0": 0.0478057052257396,
+      "Nightjar_Secondary_1_0": 0.04462418398677365,
+      "Nightjar_Scapular_1_0": 0.04234944969062703
+    },
+    {
+      "Nightjar_WingMantle_1": 0.052252077781581564,
+      "Nightjar_Primary_1_0": 0.047805697041231866,
+      "Nightjar_Secondary_1_0": 0.044624206394981374,
+      "Nightjar_Scapular_1_0": 0.04234944622095265
+    }
+  ],
+  "maxFixedDifference": 0.0,
+  "maxRestorationDifference": 0.0,
+  "maxReloadDifference": 0.0
+}

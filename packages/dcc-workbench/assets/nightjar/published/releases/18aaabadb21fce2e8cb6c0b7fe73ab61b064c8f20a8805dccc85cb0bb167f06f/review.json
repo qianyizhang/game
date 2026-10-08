@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "id": "nightjar",
+  "candidateDigest": "c181c6537f483c50b43cc066e7d9dcc4a25d6de055f24266f2b201b0db11e3a4",
+  "reviewer": {
+    "role": "parent",
+    "name": "Codex parent independent visual and integration review"
+  },
+  "decision": "accepted",
+  "scope": "workbench",
+  "evidence": [
+    {
+      "view": "Front clay",
+      "reference": "evidence/Front-Clay-0.png",
+      "observation": "Native wing control improves the detached upper fold while retaining the listening silhouette. Accept as an editable construction workbench asset only.",
+      "sha256": "7c1183648a755dd5a46b58759df609ab0b0c92f8f820e024188f9070997a6920"
+    },
+    {
+      "view": "Side clay",
+      "reference": "evidence/Side-Clay-3.png",
+      "observation": "Rear anatomical wing clearance and thin separated feather panels still need reconstruction; peg legs and simple branch remain below the gallery bar.",
+      "sha256": "f5a81fd0af8d36be033ae13ab0d7306dfc53d1c781a896ebbab027db4182d8cb"
+    },
+    {
+      "view": "Rear clay at4.5s",
+      "reference": "evidence/Back-Clay-4.5.png",
+      "observation": "Rear anatomical wing clearance and thin separated feather panels still need reconstruction; peg legs and simple branch remain below the gallery bar.",
+      "sha256": "d1d698ae78db01b662e1f1d905f782593d590d6901ca3503673269d234597638"
+    },
+    {
+      "view": "Material at3s",
+      "reference": "evidence/Front-Material-3.png",
+      "observation": "Shared exporter and independent Three comparison preserve 1344 points across all84 skin and rigid objects at5times; maximum error2.483e-7 model units.",
+      "sha256": "dd638e2c7bfaeb8e2b1bbff9960025df70bcf40f8f683c843d87b4bc3e231b72"
+    },
+    {
+      "view": "Phone viewport",
+      "reference": "evidence/phone-material.png",
+      "observation": "Phone view works but refinement is pending. Do not replace the procedural gallery default with this workbench review.",
+      "sha256": "199666a73461362199f5b6f589d832f3acac29543ecbffa280eceb9d0cf86b5e"
+    },
+    {
+      "view": "Independent native-to-Three pose comparison",
+      "reference": "evidence/native-three-poses.json",
+      "observation": "Skin and rigid fitted parts match at all five sampled poses; sampling is not exhaustive animation proof.",
+      "sha256": "a1f3b3e7958679984ed0515b1eda87e16ab7bf7f43f92fcc4c52ef253703edb5"
+    },
+    {
+      "view": "Native control range, restore, save/reload",
+      "reference": "evidence/native-edit.json",
+      "observation": "Declared minimum/interior/maximum values preserve fixed meshes, restore original geometry and retain edited state after save/reload. Imported triangulated mesh remains directly editable; no procedural recipe recovery claimed.",
+      "sha256": "bc61577a22d62f4385a2c109a8cf5efe934e3410c062b8c31efe6876a19e578d"
+    },
+    {
+      "view": "Source and publication preservation",
+      "reference": "evidence/preservation.json",
+      "observation": "Native verification edited disposable copies. Production source and then-current published bytes were unchanged.",
+      "sha256": "849ed1f5be5b9682b9e87f63183381b7b9307e3bb13f21423e6198517124da6a"
+    },
+    {
+      "view": "Anatomical rear",
+      "reference": "evidence/anatomical-rear-clay.png",
+      "observation": "Rear anatomical wing clearance and thin separated feather panels still need reconstruction; peg legs and simple branch remain below the gallery bar.",
+      "sha256": "b539386a597a2518683042ecfa722dc7572c06ed3a584c880456bc0d6245d000"
+    }
+  ]
+}

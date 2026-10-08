@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "nightjar",
+  "definitionDigest": "341bde2ed760a95738f7affa58e09fc1daa62f621d917b3d46f9d135942600d0",
+  "definition": {
+    "id": "nightjar",
+    "legacyStudyId": "nightjar",
+    "source": "subjects/nightjar/source.blend",
+    "brief": "subjects/nightjar/brief.json",
+    "native": {
+      "adapter": "blender/export_saved.py",
+      "dependencies": [
+        "blender/export_saved.py",
+        "blender/native_types.py",
+        "blender/saved_export_plan.py"
+      ]
+    },
+    "delivery": {
+      "profile": "skinned",
+      "animation": {
+        "name": "nightjar_idle",
+        "seconds": 6,
+        "fps": 24
+      },
+      "directory": "assets/nightjar",
+      "model": "assets/nightjar/model.glb",
+      "audit": "assets/nightjar/authoring.json",
+      "poses": "assets/nightjar/pose-samples.json",
+      "manifest": "assets/nightjar/manifest.json",
+      "receipts": "assets/nightjar/receipts",
+      "publication": "assets/nightjar/published"
+    }
+  },
+  "inputs": {
+    "blender/export_saved.py": "ccc388de6b6ddd622c6884a7f65f9893e6a752f355b95c63af0b48f41a2243c6",
+    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31",
+    "blender/saved_export_plan.py": "c9d0858b8ae79fb7d85f0069010227fa3769c7f3f1604047dd277664411bfc42",
+    "contracts.ts": "3778dc4197634712de81808e45638f27be3d13a3a9b35d258ef8f9dededecb93",
+    "glb.ts": "752b2adbc98a0559577236a9399e2ecc1e83281ce32a82e1d0760cc48d7e13da",
+    "pipeline.mjs": "085eee0376f80c6d06e30d2c51320deb88c430c1b50bc3144b834a88e007e4f4",
+    "pipeline.ts": "17d75f1236d726a73c659bfa28a6cab6fbdbc87592289fd38c88c8aecbfc7952",
+    "registry.ts": "d6a06ef24b7cd16c5e840c218c57a6c6cab85455d8ba694e069a4d247f49bafa",
+    "releases.ts": "9306fa9b206f015a07f4e415154505a95116df5ae47c5aeec0428ee865526a86",
+    "subjects/nightjar/brief.json": "034c57464fa9789bf397020527c170fdd804006e5139f0d352eead4d7193f4f4",
+    "subjects/nightjar/source.blend": "80e88802cf8e00a9b74effc5b85516c772f1001ccbd5b94176a5860836923761"
+  },
+  "previous": null,
+  "origin": {
+    "kind": "exported"
+  },
+  "outputs": {
+    "model": {
+      "path": "nightjar.pending.glb",
+      "sha256": "b4fa268d7b9e0f4b60d061075735e178e2e1d464df588b21b9d6875cbb1ea42c"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "ae9d0ad3af4953db9396bb44742dcc254443b298ac5b6056161f1ad4b01b56c5"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "259b20f10161d578c43619ff91cf0b6a1be2a50f2f1983ba4d5bcd2a6a606f90"
+    }
+  },
+  "stats": {
+    "bytes": 17072080,
+    "triangles": 115476,
+    "meshes": 84,
+    "materials": 12,
+    "textures": 16,
+    "joints": 2,
+    "animations": [
+      {
+        "name": "nightjar_idle",
+        "seconds": 6,
+        "channels": 15
+      }
+    ]
+  }
+}

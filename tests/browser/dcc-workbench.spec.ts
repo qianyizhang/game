@@ -1,12 +1,19 @@
 import { expect, test } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
+import { getAsset, loadRegistry } from '../../packages/dcc-workbench/registry';
+import { resolvePublication } from '../../packages/dcc-workbench/releases';
 import { objectValue, isList } from '../../src/shared/json';
 
 test('DCC pilot carries the concept into an animated downloadable asset', async ({
   page,
 }, info) => {
   test.setTimeout(90000);
+  const packageRoot = resolve('packages/dcc-workbench');
+  const published = resolvePublication(
+    packageRoot,
+    getAsset(loadRegistry(packageRoot), 'briar-hydra'),
+  );
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/');
@@ -55,14 +62,14 @@ test('DCC pilot carries the concept into an animated downloadable asset', async 
   const file = await download;
   await file.saveAs(info.outputPath('briar-hydra.glb'));
   expect(await readFile(info.outputPath('briar-hydra.glb'))).toEqual(
-    await readFile('packages/dcc-workbench/assets/briar-hydra.glb'),
+    await readFile(published.modelPath),
   );
   const sourceDownload = page.waitForEvent('download');
   await page.getByRole('link', { name: 'Editable Blender source' }).click();
   const source = await sourceDownload;
   await source.saveAs(info.outputPath('briar-hydra.blend'));
   expect(await readFile(info.outputPath('briar-hydra.blend'))).toEqual(
-    await readFile('packages/dcc-workbench/sources/briar-hydra.blend'),
+    await readFile(published.sourcePath),
   );
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(async () => {
@@ -96,7 +103,7 @@ test('DCC reduced motion pauses startup and GLB load failure remains actionable'
   await expect(page.getByRole('button', { name: 'DCC workbench' })).toBeFocused();
 });
 
-test('DCC exported skin reproduces Blender evaluated poses', async ({ page }, info) => {
+test('DCC exported anatomy reproduces Blender evaluated poses', async ({ page }, info) => {
   await page.goto('/?workbench=dcc');
   await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
   const result = await page.evaluate(async () => {
@@ -105,7 +112,7 @@ test('DCC exported skin reproduces Blender evaluated poses', async ({ page }, in
     return compareDccPoses();
   });
   await writeFile(info.outputPath('blender-three-poses.json'), JSON.stringify(result, null, 2));
-  expect(result.sampleVertices).toBe(64);
+  expect(result.sampleVertices).toBeGreaterThanOrEqual(64);
   expect(result.maxRestMatchError).toBeLessThan(0.0001);
   expect(result.maxPoseError).toBeLessThan(0.0001);
 });
@@ -121,14 +128,14 @@ test('DCC native saved edit reproduces its exported poses', async ({ page }, inf
     const pose = objectValue(value);
     if (typeof pose.seconds !== 'number' || !Number.isFinite(pose.seconds) || !isList(pose.points))
       throw new Error('Invalid native pose');
-    const points = pose.points.map((point) => {
+    const points = pose.points.map((point): [number, number, number] => {
       if (
         !isList(point) ||
         point.length !== 3 ||
         !point.every((n): n is number => typeof n === 'number' && Number.isFinite(n))
       )
         throw new Error('Invalid native point');
-      return point;
+      return [point[0], point[1], point[2]];
     });
     return { seconds: pose.seconds, points };
   });

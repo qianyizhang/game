@@ -1,0 +1,1021 @@
+{
+  "schemaVersion": 1,
+  "kind": "saved-export",
+  "id": "briar-hydra",
+  "source": "subjects/briar-hydra/source.blend",
+  "sourceSha256": "13c8176b226376a7e4cdb026eece3b0b02ff173a9317a5e3c5d6953274be7fcb",
+  "sourceUnchangedByExport": true,
+  "blender": "4.5.14 LTS",
+  "profile": "skinned",
+  "collection": "DELIVERY | Accepted Hydra",
+  "animation": {
+    "name": "hydra_idle",
+    "seconds": 6.0,
+    "fps": 24
+  },
+  "audit": {
+    "sampleFrames": [
+      0.0,
+      36.0,
+      72.0,
+      108.0,
+      144.0
+    ],
+    "meshCount": 164,
+    "skinnedMeshCount": 11,
+    "rigidMeshCount": 153,
+    "maxSkinnedMotion": 0.20920532495765454,
+    "maxRigidMotion": 0.4112804716633112,
+    "maxLoopDifference": 0.0,
+    "maxSourceDeliveryDifference": 0.0,
+    "requireRigidMotion": true,
+    "motionTolerance": 1e-06,
+    "loopTolerance": 1e-05,
+    "objects": [
+      {
+        "name": "Hydra_CheekSpur_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.13311649668054823,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CheekSpur_0_1",
+        "role": "rigid",
+        "maxMotion": 0.11236645150651889,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CheekSpur_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.2649067209860018,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CheekSpur_1_1",
+        "role": "rigid",
+        "maxMotion": 0.13247537061071435,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CheekSpur_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.07758751193332665,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CheekSpur_2_1",
+        "role": "rigid",
+        "maxMotion": 0.13184559248932232,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CoilArmor",
+        "role": "skinned",
+        "maxMotion": 0.00043630161895532953,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Cranium_0",
+        "role": "rigid",
+        "maxMotion": 0.32685646407882324,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Cranium_1",
+        "role": "rigid",
+        "maxMotion": 0.30705293806915746,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Cranium_2",
+        "role": "rigid",
+        "maxMotion": 0.20029320651592755,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownHorn_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.18355298356619848,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownHorn_0_1",
+        "role": "rigid",
+        "maxMotion": 0.1360608013090756,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownHorn_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.4112804716633112,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownHorn_1_1",
+        "role": "rigid",
+        "maxMotion": 0.33094628825139016,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownHorn_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.1513720682631584,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownHorn_2_1",
+        "role": "rigid",
+        "maxMotion": 0.19418850185709718,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_0_0",
+        "role": "rigid",
+        "maxMotion": 0.14344807889680747,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_0_1",
+        "role": "rigid",
+        "maxMotion": 0.16598071745296128,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_0_2",
+        "role": "rigid",
+        "maxMotion": 0.18641871998868562,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_0_3",
+        "role": "rigid",
+        "maxMotion": 0.20872625864704225,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_0_4",
+        "role": "rigid",
+        "maxMotion": 0.23236405225303317,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_0_5",
+        "role": "rigid",
+        "maxMotion": 0.25695367742958314,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_1_0",
+        "role": "rigid",
+        "maxMotion": 0.22453254969842967,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_1_1",
+        "role": "rigid",
+        "maxMotion": 0.21494501985066783,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_1_2",
+        "role": "rigid",
+        "maxMotion": 0.20398631982261428,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_1_3",
+        "role": "rigid",
+        "maxMotion": 0.20060658355898697,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_1_4",
+        "role": "rigid",
+        "maxMotion": 0.20499221232363282,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_1_5",
+        "role": "rigid",
+        "maxMotion": 0.22228927144859778,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_2_0",
+        "role": "rigid",
+        "maxMotion": 0.10184313792025186,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_2_1",
+        "role": "rigid",
+        "maxMotion": 0.110968604671414,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_2_2",
+        "role": "rigid",
+        "maxMotion": 0.1220383006668623,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_2_3",
+        "role": "rigid",
+        "maxMotion": 0.1342209641389702,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_2_4",
+        "role": "rigid",
+        "maxMotion": 0.1472073752208237,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_CrownPlate_2_5",
+        "role": "rigid",
+        "maxMotion": 0.16082714073183474,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_DorsalCrest_0",
+        "role": "skinned",
+        "maxMotion": 0.1160006369336242,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_DorsalCrest_1",
+        "role": "skinned",
+        "maxMotion": 0.20245400859422943,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_DorsalCrest_2",
+        "role": "skinned",
+        "maxMotion": 0.1008975127036153,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Eye_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.2027373201949707,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Eye_0_1",
+        "role": "rigid",
+        "maxMotion": 0.1865293422672412,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Eye_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.2622270616565204,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Eye_1_1",
+        "role": "rigid",
+        "maxMotion": 0.13247200742541138,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Eye_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.11566838579445529,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Eye_2_1",
+        "role": "rigid",
+        "maxMotion": 0.14697460955692065,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Fork_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.2893021417185383,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Fork_0_1",
+        "role": "rigid",
+        "maxMotion": 0.28938216141795925,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Fork_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.3265645884951663,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Fork_1_1",
+        "role": "rigid",
+        "maxMotion": 0.31609167133546284,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Fork_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.1507175806280813,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Fork_2_1",
+        "role": "rigid",
+        "maxMotion": 0.15349971001103832,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_ImbricatedArmor_0",
+        "role": "skinned",
+        "maxMotion": 0.13847821521405207,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_ImbricatedArmor_1",
+        "role": "skinned",
+        "maxMotion": 0.20920532495765454,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_ImbricatedArmor_2",
+        "role": "skinned",
+        "maxMotion": 0.089904777270178,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_JawAdductor_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.1573491032951557,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_JawAdductor_0_1",
+        "role": "rigid",
+        "maxMotion": 0.14510646169649388,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_JawAdductor_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.23560343532312514,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_JawAdductor_1_1",
+        "role": "rigid",
+        "maxMotion": 0.1338066479057807,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_JawAdductor_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.08676451545289027,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_JawAdductor_2_1",
+        "role": "rigid",
+        "maxMotion": 0.12056048272458059,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Joined_Shoulder_And_Necks",
+        "role": "skinned",
+        "maxMotion": 0.20549701605015555,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_0_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.17072740325576757,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_0_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.19361154057322408,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_0_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.21740489297057405,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_0_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.2418389410998468,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_0_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.2667377725942576,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_0_1_0",
+        "role": "rigid",
+        "maxMotion": 0.1593279000246326,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_0_1_1",
+        "role": "rigid",
+        "maxMotion": 0.1854774633201901,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_0_1_2",
+        "role": "rigid",
+        "maxMotion": 0.21164645382703953,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_0_1_3",
+        "role": "rigid",
+        "maxMotion": 0.2378287900640761,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_0_1_4",
+        "role": "rigid",
+        "maxMotion": 0.2640230011543812,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_1_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.2398134124952159,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_1_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.2403278379858618,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_1_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.24507975600588694,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_1_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.2541053422010309,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_1_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.2675110948545718,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_1_1_0",
+        "role": "rigid",
+        "maxMotion": 0.12444214693340318,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_1_1_1",
+        "role": "rigid",
+        "maxMotion": 0.13510473998531516,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.14977477230202554,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_1_1_3",
+        "role": "rigid",
+        "maxMotion": 0.17039063675308225,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_1_1_4",
+        "role": "rigid",
+        "maxMotion": 0.20292963677917417,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_2_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.09475458298493987,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_2_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.10977485424355078,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_2_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.12547393824940628,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_2_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.141632506788789,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_2_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.1581102524542989,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_2_1_0",
+        "role": "rigid",
+        "maxMotion": 0.1265042404397078,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_2_1_1",
+        "role": "rigid",
+        "maxMotion": 0.1326866694458462,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_2_1_2",
+        "role": "rigid",
+        "maxMotion": 0.14194820264483177,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_2_1_3",
+        "role": "rigid",
+        "maxMotion": 0.1535600387770305,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LabialPlate_2_1_4",
+        "role": "rigid",
+        "maxMotion": 0.16650254323437372,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerDentition_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.30565075917967405,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerDentition_0_1",
+        "role": "rigid",
+        "maxMotion": 0.30576031437453255,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerDentition_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.35868986579396483,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerDentition_1_1",
+        "role": "rigid",
+        "maxMotion": 0.3355813193395017,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerDentition_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.15938131575883757,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerDentition_2_1",
+        "role": "rigid",
+        "maxMotion": 0.16530387088157952,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerGum_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.3024336738570022,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerGum_0_1",
+        "role": "rigid",
+        "maxMotion": 0.30296413330046845,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerGum_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.35611666032397404,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerGum_1_1",
+        "role": "rigid",
+        "maxMotion": 0.32956063219100545,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerGum_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.1555716198523595,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_LowerGum_2_1",
+        "role": "rigid",
+        "maxMotion": 0.16259885477051225,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Mandible_0",
+        "role": "rigid",
+        "maxMotion": 0.3195032413156219,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Mandible_1",
+        "role": "rigid",
+        "maxMotion": 0.36899770619683725,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Mandible_2",
+        "role": "rigid",
+        "maxMotion": 0.16557253332241675,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_MouthFloor_0",
+        "role": "rigid",
+        "maxMotion": 0.3095043671736153,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_MouthFloor_1",
+        "role": "rigid",
+        "maxMotion": 0.35328409825255974,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_MouthFloor_2",
+        "role": "rigid",
+        "maxMotion": 0.16070494629482265,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_NasalRim_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.3081102972405113,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_NasalRim_0_1",
+        "role": "rigid",
+        "maxMotion": 0.30600789590344235,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_NasalRim_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.2951934780372013,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_NasalRim_1_1",
+        "role": "rigid",
+        "maxMotion": 0.251684927183168,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_NasalRim_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.18873918055313457,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_NasalRim_2_1",
+        "role": "rigid",
+        "maxMotion": 0.19320502049407307,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Nostril_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.3089192520853265,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Nostril_0_1",
+        "role": "rigid",
+        "maxMotion": 0.3065904453840117,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Nostril_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.29894284286824213,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Nostril_1_1",
+        "role": "rigid",
+        "maxMotion": 0.2510973713379366,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Nostril_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.18829829041677312,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Nostril_2_1",
+        "role": "rigid",
+        "maxMotion": 0.1937801585142639,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Orbit_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.20732665056004765,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Orbit_0_1",
+        "role": "rigid",
+        "maxMotion": 0.19275982304028064,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Orbit_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.2620292952497536,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Orbit_1_1",
+        "role": "rigid",
+        "maxMotion": 0.13716864501623732,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Orbit_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.11893951555664715,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Orbit_2_1",
+        "role": "rigid",
+        "maxMotion": 0.14810352766734905,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Palate_0",
+        "role": "rigid",
+        "maxMotion": 0.31508647604192935,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Palate_1",
+        "role": "rigid",
+        "maxMotion": 0.29410917968572853,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Palate_2",
+        "role": "rigid",
+        "maxMotion": 0.18974755764904627,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Pupil_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.19785962546167163,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Pupil_0_1",
+        "role": "rigid",
+        "maxMotion": 0.17867160129947032,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Pupil_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.26424542983333765,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Pupil_1_1",
+        "role": "rigid",
+        "maxMotion": 0.1284727402481325,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Pupil_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.1120218196065761,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Pupil_2_1",
+        "role": "rigid",
+        "maxMotion": 0.14678346196412045,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_SupraorbitalRidge_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.2166417413029064,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_SupraorbitalRidge_0_1",
+        "role": "rigid",
+        "maxMotion": 0.20586945241904925,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_SupraorbitalRidge_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.2760976706797162,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_SupraorbitalRidge_1_1",
+        "role": "rigid",
+        "maxMotion": 0.15738694065596484,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_SupraorbitalRidge_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.12567665518375726,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_SupraorbitalRidge_2_1",
+        "role": "rigid",
+        "maxMotion": 0.15192412761763452,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_TemporalHorn_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.1619746555328039,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_TemporalHorn_0_1",
+        "role": "rigid",
+        "maxMotion": 0.13167714086728374,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_TemporalHorn_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.3499862763855958,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_TemporalHorn_1_1",
+        "role": "rigid",
+        "maxMotion": 0.1881945541513299,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_TemporalHorn_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.10966365938166688,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_TemporalHorn_2_1",
+        "role": "rigid",
+        "maxMotion": 0.17345195911558836,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Tongue_0",
+        "role": "rigid",
+        "maxMotion": 0.27349143167481926,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Tongue_1",
+        "role": "rigid",
+        "maxMotion": 0.2981457993846747,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_Tongue_2",
+        "role": "rigid",
+        "maxMotion": 0.14451261249037656,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperDentition_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.30269675506351534,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperDentition_0_1",
+        "role": "rigid",
+        "maxMotion": 0.3026980492714157,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperDentition_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.2957299658514305,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperDentition_1_1",
+        "role": "rigid",
+        "maxMotion": 0.26300878711824754,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperDentition_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.17810227306954415,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperDentition_2_1",
+        "role": "rigid",
+        "maxMotion": 0.18239598919259176,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperGum_0_-1",
+        "role": "rigid",
+        "maxMotion": 0.30559212276456105,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperGum_0_1",
+        "role": "rigid",
+        "maxMotion": 0.3046861466360255,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperGum_1_-1",
+        "role": "rigid",
+        "maxMotion": 0.2995195088850587,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperGum_1_1",
+        "role": "rigid",
+        "maxMotion": 0.25843847652313673,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperGum_2_-1",
+        "role": "rigid",
+        "maxMotion": 0.1823234450169963,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_UpperGum_2_1",
+        "role": "rigid",
+        "maxMotion": 0.18675535821958922,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_VentralScutes_0",
+        "role": "skinned",
+        "maxMotion": 0.14075111805553595,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_VentralScutes_1",
+        "role": "skinned",
+        "maxMotion": 0.19718045447506946,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Hydra_VentralScutes_2",
+        "role": "skinned",
+        "maxMotion": 0.08171964570395807,
+        "maxLoopDifference": 0.0
+      }
+    ]
+  }
+}

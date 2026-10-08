@@ -3,7 +3,8 @@ import ComparisonViewer, { type ComparisonOptions } from './ComparisonViewer';
 import type { View } from './Viewer';
 import baseline from '../references/comparison/baseline.json';
 import qualityBaseline from '../references/comparison/quality-baseline.json';
-import manifest from '../assets/manifest.json';
+import { getPublishedAsset } from './delivery';
+const { info: manifest } = getPublishedAsset('briar-hydra');
 
 const views: View[] = ['Portrait', 'Front', 'Side', 'Back'];
 const surfaces = ['Silhouette', 'Clay', 'Material'] as const;
@@ -206,7 +207,7 @@ export default function HydraComparison({
             <br />
             Before quality pass GLB: {qualityBaseline.sha256}
             <br />
-            Current GLB: {manifest.sha256['assets/briar-hydra.glb']}
+            Current GLB: {manifest.modelSha256}
           </p>
         </details>
       </div>

@@ -2,6 +2,24 @@ import { gltfJson } from './gltf-json';
 import type { StudyId } from '../../src/art3d/models';
 import { expect, test } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { loadRegistry } from '../../packages/dcc-workbench/registry';
+import {
+  resolvePublication,
+  type ResolvedPublication,
+} from '../../packages/dcc-workbench/releases';
+
+// Expected defaults come from verified on-disk reviews, independently of the
+// browser loader. Drafts have no current release and keep their procedural study.
+const dccRoot = resolve('packages/dcc-workbench');
+const nativeDeliveries = new Map<string, ResolvedPublication>();
+for (const asset of Object.values(loadRegistry(dccRoot).assets)) {
+  if (!existsSync(resolve(dccRoot, asset.delivery.publication, 'current.json'))) continue;
+  const publication = resolvePublication(dccRoot, asset);
+  if (publication.reviewScope === 'gallery' && publication.reviewDecision === 'accepted')
+    nativeDeliveries.set(publication.legacyStudyId, publication);
+}
 
 const studyNames = [
   'Nightjar',
@@ -41,6 +59,7 @@ for (const name of studyNames) {
   }, info) => {
     // Each study owns its browser/export budget; a slow subject cannot consume the next one.
     test.setTimeout(60_000);
+    const delivery = nativeDeliveries.get(name.toLowerCase().replaceAll(' ', ''));
     const errors: string[] = [];
     const normalWarnings: string[] = [];
     page.on('pageerror', (error) => errors.push(error.message));
@@ -65,6 +84,10 @@ for (const name of studyNames) {
       .getByRole('button', { name: new RegExp(name) })
       .click();
     await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+    await expect(page.locator('.study-render')).toHaveAttribute(
+      'data-delivery',
+      delivery ? 'native' : 'procedural',
+    );
     // Every legacy asset must still move; shared recording controls use representatives below.
     await page.getByLabel('Animation timeline').fill('0');
     const restPose = await page.locator('canvas').screenshot();
@@ -75,40 +98,13 @@ for (const name of studyNames) {
     await page.getByLabel('Animation timeline').fill('0');
     await expect(page.getByRole('alert')).toHaveCount(0);
     await expect(page.locator('.source-art svg')).toBeVisible();
-    if (
-      [
-        'Hydra',
-        'Spiral',
-        'Vajra',
-        'Prowler',
-        'Wolf',
-        'Matriarch',
-        'Thornstag',
-        'Moonmoth',
-        'Bogtoad',
-        'Crocolisk',
-        'Scavenger',
-        'Guardian',
-        'Tortoise',
-        'Stormroc',
-        'Stray',
-        'Pack Caller',
-        'Cub',
-        'Amalgam',
-        'Imp',
-        'Matron',
-        'Juggler',
-        'Watcher',
-        'Herald',
-        'Patron',
-        'Squire',
-        'Banner Bearer',
-      ].includes(name)
-    )
+    // Native deliveries are assembled; layered procedural studies retain separation.
+    if (!delivery && ['Nightjar', 'Phoenix', 'Catalyst'].includes(name))
+      await expect(page.getByRole('button', { name: 'Separate the layers' })).toBeEnabled();
+    else
       await expect(
         page.getByRole('button', { name: 'Layers assembled as one object' }),
       ).toBeDisabled();
-    else await expect(page.getByRole('button', { name: 'Separate the layers' })).toBeEnabled();
     await page.locator('.art-studio').screenshot({
       path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-desktop.png`),
     });
@@ -138,9 +134,13 @@ for (const name of studyNames) {
     const modelEvent = page.waitForEvent('download');
     await page.getByRole('button', { name: 'Download 3D model' }).click();
     const download = await modelEvent;
+    expect(download.suggestedFilename()).toBe(
+      `card-workshop-${name.toLowerCase().replaceAll(' ', '')}.glb`,
+    );
     const modelPath = info.outputPath(download.suggestedFilename());
     await download.saveAs(modelPath);
     const bytes = await readFile(modelPath);
+    if (delivery) expect(bytes).toEqual(await readFile(delivery.modelPath));
     expect(bytes.toString('utf8', 0, 4)).toBe('glTF');
     expect(bytes.readUInt32LE(4)).toBe(2);
     expect(bytes.readUInt32LE(8)).toBe(bytes.length);
@@ -326,8 +326,9 @@ for (const name of studyNames) {
     if (name === 'Catalyst') expect(gltf.extensionsUsed).toContain('KHR_materials_transmission');
     await page
       .getByRole('navigation', { name: 'Choose a 3D study' })
-      .getByRole('button', { name: /Phoenix/ })
+      .getByRole('button', { name: /Catalyst/ })
       .click();
+    await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
     await page.getByRole('button', { name: 'Wireframe', exact: true }).click();
     await page.getByRole('button', { name: 'Separate the layers' }).click();
     await page.getByLabel('Lighting', { exact: true }).selectOption('moon');
@@ -337,7 +338,7 @@ for (const name of studyNames) {
     );
     await page
       .locator('.studio-stage')
-      .screenshot({ path: info.outputPath('phoenix-wireframe.png') });
+      .screenshot({ path: info.outputPath('catalyst-wireframe.png') });
     await page.getByRole('button', { name: 'Wireframe', exact: true }).click();
     await page.getByRole('button', { name: 'Separate the layers' }).click();
     await page.getByLabel('Lighting', { exact: true }).selectOption('studio');
@@ -346,7 +347,7 @@ for (const name of studyNames) {
       true,
     );
     await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
-    await page.locator('.art-studio').screenshot({ path: info.outputPath('phoenix-phone.png') });
+    await page.locator('.art-studio').screenshot({ path: info.outputPath('catalyst-phone.png') });
     const imageEvent = page.waitForEvent('download');
     await page.getByRole('button', { name: 'Save image' }).click();
     const image = await imageEvent;

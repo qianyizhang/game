@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "definitionDigest": "e457d61e0a78d0fc5b0d4273ad68d5a8a7ecb721cc82aeaeae1b58b0ef8266dd",
+  "definition": {
+    "id": "briar-hydra",
+    "legacyStudyId": "hydra",
+    "source": "sources/briar-hydra.blend",
+    "brief": "briefs/briar-hydra.json",
+    "native": {
+      "adapter": "blender/export_asset.py",
+      "recipe": "blender/build_hydra.py",
+      "dependencies": [
+        "blender/author_components.py",
+        "blender/authoring_plan.py",
+        "blender/build_hydra.py",
+        "blender/export_asset.py",
+        "blender/head_components.py",
+        "blender/head_shape.py",
+        "blender/native_types.py",
+        "blender/scale_components.py"
+      ]
+    },
+    "delivery": {
+      "profile": "skinned",
+      "animation": {
+        "name": "Marsh Vigil",
+        "seconds": 6,
+        "fps": 24
+      },
+      "directory": "assets",
+      "model": "assets/briar-hydra.glb",
+      "audit": "assets/authoring.json",
+      "poses": "assets/pose-samples.json",
+      "manifest": "assets/manifest.json",
+      "receipts": "assets/receipts",
+      "publication": "assets/briar-hydra"
+    }
+  },
+  "inputs": {
+    "blender/author_components.py": "2e57487a54e88ae644181a3e9acea07237d710108662602bb1fb1fd1d6d91c79",
+    "blender/authoring_plan.py": "b91d498dbc956e04a41475e483f2d92093140b6b3e6109905dd4eb2a70aeb50e",
+    "blender/build_hydra.py": "36f00c196eeb650d242c35953e9fc2b2d711f4098f4944b6be11081903718987",
+    "blender/export_asset.py": "9fc0a04937a02e0989585776d4a958d028044cd96908a1103e9f8eaae8510940",
+    "blender/head_components.py": "ac1ce3df90984aceb4aa59981ee83ddc74698a62d202436b90408a0c9393aaa6",
+    "blender/head_shape.py": "2bf512df93c6e08afe1910f69e4deb2036cd6a14e0c30f7b971c7c2dd417250f",
+    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31",
+    "blender/scale_components.py": "f3501667cf04eaa4201e11d7f010f3789d57a9281844e9d994ef938978b0ea39",
+    "briefs/briar-hydra.json": "eb6e552a855351c6b6b20f31b8ddf1caa3d377ef7d38ed625c5dafe13c07ef46",
+    "contracts.ts": "1dac43bb76c3b7110899c4da72239856c1dffa735d1468b1e0cde2f8fe984659",
+    "glb.ts": "752b2adbc98a0559577236a9399e2ecc1e83281ce32a82e1d0760cc48d7e13da",
+    "pipeline.mjs": "085eee0376f80c6d06e30d2c51320deb88c430c1b50bc3144b834a88e007e4f4",
+    "pipeline.ts": "93cc9ec27a375ed5865612665d144efe7f1609191e9f23064d591cddfd1079e3",
+    "registry.ts": "d6a06ef24b7cd16c5e840c218c57a6c6cab85455d8ba694e069a4d247f49bafa",
+    "releases.ts": "aba41bd9833d60df6265e9c5237d8d1da552267cf5f7bd16b07d822fd345f646",
+    "sources/briar-hydra.blend": "0237f8efa119aacfd6d831f80d43a90b9302fd4875bca1219000ee1f0c9cba70"
+  },
+  "previous": {
+    "kind": "legacy",
+    "receipt": {
+      "path": "assets/manifest.json",
+      "sha256": "136a8ce1d3a2f82efd95f5d7fad1dd628b5d28cca89fa4978680789ab2c667a6"
+    }
+  },
+  "origin": {
+    "kind": "exported"
+  },
+  "outputs": {
+    "model": {
+      "path": "briar-hydra.pending.glb",
+      "sha256": "b1c2472346d8753385a8bb0e02b9e877e20e2ec973d7ae8d7fe5097ed8a7051d"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "1a9a15c78d6ca3bd86326d22bd7738dce2321c4442b4f5b460b66f4d2b11e1e6"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "8fffa4b2e55206b6f8775a8dc1378e44d7dad8f127090031275fcee5353993da"
+    }
+  },
+  "stats": {
+    "bytes": 10421936,
+    "triangles": 108940,
+    "meshes": 1,
+    "materials": 8,
+    "textures": 2,
+    "joints": 22,
+    "animations": [
+      {
+        "name": "Marsh Vigil",
+        "seconds": 6,
+        "channels": 66
+      }
+    ]
+  }
+}

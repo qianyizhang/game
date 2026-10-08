@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dcc": "node pipeline.mjs",
-    "test": "node --test pipeline.test.mjs",
+    "test": "node --test *.test.mjs",
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.tools.json"
   },
   "peerDependencies": {

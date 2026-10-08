@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "nightjar",
+  "completed": true,
+  "sourceAndPublicationUnchanged": true,
+  "files": [
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/nightjar/source.blend",
+      "sha256": "80e88802cf8e00a9b74effc5b85516c772f1001ccbd5b94176a5860836923761",
+      "after": "80e88802cf8e00a9b74effc5b85516c772f1001ccbd5b94176a5860836923761",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/nightjar/published/current.json",
+      "sha256": null,
+      "after": null,
+      "unchanged": true
+    }
+  ]
+}

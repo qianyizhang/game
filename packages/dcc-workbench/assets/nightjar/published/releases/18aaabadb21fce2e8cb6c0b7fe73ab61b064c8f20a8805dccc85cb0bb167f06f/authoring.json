@@ -1,0 +1,541 @@
+{
+  "schemaVersion": 1,
+  "kind": "saved-export",
+  "id": "nightjar",
+  "source": "subjects/nightjar/source.blend",
+  "sourceSha256": "80e88802cf8e00a9b74effc5b85516c772f1001ccbd5b94176a5860836923761",
+  "sourceUnchangedByExport": true,
+  "blender": "4.5.14 LTS",
+  "profile": "skinned",
+  "collection": "DELIVERY | Nightjar",
+  "animation": {
+    "name": "nightjar_idle",
+    "seconds": 6.0,
+    "fps": 24
+  },
+  "audit": {
+    "sampleFrames": [
+      0.0,
+      36.0,
+      72.0,
+      108.0,
+      144.0
+    ],
+    "meshCount": 84,
+    "skinnedMeshCount": 1,
+    "rigidMeshCount": 83,
+    "maxSkinnedMotion": 0.03377673191254478,
+    "maxRigidMotion": 0.03915804206371787,
+    "maxLoopDifference": 0.0,
+    "maxSourceDeliveryDifference": 0.0,
+    "requireRigidMotion": true,
+    "motionTolerance": 1e-06,
+    "loopTolerance": 1e-05,
+    "objects": [
+      {
+        "name": "Mesh_0",
+        "role": "skinned",
+        "maxMotion": 0.03377673191254478,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_BackToe_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_BackToe_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Gape_-1",
+        "role": "rigid",
+        "maxMotion": 0.038096184010295256,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Gape_1",
+        "role": "rigid",
+        "maxMotion": 0.038101990919699506,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_NaturalThinBranch",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_OrbitalPlane_-1",
+        "role": "rigid",
+        "maxMotion": 0.02324216729549959,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_OrbitalPlane_1",
+        "role": "rigid",
+        "maxMotion": 0.029062802701265704,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.0007283631413607808,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.000711298394185689,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.0006949899448193347,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.0006791328593513568,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.0006636181297958848,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.0006483797758602415,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_-1_6",
+        "role": "rigid",
+        "maxMotion": 0.0006333370372834709,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_-1_7",
+        "role": "rigid",
+        "maxMotion": 0.0006184902871230694,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0007283631413607808,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_1_1",
+        "role": "rigid",
+        "maxMotion": 0.000711298394185689,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0006949899448193347,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_1_3",
+        "role": "rigid",
+        "maxMotion": 0.0006791328593513568,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_1_4",
+        "role": "rigid",
+        "maxMotion": 0.0006636181297958848,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_1_5",
+        "role": "rigid",
+        "maxMotion": 0.0006483797758602415,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_1_6",
+        "role": "rigid",
+        "maxMotion": 0.0006333370372834709,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Primary_1_7",
+        "role": "rigid",
+        "maxMotion": 0.0006184902871230694,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Pupil_-1",
+        "role": "rigid",
+        "maxMotion": 0.022980039686166357,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Pupil_1",
+        "role": "rigid",
+        "maxMotion": 0.029154738698863997,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RecessedIris_-1",
+        "role": "rigid",
+        "maxMotion": 0.02288195468165622,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RecessedIris_1",
+        "role": "rigid",
+        "maxMotion": 0.028956186750679836,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_0",
+        "role": "rigid",
+        "maxMotion": 0.019949208119016362,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_1",
+        "role": "rigid",
+        "maxMotion": 0.020577393724771378,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_2",
+        "role": "rigid",
+        "maxMotion": 0.021243968850115532,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_3",
+        "role": "rigid",
+        "maxMotion": 0.021945403239119095,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_4",
+        "role": "rigid",
+        "maxMotion": 0.02206992364648912,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_5",
+        "role": "rigid",
+        "maxMotion": 0.021618596166793024,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_6",
+        "role": "rigid",
+        "maxMotion": 0.02120259967321215,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_7",
+        "role": "rigid",
+        "maxMotion": 0.020824100913927956,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.026127220912027144,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.027046813452831244,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.028012991289365203,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.02902647125221296,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_1_0",
+        "role": "rigid",
+        "maxMotion": 0.032414109006578595,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_1_1",
+        "role": "rigid",
+        "maxMotion": 0.032420578055629805,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_1_2",
+        "role": "rigid",
+        "maxMotion": 0.032680758531978264,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_1_3",
+        "role": "rigid",
+        "maxMotion": 0.033099910083447114,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.00017573690629350044,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.0001855731555099405,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.00019692213716129538,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.00020781160522854384,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.00021935548487242397,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.00023287455049415245,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_-1_6",
+        "role": "rigid",
+        "maxMotion": 0.00024385986307314997,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_1_0",
+        "role": "rigid",
+        "maxMotion": 0.00017982742134537544,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_1_1",
+        "role": "rigid",
+        "maxMotion": 0.00018869641664878302,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_1_2",
+        "role": "rigid",
+        "maxMotion": 0.00019876866698278285,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_1_3",
+        "role": "rigid",
+        "maxMotion": 0.00021363290505039076,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_1_4",
+        "role": "rigid",
+        "maxMotion": 0.00022476101914290243,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_1_5",
+        "role": "rigid",
+        "maxMotion": 0.00023544728927590695,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Scapular_1_6",
+        "role": "rigid",
+        "maxMotion": 0.00024524430189249444,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.00030254391818822403,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.0003228911641597096,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.0003442824662873966,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.0003659462018930096,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.00038758279587188443,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.0004093287660697021,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_1_0",
+        "role": "rigid",
+        "maxMotion": 0.00030094952383416876,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_1_1",
+        "role": "rigid",
+        "maxMotion": 0.00032239164993885555,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0003442824662873966,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_1_3",
+        "role": "rigid",
+        "maxMotion": 0.0003659462018930096,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_1_4",
+        "role": "rigid",
+        "maxMotion": 0.00038758279587188443,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Secondary_1_5",
+        "role": "rigid",
+        "maxMotion": 0.0004093287660697021,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_ShortTarsus_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_ShortTarsus_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SmallFittedBill",
+        "role": "rigid",
+        "maxMotion": 0.03915804206371787,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_TaperedBranchFork",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_TuckedFeatheredThigh_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_TuckedFeatheredThigh_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_WingMantle_-1",
+        "role": "rigid",
+        "maxMotion": 0.0007139115855328209,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_WingMantle_1",
+        "role": "rigid",
+        "maxMotion": 0.0007139115855328209,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_WrappedToe_0_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_WrappedToe_0_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_WrappedToe_0_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_WrappedToe_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_WrappedToe_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_WrappedToe_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      }
+    ]
+  }
+}

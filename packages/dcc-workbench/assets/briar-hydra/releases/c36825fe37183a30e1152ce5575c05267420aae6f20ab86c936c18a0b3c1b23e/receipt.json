@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "definitionDigest": "e457d61e0a78d0fc5b0d4273ad68d5a8a7ecb721cc82aeaeae1b58b0ef8266dd",
+  "candidate": {
+    "path": "candidate.json",
+    "sha256": "45269d52290e29d5bf335dd999571e436d1cbba044cbaa832126f551d8e954dd"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "43cb409ebcd3c2b6a6fceed3072a7fee374456746c4ca67e37143737d4e4d070"
+  },
+  "source": {
+    "path": "source.blend",
+    "sha256": "0237f8efa119aacfd6d831f80d43a90b9302fd4875bca1219000ee1f0c9cba70"
+  },
+  "brief": {
+    "path": "brief.json",
+    "sha256": "eb6e552a855351c6b6b20f31b8ddf1caa3d377ef7d38ed625c5dafe13c07ef46"
+  },
+  "outputs": {
+    "model": {
+      "path": "model.glb",
+      "sha256": "b1c2472346d8753385a8bb0e02b9e877e20e2ec973d7ae8d7fe5097ed8a7051d"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "1a9a15c78d6ca3bd86326d22bd7738dce2321c4442b4f5b460b66f4d2b11e1e6"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "8fffa4b2e55206b6f8775a8dc1378e44d7dad8f127090031275fcee5353993da"
+    }
+  },
+  "previous": {
+    "kind": "legacy",
+    "receipt": {
+      "path": "assets/manifest.json",
+      "sha256": "136a8ce1d3a2f82efd95f5d7fad1dd628b5d28cca89fa4978680789ab2c667a6"
+    }
+  },
+  "previousReceipt": {
+    "path": "previous-receipt.json",
+    "sha256": "136a8ce1d3a2f82efd95f5d7fad1dd628b5d28cca89fa4978680789ab2c667a6"
+  }
+}

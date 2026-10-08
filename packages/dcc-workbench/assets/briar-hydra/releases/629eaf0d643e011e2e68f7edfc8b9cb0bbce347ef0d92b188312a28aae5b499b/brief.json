@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "title": "Briar Hydra",
+  "subtitle": "Three minds. One watchful body.",
+  "interpretation": "An old marsh predator interrupted at the water's edge.",
+  "gesture": "The central head rises to scent the air; the left head searches low, while the right guards the coil. Unequal neck arcs leave three deliberate windows of negative space.",
+  "polish": [
+    "Preserve the accepted coil, three unequal neck gestures and fitted head anatomy.",
+    "Keep the jaw, teeth, palate and nose fitted when editing the muzzle reach.",
+    "Retain quiet surfaces; simplification needs matched clay review before adoption."
+  ],
+  "palette": [
+    {
+      "name": "Marsh skin",
+      "color": "#536857"
+    },
+    {
+      "name": "Throat plates",
+      "color": "#b4ad7d"
+    },
+    {
+      "name": "Weathered horn",
+      "color": "#c5bc99"
+    },
+    {
+      "name": "Amber eye",
+      "color": "#df9c39"
+    }
+  ],
+  "nativeFeatures": [
+    "Editable native mesh assemblies",
+    "Fitted muzzle shape keys and controls",
+    "Armature, skin weights and bone-parented heads",
+    "Saved six-second idle action",
+    "Embedded authored materials"
+  ],
+  "animation": {
+    "name": "hydra_idle",
+    "seconds": 6,
+    "fps": 24
+  },
+  "budgets": {
+    "maxTriangles": 600000,
+    "maxBytes": 20000000,
+    "maxJoints": 64
+  },
+  "reference": "Preserves the accepted living Hydra geometry and idle, imported as an editable native scene. This is an imported triangulated artist source, not recovered procedural construction or retopology.",
+  "reviewStatus": "Native source preserves the accepted living form; the release carries the independent review verdict.",
+  "origin": {
+    "kind": "imported-delivery",
+    "path": "references/comparison/accepted-hydra.glb",
+    "sha256": "dee01f8d4cc3ef3b920c8adb84c70d5a2b2a7e738be8927c05565190be1f00fd",
+    "nativeTrial": "Sol gpt-6.1-sol high, guided by parent; two weaker reconstruction rounds rejected before parent directed accepted-geometry import",
+    "editableLimit": "Triangulated meshes, fitted shape keys, editable rig/actions/materials; procedural recipes and quads are not recovered."
+  },
+  "nativeEdit": {
+    "control": {
+      "object": "EDIT | Head.Search",
+      "property": "Muzzle reach"
+    },
+    "values": [0, 0.75, 1.5],
+    "moved": [
+      "Hydra_Cranium_0",
+      "Hydra_Mandible_0",
+      "Hydra_UpperDentition_0_-1",
+      "Hydra_LowerDentition_0_-1",
+      "Hydra_Nostril_0_-1"
+    ],
+    "fixed": ["Hydra_Cranium_1", "Hydra_Cranium_2", "Hydra_Joined_Shoulder_And_Necks"]
+  }
+}

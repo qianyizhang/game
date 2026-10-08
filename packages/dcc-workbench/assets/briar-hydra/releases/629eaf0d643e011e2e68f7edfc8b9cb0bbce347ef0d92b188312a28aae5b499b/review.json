@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "candidateDigest": "b3725aa464c3eb047ad8c9dfd14be7ec8e7e0cad4fefb57a9ff2b341dd467ffc",
+  "reviewer": {
+    "role": "parent",
+    "name": "Codex parent independent visual and integration review"
+  },
+  "decision": "accepted",
+  "scope": "gallery",
+  "evidence": [
+    {
+      "view": "Front clay",
+      "reference": "evidence/Front-Clay-0.png",
+      "observation": "Accepted-form coil and unequal neck gestures survive native import; front clay exposes no construction regression.",
+      "sha256": "df2c7f780b8749ae30a8ed687872a7fb410ba2053df2e626466f2a2de29432bd"
+    },
+    {
+      "view": "Side clay",
+      "reference": "evidence/Side-Clay-3.png",
+      "observation": "Side and rear clay retain fitted head, throat and crest hierarchies; inherited sparse tail relief remains approximate.",
+      "sha256": "8368673c8f6312c193d18b0dcb5ae72b17c654dcc8893268d892f3417052bce8"
+    },
+    {
+      "view": "Rear clay at4.5s",
+      "reference": "evidence/Back-Clay-4.5.png",
+      "observation": "Side and rear clay retain fitted head, throat and crest hierarchies; inherited sparse tail relief remains approximate.",
+      "sha256": "6ad4990535eeda40d8ef10844e63e8fbb42f0ee8c193b42de05a5d74d91e256d"
+    },
+    {
+      "view": "Material at3s",
+      "reference": "evidence/Front-Material-3.png",
+      "observation": "Material and five-pose review preserve skin, horn and oral anatomy; independent Three comparison samples 2624 points across 164 objects with maximum error 1.233e-6 model units.",
+      "sha256": "9fa5ec099805bf8b365c9de876d3007da6d71b7e3c02e355ceceec3e729b9fd3"
+    },
+    {
+      "view": "Phone viewport",
+      "reference": "evidence/phone-material.png",
+      "observation": "Phone framing is usable with orbit and zoom; this is desktop phone-viewport emulation, not a physical-device performance benchmark.",
+      "sha256": "23b2f9efc0542198f9799f77d17d1802394ff18d2eb11f070cd795dca0247ef8"
+    },
+    {
+      "view": "Independent native-to-Three pose comparison",
+      "reference": "evidence/native-three-poses.json",
+      "observation": "Skin and rigid fitted parts match at all five sampled poses; sampling is not exhaustive animation proof.",
+      "sha256": "a7c376b69e9c5dc1b38decba0b6f532acb01817ae0d8f6d4e96a2a8fb6d56b9b"
+    },
+    {
+      "view": "Native control range, restore, save/reload",
+      "reference": "evidence/native-edit.json",
+      "observation": "Declared minimum/interior/maximum values preserve fixed meshes, restore original geometry and retain edited state after save/reload. Imported triangulated mesh remains directly editable; no procedural recipe recovery claimed.",
+      "sha256": "94cdc282198394e610ce9f46fd09c3ea6be939b6af03dfa3656cd814650cf3b0"
+    },
+    {
+      "view": "Source and publication preservation",
+      "reference": "evidence/preservation.json",
+      "observation": "Native verification edited disposable copies. Production source and then-current published bytes were unchanged.",
+      "sha256": "3317a2934443ac594dae572dbaf3a60ebffd15a47be359206dc33f4dddac0287"
+    }
+  ]
+}

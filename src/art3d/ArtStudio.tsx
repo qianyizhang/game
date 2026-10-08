@@ -7,6 +7,7 @@ import { MinionArt } from '../games/battlegrounds/ui/MinionArt';
 import { STUDIES, type StudyId } from './models';
 import { StudyViewer, download, type ViewerOptions, type ViewerAPI } from './StudyViewer';
 import { LOOP_SECONDS, MOTION_LABELS } from './animation';
+import { galleryDelivery } from './delivery';
 import './ArtStudio.css';
 
 export default function ArtStudio({ onExit }: { onExit: () => void }) {
@@ -32,6 +33,9 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
   const [time, setTime] = useState(0);
   const api = useRef<ViewerAPI | null>(null);
   const study = STUDIES.find((study) => study.id === id)!;
+  const delivery = galleryDelivery(id);
+  const canSeparate = !delivery && ['nightjar', 'phoenix', 'catalyst'].includes(id);
+  const duration = delivery ? (delivery.brief.animation?.seconds ?? 0) : LOOP_SECONDS;
   const update = (patch: Partial<ViewerOptions>) =>
     setOptions((current) => ({ ...current, ...patch }));
   const select = (id: StudyId) => {
@@ -49,7 +53,7 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
     if (!api.current || recording) return;
     const fileId = id;
     setRecording(true);
-    setMessage('Recording one six-second loop…');
+    setMessage(`Recording one ${duration}-second loop…`);
     try {
       download(await api.current.video(), `${fileId}-animation.webm`);
       setMessage(`${fileId}-animation.webm downloaded`);
@@ -170,7 +174,7 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
             </ul>
           </div>
           <div className="study-settings">
-            <fieldset className="study-animation" disabled={recording}>
+            <fieldset className="study-animation" disabled={recording || duration === 0}>
               <legend className="studio-eyebrow">IN MOTION</legend>
               <p>{MOTION_LABELS[id]}</p>
               <div className="animation-controls">
@@ -193,13 +197,13 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
               <label className="animation-timeline">
                 Loop{' '}
                 <output>
-                  {time.toFixed(1)} / {LOOP_SECONDS.toFixed(1)} s
+                  {time.toFixed(1)} / {duration.toFixed(1)} s
                 </output>
                 <input
                   type="range"
                   aria-label="Animation timeline"
                   min="0"
-                  max={LOOP_SECONDS}
+                  max={duration}
                   step="0.05"
                   value={time}
                   onChange={(event) => {
@@ -225,99 +229,14 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
               </button>
               <button
                 aria-pressed={options.exploded}
-                disabled={[
-                  'hydra',
-                  'spiral',
-                  'vajra',
-                  'prowler',
-                  'wolf',
-                  'matriarch',
-                  'thornstag',
-                  'moonmoth',
-                  'bogtoad',
-                  'crocolisk',
-                  'scavenger',
-                  'guardian',
-                  'tortoise',
-                  'stormroc',
-                  'stray',
-                  'packcaller',
-                  'cub',
-                  'amalgam',
-                  'imp',
-                  'matron',
-                  'juggler',
-                  'watcher',
-                  'herald',
-                  'patron',
-                  'squire',
-                  'bannerbearer',
-                ].includes(id)}
+                disabled={!canSeparate}
                 title={
-                  [
-                    'hydra',
-                    'spiral',
-                    'vajra',
-                    'prowler',
-                    'wolf',
-                    'matriarch',
-                    'thornstag',
-                    'moonmoth',
-                    'bogtoad',
-                    'crocolisk',
-                    'scavenger',
-                    'guardian',
-                    'tortoise',
-                    'stormroc',
-                    'stray',
-                    'packcaller',
-                    'cub',
-                    'amalgam',
-                    'imp',
-                    'matron',
-                    'juggler',
-                    'watcher',
-                    'herald',
-                    'patron',
-                    'squire',
-                    'bannerbearer',
-                  ].includes(id)
-                    ? 'This assembled object has no separable display layers.'
-                    : undefined
+                  canSeparate ? undefined : 'This assembled object has no separable display layers.'
                 }
                 onClick={() => update({ exploded: !options.exploded })}
               >
                 <span>
-                  {[
-                    'hydra',
-                    'spiral',
-                    'vajra',
-                    'prowler',
-                    'wolf',
-                    'matriarch',
-                    'thornstag',
-                    'moonmoth',
-                    'bogtoad',
-                    'crocolisk',
-                    'scavenger',
-                    'guardian',
-                    'tortoise',
-                    'stormroc',
-                    'stray',
-                    'packcaller',
-                    'cub',
-                    'amalgam',
-                    'imp',
-                    'matron',
-                    'juggler',
-                    'watcher',
-                    'herald',
-                    'patron',
-                    'squire',
-                    'bannerbearer',
-                  ].includes(id)
-                    ? 'Layers assembled as one object'
-                    : 'Separate the layers'}
+                  {canSeparate ? 'Separate the layers' : 'Layers assembled as one object'}
                 </span>
                 <i />
               </button>
@@ -350,10 +269,10 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
             <button
               className="study-export study-video"
               onClick={() => void saveVideo()}
-              disabled={recording || options.exploded || exporting}
+              disabled={recording || options.exploded || exporting || duration === 0}
             >
               {recording ? 'Recording…' : '↓ Save animation loop'}
-              <small>6s · WEBM</small>
+              <small>{duration}s · WEBM</small>
             </button>
             <button
               onClick={() => {
@@ -362,6 +281,11 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
             >
               Save image ↗
             </button>
+            {delivery && (
+              <a href={delivery.sourceUrl} download={`${delivery.id}.blend`}>
+                Editable Blender source ↗
+              </a>
+            )}
             <p role="status">{message}</p>
           </div>
         </aside>
@@ -446,7 +370,7 @@ export default function ArtStudio({ onExit }: { onExit: () => void }) {
       </section>
       <footer className="studio-footer">
         <span>CARD WORKSHOP · AN ART EXPERIMENT</span>
-        <span>Carved in code. Yours to turn around.</span>
+        <span>Sculptures to explore. Yours to turn around.</span>
       </footer>
     </main>
   );

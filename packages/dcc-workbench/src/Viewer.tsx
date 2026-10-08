@@ -3,7 +3,7 @@ import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import assetUrl from '../assets/briar-hydra.glb?url';
+import type { PublishedAsset } from './delivery';
 
 // Explicit guards keep Three.js generic defaults from widening scene values to any.
 function isMesh(object: T.Object3D): object is T.Mesh {
@@ -24,22 +24,36 @@ export type Playback = {
   rig: boolean;
 };
 export default function Viewer({
+  asset: published,
   options,
   onTime,
+  onDuration,
 }: {
+  asset: PublishedAsset;
   options: Playback;
   onTime: (time: number) => void;
+  onDuration: (seconds: number) => void;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const state = useRef(options);
   const report = useRef(onTime);
+  const reportDuration = useRef(onDuration);
   state.current = options;
   report.current = onTime;
+  reportDuration.current = onDuration;
   const [status, setStatus] = useState('Loading the sculpture…');
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   useEffect(() => {
     const element = host.current!;
+    setReady(false);
+    setFailed(false);
+    setStatus('Loading the sculpture…');
+    reportDuration.current(0);
+    report.current(0);
+    element.dataset.time = '0.000';
+    element.dataset.duration = '0';
+    element.dataset.clips = '0';
     let renderer: T.WebGLRenderer;
     try {
       renderer = new T.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
@@ -58,7 +72,7 @@ export default function Viewer({
     renderer.shadowMap.type = T.PCFShadowMap;
     renderer.domElement.setAttribute(
       'aria-label',
-      'Animated Briar Hydra. Drag to orbit; scroll to zoom. Named view buttons provide keyboard camera controls.',
+      `${published.brief.title}. Drag to orbit; scroll to zoom. Named view buttons provide keyboard camera controls.`,
     );
     renderer.domElement.setAttribute('role', 'img');
     element.appendChild(renderer.domElement);
@@ -67,8 +81,6 @@ export default function Viewer({
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.enablePan = false;
-    controls.minDistance = 3.5;
-    controls.maxDistance = 12;
     controls.maxPolarAngle = Math.PI * 0.54;
     const pmrem = new T.PMREMGenerator(renderer);
     const room = new RoomEnvironment();
@@ -92,9 +104,11 @@ export default function Viewer({
     key.shadow.bias = -0.0003;
     key.shadow.normalBias = 0.02;
     scene.add(key);
+    scene.add(key.target);
     const rim = new T.DirectionalLight('#a9d9d2', 1.8);
     rim.position.set(-3, 3, -3);
     scene.add(rim);
+    scene.add(rim.target);
     const floor = new T.Mesh(
       new T.CylinderGeometry(1.6, 1.64, 0.09, 96),
       new T.MeshStandardMaterial({ color: '#263235', roughness: 0.8, metalness: 0.15 }),
@@ -113,19 +127,57 @@ export default function Viewer({
     let asset: T.Group | undefined;
     let skeleton: T.SkeletonHelper | undefined;
     let mixer: T.AnimationMixer | undefined;
-    let duration = 6;
+    let duration = 0;
     let time = 0;
     let lastSeek = -1;
     let lastView: View | undefined;
     let lastSurface: Surface | undefined;
     let previous = performance.now();
     let lastReport = 0;
+    const framing = new T.Box3(new T.Vector3(-1, 0, -1), new T.Vector3(1, 2, 1));
+    const fitCamera = (view: View) => {
+      const center = framing.getCenter(new T.Vector3());
+      const radius = Math.max(0.01, framing.getBoundingSphere(new T.Sphere()).radius);
+      const directions: Record<View, [number, number, number]> = {
+        Portrait: [0.63, 0.28, 1],
+        Front: [0, 0.04, 1],
+        Side: [1, 0.04, 0],
+        Back: [0, 0.04, -1],
+      };
+      const direction = new T.Vector3(...directions[view]).normalize();
+      const right = new T.Vector3().crossVectors(camera.up, direction).normalize();
+      const up = new T.Vector3().crossVectors(direction, right).normalize();
+      const tangent = Math.tan(T.MathUtils.degToRad(camera.fov / 2));
+      let distance = radius;
+      for (const x of [framing.min.x, framing.max.x])
+        for (const y of [framing.min.y, framing.max.y])
+          for (const z of [framing.min.z, framing.max.z]) {
+            const point = new T.Vector3(x, y, z).sub(center);
+            distance = Math.max(
+              distance,
+              point.dot(direction) +
+                1.16 *
+                  Math.max(
+                    Math.abs(point.dot(right)) / (tangent * camera.aspect),
+                    Math.abs(point.dot(up)) / tangent,
+                  ),
+            );
+          }
+      camera.position.copy(center).addScaledVector(direction, distance);
+      camera.near = radius * 0.001;
+      camera.far = Math.max(distance * 3 + radius * 2, radius * 20);
+      camera.updateProjectionMatrix();
+      controls.minDistance = radius * 0.6;
+      controls.maxDistance = Math.max(distance * 3, radius * 8);
+      controls.target.copy(center);
+      controls.update();
+    };
     const originals = new Map<T.Mesh, T.Material | T.Material[]>();
     const clay = new T.MeshStandardMaterial({ color: '#aab4ad', roughness: 0.78 });
     const wire = new T.MeshBasicMaterial({ color: '#bdd5c3', wireframe: true });
     const fit = () => {
-      const width = element.clientWidth;
-      const height = element.clientHeight;
+      const width = Math.max(1, element.clientWidth);
+      const height = Math.max(1, element.clientHeight);
       renderer.setSize(width, height);
       camera.aspect = width / Math.max(1, height);
       camera.updateProjectionMatrix();
@@ -137,12 +189,14 @@ export default function Viewer({
     const disposeAsset = (object: T.Object3D) => {
       const textures = new Set<T.Texture>();
       const materials = new Set<T.Material>();
+      const geometries = new Set<T.BufferGeometry>();
+      const skeletons = new Set<T.Skeleton>();
       object.traverse((child) => {
         if (isMesh(child)) {
-          child.geometry.dispose();
+          geometries.add(child.geometry);
           const material = originals.get(child) ?? child.material;
           for (const m of Array.isArray(material) ? material : [material]) materials.add(m);
-          if (child instanceof T.SkinnedMesh) child.skeleton.dispose();
+          if (child instanceof T.SkinnedMesh) skeletons.add(child.skeleton);
         }
       });
       materials.forEach((material) => {
@@ -152,9 +206,11 @@ export default function Viewer({
         material.dispose();
       });
       textures.forEach((texture) => texture.dispose());
+      geometries.forEach((geometry) => geometry.dispose());
+      skeletons.forEach((skin) => skin.dispose());
     };
     new GLTFLoader().load(
-      assetUrl,
+      published.modelUrl,
       (gltf) => {
         if (disposed) {
           disposeAsset(gltf.scene);
@@ -168,23 +224,77 @@ export default function Viewer({
             originals.set(child, child.material);
           }
         });
-        const bounds = new T.Box3().setFromObject(asset);
-        asset.position.y -= bounds.min.y;
         scene.add(asset);
         skeleton = new T.SkeletonHelper(asset);
         skeleton.visible = false;
         scene.add(skeleton);
         mixer = new T.AnimationMixer(asset);
-        const clip = gltf.animations[0];
-        if (!clip) {
+        const clip =
+          gltf.animations.find((item) => item.name === published.brief.animation?.name) ??
+          gltf.animations[0];
+        if (
+          (!clip && published.info.stats.animations.length > 0) ||
+          (clip && (!Number.isFinite(clip.duration) || clip.duration <= 0))
+        ) {
           setFailed(true);
-          setStatus('The published asset has no animation.');
+          setStatus('The published asset has no usable animation.');
           return;
         }
-        duration = clip.duration;
-        mixer.clipAction(clip).play();
+        duration = clip?.duration ?? 0;
+        if (clip) mixer.clipAction(clip).play();
+        const evaluate = (seconds: number) => {
+          mixer!.setTime(seconds);
+          asset!.updateMatrixWorld(true);
+          asset!.traverse((child) => {
+            if (child instanceof T.SkinnedMesh) child.skeleton.update();
+          });
+        };
+        evaluate(0);
+        const bounds = new T.Box3().setFromObject(asset, true);
+        if (bounds.isEmpty()) {
+          setFailed(true);
+          setStatus('The published asset has no visible geometry.');
+          return;
+        }
+        asset.position.y -= bounds.min.y;
+        // Fit actual deformed geometry across the loop, preserving authored model scale.
+        framing.makeEmpty();
+        for (const seconds of duration
+          ? [0, duration / 4, duration / 2, duration * 0.75, duration]
+          : [0]) {
+          evaluate(seconds);
+          framing.union(new T.Box3().setFromObject(asset, true));
+        }
+        evaluate(0);
+        const size = framing.getSize(new T.Vector3());
+        const center = framing.getCenter(new T.Vector3());
+        const plinthScale = (Math.max(size.x, size.z, 0.1) * 0.55) / 1.6;
+        floor.scale.setScalar(plinthScale);
+        floor.position.set(center.x, -0.055 * plinthScale, center.z);
+        edge.scale.setScalar(plinthScale);
+        edge.position.set(center.x, -0.008 * plinthScale, center.z);
+        floor.updateMatrixWorld(true);
+        framing.union(new T.Box3().setFromObject(floor));
+        const radius = Math.max(0.01, framing.getBoundingSphere(new T.Sphere()).radius);
+        key.position.copy(center).add(new T.Vector3(3, 5, 4).multiplyScalar(radius));
+        key.target.position.copy(center);
+        rim.position.copy(center).add(new T.Vector3(-3, 3, -3).multiplyScalar(radius));
+        rim.target.position.copy(center);
+        Object.assign(key.shadow.camera, {
+          left: -radius * 1.5,
+          right: radius * 1.5,
+          top: radius * 1.5,
+          bottom: -radius * 1.5,
+          near: radius * 0.01,
+          far: radius * 12,
+        });
+        key.shadow.camera.updateProjectionMatrix();
+        key.shadow.normalBias = radius * 0.005;
+        lastView = undefined;
+        lastSurface = undefined;
         element.dataset.duration = String(duration);
         element.dataset.clips = String(gltf.animations.length);
+        reportDuration.current(duration);
         setStatus('Ready');
         setReady(true);
       },
@@ -204,22 +314,13 @@ export default function Viewer({
       if (document.hidden) return;
       const current = state.current;
       if (lastView !== current.view) {
-        const distance = camera.aspect < 1 ? 8.6 : 6.7;
-        const positions: Record<View, [number, number, number]> = {
-          Portrait: [distance * 0.63, 2.9, distance],
-          Front: [0, 1.8, distance * 1.1],
-          Side: [distance * 1.1, 1.9, 0],
-          Back: [0, 2.0, -distance * 1.1],
-        };
-        camera.position.set(...positions[current.view]);
-        controls.target.set(0, 1.48, 0);
-        controls.update();
+        fitCamera(current.view);
         lastView = current.view;
       }
       if (current.seek !== lastSeek) {
         time = Math.min(duration, Math.max(0, current.time));
         lastSeek = current.seek;
-      } else if (current.playing) time = (time + dt) % duration;
+      } else if (current.playing && duration > 0) time = (time + dt) % duration;
       if (mixer) mixer.setTime(time);
       element.dataset.time = time.toFixed(3);
       if (now - lastReport > 100) {
@@ -249,6 +350,7 @@ export default function Viewer({
         disposeAsset(asset);
       }
       skeleton?.dispose();
+      key.shadow.map?.dispose();
       floor.geometry.dispose();
       floor.material.dispose();
       edge.geometry.dispose();
@@ -260,9 +362,9 @@ export default function Viewer({
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, []);
+  }, [published]);
   return (
-    <div className="dcc-render" ref={host} data-ready={ready}>
+    <div className="dcc-render" ref={host} data-ready={ready} data-asset={published.id}>
       {!ready && (
         <p className="dcc-load" role={failed ? 'alert' : 'status'}>
           {status}

@@ -1,8 +1,9 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
+import { dccAssetsPlugin } from './packages/dcc-workbench/vite-assets.ts';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), dccAssetsPlugin()],
   test: {
     // Geometry construction is CPU-heavy: measured ~5.4 seconds for Banner Bearer alone.
     // Bound concurrency instead of oversubscribing every core with sculpting jobs.

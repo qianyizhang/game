@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "nightjar",
+  "sourceBeforeSha256": "9f9dca7636c787c1aaa10aae4925dd6ebd4da7c7694c2ff9ceafbea45626982e",
+  "sourceEditedSha256": "b032119831286b3a8a09585741b6dde1dbea68c281e4fef2ff1c8bea12f0ebcb",
+  "control": {
+    "object": "EDIT | Wing.1",
+    "property": "Fold settle"
+  },
+  "original": 0.0,
+  "values": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "savedValue": 0.5,
+  "sampleFrames": [
+    0.0,
+    36.0,
+    72.0,
+    108.0,
+    144.0
+  ],
+  "sampleSeconds": [
+    0.0,
+    1.5,
+    3.0,
+    4.5,
+    6.0
+  ],
+  "moved": [
+    "Nightjar_ShoulderMantle_1",
+    "Nightjar_FlightPrimary_1_0",
+    "Nightjar_SecondaryPlane_1_0",
+    "Nightjar_CovertPatch_1_0_0"
+  ],
+  "fixed": [
+    "Mesh_0",
+    "Nightjar_SmallFittedBill",
+    "Nightjar_RecessedIris_1",
+    "Nightjar_Roost_Main",
+    "Nightjar_GripDigit_0_0",
+    "Nightjar_ShoulderMantle_-1"
+  ],
+  "tolerance": 1e-06,
+  "adjacentValueMotion": [
+    {
+      "Nightjar_ShoulderMantle_1": 0.009486889471433948,
+      "Nightjar_FlightPrimary_1_0": 0.009486859002075548,
+      "Nightjar_SecondaryPlane_1_0": 0.009486856557848453,
+      "Nightjar_CovertPatch_1_0_0": 0.0052934769604238915
+    },
+    {
+      "Nightjar_ShoulderMantle_1": 0.009486889471433948,
+      "Nightjar_FlightPrimary_1_0": 0.009486851930568611,
+      "Nightjar_SecondaryPlane_1_0": 0.009486851930568611,
+      "Nightjar_CovertPatch_1_0_0": 0.0052934252771615125
+    }
+  ],
+  "maxFixedDifference": 0.0,
+  "maxRestorationDifference": 0.0,
+  "maxReloadDifference": 0.0
+}

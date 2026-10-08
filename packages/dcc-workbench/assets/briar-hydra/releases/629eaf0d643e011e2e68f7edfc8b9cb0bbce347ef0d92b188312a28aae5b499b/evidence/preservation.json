@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "completed": true,
+  "sourceAndPublicationUnchanged": true,
+  "files": [
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/briar-hydra/source.blend",
+      "sha256": "13c8176b226376a7e4cdb026eece3b0b02ff173a9317a5e3c5d6953274be7fcb",
+      "after": "13c8176b226376a7e4cdb026eece3b0b02ff173a9317a5e3c5d6953274be7fcb",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/briar-hydra/current.json",
+      "sha256": "87e2a5873b11837c1864bd901a346ff3cf3b757573204b84009e631462e3fee0",
+      "after": "87e2a5873b11837c1864bd901a346ff3cf3b757573204b84009e631462e3fee0",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/briar-hydra/releases/c36825fe37183a30e1152ce5575c05267420aae6f20ab86c936c18a0b3c1b23e/model.glb",
+      "sha256": "b1c2472346d8753385a8bb0e02b9e877e20e2ec973d7ae8d7fe5097ed8a7051d",
+      "after": "b1c2472346d8753385a8bb0e02b9e877e20e2ec973d7ae8d7fe5097ed8a7051d",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/briar-hydra/releases/c36825fe37183a30e1152ce5575c05267420aae6f20ab86c936c18a0b3c1b23e/source.blend",
+      "sha256": "0237f8efa119aacfd6d831f80d43a90b9302fd4875bca1219000ee1f0c9cba70",
+      "after": "0237f8efa119aacfd6d831f80d43a90b9302fd4875bca1219000ee1f0c9cba70",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/briar-hydra/releases/c36825fe37183a30e1152ce5575c05267420aae6f20ab86c936c18a0b3c1b23e/receipt.json",
+      "sha256": "c36825fe37183a30e1152ce5575c05267420aae6f20ab86c936c18a0b3c1b23e",
+      "after": "c36825fe37183a30e1152ce5575c05267420aae6f20ab86c936c18a0b3c1b23e",
+      "unchanged": true
+    }
+  ]
+}

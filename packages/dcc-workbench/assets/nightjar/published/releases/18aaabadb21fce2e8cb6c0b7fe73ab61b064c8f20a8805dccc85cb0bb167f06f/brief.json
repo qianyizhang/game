@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "id": "nightjar",
+  "title": "Nightjar",
+  "subtitle": "A quiet listener at dusk.",
+  "interpretation": "A dusk-plumaged bird pauses along a rising branch, its small bill turned toward open air.",
+  "gesture": "A low crown and breast flow into the descending tail; folded flight feathers follow the back, with a short wrapped grip supporting the bird.",
+  "polish": [
+    "Fit the folded wing as part of the body rather than a detached panel.",
+    "Preserve readable thin feather planes and the listening profile.",
+    "Refine remaining rear wing clearance, peg legs and branch before gallery promotion."
+  ],
+  "palette": [
+    {
+      "name": "Ash plumage",
+      "color": "#89846c"
+    },
+    {
+      "name": "Flight vanes",
+      "color": "#625844"
+    },
+    {
+      "name": "Pale throat",
+      "color": "#b9b09b"
+    }
+  ],
+  "nativeFeatures": [
+    "Editable avian regional mesh assemblies",
+    "Fitted wing-fold shape keys and controls",
+    "Armature and rigid feather/face parenting",
+    "Saved listening idle and blink",
+    "Embedded plumage and bark materials"
+  ],
+  "animation": {
+    "name": "nightjar_idle",
+    "seconds": 6,
+    "fps": 24
+  },
+  "budgets": {
+    "maxTriangles": 150000,
+    "maxBytes": 20000000,
+    "maxJoints": 16
+  },
+  "reference": "Imported from the preserved procedural Nightjar delivery; shoulder fit revised in native shape keys. Triangulated geometry is editable; procedural recipes and retopology are not recovered.",
+  "reviewStatus": "Construction workbench candidate; rear wing clearance, peg legs and branch remain below gallery target.",
+  "origin": {
+    "kind": "imported-delivery",
+    "sha256": "0667c40d41102a113247ecb9aa30e5d3038004164b9b6c3b406f4a9e549ac4a0",
+    "legacyStudyId": "nightjar",
+    "nativeTrial": "Sol gpt-6.1-sol high, two guided construction passes with parent review"
+  },
+  "nativeEdit": {
+    "control": {
+      "object": "EDIT | FoldedWing.1",
+      "property": "Fold fit"
+    },
+    "values": [0, 0.6, 1.2],
+    "moved": [
+      "Nightjar_WingMantle_1",
+      "Nightjar_Primary_1_0",
+      "Nightjar_Secondary_1_0",
+      "Nightjar_Scapular_1_0"
+    ],
+    "fixed": [
+      "Mesh_0",
+      "Nightjar_SmallFittedBill",
+      "Nightjar_RecessedIris_1",
+      "Nightjar_NaturalThinBranch",
+      "Nightjar_WrappedToe_0_0",
+      "Nightjar_Scapular_-1_0"
+    ]
+  }
+}

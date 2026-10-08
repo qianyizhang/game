@@ -1,0 +1,470 @@
+{
+  "createdUtc": "2026-10-08T00:35:39.997167+00:00",
+  "status": "frozen-isolated-candidate; parent accepted grip construction for delivery review; gallery promotion parent-owned",
+  "source": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/nightjar-grip-v3.blend",
+  "sourceSha256": "9f9dca7636c787c1aaa10aae4925dd6ebd4da7c7694c2ff9ceafbea45626982e",
+  "previousFreezeSha256": "f874b790230000d5af4a94496db9791305308334735c0ac62d92594778a6bb20",
+  "acceptedWingSourceSha256": "1a9f8ac07fef184c86bff66fb1f69768604e61dc8e1022cd2c752767a7c07ce1",
+  "nativeEdit": {
+    "control": {
+      "object": "EDIT | Wing.1",
+      "property": "Fold settle"
+    },
+    "values": [
+      0,
+      0.5,
+      1
+    ],
+    "moved": [
+      "Nightjar_ShoulderMantle_1",
+      "Nightjar_FlightPrimary_1_0",
+      "Nightjar_SecondaryPlane_1_0",
+      "Nightjar_CovertPatch_1_0_0"
+    ],
+    "fixed": [
+      "Mesh_0",
+      "Nightjar_SmallFittedBill",
+      "Nightjar_Roost_Main",
+      "Nightjar_GripDigit_0_0",
+      "Nightjar_ShoulderMantle_-1"
+    ]
+  },
+  "readOnlyVerificationSourceUnchanged": true,
+  "files": [
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/contact-review-v3.json",
+      "bytes": 24520,
+      "sha256": "1bd9a136e1c454fabbe715e1a9d35e17c5fe4ea691f7ba1c7772640686fbb241"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/freeze.json",
+      "bytes": 8348,
+      "sha256": "f874b790230000d5af4a94496db9791305308334735c0ac62d92594778a6bb20"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/grip-v3-animation-contacts.json",
+      "bytes": 311078,
+      "sha256": "dd3daf12bb60389fdd18782a93149ba54e350a7e9c8a6ca7c857aa58af09bc7d"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/grip-v3-construction.json",
+      "bytes": 1760,
+      "sha256": "6298776f0cd5a114be194e3ecd119ce8c36dfaf6b455aba4aac971c245637f6d"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/grip-v3-handoff.md",
+      "bytes": 6207,
+      "sha256": "ada3da0a661d434868b24e5932ecba9345c804d8be7f04a04dbabf9c02223202"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/grip-v3-preservation.json",
+      "bytes": 9475,
+      "sha256": "10cc70700cbc1e0d5bea1ab223747638c21b1158244e5dabf24c51e303025cdc"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/nightjar-fold-paths-v2.blend",
+      "bytes": 16157399,
+      "sha256": "1a9f8ac07fef184c86bff66fb1f69768604e61dc8e1022cd2c752767a7c07ce1"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/nightjar-grip-v3.blend",
+      "bytes": 16200172,
+      "sha256": "9f9dca7636c787c1aaa10aae4925dd6ebd4da7c7694c2ff9ceafbea45626982e"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/freeze_final.py",
+      "bytes": 2290,
+      "sha256": "0480b3c1999a99fae19fee1099a05d8c86274b171033d5d1dbea9f5de55460e3"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/inspect_baseline.py",
+      "bytes": 1287,
+      "sha256": "d35c3a04aa32a880f0299e296e91633aeae1f4235d29d2e8a5018636b4eb959e"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/inspect_contacts.py",
+      "bytes": 2932,
+      "sha256": "d7f108313884d40aec0d63a1039298f6efe90c9b0d46e934639612799734f078"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/inspect_contacts_v3.py",
+      "bytes": 2946,
+      "sha256": "6c9f9a5df2fd13755cddf295639e50653c220c2bcbd196175182012513ec64a0"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/native_geometry.py",
+      "bytes": 4058,
+      "sha256": "b7acf7161cc191b7ddace48412746605d6e14f0211c7af78bd0597891ddfb140"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/reconstruct_regions.py",
+      "bytes": 13467,
+      "sha256": "7ebbcbacf5b75be120c429c409bc5689f97f8eff7430797a50e95480fe5bdcc7"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/render_grip_detail.py",
+      "bytes": 2824,
+      "sha256": "c9d220a2ea04eb25706a3a7d7bdad1d973963a5f753676040669ad8903d59795"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/render_review.py",
+      "bytes": 3072,
+      "sha256": "094904e2eadbb67077dcc171277b6c7d4365640fa4e0e93c61c84cef98aa5b27"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/render_settle_extreme.py",
+      "bytes": 1053,
+      "sha256": "5457783292fd4f2aeffcc5f5560872d940e8396cb4059a5e81740689b835ece2"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/repair_grip.py",
+      "bytes": 5181,
+      "sha256": "b8390dab795ddd95097b681424353f2f3a73b7efa0a2a0f92f2f84ff8544b541"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/revise_fold_paths.py",
+      "bytes": 5084,
+      "sha256": "cea06e1c5733c91a38eeef60f20a2acbdcf56cda420add747a81dc2fd728753a"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/verify_final_animation_contacts.py",
+      "bytes": 4028,
+      "sha256": "2eb08115d4af1319a7a46635a5ce72072ac1135ccdcc64654dbe915d9d1c687f"
+    },
+    {
+      "path": ".work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/scripts/verify_grip_and_preservation.py",
+      "bytes": 4417,
+      "sha256": "16bb83b9bbc69f8814f94b5315ab1d9591fdc3f0d5c40c07dd549584316ee2c1"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3/capture.json",
+      "bytes": 808,
+      "sha256": "d9399b731e4c3e60e6929824e4edb6243002e0758f098468984b0929fab5215a"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3/front-clay.png",
+      "bytes": 555191,
+      "sha256": "54a8d9fe21fda54d7b0d94eda29fd27792068b3e0d43a7328d733774d24ede5d"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3/front-material.png",
+      "bytes": 562205,
+      "sha256": "8f228b6916b3aaba1fd48966bf7968ad70df500ca32798e8e45670e8b9c33a5b"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3/hero-clay.png",
+      "bytes": 571555,
+      "sha256": "5ec9ea5cf7470a07f7d2a8883d414355ae0a533b77bb32240675a9c6a6154d73"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3/hero-material.png",
+      "bytes": 587267,
+      "sha256": "c9f26f6deb601d8c8b6edd038a2b4c976f66dd200215643920140be8b9959e39"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3/rear-clay.png",
+      "bytes": 562436,
+      "sha256": "2e9b8c37e9e82147508932159db9d23909b86407b604a16b915014d6eddfb9bb"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3/rear-material.png",
+      "bytes": 569783,
+      "sha256": "7a523235800e8042ac5f605c8f98b382bffa4faecd9acefa840ba5169e20a280"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3/side-clay.png",
+      "bytes": 576381,
+      "sha256": "07e6604cf9620cd7704a364860ada25b44fb4b9c63bf31200dc3a77f180cac57"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3/side-material.png",
+      "bytes": 593124,
+      "sha256": "4e3de917718d492b2901f865d55a4449886354feea4ec417e5e672a4acd1f53b"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-0/capture.json",
+      "bytes": 875,
+      "sha256": "9feefe4f6ebedfa7c6fa65c07ee1ff27f3de01664fa7ffc9365462e10071a48b"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-0/front-clay.png",
+      "bytes": 1191716,
+      "sha256": "eaf10e5afd44ff6ffc28617cae00c6eeddd89bb4a16db3fb552ff0883e5af3cd"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-0/front-material.png",
+      "bytes": 1288037,
+      "sha256": "22ebb654f03467e02ba907a81d104085b31c524cfd2620960ddac935c9b35127"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-0/rear-clay.png",
+      "bytes": 1242723,
+      "sha256": "c71c6f93dc25a5f324b6b2705bad6b576190cfa8447869de787f508219ced2e7"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-0/rear-material.png",
+      "bytes": 1393363,
+      "sha256": "c43eb5a2d46f6d69a6c04f7d51656e906c9cad6b86ff68563e494f61499217db"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-0/side-clay.png",
+      "bytes": 1183934,
+      "sha256": "f029ff8e14e9a42172842ee0c99d2196cbd0c78609f6197fe35ba9030c836df5"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-0/side-material.png",
+      "bytes": 1265418,
+      "sha256": "74aaa0d4af81bded60db4a069b58bf9b5eeab46073c22c7659d1b4a13a519e7f"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-0/underside-clay.png",
+      "bytes": 1159835,
+      "sha256": "74a9842f9599d6f60c520afce0f8045d885574d197c4ebf9ac38f786db68ab03"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-0/underside-material.png",
+      "bytes": 1238163,
+      "sha256": "c60581105380c67d419d198c020a68fa9651477d23f595183a370b5db292fed8"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-108/capture.json",
+      "bytes": 877,
+      "sha256": "6d48a5d450e516b50ff1f35c7efc9a3e9cb9a4547e7f0d39bfc86bf0f1fcd5d8"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-108/front-clay.png",
+      "bytes": 1191353,
+      "sha256": "f73cb1e6bb8317642cf03fd800d6f8d4526ab6c46f4e9e0bdb76df935f8d8719"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-108/front-material.png",
+      "bytes": 1287725,
+      "sha256": "dcb579dca5126118ae1850976324a9ed8e91695a9dad35c747d1d0687c912f0c"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-108/rear-clay.png",
+      "bytes": 1242106,
+      "sha256": "f2febb686b2d7c26b8d607c9cffaa3f373fb03e14fa444e0e8b26d4081ffe073"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-108/rear-material.png",
+      "bytes": 1391279,
+      "sha256": "cb1baf2ebba84354ad6fa17ed0620176b4f57cff9f7f468594bb129e67249686"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-108/side-clay.png",
+      "bytes": 1183954,
+      "sha256": "ca0c007ea23821ed1c92aabae5772c794a6cb906c5d828380edbfd45e038a2ea"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-108/side-material.png",
+      "bytes": 1265250,
+      "sha256": "d62e41c5ff51986c8a42a87932a2f68d7615e79ec765b17b2ad60fd264687024"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-108/underside-clay.png",
+      "bytes": 1160789,
+      "sha256": "ad6dd3dc22463c32e2ceb9cb3dab714e9250dd325ce5ee6e162f7946cd5f21b9"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-108/underside-material.png",
+      "bytes": 1239843,
+      "sha256": "89c759e98dce633ebe7661af29e71f7f7554b318f5ee076bdb72b8fb6a50461a"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-36/capture.json",
+      "bytes": 876,
+      "sha256": "a4465ecc384f7d0cecb2c6247a0ae703596475395c58140e39043ff1162167d2"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-36/front-clay.png",
+      "bytes": 1188465,
+      "sha256": "91c85a80442f883310e2c1f4232e976a493f0a40a609e6201fa4b4a01db64fdd"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-36/front-material.png",
+      "bytes": 1286155,
+      "sha256": "b046ae2eb07b5c07537e55339a2864fa8ce3930f1669beb4971a1f533bbc7612"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-36/rear-clay.png",
+      "bytes": 1244992,
+      "sha256": "ae7b9b787781b882af022890849580f5e2ff419dcdd1a9f15317d2709b5bd7ef"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-36/rear-material.png",
+      "bytes": 1395287,
+      "sha256": "51536c2b053ef389ac38535fbc6012ac9ca60730372a5e31198b198bb2673d06"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-36/side-clay.png",
+      "bytes": 1185182,
+      "sha256": "6a0f4c2562eab635f7baf16d47654fd245c0010663b3ed784122eaee5cb94fc3"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-36/side-material.png",
+      "bytes": 1264967,
+      "sha256": "64b8b16db52f2e6e957589643b5d4d4f5a4a8e20f8f930b29f91293b89f8fe82"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-36/underside-clay.png",
+      "bytes": 1160273,
+      "sha256": "00459510bebb24876c46112a07a7068ff8834fd5afd09a4a82daf75b26a858bd"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/grip-v3-detail-36/underside-material.png",
+      "bytes": 1238640,
+      "sha256": "6a0b5aab34e3deb74dd70b2d353a1724ff62914109bfa86ca2dda019db34eba9"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1/capture.json",
+      "bytes": 814,
+      "sha256": "ed1a357e1137905890d62e45c643d87b0c2bd756b5935e1853dcd8bd8bd9b9d9"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1/control-state.json",
+      "bytes": 386,
+      "sha256": "f72f9a8df3fb8ce1ab5d03853f8d6c03d7edbf91ac10aee6cf46f7d7c3fa8ff5"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1/front-clay.png",
+      "bytes": 555271,
+      "sha256": "0efedca95229e838988bcbde24dbcdcf71d309c44a368d63a1178861c3a66016"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1/front-material.png",
+      "bytes": 561958,
+      "sha256": "7d6fbf413e1c13a08f462a572ed53ba0a41769280efa8abea278e45c04b2815d"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1/hero-clay.png",
+      "bytes": 569860,
+      "sha256": "f337b63c04d3571d2d24c6adeba602864bd98b982a61e4bd7015c1fcc2c5a2f2"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1/hero-material.png",
+      "bytes": 585072,
+      "sha256": "e7282d8731785b4469824f77c88321d67f17eca9f59e7f93d5923c2542a9a90d"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1/rear-clay.png",
+      "bytes": 560898,
+      "sha256": "5833d00a3be645e320df724268094f7ebfc5c7acae0428c237fd2660fee244fd"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1/rear-material.png",
+      "bytes": 568441,
+      "sha256": "983479a9e14ac0668c7aa8d1af1a8642de2c284f3aa7143ecdb02ddd175d9e79"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1/side-clay.png",
+      "bytes": 574265,
+      "sha256": "37b80ae81813d7ed7e624ad9072f74e1bc2fd12b0da1988ca10ba7348dfb5091"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1/side-material.png",
+      "bytes": 591045,
+      "sha256": "d4cbae39a98fbbecc5fdf33e9001145592e1d258ebb97243633750bf536c5585"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-108/capture.json",
+      "bytes": 816,
+      "sha256": "49178a10979d8437a9660f5289696d474c08178ffb081637780ab0ad6ec738e3"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-108/control-state.json",
+      "bytes": 386,
+      "sha256": "f72f9a8df3fb8ce1ab5d03853f8d6c03d7edbf91ac10aee6cf46f7d7c3fa8ff5"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-108/front-clay.png",
+      "bytes": 555206,
+      "sha256": "bcdd2ea3eb436d07687adc6615e1f390b1532dee232eedc23598539272fa2d44"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-108/front-material.png",
+      "bytes": 562239,
+      "sha256": "82a4fc4a256eb08f3f9e421767baea91aa874a30ae6d8bf06b33c7f9903c266b"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-108/hero-clay.png",
+      "bytes": 569987,
+      "sha256": "ec9506e2d6311073984a8f7a64f011837f13a5d17758279a245fe5c61f1dd51b"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-108/hero-material.png",
+      "bytes": 585001,
+      "sha256": "f212420424d8c212b63720f92660e99babd728164e88844b243dfd35abfe5dc1"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-108/rear-clay.png",
+      "bytes": 561111,
+      "sha256": "8917425c0cdf78160dc972349ebf9a98db1f97c5bb6841e7802c30b861669b84"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-108/rear-material.png",
+      "bytes": 568714,
+      "sha256": "ded79d0db76514ee1a5288efc0beb52a505a2be560c4a2118b3535e0b2608dd2"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-108/side-clay.png",
+      "bytes": 574374,
+      "sha256": "433fee915859fd43b839f4bd1375fc498cd2e064a22f4f51c81b26b739c204ee"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-108/side-material.png",
+      "bytes": 591118,
+      "sha256": "581f0afdbff78be85d1f805c2ed8e6692d056dd9ccf2668a57d6e5fb35705903"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-36/capture.json",
+      "bytes": 815,
+      "sha256": "9d945746c00cda48dd9822eaa8572cca33e9608ab346866287e81431454cf86b"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-36/control-state.json",
+      "bytes": 386,
+      "sha256": "f72f9a8df3fb8ce1ab5d03853f8d6c03d7edbf91ac10aee6cf46f7d7c3fa8ff5"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-36/front-clay.png",
+      "bytes": 554779,
+      "sha256": "b4b39a97fe8bc2e9cda016698c0cbbe7c77b81551a60b2c773f1992c18c82616"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-36/front-material.png",
+      "bytes": 561829,
+      "sha256": "bf88dd773145e795ccc318bad6a89a09a6a8bf1028a2bc779fe14f0a0ea9e709"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-36/hero-clay.png",
+      "bytes": 569940,
+      "sha256": "7e69cf246f9b064553a2929facb2901c264cdc74da2bac387b92e0e06316a4ae"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-36/hero-material.png",
+      "bytes": 585481,
+      "sha256": "0e86043e26b5cdabe0920abe1cbc6c5eb52c62f8e5adffe7c7aa1dfb321e5d52"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-36/rear-clay.png",
+      "bytes": 560903,
+      "sha256": "27223631e8a781359a200f4505f711514f5d8355a5ce2460b667677b51683fef"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-36/rear-material.png",
+      "bytes": 568099,
+      "sha256": "adf14456cd026bf3075200245dc5260d8d636d735c990f34f1d44253d06369f6"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-36/side-clay.png",
+      "bytes": 574487,
+      "sha256": "beb077e7bc335b3a07a3dfe43d4716f247c5c4aa64a66c4b511fc62cde668aef"
+    },
+    {
+      "path": "test-results/asset-migration-nightjar/round-3/right-settle-1-idle-36/side-material.png",
+      "bytes": 590875,
+      "sha256": "f5edc7394a34e2a44c21612dc5e1f87a02ec8f32b373d97c6d9957d267279c16"
+    }
+  ]
+}

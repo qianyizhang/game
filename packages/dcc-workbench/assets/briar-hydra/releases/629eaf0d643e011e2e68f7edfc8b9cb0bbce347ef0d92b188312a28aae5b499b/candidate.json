@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "definitionDigest": "8a173cc4edcae5cc565671cfa7cc512de6bcefa64803f0f53dc9df8149f28cad",
+  "definition": {
+    "id": "briar-hydra",
+    "legacyStudyId": "hydra",
+    "source": "subjects/briar-hydra/source.blend",
+    "brief": "subjects/briar-hydra/brief.json",
+    "native": {
+      "adapter": "blender/export_saved.py",
+      "dependencies": [
+        "blender/export_saved.py",
+        "blender/native_types.py",
+        "blender/saved_export_plan.py"
+      ]
+    },
+    "delivery": {
+      "profile": "skinned",
+      "animation": {
+        "name": "hydra_idle",
+        "seconds": 6,
+        "fps": 24
+      },
+      "directory": "assets",
+      "model": "assets/briar-hydra.glb",
+      "audit": "assets/authoring.json",
+      "poses": "assets/pose-samples.json",
+      "manifest": "assets/manifest.json",
+      "receipts": "assets/receipts",
+      "publication": "assets/briar-hydra"
+    }
+  },
+  "inputs": {
+    "blender/export_saved.py": "ccc388de6b6ddd622c6884a7f65f9893e6a752f355b95c63af0b48f41a2243c6",
+    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31",
+    "blender/saved_export_plan.py": "c9d0858b8ae79fb7d85f0069010227fa3769c7f3f1604047dd277664411bfc42",
+    "contracts.ts": "3778dc4197634712de81808e45638f27be3d13a3a9b35d258ef8f9dededecb93",
+    "glb.ts": "752b2adbc98a0559577236a9399e2ecc1e83281ce32a82e1d0760cc48d7e13da",
+    "pipeline.mjs": "085eee0376f80c6d06e30d2c51320deb88c430c1b50bc3144b834a88e007e4f4",
+    "pipeline.ts": "17d75f1236d726a73c659bfa28a6cab6fbdbc87592289fd38c88c8aecbfc7952",
+    "registry.ts": "d6a06ef24b7cd16c5e840c218c57a6c6cab85455d8ba694e069a4d247f49bafa",
+    "releases.ts": "9306fa9b206f015a07f4e415154505a95116df5ae47c5aeec0428ee865526a86",
+    "subjects/briar-hydra/brief.json": "d11d0e055d4bd292f8b6e0434358a92386b71aaea0fe370af796a9f8d670ecd5",
+    "subjects/briar-hydra/source.blend": "13c8176b226376a7e4cdb026eece3b0b02ff173a9317a5e3c5d6953274be7fcb"
+  },
+  "previous": {
+    "kind": "release",
+    "receipt": {
+      "path": "assets/briar-hydra/releases/c36825fe37183a30e1152ce5575c05267420aae6f20ab86c936c18a0b3c1b23e/receipt.json",
+      "sha256": "c36825fe37183a30e1152ce5575c05267420aae6f20ab86c936c18a0b3c1b23e"
+    }
+  },
+  "origin": {
+    "kind": "exported"
+  },
+  "outputs": {
+    "model": {
+      "path": "briar-hydra.pending.glb",
+      "sha256": "982519aaad01ea2e0fd3a5c282136a23bb17e6081ee3992e0a4fa8baa9bfa935"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "0a8c4021cf6621318878508a7ad5442770063425974742883dba2c0f68737ac7"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "4dc162a3f1f1b95b1864471a30512227543222eeacfcf85858662beed586117a"
+    }
+  },
+  "stats": {
+    "bytes": 17612728,
+    "triangles": 572476,
+    "meshes": 164,
+    "materials": 10,
+    "textures": 6,
+    "joints": 28,
+    "animations": [
+      {
+        "name": "hydra_idle",
+        "seconds": 6,
+        "channels": 90
+      }
+    ]
+  }
+}

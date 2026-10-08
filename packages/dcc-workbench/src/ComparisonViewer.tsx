@@ -7,7 +7,8 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import acceptedUrl from '../references/comparison/accepted-hydra.glb?url';
 import beforeUrl from '../references/comparison/blender-before.glb?url';
 import gestureUrl from '../references/comparison/blender-gesture.glb?url';
-import candidateUrl from '../assets/briar-hydra.glb?url';
+import { getPublishedAsset } from './delivery';
+const { modelUrl: candidateUrl } = getPublishedAsset('briar-hydra');
 import type { View } from './Viewer';
 
 export type ComparisonOptions = {

@@ -1,0 +1,613 @@
+{
+  "source": "/Users/zhangqy/pkgs/game/.work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/nightjar-grip-v3.blend",
+  "sourceSha256": "9f9dca7636c787c1aaa10aae4925dd6ebd4da7c7694c2ff9ceafbea45626982e",
+  "frames": [
+    0,
+    36,
+    72,
+    108,
+    144
+  ],
+  "nativeEdit": {
+    "control": {
+      "object": "EDIT | Wing.1",
+      "property": "Fold settle"
+    },
+    "values": [
+      0,
+      0.5,
+      1
+    ],
+    "moved": [
+      "Nightjar_ShoulderMantle_1",
+      "Nightjar_FlightPrimary_1_0",
+      "Nightjar_SecondaryPlane_1_0",
+      "Nightjar_CovertPatch_1_0_0"
+    ],
+    "fixed": [
+      "Mesh_0",
+      "Nightjar_SmallFittedBill",
+      "Nightjar_Roost_Main",
+      "Nightjar_GripDigit_0_0",
+      "Nightjar_ShoulderMantle_-1"
+    ]
+  },
+  "controlExtremes": {
+    "0": {
+      "Nightjar_ShoulderMantle_1": 0.018973685182782307,
+      "Nightjar_FlightPrimary_1_0": 0.01897366629656767,
+      "Nightjar_SecondaryPlane_1_0": 0.01897366629656767,
+      "Nightjar_CovertPatch_1_0_0": 0.010586863711949012,
+      "Mesh_0": 0.0,
+      "Nightjar_SmallFittedBill": 0.0,
+      "Nightjar_Roost_Main": 0.0,
+      "Nightjar_GripDigit_0_0": 0.0,
+      "Nightjar_ShoulderMantle_-1": 0.0
+    },
+    "36": {
+      "Nightjar_ShoulderMantle_1": 0.018973726981647353,
+      "Nightjar_FlightPrimary_1_0": 0.018973678376077677,
+      "Nightjar_SecondaryPlane_1_0": 0.018973675595873672,
+      "Nightjar_CovertPatch_1_0_0": 0.01058687384907048,
+      "Mesh_0": 0.0,
+      "Nightjar_SmallFittedBill": 0.0,
+      "Nightjar_Roost_Main": 0.0,
+      "Nightjar_GripDigit_0_0": 0.0,
+      "Nightjar_ShoulderMantle_-1": 0.0
+    },
+    "72": {
+      "Nightjar_ShoulderMantle_1": 0.018973685182782307,
+      "Nightjar_FlightPrimary_1_0": 0.01897366629656767,
+      "Nightjar_SecondaryPlane_1_0": 0.01897366629656767,
+      "Nightjar_CovertPatch_1_0_0": 0.010586863711949012,
+      "Mesh_0": 0.0,
+      "Nightjar_SmallFittedBill": 0.0,
+      "Nightjar_Roost_Main": 0.0,
+      "Nightjar_GripDigit_0_0": 0.0,
+      "Nightjar_ShoulderMantle_-1": 0.0
+    },
+    "108": {
+      "Nightjar_ShoulderMantle_1": 0.018973726981647353,
+      "Nightjar_FlightPrimary_1_0": 0.018973678376077677,
+      "Nightjar_SecondaryPlane_1_0": 0.018973675595873672,
+      "Nightjar_CovertPatch_1_0_0": 0.01058687384907048,
+      "Mesh_0": 0.0,
+      "Nightjar_SmallFittedBill": 0.0,
+      "Nightjar_Roost_Main": 0.0,
+      "Nightjar_GripDigit_0_0": 0.0,
+      "Nightjar_ShoulderMantle_-1": 0.0
+    },
+    "144": {
+      "Nightjar_ShoulderMantle_1": 0.018973685182782307,
+      "Nightjar_FlightPrimary_1_0": 0.01897366629656767,
+      "Nightjar_SecondaryPlane_1_0": 0.01897366629656767,
+      "Nightjar_CovertPatch_1_0_0": 0.010586863711949012,
+      "Mesh_0": 0.0,
+      "Nightjar_SmallFittedBill": 0.0,
+      "Nightjar_Roost_Main": 0.0,
+      "Nightjar_GripDigit_0_0": 0.0,
+      "Nightjar_ShoulderMantle_-1": 0.0
+    }
+  },
+  "contacts": {
+    "0": {
+      "Nightjar_AnklePad_0": {
+        "minimumSurfaceDistanceMeters": 0.0001284728932660073,
+        "minimumSignedDistanceMeters": -0.003299385018181056,
+        "maximumSignedDistanceMeters": 0.011330461478792131,
+        "verticesInsideBranch": 53
+      },
+      "Nightjar_AnklePad_1": {
+        "minimumSurfaceDistanceMeters": 2.8432588806026615e-05,
+        "minimumSignedDistanceMeters": -0.003506218461552635,
+        "maximumSignedDistanceMeters": 0.011773965903557837,
+        "verticesInsideBranch": 53
+      },
+      "Nightjar_FoldedThigh_0": {
+        "minimumSurfaceDistanceMeters": 0.020009072497487068,
+        "minimumSignedDistanceMeters": 0.020009067957289517,
+        "maximumSignedDistanceMeters": 0.1068450587335974,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_FoldedTarsus_0": {
+        "minimumSurfaceDistanceMeters": 0.0027868347242474556,
+        "minimumSignedDistanceMeters": 0.0027868342222063802,
+        "maximumSignedDistanceMeters": 0.03880533907795325,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_GripDigit_0_0": {
+        "minimumSurfaceDistanceMeters": 1.215583506564144e-05,
+        "minimumSignedDistanceMeters": -0.002559663833835657,
+        "maximumSignedDistanceMeters": 0.010144688785658218,
+        "verticesInsideBranch": 126
+      },
+      "Nightjar_GripDigit_0_1": {
+        "minimumSurfaceDistanceMeters": 1.494501134402526e-06,
+        "minimumSignedDistanceMeters": -0.0023294770139727916,
+        "maximumSignedDistanceMeters": 0.010130365117220208,
+        "verticesInsideBranch": 122
+      },
+      "Nightjar_GripDigit_0_2": {
+        "minimumSurfaceDistanceMeters": 6.181118806125596e-06,
+        "minimumSignedDistanceMeters": -0.0023739710527479474,
+        "maximumSignedDistanceMeters": 0.009949132057954557,
+        "verticesInsideBranch": 127
+      },
+      "Nightjar_GripHallux_0": {
+        "minimumSurfaceDistanceMeters": 2.333554675715277e-06,
+        "minimumSignedDistanceMeters": -0.0019544116512406617,
+        "maximumSignedDistanceMeters": 0.009987130819354206,
+        "verticesInsideBranch": 105
+      },
+      "Nightjar_FoldedThigh_1": {
+        "minimumSurfaceDistanceMeters": 0.021602509543299675,
+        "minimumSignedDistanceMeters": 0.02151613897876814,
+        "maximumSignedDistanceMeters": 0.11076075583696365,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_FoldedTarsus_1": {
+        "minimumSurfaceDistanceMeters": 0.0030226747039705515,
+        "minimumSignedDistanceMeters": 0.0030226748203858733,
+        "maximumSignedDistanceMeters": 0.038253690756391734,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_GripDigit_1_0": {
+        "minimumSurfaceDistanceMeters": 3.110432953690179e-05,
+        "minimumSignedDistanceMeters": -0.003184076522302348,
+        "maximumSignedDistanceMeters": 0.010639918444212526,
+        "verticesInsideBranch": 122
+      },
+      "Nightjar_GripDigit_1_1": {
+        "minimumSurfaceDistanceMeters": 2.473916538292542e-05,
+        "minimumSignedDistanceMeters": -0.0026664739052648656,
+        "maximumSignedDistanceMeters": 0.010225620586425066,
+        "verticesInsideBranch": 133
+      },
+      "Nightjar_GripDigit_1_2": {
+        "minimumSurfaceDistanceMeters": 1.2329915080044884e-05,
+        "minimumSignedDistanceMeters": -0.002670785368536599,
+        "maximumSignedDistanceMeters": 0.010321691137505695,
+        "verticesInsideBranch": 128
+      },
+      "Nightjar_GripHallux_1": {
+        "minimumSurfaceDistanceMeters": 4.906019057671074e-06,
+        "minimumSignedDistanceMeters": -0.0023969421526999213,
+        "maximumSignedDistanceMeters": 0.010048501193523407,
+        "verticesInsideBranch": 114
+      }
+    },
+    "36": {
+      "Nightjar_AnklePad_0": {
+        "minimumSurfaceDistanceMeters": 0.0001284728932660073,
+        "minimumSignedDistanceMeters": -0.003299385018181056,
+        "maximumSignedDistanceMeters": 0.011330461478792131,
+        "verticesInsideBranch": 53
+      },
+      "Nightjar_AnklePad_1": {
+        "minimumSurfaceDistanceMeters": 2.8432588806026615e-05,
+        "minimumSignedDistanceMeters": -0.003506218461552635,
+        "maximumSignedDistanceMeters": 0.011773965903557837,
+        "verticesInsideBranch": 53
+      },
+      "Nightjar_FoldedThigh_0": {
+        "minimumSurfaceDistanceMeters": 0.020009072497487068,
+        "minimumSignedDistanceMeters": 0.020009067957289517,
+        "maximumSignedDistanceMeters": 0.1068450587335974,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_FoldedTarsus_0": {
+        "minimumSurfaceDistanceMeters": 0.0027868347242474556,
+        "minimumSignedDistanceMeters": 0.0027868342222063802,
+        "maximumSignedDistanceMeters": 0.03880533907795325,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_GripDigit_0_0": {
+        "minimumSurfaceDistanceMeters": 1.215583506564144e-05,
+        "minimumSignedDistanceMeters": -0.002559663833835657,
+        "maximumSignedDistanceMeters": 0.010144688785658218,
+        "verticesInsideBranch": 126
+      },
+      "Nightjar_GripDigit_0_1": {
+        "minimumSurfaceDistanceMeters": 1.494501134402526e-06,
+        "minimumSignedDistanceMeters": -0.0023294770139727916,
+        "maximumSignedDistanceMeters": 0.010130365117220208,
+        "verticesInsideBranch": 122
+      },
+      "Nightjar_GripDigit_0_2": {
+        "minimumSurfaceDistanceMeters": 6.181118806125596e-06,
+        "minimumSignedDistanceMeters": -0.0023739710527479474,
+        "maximumSignedDistanceMeters": 0.009949132057954557,
+        "verticesInsideBranch": 127
+      },
+      "Nightjar_GripHallux_0": {
+        "minimumSurfaceDistanceMeters": 2.333554675715277e-06,
+        "minimumSignedDistanceMeters": -0.0019544116512406617,
+        "maximumSignedDistanceMeters": 0.009987130819354206,
+        "verticesInsideBranch": 105
+      },
+      "Nightjar_FoldedThigh_1": {
+        "minimumSurfaceDistanceMeters": 0.021602509543299675,
+        "minimumSignedDistanceMeters": 0.02151613897876814,
+        "maximumSignedDistanceMeters": 0.11076075583696365,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_FoldedTarsus_1": {
+        "minimumSurfaceDistanceMeters": 0.0030226747039705515,
+        "minimumSignedDistanceMeters": 0.0030226748203858733,
+        "maximumSignedDistanceMeters": 0.038253690756391734,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_GripDigit_1_0": {
+        "minimumSurfaceDistanceMeters": 3.110432953690179e-05,
+        "minimumSignedDistanceMeters": -0.003184076522302348,
+        "maximumSignedDistanceMeters": 0.010639918444212526,
+        "verticesInsideBranch": 122
+      },
+      "Nightjar_GripDigit_1_1": {
+        "minimumSurfaceDistanceMeters": 2.473916538292542e-05,
+        "minimumSignedDistanceMeters": -0.0026664739052648656,
+        "maximumSignedDistanceMeters": 0.010225620586425066,
+        "verticesInsideBranch": 133
+      },
+      "Nightjar_GripDigit_1_2": {
+        "minimumSurfaceDistanceMeters": 1.2329915080044884e-05,
+        "minimumSignedDistanceMeters": -0.002670785368536599,
+        "maximumSignedDistanceMeters": 0.010321691137505695,
+        "verticesInsideBranch": 128
+      },
+      "Nightjar_GripHallux_1": {
+        "minimumSurfaceDistanceMeters": 4.906019057671074e-06,
+        "minimumSignedDistanceMeters": -0.0023969421526999213,
+        "maximumSignedDistanceMeters": 0.010048501193523407,
+        "verticesInsideBranch": 114
+      }
+    },
+    "72": {
+      "Nightjar_AnklePad_0": {
+        "minimumSurfaceDistanceMeters": 0.0001284728932660073,
+        "minimumSignedDistanceMeters": -0.003299385018181056,
+        "maximumSignedDistanceMeters": 0.011330461478792131,
+        "verticesInsideBranch": 53
+      },
+      "Nightjar_AnklePad_1": {
+        "minimumSurfaceDistanceMeters": 2.8432588806026615e-05,
+        "minimumSignedDistanceMeters": -0.003506218461552635,
+        "maximumSignedDistanceMeters": 0.011773965903557837,
+        "verticesInsideBranch": 53
+      },
+      "Nightjar_FoldedThigh_0": {
+        "minimumSurfaceDistanceMeters": 0.020009072497487068,
+        "minimumSignedDistanceMeters": 0.020009067957289517,
+        "maximumSignedDistanceMeters": 0.1068450587335974,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_FoldedTarsus_0": {
+        "minimumSurfaceDistanceMeters": 0.0027868347242474556,
+        "minimumSignedDistanceMeters": 0.0027868342222063802,
+        "maximumSignedDistanceMeters": 0.03880533907795325,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_GripDigit_0_0": {
+        "minimumSurfaceDistanceMeters": 1.215583506564144e-05,
+        "minimumSignedDistanceMeters": -0.002559663833835657,
+        "maximumSignedDistanceMeters": 0.010144688785658218,
+        "verticesInsideBranch": 126
+      },
+      "Nightjar_GripDigit_0_1": {
+        "minimumSurfaceDistanceMeters": 1.494501134402526e-06,
+        "minimumSignedDistanceMeters": -0.0023294770139727916,
+        "maximumSignedDistanceMeters": 0.010130365117220208,
+        "verticesInsideBranch": 122
+      },
+      "Nightjar_GripDigit_0_2": {
+        "minimumSurfaceDistanceMeters": 6.181118806125596e-06,
+        "minimumSignedDistanceMeters": -0.0023739710527479474,
+        "maximumSignedDistanceMeters": 0.009949132057954557,
+        "verticesInsideBranch": 127
+      },
+      "Nightjar_GripHallux_0": {
+        "minimumSurfaceDistanceMeters": 2.333554675715277e-06,
+        "minimumSignedDistanceMeters": -0.0019544116512406617,
+        "maximumSignedDistanceMeters": 0.009987130819354206,
+        "verticesInsideBranch": 105
+      },
+      "Nightjar_FoldedThigh_1": {
+        "minimumSurfaceDistanceMeters": 0.021602509543299675,
+        "minimumSignedDistanceMeters": 0.02151613897876814,
+        "maximumSignedDistanceMeters": 0.11076075583696365,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_FoldedTarsus_1": {
+        "minimumSurfaceDistanceMeters": 0.0030226747039705515,
+        "minimumSignedDistanceMeters": 0.0030226748203858733,
+        "maximumSignedDistanceMeters": 0.038253690756391734,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_GripDigit_1_0": {
+        "minimumSurfaceDistanceMeters": 3.110432953690179e-05,
+        "minimumSignedDistanceMeters": -0.003184076522302348,
+        "maximumSignedDistanceMeters": 0.010639918444212526,
+        "verticesInsideBranch": 122
+      },
+      "Nightjar_GripDigit_1_1": {
+        "minimumSurfaceDistanceMeters": 2.473916538292542e-05,
+        "minimumSignedDistanceMeters": -0.0026664739052648656,
+        "maximumSignedDistanceMeters": 0.010225620586425066,
+        "verticesInsideBranch": 133
+      },
+      "Nightjar_GripDigit_1_2": {
+        "minimumSurfaceDistanceMeters": 1.2329915080044884e-05,
+        "minimumSignedDistanceMeters": -0.002670785368536599,
+        "maximumSignedDistanceMeters": 0.010321691137505695,
+        "verticesInsideBranch": 128
+      },
+      "Nightjar_GripHallux_1": {
+        "minimumSurfaceDistanceMeters": 4.906019057671074e-06,
+        "minimumSignedDistanceMeters": -0.0023969421526999213,
+        "maximumSignedDistanceMeters": 0.010048501193523407,
+        "verticesInsideBranch": 114
+      }
+    },
+    "108": {
+      "Nightjar_AnklePad_0": {
+        "minimumSurfaceDistanceMeters": 0.0001284728932660073,
+        "minimumSignedDistanceMeters": -0.003299385018181056,
+        "maximumSignedDistanceMeters": 0.011330461478792131,
+        "verticesInsideBranch": 53
+      },
+      "Nightjar_AnklePad_1": {
+        "minimumSurfaceDistanceMeters": 2.8432588806026615e-05,
+        "minimumSignedDistanceMeters": -0.003506218461552635,
+        "maximumSignedDistanceMeters": 0.011773965903557837,
+        "verticesInsideBranch": 53
+      },
+      "Nightjar_FoldedThigh_0": {
+        "minimumSurfaceDistanceMeters": 0.020009072497487068,
+        "minimumSignedDistanceMeters": 0.020009067957289517,
+        "maximumSignedDistanceMeters": 0.1068450587335974,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_FoldedTarsus_0": {
+        "minimumSurfaceDistanceMeters": 0.0027868347242474556,
+        "minimumSignedDistanceMeters": 0.0027868342222063802,
+        "maximumSignedDistanceMeters": 0.03880533907795325,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_GripDigit_0_0": {
+        "minimumSurfaceDistanceMeters": 1.215583506564144e-05,
+        "minimumSignedDistanceMeters": -0.002559663833835657,
+        "maximumSignedDistanceMeters": 0.010144688785658218,
+        "verticesInsideBranch": 126
+      },
+      "Nightjar_GripDigit_0_1": {
+        "minimumSurfaceDistanceMeters": 1.494501134402526e-06,
+        "minimumSignedDistanceMeters": -0.0023294770139727916,
+        "maximumSignedDistanceMeters": 0.010130365117220208,
+        "verticesInsideBranch": 122
+      },
+      "Nightjar_GripDigit_0_2": {
+        "minimumSurfaceDistanceMeters": 6.181118806125596e-06,
+        "minimumSignedDistanceMeters": -0.0023739710527479474,
+        "maximumSignedDistanceMeters": 0.009949132057954557,
+        "verticesInsideBranch": 127
+      },
+      "Nightjar_GripHallux_0": {
+        "minimumSurfaceDistanceMeters": 2.333554675715277e-06,
+        "minimumSignedDistanceMeters": -0.0019544116512406617,
+        "maximumSignedDistanceMeters": 0.009987130819354206,
+        "verticesInsideBranch": 105
+      },
+      "Nightjar_FoldedThigh_1": {
+        "minimumSurfaceDistanceMeters": 0.021602509543299675,
+        "minimumSignedDistanceMeters": 0.02151613897876814,
+        "maximumSignedDistanceMeters": 0.11076075583696365,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_FoldedTarsus_1": {
+        "minimumSurfaceDistanceMeters": 0.0030226747039705515,
+        "minimumSignedDistanceMeters": 0.0030226748203858733,
+        "maximumSignedDistanceMeters": 0.038253690756391734,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_GripDigit_1_0": {
+        "minimumSurfaceDistanceMeters": 3.110432953690179e-05,
+        "minimumSignedDistanceMeters": -0.003184076522302348,
+        "maximumSignedDistanceMeters": 0.010639918444212526,
+        "verticesInsideBranch": 122
+      },
+      "Nightjar_GripDigit_1_1": {
+        "minimumSurfaceDistanceMeters": 2.473916538292542e-05,
+        "minimumSignedDistanceMeters": -0.0026664739052648656,
+        "maximumSignedDistanceMeters": 0.010225620586425066,
+        "verticesInsideBranch": 133
+      },
+      "Nightjar_GripDigit_1_2": {
+        "minimumSurfaceDistanceMeters": 1.2329915080044884e-05,
+        "minimumSignedDistanceMeters": -0.002670785368536599,
+        "maximumSignedDistanceMeters": 0.010321691137505695,
+        "verticesInsideBranch": 128
+      },
+      "Nightjar_GripHallux_1": {
+        "minimumSurfaceDistanceMeters": 4.906019057671074e-06,
+        "minimumSignedDistanceMeters": -0.0023969421526999213,
+        "maximumSignedDistanceMeters": 0.010048501193523407,
+        "verticesInsideBranch": 114
+      }
+    },
+    "144": {
+      "Nightjar_AnklePad_0": {
+        "minimumSurfaceDistanceMeters": 0.0001284728932660073,
+        "minimumSignedDistanceMeters": -0.003299385018181056,
+        "maximumSignedDistanceMeters": 0.011330461478792131,
+        "verticesInsideBranch": 53
+      },
+      "Nightjar_AnklePad_1": {
+        "minimumSurfaceDistanceMeters": 2.8432588806026615e-05,
+        "minimumSignedDistanceMeters": -0.003506218461552635,
+        "maximumSignedDistanceMeters": 0.011773965903557837,
+        "verticesInsideBranch": 53
+      },
+      "Nightjar_FoldedThigh_0": {
+        "minimumSurfaceDistanceMeters": 0.020009072497487068,
+        "minimumSignedDistanceMeters": 0.020009067957289517,
+        "maximumSignedDistanceMeters": 0.1068450587335974,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_FoldedTarsus_0": {
+        "minimumSurfaceDistanceMeters": 0.0027868347242474556,
+        "minimumSignedDistanceMeters": 0.0027868342222063802,
+        "maximumSignedDistanceMeters": 0.03880533907795325,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_GripDigit_0_0": {
+        "minimumSurfaceDistanceMeters": 1.215583506564144e-05,
+        "minimumSignedDistanceMeters": -0.002559663833835657,
+        "maximumSignedDistanceMeters": 0.010144688785658218,
+        "verticesInsideBranch": 126
+      },
+      "Nightjar_GripDigit_0_1": {
+        "minimumSurfaceDistanceMeters": 1.494501134402526e-06,
+        "minimumSignedDistanceMeters": -0.0023294770139727916,
+        "maximumSignedDistanceMeters": 0.010130365117220208,
+        "verticesInsideBranch": 122
+      },
+      "Nightjar_GripDigit_0_2": {
+        "minimumSurfaceDistanceMeters": 6.181118806125596e-06,
+        "minimumSignedDistanceMeters": -0.0023739710527479474,
+        "maximumSignedDistanceMeters": 0.009949132057954557,
+        "verticesInsideBranch": 127
+      },
+      "Nightjar_GripHallux_0": {
+        "minimumSurfaceDistanceMeters": 2.333554675715277e-06,
+        "minimumSignedDistanceMeters": -0.0019544116512406617,
+        "maximumSignedDistanceMeters": 0.009987130819354206,
+        "verticesInsideBranch": 105
+      },
+      "Nightjar_FoldedThigh_1": {
+        "minimumSurfaceDistanceMeters": 0.021602509543299675,
+        "minimumSignedDistanceMeters": 0.02151613897876814,
+        "maximumSignedDistanceMeters": 0.11076075583696365,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_FoldedTarsus_1": {
+        "minimumSurfaceDistanceMeters": 0.0030226747039705515,
+        "minimumSignedDistanceMeters": 0.0030226748203858733,
+        "maximumSignedDistanceMeters": 0.038253690756391734,
+        "verticesInsideBranch": 0
+      },
+      "Nightjar_GripDigit_1_0": {
+        "minimumSurfaceDistanceMeters": 3.110432953690179e-05,
+        "minimumSignedDistanceMeters": -0.003184076522302348,
+        "maximumSignedDistanceMeters": 0.010639918444212526,
+        "verticesInsideBranch": 122
+      },
+      "Nightjar_GripDigit_1_1": {
+        "minimumSurfaceDistanceMeters": 2.473916538292542e-05,
+        "minimumSignedDistanceMeters": -0.0026664739052648656,
+        "maximumSignedDistanceMeters": 0.010225620586425066,
+        "verticesInsideBranch": 133
+      },
+      "Nightjar_GripDigit_1_2": {
+        "minimumSurfaceDistanceMeters": 1.2329915080044884e-05,
+        "minimumSignedDistanceMeters": -0.002670785368536599,
+        "maximumSignedDistanceMeters": 0.010321691137505695,
+        "verticesInsideBranch": 128
+      },
+      "Nightjar_GripHallux_1": {
+        "minimumSurfaceDistanceMeters": 4.906019057671074e-06,
+        "minimumSignedDistanceMeters": -0.0023969421526999213,
+        "maximumSignedDistanceMeters": 0.010048501193523407,
+        "verticesInsideBranch": 114
+      }
+    }
+  },
+  "fixedSupportMotion": {
+    "0": {
+      "Nightjar_Roost_Main": 0.0,
+      "Nightjar_AnklePad_0": 0.0,
+      "Nightjar_AnklePad_1": 0.0,
+      "Nightjar_FoldedThigh_0": 0.0,
+      "Nightjar_FoldedTarsus_0": 0.0,
+      "Nightjar_GripDigit_0_0": 0.0,
+      "Nightjar_GripDigit_0_1": 0.0,
+      "Nightjar_GripDigit_0_2": 0.0,
+      "Nightjar_GripHallux_0": 0.0,
+      "Nightjar_FoldedThigh_1": 0.0,
+      "Nightjar_FoldedTarsus_1": 0.0,
+      "Nightjar_GripDigit_1_0": 0.0,
+      "Nightjar_GripDigit_1_1": 0.0,
+      "Nightjar_GripDigit_1_2": 0.0,
+      "Nightjar_GripHallux_1": 0.0
+    },
+    "36": {
+      "Nightjar_Roost_Main": 0.0,
+      "Nightjar_AnklePad_0": 0.0,
+      "Nightjar_AnklePad_1": 0.0,
+      "Nightjar_FoldedThigh_0": 0.0,
+      "Nightjar_FoldedTarsus_0": 0.0,
+      "Nightjar_GripDigit_0_0": 0.0,
+      "Nightjar_GripDigit_0_1": 0.0,
+      "Nightjar_GripDigit_0_2": 0.0,
+      "Nightjar_GripHallux_0": 0.0,
+      "Nightjar_FoldedThigh_1": 0.0,
+      "Nightjar_FoldedTarsus_1": 0.0,
+      "Nightjar_GripDigit_1_0": 0.0,
+      "Nightjar_GripDigit_1_1": 0.0,
+      "Nightjar_GripDigit_1_2": 0.0,
+      "Nightjar_GripHallux_1": 0.0
+    },
+    "72": {
+      "Nightjar_Roost_Main": 0.0,
+      "Nightjar_AnklePad_0": 0.0,
+      "Nightjar_AnklePad_1": 0.0,
+      "Nightjar_FoldedThigh_0": 0.0,
+      "Nightjar_FoldedTarsus_0": 0.0,
+      "Nightjar_GripDigit_0_0": 0.0,
+      "Nightjar_GripDigit_0_1": 0.0,
+      "Nightjar_GripDigit_0_2": 0.0,
+      "Nightjar_GripHallux_0": 0.0,
+      "Nightjar_FoldedThigh_1": 0.0,
+      "Nightjar_FoldedTarsus_1": 0.0,
+      "Nightjar_GripDigit_1_0": 0.0,
+      "Nightjar_GripDigit_1_1": 0.0,
+      "Nightjar_GripDigit_1_2": 0.0,
+      "Nightjar_GripHallux_1": 0.0
+    },
+    "108": {
+      "Nightjar_Roost_Main": 0.0,
+      "Nightjar_AnklePad_0": 0.0,
+      "Nightjar_AnklePad_1": 0.0,
+      "Nightjar_FoldedThigh_0": 0.0,
+      "Nightjar_FoldedTarsus_0": 0.0,
+      "Nightjar_GripDigit_0_0": 0.0,
+      "Nightjar_GripDigit_0_1": 0.0,
+      "Nightjar_GripDigit_0_2": 0.0,
+      "Nightjar_GripHallux_0": 0.0,
+      "Nightjar_FoldedThigh_1": 0.0,
+      "Nightjar_FoldedTarsus_1": 0.0,
+      "Nightjar_GripDigit_1_0": 0.0,
+      "Nightjar_GripDigit_1_1": 0.0,
+      "Nightjar_GripDigit_1_2": 0.0,
+      "Nightjar_GripHallux_1": 0.0
+    },
+    "144": {
+      "Nightjar_Roost_Main": 0.0,
+      "Nightjar_AnklePad_0": 0.0,
+      "Nightjar_AnklePad_1": 0.0,
+      "Nightjar_FoldedThigh_0": 0.0,
+      "Nightjar_FoldedTarsus_0": 0.0,
+      "Nightjar_GripDigit_0_0": 0.0,
+      "Nightjar_GripDigit_0_1": 0.0,
+      "Nightjar_GripDigit_0_2": 0.0,
+      "Nightjar_GripHallux_0": 0.0,
+      "Nightjar_FoldedThigh_1": 0.0,
+      "Nightjar_FoldedTarsus_1": 0.0,
+      "Nightjar_GripDigit_1_0": 0.0,
+      "Nightjar_GripDigit_1_1": 0.0,
+      "Nightjar_GripDigit_1_2": 0.0,
+      "Nightjar_GripHallux_1": 0.0
+    }
+  },
+  "contactMetric": "Nearest branch surface distances for each toe mesh; negative signed distance indicates vertices inside branch, not an exhaustive collision proof",
+  "sourceUnchanged": true
+}

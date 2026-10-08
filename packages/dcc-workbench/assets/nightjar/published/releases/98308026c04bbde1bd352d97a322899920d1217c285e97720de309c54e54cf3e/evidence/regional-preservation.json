@@ -1,0 +1,177 @@
+{
+  "source": "/Users/zhangqy/pkgs/game/.work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/nightjar-grip-v3.blend",
+  "sourceSha256": "9f9dca7636c787c1aaa10aae4925dd6ebd4da7c7694c2ff9ceafbea45626982e",
+  "acceptedWingSource": "/Users/zhangqy/pkgs/game/.work/sessions/3d-asset-migration-2026-10-07/nightjar-trial/round-3/nightjar-fold-paths-v2.blend",
+  "acceptedWingSourceSha256": "1a9f8ac07fef184c86bff66fb1f69768604e61dc8e1022cd2c752767a7c07ce1",
+  "unchanged": {
+    "Mesh_0": true,
+    "Nightjar_Roost_Main": true,
+    "Nightjar_ShoulderMantle_-1": true,
+    "Nightjar_FlightPrimary_-1_0": true,
+    "Nightjar_FlightPrimary_-1_1": true,
+    "Nightjar_FlightPrimary_-1_2": true,
+    "Nightjar_FlightPrimary_-1_3": true,
+    "Nightjar_FlightPrimary_-1_4": true,
+    "Nightjar_FlightPrimary_-1_5": true,
+    "Nightjar_FlightPrimary_-1_6": true,
+    "Nightjar_FlightPrimary_-1_7": true,
+    "Nightjar_SecondaryPlane_-1_0": true,
+    "Nightjar_SecondaryPlane_-1_1": true,
+    "Nightjar_SecondaryPlane_-1_2": true,
+    "Nightjar_SecondaryPlane_-1_3": true,
+    "Nightjar_SecondaryPlane_-1_4": true,
+    "Nightjar_SecondaryPlane_-1_5": true,
+    "Nightjar_CovertPatch_-1_0_0": true,
+    "Nightjar_CovertPatch_-1_0_1": true,
+    "Nightjar_CovertPatch_-1_0_2": true,
+    "Nightjar_CovertPatch_-1_0_3": true,
+    "Nightjar_CovertPatch_-1_1_0": true,
+    "Nightjar_CovertPatch_-1_1_1": true,
+    "Nightjar_CovertPatch_-1_1_2": true,
+    "Nightjar_ShoulderMantle_1": true,
+    "Nightjar_FlightPrimary_1_0": true,
+    "Nightjar_FlightPrimary_1_1": true,
+    "Nightjar_FlightPrimary_1_2": true,
+    "Nightjar_FlightPrimary_1_3": true,
+    "Nightjar_FlightPrimary_1_4": true,
+    "Nightjar_FlightPrimary_1_5": true,
+    "Nightjar_FlightPrimary_1_6": true,
+    "Nightjar_FlightPrimary_1_7": true,
+    "Nightjar_SecondaryPlane_1_0": true,
+    "Nightjar_SecondaryPlane_1_1": true,
+    "Nightjar_SecondaryPlane_1_2": true,
+    "Nightjar_SecondaryPlane_1_3": true,
+    "Nightjar_SecondaryPlane_1_4": true,
+    "Nightjar_SecondaryPlane_1_5": true,
+    "Nightjar_CovertPatch_1_0_0": true,
+    "Nightjar_CovertPatch_1_0_1": true,
+    "Nightjar_CovertPatch_1_0_2": true,
+    "Nightjar_CovertPatch_1_0_3": true,
+    "Nightjar_CovertPatch_1_1_0": true,
+    "Nightjar_CovertPatch_1_1_1": true,
+    "Nightjar_CovertPatch_1_1_2": true
+  },
+  "fingerprints": {
+    "Mesh_0": "7aa550e2dc7fed0d1a22da91e2a0dd6bbec59eae7a50e40b9818d9369a7f62cc",
+    "Nightjar_Roost_Main": "e223014662f352b2d978c0be82614f340f5901f5a12be2a92b78a4cc79b13200",
+    "Nightjar_ShoulderMantle_-1": "6445a0afd973c2ef71b95900db89f8d779766fb60d4cb7d639a75b858a83aec6",
+    "Nightjar_FlightPrimary_-1_0": "03d57107a83f8cac71c511df915383c92c9cac34c0a534e05d23fa7c7c640ebe",
+    "Nightjar_FlightPrimary_-1_1": "5f4dd48bef670d3b06bb0bf297c9cb55164e82797d180bdb69aec7fb3df02f83",
+    "Nightjar_FlightPrimary_-1_2": "3927e8ae57da6d92f30bc6a635bff2b2f692497856cb6f9e2497a9b31c73d77e",
+    "Nightjar_FlightPrimary_-1_3": "04374077686a731a3039f7272c5d08d206b1712482490449e3079a4f372d73ea",
+    "Nightjar_FlightPrimary_-1_4": "419c80ef618989d669c6988b7db02bfc76df267b9525962f51a9fabd21bfa494",
+    "Nightjar_FlightPrimary_-1_5": "01dd25bca0f999476e8ce98937a40a689feeac31f1b91b639c69ea6149c6b3af",
+    "Nightjar_FlightPrimary_-1_6": "f4e0acf5c8cfa1217595e5ae7bec47636d4335728aa5139f6380888167c3166d",
+    "Nightjar_FlightPrimary_-1_7": "f258a3ea69599eca276c10363ef5749ce4959d265fecf81d90ca2aa5059d1de7",
+    "Nightjar_SecondaryPlane_-1_0": "103c220dc96be170ef325d10cb2c0450ee80a7b495f71b08ef5c7942b8a10943",
+    "Nightjar_SecondaryPlane_-1_1": "fbbc2de41f625fe81052d46c0d99b7a3b99950b94d418d22f34fe793511da9c2",
+    "Nightjar_SecondaryPlane_-1_2": "1bed887b6fc5eb62ff5f5d50bb3bacff09b5e66c633b84d2f28fa7ddc2122785",
+    "Nightjar_SecondaryPlane_-1_3": "e880028d8a32090d6821db52ec3d76c12e746b186ddb55915cf7793fac1dea18",
+    "Nightjar_SecondaryPlane_-1_4": "214f869674dc42dd62a3f04347b9e69c4278e3ac7dfeaaffd0562a051ad08224",
+    "Nightjar_SecondaryPlane_-1_5": "30cbaee03126546327961c9e1fa3bc52a204293ea89995ebce86139f5206192d",
+    "Nightjar_CovertPatch_-1_0_0": "d394d0136d9cfac0cde17647328bb86ba01285b4a60ad89912f75a0a910bae85",
+    "Nightjar_CovertPatch_-1_0_1": "0a6c2d6f5b48d2020d6d288f1ba0c77b43c10a78714407fb9b1579ac9fb04ef9",
+    "Nightjar_CovertPatch_-1_0_2": "02c7c72e3df2ca0a82cf32d39c9ea2dc917afd7184a5d1360046d916f7addb0d",
+    "Nightjar_CovertPatch_-1_0_3": "96f8910b54cd4ef51315bed06ff64b7b1bbd81d0e2a252085a89ed6eccea3316",
+    "Nightjar_CovertPatch_-1_1_0": "9905cb4952945c99f96b154b86140b9db4cc7d11526425674772f68a063bb27d",
+    "Nightjar_CovertPatch_-1_1_1": "f05ec091b4252aa922c921fd6b606b4e442b7d3277e28a99ae1c78328d084acb",
+    "Nightjar_CovertPatch_-1_1_2": "c63306cc22f13f5d60eae01e5681ba7514ec7917a76c27ffbe98fc410247a373",
+    "Nightjar_ShoulderMantle_1": "41a7f217fae5b04ae686dd626e93a6d25c6c9cf7859bceb81c75bf85947f8793",
+    "Nightjar_FlightPrimary_1_0": "ff57390fb03efdf8eebcbc76903e965725bedca2be0f15dda267fee25aa78ae4",
+    "Nightjar_FlightPrimary_1_1": "be157724abf62b53e792f54b4f7caa28037f612484c37814ea934c8060e7b58c",
+    "Nightjar_FlightPrimary_1_2": "387d139a7f1cd0fd184a8b1dc1ca31b20b3177a8ef3fb922000f2c3bce881027",
+    "Nightjar_FlightPrimary_1_3": "f830e7161ac22a011e2c8eeba9cb8141b0a22e0d44aa4e9a413f3dedff6982c0",
+    "Nightjar_FlightPrimary_1_4": "b1c126a3898960172b63074173497f5a8e07027f5bd067bb255adac543df92a4",
+    "Nightjar_FlightPrimary_1_5": "859ddf6af6c224d82e77272121502ebb3a9cf0ffaa4215416ec668f81351fef2",
+    "Nightjar_FlightPrimary_1_6": "045096ab7a3ddb843c96f77c021a926857c59484ffd152011c9c97bc25ba96e8",
+    "Nightjar_FlightPrimary_1_7": "3bf91714649a1eddd729b976706400434b520d584335ae656940fe9155f5cea8",
+    "Nightjar_SecondaryPlane_1_0": "e3f062809dc26928f9d31cafb87ebf1bf1ed7475863e98748d58f69bf4f3a5cd",
+    "Nightjar_SecondaryPlane_1_1": "8e594093bca49c460fef461d3c9a5b467ef6850e08f9fc315abb7b4b3b51a5a9",
+    "Nightjar_SecondaryPlane_1_2": "0c788ddab3e0ac37b8873cac88086edc6226ab9c11eed3412341376f16c19494",
+    "Nightjar_SecondaryPlane_1_3": "7ab4ed4a903355c39536aa108926397cb9dffd089786f148acae3cff831ff7dc",
+    "Nightjar_SecondaryPlane_1_4": "e020a96f079d42d6010dcf35530aabe1a23565efe85300c8c366cd30cbf52b1c",
+    "Nightjar_SecondaryPlane_1_5": "10b1d79c797a827046276c35a3fda378cbd4a8ebf55ff6958e5d472964b3d368",
+    "Nightjar_CovertPatch_1_0_0": "91db5444a160b2a574dd6801ef77189ac82e916647e90e670c52b35d10c4d57e",
+    "Nightjar_CovertPatch_1_0_1": "50c13093267ea9ca604e57b33893e6fea94b622bb39d62b6cfd4924e3960b859",
+    "Nightjar_CovertPatch_1_0_2": "2468cfdb3ee5265bd2b76dc419279107c07c32c03ed15d3adb3b75a8b00ef3a4",
+    "Nightjar_CovertPatch_1_0_3": "4aab02df3deb6c96e1d1f0d99d87e08ad268298c05a81a82e58cd86eb2e6e784",
+    "Nightjar_CovertPatch_1_1_0": "7573caa699ee26d57ea695801344655f1e84b1e9383664c93706d838b5585236",
+    "Nightjar_CovertPatch_1_1_1": "18f61a379762656407df364ad4e38949bd12f4f4a31913a457244522301f909e",
+    "Nightjar_CovertPatch_1_1_2": "32b5602c80ce059be063d2df672f2e1ad16ab3c4470ce89f9b68252ce4262415"
+  },
+  "controlsAndPivotAnimationUnchanged": true,
+  "continuity": {
+    "digit0.0->pad": {
+      "minimumSignedMeters": -0.005419839348178357,
+      "verticesInsideTarget": 83,
+      "target": "Nightjar_AnklePad_0"
+    },
+    "digit0.1->pad": {
+      "minimumSignedMeters": -0.005109687081130687,
+      "verticesInsideTarget": 94,
+      "target": "Nightjar_AnklePad_0"
+    },
+    "digit0.2->pad": {
+      "minimumSignedMeters": -0.005429576092865318,
+      "verticesInsideTarget": 83,
+      "target": "Nightjar_AnklePad_0"
+    },
+    "hallux0->pad": {
+      "minimumSignedMeters": -0.005546315020183101,
+      "verticesInsideTarget": 75,
+      "target": "Nightjar_AnklePad_0"
+    },
+    "tarsus0->pad": {
+      "minimumSignedMeters": -0.005593266541836783,
+      "verticesInsideTarget": 76,
+      "target": "Nightjar_AnklePad_0"
+    },
+    "tarsus0->thigh": {
+      "minimumSignedMeters": -0.006791603955207393,
+      "verticesInsideTarget": 29,
+      "target": "Nightjar_FoldedThigh_0"
+    },
+    "thigh0->body": {
+      "minimumSignedMeters": -0.06673797062831,
+      "verticesInsideTarget": 312,
+      "target": "Mesh_0"
+    },
+    "digit1.0->pad": {
+      "minimumSignedMeters": -0.005305482569383457,
+      "verticesInsideTarget": 73,
+      "target": "Nightjar_AnklePad_1"
+    },
+    "digit1.1->pad": {
+      "minimumSignedMeters": -0.005268169465125538,
+      "verticesInsideTarget": 73,
+      "target": "Nightjar_AnklePad_1"
+    },
+    "digit1.2->pad": {
+      "minimumSignedMeters": -0.005096828826935962,
+      "verticesInsideTarget": 71,
+      "target": "Nightjar_AnklePad_1"
+    },
+    "hallux1->pad": {
+      "minimumSignedMeters": -0.005113659455673769,
+      "verticesInsideTarget": 65,
+      "target": "Nightjar_AnklePad_1"
+    },
+    "tarsus1->pad": {
+      "minimumSignedMeters": -0.005592609115410596,
+      "verticesInsideTarget": 76,
+      "target": "Nightjar_AnklePad_1"
+    },
+    "tarsus1->thigh": {
+      "minimumSignedMeters": -0.0068201338581275195,
+      "verticesInsideTarget": 28,
+      "target": "Nightjar_FoldedThigh_1"
+    },
+    "thigh1->body": {
+      "minimumSignedMeters": -0.043961818562820554,
+      "verticesInsideTarget": 207,
+      "target": "Mesh_0"
+    }
+  },
+  "sourceUnchanged": true,
+  "method": "Native mesh coordinates/polygons/UVs/shape-key coordinates/drivers/parenting/world matrices/material names hashed at frame0; direct static intersection probes for ankle/leg joints"
+}

@@ -1,0 +1,547 @@
+{
+  "schemaVersion": 1,
+  "kind": "saved-export",
+  "id": "nightjar",
+  "source": "subjects/nightjar/source.blend",
+  "sourceSha256": "9f9dca7636c787c1aaa10aae4925dd6ebd4da7c7694c2ff9ceafbea45626982e",
+  "sourceUnchangedByExport": true,
+  "blender": "4.5.14 LTS",
+  "profile": "skinned",
+  "collection": "DELIVERY | Nightjar",
+  "animation": {
+    "name": "nightjar_idle",
+    "seconds": 6.0,
+    "fps": 24
+  },
+  "audit": {
+    "sampleFrames": [
+      0.0,
+      36.0,
+      72.0,
+      108.0,
+      144.0
+    ],
+    "meshCount": 85,
+    "skinnedMeshCount": 1,
+    "rigidMeshCount": 84,
+    "maxSkinnedMotion": 0.03377673191254478,
+    "maxRigidMotion": 0.03915804206371787,
+    "maxLoopDifference": 0.0,
+    "maxSourceDeliveryDifference": 0.0,
+    "requireRigidMotion": true,
+    "motionTolerance": 1e-06,
+    "loopTolerance": 1e-05,
+    "objects": [
+      {
+        "name": "Mesh_0",
+        "role": "skinned",
+        "maxMotion": 0.03377673191254478,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_AnklePad_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_AnklePad_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_-1_0_0",
+        "role": "rigid",
+        "maxMotion": 0.00017777706633103436,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_-1_0_1",
+        "role": "rigid",
+        "maxMotion": 0.00013517445857149523,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_-1_0_2",
+        "role": "rigid",
+        "maxMotion": 0.00010689385139172155,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_-1_0_3",
+        "role": "rigid",
+        "maxMotion": 0.0001056186747594561,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_-1_1_0",
+        "role": "rigid",
+        "maxMotion": 8.812734819289454e-05,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_-1_1_1",
+        "role": "rigid",
+        "maxMotion": 5.190745230809756e-05,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_-1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.00014997056020190906,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_1_0_0",
+        "role": "rigid",
+        "maxMotion": 0.00016408230470138193,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_1_0_1",
+        "role": "rigid",
+        "maxMotion": 0.00013603995015457616,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_1_0_2",
+        "role": "rigid",
+        "maxMotion": 0.00012756605709958934,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_1_0_3",
+        "role": "rigid",
+        "maxMotion": 0.00014696296724656975,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_1_1_0",
+        "role": "rigid",
+        "maxMotion": 8.110245380883105e-05,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_1_1_1",
+        "role": "rigid",
+        "maxMotion": 4.583287135577302e-05,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_CovertPatch_1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.00017313788977848239,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.0006682856475297843,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.0006557067527770258,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.0006431514842454083,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.0006306385679407237,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.0006181634807990302,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.0006057361330879025,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_-1_6",
+        "role": "rigid",
+        "maxMotion": 0.000593366576489723,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_-1_7",
+        "role": "rigid",
+        "maxMotion": 0.0005810707362359372,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_1_0",
+        "role": "rigid",
+        "maxMotion": 0.000699918469933944,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0006878359673002409,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0006757900535316478,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_1_3",
+        "role": "rigid",
+        "maxMotion": 0.0006638033302710886,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_1_4",
+        "role": "rigid",
+        "maxMotion": 0.0006519024235315189,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_1_5",
+        "role": "rigid",
+        "maxMotion": 0.0006400190355999665,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_1_6",
+        "role": "rigid",
+        "maxMotion": 0.000628230403549114,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FlightPrimary_1_7",
+        "role": "rigid",
+        "maxMotion": 0.0006165388590620577,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FoldedTarsus_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FoldedTarsus_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FoldedThigh_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_FoldedThigh_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Gape_-1",
+        "role": "rigid",
+        "maxMotion": 0.038096184010295256,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Gape_1",
+        "role": "rigid",
+        "maxMotion": 0.038101990919699506,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_GripDigit_0_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_GripDigit_0_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_GripDigit_0_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_GripDigit_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_GripDigit_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_GripDigit_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_GripHallux_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_GripHallux_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_OrbitalPlane_-1",
+        "role": "rigid",
+        "maxMotion": 0.02324216729549959,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_OrbitalPlane_1",
+        "role": "rigid",
+        "maxMotion": 0.029062802701265704,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Pupil_-1",
+        "role": "rigid",
+        "maxMotion": 0.022980039686166357,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Pupil_1",
+        "role": "rigid",
+        "maxMotion": 0.029154738698863997,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RecessedIris_-1",
+        "role": "rigid",
+        "maxMotion": 0.02288195468165622,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RecessedIris_1",
+        "role": "rigid",
+        "maxMotion": 0.028956186750679836,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_0",
+        "role": "rigid",
+        "maxMotion": 0.019949208119016362,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_1",
+        "role": "rigid",
+        "maxMotion": 0.020577393724771378,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_2",
+        "role": "rigid",
+        "maxMotion": 0.021243968850115532,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_3",
+        "role": "rigid",
+        "maxMotion": 0.021945403239119095,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_4",
+        "role": "rigid",
+        "maxMotion": 0.02206992364648912,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_5",
+        "role": "rigid",
+        "maxMotion": 0.021618596166793024,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_6",
+        "role": "rigid",
+        "maxMotion": 0.02120259967321215,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Rectrix_7",
+        "role": "rigid",
+        "maxMotion": 0.020824100913927956,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.026127220912027144,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.027046813452831244,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.028012991289365203,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.02902647125221296,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_1_0",
+        "role": "rigid",
+        "maxMotion": 0.032414109006578595,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_1_1",
+        "role": "rigid",
+        "maxMotion": 0.032420578055629805,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_1_2",
+        "role": "rigid",
+        "maxMotion": 0.032680758531978264,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_RictalBristle_1_3",
+        "role": "rigid",
+        "maxMotion": 0.033099910083447114,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_Roost_Main",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.00026020244729403266,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.00027470901532968754,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.00029246070206216104,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.0003093295023424007,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.00033188746673761324,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.0003673037239215939,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0002577157413797037,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_1_1",
+        "role": "rigid",
+        "maxMotion": 0.000275349422836996,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0002974355580944722,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_1_3",
+        "role": "rigid",
+        "maxMotion": 0.00032052137666664323,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_1_4",
+        "role": "rigid",
+        "maxMotion": 0.0003523763410554802,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SecondaryPlane_1_5",
+        "role": "rigid",
+        "maxMotion": 0.00039767954225174775,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_ShoulderMantle_-1",
+        "role": "rigid",
+        "maxMotion": 0.0004029864217487282,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_ShoulderMantle_1",
+        "role": "rigid",
+        "maxMotion": 0.0004199053490951677,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Nightjar_SmallFittedBill",
+        "role": "rigid",
+        "maxMotion": 0.03915804206371787,
+        "maxLoopDifference": 0.0
+      }
+    ]
+  }
+}

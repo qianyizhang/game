@@ -3,6 +3,9 @@ import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { createStudy, disposeObject, type StudyId } from '../../src/art3d/models';
 import { createStudyClip } from '../../src/art3d/animation';
+import { galleryDelivery } from '../../src/art3d/delivery';
+import { compareSavedPoses } from './dcc-roundtrip';
+import { loadPoseEvidence } from '../../packages/dcc-workbench/src/pose-evidence';
 
 // Identical neutral lighting exposes exported material/mapping differences without
 // requiring the gallery's display plinth or reflection room in the delivered GLB.
@@ -50,10 +53,19 @@ function renderPair(original: T.Object3D, imported: T.Object3D) {
 // Loaded by the browser through Vite so the loader, model and mixer share one Three runtime.
 export async function compareStudyRoundtrip(id: StudyId, url: string) {
   const loaded = await new GLTFLoader().loadAsync(url);
-  const original = createStudy(id);
+  const delivery = galleryDelivery(id);
+  const evidence = delivery ? await loadPoseEvidence(delivery) : undefined;
+  const native = evidence && 'objects' in evidence ? evidence : undefined;
+  if (delivery && !native)
+    throw new Error('Native gallery delivery lacks independent source pose evidence');
+  const nativeResult = native ? await compareSavedPoses(url, native) : undefined;
+  const originalDelivery = delivery
+    ? await new GLTFLoader().loadAsync(delivery.modelUrl)
+    : undefined;
+  const original = originalDelivery?.scene ?? createStudy(id);
   const live = new T.AnimationMixer(original),
     exported = new T.AnimationMixer(loaded.scene);
-  const clip = createStudyClip(original, id);
+  const clip = originalDelivery?.animations[0] ?? createStudyClip(original, id);
   live.clipAction(clip).play();
   exported.clipAction(loaded.animations[0]).play();
   const bodies: T.SkinnedMesh[] = [];
@@ -63,7 +75,7 @@ export async function compareStudyRoundtrip(id: StudyId, url: string) {
   const animated = [
     ...new Set(clip.tracks.map((track) => T.PropertyBinding.parseTrackName(track.name).nodeName)),
   ];
-  let maxVertexError = 0,
+  let maxVertexError = nativeResult?.maxPoseError ?? 0,
     maxNodeError = 0;
   try {
     for (const time of [

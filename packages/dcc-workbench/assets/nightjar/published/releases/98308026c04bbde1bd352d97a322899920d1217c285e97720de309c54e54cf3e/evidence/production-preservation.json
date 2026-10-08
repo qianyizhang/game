@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "nightjar",
+  "completed": true,
+  "sourceAndPublicationUnchanged": true,
+  "files": [
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/nightjar/source.blend",
+      "sha256": "9f9dca7636c787c1aaa10aae4925dd6ebd4da7c7694c2ff9ceafbea45626982e",
+      "after": "9f9dca7636c787c1aaa10aae4925dd6ebd4da7c7694c2ff9ceafbea45626982e",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/nightjar/published/current.json",
+      "sha256": "42769ab0feea33d8199f025ff4205300bcb71b03094f2614d8736e3684b41291",
+      "after": "42769ab0feea33d8199f025ff4205300bcb71b03094f2614d8736e3684b41291",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/nightjar/published/releases/18aaabadb21fce2e8cb6c0b7fe73ab61b064c8f20a8805dccc85cb0bb167f06f/model.glb",
+      "sha256": "b4fa268d7b9e0f4b60d061075735e178e2e1d464df588b21b9d6875cbb1ea42c",
+      "after": "b4fa268d7b9e0f4b60d061075735e178e2e1d464df588b21b9d6875cbb1ea42c",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/nightjar/published/releases/18aaabadb21fce2e8cb6c0b7fe73ab61b064c8f20a8805dccc85cb0bb167f06f/source.blend",
+      "sha256": "80e88802cf8e00a9b74effc5b85516c772f1001ccbd5b94176a5860836923761",
+      "after": "80e88802cf8e00a9b74effc5b85516c772f1001ccbd5b94176a5860836923761",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/nightjar/published/releases/18aaabadb21fce2e8cb6c0b7fe73ab61b064c8f20a8805dccc85cb0bb167f06f/receipt.json",
+      "sha256": "18aaabadb21fce2e8cb6c0b7fe73ab61b064c8f20a8805dccc85cb0bb167f06f",
+      "after": "18aaabadb21fce2e8cb6c0b7fe73ab61b064c8f20a8805dccc85cb0bb167f06f",
+      "unchanged": true
+    }
+  ]
+}

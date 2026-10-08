@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "sourceBeforeSha256": "13c8176b226376a7e4cdb026eece3b0b02ff173a9317a5e3c5d6953274be7fcb",
+  "sourceEditedSha256": "368f17d1eaa74e4159f39108af9fb613967f62c719aeb4b7fe9b92b7c608738d",
+  "control": {
+    "object": "EDIT | Head.Search",
+    "property": "Muzzle reach"
+  },
+  "original": 0.0,
+  "values": [
+    0.0,
+    0.75,
+    1.5
+  ],
+  "savedValue": 0.75,
+  "sampleFrames": [
+    0.0,
+    36.0,
+    72.0,
+    108.0,
+    144.0
+  ],
+  "sampleSeconds": [
+    0.0,
+    1.5,
+    3.0,
+    4.5,
+    6.0
+  ],
+  "moved": [
+    "Hydra_Cranium_0",
+    "Hydra_Mandible_0",
+    "Hydra_UpperDentition_0_-1",
+    "Hydra_LowerDentition_0_-1",
+    "Hydra_Nostril_0_-1"
+  ],
+  "fixed": [
+    "Hydra_Cranium_1",
+    "Hydra_Cranium_2",
+    "Hydra_Joined_Shoulder_And_Necks"
+  ],
+  "tolerance": 1e-06,
+  "adjacentValueMotion": [
+    {
+      "Hydra_Cranium_0": 0.09659196425209042,
+      "Hydra_Mandible_0": 0.09644655443112592,
+      "Hydra_UpperDentition_0_-1": 0.09228189289014394,
+      "Hydra_LowerDentition_0_-1": 0.09339452192669456,
+      "Hydra_Nostril_0_-1": 0.0925405537077706
+    },
+    {
+      "Hydra_Cranium_0": 0.09659193672391526,
+      "Hydra_Mandible_0": 0.09644647087955065,
+      "Hydra_UpperDentition_0_-1": 0.09228179913577841,
+      "Hydra_LowerDentition_0_-1": 0.09339462524003819,
+      "Hydra_Nostril_0_-1": 0.09254053392611679
+    }
+  ],
+  "maxFixedDifference": 0.0,
+  "maxRestorationDifference": 0.0,
+  "maxReloadDifference": 0.0
+}
