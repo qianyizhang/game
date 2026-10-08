@@ -23,13 +23,19 @@ The DCC package checks its frontend and delivery CLI with typed ESLint and stric
 
 ## Native authoring gate
 
-`npm run test:dcc:native` is the local Blender edit-loop gate. It changes each head control
-in a fresh source copy, checks evaluated movement and restoration, rejects a deliberately
-clamped key, then saves/reloads an edit and exports it. The disposable-profile browser
-compares that edited export with 64 native vertices at five poses. Published source and
-delivery hashes must remain unchanged. Use approved execution outside the macOS sandbox;
-this command invokes both Blender and the repository's guarded browser harness. Native
-unavailability is blocked verification, not a passing ordinary Python/CI check.
+`npm run test:dcc:saved -- --asset <id>` is the current saved-source edit-loop gate. It uses
+the selected brief's declared control, minimum/interior/maximum values and moved/fixed
+probes in a fresh source copy, checks evaluated movement and restoration at five times,
+then saves/reloads an edit, exports and compares named rigid and skinned geometry in the
+disposable-profile browser. Production source and publication hashes must remain unchanged.
+The [DCC command contract](../../packages/dcc-workbench/README.md#verification-and-provenance)
+owns the sample limits and evidence paths.
+
+`npm run test:dcc:native` remains the earlier reconstructed Hydra pilot's head-control gate;
+its 64-point comparison is not verification of the current native subject masters. Both
+commands invoke Blender and the guarded browser harness, so use approved execution outside
+the macOS sandbox. Native unavailability is blocked verification, not a passing ordinary
+Python or CI check.
 
 ## Geometry test budgets
 
@@ -47,6 +53,6 @@ The report records its start/end times and checks each file for changes while re
 
 ## CI coverage
 
-The checked-in workflow runs `npm run check` after clean npm/uv installs, then the full `npm run test:browser` suite with the disposable Chrome startup guard. Its 30-minute job budgets accommodate the measured full geometry/export workload; per-test assertions and budgets are unchanged. The workflow has read-only repository permissions and pins its actions by immutable revision.
+The checked-in workflow hydrates Git LFS binaries and runs the early maintenance diagnostic before dependency installation in both jobs. It runs `npm run check` after clean npm/uv installs, then the full `npm run test:browser` suite with the disposable Chrome startup guard. Its 30-minute job budgets accommodate the measured full geometry/export workload; per-test assertions and budgets are unchanged. The workflow has read-only repository permissions and pins its actions by immutable revision.
 
 Private trace cases skip explicitly when their local exports are absent. Public synthetic trace cases remain part of CI. Blender authoring/export/render checks are local native integration evidence, separate from CI. A valid workflow file and passing local gates do not establish a successful remote Actions run or branch-protection configuration.

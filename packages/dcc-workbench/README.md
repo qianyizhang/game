@@ -1,29 +1,23 @@
 # DCC workbench
 
-`@card-workshop/dcc-workbench` is a local, private workspace package for taking an asset from an authored brief through Blender to an animated browser preview. The first pilot is a new **Briar Hydra** interpretation. The existing procedural Hydra and game art are preserved.
+`@card-workshop/dcc-workbench` owns editable Blender subjects, validated GLB candidates and reviewed immutable publications. The registry currently names **Briar Hydra** and **Nightjar**. Their working masters live under `subjects/`; the earlier Hydra pilot and procedural gallery sources remain preserved. See the [native pilot record](../../docs/art/assets/native-pilots.md) for candidate status and limits.
 
-Open **DCC workbench** from any game table, or visit `/?workbench=dcc`. Intent, Form, Surface, Motion and Delivery expose the brief and different inspection views of the same published asset. These are not historical stage snapshots. The page supports orbit/zoom, named views, clay/wire inspection, a rig overlay, pause/scrub, reduced motion and downloads of both the GLB and editable Blender source.
+Open **DCC workbench** from any game table, or visit `/?workbench=dcc&asset=briar-hydra`. **Choose native asset** lists published deliveries. Intent, Form, Surface, Motion and Delivery inspect the same selected release using its frozen brief; they are not historical build stages. Downloads return that release’s exact GLB and editable source. Registered drafts without a publication are absent from the selector and do not break the browser.
 
 ## Quick start
 
-From the repository root:
+Hydrate the [LFS assets](#storage-and-cloning), use the repository’s pinned runtime and setup from [maintenance governance](../../docs/engineering/maintenance.md), then:
 
 ```sh
-npm ci
 npm run dev
+npm run dcc -- list
 npm run dcc -- doctor
-npm run dcc -- verify
+npm run dcc -- verify --asset briar-hydra
 ```
 
-Viewing or building the frontend does **not** require Blender. The published asset is checked in, uses embedded textures and makes no remote asset requests. Blender is required only to author, render or export.
+Viewing and building need no Blender runtime. Selected deliveries have embedded dependencies and make no remote asset requests. Local authoring uses **Blender 4.5 LTS**; this checkout’s earlier pilot used 4.5.14 on macOS ARM64. Set `BLENDER_BIN` explicitly or use the discovered installed app, ignored `.runtime/Blender.app`, or `blender` on PATH. Blender is not a frontend dependency. The original ARM64 runtime came from the [official Blender 4.5 release directory](https://download.blender.org/release/Blender4.5/); its recorded DMG SHA-256 was `65134d9b07b20e2fa8d3c9e44f6f44ffb5c9774dd521b95f50387310241ca170`. This records that installation, not a checksum for every Blender version.
 
-The pilot was built with **Blender 4.5.14 LTS**, macOS ARM64. Discovery checks `BLENDER_BIN`, `/Applications/Blender.app`, the ignored package-local `.runtime/Blender.app`, then `blender` on PATH. This checkout has the official app in `.runtime/`; it is not a package dependency and is not committed. Other machines should install Blender 4.5 LTS from [Blender](https://www.blender.org/download/lts/4-5/) or set an executable explicitly:
-
-```sh
-BLENDER_BIN=/path/to/blender npm run dcc -- doctor
-```
-
-The local runtime came from [the official release directory](https://download.blender.org/release/Blender4.5/). The ARM64 DMG's verified SHA-256 was `65134d9b07b20e2fa8d3c9e44f6f44ffb5c9774dd521b95f50387310241ca170`.
+On this Mac, run commands that launch Blender or a browser with approved execution outside the restricted sandbox. Follow [AGENTS.md](../../AGENTS.md) for disposable browser profiles and startup failures. Hash, unit, lint and frontend-build checks remain sandboxed.
 
 ## Storage and cloning
 
@@ -43,128 +37,85 @@ Both CI jobs request LFS hydration and run the early check. On 2026-10-08, the p
 
 There is currently no deployment workflow; future deployment must build with hydrated assets and publish real build output, including the source downloads offered by the workbench. Git-hosted pointer text is not a usable `.blend` or `.glb` download.
 
-## The vertical pipeline
+## Sources and delivery boundary
 
 ```text
-briefs/briar-hydra.json
-    ↓ build_hydra.py — native Blender construction and material baking
-sources/briar-hydra.blend  ← hand-edit this source in Blender
-    ↓ export_asset.py — evaluate, simplify, skin audit, export
-assets/briar-hydra.glb + manifest.json + pose-samples.json
-    ↓ GLTFLoader + AnimationMixer
-src/Workbench.tsx — /?workbench=dcc
+registry.json + subjects/<id>/brief.json
+                  ↓ declared identity, dependencies, profile and edit probes
+subjects/<id>/source.blend  ← artist edits and saves here
+                  ↓ blender/export_saved.py (no regeneration)
+.work/runtime/<run>/<id>/   ← GLB, native audit, poses, sealed candidate
+                  ↓ independent parent review of named candidate and evidence
+assets/<publication>/releases/<receipt-hash>/
+                  ↓ atomic current.json pointer
+workbench → accepted gallery-scoped release → matching gallery study
 ```
 
-| Stage        | Authority and output                                                                                                                                                      |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Ideation     | Brief: physical interpretation, gesture, specific polish decisions, palette and delivery budgets. The UI gesture diagram is a schematic, not a concept render.            |
-| Construction | Native Bezier gesture guides, fused voxel-remeshed skin, a quad skull cage, fitted throat shells, retained subdivision modifiers and a 22-joint armature.                 |
-| Surface      | Blender Noise/Voronoi shader graphs, UV layout, and packed pigment/normal bakes. Shader graphs remain as editable upstream references; the browser uses the baked images. |
-| Motion       | One editable `Marsh Vigil` action, 24 fps, source frames 1–145. Neck/head/jaw phases differ; the coil anchor is fixed.                                                    |
-| Delivery     | A copy of the scene has finishing modifiers applied, is joined and simplified, and has weights limited to four influences. Export shifts animation to 0–6 seconds.        |
-| Display      | The package loads the exported GLB. The browser owns camera, lighting, inspection and playback; game rules remain independent.                                            |
+| Home                                                         | Authority                                                                                                                                                                                                                    |
+| ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `registry.json`                                              | Asset IDs, study mapping, working source/brief, native dependencies, delivery profile and owned output paths.                                                                                                                |
+| `subjects/briar-hydra/`, `subjects/nightjar/`                | Current editable `source.blend` and brief, including declared `nativeEdit` probes and delivery budgets.                                                                                                                      |
+| `blender/export_saved.py`                                    | Evaluates saved native geometry, preserves hierarchy and fitted rigid attachments, freezes static authoring shape-key mixes only in the export process, and exports a single scene clip. No joining or automatic decimation. |
+| `assets/briar-hydra/current.json`                            | Hydra publication pointer; immutable release contents include source, brief, GLB, audit, poses, receipt and reviewed evidence.                                                                                               |
+| `assets/nightjar/published/current.json`                     | Nightjar publication pointer, created only on promotion. Its reserved flat compatibility paths are not duplicate deliverables.                                                                                               |
+| Earlier `sources/`, `briefs/`, flat `assets/`, `references/` | Preserved pilot sources, outputs, receipts and comparisons; do not overwrite them to match a new source.                                                                                                                     |
+| `src/`, application `src/art3d/`                             | Runtime loading, presentation, playback, VFX and simple composition. The frontend does not rebuild principal native anatomy.                                                                                                 |
 
-`CONSTRUCTION` curves are retained guides, not a live dependency graph for the remeshed skin. Edit the skin directly for hand finishing. Change the recipe to regenerate anatomy. Voxel remeshing is applied; subdivision and deformation remain live in the saved source.
+The two new masters combine **preserved triangulated deliveries and selective native reconstruction**. Nightjar's wings and roost were rebuilt regionally. Meshes, material assignments, rigs and actions are editable; original procedural construction, complete quad topology and a complete LOD pipeline have not been recovered. They declare no rebuild recipe. `dcc build`, `dcc components` and the legacy `dcc render` path do not regenerate or upgrade these masters; use Blender directly and export the saved source.
+
+The registry/GLB interface distinguishes static, rigid and skinned profiles. The maintained saved-source adapter supports **rigid and skinned loops**; it explicitly rejects static delivery and animated shape-key weights. Saved shape-key controls are authoring edits, not exported morph-animation promises. Cameras, lights and temporary review supports belong to presentation; required source geometry and fitted motion belong to the delivery.
 
 ## Edit, publish and rebuild
 
-1. Open `sources/briar-hydra.blend` in Blender. The delivery collection, named rig and skin identify the export contract. Make mesh, material, weight or action edits and save.
-2. Run `npm run dcc -- export`. This reads the saved source and preserves its bytes. It does not regenerate it from Python. Re-bake the retained procedural graphs if changing those graphs or UVs; publishing does not silently replace an artist's baked images.
-3. Run `npm run dcc -- verify`, then inspect `/?workbench=dcc` at front, side, back, motion extremes and phone size. Use `npm run dcc -- render` for four neutral Blender-source renders under a fresh ignored `test-results/disposable/dcc-review-<run>/` directory. Complete runs are eligible for cleanup 14 days after closure; pin any run needed as lasting evidence.
-4. To regenerate from the recipe, run `npm run dcc -- build --rebuild`. Existing source is copied to ignored `test-results/dcc-backups/` first. Plain `build` refuses to overwrite an existing source. A first build without a source needs no flag.
+1. Open the registered `subjects/<id>/source.blend`. Edit the named native assemblies, shape keys, material data, weights or actions and save. Preserve fitted dependents and inspect from several views. Export reads saved bytes; it never silently reconstructs the asset.
+2. Run `npm run dcc -- export --asset <id>`. Export validates source stability, geometry, declared budgets and native evidence, then seals a fresh candidate under `.work/runtime/`. It does not change publication or artist source bytes.
+3. Inspect that exact candidate under the [shared art rulebook](../../docs/art/art-direction.md). Keep named captures under its `evidence/` directory. The parent records a decision with `writeCandidateReview` in `releases.ts`, binding candidate digest, evidence hashes, observations and either `workbench` or `gallery` scope. Author self-review and user approval remain separate.
+4. Run `npm run dcc -- promote --asset <id> --candidate <absolute-path>`. Promotion rechecks input freshness, the expected previous publication and parent review, completes an immutable release, then atomically switches `current.json`. A stale or failed candidate leaves the prior publication intact. Inspect an abandoned promotion lock before recovery; never remove another active publisher’s lock.
+5. Run `npm run dcc -- verify --asset <id>`. This checks the published delivery against current working inputs. An artist may continue editing while the browser displays the previous frozen release; verification reports that freshness difference.
 
-The pilot's reserved delivery collection and rig/body names are used by the exporter; arbitrary renamed scenes are not supported. This is a small one-asset pipeline, not an asset manager or a general Blender add-on. Hand edits need not round-trip back into the Python recipe. Asset authors should review and commit the `.blend`, exported GLB and receipt together.
+Only a release with an **accepted parent review scoped to `gallery`** changes its study’s gallery default. A `workbench` release remains inspectable without that cutover. Browser mapping uses the reviewed release’s frozen study identity, so an unreviewed registry edit cannot redirect existing art. There is no automatic review, promotion or fallback from a broken selected release to a different asset.
 
-On this Mac, the restricted command sandbox caused Blender to crash during Metal initialization before Python ran. Run Blender authoring/render/export with approved execution outside that sandbox. Follow the root `AGENTS.md` for browser-launch approval and disposable profiles. Ordinary hash, unit and frontend build checks remain sandboxed.
+A future recipe must explicitly describe which edits reconstruction replaces and produce a separate backed-up candidate. Neither the preserved legacy Hydra recipe nor an imported GLB is a recipe for the current native master. [Migration governance](../../docs/art/migration.md) owns delegation, batching and retention boundaries.
+
+## Edit a head in Blender
+
+For current Hydra, open `subjects/briar-hydra/source.blend` and select **EDIT | Head.Search**. Under **Object Properties → Custom Properties**, **Muzzle reach** ranges from **0 to 1.5**. The declared gate probes **0, 0.75 and 1.5**, checking the cranium, mandible, upper/lower dentition and nostril while the sibling heads and body remain fixed. Inspect all fitted facial parts when editing; the gate is a selected operation’s contract, not proof of every possible sculpt edit.
+
+For Nightjar, open `subjects/nightjar/source.blend` and select **EDIT | Wing.1**. **Fold settle** ranges from **0 to 1**; the gate probes **0, 0.5 and 1**. Shoulder mantle, a primary, a secondary plane and a covert patch move together; declared body, face, grip, branch and opposite-side probes stay fixed. The [brief](subjects/nightjar/brief.json) lists exact names. Regional wings and supported grips passed parent review; narrow rear primary-tip clearance remains a recorded stylization.
+
+Keep direct mesh/shape-key editing available beneath controls. Save, export and compare the delivered result. Material or UV edits may require deliberate texture work; the exporter does not invent a new bake. The current source does not claim the earlier pilot’s four-control head interface or remesh recipe.
+
+## Modules and creation
+
+Shared investment follows actual variation: Hydra’s fitted muzzle operation and Nightjar’s wing-fold operation are different semantic assemblies built from native shape keys, parenting and rigs. They demonstrate an edit/export mechanism, not one universal anatomical generator. The old `head_shape.py`, `head_components.py` and `scale_components.py` remain part of the preserved reconstruction pilot and its historical contracts.
+
+`blender/saved_export_plan.py` checks source, profile and fresh-output boundaries. `export_saved.py` identifies the delivery collection through `scene["dcc_delivery_collection"]` or a unique `dcc_delivery` tag. It samples every delivery mesh at five times in world Y-up coordinates, including rigid attachments. Native finite/loop checks inspect all evaluated vertices; consumer evidence uses up to 16 points per named mesh. Motion and loop tolerances are **1e-6** and **1e-5 model units**, respectively. Stationary supports are allowed; `dcc_require_rigid_motion` explicitly requires moving rigid attachments where offered.
+
+All Python modules receive Ruff, strict mypy and maintained contract tests while retaining Blender 4.5’s Python 3.11 syntax compatibility. CLI, registry, receipt and frontend code receive typed ESLint and strict TypeScript. Add new nested source homes only together with enforced checker and discovery coverage.
 
 ## Verification and provenance
 
 ```sh
 npm run test:dcc
+npm run check:maintenance
 npm run check
-npm run test:browser -- tests/browser/dcc-workbench.spec.ts tests/browser/shell.spec.ts
+npm run test:dcc:saved -- --asset briar-hydra
+npm run test:dcc:saved -- --asset nightjar
+npm run test:browser -- tests/browser/dcc-workbench.spec.ts tests/browser/art3d.spec.ts tests/browser/shell.spec.ts
 ```
 
-- Blender checks finite source vertices, normalized skin weights, anchored support and loop closure across five frames.
-- Publishing parses the actual binary GLB, rejects non-finite accessors, external resources, invalid weights, broken loop endpoints and budget overruns. Budgets are 180,000 triangles, 16,000,000 bytes and 64 joints; these are pilot limits, not mobile performance guarantees.
-- The receipt pins the brief, editable source, recipe, exporter, pipeline, GLB, authoring audit and sampled poses with SHA-256. `verify` rejects stale delivery after source changes. A failed candidate validation leaves the previous GLB in place; a changed source still requires a successful export.
-- An independent browser check matches 64 evaluated Blender vertices at five times against Three.js skinning. Browser checks also exercise playback, exact loop images, downloads, phone layout, reduced motion, error handling, return focus and save preservation.
-- Native review renders and browser review captures live under ignored `test-results/dcc-pilot/`. The source and published deliverables live in this package.
+- **Maintained checks:** registry identity and ownership, declared dependency closure, GLB contracts, immutable candidates, review binding, publication isolation and recovery; lint/type/Python checks and production build. `npm run check` also covers application/geometry behavior and seeded simulations.
+- **Native edit gate:** `test:dcc:saved` copies the selected source, brief and dependencies into protected `test-results/dcc-native/saved-*/package/`. The brief’s `nativeEdit` declaration names one control, three values and moved/fixed probes. At five frames it checks all probe vertices, movement through adjacent values, fixed parts and restoration within 1e-6; then saves/reloads a distinct edited value, exports and seals the copy, and runs the independent browser comparison. Production source, pointer, published model, source and receipt remain hash-pinned, including on failure. The gate never promotes its candidate.
+- **Consumer agreement:** browser comparison matches initial world points by named mesh, then evaluates those same vertices at five times. It includes skinned and rigid meshes and checks errors below 1e-4 model units. Vertex sampling is not exhaustive animation or contact verification.
+- **Browser behavior:** correct selected downloads, load errors, playback, reduced motion, phone layout, navigation/focus, save preservation and native/procedural gallery coexistence. Review the captured pixels separately for quality.
+- **Legacy native gate:** `npm run test:dcc:native` remains the earlier reconstructed Hydra pilot’s control/save/reload test. It does not substitute for `test:dcc:saved` on current `subjects/` masters. Candidate-dependent browser cases skip when their native input is absent; an ordinary CI/browser pass is not native execution.
 
-The before image in `references/` is a copy of the user-accepted living Hydra direction from `test-results/hydra-delivery/hydra-hero.png`; it is a visual reference, not a frozen executable baseline or an equal-lighting comparison. The original builder remains `src/art3d/hydra.ts`. The [shared art rulebook](../../docs/art/art-direction.md) governs visual review. Passing checks establishes export/interaction behavior, not superior art or user approval.
+Run commands after freezing the owned source/config files; a Vite restart can reset UI selection during a browser test. Final run receipts and candidate decisions belong in the [native pilot record](../../docs/art/assets/native-pilots.md), not an undated passing-count claim here. Delivery budgets bound the selected artifact; neither they nor screenshot correctness establishes phone performance or aesthetic acceptance.
 
-The [durable asset record](../../docs/art/assets/briar-hydra.md) records review status, consequential revisions, historical evidence and remaining limits. The superseded session review has been consolidated there.
-
-## Maintained native pipeline
-
-`npm run check:python` runs Ruff, strict mypy and pure contract tests for every Python file in `blender/`. Builder, exporter and renderer have explicit entry points; importing them does not load Blender or mutate a scene. Blender 4.5 uses Python 3.11, so native syntax remains compatible despite the separate Python 3.12 checker runtime. The typed delivery CLI and compatibility `pipeline.mjs` entry are covered by strict TypeScript, typed ESLint and publication tests.
-
-Build and export write fresh candidates. Export checks source stability, geometry, native audit and all 64 pose samples at five times before publishing. Every successful export retains the exact preceding manifest under `assets/receipts/<sha256>.json`, pins that receipt in the new manifest, and archives the preceding four delivery files under protected `test-results/dcc-delivery-history/<sha256>/`. Publication installs data before its receipt; interruption is detectable by `verify`, and the previous bytes remain recoverable. These histories are outside automatic pruning. Native rendering never resaves the artist source.
-
-## Package boundary
-
-- `blender/`, `briefs/`, `sources/` and `assets/` own authoring and delivery. No game-module imports or rule/save changes.
-- `src/` is the frontend entry. The application shell lazy-loads this private workspace package. The existing gallery does not depend on it.
-- Authoring happens locally through the CLI and Blender. The frontend has no filesystem write or arbitrary Python-execution bridge.
-- The retained source is suitable for further sculpting and rig work. It is not hand-retopologized production character topology, a biological model, or a complete LOD pipeline.
+Evidence containing editable sources is protected under [maintenance retention](../../docs/engineering/maintenance.md#retention-and-deletion-authority). Disposable renders require their own retention classification. Publication and test consolidation do not authorize deletion of sources, accepted references or historical receipts.
 
 ## Matched Hydra comparison
 
-Choose **Compare Hydra versions** in the workbench, or open `/?workbench=dcc&compare=hydra`.
-The comparison starts paused in clay. Named front/side/back/portrait views, orbit/zoom,
-silhouette/clay/material display, a shared six-second timeline and **Swap sides** apply to
-both panels. **Accepted vs candidate** compares the preserved procedural delivery with the
-current Blender export; **Quality before / after** compares the preserved gesture revision with the current export; **Original pilot vs current** retains the earlier pilot comparison. Narrow screens stack equally sized views.
+Open `/?workbench=dcc&asset=briar-hydra&compare=hydra`. Both panels share renderer, camera, light and clock; the comparison starts paused in clay. Front/side/back/portrait views, surface modes and **Swap sides** support inspection against preserved procedural, original-pilot and gesture-revision GLBs. The current panel loads the published native delivery, not an unreviewed working source.
 
-One renderer, camera, lighting setup and clock govern both panels. The first-pose geometry
-is grounded once, without changing authored scale. Camera distance is fitted to the union
-of all four assets at five sampled times, including versions not currently displayed;
-switching pairs or sides never refits an individual subject. Raw model units are not a
-measured physical scale, and equal animation times are not equivalent anatomical poses.
-This is visual comparison evidence, not a benchmark of authoring tools.
-
-[Preserved reference hashes](references/comparison/baseline.json) pin the original baseline GLBs,
-the original procedural export's source hashes, and the Git revision containing the
-pre-revision Blender source. These baseline files are checked by `npm run test:dcc`.
-`tests/browser/hydra-comparison.spec.ts` covers the shared controls, loop closure, preserved
-saves, narrow layout, reduced motion and failed asset loading.
-
-The source and fresh-build recipe include the low-neck gesture and the semantic head modules described below. Hand edits still belong to the saved source; export never rebuilds it. The [asset record](../../docs/art/assets/briar-hydra.md) separates revisions, technical verification and user judgment.
-
-## Edit a head in Blender
-
-1. Open `sources/briar-hydra.blend`. In the Outliner, select **EDIT | Head.Search**, **EDIT | Head.Scent**, or **EDIT | Head.Guard**.
-2. In **Object Properties → Custom Properties**, adjust **Muzzle reach**, **Cranial taper**, **Crown depth**, or **Horn sweep**. Values range from 0 to 1.5; zero restores that aspect of the original source cage. The selected head’s 51 fitted meshes share these controls. The jaw, teeth, oral surfaces, eyes and brows follow coordinated anatomical transforms, while the existing animation remains editable on the rig.
-3. Use the **HEAD | Search/Scent/Guard** collections to find the meshes. Meshes retain native shape keys and armature modifiers. Edit their Basis or a named key when a parameter alone is insufficient; keep fitted parts in view.
-4. Save, then run `npm run dcc -- export` and review the browser comparison. Export verifies that each evaluated head shape matches its displayed control, then freezes the saved shape-key mix only in a delivery copy before simplification and skin export. The source retains its keys and drivers. Material/UV changes that affect the baked skin still require an explicit re-bake.
-
-This is the fluent edit loop for the current source: **named control → inspect in Blender → save → export → inspect the same deformation in the browser**. Sliders are authoring controls, not new browser morph targets.
-
-## Modules and creation
-
-Run `npm run test:dcc:native` from the repository root after changing native authoring or
-export behavior. It uses `BLENDER_BIN`, the installed Blender app or the bundled package
-runtime, then the existing disposable-profile browser harness. On macOS the whole command
-requires approved execution outside the restricted sandbox. Ordinary Python checks remain
-sandboxed and do not replace this native gate.
-
-The gate copies the saved source into a fresh `test-results/dcc-native/edit-loop-*/source-edit/`
-directory, checks all twelve head controls at 0, 1.3, 1.5 and their restored values, and proves
-the clamping guard rejects a damaged key. It saves/reloads a Search muzzle edit, exports that
-copy and compares 64 native vertices at five times with the actual browser-loaded GLB.
-It never publishes the candidate and requires the original source, delivered GLB and receipt
-to retain their hashes. Evidence contains an editable source and is protected from disposable
-render pruning. The corresponding browser test explicitly skips without this native input.
-
-| Module                         | Interface and current reuse                                                                                                                                                            |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `blender/head_shape.py`        | Pure head-local shape offsets and three role presets. A small anatomical coordinate convention keeps muzzle, jaw and facial details aligned.                                           |
-| `blender/head_components.py`   | `install_heads(collection, rig)` installs three named native assemblies, four controls each, and coordinated shape keys. It refuses to replace existing artist shape keys or controls. |
-| `blender/scale_components.py`  | `install_scales(collection, rig)` fits three editable flank/dorsal patches to their own skin regions and inherits skin weights. It rejects sibling-neck binding.                       |
-| `blender/author_components.py` | Installs modules into a fresh candidate copied from the existing artist source. It neither resets the scene nor replaces the animation.                                                |
-
-`npm run dcc -- components` is a one-time upgrade of an older Hydra source: it creates a fresh candidate, checks source stability, backs up the source, installs the candidate and exports it. On the current source it refuses a second installation; use its existing controls. Backups live under `test-results/dcc-backups/`. As with source edits, a failed export leaves the saved source requiring correction or restoration; the previous delivery is retained until candidate validation succeeds.
-
-Fresh `dcc build` also installs these modules. `build --rebuild` is an explicit full reconstruction with a source backup, and does not preserve later hand edits. The pure head deformation is reusable; the current installers deliberately know the Hydra rig names, anatomical frames and source materials. Reusing them for another creature requires an adapter for those contracts. This is a working three-head authoring system, not a general character generator or a retopology tool.
-
-The scale patches remain ordinary editable meshes. Their density and footprint are recipe choices in `scale_components.py`, not live sliders. Whole-body gesture, remeshed anatomy, UV changes and material baking remain distinct authoring work. The next extraction should follow another actual asset, keeping these interfaces small.
+Framing covers the union of the four compared assets at five times without independently normalizing their size. Raw model units are not measured physical scale, and equal clip times are not necessarily equal poses. [Preserved hashes](references/comparison/baseline.json), [quality baseline](references/comparison/quality-baseline.json) and the [earlier pilot record](../../docs/art/assets/briar-hydra.md) retain historical identity. This is controlled visual evidence, not an automatic authoring-tool score.

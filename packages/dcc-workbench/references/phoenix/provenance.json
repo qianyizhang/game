@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "phoenix",
+  "kind": "preserved-procedural-gallery",
+  "capturedOn": "2026-10-08",
+  "origin": "Browser download from the procedural Phoenix gallery before native migration; passing delivered-file/animation roundtrip",
+  "stats": {
+    "bytes": 12802280,
+    "triangles": 294140,
+    "meshes": 504,
+    "skins": 169,
+    "joints": 3,
+    "animations": [
+      {
+        "name": "phoenix_idle",
+        "channels": 7
+      }
+    ],
+    "jointReferences": 507,
+    "uniqueJointNodes": 3
+  },
+  "files": {
+    "legacy-gallery.glb": "ae98892d0c7d1b330245cab29a74d0293236ea01efb88833805d34a9042eb809",
+    "legacy-gallery.png": "e44c5684775c85c27b3987fe0d49d6aed5951364122f73a2398e7aaac40d7b81",
+    "legacy-front.png": "a47aff1b3a050a320a85efb9941595fea11672e84556fbfe40768a916a52f34b",
+    "legacy-side.png": "66993847c40f56daa7680f139f0bc61b6f37efe131db8b0f43200cfad777f010"
+  },
+  "sourcePins": {
+    "phoenix.ts": "0c95e06ff7364033d03de1ef1e3c81ecff25c1ed796b635e447ef5297c64b231",
+    "phoenix.test.ts": "ed33a9254ed1d4e54308f083af77b4f70d74b68bb50b36a411b383a910db25a3",
+    "animation.ts": "daedea163308461dad716e3c54c3fd026c3a13325ff599894b6a15000e8a431b",
+    "models.ts": "c0cb52a0a685248bcb17c44c2308f4724504de9298e66e459243d4c465da7e98"
+  },
+  "sourceHome": "src/art3d/; exact source snapshots also retained in protected .work/sessions/native-batch-1-2026-10-08/phoenix/baseline/",
+  "captureConditions": "Existing gallery studio camera/light at paused time 0; object, front and side views. These are baseline display views, not a neutral matched clay comparison.",
+  "verification": "test-results/asset-migration-nightjar/final-gallery-corrected/art3d-Phoenix-renders-expo-82901-hone-without-changing-saves/phoenix-roundtrip.json",
+  "approvalLimit": "Preserved accepted comparison; no new user art approval is asserted."
+}

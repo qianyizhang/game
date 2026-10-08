@@ -2,9 +2,13 @@
 
 The [aesthetic rulebook](art-direction.md) is the single visual standard. Use the [art skill](../../skills/card-art/SKILL.md), [SVG source map](svg.md), [3D source map](3d.md) and [DCC package](../../packages/dcc-workbench/README.md) for implementation and review. [Feature coverage](feature-coverage.md) records SVG integration boundaries and its dated regression evidence.
 
+[Native 3D migration](migration.md) owns the settled authoring/delivery boundaries, parent acceptance and promotion rules, pilot gate and planned 29-study cohort. Its stages do not establish visual approval or batch completion.
+
 ## Direction and guided trials
 
 [Creature history](creature-history.md) preserves the rejected earlier Hydra/Nightjar, the later positively received living Hydra and the mixed-authorship Nightjar/Phoenix trial. Living Hydra is an accepted direction, not blanket approval of every detail. Final bird user approval is unrecorded. Spiral and Vajra had reviewer acceptance; this does not establish user approval. Catalyst's implementation and export workflow are in the 3D source map.
+
+[Native migration pilots](assets/native-pilots.md) records the accepted Hydra and Nightjar gallery releases, native edit proofs and remaining limitations.
 
 ## Asset records
 

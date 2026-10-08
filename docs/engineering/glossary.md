@@ -65,14 +65,21 @@ _Avoid_: Full state, when referring to a policy's permitted view.
 **Artist source**: The editable artwork from which a delivered model is produced.
 _Avoid_: Delivered model, when referring to the editable authoring source.
 
+**Asset candidate**: An isolated proposed revision with its source, delivered model and review evidence, awaiting a promotion decision.
+_Avoid_: Release, when the revision has not been promoted.
+
+**Asset release**: An immutable delivered-model revision and its provenance, identified independently of whichever release is currently selected for consumers.
+
 **Delivery receipt**: The provenance record linking a delivered model to the source and checks that produced it.
 
 **Technical verification**: Evidence that rules, interaction or delivery contracts hold under stated checks. It does not establish visual quality or user acceptance.
 
 **Visual review**: Inspection of the artwork's gesture, structure, materials and presentation in actual views.
 
+**Parent acceptance**: The orchestrating agent's explicit decision that an identified candidate meets the project's visual and delivery gates for integration. It is distinct from the author's self-review and from user approval.
+
 **User approval**: The user's explicit acceptance of a result or direction. An author's favorable review is not user approval.
 
 ## Meaning authorities
 
-Definitions consolidate existing behavior from [architecture](architecture.md), [challenges](../guide/challenges.md), [arena contracts](../guide/hearth-arena.md) and the [art rulebook](../art/art-direction.md). Detailed mechanics and implementation remain in those documents and the owning game. Sharpen definitions as actual ambiguities arise; keep implementation procedures out of this glossary.
+Definitions consolidate existing behavior from [architecture](architecture.md), [challenges](../guide/challenges.md), [arena contracts](../guide/hearth-arena.md), the [art rulebook](../art/art-direction.md) and [native asset migration](../art/migration.md). Detailed mechanics and implementation remain in those documents and the owning game. Sharpen definitions as actual ambiguities arise; keep implementation procedures out of this glossary.
