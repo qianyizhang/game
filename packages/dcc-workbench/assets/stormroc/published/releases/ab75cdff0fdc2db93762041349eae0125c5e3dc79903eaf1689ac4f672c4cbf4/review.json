@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "stormroc",
+  "candidateDigest": "ac77d8ba6c97781f9c3458933012248c5a12cbea59d838816284452b65c03cd7",
+  "reviewer": {
+    "role": "parent",
+    "name": "Codex parent"
+  },
+  "decision": "accepted",
+  "scope": "gallery",
+  "evidence": [
+    {
+      "view": "Canonical default front clay",
+      "reference": "evidence/native-front-clay.png",
+      "observation": "Unequal raised wings, forward chest and pale throat silhouette are retained. Regional feathers cover the former longitudinal band and exposed wrist.",
+      "sha256": "cd483adffa2862db3ce7e26d93fcd45d4b5c07af0116c657ab87fa70a19c42c1"
+    },
+    {
+      "view": "Canonical default side clay",
+      "reference": "evidence/native-side-clay.png",
+      "observation": "Hooked bill and forward lean remain above the low ledge; original thin outer flight planes are edge-on.",
+      "sha256": "b603565cc6a15549038767b69f365deef28e2d3343d6b810e0942d420041efd4"
+    },
+    {
+      "view": "Canonical default rear clay",
+      "reference": "evidence/native-rear-clay.png",
+      "observation": "Rear feather roots remain covered, with short tail and unequal flight fans preserved.",
+      "sha256": "defc2d3fdd9bad3ab4e7151d00d4245c382f7317d0c376f5eb5ebd4bb4d1ce6c"
+    },
+    {
+      "view": "Canonical default material",
+      "reference": "evidence/native-hero-material.png",
+      "observation": "Slate palette and inherited atlas remain; this is regional native reconstruction, not a material or whole-body rebuild.",
+      "sha256": "ee572dbd8fb39059b2ec79e207209b63860380f7651143e7070a70d3a9b4bd42"
+    },
+    {
+      "view": "Canonical grip above",
+      "reference": "evidence/grip-above-material.png",
+      "observation": "Six forward claws and two opposing hooks connect to visible toes over the actual stone. Short angular toe transitions remain a stylization limit.",
+      "sha256": "839d6ff3d923f921ae3eadbd5902ad3b88b8a706de57b65395dca12c0218cee2"
+    },
+    {
+      "view": "Canonical grip side",
+      "reference": "evidence/grip-side-clay.png",
+      "observation": "Toe paths reach over both ledge edges; tapered hooks remain exposed and joined. Stance and stone are preserved.",
+      "sha256": "618365e6b1f7fac3e5264ea9c7d8aeedb7645e0449a7282e854b6f392afdeb12"
+    },
+    {
+      "view": "Maximum Fan spread rear clay",
+      "reference": "evidence/tail-max-clay.png",
+      "observation": "Six outer rectrices widen around the fixed center, with proximal roots attached and body, wings and support preserved.",
+      "sha256": "c083de96705b45fac1d91f97ace7f423f9c34af3c6b71a4231fce09e635c0a71"
+    },
+    {
+      "view": "Maximum Fan spread material",
+      "reference": "evidence/tail-max-material.png",
+      "observation": "The broadened tail retains the saved palette and short supporting gesture.",
+      "sha256": "5fcee6381eda0dc864a4667ffdf90de37926719a79dedbc2f4d4e214f0b83f81"
+    },
+    {
+      "view": "High wing at 4.5 seconds",
+      "reference": "evidence/upper-wing-clay-4.5.png",
+      "observation": "Covered forearm and wrist remain joined at the sampled high-wing extreme; no lifted cover cap.",
+      "sha256": "b934ba5fb7dae24c5dc4a4c6d55b1b9c87cd1c9ab8e79e58bbce7aabee666954"
+    },
+    {
+      "view": "High wing rear at 4.5 seconds",
+      "reference": "evidence/upper-wing-material-4.5.png",
+      "observation": "Fitted coverts survive the saved wrist response. Thin flight vanes and repeated inherited texture remain explicit limits.",
+      "sha256": "0c186c6ceb5d80c1f24b47d691c81fb766a972d7a00d421d5248dd18f89b1315"
+    },
+    {
+      "view": "Default exported front clay",
+      "reference": "evidence/browser-front-clay.png",
+      "observation": "The delivery retains the unequal living-bird gesture and feather-covered root transitions.",
+      "sha256": "5ae93f8c7cbd95e962d9e0157076d0adb81c5de3ac98e3709aecebd3e2853d06"
+    },
+    {
+      "view": "Default exported side clay",
+      "reference": "evidence/browser-side-clay.png",
+      "observation": "Head, breast, fixed legs and support retain their silhouette. Original flight sheets read thin edge-on.",
+      "sha256": "76aaebf51aa18afdb0b749217df5a67b043c46b8da423269a0d34efa0d83cc4c"
+    },
+    {
+      "view": "Default exported back clay",
+      "reference": "evidence/browser-back-clay.png",
+      "observation": "Wing-root coverage and tail attachment remain continuous in the rear view.",
+      "sha256": "e40efa27c5cdd2fcea10008d82ecbd633310943e7c66919bd4cb6c9f1c1f1314"
+    },
+    {
+      "view": "Default exported front at 1.5 seconds",
+      "reference": "evidence/browser-material-1.5.png",
+      "observation": "Slate feathers, pale throat and yellow supported grip remain distinct at a sampled motion extreme.",
+      "sha256": "e38a2faf43e39a852e3c8d761d30613d3cee97412b94f8eaa3b711ab1200374d"
+    },
+    {
+      "view": "Default exported rear at 4.5 seconds",
+      "reference": "evidence/browser-material-4.5.png",
+      "observation": "Rear coverage stays fitted during the opposite sampled idle extreme. Rear lighting is dark in this presentation.",
+      "sha256": "39c9013ebf14473ff8248f69db2611ec802b53e26690163064d03701838d9da9"
+    },
+    {
+      "view": "Default exported phone-width preview",
+      "reference": "evidence/browser-phone.png",
+      "observation": "Entire bird and ledge fit the 390-pixel workbench preview. This does not establish physical-phone performance or metadata wiring.",
+      "sha256": "3d3a28dcf1cff7df2e6a25986e021fd681799ff54c085482e76749d1911ade04"
+    },
+    {
+      "view": "Maintained saved native edit gate",
+      "reference": "evidence/native-edit.json",
+      "observation": "Twelve moved and nine fixed probes at three edit values across five frames; fixed, restoration and reload differences are zero. Static native edit, not exported morph animation.",
+      "sha256": "e982931e7911df8b197d9b39466572d27e18784f801c63850d9c3c904da95d59"
+    },
+    {
+      "view": "Default native/browser agreement",
+      "reference": "evidence/default-browser-poses.json",
+      "observation": "406 objects (67 skinned,339 rigid),6496 sampled vertices per pose over five times. Maximum position error 1.208540837415993e-6 m; sampled agreement is not exhaustive anatomical proof.",
+      "sha256": "2abbaeb1eae21b15bdc10cd8f9f52b4867dd92d2953788728eea8abc6a848185"
+    },
+    {
+      "view": "Saved interior edit native/browser agreement",
+      "reference": "evidence/edited-browser-poses.json",
+      "observation": "The saved 0.5 tail spread exports and matches independent browser poses at five times; parent also inspected rear clay and material motion pixels.",
+      "sha256": "2abbaeb1eae21b15bdc10cd8f9f52b4867dd92d2953788728eea8abc6a848185"
+    }
+  ]
+}

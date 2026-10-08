@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "stormroc",
+  "definitionDigest": "faf459ed80288ac45e3e9eb54e3a95be0cb3d6eb72199982ae4cbe873fb23030",
+  "candidate": {
+    "path": "candidate.json",
+    "sha256": "ac77d8ba6c97781f9c3458933012248c5a12cbea59d838816284452b65c03cd7"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "2fde0e30f29f9e0ed63f90b4de9aba3b7515ff74b10e3f29b9493ff74775655c"
+  },
+  "source": {
+    "path": "source.blend",
+    "sha256": "7fd1e59d9a976ef27fb308a7e1f8bdfd33513eb5cf7d8cea2f777033ba05496e"
+  },
+  "brief": {
+    "path": "brief.json",
+    "sha256": "7e4e6f2e97f0af737d1a6865e4c4382041a22537a3a2ad226e437856627277e4"
+  },
+  "outputs": {
+    "model": {
+      "path": "model.glb",
+      "sha256": "0927ea52d2df7e58a0fb874ee03b7111c06c13553eaa13413b541762760ce3f9"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "9c1a9451b01c1517ae8804c8c196f556311b21f2a001dcc8179356228a0e8712"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "c253de116134fab5e42254ada03b80fa04cd479e938cd1d5010d8a2bc0a75967"
+    }
+  },
+  "previous": null
+}

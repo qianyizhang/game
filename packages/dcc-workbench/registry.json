@@ -84,6 +84,34 @@
         "receipts": "assets/phoenix/receipts",
         "publication": "assets/phoenix/published"
       }
+    },
+    "stormroc": {
+      "legacyStudyId": "stormroc",
+      "source": "subjects/stormroc/source.blend",
+      "brief": "subjects/stormroc/brief.json",
+      "native": {
+        "adapter": "blender/export_saved.py",
+        "dependencies": [
+          "blender/export_saved.py",
+          "blender/saved_export_plan.py",
+          "blender/native_types.py"
+        ]
+      },
+      "delivery": {
+        "profile": "skinned",
+        "animation": {
+          "name": "stormroc_idle",
+          "seconds": 6,
+          "fps": 24
+        },
+        "directory": "assets/stormroc",
+        "model": "assets/stormroc/model.glb",
+        "audit": "assets/stormroc/authoring.json",
+        "poses": "assets/stormroc/pose-samples.json",
+        "manifest": "assets/stormroc/manifest.json",
+        "receipts": "assets/stormroc/receipts",
+        "publication": "assets/stormroc/published"
+      }
     }
   }
 }

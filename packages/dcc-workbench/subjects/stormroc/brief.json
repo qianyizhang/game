@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "stormroc",
+  "title": "Storm Roc",
+  "subtitle": "A slate-winged sentinel balances above a stone ledge.",
+  "interpretation": "A living raptor braces on a low ledge, holding unequal wings in a restrained settling stretch.",
+  "gesture": "The high wing lifts while the opposite fan opens outward; a forward chest, hooked bill and short tail balance over the fixed grip.",
+  "polish": [
+    "Preserve the unequal wing silhouette, hooked bill and pale throat.",
+    "Connect the feather-covered forearms through the wrists to the primary fans.",
+    "Keep eight tapered claw paths visibly connected around the actual stone ledge."
+  ],
+  "palette": [
+    {
+      "name": "Slate plumage",
+      "color": "#476d7a"
+    },
+    {
+      "name": "Pale throat",
+      "color": "#a5b6ae"
+    },
+    {
+      "name": "Ochre feet",
+      "color": "#aa965f"
+    }
+  ],
+  "nativeFeatures": [
+    "Directly editable native wing coverts, wrist covers and fitted grip meshes",
+    "Fan spread carries six outer rectrices and their shafts while anchoring proximal roots",
+    "Three-bone armature, skin weights and retained rigid wing hierarchy",
+    "Saved six-second settling idle",
+    "Packed inherited plumage and stone materials"
+  ],
+  "animation": {
+    "name": "stormroc_idle",
+    "seconds": 6,
+    "fps": 24
+  },
+  "budgets": {
+    "maxTriangles": 325000,
+    "maxBytes": 18000000,
+    "maxJoints": 16
+  },
+  "reference": "Preserves the procedural Storm Roc body, face, outer flight vanes, shafts and asymmetric gesture, with parent-authored native reconstruction of local wing coverage and grip. Imported triangulated geometry remains editable; original procedural recipes and quad topology are not recovered.",
+  "reviewStatus": "Regional native refinement; exact-byte publication and parent observations belong to the immutable review.",
+  "origin": {
+    "kind": "imported-delivery",
+    "path": "references/stormroc/legacy-gallery.glb",
+    "sha256": "9337b28188cb668a599c16324c529bc017545798d024d3e1ce174f37bb041ac0",
+    "legacyStudyId": "stormroc",
+    "nativeTrial": "Sol 6.1 high imported the unchanged baseline; a separate Sol reviewer approved a bounded grip specification. That adoption trial stopped before repair authoring. The user subsequently authorized the parent to refine Storm Roc directly. Parent authored local feather coverage, wrist transitions, fitted grip and the native Fan spread control. This is parent-authored continuation, not successful delegated repair; original receipts and rejected sources remain preserved."
+  },
+  "nativeEdit": {
+    "control": {
+      "object": "EDIT | Tail",
+      "property": "Fan spread"
+    },
+    "values": [0, 0.5, 1],
+    "moved": [
+      "Stormroc_Rectrix_0",
+      "Stormroc_Rectrix_0_FineShaft",
+      "Stormroc_Rectrix_1",
+      "Stormroc_Rectrix_1_FineShaft",
+      "Stormroc_Rectrix_2",
+      "Stormroc_Rectrix_2_FineShaft",
+      "Stormroc_Rectrix_4",
+      "Stormroc_Rectrix_4_FineShaft",
+      "Stormroc_Rectrix_5",
+      "Stormroc_Rectrix_5_FineShaft",
+      "Stormroc_Rectrix_6",
+      "Stormroc_Rectrix_6_FineShaft"
+    ],
+    "fixed": [
+      "Stormroc_Rectrix_3",
+      "Stormroc_Rectrix_3_FineShaft",
+      "Mesh_0",
+      "Stormroc_UpperBill",
+      "Stormroc_Secondary_-1_7",
+      "Stormroc_Primary_1_5",
+      "Stormroc_Toe_-1_1",
+      "Stormroc_Claw_1_1",
+      "Stormroc_Rock"
+    ]
+  }
+}

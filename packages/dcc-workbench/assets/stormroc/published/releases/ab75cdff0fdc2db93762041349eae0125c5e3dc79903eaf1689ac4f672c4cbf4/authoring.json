@@ -1,0 +1,2473 @@
+{
+  "schemaVersion": 1,
+  "kind": "saved-export",
+  "id": "stormroc",
+  "source": "subjects/stormroc/source.blend",
+  "sourceSha256": "7fd1e59d9a976ef27fb308a7e1f8bdfd33513eb5cf7d8cea2f777033ba05496e",
+  "sourceUnchangedByExport": true,
+  "blender": "4.5.14 LTS",
+  "profile": "skinned",
+  "collection": "DELIVERY | Storm Roc",
+  "animation": {
+    "name": "stormroc_idle",
+    "seconds": 6.0,
+    "fps": 24
+  },
+  "audit": {
+    "sampleFrames": [
+      0.0,
+      36.0,
+      72.0,
+      108.0,
+      144.0
+    ],
+    "meshCount": 406,
+    "skinnedMeshCount": 67,
+    "rigidMeshCount": 339,
+    "maxSkinnedMotion": 0.04458014984159722,
+    "maxRigidMotion": 0.12767000524952832,
+    "maxLoopDifference": 0.0,
+    "maxSourceDeliveryDifference": 0.0,
+    "requireRigidMotion": true,
+    "motionTolerance": 1e-06,
+    "loopTolerance": 1e-05,
+    "objects": [
+      {
+        "name": "Mesh_0",
+        "role": "skinned",
+        "maxMotion": 0.04458014984159722,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Brow_-1",
+        "role": "rigid",
+        "maxMotion": 0.03596313416492428,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Brow_1",
+        "role": "rigid",
+        "maxMotion": 0.030373258932504192,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Claw_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Claw_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Claw_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Claw_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Claw_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Claw_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_0",
+        "role": "skinned",
+        "maxMotion": 0.0019777329953758398,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_1",
+        "role": "skinned",
+        "maxMotion": 0.0015108650882430673,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_10",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_11",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_12",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_13",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_14",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_15",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_16",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_17",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_18",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_19",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_2",
+        "role": "skinned",
+        "maxMotion": 0.0010751407139466271,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_20",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_21",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_22",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_23",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_24",
+        "role": "skinned",
+        "maxMotion": 0.027098787897823204,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_25",
+        "role": "skinned",
+        "maxMotion": 0.01711941505043096,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_26",
+        "role": "skinned",
+        "maxMotion": 0.010009637581623848,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_27",
+        "role": "skinned",
+        "maxMotion": 0.029108317945882787,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_28",
+        "role": "skinned",
+        "maxMotion": 0.018729981704174975,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_29",
+        "role": "skinned",
+        "maxMotion": 0.011748329204924276,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_3",
+        "role": "skinned",
+        "maxMotion": 0.0008181828404823792,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_30",
+        "role": "skinned",
+        "maxMotion": 0.024374224925640127,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_31",
+        "role": "skinned",
+        "maxMotion": 0.01500440466252411,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_32",
+        "role": "skinned",
+        "maxMotion": 0.00993220169081752,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_33",
+        "role": "skinned",
+        "maxMotion": 0.0020293136170237316,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_34",
+        "role": "skinned",
+        "maxMotion": 0.0017071859749008846,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_35",
+        "role": "skinned",
+        "maxMotion": 0.0013778151283898308,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_36",
+        "role": "skinned",
+        "maxMotion": 0.001112616928700188,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_37",
+        "role": "skinned",
+        "maxMotion": 0.0009567824999803694,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_38",
+        "role": "skinned",
+        "maxMotion": 0.0008004565835035391,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_39",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_4",
+        "role": "skinned",
+        "maxMotion": 0.0008062351371144165,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_40",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_41",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_42",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_43",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_44",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_45",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_46",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_47",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_48",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_49",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_5",
+        "role": "skinned",
+        "maxMotion": 0.0007516356729849893,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_50",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_51",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_52",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_53",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_54",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_55",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_56",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_57",
+        "role": "skinned",
+        "maxMotion": 0.032824617170545294,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_58",
+        "role": "skinned",
+        "maxMotion": 0.025725949756976514,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_59",
+        "role": "skinned",
+        "maxMotion": 0.018988861803126502,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_6",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_60",
+        "role": "skinned",
+        "maxMotion": 0.03385277825086258,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_61",
+        "role": "skinned",
+        "maxMotion": 0.025418160693648374,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_62",
+        "role": "skinned",
+        "maxMotion": 0.01721714387299611,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_63",
+        "role": "skinned",
+        "maxMotion": 0.0270442701706088,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_64",
+        "role": "skinned",
+        "maxMotion": 0.01862823514624338,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_65",
+        "role": "skinned",
+        "maxMotion": 0.01296089963916458,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_7",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_8",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_FittedContour_9",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Hallux_-1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Hallux_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.04220810798248362,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.04877219151573488,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.055144587602918425,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.06190753049306871,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.0675190379541397,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.07175285487488739,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_-1_6",
+        "role": "rigid",
+        "maxMotion": 0.07451751092827846,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_-1_7",
+        "role": "rigid",
+        "maxMotion": 0.07587153192602654,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_-1_8",
+        "role": "rigid",
+        "maxMotion": 0.07603117319812919,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0632847129328697,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_1_1",
+        "role": "rigid",
+        "maxMotion": 0.06918293250696944,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_1_2",
+        "role": "rigid",
+        "maxMotion": 0.07460873580258771,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_1_3",
+        "role": "rigid",
+        "maxMotion": 0.08041351109046448,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_1_4",
+        "role": "rigid",
+        "maxMotion": 0.08560672477285458,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_1_5",
+        "role": "rigid",
+        "maxMotion": 0.08938296437455685,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_1_6",
+        "role": "rigid",
+        "maxMotion": 0.0916007898885625,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_1_7",
+        "role": "rigid",
+        "maxMotion": 0.09224298615977954,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HandCovert_1_8",
+        "role": "rigid",
+        "maxMotion": 0.09142246652206883,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HindClaw_-1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_HindClaw_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Iris_-1",
+        "role": "rigid",
+        "maxMotion": 0.034379353239612886,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Iris_1",
+        "role": "rigid",
+        "maxMotion": 0.0285165222396227,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_LowerBill",
+        "role": "rigid",
+        "maxMotion": 0.050906773987450415,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Nape_0",
+        "role": "rigid",
+        "maxMotion": 0.04713518094658129,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Nape_1",
+        "role": "rigid",
+        "maxMotion": 0.04455941089448034,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Nape_2",
+        "role": "rigid",
+        "maxMotion": 0.0443064861317067,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Nape_3",
+        "role": "rigid",
+        "maxMotion": 0.046414408510323836,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_0",
+        "role": "rigid",
+        "maxMotion": 0.007867523360660903,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_1",
+        "role": "rigid",
+        "maxMotion": 0.008368163917631812,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_10",
+        "role": "rigid",
+        "maxMotion": 0.019742972400197237,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_11",
+        "role": "rigid",
+        "maxMotion": 0.021945869776836147,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_12",
+        "role": "rigid",
+        "maxMotion": 0.02506518678822671,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_13",
+        "role": "rigid",
+        "maxMotion": 0.02839861674472085,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_14",
+        "role": "rigid",
+        "maxMotion": 0.03184149555036611,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_15",
+        "role": "rigid",
+        "maxMotion": 0.035308144448467686,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_16",
+        "role": "rigid",
+        "maxMotion": 0.03869932740481093,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_2",
+        "role": "rigid",
+        "maxMotion": 0.009209563795944791,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_3",
+        "role": "rigid",
+        "maxMotion": 0.010329175391647887,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_4",
+        "role": "rigid",
+        "maxMotion": 0.01164895270390684,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_5",
+        "role": "rigid",
+        "maxMotion": 0.013096735703035264,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_6",
+        "role": "rigid",
+        "maxMotion": 0.014289674081057174,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_7",
+        "role": "rigid",
+        "maxMotion": 0.01549776848153735,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_8",
+        "role": "rigid",
+        "maxMotion": 0.016813905294293628,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_0_9",
+        "role": "rigid",
+        "maxMotion": 0.01821485473646478,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_0",
+        "role": "rigid",
+        "maxMotion": 0.009996889851511526,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_1",
+        "role": "rigid",
+        "maxMotion": 0.010463237823826127,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_10",
+        "role": "rigid",
+        "maxMotion": 0.024730885195126163,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_11",
+        "role": "rigid",
+        "maxMotion": 0.028457973700281792,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_12",
+        "role": "rigid",
+        "maxMotion": 0.032359358401816925,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_13",
+        "role": "rigid",
+        "maxMotion": 0.03629147419536002,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_14",
+        "role": "rigid",
+        "maxMotion": 0.0390742250794359,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.011319849043436412,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_3",
+        "role": "rigid",
+        "maxMotion": 0.012496039418476976,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_4",
+        "role": "rigid",
+        "maxMotion": 0.01389415610543189,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_5",
+        "role": "rigid",
+        "maxMotion": 0.015070115519795207,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_6",
+        "role": "rigid",
+        "maxMotion": 0.01634809596019308,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_7",
+        "role": "rigid",
+        "maxMotion": 0.01776278855900856,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_8",
+        "role": "rigid",
+        "maxMotion": 0.019329868333605994,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_-1_1_9",
+        "role": "rigid",
+        "maxMotion": 0.021331789679109838,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_0",
+        "role": "rigid",
+        "maxMotion": 0.010526062838383659,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_1",
+        "role": "rigid",
+        "maxMotion": 0.010440562522932007,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_10",
+        "role": "rigid",
+        "maxMotion": 0.019045874749480038,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_11",
+        "role": "rigid",
+        "maxMotion": 0.020941168759423666,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_12",
+        "role": "rigid",
+        "maxMotion": 0.023917791360259975,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_13",
+        "role": "rigid",
+        "maxMotion": 0.027169804442211683,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_14",
+        "role": "rigid",
+        "maxMotion": 0.03060887779347197,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_15",
+        "role": "rigid",
+        "maxMotion": 0.03413452706505888,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_16",
+        "role": "rigid",
+        "maxMotion": 0.03763074118213152,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_2",
+        "role": "rigid",
+        "maxMotion": 0.01069440456710951,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_3",
+        "role": "rigid",
+        "maxMotion": 0.011292513611846992,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_4",
+        "role": "rigid",
+        "maxMotion": 0.01219433350083017,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_5",
+        "role": "rigid",
+        "maxMotion": 0.013334528174365309,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_6",
+        "role": "rigid",
+        "maxMotion": 0.014370385269581789,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_7",
+        "role": "rigid",
+        "maxMotion": 0.015448598524891277,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_8",
+        "role": "rigid",
+        "maxMotion": 0.016588846408311868,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_0_9",
+        "role": "rigid",
+        "maxMotion": 0.017785703186262117,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_0",
+        "role": "rigid",
+        "maxMotion": 0.011413377585978119,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_1",
+        "role": "rigid",
+        "maxMotion": 0.011542739065954662,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_10",
+        "role": "rigid",
+        "maxMotion": 0.02395358000666952,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_11",
+        "role": "rigid",
+        "maxMotion": 0.027592119774646665,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_12",
+        "role": "rigid",
+        "maxMotion": 0.03150916742960613,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_13",
+        "role": "rigid",
+        "maxMotion": 0.03551148764903216,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_14",
+        "role": "rigid",
+        "maxMotion": 0.0385796058558887,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.012074687653507691,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_3",
+        "role": "rigid",
+        "maxMotion": 0.012975207951659804,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_4",
+        "role": "rigid",
+        "maxMotion": 0.014163677040820694,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_5",
+        "role": "rigid",
+        "maxMotion": 0.015228668454405783,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_6",
+        "role": "rigid",
+        "maxMotion": 0.016378609350817235,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_7",
+        "role": "rigid",
+        "maxMotion": 0.017639936109544906,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_8",
+        "role": "rigid",
+        "maxMotion": 0.018993610424490968,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_-1_1_1_9",
+        "role": "rigid",
+        "maxMotion": 0.020664485754235504,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_0",
+        "role": "rigid",
+        "maxMotion": 0.00986823035721849,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_1",
+        "role": "rigid",
+        "maxMotion": 0.009941059945831882,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_10",
+        "role": "rigid",
+        "maxMotion": 0.02401390560823811,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_11",
+        "role": "rigid",
+        "maxMotion": 0.02622874877597301,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_12",
+        "role": "rigid",
+        "maxMotion": 0.030109234384356327,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_13",
+        "role": "rigid",
+        "maxMotion": 0.03435607862628837,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_14",
+        "role": "rigid",
+        "maxMotion": 0.038986281650942416,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_15",
+        "role": "rigid",
+        "maxMotion": 0.044115901134609246,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_16",
+        "role": "rigid",
+        "maxMotion": 0.049414069497216405,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_2",
+        "role": "rigid",
+        "maxMotion": 0.010540057491428572,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_3",
+        "role": "rigid",
+        "maxMotion": 0.01163001214956574,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_4",
+        "role": "rigid",
+        "maxMotion": 0.013197493623754594,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_5",
+        "role": "rigid",
+        "maxMotion": 0.015307396373929848,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_6",
+        "role": "rigid",
+        "maxMotion": 0.017710633150177284,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_7",
+        "role": "rigid",
+        "maxMotion": 0.019704479637976672,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_8",
+        "role": "rigid",
+        "maxMotion": 0.021411782047714416,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_0_9",
+        "role": "rigid",
+        "maxMotion": 0.02283745608222299,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_0",
+        "role": "rigid",
+        "maxMotion": 0.010713273613283874,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_1",
+        "role": "rigid",
+        "maxMotion": 0.011089205106699645,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_10",
+        "role": "rigid",
+        "maxMotion": 0.029056572850830454,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_11",
+        "role": "rigid",
+        "maxMotion": 0.03402405964536292,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_12",
+        "role": "rigid",
+        "maxMotion": 0.03970247531206647,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_13",
+        "role": "rigid",
+        "maxMotion": 0.04572744609367683,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_14",
+        "role": "rigid",
+        "maxMotion": 0.05024447260576817,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.012149107709799104,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_3",
+        "role": "rigid",
+        "maxMotion": 0.013717753013897374,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_4",
+        "role": "rigid",
+        "maxMotion": 0.01601288467533152,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_5",
+        "role": "rigid",
+        "maxMotion": 0.018524017988906388,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_6",
+        "role": "rigid",
+        "maxMotion": 0.020578907455083662,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_7",
+        "role": "rigid",
+        "maxMotion": 0.022304026620835585,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_8",
+        "role": "rigid",
+        "maxMotion": 0.02369610577436047,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_-1_1_9",
+        "role": "rigid",
+        "maxMotion": 0.025318765042108105,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_0",
+        "role": "rigid",
+        "maxMotion": 0.007011238941238973,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_1",
+        "role": "rigid",
+        "maxMotion": 0.007797909834348857,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_10",
+        "role": "rigid",
+        "maxMotion": 0.025350224551514866,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_11",
+        "role": "rigid",
+        "maxMotion": 0.02821714261382424,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_12",
+        "role": "rigid",
+        "maxMotion": 0.03190278220685295,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_13",
+        "role": "rigid",
+        "maxMotion": 0.0359947303825168,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_14",
+        "role": "rigid",
+        "maxMotion": 0.040495975895715325,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_15",
+        "role": "rigid",
+        "maxMotion": 0.04535741072602197,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_16",
+        "role": "rigid",
+        "maxMotion": 0.05033773164326467,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_2",
+        "role": "rigid",
+        "maxMotion": 0.009079675971495385,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_3",
+        "role": "rigid",
+        "maxMotion": 0.010706892212882112,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_4",
+        "role": "rigid",
+        "maxMotion": 0.012657281856977292,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_5",
+        "role": "rigid",
+        "maxMotion": 0.01499857806679798,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_6",
+        "role": "rigid",
+        "maxMotion": 0.017385074016989813,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_7",
+        "role": "rigid",
+        "maxMotion": 0.01950854558705131,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_8",
+        "role": "rigid",
+        "maxMotion": 0.021501056581945066,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_0_9",
+        "role": "rigid",
+        "maxMotion": 0.023400726672581897,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_0",
+        "role": "rigid",
+        "maxMotion": 0.00919692308932116,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_1",
+        "role": "rigid",
+        "maxMotion": 0.009966333402781987,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_10",
+        "role": "rigid",
+        "maxMotion": 0.03081897548875553,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_11",
+        "role": "rigid",
+        "maxMotion": 0.03542889368590079,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_12",
+        "role": "rigid",
+        "maxMotion": 0.04069194766747109,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_13",
+        "role": "rigid",
+        "maxMotion": 0.046469555448039095,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_14",
+        "role": "rigid",
+        "maxMotion": 0.05062870729327091,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.011294843235518983,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_3",
+        "role": "rigid",
+        "maxMotion": 0.01313116529530101,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_4",
+        "role": "rigid",
+        "maxMotion": 0.015569405393322472,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_5",
+        "role": "rigid",
+        "maxMotion": 0.018127244562942846,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_6",
+        "role": "rigid",
+        "maxMotion": 0.020387522700586233,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_7",
+        "role": "rigid",
+        "maxMotion": 0.022452912791176657,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_8",
+        "role": "rigid",
+        "maxMotion": 0.02439991610418167,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_NativeCovert_1_1_1_9",
+        "role": "rigid",
+        "maxMotion": 0.026836450628143788,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Nostril_-1",
+        "role": "rigid",
+        "maxMotion": 0.04738543603105493,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Nostril_1",
+        "role": "rigid",
+        "maxMotion": 0.04630263350322866,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Orbit_-1",
+        "role": "rigid",
+        "maxMotion": 0.034950593903550896,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Orbit_1",
+        "role": "rigid",
+        "maxMotion": 0.029478885262769854,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.04634152329680222,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_0_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.042265665031187324,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.06028054728068807,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_1_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.057135998093811,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.07377111432288001,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_2_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.07111126713916964,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.08688647965453264,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_3_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.08336729164927578,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.0973941999678547,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_4_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.09322092679110743,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.10482767194335248,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_5_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.10023309312438189,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_6",
+        "role": "rigid",
+        "maxMotion": 0.1090573062386204,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_6_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.10427697844323107,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_7",
+        "role": "rigid",
+        "maxMotion": 0.11035124409684643,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_7_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.10558660563399147,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_8",
+        "role": "rigid",
+        "maxMotion": 0.10941718620541775,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_-1_8_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.1047982858486513,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0731215576888262,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_0_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.06657931557612355,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_1",
+        "role": "rigid",
+        "maxMotion": 0.08562277124060148,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_1_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.08032289124584535,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_2",
+        "role": "rigid",
+        "maxMotion": 0.09726906035212038,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_2_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.09332251954744664,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_3",
+        "role": "rigid",
+        "maxMotion": 0.10856657279257012,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_3_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.104663638446804,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_4",
+        "role": "rigid",
+        "maxMotion": 0.11813646300511577,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_4_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.1136348732226759,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_5",
+        "role": "rigid",
+        "maxMotion": 0.12459949729123769,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_5_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.11972589863482297,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_6",
+        "role": "rigid",
+        "maxMotion": 0.12767000524952832,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_6_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.1226709464947903,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_7",
+        "role": "rigid",
+        "maxMotion": 0.12737162005014974,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_7_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.12248945936752735,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_8",
+        "role": "rigid",
+        "maxMotion": 0.12407000564863237,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Primary_1_8_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.11950477857792355,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Pupil_-1",
+        "role": "rigid",
+        "maxMotion": 0.03426510151780665,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Pupil_1",
+        "role": "rigid",
+        "maxMotion": 0.028256562577577516,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_0",
+        "role": "rigid",
+        "maxMotion": 0.023932682888911067,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_0_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.02152716220537345,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_1",
+        "role": "rigid",
+        "maxMotion": 0.024788403058945817,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_1_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.022141160912968662,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_2",
+        "role": "rigid",
+        "maxMotion": 0.026012344205511156,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_2_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.023083303738792624,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_3",
+        "role": "rigid",
+        "maxMotion": 0.027555370933352127,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_3_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.02431571478602392,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_4",
+        "role": "rigid",
+        "maxMotion": 0.026227486519251986,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_4_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.02327505965145993,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_5",
+        "role": "rigid",
+        "maxMotion": 0.025032833525965716,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_5_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.02236794055108824,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_6",
+        "role": "rigid",
+        "maxMotion": 0.02399138014198097,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rectrix_6_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.021610588588816083,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Rock",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.010782670901958393,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_0_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.009167727002446793,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.013203944182921023,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_10",
+        "role": "rigid",
+        "maxMotion": 0.03393306335889059,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_10_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.03210957543369253,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_11",
+        "role": "rigid",
+        "maxMotion": 0.037931851978645674,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_11_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.03613980559866136,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_12",
+        "role": "rigid",
+        "maxMotion": 0.04214961252312932,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_12_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.04032357592934521,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_13",
+        "role": "rigid",
+        "maxMotion": 0.04627219676283501,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_13_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.04450267381361517,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_1_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.011487341542877349,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.015321520013450312,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_2_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.01347962285152319,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.017142579647900502,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_3_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.015257250527651752,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.019099969036470713,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_4_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.01720981312441338,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.02126666573895294,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_5_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.019426589222705116,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_6",
+        "role": "rigid",
+        "maxMotion": 0.02364500491182875,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_6_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.021768110576971176,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_7",
+        "role": "rigid",
+        "maxMotion": 0.02584095511015017,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_7_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.023959166559650427,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_8",
+        "role": "rigid",
+        "maxMotion": 0.027833767910735215,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_8_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.02597891910002694,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_9",
+        "role": "rigid",
+        "maxMotion": 0.030308225145981534,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_-1_9_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.028471943195422404,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_0",
+        "role": "rigid",
+        "maxMotion": 0.012093109368152884,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_0_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.009139973996855243,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_1",
+        "role": "rigid",
+        "maxMotion": 0.014849087711490972,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_10",
+        "role": "rigid",
+        "maxMotion": 0.04353584001769571,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_10_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.040780161529861164,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_11",
+        "role": "rigid",
+        "maxMotion": 0.049896470611292015,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_11_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.047176293791682,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_12",
+        "role": "rigid",
+        "maxMotion": 0.05683277768366273,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_12_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.054073539960479956,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_13",
+        "role": "rigid",
+        "maxMotion": 0.06369741281986331,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_13_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.06096863930643015,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_1_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.011734583318151774,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_2",
+        "role": "rigid",
+        "maxMotion": 0.01732686838978032,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_2_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.01417630408897587,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_3",
+        "role": "rigid",
+        "maxMotion": 0.019740628594182977,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_3_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.016579941612896755,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_4",
+        "role": "rigid",
+        "maxMotion": 0.022374914550838086,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_4_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.019254666465174437,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_5",
+        "role": "rigid",
+        "maxMotion": 0.025111959193569434,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_5_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.022050312456202082,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_6",
+        "role": "rigid",
+        "maxMotion": 0.027863885553290196,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_6_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.024914417454460637,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_7",
+        "role": "rigid",
+        "maxMotion": 0.030810546488426408,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_7_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.027866933991345873,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_8",
+        "role": "rigid",
+        "maxMotion": 0.033938979233945114,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_8_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.031060735356574797,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_9",
+        "role": "rigid",
+        "maxMotion": 0.03791071022642477,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Secondary_1_9_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.03512621498242179,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Tarsus_-1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Tarsus_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_-1_6",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_1_3",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_1_4",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_1_5",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_ThighContour_1_6",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Thigh_-1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Thigh_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Toe_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Toe_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Toe_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Toe_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Toe_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_Toe_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_UpperBill",
+        "role": "rigid",
+        "maxMotion": 0.05990476283237697,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WingLeading_-1",
+        "role": "rigid",
+        "maxMotion": 0.039544568508159475,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WingLeading_1",
+        "role": "rigid",
+        "maxMotion": 0.051895066603966554,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_-1_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.03636163705921208,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_-1_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.03816777789608125,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_-1_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.039867980676303844,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_-1_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.04151762390267821,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_-1_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.043318825830930045,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_-1_1_0",
+        "role": "rigid",
+        "maxMotion": 0.03572138814240269,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_-1_1_1",
+        "role": "rigid",
+        "maxMotion": 0.03778009400952716,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_-1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.03979341052063071,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_-1_1_3",
+        "role": "rigid",
+        "maxMotion": 0.04190111080933925,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_-1_1_4",
+        "role": "rigid",
+        "maxMotion": 0.04396511317302351,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_1_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.04641458301906651,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_1_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.04920359184854228,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_1_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.05203878277313453,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_1_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.05492284439211446,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_1_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.05781288263584961,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_1_1_0",
+        "role": "rigid",
+        "maxMotion": 0.047458649474136916,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_1_1_1",
+        "role": "rigid",
+        "maxMotion": 0.050134391267127626,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.052841649748696436,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_1_1_3",
+        "role": "rigid",
+        "maxMotion": 0.05561235717768918,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristCovert_1_1_4",
+        "role": "rigid",
+        "maxMotion": 0.058417313288697384,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_-1_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.03925289187967439,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_-1_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.040858436173004525,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_-1_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.043167111047402174,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_-1_1_0",
+        "role": "rigid",
+        "maxMotion": 0.040367897184720024,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_-1_1_1",
+        "role": "rigid",
+        "maxMotion": 0.04249909779837223,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_-1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.044793919099274396,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_1_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.054698326409899176,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_1_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.057008811253041,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_1_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.05932210317353367,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_1_1_0",
+        "role": "rigid",
+        "maxMotion": 0.055752701160662985,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_1_1_1",
+        "role": "rigid",
+        "maxMotion": 0.05807588802555233,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristFeather_1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.06040069540300335,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristMantle_-1",
+        "role": "rigid",
+        "maxMotion": 0.04429023602202875,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Stormroc_WristMantle_1",
+        "role": "rigid",
+        "maxMotion": 0.05884703604016771,
+        "maxLoopDifference": 0.0
+      }
+    ]
+  }
+}

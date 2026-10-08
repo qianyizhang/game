@@ -1,0 +1,30 @@
+{
+  "sampleVertices": 6496,
+  "sampledObjects": 406,
+  "sampledSkins": 67,
+  "sampledRigid": 339,
+  "maxRestMatchError": 1.8907453925087333e-7,
+  "maxPoseError": 0.000001208540837415993,
+  "perPose": [
+    {
+      "seconds": 0,
+      "maxError": 1.8907453925087333e-7
+    },
+    {
+      "seconds": 1.5,
+      "maxError": 0.000001208540837415993
+    },
+    {
+      "seconds": 3,
+      "maxError": 5.02796752643694e-7
+    },
+    {
+      "seconds": 4.5,
+      "maxError": 9.540729039331507e-7
+    },
+    {
+      "seconds": 6,
+      "maxError": 1.8907453925087333e-7
+    }
+  ]
+}

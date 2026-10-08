@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "stormroc",
+  "sourceBeforeSha256": "7fd1e59d9a976ef27fb308a7e1f8bdfd33513eb5cf7d8cea2f777033ba05496e",
+  "sourceEditedSha256": "4219bc2bfd802a8fa8f6d3c1518d1322791a9d0f265a5d8c3963e86ec87e48ee",
+  "control": {
+    "object": "EDIT | Tail",
+    "property": "Fan spread"
+  },
+  "original": 0.0,
+  "values": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "savedValue": 0.5,
+  "sampleFrames": [
+    0.0,
+    36.0,
+    72.0,
+    108.0,
+    144.0
+  ],
+  "sampleSeconds": [
+    0.0,
+    1.5,
+    3.0,
+    4.5,
+    6.0
+  ],
+  "moved": [
+    "Stormroc_Rectrix_0",
+    "Stormroc_Rectrix_0_FineShaft",
+    "Stormroc_Rectrix_1",
+    "Stormroc_Rectrix_1_FineShaft",
+    "Stormroc_Rectrix_2",
+    "Stormroc_Rectrix_2_FineShaft",
+    "Stormroc_Rectrix_4",
+    "Stormroc_Rectrix_4_FineShaft",
+    "Stormroc_Rectrix_5",
+    "Stormroc_Rectrix_5_FineShaft",
+    "Stormroc_Rectrix_6",
+    "Stormroc_Rectrix_6_FineShaft"
+  ],
+  "fixed": [
+    "Stormroc_Rectrix_3",
+    "Stormroc_Rectrix_3_FineShaft",
+    "Mesh_0",
+    "Stormroc_UpperBill",
+    "Stormroc_Secondary_-1_7",
+    "Stormroc_Primary_1_5",
+    "Stormroc_Toe_-1_1",
+    "Stormroc_Claw_1_1",
+    "Stormroc_Rock"
+  ],
+  "tolerance": 1e-06,
+  "adjacentValueMotion": [
+    {
+      "Stormroc_Rectrix_0": 0.05152494999402316,
+      "Stormroc_Rectrix_0_FineShaft": 0.04676425381357644,
+      "Stormroc_Rectrix_1": 0.035563882811600646,
+      "Stormroc_Rectrix_1_FineShaft": 0.03202463592829585,
+      "Stormroc_Rectrix_2": 0.018538209109875303,
+      "Stormroc_Rectrix_2_FineShaft": 0.016566357839740843,
+      "Stormroc_Rectrix_4": 0.018066021067470385,
+      "Stormroc_Rectrix_4_FineShaft": 0.016121671258137363,
+      "Stormroc_Rectrix_5": 0.033564871413389194,
+      "Stormroc_Rectrix_5_FineShaft": 0.03015642826237942,
+      "Stormroc_Rectrix_6": 0.04678516195051896,
+      "Stormroc_Rectrix_6_FineShaft": 0.04237186707202402
+    },
+    {
+      "Stormroc_Rectrix_0": 0.05152483937629021,
+      "Stormroc_Rectrix_0_FineShaft": 0.04676433963776347,
+      "Stormroc_Rectrix_1": 0.03556389706600433,
+      "Stormroc_Rectrix_1_FineShaft": 0.03202463534837323,
+      "Stormroc_Rectrix_2": 0.018538178572725175,
+      "Stormroc_Rectrix_2_FineShaft": 0.01656637588645006,
+      "Stormroc_Rectrix_4": 0.01806601237782316,
+      "Stormroc_Rectrix_4_FineShaft": 0.01612166323708906,
+      "Stormroc_Rectrix_5": 0.0335648729559531,
+      "Stormroc_Rectrix_5_FineShaft": 0.030156424693754305,
+      "Stormroc_Rectrix_6": 0.04678516041512001,
+      "Stormroc_Rectrix_6_FineShaft": 0.04237186851031459
+    }
+  ],
+  "maxFixedDifference": 0.0,
+  "maxRestorationDifference": 0.0,
+  "maxReloadDifference": 0.0
+}
