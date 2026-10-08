@@ -67,6 +67,8 @@ Use disposable source copies for native checks; unavailable Blender means unavai
 
 ## Pilot and batch gate
 
+The Storm Roc continuation follows the [bounded delegation pilot](delegation.md): audited shared specification, separate Sol author/verifier and Astra final gate. Its cumulative stop rules apply to representation changes and parent takeovers as well as worker repairs. Phoenix remains complete; further cohort expansion waits for the Storm Roc methodology retrospective. The existing publication and visual acceptance contracts below still apply.
+
 Hydra and Nightjar are the two completed native pilots. Hydra preserves its accepted procedural geometry after two weaker reconstruction rounds; Nightjar selectively reconstructs the wing regions, roost and grip and proves a distinct native wing-control operation. Both are parent-accepted gallery defaults. A small rigid delivery fixture checks the unskinned profile without claiming another authored asset. Both guided artist trials used Sol 6.1 at high effort; the parent retained critique, representation choice, setup revision and integration ownership. After two successive revisions repeat the same dominant defect, reassess the representation or record a parent takeover rather than lowering the bar.
 
 Create a bounded batch goal only after the pilots reach the parent visual bar and complete the native edit-to-consumer loop, more than one identity proves publication isolation, and source/regeneration boundaries are demonstrated. Before expansion, reconcile the cohort and exceptions below, budgets, evidence ownership, clean-checkout availability and stop conditions. A local-origin LFS checkout proved full hydration and delivery checks for the earlier scaffold snapshot; one Hydra object separately passed GitHub upload/download. A complete remote checkout and remote CI remain unverified until the owned changes are committed and pushed. That limitation does not prevent isolated local authoring, but forbids claiming remotely reproducible delivery.
@@ -84,7 +86,7 @@ Inventory basis: [`STUDIES`](../../src/art3d/models.ts), checked on 2026-10-08. 
 | Serpentine skin and multi-neck rig     | `hydra`         | Briar Hydra       | Native gallery default; parent accepted, user art approval unrecorded                   |
 | Plumage, fitted wings and grips        | `nightjar`      | Nightjar          | Native gallery default; parent accepted, user art approval unrecorded                   |
 | Plumage, fitted wings and grips        | `phoenix`       | Phoenix           | Native gallery default; parent accepted, user art approval unrecorded                   |
-| Plumage, fitted wings and grips        | `stormroc`      | Storm Roc         | Queued after avian pilot                                                                |
+| Plumage, fitted wings and grips        | `stormroc`      | Storm Roc         | Unfinished: baseline and audited grip brief frozen at trial credit cap                  |
 | Fur, paws, muzzles and antlers         | `prowler`       | Alley Prowler     | Queued                                                                                  |
 | Fur, paws, muzzles and antlers         | `wolf`          | Greatwood Wolf    | Queued                                                                                  |
 | Fur, paws, muzzles and antlers         | `matriarch`     | Briar Matriarch   | Queued                                                                                  |

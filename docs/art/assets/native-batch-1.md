@@ -1,11 +1,11 @@
 # Native migration batch 1: Phoenix and Storm Roc
 
-**Active, 2026-10-08:** migrate Phoenix, then Storm Roc, completing one subject before the next. The parent owns orchestration, shared tools, independent visual review and publication. Artist candidates use Sol 6.1 at high effort in isolated trial directories. The [migration workflow](../migration.md) defines the boundaries; the [completed pilots](native-pilots.md) establish the demonstrated gates and their limits.
+**Bounded checkpoint, 2026-10-08:** Phoenix is complete. Storm Roc stopped at the methodology pilot's cumulative credit cap before repair authoring; its native migration remains unfinished. The parent owns orchestration, shared tools, independent visual review and publication. Artist candidates use Sol 6.1 at high effort in isolated trial directories. The [migration workflow](../migration.md) defines the boundaries; the [completed pilots](native-pilots.md) establish the demonstrated gates and their limits.
 
-| Subject   | Current stage                                     | Baseline                             | Publication                         |
-| --------- | ------------------------------------------------- | ------------------------------------ | ----------------------------------- |
-| Phoenix   | Complete; parent-accepted native gallery delivery | Preserved current procedural gallery | Native gallery default              |
-| Storm Roc | Not started; waits for Phoenix completion         | Capture before its authoring begins  | Procedural gallery remains selected |
+| Subject   | Current stage                                      | Baseline                             | Publication                         |
+| --------- | -------------------------------------------------- | ------------------------------------ | ----------------------------------- |
+| Phoenix   | Complete; parent-accepted native gallery delivery  | Preserved current procedural gallery | Native gallery default              |
+| Storm Roc | Unfinished; stopped at cumulative trial credit cap | Preserved current procedural gallery | Procedural gallery remains selected |
 
 ## Phoenix baseline and scope
 
@@ -32,6 +32,22 @@ The maintained native gate passed edit, restoration, save/reload, export and ind
 The [publication pointer](../../../packages/dcc-workbench/assets/phoenix/published/current.json) selects release `d467985aa6562b42a86c226c24439a8e3f621cb5fe766f6a07466f0e19c617f8`. Its immutable [parent review](../../../packages/dcc-workbench/assets/phoenix/published/releases/d467985aa6562b42a86c226c24439a8e3f621cb5fe766f6a07466f0e19c617f8/review.json) binds **21 curated evidence items** to the exact candidate. The GLB is **12,204,536 bytes**, **316,412 triangles**, with **three joints** and one **six-second idle**; SHA-256 `9d540e12c7674bc649a6dfa1c74b3419bb80e8a9485cb2011676e64c17d1f820`. The default delivery remains below all frozen caps. The Hydra and Nightjar publication pointers are protected independently.
 
 Postpublication checks passed in `test-results/native-batch-1/phoenix/published-consumer/` and `published-gallery-v2/`: direct gallery playback advances, the Phoenix selector and brief load correctly, and both workbench downloads exactly match the immutable model/source (**12,204,536** and **7,705,838 bytes**). The existing gallery journey independently checks exact model bytes, motion, normal validity, native pose agreement and save preservation. The parent inspected all five 390-pixel gallery poses: wings, tail and basalt remain inside the frame. A first gallery command matched no tests because of an anchored title filter; the corrected named journey passed. Physical-phone performance remains unmeasured.
+
+## Storm Roc baseline and scope
+
+Storm Roc started after Phoenix completed its gates and semantic commit `06a435d`. The [preserved gallery GLB](../../../packages/dcc-workbench/references/stormroc/legacy-gallery.glb) has SHA-256 `9337b28188cb668a599c16324c529bc017545798d024d3e1ce174f37bb041ac0`; [provenance](../../../packages/dcc-workbench/references/stormroc/provenance.json) pins the original procedural source and material views. Its existing gallery delivery/animation/normal journey passed before native work.
+
+Baseline measurements are **276,628 triangles, 11,331,700 GLB bytes, 446 meshes and three unique joints**, with one six-second idle. **67 skinned meshes** share those joints and **379 meshes are rigid**. Before native authoring, the parent froze caps of **325,000 triangles, 18,000,000 bytes and 16 joints per skin**, allowing bounded regional refinement around the existing desktop delivery.
+
+Preserve the forward-leaning chest, hooked bill and pale throat, unequal slate-blue wings, short tail fan and supported low ledge. The unchanged saved import has SHA-256 `6e0e0a4ad87a15550f4d7a15a674574b35a08ba809fdc10a1c6ae06046f8f9e9`. Parent inspection of ten whole/detail clay and material views found blunt claw caps with visible cuff rims, a detached-looking front connection and a rear keratin tip separated from its buried toe path. Lower-wing rear views also expose a straight leading rail and abrupt feather-root transition. These are baseline findings, not accepted repairs. The procedural gallery and SVG remain current.
+
+Storm Roc follows the [bounded delegation pilot](../delegation.md). A distinct Sol 6.1 high auditor inspected the pinned whole and grip views before any artist assessment, verified the source/capture/specification hashes and approved the exact bounded grip specification. This approves the specification only. No repair package, native control or candidate clearance was dispatched. The 26 original native captures and unchanged source are frozen in the protected working session.
+
+The checked collector reached **257.63479 modeled Standard credit-equivalents against the 250-credit cap**, with **71 persisted responses and no detected metering gaps** at that checkpoint. In-flight usage and subsequent closeout can raise this subtotal. The ledger retains the conservative **06:05:24.089 UTC** start, including the whole response preceding the first baseline command at **06:07:09.236 UTC**; no user waits were deducted. It records the stop without resetting prior work. Shared strategy/scaffold repair is separately visible in the strategy assessment, outside this asset ledger. These are normalized modeled credits, not billed cost or subscription quota.
+
+The outcome is an **unfinished baseline-and-specification checkpoint**, not a completed migration or a successful author/verifier trial. The grip and wing construction findings remain unresolved; a meaningful native edit, repaired-candidate motion, saved-source export, browser agreement and publication still remain. No next creature may start. An extension requires an explicit user decision, preserves cumulative totals and needs a supported ledger continuation; creating a new directory to evade the stop is forbidden.
+
+The main methodology finding is orchestration overhead: importing and reviewing the baseline, introducing accounting mid-trial and repeated parent coordination exhausted the cap before the approved package reached its author. The shared offline collector now removes the bespoke pricing/parser detour. That infrastructure improvement has verification evidence; improved art-production efficiency does not yet have evidence. Further work should use the existing frozen brief, artist context and independent auditor rather than repeating baseline capture or creating another accounting implementation.
 
 ## Gates and finish line
 

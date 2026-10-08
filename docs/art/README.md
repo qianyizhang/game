@@ -6,6 +6,8 @@ The [aesthetic rulebook](art-direction.md) is the single visual standard. Use th
 
 ## Direction and guided trials
 
+[Bounded delegation](delegation.md) owns the Storm Roc methodology pilot: shared-spec audit, separate author/verifier handoffs, cumulative limits and Astra final acceptance.
+
 [Creature history](creature-history.md) preserves the rejected earlier Hydra/Nightjar, the later positively received living Hydra and the mixed-authorship Nightjar/Phoenix trial. Living Hydra is an accepted direction, not blanket approval of every detail. Final bird user approval is unrecorded. Spiral and Vajra had reviewer acceptance; this does not establish user approval. Catalyst's implementation and export workflow are in the 3D source map.
 
 [Native migration pilots](assets/native-pilots.md) records the accepted Hydra and Nightjar gallery releases, native edit proofs and remaining limitations.
