@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "phoenix",
+  "completed": true,
+  "sourceAndPublicationUnchanged": true,
+  "files": [
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/phoenix/source.blend",
+      "sha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+      "after": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/phoenix/published/current.json",
+      "sha256": null,
+      "after": null,
+      "unchanged": true
+    }
+  ]
+}

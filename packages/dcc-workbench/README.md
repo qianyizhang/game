@@ -1,6 +1,6 @@
 # DCC workbench
 
-`@card-workshop/dcc-workbench` owns editable Blender subjects, validated GLB candidates and reviewed immutable publications. The registry currently names **Briar Hydra** and **Nightjar**. Their working masters live under `subjects/`; the earlier Hydra pilot and procedural gallery sources remain preserved. See the [native pilot record](../../docs/art/assets/native-pilots.md) for candidate status and limits.
+`@card-workshop/dcc-workbench` owns editable Blender subjects, validated GLB candidates and reviewed immutable publications. The registry currently names **Briar Hydra**, **Nightjar** and **Phoenix**. Their working masters live under `subjects/`; the earlier Hydra pilot and procedural gallery sources remain preserved. See the [native pilot record](../../docs/art/assets/native-pilots.md) and [active batch record](../../docs/art/assets/native-batch-1.md) for publication status and limits.
 
 Open **DCC workbench** from any game table, or visit `/?workbench=dcc&asset=briar-hydra`. **Choose native asset** lists published deliveries. Intent, Form, Surface, Motion and Delivery inspect the same selected release using its frozen brief; they are not historical build stages. Downloads return that release’s exact GLB and editable source. Registered drafts without a publication are absent from the selector and do not break the browser.
 
@@ -54,14 +54,15 @@ workbench → accepted gallery-scoped release → matching gallery study
 | Home                                                         | Authority                                                                                                                                                                                                                    |
 | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `registry.json`                                              | Asset IDs, study mapping, working source/brief, native dependencies, delivery profile and owned output paths.                                                                                                                |
-| `subjects/briar-hydra/`, `subjects/nightjar/`                | Current editable `source.blend` and brief, including declared `nativeEdit` probes and delivery budgets.                                                                                                                      |
+| `subjects/<asset-id>/`                                       | Current editable `source.blend` and brief, including declared `nativeEdit` probes and delivery budgets.                                                                                                                      |
 | `blender/export_saved.py`                                    | Evaluates saved native geometry, preserves hierarchy and fitted rigid attachments, freezes static authoring shape-key mixes only in the export process, and exports a single scene clip. No joining or automatic decimation. |
 | `assets/briar-hydra/current.json`                            | Hydra publication pointer; immutable release contents include source, brief, GLB, audit, poses, receipt and reviewed evidence.                                                                                               |
 | `assets/nightjar/published/current.json`                     | Nightjar publication pointer, created only on promotion. Its reserved flat compatibility paths are not duplicate deliverables.                                                                                               |
+| `assets/phoenix/published/current.json`                      | Phoenix publication pointer and immutable reviewed source, model and evidence.                                                                                                                                               |
 | Earlier `sources/`, `briefs/`, flat `assets/`, `references/` | Preserved pilot sources, outputs, receipts and comparisons; do not overwrite them to match a new source.                                                                                                                     |
 | `src/`, application `src/art3d/`                             | Runtime loading, presentation, playback, VFX and simple composition. The frontend does not rebuild principal native anatomy.                                                                                                 |
 
-The two new masters combine **preserved triangulated deliveries and selective native reconstruction**. Nightjar's wings and roost were rebuilt regionally. Meshes, material assignments, rigs and actions are editable; original procedural construction, complete quad topology and a complete LOD pipeline have not been recovered. They declare no rebuild recipe. `dcc build`, `dcc components` and the legacy `dcc render` path do not regenerate or upgrade these masters; use Blender directly and export the saved source.
+The current masters combine **preserved triangulated deliveries and selective native reconstruction**. Nightjar's wings and roost and Phoenix's lower-wing coverage and grip were rebuilt regionally. Meshes, material assignments, rigs and actions are editable; original procedural construction, complete quad topology and a complete LOD pipeline have not been recovered. They declare no rebuild recipe. `dcc build`, `dcc components` and the legacy `dcc render` path do not regenerate or upgrade these masters; use Blender directly and export the saved source.
 
 The registry/GLB interface distinguishes static, rigid and skinned profiles. The maintained saved-source adapter supports **rigid and skinned loops**; it explicitly rejects static delivery and animated shape-key weights. Saved shape-key controls are authoring edits, not exported morph-animation promises. Cameras, lights and temporary review supports belong to presentation; required source geometry and fitted motion belong to the delivery.
 
@@ -77,7 +78,7 @@ Only a release with an **accepted parent review scoped to `gallery`** changes it
 
 A future recipe must explicitly describe which edits reconstruction replaces and produce a separate backed-up candidate. Neither the preserved legacy Hydra recipe nor an imported GLB is a recipe for the current native master. [Migration governance](../../docs/art/migration.md) owns delegation, batching and retention boundaries.
 
-## Edit a head in Blender
+## Edit a native assembly in Blender
 
 For current Hydra, open `subjects/briar-hydra/source.blend` and select **EDIT | Head.Search**. Under **Object Properties → Custom Properties**, **Muzzle reach** ranges from **0 to 1.5**. The declared gate probes **0, 0.75 and 1.5**, checking the cranium, mandible, upper/lower dentition and nostril while the sibling heads and body remain fixed. Inspect all fitted facial parts when editing; the gate is a selected operation’s contract, not proof of every possible sculpt edit.
 
@@ -86,6 +87,8 @@ For Nightjar, open `subjects/nightjar/source.blend` and select **EDIT | Wing.1**
 Keep direct mesh/shape-key editing available beneath controls. Save, export and compare the delivered result. Material or UV edits may require deliberate texture work; the exporter does not invent a new bake. The current source does not claim the earlier pilot’s four-control head interface or remesh recipe.
 
 ## Modules and creation
+
+For Phoenix, open `subjects/phoenix/source.blend` and select **EDIT | Wing.1**. **Fan lift** ranges from **0 to 1**, with **0, 0.5 and 1** as verification values. It lifts the lower extended wing through a six-degree distal arc (about 13 cm at the farthest tip), anchoring its proximal 15 cm. Mantle, coverts, secondary vanes and shafts bend together; the wrist and primary fan retain their saved idle relative to the lifted assembly. The [brief](subjects/phoenix/brief.json) names moved and fixed probes. This is a saved authoring edit, not an exported morph animation.
 
 Shared investment follows actual variation: Hydra’s fitted muzzle operation and Nightjar’s wing-fold operation are different semantic assemblies built from native shape keys, parenting and rigs. They demonstrate an edit/export mechanism, not one universal anatomical generator. The old `head_shape.py`, `head_components.py` and `scale_components.py` remain part of the preserved reconstruction pilot and its historical contracts.
 
@@ -101,6 +104,7 @@ npm run check:maintenance
 npm run check
 npm run test:dcc:saved -- --asset briar-hydra
 npm run test:dcc:saved -- --asset nightjar
+npm run test:dcc:saved -- --asset phoenix
 npm run test:browser -- tests/browser/dcc-workbench.spec.ts tests/browser/art3d.spec.ts tests/browser/shell.spec.ts
 ```
 

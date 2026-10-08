@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "id": "phoenix",
+  "sourceBeforeSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+  "sourceEditedSha256": "b355947290670eaa24c107b4eeebd0a2142c9e0233d6c47fa01c9b9e36b55da0",
+  "control": {
+    "object": "EDIT | Wing.1",
+    "property": "Fan lift"
+  },
+  "original": 0.0,
+  "values": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "savedValue": 0.5,
+  "sampleFrames": [
+    0.0,
+    36.0,
+    72.0,
+    108.0,
+    144.0
+  ],
+  "sampleSeconds": [
+    0.0,
+    1.5,
+    3.0,
+    4.5,
+    6.0
+  ],
+  "moved": [
+    "PhoenixWingMantle_1",
+    "PhoenixGreaterCovert_1_front_8",
+    "PhoenixGreaterCovert_1_rear_8",
+    "PhoenixLesserCovert_1_front_0_8",
+    "PhoenixLesserCovert_1_rear_0_8",
+    "PhoenixSecondary_1_8",
+    "PhoenixSecondary_1_8_FineShaft",
+    "PhoenixPrimary_1_8",
+    "PhoenixPrimary_1_8_FineShaft"
+  ],
+  "fixed": [
+    "Mesh_0",
+    "PhoenixHookedUpperBill",
+    "PhoenixIris_1",
+    "PhoenixPrimary_-1_0",
+    "PhoenixBasalt_0",
+    "PhoenixToe_1_0",
+    "PhoenixClaw_1_0",
+    "PhoenixRearToe_-1",
+    "PhoenixGreaterCovert_1_front_0"
+  ],
+  "tolerance": 1e-06,
+  "adjacentValueMotion": [
+    {
+      "PhoenixWingMantle_1": 0.04285153051399599,
+      "PhoenixGreaterCovert_1_front_8": 0.014577016393173998,
+      "PhoenixGreaterCovert_1_rear_8": 0.014577636938600659,
+      "PhoenixLesserCovert_1_front_0_8": 0.0111416067710614,
+      "PhoenixLesserCovert_1_rear_0_8": 0.011145856330294506,
+      "PhoenixSecondary_1_8": 0.035598555624510704,
+      "PhoenixSecondary_1_8_FineShaft": 0.033359180007179794,
+      "PhoenixPrimary_1_8": 0.0652952900164077,
+      "PhoenixPrimary_1_8_FineShaft": 0.0631088849850419
+    },
+    {
+      "PhoenixWingMantle_1": 0.04285154360667537,
+      "PhoenixGreaterCovert_1_front_8": 0.01457694052140896,
+      "PhoenixGreaterCovert_1_rear_8": 0.014577594018582942,
+      "PhoenixLesserCovert_1_front_0_8": 0.011141569280715935,
+      "PhoenixLesserCovert_1_rear_0_8": 0.011145833730942892,
+      "PhoenixSecondary_1_8": 0.03559850150530465,
+      "PhoenixSecondary_1_8_FineShaft": 0.033359161755947594,
+      "PhoenixPrimary_1_8": 0.06529528423295587,
+      "PhoenixPrimary_1_8_FineShaft": 0.06310844523078687
+    }
+  ],
+  "maxFixedDifference": 0.0,
+  "maxRestorationDifference": 0.0,
+  "maxReloadDifference": 0.0
+}

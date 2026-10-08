@@ -1,0 +1,2935 @@
+{
+  "schemaVersion": 1,
+  "kind": "saved-export",
+  "id": "phoenix",
+  "source": "subjects/phoenix/source.blend",
+  "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+  "sourceUnchangedByExport": true,
+  "blender": "4.5.14 LTS",
+  "profile": "skinned",
+  "collection": "DELIVERY | Phoenix",
+  "animation": {
+    "name": "phoenix_idle",
+    "seconds": 6.0,
+    "fps": 24
+  },
+  "audit": {
+    "sampleFrames": [
+      0.0,
+      36.0,
+      72.0,
+      108.0,
+      144.0
+    ],
+    "meshCount": 483,
+    "skinnedMeshCount": 169,
+    "rigidMeshCount": 314,
+    "maxSkinnedMotion": 0.030168999572891503,
+    "maxRigidMotion": 0.08343306661499691,
+    "maxLoopDifference": 0.0,
+    "maxSourceDeliveryDifference": 0.0,
+    "requireRigidMotion": true,
+    "motionTolerance": 1e-06,
+    "loopTolerance": 1e-05,
+    "objects": [
+      {
+        "name": "Mesh_0",
+        "role": "skinned",
+        "maxMotion": 0.02967231572243012,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixBasalt_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixBasalt_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixBasalt_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixBasalt_3",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixBrow_-1",
+        "role": "rigid",
+        "maxMotion": 0.0276226549188616,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixBrow_1",
+        "role": "rigid",
+        "maxMotion": 0.019134570475232218,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixClaw_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixClaw_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixClaw_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixClaw_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixClaw_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixClaw_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCoveredWingLeading_-1",
+        "role": "rigid",
+        "maxMotion": 0.03538167811404715,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_0",
+        "role": "rigid",
+        "maxMotion": 0.011847501224970127,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_1",
+        "role": "rigid",
+        "maxMotion": 0.012496139732727911,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_10",
+        "role": "rigid",
+        "maxMotion": 0.032734747546499854,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_11",
+        "role": "rigid",
+        "maxMotion": 0.035783471852983854,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_12",
+        "role": "rigid",
+        "maxMotion": 0.03893620217406418,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_2",
+        "role": "rigid",
+        "maxMotion": 0.013660027311556843,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_3",
+        "role": "rigid",
+        "maxMotion": 0.01524893090482109,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_4",
+        "role": "rigid",
+        "maxMotion": 0.017170625901503908,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_5",
+        "role": "rigid",
+        "maxMotion": 0.01935003170413421,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_6",
+        "role": "rigid",
+        "maxMotion": 0.021733099901373575,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_7",
+        "role": "rigid",
+        "maxMotion": 0.024283054640578314,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_8",
+        "role": "rigid",
+        "maxMotion": 0.026975966955745067,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCovert_-1_0_9",
+        "role": "rigid",
+        "maxMotion": 0.029796554611073753,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCrest_0",
+        "role": "rigid",
+        "maxMotion": 0.06522986027991153,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCrest_1",
+        "role": "rigid",
+        "maxMotion": 0.06754139636569456,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCrest_2",
+        "role": "rigid",
+        "maxMotion": 0.07048861138772616,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCrest_3",
+        "role": "rigid",
+        "maxMotion": 0.07399548879391947,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixCrest_4",
+        "role": "rigid",
+        "maxMotion": 0.07798651977796317,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFeatheredThigh_-1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFeatheredThigh_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_0",
+        "role": "skinned",
+        "maxMotion": 0.028745532219438787,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_1",
+        "role": "skinned",
+        "maxMotion": 0.025526105830331627,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_10",
+        "role": "skinned",
+        "maxMotion": 0.007094594230576669,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_100",
+        "role": "skinned",
+        "maxMotion": 0.007596712453458145,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_101",
+        "role": "skinned",
+        "maxMotion": 0.006819024963526628,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_102",
+        "role": "skinned",
+        "maxMotion": 0.0048306928270189144,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_103",
+        "role": "skinned",
+        "maxMotion": 0.004833672691909659,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_104",
+        "role": "skinned",
+        "maxMotion": 0.004804638500622991,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_105",
+        "role": "skinned",
+        "maxMotion": 0.004830094377827892,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_106",
+        "role": "skinned",
+        "maxMotion": 0.004915961090872351,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_107",
+        "role": "skinned",
+        "maxMotion": 0.004978779758156414,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_108",
+        "role": "skinned",
+        "maxMotion": 0.0002606003428695971,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_109",
+        "role": "skinned",
+        "maxMotion": 0.00043800433322889774,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_11",
+        "role": "skinned",
+        "maxMotion": 0.01208653007686941,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_110",
+        "role": "skinned",
+        "maxMotion": 5.0251181386944544e-05,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_111",
+        "role": "skinned",
+        "maxMotion": 2.217230821784843e-05,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_112",
+        "role": "skinned",
+        "maxMotion": 0.00022557531620141476,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_113",
+        "role": "skinned",
+        "maxMotion": 6.8254864511985236e-06,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_114",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_115",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_116",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_117",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_118",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_119",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_12",
+        "role": "skinned",
+        "maxMotion": 0.010288944213310874,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_120",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_121",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_122",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_123",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_124",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_125",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_126",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_127",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_128",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_129",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_13",
+        "role": "skinned",
+        "maxMotion": 0.007609036143994919,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_130",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_131",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_132",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_133",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_134",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_135",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_136",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_137",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_138",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_139",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_14",
+        "role": "skinned",
+        "maxMotion": 0.005462285958371027,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_140",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_141",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_142",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_143",
+        "role": "skinned",
+        "maxMotion": 0.0007378292295522548,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_144",
+        "role": "skinned",
+        "maxMotion": 0.000391690917785867,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_145",
+        "role": "skinned",
+        "maxMotion": 0.00014226579985189647,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_146",
+        "role": "skinned",
+        "maxMotion": 1.6313423505647507e-05,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_147",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_148",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_149",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_15",
+        "role": "skinned",
+        "maxMotion": 0.004607995812903023,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_150",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_151",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_152",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_153",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_154",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_155",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_156",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_157",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_158",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_159",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_16",
+        "role": "skinned",
+        "maxMotion": 0.00427898471984887,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_160",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_161",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_162",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_163",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_164",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_165",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_166",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_167",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_17",
+        "role": "skinned",
+        "maxMotion": 0.004643557707271458,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_18",
+        "role": "skinned",
+        "maxMotion": 0.004403708756917909,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_19",
+        "role": "skinned",
+        "maxMotion": 0.003767949788713284,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_2",
+        "role": "skinned",
+        "maxMotion": 0.020225644716629305,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_20",
+        "role": "skinned",
+        "maxMotion": 0.0031726007179713983,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_21",
+        "role": "skinned",
+        "maxMotion": 0.002824653141931122,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_22",
+        "role": "skinned",
+        "maxMotion": 0.0030710311235696845,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_23",
+        "role": "skinned",
+        "maxMotion": 0.0036468070767072085,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_24",
+        "role": "skinned",
+        "maxMotion": 0.0002247231159225877,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_25",
+        "role": "skinned",
+        "maxMotion": 0.00025945287614177374,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_26",
+        "role": "skinned",
+        "maxMotion": 4.8406082692379234e-05,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_27",
+        "role": "skinned",
+        "maxMotion": 2.4239751479097736e-05,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_28",
+        "role": "skinned",
+        "maxMotion": 0.0001688838630258893,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_29",
+        "role": "skinned",
+        "maxMotion": 7.912876355138813e-06,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_3",
+        "role": "skinned",
+        "maxMotion": 0.01328124931253601,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_30",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_31",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_32",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_33",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_34",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_35",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_36",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_37",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_38",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_39",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_4",
+        "role": "skinned",
+        "maxMotion": 0.006768769540184225,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_40",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_41",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_42",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_43",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_44",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_45",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_46",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_47",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_48",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_49",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_5",
+        "role": "skinned",
+        "maxMotion": 0.011944675062429033,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_50",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_51",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_52",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_53",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_54",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_55",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_56",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_57",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_58",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_59",
+        "role": "skinned",
+        "maxMotion": 0.0007378292295522548,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_6",
+        "role": "skinned",
+        "maxMotion": 0.02832935089347554,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_60",
+        "role": "skinned",
+        "maxMotion": 0.0003947613042403391,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_61",
+        "role": "skinned",
+        "maxMotion": 0.0001423533205847457,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_62",
+        "role": "skinned",
+        "maxMotion": 1.5796715640175194e-05,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_63",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_64",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_65",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_66",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_67",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_68",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_69",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_7",
+        "role": "skinned",
+        "maxMotion": 0.02540776828756664,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_70",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_71",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_72",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_73",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_74",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_75",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_76",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_77",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_78",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_79",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_8",
+        "role": "skinned",
+        "maxMotion": 0.020214237399423025,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_80",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_81",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_82",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_83",
+        "role": "skinned",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_84",
+        "role": "skinned",
+        "maxMotion": 0.030168999572891503,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_85",
+        "role": "skinned",
+        "maxMotion": 0.029587113799181594,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_86",
+        "role": "skinned",
+        "maxMotion": 0.02777157878588573,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_87",
+        "role": "skinned",
+        "maxMotion": 0.02530260823528913,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_88",
+        "role": "skinned",
+        "maxMotion": 0.023549155408767685,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_89",
+        "role": "skinned",
+        "maxMotion": 0.02211616084133168,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_9",
+        "role": "skinned",
+        "maxMotion": 0.013439475482487117,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_90",
+        "role": "skinned",
+        "maxMotion": 0.028790044221114985,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_91",
+        "role": "skinned",
+        "maxMotion": 0.028049397441456923,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_92",
+        "role": "skinned",
+        "maxMotion": 0.025369694073600145,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_93",
+        "role": "skinned",
+        "maxMotion": 0.021610433752553164,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_94",
+        "role": "skinned",
+        "maxMotion": 0.018517112066484834,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_95",
+        "role": "skinned",
+        "maxMotion": 0.018433841991853814,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_96",
+        "role": "skinned",
+        "maxMotion": 0.011101689652300005,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_97",
+        "role": "skinned",
+        "maxMotion": 0.01011223324010307,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_98",
+        "role": "skinned",
+        "maxMotion": 0.00920631363518606,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixFittedPlumage_99",
+        "role": "skinned",
+        "maxMotion": 0.008399237472736108,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_0",
+        "role": "rigid",
+        "maxMotion": 0.010871586588049039,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_1",
+        "role": "rigid",
+        "maxMotion": 0.009440399010411035,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_10",
+        "role": "rigid",
+        "maxMotion": 0.02447439406397948,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_11",
+        "role": "rigid",
+        "maxMotion": 0.026966714528530594,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_2",
+        "role": "rigid",
+        "maxMotion": 0.009211711184973324,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_3",
+        "role": "rigid",
+        "maxMotion": 0.010024791144834073,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_4",
+        "role": "rigid",
+        "maxMotion": 0.011382020746264052,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_5",
+        "role": "rigid",
+        "maxMotion": 0.013122506290813636,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_6",
+        "role": "rigid",
+        "maxMotion": 0.015141562395371908,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_7",
+        "role": "rigid",
+        "maxMotion": 0.017332586524895832,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_8",
+        "role": "rigid",
+        "maxMotion": 0.01963894804581835,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_front_9",
+        "role": "rigid",
+        "maxMotion": 0.022026959712139613,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_0",
+        "role": "rigid",
+        "maxMotion": 0.007334229670419763,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_1",
+        "role": "rigid",
+        "maxMotion": 0.00653237796117671,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_10",
+        "role": "rigid",
+        "maxMotion": 0.026009134448644118,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_11",
+        "role": "rigid",
+        "maxMotion": 0.028592895716419778,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_2",
+        "role": "rigid",
+        "maxMotion": 0.0073292840481226544,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_3",
+        "role": "rigid",
+        "maxMotion": 0.009112559338054037,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_4",
+        "role": "rigid",
+        "maxMotion": 0.01124434902417237,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_5",
+        "role": "rigid",
+        "maxMotion": 0.013538994863535558,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_6",
+        "role": "rigid",
+        "maxMotion": 0.01593252256282746,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_7",
+        "role": "rigid",
+        "maxMotion": 0.01839815619477369,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_8",
+        "role": "rigid",
+        "maxMotion": 0.020905510193970068,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixGreaterCovert_1_rear_9",
+        "role": "rigid",
+        "maxMotion": 0.02344424227829806,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixHookedUpperBill",
+        "role": "rigid",
+        "maxMotion": 0.045096161590554726,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixIris_-1",
+        "role": "rigid",
+        "maxMotion": 0.02692584383478169,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixIris_1",
+        "role": "rigid",
+        "maxMotion": 0.015833703796867275,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_0",
+        "role": "rigid",
+        "maxMotion": 0.006995239378826183,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_1",
+        "role": "rigid",
+        "maxMotion": 0.005501896218196132,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_10",
+        "role": "rigid",
+        "maxMotion": 0.021842623059218764,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_11",
+        "role": "rigid",
+        "maxMotion": 0.024392204492874305,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_12",
+        "role": "rigid",
+        "maxMotion": 0.02696308271324875,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_2",
+        "role": "rigid",
+        "maxMotion": 0.004156679407573058,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_3",
+        "role": "rigid",
+        "maxMotion": 0.005138545183121041,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_4",
+        "role": "rigid",
+        "maxMotion": 0.007026235776085817,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_5",
+        "role": "rigid",
+        "maxMotion": 0.009342889346450705,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_6",
+        "role": "rigid",
+        "maxMotion": 0.011768541598230773,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_7",
+        "role": "rigid",
+        "maxMotion": 0.01424641407060477,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_8",
+        "role": "rigid",
+        "maxMotion": 0.016761512532452796,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_0_9",
+        "role": "rigid",
+        "maxMotion": 0.019296827755221246,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0070259268444363455,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0054514499625015434,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_10",
+        "role": "rigid",
+        "maxMotion": 0.023668235174296066,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_11",
+        "role": "rigid",
+        "maxMotion": 0.026262388856943666,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_12",
+        "role": "rigid",
+        "maxMotion": 0.028782238394724807,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_2",
+        "role": "rigid",
+        "maxMotion": 0.005107708549890148,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_3",
+        "role": "rigid",
+        "maxMotion": 0.006925436785962996,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_4",
+        "role": "rigid",
+        "maxMotion": 0.009100984425765568,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_5",
+        "role": "rigid",
+        "maxMotion": 0.011390328693159344,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_6",
+        "role": "rigid",
+        "maxMotion": 0.01372499493367175,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_7",
+        "role": "rigid",
+        "maxMotion": 0.01609795981516538,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_8",
+        "role": "rigid",
+        "maxMotion": 0.01857748641769419,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_front_1_9",
+        "role": "rigid",
+        "maxMotion": 0.02111440961969985,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_0",
+        "role": "rigid",
+        "maxMotion": 0.005429087609363345,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_1",
+        "role": "rigid",
+        "maxMotion": 0.0026422202060363,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_10",
+        "role": "rigid",
+        "maxMotion": 0.023357185428304842,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_11",
+        "role": "rigid",
+        "maxMotion": 0.025918482219414448,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_12",
+        "role": "rigid",
+        "maxMotion": 0.028422704303887384,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_2",
+        "role": "rigid",
+        "maxMotion": 0.0032244864478988785,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_3",
+        "role": "rigid",
+        "maxMotion": 0.005697010551866096,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_4",
+        "role": "rigid",
+        "maxMotion": 0.008179558383534614,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_5",
+        "role": "rigid",
+        "maxMotion": 0.010660341333999667,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_6",
+        "role": "rigid",
+        "maxMotion": 0.013194418528379775,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_7",
+        "role": "rigid",
+        "maxMotion": 0.01573309996929633,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_8",
+        "role": "rigid",
+        "maxMotion": 0.018268867319098228,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_0_9",
+        "role": "rigid",
+        "maxMotion": 0.02080810058756925,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_0",
+        "role": "rigid",
+        "maxMotion": 0.006166748986363954,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_1",
+        "role": "rigid",
+        "maxMotion": 0.004753566600469446,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_10",
+        "role": "rigid",
+        "maxMotion": 0.024281397411778555,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_11",
+        "role": "rigid",
+        "maxMotion": 0.026841247830669962,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_12",
+        "role": "rigid",
+        "maxMotion": 0.029224032043075377,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_2",
+        "role": "rigid",
+        "maxMotion": 0.005085990859835529,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_3",
+        "role": "rigid",
+        "maxMotion": 0.006968237709706162,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_4",
+        "role": "rigid",
+        "maxMotion": 0.009300703507011992,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_5",
+        "role": "rigid",
+        "maxMotion": 0.011735796385507135,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_6",
+        "role": "rigid",
+        "maxMotion": 0.014186641364407506,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_7",
+        "role": "rigid",
+        "maxMotion": 0.01664763632360374,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_8",
+        "role": "rigid",
+        "maxMotion": 0.01917537483089876,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLesserCovert_1_rear_1_9",
+        "role": "rigid",
+        "maxMotion": 0.021726961192967124,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixLowerBill",
+        "role": "rigid",
+        "maxMotion": 0.037227169295602644,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_0_0",
+        "role": "rigid",
+        "maxMotion": 0.00377861803457098,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_0_1",
+        "role": "rigid",
+        "maxMotion": 0.005383070106934153,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_0_2",
+        "role": "rigid",
+        "maxMotion": 0.006152109688999174,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_0_3",
+        "role": "rigid",
+        "maxMotion": 0.006230048436173149,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_0_4",
+        "role": "rigid",
+        "maxMotion": 0.006051136729987466,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_0_5",
+        "role": "rigid",
+        "maxMotion": 0.004989049642064697,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_0_6",
+        "role": "rigid",
+        "maxMotion": 0.0031641193299436505,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_10_0",
+        "role": "rigid",
+        "maxMotion": 0.029533696401977966,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_10_1",
+        "role": "rigid",
+        "maxMotion": 0.029135887772072707,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_10_2",
+        "role": "rigid",
+        "maxMotion": 0.02906581564888335,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_10_3",
+        "role": "rigid",
+        "maxMotion": 0.029397498436166285,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_10_4",
+        "role": "rigid",
+        "maxMotion": 0.02989703845724843,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_10_5",
+        "role": "rigid",
+        "maxMotion": 0.03016011377306421,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_10_6",
+        "role": "rigid",
+        "maxMotion": 0.029985501854915438,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_11_0",
+        "role": "rigid",
+        "maxMotion": 0.03470395404176955,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_11_1",
+        "role": "rigid",
+        "maxMotion": 0.034392076546588844,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_11_2",
+        "role": "rigid",
+        "maxMotion": 0.03438361079306639,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_11_3",
+        "role": "rigid",
+        "maxMotion": 0.03470671282882606,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_11_4",
+        "role": "rigid",
+        "maxMotion": 0.03511868739103187,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_11_5",
+        "role": "rigid",
+        "maxMotion": 0.03528759410148964,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_11_6",
+        "role": "rigid",
+        "maxMotion": 0.03509506150152005,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_1_0",
+        "role": "rigid",
+        "maxMotion": 0.002842334162782351,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_1_1",
+        "role": "rigid",
+        "maxMotion": 0.004058170912686292,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0047941334471099314,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_1_3",
+        "role": "rigid",
+        "maxMotion": 0.00492418377221744,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_1_4",
+        "role": "rigid",
+        "maxMotion": 0.004811154102342213,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_1_5",
+        "role": "rigid",
+        "maxMotion": 0.004522792615616101,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_1_6",
+        "role": "rigid",
+        "maxMotion": 0.0037702126378800775,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_2_0",
+        "role": "rigid",
+        "maxMotion": 0.004701396149224922,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_2_1",
+        "role": "rigid",
+        "maxMotion": 0.003563462730872498,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_2_2",
+        "role": "rigid",
+        "maxMotion": 0.0032218575899457193,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_2_3",
+        "role": "rigid",
+        "maxMotion": 0.004042917235460603,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_2_4",
+        "role": "rigid",
+        "maxMotion": 0.004938535396810062,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_2_5",
+        "role": "rigid",
+        "maxMotion": 0.005570800019733477,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_2_6",
+        "role": "rigid",
+        "maxMotion": 0.005431088504413529,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_3_0",
+        "role": "rigid",
+        "maxMotion": 0.005981855220884605,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_3_1",
+        "role": "rigid",
+        "maxMotion": 0.004851733597492092,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_3_2",
+        "role": "rigid",
+        "maxMotion": 0.0041624197854356745,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_3_3",
+        "role": "rigid",
+        "maxMotion": 0.004982238413574495,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_3_4",
+        "role": "rigid",
+        "maxMotion": 0.00632666898603299,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_3_5",
+        "role": "rigid",
+        "maxMotion": 0.0069757776758533835,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_3_6",
+        "role": "rigid",
+        "maxMotion": 0.0067695584036101195,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_4_0",
+        "role": "rigid",
+        "maxMotion": 0.007985777874131654,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_4_1",
+        "role": "rigid",
+        "maxMotion": 0.007008673471988651,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_4_2",
+        "role": "rigid",
+        "maxMotion": 0.006206051377173855,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_4_3",
+        "role": "rigid",
+        "maxMotion": 0.006498713131338089,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_4_4",
+        "role": "rigid",
+        "maxMotion": 0.007672109999901882,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_4_5",
+        "role": "rigid",
+        "maxMotion": 0.00854217682246034,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_4_6",
+        "role": "rigid",
+        "maxMotion": 0.00859309335885736,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_5_0",
+        "role": "rigid",
+        "maxMotion": 0.010136108249417096,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_5_1",
+        "role": "rigid",
+        "maxMotion": 0.00921973897667838,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_5_2",
+        "role": "rigid",
+        "maxMotion": 0.008759867321711365,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_5_3",
+        "role": "rigid",
+        "maxMotion": 0.009324226424489029,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_5_4",
+        "role": "rigid",
+        "maxMotion": 0.010389273696293076,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_5_5",
+        "role": "rigid",
+        "maxMotion": 0.011006061241378255,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_5_6",
+        "role": "rigid",
+        "maxMotion": 0.010854851085740578,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_6_0",
+        "role": "rigid",
+        "maxMotion": 0.013188149660528291,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_6_1",
+        "role": "rigid",
+        "maxMotion": 0.012356385628125641,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_6_2",
+        "role": "rigid",
+        "maxMotion": 0.01182527513821834,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_6_3",
+        "role": "rigid",
+        "maxMotion": 0.01212340463492059,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_6_4",
+        "role": "rigid",
+        "maxMotion": 0.01304636843453974,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_6_5",
+        "role": "rigid",
+        "maxMotion": 0.013764625141002918,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_6_6",
+        "role": "rigid",
+        "maxMotion": 0.013780688864327288,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_7_0",
+        "role": "rigid",
+        "maxMotion": 0.01599660107132612,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_7_1",
+        "role": "rigid",
+        "maxMotion": 0.015318434183334742,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_7_2",
+        "role": "rigid",
+        "maxMotion": 0.015133677586137375,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_7_3",
+        "role": "rigid",
+        "maxMotion": 0.015676519451086748,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_7_4",
+        "role": "rigid",
+        "maxMotion": 0.01650869808494072,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_7_5",
+        "role": "rigid",
+        "maxMotion": 0.01692850381436917,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_7_6",
+        "role": "rigid",
+        "maxMotion": 0.016678293358261837,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_8_0",
+        "role": "rigid",
+        "maxMotion": 0.01970106648741994,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_8_1",
+        "role": "rigid",
+        "maxMotion": 0.01910522909528984,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_8_2",
+        "role": "rigid",
+        "maxMotion": 0.018906160384861863,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_8_3",
+        "role": "rigid",
+        "maxMotion": 0.019304679897281535,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_8_4",
+        "role": "rigid",
+        "maxMotion": 0.02002221840779923,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_8_5",
+        "role": "rigid",
+        "maxMotion": 0.020458805596319265,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_8_6",
+        "role": "rigid",
+        "maxMotion": 0.02029140592583686,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_9_0",
+        "role": "rigid",
+        "maxMotion": 0.024205952132523363,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_9_1",
+        "role": "rigid",
+        "maxMotion": 0.023818083693261455,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_9_2",
+        "role": "rigid",
+        "maxMotion": 0.02387438737447764,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_9_3",
+        "role": "rigid",
+        "maxMotion": 0.024373788221542465,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_9_4",
+        "role": "rigid",
+        "maxMotion": 0.02493873294336716,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_9_5",
+        "role": "rigid",
+        "maxMotion": 0.02510462835354261,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixMantle_-1_9_6",
+        "role": "rigid",
+        "maxMotion": 0.024764488548242626,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixOrbit_-1",
+        "role": "rigid",
+        "maxMotion": 0.027162166380544642,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixOrbit_1",
+        "role": "rigid",
+        "maxMotion": 0.016627340291070415,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.04216457695886576,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_0_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.04096261968804239,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.05196609244167544,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_1_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.05008137738834794,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.06165437599052532,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_2_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.05909075069193579,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.07007125088942624,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_3_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.06692613904569657,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.07658063140642409,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_4_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.07298694670613581,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.08116316315202136,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_5_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.07726155223856093,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_6",
+        "role": "rigid",
+        "maxMotion": 0.08343306661499691,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_6_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.07942404341717053,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_7",
+        "role": "rigid",
+        "maxMotion": 0.08337975137281248,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_7_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.0794231135177431,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_8",
+        "role": "rigid",
+        "maxMotion": 0.08171845914810064,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_-1_8_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.07785474404665246,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_0",
+        "role": "rigid",
+        "maxMotion": 0.04519953440788443,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_0_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.043380495048814825,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_1",
+        "role": "rigid",
+        "maxMotion": 0.05303378468007484,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_1_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.050705362047120166,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_2",
+        "role": "rigid",
+        "maxMotion": 0.061000343537904636,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_2_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.058132904962812794,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_3",
+        "role": "rigid",
+        "maxMotion": 0.06799773029782105,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_3_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.06466750684652822,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_4",
+        "role": "rigid",
+        "maxMotion": 0.07336514446371464,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_4_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.06969477349211833,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_5",
+        "role": "rigid",
+        "maxMotion": 0.07728304184927506,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_5_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.0733826682092701,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_6",
+        "role": "rigid",
+        "maxMotion": 0.07954765966616645,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_6_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.07555554345274382,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_7",
+        "role": "rigid",
+        "maxMotion": 0.07990005744947087,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_7_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.07595897152466001,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_8",
+        "role": "rigid",
+        "maxMotion": 0.07866301763969732,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPrimary_1_8_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.07485213597935883,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPupil_-1",
+        "role": "rigid",
+        "maxMotion": 0.02733374013202793,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixPupil_1",
+        "role": "rigid",
+        "maxMotion": 0.01597120380492181,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRearToe_-1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRearToe_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRectrix_0",
+        "role": "rigid",
+        "maxMotion": 0.0235536472013945,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRectrix_0_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.017413542168164233,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRectrix_1",
+        "role": "rigid",
+        "maxMotion": 0.017372826598508476,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRectrix_1_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.015601055500855781,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRectrix_2",
+        "role": "rigid",
+        "maxMotion": 0.02210972743815929,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRectrix_2_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.020828078650753944,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRectrix_3",
+        "role": "rigid",
+        "maxMotion": 0.047735314332412786,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRectrix_3_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.04601590135788872,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRectrix_4",
+        "role": "rigid",
+        "maxMotion": 0.043134334075627896,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixRectrix_4_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.040557945779097125,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixScapular_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixScapular_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixScapular_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixScapular_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixScapular_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixScapular_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixScapular_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixScapular_1_3",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.01661847077689024,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_0_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.015080278811303874,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.01891389614767104,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_10",
+        "role": "rigid",
+        "maxMotion": 0.04280111222247275,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_10_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.041337961127453186,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_11",
+        "role": "rigid",
+        "maxMotion": 0.04637956619439117,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_11_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.04488979378004502,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_1_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.017366567673038937,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.02025688702104474,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_2_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.018805795434342264,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_3",
+        "role": "rigid",
+        "maxMotion": 0.021004981285809327,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_3_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.019719910126283227,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_4",
+        "role": "rigid",
+        "maxMotion": 0.022770341599324947,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_4_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.02160340729192216,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_5",
+        "role": "rigid",
+        "maxMotion": 0.025362791616131954,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_5_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.024242695038540783,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_6",
+        "role": "rigid",
+        "maxMotion": 0.0283415823808312,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_6_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.02724900632335698,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_7",
+        "role": "rigid",
+        "maxMotion": 0.03253494572505433,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_7_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.03140299552697639,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_8",
+        "role": "rigid",
+        "maxMotion": 0.03720509538417187,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_8_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.035951616842635925,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_9",
+        "role": "rigid",
+        "maxMotion": 0.04043918981570522,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_-1_9_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.0390542669378081,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_0",
+        "role": "rigid",
+        "maxMotion": 0.01751020884336088,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_0_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.015935988795539025,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_1",
+        "role": "rigid",
+        "maxMotion": 0.019906207848764918,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_10",
+        "role": "rigid",
+        "maxMotion": 0.03784965107553547,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_10_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.03647713276481201,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_11",
+        "role": "rigid",
+        "maxMotion": 0.040216962020314946,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_11_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.038866839033255794,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_1_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.018271506233987777,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_2",
+        "role": "rigid",
+        "maxMotion": 0.02113643534476332,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_2_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.01957565516081449,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_3",
+        "role": "rigid",
+        "maxMotion": 0.02151571998139561,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_3_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.02014529396545588,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_4",
+        "role": "rigid",
+        "maxMotion": 0.022554428532317383,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_4_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.021356477242730845,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_5",
+        "role": "rigid",
+        "maxMotion": 0.024428846710547448,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_5_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.023308358419064597,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_6",
+        "role": "rigid",
+        "maxMotion": 0.02691453649664521,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_6_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.02580195496004908,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_7",
+        "role": "rigid",
+        "maxMotion": 0.03045923534684195,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_7_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.029279346953886055,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_8",
+        "role": "rigid",
+        "maxMotion": 0.034150585528961025,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_8_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.03286212369200536,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_9",
+        "role": "rigid",
+        "maxMotion": 0.03642356210984009,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixSecondary_1_9_FineShaft",
+        "role": "rigid",
+        "maxMotion": 0.035059198911386334,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixTarsus_-1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixTarsus_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixToe_-1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixToe_-1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixToe_-1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixToe_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixToe_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixToe_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "PhoenixWingMantle_1",
+        "role": "rigid",
+        "maxMotion": 0.03924733051029385,
+        "maxLoopDifference": 0.0
+      }
+    ]
+  }
+}

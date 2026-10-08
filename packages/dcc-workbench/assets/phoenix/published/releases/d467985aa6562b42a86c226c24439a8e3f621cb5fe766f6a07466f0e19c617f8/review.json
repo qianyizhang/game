@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "phoenix",
+  "candidateDigest": "0e8d7f0797b7ff76f1206af70c02ea621bd344bdb5e06e8da5338b8c9f76b23e",
+  "reviewer": {
+    "role": "parent",
+    "name": "Codex parent"
+  },
+  "decision": "accepted",
+  "scope": "gallery",
+  "evidence": [
+    {
+      "view": "Native default front clay",
+      "reference": "evidence/native-front-clay.png",
+      "observation": "Unequal raised wing planes, tapered breast and tail sweep remain. Lower-wing roots are covered and shoulder transitions into body; parent directly finished this region.",
+      "sha256": "986cc70b64ab4a6aa0c9ccd0caf197a7cd46c618fe1185d3a5e30f89389a911e"
+    },
+    {
+      "view": "Native maximum Fan lift",
+      "reference": "evidence/control-max-front-clay.png",
+      "observation": "The distal wing rises while the shoulder, face, opposite wing and supported stance remain fixed. Control range 0–1 preserves asymmetric gesture.",
+      "sha256": "b4f011d3aaad03009419075e13f3c87a1b3c487cdc9985edcbf37ae2ea476fd6"
+    },
+    {
+      "view": "Native maximum rear enlarged",
+      "reference": "evidence/control-max-rear-detail.png",
+      "observation": "Fitted mantle, lesser and greater coverts, secondaries and wrist remain joined. Shallow relief is deliberately stylized; original outer flight sheets are retained.",
+      "sha256": "dd21fe0703f4947c5099e2d1c9c5d4fe9cf038f6696d9d2570449e56b9c3b93a"
+    },
+    {
+      "view": "Native maximum material",
+      "reference": "evidence/control-max-material.png",
+      "observation": "Palette and primary-fan hierarchy survive the edit. Inherited atlas pattern remains visibly stylized, not a full material rebuild.",
+      "sha256": "415d307cbdfbfd0cea7821727ede707b0da24ea30cf31e7d5345a60130ec6c95"
+    },
+    {
+      "view": "Maximum edit with idle at 1.5 seconds",
+      "reference": "evidence/control-idle-1.5.png",
+      "observation": "Wing coverage stays fitted under the saved shoulder and wrist response.",
+      "sha256": "523eaa58e31d2ef6aecae6f27b5733bdfc901c1cc8ed0e5118f69d29f153b88c"
+    },
+    {
+      "view": "Maximum edit with idle at 4.5 seconds",
+      "reference": "evidence/control-idle-4.5.png",
+      "observation": "Rear mantle and feather roots remain covered at the other sampled idle extreme.",
+      "sha256": "f990bc690bdf1be79a833704c8700f9380608d12bac7162ea00b3d2420ddf416"
+    },
+    {
+      "view": "Canonical source grip front",
+      "reference": "evidence/grip-front-clay.png",
+      "observation": "Load-bearing toes wrap the basalt and claw hooks remain exposed. Small angular toe-to-keratin transitions are a retained macro-scale limit.",
+      "sha256": "b83be4276a0c051e5c92a46460125471ecc936814f7ecd212a81021633d225ce"
+    },
+    {
+      "view": "Canonical source grip side",
+      "reference": "evidence/grip-side-clay.png",
+      "observation": "Ankle reaches the toe assembly; opposing digit visibly returns over the ledge. Stance and support are preserved.",
+      "sha256": "d122b8cf2ea39ed8706242ebdfe4e7ecb73e447a3a65439100ab79aac6c36d71"
+    },
+    {
+      "view": "Canonical source grip material",
+      "reference": "evidence/grip-above-material.png",
+      "observation": "Flesh/keratin distinction and short supported grip read under saved materials; no floating claw cap.",
+      "sha256": "b13c70c79da549b091d40b06363d047f81ece8465ee99ebc779b4f2432d809e4"
+    },
+    {
+      "view": "Default exported GLB front clay",
+      "reference": "evidence/browser-front-clay.png",
+      "observation": "Browser delivery retains the asymmetric living-bird construction and fitted roots.",
+      "sha256": "f4c8c33b9bc0421bca0f9f1ad8fe1e59d7b637a3f85a136c4226dc60153a82e9"
+    },
+    {
+      "view": "Default exported GLB side clay",
+      "reference": "evidence/browser-side-clay.png",
+      "observation": "Head-neck-breast silhouette and fixed supported stance remain coherent; intentional thin flight planes are edge-on.",
+      "sha256": "05d62f822a26dad7b76dca6a968b6aca80fc5f7e240f9f75e6bbd8f95e22f022"
+    },
+    {
+      "view": "Default exported GLB rear clay",
+      "reference": "evidence/browser-back-clay.png",
+      "observation": "Rear coverage and unequal flight planes remain attached; tail retains a delayed separate gesture.",
+      "sha256": "d210e26b215e5d5dbb6ce639c02efddc6a373fab988273be9b7e04e18cc5b4ff"
+    },
+    {
+      "view": "Default exported GLB material at 1.5 seconds",
+      "reference": "evidence/browser-material-1.5.png",
+      "observation": "Ember palette, long flight vanes and limited crest remain readable with fitted idle.",
+      "sha256": "bf804cb69510ec7a0dbcb967d78c79e64916c651847083acd38374d70d396df5"
+    },
+    {
+      "view": "Default exported GLB rear at 4.5 seconds",
+      "reference": "evidence/browser-material-4.5.png",
+      "observation": "Root coverage remains through the opposite sampled motion extreme. Dark rear lighting is a presentation condition.",
+      "sha256": "2925dd0334b2c90e61728958350ded96f3cf7226280bf01d6a550dab3802a5b5"
+    },
+    {
+      "view": "Default exported GLB workbench phone width",
+      "reference": "evidence/browser-phone.png",
+      "observation": "Whole contour fits the 390-pixel viewport. This shared preview is not evidence of Phoenix metadata wiring or physical-device performance.",
+      "sha256": "0f9f10fbea00dc103f859f2e3ee9465c792b3a3419d18f29cce33b5286f12d70"
+    },
+    {
+      "view": "Maintained saved native edit gate",
+      "reference": "evidence/native-edit.json",
+      "observation": "Nine moved and nine fixed probes at 0/0.5/1 over five frames; fixed, restoration and saved/reload differences are zero. Static authoring edit, not a morph-animation promise.",
+      "sha256": "81928da2c054dd2420a532da120a41e8158a65fb74563d8bdbb345d94f5fe2ef"
+    },
+    {
+      "view": "Native gate production preservation",
+      "reference": "evidence/native-preservation.json",
+      "observation": "The source stayed unchanged and no publication pointer existed during the gate.",
+      "sha256": "bc5012e0e3610bf693be628f286e18c72780dc107fe4cf23b8a7dec05f08bacd"
+    },
+    {
+      "view": "Exact default GLB native/browser agreement",
+      "reference": "evidence/default-browser-poses.json",
+      "observation": "483 objects (169 skinned,314 rigid), 7728 vertices per pose at five times; maximum sampled error 7.2497894971696e-7 m. Sampled agreement is not exhaustive animation proof.",
+      "sha256": "76349e972a33b321a693434587f6e3a3c1454dcfc7b1ddba4f8f7b773f38cf20"
+    },
+    {
+      "view": "Edited source native/browser agreement",
+      "reference": "evidence/edited-browser-poses.json",
+      "observation": "Disposable saved interior edit exports and agrees with independent browser deformation at the same five pose times.",
+      "sha256": "ac6259f4788db0006b1855e58f6eafb57500a461c176aef914cca8bc8f515387"
+    },
+    {
+      "view": "Author control audit, independently complemented by maintained gate",
+      "reference": "evidence/artist-all-vertices.json",
+      "observation": "All483meshes at three values and fiveframes:93move,390fixed. Default versus parent construction max0.510micrometers; full fan range max0.13055m. This author measurement does not confer aesthetic approval.",
+      "sha256": "cd4c03705049d460e70f1997ed080c42b4e87156d36acb43a55272baf4486546"
+    },
+    {
+      "view": "Guided authorship and exact source manifest",
+      "reference": "evidence/author-freeze.json",
+      "observation": "Sol6.1 high author installed the edit on the parent-finished mantle/coverts and artist-repaired grip. Parent direct modeling and rejected iteration limits remain explicit.",
+      "sha256": "0e23876c087fbefcc0882d604a5c4b930ea2a7b0dbedb6e97ee250ea45f438b8"
+    }
+  ]
+}

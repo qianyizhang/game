@@ -56,6 +56,34 @@
         "receipts": "assets/nightjar/receipts",
         "publication": "assets/nightjar/published"
       }
+    },
+    "phoenix": {
+      "legacyStudyId": "phoenix",
+      "source": "subjects/phoenix/source.blend",
+      "brief": "subjects/phoenix/brief.json",
+      "native": {
+        "adapter": "blender/export_saved.py",
+        "dependencies": [
+          "blender/export_saved.py",
+          "blender/saved_export_plan.py",
+          "blender/native_types.py"
+        ]
+      },
+      "delivery": {
+        "profile": "skinned",
+        "animation": {
+          "name": "phoenix_idle",
+          "seconds": 6,
+          "fps": 24
+        },
+        "directory": "assets/phoenix",
+        "model": "assets/phoenix/model.glb",
+        "audit": "assets/phoenix/authoring.json",
+        "poses": "assets/phoenix/pose-samples.json",
+        "manifest": "assets/phoenix/manifest.json",
+        "receipts": "assets/phoenix/receipts",
+        "publication": "assets/phoenix/published"
+      }
     }
   }
 }

@@ -1,0 +1,1238 @@
+{
+  "status": "Frozen source accepted by parent for canonical registration and independent native/export/browser gates; gallery promotion pending parent.",
+  "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-v1b.blend",
+  "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+  "authoritativeSourceUnchanged": true,
+  "base": {
+    "path": ".work/sessions/native-batch-1-2026-10-08/phoenix/parent/phoenix-construction-merged-p6.blend",
+    "sha256": "3aad290c20b3f87e47cde128f48f42bcb582156148dbf6ef0ef68b8baed38efe"
+  },
+  "nativeEdit": {
+    "control": {
+      "object": "EDIT | Wing.1",
+      "property": "Fan lift"
+    },
+    "values": [
+      0,
+      0.5,
+      1
+    ],
+    "moved": [
+      "PhoenixWingMantle_1",
+      "PhoenixGreaterCovert_1_front_7",
+      "PhoenixLesserCovert_1_front_1_7",
+      "PhoenixSecondary_1_7",
+      "PhoenixSecondary_1_7_FineShaft",
+      "PhoenixPrimary_1_5",
+      "PhoenixPrimary_1_5_FineShaft"
+    ],
+    "fixed": [
+      "Mesh_0",
+      "PhoenixIris_-1",
+      "PhoenixIris_1",
+      "PhoenixSecondary_-1_7",
+      "PhoenixPrimary_-1_5",
+      "PhoenixToe_-1_1",
+      "PhoenixClaw_1_1",
+      "PhoenixBasalt_0"
+    ]
+  },
+  "brief": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/draft-brief.json",
+  "constructionCredit": "Guided Sol native artist plus parent direct modeling intervention. Parent authored final joined mantle, surface-fitted lesser coverts, buried greater roots, tapered wrist and removed inherited cut-root row. Artist authored fitted grip/claw repair and native control. Imported retained forms are editable triangulated meshes, not recovered procedural masters.",
+  "renameMapping": {
+    "PhoenixParentMantle_1": "PhoenixWingMantle_1",
+    "PhoenixParentGreaterCovert_1_front_0": "PhoenixGreaterCovert_1_front_0",
+    "PhoenixParentGreaterCovert_1_front_1": "PhoenixGreaterCovert_1_front_1",
+    "PhoenixParentGreaterCovert_1_front_2": "PhoenixGreaterCovert_1_front_2",
+    "PhoenixParentGreaterCovert_1_front_3": "PhoenixGreaterCovert_1_front_3",
+    "PhoenixParentGreaterCovert_1_front_4": "PhoenixGreaterCovert_1_front_4",
+    "PhoenixParentGreaterCovert_1_front_5": "PhoenixGreaterCovert_1_front_5",
+    "PhoenixParentGreaterCovert_1_front_6": "PhoenixGreaterCovert_1_front_6",
+    "PhoenixParentGreaterCovert_1_front_7": "PhoenixGreaterCovert_1_front_7",
+    "PhoenixParentGreaterCovert_1_front_8": "PhoenixGreaterCovert_1_front_8",
+    "PhoenixParentGreaterCovert_1_front_9": "PhoenixGreaterCovert_1_front_9",
+    "PhoenixParentGreaterCovert_1_front_10": "PhoenixGreaterCovert_1_front_10",
+    "PhoenixParentGreaterCovert_1_front_11": "PhoenixGreaterCovert_1_front_11",
+    "PhoenixParentGreaterCovert_1_rear_0": "PhoenixGreaterCovert_1_rear_0",
+    "PhoenixParentGreaterCovert_1_rear_1": "PhoenixGreaterCovert_1_rear_1",
+    "PhoenixParentGreaterCovert_1_rear_2": "PhoenixGreaterCovert_1_rear_2",
+    "PhoenixParentGreaterCovert_1_rear_3": "PhoenixGreaterCovert_1_rear_3",
+    "PhoenixParentGreaterCovert_1_rear_4": "PhoenixGreaterCovert_1_rear_4",
+    "PhoenixParentGreaterCovert_1_rear_5": "PhoenixGreaterCovert_1_rear_5",
+    "PhoenixParentGreaterCovert_1_rear_6": "PhoenixGreaterCovert_1_rear_6",
+    "PhoenixParentGreaterCovert_1_rear_7": "PhoenixGreaterCovert_1_rear_7",
+    "PhoenixParentGreaterCovert_1_rear_8": "PhoenixGreaterCovert_1_rear_8",
+    "PhoenixParentGreaterCovert_1_rear_9": "PhoenixGreaterCovert_1_rear_9",
+    "PhoenixParentGreaterCovert_1_rear_10": "PhoenixGreaterCovert_1_rear_10",
+    "PhoenixParentGreaterCovert_1_rear_11": "PhoenixGreaterCovert_1_rear_11",
+    "PhoenixParentSurfaceCovert_1_front_0_0": "PhoenixLesserCovert_1_front_0_0",
+    "PhoenixParentSurfaceCovert_1_front_0_1": "PhoenixLesserCovert_1_front_0_1",
+    "PhoenixParentSurfaceCovert_1_front_0_2": "PhoenixLesserCovert_1_front_0_2",
+    "PhoenixParentSurfaceCovert_1_front_0_3": "PhoenixLesserCovert_1_front_0_3",
+    "PhoenixParentSurfaceCovert_1_front_0_4": "PhoenixLesserCovert_1_front_0_4",
+    "PhoenixParentSurfaceCovert_1_front_0_5": "PhoenixLesserCovert_1_front_0_5",
+    "PhoenixParentSurfaceCovert_1_front_0_6": "PhoenixLesserCovert_1_front_0_6",
+    "PhoenixParentSurfaceCovert_1_front_0_7": "PhoenixLesserCovert_1_front_0_7",
+    "PhoenixParentSurfaceCovert_1_front_0_8": "PhoenixLesserCovert_1_front_0_8",
+    "PhoenixParentSurfaceCovert_1_front_0_9": "PhoenixLesserCovert_1_front_0_9",
+    "PhoenixParentSurfaceCovert_1_front_0_10": "PhoenixLesserCovert_1_front_0_10",
+    "PhoenixParentSurfaceCovert_1_front_0_11": "PhoenixLesserCovert_1_front_0_11",
+    "PhoenixParentSurfaceCovert_1_front_0_12": "PhoenixLesserCovert_1_front_0_12",
+    "PhoenixParentSurfaceCovert_1_front_1_0": "PhoenixLesserCovert_1_front_1_0",
+    "PhoenixParentSurfaceCovert_1_front_1_1": "PhoenixLesserCovert_1_front_1_1",
+    "PhoenixParentSurfaceCovert_1_front_1_2": "PhoenixLesserCovert_1_front_1_2",
+    "PhoenixParentSurfaceCovert_1_front_1_3": "PhoenixLesserCovert_1_front_1_3",
+    "PhoenixParentSurfaceCovert_1_front_1_4": "PhoenixLesserCovert_1_front_1_4",
+    "PhoenixParentSurfaceCovert_1_front_1_5": "PhoenixLesserCovert_1_front_1_5",
+    "PhoenixParentSurfaceCovert_1_front_1_6": "PhoenixLesserCovert_1_front_1_6",
+    "PhoenixParentSurfaceCovert_1_front_1_7": "PhoenixLesserCovert_1_front_1_7",
+    "PhoenixParentSurfaceCovert_1_front_1_8": "PhoenixLesserCovert_1_front_1_8",
+    "PhoenixParentSurfaceCovert_1_front_1_9": "PhoenixLesserCovert_1_front_1_9",
+    "PhoenixParentSurfaceCovert_1_front_1_10": "PhoenixLesserCovert_1_front_1_10",
+    "PhoenixParentSurfaceCovert_1_front_1_11": "PhoenixLesserCovert_1_front_1_11",
+    "PhoenixParentSurfaceCovert_1_front_1_12": "PhoenixLesserCovert_1_front_1_12",
+    "PhoenixParentSurfaceCovert_1_rear_0_0": "PhoenixLesserCovert_1_rear_0_0",
+    "PhoenixParentSurfaceCovert_1_rear_0_1": "PhoenixLesserCovert_1_rear_0_1",
+    "PhoenixParentSurfaceCovert_1_rear_0_2": "PhoenixLesserCovert_1_rear_0_2",
+    "PhoenixParentSurfaceCovert_1_rear_0_3": "PhoenixLesserCovert_1_rear_0_3",
+    "PhoenixParentSurfaceCovert_1_rear_0_4": "PhoenixLesserCovert_1_rear_0_4",
+    "PhoenixParentSurfaceCovert_1_rear_0_5": "PhoenixLesserCovert_1_rear_0_5",
+    "PhoenixParentSurfaceCovert_1_rear_0_6": "PhoenixLesserCovert_1_rear_0_6",
+    "PhoenixParentSurfaceCovert_1_rear_0_7": "PhoenixLesserCovert_1_rear_0_7",
+    "PhoenixParentSurfaceCovert_1_rear_0_8": "PhoenixLesserCovert_1_rear_0_8",
+    "PhoenixParentSurfaceCovert_1_rear_0_9": "PhoenixLesserCovert_1_rear_0_9",
+    "PhoenixParentSurfaceCovert_1_rear_0_10": "PhoenixLesserCovert_1_rear_0_10",
+    "PhoenixParentSurfaceCovert_1_rear_0_11": "PhoenixLesserCovert_1_rear_0_11",
+    "PhoenixParentSurfaceCovert_1_rear_0_12": "PhoenixLesserCovert_1_rear_0_12",
+    "PhoenixParentSurfaceCovert_1_rear_1_0": "PhoenixLesserCovert_1_rear_1_0",
+    "PhoenixParentSurfaceCovert_1_rear_1_1": "PhoenixLesserCovert_1_rear_1_1",
+    "PhoenixParentSurfaceCovert_1_rear_1_2": "PhoenixLesserCovert_1_rear_1_2",
+    "PhoenixParentSurfaceCovert_1_rear_1_3": "PhoenixLesserCovert_1_rear_1_3",
+    "PhoenixParentSurfaceCovert_1_rear_1_4": "PhoenixLesserCovert_1_rear_1_4",
+    "PhoenixParentSurfaceCovert_1_rear_1_5": "PhoenixLesserCovert_1_rear_1_5",
+    "PhoenixParentSurfaceCovert_1_rear_1_6": "PhoenixLesserCovert_1_rear_1_6",
+    "PhoenixParentSurfaceCovert_1_rear_1_7": "PhoenixLesserCovert_1_rear_1_7",
+    "PhoenixParentSurfaceCovert_1_rear_1_8": "PhoenixLesserCovert_1_rear_1_8",
+    "PhoenixParentSurfaceCovert_1_rear_1_9": "PhoenixLesserCovert_1_rear_1_9",
+    "PhoenixParentSurfaceCovert_1_rear_1_10": "PhoenixLesserCovert_1_rear_1_10",
+    "PhoenixParentSurfaceCovert_1_rear_1_11": "PhoenixLesserCovert_1_rear_1_11",
+    "PhoenixParentSurfaceCovert_1_rear_1_12": "PhoenixLesserCovert_1_rear_1_12"
+  },
+  "verification": {
+    "path": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/verification-v2.json",
+    "sha256": "cd4c03705049d460e70f1997ed080c42b4e87156d36acb43a55272baf4486546",
+    "allEvaluatedMeshCount": 483,
+    "controlValues": [
+      0,
+      0.5,
+      1
+    ],
+    "idleFrames": [
+      0,
+      36,
+      72,
+      108,
+      144
+    ],
+    "movedMeshCount": 93,
+    "fixedMeshCount": 390,
+    "maximumDefaultDifferenceFromParentMeters": 5.095811520374397e-07,
+    "maximumFixedDifferenceMeters": 0.0,
+    "maximumTipDisplacementMeters": 0.13054578786703105,
+    "interiorEditSaveReload": {
+      "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-interior-proof-v2.blend",
+      "sha256": "213c7f86e3649746e6c5b2916644f7ea98f28999dba66ab469c6d47eac753a09",
+      "value": 0.5,
+      "maximumWorldVertexDifferenceMeters": 0.0
+    },
+    "restoredSaveReload": {
+      "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-restored-proof-v2.blend",
+      "sha256": "e100e139d8fcfcbb21929743fcec1feef4d0d4f306f41802b7f8953eb27e34f4",
+      "value": 0,
+      "maximumWorldVertexDifferenceMetersByFrame": {
+        "0": 0.0,
+        "36": 0.0,
+        "72": 0.0,
+        "108": 0.0,
+        "144": 0.0
+      }
+    },
+    "finiteVertexGuards": true
+  },
+  "allControlledMeshes": [
+    "PhoenixSecondary_1_1",
+    "PhoenixSecondary_1_1_FineShaft",
+    "PhoenixSecondary_1_2",
+    "PhoenixSecondary_1_2_FineShaft",
+    "PhoenixSecondary_1_3",
+    "PhoenixSecondary_1_3_FineShaft",
+    "PhoenixSecondary_1_4",
+    "PhoenixSecondary_1_4_FineShaft",
+    "PhoenixSecondary_1_5",
+    "PhoenixSecondary_1_5_FineShaft",
+    "PhoenixSecondary_1_6",
+    "PhoenixSecondary_1_6_FineShaft",
+    "PhoenixSecondary_1_7",
+    "PhoenixSecondary_1_7_FineShaft",
+    "PhoenixSecondary_1_8",
+    "PhoenixSecondary_1_8_FineShaft",
+    "PhoenixSecondary_1_9",
+    "PhoenixSecondary_1_9_FineShaft",
+    "PhoenixSecondary_1_10",
+    "PhoenixSecondary_1_10_FineShaft",
+    "PhoenixSecondary_1_11",
+    "PhoenixSecondary_1_11_FineShaft",
+    "PhoenixWingMantle_1",
+    "PhoenixGreaterCovert_1_front_4",
+    "PhoenixGreaterCovert_1_front_5",
+    "PhoenixGreaterCovert_1_front_6",
+    "PhoenixGreaterCovert_1_front_7",
+    "PhoenixGreaterCovert_1_front_8",
+    "PhoenixGreaterCovert_1_front_9",
+    "PhoenixGreaterCovert_1_front_10",
+    "PhoenixGreaterCovert_1_front_11",
+    "PhoenixGreaterCovert_1_rear_4",
+    "PhoenixGreaterCovert_1_rear_5",
+    "PhoenixGreaterCovert_1_rear_6",
+    "PhoenixGreaterCovert_1_rear_7",
+    "PhoenixGreaterCovert_1_rear_8",
+    "PhoenixGreaterCovert_1_rear_9",
+    "PhoenixGreaterCovert_1_rear_10",
+    "PhoenixGreaterCovert_1_rear_11",
+    "PhoenixLesserCovert_1_front_0_4",
+    "PhoenixLesserCovert_1_front_0_5",
+    "PhoenixLesserCovert_1_front_0_6",
+    "PhoenixLesserCovert_1_front_0_7",
+    "PhoenixLesserCovert_1_front_0_8",
+    "PhoenixLesserCovert_1_front_0_9",
+    "PhoenixLesserCovert_1_front_0_10",
+    "PhoenixLesserCovert_1_front_0_11",
+    "PhoenixLesserCovert_1_front_0_12",
+    "PhoenixLesserCovert_1_front_1_4",
+    "PhoenixLesserCovert_1_front_1_5",
+    "PhoenixLesserCovert_1_front_1_6",
+    "PhoenixLesserCovert_1_front_1_7",
+    "PhoenixLesserCovert_1_front_1_8",
+    "PhoenixLesserCovert_1_front_1_9",
+    "PhoenixLesserCovert_1_front_1_10",
+    "PhoenixLesserCovert_1_front_1_11",
+    "PhoenixLesserCovert_1_front_1_12",
+    "PhoenixLesserCovert_1_rear_0_4",
+    "PhoenixLesserCovert_1_rear_0_5",
+    "PhoenixLesserCovert_1_rear_0_6",
+    "PhoenixLesserCovert_1_rear_0_7",
+    "PhoenixLesserCovert_1_rear_0_8",
+    "PhoenixLesserCovert_1_rear_0_9",
+    "PhoenixLesserCovert_1_rear_0_10",
+    "PhoenixLesserCovert_1_rear_0_11",
+    "PhoenixLesserCovert_1_rear_0_12",
+    "PhoenixLesserCovert_1_rear_1_4",
+    "PhoenixLesserCovert_1_rear_1_5",
+    "PhoenixLesserCovert_1_rear_1_6",
+    "PhoenixLesserCovert_1_rear_1_7",
+    "PhoenixLesserCovert_1_rear_1_8",
+    "PhoenixLesserCovert_1_rear_1_9",
+    "PhoenixLesserCovert_1_rear_1_10",
+    "PhoenixLesserCovert_1_rear_1_11",
+    "PhoenixLesserCovert_1_rear_1_12",
+    "PhoenixPrimary_1_0",
+    "PhoenixPrimary_1_0_FineShaft",
+    "PhoenixPrimary_1_1",
+    "PhoenixPrimary_1_1_FineShaft",
+    "PhoenixPrimary_1_2",
+    "PhoenixPrimary_1_2_FineShaft",
+    "PhoenixPrimary_1_3",
+    "PhoenixPrimary_1_3_FineShaft",
+    "PhoenixPrimary_1_4",
+    "PhoenixPrimary_1_4_FineShaft",
+    "PhoenixPrimary_1_5",
+    "PhoenixPrimary_1_5_FineShaft",
+    "PhoenixPrimary_1_6",
+    "PhoenixPrimary_1_6_FineShaft",
+    "PhoenixPrimary_1_7",
+    "PhoenixPrimary_1_7_FineShaft",
+    "PhoenixPrimary_1_8",
+    "PhoenixPrimary_1_8_FineShaft"
+  ],
+  "allFixedMeshes": [
+    "PhoenixHookedUpperBill",
+    "PhoenixLowerBill",
+    "PhoenixOrbit_-1",
+    "PhoenixIris_-1",
+    "PhoenixPupil_-1",
+    "PhoenixBrow_-1",
+    "PhoenixOrbit_1",
+    "PhoenixIris_1",
+    "PhoenixPupil_1",
+    "PhoenixBrow_1",
+    "PhoenixCrest_0",
+    "PhoenixCrest_1",
+    "PhoenixCrest_2",
+    "PhoenixCrest_3",
+    "PhoenixCrest_4",
+    "Mesh_0",
+    "PhoenixFittedPlumage_0",
+    "PhoenixFittedPlumage_1",
+    "PhoenixFittedPlumage_2",
+    "PhoenixFittedPlumage_3",
+    "PhoenixFittedPlumage_4",
+    "PhoenixFittedPlumage_5",
+    "PhoenixFittedPlumage_6",
+    "PhoenixFittedPlumage_7",
+    "PhoenixFittedPlumage_8",
+    "PhoenixFittedPlumage_9",
+    "PhoenixFittedPlumage_10",
+    "PhoenixFittedPlumage_11",
+    "PhoenixFittedPlumage_12",
+    "PhoenixFittedPlumage_13",
+    "PhoenixFittedPlumage_14",
+    "PhoenixFittedPlumage_15",
+    "PhoenixFittedPlumage_16",
+    "PhoenixFittedPlumage_17",
+    "PhoenixFittedPlumage_18",
+    "PhoenixFittedPlumage_19",
+    "PhoenixFittedPlumage_20",
+    "PhoenixFittedPlumage_21",
+    "PhoenixFittedPlumage_22",
+    "PhoenixFittedPlumage_23",
+    "PhoenixFittedPlumage_24",
+    "PhoenixFittedPlumage_25",
+    "PhoenixFittedPlumage_26",
+    "PhoenixFittedPlumage_27",
+    "PhoenixFittedPlumage_28",
+    "PhoenixFittedPlumage_29",
+    "PhoenixFittedPlumage_30",
+    "PhoenixFittedPlumage_31",
+    "PhoenixFittedPlumage_32",
+    "PhoenixFittedPlumage_33",
+    "PhoenixFittedPlumage_34",
+    "PhoenixFittedPlumage_35",
+    "PhoenixFittedPlumage_36",
+    "PhoenixFittedPlumage_37",
+    "PhoenixFittedPlumage_38",
+    "PhoenixFittedPlumage_39",
+    "PhoenixFittedPlumage_40",
+    "PhoenixFittedPlumage_41",
+    "PhoenixFittedPlumage_42",
+    "PhoenixFittedPlumage_43",
+    "PhoenixFittedPlumage_44",
+    "PhoenixFittedPlumage_45",
+    "PhoenixFittedPlumage_46",
+    "PhoenixFittedPlumage_47",
+    "PhoenixFittedPlumage_48",
+    "PhoenixFittedPlumage_49",
+    "PhoenixFittedPlumage_50",
+    "PhoenixFittedPlumage_51",
+    "PhoenixFittedPlumage_52",
+    "PhoenixFittedPlumage_53",
+    "PhoenixFittedPlumage_54",
+    "PhoenixFittedPlumage_55",
+    "PhoenixFittedPlumage_56",
+    "PhoenixFittedPlumage_57",
+    "PhoenixFittedPlumage_58",
+    "PhoenixFittedPlumage_59",
+    "PhoenixFittedPlumage_60",
+    "PhoenixFittedPlumage_61",
+    "PhoenixFittedPlumage_62",
+    "PhoenixFittedPlumage_63",
+    "PhoenixFittedPlumage_64",
+    "PhoenixFittedPlumage_65",
+    "PhoenixFittedPlumage_66",
+    "PhoenixFittedPlumage_67",
+    "PhoenixFittedPlumage_68",
+    "PhoenixFittedPlumage_69",
+    "PhoenixFittedPlumage_70",
+    "PhoenixFittedPlumage_71",
+    "PhoenixFittedPlumage_72",
+    "PhoenixFittedPlumage_73",
+    "PhoenixFittedPlumage_74",
+    "PhoenixFittedPlumage_75",
+    "PhoenixFittedPlumage_76",
+    "PhoenixFittedPlumage_77",
+    "PhoenixFittedPlumage_78",
+    "PhoenixFittedPlumage_79",
+    "PhoenixFittedPlumage_80",
+    "PhoenixFittedPlumage_81",
+    "PhoenixFittedPlumage_82",
+    "PhoenixFittedPlumage_83",
+    "PhoenixFittedPlumage_84",
+    "PhoenixFittedPlumage_85",
+    "PhoenixFittedPlumage_86",
+    "PhoenixFittedPlumage_87",
+    "PhoenixFittedPlumage_88",
+    "PhoenixFittedPlumage_89",
+    "PhoenixFittedPlumage_90",
+    "PhoenixFittedPlumage_91",
+    "PhoenixFittedPlumage_92",
+    "PhoenixFittedPlumage_93",
+    "PhoenixFittedPlumage_94",
+    "PhoenixFittedPlumage_95",
+    "PhoenixFittedPlumage_96",
+    "PhoenixFittedPlumage_97",
+    "PhoenixFittedPlumage_98",
+    "PhoenixFittedPlumage_99",
+    "PhoenixFittedPlumage_100",
+    "PhoenixFittedPlumage_101",
+    "PhoenixFittedPlumage_102",
+    "PhoenixFittedPlumage_103",
+    "PhoenixFittedPlumage_104",
+    "PhoenixFittedPlumage_105",
+    "PhoenixFittedPlumage_106",
+    "PhoenixFittedPlumage_107",
+    "PhoenixFittedPlumage_108",
+    "PhoenixFittedPlumage_109",
+    "PhoenixFittedPlumage_110",
+    "PhoenixFittedPlumage_111",
+    "PhoenixFittedPlumage_112",
+    "PhoenixFittedPlumage_113",
+    "PhoenixFittedPlumage_114",
+    "PhoenixFittedPlumage_115",
+    "PhoenixFittedPlumage_116",
+    "PhoenixFittedPlumage_117",
+    "PhoenixFittedPlumage_118",
+    "PhoenixFittedPlumage_119",
+    "PhoenixFittedPlumage_120",
+    "PhoenixFittedPlumage_121",
+    "PhoenixFittedPlumage_122",
+    "PhoenixFittedPlumage_123",
+    "PhoenixFittedPlumage_124",
+    "PhoenixFittedPlumage_125",
+    "PhoenixFittedPlumage_126",
+    "PhoenixFittedPlumage_127",
+    "PhoenixFittedPlumage_128",
+    "PhoenixFittedPlumage_129",
+    "PhoenixFittedPlumage_130",
+    "PhoenixFittedPlumage_131",
+    "PhoenixFittedPlumage_132",
+    "PhoenixFittedPlumage_133",
+    "PhoenixFittedPlumage_134",
+    "PhoenixFittedPlumage_135",
+    "PhoenixFittedPlumage_136",
+    "PhoenixFittedPlumage_137",
+    "PhoenixFittedPlumage_138",
+    "PhoenixFittedPlumage_139",
+    "PhoenixFittedPlumage_140",
+    "PhoenixFittedPlumage_141",
+    "PhoenixFittedPlumage_142",
+    "PhoenixFittedPlumage_143",
+    "PhoenixFittedPlumage_144",
+    "PhoenixFittedPlumage_145",
+    "PhoenixFittedPlumage_146",
+    "PhoenixFittedPlumage_147",
+    "PhoenixFittedPlumage_148",
+    "PhoenixFittedPlumage_149",
+    "PhoenixFittedPlumage_150",
+    "PhoenixFittedPlumage_151",
+    "PhoenixFittedPlumage_152",
+    "PhoenixFittedPlumage_153",
+    "PhoenixFittedPlumage_154",
+    "PhoenixFittedPlumage_155",
+    "PhoenixFittedPlumage_156",
+    "PhoenixFittedPlumage_157",
+    "PhoenixFittedPlumage_158",
+    "PhoenixFittedPlumage_159",
+    "PhoenixFittedPlumage_160",
+    "PhoenixFittedPlumage_161",
+    "PhoenixFittedPlumage_162",
+    "PhoenixFittedPlumage_163",
+    "PhoenixFittedPlumage_164",
+    "PhoenixFittedPlumage_165",
+    "PhoenixFittedPlumage_166",
+    "PhoenixFittedPlumage_167",
+    "PhoenixScapular_-1_0",
+    "PhoenixScapular_-1_1",
+    "PhoenixScapular_-1_2",
+    "PhoenixScapular_-1_3",
+    "PhoenixScapular_1_0",
+    "PhoenixScapular_1_1",
+    "PhoenixScapular_1_2",
+    "PhoenixScapular_1_3",
+    "PhoenixCoveredWingLeading_-1",
+    "PhoenixMantle_-1_0_0",
+    "PhoenixMantle_-1_0_1",
+    "PhoenixMantle_-1_0_2",
+    "PhoenixMantle_-1_0_3",
+    "PhoenixMantle_-1_0_4",
+    "PhoenixMantle_-1_0_5",
+    "PhoenixMantle_-1_0_6",
+    "PhoenixMantle_-1_1_0",
+    "PhoenixMantle_-1_1_1",
+    "PhoenixMantle_-1_1_2",
+    "PhoenixMantle_-1_1_3",
+    "PhoenixMantle_-1_1_4",
+    "PhoenixMantle_-1_1_5",
+    "PhoenixMantle_-1_1_6",
+    "PhoenixMantle_-1_2_0",
+    "PhoenixMantle_-1_2_1",
+    "PhoenixMantle_-1_2_2",
+    "PhoenixMantle_-1_2_3",
+    "PhoenixMantle_-1_2_4",
+    "PhoenixMantle_-1_2_5",
+    "PhoenixMantle_-1_2_6",
+    "PhoenixMantle_-1_3_0",
+    "PhoenixMantle_-1_3_1",
+    "PhoenixMantle_-1_3_2",
+    "PhoenixMantle_-1_3_3",
+    "PhoenixMantle_-1_3_4",
+    "PhoenixMantle_-1_3_5",
+    "PhoenixMantle_-1_3_6",
+    "PhoenixMantle_-1_4_0",
+    "PhoenixMantle_-1_4_1",
+    "PhoenixMantle_-1_4_2",
+    "PhoenixMantle_-1_4_3",
+    "PhoenixMantle_-1_4_4",
+    "PhoenixMantle_-1_4_5",
+    "PhoenixMantle_-1_4_6",
+    "PhoenixMantle_-1_5_0",
+    "PhoenixMantle_-1_5_1",
+    "PhoenixMantle_-1_5_2",
+    "PhoenixMantle_-1_5_3",
+    "PhoenixMantle_-1_5_4",
+    "PhoenixMantle_-1_5_5",
+    "PhoenixMantle_-1_5_6",
+    "PhoenixMantle_-1_6_0",
+    "PhoenixMantle_-1_6_1",
+    "PhoenixMantle_-1_6_2",
+    "PhoenixMantle_-1_6_3",
+    "PhoenixMantle_-1_6_4",
+    "PhoenixMantle_-1_6_5",
+    "PhoenixMantle_-1_6_6",
+    "PhoenixMantle_-1_7_0",
+    "PhoenixMantle_-1_7_1",
+    "PhoenixMantle_-1_7_2",
+    "PhoenixMantle_-1_7_3",
+    "PhoenixMantle_-1_7_4",
+    "PhoenixMantle_-1_7_5",
+    "PhoenixMantle_-1_7_6",
+    "PhoenixMantle_-1_8_0",
+    "PhoenixMantle_-1_8_1",
+    "PhoenixMantle_-1_8_2",
+    "PhoenixMantle_-1_8_3",
+    "PhoenixMantle_-1_8_4",
+    "PhoenixMantle_-1_8_5",
+    "PhoenixMantle_-1_8_6",
+    "PhoenixMantle_-1_9_0",
+    "PhoenixMantle_-1_9_1",
+    "PhoenixMantle_-1_9_2",
+    "PhoenixMantle_-1_9_3",
+    "PhoenixMantle_-1_9_4",
+    "PhoenixMantle_-1_9_5",
+    "PhoenixMantle_-1_9_6",
+    "PhoenixMantle_-1_10_0",
+    "PhoenixMantle_-1_10_1",
+    "PhoenixMantle_-1_10_2",
+    "PhoenixMantle_-1_10_3",
+    "PhoenixMantle_-1_10_4",
+    "PhoenixMantle_-1_10_5",
+    "PhoenixMantle_-1_10_6",
+    "PhoenixMantle_-1_11_0",
+    "PhoenixMantle_-1_11_1",
+    "PhoenixMantle_-1_11_2",
+    "PhoenixMantle_-1_11_3",
+    "PhoenixMantle_-1_11_4",
+    "PhoenixMantle_-1_11_5",
+    "PhoenixMantle_-1_11_6",
+    "PhoenixSecondary_-1_0",
+    "PhoenixSecondary_-1_0_FineShaft",
+    "PhoenixSecondary_-1_1",
+    "PhoenixSecondary_-1_1_FineShaft",
+    "PhoenixSecondary_-1_2",
+    "PhoenixSecondary_-1_2_FineShaft",
+    "PhoenixSecondary_-1_3",
+    "PhoenixSecondary_-1_3_FineShaft",
+    "PhoenixSecondary_-1_4",
+    "PhoenixSecondary_-1_4_FineShaft",
+    "PhoenixSecondary_-1_5",
+    "PhoenixSecondary_-1_5_FineShaft",
+    "PhoenixSecondary_-1_6",
+    "PhoenixSecondary_-1_6_FineShaft",
+    "PhoenixSecondary_-1_7",
+    "PhoenixSecondary_-1_7_FineShaft",
+    "PhoenixSecondary_-1_8",
+    "PhoenixSecondary_-1_8_FineShaft",
+    "PhoenixSecondary_-1_9",
+    "PhoenixSecondary_-1_9_FineShaft",
+    "PhoenixSecondary_-1_10",
+    "PhoenixSecondary_-1_10_FineShaft",
+    "PhoenixSecondary_-1_11",
+    "PhoenixSecondary_-1_11_FineShaft",
+    "PhoenixPrimary_-1_0",
+    "PhoenixPrimary_-1_0_FineShaft",
+    "PhoenixPrimary_-1_1",
+    "PhoenixPrimary_-1_1_FineShaft",
+    "PhoenixPrimary_-1_2",
+    "PhoenixPrimary_-1_2_FineShaft",
+    "PhoenixPrimary_-1_3",
+    "PhoenixPrimary_-1_3_FineShaft",
+    "PhoenixPrimary_-1_4",
+    "PhoenixPrimary_-1_4_FineShaft",
+    "PhoenixPrimary_-1_5",
+    "PhoenixPrimary_-1_5_FineShaft",
+    "PhoenixPrimary_-1_6",
+    "PhoenixPrimary_-1_6_FineShaft",
+    "PhoenixPrimary_-1_7",
+    "PhoenixPrimary_-1_7_FineShaft",
+    "PhoenixPrimary_-1_8",
+    "PhoenixPrimary_-1_8_FineShaft",
+    "PhoenixCovert_-1_0_0",
+    "PhoenixCovert_-1_0_1",
+    "PhoenixCovert_-1_0_2",
+    "PhoenixCovert_-1_0_3",
+    "PhoenixCovert_-1_0_4",
+    "PhoenixCovert_-1_0_5",
+    "PhoenixCovert_-1_0_6",
+    "PhoenixCovert_-1_0_7",
+    "PhoenixCovert_-1_0_8",
+    "PhoenixCovert_-1_0_9",
+    "PhoenixCovert_-1_0_10",
+    "PhoenixCovert_-1_0_11",
+    "PhoenixCovert_-1_0_12",
+    "PhoenixSecondary_1_0",
+    "PhoenixSecondary_1_0_FineShaft",
+    "PhoenixRectrix_0",
+    "PhoenixRectrix_0_FineShaft",
+    "PhoenixRectrix_1",
+    "PhoenixRectrix_1_FineShaft",
+    "PhoenixRectrix_2",
+    "PhoenixRectrix_2_FineShaft",
+    "PhoenixRectrix_3",
+    "PhoenixRectrix_3_FineShaft",
+    "PhoenixRectrix_4",
+    "PhoenixRectrix_4_FineShaft",
+    "PhoenixBasalt_0",
+    "PhoenixBasalt_1",
+    "PhoenixBasalt_2",
+    "PhoenixBasalt_3",
+    "PhoenixFeatheredThigh_-1",
+    "PhoenixTarsus_-1",
+    "PhoenixToe_-1_0",
+    "PhoenixClaw_-1_0",
+    "PhoenixToe_-1_1",
+    "PhoenixClaw_-1_1",
+    "PhoenixToe_-1_2",
+    "PhoenixClaw_-1_2",
+    "PhoenixRearToe_-1",
+    "PhoenixFeatheredThigh_1",
+    "PhoenixTarsus_1",
+    "PhoenixToe_1_0",
+    "PhoenixClaw_1_0",
+    "PhoenixToe_1_1",
+    "PhoenixClaw_1_1",
+    "PhoenixToe_1_2",
+    "PhoenixClaw_1_2",
+    "PhoenixRearToe_1",
+    "PhoenixGreaterCovert_1_front_0",
+    "PhoenixGreaterCovert_1_front_1",
+    "PhoenixGreaterCovert_1_front_2",
+    "PhoenixGreaterCovert_1_front_3",
+    "PhoenixGreaterCovert_1_rear_0",
+    "PhoenixGreaterCovert_1_rear_1",
+    "PhoenixGreaterCovert_1_rear_2",
+    "PhoenixGreaterCovert_1_rear_3",
+    "PhoenixLesserCovert_1_front_0_0",
+    "PhoenixLesserCovert_1_front_0_1",
+    "PhoenixLesserCovert_1_front_0_2",
+    "PhoenixLesserCovert_1_front_0_3",
+    "PhoenixLesserCovert_1_front_1_0",
+    "PhoenixLesserCovert_1_front_1_1",
+    "PhoenixLesserCovert_1_front_1_2",
+    "PhoenixLesserCovert_1_front_1_3",
+    "PhoenixLesserCovert_1_rear_0_0",
+    "PhoenixLesserCovert_1_rear_0_1",
+    "PhoenixLesserCovert_1_rear_0_2",
+    "PhoenixLesserCovert_1_rear_0_3",
+    "PhoenixLesserCovert_1_rear_1_0",
+    "PhoenixLesserCovert_1_rear_1_1",
+    "PhoenixLesserCovert_1_rear_1_2",
+    "PhoenixLesserCovert_1_rear_1_3"
+  ],
+  "captureGroups": {
+    "default-whole": {
+      "receipt": {
+        "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-v1b.blend",
+        "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+        "frame": 0,
+        "nativeControl": {
+          "object": "EDIT | Wing.1",
+          "property": "Fan lift",
+          "value": 0.0
+        },
+        "resolution": [
+          1000,
+          900
+        ],
+        "orthoScale": 4.199999809265137,
+        "target": [
+          0.18000000715255737,
+          0.0,
+          1.6699999570846558
+        ],
+        "views": [
+          [
+            "front",
+            [
+              0.18,
+              -7,
+              1.8
+            ]
+          ],
+          [
+            "side",
+            [
+              7,
+              0,
+              1.8
+            ]
+          ],
+          [
+            "rear",
+            [
+              0.18,
+              7,
+              1.8
+            ]
+          ],
+          [
+            "hero",
+            [
+              3,
+              -7,
+              3
+            ]
+          ]
+        ],
+        "modes": [
+          "single-sided neutral clay",
+          "saved materials"
+        ],
+        "sourceNeverSaved": true
+      },
+      "files": {
+        "front-clay.png": "986cc70b64ab4a6aa0c9ccd0caf197a7cd46c618fe1185d3a5e30f89389a911e",
+        "front-material.png": "990cc72a0fde838deb4fe02154ca587b9da3fd98975eadeb51e3fcc3e17d37bf",
+        "hero-clay.png": "a566a54d91eecb12bff1a6ada39c2c333298417f0d0c610d380bcc426daa20e8",
+        "hero-material.png": "3eb22b19c87f638823d197730b5ea5c0c0c8b4472c5d89986e6651bf017f5dd5",
+        "rear-clay.png": "eb184f3e29bde16230f332a60401b61528eea8fe3155eff5421efdc6d478d9ba",
+        "rear-material.png": "b23a547c4927d7fb5a1dd1ece0baa131690ac452ee2780592c0df2f6b3c975e3",
+        "side-clay.png": "4467a31e521167d7ed856cd895320d59af042ce8ac051f2d5f25fe4984a0c433",
+        "side-material.png": "1ab0f1ea3139510b069d14b05d9664249599bae987805c8b4d01f62a5fe8bd06"
+      }
+    },
+    "maximum-detail": {
+      "receipt": {
+        "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-v1b.blend",
+        "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+        "frame": 0,
+        "nativeControl": {
+          "object": "EDIT | Wing.1",
+          "property": "Fan lift",
+          "value": 1.0
+        },
+        "resolution": [
+          1200,
+          900
+        ],
+        "orthoScale": 1.649999976158142,
+        "target": [
+          0.7300000190734863,
+          -0.10000000149011612,
+          1.8600000143051147
+        ],
+        "views": [
+          [
+            "front",
+            [
+              0.7300000190734863,
+              -7.099999904632568,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "rear",
+            [
+              0.7300000190734863,
+              6.900000095367432,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "above",
+            [
+              1.7300000190734863,
+              -4.099999904632568,
+              3.8600001335144043
+            ]
+          ],
+          [
+            "shoulder",
+            [
+              7.730000019073486,
+              -0.6000000238418579,
+              1.9600000381469727
+            ]
+          ]
+        ],
+        "modes": [
+          "single-sided neutral clay",
+          "saved materials"
+        ],
+        "sourceNeverSaved": true
+      },
+      "files": {
+        "above-clay.png": "6422df751f69fe29ed8611ed129ba01fee1d09f6a01451ace38a68fe211f7351",
+        "above-material.png": "60adf592a38b1be7f57c1f29b25f87d701579e790f69c7c75c7eb42f6a953c5a",
+        "front-clay.png": "935fd5a0e69e7101ce8ba7b0ae9984967f2ecff7c566999ff295ce8678860217",
+        "front-material.png": "a3c0eb38d10aaeb04e85b77cd83cb1c768b6880699b6fac51b9473e56d8baa75",
+        "rear-clay.png": "dd21fe0703f4947c5099e2d1c9c5d4fe9cf038f6696d9d2570449e56b9c3b93a",
+        "rear-material.png": "c511d45e1ed1ee40179914c9e32fc3e821a59c1d27361a9aa01c5ab2768b29c5",
+        "shoulder-clay.png": "374d8bb15742a43dd038e3e984aa76c54aa70e34a384d6e2f16efb83976537cc",
+        "shoulder-material.png": "02eeadcb18b63523c9206e02ae47c4c64c93671e910a11823ae95667a46e0ed0"
+      }
+    },
+    "maximum-idle108": {
+      "receipt": {
+        "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-v1b.blend",
+        "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+        "frame": 108,
+        "nativeControl": {
+          "object": "EDIT | Wing.1",
+          "property": "Fan lift",
+          "value": 1.0
+        },
+        "resolution": [
+          1200,
+          900
+        ],
+        "orthoScale": 1.649999976158142,
+        "target": [
+          0.7300000190734863,
+          -0.10000000149011612,
+          1.8600000143051147
+        ],
+        "views": [
+          [
+            "front",
+            [
+              0.7300000190734863,
+              -7.099999904632568,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "rear",
+            [
+              0.7300000190734863,
+              6.900000095367432,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "above",
+            [
+              1.7300000190734863,
+              -4.099999904632568,
+              3.8600001335144043
+            ]
+          ],
+          [
+            "shoulder",
+            [
+              7.730000019073486,
+              -0.6000000238418579,
+              1.9600000381469727
+            ]
+          ]
+        ],
+        "modes": [
+          "single-sided neutral clay",
+          "saved materials"
+        ],
+        "sourceNeverSaved": true
+      },
+      "files": {
+        "above-clay.png": "0bc4b6ee0cf99cbd23006ad874598e92a95e5a125dac35f579f6dab4f8772395",
+        "above-material.png": "ac2caab45b824d76e64196abab48accd5e5f005723f4a06c28efc50fc266c590",
+        "front-clay.png": "72565b0bcd49e47b3488c0f115f65f720a7e29bcb232fbd1801f0a1f61f19e92",
+        "front-material.png": "e23b55e239704a696a2f85eff62053da9e43c77b5d546ce1937ba92d8c4d0d46",
+        "rear-clay.png": "701fe1c0decd821d7aa4e5afde699b06b00aa31fc5f747bc8fb23eb65b412b0e",
+        "rear-material.png": "f990bc690bdf1be79a833704c8700f9380608d12bac7162ea00b3d2420ddf416",
+        "shoulder-clay.png": "a8f6e1f9f88799a0a432eb9891103f8e5309d2a8e563f355b606658cb7c30a2f",
+        "shoulder-material.png": "235ff558a898e8f7495c8a004c34ab88f808e88369ade170071dc8702d46edff"
+      }
+    },
+    "maximum-idle36": {
+      "receipt": {
+        "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-v1b.blend",
+        "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+        "frame": 36,
+        "nativeControl": {
+          "object": "EDIT | Wing.1",
+          "property": "Fan lift",
+          "value": 1.0
+        },
+        "resolution": [
+          1200,
+          900
+        ],
+        "orthoScale": 1.649999976158142,
+        "target": [
+          0.7300000190734863,
+          -0.10000000149011612,
+          1.8600000143051147
+        ],
+        "views": [
+          [
+            "front",
+            [
+              0.7300000190734863,
+              -7.099999904632568,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "rear",
+            [
+              0.7300000190734863,
+              6.900000095367432,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "above",
+            [
+              1.7300000190734863,
+              -4.099999904632568,
+              3.8600001335144043
+            ]
+          ],
+          [
+            "shoulder",
+            [
+              7.730000019073486,
+              -0.6000000238418579,
+              1.9600000381469727
+            ]
+          ]
+        ],
+        "modes": [
+          "single-sided neutral clay",
+          "saved materials"
+        ],
+        "sourceNeverSaved": true
+      },
+      "files": {
+        "above-clay.png": "b14eaabbd3c8105292e9897ec5da237852c99f9344db54cbda50bb1297554663",
+        "above-material.png": "a38ed657f51e116e06fc2708c32e8037ed5241c0095eb4f589563dded66f5403",
+        "front-clay.png": "12896c1db0a123a35dd63f06124cf86dc70cc825941aa79668e7edd1019d1870",
+        "front-material.png": "523eaa58e31d2ef6aecae6f27b5733bdfc901c1cc8ed0e5118f69d29f153b88c",
+        "rear-clay.png": "aded7cd8772a43cbe8357aa5c524da5db6e94120c8eddff41404b5597abe123a",
+        "rear-material.png": "8d1eb090e13b8db61765dfdea7a78c1fbbd15210e139bef0ee4f60513ce4a668",
+        "shoulder-clay.png": "05a80ace19957e027f0947e3e048e8157b68584dbc595bc1fcfbe778c0cb242e",
+        "shoulder-material.png": "c4720f5bd517ca6b7f820125dbbad52a43f1ae81e46f07b3b7200eb2fc1613a9"
+      }
+    },
+    "maximum-whole": {
+      "receipt": {
+        "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-v1b.blend",
+        "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+        "frame": 0,
+        "nativeControl": {
+          "object": "EDIT | Wing.1",
+          "property": "Fan lift",
+          "value": 1.0
+        },
+        "resolution": [
+          1000,
+          900
+        ],
+        "orthoScale": 4.199999809265137,
+        "target": [
+          0.18000000715255737,
+          0.0,
+          1.6699999570846558
+        ],
+        "views": [
+          [
+            "front",
+            [
+              0.18,
+              -7,
+              1.8
+            ]
+          ],
+          [
+            "side",
+            [
+              7,
+              0,
+              1.8
+            ]
+          ],
+          [
+            "rear",
+            [
+              0.18,
+              7,
+              1.8
+            ]
+          ],
+          [
+            "hero",
+            [
+              3,
+              -7,
+              3
+            ]
+          ]
+        ],
+        "modes": [
+          "single-sided neutral clay",
+          "saved materials"
+        ],
+        "sourceNeverSaved": true
+      },
+      "files": {
+        "front-clay.png": "b4f011d3aaad03009419075e13f3c87a1b3c487cdc9985edcbf37ae2ea476fd6",
+        "front-material.png": "b67344654c2d001fa4c261ec050457b8f3662dd8387a9e821667ea46323f9903",
+        "hero-clay.png": "aa41215580881b545e6fbd71420c8b8bd7375e088d939c1d3661ccba64068465",
+        "hero-material.png": "415d307cbdfbfd0cea7821727ede707b0da24ea30cf31e7d5345a60130ec6c95",
+        "rear-clay.png": "28b7044bbdafc164fffc9cf490a99ff45f54364506a2b9c60b0a7a5dd752146e",
+        "rear-material.png": "7f40f45c5f21da33682bb71e1aa3bf3307bf95e5cb757b480cbdff744b44825f",
+        "side-clay.png": "c2647049be88c9660de09c71448c7a0ed414e35ac4f4d8c261950fa64634a3fb",
+        "side-material.png": "e4375e75787f86cdbe23735b76d584f1d0e9bd3f5935447e6bc8e8fb18685538"
+      }
+    },
+    "minimum-detail": {
+      "receipt": {
+        "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-v1b.blend",
+        "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+        "frame": 0,
+        "nativeControl": {
+          "object": "EDIT | Wing.1",
+          "property": "Fan lift",
+          "value": 0.0
+        },
+        "resolution": [
+          1200,
+          900
+        ],
+        "orthoScale": 1.649999976158142,
+        "target": [
+          0.7300000190734863,
+          -0.10000000149011612,
+          1.8600000143051147
+        ],
+        "views": [
+          [
+            "front",
+            [
+              0.7300000190734863,
+              -7.099999904632568,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "rear",
+            [
+              0.7300000190734863,
+              6.900000095367432,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "above",
+            [
+              1.7300000190734863,
+              -4.099999904632568,
+              3.8600001335144043
+            ]
+          ],
+          [
+            "shoulder",
+            [
+              7.730000019073486,
+              -0.6000000238418579,
+              1.9600000381469727
+            ]
+          ]
+        ],
+        "modes": [
+          "single-sided neutral clay",
+          "saved materials"
+        ],
+        "sourceNeverSaved": true
+      },
+      "files": {
+        "above-clay.png": "1a2919fbeb8a3b1aa12c90aadc548d405136edc33ebdc98775d18c5b3fb26e15",
+        "above-material.png": "cd26c98a03b6999eb220baf738e1fb17125a3260d2a9c0c9362df83749b3ce07",
+        "front-clay.png": "e059a9b4cab446f9ed6949e65809cd362688075fd848abacd48d1c9463192be9",
+        "front-material.png": "5fa6dc3b4aa3376bef48e1fc3fff1b7ab6a41de92a7187b7b4edf05cd6a3de38",
+        "rear-clay.png": "f0e1adecb5693b559cb19a2cb6c3332aeb58f5de821257e157e543d6f2b25d41",
+        "rear-material.png": "b01f4690aefd94454d088fac3062cf2d854443efc530113a2cc688a3d91b6fe9",
+        "shoulder-clay.png": "8113bfcbb257f1f005ce075af578687333978c8cc4a0607acb80279063448be5",
+        "shoulder-material.png": "fe3041b858391b174315362487ffcc719ff1ed8fcf26de8596832068e94328a1"
+      }
+    },
+    "minimum-idle108": {
+      "receipt": {
+        "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-v1b.blend",
+        "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+        "frame": 108,
+        "nativeControl": {
+          "object": "EDIT | Wing.1",
+          "property": "Fan lift",
+          "value": 0.0
+        },
+        "resolution": [
+          1200,
+          900
+        ],
+        "orthoScale": 1.649999976158142,
+        "target": [
+          0.7300000190734863,
+          -0.10000000149011612,
+          1.8600000143051147
+        ],
+        "views": [
+          [
+            "front",
+            [
+              0.7300000190734863,
+              -7.099999904632568,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "rear",
+            [
+              0.7300000190734863,
+              6.900000095367432,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "above",
+            [
+              1.7300000190734863,
+              -4.099999904632568,
+              3.8600001335144043
+            ]
+          ],
+          [
+            "shoulder",
+            [
+              7.730000019073486,
+              -0.6000000238418579,
+              1.9600000381469727
+            ]
+          ]
+        ],
+        "modes": [
+          "single-sided neutral clay",
+          "saved materials"
+        ],
+        "sourceNeverSaved": true
+      },
+      "files": {
+        "above-clay.png": "f7fc4d66b4cdccc76fe69f7ffebd208cc7201401a7f50ba26413bd079368373b",
+        "above-material.png": "5d02de4b3707bc4fff5663707a45be2f88a5bf791e1381badffb197753afd0c9",
+        "front-clay.png": "96d959b79e5b8ad1a7e54d83509631a539c5172c4d7a69bc82a8958a2f6937fe",
+        "front-material.png": "8699d5accb1290cef9ebc8710d40195288f5d3e2da4a73a10838ee2f6e03b912",
+        "rear-clay.png": "1ab9d35f16a8cb25f1294f05bfc660a940e94a5e295e8c8ead3ec8cf242d68bb",
+        "rear-material.png": "c39cf4522128370c925a0e68f9834f06f6f49e75ce394a0537cc155b87ce87b5",
+        "shoulder-clay.png": "979c07053e1a98b0e6f24bde9b2a42646cafea4791de9bd0495f165485bb4afa",
+        "shoulder-material.png": "a5d87a687cdb73e359b4f55909c9b1fc03df2c1f477ccb0d0038463d2fde503f"
+      }
+    },
+    "minimum-idle36": {
+      "receipt": {
+        "source": "/Users/zhangqy/pkgs/game/.work/sessions/native-batch-1-2026-10-08/phoenix/trial/control-v1/phoenix-fan-lift-v1b.blend",
+        "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+        "frame": 36,
+        "nativeControl": {
+          "object": "EDIT | Wing.1",
+          "property": "Fan lift",
+          "value": 0.0
+        },
+        "resolution": [
+          1200,
+          900
+        ],
+        "orthoScale": 1.649999976158142,
+        "target": [
+          0.7300000190734863,
+          -0.10000000149011612,
+          1.8600000143051147
+        ],
+        "views": [
+          [
+            "front",
+            [
+              0.7300000190734863,
+              -7.099999904632568,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "rear",
+            [
+              0.7300000190734863,
+              6.900000095367432,
+              1.9600000381469727
+            ]
+          ],
+          [
+            "above",
+            [
+              1.7300000190734863,
+              -4.099999904632568,
+              3.8600001335144043
+            ]
+          ],
+          [
+            "shoulder",
+            [
+              7.730000019073486,
+              -0.6000000238418579,
+              1.9600000381469727
+            ]
+          ]
+        ],
+        "modes": [
+          "single-sided neutral clay",
+          "saved materials"
+        ],
+        "sourceNeverSaved": true
+      },
+      "files": {
+        "above-clay.png": "7b01ae04242567081a2fbbbb6176cfe088c1cd90711ba1ce69f7d04abcf9ca75",
+        "above-material.png": "3fcfa7b6fc69ec46af48d95144a3f7d08272a1cd694a38984f08f35c38286911",
+        "front-clay.png": "c55e986df130985645c6ef6f8dd2e92859ae5c97e8ece9254416bb25573c1ba0",
+        "front-material.png": "2bdeb280fd9ee9b7c65fa5d542b777c97bae923e6aa512cabcc571c1bbed843e",
+        "rear-clay.png": "e86e43f90655cded6cfe6b71603c0078f309ee0578c4cb4403cb8013eff10dcf",
+        "rear-material.png": "89a18e095dbbd8687c4cd7ebb5fd84b3de5b2fdc24dbf05f9a0e48377ab6aeed",
+        "shoulder-clay.png": "01f88f72987053ff637c7b92cc7468c49e1e1ec03c5726653ab21f16ac5919c9",
+        "shoulder-material.png": "b205f72859457b9425f5a0032efedd1c854269fc1208f2ee5f96ab91176532f8"
+      }
+    }
+  },
+  "selfReview": [
+    "Inspected merged p6 front/side/rear clay and hero/front/rear saved materials before edit; no blocking material regression.",
+    "Inspected maximum whole front/rear clay, material hero and enlarged front/rear/shoulder clay: root coverage and wrist continuity retained, no repeated cut-root row reopened.",
+    "Inspected maximum idle36 front material and idle108 rear material, minimum idle108 shoulder clay, and default material hero. Feather hierarchy and listening gesture remain; proximal anchor retains construction.",
+    "Default geometry compared independently against parent at all five sampled idle frames, not only a still frame. Wrist original local transform/action retained under compensated static edit parents.",
+    "93 moving meshes include shape-controlled fitted surfaces/secondaries/shafts and 18 rigid primary/shaft meshes below existing animated wrist. 26 proximal wing meshes lie entirely in anchored span and are fixed."
+  ],
+  "remainingLimits": [
+    "Static fitted Fan lift range 0\u20131 only; maximum six-degree distal arc, measured fan displacement 0.1301\u20130.1305m across sampled idle.",
+    "Preserved open-sheet flight feather construction, graphic material atlas and stylized shallow feather relief. These are retained art characteristics, not regenerated procedural authoring.",
+    "Grip retains stylized knuckle articulation and a small outer toe/claw junction edge; parent accepted construction separately.",
+    "Author control verification and scoped parent review do not establish final native export/browser performance or gallery promotion; parent owns those gates."
+  ],
+  "preservedRevisions": [
+    "Initial control v1 source retained; v1b uses distal compensation frame preserving original wrist-local animation.",
+    "Earlier verification.json/log retained; strict float32 buffers and finite-coordinate checks in verification-v2.json/log are authoritative.",
+    "All artist construction/grip rejected sources and captures retained. Parent frozen construction remained read-only."
+  ],
+  "nextOwner": "Parent canonical registration, maintained saved-source native edit/export/browser gates and independent final visual promotion."
+}
