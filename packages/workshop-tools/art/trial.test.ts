@@ -299,7 +299,9 @@ await test('v2 dispatch refuses a step that cannot leave final-review reserve; e
   const capStamp = stamp();
   await record(directory, { ...usage(1, 190), at: capStamp, through: capStamp });
   const values = (await load(directory)).values;
-  assert.throws(() => handoff(values, 'verifier'), /Reserved final-review credits/);
+  assert.throws(() => handoff(values, 'author'), /Reserved final-review credits/);
+  assert.match(handoff(values, 'verifier'), /Review-only reserve/);
+  assert.match(handoff(values, 'director'), /Review-only reserve/);
   await record(directory, {
     kind: 'stop',
     at: stamp(),
@@ -307,4 +309,190 @@ await test('v2 dispatch refuses a step that cannot leave final-review reserve; e
     evidence: ['candidate.json'],
   });
   assert.equal((await load(directory)).values.at(-1)?.kind, 'stop');
+  assert.throws(
+    () =>
+      handoff(
+        values.concat({ kind: 'stop', at: stamp(), reason: 'Done', evidence: ['done.json'] }),
+        'director',
+      ),
+    /explicitly stopped/,
+  );
+});
+
+await test('reserve permits review only, while actual caps, failed revisions, pauses and telemetry still block it', () => {
+  const configured = {
+    ...init,
+    version: 2,
+    limits: { assetMinutes: 90, packageMinutes: 30, failedRevisions: 2, credits: 250 },
+    reserve: { minutes: 20, credits: 60 },
+  };
+  const started = {
+    ...begin,
+    estimate: { minutes: 10, credits: 20, basis: 'Measured comparison' },
+  };
+  const history = [configured, audit, started, usage(20, 190)];
+  const now = start + 20 * 60_000;
+  assert.equal(evaluate(history, now).allowed, false);
+  for (const role of ['verifier', 'director']) {
+    assert.match(handoff(history, role, now), /Review-only reserve/);
+    assert.throws(() => handoff([...history, usage(20, 250)], role, now), /Asset credit cap/);
+    assert.throws(() => handoff(history, role, now + 180_000), /usage must be refreshed/);
+    assert.throws(
+      () =>
+        handoff(
+          [...history, { kind: 'pause', at: at(20), reason: 'user-wait', evidence: 'Question' }],
+          role,
+          now,
+        ),
+      /Waiting for user/,
+    );
+    assert.throws(
+      () => handoff([...history, review(20), review(20)], role, now),
+      /failed revision cap/,
+    );
+    assert.throws(
+      () => handoff([...history, usage(32, 190)], role, start + 32 * 60_000),
+      /package time cap/,
+    );
+  }
+  const timeReserve = [configured, audit, { ...started, at: at(60) }, usage(70, 100)];
+  assert.match(handoff(timeReserve, 'verifier', start + 70 * 60_000), /Review-only reserve/);
+  assert.throws(
+    () => handoff(timeReserve, 'author', start + 70 * 60_000),
+    /Reserved final-review time/,
+  );
+  assert.throws(
+    () => handoff([configured, usage(90, 100)], 'director', start + 90 * 60_000),
+    /Asset time cap/,
+  );
+});
+
+const extendAllowance = (minute: number, credits = 1000) => ({
+  kind: 'allowance',
+  at: at(minute),
+  director: init.roles.director.id,
+  credits,
+  reserveCredits: 200,
+  authorization: 'User explicitly raised this asset allowance; cumulative usage is retained.',
+  evidence: ['user-authorization.json'],
+});
+const allowanceInit = {
+  ...init,
+  version: 2,
+  limits: { assetMinutes: 90, packageMinutes: 30, failedRevisions: 2, credits: 250 },
+  reserve: { minutes: 20, credits: 60 },
+};
+
+await test('allowance increases only the effective credit policy without rewriting history or counters', () => {
+  const initialBytes = JSON.stringify(allowanceInit);
+  const begun = {
+    ...begin,
+    estimate: { minutes: 10, credits: 20, basis: 'Comparable whole-step receipt' },
+  };
+  const history = [allowanceInit, audit, begun, review(3), usage(4, 260)];
+  const before = evaluate(history, start + 5 * 60_000);
+  const extended = [...history, extendAllowance(5)];
+  const after = evaluate(extended, start + 5 * 60_000);
+  assert.equal(before.limits.credits, 250);
+  assert.equal(before.allowed, false);
+  assert.equal(after.allowed, true);
+  assert.deepEqual(after.limits, { ...before.limits, credits: 1000 });
+  assert.deepEqual(after.reserve, { ...before.reserve, credits: 200 });
+  assert.deepEqual(after.usage, before.usage);
+  assert.deepEqual(after.packages, before.packages);
+  assert.equal(after.minutes, before.minutes);
+  assert.equal(after.remaining.credits, 740);
+  assert.equal(JSON.stringify(allowanceInit), initialBytes);
+  assert.equal(evaluate(history, start + 4 * 60_000).limits.credits, 250);
+  assert.match(handoff(extended, 'author', start + 5 * 60_000), /"credits": 1000/);
+  assert.equal(evaluate([...extended, usage(5, 800)], start + 5 * 60_000).allowed, false);
+  assert.throws(
+    () => handoff([...extended, usage(5, 1000)], 'director', start + 5 * 60_000),
+    /Asset credit cap/,
+  );
+  assert.throws(() => evaluate([...extended, usage(5, 0)], start + 5 * 60_000), /cannot decrease/);
+  assert.ok(
+    evaluate([...extended, review(5)], start + 5 * 60_000).reasons.some((r) =>
+      r.includes('failed revision cap'),
+    ),
+  );
+  assert.ok(
+    evaluate([...extended, usage(32, 270)], start + 32 * 60_000).reasons.some((r) =>
+      r.includes('package time cap'),
+    ),
+  );
+  assert.ok(
+    evaluate([...extended, usage(90, 270)], start + 90 * 60_000).reasons.includes(
+      'Asset time cap reached',
+    ),
+  );
+});
+
+await test('allowance rejects unapproved identities, missing evidence, repeated or decreasing caps and noncredit changes', () => {
+  const extension = extendAllowance(1);
+  const now = start + 60_000;
+  assert.throws(() => evaluate([init, extension], now), /v2 required/);
+  for (const patch of [
+    { director: init.roles.author.id },
+    { authorization: ' ' },
+    { evidence: [] },
+    { evidence: [' '] },
+    { credits: 250 },
+    { credits: 200 },
+    { reserveCredits: 0 },
+    { reserveCredits: 1000 },
+    { assetMinutes: 200 },
+    { limits: { credits: 1000 } },
+  ])
+    assert.throws(() => evaluate([allowanceInit, { ...extension, ...patch }], now));
+  assert.throws(() => evaluate([allowanceInit, extension, extension], now), /strictly increase/);
+  assert.throws(
+    () => evaluate([allowanceInit, extension, extendAllowance(1, 900)], now),
+    /strictly increase/,
+  );
+});
+
+await test('recorded allowance is append-only, preserves cumulative usage and cannot revive a stopped trial', async (t) => {
+  const root = await realpath(await mkdtemp(resolve(tmpdir(), 'art-trial-allowance-')));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const baseline = resolve(root, 'baseline.json');
+  await writeFile(baseline, 'baseline');
+  const directory = resolve(root, 'trial');
+  const stamp = () => new Date().toISOString();
+  await initialize(directory, {
+    ...allowanceInit,
+    at: new Date(Date.now() - 60_000).toISOString(),
+    baseline: [{ path: baseline, sha256: hash('baseline') }],
+  });
+  const initial = await readFile(resolve(directory, '000000.json'));
+  const metered = stamp();
+  await record(directory, { ...usage(1, 260), at: metered, through: metered });
+  const earlier = (await load(directory)).values;
+  assert.equal(evaluate(earlier).limits.credits, 250);
+  await record(directory, { ...extendAllowance(1), at: stamp() });
+  const extended = (await load(directory)).values;
+  assert.equal(evaluate(extended).allowed, true);
+  assert.equal(evaluate(extended).usage?.credits, 260);
+  assert.equal(evaluate(earlier).limits.credits, 250);
+  assert.deepEqual(await readFile(resolve(directory, '000000.json')), initial);
+  await assert.rejects(
+    record(directory, { ...extendAllowance(1), at: stamp() }),
+    /strictly increase/,
+  );
+  await record(directory, { kind: 'stop', at: stamp(), reason: 'Frozen', evidence: ['stop.json'] });
+  await record(directory, { ...extendAllowance(1, 1200), at: stamp() });
+  const stopped = (await load(directory)).values;
+  assert.equal(evaluate(stopped).limits.credits, 1200);
+  assert.equal(evaluate(stopped).usage?.credits, 260);
+  assert.equal(evaluate(stopped).allowed, false);
+  assert.throws(() => handoff(stopped, 'director'), /explicitly stopped/);
+  await assert.rejects(
+    record(directory, {
+      ...begin,
+      at: stamp(),
+      estimate: { minutes: 5, credits: 5, basis: 'Repair' },
+    }),
+    /explicitly stopped/,
+  );
+  assert.deepEqual(await readFile(resolve(directory, '000000.json')), initial);
 });

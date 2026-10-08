@@ -13,14 +13,14 @@ This protocol governs bounded native-asset delegation. The original **Storm Roc 
 
 ## Cumulative limits
 
-| Scope               | Stop before the next dispatch or revision at              |
-| ------------------- | --------------------------------------------------------- |
-| Each defect/package | **30 working minutes or 2 failed candidate revisions**    |
-| Entire asset        | **90 working minutes or 250 Standard credit-equivalents** |
+| Scope               | Stop before the next dispatch or revision at                |
+| ------------------- | ----------------------------------------------------------- |
+| Each defect/package | **30 working minutes or 2 failed candidate revisions**      |
+| Entire asset        | **90 working minutes or 1,000 Standard credit-equivalents** |
 
-These remain the recommended limits for new subject trials; they are not a new user-approved numeric allowance. **New ledgers use version 2**, pinning their limits and final-review reserve in the immutable initialization receipt. Version 1 always retains the historical 90/30/2/250 contract. Altering defaults or using another trial cannot change old receipts. A material allowance increase still needs an explicit decision. Start the asset clock at the first attributable baseline/specification work, including work already in flight at adoption. Include Astra, Sol author, Sol auditor/verifier, helpers, renders, integration and rework. Record earlier work retrospectively before proceeding. A representation change, new agent, new package label, restart or parent takeover never resets the asset budget or an unresolved defect's counters. Two failures includes the first rejected candidate and its rejected repair.
+The user raised the per-model cumulative credit allowance to **1,000** during Prowler on 2026-10-08. The time and failure limits remain unchanged. **New ledgers use version 2**, pinning their limits and final-review reserve in the immutable initialization receipt. Version 1 always retains the historical 90/30/2/250 contract. Altering defaults or using another trial cannot change old receipts. A material allowance increase still needs an explicit decision. Start the asset clock at the first attributable baseline/specification work, including work already in flight at adoption. Include Astra, Sol author, Sol auditor/verifier, helpers, renders, integration and rework. Record earlier work retrospectively before proceeding. A representation change, new agent, new package label, restart or parent takeover never resets the asset budget or an unresolved defect's counters. Two failures includes the first rejected candidate and its rejected repair.
 
-Before dispatch, state the remaining asset allowance and the expected cost of the next bounded step **including parent coordination and final review**, using comparable receipts when available. An affordable worker call alone does not establish enough allowance for the whole step. Fit the step to the remaining budget; if that cannot be justified, preserve the checkpoint. This is allocation within the existing cap. For the next trial reserve **20 minutes and 60 modeled credits** for native/browser integration, parent visual review and minimal closeout. Pin a whole-step `estimate` with its evidence basis on each package start; the CLI refuses a start that cannot leave the reserve. Once either reserve boundary is reached, new production handoffs stop while final review and evidence recording remain possible. These are planning estimates, not claims of measured worker cost or an automatic cap extension.
+Before dispatch, state the remaining asset allowance and the expected cost of the next bounded step **including parent coordination and final review**, using comparable receipts when available. An affordable worker call alone does not establish enough allowance for the whole step. Fit the step to the remaining budget; if that cannot be justified, preserve the checkpoint. This is allocation within the existing cap. For the next trial reserve **20 minutes and 200 modeled credits** for native/browser integration, parent visual review and minimal closeout. Pin a whole-step `estimate` with its evidence basis on each package start; the CLI refuses a start that cannot leave the reserve. Once either reserve boundary is reached, new production handoffs stop while final review and evidence recording remain possible. These are planning estimates, not claims of measured worker cost or an automatic cap extension.
 
 Prepare and verify shared accounting infrastructure before a future production trial begins; retain its development cost in the separate strategy-overhead report and include it in all-in comparisons. For an already active trial, rollout delays and accounting work remain in its original history. Label such a result an adoption/setup trial when no repair package starts. Do not claim an author/verifier efficiency result from a baseline-and-specification checkpoint, or repeat frozen baseline/spec work merely to begin a cleaner-looking trial.
 
@@ -42,7 +42,7 @@ node packages/workshop-tools/art/trial.ts status .work/sessions/<session>/stormr
 node packages/workshop-tools/art/trial.ts handoff .work/sessions/<session>/stormroc-trial auditor
 ```
 
-`handoff` also accepts `author`, `verifier` and `director`; redirect output to an ignored handoff file. Author/verifier handoffs require an approved spec audit and an active package. The director refreshes usage and checks status immediately before every dispatch and repair. Reuse that fresh snapshot for handoff generation; workers do not rescan the ledger. A nonzero exit blocks dispatch: **2** is a budget/telemetry hold; **1** is invalid data or a refused handoff. Recording evidence may succeed while status remains blocked.
+`handoff` also accepts `author`, `verifier` and `director`; redirect output to an ignored handoff file. Author/verifier handoffs require an approved spec audit and an active package. The director refreshes usage and checks status immediately before every dispatch and repair. Reuse that fresh snapshot for handoff generation; workers do not rescan the ledger. Status/credits exit **2** holds production; **1** means invalid data. At a reserve boundary, `allowed` is false while `reviewAllowed` can remain true: only verifier/director handoffs may use the reserve to review and integrate the frozen candidate. Their handoffs explicitly forbid modeling, repairs or new author dispatches. Actual asset/package caps, failure limits, stops, pauses and missing/stale usage still block those handoffs; `reviewReasons` explains why. A refused handoff exits 1. Recording evidence may succeed while dispatch remains blocked.
 
 The initialization object is:
 
@@ -52,8 +52,8 @@ The initialization object is:
   "version": 2,
   "trial": "next-subject-trial",
   "asset": "subject-id",
-  "limits": { "assetMinutes": 90, "packageMinutes": 30, "failedRevisions": 2, "credits": 250 },
-  "reserve": { "minutes": 20, "credits": 60 },
+  "limits": { "assetMinutes": 90, "packageMinutes": 30, "failedRevisions": 2, "credits": 1000 },
+  "reserve": { "minutes": 20, "credits": 200 },
   "at": "2026-10-08T00:00:00.000Z",
   "spec": "Replace with the actual shared specification and reference paths.",
   "baseline": [{ "path": "path/to/baseline-manifest.json", "sha256": "REPLACE_WITH_REAL_SHA256" }],
@@ -80,6 +80,8 @@ Each event has `kind` and `at` (canonical UTC ISO timestamp with milliseconds), 
 | `resume`       | No extra fields; closes the open user wait.                                                                                                                                                                                 |
 | `intervention` | `actor`, `model`, `effort`, `detail`, nonempty `evidence` list. Includes reassignment, takeover and material Astra corrections.                                                                                             |
 | `stop`         | `reason`, nonempty `evidence` list. Permanently denies new handoffs while allowing late evidence.                                                                                                                           |
+
+A user-authorized increase on an active version-2 trial is an append-only `allowance` event: `director`, strictly increased `credits`, positive `reserveCredits` below that cap, `authorization` text quoting the explicit decision, and nonempty `evidence`. It changes only the effective credit allowance and credit reserve. Original initialization, usage, clocks, failure counts and permanent stops remain intact. Version-1 historical trials cannot use this event. Raising a budget never resumes a stopped trial.
 
 `init` refuses existing directories. `record` appends exclusive numbered receipts linked by byte hashes; concurrent appends cannot overwrite one another. A repeated package ID cannot restart its clock. Keep receipts intact and back them up with closeout evidence. The chain detects accidental edits/reordering of retained history; it is not a signed audit log, cannot detect deletion of its tail, and does not authenticate the named reviewers. Preserved evidence and Astra review remain necessary.
 

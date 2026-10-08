@@ -12,7 +12,7 @@ const legacyLimits = Object.freeze({
   failedRevisions: 2,
   credits: 250,
 });
-type Limits = typeof legacyLimits;
+type Limits = { [Key in keyof typeof legacyLimits]: number };
 const freshnessMs = 120_000;
 type ObjectValue = Record<string, unknown>;
 type Entry = { previous: string; value: ObjectValue };
@@ -112,7 +112,7 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
   const initial = values[0];
   if (!initial) throw new Error('Empty trial');
   const roles = config(initial);
-  const { limits, reserve } = policy(initial);
+  let { limits, reserve } = policy(initial);
   const started = time(initial.at);
   let previousAt = started;
   let spec = text(initial.spec);
@@ -128,6 +128,32 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
     if (at < previousAt || at > now) throw new Error('Events must be ordered and not future dated');
     previousAt = at;
     switch (event.kind) {
+      case 'allowance': {
+        if (initial.version !== 2) throw new Error('Allowance extension: v2 required');
+        const fields = [
+          'kind',
+          'at',
+          'director',
+          'credits',
+          'reserveCredits',
+          'authorization',
+          'evidence',
+        ];
+        if (Object.keys(event).some((key) => !fields.includes(key)))
+          throw new Error('Allowance may change only credits and credit reserve');
+        if (event.director !== roles.director.id)
+          throw new Error('Director must record allowance authorization');
+        text(event.authorization);
+        strings(event.evidence);
+        const credits = finite(event.credits);
+        const reserveCredits = finite(event.reserveCredits);
+        if (credits <= limits.credits) throw new Error('Allowance must strictly increase credits');
+        if (reserveCredits <= 0 || reserveCredits >= credits)
+          throw new Error('Credit reserve must be positive and below the new allowance');
+        limits = { ...limits, credits };
+        reserve = { ...reserve, credits: reserveCredits };
+        break;
+      }
       case 'spec':
         if (event.director !== roles.director.id) throw new Error('Director must own spec changes');
         spec = text(event.text);
@@ -231,11 +257,12 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
   if (!usage || !usage.complete || now - usage.through > freshnessMs)
     reasons.push('Complete cumulative usage must be refreshed within 120 seconds');
   if (usage && usage.credits >= limits.credits) reasons.push('Asset credit cap reached');
+  const reserveReasons: string[] = [];
   if (initial.version === 2) {
     if (minutes >= limits.assetMinutes - reserve.minutes)
-      reasons.push('Reserved final-review time reached');
+      reserveReasons.push('Reserved final-review time reached');
     if (usage && usage.credits >= limits.credits - reserve.credits)
-      reasons.push('Reserved final-review credits reached');
+      reserveReasons.push('Reserved final-review credits reached');
   }
   const work = [...packages.entries()].map(([id, item]) => {
     const packageMinutes = elapsed(item.started, item.ended ?? now);
@@ -249,6 +276,8 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
       brief: item.brief,
     };
   });
+  const reviewReasons = [...reasons];
+  reasons.push(...reserveReasons);
   return {
     trial: initial.trial,
     asset: initial.asset,
@@ -267,6 +296,9 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
     },
     reasons,
     allowed: reasons.length === 0,
+    reviewReasons,
+    reviewAllowed: reviewReasons.length === 0,
+    reserveReached: reserveReasons.length > 0,
   };
 }
 
@@ -393,7 +425,9 @@ export function handoff(values: ObjectValue[], role: string, now = Date.now()) {
   const state = evaluate(values, now);
   if (!['auditor', 'author', 'verifier', 'director'].includes(role))
     throw new Error('Unknown role');
-  if (!state.allowed) throw new Error(state.reasons.join('; '));
+  const reviewRole = role === 'verifier' || role === 'director';
+  if (!(reviewRole ? state.reviewAllowed : state.allowed))
+    throw new Error((reviewRole ? state.reviewReasons : state.reasons).join('; '));
   if (role !== 'auditor' && role !== 'director' && !state.audited)
     throw new Error('Specification audit is required');
   const active = state.packages.find((item) => !item.cleared);
@@ -409,7 +443,10 @@ export function handoff(values: ObjectValue[], role: string, now = Date.now()) {
     director:
       'Resolve ambiguity and representation choices; record any takeover with model/effort and evidence. Review the final source and consumer pixels independently. Existing native/export/browser/publication gates still apply. Verifier clearance is not final acceptance or user approval.',
   };
-  return `# ${String(state.asset)} — ${role}\n\nShared specification SHA-256: ${state.specHash}\n\n${state.spec}\n\n## Assignment\n\n${instructions[role]}\n\n${JSON.stringify({ roles: state.roles, activePackage: active ?? null, limits: state.limits, reserve: state.reserve, remaining: state.remaining, elapsedMinutes: state.minutes, cumulativeUsage: state.usage }, null, 2)}\n\nRead docs/art/delegation.md. The director owns telemetry and checks the ledger before every dispatch or revision; workers return one frozen candidate and do not poll accounting. All roles, renders and rework share the same asset cap; restarts and takeovers never reset it. At a cap freeze evidence and report the bounded unfinished result.\n`;
+  const reserveInstruction = state.reserveReached
+    ? '\n\nReview-only reserve: inspect and integrate the already frozen candidate, record evidence and close out. Do not model, repair, start another package or dispatch an author. If review fails, preserve the failure and report the bounded result.'
+    : '';
+  return `# ${String(state.asset)} — ${role}\n\nShared specification SHA-256: ${state.specHash}\n\n${state.spec}\n\n## Assignment\n\n${instructions[role]}${reserveInstruction}\n\n${JSON.stringify({ roles: state.roles, activePackage: active ?? null, limits: state.limits, reserve: state.reserve, remaining: state.remaining, elapsedMinutes: state.minutes, cumulativeUsage: state.usage }, null, 2)}\n\nRead docs/art/delegation.md. The director owns telemetry and checks the ledger before every dispatch or revision; workers return one frozen candidate and do not poll accounting. All roles, renders and rework share the same asset cap; restarts and takeovers never reset it. At a cap freeze evidence and report the bounded unfinished result.\n`;
 }
 
 export async function runCli(args: string[]) {
