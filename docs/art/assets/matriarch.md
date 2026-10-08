@@ -37,6 +37,10 @@ Retained delivery: `test-results/matriarch-delivery/` (views, export and source 
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-matriarch-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.
 
+## User refinement request — 2026-10-09 Shanghai
+
+The user described the published native result as somewhat cute but toyish and lacking detail, and requested another refinement round. The prior art-direction acceptance below remains a historical decision; it did not establish user aesthetic approval. The round attempted anatomical planes and connected facial/limb/paw construction, but stopped unfinished at the orbital construction gate; regional coat work never began. The previous release remains the gallery default. The [refinement outcome](native-matriarch-refinement.md) records the failed attempts, preserved work and restored bytes.
+
 ## Native trial — 2026-10-09 Shanghai
 
 The native Matriarch is now the independently verified, Astra-accepted gallery default; user art approval remains unrecorded. The selective throat/neck repair and editable Guard reach operation preserve the original procedural model and retained GLB. The [native trial retrospective](native-matriarch-trial.md) records exact accepted bytes, work split, costs, checks and remaining limitations. The procedural record above remains the original baseline account.

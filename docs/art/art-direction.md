@@ -78,6 +78,8 @@ The first delegated Spiral/Vajra/Hydra review exposed failures that palette and 
 
 ## Current studies: decisions and failure cases
 
+On 2026-10-09, the user described the published **Briar Matriarch** as somewhat cute but toyish and lacking detail, and requested refinement. The native throat repair and delivery verification did not establish the overall visual bar. Its inflated facial and body masses, molded limb/paw transitions and uniform fine coat need stronger anatomical planes and regional surface hierarchy. Preserve the approachable guarding gesture while correcting those forms; added noise or detached fur ornaments do not resolve the critique.
+
 The user rejected the earlier **Nightjar and Hydra** on 2026-10-06, overruling the favorable technical/construction review. The subsequent living Hydra received the explicit response **“this is much better”** and a request to reuse its methodology. That version is the accepted direction and quality reference for further creature work; its earlier bronze versions remain failure examples. This is not blanket approval of every detail or of the other creatures. Catalyst, Phoenix, Spiral and Vajra remain useful material/presentation comparisons.
 
 The separate independent Nightjar/Hydra research trial was rejected on 2026-10-06. Its experimental models, comparison viewer and generated artifacts were discarded; they are not gallery replacements or accepted references. The comparison practices below are retained as review methods, not evidence that the trial produced better art.
