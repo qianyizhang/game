@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-08T16:01:41.928Z",
+  "candidate": {
+    "path": ".work/runtime/dcc-export-jmWL0G/matriarch/candidate.json",
+    "sha256": "ad0be458544f542f561d277d1f0660c58b07ba9041bae7b94a72ce27fa55f074"
+  },
+  "neutralPacket": {
+    "path": ".work/sessions/matriarch-sol-astra-2026-10-08/author/frozen-candidate-packet.json",
+    "sha256": "0d51b2e829424c75d8d354a74010f86ea3bf414c724a9b7272a4dc89c75e6453"
+  },
+  "nativeEvidence": "test-results/dcc-native/saved-Hqnpe7",
+  "nativeSavedGate": "pass",
+  "consumerAgreement": {
+    "sampleVertices": 624,
+    "objects": 39,
+    "skinned": 1,
+    "rigid": 38,
+    "times": [
+      0,
+      1.5,
+      3,
+      4.5,
+      6
+    ],
+    "maxRestError": 6.573997822781506e-07,
+    "maxPoseError": 9.131380511945862e-07
+  },
+  "lastPixelGaps": [
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/side-throat-detail-clay.png",
+      "sha256": "3ffb9ab0c46fba1fb9278fd2d6a20e5cdc90b68976daf2c0dace82ed3112392c"
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/consumer-desktop-material.png",
+      "sha256": "50ac72d5379f1e226b84438a3e116418f4b6742698c53a159965b8709cf66444"
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/consumer-phone-material.png",
+      "sha256": "bc6559fa2aeec487da5900bc2605aa7984748a1d479346c791757647504d6579"
+    }
+  ],
+  "observations": [
+    "Enlarged throat confirms a connected descending jaw/throat camber and smooth blend into forechest; small original triangle shading remains visible at extreme enlargement but no pronounced neck pinch, detached patch, new seam or inflated dewlap.",
+    "Actual Viewer desktop and390px phone both contain full supported subject; phone framing is small but coherent and no clipping or horizontal overflow. Physical-device performance is unmeasured.",
+    "Native edited consumer profile/reverse/rear and phone views remain fitted; native preservation/restore/reload and five-time consumer agreement passed.",
+    "Fullnpmcheck passed formatting/lint/type/Python13/tools55 before draft publication-only DCC failure46/47; rerun after accepted promotion is required for fullgate. This ordering failure is not candidate geometry rejection."
+  ],
+  "independence": "All10candidatepixels inspected before author selfassessment. Independent sourceconsumer/native checks separate from Astra finalacceptance."
+}

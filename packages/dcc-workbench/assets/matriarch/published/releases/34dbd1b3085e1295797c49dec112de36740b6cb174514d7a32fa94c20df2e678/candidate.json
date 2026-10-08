@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "matriarch",
+  "definitionDigest": "9b4b2357e437ded53ed8ff9aeb4d19ab015342487dcc0e8414d47a4b370cedcd",
+  "definition": {
+    "id": "matriarch",
+    "legacyStudyId": "matriarch",
+    "source": "subjects/matriarch/source.blend",
+    "brief": "subjects/matriarch/brief.json",
+    "native": {
+      "adapter": "blender/export_saved.py",
+      "dependencies": [
+        "blender/export_saved.py",
+        "blender/native_types.py",
+        "blender/saved_export_plan.py"
+      ]
+    },
+    "delivery": {
+      "profile": "skinned",
+      "animation": {
+        "name": "matriarch_idle",
+        "seconds": 6,
+        "fps": 24
+      },
+      "directory": "assets/matriarch",
+      "model": "assets/matriarch/model.glb",
+      "audit": "assets/matriarch/authoring.json",
+      "poses": "assets/matriarch/pose-samples.json",
+      "manifest": "assets/matriarch/manifest.json",
+      "receipts": "assets/matriarch/receipts",
+      "publication": "assets/matriarch/published"
+    }
+  },
+  "inputs": {
+    "blender/export_saved.py": "ccc388de6b6ddd622c6884a7f65f9893e6a752f355b95c63af0b48f41a2243c6",
+    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31",
+    "blender/saved_export_plan.py": "c9d0858b8ae79fb7d85f0069010227fa3769c7f3f1604047dd277664411bfc42",
+    "contracts.ts": "3778dc4197634712de81808e45638f27be3d13a3a9b35d258ef8f9dededecb93",
+    "glb.ts": "752b2adbc98a0559577236a9399e2ecc1e83281ce32a82e1d0760cc48d7e13da",
+    "pipeline.mjs": "085eee0376f80c6d06e30d2c51320deb88c430c1b50bc3144b834a88e007e4f4",
+    "pipeline.ts": "17d75f1236d726a73c659bfa28a6cab6fbdbc87592289fd38c88c8aecbfc7952",
+    "registry.ts": "d6a06ef24b7cd16c5e840c218c57a6c6cab85455d8ba694e069a4d247f49bafa",
+    "releases.ts": "9306fa9b206f015a07f4e415154505a95116df5ae47c5aeec0428ee865526a86",
+    "subjects/matriarch/brief.json": "6e6e6308cb2e290d7c5fe700f3e2d16bcf1b5367402a1b9fbefd980ca8981ad1",
+    "subjects/matriarch/source.blend": "2700bc670306f4284ce94d7fa8b6d47626757bb5a015e861d61eef34cef3095d"
+  },
+  "previous": null,
+  "origin": {
+    "kind": "exported"
+  },
+  "outputs": {
+    "model": {
+      "path": "matriarch.pending.glb",
+      "sha256": "c7604d9ae10816719af0813247aecf8828da94806d34b41739ea51b79e3566ee"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "1a6c2a66b15e35864ce40d9855397a0c72ca58f7567c3db4d4a7615e9ab002c8"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "6ffcc2ef695aeb52446022496f128e0da975563527e5ede669f4df832bf5028f"
+    }
+  },
+  "stats": {
+    "bytes": 7776624,
+    "triangles": 163338,
+    "meshes": 39,
+    "materials": 9,
+    "textures": 6,
+    "joints": 3,
+    "animations": [
+      {
+        "name": "matriarch_idle",
+        "seconds": 6,
+        "channels": 13
+      }
+    ]
+  }
+}

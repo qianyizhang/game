@@ -1,0 +1,33 @@
+{
+  "asset": "matriarch",
+  "kind": "preserved-procedural-delivery",
+  "baselineSha256": "97dd27bed0e61d08e8832c080ca29bb103261cd76e18244c878a117db2c43fa0",
+  "baselineBytes": 8220588,
+  "rootThread": "01a11c18-745e-7652-979e-6308c418b7f4",
+  "firstWorkUtc": "2026-10-08T15:19:00.000Z",
+  "frozenAt": "2026-10-08T15:31:41.639Z",
+  "delivery": {
+    "bytes": 8220588,
+    "vertices": 87456,
+    "triangles": 163348,
+    "meshes": 39,
+    "meshNodes": 39,
+    "skins": 1,
+    "joints": [3],
+    "materials": 9,
+    "embeddedImages": 6,
+    "imageBytes": 1106600,
+    "clip": [
+      {
+        "name": "matriarch_idle",
+        "duration": 6,
+        "channels": 6
+      }
+    ]
+  },
+  "baselinePacket": ".work/sessions/matriarch-sol-astra-2026-10-08/baseline/author-packet.json",
+  "baselinePacketSha256": "be07969a514412ebc8865280bba4c141e00c31d60985cef152e8724a5123be7a",
+  "sourcePins": ".work/sessions/matriarch-sol-astra-2026-10-08/baseline/source-pins.json",
+  "sourcePinsSha256": "97e47ce797b8c98c8fcb45f4f854050d7c4c1672479eeccef07cc78fa85bbcda",
+  "note": "Original procedural delivery preserved before native work. Baseline capture/source snapshots remain protected session evidence; no native aesthetic acceptance is implied."
+}

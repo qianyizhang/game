@@ -36,3 +36,7 @@ Open `/?art=3d&study=matriarch`. The existing gallery supports animated GLB, PNG
 Retained delivery: `test-results/matriarch-delivery/` (views, export and source evidence). Superseded intermediate captures, snapshots and repeated whole-gallery exports were retired in the [lean cleanup](../../engineering/cleanup-triage.md). The original dated review remains recoverable from Git.
 
 The original 2026-10-07 review, including exact test counts, export measurements, failed attempts and then-current repository gate limits, is preserved at Git `85462d4924c79328723ca6c30a2d32a3e12d568e:docs/art-review-matriarch-2026-10-07.md`. [The migration record](../../../maintenance/document-migration.json) pins its SHA-256. Historical verification is not a fresh test or aesthetic acceptance.
+
+## Native trial — 2026-10-09 Shanghai
+
+The native Matriarch is now the independently verified, Astra-accepted gallery default; user art approval remains unrecorded. The selective throat/neck repair and editable Guard reach operation preserve the original procedural model and retained GLB. The [native trial retrospective](native-matriarch-trial.md) records exact accepted bytes, work split, costs, checks and remaining limitations. The procedural record above remains the original baseline account.

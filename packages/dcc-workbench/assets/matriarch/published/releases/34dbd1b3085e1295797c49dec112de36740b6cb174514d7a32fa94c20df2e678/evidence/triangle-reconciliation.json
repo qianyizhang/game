@@ -1,0 +1,107 @@
+{
+  "baselineTriangles": 163348,
+  "importedTriangles": 163338,
+  "differences": [
+    {
+      "name": "Matriarch_ContinuousAnatomy",
+      "triangles": 128676,
+      "repeatedIndexTriangles": 10,
+      "exactZeroAreaTriangles": 10,
+      "examples": [
+        {
+          "triangle": 112490,
+          "indices": [
+            59616,
+            59616,
+            59603
+          ],
+          "reason": "repeated-index"
+        },
+        {
+          "triangle": 112492,
+          "indices": [
+            59616,
+            59616,
+            59616
+          ],
+          "reason": "repeated-index"
+        },
+        {
+          "triangle": 112493,
+          "indices": [
+            59616,
+            59616,
+            59616
+          ],
+          "reason": "repeated-index"
+        },
+        {
+          "triangle": 112494,
+          "indices": [
+            59616,
+            59616,
+            59616
+          ],
+          "reason": "repeated-index"
+        },
+        {
+          "triangle": 112495,
+          "indices": [
+            59616,
+            59616,
+            59616
+          ],
+          "reason": "repeated-index"
+        },
+        {
+          "triangle": 112497,
+          "indices": [
+            59606,
+            59616,
+            59616
+          ],
+          "reason": "repeated-index"
+        },
+        {
+          "triangle": 112500,
+          "indices": [
+            59617,
+            59616,
+            59616
+          ],
+          "reason": "repeated-index"
+        },
+        {
+          "triangle": 112514,
+          "indices": [
+            59623,
+            59616,
+            59616
+          ],
+          "reason": "repeated-index"
+        },
+        {
+          "triangle": 112515,
+          "indices": [
+            59616,
+            59616,
+            59623
+          ],
+          "reason": "repeated-index"
+        },
+        {
+          "triangle": 114406,
+          "indices": [
+            60634,
+            59616,
+            59616
+          ],
+          "reason": "repeated-index"
+        }
+      ],
+      "importedTriangles": 128666,
+      "difference": 10
+    }
+  ],
+  "conclusion": "All 10 omitted faces are repeated-index zero-area triangles of Matriarch_ContinuousAnatomy. Every other Matriarch mesh triangle count matches import; no nondegenerate surface face was removed."
+}

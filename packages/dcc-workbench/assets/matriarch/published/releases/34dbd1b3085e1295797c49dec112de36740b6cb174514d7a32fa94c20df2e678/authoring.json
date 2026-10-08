@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "kind": "saved-export",
+  "id": "matriarch",
+  "source": "subjects/matriarch/source.blend",
+  "sourceSha256": "2700bc670306f4284ce94d7fa8b6d47626757bb5a015e861d61eef34cef3095d",
+  "sourceUnchangedByExport": true,
+  "blender": "4.5.14 LTS",
+  "profile": "skinned",
+  "collection": "DELIVERY | Briar Matriarch",
+  "animation": {
+    "name": "matriarch_idle",
+    "seconds": 6.0,
+    "fps": 24
+  },
+  "audit": {
+    "sampleFrames": [
+      0.0,
+      36.0,
+      72.0,
+      108.0,
+      144.0
+    ],
+    "meshCount": 39,
+    "skinnedMeshCount": 1,
+    "rigidMeshCount": 38,
+    "maxSkinnedMotion": 0.06332569125926203,
+    "maxRigidMotion": 0.06795929454730525,
+    "maxLoopDifference": 0.0,
+    "maxSourceDeliveryDifference": 0.0,
+    "requireRigidMotion": true,
+    "motionTolerance": 1e-06,
+    "loopTolerance": 1e-05,
+    "objects": [
+      {
+        "name": "Matriarch_Catchlight_-1",
+        "role": "rigid",
+        "maxMotion": 0.04907494455004285,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Catchlight_1",
+        "role": "rigid",
+        "maxMotion": 0.04283634363349832,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_0_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_0_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_0_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_0_3",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_0_4",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_1_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_1_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_1_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_1_3",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_1_4",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_2_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_2_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_2_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_2_3",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_2_4",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_3_0",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_3_1",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_3_2",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_3_3",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Claw_3_4",
+        "role": "rigid",
+        "maxMotion": 0.0,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_ContinuousAnatomy",
+        "role": "skinned",
+        "maxMotion": 0.06332569125926203,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_EarBowl_-1",
+        "role": "rigid",
+        "maxMotion": 0.04538757697538971,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_EarBowl_1",
+        "role": "rigid",
+        "maxMotion": 0.027327596406171027,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_EyeSocket_-1",
+        "role": "rigid",
+        "maxMotion": 0.04764011067191205,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_EyeSocket_1",
+        "role": "rigid",
+        "maxMotion": 0.04148235459952769,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Iris_-1",
+        "role": "rigid",
+        "maxMotion": 0.04846162273334445,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Iris_1",
+        "role": "rigid",
+        "maxMotion": 0.04227129459298194,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_LeatherNose",
+        "role": "rigid",
+        "maxMotion": 0.06751710990162735,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Lip_-1",
+        "role": "rigid",
+        "maxMotion": 0.05981727183174894,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Lip_1",
+        "role": "rigid",
+        "maxMotion": 0.05979844198084199,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Nostril_-1",
+        "role": "rigid",
+        "maxMotion": 0.06795929454730525,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Nostril_1",
+        "role": "rigid",
+        "maxMotion": 0.06724069902913919,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Philtrum",
+        "role": "rigid",
+        "maxMotion": 0.06019761819045386,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Pupil_-1",
+        "role": "rigid",
+        "maxMotion": 0.04880873629737782,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_Pupil_1",
+        "role": "rigid",
+        "maxMotion": 0.04254475935629103,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_RoundedPinna_-1",
+        "role": "rigid",
+        "maxMotion": 0.050855140919333686,
+        "maxLoopDifference": 0.0
+      },
+      {
+        "name": "Matriarch_RoundedPinna_1",
+        "role": "rigid",
+        "maxMotion": 0.032560754359070784,
+        "maxLoopDifference": 0.0
+      }
+    ]
+  }
+}

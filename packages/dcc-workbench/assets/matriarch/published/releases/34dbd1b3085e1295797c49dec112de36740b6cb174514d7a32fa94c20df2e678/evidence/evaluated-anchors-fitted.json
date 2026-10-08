@@ -1,0 +1,373 @@
+{
+  "sourceSha256": "2700bc670306f4284ce94d7fa8b6d47626757bb5a015e861d61eef34cef3095d",
+  "anchorCount": 48454,
+  "fullHeadVertexCount": 7697,
+  "timesSeconds": [
+    0,
+    1.5,
+    3,
+    4.5,
+    6
+  ],
+  "controlValues": [
+    0,
+    0.5,
+    1
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "values": [
+        {
+          "value": 0.5,
+          "anchorMax": 0.0,
+          "fixedClawMax": 0.0,
+          "fullHeadSharedDisplacement": [
+            -0.03010702133178711,
+            -0.0023456215858459473,
+            -0.011876940727233887
+          ],
+          "fittedDisplacementResidual": 4.2981520598697533e-07,
+          "adjacentMovedMaxByMesh": {
+            "Matriarch_Catchlight_-1": 0.03244997064352698,
+            "Matriarch_Catchlight_1": 0.03245002840134622,
+            "Matriarch_ContinuousAnatomy": 0.032450238046721855,
+            "Matriarch_EarBowl_-1": 0.03245008203902029,
+            "Matriarch_EarBowl_1": 0.03244997279464498,
+            "Matriarch_EyeSocket_-1": 0.032449971183058215,
+            "Matriarch_EyeSocket_1": 0.0324500852691896,
+            "Matriarch_Iris_-1": 0.03245008095996149,
+            "Matriarch_Iris_1": 0.032450087420300006,
+            "Matriarch_LeatherNose": 0.03245008311107218,
+            "Matriarch_Lip_-1": 0.03245008311107218,
+            "Matriarch_Lip_1": 0.03245002840134622,
+            "Matriarch_Nostril_-1": 0.03244997064352698,
+            "Matriarch_Nostril_1": 0.03244997279464498,
+            "Matriarch_Philtrum": 0.03244997279464498,
+            "Matriarch_Pupil_-1": 0.03244997064352698,
+            "Matriarch_Pupil_1": 0.03245008311107218,
+            "Matriarch_RoundedPinna_-1": 0.03245008203902029,
+            "Matriarch_RoundedPinna_1": 0.03244997279464498
+          }
+        },
+        {
+          "value": 1,
+          "anchorMax": 0.0,
+          "fixedClawMax": 0.0,
+          "fullHeadSharedDisplacement": [
+            -0.06021428108215332,
+            -0.00469130277633667,
+            -0.023753643035888672
+          ],
+          "fittedDisplacementResidual": 3.796142102139293e-07,
+          "adjacentMovedMaxByMesh": {
+            "Matriarch_Catchlight_-1": 0.032449974952769745,
+            "Matriarch_Catchlight_1": 0.032449862477842754,
+            "Matriarch_ContinuousAnatomy": 0.03245030356763081,
+            "Matriarch_EarBowl_-1": 0.03244997441323857,
+            "Matriarch_EarBowl_1": 0.03244997710388746,
+            "Matriarch_EyeSocket_-1": 0.03244997549230091,
+            "Matriarch_EyeSocket_1": 0.03244991718784846,
+            "Matriarch_Iris_-1": 0.03244997549230091,
+            "Matriarch_Iris_1": 0.032449919345976914,
+            "Matriarch_LeatherNose": 0.0324500852691896,
+            "Matriarch_Lip_-1": 0.032449974952769745,
+            "Matriarch_Lip_1": 0.03244997710388746,
+            "Matriarch_Nostril_-1": 0.032449974952769745,
+            "Matriarch_Nostril_1": 0.03244997279464498,
+            "Matriarch_Philtrum": 0.032449974952769745,
+            "Matriarch_Pupil_-1": 0.032449974952769745,
+            "Matriarch_Pupil_1": 0.032449862477842754,
+            "Matriarch_RoundedPinna_-1": 0.03245008419013091,
+            "Matriarch_RoundedPinna_1": 0.03244997710388746
+          }
+        }
+      ]
+    },
+    {
+      "frame": 36,
+      "values": [
+        {
+          "value": 0.5,
+          "anchorMax": 0.0,
+          "fixedClawMax": 0.0,
+          "fullHeadSharedDisplacement": [
+            -0.02956366539001465,
+            -0.005313068628311157,
+            -0.012278914451599121
+          ],
+          "fittedDisplacementResidual": 5.990192664337689e-07,
+          "adjacentMovedMaxByMesh": {
+            "Matriarch_Catchlight_-1": 0.03244982983257384,
+            "Matriarch_Catchlight_1": 0.032449933478912,
+            "Matriarch_ContinuousAnatomy": 0.032450189622403945,
+            "Matriarch_EarBowl_-1": 0.032449934095519835,
+            "Matriarch_EarBowl_1": 0.032449933478912,
+            "Matriarch_EyeSocket_-1": 0.03244982983257384,
+            "Matriarch_EyeSocket_1": 0.03244999704551267,
+            "Matriarch_Iris_-1": 0.03244982983257384,
+            "Matriarch_Iris_1": 0.03244999704551267,
+            "Matriarch_LeatherNose": 0.03244997854730839,
+            "Matriarch_Lip_-1": 0.032449938355719105,
+            "Matriarch_Lip_1": 0.03244999216871438,
+            "Matriarch_Nostril_-1": 0.032449834709396524,
+            "Matriarch_Nostril_1": 0.032449824955750425,
+            "Matriarch_Philtrum": 0.032449938355719105,
+            "Matriarch_Pupil_-1": 0.03244982983257384,
+            "Matriarch_Pupil_1": 0.03244994323252548,
+            "Matriarch_RoundedPinna_-1": 0.03245004200171063,
+            "Matriarch_RoundedPinna_1": 0.03244997854730839
+          }
+        },
+        {
+          "value": 1,
+          "anchorMax": 0.0,
+          "fixedClawMax": 0.0,
+          "fullHeadSharedDisplacement": [
+            -0.059127092361450195,
+            -0.01062619686126709,
+            -0.02455759048461914
+          ],
+          "fittedDisplacementResidual": 3.384893146634265e-07,
+          "adjacentMovedMaxByMesh": {
+            "Matriarch_Catchlight_-1": 0.0324500870699563,
+            "Matriarch_Catchlight_1": 0.03245004211382078,
+            "Matriarch_ContinuousAnatomy": 0.03245030899091474,
+            "Matriarch_EarBowl_-1": 0.032449984040715606,
+            "Matriarch_EarBowl_1": 0.032449988300908325,
+            "Matriarch_EyeSocket_-1": 0.0324500870699563,
+            "Matriarch_EyeSocket_1": 0.03245003723702926,
+            "Matriarch_Iris_-1": 0.0324500870699563,
+            "Matriarch_Iris_1": 0.0324500870699563,
+            "Matriarch_LeatherNose": 0.032450096823523615,
+            "Matriarch_Lip_-1": 0.032449988300908325,
+            "Matriarch_Lip_1": 0.032449988300908325,
+            "Matriarch_Nostril_-1": 0.032450091946740325,
+            "Matriarch_Nostril_1": 0.0324500870699563,
+            "Matriarch_Philtrum": 0.0324500870699563,
+            "Matriarch_Pupil_-1": 0.0324500870699563,
+            "Matriarch_Pupil_1": 0.0324500870699563,
+            "Matriarch_RoundedPinna_-1": 0.03244998465732248,
+            "Matriarch_RoundedPinna_1": 0.032449988300908325
+          }
+        }
+      ]
+    },
+    {
+      "frame": 72,
+      "values": [
+        {
+          "value": 0.5,
+          "anchorMax": 0.0,
+          "fixedClawMax": 0.0,
+          "fullHeadSharedDisplacement": [
+            -0.02987086772918701,
+            -0.003963351249694824,
+            -0.012042760848999023
+          ],
+          "fittedDisplacementResidual": 3.4240261593687705e-07,
+          "adjacentMovedMaxByMesh": {
+            "Matriarch_Catchlight_-1": 0.032449993794313896,
+            "Matriarch_Catchlight_1": 0.0324500485040982,
+            "Matriarch_ContinuousAnatomy": 0.032450196292926343,
+            "Matriarch_EarBowl_-1": 0.032450148281950926,
+            "Matriarch_EarBowl_1": 0.03244992854604889,
+            "Matriarch_EyeSocket_-1": 0.032450104110669696,
+            "Matriarch_EyeSocket_1": 0.03244999740987113,
+            "Matriarch_Iris_-1": 0.032449993794313896,
+            "Matriarch_Iris_1": 0.03244999740987113,
+            "Matriarch_LeatherNose": 0.03244999740987113,
+            "Matriarch_Lip_-1": 0.032449993794313896,
+            "Matriarch_Lip_1": 0.032449993794313896,
+            "Matriarch_Nostril_-1": 0.032449993794313896,
+            "Matriarch_Nostril_1": 0.03244988437446856,
+            "Matriarch_Philtrum": 0.032449993794313896,
+            "Matriarch_Pupil_-1": 0.032449993794313896,
+            "Matriarch_Pupil_1": 0.03244993908443734,
+            "Matriarch_RoundedPinna_-1": 0.0324500384141859,
+            "Matriarch_RoundedPinna_1": 0.03244992854604889
+          }
+        },
+        {
+          "value": 1,
+          "anchorMax": 0.0,
+          "fixedClawMax": 0.0,
+          "fullHeadSharedDisplacement": [
+            -0.05974161624908447,
+            -0.007926732301712036,
+            -0.024085402488708496
+          ],
+          "fittedDisplacementResidual": 3.816559456248789e-07,
+          "adjacentMovedMaxByMesh": {
+            "Matriarch_Catchlight_-1": 0.032449993794313896,
+            "Matriarch_Catchlight_1": 0.03245000105345554,
+            "Matriarch_ContinuousAnatomy": 0.032450237521208736,
+            "Matriarch_EarBowl_-1": 0.032449842473072504,
+            "Matriarch_EarBowl_1": 0.032449956881973906,
+            "Matriarch_EyeSocket_-1": 0.032449994691196346,
+            "Matriarch_EyeSocket_1": 0.03245016607937275,
+            "Matriarch_Iris_-1": 0.032449993794313896,
+            "Matriarch_Iris_1": 0.032450322948509545,
+            "Matriarch_LeatherNose": 0.03245000105345554,
+            "Matriarch_Lip_-1": 0.03244999740987113,
+            "Matriarch_Lip_1": 0.03245000105345554,
+            "Matriarch_Nostril_-1": 0.03244999740987113,
+            "Matriarch_Nostril_1": 0.03245011136978667,
+            "Matriarch_Philtrum": 0.03244999740987113,
+            "Matriarch_Pupil_-1": 0.032449993794313896,
+            "Matriarch_Pupil_1": 0.032450330207577566,
+            "Matriarch_RoundedPinna_-1": 0.032449842473072504,
+            "Matriarch_RoundedPinna_1": 0.032449956881973906
+          }
+        }
+      ]
+    },
+    {
+      "frame": 108,
+      "values": [
+        {
+          "value": 0.5,
+          "anchorMax": 0.0,
+          "fixedClawMax": 0.0,
+          "fullHeadSharedDisplacement": [
+            -0.030228734016418457,
+            -0.00034946203231811523,
+            -0.011793971061706543
+          ],
+          "fittedDisplacementResidual": 4.3392836387637365e-07,
+          "adjacentMovedMaxByMesh": {
+            "Matriarch_Catchlight_-1": 0.032449971182182354,
+            "Matriarch_Catchlight_1": 0.032449971503185925,
+            "Matriarch_ContinuousAnatomy": 0.03245023720371122,
+            "Matriarch_EarBowl_-1": 0.032449971192254776,
+            "Matriarch_EarBowl_1": 0.032449971182182354,
+            "Matriarch_EyeSocket_-1": 0.03244997126254273,
+            "Matriarch_EyeSocket_1": 0.03245002678888635,
+            "Matriarch_Iris_-1": 0.03244997126254273,
+            "Matriarch_Iris_1": 0.03245002678888635,
+            "Matriarch_LeatherNose": 0.032449971182182354,
+            "Matriarch_Lip_-1": 0.032449971182182354,
+            "Matriarch_Lip_1": 0.032449971182182354,
+            "Matriarch_Nostril_-1": 0.032449971182182354,
+            "Matriarch_Nostril_1": 0.032449971182182354,
+            "Matriarch_Philtrum": 0.032449971182182354,
+            "Matriarch_Pupil_-1": 0.03244997126254273,
+            "Matriarch_Pupil_1": 0.032449971503185925,
+            "Matriarch_RoundedPinna_-1": 0.03244997120232719,
+            "Matriarch_RoundedPinna_1": 0.032449971182182354
+          }
+        },
+        {
+          "value": 1,
+          "anchorMax": 0.0,
+          "fixedClawMax": 0.0,
+          "fullHeadSharedDisplacement": [
+            -0.060457468032836914,
+            -0.0006989538669586182,
+            -0.023587703704833984
+          ],
+          "fittedDisplacementResidual": 4.3392836387637365e-07,
+          "adjacentMovedMaxByMesh": {
+            "Matriarch_Catchlight_-1": 0.03244974981180558,
+            "Matriarch_Catchlight_1": 0.03244986028949316,
+            "Matriarch_ContinuousAnatomy": 0.03245028015693624,
+            "Matriarch_EarBowl_-1": 0.03244974983195055,
+            "Matriarch_EarBowl_1": 0.03244980436149863,
+            "Matriarch_EyeSocket_-1": 0.032449749972308456,
+            "Matriarch_EyeSocket_1": 0.03244991557538307,
+            "Matriarch_Iris_-1": 0.0324497498921665,
+            "Matriarch_Iris_1": 0.03244986028949316,
+            "Matriarch_LeatherNose": 0.032449971182182354,
+            "Matriarch_Lip_-1": 0.032449971503185925,
+            "Matriarch_Lip_1": 0.03244986028949316,
+            "Matriarch_Nostril_-1": 0.032449859968488495,
+            "Matriarch_Nostril_1": 0.03244986028949316,
+            "Matriarch_Philtrum": 0.03244986028949316,
+            "Matriarch_Pupil_-1": 0.0324497498921665,
+            "Matriarch_Pupil_1": 0.03244986028949316,
+            "Matriarch_RoundedPinna_-1": 0.032449749851876555,
+            "Matriarch_RoundedPinna_1": 0.032449859968488495
+          }
+        }
+      ]
+    },
+    {
+      "frame": 144,
+      "values": [
+        {
+          "value": 0.5,
+          "anchorMax": 0.0,
+          "fixedClawMax": 0.0,
+          "fullHeadSharedDisplacement": [
+            -0.03010702133178711,
+            -0.0023456215858459473,
+            -0.011876940727233887
+          ],
+          "fittedDisplacementResidual": 4.2981520598697533e-07,
+          "adjacentMovedMaxByMesh": {
+            "Matriarch_Catchlight_-1": 0.03244997064352698,
+            "Matriarch_Catchlight_1": 0.03245002840134622,
+            "Matriarch_ContinuousAnatomy": 0.032450238046721855,
+            "Matriarch_EarBowl_-1": 0.03245008203902029,
+            "Matriarch_EarBowl_1": 0.03244997279464498,
+            "Matriarch_EyeSocket_-1": 0.032449971183058215,
+            "Matriarch_EyeSocket_1": 0.0324500852691896,
+            "Matriarch_Iris_-1": 0.03245008095996149,
+            "Matriarch_Iris_1": 0.032450087420300006,
+            "Matriarch_LeatherNose": 0.03245008311107218,
+            "Matriarch_Lip_-1": 0.03245008311107218,
+            "Matriarch_Lip_1": 0.03245002840134622,
+            "Matriarch_Nostril_-1": 0.03244997064352698,
+            "Matriarch_Nostril_1": 0.03244997279464498,
+            "Matriarch_Philtrum": 0.03244997279464498,
+            "Matriarch_Pupil_-1": 0.03244997064352698,
+            "Matriarch_Pupil_1": 0.03245008311107218,
+            "Matriarch_RoundedPinna_-1": 0.03245008203902029,
+            "Matriarch_RoundedPinna_1": 0.03244997279464498
+          }
+        },
+        {
+          "value": 1,
+          "anchorMax": 0.0,
+          "fixedClawMax": 0.0,
+          "fullHeadSharedDisplacement": [
+            -0.06021428108215332,
+            -0.00469130277633667,
+            -0.023753643035888672
+          ],
+          "fittedDisplacementResidual": 3.796142102139293e-07,
+          "adjacentMovedMaxByMesh": {
+            "Matriarch_Catchlight_-1": 0.032449974952769745,
+            "Matriarch_Catchlight_1": 0.032449862477842754,
+            "Matriarch_ContinuousAnatomy": 0.03245030356763081,
+            "Matriarch_EarBowl_-1": 0.03244997441323857,
+            "Matriarch_EarBowl_1": 0.03244997710388746,
+            "Matriarch_EyeSocket_-1": 0.03244997549230091,
+            "Matriarch_EyeSocket_1": 0.03244991718784846,
+            "Matriarch_Iris_-1": 0.03244997549230091,
+            "Matriarch_Iris_1": 0.032449919345976914,
+            "Matriarch_LeatherNose": 0.0324500852691896,
+            "Matriarch_Lip_-1": 0.032449974952769745,
+            "Matriarch_Lip_1": 0.03244997710388746,
+            "Matriarch_Nostril_-1": 0.032449974952769745,
+            "Matriarch_Nostril_1": 0.03244997279464498,
+            "Matriarch_Philtrum": 0.032449974952769745,
+            "Matriarch_Pupil_-1": 0.032449974952769745,
+            "Matriarch_Pupil_1": 0.032449862477842754,
+            "Matriarch_RoundedPinna_-1": 0.03245008419013091,
+            "Matriarch_RoundedPinna_1": 0.03244997710388746
+          }
+        }
+      ]
+    }
+  ],
+  "maxControlAnchorDrift": 0,
+  "maxClawControlDrift": 0,
+  "maxClawIdleDrift": 0,
+  "maxFittedDisplacementResidual": 5.990192664337689e-07,
+  "minAdjacentMovedDelta": 0.03244974981180558,
+  "pawVertexCount": 6602,
+  "maxPlantedPawIdleDrift": 0,
+  "inheritedAnchorIdleMotion": 0.00011843477413720476,
+  "maxAnchorTrajectoryChangeFromOriginal": 0
+}

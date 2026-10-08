@@ -1,0 +1,470 @@
+{
+  "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+  "originalFirstWorkUtc": "2026-10-08T15:19:00.000Z",
+  "archivedAt": "2026-10-08T16:19:09.403Z",
+  "note": "Existing v3 ledger snapshot; local evidence paths remain protected session artifacts. No message bodies/private reasoning included. Usage report checkpoint is separately retained.",
+  "entries": [
+    {
+      "file": "000000.json",
+      "sha256": "19ca8a009fd0a0f3a6db225615645aecbb18f1c83c285385d32f966d1f25c1db",
+      "receipt": {
+        "previous": "",
+        "value": {
+          "kind": "init",
+          "version": 3,
+          "trial": "matriarch-sol-astra-trial",
+          "asset": "matriarch",
+          "limits": {
+            "assetMinutes": 90,
+            "packageMinutes": 30,
+            "failedRevisions": 2,
+            "credits": 1000
+          },
+          "reserve": {
+            "minutes": 20,
+            "credits": 200
+          },
+          "at": "2026-10-08T15:19:00.000Z",
+          "spec": "Briar Matriarch native trial \u2014 frozen director specification v1\nDirector: 01a11c1c-44e8-7c42-b36b-8b50a9c8fb13. Asset/study: matriarch. One subject only.\n\nBaseline: .work/sessions/matriarch-sol-astra-2026-10-08/baseline/author-packet.json, SHA256 be07969a514412ebc8865280bba4c141e00c31d60985cef152e8724a5123be7a; current-matriarch.glb SHA256 97dd27bed0e61d08e8832c080ca29bb103261cd76e18244c878a117db2c43fa0. Inspected side/front/rear/motion clay and side material at 1100px. Baseline measures 163348 triangles, 8220588 bytes, 39 meshes, 3 joints, six-second idle. Those exact captures and original procedural source remain protected.\n\nPhysical interpretation and protected identity: living protective bear, lowered watchful broad head, small round ears, shoulder hump carrying forward weight to staggered planted forepaws, descending back and short hind legs, warm umber fur and pale muzzle. Preserve the already continuous whole body, broad fitted face, back/pelvis, paws/claws, support contacts, rump/tail, ear shape and face details. Keep the existing rig and fitted restrained six-second scenting idle. Do not replace sound geometry merely to advertise native authoring.\n\nObserved dominant defect: in side-clay and motion-extreme-clay the broad, nearly horizontal underjaw shelf runs into a steep throat/forechest turn; front-clay shows the same dark slab-like underside below the chin. There is already geometric continuity, but the abrupt large-plane turn weakens the compression of a lowered guardian head into heavy shoulders. Repair the underjaw-to-throat camber and shoulder/neck plane transition while retaining the low head and planted gesture. No wholesale skull, torso or limb reconstruction.\n\nRepresentation: selectively deform the preserved triangulated continuous skin in native Blender, using broad smooth vertex displacements/shape keys in the throat and proximal neck; keep direct mesh editing, original materials/UVs and skin weights. No detached throat patch, added collar, overlapping tube, indiscriminate remesh, texture concealment or runtime anatomy regeneration. Correct the underside into a short, gently descending, cambered transition into the forechest, with a readable jaw corner and no inflated dewlap. Fit all dependents through the same semantic edit frame. Any central-construction replacement requires a recorded director takeover.\n\nMeaningful native operation: an artist-facing EDIT | Neck assembly with Guard reach control, values 0, 0.5, 1, saved default 0.5. It changes the developed upper neck/throat and carries the skull plus fitted nose, lip/philtrum, eyes and ears together over a restrained approximately 0.04\u20130.08 model-unit end-to-end head displacement. Smoothly anchor the shoulder root and all skin below the neck influence; paws/claws, rump/tail and back remain fixed. Direct native mesh and shape-key editing remain available beneath this control. The brief must list actual moved skin/facial mesh names and fixed claw probes after import. Anatomical and fitted-dependent geometry, not an unrelated inherited tail control, must move at each adjacent test value and survive save/reload/export. Existing rig/idle remains editable and fits both extremes; no new morph animation promise.\n\nOwned paths: director owns .work/sessions/matriarch-sol-astra-2026-10-08/director/ and, after audited start/director handoff, sequential native ownership of packages/dcc-workbench/subjects/matriarch/source.blend and brief.json. Author subsequently owns those two native files plus author/ frozen candidates, never concurrently. Orchestrator owns registration/integration. Reviewer owns audit/verification/accounting/release operations. Existing sources/publications and nine dirty scaffold paths remain protected; no shared tooling edits, helpers, rate research, commit or publication by director/author.\n\nDelivery limits: maxTriangles 180000 (10.2% headroom above measured 163348), maxBytes 10000000 (21.6% above 8220588), maxJoints 8 (baseline 3; preserve 3 unless demonstrated necessity); embedded dependencies, finite normalized weights, six-second looping skinned delivery. Desktop-first; phone framing/interaction checks do not establish physical-device performance. Imported triangle topology and stylized fur remain declared limitations.\n\nPrototype gate: after exact spec audit and package start, director freezes a separate editable prototype.blend and whole-creature side clay, enlarged throat detail clay, and 1.75-second motion clay captures with exact hashes. The prototype must visibly reduce the shelf/steep-turn defect, preserve the whole gesture, and expose the semantic edit with fitted facial dependents. Prototype is proof of local construction, not a polished whole-asset acceptance. Author continues from a copied source; frozen prototype bytes are never overwritten.\n\nObservable acceptance: matched side/front/rear clay and motion views show a cambered jaw-to-throat-to-forechest progression with no abrupt shelf corner, pinching, dented grid, new seam, inflated dewlap or detached facial pieces. Skull stays below hump, muzzle/ear silhouette remains recognizable, paws/supports and back/rump stay unchanged. Whole/detail/motion captures show the same construction; materials cannot substitute for this proof. Inspect final source and consumer pixels at ordinary/enlarged sizes, animation extremes and phone width. Native edit/save/reload/export and independent five-time source-consumer agreement pass, with fitted dependents and fixed contacts checked; repository/browser scopes reported separately. Reviewer supplies independent pixel clearance before author self-assessment; director supplies exact-byte release acceptance only after independent clearance. User approval remains unrecorded.\n\nBounded estimate: one unresolved package, 28 working minutes and 450 modeled credits all-in from start for opening prototype (~8min), author completion/export (~7min), independent checks/repair allowance (~9min), final review handoff (~4min). Package hard stop 30min or two failed candidates; asset 90min/1000 credits, including all prior work, with 20min/200credits reserved for frozen final review and closeout. No modeling inside reserve. Estimates are dispatch planning, not a budget reset or quality concession. A failed structural candidate requires director diagnosis before repair. Preserve strongest unfinished result at a limit.\n",
+          "baseline": [
+            {
+              "path": ".work/sessions/matriarch-sol-astra-2026-10-08/reviewer/baseline-manifest.json",
+              "sha256": "0a97b69c3bd2eeafdba54f97a4540afb8ab61dd244f58be57e7f6f1542033688"
+            }
+          ],
+          "roles": {
+            "orchestrator": {
+              "id": "01a11c18-745e-7652-979e-6308c418b7f4",
+              "model": "gpt-6.1-sol",
+              "effort": "high"
+            },
+            "director": {
+              "id": "01a11c1c-44e8-7c42-b36b-8b50a9c8fb13",
+              "model": "gpt-6-astra",
+              "effort": "high"
+            },
+            "author": {
+              "id": "01a11c1c-93f4-7ce3-8794-9e1c769e9f90",
+              "model": "gpt-6.1-sol",
+              "effort": "high"
+            },
+            "verifier": {
+              "id": "01a11c1c-ea96-7152-9e4b-5ff916b1b19c",
+              "model": "gpt-6.1-sol",
+              "effort": "high"
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "000001.json",
+      "sha256": "e032fa0a2abb9ea219318d25d06a0ab62d415548b43cb5e4154cb377099dd0fd",
+      "receipt": {
+        "previous": "19ca8a009fd0a0f3a6db225615645aecbb18f1c83c285385d32f966d1f25c1db",
+        "value": {
+          "kind": "pause",
+          "at": "2026-10-08T15:20:11.529Z",
+          "reason": "user-wait",
+          "evidence": "Persisted root preparation-complete response requests execution authorization; see reviewer/user-wait-evidence.json. No private reasoning retained."
+        }
+      }
+    },
+    {
+      "file": "000002.json",
+      "sha256": "a024fb3118e83941e24c366462163077f76a1177e95f15b9c6a9eaa6689008a1",
+      "receipt": {
+        "previous": "e032fa0a2abb9ea219318d25d06a0ab62d415548b43cb5e4154cb377099dd0fd",
+        "value": {
+          "kind": "resume",
+          "at": "2026-10-08T15:22:26.188Z"
+        }
+      }
+    },
+    {
+      "file": "000003.json",
+      "sha256": "d62838013767ff4e913ca98b38763d42f0994bde0c16fb7b4ce3068a3c8dfe1d",
+      "receipt": {
+        "previous": "a024fb3118e83941e24c366462163077f76a1177e95f15b9c6a9eaa6689008a1",
+        "value": {
+          "kind": "audit",
+          "at": "2026-10-08T15:35:22.880Z",
+          "specHash": "f4f1fda4a9627996290b481798f3d2d35b71a7379f1fc66e70b128c8caaa4432",
+          "reviewer": "01a11c1c-ea96-7152-9e4b-5ff916b1b19c",
+          "approved": true,
+          "findings": "Exact spec maps a visible baseline defect to selective native deformation without disturbing sound continuous anatomy. Protected identity, permitted representation, owners, moved/fitted/fixed interfaces and exclusions are explicit. Measured baseline163348triangles/8220588bytes/3joints gives bounded180000triangles/10000000bytes/8joints ceilings; preserving existing3joints remains expected. Guard reach0/0.5/1 directly exercises developed neck plus skull/facial dependents with0.04-0.08unit full-range displacement. Current saved-edit adapter supports static authoring shape-key controls and six-second skinned idle. Whole/detail/1.75sec motion prototype evidence and matched final views make the throat repair observable; independent review precedes author self-assessment. Structural failure requires director diagnosis. Execution requirement: actual imported moved/fixed mesh names must be listed in brief; connected-skin anchor regions require asset-local quantitative or pixel evidence because named-mesh native gate alone cannot verify stationary subregions within a partly moved mesh. No shared-tool change needed. Whole-step estimate28min/450credits fits fresh available production and30min package; budgets do not establish acceptance. Source/consumer/phone/browser/repository scopes and exact acceptance remain mandatory.",
+          "evidence": [
+            ".work/sessions/matriarch-sol-astra-2026-10-08/director/spec.txt",
+            ".work/sessions/matriarch-sol-astra-2026-10-08/reviewer/baseline-manifest.json",
+            ".work/sessions/matriarch-sol-astra-2026-10-08/reviewer/baseline-pixel-observations.json",
+            "packages/dcc-workbench/verify-saved.ts",
+            "packages/dcc-workbench/README.md"
+          ]
+        }
+      }
+    },
+    {
+      "file": "000004.json",
+      "sha256": "d7e8343a830127d8bdbe243f9c006cbab46640966eda1486b512e4ce95efd920",
+      "receipt": {
+        "previous": "d62838013767ff4e913ca98b38763d42f0994bde0c16fb7b4ce3068a3c8dfe1d",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T15:35:33.800Z",
+          "through": "2026-10-08T15:35:33.447Z",
+          "credits": 103.31026000000004,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-86680fe0-c400-434f-9cca-b65a641d5b74.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "a0ab1e7b6e83b101a4b516858c4a6237ed9a8103197da63c0d828381cb1dcf53",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    },
+    {
+      "file": "000005.json",
+      "sha256": "ebfaf17e7fa3ac3250840ae69d25c4f76874957836e5f62201244ab9a464e3aa",
+      "receipt": {
+        "previous": "d7e8343a830127d8bdbe243f9c006cbab46640966eda1486b512e4ce95efd920",
+        "value": {
+          "kind": "start",
+          "at": "2026-10-08T15:36:03.825Z",
+          "package": "matriarch-neck-guard-reach",
+          "defect": "Planar underjaw shelf meeting steep throat/forechest turn; repair local camber while preserving continuous whole-body protective gesture.",
+          "ownedPaths": [
+            "packages/dcc-workbench/subjects/matriarch/source.blend",
+            "packages/dcc-workbench/subjects/matriarch/brief.json",
+            ".work/sessions/matriarch-sol-astra-2026-10-08/director",
+            ".work/sessions/matriarch-sol-astra-2026-10-08/author"
+          ],
+          "interfaces": "Native EDIT | Neck / Guard reach0,0.5,1/default0.5 changes developed throat/upper neck and fitted skull/face/ears together; fixed paws/claws, anchored shoulder/back/rump. Original3joint six-second scenting idle remains fitted. Prototype separate pinned source before Sol handoff.",
+          "acceptance": "Exact audited spec f4f1fda4a9627996290b481798f3d2d35b71a7379f1fc66e70b128c8caaa4432. Whole/detail/motion prototype visibly repairs shelf turn; final matched clay/motion retains identity with no shelf corner/grid/seam/dewlap. Independent native save/reload/export,5time consumer parity, phone/browser/repository gates then Astra exact-byte acceptance.",
+          "estimate": {
+            "minutes": 28,
+            "credits": 450,
+            "basis": "Director frozen whole-package estimate:prototype8min,author completion/export7min,independent checks/repair9min,final review handoff4min; all prior usage/time retained and200credit/20min reserve outside production."
+          }
+        }
+      }
+    },
+    {
+      "file": "000006.json",
+      "sha256": "55be17ec9ca44bee25f8df64dbbda03ced5e168867051ccdb3702bf940890581",
+      "receipt": {
+        "previous": "ebfaf17e7fa3ac3250840ae69d25c4f76874957836e5f62201244ab9a464e3aa",
+        "value": {
+          "kind": "prototype",
+          "at": "2026-10-08T15:43:03.811Z",
+          "package": "matriarch-neck-guard-reach",
+          "director": "01a11c1c-44e8-7c42-b36b-8b50a9c8fb13",
+          "specHash": "f4f1fda4a9627996290b481798f3d2d35b71a7379f1fc66e70b128c8caaa4432",
+          "source": {
+            "path": ".work/sessions/matriarch-sol-astra-2026-10-08/director/prototype-v3.blend",
+            "sha256": "4e4abf354a4e48f3912b0a5a365a3d817153b5048c76ba8122c6833c376795de"
+          },
+          "views": {
+            "whole": {
+              "path": ".work/sessions/matriarch-sol-astra-2026-10-08/director/v3-prototype-whole.png",
+              "sha256": "905e3eb52ff276516d0449492abccbd3d14292f566c4e9770578e2200d0e04f4"
+            },
+            "detail": {
+              "path": ".work/sessions/matriarch-sol-astra-2026-10-08/director/v3-prototype-detail.png",
+              "sha256": "9f0c1a41061daa00cbbc21c4394bb5dbfe153c1b64e76caccde213c73c491a46"
+            },
+            "motion": {
+              "path": ".work/sessions/matriarch-sol-astra-2026-10-08/director/v3-prototype-motion.png",
+              "sha256": "3129ca4d7b42a2443bc2abe86e81f33cac8d6fdd8704fcc47699feee9605754f"
+            }
+          },
+          "rationale": "Inspected actual whole/detail/frame42 motion clay. Local native throat camber replaces the planar underjaw/steep turn with a descending connected arc, retaining lowered head, high shoulder, broad face and planted gesture. v1 cleared normals exposed faceting; v2 transported original field-gradient normals; v3 broadened lower falloff to remove a small transition pinch. Three opening construction iterations, no independently reviewed candidate failures.39 meshes/3bones retained.48454 protected continuous-skin rest vertices unchanged exactly;19skin/facial meshes participate in Guard reach and20claw meshes fixed. Construction proof only; author must verify evaluated anchors/fitted operation across0/.5/1 and idle, export agreement, importer triangle difference and consumer/material pixels before independent clearance."
+        }
+      }
+    },
+    {
+      "file": "000007.json",
+      "sha256": "ab464f6e77fcd9d0278a5272d1bcc5b690c5d7a495d2a3a4e564c08739a4843b",
+      "receipt": {
+        "previous": "55be17ec9ca44bee25f8df64dbbda03ced5e168867051ccdb3702bf940890581",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T15:44:00.037Z",
+          "through": "2026-10-08T15:43:59.352Z",
+          "credits": 210.31345,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-66de1e10-98a3-484b-88db-982c7ff4ed6c.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "dfff9adffbf3313ebf5cfae3d0a203b0e0c397797f8be72164a4e2233d121be1",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    },
+    {
+      "file": "000008.json",
+      "sha256": "395af11e9eb2ec45d4a0537fd935e724279616cd427d92fa6b04eccc3c1926f4",
+      "receipt": {
+        "previous": "ab464f6e77fcd9d0278a5272d1bcc5b690c5d7a495d2a3a4e564c08739a4843b",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T15:48:27.334Z",
+          "through": "2026-10-08T15:48:26.583Z",
+          "credits": 229.70945999999995,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-d49a2843-dd74-44b1-920c-93788ac71c59.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "5d0b1d2f763163c60a1a8e644c5a6ded1366ca0e8af2d8aa7a7c74d7c35573c3",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    },
+    {
+      "file": "000009.json",
+      "sha256": "38cb544247d37705ea5fe2fa607cd27153e1b4bfc8ee6ca312ea2adaa857b945",
+      "receipt": {
+        "previous": "395af11e9eb2ec45d4a0537fd935e724279616cd427d92fa6b04eccc3c1926f4",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T15:52:47.916Z",
+          "through": "2026-10-08T15:52:47.196Z",
+          "credits": 261.48439999999994,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-9d28953a-8ec1-4b51-a19a-d1eed0c3e539.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "ed49345ac9aa9eb8f707a4fd7e25c7bdd1d75753a03f9fcc127c38d957408ce1",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    },
+    {
+      "file": "000010.json",
+      "sha256": "2fdda8bb5c1c0db0489a1952139ded2e601a0f8075ac13868504a985a195098b",
+      "receipt": {
+        "previous": "38cb544247d37705ea5fe2fa607cd27153e1b4bfc8ee6ca312ea2adaa857b945",
+        "value": {
+          "kind": "intervention",
+          "at": "2026-10-08T15:54:21.606Z",
+          "actor": "01a11c1c-44e8-7c42-b36b-8b50a9c8fb13",
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "detail": "Director diagnoses actual systematic fitted-control transform offset before frozen candidate review; author authorized bounded common Matriarch_Face parent Guard reach driver correction using armature REST/bind-frame matrix, replacing18per-face keys while leaving body sculpt/key and inherited ear/blink rig unchanged. No tolerance relaxation, takeover, spec or clock reset. Keep existing<1e-6fitted relations across controls/idle, anchor invariance and new extreme pixel/source-consumer evidence.",
+          "evidence": [
+            ".work/sessions/matriarch-sol-astra-2026-10-08/director/fitted-frame-diagnosis.json SHA256 660e71c0c6575ceff267a9749566027ebaa7a2e680479755820114fefd82b594",
+            ".work/sessions/matriarch-sol-astra-2026-10-08/author/fitted-diagnostic.json",
+            ".work/sessions/matriarch-sol-astra-2026-10-08/author/verify-local.log",
+            ".work/sessions/matriarch-sol-astra-2026-10-08/author/verify-local-2.log"
+          ]
+        }
+      }
+    },
+    {
+      "file": "000011.json",
+      "sha256": "9db12b3b83bb6096064e9c07f3c13131ae583126f137e568e8e1fa6323c35960",
+      "receipt": {
+        "previous": "2fdda8bb5c1c0db0489a1952139ded2e601a0f8075ac13868504a985a195098b",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T15:54:23.027Z",
+          "through": "2026-10-08T15:54:22.360Z",
+          "credits": 286.40787999999986,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-b68f567a-bc29-4350-a32b-067e1e10c6ec.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "b52180d6c456ce8881de43ff662fa99ebc9b9c568ebaa3886a8a99c77dee4c87",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    },
+    {
+      "file": "000012.json",
+      "sha256": "dfb49c9c77be18009be1a79ecbf16fdefd5c3089e2177d2b6ac9860b2cdf9b3a",
+      "receipt": {
+        "previous": "9db12b3b83bb6096064e9c07f3c13131ae583126f137e568e8e1fa6323c35960",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T15:57:13.233Z",
+          "through": "2026-10-08T15:57:12.491Z",
+          "credits": 295.82801,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-163771e8-f46f-4736-b153-7e6c95de909f.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "10b16937ea03cbe00524e5062df85a93aa8ac45a0695d48bc737cde86c72ee20",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    },
+    {
+      "file": "000013.json",
+      "sha256": "adecd7c4c38861de6b4117d19667feddfbc28b2d9045afc6732ad309fa80847d",
+      "receipt": {
+        "previous": "dfb49c9c77be18009be1a79ecbf16fdefd5c3089e2177d2b6ac9860b2cdf9b3a",
+        "value": {
+          "kind": "review",
+          "at": "2026-10-08T16:01:41.928Z",
+          "package": "matriarch-neck-guard-reach",
+          "reviewer": "01a11c1c-ea96-7152-9e4b-5ff916b1b19c",
+          "specHash": "f4f1fda4a9627996290b481798f3d2d35b71a7379f1fc66e70b128c8caaa4432",
+          "candidate": {
+            "path": ".work/runtime/dcc-export-jmWL0G/matriarch/candidate.json",
+            "sha256": "ad0be458544f542f561d277d1f0660c58b07ba9041bae7b94a72ce27fa55f074"
+          },
+          "verdict": "clear",
+          "evidence": [
+            ".work/sessions/matriarch-sol-astra-2026-10-08/reviewer/candidate-pixel-observations-01.json",
+            ".work/sessions/matriarch-sol-astra-2026-10-08/reviewer/independent-clearance-01.json",
+            ".work/sessions/matriarch-sol-astra-2026-10-08/author/frozen-candidate-packet.json",
+            "test-results/dcc-native/saved-Hqnpe7/native-edit.json",
+            "test-results/dcc-native/saved-Hqnpe7/preservation.json",
+            ".work/sessions/matriarch-sol-astra-2026-10-08/author/evaluated-anchors-fitted.json"
+          ],
+          "critique": "Enlarged throat confirms a connected descending jaw/throat camber and smooth blend into forechest; small original triangle shading remains visible at extreme enlargement but no pronounced neck pinch, detached patch, new seam or inflated dewlap. Actual Viewer desktop and390px phone both contain full supported subject; phone framing is small but coherent and no clipping or horizontal overflow. Physical-device performance is unmeasured. Native edited consumer profile/reverse/rear and phone views remain fitted; native preservation/restore/reload and five-time consumer agreement passed. Fullnpmcheck passed formatting/lint/type/Python13/tools55 before draft publication-only DCC failure46/47; rerun after accepted promotion is required for fullgate. This ordering failure is not candidate geometry rejection. Independent clearance supports exact frozen candidate; Astra final art acceptance and postpromotionfullgate still required."
+        }
+      }
+    },
+    {
+      "file": "000014.json",
+      "sha256": "b4861a23f62559b1b90e3a5736474da13a0972df35350de9bc6020b432200e02",
+      "receipt": {
+        "previous": "adecd7c4c38861de6b4117d19667feddfbc28b2d9045afc6732ad309fa80847d",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T16:01:43.349Z",
+          "through": "2026-10-08T16:01:42.673Z",
+          "credits": 315.1616199999999,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-7e5e54b8-4f4b-4e69-9499-cdeaf61bbf52.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "721ccdd95d8fac2814f2c14a60f4dab1a883ecebd4eaceeea0e8bbfd65b526ab",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    },
+    {
+      "file": "000015.json",
+      "sha256": "9cecb3b1bbc89b84a359fe9fff0a56b47c42525a8ae37f1de7359655f1413efe",
+      "receipt": {
+        "previous": "b4861a23f62559b1b90e3a5736474da13a0972df35350de9bc6020b432200e02",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T16:06:35.741Z",
+          "through": "2026-10-08T16:06:35.294Z",
+          "credits": 378.51827999999955,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-8cb976bc-69cc-4dcd-80c4-7eb7337470f0.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "33865dacf2849dff02f96165f1e38ffc5a1094f7293a2211f367fb4aa908183f",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    },
+    {
+      "file": "000016.json",
+      "sha256": "9da7ddebea6e798f3e248d2325f183bbad0d9178f2b96ee0e23cfd4219ebd1a6",
+      "receipt": {
+        "previous": "9cecb3b1bbc89b84a359fe9fff0a56b47c42525a8ae37f1de7359655f1413efe",
+        "value": {
+          "kind": "acceptance",
+          "at": "2026-10-08T16:07:08.980Z",
+          "package": "matriarch-neck-guard-reach",
+          "director": "01a11c1c-44e8-7c42-b36b-8b50a9c8fb13",
+          "specHash": "f4f1fda4a9627996290b481798f3d2d35b71a7379f1fc66e70b128c8caaa4432",
+          "candidate": {
+            "path": ".work/runtime/dcc-export-jmWL0G/matriarch/candidate.json",
+            "sha256": "ad0be458544f542f561d277d1f0660c58b07ba9041bae7b94a72ce27fa55f074",
+            "bytes": 2824
+          },
+          "review": {
+            "path": "/Users/zhangqy/pkgs/game/.work/runtime/dcc-export-jmWL0G/matriarch/review.json",
+            "sha256": "ce0839215f44169f4fa03fe51c53196a5fc26b6b08d41837c40574860922c917"
+          },
+          "verdict": "I inspected all10 exact final consumer images: matched side/front/rear clay and materials, motion extreme, enlarged throat,1440px desktop and390px phone. I also opened the exact corrected native source in Blender and inspected fresh whole/detail/frame42 motion clay without saving it. Source, brief, delivery, candidate and evidence hashes rechecked unchanged. The final side and motion silhouettes replace the nearly horizontal underjaw shelf/steep throat turn with a restrained descending cambered arc into the forechest. Whole mass, low broad watchful head, high shoulders, round ears, staggered planted paws, back/rump and warm coat remain coherent. No added dewlap, visible attachment gap, new seam or broken support is evident at normal viewing size. The corrected shared facial-parent operation preserves ear/blink motion and agrees with full-head skin displacement within5.9902e-7 over the tested controls/idle poses.48454protected skin anchor trajectories remain unchanged from baseline; paw/claw movement under the edit is0. Independent native save/reload/export and five-time consumer comparison passed; clearance supplied separately by Sol reviewer. Astra authored the opening local construction and prescribed the bind-frame correction. Sol author implemented that correction and completed export/evidence; Sol reviewer supplied independent clearance. This final judgment is not independent of Astra own construction. Limitations: Tiny inherited/transported triangle shading remains visible at extreme throat enlargement; it does not break the whole contour or read as an attachment seam at ordinary size. Imported triangulated topology and stylized fur remain approximate. 390px phone framing contains the whole asset but presents it small; no optimized mobile delivery or physical-device performance claim. Six-second idle and sampled source-consumer agreement establish the tested behavior, not exhaustive deformation or biological accuracy. Ten omitted triangles are documented repeated-index zero-area importer faces. Art-direction acceptance is not user approval. Full post-promotion repository check and integrated published browser gates remain operations closeout requirements; no claim they have already passed."
+        }
+      }
+    },
+    {
+      "file": "000017.json",
+      "sha256": "92e2644ae520dc61938a2b097ee78e59d00b9dc57989cd9b9bade4c26a8d5ccb",
+      "receipt": {
+        "previous": "9da7ddebea6e798f3e248d2325f183bbad0d9178f2b96ee0e23cfd4219ebd1a6",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T16:10:40.067Z",
+          "through": "2026-10-08T16:10:39.317Z",
+          "credits": 388.02422999999953,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-81b215e3-4646-4175-b704-4dd52209bb3f.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "8bce4ffcb81b6d70138022fcfdfb337457d50d01a99bd9d12a79237d5782762c",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    },
+    {
+      "file": "000018.json",
+      "sha256": "fcb319cce3592c6617263f467aa5d9ed29ece9d293aa620c5adaf7fc1108277d",
+      "receipt": {
+        "previous": "92e2644ae520dc61938a2b097ee78e59d00b9dc57989cd9b9bade4c26a8d5ccb",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T16:12:28.658Z",
+          "through": "2026-10-08T16:12:28.233Z",
+          "credits": 392.09321999999946,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-fc826ff3-9e2d-443b-9e0b-f028f3988605.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "fed54dca31754f07a3b07b7f0058bbf89c56a7d70309fd2144653763c8c23608",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    },
+    {
+      "file": "000019.json",
+      "sha256": "357c8e32d5f638cd473671f8b33151da7744ddb7bcc982abac36d18a563513b0",
+      "receipt": {
+        "previous": "fcb319cce3592c6617263f467aa5d9ed29ece9d293aa620c5adaf7fc1108277d",
+        "value": {
+          "kind": "usage",
+          "at": "2026-10-08T16:16:55.370Z",
+          "through": "2026-10-08T16:16:54.690Z",
+          "credits": 401.0548699999996,
+          "coverage": "complete",
+          "source": "/Users/zhangqy/pkgs/game/.work/sessions/matriarch-sol-astra-2026-10-08/ledger/usage-e123bb9d-64ff-4ffa-993a-65bd17b05069.json",
+          "accounting": {
+            "root": "01a11c18-745e-7652-979e-6308c418b7f4",
+            "rateCardHash": "cb90a40f330a2a81d9ca81c8fe33f7c68e1c94a4a3fd5cecf65ba9c17946dbee",
+            "reportHash": "34e76dea4af6fcc732fd9f962b1bb73f8cb53c29408e9e5bf731d78aecd6889e",
+            "scope": "Persisted per-response usage in the discovered local root/descendant logs; live responses and external charges may remain unmetered. This is a checkpoint estimate, not billing."
+          }
+        }
+      }
+    }
+  ]
+}

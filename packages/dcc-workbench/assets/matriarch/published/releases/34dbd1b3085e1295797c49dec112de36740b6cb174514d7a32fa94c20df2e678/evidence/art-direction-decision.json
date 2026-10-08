@@ -1,0 +1,142 @@
+{
+  "at": "2026-10-08T16:05:22.407Z",
+  "director": "01a11c1c-44e8-7c42-b36b-8b50a9c8fb13",
+  "reviewer": {
+    "role": "parent",
+    "name": "01a11c1c-44e8-7c42-b36b-8b50a9c8fb13"
+  },
+  "verdict": "accepted",
+  "scope": "gallery",
+  "package": "matriarch-neck-guard-reach",
+  "specHash": "f4f1fda4a9627996290b481798f3d2d35b71a7379f1fc66e70b128c8caaa4432",
+  "candidate": {
+    "path": ".work/runtime/dcc-export-jmWL0G/matriarch/candidate.json",
+    "sha256": "ad0be458544f542f561d277d1f0660c58b07ba9041bae7b94a72ce27fa55f074",
+    "bytes": 2824
+  },
+  "source": {
+    "path": "packages/dcc-workbench/subjects/matriarch/source.blend",
+    "sha256": "2700bc670306f4284ce94d7fa8b6d47626757bb5a015e861d61eef34cef3095d",
+    "bytes": 8490944
+  },
+  "brief": {
+    "path": "packages/dcc-workbench/subjects/matriarch/brief.json",
+    "sha256": "6e6e6308cb2e290d7c5fe700f3e2d16bcf1b5367402a1b9fbefd980ca8981ad1",
+    "bytes": 3237
+  },
+  "delivery": {
+    "path": ".work/runtime/dcc-export-jmWL0G/matriarch/matriarch.pending.glb",
+    "sha256": "c7604d9ae10816719af0813247aecf8828da94806d34b41739ea51b79e3566ee",
+    "bytes": 7776624
+  },
+  "observations": [
+    "I inspected all10 exact final consumer images: matched side/front/rear clay and materials, motion extreme, enlarged throat,1440px desktop and390px phone. I also opened the exact corrected native source in Blender and inspected fresh whole/detail/frame42 motion clay without saving it. Source, brief, delivery, candidate and evidence hashes rechecked unchanged.",
+    "The final side and motion silhouettes replace the nearly horizontal underjaw shelf/steep throat turn with a restrained descending cambered arc into the forechest. Whole mass, low broad watchful head, high shoulders, round ears, staggered planted paws, back/rump and warm coat remain coherent. No added dewlap, visible attachment gap, new seam or broken support is evident at normal viewing size.",
+    "The corrected shared facial-parent operation preserves ear/blink motion and agrees with full-head skin displacement within5.9902e-7 over the tested controls/idle poses.48454protected skin anchor trajectories remain unchanged from baseline; paw/claw movement under the edit is0. Independent native save/reload/export and five-time consumer comparison passed; clearance supplied separately by Sol reviewer.",
+    "Astra authored the opening local construction and prescribed the bind-frame correction. Sol author implemented that correction and completed export/evidence; Sol reviewer supplied independent clearance. This final judgment is not independent of Astra own construction."
+  ],
+  "limitations": [
+    "Tiny inherited/transported triangle shading remains visible at extreme throat enlargement; it does not break the whole contour or read as an attachment seam at ordinary size. Imported triangulated topology and stylized fur remain approximate.",
+    "390px phone framing contains the whole asset but presents it small; no optimized mobile delivery or physical-device performance claim.",
+    "Six-second idle and sampled source-consumer agreement establish the tested behavior, not exhaustive deformation or biological accuracy. Ten omitted triangles are documented repeated-index zero-area importer faces.",
+    "Art-direction acceptance is not user approval. Full post-promotion repository check and integrated published browser gates remain operations closeout requirements; no claim they have already passed."
+  ],
+  "nativeSourceCaptures": [
+    {
+      "path": ".work/sessions/matriarch-sol-astra-2026-10-08/director/final-source-prototype-whole.png",
+      "sha256": "d69d74d57ac4b6ad6a6655d1e1f0e8b82601360ccdfbaae3d36c4047d392592d"
+    },
+    {
+      "path": ".work/sessions/matriarch-sol-astra-2026-10-08/director/final-source-prototype-detail.png",
+      "sha256": "e1134ebac9130af60300e6c5442c5f4c97b355be8510bbd83901dda5934e59b9"
+    },
+    {
+      "path": ".work/sessions/matriarch-sol-astra-2026-10-08/director/final-source-prototype-motion.png",
+      "sha256": "d554c222abc6fad430c9f548b773190edf757a4c43c2d2ea308455b1c1dd16a5"
+    }
+  ],
+  "consumerCaptures": [
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/consumer-desktop-material.png",
+      "sha256": "50ac72d5379f1e226b84438a3e116418f4b6742698c53a159965b8709cf66444",
+      "bytes": 178991
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/consumer-phone-material.png",
+      "sha256": "bc6559fa2aeec487da5900bc2605aa7984748a1d479346c791757647504d6579",
+      "bytes": 28675
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/front-clay.png",
+      "sha256": "60045d59413eeed28652b9d3fe1ee416f4ae9396b08e2e89fa2b35c1f00ab17b",
+      "bytes": 212878
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/front-material.png",
+      "sha256": "038d502bf80f1459559d2b9b552e38029c42cf56fdf4c523483e845ddaff5efe",
+      "bytes": 235312
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/motion-extreme-clay.png",
+      "sha256": "fdf8ac98e06f99cf8cf4693f2a9ad3f5df7024839efad9ce7d92ca7ae11bc406",
+      "bytes": 297076
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/rear-clay.png",
+      "sha256": "bd3618d0d212b5a9ea33cc3c6f171386c31ee0b4a55dc2ab05f5576669a88fc6",
+      "bytes": 200086
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/rear-material.png",
+      "sha256": "e7d8097d9e3004893cf369b37a4a1e7a95e3b8d98363edbc29ba2b6edd14f694",
+      "bytes": 258611
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/side-clay.png",
+      "sha256": "eb4e982ed83052d567a1cdd937b642d195df7b8d7db32802688a87b07032d259",
+      "bytes": 297643
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/side-material.png",
+      "sha256": "56402f539d754c9f83558fc469923646453789b17bb9f0629fb5f4e013ef04c1",
+      "bytes": 420680
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/side-throat-detail-clay.png",
+      "sha256": "3ffb9ab0c46fba1fb9278fd2d6a20e5cdc90b68976daf2c0dace82ed3112392c",
+      "bytes": 494403
+    }
+  ],
+  "evidence": [
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/author-consumer-agreement.json",
+      "sha256": "838e6da5e8d7f34c38de0e1ce20b1db08300ea475455d0a2cdfe77a137d076d4",
+      "bytes": 562
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/capture-extreme.json",
+      "sha256": "eadaa89e2d1a6e4f3c77b0c670945daf8b9e5f6e9412c90d3e3b24732f07fd04",
+      "bytes": 43
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/evaluated-anchors-fitted.json",
+      "sha256": "2e19d6c99da0dda90b3e139e0d79fcfae92e510301667cc839b9753e92ae7de5",
+      "bytes": 15529
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/fitted-correction.json",
+      "sha256": "0c7a3feb0585ebf6a494353a5ddfd163fe7edfbc967f690cf9555634f5ab595e",
+      "bytes": 992
+    },
+    {
+      "path": ".work/runtime/dcc-export-jmWL0G/matriarch/evidence/triangle-reconciliation.json",
+      "sha256": "775db5c1a8a15e3babc31e9f3831b247f007e6d1b95baaa4f38dec5780e5baf7",
+      "bytes": 2343
+    }
+  ],
+  "packet": {
+    "path": ".work/sessions/matriarch-sol-astra-2026-10-08/author/frozen-candidate-packet.json",
+    "sha256": "0d51b2e829424c75d8d354a74010f86ea3bf414c724a9b7272a4dc89c75e6453"
+  },
+  "serializationAuthorization": "Reviewer operations may serialize this exact actual art-direction decision through writeCandidateReview with reviewer.role parent, reviewer.name equal to director ID and gallery scope, then record ledger acceptance against this cleared candidate. No source or delivery changes authorized by this acceptance."
+}

@@ -1,0 +1,30 @@
+{
+  "authorization": "Astra director bounded technical correction; original package/spec retained",
+  "method": "Common bone-parented Matriarch_Face.delta_location drives facial details before child ear/blink motion; skin Guard reach shape key unchanged",
+  "removedFacialReachKeys": [
+    "Matriarch_Catchlight_-1",
+    "Matriarch_Catchlight_1",
+    "Matriarch_EarBowl_-1",
+    "Matriarch_EarBowl_1",
+    "Matriarch_EyeSocket_-1",
+    "Matriarch_EyeSocket_1",
+    "Matriarch_Iris_-1",
+    "Matriarch_Iris_1",
+    "Matriarch_LeatherNose",
+    "Matriarch_Lip_-1",
+    "Matriarch_Lip_1",
+    "Matriarch_Nostril_-1",
+    "Matriarch_Nostril_1",
+    "Matriarch_Philtrum",
+    "Matriarch_Pupil_-1",
+    "Matriarch_Pupil_1",
+    "Matriarch_RoundedPinna_-1",
+    "Matriarch_RoundedPinna_1"
+  ],
+  "localFaceDeltaAtFullControl": [
+    -0.05999999865889549,
+    -0.024000003933906555,
+    0.005999996326863766
+  ],
+  "sourceSha256": "2700bc670306f4284ce94d7fa8b6d47626757bb5a015e861d61eef34cef3095d"
+}

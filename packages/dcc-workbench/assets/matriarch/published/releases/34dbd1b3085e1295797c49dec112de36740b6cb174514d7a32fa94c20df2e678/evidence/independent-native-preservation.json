@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "matriarch",
+  "completed": true,
+  "sourceAndPublicationUnchanged": true,
+  "files": [
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/matriarch/source.blend",
+      "sha256": "2700bc670306f4284ce94d7fa8b6d47626757bb5a015e861d61eef34cef3095d",
+      "after": "2700bc670306f4284ce94d7fa8b6d47626757bb5a015e861d61eef34cef3095d",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/matriarch/published/current.json",
+      "sha256": null,
+      "after": null,
+      "unchanged": true
+    }
+  ]
+}
