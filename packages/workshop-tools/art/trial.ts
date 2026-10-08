@@ -107,7 +107,13 @@ function config(value: ObjectValue) {
   return { author, verifier, director };
 }
 
-type Package = { started: number; ended?: number; failures: number; brief: ObjectValue };
+type Package = {
+  started: number;
+  ended?: number;
+  failures: number;
+  brief: ObjectValue;
+  clearance?: ObjectValue;
+};
 export function evaluate(values: ObjectValue[], now = Date.now()) {
   const initial = values[0];
   if (!initial) throw new Error('Empty trial');
@@ -192,8 +198,10 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
         pin(event.candidate);
         strings(event.evidence);
         text(event.critique);
-        if (event.verdict === 'clear') item.ended = at;
-        else if (event.verdict === 'fail') item.failures++;
+        if (event.verdict === 'clear') {
+          item.ended = at;
+          item.clearance = event;
+        } else if (event.verdict === 'fail') item.failures++;
         else throw new Error('Review verdict must be clear or fail');
         break;
       }
@@ -274,6 +282,7 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
       failures: item.failures,
       cleared: item.ended !== undefined,
       brief: item.brief,
+      clearance: item.clearance,
     };
   });
   const reviewReasons = [...reasons];
@@ -431,22 +440,29 @@ export function handoff(values: ObjectValue[], role: string, now = Date.now()) {
   if (role !== 'auditor' && role !== 'director' && !state.audited)
     throw new Error('Specification audit is required');
   const active = state.packages.find((item) => !item.cleared);
-  if (['author', 'verifier'].includes(role) && !active)
-    throw new Error('Start a bounded package first');
+  const latest = state.packages.at(-1);
+  const closeout = role === 'verifier' && !active;
+  if (role === 'author' && !active) throw new Error('Start a bounded package first');
+  if (closeout && (!latest?.cleared || latest.clearance?.specHash !== state.specHash))
+    throw new Error('Verifier closeout requires the latest package cleared under the current spec');
   const instructions: Record<string, string> = {
     auditor:
       'Audit this specification for ambiguity, feasibility, whole-creature identity, attachment/motion interfaces, ownership and observable acceptance. Return findings and an approved/rejected audit pinned to specHash. Do not author geometry.',
     author:
-      "You own only the active package paths and are not alone in the codebase. Preserve others' edits. Implement the shared spec, inspect your result, and freeze a candidate manifest plus captures. Keep self-assessment separate for the verifier to read after independently inspecting the candidate.",
+      "You own only the active package paths and are not alone in the codebase. Preserve others' edits. Reuse the pinned baseline and execute the specified import/save, native edit and export. Capture additional baseline evidence only for a named missing or changed requirement; reuse unchanged captures. Inspect clay and motion, then freeze a candidate manifest plus captures. Keep self-assessment separate for the verifier to read after independently inspecting the candidate.",
     verifier:
-      'Independently inspect candidate pixels before reading author self-assessment. Inspect matched whole-creature views and early motion probes. Return clear/fail plus view / visible defect / intended correction and pinned evidence. You may clear this package or request repair within budget; author no geometry and do not lower the spec.',
+      'Independently inspect candidate pixels before reading author self-assessment. Inspect matched whole-creature clay views and early motion probes. Run existing gates and prepare pinned evidence. Return clear/fail plus view / visible defect / intended correction. You may clear this package or request repair within budget; author no geometry and do not lower the spec.',
     director:
       'Resolve ambiguity and representation choices; record any takeover with model/effort and evidence. Review the final source and consumer pixels independently. Existing native/export/browser/publication gates still apply. Verifier clearance is not final acceptance or user approval.',
   };
   const reserveInstruction = state.reserveReached
     ? '\n\nReview-only reserve: inspect and integrate the already frozen candidate, record evidence and close out. Do not model, repair, start another package or dispatch an author. If review fails, preserve the failure and report the bounded result.'
     : '';
-  return `# ${String(state.asset)} — ${role}\n\nShared specification SHA-256: ${state.specHash}\n\n${state.spec}\n\n## Assignment\n\n${instructions[role]}${reserveInstruction}\n\n${JSON.stringify({ roles: state.roles, activePackage: active ?? null, limits: state.limits, reserve: state.reserve, remaining: state.remaining, elapsedMinutes: state.minutes, cumulativeUsage: state.usage }, null, 2)}\n\nRead docs/art/delegation.md. The director owns telemetry and checks the ledger before every dispatch or revision; workers return one frozen candidate and do not poll accounting. All roles, renders and rework share the same asset cap; restarts and takeovers never reset it. At a cap freeze evidence and report the bounded unfinished result.\n`;
+  const assignment = closeout
+    ? 'Verifier closeout: operate only on the latest cleared package and its pinned candidate. Run outstanding existing checks, prepare one evidence packet and record closeout. Do not model, repair, start another package or dispatch an author. Clearance and this handoff cannot grant or stand in for Astra parent acceptance. Publish only after actual Astra acceptance of these exact source, delivery and evidence bytes; preserve the existing release reviewer.role parent schema. Perform cleanup only within existing retention authority and commit only explicitly owned paths. If checks fail or bytes change, preserve evidence and return to the director.'
+    : instructions[role];
+  const mode = closeout ? 'closeout' : active ? 'active-package' : 'specification';
+  return `# ${String(state.asset)} — ${role}\n\nShared specification SHA-256: ${state.specHash}\n\n${state.spec}\n\n## Assignment\n\n${assignment}${reserveInstruction}\n\n${JSON.stringify({ mode, roles: state.roles, activePackage: active ?? null, clearedPackage: closeout ? latest : null, limits: state.limits, reserve: state.reserve, remaining: state.remaining, elapsedMinutes: state.minutes, cumulativeUsage: state.usage }, null, 2)}\n\nRead docs/art/delegation.md. The reviewer/operations role alone runs existing credits/status at dispatch, repair and closeout checkpoints; the director consumes its receipt and owns budget decisions. Reuse one fresh snapshot; no duplicate parent/helper polling. Return one completion or failure packet. Report shared-tool failures with a concise diagnosis and proposed fix to the director before editing shared tools; asset-local fixes stay within owned paths. All roles, renders and rework share the same asset cap; restarts and takeovers never reset it. At a cap freeze evidence and report the bounded unfinished result.\n`;
 }
 
 export async function runCli(args: string[]) {

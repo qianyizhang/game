@@ -82,6 +82,125 @@ await test('handoffs share one audited spec and enforce independent ownership', 
   );
 });
 
+function assignment(message: string): Record<string, unknown> {
+  const payload = message.match(/\n\n(\{[\s\S]*\})\n\nRead docs/);
+  assert.ok(payload?.[1], 'Handoff includes its structured assignment');
+  return JSON.parse(payload[1]) as Record<string, unknown>;
+}
+
+await test('audited author package clears into pinned verifier closeout without reopening authoring', () => {
+  const history = [init, audit, begin, usage(2)];
+  assert.equal(assignment(handoff(history, 'author', start + 2 * 60_000)).mode, 'active-package');
+  const cleared = [...history, review(3, 'clear'), usage(4)];
+  const message = handoff(cleared, 'verifier', start + 4 * 60_000);
+  const packet = assignment(message);
+  assert.equal(packet.mode, 'closeout');
+  assert.equal(packet.activePackage, null);
+  const reviewResult = review(3, 'clear');
+  const candidate = packet.clearedPackage as { id: string; clearance: typeof reviewResult };
+  assert.equal(candidate.id, begin.package);
+  assert.deepEqual(candidate.clearance, reviewResult);
+  assert.throws(() => handoff(cleared, 'author', start + 4 * 60_000), /Start a bounded package/);
+  // These instructions are the explicit authority boundary; ledger clearance is not publication approval.
+  assert.match(message, /Do not model, repair, start another package or dispatch an author/);
+  assert.match(message, /cannot grant or stand in for Astra parent acceptance/);
+  assert.match(message, /Publish only after actual Astra acceptance of these exact/);
+});
+
+await test('closeout cannot reuse stale-spec clearance or fall back past a newer open or rejected package', () => {
+  const cleared = [init, audit, begin, review(3, 'clear'), usage(4)];
+  const now = start + 4 * 60_000;
+  assert.throws(() => handoff([init, audit, usage(4)], 'verifier', now), /latest package cleared/);
+  const changed = [
+    ...cleared,
+    {
+      kind: 'spec',
+      at: at(4),
+      director: init.roles.director.id,
+      text: 'New shape',
+      reason: 'Scope',
+    },
+  ];
+  assert.throws(() => handoff(changed, 'verifier', now), /audit is required/);
+  assert.throws(
+    () =>
+      handoff([...changed, { ...audit, at: at(4), specHash: hash('New shape') }], 'verifier', now),
+    /latest package cleared under the current spec/,
+  );
+  assert.throws(
+    () => handoff([...cleared, { ...audit, at: at(4), approved: false }], 'verifier', now),
+    /audit is required/,
+  );
+  const latest = [...cleared, { ...begin, at: at(4), package: 'wing-tip' }];
+  const rejected = { ...review(4), package: 'wing-tip' };
+  for (const events of [latest, [...latest, rejected]]) {
+    const packet = assignment(handoff(events, 'verifier', now));
+    assert.equal(packet.mode, 'active-package');
+    assert.equal(packet.clearedPackage, null);
+    assert.equal((packet.activePackage as { id: string }).id, 'wing-tip');
+  }
+  assert.throws(
+    () => handoff([...latest, rejected, rejected], 'verifier', now),
+    /failed revision cap/,
+  );
+});
+
+await test('verifier closeout may use reserve but retains stop, pause, time, credit and telemetry gates', () => {
+  const configured = {
+    ...init,
+    version: 2,
+    limits: { assetMinutes: 90, packageMinutes: 30, failedRevisions: 2, credits: 1000 },
+    reserve: { minutes: 20, credits: 200 },
+  };
+  const begun = { ...begin, estimate: { minutes: 10, credits: 40, basis: 'Comparable receipt' } };
+  const cleared = [configured, audit, begun, review(3, 'clear')];
+  const creditReserve = [...cleared, usage(4, 800)];
+  assert.equal(assignment(handoff(creditReserve, 'verifier', start + 4 * 60_000)).mode, 'closeout');
+  assert.match(handoff(creditReserve, 'verifier', start + 4 * 60_000), /Review-only reserve/);
+  const timeReserve = [...cleared, usage(70, 100)];
+  assert.equal(assignment(handoff(timeReserve, 'verifier', start + 70 * 60_000)).mode, 'closeout');
+  assert.match(handoff(timeReserve, 'verifier', start + 70 * 60_000), /Review-only reserve/);
+  const blocked = [
+    { events: cleared, minute: 4, reason: /usage must be refreshed/ },
+    { events: creditReserve, minute: 7, reason: /usage must be refreshed/ },
+    {
+      events: [...cleared, usage(4, 800, 'partial')],
+      minute: 4,
+      reason: /usage must be refreshed/,
+    },
+    { events: [...cleared, usage(4, 1000)], minute: 4, reason: /Asset credit cap/ },
+    { events: [...cleared, usage(90, 800)], minute: 90, reason: /Asset time cap/ },
+    {
+      events: [
+        ...creditReserve,
+        { kind: 'stop', at: at(4), reason: 'Frozen', evidence: ['stop.md'] },
+      ],
+      minute: 4,
+      reason: /explicitly stopped/,
+    },
+    {
+      events: [
+        ...creditReserve,
+        { kind: 'pause', at: at(4), reason: 'user-wait', evidence: 'Question' },
+      ],
+      minute: 4,
+      reason: /Waiting for user/,
+    },
+    {
+      events: [configured, audit, begun, review(3), review(3), review(3, 'clear'), usage(4, 800)],
+      minute: 4,
+      reason: /failed revision cap/,
+    },
+    {
+      events: [configured, audit, begun, review(32, 'clear'), usage(32, 800)],
+      minute: 32,
+      reason: /package time cap/,
+    },
+  ];
+  for (const { events, minute, reason } of blocked)
+    assert.throws(() => handoff(events, 'verifier', start + minute * 60_000), reason);
+});
+
 await test('caps are cumulative, inclusive, and cannot be reset by a later pass or takeover', () => {
   const history = [init, audit, usage(2), begin, review(10), review(15)];
   const state = evaluate([...history, usage(15)], start + 15 * 60_000);
