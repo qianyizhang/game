@@ -5,7 +5,14 @@ import { fileURLToPath } from 'node:url';
 import { fromRoot, reportFailure } from '../io.ts';
 import { collectCredits, type CreditOptions } from './credits.ts';
 
-export const limits = { assetMinutes: 90, packageMinutes: 30, failedRevisions: 2, credits: 250 };
+// Historical v1 receipts keep the original contract regardless of future defaults.
+const legacyLimits = Object.freeze({
+  assetMinutes: 90,
+  packageMinutes: 30,
+  failedRevisions: 2,
+  credits: 250,
+});
+type Limits = typeof legacyLimits;
 const freshnessMs = 120_000;
 type ObjectValue = Record<string, unknown>;
 type Entry = { previous: string; value: ObjectValue };
@@ -46,8 +53,44 @@ function participant(value: unknown) {
   const data = object(value);
   return { id: text(data.id), model: text(data.model), effort: text(data.effort) };
 }
+function policy(value: ObjectValue) {
+  if (value.version === 1) {
+    if (value.limits !== undefined || value.reserve !== undefined)
+      throw new Error('Legacy v1 limits cannot be overridden');
+    return { limits: legacyLimits, reserve: { minutes: 0, credits: 0 } };
+  }
+  const declared = object(value.limits);
+  const limits = Object.fromEntries(
+    Object.keys(legacyLimits).map((key) => {
+      const amount = finite(declared[key]);
+      if (amount === 0) throw new Error('Limits must be positive');
+      return [key, amount];
+    }),
+  ) as Limits;
+  if (!Number.isInteger(limits.failedRevisions))
+    throw new Error('Failed revisions must be an integer');
+  const held = object(value.reserve);
+  const reserve = { minutes: finite(held.minutes), credits: finite(held.credits) };
+  if (
+    reserve.minutes <= 0 ||
+    reserve.minutes >= limits.assetMinutes ||
+    reserve.credits <= 0 ||
+    reserve.credits >= limits.credits
+  )
+    throw new Error('Reserve must be positive and below the asset limits');
+  return { limits, reserve };
+}
+function estimate(value: unknown) {
+  const data = object(value);
+  const minutes = finite(data.minutes);
+  const credits = finite(data.credits);
+  if (minutes === 0 || credits === 0) throw new Error('Step estimate must be positive');
+  return { minutes, credits, basis: text(data.basis) };
+}
 function config(value: ObjectValue) {
-  if (value.kind !== 'init' || value.version !== 1) throw new Error('Expected trial v1 init');
+  if (value.kind !== 'init' || (value.version !== 1 && value.version !== 2))
+    throw new Error('Expected trial v1 or v2 init');
+  policy(value);
   text(value.trial);
   text(value.asset);
   time(value.at);
@@ -69,6 +112,7 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
   const initial = values[0];
   if (!initial) throw new Error('Empty trial');
   const roles = config(initial);
+  const { limits, reserve } = policy(initial);
   const started = time(initial.at);
   let previousAt = started;
   let spec = text(initial.spec);
@@ -109,6 +153,7 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
         strings(event.ownedPaths);
         text(event.interfaces);
         text(event.acceptance);
+        if (initial.version === 2) estimate(event.estimate);
         packages.set(id, { started: at, failures: 0, brief: event });
         break;
       }
@@ -186,6 +231,12 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
   if (!usage || !usage.complete || now - usage.through > freshnessMs)
     reasons.push('Complete cumulative usage must be refreshed within 120 seconds');
   if (usage && usage.credits >= limits.credits) reasons.push('Asset credit cap reached');
+  if (initial.version === 2) {
+    if (minutes >= limits.assetMinutes - reserve.minutes)
+      reasons.push('Reserved final-review time reached');
+    if (usage && usage.credits >= limits.credits - reserve.credits)
+      reasons.push('Reserved final-review credits reached');
+  }
   const work = [...packages.entries()].map(([id, item]) => {
     const packageMinutes = elapsed(item.started, item.ended ?? now);
     if (packageMinutes >= limits.packageMinutes) reasons.push(`${id}: package time cap reached`);
@@ -209,6 +260,11 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
     usage,
     packages: work,
     limits,
+    reserve,
+    remaining: {
+      minutes: limits.assetMinutes - minutes,
+      credits: usage ? limits.credits - usage.credits : null,
+    },
     reasons,
     allowed: reasons.length === 0,
   };
@@ -271,6 +327,18 @@ export async function record(directory: string, value: ObjectValue) {
   if (value.kind === 'start') {
     const gate = evaluate(ledger.values);
     if (!gate.allowed) throw new Error(gate.reasons.join('; '));
+    if (ledger.values[0]?.version === 2) {
+      const next = estimate(value.estimate);
+      if (
+        next.minutes > gate.limits.packageMinutes ||
+        next.minutes + gate.reserve.minutes >= gate.remaining.minutes ||
+        gate.remaining.credits === null ||
+        next.credits + gate.reserve.credits >= gate.remaining.credits
+      )
+        throw new Error(
+          'Whole-step estimate does not fit remaining allowance plus final-review reserve',
+        );
+    }
   }
   evaluate([...ledger.values, value]);
   await verifyPins(value);
@@ -341,7 +409,7 @@ export function handoff(values: ObjectValue[], role: string, now = Date.now()) {
     director:
       'Resolve ambiguity and representation choices; record any takeover with model/effort and evidence. Review the final source and consumer pixels independently. Existing native/export/browser/publication gates still apply. Verifier clearance is not final acceptance or user approval.',
   };
-  return `# ${String(state.asset)} — ${role}\n\nShared specification SHA-256: ${state.specHash}\n\n${state.spec}\n\n## Assignment\n\n${instructions[role]}\n\n${JSON.stringify({ roles: state.roles, activePackage: active ?? null, limits, elapsedMinutes: state.minutes, cumulativeUsage: state.usage }, null, 2)}\n\nRead docs/art/delegation.md. Check the ledger before every dispatch or revision. All roles, renders and rework share the same asset cap; restarts and takeovers never reset it. At a cap freeze evidence and report the bounded unfinished result.\n`;
+  return `# ${String(state.asset)} — ${role}\n\nShared specification SHA-256: ${state.specHash}\n\n${state.spec}\n\n## Assignment\n\n${instructions[role]}\n\n${JSON.stringify({ roles: state.roles, activePackage: active ?? null, limits: state.limits, reserve: state.reserve, remaining: state.remaining, elapsedMinutes: state.minutes, cumulativeUsage: state.usage }, null, 2)}\n\nRead docs/art/delegation.md. The director owns telemetry and checks the ledger before every dispatch or revision; workers return one frozen candidate and do not poll accounting. All roles, renders and rework share the same asset cap; restarts and takeovers never reset it. At a cap freeze evidence and report the bounded unfinished result.\n`;
 }
 
 export async function runCli(args: string[]) {

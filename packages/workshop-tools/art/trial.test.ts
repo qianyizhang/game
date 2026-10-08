@@ -240,3 +240,71 @@ await test('disk receipts refuse overwrite, changed pins, symlinks and rewritten
     evidence: ['closeout.md'],
   });
 });
+
+await test('v2 pins per-trial limits and reserve while historical v1 remains unchanged', () => {
+  const second = {
+    ...init,
+    version: 2,
+    limits: { assetMinutes: 120, packageMinutes: 40, failedRevisions: 3, credits: 400 },
+    reserve: { minutes: 20, credits: 80 },
+  };
+  const timeNow = start + 90 * 60_000;
+  assert.equal(evaluate([init, usage(90, 260)], timeNow).allowed, false);
+  const current = evaluate([second, usage(90, 260)], timeNow);
+  assert.equal(current.allowed, true);
+  assert.equal(current.remaining.minutes, 30);
+  assert.equal(current.remaining.credits, 140);
+  assert.match(handoff([second, usage(90, 260)], 'auditor', timeNow), /400/);
+  assert.equal(evaluate([second, usage(100, 260)], start + 100 * 60_000).allowed, false);
+  assert.equal(evaluate([second, usage(90, 320)], timeNow).allowed, false);
+  assert.throws(
+    () => evaluate([{ ...init, limits: second.limits }], start),
+    /cannot be overridden/,
+  );
+  assert.throws(
+    () => evaluate([{ ...second, reserve: { minutes: 120, credits: 80 } }], start),
+    /Reserve/,
+  );
+  assert.throws(
+    () => evaluate([{ ...second, limits: { ...second.limits, failedRevisions: 1.5 } }], start),
+    /integer/,
+  );
+});
+
+await test('v2 dispatch refuses a step that cannot leave final-review reserve; evidence stays recordable', async (t) => {
+  const root = await realpath(await mkdtemp(resolve(tmpdir(), 'art-trial-reserve-')));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const baseline = resolve(root, 'baseline.json');
+  await writeFile(baseline, 'baseline');
+  const directory = resolve(root, 'trial');
+  const stamp = () => new Date().toISOString();
+  await initialize(directory, {
+    ...init,
+    version: 2,
+    at: new Date(Date.now() - 60_000).toISOString(),
+    limits: { assetMinutes: 90, packageMinutes: 30, failedRevisions: 2, credits: 250 },
+    reserve: { minutes: 20, credits: 60 },
+    baseline: [{ path: baseline, sha256: hash('baseline') }],
+  });
+  await record(directory, { ...audit, at: stamp() });
+  const through = stamp();
+  await record(directory, { ...usage(1, 120), at: through, through });
+  const estimated = {
+    ...begin,
+    at: stamp(),
+    estimate: { minutes: 25, credits: 80, basis: 'Author plus verifier and parent integration' },
+  };
+  await assert.rejects(record(directory, estimated), /does not fit/);
+  await record(directory, { ...estimated, estimate: { ...estimated.estimate, credits: 50 } });
+  const capStamp = stamp();
+  await record(directory, { ...usage(1, 190), at: capStamp, through: capStamp });
+  const values = (await load(directory)).values;
+  assert.throws(() => handoff(values, 'verifier'), /Reserved final-review credits/);
+  await record(directory, {
+    kind: 'stop',
+    at: stamp(),
+    reason: 'Reserve reached; freeze for final review',
+    evidence: ['candidate.json'],
+  });
+  assert.equal((await load(directory)).values.at(-1)?.kind, 'stop');
+});
