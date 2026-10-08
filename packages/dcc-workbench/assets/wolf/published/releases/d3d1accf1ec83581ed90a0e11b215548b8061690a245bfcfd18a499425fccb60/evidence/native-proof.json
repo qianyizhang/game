@@ -1,0 +1,101 @@
+{
+  "specSha256": "7ba198b45aff86c4289289aa98de184bc0360fbad5055d6f246df00ce57445d8",
+  "sourceSha256": "bd58fb4398f1a663d076aae9bfceedf822d26520d160e87ce1ca93c0ea1d3fe7",
+  "values": [
+    0,
+    0.5,
+    1
+  ],
+  "frames": [
+    0,
+    36,
+    72,
+    108,
+    144
+  ],
+  "maxFixedDifference": 0.0,
+  "maxAnchorDifference": 0.0,
+  "maxValue0Difference": 0.0,
+  "terminalCapDisplacements": [
+    {
+      "value": 0,
+      "frame": 0,
+      "euclidean": 0.0
+    },
+    {
+      "value": 0,
+      "frame": 36,
+      "euclidean": 0.0
+    },
+    {
+      "value": 0,
+      "frame": 72,
+      "euclidean": 0.0
+    },
+    {
+      "value": 0,
+      "frame": 108,
+      "euclidean": 0.0
+    },
+    {
+      "value": 0,
+      "frame": 144,
+      "euclidean": 0.0
+    },
+    {
+      "value": 0.5,
+      "frame": 0,
+      "euclidean": 0.08097063287594765
+    },
+    {
+      "value": 0.5,
+      "frame": 36,
+      "euclidean": 0.08097071435575105
+    },
+    {
+      "value": 0.5,
+      "frame": 72,
+      "euclidean": 0.08097069490124796
+    },
+    {
+      "value": 0.5,
+      "frame": 108,
+      "euclidean": 0.08097072392574739
+    },
+    {
+      "value": 0.5,
+      "frame": 144,
+      "euclidean": 0.08097063287594765
+    },
+    {
+      "value": 1,
+      "frame": 0,
+      "euclidean": 0.1619413203862896
+    },
+    {
+      "value": 1,
+      "frame": 36,
+      "euclidean": 0.16194131211924429
+    },
+    {
+      "value": 1,
+      "frame": 72,
+      "euclidean": 0.1619414530633234
+    },
+    {
+      "value": 1,
+      "frame": 108,
+      "euclidean": 0.16194150536131832
+    },
+    {
+      "value": 1,
+      "frame": 144,
+      "euclidean": 0.1619413203862896
+    }
+  ],
+  "adjacentValueMaximumMovement": [
+    0.08190200491940273,
+    0.08190207259123114
+  ],
+  "maxRestorationDifference": 0.0
+}

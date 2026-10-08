@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf",
+  "candidateDigest": "7d5af106a57c4dc28065cfce5099c0d17693c8a57a3aef2885de93467a9584b3",
+  "reviewer": {
+    "role": "parent",
+    "name": "Astra 01a11b57-ba46-73b3-aa61-e69c24f2887e; exact acceptance 2026-10-08T12:10:37.000Z; receipt SHA-256 d5a72d9d1ae7b6ba450585c7b610b1d24db191c2811554ab8fcf863c3ffd9f7a"
+  },
+  "decision": "accepted",
+  "scope": "gallery",
+  "evidence": [
+    {
+      "view": "author manifest",
+      "reference": "evidence/author-manifest.json",
+      "observation": "Independent verifier clearance, native edit/restoration/save/reload/export gate, default and maximum consumer agreement, measured delivery caps and 435 discrete-pose constraints. Exact source, brief, model, candidate and packet bytes independently rehashed by parent at acceptance.",
+      "sha256": "64ce7325e72cb209beccbfadae68c455c464439158be827dbb556322e32d115a"
+    },
+    {
+      "view": "baseline root intersections",
+      "reference": "evidence/baseline-root-intersections.json",
+      "observation": "Independent verifier clearance, native edit/restoration/save/reload/export gate, default and maximum consumer agreement, measured delivery caps and 435 discrete-pose constraints. Exact source, brief, model, candidate and packet bytes independently rehashed by parent at acceptance.",
+      "sha256": "4eb226e8734f7444cd8ee2bd1085227ff25900d6b6d469d3741ace28ee9fa907"
+    },
+    {
+      "view": "chronology exception",
+      "reference": "evidence/chronology-exception.json",
+      "observation": "Root triangle IDs were extracted after modeling instead of before. Independent review confirmed original-only derivation from the hash-pinned unchanged baseline; exclusion was not selected from the candidate. Accept disclosed chronology deviation without rewriting original spec or clocks.",
+      "sha256": "831b3f9c3c45df5c96f427ac4bd5a0dfa96154c5ae79ff12898469d5ba3bb54e"
+    },
+    {
+      "view": "constraint sweep",
+      "reference": "evidence/constraint-sweep.json",
+      "observation": "Independent verifier clearance, native edit/restoration/save/reload/export gate, default and maximum consumer agreement, measured delivery caps and 435 discrete-pose constraints. Exact source, brief, model, candidate and packet bytes independently rehashed by parent at acceptance.",
+      "sha256": "5ddcf55080fafd2c7bf53e55ebd8bb50812932fc1e484ff4f49c0d09bfe393a4"
+    },
+    {
+      "view": "consumer default left flank clay",
+      "reference": "evidence/consumer-default-left-flank-clay.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "281507370868c2ceb4abf6d987358325be35cf738c779088a093233a4fc9fcf2"
+    },
+    {
+      "view": "consumer default left flank material",
+      "reference": "evidence/consumer-default-left-flank-material.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "5f738c277293cff99b7bd74a524a42e7f9e1a1c4715e1fefcfd9eb0fb55df272"
+    },
+    {
+      "view": "consumer default phone",
+      "reference": "evidence/consumer-default-phone.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "95f0d3b1066b4c631cca8c2ef08f07aa43110488982d16fee05faedece8e24cd"
+    },
+    {
+      "view": "consumer default poses",
+      "reference": "evidence/consumer-default-poses.json",
+      "observation": "Independent verifier clearance, native edit/restoration/save/reload/export gate, default and maximum consumer agreement, measured delivery caps and 435 discrete-pose constraints. Exact source, brief, model, candidate and packet bytes independently rehashed by parent at acceptance.",
+      "sha256": "1a2c64c041cdd643c193530021f4f2ae3ef4311b1924cd84a77489438a94808b"
+    },
+    {
+      "view": "consumer default rear clay motion3",
+      "reference": "evidence/consumer-default-rear-clay-motion3.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "a9cd394b737739cf326e598e4e6b3f2978b43003d1124f8b64e9ca0d091a58b6"
+    },
+    {
+      "view": "consumer default right flank clay",
+      "reference": "evidence/consumer-default-right-flank-clay.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "0a399b9be745ea078971d8d6b94db6c0756749d8bdaff744ec2bd538d143a265"
+    },
+    {
+      "view": "consumer default right flank material motion3",
+      "reference": "evidence/consumer-default-right-flank-material-motion3.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "2cfdb35dacba2ccd74c26fd18b58631070511227bdc7d6cb347229e72338b00b"
+    },
+    {
+      "view": "consumer default right flank material motion4.5",
+      "reference": "evidence/consumer-default-right-flank-material-motion4.5.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "384d2913d12cf5a43fca9235d576b1adccc10b25b37a69c278f5c970fca82631"
+    },
+    {
+      "view": "consumer max poses",
+      "reference": "evidence/consumer-max-poses.json",
+      "observation": "Independent verifier clearance, native edit/restoration/save/reload/export gate, default and maximum consumer agreement, measured delivery caps and 435 discrete-pose constraints. Exact source, brief, model, candidate and packet bytes independently rehashed by parent at acceptance.",
+      "sha256": "1a2c64c041cdd643c193530021f4f2ae3ef4311b1924cd84a77489438a94808b"
+    },
+    {
+      "view": "native default face clay",
+      "reference": "evidence/native-default-face-clay.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "b24490a6d0343a99edb97b9cc4736e6e3ad18589ff5c88d5df04490167105882"
+    },
+    {
+      "view": "native default face material",
+      "reference": "evidence/native-default-face-material.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "2c65564627a2114814ba3935afaf4aca84569bf1b8f0953527cb41e5ac7bed36"
+    },
+    {
+      "view": "native default frame84 left flank clay",
+      "reference": "evidence/native-default-frame84-left-flank-clay.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "44e59b40b98ae04a40823401b765187f25a0d390374c6bd39401ab58977c183b"
+    },
+    {
+      "view": "native default frame84 material",
+      "reference": "evidence/native-default-frame84-material.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "1008051d2936bdbe64e643fcc5a68da312f258582060f846bf40609396b13275"
+    },
+    {
+      "view": "native default left flank clay",
+      "reference": "evidence/native-default-left-flank-clay.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "58dcba7ae2a0049f289028e826c37233df9657520b28d0c99bfb0422af3db682"
+    },
+    {
+      "view": "native default left flank material",
+      "reference": "evidence/native-default-left-flank-material.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "19870d47745e6bd96a1dd4b77fc5ccfb250d247301ebd41f7da03be871e94f68"
+    },
+    {
+      "view": "native default right flank clay",
+      "reference": "evidence/native-default-right-flank-clay.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "4cb193ebd0f7ee326e45e8e4c1a718d2a8f9f105ba4c4edd5e8458b3df76803f"
+    },
+    {
+      "view": "native default right flank material",
+      "reference": "evidence/native-default-right-flank-material.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "a6c257724c2e0edc534a3e1c1f9c3c6ca5d0bfbaac7403b08ba9552dc57ce017"
+    },
+    {
+      "view": "native max frame84 right flank clay",
+      "reference": "evidence/native-max-frame84-right-flank-clay.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "ab13bafe9b4346b6585a20fb211f59091337dd23f07c4bb4c784d4eee4cdf40b"
+    },
+    {
+      "view": "native max left flank clay",
+      "reference": "evidence/native-max-left-flank-clay.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "88863dbb226b28be09723987ec74b38020866f33135d04c952e33872190f2604"
+    },
+    {
+      "view": "native proof",
+      "reference": "evidence/native-proof.json",
+      "observation": "Independent verifier clearance, native edit/restoration/save/reload/export gate, default and maximum consumer agreement, measured delivery caps and 435 discrete-pose constraints. Exact source, brief, model, candidate and packet bytes independently rehashed by parent at acceptance.",
+      "sha256": "75ca4c2b146fc03544ddb66abf1a11b2aa837eedc42182c61b538dc7bd17bb7a"
+    },
+    {
+      "view": "native value0 left flank clay",
+      "reference": "evidence/native-value0-left-flank-clay.png",
+      "observation": "Parent directly inspected pinned baseline, early value 0/0.5/1 whole clay and frame-84 motion, frozen native left/right material, default consumer front material at 0, opposite flank material at 4.5, rear clay at 3 and phone material. Tail relax at saved 0.5 opens the pointed lower hook and softens the transverse band while retaining heavy brush mass, fitted root and the preserved listening posture, lifted muzzle, unequal antlers, pale ruff and planted unequal paws. Accept this bounded refinement and native operation for local gallery publication.",
+      "sha256": "1b83d6274b0f1739a853841d523a549fe2e7640570a46c7329d2a9cd7553ee09"
+    },
+    {
+      "view": "verifier native edit",
+      "reference": "evidence/verifier-native-edit.json",
+      "observation": "Independent verifier clearance, native edit/restoration/save/reload/export gate, default and maximum consumer agreement, measured delivery caps and 435 discrete-pose constraints. Exact source, brief, model, candidate and packet bytes independently rehashed by parent at acceptance.",
+      "sha256": "c368a91a46490ce30d48bd64b8704eeaec8424af8a548016441d142a6c8cc172"
+    },
+    {
+      "view": "verifier preservation",
+      "reference": "evidence/verifier-preservation.json",
+      "observation": "Independent verifier clearance, native edit/restoration/save/reload/export gate, default and maximum consumer agreement, measured delivery caps and 435 discrete-pose constraints. Exact source, brief, model, candidate and packet bytes independently rehashed by parent at acceptance.",
+      "sha256": "2e76e09b42ed6ac0ffda62fc8baf84ba156fbe96f1e6bc89546a6bd76faca900"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-08T12:07:28.176Z",
+  "director": "01a11b57-ba46-73b3-aa61-e69c24f2887e",
+  "originalRequirement": "Pin baseline intersecting root triangle IDs before editing.",
+  "actual": "The exact inherited-root IDs were extracted after shape-key modeling from the unchanged baseline import; baseline source SHA is asserted in sweep_constraints.py before pinning.",
+  "parentDisposition": "Parent grants explicit chronology exception; preserve spec timing requirement as originally written and record deviation/intervention. Extraction happened after modeling from hash-asserted unchanged baseline, not candidate-dependent selection. No evidence integrity fix/geometry repair needed. No re-clock or spec rewrite. Include exception in retrospective/final receipt.",
+  "independentInspection": "Reviewed sweep_constraints.py baseline branch: --pin-baseline checks native import SHA and extracts unions of original tail/body triangle crossing IDs across every frame0..144. Candidate check excludes that exact frozen set; no fractional attachment interval excluded."
+}

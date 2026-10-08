@@ -140,6 +140,34 @@
         "receipts": "assets/prowler/receipts",
         "publication": "assets/prowler/published"
       }
+    },
+    "wolf": {
+      "legacyStudyId": "wolf",
+      "source": "subjects/wolf/source.blend",
+      "brief": "subjects/wolf/brief.json",
+      "native": {
+        "adapter": "blender/export_saved.py",
+        "dependencies": [
+          "blender/export_saved.py",
+          "blender/saved_export_plan.py",
+          "blender/native_types.py"
+        ]
+      },
+      "delivery": {
+        "profile": "skinned",
+        "animation": {
+          "name": "wolf_idle",
+          "seconds": 6,
+          "fps": 24
+        },
+        "directory": "assets/wolf",
+        "model": "assets/wolf/model.glb",
+        "audit": "assets/wolf/authoring.json",
+        "poses": "assets/wolf/pose-samples.json",
+        "manifest": "assets/wolf/manifest.json",
+        "receipts": "assets/wolf/receipts",
+        "publication": "assets/wolf/published"
+      }
     }
   }
 }

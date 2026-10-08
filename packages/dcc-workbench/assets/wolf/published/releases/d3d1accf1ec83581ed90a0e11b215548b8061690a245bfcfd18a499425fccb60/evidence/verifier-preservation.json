@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf",
+  "completed": true,
+  "sourceAndPublicationUnchanged": true,
+  "files": [
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/wolf/source.blend",
+      "sha256": "bd58fb4398f1a663d076aae9bfceedf822d26520d160e87ce1ca93c0ea1d3fe7",
+      "after": "bd58fb4398f1a663d076aae9bfceedf822d26520d160e87ce1ca93c0ea1d3fe7",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/wolf/published/current.json",
+      "sha256": null,
+      "after": null,
+      "unchanged": true
+    }
+  ]
+}
