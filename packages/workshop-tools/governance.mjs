@@ -1,6 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync } from 'node:fs';
+import { closeSync, existsSync, openSync, readFileSync, readSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 /** These are the same explicit scopes used by ESLint, tsc and pyproject.toml. @param {string} path */
@@ -65,6 +65,34 @@ export function checkInventory(root, files, pending, legacyDocs) {
   return errors;
 }
 
+/** @param {string} root @param {string[]} files */
+export function checkNativeHydration(root, files) {
+  const errors = [];
+  for (const path of files) {
+    if (
+      !/^packages\/dcc-workbench\/(sources|subjects|assets|references)\/.*\.(blend|glb)$/.test(path)
+    )
+      continue;
+    const descriptor = openSync(resolve(root, path), 'r');
+    const header = Buffer.alloc(64);
+    try {
+      const length = readSync(descriptor, header, 0, header.length, 0);
+      if (
+        header
+          .subarray(0, length)
+          .toString()
+          .startsWith('version https://git-lfs.github.com/spec/v1\n')
+      )
+        errors.push(
+          `Unhydrated Git LFS asset: ${path}. Run git lfs install --local and git lfs pull, then retry.`,
+        );
+    } finally {
+      closeSync(descriptor);
+    }
+  }
+  return errors;
+}
+
 /** @param {string} root */
 export function checkGovernance(root) {
   /** @type {unknown} */
@@ -88,7 +116,10 @@ export function checkGovernance(root) {
         .filter((path) => path && existsSync(resolve(root, path))),
     ),
   ];
-  const errors = checkInventory(root, files, pending, legacy);
+  const errors = [
+    ...checkInventory(root, files, pending, legacy),
+    ...checkNativeHydration(root, files),
+  ];
   const expectedNode = readFileSync(resolve(root, '.node-version'), 'utf8').trim();
   if (process.versions.node !== expectedNode)
     errors.push(

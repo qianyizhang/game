@@ -25,6 +25,24 @@ BLENDER_BIN=/path/to/blender npm run dcc -- doctor
 
 The local runtime came from [the official release directory](https://download.blender.org/release/Blender4.5/). The ARM64 DMG's verified SHA-256 was `65134d9b07b20e2fa8d3c9e44f6f44ffb5c9774dd521b95f50387310241ca170`.
 
+## Storage and cloning
+
+Install Git LFS before cloning. From a clone or this existing checkout, run:
+
+```sh
+git lfs install --local
+git lfs pull
+npm run maintenance -- check
+```
+
+The repository’s attributes put `.blend` and `.glb` files under `sources/`, `subjects/`, `assets/` and `references/` in LFS, including preserved legacy binaries when they are next staged. Keep working bytes unchanged and stage only the deliberately owned paths; adoption does not rewrite history. Briefs, receipts, reviews and small accepted captures stay in ordinary Git. Rejected local iterations, test runs and source backups remain protected by retention policy. The [storage decision](../../docs/engineering/decisions/0004-native-asset-storage.md) records the trade-off.
+
+A clone made without hydration can contain a short text file beginning `version https://git-lfs.github.com/spec/v1` where a model or source should be. `npm run maintenance -- check` reports the affected path and hydration command before binary validation; it does not fetch files. After `git lfs pull`, retry the check. A download/access failure is a storage-readiness issue: preserve the pointer, repair access or retrieve the missing object, and do not regenerate the artwork to hide it. `git lfs fsck` checks the local LFS objects; it does not prove that the remote has every required object.
+
+Both CI jobs request LFS hydration and run the early check. On 2026-10-08, the parent verified upload and independent download of the **17,612,728-byte current Hydra GLB** with matching SHA-256; the [storage decision](../../docs/engineering/decisions/0004-native-asset-storage.md) records its identity and evidence. An isolated local-origin checkout also hydrated all 13 binary paths at its pinned scaffold snapshot and passed delivery/build checks. Only the Hydra object's remote transfer is established; availability of every required binary and a full GitHub checkout still need verification after commit/push.
+
+There is currently no deployment workflow; future deployment must build with hydrated assets and publish real build output, including the source downloads offered by the workbench. Git-hosted pointer text is not a usable `.blend` or `.glb` download.
+
 ## The vertical pipeline
 
 ```text

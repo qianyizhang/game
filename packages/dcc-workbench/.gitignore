@@ -1,5 +1,6 @@
 sources/*.blend1
 sources/*.blend2
+subjects/*/*.blend[0-9]*
 __pycache__/
 blender/__pycache__/
 .runtime/

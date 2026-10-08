@@ -12,11 +12,13 @@ Blindside and Last Hearth use original content names. Slay the Spire uses origin
 
 ## Play locally
 
-Use the pinned Node 24 LTS and npm versions; `.nvmrc` and `.node-version` identify the exact release. Maintenance checks also use Python 3.12 through `uv`.
+Install Git LFS and use the pinned Node 24 LTS and npm versions; `.nvmrc` and `.node-version` identify the exact release. Maintenance checks also use Python 3.12 through `uv`. The [native asset setup](packages/dcc-workbench/README.md#storage-and-cloning) explains binary downloads and missing-file diagnostics.
 
 ```sh
 nvm install
 nvm use
+git lfs install --local
+git lfs pull
 npm ci
 npm run dev
 ```
