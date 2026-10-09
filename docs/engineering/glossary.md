@@ -100,6 +100,31 @@ _Avoid_: Release, when the revision has not been promoted.
 
 **User approval**: The user's explicit acceptance of a result or direction. An author's favorable review is not user approval.
 
+## Session review
+
+**Delegation parent**: The session that assigned work to another session. Delegation alone does not establish that prior conversation or usage was copied.
+
+**Fork origin**: The session from which a new session branched with inherited history. It can differ from the delegation parent.
+
+**History base**: The session whose recorded history a continuation explicitly inherits. It identifies history ancestry, not who assigned the work.
+
 ## Meaning authorities
 
 Definitions consolidate existing behavior from [architecture](architecture.md), [challenges](../guide/challenges.md), [arena contracts](../guide/hearth-arena.md), the [art rulebook](../art/art-direction.md), [native asset migration](../art/migration.md) and the [asset delegation protocol](../art/delegation.md). Detailed mechanics and implementation remain in those documents and the owning game. Sharpen definitions as actual ambiguities arise; keep implementation procedures out of this glossary.
+
+## Trace analysis
+
+**Trace action**:
+An observable operation shown together with its linked inputs, native executions and outputs. Its source records keep their separate identities; matching text alone does not establish an execution link.
+_Avoid_: Record, tool wrapper
+
+**Session**: One recorded Codex conversation with a stable identity and its own ordered history. A child session is a separate conversation linked to its parent.
+_Avoid_: Actor, when counting conversations; turn, when referring to a whole conversation.
+
+**Turn**: One recorded unit of work within a session, containing the messages and actions associated with that unit.
+
+**Source position**: A record's position in its own source, such as a physical JSONL line. Positions from different sessions do not form one shared sequence.
+
+**Goal continuation**: A runtime-provided request to continue an existing objective, distinct from a newly authored user request.
+
+**Auto-review**: Approval-review activity identified by its recorded review-session metadata or approval-assessment envelope. Its presence in a log does not establish which context a different model received.

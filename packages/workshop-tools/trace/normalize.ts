@@ -1,3 +1,4 @@
+import { classifyRequest } from './classify.ts';
 import {
   identity,
   list,
@@ -124,6 +125,10 @@ export function normalizeThread(value: unknown, role = 'Agent'): TraceThread {
             event = {
               kind: 'message',
               title: item.phase === 'final_answer' ? 'Completion report' : 'Progress / review',
+              messagePhase:
+                item.phase === 'final_answer' || item.phase === 'commentary'
+                  ? item.phase
+                  : undefined,
               text: asText(item.text),
             };
             break;
@@ -217,6 +222,7 @@ export function normalizeThread(value: unknown, role = 'Agent'): TraceThread {
           preview: event.text.slice(0, 1200),
           displayTruncated: event.text.length > 1200 || (event.output?.length ?? 0) > 1200,
         };
+        classifyRequest(normalized);
         normalized.key = eventKey(normalized);
         coverage.normalizedItems++;
         if (normalized.sourceTruncated) coverage.truncatedItems++;

@@ -1,0 +1,140 @@
+import type { TraceEvent } from './contracts.ts';
+type Obj = Record<string, unknown>;
+const obj = (value: unknown): Obj =>
+  value && typeof value === 'object' && !Array.isArray(value) ? (value as Obj) : {};
+const str = (value: unknown) => (typeof value === 'string' ? value : '');
+const printable = (value: unknown) => str(value) || JSON.stringify(value ?? '', null, 2);
+const text = (value: unknown) =>
+  typeof value === 'string'
+    ? value
+    : Array.isArray(value)
+      ? value
+          .map((part) => str(obj(part).text))
+          .filter(Boolean)
+          .join('\n')
+      : '';
+export type CompletedEvent = Pick<TraceEvent, 'kind' | 'title' | 'text'> & Partial<TraceEvent>;
+/** Public completed-item variants only. Private reasoning is handled as an omission by callers. */
+export function completedEvent(payload: Obj, role: string): CompletedEvent | undefined {
+  const item = obj(payload.item),
+    type = str(item.type);
+  const status = str(item.status);
+  const base = { status };
+  switch (type) {
+    case 'UserMessage':
+      return {
+        ...base,
+        kind: 'request',
+        title: 'User request',
+        text: text(item.content),
+        role: 'User',
+      };
+    case 'AgentMessage':
+      if (item.phase === 'analysis') return undefined;
+      return {
+        ...base,
+        kind: 'message',
+        title: 'Assistant message',
+        text: text(item.content),
+        role,
+        messagePhase:
+          item.phase === 'final_answer' || item.phase === 'commentary' ? item.phase : undefined,
+      };
+    case 'CommandExecution': {
+      const ms =
+        typeof item.duration_ms === 'number'
+          ? item.duration_ms
+          : typeof obj(item.duration).secs === 'number'
+            ? Number(obj(item.duration).secs) * 1000 +
+              Number(obj(item.duration).nanos ?? 0) / 1000000
+            : undefined;
+      return {
+        ...base,
+        kind: 'command',
+        title: 'Shell command',
+        text: Array.isArray(item.command) ? printable(item.command) : str(item.command),
+        output:
+          str(item.aggregated_output) ||
+          [str(item.stdout), str(item.stderr)].filter(Boolean).join('\n'),
+        exitCode: typeof item.exit_code === 'number' ? item.exit_code : null,
+        durationMs: ms,
+      };
+    }
+    case 'ImageView':
+      return {
+        ...base,
+        kind: 'image',
+        title: 'Image inspection',
+        text: str(item.path),
+        paths: str(item.path) ? [str(item.path)] : [],
+      };
+    case 'FileChange': {
+      const changes: Obj[] = Array.isArray(item.changes)
+        ? item.changes.map(obj)
+        : Object.entries(obj(item.changes)).map(([path, change]) => ({ ...obj(change), path }));
+      return {
+        ...base,
+        kind: 'edit',
+        title: 'File changes',
+        paths: changes.map((change) => str(change.path)).filter(Boolean),
+        text: changes
+          .map(
+            (change) =>
+              str(change.path) +
+              '\n' +
+              printable(
+                change.unified_diff ??
+                  change.content ??
+                  obj(change.diff).text ??
+                  change.diff ??
+                  change.patch ??
+                  '',
+              ),
+          )
+          .join('\n\n'),
+        output: [str(item.stdout), str(item.stderr)].filter(Boolean).join('\n'),
+      };
+    }
+    case 'McpToolCall':
+      return {
+        ...base,
+        kind: 'command',
+        title: str(item.server) + ' · ' + str(item.tool),
+        text: printable(item.arguments),
+        output: printable(item.result),
+      };
+    case 'CollabAgentToolCall':
+      return {
+        ...base,
+        kind: 'delegation',
+        title: 'Agent coordination · ' + str(item.tool),
+        text: printable({
+          sender: item.sender_thread_id,
+          receivers: item.receiver_thread_ids,
+          agents: item.receiver_agents,
+        }),
+        output: printable(item.agents_states),
+        relatedThreads: (Array.isArray(item.receiver_thread_ids) ? item.receiver_thread_ids : [])
+          .map(str)
+          .filter(Boolean),
+      };
+    case 'SubAgentActivity':
+      return {
+        ...base,
+        kind: 'delegation',
+        title: 'Subagent · ' + str(item.kind),
+        text: [str(item.agent_path), str(item.agent_thread_id)].filter(Boolean).join('\n'),
+        relatedThreads: str(item.agent_thread_id) ? [str(item.agent_thread_id)] : [],
+      };
+    case 'Extension':
+      return {
+        ...base,
+        kind: 'reference',
+        title: 'Extension · ' + str(item.kind),
+        text: printable(item.query ?? item.action ?? {}),
+        output: printable(item.results),
+      };
+    default:
+      return undefined;
+  }
+}

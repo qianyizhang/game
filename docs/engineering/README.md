@@ -10,6 +10,7 @@
 - [Testing policy](testing.md) favors observable behavior and end-to-end journeys.
 - [Test audit](test-audit-2026-10-07.md) classifies the initial suite and records the first consolidation.
 - [Installed review skills](agent-skills.md) maps upstream conventions to the repository.
+- [Offline Codex usage dashboard](usage-dashboard.md): local session accounting, usage trends, pricing and source evidence.
 - [Trace behavior debugger](trace-visualizer.md) connects curated episodes, records and retained artifacts.
 - [Tools package](../../packages/workshop-tools/README.md) documents maintenance commands.
 - [DCC package](../../packages/dcc-workbench/README.md) documents Blender authoring and delivery.

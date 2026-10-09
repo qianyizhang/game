@@ -21,7 +21,16 @@ export interface TraceEvent {
   relatedThreads: string[];
   sourceType?: string;
   sourceTruncated: boolean;
-  kind: 'request' | 'message' | 'command' | 'edit' | 'image' | 'reference' | 'delegation';
+  kind:
+    | 'request'
+    | 'goal'
+    | 'auto-review'
+    | 'message'
+    | 'command'
+    | 'edit'
+    | 'image'
+    | 'reference'
+    | 'delegation';
   title: string;
   text: string;
   output?: string;
@@ -30,6 +39,21 @@ export interface TraceEvent {
   preview: string;
   displayTruncated: boolean;
   key: string;
+  sourcePath?: string;
+  sourceLine?: number;
+  timestamp?: string;
+  callId?: string;
+  /** Verified relation to a recorded invocation; source records remain independently addressable. */
+  parentCall?: string;
+  imageUrls?: string[];
+  messagePhase?: 'commentary' | 'final_answer';
+  /** Local server only: bounded preview with byte-pinned, on-demand content. */
+  body?: {
+    sources: Array<{ offset: number; bytes: number; sha256: string }>;
+    textLength: number;
+    outputLength?: number;
+    imageCount: number;
+  };
 }
 export interface Omission {
   type: string;
@@ -41,7 +65,17 @@ export interface TraceThread {
   title: string;
   role: string;
   parent?: string;
-  source: { name: string; format: string; version: number; rawSchemaVersion: number };
+  purpose?: 'auto-review';
+  source: {
+    name: string;
+    format: string;
+    version: number;
+    rawSchemaVersion: number;
+    path?: string;
+    sha256?: string;
+    bytes?: number;
+    lines?: number;
+  };
   coverage: {
     totalItems: number;
     normalizedItems: number;

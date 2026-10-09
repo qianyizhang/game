@@ -1,5 +1,5 @@
 import { gitDocument } from './documents.ts';
-import ts from 'typescript';
+import { viewerRuntime } from './runtime.ts';
 import { randomUUID } from 'node:crypto';
 import { freshOutput } from './output.ts';
 import {
@@ -129,7 +129,7 @@ async function buildInto({
         ? turn.events.find(
             (e) => ['message', 'request'].includes(e.kind) && e.text.includes(anchorText),
           )
-        : turn.events.findLast((e) => e.kind === 'message');
+        : [...turn.events].reverse().find((e) => e.kind === 'message');
     if (!anchor) throw new Error(`Missing evidence anchor: ${stage.title}`);
     const id = stage.id ?? `episode-${index + 1}`;
     if (stageIds.has(id)) throw new Error(`Duplicate episode id: ${id}`);
@@ -306,9 +306,7 @@ async function buildInto({
     throw new Error('Missing template data placeholder');
   if (!template.includes('/*TRACE_RUNTIME*/'))
     throw new Error('Missing viewer runtime placeholder');
-  const runtime = ts.transpileModule(await readFile(resolve(here, 'viewer.ts'), 'utf8'), {
-    compilerOptions: { target: ts.ScriptTarget.ES2023, module: ts.ModuleKind.ESNext },
-  }).outputText;
+  const runtime = await viewerRuntime();
   // Insert source first: payload text may itself contain placeholder-looking strings.
   await writeFile(
     resolve(output, 'index.html'),
