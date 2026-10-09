@@ -88,7 +88,15 @@ _Avoid_: Release, when the revision has not been promoted.
 
 **Visual review**: Inspection of the artwork's gesture, structure, materials and presentation in actual views.
 
-**Parent acceptance**: The orchestrating agent's explicit decision that an identified candidate meets the project's visual and delivery gates for integration. It is distinct from the author's self-review and from user approval.
+**Trial orchestrator**: The agent coordinating ownership, scheduling, handoffs and resource limits for a native asset trial. Coordination alone does not grant visual acceptance authority.
+
+**Art director**: The agent accountable for a study's visual scope, representation, construction direction and final visual acceptance. This role may be separate from the trial orchestrator.
+
+**Construction prototype**: A bounded editable native example proving a difficult anatomical transition within the whole creature and its motion before broader authoring proceeds.
+
+**Art-direction acceptance**: The art director's explicit decision that an identified candidate's exact source, delivery and evidence meet the visual and delivery gates for integration. It is distinct from technical verification, independent reviewer clearance and user approval.
+
+**Parent acceptance**: Art-direction acceptance when the parent also serves as art director. It is a visual judgment, distinct from coordination authority.
 
 **User approval**: The user's explicit acceptance of a result or direction. An author's favorable review is not user approval.
 

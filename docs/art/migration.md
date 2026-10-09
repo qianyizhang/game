@@ -4,7 +4,7 @@ Accepted direction, 2026-10-08: refine and manage principal 3D assets as editabl
 
 The user also accepted **selective reconstruction** and **desktop-first delivery** on 2026-10-08. Preserve good existing geometry, including triangulated imports, and rebuild regions where refinement or deformation requires it. Demonstrate meaningful native editability for each migrated subject; a native file extension alone is insufficient. Prioritize desktop gallery quality, retain phone-width framing and interaction checks, and treat optimized phone deliveries and measured physical-device performance as later work. Do not reinterpret viewport checks as a device-performance pass.
 
-The [art rulebook](art-direction.md) owns the visual bar; the [testing policy](../engineering/testing.md) owns coverage choices. This document owns migration responsibilities, promotion and the planned cohort. The parent retains orchestration, independent visual judgment, shared-tool revision and final integration.
+The [art rulebook](art-direction.md) owns the visual bar; the [testing policy](../engineering/testing.md) owns coverage choices. This document owns migration responsibilities, promotion and the planned cohort. The directing workflow retains orchestration, visual judgment, shared-tool revision and final integration responsibility. The [delegation protocol](delegation.md) may assign orchestration and art direction to separate agents; its named art director supplies final acceptance. Historical parent-accepted releases retain their meaning and bytes.
 
 ## Implementation boundary
 
