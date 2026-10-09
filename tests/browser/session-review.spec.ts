@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
+import { readFileSync } from 'node:fs';
 let file = '';
 test.beforeAll(() => {
   file = execFileSync(
@@ -20,6 +21,8 @@ test.beforeAll(() => {
     ],
     { encoding: 'utf8' },
   ).trim();
+  expect(readFileSync(file, 'utf8')).not.toContain('__review-fixture');
+  expect(readFileSync(file, 'utf8')).not.toContain('fixture-gallery');
 });
 test('offline minimap follows scroll and resized cards, including non-first bucket members', async ({
   page,

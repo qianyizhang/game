@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useReview } from './context.tsx';
 import { Conversation } from '../conversation/conversation.tsx';
 import { ActionView } from '../actions/action-view.tsx';
@@ -62,7 +62,6 @@ function Coverage() {
 export function App() {
   const { document: data, state, update, eventMap } = useReview();
   const [copied, setCopied] = useState('');
-  const [inspection, setInspection] = useState<Inspection | null>(null);
   const curation = data.curation;
   const episode =
     curation?.episodes.find((s) => s.id === state.episode) ??
@@ -75,17 +74,33 @@ export function App() {
     '';
   const [subject, setSubject] = useState(defaultSubject);
   useEffect(() => setSubject(defaultSubject), [defaultSubject, episode?.id]);
+  const readInspection = useCallback((): Inspection | null => {
+    if (!curation) return null;
+    const query = new URLSearchParams(location.hash.slice(1));
+    const event = eventMap.get(query.get('event') ?? '');
+    const assessment = curation.episodes
+      .flatMap((s) => s.assessments)
+      .find((a) => a.id === query.get('assessment'));
+    return assessment
+      ? { kind: 'assessment', assessment }
+      : event
+        ? { kind: 'event', event }
+        : null;
+  }, [curation, eventMap]);
+  const [inspection, setInspection] = useState(readInspection);
   useEffect(() => {
     document.title = curation ? data.title : data.threads[0]?.id.slice(0, 8) + ' · Session review';
-    if (!curation) return;
-    const e = eventMap.get(state.event);
-    const a = curation.episodes
-      .flatMap((s) => s.assessments)
-      .find((a) => a.id === state.assessment);
-    if (a) setInspection({ kind: 'assessment', assessment: a });
-    else if (e) setInspection({ kind: 'event', event: e });
-    // Restore evidence from a deep link once; in-page navigation owns drawer lifetime.
-  }, [data, eventMap, curation]);
+  }, [curation, data]);
+  useEffect(() => {
+    // Browser traversal restores URL-owned evidence. In-page inspection also supports local artifacts.
+    const restore = () => setInspection(readInspection());
+    window.addEventListener('popstate', restore);
+    window.addEventListener('hashchange', restore);
+    return () => {
+      window.removeEventListener('popstate', restore);
+      window.removeEventListener('hashchange', restore);
+    };
+  }, [readInspection]);
   const tabs: Array<[View, string]> = [
     ['conversation', 'Conversation'],
     ...(curation
@@ -144,16 +159,7 @@ export function App() {
               checked={state.reviews}
               onChange={(e) => {
                 setInspection(null);
-                update({
-                  reviews: e.target.checked,
-                  session: state.session === '__reviews__' ? 'all' : state.session,
-                  thread: state.thread === '__reviews__' ? data.threads[0].id : state.thread,
-                  kind: state.kind === 'auto-review' ? 'all' : state.kind,
-                  turn: '',
-                  actionTurn: 'all',
-                  event: '',
-                  page: 0,
-                });
+                update({ reviews: e.target.checked });
               }}
             />
             Show auto-review
@@ -168,7 +174,7 @@ export function App() {
             aria-pressed={state.view === view}
             onClick={() => {
               setInspection(null);
-              update({ view, event: '', assessment: '' });
+              update({ view });
               window.scrollTo({ top: 0 });
             }}
           >

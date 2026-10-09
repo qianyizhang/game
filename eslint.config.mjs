@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
 
 const typedFiles = [
@@ -33,6 +34,42 @@ export default [
     languageOptions: {
       parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname },
       globals: { ...globals.node, ...globals.browser },
+    },
+  },
+  {
+    files: ['packages/session-review/src/**/*.{ts,tsx}'],
+    plugins: { 'react-hooks': reactHooks },
+    rules: {
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'error',
+    },
+  },
+  {
+    files: ['packages/session-review/src/model/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: [
+                'react',
+                'react/*',
+                'react-dom',
+                'react-dom/*',
+                '**/app/**',
+                '**/actions/**',
+                '**/conversation/**',
+                '**/records/**',
+                '**/curation/**',
+                '**/*.tsx',
+              ],
+              message:
+                'The review model owns data and classification; presentation depends on it, not the reverse.',
+            },
+          ],
+        },
+      ],
     },
   },
   {

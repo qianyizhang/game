@@ -488,9 +488,11 @@ test('trace distinguishes goal continuations and review activity, with session s
   await expect(page.locator('#conversation-thread option[value=auto-review-session]')).toHaveCount(
     0,
   );
-  await expect(page.locator('#turn-filter option')).toHaveCount(4);
+  await expect(page.getByRole('slider', { name: 'Turn', exact: true })).toHaveAttribute('max', '3');
+  await expect(page.locator('#turn-position')).toHaveText('All 3 turns');
   await page.locator('#thread-filter').selectOption('parent');
-  await expect(page.locator('#turn-filter option')).toHaveCount(3);
+  await expect(page.getByRole('slider', { name: 'Turn', exact: true })).toHaveAttribute('max', '2');
+  await expect(page.locator('#turn-position')).toHaveText('All 2 turns');
   await page.locator('#turn-slider').fill('2');
   await expect(page.locator('#turn-position')).toContainText('Turn 2');
   await expect(page.locator('#event-list')).toContainText('GOAL_OBJECTIVE_PROOF');

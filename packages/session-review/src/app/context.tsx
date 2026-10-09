@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useMemo, type ReactNode } from 'react';
 import type { ReviewDocument, TraceEvent } from '../model/contracts.ts';
 import { traceActions } from '../model/actions.ts';
 import { recordSource } from '../model/data-source.ts';
@@ -23,9 +23,12 @@ function useModel(document: ReviewDocument) {
   const visible = (e: TraceEvent) => state.reviews || !review(e);
   const label = (id: string) =>
     `${index.threads.get(id)?.purpose === 'auto-review' ? 'Auto-review' : document.curation ? (index.threads.get(id)?.role ?? 'Session') : id === document.threads[0]?.id ? 'Main' : 'Subagent'} · ${id.slice(0, 8)}`;
-  const matchesAgent = (id: string, agent: string) =>
-    agent === 'all' ||
-    (agent === '__reviews__' ? index.threads.get(id)?.purpose === 'auto-review' : id === agent);
+  const matchesAgent = useCallback(
+    (id: string, agent: string) =>
+      agent === 'all' ||
+      (agent === '__reviews__' ? index.threads.get(id)?.purpose === 'auto-review' : id === agent),
+    [index.threads],
+  );
   const turnNumber = (thread: string, turn: string) =>
     (index.threads.get(thread)?.turns.findIndex((t) => t.id === turn) ?? -1) + 1;
   return { document, state, update, ...index, visible, review, label, matchesAgent, turnNumber };

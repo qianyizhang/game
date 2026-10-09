@@ -1,8 +1,12 @@
 import { defineConfig } from 'vite';
 import { fileURLToPath } from 'node:url';
-export default defineConfig({
+import { fixtureServer } from './dev-server.ts';
+export default defineConfig(({ command }) => ({
   root: fileURLToPath(new URL('.', import.meta.url)),
-  define: { 'process.env.NODE_ENV': JSON.stringify('production') },
+  plugins: [fixtureServer()],
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(command === 'serve' ? 'development' : 'production'),
+  },
   build: {
     target: 'es2023',
     lib: {
@@ -13,4 +17,4 @@ export default defineConfig({
     cssCodeSplit: false,
     rolldownOptions: { output: { codeSplitting: false } },
   },
-});
+}));

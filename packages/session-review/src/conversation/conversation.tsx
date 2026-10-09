@@ -113,7 +113,7 @@ export function Conversation() {
   );
   const filter = (type: string) => update({ type: state.type === type ? 'all' : type, event: '' });
   const openTurn = (turn: string) => {
-    update({ turn, type: 'all', signal: 'all', event: '' });
+    update({ turn });
     window.scrollTo({ top: 0 });
   };
   useEffect(() => {
@@ -230,7 +230,7 @@ export function Conversation() {
           <select
             id="conversation-thread"
             value={state.thread}
-            onChange={(e) => update({ thread: e.target.value, turnPage: 0 })}
+            onChange={(e) => update({ thread: e.target.value })}
           >
             <AgentOptions />
           </select>

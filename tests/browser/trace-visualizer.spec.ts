@@ -238,9 +238,6 @@ test.describe('public synthetic behavior case', () => {
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto(fixtureUrl);
     await expect(page.locator('#coverage-summary')).toContainText('1 unsupported');
-    await expect(page.locator('#turn-filter option').filter({ hasText: 'Worker' })).toContainText(
-      'Time unknown',
-    );
     await expect(page.locator('#ownership')).toContainText('construction');
     await expect(page.locator('#ownership')).toContainText('exact interleaving unavailable');
     await expect(page.locator('#story-images')).toContainText('No retained hero capture');
@@ -269,7 +266,65 @@ test.describe('public synthetic behavior case', () => {
         .locator('#drawer-content pre:not(.record-preview)')
         .filter({ hasText: 'Complete available output.' }),
     ).toContainText('x'.repeat(17000));
+    await page.keyboard.press('Escape');
+    await page.getByRole('combobox', { name: 'Evidence role', exact: true }).selectOption('all');
+    await page.getByRole('combobox', { name: 'Agent', exact: true }).selectOption('worker');
+    await page.getByRole('slider', { name: 'Turn', exact: true }).fill('1');
+    await expect(page.locator('#turn-position')).toContainText('Worker');
+    await expect(page.locator('#action-context')).toContainText('Turn start time unknown');
+    await expect(page.locator('#event-list')).toContainText('src/bird.ts');
     expect(errors).toEqual([]);
+  });
+  test('episode selection adds history and restores the selected episode on reload', async ({
+    page,
+  }) => {
+    const historyUrl = bundleUrl(
+      execFileSync(
+        process.execPath,
+        [
+          '--input-type=module',
+          '-e',
+          `
+      import {writeFixture} from './packages/workshop-tools/trace/fixture.ts';
+      import {buildCase} from './packages/workshop-tools/trace/build.ts';
+      import {resolve} from 'node:path';
+      import {mkdtemp} from 'node:fs/promises';
+      const root = await mkdtemp(resolve('test-results/episode-history-'));
+      const options = await writeFixture(root);
+      options.spec.stages.push({...options.spec.stages[0], id:'followup', title:'Follow-up review'});
+      const data = await buildCase(options);
+      console.log(JSON.stringify({file:resolve(data.output,'index.html')}));
+    `,
+        ],
+        { encoding: 'utf8' },
+      ),
+    );
+    await page.goto(historyUrl);
+    await expect(page.locator('#stage-title')).toHaveText('Wing review');
+    const length = await page.evaluate(() => history.length);
+    await page.getByRole('button', { name: 'Next episode →', exact: true }).click();
+    await expect(page.locator('#stage-title')).toHaveText('Follow-up review');
+    expect(await page.evaluate(() => history.length)).toBe(length + 1);
+    await page.goBack();
+    await expect(page.locator('#stage-title')).toHaveText('Wing review');
+    await page.goForward();
+    await expect(page.locator('#stage-title')).toHaveText('Follow-up review');
+    await page.reload();
+    await expect(page.locator('#stage-title')).toHaveText('Follow-up review');
+  });
+  test('browser history restores URL-linked curated evidence across views', async ({ page }) => {
+    await page.goto(fixtureUrl);
+    await page.locator('#episode-evidence .evidence-row').first().click();
+    await expect(page.locator('#evidence-drawer')).toBeVisible();
+    await page.getByRole('button', { name: 'Open exact recorded action' }).click();
+    await expect(page.locator('#evidence-drawer')).toBeHidden();
+    await expect(page.locator('#events')).toBeVisible();
+    await page.goBack();
+    await expect(page.locator('#story')).toBeVisible();
+    await expect(page.locator('#evidence-drawer')).toBeVisible();
+    await page.goForward();
+    await expect(page.locator('#events')).toBeVisible();
+    await expect(page.locator('#drawer-content')).toContainText('Revise the wing');
   });
   test('criterion cells expose assessor, artifact and limits; coverage preserves omitted identities', async ({
     page,
@@ -412,6 +467,38 @@ test.describe('conversation overview and turn inspection', () => {
         { encoding: 'utf8' },
       ),
     );
+  });
+  test('browser traversal restores turns and views while filter edits replace one entry', async ({
+    page,
+  }) => {
+    await page.goto(url);
+    await page
+      .locator('#conversation-list > article')
+      .first()
+      .getByRole('button', { name: 'Inspect turn' })
+      .click();
+    await expect(page.locator('#turn-title')).toHaveText('Turn 1');
+    const length = await page.evaluate(() => history.length);
+    await page.locator('#turn-kind').selectOption('command');
+    await page.getByRole('switch', { name: 'Raw text' }).check();
+    expect(await page.evaluate(() => history.length)).toBe(length);
+    await page.getByRole('button', { name: 'Next turn →', exact: true }).click();
+    await expect(page.locator('#turn-title')).toHaveText('Turn 2');
+    await expect(page.locator('#turn-kind')).toHaveValue('all');
+    await page.goBack();
+    await expect(page.locator('#turn-title')).toHaveText('Turn 1');
+    await expect(page.locator('#turn-kind')).toHaveValue('command');
+    await expect(page.getByRole('switch', { name: 'Raw text' })).toBeChecked();
+    await page.goBack();
+    await expect(page.locator('#conversation-list')).toBeVisible();
+    await page.goForward();
+    await expect(page.locator('#turn-title')).toHaveText('Turn 1');
+    await page.getByRole('button', { name: 'Recorded actions', exact: true }).click();
+    await expect(page.locator('#events')).toBeVisible();
+    await page.goBack();
+    await expect(page.locator('#turn-title')).toHaveText('Turn 1');
+    await page.reload();
+    await expect(page.locator('#turn-kind')).toHaveValue('command');
   });
   test('starts with exchanges, drills into structured work, and restores the selected turn', async ({
     page,

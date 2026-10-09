@@ -31,7 +31,7 @@ export function ActionView({ inspect }: { inspect: (event: TraceEvent) => void }
   const position = eligibleTurns.findIndex((t) => turnKey(t.threadId, t.id) === state.actionTurn);
   const chooseTurn = (position: number) => {
     const t = eligibleTurns[position - 1];
-    update({ actionTurn: t ? turnKey(t.threadId, t.id) : 'all', page: 0, event: '' });
+    update({ actionTurn: t ? turnKey(t.threadId, t.id) : 'all' });
   };
   const scope = useMemo(() => {
     const episode = data.curation?.episodes.find((s) => s.id === state.scope);
@@ -83,6 +83,7 @@ export function ActionView({ inspect }: { inspect: (event: TraceEvent) => void }
     );
   }, [
     data,
+    matchesAgent,
     actions,
     state.reviews,
     state.session,
@@ -127,9 +128,7 @@ export function ActionView({ inspect }: { inspect: (event: TraceEvent) => void }
           <select
             id="thread-filter"
             value={state.session}
-            onChange={(e) =>
-              update({ session: e.target.value, actionTurn: 'all', page: 0, event: '' })
-            }
+            onChange={(e) => update({ session: e.target.value })}
           >
             <AgentOptions all />
           </select>
@@ -203,21 +202,6 @@ export function ActionView({ inspect }: { inspect: (event: TraceEvent) => void }
             : `${label(eligibleTurns[position].threadId)} · Turn ${turnNumber(eligibleTurns[position].threadId, eligibleTurns[position].id)}`}
         </span>
       </div>
-      <select
-        id="turn-filter"
-        aria-label="Turn filter"
-        hidden
-        value={state.actionTurn}
-        onChange={(e) => update({ actionTurn: e.target.value, page: 0, event: '' })}
-      >
-        <option value="all">All turns</option>
-        {eligibleTurns.map((t) => (
-          <option key={turnKey(t.threadId, t.id)} value={turnKey(t.threadId, t.id)}>
-            {data.curation && t.startedAt === undefined ? 'Time unknown · ' : ''}
-            {label(t.threadId)} · {t.id}
-          </option>
-        ))}
-      </select>
       {data.curation && (
         <div className="controls">
           <label>
@@ -264,7 +248,14 @@ export function ActionView({ inspect }: { inspect: (event: TraceEvent) => void }
           filter={filter}
           jump={(a) => update({ event: a.key })}
         >
-          {position >= 0 && <TurnMetadata turn={eligibleTurns[position]} />}
+          {position >= 0 && (
+            <>
+              {eligibleTurns[position].startedAt === undefined && (
+                <p className="small">Turn start time unknown</p>
+              )}
+              <TurnMetadata turn={eligibleTurns[position]} />
+            </>
+          )}
           {episode && <p className="small">{episode.title}</p>}
         </Minimap>
         <div>
