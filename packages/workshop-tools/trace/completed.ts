@@ -1,3 +1,4 @@
+import { readQuestions } from './native-tools.ts';
 import { threadReadResult } from './thread-read.ts';
 import type { TraceEvent } from './contracts.ts';
 type Obj = Record<string, unknown>;
@@ -40,8 +41,9 @@ export function completedEvent(payload: Obj, role: string): CompletedEvent | und
       if (item.phase === 'analysis') return undefined;
       return {
         ...base,
-        kind: 'message',
-        title: 'Assistant message',
+        kind: readQuestions(item.questions).length ? 'ask' : 'message',
+        title: readQuestions(item.questions).length ? 'Ask user' : 'Assistant message',
+        questions: readQuestions(item.questions),
         text: text(item.content),
         role,
         messagePhase:
@@ -136,11 +138,56 @@ export function completedEvent(payload: Obj, role: string): CompletedEvent | und
         text: [str(item.agent_path), str(item.agent_thread_id)].filter(Boolean).join('\n'),
         relatedThreads: str(item.agent_thread_id) ? [str(item.agent_thread_id)] : [],
       };
+    case 'ContextCompaction':
+      return {
+        ...base,
+        kind: 'compaction',
+        title: 'Context compacted',
+        text: 'Context was compacted. Conversation history was condensed for continued work.',
+        compaction: {
+          startedAt: typeof payload.started_at_ms === 'number' ? payload.started_at_ms : undefined,
+          completedAt:
+            typeof payload.completed_at_ms === 'number' ? payload.completed_at_ms : undefined,
+        },
+      };
     case 'Extension':
+      if (item.kind === 'clock.sleep')
+        return {
+          ...base,
+          kind: 'wait',
+          title: 'Clock wait',
+          text: 'Paused until the timer elapsed or new input arrived.',
+          durationMs:
+            durationMs ?? (typeof item.durationMs === 'number' ? item.durationMs : undefined),
+        };
       return {
         ...base,
         kind: 'reference',
-        title: 'Extension · ' + str(item.kind),
+        title:
+          item.kind === 'web.search'
+            ? 'Web · ' + str(obj(item.action).type || 'search')
+            : 'Extension · ' + str(item.kind),
+        ...(item.kind === 'web.search'
+          ? {
+              web: {
+                query: str(item.query),
+                targets: [
+                  str(item.query),
+                  str(obj(item.action).url),
+                  str(obj(item.action).query),
+                  ...(Array.isArray(obj(item.action).queries)
+                    ? (obj(item.action).queries as unknown[]).map(str)
+                    : []),
+                  ...(str(obj(item.action).pattern)
+                    ? ['find:' + str(obj(item.action).pattern)]
+                    : []),
+                ].filter(Boolean),
+                results: (Array.isArray(item.results) ? item.results : [])
+                  .map(obj)
+                  .map((r) => ({ title: str(r.title), url: str(r.url), snippet: str(r.snippet) })),
+              },
+            }
+          : {}),
         text: printable(item.query ?? item.action ?? {}),
         output: printable(item.results),
       };

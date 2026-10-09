@@ -574,3 +574,96 @@ await test('MCP and literal-map batches link by tool identity without merging am
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+// Inject overlapping wrappers to prevent proximity-based merges that real sequential traces can hide.
+await test('native web and computed patch links require unique matching operations, while compaction payloads stay private', async () => {
+  const dir = await mkdtemp(resolve(tmpdir(), 'native-boundaries-'));
+  try {
+    const call = (id: string, input: string) => ({
+      type: 'response_item',
+      payload: { type: 'custom_tool_call', name: 'exec', call_id: id, input },
+    });
+    const result = (id: string) => ({
+      type: 'response_item',
+      payload: { type: 'custom_tool_call_output', call_id: id, output: 'done' },
+    });
+    const native = (item: object) => ({
+      type: 'event_msg',
+      payload: { type: 'item_completed', item },
+    });
+    const web = (query: string) =>
+      native({
+        type: 'Extension',
+        kind: 'web.search',
+        id: 'native-' + query,
+        query: query + ' ...',
+        action: { type: 'search', queries: [query] },
+        results: [],
+      });
+    const patch =
+      'await tools.apply_patch("*** Begin Patch\\n*** Add File: /project/generated/" + filename + "\\n+data\\n*** End Patch")';
+    const edit = (path: string) =>
+      native({ type: 'FileChange', id: path, changes: { [path]: { unified_diff: '+data' } } });
+    const path = resolve(dir, 'source.jsonl');
+    await writeFile(
+      path,
+      [
+        { type: 'session_meta', payload: { id: 'session' } },
+        { type: 'turn_context', payload: { turn_id: 'turn' } },
+        call('web', 'await tools.web__run({search_query:[{q:"matching"}]})'),
+        web('matching'),
+        web('different'),
+        result('web'),
+        call('overlap-a', 'await tools.web__run({search_query:[{q:"ambiguous"}]})'),
+        call('overlap-b', 'await tools.web__run({search_query:[{q:"ambiguous"}]})'),
+        web('ambiguous'),
+        result('overlap-a'),
+        result('overlap-b'),
+        call('patch', patch),
+        edit('/project/generated/a.txt'),
+        edit('/project/elsewhere/a.txt'),
+        result('patch'),
+        call('patch-overlap-a', patch),
+        call('patch-overlap-b', patch),
+        edit('/project/generated/ambiguous.txt'),
+        result('patch-overlap-a'),
+        result('patch-overlap-b'),
+        {
+          type: 'compacted',
+          payload: {
+            message: 'PRIVATE_SUMMARY',
+            replacement_history: 'PRIVATE_HISTORY',
+            window_number: 4,
+          },
+        },
+        {
+          type: 'response_item',
+          payload: { type: 'compaction', encrypted_content: 'PRIVATE_ENCRYPTED' },
+        },
+      ]
+        .map((r) => JSON.stringify(r))
+        .join('\n'),
+    );
+    const thread = await normalizeSessionFile(path, 'session', 'Main', { lazyBodies: true });
+    const events = thread.turns.flatMap((t) => t.events);
+    const nativeEvents = events.filter((e) => /\/(Extension|FileChange)$/.test(e.sourceType ?? ''));
+    assert.deepEqual(
+      nativeEvents.map((e) => events.find((c) => c.key === e.parentCall)?.callId),
+      ['web', undefined, undefined, 'patch', undefined, undefined],
+    );
+    assert.equal(
+      events.find((e) => e.sourceType === 'response_item/compaction')?.title,
+      'Compacted context loaded',
+    );
+    assert.equal(
+      events.filter((e) => e.kind === 'compaction').every((e) => !e.body),
+      true,
+    );
+    assert.doesNotMatch(
+      JSON.stringify(thread),
+      /PRIVATE_SUMMARY|PRIVATE_HISTORY|PRIVATE_ENCRYPTED/,
+    );
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});

@@ -1,3 +1,4 @@
+import { readQuestions, questionResult, linkCompactions } from './native-tools.ts';
 import { toolSignature, toolSignatures, wrapperTools } from './tool-signatures.ts';
 import { semanticOperation, linkSemanticActions } from './semantic-links.ts';
 import { TurnTelemetry } from './telemetry.ts';
@@ -285,15 +286,28 @@ export async function normalizeSessionFile(
         let excluded = false;
         if (
           type === 'response_item' &&
-          (payloadType === 'reasoning' ||
-            payloadType === 'compaction' ||
-            (payloadType === 'message' && p.channel === 'analysis'))
+          (payloadType === 'reasoning' || (payloadType === 'message' && p.channel === 'analysis'))
         )
           excluded = true;
-        else if (type === 'event_msg' && payloadType === 'item_completed') {
+        else if (
+          type === 'compacted' ||
+          (type === 'response_item' && payloadType === 'compaction')
+        ) {
+          event = {
+            kind: 'compaction',
+            title: type === 'compacted' ? 'Context compacted' : 'Compacted context loaded',
+            text:
+              type === 'compacted'
+                ? 'Context was compacted. Conversation history was condensed for continued work.'
+                : 'A previously compacted context was loaded into this session. Its private payload is excluded.',
+            compaction: {
+              window: typeof p.window_number === 'number' ? p.window_number : undefined,
+            },
+          };
+        } else if (type === 'event_msg' && payloadType === 'item_completed') {
           const itemType = string(object(p.item).type);
           if (
-            ['Reasoning', 'ContextCompaction'].includes(itemType) ||
+            itemType === 'Reasoning' ||
             (itemType === 'AgentMessage' && object(p.item).phase === 'analysis')
           )
             excluded = true;
@@ -361,6 +375,14 @@ export async function normalizeSessionFile(
             text: args,
             callId,
           };
+          if (/(?:^|[._])request_user_input(?:_async)?$/.test(name)) {
+            event.kind = 'ask';
+            try {
+              event.questions = readQuestions(object(JSON.parse(args)).questions);
+            } catch {
+              /* Keep original arguments. */
+            }
+          }
           if (event.kind === 'delegation') {
             try {
               const argsObject = object(JSON.parse(args));
@@ -388,6 +410,9 @@ export async function normalizeSessionFile(
             output: output.text || (Array.isArray(p.output) ? '' : JSON.stringify(p.output ?? '')),
             callId: string(p.call_id),
             imageUrls: output.images,
+            ...(/request_user_input(?:_async)?$/.test(toolNames.get(string(p.call_id)) ?? '')
+              ? { questionResult: questionResult(p.output) }
+              : {}),
           };
         } else if (
           type === 'event_msg' &&
@@ -509,6 +534,8 @@ export async function normalizeSessionFile(
               'ImageView',
               'SubAgentActivity',
               'CollabAgentToolCall',
+              ...(normalized.kind === 'ask' ? ['AgentMessage'] : []),
+              'Extension',
             ].includes(string(item.type))
           ) {
             executionLinks.push({
@@ -548,6 +575,7 @@ export async function normalizeSessionFile(
             ? wrapperTools(normalized.text)
             : { dynamic: [] };
           normalized.parallelCalls = plan.parallelCalls;
+          normalized.sequentialCalls = plan.sequentialCalls;
           operations.set(normalized.key, semanticOperation(normalized.text, normalized.title, cwd));
           executionLinks.push({
             event: normalized,
@@ -574,7 +602,7 @@ export async function normalizeSessionFile(
         if (nativeMessage)
           nativeMessages.push({ event: normalized, signature, images: event.imageUrls ?? [] });
         classifyRequest(normalized);
-        if (options.lazyBodies) {
+        if (options.lazyBodies && normalized.kind !== 'compaction') {
           normalized.body = {
             sources: [{ offset: record.offset, bytes: record.bytes, sha256: record.sha256 }],
             textLength: normalized.text.length,
@@ -637,7 +665,10 @@ export async function normalizeSessionFile(
       });
     }
     linkExecutions(executionLinks);
-    for (const turn of thread.turns) linkSemanticActions(turn.events, operations);
+    for (const turn of thread.turns) {
+      linkSemanticActions(turn.events, operations);
+      linkCompactions(turn.events);
+    }
     telemetry.apply(thread.turns);
     if (!identityVerified)
       throw new Error('Trace source lacks session metadata; refresh the usage dashboard.');

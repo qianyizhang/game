@@ -22,6 +22,9 @@ export interface TraceEvent {
   sourceType?: string;
   sourceTruncated: boolean;
   kind:
+    | 'ask'
+    | 'compaction'
+    | 'wait'
     | 'request'
     | 'goal'
     | 'auto-review'
@@ -47,6 +50,19 @@ export interface TraceEvent {
   parentCall?: string;
   /** Count only when the wrapper syntax proves one direct parallel batch. */
   parallelCalls?: number;
+  sequentialCalls?: number;
+  questions?: Array<{
+    id: string;
+    title: string;
+    options: Array<{ label: string; description?: string }>;
+  }>;
+  questionResult?: { delivered?: boolean; answers?: Record<string, string[]> };
+  web?: {
+    query: string;
+    targets: string[];
+    results: Array<{ title: string; url: string; snippet: string }>;
+  };
+  compaction?: { window?: number; startedAt?: number; completedAt?: number };
   threadRead?: ThreadRead;
   imageUrls?: string[];
   messagePhase?: 'commentary' | 'final_answer';

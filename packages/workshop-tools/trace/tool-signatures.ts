@@ -19,7 +19,7 @@ export function toolSignature(name: string, args: unknown): string | undefined {
     .digest('hex');
 }
 /** A literal-only syntax reader: no evaluation, interpolation, identifiers, spreads or getters. */
-function literal(node: ts.Expression): Json | undefined {
+export function literal(node: ts.Expression): Json | undefined {
   if (ts.isStringLiteralLike(node)) return node.text;
   if (ts.isNumericLiteral(node)) return Number(node.text);
   if (node.kind === ts.SyntaxKind.TrueKeyword) return true;
@@ -89,7 +89,11 @@ export function toolSignatures(text: string, name: string): string[] {
 }
 
 export type DynamicTool = { name: string; known: Record<string, Json> };
-export function wrapperTools(text: string): { dynamic: DynamicTool[]; parallelCalls?: number } {
+export function wrapperTools(text: string): {
+  dynamic: DynamicTool[];
+  parallelCalls?: number;
+  sequentialCalls?: number;
+} {
   if (text.length > 200000) return { dynamic: [] };
   const file = ts.createSourceFile(
     'trace.js',
@@ -188,7 +192,31 @@ export function wrapperTools(text: string): { dynamic: DynamicTool[]; parallelCa
     )
       parallelCalls = length;
   }
-  return { dynamic, parallelCalls };
+  // Only individually awaited calls in distinct top-level statements establish sequential execution.
+  const statements = calls.map((call) => {
+    if (!ts.isAwaitExpression(call.parent)) return undefined;
+    let node: ts.Node = call.parent;
+    while (node.parent !== file) {
+      if (
+        !node.parent ||
+        ts.isFunctionLike(node.parent) ||
+        ts.isIterationStatement(node.parent, false) ||
+        ts.isIfStatement(node.parent) ||
+        ts.isConditionalExpression(node.parent)
+      )
+        return undefined;
+      node = node.parent;
+    }
+    return ts.isExpressionStatement(node) || ts.isVariableStatement(node) ? node : undefined;
+  });
+  const sequentialCalls =
+    !batches.length &&
+    calls.length > 1 &&
+    statements.every(Boolean) &&
+    new Set(statements).size === calls.length
+      ? calls.length
+      : undefined;
+  return { dynamic, parallelCalls, sequentialCalls };
 }
 export function matchesDynamicTool(calls: DynamicTool[], native: { name: string; args: unknown }) {
   if (!native.args || typeof native.args !== 'object' || Array.isArray(native.args)) return false;
