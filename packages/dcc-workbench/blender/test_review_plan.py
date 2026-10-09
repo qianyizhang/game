@@ -8,10 +8,41 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from review_plan import VIEWS, close_review, parse_request
+from review_plan import (
+    VIEWS,
+    capture_path,
+    close_captures,
+    close_review,
+    new_capture_batch,
+    parse_request,
+)
 
 
 class ReviewPlanTests(unittest.TestCase):
+    def test_session_captures_refuse_reuse_and_use_existing_retention(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory)
+            first, second = new_capture_batch(workspace), new_capture_batch(workspace)
+            self.assertNotEqual(first, second)
+            capture_path(first, "front.png").write_bytes(b"first reviewed pixels")
+            with self.assertRaises(FileExistsError):
+                capture_path(first, "front.png")
+            self.assertEqual((first / "front.png").read_bytes(), b"first reviewed pixels")
+            with self.assertRaises(ValueError):
+                capture_path(first, "../front.png")
+            with self.assertRaises(ValueError):
+                close_captures(first, {"front.png", "motion.png"})
+            self.assertFalse((first / ".retention.json").exists())
+            capture_path(first, "motion.png").write_bytes(b"motion pixels")
+            close_captures(first, {"front.png", "motion.png"})
+            receipt = json.loads((first / ".retention.json").read_text())
+            self.assertEqual(receipt["kind"], "output")
+            self.assertFalse(receipt["pinned"])
+            self.assertEqual(set(receipt["files"]), {"front.png", "motion.png"})
+            with self.assertRaises(ValueError):
+                capture_path(first, "extra.png")
+            self.assertFalse((second / ".retention.json").exists())
+
     def test_arguments_fail_before_scene_work(self) -> None:
         with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
             parse_request(["blender", "--background"])

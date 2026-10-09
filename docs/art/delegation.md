@@ -106,3 +106,21 @@ Unknown model rates, conflicting duplicates, malformed/truncated logs, missing d
 The checked [rate card](../../packages/workshop-tools/art/credit-rates.json) is a frozen **2026-10-08** snapshot of the [official Standard credit rates](https://learn.chatgpt.com/docs/pricing). Astra is **250 / 25 / 1250**, Sol 6.1 **50 / 2.5 / 250** per million uncached input / cached input / output tokens. The strategy/scaffold owner maintains this card when the accounting contract changes; routine runs perform no web request. A ledger refuses a changed rate-card hash or root identity without explicit reconciliation. This trial's denominator is normalized **Standard credit-equivalents** across speed modes: the tool does not apply Fast/Ultrafast billing multipliers or claim actual purchased credits, subscription quota, invoices or final billed cost.
 
 The tool enforces a checkpoint decision, not a runtime scheduler. In-flight tools and responses can exceed a limit; report the overrun and dispatch no further authoring work. The CLI cannot kill agents, observe unlogged interventions, prevent manual edits or guarantee that a consumer obeys its exit code. Session receipts are ignored working data and require explicit validation; maintained tests exercise synthetic receipts. Ledger closure does not authorize deletion of source, baseline or review evidence; [retention governance](../engineering/maintenance.md) still applies.
+
+## Opening construction rejections
+
+Use `prototype-rejection` for a formal failed opening construction, before a successful
+prototype handoff or author-candidate review. The director or independent verifier pins
+`package`, `reviewer`, current `specHash`, `source`, `views` (`whole`, `detail`, `motion`),
+`critique`, `cause`, `correction` and `successEvidence`. The existing CLI verifies those
+source/capture hashes before recording the receipt. The event is available to v2/v3
+ledgers; it adds one failure to the original unresolved package without resetting time,
+changing allowances or granting author handoff. Existing historical events keep their
+meaning and are not rewritten.
+
+A formally rejected initial construction and its formally rejected repair consume the
+existing two-failure allowance. Routine internal edits without a formal review decision
+are not automatically separate failures. Record rejection when it happens; freezing an
+unfinished result with zero author reviews must not conceal earlier formal construction
+rejections. After a successful construction proof, use the existing candidate review or
+final-review reopening path instead. Apply the [structural review criteria](art-direction.md#structural-rejection-versus-surface-finishing) before surface work.

@@ -1,4 +1,4 @@
-"""Pure command contracts: native authoring only writes explicitly fresh candidates."""
+"""Fresh-candidate command contracts and explicit working-source saves."""
 
 from __future__ import annotations
 
@@ -43,3 +43,22 @@ def animation_name(root: Path) -> str:
     if not isinstance(name, str) or not name:
         raise ValueError("Expected animation name")
     return name
+
+
+def save_working_source(source: Path) -> None:
+    """Save only the loaded working source without rotating its protected .blend1 backup."""
+    import bpy
+
+    if source.is_symlink() or not source.is_file() or source.suffix != ".blend":
+        raise ValueError("Working source must be an existing regular .blend file")
+    if not bpy.data.filepath or Path(bpy.data.filepath).resolve() != source.resolve():
+        raise ValueError("Save requires the loaded working source, not another file")
+    preferences = bpy.context.preferences
+    if preferences is None:
+        raise ValueError("Save requires Blender preferences")
+    previous = preferences.filepaths.save_version
+    try:
+        preferences.filepaths.save_version = 0
+        bpy.ops.wm.save_as_mainfile(filepath=str(source.resolve()), compress=True)
+    finally:
+        preferences.filepaths.save_version = previous

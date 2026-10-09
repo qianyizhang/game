@@ -8,11 +8,62 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
-from authoring_plan import animation_name, parse_request
+from authoring_plan import animation_name, parse_request, save_working_source
 
 
 class AuthoringPlanTests(unittest.TestCase):
+    def test_working_save_preserves_backup_and_refuses_another_source(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "source.blend"
+            backup = Path(directory) / "source.blend1"
+            other = Path(directory) / "other.blend"
+            source.write_bytes(b"working source")
+            backup.write_bytes(b"protected backup")
+            other.write_bytes(b"another source")
+            settings = SimpleNamespace(save_version=1)
+
+            # Simulate Blender's backup rotation to exercise the named overwrite regression.
+            def save(*, filepath: str, compress: bool) -> None:
+                if settings.save_version:
+                    backup.write_bytes(source.read_bytes())
+                Path(filepath).write_bytes(b"saved edit")
+
+            fake = SimpleNamespace(
+                data=SimpleNamespace(filepath=str(source)),
+                context=SimpleNamespace(preferences=SimpleNamespace(filepaths=settings)),
+                ops=SimpleNamespace(wm=SimpleNamespace(save_as_mainfile=save)),
+            )
+            with patch.dict(sys.modules, {"bpy": fake}):
+                save_working_source(source)
+                with self.assertRaises(ValueError):
+                    save_working_source(other)
+            self.assertEqual(source.read_bytes(), b"saved edit")
+            self.assertEqual(backup.read_bytes(), b"protected backup")
+            self.assertEqual(other.read_bytes(), b"another source")
+            self.assertEqual(settings.save_version, 1)
+
+    def test_failed_working_save_restores_preference(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "source.blend"
+            source.write_bytes(b"working source")
+            settings = SimpleNamespace(save_version=2)
+
+            def fail(*, filepath: str, compress: bool) -> None:
+                raise RuntimeError("injected disk failure")
+
+            fake = SimpleNamespace(
+                data=SimpleNamespace(filepath=str(source)),
+                context=SimpleNamespace(preferences=SimpleNamespace(filepaths=settings)),
+                ops=SimpleNamespace(wm=SimpleNamespace(save_as_mainfile=fail)),
+            )
+            with patch.dict(sys.modules, {"bpy": fake}), self.assertRaises(RuntimeError):
+                save_working_source(source)
+            self.assertEqual(settings.save_version, 2)
+            self.assertEqual(source.read_bytes(), b"working source")
+
     def test_imports_do_not_require_or_initialize_blender(self) -> None:
         for name in (
             "build_hydra",

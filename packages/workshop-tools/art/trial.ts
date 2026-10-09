@@ -189,6 +189,38 @@ export function evaluate(values: ObjectValue[], now = Date.now()) {
         packages.set(id, { started: at, failures: 0, brief: event });
         break;
       }
+      case 'prototype-rejection': {
+        if (initial.version === 1) throw new Error('Prototype rejection requires v2 or v3');
+        const item = packages.get(text(event.package));
+        if (!audited || !item || item.ended !== undefined || item !== [...packages.values()].at(-1))
+          throw new Error('Prototype rejection needs the latest audited active package');
+        if (
+          ![roles.director.id, roles.verifier.id].includes(text(event.reviewer)) ||
+          event.specHash !== hash(spec)
+        )
+          throw new Error(
+            'Prototype rejection must name the director or verifier and current spec',
+          );
+        if (
+          values
+            .slice(0, values.indexOf(event))
+            .some(
+              (prior) =>
+                prior.package === event.package &&
+                (prior.kind === 'prototype' || prior.kind === 'review'),
+            )
+        )
+          throw new Error('Opening prototype rejection must precede proof and candidate review');
+        pin(event.source);
+        const views = object(event.views);
+        for (const view of ['whole', 'detail', 'motion']) pin(views[view]);
+        text(event.critique);
+        text(event.cause);
+        text(event.correction);
+        text(event.successEvidence);
+        item.failures++;
+        break;
+      }
       case 'review': {
         if (!audited) throw new Error('Audit the current specification before review');
         const item = packages.get(text(event.package));
@@ -344,6 +376,16 @@ export async function load(directory: string) {
   return { values, previous };
 }
 async function verifyPins(event: ObjectValue) {
+  if (event.kind === 'prototype-rejection') {
+    await verifyPins({
+      kind: 'init',
+      baseline: [
+        event.source,
+        ...['whole', 'detail', 'motion'].map((view) => object(event.views)[view]),
+      ],
+    });
+    return;
+  }
   const pins =
     event.kind === 'init' ? event.baseline : event.kind === 'review' ? [event.candidate] : [];
   if (!Array.isArray(pins)) throw new Error('Expected artifact pins');

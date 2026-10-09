@@ -131,3 +131,34 @@ Evidence containing editable sources is protected under [maintenance retention](
 Open `/?workbench=dcc&asset=briar-hydra&compare=hydra`. Both panels share renderer, camera, light and clock; the comparison starts paused in clay. Front/side/back/portrait views, surface modes and **Swap sides** support inspection against preserved procedural, original-pilot and gesture-revision GLBs. The current panel loads the published native delivery, not an unreviewed working source.
 
 Framing covers the union of the four compared assets at five times without independently normalizing their size. Raw model units are not measured physical scale, and equal clip times are not necessarily equal poses. [Preserved hashes](references/comparison/baseline.json), [quality baseline](references/comparison/quality-baseline.json) and the [earlier pilot record](../../docs/art/assets/briar-hydra.md) retain historical identity. This is controlled visual evidence, not an automatic authoring-tool score.
+
+## Lean session save and capture protection
+
+For direct Blender session scripts, import the maintained helpers from `blender/`:
+
+```python
+from authoring_plan import save_working_source
+from review_plan import capture_path, close_captures, new_capture_batch
+
+# Use the existing immutable release as recovery baseline; keep one working source.
+save_working_source(source)  # Must be the loaded .blend; preserves the .blend1 backup.
+batch = new_capture_batch(workspace)
+for name in ["whole.png", "detail.png", "motion.png"]:
+    scene.render.filepath = str(capture_path(batch, name))
+    bpy.ops.render.render(write_still=True)
+close_captures(batch, {"whole.png", "detail.png", "motion.png"})
+```
+
+Call `capture_path` immediately before each single-writer render. It refuses existing
+files, unsafe names and closed batches. `save_working_source` temporarily disables
+Blender backup rotation and restores the preference even on failure; it permits only
+an explicit save of the loaded working source. These are opt-in helpers, not a sandbox
+for arbitrary Python scripts. The legacy review renderer uses the same capture guard.
+
+Complete render batches reuse the existing 14-day disposable-output retention receipt;
+interrupted batches remain unclassified. Before expiry, pin a selected review or copy its
+needed captures into the existing candidate evidence set. Keep final/strongest unfinished
+sources and consequential rejection evidence; routine previews are temporary. Additional
+source milestones need a concrete construction decision. No per-iteration source copies
+or lineage manifests are created. Historical sources, backups and evidence keep their
+existing protection. See [retention authority](../../docs/engineering/maintenance.md#retention-and-deletion-authority).

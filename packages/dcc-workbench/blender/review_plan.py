@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import tempfile
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -41,8 +42,38 @@ def parse_request(argv: list[str]) -> ReviewRequest:
 def close_review(output: Path) -> None:
     """Opt in only a complete set of four PNGs to the 14-day cleanup policy."""
     expected = {f"hydra-{name}.png" for name, _ in VIEWS}
+    close_captures(output, expected)
+
+
+def new_capture_batch(workspace: Path) -> Path:
+    """Allocate one disposable render batch; never copy artist sources."""
+    parent = workspace.resolve() / "test-results/disposable"
+    parent.mkdir(parents=True, exist_ok=True)
+    return Path(tempfile.mkdtemp(prefix="dcc-session-", dir=parent))
+
+
+def capture_path(output: Path, name: str) -> Path:
+    """Check each destination immediately before a single-writer render."""
+    if Path(name).name != name or not name.endswith(".png"):
+        raise ValueError("Capture name must be a local PNG filename")
+    if output.is_symlink() or not output.is_dir() or (output / ".retention.json").exists():
+        raise ValueError("Capture batch must be an open regular directory")
+    path = output / name
+    if path.exists() or path.is_symlink():
+        raise FileExistsError(f"Capture already exists: {path}")
+    return path
+
+
+def close_captures(output: Path, expected: set[str]) -> None:
+    """Reuse existing retention for complete batches; pin selected evidence before expiry."""
+    if (
+        output.is_symlink()
+        or not expected
+        or any(Path(name).name != name or not name.endswith(".png") for name in expected)
+    ):
+        raise ValueError("Capture batch requires local PNG filenames and a regular directory")
     if {path.name for path in output.iterdir()} != expected:
-        raise ValueError("Review must contain exactly the four expected PNGs before closure")
+        raise ValueError("Review must contain exactly the expected PNGs before closure")
     files: dict[str, str] = {}
     for name in sorted(expected):
         path = output / name

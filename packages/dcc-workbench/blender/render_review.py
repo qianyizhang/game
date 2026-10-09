@@ -9,7 +9,13 @@ from pathlib import Path
 if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from review_plan import VIEWS, ReviewRequest, close_review, parse_request  # noqa: E402
+from review_plan import (  # noqa: E402
+    VIEWS,
+    ReviewRequest,
+    capture_path,
+    close_review,
+    parse_request,
+)
 
 
 def render_review(request: ReviewRequest) -> None:
@@ -53,7 +59,7 @@ def render_review(request: ReviewRequest) -> None:
         camera.rotation_euler = (
             (Vector((0, 0, 1.5)) - camera.location).to_track_quat("-Z", "Y").to_euler()
         )
-        scene.render.filepath = str(request.output / f"hydra-{name}.png")
+        scene.render.filepath = str(capture_path(request.output, f"hydra-{name}.png"))
         bpy.ops.render.render(write_still=True)
     close_review(request.output)
     print("DCC_REVIEW", request.output)

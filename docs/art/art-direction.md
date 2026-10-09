@@ -76,6 +76,22 @@ The first delegated Spiral/Vajra/Hydra review exposed failures that palette and 
 - **Restraint leaves structure, not emptiness.** Removing decoration is useful only when the remaining silhouette, plane transitions and material are specific. Large smooth ellipsoids, oversized eyes, detached eyebrow tubes and uniform glossy highlights can retain a toy-like appearance in a muted palette.
 - **Read the whole creature from the side.** Trace skull, neck root, back, pelvis and tail as one weight-bearing gesture. A successful face does not rescue a tablet-shaped torso, hook-shaped haunches or cuff-like paws. Resolve those large masses before making skin or scales; small dorsal accents must grow from the back rather than appear as isolated beads.
 
+### Structural rejection versus surface finishing
+
+The reviewer classifies a defect by what must change to fix it. A disconnected root,
+inflated transition or missing anatomical edge is structural even when the export and
+motion checks pass. Name the failing view and the construction change before requesting
+another pass. Surface finishing begins only after that connection works in whole clay,
+detail and motion; texture or extra ornaments cannot substitute for it.
+
+| Recorded case                                                                                  | Structural failure                                                                                                                                         | Evidence needed for the next construction                                                                                                     |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Wolf evolved forms](assets/wolf-evolutions.md#scope-and-visual-failures)                      | Exposed mantle caps and paddle-like locks were initially treated too leniently as possible polish residuals; the repaired shoulder became a padded saddle. | Fur roots integrated into the neck surface, a grown nape contour and fitted motion, proved on one representative before repeating the family. |
+| [Matriarch refinement](assets/native-matriarch-refinement.md#progress-and-failed-construction) | Added eyelid bars and rings left the eye separate from the coarse orbit.                                                                                   | A connected orbit/lid edge fitted to the globe, cheek and brow, retaining head motion; clay proof before regional coat work.                  |
+
+These records calibrate review decisions; they do not establish user approval of the
+published assets or prescribe one geometry generator.
+
 ## Current studies: decisions and failure cases
 
 On 2026-10-09, the user described the published **Briar Matriarch** as somewhat cute but toyish and lacking detail, and requested refinement. The native throat repair and delivery verification did not establish the overall visual bar. Its inflated facial and body masses, molded limb/paw transitions and uniform fine coat need stronger anatomical planes and regional surface hierarchy. Preserve the approachable guarding gesture while correcting those forms; added noise or detached fur ornaments do not resolve the critique.

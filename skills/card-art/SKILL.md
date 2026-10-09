@@ -23,6 +23,8 @@ When delegation is requested, read the [asset delegation protocol](../../docs/ar
 
 For SVG illustrations, follow the build and export workflow below. For 3D studies, use the [3D source map and verification](../../docs/art/3d.md); preserve exportable geometry, animation bindings, reduced motion and camera fit. Review still structure before animating. SVG export is necessary only when SVG sources change.
 
+For direct Blender saves and renders, use the [lean session helpers](../../packages/dcc-workbench/README.md#lean-session-save-and-capture-protection); keep selected decision evidence and temporary previews under the existing retention policy.
+
 ## Build
 
 For a new component, use the scaffold; for a refinement, edit the existing scene:
