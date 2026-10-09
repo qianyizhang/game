@@ -89,6 +89,13 @@ export interface TraceThread {
     threadId: string;
     startedAt?: number;
     completedAt?: number;
+    elapsedMs?: number;
+    usage?: {
+      inputTokens: number;
+      outputTokens: number;
+      cachedInputTokens: number;
+      responses: number;
+    };
     events: TraceEvent[];
   }>;
 }

@@ -407,3 +407,66 @@ await test('delayed and parallel shell results keep their invocation, while ambi
     await rm(directory, { recursive: true, force: true });
   }
 });
+
+// Ambiguous interleaving must not invent image/edit provenance, even when counts match.
+await test('semantic actions leave ambiguous or unmatched native records separate', async () => {
+  const dir = await mkdtemp(resolve(tmpdir(), 'semantic-link-'));
+  try {
+    const path = resolve(dir, 'session.jsonl');
+    const call = (id: string, input: string) => ({
+      type: 'response_item',
+      payload: { type: 'custom_tool_call', name: 'exec', call_id: id, input },
+    });
+    const result = (id: string) => ({
+      type: 'response_item',
+      payload: {
+        type: 'custom_tool_call_output',
+        call_id: id,
+        output: [{ type: 'input_image', image_url: 'data:image/png;base64,aGVsbG8=' }],
+      },
+    });
+    const rows = [
+      { type: 'session_meta', payload: { id: 'session' } },
+      { type: 'turn_context', payload: { turn_id: 'turn' } },
+      call('a', 'image(await tools.view_image({path:"a.png"}))'),
+      call('b', 'image(await tools.view_image({path:"b.png"}))'),
+      {
+        type: 'event_msg',
+        payload: {
+          type: 'item_completed',
+          item: { type: 'ImageView', id: 'unknown', path: 'file:///a.png' },
+        },
+      },
+      result('a'),
+      result('b'),
+      call(
+        'edit',
+        'text(await tools.apply_patch("*** Begin Patch\\n*** Update File: /a.ts\\n*** End Patch"))',
+      ),
+      {
+        type: 'event_msg',
+        payload: {
+          type: 'item_completed',
+          item: {
+            type: 'FileChange',
+            id: 'unknown-edit',
+            changes: { '/other.ts': { unified_diff: '+x' } },
+          },
+        },
+      },
+      {
+        type: 'response_item',
+        payload: { type: 'custom_tool_call_output', call_id: 'edit', output: '' },
+      },
+    ];
+    await writeFile(path, rows.map((r) => JSON.stringify(r)).join('\n'));
+    const thread = await normalizeSessionFile(path, 'session', 'Main', { lazyBodies: true });
+    const native = thread.turns
+      .flatMap((t) => t.events)
+      .filter((e) => /ImageView|FileChange/.test(e.sourceType ?? ''));
+    assert.equal(native.length, 2);
+    assert.ok(native.every((e) => !e.parentCall));
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});

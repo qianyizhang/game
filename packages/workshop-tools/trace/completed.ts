@@ -19,7 +19,13 @@ export function completedEvent(payload: Obj, role: string): CompletedEvent | und
   const item = obj(payload.item),
     type = str(item.type);
   const status = str(item.status);
-  const base = { status };
+  const durationMs =
+    typeof payload.started_at_ms === 'number' &&
+    typeof payload.completed_at_ms === 'number' &&
+    payload.completed_at_ms >= payload.started_at_ms
+      ? payload.completed_at_ms - payload.started_at_ms
+      : undefined;
+  const base = { status, ...(durationMs !== undefined ? { durationMs } : {}) };
   switch (type) {
     case 'UserMessage':
       return {
@@ -57,7 +63,7 @@ export function completedEvent(payload: Obj, role: string): CompletedEvent | und
           str(item.aggregated_output) ||
           [str(item.stdout), str(item.stderr)].filter(Boolean).join('\n'),
         exitCode: typeof item.exit_code === 'number' ? item.exit_code : null,
-        durationMs: ms,
+        durationMs: durationMs ?? ms,
       };
     }
     case 'ImageView':

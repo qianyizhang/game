@@ -1,3 +1,5 @@
+import { semanticOperation, linkSemanticActions } from './semantic-links.ts';
+import { TurnTelemetry } from './telemetry.ts';
 import {
   commandHashes,
   nativeCommandHash,
@@ -195,6 +197,7 @@ export async function normalizeSessionFile(
     turns: [],
   };
   let identityVerified = false;
+  let cwd: string | undefined;
   let reviewModelSeen = false,
     ordinaryModelSeen = false;
   let turnId = 'session-prefix',
@@ -202,6 +205,8 @@ export async function normalizeSessionFile(
   const turns = new Map<string, TraceThread['turns'][number]>();
   const toolNames = new Map<string, string>();
   const executionLinks: ExecutionLink[] = [];
+  const operations = new Map<string, ReturnType<typeof semanticOperation>>();
+  const telemetry = new TurnTelemetry();
   const canonicalMessages = new Set<string>();
   const canonicalEvents = new Map<string, { event: TraceEvent; imageHashes: Set<string> }>();
   const nativeMessages: Array<{ event: TraceEvent; signature: string; images: string[] }> = [];
@@ -235,8 +240,10 @@ export async function normalizeSessionFile(
           type = string(data.type),
           payloadType = string(p.type);
         const timestamp = string(data.timestamp);
+        telemetry.observe(type, p, timestamp);
         if (type === 'session_meta') {
           identityVerified = true;
+          cwd = string(p.cwd) || undefined;
           const recordedId = string(p.id) || string(p.thread_id);
           if (recordedId !== expectedSession)
             throw new Error('Session source identity changed; refresh the usage dashboard.');
@@ -266,7 +273,6 @@ export async function normalizeSessionFile(
           turnId = string(p.turn_id);
         if (
           type === 'response_item' &&
-          payloadType === 'agent_message' &&
           string(object(p.internal_chat_message_metadata_passthrough).turn_id)
         )
           turnId = string(object(p.internal_chat_message_metadata_passthrough).turn_id);
@@ -494,7 +500,16 @@ export async function normalizeSessionFile(
         };
         if (type === 'event_msg' && payloadType === 'item_completed') {
           const item = object(p.item);
-          if (item.type === 'CommandExecution' || item.type === 'McpToolCall') {
+          if (
+            [
+              'CommandExecution',
+              'McpToolCall',
+              'FileChange',
+              'ImageView',
+              'SubAgentActivity',
+              'CollabAgentToolCall',
+            ].includes(string(item.type))
+          ) {
             executionLinks.push({
               event: normalized,
               commands: item.type === 'CommandExecution' ? nativeCommandHash(item.command) : [],
@@ -507,11 +522,13 @@ export async function normalizeSessionFile(
         } else if (
           type === 'response_item' &&
           ['function_call', 'custom_tool_call'].includes(payloadType)
-        )
+        ) {
+          operations.set(normalized.key, semanticOperation(normalized.text, normalized.title, cwd));
           executionLinks.push({
             event: normalized,
             commands: commandHashes(normalized.text, normalized.title),
           });
+        }
         const signature = JSON.stringify([
           turnId,
           normalized.kind,
@@ -583,6 +600,8 @@ export async function normalizeSessionFile(
       });
     }
     linkExecutions(executionLinks);
+    for (const turn of thread.turns) linkSemanticActions(turn.events, operations);
+    telemetry.apply(thread.turns);
     if (!identityVerified)
       throw new Error('Trace source lacks session metadata; refresh the usage dashboard.');
     thread.source.sha256 = hash.digest('hex');
