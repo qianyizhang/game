@@ -58,3 +58,7 @@ Serialized SHA-256 state at a 64-byte boundary retains exact whole-source hashes
 ## Verification scope
 
 The maintained source lives in `packages/workshop-tools/usage/`, with the JSONL adapter in `packages/workshop-tools/trace/`, covered by existing formatting, typed ESLint, TypeScript and inventory gates. Its tests join the tools workspace gate. Synthetic journeys protect response/snapshot precedence, archive and fork deduplication, source hashes, filtering, pricing, failed sources and refresh. The browser journey uses the repository's disposable-profile harness and startup guard; on macOS its first launch requires approved execution outside the restricted sandbox. Loopback server tests also need execution permitting a local bind; sandbox EPERM is an explicit skip, not evidence that the server passed.
+
+## Code ownership
+
+`packages/workshop-tools/usage/browser/` owns the dashboard presentation: `main.ts` coordinates filters, sessions, pricing and refresh; `charts.ts` owns charts and their interactions; `evidence.ts` owns inspection and focus handling; `dom.ts` contains their small shared helpers. `index.html` and `styles.css` are embedded by `build.ts` into the offline report. Accounting, prices, scanning and source indexing remain in the parent usage directory. Session trace pages use the separate [session-review frontend](../../packages/session-review/README.md).

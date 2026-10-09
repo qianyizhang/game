@@ -30,7 +30,7 @@ export async function runtime(): Promise<string> {
         emptyOutDir: false,
         minify: true,
         lib: {
-          entry: resolve(directory, 'viewer.ts'),
+          entry: resolve(directory, 'browser/main.ts'),
           name: 'UsageDashboard',
           formats: ['iife'],
           fileName: () => 'viewer.js',
@@ -43,8 +43,10 @@ export async function runtime(): Promise<string> {
   }
 }
 export async function render(snapshot: Snapshot, javascript: string): Promise<string> {
-  const template = await readFile(resolve(directory, 'viewer.html'), 'utf8');
+  const template = await readFile(resolve(directory, 'browser/index.html'), 'utf8');
+  const css = await readFile(resolve(directory, 'browser/styles.css'), 'utf8');
   return template
+    .replace('<!--USAGE_STYLE-->', () => `<style>${css}</style>`)
     .replace(
       '<!--USAGE_DATA-->',
       () =>
