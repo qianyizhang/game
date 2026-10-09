@@ -13,6 +13,7 @@ export interface ReviewState {
   session: string;
   actionTurn: string;
   kind: string;
+  signal: string;
   search: string;
   scope: string;
   evidenceRole: string;
@@ -52,6 +53,7 @@ export function useReviewState(curated: boolean, firstThread: string) {
       session: q.get('session') ?? 'all',
       actionTurn: q.get('actionTurn') ?? 'all',
       kind: q.get('kind') ?? 'all',
+      signal: q.get('signal') ?? 'all',
       search: q.get('search') ?? '',
       scope: q.get('scope') ?? 'all',
       evidenceRole: q.get('evidenceRole') ?? 'all',

@@ -346,7 +346,7 @@ test('offline dashboard filters, prices, drills down, exports and refreshes loca
   await expect(trace.locator('#event-list')).toContainText('CHILD_TRACE_MESSAGE');
   const command = trace.locator('#event-list .event').filter({ hasText: 'node check.js' });
   await expect(command).toHaveCount(1);
-  await command.locator(':scope > details > summary').click();
+  await command.locator(':scope > details > .action-summary').click();
   await expect(command).toContainText('TRACE_CHECK_OK');
   await expect(trace.getByText('Source & identity', { exact: true })).toHaveCount(0);
   await expect(trace.getByRole('button', { name: 'Inspect evidence', exact: true })).toHaveCount(0);
@@ -426,7 +426,7 @@ test('large trace output pages through complete text and loads preserved images 
   const output = page.locator('#event-list .event').filter({ hasText: 'large-call' });
   await expect(output).toBeVisible();
   expect(images).toHaveLength(0);
-  await output.locator(':scope > details > summary').click();
+  await output.locator(':scope > details > .action-summary').click();
   await expect(output.getByRole('status')).toContainText('1–65536');
   await output.getByRole('button', { name: 'Next text block →', exact: true }).click();
   await expect(output.getByRole('status')).toContainText('65537–131072');
@@ -440,7 +440,7 @@ test('large trace output pages through complete text and loads preserved images 
   const request = page
     .locator('#event-list .event')
     .filter({ hasText: 'TRACE_USER_REQUEST_BEFORE_USAGE_FILTER' });
-  await request.locator(':scope > details > summary').click();
+  await request.locator(':scope > details > .action-summary').click();
   await request.getByText('Recorded images (1)', { exact: true }).click();
   await expect(request.locator('img')).toBeVisible();
   await expect
@@ -468,7 +468,7 @@ test('trace distinguishes goal continuations and review activity, with session s
   await expect(page.locator('#event-list .session-child').first()).toHaveText('Subagent · child');
   const batch = page.locator('#event-list .event').filter({ hasText: 'BATCH_A' });
   await expect(batch).toHaveCount(1);
-  await batch.locator(':scope > details > summary').click();
+  await batch.locator(':scope > details > .action-summary').click();
   await expect(batch.locator('.execution-pair')).toHaveCount(2);
   await expect(batch).toContainText('BATCH_A_RESULT');
   await expect(batch).toContainText('BATCH_B_RESULT');
@@ -476,7 +476,7 @@ test('trace distinguishes goal continuations and review activity, with session s
   await batch.getByText('Tool wrapper', { exact: true }).click();
   await expect(batch).toContainText('WRAPPER_BATCH_PROOF');
   const goal = page.locator('#event-list .event').filter({ hasText: 'GOAL_OBJECTIVE_PROOF' });
-  await goal.locator(':scope > details > summary').click();
+  await goal.locator(':scope > details > .action-summary').click();
   await expect(goal.locator('.type-goal')).toHaveText('goal');
   await expect(goal.locator('.event-meta')).toContainText('Main · parent');
   await expect(goal.locator('.event-meta')).toContainText('#');
@@ -525,7 +525,7 @@ test('trace distinguishes goal continuations and review activity, with session s
   const positions = await page.locator('#event-list .event').evaluateAll((rows) =>
     rows.map((row) => ({
       session: row.querySelector('.session-badge')?.getAttribute('title'),
-      line: Number(row.querySelector('.event-meta')?.textContent?.match(/#(\d+)/)?.[1]),
+      line: Number(row.querySelector('.source-positions')?.textContent?.match(/#(\d+)/)?.[1]),
     })),
   );
   for (let index = 1; index < positions.length; index++)

@@ -1091,3 +1091,102 @@ dialog::backdrop {
   left: auto;
   right: 0;
 }
+
+/* Phase and outcome cues share the action-map palette. */
+:root {
+  --event-commentary: #627895;
+  --event-response: #315cb5;
+}
+.type-commentary {
+  --type-color: var(--event-commentary);
+}
+.type-response {
+  --type-color: var(--event-response);
+}
+.conversation-card {
+  cursor: pointer;
+}
+.conversation-card:hover {
+  border-color: #8999b9;
+}
+.action-metadata {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.turn-metadata {
+  display: flex;
+  gap: 6px 16px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 8px 0 18px;
+}
+.minimap-panel .turn-metadata {
+  flex-direction: column;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.signal-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.signal-filter button {
+  font-size: 12px;
+  padding: 5px 9px;
+}
+.signal-filter button[aria-pressed='true'] {
+  border-color: #315cb5;
+  background: #eef3ff;
+  color: #234da2;
+}
+.action-signal {
+  color: #9a542b;
+}
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+.image-gallery figure {
+  margin: 0;
+  min-width: 0;
+}
+.image-gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #f6f7f9;
+  border-radius: 6px;
+}
+.image-gallery figcaption {
+  font-size: 11px;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  margin-top: 5px;
+}
+.source-sequence {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+.source-sequence button {
+  border: 0;
+  padding: 4px;
+  font-size: inherit;
+  text-align: left;
+}
+.source-sequence time {
+  margin-left: 8px;
+}
+
+.gallery-paths {
+  grid-column: 1 / -1;
+  margin: 0;
+  overflow-wrap: anywhere;
+}

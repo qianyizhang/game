@@ -1,3 +1,5 @@
+import { TurnMetadata } from './metadata.tsx';
+import { SignalFilter } from './signal-filter.tsx';
 import { useEffect, useMemo, useRef } from 'react';
 import type { RecordedTurn, TraceEvent } from './contracts.ts';
 import { useReview } from './context.tsx';
@@ -106,15 +108,16 @@ export function Conversation() {
     () =>
       work.filter(
         (a) =>
-          state.type === 'all' ||
-          actionKind(a) === state.type ||
-          a.records.some((e) => recordType(e) === state.type),
+          (state.type === 'all' ||
+            actionKind(a) === state.type ||
+            a.records.some((e) => recordType(e) === state.type)) &&
+          (state.signal === 'all' || a.signals.some((signal) => signal === state.signal)),
       ),
-    [work, state.type],
+    [work, state.type, state.signal],
   );
   const filter = (type: string) => update({ type: state.type === type ? 'all' : type, event: '' });
   const openTurn = (turn: string) => {
-    update({ turn, type: 'all', event: '' });
+    update({ turn, type: 'all', signal: 'all', event: '' });
     window.scrollTo({ top: 0 });
   };
   useEffect(() => {
@@ -143,6 +146,12 @@ export function Conversation() {
             </div>
           </div>
           <h2 id="turn-title">Turn {turnNumber(chosen.threadId, chosen.id)}</h2>
+          <TurnMetadata turn={chosen} />
+          <SignalFilter
+            actions={work}
+            value={state.signal}
+            change={(signal) => update({ signal, event: '' })}
+          />
           <div id="turn-pair" className="conversation-pair">
             <TurnPair turn={chosen} full />
           </div>
@@ -248,11 +257,22 @@ export function Conversation() {
       </p>
       <div id="conversation-list">
         {filtered.slice(page * size, (page + 1) * size).map((t) => (
-          <article key={JSON.stringify([t.threadId, t.id])} className="conversation-card">
+          <article
+            key={JSON.stringify([t.threadId, t.id])}
+            className="conversation-card"
+            onClick={(event) => {
+              if (
+                !(event.target as HTMLElement).closest('a, button, input, summary, details') &&
+                !window.getSelection()?.toString()
+              )
+                openTurn(t.id);
+            }}
+          >
             <div className="section-heading">
               <h2>Turn {turnNumber(t.threadId, t.id)}</h2>
               <button onClick={() => openTurn(t.id)}>Inspect turn</button>
             </div>
+            <TurnMetadata turn={t} />
             <div className="conversation-pair overview">
               <TurnPair turn={t} />
             </div>

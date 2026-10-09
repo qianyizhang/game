@@ -1,3 +1,4 @@
+import { actionSignals, type ReviewSignal } from './signals.ts';
 import type { TraceEvent } from './contracts.ts';
 export interface TraceAction {
   key: string;
@@ -5,6 +6,7 @@ export interface TraceAction {
   records: TraceEvent[];
   executions: TraceEvent[];
   results: TraceEvent[];
+  signals: ReviewSignal[];
 }
 const result = (event: TraceEvent) =>
   /\/(function_call_output|custom_tool_call_output)$/.test(event.sourceType ?? '');
@@ -26,7 +28,7 @@ export function traceActions(events: TraceEvent[]): TraceAction[] {
     let group = groups.get(key);
     if (!group) {
       const anchor = byKey.get(key)?.event ?? event;
-      group = { key, anchor, records: [], executions: [], results: [] };
+      group = { key, anchor, records: [], executions: [], results: [], signals: [] };
       groups.set(key, group);
     }
     group.records.push(event);
@@ -34,7 +36,25 @@ export function traceActions(events: TraceEvent[]): TraceAction[] {
       group.executions.push(event);
     if (result(event)) group.results.push(event);
   }
-  return [...groups.values()].sort(
+  const sorted = [...groups.values()].sort(
     (a, b) => (byKey.get(a.key)?.index ?? 0) - (byKey.get(b.key)?.index ?? 0),
   );
+  const activeTurns = new Set<string>();
+  for (const action of sorted) {
+    action.signals = actionSignals(action);
+    const e = action.anchor,
+      turn = JSON.stringify([e.threadId, e.turnId]);
+    if (
+      e.kind === 'request' &&
+      !/^# AGENTS\.md instructions for /.test(e.text) &&
+      activeTurns.has(turn)
+    )
+      action.signals.push('steering');
+    if (
+      e.title !== 'Recorded message' &&
+      ['message', 'command', 'edit', 'image', 'delegation'].includes(e.kind)
+    )
+      activeTurns.add(turn);
+  }
+  return sorted;
 }

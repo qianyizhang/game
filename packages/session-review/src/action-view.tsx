@@ -1,3 +1,5 @@
+import { SignalFilter } from './signal-filter.tsx';
+import { TurnMetadata } from './metadata.tsx';
 import { useEffect, useMemo, useRef } from 'react';
 import type { TraceEvent } from './contracts.ts';
 import { useReview } from './context.tsx';
@@ -90,8 +92,13 @@ export function ActionView({ inspect }: { inspect: (event: TraceEvent) => void }
     state.order,
   ]);
   const filtered = useMemo(
-    () => scope.filter((a) => state.kind === 'all' || actionKind(a) === state.kind),
-    [scope, state.kind],
+    () =>
+      scope.filter(
+        (a) =>
+          (state.kind === 'all' || actionKind(a) === state.kind) &&
+          (state.signal === 'all' || a.signals.some((signal) => signal === state.signal)),
+      ),
+    [scope, state.kind, state.signal],
   );
   const selected = filtered.findIndex((a) => a.records.some((e) => e.key === state.event));
   const page = Math.min(
@@ -108,6 +115,11 @@ export function ActionView({ inspect }: { inspect: (event: TraceEvent) => void }
   }, [state.event, selected, filtered]);
   return (
     <section id="events">
+      <SignalFilter
+        actions={scope}
+        value={state.signal}
+        change={(signal) => update({ signal, page: 0, event: '' })}
+      />
       <div className="controls">
         <label>
           Agent
@@ -251,6 +263,7 @@ export function ActionView({ inspect }: { inspect: (event: TraceEvent) => void }
           filter={filter}
           jump={(a) => update({ event: a.key })}
         >
+          {position >= 0 && <TurnMetadata turn={eligibleTurns[position]} />}
           {episode && <p className="small">{episode.title}</p>}
         </Minimap>
         <div>

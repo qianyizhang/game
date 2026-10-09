@@ -49,7 +49,7 @@ test.describe('private sculpture case', () => {
       'Reviewer accepted · later user-rejected',
     );
     await page.getByRole('button', { name: 'Inspect this episode’s actions' }).click();
-    await expect(page.locator('#event-list details[open]')).toContainText(
+    await expect(page.locator('#event-list .selected-event > details[open]')).toContainText(
       'Hydra now passes my visual review',
     );
     await page.getByRole('combobox', { name: 'Evidence scope', exact: true }).selectOption('all');
@@ -489,7 +489,7 @@ test.describe('conversation overview and turn inspection', () => {
     const pairedCall = page.locator('#turn-work > article').filter({ hasText: 'CHECK_PASSED' });
     await expect(pairedCall).toHaveCount(1);
     await expect(pairedCall).toContainText('node check.js');
-    await pairedCall.locator(':scope > details > summary').click();
+    await pairedCall.locator(':scope > details > .action-summary').click();
     await expect(
       pairedCall.locator('.code-block').filter({ hasText: 'CHECK_PASSED' }),
     ).toBeVisible();

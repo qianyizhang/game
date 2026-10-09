@@ -43,7 +43,7 @@ test('offline minimap follows scroll and resized cards, including non-first buck
   await expect(page.locator('.map-cell').nth(7)).toHaveAttribute('aria-current', 'location');
   await expect(page.locator('.map-cell[aria-current]')).toHaveCount(1);
   // Opening a tall card changes all following positions; the reading marker must recompute.
-  await row.locator(':scope > details > summary').click();
+  await row.locator(':scope > details > .action-summary').click();
   await page.setViewportSize({ width: 1100, height: 760 });
   await row.evaluate((node) => node.scrollIntoView({ block: 'start' }));
   await expect(page.locator('.map-cell').nth(7)).toHaveAttribute('aria-current', 'location');
