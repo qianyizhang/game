@@ -94,4 +94,3 @@ export function useReviewState(curated: boolean, firstThread: string) {
     });
   return [state, update] as const;
 }
-export type Update = (patch: Partial<ReviewState>) => void;

@@ -1,18 +1,14 @@
-import { TurnMetadata } from './metadata.tsx';
-import { SignalFilter } from './signal-filter.tsx';
+import { TurnMetadata } from '../records/metadata.tsx';
+import { SignalFilter } from '../actions/signal-filter.tsx';
 import { useEffect, useMemo, useRef } from 'react';
-import type { RecordedTurn, TraceEvent } from './contracts.ts';
-import { useReview } from './context.tsx';
-import { AgentOptions, Help, Pager } from './ui.tsx';
-import {
-  ActionCard,
-  RecordBody,
-  RecordText,
-  RichText,
-  actionKind,
-  recordType,
-} from './records.tsx';
-import { Minimap } from './minimap.tsx';
+import type { RecordedTurn, TraceEvent } from '../model/contracts.ts';
+import { useReview } from '../app/context.tsx';
+import { AgentOptions, Help, Pager } from '../app/ui.tsx';
+import { ActionCard } from '../actions/action-card.tsx';
+import { RecordBody } from '../records/record-body.tsx';
+import { RecordText, RichText } from '../records/record-text.tsx';
+import { actionKind, recordType } from '../model/actions.ts';
+import { Minimap } from '../actions/minimap.tsx';
 const size = 20;
 function response(turn: RecordedTurn, visible: (event: TraceEvent) => boolean) {
   const messages = turn.events.filter(

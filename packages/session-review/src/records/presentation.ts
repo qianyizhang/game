@@ -11,7 +11,7 @@ import * as babel from 'prettier/plugins/babel';
 import * as estree from 'prettier/plugins/estree';
 for (const [name, language] of Object.entries({ javascript, json, bash, python, xml, diff }))
   hljs.registerLanguage(name, language);
-export type TextMode = 'rendered' | 'raw';
+type TextMode = 'rendered' | 'raw';
 function element<K extends keyof HTMLElementTagNameMap>(tag: K, text?: string, css?: string) {
   const item = document.createElement(tag);
   if (text !== undefined) item.textContent = text;
@@ -28,7 +28,7 @@ function entities(text: string) {
   });
 }
 const safeHref = (href: string) => /^(https?:\/\/|codex:\/\/|#|\/(?!\/))/.test(href);
-export function codeBlock(text: string, language = '', pretty = false) {
+function codeBlock(text: string, language = '', pretty = false) {
   const pre = element('pre', undefined, 'code-block');
   const code = element('code');
   pre.append(code);

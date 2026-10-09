@@ -14,7 +14,7 @@ import { completedEvent } from './completed.ts';
 import { open } from 'node:fs/promises';
 import type { ReadStream } from 'node:fs';
 import { createHash } from 'node:crypto';
-import type { TraceEvent, TraceThread, Omission } from './contracts.ts';
+import type { TraceEvent, TraceThread, Omission, ReviewDocument } from './contracts.ts';
 import { eventKey } from './normalize.ts';
 type Obj = Record<string, unknown>;
 const object = (value: unknown): Obj =>
@@ -686,8 +686,7 @@ export async function normalizeSessionFile(
     await handle.close();
   }
 }
-export type SessionTrace = import('../../session-review/src/contracts.ts').ReviewDocument;
-export function sessionTrace(threads: TraceThread[], session: string): SessionTrace {
+export function sessionTrace(threads: TraceThread[], session: string): ReviewDocument {
   return {
     version: 3,
     title: session.slice(0, 8),
@@ -699,4 +698,3 @@ export function sessionTrace(threads: TraceThread[], session: string): SessionTr
     delivery: { kind: 'local', session },
   };
 }
-export { renderReview as renderSessionTrace } from '../../session-review/build.ts';

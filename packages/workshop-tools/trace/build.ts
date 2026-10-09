@@ -1,5 +1,5 @@
 import { gitDocument } from './documents.ts';
-import { renderReview } from '../../session-review/build.ts';
+import { renderReview } from '@card-workshop/session-review/build';
 import { randomUUID } from 'node:crypto';
 import { freshOutput } from './output.ts';
 import {

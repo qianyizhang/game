@@ -1,5 +1,5 @@
-import type { TraceAction } from './actions.ts';
-import { signalLabels, type ReviewSignal } from './signals.ts';
+import type { TraceAction } from '../model/actions.ts';
+import { signalLabels, type ReviewSignal } from '../model/signals.ts';
 export function SignalFilter({
   actions,
   value,

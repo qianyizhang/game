@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import type { TraceAction } from './actions.ts';
-import { useReview } from './context.tsx';
+import type { TraceAction } from '../model/actions.ts';
+import { useReview } from '../app/context.tsx';
 const omissionLabel = (type: string) =>
   /reasoning/i.test(type)
     ? 'Private reasoning record · content excluded'

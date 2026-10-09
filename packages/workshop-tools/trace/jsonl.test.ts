@@ -1,10 +1,11 @@
+import { renderReview } from '@card-workshop/session-review/build';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
-import { normalizeSessionFile, sessionTrace, renderSessionTrace } from './jsonl.ts';
+import { normalizeSessionFile, sessionTrace } from './jsonl.ts';
 
 // Controlled malformed/encrypted records exercise gaps that a normal UI journey cannot.
 await test('JSONL trace keeps observable evidence and physical identity, with reconciled private/unknown omissions', async () => {
@@ -90,7 +91,7 @@ await test('JSONL trace keeps observable evidence and physical identity, with re
     assert.equal(events[3].turnId, 'turn-b');
     assert.ok(!JSON.stringify(trace).includes('PRIVATE_SECRET'));
     await assert.rejects(normalizeSessionFile(path, 'other'), /identity changed/);
-    const html = await renderSessionTrace(sessionTrace([trace], 'session'));
+    const html = await renderReview(sessionTrace([trace], 'session'));
     assert.ok(html.includes('trace-data'));
     assert.ok(!html.includes('/*TRACE_RUNTIME*/'));
   } finally {
@@ -335,7 +336,7 @@ await test('review-only session models are classified, while mixed model session
 
 // A delayed shell completion can arrive after a newer exec call; a source interval alone gives a wrong pairing.
 await test('delayed and parallel shell results keep their invocation, while ambiguous and dynamic commands stay separate', async () => {
-  const { traceActions } = await import('../../session-review/src/actions.ts');
+  const { traceActions } = await import('../../session-review/src/model/actions.ts');
   const directory = await mkdtemp(resolve(tmpdir(), 'execution-links-'));
   try {
     const path = resolve(directory, 'session.jsonl');

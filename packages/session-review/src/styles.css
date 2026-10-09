@@ -431,9 +431,7 @@ label select {
 .type-message {
   --type-color: var(--event-message);
 }
-.type-command,
-.type-call,
-.type-result {
+.type-command {
   --type-color: var(--event-command);
 }
 .type-edit {

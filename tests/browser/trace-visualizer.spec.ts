@@ -383,7 +383,8 @@ test.describe('conversation overview and turn inspection', () => {
           `
       import {mkdir, mkdtemp, writeFile} from 'node:fs/promises';
       import {resolve} from 'node:path';
-      import {normalizeSessionFile, sessionTrace, renderSessionTrace} from './packages/workshop-tools/trace/jsonl.ts';
+      import {renderReview} from '@card-workshop/session-review/build';
+      import {normalizeSessionFile, sessionTrace} from './packages/workshop-tools/trace/jsonl.ts';
       await mkdir('test-results', {recursive: true});
       const root = await mkdtemp(resolve('test-results/conversation-fixture-'));
       const row = (type, payload) => ({type, payload, timestamp:'2026-10-09T01:00:00Z'});
@@ -403,7 +404,7 @@ test.describe('conversation overview and turn inspection', () => {
       const path = resolve(root,'session.jsonl');
       await writeFile(path, rows.map(JSON.stringify).join('\\n'));
       const thread = await normalizeSessionFile(path,'conversation-fixture','Selected session');
-      const html = await renderSessionTrace(sessionTrace([thread],'conversation-fixture'));
+      const html = await renderReview(sessionTrace([thread],'conversation-fixture'));
       const file = resolve(root,'index.html'); await writeFile(file,html);
       console.log(JSON.stringify({file}));
     `,

@@ -1,10 +1,6 @@
-import {
-  readSessionBody,
-  normalizeSessionFile,
-  sessionTrace,
-  renderSessionTrace,
-  type SessionTrace,
-} from '../trace/jsonl.ts';
+import { renderReview } from '@card-workshop/session-review/build';
+import type { ReviewDocument } from '@card-workshop/session-review/contracts';
+import { readSessionBody, normalizeSessionFile, sessionTrace } from '../trace/jsonl.ts';
 import { build } from 'vite';
 import { mkdtemp, mkdir, readFile, rm, writeFile, realpath, stat } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -103,7 +99,7 @@ export function startServer(
   let html = initial.html;
   let currentSnapshot = initial.snapshot;
   let traceCache:
-    { key: string; promise: Promise<{ data: SessionTrace; html: string }> } | undefined;
+    { key: string; promise: Promise<{ data: ReviewDocument; html: string }> } | undefined;
   async function fullTrace(session: string) {
     const canonical = new Map<string, Snapshot['sources'][number]>();
     for (const source of currentSnapshot.sources) {
@@ -145,7 +141,7 @@ export function startServer(
           ),
         );
       const data = sessionTrace(threads, session);
-      return { data, html: await renderSessionTrace(data) };
+      return { data, html: await renderReview(data) };
     })();
     traceCache = { key, promise };
     try {

@@ -1,5 +1,5 @@
-import type { Episode } from './contracts.ts';
-import { useReview } from './context.tsx';
+import type { Episode } from '../model/contracts.ts';
+import { useReview } from '../app/context.tsx';
 import type { Inspect } from './evidence.tsx';
 const roleGroups = [
   { title: 'Request', roles: ['request', 'feedback', 'plan'] },

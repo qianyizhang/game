@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
-import type { ReviewDocument, TraceEvent } from './contracts.ts';
-import { traceActions } from './actions.ts';
-import { recordSource } from './data-source.ts';
+import type { ReviewDocument, TraceEvent } from '../model/contracts.ts';
+import { traceActions } from '../model/actions.ts';
+import { recordSource } from '../model/data-source.ts';
 import { useReviewState } from './state.ts';
 function useModel(document: ReviewDocument) {
   const [state, update] = useReviewState(!!document.curation, document.threads[0]?.id ?? '');

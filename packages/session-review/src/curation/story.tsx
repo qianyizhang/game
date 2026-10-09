@@ -1,5 +1,5 @@
-import type { Episode } from './contracts.ts';
-import { useReview } from './context.tsx';
+import type { Episode } from '../model/contracts.ts';
+import { useReview } from '../app/context.tsx';
 import { Figure, Evidence, AssessmentButton, type Inspect } from './evidence.tsx';
 export function Story({
   episode: s,

@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
-import type { ReviewDocument } from './contracts.ts';
-import { ReviewProvider } from './context.tsx';
-import { App } from './app.tsx';
+import type { ReviewDocument } from './model/contracts.ts';
+import { ReviewProvider } from './app/context.tsx';
+import { App } from './app/app.tsx';
 import './styles.css';
 async function start() {
   const element = document.getElementById('trace-data');

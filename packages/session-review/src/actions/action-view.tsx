@@ -1,11 +1,12 @@
 import { SignalFilter } from './signal-filter.tsx';
-import { TurnMetadata } from './metadata.tsx';
+import { TurnMetadata } from '../records/metadata.tsx';
 import { useEffect, useMemo, useRef } from 'react';
-import type { TraceEvent } from './contracts.ts';
-import { useReview } from './context.tsx';
-import { ActionCard, actionKind } from './records.tsx';
+import type { TraceEvent } from '../model/contracts.ts';
+import { useReview } from '../app/context.tsx';
+import { ActionCard } from './action-card.tsx';
+import { actionKind } from '../model/actions.ts';
 import { Minimap } from './minimap.tsx';
-import { AgentOptions, Pager } from './ui.tsx';
+import { AgentOptions, Pager } from '../app/ui.tsx';
 const size = 35;
 const turnKey = (thread: string, turn: string) => JSON.stringify([thread, turn]);
 export function ActionView({ inspect }: { inspect: (event: TraceEvent) => void }) {

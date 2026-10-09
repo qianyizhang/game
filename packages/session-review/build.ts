@@ -1,7 +1,7 @@
 import { build } from 'vite';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
-import type { ReviewDocument } from './src/contracts.ts';
+import type { ReviewDocument } from './src/model/contracts.ts';
 let bundle: Promise<{ js: string; css: string }> | undefined;
 /** The same Vite entry powers development and self-contained exports. No runtime CDN. */
 function assets() {

@@ -1,5 +1,5 @@
-import type { TraceAction } from './actions.ts';
-import type { TraceEvent } from './contracts.ts';
+import type { TraceAction } from '../model/actions.ts';
+import type { TraceEvent } from '../model/contracts.ts';
 export function QuestionExchange({ action }: { action: TraceAction }) {
   const questions = action.records.find((r) => r.questions?.length)?.questions ?? [];
   const result = action.results.find((r) => r.questionResult)?.questionResult;

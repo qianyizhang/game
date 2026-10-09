@@ -1,4 +1,4 @@
-import type { RecordedTurn } from './contracts.ts';
+import type { RecordedTurn } from '../model/contracts.ts';
 export function duration(ms: number) {
   if (ms < 1) return '<1 ms';
   if (ms < 1000) return Math.round(ms) + ' ms';

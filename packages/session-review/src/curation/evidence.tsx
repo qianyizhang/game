@@ -6,10 +6,11 @@ import type {
   ResolvedRef,
   ReviewAssessment,
   TraceEvent,
-} from './contracts.ts';
-import { useReview } from './context.tsx';
-import { RecordBody, RichText } from './records.tsx';
-import { Drawer } from './ui.tsx';
+} from '../model/contracts.ts';
+import { useReview } from '../app/context.tsx';
+import { RecordBody } from '../records/record-body.tsx';
+import { RichText } from '../records/record-text.tsx';
+import { Drawer } from '../app/ui.tsx';
 export type Inspection =
   | { kind: 'event'; event: TraceEvent }
   | { kind: 'assessment'; assessment: ReviewAssessment }

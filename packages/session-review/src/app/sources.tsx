@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useReview } from './context.tsx';
-import type { Episode } from './contracts.ts';
-import { RichText } from './records.tsx';
+import type { Episode } from '../model/contracts.ts';
+import { RichText } from '../records/record-text.tsx';
 export function Sources({ episode }: { episode?: Episode }) {
   const { document, source } = useReview();
   const episodes = document.curation?.episodes ?? [];

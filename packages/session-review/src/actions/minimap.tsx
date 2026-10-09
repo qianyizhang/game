@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode, type RefObject } from 'react';
-import type { TraceAction } from './actions.ts';
-import { actionDescription, actionKind } from './records.tsx';
+import type { TraceAction } from '../model/actions.ts';
+import { actionDescription, actionKind } from '../model/actions.ts';
 /** Tracks actual card geometry, including native details expansion and lazy body resizing. */
 function useViewport(list: RefObject<HTMLDivElement | null>, actions: TraceAction[]) {
   const [position, setPosition] = useState({ current: '', visible: new Set<string>() });

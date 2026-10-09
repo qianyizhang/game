@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useReview } from './context.tsx';
-import { Conversation } from './conversation.tsx';
-import { ActionView } from './action-view.tsx';
-import { InspectionDrawer, type Inspection } from './evidence.tsx';
-import { Story } from './story.tsx';
-import { Process } from './process.tsx';
-import { Compare } from './compare.tsx';
+import { Conversation } from '../conversation/conversation.tsx';
+import { ActionView } from '../actions/action-view.tsx';
+import { InspectionDrawer, type Inspection } from '../curation/evidence.tsx';
+import { Story } from '../curation/story.tsx';
+import { Process } from '../curation/process.tsx';
+import { Compare } from '../curation/compare.tsx';
 import { Sources } from './sources.tsx';
 import type { View } from './state.ts';
 function Coverage() {

@@ -3,7 +3,7 @@ import { mkdtemp, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { normalizeSessionFile, sessionTrace } from '../../packages/workshop-tools/trace/jsonl.ts';
-import { renderReview } from '../../packages/session-review/build.ts';
+import { renderReview } from '@card-workshop/session-review/build';
 let url = '';
 test.beforeAll(async () => {
   const root = await mkdtemp(resolve('test-results/action-review-'));

@@ -10,5 +10,7 @@
     "lint": "eslint . --max-warnings=0",
     "maintenance": "node cli.mjs"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@card-workshop/session-review": "0.1.0"
+  }
 }

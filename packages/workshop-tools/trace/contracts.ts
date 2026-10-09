@@ -1,10 +1,10 @@
-export type * from '../../session-review/src/contracts.ts';
+export type * from '@card-workshop/session-review/contracts';
 import type {
   EvidenceRef,
   Stage,
   CaseSpec,
   DocumentRef,
-} from '../../session-review/src/contracts.ts';
+} from '@card-workshop/session-review/contracts';
 
 export function record(value: unknown, label = 'record'): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value))
