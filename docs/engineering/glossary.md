@@ -114,6 +114,12 @@ Definitions consolidate existing behavior from [architecture](architecture.md), 
 
 ## Trace analysis
 
+**Recorded evidence**: Observable messages, operations, outputs and references retained from a source history. It does not include an inferred explanation of private reasoning.
+
+**Curation**: Authored selection and interpretation of recorded evidence, including episodes, artifact associations, assessments and lessons. A session can be reviewed without curation.
+
+**Episode**: A curated request, work and assessment cycle supported by exact evidence references. It may span multiple recorded turns or sessions.
+
 **Trace action**:
 An observable operation shown together with its linked inputs, native executions and outputs. Its source records keep their separate identities; matching text alone does not establish an execution link.
 _Avoid_: Record, tool wrapper

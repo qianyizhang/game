@@ -7,16 +7,11 @@ import {
 } from './link-executions.ts';
 import { classifyRequest } from './classify.ts';
 import { completedEvent } from './completed.ts';
-import { open, readFile } from 'node:fs/promises';
+import { open } from 'node:fs/promises';
 import type { ReadStream } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { gzipSync } from 'node:zlib';
-import { fileURLToPath } from 'node:url';
-import { viewerRuntime } from './runtime.ts';
-import type { TraceEvent, TraceThread, Omission, EvidenceRef } from './contracts.ts';
-import type { buildCase } from './build.ts';
+import type { TraceEvent, TraceThread, Omission } from './contracts.ts';
 import { eventKey } from './normalize.ts';
-import { createEvidenceResolver, episodeModel } from './model.ts';
 type Obj = Record<string, unknown>;
 const object = (value: unknown): Obj =>
   value && typeof value === 'object' && !Array.isArray(value) ? (value as Obj) : {};
@@ -604,69 +599,17 @@ export async function normalizeSessionFile(
     await handle.close();
   }
 }
-export type SessionTrace = Awaited<ReturnType<typeof buildCase>> & { sessionTrace: true };
+export type SessionTrace = import('../../session-review/src/contracts.ts').ReviewDocument;
 export function sessionTrace(threads: TraceThread[], session: string): SessionTrace {
-  const anchor = threads[0].turns.flatMap((turn) => turn.events)[0];
-  const ref = (event: TraceEvent): EvidenceRef => ({
-    thread: event.threadId,
-    turn: event.turnId,
-    event: event.id,
-    role: event.kind === 'request' ? 'request' : event.kind === 'message' ? 'other' : 'action',
-  });
-  const stage = {
-    id: 'session-trace',
-    title: 'Recorded session',
-    turn: anchor?.turnId ?? '',
-    thread: session,
-    evidence: anchor ? [ref(anchor)] : [],
-    limits: [
-      'This view includes available observable records from the complete scanned source files, independent of usage filters. Private reasoning is excluded; unsupported or encrypted payloads remain unavailable. No artifact story or assessment is inferred.',
-    ],
-  };
-  const model = episodeModel(stage, threads, createEvidenceResolver(threads));
   return {
-    version: 2,
-    title: 'Session trace · ' + session.slice(0, 8),
-    subtitle: 'Full local trace · messages, tools, output, patches and source lines',
-    outcome:
-      'Observable records only; no inferred assessments or historical artifact reconstruction.',
+    version: 3,
+    title: session.slice(0, 8),
     collectedAt: new Date().toISOString(),
     inputs: threads.map((thread) => ({ threadId: thread.id, sha256: thread.source.sha256 ?? '' })),
     threads,
-    stages: [
-      {
-        ...stage,
-        ...model,
-        index: 0,
-        threadId: session,
-        anchorId: anchor?.id ?? '',
-        anchorRef: anchor ? ref(anchor) : { thread: session, turn: '', event: '', role: 'other' },
-        quote: anchor?.text ?? '',
-        captures: [],
-        sources: [],
-        artifacts: [],
-        assessments: [],
-      },
-    ],
-    artifacts: [],
     documents: [],
     media: [],
-    output: '',
-    sessionTrace: true,
+    delivery: { kind: 'local', session },
   };
 }
-export async function renderSessionTrace(data: SessionTrace): Promise<string> {
-  const directory = new URL('.', import.meta.url);
-  const template = await readFile(fileURLToPath(new URL('viewer.html', directory)), 'utf8');
-  const runtimeText = await viewerRuntime();
-  const payload = gzipSync(JSON.stringify(data)).toString('base64');
-  const decode = `await (async () => { const element = document.getElementById('trace-data'); const bytes = Uint8Array.from(atob(element.textContent), c => c.charCodeAt(0)); const data = JSON.parse(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text()); element.remove(); return data; })()`;
-  return template
-    .replace(
-      '<script type="module">',
-      () =>
-        `<script id="trace-data" type="application/octet-stream">${payload}</script><script type="module">`,
-    )
-    .replace(/\/\*TRACE_DATA\*\/\s*null/, () => decode)
-    .replace('/*TRACE_RUNTIME*/', () => runtimeText);
-}
+export { renderReview as renderSessionTrace } from '../../session-review/build.ts';

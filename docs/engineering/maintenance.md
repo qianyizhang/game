@@ -13,6 +13,7 @@ Upgrade TypeScript and typed ESLint together when peer support and repository ch
 ## Source ownership
 
 - The application owns rules, content, sessions and presentation. Game rules remain browser-independent and seeded.
+- `@card-workshop/session-review` owns session and curated evidence presentation, shared by offline exports and local review.
 - `@card-workshop/tools` owns maintenance commands. Future script families move into this workspace with documented inputs, outputs, dependencies and meaningful tests.
 - `@card-workshop/dcc-workbench` owns Blender authoring and asset delivery. Its editable artist source is independent of rebuild recipes.
 - Moves and new files must enter the owning checker scopes in the same change.

@@ -1,5 +1,5 @@
 import { gitDocument } from './documents.ts';
-import { viewerRuntime } from './runtime.ts';
+import { renderReview } from '../../session-review/build.ts';
 import { randomUUID } from 'node:crypto';
 import { freshOutput } from './output.ts';
 import {
@@ -15,7 +15,7 @@ import { resolve, dirname, relative, basename, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { normalizeThread, scriptJSON } from './normalize.ts';
+import { normalizeThread } from './normalize.ts';
 import { createEvidenceResolver, episodeModel } from './model.ts';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -301,18 +301,9 @@ async function buildInto({
     documents,
     media,
   };
-  const template = await readFile(resolve(here, 'viewer.html'), 'utf8');
-  if (!/\/\*TRACE_DATA\*\/\s*null/.test(template))
-    throw new Error('Missing template data placeholder');
-  if (!template.includes('/*TRACE_RUNTIME*/'))
-    throw new Error('Missing viewer runtime placeholder');
-  const runtime = await viewerRuntime();
-  // Insert source first: payload text may itself contain placeholder-looking strings.
   await writeFile(
     resolve(output, 'index.html'),
-    template
-      .replace('/*TRACE_RUNTIME*/', () => runtime)
-      .replace(/\/\*TRACE_DATA\*\/\s*null/, () => scriptJSON(data)),
+    await renderReview({ ...data, curation: { episodes: stages, artifacts } }),
   );
   await writeFile(
     resolve(output, 'manifest.json'),

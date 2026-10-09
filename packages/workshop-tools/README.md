@@ -52,6 +52,10 @@ Plans, reserved seed sets and v5/v1 replay semantics remain frozen. New runs pin
 
 `node packages/workshop-tools/hearth/recruitment-inspect.ts replay.json receipt.json new.html` validates the replay/receipt hash and case, reconstructs evaluator-only observations, and embeds a separately checked viewer runtime. The output works offline. Alternative proposals inspect the same position; they neither simulate future turns nor estimate playing strength. Downloaded prefixes require the frozen arena-v1/Hearth-v5 environment; the current game rejects them.
 
+## Session review frontend
+
+Trace adapters and artifact collection stay in `trace/`; the [session-review workspace](../session-review/README.md) owns the shared React/Vite frontend. Both authored offline bundles and raw local sessions use its explicit delivery contract and HTML builder.
+
 ## Offline Codex usage
 
 `npm run usage:dashboard -- --serve` opens a standalone local usage dashboard from Codex session logs. It supports dates, model/project/effort filters, trends, activity, reasoning/output analytics, sortable sessions with row-click evidence, persistent incremental indexing, current official API-equivalent pricing with editable overrides and filtered CSV export. Omit `--serve` for a self-contained offline report. `npm run test:usage` verifies accounting and local refresh; its tests also join this workspace gate. See the [usage dashboard guide](../../docs/engineering/usage-dashboard.md) for source discovery, coverage and privacy boundaries.

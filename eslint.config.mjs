@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint';
 
 const typedFiles = [
   'src/**/*.{ts,tsx}',
+  'packages/session-review/**/*.{ts,tsx}',
   'tests/**/*.ts',
   '*.config.ts',
   'packages/workshop-tools/**/*.{mjs,ts,tsx}',

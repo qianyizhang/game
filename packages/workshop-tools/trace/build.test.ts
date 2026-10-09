@@ -1,3 +1,4 @@
+import { gunzipSync } from 'node:zlib';
 import { record, list, type Stage } from './contracts.ts';
 import type { TestContext } from 'node:test';
 import { test } from 'node:test';
@@ -214,9 +215,14 @@ await test('viewer payloads remain inert through runtime insertion and story pro
   f.spec.title = '/*TRACE_RUNTIME*/ </script><script>throw new Error("injected")</script>';
   const data = await buildCase(f);
   const html = await readFile(resolve(data.output, 'index.html'), 'utf8');
-  assert.equal((html.match(/<script\b/g) ?? []).length, 1);
-  assert.ok(html.includes('/*TRACE_RUNTIME*/ \\u003c/script>'));
-  assert.ok(html.includes('function restoreLocation()'));
+  assert.equal((html.match(/<script\b/g) ?? []).length, 2);
+  const payload = html.match(/<script id="trace-data"[^>]*>([^<]+)<\/script>/)?.[1];
+  assert.ok(payload);
+  const decoded = JSON.parse(gunzipSync(Buffer.from(payload, 'base64')).toString()) as {
+    title: string;
+  };
+  assert.equal(decoded.title, f.spec.title);
+  assert.ok(!html.includes(f.spec.title));
   for (const spec of [
     { ...f.spec, outcome: { approval: 'invented' } },
     { ...f.spec, stages: [{ ...f.spec.stages[0], status: ['ambiguous'] }] },

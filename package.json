@@ -26,11 +26,11 @@
     "test:dcc": "node --test packages/dcc-workbench/*.test.mjs",
     "test:dcc:native": "node packages/dcc-workbench/verify-native.ts",
     "maintenance": "node packages/workshop-tools/cli.mjs",
-    "lint:tools": "eslint packages/workshop-tools packages/dcc-workbench/src \"packages/dcc-workbench/*.{ts,mjs}\" eslint.config.mjs --max-warnings=0",
+    "lint:tools": "eslint packages/session-review packages/workshop-tools packages/dcc-workbench/src \"packages/dcc-workbench/*.{ts,mjs}\" eslint.config.mjs --max-warnings=0",
     "typecheck": "tsc --noEmit && npm run typecheck --workspaces --if-present",
     "test:tools": "npm run test --workspace @card-workshop/tools",
     "check:python": "uv run --locked ruff check && uv run --locked ruff format --check && uv run --locked mypy && uv run --locked python -m unittest discover -s packages/dcc-workbench/blender -p \"test_*.py\"",
-    "format:maintenance": "prettier --check packages/workshop-tools packages/dcc-workbench/README.md packages/dcc-workbench/src packages/dcc-workbench/package.json packages/dcc-workbench/tsconfig.json docs/README.md docs/guide docs/engineering docs/art docs/research maintenance .github AGENTS.md package.json eslint.config.mjs src tests *.config.ts tsconfig.json \"packages/dcc-workbench/*.{ts,mjs,json}\" packages/dcc-workbench/subjects",
+    "format:maintenance": "prettier --check packages/session-review packages/workshop-tools packages/dcc-workbench/README.md packages/dcc-workbench/src packages/dcc-workbench/package.json packages/dcc-workbench/tsconfig.json docs/README.md docs/guide docs/engineering docs/art docs/research maintenance .github AGENTS.md package.json eslint.config.mjs src tests *.config.ts tsconfig.json \"packages/dcc-workbench/*.{ts,mjs,json}\" packages/dcc-workbench/subjects",
     "check:maintenance": "npm run format:maintenance && npm run lint:tools && npm run lint:app && npm run typecheck && npm run check:python && npm run test:tools && npm run test:dcc && npm run maintenance -- check && npm run build",
     "trace:build": "node packages/workshop-tools/trace/build.ts",
     "lint:app": "eslint src tests *.config.ts --max-warnings=0",
@@ -61,7 +61,8 @@
   },
   "workspaces": [
     "packages/dcc-workbench",
-    "packages/workshop-tools"
+    "packages/workshop-tools",
+    "packages/session-review"
   ],
   "engines": {
     "node": ">=24.21.0 <25",

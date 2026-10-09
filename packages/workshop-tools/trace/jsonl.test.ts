@@ -335,7 +335,7 @@ await test('review-only session models are classified, while mixed model session
 
 // A delayed shell completion can arrive after a newer exec call; a source interval alone gives a wrong pairing.
 await test('delayed and parallel shell results keep their invocation, while ambiguous and dynamic commands stay separate', async () => {
-  const { traceActions } = await import('./actions.ts');
+  const { traceActions } = await import('../../session-review/src/actions.ts');
   const directory = await mkdtemp(resolve(tmpdir(), 'execution-links-'));
   try {
     const path = resolve(directory, 'session.jsonl');
