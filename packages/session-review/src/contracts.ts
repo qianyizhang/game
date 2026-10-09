@@ -45,6 +45,9 @@ export interface TraceEvent {
   callId?: string;
   /** Verified relation to a recorded invocation; source records remain independently addressable. */
   parentCall?: string;
+  /** Count only when the wrapper syntax proves one direct parallel batch. */
+  parallelCalls?: number;
+  threadRead?: ThreadRead;
   imageUrls?: string[];
   messagePhase?: 'commentary' | 'final_answer';
   /** Local server only: bounded preview with byte-pinned, on-demand content. */
@@ -54,6 +57,21 @@ export interface TraceEvent {
     outputLength?: number;
     imageCount: number;
   };
+}
+export interface ThreadRead {
+  id: string;
+  title: string;
+  status: string;
+  hasMore: boolean;
+  limited: boolean;
+  turns: Array<{
+    id: string;
+    status: string;
+    request: string;
+    response: string;
+    final: boolean;
+    activities: number;
+  }>;
 }
 export interface Omission {
   type: string;

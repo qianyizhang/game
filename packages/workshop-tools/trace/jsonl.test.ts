@@ -470,3 +470,107 @@ await test('semantic actions leave ambiguous or unmatched native records separat
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+// Repeated/overlapping calls and computed arguments need controlled fixtures; adjacency would pass happy-path UI tests.
+await test('MCP and literal-map batches link by tool identity without merging ambiguous or mismatched calls', async () => {
+  const dir = await mkdtemp(resolve(tmpdir(), 'mcp-batches-'));
+  try {
+    const path = resolve(dir, 'session.jsonl');
+    const call = (id: string, input: string) => ({
+      type: 'response_item',
+      payload: { type: 'custom_tool_call', name: 'exec', call_id: id, input },
+    });
+    const result = (id: string) => ({
+      type: 'response_item',
+      payload: { type: 'custom_tool_call_output', call_id: id, output: 'done' },
+    });
+    const mcp = (id: string, args: object) => ({
+      type: 'event_msg',
+      payload: {
+        type: 'item_completed',
+        item: {
+          type: 'McpToolCall',
+          id,
+          server: 'codex_apps',
+          tool: 'github.fetch_file',
+          arguments: args,
+          result: { content: [] },
+        },
+      },
+    });
+    const rows = [
+      { type: 'session_meta', payload: { id: 'session' } },
+      { type: 'turn_context', payload: { turn_id: 'turn' } },
+      call(
+        'literal',
+        'await tools.mcp__codex_apps__github_fetch_file({repo:"repo",path:"a",nested:{a:1,b:true}})',
+      ),
+      mcp('literal-native', { nested: { b: true, a: 1 }, path: 'a', repo: 'repo' }),
+      result('literal'),
+      call(
+        'repeat',
+        'await tools.mcp__codex_apps__github_fetch_file({repo:"repo",path:"a",nested:{a:1,b:true}})',
+      ),
+      mcp('repeat-native', { path: 'a', repo: 'repo', nested: { b: true, a: 1 } }),
+      result('repeat'),
+      call(
+        'dynamic',
+        'await tools.mcp__codex_apps__github_fetch_file({repo:"repo",path:variable})',
+      ),
+      mcp('dynamic-native', { path: 'computed', repo: 'repo' }),
+      result('dynamic'),
+      call('wrong', 'await tools.mcp__codex_apps__github_fetch_file({repo:"wrong",path:variable})'),
+      mcp('wrong-native', { path: 'computed', repo: 'repo' }),
+      result('wrong'),
+      call('overlap-a', 'await tools.mcp__codex_apps__github_fetch_file({path:variable})'),
+      call('overlap-b', 'await tools.mcp__codex_apps__github_fetch_file({path:variable})'),
+      mcp('ambiguous-native', { path: 'ambiguous' }),
+      result('overlap-a'),
+      result('overlap-b'),
+      call(
+        'map',
+        'const cmds=["echo A","echo B"]; await Promise.allSettled(cmds.map(cmd=>tools.exec_command({cmd})));',
+      ),
+      ...['A', 'B'].map((name) => ({
+        type: 'event_msg',
+        payload: {
+          type: 'item_completed',
+          item: {
+            type: 'CommandExecution',
+            id: 'shell-' + name,
+            command: ['/bin/zsh', '-lc', 'echo ' + name],
+          },
+        },
+      })),
+      result('map'),
+      call(
+        'mutated',
+        'const cmds=["echo changed"]; cmds[0]=secret; await Promise.allSettled(cmds.map(cmd=>tools.exec_command({cmd})));',
+      ),
+      {
+        type: 'event_msg',
+        payload: {
+          type: 'item_completed',
+          item: {
+            type: 'CommandExecution',
+            id: 'mutated-shell',
+            command: ['/bin/zsh', '-lc', 'echo changed'],
+          },
+        },
+      },
+      result('mutated'),
+    ];
+    await writeFile(path, rows.map((row) => JSON.stringify(row)).join('\n'));
+    const thread = await normalizeSessionFile(path, 'session', 'Main', { lazyBodies: true });
+    const events = thread.turns.flatMap((t) => t.events);
+    const nativeEvents = events.filter((e) =>
+      /\/(McpToolCall|CommandExecution)$/.test(e.sourceType ?? ''),
+    );
+    assert.deepEqual(
+      nativeEvents.map((e) => events.find((call) => call.key === e.parentCall)?.callId),
+      ['literal', 'repeat', 'dynamic', undefined, undefined, 'map', 'map', undefined],
+    );
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});

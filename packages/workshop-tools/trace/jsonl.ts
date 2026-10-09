@@ -1,3 +1,4 @@
+import { toolSignature, toolSignatures, wrapperTools } from './tool-signatures.ts';
 import { semanticOperation, linkSemanticActions } from './semantic-links.ts';
 import { TurnTelemetry } from './telemetry.ts';
 import {
@@ -513,6 +514,26 @@ export async function normalizeSessionFile(
             executionLinks.push({
               event: normalized,
               commands: item.type === 'CommandExecution' ? nativeCommandHash(item.command) : [],
+              tools:
+                item.type === 'McpToolCall'
+                  ? [
+                      toolSignature(
+                        'mcp__' + string(item.server) + '__' + string(item.tool),
+                        item.arguments,
+                      ),
+                    ].filter((value): value is string => !!value)
+                  : [],
+              nativeTool:
+                item.type === 'McpToolCall'
+                  ? {
+                      name:
+                        'mcp__' +
+                        string(item.server) +
+                        '__' +
+                        string(item.tool).replace(/\./g, '_'),
+                      args: item.arguments,
+                    }
+                  : undefined,
               nativeId: string(item.id),
               startedAt: typeof p.started_at_ms === 'number' ? p.started_at_ms : undefined,
             });
@@ -523,12 +544,28 @@ export async function normalizeSessionFile(
           type === 'response_item' &&
           ['function_call', 'custom_tool_call'].includes(payloadType)
         ) {
+          const plan = /(^|[.])exec$/.test(normalized.title)
+            ? wrapperTools(normalized.text)
+            : { dynamic: [] };
+          normalized.parallelCalls = plan.parallelCalls;
           operations.set(normalized.key, semanticOperation(normalized.text, normalized.title, cwd));
           executionLinks.push({
             event: normalized,
             commands: commandHashes(normalized.text, normalized.title),
+            dynamicTools: plan.dynamic,
+            tools: toolSignatures(
+              normalized.text,
+              string(p.namespace)
+                ? string(p.namespace) + '__' + normalized.title
+                : normalized.title,
+            ),
           });
         }
+        if (
+          type === 'response_item' &&
+          /^(function_call_output|custom_tool_call_output)$/.test(payloadType)
+        )
+          executionLinks.push({ event: normalized, commands: [] });
         const signature = JSON.stringify([
           turnId,
           normalized.kind,

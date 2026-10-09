@@ -1,3 +1,4 @@
+import { threadReadResult } from './thread-read.ts';
 import type { TraceEvent } from './contracts.ts';
 type Obj = Record<string, unknown>;
 const obj = (value: unknown): Obj =>
@@ -108,6 +109,9 @@ export function completedEvent(payload: Obj, role: string): CompletedEvent | und
         title: str(item.server) + ' · ' + str(item.tool),
         text: printable(item.arguments),
         output: printable(item.result),
+        ...(item.server === 'codex_app' && item.tool === 'read_thread'
+          ? { threadRead: threadReadResult(item.result) }
+          : {}),
       };
     case 'CollabAgentToolCall':
       return {
