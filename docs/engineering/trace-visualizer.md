@@ -39,6 +39,10 @@ Review signals filters expose mid-turn user input, recorded tool errors/rejectio
 
 Compact metadata shows recorded action times and elapsed durations. Selected-turn metadata sums available response usage once per response ID and shows input, cached input and output tokens; input includes the cached portion. These are display context, not billing. Turn elapsed time requires recorded lifecycle timestamps and includes tool/wait time. Missing metadata stays absent; model tokens/s is not inferred from whole-turn wall time.
 
+MCP executions match the tool identity and canonical literal arguments inside their wrapper, including connector names such as `github.fetch_file`. Computed arguments require one enclosing, completed wrapper with the same called tool and matching known argument fields. Overlapping candidates remain separate. Literal const-array command batches are recognized without evaluating recorded code; mutation and aliasing remain unsupported. A command card shows its recorded execution count, shell/MCP breakdown for mixed batches, and a parallel count only for a proven direct or literal-map `Promise.all`/`allSettled` batch. These counts do not represent model round trips.
+
+A returned chat is presented as its title and recorded input/response pairs, with capture limits visible. The bounded overview excludes private reasoning; complete tool input/output stays accessible in its disclosure and Raw text mode.
+
 The action summary carries the type and useful content preview. Expanding it shows the body directly, without an additional inspection button or repeated source panel. Durations use seconds or rounded milliseconds. Raw text remains a global option.
 
 ## Model and evidence boundaries

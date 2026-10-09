@@ -1190,3 +1190,25 @@ dialog::backdrop {
   margin: 0;
   overflow-wrap: anywhere;
 }
+
+.batch-count {
+  color: #315cb5;
+}
+.execution-label {
+  margin: 14px 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.thread-read {
+  padding: 12px 0;
+}
+.thread-read .read-turn {
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
+  padding-top: 10px;
+}
+.thread-read .conversation-pair {
+  align-items: start;
+}

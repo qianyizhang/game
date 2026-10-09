@@ -1,7 +1,7 @@
 import { duration } from './metadata.tsx';
 import { signalLabels } from './signals.ts';
 import { useEffect, useRef, useState } from 'react';
-import type { TraceEvent } from './contracts.ts';
+import type { TraceEvent, ThreadRead } from './contracts.ts';
 import type { TraceAction } from './actions.ts';
 import { presentedText } from './presentation.ts';
 import type { TextBlock } from './data-source.ts';
@@ -93,7 +93,7 @@ export function RecordText({
   );
 }
 export function RecordBody({ event: e, images = true }: { event: TraceEvent; images?: boolean }) {
-  const { source } = useReview();
+  const { source, state } = useReview();
   const [imagesOpen, setImagesOpen] = useState(false);
   return (
     <>
@@ -101,8 +101,21 @@ export function RecordBody({ event: e, images = true }: { event: TraceEvent; ima
         <p className="warning">Source truncated upstream. Expanding cannot recover omitted text.</p>
       )}
       {e.paths.length > 0 && <p className="provenance">{e.paths.join(' · ')}</p>}
-      {e.text !== 'Recorded tool result' && <RecordText event={e} />}{' '}
-      {e.output !== undefined && <RecordText event={e} field="output" />}
+      {e.threadRead && state.text !== 'raw' ? (
+        <>
+          <ThreadReadOverview value={e.threadRead} />
+          <details className="tool-wrapper">
+            <summary>Complete tool input and result</summary>
+            <RecordText event={e} />
+            <RecordText event={e} field="output" />
+          </details>
+        </>
+      ) : (
+        <>
+          {e.text !== 'Recorded tool result' && <RecordText event={e} />}
+          {e.output !== undefined && <RecordText event={e} field="output" />}
+        </>
+      )}
       {images &&
         e.imageUrls
           ?.filter((url) => /^data:image\/(png|jpeg|webp|gif);base64,/.test(url))
@@ -185,6 +198,10 @@ export function ActionCard({
     (r) => (r.body?.imageCount ?? r.imageUrls?.length ?? 0) > 0,
   );
   const [open, setOpen] = useState(selected || (kind === 'image' && imageResults.length > 0));
+  const shells = action.executions.filter((r) =>
+    /\/CommandExecution$/.test(r.sourceType ?? ''),
+  ).length;
+  const mcp = action.executions.filter((r) => /\/McpToolCall$/.test(r.sourceType ?? '')).length;
   const end = action.results.at(-1)?.timestamp;
   const elapsed = action.executions.length === 1 ? action.executions[0].durationMs : undefined;
   const span =
@@ -245,6 +262,17 @@ export function ActionCard({
             {signalLabels[signal]}
           </span>
         ))}
+        {action.executions.length > 1 && (
+          <span
+            className="batch-count"
+            title="Counts recorded native executions, not model round trips."
+          >
+            {action.anchor.parallelCalls === action.executions.length
+              ? `${action.executions.length} parallel tool calls`
+              : `${action.executions.length} tool executions`}
+            {shells > 0 && mcp > 0 ? ` · ${shells} shell + ${mcp} MCP` : ''}
+          </span>
+        )}
         <span className="action-metadata">
           {e.timestamp && (
             <time dateTime={e.timestamp} title={e.timestamp}>
@@ -297,6 +325,11 @@ export function ActionCard({
               .filter((execution) => !(imageResults.length && execution.kind === 'image'))
               .map((execution) => (
                 <section className="execution-pair" key={execution.key}>
+                  {action.executions.length > 1 && (
+                    <h3 className="execution-label">
+                      {execution.threadRead ? 'Read chat' : execution.title}
+                    </h3>
+                  )}
                   {execution.exitCode != null && (
                     <p
                       className={
@@ -432,5 +465,52 @@ function RecordedImages({ event, captions }: { event: TraceEvent; captions: stri
         </p>
       )}
     </>
+  );
+}
+
+function ThreadReadOverview({ value }: { value: ThreadRead }) {
+  return (
+    <section className="thread-read">
+      <div className="section-heading">
+        <h3>{value.title}</h3>
+        <span className="small">
+          {value.status} · {value.turns.length} returned{' '}
+          {value.turns.length === 1 ? 'turn' : 'turns'}
+        </span>
+      </div>
+      {/^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(value.id) && (
+        <a href={'codex://threads/' + value.id}>Open source chat ↗</a>
+      )}
+      {(value.hasMore || value.limited) && (
+        <p className="small">
+          Partial overview. More content is available in the complete tool result or source chat.
+        </p>
+      )}
+      {value.turns.map((turn, index) => (
+        <section key={turn.id || index} className="read-turn">
+          <p className="small">
+            Returned turn {index + 1} · {turn.status} · {turn.activities} recorded activities
+          </p>
+          <div className="conversation-pair">
+            <section>
+              <h3>User input</h3>
+              {turn.request ? (
+                <RichText text={turn.request} />
+              ) : (
+                <p className="small">Input not included in this result.</p>
+              )}
+            </section>
+            <section>
+              <h3>{turn.final ? 'Assistant response' : 'Last recorded response'}</h3>
+              {turn.response ? (
+                <RichText text={turn.response} />
+              ) : (
+                <p className="small">Response not included in this result.</p>
+              )}
+            </section>
+          </div>
+        </section>
+      ))}
+    </section>
   );
 }

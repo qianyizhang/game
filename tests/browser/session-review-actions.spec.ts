@@ -99,6 +99,58 @@ test.beforeAll(async () => {
     ),
     result('orphan', 'ORPHAN_RESULT'),
     call('unfinished', 'exec_command', '{"cmd":"pending"}'),
+    call(
+      'parallel',
+      'exec',
+      'await Promise.allSettled([tools.exec_command({cmd:"echo A"}),tools.exec_command({cmd:"echo B"}),tools.exec_command({cmd:"echo C"}),tools.mcp__codex_app__read_thread({threadId:"read-target",turnLimit:1})])',
+    ),
+    ...['A', 'B', 'C'].map((name) =>
+      native({
+        type: 'CommandExecution',
+        id: 'shell-' + name,
+        command: ['/bin/zsh', '-lc', 'echo ' + name],
+        exit_code: 0,
+        aggregated_output: 'RESULT_' + name,
+      }),
+    ),
+    native({
+      type: 'McpToolCall',
+      id: 'mcp-read',
+      server: 'codex_app',
+      tool: 'read_thread',
+      arguments: { turnLimit: 1, threadId: 'read-target' },
+      result: {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify({
+              thread: { id: 'read-target', title: 'Blueprint review', status: { type: 'idle' } },
+              page: { hasMore: true },
+              turns: [
+                {
+                  id: 'read-turn',
+                  status: 'completed',
+                  items: [
+                    {
+                      type: 'userMessage',
+                      content: [{ type: 'text', text: 'Review **the blueprint**.' }],
+                    },
+                    { type: 'agentMessage', phase: 'analysis', text: 'PRIVATE_NOT_FOR_OVERVIEW' },
+                    {
+                      type: 'agentMessage',
+                      phase: 'final_answer',
+                      text: '## Outcome\nThe blueprint is consistent.\n\n- Verified the boundaries.',
+                    },
+                  ],
+                },
+              ],
+            }),
+          },
+        ],
+      },
+    }),
+    result('parallel', 'Batch completed'),
+
     usage,
     message(
       'assistant',
@@ -178,4 +230,30 @@ test('review signals filter observable outcomes and restore the scoped action li
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: info.outputPath('actions-mobile.png'), fullPage: true });
+});
+
+test('parallel MCP reads join shell executions and present a chat overview instead of nested JSON', async ({
+  page,
+}, info) => {
+  await page.goto(url + '#view=events');
+  const batch = page.locator('#event-list > article').filter({ has: page.locator('.batch-count') });
+  await expect(batch).toHaveCount(1);
+  await expect(batch.locator('.batch-count')).toHaveText('4 parallel tool calls · 3 shell + 1 MCP');
+  await batch.locator(':scope > details > .action-summary').click();
+  await expect(batch.locator('.execution-pair')).toHaveCount(4);
+  const overview = batch.locator('.thread-read');
+  await expect(
+    overview.getByRole('heading', { name: 'Blueprint review', exact: true }),
+  ).toBeVisible();
+  await expect(overview.getByRole('heading', { name: 'Outcome', exact: true })).toBeVisible();
+  await expect(overview.locator('strong')).toHaveText('the blueprint');
+  await expect(overview).toContainText('Partial overview');
+  await expect(overview).not.toContainText('PRIVATE_NOT_FOR_OVERVIEW');
+  await expect(batch.getByText('Complete tool input and result', { exact: true })).toBeVisible();
+  await page.screenshot({ path: info.outputPath('parallel-thread-read.png'), fullPage: true });
+  await page.getByLabel('Raw text', { exact: true }).check();
+  await expect(batch.locator('.thread-read')).toHaveCount(0);
+  await page.getByLabel('Raw text', { exact: true }).uncheck();
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
