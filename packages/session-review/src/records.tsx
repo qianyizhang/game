@@ -1,3 +1,5 @@
+import { QuestionExchange, WebResult } from './native-records.tsx';
+import { SourceSequence } from './source-sequence.tsx';
 import { duration } from './metadata.tsx';
 import { signalLabels } from './signals.ts';
 import { useEffect, useRef, useState } from 'react';
@@ -101,7 +103,16 @@ export function RecordBody({ event: e, images = true }: { event: TraceEvent; ima
         <p className="warning">Source truncated upstream. Expanding cannot recover omitted text.</p>
       )}
       {e.paths.length > 0 && <p className="provenance">{e.paths.join(' · ')}</p>}
-      {e.threadRead && state.text !== 'raw' ? (
+      {e.web && state.text !== 'raw' ? (
+        <>
+          <WebResult event={e} />
+          <details className="tool-wrapper">
+            <summary>Complete web input and result</summary>
+            <RecordText event={e} />
+            <RecordText event={e} field="output" />
+          </details>
+        </>
+      ) : e.threadRead && state.text !== 'raw' ? (
         <>
           <ThreadReadOverview value={e.threadRead} />
           <details className="tool-wrapper">
@@ -157,6 +168,7 @@ export const recordType = (e: TraceEvent) =>
 /** One dominant kind for grouping, badges, legend, and filtering. */
 export const actionKind = (action: TraceAction) => {
   const kinds = new Set(action.executions.map((e) => e.kind));
+  if (kinds.size > 1 && /(^|[.])exec$/.test(action.anchor.title)) return 'code-mode';
   const e = kinds.size === 1 ? action.executions[0] : action.anchor;
   return e.kind === 'message' && e.messagePhase
     ? e.messagePhase === 'commentary'
@@ -166,6 +178,10 @@ export const actionKind = (action: TraceAction) => {
 };
 export function actionDescription(action: TraceAction) {
   const e = action.executions[0] ?? action.anchor;
+  if (e.kind === 'ask') return e.questions?.[0]?.title ?? 'Ask user';
+  if (e.kind === 'compaction')
+    return `${e.title}${e.compaction?.window !== undefined ? ' · window ' + e.compaction.window : ''}`;
+  if (actionKind(action) === 'code-mode') return action.executions.map((r) => r.title).join(' → ');
   if (action.executions.length && e.kind === 'image')
     return `Image inspection · ${action.executions.filter((r) => r.kind === 'image').length} images`;
   if (e.kind === 'edit' && e.paths.length)
@@ -190,10 +206,9 @@ export function ActionCard({
   filter: (kind: string) => void;
   inspect?: (event: TraceEvent) => void;
 }) {
-  const { label, document, turnNumber, events, update } = useReview();
+  const { label, document, turnNumber } = useReview();
   const e = action.anchor,
     kind = actionKind(action);
-  const [sequenceOpen, setSequenceOpen] = useState(false);
   const imageResults = action.results.filter(
     (r) => (r.body?.imageCount ?? r.imageUrls?.length ?? 0) > 0,
   );
@@ -205,27 +220,9 @@ export function ActionCard({
   const end = action.results.at(-1)?.timestamp;
   const elapsed = action.executions.length === 1 ? action.executions[0].durationMs : undefined;
   const span =
-    elapsed ?? (e.timestamp && end ? Date.parse(end) - Date.parse(e.timestamp) : undefined);
-  const last = Math.max(...action.records.map((r) => r.ordinal));
-  const sequence = sequenceOpen
-    ? events.filter(
-        (r) =>
-          r.threadId === e.threadId &&
-          r.turnId === e.turnId &&
-          r.ordinal >= e.ordinal &&
-          r.ordinal <= last,
-      )
-    : [];
-  const interleaved =
-    action.records.length > 1 &&
-    events.some(
-      (r) =>
-        r.threadId === e.threadId &&
-        r.turnId === e.turnId &&
-        r.ordinal > e.ordinal &&
-        r.ordinal < last &&
-        !action.records.includes(r),
-    );
+    e.durationMs ??
+    (e.timestamp && end ? Date.parse(end) - Date.parse(e.timestamp) : undefined) ??
+    elapsed;
   useEffect(() => {
     if (selected) setOpen(true);
   }, [selected]);
@@ -269,8 +266,19 @@ export function ActionCard({
           >
             {action.anchor.parallelCalls === action.executions.length
               ? `${action.executions.length} parallel tool calls`
-              : `${action.executions.length} tool executions`}
+              : action.anchor.sequentialCalls === action.executions.length
+                ? `${action.executions.length} sequential tool calls`
+                : `${action.executions.length} tool executions`}
             {shells > 0 && mcp > 0 ? ` · ${shells} shell + ${mcp} MCP` : ''}
+          </span>
+        )}
+        {kind === 'ask' && (
+          <span className="question-reply-marker">
+            {action.results.some(
+              (r) => r.questionResult?.answers && Object.keys(r.questionResult.answers).length,
+            )
+              ? 'User replied'
+              : 'No linked reply'}
           </span>
         )}
         <span className="action-metadata">
@@ -302,7 +310,7 @@ export function ActionCard({
               filter(kind);
             }}
           >
-            {kind}
+            {kind === 'ask' ? 'ask user' : kind === 'code-mode' ? 'code mode' : kind}
           </button>
           <span className="action-description">{actionDescription(action)}</span>
         </summary>
@@ -319,7 +327,19 @@ export function ActionCard({
             ))}
           </div>
         )}
-        {action.executions.length ? (
+        {kind === 'ask' ? (
+          <>
+            <QuestionExchange action={action} />
+            <details className="tool-wrapper">
+              <summary>Question source and tool acknowledgement</summary>
+              {action.records.map((r) => (
+                <RecordBody key={r.key} event={r} />
+              ))}
+            </details>
+          </>
+        ) : kind === 'compaction' ? (
+          <RecordBody event={e} />
+        ) : action.executions.length ? (
           <>
             {action.executions
               .filter((execution) => !(imageResults.length && execution.kind === 'image'))
@@ -378,47 +398,7 @@ export function ActionCard({
               ))}
           </>
         )}
-        {action.records.length > 1 && (
-          <details
-            className="source-sequence"
-            onToggle={(ev) => setSequenceOpen(ev.currentTarget.open)}
-          >
-            <summary>
-              {interleaved
-                ? 'Source sequence · other activity occurred during this action'
-                : 'Source sequence'}
-            </summary>
-            {sequenceOpen && (
-              <ol>
-                {sequence.map((record) => (
-                  <li key={record.key}>
-                    <button
-                      onClick={() =>
-                        update({
-                          view: 'events',
-                          session: e.threadId,
-                          actionTurn: JSON.stringify([e.threadId, e.turnId]),
-                          event: record.key,
-                          kind: 'all',
-                          signal: 'all',
-                          search: '',
-                          scope: 'all',
-                          evidenceRole: 'all',
-                        })
-                      }
-                    >
-                      #{record.sourceLine ?? record.ordinal} · {record.title}
-                      {!action.records.includes(record) ? ' · separate action' : ''}
-                    </button>
-                    {record.timestamp && (
-                      <time dateTime={record.timestamp}>{record.timestamp.slice(11, 23)}</time>
-                    )}
-                  </li>
-                ))}
-              </ol>
-            )}
-          </details>
-        )}
+        <SourceSequence action={action} />
       </details>
       {inspect && <button onClick={() => inspect(e)}>Inspect evidence</button>}
     </article>

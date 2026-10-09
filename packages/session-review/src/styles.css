@@ -1212,3 +1212,45 @@ dialog::backdrop {
 .thread-read .conversation-pair {
   align-items: start;
 }
+
+.type-ask {
+  --type-color: var(--event-ask);
+}
+.type-compaction {
+  --type-color: var(--event-compaction);
+}
+.type-wait {
+  --type-color: var(--event-wait);
+}
+.type-code-mode {
+  --type-color: var(--event-code-mode);
+}
+:root {
+  --event-ask: #536ab5;
+  --event-compaction: #94619a;
+  --event-wait: #64748b;
+  --event-code-mode: #128275;
+}
+.question-exchange,
+.web-results {
+  margin: 16px 0;
+}
+.question-exchange h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+.question-options {
+  padding-left: 22px;
+}
+.question-options li {
+  margin: 8px 0;
+}
+.reply-status,
+.user-answer {
+  padding: 12px 14px;
+  border-left: 3px solid var(--event-ask);
+  background: #f5f7fc;
+}
+.omitted-record {
+  color: var(--muted);
+}

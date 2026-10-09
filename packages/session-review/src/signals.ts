@@ -1,6 +1,8 @@
 import type { TraceAction } from './actions.ts';
 export const signalLabels = {
   steering: 'Mid-turn input',
+  compaction: 'Compaction',
+  question: 'User questions',
   rejected: 'Rejected',
   failed: 'Errors',
   'missing-result': 'No recorded result',
@@ -10,6 +12,8 @@ export const signalLabels = {
 export type ReviewSignal = keyof typeof signalLabels;
 export function actionSignals(action: TraceAction): ReviewSignal[] {
   const flags = new Set<ReviewSignal>();
+  if (action.anchor.kind === 'compaction') flags.add('compaction');
+  if (action.anchor.kind === 'ask') flags.add('question');
   for (const event of action.records) {
     const result = /\/(function_call_output|custom_tool_call_output)$/.test(event.sourceType ?? '');
     const output = event.output ?? '';

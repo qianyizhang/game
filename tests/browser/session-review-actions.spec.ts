@@ -151,6 +151,98 @@ test.beforeAll(async () => {
     }),
     result('parallel', 'Batch completed'),
 
+    call(
+      'ask',
+      'request_user_input_async',
+      JSON.stringify({
+        questions: [
+          {
+            title: 'Keep the case unfinished?',
+            options: ['Keep unfinished (recommended)', 'Change scope'],
+          },
+        ],
+      }),
+    ),
+    native({
+      type: 'AgentMessage',
+      id: 'ask',
+      phase: 'final_answer',
+      delivery: 'async',
+      questions: [
+        {
+          title: 'Keep the case unfinished?',
+          options: ['Keep unfinished (recommended)', 'Change scope'],
+        },
+      ],
+      content: [{ type: 'Text', text: 'Keep the case unfinished?' }],
+    }),
+    result('ask', JSON.stringify({ accepted: true })),
+    call(
+      'answered',
+      'request_user_input',
+      JSON.stringify({
+        questions: [
+          {
+            id: 'scope',
+            question: 'Which scope?',
+            options: [{ label: 'Narrow', description: 'Limit the scope.' }, { label: 'Broad' }],
+          },
+        ],
+      }),
+    ),
+    result('answered', JSON.stringify({ answers: { scope: { answers: ['Narrow'] } } })),
+    { type: 'event_msg', payload: { type: 'token_count' } },
+    native({ type: 'Reasoning', summary_text: ['PRIVATE_GAP_CONTENT'] }),
+    {
+      type: 'response_item',
+      payload: { type: 'reasoning', encrypted_content: 'PRIVATE_ENCRYPTED' },
+    },
+    call(
+      'web-code',
+      'exec',
+      'text(await tools.web__run({open:[{ref_id:"https://example.com/source"}]})); text((await tools.exec_command({cmd:"process data"})).output)',
+    ),
+    native({
+      type: 'Extension',
+      id: 'native-web',
+      kind: 'web.search',
+      query: 'https://example.com/source',
+      action: { type: 'openPage', url: 'https://example.com/source' },
+      results: [
+        {
+          title: 'Source dataset',
+          url: 'https://example.com/source',
+          snippet: 'Dataset description',
+        },
+      ],
+    }),
+    native({
+      type: 'CommandExecution',
+      id: 'native-process',
+      command: ['/bin/zsh', '-lc', 'process data'],
+      exit_code: 0,
+      aggregated_output: 'PROCESSED',
+    }),
+    result('web-code', 'Web and processing completed'),
+    {
+      type: 'compacted',
+      timestamp: '2026-10-09T00:00:30Z',
+      payload: {
+        window_number: 2,
+        message: 'PRIVATE_COMPACTION_SUMMARY',
+        replacement_history: [{ private: 'DO_NOT_EXPORT' }],
+      },
+    },
+    {
+      type: 'event_msg',
+      payload: {
+        type: 'item_completed',
+        turn_id: 'turn',
+        started_at_ms: Date.parse('2026-10-09T00:00:29Z'),
+        completed_at_ms: Date.parse('2026-10-09T00:00:31Z'),
+        item: { type: 'ContextCompaction', id: 'compaction' },
+      },
+    },
     usage,
     message(
       'assistant',
@@ -236,7 +328,9 @@ test('parallel MCP reads join shell executions and present a chat overview inste
   page,
 }, info) => {
   await page.goto(url + '#view=events');
-  const batch = page.locator('#event-list > article').filter({ has: page.locator('.batch-count') });
+  const batch = page
+    .locator('#event-list > article')
+    .filter({ has: page.locator('.batch-count', { hasText: 'parallel' }) });
   await expect(batch).toHaveCount(1);
   await expect(batch.locator('.batch-count')).toHaveText('4 parallel tool calls · 3 shell + 1 MCP');
   await batch.locator(':scope > details > .action-summary').click();
@@ -256,4 +350,47 @@ test('parallel MCP reads join shell executions and present a chat overview inste
   await page.getByLabel('Raw text', { exact: true }).uncheck();
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('questions distinguish delivery from answers, mixed code mode preserves order, and compaction is visible', async ({
+  page,
+}, info) => {
+  await page.goto(url + '#view=events');
+  const cards = page.locator('#event-list > article');
+  const ask = cards
+    .filter({ has: page.locator('.type-ask') })
+    .filter({ hasText: 'Keep the case unfinished?' });
+  await expect(ask).toHaveCount(1);
+  await ask.locator(':scope > details > summary').click();
+  await expect(ask.locator('.question-exchange')).toContainText('No linked user reply recorded');
+  await expect(ask.locator('.question-exchange')).toContainText('not a user selection');
+  await expect(page.locator('#event-list .type-response')).toHaveCount(1);
+  const answered = cards
+    .filter({ has: page.locator('.type-ask') })
+    .filter({ hasText: 'Which scope?' });
+  await answered.locator(':scope > details > summary').click();
+  await expect(answered.locator('.user-answer')).toHaveText('User replyNarrow');
+  const code = cards.filter({ has: page.locator('.type-code-mode') });
+  await expect(code).toHaveCount(1);
+  await expect(code.locator('.batch-count')).toHaveText('2 sequential tool calls');
+  await code.locator(':scope > details > summary').click();
+  await expect(code.locator('.execution-pair').first()).toContainText('Source dataset');
+  await expect(code.locator('.execution-pair').nth(1)).toContainText('PROCESSED');
+  await code.locator('.source-sequence > summary').click();
+  await expect(code.locator('.source-sequence')).toContainText('3 hidden records before this step');
+  await expect(code.locator('.source-sequence')).toContainText(
+    'Private reasoning record · content excluded',
+  );
+  await expect(code.locator('.source-sequence')).toContainText('Usage bookkeeping');
+  const compaction = cards.filter({ has: page.locator('.type-compaction') });
+  await expect(compaction).toHaveCount(1);
+  await expect(compaction).toContainText('window 2');
+  await expect(compaction).toContainText('2.0 s');
+  await page
+    .getByRole('navigation', { name: 'Review signals' })
+    .getByRole('button', { name: 'Compaction 1', exact: true })
+    .click();
+  await expect(page.locator('#event-count')).toHaveText('1 actions');
+  await expect(page.locator('body')).not.toContainText('PRIVATE_COMPACTION_SUMMARY');
+  await page.screenshot({ path: info.outputPath('compaction.png'), fullPage: true });
 });

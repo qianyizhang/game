@@ -6,6 +6,7 @@ The React frontend for local session navigation and curated artifact review. The
 - `src/data-source.ts` provides embedded bodies and byte-pinned local HTTP blocks through one record interface. Source files remain read-only.
 - `src/state.ts` owns restorable URL state. `context.tsx` builds shared indexes.
 - `conversation.tsx` and `action-view.tsx` share `records.tsx`, the bounded record reader and semantic renderer. `minimap.tsx` follows actual card geometry, including lazy loads and expansion.
+- `native-records.tsx` presents question/reply exchanges and web results; `source-sequence.tsx` explains interleaving and excluded records without exposing private content.
 - `story.tsx`, `process.tsx`, `compare.tsx`, `evidence.tsx` and `sources.tsx` own curated review and provenance.
 - `styles.css` supplies the neutral visual system and the single semantic event palette. Native controls and a modal dialog provide keyboard behavior without a second component framework.
 
