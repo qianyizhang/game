@@ -19,9 +19,9 @@ Use the pinned Node/npm runtime with `nvm use`, and Python from `.python-version
 
 For maintenance, script changes, documentation placement, cleanup or check coverage, read
 [maintenance governance](docs/engineering/maintenance.md). New source must enter an
-enforced check scope; the explicit migration inventory is existing debt, not an exemption
-for new files. `npm run check:maintenance` verifies the first slice; `npm run check`
-also runs the existing full application gate. Report those scopes separately.
+enforced check scope. `npm run check:maintenance` verifies maintained tooling and static
+checks; `npm run check` also runs application/geometry tests and seeded simulations.
+Report those scopes separately.
 
 Before using the installed review skills, read [their project mapping](docs/engineering/agent-skills.md).
 It maps upstream document names to this repository's homes and records the pinned source.

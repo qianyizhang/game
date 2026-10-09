@@ -17,19 +17,6 @@ export function managedSource(path) {
   );
 }
 
-/** @param {unknown} value @returns {string[]} */
-function stringList(value) {
-  if (!Array.isArray(value)) throw new Error('Inventory must contain path arrays');
-  /** @type {string[]} */
-  const paths = [];
-  for (const item of value) {
-    if (typeof item !== 'string') throw new Error('Inventory path must be a string');
-    paths.push(item);
-  }
-  if (new Set(paths).size !== paths.length) throw new Error('Duplicate inventory paths');
-  return paths;
-}
-
 /** @param {unknown} value @returns {Record<string, unknown>} */
 function record(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value))
@@ -37,31 +24,21 @@ function record(value) {
   return /** @type {Record<string, unknown>} */ (value);
 }
 
-/** @param {string} root @param {string[]} files @param {string[]} pending @param {string[]} legacyDocs */
-export function checkInventory(root, files, pending, legacyDocs) {
+/** Every maintained source and document must have an enforced home. @param {string[]} files */
+export function checkInventory(files) {
   const errors = [];
   const source = /\.(?:[cm]?js|tsx?|py)$/;
   for (const path of files) {
     if (path.startsWith('.agents/skills/')) continue;
-    if (source.test(path) && !managedSource(path) && !pending.includes(path))
-      errors.push(
-        `Unmanaged source: ${path}. Add checker coverage; do not extend the migration backlog.`,
-      );
+    if (source.test(path) && !managedSource(path))
+      errors.push(`Unmanaged source: ${path}. Add checker coverage.`);
     const ownedDocument =
       ['AGENTS.md', 'README.md', 'docs/README.md'].includes(path) ||
       /^docs\/(guide|engineering|art|research)\//.test(path) ||
       /^packages\/[^/]+\/(?:.*\/)?README\.md$/.test(path) ||
       path.startsWith('skills/');
-    if (path.endsWith('.md') && !ownedDocument && !legacyDocs.includes(path))
-      errors.push(`Document has no theme home: ${path}`);
+    if (path.endsWith('.md') && !ownedDocument) errors.push(`Document has no theme home: ${path}`);
   }
-  for (const path of [...pending, ...legacyDocs])
-    if (!files.includes(path) && existsSync(resolve(root, path)))
-      errors.push(`Inventory path is ignored rather than migrated: ${path}`);
-    else if (!existsSync(resolve(root, path)))
-      errors.push(`Remove migrated inventory entry: ${path}`);
-  for (const path of pending)
-    if (managedSource(path)) errors.push(`Managed source remains in migration backlog: ${path}`);
   return errors;
 }
 
@@ -95,17 +72,6 @@ export function checkNativeHydration(root, files) {
 
 /** @param {string} root */
 export function checkGovernance(root) {
-  /** @type {unknown} */
-  const parsed = JSON.parse(readFileSync(resolve(root, 'maintenance/migration.json'), 'utf8'));
-  if (
-    !parsed ||
-    typeof parsed !== 'object' ||
-    !('pendingSources' in parsed) ||
-    !('legacyDocs' in parsed)
-  )
-    throw new Error('Invalid migration inventory');
-  const pending = stringList(parsed.pendingSources);
-  const legacy = stringList(parsed.legacyDocs);
   const files = [
     ...new Set(
       execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z'], {
@@ -116,10 +82,7 @@ export function checkGovernance(root) {
         .filter((path) => path && existsSync(resolve(root, path))),
     ),
   ];
-  const errors = [
-    ...checkInventory(root, files, pending, legacy),
-    ...checkNativeHydration(root, files),
-  ];
+  const errors = [...checkInventory(files), ...checkNativeHydration(root, files)];
   const expectedNode = readFileSync(resolve(root, '.node-version'), 'utf8').trim();
   if (process.versions.node !== expectedNode)
     errors.push(
@@ -168,8 +131,6 @@ export function checkGovernance(root) {
   }
   return {
     managedSources: files.filter(managedSource).length,
-    pendingSources: pending.length,
-    legacyDocs: legacy.length,
     errors,
   };
 }

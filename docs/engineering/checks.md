@@ -11,7 +11,7 @@ Use the exact Node/npm pins through `nvm use`, and the Python pin through `uv`. 
 | `npm run maintenance -- inventory` | Read-only file occurrences, hashes, source/asset classifications and tracked-text references                                                   |
 | `npm run maintenance -- prune`     | Current retention eligibility, without deletion                                                                                                |
 
-The migration inventory is empty; all maintained source has enforced check coverage. Passing the maintained slice alone does not establish a green application or browser suite. Local verification does not establish a remote CI result or aesthetic acceptance. The [testing policy](testing.md) defines which behaviors deserve tests and which surface to use; these command contracts describe execution scope.
+All maintained source must have enforced check coverage; the inventory gate has no migration exemptions. Passing the maintained slice alone does not establish a green application or browser suite. Local verification does not establish a remote CI result or aesthetic acceptance. The [testing policy](testing.md) defines which behaviors deserve tests and which surface to use; these command contracts describe execution scope.
 
 ## Adopted static-check scope
 

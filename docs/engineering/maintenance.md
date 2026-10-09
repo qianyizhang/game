@@ -1,25 +1,21 @@
 # Maintenance governance
 
-The maintenance direction was accepted on 2026-10-07. The [completed migration](maintenance-migration.md) adopted the original backlog and passed full local, clean-checkout, browser and native verification. New maintained source must have enforced checks. The [migration inventory](../../maintenance/migration.json) is empty; new work must enter enforced scopes rather than extend a directory-wide exemption.
+Every maintained source must enter an enforced check scope. The inventory gate rejects uncovered files and documentation outside canonical homes; it has no migration exemptions. [Migration and cleanup history](cleanup-triage.md) records the completed 2026-10-07 work and original-source recovery.
 
 ## Check scope and finish line
 
-`npm run check:maintenance` enforces formatting for the new homes and tools, typed ESLint and strict JavaScript/TypeScript checking for the tools package, DCC frontend and delivery CLI, and all application, geometry and experiment sources under `src`, browser/simulation tests and root TypeScript configuration, Ruff and strict mypy for all DCC native Python and contract/tests, tooling/trace/DCC tests, inventory and local document links, root TypeScript checking and a production build. The GitHub workflow runs the full application gate and full browser suite. Private trace cases explicitly skip when private local inputs are absent; synthetic trace cases still run. Native Blender verification stays local because its authoring runtime is not a frontend/CI dependency.
+Use [verification contracts](checks.md) for gate coverage, CI, browser/native execution and geometry budgets. Run `npm run check:maintenance` for maintained tooling and static checks; `npm run check` also runs application/geometry tests and seeded simulations. Report those scopes separately. Technical checks do not establish aesthetic acceptance.
 
-`npm run check` adds whole-repository formatting and the full application/geometry Vitest suite and seeded simulation checks. A green maintenance slice does not establish a green application suite or aesthetic acceptance. The two gates retain distinct scopes; full migration closeout also requires browser/native evidence and clean-checkout validation.
+Use `nvm install && nvm use`, hydrate native binaries with `git lfs install --local` and `git lfs pull`, then run `npm ci` and `uv sync --locked`. Runtime versions come from [`.node-version`](../../.node-version), [`.python-version`](../../.python-version) and [`package.json`](../../package.json); dependency versions come from the lockfiles. Git LFS follows the [native storage decision](decisions/0004-native-asset-storage.md); the inventory check names unhydrated binaries before delivery validation.
 
-All Python files under `packages/dcc-workbench/blender` are checked. Native scripts retain Python 3.11 syntax for Blender 4.5 while the standalone checker uses pinned Python 3.12. Generated stubs need four documented assignment exceptions: Workbench and Cycles engine enums, and the sRGB and Non-Color image color-space names. Native rendering and isolated construction exercise these calls. There is no blanket missing-import or untyped-file suppression.
+Upgrade TypeScript and typed ESLint together when peer support and repository checks agree. Native scripts retain Python 3.11 syntax for Blender 4.5; standalone checks use the pinned Python runtime. Four Blender-stub assignment exceptions cover Workbench/Cycles engine enums and sRGB/Non-Color color-space names. Native rendering and isolated construction exercise these calls; there is no blanket missing-import or untyped-file suppression.
 
-The supported stack is **Node 24.21.0 LTS, npm 11.19.0, Python 3.12.13 and TypeScript 6.0.3**. Node/npm engines are enforced; `.node-version` and `.nvmrc` agree. Use `nvm install && nvm use`, hydrate native binaries with `git lfs install --local` and `git lfs pull`, then run `npm ci` and `uv sync --locked`. Git LFS is required by the [accepted native storage decision](decisions/0004-native-asset-storage.md); the maintenance check names unhydrated pointer files before delivery validation. The existing Blender 4.5 authoring runtime remains separate; its scripts retain compatibility with its embedded Python.
-
-TypeScript 7.0.2 is upstream stable, but `typescript-eslint@8.71.1` supports versions below 6.1. TypeScript 6.0.3 is the newest compatible stable patch and is pinned alongside typed ESLint. Upgrade this pair only when peer support and repository checks agree. Do not use preview compilers, force peer dependencies, or create separate compiler versions for lint and build.
-
-## Source ownership and migration
+## Source ownership
 
 - The application owns rules, content, sessions and presentation. Game rules remain browser-independent and seeded.
 - `@card-workshop/tools` owns maintenance commands. Future script families move into this workspace with documented inputs, outputs, dependencies and meaningful tests.
 - `@card-workshop/dcc-workbench` owns Blender authoring and asset delivery. Its editable artist source is independent of rebuild recipes.
-- Each migration removes its exact paths from the backlog and adds executable check coverage. New files outside covered scopes fail the inventory gate. Expanding the backlog is a policy change requiring a stated reason in review.
+- Moves and new files must enter the owning checker scopes in the same change.
 - Preserve concurrent changes. Record starting status and source hashes, edit only the slice, and report the owned delta. Do not reset or broadly stage the worktree.
 - A move or formatting change can change experiment source pins and asset receipts. Preserve historical reports, hashes, rules versions and frozen environments. Validate new outputs as new results; never rewrite old evidence to match current code.
 
@@ -27,7 +23,9 @@ TypeScript 7.0.2 is upstream stable, but `typescript-eslint@8.71.1` supports ver
 
 `docs/README.md` is the entry point. `guide/` owns current user behavior; `engineering/` owns architecture, maintenance and decisions; `art/` owns visual standards and asset records; `research/` owns mechanics, experiment protocols and findings. Package READMEs own their commands and integration contracts.
 
-Original paths and hashes are preserved in the [documentation migration record](documentation-migration.md). New top-level review or completion documents fail the gate. Consolidate duplicate descriptions, then update inbound links in the same slice. Keep one authoritative rulebook. Durable documents describe current contracts or explicitly dated research, not a transcript of work.
+Original paths and hashes are preserved in the [document migration record](../../maintenance/document-migration.json); [cleanup history](cleanup-triage.md#source-recovery) explains recovery. New top-level review or completion documents fail the gate. Consolidate duplicate descriptions, then update inbound links in the same slice. Keep one authoritative rulebook. Durable documents describe current contracts or explicitly dated research, not a transcript of work.
+
+Before removing a script, inspect imports, npm commands, CI, documentation and frozen reproduction callers. Retain a historical source pin at its recorded revision. Before removing a dated report, preserve its lasting conclusions and an exact Git recovery reference. Update callers and verify the affected behavior in the same change.
 
 ## Retention and deletion authority
 
@@ -52,5 +50,3 @@ The DCC review renderer writes four PNGs into a fresh run directory and closes i
 - Weekly: review dependency-update PRs. npm and GitHub Actions are configured; review Python pins and regenerate `uv.lock` deliberately.
 - Monthly: execute the guarded local cleanup. Notify on actual deletion, failed checks or required user decisions; stay quiet when nothing is actionable.
 - Per completed session: promote lasting conclusions, resolve or hand off open work, then explicitly close temporary notes. Close a completed handoff only after its durable promotion is committed and its retained files are hashed.
-
-CI uses the same exact Node/Python version files as local checks; tools are pinned in npm and uv locks. Native Blender remains an authoring dependency, not a frontend-build dependency. Local browser and Blender launches follow the macOS execution rules in `AGENTS.md`.

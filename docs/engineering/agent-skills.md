@@ -32,3 +32,9 @@ The wider ticket orchestration suite and tracker setup are not installed. No ext
 | Agent instructions or skills change                                                  | `writing-for-agents`            | Keep conditional pointers short and each rule in one authoritative home                               |
 
 The [testing policy](testing.md) governs test selection and replacement. Upstream prompts about adding checks do not imply adding unit tests for every file. Retro findings about test usefulness require behavior review; formatting, lint and types already enforce mechanical requirements.
+
+## Docs and scripts cleanup
+
+There is no dedicated cleanup skill installed. `writing-for-agents` supplies document pruning guidance; `retro` reviews session friction, and `improve-codebase-architecture` reviews module boundaries. None replaces checking whether a command or historical record still has consumers.
+
+For a cleanup request, use [maintenance governance](maintenance.md): inspect concurrent edits and callers, consolidate each contract into its owning document, preserve recoverable provenance before retiring dated reports, update inbound links, and run the relevant checks. Keep pinned upstream skill files unchanged.
