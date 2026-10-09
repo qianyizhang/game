@@ -301,9 +301,10 @@ async function buildInto({
     documents,
     media,
   };
+  const { stages: episodes, artifacts: revisions, ...recorded } = data;
   await writeFile(
     resolve(output, 'index.html'),
-    await renderReview({ ...data, curation: { episodes: stages, artifacts } }),
+    await renderReview({ ...recorded, curation: { episodes, artifacts: revisions } }),
   );
   await writeFile(
     resolve(output, 'manifest.json'),

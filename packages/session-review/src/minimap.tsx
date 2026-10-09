@@ -38,6 +38,9 @@ function useViewport(list: RefObject<HTMLDivElement | null>, actions: TraceActio
     };
     const observer = new ResizeObserver(schedule);
     observer.observe(root);
+    // Request bodies and folded context above the list can move every card without resizing it.
+    const surface = root.closest('main');
+    if (surface) observer.observe(surface);
     root.querySelectorAll(':scope > article').forEach((row) => observer.observe(row));
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
@@ -81,7 +84,7 @@ export function Minimap({
     <aside id={id} className="minimap-panel">
       {children}
       <div className="section-heading">
-        <h3>On this page</h3>
+        <h3>Action map</h3>
         <span className="small">{actions.length} actions</span>
       </div>
       <div className="action-minimap" aria-label="Action minimap">

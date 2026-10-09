@@ -2,7 +2,14 @@ import { useEffect, useMemo, useRef } from 'react';
 import type { RecordedTurn, TraceEvent } from './contracts.ts';
 import { useReview } from './context.tsx';
 import { AgentOptions, Help, Pager } from './ui.tsx';
-import { ActionCard, RecordText, RichText, actionKind, recordType } from './records.tsx';
+import {
+  ActionCard,
+  RecordBody,
+  RecordText,
+  RichText,
+  actionKind,
+  recordType,
+} from './records.tsx';
 import { Minimap } from './minimap.tsx';
 const size = 20;
 function response(turn: RecordedTurn, visible: (event: TraceEvent) => boolean) {
@@ -23,10 +30,17 @@ function overviewText(event: TraceEvent) {
   const prose = (objective ?? event.preview).split(/\n\s*<[A-Za-z][\w:.-]*(?:\s[^>]*)?>/)[0].trim();
   return prose || event.title;
 }
+function contextRecord(event: TraceEvent) {
+  return (
+    event.title === 'Recorded message' ||
+    (event.kind === 'request' &&
+      /^# AGENTS\.md instructions for [^\n]+\n\s*<INSTRUCTIONS>/.test(event.text))
+  );
+}
 function TurnPair({ turn, full = false }: { turn: RecordedTurn; full?: boolean }) {
   const { visible } = useReview();
   const requests = turn.events.filter(
-    (e) => visible(e) && ['request', 'goal', 'auto-review'].includes(e.kind),
+    (e) => visible(e) && !contextRecord(e) && ['request', 'goal', 'auto-review'].includes(e.kind),
   );
   const answer = response(turn, visible);
   const final = answer?.messagePhase === 'final_answer' || answer?.title === 'Completion report';
@@ -82,6 +96,7 @@ export function Conversation() {
               a.anchor.turnId === chosen.id &&
               !['request', 'goal', 'auto-review'].includes(a.anchor.kind) &&
               a.anchor !== answer &&
+              !contextRecord(a.anchor) &&
               (state.reviews || a.anchor.kind !== 'auto-review'),
           )
         : [],
@@ -131,6 +146,16 @@ export function Conversation() {
           <div id="turn-pair" className="conversation-pair">
             <TurnPair turn={chosen} full />
           </div>
+          {chosen.events.some(contextRecord) && (
+            <details className="session-context">
+              <summary>
+                Session context ({chosen.events.filter(contextRecord).length} records)
+              </summary>
+              {chosen.events.filter(contextRecord).map((e) => (
+                <RecordBody key={e.key} event={e} />
+              ))}
+            </details>
+          )}
           <div className="section-heading">
             <h3>Work in this turn</h3>
             <label>

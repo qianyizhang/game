@@ -389,6 +389,8 @@ test.describe('conversation overview and turn inspection', () => {
       const row = (type, payload) => ({type, payload, timestamp:'2026-10-09T01:00:00Z'});
       const message = (role, text, phase) => row('response_item', {type:'message',role,phase,content:[{type:'input_text',text}]});
       const rows = [row('session_meta',{id:'conversation-fixture'}), row('turn_context',{turn_id:'first'}),
+        message('user','# AGENTS.md instructions for /fixture\\n<INSTRUCTIONS>\\nCONTEXT_ONLY_MARKER\\n</INSTRUCTIONS>'),
+        message('developer','<app-context>\\nSYSTEM_CONTEXT_MARKER\\n</app-context>'),
         message('user','Repair **the wing**.\\n\\n<INSTRUCTIONS>\\n## Local context\\nThese manually wrapped\\nlines should read as one paragraph.\\n\\n<environment_context>\\nFolded context details.\\n</environment_context>\\n\\n' + 'Long context '.repeat(350) + 'CONTEXT_TAIL\\n</INSTRUCTIONS>'),
         message('assistant','Inspecting the attachment.','commentary'),
         row('response_item',{type:'custom_tool_call',name:'functions.exec',call_id:'batch',input:'const results=await Promise.allSettled([tools.exec_command({cmd:"node check.js"})]);results.forEach(r=>text(r));'}),
@@ -420,10 +422,19 @@ test.describe('conversation overview and turn inspection', () => {
     await expect(page.locator('#conversation-list > article')).toHaveCount(20);
     const first = page.locator('#conversation-list > article').first();
     await expect(first).toContainText('Assistant response · final');
+    await expect(first).not.toContainText('CONTEXT_ONLY_MARKER');
     await expect(first).toContainText('+1 further user messages');
     await expect(first.locator('strong')).toContainText(['the wing', 'Attachment repaired.']);
+    await page.getByLabel('About conversation search', { exact: true }).hover();
+    await expect(
+      page.getByRole('tooltip').filter({ hasText: 'Filters turns by words' }),
+    ).toBeVisible();
     await first.getByRole('button', { name: 'Inspect turn' }).click();
     await expect(page.locator('#turn-pair')).toContainText('Keep the existing silhouette.');
+    await expect(page.locator('#turn-work')).not.toContainText('SYSTEM_CONTEXT_MARKER');
+    await page.getByText('Session context (2 records)', { exact: true }).click();
+    await expect(page.locator('.session-context')).toContainText('CONTEXT_ONLY_MARKER');
+    await page.getByText('Session context (2 records)', { exact: true }).click();
     await expect(page.locator('#conversation-count')).toBeHidden();
     await expect(page.locator('#turn-pair table')).toContainText('13 / 205');
     await expect(page.locator('#turn-pair li')).toHaveCount(2);
@@ -469,10 +480,6 @@ test.describe('conversation overview and turn inspection', () => {
     const coverage = page.locator('#coverage-summary .help-target').first();
     await coverage.focus();
     await expect(coverage.getByRole('tooltip')).toBeVisible();
-    await page.getByLabel('About conversation search', { exact: true }).hover();
-    await expect(
-      page.getByRole('tooltip').filter({ hasText: 'Filters turns by words' }),
-    ).toBeVisible();
 
     await expect(page.locator('#turn-work dt').first()).toHaveText('cmd');
     await expect(page.locator('#turn-work dd').first()).toHaveText('node check.js');

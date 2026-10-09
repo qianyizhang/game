@@ -1064,3 +1064,30 @@ dialog::backdrop {
     flex-wrap: wrap;
   }
 }
+
+.session-context {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: -12px 0 24px;
+  color: var(--muted);
+  background: #fff;
+}
+.session-context[open] {
+  margin-top: 0;
+}
+.search-label > .help-target {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 14px;
+}
+.search-label > .help-target .tooltip {
+  left: auto;
+  right: 0;
+}
