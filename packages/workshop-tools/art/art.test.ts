@@ -29,6 +29,7 @@ await test('package export works outside cwd, writes a standalone catalogue and 
 });
 
 await test('scaffold preserves existing art and refuses destination symlinks and root escapes', async (t) => {
+  await mkdir(fromRoot('test-results'), { recursive: true });
   const root = await mkdtemp(fromRoot('test-results/scaffold-test-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   const path = resolve(root, 'ProofArt.tsx');

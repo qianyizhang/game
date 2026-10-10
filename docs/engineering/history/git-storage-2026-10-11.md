@@ -33,10 +33,12 @@ For a historical LFS file, fetch its replacement revision with `git lfs fetch or
 
 ## Dependency integration and CI
 
-The three action branches supply pinned updates for checkout 7.0.1, upload-artifact 7.0.1 and setup-uv. The development branch supplies React plugin 6.1.2, Vite 8.3.3 and Vitest 5.0.3. Their histories are merged into migrated main before branch retirement.
+The original three action branches supply pinned updates for checkout 7.0.1, upload-artifact 7.0.1 and setup-uv. The development branch supplies React plugin 6.1.2, Vite 8.3.3 and Vitest 5.0.3. Their histories are merged into migrated main before branch retirement. Three subsequent Dependabot branches update upload-artifact to 7.0.2, setup-node to 7.1.0 and setup-uv to 10.2.0, retaining the workflow's pinned runtime versions and inputs.
 
 TypeScript remains **6.0.3** because the current `typescript-eslint` 8.71.1 peer range is `>=4.8.4 <6.1.0`. Node types remain **24.19.1** to match the pinned Node 24 runtime. Dependabot ignores versions beyond those compatibility ceilings; change the compiler ceiling together with its parser when validating a future upgrade.
 
 The existing GitHub maintenance job failed on links to ignored local cleanup receipts. The history document now names them as local code-formatted paths, and the link checker rejects locally present targets outside the repository inventory. A regression exercises this exact failure class. Push checks run on main; pull requests retain their checks without duplicate branch-push runs.
+
+The subsequent clean-checkout run exposed a scaffold test that assumed the ignored `test-results/` directory existed. That test now creates its parent directory before allocating its temporary fixture; retained local evidence is untouched.
 
 Publication requires uploading the historical LFS objects, exact leases for each rewritten remote branch and verification of the final main revision. Local tests and storage checks do not establish successful remote CI; its run and fresh-clone receipts are separate session evidence.
