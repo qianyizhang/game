@@ -1,46 +1,39 @@
 # Last Hearth agent interface and experiments
 
-Last Hearth now supports an external agent process, a public observation contract, structured decision traces and a bounded competitive-policy experiment. This is the first delivery of the [game depth and AI track](roadmap.md). It adds no human coaching interface.
+Last Hearth supports external agent processes, public observation contracts, structured decision traces, and competitive policy experiments ([roadmap](roadmap.md)). Current gameplay uses [tavern spells](../guide/tavern-spells.md) (Hearth v6 / arena v2).
 
-Current gameplay and external-agent episodes use [tavern spells](../guide/tavern-spells.md), Hearth v6 / arena v2. The v5 mechanics and frozen AI experiment below are historical; their experiment runner retains an explicit v5 codec. Old save keys and evidence remain unchanged.
+## Strategic hero contract (rules v5)
 
-## Strategic hero contract and original v5 delivery
+| Hero       | Power                                                                    | Decision                                                       |
+| ---------- | ------------------------------------------------------------------------ | -------------------------------------------------------------- |
+| Archivist  | 1 gold: Return a friendly minion to hand, preserving stats and keywords. | Replay Battlecry, free board space, or protect valuable units. |
+| Oathkeeper | 1 gold: Give a friendly minion permanent +3 Health and Taunt.            | Position attacks and mitigate cleave.                          |
 
-| Hero       | Power                                                                                                             | Decision                                                                        |
-| ---------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| Archivist  | Once per recruitment, pay 1 gold to return a friendly minion to hand, preserving its identity, stats and keywords | Replay a Battlecry, reopen board space, or move a valuable minion out of combat |
-| Oathkeeper | Once per recruitment, pay 1 gold to give a friendly minion +3 Health and Taunt permanently                        | Choose which body takes attacks and where to place it against cleave            |
+Recall transfers existing units without duplicating pool copies. Full hands reject Recall.
 
-Recall transfers the existing unit; it creates no pool copies. It rejects a full hand and consumes the power only after validation. Playing a recalled golden does not reset its already consumed Discover reward. All five heroes use typed `ability` definitions, including the original buff/income powers. The example mod hero also uses this contract; its pack version is now 2.0.0. The seven built-in opponents retain their original three-hero rotation so the environment remains a stable baseline.
+## Information boundary
 
-The original hero delivery advanced Hearth to **rules v5** and a separate save key. Old v4 saves stay stored; importing them is rejected. There is no automatic migration. The checked-in v5 win/loss fixtures reconstruct the original accepted command sequences under the explicit historical v5 codec and retain their terminal outcomes. Blindside and Spire versions are unchanged.
+`src/games/battlegrounds/application/agent.ts` defines policy observations; `src/shared/agent.ts` provides transport contracts.
 
-## Policy information boundary
+| Included in observation                                           | Excluded from observation                                |
+| ----------------------------------------------------------------- | -------------------------------------------------------- |
+| Own hero, gold, health, tier, board, hand, shop, Discover options | Environment seed, PRNG, allocation counters, raw replay  |
+| Public rival names, heroes, health, tiers, and placements         | Rival hands, shops, Discover choices, and current boards |
+| Next opponent's last-seen board/round or ghost snapshot           | Exact pool counts and future recruitment/combat draws    |
+| Last combat summary, damage, and attack count                     | Resolver PRNG and full-state search access               |
+| Rules/content pins and legal commands                             | Debug inspector state                                    |
 
-`src/games/battlegrounds/application/agent.ts` owns the observation. `src/shared/agent.ts` shares transport shapes only.
-
-| Included                                                                    | Excluded                                                        |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Own hero, gold, health, tier, board, hand, shop and Discover choices        | Environment seed, RNG, allocation counter and raw replay        |
-| Public rival names, heroes, health, tiers and placements                    | Rival private hands, shops, Discover choices and current boards |
-| Next opponent's last-seen board and its round, or the public ghost snapshot | Exact shared-pool counts and future recruitment/combat outcomes |
-| Last visible combat's result, damage and attack count                       | Resolver RNG and private full-state search access               |
-| Rules/content pins and legal commands                                       | Workshop debug-inspector state                                  |
-
-Frames are detached JSON data with protocol `card-workshop.agent.v1`, observation schema `hearth.observation.v1`, an accepted-command `step`, and action IDs valid only for that step. Legality is checked through native recruitment rules. The end-recruitment menu check avoids resolving a hypothetical full lobby. Regression tests compare this menu with authoritative transitions, including pending Discover and terminal phases.
-
-This is an explicit information contract for trusted policy implementations, not a security sandbox for hostile code. Evaluators can access full state to check invariants; policies receive only detached frames. External policy processes should receive stdout from the server, not its evaluator output directory or environment seed.
+Frames use protocol `card-workshop.agent.v1` and schema `hearth.observation.v1`. Action IDs are valid only for the returned `step`.
 
 ## External JSON-lines protocol
 
-Start a fresh environment from the repository root:
+Launch the environment from the repository root:
 
 ```sh
 node packages/workshop-tools/hearth/agent.ts MY-ENVIRONMENT-SEED test-results/agents/my-run
-# Interactive use is also available through npm run engine:hearth.
 ```
 
-The process sends one `ready` response immediately. Stdout contains JSON lines only when invoked directly with Node; diagnostics go to stderr. Each request receives one response. Optional string `id` values are echoed for correlation.
+The process emits a `ready` line on stdout. Requests receive matched JSON responses:
 
 ```json
 {"id":"read","op":"observe"}
@@ -49,19 +42,17 @@ The process sends one `ready` response immediately. Stdout contains JSON lines o
 {"id":"done","op":"quit"}
 ```
 
-`observe` returns the current frame. `catalogue` returns public hero/minion/spell definitions and content pins. To act, choose an ID from the current frame's action list. Stale steps, unknown actions and malformed requests return errors and do not advance the environment. The server accepts requests up to 64 KiB per line and at most 10,000 accepted commands per episode, matching the replay codec. `quit` or input EOF writes the evaluator's replay and verification receipt to the separate directory. Existing output directories are rejected.
+- `observe`: Returns the current observation frame.
+- `catalogue`: Returns public hero/minion/spell definitions and content pins.
+- `act`: Executes a command by action ID for the active step.
+- `quit`: Terminates and writes evaluator replay and verification receipts.
 
-Every accepted response includes the next frame and structured `events`: resource deltas; phase/round changes; units entering, leaving, changing stats or changing positions; and combat summaries. Replays continue to contain only authoritative accepted game commands. Process termination before normal shutdown may prevent the final replay write; use the experiment runner for per-decision durable traces.
-
-The protocol test drives an entire external process through a completed lobby, exercises invalid/stale requests and reconstructs the separate evaluator replay. No browser, model provider, account or network connection is needed.
+Accepted actions return the next frame and structured events (resource deltas, phase changes, board movements, and combat results).
 
 ## Policies and search
 
-`heuristic-v1` reuses the readable recruitment heuristic with a pure board-order proposal. `scout-search-v1` uses the same recruitment choices, then compares a bounded neighborhood of board orders using the real combat resolver. Both control seat 0 against the same seven built-in sequential opponents.
-
-The candidate includes the baseline order and current order, then single-unit relocations, capped at **24 orders**. Each order receives **16 common combat samples** from an independent, fixed policy seed: at most **384 combat simulations per positioning decision**. Search applies the real permanent end-recruitment effects to a cloned own board before combat. It maximizes mean damage dealt minus damage taken; exact ties retain the earlier candidate, starting with the baseline.
-
-The candidate conditions on the opponent's last-seen board. It does not infer their purchases, sample hidden shops, or read the live environment RNG. Unknown boards fall back to baseline positioning. Estimates report wins/ties/losses and damage for those conditional samples; they are not live lobby win probabilities. Planned orders execute through ordinary adjacent-move commands. Accepted actions alone update policy memory.
+- `heuristic-v1`: Evaluates recruitment choices using baseline valuation and fixed board ordering.
+- `scout-search-v1`: Uses baseline recruitment, then searches up to 24 board order candidates (current, baseline, and single-unit relocations). Evaluates candidates against the opponent's last-seen board using 16 seeded combat rollouts (max 384 rollouts per round), maximizing mean damage margin.
 
 ## Reproducible experiment
 
@@ -70,28 +61,11 @@ npm run experiment:hearth -- development test-results/ai/my-development
 npm run experiment:hearth -- evaluation test-results/ai/my-evaluation
 ```
 
-The runner freezes its manifest before executing. Five development seeds and twenty separate reserved evaluation seeds rotate the five heroes; every seed/hero runs both policies. The default command budget is 2,000 per episode. Configuration is checked in at `packages/workshop-tools/hearth/experiment.ts`. The npm command invokes this implementation directly.
+Outputs:
 
-Each output directory contains:
+- `manifest.json`: Cohort configs, policy digests, and Git/Node provenance.
+- `decisions.jsonl`: Policy inputs, selected commands, structured events, rollout estimates, and timing.
+- `replay.json` & `receipt.json`: Authoritative accepted commands and state reconstruction.
+- `comparison.json`: Matched pairs, mean placements, win/tie/loss counts, and compute totals.
 
-- `manifest.json`: both cohort definitions, policy configuration digest, source revision/status, SHA-256 source digests and Node runtime.
-- Per-run `decisions.jsonl`: the exact public policy input, selected command/action, structured events, candidate order estimates, simulation count and measured decision time.
-- Per-run `replay.json` and `receipt.json`: accepted commands, content pins, terminal outcome or retained failure/limit, compute totals and exact reconstruction result.
-- `comparison.json`: matched pairs, exclusions, mean placement, candidate-better/tied/worse counts, sample standard error of paired placement differences, top-four and first-place denominators, and total policy compute.
-
-Lower placement is better; reported improvement is **baseline placement minus candidate placement**. Missing, duplicated, incomplete, unverified or mismatched pairs are excluded explicitly. The evaluator checks finite-pool conservation after every accepted action and reconstructs every final replay. Repeated runs preserve earlier output directories.
-
-Development results may guide revisions. Once evaluation results are inspected, those seeds are no longer unseen for subsequent tuning; a new reserved cohort is needed for a fresh claim. Matching seeds does not force matching randomness after policies take different actions. This experiment measures performance against fixed local bots from one seat; it is not head-to-head play, self-play, original-game parity or evidence of human enjoyment.
-
-## Further improvements
-
-1. Compare recruitment investment timing and immediate-strength choices, keeping released policies frozen.
-2. Separate opponent-model error from formation-search error using labelled evaluator-only diagnostics.
-3. Extend the eight-seat arena with additional opponent leagues and compute-matched search policies.
-4. Apply the observation/protocol shape to Blindside and Spire while retaining game-owned mechanics.
-
-Verification is recorded in [completion evidence](../research/delivery-history.md). The [initial experiment](../research/experiments/2026-10-04-hearth-ai-v1.md) completed all 50 lobbies; search did not demonstrate a mean-placement improvement on the reserved cohort, so the baseline is retained.
-
-## Eight-seat arena follow-up
-
-[Mixed Rivals and the arena](../guide/hearth-arena.md) add per-seat controllers, complete-lobby resolution, rotating recruitment priority and explicit rival preferences. The inspector always exposes configured styles; policy observations independently hide or disclose them. Arena journals record all seats and use a separate versioned envelope, preserving historical Classic v5 evidence. [The arena experiment](../research/experiments/2026-10-04-hearth-arena-v1.md) compares recruitment policy and disclosure across all eight seat positions with fresh reserved seeds.
+See [delivery history](../research/delivery-history.md) and [initial experiment](../research/experiments/2026-10-04-hearth-ai-v1.md) for results. [Mixed Rivals](../guide/hearth-arena.md) extends this with an 8-seat policy arena.

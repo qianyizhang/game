@@ -1,116 +1,102 @@
 # Native 3D asset migration
 
-Accepted direction, 2026-10-08: refine and manage principal 3D assets as editable Blender sources, then make parent-accepted GLBs the corresponding study defaults in the existing gallery. Preserve subject identity and strong gestures while allowing substantial reconstruction. Creature delivery includes an editable rig and a fitted idle loop. Original SVG game cards retain their current role.
-
-The user also accepted **selective reconstruction** and **desktop-first delivery** on 2026-10-08. Preserve good existing geometry, including triangulated imports, and rebuild regions where refinement or deformation requires it. Demonstrate meaningful native editability for each migrated subject; a native file extension alone is insufficient. Prioritize desktop gallery quality, retain phone-width framing and interaction checks, and treat optimized phone deliveries and measured physical-device performance as later work. Do not reinterpret viewport checks as a device-performance pass.
-
-The [art rulebook](art-direction.md) owns the visual bar; the [testing policy](../engineering/testing.md) owns coverage choices. This document owns migration responsibilities, promotion and the planned cohort. The directing workflow retains orchestration, visual judgment, shared-tool revision and final integration responsibility. The [delegation protocol](delegation.md) may assign orchestration and art direction to separate agents; its named art director supplies final acceptance. Historical parent-accepted releases retain their meaning and bytes.
+Governs migration of principal 3D gallery assets into editable Blender (`.blend`) sources, with parent-accepted GLBs replacing procedural defaults. Emphasizes selective reconstruction (preserving sound existing geometry) and desktop-first delivery with mobile framing verification. The [art rulebook](art-direction.md) governs the visual bar, and the [testing policy](../engineering/testing.md) sets check scopes.
 
 ## Implementation boundary
 
-The [registry](../../packages/dcc-workbench/registry.json) registers **nine native subjects**: six base assets (`briar-hydra`, `nightjar`, `phoenix`, `stormroc`, `prowler`, `wolf`) and three separately published Wolf forms (`wolf-bloom`, `wolf-elder`, `wolf-thorn`). The Hydra asset maps to study `hydra`; the other base assets keep their matching study IDs. Wolf forms remain selectable variants inside study `wolf`, so the gallery still has 29 studies. Their authoritative sources and briefs live under `subjects/<id>/`. Registry validation, saved-source export, sealed candidates, parent review and immutable publication are implemented. The [pilot record](assets/native-pilots.md), [batch record](assets/native-batch-1.md), [Prowler trial](assets/native-prowler-trial.md), [Wolf trial](assets/native-wolf-trial.md) and [Wolf evolved forms](assets/wolf-evolutions.md) record their distinct acceptance and verification; publication does not confer user art approval.
+The DCC registry ([`packages/dcc-workbench/registry.json`](../../packages/dcc-workbench/registry.json)) registers **nine native subjects**:
 
-## File responsibilities and current layout
+- **Six base assets:** `briar-hydra` (maps to study `hydra`), `nightjar`, `phoenix`, `stormroc`, `prowler`, `wolf`.
+- **Three Wolf variants:** `wolf-bloom`, `wolf-elder`, `wolf-thorn` (selectable within study `wolf`).
 
-| Home                                                   | Responsibility and boundary                                                                                                                                                                                                                             |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `packages/dcc-workbench/registry.json`                 | Stable asset identity, legacy study mapping, explicit inputs/native adapter, delivery profile and owned outputs. A definition declares a contract, not approval.                                                                                        |
-| `subjects/<asset-id>/` within the DCC package          | Current home for each brief and authoritative `source.blend`. Current subjects preserve imported deliveries with selective native reconstruction and no regeneration recipes. Add external source textures or a recipe only when actually needed.       |
-| Existing `sources/`, `briefs/`, `blender/`             | Preserved reconstructed Hydra pilot and its native modules; these are not the new subject masters. Historical paths, receipts and comparison bytes remain unchanged.                                                                                    |
-| DCC `blender/` modules                                 | Proven geometry, fitted anatomy, surfaces, rigs and delivery mechanisms. Subject-specific assumptions stay in an adapter. Add nested modules together with enforced check coverage.                                                                     |
-| DCC `assets/<asset-id>/`                               | Immutable publications contain frozen source, brief, model, native audit, poses, review and receipt. Hydra uses `assets/briar-hydra/current.json`; Nightjar uses `assets/nightjar/published/current.json`. Preserve legacy flat delivery independently. |
-| DCC `references/`                                      | Curated immutable comparisons and their provenance; existing references retain their actual paths under `references/comparison/`. Add subject folders only with actual references.                                                                      |
-| DCC `src/` and gallery `src/art3d/`                    | Inspection and consumer presentation: loading, playback, cameras, light, VFX, simple supports and composition. Runtime must not reconstruct principal anatomy or repair exported skinning.                                                              |
-| `docs/art/assets/`                                     | Concise subject status, consequential revisions, limitations and durable evidence links.                                                                                                                                                                |
-| `.work/sessions/<trial>/`, named `test-results/` roots | Isolated candidate sources, working plans and review evidence under existing retention rules; no automatic promotion to artist authority.                                                                                                               |
+The gallery maintains 29 total studies. Authoritative sources reside in DCC `subjects/<id>/`. Acceptance receipts are documented in [native pilots](assets/native-pilots.md), [batch 1 retrospective](assets/native-batch-1.md), [Prowler trial](assets/native-prowler-trial.md), [Wolf trial](assets/native-wolf-trial.md), and [Wolf evolved forms](assets/wolf-evolutions.md).
 
-The saved `.blend` is the artist source. A recipe creates a starting point or a separately identified rebuild candidate; export reads the saved source without silently regenerating it. State which hand edits a rebuild would replace. Construction curves must be identified as live dependencies or retained guides. Preserve direct native mesh, material, weight and action editing beneath any controls.
+## File responsibilities and layout
+
+| Directory / File                       | Responsibility                                                           |
+| -------------------------------------- | ------------------------------------------------------------------------ |
+| `packages/dcc-workbench/registry.json` | Asset identities, legacy study mappings, inputs, and delivery profiles   |
+| DCC `subjects/<asset-id>/`             | Authoritative `source.blend`, brief, and native adapters                 |
+| DCC `blender/`                         | Reusable geometry modules, surface generators, and rig helpers           |
+| DCC `assets/<asset-id>/`               | Immutable releases: frozen source, GLB model, audit, poses, and receipts |
+| DCC `references/`                      | Curated comparisons and baseline benchmarks                              |
+| Gallery `src/art3d/`                   | Runtime loading, orbit controls, lighting presets, VFX, and downloads    |
+| `docs/art/assets/`                     | Status records, consequential revisions, limits, and evidence links      |
+| `.work/sessions/<trial>/`              | Isolated working candidates and telemetry ledgers                        |
+
+The saved `.blend` file is the sole artist source; exporters read it directly. Direct mesh, modifier, and weight editing must remain functional beneath high-level controls.
 
 ## Authoring layers
 
-| Layer             | Owns                                                                      | Extraction boundary                                                                                                                                                                                                                            |
-| ----------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Subject           | Identity, behavior, silhouette, proportions and assembly                  | Keep choices local to the brief and adapter.                                                                                                                                                                                                   |
-| Semantic assembly | Fitted head, feather region, wing, scale region or supported foot         | Extract when an actual second use proves stable responsibilities. An edit carries its fitted dependents.                                                                                                                                       |
-| Native mechanism  | Mesh/curve operations, remesh, shape keys, constraints, weights and bakes | Prefer Blender capabilities; expose meaningful controls with units, usable ranges and limits.                                                                                                                                                  |
-| Delivery          | Evaluated geometry, embedded materials, supported clips and provenance    | Keep exporter details behind the consumer contract. Static, rigid and skinned interfaces have distinct requirements; `export_saved.py` currently supports rigid/skinned loops and explicitly rejects static assets and animated morph weights. |
-| Frontend          | Presentation, playback, VFX and simple composition                        | Attach through declared capabilities; do not depend on private Blender construction names.                                                                                                                                                     |
+| Layer             | Responsibility                                    | Extraction boundary                                                |
+| ----------------- | ------------------------------------------------- | ------------------------------------------------------------------ |
+| Subject           | Identity, silhouette, and proportions             | Local to brief and adapter                                         |
+| Semantic assembly | Fitted head, feather region, wing, or paw         | Extract when a second subject demonstrates shared utility          |
+| Native mechanism  | Modifiers, shape keys, constraints, and armatures | Native Blender features; expose semantic controls with clear units |
+| Delivery          | Evaluated geometry, materials, and baked loops    | Handled by `export_saved.py` (rigid/skinned loops)                 |
+| Frontend          | Viewing, playback, VFX, and basic framing         | Presentation only; no runtime geometry synthesis                   |
 
-Reuse follows demonstrated variation, not family labels in the inventory. The current native masters expose a fitted Hydra muzzle edit, a fitted Nightjar wing-fold edit and a Phoenix fan-lift edit. These are distinct semantic assemblies using Blender shape keys and parenting; sharing the saved-source exporter does not make them a universal creature generator. The legacy head/scale installers retain their original pilot contracts. Mathematical objects may retain procedural authoring; substantial principal-model generation belongs offline, while particles, glow, instancing and simple presentation composition may remain in the frontend.
+## Promotion lifecycle
 
-## Candidates, releases and promotion
+1. **Candidate Assignment:** Pin exact paths, accepted baselines, and budgets.
+2. **Byte Verification:** Check source, dependency, and model hashes against review captures.
+3. **Delivery Validation:** Verify profile contracts, numeric bounds, and native/consumer agreement.
+4. **Acceptance & Publication:** Parent approval seals an immutable release receipt and atomically updates pointers.
+5. **Consumer Integration:** Switch gallery defaults only for accepted releases with `gallery` review scope.
 
-1. **Assign and freeze.** Give one artist one candidate, exact owned paths, the accepted comparison and the rulebook. Record model/effort and parent interventions. Other concurrent work remains protected; shared modules and publication stay with the parent unless explicitly reassigned.
-2. **Review exact bytes.** Keep source, recipe/dependency and exported-model hashes beside the baseline and review captures. Record views, lighting, time, scale, visible defects and remaining limits. Follow the rulebook's review order rather than duplicating its checklist here. A revised source needs new evidence; old evidence remains unchanged.
-3. **Validate delivery.** Require the selected asset identity, complete declared input pins, profile checks, output hashes and native/consumer agreement. Check local native imports; dynamic inputs require explicit declaration and review. A technically valid candidate can still fail visual review.
-4. **Accept and publish.** Parent acceptance names the exact candidate and evidence. Promotion rechecks source freshness and the expected previous release, then completes an immutable release before atomically changing its pointer. Missing evidence, stale inputs or a competing promotion must leave the previous pointer intact. Release identity covers provenance, not only model bytes; the receipt does not hash itself.
-5. **Integrate the consumer.** Switch that study's gallery default only for an accepted release with `gallery` review scope and successful delivered-file/browser checks. `workbench` scope permits native inspection while retaining the procedural gallery default. Browser mapping uses the reviewed release's frozen study ID; drafts without publications are omitted. Preserve comparisons and recovery paths. Author self-review, parent acceptance, technical verification and user approval remain separate records.
-
-A user-approved direction is not approval of every asset or revision. Parent modeling makes a trial mixed-authorship work and must be recorded. No worker may waive a gate or silently publish its own favorable review.
-
-Keep current delivery and required comparisons usable from a clean checkout without Blender. The user accepted Git LFS for DCC `.blend` and `.glb` binaries on 2026-10-08, before batch migration. Briefs, manifests, receipts, reviews and a curated accepted capture set remain ordinary Git files. Rejected iterations and complete test runs stay in their protected local evidence homes. Hydrate LFS binaries before validation or building; a pointer file is not a usable source or delivery. Existing history is preserved, with no history rewrite. [Maintenance governance](../engineering/maintenance.md#retention-and-deletion-authority) remains the deletion authority: migration, publication and test consolidation do not authorize retiring artist sources, accepted baselines, receipts or concurrent work.
+Git LFS tracks binary `.blend` and `.glb` files. Briefs, manifests, and receipts remain standard Git files. Storage retention follows [maintenance governance](../engineering/maintenance.md#retention-and-deletion-authority).
 
 ## Verification responsibilities
 
-| Surface                  | Protected behavior                                                                                                                                                                                                                     |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Registry and publication | Wrong identity, incomplete input pins, path escapes, cross-asset output collisions, stale or competing publication and recovery of the previous release. Use synthetic failures through the delivery interface.                        |
-| Every offered delivery   | Finite valid geometry, embedded dependencies, profile-appropriate motion/weights, timing and declared budgets. Budgets alone do not establish phone performance.                                                                       |
-| Native editing           | A meaningful edit survives evaluated deformation, save/reload, export and consumer reload while fitted parts stay fitted and published bytes remain unchanged. Exercise claimed new controls at useful extremes and an interior value. |
-| Source/export agreement  | Matching orientation, supported contacts and sampled motion, including extremes. State the sample limits; pose comparisons are not exhaustive animation proof.                                                                         |
-| Browser                  | Every offered asset loads, moves where intended and downloads correctly. Use representatives for shared selection, cancellation, disposal, recording, accessibility and phone behavior.                                                |
-| Parent visual review     | Independent inspection of the actual candidate against matched references under the rulebook. Automated checks and author self-review cannot substitute for this decision.                                                             |
+| Surface                 | Validated behavior                                                              |
+| ----------------------- | ------------------------------------------------------------------------------- |
+| Registry & Publication  | IDs, input pins, cross-asset collisions, atomic promotion, and rollbacks        |
+| Offered deliveries      | Finite geometry, embedded textures, normalized weights, loop timing             |
+| Native editing          | Semantic controls survive deformation, save/reload, and export roundtrip        |
+| Source/Export agreement | Matching orientation, plinth contact, and vertex samples at 5 timestamps        |
+| Browser suite           | Models load, animate, and download correctly across desktop and phone viewports |
+| Visual inspection       | Multi-view review of actual candidate pixels against matched baselines          |
 
-Run `npm run test:dcc:saved -- --asset <id>` for current subject masters. Their brief’s `nativeEdit` declaration specifies a control, minimum/interior/maximum values, and moved/fixed mesh probes. The gate verifies evaluated changes, exact restoration within tolerance, save/reload, export and independent browser samples for rigid and skinned parts at five times; production source and publication bytes remain protected. `test:dcc:native` remains the earlier Hydra reconstruction pilot’s gate. The [package command contract](../../packages/dcc-workbench/README.md#verification-and-provenance) distinguishes these scopes.
+Run native editing tests:
 
-Use disposable source copies for native checks; unavailable Blender means unavailable native verification. Browser launches follow the repository's macOS execution rule and disposable-profile harness. Report maintained checks, application/simulation checks, browser checks and native checks separately. Replace outgoing constructor tests only after recording their protected behavior and demonstrated replacement coverage; preserve delivery checks for every still-offered study.
+```sh
+npm run test:dcc:saved -- --asset <id>
+```
 
-## Pilot and batch gate
-
-The [first batch](assets/native-batch-1.md) completed Phoenix and Storm Roc. Storm Roc required a user-authorized parent continuation after its original delegated adoption trial stopped. The [delegation protocol](delegation.md) preserves those outcomes separately and governs the next bounded subject trial. The subsequent [Prowler trial](assets/native-prowler-trial.md) completed a delegated native tail edit without parent modeling. The subsequent [Wolf trial](assets/native-wolf-trial.md) completed a bounded distal-tail refinement with frozen shared tooling and a disclosed chronology exception. Existing publication and visual acceptance contracts remain in force.
-
-Hydra and Nightjar are the two completed native pilots. Hydra preserves its accepted procedural geometry after two weaker reconstruction rounds; Nightjar selectively reconstructs the wing regions, roost and grip and proves a distinct native wing-control operation. Both are parent-accepted gallery defaults. A small rigid delivery fixture checks the unskinned profile without claiming another authored asset. Both guided artist trials used Sol 6.1 at high effort; the parent retained critique, representation choice, setup revision and integration ownership. After two successive revisions repeat the same dominant defect, reassess the representation or record a parent takeover rather than lowering the bar.
-
-Create a bounded batch goal only after the pilots reach the parent visual bar and complete the native edit-to-consumer loop, more than one identity proves publication isolation, and source/regeneration boundaries are demonstrated. Before expansion, reconcile the cohort and exceptions below, budgets, evidence ownership, clean-checkout availability and stop conditions. A local-origin LFS checkout proved full hydration and delivery checks for the earlier scaffold snapshot; one Hydra object separately passed GitHub upload/download. A complete remote checkout and remote CI remain unverified until the owned changes are committed and pushed. That limitation does not prevent isolated local authoring, but forbids claiming remotely reproducible delivery.
-
-The first bounded batch goal is **complete as of 2026-10-08: Phoenix, then Storm Roc**, completing one subject before starting the next. Preserve each current delivery as its comparison. Use selective reconstruction, an editable rig/idle and a subject-specific native edit; freeze explicit budgets from the measured baseline before authoring. The parent reviews each source and consumer delivery, promotes exact accepted bytes, and revises shared tools only when the second actual use demonstrates a stable abstraction. After these two, record results and decide the next family from the remaining 22 creatures/humanoids. The three props remain deferred below. The [batch record](assets/native-batch-1.md) owns current progress, baseline measurements and the closing retrospective.
-
-Run small groups in dependency order, revising shared tools between them. Stop expansion for repeated visual stagnation, source/evidence mismatch or a shared-tool defect. Completion means each selected subject has editable source, verified delivery, parent visual acceptance and consumer integration, with explicit residual exceptions and protected historical comparisons.
+See the [DCC command contract](../../packages/dcc-workbench/README.md#verification-and-provenance) for details.
 
 ## Planned cohort: 29 existing studies
 
-Inventory basis: [`STUDIES`](../../src/art3d/models.ts), checked on 2026-10-08. **26 creatures/humanoids** comprise **two native pilots, two completed batch subjects, two completed follow-up trials and 20 remaining subjects**; **three object studies are deferred**. Family labels identify likely representation risks and potential second uses, not a mandate to share one generator. Stages describe migration work, not the current artwork's aesthetic standing.
+Inventory from [`STUDIES`](../../src/art3d/models.ts) (26 creatures/humanoids, 3 deferred props):
 
-| Representation / reuse family          | Legacy study ID | Subject           | Migration stage                                                                         |
-| -------------------------------------- | --------------- | ----------------- | --------------------------------------------------------------------------------------- |
-| Serpentine skin and multi-neck rig     | `hydra`         | Briar Hydra       | Native gallery default; parent accepted, user art approval unrecorded                   |
-| Plumage, fitted wings and grips        | `nightjar`      | Nightjar          | Native gallery default; parent accepted, user art approval unrecorded                   |
-| Plumage, fitted wings and grips        | `phoenix`       | Phoenix           | Native gallery default; parent accepted, user art approval unrecorded                   |
-| Plumage, fitted wings and grips        | `stormroc`      | Storm Roc         | Complete: parent-accepted native gallery; direct parent refinement after stopped trial  |
-| Fur, paws, muzzles and antlers         | `prowler`       | Alley Prowler     | Complete: delegated native tail edit; parent-accepted gallery                           |
-| Fur, paws, muzzles and antlers         | `wolf`          | Greatwood Wolf    | Complete: delegated native tail relaxation; parent-accepted gallery                     |
-| Fur, paws, muzzles and antlers         | `matriarch`     | Briar Matriarch   | Queued                                                                                  |
-| Fur, paws, muzzles and antlers         | `thornstag`     | Thorn Stag        | Queued                                                                                  |
-| Fur, paws, muzzles and antlers         | `scavenger`     | Briar Scavenger   | Queued                                                                                  |
-| Fur, paws, muzzles and antlers         | `guardian`      | Nest Guardian     | Queued; digits, whiskers and tail                                                       |
-| Fur, paws, muzzles and antlers         | `stray`         | Briar Stray       | Queued                                                                                  |
-| Fur, paws, muzzles and antlers         | `packcaller`    | Pack Caller       | Queued                                                                                  |
-| Fur, paws, muzzles and antlers         | `cub`           | Briar Cub         | Queued                                                                                  |
-| Amphibian, reptile and shell surfaces  | `bogtoad`       | Bog Toad          | Queued; folded supports and throat                                                      |
-| Amphibian, reptile and shell surfaces  | `crocolisk`     | Ancient Crocolisk | Queued; jaw, armor and tail                                                             |
-| Amphibian, reptile and shell surfaces  | `tortoise`      | Ancient Tortoise  | Queued; shell and fitted bridges                                                        |
-| Thin membranes and articulated wings   | `moonmoth`      | Moon Moth         | Queued; insect wings and twig grips                                                     |
-| Thin membranes and articulated wings   | `amalgam`       | Wild Amalgam      | Queued; quadruped/wing attachment                                                       |
-| Thin membranes and articulated wings   | `imp`           | Coal Imp          | Queued; crouch and bat wings                                                            |
-| Clothed humanoids, faces and equipment | `matron`        | Imp Matron        | Queued; hair and robe                                                                   |
-| Clothed humanoids, faces and equipment | `juggler`       | Soul Juggler      | Queued; retain frontend spirit VFX boundary                                             |
-| Clothed humanoids, faces and equipment | `watcher`       | Pit Watcher       | Queued; cyclopean face and lids                                                         |
-| Clothed humanoids, faces and equipment | `herald`        | Infernal Herald   | Queued; staff grip and robe                                                             |
-| Clothed humanoids, faces and equipment | `patron`        | Abyssal Patron    | Queued; coat and broad face                                                             |
-| Clothed humanoids, faces and equipment | `squire`        | Hearth Squire     | Queued; armor and shield grip                                                           |
-| Clothed humanoids, faces and equipment | `bannerbearer`  | Banner Bearer     | Queued; banner, hair and fitted grips                                                   |
-| Glass vessels and contained liquid     | `catalyst`      | Catalyst          | Deferred: transmission/overlap export and VFX boundary need a prop pilot                |
-| Rigid mathematical shell               | `spiral`        | Spiral            | Deferred: assess offline procedural authoring and fitted mount after creature pilots    |
-| Rigid pierced metal assembly           | `vajra`         | Vajra             | Deferred: assess offline procedural authoring and joined fittings after creature pilots |
-
-Deferred props remain supported legacy studies. They are not permanent frontend exceptions or omitted work; revisit their representation and delivery scope before adding them to a batch.
+| Reuse family            | Study ID       | Subject           | Migration stage                                      |
+| ----------------------- | -------------- | ----------------- | ---------------------------------------------------- |
+| Serpentine & multi-neck | `hydra`        | Briar Hydra       | Native gallery default                               |
+| Plumage & fitted grips  | `nightjar`     | Nightjar          | Native gallery default                               |
+| Plumage & fitted grips  | `phoenix`      | Phoenix           | Native gallery default                               |
+| Plumage & fitted grips  | `stormroc`     | Storm Roc         | Native gallery default (direct parent finish)        |
+| Fur, paws, muzzles      | `prowler`      | Alley Prowler     | Native gallery default (delegated tail edit)         |
+| Fur, paws, muzzles      | `wolf`         | Greatwood Wolf    | Native gallery default (delegated + 3 evolved forms) |
+| Fur, paws, muzzles      | `matriarch`    | Briar Matriarch   | Queued                                               |
+| Fur, paws, muzzles      | `thornstag`    | Thorn Stag        | Queued                                               |
+| Fur, paws, muzzles      | `scavenger`    | Briar Scavenger   | Queued                                               |
+| Fur, paws, muzzles      | `guardian`     | Nest Guardian     | Queued                                               |
+| Fur, paws, muzzles      | `stray`        | Briar Stray       | Queued                                               |
+| Fur, paws, muzzles      | `packcaller`   | Pack Caller       | Queued                                               |
+| Fur, paws, muzzles      | `cub`          | Briar Cub         | Queued                                               |
+| Amphibian & reptile     | `bogtoad`      | Bog Toad          | Queued                                               |
+| Amphibian & reptile     | `crocolisk`    | Ancient Crocolisk | Queued                                               |
+| Amphibian & reptile     | `tortoise`     | Ancient Tortoise  | Queued                                               |
+| Thin membranes          | `moonmoth`     | Moon Moth         | Queued                                               |
+| Thin membranes          | `amalgam`      | Wild Amalgam      | Queued                                               |
+| Thin membranes          | `imp`          | Coal Imp          | Queued                                               |
+| Humanoids & equipment   | `matron`       | Imp Matron        | Queued                                               |
+| Humanoids & equipment   | `juggler`      | Soul Juggler      | Queued                                               |
+| Humanoids & equipment   | `watcher`      | Pit Watcher       | Queued                                               |
+| Humanoids & equipment   | `herald`       | Infernal Herald   | Queued                                               |
+| Humanoids & equipment   | `patron`       | Abyssal Patron    | Queued                                               |
+| Humanoids & equipment   | `squire`       | Hearth Squire     | Queued                                               |
+| Humanoids & equipment   | `bannerbearer` | Banner Bearer     | Queued                                               |
+| Glass & liquid          | `catalyst`     | Catalyst          | Deferred prop                                        |
+| Rigid mathematical      | `spiral`       | Spiral            | Deferred prop                                        |
+| Pierced metalwork       | `vajra`        | Vajra             | Deferred prop                                        |

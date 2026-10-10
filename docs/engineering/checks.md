@@ -1,58 +1,50 @@
 # Verification contracts
 
-Use the exact Node/npm pins through `nvm use`, and the Python pin through `uv`. Browser and Blender launches on this Mac require approved execution outside the restricted sandbox; browser tests use disposable profiles and a once-per-run startup guard.
+Use exact Node/npm pins via `nvm use` and Python via `uv`. Browser and Blender runs on macOS require approved execution outside the restricted sandbox with disposable profiles.
 
-| Command                            | Evidence it provides                                                                                                                           |
-| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run check:maintenance`        | Formatting, lint, types, Python and tests for the adopted maintenance scope, inventory/link checks, and production build                       |
-| `npm run check`                    | The maintained gate plus whole-repository formatting and all application/geometry behavior and regression checks plus seeded simulation checks |
-| `npm run test:browser`             | Browser interaction, persistence, rendering and exported-artifact checks                                                                       |
-| `npm run dcc -- verify`            | Current artist source, recipe and published GLB agree with their receipt                                                                       |
-| `npm run maintenance -- inventory` | Read-only file occurrences, hashes, source/asset classifications and tracked-text references                                                   |
-| `npm run maintenance -- prune`     | Current retention eligibility, without deletion                                                                                                |
+| Command                            | Scope and evidence provided                                                                   |
+| ---------------------------------- | --------------------------------------------------------------------------------------------- |
+| `npm run check:maintenance`        | Formatting, lint, types, Python, tools/DCC tests, inventory/link checks, production build     |
+| `npm run check`                    | Maintained gate, whole-repo format, app behavior/regressions, simulations (excludes geometry) |
+| `npm run check:full`               | Complete check suite including geometry test project                                          |
+| `npm run test`                     | Application tests only; `test:watch` uses the same selection                                  |
+| `npm run test:geometry`            | Geometry project only (3D animation, deformation and recording regressions)                   |
+| `npm run test:browser`             | Browser interactions, persistence, rendering, exported artifact checks                        |
+| `npm run dcc -- verify`            | Validates artist source, recipe, and published GLB against receipts                           |
+| `npm run maintenance -- inventory` | Read-only occurrences, hashes, asset classifications, tracked-text refs                       |
+| `npm run maintenance -- prune`     | Check retention eligibility without deleting                                                  |
 
-All maintained source must have enforced check coverage; the inventory gate has no migration exemptions. Passing the maintained slice alone does not establish a green application or browser suite. Local verification does not establish a remote CI result or aesthetic acceptance. The [testing policy](testing.md) defines which behaviors deserve tests and which surface to use; these command contracts describe execution scope.
+All maintained source requires enforced check coverage. Passing a slice does not establish whole-repo or aesthetic acceptance. See [testing policy](testing.md) for strategy.
 
-## Adopted static-check scope
+## Gate selection
 
-Typed ESLint covers all of `src`, browser/simulation tests and root TypeScript configuration; root TypeScript checking covers the whole application and browser tests. The maintenance formatter covers these adopted directories. Each simulation writes a fresh uniquely named directory below `test-results`; earlier run bytes remain intact. The root full gate includes simulation checks. JSON enters as unknown data and is narrowed before access; rejected archives remain available for recovery. File import handlers use the existing caught-error import contract and preserve request cancellation/order semantics.
+- **Ordinary work**: Run `npm run check` for game rules, saves, UI, SVG, docs, and tools.
+- **3D / DCC work**: Run `npm run check:full` for changes affecting 3D construction, animation, rendering/export or DCC delivery (`src/art3d`, DCC sources/delivery, or their shared helpers/dependencies). Geometry assertions or configuration affecting their behavior also use this gate. Documentation-only edits use the default. Use `npm run test:geometry -- <file>` for focused iteration.
+- **CI**: Always executes `npm run check:full` and `npm run test:browser`.
 
-The tools package includes typed trace, SVG export/review/scaffold, comparison, challenge, Hearth agent, experiment and recruitment-inspection commands and their tests. The SVG cabinet script is independently typechecked before embedding. Shared bundling uses declared repository entries and removes only its private temporary directory. Root configuration is checked by the root TypeScript project. Trace and recruitment viewer runtimes are typed modules embedded into self-contained HTML; their source receives static checks and browser coverage.
+Static checks still cover 3D sources. Browser/native gates run separately for affected behavior;
+`check:full` does not invoke them. Run the selected completion gate once after the final
+change, with one gate owner per checkout to avoid overlapping agent runs. Report the command
+used and distinguish application/simulation verification from geometry, browser and native
+verification.
 
-The DCC package checks its frontend and delivery CLI with typed ESLint and strict TypeScript. All native Python receives Ruff, strict mypy and pure entry-point/contract tests. Native builder smoke tests use an isolated candidate; export reads the saved artist source without resaving it. Fresh receipts pin current code and preserve preceding receipt bytes. GLB budgets, finite values, weights, loops and native pose metadata are checked before publication; browser tests independently compare evaluated Blender poses with Three.js. These checks establish technical compatibility, not aesthetic acceptance.
+## Static-check scope
+
+- **App & tests**: Typed ESLint and strict TypeScript cover `src`, browser/simulation tests, and configs.
+- **Tools**: CLI modules, SVG cabinet scripts, and embedded viewer runtimes receive strict typechecks.
+- **DCC**: Frontend and delivery CLI use strict TypeScript and ESLint. Python modules use Ruff, strict mypy, and contract tests. Validates GLB budgets, finite normals, joint counts, and pose metadata.
 
 ## Native authoring gate
 
-`npm run test:dcc:saved -- --asset <id>` is the current saved-source edit-loop gate. It uses
-the selected brief's declared control, minimum/interior/maximum values and moved/fixed
-probes in a fresh source copy, checks evaluated movement and restoration at five times,
-then saves/reloads an edit, exports and compares named rigid and skinned geometry in the
-disposable-profile browser. Production source and publication hashes must remain unchanged.
-The [DCC command contract](../../packages/dcc-workbench/README.md#verification-and-provenance)
-owns the sample limits and evidence paths.
+- `npm run test:dcc:saved -- --asset <id>`: Tests the saved-source edit loop (probe deformation, save/reload, export, and Three.js comparison on disposable copies). See [DCC contracts](../../packages/dcc-workbench/README.md#verification-and-provenance).
+- `npm run test:dcc:native`: Evaluates native Blender head-control parity against 64 sampled points.
 
-`npm run test:dcc:native` remains the earlier reconstructed Hydra pilot's head-control gate;
-its 64-point comparison is not verification of the current native subject masters. Both
-commands invoke Blender and the guarded browser harness, so use approved execution outside
-the macOS sandbox. Native unavailability is blocked verification, not a passing ordinary
-Python or CI check.
+## Budgets
 
-## Geometry test budgets
+- **Vitest**: At most 2 workers. Geometry tests have a 15-second budget; application tests have a 5-second default. Unit normals on loaded GLBs are verified across all 29 gallery journeys at 0.0005 tolerance. See [test audit](test-audit-2026-10-07.md).
+- **Browser export**: 60-second budget per model for motion, GLB content, phone layout, and save isolation.
 
-Vitest tests use at most two workers. Procedural geometry tests have a 15-second per-case budget; other application tests retain Vitest's five-second default. Retained geometry regressions verify connectivity, closed surfaces, skin weights, fitted motion and loop endpoints. Finite unit normals are inspected in all 29 gallery download journeys on the actual loaded GLB, with the preceding 0.0005 tolerance and a damaged-export negative control. The [test audit](test-audit-2026-10-07.md) records this replacement of the repeated source-construction checks.
+## Retention and inventory
 
-The budget follows the 2026-10-07 baseline: Banner Bearer construction alone measured about 5.4 seconds; the default concurrent suite reported eight five-second timeouts. A one-worker rerun passed six of those cases but still measured two Banner Bearer checks at about 5.1 seconds. Browser work overlapped those measurements. These timings justify a bounded geometry budget; they are not browser performance benchmarks. Future regressions require fresh measurements before changing these limits again.
-
-Each model's browser export case owns its 60-second budget, page and evidence directory. It verifies visible motion, actual GLB contents and applicable source/export deformation comparisons, phone layout, saved-game bytes, return focus and re-entry. A single timeout no longer prevents later models from receiving their checks. Shared reduced-motion startup uses three representatives (Vajra, Hydra, Banner Bearer); recording uses four (those three plus transparent Catalyst). The separate review captures retain their own assertions.
-
-## Artifact inventory limits
-
-The inventory streams file hashes and retains every occurrence path. Equal bytes identify possible storage duplication; they do not establish which occurrence may be retired. Literal references are gathered from tracked text, so an absent reference leaves material unclassified and protected. Artist sources, source snapshots, backups and accepted evidence require their own explicit retirement authority.
-
-The report records its start/end times and checks each file for changes while reading. It is not an atomic snapshot of running producers. Retain audits in ignored session directories and refresh them after active output finishes. Only the independent receipt-based retention command can identify eligible automatic cleanup; it rechecks exact bytes before deletion.
-
-## CI coverage
-
-The checked-in workflow hydrates Git LFS binaries and runs the early maintenance diagnostic before dependency installation in both jobs. It runs `npm run check` after clean npm/uv installs, then the full `npm run test:browser` suite with the disposable Chrome startup guard. Its 30-minute job budgets accommodate the measured full geometry/export workload; per-test assertions and budgets are unchanged. The workflow has read-only repository permissions and pins its actions by immutable revision.
-
-Private trace cases skip explicitly when their local exports are absent. Public synthetic trace cases remain part of CI. Blender authoring/export/render checks are local native integration evidence, separate from CI. A valid workflow file and passing local gates do not establish a successful remote Actions run or branch-protection configuration.
+- Inventory streams hashes and paths from tracked text. Unreferenced files remain protected.
+- Automatic cleanup requires explicit receipt-based pruning (`npm run maintenance -- prune --apply`), which re-verifies bytes prior to unlinking.

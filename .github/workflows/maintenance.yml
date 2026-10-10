@@ -31,7 +31,7 @@ jobs:
           enable-cache: true
       - run: npm ci
       - run: uv sync --locked
-      - run: npm run check
+      - run: npm run check:full
 
   browser:
     needs: maintenance

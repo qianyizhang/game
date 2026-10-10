@@ -20,7 +20,7 @@ Use the pinned Node/npm runtime with `nvm use`, and Python from `.python-version
 For maintenance, script changes, documentation placement, cleanup or check coverage, read
 [maintenance governance](docs/engineering/maintenance.md). New source must enter an
 enforced check scope. `npm run check:maintenance` verifies maintained tooling and static
-checks; `npm run check` also runs application/geometry tests and seeded simulations.
+checks; `npm run check` also runs application tests and seeded simulations.
 Report those scopes separately.
 
 Before using the installed review skills, read [their project mapping](docs/engineering/agent-skills.md).
@@ -29,7 +29,11 @@ For domain naming or interface changes, read the relevant [glossary](docs/engine
 
 For SVG or 3D artwork, read [the Card Workshop art skill](skills/card-art/SKILL.md) and the [aesthetic rulebook](docs/art/art-direction.md). The rulebook is the shared visual standard; the skill covers creation and review. [SVG sources](docs/art/svg.md) and [3D sources](docs/art/3d.md) locate renderers and export integration. Passing technical checks does not establish visual quality.
 
-`npm run check` runs the maintained gate, application/geometry checks and seeded simulations. `npm run test:browser` runs the disposable-profile browser suite with a single startup guard.
+Use `npm run check` for ordinary changes; geometry tests are opt-in. For changes affecting
+3D construction, animation, rendering/export or DCC delivery, use `npm run check:full`.
+Read [verification contracts](docs/engineering/checks.md#gate-selection) for scope
+selection and reporting. `npm run test:browser` runs the disposable-profile browser suite
+with a single startup guard.
 
 On this Mac, request approved execution outside the restricted command sandbox from the first browser-launching test command (`sandbox_permissions: require_escalated`). Ordinary checks stay sandboxed. Never use personal profiles, kill unrelated browsers, or retry unchanged LaunchServices/WindowServer startup failures. Headless and `--no-sandbox` do not fix outer sandbox permissions. Report blocked verification accurately.
 

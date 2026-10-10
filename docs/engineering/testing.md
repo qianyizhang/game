@@ -62,6 +62,6 @@ Classify a test cluster as **keep**, **consolidate**, **replace** or **delete**.
 
 An imported winning replay proves reconstruction and the victory screen, not a full browser playthrough. A seeded headless run proves rules lifecycle, not browser interaction. A changed screenshot proves changed pixels, not attractive artwork. State those limits beside results.
 
-Use the [verification contracts](checks.md) for commands, check scopes and macOS launch requirements. Report maintenance, application/simulation and browser results separately. Run relevant checks once after the final change; broaden or repeat them for a new failure, change or unresolved concern.
+Use the [verification contracts](checks.md#gate-selection) to select the default `check` or geometry-inclusive `check:full` gate and affected browser/native checks. Report maintenance, application/simulation, geometry and browser/native results separately. Run relevant checks once after the final change; broaden or repeat them for a new failure, change or unresolved concern.
 
 The [2026-10-07 test audit](test-audit-2026-10-07.md) records the initial inventory and export-normal consolidation. Further deletions depend on behavior review, not a target ratio of unit to browser tests.

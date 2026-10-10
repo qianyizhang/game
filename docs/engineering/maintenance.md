@@ -4,7 +4,7 @@ Every maintained source must enter an enforced check scope. The inventory gate r
 
 ## Check scope and finish line
 
-Use [verification contracts](checks.md) for gate coverage, CI, browser/native execution and geometry budgets. Run `npm run check:maintenance` for maintained tooling and static checks; `npm run check` also runs application/geometry tests and seeded simulations. Report those scopes separately. Technical checks do not establish aesthetic acceptance.
+Use [verification contracts](checks.md) for gate coverage, CI, browser/native execution and geometry budgets. Run `npm run check:maintenance` for maintained tooling and static checks; `npm run check` also runs application tests and seeded simulations. Geometry is opt-in through `npm run check:full` for the [affected areas](checks.md#gate-selection). Report those scopes separately. Technical checks do not establish aesthetic acceptance.
 
 Use `nvm install && nvm use`, hydrate native binaries with `git lfs install --local` and `git lfs pull`, then run `npm ci` and `uv sync --locked`. Runtime versions come from [`.node-version`](../../.node-version), [`.python-version`](../../.python-version) and [`package.json`](../../package.json); dependency versions come from the lockfiles. Git LFS follows the [native storage decision](decisions/0004-native-asset-storage.md); the inventory check names unhydrated binaries before delivery validation.
 
