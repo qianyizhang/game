@@ -19,6 +19,30 @@ async function finishPlayback(page: Page) {
   const skip = page.getByRole('button', { name: 'Skip to result' });
   if (await skip.isVisible()) await skip.click();
 }
+test('blocked storage reads show attention instead of treating saves as new puzzles', async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.addInitScript(() => {
+    Storage.prototype.getItem = () => {
+      throw new DOMException('Denied', 'SecurityError');
+    };
+  });
+  await openLibrary(page);
+  await expect(page.getByText('Saved progress needs attention', { exact: true })).toHaveCount(3);
+  await expect(page.getByText('New puzzle', { exact: true })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Open The last multiplier' }).click();
+  await expect(page.getByRole('alert')).toContainText('Saved progress could not be loaded');
+  await page.getByRole('button', { name: 'Move Spark left' }).click();
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export attempts' }).click();
+  expect(
+    decodeChallenge(jokerOrderChallenge, readFileSync(await (await download).path(), 'utf8'))
+      .current.session.replay.commands,
+  ).toHaveLength(1);
+  expect(errors).toEqual([]);
+});
 test('Joker puzzle preserves every normal/practice save, compares attempts and resumes its review', async ({
   page,
 }, info) => {

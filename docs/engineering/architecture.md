@@ -61,6 +61,8 @@ Saves store only seed, rules version, and accepted commands. Imports validate an
 
 `Hub.tsx` lazily loads game-owned UI entry points on demand. `useLocalGame.ts` handles normal/practice storage; all three card studies share `GameShell.tsx` for navigation, replay file controls and the new-run dialog. Game UI owns temporary selection and restart/import resets. Each game owns its command syntax predicate in `domain/commands.ts`; application sessions compose it with replay reconstruction.
 
+Last Hearth hydrates each lobby mode on its first selection. Visited modes retain normal and practice sessions, including unsaved moves, while inactive rivals remain paused.
+
 ### Slay the Spire turn trace
 
 1. `SpireApp.tsx` submits `playCard` with card instance and optional enemy ID.
@@ -100,7 +102,8 @@ Rules code never imports UI, storage, DOM, clock, or global randomness. Replay s
 
 ## Workshop shared layers
 
-- `shared/Playback.tsx`: Presentation clock over immutable domain frames without command dispatch.
+- `shared/usePlaybackClock.ts`: Presentation clock shared by resolution and combat players, without command dispatch. Timeline identity resets playback; reallocating a frame array does not.
+- `shared/Playback.tsx`: Resolution controls and result reveal over immutable domain frames. Last Hearth keeps its own combat view and controls on the shared clock.
 - `shared/replay.ts`: Validated replay reconstruction and practice envelopes.
 - `mods/*.ts`: Local TypeScript content packs. `shared/contentPack.ts` validates packs and enforces checksums.
 - `games/*/application/evidence.ts`: Records transitions into lightweight summaries for analysis.

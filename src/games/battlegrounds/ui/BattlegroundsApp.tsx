@@ -31,7 +31,6 @@ export function BattlegroundsApp({
   onSwitch: (id: GameId) => void;
   onChallenges: () => void;
 }) {
-  const classic = useLocalGame(bgSession, 'HEARTH-01');
   const [mode, setMode] = useState<'classic' | 'mixed'>(() => {
     try {
       return localStorage.getItem('card-workshop.hearth-mode') === 'mixed' ? 'mixed' : 'classic';
@@ -39,6 +38,7 @@ export function BattlegroundsApp({
       return 'classic';
     }
   });
+  const classic = useLocalGame(bgSession, 'HEARTH-01', mode === 'classic');
   const mixed = useMixedRivals(mode === 'mixed');
   const game = mode === 'classic' ? classic : mixed;
   const chooseMode = (next: 'classic' | 'mixed') => {
@@ -49,14 +49,15 @@ export function BattlegroundsApp({
       /* Runs still export. */
     }
   };
-  const run = game.state;
-  const player = run.players[0];
   const [view, setView] = useState<'play' | 'collection' | 'guide'>('play');
   const [tab, setTab] = useState('Lobby');
   const [selected, setSelected] = useState<string | null>(null);
   const [position, setPosition] = useState(7);
   const [query, setQuery] = useState('');
   const [tribe, setTribe] = useState('all');
+  if (!game) return <p role="status">Loading Last Hearth…</p>;
+  const run = game.state;
+  const player = run.players[0];
   const target = player.board.find((u) => u.id === selected) ?? player.board[0];
   const hero = HEROES.find((h) => h.id === player.hero)!;
   const terminal = run.phase === 'won' || run.phase === 'lost';
@@ -70,7 +71,7 @@ export function BattlegroundsApp({
       onChallenges={onChallenges}
       controls={game}
       tools={
-        mode === 'classic' ? (
+        mode === 'classic' && classic ? (
           <WorkshopTools
             packs={hearthPacks}
             game={classic}
@@ -86,7 +87,7 @@ export function BattlegroundsApp({
             })}
           />
         ) : (
-          <ArenaInspector state={mixed.state} />
+          mixed && <ArenaInspector state={mixed.state} />
         )
       }
       view={view}
@@ -302,8 +303,8 @@ export function BattlegroundsApp({
                 </div>
               </section>
             )}
-            {mode === 'mixed' && mixed.waiting && <p role="status">Rivals are recruiting…</p>}
-            {run.phase === 'recruit' && !(mode === 'mixed' && mixed.waiting) && (
+            {mode === 'mixed' && mixed?.waiting && <p role="status">Rivals are recruiting…</p>}
+            {run.phase === 'recruit' && !(mode === 'mixed' && mixed?.waiting) && (
               <>
                 <Scouting run={run} />
                 <div className="tavern-tools">
@@ -587,7 +588,7 @@ export function BattlegroundsApp({
             {tab === 'Lobby' ? (
               <>
                 <h3>Eight seats at the hearth.</h3>
-                {mode === 'mixed' && (
+                {mode === 'mixed' && mixed && (
                   <p className="small muted">
                     First to recruit:{' '}
                     {run.players[mixed.state.arena.order[0]]?.name ?? 'choose a hero'}. Priority
@@ -608,7 +609,7 @@ export function BattlegroundsApp({
                             {p.name}
                             {p.id === 0 ? ' (you)' : ''}
                           </strong>
-                          {mode === 'mixed' && mixed.state.arena.config && p.id !== 0 && (
+                          {mode === 'mixed' && mixed?.state.arena.config && p.id !== 0 && (
                             <small>
                               <WorkshopSymbol
                                 kind={rivalArtKind(mixed.state.arena.config.seats[p.id].style)}

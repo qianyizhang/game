@@ -2,6 +2,79 @@ import { expect, test } from '@playwright/test';
 import { arenaSession } from '../../src/games/battlegrounds/application/arena';
 import { bgSession } from '../../src/games/battlegrounds/application/session';
 import { mixedRivalsConfig } from '../../src/games/battlegrounds/domain/arena';
+import { readFileSync } from 'node:fs';
+import { replayCodec } from '../../src/shared/replay';
+
+for (const first of ['classic', 'mixed'] as const) {
+  test(`${first} hydrates only on first selection and preserves unsaved modes and practice`, async ({
+    page,
+  }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    await page.addInitScript(
+      ({ first, keys }) => {
+        localStorage.setItem('card-workshop.active-game', 'battlegrounds');
+        localStorage.setItem('card-workshop.hearth-mode', first);
+        const reads: string[] = [];
+        Object.assign(window, { hearthReads: reads });
+        const get = Storage.prototype.getItem.bind(localStorage);
+        Storage.prototype.getItem = (key) => {
+          if (keys.includes(key)) reads.push(key);
+          return get(key);
+        };
+        Storage.prototype.setItem = () => {
+          throw new DOMException('Full', 'QuotaExceededError');
+        };
+      },
+      { first, keys: [bgSession.key, arenaSession.key] },
+    );
+    const reads = () =>
+      page.evaluate(() => (window as unknown as { hearthReads: string[] }).hearthReads);
+    const exportRun = async () => {
+      const event = page.waitForEvent('download');
+      await page.getByRole('button', { name: 'Export', exact: true }).click();
+      return readFileSync(await (await event).path(), 'utf8');
+    };
+    const firstKey = first === 'classic' ? bgSession.key : arenaSession.key;
+    const otherKey = first === 'classic' ? arenaSession.key : bgSession.key;
+    const firstLabel = first === 'classic' ? 'Classic' : 'Mixed Rivals';
+    const otherLabel = first === 'classic' ? 'Mixed Rivals' : 'Classic';
+    await page.goto('/');
+    await expect(page.getByRole('heading', { name: 'Who will lead your warband?' })).toBeVisible();
+    expect(await reads()).toContain(firstKey);
+    expect(await reads()).not.toContain(otherKey);
+    await page.locator('.hero-choices > button').first().click();
+    const firstRun = await exportRun();
+    await expect(page.locator('.save-status')).toContainText('Storage unavailable');
+    await page.getByRole('button', { name: otherLabel, exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Who will lead your warband?' })).toBeVisible();
+    expect(await reads()).toContain(otherKey);
+    await page.locator('.hero-choices > button').first().click();
+    const otherRun = await exportRun();
+    const visitedReads = await reads();
+    await page.getByRole('button', { name: firstLabel, exact: true }).click();
+    expect(await exportRun()).toBe(firstRun);
+    await page.getByRole('button', { name: otherLabel, exact: true }).click();
+    expect(await exportRun()).toBe(otherRun);
+    expect(await reads()).toEqual(visitedReads);
+    await page.getByRole('button', { name: 'Classic', exact: true }).click();
+    const normal = await exportRun();
+    await page.getByRole('button', { name: 'Practice lab', exact: true }).click();
+    await page.getByLabel('Replay decision').fill('0');
+    await page.getByRole('button', { name: 'Play a branch from here' }).click();
+    await expect(page.getByRole('button', { name: 'Return to normal run' })).toBeVisible();
+    await page.locator('.hero-choices > button').first().click();
+    const practice = await exportRun();
+    expect(replayCodec(bgSession.rules, true).decode(practice).replay.mode).toBe('practice');
+    await page.getByRole('button', { name: 'Mixed Rivals', exact: true }).click();
+    await page.getByRole('button', { name: 'Classic', exact: true }).click();
+    await expect(page.getByRole('button', { name: 'Return to normal run' })).toBeVisible();
+    expect(await exportRun()).toBe(practice);
+    await page.getByRole('button', { name: 'Return to normal run' }).click();
+    expect(await exportRun()).toBe(normal);
+    expect(errors).toEqual([]);
+  });
+}
 
 test('Mixed Rivals journals every seat, rotates priority, reloads, and preserves Classic', async ({
   page,

@@ -6,6 +6,47 @@ import { blindsideSession } from '../../src/games/balatro/application/session';
 import { EVIDENCE_KEY } from '../../src/shared/evidence/recorder';
 const raw = (page: Page, key: string) => page.evaluate((key) => localStorage.getItem(key), key);
 
+test('Blindside resets an imported timeline but keeps completed scoring after a discard', async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.addInitScript(() => localStorage.setItem('card-workshop.playback-speed', '1000'));
+  const started = blindsideSession.act(blindsideSession.create('CLOCK-REGRESSION'), {
+    type: 'startBlind',
+  }).session;
+  const scored = blindsideSession.act(started, {
+    type: 'play',
+    cards: [started.state.hand[0]],
+  }).session;
+  expect(scored.state.phase).toBe('playing');
+  expect(scored.state.lastScore!.steps.length).toBeGreaterThan(1);
+  const saved = blindsideSession.encode(scored);
+  const importScored = () =>
+    page.getByLabel('Import replay file').setInputFiles({
+      name: 'score.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(saved),
+    });
+  await page.goto('/');
+  await importScored();
+  await page.getByRole('button', { name: 'Pause', exact: true }).click();
+  await page.getByLabel('Resolution event').fill('1');
+  await expect(page.locator('.resolution-heading')).toContainText(
+    `Event 2/${scored.state.lastScore!.steps.length}`,
+  );
+  await importScored();
+  await page.getByRole('button', { name: 'Pause', exact: true }).click();
+  await expect(page.getByLabel('Resolution event')).toHaveValue('0');
+  await page.getByRole('button', { name: 'Skip to result' }).click();
+  await page.locator('.hand-cards .playing-card').first().click();
+  await page.getByRole('button', { name: 'Discard', exact: true }).click();
+  await expect(page.locator('.resolution-player')).toHaveClass(/is-finished/);
+  await expect(page.getByRole('button', { name: 'Skip to result' })).toHaveCount(0);
+  await expect(page.locator('.hand-cards .playing-card')).toHaveCount(8);
+  expect(errors).toEqual([]);
+});
+
 test('Silent setup, paced events, safe practice branches, mod previews and local evidence', async ({
   page,
 }, info) => {

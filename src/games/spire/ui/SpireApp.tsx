@@ -206,7 +206,7 @@ export function SpireApp({
               {run.notice}
             </div>
             <Playback
-              key={`${game.timelineRevision}-${run.seed}-${run.resolution.sequence}`}
+              sequence={`${game.timelineRevision}-${run.seed}-${run.resolution.sequence}`}
               frames={run.resolution.frames}
               label="Combat resolution"
               render={(frame) => <Resolution frame={frame} character={run.character} />}

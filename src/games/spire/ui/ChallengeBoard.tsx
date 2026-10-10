@@ -16,7 +16,7 @@ export function SpireChallengeBoard({
     state.combat?.enemies.find((enemy) => enemy.id === target)?.id ?? state.combat?.enemies[0]?.id;
   return (
     <Playback
-      key={state.resolution.sequence}
+      sequence={state.resolution.sequence}
       frames={state.resolution.sequence > 1 ? state.resolution.frames : []}
       label="Card and enemy resolution"
       render={(frame) => <Resolution frame={frame} character={state.character} />}

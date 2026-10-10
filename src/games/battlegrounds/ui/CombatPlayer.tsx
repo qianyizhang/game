@@ -1,25 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { usePlaybackClock } from '../../../shared/usePlaybackClock';
 import { MINION_BY_ID } from '../content/minions';
 import type { CombatResult } from '../domain/types';
 import { MinionCard } from './MinionCard';
 
 export function CombatPlayer({ result, opponent }: { result: CombatResult; opponent: string }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(true);
   const [speed, setSpeed] = useState(600);
-  useEffect(() => {
-    setIndex(0);
-    setPlaying(true);
-  }, [result]);
-  useEffect(() => {
-    if (!playing || index >= result.frames.length - 1) return;
-    const timer = setTimeout(
-      () => setIndex((i) => Math.min(result.frames.length - 1, i + 1)),
-      speed,
-    );
-    return () => clearTimeout(timer);
-  }, [playing, index, speed, result.frames.length]);
+  const { index, last, playing, finished, seek, toggle } = usePlaybackClock(
+    result,
+    result.frames.length,
+    speed,
+  );
   const frame = result.frames[Math.min(index, result.frames.length - 1)];
   if (!frame) return null;
   const selected = frame.boards.flat().find((unit) => unit.id === selectedId);
@@ -79,52 +71,21 @@ export function CombatPlayer({ result, opponent }: { result: CombatResult; oppon
         </div>
       )}
       <div className="playback-controls">
-        <button
-          aria-label="First combat event"
-          disabled={index === 0}
-          onClick={() => {
-            setIndex(0);
-            setPlaying(false);
-          }}
-        >
+        <button aria-label="First combat event" disabled={index === 0} onClick={() => seek(0)}>
           ↤
         </button>
         <button
           aria-label="Previous combat event"
           disabled={index === 0}
-          onClick={() => {
-            setIndex((i) => i - 1);
-            setPlaying(false);
-          }}
+          onClick={() => seek(index - 1)}
         >
           ←
         </button>
-        <button
-          onClick={() => {
-            if (index === result.frames.length - 1) setIndex(0);
-            setPlaying(!playing || index === result.frames.length - 1);
-          }}
-        >
-          {playing && index < result.frames.length - 1 ? 'Pause playback' : 'Play replay'}
-        </button>
-        <button
-          aria-label="Next combat event"
-          disabled={index === result.frames.length - 1}
-          onClick={() => {
-            setIndex((i) => i + 1);
-            setPlaying(false);
-          }}
-        >
+        <button onClick={toggle}>{playing && !finished ? 'Pause playback' : 'Play replay'}</button>
+        <button aria-label="Next combat event" disabled={finished} onClick={() => seek(index + 1)}>
           →
         </button>
-        <button
-          aria-label="Last combat event"
-          disabled={index === result.frames.length - 1}
-          onClick={() => {
-            setIndex(result.frames.length - 1);
-            setPlaying(false);
-          }}
-        >
+        <button aria-label="Last combat event" disabled={finished} onClick={() => seek(last)}>
           ↦
         </button>
         <label>
@@ -145,12 +106,9 @@ export function CombatPlayer({ result, opponent }: { result: CombatResult; oppon
         type="range"
         aria-label="Combat event"
         min={0}
-        max={result.frames.length - 1}
+        max={last}
         value={index}
-        onChange={(e) => {
-          setIndex(Number(e.target.value));
-          setPlaying(false);
-        }}
+        onChange={(e) => seek(Number(e.target.value))}
       />
       <p className="small muted">
         Event {index + 1}/{result.frames.length} · Hero damage: you {result.damage[0]}, opponent{' '}

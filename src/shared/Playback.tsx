@@ -1,21 +1,21 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { Fragment, useState, type ReactNode } from 'react';
+import { usePlaybackClock } from './usePlaybackClock';
 import './workshop.css';
 
 /** A presentation-only clock. The game has already resolved every frame. */
 export function Playback<T>({
   frames,
+  sequence,
   label,
   render,
   children,
 }: {
   frames: readonly T[];
+  sequence: string | number;
   label: string;
   render: (frame: T, index: number) => ReactNode;
   children: ReactNode;
 }) {
-  const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(true);
-  const [inspect, setInspect] = useState(false);
   const [speed, setSpeed] = useState(() => {
     try {
       const saved = Number(localStorage.getItem('card-workshop.playback-speed'));
@@ -24,20 +24,14 @@ export function Playback<T>({
       return 600;
     }
   });
-  const last = Math.max(0, frames.length - 1);
-  const finished = index >= last;
-  useEffect(() => {
-    if (!playing || finished) return;
-    const timer = setTimeout(() => setIndex((i) => Math.min(last, i + 1)), speed);
-    return () => clearTimeout(timer);
-  }, [playing, finished, last, speed, index]);
-  if (!frames.length) return <>{children}</>;
+  const { index, last, playing, inspect, finished, seek, toggle, finish } = usePlaybackClock(
+    sequence,
+    frames.length,
+    speed,
+  );
+  const result = <Fragment key={sequence}>{children}</Fragment>;
+  if (!frames.length) return result;
   const active = !finished || inspect;
-  const seek = (value: number) => {
-    setIndex(value);
-    setPlaying(false);
-    setInspect(true);
-  };
   return (
     <>
       <section
@@ -64,15 +58,7 @@ export function Playback<T>({
               >
                 ←
               </button>
-              <button
-                onClick={() => {
-                  if (finished) setIndex(0);
-                  setInspect(false);
-                  setPlaying(!playing || finished);
-                }}
-              >
-                {playing && !finished ? 'Pause' : 'Play'}
-              </button>
+              <button onClick={toggle}>{playing && !finished ? 'Pause' : 'Play'}</button>
               <button aria-label="Next event" disabled={finished} onClick={() => seek(index + 1)}>
                 →
               </button>
@@ -97,15 +83,7 @@ export function Playback<T>({
                   <option value={100}>6×</option>
                 </select>
               </label>
-              <button
-                onClick={() => {
-                  setIndex(last);
-                  setInspect(false);
-                  setPlaying(false);
-                }}
-              >
-                Skip to result
-              </button>
+              <button onClick={finish}>Skip to result</button>
             </div>
             <input
               type="range"
@@ -119,7 +97,7 @@ export function Playback<T>({
           </>
         )}
       </section>
-      {!active && children}
+      {!active && result}
     </>
   );
 }

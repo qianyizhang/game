@@ -21,7 +21,9 @@ const catalogue = [
 ];
 function status<S extends { seed: string }, C>(definition: Challenge<S, C>) {
   try {
-    const raw = readChallengeArchive(challengeKey(definition));
+    const archive = readChallengeArchive(challengeKey(definition));
+    if (!archive.ok) throw archive.error;
+    const raw = archive.text;
     if (!raw) return { label: 'New puzzle', action: 'Start puzzle', cleared: false };
     const progress = decodeChallenge(definition, raw);
     const result = attemptResult(definition, progress.current);

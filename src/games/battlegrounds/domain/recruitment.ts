@@ -1,5 +1,4 @@
-import { shuffle } from '../../../shared/random';
-import { random } from '../../../shared/random';
+import { random, shuffle } from '../../../shared/random';
 import { HEROES, MINION_BY_ID, RECRUITS } from '../content/minions';
 import { buff, makeUnit, matchesTribe, summonHooks } from './units';
 import { applyHeroPower } from './heroes';

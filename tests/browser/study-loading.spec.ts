@@ -1,16 +1,43 @@
 import { expect, test } from '@playwright/test';
 
+test('ordinary game routes leave 3D modules unloaded', async ({ page }) => {
+  const requests: string[] = [];
+  page.on('request', (request) => {
+    if (/\/src\/art3d\/|\/packages\/dcc-workbench\/|\/three(?:\.js|\/)/.test(request.url()))
+      requests.push(request.url());
+  });
+  await page.goto('/');
+  await expect(page.getByLabel('Choose game')).toBeVisible();
+  for (const game of ['spire', 'battlegrounds', 'balatro']) {
+    await page.getByLabel('Choose game').selectOption(game);
+    await expect(page.getByLabel('Choose game')).toHaveValue(game);
+    await expect(page.locator('.app-shell')).toBeVisible();
+  }
+  expect(requests).toEqual([]);
+});
+
 test('native delivery skips procedural construction until a fallback is selected', async ({
   page,
 }) => {
   const procedural: string[] = [];
+  const downloads: string[] = [];
   page.on('request', (request) => {
     if (request.url().includes('/src/art3d/procedural/')) procedural.push(request.url());
+    if (
+      request.resourceType() !== 'script' &&
+      /\.(glb|blend|json)$/.test(new URL(request.url()).pathname)
+    )
+      downloads.push(request.url());
   });
   await page.goto('/?art=3d&study=phoenix');
   await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
   await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'native');
   expect(procedural).toEqual([]);
+  // Development StrictMode may cancel and restart the same selected model request.
+  const files = [...new Set(downloads)];
+  expect(files).toHaveLength(1);
+  expect(files[0]).toContain('/assets/phoenix/');
+  expect(new URL(files[0]).pathname).toMatch(/\/model\.glb$/);
   await page.getByRole('button', { name: /Spiral/ }).click();
   await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
   await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'procedural');

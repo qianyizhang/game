@@ -16,8 +16,16 @@ const UNSAVED = 'Storage unavailable · export before closing this tab';
 // Retain failed writes across screen changes. Reload still requires a saved/exported archive.
 const drafts = new Map<string, { text: string; recovery: string | null }>();
 
-export function readChallengeArchive(key: string) {
-  return drafts.get(key)?.text ?? localStorage.getItem(key);
+export function readChallengeArchive(
+  key: string,
+): { ok: true; text: string | null } | { ok: false; error: unknown } {
+  const draft = drafts.get(key);
+  if (draft) return { ok: true, text: draft.text };
+  try {
+    return { ok: true, text: localStorage.getItem(key) };
+  } catch (error) {
+    return { ok: false, error };
+  }
 }
 
 export function useChallengeProgress<S extends { seed: string }, C>(definition: Challenge<S, C>) {

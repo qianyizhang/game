@@ -1,13 +1,31 @@
 import { beginEvidence, recordAccepted } from '../shared/evidence/recorder';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { MAX_REPLAY_SIZE, replayCodec, type Session } from '../shared/replay';
 
 export function useLocalGame<S extends { seed: string }, C>(
   codec: ReturnType<typeof replayCodec<S, C>>,
   defaultSeed: string,
+  enabled: boolean,
+): ReturnType<typeof useGameSession<S, C>>;
+export function useLocalGame<S extends { seed: string }, C>(
+  codec: ReturnType<typeof replayCodec<S, C>>,
+  defaultSeed: string,
+): NonNullable<ReturnType<typeof useGameSession<S, C>>>;
+export function useLocalGame<S extends { seed: string }, C>(
+  codec: ReturnType<typeof replayCodec<S, C>>,
+  defaultSeed: string,
+  enabled = true,
+) {
+  return useGameSession(codec, defaultSeed, enabled);
+}
+
+function useGameSession<S extends { seed: string }, C>(
+  codec: ReturnType<typeof replayCodec<S, C>>,
+  defaultSeed: string,
+  enabled: boolean,
 ) {
   const practiceCodec = useMemo(() => replayCodec(codec.rules, true), [codec]);
-  const [initial] = useState(() => {
+  const hydrate = useCallback(() => {
     let raw: string | null = null;
     try {
       raw = localStorage.getItem(codec.key);
@@ -23,13 +41,14 @@ export function useLocalGame<S extends { seed: string }, C>(
         recovery: raw,
       };
     }
-  });
+  }, [codec, defaultSeed]);
+  const [initial] = useState(() => (enabled ? hydrate() : null));
   const [timelineRevision, setTimelineRevision] = useState(0);
-  const [normal, setNormal] = useState(initial.session);
+  const [normal, setNormal] = useState(initial?.session ?? null);
   const [practice, setPractice] = useState<Session<S, C> | null>(null);
-  const [error, setError] = useState(initial.error);
+  const [error, setError] = useState(initial?.error ?? '');
   const [saveStatus, setSaveStatus] = useState('Local play · autosave');
-  const recovery = useRef(initial.recovery);
+  const recovery = useRef(initial?.recovery ?? null);
   const importRequest = useRef(0);
   useEffect(
     () => () => {
@@ -37,6 +56,16 @@ export function useLocalGame<S extends { seed: string }, C>(
     },
     [],
   );
+  useEffect(() => {
+    if (!enabled || normal !== null) return;
+    const loaded = hydrate();
+    setNormal(loaded.session);
+    setError(loaded.error);
+    recovery.current = loaded.recovery;
+  }, [enabled, normal, hydrate]);
+  // Unvisited modes do not read storage or construct a run. Visited modes retain
+  // normal/practice state and failed writes when disabled.
+  if (normal === null) return null;
   const session = practice ?? normal;
   const activeCodec = practice ? practiceCodec : codec;
   const persist = (next: Session<S, C>) => {

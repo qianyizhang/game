@@ -6,11 +6,11 @@ import { activeSeat, mixedRivalsConfig, type ArenaCommand } from '../domain/aren
 import type { BGCommand } from '../domain/types';
 
 export function useMixedRivals(enabled: boolean) {
-  const game = useLocalGame(arenaSession, 'HEARTH-01');
+  const game = useLocalGame(arenaSession, 'HEARTH-01', enabled);
   const [controllerError, setControllerError] = useState('');
   // Imported prefixes may stop inside a rival turn. Resume through the same journaled controller.
   useEffect(() => {
-    if (!enabled || !game.state.arena.config) return;
+    if (!enabled || !game?.state.arena.config) return;
     try {
       const commands = advanceRivals(game.session);
       if (commands.length) game.dispatchMany(commands);
@@ -19,7 +19,8 @@ export function useMixedRivals(enabled: boolean) {
       setControllerError(String(error));
     }
     // Session identity changes only after a committed action, restore or restart.
-  }, [game.session, enabled]);
+  }, [game?.session, enabled]);
+  if (!game) return null;
   const dispatch = (command: BGCommand) => {
     const arenaCommand: ArenaCommand =
       command.type === 'chooseHero'

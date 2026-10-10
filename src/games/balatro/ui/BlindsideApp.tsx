@@ -179,7 +179,7 @@ export function BlindsideApp({
             <main className="game-layout">
               <div>
                 <Playback
-                  key={`${game.timelineRevision}-${run.seed}-${game.session.replay.commands.reduce((last, c, i) => (c.type === 'play' ? i : last), -1)}`}
+                  sequence={`${game.timelineRevision}-${run.seed}-${game.session.replay.commands.reduce((last, c, i) => (c.type === 'play' ? i : last), -1)}`}
                   frames={run.lastScore?.steps ?? []}
                   label="Scoring resolution"
                   render={(step) => (

@@ -16,7 +16,7 @@ export function BlindsideChallengeBoard({
     <>
       {!!state.lastScore && (
         <Playback
-          key={state.handsPlayed}
+          sequence={state.handsPlayed}
           frames={state.lastScore.steps}
           label="Your scoring resolution"
           render={(step) => (
