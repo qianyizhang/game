@@ -7,5 +7,6 @@ ADRs capture consequential trade-offs whose reasons would otherwise be lost. Sco
 - [0003: Blender-first 3D authoring](0003-blender-first-authoring.md)
 - [0004: Git LFS for native asset binaries](0004-native-asset-storage.md)
 - [0005: One frontend for session review](0005-session-review-frontend.md)
+- [0006: Emberwake persistent regions and independent rendering](0006-emberwake-world-runtime.md)
 
 The first two records consolidate established choices; recording them on 2026-10-07 does not invent a new acceptance date. The third records the user's explicit authoring direction; the fourth records the accepted storage boundary before migration expands. Add another only when a real choice is costly to reverse, surprising without context and based on meaningful alternatives. Do not turn every implementation choice or retro finding into an ADR.

@@ -16,14 +16,25 @@ Your first skill begins learned. Skills two and three unlock at levels 2 and 3; 
 
 Four lanterns imprisoned Lucent, a founder who tried to steal the dawn. Their theft draws you from the refuge toward the furnace where they were forged.
 
-| Map               | Objective                                                 | Final boss                                                                |
+| Act               | Objective                                                 | Final boss                                                                |
 | ----------------- | --------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Briarfen          | Recover the fen ember; light two ward stones.             | The Briar Widow: poison warnings and a close-range blast.                 |
 | Saltreach         | Traverse the glass city; kindle two sun obelisks.         | The Glass Regent: missile volleys and targeted fire.                      |
 | Hollow Bells      | Silence two funeral bells beneath the monastery.          | The Bellkeeper: cold warnings and summoned guards.                        |
 | The First Furnace | Restore both furnace anchors and break the lantern chain. | Lucent, the Unlit King: overlapping fire warnings intensify at half life. |
 
-Each map has connected rooms and passages, optional caches, enemies and elites, exploration fog, a waypoint, two ward objectives and a boss arena. Defeat guards beside a ward before interacting. The boss remains protected until both wards activate. After the boss falls, collect its guaranteed unique loot and ember rune, then use the **road onward**. The final road completes the story. Cleared fields and attuned waypoints persist for the journey.
+Each act now contains **two outdoor regions and a three-floor dungeon**: **20 regions**, including **12 dungeon floors**. Wilderness maps are 72×48 tiles; dungeon maps are 64×44, with branching passages and a larger boss chamber on the deepest floor. Marsh pools and tree groves, desert ridges and ruins, monastery stonework and bones, and furnace lava and bridges give the four acts their terrain identity.
+
+| Act               | Outdoor regions                       | Dungeon · floors 1 → 2 → 3                                                 |
+| ----------------- | ------------------------------------- | -------------------------------------------------------------------------- |
+| Briarfen          | Lantern Approach, Drowned Grove       | Rootbound Catacombs · Root Cellars → Buried Sanctuary → Heart of the Briar |
+| Saltreach         | Caravan Reach, Shattered Oasis        | Sunken Glassworks · Sand Cistern → Glass Galleries → Regent’s Vault        |
+| Hollow Bells      | Silent Courtyard, Graveyard of Echoes | Ossuary of Bells · Sepulcher Steps → Bell Foundry → Unburied Choir         |
+| The First Furnace | Ashen March, Cinder Crossing          | First Furnace · Slagworks → Chain Galleries → Lucent’s Crucible            |
+
+From the entry region, explore the second outdoor region for the first ward, then descend into the dungeon. Floor 2 holds the second ward. Defeat nearby guards before interacting; both wards open the stair to floor 3 and remove the boss’s protection. After the boss falls, collect its guaranteed unique loot and ember rune, then take the road onward. The final road completes the story.
+
+Stairs and region portals work in both directions. Enemies, caches, loot, wards and exploration remain as you left them; revisiting does not reset a floor. Each act’s entry and dungeon floor 1 have waypoints. Attuned region waypoints appear at the refuge, and town portals return you to the exact region and position. Open **Journal** for the region atlas, floor numbers, connections and progress.
 
 ## Controls
 
@@ -32,13 +43,13 @@ Each map has connected rooms and passages, optional caches, enemies and elites, 
 | Move           | WASD/arrows, or click reachable ground.                                                                                         |
 | Basic attack   | Click an enemy to approach and attack automatically; Space targets the nearest visible foe. Move to cancel pursuit.             |
 | Cast           | Aim with the pointer and press Q/E/R; right-click casts the selected skill. Hotbar buttons also cast.                           |
-| Interact       | F or **Interact** beside a ward, cache, waypoint, grave or exit.                                                                |
+| Interact       | F or **Interact** beside a ward, cache, waypoint, grave, portal or stairs.                                                      |
 | Potions        | 1 for life, 2 for mana, or click the belt buttons. Each restores 60% of the maximum resource.                                   |
 | Run            | Shift or the Walk/Run button toggles running. Running drains stamina; walking/resting restores it.                              |
 | Return to town | T or **Town portal** when no active enemy is within three paces. Town heals; the return portal keeps your exact field position. |
 | Inspect        | I inventory, K character/skills, J journal, Tab minimap, Esc pause/close.                                                       |
 
-Boss warning circles give time to move before damage lands. Resistances reduce elemental damage; armor reduces physical damage. Cold slows movement, and curse lowers monster resistance. Walls block movement and missiles. The game pauses for inventory/character/journal panels and while the browser is unfocused or hidden. On touch screens, click/tap movement, enemy targeting and the visible spell/potion/interaction controls cover the gameplay loop.
+Boss warning circles give time to move before damage lands. Resistances reduce elemental damage; armor reduces physical damage. Cold slows movement, and curse lowers monster resistance. Walls block movement and missiles. Water, lava and rocks block walking; bridges and cleared paths cross these barriers. Water and lava allow visibility and missiles across them. The game pauses for inventory/character/journal panels and while the browser is unfocused or hidden. On touch screens, click/tap movement, enemy targeting and the visible spell/potion/interaction controls cover the gameplay loop.
 
 ## Loot, equipment and recovery
 
@@ -51,6 +62,8 @@ Death ends combat immediately. **Return to the refuge**, resupply, then recover 
 ## Saves and mods
 
 The game autosaves locally at accepted decisions and every five simulation seconds. Reloaded field journeys begin paused. **Export journey** downloads a portable replay including the seed, accepted commands, rules version and exact content pack. Imports validate and reconstruct the journey; malformed or unsupported saves report an error and preserve the current game. If storage is blocked, export manually.
+
+Expanded journeys use a separate save slot and rules version. Your original demo save remains untouched; the hero chooser can export it for recovery with baseline commit `d0db60e`. The expanded game explicitly rejects demo histories because the map graph and simulation clock changed.
 
 The [package README](../../packages/diablo2/README.md#make-content-mods) describes editable hero, spell, item, boss and map definitions. Use **Export content pack**, edit the JSON, and **Load content mod** to begin a new journey. Existing journeys retain their original content.
 

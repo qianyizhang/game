@@ -137,9 +137,19 @@ _Avoid_: Actor, when counting conversations; turn, when referring to a whole con
 
 ## Emberwake
 
-**Act**: One chapter of the lantern story, with an explorable map, ward objectives and a final boss.
+**Act**: One chapter of the lantern story, owning a connected set of regions, shared ward objectives and one final boss.
 
-**Ward**: A map objective that must be activated before its final boss becomes vulnerable.
+**Region**: A named explorable area with its own persistent enemies, loot, exploration and objectives. It owns one map and belongs to one act.
+
+**Map**: A region’s terrain layout: variable-size tile grid, rooms, paths, terrain patches and landmarks. Use region for the place, map for its geometry.
+
+**Dungeon**: A named group of regions arranged as connected numbered floors within an act.
+
+**Level / floor**: A numbered vertical layer of a dungeon. Character level remains the separate experience progression term; use floor in travel labels.
+
+**Region portal**: A named connection to another region, with an explicit arrival portal. Stairs are region portals; ward and boss requirements can seal a connection. A town portal instead preserves the hero’s exact return position.
+
+**Ward**: A region objective belonging to an act. All act wards must activate before its final boss becomes vulnerable and its deepest stair opens.
 
 **Refuge**: The safe town where a hero heals, purchases supplies, stores loot and travels to unlocked acts.
 
