@@ -43,4 +43,6 @@ The subsequent clean-checkout run exposed a scaffold test that assumed the ignor
 
 The first complete hosted geometry run passed 118 of 127 tests; the other nine exceeded 15 seconds, without assertion failures. Its 495-second suite runtime was 3.2 times the local 155-second runtime. Geometry now uses a single project budget of 15 seconds locally and 60 seconds in CI, with redundant per-test overrides removed. Worker limits, assertions and application timeouts retain their existing values.
 
+Browser CI stops at its first failed case so diagnostics and artifacts survive before repeated journeys consume the job limit. It runs independently of maintenance for faster feedback; both jobs remain required for a successful workflow, and successful browser runs retain the full selected test matrix.
+
 Publication requires uploading the historical LFS objects, exact leases for each rewritten remote branch and verification of the final main revision. Local tests and storage checks do not establish successful remote CI; its run and fresh-clone receipts are separate session evidence.

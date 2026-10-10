@@ -23,6 +23,10 @@ All maintained source requires enforced check coverage. Passing a slice does not
 - **3D / DCC work**: Run `npm run check:full` for changes affecting 3D construction, animation, rendering/export or DCC delivery (`src/art3d`, DCC sources/delivery, or their shared helpers/dependencies). Geometry assertions or configuration affecting their behavior also use this gate. Use `npm run test:geometry -- <file>` for focused iteration.
 - **CI**: Always executes `npm run check:full` and `npm run test:browser`.
 
+The two CI jobs run independently and both must pass. Hosted browser runs stop at the
+first failed case so its diagnostics and artifacts survive before similar journeys repeat
+the fault; successful runs execute the full selected suite.
+
 Static checks still cover 3D sources. Browser/native gates run separately for affected behavior;
 `check:full` does not invoke them. Run the selected completion gate once after the final
 change, with one gate owner per checkout to avoid overlapping agent runs. Report the command

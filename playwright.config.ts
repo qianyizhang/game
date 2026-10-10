@@ -7,6 +7,8 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   retries: 0,
+  // Emit the first hosted failure and its artifacts before repeating the same fault.
+  maxFailures: process.env.CI ? 1 : undefined,
   timeout: 30_000,
   reporter: 'list',
   use: {

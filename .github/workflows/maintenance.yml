@@ -35,7 +35,6 @@ jobs:
       - run: npm run check:full
 
   browser:
-    needs: maintenance
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
