@@ -168,38 +168,37 @@ existing protection. See [retention authority](../../docs/engineering/maintenanc
 ## Canid rig and retargeting pilot
 
 Open `/?workbench=dcc&compare=canid`, or choose **Canid motion study** in the workbench.
-Ash is the base character; Russet changes its appearance; Moss has a broader, shorter
-fitted skeleton. The three characters share idle (4 s), walk (2 s), and look (4 s)
-source actions at 24 fps. All deliveries have 20 deformation joints. The comparison
-uses one camera and clock, exposes clay/material and skeleton views, and moves the
-ground grid at each delivered walk's recorded travel speed.
+The refined family has 28 deformation joints and four saved source clips at 60 fps:
+alert idle (4 s), brisk walk (0.90 s), trot (0.60 s), and planted look (2.50 s).
+Ash supplies the family proportions, Russet changes the coat, and Moss is broader with
+shorter legs and fitted stride. The viewer offers both revisions and matched before/after
+views with one camera, clay/material and skeleton controls, and real elapsed time.
 
-The [pilot scope and findings](../../docs/art/trials/canid-retargeting.md) records the
-accepted scope, construction corrections, evidence, and limits. These are workbench
-pilot deliveries, not replacements for the existing Wolf gallery releases.
+The initial 20-joint, three-clip baseline remains byte-identical at its original paths.
+Use `--baseline` to select its command adapter. The [trial record](../../docs/art/trials/canid-retargeting.md)
+records the accepted scope, evidence and limitations. Neither revision replaces the Wolf gallery.
 
 ### Source ownership and editing
 
-- `subjects/canid/motion.blend`: shared `MotionRig` and the three source actions.
-  Animate `CTRL_body`, `CTRL_head`, `CTRL_tail`, and the four `CTRL_front.*` /
-  `CTRL_hind.*` foot controls. Foot IK and world-rest paw orientation preserve contact.
-- `subjects/canid/<ash|russet|moss>/source.blend`: authoritative character geometry,
-  bone-heat skin weights, materials, fitted rest rig, and derived control actions.
-- `subjects/canid/<id>/retarget.json`: fitting receipt, source identity, chain mapping,
-  displacement scales, and geometry/weight digest. Edit the shared source motion;
-  `fit` refreshes derived character actions. Save local character motion experiments
-  separately before fitting, which replaces the character's action library.
-- `assets/canid/<id>.glb` and `<id>.json`: baked multi-clip delivery and source-pinned
-  receipt, per-frame contact audit, and sampled native mesh poses.
+- [Family authoring recipes](subjects/canid/authoring/README.md) own anatomy, surface,
+  rig, motion parameters, fitting and delivery. Their module map and construction/review
+  commands live with the code. General native helpers remain shared.
+- `subjects/canid/refined/motion.blend` is the shared motion master. Body and foot controls
+  use world XYZ axes (X forward, Y left, Z up); head, neck, spine, pelvis, scapula, tail
+  and ear controls use their named bone's rest axes. Both source and target use the same
+  control convention. Hocks articulate, and toe-pivot compensation grounds heel lift.
+- `subjects/canid/refined/<id>/source.blend` owns native geometry, weights, materials,
+  fitted rest skeleton, and derived control actions. Each `retarget.json` pins source
+  identity, chain mapping, proportion corrections, and mesh/weight digest.
+- `assets/canid/refined/<id>.glb` and `<id>.json` are the baked deliveries and receipts.
+  They include sampled native poses and contact audits at every authored frame.
 
-`blender/canid_model.py` creates initial geometry only. `canid_rig.py` defines the
-initial family and source animation. `canid_pipeline.py` fits **saved** source actions
-and exports **saved** character skeletons and meshes. Export does not rebuild either
-source. It bakes evaluated parent-relative poses onto a temporary deformation skeleton.
-`canid.ts` exposes the commands and validates delivery identity, finite accessors,
-weights, normals, loop endpoints, contact audits, and budgets using the shared GLB
-reader. This dedicated multi-clip adapter leaves the existing single-clip adapter and
-its sealed receipts unchanged.
+Recipes are first-class source material and construct distinct candidates. Saved Blender
+masters remain authoritative for export. Fitting samples the saved shared actions rather
+than regenerating the gait, and preserves character meshes and weights. It deliberately
+replaces the character action library; save local motion experiments separately and move
+intended shared edits into the motion master before fitting. Export bakes a temporary
+constraint-free deformation skeleton and does not save over the master.
 
 ### Commands
 
@@ -209,20 +208,23 @@ restricted macOS sandbox. `BLENDER_BIN` can select another Blender 4.5 executabl
 ```sh
 nvm use
 npm run dcc:canid -- check
+npm run dcc:canid -- check --baseline
 npm run dcc:canid -- fit
 npm run dcc:canid -- export --output test-results/canid-candidate-01
 npm run dcc:canid -- verify test-results/canid-edit-proof-01
 CANID_NATIVE_RESULTS=test-results/canid-edit-proof-01 npm run test:browser -- tests/browser/canid.spec.ts
 ```
 
-Export and verification require fresh output files/directories. Inspect new exports
-before explicitly replacing this pilot's delivered files; never copy a mutation-test
-candidate into the pilot. `check` checks the bundled deliveries; an optional directory
-argument checks a fresh export against the current authoritative sources. For a new
-independent bootstrap, use `bootstrap --root <fresh-directory>`; bootstrap refuses to
-overwrite existing sources. Ordinary builds and checks do not launch Blender.
+Export and verification require fresh output files/directories. Inspect new exports before
+explicitly replacing the refined delivery; never publish a mutation-test candidate. `check`
+validates bundled source/delivery identities, complete clips, normalized skinning and
+normals, loop endpoints, foot clearance/contact and budgets. An optional directory argument
+checks a fresh export against the current masters. For independent reconstruction use
+`bootstrap --root <fresh-directory>`; it refuses existing requested masters before writing.
+Ordinary builds and checks do not launch Blender.
 
-The native verifier copies sources, changes one saved look-action key by 0.18 radians,
-fits all three targets, checks unchanged mesh/weight digests, saves/reloads, and exports
-new models. The optional browser case compares these changed deliveries with their
-native pose receipts. Without `CANID_NATIVE_RESULTS`, that case is explicitly skipped.
+The native verifier refuses construction over existing sources, then edits one saved look
+key by 0.18 radians on disposable copies. It fits all three targets, checks unchanged mesh
+and weight digests, saves/reloads, and exports. The optional browser case compares these
+changed deliveries with their native pose receipts. Without `CANID_NATIVE_RESULTS`, that
+case is explicitly skipped. Successful technical checks do not establish visual approval.

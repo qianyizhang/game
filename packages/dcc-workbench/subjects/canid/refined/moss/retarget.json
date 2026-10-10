@@ -1,0 +1,21 @@
+{
+  "family": "canid-articulated-v2",
+  "character": "moss",
+  "sourceSha256": "17b757c529440a8353b8b61fe3c9c44c873e1f53d967f90929a711d42506de13",
+  "meshSha256": "edf3c757ec96317138420ba275393ed8f87be8180a70a45de4724385b8f68a28",
+  "mode": "retarget",
+  "chainMap": {
+    "front.L": "front.L",
+    "front.R": "front.R",
+    "hind.L": "hind.L",
+    "hind.R": "hind.R"
+  },
+  "referencePose": "saved fitted rest skeleton; identical control axes",
+  "corrections": {
+    "strideScale": 0.77,
+    "heightScale": 0.77,
+    "widthScale": 1.22,
+    "bodyLengthScale": 1.07,
+    "contact": "articulated hocks; toe roll fitted to target paw proportions"
+  }
+}

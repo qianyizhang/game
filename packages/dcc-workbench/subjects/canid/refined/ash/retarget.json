@@ -1,0 +1,21 @@
+{
+  "family": "canid-articulated-v2",
+  "character": "ash",
+  "sourceSha256": "17b757c529440a8353b8b61fe3c9c44c873e1f53d967f90929a711d42506de13",
+  "meshSha256": "289ac5d4812103722fb31b2908c94a2ff404dc815856579626997e619a3e3b8d",
+  "mode": "direct",
+  "chainMap": {
+    "front.L": "front.L",
+    "front.R": "front.R",
+    "hind.L": "hind.L",
+    "hind.R": "hind.R"
+  },
+  "referencePose": "saved fitted rest skeleton; identical control axes",
+  "corrections": {
+    "strideScale": 1.0,
+    "heightScale": 1.0,
+    "widthScale": 1.0,
+    "bodyLengthScale": 1.0,
+    "contact": "articulated hocks; toe roll fitted to target paw proportions"
+  }
+}

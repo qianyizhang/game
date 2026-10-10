@@ -9,28 +9,50 @@ import { record } from './contracts.ts';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const ids = ['ash', 'russet', 'moss'];
-const durations: Record<string, number> = { idle: 4, walk: 2, look: 4 };
+const refinedDurations: Record<string, number> = { idle: 4, walk: 0.9, trot: 0.6, look: 2.5 };
+const baselineDurations: Record<string, number> = { idle: 4, walk: 2, look: 4 };
 const hash = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
 
-export function verifyCanid(
-  directory = join(root, 'assets/canid'),
-  sources = join(root, 'subjects/canid'),
-) {
+export function verifyCanid({
+  baseline = false,
+  directory,
+  sources,
+}: {
+  baseline?: boolean;
+  directory?: string;
+  sources?: string;
+} = {}) {
+  directory ??= join(root, baseline ? 'assets/canid' : 'assets/canid/refined');
+  sources ??= join(root, baseline ? 'subjects/canid' : 'subjects/canid/refined');
+  const durations = baseline ? baselineDurations : refinedDurations;
+  const exporterPaths = baseline
+    ? ['canid_pipeline.py', 'canid_rig.py', 'native_types.py']
+    : [
+        'subjects/canid/authoring/delivery.py',
+        'subjects/canid/authoring/rig.py',
+        'subjects/canid/authoring/parameters.py',
+        'blender/native_types.py',
+      ];
   return ids.map((id) => {
     const bytes = readFileSync(join(directory, `${id}.glb`));
     const receipt = record(JSON.parse(readFileSync(join(directory, `${id}.json`), 'utf8')));
     if (
-      receipt.schemaVersion !== 1 ||
+      receipt.schemaVersion !== (baseline ? 1 : 2) ||
       receipt.character !== id ||
       receipt.sourceSha256 !== hash(join(sources, id, 'source.blend')) ||
       receipt.motionSha256 !== hash(join(sources, 'motion.blend')) ||
       receipt.modelSha256 !== hash(join(directory, `${id}.glb`))
     )
       throw new Error(`Stale canid delivery: ${id}`);
+    if (
+      JSON.stringify(Object.keys(record(receipt.exportScripts)).sort()) !==
+      JSON.stringify([...exporterPaths].sort())
+    )
+      throw new Error('Incomplete canid exporter identity');
     for (const [name, expected] of Object.entries(record(receipt.exportScripts))) {
       if (
-        !['canid_pipeline.py', 'canid_rig.py', 'native_types.py'].includes(name) ||
-        hash(join(root, 'blender', name)) !== expected
+        !exporterPaths.includes(name) ||
+        hash(join(root, baseline ? 'blender' : '', name)) !== expected
       )
         throw new Error(`Stale canid exporter: ${name}`);
     }
@@ -41,7 +63,7 @@ export function verifyCanid(
     const values = gltf.accessors.map((_, i) => accessorValues(bytes, gltf, i));
     const names = gltf.animations.map((a) => a.name).sort();
     if (JSON.stringify(names) !== JSON.stringify(Object.keys(durations).sort()))
-      throw new Error('Expected three named canid clips');
+      throw new Error('Incomplete named canid clips');
     for (const animation of gltf.animations) {
       const seconds = durations[animation.name ?? ''];
       for (const sampler of animation.samplers) {
@@ -87,8 +109,8 @@ export function verifyCanid(
       }
     if (
       bytes.length > 4_000_000 ||
-      triangles > 50_000 ||
-      gltf.skins.some((s) => s.joints.length > 32)
+      triangles > (baseline ? 50_000 : 100_000) ||
+      gltf.skins.some((s) => s.joints.length > (baseline ? 32 : 40))
     )
       throw new Error('Canid exceeds pilot budget');
     if (gltf.buffers.some((b) => b.uri) || gltf.images?.some((i) => i.uri))
@@ -99,6 +121,26 @@ export function verifyCanid(
         const value = data[field];
         if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 0.001)
           throw new Error(`Canid contact failure: ${field}`);
+      }
+    }
+    if (!baseline) {
+      const contacts = record(receipt.contacts);
+      if (
+        JSON.stringify(Object.keys(contacts).sort()) !==
+        JSON.stringify(Object.keys(durations).sort())
+      )
+        throw new Error('Incomplete contact evidence');
+      for (const name of ['walk', 'trot']) {
+        const contact = record(contacts[name]);
+        if (
+          typeof contact.minSwingClearance !== 'number' ||
+          contact.minSwingClearance < 0.08 ||
+          typeof contact.minFootHeight !== 'number' ||
+          contact.minFootHeight < -0.002 ||
+          typeof contact.maxIkError !== 'number' ||
+          contact.maxIkError > 0.002
+        )
+          throw new Error(`Invalid articulated gait: ${id}/${name}`);
       }
     }
     return {
@@ -112,13 +154,15 @@ export function verifyCanid(
 }
 
 function main() {
-  const [command = 'check', ...args] = process.argv.slice(2);
+  const argv = process.argv.slice(2);
+  const baseline = argv.includes('--baseline');
+  const [command = 'check', ...args] = argv.filter((a) => a !== '--baseline');
   if (command === 'check') {
-    console.log(JSON.stringify(verifyCanid(args[0]), null, 2));
+    console.log(JSON.stringify(verifyCanid({ baseline, directory: args[0] }), null, 2));
     return;
   }
-  if (!['bootstrap', 'fit', 'export', 'verify'].includes(command))
-    throw new Error('Use check, bootstrap, fit, export, or verify');
+  if (!['bootstrap', 'fit', 'export', 'verify', 'review'].includes(command))
+    throw new Error('Use check, bootstrap, fit, export, review, or verify');
   const blender =
     process.env.BLENDER_BIN ??
     [
@@ -126,8 +170,10 @@ function main() {
       join(root, '.runtime/Blender.app/Contents/MacOS/Blender'),
     ].find(existsSync) ??
     'blender';
-  const source = join(root, 'subjects/canid');
-  const script = command === 'verify' ? 'verify_canid.py' : 'canid_pipeline.py';
+  const source = join(root, baseline ? 'subjects/canid' : 'subjects/canid/refined');
+  const script = baseline
+    ? join(root, 'blender', command === 'verify' ? 'verify_canid.py' : 'canid_pipeline.py')
+    : join(root, 'subjects/canid/authoring', command === 'verify' ? 'verify.py' : 'delivery.py');
   if (command === 'verify' && args.length !== 1)
     throw new Error('verify requires a fresh output directory');
   const nativeArgs =
@@ -140,7 +186,7 @@ function main() {
       '--python-exit-code',
       '1',
       '--python',
-      join(root, 'blender', script),
+      script,
       '--',
       ...nativeArgs,
     ],

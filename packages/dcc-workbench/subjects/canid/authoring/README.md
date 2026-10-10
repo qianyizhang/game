@@ -32,3 +32,42 @@ remain independently editable and reach every character without rebuilding its m
 The [trial record](../../../../../docs/art/trials/canid-retargeting.md) owns the accepted
 scope and review findings. Python recipes enter Ruff and strict mypy through the repository
 configuration; delivery and native/browser checks exercise their observable results.
+
+## Module map
+
+| Module          | Owns                                                                           |
+| --------------- | ------------------------------------------------------------------------------ |
+| `parameters.py` | Named forms, coordinate convention, clip timing, stance and clearance targets  |
+| `anatomy.py`    | Connected masses, grown fur silhouette, paws, fitted face and ear construction |
+| `surface.py`    | Regional pigment, subtle directional relief, packed fine normal texture        |
+| `geometry.py`   | Local construction and skin-binding helpers; real toe contact probes           |
+| `rig.py`        | Deformation joints, shoulder controls, hocks, IK targets and rolling paws      |
+| `motion.py`     | One-time authoring of shared source actions; not invoked by fitting/export     |
+| `delivery.py`   | Fresh construction, saved-action fitting, baking, contact audit and export     |
+| `studio.py`     | Matched native review captures; never saves its temporary review changes       |
+| `verify.py`     | Disposable source mutation, save/reload and propagation without remeshing      |
+
+## Working commands
+
+Run from the repository root with its pinned Node runtime. Native commands use the local
+Blender installation and require approved execution on this Mac.
+
+```sh
+npm run dcc:canid -- bootstrap --root test-results/canid-next
+npm run dcc:canid -- fit --root test-results/canid-next
+npm run dcc:canid -- review --root test-results/canid-next --character ash --output test-results/canid-review
+npm run dcc:canid -- export --root test-results/canid-next --output test-results/canid-export
+npm run dcc:canid -- check
+npm run dcc:canid -- check --baseline
+npm run dcc:canid -- verify test-results/canid-native-edit
+```
+
+Construction refuses any existing requested master before writing. Export requires a fresh
+output directory and never calls construction. The shared motion master owns the four clips;
+fit deliberately replaces those derived actions in each character. It keeps mesh data,
+skin weights and materials intact. Native character action edits must be transferred to the
+shared source before fitting if they are intended to survive that replacement.
+
+Review coordinates and travel speeds are in model units; there is no calibrated real-world
+metre scale. The stylized gait recipes use empirical canine studies as guidance, not imported
+motion capture or a physiological simulation. Read the trial record for sources and limits.
