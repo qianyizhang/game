@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { browserBudget } from './budget';
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { relative } from 'node:path';
@@ -16,22 +17,26 @@ test('standalone SVG assets load without app CSS and the cabinet filters by coll
   await page.goto('/' + relative(process.cwd(), output).split('\\').join('/') + '/index.html');
   await expect(page.locator('.asset')).toHaveCount(manifest.length);
   // Decoding catches malformed SVGs and broken links across every exported asset.
-  const failed = await page.locator('.asset img').evaluateAll(async (images) => {
-    const results = await Promise.all(
-      images.map(async (image) => {
-        const img = image as HTMLImageElement;
-        img.loading = 'eager';
-        try {
-          await img.decode();
-          return img.naturalWidth > 0 ? null : img.getAttribute('src');
-        } catch {
-          return img.getAttribute('src');
-        }
-      }),
-    );
-    return results.filter(Boolean);
-  });
-  expect(failed).toEqual([]);
+  // Vite may reload a just-created cabinet; retry decoding the complete current document.
+  await expect(async () => {
+    const decoded = await page.locator('.asset img').evaluateAll(async (images) => {
+      const results = await Promise.all(
+        images.map(async (image) => {
+          const img = image as HTMLImageElement;
+          img.loading = 'eager';
+          try {
+            await img.decode();
+            return img.naturalWidth > 0 ? null : img.getAttribute('src');
+          } catch {
+            return img.getAttribute('src');
+          }
+        }),
+      );
+      return { count: images.length, failed: results.filter(Boolean) };
+    });
+    expect(decoded.count).toBe(manifest.length);
+    expect(decoded.failed).toEqual([]);
+  }).toPass({ timeout: browserBudget(10_000) });
   for (const [group, file] of [
     ['Blindside · Jokers', 'blindside-cabinet'],
     ['Slay the Spire · Cards', 'spire-cabinet'],

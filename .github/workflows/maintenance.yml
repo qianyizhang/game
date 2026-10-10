@@ -57,8 +57,9 @@ jobs:
       # Contact sheets are generated separately with test:browser:review.
       # Contiguous sharding would put all 29 long asset journeys on one runner.
       # Balance those through round-robin tags, then shard the other 123 cases.
-      - run: npm run test:browser -- --grep=@asset-shard-${{ matrix.shard }}
+      # Shared journeys run first to expose interaction failures before the bulk batch.
       - run: npm run test:browser -- --grep-invert=@asset-shard- --shard=${{ matrix.shard }}/3
+      - run: npm run test:browser -- --grep=@asset-shard-${{ matrix.shard }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:

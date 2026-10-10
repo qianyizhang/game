@@ -216,13 +216,32 @@ test('actions hold their final pose, replay, expose phase markers, and show scen
     await expect(viewer).toHaveAttribute('data-time', duration.toFixed(3));
     await page.waitForTimeout(160);
     await expect(viewer).toHaveAttribute('data-time', duration.toFixed(3));
-    await page.getByRole('button', { name: 'Replay motion', exact: true }).click();
-    await expect(viewer).not.toHaveAttribute('data-time', duration.toFixed(3));
-    await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
+    // Observe the reset before clicking; a short action may finish before the click returns.
+    await Promise.all([
+      page
+        .waitForFunction(
+          () => document.querySelector('.canid-render')?.getAttribute('data-time') === '0.000',
+          undefined,
+          { polling: 'raf', timeout: browserBudget(5_000) },
+        )
+        .then((reset) => reset.dispose()),
+      page.getByRole('button', { name: 'Replay motion', exact: true }).click(),
+    ]);
     const marker = page.getByRole('button', {
       name: clip === 'roll' ? /^back ·/ : clip === 'flee' ? /^run ·/ : /^contact ·/,
     });
+    const markerTime = (await marker.innerText()).match(/· (\d+(?:\.\d+)?) s$/)?.[1];
+    expect(markerTime).toBeDefined();
+    // Phase selection pauses even when a short replay finishes before the next click.
     await marker.click();
+    // Phase labels display hundredths; native phase times retain their finer precision.
+    await expect(async () => {
+      expect(Number(await viewer.getAttribute('data-time'))).toBeCloseTo(Number(markerTime), 2);
+    }).toPass({ timeout: browserBudget(5_000) });
+    const heldTime = await viewer.getAttribute('data-time');
+    await expect(page.getByRole('button', { name: 'Play motion', exact: true })).toBeVisible();
+    await page.waitForTimeout(160);
+    await expect(viewer).toHaveAttribute('data-time', heldTime!);
     await page.screenshot({ path: info.outputPath(`${clip}-contact.png`), fullPage: true });
   }
   await page.getByLabel('Movement', { exact: true }).selectOption('flee');
@@ -240,12 +259,15 @@ test('visible playback keeps elapsed time after a slow render frame', async ({ p
   await expect(viewer).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await page.getByLabel('Movement', { exact: true }).selectOption('roll');
   await expect(viewer).toHaveAttribute('data-time', '0.000');
-  await page.getByRole('button', { name: 'Play motion', exact: true }).click();
-  const before = Number(await viewer.getAttribute('data-time'));
-  // Inject a real main-thread stall: clamping each delta to 50 ms loses elapsed time.
-  await page.evaluate(
-    () =>
-      new Promise<void>((resolve) =>
+  // Start and sample in one browser task so automation latency cannot finish the action.
+  const { before, after } = await page
+    .getByRole('button', { name: 'Play motion', exact: true })
+    .evaluate(async (button) => {
+      const viewer = document.querySelector<HTMLElement>('.canid-render')!;
+      const before = Number(viewer.dataset.time);
+      (button as HTMLButtonElement).click();
+      // Inject a real main-thread stall: clamping each delta to 50 ms loses elapsed time.
+      await new Promise<void>((resolve) =>
         requestAnimationFrame(() => {
           const start = performance.now();
           while (performance.now() - start < 180) {
@@ -253,11 +275,12 @@ test('visible playback keeps elapsed time after a slow render frame', async ({ p
           }
           requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
         }),
-      ),
-  );
-  const after = Number(await viewer.getAttribute('data-time'));
+      );
+      return { before, after: Number(viewer.dataset.time) };
+    });
   expect(after - before).toBeGreaterThan(0.16);
-  await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
+  await page.getByLabel('Shared motion time').fill('0');
+  await expect(viewer).toHaveAttribute('data-time', '0.000');
 });
 
 test('attack stage clamps stale indices and recovers across empty timelines', async ({ page }) => {

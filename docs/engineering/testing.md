@@ -37,6 +37,12 @@ Encoded byte counts and fixed early seek times are **replace**: a valid low-fram
 WebM can be small and repeat its first frame at both timestamps. The frame callback
 follows the decoder's presentation cadence ([browser API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestVideoFrameCallback)).
 
+Short one-shot actions can finish between automation calls. Waiting for their transient
+pause label is **replace**: keep completion, final-pose hold and replay checks, then use
+a phase marker to pause at a defined pose and verify it holds. Looping-motion journeys
+retain the direct pause-button check. Start and measure a deliberate slow-frame probe
+within one browser task so protocol latency cannot consume the action first.
+
 Prefer outcomes over incidental construction: supported motion, fitted attachments and
 resource release matter; exact mesh counts, vertex counts, helper calls and intermediate
 callback sequences usually do not. A coordinate or name can remain in a narrow legacy
