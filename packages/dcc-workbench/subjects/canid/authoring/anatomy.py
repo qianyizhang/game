@@ -29,7 +29,6 @@ def build_character(form: Form, rig: bpy.types.Object) -> None:
         ("Cranium", (1.12, 0, 1.80), (0.28, 0.192, 0.225)),
         ("Muzzle bridge", (1.40, 0, 1.685), (0.32, 0.126, 0.12)),
         ("Muzzle tip", (1.61, 0, 1.66), (0.12, 0.10, 0.095)),
-        ("Jaw", (1.30, 0, 1.584), (0.285, 0.115, 0.073)),
     ]
     for side in (-1, 1):
         y = side * 0.28
@@ -133,6 +132,16 @@ def build_character(form: Form, rig: bpy.types.Object) -> None:
     )
     decimate.ratio = 0.68
     bpy.ops.object.modifier_apply(modifier=decimate.name)
+    # Open a real oral seam. The separate mandible rotates about its saved hinge;
+    # stretching a closed muzzle would make a bite look like melting skin.
+    bpy.ops.mesh.primitive_cube_add(location=form.point((1.76, 0, 1.40)))
+    cutter = active_object()
+    cutter.scale = form.point((0.60, 0.40, 0.215))
+    present(bpy.context.view_layer).objects.active = body
+    cut = require(body.modifiers.new("Mouth opening", "BOOLEAN"), bpy.types.BooleanModifier)
+    cut.operation, cut.object = "DIFFERENCE", cutter
+    bpy.ops.object.modifier_apply(modifier=cut.name)
+    bpy.data.objects.remove(cutter, do_unlink=True)
     groom(body, form)
     bind(body, rig, form)
     # The face is rigid to its skull; neck blending stays behind the jaw hinge.
@@ -144,6 +153,9 @@ def build_character(form: Form, rig: bpy.types.Object) -> None:
     ground_soles(body, form)
     coat = coat_material()
     paint(body, form, coat)
+    jaw = ellipsoid("Mandible", (1.365, 0, 1.566), (0.325, 0.108, 0.053), form)
+    bind(jaw, rig, form, "jaw")
+    paint(jaw, form, coat)
     details(form, rig)
     studio(rig)
 
@@ -169,6 +181,25 @@ def details(form: Form, rig: bpy.types.Object) -> None:
         bind(obj, rig, form, bone)
 
     solid("Nose", (1.719, 0, 1.667), (0.053, 0.096, 0.064), charcoal)
+    solid("Palate", (1.40, 0, 1.616), (0.255, 0.090, 0.008), black)
+    solid("Lower mouth", (1.395, 0, 1.595), (0.260, 0.085, 0.012), black, "jaw")
+    tongue = material("Tongue | muted rose", (0.28, 0.095, 0.08), 0.85)
+    solid("Tongue", (1.405, 0, 1.603), (0.18, 0.058, 0.009), tongue, "jaw")
+    enamel = material("Teeth | warm ivory", (0.70, 0.65, 0.49), 0.48)
+    for side in (-1, 1):
+        for bone, x, z, direction in [("head", 1.43, 1.621, -1), ("jaw", 1.49, 1.594, 1)]:
+            tooth = tube(
+                f"Canine {bone}.{side}",
+                [
+                    (x, side * 0.08, z),
+                    (x + 0.012, side * 0.08, z + direction * 0.038),
+                    (x + 0.025, side * 0.078, z + direction * 0.065),
+                ],
+                [0.016, 0.011, 0.001],
+                form,
+            )
+            mesh_data(tooth).materials.append(enamel)
+            bind(tooth, rig, form, bone)
     for side in (-1, 1):
         suffix = "L" if side > 0 else "R"
         solid(f"Nostril.{suffix}", (1.755, side * 0.055, 1.681), (0.013, 0.022, 0.016), black)
@@ -210,7 +241,7 @@ def details(form: Form, rig: bpy.types.Object) -> None:
         ]:
             obj = tube(f"{name}.{suffix}", points, radii, form)
             mesh_data(obj).materials.append(black if name == "Lip" else lid)
-            bind(obj, rig, form, "head")
+            bind(obj, rig, form, "jaw" if name == "Lip" else "head")
         # A curved shell: broad buried root, cupped front, soft rim and tapered apex.
         vertices: list[Point] = []
         for center, rx, ry in [

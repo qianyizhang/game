@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import math
 from typing import TYPE_CHECKING
 
@@ -32,8 +33,11 @@ def rotate(rig: bpy.types.Object, name: str, x: float = 0, y: float = 0, z: floa
 
 def author_motion(rig: bpy.types.Object) -> None:
     import bpy
+    from action_motion import pose_action
     from mathutils import Euler, Vector
+    from motion_spec import author_spec, save_spec
 
+    rig["motion_clips"] = json.dumps(list(CLIPS))
     scene = present(bpy.context.scene)
     scene.render.fps = FPS
     pose = present(rig.pose)
@@ -48,14 +52,18 @@ def author_motion(rig: bpy.types.Object) -> None:
                 pose.bones[name].location = (0, 0, 0)
                 pose.bones[name].rotation_euler = (0, 0, 0)
             p, cycle = frame / end, math.tau * frame / end
-            if gait:
-                energetic = clip == "trot"
+            if clip in ("lunge", "bite", "swipe", "roll", "flee"):
+                pose_action(rig, clip, p)
+            elif gait:
+                energetic = clip in ("trot", "run")
                 body = pose.bones["CTRL_body"]
                 body.location.z = (
                     (-0.050 - 0.030 * math.cos(2 * cycle - 2.0))
                     if energetic
                     else -0.018 + 0.012 * math.cos(2 * cycle)
                 )
+                if clip == "run":
+                    body.location.z -= 0.04
                 body.rotation_euler = (
                     0.009 * math.sin(cycle),
                     0.012 * math.sin(2 * cycle - 0.3),
@@ -145,7 +153,9 @@ def author_motion(rig: bpy.types.Object) -> None:
                     rig,
                     f"CTRL_ear.{side}",
                     x=0.065 * flick * (1 if side == "L" else -1),
-                    y=0.10 * flick,
+                    y=(-2.60 * envelope(p, 0.02, 0.18, 0.77, 0.99))
+                    if clip == "roll"
+                    else 0.10 * flick,
                 )
             for name in CONTROLS:
                 bone = pose.bones[name]
@@ -156,6 +166,7 @@ def author_motion(rig: bpy.types.Object) -> None:
         action["travel_speed"] = gait.speed(end) if gait else 0.0
         action["stance_fraction"] = gait.stance if gait else 1.0
         action["foot_offsets"] = list(gait.offsets) if gait else [0.0] * 4
+        save_spec(action, author_spec(rig, clip, end, float(action["travel_speed"])))
     rig.animation_data_create().action = bpy.data.actions["idle"]
     scene.frame_start, scene.frame_end = 0, CLIPS["idle"]
     scene.frame_set(0)

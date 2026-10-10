@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
 from native_types import present, require
-from parameters import FEET, Form, Point, paw_origin
+from parameters import FEET, Form, Point, paw_origin, pole_origin
 
 if TYPE_CHECKING:
     import bpy
@@ -25,11 +26,17 @@ ROTATIONS = {
     "CTRL_spine": "spine",
     "CTRL_neck": "neck",
     "CTRL_head": "head",
+    "CTRL_jaw": "jaw",
     **{f"CTRL_scapula.{side}": f"scapula.{side}" for side in ("L", "R")},
     **{f"CTRL_tail.{i}": f"tail.{i}" for i in range(4)},
     **{f"CTRL_ear.{side}": f"ear.{side}" for side in ("L", "R")},
 }
-CONTROLS = ("CTRL_body", *ROTATIONS, *(f"CTRL_{foot}" for foot in FEET))
+CONTROLS = (
+    "CTRL_body",
+    *ROTATIONS,
+    *(f"CTRL_{foot}" for foot in FEET),
+    *(f"CTRL_pole.{foot}" for foot in FEET),
+)
 
 
 def joints(form: Form) -> list[Joint]:
@@ -38,6 +45,7 @@ def joints(form: Form) -> list[Joint]:
         Joint("spine", (-0.12, 0, 1.33), (0.55, 0, 1.42), "pelvis"),
         Joint("neck", (0.55, 0, 1.42), (1.04, 0, 1.76), "spine"),
         Joint("head", (1.04, 0, 1.76), (1.68, 0, 1.67), "neck"),
+        Joint("jaw", (1.075, 0, 1.615), (1.57, 0, 1.565), "head"),
     ]
     for foot in FEET:
         front = foot.startswith("front")
@@ -94,6 +102,7 @@ def make_rig(form: Form, name: str = "CharacterRig") -> bpy.types.Object:
     # agree with the documented world axes; vertical handles would rotate local lift sideways.
     locations = {"CTRL_body": form.point((0, 0, 1.25))}
     locations.update({f"CTRL_{foot}": form.point(paw_origin(foot)) for foot in FEET})
+    locations.update({f"CTRL_pole.{foot}": form.point(pole_origin(foot)) for foot in FEET})
     for key, point in locations.items():
         bone = data.edit_bones.new(key)
         bone.head, bone.tail = point, Vector(point) + Vector((0, 0.16, 0))
@@ -128,6 +137,7 @@ def make_rig(form: Form, name: str = "CharacterRig") -> bpy.types.Object:
         )
         constraint.target, constraint.subtarget = rig, f"MCH_pastern.{foot}"
         constraint.chain_count, constraint.use_stretch = 2, False
+        constraint.pole_target, constraint.pole_subtarget = rig, f"CTRL_pole.{foot}"
         for part in ("pastern", "paw"):
             rotation = require(
                 pose.bones[f"{part}.{foot}"].constraints.new("COPY_ROTATION"),
@@ -142,8 +152,28 @@ def make_rig(form: Form, name: str = "CharacterRig") -> bpy.types.Object:
         )
         rotation.target, rotation.subtarget = rig, control
         rotation.target_space = rotation.owner_space = "LOCAL"
+    # Calibrate against the actual native rest knee, avoiding bone-roll conventions.
+    # Two orthogonal samples give the rotation basis of Blender's pole control.
+    for foot in FEET:
+        upper = pose.bones[f"upper.{foot}"]
+        constraint = require(
+            pose.bones[f"lower.{foot}"].constraints[0], bpy.types.KinematicConstraint
+        )
+        constraint.pole_angle = 0
+        present(bpy.context.view_layer).update()
+        origin = upper.head.copy()
+        axis = (pose.bones[f"MCH_pastern.{foot}"].head - origin).normalized()
+        zero = upper.tail.copy()
+        center = origin + axis * (zero - origin).dot(axis)
+        u = (zero - center).normalized()
+        constraint.pole_angle = math.pi / 2
+        present(bpy.context.view_layer).update()
+        v = (upper.tail - center).normalized()
+        desired = (upper.bone.tail_local - center).normalized()
+        constraint.pole_angle = math.atan2(desired.dot(v), desired.dot(u))
+        present(bpy.context.view_layer).update()
     rig.show_in_front = True
     data.display_type = "OCTAHEDRAL"
-    rig["rig_family"] = "canid-articulated-v2"
+    rig["rig_family"] = "canid-actions-v3"
     rig["form"] = form.name
     return rig

@@ -6,10 +6,10 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { readGlb, accessorValues } from './glb.ts';
 import { record } from './contracts.ts';
+import { readMotions } from './motion-contract.ts';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const ids = ['ash', 'russet', 'moss'];
-const refinedDurations: Record<string, number> = { idle: 4, walk: 0.9, trot: 0.6, look: 2.5 };
 const baselineDurations: Record<string, number> = { idle: 4, walk: 2, look: 4 };
 const hash = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
 
@@ -24,20 +24,33 @@ export function verifyCanid({
 } = {}) {
   directory ??= join(root, baseline ? 'assets/canid' : 'assets/canid/refined');
   sources ??= join(root, baseline ? 'subjects/canid' : 'subjects/canid/refined');
-  const durations = baseline ? baselineDurations : refinedDurations;
   const exporterPaths = baseline
     ? ['canid_pipeline.py', 'canid_rig.py', 'native_types.py']
     : [
         'subjects/canid/authoring/delivery.py',
         'subjects/canid/authoring/rig.py',
         'subjects/canid/authoring/parameters.py',
+        'subjects/canid/authoring/contacts.py',
+        'subjects/canid/authoring/motion_spec.py',
         'blender/native_types.py',
       ];
   return ids.map((id) => {
     const bytes = readFileSync(join(directory, `${id}.glb`));
     const receipt = record(JSON.parse(readFileSync(join(directory, `${id}.json`), 'utf8')));
+    const motions = baseline ? null : readMotions(receipt.clips);
     if (
-      receipt.schemaVersion !== (baseline ? 1 : 2) ||
+      motions &&
+      JSON.stringify(motions) !==
+        JSON.stringify(
+          readMotions(JSON.parse(readFileSync(join(directory, `${id}.motions.json`), 'utf8'))),
+        )
+    )
+      throw new Error(`Motion metadata differs from native delivery: ${id}`);
+    const durations = motions
+      ? Object.fromEntries(Object.entries(motions).map(([id, m]) => [id, m.seconds]))
+      : baselineDurations;
+    if (
+      receipt.schemaVersion !== (baseline ? 1 : 3) ||
       receipt.character !== id ||
       receipt.sourceSha256 !== hash(join(sources, id, 'source.blend')) ||
       receipt.motionSha256 !== hash(join(sources, 'motion.blend')) ||
@@ -80,7 +93,8 @@ export function verifyCanid({
           end = output.slice(-n);
         const error = Math.max(...start.map((x, i) => Math.abs(x - end[i])));
         const opposite = n === 4 && Math.max(...start.map((x, i) => Math.abs(x + end[i]))) < 1e-5;
-        if (error > 1e-5 && !opposite) throw new Error(`Open animation loop: ${animation.name}`);
+        if ((!motions || motions[animation.name!].playback === 'loop') && error > 1e-5 && !opposite)
+          throw new Error(`Open animation loop: ${animation.name}`);
       }
     }
     let triangles = 0;
@@ -115,13 +129,31 @@ export function verifyCanid({
       throw new Error('Canid exceeds pilot budget');
     if (gltf.buffers.some((b) => b.uri) || gltf.images?.some((i) => i.uri))
       throw new Error('Canid has remote dependencies');
-    for (const contact of Object.values(record(receipt.contacts))) {
+    for (const [clip, contact] of Object.entries(record(receipt.contacts))) {
       const data = record(contact);
       for (const field of ['maxSoleHeight', 'maxSoleFrameSlip', 'ankleLoopError']) {
+        if (field === 'ankleLoopError' && motions?.[clip].playback === 'once') continue;
         const value = data[field];
         if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 0.001)
           throw new Error(`Canid contact failure: ${field}`);
       }
+      if (
+        !baseline &&
+        (typeof data.minBodyHeight !== 'number' ||
+          data.minBodyHeight < -0.002 ||
+          !Number.isFinite(data.minBodyHeight))
+      )
+        throw new Error(`Body passes through floor: ${id}/${clip}`);
+      if (
+        !baseline &&
+        (typeof data.maxRollingHeight !== 'number' ||
+          !Number.isFinite(data.maxRollingHeight) ||
+          data.maxRollingHeight > 0.04 ||
+          typeof data.maxIkError !== 'number' ||
+          !Number.isFinite(data.maxIkError) ||
+          data.maxIkError > 0.002)
+      )
+        throw new Error(`Invalid body support or limb reach: ${id}/${clip}`);
     }
     if (!baseline) {
       const contacts = record(receipt.contacts);
@@ -130,7 +162,7 @@ export function verifyCanid({
         JSON.stringify(Object.keys(durations).sort())
       )
         throw new Error('Incomplete contact evidence');
-      for (const name of ['walk', 'trot']) {
+      for (const name of ['walk', 'trot', 'run']) {
         const contact = record(contacts[name]);
         if (
           typeof contact.minSwingClearance !== 'number' ||

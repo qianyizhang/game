@@ -1,8 +1,8 @@
 {
-  "family": "canid-articulated-v2",
+  "family": "canid-actions-v3",
   "character": "moss",
-  "sourceSha256": "17b757c529440a8353b8b61fe3c9c44c873e1f53d967f90929a711d42506de13",
-  "meshSha256": "edf3c757ec96317138420ba275393ed8f87be8180a70a45de4724385b8f68a28",
+  "sourceSha256": "6dd1ea30c5875b35a0f49b2c71849c3ffa70e3e2b4b43224b4ca764e485e1eeb",
+  "meshSha256": "9fa8284690bfe14fed805c3a71b350a82c5def257573529016d3b1c2a0727ec8",
   "mode": "retarget",
   "chainMap": {
     "front.L": "front.L",

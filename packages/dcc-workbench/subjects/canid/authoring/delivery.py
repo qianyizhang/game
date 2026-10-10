@@ -15,7 +15,9 @@ if __name__ == "__main__":
 
 from anatomy import build_character  # noqa: E402
 from authoring_plan import save_working_source  # noqa: E402
+from contacts import fit_supports, support_evidence  # noqa: E402
 from motion import author_motion  # noqa: E402
+from motion_spec import read_spec, save_spec  # noqa: E402
 from native_types import mesh_data, present, require  # noqa: E402
 from parameters import CLIPS, FEET, FORMS, FPS, Form, contact_offset  # noqa: E402
 from rig import CONTROLS, activate, make_rig  # noqa: E402
@@ -98,22 +100,28 @@ def fit(root: Path, form: Form) -> dict[str, object]:
         directory=str(root / "motion.blend" / "Object") + "/", filename="MotionRig", link=False
     )
     source = bpy.data.objects["MotionRig"]
-    for clip in CLIPS:
-        if clip not in bpy.data.actions:
+    for name in json.loads(str(source["motion_clips"])):
+        if name not in bpy.data.actions:
             bpy.ops.wm.append(
-                directory=str(root / "motion.blend" / "Action") + "/", filename=clip, link=False
+                directory=str(root / "motion.blend" / "Action") + "/", filename=name, link=False
             )
     scene = present(bpy.context.scene)
     source.hide_render = True
     source.hide_set(True)
     source.animation_data_clear()
-    for clip, end in CLIPS.items():
-        original = bpy.data.actions[clip]
+    originals = [a for a in bpy.data.actions if a.get("motion_spec") is not None]
+    for original in originals:
+        clip = original.name
+        spec = read_spec(original)
+        end = round(spec["seconds"] * FPS)
         original.name = f"SOURCE_{clip}"
         source.animation_data_create().action = original
         fitted = bpy.data.actions.new(clip)
         fitted.use_fake_user = True
         target.animation_data_create().action = fitted
+        for point in spec["trajectory"]:
+            point[1] *= form.stride
+            point[2] *= form.stride
         for frame in range(end + 1):
             scene.frame_set(frame)
             for name in CONTROLS:
@@ -137,6 +145,22 @@ def fit(root: Path, form: Form) -> dict[str, object]:
                     dst.location.x *= form.length
                     dst.location.y *= form.width
                     dst.location.z *= form.height
+                if clip == "roll" and (
+                    name in [f"CTRL_{f}" for f in FEET] or name.startswith("CTRL_pole.")
+                ):
+                    src_body = present(source.pose).bones["CTRL_body"]
+                    rotation = src_body.rotation_euler.to_matrix()
+                    center = Vector((0, 0, 1.25)) + src_body.location
+                    local = rotation.inverted() @ (src.head - center)
+                    body_location = Vector(
+                        form.point((src_body.location.x, src_body.location.y, src_body.location.z))
+                    )
+                    dst.location = (
+                        Vector(form.point((0, 0, 1.25)))
+                        + body_location
+                        + rotation @ Vector(form.point((local.x, local.y, local.z)))
+                        - dst.bone.head_local
+                    )
                 dst.keyframe_insert("location", frame=frame, group=name)
                 dst.keyframe_insert("rotation_euler", frame=frame, group=name)
         fitted["source_clip"] = clip
@@ -145,6 +169,8 @@ def fit(root: Path, form: Form) -> dict[str, object]:
         fitted["travel_speed"] = float(original["travel_speed"]) * form.stride
         fitted["stance_fraction"] = original["stance_fraction"]
         fitted["foot_offsets"] = list(original["foot_offsets"])
+        save_spec(fitted, spec)
+        fit_supports(target, spec, form, clip, source)
     bpy.data.objects.remove(source, do_unlink=True)
     for action in list(bpy.data.actions):
         if action.name.startswith("SOURCE_"):
@@ -156,7 +182,7 @@ def fit(root: Path, form: Form) -> dict[str, object]:
     if mesh_digest() != before:
         raise ValueError("Retargeting changed character mesh or weights")
     profile: dict[str, object] = {
-        "family": "canid-articulated-v2",
+        "family": "canid-actions-v3",
         "character": form.name,
         "sourceSha256": sha(root / "motion.blend"),
         "meshSha256": before,
@@ -213,21 +239,44 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
         obj.name: [v.index for v in mesh_data(obj).vertices if v.co.z < 0.23 * form.height]
         for obj in source_meshes
     }
+    coat_rest = mesh_data(bpy.data.objects["Coat"])
+    body_regions = {
+        site: [
+            v.index
+            for v in coat_rest.vertices
+            if -0.9 * form.length < v.co.x < 0.7 * form.length
+            and v.co.z > 1.05 * form.height
+            and (
+                (site == "back" and v.co.z > 1.48 * form.height)
+                or (site == "left-flank" and v.co.y > 0.15 * form.width)
+                or (site == "right-flank" and v.co.y < -0.15 * form.width)
+            )
+        ]
+        for site in ("back", "left-flank", "right-flank")
+    }
     samples: dict[str, object] = {}
+    library = {}
     contacts: dict[str, object] = {}
     exported_actions = []
-    for clip, end in CLIPS.items():
-        original = bpy.data.actions[clip]
+    failures = []
+    originals = [a for a in bpy.data.actions if a.get("motion_spec") is not None]
+    for original in originals:
+        clip = original.name
+        spec = read_spec(original)
+        end = round(spec["seconds"] * FPS)
         original.name = f"CONTROL_{clip}"
         rig.animation_data_create().action = original
         action = bpy.data.actions.new(clip)
         action.use_fake_user = True
+        action["end_frame"] = end
         exported_actions.append(action)
         baked.animation_data_create().action = action
         clip_samples = []
         ankle_samples: list[list[list[float]]] = []
         sole_samples: list[list[list[float]]] = []
         foot_heights: list[float] = []
+        body_heights: list[float] = []
+        region_heights: list[dict[str, float]] = []
         sole_probes: dict[str, int] = json.loads(str(bpy.data.objects["Coat"]["sole_probes"]))
         max_ik_error = 0.0
         for frame in range(end + 1):
@@ -269,6 +318,21 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
                 foot_mesh = mesh_data(evaluated_foot)
                 lowest = min(lowest, *(foot_mesh.vertices[i].co.z for i in foot_vertices[obj.name]))
             foot_heights.append(lowest)
+            graph = bpy.context.evaluated_depsgraph_get()
+            body_heights.append(
+                min(
+                    v.co.z
+                    for obj in source_meshes
+                    for v in mesh_data(obj.evaluated_get(graph)).vertices
+                )
+            )
+            coat_mesh = mesh_data(coat)
+            region_heights.append(
+                {
+                    site: min((coat_mesh.vertices[i].co.z for i in indices), default=0.0)
+                    for site, indices in body_regions.items()
+                }
+            )
             sole_samples.append(
                 [
                     [
@@ -298,30 +362,9 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
         speed = float(original["travel_speed"])
         stance = float(original["stance_fraction"])
         offsets = list(original["foot_offsets"])
-        max_slip = 0.0
-        max_height = 0.0
-        max_sole_height = 0.0
-        max_sole_slip = 0.0
-        # Inspect all consecutive planted frames, not just exported pose samples.
-        for frame in range(end):
-            for i, foot in enumerate(FEET):
-                phase = (frame / end + offsets[i]) % 1
-                next_phase = ((frame + 1) / end + offsets[i]) % 1
-                if speed > 0 and not (
-                    phase < stance and next_phase < stance and next_phase > phase
-                ):
-                    continue
-                first = Vector(ankle_samples[frame][i])
-                last = Vector(ankle_samples[frame + 1][i])
-                rest = source_bones[f"paw.{foot}"].head_local
-                max_height = max(max_height, abs(first.z - rest[2]))
-                last.x += speed / FPS
-                max_slip = max(max_slip, (last - first).length)
-                sole_first = Vector(sole_samples[frame][i])
-                sole_last = Vector(sole_samples[frame + 1][i])
-                sole_last.x += speed / FPS
-                max_sole_height = max(max_sole_height, abs(sole_first.z))
-                max_sole_slip = max(max_sole_slip, (sole_last - sole_first).length)
+        evidence = support_evidence(spec, sole_samples, region_heights)
+        max_sole_height = evidence["maxSoleHeight"]
+        max_sole_slip = evidence["maxSoleFrameSlip"]
         loop_error = max(
             (Vector(a) - Vector(b)).length
             for a, b in zip(ankle_samples[0], ankle_samples[-1], strict=True)
@@ -330,8 +373,8 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
             "maxIkError": max_ik_error,
             "maxSoleHeight": max_sole_height,
             "maxSoleFrameSlip": max_sole_slip,
-            "maxStanceAnkleFrameTravel": max_slip,
-            "maxStanceAnkleHeightChange": max_height,
+            **evidence,
+            "minBodyHeight": min(body_heights),
             "ankleLoopError": loop_error,
             "travelSpeed": speed,
             "frames": end + 1,
@@ -345,15 +388,22 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
                 {sum(point[2] < 0.002 for point in row) for row in sole_samples}
             ),
         }
-        samples[clip] = {"samples": clip_samples, "seconds": end / FPS}
+        samples[clip] = {**spec, "samples": clip_samples}
+        library[clip] = spec
+        rolling_gap = evidence["maxRollingHeight"]
         if (
-            max_ik_error > 0.002
+            rolling_gap > 0.04
+            or max_ik_error > 0.002
             or max_sole_slip > 0.002
             or max_sole_height > 0.002
-            or loop_error > 0.001
-            or min(foot_heights) < -0.002
+            or (spec["playback"] == "loop" and loop_error > 0.001)
+            or min(body_heights) < -0.002
         ):
-            raise ValueError(f"Contact check failed: {form.name}/{clip}: {contacts[clip]}")
+            failures.append(clip)
+    if failures:
+        output.mkdir(parents=True, exist_ok=True)
+        (output / f"{form.name}-rejected.json").write_text(json.dumps(contacts, indent=2) + "\n")
+        raise ValueError(f"Contact checks failed: {form.name}: {failures}; see rejection evidence")
     # Remove control actions and the authoring rig only in this export process.
     for obj in source_meshes:
         obj.parent = baked
@@ -370,7 +420,10 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
         obj.select_set(True)
     present(bpy.context.view_layer).objects.active = baked
     baked.animation_data_create().action = exported_actions[0]
-    scene.frame_start, scene.frame_end = 0, max(CLIPS.values())
+    scene.frame_start, scene.frame_end = (
+        0,
+        max(int(a.get("end_frame", 0)) for a in exported_actions),
+    )
     scene.frame_set(0)
     output.mkdir(parents=True, exist_ok=True)
     glb = output / f"{form.name}.glb"
@@ -395,7 +448,7 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
     if sha(source_path) != source_hash:
         raise ValueError("Export mutated saved source")
     receipt: dict[str, object] = {
-        "schemaVersion": 2,
+        "schemaVersion": 3,
         "character": form.name,
         "sourceSha256": source_hash,
         "motionSha256": sha(root / "motion.blend"),
@@ -407,6 +460,8 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
                 Path(__file__).resolve(),
                 Path(__file__).with_name("rig.py"),
                 Path(__file__).with_name("parameters.py"),
+                Path(__file__).with_name("contacts.py"),
+                Path(__file__).with_name("motion_spec.py"),
                 Path(__file__).resolve().parents[3] / "blender/native_types.py",
             ]
         },
@@ -417,6 +472,7 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
         "profile": json.loads((source_path.parent / "retarget.json").read_text()),
     }
     (output / f"{form.name}.json").write_text(json.dumps(receipt, indent=2) + "\n")
+    (output / f"{form.name}.motions.json").write_text(json.dumps(library, indent=2) + "\n")
     return receipt
 
 

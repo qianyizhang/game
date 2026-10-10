@@ -22,7 +22,18 @@ class Form:
 
 
 FORMS = (Form("ash"), Form("russet"), Form("moss", 1.07, 0.77, 1.22, 0.77))
-CLIPS = {"idle": 240, "walk": 54, "trot": 36, "look": 150}
+CLIPS = {
+    "idle": 240,
+    "walk": 54,
+    "trot": 36,
+    "look": 150,
+    "run": 42,
+    "lunge": 108,
+    "bite": 84,
+    "swipe": 96,
+    "roll": 240,
+    "flee": 216,
+}
 
 
 @dataclass(frozen=True)
@@ -41,6 +52,7 @@ class Gait:
 GAITS = {
     "walk": Gait(0.64, 0.82, (0, 0.5, 0.25, 0.75), 0.16, 0.19, 0.32),
     "trot": Gait(0.46, 0.90, (0, 0.5, 0.5, 0), 0.24, 0.28, 0.46),
+    "run": Gait(0.34, 0.88, (0.0, 0.10, 0.52, 0.62), 0.28, 0.32, 0.48),
 }
 
 
@@ -55,3 +67,7 @@ def paw_origin(foot: str) -> Point:
 def contact_offset(form: Form) -> Point:
     """Front supporting toe relative to the foot control, for grounded heel lift."""
     return form.point((0.25, 0, -0.16))
+
+
+def pole_origin(foot: str) -> Point:
+    return (-0.30 if foot.startswith("front") else 0.25, paw_origin(foot)[1], 0.85)

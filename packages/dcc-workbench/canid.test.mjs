@@ -9,6 +9,19 @@ await test('canid deliveries retain source identity, complete clips, contact, an
     result.map((r) => r.id),
     ['ash', 'russet', 'moss'],
   );
+  for (const character of result)
+    assert.deepEqual(character.clips, [
+      'bite',
+      'flee',
+      'idle',
+      'look',
+      'lunge',
+      'roll',
+      'run',
+      'swipe',
+      'trot',
+      'walk',
+    ]);
 });
 
 await test('the initial canid baseline remains valid alongside the refined delivery', () => {

@@ -14,6 +14,7 @@ if __name__ == "__main__":
 
 from authoring_plan import save_working_source  # noqa: E402
 from delivery import bootstrap, export, fit, mesh_digest, sha  # noqa: E402
+from motion_spec import read_spec, save_spec  # noqa: E402
 from native_types import present  # noqa: E402
 from parameters import FORMS  # noqa: E402
 
@@ -34,7 +35,7 @@ def verify(root: Path, output: Path) -> None:
     working = output / "sources"
     working.mkdir(parents=True)
     shutil.copy2(root / "motion.blend", working / "motion.blend")
-    before: dict[str, tuple[str, float]] = {}
+    before: dict[str, tuple[str, float, float]] = {}
     for form in FORMS:
         destination = working / form.name
         destination.mkdir()
@@ -42,15 +43,35 @@ def verify(root: Path, output: Path) -> None:
         bpy.ops.wm.open_mainfile(filepath=str(destination / "source.blend"))
         rig = bpy.data.objects["CharacterRig"]
         rig.animation_data_create().action = bpy.data.actions["look"]
-        present(bpy.context.scene).frame_set(45)
-        before[form.name] = (mesh_digest(), present(rig.pose).bones["CTRL_head"].rotation_euler.z)
+        present(bpy.context.scene).frame_set(75)
+        head_angle = present(rig.pose).bones["CTRL_head"].rotation_euler.z
+        rig.animation_data_create().action = bpy.data.actions["bite"]
+        present(bpy.context.scene).frame_set(42)
+        before[form.name] = (
+            mesh_digest(),
+            head_angle,
+            present(rig.pose).bones["CTRL_jaw"].rotation_euler.x,
+        )
     bpy.ops.wm.open_mainfile(filepath=str(working / "motion.blend"))
     rig = bpy.data.objects["MotionRig"]
     rig.animation_data_create().action = bpy.data.actions["look"]
-    present(bpy.context.scene).frame_set(45)
+    # Midpoints are included in the exported pose samples, so the browser proof
+    # must observe both edits rather than only comparing unchanged sample times.
+    present(bpy.context.scene).frame_set(75)
     head = present(rig.pose).bones["CTRL_head"]
     head.rotation_euler.z += 0.18
-    head.keyframe_insert("rotation_euler", frame=45, group="CTRL_head")
+    head.keyframe_insert("rotation_euler", frame=75, group="CTRL_head")
+    bite = bpy.data.actions["bite"]
+    rig.animation_data_create().action = bite
+    present(bpy.context.scene).frame_set(42)
+    jaw = present(rig.pose).bones["CTRL_jaw"]
+    jaw.rotation_euler.x += 0.10
+    jaw.keyframe_insert("rotation_euler", frame=42, group="CTRL_jaw")
+    spec = read_spec(bite)
+    for marker in spec["markers"]:
+        if marker["name"] == "contact":
+            marker["time"] += 0.01
+    save_spec(bite, spec)
     save_working_source(working / "motion.blend")
     results = []
     for form in FORMS:
@@ -58,10 +79,19 @@ def verify(root: Path, output: Path) -> None:
         bpy.ops.wm.open_mainfile(filepath=str(working / form.name / "source.blend"))
         rig = bpy.data.objects["CharacterRig"]
         rig.animation_data_create().action = bpy.data.actions["look"]
-        present(bpy.context.scene).frame_set(45)
+        present(bpy.context.scene).frame_set(75)
         changed = present(rig.pose).bones["CTRL_head"].rotation_euler.z - before[form.name][1]
         geometry_equal = mesh_digest() == before[form.name][0]
-        if not geometry_equal or abs(changed - 0.18) > 1e-6:
+        rig.animation_data_create().action = bpy.data.actions["bite"]
+        present(bpy.context.scene).frame_set(42)
+        jaw_changed = present(rig.pose).bones["CTRL_jaw"].rotation_euler.x - before[form.name][2]
+        metadata_equal = read_spec(bpy.data.actions["bite"])["markers"] == spec["markers"]
+        if (
+            not geometry_equal
+            or not metadata_equal
+            or abs(changed - 0.18) > 1e-6
+            or abs(jaw_changed - 0.10) > 1e-6
+        ):
             raise ValueError(f"Source edit did not propagate without remeshing: {form.name}")
         export(working, output / "models", form)
         results.append(
@@ -69,13 +99,17 @@ def verify(root: Path, output: Path) -> None:
                 "character": form.name,
                 "meshAndWeightsUnchanged": geometry_equal,
                 "headChangeRadians": changed,
+                "jawChangeRadians": jaw_changed,
+                "savedMarkerChangePropagated": metadata_equal,
             }
         )
     if any(sha(Path(p)) != digest for p, digest in protected.items()):
         raise ValueError("Native verification modified an authoritative source")
     report = {
         "schemaVersion": 1,
-        "sourceEdit": "look / CTRL_head / frame 45 / +0.18 radians",
+        "sourceEdit": (
+            "look head +0.18 at frame 75; bite jaw +0.10 at frame 42; bite contact +0.01 seconds"
+        ),
         "authoritativeSourcesUnchanged": True,
         "reconstructionOfExistingMastersRefused": True,
         "characters": results,

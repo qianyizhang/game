@@ -35,17 +35,20 @@ configuration; delivery and native/browser checks exercise their observable resu
 
 ## Module map
 
-| Module          | Owns                                                                           |
-| --------------- | ------------------------------------------------------------------------------ |
-| `parameters.py` | Named forms, coordinate convention, clip timing, stance and clearance targets  |
-| `anatomy.py`    | Connected masses, grown fur silhouette, paws, fitted face and ear construction |
-| `surface.py`    | Regional pigment, subtle directional relief, packed fine normal texture        |
-| `geometry.py`   | Local construction and skin-binding helpers; real toe contact probes           |
-| `rig.py`        | Deformation joints, shoulder controls, hocks, IK targets and rolling paws      |
-| `motion.py`     | One-time authoring of shared source actions; not invoked by fitting/export     |
-| `delivery.py`   | Fresh construction, saved-action fitting, baking, contact audit and export     |
-| `studio.py`     | Matched native review captures; never saves its temporary review changes       |
-| `verify.py`     | Disposable source mutation, save/reload and propagation without remeshing      |
+| Module             | Owns                                                                           |
+| ------------------ | ------------------------------------------------------------------------------ |
+| `parameters.py`    | Named forms, coordinate convention, clip timing, stance and clearance targets  |
+| `anatomy.py`       | Connected masses, grown fur silhouette, paws, fitted face and ear construction |
+| `surface.py`       | Regional pigment, subtle directional relief, packed fine normal texture        |
+| `geometry.py`      | Local construction and skin-binding helpers; real toe contact probes           |
+| `rig.py`           | Deformation joints, shoulder controls, hocks, IK targets and rolling paws      |
+| `motion.py`        | One-time authoring of shared source actions; not invoked by fitting/export     |
+| `action_motion.py` | Attack, ground-roll and turning escape performances                            |
+| `motion_spec.py`   | Saved action playback, trajectory, support phases and visual markers           |
+| `contacts.py`      | World-space stance, rolling body support and proportion-aware knee fitting     |
+| `delivery.py`      | Fresh construction, saved-action fitting, baking, contact audit and export     |
+| `studio.py`        | Matched native review captures; never saves its temporary review changes       |
+| `verify.py`        | Disposable source mutation, save/reload and propagation without remeshing      |
 
 ## Working commands
 
@@ -63,10 +66,25 @@ npm run dcc:canid -- verify test-results/canid-native-edit
 ```
 
 Construction refuses any existing requested master before writing. Export requires a fresh
-output directory and never calls construction. The shared motion master owns the four clips;
+output directory and never calls construction. The shared motion master owns ten clips;
 fit deliberately replaces those derived actions in each character. It keeps mesh data,
 skin weights and materials intact. Native character action edits must be transferred to the
 shared source before fitting if they are intended to survive that replacement.
+
+Each registered Blender action owns a `motion_spec` JSON custom property. It records
+`seconds`, `playback` (`loop` or `once`), `trajectory` samples, `contacts`, and named `markers`.
+The master rig's `motion_clips` property lists the action IDs. Edit these saved properties
+alongside control keys; fitting and export read them instead of reapplying recipe defaults.
+Trajectory samples are `[seconds, x, z, yaw]` in glTF's Y-up space, in model units and radians.
+The local skeleton excludes that planar transform; a consumer applies it exactly once.
+Markers describe visual timing, never gameplay hit or damage authority.
+
+The jaw deforms the lower mouth independently. Foot pole controls preserve knee direction
+through inversion. Fitting keeps turning stance anchors in world space, corrects rolling
+reach for each body, then grounds the evaluated skin. Export audits all mesh vertices for
+floor penetration and the declared paw/flank/back support intervals. Loop endpoint checks
+apply only to looping clips. `<id>.motions.json` is the compact runtime copy of the same
+saved contract; the full receipt also carries pose samples and measured support errors.
 
 Review coordinates and travel speeds are in model units; there is no calibrated real-world
 metre scale. The stylized gait recipes use empirical canine studies as guidance, not imported

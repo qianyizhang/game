@@ -1,8 +1,8 @@
 {
-  "family": "canid-articulated-v2",
+  "family": "canid-actions-v3",
   "character": "russet",
-  "sourceSha256": "17b757c529440a8353b8b61fe3c9c44c873e1f53d967f90929a711d42506de13",
-  "meshSha256": "289ac5d4812103722fb31b2908c94a2ff404dc815856579626997e619a3e3b8d",
+  "sourceSha256": "6dd1ea30c5875b35a0f49b2c71849c3ffa70e3e2b4b43224b4ca764e485e1eeb",
+  "meshSha256": "73a2761a54cbbea43f1de046079f45529fbdfb8f2a11c87d81d8843c294d3ce1",
   "mode": "direct",
   "chainMap": {
     "front.L": "front.L",
