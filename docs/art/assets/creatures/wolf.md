@@ -18,7 +18,7 @@ A woodland sentry stands with its head raised to listen. The lifted muzzle and a
 | Surface 3           | Fusing many small locks into the body produced jagged, evenly tiled grooves. Rejected that pattern rather than masking it with texture.                                                                                                                                                                      |
 | Surface 4 and final | Replaced the rows with a few broad swept forms, reduced their side relief, and kept the fine coat quiet. The reverse view exposed an overextended rear hock; shortened that bend before final export.                                                                                                        |
 
-Rejected surface passes are preserved under `wolf-surface1/` through `wolf-surface4/`. The H.264 preview decodes at 994 × 674 for 6.033 seconds. These generated directories are ignored. `src/art3d/wolf.ts` is the durable model source.
+Rejected surface passes are preserved under `wolf-surface1/` through `wolf-surface4/`. The H.264 preview decodes at 994 × 674 for 6.033 seconds. These generated directories are ignored. `src/art3d/procedural/wolf.ts` is the durable model source.
 
 ## Construction and motion
 

@@ -29,13 +29,13 @@ Superseded 29 isolated procedural mesh tests with verification in the 29 existin
 
 Per [ADR 0003](../decisions/0003-blender-first-authoring.md), new 3D authoring moved to Blender:
 
-| Surface                       | Before      | After                                                                      | Retained coverage                                             |
-| ----------------------------- | ----------- | -------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| Legacy gallery delivery       | 29 journeys | 29 journeys, now with per-asset scrubbed motion                            | GLB validity, normals, layout, saves, navigation.             |
-| Shared reduced-motion startup | 23 journeys | 3 representatives                                                          | Vajra (rigid), Hydra (skinned), Banner Bearer (heavy).        |
-| Shared recording              | 29 journeys | 4 representatives                                                          | Adds transparent Catalyst to test video download and frames.  |
-| Cub / Stray construction      | 6 cases / 2 | 6 cases in [legacy-creatures](../../../src/art3d/legacy-creatures.test.ts) | Closed surfaces, valid weights, grounded supports.            |
-| Native Blender edit loop      | Ad hoc      | `npm run test:dcc:native`                                                  | Evaluates controls, clamping, save/reload, and export parity. |
+| Surface                       | Before      | After                                                                                 | Retained coverage                                             |
+| ----------------------------- | ----------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Legacy gallery delivery       | 29 journeys | 29 journeys, now with per-asset scrubbed motion                                       | GLB validity, normals, layout, saves, navigation.             |
+| Shared reduced-motion startup | 23 journeys | 3 representatives                                                                     | Vajra (rigid), Hydra (skinned), Banner Bearer (heavy).        |
+| Shared recording              | 29 journeys | 4 representatives                                                                     | Adds transparent Catalyst to test video download and frames.  |
+| Cub / Stray construction      | 6 cases / 2 | 6 cases in [legacy-creatures](../../../src/art3d/procedural/legacy-creatures.test.ts) | Closed surfaces, valid weights, grounded supports.            |
+| Native Blender edit loop      | Ad hoc      | `npm run test:dcc:native`                                                             | Evaluates controls, clamping, save/reload, and export parity. |
 
 Reduced gallery browser cases from 81 to 36, eliminating 45 redundant journeys while preserving full delivery verification.
 

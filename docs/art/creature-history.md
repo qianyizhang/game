@@ -54,11 +54,11 @@ Observational trial applying the living Hydra methodology to **Nightjar and Phoe
 
 ### Assignment and attribution
 
-| Responsibility                 | Owner                       | Scope                                                      |
-| ------------------------------ | --------------------------- | ---------------------------------------------------------- |
-| Nightjar construction & motion | `gpt-6.1-sol` (high effort) | `src/art3d/nightjar.ts`: living bird and fitted perch      |
-| Phoenix construction & motion  | `gpt-6.1-sol` (high effort) | `src/art3d/phoenix.ts`: living firebird and basalt support |
-| Direction, integration, review | Parent                      | Rulebook, source registration, browser tests, pixel audits |
+| Responsibility                 | Owner                       | Scope                                                                 |
+| ------------------------------ | --------------------------- | --------------------------------------------------------------------- |
+| Nightjar construction & motion | `gpt-6.1-sol` (high effort) | `src/art3d/procedural/nightjar.ts`: living bird and fitted perch      |
+| Phoenix construction & motion  | `gpt-6.1-sol` (high effort) | `src/art3d/procedural/phoenix.ts`: living firebird and basalt support |
+| Direction, integration, review | Parent                      | Rulebook, source registration, browser tests, pixel audits            |
 
 References: [Cornell feather anatomy guide](https://academy.allaboutbirds.org/feathers-article/), [Agi wing-group diagram](https://www.federn.org/hilfe_en.html).
 

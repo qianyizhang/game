@@ -67,7 +67,7 @@ See the [DCC command contract](../../packages/dcc-workbench/README.md#verificati
 
 ## Planned cohort: 29 existing studies
 
-Inventory from [`STUDIES`](../../src/art3d/models.ts) (26 creatures/humanoids, 3 deferred props):
+Inventory from [`STUDIES`](../../src/art3d/catalogue.ts) (26 creatures/humanoids, 3 deferred props):
 
 | Reuse family            | Study ID       | Subject           | Migration stage                                      |
 | ----------------------- | -------------- | ----------------- | ---------------------------------------------------- |

@@ -1,17 +1,11 @@
+import { isMesh } from '../../../src/shared/three/objects';
+import { disposeObject } from '../../../src/shared/three/resources';
 import { useEffect, useRef, useState } from 'react';
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import type { PublishedAsset } from './delivery';
-
-// Explicit guards keep Three.js generic defaults from widening scene values to any.
-function isMesh(object: T.Object3D): object is T.Mesh {
-  return object instanceof T.Mesh;
-}
-function isTexture(value: unknown): value is T.Texture {
-  return value instanceof T.Texture;
-}
 
 export type View = 'Portrait' | 'Front' | 'Side' | 'Back';
 export type Surface = 'Material' | 'Clay' | 'Wire';
@@ -186,34 +180,11 @@ export default function Viewer({
     const resize = new ResizeObserver(fit);
     resize.observe(element);
     fit();
-    const disposeAsset = (object: T.Object3D) => {
-      const textures = new Set<T.Texture>();
-      const materials = new Set<T.Material>();
-      const geometries = new Set<T.BufferGeometry>();
-      const skeletons = new Set<T.Skeleton>();
-      object.traverse((child) => {
-        if (isMesh(child)) {
-          geometries.add(child.geometry);
-          const material = originals.get(child) ?? child.material;
-          for (const m of Array.isArray(material) ? material : [material]) materials.add(m);
-          if (child instanceof T.SkinnedMesh) skeletons.add(child.skeleton);
-        }
-      });
-      materials.forEach((material) => {
-        Object.values(material).forEach((v) => {
-          if (isTexture(v)) textures.add(v);
-        });
-        material.dispose();
-      });
-      textures.forEach((texture) => texture.dispose());
-      geometries.forEach((geometry) => geometry.dispose());
-      skeletons.forEach((skin) => skin.dispose());
-    };
     new GLTFLoader().load(
       published.modelUrl,
       (gltf) => {
         if (disposed) {
-          disposeAsset(gltf.scene);
+          disposeObject(gltf.scene, originals);
           return;
         }
         asset = gltf.scene;
@@ -347,7 +318,7 @@ export default function Viewer({
       if (asset) {
         mixer?.stopAllAction();
         mixer?.uncacheRoot(asset);
-        disposeAsset(asset);
+        disposeObject(asset, originals);
       }
       skeleton?.dispose();
       key.shadow.map?.dispose();

@@ -6,7 +6,7 @@ import './Hub.css';
 const DiabloApp = lazy(() => import('@card-workshop/diablo2'));
 const BalatroApp = lazy(() => import('./App'));
 const Challenges = lazy(() => import('./Challenges'));
-const ArtStudio = lazy(() => import('../art3d/ArtStudio'));
+const ArtStudio = lazy(() => import('../art3d/gallery/Studio'));
 const DccWorkbench = lazy(() => import('@card-workshop/dcc-workbench'));
 const SpireApp = lazy(() =>
   import('../games/spire/ui/SpireApp').then((module) => ({ default: module.SpireApp })),

@@ -17,7 +17,7 @@ A forest-coated predator pauses during a low stalk. The reaching forepaw leads; 
 | 3    | The new normal relief looked like repeated scales rather than short fur; cheek accents appeared attached. Rejected that finish. Removed the accents and used smaller, lower-contrast fur marks.                                                      |
 | 4    | Regional UV projection removed the cylindrical pole stretching. A finer surface sampling pass followed to improve the small cranial planes. Ear tones were brought closer to the coat. Final exports and final pixels are reviewed separately below. |
 
-Generated evidence is ignored; `src/art3d/prowler.ts` is the durable model source.
+Generated evidence is ignored; `src/art3d/procedural/prowler.ts` is the durable model source.
 
 ## Construction and delivery
 

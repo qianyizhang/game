@@ -1,8 +1,10 @@
-import { isMesh, isSkinnedMesh } from '../../src/art3d/objects';
+import { isMesh, isSkinnedMesh } from '../../src/shared/three/objects';
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { createStudy, disposeObject, type StudyId } from '../../src/art3d/models';
-import { createStudyClip } from '../../src/art3d/animation';
+import { createStudy } from '../../src/art3d/procedural/factory';
+import type { StudyId } from '../../src/art3d/catalogue';
+import { disposeObject } from '../../src/shared/three/resources';
+import { createStudyClip } from '../../src/art3d/procedural/animation';
 import { galleryDelivery } from '../../src/art3d/delivery';
 import { compareSavedPoses } from './dcc-roundtrip';
 import { loadPoseEvidence } from '../../packages/dcc-workbench/src/pose-evidence';

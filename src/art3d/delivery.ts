@@ -2,8 +2,8 @@ import { assets } from 'virtual:card-workshop-dcc';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
 import type { AnimationClip, Group } from 'three';
-import { createStudy, disposeObject, type StudyId } from './models';
-import { createStudyClip } from './animation';
+import type { StudyId } from './catalogue';
+import { disposeObject } from '../shared/three/resources';
 import { WOLF_FORMS, type WolfForm } from './wolfForms';
 
 /** Only an explicit gallery review changes an existing study's default. */
@@ -57,6 +57,8 @@ export async function loadStudy(
   if (id === 'wolf' && form !== 'base') {
     throw new Error(`The ${WOLF_FORMS[form].title} release is unavailable.`);
   }
+  signal.throwIfAborted();
+  const { createStudy, createStudyClip } = await import('./procedural/factory');
   signal.throwIfAborted();
   const object = createStudy(id);
   return {

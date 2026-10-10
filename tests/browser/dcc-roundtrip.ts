@@ -1,4 +1,4 @@
-import { isMesh, isSkinnedMesh, isTexture } from '../../src/art3d/objects';
+import { isMesh, isSkinnedMesh, isTexture } from '../../src/shared/three/objects';
 import * as T from 'three';
 import { loadPoseEvidence } from '../../packages/dcc-workbench/src/pose-evidence';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';

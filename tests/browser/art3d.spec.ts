@@ -1,5 +1,5 @@
 import { gltfJson } from './gltf-json';
-import type { StudyId } from '../../src/art3d/models';
+import type { StudyId } from '../../src/art3d/catalogue';
 import { expect, test } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';

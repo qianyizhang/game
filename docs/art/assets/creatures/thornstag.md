@@ -18,7 +18,7 @@ The stag halts at a sound, holding one forehoof clear of the ground while three 
 | Pose revision       | The lifted far forehoof was partly hidden. Moved the lifted gesture to the near side and planted the opposite foreleg, making the halt readable in the main view.                                                                                                            |
 | Final color         | A head-space muzzle mask extended down onto the raised foreleg. Bounded it to the actual face; the pale throat remains a separate intentional region.                                                                                                                        |
 
-Generated evidence is ignored; `src/art3d/thornstag.ts` and its tests are the durable sources.
+Generated evidence is ignored; `src/art3d/procedural/thornstag.ts` and its tests are the durable sources.
 
 ## Construction and motion
 

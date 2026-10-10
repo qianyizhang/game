@@ -1,6 +1,6 @@
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { isMesh } from '../../src/art3d/objects';
-import { disposeObject } from '../../src/art3d/models';
+import { isMesh } from '../../src/shared/three/objects';
+import { disposeObject } from '../../src/shared/three/resources';
 
 /** Inspect the model a consumer downloads, using the real glTF loader. */
 export async function inspectStudyExportNormals(url: string) {

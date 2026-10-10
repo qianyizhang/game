@@ -1,6 +1,6 @@
+import { disposeObject } from '../../../src/shared/three/resources';
 import { useEffect, useRef, useState } from 'react';
 import * as T from 'three';
-import { isMesh, isSkinnedMesh, isTexture } from '../../../src/art3d/objects';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
@@ -26,26 +26,6 @@ type Subject = {
   scene: T.Scene;
   mixer: T.AnimationMixer;
 };
-function disposeObject(root: T.Object3D) {
-  const geometries = new Set<T.BufferGeometry>();
-  const materials = new Set<T.Material>();
-  const textures = new Set<T.Texture>();
-  const skeletons = new Set<T.Skeleton>();
-  root.traverse((node) => {
-    if (!isMesh(node)) return;
-    geometries.add(node.geometry);
-    for (const material of Array.isArray(node.material) ? node.material : [node.material]) {
-      materials.add(material);
-      for (const value of Object.values(material)) if (isTexture(value)) textures.add(value);
-    }
-    if (isSkinnedMesh(node)) skeletons.add(node.skeleton);
-  });
-  geometries.forEach((geometry) => geometry.dispose());
-  materials.forEach((material) => material.dispose());
-  textures.forEach((texture) => texture.dispose());
-  skeletons.forEach((skeleton) => skeleton.dispose());
-}
-
 /** One camera, renderer and clock serve both panels; changing a pair never refits it. */
 export default function ComparisonViewer({
   options,

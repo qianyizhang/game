@@ -1,6 +1,6 @@
 # Banner Bearer
 
-**Status:** author-reviewed procedural study; user aesthetic approval is unrecorded. The [builder](../../../../src/art3d/bannerbearer.ts) interprets Hearth's banner recruit as a standing figure holding an ochre standard. The original SVG remains available in the gallery comparison.
+**Status:** author-reviewed procedural study; user aesthetic approval is unrecorded. The [builder](../../../../src/art3d/procedural/bannerbearer.ts) interprets Hearth's banner recruit as a standing figure holding an ochre standard. The original SVG remains available in the gallery comparison.
 
 The hands, boots and planted pole stay fixed while the weighted head, fitted facial features and banner follow a six-second authored loop. Materials distinguish muted cloth, pale bronze, skin, hair and wood. This is a stylized study, not a production character or a locomotion simulation.
 
