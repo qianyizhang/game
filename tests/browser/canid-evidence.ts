@@ -2,9 +2,9 @@ import { isMesh } from '../../src/shared/three/objects';
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { disposeObject } from '../../src/shared/three/resources';
-import ash from '../../packages/dcc-workbench/assets/canid/ash.json';
-import russet from '../../packages/dcc-workbench/assets/canid/russet.json';
-import moss from '../../packages/dcc-workbench/assets/canid/moss.json';
+import ash from '../../packages/dcc-workbench/assets/canid/refined/ash.json';
+import russet from '../../packages/dcc-workbench/assets/canid/refined/russet.json';
+import moss from '../../packages/dcc-workbench/assets/canid/refined/moss.json';
 import { characters } from '../../packages/dcc-workbench/src/canid-assets';
 
 type Evidence = typeof ash;

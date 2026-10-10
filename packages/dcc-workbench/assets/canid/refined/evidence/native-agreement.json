@@ -1,0 +1,89 @@
+[
+  {
+    "id": "ash",
+    "clips": [
+      {
+        "name": "idle",
+        "maxError": 0.0000010666115892609464,
+        "samples": 5,
+        "vertices": 512
+      },
+      {
+        "name": "walk",
+        "maxError": 0.0000016980187002997022,
+        "samples": 5,
+        "vertices": 512
+      },
+      {
+        "name": "trot",
+        "maxError": 0.0000018228964380301319,
+        "samples": 5,
+        "vertices": 512
+      },
+      {
+        "name": "look",
+        "maxError": 0.0000012707924412189044,
+        "samples": 5,
+        "vertices": 512
+      }
+    ]
+  },
+  {
+    "id": "russet",
+    "clips": [
+      {
+        "name": "idle",
+        "maxError": 0.0000010666115892609464,
+        "samples": 5,
+        "vertices": 512
+      },
+      {
+        "name": "walk",
+        "maxError": 0.0000016980187002997022,
+        "samples": 5,
+        "vertices": 512
+      },
+      {
+        "name": "trot",
+        "maxError": 0.0000018228964380301319,
+        "samples": 5,
+        "vertices": 512
+      },
+      {
+        "name": "look",
+        "maxError": 0.0000012707924412189044,
+        "samples": 5,
+        "vertices": 512
+      }
+    ]
+  },
+  {
+    "id": "moss",
+    "clips": [
+      {
+        "name": "idle",
+        "maxError": 0.000001371306898010943,
+        "samples": 5,
+        "vertices": 512
+      },
+      {
+        "name": "walk",
+        "maxError": 0.0000014387781530634395,
+        "samples": 5,
+        "vertices": 512
+      },
+      {
+        "name": "trot",
+        "maxError": 0.0000014952098245533662,
+        "samples": 5,
+        "vertices": 512
+      },
+      {
+        "name": "look",
+        "maxError": 0.0000015545261536448826,
+        "samples": 5,
+        "vertices": 512
+      }
+    ]
+  }
+]

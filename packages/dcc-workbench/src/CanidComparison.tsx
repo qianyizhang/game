@@ -1,10 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
-import { characters, clips, motionSource, type CanidOptions } from './canid-assets';
+import {
+  characters,
+  baselineCharacters,
+  clips,
+  baselineClips,
+  motionSources,
+  durationFor,
+  type CanidOptions,
+} from './canid-assets';
 import { createCanidPlayer } from './canid-player';
 import './canid.css';
 
 export default function CanidComparison({ onBack }: { onBack: () => void }) {
   const [options, setOptions] = useState<CanidOptions>({
+    revision: 'refined',
     clip: 'walk',
     character: 'all',
     playing: false,
@@ -15,7 +24,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
     rig: false,
   });
   const [time, setTime] = useState(0);
-  const [status, setStatus] = useState('Loading three characters…');
+  const [status, setStatus] = useState('Loading the motion study…');
   const [ready, setReady] = useState(false);
   const host = useRef<HTMLDivElement>(null);
   const current = useRef(options);
@@ -45,9 +54,20 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
       dispose?.();
     };
   }, []);
-  const visible = characters.filter(
+  const activeCharacters = options.revision === 'baseline' ? baselineCharacters : characters;
+  const visible = activeCharacters.filter(
     (c) => options.character === 'all' || c.id === options.character,
   );
+  const labels =
+    options.revision === 'comparison'
+      ? visible.flatMap((c) => [
+          { ...c, id: `${c.id}-baseline`, subtitle: 'Initial baseline' },
+          { ...c, id: `${c.id}-refined`, subtitle: 'Refined anatomy & motion' },
+        ])
+      : visible;
+  const duration = durationFor(options.revision, options.clip);
+  const availableClips: Record<string, { name: string; seconds: number }> =
+    options.revision === 'refined' ? clips : baselineClips;
   return (
     <main className="dcc-workbench canid-workbench">
       <header className="dcc-header">
@@ -55,7 +75,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           ← Back to workbench
         </button>
         <span className="dcc-wordmark">CARD WORKSHOP / MOTION STUDIES</span>
-        <span className="dcc-pilot">CANID · 01</span>
+        <span className="dcc-pilot">CANID · 02</span>
       </header>
       <section className="dcc-intro">
         <div>
@@ -72,19 +92,44 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
       </section>
       <div className="canid-toolbar">
         <label>
+          Revision
+          <select
+            aria-label="Revision"
+            value={options.revision}
+            onChange={(e) => {
+              const revision = e.target.value;
+              if (revision !== 'refined' && revision !== 'baseline' && revision !== 'comparison')
+                return;
+              setTime(0);
+              setOptions((o) => ({
+                ...o,
+                revision,
+                time: 0,
+                seek: o.seek + 1,
+                clip: revision !== 'refined' && o.clip === 'trot' ? 'walk' : o.clip,
+                character: revision === 'comparison' && o.character === 'all' ? 'ash' : o.character,
+              }));
+            }}
+          >
+            <option value="refined">Refined family</option>
+            <option value="baseline">Initial baseline</option>
+            <option value="comparison">Before & after</option>
+          </select>
+        </label>
+        <label>
           Movement
           <select
             aria-label="Movement"
             value={options.clip}
             onChange={(e) => {
               const clip = e.target.value;
-              if (clip === 'idle' || clip === 'walk' || clip === 'look') {
+              if (clip === 'idle' || clip === 'walk' || clip === 'look' || clip === 'trot') {
                 setTime(0);
                 setOptions((o) => ({ ...o, clip, time: 0, seek: o.seek + 1 }));
               }
             }}
           >
-            {Object.entries(clips).map(([id, c]) => (
+            {Object.entries(availableClips).map(([id, c]) => (
               <option key={id} value={id}>
                 {c.name}
               </option>
@@ -102,7 +147,9 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
                 setOptions((o) => ({ ...o, character: character as CanidOptions['character'] }));
             }}
           >
-            <option value="all">All three · matched scale</option>
+            <option value="all" disabled={options.revision === 'comparison'}>
+              All three · matched scale
+            </option>
             {characters.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.name}
@@ -129,7 +176,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
         </button>
       </div>
       <section
-        className={`canid-stage ${options.character === 'all' ? 'canid-all' : ''}`}
+        className={`canid-stage ${options.character === 'all' || options.revision === 'comparison' ? 'canid-all' : ''}`}
         aria-label="Matched canid views"
       >
         <div ref={host} className="canid-render" data-ready={ready} />
@@ -139,7 +186,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           </p>
         )}
         <div className="canid-labels">
-          {visible.map((c) => (
+          {labels.map((c) => (
             <div key={c.id}>
               <strong>{c.name}</strong>
               <span>{c.subtitle}</span>
@@ -160,7 +207,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           ))}
         </div>
         <span className="canid-hint">
-          Drag to orbit · Ground grid follows each walk’s travel speed
+          Drag to orbit · Real elapsed time · Ground follows each clip’s travel speed
         </span>
       </div>
       <div className="dcc-comparison-timeline">
@@ -175,7 +222,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           disabled={!ready}
           type="range"
           min="0"
-          max={clips[options.clip].seconds}
+          max={duration}
           step="0.01"
           value={time}
           onChange={(e) => {
@@ -185,7 +232,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           }}
         />
         <output>
-          {time.toFixed(2)} / {clips[options.clip].seconds.toFixed(2)} s
+          {time.toFixed(2)} / {duration.toFixed(2)} s
         </output>
       </div>
       <div className="canid-notes">
@@ -197,8 +244,8 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
             with stride and lift fitted to its reach. All views share a camera, lighting, and clock.
           </p>
           <p>
-            Watch the planted paws against the moving grid. Switch to Look around to inspect the
-            neck and shoulders while the feet stay planted.
+            Watch toe push-off, swinging paws, and the diagonal pairs in Trot. Before & after uses
+            real elapsed seconds, so each revision retains its authored cadence.
           </p>
         </section>
         <section>
@@ -209,14 +256,17 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
             contain fitted rigs, meshes, materials, and fitted actions. This pilot leaves the
             existing gallery unchanged.
           </p>
-          <a href={motionSource} download="canid-motion.blend">
+          <a
+            href={motionSources[options.revision === 'baseline' ? 'baseline' : 'refined']}
+            download="canid-motion.blend"
+          >
             Download shared motion source ↗
           </a>
           <p>Visual study · awaiting your review.</p>
         </section>
       </div>
       <div className="canid-downloads">
-        {characters.map((c) => (
+        {activeCharacters.map((c) => (
           <section key={c.id}>
             <h3>{c.name}</h3>
             <p>{c.subtitle}</p>

@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-10",
+  "scope": "Refined canid study; baseline and gallery preserved",
+  "sourceCommit": "59fd71a",
+  "technical": {
+    "nativeMutation": "passed; saved source edit reaches all three targets without remeshing; construction over masters refused",
+    "browser": "3 tests passed, including refined and mutated deliveries, revision comparison, downloads and reduced motion",
+    "maxSampledPoseErrorModelUnits": 1.8228964380301319e-06,
+    "poseCoverage": "512 mesh points per character at five times per clip; three characters, four clips",
+    "maxPlantedSoleHeightModelUnits": 9.495020094618667e-07,
+    "maxPlantedSoleSlipPerFrameModelUnits": 1.190292828780864e-06,
+    "minEvaluatedFootHeightModelUnits": -6.19470881702e-07,
+    "fullRepositoryGate": {
+      "command": "npm run check:full",
+      "result": "passed",
+      "maintenance": "passed: 31 Python modules typechecked, 16 Python contract tests, 49 DCC tests, 77 tooling tests",
+      "applicationTests": 253,
+      "simulations": 4,
+      "geometryTests": 127,
+      "skipped": "One unrelated usage-tool loopback test skipped by the restricted sandbox",
+      "remoteCI": "not run"
+    }
+  },
+  "visual": {
+    "reviewer": "parent",
+    "decision": "Refinement ready for user review; not production character approval",
+    "views": [
+      "native clay and material side/portrait",
+      "native trot extreme",
+      "matched browser baseline/refined portrait",
+      "live front/rear",
+      "phone layout"
+    ],
+    "corrections": [
+      "Rejected repeated detached fur tiles; merged broad locks into the skin with shallow directional relief",
+      "Corrected paw-pad shading and toe clefts",
+      "Corrected source local-axis error, foreleg overreach and pre-landing heel penetration"
+    ],
+    "limits": [
+      "stylized procedural sculpture with remeshed topology and bone-heat weights",
+      "reference-guided clips, not motion capture or physiological simulation",
+      "no dense fur groom, runtime LOD chain, or production retopology",
+      "user visual approval pending"
+    ]
+  },
+  "evidence": {
+    "before-after.png": "9dba0918352c710b2992732032f7dc61a756d10dffa4b7e9c3cf3ac572d39dc7",
+    "edited-native-agreement.json": "fd6075ad3a5fe4c7938d91cde175eb295890ceea776814a282f62449473025a0",
+    "native-agreement.json": "fd6075ad3a5fe4c7938d91cde175eb295890ceea776814a282f62449473025a0",
+    "preview.png": "c7ad5e85285c69ddc7fd0d4198f56db3d1a5d606ecd62ce7abca3a5e671f7edc",
+    "source-edit.json": "41f2ed4be6fd38d2050078b09cbcb2b2c99c51fa89df10ec0b4eac2c496976b7"
+  }
+}

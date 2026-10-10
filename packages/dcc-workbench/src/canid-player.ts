@@ -4,9 +4,19 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { disposeObject } from '../../../src/shared/three/resources';
-import { characters, clips, type CanidOptions } from './canid-assets';
+import {
+  characters,
+  baselineCharacters,
+  clips,
+  baselineClips,
+  durationFor,
+  type CanidOptions,
+} from './canid-assets';
 
 type Subject = {
+  asset: (typeof characters)[number];
+  revision: 'baseline' | 'refined';
+  duration: number;
   root: T.Group;
   scene: T.Scene;
   mixer: T.AnimationMixer;
@@ -48,6 +58,7 @@ export function createCanidPlayer(
   let disposed = false;
   let ready = false;
   let time = 0;
+  let elapsed = 0;
   let frame = 0;
   let previous = performance.now();
   let lastReport = 0;
@@ -72,13 +83,18 @@ export function createCanidPlayer(
     disposeObject(subject.scene);
   };
   void Promise.allSettled(
-    characters.map(async (character) => {
+    [
+      ...baselineCharacters.map((asset) => ({ asset, revision: 'baseline' as const })),
+      ...characters.map((asset) => ({ asset, revision: 'refined' as const })),
+    ].map(async ({ asset: character, revision }) => {
       const gltf = await new GLTFLoader().loadAsync(character.model);
       if (disposed) {
         disposeObject(gltf.scene);
         return;
       }
-      for (const [name, clip] of Object.entries(clips)) {
+      const metadata: Record<string, { name: string; seconds: number }> =
+        revision === 'baseline' ? baselineClips : clips;
+      for (const [name, clip] of Object.entries(metadata)) {
         const found = gltf.animations.find((a) => a.name === name);
         if (!found || Math.abs(found.duration - clip.seconds) > 0.001) {
           disposeObject(gltf.scene);
@@ -111,6 +127,9 @@ export function createCanidPlayer(
         if (isMesh(obj)) materials.set(obj, obj.material);
       });
       return {
+        asset: character,
+        revision,
+        duration: 0,
         root,
         scene,
         mixer: new T.AnimationMixer(root),
@@ -128,7 +147,7 @@ export function createCanidPlayer(
       subjects.length = 0;
       return;
     }
-    if (results.some((r) => r.status === 'rejected') || subjects.length !== 3) {
+    if (results.some((r) => r.status === 'rejected') || subjects.length !== 6) {
       status(
         'A character could not load. Reload to retry; Blender and GLB downloads remain available.',
         false,
@@ -144,32 +163,41 @@ export function createCanidPlayer(
     previous = now;
     if (!ready || disposed || document.hidden) return;
     const options = read();
-    const duration = clips[options.clip].seconds;
+    const duration = durationFor(options.revision, options.clip);
     if (lastClip !== options.clip) {
       for (const subject of subjects) {
         subject.mixer.stopAllAction();
         const action = subject.mixer.clipAction(
-          subject.animations.find((a) => a.name === options.clip)!,
+          subject.animations.find((a) => a.name === options.clip) ?? subject.animations[0],
         );
+        subject.duration = action.getClip().duration;
         action.setLoop(T.LoopOnce, 1);
         action.clampWhenFinished = true;
         action.reset().play();
       }
       time = 0;
+      elapsed = 0;
       lastClip = options.clip;
       lastSeek = -1;
     }
     if (lastSeek !== options.seek) {
       time = Math.min(duration, Math.max(0, options.time));
+      elapsed = time;
       lastSeek = options.seek;
-    } else if (options.playing) time = (time + dt) % duration;
-    const indices = characters.flatMap((c, i) =>
-      options.character === 'all' || options.character === c.id ? [i] : [],
+    } else if (options.playing) {
+      elapsed += dt;
+      time = elapsed % duration;
+    }
+    const indices = subjects.flatMap((subject, i) =>
+      (options.revision === 'comparison' || options.revision === subject.revision) &&
+      (options.character === 'all' || options.character === subject.asset.id)
+        ? [i]
+        : [],
     );
     const stacked = width < 700;
     const panelWidth = stacked ? width : width / indices.length;
     const panelHeight = stacked ? height / indices.length : height;
-    const viewKey = `${options.view}:${options.character}:${width}:${height}`;
+    const viewKey = `${options.view}:${options.character}:${options.revision}:${width}:${height}`;
     if (lastView !== viewKey) {
       camera.aspect = panelWidth / panelHeight;
       camera.updateProjectionMatrix();
@@ -199,12 +227,15 @@ export function createCanidPlayer(
         const action = subject.mixer.existingAction(animation);
         if (action) action.paused = false;
       }
-      subject.mixer.setTime(time);
+      const sampleTime =
+        options.revision === 'comparison' && elapsed > subject.duration
+          ? elapsed % subject.duration
+          : time;
+      subject.mixer.setTime(Math.min(subject.duration, sampleTime));
       subject.rig.visible = options.rig;
       for (const [mesh, material] of subject.materials)
         mesh.material = options.surface === 'Clay' ? clay : material;
-      subject.grid.position.x =
-        options.clip === 'walk' ? -(time * characters[index].travelSpeed) % 0.25 : 0;
+      subject.grid.position.x = -(elapsed * subject.asset.travelSpeed[options.clip]) % 0.25;
       const x = stacked ? 0 : panel * panelWidth;
       const y = stacked ? (indices.length - 1 - panel) * panelHeight : 0;
       renderer.setViewport(x, y, panelWidth, panelHeight);
@@ -215,6 +246,7 @@ export function createCanidPlayer(
     });
     element.dataset.time = time.toFixed(3);
     element.dataset.clip = options.clip;
+    element.dataset.revision = options.revision;
     element.dataset.character = options.character;
     element.dataset.surface = options.surface;
     if (now - lastReport > 80) {

@@ -32,13 +32,32 @@ test('canid clips preserve native deformation and support matched review and dow
     expect(await viewer.getAttribute('data-time')).not.toBe('0.500');
   }).toPass();
   await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
-  for (const clip of ['idle', 'look', 'walk']) {
+  for (const clip of ['idle', 'look', 'walk', 'trot']) {
     await page.getByLabel('Movement', { exact: true }).selectOption(clip);
     await expect(viewer).toHaveAttribute('data-clip', clip);
-    await page.getByLabel('Shared motion time').fill(clip === 'walk' ? '2' : '4');
+    await page
+      .getByLabel('Shared motion time')
+      .fill(({ idle: '4', look: '2.5', walk: '0.9', trot: '0.6' } as Record<string, string>)[clip]);
     await page.getByLabel('Shared motion time').fill('0');
     await expect(viewer).toHaveAttribute('data-time', '0.000');
   }
+  await page.getByLabel('Revision', { exact: true }).selectOption('comparison');
+  await expect(viewer).toHaveAttribute('data-revision', 'comparison');
+  await expect(viewer).toHaveAttribute('data-character', 'ash');
+  await expect(viewer).toHaveAttribute('data-clip', 'walk');
+  await expect(
+    page.getByLabel('Movement', { exact: true }).getByRole('option', { name: 'Trot', exact: true }),
+  ).toHaveCount(0);
+  await page.getByLabel('Shared motion time').fill('0.45');
+  await expect(viewer).toHaveAttribute('data-time', '0.450');
+  await page.screenshot({ path: info.outputPath('before-after.png'), fullPage: true });
+  await page.getByLabel('Revision', { exact: true }).selectOption('baseline');
+  await expect(viewer).toHaveAttribute('data-revision', 'baseline');
+  await expect(
+    page.getByRole('link', { name: 'Download Ash GLB', exact: true }),
+  ).not.toHaveAttribute('href', /refined/);
+  await page.getByLabel('Revision', { exact: true }).selectOption('refined');
+  await expect(viewer).toHaveAttribute('data-revision', 'refined');
   await page.getByLabel('Characters', { exact: true }).selectOption('moss');
   await expect(viewer).toHaveAttribute('data-character', 'moss');
   const download = page.waitForEvent('download');
@@ -46,7 +65,7 @@ test('canid clips preserve native deformation and support matched review and dow
   const file = await download;
   await file.saveAs(info.outputPath('moss.glb'));
   expect(await readFile(info.outputPath('moss.glb'))).toEqual(
-    await readFile('packages/dcc-workbench/assets/canid/moss.glb'),
+    await readFile('packages/dcc-workbench/assets/canid/refined/moss.glb'),
   );
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByLabel('Characters', { exact: true }).selectOption('all');

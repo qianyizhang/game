@@ -26,6 +26,10 @@ and actual multi-view appearance. Mechanical checks do not establish visual acce
 
 ## Initial baseline
 
+The initial implementation and receipts below remain historical evidence. The user's
+acceptance was specifically **initial baseline**, not a verdict that its gait or detail
+was finished. The refined revision and its findings are recorded at the end of this page.
+
 Accepted scope, 2026-10-10. Build a new animation-ready canid master, one appearance
 variant with the same proportions, and one shorter-legged, heavier variant. Preserve
 existing Wolf masters and gallery publications.
@@ -124,3 +128,80 @@ largest planted-sole height or per-frame slip is below **0.0000008 model units**
 These values apply to the recorded poses and declared contact intervals, respectively.
 
 ![Canid motion study](../../../packages/dcc-workbench/assets/canid/evidence/preview.png)
+
+## Refined delivery
+
+The workbench now defaults to the refined family. **Revision** selects the initial baseline,
+the refinement, or a matched before/after pair for any character. Both revisions retain
+their authored cadence during comparison; the clock is elapsed seconds rather than
+artificially synchronized gait phases. The floor scrolls continuously across repeated loops.
+
+| Property              | Initial baseline             | Refined family                                             |
+| --------------------- | ---------------------------- | ---------------------------------------------------------- |
+| Deformation joints    | 20                           | 28, including scapulae, hocks/pasterns and ears            |
+| Saved clips           | Idle 4 s, walk 2 s, look 4 s | Alert idle 4 s, walk 0.90 s, trot 0.60 s, look 2.50 s      |
+| Sampling              | 24 fps                       | 60 fps                                                     |
+| Ash / Russet geometry | 27,074 triangles             | 78,190 triangles                                           |
+| Moss geometry         | 26,350 triangles             | 77,752 triangles                                           |
+| Refined delivery size | —                            | 3.35–3.37 MB per GLB, including packed fine normal texture |
+
+The body has a more differentiated chest, tucked waist, shoulder and thigh transitions,
+articulated hocks, toe shapes and clefts, claws, fitted lids, nostrils and ear bowls.
+Broad fur locks merge into the continuous ruff, cheek and brush silhouette. Fine relief,
+regional pigment and a packed normal texture finish the surface without covering the
+quiet flanks in repeated ornament. The first detached fur-lock pass was rejected because
+it read as tiled scales. These are detail stages; no runtime LOD system is claimed.
+
+### Motion corrections and references
+
+The original controls pointed along world Z, making Blender's local Z channel point along
+world −Y. A native read of the preserved baseline confirmed that its front paw varied in
+height by only **0.0000011 model units** across the walk. The old contact checks examined
+declared stance intervals and did not require swing clearance, so they missed this defect.
+The refined foot/body controls have explicit world XYZ axes. Delivery checks now require
+vertical clearance for every moving foot and examine all low foot/claw vertices for
+penetration, alongside planted toe height/slip, limb reach and loop closure.
+
+The walk uses a lateral footfall sequence; the trot pairs opposite fore/hind limbs.
+Foot trajectories match ground velocity at lift-off and touchdown. Paw roll pivots about
+the supporting toe; target fitting removes the source pivot offset, scales travel/lift,
+and reapplies the saved rotation around the target's proportioned toe. Shoulders, pelvic
+rotation, restrained spine response, head stabilization and delayed tail/ear motion
+accompany the limbs. A foreleg reach failure and late-swing heel penetration were corrected
+before final export, without relaxing the contact thresholds.
+
+These are authored stylized movements informed by measured canine locomotion, not mocap
+or biomechanical validation. [Gait transitions](https://journals.biologists.com/jeb/article/216/12/2257/11423/Gait-transitions-and-modular-organization-of)
+informed the distinction between stance, swing and gait ordering. The
+[pelvis/lumbar study](https://pubmed.ncbi.nlm.nih.gov/26831181/) supports pelvic motion coupled
+to the limbs with relatively restrained spinal excursions. The
+[hind-limb kinematics study](https://pmc.ncbi.nlm.nih.gov/articles/PMC6242825/) informs the
+need for articulated hocks and proportion-aware fitting. Exact recipe values are artistic
+choices; model units have not been calibrated to metres.
+
+### Verification and review
+
+All three native deliveries pass toe contact, ground penetration, reach and loop checks.
+The largest planted toe height/slip error is below **0.0000012 model units**. Across the
+three characters, the least-raised foot reaches at least **0.122 model units** in walk and
+**0.184 model units** in trot. Those are sampled peak clearances, not instantaneous minimum
+heights throughout swing. Ground penetration at the inspected low vertices is below
+**0.0000007 model units**, within floating-point noise.
+
+The saved-source mutation proof changes the look action at frame 45 by 0.18 radians,
+saves/reloads, fits and exports every character with unchanged mesh/weight digests. It also
+checks that recipe construction refuses existing masters. Browser/native sampled agreement
+is below **0.0000019 model units** for both original and edited deliveries. The three affected
+browser cases pass. See the [review receipt](../../../packages/dcc-workbench/assets/canid/refined/review.json)
+for exact coverage and repository-gate status. The local `npm run check:full` gate passed:
+maintenance/build, 253 application tests, four simulations and 127 geometry tests. One
+unrelated usage-tool loopback case was skipped by the restricted sandbox; remote CI was
+not run.
+
+Parent review covered native clay/material, a trot extreme, browser side/portrait and
+front/rear views, before/after comparison and phone layout. This remains a stylized visual
+and rigging trial with remeshed topology. Dense fur grooming, production retopology,
+runtime LODs and arbitrary external-rig compatibility remain outside scope. User visual
+approval is pending; technical checks are not a substitute.
+
+![Initial baseline and refined Ash](../../../packages/dcc-workbench/assets/canid/refined/evidence/before-after.png)
