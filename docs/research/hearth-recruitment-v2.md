@@ -64,8 +64,8 @@ Every episode checks supply conservation after accepted commands and reconstruct
 ## Source map
 
 - `src/games/battlegrounds/ai/recruitment-v2.ts`: versioned interventions and diagnostics.
-- `src/engines/hearth-recruitment-experiment.ts`: frozen grid, controller binding, complete-block comparison.
-- `src/engines/hearth-recruitment-inspector.ts`: replay reconstruction and same-input proposals.
+- `src/engines/hearth/recruitment-experiment.ts`: frozen grid, controller binding, complete-block comparison.
+- `src/engines/hearth/recruitment-inspector.ts`: replay reconstruction and same-input proposals.
 - `packages/workshop-tools/hearth/recruitment-*.ts`: checked run/audit harness and source pins. Historical reports retain their original source pins; reproduce those runs from their recorded revision.
 - `packages/workshop-tools/hearth/recruitment-inspect.ts`, `recruitment-viewer.ts` and `recruitment-viewer.html`: standalone interactive viewer behind the original inspect command.
 

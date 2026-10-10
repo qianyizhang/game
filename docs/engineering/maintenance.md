@@ -1,6 +1,6 @@
 # Maintenance governance
 
-Every maintained source must enter an enforced check scope. The inventory gate rejects uncovered files and documentation outside canonical homes; it has no migration exemptions. [Migration and cleanup history](cleanup-triage.md) records the completed 2026-10-07 work and original-source recovery.
+Every maintained source must enter an enforced check scope. The inventory gate rejects uncovered files and documentation outside canonical homes; it has no migration exemptions. [Migration and cleanup history](history/cleanup-triage.md) records the completed 2026-10-07 work and original-source recovery.
 
 ## Check scope and finish line
 
@@ -17,6 +17,7 @@ Upgrade TypeScript and typed ESLint together when peer support and repository ch
 - `@card-workshop/tools` owns maintenance commands. Future script families move into this workspace with documented inputs, outputs, dependencies and meaningful tests.
 - `@card-workshop/dcc-workbench` owns Blender authoring and asset delivery. Its editable artist source is independent of rebuild recipes.
 - Moves and new files must enter the owning checker scopes in the same change.
+- Let the owning module and import path supply naming context. Omit repeated game/module prefixes; retain qualifiers that distinguish operations exposed together, such as arena and recruitment. Use import aliases when different modules meet at one caller.
 - Preserve concurrent changes. Record starting status and source hashes, edit only the slice, and report the owned delta. Do not reset or broadly stage the worktree.
 - A move or formatting change can change experiment source pins and asset receipts. Preserve historical reports, hashes, rules versions and frozen environments. Validate new outputs as new results; never rewrite old evidence to match current code.
 
@@ -24,13 +25,13 @@ Upgrade TypeScript and typed ESLint together when peer support and repository ch
 
 `docs/README.md` is the entry point. `guide/` owns current user behavior; `engineering/` owns architecture, maintenance and decisions; `art/` owns visual standards and asset records; `research/` owns mechanics, experiment protocols and findings. Package READMEs own their commands and integration contracts.
 
-Original paths and hashes are preserved in the [document migration record](../../maintenance/document-migration.json); [cleanup history](cleanup-triage.md#source-recovery) explains recovery. New top-level review or completion documents fail the gate. Consolidate duplicate descriptions, then update inbound links in the same slice. Keep one authoritative rulebook. Durable documents describe current contracts or explicitly dated research, not a transcript of work.
+Original paths and hashes are preserved in the [document migration record](../../maintenance/document-migration.json); [cleanup history](history/cleanup-triage.md#source-recovery) explains recovery. New top-level review or completion documents fail the gate. Consolidate duplicate descriptions, then update inbound links in the same slice. Keep one authoritative rulebook. Durable documents describe current contracts or explicitly dated research, not a transcript of work.
 
 Before removing a script, inspect imports, npm commands, CI, documentation and frozen reproduction callers. Retain a historical source pin at its recorded revision. Before removing a dated report, preserve its lasting conclusions and an exact Git recovery reference. Update callers and verify the affected behavior in the same change.
 
 ## Retention and deletion authority
 
-`npm run maintenance -- inventory` reports streamed content hashes, every occurrence path and tracked-text references for the artifact roots. It does not grant deletion authority. [Verification contracts](checks.md#artifact-inventory-limits) describe its consistency and reference limits.
+`npm run maintenance -- inventory` reports streamed content hashes, every occurrence path and tracked-text references for the artifact roots. It does not grant deletion authority. [Verification contracts](checks.md#retention-and-inventory) describe its consistency and reference limits.
 
 | Material                                                                     | Home                                                           | Lifetime                                        |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------- |

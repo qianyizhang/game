@@ -4,10 +4,10 @@ import { observeHearth } from '../application/agent';
 import { makeUnit } from '../domain/units';
 import { createHearthPolicy, searchPosition, type HearthPolicyConfig } from './policy';
 import {
-  compareHearthEpisodes,
-  runHearthEpisode,
+  compareEpisodes,
+  runEpisode,
   type EpisodeReport,
-} from '../../../engines/hearth-experiment';
+} from '../../../engines/hearth/experiment';
 
 const config: HearthPolicyConfig = {
   kind: 'scout-search-v1',
@@ -59,8 +59,8 @@ it('completes legal reproducible episodes for both new heroes and both policies'
   for (const hero of ['archivist', 'oathkeeper']) {
     for (const kind of ['heuristic-v1', 'scout-search-v1'] as const) {
       const settings = { ...config, hero, kind };
-      const first = runHearthEpisode('POLICY-REGRESSION', settings);
-      const second = runHearthEpisode('POLICY-REGRESSION', settings);
+      const first = runEpisode('POLICY-REGRESSION', settings);
+      const second = runEpisode('POLICY-REGRESSION', settings);
       expect(first.status, first.error).toBe('complete');
       expect(first.replayVerified).toBe(true);
       expect(first.replay).toBe(second.replay);
@@ -72,7 +72,7 @@ it('completes legal reproducible episodes for both new heroes and both policies'
 }, 30000);
 
 it('preserves command-limited episodes and enforces finite search budgets', () => {
-  const limited = runHearthEpisode('LIMIT', config, { maxCommands: 2 });
+  const limited = runEpisode('LIMIT', config, { maxCommands: 2 });
   expect(limited.status).toBe('limit');
   expect(limited.commands).toBe(2);
   expect(limited.replayVerified).toBe(true);
@@ -81,7 +81,7 @@ it('preserves command-limited episodes and enforces finite search budgets', () =
 });
 
 it('retains failures and excludes incomplete, duplicate and mismatched experimental pairs', () => {
-  const limited = runHearthEpisode('PAIR', config, { maxCommands: 1 });
+  const limited = runEpisode('PAIR', config, { maxCommands: 1 });
   const base: EpisodeReport = {
     ...limited,
     status: 'complete',
@@ -89,19 +89,19 @@ it('retains failures and excludes incomplete, duplicate and mismatched experimen
     policy: { ...config, kind: 'heuristic-v1' },
   };
   const candidate: EpisodeReport = { ...base, placement: 3, policy: config };
-  expect(compareHearthEpisodes([base, candidate])).toMatchObject({
+  expect(compareEpisodes([base, candidate])).toMatchObject({
     matchedPairs: 1,
     meanPlacementImprovement: 2,
     candidateBetter: 1,
     standardError: null,
   });
-  expect(compareHearthEpisodes([base, limited]).excluded[0].reason).toContain('Incomplete');
-  expect(compareHearthEpisodes([base, candidate, candidate]).matchedPairs).toBe(0);
+  expect(compareEpisodes([base, limited]).excluded[0].reason).toContain('Incomplete');
+  expect(compareEpisodes([base, candidate, candidate]).matchedPairs).toBe(0);
   expect(
-    compareHearthEpisodes([base, { ...candidate, policy: { ...config, seed: 'changed' } }])
-      .excluded[0].reason,
+    compareEpisodes([base, { ...candidate, policy: { ...config, seed: 'changed' } }]).excluded[0]
+      .reason,
   ).toContain('mismatch');
-  const failed = runHearthEpisode('CALLBACK-FAILURE', config, {
+  const failed = runEpisode('CALLBACK-FAILURE', config, {
     onDecision: () => {
       throw new Error('trace writer failed');
     },

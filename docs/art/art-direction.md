@@ -63,8 +63,8 @@ Define the physical medium upfront: living tissue, carved wood, cast metal, or g
 
 | Recorded case                                                                                  | Structural failure                                                                                 | Evidence needed for next construction                                                                |
 | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| [Wolf evolved forms](assets/wolf-evolutions.md#scope-and-visual-failures)                      | Exposed mantle caps and paddle locks treated as polish residuals; shoulder formed a padded saddle. | Fur roots integrated into neck surface, grown nape contour, and fitted motion on one representative. |
-| [Matriarch refinement](assets/native-matriarch-refinement.md#progress-and-failed-construction) | Added eyelid bars and rings left eye detached from coarse orbit.                                   | Connected orbit/lid edge fitted to globe, cheek, and brow, retaining head motion in clay proof.      |
+| [Wolf evolved forms](assets/creatures/wolf-evolutions.md#scope-and-visual-failures)            | Exposed mantle caps and paddle locks treated as polish residuals; shoulder formed a padded saddle. | Fur roots integrated into neck surface, grown nape contour, and fitted motion on one representative. |
+| [Matriarch refinement](trials/native-matriarch-refinement.md#progress-and-failed-construction) | Added eyelid bars and rings left eye detached from coarse orbit.                                   | Connected orbit/lid edge fitted to globe, cheek, and brow, retaining head motion in clay proof.      |
 
 ## Current studies: decisions and failure cases
 

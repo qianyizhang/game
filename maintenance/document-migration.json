@@ -227,6 +227,222 @@
       "to": "docs/engineering/trace-visualizer.md",
       "sourceRevision": "dac5a09f9e54f1fe208feaf2389f364f5ebd26e0",
       "sha256": "3fe55d612d6bbd8fee219056821f82f145f9895dd9afb4f487c17a5a12114871"
+    },
+    {
+      "from": "docs/art/assets/amalgam.md",
+      "to": "docs/art/assets/creatures/amalgam.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "a16e76465323a7a70a116adb082ea6921dd99615a590e8f5acc041859548bd9a"
+    },
+    {
+      "from": "docs/art/assets/banner-bearer.md",
+      "to": "docs/art/assets/creatures/banner-bearer.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "68f0e9f4076d81fd40d92616681019b6a88db86b2f29847916bd5c66624d5adc"
+    },
+    {
+      "from": "docs/art/assets/bogtoad.md",
+      "to": "docs/art/assets/creatures/bogtoad.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "4fe3a0982449a99792210f8c9c641c907117c396ae5b062913bcf565e54c8edb"
+    },
+    {
+      "from": "docs/art/assets/briar-hydra.md",
+      "to": "docs/art/assets/creatures/briar-hydra.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "589f337021f342a0ca40d6bbfcf2d0368fabcf44c396394280fe56a2615a8eb6"
+    },
+    {
+      "from": "docs/art/assets/crocolisk.md",
+      "to": "docs/art/assets/creatures/crocolisk.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "f84b9b7dc20d091cdba42d997e1534887041f002607b4268dfdf82f9e9b03056"
+    },
+    {
+      "from": "docs/art/assets/cub.md",
+      "to": "docs/art/assets/creatures/cub.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "77162cca1edafdc20e43da0273a0c4be908fcad7653317d9b25a96785eba0c6c"
+    },
+    {
+      "from": "docs/art/assets/guardian.md",
+      "to": "docs/art/assets/creatures/guardian.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "d48210f8ba958cd58fc15d061b59502955b4d1e6b2ea247e1a60f93363179327"
+    },
+    {
+      "from": "docs/art/assets/herald.md",
+      "to": "docs/art/assets/creatures/herald.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "760a80ae91f36dc0d623df2973fedf1d25c34506a0775fffc7b36f974ecbe0ae"
+    },
+    {
+      "from": "docs/art/assets/imp.md",
+      "to": "docs/art/assets/creatures/imp.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "985a28b9b285d4dea0314c48beea70d69b42a35b30af263d1de6a0cea2863758"
+    },
+    {
+      "from": "docs/art/assets/juggler.md",
+      "to": "docs/art/assets/creatures/juggler.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "aedb4dc9473d5d86f3ca17cb16bcc38195a49d729077418d542aadf0926ff44b"
+    },
+    {
+      "from": "docs/art/assets/matriarch.md",
+      "to": "docs/art/assets/creatures/matriarch.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "872e58acb6c4ec108312f6501d5e18d802ff1485f2cee3f3d73ca40c47fe6a28"
+    },
+    {
+      "from": "docs/art/assets/matron.md",
+      "to": "docs/art/assets/creatures/matron.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "714f2a6d78960ea47994926ce28b49970ccb752bf40ea6a71567842a6ac6e820"
+    },
+    {
+      "from": "docs/art/assets/moonmoth.md",
+      "to": "docs/art/assets/creatures/moonmoth.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "8731f15bbcf4f8cf2f134ef9e236832873f4e5025b5c60451fa9be2d4214b060"
+    },
+    {
+      "from": "docs/art/assets/native-batch-1.md",
+      "to": "docs/art/trials/native-batch-1.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "1d1d659cb0ceb2c88d40684d05550a666ca7b3ad01741f0aa0454c84bfacb926"
+    },
+    {
+      "from": "docs/art/assets/native-matriarch-refinement.md",
+      "to": "docs/art/trials/native-matriarch-refinement.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "7e16f1d421a617f7800ed8f9bc0ac08fa282e33c4bfe85ef1e9f10b7efe526b1"
+    },
+    {
+      "from": "docs/art/assets/native-matriarch-trial.md",
+      "to": "docs/art/trials/native-matriarch-trial.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "4502092c1bba009b96422329a219e345e3fc27c8b2bd443dfc5be7d5380988fd"
+    },
+    {
+      "from": "docs/art/assets/native-pilots.md",
+      "to": "docs/art/trials/native-pilots.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "7ef3e9ad3286f273659768484f9d8262b66bd8741302dcc976240acaccf607a8"
+    },
+    {
+      "from": "docs/art/assets/native-prowler-trial.md",
+      "to": "docs/art/trials/native-prowler-trial.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "c5cdff1c96f715a0ba0f84d2b200d44b660d474feb3f0c626a2530343bae5e7e"
+    },
+    {
+      "from": "docs/art/assets/native-wolf-trial.md",
+      "to": "docs/art/trials/native-wolf-trial.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "e77998e67d8edcadc924735234f53805c91aea525bfa6833cfa846d10cce5c77"
+    },
+    {
+      "from": "docs/art/assets/packcaller.md",
+      "to": "docs/art/assets/creatures/packcaller.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "c5abd38f8131c91c1d539e5ae508f7add11aa1c237211d9c0400fc98d73765a1"
+    },
+    {
+      "from": "docs/art/assets/patron.md",
+      "to": "docs/art/assets/creatures/patron.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "ce49eeaf8c07643981a8ae8e22f0a73a3c9246e4a5e138d159c0eab2962ac021"
+    },
+    {
+      "from": "docs/art/assets/prowler.md",
+      "to": "docs/art/assets/creatures/prowler.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "bc5e104caf839c5d11f59c5cb8cc43003e4cef3bc0bcf2390811b77b49737a7d"
+    },
+    {
+      "from": "docs/art/assets/scavenger.md",
+      "to": "docs/art/assets/creatures/scavenger.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "654480bdb4ac3aeeb0588d81d91e85924837e46473c9ceb318c24066d91758f3"
+    },
+    {
+      "from": "docs/art/assets/squire.md",
+      "to": "docs/art/assets/creatures/squire.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "36f29c4c692b6e570655126d89f9de72ff0b1d300699c2daa8b2078f9040a8fa"
+    },
+    {
+      "from": "docs/art/assets/stormroc.md",
+      "to": "docs/art/assets/creatures/stormroc.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "10e11959a436cfae3c1b2c399cd1e807ee04e5377e34af90ee336048e8965814"
+    },
+    {
+      "from": "docs/art/assets/stray.md",
+      "to": "docs/art/assets/creatures/stray.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "9c86fcb9fb0bb5ffa885da9199fe95ce9cb2deaf18a8479a9b1555b6cc37b2a3"
+    },
+    {
+      "from": "docs/art/assets/thornstag.md",
+      "to": "docs/art/assets/creatures/thornstag.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "8eed88ce1b0c4e305939752eac40e4f50ce8f7ce72db4401adc22e1dab4d8b97"
+    },
+    {
+      "from": "docs/art/assets/tortoise.md",
+      "to": "docs/art/assets/creatures/tortoise.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "09ae0e6fd5ad453ec44ce27da4363594b0fc3c39639b10d19cf8119845707490"
+    },
+    {
+      "from": "docs/art/assets/watcher.md",
+      "to": "docs/art/assets/creatures/watcher.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "83cedfb4f5068c63439e3efa8d56ff8269377f48a75fe11e9f01edb90e0760bf"
+    },
+    {
+      "from": "docs/art/assets/wolf-evolutions-preview.jpg",
+      "to": "docs/art/assets/creatures/wolf-evolutions-preview.jpg",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "0a5204e68072b297ce14c890e1ca82cb770e6c68157570272ce9016b58815acd"
+    },
+    {
+      "from": "docs/art/assets/wolf-evolutions.md",
+      "to": "docs/art/assets/creatures/wolf-evolutions.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "641a65aff55c1ce208ab9e6f6904d340ae1dd082991d4b4ca6f659911f16f98a"
+    },
+    {
+      "from": "docs/art/assets/wolf.md",
+      "to": "docs/art/assets/creatures/wolf.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "161700a1337069802a126001d2f56bff2252e17ab902da47fff3d897027d4458"
+    },
+    {
+      "from": "docs/engineering/test-audit-2026-10-07.md",
+      "to": "docs/engineering/history/test-audit-2026-10-07.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "59ebcc4dd3beb355f8d982d8297a3cf44ac323f518633b29a25a8fda79e46ae9"
+    },
+    {
+      "from": "docs/engineering/cleanup-triage.md",
+      "to": "docs/engineering/history/cleanup-triage.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "6ad09cb795d5b52b9c23b507c73d0545dbc5a77eb73bf239900a08af736498f7"
+    },
+    {
+      "from": "docs/art/feature-coverage.md",
+      "to": "docs/art/history/feature-coverage.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "bfa4ab813710167e79d279dd0891945b91e37b87091674bf49784bf8f653cb6e"
+    },
+    {
+      "from": "docs/engineering/decisions.md",
+      "to": "docs/engineering/scope-history.md",
+      "sourceRevision": "81abec13171e3639cf1fc08328421796b29cee07",
+      "sha256": "3d4fb1b86ba997b98911b1871f76e3cf95635515548a0d61d77a744eeadf70ba"
     }
   ]
 }

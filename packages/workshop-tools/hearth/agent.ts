@@ -4,7 +4,7 @@ import { requestFromLine } from './protocol.ts';
 import { createInterface } from 'node:readline';
 import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { withHearthRuntime } from './runtime.ts';
+import { withRuntime } from './runtime.ts';
 
 export async function runCli(args: string[]) {
   if (args.includes('--help')) {
@@ -17,7 +17,7 @@ export async function runCli(args: string[]) {
   const output = args[1] ? fromRoot(args[1]) : newOutput('agents/hearth');
   await freshDirectory(output);
 
-  await withHearthRuntime(async ({ bgSession, hearthFrame, actHearthAgent, hearthCatalogue }) => {
+  await withRuntime(async ({ bgSession, hearthFrame, actHearthAgent, hearthCatalogue }) => {
     let session = bgSession.create(args[0] ?? 'HEARTH-AGENT-01');
     const send = (response: unknown) => process.stdout.write(JSON.stringify(response) + '\n');
     send({ ok: true, event: 'ready', frame: hearthFrame(session) });

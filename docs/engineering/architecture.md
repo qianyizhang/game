@@ -2,6 +2,14 @@
 
 The [glossary](glossary.md) defines domain terms. [Independent game rules](decisions/0001-independent-game-rules.md) and [accepted-command reconstruction](decisions/0002-reconstruct-from-accepted-commands.md) record foundational design choices. See [testing policy](testing.md) for verification boundaries.
 
+## Repository organization
+
+`src/games/` owns the three card studies loaded by the workshop browser shell. Each keeps its content, domain rules, application adapters and UI together; Hearth and Spire styles live under their owning `ui/` directories. Hub styles live under `src/app/`; `src/styles.css` owns global styling. The entry point retains stylesheet load order.
+
+`packages/diablo2/` owns the independently checked Emberwake engine and UI, integrated into the same hub. Its package boundary reflects its own runtime and contracts, rather than requiring every game to become a package. `packages/session-review`, `packages/dcc-workbench` and `packages/workshop-tools` own their specialized presentation, native authoring and tooling contracts.
+
+`src/engines/` owns shared challenge and replay protocols. `src/engines/hearth/` groups Hearth experiment harnesses, inspectors and headless runtime entry points; game rules and policies remain under `src/games/battlegrounds/`. Frozen experiment reports retain their recorded revision, source paths and hashes. Reproducing those reports requires that revision; current tools use the relocated entry points.
+
 ## The dependency direction
 
 ```text

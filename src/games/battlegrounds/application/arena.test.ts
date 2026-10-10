@@ -3,7 +3,7 @@ import { activeSeat, mixedRivalsConfig, transitionArena } from '../domain/arena'
 import { makeUnit } from '../domain/units';
 import { actArenaAgent, arenaFrame, arenaSessionV1 as arenaSession, inspectArena } from './arena';
 import { advanceRivals } from './arena-controller';
-import { runArenaEpisode } from '../../../engines/hearth-arena-experiment';
+import { runArenaEpisode } from '../../../engines/hearth/arena-experiment';
 import * as policies from '../ai/recruitment-policy';
 import { bgSessionV5 as bgSession } from './session';
 import { createHash } from 'node:crypto';

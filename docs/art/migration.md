@@ -9,7 +9,7 @@ The DCC registry ([`packages/dcc-workbench/registry.json`](../../packages/dcc-wo
 - **Six base assets:** `briar-hydra` (maps to study `hydra`), `nightjar`, `phoenix`, `stormroc`, `prowler`, `wolf`.
 - **Three Wolf variants:** `wolf-bloom`, `wolf-elder`, `wolf-thorn` (selectable within study `wolf`).
 
-The gallery maintains 29 total studies. Authoritative sources reside in DCC `subjects/<id>/`. Acceptance receipts are documented in [native pilots](assets/native-pilots.md), [batch 1 retrospective](assets/native-batch-1.md), [Prowler trial](assets/native-prowler-trial.md), [Wolf trial](assets/native-wolf-trial.md), and [Wolf evolved forms](assets/wolf-evolutions.md).
+The gallery maintains 29 total studies. Authoritative sources reside in DCC `subjects/<id>/`. Acceptance receipts are documented in [native pilots](trials/native-pilots.md), [batch 1 retrospective](trials/native-batch-1.md), [Prowler trial](trials/native-prowler-trial.md), [Wolf trial](trials/native-wolf-trial.md), and [Wolf evolved forms](assets/creatures/wolf-evolutions.md).
 
 ## File responsibilities and layout
 

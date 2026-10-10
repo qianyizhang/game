@@ -11,7 +11,7 @@ import {
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { withRecruitmentRuntime, sha256 } from './recruitment-runtime.ts';
+import { withRuntime, sha256 } from './recruitment-runtime.ts';
 import { recruitmentPool } from './recruitment-pool.ts';
 
 export async function runCli(args: string[]) {
@@ -37,7 +37,7 @@ export async function runCli(args: string[]) {
     writeFile(resolve(output, name), JSON.stringify(value, null, 2) + '\n', { flag: 'wx' });
   const git = (...args: string[]) =>
     execFileSync('git', args, { encoding: 'utf8', cwd: repositoryRoot }).trim();
-  await withRecruitmentRuntime(async ({ runtime, moduleURL, sourceDigests, bundleDigest }) => {
+  await withRuntime(async ({ runtime, moduleURL, sourceDigests, bundleDigest }) => {
     const startedAt = new Date().toISOString(),
       started = performance.now();
     const scripts = [

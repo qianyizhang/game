@@ -9,10 +9,10 @@ import { createHash } from 'node:crypto';
 export const sha256 = (bytes: string | Uint8Array) =>
   createHash('sha256').update(bytes).digest('hex');
 /** Pin the actual headless dependency graph; concurrent presentation work is outside this graph. */
-export type RecruitmentRuntime = typeof import('../../../src/engines/hearth-recruitment-runtime');
-export async function withRecruitmentRuntime<R>(
+export type Runtime = typeof import('../../../src/engines/hearth/recruitment-runtime');
+export async function withRuntime<R>(
   use: (context: {
-    runtime: RecruitmentRuntime;
+    runtime: Runtime;
     moduleURL: string;
     sourceDigests: Record<string, string>;
     bundleDigest: string;
@@ -37,7 +37,7 @@ export async function withRecruitmentRuntime<R>(
         },
       ],
       build: {
-        ssr: resolve(repositoryRoot, 'src/engines/hearth-recruitment-runtime.ts'),
+        ssr: resolve(repositoryRoot, 'src/engines/hearth/recruitment-runtime.ts'),
         outDir: directory,
         emptyOutDir: false,
         rollupOptions: { output: { entryFileNames: 'recruitment.mjs' } },
@@ -55,7 +55,7 @@ export async function withRecruitmentRuntime<R>(
       ),
     );
     return await use({
-      runtime: (await import(moduleURL)) as RecruitmentRuntime,
+      runtime: (await import(moduleURL)) as Runtime,
       moduleURL,
       sourceDigests,
       bundleDigest: sha256(bundle),

@@ -64,4 +64,4 @@ An imported winning replay proves reconstruction and the victory screen, not a f
 
 Use the [verification contracts](checks.md#gate-selection) to select the default `check` or geometry-inclusive `check:full` gate and affected browser/native checks. Report maintenance, application/simulation, geometry and browser/native results separately. Run relevant checks once after the final change; broaden or repeat them for a new failure, change or unresolved concern.
 
-The [2026-10-07 test audit](test-audit-2026-10-07.md) records the initial inventory and export-normal consolidation. Further deletions depend on behavior review, not a target ratio of unit to browser tests.
+The [2026-10-07 test audit](history/test-audit-2026-10-07.md) records the initial inventory and export-normal consolidation. Further deletions depend on behavior review, not a target ratio of unit to browser tests.

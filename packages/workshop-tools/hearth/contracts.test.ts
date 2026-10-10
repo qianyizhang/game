@@ -3,12 +3,12 @@ import assert from 'node:assert/strict';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
-import { withRecruitmentRuntime } from './recruitment-runtime.ts';
+import { withRuntime } from './recruitment-runtime.ts';
 import { recruitmentReport, caseSpec } from './contracts.ts';
 import { recruitmentPool } from './recruitment-pool.ts';
 
 await test('receipt comparison validates consumed fields and exact frozen case/configuration', async () => {
-  await withRecruitmentRuntime(({ runtime }) => {
+  await withRuntime(({ runtime }) => {
     const spec = runtime.recruitmentCases('development')[0];
     const report = runtime.runRecruitmentEpisode(spec);
     const { replay, ...receipt } = report;
@@ -31,7 +31,7 @@ await test(
   async (t) => {
     const output = await mkdtemp(resolve(tmpdir(), 'recruitment-pool-test-'));
     t.after(() => rm(output, { recursive: true, force: true }));
-    await withRecruitmentRuntime(async ({ runtime, moduleURL }) => {
+    await withRuntime(async ({ runtime, moduleURL }) => {
       const spec = runtime.recruitmentCases('development')[0];
       await assert.rejects(
         recruitmentPool({

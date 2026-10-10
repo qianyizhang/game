@@ -1,5 +1,5 @@
 import { Worker } from 'node:worker_threads';
-import type { RecruitmentCase } from '../../../src/engines/hearth-recruitment-experiment';
+import type { RecruitmentCase } from '../../../src/engines/hearth/recruitment-experiment';
 import { objectValue, text, number, boolean, status } from './contracts.ts';
 
 interface RunResult {

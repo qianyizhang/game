@@ -5,7 +5,7 @@ import { requestFromLine } from './protocol.ts';
 import { createInterface } from 'node:readline';
 import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { withHearthRuntime } from './runtime.ts';
+import { withRuntime } from './runtime.ts';
 
 export async function runCli(args: string[]) {
   const [seed = 'HEARTH-ARENA-01', destination, seatText = '0', visibility = 'hidden', ...extra] =
@@ -27,7 +27,7 @@ export async function runCli(args: string[]) {
     throw new Error('Invalid seat, visibility or arguments; see --help.');
   const output = destination ? fromRoot(destination) : newOutput('agents/arena');
   await freshDirectory(output);
-  await withHearthRuntime(
+  await withRuntime(
     async ({
       arenaSession,
       arenaFrame,

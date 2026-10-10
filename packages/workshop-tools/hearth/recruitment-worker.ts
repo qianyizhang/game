@@ -1,8 +1,8 @@
 import type {
   RecruitmentCase,
   RecruitmentMetrics,
-} from '../../../src/engines/hearth-recruitment-experiment';
-import type { RecruitmentRuntime } from './recruitment-runtime.ts';
+} from '../../../src/engines/hearth/recruitment-experiment';
+import type { Runtime } from './recruitment-runtime.ts';
 import { caseSpec, objectValue, text } from './contracts.ts';
 import { parentPort, workerData } from 'node:worker_threads';
 import { openSync, closeSync, readFileSync, writeFileSync, writeSync } from 'node:fs';
@@ -17,7 +17,7 @@ const mode = data.mode;
 const port = parentPort;
 if (!port) throw new Error('Recruitment worker requires a parent port.');
 // The pool supplies the bundle built from the declared, checked runtime entry.
-const engine = (await import(moduleURL)) as RecruitmentRuntime;
+const engine = (await import(moduleURL)) as Runtime;
 const sha = (value: string | Uint8Array) => createHash('sha256').update(value).digest('hex');
 const write = (name: string, value: unknown) =>
   writeFileSync(

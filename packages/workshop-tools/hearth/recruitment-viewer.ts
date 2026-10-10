@@ -1,5 +1,5 @@
-import type { RecruitmentRuntime } from './recruitment-runtime.ts';
-type InspectionData = ReturnType<RecruitmentRuntime['inspectRecruitment']> & {
+import type { Runtime } from './recruitment-runtime.ts';
+type InspectionData = ReturnType<Runtime['inspectRecruitment']> & {
   provenance: { replayDigest: string; receiptDigest: string; inspectorBundleDigest: string };
 };
 declare const data: InspectionData;

@@ -1,6 +1,6 @@
 # Development direction and remaining work
 
-The accepted direction is deeper, concrete gameplay and observable agent interfaces with reproducible policy experiments. Human coaching is outside this track. [Settled decisions](decisions.md) records the approved scope; [delivery history](../research/delivery-history.md) records dated verification.
+The accepted direction is deeper, concrete gameplay and observable agent interfaces with reproducible policy experiments. Human coaching is outside this track. [Settled decisions](scope-history.md) records the approved scope; [delivery history](../research/delivery-history.md) records dated verification.
 
 ## Delivered
 

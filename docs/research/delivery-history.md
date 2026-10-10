@@ -1,6 +1,6 @@
 # Historical delivery evidence
 
-Chronological milestone records through 2026-10-06. Current test and verification contracts are governed by [checks](../engineering/checks.md). Retired intermediate artifacts are documented in [cleanup triage](../engineering/cleanup-triage.md).
+Chronological milestone records through 2026-10-06. Current test and verification contracts are governed by [checks](../engineering/checks.md). Retired intermediate artifacts are documented in [cleanup triage](../engineering/history/cleanup-triage.md).
 
 ## Workshop v3 core features
 

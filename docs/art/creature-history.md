@@ -1,6 +1,6 @@
 # Creature direction and guided trials
 
-Historical review and authorship evidence from 2026-10-06. The earlier Hydra and Nightjar were rejected; the living Hydra received positive user feedback. Final Nightjar and Phoenix are mixed-authorship rebuilds. The [aesthetic rulebook](art-direction.md) serves as the visual standard. Retired intermediate paths are recorded in [cleanup triage](../engineering/cleanup-triage.md).
+Historical review and authorship evidence from 2026-10-06. The earlier Hydra and Nightjar were rejected; the living Hydra received positive user feedback. Final Nightjar and Phoenix are mixed-authorship rebuilds. The [aesthetic rulebook](art-direction.md) serves as the visual standard. Retired intermediate paths are recorded in [cleanup triage](../engineering/history/cleanup-triage.md).
 
 ## Sol artwork review — 2026-10-06
 

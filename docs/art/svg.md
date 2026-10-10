@@ -28,7 +28,15 @@ Feature artwork extends the source map:
 | Workshop and rival styles | `src/shared/art/WorkshopArt.tsx`                         | Four 160 × 112 tool scenes and six 64 × 64 symbols; `rivalArt.ts` maps styles to symbols in presentation        |
 | Feature placement         | `src/shared/art/FeatureArt.css`                          | Scoped desktop/phone sizing; symbols remain decorative beside HTML labels                                       |
 
-`ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](../research/content-expansions.md#card-suite-expansion), [Night Market](../research/content-expansions.md#night-market), and [feature artwork coverage](feature-coverage.md) document their sets.
+`ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](../research/content-expansions.md#card-suite-expansion), [Night Market](../research/content-expansions.md#night-market), and [feature artwork coverage](history/feature-coverage.md) document their sets.
+
+## Integration boundaries
+
+- HTML retains names, effects, costs, counts, keywords and control labels. Inline SVGs are decorative and non-focusable; standalone exports receive accessible titles from the catalogue.
+- Scouting artwork depicts the same previously observed board or eliminated-warband snapshot as its text. It does not inspect a rival's hidden current board.
+- Rival symbols follow the existing style-label disclosure; the inspector retains its disclosure notice.
+- Content registries supply export IDs. New relics and potions need entries in `WorldItemArt.tsx`; its `data-art-fallback` marker exposes omissions while keeping unknown mod IDs renderable.
+- Artwork changes do not change authoritative content, rules, seeds, replay versions, persistence or agent policies.
 
 ## Scaffold and export
 

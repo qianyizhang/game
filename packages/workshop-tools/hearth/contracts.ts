@@ -2,8 +2,8 @@ import { isList, objectValue } from '../../../src/shared/json.ts';
 import type {
   RecruitmentCase,
   RecruitmentReport,
-} from '../../../src/engines/hearth-recruitment-experiment';
-import type { RecruitmentRuntime } from './recruitment-runtime.ts';
+} from '../../../src/engines/hearth/recruitment-experiment';
+import type { Runtime } from './recruitment-runtime.ts';
 
 export { objectValue };
 export function number(value: unknown): number {
@@ -27,7 +27,7 @@ export function cohort(value: unknown): RecruitmentCase['cohort'] {
   if (value !== 'development' && value !== 'evaluation') throw new Error('Unknown cohort.');
   return value;
 }
-export function caseSpec(value: unknown, runtime: RecruitmentRuntime): RecruitmentCase {
+export function caseSpec(value: unknown, runtime: Runtime): RecruitmentCase {
   const spec = objectValue(value);
   const expected = runtime.recruitmentCases(cohort(spec.cohort)).find((row) => row.id === spec.id);
   if (!expected || JSON.stringify(expected) !== JSON.stringify(value))
@@ -43,7 +43,7 @@ export function status(value: unknown): RecruitmentReport['status'] {
 export function recruitmentReport(
   value: unknown,
   replay: string,
-  runtime: RecruitmentRuntime,
+  runtime: Runtime,
 ): RecruitmentReport {
   const row = objectValue(value),
     spec = caseSpec(row.spec, runtime);

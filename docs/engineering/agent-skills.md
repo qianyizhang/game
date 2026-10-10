@@ -11,7 +11,7 @@ The [lock record](../../maintenance/skills-lock.json) pins each installed file. 
 | `GLOSSARY.md`                | [Domain vocabulary](glossary.md), grouped by workshop and game context                          |
 | `docs/adr/`                  | [Architectural decisions](decisions/README.md), only for consequential trade-offs               |
 | `CODING_STANDARDS.md`        | [Maintenance governance](maintenance.md), with mechanical rules enforced in check configuration |
-| Existing scope decisions     | [Settled game decisions](decisions.md)                                                          |
+| Existing scope decisions     | [Settled game decisions](scope-history.md)                                                      |
 | Session or review narratives | `.work/sessions/<session>/`, with the retention lifecycle                                       |
 | Architecture report          | Temporary local HTML, as requested by the upstream skill                                        |
 

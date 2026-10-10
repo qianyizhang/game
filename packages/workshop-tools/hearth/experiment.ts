@@ -1,5 +1,5 @@
 import { sourceSnapshot } from './provenance.ts';
-import type { EpisodeReport } from '../../../src/engines/hearth-experiment';
+import type { EpisodeReport } from '../../../src/engines/hearth/experiment';
 import { fileURLToPath } from 'node:url';
 import { fromRoot, repositoryRoot, reportFailure } from '../io.ts';
 import { appendFileSync } from 'node:fs';
@@ -7,7 +7,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { withHearthRuntime } from './runtime.ts';
+import { withRuntime } from './runtime.ts';
 
 // Freeze these before reserved evaluation. The policy never receives environment seeds.
 const plan = {
@@ -77,14 +77,14 @@ export async function runCli(args: string[]) {
     runtime: process.version,
   });
 
-  await withHearthRuntime(async ({ runHearthEpisode, compareHearthEpisodes }) => {
+  await withRuntime(async ({ runEpisode, compareEpisodes }) => {
     const reports: EpisodeReport[] = [];
     for (const [index, seed] of plan[cohort].entries()) {
       const hero = plan.heroes[index % plan.heroes.length];
       for (const kind of plan.configurations) {
         const id = `${String(index + 1).padStart(2, '0')}-${hero}-${kind}`;
         await writeFile(resolve(output, `${id}.decisions.jsonl`), '', { flag: 'wx' });
-        const report = runHearthEpisode(
+        const report = runEpisode(
           seed,
           { kind, hero, seed: plan.policySeed, samples: plan.samples, maxOrders: plan.maxOrders },
           {
@@ -110,7 +110,7 @@ export async function runCli(args: string[]) {
         });
       }
     }
-    const comparison = compareHearthEpisodes(reports);
+    const comparison = compareEpisodes(reports);
     await write('comparison.json', {
       cohort,
       configurationDigest,

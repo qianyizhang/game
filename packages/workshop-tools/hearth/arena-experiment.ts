@@ -7,7 +7,7 @@ import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { withHearthRuntime } from './runtime.ts';
+import { withRuntime } from './runtime.ts';
 
 // Freeze before evaluation. Neither these environment seeds nor the inspector enter policy inputs.
 const plan = {
@@ -81,7 +81,7 @@ export async function runCli(args: string[]) {
     runtime: process.version,
     startedAt,
   });
-  await withHearthRuntime(async ({ mixedRivalsConfig, runArenaEpisode, compareArenaEpisodes }) => {
+  await withRuntime(async ({ mixedRivalsConfig, runArenaEpisode, compareArenaEpisodes }) => {
     const reports = [],
       receipts = [];
     for (const [block, seed] of plan[cohort].entries()) {

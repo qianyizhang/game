@@ -4,7 +4,7 @@ import { fromRoot, reportFailure } from '../io.ts';
 import { objectValue, caseSpec, text } from './contracts.ts';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { withRecruitmentRuntime, sha256 } from './recruitment-runtime.ts';
+import { withRuntime, sha256 } from './recruitment-runtime.ts';
 
 export async function runCli(args: string[]) {
   const [replayPath, receiptPath, output, ...extra] = args;
@@ -12,7 +12,7 @@ export async function runCli(args: string[]) {
     throw new Error(
       'Usage: node packages/workshop-tools/hearth/recruitment-inspect.ts <replay.json> <receipt.json> <new.html>',
     );
-  await withRecruitmentRuntime(async ({ runtime, bundleDigest }) => {
+  await withRuntime(async ({ runtime, bundleDigest }) => {
     const raw = await readFile(fromRoot(replayPath), 'utf8');
     const receiptBytes = await readFile(fromRoot(receiptPath), 'utf8');
     const receipt = objectValue(JSON.parse(receiptBytes));
