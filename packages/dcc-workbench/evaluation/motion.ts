@@ -1,6 +1,45 @@
 import { readMotions } from '../motion-contract.ts';
 import { record } from '../contracts.ts';
-import type { Measurement } from './index.ts';
+import type { Criterion, Measurement } from './index.ts';
+
+/** Shared review questions; a subject profile may replace or extend these. */
+export const motionRubrics: Criterion[] = [
+  {
+    id: 'readability',
+    title: 'Pose readability',
+    dimension: 'readability',
+    kind: 'rubric',
+    prompt: 'At display size, do the key poses convey intent in side and portrait views?',
+    rationale: 'Review silhouettes and gesture independently of numerical timing.',
+  },
+  {
+    id: 'pacing',
+    title: 'Perceived pacing',
+    dimension: 'timing',
+    kind: 'rubric',
+    prompt: 'At 1× speed, are preparation, main action and recovery distinct without dragging?',
+    rationale: 'A duration target and phase stills do not establish perceived timing.',
+  },
+  {
+    id: 'weight',
+    title: 'Weight and coordination',
+    dimension: 'plausibility',
+    kind: 'rubric',
+    prompt:
+      'Does weight load before push-off, transfer through support and settle, with subordinate head/tail response?',
+    rationale: 'Contact accuracy alone does not establish convincing mass or anatomy.',
+  },
+  {
+    id: 'reference',
+    title: 'Reference fidelity',
+    dimension: 'reference-fidelity',
+    kind: 'rubric',
+    prompt:
+      'Which named behavior/reference was compared, at what speed and phase, and what differs?',
+    rationale:
+      'Unassessed without a matched reference; plausible stylization is not species-accurate validation.',
+  },
+];
 
 /** Adapter from saved motion contracts and optional native contact evidence. */
 export function measureMotions(clips: unknown, nativeContacts: unknown = {}) {

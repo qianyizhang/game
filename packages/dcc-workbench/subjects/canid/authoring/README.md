@@ -43,6 +43,7 @@ configuration; delivery and native/browser checks exercise their observable resu
 | `geometry.py`      | Local construction and skin-binding helpers; real toe contact probes           |
 | `rig.py`           | Deformation joints, shoulder controls, hocks, IK targets and rolling paws      |
 | `motion.py`        | One-time authoring of shared source actions; not invoked by fitting/export     |
+| `timing.py`        | Explicit timing revision over saved controls, paths, contacts and markers      |
 | `action_motion.py` | Attack, ground-roll and turning escape performances                            |
 | `motion_spec.py`   | Saved action playback, trajectory, support phases and visual markers           |
 | `contacts.py`      | World-space stance, rolling body support and proportion-aware knee fitting     |
@@ -62,6 +63,7 @@ npm run dcc:canid -- review --root test-results/canid-next --character ash --out
 npm run dcc:canid -- export --root test-results/canid-next --output test-results/canid-export
 npm run dcc:canid -- check
 npm run dcc:canid -- check --baseline
+npm run dcc:canid -- evaluate
 npm run dcc:canid -- verify test-results/canid-native-edit
 ```
 
@@ -70,6 +72,23 @@ output directory and never calls construction. The shared motion master owns ten
 fit deliberately replaces those derived actions in each character. It keeps mesh data,
 skin weights and materials intact. Native character action edits must be transferred to the
 shared source before fitting if they are intended to survive that replacement.
+
+`timing.py` owns the `responsive-2026-10-10` revision: per-motion durations and a monotone
+phase warp, with toe-space sampling to preserve planted gait contacts. It makes modest
+changes to idle/walk and concentrates attack drive and flee acceleration. Bootstrap applies
+it once after pose authoring. The saved master already contains it; normal fit/export do not
+repeat it. To reproduce that revision from the pre-revision masters at `f9b5774`:
+
+```sh
+npm run dcc:canid -- revise path/to/pre-revision-sources test-results/canid-timing-candidate
+npm run dcc:canid -- fit --root test-results/canid-timing-candidate
+npm run dcc:canid -- export --root test-results/canid-timing-candidate --output test-results/canid-timing-delivery
+```
+
+The command requires an explicit parent directory and fresh output; it rejects an already
+retimed master. A later revision should name its own parent timing and profile instead of
+silently applying this same warp twice. Candidate fitting verifies unchanged mesh/weight
+digests. Family evaluation targets live in `../evaluation.ts`, separately from authoring.
 
 Each registered Blender action owns a `motion_spec` JSON custom property. It records
 `seconds`, `playback` (`loop` or `once`), `trajectory` samples, `contacts`, and named `markers`.

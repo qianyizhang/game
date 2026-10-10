@@ -169,14 +169,16 @@ existing protection. See [retention authority](../../docs/engineering/maintenanc
 
 Open `/?workbench=dcc&compare=canid`, or choose **Canid motion study** in the workbench.
 The refined family has 29 deformation joints and ten saved source clips at 60 fps:
-alert idle (4 s), brisk walk (0.90 s), trot (0.60 s), planted look (2.50 s), gallop
-(0.70 s), lunge (1.80 s), bite (1.40 s), forepaw swipe (1.60 s), playful roll (4 s),
-and turning flee (3.60 s).
+alert idle (3.60 s), brisk walk (0.80 s), trot (0.50 s), planted look (1.60 s), gallop
+(0.50 s), lunge (0.95 s), bite (0.70 s), forepaw swipe (0.85 s), playful roll (2.40 s),
+and turning flee (2.40 s).
 Ash supplies the family proportions, Russet changes the coat, and Moss is broader with
 shorter legs and fitted stride. The viewer offers both revisions and matched before/after
 views with one camera, clay/material and skeleton controls, and real elapsed time.
 One-shot actions hold their ending and can replay; named phase buttons seek to authored
 moments. Movement space selects in-place inspection or one-pass scene travel.
+Visible playback accounts for all elapsed time, including slow render frames; returning
+from a hidden tab does not advance through the time spent away.
 
 The initial 20-joint, three-clip baseline remains byte-identical at its original paths.
 Use `--baseline` to select its command adapter. The [trial record](../../docs/art/trials/canid-retargeting.md)
@@ -187,6 +189,9 @@ records the accepted scope, evidence and limitations. Neither revision replaces 
 - [Family authoring recipes](subjects/canid/authoring/README.md) own anatomy, surface,
   rig, motion parameters, fitting and delivery. Their module map and construction/review
   commands live with the code. General native helpers remain shared.
+- [Motion evaluation](evaluation/README.md) combines measured signals and review rubrics
+  without an overall quality score. Canid timing targets stay with the subject; the core
+  is reusable across rigs. Reference fidelity requires its own evidence.
 - `subjects/canid/refined/motion.blend` is the shared motion master. Body and foot controls
   use world XYZ axes (X forward, Y left, Z up); head, neck, spine, pelvis, scapula, tail
   ear and jaw controls use their named bone's rest axes. Both source and target use the same
@@ -216,6 +221,7 @@ restricted macOS sandbox. `BLENDER_BIN` can select another Blender 4.5 executabl
 nvm use
 npm run dcc:canid -- check
 npm run dcc:canid -- check --baseline
+npm run dcc:canid -- evaluate
 npm run dcc:canid -- fit
 npm run dcc:canid -- export --output test-results/canid-candidate-01
 npm run dcc:canid -- verify test-results/canid-edit-proof-01
@@ -229,6 +235,8 @@ normals, loop endpoints, foot clearance/contact and budgets. An optional directo
 checks a fresh export against the current masters. For independent reconstruction use
 `bootstrap --root <fresh-directory>`; it refuses existing requested masters before writing.
 Ordinary builds and checks do not launch Blender.
+Set `CANID_REVIEW_FRAMES=1` on the browser command to also capture four matched clay phases
+per motion across all three characters. These images support review, not automated acceptance.
 
 The native verifier refuses construction over existing sources, then edits a saved look
 key by 0.18 radians, a bite jaw key by 0.10 radians, and the bite contact marker by 0.01 seconds

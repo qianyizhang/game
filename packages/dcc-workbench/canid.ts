@@ -7,6 +7,7 @@ import { spawnSync } from 'node:child_process';
 import { readGlb, accessorValues } from './glb.ts';
 import { record } from './contracts.ts';
 import { readMotions } from './motion-contract.ts';
+import { evaluateCanid } from './subjects/canid/evaluation.ts';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const ids = ['ash', 'russet', 'moss'];
@@ -189,12 +190,27 @@ function main() {
   const argv = process.argv.slice(2);
   const baseline = argv.includes('--baseline');
   const [command = 'check', ...args] = argv.filter((a) => a !== '--baseline');
+  if (baseline && ['evaluate', 'revise'].includes(command))
+    throw new Error(`${command} applies to the refined motion library`);
+  if (command === 'evaluate') {
+    const directory = args[0] ?? join(root, 'assets/canid/refined');
+    console.log(
+      JSON.stringify(
+        ids.map((id) =>
+          evaluateCanid(JSON.parse(readFileSync(join(directory, `${id}.json`), 'utf8'))),
+        ),
+        null,
+        2,
+      ),
+    );
+    return;
+  }
   if (command === 'check') {
     console.log(JSON.stringify(verifyCanid({ baseline, directory: args[0] }), null, 2));
     return;
   }
-  if (!['bootstrap', 'fit', 'export', 'verify', 'review'].includes(command))
-    throw new Error('Use check, bootstrap, fit, export, review, or verify');
+  if (!['bootstrap', 'fit', 'export', 'verify', 'review', 'revise'].includes(command))
+    throw new Error('Use check, bootstrap, fit, export, verify, review, or revise');
   const blender =
     process.env.BLENDER_BIN ??
     [
@@ -205,11 +221,21 @@ function main() {
   const source = join(root, baseline ? 'subjects/canid' : 'subjects/canid/refined');
   const script = baseline
     ? join(root, 'blender', command === 'verify' ? 'verify_canid.py' : 'canid_pipeline.py')
-    : join(root, 'subjects/canid/authoring', command === 'verify' ? 'verify.py' : 'delivery.py');
+    : join(
+        root,
+        'subjects/canid/authoring',
+        command === 'verify' ? 'verify.py' : command === 'revise' ? 'timing.py' : 'delivery.py',
+      );
   if (command === 'verify' && args.length !== 1)
     throw new Error('verify requires a fresh output directory');
+  if (command === 'revise' && args.length !== 2)
+    throw new Error('revise requires a pre-revision source directory and a fresh output directory');
   const nativeArgs =
-    command === 'verify' ? [source, resolve(args[0])] : [command, '--root', source, ...args];
+    command === 'revise'
+      ? args.map((path) => resolve(path))
+      : command === 'verify'
+        ? [source, resolve(args[0])]
+        : [command, '--root', source, ...args];
   const result = spawnSync(
     blender,
     [

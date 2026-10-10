@@ -1,7 +1,7 @@
 {
   "family": "canid-actions-v3",
   "character": "moss",
-  "sourceSha256": "6dd1ea30c5875b35a0f49b2c71849c3ffa70e3e2b4b43224b4ca764e485e1eeb",
+  "sourceSha256": "d3f2486c5d5eaf621d65a8d01fbed411cf449e926a99e0858d5fac5d14b52d20",
   "meshSha256": "9fa8284690bfe14fed805c3a71b350a82c5def257573529016d3b1c2a0727ec8",
   "mode": "retarget",
   "chainMap": {

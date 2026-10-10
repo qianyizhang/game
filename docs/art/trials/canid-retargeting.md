@@ -295,3 +295,63 @@ application tests**, **4 simulations** and **127 geometry tests**. One unrelated
 loopback test is sandbox-skipped; remote CI was not run.
 
 ![Briar Stray attack stage above the card board](../../../packages/dcc-workbench/assets/canid/refined/evidence/actions/last-hearth-attack.png)
+
+## Second timing review — 2026-10-10
+
+The user's next critique was sluggish motion. This pass retains the saved poses and
+character geometry while revising each clip's cadence and internal timing. The preceding
+library remains recoverable at `f9b5774`; the original three-clip baseline is unchanged.
+
+| Motion | Before → after | Refinement                                                               |
+| ------ | -------------- | ------------------------------------------------------------------------ |
+| Idle   | 4.00 → 3.60 s  | Small change; preserve the quiet alert stance.                           |
+| Walk   | 0.90 → 0.80 s  | Brisker cycle without turning the walk into a run.                       |
+| Trot   | 0.60 → 0.50 s  | Quicker diagonal exchange; preserve planted toes.                        |
+| Gallop | 0.70 → 0.50 s  | Faster gathered/extended cycle and matching scene travel.                |
+| Look   | 2.50 → 1.60 s  | Earlier head turn and a shorter return.                                  |
+| Lunge  | 1.80 → 0.95 s  | Contact at 0.304 s, previously 0.792 s; retain the crouch.               |
+| Bite   | 1.40 → 0.70 s  | Contact at 0.238 s, previously 0.602 s; compress jaw drive.              |
+| Swipe  | 1.60 → 0.85 s  | Contact at 0.289 s, previously 0.752 s; retain the lifted paw.           |
+| Roll   | 4.00 → 2.40 s  | Back phase at 1.08 s; quicker transition through inversion and recovery. |
+| Flee   | 3.60 → 2.40 s  | Running phase at 0.648 s, previously 1.440 s.                            |
+
+These are art-direction choices for the trial, not physiological timing norms. A monotone
+phase warp retimes controls, trajectory, contacts and markers together. Gait resampling
+works in toe space to avoid introducing contact slip while interpolating ankle rotation.
+Retargeting retains each character's mesh/weight digest. The saved Blender masters remain
+export authority; [timing.py](../../../packages/dcc-workbench/subjects/canid/authoring/timing.py)
+is an explicit, guarded revision recipe with its parent source documented in the authoring home.
+
+The workbench and continuous combat replay previously capped each animation-frame delta
+at 50 ms. Under rendering load that lost elapsed time and produced slow motion. They now
+account for visible elapsed time and reset their timestamp on visibility changes. A browser
+regression injects a 180 ms main-thread stall. Last Hearth still uses the resolved combat
+replay clock; the table above describes the source clips, not independently scheduled game
+attacks. Fixed attack framing was also widened after Moss's muzzle clipped the review view.
+
+### Reusable evaluation
+
+[Motion evaluation](../../../packages/dcc-workbench/evaluation/README.md) is the maintained
+home for criteria, measurements, review observations and findings. The core has no rig or
+species assumptions. Shared motion rubrics cover pose readability, perceived pacing, weight
+and reference fidelity; the canid profile supplies family-specific numeric targets. Missing
+evidence yields `unassessed`. There is no overall quality score or automatic authenticity
+verdict. Future assets can reuse the core and rubrics with their own measured signals,
+scale conventions and targets.
+
+The [timing review](../../../packages/dcc-workbench/assets/canid/refined/timing-review.json)
+pins the new deliveries, before/after timing, every motion's pose observations and evidence.
+Review covered four side phases and one portrait phase for each motion across all three
+characters. The key poses remain distinct; the look and jaw are easier to read in portrait.
+**Perceived pacing, weight and reference fidelity remain unassessed** in the saved rubrics:
+phase stills and passing contact checks do not prove those perceptual properties. User
+visual acceptance remains pending.
+
+Native save/reload and source-edit propagation passed with unchanged character meshes and
+weights. Six focused browser cases passed, including native/edited deformation agreement,
+slow-frame playback, one-shot behavior, scene travel, phone layout and Last Hearth
+result/save isolation. Native/browser sampled deformation differed by at most
+0.00000190 model units. Final repository-gate results are recorded in the timing review;
+remote CI was not run.
+
+![Revised lunge phases across the three bodies](../../../packages/dcc-workbench/assets/canid/refined/evidence/timing/lunge.jpg)

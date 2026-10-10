@@ -1,7 +1,7 @@
 {
   "family": "canid-actions-v3",
   "character": "ash",
-  "sourceSha256": "6dd1ea30c5875b35a0f49b2c71849c3ffa70e3e2b4b43224b4ca764e485e1eeb",
+  "sourceSha256": "d3f2486c5d5eaf621d65a8d01fbed411cf449e926a99e0858d5fac5d14b52d20",
   "meshSha256": "0fb5584f71fc7fe71d9d960703e2edf70a312287d9df4efeef4063941849a93e",
   "mode": "direct",
   "chainMap": {

@@ -21,6 +21,44 @@ test('canid clips preserve native deformation and support matched review and dow
   for (const character of agreement)
     for (const clip of character.clips)
       expect(clip.maxError, `${character.id}/${clip.name}`).toBeLessThan(0.0001);
+  if (process.env.CANID_REVIEW_FRAMES) {
+    // Optional review evidence, not automated visual acceptance. Matched framing
+    // makes each phase comparable across bodies and across a timing revision.
+    for (const clip of [
+      'idle',
+      'walk',
+      'trot',
+      'run',
+      'look',
+      'lunge',
+      'bite',
+      'swipe',
+      'roll',
+      'flee',
+    ]) {
+      await page.getByLabel('Movement', { exact: true }).selectOption(clip);
+      await expect(viewer).toHaveAttribute('data-clip', clip);
+      const duration = Number(await page.getByLabel('Shared motion time').getAttribute('max'));
+      for (const fraction of [0.15, 0.32, 0.58, 0.84]) {
+        const time = String(Number((duration * fraction).toFixed(2)));
+        await page.getByLabel('Shared motion time').fill(time);
+        await expect(viewer).toHaveAttribute('data-time', Number(time).toFixed(3));
+        await page.getByRole('region', { name: 'Matched canid views' }).screenshot({
+          path: info.outputPath(`review-${clip}-${fraction}.png`),
+        });
+      }
+      await page.getByRole('button', { name: 'Portrait', exact: true }).click();
+      await page
+        .getByLabel('Shared motion time')
+        .fill(String(Number((duration * 0.32).toFixed(2))));
+      await page.getByRole('region', { name: 'Matched canid views' }).screenshot({
+        path: info.outputPath(`review-${clip}-portrait.png`),
+      });
+      await page.getByRole('button', { name: 'Side', exact: true }).click();
+    }
+    await page.getByLabel('Movement', { exact: true }).selectOption('walk');
+    await page.getByLabel('Shared motion time').fill('0');
+  }
   await page.screenshot({ path: info.outputPath('clay-side.png'), fullPage: true });
   await page.getByLabel('Shared motion time').fill('0.5');
   await expect(viewer).toHaveAttribute('data-time', '0.500');
@@ -35,9 +73,8 @@ test('canid clips preserve native deformation and support matched review and dow
   for (const clip of ['idle', 'look', 'walk', 'trot']) {
     await page.getByLabel('Movement', { exact: true }).selectOption(clip);
     await expect(viewer).toHaveAttribute('data-clip', clip);
-    await page
-      .getByLabel('Shared motion time')
-      .fill(({ idle: '4', look: '2.5', walk: '0.9', trot: '0.6' } as Record<string, string>)[clip]);
+    const duration = await page.getByLabel('Shared motion time').getAttribute('max');
+    await page.getByLabel('Shared motion time').fill(duration!);
     await page.getByLabel('Shared motion time').fill('0');
     await expect(viewer).toHaveAttribute('data-time', '0.000');
   }
@@ -148,14 +185,10 @@ test('actions hold their final pose, replay, expose phase markers, and show scen
   const viewer = page.locator('.canid-render');
   await expect(viewer).toHaveAttribute('data-ready', 'true');
   await page.getByLabel('Characters', { exact: true }).selectOption('moss');
-  for (const [clip, duration] of [
-    ['lunge', 1.8],
-    ['bite', 1.4],
-    ['swipe', 1.6],
-    ['roll', 4],
-    ['flee', 3.6],
-  ] as const) {
+  for (const clip of ['lunge', 'bite', 'swipe', 'roll', 'flee']) {
     await page.getByLabel('Movement', { exact: true }).selectOption(clip);
+    await expect(viewer).toHaveAttribute('data-clip', clip);
+    const duration = Number(await page.getByLabel('Shared motion time').getAttribute('max'));
     await page.getByLabel('Shared motion time').fill((duration - 0.08).toFixed(2));
     await page.getByRole('button', { name: 'Play motion', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Replay motion', exact: true })).toBeVisible();
@@ -173,11 +206,37 @@ test('actions hold their final pose, replay, expose phase markers, and show scen
   }
   await page.getByLabel('Movement', { exact: true }).selectOption('flee');
   await page.getByLabel('Movement space').selectOption('travel');
-  await page.getByLabel('Shared motion time').fill('2.8');
+  await page.getByLabel('Shared motion time').fill('1.8');
   await expect(viewer).toHaveAttribute('data-movement', 'travel');
   await page.screenshot({ path: info.outputPath('escape-travel.png'), fullPage: true });
   await page.getByLabel('Movement', { exact: true }).selectOption('run');
   await expect(viewer).toHaveAttribute('data-clip', 'run');
+});
+
+test('visible playback keeps elapsed time after a slow render frame', async ({ page }) => {
+  await page.goto('/?workbench=dcc&compare=canid');
+  const viewer = page.locator('.canid-render');
+  await expect(viewer).toHaveAttribute('data-ready', 'true');
+  await page.getByLabel('Movement', { exact: true }).selectOption('roll');
+  await expect(viewer).toHaveAttribute('data-time', '0.000');
+  await page.getByRole('button', { name: 'Play motion', exact: true }).click();
+  const before = Number(await viewer.getAttribute('data-time'));
+  // Inject a real main-thread stall: clamping each delta to 50 ms loses elapsed time.
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => {
+          const start = performance.now();
+          while (performance.now() - start < 180) {
+            /* simulated slow frame */
+          }
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+        }),
+      ),
+  );
+  const after = Number(await viewer.getAttribute('data-time'));
+  expect(after - before).toBeGreaterThan(0.16);
+  await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
 });
 
 test('Last Hearth presents resolved Stray attacks on the replay clock without changing the result', async ({

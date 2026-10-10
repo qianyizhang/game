@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "sourceEdit": "look head +0.18 and bite jaw +0.10 at their clip midpoints; bite contact +0.01 seconds",
+  "authoritativeSourcesUnchanged": true,
+  "reconstructionOfExistingMastersRefused": true,
+  "characters": [
+    {
+      "character": "ash",
+      "meshAndWeightsUnchanged": true,
+      "headChangeRadians": 0.18000000715255737,
+      "jawChangeRadians": 0.09999999823048711,
+      "savedMarkerChangePropagated": true
+    },
+    {
+      "character": "russet",
+      "meshAndWeightsUnchanged": true,
+      "headChangeRadians": 0.18000000715255737,
+      "jawChangeRadians": 0.09999999823048711,
+      "savedMarkerChangePropagated": true
+    },
+    {
+      "character": "moss",
+      "meshAndWeightsUnchanged": true,
+      "headChangeRadians": 0.18000000715255737,
+      "jawChangeRadians": 0.09999999823048711,
+      "savedMarkerChangePropagated": true
+    }
+  ]
+}

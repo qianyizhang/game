@@ -1,0 +1,197 @@
+[
+  {
+    "id": "ash",
+    "clips": [
+      {
+        "name": "bite",
+        "maxError": 0.0000011247176760513998,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "flee",
+        "maxError": 0.0000013753519448271535,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "idle",
+        "maxError": 0.0000011629016162494574,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "look",
+        "maxError": 0.000001526455868778541,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "lunge",
+        "maxError": 0.0000011326517481495425,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "roll",
+        "maxError": 0.00000145331677264388,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "run",
+        "maxError": 0.0000015467082826937673,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "swipe",
+        "maxError": 0.0000011235695316048296,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "trot",
+        "maxError": 0.0000016427853662259014,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "walk",
+        "maxError": 0.000001896112791707169,
+        "samples": 5,
+        "vertices": 640
+      }
+    ]
+  },
+  {
+    "id": "russet",
+    "clips": [
+      {
+        "name": "bite",
+        "maxError": 0.0000011247176760513998,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "flee",
+        "maxError": 0.0000013753519448271535,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "idle",
+        "maxError": 0.0000011629016162494574,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "look",
+        "maxError": 0.000001526455868778541,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "lunge",
+        "maxError": 0.0000011326517481495425,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "roll",
+        "maxError": 0.00000145331677264388,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "run",
+        "maxError": 0.0000015467082826937673,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "swipe",
+        "maxError": 0.0000011235695316048296,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "trot",
+        "maxError": 0.0000016427853662259014,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "walk",
+        "maxError": 0.000001896112791707169,
+        "samples": 5,
+        "vertices": 640
+      }
+    ]
+  },
+  {
+    "id": "moss",
+    "clips": [
+      {
+        "name": "bite",
+        "maxError": 0.0000011999005819083768,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "flee",
+        "maxError": 0.0000014802214184359175,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "idle",
+        "maxError": 0.0000013709070358625702,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "look",
+        "maxError": 0.0000013809904950420505,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "lunge",
+        "maxError": 0.0000011999005819083768,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "roll",
+        "maxError": 0.0000012538656394509673,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "run",
+        "maxError": 0.0000012589378254807907,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "swipe",
+        "maxError": 0.0000015870123444157207,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "trot",
+        "maxError": 0.0000014682140852536204,
+        "samples": 5,
+        "vertices": 640
+      },
+      {
+        "name": "walk",
+        "maxError": 0.000001296087545469736,
+        "samples": 5,
+        "vertices": 640
+      }
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 import { evaluate, type Criterion, type Observation } from '../../evaluation/index.ts';
-import { measureMotions } from '../../evaluation/motion.ts';
+import { measureMotions, motionRubrics } from '../../evaluation/motion.ts';
 import { record } from '../../contracts.ts';
 
 // These are explicit art-direction targets for this stylized family, not zoological norms.
@@ -90,36 +90,7 @@ export function canidCriteria(clip: string): Criterion[] {
       basis: 'technical',
       rationale: 'The declared body region should support the roll at its contact phases.',
     });
-  criteria.push(
-    {
-      id: 'readability',
-      title: 'Intent and accents',
-      dimension: 'readability',
-      kind: 'rubric',
-      prompt:
-        'At 1× speed, are preparation, main action and recovery distinct in side and portrait views?',
-      rationale: 'Short duration alone can turn a sluggish gesture into an unreadable twitch.',
-    },
-    {
-      id: 'weight',
-      title: 'Weight and coordination',
-      dimension: 'plausibility',
-      kind: 'rubric',
-      prompt:
-        'Does weight load before push-off, transfer through support and settle, with subordinate head/tail response?',
-      rationale: 'Contact accuracy alone does not establish convincing mass or anatomy.',
-    },
-    {
-      id: 'reference',
-      title: 'Reference fidelity',
-      dimension: 'reference-fidelity',
-      kind: 'rubric',
-      prompt:
-        'Which named behavior/reference was compared, at what speed and phase, and what differs?',
-      rationale:
-        'Unassessed without a matched reference; plausible stylization is not species-accurate validation.',
-    },
-  );
+  criteria.push(...motionRubrics);
   return criteria;
 }
 

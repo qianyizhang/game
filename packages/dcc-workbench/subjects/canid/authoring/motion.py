@@ -36,6 +36,7 @@ def author_motion(rig: bpy.types.Object) -> None:
     from action_motion import pose_action
     from mathutils import Euler, Vector
     from motion_spec import author_spec, save_spec
+    from timing import refine_actions
 
     rig["motion_clips"] = json.dumps(list(CLIPS))
     scene = present(bpy.context.scene)
@@ -167,6 +168,4 @@ def author_motion(rig: bpy.types.Object) -> None:
         action["stance_fraction"] = gait.stance if gait else 1.0
         action["foot_offsets"] = list(gait.offsets) if gait else [0.0] * 4
         save_spec(action, author_spec(rig, clip, end, float(action["travel_speed"])))
-    rig.animation_data_create().action = bpy.data.actions["idle"]
-    scene.frame_start, scene.frame_end = 0, CLIPS["idle"]
-    scene.frame_set(0)
+    refine_actions(rig)

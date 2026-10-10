@@ -16,7 +16,7 @@ from authoring_plan import save_working_source  # noqa: E402
 from delivery import bootstrap, export, fit, mesh_digest, sha  # noqa: E402
 from motion_spec import read_spec, save_spec  # noqa: E402
 from native_types import present  # noqa: E402
-from parameters import FORMS  # noqa: E402
+from parameters import FORMS, FPS  # noqa: E402
 
 
 def verify(root: Path, output: Path) -> None:
@@ -24,6 +24,10 @@ def verify(root: Path, output: Path) -> None:
 
     if output.exists():
         raise FileExistsError("Native verification requires a fresh output directory")
+
+    def midpoint(clip: str) -> int:
+        return round(read_spec(bpy.data.actions[clip])["seconds"] * FPS) // 2
+
     paths = [root / "motion.blend", *(root / f.name / "source.blend" for f in FORMS)]
     protected = {str(p): sha(p) for p in paths}
     try:
@@ -43,10 +47,10 @@ def verify(root: Path, output: Path) -> None:
         bpy.ops.wm.open_mainfile(filepath=str(destination / "source.blend"))
         rig = bpy.data.objects["CharacterRig"]
         rig.animation_data_create().action = bpy.data.actions["look"]
-        present(bpy.context.scene).frame_set(75)
+        present(bpy.context.scene).frame_set(midpoint("look"))
         head_angle = present(rig.pose).bones["CTRL_head"].rotation_euler.z
         rig.animation_data_create().action = bpy.data.actions["bite"]
-        present(bpy.context.scene).frame_set(42)
+        present(bpy.context.scene).frame_set(midpoint("bite"))
         before[form.name] = (
             mesh_digest(),
             head_angle,
@@ -57,16 +61,16 @@ def verify(root: Path, output: Path) -> None:
     rig.animation_data_create().action = bpy.data.actions["look"]
     # Midpoints are included in the exported pose samples, so the browser proof
     # must observe both edits rather than only comparing unchanged sample times.
-    present(bpy.context.scene).frame_set(75)
+    present(bpy.context.scene).frame_set(midpoint("look"))
     head = present(rig.pose).bones["CTRL_head"]
     head.rotation_euler.z += 0.18
-    head.keyframe_insert("rotation_euler", frame=75, group="CTRL_head")
+    head.keyframe_insert("rotation_euler", frame=midpoint("look"), group="CTRL_head")
     bite = bpy.data.actions["bite"]
     rig.animation_data_create().action = bite
-    present(bpy.context.scene).frame_set(42)
+    present(bpy.context.scene).frame_set(midpoint("bite"))
     jaw = present(rig.pose).bones["CTRL_jaw"]
     jaw.rotation_euler.x += 0.10
-    jaw.keyframe_insert("rotation_euler", frame=42, group="CTRL_jaw")
+    jaw.keyframe_insert("rotation_euler", frame=midpoint("bite"), group="CTRL_jaw")
     spec = read_spec(bite)
     for marker in spec["markers"]:
         if marker["name"] == "contact":
@@ -79,11 +83,11 @@ def verify(root: Path, output: Path) -> None:
         bpy.ops.wm.open_mainfile(filepath=str(working / form.name / "source.blend"))
         rig = bpy.data.objects["CharacterRig"]
         rig.animation_data_create().action = bpy.data.actions["look"]
-        present(bpy.context.scene).frame_set(75)
+        present(bpy.context.scene).frame_set(midpoint("look"))
         changed = present(rig.pose).bones["CTRL_head"].rotation_euler.z - before[form.name][1]
         geometry_equal = mesh_digest() == before[form.name][0]
         rig.animation_data_create().action = bpy.data.actions["bite"]
-        present(bpy.context.scene).frame_set(42)
+        present(bpy.context.scene).frame_set(midpoint("bite"))
         jaw_changed = present(rig.pose).bones["CTRL_jaw"].rotation_euler.x - before[form.name][2]
         metadata_equal = read_spec(bpy.data.actions["bite"])["markers"] == spec["markers"]
         if (
@@ -108,7 +112,7 @@ def verify(root: Path, output: Path) -> None:
     report = {
         "schemaVersion": 1,
         "sourceEdit": (
-            "look head +0.18 at frame 75; bite jaw +0.10 at frame 42; bite contact +0.01 seconds"
+            "look head +0.18 and bite jaw +0.10 at their clip midpoints; bite contact +0.01 seconds"
         ),
         "authoritativeSourcesUnchanged": True,
         "reconstructionOfExistingMastersRefused": True,

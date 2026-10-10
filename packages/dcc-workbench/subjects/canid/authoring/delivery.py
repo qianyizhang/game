@@ -177,7 +177,10 @@ def fit(root: Path, form: Form) -> dict[str, object]:
             bpy.data.actions.remove(action)
     target.animation_data_create().action = bpy.data.actions["idle"]
     scene.render.fps = FPS
-    scene.frame_start, scene.frame_end = 0, CLIPS["idle"]
+    scene.frame_start, scene.frame_end = (
+        0,
+        round(read_spec(bpy.data.actions["idle"])["seconds"] * FPS),
+    )
     scene.frame_set(0)
     if mesh_digest() != before:
         raise ValueError("Retargeting changed character mesh or weights")

@@ -26,9 +26,13 @@ export function usePlaybackClock(
   useEffect(() => {
     if (!continuous || !playing || finished) return;
     let previous = performance.now();
+    const resetTime = () => {
+      previous = performance.now();
+    };
+    document.addEventListener('visibilitychange', resetTime);
     let frame = 0;
     const tick = (now: number) => {
-      const delta = Math.min(50, now - previous);
+      const delta = Math.max(0, now - previous);
       previous = now;
       if (!document.hidden)
         setClock((current) => {
@@ -40,7 +44,10 @@ export function usePlaybackClock(
       frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener('visibilitychange', resetTime);
+    };
   }, [sequence, last, playing, finished, speed, continuous]);
   useEffect(() => {
     if (continuous || !playing || finished) return;

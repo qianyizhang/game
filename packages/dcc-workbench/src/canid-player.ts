@@ -63,6 +63,10 @@ export function createCanidPlayer(
   let elapsed = 0;
   let frame = 0;
   let previous = performance.now();
+  const resetTime = () => {
+    previous = performance.now();
+  };
+  document.addEventListener('visibilitychange', resetTime);
   let lastReport = 0;
   let lastSeek = -1;
   let lastClip = '';
@@ -167,7 +171,7 @@ export function createCanidPlayer(
   });
   const draw = (now: number) => {
     frame = requestAnimationFrame(draw);
-    const dt = Math.min(0.05, (now - previous) / 1000);
+    const dt = Math.max(0, (now - previous) / 1000);
     previous = now;
     if (!ready || disposed || document.hidden) return;
     const options = read();
@@ -231,7 +235,10 @@ export function createCanidPlayer(
       const xs = options.movement === 'travel' ? motion.trajectory.map((p) => p[1]) : [0];
       const zs = options.movement === 'travel' ? motion.trajectory.map((p) => p[2]) : [0];
       const span = Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...zs) - Math.min(...zs));
-      const distance = (2.15 + span / 2) / Math.sin(fov);
+      // Keep the whole attack envelope in frame, including Moss's forward muzzle.
+      // A fixed radius per clip avoids camera pumping during the strike.
+      const radius = ['lunge', 'bite', 'swipe'].includes(options.clip) ? 2.65 : 2.15;
+      const distance = (radius + span / 2) / Math.sin(fov);
       controls.target.set(
         (Math.max(...xs) + Math.min(...xs)) / 2,
         1,
@@ -302,6 +309,7 @@ export function createCanidPlayer(
   return () => {
     disposed = true;
     cancelAnimationFrame(frame);
+    document.removeEventListener('visibilitychange', resetTime);
     resize.disconnect();
     controls.dispose();
     subjects.forEach(release);
