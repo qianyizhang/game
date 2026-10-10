@@ -1,4 +1,4 @@
-import { browserBudget } from './budget';
+import { browserBudget, sceneReadyTimeout } from './budget';
 import { resolve } from 'node:path';
 import { test, expect } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
@@ -10,7 +10,7 @@ test('canid clips support matched review and downloads', async ({ page }, info) 
   await page.goto('/?workbench=dcc&compare=canid');
   await expect(page.getByRole('heading', { name: 'A family in motion.' })).toBeVisible();
   const viewer = page.locator('.canid-render');
-  await expect(viewer).toHaveAttribute('data-ready', 'true');
+  await expect(viewer).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   if (process.env.CANID_REVIEW_FRAMES) {
     // Optional review evidence, not automated visual acceptance. Matched framing
     // makes each phase comparable across bodies and across a timing revision.
@@ -110,7 +110,9 @@ test('canid clips support matched review and downloads', async ({ page }, info) 
 test('canid study starts paused and reports a failed asset load', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/?workbench=dcc&compare=canid');
-  await expect(page.locator('.canid-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.canid-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await expect(page.getByRole('button', { name: 'Play motion', exact: true })).toBeVisible();
   await page.route('**/ash.glb*', (route) =>
     route.request().resourceType() === 'fetch' ? route.abort() : route.continue(),
@@ -156,7 +158,9 @@ test('edited shared motion survives export and consumer reload for every charact
     'Requires the disposable native mutation run; ordinary CI is not credited with native execution.',
   );
   await page.goto('/?workbench=dcc&compare=canid');
-  await expect(page.locator('.canid-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.canid-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   const results = await page.evaluate(async (path) => {
     const module = '/tests/browser/canid-evidence.ts';
     const { compareCanid } = (await import(module)) as typeof import('./canid-evidence');
@@ -200,7 +204,7 @@ test('actions hold their final pose, replay, expose phase markers, and show scen
   test.setTimeout(browserBudget(60_000));
   await page.goto('/?workbench=dcc&compare=canid');
   const viewer = page.locator('.canid-render');
-  await expect(viewer).toHaveAttribute('data-ready', 'true');
+  await expect(viewer).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await page.getByLabel('Characters', { exact: true }).selectOption('moss');
   for (const clip of ['lunge', 'bite', 'swipe', 'roll', 'flee']) {
     await page.getByLabel('Movement', { exact: true }).selectOption(clip);
@@ -233,7 +237,7 @@ test('actions hold their final pose, replay, expose phase markers, and show scen
 test('visible playback keeps elapsed time after a slow render frame', async ({ page }) => {
   await page.goto('/?workbench=dcc&compare=canid');
   const viewer = page.locator('.canid-render');
-  await expect(viewer).toHaveAttribute('data-ready', 'true');
+  await expect(viewer).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await page.getByLabel('Movement', { exact: true }).selectOption('roll');
   await expect(viewer).toHaveAttribute('data-time', '0.000');
   await page.getByRole('button', { name: 'Play motion', exact: true }).click();
@@ -274,7 +278,7 @@ test('attack stage clamps stale indices and recovers across empty timelines', as
   await render(0, true);
   await expect(stage).toHaveCount(0);
   await render(0);
-  await expect(canvas).toHaveAttribute('data-ready', 'true');
+  await expect(canvas).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await expect(canvas).toHaveAttribute('data-clip', 'lunge');
   await render(99);
   await expect(canvas).toHaveAttribute('data-clip', 'bite');
@@ -283,7 +287,7 @@ test('attack stage clamps stale indices and recovers across empty timelines', as
   await render(0, true);
   await expect(stage).toHaveCount(0);
   await render(1);
-  await expect(canvas).toHaveAttribute('data-ready', 'true');
+  await expect(canvas).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await expect(canvas).toHaveAttribute('data-clip', 'bite');
   await expect(canvas.locator('canvas')).toHaveCount(1);
   expect(errors).toEqual([]);
@@ -301,7 +305,7 @@ test('Last Hearth presents resolved Stray attacks on the replay clock without ch
   await page.getByRole('button', { name: 'Fight this warband' }).click();
   const stage = page.getByRole('region', { name: 'Briar Stray attack stage', includeHidden: true });
   const canvas = page.locator('.canid-attack-canvas');
-  await expect(canvas).toHaveAttribute('data-ready', 'true');
+  await expect(canvas).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   const verdict = await page.locator('.combat-verdict').innerText();
   const saved = await page.evaluate(() => JSON.stringify(Object.entries(localStorage).sort()));
   await page.getByRole('button', { name: 'First combat event', exact: true }).click();

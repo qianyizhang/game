@@ -37,6 +37,10 @@ jobs:
   browser:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -51,10 +55,13 @@ jobs:
       # Private trace cases skip explicitly when their local evidence is unavailable.
       # Synthetic trace and every public application/delivery/export case still run.
       # Contact sheets are generated separately with test:browser:review.
-      - run: npm run test:browser
+      # Contiguous sharding would put all 29 long asset journeys on one runner.
+      # Balance those through round-robin tags, then shard the other 123 cases.
+      - run: npm run test:browser -- --grep=@asset-shard-${{ matrix.shard }}
+      - run: npm run test:browser -- --grep-invert=@asset-shard- --shard=${{ matrix.shard }}/3
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:
-          name: maintenance-browser-failures
+          name: maintenance-browser-failures-${{ matrix.shard }}
           path: test-results/browser
           retention-days: 14

@@ -14,7 +14,13 @@ export default defineConfig({
   expect: { timeout: browserBudget(5_000) },
   reporter: 'list',
   projects: [
-    { name: 'functional', testIgnore: '**/art3d-review.spec.ts' },
+    {
+      name: 'functional',
+      testIgnore: '**/art3d-review.spec.ts',
+      // CI shards individual cases, including the large asset-delivery file.
+      // Each runner still executes one case at a time with its own fixtures.
+      fullyParallel: !!process.env.CI,
+    },
     {
       name: 'visual-review',
       testMatch: '**/art3d-review.spec.ts',

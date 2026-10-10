@@ -1,4 +1,4 @@
-import { browserBudget } from './budget';
+import { browserBudget, sceneReadyTimeout } from './budget';
 import { expect, test } from '@playwright/test';
 
 test('Hydra comparison keeps views, clock and baselines matched', async ({ page }, info) => {
@@ -11,7 +11,7 @@ test('Hydra comparison keeps views, clock and baselines matched', async ({ page 
   await entry.click();
   await page.getByRole('button', { name: /Compare Hydra versions/ }).click();
   const viewer = page.locator('.dcc-comparison-render');
-  await expect(viewer).toHaveAttribute('data-ready', 'true');
+  await expect(viewer).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await expect(viewer).toHaveAttribute('data-time', '0.000');
   await expect(page.getByRole('button', { name: 'Play comparison', exact: true })).toBeVisible();
   await page.screenshot({ path: info.outputPath('comparison-front-clay.png'), fullPage: true });
@@ -78,11 +78,15 @@ test('Hydra comparison keeps views, clock and baselines matched', async ({ page 
   await expect(page).not.toHaveURL(/workbench=|compare=/);
   await expect(entry).toBeFocused();
   await entry.click();
-  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await page.getByRole('button', { name: /Compare Hydra versions/ }).click();
-  await expect(viewer).toHaveAttribute('data-ready', 'true');
+  await expect(viewer).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await page.getByRole('button', { name: 'Back to workbench' }).click();
-  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await page.getByRole('button', { name: 'Return to my table' }).click();
   expect(await page.evaluate(() => JSON.stringify(localStorage))).toBe(saves);
   expect(errors).toEqual([]);
@@ -99,5 +103,7 @@ test('Hydra comparison can be linked and failed loading leaves navigation availa
   await expect(page.getByRole('alert')).toContainText('could not be loaded');
   await page.getByRole('button', { name: 'Back to workbench' }).click();
   await expect(page).not.toHaveURL(/compare=/);
-  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
 });

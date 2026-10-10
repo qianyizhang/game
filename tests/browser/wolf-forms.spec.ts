@@ -1,4 +1,4 @@
-import { browserBudget } from './budget';
+import { browserBudget, sceneReadyTimeout } from './budget';
 import { expect, test } from '@playwright/test';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
@@ -49,7 +49,7 @@ test('Wolf form selection and keyboard alignment deliver exact separate models a
   await studies.getByRole('button', { name: /Wolf/ }).click();
   const render = page.locator('.study-render');
   await expect(render).toHaveAttribute('data-form', 'base');
-  await expect(render).toHaveAttribute('data-ready', 'true');
+  await expect(render).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   const alignment = page.getByRole('slider', { name: 'Wolf alignment' });
   await expect(alignment).toBeEnabled();
   await expect(page.getByRole('button', { name: 'Original base' })).toHaveAttribute(
@@ -73,7 +73,7 @@ test('Wolf form selection and keyboard alignment deliver exact separate models a
     expect(publication.reviewDecision).toBe('accepted');
     await page.getByRole('button', { name: `${entry.alignment} ${entry.title}` }).click();
     await expect(render).toHaveAttribute('data-form', entry.form);
-    await expect(render).toHaveAttribute('data-ready', 'true');
+    await expect(render).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
     await expect(render).toHaveAttribute('data-delivery', 'native');
     await expect(render).toHaveAttribute('data-duration', '6');
     await expect(page.getByRole('heading', { name: entry.title, exact: true })).toBeVisible();
@@ -104,20 +104,20 @@ test('Wolf form selection and keyboard alignment deliver exact separate models a
   await expect(render).toHaveAttribute('data-form', 'elder');
   await alignment.press('End');
   await expect(render).toHaveAttribute('data-form', 'thorn');
-  await expect(render).toHaveAttribute('data-ready', 'true');
+  await expect(render).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await page.getByRole('button', { name: 'Original base' }).click();
   await expect(render).toHaveAttribute('data-form', 'base');
-  await expect(render).toHaveAttribute('data-ready', 'true');
+  await expect(render).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await expect(page).not.toHaveURL(/form=/);
   await captureDownload('Download 3D model', 'card-workshop-wolf.glb', base.modelPath);
   await captureDownload('Editable Blender source', 'wolf.blend', base.sourcePath);
   await studies.getByRole('button', { name: /Spiral/ }).click();
-  await expect(render).toHaveAttribute('data-ready', 'true');
+  await expect(render).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await expect(render).toHaveAttribute('data-delivery', 'procedural');
   await expect(page.getByRole('region', { name: 'Wolf forms', exact: true })).toHaveCount(0);
   await studies.getByRole('button', { name: /Wolf/ }).click();
   await expect(render).toHaveAttribute('data-form', 'base');
-  await expect(render).toHaveAttribute('data-ready', 'true');
+  await expect(render).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
   await expect(page.getByRole('alert')).toHaveCount(0);
   expect(errors).toEqual([]);
   expect(
@@ -143,7 +143,7 @@ for (const entry of forms) {
     await page.goto(`/?art=3d&study=wolf&form=${entry.form}`);
     const render = page.locator('.study-render');
     await expect(render).toHaveAttribute('data-form', entry.form);
-    await expect(render).toHaveAttribute('data-ready', 'true');
+    await expect(render).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
     await expect(render).toHaveAttribute('data-delivery', 'native');
     const play = page.getByRole('button', { name: 'Play animation' });
     await expect(play).toHaveAttribute('aria-pressed', 'false');
@@ -193,7 +193,9 @@ test('an unavailable evolved Wolf fails closed and the base remains recoverable'
   await page.unroute('**/*.glb');
   await page.getByRole('button', { name: 'Original base' }).click();
   await expect(page.locator('.study-render')).toHaveAttribute('data-form', 'base');
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'native');
   await expect(page.getByRole('alert')).toHaveCount(0);
 });

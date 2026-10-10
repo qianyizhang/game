@@ -1,4 +1,4 @@
-import { browserBudget } from './budget';
+import { browserBudget, sceneReadyTimeout } from './budget';
 import { expect, test } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -24,7 +24,9 @@ test('DCC pilot carries the concept into an animated downloadable asset', async 
   await expect(page).toHaveURL(/workbench=dcc/);
   await expect(page).toHaveTitle('DCC Workbench · Card Workshop');
   await expect(page.getByRole('heading', { name: 'Briar Hydra.' })).toBeVisible();
-  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await page.getByRole('button', { name: 'Pause animation' }).click();
   await page.getByLabel('Animation time').fill('0');
   await expect(page.locator('.dcc-render')).toHaveAttribute('data-time', '0.000');
@@ -91,7 +93,9 @@ test('DCC reduced motion pauses startup and GLB load failure remains actionable'
 }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/?workbench=dcc');
-  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await expect(page.getByRole('button', { name: 'Play animation' })).toBeVisible();
   await expect(page.locator('.dcc-render')).toHaveAttribute('data-time', '0.000');
   await page.getByRole('button', { name: 'Play animation' }).click();
@@ -106,7 +110,9 @@ test('DCC reduced motion pauses startup and GLB load failure remains actionable'
 
 test('DCC exported anatomy reproduces Blender evaluated poses', async ({ page }, info) => {
   await page.goto('/?workbench=dcc');
-  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   const result = await page.evaluate(async () => {
     const path = '/tests/browser/dcc-roundtrip.ts';
     const { compareDccPoses } = (await import(path)) as typeof import('./dcc-roundtrip');

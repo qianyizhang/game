@@ -1,4 +1,4 @@
-import { browserBudget } from './budget';
+import { browserBudget, sceneReadyTimeout } from './budget';
 import { expect, test } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -18,7 +18,9 @@ test('review scope selects gallery defaults and native workbench downloads stay 
   page.on('pageerror', (error) => errors.push(error.message));
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/?art=3d&study=hydra');
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'native');
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download 3D model' }).click();
@@ -35,14 +37,18 @@ test('review scope selects gallery defaults and native workbench downloads stay 
     .getByRole('navigation', { name: 'Choose a 3D study' })
     .getByRole('button', { name: /Spiral/ })
     .click();
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'procedural');
   await page.unroute('**/*.glb');
   await page
     .getByRole('navigation', { name: 'Choose a 3D study' })
     .getByRole('button', { name: /Nightjar/ })
     .click();
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'native');
   const nightjarDownload = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download 3D model' }).click();
@@ -64,18 +70,24 @@ test('review scope selects gallery defaults and native workbench downloads stay 
     .getByRole('navigation', { name: 'Choose a 3D study' })
     .getByRole('button', { name: /Hydra/ })
     .click();
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await page
     .getByRole('navigation', { name: 'Choose a 3D study' })
     .getByRole('button', { name: /Nightjar/ })
     .click();
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'procedural');
   await page.goto('/?workbench=dcc');
   await page.getByLabel('Choose native asset').selectOption('nightjar');
   await expect(page).toHaveURL(/asset=nightjar/);
   await expect(page.getByRole('heading', { name: 'Nightjar.' })).toBeVisible();
-  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   const sourceDownload = page.waitForEvent('download');
   await page.getByRole('link', { name: 'Editable Blender source' }).click();
   const source = await sourceDownload;
@@ -85,7 +97,9 @@ test('review scope selects gallery defaults and native workbench downloads stay 
   );
   await page.getByLabel('Choose native asset').selectOption('briar-hydra');
   await expect(page.getByRole('heading', { name: 'Briar Hydra.' })).toBeVisible();
-  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   expect(errors).toEqual([]);
 });
 
@@ -108,7 +122,9 @@ test('saved native candidate agrees with its delivered anatomy and fitted motion
     route.fulfill({ path: model, contentType: 'model/gltf-binary' }),
   );
   await page.goto('/?workbench=dcc');
-  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   const result = await page.evaluate(async (samples) => {
     const path = '/tests/browser/dcc-roundtrip.ts';
     const { compareSavedPoses } = (await import(path)) as typeof import('./dcc-roundtrip');

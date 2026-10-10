@@ -24,9 +24,11 @@ All maintained source requires enforced check coverage. Passing a slice does not
 - **3D / DCC work**: Run `npm run check:full` for changes affecting 3D construction, animation, rendering/export or DCC delivery (`src/art3d`, DCC sources/delivery, or their shared helpers/dependencies). Geometry assertions or configuration affecting their behavior also use this gate. Use `npm run test:geometry -- <file>` for focused iteration.
 - **CI**: Always executes `npm run check:full` and `npm run test:browser`.
 
-The two CI jobs run independently and both must pass. Hosted browser runs stop at the
-first failed case so its diagnostics and artifacts survive before similar journeys repeat
-the fault; successful runs execute the full selected suite.
+Maintenance and three browser shards run independently; all must pass. Each browser
+runner uses one worker and stops at its first failed case, preserving its diagnostics
+without cancelling the other shards. Round-robin tags give each runner 9–10 long asset
+journeys; individual-case sharding gives each runner 41 of the other functional cases.
+Local runs remain serial; successful CI runs collectively execute all 152 selected cases.
 
 The `functional` browser project covers all public game journeys and each delivered 3D
 asset's loading, motion, phone layout and export. The separate `visual-review` project
@@ -55,7 +57,7 @@ verification.
 ## Budgets
 
 - **Vitest**: At most 2 workers. Geometry tests use the project-level budget: 15 seconds locally and 60 seconds when `CI` is set. The hosted runner measured 495 seconds for the geometry suite versus 155 seconds locally; nine tests exceeded the old 15-second limit. Application tests retain their 5-second default. Unit normals on loaded GLBs are verified across all 29 gallery journeys at 0.0005 tolerance. See [test audit](history/test-audit-2026-10-07.md).
-- **Browser**: One worker. Test and explicit operation budgets use `browserBudget`: existing local limits and four times those limits in CI. Default test/assertion limits are 30/5 seconds locally and 120/20 seconds in CI. Per-model export remains 60 seconds locally and 240 seconds in CI. Contact sheets use 120 seconds locally. The hosted graphics trace showed slow loading, readback and pointer updates; these budgets preserve the same assertions. The browser CI job has a 45-minute limit and stops on its first failure.
+- **Browser**: One worker per runner. Test and explicit operation budgets use `browserBudget`: existing local limits and four times those limits in CI. Default test/assertion limits are 30/5 seconds locally and 120/20 seconds in CI. Cold scene readiness uses `sceneReadyTimeout`, 15 seconds locally and 60 seconds in CI. Per-model export remains 60 seconds locally and 240 seconds in CI. Contact sheets use 120 seconds locally. The hosted graphics trace showed slow loading, readback and pointer updates; these budgets preserve the same assertions. Each browser CI shard has a 45-minute limit and stops on its first failure.
 
 ## Retention and inventory
 
