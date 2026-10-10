@@ -79,6 +79,15 @@ and fitted rig. Multiple characters can belong to the same rig family.
 **Motion clip**: An authored movement with a defined source rig, duration, loop behavior,
 and contact intent. Reusing a clip preserves its source identity.
 
+**Scene trajectory**: The movement and heading of a character through its surroundings,
+separate from the character's local body performance.
+
+**Contact phase**: An interval during a motion in which named parts support the body,
+either through a planted contact or a changing rolling contact.
+
+**Motion marker**: A named instant in an authored performance, such as contact or recovery.
+A marker describes presentation timing; it does not decide a game's outcome.
+
 **Retarget profile**: The correspondence and corrections used to transfer a source
 motion clip onto a particular character's fitted rig.
 

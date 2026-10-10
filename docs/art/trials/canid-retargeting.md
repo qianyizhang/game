@@ -205,3 +205,31 @@ runtime LODs and arbitrary external-rig compatibility remain outside scope. User
 approval is pending; technical checks are not a substitute.
 
 ![Initial baseline and refined Ash](../../../packages/dcc-workbench/assets/canid/refined/evidence/before-after.png)
+
+## Action trial · accepted scope · 2026-10-10
+
+Extend the refined family with gallop, a turning and accelerating flee performance,
+three distinct one-shot attacks (lunge, articulated bite and forepaw swipe), and a
+playful shoulder-over-back roll that returns to its feet. Review Ash, Russet and
+shorter, broader Moss in clay and material, including inverted poses and contact changes.
+The initial baseline remains intact; Git revision `e5630aa` preserves the preceding
+four-clip refined sources and delivery.
+
+The saved motion master owns each clip's duration, loop/one-shot behavior, scene
+trajectory, named support phases and visual timing markers. Recipes initialize these
+fields; fitting and export consume the saved values without regenerating the performance.
+Scene travel has one owner in playback, separate from the local skeleton. Retargeting
+must preserve world-space stance during turns and refit rolling contact to each body.
+Full-body floor checks complement paw contacts; one-shot actions do not require loop closure.
+
+Last Hearth keeps its card board and adds a focused 3D attack stage for Briar Stray.
+Lunge, bite and swipe are deterministic presentation variants of already-resolved attacks.
+The replay clock drives both views, including pause, seek, speed and reduced motion.
+Damage and outcome remain authoritative in the existing combat rules. Flee and playful
+roll remain workbench performances because the game has no corresponding rules.
+
+Completion requires saved-source edit/save/reload/export propagation, native/browser pose
+agreement, one-shot completion and replay, visible scene travel, contact evidence across
+all three bodies, and the full repository gate plus affected browser checks. Technical
+verification remains separate from visual review. This section records the accepted scope;
+implementation evidence follows only after execution.
