@@ -30,12 +30,40 @@ test('DCC pilot carries the concept into an animated downloadable asset', async 
   await page.getByRole('button', { name: 'Pause animation' }).click();
   await page.getByLabel('Animation time').fill('0');
   await expect(page.locator('.dcc-render')).toHaveAttribute('data-time', '0.000');
+  const settleFrames = () =>
+    page.evaluate(
+      () =>
+        new Promise<void>((resolve) => {
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+          );
+        }),
+    );
+  // Finish the pending zero-pose seek before observing idle frames.
+  await settleFrames();
+  const canvas = page.locator('canvas');
+  const gpuDraws = () =>
+    canvas.evaluate((element) => (element as HTMLCanvasElement & { gpuDraws: number }).gpuDraws);
+  await canvas.evaluate((element) => {
+    const canvas = element as HTMLCanvasElement & { gpuDraws: number };
+    const gl = canvas.getContext('webgl2');
+    if (!gl) throw new Error('The native viewer must expose its WebGL context.');
+    const draw = gl.drawElements.bind(gl);
+    canvas.gpuDraws = 0;
+    gl.drawElements = (...args) => {
+      canvas.gpuDraws++;
+      draw(...args);
+    };
+  });
+  await settleFrames();
+  expect(await gpuDraws()).toBe(0);
   await page.screenshot({ path: info.outputPath('workbench-desktop.png'), fullPage: true });
   const before = await page
     .locator('canvas')
     .screenshot({ path: info.outputPath('hydra-material.png') });
   await page.getByLabel('Animation time').fill('3');
   await expect(page.locator('.dcc-render')).toHaveAttribute('data-time', '3.000');
+  expect(await gpuDraws()).toBeGreaterThan(0);
   const middle = await page
     .locator('canvas')
     .screenshot({ path: info.outputPath('hydra-motion.png') });

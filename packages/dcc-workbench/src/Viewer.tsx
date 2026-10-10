@@ -126,6 +126,12 @@ export default function Viewer({
     let lastSeek = -1;
     let lastView: View | undefined;
     let lastSurface: Surface | undefined;
+    let lastRig: boolean | undefined;
+    let dirty = true;
+    const invalidate = () => {
+      dirty = true;
+    };
+    controls.addEventListener('change', invalidate);
     let previous = performance.now();
     let lastReport = 0;
     const framing = new T.Box3(new T.Vector3(-1, 0, -1), new T.Vector3(1, 2, 1));
@@ -176,6 +182,7 @@ export default function Viewer({
       camera.aspect = width / Math.max(1, height);
       camera.updateProjectionMatrix();
       lastView = undefined;
+      dirty = true;
     };
     const resize = new ResizeObserver(fit);
     resize.observe(element);
@@ -263,6 +270,7 @@ export default function Viewer({
         key.shadow.normalBias = radius * 0.005;
         lastView = undefined;
         lastSurface = undefined;
+        dirty = true;
         element.dataset.duration = String(duration);
         element.dataset.clips = String(gltf.animations.length);
         reportDuration.current(duration);
@@ -287,33 +295,47 @@ export default function Viewer({
       if (lastView !== current.view) {
         fitCamera(current.view);
         lastView = current.view;
+        dirty = true;
       }
       if (current.seek !== lastSeek) {
         time = Math.min(duration, Math.max(0, current.time));
         lastSeek = current.seek;
-      } else if (current.playing && duration > 0) time = (time + dt) % duration;
-      if (mixer) mixer.setTime(time);
-      element.dataset.time = time.toFixed(3);
+        dirty = true;
+      } else if (current.playing && duration > 0) {
+        time = (time + dt) % duration;
+        dirty = true;
+      }
       if (now - lastReport > 100) {
         report.current(time);
         lastReport = now;
       }
-      if (skeleton) skeleton.visible = current.rig;
+      if (current.rig !== lastRig) {
+        lastRig = current.rig;
+        dirty = true;
+      }
       if (current.surface !== lastSurface) {
         originals.forEach((material, mesh) => {
           mesh.material =
             current.surface === 'Clay' ? clay : current.surface === 'Wire' ? wire : material;
         });
         lastSurface = current.surface;
+        dirty = true;
       }
       controls.update();
+      // Keep paused native assets responsive without continuously repainting them.
+      if (!dirty) return;
+      if (mixer) mixer.setTime(time);
+      if (skeleton) skeleton.visible = current.rig;
       renderer.render(scene, camera);
+      dirty = false;
+      element.dataset.time = time.toFixed(3);
     };
     frame = requestAnimationFrame(draw);
     return () => {
       disposed = true;
       cancelAnimationFrame(frame);
       resize.disconnect();
+      controls.removeEventListener('change', invalidate);
       controls.dispose();
       if (asset) {
         mixer?.stopAllAction();

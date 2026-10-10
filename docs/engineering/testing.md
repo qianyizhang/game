@@ -80,6 +80,10 @@ walk large binary assets byte by byte and can exhaust a browser journey's time b
 native comparison still rejects any changed byte. Keep metadata and state comparisons
 in their existing structured matchers.
 
+Keep the paused native-viewer regression within its delivery journey: observe GPU draws
+across idle animation frames, then require drawing after a seek. Pausing retains the
+framebuffer; pose, view, surface, rig, resize and orbit changes still trigger rendering.
+
 ## Before adding or retaining a test
 
 - Name the failure it catches and the outcome that would be wrong.
