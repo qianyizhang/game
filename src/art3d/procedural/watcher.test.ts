@@ -126,7 +126,7 @@ describe('Pit Watcher living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps its planted feet, hands and wrap stationary throughout the loop', () => {
     const root = createStudy('watcher'),
       mixer = new T.AnimationMixer(root);
@@ -174,7 +174,7 @@ describe('Pit Watcher living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('carries horns, the eye socket and mouth with the deforming head', () => {
     const root = createStudy('watcher'),
       mixer = new T.AnimationMixer(root);
@@ -218,7 +218,7 @@ describe('Pit Watcher living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('fits both closed palm roots inside their stationary forearms', () => {
     const root = createStudy('watcher'),
       mixer = new T.AnimationMixer(root);
@@ -271,7 +271,7 @@ describe('Pit Watcher living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps the single iris inside its socket while scanning and blinking', () => {
     const root = createStudy('watcher'),
       mixer = new T.AnimationMixer(root);
@@ -325,7 +325,7 @@ describe('Pit Watcher living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('faces both wrap rims outward and keeps clothing outside the underlying flesh', () => {
     const root = createStudy('watcher');
     try {
@@ -370,5 +370,5 @@ describe('Pit Watcher living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
 });

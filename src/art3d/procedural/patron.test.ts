@@ -113,7 +113,7 @@ describe('Abyssal Patron living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps boots, trousers, coat and both hands fixed throughout the loop', () => {
     const root = createStudy('patron'),
       mixer = new T.AnimationMixer(root);
@@ -140,7 +140,7 @@ describe('Abyssal Patron living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('carries facial fittings and curled horns with the deforming head', () => {
     const root = createStudy('patron'),
       mixer = new T.AnimationMixer(root);
@@ -190,7 +190,7 @@ describe('Abyssal Patron living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps both eyes clear when open and closes real skin lids over them', () => {
     const root = createStudy('patron'),
       mixer = new T.AnimationMixer(root);
@@ -230,7 +230,7 @@ describe('Abyssal Patron living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps the chest inside its opening and the lapels fitted over the coat', () => {
     const root = createStudy('patron');
     try {
@@ -260,7 +260,7 @@ describe('Abyssal Patron living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps the fitted coat outside the thighs while preserving its open front', () => {
     const root = createStudy('patron');
     try {
@@ -305,5 +305,5 @@ describe('Abyssal Patron living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
 });

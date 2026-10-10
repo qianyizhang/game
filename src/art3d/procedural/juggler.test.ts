@@ -125,7 +125,7 @@ describe('Soul Juggler living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps both soles and the raised hands stationary throughout the loop', () => {
     const root = createStudy('juggler'),
       mixer = new T.AnimationMixer(root);
@@ -173,7 +173,7 @@ describe('Soul Juggler living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('carries horns, eyes, fangs and mouth with the deforming head', () => {
     const root = createStudy('juggler'),
       mixer = new T.AnimationMixer(root);
@@ -223,7 +223,7 @@ describe('Soul Juggler living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('fits both closed palm roots inside their stationary forearms', () => {
     const root = createStudy('juggler'),
       mixer = new T.AnimationMixer(root);
@@ -276,7 +276,7 @@ describe('Soul Juggler living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps each flame core fitted while both spirits hover clear of their hands', () => {
     const root = createStudy('juggler'),
       mixer = new T.AnimationMixer(root);
@@ -314,5 +314,5 @@ describe('Soul Juggler living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
 });

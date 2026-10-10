@@ -45,7 +45,7 @@ verification.
 
 ## Budgets
 
-- **Vitest**: At most 2 workers. Geometry tests have a 15-second budget; application tests have a 5-second default. Unit normals on loaded GLBs are verified across all 29 gallery journeys at 0.0005 tolerance. See [test audit](history/test-audit-2026-10-07.md).
+- **Vitest**: At most 2 workers. Geometry tests use the project-level budget: 15 seconds locally and 60 seconds when `CI` is set. The hosted runner measured 495 seconds for the geometry suite versus 155 seconds locally; nine tests exceeded the old 15-second limit. Application tests retain their 5-second default. Unit normals on loaded GLBs are verified across all 29 gallery journeys at 0.0005 tolerance. See [test audit](history/test-audit-2026-10-07.md).
 - **Browser export**: 60-second budget per model for motion, GLB content, phone layout, and save isolation.
 
 ## Retention and inventory

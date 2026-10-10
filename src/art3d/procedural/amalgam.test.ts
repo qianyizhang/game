@@ -128,7 +128,7 @@ describe('Wild Amalgam living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps all four soles, twelve claws and both shoulder pivots fixed through the loop', () => {
     const root = createStudy('amalgam'),
       mixer = new T.AnimationMixer(root);
@@ -183,7 +183,7 @@ describe('Wild Amalgam living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('carries the horn and recessed eyes with the skull and keeps each membrane fitted to its finger', () => {
     const root = createStudy('amalgam'),
       mixer = new T.AnimationMixer(root);
@@ -264,7 +264,7 @@ describe('Wild Amalgam living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps the fused wing wrists and surface-fitted chest plate attached while flexing', () => {
     const root = createStudy('amalgam'),
       mixer = new T.AnimationMixer(root);
@@ -324,5 +324,5 @@ describe('Wild Amalgam living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
 });

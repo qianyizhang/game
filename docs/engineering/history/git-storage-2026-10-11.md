@@ -41,4 +41,6 @@ The existing GitHub maintenance job failed on links to ignored local cleanup rec
 
 The subsequent clean-checkout run exposed a scaffold test that assumed the ignored `test-results/` directory existed. That test now creates its parent directory before allocating its temporary fixture; retained local evidence is untouched.
 
+The first complete hosted geometry run passed 118 of 127 tests; the other nine exceeded 15 seconds, without assertion failures. Its 495-second suite runtime was 3.2 times the local 155-second runtime. Geometry now uses a single project budget of 15 seconds locally and 60 seconds in CI, with redundant per-test overrides removed. Worker limits, assertions and application timeouts retain their existing values.
+
 Publication requires uploading the historical LFS objects, exact leases for each rewritten remote branch and verification of the final main revision. Local tests and storage checks do not establish successful remote CI; its run and fresh-clone receipts are separate session evidence.

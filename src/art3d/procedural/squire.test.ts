@@ -117,7 +117,7 @@ describe('Hearth Squire living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('grounds both boots and anchors shield, sword, hands and clothing through the full loop', () => {
     const root = createStudy('squire'),
       mixer = new T.AnimationMixer(root);
@@ -147,7 +147,7 @@ describe('Hearth Squire living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('carries helmet and visor with the fully weighted skull through the head turn', () => {
     const root = createStudy('squire'),
       mixer = new T.AnimationMixer(root);
@@ -191,7 +191,7 @@ describe('Hearth Squire living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps a real visor opening in front of both eyes and closes fitted lids behind it', () => {
     const root = createStudy('squire'),
       mixer = new T.AnimationMixer(root);
@@ -224,7 +224,7 @@ describe('Hearth Squire living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('wraps both grips around their actual handles instead of floating beside them', () => {
     const root = createStudy('squire');
     try {
@@ -254,7 +254,7 @@ describe('Hearth Squire living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('fits the shoulder plates over the sleeves without spanning the chest', () => {
     const root = createStudy('squire');
     try {
@@ -280,5 +280,5 @@ describe('Hearth Squire living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
 });

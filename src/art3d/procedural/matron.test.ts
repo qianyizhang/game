@@ -132,7 +132,7 @@ describe('Imp Matron living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps the boots planted and the garment and hands stationary through the loop', () => {
     const root = createStudy('matron'),
       mixer = new T.AnimationMixer(root);
@@ -179,7 +179,7 @@ describe('Imp Matron living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('carries horns, crown and eyes with the head while the hair tips respond separately', () => {
     const root = createStudy('matron'),
       mixer = new T.AnimationMixer(root);
@@ -242,7 +242,7 @@ describe('Imp Matron living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('fits wrists within the cuffs and closes the skirt waist beneath the seam', () => {
     const root = createStudy('matron');
     try {
@@ -317,5 +317,5 @@ describe('Imp Matron living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
 });

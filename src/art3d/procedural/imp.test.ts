@@ -126,7 +126,7 @@ describe('Coal Imp living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps its crouch and hand contacts stationary throughout the loop', () => {
     const root = createStudy('imp'),
       mixer = new T.AnimationMixer(root);
@@ -179,7 +179,7 @@ describe('Coal Imp living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('carries fitted face parts with the head and membranes with their fingers', () => {
     const root = createStudy('imp'),
       mixer = new T.AnimationMixer(root);
@@ -262,7 +262,7 @@ describe('Coal Imp living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('fits both palms to their forearms and preserves the body-to-wing wrist joins', () => {
     const root = createStudy('imp'),
       mixer = new T.AnimationMixer(root);
@@ -323,5 +323,5 @@ describe('Coal Imp living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
 });

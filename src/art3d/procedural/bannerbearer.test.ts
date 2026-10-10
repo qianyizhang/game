@@ -120,7 +120,7 @@ describe('Banner Bearer living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('anchors the planted pole, boots and both hands throughout the loop', () => {
     const root = createStudy('bannerbearer'),
       mixer = new T.AnimationMixer(root);
@@ -153,7 +153,7 @@ describe('Banner Bearer living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('carries hair, eyes and mouth with the weighted skull during the listening turn', () => {
     const root = createStudy('bannerbearer'),
       mixer = new T.AnimationMixer(root);
@@ -202,7 +202,7 @@ describe('Banner Bearer living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps eyes clear of the face and closes skin eyelids in front of the globes', () => {
     const root = createStudy('bannerbearer'),
       mixer = new T.AnimationMixer(root);
@@ -237,7 +237,7 @@ describe('Banner Bearer living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('wraps each hand around the actual pole at its own height', () => {
     const root = createStudy('bannerbearer');
     try {
@@ -267,7 +267,7 @@ describe('Banner Bearer living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('pins the banner to its pole while the closed cloth free edge moves', () => {
     const root = createStudy('bannerbearer'),
       mixer = new T.AnimationMixer(root);
@@ -302,5 +302,5 @@ describe('Banner Bearer living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
 });

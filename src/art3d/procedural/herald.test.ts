@@ -112,7 +112,7 @@ describe('Infernal Herald living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps boots, gripping hand and staff in contact throughout the loop', () => {
     const root = createStudy('herald'),
       mixer = new T.AnimationMixer(root);
@@ -162,7 +162,7 @@ describe('Infernal Herald living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('carries facial fittings and curled horns with the deforming head', () => {
     const root = createStudy('herald'),
       mixer = new T.AnimationMixer(root);
@@ -212,7 +212,7 @@ describe('Infernal Herald living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps both eyes clear when open and closes real skin lids over them', () => {
     const root = createStudy('herald'),
       mixer = new T.AnimationMixer(root);
@@ -252,7 +252,7 @@ describe('Infernal Herald living assembly', () => {
       mixer.uncacheRoot(root);
       disposeObject(root);
     }
-  }, 15000);
+  });
   it('keeps the chest inside its opening and the lapels fitted over the coat', () => {
     const root = createStudy('herald');
     try {
@@ -282,5 +282,5 @@ describe('Infernal Herald living assembly', () => {
     } finally {
       disposeObject(root);
     }
-  }, 15000);
+  });
 });
