@@ -4,7 +4,9 @@ import { GamePicker, type GameId } from './GamePicker';
 import './Hub.css';
 
 const DiabloApp = lazy(() => import('@card-workshop/diablo2'));
-const BalatroApp = lazy(() => import('./App'));
+const BalatroApp = lazy(() =>
+  import('../games/balatro/ui/BlindsideApp').then((module) => ({ default: module.BlindsideApp })),
+);
 const Challenges = lazy(() => import('./Challenges'));
 const ArtStudio = lazy(() => import('../art3d/gallery/Studio'));
 const DccWorkbench = lazy(() => import('@card-workshop/dcc-workbench'));

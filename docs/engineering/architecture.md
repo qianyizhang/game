@@ -59,7 +59,7 @@ Saves store only seed, rules version, and accepted commands. Imports validate an
 
 ## Engine boundaries
 
-`Hub.tsx` lazily loads games on demand. `useLocalGame.ts` handles normal/practice storage; `useSession.ts` adapts Blindside legacy calls. Spire and Hearth share `GameShell.tsx`.
+`Hub.tsx` lazily loads game-owned UI entry points on demand. `useLocalGame.ts` handles normal/practice storage; all three card studies share `GameShell.tsx` for navigation, replay file controls and the new-run dialog. Game UI owns temporary selection and restart/import resets. Each game owns its command syntax predicate in `domain/commands.ts`; application sessions compose it with replay reconstruction.
 
 ### Slay the Spire turn trace
 

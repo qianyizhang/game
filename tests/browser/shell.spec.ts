@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { blindsideSession } from '../../src/games/balatro/application/session';
 
 test('a loading game keeps navigation available without replacing another game save', async ({
   page,
@@ -70,4 +71,30 @@ test('all game navigation identifies the current view and new-run dialogs have n
     await expect(page.getByRole('dialog')).toBeHidden();
     await expect(page.getByRole('button', { name: '+ New run' })).toBeFocused();
   }
+});
+
+test('Blindside opens a fresh run from a loss and generates new blank seeds', async ({ page }) => {
+  await page.goto('/');
+  await page.getByLabel('Import replay file').setInputFiles('tests/fixtures/blindside-loss.json');
+  await page.getByRole('button', { name: 'Start a new run ↗', exact: true }).click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  await page.mouse.click(10, 10);
+  await expect(dialog).toBeHidden();
+  await page.getByRole('button', { name: 'Start a new run ↗', exact: true }).click();
+  await page.getByLabel('Run seed').fill('   ');
+  await page.getByRole('button', { name: 'Start new run' }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByRole('button', { name: 'Play Small Blind' })).toBeVisible();
+  const first = await page.evaluate((key) => localStorage.getItem(key), blindsideSession.key);
+  const firstSeed = blindsideSession.decode(first!).state.seed;
+  expect(firstSeed).toMatch(/^WORKSHOP-[A-Z0-9]+$/);
+  await page.getByRole('button', { name: 'Rules & workshop' }).click();
+  await page.getByRole('button', { name: '+ New run' }).click();
+  await page.getByRole('button', { name: 'Start new run' }).click();
+  await expect(page.getByRole('button', { name: 'Play Small Blind' })).toBeVisible();
+  const second = await page.evaluate((key) => localStorage.getItem(key), blindsideSession.key);
+  const secondSeed = blindsideSession.decode(second!).state.seed;
+  expect(secondSeed).toMatch(/^WORKSHOP-[A-Z0-9]+$/);
+  expect(secondSeed).not.toBe(firstSeed);
 });

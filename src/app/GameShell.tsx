@@ -19,6 +19,7 @@ export function GameShell({
   view,
   onView,
   defaultSeed,
+  createSeed,
   tools,
   onChallenges,
 }: {
@@ -27,10 +28,11 @@ export function GameShell({
   gameId: GameId;
   onSwitch: (id: GameId) => void;
   controls: Controls;
-  children: ReactNode;
+  children: ReactNode | ((openNewRun: () => void) => ReactNode);
   view: 'play' | 'collection' | 'guide';
   onView: (view: 'play' | 'collection' | 'guide') => void;
   defaultSeed: string;
+  createSeed?: () => string;
   tools?: ReactNode;
   onChallenges: () => void;
 }) {
@@ -66,7 +68,7 @@ export function GameShell({
           className={`game-choice ${view === 'play' ? 'selected' : ''}`}
           onClick={() => onView('play')}
         >
-          <span>{gameId === 'spire' ? '↑' : '⚑'}</span>
+          <span>{gameId === 'balatro' ? '♠' : gameId === 'spire' ? '↑' : '⚑'}</span>
           <div>
             <strong>{title}</strong>
             <small>{subtitle}</small>
@@ -147,7 +149,7 @@ export function GameShell({
             });
           }}
         />
-        {children}
+        {typeof children === 'function' ? children(() => setNewRun(true)) : children}
         <footer className="footer">
           <span>{title.toUpperCase()} / CARD WORKSHOP</span>
           <span>Built to be played. Made to be changed.</span>
@@ -158,11 +160,14 @@ export function GameShell({
         className="new-run-dialog"
         aria-label="Start a new run"
         onCancel={() => setNewRun(false)}
+        onClick={(event) => {
+          if (event.target === dialog.current) setNewRun(false);
+        }}
       >
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            controls.restart(seed.trim() || defaultSeed);
+            controls.restart(seed.trim() || createSeed?.() || defaultSeed);
             onView('play');
             setNewRun(false);
           }}

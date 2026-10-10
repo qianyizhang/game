@@ -90,18 +90,23 @@ test('collection, mod guide, export/import and new seed', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Search collection' }).fill('');
   await page.getByRole('button', { name: 'Consumables', exact: true }).click();
   await expect(page.locator('.catalogue-card')).toHaveCount(18);
-  await page.getByRole('button', { name: 'The workshop' }).click();
+  await page.getByRole('button', { name: 'Rules & workshop' }).click();
   await expect(page.getByRole('heading', { name: 'Make it your game.' })).toBeVisible();
   await page.getByRole('button', { name: '+ New run' }).click();
   await page.getByLabel('Run seed').fill('BROWSER-ROUNDTRIP');
   await page.getByRole('button', { name: 'Start new run' }).click();
   await page.getByRole('button', { name: 'Play Small Blind' }).click();
   const before = await saved(page);
+  const cards = page.locator('.playing-card');
+  await cards.first().click();
+  await expect(cards.first()).toHaveAttribute('aria-pressed', 'true');
   const downloadEvent = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export', exact: true }).click();
   const download = await downloadEvent;
   await page.getByLabel('Import replay file').setInputFiles(await download.path());
   expect(await saved(page)).toEqual(before);
+  await expect(page.locator('.playing-card[aria-pressed="true"]')).toHaveCount(0);
+  await cards.first().click();
   const corruptedFile = {
     name: 'bad.json',
     mimeType: 'application/json',
@@ -110,6 +115,12 @@ test('collection, mod guide, export/import and new seed', async ({ page }) => {
   await page.getByLabel('Import replay file').setInputFiles(corruptedFile);
   await expect(page.getByRole('alert')).toContainText('Import failed');
   expect(await saved(page)).toEqual(before);
+  await expect(cards.first()).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: '+ New run' }).click();
+  await page.getByLabel('Run seed').fill('BROWSER-ROUNDTRIP');
+  await page.getByRole('button', { name: 'Start new run' }).click();
+  await page.getByRole('button', { name: 'Play Small Blind' }).click();
+  await expect(page.locator('.playing-card[aria-pressed="true"]')).toHaveCount(0);
 });
 
 test('phone layout stays within viewport and actions are reachable', async ({ page }, info) => {
