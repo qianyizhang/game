@@ -13,7 +13,12 @@ import {
 } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { applyRetention, planRetention } from './retention.mjs';
+import {
+  applyRetention,
+  planRetention,
+  disposableOutput,
+  writeOutputReceipt,
+} from './retention.mjs';
 
 const now = new Date('2026-10-07T00:00:00Z');
 /** @param {(root: string) => void} use */
@@ -44,6 +49,21 @@ function close(root, path, overrides = {}) {
     }),
   );
 }
+
+await test('default output classification rejects symlink containers and protected sources', () =>
+  fixture((root) => {
+    mkdirSync(join(root, 'outside'));
+    symlinkSync(join(root, 'outside'), join(root, 'test-results'));
+    assert.throws(() => disposableOutput(root, 'trace-visualizer'), /Symlinks/);
+    assert.equal(existsSync(join(root, 'outside/disposable')), false);
+    rmSync(join(root, 'test-results'));
+    const output = disposableOutput(root, 'trace-visualizer');
+    mkdirSync(output);
+    writeFileSync(join(output, 'candidate.blend'), 'protected');
+    assert.throws(() => writeOutputReceipt(root, output), /Source or asset/);
+    assert.equal(existsSync(join(output, '.retention.json')), false);
+    assert.throws(() => writeOutputReceipt(root, join(root, 'outside')), /direct disposable/);
+  }));
 
 await test('dry-run preserves bytes and apply deletes only the eligible exact entry', () =>
   fixture((root) => {

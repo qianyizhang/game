@@ -1,6 +1,6 @@
 import { gitDocument } from './documents.ts';
 import { renderReview } from '@card-workshop/session-review/build';
-import { randomUUID } from 'node:crypto';
+import { disposableOutput, writeOutputReceipt } from '../retention.mjs';
 import { freshOutput } from './output.ts';
 import {
   parseCase,
@@ -33,9 +33,16 @@ export async function buildCase(options: BuildOptions) {
   const rebase = (path: string) =>
     resolve(root, relative(requestedRoot, resolve(requestedRoot, path)));
   const input = rebase(options.input ?? 'test-results/trace-visualizer-input');
-  const output = rebase(options.output ?? `test-results/trace-visualizer-${randomUUID()}`);
+  const output =
+    options.output === undefined
+      ? disposableOutput(root, 'trace-visualizer')
+      : rebase(options.output);
   const spec = parseCase(options.spec);
-  return freshOutput(root, output, input, () => buildInto({ root, input, output, spec }));
+  return freshOutput(root, output, input, async () => {
+    const result = await buildInto({ root, input, output, spec });
+    if (options.output === undefined) writeOutputReceipt(root, output);
+    return result;
+  });
 }
 async function buildInto({
   root,
@@ -50,7 +57,6 @@ async function buildInto({
 }) {
   root = await realpath(root);
   const hash = (data: Buffer) => createHash('sha256').update(data).digest('hex');
-  await mkdir(resolve(output, 'assets'), { recursive: true });
   const rootReal = await realpath(root);
   async function ownedFile(path: string) {
     const full = await realpath(resolve(root, path));
@@ -83,6 +89,7 @@ async function buildInto({
     const bytes = await readFile(full);
     const sha256 = hash(bytes);
     const url = `assets/${sha256.slice(0, 20)}${extname(full)}`;
+    await mkdir(resolve(output, 'assets'), { recursive: true });
     await copyFile(full, resolve(output, url));
     const record = { path: relative(root, full), url, sha256, bytes: bytes.length };
     media.push(record);

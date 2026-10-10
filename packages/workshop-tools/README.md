@@ -14,7 +14,7 @@ Retain audit JSON in ignored session directories. The root lockfile supplies run
 
 ## Trace bundles
 
-`npm run trace:build -- [input-directory] [new-output-directory] [case-study.json]` builds a private offline evidence viewer. Relative arguments resolve from the repository root. A default invocation chooses a fresh ignored output directory; an explicit existing output is refused.
+`npm run trace:build -- [input-directory] [new-output-directory] [case-study.json]` builds a private offline evidence viewer. Relative arguments resolve from the repository root. Default output is a fresh `test-results/disposable/trace-visualizer-<UUID>` directory with a closure receipt after a successful build, eligible for the existing 14-day retention. Explicit output remains unclassified and an existing output is refused.
 
 The `trace/` modules validate unknown exports and case specifications, preserve observable record identities and omissions, and associate authored assessments with exact evidence. They execute through the pinned Node runtime with native TypeScript stripping and pass the package strict type/lint gate. `npm run test:trace` selects the trace tests; the package test command also includes them. The browser runtime is separately typechecked and embedded in each offline bundle. Revision-pinned document references preserve original Git bytes through documentation moves. See the [trace guide](../../docs/engineering/trace-visualizer.md) for schema, privacy, output and provenance boundaries.
 
@@ -59,3 +59,5 @@ Trace adapters and artifact collection stay in `trace/`; the [session-review wor
 ## Offline Codex usage
 
 `npm run usage:dashboard -- --serve` opens a standalone local usage dashboard from Codex session logs. It supports dates, model/project/effort filters, trends, activity, reasoning/output analytics, sortable sessions with row-click evidence, persistent incremental indexing, current official API-equivalent pricing with editable overrides and filtered CSV export. Omit `--serve` for a self-contained offline report. `npm run test:usage` verifies accounting and local refresh; its tests also join this workspace gate. See the [usage dashboard guide](../../docs/engineering/usage-dashboard.md) for source discovery, coverage and privacy boundaries.
+
+Default usage output is `test-results/disposable/usage-dashboard-<UUID>`, closed with a byte-hashed receipt after a successful build. Serving marks it open; graceful shutdown rehashes refreshed files and starts the 14-day retention. Ctrl-C and SIGTERM close the CLI server gracefully. Interrupted or changed outputs stay protected. `--out` selects an unclassified output outside automatic closure. Pin a default receipt before expiry or choose explicit output for lasting evidence.

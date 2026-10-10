@@ -6,7 +6,8 @@ import { mkdtemp, mkdir, readFile, rm, writeFile, realpath, stat } from 'node:fs
 import { tmpdir } from 'node:os';
 import { resolve, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { randomUUID, createHash } from 'node:crypto';
+import { createHash } from 'node:crypto';
+import { disposableOutput, writeOutputReceipt } from '../retention.mjs';
 import { createServer, type Server } from 'node:http';
 import { gzipSync } from 'node:zlib';
 import { scan, defaultRoots, loadIndex, saveIndex, type ScanCache } from './scan.ts';
@@ -61,10 +62,11 @@ export async function buildDashboard(
   options: { roots?: string[]; output?: string; cache?: ScanCache; index?: string } = {},
 ) {
   const roots = options.roots ?? defaultRoots();
-  const output = resolve(
-    repository,
-    options.output ?? `test-results/usage-dashboard-${randomUUID()}`,
-  );
+  const disposable = options.output === undefined;
+  const output =
+    options.output === undefined
+      ? disposableOutput(repository, 'usage-dashboard')
+      : resolve(repository, options.output);
   const root = await realpath(repository);
   const parent = await realpath(resolve(output, '..'));
   const location = relative(root, parent);
@@ -89,7 +91,8 @@ export async function buildDashboard(
   const html = await render(snapshot, javascript);
   await writeFile(resolve(output, 'index.html'), html, { flag: 'wx' });
   await writeFile(resolve(output, 'usage.json'), JSON.stringify(snapshot), { flag: 'wx' });
-  return { snapshot, javascript, output, html, file: resolve(output, 'index.html') };
+  if (disposable) writeOutputReceipt(repository, output);
+  return { snapshot, javascript, output, html, file: resolve(output, 'index.html'), disposable };
 }
 export function startServer(
   initial: Awaited<ReturnType<typeof buildDashboard>>,
@@ -154,6 +157,7 @@ export function startServer(
     }
   }
   let refreshing = false;
+  let outputComplete = true;
   const server = createServer((request, response) => {
     void (async () => {
       const address = server.address();
@@ -293,8 +297,10 @@ export function startServer(
           if (index) await saveIndex(index, cache, prior);
           currentSnapshot = snapshot;
           html = await render(snapshot, initial.javascript);
+          outputComplete = false;
           await writeFile(initial.file, html);
           await writeFile(resolve(initial.output, 'usage.json'), JSON.stringify(snapshot));
+          outputComplete = true;
           response.setHeader('Content-Type', 'application/json');
           response.end(JSON.stringify(snapshot));
         } finally {
@@ -307,6 +313,17 @@ export function startServer(
       response.writeHead(500).end(e instanceof Error ? e.message : String(e));
     });
   });
+  if (initial.disposable) {
+    writeOutputReceipt(repository, initial.output, 'open');
+    server.once('close', () => {
+      try {
+        if (outputComplete) writeOutputReceipt(repository, initial.output);
+      } catch (error) {
+        // An incomplete shutdown leaves the open or invalid receipt protected.
+        console.error('Usage output retention could not close:', error);
+      }
+    });
+  }
   return new Promise((resolvePromise, reject) => {
     server.once('error', reject);
     server.listen(port, '127.0.0.1', () => {
@@ -370,7 +387,14 @@ export async function runCli(args: string[]) {
     scannedBytes: result.snapshot.scannedBytes,
   };
   if (serve) {
-    const { url } = await startServer(result, selected, cache, port, index);
+    const { server, url } = await startServer(result, selected, cache, port, index);
+    const shutdown = () => server.close();
+    process.once('SIGINT', shutdown);
+    process.once('SIGTERM', shutdown);
+    server.once('close', () => {
+      process.removeListener('SIGINT', shutdown);
+      process.removeListener('SIGTERM', shutdown);
+    });
     console.log(JSON.stringify({ ...info, url }));
   } else console.log(JSON.stringify(info));
 }

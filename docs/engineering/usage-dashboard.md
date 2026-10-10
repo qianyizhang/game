@@ -11,7 +11,7 @@ npm run usage:dashboard -- --serve
 
 Open the loopback URL printed by the command (default: `http://127.0.0.1:4381/`). Refresh logs resumes appended files and reuses unchanged files from a persistent disk index. Stop the process with Ctrl-C. It never modifies source logs.
 
-Without `--serve`, the command produces a self-contained `index.html` and adjacent `usage.json` in a fresh ignored `test-results/usage-dashboard-<UUID>/` directory. The HTML embeds compressed usage data and a bundled runtime; it works directly offline in modern browsers supporting DecompressionStream; refresh requires rebuilding or running the local server. Each invocation creates a new directory; explicit existing output is refused.
+Without `--serve`, the command produces a self-contained `index.html` and adjacent `usage.json` in a fresh ignored `test-results/disposable/usage-dashboard-<UUID>/` directory. The HTML embeds compressed usage data and a bundled runtime; it works directly offline in modern browsers supporting DecompressionStream; refresh requires rebuilding or running the local server. Each invocation creates a new directory; explicit existing output is refused. Default builds use the [tools package retention contract](../../packages/workshop-tools/README.md#offline-codex-usage); use `--out` for lasting evidence or pin the default receipt before expiry.
 
 ```sh
 npm run usage:dashboard -- --root /path/to/sessions --root /path/to/archive --out test-results/my-new-usage

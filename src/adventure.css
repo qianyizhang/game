@@ -713,7 +713,7 @@
   }
 }
 
-/* Emberpath's engraved illustrations share the same scene on every card surface. */
+/* Engraved illustrations share the same scene on every card surface. */
 .ability-card {
   background: linear-gradient(145deg, #f0dfbf, #dac8a7);
   border-color: #c89a78;

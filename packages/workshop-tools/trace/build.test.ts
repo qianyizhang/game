@@ -3,7 +3,7 @@ import { record, list, type Stage } from './contracts.ts';
 import type { TestContext } from 'node:test';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, rm, mkdir, writeFile, readFile, symlink } from 'node:fs/promises';
+import { mkdtemp, rm, mkdir, writeFile, readFile, symlink, realpath } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
@@ -12,11 +12,37 @@ import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { buildCase } from './build.ts';
 import { writeFixture } from './fixture.ts';
+import { planRetention, applyRetention } from '../retention.mjs';
 async function fixture(t: TestContext) {
   const root = await mkdtemp(resolve(tmpdir(), 'trace-model-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   return writeFixture(root);
 }
+await test('default trace output expires through retention while explicit evidence stays protected', async (t) => {
+  const f = await fixture(t);
+  execFileSync('git', ['init', '-q', f.root]);
+  const explicit = await buildCase(f);
+  const output = await buildCase({ ...f, output: undefined });
+  assert.ok(
+    output.output.startsWith(resolve(await realpath(f.root), 'test-results/disposable') + '/'),
+  );
+  assert.equal(existsSync(resolve(explicit.output, '.retention.json')), false);
+  const expiry = new Date(Date.now() + 15 * 86_400_000);
+  let plan = planRetention(f.root, expiry);
+  assert.equal(plan[0].status, 'eligible');
+  const html = resolve(output.output, 'index.html');
+  await writeFile(html, 'changed after closure');
+  assert.equal(planRetention(f.root, expiry)[0].status, 'retained');
+  assert.equal(applyRetention(f.root, plan, expiry)[0].status, 'retained');
+  assert.equal(await readFile(html, 'utf8'), 'changed after closure');
+  // A new complete build can expire; neither the changed bundle nor explicit evidence may.
+  const fresh = await buildCase({ ...f, output: undefined });
+  plan = planRetention(f.root, expiry);
+  assert.equal(applyRetention(f.root, plan, expiry)[0].status, 'deleted');
+  assert.equal(existsSync(fresh.output), false);
+  assert.equal(existsSync(explicit.output), true);
+  assert.equal(existsSync(output.output), true);
+});
 await test('cross-thread evidence resolves, deduplicates and produces factual summaries and artifact identities', async (t) => {
   const f = await fixture(t);
   f.spec.stages[0].evidence.push(f.spec.stages[0].evidence[1]);

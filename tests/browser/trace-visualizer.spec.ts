@@ -1,8 +1,21 @@
 import { parseCase } from '../../packages/workshop-tools/trace/contracts';
-import { relative, sep } from 'node:path';
+import { relative, resolve, sep } from 'node:path';
 import { expect, test } from '@playwright/test';
 import { existsSync, readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { mkdir, mkdtemp, rm } from 'node:fs/promises';
+
+const fixtureRoots = new Set<string>();
+async function fixtureDirectory(prefix: string) {
+  await mkdir('test-results', { recursive: true });
+  const root = await mkdtemp(resolve('test-results', prefix));
+  fixtureRoots.add(root);
+  return root;
+}
+test.afterAll(async () => {
+  await Promise.all([...fixtureRoots].map((root) => rm(root, { recursive: true, force: true })));
+  fixtureRoots.clear();
+});
 
 function bundleUrl(json: string): string {
   const value: unknown = JSON.parse(json);
@@ -209,7 +222,8 @@ test.describe('private sculpture case', () => {
 
 test.describe('public synthetic behavior case', () => {
   let fixtureUrl = '';
-  test.beforeAll(() => {
+  test.beforeAll(async () => {
+    const root = await fixtureDirectory('trace-public-fixture-');
     fixtureUrl = bundleUrl(
       execFileSync(
         process.execPath,
@@ -220,12 +234,11 @@ test.describe('public synthetic behavior case', () => {
       import {writeFixture} from './packages/workshop-tools/trace/fixture.ts';
       import {buildCase} from './packages/workshop-tools/trace/build.ts';
       import {resolve} from 'node:path';
-      import {mkdir, mkdtemp} from 'node:fs/promises';
-      await mkdir('test-results', {recursive: true});
-      const root = await mkdtemp(resolve('test-results/trace-public-fixture-'));
+      const root = process.argv[1];
       const data = await buildCase(await writeFixture(root));
       console.log(JSON.stringify({file: resolve(data.output, 'index.html')}));
     `,
+          root,
         ],
         { encoding: 'utf8' },
       ),
@@ -278,6 +291,7 @@ test.describe('public synthetic behavior case', () => {
   test('episode selection adds history and restores the selected episode on reload', async ({
     page,
   }) => {
+    const root = await fixtureDirectory('episode-history-');
     const historyUrl = bundleUrl(
       execFileSync(
         process.execPath,
@@ -288,13 +302,13 @@ test.describe('public synthetic behavior case', () => {
       import {writeFixture} from './packages/workshop-tools/trace/fixture.ts';
       import {buildCase} from './packages/workshop-tools/trace/build.ts';
       import {resolve} from 'node:path';
-      import {mkdtemp} from 'node:fs/promises';
-      const root = await mkdtemp(resolve('test-results/episode-history-'));
+      const root = process.argv[1];
       const options = await writeFixture(root);
       options.spec.stages.push({...options.spec.stages[0], id:'followup', title:'Follow-up review'});
       const data = await buildCase(options);
       console.log(JSON.stringify({file:resolve(data.output,'index.html')}));
     `,
+          root,
         ],
         { encoding: 'utf8' },
       ),
@@ -428,7 +442,8 @@ test.describe('public synthetic behavior case', () => {
 
 test.describe('conversation overview and turn inspection', () => {
   let url = '';
-  test.beforeAll(() => {
+  test.beforeAll(async () => {
+    const root = await fixtureDirectory('conversation-fixture-');
     url = bundleUrl(
       execFileSync(
         process.execPath,
@@ -436,12 +451,11 @@ test.describe('conversation overview and turn inspection', () => {
           '--input-type=module',
           '-e',
           `
-      import {mkdir, mkdtemp, writeFile} from 'node:fs/promises';
+      import {writeFile} from 'node:fs/promises';
       import {resolve} from 'node:path';
       import {renderReview} from '@card-workshop/session-review/build';
       import {normalizeSessionFile, sessionTrace} from './packages/workshop-tools/trace/jsonl.ts';
-      await mkdir('test-results', {recursive: true});
-      const root = await mkdtemp(resolve('test-results/conversation-fixture-'));
+      const root = process.argv[1];
       const row = (type, payload) => ({type, payload, timestamp:'2026-10-09T01:00:00Z'});
       const message = (role, text, phase) => row('response_item', {type:'message',role,phase,content:[{type:'input_text',text}]});
       const rows = [row('session_meta',{id:'conversation-fixture'}), row('turn_context',{turn_id:'first'}),
@@ -463,6 +477,7 @@ test.describe('conversation overview and turn inspection', () => {
       const file = resolve(root,'index.html'); await writeFile(file,html);
       console.log(JSON.stringify({file}));
     `,
+          root,
         ],
         { encoding: 'utf8' },
       ),

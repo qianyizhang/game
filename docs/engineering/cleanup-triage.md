@@ -82,3 +82,45 @@ shasum -a 256 /tmp/original-document.md
 The digest must match the record. Git recovery preserves authored reports; it does not
 restore retired captures or turn historical verification into a new result. Original
 closure receipts remain dated observations; the retirement manifests explain later removals.
+
+## Bounded artifact cleanup — 2026-10-10
+
+Independent verification confirmed the output leaks, but rejected blanket deletion of
+runtime, historical runs and source-containing sessions. The user selected bounded
+deletion plus recurrence fixes. The starting tracked worktree was clean.
+
+The inventory of `test-results`, `dcc-backups` and DCC `sources` contained 19,423 files,
+9,482,443,253 logical bytes and 3,364,498,513 duplicate bytes. These are file-byte totals,
+not allocated disk usage or automatic deletion authority; runtime and sessions were
+examined separately.
+
+Deleted 29 UUID usage builds, 36 UUID trace builds and 47 public synthetic fixtures:
+112 directories, 4,966 files and 3,588,048,686 logical bytes. Every deletion was matched to
+the approved path/hash manifest immediately before unlinking. All 5,088 captured protected
+files matched after deletion. The local [deletion receipt](../../.work/sessions/cleanup-verification-2026-10-10/deletion-receipt.json)
+and [preserved hashes](../../.work/sessions/cleanup-verification-2026-10-10/protected-files.json)
+record that operation; they are local evidence, not committed source archives.
+
+Retained runtime and session contents, the three historical runs, DCC backups, trace
+inputs and the current viewer. Runtime contains cited LFS/DCC proof; historical runs
+contain referenced logs and unique scripts. Eight sessions lack receipts, but seven
+contain protected source/assets and Matriarch remains unfinished. Neither age nor a
+missing receipt establishes completion. Existing source and evidence references stay intact.
+
+Default usage/trace builds now use existing 14-day disposable retention after successful
+closure. Served usage output remains open during refresh and rehashes on graceful shutdown;
+explicit outputs stay unclassified. Browser tests register teardown for public,
+episode-history and conversation fixtures before building them. Trace builds create an
+assets directory only when media exists, allowing media-free bundles to expire cleanly.
+The [tools command contract](../../packages/workshop-tools/README.md) owns these details.
+
+The pre-change full local gate passed 377 application/geometry tests and four simulations,
+plus maintained checks. This confirms the tested behavior and link/inventory checks;
+it does not prove that every source file is live or establish remote CI success.
+
+After the implementation, the maintained gate passed with 77 tools tests passing and one
+loopback test skipped by the sandbox, plus 47 DCC tests. Approved execution separately
+passed all nine usage tests, including refresh-write failure protection; 18 focused
+retention/trace checks and 15 targeted browser cases passed. Browser teardown left no new
+synthetic fixture roots. The audit session is pinned to preserve the local receipt links;
+future retirement requires preserving their provenance elsewhere first.

@@ -1,6 +1,16 @@
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { lstatSync, readFileSync, readdirSync, realpathSync, rmdirSync, unlinkSync } from 'node:fs';
+import {
+  lstatSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  realpathSync,
+  rmdirSync,
+  unlinkSync,
+  writeFileSync,
+  existsSync,
+} from 'node:fs';
 import { join, resolve, relative, sep } from 'node:path';
 
 const roots = ['test-results/disposable', '.work/sessions'];
@@ -52,6 +62,65 @@ function fileHashes(root, directory) {
   }
   visit(directory);
   return result;
+}
+
+/** Choose a fresh default output without following symlinked containers.
+ * @param {string} repository @param {'usage-dashboard'|'trace-visualizer'} label
+ */
+export function disposableOutput(repository, label) {
+  const root = realpathSync(repository);
+  for (const path of ['test-results', 'test-results/disposable']) {
+    try {
+      mkdirSync(join(root, path));
+    } catch (error) {
+      if (!error || typeof error !== 'object' || !('code' in error) || error.code !== 'EEXIST')
+        throw error;
+    }
+    if (!lstatSync(ownedPath(root, path)).isDirectory()) throw new Error('Expected a directory');
+  }
+  return join(root, 'test-results/disposable', `${label}-${randomUUID()}`);
+}
+
+/** Close only complete default output; an active server stays protected until shutdown.
+ * @param {string} repository @param {string} output @param {'open'|'closed'} [state]
+ */
+export function writeOutputReceipt(repository, output, state = 'closed') {
+  const root = realpathSync(repository);
+  const path = relative(root, output);
+  const prefix = 'test-results/disposable/';
+  if (
+    !path.startsWith(prefix) ||
+    !path.slice(prefix.length) ||
+    path.slice(prefix.length).includes(sep)
+  )
+    throw new Error('Output receipt requires a direct disposable child');
+  const directory = ownedPath(root, path);
+  const manifestPath = join(directory, receipt);
+  const exists = existsSync(manifestPath);
+  const previous = exists
+    ? record(JSON.parse(readFileSync(ownedPath(root, `${path}/${receipt}`), 'utf8')))
+    : null;
+  if (previous && (previous.schemaVersion !== 1 || previous.kind !== 'output'))
+    throw new Error('Existing receipt is not output retention');
+  const files = fileHashes(root, path);
+  delete files[receipt];
+  if (!Object.keys(files).length) throw new Error('Cannot close empty output');
+  writeFileSync(
+    manifestPath,
+    JSON.stringify(
+      {
+        schemaVersion: 1,
+        kind: 'output',
+        state,
+        pinned: previous?.pinned === true,
+        closedAt: new Date().toISOString(),
+        files,
+      },
+      null,
+      2,
+    ) + '\n',
+    { flag: exists ? 'w' : 'wx' },
+  );
 }
 
 /** @param {string} root @param {string} path @param {string[]} tracked @param {Date} now @returns {Entry} */

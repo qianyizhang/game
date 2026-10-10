@@ -1,6 +1,15 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm, writeFile, appendFile, rename, readdir } from 'node:fs/promises';
+import {
+  mkdtemp,
+  readFile,
+  rm,
+  writeFile,
+  appendFile,
+  rename,
+  readdir,
+  mkdir,
+} from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { createFixture } from './fixture.ts';
@@ -19,6 +28,7 @@ import {
   type Filters,
 } from './model.ts';
 import { buildDashboard, startServer } from './build.ts';
+import { planRetention } from '../retention.mjs';
 import type { TraceThread } from '../trace/contracts.ts';
 const all: Filters = {
   from: '',
@@ -214,6 +224,13 @@ void test('standalone build and loopback refresh preserve inputs and refuse over
   let result: Awaited<ReturnType<typeof buildDashboard>> | undefined;
   try {
     result = await buildDashboard({ roots: [dir], cache });
+    const repository = resolve(import.meta.dirname, '../../..');
+    const expiry = new Date(Date.now() + 15 * 86_400_000);
+    const retention = () =>
+      planRetention(repository, expiry).find(
+        (entry) => resolve(repository, entry.path) === result?.output,
+      );
+    assert.equal(retention()?.status, 'eligible');
     assert.ok(result.html.includes('Codex usage'));
     assert.ok(!result.html.includes('PRIVATE_PROMPT_SENTINEL'));
     assert.ok(!result.html.includes('src="https://'));
@@ -232,6 +249,7 @@ void test('standalone build and loopback refresh preserve inputs and refuse over
     }
     const { server, url } = service;
     try {
+      assert.equal(retention()?.reason, 'Unclassified, open or pinned');
       assert.equal((await fetch(url)).status, 200);
       assert.equal((await fetch(url + 'arbitrary-file')).status, 404);
       assert.equal((await fetch(url + 'trace?session=missing')).status, 404);
@@ -316,6 +334,27 @@ void test('standalone build and loopback refresh preserve inputs and refuse over
         server.close((e) => (e ? reject(e) : done()));
       });
     }
+    assert.equal(retention()?.status, 'eligible');
+    // A write failure after HTML refresh must not close a partial output for pruning.
+    const file = resolve(result.output, 'usage.json');
+    const saved = await readFile(file);
+    await rm(file);
+    await mkdir(file);
+    const restarted = await startServer(result, [dir], cache, 0);
+    try {
+      const failed = await fetch(restarted.url + 'refresh', {
+        method: 'POST',
+        headers: { 'X-Usage-Refresh': '1' },
+      });
+      assert.equal(failed.status, 500);
+    } finally {
+      await rm(file, { recursive: true });
+      await writeFile(file, saved);
+      await new Promise<void>((done, reject) => {
+        restarted.server.close((e) => (e ? reject(e) : done()));
+      });
+    }
+    assert.equal(retention()?.reason, 'Unclassified, open or pinned');
     assert.deepEqual(await readFile(resolve(dir, 'parent.jsonl')), before);
   } finally {
     if (result) await rm(result.output, { recursive: true, force: true });
