@@ -18,8 +18,9 @@ All maintained source requires enforced check coverage. Passing a slice does not
 
 ## Gate selection
 
-- **Ordinary work**: Run `npm run check` for game rules, saves, UI, SVG, docs, and tools.
-- **3D / DCC work**: Run `npm run check:full` for changes affecting 3D construction, animation, rendering/export or DCC delivery (`src/art3d`, DCC sources/delivery, or their shared helpers/dependencies). Geometry assertions or configuration affecting their behavior also use this gate. Documentation-only edits use the default. Use `npm run test:geometry -- <file>` for focused iteration.
+- **Application & tool code**: Run `npm run check` for game rules, saves, UI, SVG, and tools.
+- **Documentation-only work**: Run `npm run format:maintenance` (or focused Prettier and inventory checks). Skip application test suites and simulations.
+- **3D / DCC work**: Run `npm run check:full` for changes affecting 3D construction, animation, rendering/export or DCC delivery (`src/art3d`, DCC sources/delivery, or their shared helpers/dependencies). Geometry assertions or configuration affecting their behavior also use this gate. Use `npm run test:geometry -- <file>` for focused iteration.
 - **CI**: Always executes `npm run check:full` and `npm run test:browser`.
 
 Static checks still cover 3D sources. Browser/native gates run separately for affected behavior;

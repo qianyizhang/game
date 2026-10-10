@@ -13,15 +13,17 @@ Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone B
 - Prefer overall behavior and end-to-end journeys. For test additions, consolidation or removal, read [testing policy](docs/engineering/testing.md).
 - Preserve concurrent edits. No subagent delegation is required by this file.
 
+## Governance
+
+- Reach for simple vertical solutions first over bulletproof complex architecture. Focus on core functions; stub secondary branches with `TODO` or `NotImplemented` instead of overengineering.
+- Structure files into cohesive modules with clear hierarchy; avoid flat directory dumping.
+- Tidy before commit: reorganize directory structure, consolidate module layout, and sharpen terminology to be concise and precise.
+- For maintenance, script changes, documentation placement, cleanup or check coverage, read [maintenance governance](docs/engineering/maintenance.md).
+
 ## Checks
 
 Use the pinned Node/npm runtime with `nvm use`, and Python from `.python-version` through `uv`.
-
-For maintenance, script changes, documentation placement, cleanup or check coverage, read
-[maintenance governance](docs/engineering/maintenance.md). New source must enter an
-enforced check scope. `npm run check:maintenance` verifies maintained tooling and static
-checks; `npm run check` also runs application tests and seeded simulations.
-Report those scopes separately.
+New source must enter an enforced check scope. `npm run check:maintenance` verifies maintained tooling and static checks; `npm run check` also runs application tests and seeded simulations. Report those scopes separately.
 
 Before using the installed review skills, read [their project mapping](docs/engineering/agent-skills.md).
 It maps upstream document names to this repository's homes and records the pinned source.
@@ -29,7 +31,7 @@ For domain naming or interface changes, read the relevant [glossary](docs/engine
 
 For SVG or 3D artwork, read [the Card Workshop art skill](skills/card-art/SKILL.md) and the [aesthetic rulebook](docs/art/art-direction.md). The rulebook is the shared visual standard; the skill covers creation and review. [SVG sources](docs/art/svg.md) and [3D sources](docs/art/3d.md) locate renderers and export integration. Passing technical checks does not establish visual quality.
 
-Use `npm run check` for ordinary changes; geometry tests are opt-in. For changes affecting
+Use `npm run check` for code, UI, and rule changes; documentation-only edits require only formatting and inventory checks (`npm run format:maintenance`). Geometry tests are opt-in. For changes affecting
 3D construction, animation, rendering/export or DCC delivery, use `npm run check:full`.
 Read [verification contracts](docs/engineering/checks.md#gate-selection) for scope
 selection and reporting. `npm run test:browser` runs the disposable-profile browser suite
@@ -39,4 +41,7 @@ On this Mac, request approved execution outside the restricted command sandbox f
 
 ## Communication
 
-Lead with the result. Keep explanations concise and distinguish implemented features, verified behavior, and remaining work. Clear accepted decisions stay settled.
+- Lead with the result. Keep explanations concise and distinguish implemented features, verified behavior, and remaining work. Clear accepted decisions stay settled.
+- Be blunt and push back upfront. Reason about underlying intent first rather than following literal requests uncritically.
+- Propose before building: clarify, refine, and suggest standard patterns, existing solutions, or proven frameworks with concise reasoning.
+- Sharpen terminology: rephrase broad or imprecise terms into concise, technically precise language.
