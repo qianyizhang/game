@@ -39,7 +39,8 @@
     "test:dcc:saved": "node packages/dcc-workbench/verify-saved.ts",
     "usage:dashboard": "node packages/workshop-tools/usage/build.ts",
     "test:usage": "node --test packages/workshop-tools/usage/*.test.ts",
-    "test:diablo2": "npm run test --workspace @card-workshop/diablo2"
+    "test:diablo2": "npm run test --workspace @card-workshop/diablo2",
+    "dcc:canid": "node packages/dcc-workbench/canid.ts"
   },
   "dependencies": {
     "react": "19.3.0",

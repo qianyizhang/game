@@ -1,0 +1,21 @@
+{
+  "family": "canid-v1",
+  "character": "moss",
+  "sourceSha256": "3c4a28a2663e4d5f120d711a3ec14b634cf33467bd20cc6a8fb32172a3ac66e2",
+  "meshSha256": "44f24eabc3cc95e1226309e313e7fad1bf54667c15407e85eb7ff40505c5e2f7",
+  "mode": "retarget",
+  "chainMap": {
+    "front.L": "front.L",
+    "front.R": "front.R",
+    "hind.L": "hind.L",
+    "hind.R": "hind.R"
+  },
+  "referencePose": "saved fitted rest skeleton; identical control axes",
+  "corrections": {
+    "strideScale": 0.77,
+    "heightScale": 0.77,
+    "widthScale": 1.22,
+    "bodyLengthScale": 1.07,
+    "contact": "two-bone IK; world-rest paw orientation"
+  }
+}

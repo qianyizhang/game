@@ -1,0 +1,21 @@
+{
+  "family": "canid-v1",
+  "character": "ash",
+  "sourceSha256": "3c4a28a2663e4d5f120d711a3ec14b634cf33467bd20cc6a8fb32172a3ac66e2",
+  "meshSha256": "c3d5bd29d4f64bb1bd9b4c80228ba1b3d422c8c2f633319a5dd2387aa4d30c42",
+  "mode": "direct",
+  "chainMap": {
+    "front.L": "front.L",
+    "front.R": "front.R",
+    "hind.L": "hind.L",
+    "hind.R": "hind.R"
+  },
+  "referencePose": "saved fitted rest skeleton; identical control axes",
+  "corrections": {
+    "strideScale": 1.0,
+    "heightScale": 1.0,
+    "widthScale": 1.0,
+    "bodyLengthScale": 1.0,
+    "contact": "two-bone IK; world-rest paw orientation"
+  }
+}
