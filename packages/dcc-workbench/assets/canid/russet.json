@@ -1,3 +1,79 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7f98571938097beb79fbb828bd974ffdd22eadc87bbd4abdd68c84a33f936fd2
-size 2612
+{
+  "schemaVersion": 2,
+  "character": "russet",
+  "sourceSha256": "859bb9e603743e6a582799ec0b45a2ab526953c761bd44637b85a268d3cce3f8",
+  "motionSha256": "3c4a28a2663e4d5f120d711a3ec14b634cf33467bd20cc6a8fb32172a3ac66e2",
+  "modelSha256": "9490c9ea22117be85700d51a13f42de0ad75b72d4e45408fdb7e588f93a1b2aa",
+  "meshSha256": "40486ab34a7dfb84d9b1ace36588aa174f07e3bf58a62a2c13c12fc58ff1aff7",
+  "exportScripts": {
+    "canid_pipeline.py": "6dab5fe750b568fa0789cc0624c7c099cec337a585cbc6307fdfbff07a99970f",
+    "canid_rig.py": "5db5eefaf3aea9c52a048f9f560b717ee1b145de6ea6fa7879cc10aa4d6a3a3b",
+    "native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
+  },
+  "blender": "4.5.14 LTS",
+  "space": "glTF world, Y up",
+  "contacts": {
+    "idle": {
+      "maxIkError": 4.960094981519353e-07,
+      "maxSoleHeight": 3.8314354355861724e-07,
+      "maxSoleFrameSlip": 5.319561412605904e-07,
+      "maxPlantedFrameSlip": 4.805480091749757e-07,
+      "maxPlantedHeightError": 4.470348358154297e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.0,
+      "frames": 97
+    },
+    "walk": {
+      "maxIkError": 6.06387554090494e-07,
+      "maxSoleHeight": 6.355711548167164e-07,
+      "maxSoleFrameSlip": 7.481675000400963e-07,
+      "maxPlantedFrameSlip": 7.275674114068569e-07,
+      "maxPlantedHeightError": 5.364418029785156e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.40322580645161293,
+      "frames": 49
+    },
+    "look": {
+      "maxIkError": 4.960094981519353e-07,
+      "maxSoleHeight": 3.8314354355861724e-07,
+      "maxSoleFrameSlip": 5.319561412605904e-07,
+      "maxPlantedFrameSlip": 4.805480091749757e-07,
+      "maxPlantedHeightError": 4.470348358154297e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.0,
+      "frames": 97
+    }
+  },
+  "clips": {
+    "idle": {
+      "seconds": 4.0
+    },
+    "walk": {
+      "seconds": 2.0
+    },
+    "look": {
+      "seconds": 4.0
+    }
+  },
+  "profile": {
+    "family": "canid-v1",
+    "character": "russet",
+    "sourceSha256": "3c4a28a2663e4d5f120d711a3ec14b634cf33467bd20cc6a8fb32172a3ac66e2",
+    "meshSha256": "40486ab34a7dfb84d9b1ace36588aa174f07e3bf58a62a2c13c12fc58ff1aff7",
+    "mode": "direct",
+    "chainMap": {
+      "front.L": "front.L",
+      "front.R": "front.R",
+      "hind.L": "hind.L",
+      "hind.R": "hind.R"
+    },
+    "referencePose": "saved fitted rest skeleton; identical control axes",
+    "corrections": {
+      "strideScale": 1.0,
+      "heightScale": 1.0,
+      "widthScale": 1.0,
+      "bodyLengthScale": 1.0,
+      "contact": "two-bone IK; world-rest paw orientation"
+    }
+  }
+}

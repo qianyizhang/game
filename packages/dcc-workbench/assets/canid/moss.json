@@ -1,3 +1,79 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:165fa225c3c4b82f1568c06bcacec0ac9250e48e810c98ce7ca84654bcc80f28
-size 2614
+{
+  "schemaVersion": 2,
+  "character": "moss",
+  "sourceSha256": "82d9d5076a90ec2a5ccba70391d95c77501cd5747239a33e16f6120418453995",
+  "motionSha256": "3c4a28a2663e4d5f120d711a3ec14b634cf33467bd20cc6a8fb32172a3ac66e2",
+  "modelSha256": "fbb1e1abda26c100c51baa819bb25cf5b1de713319a2469302922e90753b4a63",
+  "meshSha256": "44f24eabc3cc95e1226309e313e7fad1bf54667c15407e85eb7ff40505c5e2f7",
+  "exportScripts": {
+    "canid_pipeline.py": "6dab5fe750b568fa0789cc0624c7c099cec337a585cbc6307fdfbff07a99970f",
+    "canid_rig.py": "5db5eefaf3aea9c52a048f9f560b717ee1b145de6ea6fa7879cc10aa4d6a3a3b",
+    "native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
+  },
+  "blender": "4.5.14 LTS",
+  "space": "glTF world, Y up",
+  "contacts": {
+    "idle": {
+      "maxIkError": 3.3881714942759493e-07,
+      "maxSoleHeight": 3.151546366098046e-07,
+      "maxSoleFrameSlip": 5.197903576116551e-07,
+      "maxPlantedFrameSlip": 5.204751848153168e-07,
+      "maxPlantedHeightError": 2.980232238769531e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.0,
+      "frames": 97
+    },
+    "walk": {
+      "maxIkError": 4.712160915387242e-07,
+      "maxSoleHeight": 4.6668554887219216e-07,
+      "maxSoleFrameSlip": 5.990069133150269e-07,
+      "maxPlantedFrameSlip": 5.372690074837192e-07,
+      "maxPlantedHeightError": 4.470348358154297e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.310483870967742,
+      "frames": 49
+    },
+    "look": {
+      "maxIkError": 3.3881714942759493e-07,
+      "maxSoleHeight": 3.151546366098046e-07,
+      "maxSoleFrameSlip": 5.197903576116551e-07,
+      "maxPlantedFrameSlip": 5.204751848153168e-07,
+      "maxPlantedHeightError": 2.980232238769531e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.0,
+      "frames": 97
+    }
+  },
+  "clips": {
+    "idle": {
+      "seconds": 4.0
+    },
+    "walk": {
+      "seconds": 2.0
+    },
+    "look": {
+      "seconds": 4.0
+    }
+  },
+  "profile": {
+    "family": "canid-v1",
+    "character": "moss",
+    "sourceSha256": "3c4a28a2663e4d5f120d711a3ec14b634cf33467bd20cc6a8fb32172a3ac66e2",
+    "meshSha256": "44f24eabc3cc95e1226309e313e7fad1bf54667c15407e85eb7ff40505c5e2f7",
+    "mode": "retarget",
+    "chainMap": {
+      "front.L": "front.L",
+      "front.R": "front.R",
+      "hind.L": "hind.L",
+      "hind.R": "hind.R"
+    },
+    "referencePose": "saved fitted rest skeleton; identical control axes",
+    "corrections": {
+      "strideScale": 0.77,
+      "heightScale": 0.77,
+      "widthScale": 1.22,
+      "bodyLengthScale": 1.07,
+      "contact": "two-bone IK; world-rest paw orientation"
+    }
+  }
+}

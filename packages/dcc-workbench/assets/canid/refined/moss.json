@@ -1,3 +1,7124 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:20db0acbc62ace2f2e9de4e355dec35fbd128be3c599d88bb12f30b13a92caa3
-size 131572
+{
+  "schemaVersion": 4,
+  "character": "moss",
+  "sourceSha256": "f6d9d7ad68945aba507c2756dea00e4f4bec122e01cf3f6747d65b7ba43585fe",
+  "motionSha256": "d3f2486c5d5eaf621d65a8d01fbed411cf449e926a99e0858d5fac5d14b52d20",
+  "modelSha256": "c4b4743e84a2195952073e66135d54e3dae6f325ec2990a3de54739a74c96382",
+  "meshSha256": "9fa8284690bfe14fed805c3a71b350a82c5def257573529016d3b1c2a0727ec8",
+  "exportScripts": {
+    "subjects/canid/authoring/delivery.py": "393e0c8ab21cb07a352b20c5583562d94f9e4a707af7b91f314e4ffb04656247",
+    "subjects/canid/authoring/rig.py": "d59af7efe46575b3b611713f74798faf65d0a2a027eea37b56755de57ccc50c1",
+    "subjects/canid/authoring/parameters.py": "9f392845d0ad49fbb972fe2330f0ca236501e54f87dc9d43c3687e8b0f29adc0",
+    "subjects/canid/authoring/contacts.py": "b7fb41377b53a325b2c3a699b9f7b3aa894632c6ed8169b6721fa1b05e29cf75",
+    "subjects/canid/authoring/motion_spec.py": "acae5a503d8bcfb03c94cfd0f467ae2bf8048364947fb3bbd89db5db8cf5d5b5",
+    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
+  },
+  "blender": "4.5.14 LTS",
+  "space": "glTF world, Y up",
+  "contacts": {
+    "bite": {
+      "maxIkError": 6.906169787798206e-07,
+      "maxSoleHeight": 7.287621315299475e-07,
+      "maxSoleFrameSlip": 6.936539716658689e-07,
+      "maxRollingHeight": 0.0,
+      "supportPhases": [
+        {
+          "start": 0.0,
+          "end": 0.11666666666666667,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.7659407325918437e-07,
+          "maxFrameSlip": 6.908933050507143e-07
+        },
+        {
+          "start": 0.25,
+          "end": 0.43333333333333335,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 7.287621315299475e-07,
+          "maxFrameSlip": 6.036573251531178e-07
+        },
+        {
+          "start": 0.65,
+          "end": 0.7,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 9.029506031765777e-08,
+          "maxFrameSlip": 0.0
+        },
+        {
+          "start": 0.0,
+          "end": 0.11666666666666667,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.387451101843908e-07,
+          "maxFrameSlip": 3.8955569164034107e-07
+        },
+        {
+          "start": 0.25,
+          "end": 0.43333333333333335,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.570245835111564e-07,
+          "maxFrameSlip": 6.201140527397922e-07
+        },
+        {
+          "start": 0.65,
+          "end": 0.7,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 2.147734221580322e-07,
+          "maxFrameSlip": 0.0
+        },
+        {
+          "start": 0.0,
+          "end": 0.7,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 6.107792387410882e-07,
+          "maxFrameSlip": 6.936539716658689e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.7,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 6.097540108385147e-07,
+          "maxFrameSlip": 6.805833433928156e-07
+        }
+      ],
+      "minBodyHeight": -7.287621315299475e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.0,
+      "frames": 43,
+      "minSoleHeight": -7.287621315299475e-07,
+      "maxSwingHeight": 0.08436616510152817,
+      "stanceFraction": 1.0,
+      "footOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minFootHeight": -7.287621315299475e-07,
+      "minSwingClearance": 6.097540108385147e-07,
+      "observedSupportCounts": [
+        2,
+        4
+      ]
+    },
+    "flee": {
+      "maxIkError": 6.880400407680986e-07,
+      "maxSoleHeight": 6.51264201678714e-07,
+      "maxSoleFrameSlip": 1.074487236155694e-06,
+      "maxRollingHeight": 0.0,
+      "supportPhases": [
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.854010396433296e-07,
+          "maxFrameSlip": 8.533707468003071e-07
+        },
+        {
+          "start": 0.2833333333333333,
+          "end": 0.36666666666666664,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.0750632618037343e-07,
+          "maxFrameSlip": 5.231590710898292e-07
+        },
+        {
+          "start": 0.5333333333333333,
+          "end": 0.6333333333333333,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 2.2421478718115395e-07,
+          "maxFrameSlip": 5.654597562370656e-07
+        },
+        {
+          "start": 0.8833333333333333,
+          "end": 1.0333333333333334,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.9265751183847897e-07,
+          "maxFrameSlip": 9.914598999275778e-07
+        },
+        {
+          "start": 1.3333333333333333,
+          "end": 1.5333333333333334,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.903853323412477e-07,
+          "maxFrameSlip": 7.705079268798429e-07
+        },
+        {
+          "start": 1.8833333333333333,
+          "end": 2.0833333333333335,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.309713972361351e-07,
+          "maxFrameSlip": 5.624323300493431e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.06666666666666667,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 2.70020962034323e-07,
+          "maxFrameSlip": 3.8906071964253636e-07
+        },
+        {
+          "start": 0.26666666666666666,
+          "end": 0.3333333333333333,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.418982146285998e-07,
+          "maxFrameSlip": 6.501861226864396e-07
+        },
+        {
+          "start": 0.5166666666666667,
+          "end": 0.6,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 1.7686485875856306e-07,
+          "maxFrameSlip": 5.101216322581275e-07
+        },
+        {
+          "start": 0.85,
+          "end": 0.9833333333333333,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 6.51264201678714e-07,
+          "maxFrameSlip": 8.735955921885384e-07
+        },
+        {
+          "start": 1.3,
+          "end": 1.4666666666666666,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.3245683539462334e-07,
+          "maxFrameSlip": 9.880565665443374e-07
+        },
+        {
+          "start": 1.8333333333333333,
+          "end": 2.0166666666666666,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.324184826349665e-07,
+          "maxFrameSlip": 1.074487236155694e-06
+        },
+        {
+          "start": 2.3666666666666667,
+          "end": 2.4,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.655288504158307e-08,
+          "maxFrameSlip": 9.568722754849774e-07
+        },
+        {
+          "start": 0.15,
+          "end": 0.23333333333333334,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.21836972464007e-07,
+          "maxFrameSlip": 8.09065816432132e-07
+        },
+        {
+          "start": 0.4,
+          "end": 0.48333333333333334,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.6250670493463986e-07,
+          "maxFrameSlip": 5.428898567810188e-07
+        },
+        {
+          "start": 0.7,
+          "end": 0.8166666666666667,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.3447889791204943e-07,
+          "maxFrameSlip": 6.162717100945755e-07
+        },
+        {
+          "start": 1.1,
+          "end": 1.25,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.4465938369976357e-07,
+          "maxFrameSlip": 8.841954831914529e-07
+        },
+        {
+          "start": 1.6,
+          "end": 1.7833333333333334,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.556849546588637e-07,
+          "maxFrameSlip": 1.037717826970604e-06
+        },
+        {
+          "start": 2.15,
+          "end": 2.316666666666667,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.787176521858783e-07,
+          "maxFrameSlip": 1.013937174749772e-06
+        },
+        {
+          "start": 0.11666666666666667,
+          "end": 0.2,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.23483555778148e-07,
+          "maxFrameSlip": 9.293792926104259e-07
+        },
+        {
+          "start": 0.38333333333333336,
+          "end": 0.45,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.214346347453102e-07,
+          "maxFrameSlip": 6.345116169054525e-07
+        },
+        {
+          "start": 0.65,
+          "end": 0.7833333333333333,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.5302340961607115e-07,
+          "maxFrameSlip": 3.9748254032734624e-07
+        },
+        {
+          "start": 1.05,
+          "end": 1.2166666666666666,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.5097451700494275e-07,
+          "maxFrameSlip": 5.748063779469106e-07
+        },
+        {
+          "start": 1.55,
+          "end": 1.7333333333333334,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.2616724726940447e-07,
+          "maxFrameSlip": 5.413750373828851e-07
+        },
+        {
+          "start": 2.1,
+          "end": 2.283333333333333,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.0763300173930475e-07,
+          "maxFrameSlip": 5.644573443857459e-07
+        }
+      ],
+      "minBodyHeight": -6.953587217140011e-07,
+      "ankleLoopError": 0.44701334826493694,
+      "travelSpeed": 0.0,
+      "frames": 145,
+      "minSoleHeight": -6.51264201678714e-07,
+      "maxSwingHeight": 0.2154908925294876,
+      "stanceFraction": 1.0,
+      "footOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minFootHeight": -6.953587217140011e-07,
+      "minSwingClearance": 0.21455079317092896,
+      "observedSupportCounts": [
+        1,
+        2
+      ]
+    },
+    "idle": {
+      "maxIkError": 6.398829982752767e-07,
+      "maxSoleHeight": 5.566343475038593e-07,
+      "maxSoleFrameSlip": 4.825855523977299e-07,
+      "maxRollingHeight": 0.0,
+      "supportPhases": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.4096111651015235e-07,
+          "maxFrameSlip": 4.346019548945337e-07
+        },
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.762828211823944e-07,
+          "maxFrameSlip": 4.132578793186665e-07
+        },
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.241183546582761e-07,
+          "maxFrameSlip": 4.825855523977299e-07
+        },
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.566343475038593e-07,
+          "maxFrameSlip": 4.792538498273476e-07
+        }
+      ],
+      "minBodyHeight": -5.764101160821156e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.0,
+      "frames": 217,
+      "minSoleHeight": -5.566343475038593e-07,
+      "maxSwingHeight": 1.3995170888847497e-07,
+      "stanceFraction": 1.0,
+      "footOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minFootHeight": -5.764101160821156e-07,
+      "minSwingClearance": -8.385777761077406e-08,
+      "observedSupportCounts": [
+        4
+      ]
+    },
+    "look": {
+      "maxIkError": 6.034510353599962e-07,
+      "maxSoleHeight": 6.249189254958765e-07,
+      "maxSoleFrameSlip": 8.474092540372524e-07,
+      "maxRollingHeight": 0.0,
+      "supportPhases": [
+        {
+          "start": 0.0,
+          "end": 1.6,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 6.249189254958765e-07,
+          "maxFrameSlip": 8.474092540372524e-07
+        },
+        {
+          "start": 0.0,
+          "end": 1.6,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.158007070349413e-07,
+          "maxFrameSlip": 8.039322845035326e-07
+        },
+        {
+          "start": 0.0,
+          "end": 1.6,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.403814841680287e-07,
+          "maxFrameSlip": 3.614752520526138e-07
+        },
+        {
+          "start": 0.0,
+          "end": 1.6,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.349635898710403e-07,
+          "maxFrameSlip": 5.246346084743268e-07
+        }
+      ],
+      "minBodyHeight": -6.249189254958765e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.0,
+      "frames": 97,
+      "minSoleHeight": -6.249189254958765e-07,
+      "maxSwingHeight": 3.002882067448809e-07,
+      "stanceFraction": 1.0,
+      "footOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minFootHeight": -6.249189254958765e-07,
+      "minSwingClearance": -8.520483874008278e-08,
+      "observedSupportCounts": [
+        4
+      ]
+    },
+    "lunge": {
+      "maxIkError": 6.59029018506288e-07,
+      "maxSoleHeight": 6.137877903711342e-07,
+      "maxSoleFrameSlip": 9.110332250018629e-07,
+      "maxRollingHeight": 0.0,
+      "supportPhases": [
+        {
+          "start": 0.0,
+          "end": 0.15,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.3707618740663747e-07,
+          "maxFrameSlip": 6.1569229753663e-07
+        },
+        {
+          "start": 0.31666666666666665,
+          "end": 0.6166666666666667,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.061222114160046e-07,
+          "maxFrameSlip": 7.213983564959855e-07
+        },
+        {
+          "start": 0.8833333333333333,
+          "end": 0.95,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 9.029506031765777e-08,
+          "maxFrameSlip": 0.0
+        },
+        {
+          "start": 0.0,
+          "end": 0.15,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.971981297785533e-07,
+          "maxFrameSlip": 8.258675565923663e-07
+        },
+        {
+          "start": 0.31666666666666665,
+          "end": 0.6166666666666667,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.369974249129882e-07,
+          "maxFrameSlip": 6.524962475890737e-07
+        },
+        {
+          "start": 0.8833333333333333,
+          "end": 0.95,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 2.147734221580322e-07,
+          "maxFrameSlip": 0.0
+        },
+        {
+          "start": 0.0,
+          "end": 0.95,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 6.067976414669829e-07,
+          "maxFrameSlip": 7.226541841599737e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.95,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 6.137877903711342e-07,
+          "maxFrameSlip": 9.110332250018629e-07
+        }
+      ],
+      "minBodyHeight": -5.994602361170109e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.0,
+      "frames": 58,
+      "minSoleHeight": -5.762561841038405e-07,
+      "maxSwingHeight": 0.1613992154598236,
+      "stanceFraction": 1.0,
+      "footOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minFootHeight": -5.994602361170109e-07,
+      "minSwingClearance": 6.067976414669829e-07,
+      "observedSupportCounts": [
+        2,
+        4
+      ]
+    },
+    "roll": {
+      "maxIkError": 7.875090993478186e-07,
+      "maxSoleHeight": 6.808711987105198e-06,
+      "maxSoleFrameSlip": 2.014908613718939e-05,
+      "maxRollingHeight": 1.7881393432617188e-07,
+      "supportPhases": [
+        {
+          "start": 0.0,
+          "end": 0.05,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 6.808711987105198e-06,
+          "maxFrameSlip": 1.449609113086123e-05
+        },
+        {
+          "start": 2.3833333333333333,
+          "end": 2.4,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.903660849071457e-07,
+          "maxFrameSlip": 2.159750058739169e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.05,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 6.649226634181105e-06,
+          "maxFrameSlip": 1.4341190989641732e-05
+        },
+        {
+          "start": 2.3833333333333333,
+          "end": 2.4,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 2.3055076781020034e-07,
+          "maxFrameSlip": 2.1585932104613495e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.05,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 6.330857104330789e-06,
+          "maxFrameSlip": 2.014908613718939e-05
+        },
+        {
+          "start": 2.4,
+          "end": 2.4,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.014341132256959e-07,
+          "maxFrameSlip": 0.0
+        },
+        {
+          "start": 0.0,
+          "end": 0.05,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 6.282289177761413e-06,
+          "maxFrameSlip": 2.0148779724890927e-05
+        },
+        {
+          "start": 2.4,
+          "end": 2.4,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 2.390935947005346e-07,
+          "maxFrameSlip": 0.0
+        },
+        {
+          "start": 0.85,
+          "end": 0.8833333333333333,
+          "sites": [
+            "right-flank"
+          ],
+          "mode": "rolling",
+          "maxHeight": 1.7881393432617188e-07,
+          "maxFrameSlip": 0.0
+        },
+        {
+          "start": 1.0666666666666667,
+          "end": 1.1,
+          "sites": [
+            "back"
+          ],
+          "mode": "rolling",
+          "maxHeight": 1.1920928955078125e-07,
+          "maxFrameSlip": 0.0
+        },
+        {
+          "start": 1.2833333333333334,
+          "end": 1.3,
+          "sites": [
+            "left-flank"
+          ],
+          "mode": "rolling",
+          "maxHeight": 1.1920928955078125e-07,
+          "maxFrameSlip": 0.0
+        }
+      ],
+      "minBodyHeight": -4.172325134277344e-07,
+      "ankleLoopError": 4.3901562281418546e-07,
+      "travelSpeed": 0.0,
+      "frames": 145,
+      "minSoleHeight": -4.8178435463341884e-08,
+      "maxSwingHeight": 1.3001412153244019,
+      "stanceFraction": 1.0,
+      "footOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minFootHeight": -2.3469328880310059e-07,
+      "minSwingClearance": 1.0823417901992798,
+      "observedSupportCounts": [
+        0,
+        4
+      ]
+    },
+    "run": {
+      "maxIkError": 7.959619528221768e-06,
+      "maxSoleHeight": 4.68537223241583e-07,
+      "maxSoleFrameSlip": 9.408560848012077e-07,
+      "maxRollingHeight": 0.0,
+      "supportPhases": [
+        {
+          "start": 0.0,
+          "end": 0.16666666666666666,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.8743019104003906e-07,
+          "maxFrameSlip": 7.953647461582731e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.11666666666666667,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.545867398064729e-07,
+          "maxFrameSlip": 4.2957955710710085e-07
+        },
+        {
+          "start": 0.4666666666666667,
+          "end": 0.5,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.545867398064729e-07,
+          "maxFrameSlip": 5.916609682928524e-07
+        },
+        {
+          "start": 0.25,
+          "end": 0.4,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.68537223241583e-07,
+          "maxFrameSlip": 9.408560848012077e-07
+        },
+        {
+          "start": 0.2,
+          "end": 0.35,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.329889975451806e-07,
+          "maxFrameSlip": 7.858812615217535e-07
+        }
+      ],
+      "minBodyHeight": -4.935837409902888e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 3.985882352941176,
+      "frames": 31,
+      "minSoleHeight": -4.545867398064729e-07,
+      "maxSwingHeight": 0.24485273659229279,
+      "stanceFraction": 0.34,
+      "footOffsets": [
+        0.0,
+        0.1,
+        0.52,
+        0.62
+      ],
+      "minFootHeight": -4.935837409902888e-07,
+      "minSwingClearance": 0.21510443091392517,
+      "observedSupportCounts": [
+        0,
+        1,
+        2
+      ]
+    },
+    "swipe": {
+      "maxIkError": 6.036349862971632e-07,
+      "maxSoleHeight": 5.492508421411912e-07,
+      "maxSoleFrameSlip": 8.806481385272916e-07,
+      "maxRollingHeight": 0.0,
+      "supportPhases": [
+        {
+          "start": 0.0,
+          "end": 0.85,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.492508421411912e-07,
+          "maxFrameSlip": 6.514151626349647e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.32044259923714e-07,
+          "maxFrameSlip": 4.7402733748926073e-07
+        },
+        {
+          "start": 0.7166666666666667,
+          "end": 0.85,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.2408703393448377e-07,
+          "maxFrameSlip": 0.0
+        },
+        {
+          "start": 0.0,
+          "end": 0.85,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.916220746054023e-07,
+          "maxFrameSlip": 8.806481385272916e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.85,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.223319021752104e-07,
+          "maxFrameSlip": 6.971873169654463e-07
+        }
+      ],
+      "minBodyHeight": -5.492508421411912e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 0.0,
+      "frames": 52,
+      "minSoleHeight": -5.492508421411912e-07,
+      "maxSwingHeight": 0.3080001175403595,
+      "stanceFraction": 1.0,
+      "footOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minFootHeight": -5.492508421411912e-07,
+      "minSwingClearance": 1.7974376476104226e-07,
+      "observedSupportCounts": [
+        3,
+        4
+      ]
+    },
+    "trot": {
+      "maxIkError": 1.1026859283447266e-06,
+      "maxSoleHeight": 5.250990398053546e-07,
+      "maxSoleFrameSlip": 6.605314673245842e-07,
+      "maxRollingHeight": 0.0,
+      "supportPhases": [
+        {
+          "start": 0.0,
+          "end": 0.21666666666666667,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.250990398053546e-07,
+          "maxFrameSlip": 4.7496561062232536e-07
+        },
+        {
+          "start": 0.25,
+          "end": 0.4666666666666667,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.846632464250433e-07,
+          "maxFrameSlip": 5.810019884968371e-07
+        },
+        {
+          "start": 0.25,
+          "end": 0.4666666666666667,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.4354237616062164e-07,
+          "maxFrameSlip": 5.028124782883222e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.21666666666666667,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.8077683939263807e-07,
+          "maxFrameSlip": 6.605314673245842e-07
+        }
+      ],
+      "minBodyHeight": -5.273321903587203e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 3.0130434782608693,
+      "frames": 31,
+      "minSoleHeight": -5.250990398053546e-07,
+      "maxSwingHeight": 0.21417322754859924,
+      "stanceFraction": 0.46,
+      "footOffsets": [
+        0.0,
+        0.5,
+        0.5,
+        0.0
+      ],
+      "minFootHeight": -5.273321903587203e-07,
+      "minSwingClearance": 0.1835765540599823,
+      "observedSupportCounts": [
+        2
+      ]
+    },
+    "walk": {
+      "maxIkError": 6.697238997889826e-07,
+      "maxSoleHeight": 5.297884513311146e-07,
+      "maxSoleFrameSlip": 9.314839822958259e-07,
+      "maxRollingHeight": 0.0,
+      "supportPhases": [
+        {
+          "start": 0.0,
+          "end": 0.5,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.76837158203125e-07,
+          "maxFrameSlip": 5.04049579972548e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.991888999938965e-07,
+          "maxFrameSlip": 4.2146848510894033e-07
+        },
+        {
+          "start": 0.4,
+          "end": 0.8,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.793835503529408e-07,
+          "maxFrameSlip": 8.304391737158408e-07
+        },
+        {
+          "start": 0.0,
+          "end": 0.3,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 3.195777367182018e-07,
+          "maxFrameSlip": 5.400065718367362e-07
+        },
+        {
+          "start": 0.6166666666666667,
+          "end": 0.8,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted",
+          "maxHeight": 4.0762273556538275e-07,
+          "maxFrameSlip": 5.898220508993649e-07
+        },
+        {
+          "start": 0.21666666666666667,
+          "end": 0.7,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted",
+          "maxHeight": 5.297884513311146e-07,
+          "maxFrameSlip": 9.314839822958259e-07
+        }
+      ],
+      "minBodyHeight": -4.991888999938965e-07,
+      "ankleLoopError": 0.0,
+      "travelSpeed": 1.2332031249999997,
+      "frames": 49,
+      "minSoleHeight": -4.991888999938965e-07,
+      "maxSwingHeight": 0.14478574693202972,
+      "stanceFraction": 0.64,
+      "footOffsets": [
+        0.0,
+        0.5,
+        0.25,
+        0.75
+      ],
+      "minFootHeight": -4.991888999938965e-07,
+      "minSwingClearance": 0.12232968211174011,
+      "observedSupportCounts": [
+        2,
+        3
+      ]
+    }
+  },
+  "clips": {
+    "bite": {
+      "name": "Bite",
+      "seconds": 0.7,
+      "playback": "once",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.016666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.03333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.06666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.08333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.1,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.11666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.13333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.16666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.18333333333333332,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.21666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.23333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.25,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.26666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.31666666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.35,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.36666666666666664,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.38333333333333336,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.43333333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.45,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.48333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.55,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.65,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 0.11666666666666667,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.25,
+          "end": 0.43333333333333335,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.65,
+          "end": 0.7,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.11666666666666667,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.25,
+          "end": 0.43333333333333335,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.65,
+          "end": 0.7,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.7,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.7,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": [
+        {
+          "name": "anticipation",
+          "time": 0.1320146823449704
+        },
+        {
+          "name": "contact",
+          "time": 0.23799999999978352
+        },
+        {
+          "name": "recovery",
+          "time": 0.41299999999978354
+        }
+      ]
+    },
+    "flee": {
+      "name": "Flee \u00b7 turn and accelerate",
+      "seconds": 2.4,
+      "playback": "once",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          -0.0,
+          0.0
+        ],
+        [
+          0.016666666666666666,
+          0.009672563312808191,
+          -1.4532178762999599e-05,
+          0.004422998768009471
+        ],
+        [
+          0.03333333333333333,
+          0.019692313928637465,
+          -0.00011637621435030371,
+          0.01700090102919834
+        ],
+        [
+          0.05,
+          0.03041026178933471,
+          -0.00040232064967581565,
+          0.037139215738903116
+        ],
+        [
+          0.06666666666666667,
+          0.04215250495148896,
+          -0.0009949904849315806,
+          0.06428276024320342
+        ],
+        [
+          0.08333333333333333,
+          0.0552200337726029,
+          -0.002053983301025097,
+          0.09790962768365771
+        ],
+        [
+          0.1,
+          0.06988671207658141,
+          -0.0037842142735924557,
+          0.13752515440203875
+        ],
+        [
+          0.11666666666666667,
+          0.08639537857911012,
+          -0.006441718233680316,
+          0.18265588734506877
+        ],
+        [
+          0.13333333333333333,
+          0.10499120905185268,
+          -0.010366143312436238,
+          0.23292358127276486
+        ],
+        [
+          0.15,
+          0.12583524578955294,
+          -0.01593946200772032,
+          0.28784197519399707
+        ],
+        [
+          0.16666666666666666,
+          0.14900517676446368,
+          -0.023570094944316538,
+          0.34689438044522736
+        ],
+        [
+          0.18333333333333332,
+          0.17469019517998263,
+          -0.03379524878944678,
+          0.4099791881840304
+        ],
+        [
+          0.2,
+          0.2030489557493736,
+          -0.04725494226023271,
+          0.4770294615287897
+        ],
+        [
+          0.21666666666666667,
+          0.23399276852915857,
+          -0.06468614520781939,
+          0.5474451790719512
+        ],
+        [
+          0.23333333333333334,
+          0.26721871640902645,
+          -0.08670702136499497,
+          0.6204401889338477
+        ],
+        [
+          0.25,
+          0.3022813542341643,
+          -0.11378672759380078,
+          0.6951696720649034
+        ],
+        [
+          0.26666666666666666,
+          0.3386983575509894,
+          -0.14663816287652326,
+          0.7707631709512376
+        ],
+        [
+          0.2833333333333333,
+          0.37582784887001025,
+          -0.18561153471940425,
+          0.8462727961922458
+        ],
+        [
+          0.3,
+          0.4129976318278488,
+          -0.23085258706638423,
+          0.9207667821961258
+        ],
+        [
+          0.31666666666666665,
+          0.4494664359635543,
+          -0.28282623207318836,
+          0.9931246885188426
+        ],
+        [
+          0.3333333333333333,
+          0.48463515948452374,
+          -0.341074836062071,
+          1.0625239451518698
+        ],
+        [
+          0.35,
+          0.5178162906910846,
+          -0.4057458514468613,
+          1.1277554577589823
+        ],
+        [
+          0.36666666666666664,
+          0.5486379027584324,
+          -0.4762007724212474,
+          1.1880424484089962
+        ],
+        [
+          0.38333333333333336,
+          0.576744185796652,
+          -0.5520779792385091,
+          1.2423354587603126
+        ],
+        [
+          0.4,
+          0.6020273566204777,
+          -0.6327660250385087,
+          1.2897623679965886
+        ],
+        [
+          0.4166666666666667,
+          0.6246397351248341,
+          -0.7174799377706655,
+          1.329705336294576
+        ],
+        [
+          0.43333333333333335,
+          0.6447469513905001,
+          -0.8057320244347438,
+          1.3610191801139573
+        ],
+        [
+          0.45,
+          0.6629463897070664,
+          -0.8965523190964515,
+          1.3835638387184614
+        ],
+        [
+          0.4666666666666667,
+          0.6798132560008792,
+          -0.9892986297852647,
+          1.396592514818986
+        ],
+        [
+          0.48333333333333334,
+          0.6961033854287396,
+          -1.0832394466909534,
+          1.4
+        ],
+        [
+          0.5,
+          0.7123749412830365,
+          -1.1775800354041517,
+          1.4
+        ],
+        [
+          0.5166666666666667,
+          0.7286114593486642,
+          -1.2717174790929988,
+          1.4
+        ],
+        [
+          0.5333333333333333,
+          0.7447132697066965,
+          -1.3650739031576278,
+          1.4
+        ],
+        [
+          0.55,
+          0.7605745328230448,
+          -1.4570356622868923,
+          1.4
+        ],
+        [
+          0.5666666666666667,
+          0.7760937266563606,
+          -1.5470141434904965,
+          1.4
+        ],
+        [
+          0.5833333333333334,
+          0.7911805218038201,
+          -1.6344856273947796,
+          1.4
+        ],
+        [
+          0.6,
+          0.8057782102969419,
+          -1.7191213277927417,
+          1.4
+        ],
+        [
+          0.6166666666666667,
+          0.8198520597470056,
+          -1.800719870333425,
+          1.4
+        ],
+        [
+          0.6333333333333333,
+          0.833367940819152,
+          -1.8790833771020259,
+          1.4
+        ],
+        [
+          0.65,
+          0.846295278683544,
+          -1.954034578790531,
+          1.4
+        ],
+        [
+          0.6666666666666666,
+          0.8589064401726939,
+          -2.027152626621798,
+          1.4
+        ],
+        [
+          0.6833333333333333,
+          0.8713897879374444,
+          -2.0995296253417557,
+          1.4
+        ],
+        [
+          0.7,
+          0.8837471754250757,
+          -2.1711763210222053,
+          1.4
+        ],
+        [
+          0.7166666666666667,
+          0.8959804560828667,
+          -2.242103459734944,
+          1.4
+        ],
+        [
+          0.7333333333333333,
+          0.9080914833580976,
+          -2.3123217875517756,
+          1.4
+        ],
+        [
+          0.75,
+          0.9200821106980478,
+          -2.381842050544496,
+          1.4
+        ],
+        [
+          0.7666666666666667,
+          0.9319541915499967,
+          -2.4506749947849076,
+          1.4
+        ],
+        [
+          0.7833333333333333,
+          0.9437095793612239,
+          -2.5188313663448088,
+          1.4
+        ],
+        [
+          0.8,
+          0.9553501275790088,
+          -2.5863219112959976,
+          1.4
+        ],
+        [
+          0.8166666666666667,
+          0.9668776896506316,
+          -2.6531573757102778,
+          1.4
+        ],
+        [
+          0.8333333333333334,
+          0.9782941190233714,
+          -2.7193485056594464,
+          1.4
+        ],
+        [
+          0.85,
+          0.9896012691445075,
+          -2.784906047215303,
+          1.4
+        ],
+        [
+          0.8666666666666667,
+          1.0008009934613202,
+          -2.849840746449649,
+          1.4
+        ],
+        [
+          0.8833333333333333,
+          1.0118951454210885,
+          -2.9141633494342827,
+          1.4
+        ],
+        [
+          0.9,
+          1.0228855784710922,
+          -2.9778846022410046,
+          1.4
+        ],
+        [
+          0.9166666666666666,
+          1.0337741460586105,
+          -3.041015250941612,
+          1.4
+        ],
+        [
+          0.9333333333333333,
+          1.0445627016309238,
+          -3.103566041607909,
+          1.4
+        ],
+        [
+          0.95,
+          1.0552530986353106,
+          -3.1655477203116917,
+          1.4
+        ],
+        [
+          0.9666666666666667,
+          1.0658471905190512,
+          -3.2269710331247614,
+          1.4
+        ],
+        [
+          0.9833333333333333,
+          1.0763468307294253,
+          -3.2878467261189193,
+          1.4
+        ],
+        [
+          1.0,
+          1.0867538727137118,
+          -3.3481855453659617,
+          1.4
+        ],
+        [
+          1.0166666666666666,
+          1.0970701699191905,
+          -3.40799823693769,
+          1.4
+        ],
+        [
+          1.0333333333333334,
+          1.1072975757931414,
+          -3.467295546905905,
+          1.4
+        ],
+        [
+          1.05,
+          1.1174379437828437,
+          -3.526088221342404,
+          1.4
+        ],
+        [
+          1.0666666666666667,
+          1.1274931273355773,
+          -3.5843870063189898,
+          1.4
+        ],
+        [
+          1.0833333333333333,
+          1.1374649798986207,
+          -3.6422026479074576,
+          1.4
+        ],
+        [
+          1.1,
+          1.1473553549192548,
+          -3.6995458921796103,
+          1.4
+        ],
+        [
+          1.1166666666666667,
+          1.1571661058447587,
+          -3.75642748520725,
+          1.4
+        ],
+        [
+          1.1333333333333333,
+          1.1668990861224116,
+          -3.8128581730621702,
+          1.4
+        ],
+        [
+          1.15,
+          1.1765561491994934,
+          -3.8688487018161744,
+          1.4
+        ],
+        [
+          1.1666666666666667,
+          1.1861391485232837,
+          -3.9244098175410627,
+          1.4
+        ],
+        [
+          1.1833333333333333,
+          1.195649937541062,
+          -3.9795522663086347,
+          1.4
+        ],
+        [
+          1.2,
+          1.205090369700108,
+          -4.034286794190688,
+          1.4
+        ],
+        [
+          1.2166666666666666,
+          1.2144622984477011,
+          -4.088624147259025,
+          1.4
+        ],
+        [
+          1.2333333333333334,
+          1.223767577231121,
+          -4.142575071585444,
+          1.4
+        ],
+        [
+          1.25,
+          1.233008059497647,
+          -4.196150313241745,
+          1.4
+        ],
+        [
+          1.2666666666666666,
+          1.242185598694559,
+          -4.249360618299727,
+          1.4
+        ],
+        [
+          1.2833333333333334,
+          1.251302048269136,
+          -4.302216732831188,
+          1.4
+        ],
+        [
+          1.3,
+          1.2603592616686585,
+          -4.354729402907934,
+          1.4
+        ],
+        [
+          1.3166666666666667,
+          1.2693590923404052,
+          -4.406909374601759,
+          1.4
+        ],
+        [
+          1.3333333333333333,
+          1.2783033937316561,
+          -4.4587673939844645,
+          1.4
+        ],
+        [
+          1.35,
+          1.287194019289691,
+          -4.51031420712785,
+          1.4
+        ],
+        [
+          1.3666666666666667,
+          1.2960328224617887,
+          -4.561560560103716,
+          1.4
+        ],
+        [
+          1.3833333333333333,
+          1.3048216566952293,
+          -4.612517198983862,
+          1.4
+        ],
+        [
+          1.4,
+          1.3135623754372923,
+          -4.663194869840085,
+          1.4
+        ],
+        [
+          1.4166666666666667,
+          1.3222568321352575,
+          -4.713604318744189,
+          1.4
+        ],
+        [
+          1.4333333333333333,
+          1.3309068802364041,
+          -4.7637562917679706,
+          1.4
+        ],
+        [
+          1.45,
+          1.339514373188012,
+          -4.813661534983233,
+          1.4
+        ],
+        [
+          1.4666666666666666,
+          1.3480811644373605,
+          -4.863330794461773,
+          1.4
+        ],
+        [
+          1.4833333333333334,
+          1.356609107431729,
+          -4.912774816275388,
+          1.4
+        ],
+        [
+          1.5,
+          1.3651000556183972,
+          -4.962004346495882,
+          1.4
+        ],
+        [
+          1.5166666666666666,
+          1.3735558624446453,
+          -5.011030131195056,
+          1.4
+        ],
+        [
+          1.5333333333333334,
+          1.3819783813577522,
+          -5.059862916444706,
+          1.4
+        ],
+        [
+          1.55,
+          1.3903694658049974,
+          -5.108513448316631,
+          1.4
+        ],
+        [
+          1.5666666666666667,
+          1.3987309692336605,
+          -5.156992472882632,
+          1.4
+        ],
+        [
+          1.5833333333333333,
+          1.4070647450910219,
+          -5.205310736214512,
+          1.4
+        ],
+        [
+          1.6,
+          1.41537264682436,
+          -5.253478984384066,
+          1.4
+        ],
+        [
+          1.6166666666666667,
+          1.4236565278809554,
+          -5.301507963463098,
+          1.4
+        ],
+        [
+          1.6333333333333333,
+          1.4319182417080865,
+          -5.349408419523402,
+          1.4
+        ],
+        [
+          1.65,
+          1.4401596417530336,
+          -5.397191098636783,
+          1.4
+        ],
+        [
+          1.6666666666666667,
+          1.4483825814630769,
+          -5.444866746875039,
+          1.4
+        ],
+        [
+          1.6833333333333333,
+          1.4565889142854942,
+          -5.4924461103099675,
+          1.4
+        ],
+        [
+          1.7,
+          1.464780493667567,
+          -5.539939935013372,
+          1.4
+        ],
+        [
+          1.7166666666666666,
+          1.4729591730565734,
+          -5.5873589670570505,
+          1.4
+        ],
+        [
+          1.7333333333333334,
+          1.4811268058997942,
+          -5.6347139525128025,
+          1.4
+        ],
+        [
+          1.75,
+          1.4892852456445078,
+          -5.6820156374524275,
+          1.4
+        ],
+        [
+          1.7666666666666666,
+          1.497436345737995,
+          -5.729274767947728,
+          1.4
+        ],
+        [
+          1.7833333333333334,
+          1.505581959627534,
+          -5.7765020900704975,
+          1.4
+        ],
+        [
+          1.8,
+          1.513723940760405,
+          -5.823708349892541,
+          1.4
+        ],
+        [
+          1.8166666666666667,
+          1.5218641425838877,
+          -5.870904293485656,
+          1.4
+        ],
+        [
+          1.8333333333333333,
+          1.530004418545262,
+          -5.918100666921646,
+          1.4
+        ],
+        [
+          1.85,
+          1.5381466220918072,
+          -5.965308216272306,
+          1.4
+        ],
+        [
+          1.8666666666666667,
+          1.5462926066708023,
+          -6.012537687609437,
+          1.4
+        ],
+        [
+          1.8833333333333333,
+          1.554444225729527,
+          -6.059799827004838,
+          1.4
+        ],
+        [
+          1.9,
+          1.562603332715262,
+          -6.107105380530313,
+          1.4
+        ],
+        [
+          1.9166666666666667,
+          1.5707717810752855,
+          -6.154465094257657,
+          1.4
+        ],
+        [
+          1.9333333333333333,
+          1.5789514242568774,
+          -6.2018897142586695,
+          1.4
+        ],
+        [
+          1.95,
+          1.5871441157073176,
+          -6.249389986605155,
+          1.4
+        ],
+        [
+          1.9666666666666666,
+          1.5953517088738853,
+          -6.296976657368908,
+          1.4
+        ],
+        [
+          1.9833333333333334,
+          1.6035760572038609,
+          -6.34466047262173,
+          1.4
+        ],
+        [
+          2.0,
+          1.611819014144523,
+          -6.392452178435425,
+          1.4
+        ],
+        [
+          2.0166666666666666,
+          1.6200824331431514,
+          -6.440362520881784,
+          1.4
+        ],
+        [
+          2.033333333333333,
+          1.6283681676470265,
+          -6.488402246032616,
+          1.4
+        ],
+        [
+          2.05,
+          1.6366780711034261,
+          -6.536582099959712,
+          1.4
+        ],
+        [
+          2.066666666666667,
+          1.6450139969596318,
+          -6.584912828734881,
+          1.4
+        ],
+        [
+          2.0833333333333335,
+          1.6533777986629217,
+          -6.633405178429915,
+          1.4
+        ],
+        [
+          2.1,
+          1.661771329660576,
+          -6.682069895116616,
+          1.4
+        ],
+        [
+          2.1166666666666667,
+          1.6701964433998742,
+          -6.730917724866783,
+          1.4
+        ],
+        [
+          2.1333333333333333,
+          1.6786549933280956,
+          -6.779959413752219,
+          1.4
+        ],
+        [
+          2.15,
+          1.6871488328925202,
+          -6.8292057078447215,
+          1.4
+        ],
+        [
+          2.1666666666666665,
+          1.6956798155404271,
+          -6.878667353216089,
+          1.4
+        ],
+        [
+          2.183333333333333,
+          1.7042497947190967,
+          -6.928355095938125,
+          1.4
+        ],
+        [
+          2.2,
+          1.7128606238758077,
+          -6.978279682082626,
+          1.4
+        ],
+        [
+          2.216666666666667,
+          1.72151415645784,
+          -7.028451857721392,
+          1.4
+        ],
+        [
+          2.2333333333333334,
+          1.7302122459124727,
+          -7.078882368926221,
+          1.4
+        ],
+        [
+          2.25,
+          1.7389567456869865,
+          -7.12958196176892,
+          1.4
+        ],
+        [
+          2.2666666666666666,
+          1.7477495092286597,
+          -7.180561382321278,
+          1.4
+        ],
+        [
+          2.283333333333333,
+          1.7565923899847724,
+          -7.231831376655102,
+          1.4
+        ],
+        [
+          2.3,
+          1.765487241402605,
+          -7.283402690842195,
+          1.4
+        ],
+        [
+          2.316666666666667,
+          1.7744359169294357,
+          -7.3352860709543455,
+          1.4
+        ],
+        [
+          2.3333333333333335,
+          1.783440270012545,
+          -7.387492263063364,
+          1.4
+        ],
+        [
+          2.35,
+          1.7925021540992112,
+          -7.4400320132410425,
+          1.4
+        ],
+        [
+          2.3666666666666667,
+          1.8016234226367158,
+          -7.492916067559186,
+          1.4
+        ],
+        [
+          2.3833333333333333,
+          1.8108059290723368,
+          -7.54615517208959,
+          1.4
+        ],
+        [
+          2.4,
+          1.8200515268533544,
+          -7.599760072904058,
+          1.4
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.2833333333333333,
+          "end": 0.36666666666666664,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.5333333333333333,
+          "end": 0.6333333333333333,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.8833333333333333,
+          "end": 1.0333333333333334,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 1.3333333333333333,
+          "end": 1.5333333333333334,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 1.8833333333333333,
+          "end": 2.0833333333333335,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.06666666666666667,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.26666666666666666,
+          "end": 0.3333333333333333,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.5166666666666667,
+          "end": 0.6,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.85,
+          "end": 0.9833333333333333,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 1.3,
+          "end": 1.4666666666666666,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 1.8333333333333333,
+          "end": 2.0166666666666666,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 2.3666666666666667,
+          "end": 2.4,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.15,
+          "end": 0.23333333333333334,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.4,
+          "end": 0.48333333333333334,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.7,
+          "end": 0.8166666666666667,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 1.1,
+          "end": 1.25,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 1.6,
+          "end": 1.7833333333333334,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 2.15,
+          "end": 2.316666666666667,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.11666666666666667,
+          "end": 0.2,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.38333333333333336,
+          "end": 0.45,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.65,
+          "end": 0.7833333333333333,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 1.05,
+          "end": 1.2166666666666666,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 1.55,
+          "end": 1.7333333333333334,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 2.1,
+          "end": 2.283333333333333,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": [
+        {
+          "name": "turn",
+          "time": 1.0913936421275138e-12
+        },
+        {
+          "name": "accelerate",
+          "time": 0.32162909856378974
+        },
+        {
+          "name": "run",
+          "time": 0.6479999999999563
+        }
+      ]
+    },
+    "idle": {
+      "name": "Alert idle",
+      "seconds": 3.6,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.016666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.03333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.06666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.08333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.1,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.11666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.13333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.16666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.18333333333333332,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.21666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.23333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.25,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.26666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.31666666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.35,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.36666666666666664,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.38333333333333336,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.43333333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.45,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.48333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.55,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.65,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.75,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.85,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.95,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.1,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.1166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.1333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.1666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.1833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.25,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.3,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.3166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.3333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.35,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.3666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.3833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.45,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.55,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.6,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.6166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.6333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.65,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.6666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.6833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.7,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.7166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.7333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.75,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.7666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.7833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.8,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.8166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.8333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.85,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.8666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.8833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.9,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.9166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.9333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.95,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.9666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.9833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.0166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.033333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.066666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.0833333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.1,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.1166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.1333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.1666666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.183333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.216666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.2333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.25,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.2666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.283333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.3,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.316666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.3333333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.35,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.3666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.3833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.4166666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.433333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.45,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.466666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.4833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.5166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.533333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.55,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.566666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.5833333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.6,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.6166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.6333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.65,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.6666666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.683333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.7,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.716666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.7333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.75,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.7666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.783333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.8,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.816666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.8333333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.85,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.8666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.8833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.9,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.9166666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.933333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.95,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.966666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.9833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.0166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.033333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.066666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.0833333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.1,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.1166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.1333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.1666666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.183333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.216666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.2333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.25,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.2666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.283333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.3,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.316666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.3333333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.35,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.3666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.3833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.4166666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.433333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.45,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.466666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.4833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.5166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.533333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.55,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.566666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.5833333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.6,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": []
+    },
+    "look": {
+      "name": "Planted look",
+      "seconds": 1.6,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.016666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.03333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.06666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.08333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.1,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.11666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.13333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.16666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.18333333333333332,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.21666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.23333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.25,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.26666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.31666666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.35,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.36666666666666664,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.38333333333333336,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.43333333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.45,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.48333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.55,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.65,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.75,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.85,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.95,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.1,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.1166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.1333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.1666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.1833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.25,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.3,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.3166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.3333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.35,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.3666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.3833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.45,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.55,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.6,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 1.6,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 1.6,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 1.6,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 1.6,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": []
+    },
+    "lunge": {
+      "name": "Lunge",
+      "seconds": 0.95,
+      "playback": "once",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.016666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.03333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.06666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.08333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.1,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.11666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.13333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.16666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.18333333333333332,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.21666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.23333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.25,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.26666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.31666666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.35,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.36666666666666664,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.38333333333333336,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.43333333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.45,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.48333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.55,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.65,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.75,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.85,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9166666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.95,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 0.15,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.31666666666666665,
+          "end": 0.6166666666666667,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.8833333333333333,
+          "end": 0.95,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.15,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.31666666666666665,
+          "end": 0.6166666666666667,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.8833333333333333,
+          "end": 0.95,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.95,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.95,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": [
+        {
+          "name": "anticipation",
+          "time": 0.17099999999984447
+        },
+        {
+          "name": "contact",
+          "time": 0.30400000000015553
+        },
+        {
+          "name": "recovery",
+          "time": 0.6270000000002938
+        }
+      ]
+    },
+    "roll": {
+      "name": "Playful ground roll",
+      "seconds": 2.4,
+      "playback": "once",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.016666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.03333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.06666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.08333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.1,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.11666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.13333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.16666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.18333333333333332,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.21666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.23333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.25,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.26666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.31666666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.35,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.36666666666666664,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.38333333333333336,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.43333333333333335,
+          0.0,
+          -3.966998415149401e-05,
+          0.0
+        ],
+        [
+          0.45,
+          0.0,
+          -0.0006226620396084727,
+          0.0
+        ],
+        [
+          0.4666666666666667,
+          0.0,
+          -0.00230807854363618,
+          0.0
+        ],
+        [
+          0.48333333333333334,
+          0.0,
+          -0.004993746151641778,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          -0.008649691964216959,
+          0.0
+        ],
+        [
+          0.5166666666666667,
+          0.0,
+          -0.013304697469515094,
+          0.0
+        ],
+        [
+          0.5333333333333333,
+          0.0,
+          -0.018931415335296804,
+          0.0
+        ],
+        [
+          0.55,
+          0.0,
+          -0.025462050131276615,
+          0.0
+        ],
+        [
+          0.5666666666666667,
+          0.0,
+          -0.03287687266700684,
+          0.0
+        ],
+        [
+          0.5833333333333334,
+          0.0,
+          -0.04123117085406546,
+          0.0
+        ],
+        [
+          0.6,
+          0.0,
+          -0.0504176370293528,
+          0.0
+        ],
+        [
+          0.6166666666666667,
+          0.0,
+          -0.06041350142691894,
+          0.0
+        ],
+        [
+          0.6333333333333333,
+          0.0,
+          -0.07122439698699251,
+          0.0
+        ],
+        [
+          0.65,
+          0.0,
+          -0.08283395906071958,
+          0.0
+        ],
+        [
+          0.6666666666666666,
+          0.0,
+          -0.09517488829829468,
+          0.0
+        ],
+        [
+          0.6833333333333333,
+          0.0,
+          -0.10822239082922576,
+          0.0
+        ],
+        [
+          0.7,
+          0.0,
+          -0.12199307879703275,
+          0.0
+        ],
+        [
+          0.7166666666666667,
+          0.0,
+          -0.13643036395274563,
+          0.0
+        ],
+        [
+          0.7333333333333333,
+          0.0,
+          -0.1514910906879432,
+          0.0
+        ],
+        [
+          0.75,
+          0.0,
+          -0.16714886418278002,
+          0.0
+        ],
+        [
+          0.7666666666666667,
+          0.0,
+          -0.18342182392736342,
+          0.0
+        ],
+        [
+          0.7833333333333333,
+          0.0,
+          -0.20023438460731807,
+          0.0
+        ],
+        [
+          0.8,
+          0.0,
+          -0.21755694113862037,
+          0.0
+        ],
+        [
+          0.8166666666666667,
+          0.0,
+          -0.2353674025320085,
+          0.0
+        ],
+        [
+          0.8333333333333334,
+          0.0,
+          -0.2536631557627021,
+          0.0
+        ],
+        [
+          0.85,
+          0.0,
+          -0.2723797158366884,
+          0.0
+        ],
+        [
+          0.8666666666666667,
+          0.0,
+          -0.29148891050632086,
+          0.0
+        ],
+        [
+          0.8833333333333333,
+          0.0,
+          -0.3109712584499316,
+          0.0
+        ],
+        [
+          0.9,
+          0.0,
+          -0.33080621376341995,
+          0.0
+        ],
+        [
+          0.9166666666666666,
+          0.0,
+          -0.3509427467093557,
+          0.0
+        ],
+        [
+          0.9333333333333333,
+          0.0,
+          -0.37135224208388234,
+          0.0
+        ],
+        [
+          0.95,
+          0.0,
+          -0.392015163873451,
+          0.0
+        ],
+        [
+          0.9666666666666667,
+          0.0,
+          -0.41289975198671025,
+          0.0
+        ],
+        [
+          0.9833333333333333,
+          0.0,
+          -0.43396555907123885,
+          0.0
+        ],
+        [
+          1.0,
+          0.0,
+          -0.4551839501221563,
+          0.0
+        ],
+        [
+          1.0166666666666666,
+          0.0,
+          -0.47653268462464576,
+          0.0
+        ],
+        [
+          1.0333333333333334,
+          0.0,
+          -0.49797513760776413,
+          0.0
+        ],
+        [
+          1.05,
+          0.0,
+          -0.5194789260668469,
+          0.0
+        ],
+        [
+          1.0666666666666667,
+          0.0,
+          -0.5410158183511794,
+          0.0
+        ],
+        [
+          1.0833333333333333,
+          0.0,
+          -0.5625617929971167,
+          0.0
+        ],
+        [
+          1.1,
+          0.0,
+          -0.5842408741589162,
+          0.0
+        ],
+        [
+          1.1166666666666667,
+          0.0,
+          -0.606087727751034,
+          0.0
+        ],
+        [
+          1.1333333333333333,
+          0.0,
+          -0.6280555587465918,
+          0.0
+        ],
+        [
+          1.15,
+          0.0,
+          -0.6500874720905693,
+          0.0
+        ],
+        [
+          1.1666666666666667,
+          0.0,
+          -0.6721373527208967,
+          0.0
+        ],
+        [
+          1.1833333333333333,
+          0.0,
+          -0.6941549388806691,
+          0.0
+        ],
+        [
+          1.2,
+          0.0,
+          -0.7160886386743953,
+          0.0
+        ],
+        [
+          1.2166666666666666,
+          0.0,
+          -0.7378862999616225,
+          0.0
+        ],
+        [
+          1.2333333333333334,
+          0.0,
+          -0.7594845207521429,
+          0.0
+        ],
+        [
+          1.25,
+          0.0,
+          -0.7808348849920472,
+          0.0
+        ],
+        [
+          1.2666666666666666,
+          0.0,
+          -0.8018892815179616,
+          0.0
+        ],
+        [
+          1.2833333333333334,
+          0.0,
+          -0.8225963225759397,
+          0.0
+        ],
+        [
+          1.3,
+          0.0,
+          -0.842905524859783,
+          0.0
+        ],
+        [
+          1.3166666666666667,
+          0.0,
+          -0.8627676146553526,
+          0.0
+        ],
+        [
+          1.3333333333333333,
+          0.0,
+          -0.8821244815729281,
+          0.0
+        ],
+        [
+          1.35,
+          0.0,
+          -0.9009238774574787,
+          0.0
+        ],
+        [
+          1.3666666666666667,
+          0.0,
+          -0.9191343187703244,
+          0.0
+        ],
+        [
+          1.3833333333333333,
+          0.0,
+          -0.9367140169873451,
+          0.0
+        ],
+        [
+          1.4,
+          0.0,
+          -0.9536238578691886,
+          0.0
+        ],
+        [
+          1.4166666666666667,
+          0.0,
+          -0.969827706605582,
+          0.0
+        ],
+        [
+          1.4333333333333333,
+          0.0,
+          -0.9852655795154589,
+          0.0
+        ],
+        [
+          1.45,
+          0.0,
+          -0.9999143890577165,
+          0.0
+        ],
+        [
+          1.4666666666666666,
+          0.0,
+          -1.0137621274320505,
+          0.0
+        ],
+        [
+          1.4833333333333334,
+          0.0,
+          -1.0267868658217205,
+          0.0
+        ],
+        [
+          1.5,
+          0.0,
+          -1.038960293125761,
+          0.0
+        ],
+        [
+          1.5166666666666666,
+          0.0,
+          -1.0502205144821777,
+          0.0
+        ],
+        [
+          1.5333333333333334,
+          0.0,
+          -1.060608914268284,
+          0.0
+        ],
+        [
+          1.55,
+          0.0,
+          -1.070122171367601,
+          0.0
+        ],
+        [
+          1.5666666666666667,
+          0.0,
+          -1.0786959825218772,
+          0.0
+        ],
+        [
+          1.5833333333333333,
+          0.0,
+          -1.0863639396683433,
+          0.0
+        ],
+        [
+          1.6,
+          0.0,
+          -1.0931664796664438,
+          0.0
+        ],
+        [
+          1.6166666666666667,
+          0.0,
+          -1.0990120260656946,
+          0.0
+        ],
+        [
+          1.6333333333333333,
+          0.0,
+          -1.1040059406566,
+          0.0
+        ],
+        [
+          1.65,
+          0.0,
+          -1.108119026242522,
+          0.0
+        ],
+        [
+          1.6666666666666667,
+          0.0,
+          -1.1113740124797709,
+          0.0
+        ],
+        [
+          1.6833333333333333,
+          0.0,
+          -1.1138110561321004,
+          0.0
+        ],
+        [
+          1.7,
+          0.0,
+          -1.1154403890338398,
+          0.0
+        ],
+        [
+          1.7166666666666666,
+          0.0,
+          -1.1162932445157618,
+          0.0
+        ],
+        [
+          1.7333333333333334,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.75,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.7666666666666666,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.7833333333333334,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.8,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.8166666666666667,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.8333333333333333,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.85,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.8666666666666667,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.8833333333333333,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.9,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.9166666666666667,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.9333333333333333,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.95,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.9666666666666666,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          1.9833333333333334,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.0,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.0166666666666666,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.033333333333333,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.05,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.066666666666667,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.0833333333333335,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.1,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.1166666666666667,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.1333333333333333,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.15,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.1666666666666665,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.183333333333333,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.2,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.216666666666667,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.2333333333333334,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.25,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.2666666666666666,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.283333333333333,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.3,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.316666666666667,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.3333333333333335,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.35,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.3666666666666667,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.3833333333333333,
+          0.0,
+          -1.1165,
+          0.0
+        ],
+        [
+          2.4,
+          0.0,
+          -1.1165,
+          0.0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 0.05,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 2.3833333333333333,
+          "end": 2.4,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.05,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 2.3833333333333333,
+          "end": 2.4,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.05,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 2.4,
+          "end": 2.4,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.05,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 2.4,
+          "end": 2.4,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.85,
+          "end": 0.8833333333333333,
+          "sites": [
+            "right-flank"
+          ],
+          "mode": "rolling"
+        },
+        {
+          "start": 1.0666666666666667,
+          "end": 1.1,
+          "sites": [
+            "back"
+          ],
+          "mode": "rolling"
+        },
+        {
+          "start": 1.2833333333333334,
+          "end": 1.3,
+          "sites": [
+            "left-flank"
+          ],
+          "mode": "rolling"
+        }
+      ],
+      "markers": [
+        {
+          "name": "lower",
+          "time": 0.4319999999996071
+        },
+        {
+          "name": "back",
+          "time": 1.0800000000006549
+        },
+        {
+          "name": "regain-feet",
+          "time": 2.135999999999694
+        }
+      ]
+    },
+    "run": {
+      "name": "Gallop",
+      "seconds": 0.5,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.016666666666666666,
+          0.0664313725490196,
+          0.0,
+          0.0
+        ],
+        [
+          0.03333333333333333,
+          0.1328627450980392,
+          0.0,
+          0.0
+        ],
+        [
+          0.05,
+          0.19929411764705876,
+          0.0,
+          0.0
+        ],
+        [
+          0.06666666666666667,
+          0.26572549019607844,
+          0.0,
+          0.0
+        ],
+        [
+          0.08333333333333333,
+          0.332156862745098,
+          0.0,
+          0.0
+        ],
+        [
+          0.1,
+          0.39858823529411763,
+          0.0,
+          0.0
+        ],
+        [
+          0.11666666666666667,
+          0.46501960784313706,
+          0.0,
+          0.0
+        ],
+        [
+          0.13333333333333333,
+          0.5314509803921567,
+          0.0,
+          0.0
+        ],
+        [
+          0.15,
+          0.5978823529411764,
+          0.0,
+          0.0
+        ],
+        [
+          0.16666666666666666,
+          0.664313725490196,
+          0.0,
+          0.0
+        ],
+        [
+          0.18333333333333332,
+          0.7307450980392156,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.797176470588235,
+          0.0,
+          0.0
+        ],
+        [
+          0.21666666666666667,
+          0.8636078431372548,
+          0.0,
+          0.0
+        ],
+        [
+          0.23333333333333334,
+          0.9300392156862743,
+          0.0,
+          0.0
+        ],
+        [
+          0.25,
+          0.996470588235294,
+          0.0,
+          0.0
+        ],
+        [
+          0.26666666666666666,
+          1.0629019607843135,
+          0.0,
+          0.0
+        ],
+        [
+          0.2833333333333333,
+          1.129333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          1.195764705882353,
+          0.0,
+          0.0
+        ],
+        [
+          0.31666666666666665,
+          1.2621960784313724,
+          0.0,
+          0.0
+        ],
+        [
+          0.3333333333333333,
+          1.3286274509803921,
+          0.0,
+          0.0
+        ],
+        [
+          0.35,
+          1.3950588235294112,
+          0.0,
+          0.0
+        ],
+        [
+          0.36666666666666664,
+          1.4614901960784314,
+          0.0,
+          0.0
+        ],
+        [
+          0.38333333333333336,
+          1.527921568627451,
+          0.0,
+          0.0
+        ],
+        [
+          0.4,
+          1.59435294117647,
+          0.0,
+          0.0
+        ],
+        [
+          0.4166666666666667,
+          1.6607843137254898,
+          0.0,
+          0.0
+        ],
+        [
+          0.43333333333333335,
+          1.7272156862745092,
+          0.0,
+          0.0
+        ],
+        [
+          0.45,
+          1.7936470588235292,
+          0.0,
+          0.0
+        ],
+        [
+          0.4666666666666667,
+          1.8600784313725482,
+          0.0,
+          0.0
+        ],
+        [
+          0.48333333333333334,
+          1.9265098039215687,
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          1.992941176470588,
+          0.0,
+          0.0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 0.16666666666666666,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.11666666666666667,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.4666666666666667,
+          "end": 0.5,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.25,
+          "end": 0.4,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.2,
+          "end": 0.35,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": []
+    },
+    "swipe": {
+      "name": "Paw swipe",
+      "seconds": 0.85,
+      "playback": "once",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.016666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.03333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.06666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.08333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.1,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.11666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.13333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.16666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.18333333333333332,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.21666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.23333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.25,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.26666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.31666666666666665,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.35,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.36666666666666664,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.38333333333333336,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.43333333333333335,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.45,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.48333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.55,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5833333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.65,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6666666666666666,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7333333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.75,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7666666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7833333333333333,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8166666666666667,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8333333333333334,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.85,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 0.85,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.7166666666666667,
+          "end": 0.85,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.85,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.85,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": [
+        {
+          "name": "anticipation",
+          "time": 0.16150000000004638
+        },
+        {
+          "name": "contact",
+          "time": 0.28899999999973713
+        },
+        {
+          "name": "recovery",
+          "time": 0.5270000000002938
+        }
+      ]
+    },
+    "trot": {
+      "name": "Trot",
+      "seconds": 0.5,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.016666666666666666,
+          0.050217391304347825,
+          0.0,
+          0.0
+        ],
+        [
+          0.03333333333333333,
+          0.10043478260869561,
+          0.0,
+          0.0
+        ],
+        [
+          0.05,
+          0.15065217391304347,
+          0.0,
+          0.0
+        ],
+        [
+          0.06666666666666667,
+          0.2008695652173913,
+          0.0,
+          0.0
+        ],
+        [
+          0.08333333333333333,
+          0.2510869565217391,
+          0.0,
+          0.0
+        ],
+        [
+          0.1,
+          0.30130434782608695,
+          0.0,
+          0.0
+        ],
+        [
+          0.11666666666666667,
+          0.35152173913043466,
+          0.0,
+          0.0
+        ],
+        [
+          0.13333333333333333,
+          0.40173913043478243,
+          0.0,
+          0.0
+        ],
+        [
+          0.15,
+          0.4519565217391303,
+          0.0,
+          0.0
+        ],
+        [
+          0.16666666666666666,
+          0.5021739130434782,
+          0.0,
+          0.0
+        ],
+        [
+          0.18333333333333332,
+          0.5523913043478261,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.6026086956521739,
+          0.0,
+          0.0
+        ],
+        [
+          0.21666666666666667,
+          0.6528260869565218,
+          0.0,
+          0.0
+        ],
+        [
+          0.23333333333333334,
+          0.7030434782608693,
+          0.0,
+          0.0
+        ],
+        [
+          0.25,
+          0.7532608695652173,
+          0.0,
+          0.0
+        ],
+        [
+          0.26666666666666666,
+          0.8034782608695652,
+          0.0,
+          0.0
+        ],
+        [
+          0.2833333333333333,
+          0.8536956521739127,
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          0.9039130434782608,
+          0.0,
+          0.0
+        ],
+        [
+          0.31666666666666665,
+          0.9541304347826085,
+          0.0,
+          0.0
+        ],
+        [
+          0.3333333333333333,
+          1.0043478260869565,
+          0.0,
+          0.0
+        ],
+        [
+          0.35,
+          1.054565217391304,
+          0.0,
+          0.0
+        ],
+        [
+          0.36666666666666664,
+          1.1047826086956523,
+          0.0,
+          0.0
+        ],
+        [
+          0.38333333333333336,
+          1.1550000000000002,
+          0.0,
+          0.0
+        ],
+        [
+          0.4,
+          1.2052173913043478,
+          0.0,
+          0.0
+        ],
+        [
+          0.4166666666666667,
+          1.2554347826086953,
+          0.0,
+          0.0
+        ],
+        [
+          0.43333333333333335,
+          1.3056521739130436,
+          0.0,
+          0.0
+        ],
+        [
+          0.45,
+          1.3558695652173915,
+          0.0,
+          0.0
+        ],
+        [
+          0.4666666666666667,
+          1.4060869565217387,
+          0.0,
+          0.0
+        ],
+        [
+          0.48333333333333334,
+          1.4563043478260869,
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          1.5065217391304346,
+          0.0,
+          0.0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 0.21666666666666667,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.25,
+          "end": 0.4666666666666667,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.25,
+          "end": 0.4666666666666667,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.21666666666666667,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": []
+    },
+    "walk": {
+      "name": "Brisk walk",
+      "seconds": 0.8,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.016666666666666666,
+          0.02055338541666666,
+          0.0,
+          0.0
+        ],
+        [
+          0.03333333333333333,
+          0.041106770833333334,
+          0.0,
+          0.0
+        ],
+        [
+          0.05,
+          0.06166015625,
+          0.0,
+          0.0
+        ],
+        [
+          0.06666666666666667,
+          0.08221354166666665,
+          0.0,
+          0.0
+        ],
+        [
+          0.08333333333333333,
+          0.10276692708333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.1,
+          0.12332031249999999,
+          0.0,
+          0.0
+        ],
+        [
+          0.11666666666666667,
+          0.14387369791666665,
+          0.0,
+          0.0
+        ],
+        [
+          0.13333333333333333,
+          0.1644270833333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.15,
+          0.18498046875,
+          0.0,
+          0.0
+        ],
+        [
+          0.16666666666666666,
+          0.2055338541666666,
+          0.0,
+          0.0
+        ],
+        [
+          0.18333333333333332,
+          0.22608723958333332,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.246640625,
+          0.0,
+          0.0
+        ],
+        [
+          0.21666666666666667,
+          0.2671940104166666,
+          0.0,
+          0.0
+        ],
+        [
+          0.23333333333333334,
+          0.2877473958333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.25,
+          0.30830078125,
+          0.0,
+          0.0
+        ],
+        [
+          0.26666666666666666,
+          0.3288541666666666,
+          0.0,
+          0.0
+        ],
+        [
+          0.2833333333333333,
+          0.34940755208333335,
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          0.3699609375,
+          0.0,
+          0.0
+        ],
+        [
+          0.31666666666666665,
+          0.3905143229166666,
+          0.0,
+          0.0
+        ],
+        [
+          0.3333333333333333,
+          0.41106770833333334,
+          0.0,
+          0.0
+        ],
+        [
+          0.35,
+          0.43162109375,
+          0.0,
+          0.0
+        ],
+        [
+          0.36666666666666664,
+          0.4521744791666667,
+          0.0,
+          0.0
+        ],
+        [
+          0.38333333333333336,
+          0.4727278645833334,
+          0.0,
+          0.0
+        ],
+        [
+          0.4,
+          0.49328124999999995,
+          0.0,
+          0.0
+        ],
+        [
+          0.4166666666666667,
+          0.5138346354166667,
+          0.0,
+          0.0
+        ],
+        [
+          0.43333333333333335,
+          0.5343880208333334,
+          0.0,
+          0.0
+        ],
+        [
+          0.45,
+          0.55494140625,
+          0.0,
+          0.0
+        ],
+        [
+          0.4666666666666667,
+          0.5754947916666665,
+          0.0,
+          0.0
+        ],
+        [
+          0.48333333333333334,
+          0.5960481770833331,
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.6166015625,
+          0.0,
+          0.0
+        ],
+        [
+          0.5166666666666667,
+          0.6371549479166668,
+          0.0,
+          0.0
+        ],
+        [
+          0.5333333333333333,
+          0.6577083333333335,
+          0.0,
+          0.0
+        ],
+        [
+          0.55,
+          0.67826171875,
+          0.0,
+          0.0
+        ],
+        [
+          0.5666666666666667,
+          0.6988151041666667,
+          0.0,
+          0.0
+        ],
+        [
+          0.5833333333333334,
+          0.7193684895833331,
+          0.0,
+          0.0
+        ],
+        [
+          0.6,
+          0.739921875,
+          0.0,
+          0.0
+        ],
+        [
+          0.6166666666666667,
+          0.7604752604166668,
+          0.0,
+          0.0
+        ],
+        [
+          0.6333333333333333,
+          0.7810286458333331,
+          0.0,
+          0.0
+        ],
+        [
+          0.65,
+          0.80158203125,
+          0.0,
+          0.0
+        ],
+        [
+          0.6666666666666666,
+          0.8221354166666667,
+          0.0,
+          0.0
+        ],
+        [
+          0.6833333333333333,
+          0.8426888020833331,
+          0.0,
+          0.0
+        ],
+        [
+          0.7,
+          0.8632421875,
+          0.0,
+          0.0
+        ],
+        [
+          0.7166666666666667,
+          0.8837955729166667,
+          0.0,
+          0.0
+        ],
+        [
+          0.7333333333333333,
+          0.9043489583333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.75,
+          0.9249023437499998,
+          0.0,
+          0.0
+        ],
+        [
+          0.7666666666666667,
+          0.945455729166667,
+          0.0,
+          0.0
+        ],
+        [
+          0.7833333333333333,
+          0.966009114583333,
+          0.0,
+          0.0
+        ],
+        [
+          0.8,
+          0.9865624999999999,
+          0.0,
+          0.0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 0.5,
+          "sites": [
+            "front.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.4,
+          "end": 0.8,
+          "sites": [
+            "front.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.3,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.6166666666666667,
+          "end": 0.8,
+          "sites": [
+            "hind.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.21666666666666667,
+          "end": 0.7,
+          "sites": [
+            "hind.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": []
+    }
+  },
+  "profile": {
+    "family": "canid-actions-v3",
+    "character": "moss",
+    "sourceSha256": "d3f2486c5d5eaf621d65a8d01fbed411cf449e926a99e0858d5fac5d14b52d20",
+    "meshSha256": "9fa8284690bfe14fed805c3a71b350a82c5def257573529016d3b1c2a0727ec8",
+    "mode": "retarget",
+    "chainMap": {
+      "front.L": "front.L",
+      "front.R": "front.R",
+      "hind.L": "hind.L",
+      "hind.R": "hind.R"
+    },
+    "referencePose": "saved fitted rest skeleton; identical control axes",
+    "corrections": {
+      "strideScale": 0.77,
+      "heightScale": 0.77,
+      "widthScale": 1.22,
+      "bodyLengthScale": 1.07,
+      "contact": "articulated hocks; toe roll fitted to target paw proportions"
+    }
+  }
+}
