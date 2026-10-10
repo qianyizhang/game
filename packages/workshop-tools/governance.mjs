@@ -15,7 +15,8 @@ export function managedSource(path) {
     /^packages\/dcc-workbench\/src\/[^/]+\.tsx?$/.test(path) ||
     /^packages\/dcc-workbench\/[^/]+\.(ts|mjs)$/.test(path) ||
     /^packages\/workshop-tools\/.*\.(mjs|tsx?)$/.test(path) ||
-    /^packages\/dcc-workbench\/blender\/[^/]+\.py$/.test(path)
+    /^packages\/dcc-workbench\/blender\/[^/]+\.py$/.test(path) ||
+    /^packages\/dcc-workbench\/subjects\/canid\/authoring\/[^/]+\.py$/.test(path)
   );
 }
 

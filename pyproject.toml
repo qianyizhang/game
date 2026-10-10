@@ -18,11 +18,12 @@ cache-dir = ".work/cache/uv"
 [tool.ruff]
 target-version = "py312"
 line-length = 100
-include = ["packages/dcc-workbench/blender/*.py"]
+include = ["packages/dcc-workbench/blender/*.py", "packages/dcc-workbench/subjects/canid/authoring/*.py"]
 
 # Blender 4.5 embeds Python 3.11; native scripts must remain parseable there.
 [tool.ruff.per-file-target-version]
 "packages/dcc-workbench/blender/*.py" = "py311"
+"packages/dcc-workbench/subjects/canid/authoring/*.py" = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
@@ -30,4 +31,4 @@ select = ["E", "F", "I", "B", "UP"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
-files = ["packages/dcc-workbench/blender"]
+files = ["packages/dcc-workbench/blender", "packages/dcc-workbench/subjects/canid/authoring"]

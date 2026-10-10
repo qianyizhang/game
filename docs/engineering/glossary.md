@@ -60,6 +60,16 @@ _Avoid_: Full state, when referring to a policy's permitted view.
 
 ## Art and evidence
 
+**Asset recipe**: Maintained procedural instructions and named parameters for constructing
+an editable asset candidate. A recipe is part of the asset's authored source material.
+
+**Delivery master**: The accepted, saved artist source from which a particular asset
+revision is exported. Rebuilding a recipe produces a candidate for comparison with this master.
+
+**Detail stage**: An authoring pass for form, anatomy, structural detail, or fine surface
+finish. Detail stages describe refinement rather than runtime mesh simplification.
+_Avoid_: LOD, when referring to successive authoring passes.
+
 **Rig family**: A group of characters with compatible anatomy and motion conventions,
 allowing defined animation reuse and retargeting.
 

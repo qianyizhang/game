@@ -1,5 +1,31 @@
 # Canid rig and motion pilot
 
+## Accepted refinement, 2026-10-10
+
+The user accepted the first delivery as an initial baseline and requested more developed
+body detail and substantially more believable, energetic movement. The second revision
+keeps stylized canid identity, with stronger anatomy, articulated paws, integrated facial
+structures, directional fur groups, and restrained surface finish. The supplied dragon
+diagram guides detail layering, not species or an SDF implementation.
+
+Deliver alert idle, brisk walk, energetic trot, and a sharper planted look. Improve support,
+loading/push-off, paw articulation, shoulders, pelvis, and restrained spine and secondary
+motion. Author shared source motion once and fit it to all three characters. This remains
+a bounded visual/rigging trial; production retopology, dense hair grooming, runtime LOD
+generation, attacks, and jumps are outside this revision.
+
+Procedural sources are first-class asset recipes in the
+[family authoring home](../../../packages/dcc-workbench/subjects/canid/authoring/README.md).
+Recipes generate distinct candidates; accepted saved Blender masters remain authoritative
+for export. Preserve initial sources, deliveries, and receipts. Refine Ash first, then
+propagate the construction to Russet and Moss, with matched baseline/refined review.
+
+Make scoped commits for ownership, visual construction, and motion/delivery. Verify
+source edit/save/reload/export, retargeting, contact and loop behavior, browser agreement,
+and actual multi-view appearance. Mechanical checks do not establish visual acceptance.
+
+## Initial baseline
+
 Accepted scope, 2026-10-10. Build a new animation-ready canid master, one appearance
 variant with the same proportions, and one shorter-legged, heavier variant. Preserve
 existing Wolf masters and gallery publications.
