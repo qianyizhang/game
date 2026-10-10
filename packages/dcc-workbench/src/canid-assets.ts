@@ -9,9 +9,10 @@ import baselineRussetSource from '../subjects/canid/russet/source.blend?url';
 import baselineMossSource from '../subjects/canid/moss/source.blend?url';
 import baselineMotionSource from '../subjects/canid/motion.blend?url';
 
-import { contacts as ashContacts } from '../assets/canid/refined/ash.json';
-import { contacts as russetContacts } from '../assets/canid/refined/russet.json';
-import { contacts as mossContacts } from '../assets/canid/refined/moss.json';
+import ashMetadata from '../assets/canid/refined/ash.motions.json';
+import { readMotions, type Motion } from '../motion-contract';
+import russetMetadata from '../assets/canid/refined/russet.motions.json';
+import mossMetadata from '../assets/canid/refined/moss.motions.json';
 import ashModel from '../assets/canid/refined/ash.glb?url';
 import russetModel from '../assets/canid/refined/russet.glb?url';
 import mossModel from '../assets/canid/refined/moss.glb?url';
@@ -22,22 +23,18 @@ import motionSource from '../subjects/canid/refined/motion.blend?url';
 
 export type Character = 'ash' | 'russet' | 'moss';
 export type Revision = 'refined' | 'baseline' | 'comparison';
-export const clips = {
-  idle: { name: 'Alert idle', seconds: 4 },
-  walk: { name: 'Brisk walk', seconds: 0.9 },
-  trot: { name: 'Trot', seconds: 0.6 },
-  look: { name: 'Planted look', seconds: 2.5 },
-} as const;
-export type Clip = keyof typeof clips;
+export const clips = readMotions(ashMetadata);
+export type Clip = string;
 export const baselineClips = {
   idle: { name: 'Breathe', seconds: 4 },
   walk: { name: 'Walk', seconds: 2 },
   look: { name: 'Look around', seconds: 4 },
 } as const;
 export function durationFor(revision: Revision, clip: Clip) {
-  return revision === 'refined' || clip === 'trot'
+  const baseline: Record<string, { seconds: number }> = baselineClips;
+  return revision === 'refined'
     ? clips[clip].seconds
-    : baselineClips[clip].seconds;
+    : (baseline[clip]?.seconds ?? clips[clip].seconds);
 }
 const labels = [
   { id: 'ash', name: 'Ash', subtitle: 'Family proportions' },
@@ -48,23 +45,33 @@ export const characters = labels.map((label, i) => ({
   ...label,
   model: [ashModel, russetModel, mossModel][i],
   source: [ashSource, russetSource, mossSource][i],
-  travelSpeed: Object.fromEntries(
-    Object.entries([ashContacts, russetContacts, mossContacts][i]).map(([clip, c]) => [
-      clip,
-      c.travelSpeed,
-    ]),
-  ) as Record<Clip, number>,
+  motions: readMotions([ashMetadata, russetMetadata, mossMetadata][i]),
 }));
 export const baselineCharacters = labels.map((label, i) => ({
   ...label,
   model: [baselineAshModel, baselineRussetModel, baselineMossModel][i],
   source: [baselineAshSource, baselineRussetSource, baselineMossSource][i],
-  travelSpeed: {
-    idle: 0,
-    look: 0,
-    trot: 0,
-    walk: [baselineAshContacts, baselineRussetContacts, baselineMossContacts][i].walk.travelSpeed,
-  },
+  motions: Object.fromEntries(
+    Object.entries(baselineClips).map(([id, c]) => {
+      const speed =
+        id === 'walk'
+          ? [baselineAshContacts, baselineRussetContacts, baselineMossContacts][i].walk.travelSpeed
+          : 0;
+      return [
+        id,
+        {
+          ...c,
+          playback: 'loop',
+          trajectory: [
+            [0, 0, 0, 0],
+            [c.seconds, c.seconds * speed, 0, 0],
+          ],
+          contacts: [],
+          markers: [],
+        } satisfies Motion,
+      ];
+    }),
+  ),
 }));
 export const motionSources = { baseline: baselineMotionSource, refined: motionSource };
 export type CanidOptions = {
@@ -77,4 +84,5 @@ export type CanidOptions = {
   surface: 'Clay' | 'Material';
   view: 'Portrait' | 'Side' | 'Front' | 'Rear';
   rig: boolean;
+  movement: 'in-place' | 'travel';
 };

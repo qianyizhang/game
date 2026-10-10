@@ -2,12 +2,19 @@ import { isMesh } from '../../src/shared/three/objects';
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { disposeObject } from '../../src/shared/three/resources';
-import ash from '../../packages/dcc-workbench/assets/canid/refined/ash.json';
-import russet from '../../packages/dcc-workbench/assets/canid/refined/russet.json';
-import moss from '../../packages/dcc-workbench/assets/canid/refined/moss.json';
+import ash from '../../packages/dcc-workbench/assets/canid/refined/ash.json?url';
+import russet from '../../packages/dcc-workbench/assets/canid/refined/russet.json?url';
+import moss from '../../packages/dcc-workbench/assets/canid/refined/moss.json?url';
 import { characters } from '../../packages/dcc-workbench/src/canid-assets';
 
-type Evidence = typeof ash;
+type Evidence = {
+  clips: Record<
+    string,
+    {
+      samples: { seconds: number; objects: { name: string; points: number[][] }[] }[];
+    }
+  >;
+};
 export async function compareCanid(model: string, receipt: Evidence) {
   const gltf = await new GLTFLoader().loadAsync(model);
   const mixer = new T.AnimationMixer(gltf.scene);
@@ -88,6 +95,11 @@ export async function compareCanid(model: string, receipt: Evidence) {
 export async function compareCanids() {
   const receipts = [ash, russet, moss];
   return Promise.all(
-    characters.map(async (c, i) => ({ id: c.id, clips: await compareCanid(c.model, receipts[i]) })),
+    characters.map(async (c, i) => {
+      const response = await fetch(receipts[i]);
+      if (!response.ok) throw new Error(`Missing ${c.id} native evidence`);
+      const receipt = (await response.json()) as Evidence;
+      return { id: c.id, clips: await compareCanid(c.model, receipt) };
+    }),
   );
 }

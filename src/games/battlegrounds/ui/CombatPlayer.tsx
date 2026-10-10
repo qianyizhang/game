@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { usePlaybackClock } from '../../../shared/usePlaybackClock';
 import { MINION_BY_ID } from '../content/minions';
 import type { CombatResult } from '../domain/types';
 import { MinionCard } from './MinionCard';
+const CanidAttackStage = lazy(() => import('./CanidAttackStage'));
 
 export function CombatPlayer({ result, opponent }: { result: CombatResult; opponent: string }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [speed, setSpeed] = useState(600);
-  const { index, last, playing, finished, seek, toggle } = usePlaybackClock(
+  const hasCanid = result.frames[0]?.boards.flat().some((unit) => unit.definitionId === 'stray');
+  const { index, last, playing, finished, seek, toggle, progress, inspect } = usePlaybackClock(
     result,
     result.frames.length,
     speed,
+    hasCanid,
   );
   const frame = result.frames[Math.min(index, result.frames.length - 1)];
   if (!frame) return null;
@@ -29,6 +32,11 @@ export function CombatPlayer({ result, opponent }: { result: CombatResult; oppon
       <p className="small muted">
         The result is already resolved. Playback speed changes the view, never the outcome.
       </p>
+      {hasCanid && (
+        <Suspense fallback={<p className="small muted">Loading attack presentation…</p>}>
+          <CanidAttackStage result={result} index={index} progress={progress} inspect={inspect} />
+        </Suspense>
+      )}
       <span className="eyebrow">{opponent.toUpperCase()}</span>
       <div className="combat-warband">
         {frame.boards[1].map((unit) => (

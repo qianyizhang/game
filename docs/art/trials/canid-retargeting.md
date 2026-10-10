@@ -129,9 +129,9 @@ These values apply to the recorded poses and declared contact intervals, respect
 
 ![Canid motion study](../../../packages/dcc-workbench/assets/canid/evidence/preview.png)
 
-## Refined delivery
+## Four-clip refinement · historical · `e5630aa`
 
-The workbench now defaults to the refined family. **Revision** selects the initial baseline,
+At this revision, the workbench defaulted to the refined family. **Revision** selects the initial baseline,
 the refinement, or a matched before/after pair for any character. Both revisions retain
 their authored cadence during comparison; the clock is elapsed seconds rather than
 artificially synchronized gait phases. The floor scrolls continuously across repeated loops.
@@ -232,4 +232,66 @@ Completion requires saved-source edit/save/reload/export propagation, native/bro
 agreement, one-shot completion and replay, visible scene travel, contact evidence across
 all three bodies, and the full repository gate plus affected browser checks. Technical
 verification remains separate from visual review. This section records the accepted scope;
-implementation evidence follows only after execution.
+the delivered evidence is recorded below.
+
+## Action delivery
+
+The current refined sources contain **29 deformation joints and ten clips at 60 fps**.
+The independent jaw opens the bite; foot pole controls keep knees oriented through inversion.
+Saved Blender actions own playback, scene trajectory, support phases and timing markers.
+The [authoring home](../../../packages/dcc-workbench/subjects/canid/authoring/README.md)
+documents the maintained recipe modules and saved custom properties.
+
+| New motion   | Duration | Playback / intent                              |
+| ------------ | -------- | ---------------------------------------------- |
+| Gallop       | 0.70 s   | Loop, faster asymmetrical footfall cycle       |
+| Lunge        | 1.80 s   | Crouch, forward strike, planted recovery       |
+| Bite         | 1.40 s   | Open jaw, snap, recover                        |
+| Paw swipe    | 1.60 s   | Lift and sweep the near forepaw                |
+| Playful roll | 4.00 s   | Shoulder, back, opposite flank, regain feet    |
+| Flee         | 3.60 s   | Turn approximately 80 degrees, accelerate, run |
+
+Idle, walk, trot and look retain their prior durations. Workbench one-shot actions hold the
+final pose and offer replay; phase buttons jump to named moments. Scene travel follows the
+authored path once. In-place inspection moves the grid while keeping the character centered.
+Both views apply planar travel exactly once. Flee ends in a running pose; seamless transitions
+between arbitrary clips are not part of this trial.
+
+Last Hearth adds an Ash-based Briar Stray attack stage above the existing card board, with the
+actual target card. Attack ordinal selects lunge, bite or swipe deterministically. The same
+replay clock drives the board and stage, including pause and speed; seeking shows the contact
+pose. Reduced motion uses a still pose. Between attacks the stage retains its space to avoid
+shifting the board. The integration changes presentation only: no combat rules, abilities,
+damage calculation, seeded state or replay schema changed. Flee and roll remain workbench-only.
+
+### Contact and export findings
+
+Turning stance fitting fixes toes in world space. Roll fitting adapts reach and knee direction
+to each body's proportions and grounds the evaluated skin. A rejected Moss roll rested on its
+folded thigh before its back; restricting inverted limb folding corrected the support.
+Attack tail penetration and gallop overreach were also corrected before delivery.
+
+Across the three bodies and ten motions, the largest measured planted sole height is
+**0.000032 model units**, and per-frame planted slip is **0.000071 model units**. The largest
+declared flank/back support gap is **0.00338 model units**; full-body floor penetration is
+below **0.0000009 model units**. Those checks cover authored 60 fps samples and the declared
+support intervals, not arbitrary continuous-time collision or self-intersection.
+
+Ash and Russet each have **83,776 triangles**; Moss has **83,398**. Every GLB remains below
+the unchanged **4,000,000-byte** trial budget. These are stylized procedural characters with
+remeshed topology and empirical animation recipes, not motion capture or production retopology.
+
+The [action review receipt](../../../packages/dcc-workbench/assets/canid/refined/action-review.json)
+records the selected visual evidence, saved-source mutation proof, native/browser agreement
+and final gate results. The earlier refinement receipt and images remain historical evidence.
+Visual review and user approval remain separate from technical verification.
+
+The saved-source proof edits head and jaw keys at exported sample frames, plus a contact
+marker. All three characters retain their mesh/weight digests and receive the changes after
+save/reload, fitting and export. The browser must both match those native samples and differ
+from the original poses. Maximum sampled agreement error is below **0.000002 model units**.
+All **five browser journeys** pass. `npm run check:full` passes maintenance/build, **253
+application tests**, **4 simulations** and **127 geometry tests**. One unrelated usage-tool
+loopback test is sandbox-skipped; remote CI was not run.
+
+![Briar Stray attack stage above the card board](../../../packages/dcc-workbench/assets/canid/refined/evidence/actions/last-hearth-attack.png)

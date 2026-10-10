@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-10",
+  "scope": "Canid action library, scene travel and Last Hearth Briar Stray presentation",
+  "sourceCommit": "03d307a",
+  "priorRefinementCommit": "e5630aa",
+  "motionMasterSha256": "6dd1ea30c5875b35a0f49b2c71849c3ffa70e3e2b4b43224b4ca764e485e1eeb",
+  "technical": {
+    "nativeMutation": "passed; saved look head +0.18 rad at frame 75, bite jaw +0.10 rad at frame 42 and contact marker +0.01 s propagate to all three characters without remeshing; masters unchanged and reconstruction refused",
+    "browser": "5 tests passed, including native and edited pose agreement, observed head/jaw changes, one-shot completion/replay, markers, travel, baseline comparison, downloads, reduced motion, phone layout and Last Hearth replay/result/save isolation",
+    "maxSampledPoseErrorModelUnits": 1.9133542122912613e-06,
+    "poseCoverage": "640 mesh points per character at five times per clip; three characters, ten clips; original and edited deliveries",
+    "changedPoseMinimumDifferenceModelUnits": 0.062364304260055764,
+    "maxPlantedSoleHeightModelUnits": 3.132514393655583e-05,
+    "maxPlantedSoleSlipPerFrameModelUnits": 7.035308402179174e-05,
+    "maxDeclaredRollingSupportGapModelUnits": 0.0033789873123168945,
+    "minEvaluatedBodyHeightModelUnits": -8.716484103388211e-07,
+    "contactCoverage": "all authored frames at 60 fps; every mesh vertex for floor penetration, declared paw/flank/back support intervals for contact",
+    "fullRepositoryGate": {
+      "command": "npm run check:full",
+      "result": "passed",
+      "maintenance": "passed: 34 Python modules typechecked, 16 Python contract tests, 49 DCC tests, 77 tooling tests; inventory has no errors; production build passed",
+      "applicationTests": 253,
+      "simulations": 4,
+      "geometryTests": 127,
+      "skipped": "One unrelated usage-tool loopback test skipped by the restricted sandbox",
+      "remoteCI": "not run"
+    }
+  },
+  "visual": {
+    "reviewer": "parent",
+    "decision": "Ready for user review as a stylized motion trial",
+    "views": [
+      "native clay action extremes and roll inversion",
+      "browser clay lunge, bite, swipe, roll and flee",
+      "live material bite anticipation and back contact across Ash, Russet and Moss",
+      "scene travel escape path",
+      "Last Hearth desktop and phone stage"
+    ],
+    "corrections": [
+      "Added knee pole controls and inversion reach fitting so Moss rests on its back rather than folded thighs",
+      "Corrected attack tail penetration and gallop/flee overreach",
+      "Moved swipe to the near forepaw",
+      "Reserved the stage layout between attacks and brought the target card closer on wide screens"
+    ],
+    "limits": [
+      "Remeshed procedural topology and empirical animation, not motion capture or production retopology",
+      "Contact evidence applies to declared intervals at authored frame samples; it is not continuous collision or self-intersection proof",
+      "Flee ends in a running pose; arbitrary clip transitions are not implemented",
+      "Only Briar Stray attacks receive a 3D game presentation; targets remain card art and flee/roll add no game rules",
+      "User visual approval pending"
+    ]
+  },
+  "evidence": {
+    "evidence/actions/edited-native-agreement.json": "4d75267d1b4981b9d6cb7815b3ab247ae7741995d8a43624ecadcdd780c3609a",
+    "evidence/actions/escape-travel.png": "5bd46e3d67476db90b499df881a8a0ed72422757b608860edeb65b9eb68bc9be",
+    "evidence/actions/last-hearth-attack.png": "19b1fb40d0b92effba4993fa3bb9e8239116986fbf2884c7423102ce2d25d2f1",
+    "evidence/actions/last-hearth-phone.png": "71f2ad27aa00ea7e9bfa3188b937293a9563eb41c3d8fa001b83d6726cbbb2ed",
+    "evidence/actions/native-agreement.json": "82c613c2d1e714a8f07c83337a9c78802c15a19d30c9d37a7f8498def2186607",
+    "evidence/actions/roll-contact.png": "99131e1d102f63d953e20cc83650dd2523eaf1c014a2e82e1b8061020a19b8d7",
+    "evidence/actions/source-edit.json": "2003bead768329f26a6c034d7c4c5b6d842b4a2be0bc13a6a63a22bffa4c4683"
+  }
+}

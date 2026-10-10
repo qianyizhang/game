@@ -168,11 +168,15 @@ existing protection. See [retention authority](../../docs/engineering/maintenanc
 ## Canid rig and retargeting pilot
 
 Open `/?workbench=dcc&compare=canid`, or choose **Canid motion study** in the workbench.
-The refined family has 28 deformation joints and four saved source clips at 60 fps:
-alert idle (4 s), brisk walk (0.90 s), trot (0.60 s), and planted look (2.50 s).
+The refined family has 29 deformation joints and ten saved source clips at 60 fps:
+alert idle (4 s), brisk walk (0.90 s), trot (0.60 s), planted look (2.50 s), gallop
+(0.70 s), lunge (1.80 s), bite (1.40 s), forepaw swipe (1.60 s), playful roll (4 s),
+and turning flee (3.60 s).
 Ash supplies the family proportions, Russet changes the coat, and Moss is broader with
 shorter legs and fitted stride. The viewer offers both revisions and matched before/after
 views with one camera, clay/material and skeleton controls, and real elapsed time.
+One-shot actions hold their ending and can replay; named phase buttons seek to authored
+moments. Movement space selects in-place inspection or one-pass scene travel.
 
 The initial 20-joint, three-clip baseline remains byte-identical at its original paths.
 Use `--baseline` to select its command adapter. The [trial record](../../docs/art/trials/canid-retargeting.md)
@@ -185,13 +189,16 @@ records the accepted scope, evidence and limitations. Neither revision replaces 
   commands live with the code. General native helpers remain shared.
 - `subjects/canid/refined/motion.blend` is the shared motion master. Body and foot controls
   use world XYZ axes (X forward, Y left, Z up); head, neck, spine, pelvis, scapula, tail
-  and ear controls use their named bone's rest axes. Both source and target use the same
-  control convention. Hocks articulate, and toe-pivot compensation grounds heel lift.
+  ear and jaw controls use their named bone's rest axes. Both source and target use the same
+  control convention. Hocks articulate, toe-pivot compensation grounds heel lift, and foot
+  pole controls preserve knee direction during the roll. Saved action `motion_spec` properties
+  own timing, playback, trajectory, support phases and markers; see the authoring home.
 - `subjects/canid/refined/<id>/source.blend` owns native geometry, weights, materials,
   fitted rest skeleton, and derived control actions. Each `retarget.json` pins source
   identity, chain mapping, proportion corrections, and mesh/weight digest.
 - `assets/canid/refined/<id>.glb` and `<id>.json` are the baked deliveries and receipts.
   They include sampled native poses and contact audits at every authored frame.
+  `<id>.motions.json` carries the same saved motion contract for browser consumers.
 
 Recipes are first-class source material and construct distinct candidates. Saved Blender
 masters remain authoritative for export. Fitting samples the saved shared actions rather
@@ -223,8 +230,19 @@ checks a fresh export against the current masters. For independent reconstructio
 `bootstrap --root <fresh-directory>`; it refuses existing requested masters before writing.
 Ordinary builds and checks do not launch Blender.
 
-The native verifier refuses construction over existing sources, then edits one saved look
-key by 0.18 radians on disposable copies. It fits all three targets, checks unchanged mesh
-and weight digests, saves/reloads, and exports. The optional browser case compares these
+The native verifier refuses construction over existing sources, then edits a saved look
+key by 0.18 radians, a bite jaw key by 0.10 radians, and the bite contact marker by 0.01 seconds
+on disposable copies. It fits all three targets, checks unchanged mesh and weight digests,
+saves/reloads, and exports. The optional browser case compares these
 changed deliveries with their native pose receipts. Without `CANID_NATIVE_RESULTS`, that
 case is explicitly skipped. Successful technical checks do not establish visual approval.
+
+### Last Hearth presentation
+
+Briar Stray's existing resolved attacks have a focused 3D stage above the card board.
+The shared replay clock controls both views: pause preserves the pose, event selection
+shows the contact pose, and speed scales the whole performance. Reduced motion uses a
+still contact pose. Lunge, bite and swipe rotate deterministically by Stray attack ordinal;
+they do not introduce abilities or change combat results. The target remains its actual
+card illustration. Roll and flee are workbench performances, with no corresponding game
+rule in this slice. Asset-load failure leaves the ordinary card replay usable.

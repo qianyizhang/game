@@ -22,6 +22,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
     surface: 'Clay',
     view: 'Side',
     rig: false,
+    movement: 'in-place',
   });
   const [time, setTime] = useState(0);
   const [status, setStatus] = useState('Loading the motion study…');
@@ -40,7 +41,10 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
       dispose = createCanidPlayer(
         host.current!,
         () => current.current,
-        setTime,
+        (time, complete) => {
+          setTime(time);
+          if (complete) setOptions((o) => ({ ...o, playing: false }));
+        },
         (message, loaded) => {
           setStatus(message);
           setReady(loaded);
@@ -75,7 +79,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           ← Back to workbench
         </button>
         <span className="dcc-wordmark">CARD WORKSHOP / MOTION STUDIES</span>
-        <span className="dcc-pilot">CANID · 02</span>
+        <span className="dcc-pilot">CANID · 03</span>
       </header>
       <section className="dcc-intro">
         <div>
@@ -106,7 +110,8 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
                 revision,
                 time: 0,
                 seek: o.seek + 1,
-                clip: revision !== 'refined' && o.clip === 'trot' ? 'walk' : o.clip,
+                clip:
+                  revision !== 'refined' && !Object.hasOwn(baselineClips, o.clip) ? 'walk' : o.clip,
                 character: revision === 'comparison' && o.character === 'all' ? 'ash' : o.character,
               }));
             }}
@@ -123,7 +128,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
             value={options.clip}
             onChange={(e) => {
               const clip = e.target.value;
-              if (clip === 'idle' || clip === 'walk' || clip === 'look' || clip === 'trot') {
+              if (Object.hasOwn(availableClips, clip)) {
                 setTime(0);
                 setOptions((o) => ({ ...o, clip, time: 0, seek: o.seek + 1 }));
               }
@@ -134,6 +139,23 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
                 {c.name}
               </option>
             ))}
+          </select>
+        </label>
+        <label>
+          Movement space
+          <select
+            aria-label="Movement space"
+            value={options.movement}
+            onChange={(e) => {
+              const movement = e.target.value;
+              if (movement === 'in-place' || movement === 'travel') {
+                setTime(0);
+                setOptions((o) => ({ ...o, movement, time: 0, seek: o.seek + 1 }));
+              }
+            }}
+          >
+            <option value="in-place">In-place inspection</option>
+            <option value="travel">Scene travel · one pass</option>
           </select>
         </label>
         <label>
@@ -207,15 +229,24 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           ))}
         </div>
         <span className="canid-hint">
-          Drag to orbit · Real elapsed time · Ground follows each clip’s travel speed
+          Drag to orbit ·{' '}
+          {clips[options.clip].playback === 'once'
+            ? 'One-shot action · holds its final pose'
+            : 'Looping motion'}
         </span>
       </div>
       <div className="dcc-comparison-timeline">
         <button
           disabled={!ready}
-          onClick={() => setOptions((o) => ({ ...o, playing: !o.playing }))}
+          onClick={() =>
+            setOptions((o) => ({
+              ...o,
+              playing: !o.playing,
+              ...(time >= duration ? { time: 0, seek: o.seek + 1 } : {}),
+            }))
+          }
         >
-          {options.playing ? 'Pause motion' : 'Play motion'}
+          {options.playing ? 'Pause motion' : time >= duration ? 'Replay motion' : 'Play motion'}
         </button>
         <input
           aria-label="Shared motion time"
@@ -235,6 +266,27 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           {time.toFixed(2)} / {duration.toFixed(2)} s
         </output>
       </div>
+      {options.revision === 'refined' && (
+        <div className="canid-markers" aria-label="Motion phases">
+          {clips[options.clip].markers.map((marker) => (
+            <button
+              key={marker.name}
+              onClick={() => {
+                setTime(marker.time);
+                setOptions((o) => ({ ...o, playing: false, time: marker.time, seek: o.seek + 1 }));
+              }}
+            >
+              {marker.name} · {marker.time.toFixed(2)} s
+            </button>
+          ))}
+          <span>
+            {clips[options.clip].contacts
+              .filter((c) => c.start <= time && c.end >= time)
+              .flatMap((c) => c.sites)
+              .join(' · ') || 'Between support phases'}
+          </span>
+        </div>
+      )}
       <div className="canid-notes">
         <section>
           <p className="dcc-eyebrow">THE COMPARISON</p>
@@ -244,8 +296,9 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
             with stride and lift fitted to its reach. All views share a camera, lighting, and clock.
           </p>
           <p>
-            Watch toe push-off, swinging paws, and the diagonal pairs in Trot. Before & after uses
-            real elapsed seconds, so each revision retains its authored cadence.
+            Compare the gallop, three attacks, playful roll and turning escape. Scene travel shows
+            the path through the world; phase buttons jump to key moments. Before & after retains
+            each revision’s authored cadence.
           </p>
         </section>
         <section>
@@ -254,7 +307,8 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           <p>
             The family source contains editable controls and the shared actions. Character files
             contain fitted rigs, meshes, materials, and fitted actions. This pilot leaves the
-            existing gallery unchanged.
+            existing gallery unchanged. Briar Stray uses the three attacks in Last Hearth’s combat
+            replay.
           </p>
           <a
             href={motionSources[options.revision === 'baseline' ? 'baseline' : 'refined']}

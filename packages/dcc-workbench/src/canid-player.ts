@@ -4,6 +4,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { disposeObject } from '../../../src/shared/three/resources';
+import { travelAt } from '../motion-contract';
 import {
   characters,
   baselineCharacters,
@@ -23,6 +24,7 @@ type Subject = {
   animations: T.AnimationClip[];
   grid: T.GridHelper;
   rig: T.SkeletonHelper;
+  path: T.Line;
   materials: Map<T.Mesh, T.Material | T.Material[]>;
 };
 
@@ -30,7 +32,7 @@ type Subject = {
 export function createCanidPlayer(
   element: HTMLDivElement,
   read: () => CanidOptions,
-  report: (time: number) => void,
+  report: (time: number, complete: boolean) => void,
   status: (message: string, ready: boolean) => void,
 ) {
   const renderer = new T.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
@@ -122,6 +124,11 @@ export function createCanidPlayer(
       scene.add(grid);
       const rig = new T.SkeletonHelper(root);
       scene.add(rig);
+      const path = new T.Line(
+        new T.BufferGeometry(),
+        new T.LineBasicMaterial({ color: '#e2be70' }),
+      );
+      scene.add(path);
       const materials = new Map<T.Mesh, T.Material | T.Material[]>();
       root.traverse((obj) => {
         if (isMesh(obj)) materials.set(obj, obj.material);
@@ -136,6 +143,7 @@ export function createCanidPlayer(
         animations: gltf.animations,
         grid,
         rig,
+        path,
         materials,
       };
     }),
@@ -164,6 +172,10 @@ export function createCanidPlayer(
     if (!ready || disposed || document.hidden) return;
     const options = read();
     const duration = durationFor(options.revision, options.clip);
+    const motion = clips[options.clip];
+    const loop =
+      options.movement === 'in-place' &&
+      (options.revision !== 'refined' || motion.playback === 'loop');
     if (lastClip !== options.clip) {
       for (const subject of subjects) {
         subject.mixer.stopAllAction();
@@ -174,6 +186,11 @@ export function createCanidPlayer(
         action.setLoop(T.LoopOnce, 1);
         action.clampWhenFinished = true;
         action.reset().play();
+        const track = subject.asset.motions[options.clip];
+        subject.path.geometry.dispose();
+        subject.path.geometry = new T.BufferGeometry().setFromPoints(
+          track ? track.trajectory.map((p) => new T.Vector3(p[1], 0.015, p[2])) : [],
+        );
       }
       time = 0;
       elapsed = 0;
@@ -186,7 +203,7 @@ export function createCanidPlayer(
       lastSeek = options.seek;
     } else if (options.playing) {
       elapsed += dt;
-      time = elapsed % duration;
+      time = loop ? elapsed % duration : Math.min(duration, elapsed);
     }
     const indices = subjects.flatMap((subject, i) =>
       (options.revision === 'comparison' || options.revision === subject.revision) &&
@@ -197,7 +214,7 @@ export function createCanidPlayer(
     const stacked = width < 700;
     const panelWidth = stacked ? width : width / indices.length;
     const panelHeight = stacked ? height / indices.length : height;
-    const viewKey = `${options.view}:${options.character}:${options.revision}:${width}:${height}`;
+    const viewKey = `${options.view}:${options.character}:${options.revision}:${options.movement}:${options.clip}:${width}:${height}`;
     if (lastView !== viewKey) {
       camera.aspect = panelWidth / panelHeight;
       camera.updateProjectionMatrix();
@@ -211,8 +228,15 @@ export function createCanidPlayer(
         T.MathUtils.degToRad(17.5),
         Math.atan(Math.tan(T.MathUtils.degToRad(17.5)) * camera.aspect),
       );
-      const distance = 2.15 / Math.sin(fov);
-      controls.target.set(0, 1, 0);
+      const xs = options.movement === 'travel' ? motion.trajectory.map((p) => p[1]) : [0];
+      const zs = options.movement === 'travel' ? motion.trajectory.map((p) => p[2]) : [0];
+      const span = Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...zs) - Math.min(...zs));
+      const distance = (2.15 + span / 2) / Math.sin(fov);
+      controls.target.set(
+        (Math.max(...xs) + Math.min(...xs)) / 2,
+        1,
+        (Math.max(...zs) + Math.min(...zs)) / 2,
+      );
       camera.position
         .copy(controls.target)
         .add(new T.Vector3(...directions[options.view]).normalize().multiplyScalar(distance));
@@ -235,7 +259,25 @@ export function createCanidPlayer(
       subject.rig.visible = options.rig;
       for (const [mesh, material] of subject.materials)
         mesh.material = options.surface === 'Clay' ? clay : material;
-      subject.grid.position.x = -(elapsed * subject.asset.travelSpeed[options.clip]) % 0.25;
+      const track = subject.asset.motions[options.clip];
+      const travel = track ? travelAt(track, sampleTime) : { x: 0, z: 0, yaw: 0 };
+      if (track && loop) {
+        const cycles = Math.floor(elapsed / subject.duration);
+        travel.x += cycles * track.trajectory.at(-1)![1];
+        travel.z += cycles * track.trajectory.at(-1)![2];
+      }
+      subject.root.rotation.y = travel.yaw;
+      subject.root.position.set(
+        options.movement === 'travel' ? travel.x : 0,
+        0,
+        options.movement === 'travel' ? travel.z : 0,
+      );
+      subject.grid.position.set(
+        options.movement === 'travel' ? 0 : -travel.x % 0.25,
+        0,
+        options.movement === 'travel' ? 0 : -travel.z % 0.25,
+      );
+      subject.path.visible = options.movement === 'travel';
       const x = stacked ? 0 : panel * panelWidth;
       const y = stacked ? (indices.length - 1 - panel) * panelHeight : 0;
       renderer.setViewport(x, y, panelWidth, panelHeight);
@@ -249,8 +291,10 @@ export function createCanidPlayer(
     element.dataset.revision = options.revision;
     element.dataset.character = options.character;
     element.dataset.surface = options.surface;
+    element.dataset.movement = options.movement;
+    element.dataset.complete = String(!loop && time >= duration);
     if (now - lastReport > 80) {
-      report(time);
+      report(time, !loop && time >= duration && options.playing);
       lastReport = now;
     }
   };

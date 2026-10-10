@@ -111,20 +111,128 @@ test('edited shared motion survives export and consumer reload for every charact
       const response = await fetch(`/@fs${path}/models/${id}.json`);
       if (!response.ok) throw new Error('Missing native mutation receipt');
       const receipt: unknown = await response.json();
+      const original: unknown = await (
+        await fetch(`/packages/dcc-workbench/assets/canid/refined/${id}.json`)
+      ).json();
       results.push({
         id,
         clips: await compareCanid(
           `/@fs${path}/models/${id}.glb`,
           receipt as Parameters<typeof compareCanid>[1],
         ),
+        changedPoses: (
+          await compareCanid(
+            `/@fs${path}/models/${id}.glb`,
+            original as Parameters<typeof compareCanid>[1],
+          )
+        ).filter((clip) => clip.name === 'look' || clip.name === 'bite'),
       });
     }
     return results;
   }, resolve(directory!));
-  for (const character of results)
+  for (const character of results) {
     for (const clip of character.clips) expect(clip.maxError).toBeLessThan(0.0001);
+    for (const changed of character.changedPoses) expect(changed.maxError).toBeGreaterThan(0.001);
+  }
   await writeFile(
     info.outputPath('edited-native-agreement.json'),
     JSON.stringify(results, null, 2),
   );
+});
+
+test('actions hold their final pose, replay, expose phase markers, and show scene travel', async ({
+  page,
+}, info) => {
+  test.setTimeout(60_000);
+  await page.goto('/?workbench=dcc&compare=canid');
+  const viewer = page.locator('.canid-render');
+  await expect(viewer).toHaveAttribute('data-ready', 'true');
+  await page.getByLabel('Characters', { exact: true }).selectOption('moss');
+  for (const [clip, duration] of [
+    ['lunge', 1.8],
+    ['bite', 1.4],
+    ['swipe', 1.6],
+    ['roll', 4],
+    ['flee', 3.6],
+  ] as const) {
+    await page.getByLabel('Movement', { exact: true }).selectOption(clip);
+    await page.getByLabel('Shared motion time').fill((duration - 0.08).toFixed(2));
+    await page.getByRole('button', { name: 'Play motion', exact: true }).click();
+    await expect(page.getByRole('button', { name: 'Replay motion', exact: true })).toBeVisible();
+    await expect(viewer).toHaveAttribute('data-time', duration.toFixed(3));
+    await page.waitForTimeout(160);
+    await expect(viewer).toHaveAttribute('data-time', duration.toFixed(3));
+    await page.getByRole('button', { name: 'Replay motion', exact: true }).click();
+    await expect(viewer).not.toHaveAttribute('data-time', duration.toFixed(3));
+    await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
+    const marker = page.getByRole('button', {
+      name: clip === 'roll' ? /^back ·/ : clip === 'flee' ? /^run ·/ : /^contact ·/,
+    });
+    await marker.click();
+    await page.screenshot({ path: info.outputPath(`${clip}-contact.png`), fullPage: true });
+  }
+  await page.getByLabel('Movement', { exact: true }).selectOption('flee');
+  await page.getByLabel('Movement space').selectOption('travel');
+  await page.getByLabel('Shared motion time').fill('2.8');
+  await expect(viewer).toHaveAttribute('data-movement', 'travel');
+  await page.screenshot({ path: info.outputPath('escape-travel.png'), fullPage: true });
+  await page.getByLabel('Movement', { exact: true }).selectOption('run');
+  await expect(viewer).toHaveAttribute('data-clip', 'run');
+});
+
+test('Last Hearth presents resolved Stray attacks on the replay clock without changing the result', async ({
+  page,
+}, info) => {
+  test.setTimeout(60_000);
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto('/');
+  await page.getByRole('button', { name: '◇ Challenges', exact: true }).click();
+  await page.getByRole('button', { name: 'Open Make room for the Cub' }).click();
+  await page.getByRole('button', { name: 'Fight this warband' }).click();
+  const stage = page.getByRole('region', { name: 'Briar Stray attack stage', includeHidden: true });
+  const canvas = page.locator('.canid-attack-canvas');
+  await expect(canvas).toHaveAttribute('data-ready', 'true');
+  const verdict = await page.locator('.combat-verdict').innerText();
+  const saved = await page.evaluate(() => JSON.stringify(Object.entries(localStorage).sort()));
+  await page.getByRole('button', { name: 'First combat event', exact: true }).click();
+  for (let i = 0; i < 40 && (await stage.getAttribute('data-active')) !== 'true'; i++) {
+    await page.getByRole('button', { name: 'Next combat event', exact: true }).click();
+  }
+  await expect(stage).toBeVisible();
+  await expect(stage).toHaveAttribute('data-active', 'true');
+  await expect(canvas).toHaveAttribute('data-clip', /lunge|bite|swipe/);
+  await page.getByRole('button', { name: 'Play replay', exact: true }).click();
+  await page.waitForTimeout(100);
+  await page.getByRole('button', { name: 'Pause playback', exact: true }).click();
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      ),
+  );
+  const held = await canvas.getAttribute('data-progress');
+  await page.waitForTimeout(160);
+  await expect(canvas).toHaveAttribute('data-progress', held!);
+  await page
+    .locator('.combat-replay')
+    .screenshot({ path: info.outputPath('last-hearth-attack.png') });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(stage).toHaveAttribute('data-reduced-motion', 'true');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(async () =>
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    ),
+  ).toPass();
+  await page
+    .locator('.combat-replay')
+    .screenshot({ path: info.outputPath('last-hearth-phone.png') });
+  await page.getByLabel('Playback speed', { exact: true }).selectOption('200');
+  await page.getByRole('button', { name: 'Last combat event', exact: true }).click();
+  await expect(page.locator('.combat-verdict')).toHaveText(verdict);
+  expect(await page.evaluate(() => JSON.stringify(Object.entries(localStorage).sort()))).toBe(
+    saved,
+  );
+  expect(errors).toEqual([]);
 });

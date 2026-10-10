@@ -136,3 +136,20 @@
     height: 440px;
   }
 }
+.canid-markers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0;
+  color: #a9c0b4;
+  font-size: 12px;
+}
+.canid-markers button {
+  padding: 7px 10px;
+  border: 1px solid #58726a;
+  border-radius: 5px;
+  background: #263b3d;
+  color: #e4d9b4;
+  cursor: pointer;
+}
