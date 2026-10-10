@@ -22,11 +22,13 @@ export async function recordLoop(
   render(0);
   const stream = canvas.captureStream(30);
   try {
+    const captureTrack = stream.getVideoTracks()[0] as CanvasCaptureMediaStreamTrack | undefined;
     return await new Promise<Blob>((resolve, reject) => {
       const recorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 6_000_000 });
       const chunks: Blob[] = [];
       let frame = 0,
         started: number | undefined,
+        rendered = 0,
         settled = false;
       const abort = () => finish(cancelled());
       const visible = () => {
@@ -74,9 +76,21 @@ export async function recordLoop(
         if (settled) return;
         try {
           started ??= now;
-          const seconds = (now - started) / 1000;
-          render(Math.min(duration, seconds));
-          if (seconds >= duration) recorder.stop();
+          // A slow renderer must capture interior poses instead of skipping the whole loop.
+          const seconds = Math.min(duration, (now - started) / 1000, rendered + duration / 4);
+          render(seconds);
+          rendered = seconds;
+          captureTrack?.requestFrame?.();
+          // Canvas capture is asynchronous; let this frame paint before closing the stream.
+          if (seconds >= duration)
+            frame = requestAnimationFrame(() => {
+              if (settled) return;
+              try {
+                recorder.stop();
+              } catch (error) {
+                finish(error);
+              }
+            });
           else frame = requestAnimationFrame(tick);
         } catch (error) {
           finish(error);

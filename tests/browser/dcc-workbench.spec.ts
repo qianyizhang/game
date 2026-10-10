@@ -64,16 +64,20 @@ test('DCC pilot carries the concept into an animated downloadable asset', async 
   await page.getByRole('link', { name: 'Download animated GLB' }).click();
   const file = await download;
   await file.saveAs(info.outputPath('briar-hydra.glb'));
-  expect(await readFile(info.outputPath('briar-hydra.glb'))).toEqual(
-    await readFile(published.modelPath),
-  );
+  expect(
+    (await readFile(info.outputPath('briar-hydra.glb'))).equals(
+      await readFile(published.modelPath),
+    ),
+  ).toBe(true);
   const sourceDownload = page.waitForEvent('download');
   await page.getByRole('link', { name: 'Editable Blender source' }).click();
   const source = await sourceDownload;
   await source.saveAs(info.outputPath('briar-hydra.blend'));
-  expect(await readFile(info.outputPath('briar-hydra.blend'))).toEqual(
-    await readFile(published.sourcePath),
-  );
+  expect(
+    (await readFile(info.outputPath('briar-hydra.blend'))).equals(
+      await readFile(published.sourcePath),
+    ),
+  ).toBe(true);
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(async () => {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(

@@ -26,9 +26,9 @@ test('review scope selects gallery defaults and native workbench downloads stay 
   await page.getByRole('button', { name: 'Download 3D model' }).click();
   const file = await download;
   await file.saveAs(info.outputPath('native-hydra.glb'));
-  expect(await readFile(info.outputPath('native-hydra.glb'))).toEqual(
-    await readFile(hydra.modelPath),
-  );
+  expect(
+    (await readFile(info.outputPath('native-hydra.glb'))).equals(await readFile(hydra.modelPath)),
+  ).toBe(true);
   await page.route('**/*.glb', (route) => route.abort());
   await page.reload();
   await expect(page.getByRole('alert')).toContainText('could not be loaded');
@@ -54,9 +54,11 @@ test('review scope selects gallery defaults and native workbench downloads stay 
   await page.getByRole('button', { name: 'Download 3D model' }).click();
   const nightjarFile = await nightjarDownload;
   await nightjarFile.saveAs(info.outputPath('native-nightjar.glb'));
-  expect(await readFile(info.outputPath('native-nightjar.glb'))).toEqual(
-    await readFile(nightjar.modelPath),
-  );
+  expect(
+    (await readFile(info.outputPath('native-nightjar.glb'))).equals(
+      await readFile(nightjar.modelPath),
+    ),
+  ).toBe(true);
   // Both real pilots are now gallery accepted. Exercise a workbench-only review at the
   // browser metadata interface without changing any production receipt or publication.
   await page.evaluate(async () => {
@@ -92,9 +94,9 @@ test('review scope selects gallery defaults and native workbench downloads stay 
   await page.getByRole('link', { name: 'Editable Blender source' }).click();
   const source = await sourceDownload;
   await source.saveAs(info.outputPath('nightjar.blend'));
-  expect(await readFile(info.outputPath('nightjar.blend'))).toEqual(
-    await readFile(nightjar.sourcePath),
-  );
+  expect(
+    (await readFile(info.outputPath('nightjar.blend'))).equals(await readFile(nightjar.sourcePath)),
+  ).toBe(true);
   await page.getByLabel('Choose native asset').selectOption('briar-hydra');
   await expect(page.getByRole('heading', { name: 'Briar Hydra.' })).toBeVisible();
   await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {

@@ -40,6 +40,13 @@ Observe the recording's disabled state and download before starting the UI actio
 recording can complete before an automation click returns. The busy-state check must
 still reject a recording button that remains enabled.
 
+Keep the delayed-recording regression: a frame gap longer than the whole clip must
+still render interior poses and allow a paint before stopping capture. Visible playback
+continues to follow elapsed time; recording may take longer on a slow renderer to retain
+the complete loop rather than deliver a static movie. Where supported, the recorder
+[requests capture](https://developer.mozilla.org/en-US/docs/Web/API/CanvasCaptureMediaStreamTrack/requestFrame)
+of each rendered canvas state; automatic 30 FPS capture remains available otherwise.
+
 Short one-shot actions can finish between automation calls. Waiting for their transient
 pause label is **replace**: keep completion, final-pose hold and replay checks, then use
 a phase marker to pause at a defined pose and verify it holds. Looping-motion journeys
@@ -67,6 +74,11 @@ delivery checks and named regressions, consolidate repeated machinery, and avoid
 constructor-specific coverage. Retire remaining legacy tests with the corresponding user
 surface or a verified replacement, recording any deliberately dropped contract. This
 testing policy does not authorize deletion of artist sources, accepted baselines or evidence.
+
+Use native `Buffer.equals` for exact downloaded-file comparisons. Generic deep matchers
+walk large binary assets byte by byte and can exhaust a browser journey's time budget;
+native comparison still rejects any changed byte. Keep metadata and state comparisons
+in their existing structured matchers.
 
 ## Before adding or retaining a test
 

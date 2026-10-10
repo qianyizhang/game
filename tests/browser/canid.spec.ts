@@ -91,9 +91,11 @@ test('canid clips support matched review and downloads', async ({ page }, info) 
   await page.getByRole('link', { name: 'Download Moss GLB', exact: true }).click();
   const file = await download;
   await file.saveAs(info.outputPath('moss.glb'));
-  expect(await readFile(info.outputPath('moss.glb'))).toEqual(
-    await readFile('packages/dcc-workbench/assets/canid/refined/moss.glb'),
-  );
+  expect(
+    (await readFile(info.outputPath('moss.glb'))).equals(
+      await readFile('packages/dcc-workbench/assets/canid/refined/moss.glb'),
+    ),
+  ).toBe(true);
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByLabel('Characters', { exact: true }).selectOption('all');
   await expect(async () =>

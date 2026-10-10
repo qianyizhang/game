@@ -6,7 +6,8 @@ let nextFrame: number;
 let startError: Error | undefined;
 let documentEvents: EventTarget & { hidden: boolean };
 const stopTrack = vi.fn();
-const captureStream = vi.fn(() => ({ getTracks: () => [{ stop: stopTrack }] }));
+const track = { stop: stopTrack, requestFrame: vi.fn() };
+const captureStream = vi.fn(() => ({ getTracks: () => [track], getVideoTracks: () => [track] }));
 const canvas = { captureStream } as unknown as HTMLCanvasElement;
 
 class FakeRecorder {
@@ -126,8 +127,13 @@ it('returns a video and releases all resources after the final frame', async () 
   const render = vi.fn<(seconds: number) => void>();
   const pending = recordLoop(canvas, render, 6, new AbortController().signal);
   frame(100);
+  frame(1100);
+  frame(2100);
   frame(3100);
-  frame(6200);
+  frame(4100);
+  frame(5100);
+  frame(6100);
+  frame(6116);
   const result = await pending;
   const times = render.mock.calls.map(([seconds]) => seconds);
   expect(times[0]).toBe(0);
@@ -136,6 +142,23 @@ it('returns a video and releases all resources after the final frame', async () 
   expect(times.every((time, i) => time >= (times[i - 1] ?? 0) && time <= 6)).toBe(true);
   expect(result.type).toBe('video/webm');
   expect(await result.text()).toBe('recorded frames');
+  expect(frames.size).toBe(0);
+  expect(stopTrack).toHaveBeenCalledTimes(1);
+});
+
+it('keeps interior poses and waits for a paint when a render frame exceeds the whole loop', async () => {
+  const render = vi.fn<(seconds: number) => void>();
+  const pending = recordLoop(canvas, render, 6, new AbortController().signal);
+  frame(100);
+  for (const now of [8100, 16100, 24100, 32100]) frame(now);
+  const times = render.mock.calls.map(([seconds]) => seconds);
+  expect(times.at(-1)).toBe(6);
+  expect(times.some((time) => time > 0 && time < 6)).toBe(true);
+  expect(times.every((time, i) => time >= (times[i - 1] ?? 0) && time <= 6)).toBe(true);
+  expect(FakeRecorder.instance.stop).not.toHaveBeenCalled();
+  frame(32116);
+  expect((await pending).type).toBe('video/webm');
+  expect(FakeRecorder.instance.stop).toHaveBeenCalledTimes(1);
   expect(frames.size).toBe(0);
   expect(stopTrack).toHaveBeenCalledTimes(1);
 });

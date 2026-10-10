@@ -64,7 +64,7 @@ test('Wolf form selection and keyboard alignment deliver exact separate models a
     expect(download.suggestedFilename()).toBe(filename);
     const path = info.outputPath(filename);
     await download.saveAs(path);
-    expect(await readFile(path)).toEqual(await readFile(expectedPath));
+    expect((await readFile(path)).equals(await readFile(expectedPath))).toBe(true);
   };
   for (const [index, entry] of forms.entries()) {
     const publication = resolvePublication(root, getAsset(registry, entry.asset));
