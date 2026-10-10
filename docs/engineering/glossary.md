@@ -60,6 +60,18 @@ _Avoid_: Full state, when referring to a policy's permitted view.
 
 ## Art and evidence
 
+**Rig family**: A group of characters with compatible anatomy and motion conventions,
+allowing defined animation reuse and retargeting.
+
+**Character**: An individually authored creature with its own appearance, proportions,
+and fitted rig. Multiple characters can belong to the same rig family.
+
+**Motion clip**: An authored movement with a defined source rig, duration, loop behavior,
+and contact intent. Reusing a clip preserves its source identity.
+
+**Retarget profile**: The correspondence and corrections used to transfer a source
+motion clip onto a particular character's fitted rig.
+
 **Study**: One named artwork explored in the gallery, with its own physical interpretation and intended gesture.
 
 **Asset delegation protocol**: The agreed roles, handoffs, review authority and resource limits governing collaborative native-asset authoring.
