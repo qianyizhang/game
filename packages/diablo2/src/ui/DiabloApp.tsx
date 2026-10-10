@@ -1,14 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BASE_CONTENT } from '../domain/content';
 import { stats, validateContent } from '../domain/game';
-import { distance, lineOfSight } from '../domain/maps';
-import type { Command, Content, Point } from '../domain/types';
+import { bodyFits, distance, lineOfSight } from '../domain/maps';
+import type { Command, Content, Point, SkillDef } from '../domain/types';
 import {
   dispatch,
   exportSession,
   importSession,
   newSession,
   SAVE_KEY,
+  SANDBOX_SAVE_KEY,
+  ACTIVE_MODE_KEY,
+  saveKey,
   type Session,
 } from '../application/session';
 import { figure, screenToWorld, VIEW_HEIGHT, VIEW_WIDTH } from './render';
@@ -17,6 +20,8 @@ import { useFieldRuntime } from './field-runtime';
 import { WorldAtlas } from './WorldAtlas';
 import { InventoryPanel, CharacterPanel } from './CharacterPanels';
 import type { State } from '../domain/types';
+import { DeveloperTools } from './DeveloperTools';
+import { SkillEffects } from './skill-effects';
 import './styles.css';
 
 function Portrait({ id, color }: { id: string; color: string }) {
@@ -49,7 +54,9 @@ function download(text: string, filename: string): void {
 export default function DiabloApp() {
   const [initial] = useState(() => {
     try {
-      const saved = localStorage.getItem(SAVE_KEY);
+      const saved = localStorage.getItem(
+        localStorage.getItem(ACTIVE_MODE_KEY) === 'sandbox' ? SANDBOX_SAVE_KEY : SAVE_KEY,
+      );
       return { session: saved ? importSession(saved) : null, error: '' };
     } catch (error) {
       return {
@@ -61,6 +68,7 @@ export default function DiabloApp() {
   const [session, setSession] = useState<Session | null>(initial.session);
   const current = useRef(session);
   const previous = useRef<State | null>(null);
+  const effects = useRef(new SkillEffects());
   const viewCamera = useRef<Point | undefined>(undefined);
   const hudTime = useRef(0);
   const [content, setContent] = useState<Content>(initial.session?.replay.content ?? BASE_CONTENT);
@@ -77,7 +85,7 @@ export default function DiabloApp() {
     }
   });
   const [paused, setPaused] = useState(initial.session?.state.location === 'field');
-  const [panel, setPanel] = useState<'inventory' | 'skills' | 'journal' | null>(null);
+  const [panel, setPanel] = useState<'inventory' | 'skills' | 'journal' | 'developer' | null>(null);
   const [mapVisible, setMapVisible] = useState(true);
   const [active, setActive] = useState(0);
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -88,7 +96,8 @@ export default function DiabloApp() {
     modInput = useRef<HTMLInputElement>(null);
   const save = useCallback((next: Session) => {
     try {
-      localStorage.setItem(SAVE_KEY, exportSession(next));
+      localStorage.setItem(saveKey(next), exportSession(next));
+      localStorage.setItem(ACTIVE_MODE_KEY, next.replay.mode ?? 'campaign');
       setSaved('Journey saved');
     } catch {
       setSaved('Storage unavailable — export your journey');
@@ -103,13 +112,15 @@ export default function DiabloApp() {
         setMessage(result.error);
         return;
       }
+      effects.current.record(before.state, result.session.state, command, before.replay.content);
+      if (command.type !== 'advance') setMessage('');
       previous.current = command.type === 'advance' ? before.state : null;
       current.current = result.session;
       if (
         before.state.region !== result.session.state.region ||
         before.state.location !== result.session.state.location
       )
-        aim.current = { x: result.session.state.player.x + 3, y: result.session.state.player.y };
+        aim.current = clearAim(result.session.state);
       const now = performance.now();
       if (
         command.type !== 'advance' ||
@@ -190,6 +201,7 @@ export default function DiabloApp() {
     ticking,
     mapVisible,
     !selecting && session?.state.location === 'field',
+    effects,
   );
   useEffect(() => {
     const visibility = () => {
@@ -231,15 +243,14 @@ export default function DiabloApp() {
       });
     };
     const keydown = (event: KeyboardEvent) => {
-      if (
-        selecting ||
-        !current.current ||
-        event.target instanceof HTMLInputElement ||
-        event.target instanceof HTMLTextAreaElement ||
-        event.target instanceof HTMLSelectElement
-      )
-        return;
+      if (selecting || !current.current) return;
       const key = event.key.toLowerCase();
+      if (event.repeat && ['escape', 'i', 'k', 'j', 'f8', 'tab'].includes(key)) return;
+      if (key === 'f8') {
+        event.preventDefault();
+        openPanel('developer');
+        return;
+      }
       if (key === 'escape') {
         event.preventDefault();
         release();
@@ -247,6 +258,12 @@ export default function DiabloApp() {
         else setPaused((p) => !p);
         return;
       }
+      if (
+        event.target instanceof HTMLInputElement ||
+        event.target instanceof HTMLTextAreaElement ||
+        event.target instanceof HTMLSelectElement
+      )
+        return;
       if (key === 'i' || key === 'k' || key === 'j') {
         event.preventDefault();
         openPanel(key === 'i' ? 'inventory' : key === 'k' ? 'skills' : 'journal');
@@ -292,7 +309,8 @@ export default function DiabloApp() {
         setActive(index);
         const state = current.current.state;
         const h = current.current.replay.content.heroes.find((h) => h.id === state.hero)!;
-        send({ type: 'cast', skill: h.skills[index], target: aim.current });
+        const skill = current.current.replay.content.skills.find((s) => s.id === h.skills[index])!;
+        send({ type: 'cast', skill: skill.id, target: castAim(state, skill, aim.current) });
       } else if (key === ' ') {
         event.preventDefault();
         const state = current.current.state;
@@ -320,8 +338,9 @@ export default function DiabloApp() {
       window.removeEventListener('keyup', keyup);
     };
   }, [selecting, panel, paused, send, release, openPanel]);
-  const start = () => {
-    const next = newSession(seed, chosen, content);
+  const start = (sandbox = false, hero = chosen) => {
+    const next = newSession(seed, hero, content, sandbox);
+    effects.current.clear();
     previous.current = null;
     viewCamera.current = undefined;
     current.current = next;
@@ -330,8 +349,33 @@ export default function DiabloApp() {
     setPaused(false);
     setPanel(null);
     setActive(0);
-    setMessage('Speak with Elian, then take the road into Briarfen.');
+    setMessage(
+      sandbox ? 'Developer sandbox ready.' : 'Speak with Elian, then take the road into Briarfen.',
+    );
     save(next);
+  };
+  const startSandbox = (hero = chosen) => {
+    start(true, hero);
+  };
+  const returnCampaign = () => {
+    release();
+    try {
+      const raw = localStorage.getItem(SAVE_KEY);
+      const next = raw ? importSession(raw) : null;
+      current.current = next;
+      previous.current = null;
+      viewCamera.current = undefined;
+      effects.current.clear();
+      setSession(next);
+      setContent(next?.replay.content ?? BASE_CONTENT);
+      setSelecting(!next);
+      setPanel(null);
+      setPaused(next?.state.location === 'field');
+      setMessage('');
+      localStorage.setItem(ACTIVE_MODE_KEY, 'campaign');
+    } catch (error) {
+      setMessage(`Campaign could not load: ${String(error)}. Its save remains preserved.`);
+    }
   };
   const importFile = async (file: File | undefined, mod: boolean) => {
     if (!file) return;
@@ -348,6 +392,7 @@ export default function DiabloApp() {
         setMessage(`${pack.id} ${pack.version} loaded. Choose a hero to start this content pack.`);
       } else {
         const next = importSession(text);
+        effects.current.clear();
         previous.current = null;
         viewCamera.current = undefined;
         current.current = next;
@@ -444,11 +489,27 @@ export default function DiabloApp() {
             World seed{' '}
             <input value={seed} maxLength={100} onChange={(e) => setSeed(e.target.value)} />
           </label>
-          <button className="ew-primary" onClick={start}>
+          <button className="ew-primary" onClick={() => start()}>
             Begin journey
           </button>
+          <button
+            onClick={() => {
+              startSandbox();
+              setPanel('developer');
+            }}
+          >
+            Developer sandbox · Lv. 20
+          </button>
           {session && (
-            <button onClick={() => setSelecting(false)}>Return to current journey</button>
+            <button
+              onClick={() => {
+                setContent(session.replay.content);
+                setChosen(session.state.hero);
+                setSelecting(false);
+              }}
+            >
+              Return to current journey
+            </button>
           )}
           {legacySave && (
             <p className="ew-fine">
@@ -489,7 +550,7 @@ export default function DiabloApp() {
   const uiCast = (index: number) => {
     setActive(index);
     const skill = pack.skills.find((s) => s.id === h.skills[index])!;
-    const target = skill.range === 0 ? { x: p.x, y: p.y } : aim.current;
+    const target = castAim(current.current!.state, skill, aim.current);
     send({ type: 'cast', skill: skill.id, target });
   };
   const pointer = (event: React.MouseEvent<HTMLCanvasElement>) => {
@@ -508,7 +569,12 @@ export default function DiabloApp() {
     canvas.current?.focus();
     const target = pointer(event);
     if (event.button === 2) {
-      send({ type: 'cast', skill: h.skills[active], target });
+      const skill = pack.skills.find((s) => s.id === h.skills[active])!;
+      send({
+        type: 'cast',
+        skill: skill.id,
+        target: castAim(current.current!.state, skill, target),
+      });
       return;
     }
     const enemy = currentWorld(current.current?.state ?? state).enemies.find(
@@ -536,6 +602,7 @@ export default function DiabloApp() {
             Character · K{p.skillPoints + p.statPoints > 0 ? ' +' : ''}
           </button>
           <button onClick={() => openPanel('journal')}>Journal · J</button>
+          <button onClick={() => openPanel('developer')}>Developer tools · F8</button>
           <button
             onClick={() => {
               release();
@@ -546,6 +613,16 @@ export default function DiabloApp() {
           </button>
         </div>
       </header>
+      {state.sandbox && (
+        <aside className="ew-sandbox-banner">
+          <strong>DEVELOPER SANDBOX</strong>
+          <span>
+            Lv. 20 · all skills rank 10 · {state.sandbox.god ? 'God mode' : 'Normal damage'} ·{' '}
+            {state.sandbox.reveal ? 'Map revealed' : 'Fog enabled'}
+          </span>
+          <button onClick={returnCampaign}>Return to campaign</button>
+        </aside>
+      )}
       <div className="ew-topline">
         <strong>
           {h.name} · {h.className} <span>Lv. {p.level}</span>
@@ -766,7 +843,14 @@ export default function DiabloApp() {
               <button
                 key={id}
                 className={active === i ? 'active' : ''}
-                disabled={!rank || state.location === 'town' || !!p.cooldowns[id]}
+                disabled={
+                  !rank ||
+                  paused ||
+                  !!panel ||
+                  state.status !== 'playing' ||
+                  state.location === 'town' ||
+                  !!p.cooldowns[id]
+                }
                 title={`${skill.description} ${skill.mana} mana. Rank ${rank}.`}
                 onClick={() => uiCast(i)}
               >
@@ -827,26 +911,41 @@ export default function DiabloApp() {
           role="dialog"
           aria-modal="true"
           aria-label={
-            panel === 'inventory'
-              ? 'Inventory and stash'
-              : panel === 'skills'
-                ? 'Character and skills'
-                : 'Quest journal'
+            panel === 'developer'
+              ? 'Developer tools'
+              : panel === 'inventory'
+                ? 'Inventory and stash'
+                : panel === 'skills'
+                  ? 'Character and skills'
+                  : 'Quest journal'
           }
         >
           <header>
             <h2>
-              {panel === 'inventory'
-                ? 'Inventory & stash'
-                : panel === 'skills'
-                  ? `${h.name} · ${h.className}`
-                  : 'The lantern chain'}
+              {panel === 'developer'
+                ? 'Developer tools'
+                : panel === 'inventory'
+                  ? 'Inventory & stash'
+                  : panel === 'skills'
+                    ? `${h.name} · ${h.className}`
+                    : 'The lantern chain'}
             </h2>
             <button autoFocus onClick={() => setPanel(null)}>
               Close · Esc
             </button>
           </header>
-          {panel === 'inventory' ? (
+          {panel === 'developer' ? (
+            <DeveloperTools
+              state={state}
+              content={pack}
+              send={send}
+              start={(hero) => startSandbox(hero)}
+              close={() => {
+                setPanel(null);
+                setPaused(false);
+              }}
+            />
+          ) : panel === 'inventory' ? (
             <InventoryPanel state={state} content={pack} send={send} />
           ) : panel === 'skills' ? (
             <CharacterPanel state={state} content={pack} send={send} />
@@ -877,4 +976,23 @@ export default function DiabloApp() {
 }
 function worldsLabel(cleared: boolean, open: boolean): string {
   return cleared ? '✓' : open ? '→' : '·';
+}
+
+function clearAim(state: State): Point {
+  const p = state.player,
+    world = currentWorld(state);
+  return (
+    [
+      { x: p.x + 2, y: p.y },
+      { x: p.x - 2, y: p.y },
+      { x: p.x, y: p.y + 2 },
+      { x: p.x, y: p.y - 2 },
+    ].find((at) => bodyFits(world, at) && lineOfSight(world, p, at)) ?? { x: p.x, y: p.y }
+  );
+}
+
+function castAim(state: State, skill: SkillDef, aim: Point): Point {
+  return skill.range === 0 || skill.effect === 'melee'
+    ? { x: state.player.x, y: state.player.y }
+    : aim;
 }

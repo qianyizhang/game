@@ -68,3 +68,13 @@ Expanded journeys use a separate save slot and rules version. Your original demo
 The [package README](../../packages/diablo2/README.md#make-content-mods) describes editable hero, spell, item, boss and map definitions. Use **Export content pack**, edit the JSON, and **Load content mod** to begin a new journey. Existing journeys retain their original content.
 
 This baseline follows Diablo II's class/build, combat, exploration, loot, town and act progression ideas with an original story and assets. Reference: [Blizzard's Diablo II manual](https://ftp.blizzard.com/pub/misc/Diablo%20II%20Manual.pdf). It simplifies inventory/equipment slots, hit calculations, potion timing and corpse recovery; it has no exact frame tables, full skill trees, multiplayer, mercenary hiring, durability, difficulty tiers, trading, set-item bonuses or runeword recipes. It is a playable starting point for mods, not a complete Diablo II reproduction.
+
+## Developer sandbox
+
+Choose **Developer sandbox · Lv. 20** on the hero screen, or open **Developer tools · F8** during a journey. Pick a hero and act, then a wilderness region or numbered dungeon floor. Choose **Entrance**, **Ward**, or **Boss** and **Jump**. Each test hero starts at level 20 with all three skills at rank 10, trial equipment, gold, potions and runes. Changing the test hero starts a fresh sandbox.
+
+**God mode** keeps life, mana and stamina full; skills retain their normal cooldowns. **Reveal map** shows the whole minimap and removes field fog. Both can be toggled independently. Sandbox travel bypasses ward and boss gates, allowing direct boss testing. **Fresh encounter on arrival** resets the selected region; normal jumps preserve its enemies, loot and objectives. **Refill & clear cooldowns** restores resources and makes skills ready immediately. **Place practice bodies** provides nearby non-boss corpses for Raise skeleton, which still consumes one real body per cast.
+
+The sandbox autosaves separately and reloads in the same mode. **Return to campaign** restores your campaign. Sandbox exports carry an explicit sandbox rules version and cannot be disguised as normal campaign histories. Use the same controls and content-mod workflow in either mode.
+
+Every accepted skill cast now has a visual cue: sweeping cleaves, expanding novas, leap/blink trails, summoning runes, curse circles and projectile flashes. Slain bodies remain visible until consumed; slowed and cursed enemies have colored indicators. These cues pause with gameplay and never supply authoritative damage or movement.

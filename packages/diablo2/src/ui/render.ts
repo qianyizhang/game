@@ -1,3 +1,4 @@
+import { drawSkillEffects, type SkillEffects } from './skill-effects';
 import type { Content, Point, State, Enemy, Ally, Player } from '../domain/types';
 import { distance, dimensions, lineOfSight, walkable } from '../domain/maps';
 import { currentRegion, currentWorld, wardsLit, portalOpen } from '../domain/world';
@@ -191,6 +192,7 @@ export function figure(
   ctx.restore();
 }
 interface Frame {
+  effects?: SkillEffects;
   previous: State | null;
   alpha: number;
   time: number;
@@ -413,6 +415,7 @@ export function render(
           [0, 1],
           [0, -1],
         ].some(([dx, dy]) => known.has((y + dy) * WIDTH + x + dx));
+      if (state.sandbox?.reveal) continue;
       if (!adjacent) {
         ctx.fillStyle = '#0d1214';
         ctx.fillRect(sx(x), sy(y), TILE, TILE);
@@ -421,7 +424,8 @@ export function render(
         ctx.fillRect(sx(x), sy(y), TILE, TILE);
       }
     }
-  const visible = (p: Point) => known.has(Math.floor(p.y) * WIDTH + Math.floor(p.x));
+  const visible = (p: Point) =>
+    !!state.sandbox?.reveal || known.has(Math.floor(p.y) * WIDTH + Math.floor(p.x));
   const marker = (
     p: Point,
     label: string,
@@ -481,8 +485,10 @@ export function render(
     }
     ctx.font = '10px sans-serif';
     ctx.textAlign = 'center';
+    ctx.fillStyle = '#10171be0';
+    ctx.fillRect(-ctx.measureText(label).width / 2 - 4, 17, ctx.measureText(label).width + 8, 13);
     ctx.fillStyle = '#f0dfc4';
-    ctx.fillText(label, 0, 26);
+    ctx.fillText(label, 0, 27);
     ctx.restore();
   };
   if (map.ward)
@@ -549,10 +555,31 @@ export function render(
         ctx.fillText(drop.item?.name ?? 'Loot', sx(drop.x), sy(drop.y) - 10);
       }
     }
+  for (const body of world.enemies)
+    if (body.hp === 0 && visible(body)) {
+      ctx.save();
+      ctx.translate(sx(body.x), sy(body.y));
+      ctx.strokeStyle = '#b2a58d';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(-9, -4);
+      ctx.lineTo(8, 5);
+      ctx.moveTo(-8, 5);
+      ctx.lineTo(7, -4);
+      ctx.stroke();
+      ctx.fillStyle = '#b2a58d';
+      ctx.beginPath();
+      ctx.arc(0, -5, 4, 0, 7);
+      ctx.fill();
+      ctx.restore();
+    }
   const entities: { entity: Enemy | Ally | Player; ally: boolean }[] = [
     ...world.enemies
       .filter(
-        (e) => e.hp > 0 && distance(e, state.player) < 8 && lineOfSight(world, state.player, e),
+        (e) =>
+          e.hp > 0 &&
+          (state.sandbox?.reveal ||
+            (distance(e, state.player) < 8 && lineOfSight(world, state.player, e))),
       )
       .map((e) => ({ entity: e, ally: false })),
     ...world.allies.map((a) => ({ entity: a, ally: true })),
@@ -607,6 +634,19 @@ export function render(
           ? 16
           : 4),
     );
+    if (enemy?.slow || enemy?.cursed) {
+      ctx.strokeStyle = enemy.cursed ? '#d297ee' : '#99eaff';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath();
+      ctx.ellipse(0, 8, enemy.boss ? 27 : 15, 7, 0, 0, 7);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = ctx.strokeStyle;
+      ctx.font = '11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(enemy.cursed ? '✦' : '❄', 0, enemy.boss ? -65 : -35);
+    }
     if (enemy) {
       const w = enemy.boss ? 64 : 27;
       ctx.fillStyle = '#161717';
@@ -629,6 +669,7 @@ export function render(
     ctx.restore();
   }
   for (const shot of world.projectiles) {
+    ctx.save();
     const old = previous
       ? currentWorld(previous).projectiles.find((p) => p.uid === shot.uid)
       : undefined;
@@ -641,12 +682,27 @@ export function render(
           : shot.friendly
             ? '#e0e0b7'
             : '#ee8a77';
+    ctx.shadowColor = ctx.strokeStyle;
+    ctx.shadowBlur = 12;
     ctx.lineWidth = shot.pierce ? 4 : 3;
     ctx.beginPath();
     ctx.moveTo(sx(shown.x - shot.dx * 0.6), sy(shown.y - shot.dy * 0.6));
     ctx.lineTo(sx(shown.x), sy(shown.y));
     ctx.stroke();
+    ctx.fillStyle = ctx.strokeStyle;
+    ctx.beginPath();
+    ctx.arc(sx(shown.x), sy(shown.y), shot.pierce ? 3 : 5, 0, 7);
+    ctx.fill();
+    ctx.restore();
   }
+  canvas.dataset.effects = drawSkillEffects(
+    ctx,
+    frame?.effects?.visible(state.region, time) ?? [],
+    c,
+    TILE,
+    time,
+  ).join(',');
+  canvas.dataset.mapReveal = state.sandbox?.reveal ? 'full' : 'explored';
   const gradient = ctx.createRadialGradient(
     VIEW_WIDTH / 2,
     VIEW_HEIGHT / 2,
@@ -664,11 +720,14 @@ export function render(
       ox = VIEW_WIDTH - WIDTH * size - 18,
       oy = 18;
     ctx.fillStyle = '#0a1013de';
-    ctx.fillRect(ox - 8, oy - 8, WIDTH * size + 16, HEIGHT * size + 32);
-    for (const cell of world.seen) {
+    ctx.fillRect(ox - 8, oy - 8, WIDTH * size + 16, HEIGHT * size + 46);
+    const cells = state.sandbox?.reveal
+      ? Array.from({ length: WIDTH * HEIGHT }, (_, i) => i)
+      : world.seen;
+    for (const cell of cells) {
       const x = cell % WIDTH,
         y = Math.floor(cell / WIDTH);
-      ctx.fillStyle = colors.light;
+      ctx.fillStyle = walkable(world, { x: x + 0.5, y: y + 0.5 }) ? colors.light : colors.wall;
       ctx.fillRect(ox + x * size, oy + y * size, size - 1, size - 1);
     }
     const dot = (p: Point, color: string) => {
@@ -683,7 +742,9 @@ export function render(
     dot(state.player, '#fff4cf');
     ctx.fillStyle = '#c8bfaa';
     ctx.font = '10px sans-serif';
-    ctx.fillText('TAB · map   blue: ward   amber: stairs / portals', ox, oy + HEIGHT * size + 17);
+    ctx.textAlign = 'left';
+    ctx.fillText('TAB · map   blue: ward', ox, oy + HEIGHT * size + 17);
+    ctx.fillText('Amber: stairs / portals', ox, oy + HEIGHT * size + 30);
   }
   return c;
 }

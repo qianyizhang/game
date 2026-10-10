@@ -2,6 +2,7 @@ import { useEffect, type RefObject } from 'react';
 import type { Session } from '../application/session';
 import type { Command, Point, State } from '../domain/types';
 import { STEP_MS } from '../domain/timing';
+import type { SkillEffects } from './skill-effects';
 import { render } from './render';
 
 export interface FrameClock {
@@ -35,6 +36,7 @@ export function useFieldRuntime(
   active: boolean,
   showMap: boolean,
   visible: boolean,
+  effects: RefObject<SkillEffects>,
 ): void {
   useEffect(() => {
     if (!visible) return;
@@ -57,7 +59,8 @@ export function useFieldRuntime(
           {
             previous: previous.current,
             alpha,
-            time: ((session.state.tick + alpha) * STEP_MS) / 1000,
+            time: ((session.state.tick + (running ? alpha : 0)) * STEP_MS) / 1000,
+            effects: effects.current,
           },
         );
         canvas.current.dataset.frames = String(++frames);
@@ -67,5 +70,5 @@ export function useFieldRuntime(
     };
     request = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(request);
-  }, [canvas, current, previous, viewCamera, send, active, showMap, visible]);
+  }, [canvas, current, previous, viewCamera, send, active, showMap, visible, effects]);
 }

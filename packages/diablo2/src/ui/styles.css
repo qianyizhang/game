@@ -864,3 +864,119 @@
 .ew-region-list small {
   color: #9aaca7;
 }
+
+.ew-sandbox-banner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 18px;
+  background: #24373a;
+  border: 1px solid #78b7bc;
+  font-size: 12px;
+}
+.ew-sandbox-banner strong {
+  color: #9dd8dc;
+  letter-spacing: 0.08em;
+}
+.ew-sandbox-banner button {
+  margin-left: auto;
+}
+.ew-dev-tools {
+  display: grid;
+  gap: 16px;
+}
+.ew-dev-tools h3 {
+  margin: 4px 0 10px;
+}
+.ew-dev-heroes,
+.ew-dev-floors {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.ew-dev-acts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.ew-dev-regions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.ew-dev-tools button {
+  text-align: left;
+}
+.ew-dev-tools button[aria-pressed='true'] {
+  background: #d8b16c24;
+  border-color: #e9bd79;
+  box-shadow: inset 0 0 0 1px #e9bd79;
+}
+.ew-dev-tools strong,
+.ew-dev-tools small {
+  display: block;
+  margin-top: 4px;
+}
+.ew-dev-tools small {
+  color: #b0b8b0;
+}
+.ew-dev-floor-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #aa8d61;
+  border-radius: 50%;
+  color: #efd0a0;
+}
+.ew-dev-options {
+  display: grid;
+  gap: 12px;
+  background: #ffffff05;
+  padding: 14px;
+}
+.ew-dev-options fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ew-dev-options legend {
+  margin-bottom: 8px;
+  color: #c7b799;
+}
+.ew-dev-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ew-dev-options input {
+  accent-color: #ddb879;
+  width: 18px;
+  height: 18px;
+}
+.ew-dev-utilities {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .ew-dev-acts,
+  .ew-dev-floors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ew-dev-regions {
+    grid-template-columns: 1fr;
+  }
+  .ew-dev-heroes {
+    gap: 5px;
+  }
+  .ew-dev-heroes button {
+    padding: 9px;
+    font-size: 11px;
+  }
+}
