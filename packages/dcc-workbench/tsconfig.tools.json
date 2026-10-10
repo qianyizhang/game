@@ -11,5 +11,5 @@
     "allowImportingTsExtensions": true,
     "skipLibCheck": true
   },
-  "include": ["*.ts", "*.mjs"]
+  "include": ["*.ts", "*.mjs", "evaluation/*.ts", "subjects/canid/*.ts"]
 }

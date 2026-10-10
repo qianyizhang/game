@@ -12,6 +12,8 @@ const typedFiles = [
   'packages/workshop-tools/**/*.{mjs,ts,tsx}',
   'packages/dcc-workbench/src/*.{ts,tsx}',
   'packages/dcc-workbench/*.{ts,mjs}',
+  'packages/dcc-workbench/evaluation/*.ts',
+  'packages/dcc-workbench/subjects/canid/*.ts',
 ];
 
 export default [
@@ -74,7 +76,11 @@ export default [
     },
   },
   {
-    files: ['packages/dcc-workbench/*.{ts,mjs}'],
+    files: [
+      'packages/dcc-workbench/*.{ts,mjs}',
+      'packages/dcc-workbench/evaluation/*.ts',
+      'packages/dcc-workbench/subjects/canid/*.ts',
+    ],
     languageOptions: {
       parserOptions: {
         projectService: false,

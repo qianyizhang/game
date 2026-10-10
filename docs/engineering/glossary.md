@@ -88,6 +88,17 @@ either through a planted contact or a changing rolling contact.
 **Motion marker**: A named instant in an authored performance, such as contact or recovery.
 A marker describes presentation timing; it does not decide a game's outcome.
 
+**Motion evaluation**: Evidence-based assessment of a performance against explicit timing,
+mechanical and perceptual criteria. Measured findings and reviewer judgments remain distinct.
+_Avoid_: Motion critic, when naming the assessment rather than a reviewer.
+
+**Motion plausibility**: The perceived coherence of anatomy, weight, support and coordination
+within the intended style. Plausibility alone does not establish fidelity to real behavior.
+
+**Reference fidelity**: Agreement with an identified external behavior or visual reference,
+under stated comparison conditions.
+_Avoid_: Authenticity, when no specific reference or intended meaning has been identified.
+
 **Retarget profile**: The correspondence and corrections used to transfer a source
 motion clip onto a particular character's fitted rig.
 
