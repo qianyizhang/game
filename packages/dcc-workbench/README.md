@@ -164,3 +164,65 @@ sources and consequential rejection evidence; routine previews are temporary. Ad
 source milestones need a concrete construction decision. No per-iteration source copies
 or lineage manifests are created. Historical sources, backups and evidence keep their
 existing protection. See [retention authority](../../docs/engineering/maintenance.md#retention-and-deletion-authority).
+
+## Canid rig and retargeting pilot
+
+Open `/?workbench=dcc&compare=canid`, or choose **Canid motion study** in the workbench.
+Ash is the base character; Russet changes its appearance; Moss has a broader, shorter
+fitted skeleton. The three characters share idle (4 s), walk (2 s), and look (4 s)
+source actions at 24 fps. All deliveries have 20 deformation joints. The comparison
+uses one camera and clock, exposes clay/material and skeleton views, and moves the
+ground grid at each delivered walk's recorded travel speed.
+
+The [pilot scope and findings](../../docs/art/trials/canid-retargeting.md) records the
+accepted scope, construction corrections, evidence, and limits. These are workbench
+pilot deliveries, not replacements for the existing Wolf gallery releases.
+
+### Source ownership and editing
+
+- `subjects/canid/motion.blend`: shared `MotionRig` and the three source actions.
+  Animate `CTRL_body`, `CTRL_head`, `CTRL_tail`, and the four `CTRL_front.*` /
+  `CTRL_hind.*` foot controls. Foot IK and world-rest paw orientation preserve contact.
+- `subjects/canid/<ash|russet|moss>/source.blend`: authoritative character geometry,
+  bone-heat skin weights, materials, fitted rest rig, and derived control actions.
+- `subjects/canid/<id>/retarget.json`: fitting receipt, source identity, chain mapping,
+  displacement scales, and geometry/weight digest. Edit the shared source motion;
+  `fit` refreshes derived character actions. Save local character motion experiments
+  separately before fitting, which replaces the character's action library.
+- `assets/canid/<id>.glb` and `<id>.json`: baked multi-clip delivery and source-pinned
+  receipt, per-frame contact audit, and sampled native mesh poses.
+
+`blender/canid_model.py` creates initial geometry only. `canid_rig.py` defines the
+initial family and source animation. `canid_pipeline.py` fits **saved** source actions
+and exports **saved** character skeletons and meshes. Export does not rebuild either
+source. It bakes evaluated parent-relative poses onto a temporary deformation skeleton.
+`canid.ts` exposes the commands and validates delivery identity, finite accessors,
+weights, normals, loop endpoints, contact audits, and budgets using the shared GLB
+reader. This dedicated multi-clip adapter leaves the existing single-clip adapter and
+its sealed receipts unchanged.
+
+### Commands
+
+Use the pinned Node runtime. Native commands require approved execution outside the
+restricted macOS sandbox. `BLENDER_BIN` can select another Blender 4.5 executable.
+
+```sh
+nvm use
+npm run dcc:canid -- check
+npm run dcc:canid -- fit
+npm run dcc:canid -- export --output test-results/canid-candidate-01
+npm run dcc:canid -- verify test-results/canid-edit-proof-01
+CANID_NATIVE_RESULTS=test-results/canid-edit-proof-01 npm run test:browser -- tests/browser/canid.spec.ts
+```
+
+Export and verification require fresh output files/directories. Inspect new exports
+before explicitly replacing this pilot's delivered files; never copy a mutation-test
+candidate into the pilot. `check` checks the bundled deliveries; an optional directory
+argument checks a fresh export against the current authoritative sources. For a new
+independent bootstrap, use `bootstrap --root <fresh-directory>`; bootstrap refuses to
+overwrite existing sources. Ordinary builds and checks do not launch Blender.
+
+The native verifier copies sources, changes one saved look-action key by 0.18 radians,
+fits all three targets, checks unchanged mesh/weight digests, saves/reloads, and exports
+new models. The optional browser case compares these changed deliveries with their
+native pose receipts. Without `CANID_NATIVE_RESULTS`, that case is explicitly skipped.

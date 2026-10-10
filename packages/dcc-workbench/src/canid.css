@@ -1,0 +1,138 @@
+.canid-toolbar {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 20px 0;
+}
+.canid-toolbar label {
+  display: grid;
+  gap: 8px;
+  color: #b9c6bc;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.canid-toolbar select,
+.canid-toolbar button {
+  border: 1px solid #54706b;
+  border-radius: 6px;
+  padding: 10px 14px;
+  background: #213438;
+  color: #e3e7db;
+  font: inherit;
+}
+.canid-toolbar button {
+  cursor: pointer;
+}
+.canid-toolbar [aria-pressed='true'] {
+  background: #ced2ad;
+  color: #203536;
+}
+.canid-toolbar [role='group'] {
+  display: flex;
+  gap: 6px;
+}
+.canid-stage {
+  position: relative;
+  border: 1px solid #46615d;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.canid-render {
+  height: 560px;
+  position: relative;
+}
+.canid-render canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.canid-labels {
+  position: absolute;
+  inset: 20px 0 auto;
+  display: flex;
+  pointer-events: none;
+}
+.canid-labels > div {
+  flex: 1;
+  padding: 0 22px;
+}
+.canid-labels strong,
+.canid-labels span {
+  display: block;
+}
+.canid-labels strong {
+  color: #e6e9dc;
+  font-size: 21px;
+}
+.canid-labels span {
+  color: #adbdb4;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.canid-hint {
+  color: #a3b8ad;
+  font-size: 12px;
+  margin-left: auto;
+}
+.canid-notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin: 40px 0;
+  color: #b4c5ba;
+  line-height: 1.7;
+}
+.canid-notes h2 {
+  color: #e3e6d5;
+  font-size: 25px;
+}
+.canid-workbench a {
+  color: #d2d4a6;
+  text-underline-offset: 4px;
+}
+.canid-downloads {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  border-top: 1px solid #46615d;
+  padding-top: 20px;
+}
+.canid-downloads h3 {
+  color: #e3e6d5;
+}
+.canid-downloads p {
+  color: #a3b8ad;
+  font-size: 13px;
+}
+.canid-downloads a {
+  display: block;
+  margin: 12px 0;
+  font-size: 14px;
+}
+@media (max-width: 760px) {
+  .canid-all .canid-render {
+    height: 1100px;
+  }
+  .canid-all .canid-labels {
+    bottom: 0;
+    flex-direction: column;
+  }
+  .canid-labels > div {
+    padding: 0 16px;
+  }
+  .canid-notes,
+  .canid-downloads {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .canid-hint {
+    margin-left: 0;
+  }
+  .canid-toolbar {
+    align-items: start;
+  }
+  .canid-render {
+    height: 440px;
+  }
+}

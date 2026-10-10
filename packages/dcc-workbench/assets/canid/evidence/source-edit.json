@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "sourceEdit": "look / CTRL_head / frame 48 / +0.18 radians",
+  "authoritativeSourcesUnchanged": true,
+  "characters": [
+    {
+      "character": "ash",
+      "meshAndWeightsUnchanged": true,
+      "headChangeRadians": 0.17999997735023499
+    },
+    {
+      "character": "russet",
+      "meshAndWeightsUnchanged": true,
+      "headChangeRadians": 0.17999997735023499
+    },
+    {
+      "character": "moss",
+      "meshAndWeightsUnchanged": true,
+      "headChangeRadians": 0.17999997735023499
+    }
+  ]
+}

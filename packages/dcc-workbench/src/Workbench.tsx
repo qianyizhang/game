@@ -4,6 +4,7 @@ import { getPublishedAsset, listPublishedAssets } from './delivery';
 import beforeUrl from '../references/hydra-before.png';
 import './workbench.css';
 
+const CanidComparison = lazy(() => import('./CanidComparison'));
 const HydraComparison = lazy(() => import('./HydraComparison'));
 const assets = listPublishedAssets();
 function initialAssetId() {
@@ -20,6 +21,16 @@ type Stage = (typeof stages)[number];
 const viewNames: View[] = ['Portrait', 'Front', 'Side', 'Back'];
 const surfaces: Surface[] = ['Material', 'Clay', 'Wire'];
 export default function Workbench({ onExit }: { onExit: () => void }) {
+  const [canid, setCanid] = useState(
+    () => new URLSearchParams(location.search).get('compare') === 'canid',
+  );
+  const showCanid = (value: boolean) => {
+    const url = new URL(location.href);
+    if (value) url.searchParams.set('compare', 'canid');
+    else url.searchParams.delete('compare');
+    history.replaceState(null, '', url);
+    setCanid(value);
+  };
   const [assetId, setAssetId] = useState(initialAssetId);
   const asset = getPublishedAsset(assetId);
   const { brief, info: manifest, modelUrl, sourceUrl } = asset;
@@ -99,6 +110,12 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
     history.replaceState(null, '', url);
     setComparison(value);
   };
+  if (canid)
+    return (
+      <Suspense fallback={<p role="status">Loading canid motion study…</p>}>
+        <CanidComparison onBack={() => showCanid(false)} />
+      </Suspense>
+    );
   if (comparison)
     return (
       <Suspense fallback={<p role="status">Loading Hydra comparison…</p>}>
@@ -128,6 +145,9 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
         </div>
         <p>{brief.subtitle}</p>
       </section>
+      <button className="dcc-compare-entry" onClick={() => showCanid(true)}>
+        Canid motion study <span>Three characters · shared motion ↗</span>
+      </button>
       <label className="dcc-asset-selector">
         <span className="dcc-eyebrow">NATIVE ASSET</span>
         <select

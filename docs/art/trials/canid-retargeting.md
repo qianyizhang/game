@@ -44,3 +44,57 @@ Visual review inspects matched front, side, rear, and portrait views, motion ext
 and small displays. Numerical checks cover contact error, finite normalized skinning,
 loop continuity, shared-source propagation, and exported playback agreement. Passing
 those checks does not establish aesthetic or user approval.
+
+## Implementation and findings
+
+The workbench pilot is available at `/?workbench=dcc&compare=canid`. Its maintained
+commands and source ownership are documented in the [DCC package](../../../packages/dcc-workbench/README.md#canid-rig-and-retargeting-pilot).
+
+| Character | Purpose                | Geometry         | Delivery                                           |
+| --------- | ---------------------- | ---------------- | -------------------------------------------------- |
+| Ash       | Base canid             | 27,074 triangles | 20 joints; idle, walk, look                        |
+| Russet    | Appearance reuse       | 27,074 triangles | Same proportions and shared source motion          |
+| Moss      | Proportion retargeting | 26,350 triangles | 1.07 length, 1.22 width, 0.77 height/stride scales |
+
+Sources are editable native Blender files with animator controls, IK constraints,
+bone-heat skinning, materials, and actions. The prototype uses a connected voxel-remeshed
+skin and simplified facial anatomy; it is not hand-retopologized production topology.
+The family convention fixes control axes, chain names, clip durations, and walk contact
+phases. This proves fitting within one family, not arbitrary third-party skeleton
+compatibility or anatomically different creatures.
+
+### Corrections established by review
+
+- First clay construction: overlapping tail masses read as segments, and lower-leg
+  weights produced pinching. Continuous tapered forms replaced the tail and limb masses.
+- Provisional distance weights produced sharp belly/shoulder transitions. Native
+  bone-heat weights replaced them, with rigid supporting sole vertices and normalized
+  four-influence delivery weights.
+- The first export bake used stale parent transforms. Browser/native comparison caught
+  errors up to 0.48 model units. Explicit parent-relative baking corrected the mismatch;
+  the comparison tolerance remained 0.0001 model units.
+- Contact checks now inspect supporting mesh vertices as well as ankle controls at all
+  planted frames. Ground-grid travel comes from the delivered clip metadata.
+
+### Acceptance and limits
+
+The shared-motion mutation check changes the saved source look action and proves that
+all three fitted characters receive it without changing mesh or skin-weight digests.
+The browser checks every delivered character and clip at five native sample times,
+including the exact loop endpoint. Sampling does not prove agreement at every possible
+intermediate time. All native contact checks use the declared family stance intervals;
+changing those intervals requires updating the family convention.
+
+The parent reviewed the base clay construction and the matched browser material view.
+Visual scope is a restrained stylized canid with readable weight and fitted movement;
+elaborate fur and facial acting remain outside this pilot. Numerical agreement is
+technical evidence, not user visual approval. Existing gallery sources and release
+pointers are unchanged.
+
+The [review receipt](../../../packages/dcc-workbench/assets/canid/review.json) links the
+selected native edit proof, original and mutated consumer comparisons, and final
+preview by hash. Final sampled pose error is below **0.0000014 model units**; the
+largest planted-sole height or per-frame slip is below **0.0000008 model units**.
+These values apply to the recorded poses and declared contact intervals, respectively.
+
+![Canid motion study](../../../packages/dcc-workbench/assets/canid/evidence/preview.png)

@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-10",
+  "scope": "Canid workbench pilot; existing gallery releases unchanged",
+  "sourceCommit": "834dde2",
+  "technical": {
+    "nativeMutation": "passed; +0.18 rad saved source edit propagated to all three characters without remeshing",
+    "browser": "3 tests passed, including original and mutated GLB reload",
+    "maxSampledPoseErrorModelUnits": 1.32131041977151e-06,
+    "poseCoverage": "192 mesh points per character at five times per clip; three characters and three clips",
+    "maxPlantedSoleHeightModelUnits": 6.355711548167164e-07,
+    "maxPlantedSoleSlipPerFrameModelUnits": 7.481675000400963e-07,
+    "fullRepositoryGate": {
+      "command": "npm run check:full",
+      "result": "passed",
+      "maintenance": "passed; 16 Python, 48 DCC, 77 tooling tests passed",
+      "applicationTests": 253,
+      "simulations": 4,
+      "geometryTests": 127,
+      "skipped": "One unrelated usage-tool loopback test skipped by the restricted sandbox",
+      "remoteCI": "not run"
+    }
+  },
+  "visual": {
+    "reviewer": "parent",
+    "decision": "acceptable for the bounded stylized rig-and-motion pilot",
+    "views": [
+      "base native clay front/side/rear/portrait and walking poses",
+      "matched browser clay side and material portrait",
+      "live front/rear views and planted look pose",
+      "phone layout"
+    ],
+    "limits": [
+      "simplified face and coat; no detailed fur",
+      "voxel-remeshed topology with native bone-heat weights; not hand retopology",
+      "one family with fixed chain names, axes, clip durations, and contact phases",
+      "user visual approval pending"
+    ]
+  },
+  "evidence": {
+    "preview.png": "efea20c247442dbc8a1f4b0420824d7844111c72c9e87636e730a440e48f6569",
+    "edited-native-agreement.json": "9b8662ba9c26d026bb8ffaab7f9604f82f0f645b7d51ba543a56bff4adfeec3a",
+    "native-agreement.json": "6b0d73b205bfe3ae8b248f014a248aa3aa83a75785b3da48a97840fe561845ab",
+    "source-edit.json": "7fe19fd88b88854098b27eb1a3c581a089c46fb57046100718af8db1a8333914"
+  }
+}
