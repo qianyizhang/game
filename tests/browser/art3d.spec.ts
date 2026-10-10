@@ -453,10 +453,21 @@ for (const name of ['Vajra', 'Hydra', 'Catalyst', 'Banner Bearer']) {
     await page.locator('.studio-stage').screenshot({
       path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-detail.png`),
     });
-    const videoEvent = page.waitForEvent('download');
-    await page.getByRole('button', { name: 'Save animation loop' }).click();
-    await expect(page.getByRole('button', { name: 'Recording…' })).toBeDisabled();
-    const video = await videoEvent;
+    // Observe the transient disabled state before clicking, even if the response is slow.
+    const [video] = await Promise.all([
+      page.waitForEvent('download'),
+      page
+        .waitForFunction(
+          () => {
+            const button = document.querySelector<HTMLButtonElement>('.study-video');
+            return button?.disabled && button.textContent?.includes('Recording…');
+          },
+          undefined,
+          { polling: 'raf', timeout: browserBudget(5_000) },
+        )
+        .then((recording) => recording.dispose()),
+      page.getByRole('button', { name: 'Save animation loop' }).click(),
+    ]);
     await video.saveAs(info.outputPath(video.suggestedFilename()));
     const bytes = await readFile(info.outputPath(video.suggestedFilename()));
     expect(bytes.subarray(0, 4).toString('hex')).toBe('1a45dfa3');

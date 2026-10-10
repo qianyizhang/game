@@ -36,6 +36,9 @@ require supported dimensions and compare actual presented frames for visible mot
 Encoded byte counts and fixed early seek times are **replace**: a valid low-frame-rate
 WebM can be small and repeat its first frame at both timestamps. The frame callback
 follows the decoder's presentation cadence ([browser API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestVideoFrameCallback)).
+Observe the recording's disabled state and download before starting the UI action;
+recording can complete before an automation click returns. The busy-state check must
+still reject a recording button that remains enabled.
 
 Short one-shot actions can finish between automation calls. Waiting for their transient
 pause label is **replace**: keep completion, final-pose hold and replay checks, then use
