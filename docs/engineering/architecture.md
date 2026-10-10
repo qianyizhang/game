@@ -4,7 +4,7 @@ The [glossary](glossary.md) defines domain terms. [Independent game rules](decis
 
 ## Repository organization
 
-`src/games/` owns the three card studies loaded by the workshop browser shell. Each keeps its content, domain rules, application adapters and UI together; Hearth and Spire styles live under their owning `ui/` directories. Hub styles live under `src/app/`; `src/styles.css` owns global styling. The entry point retains stylesheet load order.
+`src/games/` owns the three card studies loaded by the workshop browser shell. Each keeps its content, domain rules, application adapters and UI together. Game styles live under their owning `ui/` directories; Blindside separates table controls, playing cards and shop styles. `src/styles.css` owns global tokens, element defaults and utility classes; `src/app/layout.css` owns shared shell, panels and collection layouts. Hub styles also live under `src/app/`. The entry point loads these shared/game sheets explicitly before theme overrides; responsive rules stay with their owning selectors.
 
 `packages/diablo2/` owns the independently checked Emberwake engine and UI, integrated into the same hub. Its package boundary reflects its own runtime and contracts, rather than requiring every game to become a package. `packages/session-review`, `packages/dcc-workbench` and `packages/workshop-tools` own their specialized presentation, native authoring and tooling contracts.
 

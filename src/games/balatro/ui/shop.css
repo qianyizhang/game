@@ -1,0 +1,155 @@
+.shop {
+  padding: 23px;
+}
+.shop-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  justify-content: space-between;
+}
+.shop-heading .eyebrow {
+  color: var(--gold);
+  font-size: 8px;
+  margin-bottom: 9px;
+}
+.shop-heading h2 {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0;
+}
+.shop-heading .primary {
+  font-size: 11px;
+  padding: 11px 13px;
+  white-space: nowrap;
+  gap: 0;
+}
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+.shop-card {
+  padding: 12px;
+  border-radius: 7px;
+  color: #203d32;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 198px;
+  overflow: hidden;
+}
+.joker-art {
+  background: #d8dcb8;
+}
+.consumable-art {
+  background: #d0c5db;
+}
+.shop-symbol {
+  font-size: 32px;
+  margin-bottom: 11px;
+}
+.shop-card .eyebrow {
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  color: #52674d;
+}
+.shop-card h3 {
+  font-size: 13px;
+  margin: 5px 0;
+}
+.shop-card p {
+  font-size: 10px;
+  line-height: 1.4;
+  flex: 1;
+  margin: 3px 0 11px;
+}
+.shop-card button {
+  font-size: 11px;
+  padding: 7px;
+  background: #254a37;
+  color: #eff0d7;
+  border: 0;
+}
+.shop-card button:disabled {
+  opacity: 0.55;
+}
+.shop-footer {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 16px;
+}
+.shop-footer .secondary {
+  font-size: 11px;
+  white-space: nowrap;
+  padding: 10px;
+}
+.shop-footer .small {
+  font-size: 10px;
+}
+@media (max-width: 1250px) {
+  .shop {
+    padding: 18px;
+  }
+  .shop-grid {
+    gap: 8px;
+  }
+  .shop-card {
+    padding: 10px;
+  }
+  .shop-heading h2 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 1050px) {
+  .shop-card {
+    min-height: 200px;
+  }
+  .shop-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .shop {
+    padding: 17px 12px;
+  }
+  .shop-heading {
+    gap: 10px;
+  }
+  .shop-heading h2 {
+    font-size: 19px;
+  }
+  .shop-heading .primary {
+    font-size: 10px;
+    padding: 10px;
+  }
+  .shop-heading .eyebrow {
+    font-size: 7px;
+  }
+  .shop-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .shop-card {
+    padding: 12px;
+    min-height: 204px;
+  }
+  .shop-card h3 {
+    font-size: 14px;
+  }
+  .shop-card p {
+    font-size: 11px;
+  }
+  .shop-symbol {
+    font-size: 32px;
+  }
+  .shop-footer {
+    gap: 12px;
+  }
+  .shop-footer .small {
+    font-size: 9px;
+  }
+}

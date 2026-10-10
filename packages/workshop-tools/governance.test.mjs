@@ -24,7 +24,7 @@ await test('the maintained slice and canonical document homes are accepted', () 
   );
 });
 
-await test('unhydrated native binaries name the recovery command before delivery validation', () => {
+await test('unhydrated native binaries and pose arrays name recovery before delivery validation', () => {
   const root = mkdtempSync(join(tmpdir(), 'workshop-hydration-'));
   const pointer =
     'version https://git-lfs.github.com/spec/v1\noid sha256:' + 'a'.repeat(64) + '\nsize 32\n';
@@ -33,7 +33,8 @@ await test('unhydrated native binaries name the recovery command before delivery
   const reference = 'packages/dcc-workbench/references/baseline.glb';
   const outside = '.work/sessions/rejected/source.blend';
   const metadata = 'packages/dcc-workbench/assets/bird/receipt.json';
-  const files = [source, delivery, reference, outside, metadata];
+  const poses = 'packages/dcc-workbench/assets/bird/releases/one/pose-samples.json';
+  const files = [source, delivery, reference, outside, metadata, poses];
   try {
     for (const path of files) {
       mkdirSync(dirname(join(root, path)), { recursive: true });
@@ -41,14 +42,16 @@ await test('unhydrated native binaries name the recovery command before delivery
     }
     writeFileSync(join(root, reference), Buffer.from([0x67, 0x6c, 0x54, 0x46, 2, 0, 0, 0]));
     const errors = checkNativeHydration(root, files);
-    assert.equal(errors.length, 2);
+    assert.equal(errors.length, 3);
     assert.match(
       errors[0],
       /subjects\/bird\/source\.blend.*git lfs install --local and git lfs pull/,
     );
     assert.match(errors[1], /releases\/one\/model\.glb/);
+    assert.match(errors[2], /releases\/one\/pose-samples\.json.*git lfs pull/);
     writeFileSync(join(root, source), 'BLENDER-v450');
     writeFileSync(join(root, delivery), Buffer.from([0x67, 0x6c, 0x54, 0x46, 2, 0, 0, 0]));
+    writeFileSync(join(root, poses), '{"samples":[]}');
     assert.deepEqual(checkNativeHydration(root, files), []);
   } finally {
     rmSync(root, { recursive: true, force: true });

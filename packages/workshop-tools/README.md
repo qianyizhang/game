@@ -8,9 +8,27 @@ Use `nvm use`, then run root npm commands. `npm run maintenance -- help` lists g
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `npm run maintenance -- check`           | Reject uncovered source, misplaced documents, broken local documentation links, changed pinned skills and unhydrated native binaries. Includes tracked and non-ignored untracked files; reports `managedSources` and `errors`. |
 | `npm run maintenance -- inventory`       | Read-only streamed hashes, occurrence groups and tracked-text references for artifact roots. See [inventory limits](../../docs/engineering/checks.md#retention-and-inventory).                                                 |
+| `npm run maintenance -- files`           | Rank committed Git blobs by bytes and physical lines, identify LFS payloads and large duplicate blobs, and suggest purpose-aware reviews. See the audit contract below.                                                        |
 | `npm run maintenance -- prune [--apply]` | Dry run by default; apply rechecks exact files in receipt-qualified session/disposable roots. See [retention authority](../../docs/engineering/maintenance.md#retention-and-deletion-authority).                               |
 
 Retain audit JSON in ignored session directories. The root lockfile supplies runtime dependencies; [verification contracts](../../docs/engineering/checks.md) own lint, types, tests and gate coverage. Root npm scripts are the public command entry points.
+
+## Committed-file size audit
+
+`npm run maintenance -- files` prints Markdown rankings for the largest blobs and most physical lines, plus review suggestions. Defaults: `--ref HEAD --top 20 --min-bytes 262144 --min-lines 1000`. Lines at least 2,000 bytes also receive a signal, so one-line JSON cannot hide behind a low line count. `--json` returns the complete inventory; `--top` limits only Markdown sections. For clean JSON redirection use `npm run --silent maintenance -- files --json > .work/sessions/<session>/files.json` after creating the session directory.
+
+The command resolves a commit once, enumerates its tree with NUL-delimited paths, and streams unique blobs through Git. Staged edits, deleted worktree files, untracked outputs and LFS hydration do not change the result. Binary files and invalid UTF-8 have no line count; physical lines include blanks and an unterminated last line. These are not semantic code LOC. LFS pointer bytes contribute to Git totals; declared payload bytes are reported separately. Submodules are listed without traversing them. This audits one tree, not historical repository growth, compressed pack size or network transfer.
+
+Valid JSON up to 8 MiB includes a compact-size estimate and its three largest top-level fields to help locate bulk arrays. Parsing/re-encoding is diagnostic only; it is not a byte-preserving rewrite recipe. Larger or invalid JSON still receives exact byte and line metrics. Duplicate groups use identical Git blob IDs at the byte threshold and count repeated path bytes, not proven reclaimable storage.
+
+Size flags prompt review; they do not prove complexity or obsolescence. Role hints come from paths. Inspect actual callers, producers and recovery before deciding:
+
+- **Split** source at cohesive responsibilities or separate small metadata from bulk samples. Splitting alone does not reduce total bytes.
+- **Simplify** repeated logic or future generated diagnostics after verifying the consumer contract. Preserve existing evidence hashes.
+- **Remove** only confirmed obsolete outputs with verified recovery and updated callers; this tool never deletes files or rewrites history.
+- **Keep** dependency lockfiles, editable artist sources and frozen evidence unless their owning contract changes. Review storage separately for large binaries and immutable sample data.
+
+The snapshot review in [committed-file review](../../docs/engineering/committed-file-review.md) records the first measured candidates and caller checks. This module and its integration tests join the existing tools lint/type/inventory gate and `test:tools`.
 
 ## Trace bundles
 

@@ -1,0 +1,187 @@
+.hand-cards {
+  display: flex;
+  gap: 8px;
+  padding: 13px 22px 0;
+  justify-content: center;
+  overflow-x: auto;
+  align-items: flex-start;
+  min-height: 165px;
+}
+.card-column {
+  flex: 0 1 88px;
+  min-width: 52px;
+  max-width: 93px;
+}
+.playing-card {
+  height: 125px;
+  width: 100%;
+  min-width: 52px;
+  padding: 0;
+  background: var(--cream);
+  border: 1px solid #ded4b9;
+  border-radius: 7px;
+  color: #253a31;
+  position: relative;
+  box-shadow: 0 5px 0 #041d2166;
+  transition:
+    transform 0.17s,
+    border-color 0.15s;
+  display: block;
+}
+.playing-card:hover:not(:disabled) {
+  background: #fff7df;
+  transform: translateY(-5px);
+}
+.playing-card.selected {
+  transform: translateY(-12px);
+  border: 2px solid var(--gold);
+  box-shadow:
+    0 0 0 2px #eac57455,
+    0 9px 0 #071e1c55;
+}
+.playing-card.selected:hover:not(:disabled) {
+  transform: translateY(-14px);
+}
+.playing-card:disabled {
+  opacity: 0.8;
+}
+.playing-card.hearts,
+.playing-card.diamonds {
+  color: #b64d3c;
+}
+.card-corner {
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  font-family: Georgia, serif;
+  font-size: 19px;
+  line-height: 1;
+}
+.card-corner small {
+  display: block;
+  font-size: 13px;
+  margin-top: 2px;
+}
+.card-corner.bottom {
+  top: auto;
+  left: auto;
+  bottom: 5px;
+  right: 6px;
+  transform: rotate(180deg);
+}
+.card-pip {
+  font-size: 43px;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.card-order {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding-top: 10px;
+}
+.card-order button {
+  font-size: 16px;
+  border: 0;
+  background: transparent;
+  color: #aac19d;
+  padding: 0 9px;
+}
+.enhancement-label {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font:
+    600 7px system-ui,
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #426454;
+  background: #e3dfc0;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+@media (min-width: 1600px) {
+  .card-column {
+    max-width: 105px;
+    flex-basis: 105px;
+  }
+  .playing-card {
+    height: 146px;
+  }
+  .card-pip {
+    font-size: 50px;
+  }
+  .hand-cards {
+    gap: 13px;
+  }
+}
+@media (max-width: 1250px) {
+  .card-column {
+    min-width: 45px;
+  }
+  .playing-card {
+    height: 112px;
+    min-width: 45px;
+  }
+  .hand-cards {
+    gap: 6px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+@media (max-width: 1050px) {
+  .playing-card {
+    height: 130px;
+  }
+  .card-column {
+    max-width: 90px;
+  }
+}
+@media (max-width: 700px) {
+  .hand-cards {
+    gap: 5px;
+    padding: 13px 9px 0;
+    justify-content: flex-start;
+    min-height: 145px;
+  }
+  .card-column {
+    flex: 1 0 39px;
+    min-width: 39px;
+    max-width: 65px;
+  }
+  .playing-card {
+    height: 102px;
+    min-width: 39px;
+    border-radius: 4px;
+  }
+  .card-pip {
+    font-size: 27px;
+  }
+  .card-corner {
+    font-size: 15px;
+    left: 3px;
+    top: 4px;
+  }
+  .card-corner small {
+    font-size: 10px;
+  }
+  .card-corner.bottom {
+    right: 3px;
+    bottom: 4px;
+  }
+  .card-order {
+    gap: 0;
+  }
+  .card-order button {
+    font-size: 14px;
+    padding: 0 6px;
+  }
+  .enhancement-label {
+    font-size: 5px;
+    padding: 1px;
+  }
+}

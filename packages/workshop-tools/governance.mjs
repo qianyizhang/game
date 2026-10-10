@@ -51,7 +51,10 @@ export function checkNativeHydration(root, files) {
   const errors = [];
   for (const path of files) {
     if (
-      !/^packages\/dcc-workbench\/(sources|subjects|assets|references)\/.*\.(blend|glb)$/.test(path)
+      !/^packages\/dcc-workbench\/(sources|subjects|assets|references)\/.*\.(blend|glb)$/.test(
+        path,
+      ) &&
+      !/^packages\/dcc-workbench\/assets\/(?:.*\/)?pose-samples\.json$/.test(path)
     )
       continue;
     const descriptor = openSync(resolve(root, path), 'r');

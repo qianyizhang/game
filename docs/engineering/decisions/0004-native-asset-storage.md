@@ -1,8 +1,10 @@
-# Git LFS for native asset binaries
+# Git LFS for native assets
 
 Accepted by the user on 2026-10-08: use Git LFS for `.blend` and `.glb` files under the DCC package’s `sources/`, `subjects/`, `assets/` and `references/` before batching native migration. Editable masters, immutable release snapshots and accepted comparisons stay versioned beside their provenance without repeatedly adding large binary revisions to ordinary Git. The two-pilot layout extrapolates to roughly **1.34 GiB for 26 creatures with one release each**, before retained iterations or historical comparisons; this is a planning estimate, not a measured final cohort size.
 
 Briefs, receipts, review decisions, hashes and small curated accepted captures remain in ordinary Git. Rejected candidates and full test runs remain protected local evidence under [existing retention rules](../maintenance.md#retention-and-deletion-authority); ignoring them does not authorize deletion. The scope excludes trial directories, Blender backups and the local runtime. LFS changes storage representation, not artist-source or release identity: checks continue to hash hydrated bytes.
+
+On 2026-10-10 the user extended this scope to `assets/**/pose-samples.json`: **13 files / 16,375,169 bytes** at `e04b67e`, including historical copies. These immutable native-reference arrays retain their exact bytes, paths and receipt hashes; small metadata, research outcome JSON and review receipts stay in ordinary Git. Current browser packaging and release validation still receive hydrated JSON. This avoids reformatting frozen evidence or weakening pose comparisons while reducing future ordinary-Git blob growth. Existing Git history remains intact, so this adoption does not remove earlier copies from clone history.
 
 Adoption preserves binary bytes and existing history. Matching legacy binaries enter LFS in the next deliberately staged commit along with the new subjects; no history rewrite is part of this decision. Contributors need Git LFS and hydrated files, and both CI jobs request LFS checkout before validation. Local filters and passing checks do not prove a complete remote clone.
 

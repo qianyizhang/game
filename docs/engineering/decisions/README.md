@@ -5,7 +5,7 @@ ADRs capture consequential trade-offs whose reasons would otherwise be lost. Sco
 - [0001: Independent game rules](0001-independent-game-rules.md)
 - [0002: Reconstruct from accepted commands](0002-reconstruct-from-accepted-commands.md)
 - [0003: Blender-first 3D authoring](0003-blender-first-authoring.md)
-- [0004: Git LFS for native asset binaries](0004-native-asset-storage.md)
+- [0004: Git LFS for native assets](0004-native-asset-storage.md)
 - [0005: One frontend for session review](0005-session-review-frontend.md)
 - [0006: Emberwake persistent regions and independent rendering](0006-emberwake-world-runtime.md)
 
