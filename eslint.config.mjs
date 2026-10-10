@@ -5,6 +5,7 @@ import tseslint from 'typescript-eslint';
 
 const typedFiles = [
   'src/**/*.{ts,tsx}',
+  'packages/diablo2/**/*.{ts,tsx}',
   'packages/session-review/**/*.{ts,tsx}',
   'tests/**/*.ts',
   '*.config.ts',
@@ -37,7 +38,7 @@ export default [
     },
   },
   {
-    files: ['packages/session-review/src/**/*.{ts,tsx}'],
+    files: ['packages/session-review/src/**/*.{ts,tsx}', 'packages/diablo2/src/ui/**/*.{ts,tsx}'],
     plugins: { 'react-hooks': reactHooks },
     rules: {
       'react-hooks/rules-of-hooks': 'error',

@@ -1,12 +1,14 @@
 # Card Workshop
 
-Three complete, local card-game studies for learning game design and having fun changing the rules. Choose a game from the sidebar; each keeps its own save.
+Three local card-game studies and a Diablo II-style action RPG for learning game design and changing the rules. Choose a game from the sidebar; each keeps its own save.
 
 | Playable game                               | Core loop                                                                                      | Curated content                                                                                 |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | **Blindside** · Balatro                     | Build poker hands, score ordered effects, shop and beat eight antes, with optional blind skips | 60 Jokers, 18 consumables, six packs, six vouchers, four skip tags, eight bosses                |
 | **Slay the Spire** · Ironclad & Silent      | Read enemy intent, spend energy, shape a deck and choose a route through three acts            | 95 obtainable cards, 33 relics, eight potions, nine boss encounters, Ascensions 0–5             |
 | **Last Hearth** · Hearthstone Battlegrounds | Recruit, upgrade, form triples, position a warband and auto-battle seven local rivals          | 60 recruits across six tiers, four tokens, five heroes, eight tavern spells, finite shared pool |
+
+| **[Emberwake](docs/guide/emberwake.md)** · Diablo II | Explore connected maps, fight in real time, collect gear and grow a hero | Three heroes, nine skills, four acts with final bosses, editable content packs |
 
 Blindside and Last Hearth use original content names. Slay the Spire uses original-game identities and researched mechanics with curated Ironclad and Silent pools; all illustrations and code are local. These are curated studies with explicit simplifications, not exact commercial-game replicas.
 
@@ -71,6 +73,8 @@ The **[creation trace visualizer](docs/engineering/trace-visualizer.md)** is a s
 Mods are trusted local TypeScript edits in `src/mods/`. Change a definition, keep its text consistent, bump that game's rules version if replay meaning changes, and start a fresh run. Rules versions deliberately reject incompatible histories; there are no automatic migrations or arbitrary third-party plugin loading.
 
 ## Scope and differences
+
+- **Emberwake:** an original four-act action RPG in [its own package](packages/diablo2/README.md), with grid inventory, equipment, town services, waypoints, death recovery and deterministic saves. JSON content packs support hero/spell/item/boss/map mods. Simplified combat and visuals; no full Diablo II catalogue, multiplayer or exact frame tables.
 
 - **Blindside:** immediate Buffoon/Celestial/Standard pack choices, permanent vouchers and Small/Big Blind skip tags. Original values, bosses and growth timing; no Arcana/Spectral packs, seals, editions, unlocks or endless mode.
 - **Slay the Spire:** Ironclad and Silent at A0–A5; 15 rooms plus a seeded boss per act. All nine boss encounter families are present. Curated cards/enemies/events; no other classes, A6–A20, keys or Act IV. HP, move weights, shops and map generation retain documented simplifications.

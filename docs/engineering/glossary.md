@@ -1,6 +1,6 @@
 # Card Workshop vocabulary
 
-Canonical meanings for the workshop and its three games. Read the relevant context when naming a feature, interface or test; the same word can have a different role in another game.
+Canonical meanings for the workshop and its games. Read the relevant context when naming a feature, interface or test; the same word can have a different role in another game.
 
 ## Workshop play and replay
 
@@ -134,3 +134,17 @@ _Avoid_: Actor, when counting conversations; turn, when referring to a whole con
 **Goal continuation**: A runtime-provided request to continue an existing objective, distinct from a newly authored user request.
 
 **Auto-review**: Approval-review activity identified by its recorded review-session metadata or approval-assessment envelope. Its presence in a log does not establish which context a different model received.
+
+## Emberwake
+
+**Act**: One chapter of the lantern story, with an explorable map, ward objectives and a final boss.
+
+**Ward**: A map objective that must be activated before its final boss becomes vulnerable.
+
+**Refuge**: The safe town where a hero heals, purchases supplies, stores loot and travels to unlocked acts.
+
+**Attuned waypoint**: A discovered travel point that remains available from the refuge during the journey.
+
+**Ember rune**: Loot consumed to improve an equipped item's available socket.
+
+**Grave**: The field location holding recoverable gold after a hero's death. It does not hold the hero's equipment in this baseline.

@@ -1,0 +1,20 @@
+{
+  "name": "@card-workshop/diablo2",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Emberwake: a moddable, seeded Diablo II-style action RPG",
+  "exports": {
+    ".": "./src/ui/DiabloApp.tsx",
+    "./rules": "./src/domain/game.ts",
+    "./content": "./src/domain/content.ts",
+    "./session": "./src/application/session.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --root ../.. --config vite.config.ts --project application packages/diablo2"
+  },
+  "dependencies": {
+    "react": "19.3.0"
+  }
+}

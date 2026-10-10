@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { GamePicker, type GameId } from './GamePicker';
 import './Hub.css';
 
+const DiabloApp = lazy(() => import('@card-workshop/diablo2'));
 const BalatroApp = lazy(() => import('./App'));
 const Challenges = lazy(() => import('./Challenges'));
 const ArtStudio = lazy(() => import('../art3d/ArtStudio'));
@@ -90,8 +91,11 @@ export default function Hub() {
   }, [challengeOpen]);
   const [game, setGame] = useState<GameId>(() => {
     try {
+      if (new URLSearchParams(location.search).get('game') === 'diablo2') return 'diablo2';
       const saved = localStorage.getItem(KEY);
-      return saved === 'spire' || saved === 'battlegrounds' ? saved : 'balatro';
+      return saved === 'spire' || saved === 'battlegrounds' || saved === 'diablo2'
+        ? saved
+        : 'balatro';
     } catch {
       return 'balatro';
     }
@@ -101,11 +105,16 @@ export default function Hub() {
       balatro: 'Blindside',
       spire: 'Slay the Spire',
       battlegrounds: 'Last Hearth',
+      diablo2: 'Emberwake',
     };
     document.title = `${dccOpen ? 'DCC Workbench' : artOpen ? '3D Object Studies' : challengeOpen ? 'Challenges' : names[game]} · Card Workshop`;
   }, [game, challengeOpen, artOpen, dccOpen]);
   const change = (id: GameId) => {
     setGame(id);
+    const url = new URL(location.href);
+    if (id === 'diablo2') url.searchParams.set('game', 'diablo2');
+    else url.searchParams.delete('game');
+    history.replaceState(null, '', url);
     try {
       localStorage.setItem(KEY, id);
     } catch {
@@ -125,7 +134,12 @@ export default function Hub() {
               </main>
             }
           >
-            {game === 'spire' ? (
+            {game === 'diablo2' ? (
+              <div>
+                <GamePicker current={game} onSwitch={change} />
+                <DiabloApp />
+              </div>
+            ) : game === 'spire' ? (
               <SpireApp onSwitch={change} onChallenges={() => showChallenges(true)} />
             ) : game === 'battlegrounds' ? (
               <BattlegroundsApp onSwitch={change} onChallenges={() => showChallenges(true)} />
@@ -146,10 +160,20 @@ export default function Hub() {
             <Challenges onExit={() => showChallenges(false)} />
           </Suspense>
         )}
-        <button ref={dccEntry} className="dcc-workbench-entry" onClick={() => showDcc(true)}>
+        <button
+          hidden={game === 'diablo2'}
+          ref={dccEntry}
+          className="dcc-workbench-entry"
+          onClick={() => showDcc(true)}
+        >
           ↗ DCC workbench
         </button>
-        <button ref={artEntry} className="art-studio-entry" onClick={() => showArt(true)}>
+        <button
+          hidden={game === 'diablo2'}
+          ref={artEntry}
+          className="art-studio-entry"
+          onClick={() => showArt(true)}
+        >
           ↗ 3D art gallery
         </button>
       </div>
