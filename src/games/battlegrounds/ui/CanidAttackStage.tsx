@@ -6,7 +6,7 @@ import {
   createAttackStage,
   type AttackPose,
 } from '../../../../packages/dcc-workbench/src/attack-stage';
-import type { CombatResult } from '../domain/types';
+import type { CombatFrame, CombatResult } from '../domain/types';
 import { MINION_BY_ID } from '../content/minions';
 import { MinionCard } from './MinionCard';
 import './canid-attack.css';
@@ -25,18 +25,35 @@ export default function CanidAttackStage({
   progress: number;
   inspect: boolean;
 }) {
-  const frame = result.frames[index];
-  const attacker = frame.boards.flat().find((u) => u.id === frame.attacker);
-  const target = frame.boards.flat().find((u) => u.id === frame.target);
-  const attacking = attacker?.definitionId === 'stray' && !!target;
-  const alive = frame.boards.flat().some((u) => u.definitionId === 'stray' && u.health > 0);
+  const frameIndex = Math.max(0, Math.min(index, result.frames.length - 1));
+  const frame = result.frames[frameIndex];
+  if (!frame) return null;
   const ordinal = result.frames
-    .slice(0, index)
+    .slice(0, frameIndex)
     .filter(
       (f) =>
         f.attacker &&
         f.boards.flat().some((u) => u.id === f.attacker && u.definitionId === 'stray'),
     ).length;
+  return <AttackFrame frame={frame} ordinal={ordinal} progress={progress} inspect={inspect} />;
+}
+
+function AttackFrame({
+  frame,
+  ordinal,
+  progress,
+  inspect,
+}: {
+  frame: CombatFrame;
+  ordinal: number;
+  progress: number;
+  inspect: boolean;
+}) {
+  const units = frame.boards.flat();
+  const attacker = units.find((u) => u.id === frame.attacker);
+  const target = units.find((u) => u.id === frame.target);
+  const attacking = attacker?.definitionId === 'stray' && !!target;
+  const alive = units.some((u) => u.definitionId === 'stray' && u.health > 0);
   const clip = attacking ? attacks[ordinal % attacks.length] : 'idle';
   const contact =
     (library[clip].markers.find((m) => m.name === 'contact')?.time ?? 0) / library[clip].seconds;
@@ -54,12 +71,14 @@ export default function CanidAttackStage({
     visible: attacking || alive,
   };
   useEffect(() => {
+    const element = host.current;
+    if (!element) return;
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
     const changed = () => setReduced(preference.matches);
     preference.addEventListener('change', changed);
     let dispose: (() => void) | undefined;
     try {
-      dispose = createAttackStage(host.current!, model, library, () => current.current, setStatus);
+      dispose = createAttackStage(element, model, library, () => current.current, setStatus);
     } catch {
       setStatus('3D unavailable; the combat replay remains available below.');
     }

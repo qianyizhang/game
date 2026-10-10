@@ -239,6 +239,39 @@ test('visible playback keeps elapsed time after a slow render frame', async ({ p
   await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
 });
 
+test('attack stage clamps stale indices and recovers across empty timelines', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.goto('/');
+  const render = (index: number, empty = false) =>
+    page.evaluate(
+      async ({ index, empty }) => {
+        const module = '/tests/browser/canid-stage.ts';
+        const { renderAttackStage } = (await import(module)) as typeof import('./canid-stage');
+        renderAttackStage(index, empty);
+      },
+      { index, empty },
+    );
+  const stage = page.getByRole('region', { name: 'Briar Stray attack stage' });
+  const canvas = page.locator('.canid-attack-canvas');
+  await render(0, true);
+  await expect(stage).toHaveCount(0);
+  await render(0);
+  await expect(canvas).toHaveAttribute('data-ready', 'true');
+  await expect(canvas).toHaveAttribute('data-clip', 'lunge');
+  await render(99);
+  await expect(canvas).toHaveAttribute('data-clip', 'bite');
+  await render(-99);
+  await expect(canvas).toHaveAttribute('data-clip', 'lunge');
+  await render(0, true);
+  await expect(stage).toHaveCount(0);
+  await render(1);
+  await expect(canvas).toHaveAttribute('data-ready', 'true');
+  await expect(canvas).toHaveAttribute('data-clip', 'bite');
+  await expect(canvas.locator('canvas')).toHaveCount(1);
+  expect(errors).toEqual([]);
+});
+
 test('Last Hearth presents resolved Stray attacks on the replay clock without changing the result', async ({
   page,
 }, info) => {

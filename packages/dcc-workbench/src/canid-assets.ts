@@ -23,7 +23,8 @@ import motionSource from '../subjects/canid/refined/motion.blend?url';
 
 export type Character = 'ash' | 'russet' | 'moss';
 export type Revision = 'refined' | 'baseline' | 'comparison';
-export const clips = readMotions(ashMetadata);
+const characterMotions = [ashMetadata, russetMetadata, mossMetadata].map(readMotions);
+export const clips = characterMotions[0];
 export type Clip = string;
 export const baselineClips = {
   idle: { name: 'Breathe', seconds: 4 },
@@ -45,7 +46,7 @@ export const characters = labels.map((label, i) => ({
   ...label,
   model: [ashModel, russetModel, mossModel][i],
   source: [ashSource, russetSource, mossSource][i],
-  motions: readMotions([ashMetadata, russetMetadata, mossMetadata][i]),
+  motions: characterMotions[i],
 }));
 export const baselineCharacters = labels.map((label, i) => ({
   ...label,
