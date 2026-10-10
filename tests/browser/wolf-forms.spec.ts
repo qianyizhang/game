@@ -1,3 +1,4 @@
+import { browserBudget } from './budget';
 import { expect, test } from '@playwright/test';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
@@ -18,7 +19,7 @@ const sha256 = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex
 test('Wolf form selection and keyboard alignment deliver exact separate models and sources', async ({
   page,
 }, info) => {
-  test.setTimeout(150_000);
+  test.setTimeout(browserBudget(150_000));
   const registry = loadRegistry(root);
   const base = resolvePublication(root, getAsset(registry, 'wolf'));
   const protectedPaths = [
@@ -137,7 +138,7 @@ for (const entry of forms) {
   test(`${entry.title} deep link preserves motion preferences and fits phone views`, async ({
     page,
   }, info) => {
-    test.setTimeout(60_000);
+    test.setTimeout(browserBudget(60_000));
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(`/?art=3d&study=wolf&form=${entry.form}`);
     const render = page.locator('.study-render');

@@ -45,4 +45,6 @@ The first complete hosted geometry run passed 118 of 127 tests; the other nine e
 
 Browser CI stops at its first failed case so diagnostics and artifacts survive before repeated journeys consume the job limit. It runs independently of maintenance for faster feedback; both jobs remain required for a successful workflow, and successful browser runs retain the full selected test matrix.
 
+The hosted graphics trace rendered Nightjar correctly but exhausted the default test budget during contact-sheet screenshots and orbit dragging; scene readiness also nearly consumed the five-second assertion budget. Browser operation limits now have a four-times CI margin through a shared budget helper. Contact-sheet generation remains available in the opt-in `visual-review` project. Functional CI retains every asset's loading, motion, phone layout and export checks, with a reduced-motion rigid representative protecting pointer orbit independently of animation.
+
 Publication requires uploading the historical LFS objects, exact leases for each rewritten remote branch and verification of the final main revision. Local tests and storage checks do not establish successful remote CI; its run and fresh-clone receipts are separate session evidence.

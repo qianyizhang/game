@@ -24,6 +24,13 @@ unit test. Keep loading, delivered geometry/animation validity and visible motio
 for every asset still offered to users. A representative matrix is an explicit coverage
 choice, not permission to silently drop per-asset delivery checks.
 
+The 3D contact-sheet cluster is **keep, opt-in** through `npm run test:browser:review`.
+It generates views for human inspection, including clay and motion images. The functional
+browser project keeps loading, visible motion, phone layout and delivered GLB checks for
+every asset. Named camera controls remain in those journeys; pointer orbit is checked on
+a reduced-motion rigid representative so animation cannot masquerade as successful dragging.
+CI does not generate all 29 contact sheets or establish aesthetic acceptance.
+
 Prefer outcomes over incidental construction: supported motion, fitted attachments and
 resource release matter; exact mesh counts, vertex counts, helper calls and intermediate
 callback sequences usually do not. A coordinate or name can remain in a narrow legacy

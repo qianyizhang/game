@@ -1,9 +1,10 @@
+import { browserBudget } from './budget';
 import { resolve } from 'node:path';
 import { test, expect } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 
 test('canid clips support matched review and downloads', async ({ page }, info) => {
-  test.setTimeout(90_000);
+  test.setTimeout(browserBudget(90_000));
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/?workbench=dcc&compare=canid');
@@ -196,7 +197,7 @@ test('edited shared motion survives export and consumer reload for every charact
 test('actions hold their final pose, replay, expose phase markers, and show scene travel', async ({
   page,
 }, info) => {
-  test.setTimeout(60_000);
+  test.setTimeout(browserBudget(60_000));
   await page.goto('/?workbench=dcc&compare=canid');
   const viewer = page.locator('.canid-render');
   await expect(viewer).toHaveAttribute('data-ready', 'true');
@@ -291,7 +292,7 @@ test('attack stage clamps stale indices and recovers across empty timelines', as
 test('Last Hearth presents resolved Stray attacks on the replay clock without changing the result', async ({
   page,
 }, info) => {
-  test.setTimeout(60_000);
+  test.setTimeout(browserBudget(60_000));
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');

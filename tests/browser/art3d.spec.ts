@@ -1,3 +1,4 @@
+import { browserBudget } from './budget';
 import { gltfJson } from './gltf-json';
 import type { StudyId } from '../../src/art3d/catalogue';
 import { expect, test } from '@playwright/test';
@@ -58,7 +59,7 @@ for (const name of studyNames) {
     page,
   }, info) => {
     // Each study owns its browser/export budget; a slow subject cannot consume the next one.
-    test.setTimeout(60_000);
+    test.setTimeout(browserBudget(60_000));
     const delivery = nativeDeliveries.get(name.toLowerCase().replaceAll(' ', ''));
     const errors: string[] = [];
     const normalWarnings: string[] = [];
@@ -380,7 +381,7 @@ for (const studyName of ['Vajra', 'Hydra', 'Banner Bearer']) {
     await page.goto(`/?art=3d&study=${studyName.toLowerCase().replaceAll(' ', '')}`);
     // Cold direct routes construct the implicit surfaces before mounting the gallery.
     await expect(page.getByRole('region', { name: `${studyName} 3D study` })).toBeVisible({
-      timeout: 15_000,
+      timeout: browserBudget(15_000),
     });
     await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
     await expect(page.getByRole('button', { name: 'Slow turntable' })).toHaveAttribute(
@@ -392,6 +393,21 @@ for (const studyName of ['Vajra', 'Hydra', 'Banner Bearer']) {
       'false',
     );
     await expect(page).toHaveTitle('3D Object Studies · Card Workshop');
+    if (studyName === 'Vajra') {
+      // Reduced motion keeps this comparison about pointer orbit, not animation.
+      const canvas = page.locator('canvas');
+      const before = await canvas.screenshot();
+      const box = (await canvas.boundingBox())!;
+      const x = box.x + box.width * 0.25,
+        y = box.y + box.height * 0.5;
+      await page.mouse.move(x, y);
+      await page.mouse.down();
+      await page.mouse.move(x + box.height / 2, y, { steps: 4 });
+      await page.mouse.up();
+      await expect(async () =>
+        expect((await canvas.screenshot()).equals(before)).toBe(false),
+      ).toPass({ timeout: browserBudget(5_000) });
+    }
   });
 }
 

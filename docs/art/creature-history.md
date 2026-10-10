@@ -2,6 +2,8 @@
 
 Historical review and authorship evidence from 2026-10-06. The earlier Hydra and Nightjar were rejected; the living Hydra received positive user feedback. Final Nightjar and Phoenix are mixed-authorship rebuilds. The [aesthetic rulebook](art-direction.md) serves as the visual standard. Retired intermediate paths are recorded in [cleanup triage](../engineering/history/cleanup-triage.md).
 
+For contact sheets on current main, use `npm run test:browser:review` with the same filters and output arguments. The command recorded below belongs to the historical review configuration.
+
 ## Sol artwork review — 2026-10-06
 
 The user requested three 3D samples implemented by **GPT-6.1-Sol**, independently audited and revised against the stylized sculpture standard.

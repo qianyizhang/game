@@ -60,6 +60,7 @@ npm run check          # Maintained checks, application tests, and simulations (
 npm run check:full     # check plus geometry regressions; required for 3D changes
 npm run test:geometry  # Geometry regressions only
 npm run test:browser   # Disposable Chrome profile browser suite
+npm run test:browser:review # Opt-in 3D contact sheets for human review
 npm run playtest       # 8 Blindside + 12 Slay the Spire + 12 Last Hearth fixed-seed runs
 npm run format         # Format source, fixtures, and documentation
 ```

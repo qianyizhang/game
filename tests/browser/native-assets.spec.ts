@@ -1,3 +1,4 @@
+import { browserBudget } from './budget';
 import { expect, test } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -93,7 +94,7 @@ test('saved native candidate agrees with its delivered anatomy and fitted motion
 }, info) => {
   const candidate = process.env.DCC_SAVED_CANDIDATE;
   test.skip(!candidate, 'Set DCC_SAVED_CANDIDATE to a sealed native candidate directory.');
-  test.setTimeout(90000);
+  test.setTimeout(browserBudget(90000));
   const samples = JSON.parse(
     await readFile(join(candidate!, 'pose-samples.json'), 'utf8'),
   ) as PublishedSavedPoseSamples;

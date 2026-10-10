@@ -1,3 +1,4 @@
+import { browserBudget } from './budget';
 import { expect, test } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { playCampaign } from '../../packages/diablo2/src/domain/campaign-policy';
@@ -20,7 +21,7 @@ const review = 'test-results/emberwake';
 test('real hero selection, town shopping, movement, spells, pause, and save reload', async ({
   page,
 }) => {
-  test.setTimeout(45000);
+  test.setTimeout(browserBudget(45000));
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/?game=diablo2');
@@ -81,7 +82,7 @@ test('real hero selection, town shopping, movement, spells, pause, and save relo
         const text = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
         return currentWorld(importSession(text).state).enemies.find((e) => e.uid === foe.uid)?.hp;
       },
-      { timeout: 15000 },
+      { timeout: browserBudget(15000) },
     )
     .toBe(0);
   await page.screenshot({ path: `${review}/briarfen.png` });
@@ -100,7 +101,7 @@ test('real hero selection, town shopping, movement, spells, pause, and save relo
 test('campaign replay reaches the ending; mod import preserves invalid-save recovery', async ({
   page,
 }) => {
-  test.setTimeout(60000);
+  test.setTimeout(browserBudget(60000));
   const { session } = playCampaign('necromancer');
   await page.goto('/?game=diablo2');
   await page
@@ -151,7 +152,7 @@ test('campaign replay reaches the ending; mod import preserves invalid-save reco
 test('real stairs traverse persistent dungeon floors; legacy demo storage stays recoverable', async ({
   page,
 }) => {
-  test.setTimeout(45000);
+  test.setTimeout(browserBudget(45000));
   const legacy = 'original-demo-bytes';
   await page.addInitScript(
     (value) => localStorage.setItem('card-workshop.emberwake.v1', value),
@@ -213,7 +214,7 @@ test('real stairs traverse persistent dungeon floors; legacy demo storage stays 
 test('developer atlas reaches every region and floor, reloads separately, and preserves the campaign', async ({
   page,
 }) => {
-  test.setTimeout(90000);
+  test.setTimeout(browserBudget(90000));
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/?game=diablo2');

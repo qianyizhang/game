@@ -1,7 +1,8 @@
+import { browserBudget } from './budget';
 import { expect, test } from '@playwright/test';
 
 test('Hydra comparison keeps views, clock and baselines matched', async ({ page }, info) => {
-  test.setTimeout(90000);
+  test.setTimeout(browserBudget(90000));
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/');

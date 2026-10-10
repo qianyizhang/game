@@ -1,3 +1,4 @@
+import { browserBudget } from './budget';
 import { expect, test } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -8,7 +9,7 @@ import { objectValue, isList } from '../../src/shared/json';
 test('DCC pilot carries the concept into an animated downloadable asset', async ({
   page,
 }, info) => {
-  test.setTimeout(90000);
+  test.setTimeout(browserBudget(90000));
   const packageRoot = resolve('packages/dcc-workbench');
   const published = resolvePublication(
     packageRoot,
