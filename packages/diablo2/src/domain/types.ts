@@ -254,6 +254,7 @@ export interface State {
   player: Player;
   portal: { act: number; region: string; position: Point } | null;
   log: string[];
+  sandbox?: { god: boolean; reveal: boolean };
 }
 export type Command =
   | { type: 'advance'; ticks: number }
@@ -272,9 +273,13 @@ export type Command =
   | { type: 'buy'; kind: 'health' | 'mana' | 'gear' }
   | { type: 'attribute'; attribute: Attribute }
   | { type: 'learn'; skill: string }
-  | { type: 'run'; enabled: boolean };
+  | { type: 'run'; enabled: boolean }
+  | { type: 'dev-jump'; region: string; landing: 'entrance' | 'ward' | 'boss'; reset: boolean }
+  | { type: 'dev-options'; god: boolean; reveal: boolean }
+  | { type: 'dev-refill' | 'dev-corpses' };
 export interface Replay {
   format: 'emberwake-replay-v2';
+  mode?: 'sandbox';
   rulesVersion: string;
   content: Content;
   seed: string;

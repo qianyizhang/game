@@ -1,12 +1,13 @@
 import { BASE_CONTENT } from './content';
 import { validateContent } from './validate';
 import type { Command, Content, Point, State, World } from './types';
-import { findPath, tilesFor, distance, reveal, lineOfSight, walkable } from './maps';
+import { findPath, tilesFor, distance, reveal, lineOfSight, walkable, bodyFits } from './maps';
 import { hashSeed, choose, note, random } from './random';
 import { carry, rollItem, freeCell } from './loot';
 import { cast, spawnEnemy, tick } from './combat';
 import { stats } from './stats';
 import { currentRegion, currentWorld, wardsLit, portalOpen } from './world';
+import { equipTestCharacter, refill, landingFor, SANDBOX_RULES_VERSION } from './sandbox';
 export { stats } from './stats';
 export { validateContent } from './validate';
 export type { Command, State, Content } from './types';
@@ -66,7 +67,12 @@ function usePortal(state: State, content: Content, id: string): string | null {
   }
   return null;
 }
-export function createGame(seed: string, heroId: string, pack: Content = BASE_CONTENT): State {
+export function createGame(
+  seed: string,
+  heroId: string,
+  pack: Content = BASE_CONTENT,
+  sandbox = false,
+): State {
   const content = validateContent(pack);
   const hero = content.heroes.find((h) => h.id === heroId);
   if (!hero) throw new Error('Unknown hero');
@@ -184,6 +190,7 @@ export function createGame(seed: string, heroId: string, pack: Content = BASE_CO
       spawnEnemy(state, content, world, map.boss, map.bossPosition, true);
   }
   state.act = 0;
+  if (sandbox) equipTestCharacter(state, content);
   return state;
 }
 function execute(state: State, content: Content, command: Command): string | null {
@@ -199,8 +206,55 @@ function execute(state: State, content: Content, command: Command): string | nul
     p.mana = stats(state, content).maxMana;
     return null;
   }
-  if (state.status !== 'playing') return 'This journey has ended.';
+  if (command.type.startsWith('dev-') && !state.sandbox)
+    return 'Developer commands require a sandbox journey.';
+  if (state.status !== 'playing' && !command.type.startsWith('dev-'))
+    return 'This journey has ended.';
   switch (command.type) {
+    case 'dev-jump': {
+      if (!state.sandbox) return 'Developer commands require a sandbox journey.';
+      const region = content.regions.find((r) => r.id === command.region);
+      if (!region) return 'Unknown region.';
+      if (command.reset)
+        state.worlds[region.id] = createGame(state.seed, state.hero, content).worlds[region.id];
+      const position = landingFor(content, region.id, command.landing, state.worlds[region.id]);
+      if (!position) return 'No clear arrival pad for this location.';
+      state.status = 'playing';
+      state.portal = null;
+      state.player.corpse = null;
+      refill(state, content);
+      enter(state, content, region.id, position);
+      note(
+        state,
+        `Developer jump: ${region.name}${region.floor ? ' · Floor ' + region.floor : ''}.`,
+      );
+      return null;
+    }
+    case 'dev-options':
+      if (!state.sandbox) return 'Developer commands require a sandbox journey.';
+      state.sandbox = { god: command.god, reveal: command.reveal };
+      if (command.god) refill(state, content);
+      return null;
+    case 'dev-refill':
+      if (!state.sandbox) return 'Developer commands require a sandbox journey.';
+      refill(state, content);
+      return null;
+    case 'dev-corpses': {
+      if (!state.sandbox || state.location !== 'field')
+        return 'Practice bodies require the sandbox field.';
+      for (const [x, y] of [
+        [2, 0],
+        [-2, 0],
+        [0, 2],
+      ]) {
+        const at = { x: p.x + x, y: p.y + y };
+        if (!bodyFits(world, at)) continue;
+        const body = spawnEnemy(state, content, world, map.monsters[0], at);
+        body.hp = 0;
+      }
+      note(state, 'Practice bodies placed nearby. Raise skeleton consumes one body.');
+      return null;
+    }
     case 'advance':
       for (let n = 0; n < command.ticks && state.status === 'playing'; n++) tick(state, content);
       return null;
@@ -371,7 +425,8 @@ function execute(state: State, content: Content, command: Command): string | nul
       const enemy = world.enemies.find((e) => e.uid === command.target && e.hp > 0);
       if (!enemy) return 'Choose a living enemy.';
       if (
-        !world.seen.includes(Math.floor(enemy.y) * map.width + Math.floor(enemy.x)) ||
+        (!state.sandbox?.reveal &&
+          !world.seen.includes(Math.floor(enemy.y) * map.width + Math.floor(enemy.x))) ||
         !lineOfSight(world, p, enemy)
       )
         return 'That enemy is not visible.';
@@ -447,6 +502,18 @@ export function validCommand(value: unknown): value is Command {
     return num(p.x, dir ? -1 : 0, dir ? 1 : 128) && num(p.y, dir ? -1 : 0, dir ? 1 : 128);
   };
   switch (c.type) {
+    case 'dev-jump':
+      return (
+        typeof c.region === 'string' &&
+        c.region.length <= 64 &&
+        ['entrance', 'ward', 'boss'].includes(String(c.landing)) &&
+        typeof c.reset === 'boolean'
+      );
+    case 'dev-options':
+      return typeof c.god === 'boolean' && typeof c.reveal === 'boolean';
+    case 'dev-refill':
+    case 'dev-corpses':
+      return true;
     case 'advance':
       return num(c.ticks, 1, 50) && Number.isInteger(c.ticks);
     case 'move':
@@ -499,7 +566,7 @@ export function applyCommand(
 ): { state: State; accepted: boolean; error: string | null } {
   if (!validCommand(command)) return { state, accepted: false, error: 'Malformed command.' };
   if (
-    state.rulesVersion !== RULES_VERSION ||
+    state.rulesVersion !== (state.sandbox ? SANDBOX_RULES_VERSION : RULES_VERSION) ||
     state.contentId !== content.id ||
     state.contentVersion !== content.version
   )
@@ -507,6 +574,7 @@ export function applyCommand(
   // Immutable snapshots share inactive regions and terrain; only touched worlds are cloned.
   const next: State = {
     ...state,
+    ...(state.sandbox ? { sandbox: { ...state.sandbox } } : {}),
     player: structuredClone(state.player),
     log: [...state.log],
     worlds: { ...state.worlds },

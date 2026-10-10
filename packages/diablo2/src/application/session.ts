@@ -7,18 +7,29 @@ import {
   validateContent,
 } from '../domain/game';
 import type { Command, Content, Replay, State } from '../domain/types';
+import { SANDBOX_RULES_VERSION } from '../domain/sandbox';
+export const SANDBOX_SAVE_KEY = 'card-workshop.emberwake.sandbox.v1';
+export const ACTIVE_MODE_KEY = 'card-workshop.emberwake.active-mode';
+export const saveKey = (session: Session): string =>
+  session.replay.mode === 'sandbox' ? SANDBOX_SAVE_KEY : SAVE_KEY;
 export const SAVE_KEY = 'card-workshop.emberwake.v2';
 export interface Session {
   state: State;
   replay: Replay;
 }
-export function newSession(seed: string, hero: string, content: Content = BASE_CONTENT): Session {
+export function newSession(
+  seed: string,
+  hero: string,
+  content: Content = BASE_CONTENT,
+  sandbox = false,
+): Session {
   const pack = validateContent(content);
   return {
-    state: createGame(seed, hero, pack),
+    state: createGame(seed, hero, pack, sandbox),
     replay: {
       format: 'emberwake-replay-v2',
-      rulesVersion: RULES_VERSION,
+      rulesVersion: sandbox ? SANDBOX_RULES_VERSION : RULES_VERSION,
+      ...(sandbox ? { mode: 'sandbox' as const } : {}),
       content: pack,
       seed,
       hero,
@@ -60,14 +71,18 @@ export function importSession(text: string): Session {
   const value: unknown = JSON.parse(text);
   if (!value || typeof value !== 'object') throw new Error('Invalid save.');
   const r = value as Record<string, unknown>;
-  if (r.format !== 'emberwake-replay-v2' || r.rulesVersion !== RULES_VERSION)
+  if (
+    r.format !== 'emberwake-replay-v2' ||
+    r.rulesVersion !== (r.mode === 'sandbox' ? SANDBOX_RULES_VERSION : RULES_VERSION) ||
+    (r.mode !== undefined && r.mode !== 'sandbox')
+  )
     throw new Error('Unsupported save or rules version.');
   if (typeof r.seed !== 'string' || r.seed.length > 100 || typeof r.hero !== 'string')
     throw new Error('Invalid hero or seed.');
   if (!Array.isArray(r.commands) || r.commands.length > 50000)
     throw new Error('Invalid command history.');
   const content = validateContent(r.content);
-  let session = newSession(r.seed, r.hero, content);
+  let session = newSession(r.seed, r.hero, content, r.mode === 'sandbox');
   let ticks = 0;
   for (const command of r.commands as unknown[]) {
     if (!validCommand(command)) throw new Error('Malformed replay command.');

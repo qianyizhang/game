@@ -3,11 +3,12 @@ export const currentRegion = (state: State, content: Content): RegionDef =>
   content.regions.find((r) => r.id === state.region)!;
 export const currentWorld = (state: State): World => state.worlds[state.region];
 export const wardsLit = (state: State, content: Content): boolean =>
-  content.acts[state.act].wards.every((id) => state.worlds[id].ward);
+  !!state.sandbox || content.acts[state.act].wards.every((id) => state.worlds[id].ward);
 export const bossCleared = (state: State, content: Content): boolean =>
   state.worlds[content.acts[state.act].bossRegion].bossDefeated;
 export function portalOpen(state: State, content: Content, portal: RegionPortal): boolean {
   return (
+    !!state.sandbox ||
     portal.requires === 'none' ||
     (portal.requires === 'wards' ? wardsLit(state, content) : bossCleared(state, content))
   );

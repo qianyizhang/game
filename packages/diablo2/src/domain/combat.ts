@@ -96,6 +96,7 @@ export function hitEnemy(
   }
 }
 function hurt(state: State, content: Content, damage: number, element: Element): void {
+  if (state.sandbox?.god) return;
   const p = state.player;
   const s = stats(state, content);
   const mitigation = element === 'physical' ? s.armor / (s.armor + 70) : s.resist / 100;
@@ -204,6 +205,12 @@ export function tick(state: State, content: Content): void {
   state.tick++;
   const p = state.player;
   const s = stats(state, content);
+  if (state.sandbox?.god) {
+    p.hp = s.maxHp;
+    p.mana = s.maxMana;
+    p.stamina = 100;
+    p.slow = 0;
+  }
   p.attackCooldown = Math.max(0, p.attackCooldown - dt);
   p.slow = Math.max(0, p.slow - dt);
   for (const key of Object.keys(p.cooldowns)) p.cooldowns[key] = Math.max(0, p.cooldowns[key] - dt);
@@ -244,6 +251,7 @@ export function tick(state: State, content: Content): void {
       }
     }
   } else p.stamina = Math.min(100, p.stamina + 0.65 * dt);
+  if (state.sandbox?.god) p.stamina = 100;
   reveal(world, p);
   for (const enemy of [...world.enemies]) {
     if (enemy.hp <= 0) continue;
@@ -392,7 +400,7 @@ export function cast(
   const rank = p.skills[skillId] ?? 0;
   if (!skill || !rank) return 'Learn this skill first.';
   if (p.cooldowns[skillId] > 0) return 'That skill is still recovering.';
-  if (p.mana < skill.mana) return 'Not enough mana.';
+  if (!state.sandbox?.god && p.mana < skill.mana) return 'Not enough mana.';
   if (skill.range > 0 && (distance(p, target) > skill.range || !lineOfSight(world, p, target)))
     return 'Target is out of range or behind a wall.';
   if (skill.effect === 'leap' && (!bodyFits(world, target) || !lineOfSight(world, p, target)))
@@ -411,7 +419,7 @@ export function cast(
       cooldown: 0,
     });
   }
-  p.mana -= skill.mana;
+  if (!state.sandbox?.god) p.mana -= skill.mana;
   p.cooldowns[skillId] = skill.cooldown;
   const damage = Math.round(
     skill.damage *
