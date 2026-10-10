@@ -8,6 +8,14 @@ updates:
     groups:
       development:
         dependency-type: development
+    ignore:
+      # Keep declarations aligned with the pinned Node 24 runtime.
+      - dependency-name: '@types/node'
+        versions: ['>=25']
+      # typescript-eslint 8.71.1 supports TypeScript below 6.1.
+      # Lift this ceiling together with the parser, after the full gate passes.
+      - dependency-name: typescript
+        versions: ['>=6.1']
   - package-ecosystem: github-actions
     directory: /
     schedule:

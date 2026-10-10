@@ -3,7 +3,7 @@ import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { test } from 'node:test';
-import { checkInventory, checkNativeHydration } from './governance.mjs';
+import { checkDocumentLinks, checkInventory, checkNativeHydration } from './governance.mjs';
 
 await test('new source and scattered documentation cannot silently bypass governance', () => {
   const errors = checkInventory(['scripts/new.py', 'docs/another-review.md', 'session-review.md']);
@@ -22,6 +22,30 @@ await test('the maintained slice and canonical document homes are accepted', () 
     ]),
     [],
   );
+});
+
+await test('ignored local receipts cannot hide broken clean-checkout documentation links', () => {
+  const root = mkdtempSync(join(tmpdir(), 'workshop-links-'));
+  const document = 'docs/engineering/review.md';
+  const known = [document, 'docs/engineering/checks.md', 'src/study.ts'];
+  try {
+    for (const path of [...known, '.work/sessions/proof/receipt.json']) {
+      mkdirSync(dirname(join(root, path)), { recursive: true });
+      writeFileSync(join(root, path), '{}');
+    }
+    writeFileSync(
+      join(root, document),
+      '[checks](checks.md#gate) [source](../../src/) [here](#gate) ' +
+        '[remote](https://example.invalid) ' +
+        '[receipt](../../.work/sessions/proof/receipt.json) [missing](missing.md)',
+    );
+    const errors = checkDocumentLinks(root, [document], known);
+    assert.equal(errors.length, 2);
+    assert.match(errors[0], /unavailable in a clean checkout.*receipt.json/);
+    assert.match(errors[1], /Broken local link.*missing.md/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 await test('unhydrated native binaries and pose arrays name recovery before delivery validation', () => {

@@ -32,15 +32,19 @@ All 18 legacy wrappers were retired; commands invoke the tools package directly.
 | `docs/engineering/maintenance-migration.md`    | `dd01800a2d01f9363d281cc520dfce00f735c287264009c763b47d831a1c072c` |
 | `docs/engineering/artifact-retention-audit.md` | `e7412e32baca8fd337de382fb9a78a40090deeba594199a967a72ffd4aad0474` |
 
+After the [2026-10-11 history migration](git-storage-2026-10-11.md), resolve an original revision through the retained commit map before recovery. The original recorded revisions and content hashes above remain unchanged.
+
 To recover:
 
 ```sh
-git show REVISION:ORIGINAL_PATH > /tmp/original-document.md
+original_revision=e3c94c5c22562952cb0dff16e13b4ca56fedaf97
+mapped_revision=$(awk -F, -v old="$original_revision" '$1 == old {print $2}' maintenance/history/2026-10-11-lfs-commit-map.csv)
+git show "${mapped_revision:-$original_revision}:ORIGINAL_PATH" > /tmp/original-document.md
 shasum -a 256 /tmp/original-document.md
 ```
 
 ## Bounded artifact cleanup — 2026-10-10
 
-- **Removed**: 112 disposable directories (29 usage, 36 trace, 47 synthetic fixtures), freeing 3.59 GB across 4,966 files. Tracked in [deletion receipt](../../../.work/sessions/cleanup-verification-2026-10-10/deletion-receipt.json) and [preserved hashes](../../../.work/sessions/cleanup-verification-2026-10-10/protected-files.json).
+- **Removed**: 112 disposable directories (29 usage, 36 trace, 47 synthetic fixtures), freeing 3.59 GB across 4,966 files. Local receipts are `.work/sessions/cleanup-verification-2026-10-10/deletion-receipt.json` and `protected-files.json`; they are ignored evidence and are unavailable in a fresh clone.
 - **Retained**: Runtime and session contents, historical test runs, DCC backups, trace inputs, and active current viewers.
 - **Recurrence prevention**: Usage/trace default builds now use 14-day retention. Tests register fixture teardown. See [tools contract](../../../packages/workshop-tools/README.md).

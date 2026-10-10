@@ -27,6 +27,8 @@ Upgrade TypeScript and typed ESLint together when peer support and repository ch
 
 Original paths and hashes are preserved in the [document migration record](../../maintenance/document-migration.json); [cleanup history](history/cleanup-triage.md#source-recovery) explains recovery. New top-level review or completion documents fail the gate. Consolidate duplicate descriptions, then update inbound links in the same slice. Keep one authoritative rulebook. Durable documents describe current contracts or explicitly dated research, not a transcript of work.
 
+Canonical Markdown links must resolve within the repository inventory, including directories with inventoried contents. Ignored local evidence may be named as a code-formatted path, but cannot be a required link: its local existence does not establish availability in CI or a fresh clone.
+
 Before removing a script, inspect imports, npm commands, CI, documentation and frozen reproduction callers. Retain a historical source pin at its recorded revision. Before removing a dated report, preserve its lasting conclusions and an exact Git recovery reference. Update callers and verify the affected behavior in the same change.
 
 ## Retention and deletion authority

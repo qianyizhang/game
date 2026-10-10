@@ -1,7 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { closeSync, existsSync, openSync, readFileSync, readSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { resolve, sep } from 'node:path';
 
 /** These are the same explicit scopes used by ESLint, tsc and pyproject.toml. @param {string} path */
 export function managedSource(path) {
@@ -77,6 +77,26 @@ export function checkNativeHydration(root, files) {
   return errors;
 }
 
+/** Local evidence can exist here while being absent from every clean checkout.
+ * @param {string} root @param {string[]} documents @param {string[]} files
+ */
+export function checkDocumentLinks(root, documents, files) {
+  const available = new Set(files.map((path) => resolve(root, path)));
+  const errors = [];
+  for (const path of documents) {
+    const text = readFileSync(resolve(root, path), 'utf8').replace(/```[\s\S]*?```/g, '');
+    for (const match of text.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)) {
+      const target = match[1].split('#')[0];
+      if (!target || /^[a-z]+:/i.test(target)) continue;
+      const full = resolve(root, path, '..', decodeURIComponent(target));
+      if (!existsSync(full)) errors.push(`Broken local link in ${path}: ${target}`);
+      else if (!available.has(full) && ![...available].some((file) => file.startsWith(full + sep)))
+        errors.push(`Local link unavailable in a clean checkout in ${path}: ${target}`);
+    }
+  }
+  return errors;
+}
+
 /** @param {string} root */
 export function checkGovernance(root) {
   const files = [
@@ -127,15 +147,7 @@ export function checkGovernance(root) {
     (path) => /^docs\/(engineering|art|guide)\//.test(path) && path.endsWith('.md'),
   );
   documents.push('docs/README.md', 'packages/workshop-tools/README.md');
-  for (const path of documents) {
-    const text = readFileSync(resolve(root, path), 'utf8').replace(/```[\s\S]*?```/g, '');
-    for (const match of text.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)) {
-      const target = match[1].split('#')[0];
-      if (!target || /^[a-z]+:/i.test(target)) continue;
-      const full = resolve(root, path, '..', decodeURIComponent(target));
-      if (!existsSync(full)) errors.push(`Broken local link in ${path}: ${target}`);
-    }
-  }
+  errors.push(...checkDocumentLinks(root, documents, files));
   return {
     managedSources: files.filter(managedSource).length,
     errors,
