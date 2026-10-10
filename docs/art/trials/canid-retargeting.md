@@ -355,3 +355,18 @@ result/save isolation. Native/browser sampled deformation differed by at most
 remote CI was not run.
 
 ![Revised lunge phases across the three bodies](../../../packages/dcc-workbench/assets/canid/refined/evidence/timing/lunge.jpg)
+
+### Receipt storage revision (2026-10-10)
+
+The user selected on-demand Blender sampling instead of committed vertex fixtures.
+The six baseline/refined delivery receipts now contain provenance, motion metadata and
+contact summaries; their prior pose arrays are recoverable from Git revision `3c08d58`
+at the same paths. Saved sources and GLBs remain byte-identical. Fresh exports reproduced
+all six GLBs exactly, and retained receipt values match the previous records.
+
+`npm run dcc:canid -- test` regenerates native poses into ignored test output, checks
+bundled browser playback within 0.0001 model units, then removes the arrays on success.
+The first fresh comparison covered all thirty character/clip combinations with maximum
+error **0.000001897 model units**. The disposable saved-action mutation also passed its
+browser comparison and detected changed head/jaw poses against fresh original samples.
+Ordinary browser runs explicitly skip native agreement without its generated input.

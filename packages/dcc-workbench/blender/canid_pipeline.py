@@ -207,7 +207,6 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
         action.use_fake_user = True
         exported_actions.append(action)
         baked.animation_data_create().action = action
-        clip_samples = []
         ankle_samples: list[list[list[float]]] = []
         sole_samples: list[list[list[float]]] = []
         sole_probes: dict[str, int] = json.loads(str(bpy.data.objects["Coat"]["sole_probes"]))
@@ -258,17 +257,7 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
                     max_ik_error,
                     (pose.bones[f"paw.{foot}"].head - pose.bones[f"CTRL_{foot}"].head).length,
                 )
-            if frame in {0, end // 4, end // 2, 3 * end // 4, end}:
-                objects = []
-                for obj in source_meshes:
-                    evaluated_mesh = obj.evaluated_get(bpy.context.evaluated_depsgraph_get())
-                    mesh = mesh_data(evaluated_mesh)
-                    points = []
-                    for index in [round(i * (len(mesh.vertices) - 1) / 15) for i in range(16)]:
-                        point = evaluated_mesh.matrix_world @ mesh.vertices[index].co
-                        points.append([point.x, point.z, -point.y])
-                    objects.append({"name": obj.name, "points": points})
-                clip_samples.append({"seconds": frame / FPS, "objects": objects})
+
         speed = float(original["travel_speed"])
         max_slip = 0.0
         max_height = 0.0
@@ -308,7 +297,7 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
             "travelSpeed": speed,
             "frames": end + 1,
         }
-        samples[clip] = {"samples": clip_samples, "seconds": end / FPS}
+        samples[clip] = {"seconds": end / FPS}
         if max_ik_error > 0.025 or max_slip > 0.006 or max_height > 0.012 or loop_error > 0.001:
             raise ValueError(f"Contact check failed: {form.name}/{clip}: {contacts[clip]}")
     # Remove control actions and the authoring rig only in this export process.
@@ -352,7 +341,7 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
     if sha(source_path) != source_hash:
         raise ValueError("Export mutated saved source")
     receipt: dict[str, object] = {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "character": form.name,
         "sourceSha256": source_hash,
         "motionSha256": sha(root / "motion.blend"),

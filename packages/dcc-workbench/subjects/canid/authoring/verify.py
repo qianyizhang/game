@@ -17,6 +17,7 @@ from delivery import bootstrap, export, fit, mesh_digest, sha  # noqa: E402
 from motion_spec import read_spec, save_spec  # noqa: E402
 from native_types import present  # noqa: E402
 from parameters import FORMS, FPS  # noqa: E402
+from sample_canid import sample  # noqa: E402
 
 
 def verify(root: Path, output: Path) -> None:
@@ -30,6 +31,7 @@ def verify(root: Path, output: Path) -> None:
 
     paths = [root / "motion.blend", *(root / f.name / "source.blend" for f in FORMS)]
     protected = {str(p): sha(p) for p in paths}
+    sample(root, Path(__file__).resolve().parents[3] / "assets/canid/refined", output / "reference")
     try:
         bootstrap(root, "all")
     except FileExistsError:
@@ -107,6 +109,7 @@ def verify(root: Path, output: Path) -> None:
                 "savedMarkerChangePropagated": metadata_equal,
             }
         )
+    sample(working, output / "models", output / "poses")
     if any(sha(Path(p)) != digest for p, digest in protected.items()):
         raise ValueError("Native verification modified an authoritative source")
     report = {

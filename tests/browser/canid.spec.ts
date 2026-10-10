@@ -2,9 +2,7 @@ import { resolve } from 'node:path';
 import { test, expect } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 
-test('canid clips preserve native deformation and support matched review and downloads', async ({
-  page,
-}, info) => {
+test('canid clips support matched review and downloads', async ({ page }, info) => {
   test.setTimeout(90_000);
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
@@ -12,15 +10,6 @@ test('canid clips preserve native deformation and support matched review and dow
   await expect(page.getByRole('heading', { name: 'A family in motion.' })).toBeVisible();
   const viewer = page.locator('.canid-render');
   await expect(viewer).toHaveAttribute('data-ready', 'true');
-  const agreement = await page.evaluate(async () => {
-    const path = '/tests/browser/canid-evidence.ts';
-    const { compareCanids } = (await import(path)) as typeof import('./canid-evidence');
-    return compareCanids();
-  });
-  await writeFile(info.outputPath('native-agreement.json'), JSON.stringify(agreement, null, 2));
-  for (const character of agreement)
-    for (const clip of character.clips)
-      expect(clip.maxError, `${character.id}/${clip.name}`).toBeLessThan(0.0001);
   if (process.env.CANID_REVIEW_FRAMES) {
     // Optional review evidence, not automated visual acceptance. Matched framing
     // makes each phase comparable across bodies and across a timing revision.
@@ -130,6 +119,33 @@ test('canid study starts paused and reports a failed asset load', async ({ page 
   await expect(page.getByRole('link', { name: 'Editable Ash source' })).toBeVisible();
 });
 
+test('fresh Blender samples agree with bundled canid GLB playback', async ({ page }, info) => {
+  const directory = process.env.CANID_POSE_RESULTS;
+  test.skip(!directory, 'Requires fresh Blender samples; run npm run dcc:canid -- test.');
+  for (const id of ['ash', 'russet', 'moss']) {
+    const poses = JSON.parse(await readFile(resolve(directory!, `${id}.poses.json`), 'utf8')) as {
+      sourceSha256: string;
+      motionSha256: string;
+      modelSha256: string;
+    };
+    const receipt = JSON.parse(
+      await readFile(resolve('packages/dcc-workbench/assets/canid/refined', `${id}.json`), 'utf8'),
+    ) as typeof poses;
+    for (const field of ['sourceSha256', 'motionSha256', 'modelSha256'] as const)
+      expect(poses[field], `${id}/${field}`).toBe(receipt[field]);
+  }
+  await page.goto('/?workbench=dcc&compare=canid');
+  const agreement = await page.evaluate(async (directory) => {
+    const path = '/tests/browser/canid-evidence.ts';
+    const { compareCanids } = (await import(path)) as typeof import('./canid-evidence');
+    return compareCanids(directory);
+  }, resolve(directory!));
+  for (const character of agreement)
+    for (const clip of character.clips)
+      expect(clip.maxError, `${character.id}/${clip.name}`).toBeLessThan(0.0001);
+  await writeFile(info.outputPath('native-agreement.json'), JSON.stringify(agreement, null, 2));
+});
+
 test('edited shared motion survives export and consumer reload for every character', async ({
   page,
 }, info) => {
@@ -145,11 +161,11 @@ test('edited shared motion survives export and consumer reload for every charact
     const { compareCanid } = (await import(module)) as typeof import('./canid-evidence');
     const results = [];
     for (const id of ['ash', 'russet', 'moss']) {
-      const response = await fetch(`/@fs${path}/models/${id}.json`);
+      const response = await fetch(`/@fs${path}/poses/${id}.poses.json`);
       if (!response.ok) throw new Error('Missing native mutation receipt');
       const receipt: unknown = await response.json();
       const original: unknown = await (
-        await fetch(`/packages/dcc-workbench/assets/canid/refined/${id}.json`)
+        await fetch(`/@fs${path}/reference/${id}.poses.json`)
       ).json();
       results.push({
         id,

@@ -39,6 +39,9 @@ verification.
 
 - `npm run test:dcc:saved -- --asset <id>`: Tests the saved-source edit loop (probe deformation, save/reload, export, and Three.js comparison on disposable copies). See [DCC contracts](../../packages/dcc-workbench/README.md#verification-and-provenance).
 - `npm run test:dcc:native`: Evaluates native Blender head-control parity against 64 sampled points.
+- `npm run dcc:canid -- test`: Generates temporary poses from saved canid Blender sources,
+  checks bundled GLB playback within 0.0001 model units, then removes the arrays after success.
+  Ordinary browser runs explicitly skip this comparison without `CANID_POSE_RESULTS`.
 
 ## Budgets
 

@@ -180,7 +180,8 @@ moments. Movement space selects in-place inspection or one-pass scene travel.
 Visible playback accounts for all elapsed time, including slow render frames; returning
 from a hidden tab does not advance through the time spent away.
 
-The initial 20-joint, three-clip baseline remains byte-identical at its original paths.
+The initial 20-joint, three-clip baseline's Blender sources and GLBs remain byte-identical
+at their original paths. Its receipts retain provenance and contact summaries without pose arrays.
 Use `--baseline` to select its command adapter. The [trial record](../../docs/art/trials/canid-retargeting.md)
 records the accepted scope, evidence and limitations. Neither revision replaces the Wolf gallery.
 
@@ -202,7 +203,7 @@ records the accepted scope, evidence and limitations. Neither revision replaces 
   fitted rest skeleton, and derived control actions. Each `retarget.json` pins source
   identity, chain mapping, proportion corrections, and mesh/weight digest.
 - `assets/canid/refined/<id>.glb` and `<id>.json` are the baked deliveries and receipts.
-  They include sampled native poses and contact audits at every authored frame.
+  Receipts include provenance, motion contracts and contact audit summaries, without vertex arrays.
   `<id>.motions.json` carries the same saved motion contract for browser consumers.
 
 Recipes are first-class source material and construct distinct candidates. Saved Blender
@@ -222,6 +223,8 @@ nvm use
 npm run dcc:canid -- check
 npm run dcc:canid -- check --baseline
 npm run dcc:canid -- evaluate
+npm run dcc:canid -- test
+npm run dcc:canid -- sample --output test-results/canid-poses-01
 npm run dcc:canid -- fit
 npm run dcc:canid -- export --output test-results/canid-candidate-01
 npm run dcc:canid -- verify test-results/canid-edit-proof-01
@@ -242,8 +245,25 @@ The native verifier refuses construction over existing sources, then edits a sav
 key by 0.18 radians, a bite jaw key by 0.10 radians, and the bite contact marker by 0.01 seconds
 on disposable copies. It fits all three targets, checks unchanged mesh and weight digests,
 saves/reloads, and exports. The optional browser case compares these
-changed deliveries with their native pose receipts. Without `CANID_NATIVE_RESULTS`, that
-case is explicitly skipped. Successful technical checks do not establish visual approval.
+changed deliveries with freshly sampled native poses and the original saved sources.
+Without `CANID_NATIVE_RESULTS`, that case is explicitly skipped. Successful technical
+checks do not establish visual approval.
+
+### Temporary native reference poses
+
+`npm run dcc:canid -- test` samples the saved Blender sources, then compares every
+character and clip against the bundled GLBs in the browser at five times, using sixteen
+vertices per mesh and a **0.0001 model-unit** tolerance. Sampling checks source, motion and
+model hashes and never exports or saves over the masters. Temporary arrays stay under
+ignored `test-results/canid-native/`; a successful run removes them and retains only the
+small browser agreement report. Failed runs retain their temporary inputs for diagnosis.
+Run this native/browser command with approved execution outside the restricted macOS sandbox.
+
+For separate sampling and browser runs, pass the fresh output directory as `CANID_POSE_RESULTS`.
+Ordinary browser runs skip native agreement explicitly when this input is absent; they
+still test viewer interactions and playback. A browser pass without Blender samples does
+not establish native agreement. Exported receipts use schema 4 (refined) or 2 (baseline)
+and reject embedded pose fixtures. Do not commit generated vertex arrays.
 
 ### Last Hearth presentation
 

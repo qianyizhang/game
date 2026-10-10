@@ -1,6 +1,6 @@
 /** Canid pilot commands and delivery validation; existing gallery releases remain independent. */
 import { createHash } from 'node:crypto';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
@@ -51,13 +51,15 @@ export function verifyCanid({
       ? Object.fromEntries(Object.entries(motions).map(([id, m]) => [id, m.seconds]))
       : baselineDurations;
     if (
-      receipt.schemaVersion !== (baseline ? 1 : 3) ||
+      receipt.schemaVersion !== (baseline ? 2 : 4) ||
       receipt.character !== id ||
       receipt.sourceSha256 !== hash(join(sources, id, 'source.blend')) ||
       receipt.motionSha256 !== hash(join(sources, 'motion.blend')) ||
       receipt.modelSha256 !== hash(join(directory, `${id}.glb`))
     )
       throw new Error(`Stale canid delivery: ${id}`);
+    if (Object.values(record(receipt.clips)).some((clip) => 'samples' in record(clip)))
+      throw new Error(`Canid delivery contains temporary pose fixtures: ${id}`);
     if (
       JSON.stringify(Object.keys(record(receipt.exportScripts)).sort()) !==
       JSON.stringify([...exporterPaths].sort())
@@ -209,8 +211,12 @@ function main() {
     console.log(JSON.stringify(verifyCanid({ baseline, directory: args[0] }), null, 2));
     return;
   }
-  if (!['bootstrap', 'fit', 'export', 'verify', 'review', 'revise'].includes(command))
-    throw new Error('Use check, bootstrap, fit, export, verify, review, or revise');
+  if (
+    !['bootstrap', 'fit', 'export', 'verify', 'review', 'revise', 'sample', 'test'].includes(
+      command,
+    )
+  )
+    throw new Error('Use check, bootstrap, fit, export, verify, review, revise, sample, or test');
   const blender =
     process.env.BLENDER_BIN ??
     [
@@ -219,6 +225,59 @@ function main() {
     ].find(existsSync) ??
     'blender';
   const source = join(root, baseline ? 'subjects/canid' : 'subjects/canid/refined');
+  if (command === 'sample' || command === 'test') {
+    if (baseline && command === 'test')
+      throw new Error('test applies to the refined canid library');
+    if (command === 'test' && args.length !== 0)
+      throw new Error('test does not accept arguments; use sample --output for separate runs');
+    if (command === 'sample' && (args.length !== 2 || args[0] !== '--output'))
+      throw new Error('sample requires --output pointing to a fresh directory under test-results');
+    const results = resolve(root, '../../test-results/canid-native');
+    mkdirSync(results, { recursive: true });
+    const run = command === 'test' ? mkdtempSync(join(results, 'agreement-')) : null;
+    const output = run ? join(run, 'poses') : resolve(args[1]);
+    if (!output.startsWith(resolve(root, '../../test-results') + '/'))
+      throw new Error('Temporary pose fixtures must stay under ignored test-results');
+    const native = spawnSync(
+      blender,
+      [
+        '--background',
+        '--factory-startup',
+        '--python-exit-code',
+        '1',
+        '--python',
+        join(root, 'blender/sample_canid.py'),
+        '--',
+        source,
+        join(root, baseline ? 'assets/canid' : 'assets/canid/refined'),
+        output,
+      ],
+      { stdio: 'inherit' },
+    );
+    if (native.error) throw native.error;
+    if (native.status !== 0)
+      throw new Error(`Canid sampling failed (${native.signal ?? native.status})`);
+    if (run) {
+      const browser = spawnSync(
+        process.execPath,
+        [
+          resolve(root, '../../node_modules/@playwright/test/cli.js'),
+          'test',
+          'tests/browser/canid.spec.ts',
+          '--grep',
+          'fresh Blender samples',
+          `--output=${join(run, 'browser')}`,
+        ],
+        { stdio: 'inherit', env: { ...process.env, CANID_POSE_RESULTS: output } },
+      );
+      if (browser.error) throw browser.error;
+      if (browser.status !== 0)
+        throw new Error(`Canid agreement failed (${browser.signal ?? browser.status})`);
+      rmSync(output, { recursive: true });
+      console.log(`Native agreement passed; temporary poses removed. Report: ${run}/browser`);
+    }
+    return;
+  }
   const script = baseline
     ? join(root, 'blender', command === 'verify' ? 'verify_canid.py' : 'canid_pipeline.py')
     : join(

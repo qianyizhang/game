@@ -2,9 +2,6 @@ import { isMesh } from '../../src/shared/three/objects';
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { disposeObject } from '../../src/shared/three/resources';
-import ash from '../../packages/dcc-workbench/assets/canid/refined/ash.json?url';
-import russet from '../../packages/dcc-workbench/assets/canid/refined/russet.json?url';
-import moss from '../../packages/dcc-workbench/assets/canid/refined/moss.json?url';
 import { characters } from '../../packages/dcc-workbench/src/canid-assets';
 
 type Evidence = {
@@ -92,11 +89,10 @@ export async function compareCanid(model: string, receipt: Evidence) {
     disposeObject(gltf.scene);
   }
 }
-export async function compareCanids() {
-  const receipts = [ash, russet, moss];
+export async function compareCanids(directory: string) {
   return Promise.all(
-    characters.map(async (c, i) => {
-      const response = await fetch(receipts[i]);
+    characters.map(async (c) => {
+      const response = await fetch(`/@fs${directory}/${c.id}.poses.json`);
       if (!response.ok) throw new Error(`Missing ${c.id} native evidence`);
       const receipt = (await response.json()) as Evidence;
       return { id: c.id, clips: await compareCanid(c.model, receipt) };

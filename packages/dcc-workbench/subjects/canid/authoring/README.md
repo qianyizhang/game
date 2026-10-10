@@ -14,9 +14,10 @@ visual review, and selection of a new master. Manual native edits survive ordina
 and export; fitting replaces derived character actions from the shared motion master.
 
 The original canid sources and deliveries remain at their existing paths. The original
-`blender/canid_*.py` scripts stay byte-identical because the baseline receipts pin them.
-They are historical pilot recipes; new authoring belongs here. Refined masters live in
-`../refined/`, and refined deliveries in `assets/canid/refined/` within the DCC package.
+`blender/canid_*.py` scripts remain the baseline adapter; their exporter now emits summaries
+without pose fixtures. Sources and GLBs stay unchanged. New authoring belongs here.
+Refined masters live in `../refined/`, and refined deliveries in `assets/canid/refined/`
+within the DCC package.
 
 ## Review stages
 
@@ -103,7 +104,8 @@ through inversion. Fitting keeps turning stance anchors in world space, corrects
 reach for each body, then grounds the evaluated skin. Export audits all mesh vertices for
 floor penetration and the declared paw/flank/back support intervals. Loop endpoint checks
 apply only to looping clips. `<id>.motions.json` is the compact runtime copy of the same
-saved contract; the full receipt also carries pose samples and measured support errors.
+saved contract; the receipt carries measured support errors. Native reference poses are
+generated on demand by `blender/sample_canid.py` into ignored test output, not committed.
 
 Review coordinates and travel speeds are in model units; there is no calibrated real-world
 metre scale. The stylized gait recipes use empirical canine studies as guidance, not imported

@@ -274,7 +274,6 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
         action["end_frame"] = end
         exported_actions.append(action)
         baked.animation_data_create().action = action
-        clip_samples = []
         ankle_samples: list[list[list[float]]] = []
         sole_samples: list[list[list[float]]] = []
         foot_heights: list[float] = []
@@ -351,17 +350,7 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
                     max_ik_error,
                     (pose.bones[f"paw.{foot}"].head - pose.bones[f"CTRL_{foot}"].head).length,
                 )
-            if frame in {0, end // 4, end // 2, 3 * end // 4, end}:
-                objects = []
-                for obj in source_meshes:
-                    evaluated_mesh = obj.evaluated_get(bpy.context.evaluated_depsgraph_get())
-                    mesh = mesh_data(evaluated_mesh)
-                    points = []
-                    for index in [round(i * (len(mesh.vertices) - 1) / 15) for i in range(16)]:
-                        point = evaluated_mesh.matrix_world @ mesh.vertices[index].co
-                        points.append([point.x, point.z, -point.y])
-                    objects.append({"name": obj.name, "points": points})
-                clip_samples.append({"seconds": frame / FPS, "objects": objects})
+
         speed = float(original["travel_speed"])
         stance = float(original["stance_fraction"])
         offsets = list(original["foot_offsets"])
@@ -391,7 +380,7 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
                 {sum(point[2] < 0.002 for point in row) for row in sole_samples}
             ),
         }
-        samples[clip] = {**spec, "samples": clip_samples}
+        samples[clip] = dict(spec)
         library[clip] = spec
         rolling_gap = evidence["maxRollingHeight"]
         if (
@@ -451,7 +440,7 @@ def export(root: Path, output: Path, form: Form) -> dict[str, object]:
     if sha(source_path) != source_hash:
         raise ValueError("Export mutated saved source")
     receipt: dict[str, object] = {
-        "schemaVersion": 3,
+        "schemaVersion": 4,
         "character": form.name,
         "sourceSha256": source_hash,
         "motionSha256": sha(root / "motion.blend"),
