@@ -66,6 +66,12 @@ test('Hydra comparison keeps views, clock and baselines matched', async ({ page 
   await expect(viewer).not.toHaveAttribute('data-time', '0.000');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(page.getByRole('button', { name: 'Play comparison', exact: true })).toBeVisible();
+  // The visible paused clock must match the rendered pose within one slider step.
+  await expect(async () => {
+    const rendered = Number(await viewer.getAttribute('data-time'));
+    const displayed = Number(await page.getByLabel('Shared animation time').inputValue());
+    expect(Math.abs(displayed - rendered)).toBeLessThanOrEqual(0.01);
+  }).toPass({ timeout: browserBudget(5_000) });
   await page.getByLabel('Shared animation time').fill('0');
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(async () => {

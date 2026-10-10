@@ -31,6 +31,12 @@ every asset. Named camera controls remain in those journeys; pointer orbit is ch
 a reduced-motion rigid representative so animation cannot masquerade as successful dragging.
 CI does not generate all 29 contact sheets or establish aesthetic acceptance.
 
+Video delivery checks decode the downloaded artifact away from the live WebGL scene,
+require supported dimensions and compare actual presented frames for visible motion.
+Encoded byte counts and fixed early seek times are **replace**: a valid low-frame-rate
+WebM can be small and repeat its first frame at both timestamps. The frame callback
+follows the decoder's presentation cadence ([browser API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestVideoFrameCallback)).
+
 Prefer outcomes over incidental construction: supported motion, fitted attachments and
 resource release matter; exact mesh counts, vertex counts, helper calls and intermediate
 callback sequences usually do not. A coordinate or name can remain in a narrow legacy

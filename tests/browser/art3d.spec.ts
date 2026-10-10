@@ -460,39 +460,19 @@ for (const name of ['Vajra', 'Hydra', 'Catalyst', 'Banner Bearer']) {
     await video.saveAs(info.outputPath(video.suggestedFilename()));
     const bytes = await readFile(info.outputPath(video.suggestedFilename()));
     expect(bytes.subarray(0, 4).toString('hex')).toBe('1a45dfa3');
-    expect(bytes.length).toBeGreaterThan(20000);
+    // Exercise the downloaded artifact independently of the live WebGL renderer.
+    await page.goto('/');
     await page.route('**/recorded-animation.webm', (route) =>
       route.fulfill({ body: bytes, contentType: 'video/webm' }),
     );
-    const decoded = await page.evaluate(async () => {
-      const video = document.createElement('video');
-      video.src = '/recorded-animation.webm';
-      video.muted = true;
-      await new Promise<void>((resolve, reject) => {
-        video.onloadeddata = () => resolve();
-        video.onerror = () => reject(new Error('Video decoding failed'));
-      });
-      const width = video.videoWidth,
-        height = video.videoHeight;
-      video.currentTime = 0.5;
-      await new Promise<void>((resolve) => {
-        video.onseeked = () => resolve();
-      });
-      const canvas = document.createElement('canvas');
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext('2d')!;
-      ctx.drawImage(video, 0, 0);
-      const first = canvas.toDataURL();
-      video.currentTime = 1.5;
-      await new Promise<void>((resolve) => {
-        video.onseeked = () => resolve();
-      });
-      ctx.drawImage(video, 0, 0);
-      return { width, height, moving: first !== canvas.toDataURL() };
-    });
+    const decoded = await page.evaluate(async (timeout) => {
+      const helper = '/tests/browser/video-motion.ts';
+      const { inspectVideoMotion } = (await import(helper)) as typeof import('./video-motion');
+      return inspectVideoMotion('/recorded-animation.webm', timeout);
+    }, browserBudget(10_000));
     expect(decoded.width).toBeGreaterThan(300);
     expect(decoded.height).toBeGreaterThan(300);
+    expect(decoded.frames).toBeGreaterThanOrEqual(2);
     expect(decoded.moving).toBe(true);
   });
 }

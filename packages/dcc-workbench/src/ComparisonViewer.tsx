@@ -90,6 +90,12 @@ export default function ComparisonViewer({
     let lastSeek = -1;
     let lastReport = 0;
     let frame = 0;
+    let dirty = true;
+    let lastAppearance = '';
+    const invalidate = () => {
+      dirty = true;
+    };
+    controls.addEventListener('change', invalidate);
     const resize = new ResizeObserver(() => {
       width = element.clientWidth;
       height = element.clientHeight;
@@ -100,6 +106,7 @@ export default function ComparisonViewer({
       camera.aspect = viewWidth / Math.max(1, viewHeight);
       camera.updateProjectionMatrix();
       lastView = '';
+      dirty = true;
     });
     resize.observe(element);
     const makeSubject = async (url: string) => {
@@ -166,6 +173,7 @@ export default function ComparisonViewer({
       radius = bounds.getSize(new T.Vector3()).length() / 2;
       loaded = true;
       lastView = '';
+      dirty = true;
       setReady(true);
     });
     const draw = (now: number) => {
@@ -193,11 +201,28 @@ export default function ComparisonViewer({
         controls.maxDistance = distance * 2;
         controls.update();
         lastView = viewKey;
+        dirty = true;
       }
       if (lastSeek !== current.seek) {
         time = Math.max(0, Math.min(6, current.time));
         lastSeek = current.seek;
-      } else if (current.playing) time = (time + dt) % 6;
+        dirty = true;
+      } else if (current.playing) {
+        time = (time + dt) % 6;
+        dirty = true;
+      }
+      const appearance = `${current.pair}:${current.swapped}:${current.surface}`;
+      if (appearance !== lastAppearance) {
+        lastAppearance = appearance;
+        dirty = true;
+      }
+      // Keep the last rendered pose's clock visible after pausing, without a repaint.
+      if (now - lastReport > 100) {
+        report.current(time);
+        lastReport = now;
+      }
+      // Paused comparisons keep their framebuffer; controls invalidate on change.
+      if (!dirty) return;
       subjects.forEach(({ mixer }) => mixer.setTime(time));
       let pair = [current.pair === 'direction' ? 0 : current.pair === 'pilot' ? 1 : 2, 3];
       if (current.swapped) pair = pair.reverse();
@@ -217,6 +242,7 @@ export default function ComparisonViewer({
         subjects[index].scene.overrideMaterial = override;
         renderer.render(subjects[index].scene, camera);
       });
+      dirty = false;
       element.dataset.time = time.toFixed(3);
       element.dataset.pair = pair.join(',');
       element.dataset.camera = camera.position
@@ -224,16 +250,13 @@ export default function ComparisonViewer({
         .map((n) => n.toFixed(5))
         .join(',');
       element.dataset.surface = current.surface;
-      if (now - lastReport > 100) {
-        report.current(time);
-        lastReport = now;
-      }
     };
     frame = requestAnimationFrame(draw);
     return () => {
       disposed = true;
       cancelAnimationFrame(frame);
       resize.disconnect();
+      controls.removeEventListener('change', invalidate);
       controls.dispose();
       subjects.forEach(({ root, mixer }) => {
         mixer.stopAllAction();
