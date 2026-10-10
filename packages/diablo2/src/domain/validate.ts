@@ -1,5 +1,5 @@
 import type { Content } from './types';
-import { findPath, tilesFor, walkable, WIDTH, HEIGHT } from './maps';
+import { findPath, tilesFor, walkable } from './maps';
 function object(value: unknown): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     throw new Error('Expected an object');
@@ -22,10 +22,10 @@ function one(value: unknown, choices: string[]): void {
   if (typeof value !== 'string' || !choices.includes(value))
     throw new Error('Unknown content kind');
 }
-function point(value: unknown): void {
+function point(value: unknown, width = 128, height = 128): void {
   const p = object(value);
-  number(p.x, 1, WIDTH - 2);
-  number(p.y, 1, HEIGHT - 2);
+  number(p.x, 1, width - 2);
+  number(p.y, 1, height - 2);
 }
 const elements = ['physical', 'fire', 'cold', 'poison'];
 /** Parse JSON-only definitions. Mods replace this pack; identity/version pin replay meaning. */
@@ -33,9 +33,9 @@ export function validateContent(value: unknown): Content {
   const c = object(value);
   string(c.id);
   string(c.version);
-  for (const key of ['heroes', 'skills', 'items', 'monsters', 'maps']) {
+  for (const key of ['heroes', 'skills', 'items', 'monsters', 'acts', 'regions', 'dungeons']) {
     const ids = new Set<string>();
-    for (const entry of list(c[key], key === 'maps' ? 12 : 100)) {
+    for (const entry of list(c[key], key === 'acts' ? 12 : 100)) {
       const v = object(entry);
       string(v.id);
       if (
@@ -102,22 +102,83 @@ export function validateContent(value: unknown): Content {
       number(n, 0, 0.75);
     }
   }
-  for (const entry of list(c.maps, 12)) {
+  const array = (v: unknown, max: number): unknown[] => {
+    if (!Array.isArray(v) || v.length > max) throw new Error('Invalid world content list');
+    return v;
+  };
+  for (const entry of list(c.acts, 12)) {
     const v = object(entry);
-    for (const k of ['subtitle', 'introduction', 'conclusion', 'objective', 'boss']) string(v[k]);
+    for (const k of ['subtitle', 'introduction', 'conclusion', 'objective', 'entry', 'bossRegion'])
+      string(v[k]);
+    for (const id of list(v.wards, 8)) string(id);
+  }
+  for (const entry of list(c.dungeons)) {
+    const v = object(entry);
+    string(v.act);
+    for (const id of list(v.floors, 12)) string(id);
+  }
+  for (const entry of list(c.regions)) {
+    const v = object(entry);
+    string(v.act);
+    string(v.description);
     one(v.theme, ['marsh', 'desert', 'crypt', 'inferno']);
-    for (const k of ['start', 'waypoint', 'exit', 'bossPosition']) point(v[k]);
-    for (const k of ['seals', 'chests']) for (const p of list(v[k], 8)) point(p);
+    number(v.width, 32, 128);
+    number(v.height, 24, 128);
+    if (!Number.isInteger(v.width) || !Number.isInteger(v.height))
+      throw new Error('Region dimensions must be integers');
+    const width = v.width,
+      height = v.height;
+    const at = (p: unknown) => point(p, width, height);
+    at(v.start);
+    for (const k of ['waypoint', 'ward', 'bossPosition']) if (v[k] !== null) at(v[k]);
+    if (v.boss !== null) string(v.boss);
+    if ((v.boss === null) !== (v.bossPosition === null))
+      throw new Error('Boss requires a position');
+    if (v.dungeon !== null) {
+      string(v.dungeon);
+      number(v.floor, 1, 12);
+      if (!Number.isInteger(v.floor)) throw new Error('Invalid dungeon floor');
+    } else if (v.floor !== null) throw new Error('Outdoor region cannot have a floor');
+    number(v.encounters, 0, 60);
+    if (!Number.isInteger(v.encounters)) throw new Error('Invalid encounter count');
+    for (const p of array(v.chests, 8)) at(p);
     for (const m of list(v.monsters)) string(m);
-    for (const room of list(v.rooms, 30)) {
-      if (!Array.isArray(room) || room.length !== 4) throw new Error('Invalid room rectangle');
-      const r = room as unknown[];
-      number(r[0], 1, WIDTH - 2);
-      number(r[1], 1, HEIGHT - 2);
-      number(r[2], 1, WIDTH - 2);
-      number(r[3], 1, HEIGHT - 2);
+    const rect = (r: unknown) => {
+      if (!Array.isArray(r) || r.length !== 4) throw new Error('Invalid terrain rectangle');
+      number(r[0], 1, width - 2);
+      number(r[2], 1, width - 2);
+      number(r[1], 1, height - 2);
+      number(r[3], 1, height - 2);
       if (!r.every(Number.isInteger) || r[0] > r[2] || r[1] > r[3])
-        throw new Error('Invalid room bounds');
+        throw new Error('Invalid terrain bounds');
+    };
+    for (const room of list(v.rooms, 40)) rect(room);
+    for (const path of array(v.paths, 40)) {
+      for (const p of list(path, 20)) at(p);
+      if ((path as unknown[]).length < 2) throw new Error('Path needs two points');
+    }
+    for (const patch of array(v.terrain, 80)) {
+      const t = object(patch);
+      one(t.kind, ['water', 'lava', 'rock', 'road', 'grass', 'sand', 'moss', 'floor']);
+      rect(t.bounds);
+    }
+    for (const landmark of array(v.landmarks, 80)) {
+      const l = object(landmark);
+      string(l.name);
+      one(l.kind, ['tree', 'ruin', 'pillar', 'bones', 'altar', 'bridge', 'camp']);
+      at(l.at);
+    }
+    const portalIds = new Set<string>();
+    for (const entry of list(v.portals, 12)) {
+      const p = object(entry);
+      string(p.id);
+      string(p.name);
+      at(p.at);
+      if (portalIds.has(p.id)) throw new Error('Duplicate portal ID');
+      portalIds.add(p.id);
+      if (p.target !== null) string(p.target);
+      if (p.arrival !== null) string(p.arrival);
+      one(p.requires, ['none', 'wards', 'boss']);
     }
   }
   const content = JSON.parse(JSON.stringify(value)) as Content;
@@ -134,17 +195,115 @@ export function validateContent(value: unknown): Content {
     if (content.skills.find((s) => s.id === h.skills[0])?.level !== 1)
       throw new Error('First skill must unlock at level 1');
   }
-  for (const m of content.maps) {
-    if (!ids('monsters').has(m.boss) || m.monsters.some((id) => !ids('monsters').has(id)))
-      throw new Error('Unknown map monster');
-    const world = { tiles: tilesFor(m) };
-    for (const p of [m.waypoint, m.exit, m.bossPosition, ...m.seals, ...m.chests])
+  const regionIds = new Set(content.regions.map((r) => r.id));
+  const actIds = new Set(content.acts.map((a) => a.id));
+  const dungeonIds = new Set(content.dungeons.map((d) => d.id));
+  for (const r of content.regions) {
+    if (!actIds.has(r.act) || (r.dungeon && !dungeonIds.has(r.dungeon)))
+      throw new Error('Unknown region owner');
+    if (
+      (r.boss && !ids('monsters').has(r.boss)) ||
+      r.monsters.some((id) => !ids('monsters').has(id))
+    )
+      throw new Error('Unknown region monster');
+    const world = { tiles: tilesFor(r) };
+    for (const p of [
+      r.start,
+      r.waypoint,
+      r.ward,
+      r.bossPosition,
+      ...r.chests,
+      ...r.portals.map((p) => p.at),
+    ].filter((p) => p !== null))
       if (
-        !walkable(world, m.start) ||
+        !walkable(world, r.start) ||
         !walkable(world, p) ||
-        findPath(world, m.start, p).length === 0
+        (p !== r.start && !findPath(world, r.start, p).length)
       )
-        throw new Error(`Unreachable objective in ${m.id}`);
+        throw new Error(`Unreachable objective in ${r.id}`);
+    for (const p of r.portals) {
+      if (p.target === null) {
+        if (p.arrival !== null || p.requires !== 'boss' || r.id !== content.acts.at(-1)?.bossRegion)
+          throw new Error('Only the final boss can end the campaign');
+        continue;
+      }
+      if (!regionIds.has(p.target)) throw new Error('Unknown portal destination');
+      const target = content.regions.find((t) => t.id === p.target)!;
+      if (p.arrival !== null) {
+        const arrival = target.portals.find((a) => a.id === p.arrival);
+        if (!arrival || arrival.target !== r.id || arrival.arrival !== p.id)
+          throw new Error('Portal arrivals must be reciprocal');
+      }
+      if (target.act !== r.act) {
+        const act = content.acts.findIndex((a) => a.id === r.act);
+        if (
+          target.id !== content.acts[act + 1]?.entry ||
+          r.id !== content.acts[act].bossRegion ||
+          p.requires !== 'boss' ||
+          p.arrival !== null
+        )
+          throw new Error('Act crossings require the final boss');
+      } else if (p.arrival === null) throw new Error('Local portals need an arrival');
+    }
+  }
+  for (const d of content.dungeons) {
+    if (!actIds.has(d.act) || new Set(d.floors).size !== d.floors.length)
+      throw new Error('Invalid dungeon owner or floors');
+    d.floors.forEach((id, i) => {
+      const r = content.regions.find((r) => r.id === id);
+      if (!r || r.act !== d.act || r.dungeon !== d.id || r.floor !== i + 1)
+        throw new Error('Dungeon floors must be contiguous and owned');
+    });
+    if (content.regions.filter((r) => r.dungeon === d.id).length !== d.floors.length)
+      throw new Error('Unlisted dungeon floor');
+    for (let i = 1; i < d.floors.length; i++) {
+      const lower = content.regions.find((r) => r.id === d.floors[i])!;
+      if (!lower.portals.some((p) => p.target === d.floors[i - 1]))
+        throw new Error('Dungeon floors need connecting stairs');
+    }
+  }
+  for (const a of content.acts) {
+    const owned = content.regions.filter((r) => r.act === a.id);
+    const entry = owned.find((r) => r.id === a.entry),
+      boss = owned.find((r) => r.id === a.bossRegion);
+    if (
+      !entry ||
+      !boss?.boss ||
+      new Set(a.wards).size !== a.wards.length ||
+      a.wards.some((id) => !owned.find((r) => r.id === id)?.ward)
+    )
+      throw new Error('Invalid act objectives');
+    if (
+      owned.filter((r) => r.boss).length !== 1 ||
+      owned.filter((r) => r.ward).length !== a.wards.length
+    )
+      throw new Error('Act must own one boss and its declared wards');
+    const reach = (gated: boolean) => {
+      const seen = new Set([a.entry]);
+      const queue = [a.entry];
+      for (const id of queue)
+        for (const p of owned.find((r) => r.id === id)!.portals)
+          if (
+            p.target &&
+            owned.some((r) => r.id === p.target) &&
+            !seen.has(p.target) &&
+            (!gated || p.requires === 'none')
+          ) {
+            seen.add(p.target);
+            queue.push(p.target);
+          }
+      return seen;
+    };
+    if (owned.some((r) => !reach(false).has(r.id)) || a.wards.some((id) => !reach(true).has(id)))
+      throw new Error('Unreachable region or ward behind its own gate');
+    if (
+      !boss.portals.some(
+        (p) =>
+          p.requires === 'boss' &&
+          (p.target === null || content.regions.find((r) => r.id === p.target)?.act !== a.id),
+      )
+    )
+      throw new Error('Boss region needs a campaign exit');
   }
   return content;
 }

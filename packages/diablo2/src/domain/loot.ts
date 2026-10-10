@@ -15,7 +15,7 @@ export function rollItem(state: State, content: Content, unique = false, baseId?
   return {
     uid: state.nextUid++,
     base: base.id,
-    name: `${rarity === 'unique' ? (['Dawnkeeper’s', 'Saltbound', 'Quiet Bell', 'Chainbreaker’s'][state.act] ?? content.maps[state.act].name) : tier ? choose(state, ['Stalwart', 'Kindled', 'Vigilant', 'Runed']) : 'Worn'} ${base.name}`,
+    name: `${rarity === 'unique' ? (['Dawnkeeper’s', 'Saltbound', 'Quiet Bell', 'Chainbreaker’s'][state.act] ?? content.acts[state.act].name) : tier ? choose(state, ['Stalwart', 'Kindled', 'Vigilant', 'Runed']) : 'Worn'} ${base.name}`,
     slot: base.slot,
     rarity,
     damage,

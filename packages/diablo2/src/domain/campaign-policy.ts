@@ -3,6 +3,7 @@ import { newSession, dispatch, type Session } from '../application/session';
 import { stats } from './game';
 import { freeCell } from './loot';
 import { distance, findPath, lineOfSight, walkable } from './maps';
+import { currentRegion, currentWorld, routeTo, wardsLit } from './world';
 import type { Command, Point } from './types';
 export function playCampaign(
   hero: string,
@@ -18,12 +19,12 @@ export function playCampaign(
   let stuck = 0;
   let lootTarget: number | null = null;
   let last = { x: 0, y: 0 };
-  for (let turn = 0; turn < 16000 && session.state.status !== 'victory'; turn++) {
+  for (let turn = 0; turn < 40000 && session.state.status !== 'victory'; turn++) {
     const state = session.state,
       content = session.replay.content,
       p = state.player,
-      world = state.worlds[state.act],
-      map = content.maps[state.act],
+      world = currentWorld(state),
+      map = currentRegion(state, content),
       s = stats(state, content),
       h = content.heroes.find((h) => h.id === hero)!;
     if (state.status === 'dead') {
@@ -37,7 +38,13 @@ export function playCampaign(
         if (session.state.player.healthPotions < 6) act({ type: 'buy', kind: 'health' });
         if (session.state.player.manaPotions < 5) act({ type: 'buy', kind: 'mana' });
       }
-      act({ type: 'travel', act: state.act });
+      if (state.portal) act({ type: 'return' });
+      else {
+        const route = content.regions.find(
+          (r) => r.id === state.region && state.worlds[r.id].waypoint,
+        );
+        act({ type: 'travel', act: state.act, ...(route ? { region: route.id } : {}) });
+      }
       continue;
     }
     for (let n = 0; n < p.statPoints; n++)
@@ -66,7 +73,7 @@ export function playCampaign(
       .filter(
         (e) =>
           e.hp > 0 &&
-          (!e.boss || world.seals.every(Boolean)) &&
+          (!e.boss || wardsLit(state, content)) &&
           distance(p, e) < 7 &&
           lineOfSight(world, p, e),
       )
@@ -99,7 +106,7 @@ export function playCampaign(
       }
       if (p.target !== enemy.uid) act({ type: 'attack', target: enemy.uid });
     } else {
-      const corpse = p.corpse?.act === state.act ? p.corpse.position : null;
+      const corpse = p.corpse?.region === state.region ? p.corpse.position : null;
       const collectible = world.drops
         .filter(
           (d) =>
@@ -115,12 +122,18 @@ export function playCampaign(
         .sort((a, b) => distance(p, a) - distance(p, b));
       const loot = collectible.find((d) => d.uid === lootTarget) ?? collectible[0];
       lootTarget = loot?.uid ?? null;
-      const wardIndex = world.seals.findIndex((lit) => !lit);
-      const boss = world.enemies.find((e) => e.boss)!;
-      const objective =
-        corpse ??
-        loot ??
-        (wardIndex >= 0 ? map.seals[wardIndex] : !world.bossDefeated ? boss : map.exit);
+      const chapter = content.acts[state.act];
+      const wardRegion = chapter.wards.find((id) => !state.worlds[id].ward);
+      const destination = wardRegion ?? chapter.bossRegion;
+      const portal =
+        state.region !== destination
+          ? routeTo(state, content, destination)
+          : world.bossDefeated
+            ? map.portals.find((p) => p.requires === 'boss')!
+            : null;
+      const boss = world.enemies.find((e) => e.boss);
+      const objective = corpse ?? loot ?? (portal ? portal.at : wardRegion ? map.ward! : boss!);
+      if (!objective) throw new Error(`No objective in ${map.id}`);
       if (distance(p, objective) < (loot ? 1.2 : 1.5)) {
         if (loot) act({ type: 'advance', ticks: 1 });
         else act({ type: 'interact' });

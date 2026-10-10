@@ -836,3 +836,31 @@
     display: none;
   }
 }
+.ew-region-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.ew-region-list li {
+  padding: 10px 14px;
+  border-left: 2px solid #64746a;
+  background: #ffffff04;
+}
+.ew-region-list li.current {
+  border-color: #e4b879;
+  background: #e4b8790c;
+}
+.ew-region-list strong,
+.ew-region-list span,
+.ew-region-list small {
+  display: block;
+}
+.ew-region-list span {
+  color: #c9ba9f;
+  font-size: 12px;
+  margin: 4px 0;
+}
+.ew-region-list small {
+  color: #9aaca7;
+}

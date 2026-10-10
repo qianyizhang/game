@@ -24,45 +24,48 @@ describe('resource and failure contracts', () => {
   });
   it('a piercing spear hits each body once, and a warded boss takes no damage', () => {
     const state = field('necromancer'),
-      world = state.worlds[0];
+      world = state.worlds[state.region];
+    const bossWorld = state.worlds[BASE_CONTENT.acts[0].bossRegion];
     const enemy = world.enemies.find((e) => !e.boss)!;
-    world.enemies = [enemy, world.enemies.find((e) => e.boss)!];
-    enemy.x = 6;
-    enemy.y = 5;
+    world.enemies = [enemy, bossWorld.enemies.find((e) => e.boss)!];
+    enemy.x = 10.5;
+    enemy.y = 23.5;
     enemy.hp = 200;
     enemy.maxHp = 200;
     enemy.cooldown = 100;
-    state.player.x = 4;
-    state.player.y = 5;
+    state.player.x = 8.5;
+    state.player.y = 23.5;
     const damage = Math.round(25 * stats(state, BASE_CONTENT).spell);
     let next = applyCommand(state, {
       type: 'cast',
       skill: 'bonespear',
-      target: { x: 8, y: 5 },
+      target: { x: 12.5, y: 23.5 },
     }).state;
     next = applyCommand(next, { type: 'advance', ticks: 8 }).state;
-    expect(next.worlds[0].enemies[0].hp).toBe(200 - damage);
-    const boss = world.enemies[1];
+    expect(next.worlds[next.region].enemies[0].hp).toBe(200 - damage);
+    state.region = BASE_CONTENT.acts[0].bossRegion;
+    bossWorld.enemies = [world.enemies[1]];
+    const boss = bossWorld.enemies[0];
     state.player.x = boss.x - 2;
     state.player.y = boss.y;
     const cast = applyCommand(state, { type: 'cast', skill: 'bonespear', target: boss });
     expect(cast.accepted).toBe(true);
     next = applyCommand(cast.state, { type: 'advance', ticks: 8 }).state;
-    expect(next.worlds[0].enemies[1].hp).toBe(boss.maxHp);
+    expect(next.worlds[next.region].enemies[0].hp).toBe(boss.maxHp);
   });
   it('death stops a multi-tick advance, respawns safely, and permits grave recovery', () => {
     let state = field();
     state.player.gold = 100;
     state.player.hp = 1;
-    state.player.x = 5;
-    state.player.y = 5;
-    state.worlds[0].enemies = [];
-    state.worlds[0].hazards = [
-      { uid: 999, x: 5, y: 5, radius: 2, delay: 1, damage: 1000, element: 'fire', life: 4 },
+    state.player.x = 8.5;
+    state.player.y = 23.5;
+    state.worlds[state.region].enemies = [];
+    state.worlds[state.region].hazards = [
+      { uid: 999, x: 8.5, y: 23.5, radius: 2, delay: 1, damage: 1000, element: 'fire', life: 4 },
     ];
     state = applyCommand(state, { type: 'advance', ticks: 50 }).state;
     expect(state.status).toBe('dead');
-    expect(state.tick).toBe(1);
+    expect(state.tick).toBe(2);
     expect(state.player.gold).toBe(75);
     state = applyCommand(state, { type: 'respawn' }).state;
     expect(state.location).toBe('town');
@@ -121,28 +124,30 @@ describe('mod and save boundaries', () => {
     boss.name = 'The Thorn Herald';
     boss.pattern = 'ranged';
     pack.monsters.push(boss);
-    pack.maps[0].boss = boss.id;
+    pack.regions.find((r) => r.id === pack.acts[0].bossRegion)!.boss = boss.id;
     const content = validateContent(pack);
     let session = newSession('mod-seed', 'stormcaller', content);
     session = dispatch(session, { type: 'travel', act: 0 }).session;
     session = dispatch(session, {
       type: 'cast',
       skill: 'storm-dart',
-      target: { x: 8, y: 5 },
+      target: { x: 12.5, y: 23.5 },
     }).session;
     expect(session.state.player.mana).toBe(106);
-    expect(session.state.worlds[0].projectiles[0].pierce).toBe(true);
-    expect(session.state.worlds[0].projectiles[0].slow).toBe(40);
-    expect(session.state.worlds[0].enemies.find((e) => e.boss)?.kind).toBe('mod-guardian');
+    expect(session.state.worlds[session.state.region].projectiles[0].pierce).toBe(true);
+    expect(session.state.worlds[session.state.region].projectiles[0].slow).toBe(40);
+    expect(session.state.worlds[pack.acts[0].bossRegion].enemies.find((e) => e.boss)?.kind).toBe(
+      'mod-guardian',
+    );
     expect(session.state.hero).toBe('stormcaller');
     expect(importSession(exportSession(session)).state).toEqual(session.state);
-    pack.maps[0].seals[0] = { x: 40, y: 28 };
+    pack.regions[0].portals[0].at = { x: 1, y: 1 };
     expect(() => validateContent(pack)).toThrow();
   });
   it('rejects tampered replay decisions and unknown versions without accepting a supplied snapshot', () => {
     let session = newSession('save', 'barbarian');
     session = dispatch(session, { type: 'travel', act: 0 }).session;
-    session = dispatch(session, { type: 'move', target: { x: 8, y: 5 } }).session;
+    session = dispatch(session, { type: 'move', target: { x: 12.5, y: 23.5 } }).session;
     session = dispatch(session, { type: 'advance', ticks: 5 }).session;
     expect(importSession(exportSession(session)).state).toEqual(session.state);
     const bad = structuredClone(session.replay);

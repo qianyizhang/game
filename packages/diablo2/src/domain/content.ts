@@ -1,4 +1,5 @@
 import type { Content, SkillDef } from './types';
+import { ACTS, REGIONS, DUNGEONS } from './world-content';
 
 const skill = (
   id: string,
@@ -30,7 +31,7 @@ const skill = (
 });
 export const BASE_CONTENT: Content = {
   id: 'emberwake',
-  version: '1.0.0',
+  version: '2.0.0',
   heroes: [
     {
       id: 'barbarian',
@@ -337,139 +338,7 @@ export const BASE_CONTENT: Content = {
       pattern: 'nova',
     },
   ],
-  maps: [
-    {
-      id: 'briarfen',
-      name: 'Briarfen',
-      subtitle: 'I · The stolen lantern',
-      theme: 'marsh',
-      introduction:
-        'For a century, four lanterns kept the buried king asleep. Last night the fen lantern went dark. Warden Elian sends you to recover its ember before the other lights fail.',
-      conclusion:
-        'Inside the Widow you find a lantern chain bearing the desert regent’s seal. The theft was planned. Follow the salt road.',
-      objective: 'Light both ward stones; defeat the Briar Widow.',
-      rooms: [
-        [1, 2, 10, 9],
-        [8, 6, 17, 12],
-        [17, 2, 28, 10],
-        [12, 13, 24, 23],
-        [25, 12, 39, 26],
-        [22, 7, 28, 17],
-      ],
-      start: { x: 4, y: 5 },
-      waypoint: { x: 19, y: 6 },
-      exit: { x: 36, y: 24 },
-      bossPosition: { x: 34, y: 20 },
-      boss: 'briar',
-      monsters: ['hound', 'archer'],
-      seals: [
-        { x: 13, y: 19 },
-        { x: 24, y: 5 },
-      ],
-      chests: [
-        { x: 8, y: 4 },
-        { x: 21, y: 21 },
-      ],
-    },
-    {
-      id: 'saltreach',
-      name: 'Saltreach',
-      subtitle: 'II · A kingdom of glass',
-      theme: 'desert',
-      introduction:
-        'The salt road ends at a city turned to glass. Its regent traded the second ember for immortality. Two sun obelisks still hold the palace gate shut.',
-      conclusion:
-        'The Regent shatters. His bargain names the Bellkeeper beneath the monastery, where the lanterns were first forged.',
-      objective: 'Kindle the sun obelisks; break the Glass Regent.',
-      rooms: [
-        [1, 2, 12, 10],
-        [9, 7, 17, 23],
-        [15, 17, 28, 26],
-        [18, 2, 29, 12],
-        [14, 6, 22, 10],
-        [26, 7, 39, 23],
-      ],
-      start: { x: 4, y: 5 },
-      waypoint: { x: 20, y: 7 },
-      exit: { x: 36, y: 20 },
-      bossPosition: { x: 34, y: 16 },
-      boss: 'regent',
-      monsters: ['wraith', 'cultist', 'hound'],
-      seals: [
-        { x: 12, y: 20 },
-        { x: 23, y: 4 },
-      ],
-      chests: [
-        { x: 8, y: 7 },
-        { x: 23, y: 23 },
-      ],
-    },
-    {
-      id: 'hollowbells',
-      name: 'Hollow Bells',
-      subtitle: 'III · The debt of the dead',
-      theme: 'crypt',
-      introduction:
-        'The monastery rings with voices of the unburied. The Bellkeeper fed the third ember to the dead. Silence his two funeral bells and take the stair below his altar.',
-      conclusion:
-        'The bells fall silent. The first wardens did not destroy the king: they imprisoned their own founder. His last ember burns under the world.',
-      objective: 'Silence both funeral bells; lay the Bellkeeper to rest.',
-      rooms: [
-        [1, 2, 11, 10],
-        [8, 6, 18, 11],
-        [15, 2, 26, 10],
-        [12, 8, 17, 22],
-        [9, 18, 25, 26],
-        [22, 6, 28, 21],
-        [26, 15, 39, 26],
-      ],
-      start: { x: 4, y: 5 },
-      waypoint: { x: 19, y: 6 },
-      exit: { x: 36, y: 24 },
-      bossPosition: { x: 34, y: 21 },
-      boss: 'bellkeeper',
-      monsters: ['archer', 'wraith', 'cultist'],
-      seals: [
-        { x: 12, y: 22 },
-        { x: 23, y: 4 },
-      ],
-      chests: [
-        { x: 7, y: 4 },
-        { x: 20, y: 23 },
-      ],
-    },
-    {
-      id: 'firstfurnace',
-      name: 'The First Furnace',
-      subtitle: 'IV · A light of our own',
-      theme: 'inferno',
-      introduction:
-        'Lucent built the lanterns to steal the world’s dawn. His wardens rebelled, but their prison is breaking. Return the embers to the two furnace anchors and end his claim to the light.',
-      conclusion:
-        'Lucent falls. You break the lantern chain instead of wearing his crown. Dawn reaches Briarfen, Saltreach, and the quiet monastery. Elian opens the refuge gates. The light belongs to everyone.',
-      objective: 'Restore both furnace anchors; defeat Lucent.',
-      rooms: [
-        [1, 2, 12, 11],
-        [9, 7, 18, 23],
-        [15, 17, 28, 26],
-        [15, 3, 27, 11],
-        [23, 7, 30, 21],
-        [28, 12, 39, 26],
-      ],
-      start: { x: 4, y: 5 },
-      waypoint: { x: 20, y: 7 },
-      exit: { x: 36, y: 24 },
-      bossPosition: { x: 34, y: 21 },
-      boss: 'lucent',
-      monsters: ['demon', 'cultist', 'wraith'],
-      seals: [
-        { x: 12, y: 20 },
-        { x: 23, y: 5 },
-      ],
-      chests: [
-        { x: 8, y: 4 },
-        { x: 23, y: 23 },
-      ],
-    },
-  ],
+  acts: ACTS,
+  regions: REGIONS,
+  dungeons: DUNGEONS,
 };

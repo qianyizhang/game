@@ -1,16 +1,17 @@
 import type { Content, Point, State, Enemy, Ally, Player } from '../domain/types';
-import { distance, HEIGHT, lineOfSight, WIDTH } from '../domain/maps';
+import { distance, dimensions, lineOfSight, walkable } from '../domain/maps';
+import { currentRegion, currentWorld, wardsLit, portalOpen } from '../domain/world';
 export const VIEW_WIDTH = 960,
   VIEW_HEIGHT = 576,
   TILE = 32;
-export function camera(state: State): Point {
+export function camera(state: State, player: Point = state.player): Point {
+  const { width: WIDTH, height: HEIGHT } = dimensions(currentWorld(state));
   return {
-    x: Math.max(0, Math.min(WIDTH - VIEW_WIDTH / TILE, state.player.x - VIEW_WIDTH / TILE / 2)),
-    y: Math.max(0, Math.min(HEIGHT - VIEW_HEIGHT / TILE, state.player.y - VIEW_HEIGHT / TILE / 2)),
+    x: Math.max(0, Math.min(WIDTH - VIEW_WIDTH / TILE, player.x - VIEW_WIDTH / TILE / 2)),
+    y: Math.max(0, Math.min(HEIGHT - VIEW_HEIGHT / TILE, player.y - VIEW_HEIGHT / TILE / 2)),
   };
 }
-export function screenToWorld(state: State, x: number, y: number): Point {
-  const c = camera(state);
+export function screenToWorld(state: State, x: number, y: number, c = camera(state)): Point {
   return { x: x / TILE + c.x, y: y / TILE + c.y };
 }
 const palette = {
@@ -119,9 +120,9 @@ export function figure(
         [-8, 2],
         [0, 0],
         [7, 13],
-        [1, 13],
+        [1 - sway, 13],
         [-2, 5],
-        [-6, 13],
+        [-6 + sway, 13],
         [-11, 12],
       ],
       '#262a32',
@@ -142,8 +143,8 @@ export function figure(
     ctx.strokeStyle = broad ? '#d9caa5' : '#af9371';
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(11, 8);
-    ctx.lineTo(11, -16);
+    ctx.moveTo(11 + sway, 8);
+    ctx.lineTo(11 - sway, -16);
     ctx.stroke();
     if (broad) {
       polygon(
@@ -189,41 +190,39 @@ export function figure(
   }
   ctx.restore();
 }
-export function render(
-  canvas: HTMLCanvasElement,
-  state: State,
-  content: Content,
-  showMap: boolean,
-): void {
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-  const world = state.worlds[state.act];
-  const map = content.maps[state.act];
-  const colors = palette[map.theme];
-  const c = camera(state);
-  const known = new Set(world.seen);
-  const sx = (x: number) => (x - c.x) * TILE,
-    sy = (y: number) => (y - c.y) * TILE;
-  ctx.clearRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
-  ctx.fillStyle = '#0d1214';
-  ctx.fillRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
-  for (let y = Math.floor(c.y); y < Math.min(HEIGHT, c.y + VIEW_HEIGHT / TILE + 1); y++)
-    for (let x = Math.floor(c.x); x < Math.min(WIDTH, c.x + VIEW_WIDTH / TILE + 1); x++) {
-      const seen = known.has(y * WIDTH + x);
-      const adjacent =
-        seen ||
-        [
-          [1, 0],
-          [-1, 0],
-          [0, 1],
-          [0, -1],
-        ].some(([dx, dy]) => known.has((y + dy) * WIDTH + x + dx));
-      if (!adjacent) continue;
-      const px = sx(x),
-        py = sy(y);
+interface Frame {
+  previous: State | null;
+  alpha: number;
+  time: number;
+}
+interface TerrainCache {
+  tiles: string[];
+  image: HTMLCanvasElement;
+}
+const terrainCaches = new WeakMap<HTMLCanvasElement, TerrainCache>();
+const knownCaches = new WeakMap<number[], Set<number>>();
+const sightCaches = new WeakMap<
+  HTMLCanvasElement,
+  { tiles: string[]; origin: number; cells: Set<number> }
+>();
+function terrainFor(canvas: HTMLCanvasElement, state: State, content: Content): HTMLCanvasElement {
+  const world = currentWorld(state),
+    map = currentRegion(state, content),
+    colors = palette[map.theme];
+  const cached = terrainCaches.get(canvas);
+  if (cached?.tiles === world.tiles) return cached.image;
+  const image = document.createElement('canvas');
+  image.width = map.width * TILE;
+  image.height = map.height * TILE;
+  const ctx = image.getContext('2d')!;
+  for (let y = 0; y < map.height; y++)
+    for (let x = 0; x < map.width; x++) {
+      const px = x * TILE,
+        py = y * TILE;
       const hash = (x * 17 + y * 31) % 11;
-      if (world.tiles[y][x] === '.') {
-        ctx.fillStyle = hash < 3 ? colors.light : colors.floor;
+      if (walkable(world, { x, y })) {
+        ctx.fillStyle =
+          world.tiles[y][x] === '=' ? colors.light : hash < 3 ? colors.light : colors.floor;
         ctx.fillRect(px, py, TILE, TILE);
         ctx.strokeStyle = '#00000018';
         ctx.strokeRect(px + 0.5, py + 0.5, TILE - 1, TILE - 1);
@@ -240,10 +239,18 @@ export function render(
           ctx.lineTo(px + 8, py + 23);
           ctx.stroke();
         }
+      } else if (world.tiles[y][x] === '~' || world.tiles[y][x] === '!') {
+        ctx.fillStyle = world.tiles[y][x] === '~' ? '#172e39' : '#8e392a';
+        ctx.fillRect(px, py, TILE, TILE);
+        ctx.strokeStyle = world.tiles[y][x] === '~' ? '#4e839766' : '#ffaf5f77';
+        ctx.beginPath();
+        ctx.moveTo(px + 3, py + 12);
+        ctx.lineTo(px + 26, py + 16);
+        ctx.stroke();
       } else {
         ctx.fillStyle = colors.wall;
         ctx.fillRect(px, py, TILE, TILE);
-        if (map.theme === 'marsh') {
+        if (map.theme === 'marsh' && !map.dungeon) {
           polygon(
             ctx,
             [
@@ -272,16 +279,155 @@ export function render(
           ctx.strokeRect(px + 3, py + 3, 26, 16);
         }
       }
-      if (
-        distance(state.player, { x: x + 0.5, y: y + 0.5 }) > 7 ||
-        !lineOfSight(world, state.player, { x: x + 0.5, y: y + 0.5 })
-      ) {
-        ctx.fillStyle = '#090c1288';
-        ctx.fillRect(px, py, TILE, TILE);
+    }
+  for (const landmark of map.landmarks) {
+    ctx.save();
+    ctx.translate(landmark.at.x * TILE, landmark.at.y * TILE);
+    if (landmark.kind === 'tree') {
+      ctx.fillStyle = '#6b5943';
+      ctx.fillRect(-3, -22, 6, 36);
+      for (const [x, y, r] of [
+        [-12, -20, 18],
+        [12, -22, 17],
+        [0, -40, 21],
+      ]) {
+        ctx.fillStyle = '#315643';
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, 7);
+        ctx.fill();
+      }
+    } else if (landmark.kind === 'bridge') {
+      ctx.strokeStyle = '#b49c70';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(-20, -12, 40, 24);
+      for (let x = -18; x < 20; x += 6) {
+        ctx.beginPath();
+        ctx.moveTo(x, -12);
+        ctx.lineTo(x, 12);
+        ctx.stroke();
+      }
+    } else if (landmark.kind === 'camp') {
+      polygon(
+        ctx,
+        [
+          [-17, 10],
+          [0, -20],
+          [17, 10],
+        ],
+        '#887c58',
+      );
+      ctx.fillStyle = '#222c28';
+      ctx.fillRect(-5, -3, 10, 13);
+    } else if (landmark.kind === 'bones') {
+      ctx.strokeStyle = '#b6ae97';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(-12, -5);
+      ctx.lineTo(13, 6);
+      ctx.moveTo(-12, 6);
+      ctx.lineTo(13, -5);
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = '#788079';
+      ctx.fillRect(-9, -26, 18, 35);
+      ctx.fillStyle = '#a4aaa0';
+      ctx.fillRect(-13, -29, 26, 6);
+      ctx.fillRect(-14, 7, 28, 6);
+    }
+    ctx.restore();
+  }
+  terrainCaches.set(canvas, { tiles: world.tiles, image });
+  return image;
+}
+/** Interpolate display positions only; teleport/region changes snap to their confirmed destination. */
+export function displayPoint(current: Point, previous: Point | undefined, alpha: number): Point {
+  if (!previous || distance(current, previous) > 1.5) return current;
+  return {
+    x: previous.x + (current.x - previous.x) * alpha,
+    y: previous.y + (current.y - previous.y) * alpha,
+  };
+}
+export function render(
+  canvas: HTMLCanvasElement,
+  state: State,
+  content: Content,
+  showMap: boolean,
+  frame?: Frame,
+): Point {
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return camera(state);
+  const world = currentWorld(state),
+    map = currentRegion(state, content),
+    colors = palette[map.theme];
+  const WIDTH = map.width,
+    HEIGHT = map.height;
+  const previous =
+    frame?.previous?.region === state.region && frame.previous.location === state.location
+      ? frame.previous
+      : null;
+  const alpha = frame?.alpha ?? 1,
+    time = frame?.time ?? state.tick * 0.05;
+  const shownPlayer = displayPoint(state.player, previous?.player, alpha);
+  const c = camera(state, shownPlayer);
+  let known = knownCaches.get(world.seen);
+  if (!known) {
+    known = new Set(world.seen);
+    knownCaches.set(world.seen, known);
+  }
+  const origin = Math.floor(state.player.y) * WIDTH + Math.floor(state.player.x);
+  let sight = sightCaches.get(canvas);
+  if (!sight || sight.tiles !== world.tiles || sight.origin !== origin) {
+    const cells = new Set<number>();
+    for (
+      let y = Math.max(0, Math.floor(state.player.y) - 8);
+      y < Math.min(HEIGHT, state.player.y + 8);
+      y++
+    )
+      for (
+        let x = Math.max(0, Math.floor(state.player.x) - 8);
+        x < Math.min(WIDTH, state.player.x + 8);
+        x++
+      )
+        if (
+          distance(state.player, { x: x + 0.5, y: y + 0.5 }) <= 7 &&
+          lineOfSight(world, state.player, { x: x + 0.5, y: y + 0.5 })
+        )
+          cells.add(y * WIDTH + x);
+    sight = { tiles: world.tiles, origin, cells };
+    sightCaches.set(canvas, sight);
+  }
+  const sx = (x: number) => (x - c.x) * TILE,
+    sy = (y: number) => (y - c.y) * TILE;
+  ctx.clearRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
+  ctx.fillStyle = '#0d1214';
+  ctx.fillRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
+  ctx.drawImage(terrainFor(canvas, state, content), -c.x * TILE, -c.y * TILE);
+  for (let y = Math.floor(c.y); y < Math.min(HEIGHT, c.y + VIEW_HEIGHT / TILE + 1); y++)
+    for (let x = Math.floor(c.x); x < Math.min(WIDTH, c.x + VIEW_WIDTH / TILE + 1); x++) {
+      const cell = y * WIDTH + x;
+      const adjacent =
+        known.has(cell) ||
+        [
+          [1, 0],
+          [-1, 0],
+          [0, 1],
+          [0, -1],
+        ].some(([dx, dy]) => known.has((y + dy) * WIDTH + x + dx));
+      if (!adjacent) {
+        ctx.fillStyle = '#0d1214';
+        ctx.fillRect(sx(x), sy(y), TILE, TILE);
+      } else if (!sight.cells.has(cell)) {
+        ctx.fillStyle = '#090c12aa';
+        ctx.fillRect(sx(x), sy(y), TILE, TILE);
       }
     }
   const visible = (p: Point) => known.has(Math.floor(p.y) * WIDTH + Math.floor(p.x));
-  const marker = (p: Point, label: string, color: string, shape: 'ward' | 'chest' | 'portal') => {
+  const marker = (
+    p: Point,
+    label: string,
+    color: string,
+    shape: 'ward' | 'chest' | 'portal' | 'stairs',
+  ) => {
     if (!visible(p)) return;
     const x = sx(p.x),
       y = sy(p.y);
@@ -312,6 +458,20 @@ export function render(
       ctx.strokeRect(-11, -3, 22, 14);
       ctx.fillStyle = '#e9d1a0';
       ctx.fillRect(-2, 0, 4, 6);
+    } else if (shape === 'stairs') {
+      ctx.fillStyle = '#87918a';
+      for (let step = 0; step < 5; step++) {
+        ctx.fillRect(-14 + step * 3, 9 - step * 6, 28 - step * 3, 5);
+      }
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(18, -19);
+      ctx.lineTo(18, 9);
+      ctx.lineTo(14, 5);
+      ctx.moveTo(18, 9);
+      ctx.lineTo(22, 5);
+      ctx.stroke();
     } else {
       ctx.strokeStyle = color;
       ctx.lineWidth = 3;
@@ -325,20 +485,27 @@ export function render(
     ctx.fillText(label, 0, 26);
     ctx.restore();
   };
-  map.seals.forEach((p, i) =>
+  if (map.ward)
     marker(
-      p,
-      world.seals[i] ? 'Lit ward' : 'Ward · F',
-      world.seals[i] ? '#f1c47c' : '#6b91af',
+      map.ward,
+      world.ward ? 'Lit ward' : 'Ward · F',
+      world.ward ? '#f1c47c' : '#6b91af',
       'ward',
-    ),
-  );
+    );
   map.chests.forEach((p, i) => {
     if (!world.chests[i]) marker(p, 'Cache · F', '#c0a266', 'chest');
   });
-  marker(map.waypoint, 'Waypoint · F', '#79c9da', 'portal');
-  marker(map.exit, world.bossDefeated ? 'Road onward · F' : 'Sealed road', '#dda76e', 'portal');
-  if (state.player.corpse?.act === state.act)
+  if (map.waypoint) marker(map.waypoint, 'Waypoint · F', '#79c9da', 'portal');
+  for (const portal of map.portals)
+    marker(
+      portal.at,
+      portalOpen(state, content, portal) ? portal.name + ' · F' : 'Sealed · ' + portal.name,
+      portalOpen(state, content, portal) ? '#dda76e' : '#77828f',
+      map.dungeon || content.regions.find((r) => r.id === portal.target)?.dungeon
+        ? 'stairs'
+        : 'portal',
+    );
+  if (state.player.corpse?.region === state.region)
     marker(state.player.corpse.position, 'Your grave · F', '#a9bbc9', 'ward');
   for (const h of world.hazards) {
     ctx.beginPath();
@@ -397,7 +564,28 @@ export function render(
     const def = enemy ? content.monsters.find((m) => m.id === enemy.kind) : null;
     const h = content.heroes.find((h) => h.id === state.hero)!;
     ctx.save();
-    ctx.translate(sx(entity.x), sy(entity.y));
+    const old = hero
+      ? previous?.player
+      : enemy
+        ? previous
+          ? currentWorld(previous).enemies.find((e) => e.uid === enemy.uid)
+          : undefined
+        : previous
+          ? currentWorld(previous).allies.find((a) => a.uid === ('uid' in entity ? entity.uid : 0))
+          : undefined;
+    const shown = displayPoint(entity, old, alpha);
+    ctx.translate(sx(shown.x), sy(shown.y));
+    if (old && 'hp' in old && entity.hp < old.hp) {
+      ctx.shadowColor = '#fff1bb';
+      ctx.shadowBlur = 15;
+    }
+    if (hero && state.player.attackCooldown > 0) {
+      ctx.strokeStyle = '#e7d6af77';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(0, 0, 23, -0.7, 1.4);
+      ctx.stroke();
+    }
     if (hero) {
       ctx.strokeStyle = '#d8c494';
       ctx.lineWidth = 1;
@@ -410,7 +598,14 @@ export function render(
       hero ? h.id : ally ? 'skeleton' : def!.shape,
       hero ? h.color : ally ? '#bbd7a3' : def!.color,
       enemy?.boss ? 1.85 : enemy?.elite ? 1.2 : 1,
-      state.tick * 0.45,
+      time *
+        (hero &&
+        (state.player.destination ||
+          state.player.direction.x ||
+          state.player.direction.y ||
+          state.player.target !== null)
+          ? 16
+          : 4),
     );
     if (enemy) {
       const w = enemy.boss ? 64 : 27;
@@ -424,7 +619,7 @@ export function render(
         ctx.font = '10px sans-serif';
         ctx.fillText(`${enemy.elite ? 'Elite ' : ''}${def!.name}`, 0, -(enemy.boss ? 53 : 32));
       }
-      if (enemy.boss && !world.seals.every(Boolean)) {
+      if (enemy.boss && !wardsLit(state, content)) {
         ctx.strokeStyle = '#99bed4';
         ctx.beginPath();
         ctx.arc(0, 0, 35, 0, 7);
@@ -434,6 +629,10 @@ export function render(
     ctx.restore();
   }
   for (const shot of world.projectiles) {
+    const old = previous
+      ? currentWorld(previous).projectiles.find((p) => p.uid === shot.uid)
+      : undefined;
+    const shown = displayPoint(shot, old, alpha);
     ctx.strokeStyle =
       shot.element === 'fire'
         ? '#ffb579'
@@ -444,8 +643,8 @@ export function render(
             : '#ee8a77';
     ctx.lineWidth = shot.pierce ? 4 : 3;
     ctx.beginPath();
-    ctx.moveTo(sx(shot.x - shot.dx * 0.4), sy(shot.y - shot.dy * 0.4));
-    ctx.lineTo(sx(shot.x), sy(shot.y));
+    ctx.moveTo(sx(shown.x - shot.dx * 0.6), sy(shown.y - shot.dy * 0.6));
+    ctx.lineTo(sx(shown.x), sy(shown.y));
     ctx.stroke();
   }
   const gradient = ctx.createRadialGradient(
@@ -461,7 +660,7 @@ export function render(
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
   if (showMap) {
-    const size = 5,
+    const size = Math.min(4, 240 / WIDTH, 170 / HEIGHT),
       ox = VIEW_WIDTH - WIDTH * size - 18,
       oy = 18;
     ctx.fillStyle = '#0a1013de';
@@ -478,12 +677,13 @@ export function render(
         ctx.fillRect(ox + p.x * size - 2, oy + p.y * size - 2, 4, 4);
       }
     };
-    map.seals.forEach((p, i) => dot(p, world.seals[i] ? '#e9ba78' : '#8dacbf'));
-    dot(map.waypoint, '#77cadd');
-    dot(map.exit, '#cf8068');
+    if (map.ward) dot(map.ward, world.ward ? '#e9ba78' : '#8dacbf');
+    if (map.waypoint) dot(map.waypoint, '#77cadd');
+    map.portals.forEach((p) => dot(p.at, '#cf8068'));
     dot(state.player, '#fff4cf');
     ctx.fillStyle = '#c8bfaa';
     ctx.font = '10px sans-serif';
-    ctx.fillText('TAB · map     blue: ward / waypoint', ox, oy + HEIGHT * size + 17);
+    ctx.fillText('TAB · map   blue: ward   amber: stairs / portals', ox, oy + HEIGHT * size + 17);
   }
+  return c;
 }

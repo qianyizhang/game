@@ -5,8 +5,11 @@ import {
   exportSession,
   importSession,
   SAVE_KEY,
+  dispatch,
+  newSession,
 } from '../../packages/diablo2/src/application/session';
 import { distance, lineOfSight } from '../../packages/diablo2/src/domain/maps';
+import { currentWorld } from '../../packages/diablo2/src/domain/world';
 import { BASE_CONTENT } from '../../packages/diablo2/src/domain/content';
 const review = 'test-results/emberwake';
 
@@ -30,8 +33,23 @@ test('real hero selection, town shopping, movement, spells, pause, and save relo
   const canvas = page.locator('.ew-canvas-wrap canvas');
   await expect(canvas).toBeVisible();
   await canvas.focus();
+  const framesBefore = await canvas.evaluate((c) => ({
+    frames: Number(c.dataset.frames),
+    ticks: Number(c.dataset.ticks),
+  }));
+  await page.waitForTimeout(1000);
+  const framesAfter = await canvas.evaluate((c) => ({
+    frames: Number(c.dataset.frames),
+    ticks: Number(c.dataset.ticks),
+  }));
+  console.log(
+    `Emberwake 1 s observation: ${framesAfter.frames - framesBefore.frames} rendered frames, ${framesAfter.ticks - framesBefore.ticks} simulation steps`,
+  );
+  expect(framesAfter.frames - framesBefore.frames).toBeGreaterThan(
+    (framesAfter.ticks - framesBefore.ticks) * 1.5,
+  );
   await page.keyboard.down('d');
-  await page.waitForTimeout(600);
+  await page.waitForTimeout(900);
   await page.keyboard.up('d');
   await canvas.click({ position: { x: 260, y: 150 }, button: 'right' });
   await expect(page.locator('.ew-topline')).toContainText('Mira · Sorceress');
@@ -39,14 +57,16 @@ test('real hero selection, town shopping, movement, spells, pause, and save relo
   await expect(page.getByRole('heading', { name: 'Paused', exact: true })).toBeVisible();
   const saved = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
   const state = importSession(saved).state;
-  expect(state.player.x).toBeGreaterThan(4);
+  expect(state.player.x).toBeGreaterThan(8.5);
   expect(state.player.mana).toBeLessThan(110);
   await page.getByRole('button', { name: 'Resume journey', exact: true }).click();
   await canvas.focus();
-  const foe = state.worlds[0].enemies
-    .filter(
+  const foe = currentWorld(state)
+    .enemies.filter(
       (e) =>
-        e.hp > 0 && distance(e, state.player) < 7 && lineOfSight(state.worlds[0], state.player, e),
+        e.hp > 0 &&
+        distance(e, state.player) < 7 &&
+        lineOfSight(currentWorld(state), state.player, e),
     )
     .sort((a, b) => distance(a, state.player) - distance(b, state.player))[0];
   expect(foe).toBeDefined();
@@ -55,7 +75,7 @@ test('real hero selection, town shopping, movement, spells, pause, and save relo
     .poll(
       async () => {
         const text = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
-        return importSession(text).state.worlds[0].enemies.find((e) => e.uid === foe.uid)?.hp;
+        return currentWorld(importSession(text).state).enemies.find((e) => e.uid === foe.uid)?.hp;
       },
       { timeout: 15000 },
     )
@@ -68,7 +88,7 @@ test('real hero selection, town shopping, movement, spells, pause, and save relo
   await expect(page.getByRole('dialog').locator('button').last()).toBeFocused();
   await page.keyboard.press('Escape');
   await page.reload();
-  await expect(page.getByRole('heading', { name: 'Briarfen', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Lantern Approach', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Paused', exact: true })).toBeVisible();
   expect(errors).toEqual([]);
 });
@@ -121,5 +141,67 @@ test('campaign replay reaches the ending; mod import preserves invalid-save reco
   await expect(page.locator('.ew-topline')).toContainText('Wren · Barbarian');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
     true,
+  );
+});
+
+test('real stairs traverse persistent dungeon floors; legacy demo storage stays recoverable', async ({
+  page,
+}) => {
+  test.setTimeout(45000);
+  const legacy = 'original-demo-bytes';
+  await page.addInitScript(
+    (value) => localStorage.setItem('card-workshop.emberwake.v1', value),
+    legacy,
+  );
+  const campaign = playCampaign('barbarian', 'browser-stairs').session;
+  let prefix = newSession(campaign.replay.seed, campaign.replay.hero, campaign.replay.content);
+  for (const command of campaign.replay.commands) {
+    const next = dispatch(prefix, command).session;
+    if (prefix.state.region === 'fen-3' && next.state.region === 'fen-4') break;
+    prefix = next;
+  }
+  expect(prefix.state.region).toBe('fen-3');
+  await page.goto('/?game=diablo2');
+  await expect(page.getByRole('button', { name: 'Export original demo save' })).toBeVisible();
+  await page
+    .locator('input[type=file]')
+    .first()
+    .setInputFiles({
+      name: 'stairs.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(exportSession(prefix)),
+    });
+  await page.getByRole('button', { name: 'Resume journey', exact: true }).click();
+  const canvas = page.locator('.ew-canvas-wrap canvas');
+  await canvas.focus();
+  await page.keyboard.press('f');
+  await expect(page.getByRole('heading', { name: 'Buried Sanctuary', exact: true })).toBeVisible();
+  await expect(page.locator('.ew-header')).toContainText('Floor 2');
+  const first = importSession(await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY));
+  await page.keyboard.press('f');
+  await expect(page.getByRole('heading', { name: 'Root Cellars', exact: true })).toBeVisible();
+  await page.keyboard.press('f');
+  await expect(page.getByRole('heading', { name: 'Buried Sanctuary', exact: true })).toBeVisible();
+  const returned = importSession(
+    await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY),
+  );
+  expect(currentWorld(returned.state).enemies.map((e) => e.uid)).toEqual(
+    currentWorld(first.state).enemies.map((e) => e.uid),
+  );
+  expect(currentWorld(returned.state).seen).toEqual(
+    expect.arrayContaining(currentWorld(first.state).seen),
+  );
+  await page.keyboard.press('j');
+  await expect(page.getByRole('dialog')).toContainText('Heart of the Briar · floor 3');
+  await page.keyboard.press('Escape');
+  await page.screenshot({ path: `${review}/dungeon-floor.png` });
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
+    true,
+  );
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'Buried Sanctuary', exact: true })).toBeVisible();
+  expect(await page.evaluate(() => localStorage.getItem('card-workshop.emberwake.v1'))).toBe(
+    legacy,
   );
 });

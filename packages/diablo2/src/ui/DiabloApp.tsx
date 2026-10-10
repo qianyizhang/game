@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { BASE_CONTENT } from '../domain/content';
 import { stats, validateContent } from '../domain/game';
 import { distance, lineOfSight } from '../domain/maps';
-import type { Attribute, Command, Content, Item, Point } from '../domain/types';
+import type { Command, Content, Point } from '../domain/types';
 import {
   dispatch,
   exportSession,
@@ -11,7 +11,12 @@ import {
   SAVE_KEY,
   type Session,
 } from '../application/session';
-import { figure, render, screenToWorld, VIEW_HEIGHT, VIEW_WIDTH } from './render';
+import { figure, screenToWorld, VIEW_HEIGHT, VIEW_WIDTH } from './render';
+import { currentWorld, currentRegion, bossCleared } from '../domain/world';
+import { useFieldRuntime } from './field-runtime';
+import { WorldAtlas } from './WorldAtlas';
+import { InventoryPanel, CharacterPanel } from './CharacterPanels';
+import type { State } from '../domain/types';
 import './styles.css';
 
 function Portrait({ id, color }: { id: string; color: string }) {
@@ -32,19 +37,6 @@ function Portrait({ id, color }: { id: string; color: string }) {
   }, [id, color]);
   return <canvas ref={ref} width={200} height={160} aria-hidden="true" />;
 }
-function itemSummary(item: Item): string {
-  return [
-    item.damage ? `${item.damage} damage` : null,
-    item.armor ? `${item.armor} armor` : null,
-    item.vitality ? `+${item.vitality} vitality` : null,
-    item.energy ? `+${item.energy} energy` : null,
-    item.resist ? `+${item.resist}% resist` : null,
-    item.leech ? `${item.leech}% melee leech` : null,
-    `${item.runes}/${item.sockets} sockets`,
-  ]
-    .filter(Boolean)
-    .join(' · ');
-}
 function download(text: string, filename: string): void {
   const blob = new Blob([text], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -54,7 +46,6 @@ function download(text: string, filename: string): void {
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
-const attributes: Attribute[] = ['strength', 'dexterity', 'vitality', 'energy'];
 export default function DiabloApp() {
   const [initial] = useState(() => {
     try {
@@ -69,12 +60,22 @@ export default function DiabloApp() {
   });
   const [session, setSession] = useState<Session | null>(initial.session);
   const current = useRef(session);
+  const previous = useRef<State | null>(null);
+  const viewCamera = useRef<Point | undefined>(undefined);
+  const hudTime = useRef(0);
   const [content, setContent] = useState<Content>(initial.session?.replay.content ?? BASE_CONTENT);
   const [selecting, setSelecting] = useState(!initial.session);
   const [chosen, setChosen] = useState(content.heroes[0].id);
   const [seed, setSeed] = useState('lantern-1');
   const [message, setMessage] = useState(initial.error);
   const [saved, setSaved] = useState('');
+  const [legacySave] = useState(() => {
+    try {
+      return localStorage.getItem('card-workshop.emberwake.v1');
+    } catch {
+      return null;
+    }
+  });
   const [paused, setPaused] = useState(initial.session?.state.location === 'field');
   const [panel, setPanel] = useState<'inventory' | 'skills' | 'journal' | null>(null);
   const [mapVisible, setMapVisible] = useState(true);
@@ -102,9 +103,28 @@ export default function DiabloApp() {
         setMessage(result.error);
         return;
       }
+      previous.current = command.type === 'advance' ? before.state : null;
       current.current = result.session;
-      setSession(result.session);
-      if (command.type !== 'advance' || result.session.state.tick % 50 === 0) save(result.session);
+      if (
+        before.state.region !== result.session.state.region ||
+        before.state.location !== result.session.state.location
+      )
+        aim.current = { x: result.session.state.player.x + 3, y: result.session.state.player.y };
+      const now = performance.now();
+      if (
+        command.type !== 'advance' ||
+        now - hudTime.current >= 100 ||
+        before.state.location !== result.session.state.location ||
+        before.state.status !== result.session.state.status
+      ) {
+        hudTime.current = now;
+        setSession(result.session);
+      }
+      if (
+        command.type !== 'advance' ||
+        Math.floor(before.state.tick / 100) !== Math.floor(result.session.state.tick / 100)
+      )
+        save(result.session);
     },
     [save],
   );
@@ -161,17 +181,16 @@ export default function DiabloApp() {
     !panel &&
     session.state.status === 'playing' &&
     session.state.location === 'field';
-  useEffect(() => {
-    if (!ticking) return;
-    const timer = setInterval(() => {
-      if (!document.hidden) send({ type: 'advance', ticks: 1 });
-    }, 100);
-    return () => clearInterval(timer);
-  }, [ticking, send]);
-  useEffect(() => {
-    if (canvas.current && session && session.state.location === 'field')
-      render(canvas.current, session.state, session.replay.content, mapVisible);
-  }, [session, mapVisible]);
+  useFieldRuntime(
+    canvas,
+    current,
+    previous,
+    viewCamera,
+    send,
+    ticking,
+    mapVisible,
+    !selecting && session?.state.location === 'field',
+  );
   useEffect(() => {
     const visibility = () => {
       if (document.hidden) {
@@ -277,7 +296,7 @@ export default function DiabloApp() {
       } else if (key === ' ') {
         event.preventDefault();
         const state = current.current.state;
-        const world = state.worlds[state.act];
+        const world = currentWorld(state);
         const nearest = world.enemies
           .filter(
             (e) => e.hp > 0 && distance(e, state.player) < 7 && lineOfSight(world, state.player, e),
@@ -303,6 +322,8 @@ export default function DiabloApp() {
   }, [selecting, panel, paused, send, release, openPanel]);
   const start = () => {
     const next = newSession(seed, chosen, content);
+    previous.current = null;
+    viewCamera.current = undefined;
     current.current = next;
     setSession(next);
     setSelecting(false);
@@ -327,6 +348,8 @@ export default function DiabloApp() {
         setMessage(`${pack.id} ${pack.version} loaded. Choose a hero to start this content pack.`);
       } else {
         const next = importSession(text);
+        previous.current = null;
+        viewCamera.current = undefined;
         current.current = next;
         setSession(next);
         setContent(next.replay.content);
@@ -382,11 +405,17 @@ export default function DiabloApp() {
             shape a build across four connected acts.
           </p>
           <div className="ew-campaign-preview">
-            {content.maps.map((m, i) => (
+            {content.acts.map((m, i) => (
               <div key={m.id}>
                 <span>0{i + 1}</span>
                 <strong>{m.name}</strong>
-                <small>{content.monsters.find((b) => b.id === m.boss)?.name}</small>
+                <small>
+                  {
+                    content.monsters.find(
+                      (b) => b.id === content.regions.find((r) => r.id === m.bossRegion)?.boss,
+                    )?.name
+                  }
+                </small>
               </div>
             ))}
           </div>
@@ -421,6 +450,15 @@ export default function DiabloApp() {
           {session && (
             <button onClick={() => setSelecting(false)}>Return to current journey</button>
           )}
+          {legacySave && (
+            <p className="ew-fine">
+              Your original demo journey is preserved separately. This expanded world starts a new
+              journey.{' '}
+              <button onClick={() => download(legacySave, 'emberwake-demo-v1.json')}>
+                Export original demo save
+              </button>
+            </p>
+          )}
           <div className="ew-selection-tools">
             <button onClick={() => replayInput.current?.click()}>Import journey</button>
             <button onClick={() => modInput.current?.click()}>Load content mod</button>
@@ -444,8 +482,9 @@ export default function DiabloApp() {
     p = state.player,
     pack = session.replay.content,
     h = pack.heroes.find((h) => h.id === state.hero)!,
-    map = pack.maps[state.act],
-    world = state.worlds[state.act],
+    map = currentRegion(state, pack),
+    chapter = pack.acts[state.act],
+    world = currentWorld(state),
     s = stats(state, pack);
   const uiCast = (index: number) => {
     setActive(index);
@@ -456,9 +495,10 @@ export default function DiabloApp() {
   const pointer = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const point = screenToWorld(
-      state,
+      current.current?.state ?? state,
       ((event.clientX - rect.left) / rect.width) * VIEW_WIDTH,
       ((event.clientY - rect.top) / rect.height) * VIEW_HEIGHT,
+      viewCamera.current,
     );
     aim.current = point;
     return point;
@@ -471,46 +511,12 @@ export default function DiabloApp() {
       send({ type: 'cast', skill: h.skills[active], target });
       return;
     }
-    const enemy = world.enemies.find((e) => e.hp > 0 && distance(e, target) < 0.9);
+    const enemy = currentWorld(current.current?.state ?? state).enemies.find(
+      (e) => e.hp > 0 && distance(e, target) < 0.9,
+    );
     if (enemy) send({ type: 'attack', target: enemy.uid });
     else send({ type: 'move', target });
   };
-  const gearCard = (item: Item, source: 'bag' | 'gear' | 'stash') => (
-    <article className={`ew-item ${item.rarity}`} key={item.uid}>
-      <strong>{item.name}</strong>
-      <small>
-        {item.rarity} {item.slot} · {item.width}×{item.height}
-        {item.requiredStrength ? ` · requires ${item.requiredStrength} STR` : ''}
-      </small>
-      <p>{itemSummary(item)}</p>
-      <div>
-        {source === 'bag' ? (
-          <>
-            <button onClick={() => send({ type: 'equip', uid: item.uid })}>Equip</button>
-            {state.location === 'town' ? (
-              <>
-                <button onClick={() => send({ type: 'sell', uid: item.uid })}>
-                  Sell · {item.value}g
-                </button>
-                <button onClick={() => send({ type: 'stash', uid: item.uid })}>Stash</button>
-              </>
-            ) : (
-              <button onClick={() => send({ type: 'drop', uid: item.uid })}>Drop</button>
-            )}
-          </>
-        ) : source === 'stash' ? (
-          <button onClick={() => send({ type: 'withdraw', uid: item.uid })}>Withdraw</button>
-        ) : state.location === 'town' ? (
-          <button
-            disabled={p.runes === 0 || item.runes >= item.sockets}
-            onClick={() => send({ type: 'socket', uid: item.uid })}
-          >
-            Socket ember rune
-          </button>
-        ) : null}
-      </div>
-    </article>
-  );
   return (
     <main className="emberwake ew-game">
       {importControls}
@@ -518,7 +524,11 @@ export default function DiabloApp() {
         <div>
           <span className="ew-kicker">EMBERWAKE</span>
           <h1>{state.location === 'town' ? 'Lantern Refuge' : map.name}</h1>
-          <p>{state.location === 'town' ? 'A fire worth returning to.' : map.subtitle}</p>
+          <p>
+            {state.location === 'town'
+              ? 'A fire worth returning to.'
+              : `${chapter.name} · ${map.dungeon ? pack.dungeons.find((d) => d.id === map.dungeon)?.name + ' · Floor ' + map.floor : 'Wilderness'}`}
+          </p>
         </div>
         <div className="ew-header-actions">
           <button onClick={() => openPanel('inventory')}>Inventory · I</button>
@@ -576,7 +586,7 @@ export default function DiabloApp() {
             <div className="ew-lantern" />
             <span className="ew-kicker">WARDEN ELIAN</span>
             <h2>The fire is still ours.</h2>
-            <p>{world.bossDefeated ? map.conclusion : map.introduction}</p>
+            <p>{bossCleared(state, pack) ? chapter.conclusion : chapter.introduction}</p>
             <p className="ew-fine">
               Life, mana, and stamina restored at the refuge. The field stays as you left it.
             </p>
@@ -588,24 +598,48 @@ export default function DiabloApp() {
           </div>
           <div className="ew-town-services">
             <h2>The road ahead</h2>
-            {pack.maps.map((m, i) => (
+            {pack.acts.map((m, i) => (
               <button
                 className="ew-route"
                 key={m.id}
                 disabled={i > state.unlocked}
                 onClick={() => send({ type: 'travel', act: i })}
               >
-                <span>{worldsLabel(state.worlds[i].bossDefeated, i <= state.unlocked)}</span>
+                <span>
+                  {worldsLabel(state.worlds[m.bossRegion].bossDefeated, i <= state.unlocked)}
+                </span>
                 <strong>{m.name}</strong>
                 <small>
                   {i > state.unlocked
                     ? 'Defeat the previous guardian'
-                    : state.worlds[i].waypoint
+                    : state.worlds[m.entry].waypoint
                       ? 'Attuned waypoint'
                       : 'Enter from the road'}
                 </small>
               </button>
             ))}
+            {pack.regions
+              .filter(
+                (r) =>
+                  r.id !== pack.acts.find((a) => a.id === r.act)?.entry &&
+                  state.worlds[r.id].waypoint,
+              )
+              .map((r) => (
+                <button
+                  className="ew-route"
+                  key={r.id}
+                  onClick={() =>
+                    send({
+                      type: 'travel',
+                      act: pack.acts.findIndex((a) => a.id === r.act),
+                      region: r.id,
+                    })
+                  }
+                >
+                  <strong>{r.name}</strong>
+                  <small>Attuned waypoint · {r.floor ? `floor ${r.floor}` : 'wilderness'}</small>
+                </button>
+              ))}
             <h3>Quartermaster</h3>
             <div className="ew-shop">
               <button onClick={() => send({ type: 'buy', kind: 'health' })}>
@@ -627,10 +661,13 @@ export default function DiabloApp() {
         <section className="ew-field">
           <div className="ew-quest">
             <span>
-              {world.seals.filter(Boolean).length}/{map.seals.length} wards
+              {chapter.wards.filter((id) => state.worlds[id].ward).length}/{chapter.wards.length}{' '}
+              wards
             </span>
             <strong>
-              {world.bossDefeated ? 'Guardian defeated — take the road onward.' : map.objective}
+              {bossCleared(state, pack)
+                ? 'Guardian defeated — take the road onward.'
+                : chapter.objective}
             </strong>
             <button onClick={() => send({ type: 'interact' })}>Interact · F</button>
             <button
@@ -676,7 +713,7 @@ export default function DiabloApp() {
                   <>
                     <span className="ew-kicker">THE LANTERN CHAIN IS BROKEN</span>
                     <h2>Dawn belongs to everyone.</h2>
-                    <p>{map.conclusion}</p>
+                    <p>{chapter.conclusion}</p>
                     <button
                       onClick={() => download(exportSession(session), 'emberwake-victory.json')}
                     >
@@ -810,133 +847,12 @@ export default function DiabloApp() {
             </button>
           </header>
           {panel === 'inventory' ? (
-            <>
-              <p>
-                {p.gold} gold · {p.runes} ember runes · 8×4 inventory.{' '}
-                {state.location === 'town'
-                  ? 'Quartermaster and stash available.'
-                  : 'Return to the refuge to sell, stash, or socket.'}
-              </p>
-              <h3>Equipped</h3>
-              <div className="ew-items">
-                {Object.values(p.equipment).map((item) => gearCard(item, 'gear'))}
-              </div>
-              <h3>Backpack</h3>
-              <div className="ew-bag" aria-label="8 by 4 backpack">
-                {Array.from({ length: 32 }, (_, cell) => (
-                  <span
-                    key={cell}
-                    style={{ gridColumn: (cell % 8) + 1, gridRow: Math.floor(cell / 8) + 1 }}
-                  />
-                ))}
-                {p.inventory.map((item) => (
-                  <button
-                    title={item.name + ' · ' + itemSummary(item)}
-                    className={item.rarity}
-                    key={item.uid}
-                    style={{
-                      gridColumn: `${(item.cell % 8) + 1} / span ${item.width}`,
-                      gridRow: `${Math.floor(item.cell / 8) + 1} / span ${item.height}`,
-                    }}
-                    onClick={() => send({ type: 'equip', uid: item.uid })}
-                  >
-                    {item.slot === 'weapon' ? '⚔' : item.slot === 'armor' ? '◇' : '✧'}
-                    <small>{item.name}</small>
-                  </button>
-                ))}
-              </div>
-              <div className="ew-items">
-                {p.inventory.map((item) => gearCard(item, 'bag'))}
-                {p.inventory.length === 0 && (
-                  <p>Your backpack is empty. Walk over dropped loot to collect it.</p>
-                )}
-              </div>
-              {state.location === 'town' && (
-                <>
-                  <h3>Personal stash · {p.stash.length}/64</h3>
-                  <div className="ew-items">
-                    {p.stash.map((item) => gearCard(item, 'stash'))}
-                    {!p.stash.length && <p>Your stash is empty.</p>}
-                  </div>
-                </>
-              )}
-            </>
+            <InventoryPanel state={state} content={pack} send={send} />
           ) : panel === 'skills' ? (
-            <>
-              <p>
-                Level {p.level} · {s.damage} basic damage · {s.armor} armor · {s.resist}% elemental
-                resistance
-              </p>
-              <h3>Attributes · {p.statPoints} points available</h3>
-              <div className="ew-attributes">
-                {attributes.map((a) => (
-                  <div key={a}>
-                    <strong>{a}</strong>
-                    <span>{p.attributes[a]}</span>
-                    <small>
-                      {a === 'strength'
-                        ? 'Physical damage and gear requirements'
-                        : a === 'dexterity'
-                          ? 'Attack speed and armor'
-                          : a === 'vitality'
-                            ? '5 life per point'
-                            : '3 mana per point and spell damage'}
-                    </small>
-                    <button
-                      aria-label={`Increase ${a}`}
-                      disabled={!p.statPoints}
-                      onClick={() => send({ type: 'attribute', attribute: a })}
-                    >
-                      +
-                    </button>
-                  </div>
-                ))}
-              </div>
-              <h3>Skills · {p.skillPoints} points available</h3>
-              <div className="ew-skill-tree">
-                {h.skills.map((id) => {
-                  const skill = pack.skills.find((s) => s.id === id)!;
-                  return (
-                    <article key={id}>
-                      <strong>
-                        {skill.name} <span>Rank {p.skills[id] ?? 0}/10</span>
-                      </strong>
-                      <p>{skill.description}</p>
-                      <small>
-                        Level {skill.level} · {skill.mana} mana · {(skill.cooldown / 10).toFixed(1)}
-                        s recovery · {skill.element}
-                      </small>
-                      <button
-                        disabled={
-                          !p.skillPoints || p.level < skill.level || (p.skills[id] ?? 0) >= 10
-                        }
-                        onClick={() => send({ type: 'learn', skill: id })}
-                      >
-                        Invest skill point
-                      </button>
-                    </article>
-                  );
-                })}
-              </div>
-            </>
+            <CharacterPanel state={state} content={pack} send={send} />
           ) : (
             <>
-              {pack.maps.map((m, i) => (
-                <article className="ew-journal-act" key={m.id}>
-                  <span className="ew-kicker">
-                    {m.subtitle} ·{' '}
-                    {i > state.unlocked
-                      ? 'SEALED'
-                      : state.worlds[i].bossDefeated
-                        ? 'CLEARED'
-                        : 'OPEN'}
-                  </span>
-                  <h3>{m.name}</h3>
-                  <p>{m.introduction}</p>
-                  <strong>{m.objective}</strong>
-                  {state.worlds[i].bossDefeated && <p>{m.conclusion}</p>}
-                </article>
-              ))}
+              <WorldAtlas state={state} content={pack} />
               <h3>Recent events</h3>
               {state.log.map((line, i) => (
                 <p key={i}>{line}</p>

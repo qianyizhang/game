@@ -7,7 +7,7 @@ import {
   validateContent,
 } from '../domain/game';
 import type { Command, Content, Replay, State } from '../domain/types';
-export const SAVE_KEY = 'card-workshop.emberwake.v1';
+export const SAVE_KEY = 'card-workshop.emberwake.v2';
 export interface Session {
   state: State;
   replay: Replay;
@@ -17,7 +17,7 @@ export function newSession(seed: string, hero: string, content: Content = BASE_C
   return {
     state: createGame(seed, hero, pack),
     replay: {
-      format: 'emberwake-replay-v1',
+      format: 'emberwake-replay-v2',
       rulesVersion: RULES_VERSION,
       content: pack,
       seed,
@@ -60,7 +60,7 @@ export function importSession(text: string): Session {
   const value: unknown = JSON.parse(text);
   if (!value || typeof value !== 'object') throw new Error('Invalid save.');
   const r = value as Record<string, unknown>;
-  if (r.format !== 'emberwake-replay-v1' || r.rulesVersion !== RULES_VERSION)
+  if (r.format !== 'emberwake-replay-v2' || r.rulesVersion !== RULES_VERSION)
     throw new Error('Unsupported save or rules version.');
   if (typeof r.seed !== 'string' || r.seed.length > 100 || typeof r.hero !== 'string')
     throw new Error('Invalid hero or seed.');

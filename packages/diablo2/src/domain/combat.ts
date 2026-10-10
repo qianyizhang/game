@@ -1,8 +1,10 @@
 import type { Content, Element, Enemy, Point, State, World } from './types';
-import { distance, lineOfSight, reveal, slide, toward } from './maps';
+import { distance, lineOfSight, reveal, slide, toward, bodyFits } from './maps';
 import { note, random } from './random';
 import { rollItem, carry } from './loot';
 import { stats } from './stats';
+import { currentRegion, currentWorld, wardsLit } from './world';
+import { STEP_SCALE as dt } from './timing';
 
 export function spawnEnemy(
   state: State,
@@ -16,7 +18,8 @@ export function spawnEnemy(
   const def = content.monsters.find((m) => m.id === kind)!;
   const hp = Math.round(def.hp * (boss ? 1 : 1 + state.act * 0.35) * (elite ? 1.8 : 1));
   const enemy = {
-    ...position,
+    x: position.x,
+    y: position.y,
     uid: state.nextUid++,
     kind,
     hp,
@@ -40,8 +43,8 @@ export function hitEnemy(
   element: Element,
 ): void {
   if (enemy.hp <= 0) return;
-  const world = state.worlds[state.act];
-  if (enemy.boss && !world.seals.every(Boolean)) return;
+  const world = currentWorld(state);
+  if (enemy.boss && !wardsLit(state, content)) return;
   const def = content.monsters.find((m) => m.id === enemy.kind)!;
   const resist = Math.max(-0.3, (def.resist[element] ?? 0) - (enemy.cursed > 0 ? 0.35 : 0));
   const dealt = Math.max(1, Math.round(damage * (1 - resist)));
@@ -78,8 +81,8 @@ export function hitEnemy(
     world.drops.push({ x: enemy.x, y: enemy.y, uid: state.nextUid++, kind: 'rune', amount: 1 });
   if (enemy.boss) {
     world.bossDefeated = true;
-    state.unlocked = Math.max(state.unlocked, Math.min(content.maps.length - 1, state.act + 1));
-    note(state, content.maps[state.act].conclusion);
+    state.unlocked = Math.max(state.unlocked, Math.min(content.acts.length - 1, state.act + 1));
+    note(state, content.acts[state.act].conclusion);
   }
   while (p.xp >= stats(state, content).xpNext && p.level < 20) {
     p.xp -= stats(state, content).xpNext;
@@ -103,12 +106,13 @@ function hurt(state: State, content: Content, damage: number, element: Element):
     p.gold -= lost;
     p.xp = Math.max(0, p.xp - Math.floor(s.xpNext * 0.1));
     if (p.corpse) p.corpse.gold += lost;
-    else p.corpse = { act: state.act, position: { x: p.x, y: p.y }, gold: lost };
+    else
+      p.corpse = { act: state.act, region: state.region, position: { x: p.x, y: p.y }, gold: lost };
     state.status = 'dead';
     p.destination = null;
     p.target = null;
     p.direction = { x: 0, y: 0 };
-    state.worlds[state.act].allies = [];
+    currentWorld(state).allies = [];
     note(
       state,
       `You fell. ${lost} gold remains at your grave; 10% of this level’s experience was lost. Return from the refuge to recover it.`,
@@ -130,7 +134,8 @@ export function projectile(
   const d = distance(from, to);
   if (d < 0.01) return;
   world.projectiles.push({
-    ...from,
+    x: from.x,
+    y: from.y,
     uid: state.nextUid++,
     dx: ((to.x - from.x) / d) * 0.85,
     dy: ((to.y - from.y) / d) * 0.85,
@@ -149,7 +154,7 @@ export function basicAttack(state: State, content: Content, enemy: Enemy): void 
   const s = stats(state, content);
   const ranged = content.heroes.find((h) => h.id === state.hero)!.attack === 'ranged';
   if (p.attackCooldown > 0) return;
-  if (ranged) projectile(state, state.worlds[state.act], p, enemy, s.damage, 'physical', true);
+  if (ranged) projectile(state, currentWorld(state), p, enemy, s.damage, 'physical', true);
   else {
     hitEnemy(state, content, enemy, s.damage, 'physical');
     p.hp = Math.min(s.maxHp, p.hp + (s.damage * s.leech) / 100);
@@ -157,7 +162,7 @@ export function basicAttack(state: State, content: Content, enemy: Enemy): void 
   p.attackCooldown = s.attackTicks;
 }
 function bossSpell(state: State, content: Content, enemy: Enemy): void {
-  const world = state.worlds[state.act];
+  const world = currentWorld(state);
   const p = state.player;
   const def = content.monsters.find((m) => m.id === enemy.kind)!;
   enemy.windup = 12;
@@ -182,7 +187,7 @@ function bossSpell(state: State, content: Content, enemy: Enemy): void {
     if (enemy.phase < phase) {
       enemy.phase = phase;
       for (const dx of [-1.5, 1.5])
-        spawnEnemy(state, content, world, content.maps[state.act].monsters[0], {
+        spawnEnemy(state, content, world, currentRegion(state, content).monsters[0], {
           x: enemy.x + dx,
           y: enemy.y,
         });
@@ -194,22 +199,22 @@ function bossSpell(state: State, content: Content, enemy: Enemy): void {
     if (enemy.hp < enemy.maxHp * 0.5) hazard({ x: p.x + 2, y: p.y - 1 }, 1.8, 19);
   }
 }
-/** One authoritative 100 ms simulation tick. Rendering never calculates damage or movement. */
+/** One authoritative 50 ms simulation tick. Rendering never calculates damage or movement. */
 export function tick(state: State, content: Content): void {
   state.tick++;
   const p = state.player;
   const s = stats(state, content);
-  p.attackCooldown = Math.max(0, p.attackCooldown - 1);
-  p.slow = Math.max(0, p.slow - 1);
-  for (const key of Object.keys(p.cooldowns)) p.cooldowns[key] = Math.max(0, p.cooldowns[key] - 1);
+  p.attackCooldown = Math.max(0, p.attackCooldown - dt);
+  p.slow = Math.max(0, p.slow - dt);
+  for (const key of Object.keys(p.cooldowns)) p.cooldowns[key] = Math.max(0, p.cooldowns[key] - dt);
   if (state.location === 'town') {
     p.hp = s.maxHp;
     p.mana = s.maxMana;
     p.stamina = 100;
     return;
   }
-  const world = state.worlds[state.act];
-  p.mana = Math.min(s.maxMana, p.mana + 0.16 + p.attributes.energy * 0.008);
+  const world = currentWorld(state);
+  p.mana = Math.min(s.maxMana, p.mana + (0.16 + p.attributes.energy * 0.008) * dt);
   if (p.target !== null) {
     const enemy = world.enemies.find((e) => e.uid === p.target && e.hp > 0);
     if (!enemy) p.target = null;
@@ -217,15 +222,15 @@ export function tick(state: State, content: Content): void {
       const ranged = content.heroes.find((h) => h.id === state.hero)!.attack === 'ranged';
       const reach = ranged ? 6 : 1.65;
       if (distance(p, enemy) > reach || !lineOfSight(world, p, enemy))
-        toward(world, p, enemy, 0.36);
+        toward(world, p, enemy, 0.36 * dt);
       else basicAttack(state, content, enemy);
     }
   }
   const moving = Math.hypot(p.direction.x, p.direction.y) > 0 || p.destination !== null;
-  const speed = (p.running && p.stamina > 0 ? 0.52 : 0.34) * (p.slow > 0 ? 0.55 : 1);
+  const speed = (p.running && p.stamina > 0 ? 0.52 : 0.34) * (p.slow > 0 ? 0.55 : 1) * dt;
   if (moving) {
-    if (p.running && p.stamina > 0) p.stamina = Math.max(0, p.stamina - 1.1);
-    else p.stamina = Math.min(100, p.stamina + 0.35);
+    if (p.running && p.stamina > 0) p.stamina = Math.max(0, p.stamina - 1.1 * dt);
+    else p.stamina = Math.min(100, p.stamina + 0.35 * dt);
     if (p.direction.x || p.direction.y) {
       const d = Math.hypot(p.direction.x, p.direction.y);
       slide(world, p, (p.direction.x / d) * speed, (p.direction.y / d) * speed);
@@ -238,15 +243,15 @@ export function tick(state: State, content: Content): void {
         p.path = [];
       }
     }
-  } else p.stamina = Math.min(100, p.stamina + 0.65);
+  } else p.stamina = Math.min(100, p.stamina + 0.65 * dt);
   reveal(world, p);
   for (const enemy of [...world.enemies]) {
     if (enemy.hp <= 0) continue;
-    enemy.cooldown = Math.max(0, enemy.cooldown - 1);
-    enemy.slow = Math.max(0, enemy.slow - 1);
-    enemy.cursed = Math.max(0, enemy.cursed - 1);
-    enemy.windup = Math.max(0, enemy.windup - 1);
-    if (enemy.boss && !world.seals.every(Boolean)) continue;
+    enemy.cooldown = Math.max(0, enemy.cooldown - dt);
+    enemy.slow = Math.max(0, enemy.slow - dt);
+    enemy.cursed = Math.max(0, enemy.cursed - dt);
+    enemy.windup = Math.max(0, enemy.windup - dt);
+    if (enemy.boss && !wardsLit(state, content)) continue;
     const def = content.monsters.find((m) => m.id === enemy.kind)!;
     const ally = world.allies.find(
       (a) => a.hp > 0 && distance(a, enemy) < distance(p, enemy) && distance(a, enemy) < 4,
@@ -259,7 +264,8 @@ export function tick(state: State, content: Content): void {
       continue;
     }
     if (enemy.windup > 0) continue;
-    if (d > def.range) toward(world, enemy, target, def.speed * 0.1 * (enemy.slow > 0 ? 0.45 : 1));
+    if (d > def.range)
+      toward(world, enemy, target, def.speed * 0.1 * dt * (enemy.slow > 0 ? 0.45 : 1));
     else if (enemy.cooldown === 0) {
       const damage = def.damage * (1 + state.act * 0.15) * (enemy.elite ? 1.35 : 1);
       if (def.pattern === 'ranged')
@@ -271,30 +277,30 @@ export function tick(state: State, content: Content): void {
     if (state.status === 'dead') return;
   }
   for (const ally of world.allies) {
-    ally.cooldown = Math.max(0, ally.cooldown - 1);
+    ally.cooldown = Math.max(0, ally.cooldown - dt);
     const enemy = world.enemies
       .filter(
         (e) =>
           e.hp > 0 &&
-          (!e.boss || world.seals.every(Boolean)) &&
+          (!e.boss || wardsLit(state, content)) &&
           distance(ally, e) < 8 &&
           lineOfSight(world, ally, e),
       )
       .sort((a, b) => distance(ally, a) - distance(ally, b))[0];
     if (enemy) {
-      if (distance(ally, enemy) > 1.3) toward(world, ally, enemy, 0.4);
+      if (distance(ally, enemy) > 1.3) toward(world, ally, enemy, 0.4 * dt);
       else if (!ally.cooldown) {
         hitEnemy(state, content, enemy, ally.damage, 'physical');
         ally.cooldown = 9;
       }
-    } else if (distance(ally, p) > 2) toward(world, ally, p, 0.4);
+    } else if (distance(ally, p) > 2) toward(world, ally, p, 0.4 * dt);
   }
   world.allies = world.allies.filter((a) => a.hp > 0);
   for (const shot of world.projectiles) {
     const previous = { x: shot.x, y: shot.y };
-    shot.x += shot.dx;
-    shot.y += shot.dy;
-    shot.life--;
+    shot.x += shot.dx * dt;
+    shot.y += shot.dy * dt;
+    shot.life -= dt;
     if (!lineOfSight(world, previous, shot)) {
       shot.life = 0;
       continue;
@@ -340,9 +346,10 @@ export function tick(state: State, content: Content): void {
   }
   world.projectiles = world.projectiles.filter((shot) => shot.life > 0);
   for (const h of world.hazards) {
-    h.delay--;
-    h.life--;
-    if (h.delay === 0 && distance(p, h) < h.radius) hurt(state, content, h.damage, h.element);
+    const due = h.delay > 0 && h.delay <= dt;
+    h.delay -= dt;
+    h.life -= dt;
+    if (due && distance(p, h) < h.radius) hurt(state, content, h.damage, h.element);
     if (state.status === 'dead') return;
   }
   world.hazards = world.hazards.filter((h) => h.life > 0);
@@ -367,8 +374,8 @@ export function tick(state: State, content: Content): void {
       }
     }
   world.drops = world.drops.filter((drop) => drop.amount > 0);
-  const map = content.maps[state.act];
-  if (!world.waypoint && distance(p, map.waypoint) < 2) {
+  const map = currentRegion(state, content);
+  if (map.waypoint && !world.waypoint && distance(p, map.waypoint) < 2) {
     world.waypoint = true;
     note(state, `${map.name} waypoint attuned. It remains available from the refuge.`);
   }
@@ -380,7 +387,7 @@ export function cast(
   target: Point,
 ): string | null {
   const p = state.player;
-  const world = state.worlds[state.act];
+  const world = currentWorld(state);
   const skill = content.skills.find((s) => s.id === skillId);
   const rank = p.skills[skillId] ?? 0;
   if (!skill || !rank) return 'Learn this skill first.';
@@ -388,7 +395,8 @@ export function cast(
   if (p.mana < skill.mana) return 'Not enough mana.';
   if (skill.range > 0 && (distance(p, target) > skill.range || !lineOfSight(world, p, target)))
     return 'Target is out of range or behind a wall.';
-  if (skill.effect === 'leap' && !lineOfSight(world, p, target)) return 'Choose a clear landing.';
+  if (skill.effect === 'leap' && (!bodyFits(world, target) || !lineOfSight(world, p, target)))
+    return 'Choose a clear landing.';
   if (skill.effect === 'summon') {
     const body = world.enemies.find((e) => e.hp === 0 && !e.boss && distance(p, e) < 5);
     if (!body) return 'A slain enemy body must be within five paces.';

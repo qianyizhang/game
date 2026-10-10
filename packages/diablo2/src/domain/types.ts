@@ -57,23 +57,65 @@ export interface MonsterDef {
   pattern: 'melee' | 'ranged' | 'nova' | 'summoner';
   hazardRadius: number;
 }
-export interface MapDef {
+export type Theme = 'marsh' | 'desert' | 'crypt' | 'inferno';
+export type Rect = [number, number, number, number];
+export interface TerrainPatch {
+  kind: 'water' | 'lava' | 'rock' | 'road' | 'grass' | 'sand' | 'moss' | 'floor';
+  bounds: Rect;
+}
+export interface Landmark {
+  name: string;
+  kind: 'tree' | 'ruin' | 'pillar' | 'bones' | 'altar' | 'bridge' | 'camp';
+  at: Point;
+}
+export interface RegionPortal {
+  id: string;
+  name: string;
+  at: Point;
+  target: string | null;
+  arrival: string | null;
+  requires: 'none' | 'wards' | 'boss';
+}
+export interface RegionDef {
+  id: string;
+  act: string;
+  name: string;
+  description: string;
+  theme: Theme;
+  width: number;
+  height: number;
+  dungeon: string | null;
+  floor: number | null;
+  rooms: Rect[];
+  paths: Point[][];
+  terrain: TerrainPatch[];
+  landmarks: Landmark[];
+  start: Point;
+  waypoint: Point | null;
+  bossPosition: Point | null;
+  boss: string | null;
+  ward: Point | null;
+  monsters: string[];
+  encounters: number;
+  chests: Point[];
+  portals: RegionPortal[];
+}
+export interface ActDef {
   id: string;
   name: string;
   subtitle: string;
   introduction: string;
   conclusion: string;
   objective: string;
-  theme: 'marsh' | 'desert' | 'crypt' | 'inferno';
-  rooms: [number, number, number, number][];
-  start: Point;
-  waypoint: Point;
-  exit: Point;
-  bossPosition: Point;
-  boss: string;
-  monsters: string[];
-  seals: Point[];
-  chests: Point[];
+  entry: string;
+  wards: string[];
+  bossRegion: string;
+}
+export interface DungeonDef {
+  id: string;
+  act: string;
+  name: string;
+  floors: string[];
 }
 export interface Content {
   id: string;
@@ -82,7 +124,9 @@ export interface Content {
   skills: SkillDef[];
   items: ItemDef[];
   monsters: MonsterDef[];
-  maps: MapDef[];
+  acts: ActDef[];
+  regions: RegionDef[];
+  dungeons: DungeonDef[];
 }
 export interface Item {
   uid: number;
@@ -158,7 +202,9 @@ export interface World {
   hazards: Hazard[];
   projectiles: Projectile[];
   allies: Ally[];
-  seals: boolean[];
+  ward: boolean;
+  visited: boolean;
+  revealOrigin: number;
   chests: boolean[];
   bossDefeated: boolean;
   waypoint: boolean;
@@ -188,7 +234,7 @@ export interface Player extends Point {
   direction: Point;
   target: number | null;
   running: boolean;
-  corpse: { act: number; position: Point; gold: number } | null;
+  corpse: { act: number; region: string; position: Point; gold: number } | null;
 }
 export interface State {
   rulesVersion: string;
@@ -203,9 +249,10 @@ export interface State {
   location: 'town' | 'field';
   act: number;
   unlocked: number;
-  worlds: World[];
+  region: string;
+  worlds: Record<string, World>;
   player: Player;
-  portal: { act: number; position: Point } | null;
+  portal: { act: number; region: string; position: Point } | null;
   log: string[];
 }
 export type Command =
@@ -217,7 +264,8 @@ export type Command =
   | { type: 'potion'; kind: 'health' | 'mana' }
   | { type: 'interact' }
   | { type: 'portal' }
-  | { type: 'travel'; act: number }
+  | { type: 'travel'; act: number; region?: string }
+  | { type: 'use-portal'; id: string }
   | { type: 'return' }
   | { type: 'respawn' }
   | { type: 'equip' | 'sell' | 'stash' | 'withdraw' | 'socket' | 'drop'; uid: number }
@@ -226,7 +274,7 @@ export type Command =
   | { type: 'learn'; skill: string }
   | { type: 'run'; enabled: boolean };
 export interface Replay {
-  format: 'emberwake-replay-v1';
+  format: 'emberwake-replay-v2';
   rulesVersion: string;
   content: Content;
   seed: string;

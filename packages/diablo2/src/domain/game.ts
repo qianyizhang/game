@@ -6,25 +6,65 @@ import { hashSeed, choose, note, random } from './random';
 import { carry, rollItem, freeCell } from './loot';
 import { cast, spawnEnemy, tick } from './combat';
 import { stats } from './stats';
+import { currentRegion, currentWorld, wardsLit, portalOpen } from './world';
 export { stats } from './stats';
 export { validateContent } from './validate';
 export type { Command, State, Content } from './types';
-export const RULES_VERSION = 'emberwake-1';
+export const RULES_VERSION = 'emberwake-2';
 function stop(state: State): void {
   state.player.direction = { x: 0, y: 0 };
   state.player.destination = null;
   state.player.path = [];
   state.player.target = null;
 }
-function enter(state: State, content: Content, act: number, position?: Point): void {
-  state.act = act;
+function cloneWorld(world: World): World {
+  return {
+    ...structuredClone({ ...world, tiles: [], seen: [] }),
+    tiles: world.tiles,
+    seen: world.seen,
+  };
+}
+function enter(state: State, content: Content, regionId: string, position?: Point): void {
+  const region = content.regions.find((r) => r.id === regionId)!;
+  state.act = content.acts.findIndex((a) => a.id === region.act);
+  state.region = regionId;
+  state.worlds[regionId] = cloneWorld(state.worlds[regionId]);
   state.location = 'field';
   stop(state);
-  const p = position ?? content.maps[act].start;
+  const p = position ?? region.start;
   state.player.x = p.x;
   state.player.y = p.y;
-  reveal(state.worlds[act], p);
-  note(state, content.maps[act].introduction);
+  const world = currentWorld(state);
+  if (!world.visited) note(state, region.description);
+  world.visited = true;
+  reveal(world, p);
+}
+function usePortal(state: State, content: Content, id: string): string | null {
+  if (state.location !== 'field') return 'Leave the refuge first.';
+  const portal = currentRegion(state, content).portals.find((p) => p.id === id);
+  if (!portal || distance(state.player, portal.at) >= 2)
+    return 'Stand beside that portal or staircase.';
+  if (!portalOpen(state, content, portal))
+    return portal.requires === 'wards'
+      ? 'Light both act wards before descending to the boss.'
+      : 'Defeat the final boss before taking this road.';
+  if (!portal.target) {
+    state.status = 'victory';
+    stop(state);
+    note(state, content.acts[state.act].conclusion);
+    return null;
+  }
+  const target = content.regions.find((r) => r.id === portal.target)!;
+  const position = portal.arrival
+    ? target.portals.find((p) => p.id === portal.arrival)!.at
+    : target.start;
+  const previousAct = state.act;
+  enter(state, content, target.id, position);
+  if (state.act !== previousAct) {
+    state.portal = null;
+    note(state, content.acts[state.act].introduction);
+  }
+  return null;
 }
 export function createGame(seed: string, heroId: string, pack: Content = BASE_CONTENT): State {
   const content = validateContent(pack);
@@ -44,7 +84,8 @@ export function createGame(seed: string, heroId: string, pack: Content = BASE_CO
     location: 'town',
     act: 0,
     unlocked: 0,
-    worlds: [],
+    region: content.acts[0].entry,
+    worlds: {},
     portal: null,
     log: ['Warden Elian: The first lantern has gone dark. Take the east road into Briarfen.'],
     player: {
@@ -86,9 +127,9 @@ export function createGame(seed: string, heroId: string, pack: Content = BASE_CO
   starter.resist = 0;
   starter.leech = 0;
   state.player.equipment.weapon = starter;
-  for (let act = 0; act < content.maps.length; act++) {
+  for (const map of content.regions) {
+    const act = content.acts.findIndex((a) => a.id === map.act);
     state.act = act;
-    const map = content.maps[act];
     const world: World = {
       tiles: tilesFor(map),
       seen: [],
@@ -97,54 +138,58 @@ export function createGame(seed: string, heroId: string, pack: Content = BASE_CO
       hazards: [],
       projectiles: [],
       allies: [],
-      seals: map.seals.map(() => false),
+      ward: false,
+      visited: false,
+      revealOrigin: -1,
       chests: map.chests.map(() => false),
       bossDefeated: false,
       waypoint: false,
     };
-    state.worlds.push(world);
+    state.worlds[map.id] = world;
     const reserved = [
       map.start,
       map.waypoint,
-      map.exit,
       map.bossPosition,
-      ...map.seals,
+      map.ward,
+      ...map.portals.map((p) => p.at),
       ...map.chests,
-    ];
+    ].filter((p) => p !== null);
     const candidates: Point[] = [];
-    for (let y = 2; y < 27; y += 3)
-      for (let x = 2; x < 39; x += 3)
+    for (let y = 2; y < map.height - 2; y += 3)
+      for (let x = 2; x < map.width - 2; x += 3)
         if (
           walkable(world, { x: x + 0.5, y: y + 0.5 }) &&
           reserved.every((p) => distance(p, { x, y }) > 3) &&
-          distance(map.start, { x, y }) > 6
+          distance(map.start, { x, y }) > 7
         )
           candidates.push({ x: x + 0.5, y: y + 0.5 });
-    for (let i = 0; i < 18 + act * 2 && candidates.length; i++) {
-      const index = Math.floor(random(state) * candidates.length);
+    for (let i = 0; i < map.encounters && candidates.length; i++) {
+      // Put the first patrol along the approach; scatter the remaining encounters with the seed.
+      if (i === 0) candidates.sort((a, b) => distance(map.start, a) - distance(map.start, b));
+      const index = i === 0 ? 0 : Math.floor(random(state) * candidates.length);
       const point = candidates.splice(index, 1)[0];
       spawnEnemy(state, content, world, choose(state, map.monsters), point, false, i % 8 === 7);
     }
-    for (const point of map.seals)
+    if (map.ward)
       spawnEnemy(
         state,
         content,
         world,
         choose(state, map.monsters),
-        { x: point.x + 1, y: point.y + 1 },
+        { x: map.ward.x + 1, y: map.ward.y + 1 },
         false,
         true,
       );
-    spawnEnemy(state, content, world, map.boss, map.bossPosition, true);
-    reveal(world, map.start);
+    if (map.boss && map.bossPosition)
+      spawnEnemy(state, content, world, map.boss, map.bossPosition, true);
   }
   state.act = 0;
   return state;
 }
 function execute(state: State, content: Content, command: Command): string | null {
   const p = state.player;
-  const world = state.worlds[state.act];
-  const map = content.maps[state.act];
+  const world = currentWorld(state);
+  const map = currentRegion(state, content);
   if (command.type === 'respawn') {
     if (state.status !== 'dead') return 'You are still alive.';
     state.status = 'playing';
@@ -179,30 +224,32 @@ function execute(state: State, content: Content, command: Command): string | nul
       p.skillPoints--;
       return null;
     }
-    case 'travel':
+    case 'travel': {
       if (state.location !== 'town') return 'Use a waypoint from the refuge.';
-      if (command.act > state.unlocked || !content.maps[command.act])
-        return 'That route is still sealed.';
-      enter(
-        state,
-        content,
-        command.act,
-        state.worlds[command.act].waypoint ? content.maps[command.act].waypoint : undefined,
-      );
+      const act = content.acts[command.act];
+      if (command.act > state.unlocked || !act) return 'That route is still sealed.';
+      const region = content.regions.find((r) => r.id === (command.region ?? act.entry));
+      if (!region || region.act !== act.id) return 'Unknown route for this act.';
+      const world = state.worlds[region.id];
+      if (region.id !== act.entry && !world.waypoint) return 'Attune that region’s waypoint first.';
+      enter(state, content, region.id, world.waypoint ? region.waypoint! : region.start);
       return null;
+    }
+    case 'use-portal':
+      return usePortal(state, content, command.id);
     case 'return':
       if (state.location !== 'town' || !state.portal) return 'No return portal is open.';
-      enter(state, content, state.portal.act, state.portal.position);
+      enter(state, content, state.portal.region, state.portal.position);
       return null;
     case 'portal':
       if (state.location !== 'field') return 'You are already at the refuge.';
       if (
         world.enemies.some(
-          (e) => e.hp > 0 && (!e.boss || world.seals.every(Boolean)) && distance(p, e) < 3,
+          (e) => e.hp > 0 && (!e.boss || wardsLit(state, content)) && distance(p, e) < 3,
         )
       )
         return 'Clear the enemies within three paces before opening a portal.';
-      state.portal = { act: state.act, position: { x: p.x, y: p.y } };
+      state.portal = { act: state.act, region: state.region, position: { x: p.x, y: p.y } };
       state.location = 'town';
       stop(state);
       p.hp = stats(state, content).maxHp;
@@ -324,11 +371,11 @@ function execute(state: State, content: Content, command: Command): string | nul
       const enemy = world.enemies.find((e) => e.uid === command.target && e.hp > 0);
       if (!enemy) return 'Choose a living enemy.';
       if (
-        !world.seen.includes(Math.floor(enemy.y) * 41 + Math.floor(enemy.x)) ||
+        !world.seen.includes(Math.floor(enemy.y) * map.width + Math.floor(enemy.x)) ||
         !lineOfSight(world, p, enemy)
       )
         return 'That enemy is not visible.';
-      if (enemy.boss && !world.seals.every(Boolean))
+      if (enemy.boss && !wardsLit(state, content))
         return 'The boss is warded. Activate both ward stones first.';
       stop(state);
       p.target = enemy.uid;
@@ -339,26 +386,25 @@ function execute(state: State, content: Content, command: Command): string | nul
       return cast(state, content, command.skill, command.target);
     case 'interact': {
       if (state.location !== 'field') return 'Select a route to leave the refuge.';
-      if (p.corpse && p.corpse.act === state.act && distance(p, p.corpse.position) < 2) {
+      if (p.corpse && p.corpse.region === state.region && distance(p, p.corpse.position) < 2) {
         p.gold += p.corpse.gold;
         p.corpse = null;
         note(state, 'Your grave is recovered. Lost experience remains lost.');
         return null;
       }
-      for (let i = 0; i < map.seals.length; i++)
-        if (!world.seals[i] && distance(p, map.seals[i]) < 2) {
-          if (world.enemies.some((e) => e.hp > 0 && !e.boss && distance(e, map.seals[i]) < 3))
-            return 'Defeat the ward’s nearby guards first.';
-          world.seals[i] = true;
-          p.gold += 20;
-          note(
-            state,
-            world.seals.every(Boolean)
-              ? 'The last ward ignites. The boss is vulnerable.'
-              : 'A ward awakens. One remains.',
-          );
-          return null;
-        }
+      if (map.ward && !world.ward && distance(p, map.ward) < 2) {
+        if (world.enemies.some((e) => e.hp > 0 && !e.boss && distance(e, map.ward!) < 3))
+          return 'Defeat the ward’s nearby guards first.';
+        world.ward = true;
+        p.gold += 20;
+        note(
+          state,
+          wardsLit(state, content)
+            ? 'The last ward ignites. The deepest stair opens; the boss is vulnerable.'
+            : 'A ward awakens. Find the other ward in this act.',
+        );
+        return null;
+      }
       for (let i = 0; i < map.chests.length; i++)
         if (!world.chests[i] && distance(p, map.chests[i]) < 2) {
           world.chests[i] = true;
@@ -375,19 +421,9 @@ function execute(state: State, content: Content, command: Command): string | nul
           note(state, 'A forgotten cache opens. Walk over its loot to collect it.');
           return null;
         }
-      if (distance(p, map.exit) < 2) {
-        if (!world.bossDefeated) return 'Defeat the final boss before taking this road.';
-        if (state.act === content.maps.length - 1) {
-          state.status = 'victory';
-          stop(state);
-          note(state, map.conclusion);
-        } else {
-          enter(state, content, state.act + 1);
-          state.portal = null;
-        }
-        return null;
-      }
-      if (distance(p, map.waypoint) < 2) {
+      const portal = map.portals.find((portal) => distance(p, portal.at) < 2);
+      if (portal) return usePortal(state, content, portal.id);
+      if (map.waypoint && distance(p, map.waypoint) < 2) {
         world.waypoint = true;
         state.location = 'town';
         stop(state);
@@ -396,7 +432,7 @@ function execute(state: State, content: Content, command: Command): string | nul
         note(state, 'The waypoint returns you to the refuge.');
         return null;
       }
-      return 'Stand beside a ward, chest, waypoint, grave, or exit and interact.';
+      return 'Stand beside a ward, chest, waypoint, grave, portal, or stairs and interact.';
     }
   }
 }
@@ -408,7 +444,7 @@ export function validCommand(value: unknown): value is Command {
   const point = (v: unknown, dir = false) => {
     if (!v || typeof v !== 'object') return false;
     const p = v as Record<string, unknown>;
-    return num(p.x, dir ? -1 : 0, dir ? 1 : 41) && num(p.y, dir ? -1 : 0, dir ? 1 : 29);
+    return num(p.x, dir ? -1 : 0, dir ? 1 : 128) && num(p.y, dir ? -1 : 0, dir ? 1 : 128);
   };
   switch (c.type) {
     case 'advance':
@@ -433,7 +469,13 @@ export function validCommand(value: unknown): value is Command {
     case 'buy':
       return ['health', 'mana', 'gear'].includes(String(c.kind));
     case 'travel':
-      return num(c.act, 0, 11) && Number.isInteger(c.act);
+      return (
+        num(c.act, 0, 11) &&
+        Number.isInteger(c.act) &&
+        (c.region === undefined || (typeof c.region === 'string' && c.region.length <= 64))
+      );
+    case 'use-portal':
+      return typeof c.id === 'string' && c.id.length <= 64;
     case 'learn':
       return typeof c.skill === 'string' && c.skill.length <= 64;
     case 'attribute':
@@ -462,7 +504,15 @@ export function applyCommand(
     state.contentVersion !== content.version
   )
     return { state, accepted: false, error: 'Content or rules version mismatch.' };
-  const next = structuredClone(state);
+  // Immutable snapshots share inactive regions and terrain; only touched worlds are cloned.
+  const next: State = {
+    ...state,
+    player: structuredClone(state.player),
+    log: [...state.log],
+    worlds: { ...state.worlds },
+    portal: state.portal ? structuredClone(state.portal) : null,
+  };
+  next.worlds[state.region] = cloneWorld(currentWorld(state));
   const error = execute(next, content, command);
   return error ? { state, accepted: false, error } : { state: next, accepted: true, error: null };
 }

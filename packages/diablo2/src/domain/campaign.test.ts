@@ -6,10 +6,12 @@ describe('Emberwake legal-command campaign', () => {
     it(`${hero} can clear four acts, build a character, and reconstruct the ending`, () => {
       const { session, deaths } = playCampaign(hero);
       expect(session.state.status).toBe('victory');
-      expect(session.state.worlds).toHaveLength(4);
-      expect(session.state.worlds.every((w) => w.bossDefeated && w.seals.every(Boolean))).toBe(
-        true,
-      );
+      expect(Object.keys(session.state.worlds)).toHaveLength(20);
+      for (const act of session.replay.content.acts) {
+        expect(session.state.worlds[act.bossRegion].bossDefeated).toBe(true);
+        expect(act.wards.every((id) => session.state.worlds[id].ward)).toBe(true);
+      }
+      expect(Object.values(session.state.worlds).every((w) => w.visited)).toBe(true);
       expect(session.state.player.level).toBeGreaterThan(3);
       expect(
         session.state.player.skills[
