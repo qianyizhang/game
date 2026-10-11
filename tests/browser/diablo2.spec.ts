@@ -21,84 +21,88 @@ test.beforeEach(() => {
   mkdirSync(review, { recursive: true });
 });
 
-test('real hero selection, town shopping, movement, spells, pause, and save reload', async ({
-  page,
-}) => {
-  test.setTimeout(browserBudget(45000));
-  const errors: string[] = [];
-  page.on('pageerror', (error) => errors.push(error.message));
-  await page.goto('/?game=diablo2');
-  await expect(page).toHaveTitle('Emberwake · Card Workshop');
-  await expect(page.getByRole('button', { name: /Barbarian Rook/ })).toBeVisible();
-  await page.getByRole('button', { name: /Sorceress Mira/ }).click();
-  await page.screenshot({ path: `${review}/heroes.png` });
-  await page.getByRole('button', { name: 'Begin journey', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Lantern Refuge', exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Life potion · 12g', exact: true }).click();
-  await expect(page.getByRole('button', { name: '1 · Life potion ×6' })).toBeVisible();
-  await page.getByRole('button', { name: '→ Briarfen Enter from the road', exact: true }).click();
-  const canvas = page.locator('.ew-canvas-wrap canvas');
-  await expect(canvas).toBeVisible();
-  await canvas.focus();
-  const framesBefore = await canvas.evaluate((c) => ({
-    frames: Number(c.dataset.frames),
-    ticks: Number(c.dataset.ticks),
-  }));
-  await page.waitForTimeout(1000);
-  const framesAfter = await canvas.evaluate((c) => ({
-    frames: Number(c.dataset.frames),
-    ticks: Number(c.dataset.ticks),
-  }));
-  console.log(
-    `Emberwake 1 s observation: ${framesAfter.frames - framesBefore.frames} rendered frames, ${framesAfter.ticks - framesBefore.ticks} simulation steps`,
-  );
-  expect(framesAfter.frames - framesBefore.frames).toBeGreaterThan(
-    (framesAfter.ticks - framesBefore.ticks) * 1.5,
-  );
-  await page.keyboard.down('d');
-  await page.waitForTimeout(900);
-  await page.keyboard.up('d');
-  await canvas.click({ position: { x: 260, y: 150 }, button: 'right' });
-  await expect(page.locator('.ew-topline')).toContainText('Mira · Sorceress');
-  await page.getByRole('button', { name: 'Pause', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Paused', exact: true })).toBeVisible();
-  const saved = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
-  const state = importSession(saved).state;
-  expect(state.player.x).toBeGreaterThan(8.5);
-  expect(state.player.mana).toBeLessThan(110);
-  await page.getByRole('button', { name: 'Resume journey', exact: true }).click();
-  await canvas.focus();
-  const foe = currentWorld(state)
-    .enemies.filter(
-      (e) =>
-        e.hp > 0 &&
-        distance(e, state.player) < 7 &&
-        lineOfSight(currentWorld(state), state.player, e),
-    )
-    .sort((a, b) => distance(a, state.player) - distance(b, state.player))[0];
-  expect(foe).toBeDefined();
-  await page.keyboard.press('Space');
-  await expect
-    .poll(
-      async () => {
-        const text = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
-        return currentWorld(importSession(text).state).enemies.find((e) => e.uid === foe.uid)?.hp;
-      },
-      { timeout: browserBudget(15000) },
-    )
-    .toBe(0);
-  await page.screenshot({ path: `${review}/briarfen.png` });
-  await page.getByRole('button', { name: 'Pause', exact: true }).click();
-  await page.keyboard.press('i');
-  await expect(page.getByRole('dialog', { name: 'Inventory and stash' })).toBeVisible();
-  await page.keyboard.press('Shift+Tab');
-  await expect(page.getByRole('dialog').locator('button').last()).toBeFocused();
-  await page.keyboard.press('Escape');
-  await page.reload();
-  await expect(page.getByRole('heading', { name: 'Lantern Approach', exact: true })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Paused', exact: true })).toBeVisible();
-  expect(errors).toEqual([]);
-});
+test(
+  'real hero selection, town shopping, movement, spells, pause, and save reload',
+  { tag: '@smoke' },
+  async ({ page }) => {
+    test.setTimeout(browserBudget(45000));
+    const errors: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    await page.goto('/?game=diablo2');
+    await expect(page).toHaveTitle('Emberwake · Card Workshop');
+    await expect(page.getByRole('button', { name: /Barbarian Rook/ })).toBeVisible();
+    await page.getByRole('button', { name: /Sorceress Mira/ }).click();
+    await page.screenshot({ path: `${review}/heroes.png` });
+    await page.getByRole('button', { name: 'Begin journey', exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Lantern Refuge', exact: true })).toBeVisible();
+    await page.getByRole('button', { name: 'Life potion · 12g', exact: true }).click();
+    await expect(page.getByRole('button', { name: '1 · Life potion ×6' })).toBeVisible();
+    await page.getByRole('button', { name: '→ Briarfen Enter from the road', exact: true }).click();
+    const canvas = page.locator('.ew-canvas-wrap canvas');
+    await expect(canvas).toBeVisible();
+    await canvas.focus();
+    const framesBefore = await canvas.evaluate((c) => ({
+      frames: Number(c.dataset.frames),
+      ticks: Number(c.dataset.ticks),
+    }));
+    await page.waitForTimeout(1000);
+    const framesAfter = await canvas.evaluate((c) => ({
+      frames: Number(c.dataset.frames),
+      ticks: Number(c.dataset.ticks),
+    }));
+    console.log(
+      `Emberwake 1 s observation: ${framesAfter.frames - framesBefore.frames} rendered frames, ${framesAfter.ticks - framesBefore.ticks} simulation steps`,
+    );
+    expect(framesAfter.frames - framesBefore.frames).toBeGreaterThan(
+      (framesAfter.ticks - framesBefore.ticks) * 1.5,
+    );
+    await page.keyboard.down('d');
+    await page.waitForTimeout(900);
+    await page.keyboard.up('d');
+    await canvas.click({ position: { x: 260, y: 150 }, button: 'right' });
+    await expect(page.locator('.ew-topline')).toContainText('Mira · Sorceress');
+    await page.getByRole('button', { name: 'Pause', exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Paused', exact: true })).toBeVisible();
+    const saved = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
+    const state = importSession(saved).state;
+    expect(state.player.x).toBeGreaterThan(8.5);
+    expect(state.player.mana).toBeLessThan(110);
+    await page.getByRole('button', { name: 'Resume journey', exact: true }).click();
+    await canvas.focus();
+    const foe = currentWorld(state)
+      .enemies.filter(
+        (e) =>
+          e.hp > 0 &&
+          distance(e, state.player) < 7 &&
+          lineOfSight(currentWorld(state), state.player, e),
+      )
+      .sort((a, b) => distance(a, state.player) - distance(b, state.player))[0];
+    expect(foe).toBeDefined();
+    await page.keyboard.press('Space');
+    await expect
+      .poll(
+        async () => {
+          const text = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
+          return currentWorld(importSession(text).state).enemies.find((e) => e.uid === foe.uid)?.hp;
+        },
+        { timeout: browserBudget(15000) },
+      )
+      .toBe(0);
+    await page.screenshot({ path: `${review}/briarfen.png` });
+    await page.getByRole('button', { name: 'Pause', exact: true }).click();
+    await page.keyboard.press('i');
+    await expect(page.getByRole('dialog', { name: 'Inventory and stash' })).toBeVisible();
+    await page.keyboard.press('Shift+Tab');
+    await expect(page.getByRole('dialog').locator('button').last()).toBeFocused();
+    await page.keyboard.press('Escape');
+    await page.reload();
+    await expect(
+      page.getByRole('heading', { name: 'Lantern Approach', exact: true }),
+    ).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Paused', exact: true })).toBeVisible();
+    expect(errors).toEqual([]);
+  },
+);
 
 test('campaign replay reaches the ending; mod import preserves invalid-save recovery', async ({
   page,

@@ -21,6 +21,13 @@ Upgrade TypeScript and typed ESLint together when peer support and repository ch
 - Preserve concurrent changes. Record starting status and source hashes, edit only the slice, and report the owned delta. Do not reset or broadly stage the worktree.
 - A move or formatting change can change experiment source pins and asset receipts. Preserve historical reports, hashes, rules versions and frozen environments. Validate new outputs as new results; never rewrite old evidence to match current code.
 
+## Commit closeout
+
+Group related fixes into a coherent, verified commit before publication. Use a title that
+names the resulting behavior; commit only the owned paths. Keep published history stable
+and make subsequent corrections as new commits. The [2026-10-11 storage migration](history/git-storage-2026-10-11.md)
+is a completed, explicitly authorized exception with original-history backups and a commit map.
+
 ## Documentation homes
 
 `docs/README.md` is the entry point. `guide/` owns current user behavior; `engineering/` owns architecture, maintenance and decisions; `art/` owns visual standards and asset records; `research/` owns mechanics, experiment protocols and findings. Package READMEs own their commands and integration contracts.

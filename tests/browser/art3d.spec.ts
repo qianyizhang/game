@@ -54,12 +54,10 @@ const studyNames = [
   'Banner Bearer',
 ];
 
-for (const [index, name] of studyNames.entries()) {
+for (const name of studyNames) {
   test(
     `${name} renders, exports real meshes, and works on phone without changing saves`,
-    {
-      tag: `@asset-shard-${(index % 3) + 1}`,
-    },
+    { tag: '@asset-delivery' },
     async ({ page }, info) => {
       // Each study owns its browser/export budget; a slow subject cannot consume the next one.
       test.setTimeout(browserBudget(60_000));

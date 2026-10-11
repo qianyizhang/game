@@ -36,6 +36,8 @@ Use `npm run check` for code, UI, and rule changes; documentation-only edits req
 Read [verification contracts](docs/engineering/checks.md#gate-selection) for scope
 selection and reporting. `npm run test:browser` runs the disposable-profile browser suite
 with a single startup guard.
+Automatic GitHub CI runs non-geometry checks and game-browser smoke journeys; full
+geometry and rendering/export verification remain local completion gates for affected changes.
 
 On this Mac, request approved execution outside the restricted command sandbox from the first browser-launching test command (`sandbox_permissions: require_escalated`). Ordinary checks stay sandboxed. Never use personal profiles, kill unrelated browsers, or retry unchanged LaunchServices/WindowServer startup failures. Headless and `--no-sandbox` do not fix outer sandbox permissions. Report blocked verification accurately.
 

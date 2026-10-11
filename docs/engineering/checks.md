@@ -10,6 +10,7 @@ Use exact Node/npm pins via `nvm use` and Python via `uv`. Browser and Blender r
 | `npm run test`                     | Application tests only; `test:watch` uses the same selection                                  |
 | `npm run test:geometry`            | Geometry project only (3D animation, deformation and recording regressions)                   |
 | `npm run test:browser`             | Browser interactions, persistence, rendering, exported artifact checks                        |
+| `npm run test:browser:smoke`       | Four existing game journeys selected by `@smoke` for automatic GitHub CI                      |
 | `npm run test:browser:review`      | Opt-in 3D visual contact sheets for human inspection                                          |
 | `npm run dcc -- verify`            | Validates artist source, recipe, and published GLB against receipts                           |
 | `npm run maintenance -- inventory` | Read-only occurrences, hashes, asset classifications, tracked-text refs                       |
@@ -22,13 +23,23 @@ All maintained source requires enforced check coverage. Passing a slice does not
 - **Application & tool code**: Run `npm run check` for game rules, saves, UI, SVG, and tools.
 - **Documentation-only work**: Run `npm run format:maintenance` (or focused Prettier and inventory checks). Skip application test suites and simulations.
 - **3D / DCC work**: Run `npm run check:full` for changes affecting 3D construction, animation, rendering/export or DCC delivery (`src/art3d`, DCC sources/delivery, or their shared helpers/dependencies). Geometry assertions or configuration affecting their behavior also use this gate. Use `npm run test:geometry -- <file>` for focused iteration.
-- **CI**: Always executes `npm run check:full` and `npm run test:browser`.
+- **CI**: Runs the non-geometry checks in parallel scopes and `npm run test:browser:smoke`.
+  Geometry and full browser rendering/export verification are local completion gates.
 
-Maintenance and three browser shards run independently; all must pass. Each browser
-runner uses one worker and stops at its first failed case, preserving its diagnostics
-without cancelling the other shards. Round-robin tags give each runner 9–10 long asset
-journeys; individual-case sharding gives each runner 41 of the other selected cases.
-Local runs remain serial; successful CI runs collectively execute all 152 selected cases.
+GitHub targets **under two minutes of execution**, excluding queue delay. Its four
+maintenance scopes run formatting/lint, types/Python, rules/simulations, and tools/DCC
+contracts/build independently; inventory and hydration checks run before each scope.
+The browser job runs one existing recruitment/play/save-reload journey for Blindside,
+Spire, Last Hearth and Emberwake, with one worker and failure artifacts. Jobs have a
+five-minute failure ceiling; that ceiling is not the performance target or proof of it.
+
+The 2026-10-11 full hosted run spent **499 seconds** in geometry. Its browser jobs took
+**11.6–33.5 minutes**, with a single canid journey taking **4.2 minutes**. Removing geometry
+alone cannot meet the target: software-rendered 3D interaction, screenshots and exports
+also belong in the local full gate. The user selected this scope on 2026-10-11.
+
+Local full browser runs remain serial and retain every case. Inspect the current selection
+with `npm run test:browser -- --list`; counts change when new studies enter the suite.
 
 The `functional` browser project covers all public game journeys and each delivered 3D
 asset's loading, motion, phone layout and export. The separate `visual-review` project
@@ -38,16 +49,18 @@ generates 29 contact sheets on demand; it does not provide an automated aestheti
 
 `npm run test:browser` selects three explicit projects. Each case belongs to exactly one:
 
-| Project                     | Cases | Prerequisite and absence behavior                                                                                    |
-| --------------------------- | ----: | -------------------------------------------------------------------------------------------------------------------- |
-| `functional`                |   144 | Public repository inputs and Chrome; startup failure fails the suite.                                                |
-| `requires-blender`          |     4 | Fresh Blender-generated samples or edited candidates; missing environment variables skip with a preparation command. |
-| `requires-private-evidence` |     4 | Authorized local thread exports and retained sculpture evidence; missing exports skip explicitly.                    |
+| Project                     | Prerequisite and absence behavior                                                                                    |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `functional`                | Public repository inputs and Chrome; startup failure fails the suite.                                                |
+| `requires-blender`          | Fresh Blender-generated samples or edited candidates; missing environment variables skip with a preparation command. |
+| `requires-private-evidence` | Authorized local thread exports and retained sculpture evidence; missing exports skip explicitly.                    |
 
 The native cases carry `@requires-blender`; the private group carries
-`@requires-private-evidence`. GitHub does not install Blender or collect private exports,
-so its normal result is **144 passed, 8 prerequisite skips**. These skips do not credit
-native execution or private-history validation. `--project=functional` selects the
+`@requires-private-evidence`. Full local runs skip prerequisite cases explicitly when
+their inputs are absent. These skips do not credit native execution or private-history
+validation. The last full hosted run at `472a22b` on 2026-10-11 recorded
+**144 passed, 8 prerequisite skips**; that is a dated result, not the current suite size.
+`--project=functional` selects the
 public-only gate. `npm run test:browser:native` and `npm run test:browser:private` select
 the conditional groups; neither command silently generates their inputs.
 
@@ -57,7 +70,10 @@ browser case. To supply alternate authorized exports to the private group, set
 `TRACE_PRIVATE_INPUT` to their directory; its default is `test-results/trace-visualizer-input`.
 Available but invalid inputs fail rather than becoming skips.
 
-Static checks still cover 3D sources. Browser/native gates run separately for affected behavior;
+Static checks still cover 3D sources. Automatic GitHub smoke checks select four of the
+existing functional journeys through a separate `smoke` project; they do not establish
+full browser, 3D delivery/export, native or private-evidence verification.
+Browser/native gates run locally for affected behavior;
 `check:full` does not invoke them. Run the selected completion gate once after the final
 change, with one gate owner per checkout to avoid overlapping agent runs. Report the command
 used and distinguish application/simulation verification from geometry, browser and native
@@ -84,7 +100,7 @@ verification.
 ## Budgets
 
 - **Vitest**: At most 2 workers. Geometry tests use the project-level budget: 15 seconds locally and 60 seconds when `CI` is set. The hosted runner measured 495 seconds for the geometry suite versus 155 seconds locally; nine tests exceeded the old 15-second limit. Application tests retain their 5-second default. Unit normals on loaded GLBs are verified across all 29 gallery journeys at 0.0005 tolerance. See [test audit](history/test-audit-2026-10-07.md).
-- **Browser**: One worker per runner. Test and explicit operation budgets use `browserBudget`: existing local limits and four times those limits in CI. Default test/assertion limits are 30/5 seconds locally and 120/20 seconds in CI. Cold scene readiness uses `sceneReadyTimeout`, 15 seconds locally and 60 seconds in CI. Per-model export remains 60 seconds locally and 240 seconds in CI. Contact sheets use 120 seconds locally. The hosted graphics trace showed slow loading, readback and pointer updates; these budgets preserve the same assertions. Each browser CI shard has a 45-minute limit and stops on its first failure.
+- **Browser**: One worker per runner. Test and explicit operation budgets use `browserBudget`: existing local limits and four times those limits when `CI` is set. Default test/assertion limits are 30/5 seconds locally and 120/20 seconds in CI. Cold scene readiness uses `sceneReadyTimeout`, 15 seconds locally and 60 seconds in CI. Per-model export remains 60 seconds locally. Contact sheets use 120 seconds locally. Automatic GitHub smoke checks stop on the first failure; full rendering/export checks run locally.
 
 ## Retention and inventory
 

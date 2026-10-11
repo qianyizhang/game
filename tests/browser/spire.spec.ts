@@ -32,68 +32,72 @@ async function loadPhase(page: Page, phase: string) {
   });
 }
 
-test('Spire map, targeted combat, reward, save/resume and collection', async ({ page }, info) => {
-  const errors: string[] = [];
-  page.on('pageerror', (e) => errors.push(e.message));
-  await page.goto('/');
-  await page.getByLabel('Choose game').selectOption('spire');
-  await expect(page.getByRole('heading', { name: 'The Ironclad' })).toBeVisible();
-  await page.getByRole('button', { name: 'Obtain +8 Max HP', exact: true }).click();
-  await expect(page.locator('.sts-map-scroll')).toBeVisible();
-  await page.screenshot({ path: info.outputPath('spire-map.png'), fullPage: true });
-  await page.getByRole('button', { name: 'Floor 1 lane 1 fight' }).click();
-  await expect(page.locator('.battle-hand .ability-card')).toHaveCount(5);
-  await page.screenshot({ path: info.outputPath('spire-combat.png'), fullPage: true });
-  for (let step = 0; step < 100; step++) {
-    const session = await saved(page);
-    if (session.state.phase !== 'combat') break;
-    const command = spirePolicy(session.state);
-    if (command.type === 'playCard') {
-      if (command.target)
+test(
+  'Spire map, targeted combat, reward, save/resume and collection',
+  { tag: '@smoke' },
+  async ({ page }, info) => {
+    const errors: string[] = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await page.goto('/');
+    await page.getByLabel('Choose game').selectOption('spire');
+    await expect(page.getByRole('heading', { name: 'The Ironclad' })).toBeVisible();
+    await page.getByRole('button', { name: 'Obtain +8 Max HP', exact: true }).click();
+    await expect(page.locator('.sts-map-scroll')).toBeVisible();
+    await page.screenshot({ path: info.outputPath('spire-map.png'), fullPage: true });
+    await page.getByRole('button', { name: 'Floor 1 lane 1 fight' }).click();
+    await expect(page.locator('.battle-hand .ability-card')).toHaveCount(5);
+    await page.screenshot({ path: info.outputPath('spire-combat.png'), fullPage: true });
+    for (let step = 0; step < 100; step++) {
+      const session = await saved(page);
+      if (session.state.phase !== 'combat') break;
+      const command = spirePolicy(session.state);
+      if (command.type === 'playCard') {
+        if (command.target)
+          await page
+            .locator('.enemy')
+            .nth(
+              session.state
+                .combat!.enemies.filter((e) => e.hp > 0)
+                .findIndex((e) => e.id === command.target),
+            )
+            .click();
         await page
-          .locator('.enemy')
-          .nth(
-            session.state
-              .combat!.enemies.filter((e) => e.hp > 0)
-              .findIndex((e) => e.id === command.target),
-          )
+          .locator('.battle-hand .ability-card')
+          .nth(session.state.combat!.hand.indexOf(command.id))
           .click();
-      await page
-        .locator('.battle-hand .ability-card')
-        .nth(session.state.combat!.hand.indexOf(command.id))
-        .click();
-    } else if (command.type === 'endTurn')
-      await page.getByRole('button', { name: 'End turn' }).click();
-    else if (command.type === 'potion') {
-      if (command.target)
+      } else if (command.type === 'endTurn')
+        await page.getByRole('button', { name: 'End turn' }).click();
+      else if (command.type === 'potion') {
+        if (command.target)
+          await page
+            .locator('.enemy')
+            .nth(
+              session.state
+                .combat!.enemies.filter((e) => e.hp > 0)
+                .findIndex((e) => e.id === command.target),
+            )
+            .click();
         await page
-          .locator('.enemy')
-          .nth(
-            session.state
-              .combat!.enemies.filter((e) => e.hp > 0)
-              .findIndex((e) => e.id === command.target),
-          )
+          .locator('.potion-belt > div')
+          .nth(command.index)
+          .getByRole('button')
+          .first()
           .click();
-      await page
-        .locator('.potion-belt > div')
-        .nth(command.index)
-        .getByRole('button')
-        .first()
-        .click();
+      }
     }
-  }
-  await expect(page.getByRole('heading', { name: 'Choose a card' })).toBeVisible();
-  await page.locator('.reward-cards .ability-card').first().click();
-  const before = await saved(page);
-  expect(before.state.deck).toHaveLength(11);
-  await page.reload();
-  expect(await saved(page)).toEqual(before);
-  await page.getByRole('button', { name: 'Collection', exact: true }).click();
-  await expect(page.locator('.ability-grid .ability-card')).toHaveCount(CARDS.length);
-  await page.getByRole('button', { name: 'Rules & workshop' }).click();
-  await expect(page.getByRole('heading', { name: 'Cards and timing' })).toBeVisible();
-  expect(errors).toEqual([]);
-});
+    await expect(page.getByRole('heading', { name: 'Choose a card' })).toBeVisible();
+    await page.locator('.reward-cards .ability-card').first().click();
+    const before = await saved(page);
+    expect(before.state.deck).toHaveLength(11);
+    await page.reload();
+    expect(await saved(page)).toEqual(before);
+    await page.getByRole('button', { name: 'Collection', exact: true }).click();
+    await expect(page.locator('.ability-grid .ability-card')).toHaveCount(CARDS.length);
+    await page.getByRole('button', { name: 'Rules & workshop' }).click();
+    await expect(page.getByRole('heading', { name: 'Cards and timing' })).toBeVisible();
+    expect(errors).toEqual([]);
+  },
+);
 
 test('Spire shop, campfire upgrades, legal victory replay and phone layout', async ({
   page,

@@ -29,57 +29,61 @@ async function playBestHand(page: Page) {
   await page.getByRole('button', { name: 'Play hand' }).click();
 }
 
-test('play, inspect, save, shop, buy, reorder, advance and resume', async ({ page }, info) => {
-  const errors: string[] = [];
-  page.on('pageerror', (error) => errors.push(error.message));
-  await page.goto('/');
-  await expect(page.getByRole('heading', { name: /Every hand/ })).toBeVisible();
-  await page.screenshot({ path: info.outputPath('desktop-ready.png'), fullPage: true });
-  await page.getByRole('button', { name: 'Play Small Blind' }).click();
-  await expect(page.locator('.playing-card')).toHaveCount(8);
-  await page.locator('.playing-card').first().click();
-  await expect(page.getByRole('heading', { name: 'Your hand, explained.' })).toBeVisible();
-  await page.getByRole('button', { name: 'Discard', exact: true }).click();
-  expect((await saved(page)).run.discardsLeft).toBe(2);
-  await page.screenshot({ path: info.outputPath('desktop-playing.png'), fullPage: true });
-  for (let hand = 0; hand < 4 && (await saved(page)).run.phase === 'playing'; hand++)
-    await playBestHand(page);
-  await expect(
-    page.getByRole('heading', { name: 'Find your next unfair advantage.' }),
-  ).toBeVisible();
-  await page.screenshot({ path: info.outputPath('desktop-shop.png'), fullPage: true });
-  const affordable = page
-    .locator('.shop-card')
-    .filter({ has: page.getByRole('button', { name: /^Buy/ }) })
-    .getByRole('button', { name: /^Buy/ });
-  await affordable.first().click();
-  await expect(page.locator('.owned-joker')).toHaveCount(1);
-  await affordable.first().click();
-  await expect(page.locator('.owned-joker')).toHaveCount(2);
-  const previousOrder = (await saved(page)).run.jokers;
-  const movedName = JOKER_BY_ID[previousOrder[1].definitionId].name;
-  await page.getByRole('button', { name: `Move ${movedName} left`, exact: true }).click();
-  await expect(page.locator('.owned-joker').first()).toContainText(movedName);
-  expect((await saved(page)).run.jokers.map((j) => j.id)).toEqual([
-    previousOrder[1].id,
-    previousOrder[0].id,
-  ]);
-  const before = await saved(page);
-  await page.reload();
-  expect(await saved(page)).toEqual(before);
-  await expect(page.locator('.owned-joker')).toHaveCount(2);
-  await page.getByRole('button', { name: 'Next blind' }).click();
-  await page.getByRole('button', { name: 'Play Big Blind' }).click();
-  expect((await saved(page)).run.blind).toBe(1);
-  await expect(page.locator('.playing-card')).toHaveCount(8);
-  await page.getByRole('button', { name: 'Rank', exact: true }).click();
-  const sorted = (await saved(page)).run;
-  const ranks = sorted.hand.map((id) => sorted.deck.find((card) => card.id === id)!.rank);
-  expect(ranks).toEqual([...ranks].sort((a, b) => b - a));
-  await page.getByRole('button', { name: 'Move card 1 right', exact: true }).click();
-  expect((await saved(page)).run.hand[1]).toBe(sorted.hand[0]);
-  expect(errors).toEqual([]);
-});
+test(
+  'play, inspect, save, shop, buy, reorder, advance and resume',
+  { tag: '@smoke' },
+  async ({ page }, info) => {
+    const errors: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    await page.goto('/');
+    await expect(page.getByRole('heading', { name: /Every hand/ })).toBeVisible();
+    await page.screenshot({ path: info.outputPath('desktop-ready.png'), fullPage: true });
+    await page.getByRole('button', { name: 'Play Small Blind' }).click();
+    await expect(page.locator('.playing-card')).toHaveCount(8);
+    await page.locator('.playing-card').first().click();
+    await expect(page.getByRole('heading', { name: 'Your hand, explained.' })).toBeVisible();
+    await page.getByRole('button', { name: 'Discard', exact: true }).click();
+    expect((await saved(page)).run.discardsLeft).toBe(2);
+    await page.screenshot({ path: info.outputPath('desktop-playing.png'), fullPage: true });
+    for (let hand = 0; hand < 4 && (await saved(page)).run.phase === 'playing'; hand++)
+      await playBestHand(page);
+    await expect(
+      page.getByRole('heading', { name: 'Find your next unfair advantage.' }),
+    ).toBeVisible();
+    await page.screenshot({ path: info.outputPath('desktop-shop.png'), fullPage: true });
+    const affordable = page
+      .locator('.shop-card')
+      .filter({ has: page.getByRole('button', { name: /^Buy/ }) })
+      .getByRole('button', { name: /^Buy/ });
+    await affordable.first().click();
+    await expect(page.locator('.owned-joker')).toHaveCount(1);
+    await affordable.first().click();
+    await expect(page.locator('.owned-joker')).toHaveCount(2);
+    const previousOrder = (await saved(page)).run.jokers;
+    const movedName = JOKER_BY_ID[previousOrder[1].definitionId].name;
+    await page.getByRole('button', { name: `Move ${movedName} left`, exact: true }).click();
+    await expect(page.locator('.owned-joker').first()).toContainText(movedName);
+    expect((await saved(page)).run.jokers.map((j) => j.id)).toEqual([
+      previousOrder[1].id,
+      previousOrder[0].id,
+    ]);
+    const before = await saved(page);
+    await page.reload();
+    expect(await saved(page)).toEqual(before);
+    await expect(page.locator('.owned-joker')).toHaveCount(2);
+    await page.getByRole('button', { name: 'Next blind' }).click();
+    await page.getByRole('button', { name: 'Play Big Blind' }).click();
+    expect((await saved(page)).run.blind).toBe(1);
+    await expect(page.locator('.playing-card')).toHaveCount(8);
+    await page.getByRole('button', { name: 'Rank', exact: true }).click();
+    const sorted = (await saved(page)).run;
+    const ranks = sorted.hand.map((id) => sorted.deck.find((card) => card.id === id)!.rank);
+    expect(ranks).toEqual([...ranks].sort((a, b) => b - a));
+    await page.getByRole('button', { name: 'Move card 1 right', exact: true }).click();
+    expect((await saved(page)).run.hand[1]).toBe(sorted.hand[0]);
+    expect(errors).toEqual([]);
+  },
+);
 
 test('collection, mod guide, export/import and new seed', async ({ page }) => {
   await page.goto('/');

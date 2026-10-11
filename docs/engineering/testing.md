@@ -31,6 +31,12 @@ every asset. Named camera controls remain in those journeys; pointer orbit is ch
 a reduced-motion rigid representative so animation cannot masquerade as successful dragging.
 CI does not generate all 29 contact sheets or establish aesthetic acceptance.
 
+Automatic GitHub CI keeps four existing game journeys tagged `@smoke`, covering
+play/recruitment, persistence and navigation. The full browser suite, 3D rendering/export
+journeys and geometry regressions remain local completion gates for affected changes,
+as defined by [verification contracts](checks.md#gate-selection). Moving execution local
+preserves the cases and assertions; smoke success is only evidence for its selected journeys.
+
 Video delivery checks decode the downloaded artifact away from the live WebGL scene,
 require supported dimensions and compare actual presented frames for visible motion.
 Encoded byte counts and fixed early seek times are **replace**: a valid low-frame-rate

@@ -15,12 +15,19 @@ export default defineConfig({
   reporter: 'list',
   projects: [
     {
+      name: 'smoke',
+      testMatch: [
+        '**/workshop.spec.ts',
+        '**/spire.spec.ts',
+        '**/battlegrounds.spec.ts',
+        '**/diablo2.spec.ts',
+      ],
+      grep: /@smoke/,
+    },
+    {
       name: 'functional',
       testIgnore: ['**/art3d-review.spec.ts', '**/trace-private.spec.ts'],
       grepInvert: /@requires-blender/,
-      // CI shards individual cases, including the large asset-delivery file.
-      // Each runner still executes one case at a time with its own fixtures.
-      fullyParallel: !!process.env.CI,
     },
     {
       name: 'requires-blender',
@@ -33,12 +40,10 @@ export default defineConfig({
         '**/native-assets.spec.ts',
       ],
       grep: /@requires-blender/,
-      fullyParallel: !!process.env.CI,
     },
     {
       name: 'requires-private-evidence',
       testMatch: '**/trace-private.spec.ts',
-      fullyParallel: !!process.env.CI,
     },
     {
       name: 'visual-review',

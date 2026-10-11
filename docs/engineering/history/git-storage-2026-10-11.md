@@ -63,4 +63,25 @@ The slow-recording regression rejects the original recorder; four fresh exports 
 
 The next hosted run passed all four video exports, the native review-scope journey and two complete browser runners. Its DCC pilot then exhausted six minutes; timeout cleanup removed a pending download. The trace records repeated 8–15 second clicks and captures while paused, and the native viewer continuously redrew the scene. It now retains the paused framebuffer and invalidates on load, seek, view, surface, rig, resize and orbit changes. The existing delivery journey observes idle GPU draws, requires drawing after a seek and retains motion, camera, exact-download, phone and navigation checks.
 
-Publication requires uploading the historical LFS objects, exact leases for each rewritten remote branch and verification of the final main revision. Local tests and storage checks do not establish successful remote CI; its run and fresh-clone receipts are separate session evidence.
+## Completion — 2026-10-11
+
+The migration is published and verified. The retained `publication-result.json` records
+an atomic update of all five remote branch tips with exact leases and upload of all
+92 historical LFS objects. A fresh default GitHub clone of `0bbc5d6` began with an empty,
+independent LFS store, hydrated all 71 current LFS paths (58 unique objects), matched
+every payload hash and passed `git lfs fsck`. It also confirmed 29 former ordinary-Git
+bulk blobs were absent. The final synchronization receipt at `65d9fb7` measured ordinary
+Git pack transfer at **81,911,345 bytes**, compared with **118,948,759 bytes** before
+migration (**31.1% reduction**); LFS payload downloads remain additional transfer.
+
+Both `65d9fb7` and the subsequent prerequisite-cleanup revision `472a22b` passed all four
+hosted jobs. The [final full CI run](https://github.com/qianyizhang/game/actions/runs/38101219712)
+at `472a22b` recorded **253 application tests, 4 simulations, 128 geometry tests and
+144 browser passes / 8 explicit prerequisite skips**, together with maintained checks.
+The skips do not establish Blender execution or private-history validation, and the
+run does not establish aesthetic acceptance or verification of later revisions.
+
+Publication, clone and synchronization receipts are retained under
+`.work/sessions/git-history-cleanup-2026-10-10-01a12657/` as `publication-result.json`,
+`fresh-github-clone.json` and `final-sync.json`. Original-history bundles and the tracked
+commit map remain the recovery authority. Further cleanup proceeds through new commits.

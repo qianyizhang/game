@@ -27,43 +27,45 @@ async function loadUntil(page: Page, predicate: (state: BGState) => boolean) {
   });
 }
 
-test('Battlegrounds recruitment, combat playback, save/resume and navigation', async ({
-  page,
-}, info) => {
-  const errors: string[] = [];
-  page.on('pageerror', (e) => errors.push(e.message));
-  await page.goto('/');
-  await page.getByLabel('Choose game').selectOption('battlegrounds');
-  await expect(page.getByRole('heading', { name: 'Who will lead your warband?' })).toBeVisible();
-  await page.locator('.hero-choices > button').first().click();
-  await page.locator('.tavern-offers button').first().click();
-  await page.locator('.recruit-hand button').first().click();
-  expect((await saved(page)).state.players[0].board.length).toBeGreaterThanOrEqual(1);
-  await page.getByRole('button', { name: 'Freeze', exact: true }).click();
-  await page.screenshot({ path: info.outputPath('hearth-recruit.png'), fullPage: true });
-  await page.getByRole('button', { name: 'Ready · fight →' }).click();
-  await expect(page.locator('.combat-replay')).toBeVisible();
-  const before = await saved(page);
-  await page.getByRole('button', { name: 'Next combat event' }).click();
-  await page.getByRole('button', { name: 'Last combat event' }).click();
-  await page.getByLabel('Playback speed').selectOption('200');
-  expect(await saved(page)).toEqual(before);
-  await page.screenshot({ path: info.outputPath('hearth-combat.png'), fullPage: true });
-  await page.reload();
-  expect(await saved(page)).toEqual(before);
-  await page.getByRole('button', { name: /Return to tavern/ }).click();
-  await page.getByRole('button', { name: /Hero power/ }).click();
-  expect((await saved(page)).state.players[0].powerUsed).toBe(true);
-  await page.getByRole('button', { name: 'Collection', exact: true }).click();
-  await expect(page.locator('.minion-catalogue .minion-card')).toHaveCount(MINIONS.length);
-  await page.getByRole('button', { name: 'Rules & workshop' }).click();
-  await expect(page.getByRole('heading', { name: 'Automatic combat' })).toBeVisible();
-  const hearth = await saved(page);
-  await page.getByLabel('Choose game').selectOption('spire');
-  await page.getByLabel('Choose game').selectOption('battlegrounds');
-  expect(await saved(page)).toEqual(hearth);
-  expect(errors).toEqual([]);
-});
+test(
+  'Battlegrounds recruitment, combat playback, save/resume and navigation',
+  { tag: '@smoke' },
+  async ({ page }, info) => {
+    const errors: string[] = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await page.goto('/');
+    await page.getByLabel('Choose game').selectOption('battlegrounds');
+    await expect(page.getByRole('heading', { name: 'Who will lead your warband?' })).toBeVisible();
+    await page.locator('.hero-choices > button').first().click();
+    await page.locator('.tavern-offers button').first().click();
+    await page.locator('.recruit-hand button').first().click();
+    expect((await saved(page)).state.players[0].board.length).toBeGreaterThanOrEqual(1);
+    await page.getByRole('button', { name: 'Freeze', exact: true }).click();
+    await page.screenshot({ path: info.outputPath('hearth-recruit.png'), fullPage: true });
+    await page.getByRole('button', { name: 'Ready · fight →' }).click();
+    await expect(page.locator('.combat-replay')).toBeVisible();
+    const before = await saved(page);
+    await page.getByRole('button', { name: 'Next combat event' }).click();
+    await page.getByRole('button', { name: 'Last combat event' }).click();
+    await page.getByLabel('Playback speed').selectOption('200');
+    expect(await saved(page)).toEqual(before);
+    await page.screenshot({ path: info.outputPath('hearth-combat.png'), fullPage: true });
+    await page.reload();
+    expect(await saved(page)).toEqual(before);
+    await page.getByRole('button', { name: /Return to tavern/ }).click();
+    await page.getByRole('button', { name: /Hero power/ }).click();
+    expect((await saved(page)).state.players[0].powerUsed).toBe(true);
+    await page.getByRole('button', { name: 'Collection', exact: true }).click();
+    await expect(page.locator('.minion-catalogue .minion-card')).toHaveCount(MINIONS.length);
+    await page.getByRole('button', { name: 'Rules & workshop' }).click();
+    await expect(page.getByRole('heading', { name: 'Automatic combat' })).toBeVisible();
+    const hearth = await saved(page);
+    await page.getByLabel('Choose game').selectOption('spire');
+    await page.getByLabel('Choose game').selectOption('battlegrounds');
+    expect(await saved(page)).toEqual(hearth);
+    expect(errors).toEqual([]);
+  },
+);
 
 test('Battlegrounds triples, Discover, legal victory, invalid import and phone controls', async ({
   page,
