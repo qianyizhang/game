@@ -17,6 +17,9 @@ import { camera, TILE } from '../../packages/diablo2/src/ui/render';
 import { bodyFits } from '../../packages/diablo2/src/domain/maps';
 import { BASE_CONTENT } from '../../packages/diablo2/src/domain/content';
 const review = 'test-results/emberwake';
+test.beforeEach(() => {
+  mkdirSync(review, { recursive: true });
+});
 
 test('real hero selection, town shopping, movement, spells, pause, and save reload', async ({
   page,
@@ -28,7 +31,6 @@ test('real hero selection, town shopping, movement, spells, pause, and save relo
   await expect(page).toHaveTitle('Emberwake · Card Workshop');
   await expect(page.getByRole('button', { name: /Barbarian Rook/ })).toBeVisible();
   await page.getByRole('button', { name: /Sorceress Mira/ }).click();
-  mkdirSync(review, { recursive: true });
   await page.screenshot({ path: `${review}/heroes.png` });
   await page.getByRole('button', { name: 'Begin journey', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Lantern Refuge', exact: true })).toBeVisible();
