@@ -12,6 +12,8 @@ The [aesthetic rulebook](art-direction.md) is the single visual standard. Use th
 
 [Native migration pilots](trials/native-pilots.md) records the accepted Hydra and Nightjar gallery releases, native edit proofs and remaining limitations.
 
+[Three-species saved-motion trial](trials/rig-strategy-three-rounds.md) records the sequential fox, boar and raven campaign, owner self-review boundary, and tested rig/workflow refinements.
+
 ## Asset records
 
 The [creature asset index](assets/README.md) keeps individual procedural and native records, their acceptance status and evidence locations. The [native trial index](trials/README.md) separates trial outcomes from asset identity. Original review bytes remain recoverable through the [document migration record](../../maintenance/document-migration.json).
