@@ -1,0 +1,98 @@
+{
+  "original": [
+    {
+      "name": "idle",
+      "maxError": 0.0000022032046293999246,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "walk",
+      "maxError": 0.000013355854432458627,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "look",
+      "maxError": 0.0000022032046293999246,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "spread",
+      "maxError": 0.000002486004553155638,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "preen",
+      "maxError": 0.0000022032032818924135,
+      "samples": 5,
+      "vertices": 1344
+    }
+  ],
+  "edited": [
+    {
+      "name": "idle",
+      "maxError": 0.0000022032046293999246,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "walk",
+      "maxError": 0.000013355854432458627,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "look",
+      "maxError": 0.0000022032046293999246,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "spread",
+      "maxError": 0.000002486004553155638,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "preen",
+      "maxError": 0.0000022032032818924135,
+      "samples": 5,
+      "vertices": 1344
+    }
+  ],
+  "changed": [
+    {
+      "name": "idle",
+      "maxError": 0.0000022032046293999246,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "walk",
+      "maxError": 0.000013355854432458627,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "look",
+      "maxError": 0.0000022032046293999246,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "spread",
+      "maxError": 0.12442053877334143,
+      "samples": 5,
+      "vertices": 1344
+    },
+    {
+      "name": "preen",
+      "maxError": 0.0000022032032818924135,
+      "samples": 5,
+      "vertices": 1344
+    }
+  ]
+}

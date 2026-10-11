@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "character": "raven",
+  "sourceSha256": "5e3fd4ce2daa7c5df3f2232c2b89693fc48c1ad8943fc0bb939e7329b149935a",
+  "motionSha256": "90a4ef9e36e61137304a4fadeba8d0375f542d84ffcf67cb271e9e66885e0aaa",
+  "modelSha256": "c05566c928fa465cf0e0342da901d0aa94d6093af2da44e6bb8280cf9f9eea51",
+  "meshSha256": "2ba8fcc098533a46179d7f8ec95dfb70a6655f590d8642b6030bd143b7331740",
+  "blender": "4.5.14 LTS",
+  "exportScripts": {
+    "subjects/raven/authoring/raven_delivery.py": "f7abccbee753147ad39d8bf9a90b47383c01833b58f4bf0d61bf855d368d4e44",
+    "subjects/raven/authoring/raven_rig.py": "8103e5bcca1f89b49556db8a6f39c504bbe494b70a4bf434f16cc1e3eaf60575",
+    "subjects/raven/authoring/raven_motion.py": "514a3c28cee1d2430e187106f982252c0e74d90e89366e7a7574f0abb55c7f03",
+    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
+  },
+  "clips": {
+    "idle": {
+      "name": "Alert breath",
+      "seconds": 4.0,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          4.0,
+          0.0,
+          0,
+          0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "sites": [
+            "L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "sites": [
+            "R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": []
+    },
+    "walk": {
+      "name": "Deliberate steps",
+      "seconds": 1.6,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          1.6,
+          0.4090909090909091,
+          0,
+          0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 1.05,
+          "sites": [
+            "L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.25,
+          "sites": [
+            "R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.8,
+          "end": 1.6,
+          "sites": [
+            "R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": []
+    },
+    "look": {
+      "name": "Listen and look",
+      "seconds": 4.0,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          4.0,
+          0.0,
+          0,
+          0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "sites": [
+            "L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "sites": [
+            "R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": [
+        {
+          "name": "listen",
+          "time": 1.5
+        },
+        {
+          "name": "answer",
+          "time": 3.05
+        }
+      ]
+    },
+    "spread": {
+      "name": "Open wings \u00b7 fold",
+      "seconds": 5.2,
+      "playback": "once",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          5.2,
+          0.0,
+          0,
+          0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 5.2,
+          "sites": [
+            "L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 5.2,
+          "sites": [
+            "R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": [
+        {
+          "name": "open",
+          "time": 2.07
+        },
+        {
+          "name": "display",
+          "time": 2.6
+        },
+        {
+          "name": "fold",
+          "time": 4.1
+        }
+      ]
+    },
+    "preen": {
+      "name": "Tend the shoulder",
+      "seconds": 5.6,
+      "playback": "once",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          5.6,
+          0.0,
+          0,
+          0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 5.6,
+          "sites": [
+            "L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 5.6,
+          "sites": [
+            "R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": [
+        {
+          "name": "reach",
+          "time": 1.7
+        },
+        {
+          "name": "preen",
+          "time": 2.8
+        },
+        {
+          "name": "recover",
+          "time": 4.6
+        }
+      ]
+    }
+  },
+  "support": {
+    "idle": {
+      "minimumSurfaceHeight": 0.018376920372247696,
+      "maximumFootTargetError": 4.879419305930418e-07,
+      "maximumPlantedDigitDisplacement": 3.9705373628360714e-07,
+      "maximumPlantedHeightDrift": 2.8312206268310547e-07,
+      "loopMatrixError": 0.0,
+      "frames": 241,
+      "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
+    },
+    "walk": {
+      "minimumSurfaceHeight": 0.018376842141151428,
+      "maximumFootTargetError": 9.388341326863141e-07,
+      "maximumPlantedDigitDisplacement": 7.155661108221394e-07,
+      "maximumPlantedHeightDrift": 4.209578037261963e-07,
+      "loopMatrixError": 0.0,
+      "frames": 97,
+      "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
+    },
+    "look": {
+      "minimumSurfaceHeight": 0.018376920372247696,
+      "maximumFootTargetError": 4.879419305930418e-07,
+      "maximumPlantedDigitDisplacement": 3.9705373628360714e-07,
+      "maximumPlantedHeightDrift": 2.8312206268310547e-07,
+      "loopMatrixError": 0.0,
+      "frames": 241,
+      "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
+    },
+    "spread": {
+      "minimumSurfaceHeight": 0.018376745283603668,
+      "maximumFootTargetError": 6.255382522509206e-07,
+      "maximumPlantedDigitDisplacement": 5.873331010072938e-07,
+      "maximumPlantedHeightDrift": 5.774199962615967e-07,
+      "loopMatrixError": 0.0,
+      "frames": 313,
+      "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
+    },
+    "preen": {
+      "minimumSurfaceHeight": 0.01837693713605404,
+      "maximumFootTargetError": 4.879419305930418e-07,
+      "maximumPlantedDigitDisplacement": 3.564618144603278e-07,
+      "maximumPlantedHeightDrift": 2.868473529815674e-07,
+      "loopMatrixError": 0.0,
+      "frames": 337,
+      "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
+    }
+  },
+  "profile": {
+    "mode": "direct saved raven controls; not retargeting",
+    "rig": "raven-v1",
+    "sourceSha256": "90a4ef9e36e61137304a4fadeba8d0375f542d84ffcf67cb271e9e66885e0aaa",
+    "meshSha256": "2ba8fcc098533a46179d7f8ec95dfb70a6655f590d8642b6030bd143b7331740"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "modelByteIdentical": true,
+  "modelSha256": "c05566c928fa465cf0e0342da901d0aa94d6093af2da44e6bb8280cf9f9eea51",
+  "method": "Endpoint interpolation compared against every original saved dense trajectory row; clip duration, contacts and markers unchanged. Full-frame native support still audits dense source before delivery compaction.",
+  "clips": {
+    "idle": {
+      "originalRows": 241,
+      "deliveredRows": 2,
+      "maximumInterpolationError": 0
+    },
+    "walk": {
+      "originalRows": 97,
+      "deliveredRows": 2,
+      "maximumInterpolationError": 1.1102230246251565e-16
+    },
+    "look": {
+      "originalRows": 241,
+      "deliveredRows": 2,
+      "maximumInterpolationError": 0
+    },
+    "spread": {
+      "originalRows": 313,
+      "deliveredRows": 2,
+      "maximumInterpolationError": 0
+    },
+    "preen": {
+      "originalRows": 337,
+      "deliveredRows": 2,
+      "maximumInterpolationError": 0
+    }
+  },
+  "combinedMetadataBytesBefore": 208471,
+  "combinedMetadataBytesAfter": 10419
+}

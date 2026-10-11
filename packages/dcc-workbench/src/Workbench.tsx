@@ -5,6 +5,7 @@ import beforeUrl from '../references/hydra-before.png';
 import './workbench.css';
 import { foxStudy } from './fox-study';
 import { boarStudy } from './boar-study';
+import { ravenStudy } from './raven-study';
 
 const CanidComparison = lazy(() => import('./CanidComparison'));
 const HydraComparison = lazy(() => import('./HydraComparison'));
@@ -27,7 +28,8 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
     () =>
       new URLSearchParams(location.search).get('compare') === 'canid' ||
       new URLSearchParams(location.search).get('compare') === 'fox' ||
-      new URLSearchParams(location.search).get('compare') === 'boar',
+      new URLSearchParams(location.search).get('compare') === 'boar' ||
+      new URLSearchParams(location.search).get('compare') === 'raven',
   );
   const showCanid = (value: boolean) => {
     const url = new URL(location.href);
@@ -120,11 +122,13 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
       <Suspense fallback={<p role="status">Loading canid motion study…</p>}>
         <CanidComparison
           study={
-            new URLSearchParams(location.search).get('compare') === 'boar'
-              ? boarStudy
-              : new URLSearchParams(location.search).get('compare') === 'fox'
-                ? foxStudy
-                : undefined
+            new URLSearchParams(location.search).get('compare') === 'raven'
+              ? ravenStudy
+              : new URLSearchParams(location.search).get('compare') === 'boar'
+                ? boarStudy
+                : new URLSearchParams(location.search).get('compare') === 'fox'
+                  ? foxStudy
+                  : undefined
           }
           onBack={() => showCanid(false)}
         />
@@ -183,6 +187,17 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
         }}
       >
         Bracken boar <span>Five performances · cloven-hoof support ↗</span>
+      </button>
+      <button
+        className="dcc-compare-entry"
+        onClick={() => {
+          const url = new URL(location.href);
+          url.searchParams.set('compare', 'raven');
+          history.replaceState(null, '', url);
+          setCanid(true);
+        }}
+      >
+        Corven raven <span>Five performances · articulated wings ↗</span>
       </button>
       <label className="dcc-asset-selector">
         <span className="dcc-eyebrow">NATIVE ASSET</span>

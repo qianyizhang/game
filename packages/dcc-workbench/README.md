@@ -293,3 +293,17 @@ phases and markers together in the saved action contract.
 The [boar guide](subjects/boar/README.md) owns the new boar anatomy, five saved control
 performances, split-hoof support audit, source/edit proof and baked workbench delivery.
 Open `/?workbench=dcc&compare=boar`; gallery defaults remain separate.
+
+## Raven motion study
+
+[Corven raven](subjects/raven/README.md) adds five grounded performances at
+`/?workbench=dcc&compare=raven`, with saved character/motion masters and a small
+`MotionStudy` adapter. The native rig owns shoulder/elbow/wrist folding, secondary
+feather sweep and three-forward-toes-plus-hallux support. `npm run dcc:raven -- verify`
+exercises a saved wrist edit through reload, fitting, export and fresh native sampling;
+the raven browser case checks the edited surface against those samples.
+
+The saved-source boundary transfers across the fox, boar and raven studies. Their
+anatomy does not: retain small subject-specific authoring/audit modules. Check actual
+deformation after fitting and inspect enlarged motion extremes before relying on a
+small consumer view.

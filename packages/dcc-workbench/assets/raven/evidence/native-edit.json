@@ -1,0 +1,12 @@
+{
+  "meshAndWeightsUnchanged": true,
+  "authoritativeSourcesAndDeliveryUnchanged": true,
+  "wristChangeRadians": 0.11999999731779099,
+  "editedClip": "spread",
+  "editedFrame": 156,
+  "sourcePins": {
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/raven/motion.blend": "90a4ef9e36e61137304a4fadeba8d0375f542d84ffcf67cb271e9e66885e0aaa",
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/raven/raven/source.blend": "5e3fd4ce2daa7c5df3f2232c2b89693fc48c1ad8943fc0bb939e7329b149935a",
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/raven/raven.glb": "c05566c928fa465cf0e0342da901d0aa94d6093af2da44e6bb8280cf9f9eea51"
+  }
+}

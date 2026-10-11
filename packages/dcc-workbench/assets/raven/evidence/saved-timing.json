@@ -1,0 +1,39 @@
+{
+  "before": "72afd834f0e965e34e2bf0d5679c7141b433e5922ceeadcaf57ea875492915ad",
+  "after": "90a4ef9e36e61137304a4fadeba8d0375f542d84ffcf67cb271e9e66885e0aaa",
+  "clip": "spread",
+  "seconds": 5.2,
+  "operation": "Resampled saved control keys by joint group; stagger shoulder, forearm, wrist and feather fans; 0.07 s left response. Updated open marker; stationary contacts and zero trajectory unchanged.",
+  "schedule": {
+    "shoulder": [
+      0.35,
+      1.5,
+      3.25,
+      4.75
+    ],
+    "elbow": [
+      0.5,
+      1.65,
+      3.1,
+      4.6
+    ],
+    "wrist": [
+      0.65,
+      1.85,
+      2.95,
+      4.45
+    ],
+    "secondary": [
+      0.65,
+      1.85,
+      3.0,
+      4.45
+    ],
+    "primary": [
+      0.8,
+      2.0,
+      2.85,
+      4.3
+    ]
+  }
+}

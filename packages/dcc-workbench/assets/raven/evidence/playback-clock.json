@@ -1,0 +1,37 @@
+{
+  "idle": {
+    "wallSeconds": 4.166699999928475,
+    "observations": 250,
+    "maxReportedClockErrorSeconds": 0.0016000000238418632,
+    "recording": "actual 1x captureStream; no retiming",
+    "playback": "loop"
+  },
+  "walk": {
+    "wallSeconds": 3.1662000000476835,
+    "observations": 190,
+    "maxReportedClockErrorSeconds": 0.0020000000000000018,
+    "recording": "actual 1x captureStream; no retiming",
+    "playback": "loop"
+  },
+  "look": {
+    "wallSeconds": 4.166899999976158,
+    "observations": 250,
+    "maxReportedClockErrorSeconds": 0.0014999999999996128,
+    "recording": "actual 1x captureStream; no retiming",
+    "playback": "loop"
+  },
+  "spread": {
+    "wallSeconds": 5.365399999976158,
+    "observations": 322,
+    "maxReportedClockErrorSeconds": 0.002299999952316334,
+    "recording": "actual 1x captureStream; no retiming",
+    "playback": "once"
+  },
+  "preen": {
+    "wallSeconds": 5.7657000000476835,
+    "observations": 346,
+    "maxReportedClockErrorSeconds": 0.002600000023841531,
+    "recording": "actual 1x captureStream; no retiming",
+    "playback": "once"
+  }
+}

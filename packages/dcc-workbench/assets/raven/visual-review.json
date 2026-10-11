@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "subject": "Corven raven",
+  "reviewDate": "2026-10-11",
+  "reviewer": {
+    "role": "campaign owner",
+    "mode": "visual self-review",
+    "independentApproval": false
+  },
+  "verdict": "accepted as a convincing stylized raven and polished five-performance workbench study",
+  "sourceSha256": "5e3fd4ce2daa7c5df3f2232c2b89693fc48c1ad8943fc0bb939e7329b149935a",
+  "motionSha256": "90a4ef9e36e61137304a4fadeba8d0375f542d84ffcf67cb271e9e66885e0aaa",
+  "modelSha256": "c05566c928fa465cf0e0342da901d0aa94d6093af2da44e6bb8280cf9f9eea51",
+  "brief": {
+    "physicalInterpretation": "living raven expressed through charcoal and indigo sculptural planes",
+    "gesture": "watchful forward bill, quiet lifted breast, long wedge tail, wings held in reserve",
+    "identity": "heavy tapered bill, fitted dark eye, throat hackles, wedge tail, two four-toed feet and articulated flight-feather hierarchy",
+    "surface": "continuous breast and nape; restrained sheen on flight vanes and keratin",
+    "display": "desktop and 390 px workbench"
+  },
+  "views": [
+    {
+      "evidence": [
+        "clay-side.png",
+        "clay-front.png",
+        "clay-rear.png"
+      ],
+      "judgment": "Heavy bill, continuous crown-to-breast gesture, reverse hocks and wedge tail read without pigment. Folded wings remain compact; breast is not a feather-tile pile."
+    },
+    {
+      "evidence": [
+        "material-portrait.png",
+        "material-front.png",
+        "phone.png"
+      ],
+      "judgment": "Charcoal body, indigo vanes and black bill retain raven identity at consumer size. Phone controls wrap without horizontal overflow."
+    },
+    {
+      "evidence": [
+        "native-spread-clay-wing.png",
+        "native-spread-material-wing.png",
+        "native-spread-clay-portrait.png"
+      ],
+      "judgment": "Elevated views show overlapping secondaries as a continuous trailing plane and distinct primary tips. The shoulder plane meets the body; elbow and wrist are readable through unfolding."
+    },
+    {
+      "evidence": [
+        "native-preen-clay-portrait.png",
+        "native-preen-clay-side.png"
+      ],
+      "judgment": "Saved neck-weight repair keeps the skull and bill together while turning toward the shoulder. Both feet remain planted; the continuous breast is retained."
+    }
+  ],
+  "motions": {
+    "idle": {
+      "seconds": 4,
+      "review": "Actual 1x and decoded frames: restrained breath and small alert head response, stable planted feet, seamless repeated rest."
+    },
+    "walk": {
+      "seconds": 1.6,
+      "review": "Actual 1x and 12 fps decoded frames: alternating foot recoveries, deliberate small steps and restrained body transfer. Repeated cycles close. Separate scene-travel journey covers a single 0.4091-unit stride."
+    },
+    "look": {
+      "seconds": 4,
+      "review": "Actual 1x: turn, readable listening hold, smaller answering glance and recovery. The bill leads without dragging the feet."
+    },
+    "spread": {
+      "seconds": 5.2,
+      "review": "Actual 1x from an orbited elevated consumer view plus 4 fps decoding: shoulder opens first, then forearm/wrist and feather fans. Short display hold, staged fold and a stable finish. Saved left response is delayed 0.07 seconds."
+    },
+    "preen": {
+      "seconds": 5.6,
+      "review": "Actual 1x plus 3 fps decoding: gradual shoulder reach, small nibbling checks, controlled return and final hold. Grounded pose remains legible."
+    }
+  },
+  "repairs": [
+    "Replaced naive world-Euler wing folding with armature-space target axes converted to each joint rest space.",
+    "Added secondary-root sweep joints and independent primary-root folding so the open fan can close without lifting a rigid feather comb above the back.",
+    "Widened secondary overlap and separated primary tips after elevated clay exposed a merged pointed wing.",
+    "Repaired saved neck weights to carry the cheek with the head through preening.",
+    "Reduced wing mantle thickness, removed noisy raised covert tiles and fitted restrained scapular planes in the saved character.",
+    "Rejected and reverted a late scapular expansion that made hollow shoulder loops in rear clay.",
+    "Resampled saved spread control keys by joint group and updated the open marker; contacts and trajectory are stationary and unchanged."
+  ],
+  "rejectedEvidence": [
+    "rejected-wing-shelves.png",
+    "rejected-merged-primaries.png",
+    "rejected-scapular-loops.png"
+  ],
+  "technical": {
+    "nativeBrowserMaxError": 1.3355854432458627e-05,
+    "nativeEditedSpreadDifference": 0.12442053877334143,
+    "nativeSampling": "5 times per clip, 16 vertices per mesh, 1344 points per pose",
+    "units": "uncalibrated model units",
+    "support": {
+      "idle": {
+        "minimumSurfaceHeight": 0.018376920372247696,
+        "maximumFootTargetError": 4.879419305930418e-07,
+        "maximumPlantedDigitDisplacement": 3.9705373628360714e-07,
+        "maximumPlantedHeightDrift": 2.8312206268310547e-07,
+        "loopMatrixError": 0.0,
+        "frames": 241,
+        "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
+      },
+      "walk": {
+        "minimumSurfaceHeight": 0.018376842141151428,
+        "maximumFootTargetError": 9.388341326863141e-07,
+        "maximumPlantedDigitDisplacement": 7.155661108221394e-07,
+        "maximumPlantedHeightDrift": 4.209578037261963e-07,
+        "loopMatrixError": 0.0,
+        "frames": 97,
+        "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
+      },
+      "look": {
+        "minimumSurfaceHeight": 0.018376920372247696,
+        "maximumFootTargetError": 4.879419305930418e-07,
+        "maximumPlantedDigitDisplacement": 3.9705373628360714e-07,
+        "maximumPlantedHeightDrift": 2.8312206268310547e-07,
+        "loopMatrixError": 0.0,
+        "frames": 241,
+        "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
+      },
+      "spread": {
+        "minimumSurfaceHeight": 0.018376745283603668,
+        "maximumFootTargetError": 6.255382522509206e-07,
+        "maximumPlantedDigitDisplacement": 5.873331010072938e-07,
+        "maximumPlantedHeightDrift": 5.774199962615967e-07,
+        "loopMatrixError": 0.0,
+        "frames": 313,
+        "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
+      },
+      "preen": {
+        "minimumSurfaceHeight": 0.01837693713605404,
+        "maximumFootTargetError": 4.879419305930418e-07,
+        "maximumPlantedDigitDisplacement": 3.564618144603278e-07,
+        "maximumPlantedHeightDrift": 2.868473529815674e-07,
+        "loopMatrixError": 0.0,
+        "frames": 337,
+        "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
+      }
+    },
+    "checkFull": "passed: maintenance/static/build, Python 16, tools 82 pass / 1 sandbox loopback skip, DCC 57, application 253, simulations 4, geometry 128",
+    "consumerNative": "10 passed / 4 prerequisite skips; raven original and edited native comparison passed; unchanged other-subject native inputs absent",
+    "trajectoryCompaction": "1229 saved trajectory rows to 10 delivered endpoint rows; every authored position within 1e-10; GLB byte-identical"
+  },
+  "limits": [
+    "Owner self-review only, not independent or user approval.",
+    "Broad stylized feather plates and simplified flat-foot stepping; no individual toe roll, feather collision, feather simulation or aerodynamic model.",
+    "No captured animal motion or synchronized reference comparison. Reference fidelity and calibrated biomechanics remain unassessed.",
+    "Flight, takeoff and landing are outside this grounded five-clip scope."
+  ],
+  "references": [
+    "https://www.allaboutbirds.org/guide/Common_Raven/id",
+    "https://academy.allaboutbirds.org/feathers-article/"
+  ],
+  "evidence": {
+    "clay-front.png": "ddfeee47be0b513002ce86e06722f902bbf44f239f82d761201e0ddafac04c0b",
+    "clay-rear.png": "239874c6e22c4b1d873ffd5a4a44476f7a5f1d048f39c7ba5b86698909a3db38",
+    "clay-side.png": "06e94029f5985f3ca64b54c3221b2c0a5fda70471d39cb73ce96fcf1c0900ec7",
+    "consumer-portrait.png": "d7638a5f36279d85b1964d5cad9a595e39e5541608f4e7a48225afe42522e1c7",
+    "idle-1x.webm": "9a259a0accd711878f8d5f6d0715ee61619c17d43edf34416d7eb6d53dcc399f",
+    "idle-playback-sheet.png": "943adb043393c469e185b8c19e27c87ca522b8b037bae10f4f8152cd0795f208",
+    "look-1x.webm": "9150a04ea8b6a91028dfa854940d385fdb40c3ce746b7c27b05b5b141799ef66",
+    "look-playback-sheet.png": "eed99d537f840fead093dc2c6dee7db2ea7334bbb4aefa785b83855e0516bf14",
+    "material-front.png": "978130d7223515573acf7e30758873f3f94a6ba35bea7186de5105374d134ee9",
+    "material-portrait.png": "ca5f6f51079939a21a12201ec82d1ec74db2c70abe2ddb1a56fbb11caa0efcf8",
+    "native-agreement.json": "7c9b9ee336e743f48596b078b5bcd0760e2c53e034290f7b0a586b3bed685fd4",
+    "native-edit.json": "018cb081a9039ff96524ff8e788974cfcdfc6a681aa6e3fe75bcabdbadf1af06",
+    "native-preen-clay-portrait.png": "7ea678c42fbb088f895f0b0f1bfcd704e291db06054be8afe89bdd1c86124e80",
+    "native-preen-clay-side.png": "c3b452213d2169d55ac681cb5db40539260c2743ee357a1565af46ff0f7a687d",
+    "native-spread-clay-portrait.png": "87041933d9ce0ee24769ea30386766320599027cb897d795b4a30833d563d9bd",
+    "native-spread-clay-wing.png": "20bfb32425345f7eed6e8a8157f6e546449e97ba4bd764a58952634427968393",
+    "native-spread-material-wing.png": "d4ef7428d74a998454b178f7ce92a8e046a022efea5b29d66f3f2ea687b6ca97",
+    "phone.png": "048af9b690e1826bfb2f9712ed4dc65a5854e240c5ed7b7640a01579885edd28",
+    "playback-clock.json": "90e3d091e59afe0f775f9c5ae05e7608b2977e09ab19b67be8b7879e8f7c3985",
+    "preen-1x.webm": "bdefe8e2d819f1798f3a2589d500879a30992a22c163757ad57b7b8e88b59323",
+    "preen-midpoint.png": "e7caba8a3c764d950de4d6afdde5f772cdf1daee2f4ba70b29100f99744c1619",
+    "preen-playback-sheet.png": "ad47b795db67dc30c00393db85d2768a803b3ea41b6733787f3a8c1d8e7aeecb",
+    "rejected-merged-primaries.png": "eee22cfd3f8d8c0f33b13c77c8f0c558550ebe51d318ac174981ac56409560f7",
+    "rejected-scapular-loops.png": "1954f8b38792cc9b1fd9612b9eb14def81226fd52602d78faf5ef6956a568fe1",
+    "rejected-wing-shelves.png": "7804c7b59061d6f253ddf22698a6b75ba549fd1593c00db088407c5f418bf660",
+    "saved-timing.json": "54f5d67d1ef0095a323ef6fd0ba91f34d897261d111ba66fff5c8fed02c0b24c",
+    "spread-1x.webm": "217b1d95a839ea38bc67bb7b9e0172c17771407597edd65958e2457b4525cc55",
+    "spread-midpoint.png": "7ce61e7f45386492b2d6ae305824ac63e16745189893247727fb8dabe7a529d4",
+    "spread-playback-sheet.png": "3dd0c67c0956c4ee27a4732b934ee3cdf58ae8e2615c1a08b2a7cdee70d893bb",
+    "trajectory-compaction.json": "ad6a5ca13b28311166186e252d02d9084c14eb73f2adf05aa5ffc9a4f1270b49",
+    "walk-1x.webm": "8a72a24f785098b06efd9db6d5d5f839b3f63c0cd3abec4df8a413c1b6315f74",
+    "walk-playback-sheet.png": "99d0036a65dbef1478ac4c83c74b4a352e06d88254c9d12b5a331fba3cf8726c",
+    "walk-travel-end.png": "0bc15be3c2d4cae2faa06dafcfe847f7a898d5b404a48b43295457405798c5b2"
+  }
+}
