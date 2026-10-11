@@ -34,7 +34,7 @@ CLIPS = {
     "walk": ("Low riverbank walk", 1.6),
     "bound": ("Elastic bound", 0.95),
     "scent": ("Investigate a scent", 5.2),
-    "groom": ("Sit · wash the cheek", 6.0),
+    "groom": ("Three-paw cheek wash", 6.0),
 }
 
 
@@ -57,6 +57,25 @@ def rotate(rig: bpy.types.Object, name: str, x: float = 0, y: float = 0, z: floa
 
 def read_spec(action: bpy.types.Action) -> Spec:
     return cast(Spec, json.loads(str(action["motion_spec"])))
+
+
+def groom_pose(rig: bpy.types.Object, t: float) -> None:
+    """Transfer onto three planted paws, reach forward to the cheek, and recover."""
+    pose = present(rig.pose)
+    load = envelope(t, 0.25, 1.45, 4.8, 5.8)
+    wash = envelope(t, 1.6, 2.1, 4.15, 4.7)
+    stroke = wash * math.sin((t - 2.0) * math.tau / 1.1)
+    # Shift toward fore.R; the long trunk stays low over a three-paw support triangle.
+    pose.bones["CTRL_body"].location = (-0.035 * load, -0.04 * load, -0.015 * load)
+    rotate(rig, "pelvis", y=0.012 * load)
+    rotate(rig, "spine", y=0.018 * load, z=-0.014 * load)
+    rotate(rig, "chest", y=0.025 * load)
+    rotate(rig, "head", y=0.32 * load + 0.012 * stroke, z=0.12 * load)
+    hand = pose.bones["CTRL_fore.L"]
+    hand.location = (0.32 * load - 0.04 * stroke, 0.015 * load, 0.43 * load + 0.05 * stroke)
+    hand.rotation_euler = (0, -0.34 * load + 0.065 * stroke, 0)
+    pose.bones["CTRL_fore.R"].location = (0, 0, 0)
+    pose.bones["CTRL_fore.R"].rotation_euler = (0, 0, 0)
 
 
 def author(rig: bpy.types.Object) -> None:
@@ -143,25 +162,7 @@ def author(rig: bpy.types.Object) -> None:
                 )
                 rotate(rig, "jaw", y=0.015 * sniff)
             elif clip == "groom":
-                sit = envelope(t, 0.25, 1.45, 4.8, 5.8)
-                wash = envelope(t, 1.6, 2.1, 4.15, 4.7)
-                body.location = (-0.13 * sit, 0, -0.14 * sit)
-                rotate(rig, "pelvis", y=0.05 * sit)
-                rotate(rig, "spine", y=-0.30 * sit)
-                rotate(rig, "chest", y=-0.35 * sit)
-                rotate(rig, "head", y=0.40 * sit, z=0.11 * wash)
-                # The fore paw lifts to the turned cheek, strokes twice, then lowers.
-                hand = pose.bones["CTRL_fore.L"]
-                stroke = wash * math.sin((t - 2.0) * math.tau * 0.8)
-                hand.location = (
-                    0.10 * sit + 0.15 * wash,
-                    0.005 * wash,
-                    0.84 * sit + 0.14 * wash + 0.045 * stroke,
-                )
-                hand.rotation_euler.y = -0.48 * wash
-                pose.bones["CTRL_fore.R"].location = (-0.10 * sit, 0, 0.64 * sit)
-                rotate(rig, "tail.01", y=0.04 * sit, z=-0.07 * sit)
-                rotate(rig, "tail.02", y=0.06 * sit, z=0.10 * sit)
+                groom_pose(rig, t)
             else:
                 breath = 0.5 - 0.5 * math.cos(cycle)
                 body.location.z = 0.009 * breath
@@ -236,7 +237,7 @@ def author(rig: bpy.types.Object) -> None:
                     start = None
         markers = {
             "scent": [("lower", 1.25), ("search", 2.5), ("recover", 4.5)],
-            "groom": [("sit", 1.45), ("cheek", 2.6), ("wash", 3.8), ("lower", 4.8)],
+            "groom": [("support", 1.45), ("cheek", 2.6), ("wash", 3.8), ("lower", 4.8)],
         }.get(clip, [])
         spec: Spec = {
             "name": label,

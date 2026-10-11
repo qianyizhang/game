@@ -2,7 +2,7 @@
 
 Alder is a stylized living river otter at `/?workbench=dcc&compare=otter`.
 Five land performances explore breathing, a low walk, an elastic bound, scent
-investigation, and a seated cheek wash. The long low torso, broad integrated
+investigation, and a supported three-paw cheek wash. The long low torso, broad integrated
 muzzle, small ears, webbed five-toed paws and muscular tapered tail define the subject.
 
 ## Saved authority
@@ -14,8 +14,9 @@ muzzle, small ears, webbed five-toed paws and muscular tapered tail define the s
 - `otter/fitting.json`: matching-rig direct fitting and the final mesh/weight digest.
 - `../../assets/otter/otter.glb`: 22 deformation joints and five baked named clips.
   Adjacent receipts pin source, motion, exporter, model and dense support results.
-- `../../assets/otter/visual-review.json`: owner visual self-review, repairs,
-  limitations and hashes of selected native/consumer evidence.
+- `../../assets/otter/visual-review.json`: frozen first-submission owner self-review.
+- `../../assets/otter/repair-review.json`: separate post-parent repair record and
+  current source/evidence pins. Initial evidence remains retained as history.
 
 This is original otter performance authoring, not cross-species retargeting.
 The delivery workflow and simple geometric helpers come from the boar study.
@@ -36,6 +37,9 @@ Use fresh output directories and disposable browser profiles.
 
 ```sh
 npm run dcc:otter -- check
+npm run dcc:otter -- repair --output test-results/otter-repaired-masters
+npm run dcc:otter -- fit --root test-results/otter-repaired-masters
+npm run dcc:otter -- export --root test-results/otter-repaired-masters --output test-results/otter-repaired-export
 npm run dcc:otter -- bootstrap --root test-results/otter-new-candidate
 npm run dcc:otter -- refine --root test-results/otter-new-candidate
 npm run dcc:otter -- fit --root test-results/otter-new-candidate
@@ -57,8 +61,25 @@ Fitting evaluates saved actions on their original `MotionRig` slots and keys new
 character-bound actions. It requires the geometry and weight digest to remain
 unchanged. Assigning foreign Blender 4.5 actions alone can silently leave a target static.
 
+The parent rejected the initial hovering seated wash. The repaired action shifts
+the low trunk toward planted fore.R, keeps both hind paws grounded, and brings
+fore.L forward to the lowered cheek for two strokes. The repair command edits only
+the saved grooming keys on fresh copied masters; it does not rebuild geometry or
+the other four actions. Its shorter reach avoids the stretched forearm of the first
+repair attempt. The neutral sculpt, weights and other four animation tracks remain.
+
+The parent also exposed an inherited local-coordinate audit weakness: moving a
+paw object upward changed world geometry while the old digest and support check
+missed it. Geometry digest v2 includes object/parent transform matrices and weight
+group names. Fitting/export require identity object, parent-inverse and scene
+transforms, checked through every authored frame. A rejection names the object and
+matrix and asks the author to apply transforms on a copy, clear unintended parent
+inverse, restore support, refit and review. Sole and clearance probes use evaluated
+world coordinates. Applied translations still must satisfy actual contact/clearance.
+
 Export audits all 1,082 authored frames at 60 fps. The actual five toe meshes and
-connected web sole of each paw are probed through every saved planted interval.
+connected web sole of each paw are probed in scene/world coordinates through every
+saved planted interval.
 The support plane is z = 0.018 model units; the rounded sole margin is explicit.
 Limits are 0.01 target reach error, 0.001 planted slip, 0.002 height error,
 -0.008 minimum whole-surface height and 0.0001 loop matrix error. Scene trajectory
@@ -71,11 +92,14 @@ masters, saves/reloads, fits, exports and samples both versions. Each clip is sa
 at 12 Hz plus endpoints, with 16 vertices per mesh. Browser comparison requires
 agreement below 0.0001 units and an observable edited result. Delete temporary pose
 arrays only after successful agreement; retain compact reports and selected evidence.
+The same native proof rejects translated paw and below-floor surface objects, then
+rejects both faults after applying the translations into mesh coordinates. A valid
+saved source still exports. These disposable fault cases retain compact reports.
 
 ## Owner review and limits
 
-Inspect native clay front/side/rear and portrait, enlarged scent/wash, and intermediate
-seated poses before consumer review. Real 1× consumer movies and densely decoded gait
+Inspect native clay front/rear, both sides and both three-quarter directions,
+enlarged wash, and lift/stroke/recovery phases before consumer review. Real 1× consumer movies and densely decoded gait
 phases cover timing and loops; the 390 px capture covers the smallest layout.
 The review is the sole owner's judgment. Parent audit and user approval are separate.
 

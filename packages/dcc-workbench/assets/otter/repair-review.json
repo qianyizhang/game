@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "subject": "Alder river otter",
+  "reviewDate": "2026-10-11",
+  "reviewer": {
+    "role": "sole implementation owner",
+    "model": "GPT-6.1 Sol",
+    "reasoningEffort": "xhigh",
+    "mode": "bounded post-parent repair self-review",
+    "independentApproval": false,
+    "userApproval": false
+  },
+  "initialCheckpoint": {
+    "commit": "6e1560f376c247492dbfdc1bca06ccae09f772f4",
+    "selfReview": "visual-review.json",
+    "evidence": "evidence/",
+    "status": "immutable first self-approved submission; parent rejected the seated support claim and transform contract"
+  },
+  "parentFindings": [
+    {
+      "id": "F1",
+      "finding": "Seated wash had a horizontal unsupported belly and raised rump/tail, with both front paws lifted; front recording concealed the support failure. Forearm fold was compressed.",
+      "repair": "Saved groom keys now form a low three-paw cheek wash: fore.R and both hind paws support the trunk; fore.L reaches the lowered turned cheek, makes two gentle strokes and returns to standing. Label and support/cheek/wash/lower markers describe the new action.",
+      "ownerRefinement": "First repair attempt reached too far forward/up and stretched the forearm into a flat shape in opposite-side detail. Shortened reach from x=.46/z=.55 to x=.32/z=.43 and increased head lowering from .21 to .32 rad. Adopted candidate-02; no sculpt or weight change.",
+      "ownerJudgment": "Both opposite side/three-quarter lift, two strokes and recovery retain a low supported trunk and rounded arm. Side consumer exposes the stable support; opposite three-quarter exposes the washing fore.L.",
+      "parentReinspection": "Parent reported final native transition views and live side/orbit/one-shot six-second recovery acceptable at the established stylized quality bar; F1 resolved."
+    },
+    {
+      "id": "F2",
+      "finding": "Object translation changed world geometry while the inherited local-coordinate digest/support/clearance method falsely accepted it.",
+      "origin": "uncovered shared-method weakness inherited from earlier exporter code; not evidence that this trial alone invented the bug",
+      "repair": "Geometry digest v2 includes object/parent transforms and named weight bindings. Fitting/export explicitly require identity object, parent-inverse and scene transforms; export checks every authored frame. Evaluated sole and whole-surface probes use matrix_world, plus scene trajectory once. Rejections name the object/matrix and explain copied-master apply/restore-support/refit/review steps.",
+      "ownerProof": "Four disposable faults rejected: translated paw +.05 and hide -1, both before and after applying transforms into mesh. All four change the digest. Valid saved source exports; authoritative masters remain unchanged.",
+      "parentReinspection": "Independent parent +.05 paw and -.5 hide faults rejected; digest changes detected and canonical bytes unchanged. F2 resolved."
+    }
+  ],
+  "verdict": "Self-approved bounded repairs; parent reinspection resolves both findings. Required completion gates are recorded separately. This record does not replace or revise the frozen initial self-review.",
+  "sourceSha256": "35695f31f0422682aca33b6d9ff12c0ae0c8da020a97a57b5c475939d3f26f9d",
+  "motionSha256": "548a7d37b2e7a85979888d61cb3be1fa46172a5c229ae22f57219842eac54703",
+  "modelSha256": "5b9ff334888bc12ad62cd87f8d9dbf6dc07809606e150809966411236bbeecf4",
+  "exportScripts": {
+    "subjects/otter/authoring/otter_delivery.py": "e9a41f2e8108a174c1f4d6209c59ced44a946fa58ab3c866bf24c84eaa658886",
+    "subjects/otter/authoring/otter_rig.py": "921d12ea7bf7e0f479b1aecf3b3eb117aa5ce7d330cc5bbdeb86f98e10ad7c84",
+    "subjects/otter/authoring/otter_motion.py": "be1748c012ee9010374f96b0b98d7f3bc6b99c336c1efe978c1ede738e372065",
+    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
+  },
+  "geometryDigestVersion": 2,
+  "meshSha256": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
+  "sourceTransformContract": "identity object, parent inverse and scene transforms",
+  "preservation": {
+    "geometryWeightsAndSceneTransforms": "evidence/repair-01/geometry-preservation.json",
+    "decodedAnimationTracks": "evidence/repair-01/clip-preservation.json",
+    "unchangedClips": [
+      "idle",
+      "walk",
+      "bound",
+      "scent"
+    ],
+    "changedClip": "groom",
+    "initialEvidenceUnchanged": true,
+    "baselineOtherCreatureBytes": "evidence/repair-01/preservation-summary.json: 203 baseline files unchanged",
+    "frozenInitialReviewAndEvidence": "evidence/repair-01/preservation-summary.json: 31 frozen files unchanged"
+  },
+  "reviewCoverage": {
+    "native": "Final saved adopted candidate, clay/material review output at frames 60,138,204,324 and enlarged frame156. Both sides and both three-quarter directions available; selected opposite views retained at full 1200x840 as JPEG quality2.",
+    "consumer": "Fresh functional browser journey exercises all five clips and records actual unretimed 1x canvas playback. Repaired groom additionally recorded in Clay Side and opposite three-quarter, plus Front Material. Three original movies retained, decoded at 8 Hz into cropped phase sheets. Read six columns left to right, then down; tile index / 8 is recording time, black tail tiles are empty. Crop 600x320 at x340/y150 from 1308x560 encoded canvas, scaled to420x224 per tile; crop enlarges the recorded subject without retiming.",
+    "judgmentMethod": "Owner inspected native enlarged clay, browser scrubs and dense phases decoded from actual 1x recordings. Parent also performed live browser playback/orbit inspection.",
+    "phone": "390x844 full consumer capture, no horizontal overflow",
+    "nativeEdit": "Saved scent head key frame150 +.12 rad on copied masters, save/reload/fit/export and fresh 12 Hz endpoint-inclusive samples, 16 vertices per mesh. Original and edited browser deformation agreement.",
+    "transforms": "Four actual disposable native save/reload/export fault probes plus valid saved-source export; thresholds unchanged."
+  },
+  "technicalProof": {
+    "nativeVerification": "evidence/repair-01/native-verification.json",
+    "nativeAgreement": "evidence/repair-01/native-agreement.json",
+    "transformFaults": "evidence/repair-01/transform-proof.json",
+    "downloadIdentity": "evidence/repair-01/consumer-downloads.json",
+    "playbackClocks": "evidence/repair-01/playback-clock-summary.json",
+    "completionGates": "evidence/repair-01/gate-summary.json"
+  },
+  "support": {
+    "idle": {
+      "minimumSurfaceHeight": 0.01799958571791649,
+      "maximumPawTargetError": 5.949744628147759e-07,
+      "maximumPlantedDigitDisplacement": 5.831507368508055e-07,
+      "maximumPlantedHeightDrift": 0.001060079008340837,
+      "loopMatrixError": 0.0,
+      "frames": 253,
+      "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+      "supportPlaneHeight": 0.018,
+      "space": "evaluated scene/world geometry plus scene trajectory"
+    },
+    "walk": {
+      "minimumSurfaceHeight": 0.01799948327243328,
+      "maximumPawTargetError": 5.372690074837192e-07,
+      "maximumPlantedDigitDisplacement": 7.841028152664343e-07,
+      "maximumPlantedHeightDrift": 0.0010601404756307616,
+      "loopMatrixError": 0.0,
+      "frames": 97,
+      "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+      "supportPlaneHeight": 0.018,
+      "space": "evaluated scene/world geometry plus scene trajectory"
+    },
+    "bound": {
+      "minimumSurfaceHeight": 0.017999574542045593,
+      "maximumPawTargetError": 0.00023701924145926604,
+      "maximumPlantedDigitDisplacement": 9.109671862743448e-06,
+      "maximumPlantedHeightDrift": 0.001063757732510568,
+      "loopMatrixError": 2.449293581093244e-18,
+      "frames": 58,
+      "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+      "supportPlaneHeight": 0.018,
+      "space": "evaluated scene/world geometry plus scene trajectory"
+    },
+    "scent": {
+      "minimumSurfaceHeight": 0.017999619245529175,
+      "maximumPawTargetError": 5.027347924660843e-07,
+      "maximumPlantedDigitDisplacement": 5.685920723777685e-07,
+      "maximumPlantedHeightDrift": 0.0010600510686635985,
+      "loopMatrixError": 0.0,
+      "frames": 313,
+      "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+      "supportPlaneHeight": 0.018,
+      "space": "evaluated scene/world geometry plus scene trajectory"
+    },
+    "groom": {
+      "minimumSurfaceHeight": 0.01799965836107731,
+      "maximumPawTargetError": 5.066942613100798e-07,
+      "maximumPlantedDigitDisplacement": 7.760080141362181e-07,
+      "maximumPlantedHeightDrift": 0.001060039892792703,
+      "loopMatrixError": 0.0,
+      "frames": 361,
+      "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+      "supportPlaneHeight": 0.018,
+      "space": "evaluated scene/world geometry plus scene trajectory"
+    }
+  },
+  "deliveryBudget": {
+    "bytes": 3940020,
+    "triangles": 100140,
+    "deformationJoints": 22,
+    "clips": 5
+  },
+  "remainingLimits": [
+    "Stylized original land performances, not synchronized biomechanical reference or measured otter gait.",
+    "Discrete authored-frame support and sampled browser agreement do not establish continuous collision-free anatomy.",
+    "Default consumer framing remains generous; orbit/zoom expose details.",
+    "No swimming, water simulation or muscle corrective system.",
+    "Supported source scene uses identity object/parent transforms; edited copies must apply transforms, restore support, refit and review before export."
+  ],
+  "evidenceFiles": {
+    "clip-preservation.json": {
+      "bytes": 1242,
+      "sha256": "a62414a4f00def73799110b46c7ed9971dcf3bf7924aaae8c374fa1ebeafc67a"
+    },
+    "consumer-downloads.json": {
+      "bytes": 463,
+      "sha256": "5ddbe9dfcbd5cbec74f044f4784de512cdf8263ec05c91e2bd764a5b9d414160"
+    },
+    "gate-summary.json": {
+      "bytes": 5244,
+      "sha256": "a683fbe97ff484895c3f99794a621f1fed772a7547e1d34e2407af37d6f1d84a"
+    },
+    "geometry-preservation.json": {
+      "bytes": 623,
+      "sha256": "3e7ed2493fbd23b4f9dfe42f9030a7b92e89b804e6ba751220f3b084805ad74b"
+    },
+    "groom-1x.webm": {
+      "bytes": 848190,
+      "sha256": "75a4e9d6feb295b8ba688ffbb3773383942b0f9a86dd3e1aa3e4b46a9346c729"
+    },
+    "groom-Side-1x.webm": {
+      "bytes": 769222,
+      "sha256": "cea75a1196a4f0500e5389cb46e3dcf87f85ad0ed5f80e79df4339c2a175f2aa"
+    },
+    "groom-Side-cheek.png": {
+      "bytes": 86902,
+      "sha256": "49f91371092a19b21eaa49b7305b3ef81de8adcaddee25e092882ca924de63e9"
+    },
+    "groom-Side-playback-sheet.jpg": {
+      "bytes": 548099,
+      "sha256": "6837eae4d7480d34d9d699018256f15eb93212ee20f70a157bce353f1ce55ea8"
+    },
+    "groom-opposite-three-quarter-1x.webm": {
+      "bytes": 854238,
+      "sha256": "d509fb6d565bdb7bb9a34660cd882d9677b092bdcd4121076f8b39e5444c126a"
+    },
+    "groom-opposite-three-quarter-6.png": {
+      "bytes": 154689,
+      "sha256": "b35d40d662c3b9458e63503ed0464cd5e2e4cdd3e1acdcc05740e3aff236a4bc"
+    },
+    "groom-opposite-three-quarter-cheek.png": {
+      "bytes": 155317,
+      "sha256": "5c55ad689defbcc26dbc730cb90d8a4dbab8660c1e884d08f52abe7830e2fffc"
+    },
+    "groom-opposite-three-quarter-playback-sheet.jpg": {
+      "bytes": 585828,
+      "sha256": "97e9cfc81e9392e4bda4a34022e243c411bc529a51f1a0074e8bf6e8a07aaa92"
+    },
+    "groom-playback-sheet.jpg": {
+      "bytes": 511858,
+      "sha256": "7d1c72ee2bbe93b2a2f5f8e49a22beedcdfbfdf21fd7e69bf25a71b29239e21b"
+    },
+    "native-agreement.json": {
+      "bytes": 1904,
+      "sha256": "c2bb5dd2d72ea187d37197dd6c41e33f4c4dc275eca30f1129345e7f783ad044"
+    },
+    "native-cheek-detail.jpg": {
+      "bytes": 31146,
+      "sha256": "1e957f1284f963e94ee168a2624fa203d8e56f4c41af3151ceb904e0a73dc9bf"
+    },
+    "native-lift-portrait-left.jpg": {
+      "bytes": 26040,
+      "sha256": "fe136c600e4f8be6b69d24a546adf167d4c4e6634439989e605b0fca6d668653"
+    },
+    "native-lift-side-left.jpg": {
+      "bytes": 26234,
+      "sha256": "347b71f5ab65c3a3c7d183546eb762fe7cbfac8d7cb96ab755777ff00c7580c7"
+    },
+    "native-recovery-portrait-left.jpg": {
+      "bytes": 25980,
+      "sha256": "9e9ab33ef53fc3b769dc68426fe57bf805ae63a6839448b474a7aaa21e037f79"
+    },
+    "native-recovery-side-left.jpg": {
+      "bytes": 26068,
+      "sha256": "906d0bb3d6ca33baa9f0fdf329646b12c7b71430d3cbc7d4c38dcfede3968180"
+    },
+    "native-stroke-one-portrait-left.jpg": {
+      "bytes": 25518,
+      "sha256": "79fea0aca49d2442ec357677c45619bab855536f4343807142622b67e84f71b1"
+    },
+    "native-stroke-one-side-left.jpg": {
+      "bytes": 25928,
+      "sha256": "5d96e2ee98e012bec9d2b61937aaab51884468ef7e1fa12b2e878d36cc2564fb"
+    },
+    "native-stroke-two-portrait-left.jpg": {
+      "bytes": 25645,
+      "sha256": "734bad1e414870662d6897e58505ea745dd7043df3588868082c672e0862cc37"
+    },
+    "native-stroke-two-side-left.jpg": {
+      "bytes": 25972,
+      "sha256": "aeca9e061126b50f6a9327071cc4ab753a2c06a276f30bddd5cb95cb0698a288"
+    },
+    "native-verification.json": {
+      "bytes": 924,
+      "sha256": "afb669ab8f831f33a41cc056a4f826fbd26dcb9db1a42be9f729c07d349ae8a3"
+    },
+    "phone.png": {
+      "bytes": 175447,
+      "sha256": "dc6771eaebe074a55a5ec27c4ce5380252134a385302867e28beb935d4af1b4c"
+    },
+    "playback-clock-summary.json": {
+      "bytes": 3616,
+      "sha256": "7948daefb287dcad432dbc3b65c7e5346acff2fdadcc5ed736d24e0cffff6810"
+    },
+    "preservation-summary.json": {
+      "bytes": 304,
+      "sha256": "108eb33d4e51c24e125959fd8376ba8b3bf3e62a6516a15f71d09ff0b77ae3f1"
+    },
+    "transform-proof.json": {
+      "bytes": 4650,
+      "sha256": "a9f3acba309aaddae2578b502ee3eaf3badbdd96b96b72e99277c8d7186792c7"
+    }
+  }
+}

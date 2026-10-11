@@ -55,6 +55,8 @@ def review(root: Path, output: Path, clip: str, frame: int, detail: bool = False
             ("front", (7, 0, 2.1)),
             ("rear", (-7, 0, 2.1)),
             ("portrait", (4, -6, 2.7)),
+            ("side-left", (-0.55, 7, 0.9)),
+            ("portrait-left", (4, 6, 2.7)),
         ]:
             camera.location = camera_position
             camera.rotation_euler = (

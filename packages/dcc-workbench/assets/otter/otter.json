@@ -1,15 +1,17 @@
 {
   "schemaVersion": 1,
   "character": "otter",
-  "sourceSha256": "ce9689ee37e989cdc22036ab3afc1d2ce8cc6a3e02b85541a9e4f3ab715fd615",
-  "motionSha256": "4d78c69390dce85d0aa9dd7a4b2653bc7af5e5a7ff6dd0fe2d3411a180453ba8",
-  "modelSha256": "b6a885da442718a51abcb277555a84401a1b6198acd40a16b678d343201e0f45",
-  "meshSha256": "fc8df72a056c22f8bc7e30f81a6789c728827738b1157e4adf37339f82391fda",
+  "sourceSha256": "35695f31f0422682aca33b6d9ff12c0ae0c8da020a97a57b5c475939d3f26f9d",
+  "motionSha256": "548a7d37b2e7a85979888d61cb3be1fa46172a5c229ae22f57219842eac54703",
+  "modelSha256": "5b9ff334888bc12ad62cd87f8d9dbf6dc07809606e150809966411236bbeecf4",
+  "meshSha256": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
+  "geometryDigestVersion": 2,
+  "sourceTransformContract": "identity object, parent inverse and scene transforms",
   "blender": "4.5.14 LTS",
   "exportScripts": {
-    "subjects/otter/authoring/otter_delivery.py": "46fa06023aaee87337fe1850c619a77ce6e2fc32eef1e202477ef00e58cf3581",
+    "subjects/otter/authoring/otter_delivery.py": "e9a41f2e8108a174c1f4d6209c59ced44a946fa58ab3c866bf24c84eaa658886",
     "subjects/otter/authoring/otter_rig.py": "921d12ea7bf7e0f479b1aecf3b3eb117aa5ce7d330cc5bbdeb86f98e10ad7c84",
-    "subjects/otter/authoring/otter_motion.py": "49a4daf2cbd4be0c9ca6db6db44de53fc4a8317b667256d228a5c274b1fa2cf6",
+    "subjects/otter/authoring/otter_motion.py": "be1748c012ee9010374f96b0b98d7f3bc6b99c336c1efe978c1ede738e372065",
     "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
   },
   "clips": {
@@ -267,7 +269,7 @@
       ]
     },
     "groom": {
-      "name": "Sit \u00b7 wash the cheek",
+      "name": "Three-paw cheek wash",
       "seconds": 6.0,
       "playback": "once",
       "trajectory": [
@@ -303,22 +305,6 @@
         },
         {
           "start": 0.0,
-          "end": 0.25,
-          "sites": [
-            "fore.R"
-          ],
-          "mode": "planted"
-        },
-        {
-          "start": 5.8,
-          "end": 6.0,
-          "sites": [
-            "fore.R"
-          ],
-          "mode": "planted"
-        },
-        {
-          "start": 0.0,
           "end": 6.0,
           "sites": [
             "rear.L"
@@ -332,11 +318,19 @@
             "rear.R"
           ],
           "mode": "planted"
+        },
+        {
+          "start": 0,
+          "end": 6.0,
+          "sites": [
+            "fore.R"
+          ],
+          "mode": "planted"
         }
       ],
       "markers": [
         {
-          "name": "sit",
+          "name": "support",
           "time": 1.45
         },
         {
@@ -363,7 +357,8 @@
       "loopMatrixError": 0.0,
       "frames": 253,
       "supportSites": "five toes plus connected web of each paw; saved stance intervals",
-      "supportPlaneHeight": 0.018
+      "supportPlaneHeight": 0.018,
+      "space": "evaluated scene/world geometry plus scene trajectory"
     },
     "walk": {
       "minimumSurfaceHeight": 0.01799948327243328,
@@ -373,7 +368,8 @@
       "loopMatrixError": 0.0,
       "frames": 97,
       "supportSites": "five toes plus connected web of each paw; saved stance intervals",
-      "supportPlaneHeight": 0.018
+      "supportPlaneHeight": 0.018,
+      "space": "evaluated scene/world geometry plus scene trajectory"
     },
     "bound": {
       "minimumSurfaceHeight": 0.017999574542045593,
@@ -383,7 +379,8 @@
       "loopMatrixError": 2.449293581093244e-18,
       "frames": 58,
       "supportSites": "five toes plus connected web of each paw; saved stance intervals",
-      "supportPlaneHeight": 0.018
+      "supportPlaneHeight": 0.018,
+      "space": "evaluated scene/world geometry plus scene trajectory"
     },
     "scent": {
       "minimumSurfaceHeight": 0.017999619245529175,
@@ -393,23 +390,26 @@
       "loopMatrixError": 0.0,
       "frames": 313,
       "supportSites": "five toes plus connected web of each paw; saved stance intervals",
-      "supportPlaneHeight": 0.018
+      "supportPlaneHeight": 0.018,
+      "space": "evaluated scene/world geometry plus scene trajectory"
     },
     "groom": {
-      "minimumSurfaceHeight": 0.017999719828367233,
-      "maximumPawTargetError": 6.00176524315665e-07,
-      "maximumPlantedDigitDisplacement": 7.522158160708687e-07,
-      "maximumPlantedHeightDrift": 0.0010599896013736738,
+      "minimumSurfaceHeight": 0.01799965836107731,
+      "maximumPawTargetError": 5.066942613100798e-07,
+      "maximumPlantedDigitDisplacement": 7.760080141362181e-07,
+      "maximumPlantedHeightDrift": 0.001060039892792703,
       "loopMatrixError": 0.0,
       "frames": 361,
       "supportSites": "five toes plus connected web of each paw; saved stance intervals",
-      "supportPlaneHeight": 0.018
+      "supportPlaneHeight": 0.018,
+      "space": "evaluated scene/world geometry plus scene trajectory"
     }
   },
   "profile": {
     "mode": "direct saved otter controls; not retargeting",
     "rig": "otter-v1",
-    "sourceSha256": "4d78c69390dce85d0aa9dd7a4b2653bc7af5e5a7ff6dd0fe2d3411a180453ba8",
-    "meshSha256": "fc8df72a056c22f8bc7e30f81a6789c728827738b1157e4adf37339f82391fda"
+    "sourceSha256": "548a7d37b2e7a85979888d61cb3be1fa46172a5c229ae22f57219842eac54703",
+    "meshSha256": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
+    "geometryDigestVersion": 2
   }
 }

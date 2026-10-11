@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "geometryDigestVersion": 2,
+  "validSavedSourceAccepted": true,
+  "authoritativeMastersUnchanged": true,
+  "sourcePins": {
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/otter/motion.blend": "548a7d37b2e7a85979888d61cb3be1fa46172a5c229ae22f57219842eac54703",
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/otter/otter/source.blend": "35695f31f0422682aca33b6d9ff12c0ae0c8da020a97a57b5c475939d3f26f9d"
+  },
+  "methodOrigin": "parent disposable probe; inherited local-coordinate exporter weakness",
+  "cases": [
+    {
+      "case": "translated-paw",
+      "object": "Paw web fore.L",
+      "translationZ": 0.05,
+      "appliedToMesh": false,
+      "before": {
+        "localMinZ": 0.019059516489505768,
+        "worldMinZ": 0.019059516489505768
+      },
+      "after": {
+        "localMinZ": 0.01905955746769905,
+        "worldMinZ": 0.06905955821275711
+      },
+      "geometryDigestBefore": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
+      "geometryDigestAfter": "c56d0e7b4b744a11755cb650b84bfaf1eaddae158008a6ccfdae6d6cde877f45",
+      "geometryDigestChanged": true,
+      "exportAccepted": false,
+      "rejection": "Unsupported otter source transform: Paw web fore.L/matrix_basis (identity error 0.05). Work on a copied master: apply object transforms, clear unintended parent inverse, restore paw/ground support, then refit and review. Export requires identity scene transforms."
+    },
+    {
+      "case": "translated-below-floor-surface",
+      "object": "Otter continuous hide",
+      "translationZ": -1.0,
+      "appliedToMesh": false,
+      "before": {
+        "localMinZ": 0.09235183149576187,
+        "worldMinZ": 0.09235183149576187
+      },
+      "after": {
+        "localMinZ": 0.09239482879638672,
+        "worldMinZ": -0.9076051712036133
+      },
+      "geometryDigestBefore": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
+      "geometryDigestAfter": "45b1bb380f0c7095bdabd10bc84d63ed994813d81b2f2427d51cefd58815998b",
+      "geometryDigestChanged": true,
+      "exportAccepted": false,
+      "rejection": "Unsupported otter source transform: Otter continuous hide/matrix_basis (identity error 1). Work on a copied master: apply object transforms, clear unintended parent inverse, restore paw/ground support, then refit and review. Export requires identity scene transforms."
+    },
+    {
+      "case": "applied-translated-paw",
+      "object": "Paw web fore.L",
+      "translationZ": 0.05,
+      "appliedToMesh": true,
+      "before": {
+        "localMinZ": 0.019059516489505768,
+        "worldMinZ": 0.019059516489505768
+      },
+      "after": {
+        "localMinZ": 0.06905955821275711,
+        "worldMinZ": 0.06905955821275711
+      },
+      "geometryDigestBefore": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
+      "geometryDigestAfter": "4461a7fa77211bdd286aa25e8135a7fb10cd61b11cb98f4654b5d6cac675cca8",
+      "geometryDigestChanged": true,
+      "exportAccepted": false,
+      "rejection": "Otter support audit failed: idle: {'minimumSurfaceHeight': 0.01799958571791649, 'maximumPawTargetError': 5.949744628147759e-07, 'maximumPlantedDigitDisplacement': 5.831507368508055e-07, 'maximumPlantedHeightDrift': 0.051060072302818296, 'loopMatrixError': 0.0, 'frames': 253, 'supportSites': 'five toes plus connected web of each paw; saved stance intervals', 'supportPlaneHeight': 0.018, 'space': 'evaluated scene/world geometry plus scene trajectory'}"
+    },
+    {
+      "case": "applied-below-floor-surface",
+      "object": "Otter continuous hide",
+      "translationZ": -1.0,
+      "appliedToMesh": true,
+      "before": {
+        "localMinZ": 0.09235183149576187,
+        "worldMinZ": 0.09235183149576187
+      },
+      "after": {
+        "localMinZ": -0.9076051712036133,
+        "worldMinZ": -0.9076051712036133
+      },
+      "geometryDigestBefore": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
+      "geometryDigestAfter": "0f96abd2b6643c6a0481b49873f4dfcd75bfa2a0e183ff3fef29d6b3c37b42e2",
+      "geometryDigestChanged": true,
+      "exportAccepted": false,
+      "rejection": "Otter support audit failed: idle: {'minimumSurfaceHeight': -0.9076051712036133, 'maximumPawTargetError': 5.949744628147759e-07, 'maximumPlantedDigitDisplacement': 5.831507368508055e-07, 'maximumPlantedHeightDrift': 0.001060079008340837, 'loopMatrixError': 0.0, 'frames': 253, 'supportSites': 'five toes plus connected web of each paw; saved stance intervals', 'supportPlaneHeight': 0.018, 'space': 'evaluated scene/world geometry plus scene trajectory'}"
+    }
+  ],
+  "faultCasesRejected": 4
+}

@@ -1,0 +1,16 @@
+{
+  "initialCommit": "6e1560f376c247492dbfdc1bca06ccae09f772f4",
+  "meshesWeightsAndSceneTransformsUnchanged": true,
+  "sources": [
+    {
+      "path": "/Users/zhangqy/pkgs/game/test-results/otter-repair-before-adoption/sources/otter/source.blend",
+      "geometryDigestVersion": 2,
+      "geometrySha256": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e"
+    },
+    {
+      "path": "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/otter/otter/source.blend",
+      "geometryDigestVersion": 2,
+      "geometrySha256": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e"
+    }
+  ]
+}

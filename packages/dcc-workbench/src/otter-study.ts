@@ -14,7 +14,7 @@ export const otterStudy: MotionStudy = {
   introduction: 'A scent. A spring. A moment to wash.',
   subjectHeading: 'Long back. Quiet paws. Restless whiskers.',
   description:
-    'A long low chestnut body flows into a muscular tapered tail. Small rounded ears, a broad silvery muzzle and five-toed webbed paws carry a curious river otter through walking, bounding, scenting and cheek washing.',
+    'A long low chestnut body flows into a muscular tapered tail. Small rounded ears, a broad silvery muzzle and five-toed webbed paws carry a curious river otter through walking, bounding, scenting and a supported three-paw cheek wash.',
   characters: [
     {
       id: 'otter',

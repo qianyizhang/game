@@ -7,6 +7,10 @@ import hashlib
 import json
 import sys
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    import bpy
 
 if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -23,19 +27,57 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def mesh_digest() -> str:
+def source_objects() -> list[bpy.types.Object]:
     import bpy
 
-    values = []
-    for obj in sorted(
-        (o for o in present(bpy.context.scene).objects if o.type == "MESH"), key=lambda o: o.name
-    ):
+    return sorted(
+        (o for o in present(bpy.context.scene).objects if o.type in ("MESH", "ARMATURE")),
+        key=lambda o: o.name,
+    )
+
+
+def validate_source_transforms() -> None:
+    """Baking is defined in one identity scene space; never silently drop object transforms."""
+    for obj in source_objects():
+        for label, matrix in (
+            ("matrix_basis", obj.matrix_basis),
+            ("matrix_parent_inverse", obj.matrix_parent_inverse),
+            ("matrix_world", obj.matrix_world),
+        ):
+            error = max(
+                abs(matrix[i][j] - (1 if i == j else 0)) for i in range(4) for j in range(4)
+            )
+            if error > 1e-7:
+                raise ValueError(
+                    f"Unsupported otter source transform: {obj.name}/{label} "
+                    f"(identity error {error:.6g}). Work on a copied master: apply object "
+                    "transforms, clear unintended parent inverse, restore paw/ground support, "
+                    "then refit and review. Export requires identity scene transforms."
+                )
+
+
+def mesh_digest() -> str:
+    values: list[list[object]] = []
+    for obj in source_objects():
+        # Pose animation is separate; object and parent transforms define saved geometry.
+        transforms = [
+            [[matrix[i][j] for j in range(4)] for i in range(4)]
+            for matrix in (obj.matrix_basis, obj.matrix_parent_inverse)
+        ]
+        if obj.type == "ARMATURE":
+            values.append([obj.name, transforms, obj.parent.name if obj.parent else None])
+            continue
         data = mesh_data(obj)
         values.append(
             [
                 obj.name,
+                transforms,
+                obj.parent.name if obj.parent else None,
+                obj.parent_type,
+                obj.parent_bone,
                 [[v.co.x, v.co.y, v.co.z] for v in data.vertices],
                 [list(p.vertices) for p in data.polygons],
+                [group.name for group in obj.vertex_groups],
                 [[(g.group, g.weight) for g in v.groups] for v in data.vertices],
             ]
         )
@@ -72,6 +114,7 @@ def fit(root: Path) -> None:
 
     path = root / "otter/source.blend"
     bpy.ops.wm.open_mainfile(filepath=str(path))
+    validate_source_transforms()
     before = mesh_digest()
     rig = bpy.data.objects["CharacterRig"]
     rig.animation_data_clear()
@@ -121,6 +164,7 @@ def fit(root: Path) -> None:
         "rig": "otter-v1",
         "sourceSha256": sha(root / "motion.blend"),
         "meshSha256": before,
+        "geometryDigestVersion": 2,
     }
     (root / "otter/fitting.json").write_text(json.dumps(profile, indent=2) + "\n")
 
@@ -135,6 +179,7 @@ def export(root: Path, output: Path) -> None:
     bpy.ops.wm.open_mainfile(filepath=str(source))
     scene = present(bpy.context.scene)
     rig = bpy.data.objects["CharacterRig"]
+    validate_source_transforms()
     if rig.get("motion_source_sha256") != sha(root / "motion.blend"):
         raise ValueError("Saved motion changed; fit first")
     before = mesh_digest()
@@ -185,6 +230,7 @@ def export(root: Path, output: Path) -> None:
         for frame in range(end + 1):
             scene.frame_set(frame)
             present(bpy.context.view_layer).update()
+            validate_source_transforms()
             graph = bpy.context.evaluated_depsgraph_get()
             evaluated = rig.evaluated_get(graph)
             pose = present(evaluated.pose)
@@ -212,13 +258,22 @@ def export(root: Path, output: Path) -> None:
                 )
                 points = []
                 for obj in soles[foot]:
-                    point = mesh_data(obj.evaluated_get(graph)).vertices[probes[obj.name]].co.copy()
+                    evaluated_mesh = obj.evaluated_get(graph)
+                    point = (
+                        evaluated_mesh.matrix_world
+                        @ mesh_data(evaluated_mesh).vertices[probes[obj.name]].co
+                    )
                     point.x += spec["trajectory"][frame][1]
                     points.append(point)
                 positions[foot].append(points)
             lowest = min(
                 lowest,
-                *(v.co.z for obj in meshes for v in mesh_data(obj.evaluated_get(graph)).vertices),
+                *(
+                    (evaluated_mesh.matrix_world @ v.co).z
+                    for obj in meshes
+                    for evaluated_mesh in [obj.evaluated_get(graph)]
+                    for v in mesh_data(evaluated_mesh).vertices
+                ),
             )
         slip, height = 0.0, 0.0
         for contact in spec["contacts"]:
@@ -243,6 +298,7 @@ def export(root: Path, output: Path) -> None:
             "frames": end + 1,
             "supportSites": "five toes plus connected web of each paw; saved stance intervals",
             "supportPlaneHeight": 0.018,
+            "space": "evaluated scene/world geometry plus scene trajectory",
         }
         audits[name] = audit
         if (
@@ -305,6 +361,8 @@ def export(root: Path, output: Path) -> None:
         "motionSha256": sha(root / "motion.blend"),
         "modelSha256": sha(model),
         "meshSha256": before,
+        "geometryDigestVersion": 2,
+        "sourceTransformContract": "identity object, parent inverse and scene transforms",
         "blender": bpy.app.version_string,
         "exportScripts": {
             str(p.relative_to(Path(__file__).resolve().parents[3])): sha(p) for p in scripts
@@ -320,7 +378,7 @@ def export(root: Path, output: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "command", choices=["bootstrap", "fit", "export", "review", "verify", "refine"]
+        "command", choices=["bootstrap", "fit", "export", "review", "verify", "refine", "repair"]
     )
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--output", type=Path)
@@ -331,6 +389,12 @@ def main() -> None:
     root = args.root.resolve()
     if args.command == "bootstrap":
         bootstrap(root)
+    elif args.command == "repair":
+        from otter_repair import repair_groom
+
+        if not args.output:
+            parser.error("Action repair requires --output for fresh copied masters")
+        repair_groom(root, args.output.resolve())
     elif args.command == "fit":
         fit(root)
     elif args.command == "refine":

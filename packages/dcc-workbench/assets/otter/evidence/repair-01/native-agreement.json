@@ -1,0 +1,98 @@
+{
+  "original": [
+    {
+      "name": "idle",
+      "maxError": 0.000001689565321541886,
+      "samples": 52,
+      "vertices": 1056
+    },
+    {
+      "name": "walk",
+      "maxError": 0.0000022300035654957404,
+      "samples": 21,
+      "vertices": 1056
+    },
+    {
+      "name": "bound",
+      "maxError": 0.0000022097778494528213,
+      "samples": 13,
+      "vertices": 1056
+    },
+    {
+      "name": "scent",
+      "maxError": 0.0000015102108827555395,
+      "samples": 64,
+      "vertices": 1056
+    },
+    {
+      "name": "groom",
+      "maxError": 0.0000018481863187545643,
+      "samples": 73,
+      "vertices": 1056
+    }
+  ],
+  "edited": [
+    {
+      "name": "idle",
+      "maxError": 0.000001689565321541886,
+      "samples": 52,
+      "vertices": 1056
+    },
+    {
+      "name": "walk",
+      "maxError": 0.0000022300035654957404,
+      "samples": 21,
+      "vertices": 1056
+    },
+    {
+      "name": "bound",
+      "maxError": 0.0000022097778494528213,
+      "samples": 13,
+      "vertices": 1056
+    },
+    {
+      "name": "scent",
+      "maxError": 0.0000015102108827555395,
+      "samples": 64,
+      "vertices": 1056
+    },
+    {
+      "name": "groom",
+      "maxError": 0.0000018481863187545643,
+      "samples": 73,
+      "vertices": 1056
+    }
+  ],
+  "changed": [
+    {
+      "name": "idle",
+      "maxError": 0.000001689565321541886,
+      "samples": 52,
+      "vertices": 1056
+    },
+    {
+      "name": "walk",
+      "maxError": 0.0000022300035654957404,
+      "samples": 21,
+      "vertices": 1056
+    },
+    {
+      "name": "bound",
+      "maxError": 0.0000022097778494528213,
+      "samples": 13,
+      "vertices": 1056
+    },
+    {
+      "name": "scent",
+      "maxError": 0.1021350641711178,
+      "samples": 64,
+      "vertices": 1056
+    },
+    {
+      "name": "groom",
+      "maxError": 0.0000018481863187545643,
+      "samples": 73,
+      "vertices": 1056
+    }
+  ]
+}

@@ -10,6 +10,7 @@ from authoring_plan import save_working_source
 from native_types import present
 from otter_delivery import export, fit, mesh_digest, sha
 from otter_sample import sample
+from otter_transform_proof import verify_transforms
 
 
 def verify(root: Path, output: Path) -> None:
@@ -48,6 +49,7 @@ def verify(root: Path, output: Path) -> None:
         raise ValueError("Saved edit failed or sculpt/weights changed")
     export(working, output / "models")
     sample(working, output / "models", output / "poses", ("otter",))
+    transform_proof = verify_transforms(root, output / "transforms")
     if any(sha(p) != digest for p, digest in protected.items()):
         raise ValueError("Native proof mutated authoritative files")
     report = {
@@ -59,5 +61,8 @@ def verify(root: Path, output: Path) -> None:
         "samplerSha256": sha(Path(__file__).with_name("otter_sample.py")),
         "coverage": "each clip at 12 Hz plus both endpoints; 16 vertices per mesh",
         "sourcePins": {str(p): digest for p, digest in protected.items()},
+        "geometryDigestVersion": 2,
+        "transformFaultCasesRejected": transform_proof["faultCasesRejected"],
+        "validSavedSourceAccepted": transform_proof["validSavedSourceAccepted"],
     }
     (output / "verification.json").write_text(json.dumps(report, indent=2) + "\n")

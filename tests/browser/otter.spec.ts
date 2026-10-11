@@ -1,7 +1,69 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page, type TestInfo } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { browserBudget, sceneReadyTimeout } from './budget';
+
+async function recordMotion(
+  page: Page,
+  info: TestInfo,
+  clip: string,
+  duration: number,
+  prefix = clip,
+) {
+  const recording = await page.evaluate(
+    async ({ clip, duration }) => {
+      const canvas = document.querySelector<HTMLCanvasElement>('.canid-render canvas')!;
+      const chunks: Blob[] = [];
+      const stream = canvas.captureStream(30);
+      const recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+      recorder.ondataavailable = (event) => {
+        if (event.data.size) chunks.push(event.data);
+      };
+      const stopped = new Promise<void>((done) => {
+        recorder.onstop = () => done();
+      });
+      const slider = document.querySelector<HTMLInputElement>(
+        'input[aria-label="Shared motion time"]',
+      )!;
+      const descriptor = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!;
+      descriptor.set!.call(slider, '0');
+      slider.dispatchEvent(new Event('input', { bubbles: true }));
+      slider.dispatchEvent(new Event('change', { bubbles: true }));
+      await new Promise<void>((done) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => done())),
+      );
+      const play = Array.from(document.querySelectorAll('button')).find((b) =>
+        /^(Play|Replay) motion$/.test(b.textContent ?? ''),
+      )!;
+      recorder.start();
+      play.click();
+      const start = performance.now();
+      const samples: { wall: number; time: number }[] = [];
+      const length = Math.max(duration, ['walk', 'bound'].includes(clip) ? 3 : 0);
+      await new Promise<void>((done) => {
+        const sample = () => {
+          samples.push({
+            wall: (performance.now() - start) / 1000,
+            time: Number(document.querySelector<HTMLElement>('.canid-render')!.dataset.time),
+          });
+          if (performance.now() - start < length * 1000 + 150) requestAnimationFrame(sample);
+          else done();
+        };
+        requestAnimationFrame(sample);
+      });
+      recorder.stop();
+      await stopped;
+      stream.getTracks().forEach((track) => track.stop());
+      const bytes = new Uint8Array(await new Blob(chunks, { type: 'video/webm' }).arrayBuffer());
+      let binary = '';
+      for (const byte of bytes) binary += String.fromCharCode(byte);
+      return { video: btoa(binary), samples };
+    },
+    { clip, duration },
+  );
+  await writeFile(info.outputPath(`${prefix}-1x.webm`), Buffer.from(recording.video, 'base64'));
+  await writeFile(info.outputPath(`${prefix}-clock.json`), JSON.stringify(recording.samples));
+}
 
 test('otter study plays five clips, supports inspection and preserves its delivered download', async ({
   page,
@@ -33,61 +95,7 @@ test('otter study plays five clips, supports inspection and preserves its delive
     images.push(await viewer.screenshot({ path: info.outputPath(`${clip}-midpoint.png`) }));
     if (process.env.OTTER_REVIEW_FRAMES) {
       // Capture real, unretimed 1x consumer playback, including repeated gait cycles.
-      const recording = await page.evaluate(
-        async ({ clip, duration }) => {
-          const canvas = document.querySelector<HTMLCanvasElement>('.canid-render canvas')!;
-          const chunks: Blob[] = [];
-          const stream = canvas.captureStream(30);
-          const recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
-          recorder.ondataavailable = (event) => {
-            if (event.data.size) chunks.push(event.data);
-          };
-          const stopped = new Promise<void>((done) => {
-            recorder.onstop = () => done();
-          });
-          const slider = document.querySelector<HTMLInputElement>(
-            'input[aria-label="Shared motion time"]',
-          )!;
-          const descriptor = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!;
-          descriptor.set!.call(slider, '0');
-          slider.dispatchEvent(new Event('input', { bubbles: true }));
-          slider.dispatchEvent(new Event('change', { bubbles: true }));
-          await new Promise<void>((done) =>
-            requestAnimationFrame(() => requestAnimationFrame(() => done())),
-          );
-          const play = Array.from(document.querySelectorAll('button')).find((b) =>
-            /^(Play|Replay) motion$/.test(b.textContent ?? ''),
-          )!;
-          recorder.start();
-          play.click();
-          const start = performance.now();
-          const samples: { wall: number; time: number }[] = [];
-          const length = Math.max(duration, ['walk', 'bound'].includes(clip) ? 3 : 0);
-          await new Promise<void>((done) => {
-            const sample = () => {
-              samples.push({
-                wall: (performance.now() - start) / 1000,
-                time: Number(document.querySelector<HTMLElement>('.canid-render')!.dataset.time),
-              });
-              if (performance.now() - start < length * 1000 + 150) requestAnimationFrame(sample);
-              else done();
-            };
-            requestAnimationFrame(sample);
-          });
-          recorder.stop();
-          await stopped;
-          stream.getTracks().forEach((track) => track.stop());
-          const bytes = new Uint8Array(
-            await new Blob(chunks, { type: 'video/webm' }).arrayBuffer(),
-          );
-          let binary = '';
-          for (const byte of bytes) binary += String.fromCharCode(byte);
-          return { video: btoa(binary), samples };
-        },
-        { clip, duration },
-      );
-      await writeFile(info.outputPath(`${clip}-1x.webm`), Buffer.from(recording.video, 'base64'));
-      await writeFile(info.outputPath(`${clip}-clock.json`), JSON.stringify(recording.samples));
+      await recordMotion(page, info, clip, duration);
       await page.getByLabel('Shared motion time').fill('0');
       for (const fraction of [0, 0.2, 0.4, 0.6, 0.8, 1]) {
         await page
@@ -96,6 +104,34 @@ test('otter study plays five clips, supports inspection and preserves its delive
         await viewer.screenshot({ path: info.outputPath(`${clip}-${fraction}.png`) });
       }
     }
+  }
+  if (process.env.OTTER_REVIEW_FRAMES) {
+    await page.getByLabel('Movement', { exact: true }).selectOption('groom');
+    await page.getByRole('button', { name: 'Clay', exact: true }).click();
+    for (const view of ['Side', 'opposite-three-quarter']) {
+      await page
+        .getByRole('button', { name: view === 'Side' ? 'Side' : 'Portrait', exact: true })
+        .click();
+      await page.getByLabel('Shared motion time').fill('2.6');
+      if (view === 'opposite-three-quarter') {
+        const box = (await viewer.locator('canvas').boundingBox())!;
+        await page.mouse.move(box.x + box.width * 0.65, box.y + box.height * 0.5);
+        await page.mouse.down();
+        await page.mouse.move(
+          box.x + box.width * 0.65 - box.height * 0.295,
+          box.y + box.height * 0.5,
+          { steps: 18 },
+        );
+        await page.mouse.up();
+      }
+      await viewer.screenshot({ path: info.outputPath(`groom-${view}-cheek.png`) });
+      await recordMotion(page, info, 'groom', 6, `groom-${view}`);
+      for (const time of [0, 0.5, 1, 1.45, 2.3, 2.6, 3.4, 3.8, 4.8, 5.4, 6]) {
+        await page.getByLabel('Shared motion time').fill(String(time));
+        await viewer.screenshot({ path: info.outputPath(`groom-${view}-${time}.png`) });
+      }
+    }
+    await page.getByRole('button', { name: 'Material', exact: true }).click();
   }
   expect(images[0].equals(images[4])).toBe(false);
   await page.getByLabel('Movement', { exact: true }).selectOption('walk');
@@ -168,9 +204,18 @@ test(
     );
     const evidence = JSON.parse(
       await readFile(resolve(directory!, 'verification.json'), 'utf8'),
-    ) as { meshAndWeightsUnchanged: boolean; authoritativeSourcesAndDeliveryUnchanged: boolean };
+    ) as {
+      meshAndWeightsUnchanged: boolean;
+      authoritativeSourcesAndDeliveryUnchanged: boolean;
+      geometryDigestVersion: number;
+      transformFaultCasesRejected: number;
+      validSavedSourceAccepted: boolean;
+    };
     expect(evidence.meshAndWeightsUnchanged).toBe(true);
     expect(evidence.authoritativeSourcesAndDeliveryUnchanged).toBe(true);
+    expect(evidence.geometryDigestVersion).toBe(2);
+    expect(evidence.transformFaultCasesRejected).toBe(4);
+    expect(evidence.validSavedSourceAccepted).toBe(true);
     await page.goto('/?workbench=dcc&compare=otter');
     const result = await page.evaluate(async (directory) => {
       const module = '/tests/browser/canid-evidence.ts';

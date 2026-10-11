@@ -253,7 +253,7 @@
     ]
   },
   "groom": {
-    "name": "Sit \u00b7 wash the cheek",
+    "name": "Three-paw cheek wash",
     "seconds": 6.0,
     "playback": "once",
     "trajectory": [
@@ -289,22 +289,6 @@
       },
       {
         "start": 0.0,
-        "end": 0.25,
-        "sites": [
-          "fore.R"
-        ],
-        "mode": "planted"
-      },
-      {
-        "start": 5.8,
-        "end": 6.0,
-        "sites": [
-          "fore.R"
-        ],
-        "mode": "planted"
-      },
-      {
-        "start": 0.0,
         "end": 6.0,
         "sites": [
           "rear.L"
@@ -318,11 +302,19 @@
           "rear.R"
         ],
         "mode": "planted"
+      },
+      {
+        "start": 0,
+        "end": 6.0,
+        "sites": [
+          "fore.R"
+        ],
+        "mode": "planted"
       }
     ],
     "markers": [
       {
-        "name": "sit",
+        "name": "support",
         "time": 1.45
       },
       {

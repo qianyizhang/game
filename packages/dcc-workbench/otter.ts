@@ -46,7 +46,13 @@ export function verifyOtter(directory = join(root, 'assets/otter')) {
   )
     throw new Error('Motion contract differs');
   const profile = record(receipt.profile);
-  if (profile.meshSha256 !== receipt.meshSha256 || profile.sourceSha256 !== receipt.motionSha256)
+  if (
+    profile.meshSha256 !== receipt.meshSha256 ||
+    profile.sourceSha256 !== receipt.motionSha256 ||
+    profile.geometryDigestVersion !== 2 ||
+    receipt.geometryDigestVersion !== 2 ||
+    receipt.sourceTransformContract !== 'identity object, parent inverse and scene transforms'
+  )
     throw new Error('Fitting changed mesh/weights');
   const gltf = readGlb(bytes);
   const values = gltf.accessors.map((_, i) => accessorValues(bytes, gltf, i));
@@ -127,6 +133,8 @@ export function verifyOtter(directory = join(root, 'assets/otter')) {
     )
       throw new Error('Otter penetrates ground');
     if (audit.supportPlaneHeight !== 0.018) throw new Error('Missing otter support plane');
+    if (audit.space !== 'evaluated scene/world geometry plus scene trajectory')
+      throw new Error('Missing otter world-space support audit');
     if (
       audit.frames !== Math.round(motions[clip].seconds * 60) + 1 ||
       !motions[clip].contacts.length
@@ -140,8 +148,8 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const [command = 'check', ...args] = process.argv.slice(2);
   if (command === 'check') console.log(JSON.stringify(verifyOtter(), null, 2));
   else {
-    if (!['bootstrap', 'fit', 'export', 'review', 'verify', 'refine'].includes(command))
-      throw new Error('Use check, bootstrap, fit, export, review, or verify');
+    if (!['bootstrap', 'fit', 'export', 'review', 'verify', 'refine', 'repair'].includes(command))
+      throw new Error('Use check, bootstrap, fit, export, review, verify, or repair');
     const blender =
       process.env.BLENDER_BIN ??
       [

@@ -1,6 +1,7 @@
 {
   "mode": "direct saved otter controls; not retargeting",
   "rig": "otter-v1",
-  "sourceSha256": "4d78c69390dce85d0aa9dd7a4b2653bc7af5e5a7ff6dd0fe2d3411a180453ba8",
-  "meshSha256": "fc8df72a056c22f8bc7e30f81a6789c728827738b1157e4adf37339f82391fda"
+  "sourceSha256": "548a7d37b2e7a85979888d61cb3be1fa46172a5c229ae22f57219842eac54703",
+  "meshSha256": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
+  "geometryDigestVersion": 2
 }

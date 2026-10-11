@@ -1,0 +1,94 @@
+{
+  "bound": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "d027dff352c0c21f777050145aa25f06c7a8c83f3dd7fdbb2652c66bf416e861",
+    "clockSamples": 189,
+    "recordedWallSeconds": 3.150100000023842,
+    "clipSeconds": 0.95,
+    "maximumFirstCycleClockErrorSeconds": 0.0012000000476837247,
+    "observedLoopWrapWallSeconds": [
+      0.9497999999523162,
+      1.916399999976158,
+      2.866700000047684
+    ],
+    "finalObservedClipTime": 0.3,
+    "decodedFramesPerSecond": null,
+    "retainedMovie": false
+  },
+  "groom-Side": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "1055d59c1d6dbda1c77c07a412df570ff4e19c1bb2e5995e4fc4837acf53cc9d",
+    "clockSamples": 370,
+    "recordedWallSeconds": 6.166,
+    "clipSeconds": 6,
+    "maximumFirstCycleClockErrorSeconds": 0.0018999999761586395,
+    "observedLoopWrapWallSeconds": [],
+    "finalObservedClipTime": 6,
+    "decodedFramesPerSecond": 8,
+    "retainedMovie": true
+  },
+  "groom": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "841cb0d3104db12ed32f8f63282f05b91f2b226aeb8f5f102f8d4506304a41b8",
+    "clockSamples": 369,
+    "recordedWallSeconds": 6.150199999928474,
+    "clipSeconds": 6,
+    "maximumFirstCycleClockErrorSeconds": 0.0017000000476836696,
+    "observedLoopWrapWallSeconds": [],
+    "finalObservedClipTime": 6,
+    "decodedFramesPerSecond": 8,
+    "retainedMovie": true
+  },
+  "groom-opposite-three-quarter": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "22ef5207d8aede18c21a99bad901232dadcca6a4e46ef4d4c032058d86f8a5a2",
+    "clockSamples": 370,
+    "recordedWallSeconds": 6.165799999952316,
+    "clipSeconds": 6,
+    "maximumFirstCycleClockErrorSeconds": 0.001300000071525531,
+    "observedLoopWrapWallSeconds": [],
+    "finalObservedClipTime": 6,
+    "decodedFramesPerSecond": 8,
+    "retainedMovie": true
+  },
+  "idle": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "3802a23a53a5bb3fa86c260418f9c54d43f029c7424c3e3f2dab92271bf8d580",
+    "clockSamples": 262,
+    "recordedWallSeconds": 4.365800000071525,
+    "clipSeconds": 4.2,
+    "maximumFirstCycleClockErrorSeconds": 0.0013999999761580284,
+    "observedLoopWrapWallSeconds": [
+      4.216300000071525
+    ],
+    "finalObservedClipTime": 0.167,
+    "decodedFramesPerSecond": null,
+    "retainedMovie": false
+  },
+  "scent": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "943a09dc777b3c53fd8b838aa1fd09664d74b9e22be02463572fdfcd0e01c11c",
+    "clockSamples": 322,
+    "recordedWallSeconds": 5.366399999976158,
+    "clipSeconds": 5.2,
+    "maximumFirstCycleClockErrorSeconds": 0.0011000000238419183,
+    "observedLoopWrapWallSeconds": [],
+    "finalObservedClipTime": 5.2,
+    "decodedFramesPerSecond": null,
+    "retainedMovie": false
+  },
+  "walk": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "90097f453fb6786dcc1a9a97c710b19195fc3a03536cd3bbfb56781116fb7c52",
+    "clockSamples": 190,
+    "recordedWallSeconds": 3.1658999999761583,
+    "clipSeconds": 1.6,
+    "maximumFirstCycleClockErrorSeconds": 0.0014000000953673375,
+    "observedLoopWrapWallSeconds": [
+      1.5997999999523163
+    ],
+    "finalObservedClipTime": 1.567,
+    "decodedFramesPerSecond": null,
+    "retainedMovie": false
+  }
+}

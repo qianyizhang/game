@@ -1,0 +1,31 @@
+{
+  "initialCommit": "6e1560f376c247492dbfdc1bca06ccae09f772f4",
+  "method": "per-node-name/path animation channels with decoded input/output accessor values",
+  "clips": {
+    "bound": {
+      "before": "1907384a5a77139ff9f4df5126551b46419cfe64934978b2da1421cdc9372b8b",
+      "after": "1907384a5a77139ff9f4df5126551b46419cfe64934978b2da1421cdc9372b8b",
+      "unchanged": true
+    },
+    "groom": {
+      "before": "d9c093e0297dee954d4cfed0c92792099cb1b1a2c6ee6b4456a2258f9d7bc41e",
+      "after": "abfb492abefa6303ddd29184860711ca485196e224ac5a86f94861ac7aaab968",
+      "unchanged": false
+    },
+    "idle": {
+      "before": "2ff7b21aaba4bfc2e4935c8cd400bd93fc89efde783ba1ad3e078c4eba7cb5c0",
+      "after": "2ff7b21aaba4bfc2e4935c8cd400bd93fc89efde783ba1ad3e078c4eba7cb5c0",
+      "unchanged": true
+    },
+    "scent": {
+      "before": "71ea9b031fa889600027d12ddb969a3e9505bbae9643c4485f65aedc3eb43c57",
+      "after": "71ea9b031fa889600027d12ddb969a3e9505bbae9643c4485f65aedc3eb43c57",
+      "unchanged": true
+    },
+    "walk": {
+      "before": "65fe0f66a44681117708345bcca35c864e808b0ebbc2deff6a87ec625def1618",
+      "after": "65fe0f66a44681117708345bcca35c864e808b0ebbc2deff6a87ec625def1618",
+      "unchanged": true
+    }
+  }
+}

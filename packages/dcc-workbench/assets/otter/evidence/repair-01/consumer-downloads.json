@@ -1,0 +1,17 @@
+{
+  "otter.glb": {
+    "byteIdentical": true,
+    "bytes": 3940020,
+    "sha256": "5b9ff334888bc12ad62cd87f8d9dbf6dc07809606e150809966411236bbeecf4"
+  },
+  "otter.blend": {
+    "byteIdentical": true,
+    "bytes": 3268704,
+    "sha256": "35695f31f0422682aca33b6d9ff12c0ae0c8da020a97a57b5c475939d3f26f9d"
+  },
+  "motion.blend": {
+    "byteIdentical": true,
+    "bytes": 621421,
+    "sha256": "548a7d37b2e7a85979888d61cb3be1fa46172a5c229ae22f57219842eac54703"
+  }
+}

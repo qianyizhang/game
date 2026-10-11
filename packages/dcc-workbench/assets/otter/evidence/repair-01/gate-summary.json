@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-11",
+  "scope": "bounded post-parent F1/F2 otter repairs; initial checkpoint unchanged",
+  "runtime": {
+    "node": "24.21.0",
+    "npm": "11.19.0",
+    "python": "3.12.13 via locked uv",
+    "blender": "4.5.14 LTS"
+  },
+  "gates": [
+    {
+      "command": "npm run check:full",
+      "status": "passed",
+      "log": "test-results/otter-repair-check-full.log",
+      "logSha256": "239f5365bafd8bb6b9ce6c4c46f48a097623720c6c273060b8fbe9deb2e5840d",
+      "maintenance": {
+        "formatting": "passed",
+        "lint": "passed",
+        "strictTypes": "passed",
+        "ruffModules": 62,
+        "mypyModules": 62,
+        "pythonTests": 16,
+        "toolsPassed": 83,
+        "toolsSkipped": 1,
+        "skipReason": "standalone usage loopback binding unavailable inside restricted sandbox",
+        "dccTestsPassed": 59,
+        "inventoryManagedSources": 555,
+        "inventoryErrors": 0,
+        "productionBuild": "passed; existing >500 kB chunk warning"
+      },
+      "application": {
+        "files": 41,
+        "passed": 253
+      },
+      "simulation": {
+        "files": 4,
+        "passed": 4
+      },
+      "geometry": {
+        "files": 28,
+        "passed": 128,
+        "seconds": 172.93
+      },
+      "failed": 0
+    },
+    {
+      "command": "npm run test:usage",
+      "status": "passed",
+      "log": "test-results/otter-repair-usage-supplement.log",
+      "logSha256": "c385a3033df5473d25c9b283505203c37a7f128efbd884c8753acf65fed68ec5",
+      "execution": "approved outside restricted sandbox",
+      "passed": 9,
+      "skipped": 0,
+      "failed": 0,
+      "meaning": "exercises prerequisite skipped by full gate; full-gate skip remains reported"
+    },
+    {
+      "command": "npm run dcc:otter -- verify --output test-results/otter-native-repair-01",
+      "status": "passed",
+      "log": "test-results/otter-native-repair-01.log",
+      "logSha256": "e1896d7085850d4355c9302e62138c13292c600259a59850d18f8a98f84786b4",
+      "execution": "approved outside restricted sandbox",
+      "savedEditReloadFitExport": "passed; scent head z frame150 +.12 rad",
+      "geometryDigestVersion": 2,
+      "transformFaultCasesRejected": 4,
+      "validSavedSourceAccepted": true,
+      "authoritativeSourcesAndDeliveryUnchanged": true
+    },
+    {
+      "command": "OTTER_REVIEW_FRAMES=1 npm run test:browser -- tests/browser/otter.spec.ts --grep='otter study plays' --output=test-results/otter-browser-repair-01",
+      "status": "passed",
+      "log": "test-results/otter-browser-repair-01.log",
+      "logSha256": "65b0b06563eb3b9f6a478c1713abdc9cec9212455f2221150cf37b1bdec9f284",
+      "execution": "approved disposable harness outside restricted sandbox",
+      "passed": 1,
+      "skipped": 0,
+      "failed": 0,
+      "seconds": 47.9,
+      "coverage": "all five actual 1x recordings, Side/opposite three-quarter wash recordings, inspection/travel/replay/390px/no-overflow/GLB and both native byte-identical downloads"
+    },
+    {
+      "command": "OTTER_NATIVE_RESULTS=test-results/otter-native-repair-01 npm run test:browser:native -- tests/browser/otter.spec.ts --output=test-results/otter-browser-native-repair-01",
+      "status": "passed",
+      "log": "test-results/otter-browser-native-repair-01.log",
+      "logSha256": "5b31a1eb18fde193ca39fe826e45a190b7350e2cd54d3048e8aede984f9fcc80",
+      "execution": "approved disposable harness outside restricted sandbox",
+      "passed": 1,
+      "skipped": 0,
+      "failed": 0,
+      "maximumNativeAgreementError": 2.2300035654957404e-06,
+      "editedScentDifference": 0.1021350641711178,
+      "temporaryPoseArrays": "deleted after agreement passed"
+    },
+    {
+      "command": "npm run format:maintenance",
+      "status": "passed",
+      "log": "test-results/otter-repair-format-maintenance.log",
+      "logSha256": "7691b2b0e679a3417bf3cf871eff29172942b42bd07a2318ca7e7eee39679085",
+      "meaning": "formatting rechecked after repair record and evidence assembly"
+    }
+  ],
+  "nativeRenderCommands": [
+    "npm run dcc:otter -- review --root test-results/otter-repair-candidate-02/sources --output test-results/otter-repair-native-final/lift --clip groom --frame 60",
+    "npm run dcc:otter -- review --root test-results/otter-repair-candidate-02/sources --output test-results/otter-repair-native-final/stroke-one --clip groom --frame 138",
+    "npm run dcc:otter -- review --root test-results/otter-repair-candidate-02/sources --output test-results/otter-repair-native-final/stroke-two --clip groom --frame 204",
+    "npm run dcc:otter -- review --root test-results/otter-repair-candidate-02/sources --output test-results/otter-repair-native-final/recovery --clip groom --frame 324",
+    "npm run dcc:otter -- review --root test-results/otter-repair-candidate-02/sources --output test-results/otter-repair-native-final/cheek-detail --clip groom --frame 156 --detail"
+  ],
+  "preservation": "preservation-summary.json confirms 203 other creature files and 31 frozen initial review/evidence files unchanged",
+  "independentParentOutcome": "Parent reports F1/F2 resolved after native/live inspection and two independent transform fault probes; parent report/evidence owned separately.",
+  "userApproval": false
+}
