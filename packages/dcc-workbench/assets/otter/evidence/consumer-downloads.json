@@ -1,0 +1,22 @@
+{
+  "command": "npm run test:browser -- tests/browser/otter.spec.ts --grep='otter study plays' --output=test-results/otter-browser-download-proof",
+  "status": "1 passed, 0 skips, 0 blocked; 8.2 seconds suite, 6.7 seconds case",
+  "method": "clicked real download links in disposable browser; bytes compared to saved files",
+  "files": {
+    "otter.glb": {
+      "bytes": 3940712,
+      "sha256": "b6a885da442718a51abcb277555a84401a1b6198acd40a16b678d343201e0f45",
+      "byteIdentical": true
+    },
+    "otter.blend": {
+      "bytes": 3262969,
+      "sha256": "ce9689ee37e989cdc22036ab3afc1d2ce8cc6a3e02b85541a9e4f3ab715fd615",
+      "byteIdentical": true
+    },
+    "motion.blend": {
+      "bytes": 610052,
+      "sha256": "4d78c69390dce85d0aa9dd7a4b2653bc7af5e5a7ff6dd0fe2d3411a180453ba8",
+      "byteIdentical": true
+    }
+  }
+}

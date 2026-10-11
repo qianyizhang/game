@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "character": "otter",
+  "sourceSha256": "ce9689ee37e989cdc22036ab3afc1d2ce8cc6a3e02b85541a9e4f3ab715fd615",
+  "motionSha256": "4d78c69390dce85d0aa9dd7a4b2653bc7af5e5a7ff6dd0fe2d3411a180453ba8",
+  "modelSha256": "b6a885da442718a51abcb277555a84401a1b6198acd40a16b678d343201e0f45",
+  "meshSha256": "fc8df72a056c22f8bc7e30f81a6789c728827738b1157e4adf37339f82391fda",
+  "blender": "4.5.14 LTS",
+  "exportScripts": {
+    "subjects/otter/authoring/otter_delivery.py": "46fa06023aaee87337fe1850c619a77ce6e2fc32eef1e202477ef00e58cf3581",
+    "subjects/otter/authoring/otter_rig.py": "921d12ea7bf7e0f479b1aecf3b3eb117aa5ce7d330cc5bbdeb86f98e10ad7c84",
+    "subjects/otter/authoring/otter_motion.py": "49a4daf2cbd4be0c9ca6db6db44de53fc4a8317b667256d228a5c274b1fa2cf6",
+    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
+  },
+  "clips": {
+    "idle": {
+      "name": "Breathe \u00b7 ears & whiskers",
+      "seconds": 4.2,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          4.2,
+          0.0,
+          0,
+          0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 4.2,
+          "sites": [
+            "fore.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 4.2,
+          "sites": [
+            "fore.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 4.2,
+          "sites": [
+            "rear.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 4.2,
+          "sites": [
+            "rear.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": []
+    },
+    "walk": {
+      "name": "Low riverbank walk",
+      "seconds": 1.6,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          1.6,
+          0.4305555555555556,
+          0,
+          0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 1.15,
+          "sites": [
+            "fore.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.35,
+          "sites": [
+            "fore.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.8,
+          "end": 1.6,
+          "sites": [
+            "fore.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.4,
+          "end": 1.55,
+          "sites": [
+            "rear.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.75,
+          "sites": [
+            "rear.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 1.2,
+          "end": 1.6,
+          "sites": [
+            "rear.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": []
+    },
+    "bound": {
+      "name": "Elastic bound",
+      "seconds": 0.95,
+      "playback": "loop",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          0.95,
+          0.8095238095238096,
+          0,
+          0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 0.36666666666666664,
+          "sites": [
+            "fore.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.9333333333333333,
+          "end": 0.95,
+          "sites": [
+            "fore.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.4,
+          "sites": [
+            "fore.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.4666666666666667,
+          "end": 0.85,
+          "sites": [
+            "rear.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.5,
+          "end": 0.8833333333333333,
+          "sites": [
+            "rear.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": []
+    },
+    "scent": {
+      "name": "Investigate a scent",
+      "seconds": 5.2,
+      "playback": "once",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          5.2,
+          0.0,
+          0,
+          0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 5.2,
+          "sites": [
+            "fore.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 5.2,
+          "sites": [
+            "fore.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 5.2,
+          "sites": [
+            "rear.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 5.2,
+          "sites": [
+            "rear.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": [
+        {
+          "name": "lower",
+          "time": 1.25
+        },
+        {
+          "name": "search",
+          "time": 2.5
+        },
+        {
+          "name": "recover",
+          "time": 4.5
+        }
+      ]
+    },
+    "groom": {
+      "name": "Sit \u00b7 wash the cheek",
+      "seconds": 6.0,
+      "playback": "once",
+      "trajectory": [
+        [
+          0.0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          6.0,
+          0.0,
+          0,
+          0
+        ]
+      ],
+      "contacts": [
+        {
+          "start": 0.0,
+          "end": 0.25,
+          "sites": [
+            "fore.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 5.8,
+          "end": 6.0,
+          "sites": [
+            "fore.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 0.25,
+          "sites": [
+            "fore.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 5.8,
+          "end": 6.0,
+          "sites": [
+            "fore.R"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 6.0,
+          "sites": [
+            "rear.L"
+          ],
+          "mode": "planted"
+        },
+        {
+          "start": 0.0,
+          "end": 6.0,
+          "sites": [
+            "rear.R"
+          ],
+          "mode": "planted"
+        }
+      ],
+      "markers": [
+        {
+          "name": "sit",
+          "time": 1.45
+        },
+        {
+          "name": "cheek",
+          "time": 2.6
+        },
+        {
+          "name": "wash",
+          "time": 3.8
+        },
+        {
+          "name": "lower",
+          "time": 4.8
+        }
+      ]
+    }
+  },
+  "support": {
+    "idle": {
+      "minimumSurfaceHeight": 0.01799958571791649,
+      "maximumPawTargetError": 5.949744628147759e-07,
+      "maximumPlantedDigitDisplacement": 5.831507368508055e-07,
+      "maximumPlantedHeightDrift": 0.001060079008340837,
+      "loopMatrixError": 0.0,
+      "frames": 253,
+      "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+      "supportPlaneHeight": 0.018
+    },
+    "walk": {
+      "minimumSurfaceHeight": 0.01799948327243328,
+      "maximumPawTargetError": 5.372690074837192e-07,
+      "maximumPlantedDigitDisplacement": 7.841028152664343e-07,
+      "maximumPlantedHeightDrift": 0.0010601404756307616,
+      "loopMatrixError": 0.0,
+      "frames": 97,
+      "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+      "supportPlaneHeight": 0.018
+    },
+    "bound": {
+      "minimumSurfaceHeight": 0.017999574542045593,
+      "maximumPawTargetError": 0.00023701924145926604,
+      "maximumPlantedDigitDisplacement": 9.109671862743448e-06,
+      "maximumPlantedHeightDrift": 0.001063757732510568,
+      "loopMatrixError": 2.449293581093244e-18,
+      "frames": 58,
+      "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+      "supportPlaneHeight": 0.018
+    },
+    "scent": {
+      "minimumSurfaceHeight": 0.017999619245529175,
+      "maximumPawTargetError": 5.027347924660843e-07,
+      "maximumPlantedDigitDisplacement": 5.685920723777685e-07,
+      "maximumPlantedHeightDrift": 0.0010600510686635985,
+      "loopMatrixError": 0.0,
+      "frames": 313,
+      "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+      "supportPlaneHeight": 0.018
+    },
+    "groom": {
+      "minimumSurfaceHeight": 0.017999719828367233,
+      "maximumPawTargetError": 6.00176524315665e-07,
+      "maximumPlantedDigitDisplacement": 7.522158160708687e-07,
+      "maximumPlantedHeightDrift": 0.0010599896013736738,
+      "loopMatrixError": 0.0,
+      "frames": 361,
+      "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+      "supportPlaneHeight": 0.018
+    }
+  },
+  "profile": {
+    "mode": "direct saved otter controls; not retargeting",
+    "rig": "otter-v1",
+    "sourceSha256": "4d78c69390dce85d0aa9dd7a4b2653bc7af5e5a7ff6dd0fe2d3411a180453ba8",
+    "meshSha256": "fc8df72a056c22f8bc7e30f81a6789c728827738b1157e4adf37339f82391fda"
+  }
+}

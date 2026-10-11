@@ -1,0 +1,14 @@
+{
+  "meshAndWeightsUnchanged": true,
+  "authoritativeSourcesAndDeliveryUnchanged": true,
+  "headChangeRadians": 0.12000000104308128,
+  "editedClip": "scent",
+  "editedFrame": 150,
+  "samplerSha256": "580164a78dcd6860f7fd80672c70032e2caf09f392123aa8d8991964209eb5dc",
+  "coverage": "each clip at 12 Hz plus both endpoints; 16 vertices per mesh",
+  "sourcePins": {
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/otter/motion.blend": "4d78c69390dce85d0aa9dd7a4b2653bc7af5e5a7ff6dd0fe2d3411a180453ba8",
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/otter/otter/source.blend": "ce9689ee37e989cdc22036ab3afc1d2ce8cc6a3e02b85541a9e4f3ab715fd615",
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/otter/otter.glb": "b6a885da442718a51abcb277555a84401a1b6198acd40a16b678d343201e0f45"
+  }
+}

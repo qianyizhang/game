@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "subject": "Alder river otter",
+  "reviewDate": "2026-10-11",
+  "reviewer": {
+    "role": "sole implementation owner",
+    "model": "GPT-6.1 Sol",
+    "reasoningEffort": "xhigh",
+    "mode": "visual self-review",
+    "independentApproval": false
+  },
+  "verdict": "self-approved as a convincing stylized river otter and polished five-performance land study; first submission awaits independent parent audit",
+  "sourceSha256": "ce9689ee37e989cdc22036ab3afc1d2ce8cc6a3e02b85541a9e4f3ab715fd615",
+  "motionSha256": "4d78c69390dce85d0aa9dd7a4b2653bc7af5e5a7ff6dd0fe2d3411a180453ba8",
+  "modelSha256": "b6a885da442718a51abcb277555a84401a1b6198acd40a16b678d343201e0f45",
+  "brief": {
+    "physicalInterpretation": "living river otter in a quiet chestnut and silvery muzzle sculpture",
+    "identity": "elongated low torso, short limbs, broad webbed five-toed paws, small ears, integrated whiskered muzzle, muscular tapered tail",
+    "gesture": "low curious exploration; elastic quicker bound; unhurried seated cheek wash",
+    "display": "native clay multiview and consumer desktop/390 px"
+  },
+  "views": [
+    {
+      "evidence": [
+        "clay-front.jpg",
+        "clay-side.jpg",
+        "clay-rear.jpg",
+        "clay-portrait.jpg"
+      ],
+      "judgment": "Identity reads in clay. Side separates long low trunk from short limb chains and continuous tapered tail. Front retains broad muzzle, tiny ears and five-toed paw spread. Rear shows fitted tail root and stance."
+    },
+    {
+      "evidence": [
+        "material-portrait.jpg",
+        "consumer-portrait.png"
+      ],
+      "judgment": "Quiet coat planes retain form; darker wet nose and eyes separate from pale muzzle without a mask-like hard boundary. Whiskers remain visible at consumer scale."
+    },
+    {
+      "evidence": [
+        "native-scent-detail.jpg",
+        "native-groom-detail.jpg",
+        "native-groom-intermediate.jpg",
+        "native-groom-side.jpg",
+        "native-bound-side.jpg"
+      ],
+      "judgment": "Enlarged extremes and intermediate rise show continuous neck, belly and tail, with raised paw approaching cheek. Abdomen crease remains stylized, without the rejected hard side-weight pull. Bound gathers limbs below the low trunk."
+    },
+    {
+      "evidence": [
+        "phone.png",
+        "consumer-groom.png"
+      ],
+      "judgment": "390 px portrait retains full body/tail and readable muzzle, with no horizontal overflow. Front consumer view exposes the seated wash gesture. Stock desktop camera leaves generous margins; orbit and zoom remain available."
+    }
+  ],
+  "motions": {
+    "idle": {
+      "seconds": 4.2,
+      "review": "Actual 1x and 3 Hz decoded playback: restrained breathing, curious head/ear responses and delayed tail sway; planted paws and loop closure."
+    },
+    "walk": {
+      "seconds": 1.6,
+      "review": "Actual 1x repeated cycles and 12 Hz decoded gait: staggered low steps, short recovery, supported trunk and tail response. Travel endpoint applies authored trajectory once."
+    },
+    "bound": {
+      "seconds": 0.95,
+      "review": "Actual 1x repeated cycles and 12 Hz decoded gait: stronger gather, suspended exchange and hind drive distinguish it from the walk. Compression is stylized rather than calibrated animal gait."
+    },
+    "scent": {
+      "seconds": 5.2,
+      "review": "Actual 1x and 4 Hz decoded playback: lower into ground-oriented investigation, small searching sweeps and measured recovery; four paws remain planted."
+    },
+    "groom": {
+      "seconds": 6,
+      "review": "Actual 1x and 4 Hz decoded playback: settle back, lift forepaws, bring left paw to cheek for two gentle strokes, lower and recover. Inspected intermediate rise and enlarged seated neck/abdomen."
+    }
+  },
+  "repairs": [
+    {
+      "defect": "Initial clay muzzle and ears overpowered the elongated otter body.",
+      "repair": "Shortened saved muzzle projection by 20 percent beyond x=1.1 and reduced ear height/projection."
+    },
+    {
+      "defect": "Initial voxel tail tip had visible ripples.",
+      "repair": "Locally relaxed the saved tip without rebuilding the mesh; mild sculptural tip irregularity remains."
+    },
+    {
+      "defect": "Throat pigment leaked onto forelimbs.",
+      "repair": "Restricted pale gradient to central torso/head region."
+    },
+    {
+      "defect": "First grooming gesture stayed low on three paws and read as a chin rub.",
+      "repair": "Authored a seated torso/pelvis gesture, lifted both forepaws and oriented washing paw toward cheek."
+    },
+    {
+      "defect": "Strong seated pose pulled side abdomen into raised forelimb.",
+      "repair": "Smoothed limb weighting through a lateral gate on existing saved geometry; reduced chest/spine pitch and lowered head toward paw."
+    },
+    {
+      "defect": "Initial export exceeded the delivery budget at 212024 triangles and about 8.5 MB.",
+      "repair": "Simplified redundant body/toe/claw/whisker triangles on copied native candidates; final 100140 triangles and 3940712 bytes."
+    },
+    {
+      "defect": "Frame-zero reference for planted height could be a swinging paw.",
+      "repair": "Probe every actual toe/web sole against explicit z=0.018 support plane; retained thresholds."
+    },
+    {
+      "defect": "Enlarged review camera target conditional aimed outside the subject.",
+      "repair": "Corrected expression grouping and rerendered final extremes."
+    }
+  ],
+  "coverage": {
+    "native": "four clay views, material portrait, enlarged scent/groom, seated intermediate and bound compression",
+    "consumer": "all five actual unretimed 1x movies; dense decoded gait phases at 12 Hz, idle 3 Hz, scent/groom 4 Hz; browser control/download journeys; 390 px layout; GLB and both Blender source downloads byte identical",
+    "nativeEdit": "saved scent CTRL_head z key frame 150 +0.12 rad on disposable copies, save/reload/fit/export; final master and GLB unchanged"
+  },
+  "deliveryBudget": {
+    "bytes": 3940712,
+    "triangles": 100140,
+    "deformJoints": 22
+  },
+  "quantitative": {
+    "units": "model units",
+    "nativeBrowserMaxError": 2.2300035654957404e-06,
+    "nativeEditedScentDifference": 0.1021350641711178,
+    "nativeSampling": "12 Hz plus endpoints; 16 vertices per mesh, 1056 points per pose; 52/21/13/64/73 poses for idle/walk/bound/scent/groom",
+    "support": {
+      "idle": {
+        "minimumSurfaceHeight": 0.01799958571791649,
+        "maximumPawTargetError": 5.949744628147759e-07,
+        "maximumPlantedDigitDisplacement": 5.831507368508055e-07,
+        "maximumPlantedHeightDrift": 0.001060079008340837,
+        "loopMatrixError": 0.0,
+        "frames": 253,
+        "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+        "supportPlaneHeight": 0.018
+      },
+      "walk": {
+        "minimumSurfaceHeight": 0.01799948327243328,
+        "maximumPawTargetError": 5.372690074837192e-07,
+        "maximumPlantedDigitDisplacement": 7.841028152664343e-07,
+        "maximumPlantedHeightDrift": 0.0010601404756307616,
+        "loopMatrixError": 0.0,
+        "frames": 97,
+        "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+        "supportPlaneHeight": 0.018
+      },
+      "bound": {
+        "minimumSurfaceHeight": 0.017999574542045593,
+        "maximumPawTargetError": 0.00023701924145926604,
+        "maximumPlantedDigitDisplacement": 9.109671862743448e-06,
+        "maximumPlantedHeightDrift": 0.001063757732510568,
+        "loopMatrixError": 2.449293581093244e-18,
+        "frames": 58,
+        "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+        "supportPlaneHeight": 0.018
+      },
+      "scent": {
+        "minimumSurfaceHeight": 0.017999619245529175,
+        "maximumPawTargetError": 5.027347924660843e-07,
+        "maximumPlantedDigitDisplacement": 5.685920723777685e-07,
+        "maximumPlantedHeightDrift": 0.0010600510686635985,
+        "loopMatrixError": 0.0,
+        "frames": 313,
+        "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+        "supportPlaneHeight": 0.018
+      },
+      "groom": {
+        "minimumSurfaceHeight": 0.017999719828367233,
+        "maximumPawTargetError": 6.00176524315665e-07,
+        "maximumPlantedDigitDisplacement": 7.522158160708687e-07,
+        "maximumPlantedHeightDrift": 0.0010599896013736738,
+        "loopMatrixError": 0.0,
+        "frames": 361,
+        "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+        "supportPlaneHeight": 0.018
+      }
+    },
+    "trajectoryCompaction": "stationary or linear dense rows compacted after 1e-10 position equivalence at all authored frames"
+  },
+  "limits": [
+    "Owner self-review is neither independent approval nor user approval.",
+    "Stylized sculpture, flat planted paw orientation and simplified spine; no motion capture, muscle correctives, calibrated biomechanics or synchronized animal-reference fidelity.",
+    "Discrete support audits and sparse vertex native/browser agreement do not establish continuous collision-free motion.",
+    "Minor tail-tip irregularity and gentle abdomen crease are retained stylistic limits.",
+    "No swimming, water or fur simulation.",
+    "Recipes bootstrap fresh starting candidates; saved native refinements and masters are authoritative."
+  ],
+  "evidence": [
+    {
+      "path": "evidence/baseline-preservation.json",
+      "sha256": "bcbd6b7437becc6f6096e36b842dc7a2a48d8a16deec2c2897e0d5158950a0f8",
+      "bytes": 291
+    },
+    {
+      "path": "evidence/bound-1x.webm",
+      "sha256": "6ea926e236c5f52adc04844d66fd5568d03d3fac3133b6d2d6311435fc64231d",
+      "bytes": 755948
+    },
+    {
+      "path": "evidence/bound-playback-sheet.jpg",
+      "sha256": "6aa0db70176a35e7b90b854afdf95cbd0c24ffcfc578dbd25f6c1f83918406ae",
+      "bytes": 129748
+    },
+    {
+      "path": "evidence/clay-front.jpg",
+      "sha256": "c36e3b463ef573afdcf975ec2a66c3d59688b0df548d597d4a7df0b536e10db4",
+      "bytes": 21983
+    },
+    {
+      "path": "evidence/clay-portrait.jpg",
+      "sha256": "1bdb62768cac28185164fe4290d39fb0243d38661587ec504c7bda0544b8775f",
+      "bytes": 28183
+    },
+    {
+      "path": "evidence/clay-rear.jpg",
+      "sha256": "42e69dd2cd5f22e71e49a17524d2094dc43a91cbd7bb0b3d4f79b8b5554409a2",
+      "bytes": 21770
+    },
+    {
+      "path": "evidence/clay-side.jpg",
+      "sha256": "fa663921800adb73abc8a8f233dae9f6160c953ce2863c66a28eec87eaf16d6b",
+      "bytes": 26756
+    },
+    {
+      "path": "evidence/consumer-downloads.json",
+      "sha256": "96c92adfe9986c77afb1e32f54422420f0e95c87c66038b1b633ba8ed1fbd4b4",
+      "bytes": 833
+    },
+    {
+      "path": "evidence/consumer-groom.png",
+      "sha256": "493b22f5e7512373997b0c0a1c24a6544de1ece8b54802e6c7522808e79eb517",
+      "bytes": 90428
+    },
+    {
+      "path": "evidence/consumer-portrait.png",
+      "sha256": "3c8523dd4475315d18934d04480ad962c109083359eb69c18f0043ea54ab34e5",
+      "bytes": 153311
+    },
+    {
+      "path": "evidence/gate-summary.json",
+      "sha256": "3f1df66f12739f9ab62c538cb69cab82b21ef7b2c0584e2cfc54ea9aa65e09fe",
+      "bytes": 3887
+    },
+    {
+      "path": "evidence/groom-1x.webm",
+      "sha256": "2505170c225417a0c4b8d1ed7c9d795d4ff9937fcd7cb8e9639008bde8c8dd36",
+      "bytes": 863403
+    },
+    {
+      "path": "evidence/groom-playback-sheet.jpg",
+      "sha256": "0316e2cc5a006e1e0cdf3002a348057b3c41a809349c653168ffd1923800233d",
+      "bytes": 490195
+    },
+    {
+      "path": "evidence/idle-1x.webm",
+      "sha256": "dffee7bb7501dcec4de4ed8ef82ac3fba8721b00d13ac0ae22ecabe58aa578f5",
+      "bytes": 630086
+    },
+    {
+      "path": "evidence/idle-playback-sheet.jpg",
+      "sha256": "651887108487cc7a24b3fc99f49c463250dec1720fb15ab6c4a0604fdce94856",
+      "bytes": 231268
+    },
+    {
+      "path": "evidence/material-portrait.jpg",
+      "sha256": "25f158cb331d726b8889d3319594b9ab0686868f711ab36520d8e6bc88abdcfc",
+      "bytes": 37546
+    },
+    {
+      "path": "evidence/native-agreement.json",
+      "sha256": "9be757519dec8f58c203767e6033e47adc6985372f0fdb5134185a46457aa8cf",
+      "bytes": 1904
+    },
+    {
+      "path": "evidence/native-bound-side.jpg",
+      "sha256": "3d8509dffc85305363348a09033bf37a8778d2511ecf78a2b503f539ad77f10e",
+      "bytes": 26956
+    },
+    {
+      "path": "evidence/native-edit.json",
+      "sha256": "629589b61d7fc191b7729360d1c67259a33af50fcb0c01a395ebd40e8a552e07",
+      "bytes": 822
+    },
+    {
+      "path": "evidence/native-groom-detail.jpg",
+      "sha256": "e107574092893039f06d6096fe839958553d8dc94c305002f9b474f7dfb23679",
+      "bytes": 32068
+    },
+    {
+      "path": "evidence/native-groom-intermediate.jpg",
+      "sha256": "93d8d7fbcbdd7e62aa4cc38a6db41a44ceb86ca3ca4a803abe93bad88be241a5",
+      "bytes": 27443
+    },
+    {
+      "path": "evidence/native-groom-side.jpg",
+      "sha256": "64e59d7e656015594e0a9d8a200dd55efcd07673230e57d5ac2faf78660527b4",
+      "bytes": 26872
+    },
+    {
+      "path": "evidence/native-scent-detail.jpg",
+      "sha256": "7c6c2d1092978a0b8e5a6420a5c8b321696d30102f0d90e82e300996d175b963",
+      "bytes": 37083
+    },
+    {
+      "path": "evidence/phone.png",
+      "sha256": "87fb97830dbc8d551073d214abf0f6618fdfccee1471ca9d6f325d73479c1a1d",
+      "bytes": 173922
+    },
+    {
+      "path": "evidence/playback-clock-summary.json",
+      "sha256": "487517520188aa0e3836c5b8110bb5394ed5d2adb6f0a7b6db2807bdd0c8bccf",
+      "bytes": 2870
+    },
+    {
+      "path": "evidence/scent-1x.webm",
+      "sha256": "2536309e4cb11eb5f98bc4fdf5ced4146e30b4108aee2358455915aead9bb5fc",
+      "bytes": 757721
+    },
+    {
+      "path": "evidence/scent-playback-sheet.jpg",
+      "sha256": "8b3cb4126fd681af3615d52cfa2794bfb6c04c940d8543d39ff7afa154fe9dbf",
+      "bytes": 241516
+    },
+    {
+      "path": "evidence/walk-1x.webm",
+      "sha256": "d2a06ce605d20c97ff093aaa00b7d40f279a479e7921db0d14774bb8691ac38c",
+      "bytes": 746611
+    },
+    {
+      "path": "evidence/walk-playback-sheet.jpg",
+      "sha256": "7720816b54695e5e4855041718b872f3a44e2b214679c73251323ea399f8fc56",
+      "bytes": 225109
+    },
+    {
+      "path": "evidence/walk-travel-end.png",
+      "sha256": "39a029402ac0af23357f956216745efb830eaa056f46388a19a1194f39fc6391",
+      "bytes": 85083
+    }
+  ],
+  "retention": "Native renders and enlarged decoded sheets retained as full-resolution JPEG q=2 copies; original PNGs remain in named local review runs. Actual 1x movies are unchanged."
+}

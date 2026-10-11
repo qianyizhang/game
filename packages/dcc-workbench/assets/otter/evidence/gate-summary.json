@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-11",
+  "scope": "otter first self-approved submission; independent parent audit pending",
+  "runtime": {
+    "node": "24.21.0",
+    "npm": "11.19.0",
+    "python": "3.12.13 via locked uv",
+    "blender": "4.5.14 LTS"
+  },
+  "gates": [
+    {
+      "command": "npm run check:full",
+      "status": "passed",
+      "log": "test-results/otter-check-full-final.log",
+      "logSha256": "b30479d503cbecae6185145770e802db5c8c75bd6e0181b9cc015802c132f3b6",
+      "maintenance": {
+        "formatting": "passed",
+        "lint": "passed",
+        "strictTypes": "passed",
+        "ruffModules": 60,
+        "mypyModules": 60,
+        "pythonTests": 16,
+        "toolsPassed": 83,
+        "toolsSkipped": 1,
+        "skipReason": "standalone usage loopback binding unavailable inside restricted sandbox",
+        "dccTestsPassed": 59,
+        "inventoryManagedSources": 553,
+        "inventoryErrors": 0,
+        "productionBuild": "passed; existing >500 kB chunk warning"
+      },
+      "application": {
+        "files": 41,
+        "passed": 253
+      },
+      "simulation": {
+        "files": 4,
+        "passed": 4
+      },
+      "geometry": {
+        "files": 28,
+        "passed": 128,
+        "seconds": 159.96
+      },
+      "failed": 0
+    },
+    {
+      "command": "npm run test:usage",
+      "status": "passed under approved execution outside restricted sandbox",
+      "log": "test-results/otter-usage-supplement.log",
+      "logSha256": "9c7b7aff8b184416011383ccca9e1a6486a6567855f0b36cad6148360c161107",
+      "passed": 9,
+      "skipped": 0,
+      "failed": 0,
+      "meaning": "exercised full gate loopback prerequisite; full-gate skip remains reported"
+    },
+    {
+      "command": "npm run dcc:otter -- verify --output test-results/otter-native-first",
+      "status": "passed",
+      "evidence": "evidence/native-edit.json",
+      "meaning": "saved edit, save/reload, target-bound fit without mesh/weight edits, export and fresh native samples"
+    },
+    {
+      "command": "OTTER_NATIVE_RESULTS=test-results/otter-native-first npm run test:browser:native -- tests/browser/otter.spec.ts --output=test-results/otter-browser-native-02",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0,
+      "blocked": 0,
+      "evidence": "evidence/native-agreement.json"
+    },
+    {
+      "command": "OTTER_REVIEW_FRAMES=1 npm run test:browser -- tests/browser/otter.spec.ts --grep='otter study plays' --output=test-results/otter-browser-review-02",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0,
+      "blocked": 0,
+      "meaning": "five clips, markers/scrub, looping/one-shot endings, travel, inspection, GLB, phone390, reduced motion and no page errors; real unretimed 1x movies"
+    },
+    {
+      "command": "npm run test:browser -- tests/browser/otter.spec.ts --grep='otter study plays' --output=test-results/otter-browser-download-proof",
+      "status": "passed",
+      "passed": 1,
+      "skipped": 0,
+      "blocked": 0,
+      "meaning": "final added GLB/character/motion byte-identical downloads; repeated functional journey",
+      "evidence": "evidence/consumer-downloads.json"
+    }
+  ],
+  "limits": [
+    "Full repository browser suite not run; affected otter cases ran with actual prerequisite evidence.",
+    "No independent aesthetic approval or calibrated biomechanics/reference fidelity.",
+    "Technical native/browser comparison samples vertices at 12 Hz; it is not exhaustive surface/collision proof.",
+    "Only two native pose arrays retired after successful agreement; regenerate fresh evidence before repeating that test."
+  ],
+  "sourceSha256": "ce9689ee37e989cdc22036ab3afc1d2ce8cc6a3e02b85541a9e4f3ab715fd615",
+  "motionSha256": "4d78c69390dce85d0aa9dd7a4b2653bc7af5e5a7ff6dd0fe2d3411a180453ba8",
+  "modelSha256": "b6a885da442718a51abcb277555a84401a1b6198acd40a16b678d343201e0f45"
+}

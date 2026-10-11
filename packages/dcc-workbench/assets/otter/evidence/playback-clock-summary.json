@@ -1,0 +1,70 @@
+{
+  "idle": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "f5a4df4e68127d06b7bd67489fe627bff50330b32a7d7062c24847dfe222bd9a",
+    "clockSamples": 262,
+    "recordedWallSeconds": 4.365299999952316,
+    "clipSeconds": 4.2,
+    "maximumFirstCycleClockErrorSeconds": 0.001799999952316167,
+    "observedLoopWrapWallSeconds": [
+      4.216
+    ],
+    "finalObservedClipTime": 0.167,
+    "decodedFramesPerSecond": 3,
+    "decodedCrop": "enlarged region from recorded consumer canvas; no retiming"
+  },
+  "walk": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "3c88f719506394e7ab4ee19d994b3b6e3fd47a24a1a5b7a62e9f0a1ed0789b0d",
+    "clockSamples": 190,
+    "recordedWallSeconds": 3.1657999999523163,
+    "clipSeconds": 1.6,
+    "maximumFirstCycleClockErrorSeconds": 0.0012000000476837247,
+    "observedLoopWrapWallSeconds": [
+      1.6166999999284744
+    ],
+    "finalObservedClipTime": 1.567,
+    "decodedFramesPerSecond": 12,
+    "decodedCrop": "enlarged region from recorded consumer canvas; no retiming"
+  },
+  "bound": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "e86e4bce91cdee7b7237b8bbcf11a60bc6589c77fa0d672931bec9be94c9bd72",
+    "clockSamples": 190,
+    "recordedWallSeconds": 3.1663000000715256,
+    "clipSeconds": 0.95,
+    "maximumFirstCycleClockErrorSeconds": 0.0010000000000000009,
+    "observedLoopWrapWallSeconds": [
+      0.9498000000715255,
+      1.8993000000715257,
+      2.8668000000715255
+    ],
+    "finalObservedClipTime": 0.317,
+    "decodedFramesPerSecond": 12,
+    "decodedCrop": "enlarged region from recorded consumer canvas; no retiming"
+  },
+  "scent": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "e8a378233dddce7af12375eb3537183e89aa890dad2ab20cb53e3c4f317dcaeb",
+    "clockSamples": 321,
+    "recordedWallSeconds": 5.350099999904632,
+    "clipSeconds": 5.2,
+    "maximumFirstCycleClockErrorSeconds": 0.0012000000476835027,
+    "observedLoopWrapWallSeconds": [],
+    "finalObservedClipTime": 5.2,
+    "decodedFramesPerSecond": 4,
+    "decodedCrop": "enlarged region from recorded consumer canvas; no retiming"
+  },
+  "groom": {
+    "recording": "canvas.captureStream(30), MediaRecorder, unretimed actual 1x playback",
+    "sourceClockSha256": "89256002db2e2aba17e363d991693a249f750f0ee0b32feb11ce6cdc13886fdb",
+    "clockSamples": 370,
+    "recordedWallSeconds": 6.166600000023842,
+    "clipSeconds": 6,
+    "maximumFirstCycleClockErrorSeconds": 0.001299999952316444,
+    "observedLoopWrapWallSeconds": [],
+    "finalObservedClipTime": 6,
+    "decodedFramesPerSecond": 4,
+    "decodedCrop": "enlarged region from recorded consumer canvas; no retiming"
+  }
+}

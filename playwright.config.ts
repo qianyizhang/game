@@ -36,6 +36,7 @@ export default defineConfig({
         '**/fox.spec.ts',
         '**/boar.spec.ts',
         '**/raven.spec.ts',
+        '**/otter.spec.ts',
         '**/dcc-workbench.spec.ts',
         '**/native-assets.spec.ts',
       ],

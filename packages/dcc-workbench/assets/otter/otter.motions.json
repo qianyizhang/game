@@ -1,0 +1,342 @@
+{
+  "idle": {
+    "name": "Breathe \u00b7 ears & whiskers",
+    "seconds": 4.2,
+    "playback": "loop",
+    "trajectory": [
+      [
+        0.0,
+        0.0,
+        0,
+        0
+      ],
+      [
+        4.2,
+        0.0,
+        0,
+        0
+      ]
+    ],
+    "contacts": [
+      {
+        "start": 0.0,
+        "end": 4.2,
+        "sites": [
+          "fore.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 4.2,
+        "sites": [
+          "fore.R"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 4.2,
+        "sites": [
+          "rear.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 4.2,
+        "sites": [
+          "rear.R"
+        ],
+        "mode": "planted"
+      }
+    ],
+    "markers": []
+  },
+  "walk": {
+    "name": "Low riverbank walk",
+    "seconds": 1.6,
+    "playback": "loop",
+    "trajectory": [
+      [
+        0.0,
+        0.0,
+        0,
+        0
+      ],
+      [
+        1.6,
+        0.4305555555555556,
+        0,
+        0
+      ]
+    ],
+    "contacts": [
+      {
+        "start": 0.0,
+        "end": 1.15,
+        "sites": [
+          "fore.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 0.35,
+        "sites": [
+          "fore.R"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.8,
+        "end": 1.6,
+        "sites": [
+          "fore.R"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.4,
+        "end": 1.55,
+        "sites": [
+          "rear.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 0.75,
+        "sites": [
+          "rear.R"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 1.2,
+        "end": 1.6,
+        "sites": [
+          "rear.R"
+        ],
+        "mode": "planted"
+      }
+    ],
+    "markers": []
+  },
+  "bound": {
+    "name": "Elastic bound",
+    "seconds": 0.95,
+    "playback": "loop",
+    "trajectory": [
+      [
+        0.0,
+        0.0,
+        0,
+        0
+      ],
+      [
+        0.95,
+        0.8095238095238096,
+        0,
+        0
+      ]
+    ],
+    "contacts": [
+      {
+        "start": 0.0,
+        "end": 0.36666666666666664,
+        "sites": [
+          "fore.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.9333333333333333,
+        "end": 0.95,
+        "sites": [
+          "fore.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 0.4,
+        "sites": [
+          "fore.R"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.4666666666666667,
+        "end": 0.85,
+        "sites": [
+          "rear.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.5,
+        "end": 0.8833333333333333,
+        "sites": [
+          "rear.R"
+        ],
+        "mode": "planted"
+      }
+    ],
+    "markers": []
+  },
+  "scent": {
+    "name": "Investigate a scent",
+    "seconds": 5.2,
+    "playback": "once",
+    "trajectory": [
+      [
+        0.0,
+        0.0,
+        0,
+        0
+      ],
+      [
+        5.2,
+        0.0,
+        0,
+        0
+      ]
+    ],
+    "contacts": [
+      {
+        "start": 0.0,
+        "end": 5.2,
+        "sites": [
+          "fore.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 5.2,
+        "sites": [
+          "fore.R"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 5.2,
+        "sites": [
+          "rear.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 5.2,
+        "sites": [
+          "rear.R"
+        ],
+        "mode": "planted"
+      }
+    ],
+    "markers": [
+      {
+        "name": "lower",
+        "time": 1.25
+      },
+      {
+        "name": "search",
+        "time": 2.5
+      },
+      {
+        "name": "recover",
+        "time": 4.5
+      }
+    ]
+  },
+  "groom": {
+    "name": "Sit \u00b7 wash the cheek",
+    "seconds": 6.0,
+    "playback": "once",
+    "trajectory": [
+      [
+        0.0,
+        0.0,
+        0,
+        0
+      ],
+      [
+        6.0,
+        0.0,
+        0,
+        0
+      ]
+    ],
+    "contacts": [
+      {
+        "start": 0.0,
+        "end": 0.25,
+        "sites": [
+          "fore.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 5.8,
+        "end": 6.0,
+        "sites": [
+          "fore.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 0.25,
+        "sites": [
+          "fore.R"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 5.8,
+        "end": 6.0,
+        "sites": [
+          "fore.R"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 6.0,
+        "sites": [
+          "rear.L"
+        ],
+        "mode": "planted"
+      },
+      {
+        "start": 0.0,
+        "end": 6.0,
+        "sites": [
+          "rear.R"
+        ],
+        "mode": "planted"
+      }
+    ],
+    "markers": [
+      {
+        "name": "sit",
+        "time": 1.45
+      },
+      {
+        "name": "cheek",
+        "time": 2.6
+      },
+      {
+        "name": "wash",
+        "time": 3.8
+      },
+      {
+        "name": "lower",
+        "time": 4.8
+      }
+    ]
+  }
+}
