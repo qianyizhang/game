@@ -9,6 +9,7 @@ npm run trace:build
 npm run test:trace
 npm run check
 npm run test:browser -- tests/browser/trace-visualizer.spec.ts --output test-results/trace-visualizer-checks
+npm run test:browser:private
 ```
 
 The build command outputs bundle paths as JSON. Open `index.html` directly or via the development server. Builds write to fresh `test-results/disposable/trace-visualizer-<UUID>/` directories under the [tools retention contract](../../packages/workshop-tools/README.md#trace-bundles). An explicit output directory must be new, within the repository root, and disjoint from input.
@@ -20,6 +21,11 @@ npm run trace:build -- INPUT_DIRECTORY NEW_OUTPUT_DIRECTORY CASE_STUDY_JSON
 ```
 
 Source adapters and collection live in `packages/workshop-tools/trace/`. The [session-review workspace](../../packages/session-review/README.md) owns the browser contract, React views, URL state, semantic rendering, and styles. Input files are `<thread-id>.json` exports of `read_thread` with `includeOutputs: true`, `schemaVersion: 1`, and `turns`.
+
+The four sculpture-history browser cases belong to `requires-private-evidence`, tagged
+`@requires-private-evidence`. They skip when the authorized local exports are absent;
+`TRACE_PRIVATE_INPUT` can select another export directory. Public synthetic viewer tests
+remain in `functional` and run in GitHub CI. See [browser prerequisites](checks.md#browser-prerequisites).
 
 ### Session action navigation
 

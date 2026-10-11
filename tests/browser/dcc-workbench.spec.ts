@@ -156,47 +156,55 @@ test('DCC exported anatomy reproduces Blender evaluated poses', async ({ page },
   expect(result.maxPoseError).toBeLessThan(0.0001);
 });
 
-test('DCC native saved edit reproduces its exported poses', async ({ page }, info) => {
-  const candidate = process.env.DCC_NATIVE_CANDIDATE;
-  test.skip(!candidate, 'Run npm run test:dcc:native for the local Blender edit loop.');
-  const raw = objectValue(
-    JSON.parse(await readFile(join(candidate!, 'pose-samples.json'), 'utf8')),
-  );
-  if (!isList(raw.samples)) throw new Error('Missing native poses');
-  const samples = raw.samples.map((value) => {
-    const pose = objectValue(value);
-    if (typeof pose.seconds !== 'number' || !Number.isFinite(pose.seconds) || !isList(pose.points))
-      throw new Error('Invalid native pose');
-    const points = pose.points.map((point): [number, number, number] => {
+test(
+  'DCC native saved edit reproduces its exported poses',
+  { tag: '@requires-blender' },
+  async ({ page }, info) => {
+    const candidate = process.env.DCC_NATIVE_CANDIDATE;
+    test.skip(!candidate, 'Run npm run test:dcc:native for the local Blender edit loop.');
+    const raw = objectValue(
+      JSON.parse(await readFile(join(candidate!, 'pose-samples.json'), 'utf8')),
+    );
+    if (!isList(raw.samples)) throw new Error('Missing native poses');
+    const samples = raw.samples.map((value) => {
+      const pose = objectValue(value);
       if (
-        !isList(point) ||
-        point.length !== 3 ||
-        !point.every((n): n is number => typeof n === 'number' && Number.isFinite(n))
+        typeof pose.seconds !== 'number' ||
+        !Number.isFinite(pose.seconds) ||
+        !isList(pose.points)
       )
-        throw new Error('Invalid native point');
-      return [point[0], point[1], point[2]];
+        throw new Error('Invalid native pose');
+      const points = pose.points.map((point): [number, number, number] => {
+        if (
+          !isList(point) ||
+          point.length !== 3 ||
+          !point.every((n): n is number => typeof n === 'number' && Number.isFinite(n))
+        )
+          throw new Error('Invalid native point');
+        return [point[0], point[1], point[2]];
+      });
+      return { seconds: pose.seconds, points };
     });
-    return { seconds: pose.seconds, points };
-  });
-  const url = '/native-edited-hydra.glb';
-  await page.route(`**${url}`, (route) =>
-    route.fulfill({
-      path: join(candidate!, 'briar-hydra.pending.glb'),
-      contentType: 'model/gltf-binary',
-    }),
-  );
-  await page.goto('/?workbench=dcc');
-  const result = await page.evaluate(
-    async ({ url, samples }) => {
-      const path = '/tests/browser/dcc-roundtrip.ts';
-      const { compareDccPoses } = (await import(path)) as typeof import('./dcc-roundtrip');
-      return compareDccPoses(url, { space: 'glTF world, Y up', samples });
-    },
-    { url, samples },
-  );
-  await writeFile(info.outputPath('native-edited-poses.json'), JSON.stringify(result, null, 2));
-  expect(result.sampleVertices).toBe(64);
-  expect(result.perPose).toHaveLength(5);
-  expect(result.maxRestMatchError).toBeLessThan(0.0001);
-  expect(result.maxPoseError).toBeLessThan(0.0001);
-});
+    const url = '/native-edited-hydra.glb';
+    await page.route(`**${url}`, (route) =>
+      route.fulfill({
+        path: join(candidate!, 'briar-hydra.pending.glb'),
+        contentType: 'model/gltf-binary',
+      }),
+    );
+    await page.goto('/?workbench=dcc');
+    const result = await page.evaluate(
+      async ({ url, samples }) => {
+        const path = '/tests/browser/dcc-roundtrip.ts';
+        const { compareDccPoses } = (await import(path)) as typeof import('./dcc-roundtrip');
+        return compareDccPoses(url, { space: 'glTF world, Y up', samples });
+      },
+      { url, samples },
+    );
+    await writeFile(info.outputPath('native-edited-poses.json'), JSON.stringify(result, null, 2));
+    expect(result.sampleVertices).toBe(64);
+    expect(result.perPose).toHaveLength(5);
+    expect(result.maxRestMatchError).toBeLessThan(0.0001);
+    expect(result.maxPoseError).toBeLessThan(0.0001);
+  },
+);

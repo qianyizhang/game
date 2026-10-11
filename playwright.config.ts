@@ -16,9 +16,21 @@ export default defineConfig({
   projects: [
     {
       name: 'functional',
-      testIgnore: '**/art3d-review.spec.ts',
+      testIgnore: ['**/art3d-review.spec.ts', '**/trace-private.spec.ts'],
+      grepInvert: /@requires-blender/,
       // CI shards individual cases, including the large asset-delivery file.
       // Each runner still executes one case at a time with its own fixtures.
+      fullyParallel: !!process.env.CI,
+    },
+    {
+      name: 'requires-blender',
+      testMatch: ['**/canid.spec.ts', '**/dcc-workbench.spec.ts', '**/native-assets.spec.ts'],
+      grep: /@requires-blender/,
+      fullyParallel: !!process.env.CI,
+    },
+    {
+      name: 'requires-private-evidence',
+      testMatch: '**/trace-private.spec.ts',
       fullyParallel: !!process.env.CI,
     },
     {

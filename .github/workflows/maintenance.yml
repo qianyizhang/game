@@ -52,8 +52,8 @@ jobs:
       - run: npm run maintenance -- check
       - run: npm ci
       - run: npx playwright install --with-deps chrome
-      # Private trace cases skip explicitly when their local evidence is unavailable.
-      # Synthetic trace and every public application/delivery/export case still run.
+      # Explicit requires-blender/requires-private-evidence projects skip without inputs.
+      # Functional public application/delivery/export and synthetic trace cases still run.
       # Contact sheets are generated separately with test:browser:review.
       # Contiguous sharding would put all 29 long asset journeys on one runner.
       # Balance those through round-robin tags, then shard the other 123 cases.

@@ -27,12 +27,35 @@ All maintained source requires enforced check coverage. Passing a slice does not
 Maintenance and three browser shards run independently; all must pass. Each browser
 runner uses one worker and stops at its first failed case, preserving its diagnostics
 without cancelling the other shards. Round-robin tags give each runner 9–10 long asset
-journeys; individual-case sharding gives each runner 41 of the other functional cases.
+journeys; individual-case sharding gives each runner 41 of the other selected cases.
 Local runs remain serial; successful CI runs collectively execute all 152 selected cases.
 
 The `functional` browser project covers all public game journeys and each delivered 3D
 asset's loading, motion, phone layout and export. The separate `visual-review` project
 generates 29 contact sheets on demand; it does not provide an automated aesthetic verdict.
+
+### Browser prerequisites
+
+`npm run test:browser` selects three explicit projects. Each case belongs to exactly one:
+
+| Project                     | Cases | Prerequisite and absence behavior                                                                                    |
+| --------------------------- | ----: | -------------------------------------------------------------------------------------------------------------------- |
+| `functional`                |   144 | Public repository inputs and Chrome; startup failure fails the suite.                                                |
+| `requires-blender`          |     4 | Fresh Blender-generated samples or edited candidates; missing environment variables skip with a preparation command. |
+| `requires-private-evidence` |     4 | Authorized local thread exports and retained sculpture evidence; missing exports skip explicitly.                    |
+
+The native cases carry `@requires-blender`; the private group carries
+`@requires-private-evidence`. GitHub does not install Blender or collect private exports,
+so its normal result is **144 passed, 8 prerequisite skips**. These skips do not credit
+native execution or private-history validation. `--project=functional` selects the
+public-only gate. `npm run test:browser:native` and `npm run test:browser:private` select
+the conditional groups; neither command silently generates their inputs.
+
+Blender being installed alone is insufficient: the browser needs evidence from a fresh
+native run. The producer commands below perform that run and invoke the corresponding
+browser case. To supply alternate authorized exports to the private group, set
+`TRACE_PRIVATE_INPUT` to their directory; its default is `test-results/trace-visualizer-input`.
+Available but invalid inputs fail rather than becoming skips.
 
 Static checks still cover 3D sources. Browser/native gates run separately for affected behavior;
 `check:full` does not invoke them. Run the selected completion gate once after the final
@@ -53,6 +76,10 @@ verification.
 - `npm run dcc:canid -- test`: Generates temporary poses from saved canid Blender sources,
   checks bundled GLB playback within 0.0001 model units, then removes the arrays after success.
   Ordinary browser runs explicitly skip this comparison without `CANID_POSE_RESULTS`.
+- `npm run dcc:canid -- verify test-results/canid-edit-proof-01`, followed by
+  `CANID_NATIVE_RESULTS=test-results/canid-edit-proof-01 npm run test:browser:native -- --grep="edited shared motion"`:
+  Mutates shared motion on disposable sources, exports all three characters, and compares
+  their consumer playback against fresh edited and original samples.
 
 ## Budgets
 
