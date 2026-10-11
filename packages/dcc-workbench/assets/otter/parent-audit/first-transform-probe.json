@@ -1,0 +1,26 @@
+{
+  "object": "Paw web fore.L",
+  "before": {
+    "localMinZ": 0.019059516489505768,
+    "worldMinZ": 0.019059516489505768
+  },
+  "meshDigestBefore": "fc8df72a056c22f8bc7e30f81a6789c728827738b1157e4adf37339f82391fda",
+  "injectedObjectTranslationZ": 0.05,
+  "after": {
+    "localMinZ": 0.01905955746769905,
+    "worldMinZ": 0.06905955821275711
+  },
+  "meshDigestAfter": "fc8df72a056c22f8bc7e30f81a6789c728827738b1157e4adf37339f82391fda",
+  "exportAccepted": true,
+  "reportedIdleSupport": {
+    "minimumSurfaceHeight": 0.01799958571791649,
+    "maximumPawTargetError": 5.949744628147759e-07,
+    "maximumPlantedDigitDisplacement": 5.831507368508055e-07,
+    "maximumPlantedHeightDrift": 0.00106007155776024,
+    "loopMatrixError": 0.0,
+    "frames": 253,
+    "supportSites": "five toes plus connected web of each paw; saved stance intervals",
+    "supportPlaneHeight": 0.018
+  },
+  "authoritativeBytesUnchanged": true
+}
