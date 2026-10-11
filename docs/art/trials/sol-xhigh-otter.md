@@ -74,7 +74,78 @@ pixels rather than only their owner acceptance statements. Identity criteria are
 consistent with the [Smithsonian river otter description](https://www.nationalzoo.si.edu/animals/north-american-river-otter);
 reference-matched motion and calibrated biomechanics remain unassessed.
 
-## Status
+## Repair and independent reinspection
 
-Both findings returned to the same Sol/xhigh owner. Post-audit repair and parent
-reinspection are pending; no final model-quality comparison is concluded yet.
+The same Sol/xhigh owner repaired both findings in one parent-feedback round,
+committed as `8d6d22e` after the frozen initial submission `6e1560f`.
+It replaced the hovering sit with a low three-paw cheek wash. Its first repair
+attempt overextended the forearm; the owner caught that in the opposite
+three-quarter view, shortened the reach and lowered the head before resubmission.
+The saved repair changes grooming keys without rebuilding the neutral sculpt or
+weights. The other four performances remain unchanged.
+
+The exporter now checks evaluated world-space sole/clearance geometry and rejects
+unsupported object, parent-inverse and scene transforms through every authored
+frame. Geometry digest v2 includes transforms and weight-group names. The owner
+added disposable unapplied and applied transform faults plus valid-source export.
+
+Parent independently repeated an upward paw translation of **0.05 units** and a
+body translation of **-0.5 units** on fresh copied masters. Both are rejected with
+an actionable object/matrix error; both change the digest; authoritative files
+remain unchanged. See the [paw report](../../../packages/dcc-workbench/assets/otter/parent-audit/repaired-paw-transform-probe.json)
+and [body report](../../../packages/dcc-workbench/assets/otter/parent-audit/repaired-body-transform-probe.json).
+These outcomes close F2 for the otter exporter; they do not retroactively repair
+older species exporters.
+
+Parent reviewed the repaired native lift, strokes, recovery and enlarged arm;
+then reloaded the actual workbench, inspected side and orbited opposite
+three-quarter views, and checked the one-shot standing recovery at 6.00 s.
+The three-paw support and cheek gesture are acceptable at this study's stylized
+bar. See the [consumer view](../../../packages/dcc-workbench/assets/otter/parent-audit/repaired-groom-opposite-consumer.jpg)
+and [pinned reinspection](../../../packages/dcc-workbench/assets/otter/parent-audit/reinspection.json).
+All **203** pinned baseline files remain byte-identical.
+
+## What the model comparison supports
+
+| Area                                            | First self-approved submission                                        | After parent feedback                                |
+| ----------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------- |
+| Identity, neutral form and restrained materials | Acceptable; broadly comparable to inspected fox/boar/raven studies    | Preserved                                            |
+| Grooming weight and gesture                     | Needs repair; side view contradicts seated-wash claim                 | Acceptable three-paw wash after owner refinement     |
+| Other four performances                         | Acceptable in inspected phases/playback                               | Preserved                                            |
+| Source/export contract                          | False acceptance of transformed geometry; inherited workflow weakness | Independent faults rejected; valid export retained   |
+| Self-review                                     | Missed a material support problem despite passing technical gates     | Same owner responds effectively to concrete evidence |
+
+**Observed construction quality remained broadly comparable with Sol/xhigh.
+Accepting its first self-approval would have shipped an important motion defect.** Targeted parent feedback brought the result to the
+established stylized study bar. The higher review intensity could also have found
+misses in earlier Astra rounds; one different creature cannot establish that
+Astra would have avoided this defect, quantify a model quality gap, or compare
+cost/speed. No matched reference motion or biomechanical validation was performed.
+
+Three refinements are reusable: inspect weight-bearing torso support in side and
+opposite views, distinguish planted-foot metrics from convincing weight transfer,
+and challenge source/export checks with disposable faulty geometry. Preserve the
+first self-approved submission separately from repaired delivery when comparing
+models; otherwise the repair process erases the evidence being compared.
+
+## Completion evidence
+
+The repaired delivery passes `npm run check:full`: **253 application tests,
+4 seeded simulations, 128 geometry tests, 59 DCC tests and 16 Python tests**;
+62 Python modules type-check and the inventory covers 555 maintained sources.
+The tooling suite has 83 passes and one sandbox loopback skip; the separately
+approved usage suite passes **9/9 with no skips**, including that loopback journey.
+The focused functional browser and fresh native/browser suites each pass.
+
+Fresh sampled native/browser maximum surface error remains **2.230004e-6 model
+units**; the saved +0.12-radian scent key edit changes the exported surface by
+**0.102135 units**. Sampling covers every clip at 12 Hz plus endpoints and 16
+vertices per mesh; it is not exhaustive continuous-surface proof. The repair
+preserves the mesh/weight/transform digest and the four other decoded animation
+tracks. Four owner fault cases and two independent parent fault cases reject bad
+sources. Valid saved-source export passes.
+
+The final source, motion and delivery hashes are recorded in the
+[separate repair review](../../../packages/dcc-workbench/assets/otter/repair-review.json).
+Parent documentation formatting and maintenance inventory checks pass. No parent
+finding remains open on this delivery; user aesthetic approval remains separate.

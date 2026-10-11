@@ -1,0 +1,17 @@
+{
+  "object": "Paw web fore.L",
+  "before": {
+    "localMinZ": 0.019059516489505768,
+    "worldMinZ": 0.019059516489505768
+  },
+  "meshDigestBefore": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
+  "injectedObjectTranslationZ": 0.05,
+  "after": {
+    "localMinZ": 0.01905955746769905,
+    "worldMinZ": 0.06905955821275711
+  },
+  "meshDigestAfter": "c56d0e7b4b744a11755cb650b84bfaf1eaddae158008a6ccfdae6d6cde877f45",
+  "exportAccepted": false,
+  "exportRejection": "Unsupported otter source transform: Paw web fore.L/matrix_basis (identity error 0.05). Work on a copied master: apply object transforms, clear unintended parent inverse, restore paw/ground support, then refit and review. Export requires identity scene transforms.",
+  "authoritativeBytesUnchanged": true
+}

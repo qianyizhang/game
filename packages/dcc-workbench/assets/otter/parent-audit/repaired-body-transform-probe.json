@@ -1,0 +1,17 @@
+{
+  "object": "Otter continuous hide",
+  "before": {
+    "localMinZ": 0.09235183149576187,
+    "worldMinZ": 0.09235183149576187
+  },
+  "meshDigestBefore": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
+  "injectedObjectTranslationZ": -0.5,
+  "after": {
+    "localMinZ": 0.09237337112426758,
+    "worldMinZ": -0.4076266288757324
+  },
+  "meshDigestAfter": "f2cb4b10e45c0b536a72747dd78ad81e8033067f6fd2ad6b8411bf5a13a3dbc9",
+  "exportAccepted": false,
+  "exportRejection": "Unsupported otter source transform: Otter continuous hide/matrix_basis (identity error 0.5). Work on a copied master: apply object transforms, clear unintended parent inverse, restore paw/ground support, then refit and review. Export requires identity scene transforms.",
+  "authoritativeBytesUnchanged": true
+}
