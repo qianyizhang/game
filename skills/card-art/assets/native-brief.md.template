@@ -1,0 +1,44 @@
+# {{id}} native study brief
+
+Status: pending author decisions. This packet is not a finished model.
+Read `skills/card-art/references/native-modeling.md` from the repository root.
+
+## Intent and ownership
+
+- Owner / requested review mode / user-selected limits:
+- Subject, gesture, identifying contour and material/light:
+- Baseline assets to preserve, current dirty paths and owned edit scope:
+- Chosen clip set and intent of each performance (choose for this animal):
+- Preview route: `/?workbench=dcc&compare={{id}}` (register explicitly).
+
+## Native authoring decisions
+
+- Same-family fitting or new rig family; starting subject guide and why:
+- Saved animator controls and deformation skeleton:
+- Actual support geometry and stance intervals; tolerances in model units:
+- Planar travel owner; loop/clearance checks:
+- Required clay views, intermediate poses, enlarged deformation extremes:
+- Actual 1× playback capture and dense distinct-phase review:
+
+## Intended delivery paths
+
+Adapt these conventions before creating files if this study needs multiple characters.
+
+- Character master: `packages/dcc-workbench/subjects/{{id}}/{{id}}/source.blend`
+- Motion master: `packages/dcc-workbench/subjects/{{id}}/motion.blend`
+- Baked model: `packages/dcc-workbench/assets/{{id}}/{{id}}.glb`
+- Motion metadata: `packages/dcc-workbench/assets/{{id}}/{{id}}.motions.json`
+- Consumer adapter: `packages/dcc-workbench/src/{{id}}-study.ts`
+- Authoring guide, selected evidence and visual-review manifest:
+
+## Completion work
+
+- Preserve saved meshes/weights during fitting; bind target actions and prove deformation.
+- Export saved sources without implicit reconstruction.
+- Prove a disposable saved key edit survives reload, fitting and export and changes the surface.
+- Compare sampled native surfaces with browser playback; state coverage and limits.
+- Copy/adapt `study.ts.template` only when its assets exist; register the study in
+  `packages/dcc-workbench/src/Workbench.tsx`. Keep species rig logic outside the viewer.
+- Include new source in enforced check scopes. Run affected native/browser proof and
+  `npm run check:full`; distinguish pass, skip and blocked.
+- Complete `handoff.md` with actual evidence, repairs, limits and reusable refinements.

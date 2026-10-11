@@ -144,7 +144,9 @@ export function checkGovernance(root) {
     if (!(path in skillFiles)) errors.push(`Unpinned skill file: ${path}`);
   // Check repository-local Markdown links in the new canonical homes and maintained package.
   const documents = files.filter(
-    (path) => /^docs\/(engineering|art|guide)\//.test(path) && path.endsWith('.md'),
+    (path) =>
+      (/^docs\/(engineering|art|guide)\//.test(path) || path.startsWith('skills/card-art/')) &&
+      path.endsWith('.md'),
   );
   documents.push('docs/README.md', 'packages/workshop-tools/README.md');
   errors.push(...checkDocumentLinks(root, documents, files));

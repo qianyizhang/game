@@ -1,0 +1,29 @@
+// Copy to packages/dcc-workbench/src/{{id}}-study.ts after the saved assets exist.
+// Replace TODO copy, fit camera values, and explicitly register in Workbench.tsx.
+import model from '../assets/{{id}}/{{id}}.glb?url';
+import source from '../subjects/{{id}}/{{id}}/source.blend?url';
+import motionSource from '../subjects/{{id}}/motion.blend?url';
+import metadata from '../assets/{{id}}/{{id}}.motions.json';
+import { readMotions } from '../motion-contract';
+import type { MotionStudy } from './canid-assets';
+
+export const study: MotionStudy = {
+  id: '{{id}}',
+  radius: 3, // Fit all chosen motion extremes at desktop and phone sizes.
+  targetHeight: 1,
+  title: 'TODO: subject and action',
+  eyebrow: 'TODO: subject identity',
+  introduction: 'TODO: performance intent',
+  description: 'TODO: identifying form and motion',
+  characters: [
+    {
+      id: '{{id}}',
+      name: 'TODO: character name',
+      subtitle: 'TODO: character identity',
+      model,
+      source,
+      motions: readMotions(metadata),
+    },
+  ],
+  motionSource,
+};

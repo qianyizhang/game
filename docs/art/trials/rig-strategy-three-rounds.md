@@ -30,37 +30,12 @@ roots. All three have editable character and motion masters, five baked clips an
 workbench previews. Reusing the workflow across those subjects does not establish
 cross-species motion retargeting.
 
-## Reusable workflow
+## Promoted workflow
 
-1. **Establish species and gesture in clay.** Build a fresh subject candidate and
-   inspect front, side and rear before material detail. Solve connected anatomy,
-   support, and identifying contour first. Preserve previous accepted subjects.
-2. **Save character and motion separately.** The character master owns geometry,
-   weights, fitted rig and materials; the motion master owns editable source
-   performances and their contracts. Native refinements remain authoritative.
-3. **Fit actual saved controls.** Evaluate the motion source and create target-bound
-   actions. Assert unchanged mesh and weight digests during fitting. Construction
-   and motion recipes create candidates; neither runs implicitly during export.
-4. **Audit real support geometry.** Use species-specific feet, digits or other
-   contact surfaces, saved stance intervals and every authored frame. Inspect
-   full-surface floor clearance and loop closure. Apply scene trajectory exactly
-   once; skeletal animation and browser travel must not both own it.
-5. **Review deformation and timing.** Inspect enlarged native motion extremes,
-   desktop and 390 px consumers, clay and material, and actual 1× recordings.
-   Decode enough distinct phases to avoid sampling at the gait period. Retiming
-   updates control keys, contacts, trajectory and markers together.
-6. **Bake and prove the editable path.** Export the saved master to a fresh output.
-   On disposable copies, edit a saved motion key, save/reload, fit, export and
-   compare original/edited native evaluations with browser deformation. Require
-   an observable edited result as well as agreement and unchanged protected bytes.
-7. **Retain a compact, honest delivery.** Keep native masters, GLB, motion contract,
-   source/export hashes, compact support/edit/agreement reports and selected visual
-   evidence. Generate large pose arrays on demand. State visual judgment separately
-   from technical passes and preserve named skips and limits.
-8. **Transfer tested refinements.** Give the next owner the exact sources, preview,
-   commit, checks, self-review and repairs that changed the process. Promote lasting
-   guidance to the source-owning documentation; do not copy a species rig merely
-   because its tests already exist.
+The [native modeling playbook](../../../skills/card-art/references/native-modeling.md)
+owns the current reusable procedure and starter scaffold. New owners can start there
+without reading this trial. The table below preserves the evidence behind the
+promoted refinements and their limits.
 
 ## Refinements established by the rounds
 

@@ -4,11 +4,60 @@ import { dirname, extname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url';
 import { format, resolveConfig } from 'prettier';
 
+function destinationPath(destination: string) {
+  const output = resolve(root, destination);
+  const local = relative(root, output);
+  if (!local || isAbsolute(local) || local.startsWith(`..${sep}`) || local === '..')
+    throw new Error('The destination must be inside this repository.');
+  return output;
+}
+
+async function prepareParent(output: string) {
+  let parent = root;
+  for (const part of relative(root, dirname(output)).split(sep).filter(Boolean)) {
+    parent = resolve(parent, part);
+    await mkdir(parent).catch((error: unknown) => {
+      if (!error || typeof error !== 'object' || !('code' in error) || error.code !== 'EEXIST')
+        throw error;
+    });
+    if ((await lstat(parent)).isSymbolicLink())
+      throw new Error('Destination parents must not be symlinks.');
+  }
+}
+
+async function scaffoldStudy(args: string[]) {
+  const [id, destination, ...extra] = args;
+  if (!id || !/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(id))
+    throw new Error('Use a lowercase kebab-case study ID.');
+  if (!destination || extra.length)
+    throw new Error('Provide a study ID and one fresh destination directory.');
+  const output = destinationPath(destination);
+  const files = [
+    ['native-brief.md.template', 'brief.md'],
+    ['motion-study.ts.template', 'study.ts.template'],
+    ['native-handoff.md.template', 'handoff.md'],
+  ];
+  const rendered = await Promise.all(
+    files.map(async ([template, filename]) => {
+      const source = await readFile(resolve(root, 'skills/card-art/assets', template), 'utf8');
+      return { filename, content: source.replaceAll('{{id}}', id) };
+    }),
+  );
+  await prepareParent(output);
+  await mkdir(output); // Exclusive: preserve even an existing empty or partially authored packet.
+  for (const { filename, content } of rendered)
+    await writeFile(resolve(output, filename), content, { flag: 'wx' });
+  console.log(
+    `Created ${relative(root, output)}. Fill brief.md, follow the native modeling playbook, then complete handoff.md. The adapter is a template; no assets or registration were changed.`,
+  );
+}
+
 export async function runCli(args: string[]) {
+  if (args[0] === 'study') return scaffoldStudy(args.slice(1));
   const [name, destination, kind = 'card', ...extra] = args;
   if (name === '--help' || !name) {
     console.log(
-      'Usage: npm run assets:scaffold -- ComponentName path/to/Component.tsx [card|plate|symbol]\nCreates an empty layered SVG component. Existing files are never overwritten.',
+      'Usage: npm run assets:scaffold -- ComponentName path/to/Component.tsx [card|plate|symbol]\n       npm run assets:scaffold -- study subject-id path/to/new-packet\nCreates an SVG component or native study packet. Existing work is never overwritten.',
     );
     if (!name) process.exitCode = 1;
     return;
@@ -19,10 +68,8 @@ export async function runCli(args: string[]) {
     throw new Error('Provide one .tsx destination and an optional format.');
   if (!['card', 'plate', 'symbol'].includes(kind))
     throw new Error('Format must be card, plate or symbol.');
-  const output = resolve(root, destination);
+  const output = destinationPath(destination);
   const local = relative(root, output);
-  if (isAbsolute(local) || local.startsWith(`..${sep}`) || local === '..')
-    throw new Error('The destination must be inside this repository.');
   let sceneImport = relative(dirname(output), resolve(root, 'src/shared/art/CardArt'))
     .split(sep)
     .join('/');
@@ -42,16 +89,7 @@ export function ${name}({ className }: { className?: string }) {
   return (${wrapper});
 }
 `;
-  let parent = root;
-  for (const part of relative(root, dirname(output)).split(sep).filter(Boolean)) {
-    parent = resolve(parent, part);
-    await mkdir(parent).catch((error: unknown) => {
-      if (!error || typeof error !== 'object' || !('code' in error) || error.code !== 'EEXIST')
-        throw error;
-    });
-    if ((await lstat(parent)).isSymbolicLink())
-      throw new Error('Destination parents must not be symlinks.');
-  }
+  await prepareParent(output);
   const formatting = await resolveConfig(output);
   await writeFile(output, await format(source, { ...formatting, parser: 'typescript' }), {
     flag: 'wx',

@@ -6,6 +6,8 @@ Open **DCC workbench** from any game table, or visit `/?workbench=dcc&asset=bria
 
 ## Quick start
 
+For a **new animated subject or rig/motion refinement**, start with the [native modeling playbook](../../skills/card-art/references/native-modeling.md). It carries the proven fox, boar and raven refinements and points directly to relevant authoring code. `npm run assets:scaffold -- study otter .work/sessions/otter-study` creates a brief, consumer adapter template and evidence handoff; no trial history is required.
+
 Hydrate the [LFS assets](#storage-and-cloning), use the repository’s pinned runtime and setup from [maintenance governance](../../docs/engineering/maintenance.md), then:
 
 ```sh

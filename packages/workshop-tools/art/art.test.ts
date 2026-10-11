@@ -46,6 +46,36 @@ await test('scaffold preserves existing art and refuses destination symlinks and
   );
 });
 
+await test('native study scaffold creates an editable packet and protects existing work and boundaries', async (t) => {
+  await mkdir(fromRoot('test-results'), { recursive: true });
+  const root = await mkdtemp(fromRoot('test-results/study-scaffold-test-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const output = resolve(root, 'new/study');
+  await scaffold(['study', 'river-otter', output]);
+  for (const filename of ['brief.md', 'study.ts.template', 'handoff.md']) {
+    const content = await readFile(resolve(output, filename), 'utf8');
+    assert.match(content, /river-otter/);
+    assert.doesNotMatch(content, /\{\{id\}\}/);
+  }
+  const brief = resolve(output, 'brief.md');
+  await writeFile(brief, 'An authored brief, with decisions worth preserving.');
+  await assert.rejects(scaffold(['study', 'river-otter', output]), /EEXIST/);
+  assert.equal(
+    await readFile(brief, 'utf8'),
+    'An authored brief, with decisions worth preserving.',
+  );
+  await symlink(tmpdir(), resolve(root, 'outside'));
+  await assert.rejects(scaffold(['study', 'otter', resolve(root, 'outside/packet')]), /symlinks/);
+  await assert.rejects(
+    scaffold(['study', 'otter', resolve(tmpdir(), 'packet')]),
+    /inside this repository/,
+  );
+  await assert.rejects(scaffold(['study', 'otter', fromRoot('.')]), /inside this repository/);
+  await assert.rejects(scaffold(['study', '../otter', resolve(root, 'invalid')]), /study ID/);
+  await assert.rejects(scaffold(['study', 'otter']), /fresh destination/);
+  await assert.rejects(scaffold(['study', 'otter', output, 'extra']), /fresh destination/);
+});
+
 await test('review rejects malformed dimensions and symlinked source escapes before rasterization', async (t) => {
   const root = await mkdtemp(resolve(tmpdir(), 'art-review-test-'));
   t.after(() => rm(root, { recursive: true, force: true }));
