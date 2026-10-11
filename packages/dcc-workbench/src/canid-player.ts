@@ -6,16 +6,17 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { disposeObject } from '../../../src/shared/three/resources';
 import { travelAt } from '../motion-contract';
 import {
-  characters,
-  baselineCharacters,
-  clips,
+  characters as familyCharacters,
+  baselineCharacters as familyBaselineCharacters,
+  clips as familyClips,
   baselineClips,
   durationFor,
+  type MotionStudy,
   type CanidOptions,
 } from './canid-assets';
 
 type Subject = {
-  asset: (typeof characters)[number];
+  asset: MotionStudy['characters'][number];
   revision: 'baseline' | 'refined';
   duration: number;
   root: T.Group;
@@ -34,7 +35,12 @@ export function createCanidPlayer(
   read: () => CanidOptions,
   report: (time: number, complete: boolean) => void,
   status: (message: string, ready: boolean) => void,
+  study?: MotionStudy,
 ) {
+  const characters = study?.characters ?? familyCharacters;
+  const baselineCharacters = study ? [] : familyBaselineCharacters;
+  const clips = characters[0]?.motions ?? familyClips;
+
   const renderer = new T.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.toneMapping = T.ACESFilmicToneMapping;
@@ -42,7 +48,9 @@ export function createCanidPlayer(
   renderer.domElement.setAttribute('role', 'img');
   renderer.domElement.setAttribute(
     'aria-label',
-    'Canid motion comparison. Drag to orbit all characters.',
+    study
+      ? `${study.title}. Drag to orbit.`
+      : 'Canid motion comparison. Drag to orbit all characters.',
   );
   element.appendChild(renderer.domElement);
   const camera = new T.PerspectiveCamera(35, 1, 0.05, 100);
@@ -159,7 +167,10 @@ export function createCanidPlayer(
       subjects.length = 0;
       return;
     }
-    if (results.some((r) => r.status === 'rejected') || subjects.length !== 6) {
+    if (
+      results.some((r) => r.status === 'rejected') ||
+      subjects.length !== characters.length + baselineCharacters.length
+    ) {
       status(
         'A character could not load. Reload to retry; Blender and GLB downloads remain available.',
         false,
@@ -175,7 +186,7 @@ export function createCanidPlayer(
     previous = now;
     if (!ready || disposed || document.hidden) return;
     const options = read();
-    const duration = durationFor(options.revision, options.clip);
+    const duration = durationFor(options.revision, options.clip, clips);
     const motion = clips[options.clip];
     const loop =
       options.movement === 'in-place' &&
@@ -237,11 +248,12 @@ export function createCanidPlayer(
       const span = Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...zs) - Math.min(...zs));
       // Keep the whole attack envelope in frame, including Moss's forward muzzle.
       // A fixed radius per clip avoids camera pumping during the strike.
-      const radius = ['lunge', 'bite', 'swipe'].includes(options.clip) ? 2.65 : 2.15;
+      const radius =
+        study?.radius ?? (['lunge', 'bite', 'swipe'].includes(options.clip) ? 2.65 : 2.15);
       const distance = (radius + span / 2) / Math.sin(fov);
       controls.target.set(
         (Math.max(...xs) + Math.min(...xs)) / 2,
-        1,
+        study?.targetHeight ?? 1,
         (Math.max(...zs) + Math.min(...zs)) / 2,
       );
       camera.position

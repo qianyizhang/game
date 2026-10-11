@@ -1,0 +1,21 @@
+{
+  "family": "canid-actions-v3",
+  "character": "fox",
+  "sourceSha256": "b1234bf2e35fd31c9359bd2759153440eca2a3d88ca6f8723f92a4a0626a0244",
+  "meshSha256": "0ff5c7bbd4b87ce4468999646e83634831c8e4498df0619a28791419ceb91d50",
+  "mode": "retarget",
+  "chainMap": {
+    "front.L": "front.L",
+    "front.R": "front.R",
+    "hind.L": "hind.L",
+    "hind.R": "hind.R"
+  },
+  "referencePose": "saved fitted rest skeleton; identical control axes",
+  "corrections": {
+    "strideScale": 0.8,
+    "heightScale": 0.86,
+    "widthScale": 0.82,
+    "bodyLengthScale": 0.88,
+    "contact": "articulated hocks; toe roll fitted to target paw proportions"
+  }
+}

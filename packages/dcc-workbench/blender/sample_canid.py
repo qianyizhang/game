@@ -18,14 +18,16 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def sample(root: Path, models: Path, output: Path) -> None:
+def sample(
+    root: Path, models: Path, output: Path, characters: tuple[str, ...] = ("ash", "russet", "moss")
+) -> None:
     import bpy
 
     if output.exists():
         raise FileExistsError("Native sampling requires a fresh output directory")
     output.mkdir(parents=True)
     motion_hash = sha(root / "motion.blend")
-    for character in ("ash", "russet", "moss"):
+    for character in characters:
         source = root / character / "source.blend"
         source_hash = sha(source)
         model = models / f"{character}.glb"

@@ -1,26 +1,36 @@
 import { useEffect, useRef, useState } from 'react';
 import {
-  characters,
+  characters as familyCharacters,
   baselineCharacters,
-  clips,
+  clips as familyClips,
   baselineClips,
   motionSources,
   durationFor,
+  type MotionStudy,
   type CanidOptions,
 } from './canid-assets';
 import { createCanidPlayer } from './canid-player';
 import './canid.css';
 
-export default function CanidComparison({ onBack }: { onBack: () => void }) {
+export default function CanidComparison({
+  onBack,
+  study,
+}: {
+  onBack: () => void;
+  study?: MotionStudy;
+}) {
+  const characters = study?.characters ?? familyCharacters;
+  const clips = characters[0]?.motions ?? familyClips;
+
   const [options, setOptions] = useState<CanidOptions>({
     revision: 'refined',
-    clip: 'walk',
-    character: 'all',
+    clip: study ? Object.keys(clips)[0] : 'walk',
+    character: study ? characters[0].id : 'all',
     playing: false,
     time: 0,
     seek: 0,
-    surface: 'Clay',
-    view: 'Side',
+    surface: study ? 'Material' : 'Clay',
+    view: study ? 'Portrait' : 'Side',
     rig: false,
     movement: 'in-place',
   });
@@ -49,6 +59,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           setStatus(message);
           setReady(loaded);
         },
+        study,
       );
     } catch {
       setStatus('WebGL is unavailable. Download the Blender sources or GLBs below.');
@@ -57,7 +68,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
       preference.removeEventListener('change', changed);
       dispose?.();
     };
-  }, []);
+  }, [study]);
   const activeCharacters = options.revision === 'baseline' ? baselineCharacters : characters;
   const visible = activeCharacters.filter(
     (c) => options.character === 'all' || c.id === options.character,
@@ -69,7 +80,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           { ...c, id: `${c.id}-refined`, subtitle: 'Refined anatomy & motion' },
         ])
       : visible;
-  const duration = durationFor(options.revision, options.clip);
+  const duration = durationFor(options.revision, options.clip, clips);
   const availableClips: Record<string, { name: string; seconds: number }> =
     options.revision === 'refined' ? clips : baselineClips;
   return (
@@ -79,48 +90,57 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
           ← Back to workbench
         </button>
         <span className="dcc-wordmark">CARD WORKSHOP / MOTION STUDIES</span>
-        <span className="dcc-pilot">CANID · 03</span>
+        <span className="dcc-pilot">
+          {study
+            ? `${study.id.toUpperCase()} · ${String(characters.length).padStart(2, '0')}`
+            : 'CANID · 03'}
+        </span>
       </header>
       <section className="dcc-intro">
         <div>
-          <p className="dcc-eyebrow">ONE MOTION LIBRARY · THREE CHARACTERS</p>
+          <p className="dcc-eyebrow">{study?.eyebrow ?? 'ONE MOTION LIBRARY · THREE CHARACTERS'}</p>
           <h1>
-            A family in motion<span>.</span>
+            {study?.title ?? 'A family in motion'}
+            <span>.</span>
           </h1>
         </div>
         <p>
-          Follow the feet. Watch the weight shift.
-          <br />
-          One shared performance, fitted to different bodies.
+          {study?.introduction ??
+            'Follow the feet. Watch the weight shift. One shared performance, fitted to different bodies.'}
         </p>
       </section>
       <div className="canid-toolbar">
-        <label>
-          Revision
-          <select
-            aria-label="Revision"
-            value={options.revision}
-            onChange={(e) => {
-              const revision = e.target.value;
-              if (revision !== 'refined' && revision !== 'baseline' && revision !== 'comparison')
-                return;
-              setTime(0);
-              setOptions((o) => ({
-                ...o,
-                revision,
-                time: 0,
-                seek: o.seek + 1,
-                clip:
-                  revision !== 'refined' && !Object.hasOwn(baselineClips, o.clip) ? 'walk' : o.clip,
-                character: revision === 'comparison' && o.character === 'all' ? 'ash' : o.character,
-              }));
-            }}
-          >
-            <option value="refined">Refined family</option>
-            <option value="baseline">Initial baseline</option>
-            <option value="comparison">Before & after</option>
-          </select>
-        </label>
+        {!study && (
+          <label>
+            Revision
+            <select
+              aria-label="Revision"
+              value={options.revision}
+              onChange={(e) => {
+                const revision = e.target.value;
+                if (revision !== 'refined' && revision !== 'baseline' && revision !== 'comparison')
+                  return;
+                setTime(0);
+                setOptions((o) => ({
+                  ...o,
+                  revision,
+                  time: 0,
+                  seek: o.seek + 1,
+                  clip:
+                    revision !== 'refined' && !Object.hasOwn(baselineClips, o.clip)
+                      ? 'walk'
+                      : o.clip,
+                  character:
+                    revision === 'comparison' && o.character === 'all' ? 'ash' : o.character,
+                }));
+              }}
+            >
+              <option value="refined">Refined family</option>
+              <option value="baseline">Initial baseline</option>
+              <option value="comparison">Before & after</option>
+            </select>
+          </label>
+        )}
         <label>
           Movement
           <select
@@ -158,27 +178,29 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
             <option value="travel">Scene travel · one pass</option>
           </select>
         </label>
-        <label>
-          Characters
-          <select
-            aria-label="Characters"
-            value={options.character}
-            onChange={(e) => {
-              const character = e.target.value;
-              if (character === 'all' || characters.some((c) => c.id === character))
-                setOptions((o) => ({ ...o, character: character as CanidOptions['character'] }));
-            }}
-          >
-            <option value="all" disabled={options.revision === 'comparison'}>
-              All three · matched scale
-            </option>
-            {characters.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
+        {!study && (
+          <label>
+            Characters
+            <select
+              aria-label="Characters"
+              value={options.character}
+              onChange={(e) => {
+                const character = e.target.value;
+                if (character === 'all' || characters.some((c) => c.id === character))
+                  setOptions((o) => ({ ...o, character }));
+              }}
+            >
+              <option value="all" disabled={options.revision === 'comparison'}>
+                All three · matched scale
               </option>
-            ))}
-          </select>
-        </label>
+              {characters.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         <div role="group" aria-label="Surface">
           {(['Clay', 'Material'] as const).map((surface) => (
             <button
@@ -199,7 +221,7 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
       </div>
       <section
         className={`canid-stage ${options.character === 'all' || options.revision === 'comparison' ? 'canid-all' : ''}`}
-        aria-label="Matched canid views"
+        aria-label={study ? `${study.title} motion view` : 'Matched canid views'}
       >
         <div ref={host} className="canid-render" data-ready={ready} />
         {status && (
@@ -290,33 +312,41 @@ export default function CanidComparison({ onBack }: { onBack: () => void }) {
       <div className="canid-notes">
         <section>
           <p className="dcc-eyebrow">THE COMPARISON</p>
-          <h2>Appearance, then proportion.</h2>
+          <h2>{study ? 'A listener in the undergrowth.' : 'Appearance, then proportion.'}</h2>
           <p>
-            Ash and Russet share proportions and motion. Moss has a broader body and shorter limbs,
-            with stride and lift fitted to its reach. All views share a camera, lighting, and clock.
+            {study?.description ??
+              'Ash and Russet share proportions and motion. Moss has a broader body and shorter limbs, with stride and lift fitted to its reach. All views share a camera, lighting, and clock.'}
           </p>
-          <p>
-            Compare the gallop, three attacks, playful roll and turning escape. Scene travel shows
-            the path through the world; phase buttons jump to key moments. Before & after retains
-            each revision’s authored cadence.
-          </p>
+          {!study && (
+            <p>
+              Compare the gallop, three attacks, playful roll and turning escape. Scene travel shows
+              the path through the world; phase buttons jump to key moments. Before & after retains
+              each revision’s authored cadence.
+            </p>
+          )}
         </section>
         <section>
           <p className="dcc-eyebrow">EDITABLE SOURCES</p>
           <h2>Make the next performance.</h2>
           <p>
-            The family source contains editable controls and the shared actions. Character files
-            contain fitted rigs, meshes, materials, and fitted actions. This pilot leaves the
-            existing gallery unchanged. Briar Stray uses the three attacks in Last Hearth’s combat
-            replay.
+            {study
+              ? 'Open the motion source to shape the next performance. Open the character source to edit the sculpture, coat and fitted rig. Download the GLB to use the five baked clips.'
+              : 'The family source contains editable controls and shared actions. Character files contain fitted rigs, meshes, materials, and fitted actions. Briar Stray uses the three attacks in Last Hearth’s combat replay.'}
           </p>
           <a
-            href={motionSources[options.revision === 'baseline' ? 'baseline' : 'refined']}
-            download="canid-motion.blend"
+            href={
+              study?.motionSource ??
+              motionSources[options.revision === 'baseline' ? 'baseline' : 'refined']
+            }
+            download={`${study?.id ?? 'canid'}-motion.blend`}
           >
             Download shared motion source ↗
           </a>
-          <p>Visual study · awaiting your review.</p>
+          <p>
+            {study
+              ? 'Visual self-review recorded with the source. Stylized motion study.'
+              : 'Visual study · awaiting your review.'}
+          </p>
         </section>
       </div>
       <div className="canid-downloads">

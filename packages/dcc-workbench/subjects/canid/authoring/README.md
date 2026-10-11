@@ -110,3 +110,12 @@ generated on demand by `blender/sample_canid.py` into ignored test output, not c
 Review coordinates and travel speeds are in model units; there is no calibrated real-world
 metre scale. The stylized gait recipes use empirical canine studies as guidance, not imported
 motion capture or a physiological simulation. Read the trial record for sources and limits.
+
+## Fox extension
+
+[Copper fox](../../fox/README.md) uses `fox.py` as an explicit candidate/fit/export
+adapter, `fox_anatomy.py` for its distinct connected shape, `fox_surface.py` for regional
+pigment, and `fox_verify.py` for a disposable native edit proof. Shared fitting/export
+code and the existing three characters remain unchanged. The fox saved master begins
+with selected refined controls, adds scenting, and lengthens the saved listening gesture
+with its complete timing contract. Its recipes are in the same enforced Python scope.

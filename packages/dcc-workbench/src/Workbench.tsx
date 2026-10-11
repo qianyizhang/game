@@ -3,6 +3,7 @@ import Viewer, { type Playback, type Surface, type View } from './Viewer';
 import { getPublishedAsset, listPublishedAssets } from './delivery';
 import beforeUrl from '../references/hydra-before.png';
 import './workbench.css';
+import { foxStudy } from './fox-study';
 
 const CanidComparison = lazy(() => import('./CanidComparison'));
 const HydraComparison = lazy(() => import('./HydraComparison'));
@@ -22,7 +23,9 @@ const viewNames: View[] = ['Portrait', 'Front', 'Side', 'Back'];
 const surfaces: Surface[] = ['Material', 'Clay', 'Wire'];
 export default function Workbench({ onExit }: { onExit: () => void }) {
   const [canid, setCanid] = useState(
-    () => new URLSearchParams(location.search).get('compare') === 'canid',
+    () =>
+      new URLSearchParams(location.search).get('compare') === 'canid' ||
+      new URLSearchParams(location.search).get('compare') === 'fox',
   );
   const showCanid = (value: boolean) => {
     const url = new URL(location.href);
@@ -113,7 +116,12 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
   if (canid)
     return (
       <Suspense fallback={<p role="status">Loading canid motion study…</p>}>
-        <CanidComparison onBack={() => showCanid(false)} />
+        <CanidComparison
+          study={
+            new URLSearchParams(location.search).get('compare') === 'fox' ? foxStudy : undefined
+          }
+          onBack={() => showCanid(false)}
+        />
       </Suspense>
     );
   if (comparison)
@@ -147,6 +155,17 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
       </section>
       <button className="dcc-compare-entry" onClick={() => showCanid(true)}>
         Canid motion study <span>Three characters · shared motion ↗</span>
+      </button>
+      <button
+        className="dcc-compare-entry"
+        onClick={() => {
+          const url = new URL(location.href);
+          url.searchParams.set('compare', 'fox');
+          history.replaceState(null, '', url);
+          setCanid(true);
+        }}
+      >
+        Copper fox <span>Five performances · editable native sources ↗</span>
       </button>
       <label className="dcc-asset-selector">
         <span className="dcc-eyebrow">NATIVE ASSET</span>

@@ -18,10 +18,12 @@ export function verifyCanid({
   baseline = false,
   directory,
   sources,
+  characters = ids,
 }: {
   baseline?: boolean;
   directory?: string;
   sources?: string;
+  characters?: string[];
 } = {}) {
   directory ??= join(root, baseline ? 'assets/canid' : 'assets/canid/refined');
   sources ??= join(root, baseline ? 'subjects/canid' : 'subjects/canid/refined');
@@ -35,7 +37,7 @@ export function verifyCanid({
         'subjects/canid/authoring/motion_spec.py',
         'blender/native_types.py',
       ];
-  return ids.map((id) => {
+  return characters.map((id) => {
     const bytes = readFileSync(join(directory, `${id}.glb`));
     const receipt = record(JSON.parse(readFileSync(join(directory, `${id}.json`), 'utf8')));
     const motions = baseline ? null : readMotions(receipt.clips);
@@ -77,6 +79,8 @@ export function verifyCanid({
       throw new Error('Canid fitting changed mesh data');
     const gltf = readGlb(bytes);
     const values = gltf.accessors.map((_, i) => accessorValues(bytes, gltf, i));
+    if (values.some((accessor) => accessor.some((value) => !Number.isFinite(value))))
+      throw new Error(`Non-finite delivery data: ${id}`);
     const names = gltf.animations.map((a) => a.name).sort();
     if (JSON.stringify(names) !== JSON.stringify(Object.keys(durations).sort()))
       throw new Error('Incomplete named canid clips');
@@ -165,7 +169,7 @@ export function verifyCanid({
         JSON.stringify(Object.keys(durations).sort())
       )
         throw new Error('Incomplete contact evidence');
-      for (const name of ['walk', 'trot', 'run']) {
+      for (const name of ['walk', 'trot', 'run'].filter((name) => name in contacts)) {
         const contact = record(contacts[name]);
         if (
           typeof contact.minSwingClearance !== 'number' ||

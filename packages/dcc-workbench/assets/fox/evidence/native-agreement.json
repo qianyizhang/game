@@ -1,0 +1,98 @@
+{
+  "original": [
+    {
+      "name": "idle",
+      "maxError": 0.0000016055189193617744,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "look",
+      "maxError": 0.0000013906240212452566,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "sniff",
+      "maxError": 0.000001360425460106301,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "trot",
+      "maxError": 0.000002181769200791445,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "walk",
+      "maxError": 0.0000023913657354345495,
+      "samples": 5,
+      "vertices": 640
+    }
+  ],
+  "edited": [
+    {
+      "name": "idle",
+      "maxError": 0.0000016055189193617744,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "look",
+      "maxError": 0.0000013906240212452566,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "sniff",
+      "maxError": 0.000001360425460106301,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "trot",
+      "maxError": 0.000002181769200791445,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "walk",
+      "maxError": 0.0000023913657354345495,
+      "samples": 5,
+      "vertices": 640
+    }
+  ],
+  "changed": [
+    {
+      "name": "idle",
+      "maxError": 0.0000016055189193617744,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "look",
+      "maxError": 0.0000013906240212452566,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "sniff",
+      "maxError": 0.11563854027023616,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "trot",
+      "maxError": 0.000002181769200791445,
+      "samples": 5,
+      "vertices": 640
+    },
+    {
+      "name": "walk",
+      "maxError": 0.0000023913657354345495,
+      "samples": 5,
+      "vertices": 640
+    }
+  ]
+}

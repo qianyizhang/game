@@ -274,3 +274,16 @@ still contact pose. Lunge, bite and swipe rotate deterministically by Stray atta
 they do not introduce abilities or change combat results. The target remains its actual
 card illustration. Roll and flee are workbench performances, with no corresponding game
 rule in this slice. Asset-load failure leaves the ordinary card replay usable.
+
+## Extending motion studies: Copper fox
+
+Open `/?workbench=dcc&compare=fox`, or choose **Copper fox** from the workbench. The
+[fox source guide](subjects/fox/README.md) owns its five performances, saved masters,
+commands and verification. It extends the refined canid controls with a new character
+and ground-scent performance while leaving the existing family and gallery untouched.
+
+The viewer accepts a small `MotionStudy` dataset: baked characters, clip metadata,
+source links, presentation text and optional camera framing. New species should supply
+their own native adapter where skeleton/support assumptions differ. Keep fitting and
+export separate from candidate construction; keep motion timing, trajectories, support
+phases and markers together in the saved action contract.

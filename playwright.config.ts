@@ -24,7 +24,12 @@ export default defineConfig({
     },
     {
       name: 'requires-blender',
-      testMatch: ['**/canid.spec.ts', '**/dcc-workbench.spec.ts', '**/native-assets.spec.ts'],
+      testMatch: [
+        '**/canid.spec.ts',
+        '**/fox.spec.ts',
+        '**/dcc-workbench.spec.ts',
+        '**/native-assets.spec.ts',
+      ],
       grep: /@requires-blender/,
       fullyParallel: !!process.env.CI,
     },

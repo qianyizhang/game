@@ -50,3 +50,12 @@ await test('delivery validation rejects accidentally committed pose fixtures', (
     rmSync(directory, { recursive: true });
   }
 });
+
+await test('fox delivery keeps five saved clips, source identity and articulated support', () => {
+  const result = verifyCanid({
+    characters: ['fox'],
+    sources: new URL('./subjects/fox', import.meta.url).pathname,
+    directory: new URL('./assets/fox', import.meta.url).pathname,
+  });
+  assert.deepEqual(result[0].clips, ['idle', 'look', 'sniff', 'trot', 'walk']);
+});

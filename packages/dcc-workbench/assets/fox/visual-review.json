@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "subject": "Copper fox",
+  "date": "2026-10-11",
+  "reviewer": {
+    "role": "campaign round owner",
+    "method": "construction and visual self-review; no independent reviewer"
+  },
+  "decision": "accepted for stylized DCC workbench study",
+  "sourceSha256": "46c4f064d93eb4fc3cef27d0ea1d86237e74bec3278ab649d54010be5ee0b65f",
+  "motionSha256": "b1234bf2e35fd31c9359bd2759153440eca2a3d88ca6f8723f92a4a0626a0244",
+  "modelSha256": "9385d129add455a32f9fcfd9b3e3cf39d2f4a2a52ecf7d948474e5a7a05f1d5e",
+  "brief": "Living woodland scout; alert wedge face, oversized listening ears, light chest, slim dark stockings and full cream-tipped brush. Warm copper/ivory over matte sculpted fur; desktop and 390px workbench.",
+  "inspected": [
+    "native side/portrait clay and material",
+    "consumer front/side/rear/portrait clay and material",
+    "390px full-page consumer",
+    "all five actual 1x canvas recordings examined as ordered decoded frames, with 12fps gait sheets to avoid cadence aliasing",
+    "motion midpoints and six phases per clip"
+  ],
+  "findings": [
+    {
+      "criterion": "species identity without pigment",
+      "observation": "The clay profile has a long wedge face, tall separated ears, narrow torso and a brush substantially fuller than the lower leg. Front/rear views retain the ear scale and tail width.",
+      "judgment": "passes stylized fox identity; intentionally exaggerated ears and sculptural fur"
+    },
+    {
+      "criterion": "connected form and face",
+      "observation": "Body/neck/limbs are one remeshed weighted skin. Native repairs narrow the lip pieces to the muzzle, lift the mandible seam, close pinched ear apexes and keep cream off the outer leg masses.",
+      "judgment": "accepted; cheek and shoulder fur remain broad stylized planes, not photoreal fur"
+    },
+    {
+      "criterion": "idle pacing and weight",
+      "observation": "3.6s cycle: small breathing/head motion, brief unequal ear flick and delayed tail motion; paws remain still. It reads attentive without a large whole-body bob.",
+      "judgment": "accepted at 1x"
+    },
+    {
+      "criterion": "walk pacing and weight",
+      "observation": "0.8s cycle: staggered footfall/recovery, bent wrist and hock during swing, restrained torso transfer. Dark paws separate clearly against the floor.",
+      "judgment": "accepted as a brisk stylized walk; not a measured animal locomotion claim"
+    },
+    {
+      "criterion": "trot pacing and weight",
+      "observation": "0.5s cycle: diagonal exchange, higher paw recovery, short suspension and lower trunk phase distinguish it from walk. 12fps samples cover the stride rather than sampling once per cycle.",
+      "judgment": "accepted as light energetic trot; no visible discontinuity at repeated loop boundaries"
+    },
+    {
+      "criterion": "listening intent and timing",
+      "observation": "Inherited 1.6s gesture felt hurried. Saved controls, contacts and markers were stretched together to 3.2s. The new turn settles into an attentive hold before easing back, with ear/tail response.",
+      "judgment": "accepted after pacing repair"
+    },
+    {
+      "criterion": "ground scent performance",
+      "observation": "Initial nose stayed too high. Revised neck reach/body lowering brings the muzzle close to the floor, with small lateral scent checks, a quiet tail response and four stationary paws; the 4s action recovers and holds its final pose.",
+      "judgment": "accepted after reach repair; clearance is measured in model units"
+    },
+    {
+      "criterion": "small viewport",
+      "observation": "At 390px the ears, muzzle, stockings and cream brush remain readable; controls wrap and no horizontal overflow is present.",
+      "judgment": "accepted"
+    },
+    {
+      "criterion": "reference fidelity",
+      "observation": "No motion capture, synchronized animal footage comparison or physiological calibration was performed.",
+      "judgment": "unassessed beyond recognizable stylization"
+    }
+  ],
+  "technical": {
+    "triangles": 74460,
+    "joints": 29,
+    "bytes": 3283740,
+    "clips": 5,
+    "nativeBrowserMaxError": 2.3913657354345495e-06,
+    "nativeSampleFramesPerClip": 5,
+    "nativeSampleVerticesPerFrame": 640,
+    "editedHeadControlRadians": 0.18,
+    "editedSniffObservedDifference": 0.11563854027023616,
+    "meshAndWeightsPreserved": true
+  },
+  "limits": [
+    "Self-review is separate from technical passes and does not claim user approval.",
+    "Native/browser comparison samples five times and 16 vertices per source mesh, while floor/support audits evaluate every authored frame.",
+    "Walk/trot remain authored canid-derived performances fitted to fox proportions, not captured fox biomechanics."
+  ],
+  "evidence": {
+    "clay-front.png": "84fb30f0c3c6467a40134e61adc8e478caff27f64f79b5ee6c3653337d6618e6",
+    "clay-rear.png": "66934beca9ecbc464f52bb50255129438f835755f868f3bca3df836ed179ec29",
+    "clay-side.png": "8654d27cb6eeeb95a6d124ca3ea364b9cb4f2a9dfd3db1f369354f444a68d89c",
+    "idle-1x.webm": "d622feef07c6a9bea7cdd427441fb6fcca7cf353cf2a01a8a38d50cf39d1bad4",
+    "idle-playback-sheet.png": "23eb41a6476b0bd1091b865216597419cd0974854288164ae8d28975c05e3821",
+    "look-1x.webm": "636924ecfcefcbf26cc9e230721d939d1700a86117145a9d8f8cd1a018014056",
+    "look-playback-sheet.png": "8d0c0da606f932689dd4da2ae669bcd2017c57112ba4ff9becff2dc66d0483b4",
+    "material-front.png": "b20a6f9bbf59d72ea846e249a8834e60abb22e8b26936c09916a9532d40ce563",
+    "material-portrait.png": "c80895602bb380d043292205063ff501bc3d593dc48ef5d7f2f4d083edacfdce",
+    "material-rear.png": "a5d85a71799fe3d66e109c98eab2952630c364724f8c9eb00cbb443d7a0bb8fd",
+    "native-agreement.json": "fc67145b601e6737ca065cf97397838a41beaa3270fbc3a8abc09ecf31c3c0c7",
+    "native-edit.json": "9a446e42ae707dc97cfb6b31204251cf090e1731559372a33f5adb74f8b34e32",
+    "native-scent-clay.png": "a8538833c48d8eede581d0d39e5bf63366530253e3f56caa82ac00279bf31b24",
+    "native-scent-material.png": "938f18b3ab4d6c9774607330c6a0d0837b2129f39ad3bca8f8c2be35e1eace09",
+    "phone.png": "d109a9d12cd1490c3f32d1aac9959c5624ac019014da9ad09b2f73bcab5e73fe",
+    "sniff-1x.webm": "8752a39b91cbc31c00863073a540b5402605bf9bf4e1037fd400c00c6930950d",
+    "sniff-midpoint.png": "1b29b1bc58e9fe6ff038042d3f6280cdc21cfdced5ad96c917983c7ee2c1ade0",
+    "sniff-playback-sheet.png": "545b00fcd1d0f0626c7eb8ca25bf7beb65824f6c53e27f98b495ad2e0def3259",
+    "trot-1x.webm": "cdf57d9388c5ced04900e6e5b45cedc162ed331c607e0bb1655a8306fadd78ac",
+    "trot-stride-sheet.png": "21b871e3037556a87f1bbec566534798883a4768b1e5da88e20487112683fa7a",
+    "walk-1x.webm": "8ee5250bd7bfac73307dc03f736737103fe85ec1eebc45720389cf7457ba2d3a",
+    "walk-stride-sheet.png": "102d79f6fd76ebfd0d0a67eba28da6828835a1d4611d920e42b604cda7e81e56"
+  },
+  "verification": {
+    "checkFull": {
+      "status": "passed",
+      "maintenance": {
+        "pythonUnit": 16,
+        "toolsPassed": 82,
+        "toolsSkipped": 1,
+        "dccTests": 53,
+        "managedSources": 521,
+        "inventoryErrors": 0,
+        "build": "passed"
+      },
+      "applicationTests": 253,
+      "seededSimulations": 4,
+      "geometryTests": 128,
+      "limit": "One unrelated usage-dashboard loopback test skipped because the ordinary sandbox blocks binding."
+    },
+    "native": "Saved edit of sniff head control +0.18 radians; reload, fit, mesh/weight preservation, export and fresh sample generation passed.",
+    "browserWithNative": {
+      "passed": 8,
+      "skipped": 2,
+      "limit": "Two existing canid-native tests had no canid fixtures; fox native agreement passed."
+    },
+    "finalViewerFollowup": {
+      "lintAndTypes": "passed",
+      "functionalBrowserPassed": 7,
+      "nativeSkipped": 3,
+      "reason": "Shared duration helper and study-owned first clip only; native source/delivery unchanged. Previous fresh fox agreement remains the native evidence."
+    },
+    "poseArrayRetention": "Generated original and edited fox pose arrays removed after successful comparison; compact native-edit and native-agreement reports retained."
+  }
+}

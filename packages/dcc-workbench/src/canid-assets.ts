@@ -21,7 +21,7 @@ import russetSource from '../subjects/canid/refined/russet/source.blend?url';
 import mossSource from '../subjects/canid/refined/moss/source.blend?url';
 import motionSource from '../subjects/canid/refined/motion.blend?url';
 
-export type Character = 'ash' | 'russet' | 'moss';
+export type Character = string;
 export type Revision = 'refined' | 'baseline' | 'comparison';
 const characterMotions = [ashMetadata, russetMetadata, mossMetadata].map(readMotions);
 export const clips = characterMotions[0];
@@ -31,11 +31,15 @@ export const baselineClips = {
   walk: { name: 'Walk', seconds: 2 },
   look: { name: 'Look around', seconds: 4 },
 } as const;
-export function durationFor(revision: Revision, clip: Clip) {
+export function durationFor(
+  revision: Revision,
+  clip: Clip,
+  library: Record<string, { seconds: number }> = clips,
+) {
   const baseline: Record<string, { seconds: number }> = baselineClips;
   return revision === 'refined'
-    ? clips[clip].seconds
-    : (baseline[clip]?.seconds ?? clips[clip].seconds);
+    ? library[clip].seconds
+    : (baseline[clip]?.seconds ?? library[clip].seconds);
 }
 const labels = [
   { id: 'ash', name: 'Ash', subtitle: 'Family proportions' },
@@ -78,7 +82,7 @@ export const motionSources = { baseline: baselineMotionSource, refined: motionSo
 export type CanidOptions = {
   revision: Revision;
   clip: Clip;
-  character: Character | 'all';
+  character: Character;
   playing: boolean;
   time: number;
   seek: number;
@@ -86,4 +90,24 @@ export type CanidOptions = {
   view: 'Portrait' | 'Side' | 'Front' | 'Rear';
   rig: boolean;
   movement: 'in-place' | 'travel';
+};
+
+/** A study supplies baked assets and metadata; no anatomy or rig rules enter the viewer. */
+export type MotionStudy = {
+  id: string;
+  title: string;
+  eyebrow: string;
+  introduction: string;
+  radius?: number;
+  targetHeight?: number;
+  description: string;
+  characters: {
+    id: string;
+    name: string;
+    subtitle: string;
+    model: string;
+    source: string;
+    motions: Record<string, Motion>;
+  }[];
+  motionSource: string;
 };

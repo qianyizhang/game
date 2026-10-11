@@ -43,7 +43,8 @@
     "usage:dashboard": "node packages/workshop-tools/usage/build.ts",
     "test:usage": "node --test packages/workshop-tools/usage/*.test.ts",
     "test:diablo2": "npm run test --workspace @card-workshop/diablo2",
-    "dcc:canid": "node packages/dcc-workbench/canid.ts"
+    "dcc:canid": "node packages/dcc-workbench/canid.ts",
+    "dcc:fox": "node packages/dcc-workbench/fox.ts"
   },
   "dependencies": {
     "react": "19.3.0",
