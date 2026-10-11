@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "subject": "Bracken boar",
+  "reviewDate": "2026-10-11",
+  "reviewer": {
+    "role": "campaign owner",
+    "mode": "visual self-review",
+    "independentApproval": false
+  },
+  "verdict": "accepted as a convincing stylized boar and polished five-performance workbench study",
+  "sourceSha256": "eaeb03c0e5186f4c7871e73959e904c74aae6434ad5fc3cc9910dbb119207526",
+  "motionSha256": "4fa9a1ac607ec5fb09029d35e738c9ed92cdb9db858a837177790f40b76ce7be",
+  "modelSha256": "978f892ffaea98e93a43c678596c64317b807dab1efa6e902fd198572a43e767",
+  "brief": {
+    "physicalInterpretation": "living boar expressed as a warm umber fantasy sculpture",
+    "gesture": "low heavy trunk and loaded shoulders; wedge snout leads rooting and short charge",
+    "identity": "long nasal wedge, short strong neck, fitted tusks, rooted pointed ears, paired cloven hoof digits",
+    "surface": "quiet broad coat planes, darker keratin and bristle mantle, warm ivory tusks",
+    "display": "desktop and 390 px consumer"
+  },
+  "views": [
+    {
+      "evidence": [
+        "clay-side.png",
+        "clay-front.png",
+        "clay-rear.png"
+      ],
+      "judgment": "Boar identity reads without pigment. Shoulder-to-snouted-head line is continuous; short limbs end in two distinct hoof digits. Rear stance and tail remain legible."
+    },
+    {
+      "evidence": [
+        "material-portrait.png",
+        "material-front.png"
+      ],
+      "judgment": "Tusks frame the snout without detaching from the cheek. Broad warm coat remains quiet; dark hooves and bristle ridge distinguish regions. Ears are rooted leaf volumes, not the rejected floating discs."
+    },
+    {
+      "evidence": [
+        "phone.png"
+      ],
+      "judgment": "390 px layout retains snout, tusks, ears and low barrel; controls wrap without horizontal overflow."
+    },
+    {
+      "evidence": [
+        "rejected-root-weight-edge.png",
+        "native-root-clay.png"
+      ],
+      "judgment": "The rejected enlarged root extreme exposed a hard weight-region split under the cheek and belly. Continuous distance-weighted limb blending removes the serrated pinch while preserving the existing mesh."
+    }
+  ],
+  "motions": {
+    "idle": {
+      "seconds": 4,
+      "review": "Actual 1x: restrained breath and scent-oriented head motion, small delayed ear response, planted heavy body."
+    },
+    "walk": {
+      "seconds": 1.2,
+      "review": "Actual 1x and 12 fps decoded frames: deliberate staggered four-beat steps, low hoof recovery and small supported weight shift; repeated cycles close."
+    },
+    "trot": {
+      "seconds": 0.7,
+      "review": "Actual 1x and 16 fps decoded frames: quicker diagonal exchange and greater recovery height distinguish trot from walk. Compact body motion retains weight."
+    },
+    "root": {
+      "seconds": 4.8,
+      "review": "Actual 1x: gradual lower, sustained small rooting sweeps, measured recovery. Final enlarged native clay confirms continuous neck and clear ground."
+    },
+    "charge": {
+      "seconds": 3.4,
+      "review": "Actual 1x scene-travel recording: gather, two short driving steps over 1.2 model units, brake and recover. The path has a single scene-transform owner; final pose holds."
+    }
+  },
+  "repairs": [
+    "Replaced detached subdivided ear discs with rooted tapered closed volumes.",
+    "Replaced tall uniformly repeated dorsal spikes with a lower rooted mantle and small bristle tips.",
+    "Embedded tusk roots and fitted mouth line more closely.",
+    "Fixed Blender action-slot mismatch by sampling saved controls into character-bound actions.",
+    "Reduced saved rooting head pitch to clear the snout from the floor.",
+    "Reduced excess saved mesh density to 86,206 delivered triangles without rebuilding the sculpt.",
+    "Repaired hard limb/head skin-weight boundaries exposed by enlarged native rooting clay."
+  ],
+  "technical": {
+    "nativeBrowserMaxError": 1.828296158712531e-06,
+    "nativeEditedRootDifference": 0.15341554907232133,
+    "units": "model units",
+    "nativeSampling": "5 times per clip, 16 points per mesh, 592 points per pose",
+    "support": {
+      "idle": {
+        "minimumSurfaceHeight": 0.011999390088021755,
+        "maximumHoofTargetError": 6.96539634020343e-07,
+        "maximumPlantedDigitDisplacement": 7.084622918737195e-07,
+        "maximumSoleHeightError": 6.231591105458623e-07,
+        "loopMatrixError": 0.0,
+        "frames": 241,
+        "supportSites": "both digits of each hoof; saved stance intervals"
+      },
+      "walk": {
+        "minimumSurfaceHeight": 0.011999424546957016,
+        "maximumHoofTargetError": 5.383012255486382e-07,
+        "maximumPlantedDigitDisplacement": 9.904789627801387e-07,
+        "maximumSoleHeightError": 7.535442709920293e-07,
+        "loopMatrixError": 3.3334886513422546e-18,
+        "frames": 73,
+        "supportSites": "both digits of each hoof; saved stance intervals"
+      },
+      "trot": {
+        "minimumSurfaceHeight": 0.011999543756246567,
+        "maximumHoofTargetError": 4.6385474253515543e-07,
+        "maximumPlantedDigitDisplacement": 7.797306024058472e-07,
+        "maximumSoleHeightError": 6.231591105458623e-07,
+        "loopMatrixError": 0.0,
+        "frames": 43,
+        "supportSites": "both digits of each hoof; saved stance intervals"
+      },
+      "root": {
+        "minimumSurfaceHeight": 0.010073482990264893,
+        "maximumHoofTargetError": 5.909959082320911e-07,
+        "maximumPlantedDigitDisplacement": 7.753443619583782e-07,
+        "maximumSoleHeightError": 6.296783685681706e-07,
+        "loopMatrixError": 0.0,
+        "frames": 289,
+        "supportSites": "both digits of each hoof; saved stance intervals"
+      },
+      "charge": {
+        "minimumSurfaceHeight": 0.011999472975730896,
+        "maximumHoofTargetError": 5.249355719628494e-07,
+        "maximumPlantedDigitDisplacement": 4.173665773938122e-07,
+        "maximumSoleHeightError": 5.130544304850215e-07,
+        "loopMatrixError": 0.0,
+        "frames": 205,
+        "supportSites": "both digits of each hoof; saved stance intervals"
+      }
+    },
+    "nativeEditProof": "saved root head key +0.12 radians, save/reload/fit/export; mesh and weights unchanged; authoritative hashes unchanged",
+    "browser": "final repaired boar: 2 passed; earlier unchanged shared viewer regression: 7 functional passes, 3 other-subject native prerequisite skips"
+  },
+  "limits": [
+    "Owner self-review is not independent visual approval or user approval.",
+    "No motion capture, measured animal reference or calibrated biomechanics; reference fidelity unassessed.",
+    "Stylized broad sculpture and simplified bristle forms; no fur or dirt simulation.",
+    "Flat planted hoof soles; no claim of biomechanical hoof rolling.",
+    "Construction recipes make new candidates; native refinements and saved masters are delivery authority."
+  ],
+  "evidence": [
+    {
+      "path": "evidence/charge-1x.webm",
+      "sha256": "cbba9c30a3cb040cb932488897e7af14ef00413011913ae2a97a9a957bcfacfc"
+    },
+    {
+      "path": "evidence/charge-clock.json",
+      "sha256": "a0a5c5efc19d6c7435fc633176a8f729399363e9d2ddc0f581e760973dc89c13"
+    },
+    {
+      "path": "evidence/charge-midpoint.png",
+      "sha256": "9efa8080ae023f7024db5cd23d899664d2e7f92a3c26df6930f7918b3f7d1042"
+    },
+    {
+      "path": "evidence/charge-playback-sheet.png",
+      "sha256": "95f92a304214566ed847da0e2b3867e7855776d3cba8af2ee35a4546c43e3ad4"
+    },
+    {
+      "path": "evidence/clay-front.png",
+      "sha256": "7488ec8f5a720d8d9e967b34ca8f90265ca5ec2f4c1f315f060dae475fdb6c71"
+    },
+    {
+      "path": "evidence/clay-rear.png",
+      "sha256": "6add6b6a98bfb72985b3515f5363613a2e4a4859a986bc0683312dde931b01d2"
+    },
+    {
+      "path": "evidence/clay-side.png",
+      "sha256": "c172616c18df815221cdb06a61ecd6ba95d95ffac9d4430e3486523a23893b92"
+    },
+    {
+      "path": "evidence/idle-1x.webm",
+      "sha256": "7ff31e312ba5c133875cf92fc0f2637b7ce4ca15ab3b65d6bef59f1d3dca6799"
+    },
+    {
+      "path": "evidence/idle-clock.json",
+      "sha256": "0ff8876f448f28fab6db34b3e9807f7cb8f86d492372e3db923fa254e26fe9fa"
+    },
+    {
+      "path": "evidence/idle-playback-sheet.png",
+      "sha256": "3585ac0608a15c56869fa34adf71f7f94f40d0ec6385420d3d7f754c373b7ea7"
+    },
+    {
+      "path": "evidence/material-front.png",
+      "sha256": "805921e42dcc0667c4cb952c56c57db8c2d53baffe14f46fd88661e0d61e2934"
+    },
+    {
+      "path": "evidence/material-portrait.png",
+      "sha256": "31db68e1194584faeb6bf9793b4304ae7a27f6366e10bd6ca07ef43375b8bd8d"
+    },
+    {
+      "path": "evidence/native-agreement.json",
+      "sha256": "2cdf59dc16b65a0024113675975d37a5892c78e84b1ae00a16ac359697a788b4"
+    },
+    {
+      "path": "evidence/native-edit.json",
+      "sha256": "b16f526ee0c9bf55cc677f5c3e3d81a35d2d865774d93d564e72c7dbbfaeed5e"
+    },
+    {
+      "path": "evidence/native-root-clay.png",
+      "sha256": "d10fa82024c645f67544970076baa4120afb5daa2bef8cb5e508b3ef650b3a56"
+    },
+    {
+      "path": "evidence/phone.png",
+      "sha256": "ad845ae469926528c387a440ed78f922cba996a83eed5f1eeb4beb329ef3f779"
+    },
+    {
+      "path": "evidence/rejected-root-weight-edge.png",
+      "sha256": "244148ce11bc3ddced8741f5babb95fbda7bb959225f36ba61db94941318c498"
+    },
+    {
+      "path": "evidence/root-1x.webm",
+      "sha256": "6de8598293d4fc8fd3cec0ba4744da0618d5396f75f14f807ce332d092265bc2"
+    },
+    {
+      "path": "evidence/root-clock.json",
+      "sha256": "f3a77252479e292a19dd0a1dbb29edf94f66317033a86d57f39001e60ca95a3a"
+    },
+    {
+      "path": "evidence/root-midpoint.png",
+      "sha256": "0c07cbb9b940a0eecfc3f873bb7ebf70d94390140410d8a71432a1661e0c6cf5"
+    },
+    {
+      "path": "evidence/root-playback-sheet.png",
+      "sha256": "7f4368f21c0225e86d31e9f20999826873fe6f01a3c33ad7b687b93de847d9f5"
+    },
+    {
+      "path": "evidence/trot-1x.webm",
+      "sha256": "5f71dac9715bc141321e780e6a48d9c530baec7ec97293bbf21bcc025a93258b"
+    },
+    {
+      "path": "evidence/trot-clock.json",
+      "sha256": "bfba21b7967dce4acbcc504ab79241cce3f8d0ec5d2403b526061bcabb157821"
+    },
+    {
+      "path": "evidence/trot-playback-sheet.png",
+      "sha256": "c398f4c3036a09ae80687190b648902f1ce1359aa37a6314bc912dd9dcec4ddd"
+    },
+    {
+      "path": "evidence/walk-1x.webm",
+      "sha256": "61f861dfe752890a8250c0ed48ee9347b5cfd771762d83dbf98c091004862922"
+    },
+    {
+      "path": "evidence/walk-clock.json",
+      "sha256": "cb117cd4497d343f8602e77b85a293d2522218085e70ae5185fcda71940cb7cd"
+    },
+    {
+      "path": "evidence/walk-playback-sheet.png",
+      "sha256": "9de420ad865a2d10a667ac67e5ad6016ae38e6369b95d3137c89f3c33c0e5635"
+    }
+  ]
+}

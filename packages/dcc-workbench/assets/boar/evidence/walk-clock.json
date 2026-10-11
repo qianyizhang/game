@@ -1,0 +1,12 @@
+{
+  "capture": "actual consumer 1x canvas recording",
+  "frames": 190,
+  "first": {
+    "wall": 0.01590000009536743,
+    "time": 0.017
+  },
+  "last": {
+    "wall": 3.165600000023842,
+    "time": 0.767
+  }
+}

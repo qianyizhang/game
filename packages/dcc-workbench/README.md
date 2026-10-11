@@ -287,3 +287,9 @@ source links, presentation text and optional camera framing. New species should 
 their own native adapter where skeleton/support assumptions differ. Keep fitting and
 export separate from candidate construction; keep motion timing, trajectories, support
 phases and markers together in the saved action contract.
+
+## Bracken boar motion study
+
+The [boar guide](subjects/boar/README.md) owns the new boar anatomy, five saved control
+performances, split-hoof support audit, source/edit proof and baked workbench delivery.
+Open `/?workbench=dcc&compare=boar`; gallery defaults remain separate.

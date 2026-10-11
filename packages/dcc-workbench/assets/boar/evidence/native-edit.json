@@ -1,0 +1,12 @@
+{
+  "meshAndWeightsUnchanged": true,
+  "authoritativeSourcesAndDeliveryUnchanged": true,
+  "headChangeRadians": 0.11999999731779099,
+  "editedClip": "root",
+  "editedFrame": 144,
+  "sourcePins": {
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/boar/motion.blend": "4fa9a1ac607ec5fb09029d35e738c9ed92cdb9db858a837177790f40b76ce7be",
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/subjects/boar/boar/source.blend": "eaeb03c0e5186f4c7871e73959e904c74aae6434ad5fc3cc9910dbb119207526",
+    "/Users/zhangqy/pkgs/game/packages/dcc-workbench/assets/boar/boar.glb": "978f892ffaea98e93a43c678596c64317b807dab1efa6e902fd198572a43e767"
+  }
+}

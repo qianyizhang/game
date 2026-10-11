@@ -27,6 +27,7 @@ export default defineConfig({
       testMatch: [
         '**/canid.spec.ts',
         '**/fox.spec.ts',
+        '**/boar.spec.ts',
         '**/dcc-workbench.spec.ts',
         '**/native-assets.spec.ts',
       ],

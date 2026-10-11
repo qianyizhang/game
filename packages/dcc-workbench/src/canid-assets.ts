@@ -101,6 +101,7 @@ export type MotionStudy = {
   radius?: number;
   targetHeight?: number;
   description: string;
+  subjectHeading?: string;
   characters: {
     id: string;
     name: string;

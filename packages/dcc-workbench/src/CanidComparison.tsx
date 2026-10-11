@@ -311,8 +311,12 @@ export default function CanidComparison({
       )}
       <div className="canid-notes">
         <section>
-          <p className="dcc-eyebrow">THE COMPARISON</p>
-          <h2>{study ? 'A listener in the undergrowth.' : 'Appearance, then proportion.'}</h2>
+          <p className="dcc-eyebrow">{study ? 'THE SUBJECT' : 'THE COMPARISON'}</p>
+          <h2>
+            {study
+              ? (study.subjectHeading ?? 'A listener in the undergrowth.')
+              : 'Appearance, then proportion.'}
+          </h2>
           <p>
             {study?.description ??
               'Ash and Russet share proportions and motion. Moss has a broader body and shorter limbs, with stride and lift fitted to its reach. All views share a camera, lighting, and clock.'}

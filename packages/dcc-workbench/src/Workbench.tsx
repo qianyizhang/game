@@ -4,6 +4,7 @@ import { getPublishedAsset, listPublishedAssets } from './delivery';
 import beforeUrl from '../references/hydra-before.png';
 import './workbench.css';
 import { foxStudy } from './fox-study';
+import { boarStudy } from './boar-study';
 
 const CanidComparison = lazy(() => import('./CanidComparison'));
 const HydraComparison = lazy(() => import('./HydraComparison'));
@@ -25,7 +26,8 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
   const [canid, setCanid] = useState(
     () =>
       new URLSearchParams(location.search).get('compare') === 'canid' ||
-      new URLSearchParams(location.search).get('compare') === 'fox',
+      new URLSearchParams(location.search).get('compare') === 'fox' ||
+      new URLSearchParams(location.search).get('compare') === 'boar',
   );
   const showCanid = (value: boolean) => {
     const url = new URL(location.href);
@@ -118,7 +120,11 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
       <Suspense fallback={<p role="status">Loading canid motion study…</p>}>
         <CanidComparison
           study={
-            new URLSearchParams(location.search).get('compare') === 'fox' ? foxStudy : undefined
+            new URLSearchParams(location.search).get('compare') === 'boar'
+              ? boarStudy
+              : new URLSearchParams(location.search).get('compare') === 'fox'
+                ? foxStudy
+                : undefined
           }
           onBack={() => showCanid(false)}
         />
@@ -166,6 +172,17 @@ export default function Workbench({ onExit }: { onExit: () => void }) {
         }}
       >
         Copper fox <span>Five performances · editable native sources ↗</span>
+      </button>
+      <button
+        className="dcc-compare-entry"
+        onClick={() => {
+          const url = new URL(location.href);
+          url.searchParams.set('compare', 'boar');
+          history.replaceState(null, '', url);
+          setCanid(true);
+        }}
+      >
+        Bracken boar <span>Five performances · cloven-hoof support ↗</span>
       </button>
       <label className="dcc-asset-selector">
         <span className="dcc-eyebrow">NATIVE ASSET</span>

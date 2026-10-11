@@ -1,0 +1,98 @@
+{
+  "original": [
+    {
+      "name": "idle",
+      "maxError": 0.0000012845637254171224,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "walk",
+      "maxError": 0.000001513621156607229,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "trot",
+      "maxError": 0.000001828296158712531,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "root",
+      "maxError": 0.0000011621783357058888,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "charge",
+      "maxError": 0.0000012897203392174241,
+      "samples": 5,
+      "vertices": 592
+    }
+  ],
+  "edited": [
+    {
+      "name": "idle",
+      "maxError": 0.0000012845637254171224,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "walk",
+      "maxError": 0.000001513621156607229,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "trot",
+      "maxError": 0.000001828296158712531,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "root",
+      "maxError": 0.0000011621783357058888,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "charge",
+      "maxError": 0.0000012897203392174241,
+      "samples": 5,
+      "vertices": 592
+    }
+  ],
+  "changed": [
+    {
+      "name": "idle",
+      "maxError": 0.0000012845637254171224,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "walk",
+      "maxError": 0.000001513621156607229,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "trot",
+      "maxError": 0.000001828296158712531,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "root",
+      "maxError": 0.15341554907232133,
+      "samples": 5,
+      "vertices": 592
+    },
+    {
+      "name": "charge",
+      "maxError": 0.0000012897203392174241,
+      "samples": 5,
+      "vertices": 592
+    }
+  ]
+}
