@@ -13,6 +13,71 @@ import { browserBudget } from './budget';
 const review = 'test-results/night-passage';
 test.beforeEach(() => mkdirSync(review, { recursive: true }));
 
+test.describe('presentation lifecycle', () => {
+  test.use({ deviceScaleFactor: 2 });
+  test('resizing reprojects a stationary cursor and remounting releases the old surface', async ({
+    page,
+  }) => {
+    await page.goto('/?game=night-passage');
+    await page.getByRole('button', { name: 'Begin passage', exact: true }).click();
+    await page.getByRole('button', { name: 'Pause', exact: true }).click();
+    const field = page.locator('canvas[aria-label="Night Passage combat arena"]');
+    const firstBox = (await field.boundingBox())!;
+    const cursor = { x: firstBox.x + firstBox.width * 0.7, y: firstBox.y + firstBox.height * 0.3 };
+    for (const width of [900, 390, 1100]) {
+      await field.focus();
+      await page.keyboard.press('Escape');
+      await field.dispatchEvent('pointermove', { clientX: cursor.x, clientY: cursor.y });
+      await page.setViewportSize({ width, height: 844 });
+      await expect
+        .poll(() =>
+          field.evaluate((element: HTMLCanvasElement) =>
+            Math.abs(element.width - element.getBoundingClientRect().width * 2),
+          ),
+        )
+        .toBeLessThanOrEqual(1);
+      const box = (await field.boundingBox())!;
+      expect(box.width / box.height).toBeCloseTo(1.6, 2);
+      await expect
+        .poll(async () => {
+          const currentBox = (await field.boundingBox())!;
+          const saved = importSession(
+            (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!,
+          ).state;
+          const expected = Math.atan2(
+            ((cursor.y - currentBox.y) / currentBox.height) * 600 - saved.player.y,
+            ((cursor.x - currentBox.x) / currentBox.width) * 960 - saved.player.x,
+          );
+          return Math.abs(saved.player.aim - expected);
+        })
+        .toBeLessThan(0.001);
+      await page.keyboard.press('Escape');
+    }
+    await page.screenshot({ path: `${review}/renderer-resized.png`, fullPage: true });
+    const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
+    const oldCanvas = await field.elementHandle();
+    await page.getByLabel('Choose game').selectOption('balatro');
+    expect(
+      await oldCanvas.evaluate((element: HTMLCanvasElement) => [
+        element.isConnected,
+        element.width,
+        element.height,
+      ]),
+    ).toEqual([false, 0, 0]);
+    await page.getByLabel('Choose game').selectOption('night-passage');
+    await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
+    await expect
+      .poll(() => field.evaluate((element: HTMLCanvasElement) => element.width))
+      .toBeGreaterThan(0);
+    expect(
+      await field.evaluate(
+        (element: HTMLCanvasElement) => element.getContext('2d')!.getImageData(0, 0, 1, 1).data[3],
+      ),
+    ).toBe(255);
+  });
+});
+
 test('live aiming, combat, reward selection, pause/reload and portable chronicle', async ({
   page,
 }) => {
@@ -67,9 +132,12 @@ test('live aiming, combat, reward selection, pause/reload and portable chronicle
   await page.locator('.np-choices button').first().click();
   await expect(field).toHaveAttribute('data-phase', 'combat');
   await page.getByRole('button', { name: 'Pause', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
   const saved = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
   expect(importSession(saved).state.player.weapon).toBe('bow');
   expect(importSession(saved).state.player.boons).toHaveLength(1);
+  // The HUD refreshes less often than rules; wait for the final confirmed frame on pause.
+  await expect(field).toHaveAttribute('data-tick', String(importSession(saved).state.tick));
   const tick = await field.getAttribute('data-tick');
   await page.waitForTimeout(150);
   expect(await field.getAttribute('data-tick')).toBe(tick);

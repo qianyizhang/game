@@ -1,4 +1,4 @@
-import type { ThreatShape } from '../domain/threats';
+import type { ThreatShape } from '../../domain/threats';
 
 /** Draw exactly the geometry used by rules hit detection, before actor-radius expansion. */
 export function drawThreat(ctx: CanvasRenderingContext2D, shape: ThreatShape): void {

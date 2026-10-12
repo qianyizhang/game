@@ -8,7 +8,6 @@ import {
   type Session,
 } from '../application/session';
 import {
-  ARENA,
   boon,
   CHAMBERS_PER_REGION,
   GODS,
@@ -18,7 +17,8 @@ import {
   weapon,
 } from '../domain/content';
 import type { Command, Input, Point, RuneId, WeaponId } from '../domain/types';
-import { render } from './render';
+import { createCanvasRenderer } from './presentation/canvas';
+import type { Renderer } from './presentation/renderer';
 import { PassageAudio } from './audio';
 import './night-passage.css';
 
@@ -79,6 +79,7 @@ export default function NightPassageApp() {
   const [selectedWeapon, setSelectedWeapon] = useState<WeaponId>('sword');
   const [runes, setRunes] = useState<RuneId[]>(['vigor', 'fleet']);
   const canvas = useRef<HTMLCanvasElement>(null);
+  const renderer = useRef<Renderer | null>(null);
   const controls = useRef(emptyInput());
   const pointer = useRef<Point | null>(null);
   const keys = useRef(new Set<string>());
@@ -87,6 +88,17 @@ export default function NightPassageApp() {
     if (resetOpen) resetDialog.current?.showModal();
   }, [resetOpen]);
   useEffect(() => () => audio.current?.close(), []);
+  useEffect(() => {
+    const element = canvas.current;
+    if (!element) return;
+    const viewRenderer = createCanvasRenderer(element);
+    renderer.current = viewRenderer;
+    viewRenderer.draw(session.current.state);
+    return () => {
+      renderer.current = null;
+      viewRenderer.dispose();
+    };
+  }, []);
   const save = () => {
     if (preserve.current) return;
     try {
@@ -149,12 +161,13 @@ export default function NightPassageApp() {
         if (steps) {
           accumulator -= (steps * 1000) / 60;
           const held = keys.current;
+          const ground = pointer.current ? renderer.current?.groundPoint(pointer.current) : null;
           const input: Input = {
             ...controls.current,
-            aim: pointer.current
+            aim: ground
               ? Math.atan2(
-                  pointer.current.y - session.current.state.player.y,
-                  pointer.current.x - session.current.state.player.x,
+                  ground.y - session.current.state.player.y,
+                  ground.x - session.current.state.player.x,
                 )
               : controls.current.aim,
             x:
@@ -187,7 +200,7 @@ export default function NightPassageApp() {
           if (session.current.state.phase !== 'combat') clearControls();
         }
       } else accumulator = 0;
-      render(element, session.current.state);
+      renderer.current?.draw(session.current.state);
       frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
@@ -399,19 +412,13 @@ export default function NightPassageApp() {
           <div className="np-stage">
             <canvas
               ref={canvas}
-              width={ARENA.width}
-              height={ARENA.height}
               tabIndex={0}
               aria-label="Night Passage combat arena"
               data-phase={view.phase}
               data-tick={view.tick}
               onContextMenu={(event) => event.preventDefault()}
               onPointerMove={(event) => {
-                const box = event.currentTarget.getBoundingClientRect();
-                pointer.current = {
-                  x: ((event.clientX - box.left) * ARENA.width) / box.width,
-                  y: ((event.clientY - box.top) * ARENA.height) / box.height,
-                };
+                pointer.current = { x: event.clientX, y: event.clientY };
               }}
               onPointerDown={(event) => {
                 event.currentTarget.focus();

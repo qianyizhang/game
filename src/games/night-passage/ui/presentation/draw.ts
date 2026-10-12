@@ -1,8 +1,8 @@
-import { ARENA, CHAMBERS_PER_REGION, GODS, REGIONS, weapon } from '../domain/content';
-import { hazardPhase, hazardTiming } from '../domain/encounters';
-import { attackPattern, attackShapes, projectileAngles } from '../domain/threats';
-import { drawThreat } from './threat-render';
-import type { State } from '../domain/types';
+import { ARENA, CHAMBERS_PER_REGION, GODS, REGIONS, weapon } from '../../domain/content';
+import { hazardPhase, hazardTiming } from '../../domain/encounters';
+import { attackPattern, attackShapes, projectileAngles } from '../../domain/threats';
+import { drawThreat } from './threats';
+import type { State } from '../../domain/types';
 
 function circle(
   ctx: CanvasRenderingContext2D,
@@ -21,9 +21,7 @@ function circle(
     ctx.stroke();
   }
 }
-export function render(canvas: HTMLCanvasElement, state: State): void {
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
+export function drawArena(ctx: CanvasRenderingContext2D, state: State): void {
   const { width, height } = ARENA;
   const region = REGIONS[state.region];
   ctx.clearRect(0, 0, width, height);
