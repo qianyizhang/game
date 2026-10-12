@@ -5,6 +5,7 @@ import './Hub.css';
 
 const CartographerApp = lazy(() => import('../games/cartographer/ui/CartographerApp'));
 const DiabloApp = lazy(() => import('@card-workshop/diablo2'));
+const NightPassageApp = lazy(() => import('../games/night-passage/ui/NightPassageApp'));
 const BalatroApp = lazy(() =>
   import('../games/balatro/ui/BlindsideApp').then((module) => ({ default: module.BlindsideApp })),
 );
@@ -95,11 +96,13 @@ export default function Hub() {
   const [game, setGame] = useState<GameId>(() => {
     try {
       const requested = new URLSearchParams(location.search).get('game');
-      if (requested === 'diablo2' || requested === 'cartographer') return requested;
+      if (requested === 'diablo2' || requested === 'cartographer' || requested === 'night-passage')
+        return requested;
       const saved = localStorage.getItem(KEY);
       return saved === 'spire' ||
         saved === 'battlegrounds' ||
         saved === 'diablo2' ||
+        saved === 'night-passage' ||
         saved === 'cartographer'
         ? saved
         : 'balatro';
@@ -114,13 +117,15 @@ export default function Hub() {
       battlegrounds: 'Last Hearth',
       diablo2: 'Emberwake',
       cartographer: 'Dungeon Cartographer',
+      'night-passage': 'Night Passage',
     };
     document.title = `${dccOpen ? 'DCC Workbench' : artOpen ? '3D Object Studies' : challengeOpen ? 'Challenges' : names[game]} · Card Workshop`;
   }, [game, challengeOpen, artOpen, dccOpen]);
   const change = (id: GameId) => {
     setGame(id);
     const url = new URL(location.href);
-    if (id === 'diablo2' || id === 'cartographer') url.searchParams.set('game', id);
+    if (id === 'diablo2' || id === 'cartographer' || id === 'night-passage')
+      url.searchParams.set('game', id);
     else url.searchParams.delete('game');
     history.replaceState(null, '', url);
     try {
@@ -142,7 +147,12 @@ export default function Hub() {
               </main>
             }
           >
-            {game === 'cartographer' ? (
+            {game === 'night-passage' ? (
+              <div>
+                <GamePicker current={game} onSwitch={change} />
+                <NightPassageApp />
+              </div>
+            ) : game === 'cartographer' ? (
               <div>
                 <GamePicker current={game} onSwitch={change} />
                 <CartographerApp />
@@ -174,7 +184,7 @@ export default function Hub() {
           </Suspense>
         )}
         <button
-          hidden={game === 'diablo2' || game === 'cartographer'}
+          hidden={game === 'diablo2' || game === 'cartographer' || game === 'night-passage'}
           ref={dccEntry}
           className="dcc-workbench-entry"
           onClick={() => showDcc(true)}
@@ -182,7 +192,7 @@ export default function Hub() {
           ↗ DCC workbench
         </button>
         <button
-          hidden={game === 'diablo2' || game === 'cartographer'}
+          hidden={game === 'diablo2' || game === 'cartographer' || game === 'night-passage'}
           ref={artEntry}
           className="art-studio-entry"
           onClick={() => showArt(true)}

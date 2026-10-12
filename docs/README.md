@@ -18,3 +18,7 @@ Session discussions and iteration diaries belong in ignored `.work/sessions/`. P
 ## Dungeon Cartographer
 
 [Player guide](guide/cartographer.md) · [Shared room generation](engineering/map-generation.md).
+
+## Night Passage
+
+[Player guide](guide/night-passage.md) · [Rules, extension points and verification](engineering/night-passage.md).

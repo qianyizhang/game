@@ -214,3 +214,28 @@ _Avoid_: Actor, when counting conversations; turn, when referring to a whole con
 **Threat**: The expedition's accumulated danger from attached chambers. At eight threat, enemies deal one additional damage per hit.
 
 **Relic**: A lasting ability chosen during an expedition, lost when that expedition ends.
+
+## Night Passage
+
+**Passage**: One attempt to cross four regions, ending in escape, death, or a voluntary return to the quay.
+
+**Region**: A stretch of the passage containing eight chambers and a guardian in its final chamber.
+
+**Chamber**: One encounter or safe stop. Its reward is announced before entry.
+
+**Patron**: A god who offers blessings during a passage.
+
+**Boon**: A patron's temporary blessing. Attack, special, dash, cast, and call each hold one boon; a different boon in the same slot replaces it.
+
+**Duo**: An additional blessing sustained by two different patrons' equipped boons.
+
+**Rune**: A persistent unlock selected at the quay to shape the next passage's starting loadout. A loadout binds up to two runes.
+_Avoid_: Boon, when referring to a starting rune.
+
+**Cast**: A rechargeable spell with three stored uses.
+
+**Call**: A god's charged ultimate, available only after accepting its boon.
+
+**Ash**: Progression currency earned during a passage and banked on returning to the quay.
+
+**Chronicle**: The remembered sequence of passages and quay decisions, including an unfinished passage.

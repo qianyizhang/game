@@ -14,3 +14,5 @@ Start with [play locally](../../README.md#play-locally). The repository README d
 Normal play, separate practice branches, imported histories and automated evidence retain their own identities. Current versions and frozen experimental environments are distinguished in the relevant guide; old saves are retained rather than silently migrated.
 
 [Dungeon Cartographer](cartographer.md) covers room drafting, tactical combat, replay saves, and the optional generated Emberwake dungeon.
+
+[Night Passage](night-passage.md) covers the action roguelite prototype, weapons, gods, runes and chronicle saves.

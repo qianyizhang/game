@@ -1,0 +1,428 @@
+.np-app {
+  --np-ink: #dce6dc;
+  --np-muted: #9faeac;
+  --np-gold: #e7c699;
+  --np-panel: #18262d;
+  color: var(--np-ink);
+  background: #111b23;
+  min-height: calc(100vh - 54px);
+  padding: 32px clamp(16px, 3vw, 52px);
+  font-family: 'Trebuchet MS', sans-serif;
+}
+.np-app * {
+  box-sizing: border-box;
+}
+.np-app button,
+.np-import {
+  font: inherit;
+  border: 1px solid #73898266;
+  color: #dce6dc;
+  background: #25353c;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 120ms;
+}
+.np-app button:hover:not(:disabled),
+.np-import:hover {
+  background: #374b51;
+  border-color: #b5cabc;
+}
+.np-app button:focus-visible,
+.np-app canvas:focus-visible,
+.np-import:focus-within {
+  outline: 2px solid #b3e5d3;
+  outline-offset: 3px;
+}
+.np-app button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.np-app h1,
+.np-app h2,
+.np-app p {
+  margin: 0;
+}
+.np-app h1 {
+  font:
+    42px Georgia,
+    serif;
+  color: #f0dec0;
+  letter-spacing: -1px;
+}
+.np-app h2 {
+  font:
+    23px Georgia,
+    serif;
+  color: #eee2ce;
+}
+.np-app p {
+  line-height: 1.6;
+}
+.np-eyebrow {
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #91b5ad;
+}
+.np-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 26px;
+}
+.np-header .np-eyebrow {
+  margin-bottom: 8px;
+}
+.np-tools {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+.np-import {
+  position: relative;
+  overflow: hidden;
+}
+.np-import input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  cursor: pointer;
+}
+.np-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 26px;
+  max-width: 1600px;
+  margin: auto;
+}
+.np-main {
+  min-width: 0;
+}
+.np-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  padding: 12px 0;
+}
+.np-hud h2 {
+  margin-top: 7px;
+}
+.np-resources {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #ecd6b1;
+}
+.np-health {
+  height: 4px;
+  background: #573a45;
+  margin-bottom: 8px;
+}
+.np-health > div {
+  height: 100%;
+  background: #84c5b0;
+  transition: width 100ms;
+}
+.np-stage {
+  position: relative;
+  border: 1px solid #43534b;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #141e26;
+  min-height: 430px;
+}
+.np-stage canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none;
+}
+.np-overlay {
+  position: absolute;
+  inset: 0;
+  background: #111c27ed;
+  padding: clamp(20px, 3vw, 42px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 18px;
+  overflow-y: auto;
+}
+.np-overlay h2 {
+  font-size: clamp(25px, 2.8vw, 38px);
+}
+.np-overlay > p {
+  color: #b5c3c1;
+  max-width: 640px;
+  font-size: 14px;
+}
+.np-overlay > .np-eyebrow {
+  color: #9ac6bb;
+  font-size: 10px;
+}
+.np-quay {
+  background: linear-gradient(120deg, #15232bf7, #213236ee);
+  gap: 15px;
+}
+.np-weapons {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+.np-weapons button {
+  padding: 14px 8px;
+  min-height: 74px;
+  text-align: left;
+}
+.np-weapons strong {
+  display: block;
+  font:
+    16px Georgia,
+    serif;
+}
+.np-weapons span {
+  display: block;
+  margin-top: 8px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #aebdba;
+}
+.np-app button[aria-pressed='true'] {
+  background: #39534f;
+  border-color: #d8c5a0;
+  color: #fff1d6;
+  box-shadow: inset 0 -2px #d8c5a0;
+}
+.np-runes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.np-runes button {
+  font-size: 12px;
+  padding: 7px 12px;
+}
+.np-overlay .np-weapon-description,
+.np-overlay .np-rune-description {
+  font-size: 12px;
+}
+.np-quay-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.np-app .np-primary {
+  background: #d9bd91;
+  color: #1a2930;
+  font-weight: 700;
+  border-color: #f2d8b0;
+}
+.np-app .np-primary:hover {
+  background: #f1d4a8;
+  color: #14222a;
+}
+.np-overlay .np-meta {
+  font-size: 11px;
+  color: #9db7b1;
+}
+.np-choices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+.np-choices button {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 12px;
+  padding: 22px 16px;
+}
+.np-choices strong {
+  font:
+    22px Georgia,
+    serif;
+  color: #f2dfba;
+}
+.np-choices span:not(.np-eyebrow),
+.np-choices small {
+  line-height: 1.6;
+  font-size: 12px;
+  color: #b5c7c4;
+}
+.np-choices .np-eyebrow {
+  letter-spacing: 1px;
+}
+.np-controls {
+  display: flex;
+  gap: 10px 18px;
+  flex-wrap: wrap;
+  padding: 18px 0;
+  font-size: 11px;
+  color: #a8b8b5;
+}
+.np-controls kbd {
+  font-family: inherit;
+  color: #e4d5b6;
+}
+.np-status {
+  font-size: 11px;
+  color: #87a59c;
+}
+.np-sidebar {
+  background: #1b2a3077;
+  border-left: 1px solid #52665e66;
+  padding: 24px 20px;
+}
+.np-sidebar h2 {
+  margin: 12px 0 18px;
+}
+.np-sidebar p {
+  color: #a8bab4;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+.np-realms {
+  list-style: decimal-leading-zero;
+  padding-left: 24px;
+  color: #ddc8a5;
+}
+.np-realms li {
+  padding: 12px 0;
+  font-size: 12px;
+}
+.np-realms strong,
+.np-realms span {
+  display: block;
+}
+.np-realms span {
+  color: #93aaa3;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+.np-sidebar details {
+  border-top: 1px solid #52665e66;
+  padding-top: 16px;
+  margin-top: 24px;
+  font-size: 12px;
+}
+.np-sidebar summary {
+  cursor: pointer;
+  color: #c9d8c8;
+  margin-bottom: 12px;
+}
+.np-build article {
+  border-bottom: 1px solid #ffffff15;
+  margin-bottom: 16px;
+}
+.np-build strong {
+  display: block;
+  font-family: Georgia, serif;
+  margin: 6px 0;
+}
+.np-build small {
+  text-transform: uppercase;
+  color: #a4c9bd;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+.np-notice {
+  border: 1px solid #cdad7d;
+  padding: 12px;
+  margin-bottom: 16px !important;
+}
+.np-reset {
+  position: fixed;
+  z-index: 50;
+  inset: 20% max(20px, calc((100vw - 620px) / 2)) auto;
+  padding: 28px;
+  background: #20333b;
+  border: 1px solid #d9bd91;
+  border-radius: 8px;
+  color: #dce6dc;
+  margin: 0;
+  max-width: calc(100vw - 40px);
+}
+.np-reset::backdrop {
+  background: #08131ddd;
+}
+.np-reset p {
+  margin: 16px 0;
+}
+.np-reset label {
+  display: block;
+}
+.np-reset input {
+  display: block;
+  width: 100%;
+  margin: 8px 0 18px;
+  padding: 10px;
+  color: #eee2ce;
+  background: #111b23;
+  border: 1px solid #738982;
+}
+.np-reset > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (max-width: 1100px) {
+  .np-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .np-sidebar {
+    border-left: 0;
+    border-top: 1px solid #52665e66;
+  }
+  .np-realms {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+}
+@media (max-width: 650px) {
+  .np-app {
+    padding: 18px 12px;
+  }
+  .np-header,
+  .np-hud {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .np-app h1 {
+    font-size: 34px;
+  }
+  .np-stage {
+    min-height: 640px;
+  }
+  .np-overlay {
+    padding: 20px 16px;
+    justify-content: flex-start;
+  }
+  .np-weapons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .np-weapons button {
+    min-height: 58px;
+  }
+  .np-choices {
+    grid-template-columns: 1fr;
+  }
+  .np-choices button {
+    padding: 14px;
+    gap: 7px;
+  }
+  .np-realms {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

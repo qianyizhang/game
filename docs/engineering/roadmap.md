@@ -21,6 +21,8 @@ The next bounded policy study should isolate unit valuation with upgrade timing 
 
 ## Remaining candidates
 
+Night Passage has an authorized [progressive refinement track](night-passage.md#progressive-refinement): one direction per turn, a major 2.5D campaign uplift and incremental authored asset coverage. That page owns its milestone finish lines and compatibility requirements.
+
 | Area                  | Bounded direction                                               | Evidence required                                                                |
 | --------------------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | Blindside             | Starting decks and a difficulty ladder                          | Changed purchase/discard/risk decisions and legal complete runs                  |

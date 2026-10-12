@@ -1,4 +1,5 @@
-export type GameId = 'balatro' | 'spire' | 'battlegrounds' | 'diablo2' | 'cartographer';
+export type GameId =
+  'balatro' | 'spire' | 'battlegrounds' | 'diablo2' | 'cartographer' | 'night-passage';
 export function GamePicker({
   current,
   onSwitch,
@@ -20,6 +21,7 @@ export function GamePicker({
         <option value="battlegrounds">⚑ Last Hearth · Battlegrounds</option>
         <option value="cartographer">◇ Dungeon Cartographer</option>
         <option value="diablo2">✧ Emberwake · Diablo II</option>
+        <option value="night-passage">☾ Night Passage · Action Roguelite</option>
       </select>
     </div>
   );
