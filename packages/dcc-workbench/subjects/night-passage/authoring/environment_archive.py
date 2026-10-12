@@ -7,9 +7,10 @@ from typing import TYPE_CHECKING
 
 from enemy_form import tube
 from environment_form import ROOTS
-from hero_form import loft, material, mesh
+from environment_geometry import block, join_parts
+from hero_form import loft, material
 from hero_rig import Point
-from native_types import active_object, mesh_data, present
+from native_types import mesh_data, present
 
 if TYPE_CHECKING:
     import bpy
@@ -38,27 +39,6 @@ def build() -> None:
     def put(obj: bpy.types.Object, root: str, mat: bpy.types.Material) -> None:
         obj.parent = groups[root]
         mesh_data(obj).materials.append(mat)
-
-    def block(
-        name: str, center: tuple[float, float, float], size: tuple[float, float, float]
-    ) -> bpy.types.Object:
-        x, y, z = center
-        w, d, h = size
-        b = min(2.0, w / 5, d / 5)
-        outline = [
-            (-w / 2 + b, -d / 2),
-            (w / 2 - b, -d / 2),
-            (w / 2, -d / 2 + b),
-            (w / 2, d / 2 - b),
-            (w / 2 - b, d / 2),
-            (-w / 2 + b, d / 2),
-            (-w / 2, d / 2 - b),
-            (-w / 2, -d / 2 + b),
-        ]
-        points = [(x + a, y + c, z + side * h / 2) for side in (-1, 1) for a, c in outline]
-        faces = [tuple(reversed(range(8))), tuple(range(8, 16))]
-        faces.extend((i, (i + 1) % 8, (i + 1) % 8 + 8, i + 8) for i in range(8))
-        return mesh(name, points, faces)
 
     put(block("Archive_foundation", (0, 0, -21), (960, 600, 38)), "Floor", deep)
     # Narrow still-water joints sit below a broad, walkable stone plane.
@@ -149,23 +129,5 @@ def build() -> None:
             "Lantern",
             bronze,
         )
-    # Joining by material keeps repeated architectural detail inexpensive in the browser.
-    for root in groups.values():
-        materials = {
-            present(mesh_data(obj).materials[0]) for obj in root.children if obj.type == "MESH"
-        }
-        for mat in materials:
-            candidates = [
-                o
-                for o in root.children
-                if o.type == "MESH" and mesh_data(o).materials[0] == mat and o.name != "Pillar_cap"
-            ]
-            if len(candidates) < 2:
-                continue
-            bpy.ops.object.select_all(action="DESELECT")
-            for obj in candidates:
-                obj.select_set(True)
-            present(bpy.context.view_layer).objects.active = candidates[0]
-            bpy.ops.object.join()
-            active_object().name = f"{root.name}_{mat.name.split(' · ')[-1].replace(' ', '_')}"
+    join_parts(groups)
     present(bpy.context.scene)["environment_kind"] = "archive"

@@ -69,5 +69,6 @@ full campaign played by a human.
 Compact measurements, pins and selected capture hashes are retained in
 `packages/dcc-workbench/assets/night-passage/archive-review.json`; full vertex
 arrays and disposable edited sources remain regenerable under `test-results`.
-This completes **two of four** environment kits. Cinder Court, Starless Gate and
-further patron effects/reward icons remain queued under the progressive goal.
+This was the **second of four** environment kits. The subsequent
+[Cinder Court](cinder.md) brings coverage to three. Starless Gate and further
+patron effects/reward icons remain queued under the progressive goal.

@@ -71,7 +71,7 @@ The browser review records unretimed 1× playback and six phase images per clip.
 Native front/side/rear clay, material portrait, action poses, desktop/narrow arena
 and this playback are separate visual evidence. Passing checks is not user art
 acceptance. The ordinary enemy batch below adds four native families; the four
-authored guardians are described below, followed by the first two environment kits.
+authored guardians are described below, followed by the first three environment kits.
 Precise two-hand string contact and directional movement remain polish opportunities.
 
 ## Five weapon identities
@@ -327,8 +327,8 @@ vertices with delivery geometry, accounting for normal/material vertex splits.
 Original source and published model remain unchanged. Native arrays and edited
 copies are disposable `test-results` evidence. The [visual record](../../../../docs/art/assets/night-passage/sepulcher.md)
 retains compact native and production captures. This static kit has no animation
-claims. Drowned Archive shares these placement contracts; the final two regions
-still use blockout scenery.
+claims. Drowned Archive and Cinder Court share these placement contracts; Starless Gate
+still uses blockout scenery.
 
 ## Drowned Archive environment
 
@@ -360,3 +360,39 @@ its receipt alone now pins the updated scripts. To add the next kit, retain thes
 part contracts, register its saved kind/builder in the native exporter and its
 region/URL in `scene/environment.ts`, then extend the per-kit delivery and browser
 cases. Do not introduce region-dependent collision or rules RNG into presentation.
+
+## Cinder Court environment
+
+`environments/cinder/source.blend` owns the third static kit: broad charcoal
+basalt paving, three peaked furnace monuments, six-sided columns with copper
+caps and bindings, and open ember braziers. `environment_cinder.py` constructs
+fresh candidates (`bootstrap --kind cinder` with a fresh source path). Saved
+geometry and materials remain authoritative. `environment_geometry.py` holds the
+small chamfered-block and material-joining helpers shared by Archive and Cinder;
+there is no runtime construction recipe. Both previous saved masters re-exported
+byte-identically after this shared-authoring change.
+
+The same four part roots and dimensions above apply. Floor decoration contains
+no luminous cracks; embers remain at boundaries and lamps to avoid confusing
+orange ground warnings. Column seals follow the shaft taper. A saved repair moved
+48 seal vertices onto the taper while leaving the shaft and other surfaces intact;
+the fresh-candidate recipe records that correction. A second repair reversed 30
+seal polygons after code review exposed a reflected construction basis; the recipe
+now preserves orientation. Delivery checks require positive signed volume for
+each closed seal, catching inward faces even when positions agree.
+The flames are static authored
+geometry; this kit does not promise a particle, light-flicker or heat-haze system.
+
+Use `environment_delivery.py` with this source for `export`, `review` and `verify`,
+each with a fresh output directory. Set `NIGHT_PASSAGE_CINDER_RESULTS` to the new
+native verification directory alongside the two earlier environment variables:
+
+```sh
+NIGHT_PASSAGE_ENVIRONMENT_RESULTS=test-results/sepulcher-native NIGHT_PASSAGE_ARCHIVE_RESULTS=test-results/archive-native NIGHT_PASSAGE_CINDER_RESULTS=test-results/cinder-native npx playwright test tests/browser/night-passage-environment.spec.ts --project=functional --project=requires-blender
+npm run check:full
+```
+
+The [visual record](../../../../docs/art/assets/night-passage/cinder.md) separates
+native geometry agreement, desktop/narrow and actual UI review from user art
+acceptance. The shared browser journeys include a legal region-three chronicle
+import, movement, pause and reload. Starless Gate is the remaining environment kit.

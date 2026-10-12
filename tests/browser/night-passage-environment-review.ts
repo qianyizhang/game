@@ -18,8 +18,8 @@ import { spawnEnemy } from '../../src/games/night-passage/domain/encounters';
 import { translate } from '../../src/games/night-passage/domain/geometry';
 import type { LayoutId, State } from '../../src/games/night-passage/domain/types';
 
-type EnvironmentKind = 'sepulcher' | 'archive';
-const regions: Record<EnvironmentKind, number> = { sepulcher: 0, archive: 1 };
+type EnvironmentKind = 'sepulcher' | 'archive' | 'cinder';
+const regions: Record<EnvironmentKind, number> = { sepulcher: 0, archive: 1, cinder: 2 };
 const assetUrl = (kind: EnvironmentKind) =>
   `/packages/dcc-workbench/assets/night-passage/environment-${kind}.glb`;
 const authoredName = (kind: EnvironmentKind) => `night-passage-authored-${kind}`;
@@ -175,7 +175,7 @@ export async function inspectEnvironment(kind: EnvironmentKind = 'sepulcher') {
       });
     }
     const otherRegions = [];
-    for (const region of [2, 3]) {
+    for (const region of [3]) {
       state.region = region;
       sync();
       otherRegions.push({

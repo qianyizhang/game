@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage Cinder Court environment",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "primary author visual self-review",
+    "independentArtApproval": false
+  },
+  "authority": {
+    "sourceSha256": "27651a84df3e97d4be57fbc94a343408f98c96cf2d5aec32c80ed6d7b0f83dc9",
+    "modelSha256": "c301582c7552dfaffa75c7317024ca0d42aa4cabd8c748b4dff44c8c4f3e92dc"
+  },
+  "review": [
+    "Inspected native clay/material assembly, pillar front/side/rear, brazier, all four production layouts, matched fallback, narrow and live UI.",
+    "Moved 48 saved seal vertices onto the taper. Code review found reflected face winding; reversed 30 saved seal polygons and corrected the recipe basis. Signed-volume regression rejects the old inward solids at approximately -39.93 per seal and passes the repaired delivery.",
+    "Refreshed Cinder-specific proof and retained captures after repair. Broad dark paving keeps orange warnings distinct; copper caps and peaked furnaces give regional identity.",
+    "Flames are static emissive geometry. Fine grille and seal detail recedes at narrow scale. Further surface polish remains open."
+  ],
+  "geometryAgreement": {
+    "units": "game units",
+    "tolerance": 0.001,
+    "sampling": "Every evaluated native and delivered vertex, allowing export splits by symmetric nearest-vertex matching.",
+    "meshes": 18,
+    "nativeVertices": 1910,
+    "deliveryVertices": 5786,
+    "maximumOriginalError": 0,
+    "maximumEditedError": 0,
+    "editedCapChange": 4,
+    "otherSurfacesUnchanged": true
+  },
+  "savedEditProof": {
+    "authoritativeSourceAndDeliveryUnchanged": true,
+    "editedObject": "Pillar_cap",
+    "vertexChangeUnits": 4,
+    "edit": "Raise saved Pillar_cap top by four game units, save/reload/export",
+    "sourceSha256": "27651a84df3e97d4be57fbc94a343408f98c96cf2d5aec32c80ed6d7b0f83dc9",
+    "modelSha256": "c301582c7552dfaffa75c7317024ca0d42aa4cabd8c748b4dff44c8c4f3e92dc"
+  },
+  "runtime": {
+    "initialFallback": true,
+    "pausedArrival": true,
+    "rulesUnchanged": true,
+    "siblingRegion": {
+      "region": 0,
+      "active": true,
+      "previousHidden": true,
+      "fallbackHidden": true
+    },
+    "layouts": [
+      {
+        "id": "court",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "gallery",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "islands",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "crossroads",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      }
+    ],
+    "legalChronicleUI": "Generated region-two-index approach through accepted commands, imported, moved, paused and reloaded; no human campaign completion claim."
+  },
+  "checks": {
+    "maintenance": "passed",
+    "applicationTests": 384,
+    "seededSimulations": 22,
+    "geometryTests": 128,
+    "browserJourneys": 13,
+    "nativeAgreement": "Cinder fresh saved-edit comparison; older masters unchanged and re-export byte-identical.",
+    "afterFinalRepair": "Python, DCC typecheck/lint, three environment delivery checks, build and four Cinder-specific browser journeys refreshed. Full check:full passed before final seal winding repair."
+  },
+  "evidence": {
+    "cinder-live-ui.png": "5afc77fdd3754f74e18dc9dd4b52044077bf13e68c72128c691c576a3418af7b",
+    "clay-assembly.png": "c59df938dcdc5c141e72ba45119a95987ab49ea01961253698831f6ff8607309",
+    "clay-pillar-rear.png": "8384ff0b2c742a5556988477d8e185dd5d6dbca0d89b8ec9310c8a30274c355c",
+    "crossroads-fallback-desktop.png": "f9022a78404fc9cfab2e386f0f0ba325100999a839ebc3c315f230deb392f10b",
+    "crossroads-native-desktop.png": "aef1587b929168f6e3e42abbe17cc241581c32df1094f23fee1a8c23ef87604a",
+    "crossroads-native-narrow.png": "9eed9494aefa44d0909a8041be86296800a230908675c97d0ddd15e2cc6cf766",
+    "material-assembly-rear.png": "e06be4d30269bf6a49be2093e6747bd53f659e976137a8fcaa74f746dbb008e3",
+    "material-assembly.png": "158bbb9db3dcb813c5eb403676f977d691d565bbc68fa5f720c54a99d5ab22e1",
+    "material-lantern.png": "999536f3264e137b7791d777a0492fcf2a515bf3a277d4845c94b23950493c77",
+    "material-pillar-side.png": "406561df4a0846c89cb7da74dd04afa0ab9d23b958eef32db36feb78755c6d49",
+    "material-pillar.png": "9b06159e879627e492cca9254693ce6b7dba69536e6237771320c050b901a4f8"
+  }
+}

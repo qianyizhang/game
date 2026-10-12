@@ -1,5 +1,6 @@
 import * as T from 'three';
 import { GLTFLoader, type GLTF } from 'three/addons/loaders/GLTFLoader.js';
+import cinderUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/environment-cinder.glb?url';
 import archiveUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/environment-archive.glb?url';
 import sepulcherUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/environment-sepulcher.glb?url';
 import { isMesh } from '../../../../../shared/three/objects';
@@ -18,6 +19,7 @@ export function createEnvironment(parent: T.Group, invalidate: () => void) {
   const kits = [
     createKit(parent, invalidate, 0, 'sepulcher', sepulcherUrl),
     createKit(parent, invalidate, 1, 'archive', archiveUrl),
+    createKit(parent, invalidate, 2, 'cinder', cinderUrl),
   ];
   return {
     sync(state: State): RoomPillar[] | null {

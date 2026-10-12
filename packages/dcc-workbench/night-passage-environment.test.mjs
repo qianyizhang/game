@@ -14,7 +14,7 @@ const read = (path) => readFileSync(new URL(path, import.meta.url));
 const hash = (path) => createHash('sha256').update(read(path)).digest('hex');
 const roots = ['Floor', 'Boundary', 'Lantern', 'Pillar'];
 
-for (const kind of ['sepulcher', 'archive'])
+for (const kind of ['sepulcher', 'archive', 'cinder'])
   await test(`${kind} pins its saved static kit and keeps its surfaces inside the rules footprint contract`, async () => {
     const receipt = record(
       JSON.parse(read(`./assets/night-passage/environment-${kind}.json`).toString()),
@@ -71,6 +71,37 @@ for (const kind of ['sepulcher', 'archive'])
     // Use the consumer's hierarchy, including native export-axis transforms.
     const loaded = await new GLTFLoader().parseAsync(Uint8Array.from(bytes).buffer, '');
     loaded.scene.updateMatrixWorld(true);
+    if (kind === 'cinder') {
+      // Each seal is a closed solid. Signed volume detects inward face winding,
+      // which unit-length normals and positional agreement cannot detect.
+      const seals = loaded.scene.getObjectByName('Pillar_aged_copper');
+      assert.ok(seals && isMesh(seals));
+      const indices = seals.geometry.index;
+      assert.ok(indices);
+      const volumes = [0, 0, 0],
+        counts = [0, 0, 0];
+      for (let i = 0; i < indices.count; i += 3) {
+        const vertices = [0, 1, 2].map((offset) =>
+          seals
+            .getVertexPosition(indices.getX(i + offset), new T.Vector3())
+            .applyMatrix4(seals.matrixWorld),
+        );
+        if (!vertices.every((point) => point.y > 30 && point.y < 49)) continue;
+        const center = vertices.reduce((sum, point) => sum.add(point), new T.Vector3());
+        const directions = volumes.map((_, index) => {
+          const angle = Math.PI / 6 + (index * Math.PI * 2) / 3;
+          return center.x * Math.cos(angle) - center.z * Math.sin(angle);
+        });
+        const seal = directions.indexOf(Math.max(...directions));
+        volumes[seal] += vertices[0].dot(vertices[1].clone().cross(vertices[2])) / 6;
+        counts[seal]++;
+      }
+      assert.ok(counts.every((count) => count > 0));
+      assert.ok(
+        volumes.every((volume) => volume > 1),
+        `Outward seal volumes: ${volumes.join(', ')}`,
+      );
+    }
     /** @type {Set<T.Mesh>} */
     const covered = new Set();
     try {

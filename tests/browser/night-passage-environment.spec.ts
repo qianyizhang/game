@@ -13,7 +13,7 @@ import {
 import { passageCommand } from '../simulation/night-passage-policy';
 
 const layouts = ['court', 'gallery', 'islands', 'crossroads'];
-for (const kind of ['sepulcher', 'archive'] as const) {
+for (const kind of ['sepulcher', 'archive', 'cinder'] as const) {
   const review = `test-results/night-passage-${kind}/browser`;
 
   test(`${kind} arrives while paused and preserves rules placements and pillar visibility`, async ({
@@ -62,7 +62,7 @@ for (const kind of ['sepulcher', 'archive'] as const) {
       }
     }
     expect(result.otherRegions).toEqual(
-      [2, 3].map((region) => ({ region, fallback: true, nativeHidden: true })),
+      [3].map((region) => ({ region, fallback: true, nativeHidden: true })),
     );
     expect(result.siblingRegion).toEqual({
       region: kind === 'sepulcher' ? 1 : 0,
@@ -161,10 +161,11 @@ for (const kind of ['sepulcher', 'archive'] as const) {
     { tag: '@requires-blender' },
     async ({ page }, info) => {
       test.setTimeout(browserBudget(90000));
-      const directory =
-        kind === 'sepulcher'
-          ? process.env.NIGHT_PASSAGE_ENVIRONMENT_RESULTS
-          : process.env.NIGHT_PASSAGE_ARCHIVE_RESULTS;
+      const directory = {
+        sepulcher: process.env.NIGHT_PASSAGE_ENVIRONMENT_RESULTS,
+        archive: process.env.NIGHT_PASSAGE_ARCHIVE_RESULTS,
+        cinder: process.env.NIGHT_PASSAGE_CINDER_RESULTS,
+      }[kind];
       test.skip(
         !directory,
         `Generate fresh ${kind} native saved-edit verification before this journey.`,
@@ -228,57 +229,62 @@ for (const kind of ['sepulcher', 'archive'] as const) {
   );
 }
 
-test('a legal Archive chronicle resumes in the authored arena and reloads paused', async ({
-  page,
-}) => {
-  let session = dispatch(newSession('passage-verification'), {
-    type: 'start',
-    weapon: 'sword',
-    runes: ['vigor', 'fleet'],
-  }).session;
-  for (
-    let i = 0;
-    i < 20000 &&
-    !(session.state.region === 1 && session.state.phase === 'combat') &&
-    session.state.phase !== 'lost';
-    i++
-  )
-    session = dispatch(session, passageCommand(session.state)).session;
-  expect(session.state).toMatchObject({ region: 1, phase: 'combat' });
-  await page.goto('/?game=night-passage');
-  const delivered = page.waitForResponse(
-    (response) => response.url().includes('/environment-archive.glb') && response.status() === 200,
-  );
-  await page.getByLabel('Import Night Passage chronicle').setInputFiles({
-    name: 'archive-approach.json',
-    mimeType: 'application/json',
-    buffer: Buffer.from(exportSession(session)),
-  });
-  await delivered;
-  await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
-  const arena = page.locator('canvas[aria-label="Night Passage combat arena"]');
-  await expect(arena).toHaveAttribute('data-view', 'scene');
-  await page.getByRole('button', { name: 'Resume passage', exact: true }).last().click();
-  await arena.focus();
-  await page.keyboard.down('d');
-  await expect
-    .poll(
-      async () =>
-        importSession((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!).state
-          .player.x,
+for (const kind of ['archive', 'cinder'] as const) {
+  const region = kind === 'archive' ? 1 : 2;
+  test(`a legal ${kind} chronicle resumes in the authored arena and reloads paused`, async ({
+    page,
+  }) => {
+    test.setTimeout(browserBudget(60000));
+    let session = dispatch(newSession('passage-verification'), {
+      type: 'start',
+      weapon: 'sword',
+      runes: ['vigor', 'fleet'],
+    }).session;
+    for (
+      let i = 0;
+      i < 20000 &&
+      !(session.state.region === region && session.state.phase === 'combat') &&
+      session.state.phase !== 'lost';
+      i++
     )
-    .toBeGreaterThan(session.state.player.x + 10);
-  await page.keyboard.up('d');
-  await mkdir('test-results/night-passage-archive/browser', { recursive: true });
-  await page.screenshot({
-    path: 'test-results/night-passage-archive/browser/archive-live-ui.png',
-    fullPage: true,
+      session = dispatch(session, passageCommand(session.state)).session;
+    expect(session.state).toMatchObject({ region, phase: 'combat' });
+    await page.goto('/?game=night-passage');
+    const delivered = page.waitForResponse(
+      (response) =>
+        response.url().includes(`/environment-${kind}.glb`) && response.status() === 200,
+    );
+    await page.getByLabel('Import Night Passage chronicle').setInputFiles({
+      name: `${kind}-approach.json`,
+      mimeType: 'application/json',
+      buffer: Buffer.from(exportSession(session)),
+    });
+    await delivered;
+    await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
+    const arena = page.locator('canvas[aria-label="Night Passage combat arena"]');
+    await expect(arena).toHaveAttribute('data-view', 'scene');
+    await page.getByRole('button', { name: 'Resume passage', exact: true }).last().click();
+    await arena.focus();
+    await page.keyboard.down('d');
+    await expect
+      .poll(
+        async () =>
+          importSession((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!).state
+            .player.x,
+      )
+      .toBeGreaterThan(session.state.player.x + 10);
+    await page.keyboard.up('d');
+    await mkdir(`test-results/night-passage-${kind}/browser`, { recursive: true });
+    await page.screenshot({
+      path: `test-results/night-passage-${kind}/browser/${kind}-live-ui.png`,
+      fullPage: true,
+    });
+    await page.getByRole('button', { name: 'Pause', exact: true }).click();
+    const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
+    expect(importSession(saved!).state.region).toBe(region);
+    await page.reload();
+    await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
+    await expect(arena).toHaveAttribute('data-view', 'scene');
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
   });
-  await page.getByRole('button', { name: 'Pause', exact: true }).click();
-  const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
-  expect(importSession(saved!).state.region).toBe(1);
-  await page.reload();
-  await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
-  await expect(arena).toHaveAttribute('data-view', 'scene');
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
-});
+}
