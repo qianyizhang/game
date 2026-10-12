@@ -18,7 +18,7 @@ cache-dir = ".work/cache/uv"
 [tool.ruff]
 target-version = "py312"
 line-length = 100
-include = ["packages/dcc-workbench/blender/*.py", "packages/dcc-workbench/subjects/canid/authoring/*.py", "packages/dcc-workbench/subjects/boar/authoring/*.py", "packages/dcc-workbench/subjects/raven/authoring/*.py", "packages/dcc-workbench/subjects/otter/authoring/*.py"]
+include = ["packages/dcc-workbench/blender/*.py", "packages/dcc-workbench/subjects/canid/authoring/*.py", "packages/dcc-workbench/subjects/boar/authoring/*.py", "packages/dcc-workbench/subjects/raven/authoring/*.py", "packages/dcc-workbench/subjects/otter/authoring/*.py", "packages/dcc-workbench/subjects/night-passage/authoring/*.py"]
 
 # Blender 4.5 embeds Python 3.11; native scripts must remain parseable there.
 [tool.ruff.per-file-target-version]
@@ -27,6 +27,7 @@ include = ["packages/dcc-workbench/blender/*.py", "packages/dcc-workbench/subjec
 "packages/dcc-workbench/subjects/boar/authoring/*.py" = "py311"
 "packages/dcc-workbench/subjects/raven/authoring/*.py" = "py311"
 "packages/dcc-workbench/subjects/otter/authoring/*.py" = "py311"
+"packages/dcc-workbench/subjects/night-passage/authoring/*.py" = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
@@ -34,4 +35,4 @@ select = ["E", "F", "I", "B", "UP"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
-files = ["packages/dcc-workbench/blender", "packages/dcc-workbench/subjects/canid/authoring", "packages/dcc-workbench/subjects/boar/authoring", "packages/dcc-workbench/subjects/raven/authoring", "packages/dcc-workbench/subjects/otter/authoring"]
+files = ["packages/dcc-workbench/blender", "packages/dcc-workbench/subjects/canid/authoring", "packages/dcc-workbench/subjects/boar/authoring", "packages/dcc-workbench/subjects/raven/authoring", "packages/dcc-workbench/subjects/otter/authoring", "packages/dcc-workbench/subjects/night-passage/authoring"]

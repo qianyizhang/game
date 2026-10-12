@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "0df79cdbcf22c114d86885b4c800c578f0455675d1d01405568359b11d4ecbec",
+  "modelSha256": "a6bab2b6c0748e2b0f6056db268256abb6cc82776e75bde1ac701efa4771a5b5",
+  "meshSha256": "d9034f59fb7c28a9fcc7aaa7a15912cd52363901d0f3d4f7c24ba707c4112fbe",
+  "blender": "4.5.14 LTS",
+  "clips": {
+    "idle": {
+      "seconds": 2.0,
+      "loop": true,
+      "contactPhase": 0.45
+    },
+    "run": {
+      "seconds": 0.6,
+      "loop": true,
+      "contactPhase": 0.45
+    },
+    "dodge": {
+      "seconds": 0.5,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "slash": {
+      "seconds": 0.6,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "thrust": {
+      "seconds": 0.6,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "shoot": {
+      "seconds": 0.8,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "guard": {
+      "seconds": 0.7,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "punch": {
+      "seconds": 0.5,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "cast": {
+      "seconds": 0.8,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "death": {
+      "seconds": 1.0,
+      "loop": false,
+      "contactPhase": 0.45
+    }
+  },
+  "support": {
+    "idle": {
+      "frames": 61,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.27603957435986e-06,
+      "loopMatrixError": 0.0
+    },
+    "run": {
+      "frames": 19,
+      "minimumSurfaceHeight": 0.024998994544148445,
+      "maximumFootTargetError": 0.019472219437579177,
+      "loopMatrixError": 0.0
+    },
+    "dodge": {
+      "frames": 16,
+      "minimumSurfaceHeight": 0.02492828480899334,
+      "maximumFootTargetError": 7.492994491776041e-05,
+      "loopMatrixError": 0.0
+    },
+    "slash": {
+      "frames": 19,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.286539364971613e-06,
+      "loopMatrixError": 0.0
+    },
+    "thrust": {
+      "frames": 19,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.286539364971613e-06,
+      "loopMatrixError": 0.0
+    },
+    "shoot": {
+      "frames": 25,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.3081893879340147e-06,
+      "loopMatrixError": 0.0
+    },
+    "guard": {
+      "frames": 22,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.2865879191865143e-06,
+      "loopMatrixError": 0.0
+    },
+    "punch": {
+      "frames": 16,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.27603957435986e-06,
+      "loopMatrixError": 0.0
+    },
+    "cast": {
+      "frames": 25,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.3081893879340147e-06,
+      "loopMatrixError": 0.0
+    },
+    "death": {
+      "frames": 31,
+      "minimumSurfaceHeight": 0.02491038851439953,
+      "maximumFootTargetError": 9.800585588754237e-05,
+      "loopMatrixError": 0.9154794216156006
+    }
+  },
+  "supportScope": "All authored 30fps frames: surface floor and IK reach; in-place run, no claim of world-space foot locking at every rules speed",
+  "exportScripts": {
+    "hero_delivery.py": "00d557bc30587f101468719289a87a8344694aa44d266f1893faaa107cca8f4a",
+    "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "hero_review.py": "6d1927a35f6e061e01f01f070b40f7957e54fa46e592ba0044050dff416b613e",
+    "hero_rig.py": "bef831566cb4fb0c6ce34801ae5fb7686f94ccf936e114332e5a7130afccde0e"
+  }
+}

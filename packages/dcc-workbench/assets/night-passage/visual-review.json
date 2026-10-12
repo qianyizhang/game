@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage lantern bearer",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "owner visual self-review",
+    "independentArtApproval": false
+  },
+  "verdict": "Delivered as the first lightweight authored gameplay hero; further animation and weapon choreography polish remains.",
+  "sourceSha256": "0df79cdbcf22c114d86885b4c800c578f0455675d1d01405568359b11d4ecbec",
+  "modelSha256": "a6bab2b6c0748e2b0f6056db268256abb6cc82776e75bde1ac701efa4771a5b5",
+  "brief": {
+    "identity": "pointed teal hood, inset ivory half mask, asymmetric mantle, fitted boots",
+    "medium": "stylized faceted cloth, leather, ivory and restrained bronze",
+    "display": "desktop 2.5D arena plus 390px paused layout"
+  },
+  "review": [
+    "Native front, side and rear clay retain a connected hood/torso silhouette and clear leg separation. The mantle is asymmetric and has thickness.",
+    "Enlarged material views show broad cloth planes, quiet dark clothing and a small light face; no texture maps are required for this first batch.",
+    "Recorded actual 1x clips with six phase captures each distinguish run, dodge, casting and collapse. Basic attack clips show preparation and recovery, but share poses across some specials.",
+    "Actual chamber screenshot preserves the teal player, health bar and ground warning visibility; narrow layout retains the arena but desktop input remains the supported mode."
+  ],
+  "corrections": [
+    "Converted authored pitch/yaw into fitted joint local axes after the first slash leaned instead of turning.",
+    "Inset the mask and recess into the hood.",
+    "Corrected native hand socket basis to preserve existing weapons X-forward/Y-up in glTF."
+  ],
+  "technical": {
+    "maximumOriginalBrowserError": 6.15217661149105e-06,
+    "maximumEditedBrowserError": 6.15217661149105e-06,
+    "editedCastDifference": 0.18601560390533084,
+    "units": "model units",
+    "sampleCoverage": "Every authored 30fps frame, 16 surface vertices per named mesh, 320 probes per pose",
+    "nativeEdit": {
+      "meshAndWeightsUnchanged": true,
+      "authoritativeSourceAndDeliveryUnchanged": true,
+      "headChangeRadians": 0.30000001192092896,
+      "editedClip": "cast",
+      "editedFrame": 10,
+      "sourceSha256": "0df79cdbcf22c114d86885b4c800c578f0455675d1d01405568359b11d4ecbec",
+      "modelSha256": "a6bab2b6c0748e2b0f6056db268256abb6cc82776e75bde1ac701efa4771a5b5"
+    },
+    "support": {
+      "idle": {
+        "frames": 61,
+        "minimumSurfaceHeight": 0.024999301880598068,
+        "maximumFootTargetError": 2.27603957435986e-06,
+        "loopMatrixError": 0.0
+      },
+      "run": {
+        "frames": 19,
+        "minimumSurfaceHeight": 0.024998994544148445,
+        "maximumFootTargetError": 0.019472219437579177,
+        "loopMatrixError": 0.0
+      },
+      "dodge": {
+        "frames": 16,
+        "minimumSurfaceHeight": 0.02492828480899334,
+        "maximumFootTargetError": 7.492994491776041e-05,
+        "loopMatrixError": 0.0
+      },
+      "slash": {
+        "frames": 19,
+        "minimumSurfaceHeight": 0.024999301880598068,
+        "maximumFootTargetError": 2.286539364971613e-06,
+        "loopMatrixError": 0.0
+      },
+      "thrust": {
+        "frames": 19,
+        "minimumSurfaceHeight": 0.024999301880598068,
+        "maximumFootTargetError": 2.286539364971613e-06,
+        "loopMatrixError": 0.0
+      },
+      "shoot": {
+        "frames": 25,
+        "minimumSurfaceHeight": 0.024999301880598068,
+        "maximumFootTargetError": 2.3081893879340147e-06,
+        "loopMatrixError": 0.0
+      },
+      "guard": {
+        "frames": 22,
+        "minimumSurfaceHeight": 0.024999301880598068,
+        "maximumFootTargetError": 2.2865879191865143e-06,
+        "loopMatrixError": 0.0
+      },
+      "punch": {
+        "frames": 16,
+        "minimumSurfaceHeight": 0.024999301880598068,
+        "maximumFootTargetError": 2.27603957435986e-06,
+        "loopMatrixError": 0.0
+      },
+      "cast": {
+        "frames": 25,
+        "minimumSurfaceHeight": 0.024999301880598068,
+        "maximumFootTargetError": 2.3081893879340147e-06,
+        "loopMatrixError": 0.0
+      },
+      "death": {
+        "frames": 31,
+        "minimumSurfaceHeight": 0.02491038851439953,
+        "maximumFootTargetError": 9.800585588754237e-05,
+        "loopMatrixError": 0.9154794216156006
+      }
+    }
+  },
+  "limits": [
+    "Owner self-review is not user acceptance or independent art direction.",
+    "In-place run has no world-space foot-locking claim at varying rules speeds/directions.",
+    "Weapon meshes, enemies, guardians and environments remain blockouts; dedicated strafe/backpedal and hit reactions remain future polish."
+  ],
+  "evidence": [
+    {
+      "path": "evidence/clay-front.png",
+      "sha256": "0a6ec430c076941a8558c6dae2d3c09d0ec756edcd4f5c05cd43203a1479683a"
+    },
+    {
+      "path": "evidence/clay-rear.png",
+      "sha256": "1380e1159b2a86dfdb0d60796df6986495b3b97d6d7d2353b2871ffa2f6ad5c1"
+    },
+    {
+      "path": "evidence/clay-side.png",
+      "sha256": "53ddd1936b519004c5b26c7b830cdf0e15bcc5d0cf003e367bd859e04508d719"
+    },
+    {
+      "path": "evidence/compact-paused.png",
+      "sha256": "1c9602273fc415d491731d4f9391e88aea960937a835c82ed6f40022a15ce2ad"
+    },
+    {
+      "path": "evidence/hero-1x.webm",
+      "sha256": "322378df2651f28961c7dc253628693e9bdbfef7a7adb6f2af9a24c4d886d1cf"
+    },
+    {
+      "path": "evidence/live-chamber.png",
+      "sha256": "d179f9e41827e2a3620d26bf38b6740980659a9af27e6348001cf1fa5897f50d"
+    },
+    {
+      "path": "evidence/material-portrait.png",
+      "sha256": "808286516d28294ebbac4b98dc8c4d4a5fb893b22251d112511fb51460f8e20a"
+    },
+    {
+      "path": "evidence/motion-sheet.png",
+      "sha256": "d11174a223110ecaed0da5f6ccc6081e642ade70fd774d8ce96a5dcfa53bc2d5"
+    },
+    {
+      "path": "evidence/playback.json",
+      "sha256": "6e7e0b4eb664487b6f44f930768c6bb28efe9e18781bda707e86e54fd4e63ec9"
+    }
+  ]
+}

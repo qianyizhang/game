@@ -1,0 +1,62 @@
+[
+  {
+    "name": "cast",
+    "seconds": 0.800000011920929,
+    "wallSeconds": 0.8144000000953674,
+    "frames": 48
+  },
+  {
+    "name": "death",
+    "seconds": 1,
+    "wallSeconds": 1.0149000000953674,
+    "frames": 61
+  },
+  {
+    "name": "dodge",
+    "seconds": 0.5,
+    "wallSeconds": 0.5173000000715255,
+    "frames": 31
+  },
+  {
+    "name": "guard",
+    "seconds": 0.699999988079071,
+    "wallSeconds": 0.7165999999046325,
+    "frames": 43
+  },
+  {
+    "name": "idle",
+    "seconds": 2,
+    "wallSeconds": 2.0155,
+    "frames": 121
+  },
+  {
+    "name": "punch",
+    "seconds": 0.5,
+    "wallSeconds": 0.5181000000238418,
+    "frames": 31
+  },
+  {
+    "name": "run",
+    "seconds": 0.6000000238418579,
+    "wallSeconds": 0.6160999999046326,
+    "frames": 37
+  },
+  {
+    "name": "shoot",
+    "seconds": 0.800000011920929,
+    "wallSeconds": 0.8165,
+    "frames": 49
+  },
+  {
+    "name": "slash",
+    "seconds": 0.6000000238418579,
+    "wallSeconds": 0.617,
+    "frames": 37
+  },
+  {
+    "name": "thrust",
+    "seconds": 0.6000000238418579,
+    "wallSeconds": 0.6156999999284745,
+    "frames": 37
+  }
+]

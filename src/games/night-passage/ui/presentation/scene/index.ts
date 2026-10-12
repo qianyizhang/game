@@ -38,7 +38,6 @@ export function createSceneRenderer(canvas: HTMLCanvasElement, unavailable: () =
   scene.add(sun, sun.target);
   const room = createRoom(world);
   const effects = createGroundEffects(world);
-  const actors = createActors(world);
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let disposed = false;
   let dirty = true;
@@ -49,6 +48,7 @@ export function createSceneRenderer(canvas: HTMLCanvasElement, unavailable: () =
   const redraw = () => {
     dirty = true;
   };
+  const actors = createActors(world, redraw);
   const resize = () => {
     if (disposed) return;
     const box = canvas.getBoundingClientRect();

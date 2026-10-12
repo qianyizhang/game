@@ -38,6 +38,7 @@ export default defineConfig({
         '**/boar.spec.ts',
         '**/raven.spec.ts',
         '**/otter.spec.ts',
+        '**/night-passage-hero.spec.ts',
         '**/dcc-workbench.spec.ts',
         '**/native-assets.spec.ts',
       ],

@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { WEAPONS, weapon } from '../../../domain/content';
 import type { EnemyKind, State, WeaponId } from '../../../domain/types';
+import { createHero } from './hero';
 
 type Actor = {
   root: THREE.Group;
@@ -27,8 +28,11 @@ const colors = {
   exposed: '#df9fff',
 } as const;
 
-/** Temporary gameplay blockout. No authored asset or rules state is created here. */
-export function createActors(parent: THREE.Group): {
+/** Native hero with a loading fallback; enemies remain gameplay blockouts. */
+export function createActors(
+  parent: THREE.Group,
+  invalidate: () => void = () => {},
+): {
   sync(state: State, reducedMotion: boolean): void;
   dispose(): void;
 } {
@@ -180,12 +184,12 @@ export function createActors(parent: THREE.Group): {
     cue.visible = false;
     root.add(cue);
     const background = new THREE.Sprite(spriteMaterial('#18252b'));
-    background.position.y = height + 12;
+    background.position.y = hero ? 76 : height + 12;
     background.scale.set(35, 5, 1);
     background.renderOrder = 30;
     root.add(background);
     const health = new THREE.Sprite(spriteMaterial(hero ? '#80ead4' : '#ef987c'));
-    health.position.y = height + 12;
+    health.position.y = hero ? 76 : height + 12;
     health.renderOrder = 31;
     root.add(health);
     return { root, facing, torso, hand, body, cue, health, kind, seen: 0 };
@@ -199,6 +203,7 @@ export function createActors(parent: THREE.Group): {
     hero.hand.add(weaponGroup);
     held.set(entry.id, weaponGroup);
   }
+  const authoredHero = createHero(hero.root, hero.hand, held, invalidate);
   const active = new Map<number, Actor>();
   const spare = new Map<EnemyKind, Actor[]>();
   let generation = 0;
@@ -226,6 +231,7 @@ export function createActors(parent: THREE.Group): {
       generation++;
       const player = state.player;
       hero.root.position.set(player.x, 0, player.y);
+      hero.facing.visible = !authoredHero.sync(state, reducedMotion);
       hero.facing.rotation.y = -(player.strike?.aim ?? player.aim);
       const striking = player.strike !== null;
       const dashing = player.dashLeft > 0;
@@ -278,6 +284,7 @@ export function createActors(parent: THREE.Group): {
     dispose() {
       if (disposed) return;
       disposed = true;
+      authoredHero.dispose();
       group.removeFromParent();
       group.clear();
       active.clear();
