@@ -11,7 +11,13 @@ import { passageCommand } from '../simulation/night-passage-policy';
 import { browserBudget } from './budget';
 
 const review = 'test-results/night-passage';
-test.beforeEach(() => mkdirSync(review, { recursive: true }));
+test.beforeEach(async ({ page }) => {
+  mkdirSync(review, { recursive: true });
+  // Preserve the baseline renderer's journeys alongside the separate 2.5D suite.
+  await page.addInitScript(() =>
+    localStorage.setItem('card-workshop.night-passage.view.v1', 'canvas'),
+  );
+});
 
 test.describe('presentation lifecycle', () => {
   test.use({ deviceScaleFactor: 2 });

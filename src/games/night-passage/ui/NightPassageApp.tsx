@@ -18,9 +18,20 @@ import {
 } from '../domain/content';
 import type { Command, Input, Point, RuneId, WeaponId } from '../domain/types';
 import { createCanvasRenderer } from './presentation/canvas';
+import { createSceneRenderer } from './presentation/scene';
 import type { Renderer } from './presentation/renderer';
 import { PassageAudio } from './audio';
 import './night-passage.css';
+
+const VIEW_KEY = 'card-workshop.night-passage.view.v1';
+type Presentation = 'scene' | 'canvas';
+function preferredView(): Presentation {
+  try {
+    return localStorage.getItem(VIEW_KEY) === 'canvas' ? 'canvas' : 'scene';
+  } catch {
+    return 'scene';
+  }
+}
 
 function load(): { session: Session; error: string; preserve: boolean; original: string | null } {
   let saved: string | null = null;
@@ -70,6 +81,8 @@ export default function NightPassageApp() {
   const [error, setError] = useState(initial.error);
   const [storage, setStorage] = useState('');
   const [paused, setPaused] = useState(true);
+  const [presentation, setPresentation] = useState<Presentation>(preferredView);
+  const [presentationNotice, setPresentationNotice] = useState('');
   const [resetOpen, setResetOpen] = useState(false);
   const [newSeed, setNewSeed] = useState('a-light-in-the-dark');
   const [sound, setSound] = useState(true);
@@ -91,14 +104,34 @@ export default function NightPassageApp() {
   useEffect(() => {
     const element = canvas.current;
     if (!element) return;
-    const viewRenderer = createCanvasRenderer(element);
+    const unavailable = () => {
+      setPaused(true);
+      setPresentationNotice(
+        'The 2.5D view became unavailable. Your passage is paused in 2D; you can resume here.',
+      );
+      setPresentation('canvas');
+    };
+    let viewRenderer: Renderer;
+    try {
+      viewRenderer =
+        presentation === 'scene'
+          ? createSceneRenderer(element, unavailable)
+          : createCanvasRenderer(element);
+    } catch {
+      if (presentation === 'scene') unavailable();
+      else
+        setPresentationNotice(
+          'The arena could not be drawn. Reload to try again; your chronicle remains exportable.',
+        );
+      return;
+    }
     renderer.current = viewRenderer;
     viewRenderer.draw(session.current.state);
     return () => {
       renderer.current = null;
       viewRenderer.dispose();
     };
-  }, []);
+  }, [presentation]);
   const save = () => {
     if (preserve.current) return;
     try {
@@ -155,13 +188,21 @@ export default function NightPassageApp() {
     const tick = (now: number) => {
       const elapsed = previous ? Math.min(100, now - previous) : 0;
       previous = now;
-      if (!paused && session.current.state.phase === 'combat') {
+      if (!paused && renderer.current && session.current.state.phase === 'combat') {
         accumulator += elapsed;
         const steps = Math.min(6, Math.floor(accumulator / (1000 / 60)));
         if (steps) {
           accumulator -= (steps * 1000) / 60;
           const held = keys.current;
           const ground = pointer.current ? renderer.current?.groundPoint(pointer.current) : null;
+          const direction = renderer.current.groundDirection({
+            x:
+              Number(held.has('d') || held.has('arrowright')) -
+              Number(held.has('a') || held.has('arrowleft')),
+            y:
+              Number(held.has('s') || held.has('arrowdown')) -
+              Number(held.has('w') || held.has('arrowup')),
+          });
           const input: Input = {
             ...controls.current,
             aim: ground
@@ -170,12 +211,8 @@ export default function NightPassageApp() {
                   ground.x - session.current.state.player.x,
                 )
               : controls.current.aim,
-            x:
-              Number(held.has('d') || held.has('arrowright')) -
-              Number(held.has('a') || held.has('arrowleft')),
-            y:
-              Number(held.has('s') || held.has('arrowdown')) -
-              Number(held.has('w') || held.has('arrowup')),
+            x: direction.x,
+            y: direction.y,
             attack: controls.current.attack || held.has('j'),
             special: controls.current.special || held.has('k'),
             cast: held.has('q'),
@@ -217,7 +254,7 @@ export default function NightPassageApp() {
       window.removeEventListener('pagehide', saveCurrent);
       document.removeEventListener('visibilitychange', visibility);
     };
-  }, [paused]);
+  }, [paused, presentation]);
   const focusPlay = () => {
     if (soundEnabled.current) {
       audio.current ??= new PassageAudio();
@@ -241,6 +278,28 @@ export default function NightPassageApp() {
           <h1>Night Passage</h1>
         </div>
         <div className="np-tools">
+          <label>
+            <span className="np-eyebrow">View</span>
+            <select
+              aria-label="Arena view"
+              value={presentation}
+              onChange={(event) => {
+                const next = event.target.value as Presentation;
+                setPaused(true);
+                setPresentation(next);
+                setPresentationNotice('');
+                pointer.current = null;
+                try {
+                  localStorage.setItem(VIEW_KEY, next);
+                } catch {
+                  /* Preference is optional. */
+                }
+              }}
+            >
+              <option value="scene">2.5D view</option>
+              <option value="canvas">2D view</option>
+            </select>
+          </label>
           <button
             aria-pressed={sound}
             onClick={() => {
@@ -364,6 +423,11 @@ export default function NightPassageApp() {
           {error}
         </p>
       )}
+      {presentationNotice && (
+        <p role="alert" className="np-notice">
+          {presentationNotice}
+        </p>
+      )}
       {preserve.current && (
         <div>
           {initial.original !== null && (
@@ -411,11 +475,13 @@ export default function NightPassageApp() {
           </div>
           <div className="np-stage">
             <canvas
+              key={presentation}
               ref={canvas}
               tabIndex={0}
               aria-label="Night Passage combat arena"
               data-phase={view.phase}
               data-tick={view.tick}
+              data-view={presentation}
               onContextMenu={(event) => event.preventDefault()}
               onPointerMove={(event) => {
                 pointer.current = { x: event.clientX, y: event.clientY };

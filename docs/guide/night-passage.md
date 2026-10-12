@@ -63,3 +63,9 @@ The chronicle autosaves locally during combat and after decisions. Export/import
 Chronicles are bounded to 300,000 packed commands, four hours of requested simulation ticks, and 24 MB on import. Realtime inputs use a compact lossless format. **New chronicle** asks for a seed and downloads the current history before resetting all progression. When an unreadable original is preserved, reset downloads that original separately as well as the current playable history. **Download original save** also preserves unreadable or incompatible bytes without resetting. Automatic saving remains visibly paused while original bytes are protected. Rules/content version 2 rejects the earlier prototype replay explicitly; it never silently changes its meaning. Browser quotas can still prevent autosave, so retain portable exports for long histories.
 
 See [engineering and extension points](../engineering/night-passage.md) for ownership and verification.
+
+## Arena views
+
+**2.5D view** is the default: an angled arena with raised columns, shadows and temporary character blockouts. Movement keys follow screen directions; point at the ground location you want to attack. The bright ring marks your character's actual ground position. Columns fade when they obscure actors or active warnings. **2D view** retains the original flat presentation. Changing views pauses combat and preserves your passage; the preference is saved separately from your chronicle.
+
+If 2.5D graphics become unavailable, the game pauses in 2D so you can continue or export. Reduced-motion settings suppress cosmetic character sway while retaining attacks and warning timing. The current blockout is a graphics prototype; authored characters, region scenery and guardian identities will arrive progressively.

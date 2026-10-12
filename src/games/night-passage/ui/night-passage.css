@@ -13,6 +13,7 @@
   box-sizing: border-box;
 }
 .np-app button,
+.np-app select,
 .np-import {
   font: inherit;
   border: 1px solid #73898266;
@@ -29,10 +30,16 @@
   border-color: #b5cabc;
 }
 .np-app button:focus-visible,
+.np-app select:focus-visible,
 .np-app canvas:focus-visible,
 .np-import:focus-within {
   outline: 2px solid #b3e5d3;
   outline-offset: 3px;
+}
+.np-tools > label:has(select) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .np-app button:disabled {
   opacity: 0.4;

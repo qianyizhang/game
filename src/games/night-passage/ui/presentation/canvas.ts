@@ -46,6 +46,9 @@ export function createCanvasRenderer(canvas: HTMLCanvasElement): Renderer {
         y: ((client.y - box.top) * ARENA.height) / box.height,
       };
     },
+    groundDirection(screen) {
+      return screen;
+    },
     dispose() {
       if (disposed) return;
       disposed = true;
