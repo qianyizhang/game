@@ -30,6 +30,8 @@ Checked: 2026-10-02. All three games are implemented. The notes distinguish refe
 
 ## Experiments and historical delivery
 
+- [Night Passage rendering comparison](experiments/2026-10-13-night-passage-rendering.md): local enemy batching measurements, preserved surfaces and limits of the performance claim.
+
 - [Hearth recruitment protocol](hearth-recruitment-v2.md): frozen v5/v1 interventions, factorial grid, audit and decision explorer.
 - [Initial formation-search experiment](experiments/2026-10-04-hearth-ai-v1.md), [eight-seat arena study](experiments/2026-10-04-hearth-arena-v1.md), and [recruitment results](experiments/2026-10-04-hearth-recruitment-v2.md): original conditions, denominators, uncertainty and source receipts.
 - [Content expansion history](content-expansions.md): original v2 card set and v4 Night Market; counts and verification belong to those dated deliveries.

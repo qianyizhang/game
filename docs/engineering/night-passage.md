@@ -32,7 +32,7 @@ The default view is now 2.5D; **View** selects the retained 2D baseline. Switchi
 
 `scene/camera.ts` owns the orthographic camera, viewport fitting and inverse projection. Rules `(x,y)` map to scene `(x,0,z)`; height is cosmetic. `room.ts` builds a replaceable raised arena and columns from the actual collision footprints. Columns fade when they occlude actors or when attack warnings need ground visibility. `ground-effects.ts` places the shared 2D threat paths on a transparent ground decal; circles, sectors, annuli and capsule lines retain their rules dimensions. Projectiles, hazard phases, player position/aim and transient cues share this plane. `actors.ts` combines the authored hero with four pooled native enemy families, five held weapon identities, health/status cues and a crowned guardian blockout. Grounded actor roots follow confirmed positions; reduced motion removes cosmetic sway without hiding essential warnings.
 
-This is the **playable renderer vertical slice**, not completed art production. The room kit and guardians remain temporary procedural blockouts. Authored hero, weapon and ordinary enemy batches are described below. The campaign-parity coverage below exercises all four regions, five weapons and every spell/threat family. Measured performance remains a separate queued refinement. Region identities currently use the same architectural kit and guardian silhouette with different palettes. Native guardian and environment assets remain queued.
+This is the **playable renderer vertical slice**, not completed art production. The room kit and guardians remain temporary procedural blockouts. Authored hero, weapon and ordinary enemy batches are described below. The campaign-parity coverage below exercises all four regions, five weapons and every spell/threat family. Local enemy draw-submission measurements are recorded below; high-DPI and cross-device performance remain unmeasured. Region identities currently use the same architectural kit and guardian silhouette with different palettes. Native guardian and environment assets remain queued.
 
 Verification adds projection/viewport and screen-direction scenarios, live 2.5D movement/dodge/casts, a complete ranged chamber, live melee on a reconstructed guardian approach, all four guardians' initial warning views, view switching/reload, narrow layout and real WebGL context-loss recovery. Guardian screenshots are reconstructed approaches, not complete human-played guardian victories. Review output is regenerable under `test-results/night-passage-scene/`. The original renderer slice changed no saved native files. The hero slice below adds its own saved-source and native/browser agreement evidence.
 
@@ -109,6 +109,14 @@ per opponent and restores native emission afterwards. The archer's nocked arrow
 hides at contact and returns after the visual settle window; native bow/draw-hand
 motion remains in the saved action.
 
+`scene/batches.ts` combines compatible opaque surfaces with the same material
+once per loaded family, before actors clone the library. Meshes must share their
+parent, transforms, skin binding and attribute layout; incompatible or directly
+animated mesh hierarchies remain intact. The nocked arrow stays separate. Cloned
+meshes share one private skeleton per compatible rig, while different actors keep
+independent bones and feedback. Batching owns only derived runtime geometry;
+saved sources and GLB delivery remain authoritative.
+
 The [enemy source guide](../../packages/dcc-workbench/subjects/night-passage/README.md#ordinary-enemy-family)
 locates saved masters, exporters and edit proofs. The
 [visual record](../art/assets/night-passage/enemies.md) distinguishes native
@@ -118,6 +126,21 @@ desktop and 390 pixels, independent paused poses and reduced motion. The native
 journey compares saved and deliberately edited masters to delivered surfaces.
 These are controlled presentation encounters; legal campaign and live UI
 journeys remain separate evidence. Guardian and environment art stays queued.
+
+### Rendering cost
+
+The [dated enemy draw-submission comparison](../research/experiments/2026-10-13-night-passage-rendering.md)
+uses the production renderer and unchanged assets at five-enemy campaign density
+and a synthetic 24-enemy expansion workload. At 960 × 600 and DPR 1 on the local
+M5 Pro, batching reduced total draw calls by 31% and 46%, respectively. CPU
+submission p95 fell; display cadence remained approximately 60 Hz before and
+after. This establishes local rendering headroom, not a cross-device FPS claim.
+The benchmark also guards zero repeated draws for unchanged paused snapshots.
+
+`night-passage-batches.spec.ts` compares material/attribute tuples, oriented
+triangles and deformed vertices in the actual deliveries before/after batching.
+The runtime lifecycle tests cover incompatible delivery fallback, independent
+actors and resource release. No native source or delivery change is required.
 
 ## Time and saves
 
@@ -173,9 +196,9 @@ Each turn selects **one general direction** and finishes one bounded, reviewable
 | Playable baseline       | Four regions, five weapons, patron spells, runes, complete run lifecycle and portable saves; rules and browser journeys pass.                                                                                                                                                                                            | Delivered; placeholder graphics and initial balance.                                                                            |
 | Presentation boundary   | A game-owned renderer lifecycle separates view creation, resize, drawing, pointer-to-ground conversion and disposal from input, sessions and decision UI. Keep the current Canvas view usable for comparison.                                                                                                            | Delivered; Canvas baseline retained.                                                                                            |
 | **2.5D vertical slice** | One complete chamber plays through an angled orthographic 3D scene: camera projection and inverse aiming, grounded hero/enemies, depth and occlusion handling, light/shadow, terrain, projectiles and exact ground-plane telegraphs. Validate movement, dodge, melee, ranged attacks and a guardian at actual play size. | Playable renderer, hero and five weapon identities delivered.                                                                   |
-| **2.5D campaign**       | All four regions and guardians, five weapons and every spell/threat family work through the new presentation. Pause, resize, import/resume, context/resource lifecycle and reduced-motion behavior remain usable.                                                                                                        | Renderer parity delivered; authored assets and measured performance remain separate milestones.                                 |
+| **2.5D campaign**       | All four regions and guardians, five weapons and every spell/threat family work through the new presentation. Pause, resize, import/resume, context/resource lifecycle and reduced-motion behavior remain usable.                                                                                                        | Renderer parity and local enemy submission benchmark delivered; asset coverage remains incomplete.                              |
 | Authored asset coverage | Replace gameplay-critical placeholders in small coherent batches: hero and motion set; five weapon identities and attacks; ordinary enemy families; four guardians; four environment kits; patron spell effects and reward/icon treatment. Track each asset's source, delivery, motion coverage and visual review.       | Hero, five weapons, four enemy families and symbolic combat marks delivered; guardians/environments and further effects queued. |
-| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | Queued; select one direction at a time.                                                                                         |
+| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | First measured rendering slice delivered; combat feel, reward/RNG and encounter variety remain queued.                          |
 | Delivery closeout       | Complete campaigns and browser journeys cover the final content/rendering; no gameplay-critical placeholder remains; extension and asset-authoring paths are documented; report technical results separately from visual self-review and user feedback.                                                                  | Pending preceding milestones.                                                                                                   |
 
 The 2.5D implementation uses the existing Three.js dependency and a fixed angled orthographic camera over the authoritative two-dimensional combat plane. Elevation and animation are presentation until a separately scoped gameplay change says otherwise. Shared threat geometry must project into the scene without changing its damage footprint. Foreground scenery must not conceal actionable enemies or warnings. Establish camera, silhouette, contact and depth before decorative detail. Keep the baseline renderer through migration until campaign parity is established.

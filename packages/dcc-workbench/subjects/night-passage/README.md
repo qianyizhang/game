@@ -151,6 +151,11 @@ keep the procedural fallback, and late loads after disposal release their owned
 resources. Reusing a pooled actor resets movement observation across run, chamber
 and enemy identity. Guardians retain their existing blockouts.
 
+Before cloning, the renderer batches compatible opaque meshes by material and
+keeps the nocked arrow separate. Each cloned rig shares one private skeleton
+across its surfaces. This is derived runtime work only: editable native mesh
+names, geometry, materials, clips and delivered GLB files remain unchanged.
+
 Use a fresh output directory for every operation; repeat with each saved kind:
 
 ```sh

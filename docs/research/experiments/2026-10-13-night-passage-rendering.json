@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-13",
+  "baselineCommit": "ab2180f",
+  "comparison": "Runtime-only batching; baseline then candidate on the same local device. No randomized ordering or cross-device inference.",
+  "sourceSha256": {
+    "src/games/night-passage/ui/presentation/scene/batches.ts": "f3bcd56792af83429c0df202d7220a5e0a301823ab49071bd4a0e05f307bd838",
+    "src/games/night-passage/ui/presentation/scene/enemies.ts": "a2b26a7ec786bc85c926fa81c610b82356eee57208613ebd3c9d1a19cceaf885",
+    "tests/browser/night-passage-performance-review.ts": "dfbf61b484777df7204de70c3c0f7ddd91fc6d5f87b58e6adb2f8e7c2a633e12",
+    "tests/browser/night-passage-performance.spec.ts": "f6c99d05fff53cea3f7ec2283eee22cd959e9c7c7acc4b2850678b3ea39b0232",
+    "tests/browser/night-passage-batches-review.ts": "97af610e4c8494d3fec9e1b8085bf6052b5dcd2769453c6556499c11e073fe05",
+    "tests/browser/night-passage-batches.spec.ts": "8fbdd995f0840125a4af024804ba87622bf6455fe635215e54706928536ccaed"
+  },
+  "deliverySha256": {
+    "hunter": "cf2415716a6d85ffc3b1611c6102e9b089530c623ceb0ac13a4a5ac1086a836a",
+    "archer": "cbbf4c0a2c7c7cbbd0d035aaefe95eb7da36509e97fe39a59cbcde9fe81037fe",
+    "brute": "b65164652e911cbcc56fdf8dde091906e8a23ffec9d4d58b3c750ea6a3c333e2",
+    "witch": "cf24f938252b567bea320fe7721efffddf3ffd2a723b69fe96fad111a134cf44"
+  },
+  "measurements": {
+    "baseline": [
+      {
+        "count": 5,
+        "round": 1,
+        "submissionMs": {
+          "p50": 0.8000000715255737,
+          "p95": 1.100000023841858,
+          "max": 1.2000000476837158,
+          "mean": 0.8438888814714219
+        },
+        "rafIntervalMs": {
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000273,
+          "max": 16.800000000000182
+        },
+        "drawCallsPerFrame": 266,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      },
+      {
+        "count": 24,
+        "round": 1,
+        "submissionMs": {
+          "p50": 1.9000000953674316,
+          "p95": 2.200000047683716,
+          "max": 2.4000000953674316,
+          "mean": 1.960555555423101
+        },
+        "rafIntervalMs": {
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999272,
+          "max": 16.800000000000182
+        },
+        "drawCallsPerFrame": 832,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      },
+      {
+        "count": 5,
+        "round": 2,
+        "submissionMs": {
+          "p50": 0.8000000715255737,
+          "p95": 1.100000023841858,
+          "max": 1.399999976158142,
+          "mean": 0.8427777720822228
+        },
+        "rafIntervalMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "drawCallsPerFrame": 266,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      },
+      {
+        "count": 24,
+        "round": 2,
+        "submissionMs": {
+          "p50": 2.0999999046325684,
+          "p95": 2.299999952316284,
+          "max": 2.4000000953674316,
+          "mean": 2.0466666678587595
+        },
+        "rafIntervalMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "drawCallsPerFrame": 832,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      },
+      {
+        "count": 5,
+        "round": 3,
+        "submissionMs": {
+          "p50": 0.8000000715255737,
+          "p95": 1.100000023841858,
+          "max": 1.3000000715255737,
+          "mean": 0.8333333412806193
+        },
+        "rafIntervalMs": {
+          "p50": 16.69999999999709,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "drawCallsPerFrame": 266,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      },
+      {
+        "count": 24,
+        "round": 3,
+        "submissionMs": {
+          "p50": 2,
+          "p95": 2.1999999284744263,
+          "max": 2.4000000953674316,
+          "mean": 1.9749999960263571
+        },
+        "rafIntervalMs": {
+          "p50": 16.700000000000728,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "drawCallsPerFrame": 832,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      }
+    ],
+    "candidate": [
+      {
+        "count": 5,
+        "round": 1,
+        "submissionMs": {
+          "p50": 0.6999999284744263,
+          "p95": 0.8999999761581421,
+          "max": 1.2000000476837158,
+          "mean": 0.6899999996026357
+        },
+        "rafIntervalMs": {
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000273,
+          "max": 16.800000000000182
+        },
+        "drawCallsPerFrame": 184,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      },
+      {
+        "count": 24,
+        "round": 1,
+        "submissionMs": {
+          "p50": 1.2999999523162842,
+          "p95": 1.5,
+          "max": 1.7999999523162842,
+          "mean": 1.2744444449742636
+        },
+        "rafIntervalMs": {
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "drawCallsPerFrame": 448,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      },
+      {
+        "count": 5,
+        "round": 2,
+        "submissionMs": {
+          "p50": 0.6000000238418579,
+          "p95": 0.8000000715255737,
+          "max": 1.3000000715255737,
+          "mean": 0.6183333370420668
+        },
+        "rafIntervalMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "drawCallsPerFrame": 184,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      },
+      {
+        "count": 24,
+        "round": 2,
+        "submissionMs": {
+          "p50": 1.1999999284744263,
+          "p95": 1.600000023841858,
+          "max": 2.100000023841858,
+          "mean": 1.2300000018543666
+        },
+        "rafIntervalMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "drawCallsPerFrame": 448,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      },
+      {
+        "count": 5,
+        "round": 3,
+        "submissionMs": {
+          "p50": 0.6000000238418579,
+          "p95": 0.8000000715255737,
+          "max": 1.1999999284744263,
+          "mean": 0.6172222243414984
+        },
+        "rafIntervalMs": {
+          "p50": 16.69999999999709,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "drawCallsPerFrame": 184,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      },
+      {
+        "count": 24,
+        "round": 3,
+        "submissionMs": {
+          "p50": 1.2000000476837158,
+          "p95": 1.5,
+          "max": 1.8000000715255737,
+          "mean": 1.264999998278088
+        },
+        "rafIntervalMs": {
+          "p50": 16.69999999999709,
+          "p95": 16.700000000000728,
+          "max": 16.799999999999272
+        },
+        "drawCallsPerFrame": 448,
+        "pausedDrawCalls": 0,
+        "rulesUnchanged": true
+      }
+    ]
+  },
+  "imageComparisons": [
+    {
+      "enemies": 5,
+      "round": 1,
+      "identicalRgba": true,
+      "imageSha256": {
+        "baseline": "0debcfc9042efb97e7a555b2a7be73f711d301c93fe1ee62f582ea6c4469fbb5",
+        "candidate": "0debcfc9042efb97e7a555b2a7be73f711d301c93fe1ee62f582ea6c4469fbb5"
+      }
+    },
+    {
+      "enemies": 5,
+      "round": 2,
+      "identicalRgba": true,
+      "imageSha256": {
+        "baseline": "0debcfc9042efb97e7a555b2a7be73f711d301c93fe1ee62f582ea6c4469fbb5",
+        "candidate": "0debcfc9042efb97e7a555b2a7be73f711d301c93fe1ee62f582ea6c4469fbb5"
+      }
+    },
+    {
+      "enemies": 5,
+      "round": 3,
+      "identicalRgba": true,
+      "imageSha256": {
+        "baseline": "0debcfc9042efb97e7a555b2a7be73f711d301c93fe1ee62f582ea6c4469fbb5",
+        "candidate": "0debcfc9042efb97e7a555b2a7be73f711d301c93fe1ee62f582ea6c4469fbb5"
+      }
+    },
+    {
+      "enemies": 24,
+      "round": 1,
+      "identicalRgba": true,
+      "imageSha256": {
+        "baseline": "665ded85b94f31451512059ff2a8010e2d196c2508fb37d1f2edf5c636b86303",
+        "candidate": "665ded85b94f31451512059ff2a8010e2d196c2508fb37d1f2edf5c636b86303"
+      }
+    },
+    {
+      "enemies": 24,
+      "round": 2,
+      "identicalRgba": true,
+      "imageSha256": {
+        "baseline": "665ded85b94f31451512059ff2a8010e2d196c2508fb37d1f2edf5c636b86303",
+        "candidate": "665ded85b94f31451512059ff2a8010e2d196c2508fb37d1f2edf5c636b86303"
+      }
+    },
+    {
+      "enemies": 24,
+      "round": 3,
+      "identicalRgba": true,
+      "imageSha256": {
+        "baseline": "665ded85b94f31451512059ff2a8010e2d196c2508fb37d1f2edf5c636b86303",
+        "candidate": "665ded85b94f31451512059ff2a8010e2d196c2508fb37d1f2edf5c636b86303"
+      }
+    }
+  ],
+  "deformationAgreement": {
+    "authoredFrames": 550,
+    "fractionalFrames": 120,
+    "results": [
+      {
+        "kind": "hunter",
+        "originalMeshes": 14,
+        "batchedMeshes": 5,
+        "vertices": 692,
+        "triangles": 1264,
+        "materialAndAttributesPreserved": true,
+        "topologyAndWindingPreserved": true,
+        "maxWorldError": 0,
+        "sharedSkeletons": 1,
+        "independentSkeletons": 1,
+        "independentClones": true,
+        "untouchedCloneStable": true,
+        "arrowKeptSeparate": true,
+        "authoredFrames": 133,
+        "fractionalFrames": 30
+      },
+      {
+        "kind": "archer",
+        "originalMeshes": 14,
+        "batchedMeshes": 7,
+        "vertices": 688,
+        "triangles": 1320,
+        "materialAndAttributesPreserved": true,
+        "topologyAndWindingPreserved": true,
+        "maxWorldError": 0,
+        "sharedSkeletons": 1,
+        "independentSkeletons": 1,
+        "independentClones": true,
+        "untouchedCloneStable": true,
+        "arrowKeptSeparate": true,
+        "authoredFrames": 133,
+        "fractionalFrames": 30
+      },
+      {
+        "kind": "brute",
+        "originalMeshes": 14,
+        "batchedMeshes": 5,
+        "vertices": 2040,
+        "triangles": 1096,
+        "materialAndAttributesPreserved": true,
+        "topologyAndWindingPreserved": true,
+        "maxWorldError": 0,
+        "sharedSkeletons": 1,
+        "independentSkeletons": 1,
+        "independentClones": true,
+        "untouchedCloneStable": true,
+        "arrowKeptSeparate": true,
+        "authoredFrames": 139,
+        "fractionalFrames": 30
+      },
+      {
+        "kind": "witch",
+        "originalMeshes": 13,
+        "batchedMeshes": 6,
+        "vertices": 516,
+        "triangles": 980,
+        "materialAndAttributesPreserved": true,
+        "topologyAndWindingPreserved": true,
+        "maxWorldError": 0,
+        "sharedSkeletons": 1,
+        "independentSkeletons": 1,
+        "independentClones": true,
+        "untouchedCloneStable": true,
+        "arrowKeptSeparate": true,
+        "authoredFrames": 145,
+        "fractionalFrames": 30
+      }
+    ]
+  },
+  "environment": {
+    "browserVersion": "155.0.8059.39",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "viewport": {
+      "width": 1100,
+      "height": 800
+    },
+    "canvasCss": {
+      "width": 960,
+      "height": 600
+    },
+    "devicePixelRatio": 1,
+    "timingScope": "draw() JavaScript CPU submission, not GPU execution; RAF includes browser scheduling and other page work",
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)"
+  },
+  "protocol": {
+    "roundsPerWorkload": 3,
+    "warmupFrames": 45,
+    "measuredFrames": 180,
+    "pausedFrames": 10,
+    "ordinaryEnemies": 5,
+    "stressEnemies": 24
+  },
+  "verification": {
+    "maintenance": "Passed; one sandbox loopback skip resolved by approved test:usage 9/9.",
+    "applicationTests": 322,
+    "seededSimulations": 21,
+    "geometryTests": 128,
+    "affectedFunctionalBrowserCases": 7,
+    "nativeAgreementCases": 1,
+    "benchmarkRuns": 2,
+    "fullCheck": "npm run check:full passed"
+  }
+}

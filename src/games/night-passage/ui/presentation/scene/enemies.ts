@@ -9,6 +9,7 @@ import { disposeObject } from '../../../../../shared/three/resources';
 import { isMesh, isSkinnedMesh } from '../../../../../shared/three/objects';
 import { ENEMY_PATTERNS } from '../../../domain/encounter-content';
 import type { Enemy, EnemyKind, State } from '../../../domain/types';
+import { batchEnemyAsset, shareSkeletons } from './batches';
 
 type Kind = Exclude<EnemyKind, 'boss'>;
 const urls: Record<Kind, string> = {
@@ -58,6 +59,7 @@ export function createEnemies(invalidate: () => void) {
           );
           return;
         }
+        batchEnemyAsset(gltf);
         library.set(kind, gltf);
         invalidate();
       })
@@ -93,6 +95,7 @@ export function createEnemies(invalidate: () => void) {
         const asset = library.get(kind);
         if (model || !asset) return;
         model = clone(asset.scene);
+        shareSkeletons(model);
         arrow = kind === 'archer' ? model.getObjectByName('Reed_arrow') : undefined;
         model.scale.setScalar(28);
         const copies = new Map<T.Material, T.Material>();
