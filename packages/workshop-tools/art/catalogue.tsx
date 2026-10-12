@@ -1,3 +1,12 @@
+import { GODS, RUNES, WEAPONS, BOONS } from '../../../src/games/night-passage/domain/content';
+import {
+  PatronArt,
+  RuneArt,
+  RewardArt,
+  WeaponArt,
+  REWARD_ART_LABELS,
+} from '../../../src/games/night-passage/ui/Artwork';
+import type { Reward } from '../../../src/games/night-passage/domain/types';
 import { TAVERN_SPELLS } from '../../../src/games/battlegrounds/content/spells';
 import { TavernSpellArt } from '../../../src/games/battlegrounds/ui/TavernSpellArt';
 import { RELICS, POTIONS, ACT_NAMES } from '../../../src/games/spire/content/world';
@@ -99,6 +108,36 @@ export function cardArtCatalogue(): Asset[] {
     'seed',
   ];
   return [
+    ...GODS.map((god) => ({
+      id: `night-passage/patrons/${god.id}`,
+      group: 'Night Passage · Patrons',
+      name: god.name,
+      node: <PatronArt god={god.id} />,
+    })),
+    ...BOONS.filter((b) => b.slot === 'duo').map((b) => ({
+      id: `night-passage/duos/${b.id}`,
+      group: 'Night Passage · Duos',
+      name: b.name,
+      node: <PatronArt god={b.god} partner={b.requires?.find((god) => god !== b.god)} />,
+    })),
+    ...RUNES.map((rune) => ({
+      id: `night-passage/runes/${rune.id}`,
+      group: 'Night Passage · Runes',
+      name: rune.name,
+      node: <RuneArt id={rune.id} />,
+    })),
+    ...WEAPONS.map((weapon) => ({
+      id: `night-passage/weapons/${weapon.id}`,
+      group: 'Night Passage · Weapons',
+      name: weapon.name,
+      node: <WeaponArt id={weapon.id} />,
+    })),
+    ...Object.entries(REWARD_ART_LABELS).map(([kind, name]) => ({
+      id: `night-passage/rewards/${kind}`,
+      group: 'Night Passage · Rewards',
+      name,
+      node: <RewardArt kind={kind as Reward} />,
+    })),
     ...WORKSHOP_SCENES.map((kind) => ({
       id: `workshop/${kind}`,
       group: 'Workshop · Tools',

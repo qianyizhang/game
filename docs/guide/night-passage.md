@@ -89,3 +89,7 @@ brief protection after a hit or call. It does not promise immunity to movement
 effects. Dash chevrons show direction; hit sparks, expanding bursts, slash arcs
 and healing crosses distinguish transient outcomes. These light marks are
 presentation symbols; orange threat footprints still define announced danger.
+
+Patron, rune, weapon and reward symbols accompany choices and the build sidebar.
+A duo shows both patrons. Read the accompanying text for slot, rank, effect,
+price and replacement details; the symbols do not replace those labels.

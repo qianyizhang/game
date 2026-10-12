@@ -70,5 +70,5 @@ paused. It proves that journey, not a human-played campaign.
 `packages/dcc-workbench/assets/night-passage/starless-review.json` retains compact
 measurements, source/model pins and selected capture hashes. Full sampled arrays
 and edited native copies remain regenerable under `test-results`. All four kits
-now have authored sources; remaining patron effects/reward icons and the final
-integrated campaign review stay under the active goal.
+now have authored sources, and [reward/loadout symbols](symbols.md) are delivered.
+Further patron effects and the final integrated campaign review stay under the active goal.

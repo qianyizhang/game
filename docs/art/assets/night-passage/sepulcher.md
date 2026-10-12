@@ -64,7 +64,7 @@ unchanged; full arrays and edited copies remain regenerable temporary evidence.
 This was the **first of four** environment kits. The subsequent
 [Drowned Archive](archive.md), [Cinder Court](cinder.md) and
 [Starless Gate](starless.md) complete the four regional kits;
-further patron effects/reward icons remain queued. The kit is deliberately simple;
+[Reward/loadout symbols](symbols.md) are also delivered; further patron effects remain queued. The kit is deliberately simple;
 sculpted wear, richer root branching and texture detail remain future polish.
 Static geometry agreement does not establish visual approval or a frame-time
 improvement. The current scene still uses the established lighting and camera.

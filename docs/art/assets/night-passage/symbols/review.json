@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-13",
+  "scope": "Night Passage reward and loadout SVG artwork",
+  "review": {
+    "kind": "owner visual self-review",
+    "independentApproval": false,
+    "userAcceptance": false,
+    "inspectedSizesPx": [128, 64, 24],
+    "limitation": "Fine engraving and paired details recede at 24 px; duo symbols are used at 36 px or larger."
+  },
+  "symbols": {
+    "patrons": 5,
+    "duos": 3,
+    "runes": 6,
+    "weapons": 5,
+    "rewards": 7,
+    "total": 26
+  },
+  "sourceSha256": {
+    "src/games/night-passage/ui/Artwork.tsx": "bc7baadbc8c3f193cf784bdc9eebd3539ea498b28c7b07f0dc3fae4a8acd8767",
+    "src/games/night-passage/ui/NightPassageApp.tsx": "3daaf6441c89a44afbff5588b9c08a51c8b0d15c55f9802ce8dea60e8dfb06ed",
+    "src/games/night-passage/ui/night-passage.css": "6f73cb511dbbd9684b520c159514af685a8f7f9614ccfd414717dfb2960526b8",
+    "packages/workshop-tools/art/catalogue.tsx": "7b375f453617b53e57a06164f4f743b883624f079a4c386a8aed97762090c9bd",
+    "packages/workshop-tools/art/export.ts": "e2dbdb99eee9e6b1b4b3e325fed235ca9c5d355f9319e2b6707bac31367ca5d9",
+    "tests/browser/night-passage-art.spec.ts": "72276230ec57f7b751f61be70d07930fc164446e0eb342866a03acd28596a986"
+  },
+  "raster": {
+    "renderer": {
+      "aom": "3.15.1",
+      "archive": "3.8.9",
+      "cairo": "1.18.6",
+      "cgif": "0.5.4",
+      "exif": "0.6.26",
+      "expat": "2.8.5",
+      "ffi": "3.8.0",
+      "fontconfig": "2.18.3",
+      "freetype": "2.14.3",
+      "fribidi": "1.0.17",
+      "glib": "2.90.0",
+      "harfbuzz": "14.5.0",
+      "heif": "1.23.5",
+      "highway": "1.4.0",
+      "imagequant": "2.4.1",
+      "lcms": "2.19.1",
+      "mozjpeg": "0826579",
+      "pango": "1.58.2",
+      "pixman": "0.46.4",
+      "png": "1.6.58",
+      "proxy-libintl": "0.5",
+      "rsvg": "2.63.2",
+      "tiff": "4.7.2",
+      "uhdr": "2.0.2",
+      "vips": "8.18.7",
+      "webp": "1.6.0",
+      "xml2": "2.15.4",
+      "zlib-ng": "2.3.3",
+      "sharp": "0.35.5"
+    },
+    "decoded": {
+      "current": 630,
+      "before": 604
+    },
+    "added": 26,
+    "removed": 0,
+    "changed": 0,
+    "unchanged": 604
+  },
+  "checks": {
+    "repositoryCheck": "passed",
+    "maintenance": "passed",
+    "applicationTests": 384,
+    "seededSimulations": 22,
+    "browserUniqueJourneysPassed": 12,
+    "finalArtworkJourneysPassed": 4,
+    "browserViews": {
+      "960px": "2.5D",
+      "390px": "2D"
+    },
+    "geometry": "not rerun; no 3D construction or rendering changes"
+  },
+  "browserCoverage": [
+    "Keyboard loadout selection and locked runes",
+    "Accessible names preserved with decorative symbols",
+    "Legal blessing, route and market decisions",
+    "Affordable heart purchase",
+    "Eclipse Fire paired patron choice and owned build symbol",
+    "Exact chronicle save/reload"
+  ],
+  "corrections": [
+    "Removed duplicate intrinsic SVG dimensions from inline components; exporter owns standalone dimensions.",
+    "First legal market fixture had 50 gold for a 60-gold purchase; corrected accepted-command checkpoint reaches a market with 330 gold."
+  ],
+  "collaboration": {
+    "workerOwnership": "tests/browser/night-passage-art.spec.ts",
+    "fixtureCorrections": 1,
+    "controlledEfficiencyComparison": false
+  },
+  "preserved": [
+    "Authoritative rules",
+    "Content versions",
+    "Seeded replay meaning",
+    "Persistence contracts",
+    "604 existing exported asset pixel hashes"
+  ],
+  "imageSha256": {
+    "blessings-390.png": "4d18868da8ec56ddc0be2e2f1340a10dd6502a4884e4d889d2217c7c7a2f48e1",
+    "blessings-960.png": "9d3e6f6a159d2383a88270d37886c9b45cfeb32b3293840d6e739bb79addff19",
+    "contact-sheet.png": "a402077eacecb2103d98481594cab39605ff639e8b2bf558fe6f36f6f795f694",
+    "duo-choice-390.png": "e3d8f3af737796ec65ff90f0df1766105ba8506145a6b5f8596a81f3c6f6b4b6",
+    "duo-choice-960.png": "6556e5c5c0e8483f73f7cd3016d8fa8ed51b1f54e53702a294e89179a35cb935",
+    "hub-390.png": "b404dd7e4b322b7b62257f7114b51960ed3ba2c46fa3b4efb1c0b466f0d117c8",
+    "hub-960.png": "ec28f76f72581d25e7e76fefd800845d2e2b26dc6d5ff6c0df6bba989c038857",
+    "market-960.png": "c55586e07e22e063a5b2fff18c183df10ca4610cf296902ab68b46ae71ba1d71",
+    "routes-960.png": "a147049832d9dd52789b46d8c9fddc6d17f7fc1898445dc87a39d570adcde332"
+  }
+}

@@ -21,6 +21,7 @@ import { createCanvasRenderer } from './presentation/canvas';
 import { createSceneRenderer } from './presentation/scene';
 import type { Renderer } from './presentation/renderer';
 import { PassageAudio } from './audio';
+import { PatronArt, RewardArt, RuneArt, WeaponArt } from './Artwork';
 import './night-passage.css';
 
 const VIEW_KEY = 'card-workshop.night-passage.view.v1';
@@ -544,6 +545,7 @@ export default function NightPassageApp() {
                           aria-pressed={w.id === selectedWeapon}
                           onClick={() => setSelectedWeapon(w.id)}
                         >
+                          <WeaponArt id={w.id} />
                           <strong>{w.name}</strong>
                           <span>{w.id}</span>
                         </button>
@@ -567,6 +569,7 @@ export default function NightPassageApp() {
                             )
                           }
                         >
+                          <RuneArt id={r.id} />
                           {r.name}
                           {!view.profile.unlockedRunes.includes(r.id)
                             ? ` · region ${r.unlock}`
@@ -610,6 +613,10 @@ export default function NightPassageApp() {
                         );
                         return (
                           <button key={id} onClick={() => send({ type: 'choose', id })}>
+                            <PatronArt
+                              god={b.god}
+                              partner={b.requires?.find((god) => god !== b.god)}
+                            />
                             <span
                               className="np-eyebrow"
                               style={{ color: GODS.find((g) => g.id === b.god)!.color }}
@@ -638,6 +645,7 @@ export default function NightPassageApp() {
                             focusPlay();
                           }}
                         >
+                          <RewardArt kind={route.reward} />
                           <strong>{route.label}</strong>
                           <span>{route.detail}</span>
                         </button>
@@ -660,6 +668,7 @@ export default function NightPassageApp() {
                           }
                           onClick={() => send({ type: 'buy', item })}
                         >
+                          <RewardArt kind={item === 'heal' ? 'fountain' : item} />
                           <strong>
                             {
                               {
@@ -768,6 +777,10 @@ export default function NightPassageApp() {
                 {p.boons.length ? (
                   p.boons.map((b) => (
                     <article key={b.id}>
+                      <PatronArt
+                        god={boon(b.id).god}
+                        partner={boon(b.id).requires?.find((god) => god !== boon(b.id).god)}
+                      />
                       <small>
                         {boon(b.id).slot} · level {b.level}
                       </small>
@@ -779,7 +792,14 @@ export default function NightPassageApp() {
                   <p>Clear your first chamber to receive a god’s blessing.</p>
                 )}
               </div>
-              <p>{p.runes.map((id) => RUNES.find((r) => r.id === id)!.name).join(' · ')}</p>
+              <div className="np-equipped-runes">
+                {p.runes.map((id) => (
+                  <span key={id}>
+                    <RuneArt id={id} />
+                    {RUNES.find((r) => r.id === id)!.name}
+                  </span>
+                ))}
+              </div>
             </>
           )}
           <details>

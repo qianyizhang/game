@@ -159,7 +159,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: safe center;
   gap: 18px;
   overflow-y: auto;
 }
@@ -432,5 +432,70 @@
   }
   .np-realms {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* The same editable SVG symbols serve choices, loadout and standalone exports. */
+.np-art {
+  display: block;
+  flex: none;
+  width: 64px;
+  height: 64px;
+}
+.np-weapons .np-art {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 8px;
+}
+.np-runes button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.np-runes .np-art,
+.np-equipped-runes .np-art {
+  width: 24px;
+  height: 24px;
+}
+.np-equipped-runes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.np-equipped-runes > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.np-build article {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  column-gap: 10px;
+}
+.np-build article > .np-art {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  width: 36px;
+  height: 36px;
+}
+.np-build article > :not(.np-art) {
+  grid-column: 2;
+}
+@media (max-width: 650px) {
+  .np-choices button {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 12px;
+    align-content: start;
+  }
+  .np-choices button > .np-art {
+    grid-column: 1;
+    grid-row: 1 / span 5;
+    width: 48px;
+    height: 48px;
+  }
+  .np-choices button > :not(.np-art) {
+    grid-column: 2;
   }
 }

@@ -26,6 +26,7 @@ Feature artwork extends the source map:
 | Spire relics and potions  | `src/games/spire/ui/WorldItemArt.tsx`                    | Distinct 64 × 64 objects, readable at 24 px in the rack and belt; unknown mod IDs use a marked fallback         |
 | Spire route and acts      | `src/games/spire/ui/SpireSceneArt.tsx`                   | Seven 64 × 64 room symbols and three 160 × 112 act scenes                                                       |
 | Workshop and rival styles | `src/shared/art/WorkshopArt.tsx`                         | Four 160 × 112 tool scenes and six 64 × 64 symbols; `rivalArt.ts` maps styles to symbols in presentation        |
+| Night Passage choices     | `src/games/night-passage/ui/Artwork.tsx`                 | 26 patron/duo, rune, weapon and reward symbols; 24–64 px beside HTML labels                                     |
 | Feature placement         | `src/shared/art/FeatureArt.css`                          | Scoped desktop/phone sizing; symbols remain decorative beside HTML labels                                       |
 
 `ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](../research/content-expansions.md#card-suite-expansion), [Night Market](../research/content-expansions.md#night-market), and [feature artwork coverage](history/feature-coverage.md) document their sets.

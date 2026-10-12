@@ -29,3 +29,6 @@ The [Root Sepulcher](assets/night-passage/sepulcher.md),
 [Cinder Court](assets/night-passage/cinder.md) and
 [Starless Gate](assets/night-passage/starless.md) record all four authored
 Night Passage environment kits, their collision bounds and saved-mesh edit proof.
+
+[Night Passage symbols](assets/night-passage/symbols.md) records the 26 patron,
+duo, rune, weapon and reward marks used in choices and the build sidebar.
