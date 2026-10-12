@@ -72,7 +72,7 @@ test('announced route layout survives UI selection, portable replay and paused r
     layout.hazards,
   );
   expect(header(saved)).toMatchObject({
-    rules: 'night-passage-3',
+    rules: 'night-passage-4',
     content: 'night-passage-content-3',
   });
   const geometry = {
@@ -110,14 +110,14 @@ test('announced route layout survives UI selection, portable replay and paused r
   );
 });
 
-test('version-2 chronicle bytes remain recoverable until explicit version-3 replacement', async ({
+test('version-3 chronicle bytes remain recoverable until explicit version-4 replacement', async ({
   page,
 }) => {
   // An empty accepted-command history is valid in the old replay envelope.
   const legacy = JSON.stringify({
     ...(JSON.parse(exportSession(newSession('legacy-layout-save'))) as Record<string, unknown>),
-    rules: 'night-passage-2',
-    content: 'night-passage-content-2',
+    rules: 'night-passage-3',
+    content: 'night-passage-content-3',
   });
   await page.addInitScript(({ key, legacy }) => localStorage.setItem(key, legacy), {
     key: SAVE_KEY,
@@ -136,7 +136,7 @@ test('version-2 chronicle bytes remain recoverable until explicit version-3 repl
   await page.getByRole('button', { name: 'Export chronicle' }).click();
   const current = await downloaded(await currentDownload);
   expect(header(current)).toMatchObject({
-    rules: 'night-passage-3',
+    rules: 'night-passage-4',
     content: 'night-passage-content-3',
   });
   expect(importSession(current).state.runNumber).toBe(1);

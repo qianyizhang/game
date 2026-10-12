@@ -11,6 +11,7 @@ Night Passage lives in `src/games/night-passage`. Its rules are independent of R
 | `domain/chamber-content.ts`                | Four ordinary combat layouts: cover, hazard sites and reinforcement positions. Geometry is authored here and validated independently of the renderer. |
 | `domain/geometry.ts`                       | Movement bounds, pillar collision and clear lines between actors.                                                                                     |
 | `domain/combat.ts`                         | Player input buffering, move execution, projectiles and the fixed-step combat sequence.                                                               |
+| `domain/boon-offers.ts`                    | Seeded blessing eligibility and slot-diverse audience drafts. Returns offered IDs and the next RNG state without changing a build.                    |
 | `domain/game.ts`                           | Command validation, run lifecycle, rewards, markets and progression. `applyCommand` rejects atomically and returns the original state on failure.     |
 | `application/session.ts`                   | Accepted-command journal, bounded replay validation, export and reconstruction. No serialized state snapshot is trusted.                              |
 | `ui/NightPassageApp.tsx`                   | Input collection, bounded realtime accumulator, save lifecycle, HUD and decision screens.                                                             |
@@ -18,6 +19,54 @@ Night Passage lives in `src/games/night-passage`. Its rules are independent of R
 | `tests/simulation/night-passage-policy.ts` | Legal-command verification pilot. It is not a player-facing autoplay feature.                                                                         |
 
 Enemy stats and guardian pattern definitions live in `domain/encounter-content.ts`. `domain/encounters.ts` owns enemy decisions and hazard consequences. `domain/threats.ts` produces the same geometric shapes used by damage and `ui/presentation/threats.ts`; a warning is not an independent approximation of a hit. `domain/effects.ts` owns damage, charge accounting, elemental effects and bounded duos. `ui/audio.ts` is an optional, replaceable presentation consumer.
+
+## Blessing draft variety
+
+Rules **4** use `domain/boon-offers.ts` for ordinary chamber, trial and market
+audiences. Shuffle the eligible pool with the explicit run RNG, reserve one
+currently empty action slot if available, then take the first candidates with
+different slots until three choices are present. An eligible duo may occupy
+one choice; it does not count as filling an empty action slot. The five patrons
+remain available, including replacements and rank-ups. Caps and duo prerequisites
+still filter eligibility before the draw. Upgrade shrines continue to draw only
+owned, uncapped regular boons, with the existing 45-gold exhaustion fallback.
+
+The 2026-10-13 comparison uses the rules-3 shuffle at `638b585` and rules-4 draft
+on the same **512 RNG seeds** (`reward-variety-0` through `reward-variety-511`)
+for each of three declared loadouts. These are controlled reward draws, not
+human runs or reward-frequency measurements across a campaign.
+
+| Loadout                   | Audiences with repeated slots, old → new | No empty-slot choice, old → new | Distinct unordered triples, old → new |
+| ------------------------- | ---------------------------------------- | ------------------------------- | ------------------------------------- |
+| Empty                     | 237/512 → 0/512                          | 0/512 → 0/512                   | 467 → 424                             |
+| Attack/cast/dash, level 2 | 211/512 → 0/512                          | 108/512 → 0/512                 | 472 → 417                             |
+| All five slots, level 2   | 216/512 → 0/512                          | Not applicable                  | 481 → 457                             |
+
+The partial build carries storm attack, winter cast and veil dash; the full
+build adds tide special and cinder call. All five patrons and every eligible
+blessing appeared in each sampled condition: 25, 26 and 28 distinct blessings
+respectively. The tradeoff is fewer combinations: filtering competing same-slot
+options improves the breadth of a decision while reducing combinatorial variety.
+This does not prove equal patron probabilities, subjective enjoyment or balance.
+
+`tests/simulation/night-passage-rewards.test.ts` regenerates the comparison under
+ignored `test-results/night-passage-rewards/`. Command-level tests cover choosing
+an empty slot, preserving existing equipment, caps, duos, determinism and shrine
+rank-ups. Fifteen legal weapon/seed campaigns still clear all four guardians.
+The browser journey covers offered slot labels, selection, portable replay and
+reload; previous rules-3 bytes remain downloadable until explicit replacement.
+
+Only the rules identity advances to `night-passage-4`; content remains
+`night-passage-content-3` and the packed replay format is unchanged. Older rules
+are rejected for reconstruction and retained for export/recovery, following the
+[accepted-command replay decision](decisions/0002-reconstruct-from-accepted-commands.md).
+They are not silently reinterpreted with the new draft.
+
+Delivery checks passed: maintenance/build, 378 application tests, 22 simulations
+and 12 affected browser journeys. No renderer or native asset changed. A bounded
+browser-test worker supplied the reward and previous-save journeys; both passed
+integration without rework. The primary owned rules, comparison and review; no
+single-agent timing comparison was measured.
 
 ## Chamber layouts
 
@@ -32,8 +81,8 @@ The selected layout fixes cover and hazard sites across all waves. Reinforcement
 shuffle eight perimeter sites, exclude positions within 140 ground units of the
 player, then place ranged enemies in farther 100-unit distance bands and melee
 enemies in nearer bands. Seeded ordering resolves ties. Wave sizes, health, rewards
-and guardian mechanics remain unchanged. This changes command replay meaning, so
-both rules and content advance to version 3.
+and guardian mechanics were unchanged by this layout slice. Its introduction
+advanced rules and content to version 3; the current blessing draft uses rules 4.
 
 To add terrain, extend `LayoutId` and the layout catalog together. Keep the entry
 clear, preserve navigable gaps, separate reinforcement sites from cover and hazard
@@ -214,7 +263,7 @@ actors and resource release. No native source or delivery change is required.
 
 Rules advance at 60 fixed steps per simulated second. A frame command supplies bounded movement, aim, buttons and 1–120 ticks. The browser caps accumulated work at six steps per display frame and pauses on blur/hidden state. Rendering reads confirmed state; the HUD refreshes at approximately 10 Hz and immediately after decisions.
 
-Rules copy the bounded active state per command. Session history uses persistent linked entries so appending does not copy the full history. Identical adjacent frame inputs pack into at most two-second commands. Export reverses that history into a linear replay and encodes frame inputs as `[ticks, x, y, aim, buttonMask]` tuples without changing numeric values. Rules/content version 3 uses the unchanged replay envelope v2. Version-1/2 histories are rejected and remain downloadable; there is no migration that reinterprets their old commands. Import validates every command and reconstructs through the same interface. Rules and content changes that alter replay meaning require explicit version bumps before further delivery.
+Rules copy the bounded active state per command. Session history uses persistent linked entries so appending does not copy the full history. Identical adjacent frame inputs pack into at most two-second commands. Export reverses that history into a linear replay and encodes frame inputs as `[ticks, x, y, aim, buttonMask]` tuples without changing numeric values. Rules version 4 and content version 3 use the unchanged replay envelope v2. Version-1/2/3 rules histories are rejected and remain downloadable; there is no migration that reinterprets their old commands. Import validates every command and reconstructs through the same interface. Rules and content changes that alter replay meaning require explicit version bumps before further delivery.
 
 Initial content is source-authored. Arbitrary content-pack import is not implemented. Adding a sixth weapon presently requires its ID, three move definitions, validation membership through `WEAPONS`, and a presentation decision; introducing a new move family also requires combat rules and behavioral evidence. Regions select their enemy pool, guardian pattern set, hazard kind and palette. Campaign traversal follows `REGIONS.length`; `CHAMBERS_PER_REGION` currently specifies eight chambers per region. New region entries reuse the lifecycle without changing its bounds. New threat families require a shared geometry rule, presentation and damage/safe-space evidence. There is no universal game engine or arbitrary code execution in content imports.
 
@@ -284,7 +333,7 @@ Each turn selects **one general direction** and finishes one bounded, reviewable
 | **2.5D vertical slice** | One complete chamber plays through an angled orthographic 3D scene: camera projection and inverse aiming, grounded hero/enemies, depth and occlusion handling, light/shadow, terrain, projectiles and exact ground-plane telegraphs. Validate movement, dodge, melee, ranged attacks and a guardian at actual play size. | Playable renderer, hero and five weapon identities delivered.                                                                                                             |
 | **2.5D campaign**       | All four regions and guardians, five weapons and every spell/threat family work through the new presentation. Pause, resize, import/resume, context/resource lifecycle and reduced-motion behavior remain usable.                                                                                                        | Renderer parity and local enemy submission benchmark delivered; asset coverage remains incomplete.                                                                        |
 | Authored asset coverage | Replace gameplay-critical placeholders in small coherent batches: hero and motion set; five weapon identities and attacks; ordinary enemy families; four guardians; four environment kits; patron spell effects and reward/icon treatment. Track each asset's source, delivery, motion coverage and visual review.       | Hero, five weapons, four enemy families, all four guardians, Root Sepulcher and symbolic combat marks delivered; three environment kits and further effects/icons queued. |
-| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | First measured rendering and four-layout encounter slices delivered; combat feel and reward/RNG refinement remain queued.                                                 |
+| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | Measured rendering, four-layout encounters and seeded blessing-draft refinement delivered; combat-feel refinement remains queued.                                         |
 | Delivery closeout       | Complete campaigns and browser journeys cover the final content/rendering; no gameplay-critical placeholder remains; extension and asset-authoring paths are documented; report technical results separately from visual self-review and user feedback.                                                                  | Pending preceding milestones.                                                                                                                                             |
 
 The 2.5D implementation uses the existing Three.js dependency and a fixed angled orthographic camera over the authoritative two-dimensional combat plane. Elevation and animation are presentation until a separately scoped gameplay change says otherwise. Shared threat geometry must project into the scene without changing its damage footprint. Foreground scenery must not conceal actionable enemies or warnings. Establish camera, silhouette, contact and depth before decorative detail. Keep the baseline renderer through migration until campaign parity is established.

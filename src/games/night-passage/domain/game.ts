@@ -2,13 +2,14 @@ import { hashSeed, shuffle } from '../../../shared/random';
 import { isRecord } from '../../../shared/json';
 import { BOONS, boon, CHAMBERS_PER_REGION, REGIONS, RUNES, WEAPONS } from './content';
 import { stepCombat } from './combat';
+import { drawBoons } from './boon-offers';
 import { spawnEnemy } from './encounters';
 import { CHAMBER_LAYOUTS, chamberLayout } from './chamber-content';
 import { distance } from './geometry';
 import type { Command, Input, LayoutId, Player, Reward, Route, State } from './types';
 export type { Command, Input, State } from './types';
 
-export const RULES_VERSION = 'night-passage-3';
+export const RULES_VERSION = 'night-passage-4';
 const freshPlayer = (): Player => ({
   x: 480,
   y: 430,
@@ -111,16 +112,7 @@ function ordinaryRoutes(state: State, rewards: readonly Reward[]): Route[] {
   });
 }
 export function offerBoons(state: State, upgrade = false): void {
-  const p = state.player;
-  const gods = p.boons.map((b) => boon(b.id).god);
-  const pool = upgrade
-    ? p.boons.filter((b) => b.level < 5 && boon(b.id).slot !== 'duo').map((b) => b.id)
-    : BOONS.filter(
-        (b) =>
-          (!b.requires || b.requires.every((g) => gods.includes(g))) &&
-          (p.boons.find((owned) => owned.id === b.id)?.level ?? 0) < (b.slot === 'duo' ? 1 : 5),
-      ).map((b) => b.id);
-  state.offers = shuffled(state, pool).slice(0, 3);
+  [state.offers, state.rng] = drawBoons(state.player.boons, state.rng, upgrade);
   if (state.offers.length === 0) {
     state.gold += 45;
     state.message = 'Your blessings are complete. The shrine grants 45 gold.';

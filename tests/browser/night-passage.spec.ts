@@ -8,6 +8,7 @@ import {
   SAVE_KEY,
 } from '../../src/games/night-passage/application/session';
 import { passageCommand } from '../simulation/night-passage-policy';
+import { boon } from '../../src/games/night-passage/domain/content';
 import { browserBudget } from './budget';
 
 const review = 'test-results/night-passage';
@@ -161,6 +162,79 @@ test('live aiming, combat, reward selection, pause/reload and portable chronicle
   await page.screenshot({ path: `${review}/compact-layout.png`, fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
+});
+
+test('legal first-room blessing draft offers distinct slots and survives choice, reload and replay', async ({
+  page,
+}) => {
+  test.setTimeout(browserBudget(45000));
+  let session = dispatch(newSession('passage-verification'), {
+    type: 'start',
+    weapon: 'bow',
+    runes: ['vigor', 'fleet'],
+  }).session;
+  for (let i = 0; i < 3000 && session.state.phase === 'combat'; i++) {
+    const result = dispatch(session, passageCommand(session.state));
+    expect(result.error).toBeNull();
+    session = result.session;
+  }
+  expect(session.state.phase).toBe('reward');
+  expect(session.state.roomsCleared).toBe(1);
+  expect(session.state.room.reward).toBe('boon');
+  const checkpoint = exportSession(session),
+    offered = session.state.offers.map(boon);
+  const occupied = new Set(session.state.player.boons.map((entry) => boon(entry.id).slot));
+  const choiceIndex = offered.findIndex(
+    (entry) => entry.slot !== 'duo' && !occupied.has(entry.slot),
+  );
+  expect(choiceIndex).toBeGreaterThanOrEqual(0);
+  await page.goto('/?game=night-passage');
+  await page.getByLabel('Import Night Passage chronicle').setInputFiles({
+    name: 'first-room-blessings.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(checkpoint),
+  });
+  await expect(page.getByRole('heading', { name: 'Choose a blessing' })).toBeVisible();
+  const choices = page.locator('.np-choices button');
+  await expect(choices).toHaveCount(3);
+  const labels = await choices.locator('.np-eyebrow').allTextContents();
+  const slots = labels.map((text) => text.split(' · ')[0]);
+  expect(new Set(slots).size).toBe(3);
+  expect(slots).toEqual(offered.map((entry) => entry.slot));
+  expect(labels.every((text) => text.endsWith('New blessing'))).toBe(true);
+  for (const [index, entry] of offered.entries())
+    await expect(choices.nth(index).locator('strong')).toHaveText(entry.name);
+  await page.screenshot({ path: `${review}/distinct-slot-blessing-draft.png`, fullPage: true });
+  const selected = offered[choiceIndex];
+  const expected = dispatch(session, { type: 'choose', id: selected.id });
+  expect(expected.error).toBeNull();
+  await choices.nth(choiceIndex).click();
+  await expect(page.getByRole('heading', { name: 'Choose your next chamber' })).toBeVisible();
+  await expect(page.locator('.np-build article strong')).toHaveText(selected.name);
+  const saved = (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!;
+  expect(saved).toBe(exportSession(expected.session));
+  expect(JSON.parse(saved) as { rules: string; content: string }).toMatchObject({
+    rules: 'night-passage-4',
+    content: 'night-passage-content-3',
+  });
+  expect(importSession(saved).state.player.boons).toEqual([{ id: selected.id, level: 1 }]);
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'Choose your next chamber' })).toBeVisible();
+  await expect(page.locator('.np-build article strong')).toHaveText(selected.name);
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
+  const pending = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export chronicle' }).click();
+  const portable = readFileSync(await (await pending).path(), 'utf8');
+  expect(portable).toBe(saved);
+  expect(importSession(portable).state).toEqual(expected.session.state);
+  await page.getByLabel('Import Night Passage chronicle').setInputFiles({
+    name: 'chosen-blessing.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(portable),
+  });
+  await expect(page.getByRole('alert')).toHaveText('Chronicle restored.');
+  await expect(page.locator('.np-build article strong')).toHaveText(selected.name);
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
 });
 
 test('reconstructed victory banks progression, unlocks runes and starts a distinct second run', async ({
