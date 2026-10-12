@@ -73,5 +73,6 @@ Compact measurements and selected capture hashes live in
 `packages/dcc-workbench/assets/night-passage/cinder-review.json`. Full sampled
 arrays and edited source copies remain regenerable under `test-results`.
 This was the **third of four** environment kits. [Starless Gate](starless.md)
-completes regional coverage. [Reward/loadout symbols](symbols.md) are also delivered. Further patron effects and the final
-integrated review remain under the active goal.
+completes regional coverage. [Reward/loadout symbols](symbols.md) and
+[patron light effects](patrons.md) are also delivered. The final integrated review
+remains under the active goal.

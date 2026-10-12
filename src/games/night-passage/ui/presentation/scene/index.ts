@@ -5,6 +5,7 @@ import { createCamera, fitCamera, groundFromNdc, groundDirection } from './camer
 import { createRoom } from './room';
 import { createGroundEffects } from './ground-effects';
 import { createActors } from './actors';
+import { createPatronEffects } from './patron-effects';
 
 export function createSceneRenderer(canvas: HTMLCanvasElement, unavailable: () => void): Renderer {
   const gl = new T.WebGLRenderer({ canvas, antialias: true, alpha: false });
@@ -49,6 +50,7 @@ export function createSceneRenderer(canvas: HTMLCanvasElement, unavailable: () =
   };
   const room = createRoom(world, redraw);
   const actors = createActors(world, redraw);
+  const patrons = createPatronEffects(world);
   const resize = () => {
     if (disposed) return;
     const box = canvas.getBoundingClientRect();
@@ -78,6 +80,7 @@ export function createSceneRenderer(canvas: HTMLCanvasElement, unavailable: () =
       room.sync(state, camera);
       actors.sync(state, motion.matches);
       effects.sync(state);
+      patrons.sync(state, motion.matches);
       gl.render(scene, camera);
       lastState = state;
       dirty = false;
@@ -103,6 +106,7 @@ export function createSceneRenderer(canvas: HTMLCanvasElement, unavailable: () =
       canvas.removeEventListener('webglcontextlost', lost);
       motion.removeEventListener('change', redraw);
       actors.dispose();
+      patrons.dispose();
       effects.dispose();
       room.dispose();
       sun.shadow.dispose();

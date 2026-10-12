@@ -1,5 +1,10 @@
 # Night Passage combat marks
 
+This records the earlier ground-mark batch. The subsequent
+[patron light effects](patrons.md) add raised spell forms over the same ground
+vocabulary; authored actors and all four environment kits have also superseded
+the blockouts shown in these retained historical captures.
+
 ## Brief and ownership
 
 Make patron shots, simultaneous enemy statuses and transient combat outcomes

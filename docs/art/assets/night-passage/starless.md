@@ -71,4 +71,4 @@ paused. It proves that journey, not a human-played campaign.
 measurements, source/model pins and selected capture hashes. Full sampled arrays
 and edited native copies remain regenerable under `test-results`. All four kits
 now have authored sources, and [reward/loadout symbols](symbols.md) are delivered.
-Further patron effects and the final integrated campaign review stay under the active goal.
+[Patron light effects](patrons.md) are delivered. The final integrated campaign review stays under the active goal.

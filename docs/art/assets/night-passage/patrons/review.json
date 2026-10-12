@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-13",
+  "baseline": "b941137",
+  "scope": "Five raised patron light forms; no rules or native solid asset changes",
+  "review": "Owner visual self-review; no independent approval or user acceptance",
+  "sourceSha256": {
+    "src/games/night-passage/ui/presentation/scene/patron-effects.ts": "83b7231d586e05835b03ed7401ee036d42761ff331476db62b6df67d16eae406",
+    "src/games/night-passage/ui/presentation/scene/index.ts": "48c0726cf245db647b4c46bd9a7596390a28465482c3648ca9d68b6a084e0475",
+    "src/games/night-passage/ui/presentation/scene/ground-effects.ts": "b5bd70f28abd0b3c11b8bbf6d7a2507624333cd8a692a88d2eac60aadcd2fd0c",
+    "src/games/night-passage/ui/presentation/scene/combat-marks.ts": "53fb1d78e46df6ceaec47407f5950233d1832031e93f758b0e000f265a8ca9b4",
+    "tests/browser/night-passage-patrons-review.ts": "fd671ff1476a2921c5b46d06b2725252d34d13dcef2d37e261a37e384c111caa",
+    "tests/browser/night-passage-patrons.spec.ts": "22babdaf4786cc9929ba64b5a1074ae0db895f448c8ed0ce753eeefe4e7d6730"
+  },
+  "browser": {
+    "command": "npx playwright test tests/browser/night-passage-patrons.spec.ts tests/browser/night-passage-parity.spec.ts tests/browser/night-passage-scene.spec.ts --project=functional",
+    "passed": 6,
+    "controlledSpellStates": 25,
+    "comparisonPairs": 52,
+    "allPairsVisible": true,
+    "allPairsPausedStable": true,
+    "snapshotsPure": true,
+    "groundMatrixCases": 85,
+    "legalCampaigns": 5,
+    "renderedCampaignCheckpoints": 165,
+    "provenance": "Controlled commanded spell snapshots in the production renderer. Before omits only the new decorative patron group; exact ground effects, actors and environment are shared. Not campaign proof.",
+    "crowded": {
+      "id": "crowded-warnings-call",
+      "provenance": "Composed renderer fixture: existing five-projectile/status composite, commanded brute windup phases and Cinder call cues repositioned together, plus the controlled thorns warning phase. Not a legal campaign chronicle."
+    }
+  },
+  "behavior": {
+    "pure": true,
+    "resetHidden": true,
+    "resetRestores": true,
+    "expiredHidden": true,
+    "bounded": true,
+    "poolReused": true,
+    "hostileExcluded": true,
+    "mundaneExcluded": true,
+    "resourcesRemoved": true,
+    "materialsReleasedOnce": true,
+    "texturesReleasedOnce": true,
+    "temporal": [
+      {
+        "god": "storm",
+        "normalMoves": true,
+        "reducedSpatialStable": true,
+        "reducedFades": true
+      },
+      {
+        "god": "tide",
+        "normalMoves": true,
+        "reducedSpatialStable": true,
+        "reducedFades": true
+      },
+      {
+        "god": "cinder",
+        "normalMoves": true,
+        "reducedSpatialStable": true,
+        "reducedFades": true
+      },
+      {
+        "god": "winter",
+        "normalMoves": true,
+        "reducedSpatialStable": true,
+        "reducedFades": true
+      },
+      {
+        "god": "veil",
+        "normalMoves": true,
+        "reducedSpatialStable": true,
+        "reducedFades": true
+      }
+    ]
+  },
+  "visual": {
+    "widths": [960, 390],
+    "inspected": [
+      "All five call releases and eight-tick fades",
+      "Cast gathering and six-tick projectile flight",
+      "Crowded threat overlap",
+      "Matched ground-only baseline"
+    ],
+    "correction": "Gathering light moved forward from 19 to 26 units and raised from 12 to 28 units for hand-level visibility.",
+    "limits": [
+      "Fine motif details recede at 390 px",
+      "Crowded ground rings remain dense",
+      "No measured frame-time claim",
+      "Light sprite cap may omit decoration but leaves ground cues intact"
+    ]
+  },
+  "collaboration": {
+    "workerOwned": [
+      "tests/browser/night-passage-patrons-review.ts",
+      "tests/browser/night-passage-patrons.spec.ts"
+    ],
+    "baselineMethodCorrections": 1,
+    "controlledElapsedTimeComparison": false
+  },
+  "imagesSha256": {
+    "call-comparison.png": "b00527099d06032d272c83785585a298d0793eb3fdaa5f3658548d7279493868",
+    "crowded-warnings-call-390.png": "04945821bb52241bb9f0f2ee6d256edf8c5a950386ea397a85ee30ab2a8337a2",
+    "crowded-warnings-call-960-before.png": "e19adec67d42497bef9c6be83a91acad4f568e163b6138705a8f1f73bb9748a0",
+    "crowded-warnings-call-960.png": "834562ee12c3079bdc29d4bc00d070b66baf619a1f44ebf0882ed5812be9f029",
+    "narrow-comparison.png": "92565a69aeddbcc1be71c5f4e19d93b7a300b89fadc6e26f4ab110bd4390c250",
+    "windup-flight.png": "a54e123c7a86aca9964ed62fefe7aa5b58234beb444a431d63c8072ad05bee11"
+  },
+  "checks": {
+    "command": "npm run check:full",
+    "status": "passed",
+    "maintenance": "passed",
+    "application": 384,
+    "seededSimulations": 22,
+    "geometry": 128,
+    "native": "Unchanged native masters and deliveries; no fresh Blender edit/export proof for this light-only slice."
+  }
+}

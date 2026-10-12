@@ -71,4 +71,5 @@ Compact measurements, pins and selected capture hashes are retained in
 arrays and disposable edited sources remain regenerable under `test-results`.
 This was the **second of four** environment kits. The subsequent
 [Cinder Court](cinder.md) and [Starless Gate](starless.md) complete regional coverage.
-[Reward/loadout symbols](symbols.md) are also delivered; further patron effects remain queued.
+[Reward/loadout symbols](symbols.md) and [patron light effects](patrons.md) are also
+delivered. Final integrated review remains queued.

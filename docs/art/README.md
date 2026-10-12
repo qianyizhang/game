@@ -32,3 +32,6 @@ Night Passage environment kits, their collision bounds and saved-mesh edit proof
 
 [Night Passage symbols](assets/night-passage/symbols.md) records the 26 patron,
 duo, rune, weapon and reward marks used in choices and the build sidebar.
+
+[Night Passage patron effects](assets/night-passage/patrons.md) records five raised
+spell-light silhouettes and their snapshot-driven rendering boundary.

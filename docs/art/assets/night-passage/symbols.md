@@ -69,6 +69,6 @@ use 2.5D at 960 px and 2D at 390 px. Geometry was not rerun for this SVG/UI slic
 
 Selected screenshots and a [compact review receipt](symbols/review.json) retain
 source and image hashes alongside these results.
-This completes the reward/loadout icon batch. Patron effect refinement and the
-final integrated campaign review remain under the active goal. Visual review is
+This completes the reward/loadout icon batch. [Patron light effects](patrons.md) are now delivered. The
+final integrated campaign review remains under the active goal. Visual review is
 owner self-review; independent art approval and user acceptance are not claimed.
