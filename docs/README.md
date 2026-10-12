@@ -14,3 +14,7 @@ Session discussions and iteration diaries belong in ignored `.work/sessions/`. P
 ## Emberwake
 
 [Player guide](guide/emberwake.md) · [Diablo II-style package and mod contracts](../packages/diablo2/README.md).
+
+## Dungeon Cartographer
+
+[Player guide](guide/cartographer.md) · [Shared room generation](engineering/map-generation.md).

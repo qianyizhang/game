@@ -200,3 +200,17 @@ _Avoid_: Actor, when counting conversations; turn, when referring to a whole con
 **Ember rune**: Loot consumed to improve an equipped item's available socket.
 
 **Grave**: The field location holding recoverable gold after a hero's death. It does not hold the hero's equipment in this baseline.
+
+## Dungeon Cartographer
+
+**Chamber**: A room design offered during an expedition, including its terrain, doorways and reward.
+
+**Frontier**: An unexplored doorway leading to an empty place on the expedition board.
+
+**Room draft**: The offered chambers from which the player chooses one to rotate and attach at a frontier.
+
+**Intent**: An enemy's announced action for the next turn, including the exact tiles threatened by an attack.
+
+**Threat**: The expedition's accumulated danger from attached chambers. At eight threat, enemies deal one additional damage per hit.
+
+**Relic**: A lasting ability chosen during an expedition, lost when that expedition ends.

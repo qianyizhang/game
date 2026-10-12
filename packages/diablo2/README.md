@@ -50,3 +50,11 @@ Every behavior/content change that alters replay meaning requires a pack version
 ## Original demo recovery
 
 Rules `emberwake-2`, content `2.0.0` and replay format `emberwake-replay-v2` change region and timing meaning. The `card-workshop.emberwake.v1` slot remains untouched; the chooser offers its export. Reopen baseline commit `d0db60e` in a separate checkout to recover that original demo. Current imports reject incompatible histories rather than silently changing their meaning. See [the world/runtime decision](../../docs/engineering/decisions/0006-emberwake-world-runtime.md).
+
+## Generated side dungeon
+
+Hero selection can add **The Charted Vault**, a seeded nine-chamber optional dungeon off
+Lantern Approach. It shares room placement and rotation with Dungeon Cartographer, and
+exports fully expanded geometry through the existing content/replay contract. Existing
+campaigns retain their saved geometry. See the [player guide](../../docs/guide/cartographer.md#emberwake-side-dungeon)
+and [shared generator contract](../../docs/engineering/map-generation.md).

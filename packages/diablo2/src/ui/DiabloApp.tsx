@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { generatedDungeonContent } from '../domain/generated-dungeon';
 import { BASE_CONTENT } from '../domain/content';
 import { stats, validateContent } from '../domain/game';
 import { bodyFits, distance, lineOfSight } from '../domain/maps';
@@ -74,6 +75,9 @@ export default function DiabloApp() {
   const [content, setContent] = useState<Content>(initial.session?.replay.content ?? BASE_CONTENT);
   const [selecting, setSelecting] = useState(!initial.session);
   const [chosen, setChosen] = useState(content.heroes[0].id);
+  const [generated, setGenerated] = useState(false);
+  const includesVault = content.regions.some((r) => r.id === 'charted-vault');
+  const canGenerate = !includesVault && content.regions.some((r) => r.id === 'fen-1');
   const [seed, setSeed] = useState('lantern-1');
   const [message, setMessage] = useState(initial.error);
   const [saved, setSaved] = useState('');
@@ -339,7 +343,18 @@ export default function DiabloApp() {
     };
   }, [selecting, panel, paused, send, release, openPanel]);
   const start = (sandbox = false, hero = chosen) => {
-    const next = newSession(seed, hero, content, sandbox);
+    let next: Session;
+    try {
+      next = newSession(
+        seed,
+        hero,
+        generated && canGenerate ? generatedDungeonContent(seed, content) : content,
+        sandbox,
+      );
+    } catch (error) {
+      setMessage(String(error));
+      return;
+    }
     effects.current.clear();
     previous.current = null;
     viewCamera.current = undefined;
@@ -488,6 +503,17 @@ export default function DiabloApp() {
           <label className="ew-seed">
             World seed{' '}
             <input value={seed} maxLength={100} onChange={(e) => setSeed(e.target.value)} />
+          </label>
+          <label className="ew-generated">
+            <input
+              type="checkbox"
+              checked={generated && canGenerate}
+              onChange={(e) => setGenerated(e.target.checked)}
+              disabled={!canGenerate}
+            />{' '}
+            {includesVault
+              ? 'The Charted Vault is included in this content pack.'
+              : 'Add The Charted Vault · seeded side dungeon off Lantern Approach'}
           </label>
           <button className="ew-primary" onClick={() => start()}>
             Begin journey

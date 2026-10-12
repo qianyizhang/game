@@ -31,7 +31,7 @@ every asset. Named camera controls remain in those journeys; pointer orbit is ch
 a reduced-motion rigid representative so animation cannot masquerade as successful dragging.
 CI does not generate all 29 contact sheets or establish aesthetic acceptance.
 
-Automatic GitHub CI keeps four existing game journeys tagged `@smoke`, covering
+Automatic GitHub CI keeps five game journeys tagged `@smoke`, covering
 play/recruitment, persistence and navigation. The full browser suite, 3D rendering/export
 journeys and geometry regressions remain local completion gates for affected changes,
 as defined by [verification contracts](checks.md#gate-selection). Moving execution local

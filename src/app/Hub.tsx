@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { GamePicker, type GameId } from './GamePicker';
 import './Hub.css';
 
+const CartographerApp = lazy(() => import('../games/cartographer/ui/CartographerApp'));
 const DiabloApp = lazy(() => import('@card-workshop/diablo2'));
 const BalatroApp = lazy(() =>
   import('../games/balatro/ui/BlindsideApp').then((module) => ({ default: module.BlindsideApp })),
@@ -93,9 +94,13 @@ export default function Hub() {
   }, [challengeOpen]);
   const [game, setGame] = useState<GameId>(() => {
     try {
-      if (new URLSearchParams(location.search).get('game') === 'diablo2') return 'diablo2';
+      const requested = new URLSearchParams(location.search).get('game');
+      if (requested === 'diablo2' || requested === 'cartographer') return requested;
       const saved = localStorage.getItem(KEY);
-      return saved === 'spire' || saved === 'battlegrounds' || saved === 'diablo2'
+      return saved === 'spire' ||
+        saved === 'battlegrounds' ||
+        saved === 'diablo2' ||
+        saved === 'cartographer'
         ? saved
         : 'balatro';
     } catch {
@@ -108,13 +113,14 @@ export default function Hub() {
       spire: 'Slay the Spire',
       battlegrounds: 'Last Hearth',
       diablo2: 'Emberwake',
+      cartographer: 'Dungeon Cartographer',
     };
     document.title = `${dccOpen ? 'DCC Workbench' : artOpen ? '3D Object Studies' : challengeOpen ? 'Challenges' : names[game]} · Card Workshop`;
   }, [game, challengeOpen, artOpen, dccOpen]);
   const change = (id: GameId) => {
     setGame(id);
     const url = new URL(location.href);
-    if (id === 'diablo2') url.searchParams.set('game', 'diablo2');
+    if (id === 'diablo2' || id === 'cartographer') url.searchParams.set('game', id);
     else url.searchParams.delete('game');
     history.replaceState(null, '', url);
     try {
@@ -136,7 +142,12 @@ export default function Hub() {
               </main>
             }
           >
-            {game === 'diablo2' ? (
+            {game === 'cartographer' ? (
+              <div>
+                <GamePicker current={game} onSwitch={change} />
+                <CartographerApp />
+              </div>
+            ) : game === 'diablo2' ? (
               <div>
                 <GamePicker current={game} onSwitch={change} />
                 <DiabloApp />
@@ -163,7 +174,7 @@ export default function Hub() {
           </Suspense>
         )}
         <button
-          hidden={game === 'diablo2'}
+          hidden={game === 'diablo2' || game === 'cartographer'}
           ref={dccEntry}
           className="dcc-workbench-entry"
           onClick={() => showDcc(true)}
@@ -171,7 +182,7 @@ export default function Hub() {
           ↗ DCC workbench
         </button>
         <button
-          hidden={game === 'diablo2'}
+          hidden={game === 'diablo2' || game === 'cartographer'}
           ref={artEntry}
           className="art-studio-entry"
           onClick={() => showArt(true)}

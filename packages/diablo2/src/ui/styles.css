@@ -980,3 +980,16 @@
     font-size: 11px;
   }
 }
+
+.ew-generated {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0;
+  font-size: 14px;
+}
+.ew-generated input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}

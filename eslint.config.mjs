@@ -40,7 +40,11 @@ export default [
     },
   },
   {
-    files: ['packages/session-review/src/**/*.{ts,tsx}', 'packages/diablo2/src/ui/**/*.{ts,tsx}'],
+    files: [
+      'packages/session-review/src/**/*.{ts,tsx}',
+      'packages/diablo2/src/ui/**/*.{ts,tsx}',
+      'src/games/cartographer/ui/**/*.{ts,tsx}',
+    ],
     plugins: { 'react-hooks': reactHooks },
     rules: {
       'react-hooks/rules-of-hooks': 'error',

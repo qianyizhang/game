@@ -1,6 +1,6 @@
 # Game and modding guide
 
-Start with [play locally](../../README.md#play-locally). The repository README describes the three games and supported content.
+Start with [play locally](../../README.md#play-locally). The repository README describes the games and supported content.
 
 | Task                                                       | Guide                             |
 | ---------------------------------------------------------- | --------------------------------- |
@@ -12,3 +12,5 @@ Start with [play locally](../../README.md#play-locally). The repository README d
 | Inspect/export SVG or 3D assets                            | [Art workflows](../art/README.md) |
 
 Normal play, separate practice branches, imported histories and automated evidence retain their own identities. Current versions and frozen experimental environments are distinguished in the relevant guide; old saves are retained rather than silently migrated.
+
+[Dungeon Cartographer](cartographer.md) covers room drafting, tactical combat, replay saves, and the optional generated Emberwake dungeon.

@@ -76,3 +76,10 @@ The [`@card-workshop/dcc-workbench`](packages/dcc-workbench/README.md) package p
 npm run dcc -- doctor    # Check Blender availability
 npm run dcc -- verify    # Validate published asset receipts
 ```
+
+## Dungeon Cartographer
+
+A room-drafting tactical roguelike in the game picker (`/?game=cartographer`). Draft and
+rotate chambers, read enemy intentions, collect relics, and defeat the Unwritten King.
+Its seeded room generator also builds an optional Emberwake side dungeon.
+[Play guide](docs/guide/cartographer.md) · [Shared layout contract](docs/engineering/map-generation.md).

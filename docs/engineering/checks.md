@@ -10,7 +10,7 @@ Use exact Node/npm pins via `nvm use` and Python via `uv`. Browser and Blender r
 | `npm run test`                     | Application tests only; `test:watch` uses the same selection                                  |
 | `npm run test:geometry`            | Geometry project only (3D animation, deformation and recording regressions)                   |
 | `npm run test:browser`             | Browser interactions, persistence, rendering, exported artifact checks                        |
-| `npm run test:browser:smoke`       | Four existing game journeys selected by `@smoke` for automatic GitHub CI                      |
+| `npm run test:browser:smoke`       | Five game journeys selected by `@smoke` for automatic GitHub CI                               |
 | `npm run test:browser:review`      | Opt-in 3D visual contact sheets for human inspection                                          |
 | `npm run dcc -- verify`            | Validates artist source, recipe, and published GLB against receipts                           |
 | `npm run maintenance -- inventory` | Read-only occurrences, hashes, asset classifications, tracked-text refs                       |
@@ -30,7 +30,7 @@ GitHub targets **under two minutes of execution**, excluding queue delay. Its fo
 maintenance scopes run formatting/lint, types/Python, rules/simulations, and tools/DCC
 contracts/build independently; inventory and hydration checks run before each scope.
 The browser job runs one existing recruitment/play/save-reload journey for Blindside,
-Spire, Last Hearth and Emberwake, with one worker and failure artifacts. Jobs have a
+Spire, Last Hearth, Emberwake and Dungeon Cartographer, with one worker and failure artifacts. Jobs have a
 five-minute failure ceiling; that ceiling is not the performance target or proof of it.
 
 The 2026-10-11 full hosted run spent **499 seconds** in geometry. Its browser jobs took
@@ -70,7 +70,7 @@ browser case. To supply alternate authorized exports to the private group, set
 `TRACE_PRIVATE_INPUT` to their directory; its default is `test-results/trace-visualizer-input`.
 Available but invalid inputs fail rather than becoming skips.
 
-Static checks still cover 3D sources. Automatic GitHub smoke checks select four of the
+Static checks still cover 3D sources. Automatic GitHub smoke checks select five of the
 existing functional journeys through a separate `smoke` project; they do not establish
 full browser, 3D delivery/export, native or private-evidence verification.
 Browser/native gates run locally for affected behavior;
