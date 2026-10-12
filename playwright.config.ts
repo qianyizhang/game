@@ -39,6 +39,7 @@ export default defineConfig({
         '**/raven.spec.ts',
         '**/otter.spec.ts',
         '**/night-passage-hero.spec.ts',
+        '**/night-passage-enemies.spec.ts',
         '**/dcc-workbench.spec.ts',
         '**/native-assets.spec.ts',
       ],

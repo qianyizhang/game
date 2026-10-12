@@ -1,0 +1,114 @@
+[
+  {
+    "kind": "hunter",
+    "clip": "idle",
+    "seconds": 2,
+    "wallSeconds": 2.0012999999523164,
+    "frames": 121
+  },
+  {
+    "kind": "hunter",
+    "clip": "run",
+    "seconds": 0.800000011920929,
+    "wallSeconds": 0.8003999999761582,
+    "frames": 48
+  },
+  {
+    "kind": "hunter",
+    "clip": "attack",
+    "seconds": 1,
+    "wallSeconds": 1.0161000000238418,
+    "frames": 61
+  },
+  {
+    "kind": "hunter",
+    "clip": "stagger",
+    "seconds": 0.5,
+    "wallSeconds": 0.5006000000238419,
+    "frames": 30
+  },
+  {
+    "kind": "archer",
+    "clip": "idle",
+    "seconds": 2,
+    "wallSeconds": 2.012100000023842,
+    "frames": 121
+  },
+  {
+    "kind": "archer",
+    "clip": "run",
+    "seconds": 0.800000011920929,
+    "wallSeconds": 0.801,
+    "frames": 48
+  },
+  {
+    "kind": "archer",
+    "clip": "attack",
+    "seconds": 1,
+    "wallSeconds": 1.0163000000715257,
+    "frames": 61
+  },
+  {
+    "kind": "archer",
+    "clip": "stagger",
+    "seconds": 0.5,
+    "wallSeconds": 0.5169000000953674,
+    "frames": 31
+  },
+  {
+    "kind": "brute",
+    "clip": "idle",
+    "seconds": 2,
+    "wallSeconds": 2.013,
+    "frames": 121
+  },
+  {
+    "kind": "brute",
+    "clip": "run",
+    "seconds": 1,
+    "wallSeconds": 1.001100000023842,
+    "frames": 60
+  },
+  {
+    "kind": "brute",
+    "clip": "attack",
+    "seconds": 1,
+    "wallSeconds": 1.0162000000476836,
+    "frames": 61
+  },
+  {
+    "kind": "brute",
+    "clip": "stagger",
+    "seconds": 0.5,
+    "wallSeconds": 0.5152999999523162,
+    "frames": 31
+  },
+  {
+    "kind": "witch",
+    "clip": "idle",
+    "seconds": 2,
+    "wallSeconds": 2.0149000000953676,
+    "frames": 121
+  },
+  {
+    "kind": "witch",
+    "clip": "run",
+    "seconds": 1.2000000476837158,
+    "wallSeconds": 1.2169000000953674,
+    "frames": 73
+  },
+  {
+    "kind": "witch",
+    "clip": "attack",
+    "seconds": 1,
+    "wallSeconds": 1.015,
+    "frames": 61
+  },
+  {
+    "kind": "witch",
+    "clip": "stagger",
+    "seconds": 0.5,
+    "wallSeconds": 0.5015,
+    "frames": 30
+  }
+]

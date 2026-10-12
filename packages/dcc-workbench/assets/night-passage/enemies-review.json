@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage four ordinary enemy families",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "owner visual self-review with worker native critique",
+    "independentArtApproval": false
+  },
+  "authority": {
+    "hunter": {
+      "sourceSha256": "ec4621999731108756b4d67d472137a5bce47e802055476cb22b4029b8caf9f6",
+      "modelSha256": "cf2415716a6d85ffc3b1611c6102e9b089530c623ceb0ac13a4a5ac1086a836a"
+    },
+    "archer": {
+      "sourceSha256": "9761d9769509226fb5a3bc7138c709e6f823c074e1bc2eb0dd058ab9ea08b306",
+      "modelSha256": "cbbf4c0a2c7c7cbbd0d035aaefe95eb7da36509e97fe39a59cbcde9fe81037fe"
+    },
+    "brute": {
+      "sourceSha256": "d20848a108eff3e52e10e6003455afc4e37edf946e640eda0f08854554880752",
+      "modelSha256": "b65164652e911cbcc56fdf8dde091906e8a23ffec9d4d58b3c750ea6a3c333e2"
+    },
+    "witch": {
+      "sourceSha256": "99e957d89679104c1eb7c996781544a18c7a1634de0925b795fda0ea5201f823",
+      "modelSha256": "cf24f938252b567bea320fe7721efffddf3ffd2a723b69fe96fad111a134cf44"
+    }
+  },
+  "review": [
+    "Native front/side/rear clay and material portraits inspected for all four families. Broad brute and floating witch contours separate from the two hooded opponents.",
+    "Repaired hunter handle-to-blade gap and crooked brute shaft in saved masters. Replaced weak brute wrist motion with a shoulder lift and slam; replaced archer tilt with a drawing-hand IK gesture.",
+    "Decoded unretimed 1x attack sequences inspected at ten frames per second. Raw archer clip retains its arrow; production visibility hides it from release through settling.",
+    "Matching controlled four-family encounter reviewed with native assets and fallback blocks, at 960x600 and 390x244. Narrow scale loses fine equipment and face detail; threat marks remain visible."
+  ],
+  "geometryAgreement": {
+    "units": "model units",
+    "tolerance": 0.0001,
+    "sampling": "Every authored 30 fps frame; 16 vertices per named mesh; source floor audit checks the complete surface.",
+    "families": {
+      "hunter": {
+        "maximumOriginalError": 2.3569137663716264e-06,
+        "maximumEditedError": 2.3569137663716264e-06,
+        "changedAttackSurface": 0.13545006410460025,
+        "authoredFrames": 133
+      },
+      "archer": {
+        "maximumOriginalError": 1.2479776791315018e-06,
+        "maximumEditedError": 1.3610631126788255e-06,
+        "changedAttackSurface": 0.1632263224390944,
+        "authoredFrames": 133
+      },
+      "brute": {
+        "maximumOriginalError": 1.5303838734822225e-06,
+        "maximumEditedError": 1.5303838734822225e-06,
+        "changedAttackSurface": 0.14924556204250697,
+        "authoredFrames": 139
+      },
+      "witch": {
+        "maximumOriginalError": 6.446691518317169e-07,
+        "maximumEditedError": 6.446691518317169e-07,
+        "changedAttackSurface": 0.17932492415852688,
+        "authoredFrames": 145
+      }
+    }
+  },
+  "savedEditProof": {
+    "hunter": {
+      "meshAndWeightsUnchanged": true,
+      "authoritativeSourceAndDeliveryUnchanged": true,
+      "headChangeRadians": 0.30000001192092896,
+      "editedClip": "attack",
+      "editedFrame": 10,
+      "sourceSha256": "ec4621999731108756b4d67d472137a5bce47e802055476cb22b4029b8caf9f6",
+      "modelSha256": "cf2415716a6d85ffc3b1611c6102e9b089530c623ceb0ac13a4a5ac1086a836a"
+    },
+    "archer": {
+      "meshAndWeightsUnchanged": true,
+      "authoritativeSourceAndDeliveryUnchanged": true,
+      "headChangeRadians": 0.30000001192092896,
+      "editedClip": "attack",
+      "editedFrame": 10,
+      "sourceSha256": "9761d9769509226fb5a3bc7138c709e6f823c074e1bc2eb0dd058ab9ea08b306",
+      "modelSha256": "cbbf4c0a2c7c7cbbd0d035aaefe95eb7da36509e97fe39a59cbcde9fe81037fe"
+    },
+    "brute": {
+      "meshAndWeightsUnchanged": true,
+      "authoritativeSourceAndDeliveryUnchanged": true,
+      "headChangeRadians": 0.30000001192092896,
+      "editedClip": "attack",
+      "editedFrame": 10,
+      "sourceSha256": "d20848a108eff3e52e10e6003455afc4e37edf946e640eda0f08854554880752",
+      "modelSha256": "b65164652e911cbcc56fdf8dde091906e8a23ffec9d4d58b3c750ea6a3c333e2"
+    },
+    "witch": {
+      "meshAndWeightsUnchanged": true,
+      "authoritativeSourceAndDeliveryUnchanged": true,
+      "headChangeRadians": 0.30000001192092896,
+      "editedClip": "attack",
+      "editedFrame": 10,
+      "sourceSha256": "99e957d89679104c1eb7c996781544a18c7a1634de0925b795fda0ea5201f823",
+      "modelSha256": "cf24f938252b567bea320fe7721efffddf3ffd2a723b69fe96fad111a134cf44"
+    }
+  },
+  "verification": {
+    "browser": "7 passed: 16 native clips, production actors/fallbacks and archer release, 85 controlled family states, five legal campaigns, live chamber, guardian/context loss, four saved-edit comparisons.",
+    "application": "308 tests and 21 seeded simulations passed.",
+    "geometry": "128 geometry tests passed; npm run check:full completed successfully.",
+    "maintenance": "Passed static, formatting, source-inventory and maintained-tool checks. One sandbox loopback test skipped in the full gate; approved test:usage rerun passed 9/9."
+  },
+  "limits": [
+    "Visual self-review is not independent approval or user acceptance.",
+    "Locomotion is in place; dedicated strafing/backpedal and transition blending remain later polish.",
+    "Archer and hunter still share a hooded outline; equipment and color provide additional separation.",
+    "Guardian and environment artwork remain queued.",
+    "Evidence does not establish crowded human-played combat feel."
+  ],
+  "delegation": {
+    "ownership": "Native authoring and browser review helpers delegated; root owned runtime integration, final visual review and verification.",
+    "assessment": "Independent ownership allowed parallel work; visual repairs remained the critical path. No measured speedup claim."
+  },
+  "evidence": [
+    {
+      "path": "evidence/enemies/arena.png",
+      "sha256": "b842432d7a9dc5a0d306a5455f102942ef1b937b469c9b6b0bfa4be01a782c5f"
+    },
+    {
+      "path": "evidence/enemies/attacks.png",
+      "sha256": "b972dda684bb5066eff4577c8aa1e8501247b4c86e353dfc5a2cca11141a3045"
+    },
+    {
+      "path": "evidence/enemies/enemies-1x.webm",
+      "sha256": "8f1a88ea8bb33a9133cb2dfc22782b31a72ea41b8da15304667c102d57d90ba9"
+    },
+    {
+      "path": "evidence/enemies/fallback.png",
+      "sha256": "42647aefa5927ede9e58debdf587ed0986a02101d77f1ee9ef79c98fe164e0f9"
+    },
+    {
+      "path": "evidence/enemies/narrow.png",
+      "sha256": "254376500f790b4b0de4e1f0e801a75006900fe4965ecc8a78aead8aa50f0b3a"
+    },
+    {
+      "path": "evidence/enemies/native-families.png",
+      "sha256": "efded9c5d7677465388052094b8dff1ed3b288a51fe63f270d313b3106c7c42c"
+    },
+    {
+      "path": "evidence/enemies/playback.json",
+      "sha256": "8f56e7f1b2577a8ee2a4b421d307881239a790ef74f1f49baba641c0b6585b77"
+    }
+  ]
+}

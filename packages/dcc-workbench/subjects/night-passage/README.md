@@ -1,4 +1,4 @@
-# Night Passage · lantern bearer and armory
+# Night Passage · gameplay asset sources
 
 The first native gameplay asset for `/?game=night-passage` is a masked traveller
 with a pointed teal hood, asymmetric mantle, fitted sleeves and planted boots.
@@ -70,7 +70,8 @@ regenerable temporary evidence under `test-results`, not committed fixtures.
 The browser review records unretimed 1× playback and six phase images per clip.
 Native front/side/rear clay, material portrait, action poses, desktop/narrow arena
 and this playback are separate visual evidence. Passing checks is not user art
-acceptance. Enemies, guardians and environments remain blockouts.
+acceptance. The ordinary enemy batch below adds four native families; guardians
+and environments remain blockouts.
 Precise two-hand string contact and directional movement remain polish opportunities.
 
 ## Five weapon identities
@@ -110,3 +111,60 @@ delivery hashes must remain unchanged. The production actor review records all
 five attacks and specials using legal commands at 60 rules ticks per second,
 with windup/contact/rest captures. Keep the small review sheets and 1× movie;
 regenerate bulky sampled arrays instead of committing them.
+
+## Ordinary enemy family
+
+`enemies/{hunter,archer,brute,witch}/source.blend` owns each enemy's editable
+geometry, materials, fitted skeleton and four saved clips. The deliveries are
+`enemy-{kind}.glb` and `enemy-{kind}.json` in the same asset directory as the hero.
+Each receipt pins its native source, delivery and `enemy_*.py` authoring scripts.
+The constructor makes fresh candidates; export reads the saved master.
+
+The archer's nondeforming `CTRL_draw` drives the drawing hand through a two-bone
+IK chain; its orientation helper keeps the hand aligned with the string. The
+brute's saved attack lifts the maul through the shoulder before the contact slam.
+`enemy_motion.py` records these reviewed saved-source repairs and the hunter's
+joined sickle grip. Do not rerun a construction or repair recipe over subsequent
+artist edits; inspect and edit the existing master instead.
+
+The masked sickle hunter leans into pursuit; the reed-hood archer has a narrow
+upright profile; the broad plated brute carries a maul; the shrouded witch floats
+with a lantern. Their meshes and performances are family-specific. These are
+original stylized opponents, not character replicas. All use X-forward native
+coordinates and the same 28× arena scale as the hero, before the existing enemy
+radius scale. Ground position and facing remain rules-owned.
+
+Each delivery has `idle`, `run`, `attack` and `stagger`. Idle/run loop; the attack's
+contact is at normalized phase 0.45. The browser maps the current enemy windup to
+that contact, then settles over the first 18 cooldown ticks before returning to
+locomotion. The archer's `Reed_arrow` mesh hides from contact through settling
+and returns at rest; the gameplay projectile remains rules-owned. Raw native clip
+playback does not apply this browser visibility cue. This visual recovery does not stop movement or change the rules
+cooldown. Stagger reads the existing nine-tick interruption. Reduced motion holds
+stable clip poses; paused snapshots remain unchanged. Dedicated backward/sideways
+locomotion and transition blending remain later polish.
+
+`scene/enemies.ts` owns one lazy asset library per arena. Each pooled opponent has
+its own cloned skeleton, mixer and materials; geometry and textures remain
+library-owned. Hit flash cannot tint another opponent. Missing/incomplete assets
+keep the procedural fallback, and late loads after disposal release their owned
+resources. Reusing a pooled actor resets movement observation across run, chamber
+and enemy identity. Guardians retain their existing blockouts.
+
+Use a fresh output directory for every operation; repeat with each saved kind:
+
+```sh
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/enemy_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend --output test-results/enemy-hunter-export
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/enemy_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend --output test-results/enemy-hunter-review
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/enemy_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend --output test-results/night-passage-enemies/native/hunter
+```
+
+Native edit evidence is generated under
+`test-results/night-passage-enemies/native/{kind}/`; the browser comparison uses
+`NIGHT_PASSAGE_ENEMY_RESULTS=test-results/night-passage-enemies/native` with
+`tests/browser/night-passage-enemies.spec.ts`. It compares the published and
+saved-edited deliveries to Blender-evaluated surfaces. Keep sampled arrays as
+regenerable verification output. The
+[enemy visual review](../../../../docs/art/assets/night-passage/enemies.md)
+records the representative clay review, play-scale readability and remaining art
+limits separately from native agreement.

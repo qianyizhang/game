@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "archer",
+  "sourceSha256": "9761d9769509226fb5a3bc7138c709e6f823c074e1bc2eb0dd058ab9ea08b306",
+  "modelSha256": "cbbf4c0a2c7c7cbbd0d035aaefe95eb7da36509e97fe39a59cbcde9fe81037fe",
+  "meshSha256": "b4f9a2a5b073ab8679e7beba9eb4bf19b9750164d5298386c9d1b906b6f428b3",
+  "blender": "4.5.14 LTS",
+  "clips": {
+    "idle": {
+      "seconds": 2.0,
+      "loop": true,
+      "contactPhase": 0.45
+    },
+    "run": {
+      "seconds": 0.8,
+      "loop": true,
+      "contactPhase": 0.45
+    },
+    "attack": {
+      "seconds": 1.0,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "stagger": {
+      "seconds": 0.5,
+      "loop": false,
+      "contactPhase": 0.45
+    }
+  },
+  "support": {
+    "idle": {
+      "frames": 61,
+      "minimumSurfaceHeight": 0.024999825283885002,
+      "maximumFootTargetError": 1.951426394836425e-07,
+      "loopMatrixError": 0.0
+    },
+    "run": {
+      "frames": 25,
+      "minimumSurfaceHeight": 0.024999747052788734,
+      "maximumFootTargetError": 4.383047843513843e-07,
+      "loopMatrixError": 0.0
+    },
+    "attack": {
+      "frames": 31,
+      "minimumSurfaceHeight": 0.024999825283885002,
+      "maximumFootTargetError": 1.951426394836425e-07,
+      "loopMatrixError": 0.0
+    },
+    "stagger": {
+      "frames": 16,
+      "minimumSurfaceHeight": 0.024999825283885002,
+      "maximumFootTargetError": 1.951426394836425e-07,
+      "loopMatrixError": 2.7755575615628914e-17
+    }
+  },
+  "supportScope": "All authored 30fps frames: complete evaluated surface floor, loop closure and planted-foot IK reach (floating witch excludes foot targets); in-place run, no claim of world-space foot locking at every rules speed",
+  "exportScripts": {
+    "enemy_delivery.py": "19e134a1c7b3d51fae3ed6ef880eb5d913a76f4f3b010816d2c690a7a75b74cc",
+    "enemy_edit.py": "756fa474183216915a285dfc8e6c206c8f36c5cd3709133f001e8ebf3ff0151c",
+    "enemy_form.py": "b971b4ba635f7e7711da8275fac1fb3a65aea21da84162a5250b86b15e249fd9",
+    "enemy_motion.py": "22fdb6d8d0edb9802fc5573c589f9fe74b21572f9620ba9ce4c692a0efa5c588",
+    "enemy_review.py": "16d5efe4ad796552d5d843a99ea64dcbd7744f6f4098d25559b4195c57a77409",
+    "enemy_rig.py": "4f3b2b416ed63b42f433cc91eeb9f16c9c0ce50912acb04c01fa65cf482fa3f6",
+    "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "hero_rig.py": "c63a2cba5d230169dae82f58b7efeee65f7a00c84d3228d07265d60dde0540cc"
+  }
+}
