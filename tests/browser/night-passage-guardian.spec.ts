@@ -11,6 +11,7 @@ const cases = [
     clips: ['idle', 'run', 'sweep', 'rain', 'wheel', 'stagger'],
     env: 'NIGHT_PASSAGE_GUARDIAN_RESULTS',
     region: 0,
+    frames: 237,
   },
   {
     kind: 'undertow',
@@ -18,6 +19,7 @@ const cases = [
     clips: ['idle', 'run', 'charge', 'volley', 'pulse', 'stagger'],
     env: 'NIGHT_PASSAGE_UNDERTOW_RESULTS',
     region: 1,
+    frames: 237,
   },
   {
     kind: 'ashregent',
@@ -25,15 +27,26 @@ const cases = [
     clips: ['idle', 'run', 'cross', 'rain', 'volley', 'stagger'],
     env: 'NIGHT_PASSAGE_ASHREGENT_RESULTS',
     region: 2,
+    frames: 237,
+  },
+  {
+    kind: 'sovereign',
+    name: 'Unlit Sovereign',
+    clips: ['idle', 'run', 'cross', 'rain', 'pulse', 'wheel', 'stagger'],
+    env: 'NIGHT_PASSAGE_SOVEREIGN_RESULTS',
+    region: 3,
+    frames: 280,
   },
 ] as const;
 
-for (const { kind, name, clips, env, region } of cases) {
+for (const { kind, name, clips, env, region, frames: authoredFrames } of cases) {
   const review = `test-results/night-passage-${kind}/browser`;
   const model = `packages/dcc-workbench/assets/night-passage/guardian-${kind}.glb`;
   const source = `packages/dcc-workbench/subjects/night-passage/guardians/${kind}/source.blend`;
 
-  test(`${name} visibly plays all six delivered clips at unretimed 1×`, async ({ page }) => {
+  test(`${name} visibly plays all ${clips.length} delivered clips at unretimed 1×`, async ({
+    page,
+  }) => {
     test.setTimeout(browserBudget(45000));
     await mkdir(review, { recursive: true });
     const errors: string[] = [];
@@ -94,16 +107,14 @@ for (const { kind, name, clips, env, region } of cases) {
       privateSkeletons: true,
       privateMaterials: true,
       sharedGeometry: true,
+      initialFallback: true,
       rulesUnchanged: true,
     });
     expect(result.actors.height).toBeGreaterThan(60);
     expect(result.actors.height).toBeLessThan(250);
-    expect(result.actors.attacks.map((attack) => attack.kind)).toEqual(clips.slice(2, 5));
+    expect(result.actors.attacks.map((attack) => attack.kind)).toEqual(clips.slice(2, -1));
     for (const attack of result.actors.attacks)
       expect(attack).toMatchObject({ moving: true, pausedStable: true });
-    expect(result.actors.otherRegions).toEqual([
-      { region: 3, authoredHidden: true, fallbackVisible: true },
-    ]);
     expect(result.actors.crossRegions).toEqual(
       cases
         .filter((entry) => entry.region !== region)
@@ -215,6 +226,7 @@ for (const { kind, name, clips, env, region } of cases) {
       expect(results.allMeshesCovered).toBe(true);
       for (const family of [results.original, results.edited]) {
         expect(family.map((clip) => clip.name).sort()).toEqual([...clips].sort());
+        expect(family.reduce((sum, clip) => sum + clip.samples, 0)).toBe(authoredFrames);
         for (const clip of family) {
           expect(clip.vertices).toBeGreaterThan(0);
           expect(clip.samples).toBeGreaterThan(1);

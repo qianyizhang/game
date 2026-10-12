@@ -6,6 +6,7 @@ ATTACKS = {
     "bellwarden": ("sweep", "rain", "wheel"),
     "undertow": ("charge", "volley", "pulse"),
     "ashregent": ("cross", "rain", "volley"),
+    "sovereign": ("cross", "rain", "pulse", "wheel"),
 }
 
 

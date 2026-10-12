@@ -1,0 +1,44 @@
+[
+  {
+    "clip": "idle",
+    "seconds": 2,
+    "wallSeconds": 2.013,
+    "frames": 121
+  },
+  {
+    "clip": "run",
+    "seconds": 1,
+    "wallSeconds": 1.0002999999523163,
+    "frames": 60
+  },
+  {
+    "clip": "cross",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4008999999761582,
+    "frames": 84
+  },
+  {
+    "clip": "rain",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4171000000238418,
+    "frames": 85
+  },
+  {
+    "clip": "pulse",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.415,
+    "frames": 85
+  },
+  {
+    "clip": "wheel",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4157999999523163,
+    "frames": 85
+  },
+  {
+    "clip": "stagger",
+    "seconds": 0.5,
+    "wallSeconds": 0.5012999999523163,
+    "frames": 30
+  }
+]

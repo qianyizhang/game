@@ -10,12 +10,29 @@ const read = (path) => readFileSync(new URL(path, import.meta.url));
 /** @param {string} path */
 const hash = (path) => createHash('sha256').update(read(path)).digest('hex');
 
-for (const { kind, names } of [
-  { kind: 'bellwarden', names: ['idle', 'rain', 'run', 'stagger', 'sweep', 'wheel'] },
-  { kind: 'undertow', names: ['charge', 'idle', 'pulse', 'run', 'stagger', 'volley'] },
-  { kind: 'ashregent', names: ['cross', 'idle', 'rain', 'run', 'stagger', 'volley'] },
+for (const { kind, names, expectedFrames } of [
+  {
+    kind: 'bellwarden',
+    names: ['idle', 'rain', 'run', 'stagger', 'sweep', 'wheel'],
+    expectedFrames: 237,
+  },
+  {
+    kind: 'undertow',
+    names: ['charge', 'idle', 'pulse', 'run', 'stagger', 'volley'],
+    expectedFrames: 237,
+  },
+  {
+    kind: 'ashregent',
+    names: ['cross', 'idle', 'rain', 'run', 'stagger', 'volley'],
+    expectedFrames: 237,
+  },
+  {
+    kind: 'sovereign',
+    names: ['cross', 'idle', 'pulse', 'rain', 'run', 'stagger', 'wheel'],
+    expectedFrames: 280,
+  },
 ]) {
-  await test(`${kind} pins its saved source and exports finite weighted surfaces with six bounded clips`, () => {
+  await test(`${kind} pins its saved source and exports finite weighted surfaces with ${names.length} bounded clips`, () => {
     const receipt = record(
       JSON.parse(read(`./assets/night-passage/guardian-${kind}.json`).toString()),
     );
@@ -97,6 +114,6 @@ for (const { kind, names } of [
     let frames = 0;
     for (const audit of Object.values(record(receipt.support)))
       frames += Number(record(audit).frames);
-    assert.equal(frames, 237);
+    assert.equal(frames, expectedFrames);
   });
 }

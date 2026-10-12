@@ -52,7 +52,8 @@ preserving mesh and weights. These measurements are separate from visual judgmen
 
 ## Bounds
 
-Unlit Sovereign and the four environment kits remain blockouts. In-place walking
+[Unlit Sovereign](sovereign.md) now has an authored native model. The four
+environment kits remain blockouts. In-place walking
 does not establish world-space foot locking at arbitrary movement speeds.
 Directional locomotion and animation transitions remain polish work. Ground
 warnings remain the authoritative danger footprint; the blade's physical reach

@@ -4,6 +4,7 @@ import { clone } from 'three/addons/utils/SkeletonUtils.js';
 import bellwardenUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-bellwarden.glb?url';
 import undertowUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-undertow.glb?url';
 import ashregentUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-ashregent.glb?url';
+import sovereignUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-sovereign.glb?url';
 import { disposeObject } from '../../../../../shared/three/resources';
 import { isMesh, isSkinnedMesh } from '../../../../../shared/three/objects';
 import { GUARDIANS } from '../../../domain/encounter-content';
@@ -14,6 +15,7 @@ const profiles = [
   { id: 'bellwarden', region: 0, url: bellwardenUrl, attacks: ['sweep', 'rain', 'wheel'] },
   { id: 'undertow', region: 1, url: undertowUrl, attacks: ['charge', 'volley', 'pulse'] },
   { id: 'ashregent', region: 2, url: ashregentUrl, attacks: ['cross', 'rain', 'volley'] },
+  { id: 'sovereign', region: 3, url: sovereignUrl, attacks: ['cross', 'rain', 'pulse', 'wheel'] },
 ] as const;
 type Profile = (typeof profiles)[number];
 type Kind = Profile['id'];

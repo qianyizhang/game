@@ -70,8 +70,8 @@ regenerable temporary evidence under `test-results`, not committed fixtures.
 The browser review records unretimed 1× playback and six phase images per clip.
 Native front/side/rear clay, material portrait, action poses, desktop/narrow arena
 and this playback are separate visual evidence. Passing checks is not user art
-acceptance. The ordinary enemy batch below adds four native families; guardians
-and environments remain blockouts except Bellwarden, Undertow and Ash Regent described below.
+acceptance. The ordinary enemy batch below adds four native families; the four
+authored guardians are described below, while environments remain blockouts.
 Precise two-hand string contact and directional movement remain polish opportunities.
 
 ## Five weapon identities
@@ -149,7 +149,7 @@ its own cloned skeleton, mixer and materials; geometry and textures remain
 library-owned. Hit flash cannot tint another opponent. Missing/incomplete assets
 keep the procedural fallback, and late loads after disposal release their owned
 resources. Reusing a pooled actor resets movement observation across run, chamber
-and enemy identity. The guardian adapter is separate; the three authored guardians are described below.
+and enemy identity. The guardian adapter is separate; the four authored guardians are described below.
 
 Before cloning, the renderer batches compatible opaque meshes by material and
 keeps the nocked arrow separate. Each cloned rig shares one private skeleton
@@ -262,3 +262,32 @@ scale before radius scaling; rules own the crossed lanes, rain and fan release.
 The [visual review](../../../../docs/art/assets/night-passage/ashregent.md) records
 native shape, playback and combat-scale evidence. Earlier guardian models were
 re-exported byte-identically; only their current script receipts were refreshed.
+
+## Unlit Sovereign
+
+`guardians/sovereign/source.blend` owns the faceless porcelain mask, three broken
+orbital crown arcs, silver shoulders and divided violet vestments. Seven saved
+clips cover `idle`, `run`, `cross`, `rain`, `pulse`, `wheel`, `stagger`; the final
+region has four attack patterns. `GuardianRig` reuses fitted humanoid foot IK
+and adds an FK `halo` joint for the wheel gesture. `guardian_sovereign.py`
+constructs fresh candidates only (`bootstrap --kind sovereign` with a new path).
+Export evaluates saved geometry and keys without reconstructing the master.
+The shared catalog, exporter, review and runtime accommodate the larger clip set.
+
+```sh
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend --output test-results/sovereign-export
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend --output test-results/sovereign-review
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend --output test-results/night-passage-sovereign/native
+NIGHT_PASSAGE_GUARDIAN_RESULTS=test-results/night-passage-bellwarden/native NIGHT_PASSAGE_UNDERTOW_RESULTS=test-results/night-passage-undertow/native NIGHT_PASSAGE_ASHREGENT_RESULTS=test-results/night-passage-ashregent/native NIGHT_PASSAGE_SOVEREIGN_RESULTS=test-results/night-passage-sovereign/native npm run test:browser -- tests/browser/night-passage-guardian.spec.ts
+npm run check:full
+```
+
+Use fresh output directories. Sovereign agreement covers all 280 saved 30fps
+frames and 16 probes per named mesh; the earlier guardians retain 237 frames.
+A disposable saved edit changes `head` at frame 10 in `cross`, preserving mesh
+and weights. Region 3 uses the shared 28× model scale before radius scaling.
+Rules own every attack footprint and release. The
+[visual review](../../../../docs/art/assets/night-passage/sovereign.md) separates
+native agreement, playback, combat-size appearance and remaining limitations.
+All earlier guardian models were re-exported byte-identically; only their
+current script receipts were refreshed, preserving historical visual evidence.

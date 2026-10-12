@@ -20,5 +20,6 @@ The [creature asset index](assets/README.md) keeps individual procedural and nat
 
 The [Night Passage Bellwarden](assets/night-passage/bellwarden.md),
 [Undertow](assets/night-passage/undertow.md) and
-[Ash Regent](assets/night-passage/ashregent.md) record the first three authored
+[Ash Regent](assets/night-passage/ashregent.md) and
+[Unlit Sovereign](assets/night-passage/sovereign.md) record the four authored
 gameplay guardians, native motion proof and owner visual self-review.

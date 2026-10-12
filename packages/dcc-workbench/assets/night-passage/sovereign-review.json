@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage Unlit Sovereign",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "primary author visual self-review",
+    "independentArtApproval": false
+  },
+  "authority": {
+    "sourceSha256": "b3904c559df88d3f229d8a2c6a4866a001d4efe20c46b22803b63a6c888682d4",
+    "modelSha256": "d14a30dc04c92b16297244c1ea117d1ad4ca0371319949b47473b8dd1dafff65"
+  },
+  "review": [
+    "Inspected native front, side, rear and angled clay and material views, plus all four attack contacts.",
+    "The broken orbital crown, faceless porcelain mask, silver shoulder mantle and divided violet vestments distinguish the final guardian. The first candidate needed no geometry repair after review.",
+    "Inspected six-frame-per-second decoded unretimed cross, rain, pulse and wheel playback for preparation, contact and settling; retained the full seven-clip 1x movie.",
+    "Compared production native and fallback at identical positions and crossed-lane warning geometry. The health bar clears the crown and the ground warning remains visible.",
+    "Reviewed 960x600 and 390x244 production views. Fine crown gaps and mask seam recede at narrow scale; pale head, silver shoulders and violet body carry the identity."
+  ],
+  "geometryAgreement": {
+    "units": "model units",
+    "tolerance": 0.0001,
+    "sampling": "All 280 authored 30fps frames, 16 vertices per named mesh (432 points/frame); whole-surface native floor/IK audit is separate.",
+    "maximumOriginalError": 1.3282722331585125e-06,
+    "maximumEditedError": 1.3282722331585125e-06,
+    "changedCrossSurface": 0.1310320008583356,
+    "allMeshesCovered": true
+  },
+  "savedEditProof": {
+    "meshAndWeightsUnchanged": true,
+    "authoritativeSourceAndDeliveryUnchanged": true,
+    "headChangeRadians": 0.30000001937150955,
+    "editedClip": "cross",
+    "editedFrame": 10,
+    "sourceSha256": "b3904c559df88d3f229d8a2c6a4866a001d4efe20c46b22803b63a6c888682d4",
+    "modelSha256": "d14a30dc04c92b16297244c1ea117d1ad4ca0371319949b47473b8dd1dafff65"
+  },
+  "runtime": {
+    "visible": true,
+    "fallbackHidden": true,
+    "finiteBounds": true,
+    "height": 121.05317778530238,
+    "pausedStable": true,
+    "reducedStable": true,
+    "independentPoses": true,
+    "privateSkeletons": true,
+    "privateMaterials": true,
+    "sharedGeometry": true,
+    "initialFallback": true,
+    "attacks": [
+      {
+        "kind": "cross",
+        "moving": true,
+        "pausedStable": true
+      },
+      {
+        "kind": "rain",
+        "moving": true,
+        "pausedStable": true
+      },
+      {
+        "kind": "pulse",
+        "moving": true,
+        "pausedStable": true
+      },
+      {
+        "kind": "wheel",
+        "moving": true,
+        "pausedStable": true
+      }
+    ],
+    "crossRegions": [
+      {
+        "region": 0,
+        "authoredVisible": true,
+        "previousHidden": true,
+        "fallbackHidden": true
+      },
+      {
+        "region": 1,
+        "authoredVisible": true,
+        "previousHidden": true,
+        "fallbackHidden": true
+      },
+      {
+        "region": 2,
+        "authoredVisible": true,
+        "previousHidden": true,
+        "fallbackHidden": true
+      }
+    ],
+    "rulesUnchanged": true
+  },
+  "limits": [
+    "Self-review is not user art approval. All four guardians are authored; four environment kits and further effects/icons remain pending.",
+    "In-place locomotion has no claim of world-space foot locking at every movement speed; directional locomotion and transition blending remain polish.",
+    "Newly loaded mid-action snapshots infer preparation duration when historic enrage timing is unavailable; contact remains tied to the confirmed attack transition.",
+    "Six-fps decoded review samples motion; it is not an exhaustive continuous-time anatomical proof."
+  ],
+  "delegation": {
+    "ownership": "Primary authored native source and integrated/reviewed delivery; two reused workers owned runtime/tests and browser/receipt checks.",
+    "rework": "Workers generalized six-clip test assumptions and verified four-pattern wraparound. Both outputs passed integration checks; no native geometry repair was needed.",
+    "efficiency": "Both delegated outputs were used. No measured single-agent time comparison."
+  },
+  "evidence": [
+    {
+      "path": "evidence/sovereign/attacks-playback-sheet.png",
+      "sha256": "ed3b14fcbe4cc78718c6f49d9265e4c19a2cd62e18176fe9d37d19204dd772e1"
+    },
+    {
+      "path": "evidence/sovereign/combat-desktop.png",
+      "sha256": "d58ef16c4fa4c51fc758c5633eb3c7cdd44c5a16a6f7bb72b55d889b217e323c"
+    },
+    {
+      "path": "evidence/sovereign/combat-narrow.png",
+      "sha256": "6c19a94044c056e76b652e67e833e3fb77a85c3be26f0bba42bae7f8c7db82b5"
+    },
+    {
+      "path": "evidence/sovereign/fallback-desktop.png",
+      "sha256": "1011ee625d6973530d0260ea05b657542339b3f52f7eb7cde017d6d94b56db45"
+    },
+    {
+      "path": "evidence/sovereign/material-portrait.png",
+      "sha256": "854ff29c1eb9d384eb079aab3584941c2dab2f39a43f8ff6845f213b7be648e2"
+    },
+    {
+      "path": "evidence/sovereign/native-sheet.png",
+      "sha256": "2e16fed0d27155bb88d1e799813a35b2a2daae4a05e8f258a9d66af46796457d"
+    },
+    {
+      "path": "evidence/sovereign/playback-1x.webm",
+      "sha256": "8f6b398e2bbe1bf21dcf66aca4d03d1b78848dcb89e3746ccccd7d476b28c786"
+    },
+    {
+      "path": "evidence/sovereign/playback.json",
+      "sha256": "5ed678d7855d61a3e5856b504347ec8a73c1c14c97f51841fe68091c38973639"
+    }
+  ]
+}

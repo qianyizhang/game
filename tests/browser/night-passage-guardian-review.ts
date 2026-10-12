@@ -15,6 +15,7 @@ const guardianAssets = {
   bellwarden: { name: 'Bellwarden', region: 0, attacks: ['sweep', 'rain', 'wheel'] },
   undertow: { name: 'Undertow', region: 1, attacks: ['charge', 'volley', 'pulse'] },
   ashregent: { name: 'Ash Regent', region: 2, attacks: ['cross', 'rain', 'volley'] },
+  sovereign: { name: 'Unlit Sovereign', region: 3, attacks: ['cross', 'rain', 'pulse', 'wheel'] },
 } as const;
 export type GuardianKind = keyof typeof guardianAssets;
 const modelUrl = (kind: GuardianKind) =>
@@ -52,7 +53,7 @@ function roots(parent: T.Object3D, kind?: GuardianKind) {
     if (
       kind
         ? object.name === rootName(kind)
-        : /^night-passage-authored-(bellwarden|undertow|ashregent)$/.test(object.name)
+        : /^night-passage-authored-(bellwarden|undertow|ashregent|sovereign)$/.test(object.name)
     )
       result.push(object);
   });
@@ -90,6 +91,11 @@ export async function inspectGuardianActors(kind: GuardianKind = 'bellwarden') {
     pure &&= before === JSON.stringify(state);
   };
   try {
+    sync();
+    const loading = roots(parent, kind);
+    const initialFallback =
+      loading.length === 2 &&
+      loading.every((root) => !root.visible && root.parent?.children[0].visible === true);
     const deadline = performance.now() + 10000;
     do {
       sync();
@@ -176,16 +182,6 @@ export async function inspectGuardianActors(kind: GuardianKind = 'bellwarden') {
         ),
       });
     }
-    const otherRegions = [];
-    for (const region of [3]) {
-      state.region = region;
-      sync();
-      otherRegions.push({
-        region,
-        authoredHidden: roots(parent).every((root) => !root.visible),
-        fallbackVisible: roots(parent).every((root) => root.parent?.children[0].visible === true),
-      });
-    }
     state.region = definition.region;
     sync();
     return {
@@ -200,9 +196,9 @@ export async function inspectGuardianActors(kind: GuardianKind = 'bellwarden') {
       privateSkeletons,
       privateMaterials,
       sharedGeometry,
+      initialFallback,
       attacks,
       crossRegions,
-      otherRegions,
       rulesUnchanged: pure,
     };
   } finally {

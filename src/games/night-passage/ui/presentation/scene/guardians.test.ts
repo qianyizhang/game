@@ -13,11 +13,13 @@ vi.mock('three/addons/loaders/GLTFLoader.js', () => ({
   },
 }));
 // Weighted marker clips expose exact sampled phases; real native form/motion is checked in the browser.
-const ids = ['bellwarden', 'undertow', 'ashregent'];
+const ids = ['bellwarden', 'undertow', 'ashregent', 'sovereign'];
+const regions = ids.map((_, region) => region);
 const attackClips = [
   ['sweep', 'rain', 'wheel'],
   ['charge', 'volley', 'pulse'],
   ['cross', 'rain', 'volley'],
+  ['cross', 'rain', 'pulse', 'wheel'],
 ];
 function asset(region = 0) {
   const scene = new T.Group();
@@ -67,8 +69,10 @@ it.each([
   { region: 1, enraged: true },
   { region: 2, enraged: false },
   { region: 2, enraged: true },
+  { region: 3, enraged: false },
+  { region: 3, enraged: true },
 ])(
-  'samples three actual regional release boundaries, region=$region enraged=$enraged',
+  'samples the actual regional pattern cycle and wraparound, region=$region enraged=$enraged',
   async ({ region, enraged }) => {
     load.mockResolvedValue(asset(region));
     const library = createGuardians(() => {}),
@@ -77,16 +81,17 @@ it.each([
     const { state, boss } = encounter(enraged, region);
     model.sync(boss, state, false);
     await Promise.resolve();
-    for (let index = 0; index < 3; index++) {
-      boss.pattern = index;
+    for (let index = 0; index <= attackClips[region].length; index++) {
+      expect(boss.pattern).toBe(index);
       boss.cooldown = 0;
       state.tick++;
       enemyStep(state, boss);
       model.sync(boss, state, false);
-      const pattern = GUARDIANS[region][index];
+      const patternIndex = index % attackClips[region].length;
+      const pattern = GUARDIANS[region][patternIndex];
       const windup = enraged ? Math.round(pattern.windup * 0.8) : pattern.windup;
       const recovery = enraged ? Math.round(pattern.recovery * 0.72) : pattern.recovery;
-      const marker = 20 + index * 10;
+      const marker = 20 + patternIndex * 10;
       expect(boss.windup).toBe(windup);
       expect(pose(root)).toBeCloseTo(marker);
       for (let remaining = windup - 1; remaining >= 1; remaining--) {
@@ -103,17 +108,16 @@ it.each([
       expect(boss.pattern).toBe(index + 1);
       expect(boss.cooldown).toBe(recovery);
       expect(pose(root)).toBeCloseTo(marker + 0.45); // completed pattern, not next windup
-      if (region === 1 && index === 0) {
+      if (region === 1 && patternIndex === 0) {
         expect(Math.hypot(boss.x - beforeRelease.x, boss.y - beforeRelease.y)).toBeGreaterThan(300);
         expect(root.getObjectByName('night-passage-authored-undertow')!.position.toArray()).toEqual(
           [0, 0, 0],
         );
       }
-      if (region === 2 && index === 0) {
-        expect(GUARDIANS[region][index].kind).toBe('cross');
+      if (region === 2 || region === 3) {
         expect({ x: boss.x, y: boss.y }).toEqual(beforeRelease);
         expect(
-          root.getObjectByName('night-passage-authored-ashregent')!.position.toArray(),
+          root.getObjectByName(`night-passage-authored-${ids[region]}`)!.position.toArray(),
         ).toEqual([0, 0, 0]);
       }
       const before = structuredClone(state);
@@ -135,7 +139,7 @@ it.each([
   },
 );
 
-it.each([0, 1, 2])(
+it.each(regions)(
   'does not retime observed durations across half health; reduced poses stay fixed, region=%s',
   async (region) => {
     load.mockResolvedValue(asset(region));
@@ -168,10 +172,11 @@ it.each([0, 1, 2])(
     expect(pose(root)).toBeCloseTo(20.45);
     boss.stagger = 9;
     model.sync(boss, state, true);
-    expect(pose(root)).toBeCloseTo(50.4);
+    const staggerMarker = (attackClips[region].length + 2) * 10;
+    expect(pose(root)).toBeCloseTo(staggerMarker + 0.4);
     boss.stagger = 4;
     model.sync(boss, state, true);
-    expect(pose(root)).toBeCloseTo(50.4);
+    expect(pose(root)).toBeCloseTo(staggerMarker + 0.4);
     library.dispose();
 
     load.mockResolvedValue(asset(region));
@@ -198,7 +203,7 @@ it.each([0, 1, 2])(
   },
 );
 
-it.each([0, 1, 2])(
+it.each(regions)(
   'loads once per regional kind and releases private/shared resources once, region=%s',
   async (region) => {
     const delivered = asset(region);
@@ -217,7 +222,7 @@ it.each([0, 1, 2])(
     const first = library.attach(a),
       second = library.attach(b);
     const { state, boss } = encounter(false, region);
-    state.region = 3;
+    state.region = 4; // Unsupported regions must neither request assets nor sample guardian rules.
     expect(first.sync(boss, state, false)).toBe(false);
     expect(load).not.toHaveBeenCalled();
     state.region = region;
@@ -264,9 +269,8 @@ it.each([0, 1, 2])(
 it('restores the correct fallback when one pooled boss crosses guardian regions and returns', async () => {
   // Unrelated asset requests remain pending: this regression owns guardian selection only.
   load.mockImplementation((url) => {
-    if (url.includes('guardian-bellwarden')) return Promise.resolve(asset(0));
-    if (url.includes('guardian-undertow')) return Promise.resolve(asset(1));
-    if (url.includes('guardian-ashregent')) return Promise.resolve(asset(2));
+    const region = ids.findIndex((id) => url.includes(`guardian-${id}`));
+    if (region >= 0) return Promise.resolve(asset(region));
     return new Promise(() => {});
   });
   const parent = new T.Group(),
@@ -280,7 +284,7 @@ it('restores the correct fallback when one pooled boss crosses guardian regions 
   expect(native.visible).toBe(true);
   expect(pooled.children[0].visible).toBe(false);
   expect((pooled.children[3] as T.Sprite).position.y).toBe(58);
-  for (const region of [1, 2, 3, 0]) {
+  for (const region of [1, 2, 3, 4, 0]) {
     state.enemies = [];
     actors.sync(state, false);
     state.region = region;
@@ -295,13 +299,13 @@ it('restores the correct fallback when one pooled boss crosses guardian regions 
         region === index,
       );
     }
-    expect(pooled.children[0].visible).toBe(region === 3);
-    expect((pooled.children[3] as T.Sprite).position.y).toBe(region < 3 ? 58 : 47);
+    expect(pooled.children[0].visible).toBe(region === 4);
+    expect((pooled.children[3] as T.Sprite).position.y).toBe(region < 4 ? 58 : 47);
   }
   actors.dispose();
 });
 
-it.each([0, 1, 2])(
+it.each(regions)(
   'a failed guardian library does not disable the other regional assets, failed=%s',
   async (failedRegion) => {
     const warning = vi.spyOn(console, 'warn').mockImplementation(() => {});
@@ -320,7 +324,7 @@ it.each([0, 1, 2])(
       await Promise.resolve();
       await Promise.resolve();
       expect(model.sync(failed.boss, failed.state, false)).toBe(false);
-      for (const region of [0, 1, 2].filter((region) => region !== failedRegion)) {
+      for (const region of regions.filter((region) => region !== failedRegion)) {
         const supported = encounter(false, region);
         model.sync(supported.boss, supported.state, false);
         await Promise.resolve();
@@ -333,7 +337,7 @@ it.each([0, 1, 2])(
         expect(model.sync(failed.boss, failed.state, false)).toBe(false);
         expect(model.sync(supported.boss, supported.state, false)).toBe(true);
       }
-      expect(load).toHaveBeenCalledTimes(3);
+      expect(load).toHaveBeenCalledTimes(ids.length);
     } finally {
       library.dispose();
       warning.mockRestore();
@@ -341,7 +345,7 @@ it.each([0, 1, 2])(
   },
 );
 
-it.each([0, 1, 2])(
+it.each(regions)(
   'preserves fallback and disposes failed or late regional deliveries, region=%s',
   async (region) => {
     const warning = vi.spyOn(console, 'warn').mockImplementation(() => {});
