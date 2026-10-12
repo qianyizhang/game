@@ -41,6 +41,7 @@ export default defineConfig({
         '**/night-passage-hero.spec.ts',
         '**/night-passage-enemies.spec.ts',
         '**/night-passage-guardian.spec.ts',
+        '**/night-passage-environment.spec.ts',
         '**/dcc-workbench.spec.ts',
         '**/native-assets.spec.ts',
       ],

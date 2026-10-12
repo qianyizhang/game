@@ -52,7 +52,7 @@ preserving mesh and weights. These measurements are separate from visual judgmen
 
 ## Bounds
 
-All four guardians now have authored native models. Four region environment kits
+All four guardians now have authored native models. [Root Sepulcher](sepulcher.md) has the first environment kit. Three region kits
 remain blockouts, and further effects/icons remain queued. In-place locomotion
 does not establish world-space foot locking at arbitrary movement speeds.
 Directional steps and animation transitions remain polish. Ground warnings

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "kind": "sepulcher",
+  "sourceSha256": "ee66b9ec7b1e3c79941a01574e7d6f55e74d7281b11d020b4ab899ffc5f0ef41",
+  "modelSha256": "2830a603ea8734a5316dc7cd4f901bbe8c2af9b7b807e09602e34a71401f8076",
+  "blender": "4.5.14 LTS",
+  "roots": [
+    "Floor",
+    "Boundary",
+    "Lantern",
+    "Pillar"
+  ],
+  "meshCount": 14,
+  "space": "game units, glTF Y-up; part roots at origin; Floor/Boundary centered on arena",
+  "bounds": {
+    "Floor": {
+      "min": [
+        -480.0,
+        -40.0,
+        -300.0
+      ],
+      "max": [
+        480.0,
+        0.0,
+        300.0
+      ]
+    },
+    "Boundary": {
+      "min": [
+        -479.5,
+        -15.0,
+        -296.0
+      ],
+      "max": [
+        479.5,
+        65.2049560546875,
+        292.0
+      ]
+    },
+    "Lantern": {
+      "min": [
+        -8.0,
+        0.0,
+        -8.0
+      ],
+      "max": [
+        8.0,
+        44.0,
+        8.0
+      ]
+    },
+    "Pillar": {
+      "min": [
+        -30.0,
+        0.0,
+        -30.0
+      ],
+      "max": [
+        30.0,
+        81.0,
+        30.0
+      ]
+    }
+  },
+  "exportScripts": {
+    "environment_delivery.py": "356c52dc2fb3c54c784360dced0819fe341b09de7e458127b9fbb0ddff0bad62",
+    "environment_form.py": "d1e5c9ba1dfe21bddef826a8e1f5f7816e4b46e963d0a4d406f7cea347fca1b7"
+  },
+  "helperScripts": {
+    "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "enemy_form.py": "b971b4ba635f7e7711da8275fac1fb3a65aea21da84162a5250b86b15e249fd9"
+  }
+}

@@ -49,8 +49,7 @@ These are sampled deformation results, separate from visual judgment.
 ## Bounds
 
 [Undertow](undertow.md) and [Ash Regent](ashregent.md) now have authored native
-models, and [Unlit Sovereign](sovereign.md) completes the guardian set. Four
-region environment kits remain pending. Bellwarden locomotion is an in-place
+models, and [Unlit Sovereign](sovereign.md) completes the guardian set. [Root Sepulcher](sepulcher.md) now has the first environment kit; three remain pending. Bellwarden locomotion is an in-place
 heavy walk; dedicated backward/sideways steps and transition blending remain
 polish opportunities. Foot support is measured against the native rig, not claimed
 as world-space foot locking at every rules speed. Threat footprints remain the

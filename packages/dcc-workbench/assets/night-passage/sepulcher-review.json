@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage Root Sepulcher environment",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "primary author visual self-review",
+    "independentArtApproval": false
+  },
+  "authority": {
+    "sourceSha256": "ee66b9ec7b1e3c79941a01574e7d6f55e74d7281b11d020b4ab899ffc5f0ef41",
+    "modelSha256": "2830a603ea8734a5316dc7cd4f901bbe8c2af9b7b807e09602e34a71401f8076"
+  },
+  "review": [
+    "Inspected native assembly, pillar and lantern in clay and materials. Corrected camera far clipping and view framing; no native geometry repair was needed.",
+    "Broad slabs and pale boundary coping define a quiet combat floor. Tomb markers, rooted columns and bronze lanterns establish the first region kit.",
+    "Inspected all four controlled production layouts and matched native/fallback warning views at 960x600 and selected 390x244 views. Foreground stays low, all pillar materials fade for windups and warnings remain visible.",
+    "Pale caps and boundaries carry the arena silhouette at narrow scale. Fine root and bronze details recede. Higher detail is future polish."
+  ],
+  "geometryAgreement": {
+    "units": "game units",
+    "tolerance": 0.001,
+    "sampling": "Every native evaluated vertex and every delivered vertex, with symmetric nearest-surface-vertex matching for export splits.",
+    "meshes": 14,
+    "nativeVertices": 2164,
+    "deliveryVertices": 6664,
+    "maximumOriginalError": 0,
+    "maximumEditedError": 0,
+    "editedCapChange": 4,
+    "allMeshesCovered": true
+  },
+  "savedEditProof": {
+    "authoritativeSourceAndDeliveryUnchanged": true,
+    "editedObject": "Pillar_cap",
+    "vertexChangeUnits": 4,
+    "edit": "Raise saved Pillar_cap top by four game units, save/reload/export",
+    "sourceSha256": "ee66b9ec7b1e3c79941a01574e7d6f55e74d7281b11d020b4ab899ffc5f0ef41",
+    "modelSha256": "2830a603ea8734a5316dc7cd4f901bbe8c2af9b7b807e09602e34a71401f8076"
+  },
+  "runtime": {
+    "initialFallback": true,
+    "pausedArrival": true,
+    "rulesUnchanged": true,
+    "layouts": [
+      {
+        "id": "court",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "gallery",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "islands",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "crossroads",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      }
+    ],
+    "otherRegions": [
+      {
+        "region": 1,
+        "fallback": true,
+        "nativeHidden": true
+      },
+      {
+        "region": 2,
+        "fallback": true,
+        "nativeHidden": true
+      },
+      {
+        "region": 3,
+        "fallback": true,
+        "nativeHidden": true
+      }
+    ],
+    "matchedWarningDecalAndCollision": true,
+    "viewports": [
+      [
+        960,
+        600
+      ],
+      [
+        390,
+        244
+      ]
+    ]
+  },
+  "limits": [
+    "One of four environment kits is authored. Three region kits and further effects/icons remain queued.",
+    "Static source agreement and passing gates do not establish user art approval or measured frame-time improvement.",
+    "Low-detail stone and root forms retain scope for sculpted wear, branch detail and textures."
+  ],
+  "delegation": {
+    "ownership": "Primary authored native source/export, docs, integration and visual review; reused workers owned runtime/unit tests and browser/static delivery checks.",
+    "rework": "Review camera framing repaired by primary; static test cleanup types corrected before full gate. Delegated runtime and all three browser journeys passed integration.",
+    "efficiency": "Both delegated outputs used. No measured single-agent timing comparison."
+  },
+  "evidence": [
+    {
+      "path": "evidence/sepulcher/clay-assembly.png",
+      "sha256": "cedb35456ec03bb8a74ae97af11a7016a82bdc1713e2d431cfe727f1491e0f67"
+    },
+    {
+      "path": "evidence/sepulcher/clay-lantern.png",
+      "sha256": "3e3dd9ba74cc785addf758adc12381f86826bd22cd8124a75b734c051d35d922"
+    },
+    {
+      "path": "evidence/sepulcher/clay-pillar.png",
+      "sha256": "79d46ddd48be40ca40688cc4768c551a83ea08eeea3da57ea26170e782da9d27"
+    },
+    {
+      "path": "evidence/sepulcher/crossroads-fallback-desktop.png",
+      "sha256": "0b94540f034dfe7b0038e20ab3fd940af688fa9dd8b4c6bd5e5aef1b41d346e9"
+    },
+    {
+      "path": "evidence/sepulcher/crossroads-idle.png",
+      "sha256": "da60484733e72b9acaa6255ff0ca191714ab6fca1ce414b65c95b52764c48bbe"
+    },
+    {
+      "path": "evidence/sepulcher/crossroads-native-desktop.png",
+      "sha256": "56f9f6522701caf31f429e973b747043d986947b4369c3a7e75d5293ad633cee"
+    },
+    {
+      "path": "evidence/sepulcher/crossroads-native-narrow.png",
+      "sha256": "5899a8270343b400adb009fada34e711776c7ef03c908669bb0ff98a0e0e9e29"
+    },
+    {
+      "path": "evidence/sepulcher/material-assembly.png",
+      "sha256": "d20042e5b57e23f54d22db02704c0ba332c4419f35cc333b8e68b35b7a233eee"
+    },
+    {
+      "path": "evidence/sepulcher/material-lantern.png",
+      "sha256": "5723e8d3bcc657655f13bd5fa913f95576e7699f2b69751e528de4e3b13a1323"
+    },
+    {
+      "path": "evidence/sepulcher/material-pillar.png",
+      "sha256": "d3f4b293258766cfce1458d1d8e24cb9361007d0fa6f4c7b0b2d7196b006ed1f"
+    }
+  ]
+}

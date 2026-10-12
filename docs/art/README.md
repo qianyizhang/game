@@ -23,3 +23,6 @@ The [Night Passage Bellwarden](assets/night-passage/bellwarden.md),
 [Ash Regent](assets/night-passage/ashregent.md) and
 [Unlit Sovereign](assets/night-passage/sovereign.md) record the four authored
 gameplay guardians, native motion proof and owner visual self-review.
+
+The [Root Sepulcher](assets/night-passage/sepulcher.md) records the first authored
+Night Passage environment kit, its collision bounds and saved-mesh edit proof.

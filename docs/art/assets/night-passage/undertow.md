@@ -48,7 +48,7 @@ with identical model bytes; its historical evidence remains unchanged.
 ## Bounds
 
 [Ash Regent](ashregent.md) and [Unlit Sovereign](sovereign.md) now have authored
-native models. The four environment kits remain blockouts.
+native models. [Root Sepulcher](sepulcher.md) has the first environment kit; three remain blockouts.
 In-place locomotion is not world-space foot locking at arbitrary movement speeds.
 Dedicated directional steps and animation transitions remain polish work. The
 ground warning is the authority for danger, including the pulse's safe center;

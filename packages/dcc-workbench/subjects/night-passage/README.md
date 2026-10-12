@@ -71,7 +71,7 @@ The browser review records unretimed 1× playback and six phase images per clip.
 Native front/side/rear clay, material portrait, action poses, desktop/narrow arena
 and this playback are separate visual evidence. Passing checks is not user art
 acceptance. The ordinary enemy batch below adds four native families; the four
-authored guardians are described below, while environments remain blockouts.
+authored guardians are described below, followed by the first environment kit.
 Precise two-hand string contact and directional movement remain polish opportunities.
 
 ## Five weapon identities
@@ -291,3 +291,40 @@ Rules own every attack footprint and release. The
 native agreement, playback, combat-size appearance and remaining limitations.
 All earlier guardian models were re-exported byte-identically; only their
 current script receipts were refreshed, preserving historical visual evidence.
+
+## Root Sepulcher environment
+
+`environments/sepulcher/source.blend` owns four editable, populated empty roots:
+`Floor`, `Boundary`, `Lantern`, `Pillar`. Repeated stone pieces are joined by
+material to limit draw calls. `Pillar_cap` remains separately editable for the
+saved-mesh edit proof. The delivery is `environment-sepulcher.glb`, with source,
+model, exporter and helper hashes in the adjacent JSON receipt.
+
+Native coordinates use Z-up; glTF exports Y-up. Floor and boundary are centered
+on the arena origin and placed at game `(480, 0, 300)`. Floor top is zero.
+Raised boundary vertices stay outside `abs(x) >= 448` or `abs(z) >= 268`.
+Pillars have a 30-unit radial footprint and 81-unit height: runtime scales X/Z
+by the rules pillar radius divided by 30, keeping Y unchanged. Lanterns have
+an 8-unit radial footprint and 44-unit height. Edit within these contracts;
+changing collision footprints belongs to a separate rules change.
+
+Use the repository Blender runtime and fresh output directories:
+
+```sh
+BLENDER=packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender
+SOURCE=packages/dcc-workbench/subjects/night-passage/environments/sepulcher/source.blend
+SCRIPT=packages/dcc-workbench/subjects/night-passage/authoring/environment_delivery.py
+"$BLENDER" --background --python-exit-code 1 --python "$SCRIPT" -- export --source "$SOURCE" --output test-results/sepulcher-export
+"$BLENDER" --background --python-exit-code 1 --python "$SCRIPT" -- review --source "$SOURCE" --output test-results/sepulcher-review
+"$BLENDER" --background --python-exit-code 1 --python "$SCRIPT" -- verify --source "$SOURCE" --output test-results/sepulcher-native
+NIGHT_PASSAGE_ENVIRONMENT_RESULTS=test-results/sepulcher-native npx playwright test tests/browser/night-passage-environment.spec.ts --project=functional --project=requires-blender
+```
+
+Publish the GLB and JSON export together after native review. Verification copies
+the saved source, raises the cap's top vertices by four game units, saves,
+reloads and exports that copy. The browser compares every named mesh's native
+vertices with delivery geometry, accounting for normal/material vertex splits.
+Original source and published model remain unchanged. Native arrays and edited
+copies are disposable `test-results` evidence. The [visual record](../../../../docs/art/assets/night-passage/sepulcher.md)
+retains compact native and production captures. Other three region kits remain
+blockouts; this static kit has no animation claims.

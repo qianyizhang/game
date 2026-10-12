@@ -2,19 +2,26 @@ import * as T from 'three';
 import { disposeObject } from '../../../../../shared/three/resources';
 import { ARENA, REGIONS } from '../../../domain/content';
 import type { State } from '../../../domain/types';
+import { createEnvironment, type RoomPillar } from './environment';
 
-/** Replaceable architectural blockout. Pillar footprints come only from the rules. */
-export function createRoom(parent: T.Group) {
+/** Authored regional architecture with a blockout fallback. Pillar footprints come only from the rules. */
+export function createRoom(parent: T.Group, invalidate: () => void = () => {}) {
   const group = new T.Group();
+  group.name = 'night-passage-room';
   parent.add(group);
+  const fallback = new T.Group();
+  fallback.name = 'night-passage-blockout-room';
+  group.add(fallback);
+  const environment = createEnvironment(group, invalidate);
+  let disposed = false;
   let identity = '';
-  let pillars: { group: T.Group; material: T.MeshStandardMaterial }[] = [];
+  let pillars: RoomPillar[] = [];
   const ray = new T.Raycaster();
   const direction = new T.Vector3();
   const target = new T.Vector3();
   function rebuild(state: State) {
-    disposeObject(group);
-    group.clear();
+    disposeObject(fallback);
+    fallback.clear();
     pillars = [];
     const region = REGIONS[state.region];
     const stone = new T.MeshStandardMaterial({ color: region.floor, roughness: 0.95 });
@@ -39,7 +46,7 @@ export function createRoom(parent: T.Group) {
       mesh.scale.set(w, h, d);
       mesh.receiveShadow = true;
       mesh.castShadow = true;
-      group.add(mesh);
+      fallback.add(mesh);
       return mesh;
     };
     box(480, -22, 300, ARENA.width, 36, ARENA.height, edge);
@@ -71,8 +78,8 @@ export function createRoom(parent: T.Group) {
         mesh.receiveShadow = true;
         column.add(mesh);
       }
-      group.add(column);
-      pillars.push({ group: column, material });
+      fallback.add(column);
+      pillars.push({ group: column, materials: [{ material, opacity: 1, depthWrite: true }] });
     }
     const flame = new T.MeshBasicMaterial({ color: '#ffda9a' });
     const flameGeometry = new T.OctahedronGeometry(6);
@@ -81,19 +88,22 @@ export function createRoom(parent: T.Group) {
         box(x, 17, z, 13, 34, 13, edge);
         const light = new T.Mesh(flameGeometry, flame);
         light.position.set(x, 39, z);
-        group.add(light);
+        fallback.add(light);
       }
   }
   return {
     sync(state: State, camera: T.Camera) {
+      if (disposed) return;
       const key = JSON.stringify([state.region, state.room.pillars]);
       if (key !== identity) {
         identity = key;
         rebuild(state);
       }
-      group.updateMatrixWorld(true);
+      const authored = environment.sync(state);
+      fallback.visible = authored === null;
+      group.updateWorldMatrix(true, true);
       camera.getWorldDirection(direction);
-      for (const pillar of pillars) {
+      for (const pillar of authored ?? pillars) {
         // Orthographic view rays have a shared direction. Fade only obstructing scenery.
         const hidden =
           state.enemies.some((enemy) => enemy.windup > 0) ||
@@ -104,12 +114,18 @@ export function createRoom(parent: T.Group) {
             ray.far = 1995;
             return ray.intersectObject(pillar.group, true).length > 0;
           });
-        pillar.material.opacity = hidden ? 0.22 : 1;
-        pillar.material.depthWrite = !hidden;
+        for (const { material, opacity, depthWrite } of pillar.materials) {
+          material.opacity = hidden ? opacity * 0.22 : opacity;
+          material.depthWrite = hidden ? false : depthWrite;
+        }
       }
     },
     dispose() {
-      disposeObject(group);
+      if (disposed) return;
+      disposed = true;
+      environment.dispose();
+      disposeObject(fallback);
+      fallback.clear();
       group.removeFromParent();
     },
   };
