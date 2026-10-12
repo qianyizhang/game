@@ -18,8 +18,13 @@ import { spawnEnemy } from '../../src/games/night-passage/domain/encounters';
 import { translate } from '../../src/games/night-passage/domain/geometry';
 import type { LayoutId, State } from '../../src/games/night-passage/domain/types';
 
-type EnvironmentKind = 'sepulcher' | 'archive' | 'cinder';
-const regions: Record<EnvironmentKind, number> = { sepulcher: 0, archive: 1, cinder: 2 };
+type EnvironmentKind = 'sepulcher' | 'archive' | 'cinder' | 'starless';
+const regions: Record<EnvironmentKind, number> = {
+  sepulcher: 0,
+  archive: 1,
+  cinder: 2,
+  starless: 3,
+};
 const assetUrl = (kind: EnvironmentKind) =>
   `/packages/dcc-workbench/assets/night-passage/environment-${kind}.glb`;
 const authoredName = (kind: EnvironmentKind) => `night-passage-authored-${kind}`;
@@ -174,16 +179,6 @@ export async function inspectEnvironment(kind: EnvironmentKind = 'sepulcher') {
           Math.hypot(state.player.x - first.x, state.player.y - first.y) >= first.radius + 14,
       });
     }
-    const otherRegions = [];
-    for (const region of [3]) {
-      state.region = region;
-      sync();
-      otherRegions.push({
-        region,
-        fallback: parent.getObjectByName(fallbackName)?.visible === true,
-        nativeHidden: parent.getObjectByName(nativeName)?.visible === false,
-      });
-    }
     const sibling: EnvironmentKind = kind === 'sepulcher' ? 'archive' : 'sepulcher';
     state.region = regions[sibling];
     sync();
@@ -208,7 +203,6 @@ export async function inspectEnvironment(kind: EnvironmentKind = 'sepulcher') {
       sameStateArrival,
       invalidations,
       cases,
-      otherRegions,
       siblingRegion,
       restoredRegion: parent.getObjectByName(nativeName)?.visible === true,
       rulesUnchanged: pure,

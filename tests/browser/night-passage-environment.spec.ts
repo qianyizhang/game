@@ -13,7 +13,7 @@ import {
 import { passageCommand } from '../simulation/night-passage-policy';
 
 const layouts = ['court', 'gallery', 'islands', 'crossroads'];
-for (const kind of ['sepulcher', 'archive', 'cinder'] as const) {
+for (const kind of ['sepulcher', 'archive', 'cinder', 'starless'] as const) {
   const review = `test-results/night-passage-${kind}/browser`;
 
   test(`${kind} arrives while paused and preserves rules placements and pillar visibility`, async ({
@@ -61,9 +61,6 @@ for (const kind of ['sepulcher', 'archive', 'cinder'] as const) {
         expect(pillar.minY).toBeCloseTo(0, 3);
       }
     }
-    expect(result.otherRegions).toEqual(
-      [3].map((region) => ({ region, fallback: true, nativeHidden: true })),
-    );
     expect(result.siblingRegion).toEqual({
       region: kind === 'sepulcher' ? 1 : 0,
       active: true,
@@ -165,6 +162,7 @@ for (const kind of ['sepulcher', 'archive', 'cinder'] as const) {
         sepulcher: process.env.NIGHT_PASSAGE_ENVIRONMENT_RESULTS,
         archive: process.env.NIGHT_PASSAGE_ARCHIVE_RESULTS,
         cinder: process.env.NIGHT_PASSAGE_CINDER_RESULTS,
+        starless: process.env.NIGHT_PASSAGE_STARLESS_RESULTS,
       }[kind];
       test.skip(
         !directory,
@@ -229,8 +227,8 @@ for (const kind of ['sepulcher', 'archive', 'cinder'] as const) {
   );
 }
 
-for (const kind of ['archive', 'cinder'] as const) {
-  const region = kind === 'archive' ? 1 : 2;
+for (const kind of ['archive', 'cinder', 'starless'] as const) {
+  const region = { archive: 1, cinder: 2, starless: 3 }[kind];
   test(`a legal ${kind} chronicle resumes in the authored arena and reloads paused`, async ({
     page,
   }) => {

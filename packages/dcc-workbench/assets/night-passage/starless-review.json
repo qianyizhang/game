@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage Starless Gate environment",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "primary author visual self-review",
+    "independentArtApproval": false
+  },
+  "authority": {
+    "sourceSha256": "e404722c73ce6e4bbcdc7a053c9d0fe9ce0ccc870f6484900199e63f3705d003",
+    "modelSha256": "a8639a7a0f3b255277b8a420f3c20cba3f6a487ef45a5236e6093a5dfeb207f4"
+  },
+  "review": [
+    "Inspected clay/material assembly from both sides, column front/side/rear, beacon close-up and all four production layouts with matched fallback, narrow and live UI.",
+    "Saved repairs narrowed the sill to avoid piercing tapered piers and separated coplanar corner coping. An intermediate added-corner repair did not solve the overlap and was removed.",
+    "Open arch and pale slotted columns distinguish the region; the floor stays quiet under void seals. Small slots and beacon details recede at narrow size.",
+    "Crystals are opaque emissive surfaces, not glass; no dynamic lights or animated sky. Art self-review does not establish independent or user approval."
+  ],
+  "geometryAgreement": {
+    "units": "game units",
+    "tolerance": 0.001,
+    "sampling": "Every evaluated native and delivered vertex, allowing export splits by symmetric nearest-vertex matching.",
+    "meshes": 14,
+    "nativeVertices": 988,
+    "deliveryVertices": 3036,
+    "maximumOriginalError": 0,
+    "maximumEditedError": 0,
+    "editedCapChange": 4,
+    "otherSurfacesUnchanged": true
+  },
+  "savedEditProof": {
+    "authoritativeSourceAndDeliveryUnchanged": true,
+    "editedObject": "Pillar_cap",
+    "vertexChangeUnits": 4,
+    "edit": "Raise saved Pillar_cap top by four game units, save/reload/export",
+    "sourceSha256": "e404722c73ce6e4bbcdc7a053c9d0fe9ce0ccc870f6484900199e63f3705d003",
+    "modelSha256": "a8639a7a0f3b255277b8a420f3c20cba3f6a487ef45a5236e6093a5dfeb207f4"
+  },
+  "runtime": {
+    "initialFallback": true,
+    "pausedArrival": true,
+    "rulesUnchanged": true,
+    "siblingRegion": {
+      "region": 0,
+      "active": true,
+      "previousHidden": true,
+      "fallbackHidden": true
+    },
+    "layouts": [
+      {
+        "id": "court",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "gallery",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "islands",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "crossroads",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      }
+    ],
+    "legalChronicleUI": "Generated region-three-index approach through accepted commands, imported, moved, paused and reloaded; no human campaign completion claim."
+  },
+  "checks": {
+    "fullGate": "npm run check:full passed",
+    "browserJourneys": 17,
+    "environmentDeliveryTests": 4,
+    "nativeAgreement": "Starless fresh saved-edit comparison; three older masters unchanged and re-export byte-identical. All four browser native comparisons passed.",
+    "maintenance": "passed",
+    "applicationTests": 384,
+    "seededSimulations": 22,
+    "geometryTests": 128
+  },
+  "evidence": {
+    "clay-assembly.png": "73e1bb84de6eea930f2e06990305b35c91fe5f2c12d7da166a4d8301f7538fa3",
+    "clay-pillar-rear.png": "f983cd2d1eb5261fca025053583bd30bfe87a454f86feddf941a6ab8fcc70dec",
+    "crossroads-fallback-desktop.png": "6ff888ed56a08399607650b11734ef7b6f6a46b32b038dcf3e4660cd5aaec0e6",
+    "crossroads-native-desktop.png": "99b542b12ab5e77d95b6105d5eeeb35ca567542fb4200c50059821044e1a3bf1",
+    "crossroads-native-narrow.png": "73da4d8a8e7757f7a6aca880fea930937374c180fb305350b44caa0741fa58b7",
+    "material-assembly-rear.png": "b341e757d749ddeedfb0234854ec55d9378a7174f73fa9534689ed2a78883742",
+    "material-assembly.png": "0d592f27986dd7d7b426ff8542016fa4c0d57a1ca96d3b083822f989f63c76b5",
+    "material-lantern.png": "4024688f919f694e23b90ecf6ae4e72c6ae8edd06b3036e2b24d465841ca4290",
+    "material-pillar-side.png": "1ff3ea3a45ae539d17e390d30b231588da986206cc690b26ecefa0b0c20f18fb",
+    "material-pillar.png": "291adefca766b8dd10b72008254ca8fc92c105322db4787d48de724782ccbd10",
+    "starless-live-ui.png": "3a80cc30a736e83e0d2e69c93c6e5c8a5e846a19a90a4f0a54d5e34468009f0a"
+  },
+  "collaboration": {
+    "scope": "Browser coverage and read-only code review",
+    "integration": "Two delegated browser files integrated without rework; all affected journeys passed. Primary owner authored geometry, repaired visual defects and inspected pixels.",
+    "elapsedComparison": "No controlled elapsed-time comparison measured."
+  }
+}

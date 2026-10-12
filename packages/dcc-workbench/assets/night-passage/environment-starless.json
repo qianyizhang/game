@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "starless",
+  "sourceSha256": "e404722c73ce6e4bbcdc7a053c9d0fe9ce0ccc870f6484900199e63f3705d003",
+  "modelSha256": "a8639a7a0f3b255277b8a420f3c20cba3f6a487ef45a5236e6093a5dfeb207f4",
+  "blender": "4.5.14 LTS",
+  "roots": [
+    "Floor",
+    "Boundary",
+    "Lantern",
+    "Pillar"
+  ],
+  "meshCount": 14,
+  "space": "game units, glTF Y-up; part roots at origin; Floor/Boundary centered on arena",
+  "bounds": {
+    "Floor": {
+      "min": [
+        -480.0,
+        -40.0,
+        -300.0
+      ],
+      "max": [
+        480.0,
+        0.0,
+        300.0
+      ]
+    },
+    "Boundary": {
+      "min": [
+        -479.0,
+        -2.0,
+        -299.0
+      ],
+      "max": [
+        479.0,
+        75.0,
+        297.0
+      ]
+    },
+    "Lantern": {
+      "min": [
+        -8.0,
+        0.0,
+        -8.0
+      ],
+      "max": [
+        8.0,
+        44.0,
+        8.0
+      ]
+    },
+    "Pillar": {
+      "min": [
+        -30.0,
+        0.0,
+        -30.0
+      ],
+      "max": [
+        30.0,
+        81.0,
+        30.0
+      ]
+    }
+  },
+  "exportScripts": {
+    "environment_archive.py": "30946618b814670727f06f2ec12942d8d2076313af545efbf144ff57659ff790",
+    "environment_cinder.py": "6c8768a722ec63fb2d69ead9f6439078577520db94316ca01c1c80953aa1de37",
+    "environment_delivery.py": "d0167eb3b8ab646afa4023192cebfc8af046ad55ccda217c66429559fcf35602",
+    "environment_form.py": "d1e5c9ba1dfe21bddef826a8e1f5f7816e4b46e963d0a4d406f7cea347fca1b7",
+    "environment_geometry.py": "80cba43c484eca8ffe85c4ce0a5553cbf52b851b25288166195dde1c9b3648ae",
+    "environment_starless.py": "bef57b1bb723ae93489ab839b49ed91dc1880c7c79acf759755a37baf6141d30"
+  },
+  "helperScripts": {
+    "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "enemy_form.py": "b971b4ba635f7e7711da8275fac1fb3a65aea21da84162a5250b86b15e249fd9"
+  }
+}

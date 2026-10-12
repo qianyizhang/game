@@ -71,7 +71,7 @@ The browser review records unretimed 1× playback and six phase images per clip.
 Native front/side/rear clay, material portrait, action poses, desktop/narrow arena
 and this playback are separate visual evidence. Passing checks is not user art
 acceptance. The ordinary enemy batch below adds four native families; the four
-authored guardians are described below, followed by the first three environment kits.
+authored guardians are described below, followed by the four environment kits.
 Precise two-hand string contact and directional movement remain polish opportunities.
 
 ## Five weapon identities
@@ -327,8 +327,7 @@ vertices with delivery geometry, accounting for normal/material vertex splits.
 Original source and published model remain unchanged. Native arrays and edited
 copies are disposable `test-results` evidence. The [visual record](../../../../docs/art/assets/night-passage/sepulcher.md)
 retains compact native and production captures. This static kit has no animation
-claims. Drowned Archive and Cinder Court share these placement contracts; Starless Gate
-still uses blockout scenery.
+claims. Drowned Archive, Cinder Court and Starless Gate share these placement contracts.
 
 ## Drowned Archive environment
 
@@ -395,4 +394,40 @@ npm run check:full
 The [visual record](../../../../docs/art/assets/night-passage/cinder.md) separates
 native geometry agreement, desktop/narrow and actual UI review from user art
 acceptance. The shared browser journeys include a legal region-three chronicle
-import, movement, pause and reload. Starless Gate is the remaining environment kit.
+import, movement, pause and reload. The fourth environment kit is described below.
+
+## Starless Gate environment
+
+`environments/starless/source.blend` owns the fourth static kit. Its broad open
+arch and two low stelae frame midnight slate; slotted limestone piers support
+faceted caps and small caged crystals mark the corners. The arch is a closed
+half-elliptical masonry band with an actual opening. Floor decoration stays
+quiet so it cannot imitate the region's void seals. All geometry uses the same
+four part roots and placement bounds above. The column slots are decorative;
+the authoritative circular cover footprint remains solid.
+
+`environment_starless.py` builds fresh candidates with `bootstrap --kind starless`.
+Export reads the saved master, never this recipe. Saved visual repairs separated the overlapping
+corner coping and narrowed the metal sill to prevent it protruding through
+the piers. The recipe records the intended dimensions. Archive, Cinder and
+Starless share only chamfered blocks and material joins. Existing masters and
+model bytes remain unchanged when the shared exporter is extended.
+
+Use `environment_delivery.py export`, `review` and `verify` with the Starless
+source and fresh output directories. The verification copy raises the saved
+`Pillar_cap` top four units, reloads and exports it, and samples all surfaces.
+Browser proof compares both original and edited deliveries and protects the
+published source/model hashes. Delivery rays check actual openings and outward
+front/back arch surfaces; all four kits still enforce the same placement bounds.
+
+```sh
+NIGHT_PASSAGE_STARLESS_RESULTS=test-results/starless-native npx playwright test tests/browser/night-passage-environment.spec.ts --project=functional --project=requires-blender --grep starless
+npm run check:full
+```
+
+For the complete environment suite, supply all four native result variables
+shown in the regional sections. Its legal region-four UI journey imports an
+accepted-command chronicle, resumes movement and reloads paused. The
+[visual record](../../../../docs/art/assets/night-passage/starless.md) separates
+owner self-review from technical checks. Crystals are opaque emissive surfaces,
+not glass or a dynamic light system; surface wear remains a polish opportunity.

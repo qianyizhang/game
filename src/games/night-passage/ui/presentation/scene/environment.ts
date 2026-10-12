@@ -1,5 +1,6 @@
 import * as T from 'three';
 import { GLTFLoader, type GLTF } from 'three/addons/loaders/GLTFLoader.js';
+import starlessUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/environment-starless.glb?url';
 import cinderUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/environment-cinder.glb?url';
 import archiveUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/environment-archive.glb?url';
 import sepulcherUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/environment-sepulcher.glb?url';
@@ -20,6 +21,7 @@ export function createEnvironment(parent: T.Group, invalidate: () => void) {
     createKit(parent, invalidate, 0, 'sepulcher', sepulcherUrl),
     createKit(parent, invalidate, 1, 'archive', archiveUrl),
     createKit(parent, invalidate, 2, 'cinder', cinderUrl),
+    createKit(parent, invalidate, 3, 'starless', starlessUrl),
   ];
   return {
     sync(state: State): RoomPillar[] | null {

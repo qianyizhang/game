@@ -18,6 +18,7 @@ from authoring_plan import save_working_source  # noqa: E402
 from environment_archive import build as build_archive  # noqa: E402
 from environment_cinder import build as build_cinder  # noqa: E402
 from environment_form import ROOTS, build  # noqa: E402
+from environment_starless import build as build_starless  # noqa: E402
 from hero_form import material  # noqa: E402
 from native_types import active_object, cycles_settings, mesh_data, present, require  # noqa: E402
 from review_plan import capture_path, close_captures  # noqa: E402
@@ -36,7 +37,12 @@ def bootstrap(source: Path, kind: str) -> None:
     if source.exists():
         raise FileExistsError("Construction requires a fresh native candidate")
     bpy.ops.wm.read_factory_settings(use_empty=True)
-    {"sepulcher": build, "archive": build_archive, "cinder": build_cinder}[kind]()
+    {
+        "sepulcher": build,
+        "archive": build_archive,
+        "cinder": build_cinder,
+        "starless": build_starless,
+    }[kind]()
     source.parent.mkdir(parents=True, exist_ok=True)
     bpy.ops.wm.save_as_mainfile(filepath=str(source), compress=True)
 
@@ -61,7 +67,7 @@ def export(source: Path, output: Path) -> None:
     bpy.ops.wm.open_mainfile(filepath=str(source))
     scene = present(bpy.context.scene)
     kind = scene["environment_kind"]
-    if kind not in ("sepulcher", "archive", "cinder"):
+    if kind not in ("sepulcher", "archive", "cinder", "starless"):
         raise ValueError("Unknown saved environment")
     bounds = {}
     for name in ROOTS:
@@ -237,7 +243,9 @@ def review(source: Path, output: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=["bootstrap", "export", "review", "verify"])
-    parser.add_argument("--kind", choices=["sepulcher", "archive", "cinder"], default="sepulcher")
+    parser.add_argument(
+        "--kind", choices=["sepulcher", "archive", "cinder", "starless"], default="sepulcher"
+    )
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(sys.argv[sys.argv.index("--") + 1 :])

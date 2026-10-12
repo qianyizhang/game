@@ -65,9 +65,10 @@
   "exportScripts": {
     "environment_archive.py": "30946618b814670727f06f2ec12942d8d2076313af545efbf144ff57659ff790",
     "environment_cinder.py": "6c8768a722ec63fb2d69ead9f6439078577520db94316ca01c1c80953aa1de37",
-    "environment_delivery.py": "c805e2feab5790ae9340472b800d92a7e9f4f46bacaeeadf987bdf0803434787",
+    "environment_delivery.py": "d0167eb3b8ab646afa4023192cebfc8af046ad55ccda217c66429559fcf35602",
     "environment_form.py": "d1e5c9ba1dfe21bddef826a8e1f5f7816e4b46e963d0a4d406f7cea347fca1b7",
-    "environment_geometry.py": "80cba43c484eca8ffe85c4ce0a5553cbf52b851b25288166195dde1c9b3648ae"
+    "environment_geometry.py": "80cba43c484eca8ffe85c4ce0a5553cbf52b851b25288166195dde1c9b3648ae",
+    "environment_starless.py": "bef57b1bb723ae93489ab839b49ed91dc1880c7c79acf759755a37baf6141d30"
   },
   "helperScripts": {
     "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",

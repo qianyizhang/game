@@ -25,6 +25,7 @@ The [Night Passage Bellwarden](assets/night-passage/bellwarden.md),
 gameplay guardians, native motion proof and owner visual self-review.
 
 The [Root Sepulcher](assets/night-passage/sepulcher.md),
-[Drowned Archive](assets/night-passage/archive.md) and
-[Cinder Court](assets/night-passage/cinder.md) record the first three authored
+[Drowned Archive](assets/night-passage/archive.md),
+[Cinder Court](assets/night-passage/cinder.md) and
+[Starless Gate](assets/night-passage/starless.md) record all four authored
 Night Passage environment kits, their collision bounds and saved-mesh edit proof.

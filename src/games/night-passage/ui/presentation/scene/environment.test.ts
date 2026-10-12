@@ -75,10 +75,7 @@ it('lazily replaces the paused fallback with the complete kit and rules-derived 
     redraw = vi.fn(),
     room = createRoom(parent, redraw);
   const { state, camera } = fixture();
-  state.region = 3;
-  room.sync(state, camera);
   expect(load).not.toHaveBeenCalled();
-  state.region = 0;
   const before = structuredClone(state);
   room.sync(state, camera);
   room.sync(state, camera);
@@ -114,12 +111,7 @@ it('lazily replaces the paused fallback with the complete kit and rules-derived 
     [1.4, 1, 1.4],
   ]);
   expect(state).toEqual(before);
-  for (const region of [3, 0]) {
-    state.region = region;
-    room.sync(state, camera);
-    expect(root.visible).toBe(region === 0);
-    expect(fallback(parent).visible).toBe(region !== 0);
-  }
+
   expect(load).toHaveBeenCalledOnce();
   state.room.pillars = [];
   room.sync(state, camera);

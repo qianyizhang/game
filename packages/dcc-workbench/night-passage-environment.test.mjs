@@ -14,7 +14,7 @@ const read = (path) => readFileSync(new URL(path, import.meta.url));
 const hash = (path) => createHash('sha256').update(read(path)).digest('hex');
 const roots = ['Floor', 'Boundary', 'Lantern', 'Pillar'];
 
-for (const kind of ['sepulcher', 'archive', 'cinder'])
+for (const kind of ['sepulcher', 'archive', 'cinder', 'starless'])
   await test(`${kind} pins its saved static kit and keeps its surfaces inside the rules footprint contract`, async () => {
     const receipt = record(
       JSON.parse(read(`./assets/night-passage/environment-${kind}.json`).toString()),
@@ -71,6 +71,27 @@ for (const kind of ['sepulcher', 'archive', 'cinder'])
     // Use the consumer's hierarchy, including native export-axis transforms.
     const loaded = await new GLTFLoader().parseAsync(Uint8Array.from(bytes).buffer, '');
     loaded.scene.updateMatrixWorld(true);
+    if (kind === 'starless') {
+      const boundary = loaded.scene.getObjectByName('Boundary'),
+        pillar = loaded.scene.getObjectByName('Pillar');
+      assert.ok(boundary && pillar);
+      // The arch and column slots must remain actual openings after delivery.
+      // Paired exterior rays also reject inward front/back arch faces.
+      for (const [z, direction] of [
+        [-250, -1],
+        [-320, 1],
+      ]) {
+        const ray = new T.Raycaster(new T.Vector3(0, 42, z), new T.Vector3(0, 0, direction));
+        assert.equal(ray.intersectObject(boundary, true).length, 0);
+        ray.ray.origin.y = 70;
+        const crest = ray.intersectObject(boundary, true)[0];
+        assert.ok(crest && crest.distance < 25);
+      }
+      const window = new T.Raycaster(new T.Vector3(0, 40, 50), new T.Vector3(0, 0, -1));
+      assert.equal(window.intersectObject(pillar, true).length, 0);
+      window.ray.origin.x = 13;
+      assert.ok(window.intersectObject(pillar, true).length > 0);
+    }
     if (kind === 'cinder') {
       // Each seal is a closed solid. Signed volume detects inward face winding,
       // which unit-length normals and positional agreement cannot detect.
