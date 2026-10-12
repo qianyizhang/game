@@ -3,6 +3,7 @@ import { WEAPONS, weapon } from '../../../domain/content';
 import type { EnemyKind, State, WeaponId } from '../../../domain/types';
 import { createHero } from './hero';
 import { createEnemies, type EnemyModel } from './enemies';
+import { createGuardians } from './guardians';
 
 type Actor = {
   root: THREE.Group;
@@ -12,6 +13,7 @@ type Actor = {
   body: THREE.Mesh;
   cue: THREE.Mesh;
   health: THREE.Sprite;
+  healthBackground: THREE.Sprite;
   kind: EnemyKind | 'hero';
   seen: number;
   authored?: EnemyModel;
@@ -30,7 +32,7 @@ const colors = {
   exposed: '#df9fff',
 } as const;
 
-/** Native gameplay actors with pooled loading fallbacks; guardians remain blockouts. */
+/** Native hero, enemies and Bellwarden with pooled fallbacks for other guardians. */
 export function createActors(
   parent: THREE.Group,
   invalidate: () => void = () => {},
@@ -42,6 +44,7 @@ export function createActors(
   group.name = 'night-passage-actor-blockout';
   parent.add(group);
   const authoredEnemies = createEnemies(invalidate);
+  const authoredGuardians = createGuardians(invalidate);
   const geometry = {
     box: new THREE.BoxGeometry(1, 1, 1),
     sphere: new THREE.SphereGeometry(1, 10, 6),
@@ -195,8 +198,24 @@ export function createActors(
     health.position.y = background.position.y;
     health.renderOrder = 31;
     root.add(health);
-    const authored = !hero && kind !== 'boss' ? authoredEnemies.attach(root, kind) : undefined;
-    return { root, facing, torso, hand, body, cue, health, kind, seen: 0, authored };
+    const authored = hero
+      ? undefined
+      : kind === 'boss'
+        ? authoredGuardians.attach(root)
+        : authoredEnemies.attach(root, kind);
+    return {
+      root,
+      facing,
+      torso,
+      hand,
+      body,
+      cue,
+      health,
+      healthBackground: background,
+      kind,
+      seen: 0,
+      authored,
+    };
   }
   const hero = makeActor('hero');
   const held = new Map<WeaponId, THREE.Group>();
@@ -263,7 +282,11 @@ export function createActors(
         actor.root.visible = enemy.hp > 0;
         actor.root.position.set(enemy.x, 0, enemy.y);
         actor.root.scale.setScalar(enemy.radius / 14);
-        actor.facing.visible = !actor.authored?.sync(enemy, state, reducedMotion);
+        const authored = actor.authored?.sync(enemy, state, reducedMotion) ?? false;
+        actor.facing.visible = !authored;
+        if (enemy.kind === 'boss') {
+          actor.health.position.y = actor.healthBackground.position.y = authored ? 58 : 47;
+        }
         actor.facing.rotation.y = -enemy.aim;
         actor.torso.position.y = reducedMotion ? 0 : Math.sin((state.tick + enemy.id) * 0.12) * 0.4;
         actor.torso.rotation.z = reducedMotion ? 0 : enemy.windup > 0 ? -0.1 : 0;
@@ -291,6 +314,7 @@ export function createActors(
       disposed = true;
       authoredHero.dispose();
       authoredEnemies.dispose();
+      authoredGuardians.dispose();
       group.removeFromParent();
       group.clear();
       active.clear();

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage Bellwarden",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "primary author visual self-review",
+    "independentArtApproval": false
+  },
+  "authority": {
+    "sourceSha256": "e3d136bd450edbf4177f28d3d05857a24350fcb8aed7e2881c47b5276d7f7f27",
+    "modelSha256": "f1d85bd5771119428ebe72eda562c70d1b795d5e72286618f48e44521826097c"
+  },
+  "review": [
+    "Inspected native front, side, rear and angled clay and material views, and the three attack contact poses.",
+    "Repaired a missing mask-neck coupling and strengthened directional attack gestures in the saved native master; no bootstrap over artist edits.",
+    "Inspected six-frame-per-second decoded 1x sweep, rain and wheel playback for preparation, contact and settling. Retained the full unretimed six-clip movie.",
+    "Compared production native and prior fallback at identical positions and warning footprint. The flared bronze shell, iron yoke and striker distinguish Bellwarden; the health bar clears the frame.",
+    "Reviewed 960x600 and 390x244 production views. Fine hand and mask details recede at narrow scale; body silhouette and orange attack footprint remain readable."
+  ],
+  "geometryAgreement": {
+    "units": "model units",
+    "tolerance": 0.0001,
+    "sampling": "All 237 authored 30fps frames, 16 vertices per named mesh (336 points/frame); whole-surface native floor/IK audit is separate.",
+    "maximumOriginalError": 1.2933777575620263e-06,
+    "maximumEditedError": 1.2933777575620263e-06,
+    "changedSweepSurface": 0.11060064930219939,
+    "allMeshesCovered": true
+  },
+  "savedEditProof": {
+    "meshAndWeightsUnchanged": true,
+    "authoritativeSourceAndDeliveryUnchanged": true,
+    "headChangeRadians": 0.30000001192092896,
+    "editedClip": "sweep",
+    "editedFrame": 10,
+    "sourceSha256": "e3d136bd450edbf4177f28d3d05857a24350fcb8aed7e2881c47b5276d7f7f27",
+    "modelSha256": "f1d85bd5771119428ebe72eda562c70d1b795d5e72286618f48e44521826097c"
+  },
+  "runtime": {
+    "visible": true,
+    "fallbackHidden": true,
+    "finiteBounds": true,
+    "height": 109.55640358708214,
+    "pausedStable": true,
+    "reducedStable": true,
+    "independentPoses": true,
+    "privateSkeletons": true,
+    "privateMaterials": true,
+    "sharedGeometry": true,
+    "attacks": [
+      {
+        "kind": "sweep",
+        "moving": true,
+        "pausedStable": true
+      },
+      {
+        "kind": "rain",
+        "moving": true,
+        "pausedStable": true
+      },
+      {
+        "kind": "wheel",
+        "moving": true,
+        "pausedStable": true
+      }
+    ],
+    "otherRegions": [
+      {
+        "region": 1,
+        "authoredHidden": true,
+        "fallbackVisible": true
+      },
+      {
+        "region": 2,
+        "authoredHidden": true,
+        "fallbackVisible": true
+      },
+      {
+        "region": 3,
+        "authoredHidden": true,
+        "fallbackVisible": true
+      }
+    ],
+    "rulesUnchanged": true
+  },
+  "limits": [
+    "Self-review is not user art approval. Later guardians and region environment kits remain blockouts.",
+    "In-place locomotion has no claim of world-space foot locking at every movement speed; directional locomotion and transition blending remain polish.",
+    "Newly loaded mid-action snapshots infer preparation duration when historic enrage timing is unavailable; contact remains tied to the confirmed attack transition.",
+    "Six-fps decoded review samples motion; it is not an exhaustive continuous-time anatomical proof."
+  ],
+  "delegation": {
+    "ownership": "Primary authored native source and integrated/reviewed delivery; two reused workers owned runtime/tests and browser/receipt checks.",
+    "rework": "Fixed a mock-hook implicit return and missing parent world-matrix update in test helpers. Native source needed one reviewed coupling/gesture repair.",
+    "efficiency": "Both delegated outputs were used. No measured single-agent time comparison."
+  },
+  "evidence": [
+    {
+      "path": "evidence/bellwarden/attacks-playback-sheet.png",
+      "sha256": "deedb0d23f465fe7744ec1e3a816b63ad953a4293f8b193f774723223cdcdd4f"
+    },
+    {
+      "path": "evidence/bellwarden/combat-desktop.png",
+      "sha256": "201aa8c0aba96c055ce5328b7946cd8e5f9e30551528b285784f4de16eb90502"
+    },
+    {
+      "path": "evidence/bellwarden/combat-narrow.png",
+      "sha256": "2d360f1346e8cb061dd6a5a59284f88dd15f5f837efeafe0100c33d4cce145c6"
+    },
+    {
+      "path": "evidence/bellwarden/fallback-desktop.png",
+      "sha256": "9f7f423ee18516b3633a6f0cf9818134a5c7e44ab52892d0e0556babf59e7d6e"
+    },
+    {
+      "path": "evidence/bellwarden/material-portrait.png",
+      "sha256": "6a41200c87a3ea0b1a2488bc45421514fada083d5ce17ddcc04dc494700f527e"
+    },
+    {
+      "path": "evidence/bellwarden/native-sheet.png",
+      "sha256": "5de0d14157e7c08dbc5f68f126409de4a0a42cc46081319fca5470d392a5402c"
+    },
+    {
+      "path": "evidence/bellwarden/playback-1x.webm",
+      "sha256": "acb0d41f626a85bad484b9ce58a092481e63e917b7220a8e8d494867b09cac24"
+    },
+    {
+      "path": "evidence/bellwarden/playback.json",
+      "sha256": "2655c774785693affab7c7a70e06e435e1c131a5c19d300add4f7ee5cb970d22"
+    }
+  ]
+}

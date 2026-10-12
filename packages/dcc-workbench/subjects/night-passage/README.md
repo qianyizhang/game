@@ -71,7 +71,7 @@ The browser review records unretimed 1× playback and six phase images per clip.
 Native front/side/rear clay, material portrait, action poses, desktop/narrow arena
 and this playback are separate visual evidence. Passing checks is not user art
 acceptance. The ordinary enemy batch below adds four native families; guardians
-and environments remain blockouts.
+and environments remain blockouts except the Bellwarden described below.
 Precise two-hand string contact and directional movement remain polish opportunities.
 
 ## Five weapon identities
@@ -149,7 +149,7 @@ its own cloned skeleton, mixer and materials; geometry and textures remain
 library-owned. Hit flash cannot tint another opponent. Missing/incomplete assets
 keep the procedural fallback, and late loads after disposal release their owned
 resources. Reusing a pooled actor resets movement observation across run, chamber
-and enemy identity. Guardians retain their existing blockouts.
+and enemy identity. The guardian adapter is separate; the Bellwarden is described below.
 
 Before cloning, the renderer batches compatible opaque meshes by material and
 keeps the nocked arrow separate. Each cloned rig shares one private skeleton
@@ -173,3 +173,35 @@ regenerable verification output. The
 [enemy visual review](../../../../docs/art/assets/night-passage/enemies.md)
 records the representative clay review, play-scale readability and remaining art
 limits separately from native agreement.
+
+## Bellwarden
+
+`guardians/bellwarden/source.blend` owns the first guardian's hollow bell shell,
+articulated frame, fitted humanoid IK controls and six saved actions: `idle`,
+`run`, `sweep`, `rain`, `wheel`, `stagger`. `GuardianRig` uses `CTRL_body`,
+`CTRL_L`/`CTRL_R`, FK limbs, `head`, and a separate `bell` suspension joint.
+The existing humanoid leg fitter is reused; the construct's meshes and three
+attacks are authored specifically for it. There is no cross-character retargeting
+claim. Native X-forward/Z-up becomes glTF X-forward/Y-up, at 28× model scale
+before the actor's radius scale.
+
+`guardian_delivery.py` reads the saved master and bakes a deformation skeleton.
+`guardian_form.py` and `guardian_rig.py` construct fresh candidates only.
+`guardian_edit.py` records the first review's neck/attack repair; do not rerun it
+over subsequent artist action edits. `guardian_review.py` renders native views
+and verifies a disposable saved sweep head-key edit. Receipts pin all contributing
+construction/export scripts; temporary vertex samples are never runtime inputs.
+
+```sh
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend --output test-results/bellwarden-export
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend --output test-results/bellwarden-review
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend --output test-results/night-passage-bellwarden/native
+NIGHT_PASSAGE_GUARDIAN_RESULTS=test-results/night-passage-bellwarden/native npm run test:browser -- tests/browser/night-passage-guardian.spec.ts
+npm run check:full
+```
+
+Every operation requires fresh output paths. Native comparison samples all 237
+saved 30 fps frames across six clips and 16 vertices per named mesh. A separate
+floor audit evaluates every surface vertex and the planted-foot targets. The
+[visual review](../../../../docs/art/assets/night-passage/bellwarden.md) separates
+source/export agreement, play-scale appearance and remaining art limitations.

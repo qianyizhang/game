@@ -1,0 +1,38 @@
+[
+  {
+    "clip": "idle",
+    "seconds": 2,
+    "wallSeconds": 2.000399999976158,
+    "frames": 120
+  },
+  {
+    "clip": "run",
+    "seconds": 1,
+    "wallSeconds": 1.0166999999284745,
+    "frames": 61
+  },
+  {
+    "clip": "sweep",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4151000000238418,
+    "frames": 85
+  },
+  {
+    "clip": "rain",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4008999999761582,
+    "frames": 84
+  },
+  {
+    "clip": "wheel",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4146999999284744,
+    "frames": 85
+  },
+  {
+    "clip": "stagger",
+    "seconds": 0.5,
+    "wallSeconds": 0.5012000000476837,
+    "frames": 30
+  }
+]
