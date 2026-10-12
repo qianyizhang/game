@@ -797,6 +797,14 @@ export default function NightPassageApp() {
               Duos require both patrons to remain equipped.
             </p>
             <p>
+              In 2.5D, red diamonds are enemy shots. Patron light marks use a bolt for Aster, waves
+              for Neris, a flame for Vesta, a shard for Isen and an eye for Nyra.
+            </p>
+            <p>
+              Flame, frost and eye marks around foes show scorch, chill and exposure together. A
+              broken pale ring around you means you cannot currently take damage.
+            </p>
+            <p>
               Desktop keyboard and mouse controls. The layout fits small screens; touch combat is
               not implemented.
             </p>

@@ -1,9 +1,10 @@
 import * as T from 'three';
-import { ARENA, GODS } from '../../../domain/content';
+import { ARENA } from '../../../domain/content';
 import { hazardPhase, hazardTiming } from '../../../domain/encounters';
 import { attackShapes, projectileAngles } from '../../../domain/threats';
 import type { State } from '../../../domain/types';
 import { drawThreat } from '../threats';
+import { drawCombatStatus, drawCue, drawProjectile } from './combat-marks';
 
 /** One transparent ground decal uses the exact same threat paths as the baseline view. */
 export function createGroundEffects(parent: T.Group) {
@@ -90,35 +91,9 @@ export function createGroundEffects(parent: T.Group) {
       ctx.strokeStyle = '#efffe4';
       ctx.lineWidth = 3;
       ctx.stroke();
-      for (const shot of state.projectiles) {
-        const color = shot.hostile
-          ? '#ff907c'
-          : shot.god
-            ? GODS.find((god) => god.id === shot.god)!.color
-            : '#fff0b8';
-        ctx.strokeStyle = color;
-        ctx.lineWidth = Math.max(3, shot.radius);
-        ctx.beginPath();
-        ctx.moveTo(shot.x - shot.vx * 2, shot.y - shot.vy * 2);
-        ctx.lineTo(shot.x, shot.y);
-        ctx.stroke();
-        circle(shot.x, shot.y, shot.radius, color, '#fff2dd');
-      }
-      for (const effect of state.cues) {
-        ctx.globalAlpha = effect.life / effect.total;
-        ctx.strokeStyle = effect.color;
-        ctx.lineWidth = effect.kind === 'slash' ? 7 : 3;
-        ctx.beginPath();
-        ctx.arc(
-          effect.x,
-          effect.y,
-          effect.radius * (1 - (effect.life / effect.total) * 0.4),
-          effect.aim - effect.arc / 2,
-          effect.aim + effect.arc / 2,
-        );
-        ctx.stroke();
-      }
-      ctx.globalAlpha = 1;
+      for (const shot of state.projectiles) drawProjectile(ctx, shot);
+      for (const effect of state.cues) drawCue(ctx, effect);
+      drawCombatStatus(ctx, state);
       texture.needsUpdate = true;
     },
     dispose() {

@@ -1,6 +1,6 @@
 # Night Passage
 
-A desktop browser action roguelite with an original cast of gods and a lightweight Canvas presentation. Select **Night Passage** in the workshop picker, or open `/?game=night-passage` after `npm run dev`.
+A desktop browser action roguelite with an original cast of gods and a lightweight 2.5D arena and retained Canvas view. Select **Night Passage** in the workshop picker, or open `/?game=night-passage` after `npm run dev`.
 
 The lightweight first release implements the full run loop. It is an original study, not a reproduction of Hades. Legal-command simulations establish campaign playability; human difficulty, combat feel and commercial-game polish are separate judgments.
 
@@ -66,6 +66,22 @@ See [engineering and extension points](../engineering/night-passage.md) for owne
 
 ## Arena views
 
-**2.5D view** is the default: an angled arena with raised columns, shadows and temporary character blockouts. Movement keys follow screen directions; point at the ground location you want to attack. The bright ring marks your character's actual ground position. Columns fade when they obscure actors or active warnings. **2D view** retains the original flat presentation. Changing views pauses combat and preserves your passage; the preference is saved separately from your chronicle.
+**2.5D view** is the default: an angled arena with raised columns, shadows, an authored hero and five weapons. Movement keys follow screen directions; point at the ground location you want to attack. The bright ring marks your character's actual ground position. Columns fade when they obscure actors or active warnings. **2D view** retains the original flat presentation. Changing views pauses combat and preserves your passage; the preference is saved separately from your chronicle.
 
-If 2.5D graphics become unavailable, the game pauses in 2D so you can continue or export. Reduced-motion settings suppress cosmetic character sway while retaining attacks and warning timing. The current blockout is a graphics prototype; authored characters, region scenery and guardian identities will arrive progressively.
+If 2.5D graphics become unavailable, the game pauses in 2D so you can continue or export. Reduced-motion settings suppress cosmetic character sway while retaining attacks and warning timing. Enemy families, region scenery and guardian identities will receive authored assets progressively.
+
+### Read the light marks
+
+In 2.5D, enemy projectiles are coral diamonds with a pale core. Friendly patron
+marks differ in contour as well as color: Aster has a bolt, Neris two waves,
+Vesta a flame, Isen a pointed shard and Nyra an eye. A patron crest announces
+cast/call windup; the wider, heavier ring denotes a call. Nyra's cast and call
+are rushing strikes rather than projectiles.
+
+Small flame, frost and eye marks around an enemy indicate scorch, chill and
+exposure. They remain visible together, including during the enemy's hit flash.
+A broken pale ring around the player indicates damage immunity, including the
+brief protection after a hit or call. It does not promise immunity to movement
+effects. Dash chevrons show direction; hit sparks, expanding bursts, slash arcs
+and healing crosses distinguish transient outcomes. These light marks are
+presentation symbols; orange threat footprints still define announced danger.

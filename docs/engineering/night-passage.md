@@ -32,9 +32,37 @@ The default view is now 2.5D; **View** selects the retained 2D baseline. Switchi
 
 `scene/camera.ts` owns the orthographic camera, viewport fitting and inverse projection. Rules `(x,y)` map to scene `(x,0,z)`; height is cosmetic. `room.ts` builds a replaceable raised arena and columns from the actual collision footprints. Columns fade when they occlude actors or when attack warnings need ground visibility. `ground-effects.ts` places the shared 2D threat paths on a transparent ground decal; circles, sectors, annuli and capsule lines retain their rules dimensions. Projectiles, hazard phases, player position/aim and transient cues share this plane. `actors.ts` combines the authored hero with cached enemy blockout silhouettes, five held weapon shapes, health/status cues and a crowned guardian. Grounded actor roots follow confirmed positions; reduced motion removes cosmetic sway without hiding essential warnings.
 
-This is the **playable renderer vertical slice**, not completed art production. The room kit, enemies and weapons remain temporary procedural blockouts. The first native hero asset is delivered separately below. The scene can display the existing four-region state, but the campaign-parity milestone still needs deliberate coverage of every weapon, spell and threat family, plus broader resource/performance review. Region identities currently use the same architectural kit and guardian silhouette with different palettes. Native weapon, enemy, guardian and environment assets remain queued.
+This is the **playable renderer vertical slice**, not completed art production. The room kit and enemies remain temporary procedural blockouts. Authored hero and weapon batches are delivered separately below. The campaign-parity coverage below exercises all four regions, five weapons and every spell/threat family. Measured performance remains a separate queued refinement. Region identities currently use the same architectural kit and guardian silhouette with different palettes. Native enemy, guardian and environment assets remain queued.
 
 Verification adds projection/viewport and screen-direction scenarios, live 2.5D movement/dodge/casts, a complete ranged chamber, live melee on a reconstructed guardian approach, all four guardians' initial warning views, view switching/reload, narrow layout and real WebGL context-loss recovery. Guardian screenshots are reconstructed approaches, not complete human-played guardian victories. Review output is regenerable under `test-results/night-passage-scene/`. The original renderer slice changed no saved native files. The hero slice below adds its own saved-source and native/browser agreement evidence.
+
+### Spell and threat readability
+
+`scene/combat-marks.ts` draws patron projectile contours, cast/call crests,
+concurrent enemy status marks and distinct transient outcomes. It reads confirmed
+projectiles, cues, boons and timers; it introduces no events, wall-clock animation,
+randomness, saved fields or gameplay changes. Ground marks remain on the existing
+single decal. The authored hero's material does not need to flash for damage
+immunity to remain visible. Warning geometry still comes from `attackShapes` and
+`projectileAngles`, and hazard timing still comes from the rules.
+
+The browser parity matrix covers **85 controlled rendering cases**. It uses explicitly controlled encounter/build snapshots,
+then real `applyCommand` steps for release outcomes. It covers all five patrons'
+casts/calls, patron-marked weapon projectiles, all ordinary and guardian attack
+patterns, four hazards and concurrent statuses. Pixel probes independently check
+selected threat interiors and safe space; repeated paused draws check stability
+and input snapshots remain unchanged. This is renderer family coverage, not a
+claim of human-played campaign completion. Five additional legal-command campaigns
+render all 32 chamber entries and victory for each weapon: **165 checkpoints**,
+covering all four regions and guardians. Each checkpoint checks painted pixels
+and snapshot purity; four region captures must differ. Native activation is
+observed before capture. These fast-forwarded browser campaigns complement the
+live UI combat/save journeys and the three-seed campaign simulations.
+
+The [combat-mark review](../art/assets/night-passage/combat-marks.md) retains a
+matching before/after comparison and an angled play-scale capture. The remaining
+matrix images and summaries are regenerable ignored output. Owner visual review
+is separate from technical coverage and user acceptance.
 
 ### Authored hero and weapon batches
 
@@ -79,7 +107,7 @@ nvm use
 npx vitest run --project application src/games/night-passage
 npx vitest run --config vitest.playtest.config.ts tests/simulation/night-passage.test.ts
 npm run test:browser -- tests/browser/night-passage.spec.ts
-npm run test:browser -- tests/browser/night-passage-scene.spec.ts
+npm run test:browser -- tests/browser/night-passage-scene.spec.ts tests/browser/night-passage-parity.spec.ts
 npm run check:full
 ```
 
@@ -89,7 +117,7 @@ The campaign simulation exercises every guardian with each weapon on three fixed
 
 Browser journeys cover live first-room combat, cursor tracking while moving, reward decisions, pause/reload, portable saves, reconstructed victory/progression, original-save recovery, unavailable storage, export-before-reset and guardian warning rendering. Imported victory and guardian approaches are reconstruction evidence, not a live browser campaign playthrough.
 
-The default-seed automated pilot takes roughly 6–10 minutes of simulated combat, excluding reward decisions. That is not a measured human run duration, and the earlier 25–40 minute suggestion is not yet established. The delivery is a complete lightweight gameplay study, not commercial Hades fidelity. Desktop keyboard/mouse is supported; touch controls and arbitrary mod-pack import are outside this slice. Visual review covers the first authored hero and the readable blockouts for other actors, weapons and scenery. Difficulty balance and subjective combat feel still benefit from human playtesting.
+The default-seed automated pilot takes roughly 6–10 minutes of simulated combat, excluding reward decisions. That is not a measured human run duration, and the earlier 25–40 minute suggestion is not yet established. The delivery is a complete lightweight gameplay study, not commercial Hades fidelity. Desktop keyboard/mouse is supported; touch controls and arbitrary mod-pack import are outside this slice. Visual review covers the authored hero and weapons, spell/status light marks, and the remaining actor/scenery blockouts. Difficulty balance and subjective combat feel still benefit from human playtesting.
 
 ## Requirement evidence
 
@@ -110,15 +138,15 @@ Each turn selects **one general direction** and finishes one bounded, reviewable
 
 ### Milestones
 
-| Milestone               | Finish line                                                                                                                                                                                                                                                                                                              | Status                                                                   |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| Playable baseline       | Four regions, five weapons, patron spells, runes, complete run lifecycle and portable saves; rules and browser journeys pass.                                                                                                                                                                                            | Delivered; placeholder graphics and initial balance.                     |
-| Presentation boundary   | A game-owned renderer lifecycle separates view creation, resize, drawing, pointer-to-ground conversion and disposal from input, sessions and decision UI. Keep the current Canvas view usable for comparison.                                                                                                            | Delivered; Canvas baseline retained.                                     |
-| **2.5D vertical slice** | One complete chamber plays through an angled orthographic 3D scene: camera projection and inverse aiming, grounded hero/enemies, depth and occlusion handling, light/shadow, terrain, projectiles and exact ground-plane telegraphs. Validate movement, dodge, melee, ranged attacks and a guardian at actual play size. | Playable renderer, hero and five weapon identities delivered.            |
-| **2.5D campaign**       | All four regions and guardians, five weapons and every spell/threat family work through the new presentation. Pause, resize, import/resume, context/resource lifecycle and reduced-motion behavior remain usable.                                                                                                        | Planned major milestone.                                                 |
-| Authored asset coverage | Replace gameplay-critical placeholders in small coherent batches: hero and motion set; five weapon identities and attacks; ordinary enemy families; four guardians; four environment kits; patron spell effects and reward/icon treatment. Track each asset's source, delivery, motion coverage and visual review.       | Hero, sixteen motions and five weapons delivered; other families queued. |
-| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | Queued; select one direction at a time.                                  |
-| Delivery closeout       | Complete campaigns and browser journeys cover the final content/rendering; no gameplay-critical placeholder remains; extension and asset-authoring paths are documented; report technical results separately from visual self-review and user feedback.                                                                  | Pending preceding milestones.                                            |
+| Milestone               | Finish line                                                                                                                                                                                                                                                                                                              | Status                                                                                          |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| Playable baseline       | Four regions, five weapons, patron spells, runes, complete run lifecycle and portable saves; rules and browser journeys pass.                                                                                                                                                                                            | Delivered; placeholder graphics and initial balance.                                            |
+| Presentation boundary   | A game-owned renderer lifecycle separates view creation, resize, drawing, pointer-to-ground conversion and disposal from input, sessions and decision UI. Keep the current Canvas view usable for comparison.                                                                                                            | Delivered; Canvas baseline retained.                                                            |
+| **2.5D vertical slice** | One complete chamber plays through an angled orthographic 3D scene: camera projection and inverse aiming, grounded hero/enemies, depth and occlusion handling, light/shadow, terrain, projectiles and exact ground-plane telegraphs. Validate movement, dodge, melee, ranged attacks and a guardian at actual play size. | Playable renderer, hero and five weapon identities delivered.                                   |
+| **2.5D campaign**       | All four regions and guardians, five weapons and every spell/threat family work through the new presentation. Pause, resize, import/resume, context/resource lifecycle and reduced-motion behavior remain usable.                                                                                                        | Renderer parity delivered; authored assets and measured performance remain separate milestones. |
+| Authored asset coverage | Replace gameplay-critical placeholders in small coherent batches: hero and motion set; five weapon identities and attacks; ordinary enemy families; four guardians; four environment kits; patron spell effects and reward/icon treatment. Track each asset's source, delivery, motion coverage and visual review.       | Hero, sixteen motions, five weapons and symbolic combat marks delivered; other families queued. |
+| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | Queued; select one direction at a time.                                                         |
+| Delivery closeout       | Complete campaigns and browser journeys cover the final content/rendering; no gameplay-critical placeholder remains; extension and asset-authoring paths are documented; report technical results separately from visual self-review and user feedback.                                                                  | Pending preceding milestones.                                                                   |
 
 The 2.5D implementation uses the existing Three.js dependency and a fixed angled orthographic camera over the authoritative two-dimensional combat plane. Elevation and animation are presentation until a separately scoped gameplay change says otherwise. Shared threat geometry must project into the scene without changing its damage footprint. Foreground scenery must not conceal actionable enemies or warnings. Establish camera, silhouette, contact and depth before decorative detail. Keep the baseline renderer through migration until campaign parity is established.
 
