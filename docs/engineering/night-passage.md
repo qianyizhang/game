@@ -4,19 +4,63 @@ Night Passage lives in `src/games/night-passage`. Its rules are independent of R
 
 ## Ownership
 
-| Module                                     | Responsibility and extension path                                                                                                                 |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `domain/types.ts`                          | Game vocabulary and serializable state/commands. Add a genuinely new concept here before its callers.                                             |
-| `domain/content.ts`                        | Weapons, move timing, gods, boons, runes, regions, arena dimensions and content version. Add variants here when existing behavior suffices.       |
-| `domain/geometry.ts`                       | Movement bounds, pillar collision and clear lines between actors.                                                                                 |
-| `domain/combat.ts`                         | Player input buffering, move execution, projectiles and the fixed-step combat sequence.                                                           |
-| `domain/game.ts`                           | Command validation, run lifecycle, rewards, markets and progression. `applyCommand` rejects atomically and returns the original state on failure. |
-| `application/session.ts`                   | Accepted-command journal, bounded replay validation, export and reconstruction. No serialized state snapshot is trusted.                          |
-| `ui/NightPassageApp.tsx`                   | Input collection, bounded realtime accumulator, save lifecycle, HUD and decision screens.                                                         |
-| `ui/presentation/`                         | Renderer lifecycle, viewport sizing, ground projection and 2D/2.5D drawing of confirmed state. Damage and collision stay in rules.                |
-| `tests/simulation/night-passage-policy.ts` | Legal-command verification pilot. It is not a player-facing autoplay feature.                                                                     |
+| Module                                     | Responsibility and extension path                                                                                                                     |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `domain/types.ts`                          | Game vocabulary and serializable state/commands. Add a genuinely new concept here before its callers.                                                 |
+| `domain/content.ts`                        | Weapons, move timing, gods, boons, runes, regions, arena dimensions and content version. Add variants here when existing behavior suffices.           |
+| `domain/chamber-content.ts`                | Four ordinary combat layouts: cover, hazard sites and reinforcement positions. Geometry is authored here and validated independently of the renderer. |
+| `domain/geometry.ts`                       | Movement bounds, pillar collision and clear lines between actors.                                                                                     |
+| `domain/combat.ts`                         | Player input buffering, move execution, projectiles and the fixed-step combat sequence.                                                               |
+| `domain/game.ts`                           | Command validation, run lifecycle, rewards, markets and progression. `applyCommand` rejects atomically and returns the original state on failure.     |
+| `application/session.ts`                   | Accepted-command journal, bounded replay validation, export and reconstruction. No serialized state snapshot is trusted.                              |
+| `ui/NightPassageApp.tsx`                   | Input collection, bounded realtime accumulator, save lifecycle, HUD and decision screens.                                                             |
+| `ui/presentation/`                         | Renderer lifecycle, viewport sizing, ground projection and 2D/2.5D drawing of confirmed state. Damage and collision stay in rules.                    |
+| `tests/simulation/night-passage-policy.ts` | Legal-command verification pilot. It is not a player-facing autoplay feature.                                                                         |
 
 Enemy stats and guardian pattern definitions live in `domain/encounter-content.ts`. `domain/encounters.ts` owns enemy decisions and hazard consequences. `domain/threats.ts` produces the same geometric shapes used by damage and `ui/presentation/threats.ts`; a warning is not an independent approximation of a hit. `domain/effects.ts` owns damage, charge accounting, elemental effects and bounded duos. `ui/audio.ts` is an optional, replaceable presentation consumer.
+
+## Chamber layouts
+
+Ordinary combat routes pair rewards with one of four authored layouts in
+`domain/chamber-content.ts`. Route generation shuffles the eligible layouts with
+the explicit rules RNG, excluding the current combat layout and assigning distinct
+layouts to the two combat choices. Safe stops and guardians have dedicated
+arrangements; after either, all four ordinary layouts are eligible again. The
+opening chamber remains Open Court without active hazards.
+
+The selected layout fixes cover and hazard sites across all waves. Reinforcements
+shuffle eight perimeter sites, exclude positions within 140 ground units of the
+player, then place ranged enemies in farther 100-unit distance bands and melee
+enemies in nearer bands. Seeded ordering resolves ties. Wave sizes, health, rewards
+and guardian mechanics remain unchanged. This changes command replay meaning, so
+both rules and content advance to version 3.
+
+To add terrain, extend `LayoutId` and the layout catalog together. Keep the entry
+clear, preserve navigable gaps, separate reinforcement sites from cover and hazard
+centers, and retain enough distant sites for a five-enemy wave anywhere the player
+can stand. Catalog tests check geometry and navigation; lifecycle tests check route
+promises, wave stability and safe entry. Legal campaigns and browser route/save
+journeys remain the playability gates. The four renderer captures are controlled
+layout comparisons, not evidence of human combat balance. No renderer or native
+asset changes are part of this slice.
+
+The 2026-10-13 layout delivery checks all 81 entry/spawn endpoint pairs in each
+layout using the existing enemy steering (324 paths total). Initial denser cover
+made that steering oscillate; adjusted pillar spacing/radii resolve those probes
+without changing the movement rules. All 15 weapon/seed campaigns encounter all
+four layouts and clear all four guardians. The layout browser journey covers
+announced terrain, selected geometry, export/import and paused reload, plus
+byte-exact recovery of an incompatible version-2 chronicle. Controlled captures
+from `night-passage-layouts-review.ts` show distinct cover silhouettes and readable
+route descriptions in the existing 2.5D renderer; this is visual self-review,
+not user acceptance or human difficulty evidence.
+
+Two bounded delegated subtasks produced the catalog/navigation checks and browser
+journeys while integration remained with the primary agent. Catalog review caught
+the steering issue; browser execution caught one unresolved bare-module import in
+the test harness, repaired by using the established Vite helper pattern. Both
+outputs were usable after that bounded rework; no elapsed-time comparison against
+a single-agent implementation was measured.
 
 ## Presentation lifecycle
 
@@ -146,7 +190,7 @@ actors and resource release. No native source or delivery change is required.
 
 Rules advance at 60 fixed steps per simulated second. A frame command supplies bounded movement, aim, buttons and 1–120 ticks. The browser caps accumulated work at six steps per display frame and pauses on blur/hidden state. Rendering reads confirmed state; the HUD refreshes at approximately 10 Hz and immediately after decisions.
 
-Rules copy the bounded active state per command. Session history uses persistent linked entries so appending does not copy the full history. Identical adjacent frame inputs pack into at most two-second commands. Export reverses that history into a linear replay and encodes frame inputs as `[ticks, x, y, aim, buttonMask]` tuples without changing numeric values. Rules/content version 2 uses replay envelope v2; older prototype histories are rejected and remain downloadable. Import validates every command and reconstructs through the same interface. Rules and content changes that alter replay meaning require explicit version bumps before further delivery.
+Rules copy the bounded active state per command. Session history uses persistent linked entries so appending does not copy the full history. Identical adjacent frame inputs pack into at most two-second commands. Export reverses that history into a linear replay and encodes frame inputs as `[ticks, x, y, aim, buttonMask]` tuples without changing numeric values. Rules/content version 3 uses the unchanged replay envelope v2. Version-1/2 histories are rejected and remain downloadable; there is no migration that reinterprets their old commands. Import validates every command and reconstructs through the same interface. Rules and content changes that alter replay meaning require explicit version bumps before further delivery.
 
 Initial content is source-authored. Arbitrary content-pack import is not implemented. Adding a sixth weapon presently requires its ID, three move definitions, validation membership through `WEAPONS`, and a presentation decision; introducing a new move family also requires combat rules and behavioral evidence. Regions select their enemy pool, guardian pattern set, hazard kind and palette. Campaign traversal follows `REGIONS.length`; `CHAMBERS_PER_REGION` currently specifies eight chambers per region. New region entries reuse the lifecycle without changing its bounds. New threat families require a shared geometry rule, presentation and damage/safe-space evidence. There is no universal game engine or arbitrary code execution in content imports.
 
@@ -159,7 +203,7 @@ nvm use
 npx vitest run --project application src/games/night-passage
 npx vitest run --config vitest.playtest.config.ts tests/simulation/night-passage.test.ts
 npm run test:browser -- tests/browser/night-passage.spec.ts
-npm run test:browser -- tests/browser/night-passage-scene.spec.ts tests/browser/night-passage-parity.spec.ts
+npm run test:browser -- tests/browser/night-passage-scene.spec.ts tests/browser/night-passage-parity.spec.ts tests/browser/night-passage-layouts.spec.ts
 NIGHT_PASSAGE_ENEMY_RESULTS=test-results/night-passage-enemies/native npm run test:browser -- tests/browser/night-passage-enemies.spec.ts
 npm run check:full
 ```
@@ -198,7 +242,7 @@ Each turn selects **one general direction** and finishes one bounded, reviewable
 | **2.5D vertical slice** | One complete chamber plays through an angled orthographic 3D scene: camera projection and inverse aiming, grounded hero/enemies, depth and occlusion handling, light/shadow, terrain, projectiles and exact ground-plane telegraphs. Validate movement, dodge, melee, ranged attacks and a guardian at actual play size. | Playable renderer, hero and five weapon identities delivered.                                                                   |
 | **2.5D campaign**       | All four regions and guardians, five weapons and every spell/threat family work through the new presentation. Pause, resize, import/resume, context/resource lifecycle and reduced-motion behavior remain usable.                                                                                                        | Renderer parity and local enemy submission benchmark delivered; asset coverage remains incomplete.                              |
 | Authored asset coverage | Replace gameplay-critical placeholders in small coherent batches: hero and motion set; five weapon identities and attacks; ordinary enemy families; four guardians; four environment kits; patron spell effects and reward/icon treatment. Track each asset's source, delivery, motion coverage and visual review.       | Hero, five weapons, four enemy families and symbolic combat marks delivered; guardians/environments and further effects queued. |
-| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | First measured rendering slice delivered; combat feel, reward/RNG and encounter variety remain queued.                          |
+| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | First measured rendering and four-layout encounter slices delivered; combat feel and reward/RNG refinement remain queued.       |
 | Delivery closeout       | Complete campaigns and browser journeys cover the final content/rendering; no gameplay-critical placeholder remains; extension and asset-authoring paths are documented; report technical results separately from visual self-review and user feedback.                                                                  | Pending preceding milestones.                                                                                                   |
 
 The 2.5D implementation uses the existing Three.js dependency and a fixed angled orthographic camera over the authoritative two-dimensional combat plane. Elevation and animation are presentation until a separately scoped gameplay change says otherwise. Shared threat geometry must project into the scene without changing its damage footprint. Foreground scenery must not conceal actionable enemies or warnings. Establish camera, silhouette, contact and depth before decorative detail. Keep the baseline renderer through migration until campaign parity is established.

@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
 import { applyCommand, createGame } from '../../src/games/night-passage/domain/game';
+import { CHAMBER_LAYOUTS } from '../../src/games/night-passage/domain/chamber-content';
 import { WEAPONS } from '../../src/games/night-passage/domain/content';
 import { passageCommand } from './night-passage-policy';
 
@@ -38,7 +39,14 @@ test.each(
       runes: ['vigor', 'fleet'],
     }).state;
     const bosses = new Set<number>();
+    const layouts = new Set<string>();
     for (let step = 0; step < 20000 && state.phase !== 'won' && state.phase !== 'lost'; step++) {
+      if (state.room.layout) layouts.add(state.room.layout);
+      if (state.phase === 'route') {
+        const offered = state.routes.flatMap((route) => (route.layout ? [route.layout] : []));
+        expect(new Set(offered).size).toBe(offered.length);
+        if (state.room.layout) expect(offered).not.toContain(state.room.layout);
+      }
       const before = state;
       const result = applyCommand(state, passageCommand(state));
       if (result.error) throw new Error(result.error);
@@ -71,6 +79,7 @@ test.each(
       }),
     ).toMatchObject({ phase: 'won', region: 3 });
     expect([...bosses]).toEqual([0, 1, 2, 3]);
+    expect([...layouts].sort()).toEqual(CHAMBER_LAYOUTS.map((layout) => layout.id).sort());
     const home = applyCommand(state, { type: 'return' });
     expect(home.state.profile.wins).toBe(1);
     expect(home.state.profile.unlockedRunes).toHaveLength(6);

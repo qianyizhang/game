@@ -221,7 +221,9 @@ _Avoid_: Actor, when counting conversations; turn, when referring to a whole con
 
 **Region**: A stretch of the passage containing eight chambers and a guardian in its final chamber.
 
-**Chamber**: One encounter or safe stop. Its reward is announced before entry.
+**Chamber**: One encounter or safe stop. Its reward and combat layout are announced before entry.
+
+**Layout**: A chamber's arrangement of cover, hazard sites and reinforcement positions. It stays fixed across the chamber's waves.
 
 **Patron**: A god who offers blessings during a passage.
 

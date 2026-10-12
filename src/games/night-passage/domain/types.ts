@@ -4,6 +4,7 @@ export type Slot = 'attack' | 'special' | 'dash' | 'cast' | 'call';
 export type Action = Exclude<Slot, 'dash'>;
 export type RuneId = 'vigor' | 'fleet' | 'focus' | 'fury' | 'echo' | 'mercy';
 export type Reward = 'boon' | 'coin' | 'heart' | 'upgrade' | 'fountain' | 'shop' | 'trial';
+export type LayoutId = 'court' | 'gallery' | 'islands' | 'crossroads';
 export interface Point {
   x: number;
   y: number;
@@ -125,6 +126,7 @@ export interface Cue extends Point {
 }
 export interface Room {
   name: string;
+  layout?: LayoutId;
   reward: Reward;
   boss: boolean;
   wave: number;
@@ -139,6 +141,7 @@ export interface Hazard extends Point {
 }
 export interface Route {
   reward: Reward;
+  layout?: LayoutId;
   label: string;
   detail: string;
 }

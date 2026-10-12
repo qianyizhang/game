@@ -3,10 +3,12 @@ import { isRecord } from '../../../shared/json';
 import { BOONS, boon, CHAMBERS_PER_REGION, REGIONS, RUNES, WEAPONS } from './content';
 import { stepCombat } from './combat';
 import { spawnEnemy } from './encounters';
-import type { Command, Input, Player, Reward, Route, State } from './types';
+import { CHAMBER_LAYOUTS, chamberLayout } from './chamber-content';
+import { distance } from './geometry';
+import type { Command, Input, LayoutId, Player, Reward, Route, State } from './types';
 export type { Command, Input, State } from './types';
 
-export const RULES_VERSION = 'night-passage-2';
+export const RULES_VERSION = 'night-passage-3';
 const freshPlayer = (): Player => ({
   x: 480,
   y: 430,
@@ -91,6 +93,23 @@ function shuffled<T>(state: State, items: readonly T[]): T[] {
   state.rng = next;
   return result;
 }
+function ordinaryRoutes(state: State, rewards: readonly Reward[]): Route[] {
+  const layouts = shuffled(
+    state,
+    CHAMBER_LAYOUTS.filter((layout) => layout.id !== state.room.layout),
+  );
+  let next = 0;
+  return rewards.map((reward) => {
+    const route = { reward, ...routeInfo[reward] };
+    if (reward === 'shop' || reward === 'fountain') return route;
+    const layout = layouts[next++];
+    return {
+      ...route,
+      layout: layout.id,
+      detail: `${layout.name}: ${layout.description} ${route.detail}`,
+    };
+  });
+}
 export function offerBoons(state: State, upgrade = false): void {
   const p = state.player;
   const gods = p.boons.map((b) => boon(b.id).god);
@@ -122,11 +141,12 @@ function routePhase(state: State): void {
       },
     ];
   } else if (state.chamber === CHAMBERS_PER_REGION - 1) {
+    const next = ordinaryRoutes(state, ['boon'])[0];
     state.routes = [
       {
-        reward: 'boon',
+        ...next,
         label: REGIONS[state.region + 1].name,
-        detail: 'Descend to the next region.',
+        detail: `Descend to the next region. ${next.detail}`,
       },
     ];
   } else {
@@ -140,7 +160,7 @@ function routePhase(state: State): void {
     const choices: Reward[] = shuffled(state, pool).slice(0, 2);
     if (state.chamber === 2 || state.chamber === CHAMBERS_PER_REGION - 3)
       choices.push(state.chamber === 2 ? 'shop' : 'fountain');
-    state.routes = choices.map((reward) => ({ reward, ...routeInfo[reward] }));
+    state.routes = ordinaryRoutes(state, choices);
   }
 }
 function spawnWave(state: State): void {
@@ -149,23 +169,40 @@ function spawnWave(state: State): void {
     spawnEnemy(state, 'boss', { x: 480, y: 190 });
     return;
   }
-  const positions = shuffled(state, [
-    { x: 180, y: 130 },
-    { x: 780, y: 130 },
-    { x: 480, y: 120 },
-    { x: 160, y: 350 },
-    { x: 800, y: 350 },
-  ]);
+  const positions = shuffled(state, chamberLayout(state.room.layout ?? 'court').spawns).filter(
+    (point) => distance(point, state.player) >= 140,
+  );
   const count = Math.min(5, 2 + state.region + (state.room.reward === 'trial' ? 1 : 0));
   const kinds = shuffled(state, region.enemies);
-  for (let i = 0; i < count; i++) spawnEnemy(state, kinds[i % kinds.length], positions[i]);
+  for (let i = 0; i < count; i++) {
+    const kind = kinds[i % kinds.length];
+    const ranged = kind === 'archer' || kind === 'witch';
+    // Keep seeded variety within broad distance bands: ranged backline, melee approach.
+    positions.sort(
+      (a, b) =>
+        (ranged ? -1 : 1) *
+        (Math.floor(distance(a, state.player) / 100) - Math.floor(distance(b, state.player) / 100)),
+    );
+    const point = positions.shift();
+    if (!point) throw new Error('Chamber layout has insufficient safe reinforcement sites.');
+    spawnEnemy(state, kind, point);
+  }
 }
-function enterRoom(state: State, reward: Reward): void {
+function enterRoom(state: State, reward: Reward, layoutId: LayoutId = 'court'): void {
   const boss = state.chamber === CHAMBERS_PER_REGION - 1;
+  const safe = !boss && (reward === 'shop' || reward === 'fountain');
+  const layout = boss || safe ? null : chamberLayout(layoutId);
+  const hazardSites = boss
+    ? [
+        { x: 260, y: 390, offset: 0 },
+        { x: 700, y: 230, offset: 145 },
+      ]
+    : (layout?.hazards ?? []);
   state.room = {
     name: boss
       ? REGIONS[state.region].boss
-      : `${REGIONS[state.region].name} · Chamber ${state.chamber + 1}`,
+      : `${REGIONS[state.region].name} · ${layout?.name ?? (reward === 'shop' ? 'Market' : 'Quiet spring')}`,
+    ...(layout ? { layout: layout.id } : {}),
     reward,
     boss,
     wave: 1,
@@ -173,33 +210,15 @@ function enterRoom(state: State, reward: Reward): void {
       ? 1
       : (state.chamber === 0 && state.region === 0 ? 1 : 2 + Number(state.region > 1)) +
         Number(reward === 'trial'),
-    pillars: boss
-      ? []
-      : state.chamber % 2 === 0
-        ? [
-            { x: 330, y: 265, radius: 30 },
-            { x: 630, y: 265, radius: 30 },
-          ]
-        : [{ x: 480, y: 285, radius: 38 }],
+    pillars: layout?.pillars.map((pillar) => ({ ...pillar })) ?? [],
     hazards:
       state.region === 0 && state.chamber === 0
         ? []
-        : [
-            {
-              x: 260,
-              y: 390,
-              radius: state.region === 2 ? 60 : 46,
-              offset: 0,
-              kind: REGIONS[state.region].hazardKind,
-            },
-            {
-              x: 700,
-              y: 230,
-              radius: state.region === 2 ? 60 : 46,
-              offset: 145,
-              kind: REGIONS[state.region].hazardKind,
-            },
-          ],
+        : hazardSites.map((site) => ({
+            ...site,
+            radius: state.region === 2 ? 60 : 46,
+            kind: REGIONS[state.region].hazardKind,
+          })),
   };
   Object.assign(state.player, {
     x: 480,
@@ -428,12 +447,12 @@ export function applyCommand(
       break;
     }
     case 'travel': {
-      const reward = state.routes[command.index].reward;
+      const { reward, layout } = state.routes[command.index];
       if (state.chamber === CHAMBERS_PER_REGION - 1) {
         state.region++;
         state.chamber = 0;
       } else state.chamber++;
-      enterRoom(state, reward);
+      enterRoom(state, reward, layout);
       break;
     }
     case 'buy':

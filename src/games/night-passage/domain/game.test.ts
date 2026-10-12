@@ -138,7 +138,7 @@ test('chronicles reconstruct timing, loadout, retirement and progression; malfor
   expect(session.journal!.length).toBeLessThan(10);
   expect(importSession(exportSession(session)).state).toEqual(session.state);
   expect(() =>
-    importSession(exportSession(session).replace('night-passage-2', 'night-passage-0')),
+    importSession(exportSession(session).replace('night-passage-3', 'night-passage-2')),
   ).toThrow('Unsupported');
   expect(() => importSession(exportSession(session).replace('[120,', '[999999999,'))).toThrow();
   const rejected = dispatch(session, { type: 'choose', id: 'winter-call' });
