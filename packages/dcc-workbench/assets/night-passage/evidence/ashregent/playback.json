@@ -1,0 +1,38 @@
+[
+  {
+    "clip": "idle",
+    "seconds": 2,
+    "wallSeconds": 2.0169000000953674,
+    "frames": 121
+  },
+  {
+    "clip": "run",
+    "seconds": 1,
+    "wallSeconds": 1.0163999999761582,
+    "frames": 61
+  },
+  {
+    "clip": "cross",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4162999999523163,
+    "frames": 85
+  },
+  {
+    "clip": "rain",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4165999999046326,
+    "frames": 85
+  },
+  {
+    "clip": "volley",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.414600000023842,
+    "frames": 85
+  },
+  {
+    "clip": "stagger",
+    "seconds": 0.5,
+    "wallSeconds": 0.5011000000238418,
+    "frames": 30
+  }
+]

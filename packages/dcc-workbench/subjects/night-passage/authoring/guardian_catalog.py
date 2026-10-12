@@ -5,6 +5,7 @@ from __future__ import annotations
 ATTACKS = {
     "bellwarden": ("sweep", "rain", "wheel"),
     "undertow": ("charge", "volley", "pulse"),
+    "ashregent": ("cross", "rain", "volley"),
 }
 
 

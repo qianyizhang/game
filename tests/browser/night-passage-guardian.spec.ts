@@ -10,18 +10,25 @@ const cases = [
     name: 'Bellwarden',
     clips: ['idle', 'run', 'sweep', 'rain', 'wheel', 'stagger'],
     env: 'NIGHT_PASSAGE_GUARDIAN_RESULTS',
-    otherRegion: 1,
+    region: 0,
   },
   {
     kind: 'undertow',
     name: 'Undertow',
     clips: ['idle', 'run', 'charge', 'volley', 'pulse', 'stagger'],
     env: 'NIGHT_PASSAGE_UNDERTOW_RESULTS',
-    otherRegion: 0,
+    region: 1,
+  },
+  {
+    kind: 'ashregent',
+    name: 'Ash Regent',
+    clips: ['idle', 'run', 'cross', 'rain', 'volley', 'stagger'],
+    env: 'NIGHT_PASSAGE_ASHREGENT_RESULTS',
+    region: 2,
   },
 ] as const;
 
-for (const { kind, name, clips, env, otherRegion } of cases) {
+for (const { kind, name, clips, env, region } of cases) {
   const review = `test-results/night-passage-${kind}/browser`;
   const model = `packages/dcc-workbench/assets/night-passage/guardian-${kind}.glb`;
   const source = `packages/dcc-workbench/subjects/night-passage/guardians/${kind}/source.blend`;
@@ -94,15 +101,19 @@ for (const { kind, name, clips, env, otherRegion } of cases) {
     expect(result.actors.attacks.map((attack) => attack.kind)).toEqual(clips.slice(2, 5));
     for (const attack of result.actors.attacks)
       expect(attack).toMatchObject({ moving: true, pausedStable: true });
-    expect(result.actors.otherRegions).toEqual(
-      [2, 3].map((region) => ({ region, authoredHidden: true, fallbackVisible: true })),
+    expect(result.actors.otherRegions).toEqual([
+      { region: 3, authoredHidden: true, fallbackVisible: true },
+    ]);
+    expect(result.actors.crossRegions).toEqual(
+      cases
+        .filter((entry) => entry.region !== region)
+        .map((entry) => ({
+          region: entry.region,
+          authoredVisible: true,
+          previousHidden: true,
+          fallbackHidden: true,
+        })),
     );
-    expect(result.actors.crossRegion).toEqual({
-      region: otherRegion,
-      authoredVisible: true,
-      previousHidden: true,
-      fallbackHidden: true,
-    });
     expect(result.encounter).toMatchObject({
       unavailable: false,
       pausedStable: true,

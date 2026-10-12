@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "ashregent",
+  "sourceSha256": "d071806c5f0df8deab4b1c44a88f338631b9efd106af17ec7d07800e2edfff6b",
+  "modelSha256": "4212ef6eba17dcde4ab7b7c66f64af9ed9aa7a4b8f875f3869331d979bb4af84",
+  "meshSha256": "056e59d8ff348830afa02b3643b102f0498efe799b5a6c94ee28cff004e995b7",
+  "blender": "4.5.14 LTS",
+  "clips": {
+    "idle": {
+      "seconds": 2.0,
+      "loop": true,
+      "contactPhase": 0.45
+    },
+    "run": {
+      "seconds": 1.0,
+      "loop": true,
+      "contactPhase": 0.45
+    },
+    "cross": {
+      "seconds": 1.4,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "rain": {
+      "seconds": 1.4,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "volley": {
+      "seconds": 1.4,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "stagger": {
+      "seconds": 0.5,
+      "loop": false,
+      "contactPhase": 0.45
+    }
+  },
+  "support": {
+    "idle": {
+      "frames": 61,
+      "minimumSurfaceHeight": 0.03000006079673767,
+      "maximumFootTargetError": 3.717832252345875e-07,
+      "loopMatrixError": 0.0
+    },
+    "run": {
+      "frames": 31,
+      "minimumSurfaceHeight": 0.029999813064932823,
+      "maximumFootTargetError": 6.048407760739986e-07,
+      "loopMatrixError": 0.0
+    },
+    "cross": {
+      "frames": 43,
+      "minimumSurfaceHeight": 0.029999876394867897,
+      "maximumFootTargetError": 5.145217976158722e-07,
+      "loopMatrixError": 0.0
+    },
+    "rain": {
+      "frames": 43,
+      "minimumSurfaceHeight": 0.029999876394867897,
+      "maximumFootTargetError": 5.145217976158722e-07,
+      "loopMatrixError": 0.0
+    },
+    "volley": {
+      "frames": 43,
+      "minimumSurfaceHeight": 0.029999876394867897,
+      "maximumFootTargetError": 5.145217976158722e-07,
+      "loopMatrixError": 0.0
+    },
+    "stagger": {
+      "frames": 16,
+      "minimumSurfaceHeight": 0.03000006079673767,
+      "maximumFootTargetError": 3.717832252345875e-07,
+      "loopMatrixError": 2.7755575615628914e-17
+    }
+  },
+  "supportScope": "All authored 30fps frames: complete evaluated surface floor, loop closure and planted-foot IK reach; in-place run, no claim of world-space foot locking at every rules speed",
+  "exportScripts": {
+    "enemy_form.py": "b971b4ba635f7e7711da8275fac1fb3a65aea21da84162a5250b86b15e249fd9",
+    "enemy_rig.py": "4f3b2b416ed63b42f433cc91eeb9f16c9c0ce50912acb04c01fa65cf482fa3f6",
+    "guardian_ashregent.py": "a650adc551d5690b994abb9e93ac410a63c6da3192f24ae1a69faba579510b4a",
+    "guardian_catalog.py": "cfe7361ff10f21d2f91794041bc18155daf21e8b8f9ce8057f23eb78b358268e",
+    "guardian_delivery.py": "92a66fdd4c9753bf358a3bff8ab314fb4dc1d2df886fed73aa099a5f194136eb",
+    "guardian_edit.py": "fba445fd513e69f4f5f4729f76b5abeccfb0476f78ba37f95ff3c621cafa60a9",
+    "guardian_form.py": "f9a9fbd1c2214de4cc0e6a881262f8091db2e41fb7ca60ba0c5b1d56c74374d9",
+    "guardian_review.py": "d6db18be3407f097d815a22947dc4f4618ee82bc21be7139016bcde0bdcc22a2",
+    "guardian_rig.py": "f8fee7e505d0ec7c849985b4e2510ca884fda223d3c5104a0e22fa084ba3aa24",
+    "guardian_undertow.py": "46af9033bb851a88428146e941e03a059f1ac3fedfb9e17f0db7b6eb8ec6956b",
+    "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "hero_rig.py": "c63a2cba5d230169dae82f58b7efeee65f7a00c84d3228d07265d60dde0540cc"
+  }
+}

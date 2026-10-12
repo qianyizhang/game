@@ -3,6 +3,7 @@ import { GLTFLoader, type GLTF } from 'three/addons/loaders/GLTFLoader.js';
 import { clone } from 'three/addons/utils/SkeletonUtils.js';
 import bellwardenUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-bellwarden.glb?url';
 import undertowUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-undertow.glb?url';
+import ashregentUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-ashregent.glb?url';
 import { disposeObject } from '../../../../../shared/three/resources';
 import { isMesh, isSkinnedMesh } from '../../../../../shared/three/objects';
 import { GUARDIANS } from '../../../domain/encounter-content';
@@ -12,6 +13,7 @@ import { batchEnemyAsset, shareSkeletons } from './batches';
 const profiles = [
   { id: 'bellwarden', region: 0, url: bellwardenUrl, attacks: ['sweep', 'rain', 'wheel'] },
   { id: 'undertow', region: 1, url: undertowUrl, attacks: ['charge', 'volley', 'pulse'] },
+  { id: 'ashregent', region: 2, url: ashregentUrl, attacks: ['cross', 'rain', 'volley'] },
 ] as const;
 type Profile = (typeof profiles)[number];
 type Kind = Profile['id'];

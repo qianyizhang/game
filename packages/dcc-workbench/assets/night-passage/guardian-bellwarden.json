@@ -79,8 +79,9 @@
   "exportScripts": {
     "enemy_form.py": "b971b4ba635f7e7711da8275fac1fb3a65aea21da84162a5250b86b15e249fd9",
     "enemy_rig.py": "4f3b2b416ed63b42f433cc91eeb9f16c9c0ce50912acb04c01fa65cf482fa3f6",
-    "guardian_catalog.py": "26d612d6f519121b4b78d634d0559292d4cf47aa84d590fd46c4e939805f3a4a",
-    "guardian_delivery.py": "12e669198f4e50461936727336d95bbf15013ccc99b2ab46a090a8547616b420",
+    "guardian_ashregent.py": "a650adc551d5690b994abb9e93ac410a63c6da3192f24ae1a69faba579510b4a",
+    "guardian_catalog.py": "cfe7361ff10f21d2f91794041bc18155daf21e8b8f9ce8057f23eb78b358268e",
+    "guardian_delivery.py": "92a66fdd4c9753bf358a3bff8ab314fb4dc1d2df886fed73aa099a5f194136eb",
     "guardian_edit.py": "fba445fd513e69f4f5f4729f76b5abeccfb0476f78ba37f95ff3c621cafa60a9",
     "guardian_form.py": "f9a9fbd1c2214de4cc0e6a881262f8091db2e41fb7ca60ba0c5b1d56c74374d9",
     "guardian_review.py": "d6db18be3407f097d815a22947dc4f4618ee82bc21be7139016bcde0bdcc22a2",

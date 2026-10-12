@@ -14,6 +14,7 @@ import { inspectVideoMotion } from './video-motion';
 const guardianAssets = {
   bellwarden: { name: 'Bellwarden', region: 0, attacks: ['sweep', 'rain', 'wheel'] },
   undertow: { name: 'Undertow', region: 1, attacks: ['charge', 'volley', 'pulse'] },
+  ashregent: { name: 'Ash Regent', region: 2, attacks: ['cross', 'rain', 'volley'] },
 } as const;
 export type GuardianKind = keyof typeof guardianAssets;
 const modelUrl = (kind: GuardianKind) =>
@@ -51,7 +52,7 @@ function roots(parent: T.Object3D, kind?: GuardianKind) {
     if (
       kind
         ? object.name === rootName(kind)
-        : /^night-passage-authored-(bellwarden|undertow)$/.test(object.name)
+        : /^night-passage-authored-(bellwarden|undertow|ashregent)$/.test(object.name)
     )
       result.push(object);
   });
@@ -146,32 +147,37 @@ export async function inspectGuardianActors(kind: GuardianKind = 'bellwarden') {
         pausedStable: equal(contact, pose(first)),
       });
     }
-    const otherKind: GuardianKind = kind === 'bellwarden' ? 'undertow' : 'bellwarden';
-    state.region = guardianAssets[otherKind].region;
-    for (const enemy of state.enemies)
-      Object.assign(enemy, {
-        pattern: 0,
-        windup: Math.round(GUARDIANS[state.region][0].windup / 2),
-        cooldown: 0,
+    const crossRegions = [];
+    for (const otherKind of Object.keys(guardianAssets) as GuardianKind[]) {
+      if (otherKind === kind) continue;
+      state.region = guardianAssets[otherKind].region;
+      for (const enemy of state.enemies)
+        Object.assign(enemy, {
+          pattern: 0,
+          windup: Math.round(GUARDIANS[state.region][0].windup / 2),
+          cooldown: 0,
+        });
+      const switchDeadline = performance.now() + 10000;
+      do {
+        sync();
+        if (roots(parent, otherKind).filter((root) => root.visible).length === 2) break;
+        if (performance.now() > switchDeadline)
+          throw new Error('Pooled guardian profile failed to switch');
+        await nextFrame();
+      } while (true);
+      crossRegions.push({
+        region: state.region,
+        authoredVisible: roots(parent, otherKind).every((root) => root.visible),
+        previousHidden: roots(parent)
+          .filter((root) => root.name !== rootName(otherKind))
+          .every((root) => !root.visible),
+        fallbackHidden: roots(parent, otherKind).every(
+          (root) => root.parent?.children[0].visible === false,
+        ),
       });
-    const switchDeadline = performance.now() + 10000;
-    do {
-      sync();
-      if (roots(parent, otherKind).filter((root) => root.visible).length === 2) break;
-      if (performance.now() > switchDeadline)
-        throw new Error('Pooled guardian profile failed to switch');
-      await nextFrame();
-    } while (true);
-    const crossRegion = {
-      region: state.region,
-      authoredVisible: roots(parent, otherKind).every((root) => root.visible),
-      previousHidden: roots(parent, kind).every((root) => !root.visible),
-      fallbackHidden: roots(parent, otherKind).every(
-        (root) => root.parent?.children[0].visible === false,
-      ),
-    };
+    }
     const otherRegions = [];
-    for (const region of [2, 3]) {
+    for (const region of [3]) {
       state.region = region;
       sync();
       otherRegions.push({
@@ -195,7 +201,7 @@ export async function inspectGuardianActors(kind: GuardianKind = 'bellwarden') {
       privateMaterials,
       sharedGeometry,
       attacks,
-      crossRegion,
+      crossRegions,
       otherRegions,
       rulesUnchanged: pure,
     };

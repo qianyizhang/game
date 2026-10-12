@@ -47,7 +47,13 @@ def bootstrap(source: Path, kind: str = "bellwarden") -> None:
     if source.exists():
         raise FileExistsError("Construction requires a fresh native candidate")
     bpy.ops.wm.read_factory_settings(use_empty=True)
-    if kind == "undertow":
+    if kind == "ashregent":
+        import guardian_ashregent
+
+        rig = guardian_ashregent.make_rig()
+        guardian_ashregent.build(rig)
+        guardian_ashregent.author(rig)
+    elif kind == "undertow":
         import guardian_undertow
 
         rig = guardian_undertow.make_rig()

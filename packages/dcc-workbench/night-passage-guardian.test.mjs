@@ -13,6 +13,7 @@ const hash = (path) => createHash('sha256').update(read(path)).digest('hex');
 for (const { kind, names } of [
   { kind: 'bellwarden', names: ['idle', 'rain', 'run', 'stagger', 'sweep', 'wheel'] },
   { kind: 'undertow', names: ['charge', 'idle', 'pulse', 'run', 'stagger', 'volley'] },
+  { kind: 'ashregent', names: ['cross', 'idle', 'rain', 'run', 'stagger', 'volley'] },
 ]) {
   await test(`${kind} pins its saved source and exports finite weighted surfaces with six bounded clips`, () => {
     const receipt = record(

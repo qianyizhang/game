@@ -32,7 +32,7 @@ const colors = {
   exposed: '#df9fff',
 } as const;
 
-/** Native hero, enemies and the first two guardians; later guardians retain pooled fallbacks. */
+/** Native hero, enemies and the first three guardians; the last guardian retains its pooled fallback. */
 export function createActors(
   parent: THREE.Group,
   invalidate: () => void = () => {},

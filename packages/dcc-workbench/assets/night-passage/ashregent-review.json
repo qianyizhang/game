@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage Ash Regent",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "primary author visual self-review",
+    "independentArtApproval": false
+  },
+  "authority": {
+    "sourceSha256": "d071806c5f0df8deab4b1c44a88f338631b9efd106af17ec7d07800e2edfff6b",
+    "modelSha256": "4212ef6eba17dcde4ab7b7c66f64af9ed9aa7a4b8f875f3869331d979bb4af84"
+  },
+  "review": [
+    "Inspected native front, side, rear and angled clay and material views, plus cross, rain and volley contacts.",
+    "Repaired the saved master after initial clay review: replaced boxy shoulders with faceted volumes, split and tapered the rear mantle, and raised the rain gesture above the crown.",
+    "Inspected six-frame-per-second decoded unretimed cross, rain and volley playback for preparation, contact and settling; retained the full six-clip 1x movie.",
+    "Compared production native and fallback at identical positions and cross warning geometry. The health bar clears the crown; intersecting danger lanes remain visible.",
+    "Reviewed 960x600 and 390x244 production views. At narrow scale the blade edge and individual grate bars recede; copper shoulders, dark body and ember center carry the identity."
+  ],
+  "geometryAgreement": {
+    "units": "model units",
+    "tolerance": 0.0001,
+    "sampling": "All 237 authored 30fps frames, 16 vertices per named mesh (528 points/frame); whole-surface native floor/IK audit is separate.",
+    "maximumOriginalError": 1.4719892084942283e-06,
+    "maximumEditedError": 1.4719892084942283e-06,
+    "changedCrossSurface": 0.17879351112346392,
+    "allMeshesCovered": true
+  },
+  "savedEditProof": {
+    "meshAndWeightsUnchanged": true,
+    "authoritativeSourceAndDeliveryUnchanged": true,
+    "headChangeRadians": 0.30000000819563866,
+    "editedClip": "cross",
+    "editedFrame": 10,
+    "sourceSha256": "d071806c5f0df8deab4b1c44a88f338631b9efd106af17ec7d07800e2edfff6b",
+    "modelSha256": "4212ef6eba17dcde4ab7b7c66f64af9ed9aa7a4b8f875f3869331d979bb4af84"
+  },
+  "runtime": {
+    "visible": true,
+    "fallbackHidden": true,
+    "finiteBounds": true,
+    "height": 120.60020368667465,
+    "pausedStable": true,
+    "reducedStable": true,
+    "independentPoses": true,
+    "privateSkeletons": true,
+    "privateMaterials": true,
+    "sharedGeometry": true,
+    "attacks": [
+      {
+        "kind": "cross",
+        "moving": true,
+        "pausedStable": true
+      },
+      {
+        "kind": "rain",
+        "moving": true,
+        "pausedStable": true
+      },
+      {
+        "kind": "volley",
+        "moving": true,
+        "pausedStable": true
+      }
+    ],
+    "crossRegions": [
+      {
+        "region": 0,
+        "authoredVisible": true,
+        "previousHidden": true,
+        "fallbackHidden": true
+      },
+      {
+        "region": 1,
+        "authoredVisible": true,
+        "previousHidden": true,
+        "fallbackHidden": true
+      }
+    ],
+    "otherRegions": [
+      {
+        "region": 3,
+        "authoredHidden": true,
+        "fallbackVisible": true
+      }
+    ],
+    "rulesUnchanged": true
+  },
+  "limits": [
+    "Self-review is not user art approval. Unlit Sovereign and four environment kits remain blockouts.",
+    "In-place locomotion has no claim of world-space foot locking at every movement speed; directional locomotion and transition blending remain polish.",
+    "Newly loaded mid-action snapshots infer preparation duration when historic enrage timing is unavailable; contact remains tied to the confirmed attack transition.",
+    "Six-fps decoded review samples motion; it is not an exhaustive continuous-time anatomical proof."
+  ],
+  "delegation": {
+    "ownership": "Primary authored native source and integrated/reviewed delivery; two reused workers owned runtime/tests and browser/receipt checks.",
+    "rework": "Runtime worker caught initial charge versus cross naming mismatch before native authoring. Native self-review prompted one contour and gesture repair. Both delegated outputs passed integration checks.",
+    "efficiency": "Both delegated outputs were used. No measured single-agent time comparison."
+  },
+  "evidence": [
+    {
+      "path": "evidence/ashregent/attacks-playback-sheet.png",
+      "sha256": "3a52c1b31203bc488979b2f8b0a0ae3046d3af2ffd0f3212b82e5ee2061aeb1c"
+    },
+    {
+      "path": "evidence/ashregent/combat-desktop.png",
+      "sha256": "4a5629d29d214ce9edb18935b63df465c61e7291c39cf865da01185d6ed98594"
+    },
+    {
+      "path": "evidence/ashregent/combat-narrow.png",
+      "sha256": "6312e250633c2e91763ce3cc6654534c85306077a1f0a2e5fcc332350615a56b"
+    },
+    {
+      "path": "evidence/ashregent/fallback-desktop.png",
+      "sha256": "ebf151ee5a997d66b118aee5304ce889b647e11bf820f42b876f68b91af4e3a3"
+    },
+    {
+      "path": "evidence/ashregent/material-portrait.png",
+      "sha256": "73b2eaee958c7fa77189a2f80147b73af7fde0434394188fbed192b029d1a56c"
+    },
+    {
+      "path": "evidence/ashregent/native-sheet.png",
+      "sha256": "ac58d936b432d48af856c7a40d76a555c945112892236dae0ccc70038f81c275"
+    },
+    {
+      "path": "evidence/ashregent/playback-1x.webm",
+      "sha256": "0d6cadcda6ac0b6ef2048d9c34d99b1f6a4251d542a88e7d86ea455d41d6d504"
+    },
+    {
+      "path": "evidence/ashregent/playback.json",
+      "sha256": "c1c5b9f20f7463282073a545bb13972ad3e1d2c5fde740bad54ee55f91821352"
+    }
+  ]
+}

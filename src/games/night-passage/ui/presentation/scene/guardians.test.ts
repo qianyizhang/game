@@ -13,6 +13,12 @@ vi.mock('three/addons/loaders/GLTFLoader.js', () => ({
   },
 }));
 // Weighted marker clips expose exact sampled phases; real native form/motion is checked in the browser.
+const ids = ['bellwarden', 'undertow', 'ashregent'];
+const attackClips = [
+  ['sweep', 'rain', 'wheel'],
+  ['charge', 'volley', 'pulse'],
+  ['cross', 'rain', 'volley'],
+];
 function asset(region = 0) {
   const scene = new T.Group();
   const joint = new T.Bone();
@@ -28,7 +34,7 @@ function asset(region = 0) {
   mesh.add(joint);
   mesh.bind(new T.Skeleton([joint]));
   scene.add(mesh);
-  const attacks = region === 0 ? ['sweep', 'rain', 'wheel'] : ['charge', 'volley', 'pulse'];
+  const attacks = attackClips[region];
   const animations = ['idle', 'run', ...attacks, 'stagger'].map(
     (name, index) =>
       new T.AnimationClip(name, 1, [
@@ -59,6 +65,8 @@ it.each([
   { region: 0, enraged: true },
   { region: 1, enraged: false },
   { region: 1, enraged: true },
+  { region: 2, enraged: false },
+  { region: 2, enraged: true },
 ])(
   'samples three actual regional release boundaries, region=$region enraged=$enraged',
   async ({ region, enraged }) => {
@@ -101,6 +109,13 @@ it.each([
           [0, 0, 0],
         );
       }
+      if (region === 2 && index === 0) {
+        expect(GUARDIANS[region][index].kind).toBe('cross');
+        expect({ x: boss.x, y: boss.y }).toEqual(beforeRelease);
+        expect(
+          root.getObjectByName('night-passage-authored-ashregent')!.position.toArray(),
+        ).toEqual([0, 0, 0]);
+      }
       const before = structuredClone(state);
       model.sync(boss, state, false);
       expect(pose(root)).toBeCloseTo(marker + 0.45);
@@ -120,7 +135,7 @@ it.each([
   },
 );
 
-it.each([0, 1])(
+it.each([0, 1, 2])(
   'does not retime observed durations across half health; reduced poses stay fixed, region=%s',
   async (region) => {
     load.mockResolvedValue(asset(region));
@@ -183,7 +198,7 @@ it.each([0, 1])(
   },
 );
 
-it.each([0, 1])(
+it.each([0, 1, 2])(
   'loads once per regional kind and releases private/shared resources once, region=%s',
   async (region) => {
     const delivered = asset(region);
@@ -202,7 +217,7 @@ it.each([0, 1])(
     const first = library.attach(a),
       second = library.attach(b);
     const { state, boss } = encounter(false, region);
-    state.region = 2;
+    state.region = 3;
     expect(first.sync(boss, state, false)).toBe(false);
     expect(load).not.toHaveBeenCalled();
     state.region = region;
@@ -251,6 +266,7 @@ it('restores the correct fallback when one pooled boss crosses guardian regions 
   load.mockImplementation((url) => {
     if (url.includes('guardian-bellwarden')) return Promise.resolve(asset(0));
     if (url.includes('guardian-undertow')) return Promise.resolve(asset(1));
+    if (url.includes('guardian-ashregent')) return Promise.resolve(asset(2));
     return new Promise(() => {});
   });
   const parent = new T.Group(),
@@ -274,25 +290,27 @@ it('restores the correct fallback when one pooled boss crosses guardian regions 
     actors.sync(state, false);
     expect(parent.getObjectByName('blockout-boss')).toBe(pooled);
     expect(native.visible).toBe(region === 0);
-    const undertow = pooled.getObjectByName('night-passage-authored-undertow');
-    expect(undertow?.visible ?? false).toBe(region === 1);
-    expect(pooled.children[0].visible).toBe(region > 1);
-    expect((pooled.children[3] as T.Sprite).position.y).toBe(region < 2 ? 58 : 47);
+    for (const [index, id] of ids.entries()) {
+      expect(pooled.getObjectByName(`night-passage-authored-${id}`)?.visible ?? false).toBe(
+        region === index,
+      );
+    }
+    expect(pooled.children[0].visible).toBe(region === 3);
+    expect((pooled.children[3] as T.Sprite).position.y).toBe(region < 3 ? 58 : 47);
   }
   actors.dispose();
 });
 
-it.each([0, 1])(
-  'a failed guardian library does not disable the other regional asset, failed=%s',
+it.each([0, 1, 2])(
+  'a failed guardian library does not disable the other regional assets, failed=%s',
   async (failedRegion) => {
     const warning = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const ids = ['bellwarden', 'undertow'];
-    const delivered = asset(1 - failedRegion);
-    load.mockImplementation((url) =>
-      url.includes(`guardian-${ids[failedRegion]}`)
+    load.mockImplementation((url) => {
+      const region = ids.findIndex((id) => url.includes(`guardian-${id}`));
+      return region === failedRegion
         ? Promise.reject(new Error('unavailable regional asset'))
-        : Promise.resolve(delivered),
-    );
+        : Promise.resolve(asset(region));
+    });
     const library = createGuardians(() => {}),
       root = new T.Group(),
       model = library.attach(root);
@@ -302,19 +320,20 @@ it.each([0, 1])(
       await Promise.resolve();
       await Promise.resolve();
       expect(model.sync(failed.boss, failed.state, false)).toBe(false);
-      const supported = encounter(false, 1 - failedRegion);
-      model.sync(supported.boss, supported.state, false);
-      await Promise.resolve();
-      expect(model.sync(supported.boss, supported.state, false)).toBe(true);
-      expect(root.getObjectByName(`night-passage-authored-${ids[failedRegion]}`)!.visible).toBe(
-        false,
-      );
-      expect(root.getObjectByName(`night-passage-authored-${ids[1 - failedRegion]}`)!.visible).toBe(
-        true,
-      );
-      expect(model.sync(failed.boss, failed.state, false)).toBe(false);
-      expect(model.sync(supported.boss, supported.state, false)).toBe(true);
-      expect(load).toHaveBeenCalledTimes(2);
+      for (const region of [0, 1, 2].filter((region) => region !== failedRegion)) {
+        const supported = encounter(false, region);
+        model.sync(supported.boss, supported.state, false);
+        await Promise.resolve();
+        expect(model.sync(supported.boss, supported.state, false)).toBe(true);
+        for (const [index, id] of ids.entries()) {
+          expect(root.getObjectByName(`night-passage-authored-${id}`)?.visible ?? false).toBe(
+            index === region,
+          );
+        }
+        expect(model.sync(failed.boss, failed.state, false)).toBe(false);
+        expect(model.sync(supported.boss, supported.state, false)).toBe(true);
+      }
+      expect(load).toHaveBeenCalledTimes(3);
     } finally {
       library.dispose();
       warning.mockRestore();
@@ -322,7 +341,7 @@ it.each([0, 1])(
   },
 );
 
-it.each([0, 1])(
+it.each([0, 1, 2])(
   'preserves fallback and disposes failed or late regional deliveries, region=%s',
   async (region) => {
     const warning = vi.spyOn(console, 'warn').mockImplementation(() => {});

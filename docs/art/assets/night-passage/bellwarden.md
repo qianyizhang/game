@@ -48,8 +48,8 @@ These are sampled deformation results, separate from visual judgment.
 
 ## Bounds
 
-[Undertow](undertow.md) now has an authored native model. Ash Regent and Unlit
-Sovereign still use procedural blockouts. Four
+[Undertow](undertow.md) and [Ash Regent](ashregent.md) now have authored native
+models. Unlit Sovereign still uses a procedural blockout. Four
 region environment kits remain pending. Bellwarden locomotion is an in-place
 heavy walk; dedicated backward/sideways steps and transition blending remain
 polish opportunities. Foot support is measured against the native rig, not claimed

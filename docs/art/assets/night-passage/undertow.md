@@ -47,7 +47,8 @@ with identical model bytes; its historical evidence remains unchanged.
 
 ## Bounds
 
-Ash Regent, Unlit Sovereign and the four environment kits remain blockouts.
+[Ash Regent](ashregent.md) now has an authored native model. Unlit Sovereign and
+the four environment kits remain blockouts.
 In-place locomotion is not world-space foot locking at arbitrary movement speeds.
 Dedicated directional steps and animation transitions remain polish work. The
 ground warning is the authority for danger, including the pulse's safe center;

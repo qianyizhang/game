@@ -71,7 +71,7 @@ The browser review records unretimed 1× playback and six phase images per clip.
 Native front/side/rear clay, material portrait, action poses, desktop/narrow arena
 and this playback are separate visual evidence. Passing checks is not user art
 acceptance. The ordinary enemy batch below adds four native families; guardians
-and environments remain blockouts except Bellwarden and Undertow described below.
+and environments remain blockouts except Bellwarden, Undertow and Ash Regent described below.
 Precise two-hand string contact and directional movement remain polish opportunities.
 
 ## Five weapon identities
@@ -149,7 +149,7 @@ its own cloned skeleton, mixer and materials; geometry and textures remain
 library-owned. Hit flash cannot tint another opponent. Missing/incomplete assets
 keep the procedural fallback, and late loads after disposal release their owned
 resources. Reusing a pooled actor resets movement observation across run, chamber
-and enemy identity. The guardian adapter is separate; Bellwarden and Undertow are described below.
+and enemy identity. The guardian adapter is separate; the three authored guardians are described below.
 
 Before cloning, the renderer batches compatible opaque meshes by material and
 keeps the nocked arrow separate. Each cloned rig shares one private skeleton
@@ -235,3 +235,30 @@ Rules still own the charge's travel and danger footprint. The
 native, playback and combat-scale self-review separately from agreement checks.
 Generalizing the exporter preserved Bellwarden's model bytes; its current export
 receipt was refreshed, while its historical review remains unchanged.
+
+## Ash Regent
+
+`guardians/ashregent/source.blend` owns the crowned furnace construct, ember grate,
+faceted shoulder armor, split mantle and hooked cinder blade. Its saved clips are
+`idle`, `run`, `cross`, `rain`, `volley`, `stagger`. The fitted humanoid foot IK is
+reused, with FK limbs, head and cloth. `guardian_ashregent.py` constructs fresh
+candidates only (`bootstrap --kind ashregent` with a new path). `add_regalia` and
+`author_attacks` record the reviewed shoulder/mantle and raised-rain treatment;
+do not rerun them over subsequent artist edits. Export evaluates the saved master.
+The shared catalog, delivery, review and runtime modules add no second pipeline.
+
+```sh
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend --output test-results/ashregent-export
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend --output test-results/ashregent-review
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend --output test-results/night-passage-ashregent/native
+NIGHT_PASSAGE_GUARDIAN_RESULTS=test-results/night-passage-bellwarden/native NIGHT_PASSAGE_UNDERTOW_RESULTS=test-results/night-passage-undertow/native NIGHT_PASSAGE_ASHREGENT_RESULTS=test-results/night-passage-ashregent/native npm run test:browser -- tests/browser/night-passage-guardian.spec.ts
+npm run check:full
+```
+
+Use fresh output directories. Native/browser comparison covers all 237 saved
+frames and 16 probes per named mesh. The disposable saved edit changes `head`
+at frame 10 in `cross` while retaining mesh and weights. Region 2 uses 28× model
+scale before radius scaling; rules own the crossed lanes, rain and fan release.
+The [visual review](../../../../docs/art/assets/night-passage/ashregent.md) records
+native shape, playback and combat-scale evidence. Earlier guardian models were
+re-exported byte-identically; only their current script receipts were refreshed.
