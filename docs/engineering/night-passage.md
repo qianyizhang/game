@@ -20,6 +20,49 @@ Night Passage lives in `src/games/night-passage`. Its rules are independent of R
 
 Enemy stats and guardian pattern definitions live in `domain/encounter-content.ts`. `domain/encounters.ts` owns enemy decisions and hazard consequences. `domain/threats.ts` produces the same geometric shapes used by damage and `ui/presentation/threats.ts`; a warning is not an independent approximation of a hit. `domain/effects.ts` owns damage, charge accounting, elemental effects and bounded duos. `ui/audio.ts` is an optional, replaceable presentation consumer.
 
+## Combat audio feedback
+
+`ui/audio.ts` reads confirmed state transitions without changing combat, RNG or
+replay. The app submits only live combat steps, never save restores. Enemy damage
+uses five equipped-weapon palettes: a layered sword impact,
+a higher spear tone, a low shield thump, a short bright bow response, and a brief
+fist impact. A kill adds a rising accent. Player damage, defeat, dash and chamber
+clear use separate envelopes. A four-millisecond attack avoids starting tones at
+full gain. No external sound file is required; the envelope definitions are the
+authoritative source.
+
+The prior single 65 ms cooldown could discard player-damage feedback immediately
+after an outgoing hit. The new 45 ms throttle applies only to ordinary impacts;
+hurt and defeat bypass it. Each confirmed transition emits at most two cues,
+with danger first, and simultaneous enemy hits coalesce into one impact. The
+live mixer caps overlap at six voices and evicts a lower-priority voice when
+needed. Muting stops current sources and zeros the output bus immediately.
+Close releases the bus/context; a pending resume cannot revive a closed player.
+Identical snapshots, tick rewinds, different runs and noncombat transitions do
+not replay effects.
+
+These are synthesized damage-confirmation sounds. The impact palette follows
+the equipped weapon even for spell or status damage: current snapshots do not
+retain per-hit source attribution. This slice does not claim material-accurate
+foley, independently reviewed sound quality, equal loudness across devices or
+improved human reaction times. Playback is optional; warnings and status remain
+fully visual. Rules/content versions remain 4/3, with replay bytes unchanged.
+
+Verification: `npm run check` passed maintenance/build gates, 383 application
+tests and 22 seeded simulations. The nine Canvas/2.5D browser journeys and two
+focused audio journeys passed. The latter render actual Web Audio envelopes at
+24 kHz, check finite/distinct waveforms and silent tails, and exercise a real
+dodge, immediate mute, unmute and context cleanup through the UI. Six identical
+shield-kill voices through the 0.8 output bus peaked at 0.676 (clipping starts at
+1.0). This is a declared overlap stress case, not a human listening review.
+
+Regenerate with `npx playwright test tests/browser/night-passage-audio.spec.ts --project=functional`.
+It writes ignored `test-results/night-passage-audio/metrics.json` and
+`audition.wav`. The 7.7-second audition has 0.7-second slots: sword, spear, shield,
+bow, fists, sword kill, hurt, defeat, dash, clear, then six overlapping shield
+kills. Keep the small synthesis definitions authoritative; do not commit the
+regenerable WAV or measurements.
+
 ## Blessing draft variety
 
 Rules **4** use `domain/boon-offers.ts` for ordinary chamber, trial and market
@@ -333,7 +376,7 @@ Each turn selects **one general direction** and finishes one bounded, reviewable
 | **2.5D vertical slice** | One complete chamber plays through an angled orthographic 3D scene: camera projection and inverse aiming, grounded hero/enemies, depth and occlusion handling, light/shadow, terrain, projectiles and exact ground-plane telegraphs. Validate movement, dodge, melee, ranged attacks and a guardian at actual play size. | Playable renderer, hero and five weapon identities delivered.                                                                                                             |
 | **2.5D campaign**       | All four regions and guardians, five weapons and every spell/threat family work through the new presentation. Pause, resize, import/resume, context/resource lifecycle and reduced-motion behavior remain usable.                                                                                                        | Renderer parity and local enemy submission benchmark delivered; asset coverage remains incomplete.                                                                        |
 | Authored asset coverage | Replace gameplay-critical placeholders in small coherent batches: hero and motion set; five weapon identities and attacks; ordinary enemy families; four guardians; four environment kits; patron spell effects and reward/icon treatment. Track each asset's source, delivery, motion coverage and visual review.       | Hero, five weapons, four enemy families, all four guardians, Root Sepulcher and symbolic combat marks delivered; three environment kits and further effects/icons queued. |
-| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | Measured rendering, four-layout encounters and seeded blessing-draft refinement delivered; combat-feel refinement remains queued.                                         |
+| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | Measured rendering, four-layout encounters, seeded blessing drafts and combat-audio feedback delivered; final integrated play review remains pending.                     |
 | Delivery closeout       | Complete campaigns and browser journeys cover the final content/rendering; no gameplay-critical placeholder remains; extension and asset-authoring paths are documented; report technical results separately from visual self-review and user feedback.                                                                  | Pending preceding milestones.                                                                                                                                             |
 
 The 2.5D implementation uses the existing Three.js dependency and a fixed angled orthographic camera over the authoritative two-dimensional combat plane. Elevation and animation are presentation until a separately scoped gameplay change says otherwise. Shared threat geometry must project into the scene without changing its damage footprint. Foreground scenery must not conceal actionable enemies or warnings. Establish camera, silhouette, contact and depth before decorative detail. Keep the baseline renderer through migration until campaign parity is established.

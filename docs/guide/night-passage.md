@@ -36,7 +36,7 @@ Thorns hinder movement, tides push you away, flame wells deliver a short heavy e
 
 Click the arena to focus keyboard controls. A dodge briefly prevents damage; attacking during it changes to the weapon's dash move. Orange marks announce enemy strikes. Pillars block shots and direct weapon strikes. Casts hold three charges and replenish over time. A call requires its boon and a full meter, charged through combat.
 
-Sound cues accompany hits, dodges, kills and rewards; use **Sound on/off** to mute them. The game pauses when the window loses focus or the tab becomes hidden. A reloaded combat save begins paused. The page fits narrow screens, but touch combat controls are not implemented.
+The **Sound** toggle enables weapon-themed impacts and distinct damage, dodge, defeat and chamber-clear cues. Turning it off immediately stops active sounds. All warnings remain visible with sound off. The game pauses when the window loses focus or the tab becomes hidden. A reloaded combat save begins paused. The page fits narrow screens, but touch combat controls are not implemented.
 
 ## Weapons, runes and patrons
 

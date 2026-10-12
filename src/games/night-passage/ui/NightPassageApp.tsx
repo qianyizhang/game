@@ -308,7 +308,7 @@ export default function NightPassageApp() {
               if (!sound) {
                 audio.current ??= new PassageAudio();
                 void audio.current.start();
-              }
+              } else audio.current?.mute();
             }}
           >
             Sound {sound ? 'on' : 'off'}
