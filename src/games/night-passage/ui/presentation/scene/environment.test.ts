@@ -75,7 +75,7 @@ it('lazily replaces the paused fallback with the complete kit and rules-derived 
     redraw = vi.fn(),
     room = createRoom(parent, redraw);
   const { state, camera } = fixture();
-  state.region = 1;
+  state.region = 2;
   room.sync(state, camera);
   expect(load).not.toHaveBeenCalled();
   state.region = 0;
@@ -114,7 +114,7 @@ it('lazily replaces the paused fallback with the complete kit and rules-derived 
     [1.4, 1, 1.4],
   ]);
   expect(state).toEqual(before);
-  for (const region of [1, 2, 3, 0]) {
+  for (const region of [2, 3, 0]) {
     state.region = region;
     room.sync(state, camera);
     expect(root.visible).toBe(region === 0);
@@ -284,4 +284,46 @@ it('keeps failed-load fallback and releases a late delivery without resurrecting
     late?.dispose();
     warning.mockRestore();
   }
+});
+
+it('keeps late regional arrivals hidden until selected and releases both cached kits once', async () => {
+  const pending: ((value: ReturnType<typeof asset>) => void)[] = [];
+  load.mockImplementation(() => new Promise((resolve) => pending.push(resolve)));
+  const parent = new T.Group(),
+    room = createRoom(parent),
+    { state, camera } = fixture(),
+    sepulcher = asset(),
+    archive = asset();
+  const released = [sepulcher, archive].map((kit) => vi.spyOn(kit.texture, 'dispose'));
+  room.sync(state, camera);
+  state.region = 1;
+  room.sync(state, camera);
+  expect(load).toHaveBeenCalledTimes(2);
+  expect(load.mock.calls[0][0]).toContain('environment-sepulcher.glb');
+  expect(load.mock.calls[1][0]).toContain('environment-archive.glb');
+  pending[0](sepulcher);
+  await Promise.resolve();
+  room.sync(state, camera);
+  expect(native(parent).visible).toBe(false);
+  expect(fallback(parent).visible).toBe(true);
+  pending[1](archive);
+  await Promise.resolve();
+  room.sync(state, camera);
+  const second = parent.getObjectByName('night-passage-authored-archive')!;
+  expect(second.visible).toBe(true);
+  expect(native(parent).visible).toBe(false);
+  expect(fallback(parent).visible).toBe(false);
+  const before = structuredClone(state);
+  room.sync(state, camera);
+  expect(state).toEqual(before);
+  state.region = 0;
+  room.sync(state, camera);
+  expect(native(parent).visible).toBe(true);
+  expect(second.visible).toBe(false);
+  expect(load).toHaveBeenCalledTimes(2);
+  expect(released.every((dispose) => dispose.mock.calls.length === 0)).toBe(true);
+  room.dispose();
+  room.dispose();
+  expect(released.every((dispose) => dispose.mock.calls.length === 1)).toBe(true);
+  expect(parent.children).toHaveLength(0);
 });

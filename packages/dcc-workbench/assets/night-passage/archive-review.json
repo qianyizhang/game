@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage Drowned Archive environment",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "primary author visual self-review",
+    "independentArtApproval": false
+  },
+  "authority": {
+    "sourceSha256": "e225e205cf44da6a6e28d904b307a2ac047f165e63fbf747ca3d386b8ccf8edf",
+    "modelSha256": "489d41a5227f6778ac85ec1269828cd752a726bb4713c9d2c23fc866435a483c"
+  },
+  "review": [
+    "Inspected clay/material assembly and column front/side/rear; lamp materials and cage remain restrained.",
+    "Initial scroll ornaments exceeded the radius; moved 304 saved vertices one unit inward. Shaft and lower band unchanged.",
+    "Inspected all four production layouts, paired fallback, narrow and live UI. Pale boundaries and shelves frame a quiet blue floor; warnings remain readable and pillars fade.",
+    "Static recessed water material only. Fine folio and scroll detail recedes at narrow scale. Further surface polish remains open."
+  ],
+  "geometryAgreement": {
+    "units": "game units",
+    "tolerance": 0.001,
+    "sampling": "Every evaluated native and delivered vertex, allowing export splits by symmetric nearest-vertex matching.",
+    "meshes": 15,
+    "nativeVertices": 3020,
+    "deliveryVertices": 9912,
+    "maximumOriginalError": 0,
+    "maximumEditedError": 0,
+    "editedCapChange": 4,
+    "otherSurfacesUnchanged": true
+  },
+  "savedEditProof": {
+    "authoritativeSourceAndDeliveryUnchanged": true,
+    "editedObject": "Pillar_cap",
+    "vertexChangeUnits": 4,
+    "edit": "Raise saved Pillar_cap top by four game units, save/reload/export",
+    "sourceSha256": "e225e205cf44da6a6e28d904b307a2ac047f165e63fbf747ca3d386b8ccf8edf",
+    "modelSha256": "489d41a5227f6778ac85ec1269828cd752a726bb4713c9d2c23fc866435a483c"
+  },
+  "runtime": {
+    "initialFallback": true,
+    "pausedArrival": true,
+    "rulesUnchanged": true,
+    "siblingRegion": {
+      "region": 0,
+      "active": true,
+      "previousHidden": true,
+      "fallbackHidden": true
+    },
+    "layouts": [
+      {
+        "id": "court",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "gallery",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "islands",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      },
+      {
+        "id": "crossroads",
+        "warningFade": true,
+        "restored": true,
+        "occlusionFade": true,
+        "privateMaterials": true,
+        "occlusionActorClear": true
+      }
+    ],
+    "legalChronicleUI": "Generated region-one-index approach via accepted commands, imported, moved, paused and reloaded; no human campaign completion claim."
+  },
+  "checks": {
+    "maintenance": "passed",
+    "applicationTests": 384,
+    "seededSimulations": 22,
+    "geometryTests": 128,
+    "browserJourneys": 9,
+    "nativeAgreement": "archive fresh saved-edit comparison; sepulcher comparison reuses its unchanged-source proof"
+  },
+  "evidence": {
+    "material-assembly.png": "6e47cd7b3d284f09ddadf03f1985900884408fbec8206834ee9beda76a6e7abf",
+    "material-assembly-rear.png": "146be6e18b0cdc9eb75c1faf762b90cdbbe26828ee2cf548fcfc39135fbc247b",
+    "clay-assembly.png": "87d34897e0cdf848b740f17bf2d361d6f0b0376f351710e6490f99ce83e9c40a",
+    "material-pillar.png": "16a246d398ebf0b3c0736168cada954b82144d6e232f96a036d94170d2eb40a0",
+    "material-pillar-side.png": "073c82e9fa572509171ee67f3702ddd08d892ea978fd32bfb2fec561d8db2cf0",
+    "clay-pillar-rear.png": "569bd3c989262694383614791a91baa77134ca44ca9779b7fa7da9395fc5256d",
+    "material-lantern.png": "9f4814bdc6f531361805844d9a7a52178092ae04483d97f92e0bec9030ae5eed",
+    "crossroads-native-desktop.png": "541dc2a1dc6c98bc6555562c33e900a794d29d1013865dd8496012903cca60d7",
+    "crossroads-fallback-desktop.png": "e86d5b4844132bc036cfb54d8a4be27a5217e5d9101bceb350af8910b4e8b8ad",
+    "crossroads-native-narrow.png": "9e881c4fcbc7d4ff9508dc833afe8d34012b777976b443b00ffe698ceccec8e5",
+    "archive-live-ui.png": "314a1603bd75ab0514949e26a6f1be991a13b393f320a7f1a29ddb1ba911e852"
+  }
+}

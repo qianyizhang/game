@@ -9,6 +9,7 @@ import {
 } from '../../src/games/night-passage/ui/presentation/scene/camera';
 import { createSceneRenderer } from '../../src/games/night-passage/ui/presentation/scene';
 import { createGame } from '../../src/games/night-passage/domain/game';
+import { REGIONS } from '../../src/games/night-passage/domain/content';
 import {
   CHAMBER_LAYOUTS,
   chamberLayout,
@@ -17,21 +18,29 @@ import { spawnEnemy } from '../../src/games/night-passage/domain/encounters';
 import { translate } from '../../src/games/night-passage/domain/geometry';
 import type { LayoutId, State } from '../../src/games/night-passage/domain/types';
 
-const url = '/packages/dcc-workbench/assets/night-passage/environment-sepulcher.glb';
-const nativeName = 'night-passage-authored-sepulcher',
-  fallbackName = 'night-passage-blockout-room';
+type EnvironmentKind = 'sepulcher' | 'archive';
+const regions: Record<EnvironmentKind, number> = { sepulcher: 0, archive: 1 };
+const assetUrl = (kind: EnvironmentKind) =>
+  `/packages/dcc-workbench/assets/night-passage/environment-${kind}.glb`;
+const authoredName = (kind: EnvironmentKind) => `night-passage-authored-${kind}`;
+const fallbackName = 'night-passage-blockout-room';
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
 
 /** Controlled renderer fixture; this does not replace the game UI or prove a legal campaign. */
-function fixture(id: LayoutId) {
+function fixture(id: LayoutId, kind: EnvironmentKind) {
   const layout = chamberLayout(id),
-    state = createGame(`sepulcher-${id}`);
+    state = createGame(`${kind}-${id}`);
+  state.region = regions[kind];
   state.phase = 'combat';
   state.tick = 210;
-  state.room.name = `${layout.name} · controlled sepulcher presentation`;
+  state.room.name = `${layout.name} · controlled ${REGIONS[state.region].name} presentation`;
   state.room.layout = id;
   state.room.pillars = layout.pillars.map((pillar) => ({ ...pillar }));
-  state.room.hazards = layout.hazards.map((site) => ({ ...site, kind: 'thorns', radius: 46 }));
+  state.room.hazards = layout.hazards.map((site) => ({
+    ...site,
+    kind: REGIONS[state.region].hazardKind,
+    radius: 46,
+  }));
   state.player.x = 480;
   state.player.y = 470;
   spawnEnemy(state, 'hunter', { x: 760, y: 160 });
@@ -55,7 +64,8 @@ function materials(root: T.Object3D) {
   return [...result];
 }
 
-export async function inspectEnvironment() {
+export async function inspectEnvironment(kind: EnvironmentKind = 'sepulcher') {
+  const nativeName = authoredName(kind);
   const parent = new T.Group(),
     camera = createCamera();
   let invalidations = 0,
@@ -63,7 +73,7 @@ export async function inspectEnvironment() {
   const room = createRoom(parent, () => {
     invalidations++;
   });
-  let state = fixture('court');
+  let state = fixture('court', kind);
   const sync = () => {
     const before = JSON.stringify(state);
     room.sync(state, camera);
@@ -78,7 +88,7 @@ export async function inspectEnvironment() {
     const paused = JSON.stringify(state),
       deadline = performance.now() + 10000;
     while (invalidations === 0) {
-      if (performance.now() > deadline) throw new Error('Sepulcher paused-load callback timed out');
+      if (performance.now() > deadline) throw new Error(`${kind} paused-load callback timed out`);
       await nextFrame();
     }
     const arrivalPure = paused === JSON.stringify(state);
@@ -88,14 +98,14 @@ export async function inspectEnvironment() {
       parent.getObjectByName(fallbackName)?.visible === false;
     const cases = [];
     for (const layout of CHAMBER_LAYOUTS) {
-      state = fixture(layout.id);
+      state = fixture(layout.id, kind);
       state.player.x = 80;
       state.player.y = 80;
       Object.assign(state.enemies[0], { x: 870, y: 520, windup: 0 });
       sync();
       const native = parent.getObjectByName(nativeName)!;
-      const pillars = named(native, 'sepulcher-pillar'),
-        lanterns = named(native, 'sepulcher-lantern');
+      const pillars = named(native, `${kind}-pillar`),
+        lanterns = named(native, `${kind}-lantern`);
       const base = pillars.map((pillar) =>
         materials(pillar).map((material) => ({
           material,
@@ -153,8 +163,8 @@ export async function inspectEnvironment() {
       cases.push({
         id: layout.id,
         placements,
-        floor: named(native, 'sepulcher-floor').map((object) => object.position.toArray()),
-        boundary: named(native, 'sepulcher-boundary').map((object) => object.position.toArray()),
+        floor: named(native, `${kind}-floor`).map((object) => object.position.toArray()),
+        boundary: named(native, `${kind}-boundary`).map((object) => object.position.toArray()),
         lanterns: lanterns.map((object) => object.position.toArray()),
         warningFade,
         restored,
@@ -165,7 +175,7 @@ export async function inspectEnvironment() {
       });
     }
     const otherRegions = [];
-    for (const region of [1, 2, 3]) {
+    for (const region of [2, 3]) {
       state.region = region;
       sync();
       otherRegions.push({
@@ -174,7 +184,23 @@ export async function inspectEnvironment() {
         nativeHidden: parent.getObjectByName(nativeName)?.visible === false,
       });
     }
-    state.region = 0;
+    const sibling: EnvironmentKind = kind === 'sepulcher' ? 'archive' : 'sepulcher';
+    state.region = regions[sibling];
+    sync();
+    const siblingDeadline = performance.now() + 10000;
+    while (parent.getObjectByName(authoredName(sibling))?.visible !== true) {
+      if (performance.now() > siblingDeadline)
+        throw new Error(`${sibling} regional activation timed out`);
+      await nextFrame();
+      sync();
+    }
+    const siblingRegion = {
+      region: regions[sibling],
+      active: parent.getObjectByName(authoredName(sibling))?.visible === true,
+      previousHidden: parent.getObjectByName(nativeName)?.visible === false,
+      fallbackHidden: parent.getObjectByName(fallbackName)?.visible === false,
+    };
+    state.region = regions[kind];
     sync();
     return {
       initialFallback,
@@ -183,6 +209,7 @@ export async function inspectEnvironment() {
       invalidations,
       cases,
       otherRegions,
+      siblingRegion,
       restoredRegion: parent.getObjectByName(nativeName)?.visible === true,
       rulesUnchanged: pure,
     };
@@ -191,7 +218,13 @@ export async function inspectEnvironment() {
   }
 }
 
-function observed(canvas: HTMLCanvasElement, state: State, lost: () => void) {
+function observed(
+  canvas: HTMLCanvasElement,
+  state: State,
+  lost: () => void,
+  kind: EnvironmentKind,
+) {
+  const nativeName = authoredName(kind);
   // eslint-disable-next-line @typescript-eslint/unbound-method -- explicit apply and exact scoped restoration.
   const original = T.Object3D.prototype.add;
   let room: T.Object3D | undefined, hero: T.Object3D | undefined, hunter: T.Object3D | undefined;
@@ -249,7 +282,10 @@ function collision(state: State) {
 }
 
 /** Matched production camera and warning state; fallback differs only by the failed kit request. */
-export async function reviewEnvironmentLayouts(allowFallback = false) {
+export async function reviewEnvironmentLayouts(
+  allowFallback = false,
+  kind: EnvironmentKind = 'sepulcher',
+) {
   const canvas = document.createElement('canvas');
   canvas.style.cssText = 'position:fixed;left:0;top:0;width:960px;height:600px;z-index:9999';
   document.body.append(canvas);
@@ -259,21 +295,26 @@ export async function reviewEnvironmentLayouts(allowFallback = false) {
     unavailable = false;
   manager.onError = (request) => {
     previousError?.(request);
-    if (new URL(request, location.href).pathname.endsWith('/environment-sepulcher.glb'))
+    if (new URL(request, location.href).pathname.endsWith(`/environment-${kind}.glb`))
       failed = true;
   };
   let scene: ReturnType<typeof observed> | undefined;
   try {
-    const first = fixture('court');
-    scene = observed(canvas, first, () => {
-      unavailable = true;
-    });
+    const first = fixture('court', kind);
+    scene = observed(
+      canvas,
+      first,
+      () => {
+        unavailable = true;
+      },
+      kind,
+    );
     const deadline = performance.now() + 10000;
     do {
       scene.surface.draw(first);
       if (scene.ready(allowFallback) && (!allowFallback || failed)) break;
       if (performance.now() > deadline)
-        throw new Error('Sepulcher production scene activation timed out');
+        throw new Error(`${kind} production scene activation timed out`);
       await nextFrame();
     } while (true);
     const pictures = [];
@@ -282,7 +323,7 @@ export async function reviewEnvironmentLayouts(allowFallback = false) {
       canvas.style.height = '600px';
       await nextFrame();
       await nextFrame();
-      const state = fixture(layout.id),
+      const state = fixture(layout.id, kind),
         before = JSON.stringify(state);
       scene.surface.draw(state);
       const png = canvas.toDataURL('image/png'),
@@ -343,7 +384,7 @@ async function compareStatic(model: string, reference: Reference) {
   try {
     for (const object of reference.objects) {
       const root = gltf.scene.getObjectByName(T.PropertyBinding.sanitizeNodeName(object.name));
-      if (!root) throw new Error(`Missing sepulcher mesh ${object.name}`);
+      if (!root) throw new Error(`Missing environment mesh ${object.name}`);
       const points: T.Vector3[] = [];
       root.traverse((node) => {
         if (!isMesh(node)) return;
@@ -355,7 +396,7 @@ async function compareStatic(model: string, reference: Reference) {
         (point) => new T.Vector3(...(point as [number, number, number])),
       );
       if (!native.length || !points.length)
-        throw new Error(`Empty sepulcher surface ${object.name}`);
+        throw new Error(`Empty environment surface ${object.name}`);
       let maxError = 0;
       for (const [from, to] of [
         [native, points],
@@ -376,14 +417,17 @@ async function compareStatic(model: string, reference: Reference) {
     }
     gltf.scene.traverse((object) => {
       if (isMesh(object) && !covered.has(object))
-        throw new Error(`Unsampled sepulcher mesh ${object.name}`);
+        throw new Error(`Unsampled environment mesh ${object.name}`);
     });
     return results;
   } finally {
     disposeObject(gltf.scene);
   }
 }
-export async function compareEnvironmentNative(directory: string) {
+export async function compareEnvironmentNative(
+  directory: string,
+  kind: EnvironmentKind = 'sepulcher',
+) {
   const read = async (name: string) => {
     const response = await fetch(`/@fs${directory}/${name}.json`);
     if (!response.ok) throw new Error(`Missing ${name} environment evidence`);
@@ -391,9 +435,9 @@ export async function compareEnvironmentNative(directory: string) {
   };
   const reference = await read('reference'),
     edited = await read('edited');
-  const model = `/@fs${directory}/models/environment-sepulcher.glb`;
+  const model = `/@fs${directory}/models/environment-${kind}.glb`;
   return {
-    original: await compareStatic(url, reference),
+    original: await compareStatic(assetUrl(kind), reference),
     edited: await compareStatic(model, edited),
     changed: await compareStatic(model, reference),
   };

@@ -71,7 +71,7 @@ The browser review records unretimed 1× playback and six phase images per clip.
 Native front/side/rear clay, material portrait, action poses, desktop/narrow arena
 and this playback are separate visual evidence. Passing checks is not user art
 acceptance. The ordinary enemy batch below adds four native families; the four
-authored guardians are described below, followed by the first environment kit.
+authored guardians are described below, followed by the first two environment kits.
 Precise two-hand string contact and directional movement remain polish opportunities.
 
 ## Five weapon identities
@@ -326,5 +326,37 @@ reloads and exports that copy. The browser compares every named mesh's native
 vertices with delivery geometry, accounting for normal/material vertex splits.
 Original source and published model remain unchanged. Native arrays and edited
 copies are disposable `test-results` evidence. The [visual record](../../../../docs/art/assets/night-passage/sepulcher.md)
-retains compact native and production captures. Other three region kits remain
-blockouts; this static kit has no animation claims.
+retains compact native and production captures. This static kit has no animation
+claims. Drowned Archive shares these placement contracts; the final two regions
+still use blockout scenery.
+
+## Drowned Archive environment
+
+`environments/archive/source.blend` owns the second static kit: broad ink-blue
+paving with recessed still-water joints, arched folio shelves, scroll capitals
+and caged aqua lamps. `environment_archive.py` constructs fresh candidates only
+(`environment_delivery.py -- bootstrap --kind archive --source <fresh.blend>`).
+The existing saved-source exporter reads `environment_kind` from the master;
+`--kind` affects construction only. The same four part roots, dimensions,
+placement and edit-proof contract above apply. `Pillar_cap` stays independently
+editable; other repeated detail is joined by material. The source is authoritative,
+not the construction recipe. A one-unit inward saved-mesh repair fitted the scrolls
+inside the 30-unit disc without changing the shaft or gameplay collision.
+
+Repeat the export, review and verify commands above with the Archive source and
+fresh output paths. `review` includes clay/material assembly, rear assembly,
+column front/side/rear and lantern views. Use `NIGHT_PASSAGE_ARCHIVE_RESULTS` for
+the new native proof alongside `NIGHT_PASSAGE_ENVIRONMENT_RESULTS` for Sepulcher:
+
+```sh
+NIGHT_PASSAGE_ENVIRONMENT_RESULTS=test-results/sepulcher-native NIGHT_PASSAGE_ARCHIVE_RESULTS=test-results/archive-native npx playwright test tests/browser/night-passage-environment.spec.ts --project=functional --project=requires-blender
+npm run check:full
+```
+
+The [visual record](../../../../docs/art/assets/night-passage/archive.md) separates
+geometry agreement, production readability and remaining art limits. Re-exporting
+the Sepulcher master with the shared exporter preserved its delivered GLB bytes;
+its receipt alone now pins the updated scripts. To add the next kit, retain these
+part contracts, register its saved kind/builder in the native exporter and its
+region/URL in `scene/environment.ts`, then extend the per-kit delivery and browser
+cases. Do not introduce region-dependent collision or rules RNG into presentation.

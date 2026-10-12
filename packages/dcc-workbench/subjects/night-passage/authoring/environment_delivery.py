@@ -15,6 +15,7 @@ if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "blender"))
 
 from authoring_plan import save_working_source  # noqa: E402
+from environment_archive import build as build_archive  # noqa: E402
 from environment_form import ROOTS, build  # noqa: E402
 from hero_form import material  # noqa: E402
 from native_types import active_object, cycles_settings, mesh_data, present, require  # noqa: E402
@@ -28,13 +29,13 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def bootstrap(source: Path) -> None:
+def bootstrap(source: Path, kind: str) -> None:
     import bpy
 
     if source.exists():
         raise FileExistsError("Construction requires a fresh native candidate")
     bpy.ops.wm.read_factory_settings(use_empty=True)
-    build()
+    {"sepulcher": build, "archive": build_archive}[kind]()
     source.parent.mkdir(parents=True, exist_ok=True)
     bpy.ops.wm.save_as_mainfile(filepath=str(source), compress=True)
 
@@ -58,7 +59,8 @@ def export(source: Path, output: Path) -> None:
     source_pin = sha(source)
     bpy.ops.wm.open_mainfile(filepath=str(source))
     scene = present(bpy.context.scene)
-    if scene["environment_kind"] != "sepulcher":
+    kind = scene["environment_kind"]
+    if kind not in ("sepulcher", "archive"):
         raise ValueError("Unknown saved environment")
     bounds = {}
     for name in ROOTS:
@@ -74,7 +76,7 @@ def export(source: Path, output: Path) -> None:
         }
     bpy.ops.object.select_all(action="SELECT")
     output.mkdir(parents=True)
-    model = output / "environment-sepulcher.glb"
+    model = output / f"environment-{kind}.glb"
     bpy.ops.export_scene.gltf(
         filepath=str(model),
         export_format="GLB",
@@ -88,7 +90,7 @@ def export(source: Path, output: Path) -> None:
     )
     receipt = {
         "schemaVersion": 1,
-        "kind": "sepulcher",
+        "kind": kind,
         "sourceSha256": source_pin,
         "modelSha256": sha(model),
         "blender": bpy.app.version_string,
@@ -105,7 +107,7 @@ def export(source: Path, output: Path) -> None:
     }
     if sha(source) != source_pin:
         raise ValueError("Export changed saved authority")
-    (output / "environment-sepulcher.json").write_text(json.dumps(receipt, indent=2) + "\n")
+    (output / f"environment-{kind}.json").write_text(json.dumps(receipt, indent=2) + "\n")
 
 
 def sample(source: Path, output: Path) -> None:
@@ -128,7 +130,9 @@ def verify(source: Path, output: Path) -> None:
 
     if output.exists():
         raise FileExistsError("Verification requires a fresh directory")
-    model = Path(__file__).resolve().parents[3] / "assets/night-passage/environment-sepulcher.glb"
+    bpy.ops.wm.open_mainfile(filepath=str(source))
+    kind = present(bpy.context.scene)["environment_kind"]
+    model = Path(__file__).resolve().parents[3] / f"assets/night-passage/environment-{kind}.glb"
     protected = {p: sha(p) for p in (source, model)}
     sample(source, output / "reference.json")
     working = output / "edited.blend"
@@ -199,11 +203,15 @@ def review(source: Path, output: Path) -> None:
             data.materials.clear()
             for mat in mats:
                 data.materials.append(clay if surface == "clay" else mat)
-        for part, location, target, scale in [
+        for view, location, target, scale in [
             ("assembly", (800, -1100, 950), (0, 0, 0), 1450),
+            ("assembly-rear", (-800, 1100, 950), (0, 0, 0), 1450),
             ("Pillar", (110, -150, 105), (0, 0, 40), 160),
+            ("Pillar-side", (180, 0, 65), (0, 0, 40), 130),
+            ("Pillar-rear", (0, 180, 65), (0, 0, 40), 130),
             ("Lantern", (55, -70, 55), (0, 0, 22), 85),
         ]:
+            part = view.split("-")[0]
             for obj in scene.objects:
                 if obj.type == "MESH":
                     obj.hide_render = part != "assembly" and (
@@ -218,7 +226,7 @@ def review(source: Path, output: Path) -> None:
                 (Vector(target) - camera.location).to_track_quat("-Z", "Y").to_euler()
             )
             require(camera.data, bpy.types.Camera).ortho_scale = scale
-            filename = f"{surface}-{part.lower()}.png"
+            filename = f"{surface}-{view.lower()}.png"
             scene.render.filepath = str(capture_path(output, filename))
             bpy.ops.render.render(write_still=True)
             captures.add(filename)
@@ -228,11 +236,12 @@ def review(source: Path, output: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=["bootstrap", "export", "review", "verify"])
+    parser.add_argument("--kind", choices=["sepulcher", "archive"], default="sepulcher")
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(sys.argv[sys.argv.index("--") + 1 :])
     if args.command == "bootstrap":
-        bootstrap(args.source.resolve())
+        bootstrap(args.source.resolve(), args.kind)
     elif args.output:
         {"export": export, "review": review, "verify": verify}[args.command](
             args.source.resolve(), args.output.resolve()

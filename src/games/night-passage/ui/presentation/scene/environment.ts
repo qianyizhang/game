@@ -1,5 +1,6 @@
 import * as T from 'three';
 import { GLTFLoader, type GLTF } from 'three/addons/loaders/GLTFLoader.js';
+import archiveUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/environment-archive.glb?url';
 import sepulcherUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/environment-sepulcher.glb?url';
 import { isMesh } from '../../../../../shared/three/objects';
 import { disposeObject } from '../../../../../shared/three/resources';
@@ -14,8 +15,33 @@ type Part = (typeof parts)[number];
 
 /** Static kit geometry/textures belong to the library; placed parts own only materials. */
 export function createEnvironment(parent: T.Group, invalidate: () => void) {
+  const kits = [
+    createKit(parent, invalidate, 0, 'sepulcher', sepulcherUrl),
+    createKit(parent, invalidate, 1, 'archive', archiveUrl),
+  ];
+  return {
+    sync(state: State): RoomPillar[] | null {
+      let active: RoomPillar[] | null = null;
+      for (const kit of kits) {
+        const result = kit.sync(state);
+        if (result) active = result;
+      }
+      return active;
+    },
+    dispose() {
+      for (const kit of kits) kit.dispose();
+    },
+  };
+}
+function createKit(
+  parent: T.Group,
+  invalidate: () => void,
+  region: number,
+  kind: string,
+  url: string,
+) {
   const root = new T.Group();
-  root.name = 'night-passage-authored-sepulcher';
+  root.name = `night-passage-authored-${kind}`;
   root.visible = false;
   parent.add(root);
   let library: GLTF | null = null;
@@ -35,7 +61,7 @@ export function createEnvironment(parent: T.Group, invalidate: () => void) {
     if (requested || disposed) return;
     requested = true;
     void new GLTFLoader()
-      .loadAsync(sepulcherUrl)
+      .loadAsync(url)
       .then((gltf) => {
         if (disposed) {
           disposeObject(gltf.scene);
@@ -58,7 +84,7 @@ export function createEnvironment(parent: T.Group, invalidate: () => void) {
         if (!valid || found.size !== parts.length) {
           disposeObject(gltf.scene);
           console.warn(
-            'Night Passage sepulcher is missing its complete static kit; keeping fallback.',
+            `Night Passage ${kind} is missing its complete static kit; keeping fallback.`,
           );
           return;
         }
@@ -67,12 +93,12 @@ export function createEnvironment(parent: T.Group, invalidate: () => void) {
         invalidate();
       })
       .catch(() => {
-        if (!disposed) console.warn('Night Passage sepulcher unavailable; keeping fallback.');
+        if (!disposed) console.warn(`Night Passage ${kind} unavailable; keeping fallback.`);
       });
   }
   function place(name: Part, x: number, z: number, radius?: number) {
     const instance = new T.Group();
-    instance.name = `sepulcher-${name.toLowerCase()}`;
+    instance.name = `${kind}-${name.toLowerCase()}`;
     instance.add(sources![name].clone(true));
     // Kit roots are local bases in game units; Floor/Boundary use the arena center.
     instance.position.set(x, 0, z);
@@ -114,7 +140,7 @@ export function createEnvironment(parent: T.Group, invalidate: () => void) {
     sync(state: State): RoomPillar[] | null {
       if (disposed) return null;
       root.visible = false;
-      if (state.region !== 0) return null;
+      if (state.region !== region) return null;
       request();
       if (!sources) return null;
       const key = JSON.stringify(state.room.pillars);

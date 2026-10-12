@@ -72,7 +72,7 @@ See [engineering and extension points](../engineering/night-passage.md) for owne
 
 **2.5D view** is the default: an angled arena with raised columns, shadows, an authored hero and five weapons. Movement keys follow screen directions; point at the ground location you want to attack. The bright ring marks your character's actual ground position. Columns fade when they obscure actors or active warnings. **2D view** retains the original flat presentation. Changing views pauses combat and preserves your passage; the preference is saved separately from your chronicle.
 
-If 2.5D graphics become unavailable, the game pauses in 2D so you can continue or export. Reduced-motion settings suppress cosmetic character sway while retaining attacks and warning timing. The hero, weapons, ordinary enemies and all four guardians have authored assets. Root Sepulcher now has an authored stone-and-root room kit; the remaining three regions will receive distinct kits progressively.
+If 2.5D graphics become unavailable, the game pauses in 2D so you can continue or export. Reduced-motion settings suppress cosmetic character sway while retaining attacks and warning timing. The hero, weapons, ordinary enemies and all four guardians have authored assets. Root Sepulcher has an authored stone-and-root room kit; Drowned Archive adds ink-blue paving, recessed shelves and aqua lanterns. Cinder Court and Starless Gate retain their blockout scenery while their kits are queued.
 
 ### Read the light marks
 

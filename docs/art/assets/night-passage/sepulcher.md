@@ -61,8 +61,9 @@ unchanged; full arrays and edited copies remain regenerable temporary evidence.
 
 ## Bounds
 
-This completes **one of four** environment kits. Three regional kits and further
-patron effects/reward icons remain queued. The kit is deliberately simple;
+This was the **first of four** environment kits. The subsequent
+[Drowned Archive](archive.md) brings coverage to two; two regional kits and
+further patron effects/reward icons remain queued. The kit is deliberately simple;
 sculpted wear, richer root branching and texture detail remain future polish.
 Static geometry agreement does not establish visual approval or a frame-time
 improvement. The current scene still uses the established lighting and camera.
