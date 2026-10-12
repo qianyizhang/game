@@ -1,0 +1,935 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage integrated campaign completion",
+  "auditDate": "2026-10-13",
+  "productRevision": "fc7abf69c92c38fc25a5b42da377d6a59c43855d",
+  "rulesVersion": 4,
+  "contentVersion": 3,
+  "sourceHashes": {
+    "tests/browser/night-passage-campaign.spec.ts": "b77086078302dc40918b138333773daf1cba8470808390368d0a0cb23b51405d",
+    "tests/browser/night-passage-campaign-review.ts": "d40f7d4654ed6ba460412991b001e3d0476a2a4de38deed5b49926d820fd4458",
+    "tests/simulation/night-passage-policy.ts": "39af8a561c41df880e22961988c1a03f1a1b99791528c2bb91a2ba0326aaf5ba",
+    "src/games/night-passage/domain/builds.test.ts": "a5e0d59d9584cda33f5c5e48d6e596db70231fc1c24bc6a8a8c91d8cc5a29d23",
+    "docs/engineering/evidence/night-passage-native-audit.json": "4ec3527dbeb3d834f1e9625b2da08929d7490f5c54495d445a9d4f4cc69f2e34"
+  },
+  "verification": {
+    "maintenance": "passed; sandbox loopback skip resolved separately with approved execution",
+    "usageTests": 9,
+    "applicationTests": 392,
+    "seededSimulations": 22,
+    "geometryTests": 128,
+    "nightPassageFunctionalBrowserTests": 48,
+    "finalFocusedCampaignTests": 1,
+    "nativeExecution": "No fresh Blender run; unchanged sources and deliveries revalidated against historical native proofs in the linked hash audit.",
+    "commands": [
+      "npm run check:full",
+      "npm run test:usage",
+      "npx playwright test night-passage --project=functional",
+      "npx playwright test tests/browser/night-passage-campaign.spec.ts --project=functional"
+    ],
+    "browser": "Repository disposable Chrome harness, desktop 1440 x 1080 viewport; other suite cases also cover 390px."
+  },
+  "campaign": {
+    "seed": "a-light-in-the-dark",
+    "weapon": "bow",
+    "runes": ["vigor", "fleet"],
+    "journalTickBudget": 27794,
+    "executedTicks": 27794,
+    "simulatedSeconds": 463.23333333333335,
+    "rooms": 32,
+    "bosses": [0, 1, 2, 3],
+    "warnings": [0, 1, 2, 3],
+    "kills": 207,
+    "hp": 239,
+    "boons": [
+      {
+        "id": "cinder-cast",
+        "level": 2
+      },
+      {
+        "id": "storm-special",
+        "level": 3
+      },
+      {
+        "id": "winter-dash",
+        "level": 1
+      },
+      {
+        "id": "winter-call",
+        "level": 1
+      },
+      {
+        "id": "cinder-attack",
+        "level": 2
+      }
+    ],
+    "decisions": {
+      "frame": 4627,
+      "choose": 21,
+      "travel": 31,
+      "buy": 6,
+      "leave": 2
+    },
+    "provenance": "Continuous actual application UI with synthetic DOM keyboard/pointer/buttons under Playwright virtual time; reads its published accepted-command chronicle. No imported progress or injected rules state. Not human play or a wall-clock frame-rate benchmark.",
+    "combatChambersCleared": 27,
+    "terminalPhase": "won",
+    "exactSavedChronicleReload": true,
+    "returnedToQuay": true,
+    "pageErrors": [],
+    "checkpoints": [
+      {
+        "region": 0,
+        "chamber": 0,
+        "phase": "combat",
+        "tick": 0,
+        "hp": 145,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "sepulcher": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 0,
+        "chamber": 1,
+        "phase": "combat",
+        "tick": 173,
+        "hp": 145,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "sepulcher": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 0,
+        "chamber": 2,
+        "phase": "combat",
+        "tick": 552,
+        "hp": 145,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "sepulcher": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 0,
+        "chamber": 3,
+        "phase": "combat",
+        "tick": 879,
+        "hp": 145,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "sepulcher": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 0,
+        "chamber": 4,
+        "phase": "combat",
+        "tick": 1251,
+        "hp": 145,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "sepulcher": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 0,
+        "chamber": 5,
+        "phase": "combat",
+        "tick": 1578,
+        "hp": 165,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "sepulcher": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 0,
+        "chamber": 6,
+        "phase": "combat",
+        "tick": 1972,
+        "hp": 185,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "sepulcher": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 0,
+        "chamber": 7,
+        "phase": "combat",
+        "tick": 2200,
+        "hp": 205,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "sepulcher": {
+            "required": 1,
+            "active": 1
+          },
+          "bellwarden": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 1,
+        "chamber": 0,
+        "phase": "combat",
+        "tick": 2857,
+        "hp": 171,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "archive": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 1,
+        "chamber": 1,
+        "phase": "combat",
+        "tick": 3424,
+        "hp": 171,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "archive": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 1,
+        "chamber": 2,
+        "phase": "combat",
+        "tick": 3965,
+        "hp": 160,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "archive": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 1,
+        "chamber": 3,
+        "phase": "combat",
+        "tick": 4508,
+        "hp": 160,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "archive": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 1,
+        "chamber": 4,
+        "phase": "combat",
+        "tick": 5104,
+        "hp": 180,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "archive": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 1,
+        "chamber": 5,
+        "phase": "combat",
+        "tick": 5590,
+        "hp": 200,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "archive": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 1,
+        "chamber": 6,
+        "phase": "route",
+        "tick": 6072,
+        "hp": 235,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "archive": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 1,
+        "chamber": 7,
+        "phase": "combat",
+        "tick": 6077,
+        "hp": 245,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "archive": {
+            "required": 1,
+            "active": 1
+          },
+          "undertow": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 2,
+        "chamber": 0,
+        "phase": "combat",
+        "tick": 7072,
+        "hp": 185,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "cinder": {
+            "required": 1,
+            "active": 1
+          },
+          "brute": {
+            "required": 2,
+            "active": 2
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 2,
+        "chamber": 1,
+        "phase": "combat",
+        "tick": 8386,
+        "hp": 168,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "cinder": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 2,
+            "active": 2
+          },
+          "brute": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 2,
+        "chamber": 2,
+        "phase": "combat",
+        "tick": 10300,
+        "hp": 188,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "cinder": {
+            "required": 1,
+            "active": 1
+          },
+          "brute": {
+            "required": 2,
+            "active": 2
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 2,
+        "chamber": 3,
+        "phase": "shop",
+        "tick": 12211,
+        "hp": 194,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "cinder": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 2,
+        "chamber": 4,
+        "phase": "combat",
+        "tick": 12216,
+        "hp": 254,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "cinder": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 2,
+            "active": 2
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          },
+          "brute": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 2,
+        "chamber": 5,
+        "phase": "combat",
+        "tick": 13851,
+        "hp": 254,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "cinder": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 2,
+            "active": 2
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "brute": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 2,
+        "chamber": 6,
+        "phase": "route",
+        "tick": 15328,
+        "hp": 289,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "cinder": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 2,
+        "chamber": 7,
+        "phase": "combat",
+        "tick": 15333,
+        "hp": 305,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "cinder": {
+            "required": 1,
+            "active": 1
+          },
+          "ashregent": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 3,
+        "chamber": 0,
+        "phase": "combat",
+        "tick": 16708,
+        "hp": 242,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "starless": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 2,
+            "active": 2
+          },
+          "brute": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 3,
+        "chamber": 1,
+        "phase": "combat",
+        "tick": 18458,
+        "hp": 232,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "starless": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 2,
+            "active": 2
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          },
+          "brute": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 3,
+        "chamber": 2,
+        "phase": "combat",
+        "tick": 20569,
+        "hp": 232,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "starless": {
+            "required": 1,
+            "active": 1
+          },
+          "archer": {
+            "required": 2,
+            "active": 2
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          },
+          "brute": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 3,
+        "chamber": 3,
+        "phase": "shop",
+        "tick": 22696,
+        "hp": 232,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "starless": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 3,
+        "chamber": 4,
+        "phase": "combat",
+        "tick": 22702,
+        "hp": 292,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "starless": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 2,
+            "active": 2
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "brute": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 3,
+        "chamber": 5,
+        "phase": "combat",
+        "tick": 24475,
+        "hp": 248,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "starless": {
+            "required": 1,
+            "active": 1
+          },
+          "brute": {
+            "required": 2,
+            "active": 2
+          },
+          "archer": {
+            "required": 1,
+            "active": 1
+          },
+          "hunter": {
+            "required": 1,
+            "active": 1
+          },
+          "witch": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 3,
+        "chamber": 6,
+        "phase": "route",
+        "tick": 26262,
+        "hp": 266,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "starless": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      },
+      {
+        "region": 3,
+        "chamber": 7,
+        "phase": "combat",
+        "tick": 26268,
+        "hp": 291,
+        "authoredAssets": {
+          "hero": {
+            "required": 1,
+            "active": 1
+          },
+          "starless": {
+            "required": 1,
+            "active": 1
+          },
+          "sovereign": {
+            "required": 1,
+            "active": 1
+          }
+        }
+      }
+    ]
+  },
+  "visualReview": {
+    "type": "Agent self-review; no independent aesthetic approval or human playtest.",
+    "observations": "Four region palettes and ground warning edges remain distinct at actual desktop play size. Hit flashes whiten guardians in the retained action frames; dedicated native reviews cover materials and silhouette.",
+    "images": {
+      "docs/art/assets/night-passage/campaign/region-0-warning.png": {
+        "sha256": "6b90c0dd4fb85d0fd97cc47d76493da6c0824ac295551e30f3adb75ccfa5fa69",
+        "bytes": 216572
+      },
+      "docs/art/assets/night-passage/campaign/region-3-warning.png": {
+        "sha256": "51f6e312697af91c08bd7bbdab7ee3997fc66fc69fe2fff9f556d062a711bba1",
+        "bytes": 236706
+      },
+      "docs/art/assets/night-passage/campaign/victory.png": {
+        "sha256": "bb12c8b00dade8a47cb17009533abf098be05e9c57c49c782f739680835a0bf2",
+        "bytes": 201620
+      }
+    }
+  },
+  "limits": [
+    "One continuous bow UI campaign under virtual time. Five-weapon coverage also comes from 15 legal-command campaigns and separate weapon browser journeys.",
+    "Authored readiness is asserted at all 32 chamber entries, not on every later frame or reinforcement spawn.",
+    "The observer reads the public chronicle and visible scene roots. Actual progress uses synthetic DOM keyboard/pointer events and decision buttons; no imported progress or injected game state.",
+    "Neither this UI campaign nor concurrently executed completion checks establish real-time performance or human pacing.",
+    "Historical performance and native evidence retain their original source pins; no broad cross-device claim is made."
+  ]
+}

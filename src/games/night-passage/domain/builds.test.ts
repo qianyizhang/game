@@ -179,3 +179,84 @@ test('eclipse doubles burn only while its target is exposed', () => {
     142,
   );
 });
+
+// Controlled encounters isolate rune boundaries that the default vigor/fleet pilot cannot cover.
+test.each([
+  { hp: 61, damage: 23 },
+  { hp: 60, damage: 23 },
+  { hp: 59, damage: 31.05 },
+])('Thorn boosts a strike only below half health: $hp HP', ({ hp, damage }) => {
+  const state = scene();
+  state.player.runes = ['fury'];
+  state.player.hp = hp;
+  const result = applyCommand(state, {
+    type: 'frame',
+    input: { ...idle, attack: true },
+    ticks: 7,
+  });
+  expect(result.error).toBeNull();
+  expect(result.state.enemies[0].hp).toBeCloseTo(145 - damage);
+  expect(result.state.player.hp).toBe(hp);
+});
+
+test.each([
+  { echo: false, dash: true, damage: 31, ticks: 3 },
+  { echo: true, dash: true, damage: 40.3, ticks: 3 },
+  { echo: true, dash: false, damage: 23, ticks: 7 },
+])(
+  'Comet empowers the attack begun with a dodge, not ordinary attacks: echo=$echo dash=$dash',
+  ({ echo, dash, damage, ticks }) => {
+    const state = scene();
+    state.player.runes = echo ? ['echo'] : [];
+    const result = applyCommand(state, {
+      type: 'frame',
+      input: { ...idle, attack: true, dash },
+      ticks,
+    });
+    expect(result.error).toBeNull();
+    expect(result.state.enemies[0].hp).toBeCloseTo(145 - damage);
+    expect(result.state.player.strike).toBeNull();
+    expect(result.state.player.x).toBe(dash ? 516 : 480);
+  },
+);
+
+test.each([
+  { hp: 100, healed: 103 },
+  { hp: 119, healed: 120 },
+])('Moth heals once on chamber clear, capped at maximum health: $hp HP', ({ hp, healed }) => {
+  const state = scene();
+  state.player.runes = ['mercy'];
+  state.player.hp = hp;
+  state.enemies[0].hp = 1;
+  spawnEnemy(state, 'brute', { x: 800, y: 470 });
+  state.enemies[1].hp = 1;
+  state.enemies[1].cooldown = 1000;
+
+  const first = applyCommand(state, {
+    type: 'frame',
+    input: { ...idle, attack: true },
+    ticks: 7,
+  });
+  expect(first.error).toBeNull();
+  expect(first.state).toMatchObject({ phase: 'combat', kills: 1, roomsCleared: 0 });
+  expect(first.state.player.hp).toBe(hp);
+
+  const cleared = applyCommand(first.state, {
+    type: 'frame',
+    input: { ...idle, x: 1, attack: true },
+    ticks: 120,
+  });
+  expect(cleared.error).toBeNull();
+  expect(cleared.state).toMatchObject({ phase: 'reward', kills: 2, roomsCleared: 1 });
+  expect(cleared.state.player.hp).toBe(healed);
+  expect(applyCommand(cleared.state, { type: 'frame', input: idle, ticks: 1 }).state).toBe(
+    cleared.state,
+  );
+
+  const retired = applyCommand(cleared.state, { type: 'retire' });
+  const home = applyCommand(retired.state, { type: 'return' });
+  const restarted = applyCommand(home.state, { type: 'start', weapon: 'sword', runes: [] });
+  expect([retired.error, home.error, restarted.error]).toEqual([null, null, null]);
+  expect(restarted.state.player).toMatchObject({ hp: 120, runes: [] });
+  expect(restarted.state.roomsCleared).toBe(0);
+});

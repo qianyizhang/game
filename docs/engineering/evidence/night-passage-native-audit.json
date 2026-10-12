@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage native asset completion audit",
+  "auditDate": "2026-10-13",
+  "revision": "fc7abf69c92c38fc25a5b42da377d6a59c43855d",
+  "scope": {
+    "fresh": "Read-only file presence, SHA-256, GLB JSON parsing, runtime URL registration and documented extension-path inspection.",
+    "historical": "Saved native edit/export agreement and visual self-review are historical pinned proof; this audit did not execute Blender or browser journeys.",
+    "independentArtApproval": false
+  },
+  "result": {
+    "deliveryReceipts": 14,
+    "sourceModelAndAuthoringPinMismatches": 0,
+    "retainedReviewEvidenceFiles": 97,
+    "missingOrMismatchedReviewEvidenceFiles": 0,
+    "currentReviewAuthorityMismatches": 0,
+    "missingGameplayCriticalNativeDeliveries": 0
+  },
+  "assets": [
+    {
+      "id": "enemy-archer",
+      "receipt": "packages/dcc-workbench/assets/night-passage/enemy-archer.json",
+      "receiptSha256": "16f2e7eda23c83d1ce373458e2daf984bb7d29b03b5f788d29feeeb82ba8c9a5",
+      "source": "packages/dcc-workbench/subjects/night-passage/enemies/archer/source.blend",
+      "sourceSha256": "9761d9769509226fb5a3bc7138c709e6f823c074e1bc2eb0dd058ab9ea08b306",
+      "model": "packages/dcc-workbench/assets/night-passage/enemy-archer.glb",
+      "modelSha256": "cbbf4c0a2c7c7cbbd0d035aaefe95eb7da36509e97fe39a59cbcde9fe81037fe",
+      "meshCount": 14,
+      "clipCount": 4,
+      "clips": ["attack", "idle", "run", "stagger"],
+      "authoringPins": [
+        "enemy_delivery.py",
+        "enemy_edit.py",
+        "enemy_form.py",
+        "enemy_motion.py",
+        "enemy_review.py",
+        "enemy_rig.py",
+        "hero_form.py",
+        "hero_rig.py"
+      ]
+    },
+    {
+      "id": "enemy-brute",
+      "receipt": "packages/dcc-workbench/assets/night-passage/enemy-brute.json",
+      "receiptSha256": "7c4b25ee96d33c4c34b1195f489cec2fd9f719590d889d3046905225e1a1ed86",
+      "source": "packages/dcc-workbench/subjects/night-passage/enemies/brute/source.blend",
+      "sourceSha256": "d20848a108eff3e52e10e6003455afc4e37edf946e640eda0f08854554880752",
+      "model": "packages/dcc-workbench/assets/night-passage/enemy-brute.glb",
+      "modelSha256": "b65164652e911cbcc56fdf8dde091906e8a23ffec9d4d58b3c750ea6a3c333e2",
+      "meshCount": 14,
+      "clipCount": 4,
+      "clips": ["attack", "idle", "run", "stagger"],
+      "authoringPins": [
+        "enemy_delivery.py",
+        "enemy_edit.py",
+        "enemy_form.py",
+        "enemy_motion.py",
+        "enemy_review.py",
+        "enemy_rig.py",
+        "hero_form.py",
+        "hero_rig.py"
+      ]
+    },
+    {
+      "id": "enemy-hunter",
+      "receipt": "packages/dcc-workbench/assets/night-passage/enemy-hunter.json",
+      "receiptSha256": "c63223dabac5b6a69c04f3f83d3b4e3dd6670790a4367f2eeef2896693b53e10",
+      "source": "packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend",
+      "sourceSha256": "ec4621999731108756b4d67d472137a5bce47e802055476cb22b4029b8caf9f6",
+      "model": "packages/dcc-workbench/assets/night-passage/enemy-hunter.glb",
+      "modelSha256": "cf2415716a6d85ffc3b1611c6102e9b089530c623ceb0ac13a4a5ac1086a836a",
+      "meshCount": 14,
+      "clipCount": 4,
+      "clips": ["attack", "idle", "run", "stagger"],
+      "authoringPins": [
+        "enemy_delivery.py",
+        "enemy_edit.py",
+        "enemy_form.py",
+        "enemy_motion.py",
+        "enemy_review.py",
+        "enemy_rig.py",
+        "hero_form.py",
+        "hero_rig.py"
+      ]
+    },
+    {
+      "id": "enemy-witch",
+      "receipt": "packages/dcc-workbench/assets/night-passage/enemy-witch.json",
+      "receiptSha256": "6f894183389c22fb6e43ee85c5b7d502c8bb04ec7d434f10e6d2b83123712e41",
+      "source": "packages/dcc-workbench/subjects/night-passage/enemies/witch/source.blend",
+      "sourceSha256": "99e957d89679104c1eb7c996781544a18c7a1634de0925b795fda0ea5201f823",
+      "model": "packages/dcc-workbench/assets/night-passage/enemy-witch.glb",
+      "modelSha256": "cf24f938252b567bea320fe7721efffddf3ffd2a723b69fe96fad111a134cf44",
+      "meshCount": 13,
+      "clipCount": 4,
+      "clips": ["attack", "idle", "run", "stagger"],
+      "authoringPins": [
+        "enemy_delivery.py",
+        "enemy_edit.py",
+        "enemy_form.py",
+        "enemy_motion.py",
+        "enemy_review.py",
+        "enemy_rig.py",
+        "hero_form.py",
+        "hero_rig.py"
+      ]
+    },
+    {
+      "id": "environment-archive",
+      "receipt": "packages/dcc-workbench/assets/night-passage/environment-archive.json",
+      "receiptSha256": "7e3090999617737c17a714204871fb104ab4b4917d6312b67a7882545654670c",
+      "source": "packages/dcc-workbench/subjects/night-passage/environments/archive/source.blend",
+      "sourceSha256": "e225e205cf44da6a6e28d904b307a2ac047f165e63fbf747ca3d386b8ccf8edf",
+      "model": "packages/dcc-workbench/assets/night-passage/environment-archive.glb",
+      "modelSha256": "489d41a5227f6778ac85ec1269828cd752a726bb4713c9d2c23fc866435a483c",
+      "meshCount": 15,
+      "clipCount": 0,
+      "clips": [],
+      "authoringPins": [
+        "enemy_form.py",
+        "environment_archive.py",
+        "environment_cinder.py",
+        "environment_delivery.py",
+        "environment_form.py",
+        "environment_geometry.py",
+        "environment_starless.py",
+        "hero_form.py"
+      ]
+    },
+    {
+      "id": "environment-cinder",
+      "receipt": "packages/dcc-workbench/assets/night-passage/environment-cinder.json",
+      "receiptSha256": "9774355bf1d41b631b179538a9a20d4bfa3ef0db6d102b06faf5373a55752d49",
+      "source": "packages/dcc-workbench/subjects/night-passage/environments/cinder/source.blend",
+      "sourceSha256": "27651a84df3e97d4be57fbc94a343408f98c96cf2d5aec32c80ed6d7b0f83dc9",
+      "model": "packages/dcc-workbench/assets/night-passage/environment-cinder.glb",
+      "modelSha256": "c301582c7552dfaffa75c7317024ca0d42aa4cabd8c748b4dff44c8c4f3e92dc",
+      "meshCount": 18,
+      "clipCount": 0,
+      "clips": [],
+      "authoringPins": [
+        "enemy_form.py",
+        "environment_archive.py",
+        "environment_cinder.py",
+        "environment_delivery.py",
+        "environment_form.py",
+        "environment_geometry.py",
+        "environment_starless.py",
+        "hero_form.py"
+      ]
+    },
+    {
+      "id": "environment-sepulcher",
+      "receipt": "packages/dcc-workbench/assets/night-passage/environment-sepulcher.json",
+      "receiptSha256": "44d80a4fc6b9ceb198fcddd7edea2549d4e68fe6b40f7d7b93f20a4137b8cc35",
+      "source": "packages/dcc-workbench/subjects/night-passage/environments/sepulcher/source.blend",
+      "sourceSha256": "ee66b9ec7b1e3c79941a01574e7d6f55e74d7281b11d020b4ab899ffc5f0ef41",
+      "model": "packages/dcc-workbench/assets/night-passage/environment-sepulcher.glb",
+      "modelSha256": "2830a603ea8734a5316dc7cd4f901bbe8c2af9b7b807e09602e34a71401f8076",
+      "meshCount": 14,
+      "clipCount": 0,
+      "clips": [],
+      "authoringPins": [
+        "enemy_form.py",
+        "environment_archive.py",
+        "environment_cinder.py",
+        "environment_delivery.py",
+        "environment_form.py",
+        "environment_geometry.py",
+        "environment_starless.py",
+        "hero_form.py"
+      ]
+    },
+    {
+      "id": "environment-starless",
+      "receipt": "packages/dcc-workbench/assets/night-passage/environment-starless.json",
+      "receiptSha256": "ea24ba1b4a854011ba1e4ca755e2b5f7dc82f41893d97c3e2d4d4885e778aa8a",
+      "source": "packages/dcc-workbench/subjects/night-passage/environments/starless/source.blend",
+      "sourceSha256": "e404722c73ce6e4bbcdc7a053c9d0fe9ce0ccc870f6484900199e63f3705d003",
+      "model": "packages/dcc-workbench/assets/night-passage/environment-starless.glb",
+      "modelSha256": "a8639a7a0f3b255277b8a420f3c20cba3f6a487ef45a5236e6093a5dfeb207f4",
+      "meshCount": 14,
+      "clipCount": 0,
+      "clips": [],
+      "authoringPins": [
+        "enemy_form.py",
+        "environment_archive.py",
+        "environment_cinder.py",
+        "environment_delivery.py",
+        "environment_form.py",
+        "environment_geometry.py",
+        "environment_starless.py",
+        "hero_form.py"
+      ]
+    },
+    {
+      "id": "guardian-ashregent",
+      "receipt": "packages/dcc-workbench/assets/night-passage/guardian-ashregent.json",
+      "receiptSha256": "dff3e4f47787c5fbf95935bd017ed025f479d474cf04ada1563a98c13c54f746",
+      "source": "packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend",
+      "sourceSha256": "d071806c5f0df8deab4b1c44a88f338631b9efd106af17ec7d07800e2edfff6b",
+      "model": "packages/dcc-workbench/assets/night-passage/guardian-ashregent.glb",
+      "modelSha256": "4212ef6eba17dcde4ab7b7c66f64af9ed9aa7a4b8f875f3869331d979bb4af84",
+      "meshCount": 33,
+      "clipCount": 6,
+      "clips": ["cross", "idle", "rain", "run", "stagger", "volley"],
+      "authoringPins": [
+        "enemy_form.py",
+        "enemy_rig.py",
+        "guardian_ashregent.py",
+        "guardian_catalog.py",
+        "guardian_delivery.py",
+        "guardian_edit.py",
+        "guardian_form.py",
+        "guardian_review.py",
+        "guardian_rig.py",
+        "guardian_sovereign.py",
+        "guardian_undertow.py",
+        "hero_form.py",
+        "hero_rig.py"
+      ]
+    },
+    {
+      "id": "guardian-bellwarden",
+      "receipt": "packages/dcc-workbench/assets/night-passage/guardian-bellwarden.json",
+      "receiptSha256": "776b93f08d0a541bbf8221be55fd71f91e02bffb21b62328d5d4339f5625a104",
+      "source": "packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend",
+      "sourceSha256": "e3d136bd450edbf4177f28d3d05857a24350fcb8aed7e2881c47b5276d7f7f27",
+      "model": "packages/dcc-workbench/assets/night-passage/guardian-bellwarden.glb",
+      "modelSha256": "f1d85bd5771119428ebe72eda562c70d1b795d5e72286618f48e44521826097c",
+      "meshCount": 21,
+      "clipCount": 6,
+      "clips": ["idle", "rain", "run", "stagger", "sweep", "wheel"],
+      "authoringPins": [
+        "enemy_form.py",
+        "enemy_rig.py",
+        "guardian_ashregent.py",
+        "guardian_catalog.py",
+        "guardian_delivery.py",
+        "guardian_edit.py",
+        "guardian_form.py",
+        "guardian_review.py",
+        "guardian_rig.py",
+        "guardian_sovereign.py",
+        "guardian_undertow.py",
+        "hero_form.py",
+        "hero_rig.py"
+      ]
+    },
+    {
+      "id": "guardian-sovereign",
+      "receipt": "packages/dcc-workbench/assets/night-passage/guardian-sovereign.json",
+      "receiptSha256": "74f37d89130fd7ba1b2f93ceda329e63fc99bf5daaa48398f4004fd28d6d663c",
+      "source": "packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend",
+      "sourceSha256": "b3904c559df88d3f229d8a2c6a4866a001d4efe20c46b22803b63a6c888682d4",
+      "model": "packages/dcc-workbench/assets/night-passage/guardian-sovereign.glb",
+      "modelSha256": "d14a30dc04c92b16297244c1ea117d1ad4ca0371319949b47473b8dd1dafff65",
+      "meshCount": 27,
+      "clipCount": 7,
+      "clips": ["cross", "idle", "pulse", "rain", "run", "stagger", "wheel"],
+      "authoringPins": [
+        "enemy_form.py",
+        "enemy_rig.py",
+        "guardian_ashregent.py",
+        "guardian_catalog.py",
+        "guardian_delivery.py",
+        "guardian_edit.py",
+        "guardian_form.py",
+        "guardian_review.py",
+        "guardian_rig.py",
+        "guardian_sovereign.py",
+        "guardian_undertow.py",
+        "hero_form.py",
+        "hero_rig.py"
+      ]
+    },
+    {
+      "id": "guardian-undertow",
+      "receipt": "packages/dcc-workbench/assets/night-passage/guardian-undertow.json",
+      "receiptSha256": "5ba8b42f98c9aa10ed693018cc3fd702ce02eda6b153a41b5d29af1e18545efa",
+      "source": "packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend",
+      "sourceSha256": "be8b6f07bad161f950d979ac1f4f9575efc763a53ad895cb249497c33d4ac9d1",
+      "model": "packages/dcc-workbench/assets/night-passage/guardian-undertow.glb",
+      "modelSha256": "9f83c4158bc4dfa4c08a47dfe41b9237d1bc359cdf3876cd1f4952b58463df81",
+      "meshCount": 28,
+      "clipCount": 6,
+      "clips": ["charge", "idle", "pulse", "run", "stagger", "volley"],
+      "authoringPins": [
+        "enemy_form.py",
+        "enemy_rig.py",
+        "guardian_ashregent.py",
+        "guardian_catalog.py",
+        "guardian_delivery.py",
+        "guardian_edit.py",
+        "guardian_form.py",
+        "guardian_review.py",
+        "guardian_rig.py",
+        "guardian_sovereign.py",
+        "guardian_undertow.py",
+        "hero_form.py",
+        "hero_rig.py"
+      ]
+    },
+    {
+      "id": "hero",
+      "receipt": "packages/dcc-workbench/assets/night-passage/hero.json",
+      "receiptSha256": "556feb0197baac2582122fe2cf9cd07b21cd8f2e517a9121a8d0a8adc3cc01f0",
+      "source": "packages/dcc-workbench/subjects/night-passage/hero/source.blend",
+      "sourceSha256": "22da6084622d81c4e87ae6a534c113f657f6aa6fae21c14c8052c02ca860c120",
+      "model": "packages/dcc-workbench/assets/night-passage/hero.glb",
+      "modelSha256": "3001c751e883c6a4aa861a23c8d1d9900c7f5347369aaf6156997aca2c18ec8d",
+      "meshCount": 20,
+      "clipCount": 16,
+      "clips": [
+        "bow_special",
+        "cast",
+        "death",
+        "dodge",
+        "fists_special",
+        "guard",
+        "idle",
+        "punch",
+        "punch_left",
+        "run",
+        "shield_special",
+        "shoot",
+        "slash",
+        "spear_special",
+        "sword_special",
+        "thrust"
+      ],
+      "authoringPins": ["hero_delivery.py", "hero_form.py", "hero_review.py", "hero_rig.py"]
+    },
+    {
+      "id": "weapons",
+      "receipt": "packages/dcc-workbench/assets/night-passage/weapons.json",
+      "receiptSha256": "4d749b64bd15f3b6081b75c282a49b25b0f3976851c2c6dc16b362393cc80e0c",
+      "source": "packages/dcc-workbench/subjects/night-passage/weapons/source.blend",
+      "sourceSha256": "308a4181f86362d38c98eb0edc65ae7e9154e576739722caa1ceb1981890a2ed",
+      "model": "packages/dcc-workbench/assets/night-passage/weapons.glb",
+      "modelSha256": "11201528012f0bc6e75efdc81650e966d4e4509426122c57487858660ff0853d",
+      "meshCount": 32,
+      "clipCount": 0,
+      "clips": [],
+      "authoringPins": ["hero_form.py", "weapon_delivery.py", "weapon_form.py"]
+    }
+  ],
+  "authoringHashes": {
+    "packages/dcc-workbench/subjects/night-passage/authoring/enemy_delivery.py": "19e134a1c7b3d51fae3ed6ef880eb5d913a76f4f3b010816d2c690a7a75b74cc",
+    "packages/dcc-workbench/subjects/night-passage/authoring/enemy_edit.py": "756fa474183216915a285dfc8e6c206c8f36c5cd3709133f001e8ebf3ff0151c",
+    "packages/dcc-workbench/subjects/night-passage/authoring/enemy_form.py": "b971b4ba635f7e7711da8275fac1fb3a65aea21da84162a5250b86b15e249fd9",
+    "packages/dcc-workbench/subjects/night-passage/authoring/enemy_motion.py": "22fdb6d8d0edb9802fc5573c589f9fe74b21572f9620ba9ce4c692a0efa5c588",
+    "packages/dcc-workbench/subjects/night-passage/authoring/enemy_review.py": "16d5efe4ad796552d5d843a99ea64dcbd7744f6f4098d25559b4195c57a77409",
+    "packages/dcc-workbench/subjects/night-passage/authoring/enemy_rig.py": "4f3b2b416ed63b42f433cc91eeb9f16c9c0ce50912acb04c01fa65cf482fa3f6",
+    "packages/dcc-workbench/subjects/night-passage/authoring/environment_archive.py": "30946618b814670727f06f2ec12942d8d2076313af545efbf144ff57659ff790",
+    "packages/dcc-workbench/subjects/night-passage/authoring/environment_cinder.py": "6c8768a722ec63fb2d69ead9f6439078577520db94316ca01c1c80953aa1de37",
+    "packages/dcc-workbench/subjects/night-passage/authoring/environment_delivery.py": "d0167eb3b8ab646afa4023192cebfc8af046ad55ccda217c66429559fcf35602",
+    "packages/dcc-workbench/subjects/night-passage/authoring/environment_form.py": "d1e5c9ba1dfe21bddef826a8e1f5f7816e4b46e963d0a4d406f7cea347fca1b7",
+    "packages/dcc-workbench/subjects/night-passage/authoring/environment_geometry.py": "80cba43c484eca8ffe85c4ce0a5553cbf52b851b25288166195dde1c9b3648ae",
+    "packages/dcc-workbench/subjects/night-passage/authoring/environment_starless.py": "bef57b1bb723ae93489ab839b49ed91dc1880c7c79acf759755a37baf6141d30",
+    "packages/dcc-workbench/subjects/night-passage/authoring/guardian_ashregent.py": "a650adc551d5690b994abb9e93ac410a63c6da3192f24ae1a69faba579510b4a",
+    "packages/dcc-workbench/subjects/night-passage/authoring/guardian_catalog.py": "4c039448640db0f80fb0ef8c10114fb383fefeeabc415d11ca8fb2927e1ae21d",
+    "packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py": "30f1fdfc744fce506412ad11ba5d54a71e548ee5a70dfcdd793905c45a0fa74d",
+    "packages/dcc-workbench/subjects/night-passage/authoring/guardian_edit.py": "fba445fd513e69f4f5f4729f76b5abeccfb0476f78ba37f95ff3c621cafa60a9",
+    "packages/dcc-workbench/subjects/night-passage/authoring/guardian_form.py": "f9a9fbd1c2214de4cc0e6a881262f8091db2e41fb7ca60ba0c5b1d56c74374d9",
+    "packages/dcc-workbench/subjects/night-passage/authoring/guardian_review.py": "d6db18be3407f097d815a22947dc4f4618ee82bc21be7139016bcde0bdcc22a2",
+    "packages/dcc-workbench/subjects/night-passage/authoring/guardian_rig.py": "f8fee7e505d0ec7c849985b4e2510ca884fda223d3c5104a0e22fa084ba3aa24",
+    "packages/dcc-workbench/subjects/night-passage/authoring/guardian_sovereign.py": "b72a7f6eda6ec143f1911a0d4b7ac5feb46b2f4072df3da8fac1863d9a91a03b",
+    "packages/dcc-workbench/subjects/night-passage/authoring/guardian_undertow.py": "46af9033bb851a88428146e941e03a059f1ac3fedfb9e17f0db7b6eb8ec6956b",
+    "packages/dcc-workbench/subjects/night-passage/authoring/hero_delivery.py": "01b9362349dbbe087410bd413c672f2d42b84a0caff2119bc1e4d8a86997c83a",
+    "packages/dcc-workbench/subjects/night-passage/authoring/hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "packages/dcc-workbench/subjects/night-passage/authoring/hero_review.py": "6d1927a35f6e061e01f01f070b40f7957e54fa46e592ba0044050dff416b613e",
+    "packages/dcc-workbench/subjects/night-passage/authoring/hero_rig.py": "c63a2cba5d230169dae82f58b7efeee65f7a00c84d3228d07265d60dde0540cc",
+    "packages/dcc-workbench/subjects/night-passage/authoring/weapon_delivery.py": "09df122912e9fa1bdab1e848916817f40a4da73ce43bb3d6cb8975e38da303dd",
+    "packages/dcc-workbench/subjects/night-passage/authoring/weapon_form.py": "2b623e419e8b3966fc35145f0a2b222141a72244e5c60f42741591ad38fd923b"
+  },
+  "reviewReceipts": [
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/archive-review.json",
+      "sha256": "05c62cfbad69bd99fec4477dac33101921c1b794245d340a356a5c8bb459ec35",
+      "validatedEvidenceFiles": 11
+    },
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/ashregent-review.json",
+      "sha256": "8f850ca71c553a6c8791ec7a97c9d2b56c0b51e2cb9cbb605647009f2daf4d47",
+      "validatedEvidenceFiles": 8
+    },
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/bellwarden-review.json",
+      "sha256": "a5237b6a32c8e073fa9201217009f16b1cc0b8f66847a971dc26199f6ee11134",
+      "validatedEvidenceFiles": 8
+    },
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/cinder-review.json",
+      "sha256": "88ff06c32a6b3138469feb0c4cc1de398b3b175740e7761d25e3239c31d7e652",
+      "validatedEvidenceFiles": 11
+    },
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/enemies-review.json",
+      "sha256": "2ae38099d6261728a621bcd1918c6acd46521fe15ced8ea18554ee93e573108c",
+      "validatedEvidenceFiles": 7
+    },
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/sepulcher-review.json",
+      "sha256": "74d22cefe19b270f40bb0dd115c63dbd1b4b030442043f619a0d86c3bea59da3",
+      "validatedEvidenceFiles": 10
+    },
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/sovereign-review.json",
+      "sha256": "d1eec025cda6c00076dad1af628c4940b384c890a61df34e09fcd35317e884e2",
+      "validatedEvidenceFiles": 8
+    },
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/starless-review.json",
+      "sha256": "e4972d87b622694f110a487b59e73875e2486fd5aa3102590a8e7fb1bb20411a",
+      "validatedEvidenceFiles": 11
+    },
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/undertow-review.json",
+      "sha256": "f3cbd5b63ab9e1fab5787e9a69c08e2f986d46167fd7e314e5d3e9eaadda1519",
+      "validatedEvidenceFiles": 8
+    },
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/visual-review.json",
+      "sha256": "3470ef42e44d940145695d17ecdd033e7ca28d5204c77ec5783fb8a4098bfc91",
+      "validatedEvidenceFiles": 9
+    },
+    {
+      "receipt": "packages/dcc-workbench/assets/night-passage/weapons-review.json",
+      "sha256": "9132551d81414d1d2ce496f63d65e29d4092e75c3912d571dd8ca01a8726eb3f",
+      "validatedEvidenceFiles": 6
+    }
+  ],
+  "runtimeRegistration": {
+    "directory": "src/games/night-passage/ui/presentation/scene",
+    "modules": ["hero.ts", "weapons.ts", "enemies.ts", "guardians.ts", "environment.ts"],
+    "coverage": "All 14 delivered GLBs are imported; four guardian and four environment URLs map to region indices 0 through 3. Procedural actors/rooms remain load-failure fallbacks."
+  },
+  "nativeProofCaveat": "The hero and enemy requires-blender browser cases compare surfaces and saved-proof booleans but do not independently compare the verification receipt hashes to current masters. Regenerate evidence or independently validate those receipt hashes before claiming fresh current-master native proof. Guardian and environment cases perform that hash check.",
+  "historicalHeroReceipt": {
+    "path": "packages/dcc-workbench/assets/night-passage/visual-review.json",
+    "status": "Preserved first hero version; intentionally differs from current hero source and model.",
+    "currentAuthority": "packages/dcc-workbench/assets/night-passage/weapons-review.json",
+    "currentAuthorityValidated": true
+  },
+  "reproduction": "For each asset, hash source/model and compare with its receipt; hash every exportScripts/helperScripts entry and weapons sharedGeometrySha256 against authoring files. Parse each GLB JSON chunk for meshes and animations. For each review receipt, resolve its evidence paths and compare SHA-256; compare current authority pins with delivery receipts, excluding the intentionally historical first hero review.",
+  "extensionGuide": "packages/dcc-workbench/subjects/night-passage/README.md",
+  "limits": [
+    "No fresh native or browser execution is claimed by this receipt.",
+    "Dedicated directional movement, precise two-hand contact and richer materials remain documented polish opportunities.",
+    "Technical checks and owner visual self-review do not establish user art acceptance."
+  ]
+}
