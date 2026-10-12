@@ -4,10 +4,15 @@ import { applyCommand, createGame } from '../../../domain/game';
 import type { Input, WeaponId } from '../../../domain/types';
 import { createHero } from './hero';
 
-const { load } = vi.hoisted(() => ({ load: vi.fn() }));
+const { load, weaponsLoad } = vi.hoisted(() => ({
+  load: vi.fn<(url: string) => Promise<unknown>>(),
+  weaponsLoad: vi.fn<(url: string) => Promise<unknown>>(),
+}));
 vi.mock('three/addons/loaders/GLTFLoader.js', () => ({
   GLTFLoader: class {
-    loadAsync = load;
+    loadAsync(url: string) {
+      return url.includes('weapons.glb') ? weaponsLoad(url) : load(url);
+    }
   },
 }));
 const clipNames = [
@@ -21,6 +26,12 @@ const clipNames = [
   'punch',
   'cast',
   'death',
+  'sword_special',
+  'spear_special',
+  'shield_special',
+  'bow_special',
+  'fists_special',
+  'punch_left',
 ];
 function asset() {
   const scene = new THREE.Group();
@@ -29,7 +40,9 @@ function asset() {
   const socket = new THREE.Bone();
   socket.name = 'weapon_socket';
   socket.position.set(0.25, 1, 0);
-  scene.add(marker, socket);
+  const left = new THREE.Bone();
+  left.name = 'weapon_socket_L';
+  scene.add(marker, socket, left);
   const animations = clipNames.map(
     (name, index) =>
       new THREE.AnimationClip(name, 1, [
@@ -41,6 +54,31 @@ function asset() {
       ]),
   );
   return { scene, marker, animations, socket };
+}
+function armoryAsset() {
+  const scene = new THREE.Group();
+  for (const name of [
+    'weapon_sword',
+    'weapon_spear',
+    'weapon_shield',
+    'weapon_bow',
+    'weapon_fists_R',
+    'weapon_fists_L',
+  ]) {
+    const group = new THREE.Group();
+    group.name = name;
+    scene.add(group);
+  }
+  const geometry = new THREE.BoxGeometry();
+  geometry.morphAttributes.position = [geometry.attributes.position.clone()];
+  geometry.morphAttributes.position[0].name = 'Draw';
+  const string = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial());
+  string.name = 'bow_string';
+  scene.getObjectByName('weapon_bow')!.add(string);
+  const arrow = new THREE.Object3D();
+  arrow.name = 'Bow_nocked_shaft';
+  scene.getObjectByName('weapon_bow')!.add(arrow);
+  return { scene, animations: [], string, arrow };
 }
 function setup() {
   const root = new THREE.Group();
@@ -54,7 +92,11 @@ function setup() {
   const redraw = vi.fn();
   return { root, hand, held, geometry, redraw, hero: createHero(root, hand, weapons, redraw) };
 }
-beforeEach(() => load.mockReset());
+beforeEach(() => {
+  load.mockReset();
+  weaponsLoad.mockReset();
+  weaponsLoad.mockResolvedValue(armoryAsset());
+});
 const idle: Input = {
   x: 0,
   y: 0,
@@ -225,7 +267,8 @@ describe('authored hero delivery', () => {
     };
     frame({ ...idle, aim: -0.6, special: true }, 1);
     expect(state.player.strike?.action).toBe('special');
-    expect(delivered.marker.position.x).toBeGreaterThanOrEqual(50); // shoot
+    expect(delivered.marker.position.x).toBeGreaterThanOrEqual(110); // spear special
+    expect(delivered.marker.position.x).toBeLessThan(111);
     frame({ ...idle, aim: 0.8, dash: true, attack: true }, 6);
     expect(state.player).toMatchObject({ dashLeft: 6, strike: null, recovery: 12 });
     expect(delivered.marker.position.x).toBeGreaterThanOrEqual(20); // dodge masks recovery
@@ -259,7 +302,8 @@ describe('authored hero delivery', () => {
     frame({ ...idle, aim: -0.6, special: true }, 1);
     frame(idle, 42);
     expect(state.player).toMatchObject({ strike: null, recovery: 1 });
-    expect(delivered.marker.position.x).toBeGreaterThanOrEqual(50);
+    expect(delivered.marker.position.x).toBeGreaterThanOrEqual(110);
+    expect(delivered.marker.position.x).toBeLessThan(111);
     frame({ ...idle, aim: 0.7, attack: true }, 10);
     expect(state.player).toMatchObject({ strike: null, recovery: 13 });
     expect(delivered.marker.position.x).toBeCloseTo(40 + 0.45 + 0.55 * (1 - 13 / 14));
@@ -267,6 +311,119 @@ describe('authored hero delivery', () => {
     // An unobserved action's guessed aim follows the current confirmed snapshot.
     frame({ ...idle, aim: -0.2 }, 1);
     expect(delivered.scene.parent?.rotation.y).toBeCloseTo(0.2);
+    hero.dispose();
+  });
+
+  it('keeps the procedural hero and hand meshes until the native armory is also ready', async () => {
+    const delivered = asset();
+    load.mockResolvedValue(delivered);
+    let finish!: (value: ReturnType<typeof armoryAsset>) => void;
+    weaponsLoad.mockReturnValue(
+      new Promise((resolve) => {
+        finish = resolve;
+      }),
+    );
+    const { hero, hand, held } = setup();
+    const fallback = held.children[0];
+    const state = createGame('atomic-armory');
+    await Promise.resolve();
+    expect(hero.sync(state, false)).toBe(false);
+    expect(held.parent).toBe(hand);
+    expect(fallback.visible).toBe(true);
+    expect(delivered.scene.parent?.visible).toBe(false);
+    finish(armoryAsset());
+    await Promise.resolve();
+    expect(hero.sync(state, false)).toBe(true);
+    expect(held.parent).toBe(delivered.socket);
+    expect(fallback.visible).toBe(false);
+    expect(delivered.scene.parent?.visible).toBe(true);
+    hero.dispose();
+  });
+
+  it('selects every authored special and keeps the R/L/R fist sequence across confirmed hits', async () => {
+    const delivered = asset();
+    load.mockResolvedValue(delivered);
+    const { hero } = setup();
+    await Promise.resolve();
+    for (const [id, frame] of [
+      ['sword', 100],
+      ['spear', 110],
+      ['shield', 120],
+      ['bow', 130],
+      ['fists', 140],
+    ] as const) {
+      let state = applyCommand(createGame(`special-${id}`), {
+        type: 'start',
+        weapon: id,
+        runes: [],
+      }).state;
+      const result = applyCommand(state, {
+        type: 'frame',
+        input: { ...idle, special: true },
+        ticks: 1,
+      });
+      expect(result.error).toBeNull();
+      state = result.state;
+      hero.sync(state, false);
+      expect(delivered.marker.position.x).toBeGreaterThan(frame);
+      expect(delivered.marker.position.x).toBeLessThan(frame + 0.45);
+    }
+    let state = applyCommand(createGame('fist-hands'), {
+      type: 'start',
+      weapon: 'fists',
+      runes: [],
+    }).state;
+    for (const [index, frame] of [70, 150, 70, 70].entries()) {
+      state = applyCommand(state, {
+        type: 'frame',
+        input: { ...idle, attack: true },
+        ticks: 1,
+      }).state;
+      expect(state.player.combo).toBe(index % 3);
+      hero.sync(state, false);
+      expect(delivered.marker.position.x).toBeCloseTo(frame + 0.15);
+      state = applyCommand(state, { type: 'frame', input: idle, ticks: 2 }).state;
+      expect(state.player.combo).toBe((index + 1) % 3);
+      hero.sync(state, false);
+      expect(delivered.marker.position.x).toBeCloseTo(frame + 0.45);
+      state = applyCommand(state, { type: 'frame', input: idle, ticks: 8 }).state;
+      hero.sync(state, false);
+    }
+    hero.dispose();
+  });
+
+  it('uses the shared bow windup sample for draw, release, rest and reduced motion', async () => {
+    const delivered = asset();
+    const armory = armoryAsset();
+    load.mockResolvedValue(delivered);
+    weaponsLoad.mockResolvedValue(armory);
+    const { hero } = setup();
+    await Promise.resolve();
+    let state = applyCommand(createGame('bow-draw'), {
+      type: 'start',
+      weapon: 'bow',
+      runes: [],
+    }).state;
+    state = applyCommand(state, {
+      type: 'frame',
+      input: { ...idle, attack: true },
+      ticks: 1,
+    }).state;
+    hero.sync(state, false);
+    expect(armory.string.morphTargetInfluences![0]).toBeCloseTo(1 / 22);
+    hero.sync(state, true);
+    expect(armory.string.morphTargetInfluences![0]).toBeCloseTo(0.8);
+    state = applyCommand(state, { type: 'frame', input: idle, ticks: 5 }).state;
+    hero.sync(state, true);
+    expect(armory.string.morphTargetInfluences![0]).toBeCloseTo(0.8);
+    state = applyCommand(state, { type: 'frame', input: idle, ticks: 16 }).state;
+    hero.sync(state, false);
+    expect(state.player.strike).toBeNull();
+    expect(armory.string.morphTargetInfluences![0]).toBe(0);
+    expect(armory.arrow.visible).toBe(false);
+    state = applyCommand(state, { type: 'frame', input: idle, ticks: 10 }).state;
+    hero.sync(state, false);
+    expect(armory.arrow.visible).toBe(true);
     hero.dispose();
   });
 });

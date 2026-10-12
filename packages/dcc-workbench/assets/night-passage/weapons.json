@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "308a4181f86362d38c98eb0edc65ae7e9154e576739722caa1ceb1981890a2ed",
+  "modelSha256": "11201528012f0bc6e75efdc81650e966d4e4509426122c57487858660ff0853d",
+  "blender": "4.5.14 LTS",
+  "roots": [
+    "weapon_sword",
+    "weapon_spear",
+    "weapon_shield",
+    "weapon_bow",
+    "weapon_fists_R",
+    "weapon_fists_L"
+  ],
+  "meshCount": 32,
+  "space": "grip-local game units, glTF X forward / Y up",
+  "bowDraw": "bow_string morph Draw, 0 resting / 1 drawn",
+  "exportScripts": {
+    "weapon_delivery.py": "09df122912e9fa1bdab1e848916817f40a4da73ce43bb3d6cb8975e38da303dd",
+    "weapon_form.py": "2b623e419e8b3966fc35145f0a2b222141a72244e5c60f42741591ad38fd923b"
+  },
+  "sharedGeometrySha256": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9"
+}

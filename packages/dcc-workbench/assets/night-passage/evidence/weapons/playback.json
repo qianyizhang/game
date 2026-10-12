@@ -1,0 +1,156 @@
+{
+  "timings": [
+    {
+      "weapon": "sword",
+      "action": "attack",
+      "seconds": 1.0193000000715255,
+      "frames": 60
+    },
+    {
+      "weapon": "sword",
+      "action": "special",
+      "seconds": 1.0156000000238419,
+      "frames": 61
+    },
+    {
+      "weapon": "spear",
+      "action": "attack",
+      "seconds": 1.0167999999523163,
+      "frames": 61
+    },
+    {
+      "weapon": "spear",
+      "action": "special",
+      "seconds": 1.0165,
+      "frames": 61
+    },
+    {
+      "weapon": "shield",
+      "action": "attack",
+      "seconds": 1.0165,
+      "frames": 61
+    },
+    {
+      "weapon": "shield",
+      "action": "special",
+      "seconds": 1.014899999976158,
+      "frames": 61
+    },
+    {
+      "weapon": "bow",
+      "action": "attack",
+      "seconds": 1.0181000000238418,
+      "frames": 61
+    },
+    {
+      "weapon": "bow",
+      "action": "special",
+      "seconds": 1.016899999976158,
+      "frames": 61
+    },
+    {
+      "weapon": "fists",
+      "action": "attack",
+      "seconds": 1.0167999999523163,
+      "frames": 61
+    },
+    {
+      "weapon": "fists",
+      "action": "special",
+      "seconds": 1.0154000000953673,
+      "frames": 61
+    }
+  ],
+  "checks": [
+    {
+      "weapon": "sword",
+      "action": "attack",
+      "maxDraw": 0,
+      "leftVisible": false,
+      "leftAttached": true,
+      "pausedStable": true,
+      "rulesUnchanged": true
+    },
+    {
+      "weapon": "sword",
+      "action": "special",
+      "maxDraw": 0,
+      "leftVisible": false,
+      "leftAttached": true,
+      "pausedStable": true,
+      "rulesUnchanged": true
+    },
+    {
+      "weapon": "spear",
+      "action": "attack",
+      "maxDraw": 0,
+      "leftVisible": false,
+      "leftAttached": true,
+      "pausedStable": true,
+      "rulesUnchanged": true
+    },
+    {
+      "weapon": "spear",
+      "action": "special",
+      "maxDraw": 0,
+      "leftVisible": false,
+      "leftAttached": true,
+      "pausedStable": true,
+      "rulesUnchanged": true
+    },
+    {
+      "weapon": "shield",
+      "action": "attack",
+      "maxDraw": 0,
+      "leftVisible": false,
+      "leftAttached": true,
+      "pausedStable": true,
+      "rulesUnchanged": true
+    },
+    {
+      "weapon": "shield",
+      "action": "special",
+      "maxDraw": 0,
+      "leftVisible": false,
+      "leftAttached": true,
+      "pausedStable": true,
+      "rulesUnchanged": true
+    },
+    {
+      "weapon": "bow",
+      "action": "attack",
+      "maxDraw": 0.9545454545454546,
+      "leftVisible": false,
+      "leftAttached": true,
+      "pausedStable": true,
+      "rulesUnchanged": true
+    },
+    {
+      "weapon": "bow",
+      "action": "special",
+      "maxDraw": 0.9444444444444444,
+      "leftVisible": false,
+      "leftAttached": true,
+      "pausedStable": true,
+      "rulesUnchanged": true
+    },
+    {
+      "weapon": "fists",
+      "action": "attack",
+      "maxDraw": 0,
+      "leftVisible": true,
+      "leftAttached": true,
+      "pausedStable": true,
+      "rulesUnchanged": true
+    },
+    {
+      "weapon": "fists",
+      "action": "special",
+      "maxDraw": 0,
+      "leftVisible": true,
+      "leftAttached": true,
+      "pausedStable": true,
+      "rulesUnchanged": true
+    }
+  ]
+}

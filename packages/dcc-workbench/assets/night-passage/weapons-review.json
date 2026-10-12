@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage five weapon identities and attack choreography",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "owner visual self-review",
+    "independentArtApproval": false
+  },
+  "verdict": "Delivered as lightweight authored weapons with distinct basic/special poses; precise two-hand contact remains polish.",
+  "authority": {
+    "hero": {
+      "sourceSha256": "22da6084622d81c4e87ae6a534c113f657f6aa6fae21c14c8052c02ca860c120",
+      "modelSha256": "3001c751e883c6a4aa861a23c8d1d9900c7f5347369aaf6156997aca2c18ec8d"
+    },
+    "weapons": {
+      "sourceSha256": "308a4181f86362d38c98eb0edc65ae7e9154e576739722caa1ceb1981890a2ed",
+      "modelSha256": "11201528012f0bc6e75efdc81650e966d4e4509426122c57487858660ff0853d"
+    }
+  },
+  "coverage": {
+    "weapons": 5,
+    "gripRoots": 6,
+    "heroClips": 16,
+    "playback": "Ten attack/special cases, legal commands at 60 ticks per second, unretimed 1x recording; separate 16-clip raw playback."
+  },
+  "review": [
+    "Native studio views distinguish the broad beveled blade, long leaf spear, enamel kite shield, recurved bow and paired ceramic gauntlets. Grip origins and materials remain editable.",
+    "Production actor captures preserve attachment and weapon scale; both gauntlets follow their own hand. Basic and special poses have distinct preparation/contact/recovery.",
+    "Bow string Draw follows confirmed windup; the nocked arrow tracks the string, disappears at release and returns at rest.",
+    "Live chamber capture retains player silhouette, warning readability and health bar. Native and browser views were visually inspected; automated agreement is a separate criterion."
+  ],
+  "corrections": [
+    "Added the second hand socket without changing saved hero mesh or weights.",
+    "Added five special actions and a left punch, preserving unrelated saved clips.",
+    "Corrected bow grip origin and retained native axis conversion under hand sockets.",
+    "Made the nocked arrow follow Draw from its saved rest transform; repeated sampling does not accumulate offsets.",
+    "Exported a dense morph to match the existing repository GLB accessor checker."
+  ],
+  "geometryAgreement": {
+    "heroMaximumOriginalError": 6.15217661149105e-06,
+    "heroMaximumEditedError": 6.15217661149105e-06,
+    "heroUnits": "model units",
+    "heroFrameCount": 391,
+    "heroSampling": "Every authored 30fps frame, 16 surface vertices per named mesh",
+    "weapons": {
+      "original": [
+        {
+          "draw": 0,
+          "maxError": 0,
+          "probes": 2996
+        },
+        {
+          "draw": 0.5,
+          "maxError": 4.76837158203125e-07,
+          "probes": 2996
+        },
+        {
+          "draw": 1,
+          "maxError": 4.76837158203125e-07,
+          "probes": 2996
+        }
+      ],
+      "edited": [
+        {
+          "draw": 0,
+          "maxError": 0,
+          "probes": 2996
+        },
+        {
+          "draw": 0.5,
+          "maxError": 4.76837158203125e-07,
+          "probes": 2996
+        },
+        {
+          "draw": 1,
+          "maxError": 4.76837158203125e-07,
+          "probes": 2996
+        }
+      ],
+      "changed": [
+        {
+          "draw": 0,
+          "maxError": 8,
+          "probes": 2996
+        },
+        {
+          "draw": 0.5,
+          "maxError": 8,
+          "probes": 2996
+        },
+        {
+          "draw": 1,
+          "maxError": 8,
+          "probes": 2996
+        }
+      ]
+    },
+    "weaponUnits": "game units; every native and exported vertex at Draw 0, 0.5, 1"
+  },
+  "savedEditProof": {
+    "hero": {
+      "meshAndWeightsUnchanged": true,
+      "authoritativeSourceAndDeliveryUnchanged": true,
+      "headChangeRadians": 0.30000001192092896,
+      "editedClip": "cast",
+      "editedFrame": 10,
+      "sourceSha256": "22da6084622d81c4e87ae6a534c113f657f6aa6fae21c14c8052c02ca860c120",
+      "modelSha256": "3001c751e883c6a4aa861a23c8d1d9900c7f5347369aaf6156997aca2c18ec8d"
+    },
+    "weapons": {
+      "authoritativeSourceAndDeliveryUnchanged": true,
+      "edit": "Extend saved sword tip by eight game units, save/reload/export",
+      "sourceSha256": "308a4181f86362d38c98eb0edc65ae7e9154e576739722caa1ceb1981890a2ed",
+      "modelSha256": "11201528012f0bc6e75efdc81650e966d4e4509426122c57487858660ff0853d"
+    }
+  },
+  "limits": [
+    "Owner review is not user acceptance or independent art direction.",
+    "Two-hand bow string contact, free-hand spear support, dedicated strafing and hit reactions remain later polish.",
+    "Enemies, guardians and environment kits remain gameplay blockouts.",
+    "The previous visual-review.json and its evidence preserve the first hero batch hashes; this report pins the current delivery."
+  ],
+  "delegation": {
+    "task": "Sol integration of weapon loading, shared-phase choreography and lifecycle tests; separate read-only review",
+    "outcome": "Worker completed the bounded adapter slice and 16 focused tests; review found arrow tracking issue, repaired by same worker. Root owned native art, browser integration and visual review.",
+    "efficiency": "Useful separation of native authoring and TypeScript work; no controlled baseline timing comparison or speedup claim."
+  },
+  "evidence": [
+    {
+      "path": "evidence/weapons/attack-sheet.png",
+      "sha256": "d6ccd9bef88b46343f521b22bbc78f74e4d52f03d1bb34dc90d0876d7108e4a3"
+    },
+    {
+      "path": "evidence/weapons/live-chamber.png",
+      "sha256": "f37ee6661c54687a4601df809ba44531932fd4e84a2b1f83aebceae04b60b82c"
+    },
+    {
+      "path": "evidence/weapons/native-armory.png",
+      "sha256": "e5889bd015f1edfd76c2ab1e3aafa553c2cb4b39f184a25c15c6d03d9343051a"
+    },
+    {
+      "path": "evidence/weapons/playback.json",
+      "sha256": "648713f07d006d6519428a23265fca2ce8087d9688740de7dbb3d4921762893f"
+    },
+    {
+      "path": "evidence/weapons/special-sheet.png",
+      "sha256": "dc957d25193632c35ac2ad7a1284dfa283050847bb8af6d71308e5f3352e00b6"
+    },
+    {
+      "path": "evidence/weapons/weapons-1x.webm",
+      "sha256": "0c4cc2491e5e0e1f1c854f430f224e99e449e8b5008e59f429a48fcbe6c24d36"
+    }
+  ]
+}

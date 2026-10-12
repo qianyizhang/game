@@ -7,18 +7,16 @@ import { WEAPONS } from '../../src/games/night-passage/domain/content';
 
 export async function inspectHeroAttachment() {
   const parent = new T.Group();
-  let loaded!: () => void;
-  const ready = new Promise<void>((resolve) => {
-    loaded = resolve;
-  });
-  const actors = createActors(parent, loaded);
+  const actors = createActors(parent);
   try {
-    await Promise.race([
-      ready,
-      new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error('Hero failed to load')), 10000),
-      ),
-    ]);
+    const probe = createGame('attachment-load');
+    const deadline = performance.now() + 10000;
+    do {
+      actors.sync(probe, false);
+      if (parent.getObjectByName('weapon_sword')) break;
+      if (performance.now() > deadline) throw new Error('Hero and weapons failed to load');
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+    } while (true);
     const state = createGame('hero-attachment');
     const results = [];
     for (const entry of WEAPONS) {

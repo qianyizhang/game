@@ -189,7 +189,7 @@ def export(source: Path, output: Path) -> None:
             "All authored 30fps frames: surface floor and IK reach; in-place run, "
             "no claim of world-space foot locking at every rules speed"
         ),
-        "exportScripts": {p.name: sha(p) for p in sorted(Path(__file__).parent.glob("*.py"))},
+        "exportScripts": {p.name: sha(p) for p in sorted(Path(__file__).parent.glob("hero_*.py"))},
     }
     (output / "hero.json").write_text(json.dumps(receipt, indent=2) + "\n")
 

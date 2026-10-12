@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "sourceSha256": "0df79cdbcf22c114d86885b4c800c578f0455675d1d01405568359b11d4ecbec",
-  "modelSha256": "a6bab2b6c0748e2b0f6056db268256abb6cc82776e75bde1ac701efa4771a5b5",
+  "sourceSha256": "22da6084622d81c4e87ae6a534c113f657f6aa6fae21c14c8052c02ca860c120",
+  "modelSha256": "3001c751e883c6a4aa861a23c8d1d9900c7f5347369aaf6156997aca2c18ec8d",
   "meshSha256": "d9034f59fb7c28a9fcc7aaa7a15912cd52363901d0f3d4f7c24ba707c4112fbe",
   "blender": "4.5.14 LTS",
   "clips": {
@@ -52,6 +52,36 @@
     },
     "death": {
       "seconds": 1.0,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "sword_special": {
+      "seconds": 0.8,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "spear_special": {
+      "seconds": 0.8,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "shield_special": {
+      "seconds": 0.8,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "bow_special": {
+      "seconds": 0.8,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "fists_special": {
+      "seconds": 0.7,
+      "loop": false,
+      "contactPhase": 0.45
+    },
+    "punch_left": {
+      "seconds": 0.5,
       "loop": false,
       "contactPhase": 0.45
     }
@@ -116,13 +146,49 @@
       "minimumSurfaceHeight": 0.02491038851439953,
       "maximumFootTargetError": 9.800585588754237e-05,
       "loopMatrixError": 0.9154794216156006
+    },
+    "sword_special": {
+      "frames": 25,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.3081893879340147e-06,
+      "loopMatrixError": 0.0
+    },
+    "spear_special": {
+      "frames": 25,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.3081893879340147e-06,
+      "loopMatrixError": 0.0
+    },
+    "shield_special": {
+      "frames": 25,
+      "minimumSurfaceHeight": 0.024996796622872353,
+      "maximumFootTargetError": 4.511115826131512e-06,
+      "loopMatrixError": 0.0
+    },
+    "bow_special": {
+      "frames": 25,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.3081893879340147e-06,
+      "loopMatrixError": 0.0
+    },
+    "fists_special": {
+      "frames": 22,
+      "minimumSurfaceHeight": 0.024935299530625343,
+      "maximumFootTargetError": 6.754600873518672e-05,
+      "loopMatrixError": 0.0
+    },
+    "punch_left": {
+      "frames": 16,
+      "minimumSurfaceHeight": 0.024999301880598068,
+      "maximumFootTargetError": 2.27603957435986e-06,
+      "loopMatrixError": 0.0
     }
   },
   "supportScope": "All authored 30fps frames: surface floor and IK reach; in-place run, no claim of world-space foot locking at every rules speed",
   "exportScripts": {
-    "hero_delivery.py": "00d557bc30587f101468719289a87a8344694aa44d266f1893faaa107cca8f4a",
+    "hero_delivery.py": "01b9362349dbbe087410bd413c672f2d42b84a0caff2119bc1e4d8a86997c83a",
     "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
     "hero_review.py": "6d1927a35f6e061e01f01f070b40f7957e54fa46e592ba0044050dff416b613e",
-    "hero_rig.py": "bef831566cb4fb0c6ce34801ae5fb7686f94ccf936e114332e5a7130afccde0e"
+    "hero_rig.py": "c63a2cba5d230169dae82f58b7efeee65f7a00c84d3228d07265d60dde0540cc"
   }
 }

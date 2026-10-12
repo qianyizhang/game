@@ -10,7 +10,7 @@ const read = (path) => readFileSync(new URL(path, import.meta.url));
 /** @param {string} path */
 const hash = (path) => createHash('sha256').update(read(path)).digest('hex');
 
-await test('Night Passage hero pins its saved master and has finite weighted geometry, socket and ten bounded clips', () => {
+await test('Night Passage hero pins its saved master and has finite weighted geometry, two sockets and sixteen bounded clips', () => {
   const receipt = record(JSON.parse(read('./assets/night-passage/hero.json').toString()));
   const bytes = read('./assets/night-passage/hero.glb');
   assert.equal(receipt.sourceSha256, hash('./subjects/night-passage/hero/source.blend'));
@@ -26,15 +26,21 @@ await test('Night Passage hero pins its saved master and has finite weighted geo
   const values = gltf.accessors.map((_, index) => accessorValues(bytes, gltf, index));
   assert.ok(values.every((array) => array.every(Number.isFinite)));
   const names = [
+    'bow_special',
     'cast',
     'death',
     'dodge',
+    'fists_special',
     'guard',
     'idle',
     'punch',
+    'punch_left',
     'run',
+    'shield_special',
     'shoot',
     'slash',
+    'spear_special',
+    'sword_special',
     'thrust',
   ];
   assert.deepEqual(gltf.animations.map((clip) => clip.name).sort(), names);
@@ -44,6 +50,7 @@ await test('Night Passage hero pins its saved master and has finite weighted geo
   const document = record(JSON.parse(bytes.subarray(20, 20 + bytes.readUInt32LE(12)).toString()));
   assert.ok(Array.isArray(document.nodes));
   assert.equal(document.nodes.filter((node) => record(node).name === 'weapon_socket').length, 1);
+  assert.equal(document.nodes.filter((node) => record(node).name === 'weapon_socket_L').length, 1);
   assert.ok(gltf.skins.length > 0 && gltf.skins.every((skin) => skin.joints.length <= 20));
   let triangles = 0;
   for (const mesh of gltf.meshes)

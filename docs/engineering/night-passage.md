@@ -36,28 +36,31 @@ This is the **playable renderer vertical slice**, not completed art production. 
 
 Verification adds projection/viewport and screen-direction scenarios, live 2.5D movement/dodge/casts, a complete ranged chamber, live melee on a reconstructed guardian approach, all four guardians' initial warning views, view switching/reload, narrow layout and real WebGL context-loss recovery. Guardian screenshots are reconstructed approaches, not complete human-played guardian victories. Review output is regenerable under `test-results/night-passage-scene/`. The original renderer slice changed no saved native files. The hero slice below adds its own saved-source and native/browser agreement evidence.
 
-### Authored hero slice
+### Authored hero and weapon batches
 
-The [lantern bearer source guide](../../packages/dcc-workbench/subjects/night-passage/README.md)
-locates the authoritative Blender master, fresh-candidate recipe, saved-source
-exporter and verification commands. A fitted masked humanoid replaces the hero
-blockout after its GLB loads. The fallback remains playable during loading or on
-failure; late results after disposal are released. Loading also redraws a paused
-arena. Owned meshes, skins and materials are disposed independently from the
-existing held weapons.
+The [native source guide](../../packages/dcc-workbench/subjects/night-passage/README.md)
+locates the authoritative hero and armory Blender masters, saved-source exporters
+and verification commands. The fitted masked humanoid and five authored weapon
+identities activate together after both deliveries load. The fallback stays
+playable during loading or on failure; late results after disposal are released.
+Loading also redraws a paused arena. Hero and armory adapters own their imported
+resources; procedural held wrappers remain actor-owned.
 
-Ten baked clips cover idle/run, dodge, five basic weapon body actions, cast and
-collapse. `scene/hero.ts` samples confirmed rules ticks, aligns contact with
-windup/recovery, and preserves paused/reduced-motion poses. Weapon meshes attach
-to a checked native hand socket without changing their game-unit size or vertical
-orientation. Animation introduces no rules RNG, timing or replay changes.
+Sixteen baked hero clips cover idle/run, dodge, five basic weapon body actions,
+five distinct specials, a left punch, cast and collapse. `scene/hero.ts` samples
+confirmed rules ticks and shares contact phase with `scene/weapons.ts`. Attacks
+align with windup/recovery; pause and reduced motion hold stable poses. Fists use
+the rules' right/left/right three-hit cycle. Both gauntlets attach to their native
+hand sockets. The armory preserves export transforms and game-unit dimensions.
+The bow string and nocked arrow draw together, release at recovery and renock at
+rest. Animation introduces no rules RNG, timing or replay changes.
 
-The delivered hero is a first authored batch, with owner visual self-review.
-Specials still share body clips; precise weapon choreography, directional locomotion
-and hit reactions remain polish opportunities. Enemy, weapon and environment
-blockouts do not count toward authored coverage. Native checks cover all authored
-frames and a saved control edit; fresh browser surface comparison, unretimed motion
-review, real socket attachment and live chamber journeys provide separate evidence.
+These are lightweight authored assets with owner visual self-review. Precise
+two-hand choreography, directional locomotion and hit reactions remain polish
+opportunities. Enemies, guardians and environments remain blockouts. Native
+checks cover every authored hero frame, all weapon vertices at three bow draw
+values, and saved motion/geometry edits. Browser comparisons, unretimed playback,
+real socket attachment and live chamber journeys provide separate evidence.
 
 ## Time and saves
 
@@ -107,15 +110,15 @@ Each turn selects **one general direction** and finishes one bounded, reviewable
 
 ### Milestones
 
-| Milestone               | Finish line                                                                                                                                                                                                                                                                                                              | Status                                                         |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
-| Playable baseline       | Four regions, five weapons, patron spells, runes, complete run lifecycle and portable saves; rules and browser journeys pass.                                                                                                                                                                                            | Delivered; placeholder graphics and initial balance.           |
-| Presentation boundary   | A game-owned renderer lifecycle separates view creation, resize, drawing, pointer-to-ground conversion and disposal from input, sessions and decision UI. Keep the current Canvas view usable for comparison.                                                                                                            | Delivered; Canvas baseline retained.                           |
-| **2.5D vertical slice** | One complete chamber plays through an angled orthographic 3D scene: camera projection and inverse aiming, grounded hero/enemies, depth and occlusion handling, light/shadow, terrain, projectiles and exact ground-plane telegraphs. Validate movement, dodge, melee, ranged attacks and a guardian at actual play size. | Playable renderer and first authored hero delivered.           |
-| **2.5D campaign**       | All four regions and guardians, five weapons and every spell/threat family work through the new presentation. Pause, resize, import/resume, context/resource lifecycle and reduced-motion behavior remain usable.                                                                                                        | Planned major milestone.                                       |
-| Authored asset coverage | Replace gameplay-critical placeholders in small coherent batches: hero and motion set; five weapon identities and attacks; ordinary enemy families; four guardians; four environment kits; patron spell effects and reward/icon treatment. Track each asset's source, delivery, motion coverage and visual review.       | Hero and basic motions delivered; other asset families queued. |
-| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | Queued; select one direction at a time.                        |
-| Delivery closeout       | Complete campaigns and browser journeys cover the final content/rendering; no gameplay-critical placeholder remains; extension and asset-authoring paths are documented; report technical results separately from visual self-review and user feedback.                                                                  | Pending preceding milestones.                                  |
+| Milestone               | Finish line                                                                                                                                                                                                                                                                                                              | Status                                                                   |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| Playable baseline       | Four regions, five weapons, patron spells, runes, complete run lifecycle and portable saves; rules and browser journeys pass.                                                                                                                                                                                            | Delivered; placeholder graphics and initial balance.                     |
+| Presentation boundary   | A game-owned renderer lifecycle separates view creation, resize, drawing, pointer-to-ground conversion and disposal from input, sessions and decision UI. Keep the current Canvas view usable for comparison.                                                                                                            | Delivered; Canvas baseline retained.                                     |
+| **2.5D vertical slice** | One complete chamber plays through an angled orthographic 3D scene: camera projection and inverse aiming, grounded hero/enemies, depth and occlusion handling, light/shadow, terrain, projectiles and exact ground-plane telegraphs. Validate movement, dodge, melee, ranged attacks and a guardian at actual play size. | Playable renderer, hero and five weapon identities delivered.            |
+| **2.5D campaign**       | All four regions and guardians, five weapons and every spell/threat family work through the new presentation. Pause, resize, import/resume, context/resource lifecycle and reduced-motion behavior remain usable.                                                                                                        | Planned major milestone.                                                 |
+| Authored asset coverage | Replace gameplay-critical placeholders in small coherent batches: hero and motion set; five weapon identities and attacks; ordinary enemy families; four guardians; four environment kits; patron spell effects and reward/icon treatment. Track each asset's source, delivery, motion coverage and visual review.       | Hero, sixteen motions and five weapons delivered; other families queued. |
+| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | Queued; select one direction at a time.                                  |
+| Delivery closeout       | Complete campaigns and browser journeys cover the final content/rendering; no gameplay-critical placeholder remains; extension and asset-authoring paths are documented; report technical results separately from visual self-review and user feedback.                                                                  | Pending preceding milestones.                                            |
 
 The 2.5D implementation uses the existing Three.js dependency and a fixed angled orthographic camera over the authoritative two-dimensional combat plane. Elevation and animation are presentation until a separately scoped gameplay change says otherwise. Shared threat geometry must project into the scene without changing its damage footprint. Foreground scenery must not conceal actionable enemies or warnings. Establish camera, silhouette, contact and depth before decorative detail. Keep the baseline renderer through migration until campaign parity is established.
 

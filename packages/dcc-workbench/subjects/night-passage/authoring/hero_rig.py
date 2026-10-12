@@ -23,6 +23,12 @@ CLIPS = {
     "punch": 0.5,
     "cast": 0.8,
     "death": 1.0,
+    "sword_special": 0.8,
+    "spear_special": 0.8,
+    "shield_special": 0.8,
+    "bow_special": 0.8,
+    "fists_special": 0.7,
+    "punch_left": 0.5,
 }
 
 
@@ -63,6 +69,7 @@ def joints() -> list[tuple[str, Point, Point, str | None]]:
         ]
     # Blender +Z becomes glTF +Y: browser weapons retain +X forward and +Y up.
     result.append(("weapon_socket", (0.37, -0.38, 1.24), (0.37, -0.38, 1.34), "hand.R"))
+    result.append(("weapon_socket_L", (0.37, 0.38, 1.24), (0.37, 0.38, 1.34), "hand.L"))
     return result
 
 
@@ -130,7 +137,7 @@ def make_rig() -> bpy.types.Object:
     return rig
 
 
-def author(rig: bpy.types.Object) -> None:
+def author(rig: bpy.types.Object, names: tuple[str, ...] | None = None) -> None:
     import bpy
     from mathutils import Euler
 
@@ -139,6 +146,8 @@ def author(rig: bpy.types.Object) -> None:
     pose = present(rig.pose)
     controls = [b for b in pose.bones if not b.name.startswith(("MCH_", "POLE_"))]
     for name, seconds in CLIPS.items():
+        if names is not None and name not in names:
+            continue
         action = bpy.data.actions.new(name)
         action.use_fake_user = True
         action["seconds"] = seconds
@@ -204,7 +213,10 @@ def author(rig: bpy.types.Object) -> None:
                     right.rotation_euler.z = -0.8 * anticipation + 0.95 * hit
                     right.rotation_euler.x = 0.45 * anticipation + 0.2 * hit
                     fore.rotation_euler.z = 0.35 * anticipation - 0.25 * hit
-                elif name in ("thrust", "punch"):
+                elif name in ("thrust", "punch", "punch_left"):
+                    if name == "punch_left":
+                        right, left = left, right
+                        fore = pose.bones["forearm.L"]
                     right.rotation_euler.x = -0.5 * anticipation + 1.0 * hit
                     fore.rotation_euler.x = 0.6 * anticipation - 0.3 * hit
                     chest.rotation_euler.x = 0.22 * hit
@@ -216,6 +228,7 @@ def author(rig: bpy.types.Object) -> None:
                     left.rotation_euler.z = -0.8 * draw
                     pose.bones["forearm.L"].rotation_euler.z = 0.6 * draw
                     chest.rotation_euler.z = -0.2 * draw
+                    pose.bones["hand.R"].rotation_euler.x = 0.75 * draw
                 elif name == "guard":
                     right.rotation_euler.x = 0.9 * (anticipation + hit)
                     right.rotation_euler.z = 0.3 * anticipation
@@ -224,6 +237,41 @@ def author(rig: bpy.types.Object) -> None:
                     left.rotation_euler.x = 1.4 * (anticipation + 0.8 * hit)
                     left.rotation_euler.z = -0.4 * anticipation
                     head.rotation_euler.x = -0.15 * anticipation
+                elif name == "sword_special":
+                    # Wind from the rear, carry the blade across the whole front,
+                    # then settle. The ground ring remains the authoritative radius.
+                    chest.rotation_euler.z = -1.0 * anticipation + 1.1 * hit + 0.4 * follow
+                    right.rotation_euler.z = -1.0 * anticipation + 1.5 * hit
+                    right.rotation_euler.x = 0.5 * anticipation + 0.55 * hit
+                    left.rotation_euler.x = -0.45 * hit
+                elif name == "spear_special":
+                    right.rotation_euler.x = -0.35 * anticipation + 1.3 * hit
+                    fore.rotation_euler.x = 1.25 * anticipation - 0.4 * hit
+                    chest.rotation_euler.z = -0.35 * anticipation + 0.45 * hit
+                    left.rotation_euler.x = 0.35 * anticipation - 0.4 * hit
+                    pose.bones["hand.R"].rotation_euler.x = 0.9 * (anticipation + hit)
+                elif name == "shield_special":
+                    right.rotation_euler.x = 0.65 * anticipation + 1.05 * hit
+                    fore.rotation_euler.x = -0.35 * anticipation
+                    chest.rotation_euler.x = 0.2 * anticipation + 0.45 * hit
+                    body.location.z = -0.14 * anticipation - 0.08 * hit
+                    left.rotation_euler.x = -0.65 * hit
+                elif name == "bow_special":
+                    draw = math.sin(math.pi * min(t / 0.9, 1))
+                    right.rotation_euler.x = 0.75 * draw
+                    left.rotation_euler.x = 0.65 * draw
+                    left.rotation_euler.z = -0.8 * draw
+                    pose.bones["forearm.L"].rotation_euler.z = 0.6 * draw
+                    chest.rotation_euler.z = -0.45 * anticipation + 0.55 * hit
+                    head.rotation_euler.z = -0.15 * anticipation
+                    pose.bones["hand.R"].rotation_euler.x = 0.75 * draw
+                elif name == "fists_special":
+                    body.location.z = -0.22 * anticipation - 0.025 * hit
+                    chest.rotation_euler.x = 0.4 * anticipation - 0.15 * hit
+                    chest.rotation_euler.z = -0.4 * anticipation + 0.35 * hit
+                    right.rotation_euler.x = -0.7 * anticipation + 1.65 * hit
+                    fore.rotation_euler.x = 0.65 * hit
+                    left.rotation_euler.x = 0.45 * anticipation - 0.4 * hit
                 cape.rotation_euler.x = -0.16 * follow
             for bone in controls:
                 # Author pitch/yaw in character space, then convert into each
