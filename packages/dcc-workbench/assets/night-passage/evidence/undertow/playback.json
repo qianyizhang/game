@@ -1,0 +1,38 @@
+[
+  {
+    "clip": "idle",
+    "seconds": 2,
+    "wallSeconds": 2.0116999999284744,
+    "frames": 120
+  },
+  {
+    "clip": "run",
+    "seconds": 1,
+    "wallSeconds": 1.0165,
+    "frames": 61
+  },
+  {
+    "clip": "charge",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4158999999761581,
+    "frames": 85
+  },
+  {
+    "clip": "volley",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4155,
+    "frames": 85
+  },
+  {
+    "clip": "pulse",
+    "seconds": 1.399999976158142,
+    "wallSeconds": 1.4177000000476838,
+    "frames": 85
+  },
+  {
+    "clip": "stagger",
+    "seconds": 0.5,
+    "wallSeconds": 0.5158999999761581,
+    "frames": 31
+  }
+]

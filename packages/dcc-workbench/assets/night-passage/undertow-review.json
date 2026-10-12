@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "subject": "Night Passage Undertow",
+  "reviewDate": "2026-10-13",
+  "reviewer": {
+    "mode": "primary author visual self-review",
+    "independentArtApproval": false
+  },
+  "authority": {
+    "sourceSha256": "be8b6f07bad161f950d979ac1f4f9575efc763a53ad895cb249497c33d4ac9d1",
+    "modelSha256": "9f83c4158bc4dfa4c08a47dfe41b9237d1bc359cdf3876cd1f4952b58463df81"
+  },
+  "review": [
+    "Inspected native front, side, rear and angled clay and material views, and charge, volley and pulse contact poses.",
+    "The squat joined body, pale throat, broad shellback, asymmetric shoulder fins and forked tail distinguish Undertow from the upright bronze Bellwarden.",
+    "Inspected six-frame-per-second decoded unretimed charge, volley and pulse playback for preparation, contact and settling; retained the full six-clip 1x movie.",
+    "Compared production native and fallback at identical positions and charge warning footprint. The health bar clears the body and the grounded warning remains readable.",
+    "Reviewed 960x600 and 390x244 production views. Eye and gill details recede at narrow scale; the teal body, fins and orange charge lane remain readable."
+  ],
+  "geometryAgreement": {
+    "units": "model units",
+    "tolerance": 0.0001,
+    "sampling": "All 237 authored 30fps frames, 16 vertices per named mesh (448 points/frame); whole-surface native floor/IK audit is separate.",
+    "maximumOriginalError": 1.2864406821397196e-06,
+    "maximumEditedError": 1.2864406821397196e-06,
+    "changedChargeSurface": 0.1747718943475654,
+    "allMeshesCovered": true
+  },
+  "savedEditProof": {
+    "meshAndWeightsUnchanged": true,
+    "authoritativeSourceAndDeliveryUnchanged": true,
+    "headChangeRadians": 0.29999998956918716,
+    "editedClip": "charge",
+    "editedFrame": 10,
+    "sourceSha256": "be8b6f07bad161f950d979ac1f4f9575efc763a53ad895cb249497c33d4ac9d1",
+    "modelSha256": "9f83c4158bc4dfa4c08a47dfe41b9237d1bc359cdf3876cd1f4952b58463df81"
+  },
+  "runtime": {
+    "visible": true,
+    "fallbackHidden": true,
+    "finiteBounds": true,
+    "height": 96.96000820631687,
+    "pausedStable": true,
+    "reducedStable": true,
+    "independentPoses": true,
+    "privateSkeletons": true,
+    "privateMaterials": true,
+    "sharedGeometry": true,
+    "attacks": [
+      {
+        "kind": "charge",
+        "moving": true,
+        "pausedStable": true
+      },
+      {
+        "kind": "volley",
+        "moving": true,
+        "pausedStable": true
+      },
+      {
+        "kind": "pulse",
+        "moving": true,
+        "pausedStable": true
+      }
+    ],
+    "crossRegion": {
+      "region": 0,
+      "authoredVisible": true,
+      "previousHidden": true,
+      "fallbackHidden": true
+    },
+    "otherRegions": [
+      {
+        "region": 2,
+        "authoredHidden": true,
+        "fallbackVisible": true
+      },
+      {
+        "region": 3,
+        "authoredHidden": true,
+        "fallbackVisible": true
+      }
+    ],
+    "rulesUnchanged": true
+  },
+  "limits": [
+    "Self-review is not user art approval. Ash Regent, Unlit Sovereign and four environment kits remain blockouts.",
+    "In-place locomotion has no claim of world-space foot locking at every movement speed; directional locomotion and transition blending remain polish.",
+    "Newly loaded mid-action snapshots infer preparation duration when historic enrage timing is unavailable; contact remains tied to the confirmed attack transition.",
+    "Six-fps decoded review samples motion; it is not an exhaustive continuous-time anatomical proof."
+  ],
+  "delegation": {
+    "ownership": "Primary authored native source and integrated/reviewed delivery; two reused workers owned runtime/tests and browser/receipt checks.",
+    "rework": "A local Python typecheck required a loop-variable rename; no native geometry repair was needed after first visual review. Both delegated outputs passed integration checks.",
+    "efficiency": "Both delegated outputs were used. No measured single-agent time comparison."
+  },
+  "evidence": [
+    {
+      "path": "evidence/undertow/attacks-playback-sheet.png",
+      "sha256": "5cde337375869a985367de788fb57aa51c1a6bacad49807d66afcd97ba82961e"
+    },
+    {
+      "path": "evidence/undertow/combat-desktop.png",
+      "sha256": "b6b1d7a5c87db321872a49268723c6de15a146543f48c2f34bdd067a1c4f86ee"
+    },
+    {
+      "path": "evidence/undertow/combat-narrow.png",
+      "sha256": "44215d4ce081664e92eec4487489391c72bf5cc22dab47c0d801f9d88015edf9"
+    },
+    {
+      "path": "evidence/undertow/fallback-desktop.png",
+      "sha256": "b5f7a030ce1896c5827e8399860d01da42521cadbd38ec599ff714873e8cdd3b"
+    },
+    {
+      "path": "evidence/undertow/material-portrait.png",
+      "sha256": "c1ea16ecadbe735c2368e960203442d87164f3c191930eb4ead75e4245c5b4de"
+    },
+    {
+      "path": "evidence/undertow/native-sheet.png",
+      "sha256": "3fbfb0fbc09477ca3b79891b113d206bc7c4c6e7e084394826769fb2a308cdfd"
+    },
+    {
+      "path": "evidence/undertow/playback-1x.webm",
+      "sha256": "4a0e1a70672961e9931a5876fad9718e7aebf3a06103bd5af8a703f39559772d"
+    },
+    {
+      "path": "evidence/undertow/playback.json",
+      "sha256": "e3e849cde64b34cecc9875970e7eaf35880d608c37853980f21c742406d2e11c"
+    }
+  ]
+}

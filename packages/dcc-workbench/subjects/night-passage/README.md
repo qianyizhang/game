@@ -71,7 +71,7 @@ The browser review records unretimed 1× playback and six phase images per clip.
 Native front/side/rear clay, material portrait, action poses, desktop/narrow arena
 and this playback are separate visual evidence. Passing checks is not user art
 acceptance. The ordinary enemy batch below adds four native families; guardians
-and environments remain blockouts except the Bellwarden described below.
+and environments remain blockouts except Bellwarden and Undertow described below.
 Precise two-hand string contact and directional movement remain polish opportunities.
 
 ## Five weapon identities
@@ -149,7 +149,7 @@ its own cloned skeleton, mixer and materials; geometry and textures remain
 library-owned. Hit flash cannot tint another opponent. Missing/incomplete assets
 keep the procedural fallback, and late loads after disposal release their owned
 resources. Reusing a pooled actor resets movement observation across run, chamber
-and enemy identity. The guardian adapter is separate; the Bellwarden is described below.
+and enemy identity. The guardian adapter is separate; Bellwarden and Undertow are described below.
 
 Before cloning, the renderer batches compatible opaque meshes by material and
 keeps the nocked arrow separate. Each cloned rig shares one private skeleton
@@ -205,3 +205,33 @@ saved 30 fps frames across six clips and 16 vertices per named mesh. A separate
 floor audit evaluates every surface vertex and the planted-foot targets. The
 [visual review](../../../../docs/art/assets/night-passage/bellwarden.md) separates
 source/export agreement, play-scale appearance and remaining art limitations.
+
+## Undertow
+
+`guardians/undertow/source.blend` owns the second guardian's joined tide-creature
+body, pale throat, shellback, asymmetric shoulder fins and forked tail. The six
+saved actions are `idle`, `run`, `charge`, `volley`, `pulse`, `stagger`.
+`GuardianRig` reuses fitted humanoid foot IK and adds `fin.L`, `fin.R` and `tail`
+FK joints. `guardian_undertow.py` constructs fresh candidates only; use
+`bootstrap --kind undertow` solely with a new source path. Do not rebuild over
+artist edits. Export and review select the saved scene's `guardian_kind`.
+`guardian_catalog.py` holds the shared clip identities, and the existing delivery
+and review modules evaluate the saved master unchanged.
+
+```sh
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend --output test-results/undertow-export
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend --output test-results/undertow-review
+packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend --output test-results/night-passage-undertow/native
+NIGHT_PASSAGE_GUARDIAN_RESULTS=test-results/night-passage-bellwarden/native NIGHT_PASSAGE_UNDERTOW_RESULTS=test-results/night-passage-undertow/native npm run test:browser -- tests/browser/night-passage-guardian.spec.ts
+npm run check:full
+```
+
+Use fresh output directories. Undertow's saved-copy edit changes `head` at frame
+10 in `charge`, preserving mesh and weights. Native/browser comparison covers
+all 237 saved frames and 16 probes per named mesh. The shared runtime activates
+region 1 at the same 28× model scale and rules radius scaling as Bellwarden.
+Rules still own the charge's travel and danger footprint. The
+[visual review](../../../../docs/art/assets/night-passage/undertow.md) records
+native, playback and combat-scale self-review separately from agreement checks.
+Generalizing the exporter preserved Bellwarden's model bytes; its current export
+receipt was refreshed, while its historical review remains unchanged.

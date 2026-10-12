@@ -11,20 +11,26 @@ import type { State } from '../../src/games/night-passage/domain/types';
 import { compareCanid } from './canid-evidence';
 import { inspectVideoMotion } from './video-motion';
 
-const modelUrl = '/packages/dcc-workbench/assets/night-passage/guardian-bellwarden.glb';
-const rootName = 'night-passage-authored-bellwarden';
-export const guardianClips = ['idle', 'run', 'sweep', 'rain', 'wheel', 'stagger'] as const;
+const guardianAssets = {
+  bellwarden: { name: 'Bellwarden', region: 0, attacks: ['sweep', 'rain', 'wheel'] },
+  undertow: { name: 'Undertow', region: 1, attacks: ['charge', 'volley', 'pulse'] },
+} as const;
+export type GuardianKind = keyof typeof guardianAssets;
+const modelUrl = (kind: GuardianKind) =>
+  `/packages/dcc-workbench/assets/night-passage/guardian-${kind}.glb`;
+const rootName = (kind: GuardianKind) => `night-passage-authored-${kind}`;
 const phases = [0, 0.2, 0.4, 0.45, 0.7, 0.95];
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
 
 /** Explicit presentation fixture, not a legal campaign or an injected UI save. */
-function encounter(twins = false) {
-  const state = createGame('bellwarden-presentation');
+function encounter(kind: GuardianKind, twins = false) {
+  const definition = guardianAssets[kind];
+  const state = createGame(`${kind}-presentation`);
   state.phase = 'combat';
-  state.region = 0;
+  state.region = definition.region;
   state.chamber = 7;
   state.room.boss = true;
-  state.room.name = 'Bellwarden · controlled presentation';
+  state.room.name = `${definition.name} · controlled presentation`;
   state.room.pillars = [];
   state.room.hazards = [];
   state.player.x = 480;
@@ -34,15 +40,20 @@ function encounter(twins = false) {
     const enemy = state.enemies.at(-1)!;
     enemy.aim = Math.atan2(state.player.y - enemy.y, state.player.x - enemy.x);
     enemy.target = { x: state.player.x, y: state.player.y };
-    enemy.windup = twins && x === 680 ? 1 : Math.round(GUARDIANS[0][0].windup / 2);
+    enemy.windup = twins && x === 680 ? 1 : Math.round(GUARDIANS[definition.region][0].windup / 2);
   }
   return state;
 }
 
-function roots(parent: T.Object3D) {
+function roots(parent: T.Object3D, kind?: GuardianKind) {
   const result: T.Object3D[] = [];
   parent.traverse((object) => {
-    if (object.name === rootName) result.push(object);
+    if (
+      kind
+        ? object.name === rootName(kind)
+        : /^night-passage-authored-(bellwarden|undertow)$/.test(object.name)
+    )
+      result.push(object);
   });
   return result;
 }
@@ -52,7 +63,7 @@ function pose(root: T.Object3D) {
   root.traverse((object) => {
     if (object instanceof T.Bone) values.push(...object.matrix.elements);
   });
-  if (!values.length) throw new Error('Bellwarden has no evaluated bones');
+  if (!values.length) throw new Error('Guardian has no evaluated bones');
   return values;
 }
 const equal = (a: number[], b: number[]) =>
@@ -65,10 +76,11 @@ function surfaces(root: T.Object3D) {
   return result;
 }
 
-export async function inspectGuardianActors() {
+export async function inspectGuardianActors(kind: GuardianKind = 'bellwarden') {
+  const definition = guardianAssets[kind];
   const parent = new T.Group(),
     actors = createActors(parent),
-    state = encounter(true);
+    state = encounter(kind, true);
   let pure = true;
   const sync = (reduced = false) => {
     const before = JSON.stringify(state);
@@ -80,12 +92,12 @@ export async function inspectGuardianActors() {
     const deadline = performance.now() + 10000;
     do {
       sync();
-      if (roots(parent).filter((root) => root.visible).length === 2) break;
+      if (roots(parent, kind).filter((root) => root.visible).length === 2) break;
       if (performance.now() > deadline)
-        throw new Error('Production Bellwardens failed to activate');
+        throw new Error(`Production ${definition.name} actors failed to activate`);
       await nextFrame();
     } while (true);
-    const [first, second] = roots(parent);
+    const [first, second] = roots(parent, kind);
     const a = pose(first),
       b = pose(second);
     sync();
@@ -114,7 +126,7 @@ export async function inspectGuardianActors() {
     sync();
     const independentPoses = !equal(a, b) && equal(heldSecond, pose(second));
     const attacks = [];
-    for (const [pattern, content] of GUARDIANS[0].entries()) {
+    for (const [pattern, content] of GUARDIANS[definition.region].entries()) {
       Object.assign(state.enemies[0], { pattern, windup: Math.ceil(content.windup * 0.8) });
       state.tick++;
       sync();
@@ -134,8 +146,32 @@ export async function inspectGuardianActors() {
         pausedStable: equal(contact, pose(first)),
       });
     }
+    const otherKind: GuardianKind = kind === 'bellwarden' ? 'undertow' : 'bellwarden';
+    state.region = guardianAssets[otherKind].region;
+    for (const enemy of state.enemies)
+      Object.assign(enemy, {
+        pattern: 0,
+        windup: Math.round(GUARDIANS[state.region][0].windup / 2),
+        cooldown: 0,
+      });
+    const switchDeadline = performance.now() + 10000;
+    do {
+      sync();
+      if (roots(parent, otherKind).filter((root) => root.visible).length === 2) break;
+      if (performance.now() > switchDeadline)
+        throw new Error('Pooled guardian profile failed to switch');
+      await nextFrame();
+    } while (true);
+    const crossRegion = {
+      region: state.region,
+      authoredVisible: roots(parent, otherKind).every((root) => root.visible),
+      previousHidden: roots(parent, kind).every((root) => !root.visible),
+      fallbackHidden: roots(parent, otherKind).every(
+        (root) => root.parent?.children[0].visible === false,
+      ),
+    };
     const otherRegions = [];
-    for (const region of [1, 2, 3]) {
+    for (const region of [2, 3]) {
       state.region = region;
       sync();
       otherRegions.push({
@@ -144,7 +180,7 @@ export async function inspectGuardianActors() {
         fallbackVisible: roots(parent).every((root) => root.parent?.children[0].visible === true),
       });
     }
-    state.region = 0;
+    state.region = definition.region;
     sync();
     return {
       visible: first.visible && second.visible,
@@ -159,6 +195,7 @@ export async function inspectGuardianActors() {
       privateMaterials,
       sharedGeometry,
       attacks,
+      crossRegion,
       otherRegions,
       rulesUnchanged: pure,
     };
@@ -168,8 +205,10 @@ export async function inspectGuardianActors() {
 }
 
 /** Delivered clips play at elapsed wall time, with additional exact phase images. */
-export async function reviewGuardianClips() {
-  const asset = await new GLTFLoader().loadAsync(modelUrl);
+export async function reviewGuardianClips(kind: GuardianKind = 'bellwarden') {
+  const definition = guardianAssets[kind];
+  const guardianClips = ['idle', 'run', ...definition.attacks, 'stagger'];
+  const asset = await new GLTFLoader().loadAsync(modelUrl(kind));
   const renderer = new T.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
   renderer.setSize(480, 400);
   renderer.setClearColor('#15242c');
@@ -195,7 +234,7 @@ export async function reviewGuardianClips() {
     context.drawImage(renderer.domElement, 0, 40);
     context.fillStyle = '#f4e9d4';
     context.font = '18px sans-serif';
-    context.fillText(`Bellwarden · ${name} · native 1×`, 18, 26);
+    context.fillText(`${definition.name} · ${name} · native 1×`, 18, 26);
   };
   draw('idle');
   const stream = output.captureStream(30),
@@ -214,7 +253,7 @@ export async function reviewGuardianClips() {
     for (const name of guardianClips) {
       const clip = asset.animations.find((candidate) => candidate.name === name);
       if (!clip || !Number.isFinite(clip.duration) || clip.duration <= 0)
-        throw new Error(`Missing Bellwarden ${name}`);
+        throw new Error(`Missing ${definition.name} ${name}`);
       mixer.stopAllAction();
       const action = mixer.clipAction(clip).reset().setLoop(T.LoopOnce, 1).play();
       action.clampWhenFinished = true;
@@ -272,14 +311,19 @@ export async function reviewGuardianClips() {
 }
 
 /** Capture roots during synchronous setup AND first draw; loading readiness is actual activation. */
-function observed(canvas: HTMLCanvasElement, state: State, unavailable: () => void) {
+function observed(
+  canvas: HTMLCanvasElement,
+  state: State,
+  unavailable: () => void,
+  kind: GuardianKind,
+) {
   // eslint-disable-next-line @typescript-eslint/unbound-method -- explicit apply and immediate restoration.
   const original = T.Object3D.prototype.add;
   let hero: T.Object3D | undefined, guardian: T.Object3D | undefined;
   T.Object3D.prototype.add = function (...objects) {
     for (const object of objects) {
       if (object.name === 'night-passage-authored-hero') hero = object;
-      if (object.name === rootName) guardian = object;
+      if (object.name === rootName(kind)) guardian = object;
     }
     original.apply(this, objects);
     return this;
@@ -301,30 +345,38 @@ function observed(canvas: HTMLCanvasElement, state: State, unavailable: () => vo
   }
 }
 
-export async function reviewGuardianEncounter(allowFallback = false) {
+export async function reviewGuardianEncounter(
+  allowFallback = false,
+  kind: GuardianKind = 'bellwarden',
+) {
   const canvas = document.createElement('canvas');
   canvas.style.cssText = 'position:fixed;left:0;top:0;width:960px;height:600px;z-index:9999';
   document.body.append(canvas);
-  const state = encounter(),
+  const state = encounter(kind),
     manager = T.DefaultLoadingManager;
   const previousError = manager.onError;
   let guardianFailed = false,
     unavailable = false;
   manager.onError = (url) => {
     previousError?.(url);
-    if (new URL(url, location.href).pathname.endsWith('/guardian-bellwarden.glb'))
+    if (new URL(url, location.href).pathname.endsWith(`/guardian-${kind}.glb`))
       guardianFailed = true;
   };
   let scene: ReturnType<typeof observed> | undefined;
   try {
-    scene = observed(canvas, state, () => {
-      unavailable = true;
-    });
+    scene = observed(
+      canvas,
+      state,
+      () => {
+        unavailable = true;
+      },
+      kind,
+    );
     const deadline = performance.now() + 10000;
     do {
       scene.surface.draw(state);
       if (scene.ready(allowFallback) && (!allowFallback || guardianFailed)) break;
-      if (performance.now() > deadline) throw new Error('Bellwarden scene activation timed out');
+      if (performance.now() > deadline) throw new Error(`${kind} scene activation timed out`);
       await nextFrame();
     } while (true);
     const before = JSON.stringify(state);
@@ -363,7 +415,7 @@ export async function reviewGuardianEncounter(allowFallback = false) {
 }
 
 type Evidence = Parameters<typeof compareCanid>[1];
-export async function compareGuardianNative(directory: string) {
+export async function compareGuardianNative(directory: string, kind: GuardianKind = 'bellwarden') {
   const read = async (name: string) => {
     const response = await fetch(`/@fs${directory}/${name}.json`);
     if (!response.ok) throw new Error(`Missing guardian ${name} evidence`);
@@ -371,7 +423,7 @@ export async function compareGuardianNative(directory: string) {
   };
   const reference = await read('reference'),
     edited = await read('edited');
-  const gltf = await new GLTFLoader().loadAsync(modelUrl);
+  const gltf = await new GLTFLoader().loadAsync(modelUrl(kind));
   let allMeshesCovered = true;
   try {
     const meshes: T.Mesh[] = [];
@@ -391,10 +443,10 @@ export async function compareGuardianNative(directory: string) {
   } finally {
     disposeObject(gltf.scene);
   }
-  const model = `/@fs${directory}/models/guardian-bellwarden.glb`;
+  const model = `/@fs${directory}/models/guardian-${kind}.glb`;
   return {
     allMeshesCovered,
-    original: await compareCanid(modelUrl, reference),
+    original: await compareCanid(modelUrl(kind), reference),
     edited: await compareCanid(model, edited),
     changed: await compareCanid(model, reference),
   };

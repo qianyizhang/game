@@ -18,4 +18,6 @@ The [aesthetic rulebook](art-direction.md) is the single visual standard. Use th
 
 The [creature asset index](assets/README.md) keeps individual procedural and native records, their acceptance status and evidence locations. The [native trial index](trials/README.md) separates trial outcomes from asset identity. Original review bytes remain recoverable through the [document migration record](../../maintenance/document-migration.json).
 
-The [Night Passage Bellwarden](assets/night-passage/bellwarden.md) records the first authored gameplay guardian, native motion proof and owner visual self-review.
+The [Night Passage Bellwarden](assets/night-passage/bellwarden.md) and
+[Undertow](assets/night-passage/undertow.md) record the first two authored gameplay
+guardians, native motion proof and owner visual self-review.

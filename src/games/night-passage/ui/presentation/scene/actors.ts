@@ -32,7 +32,7 @@ const colors = {
   exposed: '#df9fff',
 } as const;
 
-/** Native hero, enemies and Bellwarden with pooled fallbacks for other guardians. */
+/** Native hero, enemies and the first two guardians; later guardians retain pooled fallbacks. */
 export function createActors(
   parent: THREE.Group,
   invalidate: () => void = () => {},

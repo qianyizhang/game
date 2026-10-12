@@ -13,7 +13,7 @@ vi.mock('three/addons/loaders/GLTFLoader.js', () => ({
   },
 }));
 // Weighted marker clips expose exact sampled phases; real native form/motion is checked in the browser.
-function asset() {
+function asset(region = 0) {
   const scene = new T.Group();
   const joint = new T.Bone();
   joint.name = 'joint';
@@ -28,7 +28,8 @@ function asset() {
   mesh.add(joint);
   mesh.bind(new T.Skeleton([joint]));
   scene.add(mesh);
-  const animations = ['idle', 'run', 'sweep', 'rain', 'wheel', 'stagger'].map(
+  const attacks = region === 0 ? ['sweep', 'rain', 'wheel'] : ['charge', 'volley', 'pulse'];
+  const animations = ['idle', 'run', ...attacks, 'stagger'].map(
     (name, index) =>
       new T.AnimationClip(name, 1, [
         new T.NumberKeyframeTrack('joint.position[x]', [0, 1], [index * 10, index * 10 + 1]),
@@ -36,9 +37,10 @@ function asset() {
   );
   return { scene, animations, mesh };
 }
-function encounter(enraged = false) {
+function encounter(enraged = false, region = 0) {
   const state = createGame('bellwarden-presentation');
   state.phase = 'combat';
+  state.region = region;
   state.player.x = 480;
   state.player.y = 300;
   spawnEnemy(state, 'boss', { x: 480, y: 190 });
@@ -52,14 +54,19 @@ beforeEach(() => {
   load.mockReset();
 });
 
-it.each([false, true])(
-  'samples all three actual guardian release boundaries, enraged=%s',
-  async (enraged) => {
-    load.mockResolvedValue(asset());
+it.each([
+  { region: 0, enraged: false },
+  { region: 0, enraged: true },
+  { region: 1, enraged: false },
+  { region: 1, enraged: true },
+])(
+  'samples three actual regional release boundaries, region=$region enraged=$enraged',
+  async ({ region, enraged }) => {
+    load.mockResolvedValue(asset(region));
     const library = createGuardians(() => {}),
       root = new T.Group();
     const model = library.attach(root);
-    const { state, boss } = encounter(enraged);
+    const { state, boss } = encounter(enraged, region);
     model.sync(boss, state, false);
     await Promise.resolve();
     for (let index = 0; index < 3; index++) {
@@ -68,7 +75,7 @@ it.each([false, true])(
       state.tick++;
       enemyStep(state, boss);
       model.sync(boss, state, false);
-      const pattern = GUARDIANS[0][index];
+      const pattern = GUARDIANS[region][index];
       const windup = enraged ? Math.round(pattern.windup * 0.8) : pattern.windup;
       const recovery = enraged ? Math.round(pattern.recovery * 0.72) : pattern.recovery;
       const marker = 20 + index * 10;
@@ -81,12 +88,19 @@ it.each([false, true])(
         expect(boss.windup).toBe(remaining);
         expect(pose(root)).toBeCloseTo(marker + 0.45 * (1 - remaining / windup));
       }
+      const beforeRelease = { x: boss.x, y: boss.y };
       state.tick++;
       enemyStep(state, boss);
       model.sync(boss, state, false);
       expect(boss.pattern).toBe(index + 1);
       expect(boss.cooldown).toBe(recovery);
       expect(pose(root)).toBeCloseTo(marker + 0.45); // completed pattern, not next windup
+      if (region === 1 && index === 0) {
+        expect(Math.hypot(boss.x - beforeRelease.x, boss.y - beforeRelease.y)).toBeGreaterThan(300);
+        expect(root.getObjectByName('night-passage-authored-undertow')!.position.toArray()).toEqual(
+          [0, 0, 0],
+        );
+      }
       const before = structuredClone(state);
       model.sync(boss, state, false);
       expect(pose(root)).toBeCloseTo(marker + 0.45);
@@ -106,132 +120,139 @@ it.each([false, true])(
   },
 );
 
-it('does not retime an observed windup or cooldown when health crosses half; reduced poses stay fixed', async () => {
-  load.mockResolvedValue(asset());
-  const library = createGuardians(() => {}),
-    root = new T.Group();
-  const model = library.attach(root);
-  const { state, boss } = encounter();
-  model.sync(boss, state, false);
-  await Promise.resolve();
-  const step = (count: number) => {
-    for (let i = 0; i < count; i++) {
-      state.tick++;
-      enemyStep(state, boss);
-      model.sync(boss, state, false);
+it.each([0, 1])(
+  'does not retime observed durations across half health; reduced poses stay fixed, region=%s',
+  async (region) => {
+    load.mockResolvedValue(asset(region));
+    const library = createGuardians(() => {}),
+      root = new T.Group();
+    const model = library.attach(root);
+    const { state, boss } = encounter(false, region);
+    const firstPattern = GUARDIANS[region][0];
+    model.sync(boss, state, false);
+    await Promise.resolve();
+    const step = (count: number) => {
+      for (let i = 0; i < count; i++) {
+        state.tick++;
+        enemyStep(state, boss);
+        model.sync(boss, state, false);
+      }
+    };
+    step(1);
+    step(10);
+    boss.hp = boss.maxHp / 2 - 1;
+    step(10);
+    expect(pose(root)).toBeCloseTo(20 + (0.45 * 20) / firstPattern.windup);
+    model.sync(boss, state, true);
+    expect(pose(root)).toBeCloseTo(20.36);
+    step(1);
+    model.sync(boss, state, true);
+    expect(pose(root)).toBeCloseTo(20.36);
+    step(boss.windup);
+    expect(boss.cooldown).toBe(Math.round(firstPattern.recovery * 0.72)); // health at release chooses the new cooldown
+    expect(pose(root)).toBeCloseTo(20.45);
+    boss.stagger = 9;
+    model.sync(boss, state, true);
+    expect(pose(root)).toBeCloseTo(50.4);
+    boss.stagger = 4;
+    model.sync(boss, state, true);
+    expect(pose(root)).toBeCloseTo(50.4);
+    library.dispose();
+
+    load.mockResolvedValue(asset(region));
+    const second = createGuardians(() => {}),
+      otherRoot = new T.Group(),
+      other = second.attach(otherRoot);
+    const normal = encounter(false, region);
+    other.sync(normal.boss, normal.state, false);
+    await Promise.resolve();
+    for (let i = 0; i <= firstPattern.windup; i++) {
+      normal.state.tick++;
+      enemyStep(normal.state, normal.boss);
+      other.sync(normal.boss, normal.state, false);
     }
-  };
-  step(1);
-  step(10);
-  boss.hp = boss.maxHp / 2 - 1;
-  step(10);
-  expect(pose(root)).toBeCloseTo(20 + (0.45 * 20) / 58);
-  model.sync(boss, state, true);
-  expect(pose(root)).toBeCloseTo(20.36);
-  step(1);
-  model.sync(boss, state, true);
-  expect(pose(root)).toBeCloseTo(20.36);
-  step(boss.windup);
-  expect(boss.cooldown).toBe(40); // health at release chooses the new cooldown
-  expect(pose(root)).toBeCloseTo(20.45);
-  boss.stagger = 9;
-  model.sync(boss, state, true);
-  expect(pose(root)).toBeCloseTo(50.4);
-  boss.stagger = 4;
-  model.sync(boss, state, true);
-  expect(pose(root)).toBeCloseTo(50.4);
-  library.dispose();
+    expect(normal.boss.cooldown).toBe(firstPattern.recovery);
+    normal.boss.hp = normal.boss.maxHp / 2 - 1;
+    for (let i = 0; i < 10; i++) {
+      normal.state.tick++;
+      enemyStep(normal.state, normal.boss);
+      other.sync(normal.boss, normal.state, false);
+    }
+    expect(pose(otherRoot)).toBeCloseTo(20 + 0.45 + (0.55 * 10) / 18);
+    second.dispose();
+  },
+);
 
-  load.mockResolvedValue(asset());
-  const second = createGuardians(() => {}),
-    otherRoot = new T.Group(),
-    other = second.attach(otherRoot);
-  const normal = encounter();
-  other.sync(normal.boss, normal.state, false);
-  await Promise.resolve();
-  for (let i = 0; i < 59; i++) {
-    normal.state.tick++;
-    enemyStep(normal.state, normal.boss);
-    other.sync(normal.boss, normal.state, false);
-  }
-  expect(normal.boss.cooldown).toBe(55);
-  normal.boss.hp = normal.boss.maxHp / 2 - 1;
-  for (let i = 0; i < 10; i++) {
-    normal.state.tick++;
-    enemyStep(normal.state, normal.boss);
-    other.sync(normal.boss, normal.state, false);
-  }
-  expect(pose(otherRoot)).toBeCloseTo(20 + 0.45 + (0.55 * 10) / 18);
-  second.dispose();
-});
-
-it('loads once, keeps private poses/materials, and releases shared and instance resources once', async () => {
-  const delivered = asset();
-  delivered.mesh.material.emissive.setHex(0x2277aa);
-  delivered.mesh.material.emissiveIntensity = 1.2;
-  let finish!: (value: ReturnType<typeof asset>) => void;
-  load.mockReturnValue(
-    new Promise((resolve) => {
-      finish = resolve;
-    }),
-  );
-  const redraw = vi.fn(),
-    library = createGuardians(redraw),
-    a = new T.Group(),
-    b = new T.Group();
-  const first = library.attach(a),
-    second = library.attach(b);
-  const { state, boss } = encounter();
-  state.region = 1;
-  expect(first.sync(boss, state, false)).toBe(false);
-  expect(load).not.toHaveBeenCalled();
-  state.region = 0;
-  expect(first.sync(boss, state, false)).toBe(false);
-  expect(second.sync(boss, state, false)).toBe(false);
-  expect(load).toHaveBeenCalledOnce();
-  finish(delivered);
-  await Promise.resolve();
-  expect(redraw).toHaveBeenCalledOnce();
-  boss.windup = 58;
-  expect(first.sync(boss, state, false)).toBe(true);
-  boss.windup = 1;
-  expect(second.sync(boss, state, false)).toBe(true);
-  expect(pose(a)).toBeCloseTo(20);
-  expect(pose(b)).toBeGreaterThan(20.4);
-  const meshA = a.getObjectByName('surface') as T.SkinnedMesh,
-    meshB = b.getObjectByName('surface') as T.SkinnedMesh;
-  expect(meshA.skeleton).not.toBe(meshB.skeleton);
-  expect(meshA.material).not.toBe(meshB.material);
-  expect(meshA.geometry).toBe(meshB.geometry);
-  const materialA = meshA.material as T.MeshStandardMaterial;
-  boss.flash = 3;
-  first.sync(boss, state, false);
-  expect(materialA.emissive.getHex()).not.toBe(0x2277aa);
-  boss.flash = 0;
-  first.sync(boss, state, false);
-  expect(materialA.emissive.getHex()).toBe(0x2277aa);
-  expect(materialA.emissiveIntensity).toBe(1.2);
-  const geometry = vi.spyOn(delivered.mesh.geometry, 'dispose'),
-    skeleton = vi.spyOn(meshA.skeleton, 'dispose'),
-    material = vi.spyOn(materialA, 'dispose');
-  library.dispose();
-  library.dispose();
-  expect(geometry).toHaveBeenCalledOnce();
-  expect(skeleton).toHaveBeenCalledOnce();
-  expect(material).toHaveBeenCalledOnce();
-  expect(a.children).toHaveLength(0);
-  expect(first.sync(boss, state, false)).toBe(false);
-  expect(library.attach(a).sync(boss, state, false)).toBe(false);
-  expect(a.children).toHaveLength(0);
-});
+it.each([0, 1])(
+  'loads once per regional kind and releases private/shared resources once, region=%s',
+  async (region) => {
+    const delivered = asset(region);
+    delivered.mesh.material.emissive.setHex(0x2277aa);
+    delivered.mesh.material.emissiveIntensity = 1.2;
+    let finish!: (value: ReturnType<typeof asset>) => void;
+    load.mockReturnValue(
+      new Promise((resolve) => {
+        finish = resolve;
+      }),
+    );
+    const redraw = vi.fn(),
+      library = createGuardians(redraw),
+      a = new T.Group(),
+      b = new T.Group();
+    const first = library.attach(a),
+      second = library.attach(b);
+    const { state, boss } = encounter(false, region);
+    state.region = 2;
+    expect(first.sync(boss, state, false)).toBe(false);
+    expect(load).not.toHaveBeenCalled();
+    state.region = region;
+    expect(first.sync(boss, state, false)).toBe(false);
+    expect(second.sync(boss, state, false)).toBe(false);
+    expect(load).toHaveBeenCalledOnce();
+    finish(delivered);
+    await Promise.resolve();
+    expect(redraw).toHaveBeenCalledOnce();
+    boss.windup = GUARDIANS[region][0].windup;
+    expect(first.sync(boss, state, false)).toBe(true);
+    boss.windup = 1;
+    expect(second.sync(boss, state, false)).toBe(true);
+    expect(pose(a)).toBeCloseTo(20);
+    expect(pose(b)).toBeGreaterThan(20.4);
+    const meshA = a.getObjectByName('surface') as T.SkinnedMesh,
+      meshB = b.getObjectByName('surface') as T.SkinnedMesh;
+    expect(meshA.skeleton).not.toBe(meshB.skeleton);
+    expect(meshA.material).not.toBe(meshB.material);
+    expect(meshA.geometry).toBe(meshB.geometry);
+    const materialA = meshA.material as T.MeshStandardMaterial;
+    boss.flash = 3;
+    first.sync(boss, state, false);
+    expect(materialA.emissive.getHex()).not.toBe(0x2277aa);
+    boss.flash = 0;
+    first.sync(boss, state, false);
+    expect(materialA.emissive.getHex()).toBe(0x2277aa);
+    expect(materialA.emissiveIntensity).toBe(1.2);
+    const geometry = vi.spyOn(delivered.mesh.geometry, 'dispose'),
+      skeleton = vi.spyOn(meshA.skeleton, 'dispose'),
+      material = vi.spyOn(materialA, 'dispose');
+    library.dispose();
+    library.dispose();
+    expect(geometry).toHaveBeenCalledOnce();
+    expect(skeleton).toHaveBeenCalledOnce();
+    expect(material).toHaveBeenCalledOnce();
+    expect(a.children).toHaveLength(0);
+    expect(first.sync(boss, state, false)).toBe(false);
+    expect(library.attach(a).sync(boss, state, false)).toBe(false);
+    expect(a.children).toHaveLength(0);
+  },
+);
 
 it('restores the correct fallback when one pooled boss crosses guardian regions and returns', async () => {
   // Unrelated asset requests remain pending: this regression owns guardian selection only.
-  load.mockImplementation((url) =>
-    typeof url === 'string' && url.includes('guardian-bellwarden')
-      ? Promise.resolve(asset())
-      : new Promise(() => {}),
-  );
+  load.mockImplementation((url) => {
+    if (url.includes('guardian-bellwarden')) return Promise.resolve(asset(0));
+    if (url.includes('guardian-undertow')) return Promise.resolve(asset(1));
+    return new Promise(() => {});
+  });
   const parent = new T.Group(),
     actors = createActors(parent),
     { state, boss } = encounter();
@@ -249,56 +270,103 @@ it('restores the correct fallback when one pooled boss crosses guardian regions 
     state.region = region;
     state.enemies = [{ ...boss, id: boss.id + region + 10 }];
     actors.sync(state, false);
+    await Promise.resolve();
+    actors.sync(state, false);
     expect(parent.getObjectByName('blockout-boss')).toBe(pooled);
     expect(native.visible).toBe(region === 0);
-    expect(pooled.children[0].visible).toBe(region !== 0);
-    expect((pooled.children[3] as T.Sprite).position.y).toBe(region === 0 ? 58 : 47);
+    const undertow = pooled.getObjectByName('night-passage-authored-undertow');
+    expect(undertow?.visible ?? false).toBe(region === 1);
+    expect(pooled.children[0].visible).toBe(region > 1);
+    expect((pooled.children[3] as T.Sprite).position.y).toBe(region < 2 ? 58 : 47);
   }
   actors.dispose();
 });
 
-it('preserves fallback on failed/incomplete delivery and disposes a late load after cleanup', async () => {
-  const warning = vi.spyOn(console, 'warn').mockImplementation(() => {});
-  const { state, boss } = encounter();
-  try {
-    load.mockRejectedValue(new Error('offline'));
-    const failed = createGuardians(() => {}),
-      model = failed.attach(new T.Group());
-    model.sync(boss, state, false);
-    await Promise.resolve();
-    await Promise.resolve();
-    expect(model.sync(boss, state, false)).toBe(false);
-    failed.dispose();
-    const incomplete = asset();
-    incomplete.animations.pop();
-    const rejectedDispose = vi.spyOn(incomplete.mesh.geometry, 'dispose');
-    load.mockResolvedValue(incomplete);
-    const invalid = createGuardians(() => {}),
-      invalidModel = invalid.attach(new T.Group());
-    invalidModel.sync(boss, state, false);
-    await Promise.resolve();
-    expect(invalidModel.sync(boss, state, false)).toBe(false);
-    expect(rejectedDispose).toHaveBeenCalledOnce();
-    invalid.dispose();
-    const late = asset();
-    let finish!: (value: ReturnType<typeof asset>) => void;
-    load.mockReturnValue(
-      new Promise((resolve) => {
-        finish = resolve;
-      }),
+it.each([0, 1])(
+  'a failed guardian library does not disable the other regional asset, failed=%s',
+  async (failedRegion) => {
+    const warning = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const ids = ['bellwarden', 'undertow'];
+    const delivered = asset(1 - failedRegion);
+    load.mockImplementation((url) =>
+      url.includes(`guardian-${ids[failedRegion]}`)
+        ? Promise.reject(new Error('unavailable regional asset'))
+        : Promise.resolve(delivered),
     );
-    const redraw = vi.fn(),
-      library = createGuardians(redraw),
-      root = new T.Group();
-    library.attach(root).sync(boss, state, false);
-    library.dispose();
-    const released = vi.spyOn(late.mesh.geometry, 'dispose');
-    finish(late);
-    await Promise.resolve();
-    expect(released).toHaveBeenCalledOnce();
-    expect(redraw).not.toHaveBeenCalled();
-    expect(root.children).toHaveLength(0);
-  } finally {
-    warning.mockRestore();
-  }
-});
+    const library = createGuardians(() => {}),
+      root = new T.Group(),
+      model = library.attach(root);
+    try {
+      const failed = encounter(false, failedRegion);
+      expect(model.sync(failed.boss, failed.state, false)).toBe(false);
+      await Promise.resolve();
+      await Promise.resolve();
+      expect(model.sync(failed.boss, failed.state, false)).toBe(false);
+      const supported = encounter(false, 1 - failedRegion);
+      model.sync(supported.boss, supported.state, false);
+      await Promise.resolve();
+      expect(model.sync(supported.boss, supported.state, false)).toBe(true);
+      expect(root.getObjectByName(`night-passage-authored-${ids[failedRegion]}`)!.visible).toBe(
+        false,
+      );
+      expect(root.getObjectByName(`night-passage-authored-${ids[1 - failedRegion]}`)!.visible).toBe(
+        true,
+      );
+      expect(model.sync(failed.boss, failed.state, false)).toBe(false);
+      expect(model.sync(supported.boss, supported.state, false)).toBe(true);
+      expect(load).toHaveBeenCalledTimes(2);
+    } finally {
+      library.dispose();
+      warning.mockRestore();
+    }
+  },
+);
+
+it.each([0, 1])(
+  'preserves fallback and disposes failed or late regional deliveries, region=%s',
+  async (region) => {
+    const warning = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const { state, boss } = encounter(false, region);
+    try {
+      load.mockRejectedValue(new Error('offline'));
+      const failed = createGuardians(() => {}),
+        model = failed.attach(new T.Group());
+      model.sync(boss, state, false);
+      await Promise.resolve();
+      await Promise.resolve();
+      expect(model.sync(boss, state, false)).toBe(false);
+      failed.dispose();
+      const incomplete = asset(region);
+      incomplete.animations.pop();
+      const rejectedDispose = vi.spyOn(incomplete.mesh.geometry, 'dispose');
+      load.mockResolvedValue(incomplete);
+      const invalid = createGuardians(() => {}),
+        invalidModel = invalid.attach(new T.Group());
+      invalidModel.sync(boss, state, false);
+      await Promise.resolve();
+      expect(invalidModel.sync(boss, state, false)).toBe(false);
+      expect(rejectedDispose).toHaveBeenCalledOnce();
+      invalid.dispose();
+      const late = asset(region);
+      let finish!: (value: ReturnType<typeof asset>) => void;
+      load.mockReturnValue(
+        new Promise((resolve) => {
+          finish = resolve;
+        }),
+      );
+      const redraw = vi.fn(),
+        library = createGuardians(redraw),
+        root = new T.Group();
+      library.attach(root).sync(boss, state, false);
+      library.dispose();
+      const released = vi.spyOn(late.mesh.geometry, 'dispose');
+      finish(late);
+      await Promise.resolve();
+      expect(released).toHaveBeenCalledOnce();
+      expect(redraw).not.toHaveBeenCalled();
+      expect(root.children).toHaveLength(0);
+    } finally {
+      warning.mockRestore();
+    }
+  },
+);

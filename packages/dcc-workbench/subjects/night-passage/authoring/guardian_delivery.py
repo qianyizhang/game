@@ -12,8 +12,9 @@ if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "blender"))
 
+from guardian_catalog import ATTACKS, clip_names  # noqa: E402
 from guardian_form import build  # noqa: E402
-from guardian_rig import CLIPS, FPS, activate, author, make_rig  # noqa: E402
+from guardian_rig import FPS, activate, author, make_rig  # noqa: E402
 from native_types import mesh_data, present, require  # noqa: E402
 
 
@@ -40,16 +41,25 @@ def mesh_digest() -> str:
     return hashlib.sha256(json.dumps(values).encode()).hexdigest()
 
 
-def bootstrap(source: Path) -> None:
+def bootstrap(source: Path, kind: str = "bellwarden") -> None:
     import bpy
 
     if source.exists():
         raise FileExistsError("Construction requires a fresh native candidate")
     bpy.ops.wm.read_factory_settings(use_empty=True)
-    rig = make_rig()
-    build(rig)
-    author(rig)
-    present(bpy.context.scene)["guardian_kind"] = "bellwarden"
+    if kind == "undertow":
+        import guardian_undertow
+
+        rig = guardian_undertow.make_rig()
+        guardian_undertow.build(rig)
+        guardian_undertow.author(rig)
+    elif kind == "bellwarden":
+        rig = make_rig()
+        build(rig)
+        author(rig)
+    else:
+        raise ValueError("Unknown guardian kind")
+    present(bpy.context.scene)["guardian_kind"] = kind
     source.parent.mkdir(parents=True, exist_ok=True)
     bpy.ops.wm.save_as_mainfile(filepath=str(source), compress=True)
 
@@ -64,7 +74,7 @@ def export(source: Path, output: Path) -> None:
     scene = present(bpy.context.scene)
     rig = bpy.data.objects["GuardianRig"]
     kind = str(scene["guardian_kind"])
-    if kind != "bellwarden":
+    if kind not in ATTACKS:
         raise ValueError("Unknown saved guardian kind")
     before = mesh_digest()
     data = bpy.data.armatures.new(f"{kind} deformation skeleton")
@@ -87,7 +97,7 @@ def export(source: Path, output: Path) -> None:
     library = {}
     audits = {}
     actions = []
-    for name in CLIPS:
+    for name in clip_names(kind):
         original = bpy.data.actions[name]
         seconds = float(original["seconds"])
         library[name] = {
@@ -215,11 +225,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=["bootstrap", "export", "review", "verify"])
     parser.add_argument("--source", type=Path, required=True)
+    parser.add_argument("--kind", choices=tuple(ATTACKS), default="bellwarden")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(sys.argv[sys.argv.index("--") + 1 :])
     source = args.source.resolve()
     if args.command == "bootstrap":
-        bootstrap(source)
+        bootstrap(source, args.kind)
     elif not args.output:
         parser.error("This operation requires --output")
     elif args.command == "export":

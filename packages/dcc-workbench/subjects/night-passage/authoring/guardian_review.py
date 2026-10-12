@@ -7,8 +7,9 @@ import shutil
 from pathlib import Path
 
 from authoring_plan import save_working_source
+from guardian_catalog import ATTACKS, clip_names
 from guardian_delivery import export, mesh_digest, sha
-from guardian_rig import CLIPS, FPS
+from guardian_rig import FPS
 from hero_form import material
 from native_types import active_object, cycles_settings, mesh_data, present, require
 from review_plan import capture_path, close_captures
@@ -24,7 +25,7 @@ def sample(source: Path, output: Path) -> None:
     rig = bpy.data.objects["GuardianRig"]
     meshes = [o for o in scene.objects if o.type == "MESH"]
     clips = {}
-    for name in CLIPS:
+    for name in clip_names(str(scene["guardian_kind"])):
         action = bpy.data.actions[name]
         rig.animation_data_create().action = action
         end = round(float(action["seconds"]) * FPS)
@@ -63,8 +64,9 @@ def verify(source: Path, output: Path) -> None:
     shutil.copy2(source, working)
     bpy.ops.wm.open_mainfile(filepath=str(working))
     before = mesh_digest()
+    edited_clip = ATTACKS[kind][0]
     rig = bpy.data.objects["GuardianRig"]
-    rig.animation_data_create().action = bpy.data.actions["sweep"]
+    rig.animation_data_create().action = bpy.data.actions[edited_clip]
     present(bpy.context.scene).frame_set(10)
     head = present(rig.pose).bones["head"]
     previous = head.rotation_euler.z
@@ -73,7 +75,7 @@ def verify(source: Path, output: Path) -> None:
     save_working_source(working)
     bpy.ops.wm.open_mainfile(filepath=str(working))
     rig = bpy.data.objects["GuardianRig"]
-    rig.animation_data_create().action = bpy.data.actions["sweep"]
+    rig.animation_data_create().action = bpy.data.actions[edited_clip]
     present(bpy.context.scene).frame_set(10)
     change = present(rig.pose).bones["head"].rotation_euler.z - previous
     if abs(change - 0.3) > 0.00001 or before != mesh_digest():
@@ -88,7 +90,7 @@ def verify(source: Path, output: Path) -> None:
                 "meshAndWeightsUnchanged": True,
                 "authoritativeSourceAndDeliveryUnchanged": True,
                 "headChangeRadians": change,
-                "editedClip": "sweep",
+                "editedClip": edited_clip,
                 "editedFrame": 10,
                 "sourceSha256": protected[source],
                 "modelSha256": protected[model],
@@ -153,7 +155,7 @@ def review(source: Path, output: Path) -> None:
             scene.render.filepath = str(capture_path(output, filename))
             bpy.ops.render.render(write_still=True)
             captures.add(filename)
-    for name in CLIPS:
+    for name in clip_names(str(scene["guardian_kind"])):
         seconds = float(bpy.data.actions[name]["seconds"])
         rig.animation_data_create().action = bpy.data.actions[name]
         scene.frame_set(round(seconds * FPS * 0.45))
@@ -161,15 +163,16 @@ def review(source: Path, output: Path) -> None:
         scene.render.filepath = str(capture_path(output, filename))
         bpy.ops.render.render(write_still=True)
         captures.add(filename)
-    rig.animation_data_create().action = bpy.data.actions["sweep"]
+    attack = ATTACKS[str(scene["guardian_kind"])][0]
+    rig.animation_data_create().action = bpy.data.actions[attack]
     camera.location = (0, -7, 1.8)
     camera.rotation_euler = (
         (Vector((0.15, 0, 0.9)) - camera.location).to_track_quat("-Z", "Y").to_euler()
     )
     for phase in (0.2, 0.45):
-        frame = float(bpy.data.actions["sweep"]["seconds"]) * FPS * phase
+        frame = float(bpy.data.actions[attack]["seconds"]) * FPS * phase
         scene.frame_set(int(frame), subframe=frame % 1)
-        filename = f"sweep-side-{phase}.png"
+        filename = f"{attack}-side-{phase}.png"
         scene.render.filepath = str(capture_path(output, filename))
         bpy.ops.render.render(write_still=True)
         captures.add(filename)
