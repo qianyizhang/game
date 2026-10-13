@@ -1,0 +1,337 @@
+{
+  "version": 1,
+  "title": "Card Workshop",
+  "modules": [
+    {
+      "id": "repo",
+      "parent": null,
+      "name": "Card Workshop",
+      "kind": "system",
+      "summary": "Independent games, shared presentation utilities, and dedicated workbenches. Enter a module to explore its responsibilities and source evidence.",
+      "sources": ["AGENTS.md", "package.json"],
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "app",
+      "parent": "repo",
+      "name": "Workshop shell",
+      "kind": "module",
+      "summary": "Chooses the active game and lazily opens game and art workbenches. Owns navigation, not game rules.",
+      "sources": ["src/app/Hub.tsx", "src/main.tsx"],
+      "x": 60,
+      "y": 80
+    },
+    {
+      "id": "games",
+      "parent": "repo",
+      "name": "Game systems",
+      "kind": "package",
+      "summary": "Each game owns its content, authoritative rules and saved sessions. Browser UI submits commands.",
+      "sources": ["AGENTS.md", "src/app/Hub.tsx"],
+      "x": 400,
+      "y": 80
+    },
+    {
+      "id": "shared",
+      "parent": "repo",
+      "name": "Shared utilities",
+      "kind": "module",
+      "summary": "Small proven utilities for seeded randomness, replay, playback and deterministic layouts. No universal game engine.",
+      "sources": ["src/shared/random.ts", "src/shared/replay.ts", "src/shared/layout/layout.ts"],
+      "x": 740,
+      "y": 80
+    },
+    {
+      "id": "dcc",
+      "parent": "repo",
+      "name": "Art workbench",
+      "kind": "package",
+      "summary": "Blender authoring and asset delivery, with its own source, export and verification pipeline.",
+      "sources": ["packages/dcc-workbench/README.md", "packages/dcc-workbench/package.json"],
+      "x": 60,
+      "y": 380
+    },
+    {
+      "id": "tools",
+      "parent": "repo",
+      "name": "Repository tools",
+      "kind": "package",
+      "summary": "Maintenance gates, experiment runners and evidence processing. Session review is a separate presentation package.",
+      "sources": ["packages/workshop-tools/package.json", "packages/workshop-tools/README.md"],
+      "x": 400,
+      "y": 380
+    },
+    {
+      "id": "canvas",
+      "parent": "repo",
+      "name": "Repo Canvas",
+      "kind": "package",
+      "summary": "Shared architecture interface inside Codex: an isolated document model, repository bridge and MCP App with discussion in the current conversation.",
+      "sources": ["packages/repo-canvas/README.md", "packages/repo-canvas/package.json"],
+      "x": 740,
+      "y": 380
+    },
+    {
+      "id": "blindside",
+      "parent": "games",
+      "name": "Blindside",
+      "kind": "module",
+      "summary": "Poker hands, blinds, jokers and shop progression in an independent seeded game.",
+      "sources": ["src/games/balatro/domain/game.ts", "src/games/balatro/ui/BlindsideApp.tsx"],
+      "x": 60,
+      "y": 70
+    },
+    {
+      "id": "spire",
+      "parent": "games",
+      "name": "Slay the Spire",
+      "kind": "module",
+      "summary": "Deckbuilding runs with character content, combat commands and validated session persistence.",
+      "sources": ["src/games/spire/domain/game.ts", "src/games/spire/application/session.ts"],
+      "x": 380,
+      "y": 70
+    },
+    {
+      "id": "hearth",
+      "parent": "games",
+      "name": "Last Hearth",
+      "kind": "module",
+      "summary": "Tavern recruitment and automatic combat own distinct timing and command rules.",
+      "sources": [
+        "src/games/battlegrounds/domain/game.ts",
+        "src/games/battlegrounds/domain/combat.ts"
+      ],
+      "x": 700,
+      "y": 70
+    },
+    {
+      "id": "emberwake",
+      "parent": "games",
+      "name": "Emberwake",
+      "kind": "package",
+      "summary": "Action RPG with content, world rules, application persistence and its own UI package.",
+      "sources": ["packages/diablo2/package.json", "packages/diablo2/src/domain/game.ts"],
+      "x": 60,
+      "y": 300
+    },
+    {
+      "id": "cartographer",
+      "parent": "games",
+      "name": "Dungeon Cartographer",
+      "kind": "module",
+      "summary": "A playable map study using shared deterministic room geometry.",
+      "sources": ["src/games/cartographer/ui/CartographerApp.tsx", "src/shared/layout/layout.ts"],
+      "x": 380,
+      "y": 300
+    },
+    {
+      "id": "night",
+      "parent": "games",
+      "name": "Night Passage",
+      "kind": "module",
+      "summary": "A separately loaded game surface with dedicated rules and presentation.",
+      "sources": ["src/games/night-passage/ui/NightPassageApp.tsx"],
+      "x": 700,
+      "y": 300
+    },
+    {
+      "id": "spire-ui",
+      "parent": "spire",
+      "name": "Presentation",
+      "kind": "module",
+      "summary": "Displays run state and submits player commands.",
+      "sources": ["src/games/spire/ui/SpireApp.tsx"],
+      "x": 50,
+      "y": 100
+    },
+    {
+      "id": "spire-session",
+      "parent": "spire",
+      "name": "Session",
+      "kind": "module",
+      "summary": "Persists and reconstructs validated runs and replays.",
+      "sources": ["src/games/spire/application/session.ts"],
+      "x": 390,
+      "y": 100
+    },
+    {
+      "id": "spire-rules",
+      "parent": "spire",
+      "name": "Rules & content",
+      "kind": "module",
+      "summary": "Owns legal transitions, combat and rewards.",
+      "sources": [
+        "src/games/spire/domain/game.ts",
+        "src/games/spire/domain/combat.ts",
+        "src/games/spire/content/world.ts"
+      ],
+      "x": 730,
+      "y": 100
+    },
+    {
+      "id": "trace",
+      "parent": "tools",
+      "name": "Trace normalization",
+      "kind": "module",
+      "summary": "Normalizes local session evidence and produces review documents.",
+      "sources": [
+        "packages/workshop-tools/trace/build.ts",
+        "packages/workshop-tools/trace/jsonl.ts"
+      ],
+      "x": 70,
+      "y": 100
+    },
+    {
+      "id": "review",
+      "parent": "tools",
+      "name": "Session review",
+      "kind": "package",
+      "summary": "Shared frontend for offline exports and local session review.",
+      "sources": [
+        "packages/session-review/package.json",
+        "packages/session-review/src/model/contracts.ts"
+      ],
+      "x": 430,
+      "y": 100
+    },
+    {
+      "id": "maintenance",
+      "parent": "tools",
+      "name": "Maintenance governance",
+      "kind": "module",
+      "summary": "Enforces source checker scope, document placement and artifact retention contracts.",
+      "sources": ["packages/workshop-tools/governance.mjs", "docs/engineering/maintenance.md"],
+      "x": 70,
+      "y": 350
+    },
+    {
+      "id": "canvas-ui",
+      "parent": "canvas",
+      "name": "Canvas & inspector",
+      "kind": "module",
+      "summary": "Renders the current hierarchy scope, projected relationships and source overlays. Changes remain drafts until saved.",
+      "sources": [
+        "packages/repo-canvas/src/ui/App.tsx",
+        "packages/repo-canvas/src/ui/Canvas.tsx",
+        "packages/repo-canvas/src/ui/Inspector.tsx"
+      ],
+      "x": 60,
+      "y": 80
+    },
+    {
+      "id": "canvas-model",
+      "parent": "canvas",
+      "name": "Architecture document",
+      "kind": "data",
+      "summary": "One versioned document shared with the agent. Validates hierarchy, IDs, endpoints, annotations and layout.",
+      "sources": ["packages/repo-canvas/src/model/document.ts"],
+      "x": 420,
+      "y": 80
+    },
+    {
+      "id": "canvas-repo",
+      "parent": "canvas",
+      "name": "Repository bridge",
+      "kind": "module",
+      "summary": "Loads and saves the shared file with revision checks; previews bounded repo source.",
+      "sources": [
+        "packages/repo-canvas/src/server/repository.ts",
+        "packages/repo-canvas/src/server/api.ts"
+      ],
+      "x": 420,
+      "y": 350
+    },
+    {
+      "id": "canvas-chat",
+      "parent": "canvas",
+      "name": "Codex side-chat plugin",
+      "kind": "external",
+      "summary": "Hosted MCP App sends user messages to the owning Codex conversation. The chat reads captured context and returns replies and map proposals for review; no separate agent runs.",
+      "sources": [
+        "packages/repo-canvas/src/server/stdio.ts",
+        "packages/repo-canvas/src/server/mcp.ts",
+        "packages/repo-canvas/src/ui/host.ts",
+        "packages/repo-canvas/src/ui/SideChat.tsx"
+      ],
+      "x": 60,
+      "y": 350
+    }
+  ],
+  "connections": [
+    {
+      "id": "app-games",
+      "from": "app",
+      "to": "games",
+      "label": "opens"
+    },
+    {
+      "id": "app-dcc",
+      "from": "app",
+      "to": "dcc",
+      "label": "opens"
+    },
+    {
+      "id": "games-shared",
+      "from": "games",
+      "to": "shared",
+      "label": "uses utilities"
+    },
+    {
+      "id": "trace-review",
+      "from": "trace",
+      "to": "review",
+      "label": "renders evidence"
+    },
+    {
+      "id": "spire-ui-spire-session",
+      "from": "spire-ui",
+      "to": "spire-session",
+      "label": "uses"
+    },
+    {
+      "id": "spire-session-spire-rules",
+      "from": "spire-session",
+      "to": "spire-rules",
+      "label": "reconstructs"
+    },
+    {
+      "id": "canvas-ui-canvas-model",
+      "from": "canvas-ui",
+      "to": "canvas-model",
+      "label": "renders & validates"
+    },
+    {
+      "id": "canvas-ui-canvas-repo",
+      "from": "canvas-ui",
+      "to": "canvas-repo",
+      "label": "loads & saves"
+    },
+    {
+      "id": "canvas-chat-canvas-model",
+      "from": "canvas-chat",
+      "to": "canvas-model",
+      "label": "proposes changes"
+    },
+    {
+      "id": "canvas-repo-canvas-model",
+      "from": "canvas-repo",
+      "to": "canvas-model",
+      "label": "validates"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "map-scope",
+      "target": "repo",
+      "text": "Initial curated orientation based on AGENTS.md, package declarations and inspected entry points. Relationships are a selected architectural view, not a complete import graph.",
+      "author": "agent"
+    },
+    {
+      "id": "canvas-native",
+      "target": "canvas",
+      "text": "Side chat captures unsaved map context for the current Codex conversation. Review proposals, apply to draft, then save. Direct external file edits appear automatically when the local draft is clean.",
+      "author": "agent"
+    }
+  ]
+}

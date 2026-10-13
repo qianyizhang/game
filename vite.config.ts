@@ -13,7 +13,11 @@ export default defineConfig({
         extends: true,
         test: {
           name: 'application',
-          include: ['src/**/*.test.ts', 'packages/diablo2/src/**/*.test.ts'],
+          include: [
+            'src/**/*.test.ts',
+            'packages/diablo2/src/**/*.test.ts',
+            'packages/repo-canvas/src/**/*.test.ts',
+          ],
           exclude: ['src/art3d/**/*.test.ts'],
         },
       },

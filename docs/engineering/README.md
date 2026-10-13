@@ -12,6 +12,7 @@
 - [Installed review skills](agent-skills.md) maps upstream conventions to the repository.
 - [Offline Codex usage dashboard](usage-dashboard.md): local session accounting, usage trends, pricing and source evidence.
 - [Trace behavior debugger](trace-visualizer.md) connects curated episodes, records and retained artifacts.
+- [MCP Apps in Codex](mcp-apps.md) records server lifetime, current-chat messaging, verification and integration caveats.
 - [Tools package](../../packages/workshop-tools/README.md) documents maintenance commands.
 - [DCC package](../../packages/dcc-workbench/README.md) documents Blender authoring and delivery.
 

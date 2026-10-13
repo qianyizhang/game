@@ -12,6 +12,7 @@ export function managedSource(path) {
     /^src\/.*\.tsx?$/.test(path) ||
     /^packages\/session-review\/.*\.tsx?$/.test(path) ||
     /^packages\/diablo2\/src\/.*\.tsx?$/.test(path) ||
+    /^packages\/repo-canvas\/.*\.tsx?$/.test(path) ||
     /^packages\/dcc-workbench\/src\/[^/]+\.tsx?$/.test(path) ||
     /^packages\/dcc-workbench\/[^/]+\.(ts|mjs)$/.test(path) ||
     /^packages\/dcc-workbench\/(evaluation|subjects\/canid)\/[^/]+\.ts$/.test(path) ||

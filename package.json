@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm run build --workspace @card-workshop/repo-canvas",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run --project application",
     "test:watch": "vitest --project application",
@@ -37,10 +37,10 @@
     "typecheck": "tsc --noEmit && npm run typecheck --workspaces --if-present",
     "test:tools": "npm run test --workspace @card-workshop/tools",
     "check:python": "uv run --locked ruff check && uv run --locked ruff format --check && uv run --locked mypy && uv run --locked python -m unittest discover -s packages/dcc-workbench/blender -p \"test_*.py\"",
-    "format:maintenance": "prettier --check skills/card-art packages/session-review packages/workshop-tools packages/dcc-workbench/README.md packages/dcc-workbench/src packages/dcc-workbench/package.json packages/dcc-workbench/tsconfig.json docs/README.md docs/guide docs/engineering docs/art docs/research maintenance .github AGENTS.md package.json eslint.config.mjs src tests *.config.ts tsconfig.json \"packages/dcc-workbench/*.{ts,mjs,json}\" packages/dcc-workbench/subjects packages/diablo2 packages/dcc-workbench/evaluation",
+    "format:maintenance": "prettier --check skills/card-art packages/session-review packages/workshop-tools packages/dcc-workbench/README.md packages/dcc-workbench/src packages/dcc-workbench/package.json packages/dcc-workbench/tsconfig.json docs/README.md docs/guide docs/engineering docs/art docs/research maintenance .github AGENTS.md package.json eslint.config.mjs src tests *.config.ts tsconfig.json \"packages/dcc-workbench/*.{ts,mjs,json}\" packages/dcc-workbench/subjects packages/diablo2 packages/dcc-workbench/evaluation packages/repo-canvas",
     "check:maintenance": "npm run format:maintenance && npm run lint:tools && npm run lint:app && npm run typecheck && npm run check:python && npm run test:tools && npm run test:dcc && npm run maintenance -- check && npm run build",
     "trace:build": "node packages/workshop-tools/trace/build.ts",
-    "lint:app": "eslint src tests packages/diablo2 *.config.ts --max-warnings=0",
+    "lint:app": "eslint src tests packages/diablo2 packages/repo-canvas *.config.ts --max-warnings=0",
     "test:dcc:saved": "node packages/dcc-workbench/verify-saved.ts",
     "usage:dashboard": "node packages/workshop-tools/usage/build.ts",
     "test:usage": "node --test packages/workshop-tools/usage/*.test.ts",
@@ -49,7 +49,8 @@
     "dcc:otter": "node packages/dcc-workbench/otter.ts",
     "dcc:raven": "node packages/dcc-workbench/raven.ts",
     "dcc:boar": "node packages/dcc-workbench/boar.ts",
-    "dcc:fox": "node packages/dcc-workbench/fox.ts"
+    "dcc:fox": "node packages/dcc-workbench/fox.ts",
+    "repo:canvas": "npm run dev --workspace @card-workshop/repo-canvas --"
   },
   "dependencies": {
     "react": "19.3.0",
@@ -77,7 +78,8 @@
     "packages/dcc-workbench",
     "packages/workshop-tools",
     "packages/session-review",
-    "packages/diablo2"
+    "packages/diablo2",
+    "packages/repo-canvas"
   ],
   "engines": {
     "node": ">=24.21.0 <25",

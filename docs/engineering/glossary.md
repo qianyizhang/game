@@ -243,3 +243,15 @@ _Avoid_: Boon, when referring to a starting rune.
 **Chronicle**: The remembered sequence of passages and quay decisions, including an unfinished passage.
 
 **Passage score**: Points earned within one passage: 100 for each cleared combat chamber and 10,000 for escaping. Safe stops, kills and accumulated ash award no points; returning to the quay closes that score.
+
+## Repo Canvas
+
+**Architecture map**: A shared description of a repository's responsibilities and relationships, organized into nested modules. It can describe observed code or a proposed design; those claims remain distinct.
+
+**Scope**: The module whose immediate internals are currently visible on the canvas.
+
+**Source reference**: A repository-relative file associated with a module as supporting evidence or an inspection entry point.
+
+**Annotation**: A human or agent note attached to a stable module identity, independent of its canvas position.
+
+**Map proposal**: An agent's candidate architecture map awaiting human review before it becomes a draft.
