@@ -4,8 +4,8 @@ import { applyCommand, createGame, RULES_VERSION, validCommand } from '../domain
 import type { Command, State } from '../domain/types';
 
 export const SAVE_KEY = 'card-workshop.night-passage.v1';
-const MAX_COMMANDS = 300_000;
-const MAX_TICKS = 864_000;
+export const MAX_COMMANDS = 300_000;
+export const MAX_TICKS = 864_000;
 interface Journal {
   command: Command;
   previous: Journal | null;

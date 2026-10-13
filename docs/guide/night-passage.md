@@ -58,6 +58,12 @@ Three duo blessings require both named patrons to remain equipped: Boiling Wake 
 
 ## Economy and persistence
 
+Your passage score earns **100 points per cleared combat chamber** and **10,000
+for escaping**. Each chamber counts once, including guardians. Kills, gold, ash,
+safe stops and waiting award no points. Death or retirement keeps earned points
+until you return to the quay; the next passage starts at zero. Agents can play
+the same rules through the [local agent interface](../engineering/night-passage-agent.md).
+
 Kills and coin rooms yield gold. Each market sells one healing purchase (35 gold), one vitality purchase (60), and one blessing (80). Trials add an extra wave and stronger enemies in exchange for a blessing and 80 gold. A fountain restores 35 health; entering a guardian chamber restores 25.
 
 Room clears and guardians yield ash. Escape, death or voluntary retirement ends the passage; returning to the quay banks its ash exactly once. Spend ash on three ranks of permanent vitality, each adding 10 starting maximum health. Temporary gold and blessings reset on the next passage.
@@ -67,6 +73,18 @@ The chronicle autosaves locally during combat and after decisions. Export/import
 Chronicles are bounded to 300,000 packed commands, four hours of requested simulation ticks, and 24 MB on import. Realtime inputs use a compact lossless format. **New chronicle** asks for a seed and downloads the current history before resetting all progression. When an unreadable original is preserved, reset downloads that original separately as well as the current playable history. **Download original save** also preserves unreadable or incompatible bytes without resetting. Automatic saving remains visibly paused while original bytes are protected. Rules version 4 adds the distinct-slot blessing draft; content remains version 3. Rules-1/2/3 histories are rejected explicitly. Their original bytes remain downloadable; continuing with the new rules requires a new chronicle or a compatible import. Browser quotas can still prevent autosave, so retain portable exports for long histories.
 
 See [engineering and extension points](../engineering/night-passage.md) for ownership and verification.
+
+### Watch a recorded passage
+
+Choose **Watch replay**, then **Open replay** to select an exported chronicle.
+The spectator replays its recorded actions from the beginning in 2.5D or 2D,
+with play/pause, 1×–8× speed, a seek bar, restart and **Show result**. It never
+writes to your normal game save. **Import** remains the separate action for
+restoring a chronicle as your playable session.
+
+Replay time counts recorded requested combat ticks; decisions happen immediately
+and any unused ticks at a chamber ending remain on the timeline. It is not the
+agent process's wall-clock runtime. Switching browser tabs suspends playback.
 
 ## Arena views
 

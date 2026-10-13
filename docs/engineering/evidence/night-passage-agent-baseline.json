@@ -1,0 +1,331 @@
+{
+  "date": "2026-10-13",
+  "scope": "Frozen Night Passage baseline; no tuning",
+  "versions": {
+    "benchmark": "night-passage-benchmark-1",
+    "engine": "night-passage-baseline-1",
+    "rules": "night-passage-4",
+    "content": "night-passage-content-3",
+    "api": "night-passage-agent-1",
+    "score": "night-passage-score-1"
+  },
+  "config": {
+    "decisionTicks": 6,
+    "bowDistance": 230,
+    "meleeReachRatio": 0.7
+  },
+  "budgets": {
+    "maxActions": 20000,
+    "maxTicks": 120000
+  },
+  "profile": "fresh",
+  "runes": ["vigor", "fleet"],
+  "ranking": ["wins", "meanScore", "medianWinTicks"],
+  "provenance": {
+    "sourceDigests": {
+      "packages/workshop-tools/night-passage/entry.ts": "f7a7423f5c764be73b46dc54b225e1466538902dd51e9dc7395e397cc567e022",
+      "src/games/night-passage/agent/benchmark.ts": "d3a47c68e9ca7e0ce97e09a1366e2fde0d98bd5cbee4b457f7f176580a1591d9",
+      "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+      "src/games/night-passage/application/agent.ts": "7f5fc24bee0c65279b680d59ae998d970495df98792c75405ceba9dccb6c769b",
+      "src/games/night-passage/application/session.ts": "f12e063c26d6aff4951781e1709a135e60a7cbc45b63a60f7cd6b86dbb265d88",
+      "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+      "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+      "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+      "src/games/night-passage/domain/content.ts": "16c16e0e994e746dfe26b8d964de6e4636f6a341c24b554a1b1b7fce4ef54ace",
+      "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+      "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+      "src/games/night-passage/domain/encounters.ts": "937911f863b540f466c0387d98e0d17bd095fbb442202a651b8f8446c1602909",
+      "src/games/night-passage/domain/game.ts": "b0d5783c0965f3374dc3310927b845e78f1776ca0f9748f7b90dc871b6d594c5",
+      "src/games/night-passage/domain/geometry.ts": "c48f5470e3b192a0be37feb0ac0ea21bc4606521c1b7cc357e1a1a122971bc10",
+      "src/games/night-passage/domain/score.ts": "4fb04fcb85e1541c4d6049a86878eeadea55e03e9a19d64a6ac338c9300f7239",
+      "src/games/night-passage/domain/threats.ts": "6467c441f2315973840625c12281132684a19c4c2f3301886d16bdabff76e9e4",
+      "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+      "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+    },
+    "bundleDigest": "75ec01ff8540355d5533325abc496e8f037bc4c03cda7cf80ba19933c1f0af3a"
+  },
+  "suites": [
+    {
+      "id": "night-passage-training-1",
+      "seeds": ["passage-verification", "a-light-in-the-dark", "gods-and-runes"],
+      "weapons": ["sword", "spear", "shield", "bow", "fists"],
+      "summary": {
+        "episodes": 15,
+        "wins": 15,
+        "losses": 0,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 12780,
+        "medianWinTicks": 28995
+      },
+      "episodes": [
+        {
+          "seed": "passage-verification",
+          "weapon": "sword",
+          "status": "won",
+          "score": 12700,
+          "elapsedTicks": 23467,
+          "combatClears": 27
+        },
+        {
+          "seed": "a-light-in-the-dark",
+          "weapon": "sword",
+          "status": "won",
+          "score": 12900,
+          "elapsedTicks": 29456,
+          "combatClears": 29
+        },
+        {
+          "seed": "gods-and-runes",
+          "weapon": "sword",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 27714,
+          "combatClears": 28
+        },
+        {
+          "seed": "passage-verification",
+          "weapon": "spear",
+          "status": "won",
+          "score": 12700,
+          "elapsedTicks": 25777,
+          "combatClears": 27
+        },
+        {
+          "seed": "a-light-in-the-dark",
+          "weapon": "spear",
+          "status": "won",
+          "score": 12700,
+          "elapsedTicks": 27502,
+          "combatClears": 27
+        },
+        {
+          "seed": "gods-and-runes",
+          "weapon": "spear",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 28011,
+          "combatClears": 28
+        },
+        {
+          "seed": "passage-verification",
+          "weapon": "shield",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 31480,
+          "combatClears": 28
+        },
+        {
+          "seed": "a-light-in-the-dark",
+          "weapon": "shield",
+          "status": "won",
+          "score": 12900,
+          "elapsedTicks": 33072,
+          "combatClears": 29
+        },
+        {
+          "seed": "gods-and-runes",
+          "weapon": "shield",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 33564,
+          "combatClears": 28
+        },
+        {
+          "seed": "passage-verification",
+          "weapon": "bow",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 27003,
+          "combatClears": 28
+        },
+        {
+          "seed": "a-light-in-the-dark",
+          "weapon": "bow",
+          "status": "won",
+          "score": 12700,
+          "elapsedTicks": 28995,
+          "combatClears": 27
+        },
+        {
+          "seed": "gods-and-runes",
+          "weapon": "bow",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 27520,
+          "combatClears": 28
+        },
+        {
+          "seed": "passage-verification",
+          "weapon": "fists",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 29627,
+          "combatClears": 28
+        },
+        {
+          "seed": "a-light-in-the-dark",
+          "weapon": "fists",
+          "status": "won",
+          "score": 12700,
+          "elapsedTicks": 29455,
+          "combatClears": 27
+        },
+        {
+          "seed": "gods-and-runes",
+          "weapon": "fists",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 30160,
+          "combatClears": 28
+        }
+      ]
+    },
+    {
+      "id": "night-passage-held-out-1",
+      "seeds": [
+        "passage-holdout-lantern-01",
+        "passage-holdout-ferry-02",
+        "passage-holdout-dawn-03"
+      ],
+      "weapons": ["sword", "spear", "shield", "bow", "fists"],
+      "summary": {
+        "episodes": 15,
+        "wins": 15,
+        "losses": 0,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 12786.666666666666,
+        "medianWinTicks": 26929
+      },
+      "episodes": [
+        {
+          "seed": "passage-holdout-lantern-01",
+          "weapon": "sword",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 25380,
+          "combatClears": 28
+        },
+        {
+          "seed": "passage-holdout-ferry-02",
+          "weapon": "sword",
+          "status": "won",
+          "score": 12900,
+          "elapsedTicks": 24815,
+          "combatClears": 29
+        },
+        {
+          "seed": "passage-holdout-dawn-03",
+          "weapon": "sword",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 25956,
+          "combatClears": 28
+        },
+        {
+          "seed": "passage-holdout-lantern-01",
+          "weapon": "spear",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 28708,
+          "combatClears": 28
+        },
+        {
+          "seed": "passage-holdout-ferry-02",
+          "weapon": "spear",
+          "status": "won",
+          "score": 12700,
+          "elapsedTicks": 27056,
+          "combatClears": 27
+        },
+        {
+          "seed": "passage-holdout-dawn-03",
+          "weapon": "spear",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 26929,
+          "combatClears": 28
+        },
+        {
+          "seed": "passage-holdout-lantern-01",
+          "weapon": "shield",
+          "status": "won",
+          "score": 12700,
+          "elapsedTicks": 30305,
+          "combatClears": 27
+        },
+        {
+          "seed": "passage-holdout-ferry-02",
+          "weapon": "shield",
+          "status": "won",
+          "score": 12900,
+          "elapsedTicks": 32611,
+          "combatClears": 29
+        },
+        {
+          "seed": "passage-holdout-dawn-03",
+          "weapon": "shield",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 31195,
+          "combatClears": 28
+        },
+        {
+          "seed": "passage-holdout-lantern-01",
+          "weapon": "bow",
+          "status": "won",
+          "score": 12700,
+          "elapsedTicks": 26497,
+          "combatClears": 27
+        },
+        {
+          "seed": "passage-holdout-ferry-02",
+          "weapon": "bow",
+          "status": "won",
+          "score": 12900,
+          "elapsedTicks": 27638,
+          "combatClears": 29
+        },
+        {
+          "seed": "passage-holdout-dawn-03",
+          "weapon": "bow",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 26851,
+          "combatClears": 28
+        },
+        {
+          "seed": "passage-holdout-lantern-01",
+          "weapon": "fists",
+          "status": "won",
+          "score": 12700,
+          "elapsedTicks": 26395,
+          "combatClears": 27
+        },
+        {
+          "seed": "passage-holdout-ferry-02",
+          "weapon": "fists",
+          "status": "won",
+          "score": 12700,
+          "elapsedTicks": 26824,
+          "combatClears": 27
+        },
+        {
+          "seed": "passage-holdout-dawn-03",
+          "weapon": "fists",
+          "status": "won",
+          "score": 12800,
+          "elapsedTicks": 28710,
+          "combatClears": 28
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Three seeds per suite across five weapons; no universal-winnability claim.",
+    "Structured exact tactical observations, not pixel-only human-equivalent play.",
+    "No engine parameters selected using held-out results.",
+    "Simulation ticks are not wall-clock performance measurements."
+  ]
+}

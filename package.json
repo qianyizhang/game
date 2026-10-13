@@ -27,6 +27,7 @@
     "playtest:compare": "node packages/workshop-tools/experiments/compare-playtests.ts",
     "engine:challenges": "node packages/workshop-tools/experiments/solve-challenges.ts",
     "engine:hearth": "node packages/workshop-tools/hearth/agent.ts",
+    "engine:night-passage": "node packages/workshop-tools/night-passage/cli.ts",
     "experiment:hearth": "node packages/workshop-tools/hearth/experiment.ts",
     "dcc": "node packages/dcc-workbench/pipeline.mjs",
     "test:dcc": "node --test packages/dcc-workbench/*.test.mjs",

@@ -241,3 +241,5 @@ _Avoid_: Boon, when referring to a starting rune.
 **Ash**: Progression currency earned during a passage and banked on returning to the quay.
 
 **Chronicle**: The remembered sequence of passages and quay decisions, including an unfinished passage.
+
+**Passage score**: Points earned within one passage: 100 for each cleared combat chamber and 10,000 for escaping. Safe stops, kills and accumulated ash award no points; returning to the quay closes that score.

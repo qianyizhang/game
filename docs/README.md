@@ -21,4 +21,4 @@ Session discussions and iteration diaries belong in ignored `.work/sessions/`. P
 
 ## Night Passage
 
-[Player guide](guide/night-passage.md) · [Rules, extension points and verification](engineering/night-passage.md).
+[Player guide](guide/night-passage.md) · [Rules, extension points and verification](engineering/night-passage.md) · [Agent play and replay viewing](engineering/night-passage-agent.md).

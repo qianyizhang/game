@@ -4,7 +4,8 @@ export const distance = (a: Point, b: Point): number => Math.hypot(a.x - b.x, a.
 export const angle = (a: Point, b: Point): number => Math.atan2(b.y - a.y, b.x - a.x);
 export const angleDelta = (a: number, b: number): number =>
   Math.atan2(Math.sin(a - b), Math.cos(a - b));
-export function clearLine(state: State, from: Point, to: Point, clearance = 0): boolean {
+type Obstacles = { room: Pick<State['room'], 'pillars'> };
+export function clearLine(state: Obstacles, from: Point, to: Point, clearance = 0): boolean {
   const dx = to.x - from.x;
   const dy = to.y - from.y;
   const squared = dx * dx + dy * dy;
@@ -19,7 +20,7 @@ export function clearLine(state: State, from: Point, to: Point, clearance = 0): 
 }
 
 /** Choose a visible detour around the first circular obstacle on a direct approach. */
-export function headingTo(state: State, from: Point, target: Point, radius: number): number {
+export function headingTo(state: Obstacles, from: Point, target: Point, radius: number): number {
   const dx = target.x - from.x;
   const dy = target.y - from.y;
   const squared = dx * dx + dy * dy;

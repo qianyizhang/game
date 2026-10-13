@@ -2,6 +2,9 @@
 
 Night Passage lives in `src/games/night-passage`. Its rules are independent of React, Canvas, Three.js and the other games. Rules reuse the existing seeded random and JSON narrowing utilities; presentation also uses the shared Three.js resource disposal helper. The [player guide](../guide/night-passage.md) owns controls and game behavior; the [glossary](glossary.md#night-passage) owns terminology.
 
+The [agent-play interface](night-passage-agent.md) owns passage scoring, structured
+observations/actions, the local JSON API and the baseline player benchmark.
+
 ## Ownership
 
 | Module                                     | Responsibility and extension path                                                                                                                     |
@@ -14,7 +17,11 @@ Night Passage lives in `src/games/night-passage`. Its rules are independent of R
 | `domain/boon-offers.ts`                    | Seeded blessing eligibility and slot-diverse audience drafts. Returns offered IDs and the next RNG state without changing a build.                    |
 | `domain/game.ts`                           | Command validation, run lifecycle, rewards, markets and progression. `applyCommand` rejects atomically and returns the original state on failure.     |
 | `application/session.ts`                   | Accepted-command journal, bounded replay validation, export and reconstruction. No serialized state snapshot is trusted.                              |
+| `application/agent.ts`                     | Detached tactical observations and validated agent commands.                                                                                          |
+| `application/playback.ts`                  | Isolated replay timeline, frame splitting and seeking through recorded commands.                                                                      |
+| `agent/`                                   | Observation-driven baseline policy and bounded, versioned benchmark episodes.                                                                         |
 | `ui/NightPassageApp.tsx`                   | Input collection, bounded realtime accumulator, save lifecycle, HUD and decision screens.                                                             |
+| `ui/ReplayViewer.tsx`                      | Spectator file loading, playback controls and existing renderer integration.                                                                          |
 | `ui/presentation/`                         | Renderer lifecycle, viewport sizing, ground projection and 2D/2.5D drawing of confirmed state. Damage and collision stay in rules.                    |
 | `tests/simulation/night-passage-policy.ts` | Legal-command verification pilot. It is not a player-facing autoplay feature.                                                                         |
 

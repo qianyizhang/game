@@ -64,6 +64,21 @@ Relative CLI paths resolve from the repository root; explicit absolute export/re
 
 Envelope validation covers object shape, request IDs and the 64 KiB bound. Step/action inputs stay unknown until the game adapter rejects or matches them against the current legal frame. The adapters' seeded rules and accepted-command journals are unchanged. Arena controllers stay bound to one seat; automatic rivals and round advancement remain journaled. Protocol integration tests complete both games, assert hidden fields remain absent, reject malformed/stale requests and verify the evaluator replay independently.
 
+## Night Passage agent commands
+
+`npm run --silent engine:night-passage -- serve` runs an isolated JSONL chronicle
+on stdin/stdout. `play` exports one baseline episode; `benchmark` evaluates a fixed
+training or held-out suite. `--out` writes a report and `play --replay` writes a
+portable chronicle. Paths resolve from the current working directory; explicit
+outputs overwrite existing files. Keep regenerable reports and replays under
+ignored `test-results/`.
+
+The `night-passage/` modules bundle the game's public agent interface into a
+temporary runtime, pin source and bundle hashes, and remove that runtime on exit.
+The [agent guide](../../docs/engineering/night-passage-agent.md) owns requests,
+scoring, baseline configuration and benchmark interpretation. The package test
+command covers the real JSONL process; lint, types and inventory cover these modules.
+
 ## Frozen Hearth experiments and inspector
 
 `hearth/experiment.ts` owns the single-seat plan, `arena-experiment.ts` and `arena-audit.ts` own the arena plan and reconstruction, and the `recruitment-*` modules own the bounded worker harness and inspector. All resolve inputs, output arguments and Git provenance from the repository root. Existing output and audit receipts are refused; failed partial runs remain available for inspection.

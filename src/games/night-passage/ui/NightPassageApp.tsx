@@ -17,11 +17,13 @@ import {
   weapon,
 } from '../domain/content';
 import type { Command, Input, Point, RuneId, WeaponId } from '../domain/types';
+import { passageScore } from '../domain/score';
 import { createCanvasRenderer } from './presentation/canvas';
 import { createSceneRenderer } from './presentation/scene';
 import type { Renderer } from './presentation/renderer';
 import { PassageAudio } from './audio';
 import { PatronArt, RewardArt, RuneArt, WeaponArt } from './Artwork';
+import ReplayViewer from './ReplayViewer';
 import './night-passage.css';
 
 const VIEW_KEY = 'card-workshop.night-passage.view.v1';
@@ -75,6 +77,14 @@ function downloadText(text: string, name = 'night-passage.json'): void {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 export default function NightPassageApp() {
+  return new URLSearchParams(location.search).get('watch') === '1' ? (
+    <ReplayViewer />
+  ) : (
+    <PassageGame />
+  );
+}
+
+function PassageGame() {
   const [initial] = useState(load);
   const session = useRef(initial.session);
   const preserve = useRef(initial.preserve);
@@ -363,6 +373,15 @@ export default function NightPassageApp() {
               }}
             />
           </label>
+          <button
+            onClick={() => {
+              setPaused(true);
+              save();
+              location.href = '/?game=night-passage&watch=1';
+            }}
+          >
+            Watch replay
+          </button>
           {view.phase === 'combat' && (
             <button
               onClick={() => {
@@ -469,6 +488,9 @@ export default function NightPassageApp() {
               <span>{view.gold} gold</span>
               <span>{p.casts} / 3 casts</span>
               <span>{Math.floor(p.charge)}% call</span>
+              {view.phase !== 'hub' && (
+                <span data-testid="np-score">{passageScore(view).value} points</span>
+              )}
             </div>
           </div>
           <div className="np-health">
@@ -698,6 +720,10 @@ export default function NightPassageApp() {
                     <p>
                       {view.roomsCleared} chambers cleared · {view.kills} foes defeated ·{' '}
                       {view.earnedAsh} ash earned
+                    </p>
+                    <p>
+                      Passage score: {passageScore(view).value} · 100 per combat chamber + 10,000
+                      for escape
                     </p>
                     <button className="np-primary" onClick={() => send({ type: 'return' })}>
                       Return to the quay
