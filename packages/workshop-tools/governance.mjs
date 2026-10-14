@@ -1,5 +1,4 @@
 import { execFileSync } from 'node:child_process';
-import { createHash } from 'node:crypto';
 import { closeSync, existsSync, openSync, readFileSync, readSync } from 'node:fs';
 import { resolve, sep } from 'node:path';
 
@@ -22,13 +21,6 @@ export function managedSource(path) {
       path,
     )
   );
-}
-
-/** @param {unknown} value @returns {Record<string, unknown>} */
-function record(value) {
-  if (!value || typeof value !== 'object' || Array.isArray(value))
-    throw new Error('Expected a record');
-  return /** @type {Record<string, unknown>} */ (value);
 }
 
 /** Every maintained source and document must have an enforced home. @param {string[]} files */
@@ -120,31 +112,6 @@ export function checkGovernance(root) {
     );
   if (readFileSync(resolve(root, '.nvmrc'), 'utf8').trim() !== expectedNode)
     errors.push('Node runtime pins disagree');
-  const skills = record(
-    JSON.parse(readFileSync(resolve(root, 'maintenance/skills-lock.json'), 'utf8')),
-  );
-  if (
-    skills.schemaVersion !== 1 ||
-    typeof skills.revision !== 'string' ||
-    !/^[a-f0-9]{40}$/.test(skills.revision)
-  )
-    throw new Error('Invalid pinned skill revision');
-  const skillFiles = record(skills.files);
-  for (const [path, expected] of Object.entries(skillFiles)) {
-    if (typeof expected !== 'string' || !/^[a-f0-9]{64}$/.test(expected))
-      throw new Error('Invalid skill digest');
-    if (!/^(?:\.agents\/skills\/|maintenance\/third-party\/)/.test(path) || path.includes('..'))
-      throw new Error('Invalid skill lock path');
-    if (
-      !existsSync(resolve(root, path)) ||
-      createHash('sha256')
-        .update(readFileSync(resolve(root, path)))
-        .digest('hex') !== expected
-    )
-      errors.push(`Pinned skill bytes changed: ${path}`);
-  }
-  for (const path of files.filter((path) => path.startsWith('.agents/skills/')))
-    if (!(path in skillFiles)) errors.push(`Unpinned skill file: ${path}`);
   // Check repository-local Markdown links in the new canonical homes and maintained package.
   const documents = files.filter(
     (path) =>

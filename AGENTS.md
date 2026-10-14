@@ -26,7 +26,8 @@ Use the pinned Node/npm runtime with `nvm use`, and Python from `.python-version
 New source must enter an enforced check scope. `npm run check:maintenance` verifies maintained tooling and static checks; `npm run check` also runs application tests and seeded simulations. Report those scopes separately.
 
 Before using the installed review skills, read [their project mapping](docs/engineering/agent-skills.md).
-It maps upstream document names to this repository's homes and records the pinned source.
+It maps upstream document names to this repository's homes; repo-kit owns the
+shared user-level installation and source lock.
 For domain naming or interface changes, read the relevant [glossary](docs/engineering/glossary.md) context and [ADRs](docs/engineering/decisions/README.md); use domain-modeling when changing those meanings.
 
 For SVG or 3D artwork, read [the Card Workshop art skill](skills/card-art/SKILL.md) and the [aesthetic rulebook](docs/art/art-direction.md). The rulebook is the shared visual standard; the skill covers creation and review. [SVG sources](docs/art/svg.md) and [3D sources](docs/art/3d.md) locate renderers and export integration. Passing technical checks does not establish visual quality.
