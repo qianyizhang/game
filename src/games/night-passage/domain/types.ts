@@ -1,3 +1,5 @@
+import type { Difficulty, RulesVersion } from './contracts';
+
 export type WeaponId = 'sword' | 'spear' | 'shield' | 'bow' | 'fists';
 export type GodId = 'storm' | 'tide' | 'cinder' | 'winter' | 'veil';
 export type Slot = 'attack' | 'special' | 'dash' | 'cast' | 'call';
@@ -83,6 +85,7 @@ export interface Player extends Point {
 }
 export type EnemyKind = 'hunter' | 'archer' | 'brute' | 'witch' | 'boss';
 export interface Enemy extends Point {
+  difficulty?: Difficulty;
   id: number;
   kind: EnemyKind;
   hp: number;
@@ -154,6 +157,8 @@ export interface Profile {
   unlockedRunes: RuneId[];
 }
 export interface State {
+  rulesVersion: RulesVersion;
+  difficulty: Difficulty;
   seed: string;
   rng: number;
   tick: number;
@@ -179,7 +184,7 @@ export interface State {
   message: string;
 }
 export type Command =
-  | { type: 'start'; weapon: WeaponId; runes: RuneId[] }
+  | { type: 'start'; weapon: WeaponId; runes: RuneId[]; difficulty?: Difficulty }
   | { type: 'frame'; input: Input; ticks: number }
   | { type: 'choose'; id: string }
   | { type: 'travel'; index: number }

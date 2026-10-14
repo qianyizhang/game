@@ -1,6 +1,12 @@
-import { ARENA, boon, CONTENT_VERSION, RUNES, weapon, WEAPONS } from '../domain/content';
+import { ARENA, boon, RUNES, weapon, WEAPONS } from '../domain/content';
 import { hazardPhase, hazardTiming } from '../domain/encounters';
-import { RULES_VERSION, validCommand } from '../domain/game';
+import { validCommand } from '../domain/game';
+import {
+  DIFFICULTIES,
+  contentVersion,
+  type Difficulty,
+  type RulesVersion,
+} from '../domain/contracts';
 import { passageScore, type PassageScore } from '../domain/score';
 import { attackShapes, projectileAngles, type ThreatShape } from '../domain/threats';
 import type {
@@ -32,6 +38,7 @@ export interface Observation {
   version: 'night-passage-agent-1';
   rulesVersion: string;
   contentVersion: string;
+  difficulty: Difficulty;
   phase: State['phase'];
   tick: number;
   region: number;
@@ -102,11 +109,16 @@ function actionCandidates(state: State): DiscreteCommand[] {
         for (let j = i + 1; j < runes.length; j++) loadouts.push([runes[i], runes[j]]);
       return [
         ...WEAPONS.flatMap((entry) =>
-          loadouts.map((loadout): DiscreteCommand => ({
-            type: 'start',
-            weapon: entry.id,
-            runes: loadout,
-          })),
+          loadouts.flatMap((loadout): DiscreteCommand[] =>
+            state.rulesVersion === 'night-passage-4'
+              ? [{ type: 'start', weapon: entry.id, runes: loadout }]
+              : DIFFICULTIES.map((difficulty) => ({
+                  type: 'start',
+                  weapon: entry.id,
+                  runes: loadout,
+                  difficulty,
+                })),
+          ),
         ),
         { type: 'train' },
       ];
@@ -146,8 +158,9 @@ export function observeSession(session: Session): Observation {
     state.phase === 'combat' && frameTicks > 0 && (session.journal?.length ?? 0) < MAX_COMMANDS;
   return structuredClone({
     version: API_VERSION,
-    rulesVersion: RULES_VERSION,
-    contentVersion: CONTENT_VERSION,
+    rulesVersion: state.rulesVersion,
+    contentVersion: contentVersion(state.rulesVersion),
+    difficulty: state.difficulty,
     phase: state.phase,
     tick: state.tick,
     region: state.region,
@@ -238,10 +251,15 @@ export interface Agent {
 }
 
 // Whitelist the command payload as well: unknown caller metadata must not enter the replay.
-function commandPayload(command: Command): Command {
+export function commandPayload(command: Command): Command {
   switch (command.type) {
     case 'start':
-      return { type: 'start', weapon: command.weapon, runes: [...command.runes] };
+      return {
+        type: 'start',
+        weapon: command.weapon,
+        runes: [...command.runes],
+        ...(command.difficulty ? { difficulty: command.difficulty } : {}),
+      };
     case 'frame': {
       const { x, y, aim, attack, special, dash, cast, call } = command.input;
       return {
@@ -262,8 +280,8 @@ function commandPayload(command: Command): Command {
 }
 
 /** Own the chronicle in a closure so a policy cannot modify authoritative state. */
-export function createAgent(seed: string): Agent {
-  let session = newSession(seed);
+export function createAgent(seed: string, rules?: RulesVersion): Agent {
+  let session = newSession(seed, rules);
   return {
     observe: () => observeSession(session),
     step(command) {

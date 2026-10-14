@@ -214,8 +214,8 @@ test('legal first-room blessing draft offers distinct slots and survives choice,
   const saved = (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!;
   expect(saved).toBe(exportSession(expected.session));
   expect(JSON.parse(saved) as { rules: string; content: string }).toMatchObject({
-    rules: 'night-passage-4',
-    content: 'night-passage-content-3',
+    rules: 'night-passage-5',
+    content: 'night-passage-content-4',
   });
   expect(importSession(saved).state.player.boons).toEqual([{ id: selected.id, level: 1 }]);
   await page.reload();

@@ -74,7 +74,7 @@ test('observations and catalog entries are detached and omit hidden enemy and ch
 test('observed choices follow current eligibility and expose only announced attack geometry', () => {
   const hub = newSession('agent-eligibility');
   const initial = observeSession(hub);
-  expect(initial.legalActions.filter((command) => command.type === 'start')).toHaveLength(35);
+  expect(initial.legalActions.filter((command) => command.type === 'start')).toHaveLength(105);
   expect(initial.legalActions).not.toContainEqual({ type: 'train' });
   expect(initial.frame).toBeNull();
   const active = dispatch(hub, { type: 'start', weapon: 'sword', runes: [] }).session;

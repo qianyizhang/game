@@ -121,6 +121,7 @@ export default function ReplayViewer() {
     setSnapshot(playback.seek(tick));
   };
   const state = snapshot?.state;
+  const score = state ? passageScore(state) : null;
   return (
     <main className="np-app">
       <header className="np-header">
@@ -157,7 +158,7 @@ export default function ReplayViewer() {
           </button>
         </div>
       </header>
-      {playback && state && snapshot && (
+      {playback && state && score && snapshot && (
         <>
           <div className="np-hud">
             <div>
@@ -169,9 +170,13 @@ export default function ReplayViewer() {
             <div className="np-resources">
               <span>{weapon(state.player.weapon).name}</span>
               <span>
+                {state.difficulty} ·{' '}
+                {state.rulesVersion === 'night-passage-4' ? 'original score' : 'speed score'}
+              </span>
+              <span>
                 {Math.ceil(state.player.hp)} / {state.player.maxHp} HP
               </span>
-              <span data-testid="np-replay-score">{passageScore(state).value} points</span>
+              <span data-testid="np-replay-score">{score.value} points</span>
             </div>
           </div>
           <div className="np-tools np-replay-controls">
@@ -230,7 +235,7 @@ export default function ReplayViewer() {
           </div>
           <p className="np-status">
             {snapshot.finished
-              ? `Replay complete · ${state.phase === 'won' ? 'Escaped' : state.phase} · ${passageScore(state).value} points`
+              ? `Replay complete · ${state.phase === 'won' ? 'Escaped' : state.phase} · ${score.value} points`
               : state.message}
           </p>
         </>

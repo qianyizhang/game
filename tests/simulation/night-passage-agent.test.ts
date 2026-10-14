@@ -12,7 +12,7 @@ test.each(
 )(
   'observation-only Night Passage baseline escapes with $weapon on $seed',
   ({ weapon, seed }) => {
-    const episode = runEpisode({ weapon, seed });
+    const episode = runEpisode({ weapon, seed, rules: 'night-passage-4' });
     expect(episode, JSON.stringify(episode)).toMatchObject({
       status: 'won',
       region: 3,

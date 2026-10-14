@@ -1,6 +1,7 @@
 import { expect, test } from 'vitest';
 import { runEpisode } from '../agent/benchmark';
-import { importSession } from './session';
+import { dispatch, exportSession, importSession } from './session';
+import { passageScore } from '../domain/score';
 import { createPlayback } from './playback';
 
 test('spectator playback can split frames, seek backwards and reproduce the exact recorded victory', () => {
@@ -20,4 +21,29 @@ test('spectator playback can split frames, seek backwards and reproduce the exac
   replay.seek(0);
   expect(replay.snapshot().state.phase).toBe('combat');
   expect(replay.seek(replay.snapshot().totalTicks).state).toEqual(final);
+});
+
+test('legacy chronicles keep original score and behavior through import, continued play, export and seek', () => {
+  const envelope = {
+    format: 'night-passage-replay-v2',
+    rules: 'night-passage-4',
+    content: 'night-passage-content-3',
+    seed: 'legacy-compatibility',
+    commands: [{ type: 'start', weapon: 'bow', runes: ['vigor', 'fleet'] }, [60, 0, -1, -1.57, 1]],
+  };
+  const text = JSON.stringify(envelope);
+  const session = importSession(text);
+  expect(session.state.rulesVersion).toBe('night-passage-4');
+  expect(session.state.difficulty).toBe('standard');
+  expect(passageScore(session.state).version).toBe('night-passage-score-1');
+  expect(exportSession(session)).toBe(text);
+  const continued = dispatch(session, { type: 'retire' });
+  expect(continued.error).toBeNull();
+  expect(continued.session.state.phase).toBe('lost');
+  expect(importSession(exportSession(continued.session)).state).toEqual(continued.session.state);
+  const playback = createPlayback(text);
+  playback.advance(60);
+  expect(playback.snapshot().state).toEqual(session.state);
+  playback.seek(10);
+  expect(playback.seek(60).state).toEqual(session.state);
 });

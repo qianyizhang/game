@@ -1,4 +1,5 @@
 import type { Enemy, Hazard, Point, State } from './types';
+import { DIFFICULTY } from './contracts';
 import { ENEMIES } from './encounter-content';
 import { angle, clearLine, distance, headingTo, translate } from './geometry';
 import { cue, has, hurtPlayer, projectile, rawHit } from './effects';
@@ -11,6 +12,7 @@ export function spawnEnemy(state: State, kind: Enemy['kind'], point: Point): voi
   );
   state.enemies.push({
     ...point,
+    ...(state.difficulty !== 'standard' ? { difficulty: state.difficulty } : {}),
     id: state.nextId++,
     kind,
     maxHp,
@@ -31,7 +33,8 @@ export function spawnEnemy(state: State, kind: Enemy['kind'], point: Point): voi
 
 function enemyAttack(state: State, enemy: Enemy): void {
   const pattern = attackPattern(enemy, state.region);
-  const damage = ENEMIES[enemy.kind].damage + state.region * 3;
+  const damage =
+    (ENEMIES[enemy.kind].damage + state.region * 3) * DIFFICULTY[state.difficulty].damage;
   const shapes = attackShapes(enemy, state.region);
   if (shapes.some((shape) => threatens(shape, state.player))) hurtPlayer(state, damage, enemy);
   for (const shape of shapes) {
@@ -71,10 +74,11 @@ function enemyAttack(state: State, enemy: Enemy): void {
       y: 120,
     });
   enemy.pattern++;
-  enemy.cooldown =
-    enemy.hp < enemy.maxHp / 2 && enemy.kind === 'boss'
+  enemy.cooldown = Math.round(
+    (enemy.hp < enemy.maxHp / 2 && enemy.kind === 'boss'
       ? Math.round(pattern.recovery * 0.72)
-      : pattern.recovery;
+      : pattern.recovery) * DIFFICULTY[state.difficulty].recovery,
+  );
 }
 export function enemyStep(state: State, enemy: Enemy): void {
   if (enemy.hp <= 0) return;
@@ -109,8 +113,14 @@ export function enemyStep(state: State, enemy: Enemy): void {
   enemy.aim = angle(enemy, p);
   if (covered || d > targetRange || (ranged && d < 145)) {
     const sign = !covered && ranged && d < 145 ? -1 : 1;
-    const speed = ENEMIES[enemy.kind].speed * (enemy.chill > 0 ? 0.55 : 1) * sign;
-    const heading = sign > 0 ? headingTo(state, enemy, p, enemy.radius) : enemy.aim;
+    const tuning = DIFFICULTY[state.difficulty];
+    const speed = ENEMIES[enemy.kind].speed * tuning.speed * (enemy.chill > 0 ? 0.55 : 1) * sign;
+    const flank = enemy.kind === 'hunter' && d > 160 ? tuning.flank * (enemy.id % 2 ? 1 : -1) : 0;
+    const target = {
+      x: p.x + Math.cos(enemy.aim + Math.PI / 2) * flank,
+      y: p.y + Math.sin(enemy.aim + Math.PI / 2) * flank,
+    };
+    const heading = sign > 0 ? headingTo(state, enemy, target, enemy.radius) : enemy.aim;
     translate(state, enemy, Math.cos(heading) * speed, Math.sin(heading) * speed, enemy.radius);
   }
   if (enemy.cooldown === 0 && d < pattern.range && !covered) {

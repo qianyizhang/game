@@ -9,7 +9,8 @@ import { distance } from './geometry';
 import type { Command, Input, LayoutId, Player, Reward, Route, State } from './types';
 export type { Command, Input, State } from './types';
 
-export const RULES_VERSION = 'night-passage-4';
+import { DIFFICULTIES, DIFFICULTY, RULES_VERSION, type RulesVersion } from './contracts';
+export { RULES_VERSION } from './contracts';
 const freshPlayer = (): Player => ({
   x: 480,
   y: 430,
@@ -32,8 +33,10 @@ const freshPlayer = (): Player => ({
   combo: 0,
   hindered: 0,
 });
-export function createGame(seed: string): State {
+export function createGame(seed: string, rulesVersion: RulesVersion = RULES_VERSION): State {
   return {
+    rulesVersion,
+    difficulty: 'standard',
     seed,
     rng: hashSeed(seed),
     tick: 0,
@@ -101,7 +104,10 @@ function ordinaryRoutes(state: State, rewards: readonly Reward[]): Route[] {
   );
   let next = 0;
   return rewards.map((reward) => {
-    const route = { reward, ...routeInfo[reward] };
+    const detail = routeInfo[reward].detail
+      .replace('35 health', `${Math.round(35 * DIFFICULTY[state.difficulty].healing)} health`)
+      .replace('20 healing', `${Math.round(20 * DIFFICULTY[state.difficulty].healing)} healing`);
+    const route = { reward, ...routeInfo[reward], detail };
     if (reward === 'shop' || reward === 'fountain') return route;
     const layout = layouts[next++];
     return {
@@ -129,7 +135,7 @@ function routePhase(state: State): void {
       {
         reward: 'boon',
         label: REGIONS[state.region].boss,
-        detail: 'Face this region’s guardian. A spring restores 25 health on entry.',
+        detail: `Face this region’s guardian. A spring restores ${Math.round(25 * DIFFICULTY[state.difficulty].healing)} health on entry.`,
       },
     ];
   } else if (state.chamber === CHAMBERS_PER_REGION - 1) {
@@ -229,15 +235,22 @@ function enterRoom(state: State, reward: Reward, layoutId: LayoutId = 'court'): 
   state.offers = [];
   state.purchases = [];
   state.rewardReturn = 'route';
-  if (boss) state.player.hp = Math.min(state.player.maxHp, state.player.hp + 25);
+  if (boss)
+    state.player.hp = Math.min(
+      state.player.maxHp,
+      state.player.hp + Math.round(25 * DIFFICULTY[state.difficulty].healing),
+    );
   if (!boss && reward === 'shop') {
     state.phase = 'shop';
     state.message = 'The ferryman trades in borrowed time.';
     return;
   }
   if (!boss && reward === 'fountain') {
-    state.player.hp = Math.min(state.player.maxHp, state.player.hp + 35);
-    state.message = 'The quiet spring restores 35 health.';
+    state.player.hp = Math.min(
+      state.player.maxHp,
+      state.player.hp + Math.round(35 * DIFFICULTY[state.difficulty].healing),
+    );
+    state.message = `The quiet spring restores ${Math.round(35 * DIFFICULTY[state.difficulty].healing)} health.`;
     routePhase(state);
     return;
   }
@@ -278,7 +291,10 @@ function clearRoom(state: State): void {
       break;
     case 'heart':
       state.player.maxHp += 20;
-      state.player.hp = Math.min(state.player.maxHp, state.player.hp + 20);
+      state.player.hp = Math.min(
+        state.player.maxHp,
+        state.player.hp + Math.round(20 * DIFFICULTY[state.difficulty].healing),
+      );
       routePhase(state);
       break;
     case 'coin':
@@ -305,6 +321,7 @@ export function validCommand(value: unknown): value is Command {
   switch (value.type) {
     case 'start':
       return (
+        (value.difficulty === undefined || DIFFICULTIES.some((d) => d === value.difficulty)) &&
         WEAPONS.some((w) => w.id === value.weapon) &&
         Array.isArray(value.runes) &&
         value.runes.length <= 2 &&
@@ -333,11 +350,13 @@ export function validCommand(value: unknown): value is Command {
 function rejection(state: State, command: Command): string | null {
   switch (command.type) {
     case 'start':
-      return state.phase !== 'hub'
-        ? 'Return to the quay before starting.'
-        : command.runes.some((r) => !state.profile.unlockedRunes.includes(r))
-          ? 'That rune is still locked.'
-          : null;
+      return state.rulesVersion === 'night-passage-4' && command.difficulty !== undefined
+        ? 'Legacy chronicles keep their original Standard rules. Begin a new chronicle for difficulty selection.'
+        : state.phase !== 'hub'
+          ? 'Return to the quay before starting.'
+          : command.runes.some((r) => !state.profile.unlockedRunes.includes(r))
+            ? 'That rune is still locked.'
+            : null;
     case 'frame':
       return state.phase !== 'combat' ? 'Combat is not active.' : null;
     case 'choose':
@@ -386,6 +405,7 @@ export function applyCommand(
   const state = structuredClone(previous);
   switch (command.type) {
     case 'start': {
+      state.difficulty = command.difficulty ?? 'standard';
       state.runNumber++;
       state.rng = hashSeed(`${state.seed}:${state.runNumber}`);
       state.region = 0;
@@ -451,10 +471,13 @@ export function applyCommand(
       state.gold -= { heal: 35, heart: 60, boon: 80 }[command.item];
       state.purchases.push(command.item);
       if (command.item === 'heal')
-        state.player.hp = Math.min(state.player.maxHp, state.player.hp + 40);
+        state.player.hp = Math.min(
+          state.player.maxHp,
+          state.player.hp + Math.round(40 * DIFFICULTY[state.difficulty].healing),
+        );
       if (command.item === 'heart') {
         state.player.maxHp += 20;
-        state.player.hp += 20;
+        state.player.hp += Math.round(20 * DIFFICULTY[state.difficulty].healing);
       }
       if (command.item === 'boon') {
         state.rewardReturn = 'shop';

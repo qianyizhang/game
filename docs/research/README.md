@@ -30,6 +30,8 @@ Checked: 2026-10-02. All three games are implemented. The notes distinguish refe
 
 ## Experiments and historical delivery
 
+- [Night Passage control and difficulty calibration](experiments/2026-10-14-night-passage-control.md): delayed controls, declared policy work, finishing-time score, preserved legacy play and fresh-seed balance evaluation.
+
 - [Night Passage rendering comparison](experiments/2026-10-13-night-passage-rendering.md): local enemy batching measurements, preserved surfaces and limits of the performance claim.
 
 - [Hearth recruitment protocol](hearth-recruitment-v2.md): frozen v5/v1 interventions, factorial grid, audit and decision explorer.

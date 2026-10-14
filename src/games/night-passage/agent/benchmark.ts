@@ -1,10 +1,18 @@
 import { API_VERSION, createAgent } from '../application/agent';
-import { CONTENT_VERSION } from '../domain/content';
-import { RULES_VERSION } from '../domain/game';
+import {
+  createController,
+  CONTROL_VERSION,
+  type ControlPreset,
+  type ControlConfig,
+  type ControlMetrics,
+  type ControlTrace,
+} from '../application/control';
+import { RULES_VERSION, type RulesVersion, type Difficulty } from '../domain/contracts';
+import { createPolicy, POLICY_VERSION, type Policy } from './policy';
 import type { RuneId, WeaponId } from '../domain/types';
 import { baselineCommand, PLAYER_VERSION, playerConfig, type PlayerConfig } from './player';
 
-export const BENCHMARK_VERSION = 'night-passage-benchmark-1';
+export const BENCHMARK_VERSION = 'night-passage-benchmark-2';
 export const BENCHMARK_SUITES = {
   training: {
     id: 'night-passage-training-1',
@@ -26,6 +34,12 @@ export interface EpisodeOptions {
   maxTicks?: number;
   config?: Partial<PlayerConfig>;
   includeReplay?: boolean;
+  rules?: RulesVersion;
+  difficulty?: Difficulty;
+  control?: ControlPreset | 'exact';
+  controlConfig?: Partial<ControlConfig>;
+  policy?: Policy;
+  includeTrace?: boolean;
 }
 export interface EpisodeResult {
   seed: string;
@@ -52,6 +66,12 @@ export interface EpisodeResult {
   profile: 'fresh';
   runes: RuneId[];
   replay?: string;
+  difficulty: Difficulty;
+  policy: Policy | 'baseline';
+  control: ControlPreset | 'exact';
+  controlConfig?: ControlConfig;
+  controlMetrics?: ControlMetrics;
+  trace?: ControlTrace[];
 }
 function budgets(
   options: Pick<EpisodeOptions, 'maxActions' | 'maxTicks'>,
@@ -72,14 +92,33 @@ function budgets(
 
 /** One fresh-profile attempt, using only accepted commands through the agent boundary. */
 export function runEpisode(options: EpisodeOptions): EpisodeResult {
-  const config = playerConfig(options.config);
+  const config = playerConfig(
+    options.control && options.control !== 'exact'
+      ? { decisionTicks: 1, ...options.config }
+      : options.config,
+  );
+  if (
+    options.rules === 'night-passage-4' &&
+    options.difficulty &&
+    options.difficulty !== 'standard'
+  )
+    throw new Error('Legacy rules require Standard difficulty.');
   const limits = budgets(options);
-  const agent = createAgent(options.seed);
+  if (options.control && options.control !== 'exact')
+    return controlledEpisode(options, config, limits);
+  const agent = createAgent(options.seed, options.rules);
   let observation = agent.observe();
   let actions = 0;
   let error: string | null = null;
   try {
-    const started = agent.step({ type: 'start', weapon: options.weapon, runes: [...RUNES] });
+    const started = agent.step({
+      type: 'start',
+      weapon: options.weapon,
+      runes: [...RUNES],
+      ...(options.rules !== 'night-passage-4'
+        ? { difficulty: options.difficulty ?? 'standard' }
+        : {}),
+    });
     observation = started.observation;
     if (!started.accepted) throw new Error(started.error ?? 'Start was rejected.');
     actions++;
@@ -103,6 +142,9 @@ export function runEpisode(options: EpisodeOptions): EpisodeResult {
   return {
     seed: options.seed,
     weapon: options.weapon,
+    difficulty: options.difficulty ?? 'standard',
+    policy: 'baseline',
+    control: 'exact',
     status: error
       ? 'error'
       : observation.phase === 'won'
@@ -121,8 +163,8 @@ export function runEpisode(options: EpisodeOptions): EpisodeResult {
     versions: {
       benchmark: BENCHMARK_VERSION,
       engine: PLAYER_VERSION,
-      rules: RULES_VERSION,
-      content: CONTENT_VERSION,
+      rules: observation.rulesVersion,
+      content: observation.contentVersion,
       api: API_VERSION,
       score: observation.score.version,
     },
@@ -136,12 +178,23 @@ export function runEpisode(options: EpisodeOptions): EpisodeResult {
 
 export interface BenchmarkOptions extends Pick<
   EpisodeOptions,
-  'config' | 'maxActions' | 'maxTicks'
+  | 'config'
+  | 'maxActions'
+  | 'maxTicks'
+  | 'rules'
+  | 'difficulty'
+  | 'control'
+  | 'controlConfig'
+  | 'policy'
 > {
   suite?: keyof typeof BENCHMARK_SUITES;
 }
 export interface BenchmarkReport {
   suite: string;
+  difficulty: Difficulty;
+  control: ControlPreset | 'exact';
+  policy: Policy | 'baseline';
+  controlConfig?: ControlConfig;
   versions: EpisodeResult['versions'];
   config: PlayerConfig;
   budgets: EpisodeResult['budgets'];
@@ -178,10 +231,14 @@ export interface BenchmarkReport {
 /** Freeze a candidate on training seeds before inspecting this suite's held-out results. */
 export function runBenchmark(options: BenchmarkOptions = {}): BenchmarkReport {
   const suite = BENCHMARK_SUITES[options.suite ?? 'training'];
-  const config = playerConfig(options.config);
+  const config = playerConfig(
+    options.control && options.control !== 'exact'
+      ? { decisionTicks: 1, ...options.config }
+      : options.config,
+  );
   const limits = budgets(options);
   const episodes = BENCHMARK_WEAPONS.flatMap((weapon) =>
-    suite.seeds.map((seed) => runEpisode({ seed, weapon, config, ...limits })),
+    suite.seeds.map((seed) => runEpisode({ ...options, seed, weapon, config, ...limits })),
   );
   const winTicks = episodes
     .filter((episode) => episode.status === 'won')
@@ -190,6 +247,10 @@ export function runBenchmark(options: BenchmarkOptions = {}): BenchmarkReport {
   const middle = Math.floor(winTicks.length / 2);
   return {
     suite: suite.id,
+    difficulty: episodes[0].difficulty,
+    control: episodes[0].control,
+    policy: episodes[0].policy,
+    ...(episodes[0].controlConfig ? { controlConfig: episodes[0].controlConfig } : {}),
     versions: episodes[0].versions,
     config,
     budgets: limits,
@@ -238,5 +299,89 @@ export function runBenchmark(options: BenchmarkOptions = {}): BenchmarkReport {
         error,
       }),
     ),
+  };
+}
+
+function controlledEpisode(
+  options: EpisodeOptions,
+  config: PlayerConfig,
+  limits: EpisodeResult['budgets'],
+): EpisodeResult {
+  const control = options.control as ControlPreset;
+  const policy = options.policy ?? 'balanced';
+  const agent = createController(options.seed, {
+    rules: options.rules ?? RULES_VERSION,
+    preset: control,
+    config: options.controlConfig,
+  });
+  const decide = createPolicy(policy, config);
+  let actions = 0,
+    error: string | null = null;
+  try {
+    const start = agent.step({
+      type: 'start',
+      weapon: options.weapon,
+      runes: [...RUNES],
+      ...(options.rules !== 'night-passage-4'
+        ? { difficulty: options.difficulty ?? 'standard' }
+        : {}),
+    });
+    if (!start.accepted) throw new Error(start.error ?? 'Start rejected.');
+    actions++;
+    while (
+      actions < limits.maxActions &&
+      agent.result().tick < limits.maxTicks &&
+      !['won', 'lost'].includes(agent.result().phase)
+    ) {
+      const decision = decide(agent.observe());
+      const result = agent.step(
+        decision.command,
+        decision.work.total,
+        limits.maxTicks - agent.result().tick,
+      );
+      if (!result.accepted) throw new Error(result.error ?? 'Control rejected.');
+      actions++;
+    }
+  } catch (cause) {
+    error = cause instanceof Error ? cause.message : String(cause);
+  }
+  const observation = agent.result();
+  return {
+    seed: options.seed,
+    weapon: options.weapon,
+    difficulty: observation.difficulty,
+    policy,
+    control,
+    status: error
+      ? 'error'
+      : observation.phase === 'won'
+        ? 'won'
+        : observation.phase === 'lost'
+          ? 'lost'
+          : 'timeout',
+    score: observation.score.value,
+    elapsedTicks: observation.tick,
+    actions,
+    combatClears: observation.score.combatClears,
+    region: observation.region,
+    chamber: observation.chamber,
+    hp: observation.player.hp,
+    error,
+    versions: {
+      benchmark: BENCHMARK_VERSION,
+      engine: POLICY_VERSION,
+      rules: observation.rulesVersion,
+      content: observation.contentVersion,
+      api: CONTROL_VERSION,
+      score: observation.score.version,
+    },
+    config,
+    budgets: limits,
+    profile: 'fresh',
+    runes: [...RUNES],
+    controlConfig: agent.config,
+    controlMetrics: agent.metrics(),
+    ...(options.includeReplay ? { replay: agent.exportReplay() } : {}),
+    ...(options.includeTrace ? { trace: agent.trace() } : {}),
   };
 }

@@ -9,7 +9,7 @@ export function createPlayback(text: string) {
   for (let node = restored.journal; node; node = node.previous) commands.push(node.command);
   commands.reverse();
   const totalTicks = commands.reduce((sum, c) => sum + (c.type === 'frame' ? c.ticks : 0), 0);
-  let state = createGame(restored.state.seed);
+  let state = createGame(restored.state.seed, restored.state.rulesVersion);
   let index = 0,
     offset = 0,
     position = 0;
@@ -52,7 +52,7 @@ export function createPlayback(text: string) {
       if (!Number.isFinite(tick)) throw new Error('Invalid replay time.');
       const target = Math.max(0, Math.min(totalTicks, Math.floor(tick)));
       if (target < position) {
-        state = createGame(restored.state.seed);
+        state = createGame(restored.state.seed, restored.state.rulesVersion);
         index = 0;
         offset = 0;
         position = 0;

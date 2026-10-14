@@ -79,7 +79,7 @@ test('fixed-seed reward comparison removes competing slots and empty-slot drough
     JSON.stringify(
       {
         previousRules: 'night-passage-3',
-        rules: 'night-passage-4',
+        rules: 'night-passage-5',
         seeds: 'reward-variety-0 through reward-variety-511',
         results,
       },

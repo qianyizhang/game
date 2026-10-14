@@ -3,7 +3,7 @@ import { applyCommand, createGame } from './game';
 import { passageScore } from './score';
 
 test('only combat clears and escape score; kills, safe stops and waiting cannot farm points', () => {
-  const state = applyCommand(createGame('score-contract'), {
+  const state = applyCommand(createGame('score-contract', 'night-passage-4'), {
     type: 'start',
     weapon: 'sword',
     runes: [],
@@ -29,7 +29,7 @@ test('only combat clears and escape score; kills, safe stops and waiting cannot 
 });
 
 test('returning and starting again cannot carry a previous passage score forward', () => {
-  const ended = createGame('score-lifecycle');
+  const ended = createGame('score-lifecycle', 'night-passage-4');
   ended.phase = 'won';
   ended.roomsCleared = 26;
   expect(passageScore(ended).value).toBe(12_600);
@@ -37,4 +37,23 @@ test('returning and starting again cannot carry a previous passage score forward
   expect(passageScore(hub)).toMatchObject({ value: 0, combatClears: 0, escaped: false });
   const restarted = applyCommand(hub, { type: 'start', weapon: 'bow', runes: [] }).state;
   expect(passageScore(restarted).value).toBe(0);
+});
+
+test('new escape score rewards executed finishing time without rewarding a quick failure', () => {
+  const state = createGame('speed-score');
+  state.phase = 'won';
+  state.roomsCleared = 20;
+  state.tick = 18000;
+  expect(passageScore(state)).toMatchObject({
+    value: 13333,
+    speedBonus: 1333,
+    finishingTicks: 18000,
+  });
+  state.tick = 36000;
+  expect(passageScore(state)).toMatchObject({ value: 13000, speedBonus: 1000 });
+  state.tick = 72000;
+  expect(passageScore(state)).toMatchObject({ value: 12666, speedBonus: 666 });
+  state.phase = 'lost';
+  state.tick = 0;
+  expect(passageScore(state)).toMatchObject({ value: 2000, speedBonus: 0 });
 });

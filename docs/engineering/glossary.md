@@ -242,7 +242,15 @@ _Avoid_: Boon, when referring to a starting rune.
 
 **Chronicle**: The remembered sequence of passages and quay decisions, including an unfinished passage.
 
-**Passage score**: Points earned within one passage: 100 for each cleared combat chamber and 10,000 for escaping. Safe stops, kills and accumulated ash award no points; returning to the quay closes that score.
+**Passage score**: Points earned for cleared combat chambers and escape, with a finishing-time bonus in current chronicles. Original rules-4 chronicles retain their original score; returning to the quay closes the passage score.
+
+**Control preset**: A player's observation, decision-work and control-change limits, independent of the passage's gameplay difficulty.
+
+**Work unit**: One metered tactical entity visit, candidate evaluation or geometry check performed by a supplied policy. It measures declared decision work rather than elapsed CPU time.
+
+**Difficulty**: The passage's declared encounter-pressure and healing tier: Standard, Veteran or Ordeal. A tier stays fixed throughout its passage.
+
+**Speed bonus**: Additional escape points determined by executed combat time, including delayed controls and excluding pauses and safe decision screens.
 
 ## Repo Canvas
 

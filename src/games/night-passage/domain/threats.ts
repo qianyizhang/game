@@ -13,7 +13,10 @@ export function attackPattern(enemy: Enemy, region: number): AttackPattern {
     const patterns = GUARDIANS[REGIONS[region].guardian];
     return patterns[enemy.pattern % patterns.length];
   }
-  return ENEMY_PATTERNS[enemy.kind];
+  const pattern = ENEMY_PATTERNS[enemy.kind];
+  if (enemy.kind === 'hunter' && enemy.difficulty && enemy.difficulty !== 'standard')
+    return { ...pattern, name: 'Marked pursuit', kind: 'charge', radius: 20, range: 180 };
+  return pattern;
 }
 const along = (origin: Point, aim: number, length: number): Point => ({
   x: origin.x + Math.cos(aim) * length,

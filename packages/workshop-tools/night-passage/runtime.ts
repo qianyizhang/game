@@ -1,6 +1,6 @@
 import { build } from 'vite';
 import { createHash } from 'node:crypto';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { isAbsolute, relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -13,8 +13,13 @@ const hash = (bytes: string | Uint8Array) => createHash('sha256').update(bytes).
 export async function withRuntime<T>(
   use: (
     runtime: Runtime,
-    pins: { sourceDigests: Record<string, string>; bundleDigest: string },
+    pins: {
+      sourceDigests: Record<string, string>;
+      toolDigests: Record<string, string>;
+      bundleDigest: string;
+    },
   ) => T | Promise<T>,
+  retainBundleDirectory?: string,
 ): Promise<T> {
   const directory = await mkdtemp(resolve(tmpdir(), 'night-passage-agent-'));
   const modules = new Set<string>();
@@ -51,9 +56,23 @@ export async function withRuntime<T>(
           ),
       ),
     );
+    const toolDigests = Object.fromEntries(
+      await Promise.all(
+        ['runtime.ts', 'cli.ts', 'protocol.ts', 'evaluate.ts'].map(async (name) => {
+          const file = resolve(repositoryRoot, 'packages/workshop-tools/night-passage', name);
+          return [relative(repositoryRoot, file), hash(await readFile(file))] as const;
+        }),
+      ),
+    );
+    const bundleDigest = hash(await readFile(path));
+    if (retainBundleDirectory) {
+      await mkdir(retainBundleDirectory, { recursive: true });
+      await writeFile(resolve(retainBundleDirectory, `${bundleDigest}.mjs`), await readFile(path));
+    }
     return await use((await import(pathToFileURL(path).href)) as Runtime, {
       sourceDigests,
-      bundleDigest: hash(await readFile(path)),
+      toolDigests,
+      bundleDigest,
     });
   } finally {
     await rm(directory, { recursive: true, force: true });

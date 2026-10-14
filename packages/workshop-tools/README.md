@@ -67,8 +67,13 @@ Envelope validation covers object shape, request IDs and the 64 KiB bound. Step/
 ## Night Passage agent commands
 
 `npm run --silent engine:night-passage -- serve` runs an isolated JSONL chronicle
-on stdin/stdout. `play` exports one baseline episode; `benchmark` evaluates a fixed
-training or held-out suite. `--out` writes a report and `play --replay` writes a
+on stdin/stdout. `play` exports one episode; `benchmark` evaluates a fixed
+training or held-out suite. Both default to standard constrained controls; `--control exact`
+selects the original baseline. `evaluate --split development|evaluation --pool N --seeds N`
+runs the policy/difficulty grid; `--controls yes` adds balanced Light/Heavy and a
+separate exact-baseline diagnostic. `--witnesses yes` writes standard-control winning
+paths and their byte hashes. Evaluation reports pin source/tool/bundle hashes and
+retain compiled bytes beside the output. `--out` writes a report and `play --replay` writes a
 portable chronicle. Paths resolve from the current working directory; explicit
 outputs overwrite existing files. Keep regenerable reports and replays under
 ignored `test-results/`.

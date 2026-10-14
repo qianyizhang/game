@@ -65,3 +65,51 @@ await test('JSONL agent process preserves its game after malformed input and exp
     if (child.exitCode === null) child.kill();
   }
 });
+
+await test('constrained protocol uses redacted observations for every response and meters act', async () => {
+  const { withRuntime } = await import('./runtime.ts');
+  const { createProtocol } = await import('./protocol.ts');
+  await withRuntime((runtime) => {
+    const handle = createProtocol(runtime);
+    assert.equal(
+      handle({
+        op: 'reset',
+        seed: 'constrained-protocol',
+        control: 'standard',
+        policy: 'deliberate',
+      }).ok,
+      true,
+    );
+    const started = handle({
+      op: 'step',
+      command: { type: 'start', weapon: 'bow', runes: [], difficulty: 'veteran' },
+    });
+    const observation = started.observation as Record<string, unknown>;
+    assert.equal((observation.player as Record<string, unknown>).dashCooldown, undefined);
+    assert.equal(handle({ op: 'export' }).ok, false);
+    const rejected = handle({ op: 'step', command: { type: 'buy', item: 'heart' } });
+    assert.deepEqual(rejected.observation, observation);
+    const suggested = handle({ op: 'suggest' });
+    assert.equal(suggested.ok, true);
+    assert.equal(handle({ op: 'reset', seed: '', control: 'standard', policy: 'quick' }).ok, false);
+    assert.deepEqual(handle({ op: 'suggest' }), suggested);
+    const acted = handle({ op: 'act' });
+    assert.equal(acted.ok, true);
+    assert.ok((acted.work as { total: number }).total > 0);
+    const after = acted.observation as {
+      player: Record<string, unknown>;
+      perception: { ageTicks: number };
+    };
+    assert.equal(after.player.strike, undefined);
+    assert.equal(after.perception.ageTicks, 1);
+    assert.equal(handle({ op: 'step', command: { type: 'retire' } }).ok, true);
+    const exported = handle({ op: 'export' });
+    assert.equal(exported.ok, true);
+    const replay = JSON.parse(exported.replay as string) as {
+      controller: { version: string };
+      commands: { difficulty?: string }[];
+    };
+    assert.equal(replay.controller.version, 'night-passage-control-1');
+    assert.equal(replay.commands[0].difficulty, 'veteran');
+  });
+});

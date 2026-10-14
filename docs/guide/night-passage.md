@@ -58,19 +58,31 @@ Three duo blessings require both named patrons to remain equipped: Boiling Wake 
 
 ## Economy and persistence
 
-Your passage score earns **100 points per cleared combat chamber** and **10,000
-for escaping**. Each chamber counts once, including guardians. Kills, gold, ash,
-safe stops and waiting award no points. Death or retirement keeps earned points
-until you return to the quay; the next passage starts at zero. Agents can play
-the same rules through the [local agent interface](../engineering/night-passage-agent.md).
+New chronicles offer **Standard**, **Veteran** and **Ordeal** before a passage.
+Veteran adds marked hunter pursuit, flanking, faster enemy recovery and reduced
+healing. Ordeal applies stronger pressure. Orange warnings still describe the
+actual danger, and difficulty stays fixed for the passage. Human controls are
+unchanged; agent perception/control presets are a separate experiment setting.
 
-Kills and coin rooms yield gold. Each market sells one healing purchase (35 gold), one vitality purchase (60), and one blessing (80). Trials add an extra wave and stronger enemies in exchange for a blessing and 80 gold. A fountain restores 35 health; entering a guardian chamber restores 25.
+Your score earns **100 per cleared combat chamber**, **10,000 for escape**, and an
+escape speed bonus: `floor(2000 × 600 / (600 + combatSeconds))`. It gives 1,000 extra
+points at ten combat minutes. Combat time includes an agent's control delays;
+pauses and menus do not count. A failed passage retains chamber points without a
+speed bonus. Safe stops, kills, gold and ash award no score. Returning to the quay
+closes the score; the next passage starts at zero.
+
+Original rules-4 chronicles keep their original Standard gameplay and scoring,
+and remain importable, resumable and watchable. Start a new chronicle to use the
+new difficulty tiers and speed score. Agents use the
+[local agent interface](../engineering/night-passage-agent.md).
+
+Kills and coin rooms yield gold. Each market sells one healing purchase (35 gold), one vitality purchase (60), and one blessing (80). Trials add an extra wave and stronger enemies in exchange for a blessing and 80 gold. On Standard, a fountain restores 35 health and entering a guardian chamber restores 25. Veteran/Ordeal reduce room and market healing to 80%/65%, rounded; Mercy's three-health room-clear effect stays unchanged.
 
 Room clears and guardians yield ash. Escape, death or voluntary retirement ends the passage; returning to the quay banks its ash exactly once. Spend ash on three ranks of permanent vitality, each adding 10 starting maximum health. Temporary gold and blessings reset on the next passage.
 
 The chronicle autosaves locally during combat and after decisions. Export/import carries the seed, rules/content versions and accepted commands, including previous quay decisions. Invalid or incompatible imports do not replace the current game. An unreadable stored save is preserved until explicit replacement. Browser storage failure leaves play available and displays an export warning.
 
-Chronicles are bounded to 300,000 packed commands, four hours of requested simulation ticks, and 24 MB on import. Realtime inputs use a compact lossless format. **New chronicle** asks for a seed and downloads the current history before resetting all progression. When an unreadable original is preserved, reset downloads that original separately as well as the current playable history. **Download original save** also preserves unreadable or incompatible bytes without resetting. Automatic saving remains visibly paused while original bytes are protected. Rules version 4 adds the distinct-slot blessing draft; content remains version 3. Rules-1/2/3 histories are rejected explicitly. Their original bytes remain downloadable; continuing with the new rules requires a new chronicle or a compatible import. Browser quotas can still prevent autosave, so retain portable exports for long histories.
+Chronicles are bounded to 300,000 packed commands, four hours of requested simulation ticks, and 24 MB on import. Realtime inputs use a compact lossless format. **New chronicle** asks for a seed and downloads the current history before resetting all progression. When an unreadable original is preserved, reset downloads that original separately as well as the current playable history. **Download original save** also preserves unreadable or incompatible bytes without resetting. Automatic saving remains visibly paused while original bytes are protected. Rules-5/content-4 adds recorded difficulty tiers and speed scoring. Rules-4/content-3 histories retain their original gameplay and score; rules-1/2/3 histories are rejected explicitly. Their original bytes remain downloadable; continuing with the new rules requires a new chronicle or a compatible import. Browser quotas can still prevent autosave, so retain portable exports for long histories.
 
 See [engineering and extension points](../engineering/night-passage.md) for ownership and verification.
 

@@ -16,6 +16,7 @@ import {
   WEAPONS,
   weapon,
 } from '../domain/content';
+import { DIFFICULTIES, DIFFICULTY, type Difficulty } from '../domain/contracts';
 import type { Command, Input, Point, RuneId, WeaponId } from '../domain/types';
 import { passageScore } from '../domain/score';
 import { createCanvasRenderer } from './presentation/canvas';
@@ -100,6 +101,7 @@ function PassageGame() {
   const soundEnabled = useRef(true);
   const audio = useRef<PassageAudio | null>(null);
   const resetDialog = useRef<HTMLDialogElement>(null);
+  const [difficulty, setDifficulty] = useState<Difficulty>(initial.session.state.difficulty);
   const [selectedWeapon, setSelectedWeapon] = useState<WeaponId>('sword');
   const [runes, setRunes] = useState<RuneId[]>(['vigor', 'fleet']);
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -275,10 +277,17 @@ function PassageGame() {
     canvas.current?.focus();
   };
   const start = () => {
-    send({ type: 'start', weapon: selectedWeapon, runes });
+    send({
+      type: 'start',
+      weapon: selectedWeapon,
+      runes,
+      ...(legacy ? {} : { difficulty }),
+    });
     focusPlay();
   };
   const p = view.player;
+  const score = passageScore(view);
+  const legacy = view.rulesVersion === 'night-passage-4';
   const region = REGIONS[view.region];
   const overlay = view.phase !== 'combat' || paused;
   return (
@@ -359,6 +368,7 @@ function PassageGame() {
                     preserve.current = false;
                     setView(restored.state);
                     setSelectedWeapon(restored.state.player.weapon);
+                    setDifficulty(restored.state.difficulty);
                     setRunes(
                       restored.state.player.runes.filter((id) =>
                         restored.state.profile.unlockedRunes.includes(id),
@@ -486,11 +496,12 @@ function PassageGame() {
                 {Math.ceil(p.hp)} / {p.maxHp} HP
               </span>
               <span>{view.gold} gold</span>
+              <span>
+                {view.difficulty} · {legacy ? 'original score' : 'speed score'}
+              </span>
               <span>{p.casts} / 3 casts</span>
               <span>{Math.floor(p.charge)}% call</span>
-              {view.phase !== 'hub' && (
-                <span data-testid="np-score">{passageScore(view).value} points</span>
-              )}
+              {view.phase !== 'hub' && <span data-testid="np-score">{score.value} points</span>}
             </div>
           </div>
           <div className="np-health">
@@ -602,6 +613,26 @@ function PassageGame() {
                     <p className="np-rune-description">
                       {runes.map((id) => RUNES.find((r) => r.id === id)!.description).join(' ')}
                     </p>
+                    <label>
+                      Difficulty{' '}
+                      <select
+                        aria-label="Passage difficulty"
+                        value={legacy ? 'standard' : difficulty}
+                        disabled={legacy}
+                        onChange={(e) => setDifficulty(e.target.value as Difficulty)}
+                      >
+                        {DIFFICULTIES.map((d) => (
+                          <option key={d} value={d}>
+                            {d[0].toUpperCase() + d.slice(1)}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <p>
+                      {legacy
+                        ? 'Original Standard chronicle. Start a new chronicle for difficulty tiers and speed scoring.'
+                        : 'Veteran adds marked hunter pursuit and reduced recovery. Ordeal increases pressure and reduces healing.'}
+                    </p>
                     <div className="np-quay-actions">
                       <button className="np-primary" onClick={start}>
                         Begin passage
@@ -694,7 +725,7 @@ function PassageGame() {
                           <strong>
                             {
                               {
-                                heal: 'Restore 40 health',
+                                heal: `Restore ${Math.round(40 * DIFFICULTY[view.difficulty].healing)} health`,
                                 heart: '+20 maximum health',
                                 boon: 'Divine audience',
                               }[item]
@@ -722,8 +753,9 @@ function PassageGame() {
                       {view.earnedAsh} ash earned
                     </p>
                     <p>
-                      Passage score: {passageScore(view).value} · 100 per combat chamber + 10,000
-                      for escape
+                      Passage score: {score.value} · 100 per combat chamber + 10,000 for escape
+                      {!legacy &&
+                        ` + ${score.speedBonus ?? 0} speed bonus · ${(view.tick / 60).toFixed(1)} combat seconds`}
                     </p>
                     <button className="np-primary" onClick={() => send({ type: 'return' })}>
                       Return to the quay

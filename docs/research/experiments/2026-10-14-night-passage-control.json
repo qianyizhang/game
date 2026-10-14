@@ -1,0 +1,2430 @@
+{
+  "history": [
+    {
+      "path": "test-results/night-passage-control/development-screen-01.json",
+      "sha256": "f83edc2784d1d3028f127d576b72cef051fcdc601e2ebb87151b6be327ec5b73",
+      "split": "development",
+      "pool": 1,
+      "conditions": [
+        {
+          "difficulty": "standard",
+          "policy": "quick",
+          "control": "standard",
+          "episodes": 15,
+          "wins": 14,
+          "losses": 1,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 13119.2,
+          "medianWinTicks": 29363
+        },
+        {
+          "difficulty": "standard",
+          "policy": "balanced",
+          "control": "standard",
+          "episodes": 15,
+          "wins": 14,
+          "losses": 0,
+          "timeouts": 1,
+          "errors": 0,
+          "meanScore": 13123.733333333334,
+          "medianWinTicks": 30897.5
+        },
+        {
+          "difficulty": "standard",
+          "policy": "deliberate",
+          "control": "standard",
+          "episodes": 15,
+          "wins": 15,
+          "losses": 0,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 13901,
+          "medianWinTicks": 29459
+        },
+        {
+          "difficulty": "veteran",
+          "policy": "quick",
+          "control": "standard",
+          "episodes": 15,
+          "wins": 9,
+          "losses": 6,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 9291.533333333333,
+          "medianWinTicks": 26166
+        },
+        {
+          "difficulty": "veteran",
+          "policy": "balanced",
+          "control": "standard",
+          "episodes": 15,
+          "wins": 11,
+          "losses": 4,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 10858.2,
+          "medianWinTicks": 27152
+        },
+        {
+          "difficulty": "veteran",
+          "policy": "deliberate",
+          "control": "standard",
+          "episodes": 15,
+          "wins": 14,
+          "losses": 1,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 13066.866666666667,
+          "medianWinTicks": 28343
+        },
+        {
+          "difficulty": "ordeal",
+          "policy": "quick",
+          "control": "standard",
+          "episodes": 15,
+          "wins": 4,
+          "losses": 11,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 5418.533333333334,
+          "medianWinTicks": 26534
+        },
+        {
+          "difficulty": "ordeal",
+          "policy": "balanced",
+          "control": "standard",
+          "episodes": 15,
+          "wins": 6,
+          "losses": 9,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 6953.266666666666,
+          "medianWinTicks": 25768.5
+        },
+        {
+          "difficulty": "ordeal",
+          "policy": "deliberate",
+          "control": "standard",
+          "episodes": 15,
+          "wins": 6,
+          "losses": 9,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 6956.666666666667,
+          "medianWinTicks": 26443.5
+        }
+      ],
+      "provenance": {
+        "sourceDigests": {
+          "packages/workshop-tools/night-passage/entry.ts": "b331dcbd513986fc0134f73017fd6a597c2a7ccb7d32aed8eb1207b62eab8f46",
+          "src/games/night-passage/agent/benchmark.ts": "f2e978e61fe2a575ad04812c971c3200e788b06574d906974b3603dee2e8deb1",
+          "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+          "src/games/night-passage/agent/policy.ts": "6c1e13046864199860a175c1657097043357ae0642524d12def0c1f080705097",
+          "src/games/night-passage/application/agent.ts": "17af8ac476610fce86e6e3913275acc538d6ffc98156e9b79b591d4f673f3b6e",
+          "src/games/night-passage/application/control.ts": "beb79cb8927d3b966d5f8581f116fdb189c886e5eecc5c65618f5b2fe4385a5e",
+          "src/games/night-passage/application/session.ts": "8f387222c0b20a75721b214642817704684f20659272662986f29ec2b448bff6",
+          "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+          "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+          "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+          "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+          "src/games/night-passage/domain/contracts.ts": "403183d73e479eea9bc15123e8c5ff87bd1c4487f183f0e3181a5398b6d1e4b8",
+          "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+          "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+          "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+          "src/games/night-passage/domain/game.ts": "e571bd1c360e9109bcf8a28fb6ef390ac3a8e12bb1a330af5df65d4ce0a5c54e",
+          "src/games/night-passage/domain/geometry.ts": "c48f5470e3b192a0be37feb0ac0ea21bc4606521c1b7cc357e1a1a122971bc10",
+          "src/games/night-passage/domain/score.ts": "3d4fb7568b4ca89178a7f8df13523aae726f908414003616ee8e28795a90c94c",
+          "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+          "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+          "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+        },
+        "bundleDigest": "1c9737ac55c06d5a2272815de0d8cb6caf9efb563a68ee8fadd81d43a1603e47"
+      }
+    },
+    {
+      "path": "test-results/night-passage-control/development-ordeal-03.json",
+      "sha256": "2b97b450ae25f4355a056db49d6eecce8b34b732bc4f8220dd698e0f808c72ca",
+      "split": "development",
+      "pool": 1,
+      "conditions": [
+        {
+          "difficulty": "ordeal",
+          "policy": "quick",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 16,
+          "losses": 34,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 5915.52,
+          "medianWinTicks": 27157.5
+        },
+        {
+          "difficulty": "ordeal",
+          "policy": "balanced",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 14,
+          "losses": 36,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 5395.44,
+          "medianWinTicks": 25345
+        },
+        {
+          "difficulty": "ordeal",
+          "policy": "deliberate",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 18,
+          "losses": 32,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 6498.32,
+          "medianWinTicks": 26780.5
+        }
+      ],
+      "provenance": {
+        "sourceDigests": {
+          "packages/workshop-tools/night-passage/entry.ts": "d547c4891bed34ac33cb6fb0fc9c0774f939c0d5451ae9f6c526d8d87341cba5",
+          "src/games/night-passage/agent/benchmark.ts": "dc5e00ed15dff814521c82a3ee30ea6adcafe11ae33bba00e13014c33ff3368e",
+          "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+          "src/games/night-passage/agent/policy.ts": "bd1deaa057acafffe3fcb63add94e58b9762580887537dd84c648b8149ce62d7",
+          "src/games/night-passage/application/agent.ts": "17af8ac476610fce86e6e3913275acc538d6ffc98156e9b79b591d4f673f3b6e",
+          "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+          "src/games/night-passage/application/control.ts": "bce0e500636f1abad6c5d6c80d98acea559786e449ad4dcb8ea1b96341706a06",
+          "src/games/night-passage/application/playback.ts": "e1b7852a9cb6263bf90b90669155c6b3dc7c60048fa317e81569ff6887f569a0",
+          "src/games/night-passage/application/session.ts": "3b5596a4c7a76b6e495f4018168c2bd2aac93f55b930964115abcea0e889cbd5",
+          "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+          "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+          "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+          "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+          "src/games/night-passage/domain/contracts.ts": "5fc9733617a69f2acc22695a2bd0a001753ee073c70ceff2dc1b580e12ee4a5a",
+          "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+          "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+          "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+          "src/games/night-passage/domain/game.ts": "aaa75bc2c0e277fd0319d3fd9509d1f2c938330fb1f8a44b5cf9b4a6a2fc31d9",
+          "src/games/night-passage/domain/geometry.ts": "c48f5470e3b192a0be37feb0ac0ea21bc4606521c1b7cc357e1a1a122971bc10",
+          "src/games/night-passage/domain/score.ts": "3d4fb7568b4ca89178a7f8df13523aae726f908414003616ee8e28795a90c94c",
+          "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+          "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+          "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+        },
+        "toolDigests": {
+          "packages/workshop-tools/night-passage/runtime.ts": "b8d3914a07ebfd3ee8f285e03258558df48366df1275a9c6236378ad9294ab22",
+          "packages/workshop-tools/night-passage/cli.ts": "1794e553105c88d33c6e361419286d2e7da459221238208bebb5393c0cdfce11",
+          "packages/workshop-tools/night-passage/protocol.ts": "e45e330a1367c0bb40dba3531125e6b822db75c83c1c4e95240026dcc96f3bb5",
+          "packages/workshop-tools/night-passage/evaluate.ts": "498e24bb1acfc137aedd32ad821f6b2810ebecf363e2f5ab0dd32a7b36fd98a9"
+        },
+        "bundleDigest": "6767e26fa0edafd398eccfa4f9fab514f8ce4c28863453a434ab1f028078e4e6"
+      }
+    },
+    {
+      "path": "test-results/night-passage-control/evaluation-standard.json",
+      "sha256": "24c523e76fdbab394062944240fe5522343a2d7a983d19570a1496c7cc91a06e",
+      "split": "evaluation",
+      "pool": 1,
+      "conditions": [
+        {
+          "difficulty": "standard",
+          "policy": "quick",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 46,
+          "losses": 4,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 12968.22,
+          "medianWinTicks": 29740
+        },
+        {
+          "difficulty": "standard",
+          "policy": "balanced",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 46,
+          "losses": 4,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 12972.52,
+          "medianWinTicks": 28669.5
+        },
+        {
+          "difficulty": "standard",
+          "policy": "deliberate",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 49,
+          "losses": 1,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 13661.6,
+          "medianWinTicks": 29350
+        },
+        {
+          "difficulty": "standard",
+          "policy": "balanced",
+          "control": "light",
+          "episodes": 50,
+          "wins": 50,
+          "losses": 0,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 13927.88,
+          "medianWinTicks": 28394
+        },
+        {
+          "difficulty": "standard",
+          "policy": "balanced",
+          "control": "heavy",
+          "episodes": 50,
+          "wins": 11,
+          "losses": 39,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 4570.82,
+          "medianWinTicks": 29207
+        },
+        {
+          "difficulty": "standard",
+          "policy": "baseline",
+          "control": "exact",
+          "episodes": 50,
+          "wins": 49,
+          "losses": 1,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 13683.96,
+          "medianWinTicks": 27762
+        }
+      ],
+      "provenance": {
+        "sourceDigests": {
+          "packages/workshop-tools/night-passage/entry.ts": "d547c4891bed34ac33cb6fb0fc9c0774f939c0d5451ae9f6c526d8d87341cba5",
+          "src/games/night-passage/agent/benchmark.ts": "dc5e00ed15dff814521c82a3ee30ea6adcafe11ae33bba00e13014c33ff3368e",
+          "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+          "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+          "src/games/night-passage/application/agent.ts": "17af8ac476610fce86e6e3913275acc538d6ffc98156e9b79b591d4f673f3b6e",
+          "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+          "src/games/night-passage/application/control.ts": "bce0e500636f1abad6c5d6c80d98acea559786e449ad4dcb8ea1b96341706a06",
+          "src/games/night-passage/application/playback.ts": "e1b7852a9cb6263bf90b90669155c6b3dc7c60048fa317e81569ff6887f569a0",
+          "src/games/night-passage/application/session.ts": "3b5596a4c7a76b6e495f4018168c2bd2aac93f55b930964115abcea0e889cbd5",
+          "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+          "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+          "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+          "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+          "src/games/night-passage/domain/contracts.ts": "5fc9733617a69f2acc22695a2bd0a001753ee073c70ceff2dc1b580e12ee4a5a",
+          "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+          "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+          "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+          "src/games/night-passage/domain/game.ts": "aaa75bc2c0e277fd0319d3fd9509d1f2c938330fb1f8a44b5cf9b4a6a2fc31d9",
+          "src/games/night-passage/domain/geometry.ts": "c48f5470e3b192a0be37feb0ac0ea21bc4606521c1b7cc357e1a1a122971bc10",
+          "src/games/night-passage/domain/score.ts": "3d4fb7568b4ca89178a7f8df13523aae726f908414003616ee8e28795a90c94c",
+          "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+          "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+          "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+        },
+        "toolDigests": {
+          "packages/workshop-tools/night-passage/runtime.ts": "f8baaf256307cae98dea2d1684bd8f4ddd4dcf6ba2d2c1673e6607f5e27bde97",
+          "packages/workshop-tools/night-passage/cli.ts": "61fc78bc10a4f522b8c89937a9046bf61e3b55e7aa5d372190a7c7ced8570e4d",
+          "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+          "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d"
+        },
+        "bundleDigest": "52a8c8e052d918829f5adf5b2aed91ac7995a58ac4f1232eee6ac3ea587273ab"
+      }
+    },
+    {
+      "path": "test-results/night-passage-control/evaluation-veteran.json",
+      "sha256": "b07b2e61ea2209268376355aa5486f2e84eb6c336d08a255c67c4f16a8364adc",
+      "split": "evaluation",
+      "pool": 1,
+      "conditions": [
+        {
+          "difficulty": "veteran",
+          "policy": "quick",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 25,
+          "losses": 25,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 8143.94,
+          "medianWinTicks": 26747
+        },
+        {
+          "difficulty": "veteran",
+          "policy": "balanced",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 26,
+          "losses": 24,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 8372.82,
+          "medianWinTicks": 27690
+        },
+        {
+          "difficulty": "veteran",
+          "policy": "deliberate",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 38,
+          "losses": 12,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 11099.54,
+          "medianWinTicks": 27850
+        },
+        {
+          "difficulty": "veteran",
+          "policy": "balanced",
+          "control": "light",
+          "episodes": 50,
+          "wins": 49,
+          "losses": 1,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 13640.94,
+          "medianWinTicks": 26956
+        },
+        {
+          "difficulty": "veteran",
+          "policy": "balanced",
+          "control": "heavy",
+          "episodes": 50,
+          "wins": 1,
+          "losses": 49,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 1830.56,
+          "medianWinTicks": 27796
+        },
+        {
+          "difficulty": "veteran",
+          "policy": "baseline",
+          "control": "exact",
+          "episodes": 50,
+          "wins": 42,
+          "losses": 8,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 12069.9,
+          "medianWinTicks": 26318.5
+        }
+      ],
+      "provenance": {
+        "sourceDigests": {
+          "packages/workshop-tools/night-passage/entry.ts": "d547c4891bed34ac33cb6fb0fc9c0774f939c0d5451ae9f6c526d8d87341cba5",
+          "src/games/night-passage/agent/benchmark.ts": "dc5e00ed15dff814521c82a3ee30ea6adcafe11ae33bba00e13014c33ff3368e",
+          "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+          "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+          "src/games/night-passage/application/agent.ts": "17af8ac476610fce86e6e3913275acc538d6ffc98156e9b79b591d4f673f3b6e",
+          "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+          "src/games/night-passage/application/control.ts": "bce0e500636f1abad6c5d6c80d98acea559786e449ad4dcb8ea1b96341706a06",
+          "src/games/night-passage/application/playback.ts": "e1b7852a9cb6263bf90b90669155c6b3dc7c60048fa317e81569ff6887f569a0",
+          "src/games/night-passage/application/session.ts": "3b5596a4c7a76b6e495f4018168c2bd2aac93f55b930964115abcea0e889cbd5",
+          "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+          "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+          "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+          "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+          "src/games/night-passage/domain/contracts.ts": "5fc9733617a69f2acc22695a2bd0a001753ee073c70ceff2dc1b580e12ee4a5a",
+          "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+          "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+          "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+          "src/games/night-passage/domain/game.ts": "aaa75bc2c0e277fd0319d3fd9509d1f2c938330fb1f8a44b5cf9b4a6a2fc31d9",
+          "src/games/night-passage/domain/geometry.ts": "c48f5470e3b192a0be37feb0ac0ea21bc4606521c1b7cc357e1a1a122971bc10",
+          "src/games/night-passage/domain/score.ts": "3d4fb7568b4ca89178a7f8df13523aae726f908414003616ee8e28795a90c94c",
+          "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+          "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+          "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+        },
+        "toolDigests": {
+          "packages/workshop-tools/night-passage/runtime.ts": "f8baaf256307cae98dea2d1684bd8f4ddd4dcf6ba2d2c1673e6607f5e27bde97",
+          "packages/workshop-tools/night-passage/cli.ts": "61fc78bc10a4f522b8c89937a9046bf61e3b55e7aa5d372190a7c7ced8570e4d",
+          "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+          "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d"
+        },
+        "bundleDigest": "52a8c8e052d918829f5adf5b2aed91ac7995a58ac4f1232eee6ac3ea587273ab"
+      }
+    },
+    {
+      "path": "test-results/night-passage-control/evaluation-ordeal.json",
+      "sha256": "d2794dc24e04c7931bf578966fd106ad0890b39e3a23ad4e8ce0dc23163b4cf5",
+      "split": "evaluation",
+      "pool": 1,
+      "conditions": [
+        {
+          "difficulty": "ordeal",
+          "policy": "quick",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 8,
+          "losses": 42,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 4099.92,
+          "medianWinTicks": 24706.5
+        },
+        {
+          "difficulty": "ordeal",
+          "policy": "balanced",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 12,
+          "losses": 38,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 4962.76,
+          "medianWinTicks": 24545.5
+        },
+        {
+          "difficulty": "ordeal",
+          "policy": "deliberate",
+          "control": "standard",
+          "episodes": 50,
+          "wins": 22,
+          "losses": 28,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 7391.18,
+          "medianWinTicks": 26995.5
+        },
+        {
+          "difficulty": "ordeal",
+          "policy": "balanced",
+          "control": "light",
+          "episodes": 50,
+          "wins": 36,
+          "losses": 14,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 10695.46,
+          "medianWinTicks": 26084
+        },
+        {
+          "difficulty": "ordeal",
+          "policy": "balanced",
+          "control": "heavy",
+          "episodes": 50,
+          "wins": 1,
+          "losses": 48,
+          "timeouts": 1,
+          "errors": 0,
+          "meanScore": 1542.68,
+          "medianWinTicks": 27441
+        },
+        {
+          "difficulty": "ordeal",
+          "policy": "baseline",
+          "control": "exact",
+          "episodes": 50,
+          "wins": 20,
+          "losses": 30,
+          "timeouts": 0,
+          "errors": 0,
+          "meanScore": 7053.08,
+          "medianWinTicks": 24484
+        }
+      ],
+      "provenance": {
+        "sourceDigests": {
+          "packages/workshop-tools/night-passage/entry.ts": "d547c4891bed34ac33cb6fb0fc9c0774f939c0d5451ae9f6c526d8d87341cba5",
+          "src/games/night-passage/agent/benchmark.ts": "dc5e00ed15dff814521c82a3ee30ea6adcafe11ae33bba00e13014c33ff3368e",
+          "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+          "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+          "src/games/night-passage/application/agent.ts": "17af8ac476610fce86e6e3913275acc538d6ffc98156e9b79b591d4f673f3b6e",
+          "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+          "src/games/night-passage/application/control.ts": "bce0e500636f1abad6c5d6c80d98acea559786e449ad4dcb8ea1b96341706a06",
+          "src/games/night-passage/application/playback.ts": "e1b7852a9cb6263bf90b90669155c6b3dc7c60048fa317e81569ff6887f569a0",
+          "src/games/night-passage/application/session.ts": "3b5596a4c7a76b6e495f4018168c2bd2aac93f55b930964115abcea0e889cbd5",
+          "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+          "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+          "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+          "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+          "src/games/night-passage/domain/contracts.ts": "5fc9733617a69f2acc22695a2bd0a001753ee073c70ceff2dc1b580e12ee4a5a",
+          "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+          "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+          "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+          "src/games/night-passage/domain/game.ts": "aaa75bc2c0e277fd0319d3fd9509d1f2c938330fb1f8a44b5cf9b4a6a2fc31d9",
+          "src/games/night-passage/domain/geometry.ts": "c48f5470e3b192a0be37feb0ac0ea21bc4606521c1b7cc357e1a1a122971bc10",
+          "src/games/night-passage/domain/score.ts": "3d4fb7568b4ca89178a7f8df13523aae726f908414003616ee8e28795a90c94c",
+          "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+          "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+          "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+        },
+        "toolDigests": {
+          "packages/workshop-tools/night-passage/runtime.ts": "f8baaf256307cae98dea2d1684bd8f4ddd4dcf6ba2d2c1673e6607f5e27bde97",
+          "packages/workshop-tools/night-passage/cli.ts": "61fc78bc10a4f522b8c89937a9046bf61e3b55e7aa5d372190a7c7ced8570e4d",
+          "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+          "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d"
+        },
+        "bundleDigest": "52a8c8e052d918829f5adf5b2aed91ac7995a58ac4f1232eee6ac3ea587273ab"
+      }
+    }
+  ],
+  "version": "night-passage-control-receipt-1",
+  "frozen": {
+    "version": "night-passage-freeze-2",
+    "frozenAt": "2026-10-14T16:00:19.988Z",
+    "referencePolicy": {
+      "standard": "deliberate",
+      "veteran": "deliberate",
+      "ordeal": "deliberate"
+    },
+    "targets": {
+      "standard": [0.8, 1],
+      "veteran": [0.4, 0.8],
+      "ordeal": [0.1, 0.4]
+    },
+    "gameplay": {
+      "standard": {
+        "speed": 1,
+        "damage": 1,
+        "recovery": 1,
+        "healing": 1,
+        "flank": 0
+      },
+      "veteran": {
+        "speed": 1.25,
+        "damage": 1.3,
+        "recovery": 0.9,
+        "healing": 0.8,
+        "flank": 35
+      },
+      "ordeal": {
+        "speed": 1.45,
+        "damage": 1.65,
+        "recovery": 0.8,
+        "healing": 0.65,
+        "flank": 55
+      }
+    },
+    "controls": {
+      "light": {
+        "observationTicks": 0,
+        "reactionTicks": 0,
+        "workPerTick": 256,
+        "holdTicks": 1,
+        "switchTicks": 1,
+        "aimRadiansPerTick": 0.7853981633974483
+      },
+      "standard": {
+        "observationTicks": 1,
+        "reactionTicks": 1,
+        "workPerTick": 64,
+        "holdTicks": 2,
+        "switchTicks": 1,
+        "aimRadiansPerTick": 0.5235987755982988
+      },
+      "heavy": {
+        "observationTicks": 3,
+        "reactionTicks": 2,
+        "workPerTick": 32,
+        "holdTicks": 4,
+        "switchTicks": 2,
+        "aimRadiansPerTick": 0.3141592653589793
+      }
+    },
+    "policy": {
+      "requestedTicks": 1,
+      "bowDistance": 230,
+      "meleeReachRatio": 0.7
+    },
+    "budgets": {
+      "maxActions": 20000,
+      "maxTicks": 120000
+    },
+    "developmentPool": "passage-control-development-1-00..09",
+    "evaluationPools": {
+      "standard": "passage-control-evaluation-1-00..09",
+      "veteran": "passage-control-evaluation-1-00..09",
+      "ordeal": "passage-control-evaluation-2-00..09"
+    },
+    "retiredOrdealPool": "passage-control-evaluation-1-00..09",
+    "weapons": ["sword", "spear", "shield", "bow", "fists"],
+    "provenance": {
+      "sourceDigests": {
+        "packages/workshop-tools/night-passage/entry.ts": "d547c4891bed34ac33cb6fb0fc9c0774f939c0d5451ae9f6c526d8d87341cba5",
+        "src/games/night-passage/agent/benchmark.ts": "dc5e00ed15dff814521c82a3ee30ea6adcafe11ae33bba00e13014c33ff3368e",
+        "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+        "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+        "src/games/night-passage/application/agent.ts": "17af8ac476610fce86e6e3913275acc538d6ffc98156e9b79b591d4f673f3b6e",
+        "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+        "src/games/night-passage/application/control.ts": "bce0e500636f1abad6c5d6c80d98acea559786e449ad4dcb8ea1b96341706a06",
+        "src/games/night-passage/application/playback.ts": "e1b7852a9cb6263bf90b90669155c6b3dc7c60048fa317e81569ff6887f569a0",
+        "src/games/night-passage/application/session.ts": "3b5596a4c7a76b6e495f4018168c2bd2aac93f55b930964115abcea0e889cbd5",
+        "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+        "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+        "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+        "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+        "src/games/night-passage/domain/contracts.ts": "01d2d732ee4a5bb02ed162a0421a2701b765f9f40815fee7a913be7fd99d4c86",
+        "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+        "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+        "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+        "src/games/night-passage/domain/game.ts": "aaa75bc2c0e277fd0319d3fd9509d1f2c938330fb1f8a44b5cf9b4a6a2fc31d9",
+        "src/games/night-passage/domain/geometry.ts": "c48f5470e3b192a0be37feb0ac0ea21bc4606521c1b7cc357e1a1a122971bc10",
+        "src/games/night-passage/domain/score.ts": "3d4fb7568b4ca89178a7f8df13523aae726f908414003616ee8e28795a90c94c",
+        "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+        "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+        "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+      },
+      "toolDigests": {
+        "packages/workshop-tools/night-passage/runtime.ts": "f8baaf256307cae98dea2d1684bd8f4ddd4dcf6ba2d2c1673e6607f5e27bde97",
+        "packages/workshop-tools/night-passage/cli.ts": "61fc78bc10a4f522b8c89937a9046bf61e3b55e7aa5d372190a7c7ced8570e4d",
+        "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+        "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d"
+      },
+      "bundleDigest": "d87013f8a87e0512df2b827e3de41d23034ed5e0b212c7232ce9eae4fda0f2e4"
+    },
+    "calibration": [
+      {
+        "path": "test-results/night-passage-control/development-final.json",
+        "sha256": "b9aaa5a6ab57e61b8dea501314e7370c96f688180762746da745a297480a5671",
+        "provenance": {
+          "sourceDigests": {
+            "packages/workshop-tools/night-passage/entry.ts": "b331dcbd513986fc0134f73017fd6a597c2a7ccb7d32aed8eb1207b62eab8f46",
+            "src/games/night-passage/agent/benchmark.ts": "f2e978e61fe2a575ad04812c971c3200e788b06574d906974b3603dee2e8deb1",
+            "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+            "src/games/night-passage/agent/policy.ts": "32f93493f47c04d6124738308a71b5f7884f888da81935da105b835510cb9d8b",
+            "src/games/night-passage/application/agent.ts": "17af8ac476610fce86e6e3913275acc538d6ffc98156e9b79b591d4f673f3b6e",
+            "src/games/night-passage/application/control.ts": "beb79cb8927d3b966d5f8581f116fdb189c886e5eecc5c65618f5b2fe4385a5e",
+            "src/games/night-passage/application/session.ts": "02d3d1a729c988994e7eccccd8e79394a8eb31bfbbad107dc52fe83584166afb",
+            "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+            "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+            "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+            "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+            "src/games/night-passage/domain/contracts.ts": "e8535f8c74e596343f9a6a1321292755e37003a694f6f57a33a906b2c8edcb14",
+            "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+            "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+            "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+            "src/games/night-passage/domain/game.ts": "aaa75bc2c0e277fd0319d3fd9509d1f2c938330fb1f8a44b5cf9b4a6a2fc31d9",
+            "src/games/night-passage/domain/geometry.ts": "c48f5470e3b192a0be37feb0ac0ea21bc4606521c1b7cc357e1a1a122971bc10",
+            "src/games/night-passage/domain/score.ts": "3d4fb7568b4ca89178a7f8df13523aae726f908414003616ee8e28795a90c94c",
+            "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+          },
+          "bundleDigest": "8fff85b9a87afaaf59eb5c086048dff6bbc6ae1fafbe49cadae5dc963e6e7603"
+        },
+        "conditions": [
+          {
+            "difficulty": "standard",
+            "policy": "quick",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 47,
+            "losses": 3,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 13181.4,
+            "medianWinTicks": 30457
+          },
+          {
+            "difficulty": "standard",
+            "policy": "balanced",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 47,
+            "losses": 2,
+            "timeouts": 1,
+            "errors": 0,
+            "meanScore": 13181.24,
+            "medianWinTicks": 30953
+          },
+          {
+            "difficulty": "standard",
+            "policy": "deliberate",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 50,
+            "losses": 0,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 13872.48,
+            "medianWinTicks": 30005.5
+          },
+          {
+            "difficulty": "veteran",
+            "policy": "quick",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 30,
+            "losses": 20,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 9340.1,
+            "medianWinTicks": 28295
+          },
+          {
+            "difficulty": "veteran",
+            "policy": "balanced",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 37,
+            "losses": 13,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 10874.5,
+            "medianWinTicks": 28463
+          },
+          {
+            "difficulty": "veteran",
+            "policy": "deliberate",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 42,
+            "losses": 8,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 11973.26,
+            "medianWinTicks": 29178
+          },
+          {
+            "difficulty": "ordeal",
+            "policy": "quick",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 12,
+            "losses": 38,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 5051.02,
+            "medianWinTicks": 26346.5
+          },
+          {
+            "difficulty": "ordeal",
+            "policy": "balanced",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 20,
+            "losses": 30,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 6859.14,
+            "medianWinTicks": 26358.5
+          },
+          {
+            "difficulty": "ordeal",
+            "policy": "deliberate",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 30,
+            "losses": 20,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 9236.76,
+            "medianWinTicks": 27197.5
+          },
+          {
+            "difficulty": "standard",
+            "policy": "balanced",
+            "control": "light",
+            "episodes": 50,
+            "wins": 50,
+            "losses": 0,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 13908.82,
+            "medianWinTicks": 28980
+          },
+          {
+            "difficulty": "standard",
+            "policy": "balanced",
+            "control": "heavy",
+            "episodes": 50,
+            "wins": 9,
+            "losses": 41,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 4154.72,
+            "medianWinTicks": 29669
+          },
+          {
+            "difficulty": "standard",
+            "policy": "baseline",
+            "control": "exact",
+            "episodes": 50,
+            "wins": 50,
+            "losses": 0,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 13902.28,
+            "medianWinTicks": 29856
+          },
+          {
+            "difficulty": "veteran",
+            "policy": "balanced",
+            "control": "light",
+            "episodes": 50,
+            "wins": 48,
+            "losses": 2,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 13421.72,
+            "medianWinTicks": 27381.5
+          },
+          {
+            "difficulty": "veteran",
+            "policy": "balanced",
+            "control": "heavy",
+            "episodes": 50,
+            "wins": 1,
+            "losses": 49,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 1908.04,
+            "medianWinTicks": 29320
+          },
+          {
+            "difficulty": "veteran",
+            "policy": "baseline",
+            "control": "exact",
+            "episodes": 50,
+            "wins": 38,
+            "losses": 12,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 11153.84,
+            "medianWinTicks": 27187
+          },
+          {
+            "difficulty": "ordeal",
+            "policy": "balanced",
+            "control": "light",
+            "episodes": 50,
+            "wins": 42,
+            "losses": 8,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 12063.78,
+            "medianWinTicks": 26725
+          },
+          {
+            "difficulty": "ordeal",
+            "policy": "balanced",
+            "control": "heavy",
+            "episodes": 50,
+            "wins": 3,
+            "losses": 47,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 2158.44,
+            "medianWinTicks": 25967
+          },
+          {
+            "difficulty": "ordeal",
+            "policy": "baseline",
+            "control": "exact",
+            "episodes": 50,
+            "wins": 33,
+            "losses": 17,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 9972.8,
+            "medianWinTicks": 25497
+          }
+        ]
+      },
+      {
+        "path": "test-results/night-passage-control/development-veteran-03.json",
+        "sha256": "25345af3742f5d97b3c65ff4f39d88e9a9d61c2e028375211124de6c82e920ac",
+        "provenance": {
+          "sourceDigests": {
+            "packages/workshop-tools/night-passage/entry.ts": "d547c4891bed34ac33cb6fb0fc9c0774f939c0d5451ae9f6c526d8d87341cba5",
+            "src/games/night-passage/agent/benchmark.ts": "dc5e00ed15dff814521c82a3ee30ea6adcafe11ae33bba00e13014c33ff3368e",
+            "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+            "src/games/night-passage/agent/policy.ts": "bd1deaa057acafffe3fcb63add94e58b9762580887537dd84c648b8149ce62d7",
+            "src/games/night-passage/application/agent.ts": "17af8ac476610fce86e6e3913275acc538d6ffc98156e9b79b591d4f673f3b6e",
+            "src/games/night-passage/application/control.ts": "70d585e2ce2948038a76daa5d51f10e25d7f6255c540d15d0291eb457867d489",
+            "src/games/night-passage/application/playback.ts": "e1b7852a9cb6263bf90b90669155c6b3dc7c60048fa317e81569ff6887f569a0",
+            "src/games/night-passage/application/session.ts": "02d3d1a729c988994e7eccccd8e79394a8eb31bfbbad107dc52fe83584166afb",
+            "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+            "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+            "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+            "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+            "src/games/night-passage/domain/contracts.ts": "a69193d05f3621ce5a7cbec2525e6251773650c2daca937f311652f41df16b8a",
+            "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+            "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+            "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+            "src/games/night-passage/domain/game.ts": "aaa75bc2c0e277fd0319d3fd9509d1f2c938330fb1f8a44b5cf9b4a6a2fc31d9",
+            "src/games/night-passage/domain/geometry.ts": "c48f5470e3b192a0be37feb0ac0ea21bc4606521c1b7cc357e1a1a122971bc10",
+            "src/games/night-passage/domain/score.ts": "3d4fb7568b4ca89178a7f8df13523aae726f908414003616ee8e28795a90c94c",
+            "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+          },
+          "toolDigests": {
+            "packages/workshop-tools/night-passage/runtime.ts": "b8d3914a07ebfd3ee8f285e03258558df48366df1275a9c6236378ad9294ab22",
+            "packages/workshop-tools/night-passage/cli.ts": "1794e553105c88d33c6e361419286d2e7da459221238208bebb5393c0cdfce11",
+            "packages/workshop-tools/night-passage/protocol.ts": "e45e330a1367c0bb40dba3531125e6b822db75c83c1c4e95240026dcc96f3bb5",
+            "packages/workshop-tools/night-passage/evaluate.ts": "8afa1d4534f2ae1fba030424196e0235b5c6279d17332d0e10c4378323d52e46"
+          },
+          "bundleDigest": "af63bb78e00d16bfbe68421e1cff79f3c0a4dca21ebdef9e23caa8de3afe68c9"
+        },
+        "conditions": [
+          {
+            "difficulty": "veteran",
+            "policy": "quick",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 26,
+            "losses": 24,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 8390.22,
+            "medianWinTicks": 27828.5
+          },
+          {
+            "difficulty": "veteran",
+            "policy": "balanced",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 33,
+            "losses": 17,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 9967.52,
+            "medianWinTicks": 27937
+          },
+          {
+            "difficulty": "veteran",
+            "policy": "deliberate",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 40,
+            "losses": 10,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 11502.76,
+            "medianWinTicks": 29084
+          }
+        ]
+      },
+      {
+        "path": "test-results/night-passage-control/development-ordeal-04.json",
+        "sha256": "ef46c6bbba1f08cbf3de98e34897ed50e46b8b0871a5a74ee437c307594cdf6c",
+        "provenance": {
+          "sourceDigests": {
+            "packages/workshop-tools/night-passage/entry.ts": "d547c4891bed34ac33cb6fb0fc9c0774f939c0d5451ae9f6c526d8d87341cba5",
+            "src/games/night-passage/agent/benchmark.ts": "dc5e00ed15dff814521c82a3ee30ea6adcafe11ae33bba00e13014c33ff3368e",
+            "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+            "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+            "src/games/night-passage/application/agent.ts": "17af8ac476610fce86e6e3913275acc538d6ffc98156e9b79b591d4f673f3b6e",
+            "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+            "src/games/night-passage/application/control.ts": "bce0e500636f1abad6c5d6c80d98acea559786e449ad4dcb8ea1b96341706a06",
+            "src/games/night-passage/application/playback.ts": "e1b7852a9cb6263bf90b90669155c6b3dc7c60048fa317e81569ff6887f569a0",
+            "src/games/night-passage/application/session.ts": "3b5596a4c7a76b6e495f4018168c2bd2aac93f55b930964115abcea0e889cbd5",
+            "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+            "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+            "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+            "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+            "src/games/night-passage/domain/contracts.ts": "01d2d732ee4a5bb02ed162a0421a2701b765f9f40815fee7a913be7fd99d4c86",
+            "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+            "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+            "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+            "src/games/night-passage/domain/game.ts": "aaa75bc2c0e277fd0319d3fd9509d1f2c938330fb1f8a44b5cf9b4a6a2fc31d9",
+            "src/games/night-passage/domain/geometry.ts": "c48f5470e3b192a0be37feb0ac0ea21bc4606521c1b7cc357e1a1a122971bc10",
+            "src/games/night-passage/domain/score.ts": "3d4fb7568b4ca89178a7f8df13523aae726f908414003616ee8e28795a90c94c",
+            "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+          },
+          "toolDigests": {
+            "packages/workshop-tools/night-passage/runtime.ts": "f8baaf256307cae98dea2d1684bd8f4ddd4dcf6ba2d2c1673e6607f5e27bde97",
+            "packages/workshop-tools/night-passage/cli.ts": "61fc78bc10a4f522b8c89937a9046bf61e3b55e7aa5d372190a7c7ced8570e4d",
+            "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+            "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d"
+          },
+          "bundleDigest": "d87013f8a87e0512df2b827e3de41d23034ed5e0b212c7232ce9eae4fda0f2e4"
+        },
+        "conditions": [
+          {
+            "difficulty": "ordeal",
+            "policy": "quick",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 5,
+            "losses": 45,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 3335,
+            "medianWinTicks": 26353
+          },
+          {
+            "difficulty": "ordeal",
+            "policy": "balanced",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 8,
+            "losses": 42,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 3974.14,
+            "medianWinTicks": 26785
+          },
+          {
+            "difficulty": "ordeal",
+            "policy": "deliberate",
+            "control": "standard",
+            "episodes": 50,
+            "wins": 13,
+            "losses": 37,
+            "timeouts": 0,
+            "errors": 0,
+            "meanScore": 5272.2,
+            "medianWinTicks": 26641
+          }
+        ]
+      }
+    ],
+    "decision": "Standard/Veteran selections unchanged from freeze 1. Ordeal pool 1 retired; damage 1.65 selected on development pool 1 (deliberate 13/50). No further changes before Ordeal pool 2. Standard/Veteran pool 1 rerun only to prove final-source episode parity."
+  },
+  "reportDigests": [
+    {
+      "path": "test-results/night-passage-control/evaluation-standard-final.json",
+      "sha256": "a4c66e0267b42235cbb9ec5cf6b680fc8f63dd38b96acd626839e9dcf0869f1a"
+    },
+    {
+      "path": "test-results/night-passage-control/evaluation-veteran-final.json",
+      "sha256": "4c1ead97b63a3a84b6891772c0d3611b1cb1e56b20d8c9bdfb9a07009a1443e4"
+    },
+    {
+      "path": "test-results/night-passage-control/evaluation-ordeal-final.json",
+      "sha256": "6f5693bf864120f86658008f9214efe4f083217ea3b35ce4fce30fa4b2fd69fa"
+    }
+  ],
+  "evaluation": {
+    "conditions": [
+      {
+        "difficulty": "standard",
+        "policy": "quick",
+        "control": "standard",
+        "episodes": 50,
+        "wins": 46,
+        "losses": 4,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 12968.22,
+        "medianWinTicks": 29740,
+        "workPerDecision": 22.696376681946337,
+        "delayTicksPerDecision": 2.0013079234247853,
+        "controlTicksPerDecision": 4.509322039126653,
+        "weapons": {
+          "sword": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 7,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 9,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 10,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 1,
+          "reactionTicks": 1,
+          "workPerTick": 64,
+          "holdTicks": 2,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.5235987755982988
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 13.305769576754505
+      },
+      {
+        "difficulty": "standard",
+        "policy": "balanced",
+        "control": "standard",
+        "episodes": 50,
+        "wins": 46,
+        "losses": 4,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 12972.52,
+        "medianWinTicks": 28669.5,
+        "workPerDecision": 24.09853931141204,
+        "delayTicksPerDecision": 2.046235821484621,
+        "controlTicksPerDecision": 4.562253902322128,
+        "weapons": {
+          "sword": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 8,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 9,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 9,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 1,
+          "reactionTicks": 1,
+          "workPerTick": 64,
+          "holdTicks": 2,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.5235987755982988
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 13.15139430741914
+      },
+      {
+        "difficulty": "standard",
+        "policy": "deliberate",
+        "control": "standard",
+        "episodes": 50,
+        "wins": 49,
+        "losses": 1,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 13661.6,
+        "medianWinTicks": 29350,
+        "workPerDecision": 26.22925714570355,
+        "delayTicksPerDecision": 2.0755338457754657,
+        "controlTicksPerDecision": 4.590304694480507,
+        "weapons": {
+          "sword": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 9,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 10,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 1,
+          "reactionTicks": 1,
+          "workPerTick": 64,
+          "holdTicks": 2,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.5235987755982988
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 13.071027740739183
+      },
+      {
+        "difficulty": "standard",
+        "policy": "balanced",
+        "control": "light",
+        "episodes": 50,
+        "wins": 50,
+        "losses": 0,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 13927.88,
+        "medianWinTicks": 28394,
+        "workPerDecision": 23.737753550203106,
+        "delayTicksPerDecision": 1,
+        "controlTicksPerDecision": 2.3955399843917795,
+        "weapons": {
+          "sword": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 10,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 0,
+          "reactionTicks": 0,
+          "workPerTick": 256,
+          "holdTicks": 1,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.7853981633974483
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 25.046544992332414
+      },
+      {
+        "difficulty": "standard",
+        "policy": "balanced",
+        "control": "heavy",
+        "episodes": 50,
+        "wins": 11,
+        "losses": 39,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 4570.82,
+        "medianWinTicks": 29207,
+        "workPerDecision": 24.31613808503576,
+        "delayTicksPerDecision": 3.1516189384109357,
+        "controlTicksPerDecision": 8.593017290805395,
+        "weapons": {
+          "sword": {
+            "wins": 3,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 6,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 2,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 3,
+          "reactionTicks": 2,
+          "workPerTick": 32,
+          "holdTicks": 4,
+          "switchTicks": 2,
+          "aimRadiansPerTick": 0.3141592653589793
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 6.982413507325364
+      },
+      {
+        "difficulty": "standard",
+        "policy": "baseline",
+        "control": "exact",
+        "episodes": 50,
+        "wins": 49,
+        "losses": 1,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 13683.96,
+        "medianWinTicks": 27762,
+        "workPerDecision": null,
+        "delayTicksPerDecision": null,
+        "controlTicksPerDecision": null,
+        "weapons": {
+          "sword": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 9,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 10,
+            "episodes": 10
+          }
+        },
+        "config": null,
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-baseline-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-agent-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": null
+      },
+      {
+        "difficulty": "veteran",
+        "policy": "quick",
+        "control": "standard",
+        "episodes": 50,
+        "wins": 25,
+        "losses": 25,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 8143.94,
+        "medianWinTicks": 26747,
+        "workPerDecision": 23.124866304764595,
+        "delayTicksPerDecision": 2.0019305928332627,
+        "controlTicksPerDecision": 4.522840863990744,
+        "weapons": {
+          "sword": {
+            "wins": 7,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 2,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 4,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 8,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 4,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 1,
+          "reactionTicks": 1,
+          "workPerTick": 64,
+          "holdTicks": 2,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.5235987755982988
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 13.265998474034038
+      },
+      {
+        "difficulty": "veteran",
+        "policy": "balanced",
+        "control": "standard",
+        "episodes": 50,
+        "wins": 26,
+        "losses": 24,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 8372.82,
+        "medianWinTicks": 27690,
+        "workPerDecision": 24.938333835575158,
+        "delayTicksPerDecision": 2.055923485740898,
+        "controlTicksPerDecision": 4.588578336027176,
+        "weapons": {
+          "sword": {
+            "wins": 7,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 2,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 5,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 8,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 4,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 1,
+          "reactionTicks": 1,
+          "workPerTick": 64,
+          "holdTicks": 2,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.5235987755982988
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 13.07594544674341
+      },
+      {
+        "difficulty": "veteran",
+        "policy": "deliberate",
+        "control": "standard",
+        "episodes": 50,
+        "wins": 38,
+        "losses": 12,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 11099.54,
+        "medianWinTicks": 27850,
+        "workPerDecision": 27.248376242534736,
+        "delayTicksPerDecision": 2.08765274044681,
+        "controlTicksPerDecision": 4.6201245383434655,
+        "weapons": {
+          "sword": {
+            "wins": 8,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 5,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 7,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 8,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 1,
+          "reactionTicks": 1,
+          "workPerTick": 64,
+          "holdTicks": 2,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.5235987755982988
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 12.986662913963972
+      },
+      {
+        "difficulty": "veteran",
+        "policy": "balanced",
+        "control": "light",
+        "episodes": 50,
+        "wins": 49,
+        "losses": 1,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 13640.94,
+        "medianWinTicks": 26956,
+        "workPerDecision": 24.343158124941578,
+        "delayTicksPerDecision": 1,
+        "controlTicksPerDecision": 2.399516050236243,
+        "weapons": {
+          "sword": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 9,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 0,
+          "reactionTicks": 0,
+          "workPerTick": 256,
+          "holdTicks": 1,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.7853981633974483
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 25.005042160102548
+      },
+      {
+        "difficulty": "veteran",
+        "policy": "balanced",
+        "control": "heavy",
+        "episodes": 50,
+        "wins": 1,
+        "losses": 49,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 1830.56,
+        "medianWinTicks": 27796,
+        "workPerDecision": 23.74097057255054,
+        "delayTicksPerDecision": 3.1524215833616136,
+        "controlTicksPerDecision": 8.61345566490522,
+        "weapons": {
+          "sword": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 1,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 0,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 3,
+          "reactionTicks": 2,
+          "workPerTick": 32,
+          "holdTicks": 4,
+          "switchTicks": 2,
+          "aimRadiansPerTick": 0.3141592653589793
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 6.965845339457054
+      },
+      {
+        "difficulty": "veteran",
+        "policy": "baseline",
+        "control": "exact",
+        "episodes": 50,
+        "wins": 42,
+        "losses": 8,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 12069.9,
+        "medianWinTicks": 26318.5,
+        "workPerDecision": null,
+        "delayTicksPerDecision": null,
+        "controlTicksPerDecision": null,
+        "weapons": {
+          "sword": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 8,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 10,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 8,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 6,
+            "episodes": 10
+          }
+        },
+        "config": null,
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-baseline-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-agent-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": null
+      },
+      {
+        "difficulty": "ordeal",
+        "policy": "quick",
+        "control": "standard",
+        "episodes": 50,
+        "wins": 2,
+        "losses": 48,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 2655.02,
+        "medianWinTicks": 27986.5,
+        "workPerDecision": 23.121576999344796,
+        "delayTicksPerDecision": 2.001978625636219,
+        "controlTicksPerDecision": 4.516009077379016,
+        "weapons": {
+          "sword": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 2,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 0,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 1,
+          "reactionTicks": 1,
+          "workPerTick": 64,
+          "holdTicks": 2,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.5235987755982988
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 13.286067182757431
+      },
+      {
+        "difficulty": "ordeal",
+        "policy": "balanced",
+        "control": "standard",
+        "episodes": 50,
+        "wins": 5,
+        "losses": 45,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 3310.58,
+        "medianWinTicks": 26118,
+        "workPerDecision": 24.67695686684827,
+        "delayTicksPerDecision": 2.055431782512222,
+        "controlTicksPerDecision": 4.579835116266484,
+        "weapons": {
+          "sword": {
+            "wins": 2,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 3,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 0,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 1,
+          "reactionTicks": 1,
+          "workPerTick": 64,
+          "holdTicks": 2,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.5235987755982988
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 13.100908324601967
+      },
+      {
+        "difficulty": "ordeal",
+        "policy": "deliberate",
+        "control": "standard",
+        "episodes": 50,
+        "wins": 16,
+        "losses": 34,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 5889.76,
+        "medianWinTicks": 26755,
+        "workPerDecision": 27.358811489585072,
+        "delayTicksPerDecision": 2.086216648423417,
+        "controlTicksPerDecision": 4.61571171053863,
+        "weapons": {
+          "sword": {
+            "wins": 5,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 1,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 8,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 2,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 1,
+          "reactionTicks": 1,
+          "workPerTick": 64,
+          "holdTicks": 2,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.5235987755982988
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 12.999078747272607
+      },
+      {
+        "difficulty": "ordeal",
+        "policy": "balanced",
+        "control": "light",
+        "episodes": 50,
+        "wins": 32,
+        "losses": 17,
+        "timeouts": 1,
+        "errors": 0,
+        "meanScore": 9804.3,
+        "medianWinTicks": 26333,
+        "workPerDecision": 25.058453673845754,
+        "delayTicksPerDecision": 1,
+        "controlTicksPerDecision": 2.4079947801516344,
+        "weapons": {
+          "sword": {
+            "wins": 5,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 4,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 9,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 7,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 7,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 0,
+          "reactionTicks": 0,
+          "workPerTick": 256,
+          "holdTicks": 1,
+          "switchTicks": 1,
+          "aimRadiansPerTick": 0.7853981633974483
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 24.916997534447198
+      },
+      {
+        "difficulty": "ordeal",
+        "policy": "balanced",
+        "control": "heavy",
+        "episodes": 50,
+        "wins": 0,
+        "losses": 50,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 1268,
+        "medianWinTicks": null,
+        "workPerDecision": 22.859002943012573,
+        "delayTicksPerDecision": 3.1402300900740214,
+        "controlTicksPerDecision": 8.570587710692946,
+        "weapons": {
+          "sword": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 0,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 0,
+            "episodes": 10
+          }
+        },
+        "config": {
+          "observationTicks": 3,
+          "reactionTicks": 2,
+          "workPerTick": 32,
+          "holdTicks": 4,
+          "switchTicks": 2,
+          "aimRadiansPerTick": 0.3141592653589793
+        },
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-policy-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-control-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": 7.000686770306549
+      },
+      {
+        "difficulty": "ordeal",
+        "policy": "baseline",
+        "control": "exact",
+        "episodes": 50,
+        "wins": 14,
+        "losses": 36,
+        "timeouts": 0,
+        "errors": 0,
+        "meanScore": 5621.3,
+        "medianWinTicks": 24856,
+        "workPerDecision": null,
+        "delayTicksPerDecision": null,
+        "controlTicksPerDecision": null,
+        "weapons": {
+          "sword": {
+            "wins": 8,
+            "episodes": 10
+          },
+          "spear": {
+            "wins": 1,
+            "episodes": 10
+          },
+          "shield": {
+            "wins": 3,
+            "episodes": 10
+          },
+          "bow": {
+            "wins": 1,
+            "episodes": 10
+          },
+          "fists": {
+            "wins": 1,
+            "episodes": 10
+          }
+        },
+        "config": null,
+        "versions": {
+          "benchmark": "night-passage-benchmark-2",
+          "engine": "night-passage-baseline-1",
+          "rules": "night-passage-5",
+          "content": "night-passage-content-4",
+          "api": "night-passage-agent-1",
+          "score": "night-passage-score-2"
+        },
+        "combatDecisionHz": null
+      }
+    ],
+    "targetChecks": [
+      {
+        "difficulty": "standard",
+        "policy": "deliberate",
+        "wins": 49,
+        "episodes": 50,
+        "target": [0.8, 1],
+        "rate": 0.98,
+        "bestObserved": {
+          "policy": "deliberate",
+          "wins": 49,
+          "rate": 0.98
+        },
+        "met": true
+      },
+      {
+        "difficulty": "veteran",
+        "policy": "deliberate",
+        "wins": 38,
+        "episodes": 50,
+        "target": [0.4, 0.8],
+        "rate": 0.76,
+        "bestObserved": {
+          "policy": "deliberate",
+          "wins": 38,
+          "rate": 0.76
+        },
+        "met": true
+      },
+      {
+        "difficulty": "ordeal",
+        "policy": "deliberate",
+        "wins": 16,
+        "episodes": 50,
+        "target": [0.1, 0.4],
+        "rate": 0.32,
+        "bestObserved": {
+          "policy": "deliberate",
+          "wins": 16,
+          "rate": 0.32
+        },
+        "met": true
+      }
+    ],
+    "totalEpisodes": 900,
+    "errors": 0,
+    "timeouts": 1,
+    "standardVeteranParity": {
+      "originalPool": 1,
+      "completeEpisodeOutcomesIdentical": true,
+      "episodes": 600
+    }
+  },
+  "witnesses": [
+    {
+      "difficulty": "standard",
+      "weapon": "sword",
+      "seed": "passage-control-evaluation-1-00",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13785,
+      "ticks": 24748,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-standard-final/standard/sword.replay.json",
+      "replaySha256": "e3f76f8fb14bb031bb96d5b864efa2ef9b134ed749f32670736bb681311f54ec",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "standard",
+      "weapon": "spear",
+      "seed": "passage-control-evaluation-1-00",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13780,
+      "ticks": 30652,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-standard-final/standard/spear.replay.json",
+      "replaySha256": "119cb1a643e6c7662eda15d56c679e7a0e9b013793b0b5d6c371742a699df32d",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "standard",
+      "weapon": "shield",
+      "seed": "passage-control-evaluation-1-00",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13662,
+      "ticks": 31770,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-standard-final/standard/shield.replay.json",
+      "replaySha256": "57669ed1156427aaacedb37f4e2132a92e1abf0d1e64f251a805718e6f3850db",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "standard",
+      "weapon": "bow",
+      "seed": "passage-control-evaluation-1-00",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13737,
+      "ticks": 27300,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-standard-final/standard/bow.replay.json",
+      "replaySha256": "0f5427207657869f3327f21254efd4f707eb8c979ca0c94c943cfa9aea69d6ea",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "standard",
+      "weapon": "fists",
+      "seed": "passage-control-evaluation-1-00",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13738,
+      "ticks": 27265,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-standard-final/standard/fists.replay.json",
+      "replaySha256": "27ba41d79c366c2a22ee91eb0826a4c9ebf2d0344764eab3ea57f64953557b0a",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "veteran",
+      "weapon": "sword",
+      "seed": "passage-control-evaluation-1-00",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13741,
+      "ticks": 21997,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-veteran-final/veteran/sword.replay.json",
+      "replaySha256": "eac18b767989654d95fbff1e7504650382c7714d25827d0dacf7528ce98d277a",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "veteran",
+      "weapon": "spear",
+      "seed": "passage-control-evaluation-1-00",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13671,
+      "ticks": 25458,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-veteran-final/veteran/spear.replay.json",
+      "replaySha256": "77331f8305b19425ef977c681124c33fef92818cdbb260783ac49efaeef16ad2",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "veteran",
+      "weapon": "shield",
+      "seed": "passage-control-evaluation-1-00",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13668,
+      "ticks": 31402,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-veteran-final/veteran/shield.replay.json",
+      "replaySha256": "4e0e6b6693088ae3f127c47c9204d5f29997337c3c6931cf516d61770a256bbd",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "veteran",
+      "weapon": "bow",
+      "seed": "passage-control-evaluation-1-00",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13902,
+      "ticks": 29280,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-veteran-final/veteran/bow.replay.json",
+      "replaySha256": "8e4b634877328e45940a00fd7cd18b0d58d2ab96e7f0c393ac2e0cf8bb7297e4",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "veteran",
+      "weapon": "fists",
+      "seed": "passage-control-evaluation-1-00",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13694,
+      "ticks": 24298,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-veteran-final/veteran/fists.replay.json",
+      "replaySha256": "07c94350e6a41e1f1d6963e3e00ddc9947eef9de87808349754052094b4cf835",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "ordeal",
+      "weapon": "bow",
+      "seed": "passage-control-evaluation-2-03",
+      "policy": "quick",
+      "control": "standard",
+      "score": 13751,
+      "ticks": 26547,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-ordeal-final/ordeal/bow.replay.json",
+      "replaySha256": "75eb71a76f8403da6a4350a643cf0de96f7803c17fd459f20a6663763525e7d5",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "ordeal",
+      "weapon": "sword",
+      "seed": "passage-control-evaluation-2-03",
+      "policy": "balanced",
+      "control": "standard",
+      "score": 13706,
+      "ticks": 23666,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-ordeal-final/ordeal/sword.replay.json",
+      "replaySha256": "fb778d1f1f785e7c126b4da1957b61a520574394875bae91e8d4a5eda89b460b",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "ordeal",
+      "weapon": "shield",
+      "seed": "passage-control-evaluation-2-03",
+      "policy": "deliberate",
+      "control": "standard",
+      "score": 13688,
+      "ticks": 30165,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-ordeal-final/ordeal/shield.replay.json",
+      "replaySha256": "84ff0ab93f9b114012a386f5cc9576475b241b16e28b39627ebae08d413d9425",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "ordeal",
+      "weapon": "fists",
+      "seed": "passage-control-evaluation-2-05",
+      "policy": "deliberate",
+      "control": "standard",
+      "score": 13739,
+      "ticks": 27165,
+      "replayPath": "test-results/night-passage-control/witnesses/evaluation-ordeal-final/ordeal/fists.replay.json",
+      "replaySha256": "a4ad9c6a6abbe626df7dcb1c2adab91312087f05d99832e16ae8446ee43950a0",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    },
+    {
+      "difficulty": "ordeal",
+      "weapon": "spear",
+      "seed": "passage-control-development-1-48",
+      "policy": "deliberate",
+      "control": "standard",
+      "score": 13656,
+      "ticks": 26257,
+      "replayPath": "test-results/night-passage-control/witnesses/development-ordeal-extra/ordeal/spear.replay.json",
+      "replaySha256": "3597f0b0edc79ad9fae2db61213f18cf649a35c85d7e46851127f9bed1185b12",
+      "source": "additional development feasibility",
+      "importParity": true,
+      "playbackParity": true,
+      "backwardSeekParity": true
+    }
+  ],
+  "legacy": {
+    "score": 12700,
+    "ticks": 28995,
+    "originalReplayHash": "243d28b60ef489925a96e748159891157381145377929c604f976b23b29921f7",
+    "originalFileHash": "24c2c7ae57201f5bfbe57369d862eeee50e997ddf792433b83d24efa6d5003d2",
+    "canonicalReplayBytesPreserved": true,
+    "playbackParity": true,
+    "continuedPlay": true
+  },
+  "verifiedAt": "2026-10-14T16:09:11.405Z",
+  "checks": {
+    "maintenance": {
+      "status": "passed",
+      "command": "npm run check (includes check:maintenance)",
+      "scope": "format, lint, types, Python, tools, DCC contracts, inventory, builds",
+      "toolTests": {
+        "passed": 85,
+        "sandboxSkipped": 1,
+        "approvedLoopbackSuite": {
+          "passed": 9,
+          "skipped": 0
+        }
+      }
+    },
+    "application": {
+      "status": "passed",
+      "files": 67,
+      "tests": 418
+    },
+    "simulation": {
+      "status": "passed",
+      "files": 8,
+      "tests": 37
+    },
+    "browser": {
+      "status": "passed",
+      "tests": 14,
+      "seconds": 47.6,
+      "approvedExecution": true,
+      "disposableProfiles": true,
+      "files": [
+        "night-passage-agent.spec.ts",
+        "night-passage-layouts.spec.ts",
+        "night-passage.spec.ts"
+      ]
+    },
+    "geometryNative": "Not affected; no geometry/native acceptance claim",
+    "logs": [
+      {
+        "path": "test-results/night-passage-control/check-delivered.log",
+        "sha256": "c3b84c0f1aa6236ab47db0ce81874a609e2a19b5a42db083aab6e04891e43af0"
+      },
+      {
+        "path": "test-results/night-passage-control/browser-delivered.log",
+        "sha256": "b9f048a40156e7cb5b6e4bce2250bfc1d7e9699c40adf1905f0ced8d366fa0a4"
+      },
+      {
+        "path": "test-results/night-passage-control/usage-approved.log",
+        "sha256": "04d465bb30076f40f53fba20272c3d6a16a38b1d3bedd6d1aa17de3713f6adfd"
+      }
+    ]
+  },
+  "extraDevelopmentWitnessSearch": {
+    "cases": 39,
+    "witness": {
+      "difficulty": "ordeal",
+      "weapon": "spear",
+      "seed": "passage-control-development-1-48",
+      "policy": "deliberate",
+      "control": "standard",
+      "score": 13656,
+      "ticks": 26257,
+      "replayPath": "test-results/night-passage-control/witnesses/development-ordeal-extra/ordeal/spear.replay.json",
+      "replaySha256": "3597f0b0edc79ad9fae2db61213f18cf649a35c85d7e46851127f9bed1185b12"
+    },
+    "path": "test-results/night-passage-control/spear-witness-search.json",
+    "sha256": "16ffb5317e22283c29be4039e640452e24aa9dcb2d83aef75cbb73da841682b7",
+    "stoppingRule": "First Standard-control spear escape, development indices 10 through 69, deliberate then balanced then quick. First win was deliberate index 48; 39 cases executed. Not a win-rate estimate."
+  },
+  "freezeHistory": {
+    "path": "test-results/night-passage-control/freeze.json",
+    "sha256": "2b65aef2be80c1a451c189ab3944d00fa96a438fc9c4416a6cbc33b45efda77f",
+    "frozenAt": "2026-10-14T15:42:31.720Z",
+    "gameplay": {
+      "standard": {
+        "speed": 1,
+        "damage": 1,
+        "recovery": 1,
+        "healing": 1,
+        "flank": 0
+      },
+      "veteran": {
+        "speed": 1.25,
+        "damage": 1.3,
+        "recovery": 0.9,
+        "healing": 0.8,
+        "flank": 35
+      },
+      "ordeal": {
+        "speed": 1.45,
+        "damage": 1.5,
+        "recovery": 0.8,
+        "healing": 0.65,
+        "flank": 55
+      }
+    },
+    "referencePolicy": {
+      "standard": "deliberate",
+      "veteran": "deliberate",
+      "ordeal": "deliberate"
+    },
+    "retiredOrdealEvaluationPool": 1
+  }
+}

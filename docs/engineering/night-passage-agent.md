@@ -1,32 +1,32 @@
 # Night Passage agent play
 
-Night Passage has a scored, deterministic agent interface and a baseline player.
-The first milestone is a working player and a reproducible comparison, not a trained
-or optimized policy. The browser and headless interface use the same application
-commands and accepted-command replay. Headless runs can be imported into the game.
+Night Passage has a deterministic agent interface, a baseline player and three
+constrained heuristic policies. The browser and headless interface use the same
+application commands and accepted-command replay. Headless runs can be imported
+into the game or watched in the replay viewer.
 
 ## Score and objective
 
-**Passage score = 100 × cleared combat chambers + 10,000 for escape.**
+Current rules-5/content-4 chronicles use `night-passage-score-2`:
 
-- A chamber pays once after its last wave. A guardian chamber also pays 100.
-- Kills, summoned enemies, damage, gold, ash, safe stops and waiting award no points.
-- Death or retirement retains the points already earned. Returning to the quay
-  closes the score; the next passage starts at zero.
-- At most 32 combat chambers can pay, so every escape outranks every failed attempt.
-- Among equally successful runs, this deliberately rewards clearing more combat
-  rooms before optimizing speed. A market or spring can improve survival but gives
-  no score. This is a declared objective, not a claim that those routes are inferior.
+**Score = 100 × cleared combat chambers + escape × (10,000 + speed bonus).**
 
-The score is derived from authoritative state by `domain/score.ts`, with its own
-`night-passage-score-1` identity. It does not alter game rules, RNG or replay meaning.
-Rules/content remain 4/3. The HUD and terminal results use this same function.
+`speedBonus = floor(2000 × 36000 / (36000 + executedTicks))`.
+An escape at 5/10/20 combat minutes earns 1,333/1,000/666 bonus points. Every
+escape outranks every failed attempt; rooms and speed trade off within victories.
+Only executed combat ticks count, including control delay. Pauses, menus,
+wall-clock computation, replay speed and unused requested ticks do not count.
+Deaths/timeouts retain chamber points but receive no speed bonus. Returning to the
+quay closes the score; the next passage starts at zero.
 
-For equal individual scores, prefer lower **executed simulation ticks**. For a fixed
-benchmark suite, compare **wins first, mean score second, median winning ticks third**.
-All episodes, including deaths and timeouts, remain in the mean-score denominator.
-Errors are reported separately and must be repaired before accepting a candidate.
-At 60 ticks per second, simulation time is not wall-clock runtime or human play time.
+Rules-4/content-3 chronicles remain playable and replayable with original Standard
+combat and `night-passage-score-1`: 100 per combat chamber plus 10,000 for escape.
+Their envelope and scoring are preserved; no silent migration occurs. Older rules
+remain unsupported. New difficulty is recorded in each accepted start command.
+
+For a fixed suite compare wins first, mean score second and median winning ticks
+third. Include deaths and timeouts in the score denominator; errors invalidate an
+experiment. Compare within the same gameplay, score and control identities.
 
 ## Observation and action interface
 
@@ -46,7 +46,7 @@ weapon and blessing definitions describe the choices. `frame` describes continuo
 control bounds while combat permits input. Coordinates are ground-plane units;
 angles are radians, positive x is right and positive y is down.
 
-This is structured tactical information, not a screenshot-based agent. Exact
+This exact reference view is structured tactical information, not a screenshot-based agent. Exact
 positions, cooldowns and warning timing are exposed. Seed, RNG state, future
 encounters/reward draws and the internal journal are omitted. The exported replay
 contains its seed for reproducibility; the baseline policy never reads that export.
@@ -68,7 +68,7 @@ npm run --silent engine:night-passage -- serve
 ```
 
 Write one JSON request per line to stdin; read one response per line from stdout.
-An optional string or numeric `id` is echoed. One process owns one chronicle.
+An optional string or numeric `id` is echoed. One process owns one chronicle. `serve` defaults to the exact reference; `play` and `benchmark` default to standard constrained controls.
 
 ```json
 {"id":1,"op":"reset","seed":"my-seed"}
@@ -102,13 +102,13 @@ session. A separate process gives an independent game. There is no open network 
 The baseline adapts the earlier verification pilot: approach or kite the nearest
 enemy, avoid announced threats/projectiles/pillars, use available attacks, prioritize
 survival rewards and fill blessing slots. Its input is only `Observation`; it cannot
-advance or modify the game itself. It has three bounded configuration knobs:
+advance or modify the game itself. The exact reference retains three bounded configuration knobs:
 decision interval (default 6 ticks), bow distance (230), and melee reach ratio (0.7).
 
 ```sh
-npm run --silent engine:night-passage -- play --seed a-light-in-the-dark --weapon bow --out test-results/night-passage-agent/run.json --replay test-results/night-passage-agent/run.replay.json
-npm run --silent engine:night-passage -- benchmark --suite training --out test-results/night-passage-agent/training.json
-npm run --silent engine:night-passage -- benchmark --suite held-out --out test-results/night-passage-agent/held-out.json
+npm run --silent engine:night-passage -- play --control exact --rules night-passage-4 --seed a-light-in-the-dark --weapon bow --out test-results/night-passage-agent/run.json --replay test-results/night-passage-agent/run.replay.json
+npm run --silent engine:night-passage -- benchmark --control exact --rules night-passage-4 --suite training --out test-results/night-passage-agent/training.json
+npm run --silent engine:night-passage -- benchmark --control exact --rules night-passage-4 --suite held-out --out test-results/night-passage-agent/held-out.json
 ```
 
 Each suite uses three fixed seeds × five weapons, with a fresh profile and Root/Feather
@@ -122,22 +122,70 @@ configuration and budget overrides. Invalid configuration is an error, not a mod
 loss. A timeout preserves partial score and remains a non-win. The baseline is frozen
 before its separate held-out suite is inspected; do not tune against that suite.
 
-## Next: bounded hill-climbing
+## Constrained control and policy work
 
-1. Keep the baseline report and configuration fixed as the incumbent.
-2. Change one engine parameter or heuristic, keeping score, game versions, seeds,
-   loadouts and budgets fixed. Compare paired training episodes.
-3. Reject broken runs and win-rate regressions. Accept a candidate only when the
-   declared ranking improves; retain its parameters and source pins.
-4. Freeze the candidate, then run held-out evaluation. If those results inform
-   another change, those seeds become development data; reserve fresh evaluation
-   seeds before making a generalization claim.
+`application/control.ts` owns a player's history, redaction, held input, delayed
+delivery, eight-direction movement and per-tick aim bound. Policy functions receive
+only a detached `Sight`; the evaluator owns exact results and replay export.
 
-A three-seed suite is a small baseline sample. Passing it establishes playable
-paths, not universal success, human-like play or a statistically established gain.
-Automatic search is intentionally a subsequent milestone.
+A decision sees an aged snapshot; early bootstrap is explicitly marked until enough
+history exists. Every observation returned by the constrained protocol—including
+rejected steps—uses this view. Enemy windup, player buffer/strike/cooldown clocks,
+hazard offset/cycle/countdown and exact projectile velocity/lifetime are omitted.
+Visible attack geometry and coarse early/late warnings remain. Projectile velocity
+is a continuous sensor estimate from consecutive aged simulation snapshots, even
+between delivered decisions; first sightings are marked unknown. It can be exact
+for straight-moving shots, so this is still richer perception than screenshots.
+Menus and terminal states are current, and transitions reset history and held input.
 
-### Baseline measurement · 2026-10-13
+Compute delay is `reactionTicks + ceil(workUnits / workPerTick)`. The supplied
+policies charge marked entity scans, escape candidate evaluations and distance,
+threat-containment and cover helpers. This proxy excludes general arithmetic,
+allocation, menu ranking and some additional scans; it is not an instruction count.
+Holding
+controls costs `max(holdTicks, requestedTicks) + switchTicks × min(changes, 3)`.
+Changes count movement direction, offensive slot and a newly requested dash.
+Previous controls continue during computation; new controls then remain active
+through the hold. Actual low-level inputs reconstruct the same outcome without
+rerunning a policy. Controller identity/configuration survives import/export as
+origin metadata, not certification of later manually appended commands.
+
+Quick checks four executable escape directions; balanced checks eight; deliberate
+checks eight landings and their intermediate path points. All share observations
+and control rules. Additional work can improve a choice or lose time; no policy
+ranking is forced. Their ability request windows are shared, so changing control
+cadence can also change when a buffered ability actually starts.
+
+`light`, `standard` and `heavy` are separately measured control presets. The original
+proposal's 100 ms perception/50 ms reaction settings were initial tuning inputs,
+not a human timing requirement. Final calibration and targets are recorded in the
+[balance report](../research/experiments/2026-10-14-night-passage-control.md).
+These are structured tactical controls, not a calibrated human model.
+
+The JSONL `reset` operation accepts `control`, `policy` and `rules`. `act` computes
+and submits the selected policy with its measured work. `suggest` previews without
+advancing time. `step` accepts caller-declared `workUnits` for external cooperative
+policies; it cannot securely measure arbitrary caller code. Constrained `export`
+is refused until the passage ends so a policy does not accidentally recover exact
+state from a replay. A trusted caller choosing a seed can still reconstruct state:
+this research process is not a hostile-code sandbox. `suggest` followed by a
+manual `step` can underreport work; use evaluator-owned `act` or `evaluate` for
+metered built-in policy comparisons.
+
+```sh
+npm run --silent engine:night-passage -- play --control standard --policy deliberate --difficulty veteran --seed my-seed --out test-results/night-passage-control/run.json --replay test-results/night-passage-control/run.replay.json
+npm run --silent engine:night-passage -- evaluate --split development --seeds 10 --controls yes --witnesses yes --out test-results/night-passage-control/development.json
+```
+
+Freeze policy, difficulty and control parameters before running `--split evaluation`
+on fresh seeds. If those results inform more tuning, retire that evaluation pool and
+reserve a fresh pool (`--pool 2`, then 3, etc.) before the next evaluation claim.
+Light/standard/heavy comparisons keep balanced fixed; exact uses the separate
+original baseline and cannot isolate the effect of perception alone.
+Raw reports and replays stay
+under ignored `test-results/`; retain compact receipts and reproducible commands.
+
+### Frozen legacy baseline · 2026-10-13
 
 The unchanged baseline escaped on all 30 measured episodes. No parameter search
 preceded this result. The [compact receipt](evidence/night-passage-agent-baseline.json)

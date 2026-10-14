@@ -82,7 +82,7 @@ test('spectator plays, pauses and seeks a recorded run without replacing the pla
   await page.clock.runFor(1000);
   await expect(position).toHaveValue(paused);
   await page.getByRole('button', { name: 'Show result', exact: true }).click();
-  await expect(page.getByText('Replay complete · Escaped · 12700 points')).toBeVisible();
+  await expect(page.getByText(`Replay complete · Escaped · ${result.score} points`)).toBeVisible();
   await expect(page.getByTestId('np-replay-score')).toHaveText(`${result.score} points`);
   expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(original);
   await page.getByRole('button', { name: 'Restart', exact: true }).click();
@@ -101,4 +101,63 @@ test('spectator plays, pauses and seeks a recorded run without replacing the pla
   await expect(page.getByRole('button', { name: 'Play replay', exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
   expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(original);
+});
+
+test('difficulty selection survives reload and a legacy chronicle keeps its original rules', async ({
+  page,
+}) => {
+  await page.addInitScript(() =>
+    localStorage.setItem('card-workshop.night-passage.view.v1', 'canvas'),
+  );
+  await page.goto('/?game=night-passage');
+  await page.getByLabel('Passage difficulty').selectOption('veteran');
+  await page.getByRole('button', { name: 'Begin passage', exact: true }).click();
+  await page.getByRole('button', { name: 'Pause', exact: true }).click();
+  await page.reload();
+  await expect(page.getByText('veteran · speed score', { exact: true })).toBeVisible();
+  const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
+  expect(importSession(saved!).state.difficulty).toBe('veteran');
+  const legacy = runEpisode({
+    seed: 'a-light-in-the-dark',
+    weapon: 'bow',
+    rules: 'night-passage-4',
+    includeReplay: true,
+  });
+  await page.locator('input[type="file"]').setInputFiles({
+    name: 'legacy.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(legacy.replay!),
+  });
+  await expect(page.getByTestId('np-score')).toHaveText('12700 points');
+  await page.getByRole('button', { name: 'Return to the quay', exact: true }).click();
+  await expect(page.getByLabel('Passage difficulty')).toBeDisabled();
+  await page.getByRole('button', { name: 'Begin passage', exact: true }).click();
+  await expect(page.getByText('standard · original score', { exact: true })).toBeVisible();
+});
+
+test('constrained engine replay imports with its speed score and controller identity', async ({
+  page,
+}) => {
+  const r = runEpisode({
+    seed: 'passage-control-development-1-00',
+    weapon: 'bow',
+    control: 'standard',
+    policy: 'deliberate',
+    includeReplay: true,
+  });
+  expect(r.status, JSON.stringify(r)).toBe('won');
+  await page.addInitScript(() =>
+    localStorage.setItem('card-workshop.night-passage.view.v1', 'canvas'),
+  );
+  await page.goto('/?game=night-passage');
+  await page.locator('input[type="file"]').setInputFiles({
+    name: 'controlled.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(r.replay!),
+  });
+  await expect(page.getByTestId('np-score')).toHaveText(`${r.score} points`);
+  const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
+  expect(importSession(saved!).controller?.version).toBe('night-passage-control-1');
+  await page.reload();
+  await expect(page.getByTestId('np-score')).toHaveText(`${r.score} points`);
 });

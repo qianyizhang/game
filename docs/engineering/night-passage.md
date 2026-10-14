@@ -16,6 +16,9 @@ observations/actions, the local JSON API and the baseline player benchmark.
 | `domain/combat.ts`                         | Player input buffering, move execution, projectiles and the fixed-step combat sequence.                                                               |
 | `domain/boon-offers.ts`                    | Seeded blessing eligibility and slot-diverse audience drafts. Returns offered IDs and the next RNG state without changing a build.                    |
 | `domain/game.ts`                           | Command validation, run lifecycle, rewards, markets and progression. `applyCommand` rejects atomically and returns the original state on failure.     |
+| `domain/contracts.ts`                      | Supported legacy/current identities and the three encounter-pressure tiers.                                                                           |
+| `application/control.ts`                   | Aged/redacted perception, metered delay, held controls, aim bounds and replayable control scheduling.                                                 |
+| `agent/policy.ts`                          | Quick, balanced and deliberate policy work; policies receive only their permitted view.                                                               |
 | `application/session.ts`                   | Accepted-command journal, bounded replay validation, export and reconstruction. No serialized state snapshot is trusted.                              |
 | `application/agent.ts`                     | Detached tactical observations and validated agent commands.                                                                                          |
 | `application/playback.ts`                  | Isolated replay timeline, frame splitting and seeking through recorded commands.                                                                      |

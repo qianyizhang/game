@@ -66,9 +66,18 @@ function saved(): Session {
   window.dispatchEvent(new PageTransitionEvent('pagehide'));
   const text = localStorage.getItem(SAVE_KEY);
   if (!text) throw new Error('Application did not publish its chronicle');
-  const envelope = JSON.parse(text) as { seed: string; commands: (Command | number[])[] };
-  if (!prefix || prefix.state.seed !== envelope.seed || prefixLength >= envelope.commands.length) {
-    prefix = newSession(envelope.seed);
+  const envelope = JSON.parse(text) as {
+    seed: string;
+    rules: 'night-passage-4' | 'night-passage-5';
+    commands: (Command | number[])[];
+  };
+  if (
+    !prefix ||
+    prefix.state.seed !== envelope.seed ||
+    prefix.state.rulesVersion !== envelope.rules ||
+    prefixLength >= envelope.commands.length
+  ) {
+    prefix = newSession(envelope.seed, envelope.rules);
     prefixLength = 0;
   }
   let current = prefix;

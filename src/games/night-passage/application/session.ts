@@ -1,7 +1,13 @@
 import { isList, isRecord } from '../../../shared/json';
-import { CONTENT_VERSION } from '../domain/content';
+import { contentVersion, supportedContract, type RulesVersion } from '../domain/contracts';
 import { applyCommand, createGame, RULES_VERSION, validCommand } from '../domain/game';
 import type { Command, State } from '../domain/types';
+import {
+  controlConfig,
+  CONTROL_VERSION,
+  type ControlConfig,
+  type ControlPreset,
+} from './control-settings';
 
 export const SAVE_KEY = 'card-workshop.night-passage.v1';
 export const MAX_COMMANDS = 300_000;
@@ -15,10 +21,14 @@ export interface Session {
   state: State;
   journal: Journal | null;
   ticks: number;
+  controller?: { version: typeof CONTROL_VERSION; preset: ControlPreset; config: ControlConfig };
 }
-export function newSession(seed = 'a-light-in-the-dark'): Session {
+export function newSession(
+  seed = 'a-light-in-the-dark',
+  rules: RulesVersion = RULES_VERSION,
+): Session {
   if (!seed || seed.length > 120) throw new Error('Seed must contain 1–120 characters.');
-  return { state: createGame(seed), journal: null, ticks: 0 };
+  return { state: createGame(seed, rules), journal: null, ticks: 0 };
 }
 function append(session: Session, command: Command, state: State): Session {
   const last = session.journal;
@@ -35,6 +45,7 @@ function append(session: Session, command: Command, state: State): Session {
       : structuredClone(command);
   return {
     state,
+    ...(session.controller ? { controller: session.controller } : {}),
     ticks: session.ticks + (command.type === 'frame' ? command.ticks : 0),
     journal: {
       command: packed,
@@ -79,10 +90,12 @@ export function exportSession(session: Session): string {
   commands.reverse();
   return JSON.stringify({
     format: 'night-passage-replay-v2',
-    rules: RULES_VERSION,
-    content: CONTENT_VERSION,
+    rules: session.state.rulesVersion,
+    content: contentVersion(session.state.rulesVersion),
     seed: session.state.seed,
     commands,
+    ...(session.state.rulesVersion !== 'night-passage-4' ? { score: 'night-passage-score-2' } : {}),
+    ...(session.controller ? { controller: session.controller } : {}),
   });
 }
 export function importSession(text: string): Session {
@@ -91,14 +104,47 @@ export function importSession(text: string): Session {
   if (
     !isRecord(value) ||
     value.format !== 'night-passage-replay-v2' ||
-    value.rules !== RULES_VERSION ||
-    value.content !== CONTENT_VERSION ||
+    !supportedContract(value.rules, value.content) ||
     typeof value.seed !== 'string' ||
     !isList(value.commands) ||
     value.commands.length > MAX_COMMANDS
   )
     throw new Error('Unsupported or malformed Night Passage chronicle.');
-  let session = newSession(value.seed);
+  let session = newSession(value.seed, value.rules);
+  if (
+    value.score !== undefined &&
+    value.score !==
+      (value.rules === 'night-passage-4' ? 'night-passage-score-1' : 'night-passage-score-2')
+  )
+    throw new Error('Unsupported score identity.');
+  if (value.controller !== undefined) {
+    const c = value.controller;
+    if (
+      !isRecord(c) ||
+      c.version !== CONTROL_VERSION ||
+      !['light', 'standard', 'heavy'].includes(String(c.preset)) ||
+      !isRecord(c.config)
+    )
+      throw new Error('Malformed controller identity.');
+    const configValue = c.config;
+    const number = (key: keyof ControlConfig): number => {
+      const value = configValue[key];
+      if (typeof value !== 'number') throw new Error('Malformed controller configuration.');
+      return value;
+    };
+    session.controller = {
+      version: CONTROL_VERSION,
+      preset: c.preset as ControlPreset,
+      config: controlConfig(c.preset as ControlPreset, {
+        observationTicks: number('observationTicks'),
+        reactionTicks: number('reactionTicks'),
+        workPerTick: number('workPerTick'),
+        holdTicks: number('holdTicks'),
+        switchTicks: number('switchTicks'),
+        aimRadiansPerTick: number('aimRadiansPerTick'),
+      }),
+    };
+  }
   for (const encoded of value.commands) {
     let command: unknown = encoded;
     if (isList(encoded)) {

@@ -72,8 +72,8 @@ test('announced route layout survives UI selection, portable replay and paused r
     layout.hazards,
   );
   expect(header(saved)).toMatchObject({
-    rules: 'night-passage-4',
-    content: 'night-passage-content-3',
+    rules: 'night-passage-5',
+    content: 'night-passage-content-4',
   });
   const geometry = {
     layout: confirmed.room.layout,
@@ -110,7 +110,7 @@ test('announced route layout survives UI selection, portable replay and paused r
   );
 });
 
-test('version-3 chronicle bytes remain recoverable until explicit version-4 replacement', async ({
+test('version-3 chronicle bytes remain recoverable until explicit current-version replacement', async ({
   page,
 }) => {
   // An empty accepted-command history is valid in the old replay envelope.
@@ -136,8 +136,8 @@ test('version-3 chronicle bytes remain recoverable until explicit version-4 repl
   await page.getByRole('button', { name: 'Export chronicle' }).click();
   const current = await downloaded(await currentDownload);
   expect(header(current)).toMatchObject({
-    rules: 'night-passage-4',
-    content: 'night-passage-content-3',
+    rules: 'night-passage-5',
+    content: 'night-passage-content-4',
   });
   expect(importSession(current).state.runNumber).toBe(1);
   expect(() => importSession(legacy)).toThrow('Unsupported');

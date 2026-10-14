@@ -1,6 +1,6 @@
 import type { Boon, GodId, Move, RuneId, Weapon, WeaponId } from './types';
 
-export const CONTENT_VERSION = 'night-passage-content-3';
+export { CONTENT_VERSION } from './contracts';
 export const ARENA = { width: 960, height: 600, margin: 42 };
 export const CHAMBERS_PER_REGION = 8;
 const move = (
