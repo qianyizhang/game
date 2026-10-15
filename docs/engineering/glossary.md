@@ -124,6 +124,8 @@ _Avoid_: Release, when the revision has not been promoted.
 
 **Asset release**: An immutable delivered-model revision and its provenance, identified independently of whichever release is currently selected for consumers.
 
+**Asset lifetime**: The period during which a consumer owns loaded presentation resources and is responsible for releasing them. A displayed instance can borrow resources whose lifetime belongs to a shared asset.
+
 **Delivery receipt**: The provenance record linking a delivered model to the source and checks that produced it.
 
 **Technical verification**: Evidence that rules, interaction or delivery contracts hold under stated checks. It does not establish visual quality or user acceptance.

@@ -1,4 +1,4 @@
-import { disposeObject } from '../../../src/shared/three/resources';
+import { AssetLifetime } from '../../../src/shared/three/lifetime';
 import { useEffect, useRef, useState } from 'react';
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -74,6 +74,7 @@ export default function ComparisonViewer({
     const clay = new T.MeshStandardMaterial({ color: '#b0b4a8', roughness: 0.8 });
     const silhouette = new T.MeshBasicMaterial({ color: '#172326' });
     const subjects: Subject[] = [];
+    const assets = new AssetLifetime();
     const bounds = new T.Box3();
     const target = new T.Vector3();
     let radius = 2;
@@ -109,19 +110,15 @@ export default function ComparisonViewer({
       dirty = true;
     });
     resize.observe(element);
-    const makeSubject = async (url: string) => {
+    const makeSubject = async (url: string, index: number) => {
       const gltf = await new GLTFLoader().loadAsync(url);
-      if (disposed) {
-        disposeObject(gltf.scene);
-        return;
-      }
+      const owned = assets.adopt(gltf.scene);
+      if (!owned) return;
       const clip = gltf.animations[0];
       if (!clip || Math.abs(clip.duration - 6) > 0.001) {
-        disposeObject(gltf.scene);
         throw new Error('Each comparison asset must have a six-second animation.');
       }
-      const root = gltf.scene;
-      const mixer = new T.AnimationMixer(root);
+      const { root, mixer } = owned;
       mixer.clipAction(clip).play();
       mixer.setTime(0);
       root.updateMatrixWorld(true);
@@ -136,46 +133,37 @@ export default function ComparisonViewer({
       const rim = new T.DirectionalLight('#a9d9d2', 1.8);
       rim.position.set(-3, 3, -3);
       scene.add(key, rim, root);
-      return { root, scene, mixer };
+      subjects[index] = { root, scene, mixer };
     };
-    // allSettled lets cleanup own every successful allocation even after another load fails.
-    void Promise.allSettled(
-      [acceptedUrl, beforeUrl, gestureUrl, candidateUrl].map(makeSubject),
-    ).then((results) => {
-      for (const result of results)
-        if (result.status === 'fulfilled' && result.value) subjects.push(result.value);
-      if (disposed) {
-        subjects.forEach(({ root, mixer }) => {
-          mixer.stopAllAction();
-          mixer.uncacheRoot(root);
-          disposeObject(root);
-        });
+    // Each successful load is already owned; readiness alone waits for the batch.
+    void Promise.all([acceptedUrl, beforeUrl, gestureUrl, candidateUrl].map(makeSubject))
+      .then(() => {
+        if (assets.closed) return;
+        // Fit the union of all versions and sampled poses once; no per-subject magnification.
+        for (const subject of subjects) {
+          for (const seconds of [0, 1.5, 3, 4.5, 6]) {
+            subject.mixer.setTime(seconds);
+            subject.root.updateMatrixWorld(true);
+            bounds.union(new T.Box3().setFromObject(subject.root, true));
+          }
+          subject.mixer.setTime(0);
+        }
+        bounds.getCenter(target);
+        radius = bounds.getSize(new T.Vector3()).length() / 2;
+        loaded = true;
+        lastView = '';
+        dirty = true;
+        setReady(true);
+      })
+      .catch(() => {
+        assets.dispose();
         subjects.length = 0;
-        return;
-      }
-      if (results.some((result) => result.status === 'rejected') || subjects.length !== 4) {
+        if (disposed) return;
         setFailed(true);
         setStatus(
           'A comparison asset could not be loaded. Reload to retry, or return to the workbench.',
         );
-        return;
-      }
-      // Fit the union of all versions and sampled poses once; no per-subject magnification.
-      for (const subject of subjects) {
-        for (const seconds of [0, 1.5, 3, 4.5, 6]) {
-          subject.mixer.setTime(seconds);
-          subject.root.updateMatrixWorld(true);
-          bounds.union(new T.Box3().setFromObject(subject.root, true));
-        }
-        subject.mixer.setTime(0);
-      }
-      bounds.getCenter(target);
-      radius = bounds.getSize(new T.Vector3()).length() / 2;
-      loaded = true;
-      lastView = '';
-      dirty = true;
-      setReady(true);
-    });
+      });
     const draw = (now: number) => {
       frame = requestAnimationFrame(draw);
       const dt = Math.min(0.05, Math.max(0, (now - previous) / 1000));
@@ -252,24 +240,27 @@ export default function ComparisonViewer({
       element.dataset.surface = current.surface;
     };
     frame = requestAnimationFrame(draw);
+    const view = new AssetLifetime();
+    for (const release of [
+      () => cancelAnimationFrame(frame),
+      () => resize.disconnect(),
+      () => controls.removeEventListener('change', invalidate),
+      () => controls.dispose(),
+      () => assets.dispose(),
+      () => {
+        subjects.length = 0;
+      },
+      () => clay.dispose(),
+      () => silhouette.dispose(),
+      () => environment.dispose(),
+      () => pmrem.dispose(),
+      () => renderer.dispose(),
+      () => renderer.domElement.remove(),
+    ].reverse())
+      view.own(release);
     return () => {
       disposed = true;
-      cancelAnimationFrame(frame);
-      resize.disconnect();
-      controls.removeEventListener('change', invalidate);
-      controls.dispose();
-      subjects.forEach(({ root, mixer }) => {
-        mixer.stopAllAction();
-        mixer.uncacheRoot(root);
-        disposeObject(root);
-      });
-      subjects.length = 0;
-      clay.dispose();
-      silhouette.dispose();
-      environment.dispose();
-      pmrem.dispose();
-      renderer.dispose();
-      renderer.domElement.remove();
+      view.dispose();
     };
   }, []);
   return (

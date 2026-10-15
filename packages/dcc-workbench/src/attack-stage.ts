@@ -1,6 +1,7 @@
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { disposeObject } from '../../../src/shared/three/resources';
+import { AssetLifetime } from '../../../src/shared/three/lifetime';
 import { isMesh } from '../../../src/shared/three/objects';
 import { type Motion } from '../motion-contract';
 
@@ -77,20 +78,21 @@ export function createAttackStage(
     camera.updateProjectionMatrix();
   });
   resize.observe(element);
+  const assets = new AssetLifetime();
+  assets.own(() => disposeObject(scene));
+  assets.own(() => light.shadow.dispose());
   void new GLTFLoader()
     .loadAsync(model)
     .then((gltf) => {
-      if (disposed) {
-        disposeObject(gltf.scene);
-        return;
-      }
-      root = gltf.scene;
+      const owned = assets.adopt(gltf.scene);
+      if (!owned) return;
+      root = owned.root;
       root.traverse((object) => {
         if (isMesh(object)) object.castShadow = true;
       });
       scene.add(root);
       animations = gltf.animations;
-      mixer = new T.AnimationMixer(root);
+      mixer = owned.mixer;
       report('ready');
     })
     .catch(() => {
@@ -132,14 +134,17 @@ export function createAttackStage(
     renderer.render(scene, camera);
   };
   frame = requestAnimationFrame(draw);
+  const view = new AssetLifetime();
+  for (const release of [
+    () => cancelAnimationFrame(frame),
+    () => resize.disconnect(),
+    () => assets.dispose(),
+    () => renderer.dispose(),
+    () => renderer.domElement.remove(),
+  ].reverse())
+    view.own(release);
   return () => {
     disposed = true;
-    cancelAnimationFrame(frame);
-    resize.disconnect();
-    mixer?.stopAllAction();
-    if (root) mixer?.uncacheRoot(root);
-    disposeObject(scene);
-    renderer.dispose();
-    renderer.domElement.remove();
+    view.dispose();
   };
 }

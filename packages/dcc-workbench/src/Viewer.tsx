@@ -1,5 +1,5 @@
 import { isMesh } from '../../../src/shared/three/objects';
-import { disposeObject } from '../../../src/shared/three/resources';
+import { AssetLifetime } from '../../../src/shared/three/lifetime';
 import { useEffect, useRef, useState } from 'react';
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -118,6 +118,7 @@ export default function Viewer({
     edge.position.y = -0.008;
     scene.add(edge);
     let disposed = false;
+    const assets = new AssetLifetime();
     let asset: T.Group | undefined;
     let skeleton: T.SkeletonHelper | undefined;
     let mixer: T.AnimationMixer | undefined;
@@ -172,7 +173,7 @@ export default function Viewer({
       controls.target.copy(center);
       controls.update();
     };
-    const originals = new Map<T.Mesh, T.Material | T.Material[]>();
+    let originals = new Map<T.Mesh, T.Material | T.Material[]>();
     const clay = new T.MeshStandardMaterial({ color: '#aab4ad', roughness: 0.78 });
     const wire = new T.MeshBasicMaterial({ color: '#bdd5c3', wireframe: true });
     const fit = () => {
@@ -190,23 +191,23 @@ export default function Viewer({
     new GLTFLoader().load(
       published.modelUrl,
       (gltf) => {
-        if (disposed) {
-          disposeObject(gltf.scene, originals);
-          return;
-        }
-        asset = gltf.scene;
+        const owned = assets.adopt(gltf.scene);
+        if (!owned) return;
+        asset = owned.root;
+        mixer = owned.mixer;
+        originals = owned.materials;
         asset.traverse((child) => {
           if (isMesh(child)) {
             child.castShadow = true;
             child.receiveShadow = true;
-            originals.set(child, child.material);
           }
         });
         scene.add(asset);
         skeleton = new T.SkeletonHelper(asset);
+        const rig = skeleton;
+        assets.own(() => rig.dispose());
         skeleton.visible = false;
         scene.add(skeleton);
-        mixer = new T.AnimationMixer(asset);
         const clip =
           gltf.animations.find((item) => item.name === published.brief.animation?.name) ??
           gltf.animations[0];
@@ -331,29 +332,29 @@ export default function Viewer({
       element.dataset.time = time.toFixed(3);
     };
     frame = requestAnimationFrame(draw);
+    const view = new AssetLifetime();
+    for (const release of [
+      () => cancelAnimationFrame(frame),
+      () => resize.disconnect(),
+      () => controls.removeEventListener('change', invalidate),
+      () => controls.dispose(),
+      () => assets.dispose(),
+      () => key.shadow.dispose(),
+      () => floor.geometry.dispose(),
+      () => floor.material.dispose(),
+      () => edge.geometry.dispose(),
+      () => edge.material.dispose(),
+      () => clay.dispose(),
+      () => wire.dispose(),
+      () => environment.dispose(),
+      () => pmrem.dispose(),
+      () => renderer.dispose(),
+      () => renderer.domElement.remove(),
+    ].reverse())
+      view.own(release);
     return () => {
       disposed = true;
-      cancelAnimationFrame(frame);
-      resize.disconnect();
-      controls.removeEventListener('change', invalidate);
-      controls.dispose();
-      if (asset) {
-        mixer?.stopAllAction();
-        mixer?.uncacheRoot(asset);
-        disposeObject(asset, originals);
-      }
-      skeleton?.dispose();
-      key.shadow.map?.dispose();
-      floor.geometry.dispose();
-      floor.material.dispose();
-      edge.geometry.dispose();
-      edge.material.dispose();
-      clay.dispose();
-      wire.dispose();
-      environment.dispose();
-      pmrem.dispose();
-      renderer.dispose();
-      renderer.domElement.remove();
+      view.dispose();
     };
   }, [published]);
   return (

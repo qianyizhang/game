@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import heroUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/hero.glb?url';
-import { disposeObject } from '../../../../../shared/three/resources';
+import { AssetLifetime } from '../../../../../shared/three/lifetime';
 import { BASE_CAST, SPELLS, boon, weapon } from '../../../domain/content';
 import type { Action, Move, StateView as State, WeaponId } from '../../../domain/types';
 import { createWeapons, WEAPON_CONTACT as CONTACT, type WeaponPose } from './weapons';
@@ -188,13 +188,12 @@ export function createHero(
   const actions = new Map<Clip, THREE.AnimationAction>();
   let current: Clip | null = null;
   let disposed = false;
+  const assets = new AssetLifetime();
   void new GLTFLoader()
     .loadAsync(heroUrl)
     .then((gltf) => {
-      if (disposed) {
-        disposeObject(gltf.scene);
-        return;
-      }
+      const owned = assets.adopt(gltf.scene);
+      if (!owned) return;
       const socket = gltf.scene.getObjectByName('weapon_socket');
       const leftSocket = gltf.scene.getObjectByName('weapon_socket_L');
       if (
@@ -207,11 +206,11 @@ export function createHero(
             ),
         )
       ) {
-        disposeObject(gltf.scene);
+        assets.dispose();
         console.warn('Night Passage hero asset is missing hand sockets or required motion clips.');
         return;
       }
-      model = gltf.scene;
+      model = owned.root;
       model.scale.setScalar(MODEL_SCALE);
       model.traverse((object) => {
         if (object instanceof THREE.Mesh) {
@@ -219,7 +218,7 @@ export function createHero(
           object.receiveShadow = true;
         }
       });
-      mixer = new THREE.AnimationMixer(model);
+      mixer = owned.mixer;
       for (const name of clips) {
         const action = mixer.clipAction(gltf.animations.find((clip) => clip.name === name)!);
         action.setLoop(
@@ -237,6 +236,15 @@ export function createHero(
       if (!disposed)
         console.warn('Night Passage hero asset could not load; using the actor blockout.', error);
     });
+  const view = new AssetLifetime();
+  for (const release of [
+    () => armory.dispose(),
+    () => assets.dispose(),
+    () => root.removeFromParent(),
+    () => root.clear(),
+    () => actions.clear(),
+  ].reverse())
+    view.own(release);
   return {
     sync(state, reducedMotion) {
       if (disposed) return false;
@@ -265,15 +273,7 @@ export function createHero(
     dispose() {
       if (disposed) return;
       disposed = true;
-      armory.dispose();
-      if (model) {
-        mixer?.stopAllAction();
-        mixer?.uncacheRoot(model);
-        disposeObject(model);
-      }
-      root.removeFromParent();
-      root.clear();
-      actions.clear();
+      view.dispose();
       model = null;
       mixer = null;
     },

@@ -1,9 +1,9 @@
-import { isMesh } from '../../../src/shared/three/objects';
 import * as T from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { disposeObject } from '../../../src/shared/three/resources';
+import { AssetLifetime } from '../../../src/shared/three/lifetime';
 import { travelAt } from '../motion-contract';
 import {
   characters as familyCharacters,
@@ -65,6 +65,7 @@ export function createCanidPlayer(
   room.dispose();
   const clay = new T.MeshStandardMaterial({ color: '#b9b7a8', roughness: 0.8 });
   const subjects: Subject[] = [];
+  const assets = new AssetLifetime();
   let disposed = false;
   let ready = false;
   let time = 0;
@@ -88,35 +89,29 @@ export function createCanidPlayer(
     lastView = '';
   });
   resize.observe(element);
-  const release = (subject: Subject) => {
-    subject.mixer.stopAllAction();
-    subject.mixer.uncacheRoot(subject.root);
-    for (const [mesh, material] of subject.materials) mesh.material = material;
-    subject.rig.dispose();
-    subject.scene.remove(subject.rig);
-    disposeObject(subject.scene);
-  };
-  void Promise.allSettled(
+  void Promise.all(
     [
       ...baselineCharacters.map((asset) => ({ asset, revision: 'baseline' as const })),
       ...characters.map((asset) => ({ asset, revision: 'refined' as const })),
-    ].map(async ({ asset: character, revision }) => {
+    ].map(async ({ asset: character, revision }, index) => {
       const gltf = await new GLTFLoader().loadAsync(character.model);
-      if (disposed) {
-        disposeObject(gltf.scene);
-        return;
-      }
+      const owned = assets.adopt(gltf.scene);
+      if (!owned) return;
       const metadata: Record<string, { name: string; seconds: number }> =
         revision === 'baseline' ? baselineClips : clips;
       for (const [name, clip] of Object.entries(metadata)) {
         const found = gltf.animations.find((a) => a.name === name);
         if (!found || Math.abs(found.duration - clip.seconds) > 0.001) {
-          disposeObject(gltf.scene);
           throw new Error(`Missing or invalid ${name} clip`);
         }
       }
-      const root = gltf.scene;
+      const { root, mixer, materials } = owned;
       const scene = new T.Scene();
+      assets.own(() => {
+        // The loaded root has its own owner; the scene owns floor, grid, rig and path.
+        disposeObject(scene);
+      });
+      assets.own(() => root.removeFromParent());
       scene.environment = environment.texture;
       scene.environmentIntensity = 0.45;
       scene.add(root, new T.HemisphereLight('#d6ecf2', '#574b39', 1));
@@ -141,17 +136,13 @@ export function createCanidPlayer(
         new T.LineBasicMaterial({ color: '#e2be70' }),
       );
       scene.add(path);
-      const materials = new Map<T.Mesh, T.Material | T.Material[]>();
-      root.traverse((obj) => {
-        if (isMesh(obj)) materials.set(obj, obj.material);
-      });
-      return {
+      subjects[index] = {
         asset: character,
         revision,
         duration: 0,
         root,
         scene,
-        mixer: new T.AnimationMixer(root),
+        mixer,
         animations: gltf.animations,
         grid,
         rig,
@@ -159,27 +150,21 @@ export function createCanidPlayer(
         materials,
       };
     }),
-  ).then((results) => {
-    for (const result of results)
-      if (result.status === 'fulfilled' && result.value) subjects.push(result.value);
-    if (disposed) {
-      subjects.forEach(release);
+  )
+    .then(() => {
+      if (assets.closed) return;
+      ready = true;
+      status('', true);
+    })
+    .catch(() => {
+      assets.dispose();
       subjects.length = 0;
-      return;
-    }
-    if (
-      results.some((r) => r.status === 'rejected') ||
-      subjects.length !== characters.length + baselineCharacters.length
-    ) {
-      status(
-        'A character could not load. Reload to retry; Blender and GLB downloads remain available.',
-        false,
-      );
-      return;
-    }
-    ready = true;
-    status('', true);
-  });
+      if (!disposed)
+        status(
+          'A character could not load. Reload to retry; Blender and GLB downloads remain available.',
+          false,
+        );
+    });
   const draw = (now: number) => {
     frame = requestAnimationFrame(draw);
     const dt = Math.max(0, (now - previous) / 1000);
@@ -318,18 +303,25 @@ export function createCanidPlayer(
     }
   };
   frame = requestAnimationFrame(draw);
+  const view = new AssetLifetime();
+  for (const release of [
+    () => cancelAnimationFrame(frame),
+    () => document.removeEventListener('visibilitychange', resetTime),
+    () => resize.disconnect(),
+    () => controls.dispose(),
+    () => assets.dispose(),
+    () => {
+      subjects.length = 0;
+    },
+    () => clay.dispose(),
+    () => environment.dispose(),
+    () => pmrem.dispose(),
+    () => renderer.dispose(),
+    () => renderer.domElement.remove(),
+  ].reverse())
+    view.own(release);
   return () => {
     disposed = true;
-    cancelAnimationFrame(frame);
-    document.removeEventListener('visibilitychange', resetTime);
-    resize.disconnect();
-    controls.dispose();
-    subjects.forEach(release);
-    subjects.length = 0;
-    clay.dispose();
-    environment.dispose();
-    pmrem.dispose();
-    renderer.dispose();
-    renderer.domElement.remove();
+    view.dispose();
   };
 }

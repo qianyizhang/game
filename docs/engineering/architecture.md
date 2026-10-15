@@ -102,6 +102,26 @@ Rules code never imports UI, storage, DOM, clock, or global randomness. Replay s
 
 ## Workshop shared layers
 
+### Loaded asset ownership
+
+`shared/three/lifetime.ts` owns exclusive loaded-model adoption and idempotent cleanup.
+It retains original materials, stops and uncaches the model's mixer, releases owned
+resources, and disposes arrivals after closure. Independent cleanup failures are
+reported without skipping remaining releases. DCC viewers and the Night Passage hero
+use this module; cameras, playback clocks, motion selection and scene composition
+remain with their owning presentation modules.
+
+DCC batches adopt each model when it arrives. Readiness waits for the complete batch;
+a failure closes asset ownership immediately, releasing completed models and future
+arrivals while the failure message and source downloads remain available. Viewer
+teardown has its own lifetime so batch failure does not remove the recovery interface.
+Shared disposal includes mesh, line and point resources, including grid and trajectory
+helpers. Borrowed viewer materials remain separately owned. A cloned enemy instance
+must release only its private resources; whole-model disposal would also release its
+template's shared geometry and textures.
+
+### Existing shared modules
+
 - `shared/usePlaybackClock.ts`: Presentation clock shared by resolution and combat players, without command dispatch. Timeline identity resets playback; reallocating a frame array does not.
 - `shared/Playback.tsx`: Resolution controls and result reveal over immutable domain frames. Last Hearth keeps its own combat view and controls on the shared clock.
 - `shared/replay.ts`: Validated replay reconstruction and practice envelopes.

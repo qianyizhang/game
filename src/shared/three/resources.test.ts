@@ -37,3 +37,13 @@ it('releases assigned materials when no override originals are supplied', () => 
   disposeObject(new T.Group().add(new T.Mesh(geometry, material), new T.Mesh(geometry, material)));
   for (const release of releases) expect(release).toHaveBeenCalledTimes(1);
 });
+
+it('releases grid and trajectory resources alongside meshes', () => {
+  const grid = new T.GridHelper(2, 2);
+  const path = new T.Line(new T.BufferGeometry(), new T.LineBasicMaterial());
+  const releases = [grid.geometry, grid.material, path.geometry, path.material].map((resource) =>
+    vi.spyOn(resource, 'dispose'),
+  );
+  disposeObject(new T.Scene().add(grid, path));
+  for (const release of releases) expect(release).toHaveBeenCalledTimes(1);
+});

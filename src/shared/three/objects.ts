@@ -10,3 +10,6 @@ export function isSkinnedMesh(value: unknown): value is T.SkinnedMesh {
 export function isTexture(value: unknown): value is T.Texture {
   return value instanceof T.Texture;
 }
+export function isRenderable(value: unknown): value is T.Mesh | T.Line | T.Points {
+  return value instanceof T.Mesh || value instanceof T.Line || value instanceof T.Points;
+}
