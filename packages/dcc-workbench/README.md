@@ -290,6 +290,13 @@ their own native adapter where skeleton/support assumptions differ. Keep fitting
 export separate from candidate construction; keep motion timing, trajectories, support
 phases and markers together in the saved action contract.
 
+`motion-delivery.ts` shares GLB clip timing, loop closure, skin, normal and budget
+checks for boar, raven and otter, plus exact exporter-file digest checks. Each species
+keeps its source identity, fitting and support requirements and declares its delivery
+budgets. The shared mutation suite uses a delivered boar GLB; each species also keeps
+its real-delivery and support-failure checks. Canid, fox and the general GLB inspector
+retain their separate contracts.
+
 ## Bracken boar motion study
 
 The [boar guide](subjects/boar/README.md) owns the new boar anatomy, five saved control
