@@ -44,6 +44,14 @@ test('standalone edits and temporary requests share operation semantics with MCP
     });
     const headers = { 'X-Repo-Canvas-Token': state.token };
     expect((await request.get('/api/source?path=src/core/rules.ts')).status()).toBe(403);
+    const source = await request.get('/api/source?path=src/core/rules.ts&path=../outside', {
+      headers,
+    });
+    expect(source.ok()).toBe(true);
+    expect(await source.json()).toMatchObject({
+      path: 'src/core/rules.ts',
+      content: expect.stringContaining('domain owns rules'),
+    });
     const draft = {
       document: state.document,
       revision: state.revision,

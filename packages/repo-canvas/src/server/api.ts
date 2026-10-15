@@ -78,7 +78,9 @@ export function apiPlugin(root: string): Plugin {
           if (action) {
             const args =
               operations[action].method === 'GET'
-                ? Object.fromEntries(url.searchParams)
+                ? Object.fromEntries(
+                    [...url.searchParams.keys()].map((key) => [key, url.searchParams.get(key)]),
+                  )
                 : await body(req);
             json(res, operate(action, args, repository, bridge));
             return;
