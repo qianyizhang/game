@@ -15,6 +15,8 @@ test('standalone edits and temporary requests share operation semantics with MCP
   await client.connect(new StreamableHTTPClientTransport(new URL('http://127.0.0.1:4318/mcp')));
   try {
     await page.goto('/');
+    await expect(page.getByText('Standalone preview', { exact: true })).toBeVisible();
+    await expect(page.getByText('Shared with Codex', { exact: true })).toHaveCount(0);
     await page.getByRole('button', { name: 'Inspect src', exact: true }).dblclick();
     await page.getByRole('button', { name: 'Inspect core', exact: true }).click();
     await page.getByRole('button', { name: '↗ src/core/rules.ts', exact: true }).click();
@@ -135,7 +137,9 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
   );
   await page.exposeFunction('canvasMessage', (message: (typeof messages)[number]) => {
     messages.push(message);
-    return rejectMessage ? { isError: true } : {};
+    if (rejectMessage)
+      throw new Error('Codex did not accept the message. ' + 'Delivery details. '.repeat(50));
+    return {};
   });
   await page.route('**/mcp-host', (route) =>
     route.fulfill({
@@ -162,11 +166,17 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/mcp-host');
+  await expect(ui.getByText('MCP host session', { exact: true })).toBeVisible();
+  await expect(ui.locator('.checkout-path')).toHaveText(
+    ((await (await request.get('/api/state')).json()) as Snapshot).repo,
+  );
   // Undoing a new, selected module must restore a valid scope and chat context.
+  await ui.getByText('Map actions', { exact: true }).click();
   await ui.getByRole('button', { name: '+ Module', exact: true }).click();
   await ui.getByRole('textbox', { name: 'Module name', exact: true }).last().fill('Temporary');
   await ui.getByRole('button', { name: 'Create module', exact: true }).click();
   await ui.getByRole('button', { name: 'Enter module' }).click();
+  await ui.getByText('Map actions', { exact: true }).click();
   await ui.getByTitle('Undo last draft edit').click();
   await expect(ui.getByRole('button', { name: 'Inspect src', exact: true })).toBeVisible();
   await ui.getByRole('button', { name: 'Side chat' }).click();
@@ -191,6 +201,7 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
   await page.mouse.down();
   await page.mouse.move(box.x + 160, box.y + 110, { steps: 5 });
   await page.mouse.up();
+  await ui.getByText('Map actions', { exact: true }).click();
   await ui.getByRole('button', { name: '+ Module', exact: true }).click();
   await ui.getByRole('textbox', { name: 'Module name', exact: true }).last().fill('Adapters');
   await ui.getByRole('button', { name: 'Create module', exact: true }).click();
@@ -250,6 +261,12 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
   await ui.getByRole('button', { name: 'Inspect core', exact: true }).click();
   await ui.getByRole('button', { name: 'Inspect', exact: true }).click();
   await expect(ui.getByText('Keep rules independent from UI.', { exact: true })).toBeVisible();
+  // A newly created, unsaved module must not look stale after server normalization.
+  await ui.getByText('Map actions', { exact: true }).click();
+  await ui.getByRole('button', { name: '+ Module', exact: true }).click();
+  await ui.getByRole('textbox', { name: 'Module name', exact: true }).last().fill('Unsaved helper');
+  await ui.getByRole('button', { name: 'Create module', exact: true }).click();
+  await ui.getByRole('button', { name: 'Inspect core', exact: true }).click();
   await ui.getByRole('button', { name: 'Side chat' }).click();
   await ui.getByRole('textbox', { name: 'Message Codex' }).fill('Annotate this module');
   await ui.getByRole('button', { name: 'Send to chat ↑' }).click();
@@ -355,8 +372,18 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
   );
   await expect(ui.getByRole('button', { name: 'Send to chat ↑' })).toBeDisabled();
   expect(messages.length).toBe(3);
+  // A pending request plus a long host error must not clip recovery or compose controls.
+  await page.setViewportSize({ width: 390, height: 844 });
+  const sideChat = ui.locator('.side-chat');
+  await sideChat.hover({ position: { x: 5, y: 5 } });
+  await page.mouse.wheel(0, 1500);
+  await expect(ui.getByRole('button', { name: 'Dismiss error' })).toBeInViewport();
+  await expect(ui.getByRole('button', { name: 'Send to chat ↑' })).toBeInViewport();
+  await page.screenshot({ path: 'test-results/repo-canvas/pending-error-mobile.png' });
+  await ui.getByRole('button', { name: 'Dismiss error' }).click();
   await ui.getByRole('button', { name: 'Close request' }).click();
   await expect(ui.getByText('Request cancelled.')).toBeVisible();
+  await page.setViewportSize({ width: 1440, height: 1000 });
   // Explicitly discarding a cached draft must survive an iframe reload.
   await expect
     .poll(async () => {
@@ -368,6 +395,7 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
     })
     .toContain('Unsaved local draft');
   page.once('dialog', (dialog) => void dialog.accept());
+  await ui.getByText('Map actions', { exact: true }).click();
   await ui.getByRole('button', { name: 'Reload', exact: true }).click();
   await expect
     .poll(async () => {
@@ -388,4 +416,96 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
   await expect(page.getByRole('button', { name: 'Send to chat ↑' })).toBeDisabled();
   expect(errors).toEqual([]);
   await client.close();
+});
+
+test('compact panels preserve keyboard actions, source editing and visible checkout state', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const actions = page.getByText('Map actions', { exact: true });
+  await expect(page.getByRole('button', { name: 'Export', exact: true })).toBeHidden();
+  await actions.focus();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('button', { name: 'Export', exact: true })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(actions).toBeFocused();
+  await expect(page.getByRole('button', { name: 'Export', exact: true })).toBeHidden();
+  await actions.click();
+  await page.getByRole('button', { name: '+ Module', exact: true }).click();
+  await page
+    .getByRole('textbox', { name: 'Module name', exact: true })
+    .last()
+    .fill('Disclosure test');
+  await page.getByRole('button', { name: 'Create module', exact: true }).click();
+  await expect(page.getByText('● Draft changes')).toBeVisible();
+  await expect(page.getByLabel('Source paths, one per line')).toBeHidden();
+  await page.getByText('Edit source paths', { exact: true }).click();
+  await page.getByLabel('Source paths, one per line').fill('src/core/rules.ts');
+  await page.getByRole('button', { name: '↗ src/core/rules.ts', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Source preview' })).toContainText(
+    'domain owns rules',
+  );
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
+  await actions.click();
+  const downloadEvent = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export', exact: true }).click();
+  const download = await downloadEvent;
+  const path = await download.path();
+  const exported = parseDocument(JSON.parse(readFileSync(path, 'utf8')) as unknown);
+  expect(exported.modules.some((m) => m.name === 'Disclosure test')).toBe(true);
+  await actions.click();
+  const chooserEvent = page.waitForEvent('filechooser');
+  await page.getByRole('button', { name: 'Import', exact: true }).click();
+  await (await chooserEvent).setFiles(path);
+  await expect(
+    page.getByRole('button', { name: 'Inspect Disclosure test', exact: true }),
+  ).toBeVisible();
+  await actions.click();
+  await page.getByTitle('Undo last draft edit').click();
+  for (const width of [740, 390]) {
+    await page.setViewportSize({ width, height: 950 });
+    await expect(page.locator('.checkout-path')).toBeVisible();
+    await expect(page.getByText('Standalone preview', { exact: true })).toBeVisible();
+    await expect(page.getByText('● Draft changes')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Save map', exact: true })).toBeInViewport();
+    await page.getByRole('button', { name: 'Close inspector' }).click();
+    await page.getByRole('button', { name: 'Side chat', exact: true }).click();
+    await expect(page.getByRole('textbox', { name: 'Message Codex' })).toBeInViewport();
+    const chat = (await page.locator('.chat-slot').boundingBox())!;
+    const canvas = (await page.locator('.canvas').boundingBox())!;
+    expect(chat.y).toBeGreaterThanOrEqual(canvas.y + canvas.height);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    await page.getByRole('button', { name: 'Close side chat' }).click();
+    await page.getByRole('button', { name: 'Inspect', exact: true }).click();
+  }
+  page.once('dialog', (dialog) => void dialog.accept());
+  await actions.click();
+  await page.getByRole('button', { name: 'Reload', exact: true }).click();
+  await expect(page.getByText('✓ Shared document')).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: 'Inspect Disclosure test', exact: true }),
+  ).toHaveCount(0);
+});
+
+test('short compact windows can scroll to chat controls and back to the map', async ({ page }) => {
+  await page.setViewportSize({ width: 740, height: 500 });
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Side chat', exact: true }).click();
+  await page.screenshot({ path: 'test-results/repo-canvas/short-panel.png' });
+  // Use user scrolling: programmatic scrollIntoView can mask overflow:hidden clipping.
+  await page.locator('.app-header').hover();
+  await page.mouse.wheel(0, 1000);
+  await expect
+    .poll(() => page.locator('.workbench').evaluate((el) => el.scrollTop))
+    .toBeGreaterThan(0);
+  await page.locator('.side-chat').hover();
+  await page.mouse.wheel(0, 1000);
+  await expect(page.getByRole('button', { name: 'Send to chat ↑' })).toBeInViewport();
+  await page.getByRole('textbox', { name: 'Message Codex' }).fill('Reachable in a short window');
+  await page.screenshot({ path: 'test-results/repo-canvas/short-panel-scrolled.png' });
+  await page.getByRole('button', { name: 'Close side chat' }).click();
+  await expect(page.getByRole('button', { name: 'Save map', exact: true })).toBeInViewport();
+  await expect(page.getByRole('button', { name: 'Fit view', exact: true })).toBeInViewport();
 });
