@@ -10,9 +10,9 @@ export {
 export { createPolicy, POLICIES } from '../../../src/games/night-passage/agent/policy';
 
 export {
-  importSession,
-  exportSession,
+  restoreChronicle,
+  exportChronicle,
   dispatch,
-} from '../../../src/games/night-passage/application/session';
+} from '../../../src/games/night-passage/application/chronicle';
 export { createPlayback } from '../../../src/games/night-passage/application/playback';
 export { passageScore } from '../../../src/games/night-passage/domain/score';

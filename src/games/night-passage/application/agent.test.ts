@@ -1,7 +1,8 @@
+import { baselineCommand } from '../agent/player';
 import { expect, test } from 'vitest';
 import type { Input } from '../domain/types';
-import { createAgent, observeSession } from './agent';
-import { dispatch, importSession, MAX_COMMANDS, MAX_TICKS, newSession } from './session';
+import { createAgent, observeChronicle } from './agent';
+import { dispatch, restoreChronicle, exportChronicle, createChronicle } from './chronicle';
 
 const idle: Input = {
   x: 0,
@@ -43,10 +44,10 @@ test('agent commands advance the rules, reject atomically, and reconstruct from 
     expect(agent.step(invalid)).toMatchObject({ accepted: false, observation: before });
     expect(agent.exportReplay()).toBe(replay);
   }
-  expect(observeSession(importSession(replay))).toEqual(before);
+  expect(observeChronicle(restoreChronicle(replay))).toEqual(before);
   expect(agent.step({ type: 'retire' }).observation.phase).toBe('lost');
   expect(agent.step({ type: 'return' }).observation.phase).toBe('hub');
-  expect(observeSession(importSession(agent.exportReplay()))).toEqual(agent.observe());
+  expect(observeChronicle(restoreChronicle(agent.exportReplay()))).toEqual(agent.observe());
 });
 
 test('observations and catalog entries are detached and omit hidden enemy and chronicle state', () => {
@@ -71,70 +72,58 @@ test('observations and catalog entries are detached and omit hidden enemy and ch
   expect(JSON.parse(JSON.stringify(fresh))).toEqual(fresh);
 });
 
-test('observed choices follow current eligibility and expose only announced attack geometry', () => {
-  const hub = newSession('agent-eligibility');
-  const initial = observeSession(hub);
+test('legal observation follows actual command eligibility, announced threats and a visited market', () => {
+  let current = createChronicle('a-light-in-the-dark');
+  const initial = observeChronicle(current);
   expect(initial.legalActions.filter((command) => command.type === 'start')).toHaveLength(105);
   expect(initial.legalActions).not.toContainEqual({ type: 'train' });
   expect(initial.frame).toBeNull();
-  const active = dispatch(hub, { type: 'start', weapon: 'sword', runes: [] }).session;
-  active.state.enemies[0].kind = 'brute';
-  active.state.enemies[0].windup = 9;
-  const observation = observeSession(active);
-  expect(observation.threats).toHaveLength(1);
-  expect(observation.threats[0]).toMatchObject({
-    remainingWindupTicks: 9,
-    shapes: [{ kind: 'circle' }],
-  });
-  observation.threats[0].shapes.splice(0);
-  expect(observeSession(active).threats[0].shapes).toHaveLength(1);
-  expect(observation.frame?.ticks).toEqual({ min: 1, max: 120 });
-
-  // The controlled shop state exercises affordability without a long tactical run.
-  active.state.phase = 'shop';
-  active.state.gold = 80;
-  expect(observeSession(active).legalActions).toEqual([
-    { type: 'buy', item: 'heart' },
-    { type: 'buy', item: 'boon' },
-    { type: 'leave' },
-    { type: 'retire' },
-  ]);
-  active.state.player.hp--;
-  active.state.purchases = ['heart'];
-  const shop = observeSession(active);
-  expect(shop.legalActions).toContainEqual({ type: 'buy', item: 'heal' });
-  expect(shop.legalActions).not.toContainEqual({ type: 'buy', item: 'heart' });
-  for (const command of shop.legalActions) expect(dispatch(active, command).error).toBeNull();
-});
-
-test('announced windup remains paused while an enemy is staggered', () => {
-  const session = dispatch(newSession('agent-stagger'), {
+  current = dispatch(current, {
     type: 'start',
-    weapon: 'sword',
-    runes: [],
-  }).session;
-  session.state.enemies[0].windup = 9;
-  session.state.enemies[0].stagger = 5;
-  const paused = dispatch(session, { type: 'frame', ticks: 5, input: idle }).session;
-  expect(observeSession(paused).threats[0].remainingWindupTicks).toBe(9);
-  const resumed = dispatch(paused, { type: 'frame', ticks: 1, input: idle }).session;
-  expect(observeSession(resumed).threats[0].remainingWindupTicks).toBe(8);
-});
-
-test('frame bounds honor replay capacity and observation never advances the clock', () => {
-  const session = dispatch(newSession('agent-limits'), {
-    type: 'start',
-    weapon: 'sword',
-    runes: [],
-  }).session;
-  session.ticks = MAX_TICKS - 3;
-  expect(observeSession(session).frame?.ticks).toEqual({ min: 1, max: 3 });
-  expect(observeSession(session).tick).toBe(0);
-  session.ticks = MAX_TICKS;
-  expect(observeSession(session).frame).toBeNull();
-  session.ticks = 0;
-  session.journal!.length = MAX_COMMANDS;
-  const exhausted = observeSession(session);
-  expect(exhausted.frame).toBeNull();
-  expect(exhausted.legalActions).toEqual([]);
+    weapon: 'bow',
+    runes: ['vigor', 'fleet'],
+  }).chronicle;
+  let sawThreat = false,
+    sawShop = false;
+  for (
+    let step = 0;
+    step < 6000 && current.state.phase !== 'won' && current.state.phase !== 'lost';
+    step++
+  ) {
+    const observation = observeChronicle(current);
+    if (observation.threats.length && !sawThreat) {
+      const before = exportChronicle(current);
+      const threat = observation.threats[0];
+      const enemy = current.state.enemies.find((e) => e.id === threat.enemyId)!;
+      expect(threat.remainingWindupTicks).toBe(enemy.windup);
+      expect(threat.shapes.length + threat.projectileAngles.length).toBeGreaterThan(0);
+      const announced = structuredClone(threat);
+      threat.shapes.splice(0);
+      threat.projectileAngles.splice(0);
+      expect(observeChronicle(current).threats[0]).toEqual(announced);
+      expect(exportChronicle(current)).toBe(before);
+      sawThreat = true;
+    }
+    if (observation.phase === 'shop') {
+      sawShop = true;
+      for (const command of observation.legalActions)
+        expect(dispatch(current, command).error).toBeNull();
+      for (const item of ['heal', 'heart', 'boon'] as const) {
+        const command = { type: 'buy', item } as const;
+        expect(observation.legalActions.some((c) => c.type === 'buy' && c.item === item)).toBe(
+          dispatch(current, command).error === null,
+        );
+      }
+    }
+    if (sawThreat && sawShop) break;
+    const command =
+      observation.phase === 'route' && observation.routes.some((r) => r.reward === 'shop')
+        ? observation.routes.find((r) => r.reward === 'shop')!.command
+        : baselineCommand(observation);
+    const next = dispatch(current, command);
+    expect(next.error).toBeNull();
+    current = next.chronicle;
+  }
+  expect(sawThreat).toBe(true);
+  expect(sawShop).toBe(true);
 });

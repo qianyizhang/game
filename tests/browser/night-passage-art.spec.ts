@@ -1,13 +1,13 @@
+import { SAVE_KEY } from '../../src/games/night-passage/application/live-chronicle';
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 import {
   dispatch,
-  exportSession,
-  newSession,
-  importSession,
-  SAVE_KEY,
-  type Session,
-} from '../../src/games/night-passage/application/session';
+  exportChronicle,
+  createChronicle,
+  restoreChronicle,
+  type Chronicle,
+} from '../../src/games/night-passage/application/chronicle';
 import { boon, RUNES, WEAPONS } from '../../src/games/night-passage/domain/content';
 import type { Boon } from '../../src/games/night-passage/domain/types';
 import { passageCommand } from '../simulation/night-passage-policy';
@@ -27,11 +27,11 @@ async function patron(container: Locator, blessing: Boon) {
   if (partner) await expect(art).toHaveAttribute('data-np-partner', partner);
   else await expect(art).not.toHaveAttribute('data-np-partner');
 }
-async function restore(page: Page, session: Session, name: string) {
+async function restore(page: Page, session: Chronicle, name: string) {
   await page.getByLabel('Import Night Passage chronicle').setInputFiles({
     name: `${name}.json`,
     mimeType: 'application/json',
-    buffer: Buffer.from(exportSession(session)),
+    buffer: Buffer.from(exportChronicle(session)),
   });
   await expect(page.getByRole('alert')).toHaveText('Chronicle restored.');
 }
@@ -39,12 +39,12 @@ async function saved(page: Page) {
   return page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
 }
 function checkpoints() {
-  let session = dispatch(newSession('passage-verification'), {
+  let session = dispatch(createChronicle('passage-verification'), {
     type: 'start',
     weapon: 'bow',
     runes: ['vigor', 'fleet'],
-  }).session;
-  let reward: Session | undefined, marketRoute: Session | undefined;
+  }).chronicle;
+  let reward: Chronicle | undefined, marketRoute: Chronicle | undefined;
   for (let step = 0; step < 20000; step++) {
     if (session.state.phase === 'reward' && !reward) reward = session;
     if (
@@ -64,7 +64,7 @@ function checkpoints() {
     if (session.state.phase === 'lost' || session.state.phase === 'won') break;
     const result = dispatch(session, passageCommand(session.state));
     if (result.error) throw new Error(result.error);
-    session = result.session;
+    session = result.chronicle;
   }
   throw new Error('Legal pilot did not reach blessing, affordable market and duo checkpoints');
 }
@@ -137,7 +137,7 @@ for (const viewport of [
       await page.keyboard.press('Enter');
       await page.getByRole('button', { name: 'Pause', exact: true }).click();
       const text = (await saved(page))!;
-      expect(importSession(text).state.player).toMatchObject({
+      expect(restoreChronicle(text).state.player).toMatchObject({
         weapon: 'bow',
         runes: ['fleet', 'focus'],
       });
@@ -156,9 +156,9 @@ for (const viewport of [
       const index = marketRoute.state.routes.findIndex((route) => route.reward === 'shop');
       const market = dispatch(marketRoute, { type: 'travel', index });
       expect(market.error).toBeNull();
-      expect(market.session.state.phase).toBe('shop');
-      expect(market.session.state.gold).toBeGreaterThanOrEqual(60);
-      const purchase = dispatch(market.session, { type: 'buy', item: 'heart' });
+      expect(market.chronicle.state.phase).toBe('shop');
+      expect(market.chronicle.state.gold).toBeGreaterThanOrEqual(60);
+      const purchase = dispatch(market.chronicle, { type: 'buy', item: 'heart' });
       expect(purchase.error).toBeNull();
       await page.goto('/?game=night-passage');
       await restore(page, reward, 'legal-blessing');
@@ -182,9 +182,9 @@ for (const viewport of [
       await choices.nth(reward.state.offers.indexOf(command.id)).focus();
       await page.keyboard.press('Enter');
       await expect(page.getByRole('heading', { name: 'Choose your next chamber' })).toBeVisible();
-      expect(await saved(page)).toBe(exportSession(expected.session));
+      expect(await saved(page)).toBe(exportChronicle(expected.chronicle));
       await page.reload();
-      expect(await saved(page)).toBe(exportSession(expected.session));
+      expect(await saved(page)).toBe(exportChronicle(expected.chronicle));
       const owned = page
         .locator('.np-build article')
         .filter({ has: page.locator('strong', { hasText: selected.name }) });
@@ -201,7 +201,7 @@ for (const viewport of [
       await choices.nth(index).focus();
       await page.keyboard.press('Enter');
       await expect(page.getByRole('heading', { name: 'Something for the road?' })).toBeVisible();
-      expect(await saved(page)).toBe(exportSession(market.session));
+      expect(await saved(page)).toBe(exportChronicle(market.chronicle));
       for (const item of [
         { name: 'Restore 40 health', icon: 'fountain', cost: 35 },
         { name: '+20 maximum health', icon: 'heart', cost: 60 },
@@ -222,7 +222,7 @@ for (const viewport of [
       await heart.focus();
       await page.keyboard.press('Space');
       await expect(heart).toBeDisabled();
-      const text = exportSession(purchase.session);
+      const text = exportChronicle(purchase.chronicle);
       expect(await saved(page)).toBe(text);
       await page.reload();
       await expect(page.getByRole('heading', { name: 'Something for the road?' })).toBeVisible();
@@ -248,7 +248,7 @@ for (const viewport of [
         .filter({ has: page.locator('strong', { hasText: blessing.name }) });
       await patron(selectedDuo, blessing);
       await expect(selectedDuo.locator('strong')).toHaveText(blessing.name);
-      const duoText = exportSession(chosen.session);
+      const duoText = exportChronicle(chosen.chronicle);
       expect(await saved(page)).toBe(duoText);
       await page.reload();
       await patron(selectedDuo, blessing);

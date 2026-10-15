@@ -1,12 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  dispatch,
-  exportSession,
-  importSession,
-  newSession,
-  SAVE_KEY,
-  type Session,
-} from '../application/session';
+import { openLiveChronicle, SAVE_KEY } from '../application/live-chronicle';
 import {
   boon,
   CHAMBERS_PER_REGION,
@@ -37,28 +30,6 @@ function preferredView(): Presentation {
   }
 }
 
-function load(): { session: Session; error: string; preserve: boolean; original: string | null } {
-  let saved: string | null = null;
-  try {
-    saved = localStorage.getItem(SAVE_KEY);
-    return {
-      session: saved ? importSession(saved) : newSession(),
-      error: '',
-      preserve: false,
-      original: null,
-    };
-  } catch {
-    return {
-      session: newSession(),
-      error:
-        saved === null
-          ? 'Storage unavailable. Export this chronicle to keep your progress; any existing stored save is left untouched.'
-          : 'Saved chronicle could not load. Its bytes are preserved until you explicitly start a new chronicle or import a valid one.',
-      preserve: true,
-      original: saved,
-    };
-  }
-}
 const emptyInput = (): Input => ({
   x: 0,
   y: 0,
@@ -86,12 +57,22 @@ export default function NightPassageApp() {
 }
 
 function PassageGame() {
-  const [initial] = useState(load);
-  const session = useRef(initial.session);
-  const preserve = useRef(initial.preserve);
-  const [view, setView] = useState(initial.session.state);
-  const [error, setError] = useState(initial.error);
-  const [storage, setStorage] = useState('');
+  const [live] = useState(() =>
+    openLiveChronicle({
+      read: () => localStorage.getItem(SAVE_KEY),
+      write: (text) => localStorage.setItem(SAVE_KEY, text),
+    }),
+  );
+  const [initial] = useState(() => live.snapshot());
+  const [view, setView] = useState(initial.state);
+  const [error, setError] = useState(initial.loadError);
+  const [saveState, setSaveState] = useState(initial);
+  const storage =
+    saveState.status === 'saved'
+      ? 'Chronicle saved locally'
+      : saveState.status === 'write-failed'
+        ? 'Storage unavailable. Export your chronicle to keep this passage.'
+        : '';
   const [paused, setPaused] = useState(true);
   const [presentation, setPresentation] = useState<Presentation>(preferredView);
   const [presentationNotice, setPresentationNotice] = useState('');
@@ -101,7 +82,7 @@ function PassageGame() {
   const soundEnabled = useRef(true);
   const audio = useRef<PassageAudio | null>(null);
   const resetDialog = useRef<HTMLDialogElement>(null);
-  const [difficulty, setDifficulty] = useState<Difficulty>(initial.session.state.difficulty);
+  const [difficulty, setDifficulty] = useState<Difficulty>(initial.state.difficulty);
   const [selectedWeapon, setSelectedWeapon] = useState<WeaponId>('sword');
   const [runes, setRunes] = useState<RuneId[]>(['vigor', 'fleet']);
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -109,7 +90,6 @@ function PassageGame() {
   const controls = useRef(emptyInput());
   const pointer = useRef<Point | null>(null);
   const keys = useRef(new Set<string>());
-  const lastSave = useRef(0);
   useEffect(() => {
     if (resetOpen) resetDialog.current?.showModal();
   }, [resetOpen]);
@@ -139,49 +119,33 @@ function PassageGame() {
       return;
     }
     renderer.current = viewRenderer;
-    viewRenderer.draw(session.current.state);
+    viewRenderer.draw(live.snapshot().state);
     return () => {
       renderer.current = null;
       viewRenderer.dispose();
     };
-  }, [presentation]);
-  const save = () => {
-    if (preserve.current) return;
-    try {
-      localStorage.setItem(SAVE_KEY, exportSession(session.current));
-      setStorage('Chronicle saved locally');
-    } catch {
-      setStorage('Storage unavailable. Export your chronicle to keep this passage.');
-    }
-  };
+  }, [presentation, live]);
+  const save = () => setSaveState(live.flush());
   const send = (command: Command) => {
-    const result = dispatch(session.current, command);
+    const result = live.dispatch(command, performance.now());
     if (result.error) {
       setError(result.error);
       return;
     }
-    session.current = result.session;
-    setView(result.session.state);
+    const next = live.snapshot();
+    setView(next.state);
+    setSaveState(next);
     setError('');
-    save();
   };
   useEffect(() => {
     const element = canvas.current;
     if (!element) return;
-    if (paused) setView(session.current.state);
+    if (paused) setView(live.snapshot().state);
     let frame = 0;
     let previous = 0;
     let accumulator = 0;
     let lastHud = 0;
-    const saveCurrent = () => {
-      if (preserve.current) return;
-      try {
-        localStorage.setItem(SAVE_KEY, exportSession(session.current));
-        setStorage('Chronicle saved locally');
-      } catch {
-        setStorage('Storage unavailable. Export your chronicle to keep this passage.');
-      }
-    };
+    const saveCurrent = () => setSaveState(live.flush());
     const clearControls = () => {
       keys.current.clear();
       controls.current = emptyInput();
@@ -201,7 +165,8 @@ function PassageGame() {
     const tick = (now: number) => {
       const elapsed = previous ? Math.min(100, now - previous) : 0;
       previous = now;
-      if (!paused && renderer.current && session.current.state.phase === 'combat') {
+      const before = live.snapshot().state;
+      if (!paused && renderer.current && before.phase === 'combat') {
         accumulator += elapsed;
         const steps = Math.min(6, Math.floor(accumulator / (1000 / 60)));
         if (steps) {
@@ -219,10 +184,7 @@ function PassageGame() {
           const input: Input = {
             ...controls.current,
             aim: ground
-              ? Math.atan2(
-                  ground.y - session.current.state.player.y,
-                  ground.x - session.current.state.player.x,
-                )
+              ? Math.atan2(ground.y - before.player.y, ground.x - before.player.x)
               : controls.current.aim,
             x: direction.x,
             y: direction.y,
@@ -232,25 +194,22 @@ function PassageGame() {
             call: held.has('r'),
             dash: held.has(' ') || held.has('shift'),
           };
-          const before = session.current.state;
-          const result = dispatch(session.current, { type: 'frame', input, ticks: steps });
+          const result = live.dispatch({ type: 'frame', input, ticks: steps }, now);
           if (result.error) {
             setError(result.error);
             setPaused(true);
-          } else session.current = result.session;
-          if (soundEnabled.current) audio.current?.update(before, session.current.state);
-          if (session.current.state.phase !== before.phase || now - lastSave.current > 3000) {
-            saveCurrent();
-            lastSave.current = now;
           }
-          if (now - lastHud > 100 || session.current.state.phase !== before.phase) {
-            setView(session.current.state);
+          const after = live.snapshot();
+          if (soundEnabled.current) audio.current?.update(before, after.state);
+          if (now - lastHud > 100 || after.state.phase !== before.phase) {
+            setView(after.state);
+            setSaveState(after);
             lastHud = now;
           }
-          if (session.current.state.phase !== 'combat') clearControls();
+          if (after.state.phase !== 'combat') clearControls();
         }
       } else accumulator = 0;
-      renderer.current?.draw(session.current.state);
+      renderer.current?.draw(live.snapshot().state);
       frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
@@ -267,7 +226,7 @@ function PassageGame() {
       window.removeEventListener('pagehide', saveCurrent);
       document.removeEventListener('visibilitychange', visibility);
     };
-  }, [paused, presentation]);
+  }, [paused, presentation, live]);
   const focusPlay = () => {
     if (soundEnabled.current) {
       audio.current ??= new PassageAudio();
@@ -336,7 +295,7 @@ function PassageGame() {
           <button
             onClick={() => {
               setPaused(true);
-              downloadText(exportSession(session.current));
+              downloadText(live.exportReplay());
             }}
           >
             Export chronicle
@@ -363,10 +322,11 @@ function PassageGame() {
                 void file
                   .text()
                   .then((text) => {
-                    const restored = importSession(text);
-                    session.current = restored;
-                    preserve.current = false;
+                    const result = live.importReplay(text);
+                    if (result.error) throw new Error(result.error);
+                    const restored = live.snapshot();
                     setView(restored.state);
+                    setSaveState(restored);
                     setSelectedWeapon(restored.state.player.weapon);
                     setDifficulty(restored.state.difficulty);
                     setRunes(
@@ -375,7 +335,6 @@ function PassageGame() {
                       ),
                     );
                     setError('Chronicle restored.');
-                    save();
                   })
                   .catch((e: unknown) =>
                     setError(e instanceof Error ? e.message : 'Import failed.'),
@@ -430,17 +389,17 @@ function PassageGame() {
             <button
               disabled={!newSeed.trim()}
               onClick={() => {
-                if (preserve.current && initial.original !== null)
-                  downloadText(initial.original, 'night-passage-unreadable.json');
-                downloadText(exportSession(session.current));
-                session.current = newSession(newSeed.trim());
-                preserve.current = false;
+                const result = live.reset(newSeed.trim(), downloadText);
+                if (result.error) {
+                  setError(result.error);
+                  return;
+                }
+                setSaveState(live.snapshot());
                 pointer.current = null;
-                setView(session.current.state);
+                setView(live.snapshot().state);
                 setRunes(['vigor', 'fleet']);
                 setResetOpen(false);
                 setError('');
-                save();
               }}
             >
               Export and reset
@@ -458,26 +417,31 @@ function PassageGame() {
           {presentationNotice}
         </p>
       )}
-      {preserve.current && (
+      {(saveState.protection || saveState.original !== null) && (
         <div>
-          {initial.original !== null && (
+          {saveState.original !== null && (
             <button
-              onClick={() => downloadText(initial.original!, 'night-passage-unreadable.json')}
+              onClick={() => downloadText(saveState.original!, 'night-passage-unreadable.json')}
             >
               Download original save
             </button>
           )}
-          <button
-            onClick={() => {
-              session.current = newSession();
-              preserve.current = false;
-              setView(session.current.state);
-              setError('');
-              save();
-            }}
-          >
-            Replace unreadable save with a new chronicle
-          </button>
+          {saveState.protection && (
+            <button
+              onClick={() => {
+                const result = live.replaceUnreadable();
+                if (result.error) {
+                  setError(result.error);
+                  return;
+                }
+                setSaveState(live.snapshot());
+                setView(live.snapshot().state);
+                setError('');
+              }}
+            >
+              Replace unreadable save with a new chronicle
+            </button>
+          )}
         </div>
       )}
       <div className="np-layout">
@@ -804,7 +768,7 @@ function PassageGame() {
             </span>
           </div>
           <p className="np-status" role="status">
-            {preserve.current
+            {saveState.protection
               ? 'Automatic saving is paused to preserve your stored save. Export your current chronicle to keep this passage.'
               : storage || 'Your passage stays on this device.'}
           </p>

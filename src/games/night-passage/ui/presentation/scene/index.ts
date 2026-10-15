@@ -1,5 +1,5 @@
 import * as T from 'three';
-import type { State } from '../../../domain/types';
+import type { StateView as State } from '../../../domain/types';
 import type { Renderer } from '../renderer';
 import { createCamera, fitCamera, groundFromNdc, groundDirection } from './camera';
 import { createRoom } from './room';

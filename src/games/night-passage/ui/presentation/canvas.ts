@@ -1,5 +1,5 @@
 import { ARENA } from '../../domain/content';
-import type { State } from '../../domain/types';
+import type { StateView as State } from '../../domain/types';
 import { drawArena } from './draw';
 import type { Renderer } from './renderer';
 

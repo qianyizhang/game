@@ -1,4 +1,4 @@
-import type { State } from './types';
+import type { StateView as State } from './types';
 
 export interface PassageScore {
   version: 'night-passage-score-1' | 'night-passage-score-2';

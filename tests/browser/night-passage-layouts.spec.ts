@@ -1,12 +1,12 @@
+import { SAVE_KEY } from '../../src/games/night-passage/application/live-chronicle';
 import { expect, test, type Download } from '@playwright/test';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import {
   dispatch,
-  exportSession,
-  importSession,
-  newSession,
-  SAVE_KEY,
-} from '../../src/games/night-passage/application/session';
+  exportChronicle,
+  restoreChronicle,
+  createChronicle,
+} from '../../src/games/night-passage/application/chronicle';
 import { passageCommand } from '../simulation/night-passage-policy';
 import { chamberLayout } from '../../src/games/night-passage/domain/chamber-content';
 import { browserBudget } from './budget';
@@ -23,11 +23,11 @@ test('announced route layout survives UI selection, portable replay and paused r
   page,
 }) => {
   test.setTimeout(browserBudget(60000));
-  let journal = dispatch(newSession('layout-browser-route'), {
+  let journal = dispatch(createChronicle('layout-browser-route'), {
     type: 'start',
     weapon: 'bow',
     runes: ['vigor', 'fleet'],
-  }).session;
+  }).chronicle;
   for (
     let i = 0;
     i < 3000 && journal.state.phase !== 'route' && journal.state.phase !== 'lost';
@@ -35,7 +35,7 @@ test('announced route layout survives UI selection, portable replay and paused r
   ) {
     const result = dispatch(journal, passageCommand(journal.state));
     expect(result.error).toBeNull();
-    journal = result.session;
+    journal = result.chronicle;
   }
   expect(journal.state.phase).toBe('route');
   expect(journal.state.roomsCleared).toBe(1);
@@ -50,7 +50,7 @@ test('announced route layout survives UI selection, portable replay and paused r
   await page.getByLabel('Import Night Passage chronicle').setInputFiles({
     name: 'first-route.json',
     mimeType: 'application/json',
-    buffer: Buffer.from(exportSession(journal)),
+    buffer: Buffer.from(exportChronicle(journal)),
   });
   await expect(page.getByRole('heading', { name: 'Choose your next chamber' })).toBeVisible();
   const route = page.locator('.np-choices button').nth(index);
@@ -65,7 +65,7 @@ test('announced route layout survives UI selection, portable replay and paused r
   await page.getByRole('button', { name: 'Pause', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
   const saved = (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!;
-  const confirmed = importSession(saved).state;
+  const confirmed = restoreChronicle(saved).state;
   expect(confirmed.room.layout).toBe(selected.layout);
   expect(confirmed.room.pillars).toEqual(layout.pillars);
   expect(confirmed.room.hazards.map(({ x, y, offset }) => ({ x, y, offset }))).toEqual(
@@ -94,7 +94,7 @@ test('announced route layout survives UI selection, portable replay and paused r
   expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
-  const restored = importSession(
+  const restored = restoreChronicle(
     (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!,
   ).state;
   expect({
@@ -115,7 +115,10 @@ test('version-3 chronicle bytes remain recoverable until explicit current-versio
 }) => {
   // An empty accepted-command history is valid in the old replay envelope.
   const legacy = JSON.stringify({
-    ...(JSON.parse(exportSession(newSession('legacy-layout-save'))) as Record<string, unknown>),
+    ...(JSON.parse(exportChronicle(createChronicle('legacy-layout-save'))) as Record<
+      string,
+      unknown
+    >),
     rules: 'night-passage-3',
     content: 'night-passage-content-3',
   });
@@ -139,8 +142,8 @@ test('version-3 chronicle bytes remain recoverable until explicit current-versio
     rules: 'night-passage-5',
     content: 'night-passage-content-4',
   });
-  expect(importSession(current).state.runNumber).toBe(1);
-  expect(() => importSession(legacy)).toThrow('Unsupported');
+  expect(restoreChronicle(current).state.runNumber).toBe(1);
+  expect(() => restoreChronicle(legacy)).toThrow('Unsupported');
   await page.getByLabel('Import Night Passage chronicle').setInputFiles({
     name: 'legacy.json',
     mimeType: 'application/json',

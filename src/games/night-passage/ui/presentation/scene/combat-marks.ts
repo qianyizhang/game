@@ -1,5 +1,11 @@
 import { boon, GODS } from '../../../domain/content';
-import type { Cue, GodId, Projectile, State } from '../../../domain/types';
+import type {
+  Cue,
+  GodId,
+  ReadonlyValue,
+  Projectile,
+  StateView as State,
+} from '../../../domain/types';
 
 const ink = '#10232c';
 const colorOf = (id: GodId) => GODS.find((god) => god.id === id)!.color;
@@ -58,7 +64,7 @@ function patron(ctx: CanvasRenderingContext2D, god: GodId, size: number) {
   ctx.restore();
 }
 
-export function drawProjectile(ctx: CanvasRenderingContext2D, shot: Projectile) {
+export function drawProjectile(ctx: CanvasRenderingContext2D, shot: ReadonlyValue<Projectile>) {
   ctx.save();
   ctx.translate(shot.x, shot.y);
   ctx.rotate(Math.atan2(shot.vy, shot.vx));

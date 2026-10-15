@@ -1,10 +1,10 @@
 import { ARENA } from './content';
-import type { Point, State } from './types';
+import type { Point, State, StateView } from './types';
 export const distance = (a: Point, b: Point): number => Math.hypot(a.x - b.x, a.y - b.y);
 export const angle = (a: Point, b: Point): number => Math.atan2(b.y - a.y, b.x - a.x);
 export const angleDelta = (a: number, b: number): number =>
   Math.atan2(Math.sin(a - b), Math.cos(a - b));
-type Obstacles = { room: Pick<State['room'], 'pillars'> };
+type Obstacles = { room: Pick<StateView['room'], 'pillars'> };
 export function clearLine(state: Obstacles, from: Point, to: Point, clearance = 0): boolean {
   const dx = to.x - from.x;
   const dy = to.y - from.y;

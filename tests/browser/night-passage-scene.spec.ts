@@ -1,3 +1,4 @@
+import { SAVE_KEY } from '../../src/games/night-passage/application/live-chronicle';
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 import { Vector3 } from 'three';
@@ -7,11 +8,10 @@ import {
 } from '../../src/games/night-passage/ui/presentation/scene/camera';
 import {
   dispatch,
-  exportSession,
-  importSession,
-  newSession,
-  SAVE_KEY,
-} from '../../src/games/night-passage/application/session';
+  exportChronicle,
+  restoreChronicle,
+  createChronicle,
+} from '../../src/games/night-passage/application/chronicle';
 import type { Point } from '../../src/games/night-passage/domain/types';
 import { passageCommand } from '../simulation/night-passage-policy';
 import { browserBudget } from './budget';
@@ -27,7 +27,8 @@ async function screenPoint(canvas: Locator, point: Point) {
   return { x: box.x + ((ndc.x + 1) * box.width) / 2, y: box.y + ((1 - ndc.y) * box.height) / 2 };
 }
 async function savedState(page: Page) {
-  return importSession((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!).state;
+  return restoreChronicle((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!)
+    .state;
 }
 
 test('2.5D live movement, aim, dodge, casts and a complete ranged chamber', async ({ page }) => {
@@ -108,11 +109,11 @@ test('guardian warning slice, live melee and context loss retain the chronicle',
   page,
 }) => {
   test.setTimeout(browserBudget(60000));
-  let session = dispatch(newSession('passage-verification'), {
+  let session = dispatch(createChronicle('passage-verification'), {
     type: 'start',
     weapon: 'sword',
     runes: ['vigor', 'fleet'],
-  }).session;
+  }).chronicle;
   const approaches = new Map<number, string>();
   for (
     let i = 0;
@@ -124,8 +125,8 @@ test('guardian warning slice, live melee and context loss retain the chronicle',
       session.state.enemies.some((enemy) => enemy.kind === 'boss' && enemy.windup >= 35) &&
       !approaches.has(session.state.region)
     )
-      approaches.set(session.state.region, exportSession(session));
-    session = dispatch(session, passageCommand(session.state)).session;
+      approaches.set(session.state.region, exportChronicle(session));
+    session = dispatch(session, passageCommand(session.state)).chronicle;
   }
   expect(approaches.size).toBe(4);
   await page.goto('/?game=night-passage');

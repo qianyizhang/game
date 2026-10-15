@@ -190,6 +190,9 @@ under ignored `test-results/`; retain compact receipts and reproducible commands
 The unchanged baseline escaped on all 30 measured episodes. No parameter search
 preceded this result. The [compact receipt](evidence/night-passage-agent-baseline.json)
 pins the identical source graph used by both suites and retains individual outcomes.
+Its historical `application/session.ts` path belongs to that recorded source revision;
+current callers use `application/chronicle.ts`. Historical hashes are not rewritten
+after a refactor.
 
 | Suite               | Escapes | Mean score | Median winning ticks | Errors / timeouts |
 | ------------------- | ------- | ---------- | -------------------- | ----------------- |

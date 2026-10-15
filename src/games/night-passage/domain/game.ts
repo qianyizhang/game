@@ -6,7 +6,17 @@ import { drawBoons } from './boon-offers';
 import { spawnEnemy } from './encounters';
 import { CHAMBER_LAYOUTS, chamberLayout } from './chamber-content';
 import { distance } from './geometry';
-import type { Command, Input, LayoutId, Player, Reward, Route, State } from './types';
+import type {
+  Command,
+  Input,
+  LayoutId,
+  Player,
+  Reward,
+  Route,
+  State,
+  StateView,
+  ReadonlyValue,
+} from './types';
 export type { Command, Input, State } from './types';
 
 import { DIFFICULTIES, DIFFICULTY, RULES_VERSION, type RulesVersion } from './contracts';
@@ -347,7 +357,7 @@ export function validCommand(value: unknown): value is Command {
       return false;
   }
 }
-function rejection(state: State, command: Command): string | null {
+function rejection(state: StateView, command: Command): string | null {
   switch (command.type) {
     case 'start':
       return state.rulesVersion === 'night-passage-4' && command.difficulty !== undefined
@@ -398,11 +408,20 @@ function rejection(state: State, command: Command): string | null {
 export function applyCommand(
   previous: State,
   command: Command,
-): { state: State; error: string | null } {
+): { state: State; error: string | null };
+export function applyCommand(
+  previous: StateView,
+  command: ReadonlyValue<Command>,
+): { state: State; error: null } | { state: StateView; error: string };
+export function applyCommand(
+  previous: StateView,
+  command: ReadonlyValue<Command>,
+): { state: State; error: null } | { state: StateView; error: string } {
   if (!validCommand(command)) return { state: previous, error: 'Malformed action.' };
   const error = rejection(previous, command);
   if (error) return { state: previous, error };
-  const state = structuredClone(previous);
+  // structuredClone creates a fresh mutable rules state from the published view.
+  const state = structuredClone(previous) as State;
   switch (command.type) {
     case 'start': {
       state.difficulty = command.difficulty ?? 'standard';

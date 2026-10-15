@@ -1,27 +1,31 @@
 import { applyCommand, createGame } from '../domain/game';
-import type { Command } from '../domain/types';
-import { importSession } from './session';
+import type { Command, ReadonlyValue } from '../domain/types';
+import { restoreChronicle, recordedCommands, immutable } from './chronicle';
 
-/** Validate once, then replay recorded inputs without touching a live session or browser save. */
+/** Validate once, then replay recorded inputs without touching a live chronicle or browser save. */
 export function createPlayback(text: string) {
-  const restored = importSession(text);
-  const commands: Command[] = [];
-  for (let node = restored.journal; node; node = node.previous) commands.push(node.command);
-  commands.reverse();
+  const restored = restoreChronicle(text);
+  const commands = recordedCommands(restored);
   const totalTicks = commands.reduce((sum, c) => sum + (c.type === 'frame' ? c.ticks : 0), 0);
   let state = createGame(restored.state.seed, restored.state.rulesVersion);
   let index = 0,
     offset = 0,
     position = 0;
-  const apply = (command: Command) => {
+  const apply = (command: ReadonlyValue<Command>) => {
     const next = applyCommand(state, command);
-    if (next.error) throw new Error(next.error);
+    if (next.error !== null) throw new Error(next.error);
     state = next.state;
   };
   const decisions = () => {
     while (index < commands.length && commands[index].type !== 'frame') apply(commands[index++]);
   };
-  const snapshot = () => ({ state, position, totalTicks, finished: index === commands.length });
+  const snapshot = () =>
+    Object.freeze({
+      state: immutable(state),
+      position,
+      totalTicks,
+      finished: index === commands.length,
+    });
   const advance = (ticks: number) => {
     if (!Number.isFinite(ticks) || ticks < 0) throw new Error('Invalid replay time.');
     let remaining = Math.floor(ticks);

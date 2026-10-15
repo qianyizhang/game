@@ -8,7 +8,7 @@ import witchUrl from '../../../../../../packages/dcc-workbench/assets/night-pass
 import { disposeObject } from '../../../../../shared/three/resources';
 import { isMesh, isSkinnedMesh } from '../../../../../shared/three/objects';
 import { ENEMY_PATTERNS } from '../../../domain/encounter-content';
-import type { Enemy, EnemyKind, State } from '../../../domain/types';
+import type { Enemy, EnemyKind, StateView as State } from '../../../domain/types';
 import { batchEnemyAsset, shareSkeletons } from './batches';
 
 type Kind = Exclude<EnemyKind, 'boss'>;

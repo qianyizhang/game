@@ -1,12 +1,12 @@
+import { SAVE_KEY } from '../../src/games/night-passage/application/live-chronicle';
 import { expect, test, type Download } from '@playwright/test';
 import { mkdirSync, readFileSync } from 'node:fs';
 import {
   dispatch,
-  exportSession,
-  importSession,
-  newSession,
-  SAVE_KEY,
-} from '../../src/games/night-passage/application/session';
+  exportChronicle,
+  restoreChronicle,
+  createChronicle,
+} from '../../src/games/night-passage/application/chronicle';
 import { passageCommand } from '../simulation/night-passage-policy';
 import { boon } from '../../src/games/night-passage/domain/content';
 import { browserBudget } from './budget';
@@ -48,7 +48,7 @@ test.describe('presentation lifecycle', () => {
       await expect
         .poll(async () => {
           const currentBox = (await field.boundingBox())!;
-          const saved = importSession(
+          const saved = restoreChronicle(
             (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!,
           ).state;
           const expected = Math.atan2(
@@ -107,7 +107,7 @@ test('live aiming, combat, reward selection, pause/reload and portable chronicle
   await page.waitForTimeout(220);
   await page.keyboard.up('d');
   await page.getByRole('button', { name: 'Pause', exact: true }).click();
-  const aimed = importSession(
+  const aimed = restoreChronicle(
     (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!,
   ).state;
   expect(aimed.player.aim).toBeLessThan(-1.65); // Aim follows the stationary cursor as the player moves right.
@@ -120,7 +120,7 @@ test('live aiming, combat, reward selection, pause/reload and portable chronicle
   for (let n = 0; n < 50 && (await field.getAttribute('data-phase')) === 'combat'; n++) {
     const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
     if (saved) {
-      const state = importSession(saved).state;
+      const state = restoreChronicle(saved).state;
       const target = state.enemies.find((e) => e.hp > 0);
       const box = await field.boundingBox();
       if (target && box)
@@ -141,10 +141,10 @@ test('live aiming, combat, reward selection, pause/reload and portable chronicle
   await page.getByRole('button', { name: 'Pause', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
   const saved = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
-  expect(importSession(saved).state.player.weapon).toBe('bow');
-  expect(importSession(saved).state.player.boons).toHaveLength(1);
+  expect(restoreChronicle(saved).state.player.weapon).toBe('bow');
+  expect(restoreChronicle(saved).state.player.boons).toHaveLength(1);
   // The HUD refreshes less often than rules; wait for the final confirmed frame on pause.
-  await expect(field).toHaveAttribute('data-tick', String(importSession(saved).state.tick));
+  await expect(field).toHaveAttribute('data-tick', String(restoreChronicle(saved).state.tick));
   const tick = await field.getAttribute('data-tick');
   await page.waitForTimeout(150);
   expect(await field.getAttribute('data-tick')).toBe(tick);
@@ -168,20 +168,20 @@ test('legal first-room blessing draft offers distinct slots and survives choice,
   page,
 }) => {
   test.setTimeout(browserBudget(45000));
-  let session = dispatch(newSession('passage-verification'), {
+  let session = dispatch(createChronicle('passage-verification'), {
     type: 'start',
     weapon: 'bow',
     runes: ['vigor', 'fleet'],
-  }).session;
+  }).chronicle;
   for (let i = 0; i < 3000 && session.state.phase === 'combat'; i++) {
     const result = dispatch(session, passageCommand(session.state));
     expect(result.error).toBeNull();
-    session = result.session;
+    session = result.chronicle;
   }
   expect(session.state.phase).toBe('reward');
   expect(session.state.roomsCleared).toBe(1);
   expect(session.state.room.reward).toBe('boon');
-  const checkpoint = exportSession(session),
+  const checkpoint = exportChronicle(session),
     offered = session.state.offers.map(boon);
   const occupied = new Set(session.state.player.boons.map((entry) => boon(entry.id).slot));
   const choiceIndex = offered.findIndex(
@@ -212,12 +212,12 @@ test('legal first-room blessing draft offers distinct slots and survives choice,
   await expect(page.getByRole('heading', { name: 'Choose your next chamber' })).toBeVisible();
   await expect(page.locator('.np-build article strong')).toHaveText(selected.name);
   const saved = (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!;
-  expect(saved).toBe(exportSession(expected.session));
+  expect(saved).toBe(exportChronicle(expected.chronicle));
   expect(JSON.parse(saved) as { rules: string; content: string }).toMatchObject({
     rules: 'night-passage-5',
     content: 'night-passage-content-4',
   });
-  expect(importSession(saved).state.player.boons).toEqual([{ id: selected.id, level: 1 }]);
+  expect(restoreChronicle(saved).state.player.boons).toEqual([{ id: selected.id, level: 1 }]);
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Choose your next chamber' })).toBeVisible();
   await expect(page.locator('.np-build article strong')).toHaveText(selected.name);
@@ -226,7 +226,7 @@ test('legal first-room blessing draft offers distinct slots and survives choice,
   await page.getByRole('button', { name: 'Export chronicle' }).click();
   const portable = readFileSync(await (await pending).path(), 'utf8');
   expect(portable).toBe(saved);
-  expect(importSession(portable).state).toEqual(expected.session.state);
+  expect(restoreChronicle(portable).state).toEqual(expected.chronicle.state);
   await page.getByLabel('Import Night Passage chronicle').setInputFiles({
     name: 'chosen-blessing.json',
     mimeType: 'application/json',
@@ -240,15 +240,15 @@ test('legal first-room blessing draft offers distinct slots and survives choice,
 test('reconstructed victory banks progression, unlocks runes and starts a distinct second run', async ({
   page,
 }) => {
-  let session = dispatch(newSession('passage-verification'), {
+  let session = dispatch(createChronicle('passage-verification'), {
     type: 'start',
     weapon: 'sword',
     runes: ['vigor', 'fleet'],
-  }).session;
+  }).chronicle;
   for (let i = 0; i < 20000 && session.state.phase !== 'won' && session.state.phase !== 'lost'; i++)
-    session = dispatch(session, passageCommand(session.state)).session;
+    session = dispatch(session, passageCommand(session.state)).chronicle;
   expect(session.state.phase).toBe('won');
-  const text = exportSession(session);
+  const text = exportChronicle(session);
   await page.addInitScript(({ key, text }) => localStorage.setItem(key, text), {
     key: SAVE_KEY,
     text,
@@ -261,7 +261,9 @@ test('reconstructed victory banks progression, unlocks runes and starts a distin
   await page.getByRole('button', { name: 'Train vitality · 15 ash' }).click();
   await page.getByRole('button', { name: 'Ember Knuckles fists' }).click();
   await page.getByRole('button', { name: 'Begin passage', exact: true }).click();
-  const saved = importSession((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!);
+  const saved = restoreChronicle(
+    (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!,
+  );
   expect(saved.state.runNumber).toBe(2);
   expect(saved.state.profile).toMatchObject({ wins: 1, runs: 1, vitality: 1 });
   expect(saved.state.player.weapon).toBe('fists');
@@ -292,14 +294,16 @@ test('unreadable saves survive play until explicit replacement; storage failure 
     (download) => download.suggestedFilename() === 'night-passage.json',
   )!;
   expect(readFileSync(await original.path(), 'utf8')).toBe('unreadable');
-  expect(importSession(readFileSync(await playable.path(), 'utf8')).state.runNumber).toBe(1);
+  expect(restoreChronicle(readFileSync(await playable.path(), 'utf8')).state.runNumber).toBe(1);
   expect(
-    importSession((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!).state.phase,
+    restoreChronicle((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!).state
+      .phase,
   ).toBe('hub');
   await page.reload(); // The init script restores the unreadable original for the replacement path.
   await page.getByRole('button', { name: 'Replace unreadable save with a new chronicle' }).click();
   expect(
-    importSession((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!).state.phase,
+    restoreChronicle((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!).state
+      .phase,
   ).toBe('hub');
   await page.evaluate(() => {
     Storage.prototype.setItem = () => {
@@ -320,23 +324,79 @@ test('new chronicle exports the current history before resetting progression and
   await page.getByLabel('Chronicle seed').fill('another-dawn');
   const pending = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export and reset' }).click();
-  const original = importSession(readFileSync(await (await pending).path(), 'utf8'));
+  const original = restoreChronicle(readFileSync(await (await pending).path(), 'utf8'));
   expect(original.state.runNumber).toBe(1);
-  const reset = importSession((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!);
+  const reset = restoreChronicle(
+    (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!,
+  );
   expect(reset.state.seed).toBe('another-dawn');
   expect(reset.state.profile).toMatchObject({ ash: 0, runs: 0, wins: 0 });
   await expect(page.getByRole('heading', { name: 'Carry a light into the dark.' })).toBeVisible();
+});
+
+test('a failed replacement write retains the original download and playable import until retry', async ({
+  page,
+}) => {
+  await page.addInitScript((key) => {
+    if (localStorage.getItem(key) === null) localStorage.setItem(key, 'original recovery bytes');
+    localStorage.setItem('card-workshop.night-passage.view.v1', 'canvas');
+  }, SAVE_KEY);
+  await page.goto('/?game=night-passage');
+  const imported = exportChronicle(
+    dispatch(createChronicle('recovery-replacement'), {
+      type: 'start',
+      weapon: 'bow',
+      runes: ['vigor'],
+    }).chronicle,
+  );
+  const importFile = page.getByLabel('Import Night Passage chronicle');
+  await importFile.setInputFiles({
+    name: 'bad.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from('{bad'),
+  });
+  await expect(page.getByRole('button', { name: 'Download original save' })).toBeVisible();
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(
+    'original recovery bytes',
+  );
+  await page.evaluate(() => {
+    // eslint-disable-next-line @typescript-eslint/unbound-method -- restored on the prototype and invoked with its original receiver.
+    const write = Storage.prototype.setItem;
+    Storage.prototype.setItem = function (key, value) {
+      if (key === 'card-workshop.night-passage.v1') {
+        // One failed write, then the genuine browser store is available for a later flush.
+        Storage.prototype.setItem = write;
+        throw new Error('replacement write denied');
+      }
+      write.call(this, key, value);
+    };
+  });
+  await importFile.setInputFiles({
+    name: 'valid.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(imported),
+  });
+  await expect(page.getByRole('status')).toContainText('Storage unavailable');
+  const pending = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download original save' }).click();
+  expect(readFileSync(await (await pending).path(), 'utf8')).toBe('original recovery bytes');
+  const exportPending = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export chronicle', exact: true }).click();
+  expect(readFileSync(await (await exportPending).path(), 'utf8')).toBe(imported);
+  await page.getByRole('button', { name: 'Watch replay', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Night Passage · Replay' })).toBeVisible();
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(imported);
 });
 
 test('reconstructed guardian approaches render their distinct warnings and remain pausable', async ({
   page,
 }) => {
   test.setTimeout(browserBudget(60000));
-  let session = dispatch(newSession('passage-verification'), {
+  let session = dispatch(createChronicle('passage-verification'), {
     type: 'start',
     weapon: 'sword',
     runes: ['vigor', 'fleet'],
-  }).session;
+  }).chronicle;
   const approaches = new Map<number, string>();
   for (
     let i = 0;
@@ -349,8 +409,8 @@ test('reconstructed guardian approaches render their distinct warnings and remai
       session.state.enemies.some((e) => e.kind === 'boss' && e.windup >= 35) &&
       !approaches.has(session.state.region)
     )
-      approaches.set(session.state.region, exportSession(session));
-    session = dispatch(session, passageCommand(session.state)).session;
+      approaches.set(session.state.region, exportChronicle(session));
+    session = dispatch(session, passageCommand(session.state)).chronicle;
   }
   expect(approaches.size).toBe(4);
   await page.goto('/?game=night-passage');

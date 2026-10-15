@@ -7,7 +7,11 @@ import {
   distance,
   headingTo,
 } from '../../src/games/night-passage/domain/geometry';
-import type { Command, Point, State } from '../../src/games/night-passage/domain/types';
+import type {
+  Command,
+  Point,
+  StateView as State,
+} from '../../src/games/night-passage/domain/types';
 
 /** A legal-command verification pilot. It receives the same visible arena information as a player. */
 export function passageCommand(state: State): Command {

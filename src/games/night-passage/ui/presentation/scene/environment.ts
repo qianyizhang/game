@@ -6,7 +6,7 @@ import archiveUrl from '../../../../../../packages/dcc-workbench/assets/night-pa
 import sepulcherUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/environment-sepulcher.glb?url';
 import { isMesh } from '../../../../../shared/three/objects';
 import { disposeObject } from '../../../../../shared/three/resources';
-import type { State } from '../../../domain/types';
+import type { StateView as State } from '../../../domain/types';
 
 export type RoomPillar = {
   group: T.Object3D;

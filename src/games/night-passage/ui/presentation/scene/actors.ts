@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { WEAPONS, weapon } from '../../../domain/content';
-import type { EnemyKind, State, WeaponId } from '../../../domain/types';
+import type { EnemyKind, StateView as State, WeaponId } from '../../../domain/types';
 import { createHero } from './hero';
 import { createEnemies, type EnemyModel } from './enemies';
 import { createGuardians } from './guardians';

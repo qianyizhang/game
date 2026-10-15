@@ -2,7 +2,7 @@ import * as T from 'three';
 import { ARENA } from '../../../domain/content';
 import { hazardPhase, hazardTiming } from '../../../domain/encounters';
 import { attackShapes, projectileAngles } from '../../../domain/threats';
-import type { State } from '../../../domain/types';
+import type { StateView as State } from '../../../domain/types';
 import { drawThreat } from '../threats';
 import { drawCombatStatus, drawCue, drawProjectile } from './combat-marks';
 

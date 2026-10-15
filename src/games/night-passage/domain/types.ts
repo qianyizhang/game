@@ -193,3 +193,9 @@ export type Command =
   | { type: 'return' }
   | { type: 'retire' }
   | { type: 'train' };
+
+/** State published by a chronicle or spectator cannot be mutated by its consumers. */
+export type ReadonlyValue<T> = T extends object
+  ? { readonly [K in keyof T]: ReadonlyValue<T[K]> }
+  : T;
+export type StateView = ReadonlyValue<State>;

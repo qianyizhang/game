@@ -1,11 +1,11 @@
+import { SAVE_KEY } from '../../src/games/night-passage/application/live-chronicle';
 import { expect, test } from '@playwright/test';
 import { runEpisode } from '../../src/games/night-passage/agent/benchmark';
 import {
-  exportSession,
-  importSession,
-  newSession,
-  SAVE_KEY,
-} from '../../src/games/night-passage/application/session';
+  exportChronicle,
+  restoreChronicle,
+  createChronicle,
+} from '../../src/games/night-passage/application/chronicle';
 import { mkdir } from 'node:fs/promises';
 
 test('agent victory replay imports into the game with the same score and survives reload', async ({
@@ -35,8 +35,8 @@ test('agent victory replay imports into the game with the same score and survive
   const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
   await page.getByRole('button', { name: 'Watch replay', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Night Passage · Replay' })).toBeVisible();
-  const beforeWatch = importSession(saved!).state;
-  const afterWatch = importSession(
+  const beforeWatch = restoreChronicle(saved!).state;
+  const afterWatch = restoreChronicle(
     (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!,
   ).state;
   expect(afterWatch).toMatchObject({
@@ -51,7 +51,7 @@ test('spectator plays, pauses and seeks a recorded run without replacing the pla
   page,
 }) => {
   const result = runEpisode({ seed: 'a-light-in-the-dark', weapon: 'bow', includeReplay: true });
-  const original = exportSession(newSession('spectator-keeps-my-save'));
+  const original = exportChronicle(createChronicle('spectator-keeps-my-save'));
   await page.addInitScript(({ key, save }) => localStorage.setItem(key, save), {
     key: SAVE_KEY,
     save: original,
@@ -116,7 +116,7 @@ test('difficulty selection survives reload and a legacy chronicle keeps its orig
   await page.reload();
   await expect(page.getByText('veteran · speed score', { exact: true })).toBeVisible();
   const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
-  expect(importSession(saved!).state.difficulty).toBe('veteran');
+  expect(restoreChronicle(saved!).state.difficulty).toBe('veteran');
   const legacy = runEpisode({
     seed: 'a-light-in-the-dark',
     weapon: 'bow',
@@ -157,7 +157,9 @@ test('constrained engine replay imports with its speed score and controller iden
   });
   await expect(page.getByTestId('np-score')).toHaveText(`${r.score} points`);
   const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
-  expect(importSession(saved!).controller?.version).toBe('night-passage-control-1');
+  expect(JSON.parse(exportChronicle(restoreChronicle(saved!)))).toMatchObject({
+    controller: { version: 'night-passage-control-1' },
+  });
   await page.reload();
   await expect(page.getByTestId('np-score')).toHaveText(`${r.score} points`);
 });

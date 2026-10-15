@@ -19,14 +19,46 @@ observations/actions, the local JSON API and the baseline player benchmark.
 | `domain/contracts.ts`                      | Supported legacy/current identities and the three encounter-pressure tiers.                                                                           |
 | `application/control.ts`                   | Aged/redacted perception, metered delay, held controls, aim bounds and replayable control scheduling.                                                 |
 | `agent/policy.ts`                          | Quick, balanced and deliberate policy work; policies receive only their permitted view.                                                               |
-| `application/session.ts`                   | Accepted-command journal, bounded replay validation, export and reconstruction. No serialized state snapshot is trusted.                              |
+| `application/chronicle.ts`                 | Immutable chronicle values with private accepted-command journals, replay capacity, export and reconstruction.                                        |
+| `application/live-chronicle.ts`            | Live chronicle ownership, save cadence, storage status, original-byte recovery and explicit replacement.                                              |
 | `application/agent.ts`                     | Detached tactical observations and validated agent commands.                                                                                          |
 | `application/playback.ts`                  | Isolated replay timeline, frame splitting and seeking through recorded commands.                                                                      |
 | `agent/`                                   | Observation-driven baseline policy and bounded, versioned benchmark episodes.                                                                         |
-| `ui/NightPassageApp.tsx`                   | Input collection, bounded realtime accumulator, save lifecycle, HUD and decision screens.                                                             |
+| `ui/NightPassageApp.tsx`                   | Input collection, bounded realtime accumulator, browser event binding, HUD and decision screens.                                                      |
 | `ui/ReplayViewer.tsx`                      | Spectator file loading, playback controls and existing renderer integration.                                                                          |
 | `ui/presentation/`                         | Renderer lifecycle, viewport sizing, ground projection and 2D/2.5D drawing of confirmed state. Damage and collision stay in rules.                    |
 | `tests/simulation/night-passage-policy.ts` | Legal-command verification pilot. It is not a player-facing autoplay feature.                                                                         |
+
+## Chronicle ownership and live recovery
+
+`application/chronicle.ts` owns immutable chronicle values. Accepted commands return a
+successor; rejected commands retain the original value. Published state is deeply frozen
+and typed as `StateView`. The linked journal, requested-tick counter and controller identity
+are private; controller metadata is validated at construction. Observation trials can discard
+successors without committing them. Observations receive the permitted frame size rather
+than inspecting the journal. Ordered, frozen command copies serve isolated playback.
+
+`application/live-chronicle.ts` owns the current live chronicle, storage status, original-byte
+preservation and replacement ordering. Its storage interface has browser and controlled test
+adapters. Decisions and combat phase transitions save immediately; other combat saves retain
+the three-second cadence. Pause, visibility, pagehide, teardown and spectator navigation flush
+through the same operation. Input collection, rendering and browser event binding stay in the UI.
+
+Unreadable saves and read failures suppress automatic writes until explicit valid replacement.
+Imports reconstruct before adoption. Reset requests original/current downloads before adoption;
+a download request is not proof of durable disk storage. Write failures leave accepted progress
+playable and exportable, and retain known original bytes until a replacement write succeeds.
+Failed imports and failed backup requests retain the existing chronicle and recovery state.
+
+Playback owns its independent cursor and frozen snapshots and has no live storage capability.
+Replay format, rules/content/score identities, controller encoding, packed frames and requested
+tick accounting are unchanged. Unused requested ticks after combat ends still occupy replay time.
+
+Verification covers nested mutation attempts, pure observation trials, canonical legacy/current
+replay bytes, controller identity, generated legal histories at production replay limits, save
+cadence, recovery failures and retry. Browser journeys retain import/export/reset/reload,
+failed replacement recovery and spectator save isolation. These are technical contracts, not
+visual acceptance.
 
 Enemy stats and guardian pattern definitions live in `domain/encounter-content.ts`. `domain/encounters.ts` owns enemy decisions and hazard consequences. `domain/threats.ts` produces the same geometric shapes used by damage and `ui/presentation/threats.ts`; a warning is not an independent approximation of a hit. `domain/effects.ts` owns damage, charge accounting, elemental effects and bounded duos. `ui/audio.ts` is an optional, replaceable presentation consumer.
 
@@ -56,7 +88,8 @@ the equipped weapon even for spell or status damage: current snapshots do not
 retain per-hit source attribution. This slice does not claim material-accurate
 foley, independently reviewed sound quality, equal loudness across devices or
 improved human reaction times. Playback is optional; warnings and status remain
-fully visual. Rules/content versions remain 4/3, with replay bytes unchanged.
+fully visual. That audio delivery retained rules/content identities 4/3 and unchanged replay bytes;
+current supported identities are listed under [time and saves](#time-and-saves).
 
 Verification: `npm run check` passed maintenance/build gates, 383 application
 tests and 22 seeded simulations. The nine Canvas/2.5D browser journeys and two
@@ -75,7 +108,7 @@ regenerable WAV or measurements.
 
 ## Blessing draft variety
 
-Rules **4** use `domain/boon-offers.ts` for ordinary chamber, trial and market
+Current and retained rules-4 chronicles use `domain/boon-offers.ts` for ordinary chamber, trial and market
 audiences. Shuffle the eligible pool with the explicit run RNG, reserve one
 currently empty action slot if available, then take the first candidates with
 different slots until three choices are present. An eligible duo may occupy
@@ -109,7 +142,7 @@ rank-ups. Fifteen legal weapon/seed campaigns still clear all four guardians.
 The browser journey covers offered slot labels, selection, portable replay and
 reload; previous rules-3 bytes remain downloadable until explicit replacement.
 
-Only the rules identity advances to `night-passage-4`; content remains
+The blessing-draft delivery advanced the rules identity to `night-passage-4`; content remained
 `night-passage-content-3` and the packed replay format is unchanged. Older rules
 are rejected for reconstruction and retained for export/recovery, following the
 [accepted-command replay decision](decisions/0002-reconstruct-from-accepted-commands.md).
@@ -135,7 +168,7 @@ shuffle eight perimeter sites, exclude positions within 140 ground units of the
 player, then place ranged enemies in farther 100-unit distance bands and melee
 enemies in nearer bands. Seeded ordering resolves ties. Wave sizes, health, rewards
 and guardian mechanics were unchanged by this layout slice. Its introduction
-advanced rules and content to version 3; the current blessing draft uses rules 4.
+advanced rules and content to version 3; the later blessing-draft delivery introduced rules 4.
 
 To add terrain, extend `LayoutId` and the layout catalog together. Keep the entry
 clear, preserve navigable gaps, separate reinforcement sites from cover and hazard
@@ -332,7 +365,17 @@ actors and resource release. No native source or delivery change is required.
 
 Rules advance at 60 fixed steps per simulated second. A frame command supplies bounded movement, aim, buttons and 1–120 ticks. The browser caps accumulated work at six steps per display frame and pauses on blur/hidden state. Rendering reads confirmed state; the HUD refreshes at approximately 10 Hz and immediately after decisions.
 
-Rules copy the bounded active state per command. Session history uses persistent linked entries so appending does not copy the full history. Identical adjacent frame inputs pack into at most two-second commands. Export reverses that history into a linear replay and encodes frame inputs as `[ticks, x, y, aim, buttonMask]` tuples without changing numeric values. Rules version 4 and content version 3 use the unchanged replay envelope v2. Version-1/2/3 rules histories are rejected and remain downloadable; there is no migration that reinterprets their old commands. Import validates every command and reconstructs through the same interface. Rules and content changes that alter replay meaning require explicit version bumps before further delivery.
+Rules copy the bounded active state per command. Chronicle history uses private persistent linked entries so appending does not copy the full history. Identical adjacent frame inputs pack into at most two-second commands. Export reverses that history into a linear replay and encodes frame inputs as `[ticks, x, y, aim, buttonMask]` tuples without changing numeric values. Supported identities use the same replay envelope v2:
+
+| Rules             | Content                   | Score                   | Status                                    |
+| ----------------- | ------------------------- | ----------------------- | ----------------------------------------- |
+| `night-passage-5` | `night-passage-content-4` | `night-passage-score-2` | Current; difficulty tiers and speed bonus |
+| `night-passage-4` | `night-passage-content-3` | `night-passage-score-1` | Supported original behavior and score     |
+
+Rules 1–3 histories are rejected and remain downloadable until explicit replacement. Import
+reconstructs accepted commands; it never reinterprets older commands as current rules. Live
+persistence and recovery are owned by the [live chronicle](#chronicle-ownership-and-live-recovery).
+Rules and content changes that alter replay meaning require explicit version bumps.
 
 Initial content is source-authored. Arbitrary content-pack import is not implemented. Adding a sixth weapon presently requires its ID, three move definitions, validation membership through `WEAPONS`, and a presentation decision; introducing a new move family also requires combat rules and behavioral evidence. Regions select their enemy pool, guardian pattern set, hazard kind and palette. Campaign traversal follows `REGIONS.length`; `CHAMBERS_PER_REGION` currently specifies eight chambers per region. New region entries reuse the lifecycle without changing its bounds. New threat families require a shared geometry rule, presentation and damage/safe-space evidence. There is no universal game engine or arbitrary code execution in content imports.
 

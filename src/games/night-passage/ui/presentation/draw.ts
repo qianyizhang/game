@@ -2,7 +2,7 @@ import { ARENA, CHAMBERS_PER_REGION, GODS, REGIONS, weapon } from '../../domain/
 import { hazardPhase, hazardTiming } from '../../domain/encounters';
 import { attackPattern, attackShapes, projectileAngles } from '../../domain/threats';
 import { drawThreat } from './threats';
-import type { State } from '../../domain/types';
+import type { StateView as State } from '../../domain/types';
 
 function circle(
   ctx: CanvasRenderingContext2D,

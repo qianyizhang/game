@@ -1,13 +1,14 @@
+import { SAVE_KEY } from '../../src/games/night-passage/application/live-chronicle';
 import * as T from 'three';
 import {
   dispatch,
-  importSession,
-  newSession,
-  SAVE_KEY,
-  type Session,
-} from '../../src/games/night-passage/application/session';
+  recordedCommands,
+  restoreChronicle,
+  createChronicle,
+  type Chronicle,
+} from '../../src/games/night-passage/application/chronicle';
 import { validCommand } from '../../src/games/night-passage/domain/game';
-import type { Command, State } from '../../src/games/night-passage/domain/types';
+import type { Command, StateView as State } from '../../src/games/night-passage/domain/types';
 import {
   createCamera,
   fitCamera,
@@ -16,9 +17,10 @@ import {
 import { passageCommand } from '../simulation/night-passage-policy';
 
 // This observer only reads the application's published save and scene. It never dispatches to
-// the application's session or changes game state. Synthetic DOM input owns all progress.
-let prefix: Session | null = null;
+// the application's chronicle or changes game state. Synthetic DOM input owns all progress.
+let prefix: Chronicle | null = null;
 let prefixLength = 0;
+let observedCommands = 0;
 const roots = new Set<T.Object3D>();
 const held = new Set<string>();
 let restoreObserver = () => {};
@@ -28,6 +30,7 @@ export function observeCampaign() {
   roots.clear();
   prefix = null;
   prefixLength = 0;
+  observedCommands = 0;
   // eslint-disable-next-line @typescript-eslint/unbound-method -- apply preserves receiver; cleanup restores the original.
   const original = T.Object3D.prototype.add;
   T.Object3D.prototype.add = function (...objects) {
@@ -61,7 +64,7 @@ function decode(encoded: Command | number[]): Command {
 }
 
 /** Reconstruct the growing public journal; keep its last mergeable command uncommitted. */
-function saved(): Session {
+function saved(): Chronicle {
   // Exercise the existing save-on-pagehide handler without navigating or changing visibility.
   window.dispatchEvent(new PageTransitionEvent('pagehide'));
   const text = localStorage.getItem(SAVE_KEY);
@@ -77,14 +80,15 @@ function saved(): Session {
     prefix.state.rulesVersion !== envelope.rules ||
     prefixLength >= envelope.commands.length
   ) {
-    prefix = newSession(envelope.seed, envelope.rules);
+    prefix = createChronicle(envelope.seed, envelope.rules);
     prefixLength = 0;
   }
+  observedCommands = envelope.commands.length;
   let current = prefix;
   for (let index = prefixLength; index < envelope.commands.length; index++) {
     const result = dispatch(current, decode(envelope.commands[index]));
     if (result.error) throw new Error(`Published chronicle rejected: ${result.error}`);
-    current = result.session;
+    current = result.chronicle;
     if (index < envelope.commands.length - 1) {
       prefix = current;
       prefixLength = index + 1;
@@ -144,7 +148,7 @@ export function inspectCampaign() {
     gold: state.gold,
     boons: state.player.boons.map((b) => b.id),
     winningProfile: state.profile,
-    commands: session.journal?.length ?? 0,
+    commands: observedCommands,
     warnings: state.enemies.filter((e) => e.windup > 0).length,
   };
 }
@@ -233,9 +237,16 @@ export function finishCampaignObservation() {
   releaseCampaignInput();
   const observed = saved();
   const text = localStorage.getItem(SAVE_KEY)!;
-  const full = importSession(text);
+  const full = restoreChronicle(text);
   if (JSON.stringify(full.state) !== JSON.stringify(observed.state))
     throw new Error('Incremental observation differs from full validated reconstruction');
   restoreObserver();
-  return { text, state: full.state, ticks: full.ticks };
+  return {
+    text,
+    state: full.state,
+    ticks: recordedCommands(full).reduce(
+      (total, command) => total + (command.type === 'frame' ? command.ticks : 0),
+      0,
+    ),
+  };
 }

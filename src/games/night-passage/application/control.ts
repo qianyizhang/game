@@ -1,5 +1,5 @@
-import { commandPayload, observeSession, type Observation } from './agent';
-import { dispatch, exportSession, newSession, type Session } from './session';
+import { commandPayload, observeChronicle, type Observation } from './agent';
+import { dispatch, exportChronicle, createChronicle, type Chronicle } from './chronicle';
 import { validCommand } from '../domain/game';
 import { angleDelta } from '../domain/geometry';
 import type { RulesVersion } from '../domain/contracts';
@@ -109,15 +109,14 @@ export function createController(
   options: { rules?: RulesVersion; preset?: ControlPreset; config?: Partial<ControlConfig> } = {},
 ) {
   const config = Object.freeze(controlConfig(options.preset, options.config));
-  let session: Session = newSession(seed, options.rules);
-  session.controller = {
+  let chronicle: Chronicle = createChronicle(seed, options.rules, {
     version: CONTROL_VERSION,
     preset: options.preset ?? 'standard',
     config: { ...config },
-  };
+  });
   let held = idle(),
     appliedAim = held.aim;
-  let history: Observation[] = [observeSession(session)];
+  let history: Observation[] = [observeChronicle(chronicle)];
   let traces: ControlTrace[] = [];
   const metrics: ControlMetrics = {
     decisions: 0,
@@ -128,9 +127,9 @@ export function createController(
     cancelled: 0,
   };
   const reset = () => {
-    held = idle(session.state.player.aim);
+    held = idle(chronicle.state.player.aim);
     appliedAim = held.aim;
-    history = [observeSession(session)];
+    history = [observeChronicle(chronicle)];
   };
   function sight(): Sight {
     const current = history[history.length - 1];
@@ -217,7 +216,7 @@ export function createController(
   }
   function advance(ticks: number, input: Input, limit: number): number {
     let used = 0;
-    while (used < ticks && used < limit && session.state.phase === 'combat') {
+    while (used < ticks && used < limit && chronicle.state.phase === 'combat') {
       appliedAim = normalizeAngle(
         appliedAim +
           Math.max(
@@ -225,15 +224,15 @@ export function createController(
             Math.min(config.aimRadiansPerTick, angleDelta(input.aim, appliedAim)),
           ),
       );
-      const result = dispatch(session, {
+      const result = dispatch(chronicle, {
         type: 'frame',
         ticks: 1,
         input: { ...input, aim: appliedAim },
       });
       if (result.error) throw new Error(result.error);
-      session = result.session;
+      chronicle = result.chronicle;
       used++;
-      history.push(observeSession(session));
+      history.push(observeChronicle(chronicle));
       if (history.length > config.observationTicks + 3) history.shift();
     }
     return used;
@@ -257,9 +256,9 @@ export function createController(
         };
       const payload = commandPayload(command);
       if (payload.type !== 'frame') {
-        const result = dispatch(session, payload);
+        const result = dispatch(chronicle, payload);
         if (!result.error) {
-          session = result.session;
+          chronicle = result.chronicle;
           reset();
         }
         return {
@@ -269,7 +268,7 @@ export function createController(
           trace: null,
         };
       }
-      if (session.state.phase !== 'combat')
+      if (chronicle.state.phase !== 'combat')
         return {
           accepted: false,
           error: 'Combat is not active.',
@@ -282,7 +281,7 @@ export function createController(
       const delay = config.reactionTicks + Math.ceil(workUnits / config.workPerTick);
       const hold =
         Math.max(config.holdTicks, payload.ticks) + config.switchTicks * Math.min(count, 3);
-      const decisionTick = session.state.tick;
+      const decisionTick = chronicle.state.tick;
       const trace: ControlTrace = {
         observedTick: observed.tick,
         decisionTick,
@@ -300,24 +299,24 @@ export function createController(
       try {
         const waited = advance(delay, held, maxTicks);
         metrics.delayTicks += waited;
-        if (waited === delay && session.state.phase === 'combat' && waited < maxTicks) {
+        if (waited === delay && chronicle.state.phase === 'combat' && waited < maxTicks) {
           held = requested;
-          trace.deliveryTick = session.state.tick;
+          trace.deliveryTick = chronicle.state.tick;
           metrics.holdTicks += advance(hold, held, maxTicks - waited);
         } else metrics.cancelled++;
       } catch (cause) {
         error = cause instanceof Error ? cause.message : String(cause);
       }
-      trace.nextDecisionTick = session.state.tick;
+      trace.nextDecisionTick = chronicle.state.tick;
       traces.push(trace);
-      if (session.state.phase !== 'combat') reset();
+      if (chronicle.state.phase !== 'combat') reset();
       return { accepted: error === null, error, observation: sight(), trace };
     },
     /** Result/export are evaluator capabilities, never passed to the policy. */
-    result: () => observeSession(session),
+    result: () => observeChronicle(chronicle),
     metrics: () => structuredClone(metrics),
     trace: () => structuredClone(traces),
-    exportReplay: () => exportSession(session),
+    exportReplay: () => exportChronicle(chronicle),
     clearTrace: () => {
       traces = [];
     },

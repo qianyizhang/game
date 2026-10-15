@@ -1,5 +1,10 @@
 import { expect, test } from 'vitest';
-import { dispatch, exportSession, importSession, newSession } from '../application/session';
+import {
+  dispatch,
+  exportChronicle,
+  restoreChronicle,
+  createChronicle,
+} from '../application/chronicle';
 import { spawnEnemy } from './encounters';
 import { applyCommand, createGame } from './game';
 import type { Command, Input } from './types';
@@ -118,7 +123,7 @@ test('lethal combat ends the passage, freezes further frames, and returns earned
 });
 
 test('chronicles reconstruct timing, loadout, retirement and progression; malformed histories fail', () => {
-  let session = newSession('replay');
+  let session = createChronicle('replay');
   const commands: Command[] = [
     { type: 'start', weapon: 'bow', runes: ['focus', 'vigor'] },
     ...Array.from({ length: 100 }, (): Command => ({
@@ -133,14 +138,32 @@ test('chronicles reconstruct timing, loadout, retirement and progression; malfor
   for (const command of commands) {
     const next = dispatch(session, command);
     expect(next.error).toBeNull();
-    session = next.session;
+    session = next.chronicle;
   }
-  expect(session.journal!.length).toBeLessThan(10);
-  expect(importSession(exportSession(session)).state).toEqual(session.state);
+  expect(
+    (JSON.parse(exportChronicle(session)) as { commands: unknown[] }).commands.length,
+  ).toBeLessThan(10);
+  expect(restoreChronicle(exportChronicle(session)).state).toEqual(session.state);
   expect(() =>
-    importSession(exportSession(session).replace('night-passage-5', 'night-passage-3')),
+    restoreChronicle(exportChronicle(session).replace('night-passage-5', 'night-passage-3')),
   ).toThrow('Unsupported');
-  expect(() => importSession(exportSession(session).replace('[120,', '[999999999,'))).toThrow();
+  expect(() =>
+    restoreChronicle(exportChronicle(session).replace('[120,', '[999999999,')),
+  ).toThrow();
   const rejected = dispatch(session, { type: 'choose', id: 'winter-call' });
-  expect(rejected.session).toBe(session);
+  expect(rejected.chronicle).toBe(session);
+});
+
+test('stagger pauses an announced attack until recovery', () => {
+  const state = applyCommand(createGame('agent-stagger'), {
+    type: 'start',
+    weapon: 'sword',
+    runes: [],
+  }).state;
+  state.enemies[0].windup = 9;
+  state.enemies[0].stagger = 5;
+  const paused = applyCommand(state, { type: 'frame', ticks: 5, input: idle }).state;
+  expect(paused.enemies[0].windup).toBe(9);
+  const resumed = applyCommand(paused, { type: 'frame', ticks: 1, input: idle }).state;
+  expect(resumed.enemies[0].windup).toBe(8);
 });

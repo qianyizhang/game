@@ -1,6 +1,6 @@
 import * as T from 'three';
 import { boon, GODS, SPELLS } from '../../../domain/content';
-import type { GodId, State } from '../../../domain/types';
+import type { GodId, StateView as State } from '../../../domain/types';
 
 /** Authored light silhouettes, not solid bodies. Ground marks own position and warnings. */
 function lightTexture(god: GodId, color: string) {

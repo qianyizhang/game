@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
-import { observeSession } from '../application/agent';
-import { importSession } from '../application/session';
+import { observeChronicle } from '../application/agent';
+import { restoreChronicle } from '../application/chronicle';
 import { runBenchmark, runEpisode } from './benchmark';
 import { baselineCommand } from './player';
 
@@ -17,7 +17,7 @@ test('a bounded attempt is deterministic, stays within both budgets and exports 
   expect(first.status, JSON.stringify(first)).toBe('timeout');
   expect(first.elapsedTicks).toBe(17);
   expect(first.actions).toBeLessThanOrEqual(50);
-  const observation = observeSession(importSession(first.replay!));
+  const observation = observeChronicle(restoreChronicle(first.replay!));
   expect(observation.tick).toBe(first.elapsedTicks);
   expect(observation.score.value).toBe(first.score);
   expect(observation.player.hp).toBe(first.hp);

@@ -8,7 +8,7 @@ import sovereignUrl from '../../../../../../packages/dcc-workbench/assets/night-
 import { disposeObject } from '../../../../../shared/three/resources';
 import { isMesh, isSkinnedMesh } from '../../../../../shared/three/objects';
 import { GUARDIANS } from '../../../domain/encounter-content';
-import type { Enemy, State } from '../../../domain/types';
+import type { Enemy, StateView as State } from '../../../domain/types';
 import { batchEnemyAsset, shareSkeletons } from './batches';
 
 const profiles = [

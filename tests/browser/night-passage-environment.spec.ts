@@ -1,3 +1,4 @@
+import { SAVE_KEY } from '../../src/games/night-passage/application/live-chronicle';
 import { expect, test } from '@playwright/test';
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -5,11 +6,10 @@ import { resolve } from 'node:path';
 import { browserBudget } from './budget';
 import {
   dispatch,
-  exportSession,
-  importSession,
-  newSession,
-  SAVE_KEY,
-} from '../../src/games/night-passage/application/session';
+  exportChronicle,
+  restoreChronicle,
+  createChronicle,
+} from '../../src/games/night-passage/application/chronicle';
 import { passageCommand } from '../simulation/night-passage-policy';
 
 const layouts = ['court', 'gallery', 'islands', 'crossroads'];
@@ -233,11 +233,11 @@ for (const kind of ['archive', 'cinder', 'starless'] as const) {
     page,
   }) => {
     test.setTimeout(browserBudget(60000));
-    let session = dispatch(newSession('passage-verification'), {
+    let session = dispatch(createChronicle('passage-verification'), {
       type: 'start',
       weapon: 'sword',
       runes: ['vigor', 'fleet'],
-    }).session;
+    }).chronicle;
     for (
       let i = 0;
       i < 20000 &&
@@ -245,7 +245,7 @@ for (const kind of ['archive', 'cinder', 'starless'] as const) {
       session.state.phase !== 'lost';
       i++
     )
-      session = dispatch(session, passageCommand(session.state)).session;
+      session = dispatch(session, passageCommand(session.state)).chronicle;
     expect(session.state).toMatchObject({ region, phase: 'combat' });
     await page.goto('/?game=night-passage');
     const delivered = page.waitForResponse(
@@ -255,7 +255,7 @@ for (const kind of ['archive', 'cinder', 'starless'] as const) {
     await page.getByLabel('Import Night Passage chronicle').setInputFiles({
       name: `${kind}-approach.json`,
       mimeType: 'application/json',
-      buffer: Buffer.from(exportSession(session)),
+      buffer: Buffer.from(exportChronicle(session)),
     });
     await delivered;
     await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
@@ -267,8 +267,8 @@ for (const kind of ['archive', 'cinder', 'starless'] as const) {
     await expect
       .poll(
         async () =>
-          importSession((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!).state
-            .player.x,
+          restoreChronicle((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!)
+            .state.player.x,
       )
       .toBeGreaterThan(session.state.player.x + 10);
     await page.keyboard.up('d');
@@ -279,7 +279,7 @@ for (const kind of ['archive', 'cinder', 'starless'] as const) {
     });
     await page.getByRole('button', { name: 'Pause', exact: true }).click();
     const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
-    expect(importSession(saved!).state.region).toBe(region);
+    expect(restoreChronicle(saved!).state.region).toBe(region);
     await page.reload();
     await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
     await expect(arena).toHaveAttribute('data-view', 'scene');

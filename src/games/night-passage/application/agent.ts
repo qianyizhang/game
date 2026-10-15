@@ -20,17 +20,10 @@ import type {
   Room,
   Route,
   RuneId,
-  State,
+  StateView as State,
   Weapon,
 } from '../domain/types';
-import {
-  dispatch,
-  exportSession,
-  MAX_COMMANDS,
-  MAX_TICKS,
-  newSession,
-  type Session,
-} from './session';
+import { dispatch, exportChronicle, createChronicle, type Chronicle } from './chronicle';
 
 export const API_VERSION = 'night-passage-agent-1';
 type DiscreteCommand = Exclude<Command, { type: 'frame' }>;
@@ -151,11 +144,10 @@ function actionCandidates(state: State): DiscreteCommand[] {
 }
 
 /** A detached view of the current scene; no seed, RNG, future draws or replay journal. */
-export function observeSession(session: Session): Observation {
-  const state = session.state;
-  const frameTicks = Math.min(120, MAX_TICKS - session.ticks);
-  const canFrame =
-    state.phase === 'combat' && frameTicks > 0 && (session.journal?.length ?? 0) < MAX_COMMANDS;
+export function observeChronicle(chronicle: Chronicle): Observation {
+  const state = chronicle.state;
+  const frameTicks = chronicle.frameTicks;
+  const canFrame = frameTicks > 0;
   return structuredClone({
     version: API_VERSION,
     rulesVersion: state.rulesVersion,
@@ -223,8 +215,8 @@ export function observeSession(session: Session): Observation {
     offers: state.offers.map((id) => ({ ...boon(id), command: { type: 'choose', id } })),
     routes: state.routes.map((route, index) => ({ ...route, command: { type: 'travel', index } })),
     // Use the actual command boundary for affordability, rune unlocks and replay limits.
-    // Trial dispatches produce new sessions; they never mutate this session or its RNG.
-    legalActions: actionCandidates(state).filter((command) => !dispatch(session, command).error),
+    // Trial dispatches produce new sessions; they never mutate this chronicle or its RNG.
+    legalActions: actionCandidates(state).filter((command) => !dispatch(chronicle, command).error),
     frame: canFrame
       ? {
           ticks: { min: 1, max: frameTicks },
@@ -241,7 +233,7 @@ export function observeSession(session: Session): Observation {
       runes: RUNES.filter((rune) => state.profile.unlockedRunes.includes(rune.id)),
     },
     message: state.message,
-  });
+  }) as Observation;
 }
 
 export interface Agent {
@@ -281,24 +273,24 @@ export function commandPayload(command: Command): Command {
 
 /** Own the chronicle in a closure so a policy cannot modify authoritative state. */
 export function createAgent(seed: string, rules?: RulesVersion): Agent {
-  let session = newSession(seed, rules);
+  let chronicle = createChronicle(seed, rules);
   return {
-    observe: () => observeSession(session),
+    observe: () => observeChronicle(chronicle),
     step(command) {
       if (!validCommand(command))
         return {
           accepted: false,
           error: 'Malformed action.',
-          observation: observeSession(session),
+          observation: observeChronicle(chronicle),
         };
-      const result = dispatch(session, commandPayload(command));
-      session = result.session;
+      const result = dispatch(chronicle, commandPayload(command));
+      chronicle = result.chronicle;
       return {
         accepted: result.error === null,
         error: result.error,
-        observation: observeSession(session),
+        observation: observeChronicle(chronicle),
       };
     },
-    exportReplay: () => exportSession(session),
+    exportReplay: () => exportChronicle(chronicle),
   };
 }

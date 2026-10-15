@@ -1,4 +1,4 @@
-import type { State, WeaponId } from '../domain/types';
+import type { StateView as State, WeaponId } from '../domain/types';
 
 export type CombatSound =
   { kind: 'hit' | 'kill'; weapon: WeaponId } | { kind: 'hurt' | 'down' | 'dash' | 'clear' };

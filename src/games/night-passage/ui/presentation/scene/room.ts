@@ -1,7 +1,7 @@
 import * as T from 'three';
 import { disposeObject } from '../../../../../shared/three/resources';
 import { ARENA, REGIONS } from '../../../domain/content';
-import type { State } from '../../../domain/types';
+import type { StateView as State } from '../../../domain/types';
 import { createEnvironment, type RoomPillar } from './environment';
 
 /** Authored regional architecture with a blockout fallback. Pillar footprints come only from the rules. */

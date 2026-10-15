@@ -1,4 +1,4 @@
-import type { Point, State } from '../../domain/types';
+import type { Point, StateView as State } from '../../domain/types';
 
 /** Presentation only: never advances rules, consumes rules RNG or mutates state. */
 export interface Renderer {

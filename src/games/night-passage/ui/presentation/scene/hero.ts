@@ -3,7 +3,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import heroUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/hero.glb?url';
 import { disposeObject } from '../../../../../shared/three/resources';
 import { BASE_CAST, SPELLS, boon, weapon } from '../../../domain/content';
-import type { Action, Move, State, WeaponId } from '../../../domain/types';
+import type { Action, Move, StateView as State, WeaponId } from '../../../domain/types';
 import { createWeapons, WEAPON_CONTACT as CONTACT, type WeaponPose } from './weapons';
 
 const MODEL_SCALE = 28;

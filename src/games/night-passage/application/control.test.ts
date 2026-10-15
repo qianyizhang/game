@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { createController } from './control';
-import { importSession, exportSession } from './session';
+import { restoreChronicle, exportChronicle } from './chronicle';
 import { angleDelta } from '../domain/geometry';
 import type { Input } from '../domain/types';
 import { createPolicy } from '../agent/policy';
@@ -39,10 +39,10 @@ test('decision work delays delivery while previous controls continue; replay rep
   expect(second.trace).toMatchObject({ decisionTick: 6, deliveryTick: 11, nextDecisionTick: 13 });
   expect(a.result().player.x).toBeCloseTo(before + 5 * 3.8);
   expect(second.observation.perception.ageTicks).toBe(2);
-  const restored = importSession(a.exportReplay());
+  const restored = restoreChronicle(a.exportReplay());
   expect(restored.state.tick).toBe(a.result().tick);
   expect(restored.state.player).toEqual(a.result().player);
-  expect(JSON.parse(exportSession(restored))).toMatchObject({
+  expect(JSON.parse(exportChronicle(restored))).toMatchObject({
     controller: { version: 'night-passage-control-1' },
     score: 'night-passage-score-2',
   });
