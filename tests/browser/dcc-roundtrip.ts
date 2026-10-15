@@ -1,4 +1,5 @@
-import { isMesh, isSkinnedMesh, isTexture } from '../../src/shared/three/objects';
+import { AssetLifetime } from '../../src/shared/three/lifetime';
+import { isMesh, isSkinnedMesh } from '../../src/shared/three/objects';
 import * as T from 'three';
 import { loadPoseEvidence } from '../../packages/dcc-workbench/src/pose-evidence';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -19,89 +20,82 @@ export async function compareDccPoses(
     throw new Error('Selected Hydra delivery has no evaluated pose samples');
   if ('objects' in samples) return compareSavedPoses(url ?? published.modelUrl, samples);
   const gltf = await new GLTFLoader().loadAsync(url ?? published.modelUrl);
-  const mixer = new T.AnimationMixer(gltf.scene);
-  mixer.clipAction(gltf.animations[0]).play();
-  const skins: T.SkinnedMesh[] = [];
-  gltf.scene.traverse((object) => {
-    if (isSkinnedMesh(object)) skins.push(object);
-  });
-  const evaluate = (seconds: number) => {
-    mixer.setTime(seconds);
-    gltf.scene.updateMatrixWorld(true);
-    skins.forEach((mesh) => mesh.skeleton.update());
-  };
-  const point = (mesh: T.SkinnedMesh, index: number) =>
-    mesh.getVertexPosition(index, new T.Vector3()).applyMatrix4(mesh.matrixWorld);
-  evaluate(0);
-  const candidates = skins.flatMap((mesh) =>
-    Array.from({ length: mesh.geometry.getAttribute('position').count }, (_, index) => ({
-      mesh,
-      index,
-      position: point(mesh, index),
-    })),
-  );
-  const matches = samples.samples[0].points.map((p) => {
-    const target = new T.Vector3(...p);
-    let best = candidates[0];
-    let error = Infinity;
-    for (const candidate of candidates) {
-      const distance = target.distanceToSquared(candidate.position);
-      if (distance < error) {
-        error = distance;
-        best = candidate;
+  const lifetime = new AssetLifetime();
+  try {
+    const { mixer } = lifetime.adopt(gltf.scene)!;
+    mixer.clipAction(gltf.animations[0]).play();
+    const skins: T.SkinnedMesh[] = [];
+    gltf.scene.traverse((object) => {
+      if (isSkinnedMesh(object)) skins.push(object);
+    });
+    const evaluate = (seconds: number) => {
+      mixer.setTime(seconds);
+      gltf.scene.updateMatrixWorld(true);
+      skins.forEach((mesh) => mesh.skeleton.update());
+    };
+    const point = (mesh: T.SkinnedMesh, index: number) =>
+      mesh.getVertexPosition(index, new T.Vector3()).applyMatrix4(mesh.matrixWorld);
+    evaluate(0);
+    const candidates = skins.flatMap((mesh) =>
+      Array.from({ length: mesh.geometry.getAttribute('position').count }, (_, index) => ({
+        mesh,
+        index,
+        position: point(mesh, index),
+      })),
+    );
+    const matches = samples.samples[0].points.map((p) => {
+      const target = new T.Vector3(...p);
+      let best = candidates[0];
+      let error = Infinity;
+      for (const candidate of candidates) {
+        const distance = target.distanceToSquared(candidate.position);
+        if (distance < error) {
+          error = distance;
+          best = candidate;
+        }
       }
-    }
-    return { ...best, error: Math.sqrt(error) };
-  });
-  let maxError = 0;
-  const perPose = samples.samples.map((pose) => {
-    evaluate(pose.seconds);
-    let error = 0;
-    for (let i = 0; i < matches.length; i++) {
-      const { mesh, index } = matches[i];
-      error = Math.max(error, point(mesh, index).distanceTo(new T.Vector3(...pose.points[i])));
-    }
-    maxError = Math.max(maxError, error);
-    return { seconds: pose.seconds, maxError: error };
-  });
-  const result = {
-    sampleVertices: matches.length,
-    maxRestMatchError: Math.max(...matches.map((m) => m.error)),
-    maxPoseError: maxError,
-    perPose,
-  };
-  mixer.stopAllAction();
-  mixer.uncacheRoot(gltf.scene);
-  gltf.scene.traverse((object) => {
-    if (isMesh(object)) {
-      object.geometry.dispose();
-      for (const material of Array.isArray(object.material) ? object.material : [object.material]) {
-        for (const value of Object.values(material)) if (isTexture(value)) value.dispose();
-        material.dispose();
+      return { ...best, error: Math.sqrt(error) };
+    });
+    let maxError = 0;
+    const perPose = samples.samples.map((pose) => {
+      evaluate(pose.seconds);
+      let error = 0;
+      for (let i = 0; i < matches.length; i++) {
+        const { mesh, index } = matches[i];
+        error = Math.max(error, point(mesh, index).distanceTo(new T.Vector3(...pose.points[i])));
       }
-      if (isSkinnedMesh(object)) object.skeleton.dispose();
-    }
-  });
-  return result;
+      maxError = Math.max(maxError, error);
+      return { seconds: pose.seconds, maxError: error };
+    });
+    return {
+      sampleVertices: matches.length,
+      maxRestMatchError: Math.max(...matches.map((m) => m.error)),
+      maxPoseError: maxError,
+      perPose,
+    };
+  } finally {
+    lifetime.dispose();
+  }
 }
 
 /** Named native samples cover rigid fitted parts as well as deforming skins. */
 export async function compareSavedPoses(url: string, reference: PublishedSavedPoseSamples) {
   const gltf = await new GLTFLoader().loadAsync(url);
-  const mixer = new T.AnimationMixer(gltf.scene);
-  if (gltf.animations[0]) mixer.clipAction(gltf.animations[0]).play();
-  const meshes = new Map<string, T.Mesh>();
-  gltf.scene.traverse((object) => {
-    if (isMesh(object)) meshes.set(object.name, object);
-  });
-  const point = (mesh: T.Mesh, index: number) =>
-    mesh.getVertexPosition(index, new T.Vector3()).applyMatrix4(mesh.matrixWorld);
-  const evaluate = (seconds: number) => {
-    mixer.setTime(seconds);
-    gltf.scene.updateMatrixWorld(true);
-    for (const mesh of meshes.values()) if (isSkinnedMesh(mesh)) mesh.skeleton.update();
-  };
+  const lifetime = new AssetLifetime();
   try {
+    const { mixer } = lifetime.adopt(gltf.scene)!;
+    if (gltf.animations[0]) mixer.clipAction(gltf.animations[0]).play();
+    const meshes = new Map<string, T.Mesh>();
+    gltf.scene.traverse((object) => {
+      if (isMesh(object)) meshes.set(object.name, object);
+    });
+    const point = (mesh: T.Mesh, index: number) =>
+      mesh.getVertexPosition(index, new T.Vector3()).applyMatrix4(mesh.matrixWorld);
+    const evaluate = (seconds: number) => {
+      mixer.setTime(seconds);
+      gltf.scene.updateMatrixWorld(true);
+      for (const mesh of meshes.values()) if (isSkinnedMesh(mesh)) mesh.skeleton.update();
+    };
     evaluate(0);
     const matches = reference.objects.map((definition) => {
       const mesh = meshes.get(definition.name);
@@ -159,19 +153,6 @@ export async function compareSavedPoses(url: string, reference: PublishedSavedPo
       perPose,
     };
   } finally {
-    mixer.stopAllAction();
-    mixer.uncacheRoot(gltf.scene);
-    gltf.scene.traverse((object) => {
-      if (isMesh(object)) {
-        object.geometry.dispose();
-        for (const material of Array.isArray(object.material)
-          ? object.material
-          : [object.material]) {
-          for (const value of Object.values(material)) if (isTexture(value)) value.dispose();
-          material.dispose();
-        }
-        if (isSkinnedMesh(object)) object.skeleton.dispose();
-      }
-    });
+    lifetime.dispose();
   }
 }

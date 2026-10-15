@@ -117,7 +117,7 @@ export default function Viewer({
     edge.rotation.x = Math.PI / 2;
     edge.position.y = -0.008;
     scene.add(edge);
-    let disposed = false;
+    const view = new AssetLifetime();
     const assets = new AssetLifetime();
     let asset: T.Group | undefined;
     let skeleton: T.SkeletonHelper | undefined;
@@ -280,7 +280,7 @@ export default function Viewer({
       },
       undefined,
       () => {
-        if (!disposed) {
+        if (!view.closed) {
           setFailed(true);
           setStatus('The sculpture could not be loaded. Reload the workbench to try again.');
         }
@@ -332,7 +332,6 @@ export default function Viewer({
       element.dataset.time = time.toFixed(3);
     };
     frame = requestAnimationFrame(draw);
-    const view = new AssetLifetime();
     for (const release of [
       () => cancelAnimationFrame(frame),
       () => resize.disconnect(),
@@ -352,10 +351,7 @@ export default function Viewer({
       () => renderer.domElement.remove(),
     ].reverse())
       view.own(release);
-    return () => {
-      disposed = true;
-      view.dispose();
-    };
+    return () => view.dispose();
   }, [published]);
   return (
     <div className="dcc-render" ref={host} data-ready={ready} data-asset={published.id}>

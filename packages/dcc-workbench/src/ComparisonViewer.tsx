@@ -74,11 +74,11 @@ export default function ComparisonViewer({
     const clay = new T.MeshStandardMaterial({ color: '#b0b4a8', roughness: 0.8 });
     const silhouette = new T.MeshBasicMaterial({ color: '#172326' });
     const subjects: Subject[] = [];
+    const view = new AssetLifetime();
     const assets = new AssetLifetime();
     const bounds = new T.Box3();
     const target = new T.Vector3();
     let radius = 2;
-    let disposed = false;
     let loaded = false;
     let width = 1;
     let height = 1;
@@ -158,7 +158,7 @@ export default function ComparisonViewer({
       .catch(() => {
         assets.dispose();
         subjects.length = 0;
-        if (disposed) return;
+        if (view.closed) return;
         setFailed(true);
         setStatus(
           'A comparison asset could not be loaded. Reload to retry, or return to the workbench.',
@@ -240,7 +240,6 @@ export default function ComparisonViewer({
       element.dataset.surface = current.surface;
     };
     frame = requestAnimationFrame(draw);
-    const view = new AssetLifetime();
     for (const release of [
       () => cancelAnimationFrame(frame),
       () => resize.disconnect(),
@@ -258,10 +257,7 @@ export default function ComparisonViewer({
       () => renderer.domElement.remove(),
     ].reverse())
       view.own(release);
-    return () => {
-      disposed = true;
-      view.dispose();
-    };
+    return () => view.dispose();
   }, []);
   return (
     <div className="dcc-comparison-render" ref={host} data-ready={ready}>

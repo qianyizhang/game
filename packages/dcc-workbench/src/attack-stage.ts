@@ -62,8 +62,7 @@ export function createAttackStage(
   );
   ring.position.set(1.8, 1.2, 0.1);
   scene.add(ring);
-  let disposed = false,
-    frame = 0,
+  let frame = 0,
     active = '';
   let root: T.Group | undefined, mixer: T.AnimationMixer | undefined;
   let animations: T.AnimationClip[] = [];
@@ -78,6 +77,7 @@ export function createAttackStage(
     camera.updateProjectionMatrix();
   });
   resize.observe(element);
+  const view = new AssetLifetime();
   const assets = new AssetLifetime();
   assets.own(() => disposeObject(scene));
   assets.own(() => light.shadow.dispose());
@@ -96,11 +96,11 @@ export function createAttackStage(
       report('ready');
     })
     .catch(() => {
-      if (!disposed) report('3D unavailable; the combat replay remains available below.');
+      if (!view.closed) report('3D unavailable; the combat replay remains available below.');
     });
   const draw = () => {
     frame = requestAnimationFrame(draw);
-    if (!root || !mixer || disposed || document.hidden) return;
+    if (!root || !mixer || view.closed || document.hidden) return;
     const pose = read();
     if (!pose.visible) return;
     const motion = library[pose.clip];
@@ -134,7 +134,6 @@ export function createAttackStage(
     renderer.render(scene, camera);
   };
   frame = requestAnimationFrame(draw);
-  const view = new AssetLifetime();
   for (const release of [
     () => cancelAnimationFrame(frame),
     () => resize.disconnect(),
@@ -143,8 +142,5 @@ export function createAttackStage(
     () => renderer.domElement.remove(),
   ].reverse())
     view.own(release);
-  return () => {
-    disposed = true;
-    view.dispose();
-  };
+  return () => view.dispose();
 }

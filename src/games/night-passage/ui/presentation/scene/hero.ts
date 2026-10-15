@@ -187,7 +187,7 @@ export function createHero(
   let mixer: THREE.AnimationMixer | null = null;
   const actions = new Map<Clip, THREE.AnimationAction>();
   let current: Clip | null = null;
-  let disposed = false;
+  const view = new AssetLifetime();
   const assets = new AssetLifetime();
   void new GLTFLoader()
     .loadAsync(heroUrl)
@@ -233,10 +233,9 @@ export function createHero(
       invalidate();
     })
     .catch((error: unknown) => {
-      if (!disposed)
+      if (!view.closed)
         console.warn('Night Passage hero asset could not load; using the actor blockout.', error);
     });
-  const view = new AssetLifetime();
   for (const release of [
     () => armory.dispose(),
     () => assets.dispose(),
@@ -247,7 +246,7 @@ export function createHero(
     view.own(release);
   return {
     sync(state, reducedMotion) {
-      if (disposed) return false;
+      if (view.closed) return false;
       const pose = sample(state, reducedMotion);
       if (!model || !mixer) return false;
       if (!armory.sync(state.player.weapon, pose)) return false;
@@ -271,8 +270,7 @@ export function createHero(
       return true;
     },
     dispose() {
-      if (disposed) return;
-      disposed = true;
+      if (view.closed) return;
       view.dispose();
       model = null;
       mixer = null;

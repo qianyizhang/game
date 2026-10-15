@@ -65,8 +65,8 @@ export function createCanidPlayer(
   room.dispose();
   const clay = new T.MeshStandardMaterial({ color: '#b9b7a8', roughness: 0.8 });
   const subjects: Subject[] = [];
+  const view = new AssetLifetime();
   const assets = new AssetLifetime();
-  let disposed = false;
   let ready = false;
   let time = 0;
   let elapsed = 0;
@@ -159,7 +159,7 @@ export function createCanidPlayer(
     .catch(() => {
       assets.dispose();
       subjects.length = 0;
-      if (!disposed)
+      if (!view.closed)
         status(
           'A character could not load. Reload to retry; Blender and GLB downloads remain available.',
           false,
@@ -169,7 +169,7 @@ export function createCanidPlayer(
     frame = requestAnimationFrame(draw);
     const dt = Math.max(0, (now - previous) / 1000);
     previous = now;
-    if (!ready || disposed || document.hidden) return;
+    if (!ready || view.closed || document.hidden) return;
     const options = read();
     const duration = durationFor(options.revision, options.clip, clips);
     const motion = clips[options.clip];
@@ -303,7 +303,6 @@ export function createCanidPlayer(
     }
   };
   frame = requestAnimationFrame(draw);
-  const view = new AssetLifetime();
   for (const release of [
     () => cancelAnimationFrame(frame),
     () => document.removeEventListener('visibilitychange', resetTime),
@@ -320,8 +319,5 @@ export function createCanidPlayer(
     () => renderer.domElement.remove(),
   ].reverse())
     view.own(release);
-  return () => {
-    disposed = true;
-    view.dispose();
-  };
+  return () => view.dispose();
 }
