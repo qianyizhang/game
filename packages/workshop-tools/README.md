@@ -2,6 +2,11 @@
 
 This private npm workspace owns repository governance, artifact retention and offline build/experiment commands. It runs on Node with explicit filesystem contracts. Governance does not import game rules; experiment commands bundle the relevant game runtime deliberately.
 
+`runtime-bundle.ts` shares runtime build configuration and dependency-graph pinning.
+Callers own temporary directories, typed imports, worker lifetimes, retained outputs
+and cleanup. Source pins hash files after building; they are not an atomic snapshot
+of concurrent edits. Night Passage and Hearth recruitment pins include this shared module.
+
 Use `nvm use`, then run root npm commands. `npm run maintenance -- help` lists governance commands:
 
 | Command                                  | Contract                                                                                                                                                                                                                       |

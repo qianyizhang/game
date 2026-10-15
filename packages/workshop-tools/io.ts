@@ -1,10 +1,10 @@
 import { mkdir, mkdtemp, rm } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
 import { randomUUID } from 'node:crypto';
-import { build, type PluginOption } from 'vite';
+import type { PluginOption } from 'vite';
+import { buildRuntime, repositoryRoot } from './runtime-bundle.ts';
 
-export const repositoryRoot = fileURLToPath(new URL('../../', import.meta.url));
+export { repositoryRoot };
 export const fromRoot = (path: string) => resolve(repositoryRoot, path);
 export const newOutput = (label: string) => fromRoot(`test-results/${label}-${randomUUID()}`);
 
@@ -25,20 +25,15 @@ export async function withBundle<T, R>(
   await mkdir(scratch, { recursive: true });
   const directory = await mkdtemp(resolve(scratch, 'workshop-tool-'));
   try {
-    await build({
-      root: repositoryRoot,
-      configFile: false,
+    const bundle = await buildRuntime({
+      entry,
+      directory,
+      fileName: 'runtime.mjs',
       logLevel: 'warn',
       plugins,
-      build: {
-        ssr: fromRoot(entry),
-        outDir: directory,
-        emptyOutDir: false,
-        rolldownOptions: { output: { entryFileNames: 'runtime.mjs' } },
-      },
     });
     // This module was compiled from our declared, typechecked entry above.
-    const runtime = (await import(pathToFileURL(resolve(directory, 'runtime.mjs')).href)) as T;
+    const runtime = (await import(bundle.moduleURL)) as T;
     return await use(runtime);
   } finally {
     await rm(directory, { recursive: true, force: true });

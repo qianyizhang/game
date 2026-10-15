@@ -46,6 +46,7 @@ export async function runCli(args: string[]) {
       ),
       'packages/workshop-tools/hearth/contracts.ts',
       'packages/workshop-tools/io.ts',
+      'packages/workshop-tools/runtime-bundle.ts',
     ];
     const sourcePins = {
       ...sourceDigests,

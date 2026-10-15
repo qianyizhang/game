@@ -1,13 +1,9 @@
-import { repositoryRoot } from '../io.ts';
-import { build } from 'vite';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { buildRuntime, runtimePins } from '../runtime-bundle.ts';
+import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { isAbsolute, relative, resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
-import { createHash } from 'node:crypto';
+import { resolve } from 'node:path';
 
-export const sha256 = (bytes: string | Uint8Array) =>
-  createHash('sha256').update(bytes).digest('hex');
+export { sha256 } from '../runtime-bundle.ts';
 /** Pin the actual headless dependency graph; concurrent presentation work is outside this graph. */
 export type Runtime = typeof import('../../../src/engines/hearth/recruitment-runtime');
 export async function withRuntime<R>(
@@ -19,46 +15,17 @@ export async function withRuntime<R>(
   }) => R | Promise<R>,
 ) {
   const directory = await mkdtemp(resolve(tmpdir(), 'hearth-recruitment-'));
-  const modules = new Set<string>();
   try {
-    await build({
-      root: repositoryRoot,
-      configFile: false,
-      logLevel: 'silent',
-      plugins: [
-        {
-          name: 'pin-recruitment-sources',
-          buildEnd() {
-            for (const id of this.getModuleIds()) {
-              const info = this.getModuleInfo(id);
-              if (isAbsolute(id) && info && info.code !== null) modules.add(id.split('?')[0]);
-            }
-          },
-        },
-      ],
-      build: {
-        ssr: resolve(repositoryRoot, 'src/engines/hearth/recruitment-runtime.ts'),
-        outDir: directory,
-        emptyOutDir: false,
-        rollupOptions: { output: { entryFileNames: 'recruitment.mjs' } },
-      },
+    const bundle = await buildRuntime({
+      entry: 'src/engines/hearth/recruitment-runtime.ts',
+      directory,
+      fileName: 'recruitment.mjs',
     });
-    const moduleURL = pathToFileURL(resolve(directory, 'recruitment.mjs')).href;
-    const bundle = await readFile(resolve(directory, 'recruitment.mjs'));
-    const sourceDigests = Object.fromEntries(
-      await Promise.all(
-        [...modules]
-          .sort()
-          .map(
-            async (path) => [relative(repositoryRoot, path), sha256(await readFile(path))] as const,
-          ),
-      ),
-    );
+    const pins = await runtimePins(bundle);
     return await use({
-      runtime: (await import(moduleURL)) as Runtime,
-      moduleURL,
-      sourceDigests,
-      bundleDigest: sha256(bundle),
+      runtime: (await import(bundle.moduleURL)) as Runtime,
+      moduleURL: bundle.moduleURL,
+      ...pins,
     });
   } finally {
     await rm(directory, { recursive: true, force: true });
