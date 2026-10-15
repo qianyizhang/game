@@ -137,7 +137,9 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
   );
   await page.exposeFunction('canvasMessage', (message: (typeof messages)[number]) => {
     messages.push(message);
-    return rejectMessage ? { isError: true } : {};
+    if (rejectMessage)
+      throw new Error('Codex did not accept the message. ' + 'Delivery details. '.repeat(50));
+    return {};
   });
   await page.route('**/mcp-host', (route) =>
     route.fulfill({
@@ -370,8 +372,18 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
   );
   await expect(ui.getByRole('button', { name: 'Send to chat ↑' })).toBeDisabled();
   expect(messages.length).toBe(3);
+  // A pending request plus a long host error must not clip recovery or compose controls.
+  await page.setViewportSize({ width: 390, height: 844 });
+  const sideChat = ui.locator('.side-chat');
+  await sideChat.hover({ position: { x: 5, y: 5 } });
+  await page.mouse.wheel(0, 1500);
+  await expect(ui.getByRole('button', { name: 'Dismiss error' })).toBeInViewport();
+  await expect(ui.getByRole('button', { name: 'Send to chat ↑' })).toBeInViewport();
+  await page.screenshot({ path: 'test-results/repo-canvas/pending-error-mobile.png' });
+  await ui.getByRole('button', { name: 'Dismiss error' }).click();
   await ui.getByRole('button', { name: 'Close request' }).click();
   await expect(ui.getByText('Request cancelled.')).toBeVisible();
+  await page.setViewportSize({ width: 1440, height: 1000 });
   // Explicitly discarding a cached draft must survive an iframe reload.
   await expect
     .poll(async () => {
@@ -475,4 +487,25 @@ test('compact panels preserve keyboard actions, source editing and visible check
   await expect(
     page.getByRole('button', { name: 'Inspect Disclosure test', exact: true }),
   ).toHaveCount(0);
+});
+
+test('short compact windows can scroll to chat controls and back to the map', async ({ page }) => {
+  await page.setViewportSize({ width: 740, height: 500 });
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Side chat', exact: true }).click();
+  await page.screenshot({ path: 'test-results/repo-canvas/short-panel.png' });
+  // Use user scrolling: programmatic scrollIntoView can mask overflow:hidden clipping.
+  await page.locator('.app-header').hover();
+  await page.mouse.wheel(0, 1000);
+  await expect
+    .poll(() => page.locator('.workbench').evaluate((el) => el.scrollTop))
+    .toBeGreaterThan(0);
+  await page.locator('.side-chat').hover();
+  await page.mouse.wheel(0, 1000);
+  await expect(page.getByRole('button', { name: 'Send to chat ↑' })).toBeInViewport();
+  await page.getByRole('textbox', { name: 'Message Codex' }).fill('Reachable in a short window');
+  await page.screenshot({ path: 'test-results/repo-canvas/short-panel-scrolled.png' });
+  await page.getByRole('button', { name: 'Close side chat' }).click();
+  await expect(page.getByRole('button', { name: 'Save map', exact: true })).toBeInViewport();
+  await expect(page.getByRole('button', { name: 'Fit view', exact: true })).toBeInViewport();
 });

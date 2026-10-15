@@ -766,7 +766,6 @@ label textarea {
   width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 .side-chat h2 {
   font-size: 20px;
@@ -1232,6 +1231,7 @@ summary:focus-visible {
   }
   .workbench.with-panel {
     grid-template-rows: auto minmax(240px, 1fr) minmax(260px, 1fr);
+    overflow-y: auto;
   }
   .hierarchy {
     display: none;
@@ -1315,9 +1315,6 @@ summary:focus-visible {
   }
   .context-chip span {
     display: none;
-  }
-  .chat-log {
-    min-height: 0;
   }
   .chat-compose {
     margin-top: 8px;
