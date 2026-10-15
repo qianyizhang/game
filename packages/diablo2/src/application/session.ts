@@ -44,6 +44,11 @@ export function dispatch(
   const result = applyCommand(session.state, command, session.replay.content);
   if (!result.accepted) return { session, error: result.error };
   const commands = [...session.replay.commands];
+  recordCommand(commands, command);
+  return { session: { state: result.state, replay: { ...session.replay, commands } }, error: null };
+}
+/** Own nested payloads and pack adjacent ticks for both live and reconstructed journals. */
+function recordCommand(commands: Command[], command: Command): void {
   const previous = commands.at(-1);
   if (
     command.type === 'advance' &&
@@ -60,7 +65,6 @@ export function dispatch(
           : command;
     commands.push(structuredClone(clean));
   }
-  return { session: { state: result.state, replay: { ...session.replay, commands } }, error: null };
 }
 export function exportSession(session: Session): string {
   return JSON.stringify(session.replay);
@@ -82,15 +86,18 @@ export function importSession(text: string): Session {
   if (!Array.isArray(r.commands) || r.commands.length > 50000)
     throw new Error('Invalid command history.');
   const content = validateContent(r.content);
-  let session = newSession(r.seed, r.hero, content, r.mode === 'sandbox');
+  const session = newSession(r.seed, r.hero, content, r.mode === 'sandbox');
+  let state = session.state;
+  const commands: Command[] = [];
   let ticks = 0;
   for (const command of r.commands as unknown[]) {
     if (!validCommand(command)) throw new Error('Malformed replay command.');
     if (command.type === 'advance') ticks += command.ticks;
     if (ticks > 100000) throw new Error('Save exceeds the simulation limit.');
-    const next = dispatch(session, command);
-    if (next.error) throw new Error(`Rejected replay command: ${next.error}`);
-    session = next.session;
+    const next = applyCommand(state, command, session.replay.content);
+    if (!next.accepted) throw new Error(`Rejected replay command: ${next.error}`);
+    state = next.state;
+    recordCommand(commands, command);
   }
-  return session;
+  return { state, replay: { ...session.replay, commands } };
 }
