@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { exportReplay, importReplay, newSession, SAVE_KEY } from '../application/session';
+import { blindsideSession } from '../application/session';
 import { createRun, RULES_VERSION, transition } from './game';
 import { scoreHand } from './scoring';
 import type { Card } from './types';
@@ -85,11 +85,11 @@ describe('expanded Joker builds', () => {
   });
   it('separates the expanded seeded pool from v1 saves', () => {
     expect(RULES_VERSION).toBeGreaterThan(1);
-    expect(SAVE_KEY).not.toBe('card-workshop.blindside.v1');
-    const session = newSession('EXPANSION-REPLAY');
-    expect(importReplay(exportReplay(session))).toEqual(session);
-    expect(() => importReplay(JSON.stringify({ ...session.replay, version: 1 }))).toThrow(
-      /version/i,
-    );
+    expect(blindsideSession.key).not.toBe('card-workshop.blindside.v1');
+    const session = blindsideSession.create('EXPANSION-REPLAY');
+    expect(blindsideSession.decode(blindsideSession.encode(session))).toEqual(session);
+    expect(() =>
+      blindsideSession.decode(JSON.stringify({ ...session.replay, version: 1 })),
+    ).toThrow(/version/i);
   });
 });

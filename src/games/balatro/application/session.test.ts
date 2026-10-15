@@ -1,38 +1,51 @@
 import { describe, expect, it } from 'vitest';
-import { act, exportReplay, importReplay, newSession } from './session';
+import { blindsideSession } from './session';
 
 describe('save/replay boundary', () => {
   it('reconstructs identical state across export and import', () => {
-    let session = act(newSession('REPLAY'), { type: 'startBlind' }).session;
-    session = act(session, { type: 'discard', cards: session.run.hand.slice(0, 3) }).session;
-    session = act(session, { type: 'play', cards: session.run.hand.slice(0, 5) }).session;
-    expect(importReplay(exportReplay(session))).toEqual(session);
+    let session = blindsideSession.act(blindsideSession.create('REPLAY'), {
+      type: 'startBlind',
+    }).session;
+    session = blindsideSession.act(session, {
+      type: 'discard',
+      cards: session.state.hand.slice(0, 3),
+    }).session;
+    session = blindsideSession.act(session, {
+      type: 'play',
+      cards: session.state.hand.slice(0, 5),
+    }).session;
+    expect(blindsideSession.decode(blindsideSession.encode(session))).toEqual(session);
   });
   it('does not record rejected commands', () => {
-    const session = newSession('REJECT');
-    const result = act(session, { type: 'play', cards: [] });
+    const session = blindsideSession.create('REJECT');
+    const result = blindsideSession.act(session, { type: 'play', cards: [] });
     expect(result.session).toBe(session);
     expect(result.error).toBeTruthy();
     expect(session.replay.commands).toHaveLength(0);
   });
   it('rejects incompatible, corrupt and illegal replays', () => {
-    expect(() => importReplay('{')).toThrow();
-    expect(() => importReplay(JSON.stringify({ ...newSession('V').replay, version: 999 }))).toThrow(
-      'version',
-    );
+    expect(() => blindsideSession.decode('{')).toThrow();
     expect(() =>
-      importReplay(
+      blindsideSession.decode(
+        JSON.stringify({ ...blindsideSession.create('V').replay, version: 999 }),
+      ),
+    ).toThrow('version');
+    expect(() =>
+      blindsideSession.decode(
         JSON.stringify({
-          ...newSession('V').replay,
+          ...blindsideSession.create('V').replay,
           commands: [{ type: 'moveJoker', id: 'x', direction: 9 }],
         }),
       ),
     ).toThrow('Invalid command');
     expect(() =>
-      importReplay(
-        JSON.stringify({ ...newSession('V').replay, commands: [{ type: 'play', cards: ['x'] }] }),
+      blindsideSession.decode(
+        JSON.stringify({
+          ...blindsideSession.create('V').replay,
+          commands: [{ type: 'play', cards: ['x'] }],
+        }),
       ),
     ).toThrow('step 1');
-    expect(() => importReplay(' '.repeat(2_000_001))).toThrow('large');
+    expect(() => blindsideSession.decode(' '.repeat(2_000_001))).toThrow('large');
   });
 });

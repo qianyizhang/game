@@ -4,13 +4,6 @@ import { automatedEvidence } from './evidence';
 import { writeFileSync } from 'node:fs';
 import { expect, it } from 'vitest';
 import { hashSeed, shuffle } from '../../src/shared/random';
-import {
-  act,
-  exportReplay,
-  importReplay,
-  newSession,
-  type Session,
-} from '../../src/games/balatro/application/session';
 import { activeBoss } from '../../src/games/balatro/content/blinds';
 import { CONSUMABLE_BY_ID } from '../../src/games/balatro/content/consumables';
 import { JOKER_BY_ID } from '../../src/games/balatro/content/jokers';
@@ -44,15 +37,15 @@ function keepForRedraw(run: RunState, best: string[]) {
 
 const additiveFirst = (id: string) =>
   ['bankroll', 'tidal', 'last', 'crown', 'constellation'].includes(id) ? 1 : 0;
-function simulate(seed: string): Session {
-  let session = newSession(seed);
+function simulate(seed: string) {
+  let session = blindsideSession.create(seed);
   const command = (input: Command) => {
-    const result = act(session, input);
+    const result = blindsideSession.act(session, input);
     if (result.error) throw new Error(`${seed}: ${result.error}`);
     session = result.session;
   };
   for (let safety = 0; safety < 1000; safety++) {
-    const run = session.run;
+    const run = session.state;
     if (run.phase === 'won' || run.phase === 'lost') return session;
     if (run.phase === 'ready') {
       command({ type: 'startBlind' });
@@ -104,10 +97,10 @@ function simulate(seed: string): Session {
       if (pick && pick.value > (run.jokers.length < 5 ? 1.05 : 1.5)) {
         if (pick.replace >= 0) command({ type: 'sellJoker', id: run.jokers[pick.replace].id });
         command({ type: 'buy', offerId: pick.offer.id });
-        const latest = session.run.jokers.at(-1)!;
+        const latest = session.state.jokers.at(-1)!;
         if (!additiveFirst(latest.definitionId)) {
-          let position = session.run.jokers.length - 1;
-          while (position > 0 && additiveFirst(session.run.jokers[position - 1].definitionId)) {
+          let position = session.state.jokers.length - 1;
+          while (position > 0 && additiveFirst(session.state.jokers[position - 1].definitionId)) {
             command({ type: 'moveJoker', id: latest.id, direction: -1 });
             position--;
           }
@@ -122,7 +115,7 @@ function simulate(seed: string): Session {
       );
       if (planet && run.consumables.length < 2) {
         command({ type: 'buy', offerId: planet.id });
-        command({ type: 'useConsumable', id: session.run.consumables.at(-1)!.id, cards: [] });
+        command({ type: 'useConsumable', id: session.state.consumables.at(-1)!.id, cards: [] });
         continue;
       }
       if (run.cash >= 18 && run.rerolls < 2) {
@@ -135,11 +128,14 @@ function simulate(seed: string): Session {
     for (const owned of run.consumables)
       if (CONSUMABLE_BY_ID[owned.definitionId].targets === 0)
         command({ type: 'useConsumable', id: owned.id, cards: [] });
-    const best = bestHand(session.run);
-    const remaining = session.run.target - session.run.roundScore;
-    if (session.run.discardsLeft > 0 && best.total < (remaining / session.run.handsLeft) * 1.25) {
-      const keep = keepForRedraw(session.run, best.cards);
-      const discard = session.run.hand.filter((id) => !keep.includes(id)).slice(0, 5);
+    const best = bestHand(session.state);
+    const remaining = session.state.target - session.state.roundScore;
+    if (
+      session.state.discardsLeft > 0 &&
+      best.total < (remaining / session.state.handsLeft) * 1.25
+    ) {
+      const keep = keepForRedraw(session.state, best.cards);
+      const discard = session.state.hand.filter((id) => !keep.includes(id)).slice(0, 5);
       if (discard.length) {
         command({ type: 'discard', cards: discard });
         continue;
@@ -165,21 +161,19 @@ it('finishes unmodified seeded runs and saves replayable evidence', () => {
   const evidence: ReturnType<typeof automatedEvidence>[] = [];
   const summaries = seeds.map((seed) => {
     const session = simulate(seed);
-    evidence.push(
-      automatedEvidence(blindsideSession, { state: session.run, replay: session.replay }),
-    );
-    expect(['won', 'lost']).toContain(session.run.phase);
-    expect(importReplay(exportReplay(session)).run).toEqual(session.run);
-    writeFileSync(`${output}/${seed}.json`, exportReplay(session));
+    evidence.push(automatedEvidence(blindsideSession, session));
+    expect(['won', 'lost']).toContain(session.state.phase);
+    expect(blindsideSession.decode(blindsideSession.encode(session)).state).toEqual(session.state);
+    writeFileSync(`${output}/${seed}.json`, blindsideSession.encode(session));
     return {
       seed,
-      outcome: session.run.phase,
-      ante: session.run.ante,
-      blind: session.run.blind + 1,
-      score: session.run.roundScore,
-      target: session.run.target,
+      outcome: session.state.phase,
+      ante: session.state.ante,
+      blind: session.state.blind + 1,
+      score: session.state.roundScore,
+      target: session.state.target,
       commands: session.replay.commands.length,
-      jokers: session.run.jokers.map((j) => j.definitionId),
+      jokers: session.state.jokers.map((j) => j.definitionId),
     };
   });
   writeFileSync(`${output}/evidence.json`, JSON.stringify(evidence, null, 2));

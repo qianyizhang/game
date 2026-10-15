@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { resolve } from 'node:path';
-import { importReplay, SAVE_KEY } from '../../src/games/balatro/application/session';
+import { blindsideSession } from '../../src/games/balatro/application/session';
 import { scoreHand } from '../../src/games/balatro/domain/scoring';
 import { JOKERS, JOKER_BY_ID } from '../../src/games/balatro/content/jokers';
 
@@ -9,11 +9,11 @@ test.beforeEach(async ({ page }) => {
 });
 
 async function saved(page: Page) {
-  const value = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
-  return importReplay(value!);
+  const value = await page.evaluate((key) => localStorage.getItem(key), blindsideSession.key);
+  return blindsideSession.decode(value!);
 }
 async function playBestHand(page: Page) {
-  const { run } = await saved(page);
+  const { state: run } = await saved(page);
   let best: string[] = [];
   let score = -1;
   for (let bits = 1; bits < 2 ** run.hand.length; bits++) {
@@ -43,9 +43,9 @@ test(
     await page.locator('.playing-card').first().click();
     await expect(page.getByRole('heading', { name: 'Your hand, explained.' })).toBeVisible();
     await page.getByRole('button', { name: 'Discard', exact: true }).click();
-    expect((await saved(page)).run.discardsLeft).toBe(2);
+    expect((await saved(page)).state.discardsLeft).toBe(2);
     await page.screenshot({ path: info.outputPath('desktop-playing.png'), fullPage: true });
-    for (let hand = 0; hand < 4 && (await saved(page)).run.phase === 'playing'; hand++)
+    for (let hand = 0; hand < 4 && (await saved(page)).state.phase === 'playing'; hand++)
       await playBestHand(page);
     await expect(
       page.getByRole('heading', { name: 'Find your next unfair advantage.' }),
@@ -59,11 +59,11 @@ test(
     await expect(page.locator('.owned-joker')).toHaveCount(1);
     await affordable.first().click();
     await expect(page.locator('.owned-joker')).toHaveCount(2);
-    const previousOrder = (await saved(page)).run.jokers;
+    const previousOrder = (await saved(page)).state.jokers;
     const movedName = JOKER_BY_ID[previousOrder[1].definitionId].name;
     await page.getByRole('button', { name: `Move ${movedName} left`, exact: true }).click();
     await expect(page.locator('.owned-joker').first()).toContainText(movedName);
-    expect((await saved(page)).run.jokers.map((j) => j.id)).toEqual([
+    expect((await saved(page)).state.jokers.map((j) => j.id)).toEqual([
       previousOrder[1].id,
       previousOrder[0].id,
     ]);
@@ -73,14 +73,14 @@ test(
     await expect(page.locator('.owned-joker')).toHaveCount(2);
     await page.getByRole('button', { name: 'Next blind' }).click();
     await page.getByRole('button', { name: 'Play Big Blind' }).click();
-    expect((await saved(page)).run.blind).toBe(1);
+    expect((await saved(page)).state.blind).toBe(1);
     await expect(page.locator('.playing-card')).toHaveCount(8);
     await page.getByRole('button', { name: 'Rank', exact: true }).click();
-    const sorted = (await saved(page)).run;
+    const sorted = (await saved(page)).state;
     const ranks = sorted.hand.map((id) => sorted.deck.find((card) => card.id === id)!.rank);
     expect(ranks).toEqual([...ranks].sort((a, b) => b - a));
     await page.getByRole('button', { name: 'Move card 1 right', exact: true }).click();
-    expect((await saved(page)).run.hand[1]).toBe(sorted.hand[0]);
+    expect((await saved(page)).state.hand[1]).toBe(sorted.hand[0]);
     expect(errors).toEqual([]);
   },
 );
@@ -148,8 +148,8 @@ test('a complete legal eight-ante replay restores its victory screen', async ({ 
     .setInputFiles(resolve('tests/fixtures/blindside-win.json'));
   await expect(page.getByRole('heading', { name: 'You broke the blind.' })).toBeVisible();
   const session = await saved(page);
-  expect(session.run.phase).toBe('won');
-  expect(session.run.ante).toBe(8);
+  expect(session.state.phase).toBe('won');
+  expect(session.state.ante).toBe(8);
   expect(session.replay.commands.filter((command) => command.type === 'startBlind')).toHaveLength(
     24,
   );
