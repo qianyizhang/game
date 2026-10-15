@@ -342,6 +342,13 @@ export default function DiabloApp() {
       window.removeEventListener('keyup', keyup);
     };
   }, [selecting, panel, paused, send, release, openPanel]);
+  const installSession = (next: Session | null) => {
+    effects.current.clear();
+    previous.current = null;
+    viewCamera.current = undefined;
+    current.current = next;
+    setSession(next);
+  };
   const start = (sandbox = false, hero = chosen) => {
     let next: Session;
     try {
@@ -355,11 +362,7 @@ export default function DiabloApp() {
       setMessage(String(error));
       return;
     }
-    effects.current.clear();
-    previous.current = null;
-    viewCamera.current = undefined;
-    current.current = next;
-    setSession(next);
+    installSession(next);
     setSelecting(false);
     setPaused(false);
     setPanel(null);
@@ -377,11 +380,7 @@ export default function DiabloApp() {
     try {
       const raw = localStorage.getItem(SAVE_KEY);
       const next = raw ? importSession(raw) : null;
-      current.current = next;
-      previous.current = null;
-      viewCamera.current = undefined;
-      effects.current.clear();
-      setSession(next);
+      installSession(next);
       setContent(next?.replay.content ?? BASE_CONTENT);
       setSelecting(!next);
       setPanel(null);
@@ -407,11 +406,7 @@ export default function DiabloApp() {
         setMessage(`${pack.id} ${pack.version} loaded. Choose a hero to start this content pack.`);
       } else {
         const next = importSession(text);
-        effects.current.clear();
-        previous.current = null;
-        viewCamera.current = undefined;
-        current.current = next;
-        setSession(next);
+        installSession(next);
         setContent(next.replay.content);
         setSelecting(false);
         setPaused(true);
