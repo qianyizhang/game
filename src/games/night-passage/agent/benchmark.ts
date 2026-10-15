@@ -328,16 +328,14 @@ function controlledEpisode(
     });
     if (!start.accepted) throw new Error(start.error ?? 'Start rejected.');
     actions++;
-    while (
-      actions < limits.maxActions &&
-      agent.result().tick < limits.maxTicks &&
-      !['won', 'lost'].includes(agent.result().phase)
-    ) {
+    while (actions < limits.maxActions) {
+      const current = agent.result();
+      if (current.tick >= limits.maxTicks || ['won', 'lost'].includes(current.phase)) break;
       const decision = decide(agent.observe());
       const result = agent.step(
         decision.command,
         decision.work.total,
-        limits.maxTicks - agent.result().tick,
+        limits.maxTicks - current.tick,
       );
       if (!result.accepted) throw new Error(result.error ?? 'Control rejected.');
       actions++;

@@ -1,0 +1,514 @@
+{
+  "schema": "night-passage.observation-profile.v1",
+  "date": "2026-10-15",
+  "baselineRevision": "98cb73234c84a10ac1172266265a6eaee598cff6",
+  "runtime": "v24.21.0",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "measurement": {
+    "normalCases": 9,
+    "maxTicks": 4000,
+    "maxActions": 2000,
+    "includeReplay": true,
+    "includeTrace": true,
+    "warmup": {
+      "caseIndex": 4,
+      "maxTicks": 300,
+      "maxActions": 100
+    },
+    "processes": "fresh process per variant/repetition; alternating order",
+    "gc": "explicit after warmup",
+    "timing": "episode execution only; excludes build, import, warmup and result hashing",
+    "memory": "process.resourceUsage().maxRSS in KiB; includes startup/warmup, not only retained history",
+    "stressOverrides": {
+      "observationTicks": 60,
+      "reactionTicks": 60,
+      "holdTicks": 60,
+      "switchTicks": 60
+    }
+  },
+  "variants": {
+    "baseline": {
+      "sourceDigests": {
+        "packages/workshop-tools/night-passage/entry.ts": "7943684360cdffaa71e2b79755f6df1b1a5ae32cd690b7b56960f3601fd095cd",
+        "src/games/night-passage/agent/benchmark.ts": "dc5e00ed15dff814521c82a3ee30ea6adcafe11ae33bba00e13014c33ff3368e",
+        "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+        "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+        "src/games/night-passage/application/agent.ts": "d4dd86c1df13479217d4b7d082e4e4983ecd40fe86babf0deb33a0ea49d73255",
+        "src/games/night-passage/application/chronicle.ts": "06a5e3d013e14eacd542a86e5678de1d55b12725809349e5dd7b3b33c9d3987d",
+        "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+        "src/games/night-passage/application/control.ts": "ef013cc5f4458d89157598c7d2b35cd512de66fd3f3e333f989a6ab2bb01f8ec",
+        "src/games/night-passage/application/playback.ts": "5f706dd6096cff227482bfc9bd606a40ecffd6f673fe294c057fefa4fd6ff474",
+        "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+        "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+        "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+        "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+        "src/games/night-passage/domain/contracts.ts": "01d2d732ee4a5bb02ed162a0421a2701b765f9f40815fee7a913be7fd99d4c86",
+        "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+        "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+        "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+        "src/games/night-passage/domain/game.ts": "f4cbf389a3126948bf15739ba01ae5f6db981ac95fd70a9d904762b0db7efcc1",
+        "src/games/night-passage/domain/geometry.ts": "58407f2f6c5d97e5f1050a2c5b01b6a5728b3d63aa1fd0018628b4078afecf80",
+        "src/games/night-passage/domain/score.ts": "be53253a9a66d3fb62e65c76993fe7c20ee3271120e9078d7494353c5a9643e8",
+        "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+        "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+        "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+      },
+      "bundleDigest": "312ce5c6fe4e3380b20f6709a283282b234781208913057a4ae66af3ca608de3",
+      "toolDigests": {
+        "packages/workshop-tools/night-passage/runtime.ts": "adfd8567fb4cc8b5a43b94de6e1ab7af652b1e2f1690f7d2a3aae049f438e864",
+        "packages/workshop-tools/night-passage/cli.ts": "61fc78bc10a4f522b8c89937a9046bf61e3b55e7aa5d372190a7c7ced8570e4d",
+        "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+        "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d",
+        "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e"
+      }
+    },
+    "single-read": {
+      "sourceDigests": {
+        "packages/workshop-tools/night-passage/entry.ts": "7943684360cdffaa71e2b79755f6df1b1a5ae32cd690b7b56960f3601fd095cd",
+        "src/games/night-passage/agent/benchmark.ts": "f3a2e87c7863e0de3e97ee852e901f81b2ee9e19c4c8c7a4cbe6f689223d8409",
+        "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+        "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+        "src/games/night-passage/application/agent.ts": "d4dd86c1df13479217d4b7d082e4e4983ecd40fe86babf0deb33a0ea49d73255",
+        "src/games/night-passage/application/chronicle.ts": "06a5e3d013e14eacd542a86e5678de1d55b12725809349e5dd7b3b33c9d3987d",
+        "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+        "src/games/night-passage/application/control.ts": "ef013cc5f4458d89157598c7d2b35cd512de66fd3f3e333f989a6ab2bb01f8ec",
+        "src/games/night-passage/application/playback.ts": "5f706dd6096cff227482bfc9bd606a40ecffd6f673fe294c057fefa4fd6ff474",
+        "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+        "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+        "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+        "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+        "src/games/night-passage/domain/contracts.ts": "01d2d732ee4a5bb02ed162a0421a2701b765f9f40815fee7a913be7fd99d4c86",
+        "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+        "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+        "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+        "src/games/night-passage/domain/game.ts": "f4cbf389a3126948bf15739ba01ae5f6db981ac95fd70a9d904762b0db7efcc1",
+        "src/games/night-passage/domain/geometry.ts": "58407f2f6c5d97e5f1050a2c5b01b6a5728b3d63aa1fd0018628b4078afecf80",
+        "src/games/night-passage/domain/score.ts": "be53253a9a66d3fb62e65c76993fe7c20ee3271120e9078d7494353c5a9643e8",
+        "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+        "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+        "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+      },
+      "bundleDigest": "9df0f348898ec25d764a42a101b5a83d516c805b0f9452b2d65f8fe205cb5382",
+      "toolDigests": {
+        "packages/workshop-tools/night-passage/runtime.ts": "adfd8567fb4cc8b5a43b94de6e1ab7af652b1e2f1690f7d2a3aae049f438e864",
+        "packages/workshop-tools/night-passage/cli.ts": "61fc78bc10a4f522b8c89937a9046bf61e3b55e7aa5d372190a7c7ced8570e4d",
+        "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+        "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d",
+        "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e"
+      }
+    },
+    "final": {
+      "sourceDigests": {
+        "packages/workshop-tools/night-passage/entry.ts": "7943684360cdffaa71e2b79755f6df1b1a5ae32cd690b7b56960f3601fd095cd",
+        "src/games/night-passage/agent/benchmark.ts": "f3a2e87c7863e0de3e97ee852e901f81b2ee9e19c4c8c7a4cbe6f689223d8409",
+        "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+        "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+        "src/games/night-passage/application/agent.ts": "d4dd86c1df13479217d4b7d082e4e4983ecd40fe86babf0deb33a0ea49d73255",
+        "src/games/night-passage/application/chronicle.ts": "06a5e3d013e14eacd542a86e5678de1d55b12725809349e5dd7b3b33c9d3987d",
+        "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+        "src/games/night-passage/application/control.ts": "3c31d4532b11410f5d99b10f1eafffc8a0a3618faac117d3d098a22a6c22083c",
+        "src/games/night-passage/application/playback.ts": "5f706dd6096cff227482bfc9bd606a40ecffd6f673fe294c057fefa4fd6ff474",
+        "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+        "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+        "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+        "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+        "src/games/night-passage/domain/contracts.ts": "01d2d732ee4a5bb02ed162a0421a2701b765f9f40815fee7a913be7fd99d4c86",
+        "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+        "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+        "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+        "src/games/night-passage/domain/game.ts": "f4cbf389a3126948bf15739ba01ae5f6db981ac95fd70a9d904762b0db7efcc1",
+        "src/games/night-passage/domain/geometry.ts": "58407f2f6c5d97e5f1050a2c5b01b6a5728b3d63aa1fd0018628b4078afecf80",
+        "src/games/night-passage/domain/score.ts": "be53253a9a66d3fb62e65c76993fe7c20ee3271120e9078d7494353c5a9643e8",
+        "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+        "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+        "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+      },
+      "bundleDigest": "f00be37bfd9441d35abefa158ede08a23f10eae6f08c8a8e415b57828afeb228",
+      "toolDigests": {
+        "packages/workshop-tools/night-passage/runtime.ts": "adfd8567fb4cc8b5a43b94de6e1ab7af652b1e2f1690f7d2a3aae049f438e864",
+        "packages/workshop-tools/night-passage/cli.ts": "61fc78bc10a4f522b8c89937a9046bf61e3b55e7aa5d372190a7c7ced8570e4d",
+        "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+        "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d",
+        "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e"
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "name": "baseline-single-read",
+      "variants": {
+        "baseline": {
+          "repetitions": 7,
+          "medianMs": 3029.5849590000003,
+          "medianMaxRssKiB": 139520
+        },
+        "single-read": {
+          "repetitions": 7,
+          "medianMs": 2467.4892910000003,
+          "medianMaxRssKiB": 139440
+        }
+      },
+      "resultSha256": "f1145f13d9034f464d095b3f149b0fbf0751b8f4f32d0440fb1a8e578b8af936",
+      "errorsPerRepetition": 0,
+      "results": [
+        {
+          "seed": "observation-profile-sword",
+          "control": "light",
+          "status": "timeout",
+          "actions": 1715,
+          "ticks": 4000,
+          "score": 700,
+          "workUnits": 30412
+        },
+        {
+          "seed": "observation-profile-bow",
+          "control": "light",
+          "status": "timeout",
+          "actions": 1726,
+          "ticks": 4000,
+          "score": 900,
+          "workUnits": 31571
+        },
+        {
+          "seed": "observation-profile-spear",
+          "control": "light",
+          "status": "timeout",
+          "actions": 1708,
+          "ticks": 4000,
+          "score": 900,
+          "workUnits": 32347
+        },
+        {
+          "seed": "observation-profile-sword",
+          "control": "standard",
+          "status": "timeout",
+          "actions": 918,
+          "ticks": 4000,
+          "score": 700,
+          "workUnits": 16016
+        },
+        {
+          "seed": "observation-profile-bow",
+          "control": "standard",
+          "status": "timeout",
+          "actions": 902,
+          "ticks": 4000,
+          "score": 900,
+          "workUnits": 17134
+        },
+        {
+          "seed": "observation-profile-spear",
+          "control": "standard",
+          "status": "timeout",
+          "actions": 900,
+          "ticks": 4000,
+          "score": 800,
+          "workUnits": 17806
+        },
+        {
+          "seed": "observation-profile-sword",
+          "control": "heavy",
+          "status": "timeout",
+          "actions": 504,
+          "ticks": 4000,
+          "score": 700,
+          "workUnits": 8638
+        },
+        {
+          "seed": "observation-profile-bow",
+          "control": "heavy",
+          "status": "timeout",
+          "actions": 487,
+          "ticks": 4000,
+          "score": 800,
+          "workUnits": 9525
+        },
+        {
+          "seed": "observation-profile-spear",
+          "control": "heavy",
+          "status": "timeout",
+          "actions": 480,
+          "ticks": 4000,
+          "score": 700,
+          "workUnits": 10409
+        }
+      ]
+    },
+    {
+      "name": "single-read-lazy",
+      "variants": {
+        "single-read": {
+          "repetitions": 7,
+          "medianMs": 2439.334375,
+          "medianMaxRssKiB": 139360
+        },
+        "lazy": {
+          "repetitions": 7,
+          "medianMs": 1776.0905830000002,
+          "medianMaxRssKiB": 139072
+        }
+      },
+      "resultSha256": "f1145f13d9034f464d095b3f149b0fbf0751b8f4f32d0440fb1a8e578b8af936",
+      "errorsPerRepetition": 0,
+      "results": [
+        {
+          "seed": "observation-profile-sword",
+          "control": "light",
+          "status": "timeout",
+          "actions": 1715,
+          "ticks": 4000,
+          "score": 700,
+          "workUnits": 30412
+        },
+        {
+          "seed": "observation-profile-bow",
+          "control": "light",
+          "status": "timeout",
+          "actions": 1726,
+          "ticks": 4000,
+          "score": 900,
+          "workUnits": 31571
+        },
+        {
+          "seed": "observation-profile-spear",
+          "control": "light",
+          "status": "timeout",
+          "actions": 1708,
+          "ticks": 4000,
+          "score": 900,
+          "workUnits": 32347
+        },
+        {
+          "seed": "observation-profile-sword",
+          "control": "standard",
+          "status": "timeout",
+          "actions": 918,
+          "ticks": 4000,
+          "score": 700,
+          "workUnits": 16016
+        },
+        {
+          "seed": "observation-profile-bow",
+          "control": "standard",
+          "status": "timeout",
+          "actions": 902,
+          "ticks": 4000,
+          "score": 900,
+          "workUnits": 17134
+        },
+        {
+          "seed": "observation-profile-spear",
+          "control": "standard",
+          "status": "timeout",
+          "actions": 900,
+          "ticks": 4000,
+          "score": 800,
+          "workUnits": 17806
+        },
+        {
+          "seed": "observation-profile-sword",
+          "control": "heavy",
+          "status": "timeout",
+          "actions": 504,
+          "ticks": 4000,
+          "score": 700,
+          "workUnits": 8638
+        },
+        {
+          "seed": "observation-profile-bow",
+          "control": "heavy",
+          "status": "timeout",
+          "actions": 487,
+          "ticks": 4000,
+          "score": 800,
+          "workUnits": 9525
+        },
+        {
+          "seed": "observation-profile-spear",
+          "control": "heavy",
+          "status": "timeout",
+          "actions": 480,
+          "ticks": 4000,
+          "score": 700,
+          "workUnits": 10409
+        }
+      ]
+    },
+    {
+      "name": "stress-single-read-final",
+      "variants": {
+        "single-read": {
+          "repetitions": 3,
+          "medianMs": 1337.938208,
+          "medianMaxRssKiB": 138800
+        },
+        "final": {
+          "repetitions": 3,
+          "medianMs": 514.938125,
+          "medianMaxRssKiB": 122192
+        }
+      },
+      "resultSha256": "c0e59c36bfcf7e9e2d5d8b18e706cf3ceca961680b731099c217bc439177a65c",
+      "errorsPerRepetition": 0,
+      "results": [
+        {
+          "seed": "observation-profile-sword",
+          "control": "light",
+          "status": "timeout",
+          "actions": 25,
+          "ticks": 4000,
+          "score": 100,
+          "workUnits": 385
+        },
+        {
+          "seed": "observation-profile-bow",
+          "control": "light",
+          "status": "timeout",
+          "actions": 27,
+          "ticks": 4000,
+          "score": 200,
+          "workUnits": 448
+        },
+        {
+          "seed": "observation-profile-spear",
+          "control": "light",
+          "status": "lost",
+          "actions": 14,
+          "ticks": 2144,
+          "score": 100,
+          "workUnits": 207
+        },
+        {
+          "seed": "observation-profile-sword",
+          "control": "standard",
+          "status": "timeout",
+          "actions": 25,
+          "ticks": 4000,
+          "score": 100,
+          "workUnits": 385
+        },
+        {
+          "seed": "observation-profile-bow",
+          "control": "standard",
+          "status": "timeout",
+          "actions": 26,
+          "ticks": 4000,
+          "score": 300,
+          "workUnits": 392
+        },
+        {
+          "seed": "observation-profile-spear",
+          "control": "standard",
+          "status": "lost",
+          "actions": 14,
+          "ticks": 2144,
+          "score": 100,
+          "workUnits": 207
+        },
+        {
+          "seed": "observation-profile-sword",
+          "control": "heavy",
+          "status": "timeout",
+          "actions": 25,
+          "ticks": 4000,
+          "score": 100,
+          "workUnits": 385
+        },
+        {
+          "seed": "observation-profile-bow",
+          "control": "heavy",
+          "status": "timeout",
+          "actions": 26,
+          "ticks": 4000,
+          "score": 300,
+          "workUnits": 392
+        },
+        {
+          "seed": "observation-profile-spear",
+          "control": "heavy",
+          "status": "lost",
+          "actions": 14,
+          "ticks": 2144,
+          "score": 100,
+          "workUnits": 207
+        }
+      ]
+    }
+  ],
+  "viewEquivalence": {
+    "observations": 2400,
+    "rules": ["night-passage-4", "night-passage-5"],
+    "observationTicks": [0, 1, 3, 60],
+    "nonNullProjectileVelocities": 3354,
+    "bootstrapViews": 84,
+    "matched": [
+      "views",
+      "policy decisions",
+      "step results",
+      "exact results",
+      "control traces",
+      "metrics",
+      "replay bytes"
+    ]
+  },
+  "retainedEvidence": {
+    "test-results/night-passage-observation-2026-10-15/baseline-episodes.json": {
+      "bytes": 2097775,
+      "sha256": "f1145f13d9034f464d095b3f149b0fbf0751b8f4f32d0440fb1a8e578b8af936"
+    },
+    "test-results/night-passage-observation-2026-10-15/baseline.mjs": {
+      "bytes": 90162,
+      "sha256": "312ce5c6fe4e3380b20f6709a283282b234781208913057a4ae66af3ca608de3"
+    },
+    "test-results/night-passage-observation-2026-10-15/capture.mjs": {
+      "bytes": 548,
+      "sha256": "458a354fbb036ba5af0e932dc90fb7e0cf863f9476cb4cdb3ed81b253d4e7ed7"
+    },
+    "test-results/night-passage-observation-2026-10-15/compare.mjs": {
+      "bytes": 798,
+      "sha256": "ac6806a328719fa1940cf036e08bc5d19c8d633061d5b70e2567f4bd0eb29cd2"
+    },
+    "test-results/night-passage-observation-2026-10-15/comparison-baseline-single-read.json": {
+      "bytes": 30186,
+      "sha256": "ce138e89bf70485c8cc1c70675d648b47064af94fe930a0f0157bf1a77f33aff"
+    },
+    "test-results/night-passage-observation-2026-10-15/comparison-single-read-lazy.json": {
+      "bytes": 30132,
+      "sha256": "c1e018433409d77b48fd2dbcecc0a86cdc972402d62cd9d8fc48475e3b735b9f"
+    },
+    "test-results/night-passage-observation-2026-10-15/comparison-stress-single-read-final.json": {
+      "bytes": 12683,
+      "sha256": "9cb60aa7042ce463d06aec464158c385a14f59f226b92d7beeb6faff7cd14fb9"
+    },
+    "test-results/night-passage-observation-2026-10-15/final-stress-episodes.json": {
+      "bytes": 79417,
+      "sha256": "c0e59c36bfcf7e9e2d5d8b18e706cf3ceca961680b731099c217bc439177a65c"
+    },
+    "test-results/night-passage-observation-2026-10-15/final.mjs": {
+      "bytes": 90204,
+      "sha256": "f00be37bfd9441d35abefa158ede08a23f10eae6f08c8a8e415b57828afeb228"
+    },
+    "test-results/night-passage-observation-2026-10-15/lazy.mjs": {
+      "bytes": 90204,
+      "sha256": "f00be37bfd9441d35abefa158ede08a23f10eae6f08c8a8e415b57828afeb228"
+    },
+    "test-results/night-passage-observation-2026-10-15/measure.mjs": {
+      "bytes": 1061,
+      "sha256": "1ef20b5519664fb57d09a9f77db8fdc45c55b2b5f6256589022df2d9969a2e21"
+    },
+    "test-results/night-passage-observation-2026-10-15/single-read.mjs": {
+      "bytes": 90188,
+      "sha256": "9df0f348898ec25d764a42a101b5a83d516c805b0f9452b2d65f8fe205cb5382"
+    },
+    "test-results/night-passage-observation-2026-10-15/verify-views.mjs": {
+      "bytes": 1487,
+      "sha256": "1533718ccc8a5bf12501eaadd90676ee65d56b5ce8c3d108d2d2b4146cdfff32"
+    },
+    "test-results/night-passage-observation-2026-10-15/workload.mjs": {
+      "bytes": 431,
+      "sha256": "63f6644eb95c60196377078187a929d7ceed25f9f2f869954924299e5eb0cdb3"
+    }
+  },
+  "identicalEpisodePayloads": "Normal variants share baseline-episodes.json; stress variants share final-stress-episodes.json."
+}

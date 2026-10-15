@@ -67,6 +67,70 @@ test('every policy view redacts hidden timing; rejected controls preserve state 
   expect(a.observe().player.hp).toBe(120);
 });
 
+test('nested policy views stay detached from retained history and later observations', () => {
+  const a = createController('nested-observation', { preset: 'heavy' });
+  a.step({ type: 'start', weapon: 'bow', runes: ['vigor', 'fleet'] });
+  const seen = a.observe();
+  const original = structuredClone(seen);
+  const replay = a.exportReplay();
+  seen.player.runes.length = 0;
+  seen.profile.unlockedRunes.length = 0;
+  seen.catalog.weapon.attack.damage = 999999;
+  expect(a.observe()).toEqual(original);
+  expect(a.step({ type: 'buy', item: 'heart' }).observation).toEqual(original);
+  expect(a.exportReplay()).toBe(replay);
+  const retained = a.observe();
+  a.step({ type: 'frame', ticks: 1, input });
+  expect(retained).toEqual(original);
+});
+
+test('aged projectile velocity uses adjacent simulation samples and resets for a new passage', () => {
+  const config = { reactionTicks: 0, switchTicks: 0 };
+  const reference = createController('aged-projectiles', {
+    config: { ...config, observationTicks: 0, holdTicks: 1 },
+  });
+  const delayed = createController('aged-projectiles', {
+    config: { ...config, observationTicks: 3, holdTicks: 5 },
+  });
+  for (const controller of [reference, delayed])
+    controller.step({ type: 'start', weapon: 'bow', runes: [] });
+  const samples = new Map([[0, reference.result()]]);
+  const frame = { type: 'frame', ticks: 1, input: { ...input, x: 0, attack: true } } as const;
+  let unknown = 0;
+  let measured = 0;
+  for (let batch = 0; batch < 8; batch++) {
+    for (let tick = 0; tick < 5; tick++) {
+      reference.step(frame);
+      const sample = reference.result();
+      samples.set(sample.tick, sample);
+    }
+    const view = delayed.step(frame).observation;
+    expect(view.perception).toMatchObject({ ageTicks: 3, bootstrap: false });
+    const selected = samples.get(view.tick)!;
+    const previous = samples.get(view.tick - 1)!;
+    expect(view.projectiles.map(({ id, x, y }) => ({ id, x, y }))).toEqual(
+      selected.projectiles.map(({ id, x, y }) => ({ id, x, y })),
+    );
+    for (const shot of view.projectiles) {
+      const prior = previous.projectiles.find((entry) => entry.id === shot.id);
+      if (prior) {
+        expect(shot.velocity).toEqual({ x: shot.x - prior.x, y: shot.y - prior.y });
+        measured++;
+      } else {
+        expect(shot.velocity).toBeNull();
+        unknown++;
+      }
+    }
+  }
+  expect(unknown).toBeGreaterThan(0);
+  expect(measured).toBeGreaterThan(0);
+  delayed.step({ type: 'retire' });
+  delayed.step({ type: 'return' });
+  const restarted = delayed.step({ type: 'start', weapon: 'bow', runes: [] }).observation;
+  expect(restarted.perception).toMatchObject({ observedTick: 0, ageTicks: 0, bootstrap: true });
+  expect(restarted.projectiles).toEqual([]);
+});
+
 test('aim changes are bounded each executed tick; budget cutoff cancels an undelivered input', () => {
   const a = createController('control-aim', {
     config: { reactionTicks: 0, holdTicks: 6, switchTicks: 0, aimRadiansPerTick: 0.1 },

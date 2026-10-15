@@ -116,7 +116,8 @@ export function createController(
   });
   let held = idle(),
     appliedAim = held.aim;
-  let history: Observation[] = [observeChronicle(chronicle)];
+  // Retain immutable samples, including historical replay capacity; build views on demand.
+  let history: Chronicle[] = [chronicle];
   let traces: ControlTrace[] = [];
   const metrics: ControlMetrics = {
     decisions: 0,
@@ -129,25 +130,27 @@ export function createController(
   const reset = () => {
     held = idle(chronicle.state.player.aim);
     appliedAim = held.aim;
-    history = [observeChronicle(chronicle)];
+    history = [chronicle];
   };
   function sight(): Sight {
-    const current = history[history.length - 1];
+    const latest = history[history.length - 1];
+    const current = latest.state;
     const desired = current.tick - config.observationTicks;
-    const old =
+    const selected =
       current.phase === 'combat'
         ? (history
             .slice()
             .reverse()
-            .find((o) => o.tick <= desired) ?? history[0])
-        : current;
+            .find((sample) => sample.state.tick <= desired) ?? history[0])
+        : latest;
+    const old = observeChronicle(selected);
     const previous = history
       .slice()
       .reverse()
-      .find((o) => o.tick < old.tick);
+      .find((sample) => sample.state.tick < old.tick)?.state;
     const p = old.player;
-    // Construct explicit views; never fill redacted timing with counterfeit exact values.
-    return structuredClone({
+    // The exact observation is already detached; redaction never exposes retained state.
+    return {
       ...old,
       version: CONTROL_VERSION,
       perception: {
@@ -212,7 +215,7 @@ export function createController(
         shapes: t.shapes,
         projectileAngles: t.projectileAngles,
       })),
-    });
+    };
   }
   function advance(ticks: number, input: Input, limit: number): number {
     let used = 0;
@@ -232,7 +235,7 @@ export function createController(
       if (result.error) throw new Error(result.error);
       chronicle = result.chronicle;
       used++;
-      history.push(observeChronicle(chronicle));
+      history.push(chronicle);
       if (history.length > config.observationTicks + 3) history.shift();
     }
     return used;

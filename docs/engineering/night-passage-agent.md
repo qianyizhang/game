@@ -138,6 +138,14 @@ between delivered decisions; first sightings are marked unknown. It can be exact
 for straight-moving shots, so this is still richer perception than screenshots.
 Menus and terminal states are current, and transitions reset history and held input.
 
+History retains at most `observationTicks + 3` immutable chronicles. Exact views are
+constructed only when requested, then redacted from that detached copy; previous
+projectile positions come from the adjacent simulation sample. Keeping the historical
+chronicle also preserves its replay capacity when checking legal actions. The benchmark
+reads its exact result once per decision. This changes allocation work, not policy
+observations, metered work or replay semantics; see the
+[local implementation comparison](../research/experiments/2026-10-15-night-passage-observation.md).
+
 Compute delay is `reactionTicks + ceil(workUnits / workPerTick)`. The supplied
 policies charge marked entity scans, escape candidate evaluations and distance,
 threat-containment and cover helpers. This proxy excludes general arithmetic,
