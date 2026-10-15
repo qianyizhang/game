@@ -25,8 +25,11 @@ test('decision work delays delivery while previous controls continue; replay rep
       switchTicks: 0,
     },
   });
-  a.step({ type: 'start', weapon: 'bow', runes: [] });
-  const first = a.step({ type: 'frame', ticks: 1, input }, 32);
+  a.step({ type: 'start', weapon: 'bow', runes: [], callerMetadata: () => 'private' });
+  const first = a.step(
+    { type: 'frame', ticks: 1, input: { ...input, callerMetadata: () => 'private' } },
+    32,
+  );
   expect(first.trace).toMatchObject({
     decisionTick: 0,
     deliveryTick: 4,
@@ -40,6 +43,7 @@ test('decision work delays delivery while previous controls continue; replay rep
   expect(a.result().player.x).toBeCloseTo(before + 5 * 3.8);
   expect(second.observation.perception.ageTicks).toBe(2);
   const restored = restoreChronicle(a.exportReplay());
+  expect(a.exportReplay()).not.toContain('callerMetadata');
   expect(restored.state.tick).toBe(a.result().tick);
   expect(restored.state.player).toEqual(a.result().player);
   expect(JSON.parse(exportChronicle(restored))).toMatchObject({

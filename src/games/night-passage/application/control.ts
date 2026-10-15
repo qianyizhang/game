@@ -1,4 +1,4 @@
-import { commandPayload, observeChronicle, type Observation } from './agent';
+import { observeChronicle, type Observation } from './agent';
 import { dispatch, exportChronicle, createChronicle, type Chronicle } from './chronicle';
 import { validCommand } from '../domain/game';
 import { angleDelta } from '../domain/geometry';
@@ -88,7 +88,9 @@ const idle = (aim = -Math.PI / 2): Input => ({
   call: false,
 });
 const normalizeAngle = (a: number) => Math.atan2(Math.sin(a), Math.cos(a));
-function movement(input: Input): Input {
+function movement(value: Input): Input {
+  const { x, y, aim, attack, special, dash, cast, call } = value;
+  const input = { x, y, aim, attack, special, dash, cast, call };
   if (!input.x && !input.y) return { ...input };
   const a = (Math.round(Math.atan2(input.y, input.x) / (Math.PI / 4)) * Math.PI) / 4;
   return { ...input, x: Math.cos(a), y: Math.sin(a) };
@@ -257,9 +259,8 @@ export function createController(
           observation: sight(),
           trace: null,
         };
-      const payload = commandPayload(command);
-      if (payload.type !== 'frame') {
-        const result = dispatch(chronicle, payload);
+      if (command.type !== 'frame') {
+        const result = dispatch(chronicle, command);
         if (!result.error) {
           chronicle = result.chronicle;
           reset();
@@ -279,11 +280,11 @@ export function createController(
           trace: null,
         };
       const observed = sight();
-      const requested = movement(payload.input);
+      const requested = movement(command.input);
       const count = changes(held, requested);
       const delay = config.reactionTicks + Math.ceil(workUnits / config.workPerTick);
       const hold =
-        Math.max(config.holdTicks, payload.ticks) + config.switchTicks * Math.min(count, 3);
+        Math.max(config.holdTicks, command.ticks) + config.switchTicks * Math.min(count, 3);
       const decisionTick = chronicle.state.tick;
       const trace: ControlTrace = {
         observedTick: observed.tick,

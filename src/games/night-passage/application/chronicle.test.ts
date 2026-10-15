@@ -23,6 +23,36 @@ const idle: Input = {
 };
 const start: Command = { type: 'start', weapon: 'bow', runes: [] };
 
+test('direct Chronicle ingress strips caller metadata and owns nested accepted payloads', () => {
+  const command = {
+    type: 'start',
+    weapon: 'bow',
+    runes: ['vigor'],
+    callerMetadata: () => 'private',
+  };
+  const before = createChronicle('canonical-ingress');
+  const next = dispatch(before, command);
+  expect(next.error).toBeNull();
+  command.runes.push('fleet');
+  expect(recordedCommands(next.chronicle)).toEqual([
+    { type: 'start', weapon: 'bow', runes: ['vigor'] },
+  ]);
+  const frame = {
+    type: 'frame',
+    ticks: 1,
+    input: { ...idle, callerMetadata: () => 'private' },
+    extra: () => {},
+  };
+  const moved = dispatch(next.chronicle, frame);
+  expect(moved.error).toBeNull();
+  frame.input.x = 1;
+  expect(recordedCommands(moved.chronicle)[1]).toEqual({ type: 'frame', ticks: 1, input: idle });
+  expect(exportChronicle(moved.chronicle)).not.toContain('callerMetadata');
+  expect(restoreChronicle(exportChronicle(moved.chronicle)).state).toEqual(moved.chronicle.state);
+  const rejected = dispatch(moved.chronicle, { type: 'travel', index: 0, extra: () => {} });
+  expect(rejected.chronicle).toBe(moved.chronicle);
+});
+
 test('chronicles own nested state, accepted payloads and controller identity; trials cannot commit', () => {
   const controller: ControllerIdentity = {
     version: CONTROL_VERSION,

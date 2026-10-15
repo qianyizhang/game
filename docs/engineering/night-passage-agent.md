@@ -146,6 +146,11 @@ reads its exact result once per decision. This changes allocation work, not poli
 observations, metered work or replay semantics; see the
 [local implementation comparison](../research/experiments/2026-10-15-night-passage-observation.md).
 
+Chronicle dispatch owns canonical accepted-command payloads for every recording path.
+Agent, controller and live-play callers cannot place extra metadata in the journal.
+The controller still validates commands before computing delays and constructs its own
+detached low-level controls; Chronicle owns recording rather than controller timing.
+
 Compute delay is `reactionTicks + ceil(workUnits / workPerTick)`. The supplied
 policies charge marked entity scans, escape candidate evaluations and distance,
 threat-containment and cover helpers. This proxy excludes general arithmetic,

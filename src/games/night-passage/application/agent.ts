@@ -1,6 +1,5 @@
 import { ARENA, boon, RUNES, weapon, WEAPONS } from '../domain/content';
 import { hazardPhase, hazardTiming } from '../domain/encounters';
-import { validCommand } from '../domain/game';
 import {
   DIFFICULTIES,
   contentVersion,
@@ -242,48 +241,13 @@ export interface Agent {
   exportReplay(): string;
 }
 
-// Whitelist the command payload as well: unknown caller metadata must not enter the replay.
-export function commandPayload(command: Command): Command {
-  switch (command.type) {
-    case 'start':
-      return {
-        type: 'start',
-        weapon: command.weapon,
-        runes: [...command.runes],
-        ...(command.difficulty ? { difficulty: command.difficulty } : {}),
-      };
-    case 'frame': {
-      const { x, y, aim, attack, special, dash, cast, call } = command.input;
-      return {
-        type: 'frame',
-        ticks: command.ticks,
-        input: { x, y, aim, attack, special, dash, cast, call },
-      };
-    }
-    case 'choose':
-      return { type: 'choose', id: command.id };
-    case 'travel':
-      return { type: 'travel', index: command.index };
-    case 'buy':
-      return { type: 'buy', item: command.item };
-    default:
-      return { type: command.type };
-  }
-}
-
 /** Own the chronicle in a closure so a policy cannot modify authoritative state. */
 export function createAgent(seed: string, rules?: RulesVersion): Agent {
   let chronicle = createChronicle(seed, rules);
   return {
     observe: () => observeChronicle(chronicle),
     step(command) {
-      if (!validCommand(command))
-        return {
-          accepted: false,
-          error: 'Malformed action.',
-          observation: observeChronicle(chronicle),
-        };
-      const result = dispatch(chronicle, commandPayload(command));
+      const result = dispatch(chronicle, command);
       chronicle = result.chronicle;
       return {
         accepted: result.error === null,

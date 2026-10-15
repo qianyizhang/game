@@ -123,6 +123,35 @@ function append(chronicle: Chronicle, command: Command, state: State): Chronicle
     },
   });
 }
+// Whitelist the command payload as well: unknown caller metadata must not enter the replay.
+function commandPayload(command: Command): Command {
+  switch (command.type) {
+    case 'start':
+      return {
+        type: 'start',
+        weapon: command.weapon,
+        runes: [...command.runes],
+        ...(command.difficulty ? { difficulty: command.difficulty } : {}),
+      };
+    case 'frame': {
+      const { x, y, aim, attack, special, dash, cast, call } = command.input;
+      return {
+        type: 'frame',
+        ticks: command.ticks,
+        input: { x, y, aim, attack, special, dash, cast, call },
+      };
+    }
+    case 'choose':
+      return { type: 'choose', id: command.id };
+    case 'travel':
+      return { type: 'travel', index: command.index };
+    case 'buy':
+      return { type: 'buy', item: command.item };
+    default:
+      return { type: command.type };
+  }
+}
+
 export function dispatch(
   chronicle: Chronicle,
   command: unknown,
@@ -137,10 +166,11 @@ export function dispatch(
       chronicle,
       error: 'This chronicle reached its replay limit. Export it and begin a new chronicle.',
     };
-  const next = applyCommand(chronicle.state, command);
+  const payload = commandPayload(command);
+  const next = applyCommand(chronicle.state, payload);
   return next.error !== null
     ? { chronicle, error: next.error }
-    : { chronicle: append(chronicle, command, next.state), error: null };
+    : { chronicle: append(chronicle, payload, next.state), error: null };
 }
 export function exportChronicle(chronicle: Chronicle): string {
   const previous = history(chronicle);
