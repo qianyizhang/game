@@ -260,7 +260,6 @@ label textarea {
 }
 .hierarchy-bottom strong {
   font-weight: 550;
-  margin-left: 7px;
 }
 .hierarchy-bottom p {
   font-size: 11px;
@@ -272,6 +271,11 @@ label textarea {
   font-size: 10px;
   color: #a1b19f;
   line-height: 1.65;
+}
+.hierarchy-bottom .checkout-path {
+  overflow-wrap: anywhere;
+  margin-bottom: 8px;
+  color: var(--muted);
 }
 .hierarchy-bottom button {
   margin-top: 13px;

@@ -302,9 +302,15 @@ export function App() {
           )}
         </div>
         <div className="hierarchy-bottom">
-          <span className="live-dot" />
-          <strong>Shared with Codex</strong>
-          <p>Select a module. Discuss it in side chat. Review proposed changes here.</p>
+          <strong>{hosted ? 'MCP host session' : 'Standalone preview'}</strong>
+          <p>
+            {hosted
+              ? 'Side chat uses this host session. Review proposals, then save to share the map.'
+              : 'Edits save to this checkout. Open the app in a connected MCP host to use side chat.'}
+          </p>
+          <code className="checkout-path" title={session.repo}>
+            {session.repo}
+          </code>
           <code>
             .repo-canvas/
             <br />

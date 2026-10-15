@@ -15,6 +15,8 @@ test('standalone edits and temporary requests share operation semantics with MCP
   await client.connect(new StreamableHTTPClientTransport(new URL('http://127.0.0.1:4318/mcp')));
   try {
     await page.goto('/');
+    await expect(page.getByText('Standalone preview', { exact: true })).toBeVisible();
+    await expect(page.getByText('Shared with Codex', { exact: true })).toHaveCount(0);
     await page.getByRole('button', { name: 'Inspect src', exact: true }).dblclick();
     await page.getByRole('button', { name: 'Inspect core', exact: true }).click();
     await page.getByRole('button', { name: '↗ src/core/rules.ts', exact: true }).click();
@@ -162,6 +164,10 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/mcp-host');
+  await expect(ui.getByText('MCP host session', { exact: true })).toBeVisible();
+  await expect(ui.locator('.checkout-path')).toHaveText(
+    ((await (await request.get('/api/state')).json()) as Snapshot).repo,
+  );
   // Undoing a new, selected module must restore a valid scope and chat context.
   await ui.getByRole('button', { name: '+ Module', exact: true }).click();
   await ui.getByRole('textbox', { name: 'Module name', exact: true }).last().fill('Temporary');
@@ -250,6 +256,11 @@ test('navigate, annotate, connect, persist and reconcile agent proposals and ext
   await ui.getByRole('button', { name: 'Inspect core', exact: true }).click();
   await ui.getByRole('button', { name: 'Inspect', exact: true }).click();
   await expect(ui.getByText('Keep rules independent from UI.', { exact: true })).toBeVisible();
+  // A newly created, unsaved module must not look stale after server normalization.
+  await ui.getByRole('button', { name: '+ Module', exact: true }).click();
+  await ui.getByRole('textbox', { name: 'Module name', exact: true }).last().fill('Unsaved helper');
+  await ui.getByRole('button', { name: 'Create module', exact: true }).click();
+  await ui.getByRole('button', { name: 'Inspect core', exact: true }).click();
   await ui.getByRole('button', { name: 'Side chat' }).click();
   await ui.getByRole('textbox', { name: 'Message Codex' }).fill('Annotate this module');
   await ui.getByRole('button', { name: 'Send to chat ↑' }).click();

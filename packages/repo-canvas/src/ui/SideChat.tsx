@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { Architecture, ChatMessage } from '../model/document';
+import { parseDocument, type Architecture, type ChatMessage } from '../model/document';
 import type { CanvasExchange } from '../model/bridge';
 import { request } from './api';
 import { hosted, requireMessaging, sendToChat } from './host';
@@ -55,8 +55,16 @@ export function SideChat({ document, scope, selection, token, apply }: Props) {
     : [];
   const pending = exchange?.status === 'pending';
   const proposal = exchange?.response?.proposal;
-  const stale =
-    !!exchange && JSON.stringify(exchange.context.document) !== JSON.stringify(document);
+  let stale = false;
+  if (exchange) {
+    try {
+      // Compare validated values in schema order, not UI object insertion order.
+      stale = JSON.stringify(exchange.context.document) !== JSON.stringify(parseDocument(document));
+    } catch {
+      // An incomplete source-path edit must still block applying an older proposal.
+      stale = true;
+    }
+  }
   async function send() {
     if (!hosted || !input.trim() || busy || pending) return;
     setBusy(true);
