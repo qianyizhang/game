@@ -1,8 +1,8 @@
 /** Raven-specific source and support contract; the browser consumes ordinary baked clips. */
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { spawnSync } from 'node:child_process';
+import { findBlender, runBlender } from './blender.ts';
 import { hashFile, inspectMotionGlb, verifyFileDigests } from './motion-delivery.ts';
 import { record } from './contracts.ts';
 import { readMotions } from './motion-contract.ts';
@@ -80,32 +80,12 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   else {
     if (!['bootstrap', 'fit', 'export', 'review', 'verify'].includes(command))
       throw new Error('Use check, bootstrap, fit, export, review, or verify');
-    const blender =
-      process.env.BLENDER_BIN ??
-      [
-        '/Applications/Blender.app/Contents/MacOS/Blender',
-        join(root, '.runtime/Blender.app/Contents/MacOS/Blender'),
-      ].find(existsSync) ??
-      'blender';
-    const result = spawnSync(
-      blender,
-      [
-        '--background',
-        '--factory-startup',
-        '--python-exit-code',
-        '1',
-        '--python',
-        join(root, 'subjects/raven/authoring/raven_delivery.py'),
-        '--',
-        command,
-        '--root',
-        join(root, 'subjects/raven'),
-        ...args,
-      ],
-      { stdio: 'inherit' },
-    );
-    if (result.error) throw result.error;
-    if (result.status !== 0)
-      throw new Error(`Raven ${command} failed (${result.signal ?? result.status})`);
+    const blender = findBlender(root);
+    runBlender(blender, join(root, 'subjects/raven/authoring/raven_delivery.py'), [
+      command,
+      '--root',
+      join(root, 'subjects/raven'),
+      ...args,
+    ]);
   }
 }

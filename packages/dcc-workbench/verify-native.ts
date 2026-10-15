@@ -1,7 +1,8 @@
 /** Local integration gate. Never publishes the disposable edited source or GLB. */
 import { spawnSync } from 'node:child_process';
+import { findBlender, runBlender } from './blender.ts';
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { root, inspectGlb } from './pipeline.ts';
 import { readBrief } from './contracts.ts';
@@ -16,13 +17,7 @@ const hash = (path: string) =>
     .update(readFileSync(join(root, path)))
     .digest('hex');
 const before = pinned.map(hash);
-const binary =
-  process.env.BLENDER_BIN ??
-  [
-    '/Applications/Blender.app/Contents/MacOS/Blender',
-    join(root, '.runtime/Blender.app/Contents/MacOS/Blender'),
-  ].find(existsSync) ??
-  'blender';
+const binary = findBlender(root);
 function run(command: string, args: string[], env = process.env) {
   const result = spawnSync(command, args, { cwd: workspace, stdio: 'inherit', env });
   if (result.status !== 0)
@@ -30,17 +25,7 @@ function run(command: string, args: string[], env = process.env) {
 }
 console.log(`Native edit-loop evidence: ${output}`);
 try {
-  run(binary, [
-    '--background',
-    '--factory-startup',
-    '--python-exit-code',
-    '1',
-    '--python',
-    join(root, 'blender/verify_edit_loop.py'),
-    '--',
-    root,
-    output,
-  ]);
+  runBlender(binary, join(root, 'blender/verify_edit_loop.py'), [root, output], { cwd: workspace });
   inspectGlb(
     readFileSync(join(output, 'candidate/briar-hydra.pending.glb')),
     readBrief(readFileSync(join(root, 'briefs/briar-hydra.json'), 'utf8')),

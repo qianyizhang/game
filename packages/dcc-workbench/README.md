@@ -19,6 +19,20 @@ npm run dcc -- verify --asset briar-hydra
 
 Viewing and building need no Blender runtime. Selected deliveries have embedded dependencies and make no remote asset requests. Local authoring uses **Blender 4.5 LTS**; this checkout’s earlier pilot used 4.5.14 on macOS ARM64. Set `BLENDER_BIN` explicitly or use the discovered installed app, ignored `.runtime/Blender.app`, or `blender` on PATH. Blender is not a frontend dependency. The original ARM64 runtime came from the [official Blender 4.5 release directory](https://download.blender.org/release/Blender4.5/); its recorded DMG SHA-256 was `65134d9b07b20e2fa8d3c9e44f6f44ffb5c9774dd521b95f50387310241ca170`. This records that installation, not a checksum for every Blender version.
 
+`blender.ts` owns executable discovery, background Python flags and launch failures for
+the family commands and native verification gates. A set `BLENDER_BIN` must start
+successfully, including the version probe; empty or unusable overrides fail without
+automatic fallback. With the variable unset, discovery skips missing candidates in
+the order above and stops at any other startup failure. These probes also require
+approved execution outside the restricted macOS sandbox.
+
+The active `dcc` command enters through `cli.ts`, which validates explicit overrides
+before delegating to the publication coordinator. `pipeline.ts` and `pipeline.mjs`
+retain their compatibility discovery and launch code because existing publication
+receipts pin their bytes. Do not rewrite those receipts or regenerate artist assets
+to remove that duplication. Listing, verification, promotion and help do not probe
+Blender.
+
 On this Mac, run commands that launch Blender or a browser with approved execution outside the restricted sandbox. Follow [AGENTS.md](../../AGENTS.md) for disposable browser profiles and startup failures. Hash, unit, lint and frontend-build checks remain sandboxed.
 
 ## Storage and cloning

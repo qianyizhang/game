@@ -8,7 +8,7 @@
     ".": "./src/Workbench.tsx"
   },
   "scripts": {
-    "dcc": "node pipeline.mjs",
+    "dcc": "node cli.ts",
     "test": "node --test *.test.mjs",
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.tools.json"
   },

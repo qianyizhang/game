@@ -1,5 +1,6 @@
 /** Local native edit/save/reload/export/browser gate. All edits stay in a disposable copy. */
 import { spawnSync } from 'node:child_process';
+import { findBlender, runBlender } from './blender.ts';
 import { createHash } from 'node:crypto';
 import {
   copyFileSync,
@@ -81,41 +82,20 @@ export function main(args = process.argv.slice(2)) {
         2,
       ) + '\n',
     );
-    const binary =
-      process.env.BLENDER_BIN ??
-      [
-        '/Applications/Blender.app/Contents/MacOS/Blender',
-        join(root, '.runtime/Blender.app/Contents/MacOS/Blender'),
-      ].find(existsSync) ??
-      'blender';
+    const binary = findBlender(root);
     const copiedSource = join(copiedRoot, asset.source);
-    run(binary, [
-      '--background',
-      '--factory-startup',
-      copiedSource,
-      '--python-exit-code',
-      '1',
-      '--python',
+    runBlender(
+      binary,
       join(copiedRoot, verifyScript),
-      '--',
-      copiedRoot,
-      id,
-      join(output, 'native-edit.json'),
-    ]);
+      [copiedRoot, id, join(output, 'native-edit.json')],
+      { source: copiedSource, cwd: workspace },
+    );
     const snapshot = snapshotInputs(copiedRoot, asset, sharedInputs);
     const candidate = join(output, 'candidate', id);
-    run(binary, [
-      '--background',
-      '--factory-startup',
-      copiedSource,
-      '--python-exit-code',
-      '1',
-      '--python',
-      join(copiedRoot, asset.native.adapter),
-      '--',
-      copiedRoot,
-      candidate,
-    ]);
+    runBlender(binary, join(copiedRoot, asset.native.adapter), [copiedRoot, candidate], {
+      source: copiedSource,
+      cwd: workspace,
+    });
     const outputs = {
       model: `${id}.pending.glb`,
       audit: 'authoring.json',

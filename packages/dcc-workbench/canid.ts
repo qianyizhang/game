@@ -1,9 +1,10 @@
 /** Canid pilot commands and delivery validation; existing gallery releases remain independent. */
 import { createHash } from 'node:crypto';
-import { readFileSync, existsSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
+import { readFileSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { findBlender, runBlender } from './blender.ts';
 import { readGlb, accessorValues } from './glb.ts';
 import { record } from './contracts.ts';
 import { readMotions } from './motion-contract.ts';
@@ -221,13 +222,7 @@ function main() {
     )
   )
     throw new Error('Use check, bootstrap, fit, export, verify, review, revise, sample, or test');
-  const blender =
-    process.env.BLENDER_BIN ??
-    [
-      '/Applications/Blender.app/Contents/MacOS/Blender',
-      join(root, '.runtime/Blender.app/Contents/MacOS/Blender'),
-    ].find(existsSync) ??
-    'blender';
+  const blender = findBlender(root);
   const source = join(root, baseline ? 'subjects/canid' : 'subjects/canid/refined');
   if (command === 'sample' || command === 'test') {
     if (baseline && command === 'test')
@@ -242,25 +237,11 @@ function main() {
     const output = run ? join(run, 'poses') : resolve(args[1]);
     if (!output.startsWith(resolve(root, '../../test-results') + '/'))
       throw new Error('Temporary pose fixtures must stay under ignored test-results');
-    const native = spawnSync(
-      blender,
-      [
-        '--background',
-        '--factory-startup',
-        '--python-exit-code',
-        '1',
-        '--python',
-        join(root, 'blender/sample_canid.py'),
-        '--',
-        source,
-        join(root, baseline ? 'assets/canid' : 'assets/canid/refined'),
-        output,
-      ],
-      { stdio: 'inherit' },
-    );
-    if (native.error) throw native.error;
-    if (native.status !== 0)
-      throw new Error(`Canid sampling failed (${native.signal ?? native.status})`);
+    runBlender(blender, join(root, 'blender/sample_canid.py'), [
+      source,
+      join(root, baseline ? 'assets/canid' : 'assets/canid/refined'),
+      output,
+    ]);
     if (run) {
       const browser = spawnSync(
         process.execPath,
@@ -299,22 +280,6 @@ function main() {
       : command === 'verify'
         ? [source, resolve(args[0])]
         : [command, '--root', source, ...args];
-  const result = spawnSync(
-    blender,
-    [
-      '--background',
-      '--factory-startup',
-      '--python-exit-code',
-      '1',
-      '--python',
-      script,
-      '--',
-      ...nativeArgs,
-    ],
-    { stdio: 'inherit' },
-  );
-  if (result.error) throw result.error;
-  if (result.status !== 0)
-    throw new Error(`Canid native command failed (${result.signal ?? result.status})`);
+  runBlender(blender, script, nativeArgs);
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
