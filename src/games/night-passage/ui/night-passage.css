@@ -282,6 +282,7 @@
 }
 .np-controls {
   display: flex;
+  align-items: center;
   gap: 10px 18px;
   flex-wrap: wrap;
   padding: 18px 0;
@@ -291,6 +292,28 @@
 .np-controls kbd {
   font-family: inherit;
   color: #e4d5b6;
+}
+.np-dodge {
+  display: grid;
+  gap: 6px;
+  min-width: 148px;
+  padding: 8px 10px;
+  border: 1px solid #43534b;
+  border-radius: 5px;
+  background: #18262d;
+}
+.np-dodge strong {
+  color: #dce6dc;
+  font-size: 12px;
+}
+.np-dodge-meter {
+  height: 4px;
+  background: #34464b;
+}
+.np-dodge-meter > span {
+  display: block;
+  height: 100%;
+  background: #84c5b0;
 }
 .np-status {
   font-size: 11px;

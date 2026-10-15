@@ -85,6 +85,96 @@ test.describe('presentation lifecycle', () => {
   });
 });
 
+test('dodge readiness follows combat time and restores without changing the chronicle', async ({
+  page,
+}) => {
+  await page.clock.install({ time: new Date('2026-10-16T00:00:00Z') });
+  await page.goto('/?game=night-passage');
+  await expect(page.getByRole('button', { name: 'Begin passage', exact: true })).toBeVisible();
+  await page.clock.pauseAt(new Date('2026-10-16T00:01:00Z'));
+  await page.getByRole('button', { name: 'Sound on', exact: true }).click();
+  const readiness = page.getByRole('group', { name: 'Dodge readiness', exact: true });
+  await expect(readiness).toHaveCount(0);
+  await page.getByRole('button', { name: 'Begin passage', exact: true }).click();
+  await expect(readiness.locator('strong')).toHaveText('Ready');
+  await page.keyboard.down('Space');
+  await page.clock.runFor(50);
+  await page.keyboard.up('Space');
+  await expect(readiness).toContainText('Dodging');
+  await page.screenshot({ path: `${review}/dodge-active.png`, fullPage: true });
+  await page.clock.runFor(200);
+  await expect(readiness).toContainText(/Ready in 0\.[1-6] s/);
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
+  const saved = (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!;
+  await expect(page.locator('canvas[aria-label="Night Passage combat arena"]')).toHaveAttribute(
+    'data-tick',
+    String(restoreChronicle(saved).state.tick),
+  );
+  const pausedText = await readiness.locator('strong').innerText();
+  await page.clock.runFor(1000);
+  await expect(readiness.locator('strong')).toHaveText(pausedText);
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
+  // Let React's lazy-loading timers run during navigation; combat remains paused.
+  await page.clock.resume();
+  await page.reload();
+  await expect(readiness.locator('strong')).toHaveText(pausedText);
+  const pending = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export chronicle', exact: true }).click();
+  expect(readFileSync(await (await pending).path(), 'utf8')).toBe(saved);
+  await page.getByLabel('Import Night Passage chronicle').setInputFiles({
+    name: 'dodge-recovery.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(saved),
+  });
+  await expect(readiness.locator('strong')).toHaveText(pausedText);
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
+  await page.screenshot({ path: `${review}/dodge-recovery.png`, fullPage: true });
+  await page.getByRole('button', { name: 'Resume passage', exact: true }).last().click();
+  await page.clock.runFor(1000);
+  await expect(readiness.locator('strong')).toHaveText('Ready');
+  await page.getByRole('button', { name: 'Pause', exact: true }).click();
+  await page.getByLabel('Arena view').selectOption('scene');
+  await expect(readiness.locator('strong')).toHaveText('Ready');
+  await page.screenshot({ path: `${review}/dodge-ready-scene.png`, fullPage: true });
+  // One recovery tick remains in this legal legacy replay, without Feather.
+  const legacy = dispatch(
+    dispatch(createChronicle('dodge-last-tick', 'night-passage-4'), {
+      type: 'start',
+      weapon: 'sword',
+      runes: [],
+    }).chronicle,
+    {
+      type: 'frame',
+      ticks: 48,
+      input: {
+        x: 0,
+        y: 0,
+        aim: 0,
+        attack: false,
+        special: false,
+        dash: true,
+        cast: false,
+        call: false,
+      },
+    },
+  ).chronicle;
+  expect(legacy.state.player.dashCooldown).toBe(1);
+  const legacyText = exportChronicle(legacy);
+  await page.getByLabel('Import Night Passage chronicle').setInputFiles({
+    name: 'last-tick.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(legacyText),
+  });
+  await expect(readiness.locator('strong')).toHaveText('Ready in 0.1 s');
+  await page.clock.runFor(1000);
+  await expect(readiness.locator('strong')).toHaveText('Ready in 0.1 s');
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(legacyText);
+  await page.getByRole('button', { name: 'Resume passage', exact: true }).last().click();
+  await page.clock.runFor(100);
+  await expect(readiness.locator('strong')).toHaveText('Ready');
+});
+
 test('live aiming, combat, reward selection, pause/reload and portable chronicle', async ({
   page,
 }) => {

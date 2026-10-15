@@ -201,7 +201,10 @@ function PassageGame() {
           }
           const after = live.snapshot();
           if (soundEnabled.current) audio.current?.update(before, after.state);
-          if (now - lastHud > 100 || after.state.phase !== before.phase) {
+          const dodgeChanged =
+            after.state.player.dashLeft > 0 !== before.player.dashLeft > 0 ||
+            (after.state.player.dashCooldown === 0) !== (before.player.dashCooldown === 0);
+          if (now - lastHud > 100 || after.state.phase !== before.phase || dodgeChanged) {
             setView(after.state);
             setSaveState(after);
             lastHud = now;
@@ -245,6 +248,13 @@ function PassageGame() {
     focusPlay();
   };
   const p = view.player;
+  const dodgeDuration = p.runes.includes('fleet') ? 36 : 48;
+  const dodgeReadiness =
+    p.dashLeft > 0
+      ? 'Dodging'
+      : p.dashCooldown > 0
+        ? `Ready in ${(Math.ceil(p.dashCooldown / 6) / 10).toFixed(1)} s`
+        : 'Ready';
   const score = passageScore(view);
   const legacy = view.rulesVersion === 'night-passage-4';
   const region = REGIONS[view.region];
@@ -754,9 +764,21 @@ function PassageGame() {
             <span>
               <kbd>Right click / K</kbd> special
             </span>
-            <span>
-              <kbd>Space</kbd> dodge
-            </span>
+            {view.phase === 'combat' ? (
+              <span className="np-dodge" role="group" aria-label="Dodge readiness">
+                <span>
+                  <kbd>Space</kbd> dodge
+                </span>
+                <strong>{dodgeReadiness}</strong>
+                <span className="np-dodge-meter" aria-hidden="true">
+                  <span style={{ width: `${(1 - p.dashCooldown / dodgeDuration) * 100}%` }} />
+                </span>
+              </span>
+            ) : (
+              <span>
+                <kbd>Space</kbd> dodge
+              </span>
+            )}
             <span>
               <kbd>Q</kbd> cast
             </span>
