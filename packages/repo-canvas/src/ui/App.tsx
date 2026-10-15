@@ -239,15 +239,13 @@ export function App() {
     <div className={`workbench ${panel ? 'with-panel' : ''}`}>
       <header className="app-header">
         <div className="brand">
-          <span className="brand-mark">▧</span>
-          <div>
-            <strong>Repo Canvas</strong>
-            <small>ARCHITECTURE WORKBENCH</small>
-          </div>
+          <strong>Repo Canvas</strong>
         </div>
-        <div className="repo-name" title={session.repo}>
-          ⌘ <strong>{document.title}</strong>
-          <span>{hosted ? 'MCP APP' : 'LOCAL PREVIEW'}</span>
+        <div className="repo-name">
+          <code className="checkout-path" title={session.repo}>
+            {session.repo}
+          </code>
+          <span>{hosted ? 'MCP host session' : 'Standalone preview'}</span>
         </div>
         <div className="header-actions">
           <span className={`save-state ${dirty ? 'unsaved' : ''}`}>
@@ -263,9 +261,7 @@ export function App() {
         </div>
       </header>
       <nav className="hierarchy">
-        <div className="panel-eyebrow">
-          EXPLORER <span>⊞</span>
-        </div>
+        <div className="panel-eyebrow">Modules</div>
         <label className="search">
           <span>⌕</span>
           <input
@@ -301,22 +297,14 @@ export function App() {
             tree(rootOf(document))
           )}
         </div>
-        <div className="hierarchy-bottom">
-          <strong>{hosted ? 'MCP host session' : 'Standalone preview'}</strong>
+        <details className="hierarchy-bottom">
+          <summary>About this map</summary>
           <p>
-            {hosted
-              ? 'Side chat uses this host session. Review proposals, then save to share the map.'
-              : 'Edits save to this checkout. Open the app in a connected MCP host to use side chat.'}
+            Save writes to <code>.repo-canvas/architecture.json</code>. Source previews read this
+            checkout, including uncommitted files.
           </p>
-          <code className="checkout-path" title={session.repo}>
-            {session.repo}
-          </code>
-          <code>
-            .repo-canvas/
-            <br />
-            architecture.json
-          </code>
-        </div>
+          <p>Side chat requires a connected MCP host session.</p>
+        </details>
       </nav>
       <main className="main">
         <div className="canvas-toolbar">
@@ -330,28 +318,62 @@ export function App() {
           </div>
           <div className="toolbar-actions">
             <button
-              title="Undo last draft edit"
-              disabled={!history.length}
-              onClick={() => {
-                replaceDraft(history.at(-1)!);
-                setHistory(history.slice(0, -1));
-              }}
-            >
-              ↶
-            </button>
-            <button onClick={() => setAdding(true)}>+ Module</button>
-            <button
+              aria-pressed={panel === 'inspect'}
               className={panel === 'inspect' ? 'active' : ''}
               onClick={() => setPanel(panel === 'inspect' ? null : 'inspect')}
             >
               Inspect
             </button>
             <button
+              aria-pressed={panel === 'chat'}
               className={panel === 'chat' ? 'active' : ''}
               onClick={() => setPanel(panel === 'chat' ? null : 'chat')}
             >
-              ✳ Side chat
+              Side chat
             </button>
+            <details
+              className="map-actions"
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') {
+                  event.currentTarget.open = false;
+                  event.currentTarget.querySelector('summary')?.focus();
+                }
+              }}
+              onClick={(event) => {
+                if ((event.target as Element).closest('button')) event.currentTarget.open = false;
+              }}
+            >
+              <summary>Map actions</summary>
+              <div className="map-actions-content">
+                <button
+                  title="Undo last draft edit"
+                  disabled={!history.length}
+                  onClick={() => {
+                    replaceDraft(history.at(-1)!);
+                    setHistory(history.slice(0, -1));
+                  }}
+                >
+                  Undo
+                </button>
+                <button onClick={() => setAdding(true)}>+ Module</button>
+
+                <button onClick={() => download(document)}>Export</button>
+                <button onClick={() => file.current?.click()}>Import</button>
+                <button
+                  onClick={() => {
+                    if (
+                      !dirty ||
+                      window.confirm(
+                        'Discard your unsaved draft and reload the shared document? Export first to keep it.',
+                      )
+                    )
+                      void load();
+                  }}
+                >
+                  Reload
+                </button>
+              </div>
+            </details>
           </div>
         </div>
         {(error || conflict || notice) && (
@@ -378,9 +400,6 @@ export function App() {
         )}
         <div className="scope-heading">
           <div>
-            <span className="eyebrow">
-              {current.parent === null ? 'REPOSITORY OVERVIEW' : 'INSIDE MODULE'}
-            </span>
             <h1>
               {current.name}
               <span>{document.modules.filter((m) => m.parent === scope).length} modules</span>
@@ -411,23 +430,6 @@ export function App() {
             {document.modules.length} modules <i>·</i> {document.connections.length} relationships{' '}
             <i>·</i> {document.annotations.length} annotations
           </span>
-          <div>
-            <button onClick={() => download(document)}>Export</button>
-            <button onClick={() => file.current?.click()}>Import</button>
-            <button
-              onClick={() => {
-                if (
-                  !dirty ||
-                  window.confirm(
-                    'Discard your unsaved draft and reload the shared document? Export first to keep it.',
-                  )
-                )
-                  void load();
-              }}
-            >
-              Reload
-            </button>
-          </div>
         </footer>
       </main>
       {panel === 'inspect' && (
@@ -438,6 +440,7 @@ export function App() {
           token={session.token}
           edit={edit}
           enter={enter}
+          close={() => setPanel(null)}
         />
       )}
       <div className={panel === 'chat' ? 'chat-slot' : 'chat-slot hidden'}>
@@ -447,6 +450,7 @@ export function App() {
           selection={selection}
           token={session.token}
           apply={edit}
+          close={() => setPanel(null)}
         />
       </div>
       <input

@@ -29,6 +29,14 @@ node packages/repo-canvas/src/server/cli.ts --repo /absolute/path/to/repository 
 
 The shared-file workflow is available alongside the MCP bridge below. Codex can inspect and change exactly the same versioned JSON as the person. Save deliberately; draft changes are cached in this browser tab and recovered after reload, while the shared file changes only on Save. The architecture file can be tracked in Git. Conversation history remains in native Codex chat.
 
+## Design
+
+The scoped [Little Clarity adaptation](../../docs/engineering/repo-canvas-design.md) records
+source attribution, semantic colors, density choices and responsive interaction rules.
+It applies only to Repo Canvas. **Map actions** contains module creation, Undo,
+Export, Import and Reload; source-path editing and suggested questions are disclosed
+on demand. Checkout, host mode and draft state stay visible in the header.
+
 ## Canvas interaction
 
 - Click a module to inspect; double-click or use **Enter module** to enter its internal network. Breadcrumbs and the explorer navigate back. Focus a card and press Right Arrow to enter.

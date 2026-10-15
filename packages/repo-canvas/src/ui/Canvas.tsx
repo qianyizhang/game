@@ -172,10 +172,6 @@ export function Canvas({ document, scope, selection, select, enter, move, edit }
         } else setView((v) => ({ ...v, x: v.x - event.deltaX, y: v.y - event.deltaY }));
       }}
     >
-      <div className="canvas-caption">
-        <span className="live-dot" /> MODULE NETWORK{' '}
-        <span>/{scope === 'repo' ? 'overview' : scope}</span>
-      </div>
       <div
         className="canvas-world"
         style={{ transform: `translate(${view.x}px, ${view.y}px) scale(${view.zoom})` }}
@@ -302,11 +298,7 @@ export function Canvas({ document, scope, selection, select, enter, move, edit }
                 aria-label={`Inspect ${m.name}`}
                 aria-describedby={hover === m.id ? `tip-${index}` : undefined}
               >
-                <span className="module-type">
-                  <span className="module-glyph">{m.kind === 'data' ? '▤' : '◇'}</span>
-                  {m.kind}
-                  <span className="module-number">{String(index + 1).padStart(2, '0')}</span>
-                </span>
+                <span className="module-type">{m.kind}</span>
                 <strong>{m.name}</strong>
                 <span className="module-summary">{m.summary}</span>
                 <span className="module-footer">
