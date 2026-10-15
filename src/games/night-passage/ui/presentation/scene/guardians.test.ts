@@ -203,69 +203,6 @@ it.each(regions)(
   },
 );
 
-it.each(regions)(
-  'loads once per regional kind and releases private/shared resources once, region=%s',
-  async (region) => {
-    const delivered = asset(region);
-    delivered.mesh.material.emissive.setHex(0x2277aa);
-    delivered.mesh.material.emissiveIntensity = 1.2;
-    let finish!: (value: ReturnType<typeof asset>) => void;
-    load.mockReturnValue(
-      new Promise((resolve) => {
-        finish = resolve;
-      }),
-    );
-    const redraw = vi.fn(),
-      library = createGuardians(redraw),
-      a = new T.Group(),
-      b = new T.Group();
-    const first = library.attach(a),
-      second = library.attach(b);
-    const { state, boss } = encounter(false, region);
-    state.region = 4; // Unsupported regions must neither request assets nor sample guardian rules.
-    expect(first.sync(boss, state, false)).toBe(false);
-    expect(load).not.toHaveBeenCalled();
-    state.region = region;
-    expect(first.sync(boss, state, false)).toBe(false);
-    expect(second.sync(boss, state, false)).toBe(false);
-    expect(load).toHaveBeenCalledOnce();
-    finish(delivered);
-    await Promise.resolve();
-    expect(redraw).toHaveBeenCalledOnce();
-    boss.windup = GUARDIANS[region][0].windup;
-    expect(first.sync(boss, state, false)).toBe(true);
-    boss.windup = 1;
-    expect(second.sync(boss, state, false)).toBe(true);
-    expect(pose(a)).toBeCloseTo(20);
-    expect(pose(b)).toBeGreaterThan(20.4);
-    const meshA = a.getObjectByName('surface') as T.SkinnedMesh,
-      meshB = b.getObjectByName('surface') as T.SkinnedMesh;
-    expect(meshA.skeleton).not.toBe(meshB.skeleton);
-    expect(meshA.material).not.toBe(meshB.material);
-    expect(meshA.geometry).toBe(meshB.geometry);
-    const materialA = meshA.material as T.MeshStandardMaterial;
-    boss.flash = 3;
-    first.sync(boss, state, false);
-    expect(materialA.emissive.getHex()).not.toBe(0x2277aa);
-    boss.flash = 0;
-    first.sync(boss, state, false);
-    expect(materialA.emissive.getHex()).toBe(0x2277aa);
-    expect(materialA.emissiveIntensity).toBe(1.2);
-    const geometry = vi.spyOn(delivered.mesh.geometry, 'dispose'),
-      skeleton = vi.spyOn(meshA.skeleton, 'dispose'),
-      material = vi.spyOn(materialA, 'dispose');
-    library.dispose();
-    library.dispose();
-    expect(geometry).toHaveBeenCalledOnce();
-    expect(skeleton).toHaveBeenCalledOnce();
-    expect(material).toHaveBeenCalledOnce();
-    expect(a.children).toHaveLength(0);
-    expect(first.sync(boss, state, false)).toBe(false);
-    expect(library.attach(a).sync(boss, state, false)).toBe(false);
-    expect(a.children).toHaveLength(0);
-  },
-);
-
 it('restores the correct fallback when one pooled boss crosses guardian regions and returns', async () => {
   // Unrelated asset requests remain pending: this regression owns guardian selection only.
   load.mockImplementation((url) => {
@@ -302,6 +239,7 @@ it('restores the correct fallback when one pooled boss crosses guardian regions 
     expect(pooled.children[0].visible).toBe(region === 4);
     expect((pooled.children[3] as T.Sprite).position.y).toBe(region < 4 ? 58 : 47);
   }
+  expect(load.mock.calls.filter(([url]) => url.includes('guardian-'))).toHaveLength(ids.length);
   actors.dispose();
 });
 
@@ -340,55 +278,6 @@ it.each(regions)(
       expect(load).toHaveBeenCalledTimes(ids.length);
     } finally {
       library.dispose();
-      warning.mockRestore();
-    }
-  },
-);
-
-it.each(regions)(
-  'preserves fallback and disposes failed or late regional deliveries, region=%s',
-  async (region) => {
-    const warning = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const { state, boss } = encounter(false, region);
-    try {
-      load.mockRejectedValue(new Error('offline'));
-      const failed = createGuardians(() => {}),
-        model = failed.attach(new T.Group());
-      model.sync(boss, state, false);
-      await Promise.resolve();
-      await Promise.resolve();
-      expect(model.sync(boss, state, false)).toBe(false);
-      failed.dispose();
-      const incomplete = asset(region);
-      incomplete.animations.pop();
-      const rejectedDispose = vi.spyOn(incomplete.mesh.geometry, 'dispose');
-      load.mockResolvedValue(incomplete);
-      const invalid = createGuardians(() => {}),
-        invalidModel = invalid.attach(new T.Group());
-      invalidModel.sync(boss, state, false);
-      await Promise.resolve();
-      expect(invalidModel.sync(boss, state, false)).toBe(false);
-      expect(rejectedDispose).toHaveBeenCalledOnce();
-      invalid.dispose();
-      const late = asset(region);
-      let finish!: (value: ReturnType<typeof asset>) => void;
-      load.mockReturnValue(
-        new Promise((resolve) => {
-          finish = resolve;
-        }),
-      );
-      const redraw = vi.fn(),
-        library = createGuardians(redraw),
-        root = new T.Group();
-      library.attach(root).sync(boss, state, false);
-      library.dispose();
-      const released = vi.spyOn(late.mesh.geometry, 'dispose');
-      finish(late);
-      await Promise.resolve();
-      expect(released).toHaveBeenCalledOnce();
-      expect(redraw).not.toHaveBeenCalled();
-      expect(root.children).toHaveLength(0);
-    } finally {
       warning.mockRestore();
     }
   },

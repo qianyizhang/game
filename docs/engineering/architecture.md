@@ -120,6 +120,14 @@ helpers. Borrowed viewer materials remain separately owned. A cloned enemy insta
 must release only its private resources; whole-model disposal would also release its
 template's shared geometry and textures.
 
+Night Passage's `presentation/scene/skeletal.ts` owns the enemy and guardian template
+libraries, private asset instances, animation actions and hit-emission restoration.
+It shares geometry and textures while isolating skeletons, materials and sampled poses.
+Ordinary-enemy timing and archer arrow visibility remain in `enemies.ts`; guardian
+enrage inference and regional pooling remain in `guardians.ts`. Pose sampling starts
+only after an instance is ready. Hero sockets, armory reparenting and static environment
+kits retain their separate ownership; they are not forced into the cloned-instance path.
+
 ### Existing shared modules
 
 - `shared/usePlaybackClock.ts`: Presentation clock shared by resolution and combat players, without command dispatch. Timeline identity resets playback; reallocating a frame array does not.

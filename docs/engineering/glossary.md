@@ -126,6 +126,8 @@ _Avoid_: Release, when the revision has not been promoted.
 
 **Asset lifetime**: The period during which a consumer owns loaded presentation resources and is responsible for releasing them. A displayed instance can borrow resources whose lifetime belongs to a shared asset.
 
+**Asset instance**: One displayed copy of an asset, with its own pose and presentation state. Instances can share resources while remaining independently controllable.
+
 **Delivery receipt**: The provenance record linking a delivered model to the source and checks that produced it.
 
 **Technical verification**: Evidence that rules, interaction or delivery contracts hold under stated checks. It does not establish visual quality or user acceptance.

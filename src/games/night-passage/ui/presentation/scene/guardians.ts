@@ -1,15 +1,11 @@
 import * as T from 'three';
-import { GLTFLoader, type GLTF } from 'three/addons/loaders/GLTFLoader.js';
-import { clone } from 'three/addons/utils/SkeletonUtils.js';
 import bellwardenUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-bellwarden.glb?url';
 import undertowUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-undertow.glb?url';
 import ashregentUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-ashregent.glb?url';
 import sovereignUrl from '../../../../../../packages/dcc-workbench/assets/night-passage/guardian-sovereign.glb?url';
-import { disposeObject } from '../../../../../shared/three/resources';
-import { isMesh, isSkinnedMesh } from '../../../../../shared/three/objects';
 import { GUARDIANS } from '../../../domain/encounter-content';
 import type { Enemy, StateView as State } from '../../../domain/types';
-import { batchEnemyAsset, shareSkeletons } from './batches';
+import { createSkeletalLibrary } from './skeletal';
 
 const profiles = [
   { id: 'bellwarden', region: 0, url: bellwardenUrl, attacks: ['sweep', 'rain', 'wheel'] },
@@ -100,160 +96,32 @@ function poseSampler(profile: Profile) {
   };
 }
 
-/** Regional libraries share geometry/textures; each pooled actor owns its poses and materials. */
+/** Regional pose inference and pooling stay separate from skeletal resource ownership. */
 export function createGuardians(invalidate: () => void) {
-  const library = new Map<Kind, GLTF>();
-  const requested = new Set<Kind>();
+  const library = createSkeletalLibrary<Kind, Clip>(
+    profiles.map((profile) => ({
+      id: profile.id,
+      url: profile.url,
+      clips: clips(profile),
+    })),
+    invalidate,
+  );
+  type Instance = {
+    model: ReturnType<typeof library.attach>;
+    sample: ReturnType<typeof poseSampler>;
+  };
+  const pools: Map<Kind, Instance>[] = [];
   let disposed = false;
-  const releases: (() => void)[] = [];
-  function request(profile: Profile) {
-    if (requested.has(profile.id) || disposed) return;
-    requested.add(profile.id);
-    void new GLTFLoader()
-      .loadAsync(profile.url)
-      .then((gltf) => {
-        if (disposed) {
-          disposeObject(gltf.scene);
-          return;
-        }
-        if (
-          clips(profile).some(
-            (name) =>
-              !gltf.animations.some(
-                (clip) => clip.name === name && clip.duration > 0 && Number.isFinite(clip.duration),
-              ),
-          )
-        ) {
-          disposeObject(gltf.scene);
-          console.warn(
-            `Night Passage ${profile.id} is missing required motion clips; keeping its fallback.`,
-          );
-          return;
-        }
-        batchEnemyAsset(gltf);
-        library.set(profile.id, gltf);
-        invalidate();
-      })
-      .catch(() => {
-        if (!disposed)
-          console.warn(`Night Passage ${profile.id} unavailable; keeping its fallback.`);
-      });
-  }
-  function createInstance(parent: T.Group, profile: Profile) {
-    const root = new T.Group();
-    root.name = `night-passage-authored-${profile.id}`;
-    root.visible = false;
-    parent.add(root);
-    let sample = poseSampler(profile);
-    let model: T.Object3D | null = null,
-      mixer: T.AnimationMixer | null = null,
-      current: Clip | null = null;
-    const actions = new Map<Clip, T.AnimationAction>();
-    const copies = new Map<T.Material, T.Material>();
-    const skeletons = new Set<T.Skeleton>();
-    const emissions: { material: T.MeshStandardMaterial; color: T.Color; intensity: number }[] = [];
-    function activate() {
-      const asset = library.get(profile.id);
-      if (model || !asset) return;
-      model = clone(asset.scene);
-      shareSkeletons(model);
-      model.scale.setScalar(28);
-      model.traverse((object) => {
-        if (isSkinnedMesh(object)) skeletons.add(object.skeleton);
-        if (!isMesh(object)) return;
-        object.castShadow = object.receiveShadow = true;
-        const copy = (source: T.Material) => {
-          let material = copies.get(source);
-          if (!material) {
-            material = source.clone();
-            copies.set(source, material);
-            if (material instanceof T.MeshStandardMaterial)
-              emissions.push({
-                material,
-                color: material.emissive.clone(),
-                intensity: material.emissiveIntensity,
-              });
-          }
-          return material;
-        };
-        object.material = Array.isArray(object.material)
-          ? object.material.map(copy)
-          : copy(object.material);
-      });
-      mixer = new T.AnimationMixer(model);
-      for (const name of clips(profile)) {
-        const action = mixer.clipAction(asset.animations.find((clip) => clip.name === name)!);
-        action.setLoop(name === 'idle' || name === 'run' ? T.LoopRepeat : T.LoopOnce, Infinity);
-        action.clampWhenFinished = true;
-        actions.set(name, action);
-      }
-      root.add(model);
-    }
-    return {
-      root,
-      reset() {
-        sample = poseSampler(profile);
-      },
-      sync(enemy: Enemy, state: State, reducedMotion: boolean) {
-        activate();
-        if (!model || !mixer) return false;
-        root.visible = enemy.hp > 0;
-        root.rotation.y = -enemy.aim;
-        const pose = sample(enemy, state, reducedMotion);
-        const action = actions.get(pose.clip)!;
-        if (current !== pose.clip) {
-          mixer.stopAllAction();
-          action.reset().play();
-          action.paused = true;
-          current = pose.clip;
-        }
-        const duration = action.getClip().duration;
-        action.time =
-          pose.clip === 'idle' || pose.clip === 'run'
-            ? pose.phase % duration
-            : Math.min(duration - 1e-6, pose.phase * duration);
-        mixer.update(0);
-        model.updateMatrixWorld(true);
-        for (const { material, color, intensity } of emissions) {
-          if (enemy.flash > 0 || enemy.stagger > 0) {
-            material.emissive.setHex(enemy.flash > 0 ? 0xffe5a8 : 0x61400c);
-            material.emissiveIntensity = enemy.flash > 0 ? 0.65 : 0.3;
-          } else {
-            material.emissive.copy(color);
-            material.emissiveIntensity = intensity;
-          }
-        }
-        return true;
-      },
-      dispose() {
-        mixer?.stopAllAction();
-        if (model) mixer?.uncacheRoot(model);
-        for (const material of copies.values()) material.dispose();
-        for (const skeleton of skeletons) skeleton.dispose();
-        root.removeFromParent();
-        root.clear();
-        copies.clear();
-        skeletons.clear();
-        emissions.length = 0;
-        actions.clear();
-        model = null;
-        mixer = null;
-      },
-    };
-  }
   return {
     attach(parent: T.Group): GuardianModel {
       if (disposed) return { sync: () => false };
-      const instances = new Map<Kind, ReturnType<typeof createInstance>>();
+      const instances = new Map<Kind, Instance>();
+      pools.push(instances);
       let active: Kind | null = null;
-      releases.push(() => {
-        for (const instance of instances.values()) instance.dispose();
-        instances.clear();
-      });
       return {
         sync(enemy, state, reducedMotion) {
           if (disposed) return false;
-          for (const instance of instances.values()) instance.root.visible = false;
+          for (const instance of instances.values()) instance.model.root.visible = false;
           const profile =
             enemy.kind === 'boss'
               ? profiles.find((entry) => entry.region === state.region)
@@ -262,25 +130,23 @@ export function createGuardians(invalidate: () => void) {
             active = null;
             return false;
           }
-          request(profile);
           let instance = instances.get(profile.id);
           if (!instance) {
-            instance = createInstance(parent, profile);
+            instance = { model: library.attach(parent, profile.id), sample: poseSampler(profile) };
             instances.set(profile.id, instance);
           }
-          if (active !== profile.id) instance.reset();
+          if (active !== profile.id) instance.sample = poseSampler(profile);
           active = profile.id;
-          return instance.sync(enemy, state, reducedMotion);
+          return instance.model.sync(enemy, () => instance.sample(enemy, state, reducedMotion));
         },
       };
     },
     dispose() {
       if (disposed) return;
       disposed = true;
-      for (const release of releases) release();
-      for (const asset of library.values()) disposeObject(asset.scene);
-      releases.length = 0;
-      library.clear();
+      library.dispose();
+      for (const pool of pools) pool.clear();
+      pools.length = 0;
     },
   };
 }

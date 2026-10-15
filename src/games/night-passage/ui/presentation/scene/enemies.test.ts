@@ -2,7 +2,6 @@ import * as T from 'three';
 import { beforeEach, expect, it, vi } from 'vitest';
 import { createGame } from '../../../domain/game';
 import { spawnEnemy } from '../../../domain/encounters';
-import { ENEMY_PATTERNS } from '../../../domain/encounter-content';
 import { createEnemies } from './enemies';
 
 const { load } = vi.hoisted(() => ({ load: vi.fn<(url: string) => Promise<unknown>>() }));
@@ -47,65 +46,8 @@ function snapshot(kind: 'hunter' | 'archer' = 'hunter') {
   return { state, enemy: state.enemies[0] };
 }
 const pose = (root: T.Group) => root.getObjectByName('joint')!.position.x;
-beforeEach(() => load.mockReset());
-
-it('loads a family once, isolates simultaneous poses and releases shared resources once', async () => {
-  const delivered = asset();
-  delivered.mesh.material.emissive.setHex(0x2277aa);
-  delivered.mesh.material.emissiveIntensity = 1.2;
-  let finish!: (value: ReturnType<typeof asset>) => void;
-  load.mockReturnValue(
-    new Promise((resolve) => {
-      finish = resolve;
-    }),
-  );
-  const invalidate = vi.fn();
-  const library = createEnemies(invalidate);
-  const a = new T.Group(),
-    b = new T.Group();
-  const first = library.attach(a, 'hunter'),
-    second = library.attach(b, 'hunter');
-  const { state, enemy } = snapshot();
-  expect(first.sync(enemy, state, false)).toBe(false);
-  expect(second.sync(enemy, state, false)).toBe(false);
-  expect(load).toHaveBeenCalledOnce();
-  finish(delivered);
-  await Promise.resolve();
-  expect(invalidate).toHaveBeenCalledOnce();
-  enemy.windup = ENEMY_PATTERNS.hunter.windup;
-  expect(first.sync(enemy, state, false)).toBe(true);
-  enemy.windup = 1;
-  expect(second.sync(enemy, state, false)).toBe(true);
-  expect(pose(a)).toBeCloseTo(20);
-  expect(pose(b)).toBeGreaterThan(20.4);
-  const firstMesh = a.getObjectByName('surface') as T.SkinnedMesh;
-  const secondMesh = b.getObjectByName('surface') as T.SkinnedMesh;
-  expect(firstMesh.skeleton).not.toBe(secondMesh.skeleton);
-  expect(firstMesh.material).not.toBe(secondMesh.material);
-  expect(firstMesh.geometry).toBe(secondMesh.geometry);
-  const firstMaterial = firstMesh.material as T.MeshStandardMaterial;
-  const secondMaterial = secondMesh.material as T.MeshStandardMaterial;
-  enemy.flash = 3;
-  first.sync(enemy, state, false);
-  expect(firstMaterial.emissive.getHex()).not.toBe(secondMaterial.emissive.getHex());
-  enemy.flash = 0;
-  first.sync(enemy, state, false);
-  expect(firstMaterial.emissive.getHex()).toBe(0x2277aa);
-  expect(firstMaterial.emissiveIntensity).toBe(1.2);
-  const geometryDispose = vi.spyOn(delivered.mesh.geometry, 'dispose');
-  const firstSkeletonDispose = vi.spyOn(firstMesh.skeleton, 'dispose');
-  const secondSkeletonDispose = vi.spyOn(secondMesh.skeleton, 'dispose');
-  const materialDispose = vi.spyOn(firstMesh.material as T.Material, 'dispose');
-  library.dispose();
-  library.dispose();
-  expect(geometryDispose).toHaveBeenCalledOnce();
-  expect(firstSkeletonDispose).toHaveBeenCalledOnce();
-  expect(secondSkeletonDispose).toHaveBeenCalledOnce();
-  expect(materialDispose).toHaveBeenCalledOnce();
-  expect(a.children).toHaveLength(0);
-  expect(first.sync(enemy, state, false)).toBe(false);
-  expect(library.attach(a, 'hunter').sync(enemy, state, false)).toBe(false);
-  expect(a.children).toHaveLength(0);
+beforeEach(() => {
+  load.mockReset();
 });
 
 it('holds paused poses, follows windup/contact and recovers locomotion without inventing a spawn attack', async () => {
@@ -161,46 +103,19 @@ it('holds paused poses, follows windup/contact and recovers locomotion without i
   library.dispose();
 });
 
-it('keeps fallbacks on failed/incomplete assets and releases a delivery arriving after disposal', async () => {
+it('requires the archer nocked arrow before replacing its fallback', async () => {
+  const delivered = asset();
+  delivered.scene.getObjectByName('Reed_arrow')!.removeFromParent();
+  load.mockResolvedValue(delivered);
   const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+  const library = createEnemies(() => {});
   try {
-    load.mockRejectedValue(new Error('offline'));
-    const failed = createEnemies(() => {});
-    const first = failed.attach(new T.Group(), 'hunter');
+    const actor = library.attach(new T.Group(), 'archer');
     await Promise.resolve();
-    await Promise.resolve();
-    const { state, enemy } = snapshot();
-    expect(first.sync(enemy, state, false)).toBe(false);
-    failed.dispose();
-    const incomplete = asset();
-    incomplete.animations.pop();
-    const rejectedDispose = vi.spyOn(incomplete.mesh.geometry, 'dispose');
-    load.mockResolvedValue(incomplete);
-    const invalid = createEnemies(() => {});
-    const second = invalid.attach(new T.Group(), 'hunter');
-    await Promise.resolve();
-    expect(second.sync(enemy, state, false)).toBe(false);
-    expect(rejectedDispose).toHaveBeenCalledOnce();
-    invalid.dispose();
-    const late = asset();
-    let finish!: (value: ReturnType<typeof asset>) => void;
-    load.mockReturnValue(
-      new Promise((resolve) => {
-        finish = resolve;
-      }),
-    );
-    const invalidate = vi.fn();
-    const library = createEnemies(invalidate),
-      root = new T.Group();
-    library.attach(root, 'hunter');
-    library.dispose();
-    const lateDispose = vi.spyOn(late.mesh.geometry, 'dispose');
-    finish(late);
-    await Promise.resolve();
-    expect(lateDispose).toHaveBeenCalledOnce();
-    expect(invalidate).not.toHaveBeenCalled();
-    expect(root.children).toHaveLength(0);
+    const { state, enemy } = snapshot('archer');
+    expect(actor.sync(enemy, state, false)).toBe(false);
   } finally {
+    library.dispose();
     warn.mockRestore();
   }
 });
