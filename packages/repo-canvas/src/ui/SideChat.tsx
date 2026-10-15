@@ -32,7 +32,7 @@ export function SideChat({ document, scope, selection, token, apply }: Props) {
     let active = true;
     async function refresh() {
       try {
-        const result = await request<CanvasExchange | null>(`chat?canvasId=${canvasId}`, token);
+        const result = await request<CanvasExchange | null>('chat', token, { canvasId });
         if (active) setExchange(result);
       } catch (error) {
         if (active) setError(String(error));
@@ -63,7 +63,7 @@ export function SideChat({ document, scope, selection, token, apply }: Props) {
     setError('');
     try {
       await requireMessaging();
-      const next = await request<CanvasExchange>('chat', token, 'POST', {
+      const next = await request<CanvasExchange>('send', token, {
         canvasId,
         document,
         scope,
@@ -136,7 +136,7 @@ export function SideChat({ document, scope, selection, token, apply }: Props) {
           </p>
           <button
             onClick={() => {
-              void request<CanvasExchange>('chat/cancel', token, 'POST', {
+              void request<CanvasExchange>('cancel', token, {
                 canvasId,
                 id: exchange.id,
               })

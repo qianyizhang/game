@@ -76,10 +76,9 @@ export function Inspector({ document, module, token, edit, enter }: Props) {
             title={path}
             onClick={() => {
               setError('');
-              void request<{ path: string; content: string; truncated: boolean }>(
-                `source?path=${encodeURIComponent(path)}`,
-                token,
-              )
+              void request<{ path: string; content: string; truncated: boolean }>('source', token, {
+                path,
+              })
                 .then(setPreview)
                 .catch((e: unknown) => setError(String(e)));
             }}

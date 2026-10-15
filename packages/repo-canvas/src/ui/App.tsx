@@ -38,7 +38,7 @@ export function App() {
       data.document = parseDocument(data.document);
       if (recover) {
         try {
-          const transferred = hosted ? await request<unknown>('draft', data.token) : null;
+          const transferred = hosted ? await request<unknown>('draft_read', data.token) : null;
           const raw = transferred
             ? JSON.stringify(transferred)
             : sessionStorage.getItem(`repo-canvas:draft:${data.repo}`);
@@ -107,7 +107,7 @@ export function App() {
     if (!session || !document) return;
     const timer = setTimeout(
       () => {
-        void request('draft', session.token, 'PUT', {
+        void request('draft_write', session.token, {
           draft: dirty ? { document, revision: session.revision, scope, selection } : null,
         }).catch(() => {
           /* Local draft remains intact if the bridge disconnects. */
@@ -172,7 +172,7 @@ export function App() {
     setSaving(true);
     setError('');
     try {
-      const snapshot = await request<Snapshot>('state', session.token, 'PUT', {
+      const snapshot = await request<Snapshot>('save', session.token, {
         document: parseDocument(document),
         revision: session.revision,
       });

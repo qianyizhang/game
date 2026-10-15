@@ -4,7 +4,8 @@ import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/
 import { z } from 'zod';
 import type { CanvasBridge } from './bridge.ts';
 import type { Repository } from './repository.ts';
-import { parseChat } from '../model/document.ts';
+import { operate } from './operations.ts';
+import { operations, type Operation } from '../model/operations.ts';
 import { APP_URI, appResource } from './app-resource.ts';
 
 export function canvasMcp(bridge: CanvasBridge, repository: Repository): McpServer {
@@ -67,16 +68,7 @@ export function canvasMcp(bridge: CanvasBridge, repository: Repository): McpServ
       description:
         'App-only map, source, draft and discussion operations for the hosted Repo Canvas UI.',
       inputSchema: {
-        action: z.enum([
-          'state',
-          'source',
-          'save',
-          'send',
-          'chat',
-          'cancel',
-          'draft_read',
-          'draft_write',
-        ]),
+        action: z.enum(Object.keys(operations) as Operation[]),
         canvasId: z.string().optional(),
         id: z.string().optional(),
         path: z.string().optional(),
@@ -91,33 +83,11 @@ export function canvasMcp(bridge: CanvasBridge, repository: Repository): McpServ
       annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
     },
     (args) => {
-      let value: unknown;
-      switch (args.action) {
-        case 'state':
-          value = { ...repository.snapshot(), token: 'mcp-app', plugin: 'Current chat · MCP App' };
-          break;
-        case 'source':
-          value = repository.source(args.path);
-          break;
-        case 'save':
-          value = repository.save(args.document, String(args.revision));
-          break;
-        case 'send':
-          value = bridge.enqueue(args.canvasId, parseChat(args));
-          break;
-        case 'chat':
-          value = bridge.current(args.canvasId);
-          break;
-        case 'cancel':
-          value = bridge.cancel(args.canvasId, args.id);
-          break;
-        case 'draft_read':
-          value = bridge.draft();
-          break;
-        case 'draft_write':
-          value = bridge.storeDraft(args.draft);
-          break;
-      }
+      const result = operate(args.action, args, repository, bridge);
+      const value =
+        args.action === 'state'
+          ? { ...result, token: 'mcp-app', plugin: 'Current chat · MCP App' }
+          : result;
       return {
         content: [{ type: 'text' as const, text: 'Canvas state updated.' }],
         structuredContent: { value },

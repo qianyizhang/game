@@ -1,4 +1,5 @@
 /** Standard MCP Apps bridge, shared with the hosting conversation (no agent process). */
+import type { Operation } from '../model/operations';
 interface ToolResult {
   structuredContent?: { value: unknown };
   content?: { type: string; text?: string }[];
@@ -75,7 +76,7 @@ export function initializeHost() {
   });
   return initialization;
 }
-export async function hostTool<T>(action: string, args: object = {}): Promise<T> {
+export async function hostTool<T>(action: Operation, args: object = {}): Promise<T> {
   await initializeHost();
   const result = await rpc<ToolResult>('tools/call', {
     name: 'canvas_app',

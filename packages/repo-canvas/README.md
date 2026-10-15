@@ -74,6 +74,11 @@ For layer-by-layer diagnosis, server lifecycle guidance, bridge caveats and the 
 
 ## Document and local server contract
 
+`src/server/operations.ts` owns map, source, draft and discussion operations for both
+HTTP and MCP. The UI requests named operations; `src/model/operations.ts` maps them
+to the existing HTTP routes. Authentication, session metadata and response envelopes
+remain in each transport adapter.
+
 `src/model/document.ts` owns the version 1 schema and runtime validation. Exactly one root and an acyclic parent hierarchy are required. Relationships and annotations reference existing module IDs. Source references are repo-relative. Renderer layout is per parent scope. Structural edits, source paths, text lengths and finite coordinates are validated before persistence and on load.
 
 The local API provides `GET /api/state`, `PUT /api/state`, `GET /api/source?path=…`, `GET /api/chat?canvasId=…`, `POST /api/chat`, and `POST /api/chat/cancel`, `GET/PUT /api/draft` for temporary draft recovery, plus `/mcp` for agent and app tools. State returns a SHA-256 revision; saves require the current revision and write via a temporary file plus rename. The document is the persistent authority. No second database or canvas store exists. A same-origin session token guards browser source reads and mutations; the MCP endpoint accepts local clients without this browser token, with the same Host/Origin checks; the service binds only to `127.0.0.1` and rejects foreign origins/hosts. Source previews resolve real paths within the repo and are limited to tracked and non-ignored text files under 500 KB, showing at most 40,000 characters. This is a local developer tool for trusted repositories, not a multi-user hosted service.

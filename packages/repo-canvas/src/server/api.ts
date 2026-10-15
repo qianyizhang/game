@@ -1,7 +1,8 @@
 import { randomBytes } from 'node:crypto';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Plugin } from 'vite';
-import { parseChat } from '../model/document.ts';
+import { httpOperation, operations } from '../model/operations.ts';
+import { operate } from './operations.ts';
 import { Repository } from './repository.ts';
 import { CanvasBridge } from './bridge.ts';
 import { serveMcp } from './mcp.ts';
@@ -62,41 +63,24 @@ export function apiPlugin(root: string): Plugin {
             return;
           }
           if (req.method === 'GET' && url.pathname === '/api/state') {
-            json(res, { ...repository.snapshot(), token, plugin: 'Current Codex chat via MCP' });
+            json(res, {
+              ...operate('state', {}, repository, bridge),
+              token,
+              plugin: 'Current Codex chat via MCP',
+            });
             return;
           }
           if (req.headers['x-repo-canvas-token'] !== token) {
             json(res, { error: 'Missing local session token' }, 403);
             return;
           }
-          if (url.pathname === '/api/draft') {
-            json(
-              res,
-              req.method === 'PUT' ? bridge.storeDraft((await body(req)).draft) : bridge.draft(),
-            );
-            return;
-          }
-          if (req.method === 'GET' && url.pathname === '/api/source') {
-            json(res, repository.source(url.searchParams.get('path')));
-            return;
-          }
-          if (req.method === 'PUT' && url.pathname === '/api/state') {
-            const data = await body(req);
-            json(res, repository.save(data.document, String(data.revision)));
-            return;
-          }
-          if (req.method === 'GET' && url.pathname === '/api/chat') {
-            json(res, bridge.current(url.searchParams.get('canvasId')));
-            return;
-          }
-          if (req.method === 'POST' && url.pathname === '/api/chat/cancel') {
-            const data = await body(req);
-            json(res, bridge.cancel(data.canvasId, data.id));
-            return;
-          }
-          if (req.method === 'POST' && url.pathname === '/api/chat') {
-            const data = await body(req);
-            json(res, bridge.enqueue(data.canvasId, parseChat(data)));
+          const action = httpOperation(req.method, url.pathname);
+          if (action) {
+            const args =
+              operations[action].method === 'GET'
+                ? Object.fromEntries(url.searchParams)
+                : await body(req);
+            json(res, operate(action, args, repository, bridge));
             return;
           }
           json(res, { error: 'Unknown route' }, 404);

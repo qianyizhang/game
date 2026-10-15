@@ -7,6 +7,98 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseDocument, type Snapshot } from '../model/document';
 
+test('standalone edits and temporary requests share operation semantics with MCP', async ({
+  page,
+  request,
+}) => {
+  const client = new Client({ name: 'canvas-http-parity-test', version: '1' });
+  await client.connect(new StreamableHTTPClientTransport(new URL('http://127.0.0.1:4318/mcp')));
+  try {
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Inspect src', exact: true }).dblclick();
+    await page.getByRole('button', { name: 'Inspect core', exact: true }).click();
+    await page.getByRole('button', { name: '↗ src/core/rules.ts', exact: true }).click();
+    await expect(page.getByRole('dialog', { name: 'Source preview' })).toContainText(
+      'domain owns rules',
+    );
+    await page.getByRole('button', { name: 'Close', exact: true }).click();
+    await page
+      .getByRole('textbox', { name: 'Module responsibility' })
+      .fill('Saved through standalone HTTP');
+    await page.getByRole('button', { name: 'Save map', exact: true }).click();
+    await expect(page.getByText('✓ Shared document')).toBeVisible();
+    const cleared = page.waitForResponse(
+      (response) => response.url().endsWith('/api/draft') && response.request().method() === 'PUT',
+    );
+    await page.reload();
+    await cleared;
+    await expect(page.getByText('✓ Shared document')).toBeVisible();
+    await page.goto('about:blank');
+    const state = (await (await request.get('/api/state')).json()) as Snapshot & { token: string };
+    expect(state.document.modules.find((m) => m.id === 'src/core')!.summary).toBe(
+      'Saved through standalone HTTP',
+    );
+    const hosted = await client.callTool({ name: 'canvas_app', arguments: { action: 'state' } });
+    expect(hosted.structuredContent).toMatchObject({
+      value: { revision: state.revision, document: state.document, token: 'mcp-app' },
+    });
+    const headers = { 'X-Repo-Canvas-Token': state.token };
+    expect((await request.get('/api/source?path=src/core/rules.ts')).status()).toBe(403);
+    const draft = {
+      document: state.document,
+      revision: state.revision,
+      scope: 'repo',
+      selection: null,
+    };
+    expect((await request.put('/api/draft', { headers, data: { draft } })).ok()).toBe(true);
+    expect(
+      (await client.callTool({ name: 'canvas_app', arguments: { action: 'draft_read' } }))
+        .structuredContent,
+    ).toEqual({ value: draft });
+    await client.callTool({
+      name: 'canvas_app',
+      arguments: { action: 'draft_write', draft: null },
+    });
+    expect(await (await request.get('/api/draft', { headers })).json()).toBeNull();
+    const sent = await request.post('/api/chat', {
+      headers,
+      data: {
+        canvasId: 'http-parity',
+        ...draft,
+        messages: [{ role: 'user', text: 'Inspect this draft' }],
+      },
+    });
+    expect(sent.ok()).toBe(true);
+    const exchange = (await sent.json()) as CanvasExchange;
+    expect(
+      (
+        await client.callTool({
+          name: 'canvas_app',
+          arguments: { action: 'chat', canvasId: 'http-parity' },
+        })
+      ).structuredContent,
+    ).toMatchObject({ value: { id: exchange.id, status: 'pending' } });
+    expect(
+      (
+        await request.post('/api/chat/cancel', {
+          headers,
+          data: { canvasId: 'http-parity', id: exchange.id },
+        })
+      ).ok(),
+    ).toBe(true);
+    expect(
+      (
+        await client.callTool({
+          name: 'canvas_app',
+          arguments: { action: 'chat', canvasId: 'http-parity' },
+        })
+      ).structuredContent,
+    ).toMatchObject({ value: { id: exchange.id, status: 'cancelled' } });
+  } finally {
+    await client.close();
+  }
+});
+
 test('navigate, annotate, connect, persist and reconcile agent proposals and external edits', async ({
   page,
   request,

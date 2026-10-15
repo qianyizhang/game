@@ -1,45 +1,24 @@
 import { hosted, hostTool } from './host';
 import type { Snapshot } from '../model/document';
+import { operations, type Operation } from '../model/operations';
 export type Session = Snapshot & { token: string; plugin: string };
 export async function request<T>(
-  path: string,
+  action: Operation,
   token?: string,
-  method = 'GET',
-  body?: unknown,
+  args: Record<string, unknown> = {},
 ): Promise<T> {
-  if (hosted) {
-    const url = new URL(path, 'http://canvas/');
-    const action =
-      path === 'state'
-        ? method === 'PUT'
-          ? 'save'
-          : 'state'
-        : url.pathname === '/source'
-          ? 'source'
-          : url.pathname === '/chat'
-            ? method === 'POST'
-              ? 'send'
-              : 'chat'
-            : path === 'chat/cancel'
-              ? 'cancel'
-              : path === 'draft'
-                ? method === 'PUT'
-                  ? 'draft_write'
-                  : 'draft_read'
-                : '';
-    if (!action) throw new Error('Unknown canvas operation');
-    return hostTool<T>(action, {
-      ...Object.fromEntries(url.searchParams),
-      ...(body && typeof body === 'object' ? body : {}),
-    });
-  }
-  const response = await fetch(`/api/${path}`, {
+  if (hosted) return hostTool<T>(action, args);
+  const { method, path } = operations[action];
+  const query = new URLSearchParams();
+  if (method === 'GET')
+    for (const [key, value] of Object.entries(args)) query.set(key, String(value));
+  const response = await fetch(`/api/${path}${query.size ? `?${query}` : ''}`, {
     method,
     headers: {
       'Content-Type': 'application/json',
       ...(token ? { 'X-Repo-Canvas-Token': token } : {}),
     },
-    body: body === undefined ? undefined : JSON.stringify(body),
+    body: method === 'GET' ? undefined : JSON.stringify(args),
   });
   const result = (await response.json()) as T & { error?: string };
   if (!response.ok) throw new Error(result.error ?? `Request failed (${response.status})`);
