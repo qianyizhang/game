@@ -2,7 +2,6 @@ import { rankLabel } from '../domain/poker';
 import type { Card as CardType } from '../domain/types';
 import { PokerArt, SuitPip } from './Artwork';
 
-export const SUIT_SYMBOLS = { hearts: '♥', diamonds: '♦', spades: '♠', clubs: '♣' };
 export function PlayingCard({
   card,
   selected,

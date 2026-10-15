@@ -10,7 +10,3 @@ export interface AgentFrame<O, C> {
   observation: O;
   actions: AgentAction<C>[];
 }
-export interface AgentChoice {
-  step: number;
-  action: string;
-}

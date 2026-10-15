@@ -91,7 +91,7 @@ const normalizeAngle = (a: number) => Math.atan2(Math.sin(a), Math.cos(a));
 function movement(value: Input): Input {
   const { x, y, aim, attack, special, dash, cast, call } = value;
   const input = { x, y, aim, attack, special, dash, cast, call };
-  if (!input.x && !input.y) return { ...input };
+  if (!input.x && !input.y) return input;
   const a = (Math.round(Math.atan2(input.y, input.x) / (Math.PI / 4)) * Math.PI) / 4;
   return { ...input, x: Math.cos(a), y: Math.sin(a) };
 }
@@ -120,7 +120,7 @@ export function createController(
     appliedAim = held.aim;
   // Retain immutable samples, including historical replay capacity; build views on demand.
   let history: Chronicle[] = [chronicle];
-  let traces: ControlTrace[] = [];
+  const traces: ControlTrace[] = [];
   const metrics: ControlMetrics = {
     decisions: 0,
     workUnits: 0,
@@ -321,8 +321,5 @@ export function createController(
     metrics: () => structuredClone(metrics),
     trace: () => structuredClone(traces),
     exportReplay: () => exportChronicle(chronicle),
-    clearTrace: () => {
-      traces = [];
-    },
   };
 }

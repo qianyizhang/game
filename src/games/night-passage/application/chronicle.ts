@@ -109,10 +109,11 @@ function append(chronicle: Chronicle, command: Command, state: State): Chronicle
     command.type === 'frame' &&
     last.command.ticks + command.ticks <= 120 &&
     JSON.stringify(last.command.input) === JSON.stringify(command.input);
+  // Canonical ingress already owns input and runes; the private journal retains that payload.
   const packed: Command =
     merge && last?.command.type === 'frame' && command.type === 'frame'
-      ? structuredClone({ ...command, ticks: last.command.ticks + command.ticks })
-      : structuredClone(command);
+      ? { ...command, ticks: last.command.ticks + command.ticks }
+      : command;
   return publish(state, {
     ...(previous.controller ? { controller: previous.controller } : {}),
     ticks: previous.ticks + (command.type === 'frame' ? command.ticks : 0),
