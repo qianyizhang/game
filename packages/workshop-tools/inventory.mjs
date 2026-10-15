@@ -23,11 +23,24 @@ export async function inventoryArtifacts(root) {
   );
   /** @type {Map<string, Set<string>>} */
   const references = new Map();
+  /** @type {string[]} */
+  const missingTrackedFiles = [];
   for (const path of tracked) {
     if (!textExtensions.has(extname(path))) continue;
-    const stat = await lstat(join(root, path));
-    if (!stat.isFile()) continue;
-    const text = await readFile(join(root, path), 'utf8');
+    let text;
+    try {
+      const stat = await lstat(join(root, path));
+      if (!stat.isFile()) continue;
+      text = await readFile(join(root, path), 'utf8');
+    } catch (error) {
+      if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+        // Pending deletions remain in the index until committed. Record the incomplete
+        // reference scan; do not mistake missing text for proof that artifacts are unused.
+        missingTrackedFiles.push(path);
+        continue;
+      }
+      throw error;
+    }
     for (const match of text.matchAll(/(?:test-results|dcc-backups)\/[A-Za-z0-9_./-]+/g)) {
       const target = match[0].replace(/[./-]+$/, '');
       const sources = references.get(target) ?? new Set();
@@ -154,6 +167,7 @@ export async function inventoryArtifacts(root) {
     roots,
     consistency: 'Per-file stability checks; this is not an atomic snapshot of active producers.',
     referenceScope: 'Literal artifact paths in tracked text; absence is not proof of non-use.',
+    missingTrackedFiles,
     deletionAuthority: 'None. Use guarded prune only for independently eligible receipts.',
     files,
     groups,

@@ -48,3 +48,20 @@ await test('root and nested symlinks are inventoried without following their tar
   assert.equal(report.totals.bytes, 0);
   assert.equal(report.duplicateGroups.length, 0);
 });
+
+await test('pending tracked deletions report incomplete references without aborting or authorizing cleanup', async (t) => {
+  const root = await fixture(t);
+  await mkdir(join(root, 'test-results/retained'), { recursive: true });
+  await writeFile(join(root, 'test-results/retained/evidence.txt'), 'retained');
+  await writeFile(join(root, 'removed.ts'), '// test-results/retained/evidence.txt');
+  execFileSync('git', ['add', 'removed.ts'], { cwd: root });
+  await rm(join(root, 'removed.ts'));
+  const report = await inventoryArtifacts(root);
+  assert.deepEqual(report.missingTrackedFiles, ['removed.ts']);
+  assert.equal(report.groups['test-results/retained'].status, 'protected-unclassified');
+  assert.match(report.deletionAuthority, /^None\./);
+  assert.equal(
+    await readFile(join(root, 'test-results/retained/evidence.txt'), 'utf8'),
+    'retained',
+  );
+});
