@@ -1,6 +1,7 @@
 import type { PolicyFactory, Proposal } from '../../../../src/shared/policy/types';
 import { freeCell } from '../domain/loot';
 import { lineOfSight } from '../domain/maps';
+import { skillDamage, damageAfterResistance } from '../domain/stats';
 import { STEP_SCALE } from '../domain/timing';
 import type { Item, Point } from '../domain/types';
 import { terrainRows, type Observation, type PolicyCommand } from './observation';
@@ -335,7 +336,7 @@ function navigate(
 function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> {
   return {
     id: strategy,
-    version: 'emberwake-policy-7',
+    version: 'emberwake-policy-8',
     create() {
       const memory: Memory = {
         regions: new Map(),
@@ -580,20 +581,28 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
           hazard && melee && !memory.recovering && p.hp >= input.stats.maxHp * 0.7
             ? (enemy ?? memory.pursuit?.at)
             : undefined;
-        // A five-tick public geometric envelope, not a stepped-world prediction.
-        // Expand the straight movement prefix for initial cell alignment/axis sliding.
-        // Pending Survival recovery uses relative motion over that same interval:
-        // an untimed intersection at the starting point cannot distinguish escape.
-        // Other decisions retain the untimed envelope. Walls, later shots, arrival
-        // timing and foe motion are not predicted; the existing expansion remains.
+        // Only stocked pending Survival recovery looks two five-tick decisions ahead.
+        // Relative straight motion is a public ranking heuristic, not a collision
+        // prediction: no wall response, future shots or foe motion is simulated.
+        // Its allowance covers initial center alignment and running-to-walking/slow
+        // speed shortfall. Other modes retain their original five-tick envelope.
+        const horizon = timedRecovery ? 10 : MOVEMENT_HORIZON_TICKS;
+        const speed = (p.running ? 0.52 : 0.34) * STEP_SCALE;
+        const movementAllowance = timedRecovery
+          ? Math.SQRT1_2 +
+            Math.max(0, speed - 0.34 * STEP_SCALE * (p.slow > 0 ? 0.55 : 1)) * horizon
+          : 0.5;
         const safety = (at: Point, teleport = false) => {
+          // Deterministic public-work units: pending recovery additionally evaluates
+          // relative shot motion and the public speed/alignment allowance.
           work +=
-            warnings.length + hostileShots.length + enemies.length + Number(!!engagementTarget);
+            warnings.length +
+            hostileShots.length * (timedRecovery ? 2 : 1) +
+            enemies.length +
+            Number(!!engagementTarget) +
+            (timedRecovery ? 2 : 0);
           const length = distance(p, at);
-          const travel = Math.min(
-            length,
-            (p.running ? 0.52 : 0.34) * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
-          );
+          const travel = Math.min(length, speed * horizon);
           const end =
             teleport || !length
               ? at
@@ -610,19 +619,19 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
                   ? segmentDistance(
                       { x: p.x - shot.x, y: p.y - shot.y },
                       {
-                        x: end.x - shot.x - shot.dx * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
-                        y: end.y - shot.y - shot.dy * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
+                        x: end.x - shot.x - shot.dx * STEP_SCALE * horizon,
+                        y: end.y - shot.y - shot.dy * STEP_SCALE * horizon,
                       },
                       { x: 0, y: 0 },
                       { x: 0, y: 0 },
                     )
                   : segmentDistance(teleport ? at : p, end, shot, {
-                      x: shot.x + shot.dx * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
-                      y: shot.y + shot.dy * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
+                      x: shot.x + shot.dx * STEP_SCALE * horizon,
+                      y: shot.y + shot.dy * STEP_SCALE * horizon,
                     })) -
                 shot.radius -
                 0.35 -
-                (teleport ? 0 : 0.5),
+                (teleport ? 0 : movementAllowance),
             ),
           );
           const foes = Math.min(8, ...enemies.map((foe) => distance(at, foe)));
@@ -697,6 +706,40 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
                 escape.command,
                 'escape disclosed danger while awaiting health recovery',
               );
+          }
+          if (healthRecoveryPending && enemy && !input.hazards.length && !hostileShots.length) {
+            // Offered melee/nova casts resolve now without moving or advancing time.
+            // Require every disclosed attacker to be covered and killed; a distant
+            // second foe makes an otherwise lethal local cast insufficient.
+            const terrain = { tiles: terrainRows(input.region) };
+            for (const command of actions) {
+              if (command.type !== 'cast') continue;
+              const skill = input.definitions.skills.find((value) => value.id === command.skill);
+              work += input.definitions.skills.length;
+              if (!skill || !['melee', 'nova'].includes(skill.effect) || skill.damage <= 0)
+                continue;
+              const damage = skillDamage(
+                skill,
+                p.skills[skill.id] ?? 0,
+                p.attributes.strength,
+                input.stats.spell,
+              );
+              const finishes = enemies.every((foe) => {
+                work += input.definitions.monsters.length + Math.ceil(distance(p, foe) * 5) + 1;
+                const definition = input.definitions.monsters.find(
+                  (value) => value.id === foe.kind,
+                );
+                return (
+                  definition &&
+                  distance(p, foe) <= skill.radius &&
+                  lineOfSight(terrain, p, foe) &&
+                  damageAfterResistance(damage, definition.resist[skill.element], foe.cursed > 0) >=
+                    foe.hp
+                );
+              });
+              if (finishes)
+                return choose(command, 'finish every disclosed attacker before recovery');
+            }
           }
           if (enemy) {
             const clearance = (at: { x: number; y: number }) =>

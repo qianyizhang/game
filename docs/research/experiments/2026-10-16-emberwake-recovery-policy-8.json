@@ -1,0 +1,1492 @@
+{
+  "schema": "emberwake-recovery-policy8-receipt-1",
+  "status": "Policy8 control repair; consumed D8 development, no production5 or reserved calibration claim.",
+  "identity": {
+    "rules": "emberwake-4",
+    "policy": "emberwake-policy-8",
+    "observation": "emberwake-observation-3",
+    "score": "emberwake-performance-2"
+  },
+  "ownedSourceSha256": {
+    "packages/diablo2/src/agent/policy.ts": "3364bf3ac46d4fcadab6eb06465d106c3ada523e8de204993773a73cce447989",
+    "packages/diablo2/src/agent/policy.test.ts": "a6c2b253511e5bd16474dcdfcb2ea9a6b8cec877c81f0a4d280e0978ce4339d3",
+    "packages/diablo2/src/agent/example.ts": "e85081d75384eec76d406d570e3362a44c0d4910e9e0d7697a040cafdd58afca",
+    "packages/diablo2/src/domain/stats.ts": "fbb56e52fa291cfd6576e4e9076c32a803b183126c5dfcb1b265b120f7d041c6",
+    "packages/diablo2/src/domain/combat.ts": "c227139c65c2f50b8cf89180a09932708d5cdbab11d503933f927f4df0eb9d95",
+    "packages/diablo2/src/application/versions.test.ts": "22debebc03bb09497fa693f48a6fbf163840a823e1b9807ba13403f2d64a73af",
+    "tests/fixtures/emberwake-v4-continuity.json": "cbda033c1e09525576363e2d7395553f374820ea25aef002a31290ae97fb12ba"
+  },
+  "experimentFreezeSha256": {
+    "packages/diablo2/src/agent/policy.ts": "3364bf3ac46d4fcadab6eb06465d106c3ada523e8de204993773a73cce447989",
+    "packages/diablo2/src/agent/policy.test.ts": "650bcdd882733078b88d8f15dcd455c8ea76cbbca4d6f1e6896c40457f3939fb",
+    "packages/diablo2/src/agent/example.ts": "e85081d75384eec76d406d570e3362a44c0d4910e9e0d7697a040cafdd58afca",
+    "packages/diablo2/src/domain/stats.ts": "fbb56e52fa291cfd6576e4e9076c32a803b183126c5dfcb1b265b120f7d041c6",
+    "packages/diablo2/src/domain/combat.ts": "c227139c65c2f50b8cf89180a09932708d5cdbab11d503933f927f4df0eb9d95",
+    "packages/diablo2/src/application/versions.test.ts": "22debebc03bb09497fa693f48a6fbf163840a823e1b9807ba13403f2d64a73af",
+    "tests/fixtures/emberwake-v4-continuity.json": "cbda033c1e09525576363e2d7395553f374820ea25aef002a31290ae97fb12ba"
+  },
+  "postCohortTestOnlyGuard": {
+    "packages/diablo2/src/agent/policy.test.ts": {
+      "experiment": "650bcdd882733078b88d8f15dcd455c8ea76cbbca4d6f1e6896c40457f3939fb",
+      "final": "a6c2b253511e5bd16474dcdfcb2ea9a6b8cec877c81f0a4d280e0978ce4339d3"
+    }
+  },
+  "repair": "Pending stocked Survival recovery only: offered nonmoving instant all-visible-foe finisher using shared pure native math; disclosed-projectile forecast10ticks across unchanged5tick decisions, conservative public alignment/walk/slow allowances. Delegating example identity8.",
+  "localProofs": {
+    "scope": "Four fresh-factory single-input decisions; exact original native prefixes, not teacher-forced policy8 histories or whole campaigns. All surviving endpoints exactly+10ticks.",
+    "A04": "51HP at1030 through1040 with7 and8.",
+    "A05": "175HP at38225 through38235 with7 and8.",
+    "D01": "At7715 only weak hound disclosed; both fixed-control branches80HP through7725,8 additionally kills hound and adds30XP. Not a saved death. Later original7 campaign frame7720 discloses another foe and dies7721; all-known8 finisher must reject that frame.",
+    "D02": "At5255 new8 earlier escape retains44HP through5265; old7 local branch dies5262."
+  },
+  "nativeParity": {
+    "cases": 54,
+    "acceptedCommands": 212377,
+    "requestedTicks": 1252780,
+    "executedTicks": 1252728,
+    "normalization": "Only diagnostic replay.format/replay.rulesVersion/fullState.rulesVersion. Every other field byte exact. No policy execution.",
+    "native4Checkpoints": 24,
+    "native4FixtureSha256": "cbda033c1e09525576363e2d7395553f374820ea25aef002a31290ae97fb12ba",
+    "oldV3V2": "Exact existing continuations preserved."
+  },
+  "development": {
+    "scope": "FIXED D policy8 diagnostic, consumed198 only; no production-native5/replay compatibility or calibration claim. No adaptive tuning. Player per-impact cap after native mitigation+rounding; allies uncapped. Native4 headers rejected intentionally; exact production5 historical dispatch remains separate.",
+    "identity": "emberwake-pressure-diagnostic-d-policy8-2026-10-16",
+    "bundleDigest": "c7476b9833c560c94489ec6a4626e03f049ee3fd84a5e063c046f8f8bfd2164a",
+    "params": {
+      "incoming": {
+        "relaxed": 0.75,
+        "standard": 8,
+        "severe": 12
+      },
+      "playerImpactCapFraction": {
+        "relaxed": null,
+        "standard": 0.55,
+        "severe": 0.7
+      },
+      "enemyHealth": {
+        "relaxed": 1,
+        "standard": 1,
+        "severe": 1
+      },
+      "recoverySeconds": {
+        "relaxed": 0,
+        "standard": 20,
+        "severe": 60
+      }
+    },
+    "seedBlocks": "EMBERWAKE-COHERENT-POLICY3-DEV-01..10; Growth only01..02; consumed development, INDEPENDENT-POLICY-2.",
+    "budget": "8000 decisions; two99case processes768MiB each; frozen beforecase1.",
+    "totals": {
+      "attempted": 198,
+      "wins": 108,
+      "deaths": 76,
+      "livingBudgetStops": 14,
+      "errors": 0
+    },
+    "groups": [
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 10,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "tier": "standard",
+        "n": 10,
+        "wins": 2,
+        "deaths": 8,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "tier": "severe",
+        "n": 10,
+        "wins": 0,
+        "deaths": 10,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 10,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "tier": "standard",
+        "n": 10,
+        "wins": 8,
+        "deaths": 0,
+        "livingBudgetStops": 2,
+        "errors": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "tier": "severe",
+        "n": 10,
+        "wins": 1,
+        "deaths": 8,
+        "livingBudgetStops": 1,
+        "errors": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "tier": "standard",
+        "n": 2,
+        "wins": 1,
+        "deaths": 1,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "tier": "severe",
+        "n": 2,
+        "wins": 0,
+        "deaths": 2,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 8,
+        "deaths": 0,
+        "livingBudgetStops": 2,
+        "errors": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "tier": "standard",
+        "n": 10,
+        "wins": 2,
+        "deaths": 8,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "tier": "severe",
+        "n": 10,
+        "wins": 0,
+        "deaths": 10,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 8,
+        "deaths": 0,
+        "livingBudgetStops": 2,
+        "errors": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "tier": "standard",
+        "n": 10,
+        "wins": 7,
+        "deaths": 0,
+        "livingBudgetStops": 3,
+        "errors": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "tier": "severe",
+        "n": 10,
+        "wins": 4,
+        "deaths": 3,
+        "livingBudgetStops": 3,
+        "errors": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "tier": "severe",
+        "n": 2,
+        "wins": 0,
+        "deaths": 2,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 9,
+        "deaths": 0,
+        "livingBudgetStops": 1,
+        "errors": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "tier": "standard",
+        "n": 10,
+        "wins": 3,
+        "deaths": 7,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "tier": "severe",
+        "n": 10,
+        "wins": 0,
+        "deaths": 10,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 10,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "tier": "standard",
+        "n": 10,
+        "wins": 9,
+        "deaths": 1,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "tier": "severe",
+        "n": 10,
+        "wins": 5,
+        "deaths": 5,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "errors": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "tier": "severe",
+        "n": 2,
+        "wins": 1,
+        "deaths": 1,
+        "livingBudgetStops": 0,
+        "errors": 0
+      }
+    ],
+    "tierPairs": [
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "a": "relaxed",
+        "b": "standard",
+        "n": 10,
+        "exact": {
+          "better": 10,
+          "tied": 0,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 8,
+          "tied": 2,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "a": "standard",
+        "b": "severe",
+        "n": 10,
+        "exact": {
+          "better": 8,
+          "tied": 2,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 8,
+          "tied": 2,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "a": "relaxed",
+        "b": "standard",
+        "n": 10,
+        "exact": {
+          "better": 8,
+          "tied": 0,
+          "worse": 2
+        },
+        "practical5Percent": {
+          "better": 6,
+          "tied": 3,
+          "worse": 1
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "a": "standard",
+        "b": "severe",
+        "n": 10,
+        "exact": {
+          "better": 9,
+          "tied": 1,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 8,
+          "tied": 2,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "a": "relaxed",
+        "b": "standard",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 0,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "a": "standard",
+        "b": "severe",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "a": "relaxed",
+        "b": "standard",
+        "n": 10,
+        "exact": {
+          "better": 9,
+          "tied": 1,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 8,
+          "tied": 2,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "a": "standard",
+        "b": "severe",
+        "n": 10,
+        "exact": {
+          "better": 5,
+          "tied": 4,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 5,
+          "tied": 4,
+          "worse": 1
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "a": "relaxed",
+        "b": "standard",
+        "n": 10,
+        "exact": {
+          "better": 7,
+          "tied": 0,
+          "worse": 3
+        },
+        "practical5Percent": {
+          "better": 5,
+          "tied": 4,
+          "worse": 1
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "a": "standard",
+        "b": "severe",
+        "n": 10,
+        "exact": {
+          "better": 6,
+          "tied": 2,
+          "worse": 2
+        },
+        "practical5Percent": {
+          "better": 5,
+          "tied": 4,
+          "worse": 1
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "a": "relaxed",
+        "b": "standard",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 0,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 0,
+          "tied": 2,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "a": "standard",
+        "b": "severe",
+        "n": 2,
+        "exact": {
+          "better": 2,
+          "tied": 0,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 2,
+          "tied": 0,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "a": "relaxed",
+        "b": "standard",
+        "n": 10,
+        "exact": {
+          "better": 8,
+          "tied": 0,
+          "worse": 2
+        },
+        "practical5Percent": {
+          "better": 7,
+          "tied": 3,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "a": "standard",
+        "b": "severe",
+        "n": 10,
+        "exact": {
+          "better": 5,
+          "tied": 3,
+          "worse": 2
+        },
+        "practical5Percent": {
+          "better": 5,
+          "tied": 3,
+          "worse": 2
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "a": "relaxed",
+        "b": "standard",
+        "n": 10,
+        "exact": {
+          "better": 6,
+          "tied": 0,
+          "worse": 4
+        },
+        "practical5Percent": {
+          "better": 3,
+          "tied": 7,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "a": "standard",
+        "b": "severe",
+        "n": 10,
+        "exact": {
+          "better": 8,
+          "tied": 0,
+          "worse": 2
+        },
+        "practical5Percent": {
+          "better": 6,
+          "tied": 3,
+          "worse": 1
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "a": "relaxed",
+        "b": "standard",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 0,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 0,
+          "tied": 2,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "a": "standard",
+        "b": "severe",
+        "n": 2,
+        "exact": {
+          "better": 2,
+          "tied": 0,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      }
+    ],
+    "policyPairs": [
+      {
+        "hero": "barbarian",
+        "tier": "relaxed",
+        "a": "survival",
+        "b": "immediate",
+        "n": 10,
+        "exact": {
+          "better": 6,
+          "tied": 0,
+          "worse": 4
+        },
+        "practical5Percent": {
+          "better": 2,
+          "tied": 5,
+          "worse": 3
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "barbarian",
+        "tier": "relaxed",
+        "a": "growth",
+        "b": "immediate",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 0,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 1,
+          "tied": 0,
+          "worse": 1
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "barbarian",
+        "tier": "standard",
+        "a": "survival",
+        "b": "immediate",
+        "n": 10,
+        "exact": {
+          "better": 9,
+          "tied": 0,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 9,
+          "tied": 0,
+          "worse": 1
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "barbarian",
+        "tier": "standard",
+        "a": "growth",
+        "b": "immediate",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "barbarian",
+        "tier": "severe",
+        "a": "survival",
+        "b": "immediate",
+        "n": 10,
+        "exact": {
+          "better": 9,
+          "tied": 1,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 9,
+          "tied": 1,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "barbarian",
+        "tier": "severe",
+        "a": "growth",
+        "b": "immediate",
+        "n": 2,
+        "exact": {
+          "better": 0,
+          "tied": 2,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 0,
+          "tied": 2,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "tier": "relaxed",
+        "a": "survival",
+        "b": "immediate",
+        "n": 10,
+        "exact": {
+          "better": 4,
+          "tied": 0,
+          "worse": 6
+        },
+        "practical5Percent": {
+          "better": 2,
+          "tied": 6,
+          "worse": 2
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "tier": "relaxed",
+        "a": "growth",
+        "b": "immediate",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 0,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "tier": "standard",
+        "a": "survival",
+        "b": "immediate",
+        "n": 10,
+        "exact": {
+          "better": 8,
+          "tied": 0,
+          "worse": 2
+        },
+        "practical5Percent": {
+          "better": 8,
+          "tied": 2,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "tier": "standard",
+        "a": "growth",
+        "b": "immediate",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 0,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "tier": "severe",
+        "a": "survival",
+        "b": "immediate",
+        "n": 10,
+        "exact": {
+          "better": 10,
+          "tied": 0,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 10,
+          "tied": 0,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "sorceress",
+        "tier": "severe",
+        "a": "growth",
+        "b": "immediate",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "tier": "relaxed",
+        "a": "survival",
+        "b": "immediate",
+        "n": 10,
+        "exact": {
+          "better": 8,
+          "tied": 0,
+          "worse": 2
+        },
+        "practical5Percent": {
+          "better": 1,
+          "tied": 8,
+          "worse": 1
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "tier": "relaxed",
+        "a": "growth",
+        "b": "immediate",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 0,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 0,
+          "tied": 2,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "tier": "standard",
+        "a": "survival",
+        "b": "immediate",
+        "n": 10,
+        "exact": {
+          "better": 7,
+          "tied": 1,
+          "worse": 2
+        },
+        "practical5Percent": {
+          "better": 6,
+          "tied": 3,
+          "worse": 1
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "tier": "standard",
+        "a": "growth",
+        "b": "immediate",
+        "n": 2,
+        "exact": {
+          "better": 1,
+          "tied": 0,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 1,
+          "tied": 1,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "tier": "severe",
+        "a": "survival",
+        "b": "immediate",
+        "n": 10,
+        "exact": {
+          "better": 8,
+          "tied": 1,
+          "worse": 1
+        },
+        "practical5Percent": {
+          "better": 8,
+          "tied": 1,
+          "worse": 1
+        },
+        "errorExcluded": 0
+      },
+      {
+        "hero": "necromancer",
+        "tier": "severe",
+        "a": "growth",
+        "b": "immediate",
+        "n": 2,
+        "exact": {
+          "better": 2,
+          "tied": 0,
+          "worse": 0
+        },
+        "practical5Percent": {
+          "better": 2,
+          "tied": 0,
+          "worse": 0
+        },
+        "errorExcluded": 0
+      }
+    ],
+    "first54Controls": [
+      {
+        "strategy": "immediate",
+        "n": 18,
+        "nativeJournalExact": 18,
+        "fullStateExact": 18
+      },
+      {
+        "strategy": "growth",
+        "n": 18,
+        "nativeJournalExact": 18,
+        "fullStateExact": 18
+      },
+      {
+        "strategy": "survival",
+        "n": 18,
+        "nativeJournalExact": 11,
+        "fullStateExact": 12
+      }
+    ],
+    "criticalCases": [
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+        "hero": "sorceress",
+        "difficulty": "severe",
+        "strategy": "immediate",
+        "pressure": {
+          "minHp": 0,
+          "playerHits": 3,
+          "totalLostHp": 173,
+          "rawMitigatedDamageCounterfactualTotal": 312,
+          "appliedRulesDamageTotal": 228,
+          "rawCounterfactualAtLeastMaxHp": 1,
+          "appliedSingleImpactFullHpPotential": 0,
+          "singleImpactNearFullLethal": 0,
+          "multiImpactAdvanceLethal": 0,
+          "multiImpactAdvanceLethalFromNearFull": 0,
+          "maxRawCounterfactualFraction": 1.3263157894736841,
+          "maxAppliedRulesFraction": 0.6947368421052632,
+          "terminalHit": {
+            "kind": "playerHit",
+            "tick": 1026,
+            "region": "fen-2",
+            "act": 0,
+            "damage": 8,
+            "element": "physical",
+            "mitigation": 0.027777777777777776,
+            "factor": 12,
+            "rawMitigatedDamage": 93,
+            "appliedRulesDamage": 81,
+            "capFraction": 0.7,
+            "capDamage": 81,
+            "before": 26,
+            "after": 0,
+            "maxHp": 117,
+            "cooldown": 414.5
+          },
+          "healthDrinks": 1,
+          "portalUses": 0,
+          "portalHpRestored": 0,
+          "allyHits": 0,
+          "allyFatalImpacts": 0,
+          "allyTotalDamage": 0
+        },
+        "originalWindows": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/EMBERWAKE-COHERENT-POLICY3-DEV-06-sorceress-severe-immediate.critical-impact-windows.json"
+      },
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+        "hero": "sorceress",
+        "difficulty": "severe",
+        "strategy": "growth",
+        "pressure": {
+          "minHp": 0,
+          "playerHits": 6,
+          "totalLostHp": 532,
+          "rawMitigatedDamageCounterfactualTotal": 601,
+          "appliedRulesDamageTotal": 533,
+          "rawCounterfactualAtLeastMaxHp": 1,
+          "appliedSingleImpactFullHpPotential": 0,
+          "singleImpactNearFullLethal": 0,
+          "multiImpactAdvanceLethal": 0,
+          "multiImpactAdvanceLethalFromNearFull": 0,
+          "maxRawCounterfactualFraction": 1.3263157894736841,
+          "maxAppliedRulesFraction": 0.6967213114754098,
+          "terminalHit": {
+            "kind": "playerHit",
+            "tick": 2611,
+            "region": "fen-2",
+            "act": 0,
+            "damage": 10.8,
+            "element": "physical",
+            "mitigation": 0.11392405063291139,
+            "factor": 12,
+            "rawMitigatedDamage": 115,
+            "appliedRulesDamage": 115,
+            "capFraction": 0.7,
+            "capDamage": 153,
+            "before": 114,
+            "after": 0,
+            "maxHp": 219,
+            "cooldown": 284.5
+          },
+          "healthDrinks": 2,
+          "portalUses": 2,
+          "portalHpRestored": 240.8,
+          "allyHits": 0,
+          "allyFatalImpacts": 0,
+          "allyTotalDamage": 0
+        },
+        "originalWindows": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/EMBERWAKE-COHERENT-POLICY3-DEV-02-sorceress-severe-growth.critical-impact-windows.json"
+      },
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+        "hero": "sorceress",
+        "difficulty": "severe",
+        "strategy": "survival",
+        "pressure": {
+          "minHp": 0.13450292397660818,
+          "playerHits": 85,
+          "totalLostHp": 9107,
+          "rawMitigatedDamageCounterfactualTotal": 9199,
+          "appliedRulesDamageTotal": 9107,
+          "rawCounterfactualAtLeastMaxHp": 1,
+          "appliedSingleImpactFullHpPotential": 0,
+          "singleImpactNearFullLethal": 0,
+          "multiImpactAdvanceLethal": 0,
+          "multiImpactAdvanceLethalFromNearFull": 0,
+          "maxRawCounterfactualFraction": 1.3263157894736841,
+          "maxAppliedRulesFraction": 0.6967213114754098,
+          "terminalHit": null,
+          "healthDrinks": 23,
+          "portalUses": 33,
+          "portalHpRestored": 5558.400000000001,
+          "allyHits": 0,
+          "allyFatalImpacts": 0,
+          "allyTotalDamage": 0
+        },
+        "originalWindows": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/EMBERWAKE-COHERENT-POLICY3-DEV-06-sorceress-severe-survival.critical-impact-windows.json"
+      },
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+        "hero": "barbarian",
+        "difficulty": "severe",
+        "strategy": "survival",
+        "pressure": {
+          "minHp": 0,
+          "playerHits": 28,
+          "totalLostHp": 2583,
+          "rawMitigatedDamageCounterfactualTotal": 2754,
+          "appliedRulesDamageTotal": 2657,
+          "rawCounterfactualAtLeastMaxHp": 1,
+          "appliedSingleImpactFullHpPotential": 0,
+          "singleImpactNearFullLethal": 0,
+          "multiImpactAdvanceLethal": 0,
+          "multiImpactAdvanceLethalFromNearFull": 0,
+          "maxRawCounterfactualFraction": 1.0413533834586466,
+          "maxAppliedRulesFraction": 0.6992481203007519,
+          "terminalHit": {
+            "kind": "playerHit",
+            "tick": 8147,
+            "region": "salt-1",
+            "act": 1,
+            "damage": 8.049999999999999,
+            "element": "physical",
+            "mitigation": 0.19540229885057472,
+            "factor": 12,
+            "rawMitigatedDamage": 78,
+            "appliedRulesDamage": 78,
+            "capFraction": 0.7,
+            "capDamage": 207,
+            "before": 4,
+            "after": 0,
+            "maxHp": 296,
+            "cooldown": 26.5
+          },
+          "healthDrinks": 6,
+          "portalUses": 15,
+          "portalHpRestored": 1798.4,
+          "allyHits": 0,
+          "allyFatalImpacts": 0,
+          "allyTotalDamage": 0
+        },
+        "originalWindows": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/EMBERWAKE-COHERENT-POLICY3-DEV-07-barbarian-severe-survival.critical-impact-windows.json"
+      },
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+        "hero": "barbarian",
+        "difficulty": "severe",
+        "strategy": "survival",
+        "pressure": {
+          "minHp": 0,
+          "playerHits": 41,
+          "totalLostHp": 3752,
+          "rawMitigatedDamageCounterfactualTotal": 3791,
+          "appliedRulesDamageTotal": 3791,
+          "rawCounterfactualAtLeastMaxHp": 0,
+          "appliedSingleImpactFullHpPotential": 0,
+          "singleImpactNearFullLethal": 0,
+          "multiImpactAdvanceLethal": 1,
+          "multiImpactAdvanceLethalFromNearFull": 1,
+          "maxRawCounterfactualFraction": 0.65625,
+          "maxAppliedRulesFraction": 0.65625,
+          "terminalHit": {
+            "kind": "playerHit",
+            "tick": 13342,
+            "region": "salt-5",
+            "act": 1,
+            "damage": 20,
+            "element": "fire",
+            "mitigation": 0.44,
+            "factor": 12,
+            "rawMitigatedDamage": 134,
+            "appliedRulesDamage": 134,
+            "capFraction": 0.7,
+            "capDamage": 254,
+            "before": 95,
+            "after": 0,
+            "maxHp": 363,
+            "cooldown": 186.5
+          },
+          "healthDrinks": 9,
+          "portalUses": 16,
+          "portalHpRestored": 2214.52,
+          "allyHits": 0,
+          "allyFatalImpacts": 0,
+          "allyTotalDamage": 0
+        },
+        "originalWindows": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/EMBERWAKE-COHERENT-POLICY3-DEV-08-barbarian-severe-survival.critical-impact-windows.json"
+      },
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+        "hero": "necromancer",
+        "difficulty": "severe",
+        "strategy": "growth",
+        "pressure": {
+          "minHp": 0.23286713286713295,
+          "playerHits": 55,
+          "totalLostHp": 4595,
+          "rawMitigatedDamageCounterfactualTotal": 4646,
+          "appliedRulesDamageTotal": 4595,
+          "rawCounterfactualAtLeastMaxHp": 1,
+          "appliedSingleImpactFullHpPotential": 0,
+          "singleImpactNearFullLethal": 0,
+          "multiImpactAdvanceLethal": 0,
+          "multiImpactAdvanceLethalFromNearFull": 0,
+          "maxRawCounterfactualFraction": 1.1636363636363636,
+          "maxAppliedRulesFraction": 0.7,
+          "terminalHit": null,
+          "healthDrinks": 14,
+          "portalUses": 20,
+          "portalHpRestored": 1565.8000000000002,
+          "allyHits": 64,
+          "allyFatalImpacts": 31,
+          "allyTotalDamage": 10014.66
+        },
+        "originalWindows": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/EMBERWAKE-COHERENT-POLICY3-DEV-02-necromancer-severe-growth.critical-impact-windows.json"
+      }
+    ],
+    "practicalRule": "Completion/progress exact. Equal first4components among victories: abs(timeA-timeB)/max(timeA,timeB)<5% is practical tie; otherwise exact direction.",
+    "sourceChanges": [[], []]
+  },
+  "gate": {
+    "isolated": true,
+    "maintenance": "passed",
+    "applicationTests": 561,
+    "applicationFiles": 93,
+    "seededTests": 37,
+    "seededFiles": 8,
+    "browserCases": 14,
+    "geometry": "Not affected; not run.",
+    "finalTestGuard": "Fullcheck2 after the post-cohort version relationship guard; runtime source bytes unchanged."
+  },
+  "currentFullTrace": {
+    "scope": "Consumed native4 technical worker/browser witness, not fresh strength evidence.",
+    "metrics": {
+      "outcome": "victory",
+      "won": 1,
+      "score": [1, 4, 8, 20, 31265],
+      "progress": 40820,
+      "bosses": 4,
+      "wards": 8,
+      "regions": 20,
+      "level": 8,
+      "xp": 1626,
+      "hp": 452,
+      "gold": 7235,
+      "executedTicks": 31265
+    },
+    "audit": {
+      "integrity": "passed",
+      "replay": "passed",
+      "inputs": "passed",
+      "decisions": "passed",
+      "firstMismatch": null,
+      "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+    },
+    "artifact": {
+      "file": "EMBERWAKE-STRENGTH-2-DEV-02-barbarian-severe-survival.rollout.json.gzip",
+      "format": "gzip",
+      "sha256": "afc442f91efc8d021a9786366c89875974828516a3e3174f242f9b687921fd05",
+      "bytes": 1904077,
+      "decodedSha256": "91b12eaa96e7b28d6706f634e3d2993883e4319f0ff3dcec3a92b56a71221964",
+      "decodedBytes": 97089367,
+      "review": "/?game=diablo2&review=policy&rollout=%2Ftest-results%2Fpolicy-score%2Fcompression-worker-policy8-1%2FEMBERWAKE-STRENGTH-2-DEV-02-barbarian-severe-survival.rollout.json.gzip"
+    },
+    "producerPins": 30,
+    "sourceChanges": [],
+    "workerElapsedMilliseconds": 20787,
+    "policy7Comparison": "1125 ticks slower, within5%practicaltime tie; no population inference."
+  },
+  "limits": [
+    "D8 is consumed development and not the full original-input four-audit population matrix.",
+    "No reserved Emberwake5 cohort or human playability claim.",
+    "Practical score2 ties use strict20*abs(tA-tB)<max(tA,tB) when completion components tie and bothwin; exact5%difference remains directional.",
+    "All deaths/live budget stops/errors retained; no source or parameter tuning within run.",
+    "Extra public work is metered; no equal-compute claim.",
+    "Four rollout audit dimensions do not establish hostile-code isolation."
+  ],
+  "artifacts": [
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/final-source-freeze-1.json",
+      "bytes": 1048,
+      "sha256": "b32d355adbe028c8c91a00c742051d1754afb643566c110071efc8aa7f53ac6b"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/astra-review-1/initial.json",
+      "bytes": 2281,
+      "sha256": "a91a51ba6c5132dc3533e92589076abe7897651191acef92d26eb86d2ade614a"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/astra-review-1/focused-check.json",
+      "bytes": 440,
+      "sha256": "ff21033c7950825f156f2cd0ef1c4406b1843a760f01280fd0bda3ac1add5176"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/astra-review-1/native-local-reproduction.json",
+      "bytes": 1166,
+      "sha256": "f45e178918f077ee980899325773d880cf298114e686cf50736266839a1b8d3c"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/astra-review-1/worker-witness.json",
+      "bytes": 1514,
+      "sha256": "a5774cbf86e8a87ed8eb3a67d5aba8ee9061816fb57d63ae7390400dce632b80"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/astra-review-1/cohort-reconstruction.json",
+      "bytes": 27813,
+      "sha256": "0512c678aab962f96a6b16d410333b04f96551b81b328b641f57c1de1920f880"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/astra-review-1/cohort-manifest.json",
+      "bytes": 327,
+      "sha256": "9e686d978ad46071810e403286b22098077b77f3b067cad5bb52547207ddbe6f"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/D8-HANDOFF.md",
+      "bytes": 7432,
+      "sha256": "daced05f1bcc77d37b88df428a8b4e7cd3cfc25b0c067396f008bf5a2b94045f"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/code-gate-1.json",
+      "bytes": 622,
+      "sha256": "d06f5e77b0f35633f6b094fc82eb9cf837c43ff8f62e246cf0fdc50fe07751e6"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/code-gate-2.json",
+      "bytes": 800,
+      "sha256": "1eea959404dbd7af6eb34ef633c141fc40c1b0961862df7fa37eb427e4f99df4"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/browser-gate-1.json",
+      "bytes": 1694,
+      "sha256": "c004e134438b40045fb51c39c7e2fcba0691a621ed4e22f3bc8fc89da3257b68"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/final-example-guard-receipt.json",
+      "bytes": 1439,
+      "sha256": "9f0063f26f2b9f8db29a22bcb450d70c6f1523d7f6f4a57a304ec20ee56d9398"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/red-policy7.log",
+      "bytes": 2509,
+      "sha256": "3049d407fe09acf4eaf6f76a2af56f2c9dd6acba40c3842f1a5ca4b92a5a2a18"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/focused-2.log",
+      "bytes": 164,
+      "sha256": "e28db6cc0232d2367c157f0a7b442d04696e8a519d5b4fa15cb734a169ad61cd"
+    },
+    {
+      "path": ".work/sessions/emberwake-policy8-2026-10-16/static-2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "test-results/emberwake-strength/native8-helper-parity-1/receipt.json",
+      "bytes": 63598,
+      "sha256": "892dd74524633a16da61348750e7f2961bb63e5235a4b8d21be35e9742dadafd"
+    },
+    {
+      "path": "test-results/emberwake-strength/native8-helper-parity-1/evidence-manifest.json",
+      "bytes": 43711,
+      "sha256": "1caae12ee2864a7da32674acdadf4906d219f4cc39493551191ade8750c53657"
+    },
+    {
+      "path": "test-results/emberwake-strength/policy8-local-prefix-proofs-2/index.json",
+      "bytes": 5452,
+      "sha256": "78c49f7f183037ef7a93c58df03a96589884da9e08fc712379ca413d240722d7"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/immediate-growth-controls-and-work.json",
+      "bytes": 69895,
+      "sha256": "b91b4db14a9f9d2bf3057384f1d78883e634ff45c518a325df7f2a42f2e48eef"
+    },
+    {
+      "path": "test-results/policy-score/compression-worker-policy8-1/result.json",
+      "bytes": 5752,
+      "sha256": "23402398e6a1f128d5677567c6a0af9f133d22d4a8419fd1405eced3923f2d67"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy7-1/freeze.json",
+      "bytes": 30446,
+      "sha256": "e8a3dfbe6c0f917a9e06139a0b663c2fa6da2b8b5cde11c7925da2f290f84330"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy7-1/analysis.json",
+      "bytes": 304945,
+      "sha256": "2fcb8786b9ec6ab45f81ba7a750dcf89494b53f6c87b59bde33a399e3f614d7b"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy7-1/evidence-manifest.json",
+      "bytes": 135821,
+      "sha256": "43694b59d6c026a03f892528b4f93de0d77bec43dfae795df6a69ff8309e6f62"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/pressure-draft-d/receipt.json",
+      "bytes": 42701,
+      "sha256": "34677922ac3da58927f63763aad31973e41c988f5ced0260ec9f926578a6dcac"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/freeze.json",
+      "bytes": 80110,
+      "sha256": "d543e14e3dbfbb1ce5472058103cecb274fce053e2827fd8468a6f184eddc919"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/protocol.json",
+      "bytes": 80110,
+      "sha256": "d543e14e3dbfbb1ce5472058103cecb274fce053e2827fd8468a6f184eddc919"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/seal.json",
+      "bytes": 1211,
+      "sha256": "04fd7d0b435cbee3eac1603d02da1c14b9a241046c8a62c8448456e44f58d296"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/execution-prerequisites.json",
+      "bytes": 1100,
+      "sha256": "d46f90370740aed40b8d17497e2c6d58fc8417f75d704fcb6e875c8ee4b87984"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/analysis.json",
+      "bytes": 1137741,
+      "sha256": "017c4ebb24d1a2189c23e13a658d5790c5d52a9ae001b7020a694100b6661c59"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/shard-A.closing.json",
+      "bytes": 478,
+      "sha256": "c455382a7171fff3e0ef56a1b6ad5cc59962152fd2cec023d83e527f15aacb18"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/shard-B.closing.json",
+      "bytes": 478,
+      "sha256": "a009762e2e96357fd0e6c1247fe9b819488a317fb503f3bca93491533ef1f637"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/evidence-manifest.json",
+      "bytes": 493319,
+      "sha256": "ee07bb4a2543905e8ad1052df82b524c0c6a3b83b51d558e6072b2d3d0ff1955"
+    }
+  ],
+  "finalIndependentReview": ".work/sessions/emberwake-policy8-2026-10-16/astra-review-1/final-closure.json"
+}

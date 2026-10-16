@@ -82,7 +82,7 @@ Sandbox keeps its existing rules and ordinary developer controls, outside this s
 The three priorities are Immediate (damage/direct objectives), Survival (defense,
 earlier protection and safer positioning), and Growth (loot, upgrades and scaling).
 These are versioned heuristics with fresh factory memory, not a total strength order.
-Policy v7 uses five-tick combat observations and ten-tick quiet travel. Healthy
+Policy v8 uses five-tick combat observations and ten-tick quiet travel. Healthy
 melee warning escapes preserve attack reach after the shared danger priorities;
 low-health recovery retains enemy clearance. These tie-breaks do not predict hidden
 movement, future shots or wall collision. Navigation tests a current goal from the
@@ -164,6 +164,21 @@ alignment/axis expansion remains; walls, future shots and foe motion are not
 predicted. Healthy controls and Immediate/Growth retain their earlier ranking.
 The [recovery development record](../research/experiments/2026-10-16-emberwake-recovery-policy-7.md)
 distinguishes original saved inputs, reconstructed inputs and local counterfactuals.
+
+V8 considers an offered nonmoving instant melee/nova finisher during pending
+Survival recovery only when it covers and kills every visible living nonwarded foe,
+with no disclosed hazards or hostile shots. Native casts and this decision reuse
+the same pure rank/scaling/resistance/curse arithmetic; the policy has no private
+successor access. A distant second foe rejects the option even if the nearby foe
+would die. The delegating example has its own matching version8 identity.
+
+Pending recovery also uses a ten-tick disclosed-projectile horizon across two
+ordinary five-tick decisions, with alignment and walking/slow-speed allowances.
+Healthy controls and Immediate/Growth retain their previous five-tick geometry.
+This longer public approximation does not predict wall response, future shots or
+enemy movement. The [policy8 record](../research/experiments/2026-10-16-emberwake-recovery-policy-8.md)
+separates local native counterfactuals from campaign development results. Additional
+public candidate/geometry work is metered; no equal-compute strength claim is made.
 
 BFS must also respect the current action menu at its first edge. A fractional avatar
 footprint can make the nominally shortest adjacent center unavailable because it

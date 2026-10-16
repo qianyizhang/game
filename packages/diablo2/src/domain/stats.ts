@@ -1,4 +1,4 @@
-import type { Content, State, Player, HeroDef } from './types';
+import type { Content, State, Player, HeroDef, SkillDef } from './types';
 export function stats(state: State, content: Content) {
   return playerStats(
     state.player,
@@ -24,4 +24,27 @@ export function playerStats(p: Player, hero: HeroDef) {
     attackTicks: Math.max(4, 9 - Math.floor(p.attributes.dexterity / 20)),
     xpNext: 55 * p.level + 20 * p.level * p.level,
   };
+}
+
+/** Pure cast scaling, rounded once before resolving any target or level-up. */
+export function skillDamage(
+  skill: Pick<SkillDef, 'damage' | 'scaling'>,
+  rank: number,
+  strength: number,
+  spell: number,
+): number {
+  return Math.round(
+    skill.damage *
+      (1 + (rank - 1) * 0.25) *
+      (skill.scaling === 'strength' ? 1 + strength / 65 : spell),
+  );
+}
+/** Native enemy resistance/curse order and minimum damage, with no world access. */
+export function damageAfterResistance(
+  damage: number,
+  resistance: number | undefined,
+  cursed: boolean,
+): number {
+  const resist = Math.max(-0.3, (resistance ?? 0) - (cursed ? 0.35 : 0));
+  return Math.max(1, Math.round(damage * (1 - resist)));
 }

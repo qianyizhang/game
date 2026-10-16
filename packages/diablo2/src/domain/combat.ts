@@ -3,7 +3,7 @@ import type { Content, Element, Enemy, Point, State, World } from './types';
 import { distance, lineOfSight, reveal, slide, toward, bodyFits } from './maps';
 import { note, random } from './random';
 import { rollItem, carry } from './loot';
-import { stats } from './stats';
+import { stats, skillDamage, damageAfterResistance } from './stats';
 import { currentRegion, currentWorld, wardsLit } from './world';
 import { STEP_SCALE as dt } from './timing';
 
@@ -47,8 +47,7 @@ export function hitEnemy(
   const world = currentWorld(state);
   if (enemy.boss && !wardsLit(state, content)) return;
   const def = content.monsters.find((m) => m.id === enemy.kind)!;
-  const resist = Math.max(-0.3, (def.resist[element] ?? 0) - (enemy.cursed > 0 ? 0.35 : 0));
-  const dealt = Math.max(1, Math.round(damage * (1 - resist)));
+  const dealt = damageAfterResistance(damage, def.resist[element], enemy.cursed > 0);
   enemy.hp = Math.max(0, enemy.hp - dealt);
   if (element === 'cold') enemy.slow = Math.max(enemy.slow, 25);
   if (enemy.hp > 0) return;
@@ -431,11 +430,7 @@ export function cast(
   }
   if (!state.sandbox?.god) p.mana -= skill.mana;
   p.cooldowns[skillId] = skill.cooldown;
-  const damage = Math.round(
-    skill.damage *
-      (1 + (rank - 1) * 0.25) *
-      (skill.scaling === 'strength' ? 1 + p.attributes.strength / 65 : stats(state, content).spell),
-  );
+  const damage = skillDamage(skill, rank, p.attributes.strength, stats(state, content).spell);
   if (skill.effect === 'projectile')
     projectile(
       state,

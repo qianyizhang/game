@@ -1,3 +1,4 @@
+import historicalV4 from '../../../../tests/fixtures/emberwake-v4-continuity.json';
 import baseline from '../../../../tests/fixtures/emberwake-v2-continuity.json';
 import historicalV3 from '../../../../tests/fixtures/emberwake-v3-continuity.json';
 import { expect, it } from 'vitest';
@@ -226,4 +227,90 @@ it('reconstructs and continues historical v3 native combat, potion and town jour
     }
   }
   expect(checkpoints).toBe(15);
+}, 30000);
+
+// Original native4 bytes were captured before native5 development. Every witness
+// owns its legal branch prefix: case-level command slicing would replay another branch.
+it('reconstructs and continues all 24 original native4 checkpoints across every hero and tier', async () => {
+  const v4 = historicalV4 as unknown as {
+    content: Content;
+    contentSha256: string;
+    originalV4: { bundle: string; bundleDigest: string; sourceDigests: Record<string, string> };
+    cases: {
+      hero: string;
+      difficulty: Difficulty;
+      replayHeader: Omit<Replay, 'content' | 'commands'>;
+      witnesses: {
+        prefixNativeCommands: Command[];
+        nativeCommandCount: number;
+        requestedAdvanceTicks: number;
+        stateSha256: string;
+        replaySha256: string;
+        nextNativeCommand: Command;
+        continuedStateSha256: string;
+        continuedReplaySha256: string;
+        continuedNativeCommandCount: number;
+        continuedCommandsSha256: string;
+        rejectionProbes: { command: Command; error: string }[];
+      }[];
+    }[];
+  };
+  expect(v4.originalV4.bundle).toBe(
+    'test-results/emberwake-strength/v4-continuity-before-v5/original-native-v4.mjs',
+  );
+  expect(v4.originalV4.bundleDigest).toBe(
+    '36a3d76acbbed810b3e6e6c14623e515f501b27ef5c543ba90f78a13f8ea6c2b',
+  );
+  expect(v4.originalV4.sourceDigests['packages/diablo2/src/domain/difficulty.ts']).toBe(
+    '41e1342e97ce00da642172a613c81b6b4787d504f9fd203b65da8b0839bc3668',
+  );
+  expect(await digest(v4.content)).toBe(v4.contentSha256);
+  expect(v4.cases.map((row) => `${row.hero}-${row.difficulty}`).sort()).toEqual(
+    ['barbarian', 'sorceress', 'necromancer']
+      .flatMap((hero) => ['relaxed', 'standard', 'severe'].map((tier) => `${hero}-${tier}`))
+      .sort(),
+  );
+  let checkpoints = 0;
+  for (const saved of v4.cases) {
+    expect(saved.replayHeader.rulesVersion).toBe('emberwake-4');
+    expect(saved.replayHeader.format).toBe('emberwake-replay-v4');
+    for (const witness of saved.witnesses) {
+      const restored = importSession(
+        JSON.stringify({
+          ...saved.replayHeader,
+          content: v4.content,
+          commands: witness.prefixNativeCommands,
+        }),
+      );
+      expect(saveKey(restored)).toBe('card-workshop.emberwake.v4');
+      expect(restored.state.hero).toBe(saved.hero);
+      expect(restored.state.difficulty).toBe(saved.difficulty);
+      expect(await digest(restored.state)).toBe(witness.stateSha256);
+      expect(await digest(restored.replay)).toBe(witness.replaySha256);
+      expect(restored.replay.commands).toEqual(witness.prefixNativeCommands);
+      expect(restored.replay.commands).toHaveLength(witness.nativeCommandCount);
+      expect(
+        restored.replay.commands.reduce(
+          (ticks, command) => ticks + (command.type === 'advance' ? command.ticks : 0),
+          0,
+        ),
+      ).toBe(witness.requestedAdvanceTicks);
+      for (const probe of witness.rejectionProbes) {
+        const rejected = dispatch(restored, probe.command);
+        expect(rejected.error).toBe(probe.error);
+        expect(rejected.session).toBe(restored);
+        expect(await digest(restored.state)).toBe(witness.stateSha256);
+        expect(await digest(restored.replay)).toBe(witness.replaySha256);
+      }
+      const next = dispatch(restored, witness.nextNativeCommand);
+      expect(next.error).toBeNull();
+      expect(await digest(next.session.state)).toBe(witness.continuedStateSha256);
+      expect(await digest(next.session.replay)).toBe(witness.continuedReplaySha256);
+      expect(next.session.replay.commands).toHaveLength(witness.continuedNativeCommandCount);
+      expect(await digest(next.session.replay.commands)).toBe(witness.continuedCommandsSha256);
+      expect(importSession(exportSession(next.session))).toEqual(next.session);
+      checkpoints++;
+    }
+  }
+  expect(checkpoints).toBe(24);
 }, 30000);

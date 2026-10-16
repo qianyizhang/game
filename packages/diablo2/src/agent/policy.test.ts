@@ -319,7 +319,7 @@ describe('Emberwake public policies', () => {
       return stream.map((input) => decide(structuredClone(input)));
     };
     const proposals = replay();
-    expect(builtins.growth.version).toBe('emberwake-policy-7');
+    expect(builtins.growth.version).toBe('emberwake-policy-8');
     expect(proposals.slice(0, 3).every((p) => p.command.type === 'cast')).toBe(true);
     const reposition = proposals.at(-1)!;
     expect(reposition.command.type).toBe('move');
@@ -530,7 +530,9 @@ describe('Emberwake public policies', () => {
     ];
     const original = JSON.stringify(input),
       proposal = builtins.survival.create(config)(input);
-    expect(proposal.command).toEqual({ type: 'move', target: { x: 38.5, y: 23.5 } });
+    // Over two intervals the faster northbound arrow catches a north retreat.
+    // The east route instead leaves its disclosed lane.
+    expect(proposal.command).toEqual({ type: 'move', target: { x: 40.5, y: 25.5 } });
     expect(proposal.diagnostics).toMatchObject({
       reason: 'escape disclosed danger while awaiting health recovery',
     });
@@ -813,6 +815,165 @@ describe('Emberwake public policies', () => {
     expect(play()).toEqual(play());
   });
 
+  it('finishes the sole disclosed attacker without moving during stocked pending recovery', () => {
+    // Reduced original D DEV01 d1685/t7715: the 18-HP hound, rank1 Cleave,
+    // strength27, HP80/269 and stocked cooldown. Coordinates translate together.
+    const input = combatFixture('barbarian');
+    input.player.hp = 80;
+    input.stats.maxHp = 269;
+    input.player.attributes.strength = 27;
+    input.player.skills.cleave = 1;
+    input.player.cooldowns['@health-potion'] = 202.5;
+    input.enemies[0] = {
+      ...input.enemies[0],
+      kind: 'hound',
+      hp: 18,
+      x: 3.956755439968756,
+      y: 4.883985634261614,
+    };
+    const cast: PolicyCommand = {
+      type: 'cast',
+      skill: 'cleave',
+      target: { x: input.enemies[0].x, y: input.enemies[0].y },
+    };
+    input.actions = [...moves(input), cast, { type: 'advance', ticks: 5 }];
+    const original = JSON.stringify(input);
+    const play = () => {
+      const decide = builtins.survival.create(config);
+      const first = decide(structuredClone(input));
+      return [first, decide(structuredClone(input))];
+    };
+    expect(play()[0].command).toEqual(cast);
+    expect(play()[0].diagnostics).toMatchObject({
+      reason: 'finish every disclosed attacker before recovery',
+    });
+    expect(play()[1].command).toEqual({ type: 'advance', ticks: 5 });
+    expect(play()).toEqual(play());
+    expect(JSON.stringify(input)).toBe(original);
+    const rejects = (changed: Observation) =>
+      expect(builtins.survival.create(config)(changed).diagnostics).not.toMatchObject({
+        reason: 'finish every disclosed attacker before recovery',
+      });
+    // The final t7720 frame additionally discloses a distant archer: killing only
+    // the hound cannot justify advancing in front of that other known attacker.
+    for (const extra of [
+      { x: 7.5, y: 3.5, hp: 1 },
+      { x: 3.5, y: 4.5, hp: 1000 },
+    ]) {
+      const changed = structuredClone(input);
+      changed.enemies.push({ ...changed.enemies[0], ...extra, uid: 1000 });
+      rejects(changed);
+    }
+    const fog = structuredClone(input);
+    fog.region.terrain = terrainRuns(
+      terrainRows(fog.region).map((row, y) => (y === 4 ? '#..#....#' : row)),
+    );
+    rejects(fog);
+    const nonlethal = structuredClone(input);
+    nonlethal.enemies[0].hp = 1000;
+    rejects(nonlethal);
+    // Resistance and curse use the native rounded cast then rounded hit order.
+    // With this disclosed rank/strength, a cursed hound at53HP is finished;
+    // one additional HP or removing its disclosed curse rejects that claim.
+    const cursed = structuredClone(input);
+    cursed.enemies[0].cursed = 10;
+    cursed.enemies[0].hp = 53;
+    expect(builtins.survival.create(config)(cursed).command).toEqual(cast);
+    cursed.enemies[0].hp = 54;
+    rejects(cursed);
+    cursed.enemies[0].hp = 53;
+    cursed.enemies[0].cursed = 0;
+    rejects(cursed);
+    const nova = structuredClone(input);
+    nova.player.skills.warcry = 1;
+    nova.actions = [
+      { type: 'cast', skill: 'warcry', target: { x: nova.player.x, y: nova.player.y } },
+      { type: 'advance', ticks: 5 },
+    ];
+    nova.enemies.push({ ...nova.enemies[0], uid: 1000, x: 4.5, y: 3.5, hp: 1 });
+    expect(builtins.survival.create(config)(nova).command.type).toBe('cast');
+    const warning = structuredClone(input);
+    warning.hazards = [
+      { x: 7.5, y: 4.5, uid: 1001, radius: 1, delay: 10, damage: 1, element: 'fire', life: 1 },
+    ];
+    rejects(warning);
+    const shot = structuredClone(input);
+    shot.projectiles = [
+      {
+        x: 7.5,
+        y: 4.5,
+        uid: 1002,
+        dx: 1,
+        dy: 0,
+        radius: 0.2,
+        element: 'physical',
+        friendly: false,
+      },
+    ];
+    rejects(shot);
+    for (const effect of ['leap', 'projectile', 'curse', 'summon'] as const) {
+      const changed = structuredClone(input);
+      changed.definitions.skills.find((skill) => skill.id === 'cleave')!.effect = effect;
+      rejects(changed);
+    }
+    const noFoes = structuredClone(input);
+    noFoes.enemies = [];
+    rejects(noFoes);
+  });
+
+  it('starts the disclosed north escape before the second recovery interval of an incoming shot', () => {
+    // Exact original D DEV02 d1262/t5255 public geometry; only the unrelated
+    // atlas/content/inventory and known-floor corridor are reduced here.
+    const input = combatFixture('barbarian');
+    Object.assign(input.player, { x: 20.5, y: 45.5, hp: 44, stamina: 5.425 });
+    input.player.cooldowns['@health-potion'] = 385;
+    input.stats.maxHp = 145;
+    input.region = {
+      ...input.region,
+      width: 50,
+      height: 50,
+      terrain: terrainRuns(Array.from({ length: 50 }, () => '.'.repeat(50))),
+    };
+    input.enemies[0] = {
+      ...input.enemies[0],
+      kind: 'archer',
+      hp: 58,
+      x: 25.313640285244183,
+      y: 41.97235195185527,
+    };
+    input.projectiles = [
+      {
+        x: 23.25682781919747,
+        y: 43.47967490315496,
+        uid: 47,
+        dx: -0.6856041553489033,
+        dy: 0.5024409837665684,
+        friendly: false,
+        radius: 0.2,
+        element: 'physical',
+      },
+    ];
+    input.actions = [
+      ...[1, 2, 3, 4].flatMap((n): PolicyCommand[] => [
+        { type: 'move', target: { x: 20.5 + n, y: 45.5 } },
+        { type: 'move', target: { x: 20.5, y: 45.5 - n } },
+      ]),
+      { type: 'advance', ticks: 5 },
+    ];
+    const original = JSON.stringify(input),
+      proposal = builtins.survival.create(config)(input);
+    expect(proposal.command.type).toBe('move');
+    if (proposal.command.type === 'move') {
+      expect(proposal.command.target.x).toBe(20.5);
+      expect(proposal.command.target.y).toBeLessThan(45.5);
+    }
+    expect(proposal.diagnostics).toMatchObject({
+      reason: 'escape disclosed danger while awaiting health recovery',
+    });
+    expect(builtins.survival.create(config)(structuredClone(input))).toEqual(proposal);
+    expect(JSON.stringify(input)).toBe(original);
+  });
+
   it('permits ordinary refuge healing while preventing a stationary heal-return loop', () => {
     const input = fresh();
     input.location = 'field';
@@ -887,6 +1048,7 @@ describe('Emberwake public policies', () => {
   });
 
   it('resets factory-local extension memory and reproduces deterministic decisions', () => {
+    expect(builtins.immediate.version).toBe(`emberwake-policy-${example.version}`);
     const input = fresh(),
       choose = example.create(config),
       first = choose(input);
