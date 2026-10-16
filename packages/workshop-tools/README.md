@@ -106,3 +106,15 @@ Trace adapters and artifact collection stay in `trace/`; the [session-review wor
 `npm run usage:dashboard -- --serve` opens a standalone local usage dashboard from Codex session logs. It supports dates, model/project/effort filters, trends, activity, reasoning/output analytics, sortable sessions with row-click evidence, persistent incremental indexing, current official API-equivalent pricing with editable overrides and filtered CSV export. Omit `--serve` for a self-contained offline report. `npm run test:usage` verifies accounting and local refresh; its tests also join this workspace gate. See the [usage dashboard guide](../../docs/engineering/usage-dashboard.md) for source discovery, coverage and privacy boundaries.
 
 Default usage output is `test-results/disposable/usage-dashboard-<UUID>`, closed with a byte-hashed receipt after a successful build. Serving marks it open; graceful shutdown rehashes refreshed files and starts the 14-day retention. Ctrl-C and SIGTERM close the CLI server gracefully. Interrupted or changed outputs stay protected. `--out` selects an unclassified output outside automatic closure. Pin a default receipt before expiry or choose explicit output for lasting evidence.
+
+## Policy adoption commands
+
+`npm run engine:policy -- run|record|benchmark|audit` supplies the checked policy
+workflow, initially for Blindside. Built-in policies and trusted local TypeScript
+factory modules use the same game-owned observation/command adapter. `record` and
+`benchmark` require fresh output directories, retain source-pinned compiled bundles,
+original inputs/proposals, native results and independent audits; `audit` writes an
+exclusive new receipt. Benchmark writes its frozen protocol before cases execute.
+No policy module receives the hidden environment seed. See the
+[Blindside contract](../../docs/engineering/blindside-agent.md) for options, extension
+example, fairness limits, difficulty/metrics, reserved cohorts and isolated review.

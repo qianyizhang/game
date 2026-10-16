@@ -37,6 +37,14 @@ export const arenaSessionV1 = replayCodec({
   isCommand: isArenaCommand,
 });
 export type ArenaSession = Session<ArenaState, ArenaCommand>;
+/** Shared actor helpers retain the explicitly selected historical study environment. */
+export function arenaSessionForVersion(version: number) {
+  const codec = [arenaSessionV1, arenaSession].find(
+    (candidate) => candidate.rules.version === version,
+  );
+  if (!codec) throw new Error('Unsupported Hearth arena rules version.');
+  return codec;
+}
 export interface ArenaObservation {
   schema: 'hearth.arena-observation.v1';
   rulesVersion: number;
@@ -136,7 +144,11 @@ export function actArenaAgent(
   if (frame.step >= 10000) return reject('Arena replay command budget reached (10000).');
   const selected = frame.actions.find((action) => action.id === choice.action);
   if (!selected) return reject('Unknown action or inactive seat.');
-  const result = arenaSession.act(session, { type: 'seat', seat, action: selected.command });
+  const result = arenaSessionForVersion(session.replay.version).act(session, {
+    type: 'seat',
+    seat,
+    action: selected.command,
+  });
   if (result.error) return reject(result.error);
   const next = arenaFrame(result.session, seat);
   return {

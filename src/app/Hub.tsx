@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { GamePicker, type GameId } from './GamePicker';
 import './Hub.css';
 
+const BlindsidePolicyReview = lazy(() => import('../games/balatro/agent/Review'));
 const CartographerApp = lazy(() => import('../games/cartographer/ui/CartographerApp'));
 const DiabloApp = lazy(() => import('@card-workshop/diablo2'));
 const NightPassageApp = lazy(() => import('../games/night-passage/ui/NightPassageApp'));
@@ -23,6 +24,28 @@ const BattlegroundsApp = lazy(() =>
 
 const KEY = 'card-workshop.active-game';
 export default function Hub() {
+  const query = new URLSearchParams(location.search);
+  if (
+    query.get('review') === 'policy' &&
+    ['balatro', 'blindside'].includes(query.get('game') ?? '')
+  )
+    return (
+      <ContentBoundary>
+        <Suspense
+          fallback={
+            <main className="game-loading">
+              <p role="status">Opening policy review…</p>
+            </main>
+          }
+        >
+          <BlindsidePolicyReview />
+        </Suspense>
+      </ContentBoundary>
+    );
+  return <GameHub />;
+}
+
+function GameHub() {
   const [dccOpen, setDccOpen] = useState(
     () => new URLSearchParams(location.search).get('workbench') === 'dcc',
   );
@@ -96,7 +119,14 @@ export default function Hub() {
   const [game, setGame] = useState<GameId>(() => {
     try {
       const requested = new URLSearchParams(location.search).get('game');
-      if (requested === 'diablo2' || requested === 'cartographer' || requested === 'night-passage')
+      if (
+        requested === 'balatro' ||
+        requested === 'spire' ||
+        requested === 'battlegrounds' ||
+        requested === 'diablo2' ||
+        requested === 'cartographer' ||
+        requested === 'night-passage'
+      )
         return requested;
       const saved = localStorage.getItem(KEY);
       return saved === 'spire' ||

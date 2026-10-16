@@ -50,7 +50,8 @@
     "dcc:raven": "node packages/dcc-workbench/raven.ts",
     "dcc:boar": "node packages/dcc-workbench/boar.ts",
     "dcc:fox": "node packages/dcc-workbench/fox.ts",
-    "repo:canvas": "npm run dev --workspace @card-workshop/repo-canvas --"
+    "repo:canvas": "npm run dev --workspace @card-workshop/repo-canvas --",
+    "engine:policy": "node packages/workshop-tools/policy/cli.ts"
   },
   "dependencies": {
     "react": "19.3.0",

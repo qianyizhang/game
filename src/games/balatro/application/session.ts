@@ -1,7 +1,7 @@
 import { validCommand } from '../domain/commands';
 export { validCommand } from '../domain/commands';
 import { blindsideEvidence } from './evidence';
-import { replayCodec } from '../../../shared/replay';
+import { replayCodec, type Rules } from '../../../shared/replay';
 import { createRun, RULES_VERSION, transition } from '../domain/game';
 import { blindsideScenario } from './scenario';
 import { pins } from '../../../shared/contentPack';
@@ -10,11 +10,12 @@ import { JOKERS } from '../content/jokers';
 import { CONSUMABLES } from '../content/consumables';
 import { PACKS, VOUCHERS, TAGS } from '../content/shop';
 import { BOSSES } from '../content/blinds';
+import type { RunState, Command } from '../domain/types';
 
-export const blindsideSession = replayCodec({
+const rules = (version: number): Rules<RunState, Command> => ({
   evidence: blindsideEvidence,
   game: 'blindside',
-  version: RULES_VERSION,
+  version,
   content: pins(
     {
       jokers: JOKERS,
@@ -25,10 +26,13 @@ export const blindsideSession = replayCodec({
       tags: TAGS,
     },
     blindsidePacks,
-    RULES_VERSION,
+    version,
   ),
-  create: createRun,
-  createPractice: blindsideScenario,
+  create: (seed) => createRun(seed, version),
+  createPractice: (seed, setup) => blindsideScenario(seed, setup, version),
   transition,
-  isCommand: validCommand,
+  isCommand: (value): value is Command =>
+    validCommand(value) && (version >= 5 || value.type !== 'configure'),
 });
+
+export const blindsideSession = replayCodec({ ...rules(RULES_VERSION), compatible: [rules(4)] });

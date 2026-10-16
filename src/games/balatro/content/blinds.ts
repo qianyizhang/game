@@ -41,6 +41,9 @@ export function targetFor(run: Readonly<RunState>): number {
   return Math.floor(
     ANTE_TARGETS[run.ante - 1] *
       [1, 1.5, 2][run.blind] *
-      (boss === 'wall' ? 1.5 : boss === 'crown' ? 1.6 : 1),
+      (boss === 'wall' ? 1.5 : boss === 'crown' ? 1.6 : 1) *
+      (run.version >= 5
+        ? { relaxed: 0.75, standard: 1, severe: 1.35 }[run.difficulty ?? 'standard']
+        : 1),
   );
 }

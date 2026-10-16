@@ -83,7 +83,7 @@ describe('Night Market Joker decisions', () => {
     );
   });
   it('rejects pre-market replay meaning while round-tripping the current content manifest', () => {
-    expect(RULES_VERSION).toBe(4);
+    expect(RULES_VERSION).toBe(5);
     const session = blindsideSession.create('MARKET-REPLAY');
     expect(blindsideSession.decode(blindsideSession.encode(session))).toEqual(session);
     expect(() =>

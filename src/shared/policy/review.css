@@ -1,0 +1,148 @@
+.policy-review {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  min-width: 0;
+}
+.policy-review h1 {
+  font-size: clamp(1.7rem, 4vw, 2.8rem);
+}
+.policy-review h2 {
+  margin: 1.2rem 0 0.7rem;
+}
+.policy-review header,
+.policy-navigation,
+.policy-review-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+.policy-review header {
+  justify-content: space-between;
+}
+.policy-review input,
+.policy-review select {
+  color: inherit;
+  background: #202c2a;
+  border: 1px solid #73847d;
+  padding: 0.5rem;
+  max-width: 100%;
+}
+.policy-navigation {
+  padding: 0.8rem 0;
+}
+.policy-navigation input {
+  width: 5rem;
+}
+.np-review .policy-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.policy-review pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow: auto;
+  max-height: 28rem;
+  padding: 1rem;
+  border: 1px solid #52605b;
+  border-radius: 0.5rem;
+  background: #111b18;
+  font-size: 0.8rem;
+}
+.policy-review-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.policy-review-columns > section {
+  min-width: 0;
+}
+.policy-review-table {
+  overflow-x: auto;
+}
+.policy-review table {
+  min-width: 640px;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.policy-review td details pre {
+  max-width: 24rem;
+}
+.policy-review caption {
+  text-align: left;
+  margin: 0.7rem 0;
+}
+.policy-review th,
+.policy-review td {
+  padding: 0.65rem;
+  border-bottom: 1px solid #52605b;
+}
+.policy-review small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.policy-review tr[aria-current='true'] {
+  background: #283c33;
+}
+.policy-review-board {
+  background: #153329;
+  padding: 1rem;
+  border: 1px solid #527562;
+  border-radius: 0.5rem;
+}
+.policy-review-board .policy-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+.policy-review-board .playing-card {
+  flex: 0 0 94px;
+  width: 94px;
+  height: 136px;
+  cursor: default;
+}
+.policy-review-board .playing-card:disabled {
+  opacity: 1;
+}
+.policy-review-board dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.policy-review-board dd {
+  margin: 0.3rem 0;
+  font-weight: 600;
+}
+.policy-review-jokers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  padding: 0;
+}
+.policy-review-jokers li {
+  padding: 0.65rem;
+  background: #233d34;
+  border: 1px solid #5e786a;
+  border-radius: 0.4rem;
+}
+.policy-review [role='alert'] {
+  padding: 0.7rem;
+  border: 1px solid #d59d55;
+}
+@media (max-width: 760px) {
+  .policy-review-columns {
+    grid-template-columns: 1fr;
+  }
+  .policy-review-table {
+    font-size: 0.8rem;
+  }
+  .policy-navigation {
+    gap: 0.4rem;
+  }
+}

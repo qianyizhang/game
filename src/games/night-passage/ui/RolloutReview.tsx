@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { auditRollout, parseRollout, type Rollout, type RolloutAudit } from '../agent/rollout';
 import type { StateView } from '../domain/types';
 import './rollout-review.css';
+import { DecisionNavigator } from '../../../shared/policy/Navigator';
 
 interface Entry {
   name: string;
@@ -328,54 +329,19 @@ export default function RolloutReview({
           )}
           {row ? (
             <>
-              <div className="np-tools">
-                <button disabled={index === 0} onClick={() => move(0)}>
-                  First decision
-                </button>
-                <button disabled={index === 0} onClick={() => move(index - 1)}>
-                  Previous decision
-                </button>
-                <label>
-                  Decision{' '}
-                  <input
-                    type="number"
-                    min={1}
-                    max={active.rollout.decisions.length}
-                    aria-label="Decision number"
-                    value={index + 1}
-                    onChange={(e) => move(Number(e.target.value) - 1)}
-                  />{' '}
-                  / {active.rollout.decisions.length}
-                </label>
-                <button
-                  disabled={index === active.rollout.decisions.length - 1}
-                  onClick={() => move(index + 1)}
-                >
-                  Next decision
-                </button>
-                <button
-                  disabled={index === active.rollout.decisions.length - 1}
-                  onClick={() => move(active.rollout.decisions.length - 1)}
-                >
-                  Last decision
-                </button>
-                <button
-                  onClick={() => {
-                    beginImport();
-                    seek(row.before);
-                  }}
-                >
-                  Before decision
-                </button>
-                <button
-                  onClick={() => {
-                    beginImport();
-                    seek(row.after);
-                  }}
-                >
-                  After decision
-                </button>
-              </div>
+              <DecisionNavigator
+                index={index}
+                count={active.rollout.decisions.length}
+                onMove={move}
+                onBefore={() => {
+                  beginImport();
+                  seek(row.before);
+                }}
+                onAfter={() => {
+                  beginImport();
+                  seek(row.after);
+                }}
+              />
               <label>
                 Location{' '}
                 <select

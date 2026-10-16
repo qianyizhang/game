@@ -112,6 +112,13 @@ export function BlindsideApp({
   const game = useLocalGame(blindsideSession, 'FIRST-LIGHT');
   const run = game.state;
   const [view, setView] = useState<View>('play');
+  const [legacySave] = useState(() => {
+    try {
+      return localStorage.getItem('card-workshop.blindside.v4');
+    } catch {
+      return null;
+    }
+  });
   const [selected, setSelected] = useState<string[]>([]);
   const visibleSelection = selected.filter((id) => run.hand.includes(id));
   const preview =
@@ -159,6 +166,7 @@ export function BlindsideApp({
           scenarios={BLINDSIDE_SCENARIOS}
           summary={(s) => ({
             Phase: s.phase,
+            Difficulty: s.difficulty ?? 'standard',
             Ante: s.ante,
             Blind: s.blind + 1,
             Cash: s.cash,
@@ -178,6 +186,19 @@ export function BlindsideApp({
           {view === 'play' ? (
             <main className="game-layout">
               <div>
+                {legacySave && run.version >= 5 && !run.setupLocked && (
+                  <p className="small muted">
+                    A previous Standard run is saved.{' '}
+                    <button
+                      onClick={() => {
+                        if (game.restore(legacySave)) setSelected([]);
+                      }}
+                    >
+                      Restore v4 save
+                    </button>{' '}
+                    The original v4 save remains available.
+                  </p>
+                )}
                 <Playback
                   sequence={`${game.timelineRevision}-${run.seed}-${game.session.replay.commands.reduce((last, c, i) => (c.type === 'play' ? i : last), -1)}`}
                   frames={run.lastScore?.steps ?? []}

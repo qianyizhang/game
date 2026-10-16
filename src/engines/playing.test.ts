@@ -18,7 +18,7 @@ function lifecycle<S extends { seed: string; phase: string }, C extends { type: 
   engine: Engine<Session<S, C>, C>,
 ) {
   const saved = codec.decode(readFileSync(`tests/fixtures/${name}-win.json`, 'utf8'));
-  let position = codec.create(saved.replay.seed);
+  let position = codec.create(saved.replay.seed, undefined, saved.replay.version);
   const checked = new Set<string>();
   for (const command of saved.replay.commands) {
     const checkpoint = `${position.state.phase}/${command.type}`;

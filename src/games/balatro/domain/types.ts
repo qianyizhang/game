@@ -127,8 +127,13 @@ export interface SkipTag {
   id: 'investment' | 'economy' | 'orbital' | 'buffoon';
   hand: HandType;
 }
+export const DIFFICULTIES = ['relaxed', 'standard', 'severe'] as const;
+export type Difficulty = (typeof DIFFICULTIES)[number];
 export interface RunState {
   version: number;
+  /** Absent in historical v4 states, whose pressure is always Standard. */
+  difficulty?: Difficulty;
+  setupLocked?: boolean;
   seed: string;
   rng: number;
   nextId: number;
@@ -164,6 +169,7 @@ export interface RunState {
   history: string[];
 }
 export type Command =
+  | { type: 'configure'; difficulty: Difficulty }
   | { type: 'skipBlind' }
   | { type: 'buyPack'; id: string }
   | { type: 'choosePack'; id: string }

@@ -1,11 +1,26 @@
 import { object, integer, ids } from '../../../shared/scenario';
 import { JOKER_BY_ID } from '../content/jokers';
-import { createRun, transition } from '../domain/game';
-import { SUITS, type Suit } from '../domain/types';
+import { createRun, RULES_VERSION, transition } from '../domain/game';
+import { SUITS, type Difficulty, type Suit } from '../domain/types';
 
-export function blindsideScenario(seed: string, value: unknown) {
-  const setup = object(value, ['ante', 'blind', 'cash', 'jokers', 'deck']),
-    run = createRun(seed);
+export function blindsideScenario(seed: string, value: unknown, version = RULES_VERSION) {
+  const setup = object(value, [
+      'ante',
+      'blind',
+      'cash',
+      'jokers',
+      'deck',
+      ...(version >= 5 ? ['difficulty'] : []),
+    ]),
+    run = createRun(seed, version);
+  if (setup.difficulty !== undefined) {
+    const configured = transition(run, {
+      type: 'configure',
+      difficulty: setup.difficulty as Difficulty,
+    });
+    if (configured.error) throw new Error(configured.error);
+    Object.assign(run, configured.state);
+  }
   run.ante = integer(setup.ante, 'ante', 1, 8, 1);
   run.blind = integer(setup.blind, 'blind', 0, 2, 0);
   run.cash = integer(setup.cash, 'cash', 0, 999, 20);

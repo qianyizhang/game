@@ -5,7 +5,7 @@ import { HEROES, MINIONS } from '../content/minions';
 import { recruitAction } from '../domain/recruitment';
 import type { BGCommand, BGState, Player, Unit } from '../domain/types';
 import { hearthCommands } from './engine';
-import { bgSession } from './session';
+import { bgSession, bgSessionV5 } from './session';
 import { TAVERN_SPELLS } from '../content/spells';
 
 export type HearthSession = Session<BGState, BGCommand>;
@@ -168,7 +168,11 @@ export function actHearthAgent(session: HearthSession, choice: { step: unknown; 
     );
   const action = frame.actions.find((entry) => entry.id === choice.action);
   if (!action) return reject('Unknown action for this step.');
-  const result = bgSession.act(session, structuredClone(action.command));
+  const codec = [bgSessionV5, bgSession].find(
+    (candidate) => candidate.rules.version === session.replay.version,
+  );
+  if (!codec) return reject('Unsupported Hearth rules version.');
+  const result = codec.act(session, structuredClone(action.command));
   if (result.error) return reject(result.error);
   const next = hearthFrame(result.session);
   return {

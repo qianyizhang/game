@@ -97,7 +97,7 @@ function useGameSession<S extends { seed: string }, C>(
     observe(() =>
       beginEvidence(
         localStorage,
-        codec.rules,
+        activeCodec.rulesForVersion(next.replay.version),
         next,
         source,
         crypto.randomUUID(),
@@ -130,7 +130,7 @@ function useGameSession<S extends { seed: string }, C>(
         observe(() =>
           recordAccepted(
             localStorage,
-            codec.rules,
+            activeCodec.rulesForVersion(before.replay.version),
             before,
             command,
             after,

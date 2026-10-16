@@ -5,7 +5,7 @@ import { JOKER_BY_ID } from '../content/jokers';
 import { CONSUMABLE_LIMIT, JOKER_LIMIT, rerollPrice, sellPrice } from '../domain/game';
 import { HANDS } from '../domain/poker';
 import { isDebuffed } from '../domain/scoring';
-import type { Command, RunState, ScoreResult } from '../domain/types';
+import { DIFFICULTIES, type Command, type RunState, type ScoreResult } from '../domain/types';
 import { PlayingCard } from './Card';
 import { BossArt, ConsumableArt, JokerArt } from './Artwork';
 
@@ -26,7 +26,9 @@ export function Table({ run, selected, toggle, dispatch, preview, newRun }: Prop
     <div className="table-area">
       <div className="round-strip">
         <div>
-          <span className="eyebrow">ANTE {run.ante} / 8</span>
+          <span className="eyebrow">
+            ANTE {run.ante} / 8 · {run.difficulty ?? 'standard'}
+          </span>
           <h2>{run.blind === 2 ? boss.name : ['Small Blind', 'Big Blind'][run.blind]}</h2>
         </div>
         <div className="blind-track">
@@ -114,6 +116,33 @@ export function Table({ run, selected, toggle, dispatch, preview, newRun }: Prop
             <p>
               Score <strong>{number(targetFor(run))}</strong> points to clear this blind.
             </p>
+            {run.version >= 5 && !run.setupLocked && (
+              <label>
+                Difficulty{' '}
+                <select
+                  aria-label="Blindside difficulty"
+                  value={run.difficulty ?? 'standard'}
+                  onChange={(event) =>
+                    dispatch({
+                      type: 'configure',
+                      difficulty: event.target.value as (typeof DIFFICULTIES)[number],
+                    })
+                  }
+                >
+                  {DIFFICULTIES.map((difficulty) => (
+                    <option key={difficulty} value={difficulty}>
+                      {
+                        {
+                          relaxed: 'Relaxed · 75% targets',
+                          standard: 'Standard · original targets',
+                          severe: 'Severe · 135% targets',
+                        }[difficulty]
+                      }
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
             {run.blind === 2 && <p className="boss-warning">{boss.description}</p>}
             <button className="primary large" onClick={() => dispatch({ type: 'startBlind' })}>
               Play {run.blind === 2 ? 'Boss' : ['Small', 'Big'][run.blind]} Blind <span>↗</span>

@@ -88,3 +88,15 @@ keep raw histories in their existing protected homes.
   Any numerical tolerance belongs to an explicit diagnostic with its field scope,
   bound and observed differences; never apply it to hashes or silently normalize a
   frozen result. Follow the game's policy guide for the concrete audit contract.
+
+- **Dispatch historical environments completely:** version-aware decode alone is
+  insufficient. Accepted actions, replay prefixes, practice branches and evidence
+  metadata must use the replay's original rule environment. Preserve byte/state
+  witnesses before introducing compatibility; new defaults must not rewrite them.
+- **Validate evidence before rendering:** a guarded artifact envelope must also check
+  decision-row structure and rendered result types. Preserve damaged replay fields for inspection, while rejecting
+  null rows that would crash the review surface before it can show an audit.
+- **Canonicalize generated paths before pinning:** on macOS, `/var` and
+  `/private/var` can name the same temporary entry. Excluding only the original path
+  leaves a deleted dependency in provenance and breaks unchanged-source comparison.
+  Filter the canonical generated entry and verify pins after temporary cleanup.

@@ -15,7 +15,7 @@ import {
   prepareTags,
   shopPrice,
 } from './shopExtras';
-export const RULES_VERSION = 4;
+export const RULES_VERSION = 5;
 export const JOKER_LIMIT = 5;
 export const CONSUMABLE_LIMIT = 2;
 const note = (run: RunState, message: string) => {
@@ -34,14 +34,17 @@ export const rerollPrice = (run: RunState) =>
   5 - (run.vouchers.includes('rerolls') ? 2 : 0) + run.rerolls;
 export const sellPrice = (paid: number) => Math.max(1, Math.floor(paid / 2));
 
-export function createRun(inputSeed: string): RunState {
+export function createRun(inputSeed: string, version = RULES_VERSION): RunState {
+  if (version !== 4 && version !== RULES_VERSION)
+    throw new Error('Unsupported Blindside rules version.');
   const seed = inputSeed.trim().slice(0, 64) || 'FIRST-LIGHT';
   const [bosses, rng] = shuffle(
     BOSSES.filter((b) => b.id !== 'crown'),
     hashSeed(seed),
   );
   const run: RunState = {
-    version: RULES_VERSION,
+    version,
+    ...(version >= 5 ? { difficulty: 'standard' as const, setupLocked: false } : {}),
     seed,
     rng,
     nextId: 1,
@@ -168,6 +171,17 @@ export function transition(previous: RunState, command: Command): Transition {
   )
     return reject('Finish this pack first.');
   switch (command.type) {
+    case 'configure': {
+      if (run.version < 5 || run.setupLocked)
+        return reject(
+          'Difficulty can only be selected before the first gameplay action in a new v5 run.',
+        );
+      if (!['relaxed', 'standard', 'severe'].includes(command.difficulty))
+        return reject('Choose Relaxed, Standard or Severe difficulty.');
+      run.difficulty = command.difficulty;
+      run.target = targetFor(run);
+      break;
+    }
     case 'skipBlind': {
       if (run.phase !== 'ready' || run.blind === 2)
         return reject('Only a Small or Big Blind can be skipped.');
@@ -465,5 +479,6 @@ export function transition(previous: RunState, command: Command): Transition {
     run.phase = 'lost';
     note(run, 'Not enough cards remain to play a legal hand.');
   }
+  if (run.version >= 5 && command.type !== 'configure') run.setupLocked = true;
   return { state: run };
 }

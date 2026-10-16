@@ -1,4 +1,4 @@
-import type { Command } from './types';
+import { DIFFICULTIES, type Command } from './types';
 
 export function validCommand(value: unknown): value is Command {
   if (!value || typeof value !== 'object') return false;
@@ -6,6 +6,8 @@ export function validCommand(value: unknown): value is Command {
   const ids = (v: unknown) =>
     Array.isArray(v) && v.length <= 5 && v.every((id) => typeof id === 'string' && id.length < 80);
   switch (c.type) {
+    case 'configure':
+      return DIFFICULTIES.some((difficulty) => difficulty === c.difficulty);
     case 'skipBlind':
     case 'skipPack':
     case 'buyVoucher':

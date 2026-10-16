@@ -1,6 +1,6 @@
 import { decideSpellRecruitment } from '../ai/spell-policy';
 import { activeSeat, type ArenaCommand } from '../domain/arena';
-import { arenaFrame, arenaSession, type ArenaSession } from './arena';
+import { arenaFrame, arenaSessionForVersion, type ArenaSession } from './arena';
 
 /** Continue journaled rival turns, stopping at a human turn or a combat to watch. */
 export function advanceRivals(initial: ArenaSession, humanSeat = 0): ArenaCommand[] {
@@ -23,7 +23,7 @@ export function advanceRivals(initial: ArenaSession, humanSeat = 0): ArenaComman
               state.arena.config!.seats[seat!].style,
             ).command,
           };
-    const result = arenaSession.act(session, command);
+    const result = arenaSessionForVersion(session.replay.version).act(session, command);
     if (result.error) throw new Error(result.error);
     commands.push(command);
     session = result.session;
