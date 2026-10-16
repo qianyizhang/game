@@ -55,7 +55,7 @@ the action menu must remain equal too.
 
 ## Difficulty and results
 
-Campaign rules v7 are the development baseline with these pressure settings. The [native5 fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
+Current built-ins use **policy8 under native7** with these pressure settings. The [native5 fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
 failed one contrast; the [native6 Standard-relief screen](../research/experiments/2026-10-17-emberwake-standard-relief-6.md)
 failed two. The [native7 Standard-pressure screen](../research/experiments/2026-10-17-emberwake-standard-pressure-7.md)
 also fails overall: all six difficulty comparisons pass on consumed development
@@ -193,6 +193,30 @@ This longer public approximation does not predict wall response, future shots or
 enemy movement. The [policy8 record](../research/experiments/2026-10-16-emberwake-recovery-policy-8.md)
 separates local native counterfactuals from campaign development results. Additional
 public candidate/geometry work is metered; no equal-compute strength claim is made.
+
+Rejected policy9 tested timed projectile ranking for nonpending Survival warning
+escapes at every health level, including a low-health empty belt. It accounted for
+disclosed stamina/slow state, alignment and speed transitions. Pending ten-tick
+recovery, nonwarning behavior and Immediate/Growth behavior stayed fixed.
+Teleport endpoint geometry stayed fixed; blink selection could change. This was
+an experimental policy change under native7/observation3/score2, not a native rebalance.
+
+Its bounded Necromancer Standard DEV06 continuation used the original policy8
+prefix at tick 16,465: policy8 died after 14 executed ticks, while policy9 retained
+258/325 HP through the fixed 40-tick cap. The counterfactual policy9 branch used
+recorded policy8 public-history warmup. Accepted warmup commands matched, but six
+full proposal/diagnostic outputs differed; full-output identity is not claimed.
+The [D11 development result](../research/experiments/2026-10-17-emberwake-policy-9-development.md)
+rejects policy9 after the full cross-hero screen. A local escape success did not
+establish campaign strength. Current built-ins and the delegating example remain on policy8.
+
+The rejected traces expose two unresolved control boundaries: Standard Barbarian
+DEV01 used damaging Leap into disclosed warnings before later HP losses, and Severe
+Barbarian DEV09 pursued a remembered foe toward three disclosed incoming shots.
+These are recorded-action findings, not executed alternatives or exact damage
+attribution. A successor should check the movement/continuation boundary that
+advances time, preserve finite progress and validate actual native continuations;
+it must not infer campaign strength from either local repair.
 
 BFS must also respect the current action menu at its first edge. A fractional avatar
 footprint can make the nominally shortest adjacent center unavailable because it
@@ -353,5 +377,37 @@ five technical executions remain historical and excluded too.
 
 This negative consumed screen does not support population, human-difficulty or
 equal-compute claims. The fixed thresholds and old5/6 negatives remain intact;
-confirmation7 stays dormant. The next slice diagnoses the two policy gaps with
-native7 pressure fixed, before any separately declared fresh confirmation.
+confirmation7 stays dormant. The subsequent policy9 repair was tested with native7
+pressure fixed; its rejection does not relabel these policy8 results.
+
+The [rejected policy9 D11 screen](../research/experiments/2026-10-17-emberwake-policy-9-development.md)
+([machine receipt](../research/experiments/2026-10-17-emberwake-policy-9-development.json))
+retains **198 consumed attempts: 115 victories, 70 deaths, 13 living stops and no
+execution errors**. Its producer analysis passes seven of nine contrasts, including
+all six difficulty comparisons. Two Standard Survival–Immediate directions fail
+against the same 0.20 net material threshold over all ten matched pairs:
+
+| Hero        | Practical better/worse/tied | Net material effect | Required |
+| ----------- | --------------------------- | ------------------- | -------- |
+| Barbarian   | 4/6/0                       | −0.20               | ≥0.20    |
+| Necromancer | 4/3/3                       | 0.10                | ≥0.20    |
+
+Barbarian Standard Survival also fails the completion floor at **7/10** wins
+(required 8/10); Barbarian Severe Survival/Growth has **0/12** observed victories
+(required at least 1/12). The producer reports **108 Immediate/Growth native journals and full states**
+matching original policy8 under native7 exactly, with no normalization. Five separate
+Growth technical executions and the two local branches are outside the 198.
+The dated report owns the final independent audit's actual scope; these consumed
+results have no population, human-difficulty or equal-compute interpretation.
+
+Policy9 is not adopted; the three tested source files return exactly to committed
+policy8, retaining native7/observation3/score2 and every original negative result.
+Version9 remains consumed by its recordings even though promotion was rejected.
+A later revision of this built-in family needs a fresh identity, next
+`emberwake-policy-10`; never reuse `emberwake-policy-9`.
+After the restore, the current policy8 factory cannot audit policy9 decision
+reproduction: use the retained frozen policy9 runtime bundle and complete source
+snapshots for factory audits.
+Native7 journal replay and the original recorded policy knowledge remain valid and
+inspectable. Preserve original policy9 inputs, proposals, scores and receipts without
+relabeling them as policy8 or retrospectively rescoring them.
