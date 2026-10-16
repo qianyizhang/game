@@ -55,7 +55,7 @@ the action menu must remain equal too.
 
 ## Difficulty and results
 
-Campaign rules v5 use these fixed pressure settings. The [fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
+Campaign rules v5 remain the committed baseline with these fixed pressure settings. The [fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
 passes eight of nine declared contrasts; Necromancer Survival Standard–Severe remains
 insufficiently separated. The full ladder is not calibrated.
 
@@ -295,3 +295,14 @@ material effect, Holm p=0.149613). Its Standard/Severe wins are 46/60 and 37/60.
 All 1,170 original-input/native sequences and 27 full factory reproductions were
 independently audited. Keep this negative confirmation intact; further development
 and a new prospective namespace are required before claiming full calibration.
+
+The [native6 Standard-relief development](../research/experiments/2026-10-17-emberwake-standard-relief-6.md)
+tested Standard damage ×5 under a separate rules identity while retaining Relaxed
+and Severe. Its 198 consumed attempts produced 128 victories, 56 deaths and
+14 living budget stops, with no execution errors. Seven of nine separation checks
+passed; Necromancer Immediate Relaxed–Standard had ten practical ties, and its
+Standard Survival–Immediate advantage was 0.10 against the fixed 0.20 threshold.
+All six completion floors, three Severe-existence gates and 132 unchanged-tier
+controls passed. This negative candidate is not promoted to fresh confirmation;
+score2 and every threshold remain unchanged. Original native6 source, recordings
+and native histories are retained separately from the committed native5 baseline.

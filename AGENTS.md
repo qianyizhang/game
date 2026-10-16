@@ -11,7 +11,7 @@ Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone B
 - Persist only validated saves. Content/rule changes require a rules-version bump when they change replay meaning.
 - Test interaction order, resource accounting, invalid actions, and run lifecycle. Keep tests meaningful.
 - Prefer overall behavior and end-to-end journeys. For test additions, consolidation or removal, read [testing policy](docs/engineering/testing.md).
-- For policy interfaces or extensions, difficulty/score evaluation, or rollout recording and review, follow [policy development](docs/engineering/policy-development.md).
+- For policy interfaces, rollout recording/review, or strength/difficulty/score evaluation, read [policy development](docs/engineering/policy-development.md) and the owning game's contract before implementation or study preparation. Apply its trace-derived preflight checks before dispatch.
 - Preserve concurrent edits. No subagent delegation is required by this file.
 
 ## Governance
