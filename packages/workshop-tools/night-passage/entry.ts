@@ -7,7 +7,11 @@ export {
   CONTROL_PRESETS,
   controlConfig,
 } from '../../../src/games/night-passage/application/control';
-export { createPolicy, POLICIES } from '../../../src/games/night-passage/agent/policy';
+export {
+  createPolicy,
+  POLICIES,
+  POLICY_VERSION,
+} from '../../../src/games/night-passage/agent/policy';
 
 export {
   restoreChronicle,

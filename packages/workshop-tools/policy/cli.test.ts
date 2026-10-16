@@ -42,3 +42,50 @@ void test('recorded Cartographer wire identity routes back through the public au
     await rm(directory, { recursive: true, force: true });
   }
 });
+
+void test('common CLI preserves native Night Passage schema, custom timing and unavailable unknown reproduction', async () => {
+  const directory = await mkdtemp(resolve(tmpdir(), 'policy-cli-native-'));
+  const cli = resolve(repositoryRoot, 'packages/workshop-tools/policy/cli.ts');
+  const example = resolve(repositoryRoot, 'src/games/night-passage/agent/example.ts');
+  const run = (args: string[]) =>
+    execFileSync(process.execPath, [cli, ...args], {
+      cwd: repositoryRoot,
+      encoding: 'utf8',
+      stdio: 'pipe',
+    });
+  try {
+    const episode = resolve(directory, 'recording');
+    run([
+      'record',
+      '--game',
+      'night-passage',
+      '--policy-module',
+      example,
+      '--max-actions',
+      '10',
+      '--max-ticks',
+      '8',
+      '--out',
+      episode,
+    ]);
+    const input = resolve(episode, 'rollout.json');
+    const recorded = JSON.parse(await readFile(input, 'utf8')) as {
+      schema: string;
+      decisions: { timing: unknown }[];
+    };
+    assert.equal(recorded.schema, 'night-passage-rollout-1');
+    assert.ok(recorded.decisions.some((row) => row.timing !== null));
+    const receipt = resolve(directory, 'matching.json');
+    run(['audit', '--input', input, '--policy-module', example, '--out', receipt]);
+    const audit = JSON.parse(await readFile(receipt, 'utf8')) as Record<string, unknown>;
+    for (const key of ['integrity', 'replay', 'inputs', 'decisions'])
+      assert.equal(audit[key], 'passed');
+    const unknown = resolve(directory, 'unknown.json');
+    run(['audit', '--input', input, '--out', unknown]);
+    const independent = JSON.parse(await readFile(unknown, 'utf8')) as Record<string, unknown>;
+    for (const key of ['integrity', 'replay', 'inputs']) assert.equal(independent[key], 'passed');
+    assert.equal(independent.decisions, 'unavailable');
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});

@@ -295,20 +295,60 @@ Accepted 2026-10-16 after the design interview:
 ## Adoption sequence
 
 Accepted direction on 2026-10-16: establish this guide first, then complete one game
-at a time. The rows below are a starting inventory, not certification against this
-new standard. Update each row with its game contract and dated evidence when adopted.
+at a time. The rows link adopted mechanisms and their measured limits. Dated reports
+bound playing-strength and difficulty claims; unresolved calibration stays explicit.
 
-| Order | Game                 | Starting point and remaining adoption work                                                                                                                                                                                                                                                                                                                                                          |
-| ----- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1     | Night Passage        | [Adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md): extensible constrained policies, original inputs/proposals, exact CLI audit and multi-rollout spectator navigation with policy/evaluator perspectives. Existing calibration remains the strength evidence; old recordings lack original knowledge and prefix branching is not offered.                        |
-| 2     | Blindside            | [Policy contract](blindside-agent.md): restricted observations, local TS factories, immediate/survival/growth strategies, three selectable target tiers, v4 replay continuity, shared recording/audit/navigation and isolated original-input review. Dated evaluation evidence accompanies this adoption; uncertainty remains explicit.                                                             |
-| 3     | Spire                | [Policy contract](spire-agent.md) and [adoption evidence](../research/experiments/2026-10-16-spire-policy.md): restricted public legal menus, local TS factories, three priorities, both characters at Ascensions 0/2/5, shared recording/audit/review and 540 audited episodes. Sparse wins leave strength and win-rate calibration open; progress differences remain qualified.                   |
-| 4     | Last Hearth          | [Policy contract](hearth-policy.md) and [adoption evidence](../research/experiments/2026-10-16-hearth-policy.md): v6 spell-aware policies, opaque public identity, three starting-health tiers, all-actor native replay audit, isolated original-input review and 1,350 audited episodes. Original v1/v2 environments and frozen v5 results remain intact; strength ordering is qualified.          |
-| 5     | Emberwake            | [Policy contract](emberwake-policy.md) and [adoption evidence](../research/experiments/2026-10-16-emberwake-policy.md): conservative sensors, local factories, three damage tiers, first-death attempts, native packed-tick replay and original-input review. All 810 attempted episodes audited; 781 living timeouts and no victories limit full-campaign strength and difficulty calibration.     |
-| 6     | Dungeon Cartographer | [Policy contract](cartographer-policy.md) and [adoption evidence](../research/experiments/2026-10-16-cartographer-policy.md): public announced-turn forecasts, extensible priorities, three health tiers, v1 continuity and original-input review. All 270 recorded episodes audited and won; saturated results distinguish resource/turn tradeoffs but leave win-rate difficulty calibration open. |
+| Order | Game                 | Starting point and remaining adoption work                                                                                                                                                                                                                                                                                                                                                                                        |
+| ----- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1     | Night Passage        | [Adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md) and [workflow evidence](../research/experiments/2026-10-16-policy-workflow.md): constrained native policies, local TS factories, original-input review and per-case audited study backend behind the common CLI. Existing calibration remains strength evidence; old recordings lack original knowledge and prefix branching is not offered. |
+| 2     | Blindside            | [Policy contract](blindside-agent.md): restricted observations, local TS factories, immediate/survival/growth strategies, three selectable target tiers, v4 replay continuity, shared recording/audit/navigation and isolated original-input review. Dated evaluation evidence accompanies this adoption; uncertainty remains explicit.                                                                                           |
+| 3     | Spire                | [Policy contract](spire-agent.md) and [adoption evidence](../research/experiments/2026-10-16-spire-policy.md): restricted public legal menus, local TS factories, three priorities, both characters at Ascensions 0/2/5, shared recording/audit/review and 540 audited episodes. Sparse wins leave strength and win-rate calibration open; progress differences remain qualified.                                                 |
+| 4     | Last Hearth          | [Policy contract](hearth-policy.md) and [adoption evidence](../research/experiments/2026-10-16-hearth-policy.md): v6 spell-aware policies, opaque public identity, three starting-health tiers, all-actor native replay audit, isolated original-input review and 1,350 audited episodes. Original v1/v2 environments and frozen v5 results remain intact; strength ordering is qualified.                                        |
+| 5     | Emberwake            | [Policy contract](emberwake-policy.md) and [adoption evidence](../research/experiments/2026-10-16-emberwake-policy.md): conservative sensors, local factories, three damage tiers, first-death attempts, native packed-tick replay and original-input review. All 810 attempted episodes audited; 781 living timeouts and no victories limit full-campaign strength and difficulty calibration.                                   |
+| 6     | Dungeon Cartographer | [Policy contract](cartographer-policy.md) and [adoption evidence](../research/experiments/2026-10-16-cartographer-policy.md): public announced-turn forecasts, extensible priorities, three health tiers, v1 continuity and original-input review. All 270 recorded episodes audited and won; saturated results distinguish resource/turn tradeoffs but leave win-rate difficulty calibration open.                               |
 
 For each game, close with a working extension example, complete-episode evidence,
 boundary tests including a leak counterexample, audited replay/decision linkage,
 usable inspection journeys, and the frozen policy × difficulty report. Record
 uncertain performance separation as remaining calibration work. Keep historical
 formats and evidence intact; adopt this contract through versioned new work.
+
+## Common CLI, game-owned policies
+
+Use `npm run engine:policy -- run|record|benchmark|audit` across all six games.
+Every extension is a trusted local TS module, compiled and source-pinned with its
+selected game. The factory's public input, command type, work model and timing remain
+game-owned.
+
+| CLI selector    | Factory and strategies                                  | Extension example                                         | Owning contract                         |
+| --------------- | ------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------- |
+| `night-passage` | Native `PolicyPlayer`; Quick/Balanced/Deliberate effort | [example](../../src/games/night-passage/agent/example.ts) | [Night Passage](night-passage-agent.md) |
+| `blindside`     | `PolicyFactory`; Immediate/Survival/Growth              | [example](../../src/games/balatro/agent/example.ts)       | [Blindside](blindside-agent.md)         |
+| `spire`         | `PolicyFactory`; Immediate/Survival/Growth              | [example](../../src/games/spire/agent/example.ts)         | [Spire](spire-agent.md)                 |
+| `hearth`        | `PolicyFactory`; Immediate/Survival/Growth              | [example](../../src/games/battlegrounds/agent/example.ts) | [Last Hearth](hearth-policy.md)         |
+| `emberwake`     | `PolicyFactory`; Immediate/Survival/Growth              | [example](../../packages/diablo2/src/agent/example.ts)    | [Emberwake](emberwake-policy.md)        |
+| `cartographer`  | `PolicyFactory`; Immediate/Survival/Growth              | [example](../../src/games/cartographer/agent/example.ts)  | [Cartographer](cartographer-policy.md)  |
+
+```sh
+npm run engine:policy -- record --game cartographer --policy-module src/games/cartographer/agent/example.ts --out test-results/new-policy-episode
+npm run engine:policy -- audit --input test-results/new-policy-episode/rollout.json --out test-results/new-policy-audit.json --policy-module src/games/cartographer/agent/example.ts
+```
+
+`--setup` contains game-owned configuration. The five shared-recording adapters use
+`--max-decisions`, independent `--policy-seed` and JSON `--policy-options`. Night Passage
+uses native `--max-actions` (including evaluator start), `--max-ticks` and public
+`PlayerConfig`; unsupported shared flags fail explicitly. Native work totals determine
+control latency and must retain their breakdown.
+
+`benchmark --split development|evaluation` freezes a ten/twenty-block study before
+execution and retains original rollout/audit evidence for each attempted case. Report
+game-owned setups and separate character/hero/weapon strata. Night Passage's native
+audited backend preserves its delayed controller and score model. Its explicit
+`--suite training|held-out` path and old native `benchmark`/`evaluate` commands retain
+their labelled historical semantics. A summary-only legacy run cannot supply missing
+original knowledge retroactively or substitute for a recorded study.
+
+Audit auto-detects each recorded identity, including Night Passage's native schema.
+An implementation that is absent leaves policy reproduction unavailable while native
+replay and information-boundary checks remain independent. Keep new selector/wire-ID
+mappings covered by an actual record → CLI audit regression.

@@ -66,6 +66,7 @@ export async function withRuntime<T>(
           'policy/pool.ts',
           'policy/worker.ts',
           'runtime-bundle.ts',
+          'io.ts',
         ].map(async (name) => {
           const path = resolve(repositoryRoot, 'packages/workshop-tools', name);
           return [relative(repositoryRoot, path), sha256(await readFile(path))] as const;

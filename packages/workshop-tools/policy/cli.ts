@@ -1,24 +1,43 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, relative, resolve } from 'node:path';
 import { freshDirectory, repositoryRoot, reportFailure } from '../io.ts';
+import { policyMain, type PolicyMode } from '../night-passage/policy-cli.ts';
 import { sha256 } from '../runtime-bundle.ts';
 import { withRuntime } from './runtime.ts';
 import { auditPassed, benchmark, cohortSeeds } from './study.ts';
 import type { JsonObject } from '../../../src/shared/policy/types';
 
-const usage = `policy run|record --game blindside|spire|hearth|emberwake|cartographer [--policy immediate|survival|growth | --policy-module ./policy.ts]
+const usage = `policy run|record --game blindside|spire|hearth|emberwake|cartographer|night-passage [--policy immediate|survival|growth | --policy-module ./policy.ts]
   [--seed SEED] [--setup JSON] [--difficulty relaxed|standard|severe] [--policy-seed SEED] [--policy-options JSON] [--max-decisions N]
-policy record --game blindside|spire|hearth|emberwake|cartographer --out NEW_DIRECTORY [same options]
-policy benchmark --game blindside|spire|hearth|emberwake|cartographer --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
+policy record --game blindside|spire|hearth|emberwake|cartographer|night-passage --out NEW_DIRECTORY [same options]
+policy benchmark --game blindside|spire|hearth|emberwake|cartographer|night-passage --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
 policy audit --input ROLLOUT --out NEW_RECEIPT [--policy-module ./policy.ts]
-A local TS module default-exports a game-typed PolicyFactory. It is trusted in-process code.
+A local TS module default-exports a game-typed PolicyFactory (Night Passage: native PolicyPlayer). It is trusted in-process code.
+Night Passage policies are quick|balanced|deliberate; preserve --max-actions/--max-ticks and native PolicyPlayer timing. Benchmark uses recorded 10/20-block studies; explicit --suite training|held-out selects legacy summaries.
 Run prints result/audit; record retains exact knowledge, replay, audit and compiled source-pinned bundle.
 Benchmark freezes the protocol before execution; errors/timeouts remain attempted cases.`;
-try {
+async function main() {
   const [mode = 'help', ...args] = process.argv.slice(2);
   if (mode === 'help' || mode === '--help') console.log(usage);
   else {
     if (!['run', 'record', 'benchmark', 'audit'].includes(mode)) throw new Error(usage);
+    const inputIndex = args.indexOf('--input');
+    let nativeBySchema = false;
+    if (mode === 'audit' && inputIndex >= 0 && args[inputIndex + 1] !== undefined) {
+      const artifact: unknown = JSON.parse(await readFile(resolve(args[inputIndex + 1]), 'utf8'));
+      nativeBySchema =
+        !!artifact &&
+        typeof artifact === 'object' &&
+        'schema' in artifact &&
+        artifact.schema === 'night-passage-rollout-1';
+    }
+    if (
+      args.some((value, index) => value === '--game' && args[index + 1] === 'night-passage') ||
+      nativeBySchema
+    ) {
+      await policyMain(mode as PolicyMode, args);
+      return;
+    }
     const allowed =
       mode === 'audit'
         ? ['input', 'out', 'policy-module']
@@ -72,7 +91,7 @@ try {
       game !== 'cartographer'
     )
       throw new Error(
-        'Select --game blindside, spire, hearth, emberwake or cartographer. Other adapters are not adopted yet.',
+        'Select --game blindside, spire, hearth, emberwake, cartographer or night-passage.',
       );
     if (options.setup && options.difficulty)
       throw new Error('Choose --setup or --difficulty, not both.');
@@ -254,6 +273,9 @@ try {
       },
     );
   }
+}
+try {
+  await main();
 } catch (error) {
   reportFailure(error);
 }

@@ -1,9 +1,9 @@
 import { createInterface } from 'node:readline';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { dirname, relative, resolve } from 'node:path';
-import { freshDirectory, repositoryRoot } from '../io.ts';
-import { sha256 } from '../runtime-bundle.ts';
+import { dirname, resolve } from 'node:path';
+import { repositoryRoot, sha256 } from '../runtime-bundle.ts';
 import { withRuntime } from './runtime.ts';
+import { policyMain } from './policy-cli.ts';
 import { createProtocol } from './protocol.ts';
 import { evaluate } from './evaluate.ts';
 import type { Difficulty } from '../../../src/games/night-passage/domain/contracts';
@@ -15,12 +15,13 @@ const usage = `night-passage serve
 night-passage play [--seed SEED] [--weapon sword|spear|shield|bow|fists] [--out REPORT] [--replay FILE]
 night-passage benchmark [--suite training|held-out] [--out REPORT]
 night-passage record --out NEW_DIRECTORY [--seed SEED] [--weapon WEAPON] [--max-actions N] [--max-ticks N]
-night-passage audit --input ROLLOUT --out NEW_RECEIPT
+night-passage audit --input ROLLOUT --out NEW_RECEIPT [--policy-module ./policy.ts]
 night-passage evaluate --split development|evaluation --pool N --seeds N --controls yes|no --witnesses yes|no --out REPORT
 
 serve: newline-delimited JSON requests on stdin; one JSON response per line on stdout.
 Operations: reset (seed, control, policy, rules), observe, step (command, workUnits), suggest, act, export. Optional id is echoed.
 play/benchmark: fresh profile, Root/Feather runes, fixed simulation budgets. No training occurs.
+Local extensions: play, benchmark and record accept --policy-module ./policy.ts (default-export PolicyPlayer).
 Options: --difficulty standard|veteran|ordeal --control exact|light|standard|heavy --policy quick|balanced|deliberate --rules night-passage-4|night-passage-5.`;
 
 async function save(path: string, content: string) {
@@ -31,33 +32,30 @@ async function save(path: string, content: string) {
 
 try {
   const [mode = 'help', ...args] = process.argv.slice(2);
-  if (mode === 'help' || mode === '--help') {
+  if (mode === 'record' || mode === 'audit') {
+    await policyMain(mode, args);
+  } else if (mode === 'help' || mode === '--help') {
     console.log(usage);
   } else {
-    if (!['serve', 'play', 'benchmark', 'evaluate', 'record', 'audit'].includes(mode))
-      throw new Error(usage);
+    if (!['serve', 'play', 'benchmark', 'evaluate'].includes(mode)) throw new Error(usage);
     const allowed =
-      mode === 'record'
+      mode === 'play'
         ? [
             'seed',
             'weapon',
             'out',
+            'replay',
             'difficulty',
             'control',
             'policy',
             'rules',
-            'max-actions',
-            'max-ticks',
+            'policy-module',
           ]
-        : mode === 'audit'
-          ? ['input', 'out']
-          : mode === 'play'
-            ? ['seed', 'weapon', 'out', 'replay', 'difficulty', 'control', 'policy', 'rules']
-            : mode === 'benchmark'
-              ? ['suite', 'out', 'difficulty', 'control', 'policy', 'rules']
-              : mode === 'evaluate'
-                ? ['split', 'pool', 'seeds', 'out', 'controls', 'witnesses', 'difficulty']
-                : [];
+        : mode === 'benchmark'
+          ? ['suite', 'out', 'difficulty', 'control', 'policy', 'rules', 'policy-module']
+          : mode === 'evaluate'
+            ? ['split', 'pool', 'seeds', 'out', 'controls', 'witnesses', 'difficulty']
+            : [];
     const options: Record<string, string> = {};
     for (let index = 0; index < args.length; index += 2) {
       const key = args[index].slice(2),
@@ -103,97 +101,10 @@ try {
       policy: policy as Policy,
       rules: rules as 'night-passage-4' | 'night-passage-5',
     };
-    if ((mode === 'record' || mode === 'audit') && !options.out)
-      throw new Error('A new output path is required.');
-    if (mode === 'audit' && !options.input) throw new Error('An input rollout is required.');
-    if (mode === 'record' && control === 'exact')
-      throw new Error('Exact is a replay-only diagnostic; record requires constrained controls.');
-    const recordingDirectory =
-      mode === 'record' ? await freshDirectory(resolve(options.out)) : undefined;
+    if (options.policy && options['policy-module'])
+      throw new Error('Choose a built-in OR a local module.');
     await withRuntime(
       async (runtime, provenance) => {
-        if (mode === 'record') {
-          const rollout = await runtime.recordEpisode(
-            {
-              ...episodeOptions,
-              seed: options.seed ?? 'a-light-in-the-dark',
-              weapon: weapon as WeaponId,
-              maxActions: Number(options['max-actions'] ?? 20_000),
-              maxTicks: Number(options['max-ticks'] ?? 120_000),
-            },
-            {
-              ...provenance,
-              runtime: `${process.version} / ${process.platform} / ${process.arch}`,
-            },
-          );
-          const audit = await runtime.auditRollout(rollout);
-          for (const [path, expected] of Object.entries({
-            ...provenance.sourceDigests,
-            ...provenance.toolDigests,
-          }))
-            if (sha256(await readFile(path)) !== expected)
-              throw new Error(`Source drift during recording: ${path}`);
-          const artifacts = {
-            'rollout.json': JSON.stringify(rollout) + '\n',
-            'replay.json': rollout.replay,
-            'audit.json': JSON.stringify(audit, null, 2) + '\n',
-          };
-          for (const [name, content] of Object.entries(artifacts))
-            await writeFile(resolve(recordingDirectory!, name), content, { flag: 'wx' });
-          const manifest = {
-            schema: 'night-passage-rollout-manifest-1',
-            episode: rollout.episode,
-            decisions: rollout.decisions.length,
-            provenance,
-            artifacts: Object.fromEntries(
-              Object.entries(artifacts).map(([name, content]) => [name, sha256(content)]),
-            ),
-            review: relative(repositoryRoot, recordingDirectory!).startsWith('..')
-              ? null
-              : `/?game=night-passage&watch=1&rollout=${encodeURIComponent('/' + relative(repositoryRoot, recordingDirectory!) + '/rollout.json')}`,
-          };
-          await writeFile(
-            resolve(recordingDirectory!, 'manifest.json'),
-            JSON.stringify(manifest, null, 2) + '\n',
-            { flag: 'wx' },
-          );
-          process.stdout.write(
-            JSON.stringify({ directory: recordingDirectory, ...manifest, audit }, null, 2) + '\n',
-          );
-          if (
-            audit.replay !== 'passed' ||
-            audit.integrity !== 'passed' ||
-            audit.inputs !== 'passed' ||
-            audit.decisions === 'failed'
-          )
-            process.exitCode = 1;
-          return;
-        }
-        if (mode === 'audit') {
-          const rollout = runtime.parseRollout(await readFile(options.input, 'utf8'));
-          const audit = await runtime.auditRollout(rollout);
-          const receipt = {
-            ...audit,
-            rolloutDigest: rollout.digest,
-            provenance,
-            originalSourceMatches:
-              JSON.stringify(rollout.provenance?.sourceDigests) ===
-              JSON.stringify(provenance.sourceDigests),
-          };
-          await mkdir(dirname(resolve(options.out)), { recursive: true });
-          await writeFile(resolve(options.out), JSON.stringify(receipt, null, 2) + '\n', {
-            flag: 'wx',
-          });
-          process.stdout.write(JSON.stringify(receipt, null, 2) + '\n');
-          if (
-            audit.replay !== 'passed' ||
-            audit.integrity !== 'passed' ||
-            audit.inputs !== 'passed' ||
-            audit.decisions === 'failed'
-          )
-            process.exitCode = 1;
-          return;
-        }
         if (mode === 'serve') {
           const handle = createProtocol(runtime);
           const lines = createInterface({ input: process.stdin, crlfDelay: Infinity });
@@ -224,11 +135,22 @@ try {
             : mode === 'play'
               ? runtime.runEpisode({
                   ...episodeOptions,
+                  ...(runtime.custom ? { player: runtime.custom } : {}),
                   seed: options.seed ?? 'a-light-in-the-dark',
                   weapon: weapon as WeaponId,
                   includeReplay: Boolean(options.replay),
                 })
-              : runtime.runBenchmark({ suite, ...episodeOptions });
+              : runtime.runBenchmark({
+                  suite,
+                  ...episodeOptions,
+                  ...(runtime.custom ? { player: runtime.custom } : {}),
+                });
+        for (const [path, expected] of Object.entries({
+          ...provenance.sourceDigests,
+          ...provenance.toolDigests,
+        }))
+          if (sha256(await readFile(resolve(repositoryRoot, path))) !== expected)
+            throw new Error(`Source drift during execution: ${path}`);
         if ('replay' in result && typeof result.replay === 'string') {
           if (options.replay) await save(options.replay, result.replay);
           delete result.replay;
@@ -237,11 +159,8 @@ try {
         if (options.out) await save(options.out, report);
         process.stdout.write(report);
       },
-      recordingDirectory
-        ? resolve(recordingDirectory, 'bundles')
-        : mode === 'evaluate' && options.out
-          ? resolve(dirname(options.out), 'bundles')
-          : undefined,
+      mode === 'evaluate' && options.out ? resolve(dirname(options.out), 'bundles') : undefined,
+      options['policy-module'],
     );
   }
 } catch (error) {

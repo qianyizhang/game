@@ -352,12 +352,72 @@ const audit = await auditRollout(rollout, candidate);
 ```
 
 The imports above are relative to the Night Passage directory in a TypeScript/Vite
-caller. The CLI selects the supplied quick/balanced/deliberate policies; a custom
-caller supplies its factory directly. Pass source/runtime provenance when retaining
-custom results for comparison; the programmatic recorder labels missing provenance
-as null. Meter new tactical work consistently with the documented proxy and bump
-policy identity/configuration for changed behavior. A custom policy's presence in a
-trace does not certify its hidden dependencies or work claims.
+caller. Local TypeScript modules default-export this same `PolicyPlayer`; the CLI
+statically bundles the module with the native controller and pins its source. Start
+with [the example module](../../src/games/night-passage/agent/example.ts):
+
+```sh
+npm run engine:night-passage -- record --out test-results/my-passage-policy \
+  --policy-module src/games/night-passage/agent/example.ts --max-actions 100 --max-ticks 200
+npm run engine:night-passage -- audit --input test-results/my-passage-policy/rollout.json \
+  --out test-results/my-passage-policy/recheck.json \
+  --policy-module src/games/night-passage/agent/example.ts
+```
+
+`play` and the published native `benchmark` also accept `--policy-module`. A module
+must use its own ID, distinct from quick/balanced/deliberate. Each factory receives
+only `PlayerConfig` and starts fresh episode memory. Preserve the `Decision.work`
+component counts: their total affects simulated latency. Modules execute as trusted
+local code, without a hostile-code sandbox. Audit without a matching custom module
+still checks replay and original inputs, but decision reproduction is unavailable.
+Browser review likewise preserves original custom inputs without inventing a missing
+implementation.
+
+The common workflow backend retains the native rollout schema, delayed controls,
+replay, review URL and budgets. `--max-actions` includes the evaluator-owned start;
+`--max-ticks` limits actual simulation. Its `--setup` accepts weapon, difficulty,
+control, rules and public player `config` (decisionTicks, bowDistance,
+meleeReachRatio). Native factories have no recorded policy-seed/options contract;
+those shared flags and `--max-decisions` are rejected explicitly.
+
+The common `engine:policy benchmark --game night-passage` freezes its protocol
+before execution and records/audits every attempt through the native controller.
+Development uses 10 seed blocks; evaluation uses 20 distinct reserved blocks. The
+default grid is quick/balanced/deliberate × Standard/Veteran/Ordeal × five weapons
+(**450 development or 900 evaluation attempts**). A supplied custom module adds an
+explicit policy to this grid. Each attempt retains original inputs, native replay,
+audit and a spectator manifest, sharing the retained source-pinned bundle. Errors
+and timeouts remain in the denominator. Reports preserve each difficulty/weapon
+stratum, native wins/score/win ticks, paired seed comparisons and honest intervals;
+weapons are not pooled. These mechanisms do not constitute a new strength result.
+
+Select a bounded development matrix before a larger study; selections and native
+budgets are frozen in the protocol:
+
+```sh
+npm run engine:policy -- benchmark --game night-passage --split development \
+  --out test-results/passage-study --weapon bow --difficulty standard --policy quick \
+  --max-actions 100 --max-ticks 200
+```
+
+Explicit `--suite training|held-out` selects the labelled legacy summary benchmark
+instead. It uses three existing seeds across five weapons for one policy/control
+and does not retain per-case original inputs/audits. `--suite` and `--split` cannot
+be combined. The original `engine:night-passage benchmark` and `evaluate` commands
+and frozen calibration remain separate and retain their published semantics.
+
+Retained bundles are content-addressed. Successive reports may reuse an existing
+bundle only when its bytes match exactly; a mismatching file is preserved and
+rejected. Fresh report/receipt paths remain exclusive. The
+[workflow evidence](../research/experiments/2026-10-16-policy-workflow.md) verifies
+native module recording, common CLI dispatch and per-case study inspection without
+reinterpreting historical strength results.
+
+Pass source/runtime provenance when retaining custom results through the
+programmatic recorder; it labels missing provenance as null. Meter new tactical
+work consistently with the documented proxy and bump policy identity/configuration
+for changed behavior. A custom policy's presence in a trace does not certify its
+hidden dependencies or work claims.
 
 The [adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md)
 records coverage, concrete footguns and the limits of this slice. Existing frozen

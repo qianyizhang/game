@@ -1,0 +1,2245 @@
+{
+  "schema": "policy-workflow-capstone-1",
+  "date": "2026-10-16",
+  "scope": "Six-game CLI routing, local TS extension and native Night Passage audited study mechanisms. No new playing-strength claim.",
+  "roundTrips": [
+    {
+      "game": "blindside",
+      "allFourAuditsPassed": true,
+      "originalSourceMatches": true,
+      "manifest": {
+        "schema": "policy-manifest-1",
+        "digest": "3adc592a5dcd830ed574b4a299636caf200dd91b4db0b877185485a63af882cf",
+        "policy": {
+          "id": "immediate",
+          "version": "blindside-policy-1"
+        },
+        "episode": {
+          "status": "timeout",
+          "metrics": {
+            "outcome": "playing",
+            "won": 0,
+            "blindsCleared": 0,
+            "blindsPassed": 0,
+            "blindsSkipped": 0,
+            "progress": 0.24,
+            "ante": 1,
+            "blind": 0,
+            "roundScore": 48,
+            "target": 200,
+            "cash": 6,
+            "commands": 3
+          },
+          "decisions": 2,
+          "work": 218,
+          "cursor": 3
+        },
+        "provenance": {
+          "sourceDigests": {
+            "src/games/balatro/agent/adapter.ts": "e999be743775d56394d58b4a3f5dc83c5fe538c662c4cd1b967104bae2387cdc",
+            "src/games/balatro/agent/forecast.ts": "0f244c71ced5cac68441a7e02f9296d65d4f382ef648fc83472680569476d0cf",
+            "src/games/balatro/agent/observation.ts": "ba522167f87608920fa5ede3cb86f7eb669771b68ca26452e5e88e7f85f76746",
+            "src/games/balatro/agent/policy.ts": "6952e3a1bbf311c13804dff44bd13b26e5fd356214dd2173cde110976d6f4c53",
+            "src/games/balatro/application/evidence.ts": "c2e12e10706fffc49d42517176fc2363943bf924837aec308ff68b08682c133c",
+            "src/games/balatro/application/scenario.ts": "1d0f152e9dfe77452f92070ae6c6d00f9100245f15001781b90cbf8a52550520",
+            "src/games/balatro/application/session.ts": "1dfa5cbc544c2427a9ace7752a32ebb56513927b46b405bcb08882d399ee5d8c",
+            "src/games/balatro/content/blinds.ts": "8b066613a36c013e6d529ea55c838693903134ccf36fd52285feee88bc0d75f8",
+            "src/games/balatro/content/consumables.ts": "e44cc635fbc82d2404b620d950e1c847622324f009e4dfdcd43bcebc1a9d035f",
+            "src/games/balatro/content/expansion-jokers.ts": "6f919f093c27f0bd89b19372fdf02235d8aa9a87d6147a14c2f746407357ebb0",
+            "src/games/balatro/content/jokers.ts": "8c5a6b7afabe3bfa849c29e379baa9a6cd2409102214bee576cf4c9f04c43e4e",
+            "src/games/balatro/content/night-market-jokers.ts": "c341994ee973a4355454329f5dba464227b87b4c96c19f3b1f02f8740bf7f251",
+            "src/games/balatro/content/shop.ts": "f34427b3dbade1941cd3bebc33b055316aac0f62fb7569ead5ecd433d74d8fbf",
+            "src/games/balatro/domain/commands.ts": "77af49da4dea493fad9a277947deb53256122c9d1a99143a9f616921ca9df573",
+            "src/games/balatro/domain/game.ts": "83c99aebfebad57fb10a8bf57d0a020eea1cd4f556542a04c45dc307579a2711",
+            "src/games/balatro/domain/poker.ts": "b0e814e5b981ec6c1f4591cec5b0b270edddc9f32f241ba48f14fd3e0bfc0ae2",
+            "src/games/balatro/domain/scoring.ts": "ac1670e6071970c89b3e06724d852c732bf24a16b2cee52b294f57f30324ad2d",
+            "src/games/balatro/domain/shopExtras.ts": "fc6b540a3a93dfcd45cc2609057372efca9440e1adb74fec22393cc87e7d35ad",
+            "src/games/balatro/domain/types.ts": "a1b43430fb6fb55b529f5ec203372145db75f198ef1665e178010535bb71212e",
+            "src/mods/blindside.ts": "36ece54233341120f406761c913128c42dcb438890ca059a8aa9003b4991b24d",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6"
+          },
+          "bundleDigest": "cae001e19e86169bf8aa9df7816903db937a80af4183d985483b3dd583dabef8",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "4206a088eb4f8faf9b8dfaefc8f0d18ed283b3e54cefa4d947f64c4e3be62fec",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "artifacts": {
+          "rollout.json": "76b99efc62eb991e8dced88d4d9dfd815b31fc67befc270a84304eb03de6d63d",
+          "replay.json": "c53e1098899e9eee97b86fb8e69f5b276a69471e0cfa5630eeb60cd4a1b2df0d",
+          "audit.json": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+        },
+        "review": "/?game=balatro&review=policy&rollout=%2Ftest-results%2Fpolicy-cli-capstone-1%2Fblindside%2Frollout.json"
+      },
+      "artifactHashes": {
+        "audit.json": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57",
+        "independent-audit.json": "c2ac3842a76ddb7d5630a38f66ef039b91da9e38532523aad2a01f574af0027e",
+        "manifest.json": "5a921bd4cdb8cbd460ff9df64fa38024c8a0a8ffd9b7bac393c9defe6a02d1eb",
+        "replay.json": "c53e1098899e9eee97b86fb8e69f5b276a69471e0cfa5630eeb60cd4a1b2df0d",
+        "rollout.json": "76b99efc62eb991e8dced88d4d9dfd815b31fc67befc270a84304eb03de6d63d"
+      },
+      "independentAudit": {
+        "integrity": "passed",
+        "replay": "passed",
+        "inputs": "passed",
+        "decisions": "passed",
+        "firstMismatch": null,
+        "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation.",
+        "rolloutDigest": "3adc592a5dcd830ed574b4a299636caf200dd91b4db0b877185485a63af882cf",
+        "provenance": {
+          "sourceDigests": {
+            "src/games/balatro/agent/adapter.ts": "e999be743775d56394d58b4a3f5dc83c5fe538c662c4cd1b967104bae2387cdc",
+            "src/games/balatro/agent/forecast.ts": "0f244c71ced5cac68441a7e02f9296d65d4f382ef648fc83472680569476d0cf",
+            "src/games/balatro/agent/observation.ts": "ba522167f87608920fa5ede3cb86f7eb669771b68ca26452e5e88e7f85f76746",
+            "src/games/balatro/agent/policy.ts": "6952e3a1bbf311c13804dff44bd13b26e5fd356214dd2173cde110976d6f4c53",
+            "src/games/balatro/application/evidence.ts": "c2e12e10706fffc49d42517176fc2363943bf924837aec308ff68b08682c133c",
+            "src/games/balatro/application/scenario.ts": "1d0f152e9dfe77452f92070ae6c6d00f9100245f15001781b90cbf8a52550520",
+            "src/games/balatro/application/session.ts": "1dfa5cbc544c2427a9ace7752a32ebb56513927b46b405bcb08882d399ee5d8c",
+            "src/games/balatro/content/blinds.ts": "8b066613a36c013e6d529ea55c838693903134ccf36fd52285feee88bc0d75f8",
+            "src/games/balatro/content/consumables.ts": "e44cc635fbc82d2404b620d950e1c847622324f009e4dfdcd43bcebc1a9d035f",
+            "src/games/balatro/content/expansion-jokers.ts": "6f919f093c27f0bd89b19372fdf02235d8aa9a87d6147a14c2f746407357ebb0",
+            "src/games/balatro/content/jokers.ts": "8c5a6b7afabe3bfa849c29e379baa9a6cd2409102214bee576cf4c9f04c43e4e",
+            "src/games/balatro/content/night-market-jokers.ts": "c341994ee973a4355454329f5dba464227b87b4c96c19f3b1f02f8740bf7f251",
+            "src/games/balatro/content/shop.ts": "f34427b3dbade1941cd3bebc33b055316aac0f62fb7569ead5ecd433d74d8fbf",
+            "src/games/balatro/domain/commands.ts": "77af49da4dea493fad9a277947deb53256122c9d1a99143a9f616921ca9df573",
+            "src/games/balatro/domain/game.ts": "83c99aebfebad57fb10a8bf57d0a020eea1cd4f556542a04c45dc307579a2711",
+            "src/games/balatro/domain/poker.ts": "b0e814e5b981ec6c1f4591cec5b0b270edddc9f32f241ba48f14fd3e0bfc0ae2",
+            "src/games/balatro/domain/scoring.ts": "ac1670e6071970c89b3e06724d852c732bf24a16b2cee52b294f57f30324ad2d",
+            "src/games/balatro/domain/shopExtras.ts": "fc6b540a3a93dfcd45cc2609057372efca9440e1adb74fec22393cc87e7d35ad",
+            "src/games/balatro/domain/types.ts": "a1b43430fb6fb55b529f5ec203372145db75f198ef1665e178010535bb71212e",
+            "src/mods/blindside.ts": "36ece54233341120f406761c913128c42dcb438890ca059a8aa9003b4991b24d",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6"
+          },
+          "bundleDigest": "cae001e19e86169bf8aa9df7816903db937a80af4183d985483b3dd583dabef8",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "4206a088eb4f8faf9b8dfaefc8f0d18ed283b3e54cefa4d947f64c4e3be62fec",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "originalSourceMatches": true
+      }
+    },
+    {
+      "game": "spire",
+      "allFourAuditsPassed": true,
+      "originalSourceMatches": true,
+      "manifest": {
+        "schema": "policy-manifest-1",
+        "digest": "6eeae2b97a4eeb5030f6bb918fc7aae9ee09a1d691a8eb96331257f0de356c71",
+        "policy": {
+          "id": "immediate",
+          "version": "spire-policy-1"
+        },
+        "episode": {
+          "status": "timeout",
+          "metrics": {
+            "outcome": "combat",
+            "won": 0,
+            "progress": 1,
+            "hp": 80,
+            "maxHp": 80,
+            "gold": 99,
+            "relics": 2,
+            "deck": 10
+          },
+          "decisions": 2,
+          "work": 8,
+          "cursor": 3
+        },
+        "provenance": {
+          "sourceDigests": {
+            "src/games/spire/agent/adapter.ts": "96ec54db530dbd0a9809db287c96a60de73affa9f1e05555365aa70752b044ff",
+            "src/games/spire/agent/forecast.ts": "abb62d1e5934612532490a1b5108d7bec7b0f17e6cdc8e8949b8fa09e8acaec5",
+            "src/games/spire/agent/legality.ts": "aedc0f669bc9a8ba406ca2e5f643b76177de5031cb831518e5d2480752b8b090",
+            "src/games/spire/agent/observation.ts": "8b4e89b3af8aed736b86bae2a96be88dc95d29bd7d71efbfc7390d67c8cef1bf",
+            "src/games/spire/agent/policy.ts": "2de23e7c69f858f202377044d9ffbfce367d14548fb7122cfa09dd680522c783",
+            "src/games/spire/agent/public-model.ts": "4ca5689c0c19ce73daf31f0145878ab0cbad17aa89ccef07d437c472e82f3be9",
+            "src/games/spire/application/evidence.ts": "14fd05cda32988d0c3cb4712e800f80e391fda35fc792ef46b418919efb64b67",
+            "src/games/spire/application/scenario.ts": "1e86c2477d92a38e261d1c32873126cefa7b3ab00e3cf0e0d397167e10b25b3c",
+            "src/games/spire/application/session.ts": "f903b64c5bff5409d0f69f3031cfa2f8d7638c92cd8d12bdaf4b583925b82b60",
+            "src/games/spire/content/bosses.ts": "7afd7747e92cc8467e63a8e66c550c9dbd676cf72c7416037502e1ea5ce490f1",
+            "src/games/spire/content/cards.ts": "832bc5b3296ac0850de63e49311e6e1410cc41179f75fb5677084df5c8e24752",
+            "src/games/spire/content/silent.ts": "26f2da82b2360903a4028673a80e0897b232d7ad511832317031546d801d078a",
+            "src/games/spire/content/world.ts": "9837867ecc8f19b04909f73b806256e83caf872882414f13f40745339d2c1a61",
+            "src/games/spire/domain/combat.ts": "356d00c33e46fd7c9426d5bbb64f2f1f884e43dad84c133074b3c8c9d249690d",
+            "src/games/spire/domain/commands.ts": "eb8940e93c15db950cac4fddbfbbfcebc5803224939199178b3b3747ed39ee4a",
+            "src/games/spire/domain/difficulty.ts": "a8b9c2b445c1c95cdc57b484409a0e6901c895357c3f5a568bfc40f66a99a3c5",
+            "src/games/spire/domain/enemies.ts": "a4d8a0c75522eb47c1f680da2720c42d8b7c1cd7d8be1bb526f42340a008dd22",
+            "src/games/spire/domain/game.ts": "24c9ea17b5310e563bd5b15c959334e153c30266bc9a8df30f7e33594023e0a1",
+            "src/games/spire/domain/map.ts": "df72e70657b9c571c5edc7309f3696a76d2a5682a992ce6d0700348eae1c2ca9",
+            "src/games/spire/domain/rewards.ts": "0794ffab5d5990ce0abf8e2a27a9fe4b152da5f738d9481360ef193a73e39026",
+            "src/games/spire/domain/state.ts": "e419cd30195978104a1b7fe96d2a0885da6622bdedbb5a12bfa9fd787ca7e640",
+            "src/mods/spire.ts": "cd95f72ae69fd4af0cdf75b677cdc6fe11ec684f3b5019fcef9a18c1e4846f35",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6"
+          },
+          "bundleDigest": "e549a094d52b7c4a7eedd4ceb8fb06659cce4a1802ed3097a20a07ad83aa9b72",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "4206a088eb4f8faf9b8dfaefc8f0d18ed283b3e54cefa4d947f64c4e3be62fec",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "artifacts": {
+          "rollout.json": "75011f701baa8da2b7ac64894edf9013eafc5af69859d56d81e118d1abba3a30",
+          "replay.json": "9d540ce3c7b3dcf7755b726cf14bb3533709648a6954ad694342f471bd2fdb69",
+          "audit.json": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+        },
+        "review": "/?game=spire&review=policy&rollout=%2Ftest-results%2Fpolicy-cli-capstone-1%2Fspire%2Frollout.json"
+      },
+      "artifactHashes": {
+        "audit.json": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57",
+        "independent-audit.json": "70af4c42d150bc4100d0464717f95d9d5cfb8ab106b76a74e96fa61d28acee43",
+        "manifest.json": "cdaee48aa8b3bcfbded63b42faf7c3bfcaec831414b892433fae61ea45fd8d9a",
+        "replay.json": "9d540ce3c7b3dcf7755b726cf14bb3533709648a6954ad694342f471bd2fdb69",
+        "rollout.json": "75011f701baa8da2b7ac64894edf9013eafc5af69859d56d81e118d1abba3a30"
+      },
+      "independentAudit": {
+        "integrity": "passed",
+        "replay": "passed",
+        "inputs": "passed",
+        "decisions": "passed",
+        "firstMismatch": null,
+        "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation.",
+        "rolloutDigest": "6eeae2b97a4eeb5030f6bb918fc7aae9ee09a1d691a8eb96331257f0de356c71",
+        "provenance": {
+          "sourceDigests": {
+            "src/games/spire/agent/adapter.ts": "96ec54db530dbd0a9809db287c96a60de73affa9f1e05555365aa70752b044ff",
+            "src/games/spire/agent/forecast.ts": "abb62d1e5934612532490a1b5108d7bec7b0f17e6cdc8e8949b8fa09e8acaec5",
+            "src/games/spire/agent/legality.ts": "aedc0f669bc9a8ba406ca2e5f643b76177de5031cb831518e5d2480752b8b090",
+            "src/games/spire/agent/observation.ts": "8b4e89b3af8aed736b86bae2a96be88dc95d29bd7d71efbfc7390d67c8cef1bf",
+            "src/games/spire/agent/policy.ts": "2de23e7c69f858f202377044d9ffbfce367d14548fb7122cfa09dd680522c783",
+            "src/games/spire/agent/public-model.ts": "4ca5689c0c19ce73daf31f0145878ab0cbad17aa89ccef07d437c472e82f3be9",
+            "src/games/spire/application/evidence.ts": "14fd05cda32988d0c3cb4712e800f80e391fda35fc792ef46b418919efb64b67",
+            "src/games/spire/application/scenario.ts": "1e86c2477d92a38e261d1c32873126cefa7b3ab00e3cf0e0d397167e10b25b3c",
+            "src/games/spire/application/session.ts": "f903b64c5bff5409d0f69f3031cfa2f8d7638c92cd8d12bdaf4b583925b82b60",
+            "src/games/spire/content/bosses.ts": "7afd7747e92cc8467e63a8e66c550c9dbd676cf72c7416037502e1ea5ce490f1",
+            "src/games/spire/content/cards.ts": "832bc5b3296ac0850de63e49311e6e1410cc41179f75fb5677084df5c8e24752",
+            "src/games/spire/content/silent.ts": "26f2da82b2360903a4028673a80e0897b232d7ad511832317031546d801d078a",
+            "src/games/spire/content/world.ts": "9837867ecc8f19b04909f73b806256e83caf872882414f13f40745339d2c1a61",
+            "src/games/spire/domain/combat.ts": "356d00c33e46fd7c9426d5bbb64f2f1f884e43dad84c133074b3c8c9d249690d",
+            "src/games/spire/domain/commands.ts": "eb8940e93c15db950cac4fddbfbbfcebc5803224939199178b3b3747ed39ee4a",
+            "src/games/spire/domain/difficulty.ts": "a8b9c2b445c1c95cdc57b484409a0e6901c895357c3f5a568bfc40f66a99a3c5",
+            "src/games/spire/domain/enemies.ts": "a4d8a0c75522eb47c1f680da2720c42d8b7c1cd7d8be1bb526f42340a008dd22",
+            "src/games/spire/domain/game.ts": "24c9ea17b5310e563bd5b15c959334e153c30266bc9a8df30f7e33594023e0a1",
+            "src/games/spire/domain/map.ts": "df72e70657b9c571c5edc7309f3696a76d2a5682a992ce6d0700348eae1c2ca9",
+            "src/games/spire/domain/rewards.ts": "0794ffab5d5990ce0abf8e2a27a9fe4b152da5f738d9481360ef193a73e39026",
+            "src/games/spire/domain/state.ts": "e419cd30195978104a1b7fe96d2a0885da6622bdedbb5a12bfa9fd787ca7e640",
+            "src/mods/spire.ts": "cd95f72ae69fd4af0cdf75b677cdc6fe11ec684f3b5019fcef9a18c1e4846f35",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6"
+          },
+          "bundleDigest": "e549a094d52b7c4a7eedd4ceb8fb06659cce4a1802ed3097a20a07ad83aa9b72",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "4206a088eb4f8faf9b8dfaefc8f0d18ed283b3e54cefa4d947f64c4e3be62fec",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "originalSourceMatches": true
+      }
+    },
+    {
+      "game": "hearth",
+      "allFourAuditsPassed": true,
+      "originalSourceMatches": true,
+      "manifest": {
+        "schema": "policy-manifest-1",
+        "digest": "4dc0df5eed4b86cc88491c9ce0a7f5cdf93f51ed14a1452582dcf31a80e9fd19",
+        "policy": {
+          "id": "immediate",
+          "version": "hearth-policy-1"
+        },
+        "episode": {
+          "status": "timeout",
+          "metrics": {
+            "outcome": "recruit",
+            "won": 0,
+            "progress": 0,
+            "placement": null,
+            "topFour": 0,
+            "survivalRounds": 1,
+            "hp": 40,
+            "gold": 4,
+            "tier": 1,
+            "board": 0,
+            "round": 1
+          },
+          "decisions": 2,
+          "work": 17,
+          "cursor": 3
+        },
+        "provenance": {
+          "sourceDigests": {
+            "src/games/battlegrounds/agent/adapter.ts": "3060ba9923b21567449e60095f29453f85dd6f26230a078ef4a44b80373aa304",
+            "src/games/battlegrounds/agent/aliases.ts": "30a4a3e9ac222640ffd7a8368d1bb4f073b93f543a0f186614e589186e0de975",
+            "src/games/battlegrounds/agent/observation.ts": "6d42fe31c0dbdd71edaf8a54d68d693dd383255127025b0e2551f38d2c45809e",
+            "src/games/battlegrounds/agent/policy.ts": "cefe3588fa6d479c13f7aca45c4cd0c363c03edebb45babebf9a9ad8b1661b6b",
+            "src/games/battlegrounds/ai/recruitment-policy.ts": "64b77022aa385c9359fba9e7959b37ee0428e21bcb89695151938d1abdda3df1",
+            "src/games/battlegrounds/ai/spell-policy.ts": "b9ef27f6245720fa0038a1c2792fe7250f641bfc62757c3757af59f47375f2b4",
+            "src/games/battlegrounds/application/agent.ts": "f877daaec6f23d2eb6294ff85a0e4992b0126fe8ecb9c5d3aeddd775df117ab0",
+            "src/games/battlegrounds/application/arena.ts": "50a4334f77e29a835009988751d3c8a235a0efc0562101fe4258edc7d35aa6f6",
+            "src/games/battlegrounds/application/engine.ts": "294989b7b81390ba6abdd0889a03fe93c972efca85c50e527e4da661ab4a221b",
+            "src/games/battlegrounds/application/evidence.ts": "6017c5612d3a41d9c37458b39894317a851614df0676d8702e6e965e579bdc82",
+            "src/games/battlegrounds/application/scenario.ts": "c63cb273422d8afbc399c12ca2c06e4a7f5826b04788a1e65e52703254efb25b",
+            "src/games/battlegrounds/application/session.ts": "d39acbb6c1a07d2a20173a374bb2e016c0e452aeb5e5219ee506f2b656ebc14a",
+            "src/games/battlegrounds/content/expansion-minions.ts": "66438fd84774b1d9c06d9734961cc32e2a6157b8761b7cf11475ef577b00d8dd",
+            "src/games/battlegrounds/content/minions.ts": "f9f1a3481b0aef24ce83f02578c71bff7412e5bf28f56aa1c22cbc2468ac5ac5",
+            "src/games/battlegrounds/content/night-market-minions.ts": "dba114577ce3c19a4ac563335ff68444e0d41e63f9cddd1b33cfb7c586c41579",
+            "src/games/battlegrounds/content/spells.ts": "e8854d2d58de89a08caf16e86a32a4251d53b019ba26c54cf533da0e1f8d8a1c",
+            "src/games/battlegrounds/domain/arena.ts": "2f2c43d3df31fdfb2dafb5180e44aa1ffbfb68f6384504fc3a32dd27b9228f7a",
+            "src/games/battlegrounds/domain/bots.ts": "962defd36701d8e425ed58b50498ebcb08c450340309957c12ef71fb33f655f8",
+            "src/games/battlegrounds/domain/combat.ts": "06ac34753ec2b8f25f61130ca22426a989d3b197ba674008d180e33bb8f4be47",
+            "src/games/battlegrounds/domain/commands.ts": "57c0e97a38d5ffa9e938792351a670d651f1526378c24a0edd8e6f58178b8a7e",
+            "src/games/battlegrounds/domain/game.ts": "56b800384ee82b6d4a222a30313ac802d4d6f8a3c2b60587474d10c424f3ab4b",
+            "src/games/battlegrounds/domain/heroes.ts": "e6955cd878f8356503595aeb03cbd6367ab256a3855fd55ae7f26d2fe7b76857",
+            "src/games/battlegrounds/domain/recruitment.ts": "0ea8db0d86ce02aa7bc6049bda2f364dc3e10a257bfc3eb5e47050d819969d88",
+            "src/games/battlegrounds/domain/spell-controller.ts": "4263a0c38270179e10281455731d97260697fd0b06de12df3f7afa8275b95a21",
+            "src/games/battlegrounds/domain/spells.ts": "45edef6eed5c53bcf13b14f995ccd2b0496021bea6b3a545fdcf8f3c9c7ab1e0",
+            "src/games/battlegrounds/domain/units.ts": "bbb1645c677441553a0007fffb64a2490ac2181af256c7ea3c47e4d117fa2e4e",
+            "src/mods/hearth.ts": "8a60f29179bfeeb26bf0ebd04eea05167c3699c723723da0d2cb60f0d9a84bda",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/engine.ts": "a3aaab0ae7161015d348ee8b9dd9cbaeedb2d05ca2e4e1c2543fd633bf8a4495",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6"
+          },
+          "bundleDigest": "4841ea387f885737f14f72544175f85fc8b59aacb7f06efb4e106be449ee7d31",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "4206a088eb4f8faf9b8dfaefc8f0d18ed283b3e54cefa4d947f64c4e3be62fec",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "artifacts": {
+          "rollout.json": "3a5999cd838a53305db5210ee3aa22a221fcfa8e3544fb354b203a2b2ed52cf7",
+          "replay.json": "9d489d63bf46ab760643f94ad68b4867f862d5b9e114234f2b69e15f385a4dde",
+          "audit.json": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+        },
+        "review": "/?game=hearth&review=policy&rollout=%2Ftest-results%2Fpolicy-cli-capstone-1%2Fhearth%2Frollout.json"
+      },
+      "artifactHashes": {
+        "audit.json": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57",
+        "independent-audit.json": "fd108bc8252a66f0fbf30e8937f877f840c4dda7d60b87ee48da242c18f90b29",
+        "manifest.json": "a05ccca1107fa74e2fb19ea88597a0765e32252f91b9373f6f2f8dc8768df244",
+        "replay.json": "9d489d63bf46ab760643f94ad68b4867f862d5b9e114234f2b69e15f385a4dde",
+        "rollout.json": "3a5999cd838a53305db5210ee3aa22a221fcfa8e3544fb354b203a2b2ed52cf7"
+      },
+      "independentAudit": {
+        "integrity": "passed",
+        "replay": "passed",
+        "inputs": "passed",
+        "decisions": "passed",
+        "firstMismatch": null,
+        "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation.",
+        "rolloutDigest": "4dc0df5eed4b86cc88491c9ce0a7f5cdf93f51ed14a1452582dcf31a80e9fd19",
+        "provenance": {
+          "sourceDigests": {
+            "src/games/battlegrounds/agent/adapter.ts": "3060ba9923b21567449e60095f29453f85dd6f26230a078ef4a44b80373aa304",
+            "src/games/battlegrounds/agent/aliases.ts": "30a4a3e9ac222640ffd7a8368d1bb4f073b93f543a0f186614e589186e0de975",
+            "src/games/battlegrounds/agent/observation.ts": "6d42fe31c0dbdd71edaf8a54d68d693dd383255127025b0e2551f38d2c45809e",
+            "src/games/battlegrounds/agent/policy.ts": "cefe3588fa6d479c13f7aca45c4cd0c363c03edebb45babebf9a9ad8b1661b6b",
+            "src/games/battlegrounds/ai/recruitment-policy.ts": "64b77022aa385c9359fba9e7959b37ee0428e21bcb89695151938d1abdda3df1",
+            "src/games/battlegrounds/ai/spell-policy.ts": "b9ef27f6245720fa0038a1c2792fe7250f641bfc62757c3757af59f47375f2b4",
+            "src/games/battlegrounds/application/agent.ts": "f877daaec6f23d2eb6294ff85a0e4992b0126fe8ecb9c5d3aeddd775df117ab0",
+            "src/games/battlegrounds/application/arena.ts": "50a4334f77e29a835009988751d3c8a235a0efc0562101fe4258edc7d35aa6f6",
+            "src/games/battlegrounds/application/engine.ts": "294989b7b81390ba6abdd0889a03fe93c972efca85c50e527e4da661ab4a221b",
+            "src/games/battlegrounds/application/evidence.ts": "6017c5612d3a41d9c37458b39894317a851614df0676d8702e6e965e579bdc82",
+            "src/games/battlegrounds/application/scenario.ts": "c63cb273422d8afbc399c12ca2c06e4a7f5826b04788a1e65e52703254efb25b",
+            "src/games/battlegrounds/application/session.ts": "d39acbb6c1a07d2a20173a374bb2e016c0e452aeb5e5219ee506f2b656ebc14a",
+            "src/games/battlegrounds/content/expansion-minions.ts": "66438fd84774b1d9c06d9734961cc32e2a6157b8761b7cf11475ef577b00d8dd",
+            "src/games/battlegrounds/content/minions.ts": "f9f1a3481b0aef24ce83f02578c71bff7412e5bf28f56aa1c22cbc2468ac5ac5",
+            "src/games/battlegrounds/content/night-market-minions.ts": "dba114577ce3c19a4ac563335ff68444e0d41e63f9cddd1b33cfb7c586c41579",
+            "src/games/battlegrounds/content/spells.ts": "e8854d2d58de89a08caf16e86a32a4251d53b019ba26c54cf533da0e1f8d8a1c",
+            "src/games/battlegrounds/domain/arena.ts": "2f2c43d3df31fdfb2dafb5180e44aa1ffbfb68f6384504fc3a32dd27b9228f7a",
+            "src/games/battlegrounds/domain/bots.ts": "962defd36701d8e425ed58b50498ebcb08c450340309957c12ef71fb33f655f8",
+            "src/games/battlegrounds/domain/combat.ts": "06ac34753ec2b8f25f61130ca22426a989d3b197ba674008d180e33bb8f4be47",
+            "src/games/battlegrounds/domain/commands.ts": "57c0e97a38d5ffa9e938792351a670d651f1526378c24a0edd8e6f58178b8a7e",
+            "src/games/battlegrounds/domain/game.ts": "56b800384ee82b6d4a222a30313ac802d4d6f8a3c2b60587474d10c424f3ab4b",
+            "src/games/battlegrounds/domain/heroes.ts": "e6955cd878f8356503595aeb03cbd6367ab256a3855fd55ae7f26d2fe7b76857",
+            "src/games/battlegrounds/domain/recruitment.ts": "0ea8db0d86ce02aa7bc6049bda2f364dc3e10a257bfc3eb5e47050d819969d88",
+            "src/games/battlegrounds/domain/spell-controller.ts": "4263a0c38270179e10281455731d97260697fd0b06de12df3f7afa8275b95a21",
+            "src/games/battlegrounds/domain/spells.ts": "45edef6eed5c53bcf13b14f995ccd2b0496021bea6b3a545fdcf8f3c9c7ab1e0",
+            "src/games/battlegrounds/domain/units.ts": "bbb1645c677441553a0007fffb64a2490ac2181af256c7ea3c47e4d117fa2e4e",
+            "src/mods/hearth.ts": "8a60f29179bfeeb26bf0ebd04eea05167c3699c723723da0d2cb60f0d9a84bda",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/engine.ts": "a3aaab0ae7161015d348ee8b9dd9cbaeedb2d05ca2e4e1c2543fd633bf8a4495",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6"
+          },
+          "bundleDigest": "4841ea387f885737f14f72544175f85fc8b59aacb7f06efb4e106be449ee7d31",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "4206a088eb4f8faf9b8dfaefc8f0d18ed283b3e54cefa4d947f64c4e3be62fec",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "originalSourceMatches": true
+      }
+    },
+    {
+      "game": "emberwake",
+      "allFourAuditsPassed": true,
+      "originalSourceMatches": true,
+      "manifest": {
+        "schema": "policy-manifest-1",
+        "digest": "740a8bab7f3db2275d15e58dde8eec83a9248e2e6c68f3e2379b1b3e81008787",
+        "policy": {
+          "id": "immediate",
+          "version": "emberwake-policy-1"
+        },
+        "episode": {
+          "status": "timeout",
+          "metrics": {
+            "outcome": "playing",
+            "won": 0,
+            "progress": 1,
+            "bosses": 0,
+            "wards": 0,
+            "regions": 1,
+            "level": 1,
+            "xp": 0,
+            "hp": 145,
+            "gold": 45,
+            "executedTicks": 0
+          },
+          "decisions": 2,
+          "work": 25,
+          "cursor": 2
+        },
+        "provenance": {
+          "sourceDigests": {
+            "packages/diablo2/src/agent/adapter.ts": "152d52d878c0e496eff7b6ea39448d8fee38f3e3ee5fea23aa26452b4572157a",
+            "packages/diablo2/src/agent/observation.ts": "94427a5ca61e18eebf9dda540ca651933538a05d2ba47abffb8437d27aaf1a0f",
+            "packages/diablo2/src/agent/policy.ts": "cf486960d43e5c014a800c523b1a5933b76a73b51a02cbd7dc269344d368cb9d",
+            "packages/diablo2/src/application/session.ts": "32867f2c2bf5d32016476898f000043ffd3467e0a06f7e0b76cde49d21eebf24",
+            "packages/diablo2/src/domain/combat.ts": "b6b2c3c6778696d0d3d9d8689ce6cc68066f6f860666748c266bedc31d5eb57e",
+            "packages/diablo2/src/domain/content.ts": "f93f70b03b4f688c042a3ea402bce7e5727c4bed04bae183352d40c5dc0ef7fe",
+            "packages/diablo2/src/domain/difficulty.ts": "8b28e64cfd2bbc873f08a5d4bd400e5fd1977f09328df56d3a2e700ac5123227",
+            "packages/diablo2/src/domain/game.ts": "010b807cf7b555a7082416265206df0fbad1f3db6f011b9ec64ed7c5b51e2ac7",
+            "packages/diablo2/src/domain/loot.ts": "6b0acabaf6727be407f7fb5424238ca732dd2119792fadbe8c2f9102ab1f217f",
+            "packages/diablo2/src/domain/maps.ts": "71bc62fb33e584c37728d5c430cd0247174e69c2c3f54d92d89187c36dfb500d",
+            "packages/diablo2/src/domain/random.ts": "2555c83cf6631a5dac69702ab58b2169413ac0e2243532f425ccf1e1459602d0",
+            "packages/diablo2/src/domain/sandbox.ts": "0307b350e37358ae36f3fbb0b8e179783a314b5963412380aa1abda18e6b593f",
+            "packages/diablo2/src/domain/stats.ts": "fcd0b488f16e97cb5baee27493a0980afa714b808ea97a2bbea177195927f8ef",
+            "packages/diablo2/src/domain/timing.ts": "62012ec950a782a47bfed0624581c11f9aa8337feb39eb5cc8d4d11576611b21",
+            "packages/diablo2/src/domain/validate.ts": "1429bef407311f1cfb706475faa7cf510799a0f45ab8b0299cb074e8d6444d70",
+            "packages/diablo2/src/domain/world-content.ts": "de2f863fefc3b1480c87a67def19c5f860a4e4037f73bfc4c787eb00d97e6b58",
+            "packages/diablo2/src/domain/world.ts": "72f61b714861efcae72b521e74cf769bb10612ad5d112589374ecf4078dd3504",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24"
+          },
+          "bundleDigest": "9fce597479d1f1c72670f2f292c4e1e8289d2ee2e084e15d09a8964fb659f7c7",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "4206a088eb4f8faf9b8dfaefc8f0d18ed283b3e54cefa4d947f64c4e3be62fec",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "artifacts": {
+          "rollout.json": "7808bb1fa3a122f8a04def7a16b9aff2883415a1db2243e4c98536bb205626c5",
+          "replay.json": "93792f0a7f9941ef870edfc11783100a56b27dacc5fc78ea40ed630ab99cb911",
+          "audit.json": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+        },
+        "review": "/?game=diablo2&review=policy&rollout=%2Ftest-results%2Fpolicy-cli-capstone-1%2Femberwake%2Frollout.json"
+      },
+      "artifactHashes": {
+        "audit.json": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57",
+        "independent-audit.json": "226f08280c0f354b41d8c39fe9d77329c284068d174723fe850166503ec3b534",
+        "manifest.json": "375e9e48ab6c5a8e81b3a3448f7693f49e9e636a57a7bf4edc5798a6acc1a8fb",
+        "replay.json": "93792f0a7f9941ef870edfc11783100a56b27dacc5fc78ea40ed630ab99cb911",
+        "rollout.json": "7808bb1fa3a122f8a04def7a16b9aff2883415a1db2243e4c98536bb205626c5"
+      },
+      "independentAudit": {
+        "integrity": "passed",
+        "replay": "passed",
+        "inputs": "passed",
+        "decisions": "passed",
+        "firstMismatch": null,
+        "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation.",
+        "rolloutDigest": "740a8bab7f3db2275d15e58dde8eec83a9248e2e6c68f3e2379b1b3e81008787",
+        "provenance": {
+          "sourceDigests": {
+            "packages/diablo2/src/agent/adapter.ts": "152d52d878c0e496eff7b6ea39448d8fee38f3e3ee5fea23aa26452b4572157a",
+            "packages/diablo2/src/agent/observation.ts": "94427a5ca61e18eebf9dda540ca651933538a05d2ba47abffb8437d27aaf1a0f",
+            "packages/diablo2/src/agent/policy.ts": "cf486960d43e5c014a800c523b1a5933b76a73b51a02cbd7dc269344d368cb9d",
+            "packages/diablo2/src/application/session.ts": "32867f2c2bf5d32016476898f000043ffd3467e0a06f7e0b76cde49d21eebf24",
+            "packages/diablo2/src/domain/combat.ts": "b6b2c3c6778696d0d3d9d8689ce6cc68066f6f860666748c266bedc31d5eb57e",
+            "packages/diablo2/src/domain/content.ts": "f93f70b03b4f688c042a3ea402bce7e5727c4bed04bae183352d40c5dc0ef7fe",
+            "packages/diablo2/src/domain/difficulty.ts": "8b28e64cfd2bbc873f08a5d4bd400e5fd1977f09328df56d3a2e700ac5123227",
+            "packages/diablo2/src/domain/game.ts": "010b807cf7b555a7082416265206df0fbad1f3db6f011b9ec64ed7c5b51e2ac7",
+            "packages/diablo2/src/domain/loot.ts": "6b0acabaf6727be407f7fb5424238ca732dd2119792fadbe8c2f9102ab1f217f",
+            "packages/diablo2/src/domain/maps.ts": "71bc62fb33e584c37728d5c430cd0247174e69c2c3f54d92d89187c36dfb500d",
+            "packages/diablo2/src/domain/random.ts": "2555c83cf6631a5dac69702ab58b2169413ac0e2243532f425ccf1e1459602d0",
+            "packages/diablo2/src/domain/sandbox.ts": "0307b350e37358ae36f3fbb0b8e179783a314b5963412380aa1abda18e6b593f",
+            "packages/diablo2/src/domain/stats.ts": "fcd0b488f16e97cb5baee27493a0980afa714b808ea97a2bbea177195927f8ef",
+            "packages/diablo2/src/domain/timing.ts": "62012ec950a782a47bfed0624581c11f9aa8337feb39eb5cc8d4d11576611b21",
+            "packages/diablo2/src/domain/validate.ts": "1429bef407311f1cfb706475faa7cf510799a0f45ab8b0299cb074e8d6444d70",
+            "packages/diablo2/src/domain/world-content.ts": "de2f863fefc3b1480c87a67def19c5f860a4e4037f73bfc4c787eb00d97e6b58",
+            "packages/diablo2/src/domain/world.ts": "72f61b714861efcae72b521e74cf769bb10612ad5d112589374ecf4078dd3504",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24"
+          },
+          "bundleDigest": "9fce597479d1f1c72670f2f292c4e1e8289d2ee2e084e15d09a8964fb659f7c7",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "4206a088eb4f8faf9b8dfaefc8f0d18ed283b3e54cefa4d947f64c4e3be62fec",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "originalSourceMatches": true
+      }
+    },
+    {
+      "game": "cartographer",
+      "allFourAuditsPassed": true,
+      "originalSourceMatches": true,
+      "manifest": {
+        "schema": "policy-manifest-1",
+        "digest": "8ac51b66d681570f77ccba4a03913a4bdb905f0f177bb9cdb6cda76fc3a776b7",
+        "policy": {
+          "id": "immediate",
+          "version": "cartographer-policy-1"
+        },
+        "episode": {
+          "status": "timeout",
+          "metrics": {
+            "outcome": "playing",
+            "won": 0,
+            "progress": 1,
+            "roomsCleared": 1,
+            "roomsDrafted": 1,
+            "hp": 36,
+            "maxHp": 36,
+            "attack": 3,
+            "focus": 3,
+            "relics": 0,
+            "threat": 0,
+            "turns": 2
+          },
+          "decisions": 2,
+          "work": 116,
+          "cursor": 2
+        },
+        "provenance": {
+          "sourceDigests": {
+            "src/games/cartographer/agent/adapter.ts": "77447d01b96bf6e41cb56d8c245d306917044cfca13699367e5444930f4fcc19",
+            "src/games/cartographer/agent/observation.ts": "56afe92dc3f8a84775f1a996d77fe2cec8060b441f35c7a0c5dc679b37e6315f",
+            "src/games/cartographer/agent/policy.ts": "815bf82e1b1249943f71e714720257cc8e2de836e195416bf92ce2fc7c621ad1",
+            "src/games/cartographer/application/session.ts": "e0a190d1e6e0008951574a99ce341ff693d54a5d6a70485dc41f810c527dcbf2",
+            "src/games/cartographer/domain/content.ts": "ae296e58c3c035a0dbce91b3fd747aae65423780b6efc8d0c006baf8ade8ea36",
+            "src/games/cartographer/domain/game.ts": "cf694d36b531cf0bdc92246d08ca35a9233158d23195e507545ff70b0b7a758a",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/layout/layout.ts": "f5226b7ac4ab99e1e5ae39a68321aee885de6ba7d0e309314ec28341efd861ec",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+          },
+          "bundleDigest": "9f16677834bc58367a0ec3d4a46675d8000d767aab0bad8b4e3edd57d32889b6",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "4206a088eb4f8faf9b8dfaefc8f0d18ed283b3e54cefa4d947f64c4e3be62fec",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "artifacts": {
+          "rollout.json": "08c76135b149d022d2295afbf684eba50afd0d1bed5093667f13c244fe92ecf1",
+          "replay.json": "4144a69c0e2a4edddad32334365daf6075f7b100fc9149fe954f7fd516ffac1a",
+          "audit.json": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+        },
+        "review": "/?game=cartographer&review=policy&rollout=%2Ftest-results%2Fpolicy-cli-capstone-1%2Fcartographer%2Frollout.json"
+      },
+      "artifactHashes": {
+        "audit.json": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57",
+        "independent-audit.json": "432c4c9fdfed2e965251dc165dd7ad36863e2f5f9716ad39dc4ddee48e772058",
+        "manifest.json": "169d9659fb640e8067fb5b4fad732ed60c77e73d282be727e71cc6875bce7b15",
+        "replay.json": "4144a69c0e2a4edddad32334365daf6075f7b100fc9149fe954f7fd516ffac1a",
+        "rollout.json": "08c76135b149d022d2295afbf684eba50afd0d1bed5093667f13c244fe92ecf1"
+      },
+      "independentAudit": {
+        "integrity": "passed",
+        "replay": "passed",
+        "inputs": "passed",
+        "decisions": "passed",
+        "firstMismatch": null,
+        "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation.",
+        "rolloutDigest": "8ac51b66d681570f77ccba4a03913a4bdb905f0f177bb9cdb6cda76fc3a776b7",
+        "provenance": {
+          "sourceDigests": {
+            "src/games/cartographer/agent/adapter.ts": "77447d01b96bf6e41cb56d8c245d306917044cfca13699367e5444930f4fcc19",
+            "src/games/cartographer/agent/observation.ts": "56afe92dc3f8a84775f1a996d77fe2cec8060b441f35c7a0c5dc679b37e6315f",
+            "src/games/cartographer/agent/policy.ts": "815bf82e1b1249943f71e714720257cc8e2de836e195416bf92ce2fc7c621ad1",
+            "src/games/cartographer/application/session.ts": "e0a190d1e6e0008951574a99ce341ff693d54a5d6a70485dc41f810c527dcbf2",
+            "src/games/cartographer/domain/content.ts": "ae296e58c3c035a0dbce91b3fd747aae65423780b6efc8d0c006baf8ade8ea36",
+            "src/games/cartographer/domain/game.ts": "cf694d36b531cf0bdc92246d08ca35a9233158d23195e507545ff70b0b7a758a",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/layout/layout.ts": "f5226b7ac4ab99e1e5ae39a68321aee885de6ba7d0e309314ec28341efd861ec",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+          },
+          "bundleDigest": "9f16677834bc58367a0ec3d4a46675d8000d767aab0bad8b4e3edd57d32889b6",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "4206a088eb4f8faf9b8dfaefc8f0d18ed283b3e54cefa4d947f64c4e3be62fec",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "originalSourceMatches": true
+      }
+    },
+    {
+      "game": "night-passage",
+      "allFourAuditsPassed": true,
+      "originalSourceMatches": true,
+      "manifest": {
+        "schema": "night-passage-rollout-manifest-1",
+        "episode": {
+          "seed": "a-light-in-the-dark",
+          "weapon": "bow",
+          "difficulty": "standard",
+          "policy": "example-balanced",
+          "control": "standard",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 8,
+          "actions": 3,
+          "combatClears": 0,
+          "region": 0,
+          "chamber": 0,
+          "hp": 145,
+          "error": null,
+          "versions": {
+            "benchmark": "night-passage-benchmark-2",
+            "engine": "example-balanced-1",
+            "rules": "night-passage-5",
+            "content": "night-passage-content-4",
+            "api": "night-passage-control-1",
+            "score": "night-passage-score-2"
+          },
+          "config": {
+            "decisionTicks": 1,
+            "bowDistance": 230,
+            "meleeReachRatio": 0.7
+          },
+          "budgets": {
+            "maxActions": 10,
+            "maxTicks": 8
+          },
+          "profile": "fresh",
+          "runes": ["vigor", "fleet"],
+          "controlConfig": {
+            "observationTicks": 1,
+            "reactionTicks": 1,
+            "workPerTick": 64,
+            "holdTicks": 2,
+            "switchTicks": 1,
+            "aimRadiansPerTick": 0.5235987755982988
+          },
+          "controlMetrics": {
+            "decisions": 2,
+            "workUnits": 26,
+            "delayTicks": 4,
+            "holdTicks": 4,
+            "controlChanges": 2,
+            "cancelled": 1
+          }
+        },
+        "decisions": 2,
+        "provenance": {
+          "sourceDigests": {
+            "packages/workshop-tools/night-passage/entry.ts": "f3fed86da7c286c2aa184fbb0d0243ce628c5c4120f5c2568dc4ea62a1bd0bd0",
+            "src/games/night-passage/agent/benchmark.ts": "addbe599b1e6e2fee5ca15200edf23bac7d32e5067dcf970585d4d7a87382ed0",
+            "src/games/night-passage/agent/example.ts": "efc830830753afb1e6458aecfba1602e5e954a0765d83c4e3c67a00a50c7d470",
+            "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+            "src/games/night-passage/agent/policy-output.ts": "05f89c4773ca6dce3bddc46b13f4924835911b5b47f9ed58698b661b8bda8cae",
+            "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+            "src/games/night-passage/agent/rollout.ts": "976e6d4036d45ed9b71f7f5887b9cea59b91d3bb64f57ad49075841f2bc03d5f",
+            "src/games/night-passage/application/agent.ts": "ab25739e2df1dac8f34f7dfcdb2d7ce47e6b1f04b513971cf7ecd7c4acdbbacd",
+            "src/games/night-passage/application/chronicle.ts": "37a45360c4a47e25b97f0f2ea98904e44f85418395dcf312c1bf721a1a4cdd4d",
+            "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+            "src/games/night-passage/application/control.ts": "51d8fda2ec50c562dfdd32af7b67da6f774e0cf5d35d67f6bfdcd89f5e30ff4f",
+            "src/games/night-passage/application/playback.ts": "ffbd141d58f7b6f013ee52e2d9617dda0cc829d794dc34a44ab3d2478893b444",
+            "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+            "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+            "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+            "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+            "src/games/night-passage/domain/contracts.ts": "01d2d732ee4a5bb02ed162a0421a2701b765f9f40815fee7a913be7fd99d4c86",
+            "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+            "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+            "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+            "src/games/night-passage/domain/game.ts": "f4cbf389a3126948bf15739ba01ae5f6db981ac95fd70a9d904762b0db7efcc1",
+            "src/games/night-passage/domain/geometry.ts": "58407f2f6c5d97e5f1050a2c5b01b6a5728b3d63aa1fd0018628b4078afecf80",
+            "src/games/night-passage/domain/score.ts": "be53253a9a66d3fb62e65c76993fe7c20ee3271120e9078d7494353c5a9643e8",
+            "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+          },
+          "bundleDigest": "59747b7b93d81274646da6debc42909e75e85c27ce7d441fe48e1674abadc25e",
+          "toolDigests": {
+            "packages/workshop-tools/night-passage/runtime.ts": "02eda44b2dcd759e1b96935280ee9f1a5025c25c118d4fc5a5d3d5b87e7349d7",
+            "packages/workshop-tools/night-passage/cli.ts": "0eb6276f154ebd687d76f6987e5770bce554473132c672bdf442ce5475f9832f",
+            "packages/workshop-tools/night-passage/policy-cli.ts": "e874498e761548e027a16dc90ee4b71310ccc40513f4bed96becb7ec95913bfe",
+            "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+            "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/night-passage/study.ts": "942b980381ee4a975e1421c8d5b0d25843db8c020863fabe3782cb9267200b7d",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "artifacts": {
+          "rollout.json": "ce46086ccabe1f40cc4bcdcc26a5e4697c8ec07a01e197a6c4967a1ca2b62ae3",
+          "replay.json": "2c5079bb733a16563de6172cde4692bdc57ce4e6689d48a5697ff4b85cf84ac9",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        },
+        "review": "/?game=night-passage&watch=1&rollout=%2Ftest-results%2Fpolicy-cli-capstone-1%2Fnight-passage%2Frollout.json"
+      },
+      "artifactHashes": {
+        "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595",
+        "independent-audit.json": "916678eb9b6876b0453b0ff6e7c30ea12a7be97602050fa01d51ea73fdee8325",
+        "manifest.json": "88c36ace3dc708bd15fed53b84c949878e07aad19806cb11b4c1dfccff45f23b",
+        "replay.json": "2c5079bb733a16563de6172cde4692bdc57ce4e6689d48a5697ff4b85cf84ac9",
+        "rollout.json": "ce46086ccabe1f40cc4bcdcc26a5e4697c8ec07a01e197a6c4967a1ca2b62ae3"
+      },
+      "independentAudit": {
+        "replay": "passed",
+        "integrity": "passed",
+        "inputs": "passed",
+        "decisions": "passed",
+        "firstMismatch": null,
+        "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+        "numericDrift": {
+          "count": 0,
+          "tolerance": 0,
+          "first": null
+        },
+        "rolloutDigest": "ed97ce979a3cf54b27a7a590685657c14c876210b533ff89b8e103aa2fc7e4a9",
+        "provenance": {
+          "sourceDigests": {
+            "packages/workshop-tools/night-passage/entry.ts": "f3fed86da7c286c2aa184fbb0d0243ce628c5c4120f5c2568dc4ea62a1bd0bd0",
+            "src/games/night-passage/agent/benchmark.ts": "addbe599b1e6e2fee5ca15200edf23bac7d32e5067dcf970585d4d7a87382ed0",
+            "src/games/night-passage/agent/example.ts": "efc830830753afb1e6458aecfba1602e5e954a0765d83c4e3c67a00a50c7d470",
+            "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+            "src/games/night-passage/agent/policy-output.ts": "05f89c4773ca6dce3bddc46b13f4924835911b5b47f9ed58698b661b8bda8cae",
+            "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+            "src/games/night-passage/agent/rollout.ts": "976e6d4036d45ed9b71f7f5887b9cea59b91d3bb64f57ad49075841f2bc03d5f",
+            "src/games/night-passage/application/agent.ts": "ab25739e2df1dac8f34f7dfcdb2d7ce47e6b1f04b513971cf7ecd7c4acdbbacd",
+            "src/games/night-passage/application/chronicle.ts": "37a45360c4a47e25b97f0f2ea98904e44f85418395dcf312c1bf721a1a4cdd4d",
+            "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+            "src/games/night-passage/application/control.ts": "51d8fda2ec50c562dfdd32af7b67da6f774e0cf5d35d67f6bfdcd89f5e30ff4f",
+            "src/games/night-passage/application/playback.ts": "ffbd141d58f7b6f013ee52e2d9617dda0cc829d794dc34a44ab3d2478893b444",
+            "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+            "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+            "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+            "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+            "src/games/night-passage/domain/contracts.ts": "01d2d732ee4a5bb02ed162a0421a2701b765f9f40815fee7a913be7fd99d4c86",
+            "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+            "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+            "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+            "src/games/night-passage/domain/game.ts": "f4cbf389a3126948bf15739ba01ae5f6db981ac95fd70a9d904762b0db7efcc1",
+            "src/games/night-passage/domain/geometry.ts": "58407f2f6c5d97e5f1050a2c5b01b6a5728b3d63aa1fd0018628b4078afecf80",
+            "src/games/night-passage/domain/score.ts": "be53253a9a66d3fb62e65c76993fe7c20ee3271120e9078d7494353c5a9643e8",
+            "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+          },
+          "bundleDigest": "59747b7b93d81274646da6debc42909e75e85c27ce7d441fe48e1674abadc25e",
+          "toolDigests": {
+            "packages/workshop-tools/night-passage/runtime.ts": "02eda44b2dcd759e1b96935280ee9f1a5025c25c118d4fc5a5d3d5b87e7349d7",
+            "packages/workshop-tools/night-passage/cli.ts": "0eb6276f154ebd687d76f6987e5770bce554473132c672bdf442ce5475f9832f",
+            "packages/workshop-tools/night-passage/policy-cli.ts": "e874498e761548e027a16dc90ee4b71310ccc40513f4bed96becb7ec95913bfe",
+            "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+            "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/night-passage/study.ts": "942b980381ee4a975e1421c8d5b0d25843db8c020863fabe3782cb9267200b7d",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "originalSourceMatches": true
+      }
+    }
+  ],
+  "nativeStudy": {
+    "directory": "test-results/night-passage-policy-workflow/development-1",
+    "purpose": "Bounded development-only integration witness: bow/Standard \u00d73effort policies \u00d710DEVblocks, maxActions100/maxTicks50. All30timeouts; no strength or fullmatrix comparison.",
+    "artifactHashes": {
+      "protocol.json": "1e2ea8d57fb682b4fce6d8af295a81eeb862db0c908c9569fa570f0a66cbcdbe",
+      "report.json": "c20bd6e93673cbe7369b7a966e30f08c81e5b4ae2c28241befd3d0407e2f87bf",
+      "independent-case-audit.json": "80f8897a36ca4e9cae4f276edb409b4bd2b064e75939c974dd0d64980491b735",
+      "bundles/3e5d3cb2c8aafbcf0fd472c346a0c4d28a2ef360b0251906fcdd5dc25885367c.mjs": "3e5d3cb2c8aafbcf0fd472c346a0c4d28a2ef360b0251906fcdd5dc25885367c"
+    },
+    "report": {
+      "schema": "night-passage-policy-study-1",
+      "protocolDigest": "1e2ea8d57fb682b4fce6d8af295a81eeb862db0c908c9569fa570f0a66cbcdbe",
+      "protocol": {
+        "schema": "night-passage-policy-study-protocol-1",
+        "split": "development",
+        "versions": {
+          "study": "night-passage-policy-study-1",
+          "builtins": "night-passage-policy-1"
+        },
+        "grid": {
+          "seeds": [
+            "POLICY-ADOPTION-1-DEV-01",
+            "POLICY-ADOPTION-1-DEV-02",
+            "POLICY-ADOPTION-1-DEV-03",
+            "POLICY-ADOPTION-1-DEV-04",
+            "POLICY-ADOPTION-1-DEV-05",
+            "POLICY-ADOPTION-1-DEV-06",
+            "POLICY-ADOPTION-1-DEV-07",
+            "POLICY-ADOPTION-1-DEV-08",
+            "POLICY-ADOPTION-1-DEV-09",
+            "POLICY-ADOPTION-1-DEV-10"
+          ],
+          "weapons": ["bow"],
+          "difficulties": ["standard"],
+          "policies": ["quick", "balanced", "deliberate"]
+        },
+        "base": {
+          "control": "standard",
+          "rules": "night-passage-5",
+          "maxActions": 100,
+          "maxTicks": 50
+        },
+        "policies": [
+          {
+            "id": "quick",
+            "version": "night-passage-policy-1"
+          },
+          {
+            "id": "balanced",
+            "version": "night-passage-policy-1"
+          },
+          {
+            "id": "deliberate",
+            "version": "night-passage-policy-1"
+          }
+        ],
+        "cases": 30,
+        "ranking": ["wins", "meanScore", "medianWinTicks"],
+        "analysis": "Within each difficulty/weapon stratum, independent paired seed blocks. Wilson 95% win intervals, approximate Student t mean/paired score intervals; paired wins show discordance and point differences with interval unavailable. Constant samples do not imply zero uncertainty. No weapon pooling, multiple-comparison adjustment or human-difficulty claim. Errors/timeouts remain attempts. No tuning on evaluation.",
+        "provenance": {
+          "sourceDigests": {
+            "packages/workshop-tools/night-passage/entry.ts": "f3fed86da7c286c2aa184fbb0d0243ce628c5c4120f5c2568dc4ea62a1bd0bd0",
+            "src/games/night-passage/agent/benchmark.ts": "addbe599b1e6e2fee5ca15200edf23bac7d32e5067dcf970585d4d7a87382ed0",
+            "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+            "src/games/night-passage/agent/policy-output.ts": "05f89c4773ca6dce3bddc46b13f4924835911b5b47f9ed58698b661b8bda8cae",
+            "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+            "src/games/night-passage/agent/rollout.ts": "976e6d4036d45ed9b71f7f5887b9cea59b91d3bb64f57ad49075841f2bc03d5f",
+            "src/games/night-passage/application/agent.ts": "ab25739e2df1dac8f34f7dfcdb2d7ce47e6b1f04b513971cf7ecd7c4acdbbacd",
+            "src/games/night-passage/application/chronicle.ts": "37a45360c4a47e25b97f0f2ea98904e44f85418395dcf312c1bf721a1a4cdd4d",
+            "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+            "src/games/night-passage/application/control.ts": "51d8fda2ec50c562dfdd32af7b67da6f774e0cf5d35d67f6bfdcd89f5e30ff4f",
+            "src/games/night-passage/application/playback.ts": "ffbd141d58f7b6f013ee52e2d9617dda0cc829d794dc34a44ab3d2478893b444",
+            "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+            "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+            "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+            "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+            "src/games/night-passage/domain/contracts.ts": "01d2d732ee4a5bb02ed162a0421a2701b765f9f40815fee7a913be7fd99d4c86",
+            "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+            "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+            "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+            "src/games/night-passage/domain/game.ts": "f4cbf389a3126948bf15739ba01ae5f6db981ac95fd70a9d904762b0db7efcc1",
+            "src/games/night-passage/domain/geometry.ts": "58407f2f6c5d97e5f1050a2c5b01b6a5728b3d63aa1fd0018628b4078afecf80",
+            "src/games/night-passage/domain/score.ts": "be53253a9a66d3fb62e65c76993fe7c20ee3271120e9078d7494353c5a9643e8",
+            "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+          },
+          "bundleDigest": "3e5d3cb2c8aafbcf0fd472c346a0c4d28a2ef360b0251906fcdd5dc25885367c",
+          "toolDigests": {
+            "packages/workshop-tools/night-passage/runtime.ts": "02eda44b2dcd759e1b96935280ee9f1a5025c25c118d4fc5a5d3d5b87e7349d7",
+            "packages/workshop-tools/night-passage/cli.ts": "0eb6276f154ebd687d76f6987e5770bce554473132c672bdf442ce5475f9832f",
+            "packages/workshop-tools/night-passage/policy-cli.ts": "e874498e761548e027a16dc90ee4b71310ccc40513f4bed96becb7ec95913bfe",
+            "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+            "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd",
+            "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+            "packages/workshop-tools/night-passage/study.ts": "942b980381ee4a975e1421c8d5b0d25843db8c020863fabe3782cb9267200b7d",
+            "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        }
+      },
+      "summary": [
+        {
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "attempts": 10,
+          "wins": 0,
+          "losses": 0,
+          "timeouts": 10,
+          "errors": 0,
+          "auditsPassed": 10,
+          "winRate": {
+            "wins": 0,
+            "attempts": 10,
+            "rate": 0,
+            "interval95": [0, 0.2775401687666166]
+          },
+          "meanScore": {
+            "n": 10,
+            "mean": 0,
+            "interval95": null,
+            "reason": "Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty."
+          },
+          "medianWinTicks": null,
+          "work": {
+            "n": 10,
+            "mean": 143,
+            "interval95": null,
+            "reason": "Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty."
+          }
+        },
+        {
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "attempts": 10,
+          "wins": 0,
+          "losses": 0,
+          "timeouts": 10,
+          "errors": 0,
+          "auditsPassed": 10,
+          "winRate": {
+            "wins": 0,
+            "attempts": 10,
+            "rate": 0,
+            "interval95": [0, 0.2775401687666166]
+          },
+          "meanScore": {
+            "n": 10,
+            "mean": 0,
+            "interval95": null,
+            "reason": "Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty."
+          },
+          "medianWinTicks": null,
+          "work": {
+            "n": 10,
+            "mean": 143,
+            "interval95": null,
+            "reason": "Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty."
+          }
+        },
+        {
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "attempts": 10,
+          "wins": 0,
+          "losses": 0,
+          "timeouts": 10,
+          "errors": 0,
+          "auditsPassed": 10,
+          "winRate": {
+            "wins": 0,
+            "attempts": 10,
+            "rate": 0,
+            "interval95": [0, 0.2775401687666166]
+          },
+          "meanScore": {
+            "n": 10,
+            "mean": 0,
+            "interval95": null,
+            "reason": "Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty."
+          },
+          "medianWinTicks": null,
+          "work": {
+            "n": 10,
+            "mean": 143,
+            "interval95": null,
+            "reason": "Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty."
+          }
+        }
+      ],
+      "paired": [
+        {
+          "difficulty": "standard",
+          "weapon": "bow",
+          "a": "quick",
+          "b": "balanced",
+          "winDifference": {
+            "n": 10,
+            "mean": 0,
+            "aOnly": 0,
+            "bOnly": 0,
+            "bothWon": 0,
+            "bothLost": 10,
+            "interval95": null,
+            "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+          },
+          "scoreDifference": {
+            "n": 10,
+            "mean": 0,
+            "interval95": null,
+            "reason": "Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty."
+          }
+        },
+        {
+          "difficulty": "standard",
+          "weapon": "bow",
+          "a": "quick",
+          "b": "deliberate",
+          "winDifference": {
+            "n": 10,
+            "mean": 0,
+            "aOnly": 0,
+            "bOnly": 0,
+            "bothWon": 0,
+            "bothLost": 10,
+            "interval95": null,
+            "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+          },
+          "scoreDifference": {
+            "n": 10,
+            "mean": 0,
+            "interval95": null,
+            "reason": "Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty."
+          }
+        },
+        {
+          "difficulty": "standard",
+          "weapon": "bow",
+          "a": "balanced",
+          "b": "deliberate",
+          "winDifference": {
+            "n": 10,
+            "mean": 0,
+            "aOnly": 0,
+            "bOnly": 0,
+            "bothWon": 0,
+            "bothLost": 10,
+            "interval95": null,
+            "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+          },
+          "scoreDifference": {
+            "n": 10,
+            "mean": 0,
+            "interval95": null,
+            "reason": "Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty."
+          }
+        }
+      ],
+      "rows": [
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-01",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "fc5de698190813b13275ea1679edab303ce141e173d07e6a8ef0c28f8dd77b31",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-01"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-01",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "be3252382e09114f060da293c8ca9e856a0381b155fdf85919cfa5aaac1a1163",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-01"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-01",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "635bd46a3e334001f883f81fd94e0f967bf574a9868491c4553158b7c3b6cac2",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-01"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-02",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "c4324432aea791bb4a754c9a3bfed3f1ed45e822b9a684ae52396f042106fa0a",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-02"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-02",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "eed87c456d725f0a730c4f7cffc0f439e40196c6c7b672f454a01113518fb5a8",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-02"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-02",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "bea3d1cfe00e2650752ea597693c8810ffad2a1d9292b39cd8ab162cc01438b2",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-02"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-03",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "a9344cca510c63627a41d39693b8587bed2654edbb06f0456a3bd1d16e7083ee",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-03"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-03",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "5d48d44f1e5ace23e936087486b0bf4a882705dbb3989cc0bedb8af75e084f76",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-03"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-03",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "fc51196d7c055de5dd59d42d79ba0f234158e4d8fff79c366511f3c584da4aa6",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-03"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-04",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "712154921701f2d71f4f015de20de7fec9de09073399ae4e8ec15bf778831ecc",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-04"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-04",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "8003f9ff96d7ab885f00b1ed809e3277a2fc38e5205451c469ab2d5a90451466",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-04"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-04",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "29d3b3a773c526a479f4ce41a1bac7c76a821f78ba34dcf3a00d4cde5cd914c3",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-04"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-05",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "5c7a709e73db51b00d5f708a1de577922f7e0246bda05798c9ba2855db357490",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-05"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-05",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "198512aa1044313050f422af460279e38036bdfc4853cfd7b47f90abf53465e9",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-05"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-05",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "98f8e086b62e1d48b5d12c46d5fb94611b593e1853678c098a64307e366ca3f0",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-05"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-06",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "8a144d7cdc23ca89c5b36e2e963b7553d2d9fba2f51c126f4e93cd4f65b1ef2f",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-06"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-06",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "cfd1bd0d0b973e74c50a6ca2c75cef284febebb6b0bd290dec356e8ed09dc6ae",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-06"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-06",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "27e9d2df359c96eea586b850c0fc4178a5b372000ab16741703cf6d2468278f1",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-06"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-07",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "6b040bd7fc9062a7d980ab1ec62fcc1510f2b3dd2a1f6fe79434fb09acef7c26",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-07"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-07",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "83a813487066c165b9e400b2af66afc6e184e02c54869be99f8638fb99f580e7",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-07"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-07",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "7a0b63a6b6cdcefc908bc50a5a55c8676703e1cc31a4727e9bdf4a1793c1a1d3",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-07"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-08",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "8389952ad4bdc2fe1de07ab39968fca8d625cf3fc60c497d3c8f03cb93ec324b",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-08"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-08",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "f041afe5faeabef32c51296756b64939b4f649a5087cab799035fc651b177978",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-08"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-08",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "b511b7cbcf65271392b884200d1940a37dacfdc28d3b33774dbe861cf008a28d",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-08"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-09",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "56d3f347bd6ab47ac7978b4beab0d49a62295197156d2009cbba90a142c7c80b",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-09"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-09",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "3b98691f95087dd8b6b60be827ced62fb39d606e9f453d5a29223f55d710430d",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-09"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-09",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "bd35c7b4fa3d3ce25ff89be7070a2dcfafbfcc55d9c520308c98936e791edc9e",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-09"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-10",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "quick",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "12799d3b1261bc6cd1c752e1684b968250adfde28745dbf04b39fa5221589230",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-10"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-10",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "balanced",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "b0afe1ba87b08aaa26f148e488634559230bb6aabc2dd1e339a36010bf7787e3",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-10"
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-10",
+          "difficulty": "standard",
+          "weapon": "bow",
+          "policy": "deliberate",
+          "status": "timeout",
+          "score": 0,
+          "elapsedTicks": 50,
+          "actions": 12,
+          "work": 143,
+          "digest": "56831b6849d9185e94dd792fbb0c811c1ecae39046a8fc7830d3bb4b90d30314",
+          "audit": {
+            "replay": "passed",
+            "integrity": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+            "numericDrift": {
+              "count": 0,
+              "tolerance": 0,
+              "first": null
+            }
+          },
+          "artifacts": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-10"
+        }
+      ]
+    },
+    "caseManifests": [
+      {
+        "path": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-01/manifest.json",
+        "digest": "6f83cf8193a0913a41c1e2512d30a330c82ee1f2776818556ce80a7ae8340bc2",
+        "artifacts": {
+          "rollout.json": "4c7f095731ca202c549068b1ff8c1a997b32e97c26e3dc4c80d7988a627dcaa1",
+          "replay.json": "76f7c42d9b989920d43241273c6d6497a5fcb36d778fc42d5d6c6ce1993af6fd",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-02/manifest.json",
+        "digest": "86c3623e5356908598ca9ec2c103590a982dd72d6eec4ec8d98edce589c1b3b5",
+        "artifacts": {
+          "rollout.json": "df94355e363fd604f36e52b81a360ff4038f023f48894d9a7591b8e906b02e0d",
+          "replay.json": "e84254714398c604afa9206666e0a53483d5ec6a75fef2435f959c923a20af77",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-03/manifest.json",
+        "digest": "5b15956851960e9921e8a7a01e87b15ca4468e3d8e754a040f346273f1845f17",
+        "artifacts": {
+          "rollout.json": "7df59aeb546a7a526747a870e77eb12b9fc083083487d884070c31af2e757677",
+          "replay.json": "f19a35956855aa73f052c11ea30930d01ee4f6cb271e676342c63e168b83ead9",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-04/manifest.json",
+        "digest": "ff0de8a366013b393cfb955eea98e74fc1cc624c70d89eb088a20d82c17118a9",
+        "artifacts": {
+          "rollout.json": "dd5a5f7c60d3b1a467622916539f668d46bc41b2129644ecd0cf9db44c18c208",
+          "replay.json": "00b543ffbec9f70cb8a7490110ff357ebab5196e34547fd0fed061580b913a89",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-05/manifest.json",
+        "digest": "65c31fac8354cf35f9d06e2c90fe36281162d1f2f452f80b2cf6da9b74b54851",
+        "artifacts": {
+          "rollout.json": "f09a2d3c8023e0f48aa7c22e2f778deb54414990d19c2704f5b2eb13f78154eb",
+          "replay.json": "9d73e2da155faf0c456b86fd0db13dabdf5adfb329b311ca9b6db9595f2d013a",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-06/manifest.json",
+        "digest": "da2d497e88e5b12b8fd1b176f4422178c5773ddd08f0e1cbf41401307366f338",
+        "artifacts": {
+          "rollout.json": "369c1aecd5bf4b9b9cb697e83065b2994875fbeb7eca10968574e2dbda012bc1",
+          "replay.json": "3cd64cc6210e607a1f6ed69ae18d8f28a94be04b10fd66743d678a984fce388f",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-07/manifest.json",
+        "digest": "f627b2772b0eccdf4ab3083dcf2740c9d6fb34abda3a3e8f3d4481285f0d714f",
+        "artifacts": {
+          "rollout.json": "49d468886b191617104d31378c91d3578ee9aa7d01bc2b7de23aad2dd9dcd741",
+          "replay.json": "a7b68a01eb8c2183bdac042d9d50e3b68f7a37341ed95c809d60579b998f7a7c",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-08/manifest.json",
+        "digest": "6d359985541a400a659ccdc684bffa0a204020929448917a7b405f50cbe3d116",
+        "artifacts": {
+          "rollout.json": "5097532f74db951711e437f640382208ab0aa6ef01469cd2548adbfae798236f",
+          "replay.json": "9eb374ab64c84a1651f5e193abbf7ce0527447b2711919ef3f2c0b746913c2da",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-09/manifest.json",
+        "digest": "fea0718f7a694bca53fec6f7eaeaa96fa93e693e31968c9cd92b875b39ed2948",
+        "artifacts": {
+          "rollout.json": "5a03d154369f8c02ac5f4c6938e9857e75b471b41bb05851d0dbb1e46a47ea61",
+          "replay.json": "50d78cf0d84be4a914fe4ee3c94af0b3eff6158c0d1c484d940ee25ae5be14ff",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/balanced/POLICY-ADOPTION-1-DEV-10/manifest.json",
+        "digest": "dd6b864052a4f4424c8f534e65f090885fb6e63970bb04b04798e572c0b3cd68",
+        "artifacts": {
+          "rollout.json": "ef774f8d6708b5ec4b82950e7228737354b373460fe042a8f7af42d6ead2258b",
+          "replay.json": "f54090dc97c05a40b5027bd16487b15e412f808294422c0378fb5427e5f9f59c",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-01/manifest.json",
+        "digest": "21606438b105056c08fd16da05a906727df4bc4463588d5517b5a4e160eb4604",
+        "artifacts": {
+          "rollout.json": "af991bf02180394d493df7ab2205c9f15dd1f687c890f49a9ffee22f1e9d33f5",
+          "replay.json": "76f7c42d9b989920d43241273c6d6497a5fcb36d778fc42d5d6c6ce1993af6fd",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-02/manifest.json",
+        "digest": "cbc0cef9b5c3d54fb62574297cff91bf1a17b52c0c651530c332fc8d84b0261c",
+        "artifacts": {
+          "rollout.json": "ebf056d0fbedebd7f932b135f4f3e62cba45f1b611de884906e1237b4be88b2e",
+          "replay.json": "e84254714398c604afa9206666e0a53483d5ec6a75fef2435f959c923a20af77",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-03/manifest.json",
+        "digest": "ad43407f457219c97be8ff3f91209e380ba294618eb9d5170aa3388df22b9bb3",
+        "artifacts": {
+          "rollout.json": "758fb9bfbfbe46a1c6598cbf806ac4c81e9faf3d498e8c439c27edfffbcf45b4",
+          "replay.json": "f19a35956855aa73f052c11ea30930d01ee4f6cb271e676342c63e168b83ead9",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-04/manifest.json",
+        "digest": "6fa64f1c3db6781dcfba815d864c940e8db0e9e962238273c8bd4523596fc059",
+        "artifacts": {
+          "rollout.json": "bff217f848bb137c0e077ef5ad2a5ba3b3bc1a52665c603066cdd23da3675944",
+          "replay.json": "00b543ffbec9f70cb8a7490110ff357ebab5196e34547fd0fed061580b913a89",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-05/manifest.json",
+        "digest": "8926d8f643e5883fee48d1f0bbdf59e9df0821d4b33f87bed3d6dbe563b82841",
+        "artifacts": {
+          "rollout.json": "a8f350f35123275f73eb8db00576eebba2cc4193ac408169c203f92fe301be17",
+          "replay.json": "9d73e2da155faf0c456b86fd0db13dabdf5adfb329b311ca9b6db9595f2d013a",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-06/manifest.json",
+        "digest": "2153685a2510c8252b5db5c9df9cd883f703300c1459cc698726687770512091",
+        "artifacts": {
+          "rollout.json": "13b77d122b05857d3c70502bbe9c356cc1020c213fa8442ba49a8a971fdbb3dd",
+          "replay.json": "3cd64cc6210e607a1f6ed69ae18d8f28a94be04b10fd66743d678a984fce388f",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-07/manifest.json",
+        "digest": "099208278a8ecd48b6e9cbe1eb4eaecbcea1bef323b1049bd4d350714f458bdd",
+        "artifacts": {
+          "rollout.json": "3928fdc7649393e689002c0ff30169ca462826b5a68c2116b699ba4730d4da86",
+          "replay.json": "a7b68a01eb8c2183bdac042d9d50e3b68f7a37341ed95c809d60579b998f7a7c",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-08/manifest.json",
+        "digest": "87212cc33775abed96a76d9659969b1a2da4f6c0be5c8b5c74b6df53d18b4f76",
+        "artifacts": {
+          "rollout.json": "a40086787196d1105cc689ee938d1690d2efc1c20be56e768eea3384aa988bc0",
+          "replay.json": "9eb374ab64c84a1651f5e193abbf7ce0527447b2711919ef3f2c0b746913c2da",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-09/manifest.json",
+        "digest": "307618ef5552dd8ba6d00e4993b8a424f6e11273c115f4ef04b839a7200e2df7",
+        "artifacts": {
+          "rollout.json": "619ec60816d4a16c5c0086e65584aa6f036b6d5b190582a334c9fe52fc21ed0d",
+          "replay.json": "50d78cf0d84be4a914fe4ee3c94af0b3eff6158c0d1c484d940ee25ae5be14ff",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/deliberate/POLICY-ADOPTION-1-DEV-10/manifest.json",
+        "digest": "6932f7d96b4200c1e101a2b4d9ebb0bca55022f4f32d79d467fbd762bb9bcffc",
+        "artifacts": {
+          "rollout.json": "f4bf1347fdf5a2ce1340f9615a94e85c1c494e5282f485af6640999fb08eb330",
+          "replay.json": "f54090dc97c05a40b5027bd16487b15e412f808294422c0378fb5427e5f9f59c",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-01/manifest.json",
+        "digest": "5090ecc9530f44aa7340979cc165de9ccd41c56d2f15e76566e1c58ebc65cc97",
+        "artifacts": {
+          "rollout.json": "93a4ad7c3e9ec8635e8d1f533bae0bf99ad2c13187925ba60a43b1d533a8f260",
+          "replay.json": "76f7c42d9b989920d43241273c6d6497a5fcb36d778fc42d5d6c6ce1993af6fd",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-02/manifest.json",
+        "digest": "c18bf71b768b7f03920314d208cacbb884fbc8232dc21b1890e99374ed9da071",
+        "artifacts": {
+          "rollout.json": "d750b7488f5b4aea6ea8159b87e90558bdfd3336aceff6531d78a21964a59be1",
+          "replay.json": "e84254714398c604afa9206666e0a53483d5ec6a75fef2435f959c923a20af77",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-03/manifest.json",
+        "digest": "6bcb91cbb9325e2167ec5a7cd84c8ef28af95a94ed2826282e3e8b16181fed1b",
+        "artifacts": {
+          "rollout.json": "17c6e7b3d844b5bbcc11f437e64bd92f5c4e46251e4bbca7978be980b50211f1",
+          "replay.json": "f19a35956855aa73f052c11ea30930d01ee4f6cb271e676342c63e168b83ead9",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-04/manifest.json",
+        "digest": "94f7edf91918afdc3fea0cb3b11712ca65c946537db39cf49d37480b3fa2eb79",
+        "artifacts": {
+          "rollout.json": "4e7c34e14904be98b4fc2124bcf247ca30224dfcd8e0d5d41eef513f0833cc57",
+          "replay.json": "00b543ffbec9f70cb8a7490110ff357ebab5196e34547fd0fed061580b913a89",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-05/manifest.json",
+        "digest": "0ced0d4ae37f3e395727f2bc6ad8a9f4ae59abc2239418ccf50f30a6e6221c86",
+        "artifacts": {
+          "rollout.json": "e12d8903bff74da5806762727157ea4918ac54c7dfebb428c42992dd627dae3b",
+          "replay.json": "9d73e2da155faf0c456b86fd0db13dabdf5adfb329b311ca9b6db9595f2d013a",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-06/manifest.json",
+        "digest": "ed1ff874a9e8ed02786a2ec9c36b53e03bf95aaebd892d643243335633c95d99",
+        "artifacts": {
+          "rollout.json": "ffe11deb17c338a92c98ecd614c1f907b899f124ed35cc4d8c068a5b6c087d0e",
+          "replay.json": "3cd64cc6210e607a1f6ed69ae18d8f28a94be04b10fd66743d678a984fce388f",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-07/manifest.json",
+        "digest": "a2534c4044ce723f011c27c09ddb6156119faf6408204962896fd13ed3560bb3",
+        "artifacts": {
+          "rollout.json": "ad220391d39c1538cc42455ef15c085492d5ff126e721e8fb7be9777259ba007",
+          "replay.json": "a7b68a01eb8c2183bdac042d9d50e3b68f7a37341ed95c809d60579b998f7a7c",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-08/manifest.json",
+        "digest": "909d3ce88c9ff4a879f8a7a2a6c47b1cba8b8ddfcf8dd7c24d27192586e5149f",
+        "artifacts": {
+          "rollout.json": "14f4fb3a30d7c883aaace26f7ea3496a2e84f7166e3aa160b2a8936f9f9d9ecd",
+          "replay.json": "9eb374ab64c84a1651f5e193abbf7ce0527447b2711919ef3f2c0b746913c2da",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-09/manifest.json",
+        "digest": "0835fc8d1d8d84615e1ae69d54b341cd25b089ff11b15395dd2fdc7449154952",
+        "artifacts": {
+          "rollout.json": "e2f33fcd3f21bfdfe85a9903749663f192a0ab215a0cec58bbe464415cf08dc2",
+          "replay.json": "50d78cf0d84be4a914fe4ee3c94af0b3eff6158c0d1c484d940ee25ae5be14ff",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      },
+      {
+        "path": "cases/standard/bow/quick/POLICY-ADOPTION-1-DEV-10/manifest.json",
+        "digest": "b47769ffa49dcdba8a0d4c38aca6a9c15f748297b49200a4e1174e6d596402db",
+        "artifacts": {
+          "rollout.json": "246006e52f244dbee1ba2180ee2e7bc4380ed102dc73f14b6f8dbf71cae97f86",
+          "replay.json": "f54090dc97c05a40b5027bd16487b15e412f808294422c0378fb5427e5f9f59c",
+          "audit.json": "535f73784293a11f9dfe2878313e1a6b697b21bd063a85c46b862f2aaf9e7595"
+        }
+      }
+    ],
+    "independentCaseAudit": {
+      "replay": "passed",
+      "integrity": "passed",
+      "inputs": "passed",
+      "decisions": "passed",
+      "firstMismatch": null,
+      "scope": "Current-code reconstruction and cooperative information-boundary check; not proof against hostile code. Policy reproduction uses the current matching implementation. Original inputs and source pins remain recorded evidence.",
+      "numericDrift": {
+        "count": 0,
+        "tolerance": 0,
+        "first": null
+      },
+      "rolloutDigest": "fc5de698190813b13275ea1679edab303ce141e173d07e6a8ef0c28f8dd77b31",
+      "provenance": {
+        "sourceDigests": {
+          "packages/workshop-tools/night-passage/entry.ts": "f3fed86da7c286c2aa184fbb0d0243ce628c5c4120f5c2568dc4ea62a1bd0bd0",
+          "src/games/night-passage/agent/benchmark.ts": "addbe599b1e6e2fee5ca15200edf23bac7d32e5067dcf970585d4d7a87382ed0",
+          "src/games/night-passage/agent/player.ts": "267aeb8375f5200c8919d52ba917ecad9d8bdd7ac8fcaee518ba29803e9401d7",
+          "src/games/night-passage/agent/policy-output.ts": "05f89c4773ca6dce3bddc46b13f4924835911b5b47f9ed58698b661b8bda8cae",
+          "src/games/night-passage/agent/policy.ts": "e0782edec272cbabd4c2c75ed140ad11594a3f508492d482f5b8f2afd33be00b",
+          "src/games/night-passage/agent/rollout.ts": "976e6d4036d45ed9b71f7f5887b9cea59b91d3bb64f57ad49075841f2bc03d5f",
+          "src/games/night-passage/application/agent.ts": "ab25739e2df1dac8f34f7dfcdb2d7ce47e6b1f04b513971cf7ecd7c4acdbbacd",
+          "src/games/night-passage/application/chronicle.ts": "37a45360c4a47e25b97f0f2ea98904e44f85418395dcf312c1bf721a1a4cdd4d",
+          "src/games/night-passage/application/control-settings.ts": "58b68f39aa3aa51332f815ad9e122a29aae79caed197976a5c44ec505fd1c452",
+          "src/games/night-passage/application/control.ts": "51d8fda2ec50c562dfdd32af7b67da6f774e0cf5d35d67f6bfdcd89f5e30ff4f",
+          "src/games/night-passage/application/playback.ts": "ffbd141d58f7b6f013ee52e2d9617dda0cc829d794dc34a44ab3d2478893b444",
+          "src/games/night-passage/domain/boon-offers.ts": "076b81eeb190dd892404532100209019177b06dac3f73514a8a75f5cdc0df7d7",
+          "src/games/night-passage/domain/chamber-content.ts": "d3889ec705b8fb960d72fa75a85c673522d3e338d32c62811d6b038412b76888",
+          "src/games/night-passage/domain/combat.ts": "2d1467e6052a5b30abcafdec8e19d568bde9578a8198d7e181d3ecb3dd12e384",
+          "src/games/night-passage/domain/content.ts": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49",
+          "src/games/night-passage/domain/contracts.ts": "01d2d732ee4a5bb02ed162a0421a2701b765f9f40815fee7a913be7fd99d4c86",
+          "src/games/night-passage/domain/effects.ts": "637e2f44ccf2fb534e9625a667cf714d7d1e1c46dd88c01f434812f633f1cdce",
+          "src/games/night-passage/domain/encounter-content.ts": "fc50eaea1d90bafcb939c4a8eeece6795324c89d85ac8896696546872351eea2",
+          "src/games/night-passage/domain/encounters.ts": "7b25fb615a80b07109ce85ca1e1e5c274512e2361618399a10027bd46789a792",
+          "src/games/night-passage/domain/game.ts": "f4cbf389a3126948bf15739ba01ae5f6db981ac95fd70a9d904762b0db7efcc1",
+          "src/games/night-passage/domain/geometry.ts": "58407f2f6c5d97e5f1050a2c5b01b6a5728b3d63aa1fd0018628b4078afecf80",
+          "src/games/night-passage/domain/score.ts": "be53253a9a66d3fb62e65c76993fe7c20ee3271120e9078d7494353c5a9643e8",
+          "src/games/night-passage/domain/threats.ts": "bc4f2bcf1921170472d399016ee12659abfd365c71a98dc419652f3d90355368",
+          "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+          "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+        },
+        "bundleDigest": "3e5d3cb2c8aafbcf0fd472c346a0c4d28a2ef360b0251906fcdd5dc25885367c",
+        "toolDigests": {
+          "packages/workshop-tools/night-passage/runtime.ts": "02eda44b2dcd759e1b96935280ee9f1a5025c25c118d4fc5a5d3d5b87e7349d7",
+          "packages/workshop-tools/night-passage/cli.ts": "0eb6276f154ebd687d76f6987e5770bce554473132c672bdf442ce5475f9832f",
+          "packages/workshop-tools/night-passage/policy-cli.ts": "e874498e761548e027a16dc90ee4b71310ccc40513f4bed96becb7ec95913bfe",
+          "packages/workshop-tools/night-passage/protocol.ts": "7fea220acc1534017f8b54745c0d129a6a8f822f819a4452ea6d5be0c4abad23",
+          "packages/workshop-tools/night-passage/evaluate.ts": "e5646d67ed9c7c03dcad408eb841df880c509384c2aeefe9469e9949ab4e3c5d",
+          "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+          "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd",
+          "packages/workshop-tools/policy/cli.ts": "2301227d13961123557c67ab4dabc5dbecaba68960e5583239c0a206aa98df6b",
+          "packages/workshop-tools/night-passage/study.ts": "942b980381ee4a975e1421c8d5b0d25843db8c020863fabe3782cb9267200b7d",
+          "packages/workshop-tools/policy/study.ts": "8ad07f0fece661824d6ed5ecf78835438a3b504f3b5ef55f352b7c7b2f6f0be7",
+          "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+          "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91"
+        },
+        "runtime": "v24.21.0 / darwin / arm64"
+      },
+      "originalSourceMatches": true
+    }
+  },
+  "verification": {
+    "applicationTests": 507,
+    "applicationFiles": 89,
+    "seededSimulations": 37,
+    "simulationFiles": 8,
+    "focusedToolTests": 7,
+    "actualManifestBrowserJourneys": 2,
+    "fullGate": "npm run check: maintained/static/build, application and seeded simulation scopes passed; geometry unaffected."
+  },
+  "limits": [
+    "Historical Night Passage calibration remains unchanged; no new large reserved strength cohort was executed for this CLI slice.",
+    "Default native audited matrix supports 450 development/900 evaluation attempts; bounded integration witness uses explicit smaller selections.",
+    "Native PolicyPlayer and delayed work/timing remain game-owned. Generic PolicyFactory is used by the other five adapters.",
+    "Modules execute trusted in-process code; no hostile isolation or human-equivalent performance claim."
+  ]
+}
