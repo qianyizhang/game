@@ -2,6 +2,10 @@
 
 Last Hearth supports external agent processes, public observation contracts, structured decision traces, and competitive policy experiments ([roadmap](roadmap.md)). Current gameplay uses [tavern spells](../guide/tavern-spells.md) (Hearth v6 / arena v2).
 
+Use the [policy development guide](policy-development.md) for the cross-game
+extension, evaluation and rollout-review standard. This page and the linked arena
+and experiment documents own Hearth's concrete interfaces and versioned evidence.
+
 ## Strategic hero contract (rules v5)
 
 | Hero       | Power                                                                    | Decision                                                       |

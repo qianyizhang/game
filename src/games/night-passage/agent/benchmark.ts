@@ -11,6 +11,8 @@ import { RULES_VERSION, type RulesVersion, type Difficulty } from '../domain/con
 import { createPolicy, POLICY_VERSION, type Policy } from './policy';
 import type { RuneId, WeaponId } from '../domain/types';
 import { baselineCommand, PLAYER_VERSION, playerConfig, type PlayerConfig } from './player';
+import type { DecisionEvent, PolicyPlayer } from './rollout';
+import { policyDecision, policyOutput } from './policy-output';
 
 export const BENCHMARK_VERSION = 'night-passage-benchmark-2';
 export const BENCHMARK_SUITES = {
@@ -40,6 +42,10 @@ export interface EpisodeOptions {
   controlConfig?: Partial<ControlConfig>;
   policy?: Policy;
   includeTrace?: boolean;
+  /** Evaluator-only recording hook; never supplied to a policy. */
+  onDecision?: (event: DecisionEvent) => void;
+  /** A fresh factory per episode; receives configuration, never seed or evaluator handles. */
+  player?: PolicyPlayer;
 }
 export interface EpisodeResult {
   seed: string;
@@ -67,7 +73,7 @@ export interface EpisodeResult {
   runes: RuneId[];
   replay?: string;
   difficulty: Difficulty;
-  policy: Policy | 'baseline';
+  policy: string;
   control: ControlPreset | 'exact';
   controlConfig?: ControlConfig;
   controlMetrics?: ControlMetrics;
@@ -92,6 +98,8 @@ function budgets(
 
 /** One fresh-profile attempt, using only accepted commands through the agent boundary. */
 export function runEpisode(options: EpisodeOptions): EpisodeResult {
+  if (options.player && (!options.control || options.control === 'exact'))
+    throw new Error('Custom policies require constrained controls.');
   const config = playerConfig(
     options.control && options.control !== 'exact'
       ? { decisionTicks: 1, ...options.config }
@@ -145,13 +153,14 @@ export function runEpisode(options: EpisodeOptions): EpisodeResult {
     difficulty: options.difficulty ?? 'standard',
     policy: 'baseline',
     control: 'exact',
-    status: error
-      ? 'error'
-      : observation.phase === 'won'
-        ? 'won'
-        : observation.phase === 'lost'
-          ? 'lost'
-          : 'timeout',
+    status:
+      error !== null
+        ? 'error'
+        : observation.phase === 'won'
+          ? 'won'
+          : observation.phase === 'lost'
+            ? 'lost'
+            : 'timeout',
     score: observation.score.value,
     elapsedTicks: observation.tick,
     actions,
@@ -186,6 +195,7 @@ export interface BenchmarkOptions extends Pick<
   | 'control'
   | 'controlConfig'
   | 'policy'
+  | 'player'
 > {
   suite?: keyof typeof BENCHMARK_SUITES;
 }
@@ -193,7 +203,7 @@ export interface BenchmarkReport {
   suite: string;
   difficulty: Difficulty;
   control: ControlPreset | 'exact';
-  policy: Policy | 'baseline';
+  policy: string;
   controlConfig?: ControlConfig;
   versions: EpisodeResult['versions'];
   config: PlayerConfig;
@@ -314,8 +324,9 @@ function controlledEpisode(
     preset: control,
     config: options.controlConfig,
   });
-  const decide = createPolicy(policy, config);
+  let decide: ReturnType<typeof createPolicy> | undefined;
   let actions = 0,
+    unit = 0,
     error: string | null = null;
   try {
     const start = agent.step({
@@ -328,15 +339,66 @@ function controlledEpisode(
     });
     if (!start.accepted) throw new Error(start.error ?? 'Start rejected.');
     actions++;
+    unit++;
     while (actions < limits.maxActions) {
       const current = agent.result();
       if (current.tick >= limits.maxTicks || ['won', 'lost'].includes(current.phase)) break;
-      const decision = decide(agent.observe());
+      const input = agent.observe();
+      const original = options.onDecision ? structuredClone(input) : null;
+      let decision;
+      let raw: unknown;
+      let failureStage: 'factory' | 'decision' | 'output' = 'factory';
+      try {
+        if (!decide) {
+          decide = options.player
+            ? options.player.create({ ...config })
+            : createPolicy(policy, config);
+          if (typeof decide !== 'function')
+            throw new Error('Policy factory must return a decision function.');
+        }
+        failureStage = 'decision';
+        raw = decide(input);
+        failureStage = 'output';
+        decision = policyDecision(raw);
+      } catch (cause) {
+        options.onDecision?.({
+          input: original!,
+          command: null,
+          work: null,
+          before: unit,
+          after: unit,
+          accepted: false,
+          error: cause instanceof Error ? cause.message : String(cause),
+          timing: null,
+          failureStage,
+          ...(failureStage === 'output' ? { rawOutput: policyOutput(raw) } : {}),
+          maxTicks: limits.maxTicks - current.tick,
+        });
+        throw cause;
+      }
       const result = agent.step(
         decision.command,
         decision.work.total,
         limits.maxTicks - current.tick,
       );
+      const after = !options.onDecision
+        ? unit
+        : unit +
+          (decision.command.type === 'frame'
+            ? agent.result().tick - current.tick
+            : Number(result.accepted));
+      options.onDecision?.({
+        input: original!,
+        command: policyOutput(decision.command),
+        work: { ...decision.work },
+        before: unit,
+        after,
+        accepted: result.accepted,
+        error: result.error,
+        timing: result.trace,
+        maxTicks: limits.maxTicks - current.tick,
+      });
+      unit = after;
       if (!result.accepted) throw new Error(result.error ?? 'Control rejected.');
       actions++;
     }
@@ -348,15 +410,16 @@ function controlledEpisode(
     seed: options.seed,
     weapon: options.weapon,
     difficulty: observation.difficulty,
-    policy,
+    policy: options.player?.id ?? policy,
     control,
-    status: error
-      ? 'error'
-      : observation.phase === 'won'
-        ? 'won'
-        : observation.phase === 'lost'
-          ? 'lost'
-          : 'timeout',
+    status:
+      error !== null
+        ? 'error'
+        : observation.phase === 'won'
+          ? 'won'
+          : observation.phase === 'lost'
+            ? 'lost'
+            : 'timeout',
     score: observation.score.value,
     elapsedTicks: observation.tick,
     actions,
@@ -367,7 +430,7 @@ function controlledEpisode(
     error,
     versions: {
       benchmark: BENCHMARK_VERSION,
-      engine: POLICY_VERSION,
+      engine: options.player?.version ?? POLICY_VERSION,
       rules: observation.rulesVersion,
       content: observation.contentVersion,
       api: CONTROL_VERSION,

@@ -52,6 +52,33 @@ export function createPlayback(text: string) {
   return {
     snapshot,
     advance,
+    /** Exact decision boundary, including menus at the same simulation tick and packed-frame interiors. */
+    seekUnit(unit: number) {
+      const total = commands.reduce((sum, c) => sum + (c.type === 'frame' ? c.ticks : 1), 0);
+      if (!Number.isSafeInteger(unit) || unit < 0 || unit > total)
+        throw new Error('Invalid decision replay boundary.');
+      state = createGame(restored.state.seed, restored.state.rulesVersion);
+      index = 0;
+      offset = 0;
+      position = 0;
+      let remaining = unit;
+      while (remaining > 0 && index < commands.length) {
+        const command = commands[index];
+        if (command.type !== 'frame') {
+          apply(command);
+          index++;
+          remaining--;
+        } else {
+          const used = Math.min(command.ticks, remaining);
+          if (state.phase === 'combat') apply({ ...command, ticks: used });
+          position += used;
+          remaining -= used;
+          if (used === command.ticks) index++;
+          else offset = used;
+        }
+      }
+      return snapshot();
+    },
     seek(tick: number) {
       if (!Number.isFinite(tick)) throw new Error('Invalid replay time.');
       const target = Math.max(0, Math.min(totalTicks, Math.floor(tick)));

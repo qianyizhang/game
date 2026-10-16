@@ -90,6 +90,13 @@ Keep the paused native-viewer regression within its delivery journey: observe GP
 across idle animation frames, then require drawing after a seek. Pausing retains the
 framebuffer; pose, view, surface, rig, resize and orbit changes still trigger rendering.
 
+## Artifact fixture routes
+
+Match fetched replay/rollout fixtures by URL pathname. A glob ending in the artifact
+filename can also match the page navigation when its query parameter ends in that
+filename, returning JSON instead of the app. Use `page.route(url =>
+url.pathname === '/fixture.json', handler)` and exercise the ordinary page URL.
+
 ## Before adding or retaining a test
 
 - Name the failure it catches and the outcome that would be wrong.

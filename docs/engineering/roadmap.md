@@ -13,11 +13,23 @@ The accepted direction is deeper, concrete gameplay and observable agent interfa
 
 ## Evidence-led policy direction
 
+The accepted cross-game track is [policy development and rollout review](policy-development.md):
+extensible restricted player interfaces, explicit score/difficulty contracts,
+measured policy comparisons and navigable evidence for performance and information
+fairness. Complete one game at a time in the guide's adoption sequence, beginning
+with a Night Passage reference audit, then Blindside and Spire. Existing Hearth
+experiments inform its later slice; they do not replace the cross-game adoption work.
+
 Classic remains the reference/default. The first paired formation-search study did not demonstrate reserved-cohort improvement. The arena study completed 256/256 reserved lobbies: baseline mean placement 3.0156 versus Tempo 5.5000 hidden / 5.5938 disclosed. These measure the declared local population, not general strength.
 
 The [recruitment study](../research/experiments/2026-10-04-hearth-recruitment-v2.md) completed and audited 1,200 lobbies. Earlier upgrading improved reserved Tempo mean placement from 6.40 to 5.05 against Classic bots, and 5.80 to 4.275 against hidden Mixed Rivals; Classic remained ahead at 4.60 and 3.625. Replacement funding added little. Preserve five-seed-block uncertainty and separate visibility conditions.
 
-The next bounded policy study should isolate unit valuation with upgrade timing held fixed in the existing v5 environment, then hero-power/purchase priority. A spell-enabled v6 comparison needs its own protocol, configuration and fresh reserved cohort. Existing placement results do not transfer automatically. No policy promotion or new experiment is authorized by this roadmap alone.
+Within the historical Hearth v5 research track, the next policy hypothesis is unit
+valuation with upgrade timing held fixed, then hero-power/purchase priority. This
+remains a candidate rather than the immediate cross-game adoption step. A spell-enabled
+v6 comparison needs its own protocol, configuration and fresh reserved cohort.
+Existing placement results do not transfer automatically. No policy promotion or
+new experiment is authorized by this roadmap alone.
 
 ## Remaining candidates
 

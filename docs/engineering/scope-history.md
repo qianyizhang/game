@@ -32,3 +32,21 @@ The user set two tracks: deeper, more concrete gameplay, and observable AI-nativ
 The accepted next slice is an eight-seat policy arena plus Mixed Rivals. Recruitment priority rotates each round; each seat finishes before the next begins. Average placement is the primary objective, with first-place/top-four/survival secondary. Preserve Classic as a separate preset and save format. Record every seat's accepted commands so replay never reruns policies.
 
 The user's annotation separates architecture from policy experiments: rival identities must always be inspectable through the evaluator/inspector, while policy observations may hide or disclose them. Pin the visibility condition in experiment configuration and compare both conditions against identical initial rivals. All other recommendations from the decision round were accepted. See [arena contract](../guide/hearth-arena.md).
+
+## Policy development across games · 2026-10-16
+
+The user accepted completing policy play across the games, with extensible policies,
+explicit score/difficulty contracts and measured differences between policies across
+levels. Establish the [canonical development guide](policy-development.md) first,
+then apply it one game at a time using Night Passage as the existing reference.
+Replay-linked rollout navigation must let developers inspect prior decisions,
+understand performance and investigate information-boundary violations. Recording
+this standard does not certify existing implementations against it or promote a policy.
+
+The subsequent decision interview settled real player-selectable tiers with existing
+Standard preserved, distinct immediate/survival/growth policies for remaining games,
+first-death Emberwake benchmark attempts, a consistent developer CLI with local TS
+policies, shared review plumbing with game-owned adapters, and 10 development / 20
+fresh evaluation seed blocks. Each slice receives a fresh Astra audit, fixes,
+verification and a scoped commit before proceeding. The canonical guide owns the
+full acceptance and evidence conditions.

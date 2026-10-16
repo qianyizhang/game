@@ -23,6 +23,29 @@ _Avoid_: Rewind, when suggesting that a committed normal run can be undone.
 
 **Content pack**: A named collection of game definitions and effects that changes the available content. Its identity is part of determining whether a replay can be reconstructed.
 
+## Policy play
+
+**Policy**: A player's decision rule, choosing action proposals from permitted observations and its own remembered history.
+_Avoid_: Engine, when referring to player decision making rather than authoritative game transitions.
+
+**Player environment**: The boundary through which a policy observes the game and submits actions under declared information and control constraints.
+
+**Policy observation**: The information a policy is allowed to receive at a decision point. It differs from the evaluator's complete game information.
+_Avoid_: Full state, when referring to a policy's permitted view.
+
+**Evaluator**: The owner of episode setup, execution budgets, exact outcomes and evidence, including information withheld from the policy.
+
+**Policy episode**: One bounded attempt by a policy under fixed game, difficulty, information and control conditions. It can end in a game outcome, a budget stop or an execution error.
+
+**Policy rollout**: A policy episode's recorded observations, decisions and consequences, linked to its accepted-command replay and result.
+_Avoid_: Replay, when referring to the full policy evidence rather than game reconstruction alone.
+
+**Decision trace**: The ordered record linking policy inputs and proposals to accepted or rejected actions, with available decision diagnostics.
+
+**Information boundary**: The declared separation between information available to a policy and information retained by the evaluator. An information-boundary violation occurs when a policy receives or uses withheld information.
+
+**Gameplay difficulty**: A declared configuration of game pressure, resources or opponents, held fixed for an episode and distinct from the player's strategy or control budget.
+
 ## Blindside
 
 **Blind**: One scoring encounter with a target and any applicable restrictions.
@@ -52,9 +75,6 @@ _Avoid_: Combat board, when referring to the persistent warband.
 **Combat copy**: A unit's battle-local representation. Wounds, consumed shields and summoned combat units do not become recruitment changes.
 
 **Shared supply**: The finite recruit copies distributed among the pool, offers, hands, boards and pending choices.
-
-**Policy observation**: The information a policy is allowed to see at a decision point. It differs from the evaluator's complete lobby information.
-_Avoid_: Full state, when referring to a policy's permitted view.
 
 **Arena journal**: A Last Hearth arena replay containing accepted actions for every seat, including rivals.
 

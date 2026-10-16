@@ -16,3 +16,8 @@ export {
 } from '../../../src/games/night-passage/application/chronicle';
 export { createPlayback } from '../../../src/games/night-passage/application/playback';
 export { passageScore } from '../../../src/games/night-passage/domain/score';
+export {
+  recordEpisode,
+  auditRollout,
+  parseRollout,
+} from '../../../src/games/night-passage/agent/rollout';

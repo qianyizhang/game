@@ -53,3 +53,30 @@ test('legacy chronicles keep original score and behavior through import, continu
   playback.seek(10);
   expect(playback.seek(60).state).toEqual(session.state);
 });
+
+test('decision boundaries distinguish same-tick menus and the interior of packed frames', () => {
+  const chronicle = restoreChronicle(
+    JSON.stringify({
+      format: 'night-passage-replay-v2',
+      rules: 'night-passage-5',
+      content: 'night-passage-content-4',
+      seed: 'menu-boundaries',
+      score: 'night-passage-score-2',
+      commands: [
+        { type: 'start', weapon: 'bow', runes: [] },
+        { type: 'retire' },
+        { type: 'return' },
+        { type: 'start', weapon: 'sword', runes: [], difficulty: 'veteran' },
+        [10, 0, 0, 0, 0],
+      ],
+    }),
+  );
+  const viewer = createPlayback(exportChronicle(chronicle));
+  expect(viewer.seekUnit(1).state.phase).toBe('combat');
+  expect(viewer.seekUnit(2).state.phase).toBe('lost');
+  expect(viewer.seekUnit(3).state.phase).toBe('hub');
+  expect(viewer.seekUnit(4).state.player.weapon).toBe('sword');
+  expect(viewer.seekUnit(9).state.tick).toBe(5);
+  expect(viewer.advance(5).state).toEqual(chronicle.state);
+  expect(viewer.seekUnit(2).state.phase).toBe('lost');
+});

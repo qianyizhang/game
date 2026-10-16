@@ -61,3 +61,30 @@ The DCC review renderer writes four PNGs into a fresh run directory and closes i
 - Weekly: review dependency-update PRs. npm and GitHub Actions are configured; review Python pins and regenerate `uv.lock` deliberately.
 - Monthly: execute the guarded local cleanup. Notify on actual deletion, failed checks or required user decisions; stay quiet when nothing is actionable.
 - Per completed session: promote lasting conclusions, resolve or hand off open work, then explicitly close temporary notes. Close a completed handoff only after its durable promotion is committed and its retained files are hashed.
+
+## Prevent repeated trace mistakes
+
+When investigating a failed development run, inspect its first error or trace before
+repeating it. Promote a concrete failure and its prevention into the owning contract;
+keep raw histories in their existing protected homes.
+
+- **Discover paths first:** use `rg --files` to locate modules/configuration rather
+  than guessing names from old layouts. Refresh the relevant lines after formatting
+  before applying a contextual patch. Quote globs passed to tools so zsh does not
+  reject them before the tool runs.
+- **Bound reads:** search explanatory Markdown before frozen receipt JSON; use narrow
+  patterns and line ranges. Avoid wrapping several long outputs in serialized JSON
+  that exhausts the shared output budget. If output truncates, narrow the next read
+  to the missing evidence rather than repeating the broad command. Browser error
+  contexts may contain entire uploaded JSON on a single line; cap line length as
+  well as line count before displaying them.
+- **Separate failure scopes:** batch independent reads without making a missing path
+  suppress unrelated evidence. Treat tooling failure, execution restriction, artifact
+  corruption, numeric runtime drift and application assertion failures separately.
+- **Match artifact routes by pathname:** browser-test route globs can match the
+  document URL when a query parameter ends in the artifact filename. Use a URL
+  pathname predicate for fixture responses so navigation still loads the app.
+- **Keep evidence exact:** preserve original input bytes and source/runtime pins.
+  Any numerical tolerance belongs to an explicit diagnostic with its field scope,
+  bound and observed differences; never apply it to hashes or silently normalize a
+  frozen result. Follow the game's policy guide for the concrete audit contract.

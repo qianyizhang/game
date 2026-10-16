@@ -2,6 +2,11 @@
 
 The playing engine provides a browser-independent command interface across all three games, paired with a bounded solver for tactical challenges. Authoritative rules, scoring, combat, and replay validation remain inside the respective game engines.
 
+For developing playable policies, difficulty comparisons and inspectable policy
+rollouts, follow the [canonical policy development guide](../engineering/policy-development.md).
+The full-state search seam below is a diagnostic capability; restricted player
+observations and policy evaluation have their own game-owned boundaries.
+
 The [repository organization](../engineering/architecture.md#repository-organization) distinguishes card studies in `src/games/`, the independent Emberwake package and specialized tooling. Hearth experiment harnesses live in `src/engines/hearth/`; current command names are unchanged.
 
 ## Run the challenge solver

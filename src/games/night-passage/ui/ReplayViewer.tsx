@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import RolloutReview from './RolloutReview';
 import { createPlayback } from '../application/playback';
 import { passageScore } from '../domain/score';
 import { weapon } from '../domain/content';
@@ -18,21 +19,53 @@ export default function ReplayViewer() {
   const [speed, setSpeed] = useState(1);
   const [view, setView] = useState<'scene' | 'canvas'>('scene');
   const [notice, setNotice] = useState('Choose a chronicle to watch. Your game save is untouched.');
+  const [reviewGeneration, setReviewGeneration] = useState(0);
   const canvas = useRef<HTMLCanvasElement>(null);
   const renderer = useRef<Renderer | null>(null);
-
-  function load(text: string) {
-    const next = createPlayback(text);
-    setPlayback(next);
-    setSnapshot(next.snapshot());
+  const hasSnapshot = snapshot !== null;
+  const importGeneration = useRef(0);
+  const beginImport = useCallback(() => ++importGeneration.current, []);
+  const isCurrentImport = useCallback(
+    (generation: number) => generation === importGeneration.current,
+    [],
+  );
+  const failPlayback = useCallback((error: unknown) => {
+    setSnapshot(null);
     setPlaying(false);
-    setNotice('Recorded passage · spectator mode · your game save is untouched.');
-  }
+    setNotice(
+      `Playback unavailable: ${error instanceof Error ? error.message : 'Invalid replay.'} Original rollout knowledge and audit remain available.`,
+    );
+  }, []);
+
+  const load = useCallback(
+    (text: string, unit?: number) => {
+      setPlayback(null);
+      setSnapshot(null);
+      setPlaying(false);
+      if (unit === undefined) {
+        const url = new URL(location.href);
+        for (const key of ['rollout', 'run', 'decision']) url.searchParams.delete(key);
+        history.replaceState(null, '', url);
+        setReviewGeneration((n) => n + 1);
+      }
+      try {
+        const next = createPlayback(text);
+        setPlayback(next);
+        setSnapshot(unit === undefined ? next.snapshot() : next.seekUnit(unit));
+        setNotice('Recorded passage · spectator mode · your game save is untouched.');
+      } catch (error) {
+        failPlayback(error);
+      }
+    },
+    [failPlayback],
+  );
 
   useEffect(() => {
-    const path = new URLSearchParams(location.search).get('replay');
+    const params = new URLSearchParams(location.search);
+    const path = params.has('rollout') ? null : params.get('replay');
     if (!path) return;
     const controller = new AbortController();
+    const generation = beginImport();
     void Promise.resolve()
       .then(() => {
         let url: URL;
@@ -49,16 +82,18 @@ export default function ReplayViewer() {
         if (!response.ok) throw new Error('Replay file unavailable. Choose a chronicle below.');
         return response.text();
       })
-      .then(load)
+      .then((text) => {
+        if (isCurrentImport(generation)) load(text);
+      })
       .catch((error: unknown) => {
-        if (!controller.signal.aborted)
+        if (!controller.signal.aborted && isCurrentImport(generation))
           setNotice(error instanceof Error ? error.message : 'Replay could not load.');
       });
     return () => controller.abort();
-  }, []);
+  }, [load, beginImport, isCurrentImport]);
 
   useEffect(() => {
-    if (!canvas.current || !playback) return;
+    if (!canvas.current || !playback || !hasSnapshot) return;
     const fallback = () => {
       setPlaying(false);
       setView('canvas');
@@ -79,7 +114,7 @@ export default function ReplayViewer() {
       current.dispose();
       renderer.current = null;
     };
-  }, [playback, view]);
+  }, [playback, view, hasSnapshot]);
 
   useEffect(() => {
     if (!playback) return;
@@ -120,6 +155,16 @@ export default function ReplayViewer() {
     setPlaying(false);
     setSnapshot(playback.seek(tick));
   };
+  const seekUnit = (unit: number) => {
+    if (!playback) return;
+    setPlaying(false);
+    try {
+      setSnapshot(playback.seekUnit(unit));
+      setNotice('Recorded passage · spectator mode · your game save is untouched.');
+    } catch (error) {
+      failPlayback(error);
+    }
+  };
   const state = snapshot?.state;
   const score = state ? passageScore(state) : null;
   return (
@@ -140,12 +185,16 @@ export default function ReplayViewer() {
                 const file = event.target.files?.[0];
                 event.target.value = '';
                 if (!file) return;
+                const generation = beginImport();
                 void file
                   .text()
-                  .then(load)
-                  .catch((error: unknown) =>
-                    setNotice(error instanceof Error ? error.message : 'Invalid replay.'),
-                  );
+                  .then((text) => {
+                    if (isCurrentImport(generation)) load(text);
+                  })
+                  .catch((error: unknown) => {
+                    if (isCurrentImport(generation))
+                      setNotice(error instanceof Error ? error.message : 'Invalid replay.');
+                  });
               }}
             />
           </label>
@@ -158,88 +207,97 @@ export default function ReplayViewer() {
           </button>
         </div>
       </header>
-      {playback && state && score && snapshot && (
-        <>
-          <div className="np-hud">
-            <div>
-              <p className="np-eyebrow">
-                REGION {state.region + 1} · CHAMBER {state.chamber + 1} · {state.phase}
-              </p>
-              <h2>{state.room.name}</h2>
+      <RolloutReview
+        key={reviewGeneration}
+        open={load}
+        seek={seekUnit}
+        evaluator={snapshot?.state ?? null}
+        beginImport={beginImport}
+        isCurrentImport={isCurrentImport}
+      >
+        {playback && state && score && snapshot && (
+          <>
+            <div className="np-hud">
+              <div>
+                <p className="np-eyebrow">
+                  REGION {state.region + 1} · CHAMBER {state.chamber + 1} · {state.phase}
+                </p>
+                <h2>{state.room.name}</h2>
+              </div>
+              <div className="np-resources">
+                <span>{weapon(state.player.weapon).name}</span>
+                <span>
+                  {state.difficulty} ·{' '}
+                  {state.rulesVersion === 'night-passage-4' ? 'original score' : 'speed score'}
+                </span>
+                <span>
+                  {Math.ceil(state.player.hp)} / {state.player.maxHp} HP
+                </span>
+                <span data-testid="np-replay-score">{score.value} points</span>
+              </div>
             </div>
-            <div className="np-resources">
-              <span>{weapon(state.player.weapon).name}</span>
-              <span>
-                {state.difficulty} ·{' '}
-                {state.rulesVersion === 'night-passage-4' ? 'original score' : 'speed score'}
-              </span>
-              <span>
-                {Math.ceil(state.player.hp)} / {state.player.maxHp} HP
-              </span>
-              <span data-testid="np-replay-score">{score.value} points</span>
-            </div>
-          </div>
-          <div className="np-tools np-replay-controls">
-            <button
-              onClick={() => {
-                if (snapshot.finished) setSnapshot(playback.seek(0));
-                setPlaying(!playing || snapshot.finished);
-              }}
-            >
-              {playing ? 'Pause replay' : 'Play replay'}
-            </button>
-            <button onClick={() => seek(0)}>Restart</button>
-            <label>
-              Speed{' '}
-              <select
-                aria-label="Replay speed"
-                value={speed}
-                onChange={(event) => setSpeed(Number(event.target.value))}
-              >
-                <option value={1}>1×</option>
-                <option value={2}>2×</option>
-                <option value={4}>4×</option>
-                <option value={8}>8×</option>
-              </select>
-            </label>
-            <label>
-              View{' '}
-              <select
-                aria-label="Replay view"
-                value={view}
-                onChange={(event) => {
-                  setPlaying(false);
-                  setView(event.target.value as 'scene' | 'canvas');
+            <div className="np-tools np-replay-controls">
+              <button
+                onClick={() => {
+                  if (snapshot.finished) setSnapshot(playback.seek(0));
+                  setPlaying(!playing || snapshot.finished);
                 }}
               >
-                <option value="scene">2.5D</option>
-                <option value="canvas">2D</option>
-              </select>
-            </label>
-            <button onClick={() => seek(snapshot.totalTicks)}>Show result</button>
-            <span className="np-replay-time" data-testid="np-replay-time">
-              {timestamp(snapshot.position)} / {timestamp(snapshot.totalTicks)}
-            </span>
-          </div>
-          <input
-            className="np-replay-position"
-            type="range"
-            aria-label="Replay position"
-            min={0}
-            max={snapshot.totalTicks}
-            value={snapshot.position}
-            onChange={(event) => seek(Number(event.target.value))}
-          />
-          <div className="np-stage">
-            <canvas key={view} ref={canvas} aria-label="Recorded Night Passage arena" />
-          </div>
-          <p className="np-status">
-            {snapshot.finished
-              ? `Replay complete · ${state.phase === 'won' ? 'Escaped' : state.phase} · ${score.value} points`
-              : state.message}
-          </p>
-        </>
-      )}
+                {playing ? 'Pause replay' : 'Play replay'}
+              </button>
+              <button onClick={() => seek(0)}>Restart</button>
+              <label>
+                Speed{' '}
+                <select
+                  aria-label="Replay speed"
+                  value={speed}
+                  onChange={(event) => setSpeed(Number(event.target.value))}
+                >
+                  <option value={1}>1×</option>
+                  <option value={2}>2×</option>
+                  <option value={4}>4×</option>
+                  <option value={8}>8×</option>
+                </select>
+              </label>
+              <label>
+                View{' '}
+                <select
+                  aria-label="Replay view"
+                  value={view}
+                  onChange={(event) => {
+                    setPlaying(false);
+                    setView(event.target.value as 'scene' | 'canvas');
+                  }}
+                >
+                  <option value="scene">2.5D</option>
+                  <option value="canvas">2D</option>
+                </select>
+              </label>
+              <button onClick={() => seek(snapshot.totalTicks)}>Show result</button>
+              <span className="np-replay-time" data-testid="np-replay-time">
+                {timestamp(snapshot.position)} / {timestamp(snapshot.totalTicks)}
+              </span>
+            </div>
+            <input
+              className="np-replay-position"
+              type="range"
+              aria-label="Replay position"
+              min={0}
+              max={snapshot.totalTicks}
+              value={snapshot.position}
+              onChange={(event) => seek(Number(event.target.value))}
+            />
+            <div className="np-stage">
+              <canvas key={view} ref={canvas} aria-label="Recorded Night Passage arena" />
+            </div>
+            <p className="np-status">
+              {snapshot.finished
+                ? `Replay complete · ${state.phase === 'won' ? 'Escaped' : state.phase} · ${score.value} points`
+                : state.message}
+            </p>
+          </>
+        )}
+      </RolloutReview>
       <p className="np-status" role="status">
         {notice}
       </p>

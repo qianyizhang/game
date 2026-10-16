@@ -5,6 +5,13 @@ constrained heuristic policies. The browser and headless interface use the same
 application commands and accepted-command replay. Headless runs can be imported
 into the game or watched in the replay viewer.
 
+The [policy development guide](policy-development.md) owns the cross-game standard.
+This page owns Night Passage's concrete API and existing evidence. Its controls,
+benchmarks and spectator are reference implementations. The completed
+[adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md)
+adds original decision-input recording, rollout navigation and knowledge review,
+with historical/runtime limits stated explicitly.
+
 ## Score and objective
 
 Current rules-5/content-4 chronicles use `night-passage-score-2`:
@@ -232,3 +239,127 @@ leave the viewer available for file recovery.
 Run `npm run check` and the focused
 `tests/browser/night-passage-agent.spec.ts` journey. Native assets and rendering
 are unchanged; geometry/native gates are outside this slice.
+
+## Record and review policy knowledge
+
+Use `record` for new constrained-policy episodes. It keeps the exact `Sight` supplied
+at each decision, before policy code can mutate its detached copy, along with the
+proposal, work breakdown, acceptance/error and delivery/cancellation timing. Setup is
+an evaluator-owned start command; decision 1 is the first policy call after setup.
+
+```sh
+npm run --silent engine:night-passage -- record \
+  --seed my-development-seed --weapon bow --control standard \
+  --policy deliberate --difficulty veteran \
+  --out test-results/my-passage-rollout
+npm run --silent engine:night-passage -- audit \
+  --input test-results/my-passage-rollout/rollout.json \
+  --out test-results/my-passage-audit.json
+```
+
+Recording requires a **new directory**; auditing requires a new receipt path. Optional
+`--max-actions` and `--max-ticks` bound a development probe. The recorder retains
+`rollout.json`, `replay.json`, `audit.json`, `manifest.json` and its compiled runtime
+under `bundles/`. The manifest pins source/tool/bundle hashes and runtime, records
+artifact hashes and provides a same-origin review URL for output inside this repo.
+Source drift fails recording. Full observations repeat public definitions and can
+make rollout files substantially larger than replays; retain them as experiment
+evidence under the existing retention rules.
+
+Open **Watch replay → Open rollouts**, selecting one or more `rollout.json` files.
+Filter runs by policy, difficulty, controls, outcome, weapon or seed; select an episode,
+then use first/previous/next/last, a decision number or a region/chamber/phase marker.
+**Before decision** and **After decision** seek the replay to that exact boundary.
+Policy input defaults to the original recorded JSON, including legal actions and
+control bounds. **Show evaluator view** reveals privileged state at the current
+playback position; use Before decision for a decision-time comparison. The view
+exposes seed/RNG and exact clocks for review and never supplies them to the policy.
+
+For reloadable links while the dev server runs:
+
+```text
+/?game=night-passage&watch=1&rollout=/test-results/my-passage-rollout/rollout.json&decision=2
+```
+
+Decision numbers are one-based. Local file selection must be repeated after reload
+when no same-origin URL exists. Playback, seeking and downloads use isolated state;
+the playable save is untouched. Opening a plain replay clears policy review rather
+than displaying stale knowledge from another run. Plain replays and historical
+control-only traces do not contain original policy inputs; the viewer never invents
+missing knowledge. Original rollout downloads preserve the uploaded file's bytes.
+
+### Audit meanings and runtime precision
+
+- **Replay reconstruction:** recorded proposals delivered through the controller
+  reproduce accepted inputs, timing, final result and score. This never reruns a
+  policy to decide which actions the game should execute.
+- **Artifact integrity:** exact SHA-256 checks cover the payload and each policy input.
+- **Permitted inputs:** recorded knowledge matches the reconstructed delayed/redacted
+  controller view. Extra hidden fields fail even if an artifact was rehashed.
+- **Policy reproduction:** a matching built-in or supplied custom policy reproduces
+  proposals/work from the recorded inputs. Unknown policies are explicitly unavailable.
+
+The CLI uses exact comparisons under its pinned runtime. Node and browser runtimes
+can differ in the last bits of trigonometric results; the browser declares an absolute
+`1e-10` tolerance **only for x/y coordinates, aim and velocity components**, and reports
+its count and first numeric difference. Digests, field presence, discrete choices,
+clock fields, score and outcomes remain exact. Replay packing differences are compared
+by executed spans. Larger differences fail. The original recorded input is always
+shown unchanged. Current-code reconstruction is labeled separately from the original
+source pins and is not proof against hostile policy code or a reproduction claim for
+an unavailable historical executable.
+
+The first mismatch includes its decision, field path and recorded/reconstructed value.
+Use **Go to first mismatch** to inspect it. The aggregate for loaded files is descriptive:
+its groups keep rules/content/score/policy/configuration/controls/budgets separate, but
+selected files do not constitute a frozen experiment or independent strength evidence.
+Current heuristic diagnostics contain commands and work, not alternative valuations
+or a causal explanation of why a run lost. Prefix branching is not offered by this
+reviewer; original replay export remains available for separate experiments.
+
+### Add a developer policy
+
+`PolicyPlayer` in [rollout.ts](../../src/games/night-passage/agent/rollout.ts) is the
+extension point. Supply it to `runEpisode`, `runBenchmark` or `recordEpisode` as `player`; no changes to
+rules, observations, controls or the episode loop are needed. Its factory runs once
+per episode, receives only public configuration, and creates fresh policy memory.
+The decision function receives `Sight` and returns the existing `Decision` shape.
+Factory exceptions and malformed returns remain reviewable execution errors: traces
+retain the attempted input, failure stage and JSON representation of malformed output.
+No rejected proposal advances the replay. Factories are created when the episode
+first has budget to request a policy decision.
+
+```ts
+import { recordEpisode, auditRollout, type PolicyPlayer } from './agent/rollout';
+import { createPolicy } from './agent/policy';
+
+const candidate: PolicyPlayer = {
+  id: 'my-policy',
+  version: 'my-policy-1',
+  create(config) {
+    const baseline = createPolicy('balanced', config);
+    // Replace or refine this rule using only sight and episode-local memory.
+    return (sight) => baseline(sight);
+  },
+};
+const rollout = await recordEpisode({
+  seed: 'my-development-seed',
+  weapon: 'bow',
+  control: 'standard',
+  player: candidate,
+});
+const audit = await auditRollout(rollout, candidate);
+```
+
+The imports above are relative to the Night Passage directory in a TypeScript/Vite
+caller. The CLI selects the supplied quick/balanced/deliberate policies; a custom
+caller supplies its factory directly. Pass source/runtime provenance when retaining
+custom results for comparison; the programmatic recorder labels missing provenance
+as null. Meter new tactical work consistently with the documented proxy and bump
+policy identity/configuration for changed behavior. A custom policy's presence in a
+trace does not certify its hidden dependencies or work claims.
+
+The [adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md)
+records coverage, concrete footguns and the limits of this slice. Existing frozen
+strength/calibration reports remain unchanged; recording/review evidence is not a
+new reserved strength comparison.
