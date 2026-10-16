@@ -67,8 +67,22 @@ revisit penalty discourages repeated safe movement without progress for every pr
 lethal outcomes retain their explicit rejection value. This history contains no seed,
 inactive enemies or unobserved future intent. Effective room healing informs draft values.
 
-Rank victory, then rooms cleared **including the entrance**, then remaining HP;
-turns are secondary. Report attack, threat and relics separately. Work counts menu,
+Score **`cartographer-performance-2`** is the ordered numeric vector
+`[victory, rooms cleared, victorious HP / max HP, victorious accepted commands]`.
+Maximize the first three components and minimize the last. Compare components in
+order; do not sum them or treat them as a cross-game scale. Rooms include the entrance.
+The final two components are zero for every nonvictory, including living budget stops;
+failures cannot earn resource/efficiency bonuses by dying quickly or stalling.
+Accepted commands include zero-turn draft/relic/cancel actions, so cancel/redraft
+loops cannot improve efficiency. Rank victory before progress, then healthy victories,
+then fewer actions among otherwise equal victories. Report attack, threat, relics
+and native turns separately; none earns extra score by repeated acquisition/damage.
+
+This is a declared health-first objective. A speed-first objective can rank different
+policies higher. The [post hoc score assessment](../research/experiments/2026-10-16-cartographer-performance-2.md)
+keeps those tradeoffs explicit. Original `cartographer-progress-1` studies and native
+replays remain unchanged; rescored sidecars are not fresh policy execution or reserved
+confirmation. Work counts menu,
 relic/draft/forecast/frontier candidates and expanded BFS nodes; sorting, helper
 loops and recording are omitted. This is a declared proxy, not elapsed compute time.
 
@@ -136,6 +150,10 @@ equivalent perception or enjoyment.
   inside a browser journey checks evaluator consistency. Browser acceptance reads
   its actual saved replay and reloads the ending; that is the stated evidence, not
   a claim that every intermediate browser state was independently inspected.
+- **Retain each prototype environment:** unreleased v3 development candidates
+  changed balance under the same rules label. Reconstruct a historical development
+  journal with its exact frozen native bundle, then apply the new score as a sidecar;
+  a matching rules label alone does not identify its original resolver.
 - **Freeze before reserved play:** keep negative development runs, fix source versions
   and a reference strategy, then use a new reserved namespace. Changing balance or a
   policy after reserved inspection requires a new prospective study and fresh seeds.

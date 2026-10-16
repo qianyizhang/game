@@ -8,7 +8,7 @@ inspection require a new namespace, protocol and frozen candidate. The
 ## Frozen candidate and population
 
 - **Rules:** `cartographer-3`; generator `rooms-1`; observation
-  `cartographer-observation-2`; score `cartographer-progress-1`.
+  `cartographer-observation-2`; score `cartographer-performance-2`.
 - **Policies:** Immediate, Survival and Growth, all `cartographer-policy-2`.
   Survival is the fixed reference at every difficulty. Policy priorities and
   resources remain identical across tiers; no difficulty-specific weakening.
@@ -52,9 +52,14 @@ rollout checks must pass for every attempt: integrity, replay, original inputs a
 policy decision reproduction. A failed integrity requirement prevents confirmation;
 it does not delete the case or turn it into a game loss.
 
-Rank victory first, then cleared rooms including the entrance, then remaining HP;
-turns are secondary. Report work, attack, threat and relics descriptively. Do not
-choose a different primary metric after seeing reserved outcomes.
+Score metadata declares the ordered vector: victory, cleared rooms including the
+entrance, victorious HP fraction, then fewer victorious accepted commands. The last
+two components are zero for nonvictories. Accepted commands include zero-turn menus.
+This score identity/ranking amendment occurred before reserved execution; the three
+primary win contrasts and two absolute playability criteria below are unchanged.
+Report score comparisons, work, attack, threat, relics and native turns descriptively;
+score separation does not substitute for win-rate confirmation. Do not choose a
+different primary metric after seeing reserved outcomes.
 
 ## Primary criteria
 

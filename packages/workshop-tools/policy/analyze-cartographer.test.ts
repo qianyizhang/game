@@ -37,6 +37,13 @@ void test('Cartographer confirmation validates the complete frozen 900-case cont
               outcome: won ? 'won' : 'lost',
               hp: won ? 20 : 0,
               progress: won ? 9 : 5,
+              maxHp: setup.id === 'relaxed' ? 48 : setup.id === 'standard' ? 36 : 28,
+              score: [
+                won,
+                won ? 9 : 5,
+                won ? 20 / (setup.id === 'relaxed' ? 48 : setup.id === 'standard' ? 36 : 28) : 0,
+                won ? 100 : 0,
+              ],
             },
             work: 100,
             digest: 'a'.repeat(64),
@@ -192,6 +199,12 @@ void test('Cartographer confirmation validates the complete frozen 900-case cont
         report.rows[0].metrics.won = true;
       }),
       /binary native wins/,
+    );
+    await assert.rejects(
+      evaluate(({ report }) => {
+        Reflect.deleteProperty(report.rows[0].metrics, 'score');
+      }),
+      /declared finite numeric components/,
     );
     const invalidAudit = await evaluate(({ report }) => {
       report.rows[0].audit.inputs = 'failed';

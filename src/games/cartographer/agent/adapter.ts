@@ -38,7 +38,7 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
     rules: RULES_VERSION,
     generator: GENERATOR_VERSION,
     observation: 'cartographer-observation-2',
-    score: 'cartographer-progress-1',
+    score: 'cartographer-performance-2',
   },
   create(seed, setup) {
     const difficulty = setup.difficulty ?? 'standard';
@@ -69,10 +69,17 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
   },
   isCommand: validCommand,
   terminal: (state) => state.session.state.status !== 'playing',
-  metrics({ session: { state: s } }) {
+  metrics({ session: { state: s, replay } }) {
+    const won = Number(s.status === 'won');
     return {
       outcome: s.status,
-      won: Number(s.status === 'won'),
+      won,
+      score: [
+        won,
+        s.cleared.length,
+        won ? s.player.hp / s.player.maxHp : 0,
+        won ? replay.commands.length : 0,
+      ],
       progress: s.cleared.length,
       roomsCleared: s.cleared.length,
       roomsDrafted: s.layout.rooms.length,
@@ -117,7 +124,16 @@ export const studySetups: StudySetup[] = (['relaxed', 'standard', 'severe'] as c
 export const study: StudyDefinition = {
   setups: studySetups,
   defaultSetup: { difficulty: 'standard' },
-  ranking: 'victory, then rooms cleared including the entrance, then remaining HP; turns secondary',
+  ranking:
+    'victory, then rooms cleared including the entrance, then victorious health fraction, then fewer victorious accepted commands',
+  score: {
+    components: [
+      { name: 'victory', direction: 'maximize' },
+      { name: 'rooms cleared', direction: 'maximize' },
+      { name: 'victorious health fraction', direction: 'maximize' },
+      { name: 'victorious accepted commands', direction: 'minimize' },
+    ],
+  },
   reviewPath: '/?game=cartographer&review=policy',
 };
 export { builtins } from './policy';
