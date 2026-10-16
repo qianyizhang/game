@@ -1,0 +1,876 @@
+{
+  "schema": "emberwake-native7-standard-pressure-development-report-1",
+  "status": "development-failed",
+  "allDevelopmentCriteriaPassed": false,
+  "failedCriteria": [
+    "barbarian:Standard Survival > Immediate",
+    "necromancer:Standard Survival > Immediate"
+  ],
+  "identity": {
+    "rules": "emberwake-7",
+    "observation": "emberwake-observation-3",
+    "score": "emberwake-performance-2",
+    "content": {
+      "id": "emberwake",
+      "version": "2.0.0"
+    }
+  },
+  "profile": {
+    "incomingDamage": {
+      "relaxed": 0.75,
+      "standard": 7,
+      "severe": 12
+    },
+    "playerImpactCapFraction": {
+      "relaxed": null,
+      "standard": 0.55,
+      "severe": 0.7
+    },
+    "healthPotionRecoverySeconds": {
+      "relaxed": 0,
+      "standard": 20,
+      "severe": 60
+    }
+  },
+  "design": {
+    "primaryBlocks": 10,
+    "primaryAttempts": 180,
+    "growthMatchedBlocks": 2,
+    "growthAttempts": 18,
+    "totalAttempts": 198,
+    "policyVersion": "emberwake-policy-8",
+    "policySeed": "POLICY-STREAM-1",
+    "options": {},
+    "maxDecisions": 8000,
+    "workers": 4,
+    "workerOldGenerationMiB": 2048,
+    "encodedAndDecodedLimitBytes": 150000000
+  },
+  "totals": {
+    "attempts": 198,
+    "victories": 117,
+    "deaths": 69,
+    "timeouts": 12,
+    "errors": 0
+  },
+  "cells": [
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 10,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 10,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 6,
+      "deaths": 4,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 9,
+      "deaths": 0,
+      "timeouts": 1,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 1,
+      "deaths": 1,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "severe",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 0,
+      "deaths": 10,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "severe",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 1,
+      "deaths": 8,
+      "timeouts": 1,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "severe",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 0,
+      "deaths": 2,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 8,
+      "deaths": 0,
+      "timeouts": 2,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 8,
+      "deaths": 0,
+      "timeouts": 2,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 2,
+      "deaths": 8,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 8,
+      "deaths": 0,
+      "timeouts": 2,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "severe",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 0,
+      "deaths": 10,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "severe",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 4,
+      "deaths": 3,
+      "timeouts": 3,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "severe",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 0,
+      "deaths": 2,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 9,
+      "deaths": 0,
+      "timeouts": 1,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 10,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 6,
+      "deaths": 4,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 9,
+      "deaths": 1,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "severe",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 0,
+      "deaths": 10,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "severe",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 5,
+      "deaths": 5,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "severe",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 1,
+      "deaths": 1,
+      "timeouts": 0,
+      "errors": 0
+    }
+  ],
+  "contrasts": [
+    {
+      "hero": "barbarian",
+      "name": "barbarian:Immediate Relaxed > Standard",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 1,
+        "tied": 1,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 0,
+        "tied": 6,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.4,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "barbarian",
+      "name": "barbarian:Survival Standard > Severe",
+      "exact": {
+        "attempted": 10,
+        "better": 10,
+        "worse": 0,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 10,
+        "worse": 0,
+        "tied": 0,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 1,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "barbarian",
+      "name": "barbarian:Standard Survival > Immediate",
+      "exact": {
+        "attempted": 10,
+        "better": 6,
+        "worse": 4,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 4,
+        "tied": 2,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0,
+      "passed": false,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "sorceress",
+      "name": "sorceress:Immediate Relaxed > Standard",
+      "exact": {
+        "attempted": 10,
+        "better": 9,
+        "worse": 0,
+        "tied": 1,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 0,
+        "tied": 2,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.8,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "sorceress",
+      "name": "sorceress:Survival Standard > Severe",
+      "exact": {
+        "attempted": 10,
+        "better": 6,
+        "worse": 2,
+        "tied": 2,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 0,
+        "tied": 6,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.4,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "sorceress",
+      "name": "sorceress:Standard Survival > Immediate",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 2,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 0,
+        "tied": 2,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.8,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "necromancer",
+      "name": "necromancer:Immediate Relaxed > Standard",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 2,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 1,
+        "tied": 5,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.3,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "necromancer",
+      "name": "necromancer:Survival Standard > Severe",
+      "exact": {
+        "attempted": 10,
+        "better": 7,
+        "worse": 3,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 5,
+        "worse": 1,
+        "tied": 4,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.4,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "necromancer",
+      "name": "necromancer:Standard Survival > Immediate",
+      "exact": {
+        "attempted": 10,
+        "better": 7,
+        "worse": 3,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 3,
+        "tied": 3,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.1,
+      "passed": false,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    }
+  ],
+  "completion": [
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": 10,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": 9,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": 8,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": 8,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": 9,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": 9,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    }
+  ],
+  "severeExistence": [
+    {
+      "hero": "barbarian",
+      "wins": 1,
+      "attempted": 12,
+      "minimum": 1,
+      "passed": true,
+      "qualification": "Observed native victories only, no population lower-bound claim."
+    },
+    {
+      "hero": "sorceress",
+      "wins": 4,
+      "attempted": 12,
+      "minimum": 1,
+      "passed": true,
+      "qualification": "Observed native victories only, no population lower-bound claim."
+    },
+    {
+      "hero": "necromancer",
+      "wins": 6,
+      "attempted": 12,
+      "minimum": 1,
+      "passed": true,
+      "qualification": "Observed native victories only, no population lower-bound claim."
+    }
+  ],
+  "unchangedControls": {
+    "attempted": 132,
+    "allExact": true,
+    "baselineRules": "emberwake-6",
+    "baselineAndCurrentPolicySeed": "POLICY-STREAM-1",
+    "baselineAndCurrentOptions": {},
+    "normalizedFields": ["replay.format", "replay.rulesVersion", "state.rulesVersion"]
+  },
+  "independent": {
+    "originalInputsHashed": 1023937,
+    "originalInputsReconstructed": 1023937,
+    "nativeCommands": 842568,
+    "fullFactorySampleCases": 27,
+    "fullFactoryOriginalProposals": 136835,
+    "remainingProducerDecisionAudits": 171,
+    "qualification": "Consumed development only; not fresh confirmation. All198 input/native checks independent; fixed27DEV01 cases get full factory saved-input reproduction, other171 retain producer decision-audit verdict. Historical native6/5/4/3/2 replay support is separate from current7 policy-audit identity availability. No new policy episode or changed criterion."
+  },
+  "technical": {
+    "current7ExecutionsExcludedFromMatrix": 5,
+    "historical6TechnicalExecutions": {
+      "failedAttempt": 4,
+      "correctedAttempt": 5,
+      "separate": true
+    },
+    "stressWitness": {
+      "decodedBytes": 105944101,
+      "decisions": 7186,
+      "outcome": "victory",
+      "ticks": 33440
+    },
+    "rss": {
+      "sampleCount": 114,
+      "peakSampledProcessRssBytes": 4970233856,
+      "maxObservedGapMilliseconds": 1322.6162909999985,
+      "scope": "Process including threads; sampled peak may miss spikes. 2048MiB V8 old-generation is not RSS ceiling or isolated throughput."
+    }
+  },
+  "historicalContinuity": {
+    "original6": {
+      "campaigns": 9,
+      "acceptedCommands": 51300,
+      "checkpoints": 25,
+      "rejections": 15
+    },
+    "original5": {
+      "campaigns": 9,
+      "acceptedCommands": 43070,
+      "checkpoints": 25
+    },
+    "older234": [
+      {
+        "version": 2,
+        "cases": 3,
+        "checkpoints": 3
+      },
+      {
+        "version": 3,
+        "cases": 9,
+        "checkpoints": 15
+      },
+      {
+        "version": 4,
+        "cases": 9,
+        "checkpoints": 24
+      }
+    ],
+    "historicalReplayVsPolicyFactory": "Exact native replay support does not imply original policy-audit factory availability under current identity."
+  },
+  "priorFailures": {
+    "native5FreshAttempts": 1170,
+    "native5RemainsFailed": true,
+    "native6ConsumedAttempts": 198,
+    "native6RemainsFailed": true,
+    "native6ContrastsPassed": 7
+  },
+  "verification": {
+    "maintenanceAndFullGate": "passed",
+    "applicationTests": 568,
+    "seededTests": 37,
+    "disposableBrowserJourneys": 20,
+    "geometry": "Unaffected; not run."
+  },
+  "sourceHold": {
+    "livePins": 1832,
+    "retainedPins": 1840,
+    "currentPinsMatch": true,
+    "bundleDigest": "41b85cd72f1a581cade4775bb317d60adc0ec51642e55bbb43a0535b430103ed",
+    "verifiedAtReportRender": "2026-10-16T18:31:26.374184+00:00",
+    "qualification": "Pins matched through independent audit and report rendering. Later documentation closeout edits do not claim whole-live-graph identity; exact retained snapshots remain authoritative."
+  },
+  "artifacts": [
+    {
+      "name": "execution",
+      "path": "test-results/emberwake-strength/native7-development-198-1/execution-closing.json",
+      "sha256": "e698dbd811ef92a1c9e83c4917c23815046928adb66c16ad8bab4bcb2e930f24",
+      "bytes": 87695
+    },
+    {
+      "name": "analysisClosure",
+      "path": "test-results/emberwake-strength/native7-development-198-1/analysis-closing.json",
+      "sha256": "be69478daf6e8152e5da8bc4a517a59f8b89d760fac3f87e96582cff31c2283f",
+      "bytes": 201
+    },
+    {
+      "name": "independentClosure",
+      "path": ".work/sessions/emberwake-native7-2026-10-17/astra-review-1/result-audit-1/closing.json",
+      "sha256": "da9b7816b38f9229432d72bf9225cb62eecc1c900e4262fb0e19fcbb94038e3c",
+      "bytes": 244
+    },
+    {
+      "name": "finalReview",
+      "path": ".work/sessions/emberwake-native7-2026-10-17/astra-review-1/final-development-review-1.json",
+      "sha256": "84e26dbf1b9d4cef31d17561e1549a96c0b6044e04b2c833d52e2c86c02a4ff4",
+      "bytes": 9494
+    },
+    {
+      "name": "freeze",
+      "path": "test-results/emberwake-strength/native7-development-198-1/freeze.json",
+      "sha256": "e1ba53eb86d1c89c72decea4b1644f8783f8dff8b5e657540160f04e4efbfeaf",
+      "bytes": 1372144
+    },
+    {
+      "name": "analysis",
+      "path": "test-results/emberwake-strength/native7-development-198-1/analysis.json",
+      "sha256": "6d1815002139ec38392c872e324fd92e1232f25705feb1e6edcf74521954f8da",
+      "bytes": 498551
+    },
+    {
+      "name": "controls",
+      "path": "test-results/emberwake-strength/native7-development-198-1/unchanged-tier-comparison.json",
+      "sha256": "70d94460e52d697384dbfa3e9d8caaaf3a4a312e6fc3effced0b94ad930e3656",
+      "bytes": 234002
+    },
+    {
+      "name": "independent",
+      "path": ".work/sessions/emberwake-native7-2026-10-17/astra-review-1/result-audit-1/result.json",
+      "sha256": "ad4dc8cc942aa76fa8f6755da26b33a4088d9f20eaa695c453d585babf6bb7b4",
+      "bytes": 121269
+    },
+    {
+      "name": "independentScript",
+      "path": ".work/sessions/emberwake-native7-2026-10-17/astra-review-1/audit-plan-1/matrix-audit.mjs",
+      "sha256": "0d6b72a94479e32c6c72c544551db0675740a2cdfe593e3d52397f6ad4fffdc9",
+      "bytes": 18873
+    },
+    {
+      "name": "auditPlan",
+      "path": ".work/sessions/emberwake-native7-2026-10-17/astra-review-1/audit-plan-1/plan.json",
+      "sha256": "63f85dbdc1059ebb033c7a30acf4a38bb749473a17bf2d87d7c096e925eeec55",
+      "bytes": 5405
+    },
+    {
+      "name": "technical",
+      "path": "test-results/emberwake-strength/native7-resource-5-1/closure.json",
+      "sha256": "a7ceb89d829b694d3b5946351dec620cf5f5536d8f0cabc069a589af8b87a4bb",
+      "bytes": 35403
+    },
+    {
+      "name": "technicalReview",
+      "path": ".work/sessions/emberwake-native7-2026-10-17/astra-review-1/technical-audit-1/technical-raw-audit.json",
+      "sha256": "48c2120a740b50eb15c0e2450d8378a1bdb4a6a78496b986abc4227531da5f94",
+      "bytes": 6371
+    },
+    {
+      "name": "continuity",
+      "path": ".work/sessions/emberwake-native7-2026-10-17/astra-review-1/continuity-result.json",
+      "sha256": "c783b73c3b798a072cd1348a9ed6eb43214f37ddd3e78d8027f6c4195cdd41f4",
+      "bytes": 4333
+    },
+    {
+      "name": "old5Review",
+      "path": ".work/sessions/emberwake-native6-2026-10-17/astra-review-1/original5-audit.json",
+      "sha256": "8ad59f979af0ba39be5da12e768172b240b68a64d5fef49b49ead40d7e9b6afb",
+      "bytes": 1554
+    },
+    {
+      "name": "olderHistory",
+      "path": ".work/sessions/emberwake-native6-2026-10-17/astra-review-1/older-history-audit.json",
+      "sha256": "fe09b7dc56e054cae0034e750579086e28a7200bf298a1a9eb3cec8cbeb97d02",
+      "bytes": 360
+    },
+    {
+      "name": "fullGate",
+      "path": ".work/sessions/emberwake-native7-2026-10-17/full-candidate-1/full-gate-1.json",
+      "sha256": "dfb3d05c843f0227b2fa5624598f9aed42f01126d45ca77e1db200e7dd7dad69",
+      "bytes": 4629
+    },
+    {
+      "name": "browserGate",
+      "path": ".work/sessions/emberwake-native7-2026-10-17/browser-gate-1.json",
+      "sha256": "e68a2c4157119913986b3d8fb2003cf777c946a44b277a765bd161f41aee7143",
+      "bytes": 2622
+    },
+    {
+      "name": "protocol",
+      "path": "docs/research/experiments/2026-10-17-emberwake-standard-pressure-7-protocol.md",
+      "sha256": "0ab7fa39dcd89a53949ceeac84c79112557fb93d36f1c674cf9bfeb3069c44d3",
+      "bytes": 8069
+    },
+    {
+      "name": "primaryProtocol",
+      "path": "test-results/emberwake-strength/native7-development-198-1/primary/protocol.json",
+      "sha256": "e94daa474f10d3cdd135943517eaaefe277968b2c9e4e04996b69a9ec083f5a9",
+      "bytes": 7593
+    },
+    {
+      "name": "growthProtocol",
+      "path": "test-results/emberwake-strength/native7-development-198-1/growth/protocol.json",
+      "sha256": "bafd2211fd977e8154a3397b4527e7c09f4549d18dacb23418858e1b087839ee",
+      "bytes": 7187
+    },
+    {
+      "name": "baselineLink",
+      "path": ".work/sessions/emberwake-pressure7-development-2026-10-17/producer-draft/baseline6-linked-1.json",
+      "sha256": "a48286bd1b93d91e0a669e65f36c73e9f62057d85471b8307c3f274df4898a7c",
+      "bytes": 372990
+    },
+    {
+      "name": "native5Negative",
+      "path": "docs/research/experiments/2026-10-16-emberwake-strength-confirmation-5.json",
+      "sha256": "bf3054c518568c03cf2d689197861e9d91c8f2567e53c9431154a0e5ffb96866",
+      "bytes": 24393
+    },
+    {
+      "name": "native6Negative",
+      "path": "docs/research/experiments/2026-10-17-emberwake-standard-relief-6.json",
+      "sha256": "c148ddca6716ae0ba7bdf30fb30bd1f8d93f110b66ba3983cda886bfa003e5b9",
+      "bytes": 25587
+    },
+    {
+      "name": "fixture2",
+      "path": "tests/fixtures/emberwake-v2-continuity.json",
+      "sha256": "1fa36bed5c88e6224a56b3ead904cd3791728bd8caafe816dd8cf7c8015be913",
+      "bytes": 416425
+    },
+    {
+      "name": "fixture3",
+      "path": "tests/fixtures/emberwake-v3-continuity.json",
+      "sha256": "124874f9b0ef184a1757bbb45e77bb9a969982fe9c9a77d050fe6121e81637cf",
+      "bytes": 500057
+    },
+    {
+      "name": "fixture4",
+      "path": "tests/fixtures/emberwake-v4-continuity.json",
+      "sha256": "cbda033c1e09525576363e2d7395553f374820ea25aef002a31290ae97fb12ba",
+      "bytes": 1017036
+    },
+    {
+      "name": "fixture5",
+      "path": "tests/fixtures/emberwake-v5-continuity.json",
+      "sha256": "3a5a94bb7283025d5864f32210f053d450b07688b174164e4836fa9f634f9394",
+      "bytes": 767987
+    },
+    {
+      "name": "fixture6",
+      "path": "tests/fixtures/emberwake-v6-continuity.json",
+      "sha256": "8be32896a4347f7b16f53d583af6f822f9574ab77699371ecc41c107a9ec3f05",
+      "bytes": 6082507
+    }
+  ],
+  "generator": {
+    "path": ".work/sessions/emberwake-native7-2026-10-17/report-draft/attempt2/generate.mjs",
+    "sha256": "d37b3cfbaf27f095c59e8884852cb35986c2282065c0919ffb7b724d18af6088"
+  },
+  "limits": [
+    "Consumed development, not fresh confirmation/calibration or human difficulty.",
+    "Nine net effects use all ten pairs including ties; no significance inference. Net superiority is neither win-rate gain nor percent speedup.",
+    "Score2 unchanged; strict sub-5% practical winning-time ties are analysis only.",
+    "Original6 and current7 configurations match; reused baseline recordings are not a new arm or equal-compute proof.",
+    "Read-only player/ally breakpoints motivated Standard7; Sorceress Standard Survival floor was an explicit risk, not a guaranteed prediction.",
+    "All 198 independent input/native reconstructions; only fixed 27 saved-input factory reproductions, other 171 retain producer decision audits.",
+    "Native5 fresh1170 and native6 consumed 198 failures, source bytes and technical history remain preserved."
+  ],
+  "next": "Preserve this negative screen; declare any next development candidate separately without changing these gates or launching confirmation as though they passed.",
+  "disposition": "Native7 is the development baseline, not a calibrated ladder. Preserve the negative screen and diagnose Survival control with native7 pressure/score2 fixed; no fresh confirmation promotion."
+}

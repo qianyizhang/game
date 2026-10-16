@@ -55,14 +55,17 @@ the action menu must remain equal too.
 
 ## Difficulty and results
 
-Campaign rules v5 remain the committed baseline with these fixed pressure settings. The [fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
-passes eight of nine declared contrasts; Necromancer Survival Standard–Severe remains
-insufficiently separated. The full ladder is not calibrated.
+Campaign rules v7 are the development baseline with these pressure settings. The [native5 fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
+failed one contrast; the [native6 Standard-relief screen](../research/experiments/2026-10-17-emberwake-standard-relief-6.md)
+failed two. The [native7 Standard-pressure screen](../research/experiments/2026-10-17-emberwake-standard-pressure-7.md)
+also fails overall: all six difficulty comparisons pass on consumed development
+seeds, while two Standard policy comparisons fail. The full contract remains
+uncalibrated; no fresh confirmation7 is launched.
 
 | Tier     | Hostile damage multiplier | Player per-impact ceiling | Life-potion recovery |
 | -------- | ------------------------- | ------------------------- | -------------------- |
 | Relaxed  | 0.75                      | Unlimited                 | 0 seconds            |
-| Standard | 8                         | 55% of current maximum HP | 20 seconds           |
+| Standard | 7                         | 55% of current maximum HP | 20 seconds           |
 | Severe   | 12                        | 70% of current maximum HP | 60 seconds           |
 
 Player damage scales once after mitigation and rounds once, then takes the minimum
@@ -80,10 +83,12 @@ sensor: radius eight plus line of sight. An undisclosed enemy behind a wall cann
 make an offered portal fail. Historical rules v3 retain the original distance-three
 native guard, instant life potions and **0.75/1/1.3** player damage arithmetic; rules
 v2 retain their original Standard meaning. Historical v4 keeps **0.75/3/6**, no hit
-ceiling and **0/20/60-second** recovery. V5, v4, v3 and v2 campaigns have separate
-save slots and exact versioned replay reconstruction. First upgrade checks v5/v4/v3
-slots in that order and preserves unreadable bytes; a valid loaded campaign keeps its
-original rules. V2 remains explicitly restorable. Starting v5 requires an explicit new journey when an older game loads.
+ceiling and **0/20/60-second** recovery. Historical v5 keeps Standard ×8 and v6 keeps Standard ×5, with the same caps and
+recovery. V7, v6, v5, v4, v3 and v2 campaigns have separate save slots and exact
+versioned replay reconstruction. First upgrade checks v7/v6/v5/v4/v3 slots in that
+order and preserves unreadable bytes; a valid loaded campaign keeps its original
+rules. V2 remains explicitly restorable. Starting v7 requires an explicit new
+journey when an older game loads.
 Sandbox keeps its existing rules and ordinary developer controls, outside this study.
 The [native5 record](../research/experiments/2026-10-16-emberwake-pressure-5.md)
 pins development adoption and compatibility evidence; fresh calibration is separate.
@@ -238,9 +243,10 @@ save hooks, input or simulation timer mount on this route.
 
 ## Evaluate without hiding limitations
 
-Use ten development and twenty disjoint reserved seed blocks, crossing three heroes,
-three tiers and three priorities (270/540 attempted episodes). Freeze sources/setup,
-ranking and budget before reserved evaluation. Report each hero/tier separately with
+The initial study used ten development and twenty disjoint reserved seed blocks,
+crossing three heroes, three tiers and three priorities (270/540 attempted episodes).
+Later designs declare their own complete grids and budgets in dated protocols.
+Freeze sources/setup, ranking and budget before reserved evaluation. Report each hero/tier separately with
 paired seed uncertainty and counterexamples; do not count hero repetitions as extra
 independent seeds. Paired binary and constant-sample intervals remain explicitly
 unavailable where the analyzer cannot justify uncertainty. Never tune on reserved
@@ -273,7 +279,7 @@ identity. Current-identity audit availability must not relabel historical identi
 mismatches as corrupt recordings. A score-v2 evaluator sidecar may explicitly reconstruct
 an old native journal and add a new score, retaining both original and evaluator pins;
 it is neither fresh policy execution nor a new audit of original input sampling.
-Native rules-v2/v3/v4 replay reconstruction remains unchanged. Winning development
+Native rules-v2/v3/v4/v5/v6 replay reconstruction remains unchanged. Winning development
 witnesses establish playability on those inputs; they do not establish strength or a
 calibrated difficulty ladder on independent seeds.
 
@@ -305,4 +311,47 @@ Standard Survival–Immediate advantage was 0.10 against the fixed 0.20 threshol
 All six completion floors, three Severe-existence gates and 132 unchanged-tier
 controls passed. This negative candidate is not promoted to fresh confirmation;
 score2 and every threshold remain unchanged. Original native6 source, recordings
-and native histories are retained separately from the committed native5 baseline.
+and native histories are retained separately from the then-committed native5 baseline.
+
+Native7 changes only uniform Standard incoming damage from ×5 to ×7. Original
+native6 was frozen before this change; nine full native campaigns containing 51,300
+accepted commands, 25 branch checkpoints and 15 atomic rejections preserve its
+replay/save meaning alongside native5/4/3/2. Source breakpoints motivated the
+candidate; they did not predict campaign outcomes.
+
+The [native7 development result](../research/experiments/2026-10-17-emberwake-standard-pressure-7.md)
+and [machine receipt](../research/experiments/2026-10-17-emberwake-standard-pressure-7.json)
+retain **198 consumed attempts: 117 victories, 69 deaths, 12 living budget stops and
+no execution errors**. Ten matched blocks × three heroes × three tiers ×
+Immediate/Survival give 180 attempts; Growth on the first two blocks adds 18.
+Each of nine contrasts retains all ten pairs, including ties, and requires
+`(materially better - materially worse) / 10 >= 0.20`. This is a descriptive
+score-direction gate, not a victory-rate effect or statistical significance test.
+Score2 stays exact; equally complete victories are practical ties only when
+`20 * abs(ticksA - ticksB) < max(ticksA, ticksB)`. Exact 5% differences remain
+directional.
+
+All six tier comparisons and Sorceress's Standard policy comparison pass. All
+six completion floors pass (at least 8/10 each): Relaxed Immediate wins are 10/8/9 and
+Standard Survival wins are 9/8/9 for Barbarian/Sorceress/Necromancer. The three
+Severe observed-victory gates also pass (1/12, 4/12 and 6/12 Survival/Growth attempts
+respectively). Two Standard Survival–Immediate comparisons still fail:
+
+| Hero        | Exact better/worse/tied | Practical better/worse/tied | Net material effect | Required |
+| ----------- | ----------------------- | --------------------------- | ------------------- | -------- |
+| Barbarian   | 6/4/0                   | 4/4/2                       | 0.00                | ≥0.20    |
+| Necromancer | 7/3/0                   | 4/3/3                       | 0.10                | ≥0.20    |
+
+The producer reports all four audits on all 198 attempts, unchanged sources and
+132 exact Relaxed/Severe native control journals/full states versus original6 after
+only replay format, replay rules version and state rules version normalization.
+Both actual configurations use `POLICY-STREAM-1`, policy8, empty options and the
+8,000-decision budget; original6 artifacts are preserved, not rerun or relabeled.
+The dated report owns the final independent audit's precise scope. Five current7
+technical executions are separate from the 198; prior6's failed four plus corrected
+five technical executions remain historical and excluded too.
+
+This negative consumed screen does not support population, human-difficulty or
+equal-compute claims. The fixed thresholds and old5/6 negatives remain intact;
+confirmation7 stays dormant. The next slice diagnoses the two policy gaps with
+native7 pressure fixed, before any separately declared fresh confirmation.

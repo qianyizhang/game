@@ -4,7 +4,14 @@ import type { PolicyFactory } from '../../../../src/shared/policy/types';
 import { dispatch, newSession, importSession } from '../application/session';
 import { currentWorld } from '../domain/world';
 import { BASE_CONTENT } from '../domain/content';
-import { HEALTH_POTION_COOLDOWN, RULES_V3, RULES_V4, RULES_VERSION } from '../domain/game';
+import {
+  HEALTH_POTION_COOLDOWN,
+  RULES_V3,
+  RULES_V4,
+  RULES_V6,
+  RULES_V5,
+  RULES_VERSION,
+} from '../domain/game';
 import {
   distance,
   knownCell,
@@ -57,7 +64,7 @@ describe('Emberwake restricted campaign boundary', () => {
       session.state.player.y = 5.5;
       return { session, world, enemy };
     };
-    for (const version of [RULES_VERSION, RULES_V4]) {
+    for (const version of [RULES_VERSION, RULES_V6, RULES_V5, RULES_V4]) {
       const clear = field(version);
       clear.world.tiles[5] = '......#.......................';
       const hidden = structuredClone(clear.session);
@@ -105,7 +112,7 @@ describe('Emberwake restricted campaign boundary', () => {
   });
 
   it('offers health drinks exactly when recovery permits while leaving mana available', () => {
-    for (const version of [RULES_VERSION, RULES_V4]) {
+    for (const version of [RULES_VERSION, RULES_V6, RULES_V5, RULES_V4]) {
       const session = dispatch(
         newSession('POTION-MENU', 'barbarian', BASE_CONTENT, false, 'standard', version),
         {

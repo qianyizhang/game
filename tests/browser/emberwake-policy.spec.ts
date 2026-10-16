@@ -8,6 +8,8 @@ import {
   SAVE_V2_KEY,
   SAVE_V3_KEY,
   SAVE_V4_KEY,
+  SAVE_V6_KEY,
+  SAVE_V5_KEY,
   SAVE_KEY,
   exportSession,
   newSession,
@@ -157,7 +159,7 @@ test('Emberwake selects Severe, reloads it, and restores the untouched historica
   await expect(page.locator('.ew-topline')).not.toContainText('Severe');
 });
 
-test('Emberwake first upgrade resumes v3 exactly and keeps v2/v3 saves when starting and restoring v5', async ({
+test('Emberwake first upgrade resumes v3 exactly and keeps v2/v3 saves when starting and restoring v7', async ({
   page,
 }) => {
   const historical = JSON.parse(
@@ -201,9 +203,9 @@ test('Emberwake first upgrade resumes v3 exactly and keeps v2/v3 saves when star
   await expect(page.locator('.ew-topline')).toContainText('Standard');
   await expect(page.locator('.ew-topline')).not.toContainText('previous rules');
   const current = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
-  expect(importSession(current).replay.rulesVersion).toBe('emberwake-5');
+  expect(importSession(current).replay.rulesVersion).toBe('emberwake-7');
   expect(await page.evaluate((key) => localStorage.getItem(key), ACTIVE_MODE_KEY)).toBe(
-    'campaign-v5',
+    'campaign-v7',
   );
   await page.reload();
   await expect(page.locator('.ew-topline')).toContainText('Standard');
@@ -223,140 +225,171 @@ test('Emberwake first upgrade resumes v3 exactly and keeps v2/v3 saves when star
   expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V2_KEY)).toBe(oldV2);
 });
 
-test('Emberwake first upgrade resumes v4 without rewriting it and isolates new v5 journeys', async ({
-  page,
-}) => {
-  const fixture = JSON.parse(
-    readFileSync('tests/fixtures/emberwake-v4-continuity.json', 'utf8'),
-  ) as {
-    content: unknown;
-    cases: {
-      hero: string;
-      difficulty: string;
-      replayHeader: Record<string, unknown>;
-      witnesses: { label: string; prefixNativeCommands: Command[] }[];
-    }[];
-  };
-  const row = fixture.cases.find(
-    (entry) => entry.hero === 'barbarian' && entry.difficulty === 'standard',
-  )!;
-  const witness = row.witnesses.find((entry) => entry.label === 'before-health-potion')!;
-  const original = JSON.stringify({
-    ...row.replayHeader,
-    content: fixture.content,
-    commands: witness.prefixNativeCommands,
+for (const [historicalVersion, historicalKey, olderVersion, olderKey] of [
+  [4, SAVE_V4_KEY, 3, SAVE_V3_KEY],
+  [5, SAVE_V5_KEY, 4, SAVE_V4_KEY],
+  [6, SAVE_V6_KEY, 5, SAVE_V5_KEY],
+] as const)
+  test(`Emberwake first upgrade resumes v${historicalVersion} without rewriting it and isolates new v7 journeys`, async ({
+    page,
+  }) => {
+    const fixture = JSON.parse(
+      readFileSync(`tests/fixtures/emberwake-v${historicalVersion}-continuity.json`, 'utf8'),
+    ) as {
+      content: unknown;
+      cases: {
+        hero: string;
+        difficulty: string;
+        replayHeader: Record<string, unknown>;
+        witnesses: { label: string; prefixNativeCommands: Command[] }[];
+      }[];
+    };
+    const row = fixture.cases.find(
+      (entry) => entry.hero === 'barbarian' && entry.difficulty === 'standard',
+    )!;
+    const witness = row.witnesses.find((entry) => entry.label === 'before-health-potion')!;
+    const original = JSON.stringify({
+      ...row.replayHeader,
+      content: fixture.content,
+      commands: witness.prefixNativeCommands,
+    });
+    const expected = dispatch(importSession(original), { type: 'potion', kind: 'health' });
+    expect(expected.error).toBeNull();
+    const older = exportSession(
+      newSession(
+        `UPGRADE-PROTECTED-V${olderVersion}`,
+        'sorceress',
+        undefined,
+        false,
+        'severe',
+        `emberwake-${olderVersion}`,
+      ),
+    );
+    expect(importSession(older).state.rulesVersion).toBe(`emberwake-${olderVersion}`);
+    await page.goto('/');
+    await page.evaluate(
+      ({ historicalKey, olderKey, mode, original, older }) => {
+        localStorage.setItem(historicalKey, original);
+        localStorage.setItem(olderKey, older);
+        localStorage.removeItem(mode);
+      },
+      { historicalKey, olderKey, mode: ACTIVE_MODE_KEY, original, older },
+    );
+    // No active marker: discovery must choose the newest historical slot and preserve the older one.
+    await page.goto('/?game=diablo2');
+    await expect(page.locator('.ew-topline')).toContainText(
+      `Standard · previous rules v${historicalVersion}`,
+    );
+    await expect(page.locator('.ew-topline span[title]')).toHaveAttribute(
+      'title',
+      historicalVersion === 6
+        ? /damage ×5; life potion recovery 20s; player hit ceiling 55% max life \(minimum 1 damage\)/
+        : historicalVersion === 5
+          ? /damage ×8; life potion recovery 20s; player hit ceiling 55% max life \(minimum 1 damage\)/
+          : /damage ×3; life potion recovery 20s; player hit ceiling none/,
+    );
+    expect(await page.evaluate((key) => localStorage.getItem(key), historicalKey)).toBe(original);
+    expect(await page.evaluate((key) => localStorage.getItem(key), olderKey)).toBe(older);
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBeNull();
+    await page.reload();
+    expect(await page.evaluate((key) => localStorage.getItem(key), historicalKey)).toBe(original);
+    expect(await page.evaluate((key) => localStorage.getItem(key), olderKey)).toBe(older);
+    const potion = page.getByRole('button', { name: /1 · Life potion/ });
+    await potion.click();
+    await expect(potion).toContainText('Ready in 20.0s');
+    await expect(potion).toBeDisabled();
+    const continued = await page.evaluate((key) => localStorage.getItem(key)!, historicalKey);
+    expect(importSession(continued)).toEqual(expected.session);
+    expect(await page.evaluate((key) => localStorage.getItem(key), ACTIVE_MODE_KEY)).toBe(
+      `campaign-v${historicalVersion}`,
+    );
+    await page.reload();
+    await expect(potion).toContainText('Ready in 20.0s');
+    await page.getByRole('button', { name: 'New journey', exact: true }).click();
+    const downloading = page.waitForEvent('download');
+    await page
+      .getByRole('button', { name: `Export v${historicalVersion} campaign`, exact: true })
+      .click();
+    expect((await readFile(await (await downloading).path())).equals(Buffer.from(continued))).toBe(
+      true,
+    );
+    await page.getByLabel('Difficulty', { exact: true }).selectOption('standard');
+    await expect(page.getByTestId('difficulty-rules')).toHaveText(
+      /Incoming damage ×7; player hit ceiling 55% max life \(minimum 1 damage\); life potion recovery 20s/,
+    );
+    await page.getByRole('button', { name: 'Begin journey', exact: true }).click();
+    await expect(page.locator('.ew-topline span[title]')).toHaveAttribute(
+      'title',
+      /damage ×7; life potion recovery 20s; player hit ceiling 55% max life \(minimum 1 damage\)/,
+    );
+    await expect(page.locator('.ew-topline')).not.toContainText('previous rules');
+    const current = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
+    expect(importSession(current).replay.format).toBe('emberwake-replay-v7');
+    expect(await page.evaluate((key) => localStorage.getItem(key), historicalKey)).toBe(continued);
+    expect(await page.evaluate((key) => localStorage.getItem(key), olderKey)).toBe(older);
+    // With the active marker absent again, current7 must win discovery over both old slots.
+    await page.evaluate((key) => localStorage.removeItem(key), ACTIVE_MODE_KEY);
+    await page.reload();
+    await expect(page.locator('.ew-topline')).not.toContainText('previous rules');
+    await page.getByRole('button', { name: 'New journey', exact: true }).click();
+    await page
+      .getByRole('button', { name: `Restore v${historicalVersion} campaign`, exact: true })
+      .click();
+    await expect(page.locator('.ew-topline')).toContainText(
+      `Standard · previous rules v${historicalVersion}`,
+    );
+    await expect(potion).toBeDisabled();
+    await page.reload();
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(current);
+    expect(await page.evaluate((key) => localStorage.getItem(key), historicalKey)).toBe(continued);
+    expect(await page.evaluate((key) => localStorage.getItem(key), olderKey)).toBe(older);
   });
-  const expected = dispatch(importSession(original), { type: 'potion', kind: 'health' });
-  expect(expected.error).toBeNull();
-  const oldV3 = exportSession(
-    newSession('UPGRADE-PROTECTED-V3', 'sorceress', undefined, false, 'severe', 'emberwake-3'),
-  );
-  expect(importSession(oldV3).state.rulesVersion).toBe('emberwake-3');
-  await page.goto('/');
-  await page.evaluate(
-    ({ key4, key3, mode, v4, v3 }) => {
-      localStorage.setItem(key4, v4);
-      localStorage.setItem(key3, v3);
-      localStorage.removeItem(mode);
-    },
-    { key4: SAVE_V4_KEY, key3: SAVE_V3_KEY, mode: ACTIVE_MODE_KEY, v4: original, v3: oldV3 },
-  );
-  // No active-mode marker: ordinary first-upgrade discovery must prefer v4 over v3.
-  await page.goto('/?game=diablo2');
-  await expect(page.locator('.ew-topline')).toContainText('Standard · previous rules v4');
-  await expect(page.locator('.ew-topline span[title]')).toHaveAttribute(
-    'title',
-    /damage ×3; life potion recovery 20s; player hit ceiling none/,
-  );
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V4_KEY)).toBe(original);
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V3_KEY)).toBe(oldV3);
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBeNull();
-  await page.reload();
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V4_KEY)).toBe(original);
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V3_KEY)).toBe(oldV3);
-  const potion = page.getByRole('button', { name: /1 · Life potion/ });
-  await potion.click();
-  await expect(potion).toContainText('Ready in 20.0s');
-  await expect(potion).toBeDisabled();
-  const continued = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_V4_KEY);
-  expect(importSession(continued)).toEqual(expected.session);
-  expect(await page.evaluate((key) => localStorage.getItem(key), ACTIVE_MODE_KEY)).toBe(
-    'campaign-v4',
-  );
-  await page.reload();
-  await expect(potion).toContainText('Ready in 20.0s');
-  await page.getByRole('button', { name: 'New journey', exact: true }).click();
-  const downloading = page.waitForEvent('download');
-  await page.getByRole('button', { name: 'Export v4 campaign', exact: true }).click();
-  expect((await readFile(await (await downloading).path())).equals(Buffer.from(continued))).toBe(
-    true,
-  );
-  await page.getByLabel('Difficulty', { exact: true }).selectOption('standard');
-  await expect(page.getByTestId('difficulty-rules')).toHaveText(
-    /Incoming damage ×8; player hit ceiling 55% max life \(minimum 1 damage\); life potion recovery 20s/,
-  );
-  await page.getByRole('button', { name: 'Begin journey', exact: true }).click();
-  await expect(page.locator('.ew-topline span[title]')).toHaveAttribute(
-    'title',
-    /damage ×8; life potion recovery 20s; player hit ceiling 55% max life \(minimum 1 damage\)/,
-  );
-  await expect(page.locator('.ew-topline')).not.toContainText('previous rules');
-  const current = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
-  expect(importSession(current).replay.format).toBe('emberwake-replay-v5');
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V4_KEY)).toBe(continued);
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V3_KEY)).toBe(oldV3);
-  await page.reload();
-  await expect(page.locator('.ew-topline')).not.toContainText('previous rules');
-  await page.getByRole('button', { name: 'New journey', exact: true }).click();
-  await page.getByRole('button', { name: 'Restore v4 campaign', exact: true }).click();
-  await expect(page.locator('.ew-topline')).toContainText('Standard · previous rules v4');
-  await expect(potion).toBeDisabled();
-  await page.reload();
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(current);
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V4_KEY)).toBe(continued);
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V3_KEY)).toBe(oldV3);
-});
 
-test('Emberwake preserves unreadable v4 bytes through recovery and a new v5 journey', async ({
-  page,
-}) => {
-  const damaged = '{"format":"emberwake-replay-v4","rulesVersion":"emberwake-4","commands":';
-  await page.goto('/');
-  await page.evaluate(
-    ({ key, mode, text }) => {
-      localStorage.setItem(key, text);
-      localStorage.setItem(mode, 'campaign-v4');
-    },
-    { key: SAVE_V4_KEY, mode: ACTIVE_MODE_KEY, text: damaged },
-  );
-  await page.goto('/?game=diablo2');
-  await expect(page.locator('.ew-message')).toContainText('Saved journey could not load:');
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V4_KEY)).toBe(damaged);
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBeNull();
-  await page.reload();
-  await expect(page.locator('.ew-message')).toContainText('Saved journey could not load:');
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V4_KEY)).toBe(damaged);
-  await page.getByRole('button', { name: 'Restore v4 campaign', exact: true }).click();
-  await expect(page.locator('.ew-message')).toContainText('Campaign could not load:');
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V4_KEY)).toBe(damaged);
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBeNull();
-  await page.getByRole('button', { name: 'Begin journey', exact: true }).click();
-  const current = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
-  expect(importSession(current).replay.rulesVersion).toBe('emberwake-5');
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V4_KEY)).toBe(damaged);
-  await page.reload();
-  await expect(page.locator('.ew-topline')).not.toContainText('previous rules');
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(current);
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V4_KEY)).toBe(damaged);
-  await page.getByRole('button', { name: 'New journey', exact: true }).click();
-  const downloading = page.waitForEvent('download');
-  await page.getByRole('button', { name: 'Export v4 campaign', exact: true }).click();
-  expect((await readFile(await (await downloading).path())).equals(Buffer.from(damaged))).toBe(
-    true,
-  );
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_V4_KEY)).toBe(damaged);
-  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(current);
-});
+for (const [version, key] of [
+  [4, SAVE_V4_KEY],
+  [5, SAVE_V5_KEY],
+  [6, SAVE_V6_KEY],
+] as const)
+  test(`Emberwake preserves unreadable v${version} bytes through recovery and a new v7 journey`, async ({
+    page,
+  }) => {
+    const damaged = `{"format":"emberwake-replay-v${version}","rulesVersion":"emberwake-${version}","commands":`;
+    await page.goto('/');
+    await page.evaluate(
+      ({ key, mode, text, historicalMode }) => {
+        localStorage.setItem(key, text);
+        localStorage.setItem(mode, historicalMode);
+      },
+      { key, mode: ACTIVE_MODE_KEY, text: damaged, historicalMode: `campaign-v${version}` },
+    );
+    await page.goto('/?game=diablo2');
+    await expect(page.locator('.ew-message')).toContainText('Saved journey could not load:');
+    expect(await page.evaluate((key) => localStorage.getItem(key), key)).toBe(damaged);
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBeNull();
+    await page.reload();
+    await expect(page.locator('.ew-message')).toContainText('Saved journey could not load:');
+    expect(await page.evaluate((key) => localStorage.getItem(key), key)).toBe(damaged);
+    await page.getByRole('button', { name: `Restore v${version} campaign`, exact: true }).click();
+    await expect(page.locator('.ew-message')).toContainText('Campaign could not load:');
+    expect(await page.evaluate((key) => localStorage.getItem(key), key)).toBe(damaged);
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBeNull();
+    await page.getByRole('button', { name: 'Begin journey', exact: true }).click();
+    const current = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
+    expect(importSession(current).replay.rulesVersion).toBe('emberwake-7');
+    expect(await page.evaluate((key) => localStorage.getItem(key), key)).toBe(damaged);
+    await page.reload();
+    await expect(page.locator('.ew-topline')).not.toContainText('previous rules');
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(current);
+    expect(await page.evaluate((key) => localStorage.getItem(key), key)).toBe(damaged);
+    await page.getByRole('button', { name: 'New journey', exact: true }).click();
+    const downloading = page.waitForEvent('download');
+    await page.getByRole('button', { name: `Export v${version} campaign`, exact: true }).click();
+    expect((await readFile(await (await downloading).path())).equals(Buffer.from(damaged))).toBe(
+      true,
+    );
+    expect(await page.evaluate((key) => localStorage.getItem(key), key)).toBe(damaged);
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(current);
+  });
 
 test('Emberwake displays and enforces native life-potion recovery after a recorded legal drink', async ({
   page,
@@ -388,7 +421,7 @@ test('Emberwake displays and enforces native life-potion recovery after a record
   await page.evaluate(
     ({ key, mode, text }) => {
       localStorage.setItem(key, text);
-      localStorage.setItem(mode, 'campaign-v5');
+      localStorage.setItem(mode, 'campaign-v7');
     },
     { key: SAVE_KEY, mode: ACTIVE_MODE_KEY, text: original },
   );

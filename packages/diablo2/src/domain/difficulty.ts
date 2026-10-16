@@ -1,5 +1,5 @@
 import type { Difficulty, State } from './types';
-import { RULES_VERSION, RULES_V4, RULES_V3 } from './versions';
+import { RULES_VERSION, RULES_V6, RULES_V5, RULES_V4, RULES_V3 } from './versions';
 
 export const HEALTH_POTION_COOLDOWN = '@health-potion';
 export interface DifficultyProfile {
@@ -25,11 +25,19 @@ export const V4_DIFFICULTIES = {
   },
   severe: { label: 'Severe', incomingDamage: 6, maxHitFraction: null, healthPotionRecovery: 600 },
 } as const satisfies Record<Difficulty, DifficultyProfile>;
-// Version5 pressure profile; historical profiles remain fixed.
-export const DIFFICULTIES = {
+export const V5_DIFFICULTIES = {
   ...V4_DIFFICULTIES,
   standard: { ...V4_DIFFICULTIES.standard, incomingDamage: 8, maxHitFraction: 0.55 },
   severe: { ...V4_DIFFICULTIES.severe, incomingDamage: 12, maxHitFraction: 0.7 },
+} as const satisfies Record<Difficulty, DifficultyProfile>;
+export const V6_DIFFICULTIES = {
+  ...V5_DIFFICULTIES,
+  standard: { ...V5_DIFFICULTIES.standard, incomingDamage: 5 },
+} as const satisfies Record<Difficulty, DifficultyProfile>;
+// Version7 changes only Standard incoming damage; historical profiles remain fixed.
+export const DIFFICULTIES = {
+  ...V6_DIFFICULTIES,
+  standard: { ...V6_DIFFICULTIES.standard, incomingDamage: 7 },
 } as const satisfies Record<Difficulty, DifficultyProfile>;
 export const V3_DIFFICULTIES = {
   relaxed: {
@@ -47,6 +55,10 @@ export function difficultyProfile(
 ): DifficultyProfile {
   if (!state.sandbox && state.rulesVersion === RULES_VERSION)
     return DIFFICULTIES[state.difficulty ?? 'standard'];
+  if (!state.sandbox && state.rulesVersion === RULES_V6)
+    return V6_DIFFICULTIES[state.difficulty ?? 'standard'];
+  if (!state.sandbox && state.rulesVersion === RULES_V5)
+    return V5_DIFFICULTIES[state.difficulty ?? 'standard'];
   if (!state.sandbox && state.rulesVersion === RULES_V4)
     return V4_DIFFICULTIES[state.difficulty ?? 'standard'];
   if (!state.sandbox && state.rulesVersion === RULES_V3)

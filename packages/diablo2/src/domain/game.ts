@@ -22,15 +22,24 @@ import { RULES_VERSION, RULES_V2, isCampaignVersion, usesPressureRules } from '.
 export { stats } from './stats';
 export { validateContent } from './validate';
 export type { Command, State, Content } from './types';
-export { RULES_VERSION, RULES_V4, RULES_V3, RULES_V2, usesPressureRules } from './versions';
+export {
+  RULES_VERSION,
+  RULES_V6,
+  RULES_V5,
+  RULES_V4,
+  RULES_V3,
+  RULES_V2,
+  usesPressureRules,
+} from './versions';
 export {
   DIFFICULTIES,
+  V5_DIFFICULTIES,
   V4_DIFFICULTIES,
   V3_DIFFICULTIES,
   difficultyProfile,
   HEALTH_POTION_COOLDOWN,
 } from './difficulty';
-/** Exactly the public actor sensor; hidden and warded enemies cannot veto a v4/v5 portal. */
+/** Exactly the public actor sensor; hidden and warded enemies cannot veto pressure-rule portals. */
 export function hasVisiblePortalGuard(state: State, content: Content): boolean {
   const world = currentWorld(state);
   return world.enemies.some(

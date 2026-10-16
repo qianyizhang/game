@@ -9,21 +9,39 @@ import {
 } from '../domain/game';
 import type { Command, Content, Difficulty, Replay, State } from '../domain/types';
 import { SANDBOX_RULES_VERSION } from '../domain/sandbox';
-import { RULES_V4, RULES_V3, RULES_V2 } from '../domain/versions';
+import { RULES_V6, RULES_V5, RULES_V4, RULES_V3, RULES_V2 } from '../domain/versions';
 export const SANDBOX_SAVE_KEY = 'card-workshop.emberwake.sandbox.v1';
 export const ACTIVE_MODE_KEY = 'card-workshop.emberwake.active-mode';
 export const SAVE_V2_KEY = 'card-workshop.emberwake.v2';
 export const SAVE_V3_KEY = 'card-workshop.emberwake.v3';
 export const SAVE_V4_KEY = 'card-workshop.emberwake.v4';
-export const SAVE_KEY = 'card-workshop.emberwake.v5';
+export const SAVE_V5_KEY = 'card-workshop.emberwake.v5';
+export const SAVE_V6_KEY = 'card-workshop.emberwake.v6';
+export const SAVE_KEY = 'card-workshop.emberwake.v7';
 export const CAMPAIGN_VERSIONS = [
   {
     rulesVersion: RULES_VERSION,
+    version: 7,
+    format: 'emberwake-replay-v7',
+    key: SAVE_KEY,
+    mode: 'campaign-v7',
+    description: 'current pressure rules',
+  },
+  {
+    rulesVersion: RULES_V6,
+    version: 6,
+    format: 'emberwake-replay-v6',
+    key: SAVE_V6_KEY,
+    mode: 'campaign-v6',
+    description: 'previous pressure rules',
+  },
+  {
+    rulesVersion: RULES_V5,
     version: 5,
     format: 'emberwake-replay-v5',
-    key: SAVE_KEY,
+    key: SAVE_V5_KEY,
     mode: 'campaign-v5',
-    description: 'current pressure rules',
+    description: 'previous pressure rules',
   },
   {
     rulesVersion: RULES_V4,

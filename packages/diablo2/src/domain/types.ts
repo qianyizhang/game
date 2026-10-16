@@ -282,7 +282,12 @@ export type Command =
   | { type: 'dev-refill' | 'dev-corpses' };
 export interface Replay {
   format:
-    'emberwake-replay-v2' | 'emberwake-replay-v3' | 'emberwake-replay-v4' | 'emberwake-replay-v5';
+    | 'emberwake-replay-v2'
+    | 'emberwake-replay-v3'
+    | 'emberwake-replay-v4'
+    | 'emberwake-replay-v5'
+    | 'emberwake-replay-v6'
+    | 'emberwake-replay-v7';
   difficulty?: Difficulty;
   mode?: 'sandbox';
   rulesVersion: string;
