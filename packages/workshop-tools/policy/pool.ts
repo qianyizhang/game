@@ -25,7 +25,10 @@ export async function casePool(moduleURL: string, jobs: CaseJob[], workers: numb
       for (let i = 0; i < Math.min(workers, jobs.length); i++) {
         const worker = new Worker(new URL('./worker.ts', import.meta.url), {
           workerData: { moduleURL },
-          resourceLimits: { maxOldGenerationSizeMb: 512 },
+          // Original-input traces can approach the 150 MB parser limit. Recording,
+          // hashing and independent audits need room for decoded graphs and JSON copies.
+          // The pool still caps concurrency at four; each worker has a 2 GiB V8 old-generation limit, not an RSS limit.
+          resourceLimits: { maxOldGenerationSizeMb: 2048 },
         });
         pool.push(worker);
         worker.on('error', reject);

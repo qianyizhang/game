@@ -12,6 +12,10 @@ void test('development and reserved seed blocks stay disjoint and paired interva
   assert.ok(fresh.every((seed) => ![...dev, ...evaluation].includes(seed)));
   assert.throws(() => cohortSeeds('evaluation', '../escape'), /namespace/);
   assert.throws(() => cohortSeeds('evaluation', 'VALID', 19), /blocks/);
+  const large = cohortSeeds('evaluation', 'PRECISION-TEST', 400);
+  assert.equal(large.length, 400);
+  assert.equal(large.at(-1), 'PRECISION-TEST-RESERVED-400');
+  assert.equal(new Set(large).size, 400);
   const result = meanInterval(Array.from({ length: 20 }, () => -2));
   assert.equal(result.mean, -2);
   assert.equal(result.interval95, null);

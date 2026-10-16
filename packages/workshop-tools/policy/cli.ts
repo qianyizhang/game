@@ -12,7 +12,7 @@ const usage = `policy run|record --game blindside|spire|hearth|emberwake|cartogr
 policy record --game blindside|spire|hearth|emberwake|cartographer|night-passage --out NEW_DIRECTORY [same options]
 policy benchmark --game blindside|spire|hearth|emberwake|cartographer|night-passage --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
 policy audit --input ROLLOUT --out NEW_RECEIPT [--policy-module ./policy.ts]
-Shared study options (five adapters): --cohort UPPERCASE-NAMESPACE --blocks 10|20|40|60|100.
+Shared study options (five adapters): --cohort UPPERCASE-NAMESPACE --blocks 10|20|40|60|100|400.
   --policies ID,ID selects a declared subset; default is every loaded policy.
 Choose a NEW cohort namespace for fresh evidence; increasing --blocks reuses the same prefix.
 A local TS module default-exports a game-typed PolicyFactory (Night Passage: native PolicyPlayer). It is trusted in-process code.

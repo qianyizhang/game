@@ -12,8 +12,8 @@ export const cohortSeeds = (
 ) => {
   if (!/^[A-Z][A-Z0-9-]{2,63}$/.test(namespace))
     throw new Error('Cohort namespace must be 3–64 uppercase letters, digits or hyphens.');
-  if (![10, 20, 40, 60, 100].includes(blocks))
-    throw new Error('Use 10, 20, 40, 60 or 100 independent blocks.');
+  if (![10, 20, 40, 60, 100, 400].includes(blocks))
+    throw new Error('Use 10, 20, 40, 60, 100 or 400 independent blocks.');
   return Array.from(
     { length: blocks },
     (_, i) =>
@@ -39,11 +39,14 @@ export function meanInterval(values: number[]) {
       reason:
         'Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty.',
     };
-  // Student t, 95%, for the predeclared 10/20 independent seed blocks.
+  // Student t, 95%, for the predeclared independent block counts.
   const critical =
-    ({ 10: 2.262, 20: 2.093, 40: 2.023, 60: 2.001, 100: 1.984 } as Record<number, number>)[
-      values.length
-    ] ?? 1.96;
+    (
+      { 10: 2.262, 20: 2.093, 40: 2.023, 60: 2.001, 100: 1.984, 400: 1.966 } as Record<
+        number,
+        number
+      >
+    )[values.length] ?? 1.96;
   const halfWidth = critical * Math.sqrt(variance / values.length);
   return { n: values.length, mean, interval95: [mean - halfWidth, mean + halfWidth], reason: null };
 }

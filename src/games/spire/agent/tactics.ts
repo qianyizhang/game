@@ -3,7 +3,7 @@ import { playCard } from '../domain/combat';
 import { currentIntent } from '../domain/enemies';
 import { ENEMY_BY_ID } from '../content/world';
 import type { Effect, SpireState } from '../domain/types';
-import { incoming, powerValue } from './forecast';
+import { turnLoss, powerValue } from './forecast';
 import { legalActions } from './legality';
 import { observe, type Observation, type PolicyCommand } from './observation';
 
@@ -128,13 +128,7 @@ function endpoint(root: Observation, view: Observation, strategy: Strategy): num
     start = root.combat!;
   if (c.player.hp <= 0) return -1e9;
   const lossWeight = strategy === 'survival' ? 3.5 : strategy === 'growth' ? 2.8 : 2;
-  const threat = Math.max(
-    0,
-    incoming(view) -
-      c.player.block -
-      c.powers.metallicize -
-      (view.relics.includes('orichalcum') && c.player.block === 0 ? 6 : 0),
-  );
+  const threat = turnLoss(view);
   let score = (c.player.hp - start.player.hp) * lossWeight - threat * lossWeight;
   if (c.player.hp <= threat) score -= 5000;
   for (const enemy of c.enemies) {

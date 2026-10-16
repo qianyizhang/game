@@ -12,7 +12,7 @@ import {
 import { repositoryRoot, sha256 } from '../runtime-bundle.ts';
 import type { StudyDefinition } from '../../../src/shared/policy/types';
 
-/** Preregistered Spire strength-3 analysis. Separate from the raw descriptive study report. */
+/** Preregistered Spire strength-4 analysis. Separate from the raw descriptive study report. */
 async function main() {
   const [directory, companionDirectory, planPath, outPath] = process.argv.slice(2);
   if (!directory || !companionDirectory || !planPath || !outPath || process.argv.length !== 6)
@@ -28,9 +28,9 @@ async function main() {
     sourceDigests: Record<string, string>;
   };
   if (
-    plan.schema !== 'spire-strength-plan-2' ||
-    plan.namespace !== 'SPIRE-STRENGTH-3' ||
-    plan.blocks !== 100 ||
+    plan.schema !== 'spire-strength-plan-3' ||
+    plan.namespace !== 'SPIRE-STRENGTH-4' ||
+    plan.blocks !== 400 ||
     JSON.stringify(plan.references) !== JSON.stringify({ ironclad: 'survival', silent: 'survival' })
   )
     throw new Error('Unrecognized frozen Spire analysis plan.');
@@ -43,10 +43,12 @@ async function main() {
     'packages/workshop-tools/policy/calibration.ts',
     'packages/workshop-tools/policy/study.ts',
     'src/games/spire/agent/policy.ts',
+    'src/games/spire/agent/collection.ts',
+    'src/games/spire/agent/adapter.ts',
     'src/games/spire/agent/tactics.ts',
     'src/games/spire/domain/game.ts',
     'src/games/spire/domain/combat.ts',
-    'docs/research/experiments/2026-10-16-spire-strength-3-protocol.md',
+    'docs/research/experiments/2026-10-16-spire-strength-4-protocol.md',
   ];
   if (!validPins(plan.sourceDigests) || requiredPins.some((path) => !plan.sourceDigests[path]))
     throw new Error('Frozen plan requires complete analysis, policy and native source pins.');
@@ -85,13 +87,19 @@ async function main() {
   const companionProtocol = JSON.parse(
     await readFile(resolve(companionDirectory, 'protocol.json'), 'utf8'),
   ) as Protocol;
+  const expectedIdentity = {
+    rules: 3,
+    observation: 'spire-observation-1',
+    score: 'spire-progress-1',
+    content: [{ id: 'base', version: '3', digest: '8192b770' }],
+  };
   const expectedPolicies = [
-    { id: 'survival', version: 'spire-policy-3' },
+    { id: 'survival', version: 'spire-policy-4' },
     { id: 'legacy-reference', version: 'spire-policy-1' },
   ];
   const seeds = cohortSeeds('evaluation', plan.namespace, plan.blocks);
   const expectedSetups = ['ironclad', 'silent'].flatMap((character) =>
-    [0, 2, 5].map((ascension) => ({
+    [0, 3, 5].map((ascension) => ({
       id: `${character}-a${ascension}`,
       difficulty: `ascension-${ascension}`,
       stratum: character,
@@ -106,6 +114,7 @@ async function main() {
   ) => {
     if (
       candidate.game !== 'slay-the-spire' ||
+      JSON.stringify(candidate.identity) !== JSON.stringify(expectedIdentity) ||
       candidate.split !== 'evaluation' ||
       JSON.stringify(candidate.seeds) !== JSON.stringify(population)
     )
@@ -150,8 +159,8 @@ async function main() {
   };
   validate(report, protocol, seeds, expectedPolicies);
   const companionSummary = validate(companion, companionProtocol, seeds.slice(0, 20), [
-    { id: 'immediate', version: 'spire-policy-3' },
-    { id: 'growth', version: 'spire-policy-3' },
+    { id: 'immediate', version: 'spire-policy-4' },
+    { id: 'growth', version: 'spire-policy-4' },
   ]);
   const find = (seed: string, setupId: string, policy: string) =>
     report.rows.find(
@@ -189,7 +198,7 @@ async function main() {
     adjustedP: adjusted.find((a) => a.id === c.id)!.adjustedP,
   }));
   const strata = Object.entries(plan.references).map(([character, policy]) => {
-    const levels = [0, 2, 5].map((a) => {
+    const levels = [0, 3, 5].map((a) => {
       const rows = seeds.map((seed) => find(seed, `${character}-a${a}`, policy));
       return {
         ascension: a,
@@ -227,11 +236,26 @@ async function main() {
       })),
     };
   });
-  const integrity = [...report.rows, ...companion.rows].every(
-    (row) => row.status === 'terminal' && auditPassed(row.audit),
+  const rows = [...report.rows, ...companion.rows];
+  const integrity = rows.every(
+    (row) =>
+      auditPassed(row.audit) &&
+      (row.status === 'terminal' || (row.status === 'timeout' && Number(row.metrics.won) === 0)),
   );
+  const completion = {
+    attempts: rows.length,
+    terminal: rows.filter((row) => row.status === 'terminal').length,
+    budgetTimeouts: rows
+      .filter((row) => row.status === 'timeout')
+      .map((row) => ({
+        seed: row.seed,
+        setupId: row.setupId,
+        policy: row.policy,
+      })),
+    endpoint: 'Victory within 2000 decisions; budget timeouts are nonwins, not discarded cases.',
+  };
   const result = {
-    schema: 'spire-strength-analysis-3',
+    schema: 'spire-strength-analysis-4',
     planDigest: sha256(planBytes),
     reportDigest: sha256(reportBytes),
     companionReportDigest: sha256(companionBytes),
@@ -239,9 +263,10 @@ async function main() {
     family,
     strata,
     integrity,
+    completion,
     allCriteriaPassed: integrity && strata.every((s) => s.strengthPassed && s.difficultyPassed),
     limits:
-      'Paired confidence intervals unavailable. Adjacent win-rate significance not claimed. Policies use different work; no human-equivalent strength claim.',
+      'Paired confidence intervals unavailable. Adjacent win-rate significance not claimed. Policies use different work; no human-equivalent strength claim. Holm covers this study only, not repeated confirmation attempts; prior failed studies remain failed.',
   };
   await writeFile(outPath, JSON.stringify(result, null, 2) + '\n', { flag: 'wx' });
   console.log(JSON.stringify(result, null, 2));

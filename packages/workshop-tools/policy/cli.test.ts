@@ -164,9 +164,9 @@ void test('calibration cannot certify a plan with empty source provenance', asyn
     await writeFile(
       plan,
       JSON.stringify({
-        schema: 'spire-strength-plan-2',
-        namespace: 'SPIRE-STRENGTH-3',
-        blocks: 100,
+        schema: 'spire-strength-plan-3',
+        namespace: 'SPIRE-STRENGTH-4',
+        blocks: 400,
         references: { ironclad: 'survival', silent: 'survival' },
         sourceDigests: {},
       }),

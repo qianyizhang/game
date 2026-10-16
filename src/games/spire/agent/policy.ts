@@ -2,9 +2,10 @@ import type { PolicyFactory, Proposal } from '../../../shared/policy/types';
 import { CARD_BY_ID } from '../content/cards';
 import { attackDamage } from '../domain/combat';
 import type { Card, SpireCommand } from '../domain/types';
-import { cardValue, incoming, publicCardCost } from './forecast';
+import { cardValue, incoming, turnLoss, blockBenefit, publicCardCost } from './forecast';
 import type { Observation, PolicyCommand } from './observation';
 import { planTurn } from './tactics';
+import { collectionPlan } from './collection';
 
 export const STRATEGIES = ['immediate', 'survival', 'growth'] as const;
 export type Strategy = (typeof STRATEGIES)[number];
@@ -86,6 +87,18 @@ export function collectionValue(view: Observation, card: Card, strategy: Strateg
     (card.upgraded ? 2 : 0)
   );
 }
+/** A boss needs a damage plan even when the safest local route avoids fights. */
+function readiness(view: Observation) {
+  const attacks = view.deck.filter((card) => {
+    const definition = CARD_BY_ID[card.definitionId];
+    return definition.kind === 'attack' && !definition.starter;
+  }).length;
+  const scaling =
+    view.deck.some((card) => ['inflame', 'demonForm'].includes(card.definitionId)) ||
+    view.relics.includes('shuriken');
+  return { attacks, scaling, needed: attacks < 3 || !scaling };
+}
+
 const instance = (definitionId: string): Card => ({
   id: 'public-offer',
   definitionId,
@@ -94,12 +107,8 @@ const instance = (definitionId: string): Card => ({
 
 function combatValue(view: Observation, command: SpireCommand, strategy: Strategy): number {
   const c = view.combat!;
-  const danger = Math.max(
-    0,
-    incoming(view) -
-      c.player.block -
-      (view.relics.includes('orichalcum') && !c.player.block ? 6 : 0),
-  );
+  const danger = turnLoss(view),
+    blockDanger = blockBenefit(view, 999);
   const defenseWeight =
     strategy === 'survival'
       ? view.hp < view.maxHp * 0.4
@@ -125,7 +134,7 @@ function combatValue(view: Observation, command: SpireCommand, strategy: Strateg
           !c.powersPlayed.includes(entry.id) &&
           publicCardCost(view, entry) === 0,
       );
-    const defend = Math.min(danger, Math.max(0, v.defense));
+    const defend = blockBenefit(view, Math.max(0, v.defense));
     const lifeWeight = danger >= view.hp ? 5 : strategy === 'survival' ? 3 : 2;
     return (
       v.damage * (strategy === 'immediate' ? 1.35 : 1) +
@@ -162,11 +171,11 @@ function combatValue(view: Observation, command: SpireCommand, strategy: Strateg
       case 'blood':
         return Math.min(view.maxHp - view.hp, Math.floor(view.maxHp * 0.2)) * 2 - reserve;
       case 'block':
-        return Math.min(danger, 12) * defenseWeight - reserve;
+        return blockBenefit(view, 12) * defenseWeight - reserve;
       case 'weak':
         return target && !target.status.artifact && !target.status.weak
           ? Math.min(
-              danger,
+              blockDanger,
               target.intent.effects.reduce(
                 (sum, effect) =>
                   sum +
@@ -202,7 +211,7 @@ function combatValue(view: Observation, command: SpireCommand, strategy: Strateg
       case 'strength':
         return c.turn <= 2 ? 10 - reserve : 4 - reserve;
       case 'dexterity':
-        return c.turn <= 2 && danger > 0 ? 10 - reserve : -1;
+        return c.turn <= 2 && blockDanger > 0 ? 10 - reserve : -1;
       case 'energy':
         return c.hand.some((id) => publicCardCost(view, c.cards[id]) > c.energy) && c.energy <= 1
           ? 12 - reserve
@@ -276,12 +285,23 @@ function value(view: Observation, command: SpireCommand, strategy: Strategy): nu
     case 'chooseNode': {
       const node = view.map.find((entry) => entry.id === command.id)!;
       const healthy = view.hp / view.maxHp;
+      const plan = readiness(view);
+      const build =
+        strategy === 'survival' && view.character === 'ironclad' && plan.needed && healthy > 0.5;
       const priorities = {
-        fight: 4,
-        elite: healthy > 0.8 && view.deck.length >= 13 ? (strategy === 'growth' ? 9 : 5) : -8,
+        fight: build ? 9 : 4,
+        elite: build
+          ? healthy > 0.85 && plan.attacks >= 2
+            ? 10
+            : -8
+          : healthy > 0.8 && view.deck.length >= 13
+            ? strategy === 'growth'
+              ? 9
+              : 5
+            : -8,
         rest: healthy < (strategy === 'survival' ? 0.85 : 0.6) ? 14 : strategy === 'growth' ? 8 : 4,
         shop: view.gold >= 150 ? 10 : 0,
-        event: strategy === 'survival' ? 8 : 6,
+        event: build ? 5 : strategy === 'survival' ? 8 : 6,
         treasure: 15,
         boss: 15,
       };
@@ -390,8 +410,16 @@ function value(view: Observation, command: SpireCommand, strategy: Strategy): nu
 
 export function createPolicy(strategy: Strategy): (input: Observation) => Proposal<PolicyCommand> {
   let decisions = 0;
-  return (input) => {
+  return (input): Proposal<PolicyCommand> => {
     if (!input.actions.length) throw new Error(`No permitted action in ${input.phase}.`);
+    const collection =
+      strategy === 'survival' && input.character === 'ironclad' ? collectionPlan(input) : null;
+    if (collection)
+      return {
+        command: collection.command,
+        work: collection.work,
+        diagnostics: { strategy, decisions: ++decisions, reason: collection.reason },
+      };
     const ranked = input.actions
       .map((command, index) => ({ command, index, score: value(input, command, strategy) }))
       .sort((a, b) => b.score - a.score || a.index - b.index);
@@ -407,6 +435,7 @@ export function createPolicy(strategy: Strategy): (input: Observation) => Propos
         decisions: ++decisions,
         model: 'Public effect estimates; no seeded transition, unknown draws or future intents.',
         incoming: incoming(input),
+        endTurnHpRisk: turnLoss(input),
         ...(plan
           ? {
               planner: {
@@ -426,7 +455,7 @@ export function createPolicy(strategy: Strategy): (input: Observation) => Propos
 
 const factory = (strategy: Strategy): PolicyFactory<Observation, PolicyCommand> => ({
   id: strategy,
-  version: 'spire-policy-3',
+  version: 'spire-policy-4',
   create: () => createPolicy(strategy),
 });
 export const builtins = {

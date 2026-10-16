@@ -6,7 +6,7 @@ import example from './example';
 import { observe } from './observation';
 import { builtins, STRATEGIES } from './policy';
 import { project } from './tactics';
-import { incoming } from './forecast';
+import { incoming, turnLoss } from './forecast';
 
 const config = { setup: {}, options: {}, policySeed: 'INDEPENDENT-POLICY-1' };
 
@@ -32,7 +32,7 @@ describe('Spire observation-only strategies', () => {
 
   it('completes legal episodes for both characters and all measured Ascensions, then replays exactly', () => {
     for (const character of ['ironclad', 'silent']) {
-      for (const ascension of [0, 2, 5]) {
+      for (const ascension of [0, 3, 5]) {
         for (const strategy of STRATEGIES) {
           const setup = { character, ascension };
           let session = adapter.create('POLICY-ADOPTION-1-DEV-01', setup);
@@ -164,7 +164,13 @@ describe('Spire observation-only strategies', () => {
         ),
       ).toBeNull();
     }
-    for (const definitionId of ['shrugItOff', 'bladeDance', 'bouncingFlask']) {
+    for (const definitionId of [
+      'shrugItOff',
+      'bladeDance',
+      'bouncingFlask',
+      'secondWind',
+      'fiendFire',
+    ]) {
       const input = observe(
         spireScenario('UNKNOWN-EFFECT', { deck: [definitionId], enemies: ['cultist'] }),
       );
@@ -200,5 +206,279 @@ describe('Spire observation-only strategies', () => {
       run = result.state;
     }
     expect(run.phase).toBe('won');
+  });
+  it('blocks held Burns before a nonattacking intent instead of wasting available energy', () => {
+    const run = spireScenario('PUBLIC-HELD-BURNS', {
+      deck: ['defend', 'burn', 'burn', 'burn'],
+      upgrades: ['burn'],
+      enemies: ['hexaghost'],
+      hp: 40,
+    });
+    run.combat!.enemies[0].intentIndex = 4;
+    run.combat!.energy = 1;
+    const input = observe(run);
+    expect(incoming(input)).toBe(0);
+    expect(turnLoss(input)).toBe(12);
+    const ignored = transitionSpire(run, { type: 'endTurn' }).state;
+    const proposal = builtins.survival.create(config)(input);
+    expect(proposal.command.type).toBe('playCard');
+    if (proposal.command.type !== 'playCard') throw new Error('Expected held defense');
+    expect(input.combat!.cards[proposal.command.id].definitionId).toBe('defend');
+    const defended = transitionSpire(run, proposal.command);
+    expect(defended.error).toBeUndefined();
+    const resolved = transitionSpire(defended.state, { type: 'endTurn' }).state;
+    expect(ignored.hp).toBe(28);
+    expect(resolved.hp).toBe(33);
+  });
+
+  it('keeps direct Regret loss separate from Burn Block and later passive Block', () => {
+    const run = spireScenario('PUBLIC-HAND-ORDER', {
+      deck: ['defend', 'burn', 'regret'],
+      relics: ['orichalcum'],
+      enemies: ['hexaghost'],
+      hp: 40,
+    });
+    run.combat!.enemies[0].intentIndex = 4;
+    const input = observe(run);
+    expect(turnLoss(input)).toBe(5);
+    expect(transitionSpire(run, { type: 'endTurn' }).state.hp).toBe(35);
+    const command = input.actions.find((c) => c.type === 'playCard')!;
+    const defended = transitionSpire(run, command).state;
+    expect(turnLoss(observe(defended))).toBe(2);
+    expect(transitionSpire(defended, { type: 'endTurn' }).state.hp).toBe(38);
+  });
+
+  it('preserves energy on a lethal stasis hit without valuing a debuff on the defeated target', () => {
+    const run = spireScenario('PUBLIC-STASIS-ENERGY', {
+      deck: ['bash', 'strike', 'demonForm'],
+      enemies: ['bronzeAutomaton', 'bronzeOrb'],
+    });
+    const c = run.combat!,
+      orb = c.enemies[1];
+    const stolen = c.hand.find((id) => c.cards[id].definitionId === 'demonForm')!;
+    c.hand = c.hand.filter((id) => id !== stolen);
+    orb.stasisCard = stolen;
+    orb.hp = 6;
+    orb.block = 0;
+    c.enemies[0].intentIndex = 4;
+    c.energy = 4;
+    const input = observe(run),
+      proposal = builtins.survival.create(config)(input);
+    expect(proposal.command.type).toBe('playCard');
+    if (proposal.command.type !== 'playCard') throw new Error('Expected cheap lethal hit');
+    expect(input.combat!.cards[proposal.command.id].definitionId).toBe('strike');
+    expect(proposal.command.target).toBe(orb.id);
+    expect(input.combat!.cards).not.toHaveProperty(stolen);
+    const result = transitionSpire(run, proposal.command);
+    expect(result.error).toBeUndefined();
+    expect(result.state.combat!.energy).toBe(3);
+    expect(result.state.combat!.hand).toContain(stolen);
+    expect(observe(result.state).actions).toContainEqual({ type: 'playCard', id: stolen });
+  });
+  it('takes a native winning hit before held Burns could ever trigger', () => {
+    const run = spireScenario('PUBLIC-WIN-BEFORE-BURN', {
+      deck: ['hemokinesis', 'burn'],
+      enemies: ['cultist'],
+      hp: 3,
+    });
+    run.combat!.enemies[0].hp = 6;
+    run.combat!.enemies[0].intentIndex = 0;
+    const input = observe(run);
+    for (const strategy of ['survival', 'growth'] as const) {
+      const command = builtins[strategy].create(config)(input).command;
+      expect(command.type).toBe('playCard');
+      const preview = project(input, command)!;
+      expect(turnLoss(preview)).toBe(0);
+      const result = transitionSpire(run, command);
+      expect(result.error).toBeUndefined();
+      expect(result.state.phase).toBe('won');
+      expect(result.state.hp).toBe(1);
+    }
+  });
+
+  it('retains Block potions when the only forecast damage bypasses Block', () => {
+    const run = spireScenario('PUBLIC-DIRECT-COST', {
+      deck: ['regret', 'wound', 'wound', 'wound', 'wound'],
+      enemies: ['cultist'],
+      hp: 40,
+    });
+    run.combat!.enemies[0].intentIndex = 0;
+    run.potions = ['block'];
+    const input = observe(run),
+      proposal = builtins.survival.create(config)(input);
+    expect(proposal.command).toEqual({ type: 'endTurn' });
+    const ordinary = transitionSpire(run, proposal.command).state;
+    const consumed = transitionSpire(run, { type: 'potion', index: 0 }).state;
+    const afterPotion = transitionSpire(consumed, { type: 'endTurn' }).state;
+    expect(ordinary.hp).toBe(35);
+    expect(afterPotion.hp).toBe(35);
+    expect(ordinary.potions).toEqual(['block']);
+    expect(afterPotion.potions).toEqual([]);
+  });
+
+  it('skips rewards whose restrictive conditions the public deck cannot support', () => {
+    for (const card of ['clash', 'entrench']) {
+      const run = spireScenario('PUBLIC-UNSUPPORTED-REWARD', {
+        deck: ['strike', 'defend', 'defend', 'bash'],
+        enemies: ['cultist'],
+      });
+      run.phase = 'reward';
+      run.combat = null;
+      run.reward = [card];
+      const input = observe(run),
+        command = builtins.survival.create(config)(input).command;
+      expect(command).toEqual({ type: 'takeReward', card: null });
+      const result = transitionSpire(run, command);
+      expect(result.error).toBeUndefined();
+      expect(result.state.deck.map((c) => c.definitionId)).not.toContain(card);
+    }
+  });
+  it('builds an unready Ironclad damage plan while preserving health and character scope', () => {
+    for (const test of [
+      { character: 'ironclad', deck: ['strike', 'defend', 'bash'], hp: 0.9, expected: 'fight' },
+      {
+        character: 'ironclad',
+        deck: ['cleave', 'ironWave', 'carnage', 'inflame'],
+        hp: 0.9,
+        expected: 'event',
+      },
+      { character: 'ironclad', deck: ['strike', 'defend', 'bash'], hp: 0.5, expected: 'event' },
+      { character: 'silent', deck: ['strike', 'defend', 'bash'], hp: 0.9, expected: 'event' },
+    ]) {
+      const run = spireScenario('PUBLIC-DAMAGE-READINESS', {
+        character: test.character,
+        deck: test.deck,
+        enemies: ['cultist'],
+      });
+      run.phase = 'map';
+      run.combat = null;
+      run.currentNode = null;
+      run.hp = run.maxHp * test.hp;
+      run.map = (['fight', 'event'] as const).map((kind, lane) => ({
+        id: kind,
+        row: 0,
+        lane,
+        kind,
+        next: [],
+        visited: false,
+        encounter: ['cultist'],
+      }));
+      const command = builtins.survival.create(config)(observe(run)).command;
+      expect(command).toEqual({ type: 'chooseNode', id: test.expected });
+      expect(transitionSpire(run, command).error).toBeUndefined();
+    }
+  });
+  it('declines a redundant power and respects campfire relic restrictions', () => {
+    const run = spireScenario('PUBLIC-CURATED-DECK', {
+      deck: ['demonForm', 'demonForm', 'strike', 'defend'],
+      enemies: ['cultist'],
+      hp: 40,
+    });
+    run.phase = 'reward';
+    run.combat = null;
+    run.reward = ['demonForm'];
+    const reward = builtins.survival.create(config)(observe(run)).command;
+    expect(reward).toEqual({ type: 'takeReward', card: null });
+    const skipped = transitionSpire(run, reward);
+    expect(skipped.error).toBeUndefined();
+    expect(skipped.state.deck).toEqual(run.deck);
+    for (const restricted of [false, true]) {
+      const camp = structuredClone(skipped.state);
+      camp.phase = 'rest';
+      camp.relics.push('coffeeDripper');
+      if (restricted) camp.relics.push('fusionHammer');
+      const input = observe(camp),
+        command = builtins.survival.create(config)(input).command;
+      expect(input.actions).toContainEqual(command);
+      expect(command.type).toBe('rest');
+      if (command.type !== 'rest') throw new Error('Expected campfire command');
+      expect(command.choice).toBe(restricted ? 'leave' : 'upgrade');
+      const result = transitionSpire(camp, command);
+      expect(result.error).toBeUndefined();
+      expect(result.state.hp).toBe(camp.hp);
+      expect(result.state.deck.filter((card) => card.upgraded)).toHaveLength(restricted ? 0 : 1);
+    }
+  });
+
+  it('spends gold through affordable offers or ordinary curse removal', () => {
+    for (const price of [75, 1000]) {
+      const run = spireScenario('PUBLIC-CURATED-SHOP', {
+        deck: ['strike', 'defend', 'regret'],
+        enemies: ['cultist'],
+      });
+      run.phase = 'shop';
+      run.combat = null;
+      run.gold = 80;
+      run.shop = [{ id: 'quality-offer', kind: 'card', definitionId: 'demonForm', price }];
+      const input = observe(run),
+        command = builtins.survival.create(config)(input).command;
+      expect(input.actions).toContainEqual(command);
+      expect(command.type).toBe(price === 75 ? 'buy' : 'removeCard');
+      const result = transitionSpire(run, command);
+      expect(result.error).toBeUndefined();
+      expect(result.state.gold).toBe(5);
+      expect(result.state.deck.some((card) => card.definitionId === 'demonForm')).toBe(
+        price === 75,
+      );
+      expect(result.state.deck.some((card) => card.definitionId === 'regret')).toBe(price === 75);
+    }
+  });
+  it('combines announced debuffs and allied Strength in native enemy order', () => {
+    for (const [artifact, expected] of [
+      [0, 20],
+      [1, 20],
+      [2, 14],
+    ]) {
+      const run = spireScenario('PUBLIC-SEQUENTIAL-DEBUFF', {
+        deck: ['defend'],
+        enemies: ['collector', 'torchHead', 'torchHead'],
+        hp: 60,
+      });
+      run.combat!.enemies[0].intentIndex = 3;
+      run.combat!.player.status.artifact = artifact;
+      const input = observe(run),
+        original = JSON.stringify(input);
+      expect(incoming(input)).toBe(expected);
+      expect(JSON.stringify(input)).toBe(original);
+      expect(run.hp - transitionSpire(run, { type: 'endTurn' }).state.hp).toBe(expected);
+    }
+    for (const enemies of [
+      ['donu', 'deca'],
+      ['deca', 'donu'],
+    ]) {
+      const run = spireScenario('PUBLIC-SEQUENTIAL-BUFF', { deck: ['defend'], enemies, hp: 60 });
+      const expected = enemies[0] === 'donu' ? 26 : 20;
+      expect(incoming(observe(run))).toBe(expected);
+      expect(run.hp - transitionSpire(run, { type: 'endTurn' }).state.hp).toBe(expected);
+    }
+    const poisoned = spireScenario('PUBLIC-CONSTRICT-POISON', {
+      deck: ['defend'],
+      enemies: ['donu', 'deca'],
+      hp: 60,
+    });
+    poisoned.combat!.enemies[0].status.poison = poisoned.combat!.enemies[0].hp;
+    poisoned.combat!.enemies[0].powers.constrict = 3;
+    expect(incoming(observe(poisoned))).toBe(23);
+    expect(poisoned.hp - transitionSpire(poisoned, { type: 'endTurn' }).state.hp).toBe(23);
+  });
+
+  it('blocks the Collector minions after accounting for the preceding public debuff', () => {
+    const run = spireScenario('PUBLIC-SEQUENTIAL-BLOCK', {
+      deck: ['defend'],
+      enemies: ['collector', 'torchHead', 'torchHead'],
+      hp: 40,
+    });
+    const c = run.combat!;
+    c.enemies[0].intentIndex = 3;
+    c.player.block = 14;
+    c.energy = 1;
+    const input = observe(run),
+      command = builtins.survival.create(config)(input).command;
+    expect(turnLoss(input)).toBe(6);
+    expect(command.type).toBe('playCard');
+    const defended = transitionSpire(run, command);
+    expect(defended.error).toBeUndefined();
+    expect(transitionSpire(defended.state, { type: 'endTurn' }).state.hp).toBe(39);
+    expect(transitionSpire(run, { type: 'endTurn' }).state.hp).toBe(34);
   });
 });

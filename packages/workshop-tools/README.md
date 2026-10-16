@@ -144,7 +144,7 @@ wire game as `dungeon-cartographer`; the CLI selector remains `cartographer`.
 study case has original knowledge, replay, audit and a spectator manifest. See the
 [six-game workflow evidence](../../docs/research/experiments/2026-10-16-policy-workflow.md).
 
-Shared policy benchmarks accept `--cohort NEW-NAMESPACE`, `--blocks 10|20|40|60|100`
+Shared policy benchmarks accept `--cohort NEW-NAMESPACE`, `--blocks 10|20|40|60|100|400`
 and `--policies ID,ID`. Defaults preserve the original adoption populations. Increasing
 blocks reuses the seed prefix; choose a fresh namespace for a new reserved study.
 Policy subsets enter the frozen protocol and complete-grid validation. Spire's

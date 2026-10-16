@@ -1,5 +1,6 @@
 import { CARD_BY_ID, cardCost } from '../content/cards';
-import { attackDamage } from '../domain/combat';
+import { applyStatus } from '../domain/state';
+import { attackDamage, endTurnHandEffects } from '../domain/combat';
 import type { Card, Effect } from '../domain/types';
 import type { Observation } from './observation';
 
@@ -22,28 +23,76 @@ const empty = (): Value => ({
   kills: 0,
 });
 
-/** Public intent damage only. Special effects and future turns are not simulated. */
+/** Announced attacks with ordered public status effects; no next-intent sampling. */
 export function incoming(view: Observation): number {
   const c = view.combat;
   if (!c) return 0;
-  return c.enemies
+  const player = { ...c.player, status: { ...c.player.status }, freshDebuffs: [] };
+  const enemies = c.enemies
     .filter((e) => e.targetable)
-    .reduce(
-      (sum, e) =>
-        sum +
-        (e.powers.constrict ?? 0) +
-        ((e.powers.intangible ? Math.min(1, e.status.poison) : e.status.poison) >= e.hp
-          ? 0
-          : e.intent.effects.reduce(
-              (total, effect) =>
-                total +
-                (effect.type === 'damage'
-                  ? attackDamage(effect.amount, e, c.player) * (effect.hits ?? 1)
-                  : 0),
-              0,
-            )),
-      0,
-    );
+    .map((enemy) => ({
+      ...enemy,
+      status: { ...enemy.status },
+      freshDebuffs: [],
+    }));
+  // Existing Constrict resolves before any enemy's poison check.
+  let damage = enemies.reduce((sum, enemy) => sum + (enemy.powers.constrict ?? 0), 0);
+  for (const enemy of enemies) {
+    if (
+      (enemy.powers.intangible ? Math.min(1, enemy.status.poison) : enemy.status.poison) >= enemy.hp
+    )
+      continue;
+    for (const effect of enemy.intent.effects) {
+      if (effect.type === 'damage')
+        damage += attackDamage(effect.amount, enemy, player) * (effect.hits ?? 1);
+      if (effect.type === 'status')
+        applyStatus(effect.target === 'self' ? enemy : player, effect.status, effect.amount);
+      if (effect.type === 'special' && effect.action === 'allyStrength')
+        for (const ally of enemies) applyStatus(ally, 'strength', effect.amount ?? 0);
+    }
+  }
+  return damage;
+}
+
+/** Approximate HP exposure through the announced phase. Hand triggers happen before
+ * Orichalcum/Metallicize, and direct HP costs cannot be blocked. No future draws. */
+export function turnLoss(view: Observation): number {
+  const c = view.combat;
+  if (
+    !c ||
+    view.phase !== 'combat' ||
+    c.enemies.every((enemy) => enemy.hp <= 0 && enemy.definitionId !== 'awakenedOne')
+  )
+    return 0;
+  let block = c.player.block,
+    loss = 0;
+  for (const effect of endTurnHandEffects(c.cards, c.hand)) {
+    if (effect.bypassBlock) loss += effect.amount;
+    else {
+      loss += Math.max(0, effect.amount - block);
+      block = Math.max(0, block - effect.amount);
+    }
+  }
+  if (c.powers.combust) loss += c.powers.combustHp;
+  if (view.relics.includes('orichalcum') && block === 0) block += 6;
+  block += c.powers.metallicize;
+  return loss + Math.max(0, incoming(view) - block);
+}
+
+/** Extra Block prevents damage, never direct HP loss; passive Block can change too. */
+export function blockBenefit(view: Observation, amount: number): number {
+  if (!view.combat || amount <= 0) return 0;
+  const blocked = {
+    ...view,
+    combat: {
+      ...view.combat,
+      player: {
+        ...view.combat.player,
+        block: Math.min(999, view.combat.player.block + amount),
+      },
+    },
+  };
+  return Math.max(0, turnLoss(view) - turnLoss(blocked));
 }
 
 /** Effect estimates are deliberately approximate; no seeded transitions or ordered draw access. */
@@ -126,7 +175,9 @@ export function cardValue(view: Observation, card: Card, target?: string, inComb
           if (effect.status === 'strength' || effect.status === 'dexterity')
             value.growth += effect.amount * 5;
         } else {
-          const targets = effect.target === 'all' ? enemies : selected ? [selected] : [];
+          const targets = (effect.target === 'all' ? enemies : selected ? [selected] : []).filter(
+            (enemy) => (damageByEnemy.get(enemy.id) ?? 0) < enemy.hp + enemy.block,
+          );
           const count = c
             ? targets.filter((e) => !e.status.artifact).length
             : effect.target === 'all'

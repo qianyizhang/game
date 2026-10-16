@@ -117,14 +117,18 @@ describe('Spire restricted player boundary', () => {
 
   it('fixes evaluator setup and rejects malformed or stale commands without changing replay', () => {
     expect(studySetups).toHaveLength(6);
-    for (const { setup } of studySetups) {
+    for (const setup of ['ironclad', 'silent'].flatMap((character) =>
+      Array.from({ length: 6 }, (_, ascension) => ({ character, ascension })),
+    )) {
       const session = adapter.create('SETUP', setup);
       expect(session.replay.commands[0]).toEqual({ type: 'configure', ...setup });
       expect(adapter.restore(adapter.replay(session))).toEqual(session);
     }
     const invalidSetups: JsonObject[] = [
       { character: ['ironclad'] },
-      { ascension: 1 },
+      { ascension: -1 },
+      { ascension: 6 },
+      { ascension: 1.5 },
       { ascension: '2' },
       { seed: 'leak' },
     ];

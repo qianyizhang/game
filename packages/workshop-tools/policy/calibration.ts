@@ -4,10 +4,10 @@
 export function binaryContrast(pairs: readonly (readonly [number, number])[]) {
   if (
     !pairs.length ||
-    pairs.length > 100 ||
+    pairs.length > 400 ||
     pairs.some((pair) => pair.length !== 2 || pair.some((v) => v !== 0 && v !== 1))
   )
-    throw new Error('Contrast requires 1–100 complete paired binary outcomes.');
+    throw new Error('Contrast requires 1–400 complete paired binary outcomes.');
   const aOnly = pairs.filter(([a, b]) => a === 1 && b === 0).length;
   const bOnly = pairs.filter(([a, b]) => a === 0 && b === 1).length;
   const discordant = aOnly + bOnly;

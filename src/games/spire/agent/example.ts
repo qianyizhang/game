@@ -5,7 +5,7 @@ import { builtins } from './policy';
 /** Local extension sample: same actions as survival, with fresh per-episode memory. */
 const example: PolicyFactory<Observation, PolicyCommand> = {
   id: 'example-counted-survival',
-  version: '3',
+  version: '4',
   create(config) {
     let decisions = 0;
     const choose = builtins.survival.create(config);

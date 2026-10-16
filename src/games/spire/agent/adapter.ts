@@ -28,10 +28,12 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
     if (
       Object.keys(setup).some((key) => !['character', 'ascension'].includes(key)) ||
       (character !== 'ironclad' && character !== 'silent') ||
-      ![0, 2, 5].includes(Number(ascension)) ||
-      typeof ascension !== 'number'
+      typeof ascension !== 'number' ||
+      !Number.isInteger(ascension) ||
+      ascension < 0 ||
+      ascension > 5
     )
-      throw new Error('Spire setup requires Ironclad or Silent and Ascension 0, 2 or 5.');
+      throw new Error('Spire setup requires Ironclad or Silent and integer Ascension 0–5.');
     const result = spireSession.act(spireSession.create(seed), {
       type: 'configure',
       character,
@@ -74,7 +76,7 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
 export const at = (session: EpisodeState, cursor: number) => spireSession.at(session, cursor);
 export { builtins } from './policy';
 export const studySetups: StudySetup[] = (['ironclad', 'silent'] as const).flatMap((character) =>
-  [0, 2, 5].map((ascension) => ({
+  [0, 3, 5].map((ascension) => ({
     id: `${character}-a${ascension}`,
     difficulty: `ascension-${ascension}`,
     stratum: character,

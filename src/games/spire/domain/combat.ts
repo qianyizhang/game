@@ -683,15 +683,26 @@ function enemyAttack(run: SpireState, enemy: Enemy, base: number, hits: number) 
     if (retaliation) hit(run, enemy, retaliation, 'Retaliation');
   }
 }
+/** Public, ordered hand triggers shared by native resolution and policy estimates. */
+export function endTurnHandEffects(cards: Combat['cards'], hand: readonly string[]) {
+  return hand.flatMap((id) => {
+    const card = cards[id],
+      definition = CARD_BY_ID[card.definitionId];
+    if (definition.id === 'burn')
+      return [{ amount: card.upgraded ? 4 : 2, bypassBlock: false, label: 'Burn' }];
+    if (definition.id === 'regret')
+      return [{ amount: hand.length, bypassBlock: true, label: 'Regret' }];
+    return [];
+  });
+}
 export function endTurn(run: SpireState): string | undefined {
   const c = run.combat!;
   if (c.choice) return 'Resolve the card choice first.';
   const held = [...c.hand];
-  for (const id of held) {
+  for (const effect of endTurnHandEffects(c.cards, held)) {
     if (c.player.hp <= 0) break;
-    const def = CARD_BY_ID[c.cards[id].definitionId];
-    if (def.id === 'burn') hit(run, c.player, c.cards[id].upgraded ? 4 : 2, 'Burn');
-    if (def.id === 'regret') loseCardHp(run, held.length, 'Regret');
+    if (effect.bypassBlock) loseCardHp(run, effect.amount, effect.label);
+    else hit(run, c.player, effect.amount, effect.label);
   }
   // Ethereal exhaustion happens after end-turn hand triggers; exhaust draws join cleanup.
   for (const id of held) if (CARD_BY_ID[c.cards[id].definitionId].ethereal) exhaustCard(run, id);

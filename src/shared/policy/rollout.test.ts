@@ -66,6 +66,29 @@ describe('policy evidence across the ordinary Blindside boundary', () => {
     await rehash(replay);
     expect((await auditRollout(adapter, replay)).replay).toBe('failed');
   });
+  it('keeps historical API checks unavailable while the native replay remains usable', async () => {
+    const historical = {
+      ...adapter,
+      identity: { ...adapter.identity, observation: 'historical-observation' },
+    };
+    const run = await recordEpisode(historical, builtins.immediate, options);
+    const bytes = JSON.stringify(run);
+    expect(adapter.metrics(adapter.restore(run.replay))).toEqual(run.episode.metrics);
+    expect(await auditRollout(adapter, parseRollout(bytes), builtins.immediate)).toMatchObject({
+      integrity: 'passed',
+      replay: 'unavailable',
+      inputs: 'unavailable',
+      decisions: 'unavailable',
+      firstMismatch: null,
+      message: 'Game/rules/content/API identity unavailable in this runtime.',
+    });
+    expect(JSON.stringify(run)).toBe(bytes);
+    expect(await auditRollout(historical, run, builtins.immediate)).toMatchObject({
+      replay: 'passed',
+      inputs: 'passed',
+      decisions: 'passed',
+    });
+  });
   it('retains malformed output/factory errors and original input before policy mutation', async () => {
     const malformed: PolicyFactory<Observation, Command> = {
       id: 'malformed',

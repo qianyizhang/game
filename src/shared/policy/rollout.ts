@@ -234,8 +234,10 @@ export async function auditRollout<S, O, C>(
         audit.integrity = 'failed';
         mismatch(row.index, 'inputDigest', await digest(row.input), row.inputDigest);
       }
-    if (run.game !== adapter.game || !same(run.identity, adapter.identity))
-      throw new Error('Game/rules/content/API identity unavailable in this runtime.');
+    if (run.game !== adapter.game || !same(run.identity, adapter.identity)) {
+      audit.message = 'Game/rules/content/API identity unavailable in this runtime.';
+      return audit;
+    }
     let state = adapter.create(run.options.seed, structuredClone(run.options.setup));
     let work = 0;
     let failed = false;

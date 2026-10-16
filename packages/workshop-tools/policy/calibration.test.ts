@@ -23,12 +23,24 @@ void test('paired binary evidence retains uncertainty without discordance and ex
     1,
   );
   assert.throws(() => binaryContrast([[2, 0]]), /binary/);
+  assert.equal(
+    binaryContrast(Array.from({ length: 400 }, () => [1, 0] as const)).exactP,
+    2 ** -399,
+  );
+  assert.ok(
+    Math.abs(
+      binaryContrast(
+        Array.from({ length: 400 }, (_, i) => (i < 200 ? ([1, 0] as const) : ([0, 1] as const))),
+      ).exactP - 1,
+    ) < 1e-12,
+  );
+
   assert.throws(
     () =>
       binaryContrast(
         Array.from({ length: 1100 }, (_, i) => (i < 550 ? ([1, 0] as const) : ([0, 1] as const))),
       ),
-    /1–100/,
+    /1–400/,
   );
 });
 void test('planned family adjustment preserves identities and step-down monotonicity', () => {

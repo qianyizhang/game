@@ -40,11 +40,13 @@ not ordinary losses. Opening a rollout never mounts live game persistence hooks.
 | Evaluated Ascension | Existing cumulative mechanics                                                        |
 | ------------------- | ------------------------------------------------------------------------------------ |
 | 0                   | Standard gameplay.                                                                   |
-| 2                   | More elites and deadlier normal enemies.                                             |
+| 3                   | More elites, deadlier normal enemies and deadlier elites.                            |
 | 5                   | Adds cumulative elite/boss changes and recovers only 75% of missing HP between acts. |
 
 These reuse existing selectable Ascensions 0–5 without rule/content or replay changes.
-Both Ironclad and Silent run the complete matrix, reported separately. Character cases
+The current development-selected study points are 0/3/5; earlier studies retain
+their original 0/2/5 points. All native integer Ascensions 0–5 are accepted by the
+policy adapter. Both Ironclad and Silent run each matrix, reported separately. Character cases
 sharing a seed are not counted as independent seeds in pooled confidence intervals.
 
 The primary objective is **win, then rooms reached, then HP, then gold**. Rooms reached
@@ -67,7 +69,7 @@ uses the independent `POLICY-STREAM-1` stream, never the environment seed.
 
 ### Visible-hand planning
 
-`spire-policy-3` keeps Immediate as a greedy strategy; Survival and Growth additionally
+`spire-policy-4` keeps Immediate as a greedy strategy; Survival and Growth additionally
 search at most five visible-hand actions with beam width twelve, replanning after each
 actual command. Candidate evaluations are included in recorded work. Collection
 choices value lasting scaling, energy relics and redundant-card costs; routes consider
@@ -83,6 +85,22 @@ branches also stop because its private phase flag is unavailable. The model asse
 that its placeholder RNG did not change. Current displayed intents stay intact unless
 a native deterministic public trigger changes them. Future intent selection and
 unobserved draws are never simulated as if known.
+
+The v4 HP forecast shares native ordered Burn/Regret hand triggers, distinguishes
+Block-preventable damage from direct HP loss, and applies public enemy buffs/debuffs
+in announced execution order. This prevents wasting Block potions against Regret and
+missing the Collector's debuff before its minions attack. It remains an approximation
+of the announced phase, including incomplete retaliation/end-turn kill modeling;
+it never selects a true future intent or draw. Native rules/replay meaning is unchanged.
+
+Survival Ironclad additionally uses `agent/collection.ts` for reward, shop and campfire
+choices. Its curated public priorities adapt the existing simulation heuristic's card
+ratings without importing its privileged combat lookahead. Duplicate penalties and
+addition thresholds favor a compact deck; healthy campfires upgrade high-priority
+cards, while legal relic restrictions and affordability come from the offered menu.
+Immediate, Growth and Silent retain their own collection behavior. Ratings are policy
+preferences rather than authoritative game scores. Original inputs and the chosen
+collection reason remain inspectable in each rollout.
 
 The endpoint utility and estimates beyond those deterministic effects remain
 approximate. Regression witnesses protect Block absorption, Sharp Hide before Rage,
@@ -167,7 +185,7 @@ results, sparse-win limits and the source-pinned correction to original paired-w
 The [strength-2 protocol](../research/experiments/2026-10-16-spire-strength-protocol.md)
 preregisters a fresh sixty-block matrix, frozen character-specific references and
 historical policy control. Shared benchmarks accept `--cohort NEW-NAMESPACE` and
-`--blocks 10|20|40|60|100`; changing block count alone reuses the same seed prefix.
+`--blocks 10|20|40|60|100|400`; changing block count alone reuses the same seed prefix.
 Default adoption seed identities remain unchanged. Original v1 studies and bundles
 retain their identities; they are not retroactively reproduced with v2 policies.
 
@@ -185,3 +203,11 @@ A0 wins and ordered difficulty endpoints, but Ironclad misses its absolute stren
 confidence threshold and three historical-control timeouts fail the overall terminal
 requirement. These findings require another prospective development slice, not a
 retroactive change to the frozen criteria.
+
+The [strength-4 protocol](../research/experiments/2026-10-16-spire-strength-4-protocol.md)
+is prospective: Survival remains fixed for both characters, with 400 fresh primary
+blocks and twenty matched companion blocks after source freeze. Its endpoint is victory
+within 2,000 decisions; budget timeouts count as nonwins for both candidate and control,
+with native completion reported separately. Execution errors, audit failures, incomplete
+grids and drift still block promotion. This does not change either earlier failed verdict.
+Holm correction covers this study's four contrasts, not the repeated development campaign.

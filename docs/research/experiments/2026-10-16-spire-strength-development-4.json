@@ -1,0 +1,191 @@
+{
+  "schema": "spire-strength-development-4-1",
+  "status": "development-only; middle-tier criterion fails; no reserved v4 confirmation executed",
+  "nativeRules": 3,
+  "policyVersion": "4",
+  "cohort": [
+    "SPIRE-STRENGTH-4-DEV-01",
+    "SPIRE-STRENGTH-4-DEV-02",
+    "SPIRE-STRENGTH-4-DEV-03",
+    "SPIRE-STRENGTH-4-DEV-04",
+    "SPIRE-STRENGTH-4-DEV-05",
+    "SPIRE-STRENGTH-4-DEV-06",
+    "SPIRE-STRENGTH-4-DEV-07",
+    "SPIRE-STRENGTH-4-DEV-08",
+    "SPIRE-STRENGTH-4-DEV-09",
+    "SPIRE-STRENGTH-4-DEV-10",
+    "SPIRE-STRENGTH-4-DEV-11",
+    "SPIRE-STRENGTH-4-DEV-12",
+    "SPIRE-STRENGTH-4-DEV-13",
+    "SPIRE-STRENGTH-4-DEV-14",
+    "SPIRE-STRENGTH-4-DEV-15",
+    "SPIRE-STRENGTH-4-DEV-16",
+    "SPIRE-STRENGTH-4-DEV-17",
+    "SPIRE-STRENGTH-4-DEV-18",
+    "SPIRE-STRENGTH-4-DEV-19",
+    "SPIRE-STRENGTH-4-DEV-20",
+    "SPIRE-STRENGTH-4-DEV-21",
+    "SPIRE-STRENGTH-4-DEV-22",
+    "SPIRE-STRENGTH-4-DEV-23",
+    "SPIRE-STRENGTH-4-DEV-24",
+    "SPIRE-STRENGTH-4-DEV-25",
+    "SPIRE-STRENGTH-4-DEV-26",
+    "SPIRE-STRENGTH-4-DEV-27",
+    "SPIRE-STRENGTH-4-DEV-28",
+    "SPIRE-STRENGTH-4-DEV-29",
+    "SPIRE-STRENGTH-4-DEV-30",
+    "SPIRE-STRENGTH-4-DEV-31",
+    "SPIRE-STRENGTH-4-DEV-32",
+    "SPIRE-STRENGTH-4-DEV-33",
+    "SPIRE-STRENGTH-4-DEV-34",
+    "SPIRE-STRENGTH-4-DEV-35",
+    "SPIRE-STRENGTH-4-DEV-36",
+    "SPIRE-STRENGTH-4-DEV-37",
+    "SPIRE-STRENGTH-4-DEV-38",
+    "SPIRE-STRENGTH-4-DEV-39",
+    "SPIRE-STRENGTH-4-DEV-40"
+  ],
+  "setups": [
+    {
+      "id": "ironclad-a0",
+      "difficulty": "ascension-0",
+      "stratum": "ironclad",
+      "setup": {
+        "character": "ironclad",
+        "ascension": 0
+      }
+    },
+    {
+      "id": "ironclad-a2",
+      "difficulty": "ascension-2",
+      "stratum": "ironclad",
+      "setup": {
+        "character": "ironclad",
+        "ascension": 2
+      }
+    },
+    {
+      "id": "ironclad-a5",
+      "difficulty": "ascension-5",
+      "stratum": "ironclad",
+      "setup": {
+        "character": "ironclad",
+        "ascension": 5
+      }
+    },
+    {
+      "id": "silent-a0",
+      "difficulty": "ascension-0",
+      "stratum": "silent",
+      "setup": {
+        "character": "silent",
+        "ascension": 0
+      }
+    },
+    {
+      "id": "silent-a2",
+      "difficulty": "ascension-2",
+      "stratum": "silent",
+      "setup": {
+        "character": "silent",
+        "ascension": 2
+      }
+    },
+    {
+      "id": "silent-a5",
+      "difficulty": "ascension-5",
+      "stratum": "silent",
+      "setup": {
+        "character": "silent",
+        "ascension": 5
+      }
+    }
+  ],
+  "maxDecisions": 2000,
+  "cases": 240,
+  "terminal": 240,
+  "auditsPassed": 240,
+  "outcomes": [
+    {
+      "setup": "ironclad-a0",
+      "wins": 9,
+      "attempts": 40
+    },
+    {
+      "setup": "ironclad-a2",
+      "wins": 12,
+      "attempts": 40
+    },
+    {
+      "setup": "ironclad-a5",
+      "wins": 3,
+      "attempts": 40
+    },
+    {
+      "setup": "silent-a0",
+      "wins": 16,
+      "attempts": 40
+    },
+    {
+      "setup": "silent-a2",
+      "wins": 10,
+      "attempts": 40
+    },
+    {
+      "setup": "silent-a5",
+      "wins": 5,
+      "attempts": 40
+    }
+  ],
+  "a3": [
+    {
+      "character": "ironclad",
+      "wins": 12,
+      "attempts": 40,
+      "auditScope": "all80 raw hashes/metrics/pins independently verified; 4 selected originals independently pass all4 audits; fast screen itself did not audit every rollout"
+    },
+    {
+      "character": "silent",
+      "wins": 9,
+      "attempts": 40,
+      "auditScope": "all80 raw hashes/metrics/pins independently verified; 4 selected originals independently pass all4 audits; fast screen itself did not audit every rollout"
+    }
+  ],
+  "retainedArtifacts": [
+    {
+      "path": "test-results/spire-strength/development-11/report.json",
+      "sha256": "199871d01f3a73ca745aa603829fb883d99e8d5b00ef15b6b968023a778d3bdd",
+      "bytes": 201472
+    },
+    {
+      "path": "test-results/spire-strength/development-11/source-archive.json",
+      "sha256": "1029624b6cf8e0ec53a44443e65446a8eaeed3f155bca60d87308ec254ad7b23",
+      "bytes": 9637
+    },
+    {
+      "path": "test-results/spire-strength/a3-iron-development-1/screen.json",
+      "sha256": "d5ffbb25b1e066e812e749d61fe2abf82e0c92a922674e84fecbcc8c10220b23",
+      "bytes": 22335
+    },
+    {
+      "path": "test-results/spire-strength/a3-silent-development-1/screen.json",
+      "sha256": "41147bffb710454bdfa6f900c38c1d212670c59b5601813035b1236f54cf82db",
+      "bytes": 22323
+    },
+    {
+      "path": "test-results/spire-strength/review-4/analyzer-results.json",
+      "sha256": "3a00ac9c77fd618239903bb39e9f2160c14021a862ab4681046bf5161bea51c7",
+      "bytes": 3886
+    },
+    {
+      "path": "test-results/spire-strength/review-4/a3-results.json",
+      "sha256": "860fd5eec0a8ed2cb266b72fdd54f930c5f9c578e0a72065886b40dbc80614e3",
+      "bytes": 1205
+    },
+    {
+      "path": "test-results/spire-strength/review-4/a3-raw-integrity.json",
+      "sha256": "4baa11dba6373873414bfe986f68608789f7a7303e0b30c3c071a309e7f0c6fd",
+      "bytes": 11825
+    }
+  ]
+}

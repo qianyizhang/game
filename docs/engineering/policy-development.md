@@ -268,7 +268,7 @@ Use the [testing policy](testing.md) and [verification gates](checks.md#gate-sel
 for implementation checks. Keep rules correctness, rollout reconstruction, information
 fairness, measured policy performance and human acceptance as separate findings.
 
-### Calibration footguns observed in Spire
+### Calibration footguns from recorded traces
 
 - **Duplicate combat arithmetic:** a separate projector missed retaliation ordering,
   healing after death, and deterministic intent cancellation. Reuse the native deterministic
@@ -285,6 +285,34 @@ fairness, measured policy performance and human acceptance as separate findings.
   grid, exact source-pin set and audit; statistical flags cannot override integrity.
 - **Reused seed prefixes:** increasing block count under one namespace reuses the
   earlier blocks. Fresh evidence requires a new namespace, not a larger denominator.
+- **Correctness versus strength:** a more faithful public model can make the policy
+  worse when its utility underprices exhausted cards or setup costs. Retain negative
+  experiments; native parity is a correctness result, not proof of stronger play.
+- **Budget endpoints:** distinguish execution failure from failure to win within a
+  declared budget. If timeouts count as nonwins, freeze that rule before execution,
+  apply it to both candidate and control, retain every denominator and report native
+  completion separately. Never reinterpret a failed all-terminal protocol afterward.
+- **Repeated confirmations:** a correction within one study does not cover adaptive
+  repeated attempts. Retain failed studies and state the scope of multiplicity control;
+  larger samples improve precision, not the policy itself.
+- **Shared source freezes:** study provenance includes shared analysis/tool files even
+  when a different game's source is under development. One owner coordinates shared
+  mutations; freeze the entire pinned graph across active studies, and retain drift
+  failures. Independent game-owned edits may overlap only outside that graph.
+- **Policy aliases versus replay IDs:** a permitted policy command may contain an
+  observation-scoped target alias. Derive historical continuations from accepted native
+  journal commands; dispatching the recorded proposal directly can target another entity.
+- **Known-route promises:** sampled center points can miss unknown footprint corners,
+  especially with fractional starts and axis-separated native sliding. Check the entire
+  swept body corridor on masked terrain and exercise paired hidden-wall/floor states.
+  A control that intentionally explores unknown space needs an explicit different contract.
+- **Trace resource limits:** test the actual recorded/audited case in a worker before a
+  bulk matrix. The parser envelope, decoded object graphs, hashing and serialization
+  need separate headroom. A V8 old-generation limit is not a process RSS limit; retain
+  observed memory and distinguish infrastructure failure from policy outcomes.
+- **Reason labels are not control-flow proof:** a shared fallback can execute under a
+  successful-sounding diagnostic. Verify recorded commands and original inputs before
+  asserting a change was unused or behavior preserving; retain reproduction mismatches.
 
 ## Settled adoption choices
 
@@ -292,7 +320,9 @@ Accepted 2026-10-16 after the design interview:
 
 - **Difficulty:** give missing ladders three real player-selectable configurations,
   preserving current gameplay as Standard and historical replay meanings. Calibrate
-  pressure/opponent differences rather than assigning names alone.
+  pressure/opponent differences rather than assigning names alone. The later accepted
+  Cartographer calibration slice may rebalance Standard and the full ladder under a
+  new rules version, with exact v1/v2 replay preservation.
 - **Strategies:** the remaining games start with immediate-gain, survival and
   long-term-growth priorities, adapted to their mechanics. Night Passage retains
   its existing effort spectrum and frozen comparison.
@@ -308,7 +338,9 @@ Accepted 2026-10-16 after the design interview:
   conditions. Freeze the complete design before evaluation; expand if needed to
   establish useful differentiation while reporting uncertainty and negative results.
 - **Closeout:** after each vertical slice, use a fresh Astra reviewer, resolve material
-  findings, polish/clean up, verify and make a scoped commit before the next game.
+  findings, polish/clean up, verify and make a scoped commit. Independent game-owned
+  development may proceed concurrently; shared mutations and commit closeouts have
+  one owner, and each slice still receives its own fresh review and scoped commit.
 
 ## Adoption sequence
 
