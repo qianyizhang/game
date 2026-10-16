@@ -4,6 +4,7 @@ import { attackDamage } from '../domain/combat';
 import type { Card, SpireCommand } from '../domain/types';
 import { cardValue, incoming, publicCardCost } from './forecast';
 import type { Observation, PolicyCommand } from './observation';
+import { planTurn } from './tactics';
 
 export const STRATEGIES = ['immediate', 'survival', 'growth'] as const;
 export type Strategy = (typeof STRATEGIES)[number];
@@ -42,6 +43,32 @@ export function collectionValue(view: Observation, card: Card, strategy: Strateg
         ? 10
         : -10
       : 0);
+  // Collection value must include a way to finish long fights, not only prevent this turn's damage.
+  const scaling = ['inflame', 'demonForm', 'noxiousFumes', 'footwork', 'afterImage'].includes(
+    card.definitionId,
+  )
+    ? 18 / (1 + duplicate * 2)
+    : 0;
+  const efficient = [
+    'shrugItOff',
+    'battleTrance',
+    'offering',
+    'adrenaline',
+    'backflip',
+    'disarm',
+    'legSweep',
+    'shockwave',
+    'reaper',
+    'feed',
+    'impervious',
+  ].includes(card.definitionId)
+    ? 7
+    : 0;
+  const situational = ['barricade', 'feelNoPain', 'darkEmbrace', 'rupture', 'corruption'].includes(
+    card.definitionId,
+  )
+    ? 12
+    : 0;
   return (
     value.damage * w[0] +
     value.defense * w[1] +
@@ -50,8 +77,11 @@ export function collectionValue(view: Observation, card: Card, strategy: Strateg
     value.energy * 5 +
     value.health * 1.5 +
     synergy -
+    situational +
+    scaling +
+    efficient -
     Math.max(0, def.cost) * 2 -
-    duplicate * (def.kind === 'power' ? 10 : 3) -
+    duplicate * (def.kind === 'power' ? 14 : 6) -
     (def.starter ? 4 : 0) +
     (card.upgraded ? 2 : 0)
   );
@@ -76,9 +106,9 @@ function combatValue(view: Observation, command: SpireCommand, strategy: Strateg
         ? 3.5
         : 2.1
       : strategy === 'growth'
-        ? 1.25
+        ? 1.65
         : 0.65;
-  const growthWeight = strategy === 'growth' ? 1.7 : strategy === 'survival' ? 0.7 : 0.45;
+  const growthWeight = strategy === 'growth' ? 1.3 : strategy === 'survival' ? 0.9 : 0.6;
   if (command.type === 'endTurn') return 0;
   if (command.type === 'playCard') {
     const card = c.cards[command.id],
@@ -106,7 +136,8 @@ function combatValue(view: Observation, command: SpireCommand, strategy: Strateg
       v.draw * (canUseDraw ? 4 : 0.2) +
       v.energy * (c.hand.length > 1 ? 4 : 0.1) +
       v.health * lifeWeight -
-      Math.max(0, cost) * 1.1 +
+      Math.max(0, cost) * 0.5 +
+      (cost === 0 && v.draw > 0 && c.energy > 0 && c.hand.length <= 8 && !c.noDraw ? 100 : 0) +
       (def.kind === 'attack' && view.relics.includes('shuriken') ? 1.5 : 0)
     );
   }
@@ -254,7 +285,16 @@ function value(view: Observation, command: SpireCommand, strategy: Strategy): nu
         treasure: 15,
         boss: 15,
       };
-      return priorities[node.kind];
+      const future = (id: string, depth: number): number => {
+        const n = view.map.find((entry) => entry.id === id)!;
+        return (
+          priorities[n.kind] +
+          (depth && n.next.length
+            ? 0.65 * Math.max(...n.next.map((next) => future(next, depth - 1)))
+            : 0)
+        );
+      };
+      return future(node.id, 3);
     }
     case 'takeReward': {
       if (!command.card) return 0;
@@ -263,27 +303,32 @@ function value(view: Observation, command: SpireCommand, strategy: Strategy): nu
           view,
           { ...instance(command.card), upgraded: view.rewardUpgrades.includes(command.card) },
           strategy,
-        ) - (view.deck.length < 16 ? 5 : 10 + (view.deck.length - 16) * 1.3)
+        ) - (view.deck.length < 16 ? 5 : 10 + (view.deck.length - 16) * 2)
       );
     }
     case 'bossRelic': {
       if (!command.id) return -10;
       const priorities =
         strategy === 'survival'
-          ? ['blackBlood', 'cursedKey', 'fusionHammer', 'sozu', 'coffeeDripper', 'bustedCrown']
+          ? ['cursedKey', 'fusionHammer', 'sozu', 'blackBlood', 'coffeeDripper', 'bustedCrown']
           : strategy === 'growth'
-            ? ['cursedKey', 'sozu', 'coffeeDripper', 'blackBlood', 'fusionHammer', 'bustedCrown']
-            : ['fusionHammer', 'cursedKey', 'sozu', 'coffeeDripper', 'blackBlood', 'bustedCrown'];
+            ? ['cursedKey', 'sozu', 'fusionHammer', 'blackBlood', 'coffeeDripper', 'bustedCrown']
+            : ['cursedKey', 'fusionHammer', 'sozu', 'coffeeDripper', 'blackBlood', 'bustedCrown'];
       return 20 - priorities.indexOf(command.id) * 2;
     }
     case 'rest': {
       if (command.choice === 'leave') return 0;
       if (command.choice === 'heal')
         return (
+          (view.hp <
+          view.maxHp * (strategy === 'survival' ? 0.8 : strategy === 'growth' ? 0.65 : 0.5)
+            ? 100
+            : 0) +
           Math.min(
             view.maxHp - view.hp,
             Math.floor(view.maxHp * 0.3) + (view.relics.includes('regalPillow') ? 15 : 0),
-          ) * (strategy === 'survival' ? 1.5 : 1)
+          ) *
+            (strategy === 'survival' ? 1.5 : 1)
         );
       const card = view.deck.find((entry) => entry.id === command.card)!;
       return (
@@ -324,7 +369,10 @@ function value(view: Observation, command: SpireCommand, strategy: Strategy): nu
           view.deck.find((entry) => entry.id === command.id)!,
           strategy,
         ) +
-        (strategy === 'growth' ? 7 : 3) -
+        (strategy === 'growth' ? 7 : 3) +
+        (CARD_BY_ID[view.deck.find((entry) => entry.id === command.id)!.definitionId].starter
+          ? 20
+          : 0) -
         view.removalCost * 0.06
       );
     case 'event':
@@ -347,14 +395,29 @@ export function createPolicy(strategy: Strategy): (input: Observation) => Propos
     const ranked = input.actions
       .map((command, index) => ({ command, index, score: value(input, command, strategy) }))
       .sort((a, b) => b.score - a.score || a.index - b.index);
+    const plan =
+      input.combat && !input.combat.choice && strategy !== 'immediate'
+        ? planTurn(input, strategy, (view, command) => combatValue(view, command, strategy))
+        : null;
     return {
-      command: ranked[0].command,
-      work: ranked.length,
+      command: plan?.command ?? ranked[0].command,
+      work: ranked.length + (plan?.work ?? 0),
       diagnostics: {
         strategy,
         decisions: ++decisions,
         model: 'Public effect estimates; no seeded transition, unknown draws or future intents.',
         incoming: incoming(input),
+        ...(plan
+          ? {
+              planner: {
+                score: plan.score,
+                candidates: plan.work,
+                depth: 5,
+                width: 12,
+                scope: 'Approximate visible-hand sequences; uncertain effects stop the branch.',
+              },
+            }
+          : {}),
         alternatives: ranked.slice(0, 4).map(({ command, score }) => ({ command, score })),
       },
     };
@@ -363,7 +426,7 @@ export function createPolicy(strategy: Strategy): (input: Observation) => Propos
 
 const factory = (strategy: Strategy): PolicyFactory<Observation, PolicyCommand> => ({
   id: strategy,
-  version: 'spire-policy-1',
+  version: 'spire-policy-3',
   create: () => createPolicy(strategy),
 });
 export const builtins = {

@@ -1,0 +1,4096 @@
+{
+  "schema": "spire-strength-calibration-1",
+  "date": "2026-10-16",
+  "game": "slay-the-spire",
+  "ranking": "win, then rooms reached, then HP, then gold",
+  "studies": {
+    "firstFailedConfirmation": {
+      "directory": "test-results/spire-strength/evaluation-1",
+      "artifacts": {
+        "report.json": "dd21511c0e0db1ca001ac352398880537ca7e05b4d29cacedd4b9b7b1bfe6f6e",
+        "protocol.json": "5812ef45ad9a6dfb427356938d20c25356b27e1d54d82315dcf2cd73c1ab52b2",
+        "inference.json": "6b1479a29c91dbaddcea5a5f0442bb5d2aef4ceebd967a9405e4a30bbdef8bea"
+      },
+      "identity": {
+        "rules": 3,
+        "observation": "spire-observation-1",
+        "score": "spire-progress-1",
+        "content": [
+          {
+            "id": "base",
+            "version": "3",
+            "digest": "8192b770"
+          }
+        ]
+      },
+      "attempts": 1440,
+      "terminal": 1440,
+      "auditsPassed": 1440,
+      "protocol": {
+        "schema": "policy-study-protocol-2",
+        "game": "spire",
+        "identity": {
+          "rules": 3,
+          "observation": "spire-observation-1",
+          "score": "spire-progress-1",
+          "content": [
+            {
+              "id": "base",
+              "version": "3",
+              "digest": "8192b770"
+            }
+          ]
+        },
+        "split": "evaluation",
+        "seeds": [
+          "SPIRE-STRENGTH-2-RESERVED-01",
+          "SPIRE-STRENGTH-2-RESERVED-02",
+          "SPIRE-STRENGTH-2-RESERVED-03",
+          "SPIRE-STRENGTH-2-RESERVED-04",
+          "SPIRE-STRENGTH-2-RESERVED-05",
+          "SPIRE-STRENGTH-2-RESERVED-06",
+          "SPIRE-STRENGTH-2-RESERVED-07",
+          "SPIRE-STRENGTH-2-RESERVED-08",
+          "SPIRE-STRENGTH-2-RESERVED-09",
+          "SPIRE-STRENGTH-2-RESERVED-10",
+          "SPIRE-STRENGTH-2-RESERVED-11",
+          "SPIRE-STRENGTH-2-RESERVED-12",
+          "SPIRE-STRENGTH-2-RESERVED-13",
+          "SPIRE-STRENGTH-2-RESERVED-14",
+          "SPIRE-STRENGTH-2-RESERVED-15",
+          "SPIRE-STRENGTH-2-RESERVED-16",
+          "SPIRE-STRENGTH-2-RESERVED-17",
+          "SPIRE-STRENGTH-2-RESERVED-18",
+          "SPIRE-STRENGTH-2-RESERVED-19",
+          "SPIRE-STRENGTH-2-RESERVED-20",
+          "SPIRE-STRENGTH-2-RESERVED-21",
+          "SPIRE-STRENGTH-2-RESERVED-22",
+          "SPIRE-STRENGTH-2-RESERVED-23",
+          "SPIRE-STRENGTH-2-RESERVED-24",
+          "SPIRE-STRENGTH-2-RESERVED-25",
+          "SPIRE-STRENGTH-2-RESERVED-26",
+          "SPIRE-STRENGTH-2-RESERVED-27",
+          "SPIRE-STRENGTH-2-RESERVED-28",
+          "SPIRE-STRENGTH-2-RESERVED-29",
+          "SPIRE-STRENGTH-2-RESERVED-30",
+          "SPIRE-STRENGTH-2-RESERVED-31",
+          "SPIRE-STRENGTH-2-RESERVED-32",
+          "SPIRE-STRENGTH-2-RESERVED-33",
+          "SPIRE-STRENGTH-2-RESERVED-34",
+          "SPIRE-STRENGTH-2-RESERVED-35",
+          "SPIRE-STRENGTH-2-RESERVED-36",
+          "SPIRE-STRENGTH-2-RESERVED-37",
+          "SPIRE-STRENGTH-2-RESERVED-38",
+          "SPIRE-STRENGTH-2-RESERVED-39",
+          "SPIRE-STRENGTH-2-RESERVED-40",
+          "SPIRE-STRENGTH-2-RESERVED-41",
+          "SPIRE-STRENGTH-2-RESERVED-42",
+          "SPIRE-STRENGTH-2-RESERVED-43",
+          "SPIRE-STRENGTH-2-RESERVED-44",
+          "SPIRE-STRENGTH-2-RESERVED-45",
+          "SPIRE-STRENGTH-2-RESERVED-46",
+          "SPIRE-STRENGTH-2-RESERVED-47",
+          "SPIRE-STRENGTH-2-RESERVED-48",
+          "SPIRE-STRENGTH-2-RESERVED-49",
+          "SPIRE-STRENGTH-2-RESERVED-50",
+          "SPIRE-STRENGTH-2-RESERVED-51",
+          "SPIRE-STRENGTH-2-RESERVED-52",
+          "SPIRE-STRENGTH-2-RESERVED-53",
+          "SPIRE-STRENGTH-2-RESERVED-54",
+          "SPIRE-STRENGTH-2-RESERVED-55",
+          "SPIRE-STRENGTH-2-RESERVED-56",
+          "SPIRE-STRENGTH-2-RESERVED-57",
+          "SPIRE-STRENGTH-2-RESERVED-58",
+          "SPIRE-STRENGTH-2-RESERVED-59",
+          "SPIRE-STRENGTH-2-RESERVED-60"
+        ],
+        "policies": [
+          {
+            "id": "immediate",
+            "version": "spire-policy-2"
+          },
+          {
+            "id": "survival",
+            "version": "spire-policy-2"
+          },
+          {
+            "id": "growth",
+            "version": "spire-policy-2"
+          },
+          {
+            "id": "legacy-reference",
+            "version": "spire-policy-1"
+          }
+        ],
+        "study": {
+          "setups": [
+            {
+              "id": "ironclad-a0",
+              "difficulty": "ascension-0",
+              "stratum": "ironclad",
+              "setup": {
+                "character": "ironclad",
+                "ascension": 0
+              }
+            },
+            {
+              "id": "ironclad-a2",
+              "difficulty": "ascension-2",
+              "stratum": "ironclad",
+              "setup": {
+                "character": "ironclad",
+                "ascension": 2
+              }
+            },
+            {
+              "id": "ironclad-a5",
+              "difficulty": "ascension-5",
+              "stratum": "ironclad",
+              "setup": {
+                "character": "ironclad",
+                "ascension": 5
+              }
+            },
+            {
+              "id": "silent-a0",
+              "difficulty": "ascension-0",
+              "stratum": "silent",
+              "setup": {
+                "character": "silent",
+                "ascension": 0
+              }
+            },
+            {
+              "id": "silent-a2",
+              "difficulty": "ascension-2",
+              "stratum": "silent",
+              "setup": {
+                "character": "silent",
+                "ascension": 2
+              }
+            },
+            {
+              "id": "silent-a5",
+              "difficulty": "ascension-5",
+              "stratum": "silent",
+              "setup": {
+                "character": "silent",
+                "ascension": 5
+              }
+            }
+          ],
+          "defaultSetup": {
+            "character": "ironclad",
+            "ascension": 0
+          },
+          "ranking": "win, then rooms reached, then HP, then gold",
+          "reviewPath": "/?game=spire&review=policy"
+        },
+        "policySeed": "POLICY-STREAM-1",
+        "maxDecisions": 2000,
+        "workers": 4,
+        "provenance": {
+          "sourceDigests": {
+            "src/games/spire/agent/adapter.ts": "96ec54db530dbd0a9809db287c96a60de73affa9f1e05555365aa70752b044ff",
+            "src/games/spire/agent/forecast.ts": "d94e8df4d7d08e86016915cadbfdb67d66ca3403fe9c67613cae56d4a7ccfb8c",
+            "src/games/spire/agent/legality.ts": "aedc0f669bc9a8ba406ca2e5f643b76177de5031cb831518e5d2480752b8b090",
+            "src/games/spire/agent/observation.ts": "8b4e89b3af8aed736b86bae2a96be88dc95d29bd7d71efbfc7390d67c8cef1bf",
+            "src/games/spire/agent/policy.ts": "5c2f44a18befa275627e7645c4f4eee3b20dbe72dcddc0761d62bc3d5f164ad2",
+            "src/games/spire/agent/public-model.ts": "4ca5689c0c19ce73daf31f0145878ab0cbad17aa89ccef07d437c472e82f3be9",
+            "src/games/spire/agent/tactics.ts": "91ee64c41ac53d5f57506e29da5d7d9b224b5f32fa132f8b8af618c7af34a82a",
+            "src/games/spire/application/evidence.ts": "14fd05cda32988d0c3cb4712e800f80e391fda35fc792ef46b418919efb64b67",
+            "src/games/spire/application/scenario.ts": "1e86c2477d92a38e261d1c32873126cefa7b3ab00e3cf0e0d397167e10b25b3c",
+            "src/games/spire/application/session.ts": "f903b64c5bff5409d0f69f3031cfa2f8d7638c92cd8d12bdaf4b583925b82b60",
+            "src/games/spire/content/bosses.ts": "7afd7747e92cc8467e63a8e66c550c9dbd676cf72c7416037502e1ea5ce490f1",
+            "src/games/spire/content/cards.ts": "832bc5b3296ac0850de63e49311e6e1410cc41179f75fb5677084df5c8e24752",
+            "src/games/spire/content/silent.ts": "26f2da82b2360903a4028673a80e0897b232d7ad511832317031546d801d078a",
+            "src/games/spire/content/world.ts": "9837867ecc8f19b04909f73b806256e83caf872882414f13f40745339d2c1a61",
+            "src/games/spire/domain/combat.ts": "356d00c33e46fd7c9426d5bbb64f2f1f884e43dad84c133074b3c8c9d249690d",
+            "src/games/spire/domain/commands.ts": "eb8940e93c15db950cac4fddbfbbfcebc5803224939199178b3b3747ed39ee4a",
+            "src/games/spire/domain/difficulty.ts": "a8b9c2b445c1c95cdc57b484409a0e6901c895357c3f5a568bfc40f66a99a3c5",
+            "src/games/spire/domain/enemies.ts": "a4d8a0c75522eb47c1f680da2720c42d8b7c1cd7d8be1bb526f42340a008dd22",
+            "src/games/spire/domain/game.ts": "24c9ea17b5310e563bd5b15c959334e153c30266bc9a8df30f7e33594023e0a1",
+            "src/games/spire/domain/map.ts": "df72e70657b9c571c5edc7309f3696a76d2a5682a992ce6d0700348eae1c2ca9",
+            "src/games/spire/domain/rewards.ts": "0794ffab5d5990ce0abf8e2a27a9fe4b152da5f738d9481360ef193a73e39026",
+            "src/games/spire/domain/state.ts": "e419cd30195978104a1b7fe96d2a0885da6622bdedbb5a12bfa9fd787ca7e640",
+            "src/mods/spire.ts": "cd95f72ae69fd4af0cdf75b677cdc6fe11ec684f3b5019fcef9a18c1e4846f35",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6",
+            "test-results/spire-policy/development-1/bundles/ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47.mjs": "ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47",
+            "test-results/spire-strength/baseline-reference.ts": "e1352a95226a2519bf4dc5208638190fbd21f02450dd250f6123aad4d6b7836d"
+          },
+          "bundleDigest": "73c5988df606e2aa704375694c700b68705ecae11e7d490f19bc6ef2db2d6bee",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+            "packages/workshop-tools/policy/cli.ts": "15cd2d87cd6c6cc2afcc0350d0e45b384d03fa9c851e3a4883b524db48281dbf",
+            "packages/workshop-tools/policy/study.ts": "849b45737b70ffbc16ad1d4b43d2e966c0885a54d141266609af7ac30e5a405c",
+            "packages/workshop-tools/policy/calibration.ts": "190a35375cc6ebe3ad6cc5399d56fa067bb9310f167be314295b499c4ff91e69",
+            "packages/workshop-tools/policy/analyze-spire.ts": "e4e3a34cf5a17b28bb70e8540aec2c2f3ebdb66b56635815613b7d3f4be0933d",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "ranking": "win, then rooms reached, then HP, then gold",
+        "analysis": "Independent paired seed blocks within each setup/stratum. 95% Wilson win intervals and approximate t intervals for mean/paired progress; paired wins report point estimates/discordance counts with intervals unavailable. No pooling across characters; no multiple-comparison adjustment. All attempts retained. No tuning on evaluation."
+      },
+      "summary": [
+        {
+          "setupId": "ironclad-a0",
+          "difficulty": "ascension-0",
+          "stratum": "ironclad",
+          "policy": "immediate",
+          "attempts": 60,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 60,
+            "rate": 0,
+            "interval95": [0, 0.06017393047793289]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 22.3,
+            "interval95": [20.061398815581178, 24.538601184418823],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 954.8333333333334,
+            "interval95": [816.882930643942, 1092.7837360227247],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a0",
+          "difficulty": "ascension-0",
+          "stratum": "ironclad",
+          "policy": "survival",
+          "attempts": 60,
+          "wins": 11,
+          "winRate": {
+            "wins": 11,
+            "attempts": 60,
+            "rate": 0.18333333333333332,
+            "interval95": [0.1055768903713613, 0.29919993226466285]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 35.95,
+            "interval95": [32.466450032598736, 39.43354996740127],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 12189.133333333333,
+            "interval95": [10735.545753268148, 13642.720913398518],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a0",
+          "difficulty": "ascension-0",
+          "stratum": "ironclad",
+          "policy": "growth",
+          "attempts": 60,
+          "wins": 6,
+          "winRate": {
+            "wins": 6,
+            "attempts": 60,
+            "rate": 0.1,
+            "interval95": [0.04664219945723587, 0.20149694492511044]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 33.11666666666667,
+            "interval95": [30.1040360946388, 36.129297238694534],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 9644.833333333334,
+            "interval95": [8556.345481810404, 10733.321184856264],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a0",
+          "difficulty": "ascension-0",
+          "stratum": "ironclad",
+          "policy": "legacy-reference",
+          "attempts": 60,
+          "wins": 2,
+          "winRate": {
+            "wins": 2,
+            "attempts": 60,
+            "rate": 0.03333333333333333,
+            "interval95": [0.009189126490150246, 0.11363987528925378]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 24.933333333333334,
+            "interval95": [22.132875582191176, 27.73379108447549],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 1416.2833333333333,
+            "interval95": [1205.4052384268514, 1627.1614282398152],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a2",
+          "difficulty": "ascension-2",
+          "stratum": "ironclad",
+          "policy": "immediate",
+          "attempts": 60,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 60,
+            "rate": 0,
+            "interval95": [0, 0.06017393047793289]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 21.216666666666665,
+            "interval95": [19.198728910628148, 23.234604422705182],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 899.5333333333333,
+            "interval95": [760.9244367944087, 1038.142229872258],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a2",
+          "difficulty": "ascension-2",
+          "stratum": "ironclad",
+          "policy": "survival",
+          "attempts": 60,
+          "wins": 12,
+          "winRate": {
+            "wins": 12,
+            "attempts": 60,
+            "rate": 0.2,
+            "interval95": [0.11828389736858964, 0.3178204609181701]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 29.483333333333334,
+            "interval95": [25.680008068966927, 33.28665859769974],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 9774.4,
+            "interval95": [8199.711130187467, 11349.088869812533],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a2",
+          "difficulty": "ascension-2",
+          "stratum": "ironclad",
+          "policy": "growth",
+          "attempts": 60,
+          "wins": 3,
+          "winRate": {
+            "wins": 3,
+            "attempts": 60,
+            "rate": 0.05,
+            "interval95": [0.01714919117914121, 0.13700734625099836]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 32.983333333333334,
+            "interval95": [29.98296719627634, 35.98369947039033],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 9536.1,
+            "interval95": [8476.4094844864, 10595.790515513601],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a2",
+          "difficulty": "ascension-2",
+          "stratum": "ironclad",
+          "policy": "legacy-reference",
+          "attempts": 60,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 60,
+            "rate": 0,
+            "interval95": [0, 0.06017393047793289]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 23.466666666666665,
+            "interval95": [20.81576386343087, 26.11756946990246],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 1271.15,
+            "interval95": [1094.8656012992205, 1447.4343987007796],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a5",
+          "difficulty": "ascension-5",
+          "stratum": "ironclad",
+          "policy": "immediate",
+          "attempts": 60,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 60,
+            "rate": 0,
+            "interval95": [0, 0.06017393047793289]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 20.883333333333333,
+            "interval95": [18.746166264415674, 23.020500402250992],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 862.5666666666667,
+            "interval95": [733.3645820437987, 991.7687512895347],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a5",
+          "difficulty": "ascension-5",
+          "stratum": "ironclad",
+          "policy": "survival",
+          "attempts": 60,
+          "wins": 3,
+          "winRate": {
+            "wins": 3,
+            "attempts": 60,
+            "rate": 0.05,
+            "interval95": [0.01714919117914121, 0.13700734625099836]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 25.016666666666666,
+            "interval95": [21.782975622108985, 28.250357711224346],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 7638.966666666666,
+            "interval95": [6458.611695021156, 8819.321638312176],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a5",
+          "difficulty": "ascension-5",
+          "stratum": "ironclad",
+          "policy": "growth",
+          "attempts": 60,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 60,
+            "rate": 0,
+            "interval95": [0, 0.06017393047793289]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 27.416666666666668,
+            "interval95": [24.768399891650876, 30.06493344168246],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 7625.8,
+            "interval95": [6741.81368826418, 8509.78631173582],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a5",
+          "difficulty": "ascension-5",
+          "stratum": "ironclad",
+          "policy": "legacy-reference",
+          "attempts": 60,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 60,
+            "rate": 0,
+            "interval95": [0, 0.06017393047793289]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 20.916666666666668,
+            "interval95": [18.72195216808226, 23.111381165251075],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 1128.0666666666666,
+            "interval95": [978.1822869460254, 1277.9510463873078],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a0",
+          "difficulty": "ascension-0",
+          "stratum": "silent",
+          "policy": "immediate",
+          "attempts": 60,
+          "wins": 1,
+          "winRate": {
+            "wins": 1,
+            "attempts": 60,
+            "rate": 0.016666666666666666,
+            "interval95": [0.002948083860873682, 0.08855338226779477]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 23.266666666666666,
+            "interval95": [20.425310888765882, 26.10802244456745],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 1724.1666666666667,
+            "interval95": [1445.2258881363653, 2003.1074451969682],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a0",
+          "difficulty": "ascension-0",
+          "stratum": "silent",
+          "policy": "survival",
+          "attempts": 60,
+          "wins": 20,
+          "winRate": {
+            "wins": 20,
+            "attempts": 60,
+            "rate": 0.3333333333333333,
+            "interval95": [0.2272909421592783, 0.459433701333366]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 32.81666666666667,
+            "interval95": [28.656009919437608, 36.97732341389573],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 26075.75,
+            "interval95": [21491.506424452822, 30659.993575547178],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a0",
+          "difficulty": "ascension-0",
+          "stratum": "silent",
+          "policy": "growth",
+          "attempts": 60,
+          "wins": 16,
+          "winRate": {
+            "wins": 16,
+            "attempts": 60,
+            "rate": 0.26666666666666666,
+            "interval95": [0.17132496487078852, 0.3900895360189135]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 30.383333333333333,
+            "interval95": [26.08374307526853, 34.682923591398136],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 20624.65,
+            "interval95": [16867.57364556303, 24381.726354436974],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a0",
+          "difficulty": "ascension-0",
+          "stratum": "silent",
+          "policy": "legacy-reference",
+          "attempts": 60,
+          "wins": 4,
+          "winRate": {
+            "wins": 4,
+            "attempts": 60,
+            "rate": 0.06666666666666667,
+            "interval95": [0.02622827414319792, 0.15925579893767722]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 28.25,
+            "interval95": [24.68328316285154, 31.81671683714846],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 3107.1666666666665,
+            "interval95": [2630.6696317755122, 3583.663701557821],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a2",
+          "difficulty": "ascension-2",
+          "stratum": "silent",
+          "policy": "immediate",
+          "attempts": 60,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 60,
+            "rate": 0,
+            "interval95": [0, 0.06017393047793289]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 20.1,
+            "interval95": [17.716814396261928, 22.483185603738075],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 1385.05,
+            "interval95": [1168.5699776937934, 1601.5300223062065],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a2",
+          "difficulty": "ascension-2",
+          "stratum": "silent",
+          "policy": "survival",
+          "attempts": 60,
+          "wins": 14,
+          "winRate": {
+            "wins": 14,
+            "attempts": 60,
+            "rate": 0.23333333333333334,
+            "interval95": [0.1443943161843107, 0.3543651134039202]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 29.4,
+            "interval95": [25.4451371766488, 33.3548628233512],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 20865,
+            "interval95": [17156.395052614167, 24573.604947385833],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a2",
+          "difficulty": "ascension-2",
+          "stratum": "silent",
+          "policy": "growth",
+          "attempts": 60,
+          "wins": 10,
+          "winRate": {
+            "wins": 10,
+            "attempts": 60,
+            "rate": 0.16666666666666666,
+            "interval95": [0.09313077201321032, 0.28031851497207827]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 25.533333333333335,
+            "interval95": [21.605945265556578, 29.460721401110092],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 16262.55,
+            "interval95": [12677.255353363047, 19847.84464663695],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a2",
+          "difficulty": "ascension-2",
+          "stratum": "silent",
+          "policy": "legacy-reference",
+          "attempts": 60,
+          "wins": 2,
+          "winRate": {
+            "wins": 2,
+            "attempts": 60,
+            "rate": 0.03333333333333333,
+            "interval95": [0.009189126490150246, 0.11363987528925378]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 23.166666666666668,
+            "interval95": [19.834211281508782, 26.499122051824553],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 2568.05,
+            "interval95": [2122.5910732948864, 3013.508926705114],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a5",
+          "difficulty": "ascension-5",
+          "stratum": "silent",
+          "policy": "immediate",
+          "attempts": 60,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 60,
+            "rate": 0,
+            "interval95": [0, 0.06017393047793289]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 18.833333333333332,
+            "interval95": [16.717401660707694, 20.94926500595897],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 1256.3666666666666,
+            "interval95": [1065.1743730931985, 1447.5589602401346],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a5",
+          "difficulty": "ascension-5",
+          "stratum": "silent",
+          "policy": "survival",
+          "attempts": 60,
+          "wins": 4,
+          "winRate": {
+            "wins": 4,
+            "attempts": 60,
+            "rate": 0.06666666666666667,
+            "interval95": [0.02622827414319792, 0.15925579893767722]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 26.266666666666666,
+            "interval95": [22.415061623641403, 30.11827170969193],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 17630.75,
+            "interval95": [14363.49652791167, 20898.00347208833],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a5",
+          "difficulty": "ascension-5",
+          "stratum": "silent",
+          "policy": "growth",
+          "attempts": 60,
+          "wins": 5,
+          "winRate": {
+            "wins": 5,
+            "attempts": 60,
+            "rate": 0.08333333333333333,
+            "interval95": [0.03611992405048589, 0.18069168468112481]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 23.116666666666667,
+            "interval95": [19.33792585575368, 26.895407477579653],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 14119.683333333332,
+            "interval95": [10719.81359507876, 17519.553071587903],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a5",
+          "difficulty": "ascension-5",
+          "stratum": "silent",
+          "policy": "legacy-reference",
+          "attempts": 60,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 60,
+            "rate": 0,
+            "interval95": [0, 0.06017393047793289]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 60,
+          "progress": {
+            "n": 60,
+            "mean": 20.116666666666667,
+            "interval95": [17.445520761839887, 22.787812571493447],
+            "reason": null
+          },
+          "work": {
+            "n": 60,
+            "mean": 2148.35,
+            "interval95": [1799.9439208537885, 2496.756079146211],
+            "reason": null
+          }
+        }
+      ],
+      "frozenPlan": {
+        "path": "test-results/spire-strength/evaluation-plan-2.json",
+        "sha256": "b1a2598919363f45e129563064f5dc8af195e1f20699572c5750b33e6656fc67",
+        "content": {
+          "schema": "spire-strength-plan-1",
+          "namespace": "SPIRE-STRENGTH-2",
+          "blocks": 60,
+          "references": {
+            "ironclad": "growth",
+            "silent": "survival"
+          },
+          "sourceDigests": {
+            "docs/research/experiments/2026-10-16-spire-strength-protocol.md": "40cf6ae47b66b7b8c14a92f5d874014e9acf1653b0df702ced5ff17322539904",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd",
+            "packages/workshop-tools/policy/analyze-spire.ts": "e4e3a34cf5a17b28bb70e8540aec2c2f3ebdb66b56635815613b7d3f4be0933d",
+            "packages/workshop-tools/policy/calibration.ts": "190a35375cc6ebe3ad6cc5399d56fa067bb9310f167be314295b499c4ff91e69",
+            "packages/workshop-tools/policy/cli.ts": "15cd2d87cd6c6cc2afcc0350d0e45b384d03fa9c851e3a4883b524db48281dbf",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+            "packages/workshop-tools/policy/study.ts": "849b45737b70ffbc16ad1d4b43d2e966c0885a54d141266609af7ac30e5a405c",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "src/games/spire/agent/adapter.ts": "96ec54db530dbd0a9809db287c96a60de73affa9f1e05555365aa70752b044ff",
+            "src/games/spire/agent/forecast.ts": "d94e8df4d7d08e86016915cadbfdb67d66ca3403fe9c67613cae56d4a7ccfb8c",
+            "src/games/spire/agent/legality.ts": "aedc0f669bc9a8ba406ca2e5f643b76177de5031cb831518e5d2480752b8b090",
+            "src/games/spire/agent/observation.ts": "8b4e89b3af8aed736b86bae2a96be88dc95d29bd7d71efbfc7390d67c8cef1bf",
+            "src/games/spire/agent/policy.ts": "5c2f44a18befa275627e7645c4f4eee3b20dbe72dcddc0761d62bc3d5f164ad2",
+            "src/games/spire/agent/public-model.ts": "4ca5689c0c19ce73daf31f0145878ab0cbad17aa89ccef07d437c472e82f3be9",
+            "src/games/spire/agent/tactics.ts": "91ee64c41ac53d5f57506e29da5d7d9b224b5f32fa132f8b8af618c7af34a82a",
+            "src/games/spire/application/evidence.ts": "14fd05cda32988d0c3cb4712e800f80e391fda35fc792ef46b418919efb64b67",
+            "src/games/spire/application/scenario.ts": "1e86c2477d92a38e261d1c32873126cefa7b3ab00e3cf0e0d397167e10b25b3c",
+            "src/games/spire/application/session.ts": "f903b64c5bff5409d0f69f3031cfa2f8d7638c92cd8d12bdaf4b583925b82b60",
+            "src/games/spire/content/bosses.ts": "7afd7747e92cc8467e63a8e66c550c9dbd676cf72c7416037502e1ea5ce490f1",
+            "src/games/spire/content/cards.ts": "832bc5b3296ac0850de63e49311e6e1410cc41179f75fb5677084df5c8e24752",
+            "src/games/spire/content/silent.ts": "26f2da82b2360903a4028673a80e0897b232d7ad511832317031546d801d078a",
+            "src/games/spire/content/world.ts": "9837867ecc8f19b04909f73b806256e83caf872882414f13f40745339d2c1a61",
+            "src/games/spire/domain/combat.ts": "356d00c33e46fd7c9426d5bbb64f2f1f884e43dad84c133074b3c8c9d249690d",
+            "src/games/spire/domain/commands.ts": "eb8940e93c15db950cac4fddbfbbfcebc5803224939199178b3b3747ed39ee4a",
+            "src/games/spire/domain/difficulty.ts": "a8b9c2b445c1c95cdc57b484409a0e6901c895357c3f5a568bfc40f66a99a3c5",
+            "src/games/spire/domain/enemies.ts": "a4d8a0c75522eb47c1f680da2720c42d8b7c1cd7d8be1bb526f42340a008dd22",
+            "src/games/spire/domain/game.ts": "24c9ea17b5310e563bd5b15c959334e153c30266bc9a8df30f7e33594023e0a1",
+            "src/games/spire/domain/map.ts": "df72e70657b9c571c5edc7309f3696a76d2a5682a992ce6d0700348eae1c2ca9",
+            "src/games/spire/domain/rewards.ts": "0794ffab5d5990ce0abf8e2a27a9fe4b152da5f738d9481360ef193a73e39026",
+            "src/games/spire/domain/state.ts": "e419cd30195978104a1b7fe96d2a0885da6622bdedbb5a12bfa9fd787ca7e640",
+            "src/mods/spire.ts": "cd95f72ae69fd4af0cdf75b677cdc6fe11ec684f3b5019fcef9a18c1e4846f35",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6",
+            "test-results/spire-policy/development-1/bundles/ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47.mjs": "ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47",
+            "test-results/spire-strength/baseline-reference.ts": "e1352a95226a2519bf4dc5208638190fbd21f02450dd250f6123aad4d6b7836d"
+          }
+        }
+      },
+      "inference": {
+        "schema": "spire-strength-analysis-1",
+        "planDigest": "b1a2598919363f45e129563064f5dc8af195e1f20699572c5750b33e6656fc67",
+        "reportDigest": "dd21511c0e0db1ca001ac352398880537ca7e05b4d29cacedd4b9b7b1bfe6f6e",
+        "family": [
+          {
+            "id": "ironclad-strength",
+            "n": 60,
+            "difference": 0.06666666666666667,
+            "aOnly": 6,
+            "bOnly": 2,
+            "exactP": 0.2890625,
+            "pairedInterval95": null,
+            "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+            "adjustedP": 0.2890625
+          },
+          {
+            "id": "ironclad-difficulty",
+            "n": 60,
+            "difference": 0.1,
+            "aOnly": 6,
+            "bOnly": 0,
+            "exactP": 0.03125,
+            "pairedInterval95": null,
+            "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+            "adjustedP": 0.0625
+          },
+          {
+            "id": "silent-strength",
+            "n": 60,
+            "difference": 0.26666666666666666,
+            "aOnly": 18,
+            "bOnly": 2,
+            "exactP": 0.0004024505615234375,
+            "pairedInterval95": null,
+            "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+            "adjustedP": 0.0012073516845703125
+          },
+          {
+            "id": "silent-difficulty",
+            "n": 60,
+            "difference": 0.26666666666666666,
+            "aOnly": 17,
+            "bOnly": 1,
+            "exactP": 0.00014495849609375,
+            "pairedInterval95": null,
+            "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+            "adjustedP": 0.000579833984375
+          }
+        ],
+        "strata": [
+          {
+            "character": "ironclad",
+            "policy": "growth",
+            "levels": [
+              {
+                "ascension": 0,
+                "wins": {
+                  "wins": 6,
+                  "attempts": 60,
+                  "rate": 0.1,
+                  "interval95": [0.04664219945723587, 0.20149694492511044]
+                },
+                "progress": {
+                  "n": 60,
+                  "mean": 33.11666666666667,
+                  "interval95": [30.1040360946388, 36.129297238694534],
+                  "reason": null
+                }
+              },
+              {
+                "ascension": 2,
+                "wins": {
+                  "wins": 3,
+                  "attempts": 60,
+                  "rate": 0.05,
+                  "interval95": [0.01714919117914121, 0.13700734625099836]
+                },
+                "progress": {
+                  "n": 60,
+                  "mean": 32.983333333333334,
+                  "interval95": [29.98296719627634, 35.98369947039033],
+                  "reason": null
+                }
+              },
+              {
+                "ascension": 5,
+                "wins": {
+                  "wins": 0,
+                  "attempts": 60,
+                  "rate": 0,
+                  "interval95": [0, 0.06017393047793289]
+                },
+                "progress": {
+                  "n": 60,
+                  "mean": 27.416666666666668,
+                  "interval95": [24.768399891650876, 30.06493344168246],
+                  "reason": null
+                }
+              }
+            ],
+            "strengthPassed": false,
+            "difficultyPassed": false,
+            "scope": "Statistical thresholds only; promotion also requires overall integrity.",
+            "ordered": true,
+            "adjacentProgress": [
+              {
+                "a": 0,
+                "b": 2,
+                "n": 60,
+                "mean": 0.13333333333333333,
+                "interval95": [-3.496515487490186, 3.7631821541568526],
+                "reason": null
+              },
+              {
+                "a": 2,
+                "b": 5,
+                "n": 60,
+                "mean": 5.566666666666666,
+                "interval95": [2.7072558242146414, 8.426077509118691],
+                "reason": null
+              }
+            ]
+          },
+          {
+            "character": "silent",
+            "policy": "survival",
+            "levels": [
+              {
+                "ascension": 0,
+                "wins": {
+                  "wins": 20,
+                  "attempts": 60,
+                  "rate": 0.3333333333333333,
+                  "interval95": [0.2272909421592783, 0.459433701333366]
+                },
+                "progress": {
+                  "n": 60,
+                  "mean": 32.81666666666667,
+                  "interval95": [28.656009919437608, 36.97732341389573],
+                  "reason": null
+                }
+              },
+              {
+                "ascension": 2,
+                "wins": {
+                  "wins": 14,
+                  "attempts": 60,
+                  "rate": 0.23333333333333334,
+                  "interval95": [0.1443943161843107, 0.3543651134039202]
+                },
+                "progress": {
+                  "n": 60,
+                  "mean": 29.4,
+                  "interval95": [25.4451371766488, 33.3548628233512],
+                  "reason": null
+                }
+              },
+              {
+                "ascension": 5,
+                "wins": {
+                  "wins": 4,
+                  "attempts": 60,
+                  "rate": 0.06666666666666667,
+                  "interval95": [0.02622827414319792, 0.15925579893767722]
+                },
+                "progress": {
+                  "n": 60,
+                  "mean": 26.266666666666666,
+                  "interval95": [22.415061623641403, 30.11827170969193],
+                  "reason": null
+                }
+              }
+            ],
+            "strengthPassed": true,
+            "difficultyPassed": true,
+            "scope": "Statistical thresholds only; promotion also requires overall integrity.",
+            "ordered": true,
+            "adjacentProgress": [
+              {
+                "a": 0,
+                "b": 2,
+                "n": 60,
+                "mean": 3.4166666666666665,
+                "interval95": [-1.3536164558827335, 8.186949789216067],
+                "reason": null
+              },
+              {
+                "a": 2,
+                "b": 5,
+                "n": 60,
+                "mean": 3.1333333333333333,
+                "interval95": [-0.20702097868665126, 6.473687645353317],
+                "reason": null
+              }
+            ]
+          }
+        ],
+        "integrity": true,
+        "allCriteriaPassed": false,
+        "limits": "Paired confidence intervals unavailable. Adjacent win-rate significance not claimed. Policies use different work; no human-equivalent strength claim."
+      }
+    },
+    "confirmationPrimary": {
+      "directory": "test-results/spire-strength/evaluation-2",
+      "artifacts": {
+        "report.json": "46b42a605fbcf6c3e94ead176e155ed84e0e209b89a31bb46d3e4d869b1bea5c",
+        "protocol.json": "b6738f232a78e65f5ca934bd17eee27988f350e5736f278db717ef4efd21e6aa",
+        "inference.json": "791d39a0b39c09b6691c5157df0d3d73c656c8db57abd624323d354d4442bb0d"
+      },
+      "identity": {
+        "rules": 3,
+        "observation": "spire-observation-1",
+        "score": "spire-progress-1",
+        "content": [
+          {
+            "id": "base",
+            "version": "3",
+            "digest": "8192b770"
+          }
+        ]
+      },
+      "attempts": 1200,
+      "terminal": 1197,
+      "auditsPassed": 1200,
+      "protocol": {
+        "schema": "policy-study-protocol-2",
+        "game": "spire",
+        "identity": {
+          "rules": 3,
+          "observation": "spire-observation-1",
+          "score": "spire-progress-1",
+          "content": [
+            {
+              "id": "base",
+              "version": "3",
+              "digest": "8192b770"
+            }
+          ]
+        },
+        "split": "evaluation",
+        "seeds": [
+          "SPIRE-STRENGTH-3-RESERVED-01",
+          "SPIRE-STRENGTH-3-RESERVED-02",
+          "SPIRE-STRENGTH-3-RESERVED-03",
+          "SPIRE-STRENGTH-3-RESERVED-04",
+          "SPIRE-STRENGTH-3-RESERVED-05",
+          "SPIRE-STRENGTH-3-RESERVED-06",
+          "SPIRE-STRENGTH-3-RESERVED-07",
+          "SPIRE-STRENGTH-3-RESERVED-08",
+          "SPIRE-STRENGTH-3-RESERVED-09",
+          "SPIRE-STRENGTH-3-RESERVED-10",
+          "SPIRE-STRENGTH-3-RESERVED-11",
+          "SPIRE-STRENGTH-3-RESERVED-12",
+          "SPIRE-STRENGTH-3-RESERVED-13",
+          "SPIRE-STRENGTH-3-RESERVED-14",
+          "SPIRE-STRENGTH-3-RESERVED-15",
+          "SPIRE-STRENGTH-3-RESERVED-16",
+          "SPIRE-STRENGTH-3-RESERVED-17",
+          "SPIRE-STRENGTH-3-RESERVED-18",
+          "SPIRE-STRENGTH-3-RESERVED-19",
+          "SPIRE-STRENGTH-3-RESERVED-20",
+          "SPIRE-STRENGTH-3-RESERVED-21",
+          "SPIRE-STRENGTH-3-RESERVED-22",
+          "SPIRE-STRENGTH-3-RESERVED-23",
+          "SPIRE-STRENGTH-3-RESERVED-24",
+          "SPIRE-STRENGTH-3-RESERVED-25",
+          "SPIRE-STRENGTH-3-RESERVED-26",
+          "SPIRE-STRENGTH-3-RESERVED-27",
+          "SPIRE-STRENGTH-3-RESERVED-28",
+          "SPIRE-STRENGTH-3-RESERVED-29",
+          "SPIRE-STRENGTH-3-RESERVED-30",
+          "SPIRE-STRENGTH-3-RESERVED-31",
+          "SPIRE-STRENGTH-3-RESERVED-32",
+          "SPIRE-STRENGTH-3-RESERVED-33",
+          "SPIRE-STRENGTH-3-RESERVED-34",
+          "SPIRE-STRENGTH-3-RESERVED-35",
+          "SPIRE-STRENGTH-3-RESERVED-36",
+          "SPIRE-STRENGTH-3-RESERVED-37",
+          "SPIRE-STRENGTH-3-RESERVED-38",
+          "SPIRE-STRENGTH-3-RESERVED-39",
+          "SPIRE-STRENGTH-3-RESERVED-40",
+          "SPIRE-STRENGTH-3-RESERVED-41",
+          "SPIRE-STRENGTH-3-RESERVED-42",
+          "SPIRE-STRENGTH-3-RESERVED-43",
+          "SPIRE-STRENGTH-3-RESERVED-44",
+          "SPIRE-STRENGTH-3-RESERVED-45",
+          "SPIRE-STRENGTH-3-RESERVED-46",
+          "SPIRE-STRENGTH-3-RESERVED-47",
+          "SPIRE-STRENGTH-3-RESERVED-48",
+          "SPIRE-STRENGTH-3-RESERVED-49",
+          "SPIRE-STRENGTH-3-RESERVED-50",
+          "SPIRE-STRENGTH-3-RESERVED-51",
+          "SPIRE-STRENGTH-3-RESERVED-52",
+          "SPIRE-STRENGTH-3-RESERVED-53",
+          "SPIRE-STRENGTH-3-RESERVED-54",
+          "SPIRE-STRENGTH-3-RESERVED-55",
+          "SPIRE-STRENGTH-3-RESERVED-56",
+          "SPIRE-STRENGTH-3-RESERVED-57",
+          "SPIRE-STRENGTH-3-RESERVED-58",
+          "SPIRE-STRENGTH-3-RESERVED-59",
+          "SPIRE-STRENGTH-3-RESERVED-60",
+          "SPIRE-STRENGTH-3-RESERVED-61",
+          "SPIRE-STRENGTH-3-RESERVED-62",
+          "SPIRE-STRENGTH-3-RESERVED-63",
+          "SPIRE-STRENGTH-3-RESERVED-64",
+          "SPIRE-STRENGTH-3-RESERVED-65",
+          "SPIRE-STRENGTH-3-RESERVED-66",
+          "SPIRE-STRENGTH-3-RESERVED-67",
+          "SPIRE-STRENGTH-3-RESERVED-68",
+          "SPIRE-STRENGTH-3-RESERVED-69",
+          "SPIRE-STRENGTH-3-RESERVED-70",
+          "SPIRE-STRENGTH-3-RESERVED-71",
+          "SPIRE-STRENGTH-3-RESERVED-72",
+          "SPIRE-STRENGTH-3-RESERVED-73",
+          "SPIRE-STRENGTH-3-RESERVED-74",
+          "SPIRE-STRENGTH-3-RESERVED-75",
+          "SPIRE-STRENGTH-3-RESERVED-76",
+          "SPIRE-STRENGTH-3-RESERVED-77",
+          "SPIRE-STRENGTH-3-RESERVED-78",
+          "SPIRE-STRENGTH-3-RESERVED-79",
+          "SPIRE-STRENGTH-3-RESERVED-80",
+          "SPIRE-STRENGTH-3-RESERVED-81",
+          "SPIRE-STRENGTH-3-RESERVED-82",
+          "SPIRE-STRENGTH-3-RESERVED-83",
+          "SPIRE-STRENGTH-3-RESERVED-84",
+          "SPIRE-STRENGTH-3-RESERVED-85",
+          "SPIRE-STRENGTH-3-RESERVED-86",
+          "SPIRE-STRENGTH-3-RESERVED-87",
+          "SPIRE-STRENGTH-3-RESERVED-88",
+          "SPIRE-STRENGTH-3-RESERVED-89",
+          "SPIRE-STRENGTH-3-RESERVED-90",
+          "SPIRE-STRENGTH-3-RESERVED-91",
+          "SPIRE-STRENGTH-3-RESERVED-92",
+          "SPIRE-STRENGTH-3-RESERVED-93",
+          "SPIRE-STRENGTH-3-RESERVED-94",
+          "SPIRE-STRENGTH-3-RESERVED-95",
+          "SPIRE-STRENGTH-3-RESERVED-96",
+          "SPIRE-STRENGTH-3-RESERVED-97",
+          "SPIRE-STRENGTH-3-RESERVED-98",
+          "SPIRE-STRENGTH-3-RESERVED-99",
+          "SPIRE-STRENGTH-3-RESERVED-100"
+        ],
+        "policies": [
+          {
+            "id": "survival",
+            "version": "spire-policy-3"
+          },
+          {
+            "id": "legacy-reference",
+            "version": "spire-policy-1"
+          }
+        ],
+        "study": {
+          "setups": [
+            {
+              "id": "ironclad-a0",
+              "difficulty": "ascension-0",
+              "stratum": "ironclad",
+              "setup": {
+                "character": "ironclad",
+                "ascension": 0
+              }
+            },
+            {
+              "id": "ironclad-a2",
+              "difficulty": "ascension-2",
+              "stratum": "ironclad",
+              "setup": {
+                "character": "ironclad",
+                "ascension": 2
+              }
+            },
+            {
+              "id": "ironclad-a5",
+              "difficulty": "ascension-5",
+              "stratum": "ironclad",
+              "setup": {
+                "character": "ironclad",
+                "ascension": 5
+              }
+            },
+            {
+              "id": "silent-a0",
+              "difficulty": "ascension-0",
+              "stratum": "silent",
+              "setup": {
+                "character": "silent",
+                "ascension": 0
+              }
+            },
+            {
+              "id": "silent-a2",
+              "difficulty": "ascension-2",
+              "stratum": "silent",
+              "setup": {
+                "character": "silent",
+                "ascension": 2
+              }
+            },
+            {
+              "id": "silent-a5",
+              "difficulty": "ascension-5",
+              "stratum": "silent",
+              "setup": {
+                "character": "silent",
+                "ascension": 5
+              }
+            }
+          ],
+          "defaultSetup": {
+            "character": "ironclad",
+            "ascension": 0
+          },
+          "ranking": "win, then rooms reached, then HP, then gold",
+          "reviewPath": "/?game=spire&review=policy"
+        },
+        "policySeed": "POLICY-STREAM-1",
+        "maxDecisions": 2000,
+        "workers": 2,
+        "provenance": {
+          "sourceDigests": {
+            "src/games/spire/agent/adapter.ts": "96ec54db530dbd0a9809db287c96a60de73affa9f1e05555365aa70752b044ff",
+            "src/games/spire/agent/forecast.ts": "d94e8df4d7d08e86016915cadbfdb67d66ca3403fe9c67613cae56d4a7ccfb8c",
+            "src/games/spire/agent/legality.ts": "aedc0f669bc9a8ba406ca2e5f643b76177de5031cb831518e5d2480752b8b090",
+            "src/games/spire/agent/observation.ts": "8b4e89b3af8aed736b86bae2a96be88dc95d29bd7d71efbfc7390d67c8cef1bf",
+            "src/games/spire/agent/policy.ts": "7a9b1e25c16d7bca7f574a3ee7cc73b8b51316c6d6e99b635ac36bc2a38c8b28",
+            "src/games/spire/agent/public-model.ts": "4ca5689c0c19ce73daf31f0145878ab0cbad17aa89ccef07d437c472e82f3be9",
+            "src/games/spire/agent/tactics.ts": "aaaad1acd8e93c9ae16ffd1221870f15d7c660e5ef16d565e3c9444309fbb545",
+            "src/games/spire/application/evidence.ts": "14fd05cda32988d0c3cb4712e800f80e391fda35fc792ef46b418919efb64b67",
+            "src/games/spire/application/scenario.ts": "1e86c2477d92a38e261d1c32873126cefa7b3ab00e3cf0e0d397167e10b25b3c",
+            "src/games/spire/application/session.ts": "f903b64c5bff5409d0f69f3031cfa2f8d7638c92cd8d12bdaf4b583925b82b60",
+            "src/games/spire/content/bosses.ts": "7afd7747e92cc8467e63a8e66c550c9dbd676cf72c7416037502e1ea5ce490f1",
+            "src/games/spire/content/cards.ts": "832bc5b3296ac0850de63e49311e6e1410cc41179f75fb5677084df5c8e24752",
+            "src/games/spire/content/silent.ts": "26f2da82b2360903a4028673a80e0897b232d7ad511832317031546d801d078a",
+            "src/games/spire/content/world.ts": "9837867ecc8f19b04909f73b806256e83caf872882414f13f40745339d2c1a61",
+            "src/games/spire/domain/combat.ts": "356d00c33e46fd7c9426d5bbb64f2f1f884e43dad84c133074b3c8c9d249690d",
+            "src/games/spire/domain/commands.ts": "eb8940e93c15db950cac4fddbfbbfcebc5803224939199178b3b3747ed39ee4a",
+            "src/games/spire/domain/difficulty.ts": "a8b9c2b445c1c95cdc57b484409a0e6901c895357c3f5a568bfc40f66a99a3c5",
+            "src/games/spire/domain/enemies.ts": "a4d8a0c75522eb47c1f680da2720c42d8b7c1cd7d8be1bb526f42340a008dd22",
+            "src/games/spire/domain/game.ts": "24c9ea17b5310e563bd5b15c959334e153c30266bc9a8df30f7e33594023e0a1",
+            "src/games/spire/domain/map.ts": "df72e70657b9c571c5edc7309f3696a76d2a5682a992ce6d0700348eae1c2ca9",
+            "src/games/spire/domain/rewards.ts": "0794ffab5d5990ce0abf8e2a27a9fe4b152da5f738d9481360ef193a73e39026",
+            "src/games/spire/domain/state.ts": "e419cd30195978104a1b7fe96d2a0885da6622bdedbb5a12bfa9fd787ca7e640",
+            "src/mods/spire.ts": "cd95f72ae69fd4af0cdf75b677cdc6fe11ec684f3b5019fcef9a18c1e4846f35",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6",
+            "test-results/spire-policy/development-1/bundles/ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47.mjs": "ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47",
+            "test-results/spire-strength/baseline-reference-3.ts": "3f0ae5a3d64443d0dc86189c6890a04a14d7ac0357037f25caf4037e14b8ded9"
+          },
+          "bundleDigest": "211c4e1cbba6cdaeb4847c8bbc95f47b1ed4fc8e885c02dade93746fa5113eda",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+            "packages/workshop-tools/policy/cli.ts": "1921b2f903c6b073eb8b99cb5625500904cab61c2cf71f258ba71c669e47921e",
+            "packages/workshop-tools/policy/study.ts": "849b45737b70ffbc16ad1d4b43d2e966c0885a54d141266609af7ac30e5a405c",
+            "packages/workshop-tools/policy/calibration.ts": "190a35375cc6ebe3ad6cc5399d56fa067bb9310f167be314295b499c4ff91e69",
+            "packages/workshop-tools/policy/analyze-spire.ts": "180b2e51e8f17480b7f075d02b6653d6cbe99fcac799ba39bed7a0bd0e785d25",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "ranking": "win, then rooms reached, then HP, then gold",
+        "analysis": "Independent paired seed blocks within each setup/stratum. 95% Wilson win intervals and approximate t intervals for mean/paired progress; paired wins report point estimates/discordance counts with intervals unavailable. No pooling across characters; no multiple-comparison adjustment. All attempts retained. No tuning on evaluation."
+      },
+      "summary": [
+        {
+          "setupId": "ironclad-a0",
+          "difficulty": "ascension-0",
+          "stratum": "ironclad",
+          "policy": "survival",
+          "attempts": 100,
+          "wins": 12,
+          "winRate": {
+            "wins": 12,
+            "attempts": 100,
+            "rate": 0.12,
+            "interval95": [0.06999337365267776, 0.19812268002908368]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 32.92,
+            "interval95": [30.457003655228128, 35.382996344771875],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 10587.35,
+            "interval95": [9484.264144509374, 11690.435855490627],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a0",
+          "difficulty": "ascension-0",
+          "stratum": "ironclad",
+          "policy": "legacy-reference",
+          "attempts": 100,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 100,
+            "rate": 0,
+            "interval95": [0, 0.03699480747600191]
+          },
+          "errors": 0,
+          "timeouts": 1,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 25.92,
+            "interval95": [24.0858106938145, 27.754189306185502],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 1769.38,
+            "interval95": [1471.603931962367, 2067.1560680376333],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a2",
+          "difficulty": "ascension-2",
+          "stratum": "ironclad",
+          "policy": "survival",
+          "attempts": 100,
+          "wins": 8,
+          "winRate": {
+            "wins": 8,
+            "attempts": 100,
+            "rate": 0.08,
+            "interval95": [0.04109296948581091, 0.14998266879403072]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 27.97,
+            "interval95": [25.628527621109512, 30.311472378890485],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 8549.15,
+            "interval95": [7432.046014861307, 9666.253985138692],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a2",
+          "difficulty": "ascension-2",
+          "stratum": "ironclad",
+          "policy": "legacy-reference",
+          "attempts": 100,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 100,
+            "rate": 0,
+            "interval95": [0, 0.03699480747600191]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 23.13,
+            "interval95": [21.446129345421834, 24.813870654578164],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 1405.64,
+            "interval95": [1275.4256803308035, 1535.8543196691967],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a5",
+          "difficulty": "ascension-5",
+          "stratum": "ironclad",
+          "policy": "survival",
+          "attempts": 100,
+          "wins": 2,
+          "winRate": {
+            "wins": 2,
+            "attempts": 100,
+            "rate": 0.02,
+            "interval95": [0.005501852234968185, 0.07001316294199365]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 27.24,
+            "interval95": [24.993922367716007, 29.48607763228399],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 7867.6,
+            "interval95": [7083.292736262455, 8651.907263737547],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a5",
+          "difficulty": "ascension-5",
+          "stratum": "ironclad",
+          "policy": "legacy-reference",
+          "attempts": 100,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 100,
+            "rate": 0,
+            "interval95": [0, 0.03699480747600191]
+          },
+          "errors": 0,
+          "timeouts": 1,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 21.36,
+            "interval95": [19.790808261252458, 22.92919173874754],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 1312.79,
+            "interval95": [1136.4622312371005, 1489.1177687628995],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a0",
+          "difficulty": "ascension-0",
+          "stratum": "silent",
+          "policy": "survival",
+          "attempts": 100,
+          "wins": 35,
+          "winRate": {
+            "wins": 35,
+            "attempts": 100,
+            "rate": 0.35,
+            "interval95": [0.2636410465347802, 0.4474573957080203]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 34.73,
+            "interval95": [31.824528917735584, 37.63547108226441],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 25968.61,
+            "interval95": [22919.960088301123, 29017.25991169888],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a0",
+          "difficulty": "ascension-0",
+          "stratum": "silent",
+          "policy": "legacy-reference",
+          "attempts": 100,
+          "wins": 11,
+          "winRate": {
+            "wins": 11,
+            "attempts": 100,
+            "rate": 0.11,
+            "interval95": [0.06254131955225126, 0.18631463027903022]
+          },
+          "errors": 0,
+          "timeouts": 1,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 28.43,
+            "interval95": [25.395423224380824, 31.464576775619175],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 3335.75,
+            "interval95": [2902.5339924605787, 3768.9660075394213],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a2",
+          "difficulty": "ascension-2",
+          "stratum": "silent",
+          "policy": "survival",
+          "attempts": 100,
+          "wins": 25,
+          "winRate": {
+            "wins": 25,
+            "attempts": 100,
+            "rate": 0.25,
+            "interval95": [0.1754509400372426, 0.3430464637007583]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 29.25,
+            "interval95": [26.119951753816828, 32.38004824618317],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 19778.84,
+            "interval95": [16968.83970803504, 22588.84029196496],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a2",
+          "difficulty": "ascension-2",
+          "stratum": "silent",
+          "policy": "legacy-reference",
+          "attempts": 100,
+          "wins": 14,
+          "winRate": {
+            "wins": 14,
+            "attempts": 100,
+            "rate": 0.14,
+            "interval95": [0.08526265754464905, 0.22137360383807236]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 24.86,
+            "interval95": [22.051506317351098, 27.6684936826489],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 2719.45,
+            "interval95": [2354.1250682071995, 3084.7749317928],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a5",
+          "difficulty": "ascension-5",
+          "stratum": "silent",
+          "policy": "survival",
+          "attempts": 100,
+          "wins": 5,
+          "winRate": {
+            "wins": 5,
+            "attempts": 100,
+            "rate": 0.05,
+            "interval95": [0.02154336145631356, 0.11175196527208817]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 25.16,
+            "interval95": [22.365884276189615, 27.954115723810386],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 15616.22,
+            "interval95": [13327.430639891221, 17905.009360108776],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a5",
+          "difficulty": "ascension-5",
+          "stratum": "silent",
+          "policy": "legacy-reference",
+          "attempts": 100,
+          "wins": 4,
+          "winRate": {
+            "wins": 4,
+            "attempts": 100,
+            "rate": 0.04,
+            "interval95": [0.015663050551848016, 0.09837217232607373]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 100,
+          "progress": {
+            "n": 100,
+            "mean": 21.87,
+            "interval95": [19.36411780393782, 24.375882196062182],
+            "reason": null
+          },
+          "work": {
+            "n": 100,
+            "mean": 2308.56,
+            "interval95": [2001.9518996704505, 2615.1681003295494],
+            "reason": null
+          }
+        }
+      ],
+      "frozenPlan": {
+        "path": "test-results/spire-strength/evaluation-plan-3.json",
+        "sha256": "c35b2518025a28d8676ae96b78be4caafa5d198eb945a4b140746feab056ef2e",
+        "content": {
+          "schema": "spire-strength-plan-2",
+          "namespace": "SPIRE-STRENGTH-3",
+          "blocks": 100,
+          "references": {
+            "ironclad": "survival",
+            "silent": "survival"
+          },
+          "sourceDigests": {
+            "docs/research/experiments/2026-10-16-spire-strength-3-protocol.md": "2cf854f81c04f5beddddc1e6ab0c7608935c5ed4b656d76be636af3eb37f980f",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd",
+            "packages/workshop-tools/policy/analyze-spire.ts": "180b2e51e8f17480b7f075d02b6653d6cbe99fcac799ba39bed7a0bd0e785d25",
+            "packages/workshop-tools/policy/calibration.ts": "190a35375cc6ebe3ad6cc5399d56fa067bb9310f167be314295b499c4ff91e69",
+            "packages/workshop-tools/policy/cli.ts": "1921b2f903c6b073eb8b99cb5625500904cab61c2cf71f258ba71c669e47921e",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+            "packages/workshop-tools/policy/study.ts": "849b45737b70ffbc16ad1d4b43d2e966c0885a54d141266609af7ac30e5a405c",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "src/games/spire/agent/adapter.ts": "96ec54db530dbd0a9809db287c96a60de73affa9f1e05555365aa70752b044ff",
+            "src/games/spire/agent/forecast.ts": "d94e8df4d7d08e86016915cadbfdb67d66ca3403fe9c67613cae56d4a7ccfb8c",
+            "src/games/spire/agent/legality.ts": "aedc0f669bc9a8ba406ca2e5f643b76177de5031cb831518e5d2480752b8b090",
+            "src/games/spire/agent/observation.ts": "8b4e89b3af8aed736b86bae2a96be88dc95d29bd7d71efbfc7390d67c8cef1bf",
+            "src/games/spire/agent/policy.ts": "7a9b1e25c16d7bca7f574a3ee7cc73b8b51316c6d6e99b635ac36bc2a38c8b28",
+            "src/games/spire/agent/public-model.ts": "4ca5689c0c19ce73daf31f0145878ab0cbad17aa89ccef07d437c472e82f3be9",
+            "src/games/spire/agent/tactics.ts": "aaaad1acd8e93c9ae16ffd1221870f15d7c660e5ef16d565e3c9444309fbb545",
+            "src/games/spire/application/evidence.ts": "14fd05cda32988d0c3cb4712e800f80e391fda35fc792ef46b418919efb64b67",
+            "src/games/spire/application/scenario.ts": "1e86c2477d92a38e261d1c32873126cefa7b3ab00e3cf0e0d397167e10b25b3c",
+            "src/games/spire/application/session.ts": "f903b64c5bff5409d0f69f3031cfa2f8d7638c92cd8d12bdaf4b583925b82b60",
+            "src/games/spire/content/bosses.ts": "7afd7747e92cc8467e63a8e66c550c9dbd676cf72c7416037502e1ea5ce490f1",
+            "src/games/spire/content/cards.ts": "832bc5b3296ac0850de63e49311e6e1410cc41179f75fb5677084df5c8e24752",
+            "src/games/spire/content/silent.ts": "26f2da82b2360903a4028673a80e0897b232d7ad511832317031546d801d078a",
+            "src/games/spire/content/world.ts": "9837867ecc8f19b04909f73b806256e83caf872882414f13f40745339d2c1a61",
+            "src/games/spire/domain/combat.ts": "356d00c33e46fd7c9426d5bbb64f2f1f884e43dad84c133074b3c8c9d249690d",
+            "src/games/spire/domain/commands.ts": "eb8940e93c15db950cac4fddbfbbfcebc5803224939199178b3b3747ed39ee4a",
+            "src/games/spire/domain/difficulty.ts": "a8b9c2b445c1c95cdc57b484409a0e6901c895357c3f5a568bfc40f66a99a3c5",
+            "src/games/spire/domain/enemies.ts": "a4d8a0c75522eb47c1f680da2720c42d8b7c1cd7d8be1bb526f42340a008dd22",
+            "src/games/spire/domain/game.ts": "24c9ea17b5310e563bd5b15c959334e153c30266bc9a8df30f7e33594023e0a1",
+            "src/games/spire/domain/map.ts": "df72e70657b9c571c5edc7309f3696a76d2a5682a992ce6d0700348eae1c2ca9",
+            "src/games/spire/domain/rewards.ts": "0794ffab5d5990ce0abf8e2a27a9fe4b152da5f738d9481360ef193a73e39026",
+            "src/games/spire/domain/state.ts": "e419cd30195978104a1b7fe96d2a0885da6622bdedbb5a12bfa9fd787ca7e640",
+            "src/mods/spire.ts": "cd95f72ae69fd4af0cdf75b677cdc6fe11ec684f3b5019fcef9a18c1e4846f35",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6",
+            "test-results/spire-policy/development-1/bundles/ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47.mjs": "ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47",
+            "test-results/spire-strength/baseline-reference-3.ts": "3f0ae5a3d64443d0dc86189c6890a04a14d7ac0357037f25caf4037e14b8ded9"
+          }
+        }
+      },
+      "inference": {
+        "schema": "spire-strength-analysis-3",
+        "planDigest": "c35b2518025a28d8676ae96b78be4caafa5d198eb945a4b140746feab056ef2e",
+        "reportDigest": "46b42a605fbcf6c3e94ead176e155ed84e0e209b89a31bb46d3e4d869b1bea5c",
+        "companionReportDigest": "b2ea4db479c370dd9b9f6225ca8ae980c8278630facfc08f53a812a4a5440aed",
+        "companionSummary": {
+          "summary": [
+            {
+              "setupId": "ironclad-a0",
+              "difficulty": "ascension-0",
+              "stratum": "ironclad",
+              "policy": "immediate",
+              "attempts": 20,
+              "wins": 0,
+              "winRate": {
+                "wins": 0,
+                "attempts": 20,
+                "rate": 0,
+                "interval95": [0, 0.16113012549493322]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 23.1,
+                "interval95": [19.014626982759104, 27.1853730172409],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 1018.65,
+                "interval95": [773.8352790645172, 1263.4647209354828],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "ironclad-a0",
+              "difficulty": "ascension-0",
+              "stratum": "ironclad",
+              "policy": "growth",
+              "attempts": 20,
+              "wins": 1,
+              "winRate": {
+                "wins": 1,
+                "attempts": 20,
+                "rate": 0.05,
+                "interval95": [0.008881219432873136, 0.23613589351256675]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 38.4,
+                "interval95": [33.61179224519675, 43.188207754803244],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 10957.95,
+                "interval95": [9072.433714223454, 12843.466285776547],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "ironclad-a2",
+              "difficulty": "ascension-2",
+              "stratum": "ironclad",
+              "policy": "immediate",
+              "attempts": 20,
+              "wins": 0,
+              "winRate": {
+                "wins": 0,
+                "attempts": 20,
+                "rate": 0,
+                "interval95": [0, 0.16113012549493322]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 24.3,
+                "interval95": [20.552542401560057, 28.047457598439944],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 1016.15,
+                "interval95": [805.2674906576691, 1227.032509342331],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "ironclad-a2",
+              "difficulty": "ascension-2",
+              "stratum": "ironclad",
+              "policy": "growth",
+              "attempts": 20,
+              "wins": 3,
+              "winRate": {
+                "wins": 3,
+                "attempts": 20,
+                "rate": 0.15,
+                "interval95": [0.05236779195949584, 0.36042329588695743]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 35.5,
+                "interval95": [29.96973356571218, 41.03026643428782],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 9565.1,
+                "interval95": [7688.800459244653, 11441.399540755348],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "ironclad-a5",
+              "difficulty": "ascension-5",
+              "stratum": "ironclad",
+              "policy": "immediate",
+              "attempts": 20,
+              "wins": 0,
+              "winRate": {
+                "wins": 0,
+                "attempts": 20,
+                "rate": 0,
+                "interval95": [0, 0.16113012549493322]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 22.6,
+                "interval95": [18.85469637826953, 26.345303621730473],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 942.9,
+                "interval95": [726.7203585991612, 1159.0796414008387],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "ironclad-a5",
+              "difficulty": "ascension-5",
+              "stratum": "ironclad",
+              "policy": "growth",
+              "attempts": 20,
+              "wins": 0,
+              "winRate": {
+                "wins": 0,
+                "attempts": 20,
+                "rate": 0,
+                "interval95": [0, 0.16113012549493322]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 34.95,
+                "interval95": [29.30629970336044, 40.59370029663957],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 9337.9,
+                "interval95": [7493.190857154649, 11182.609142845351],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "silent-a0",
+              "difficulty": "ascension-0",
+              "stratum": "silent",
+              "policy": "immediate",
+              "attempts": 20,
+              "wins": 0,
+              "winRate": {
+                "wins": 0,
+                "attempts": 20,
+                "rate": 0,
+                "interval95": [0, 0.16113012549493322]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 23.15,
+                "interval95": [17.529223780671998, 28.770776219328],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 1648.7,
+                "interval95": [1151.9362005893552, 2145.463799410645],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "silent-a0",
+              "difficulty": "ascension-0",
+              "stratum": "silent",
+              "policy": "growth",
+              "attempts": 20,
+              "wins": 4,
+              "winRate": {
+                "wins": 4,
+                "attempts": 20,
+                "rate": 0.2,
+                "interval95": [0.0806563532712, 0.41602172202575993]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 31,
+                "interval95": [24.30343280989588, 37.69656719010412],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 19674.1,
+                "interval95": [14339.583510025004, 25008.616489974993],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "silent-a2",
+              "difficulty": "ascension-2",
+              "stratum": "silent",
+              "policy": "immediate",
+              "attempts": 20,
+              "wins": 0,
+              "winRate": {
+                "wins": 0,
+                "attempts": 20,
+                "rate": 0,
+                "interval95": [0, 0.16113012549493322]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 20.85,
+                "interval95": [16.40936255555283, 25.290637444447174],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 1507.1,
+                "interval95": [1034.8629647160726, 1979.3370352839272],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "silent-a2",
+              "difficulty": "ascension-2",
+              "stratum": "silent",
+              "policy": "growth",
+              "attempts": 20,
+              "wins": 1,
+              "winRate": {
+                "wins": 1,
+                "attempts": 20,
+                "rate": 0.05,
+                "interval95": [0.008881219432873136, 0.23613589351256675]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 30.05,
+                "interval95": [23.36812456508181, 36.731875434918194],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 19055.55,
+                "interval95": [13517.776223838959, 24593.32377616104],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "silent-a5",
+              "difficulty": "ascension-5",
+              "stratum": "silent",
+              "policy": "immediate",
+              "attempts": 20,
+              "wins": 0,
+              "winRate": {
+                "wins": 0,
+                "attempts": 20,
+                "rate": 0,
+                "interval95": [0, 0.16113012549493322]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 20.9,
+                "interval95": [15.958942566775704, 25.841057433224293],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 1472.35,
+                "interval95": [992.4038861865379, 1952.296113813462],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "silent-a5",
+              "difficulty": "ascension-5",
+              "stratum": "silent",
+              "policy": "growth",
+              "attempts": 20,
+              "wins": 0,
+              "winRate": {
+                "wins": 0,
+                "attempts": 20,
+                "rate": 0,
+                "interval95": [0, 0.16113012549493322]
+              },
+              "errors": 0,
+              "timeouts": 0,
+              "auditsPassed": 20,
+              "progress": {
+                "n": 20,
+                "mean": 25.6,
+                "interval95": [19.497153211906156, 31.702846788093847],
+                "reason": null
+              },
+              "work": {
+                "n": 20,
+                "mean": 14603.8,
+                "interval95": [9646.193267974868, 19561.40673202513],
+                "reason": null
+              }
+            }
+          ],
+          "paired": [
+            {
+              "setupId": "ironclad-a0",
+              "difficulty": "ascension-0",
+              "stratum": "ironclad",
+              "a": "immediate",
+              "b": "growth",
+              "winDifference": {
+                "n": 20,
+                "mean": -0.05,
+                "aOnly": 0,
+                "bOnly": 1,
+                "bothWon": 0,
+                "bothLost": 19,
+                "interval95": null,
+                "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+              },
+              "progressDifference": {
+                "n": 20,
+                "mean": -15.3,
+                "interval95": [-20.70502706936111, -9.894972930638893],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "ironclad-a2",
+              "difficulty": "ascension-2",
+              "stratum": "ironclad",
+              "a": "immediate",
+              "b": "growth",
+              "winDifference": {
+                "n": 20,
+                "mean": -0.15,
+                "aOnly": 0,
+                "bOnly": 3,
+                "bothWon": 0,
+                "bothLost": 17,
+                "interval95": null,
+                "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+              },
+              "progressDifference": {
+                "n": 20,
+                "mean": -11.2,
+                "interval95": [-18.297058621784988, -4.102941378215012],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "ironclad-a5",
+              "difficulty": "ascension-5",
+              "stratum": "ironclad",
+              "a": "immediate",
+              "b": "growth",
+              "winDifference": {
+                "n": 20,
+                "mean": 0,
+                "aOnly": 0,
+                "bOnly": 0,
+                "bothWon": 0,
+                "bothLost": 20,
+                "interval95": null,
+                "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+              },
+              "progressDifference": {
+                "n": 20,
+                "mean": -12.35,
+                "interval95": [-18.967384254043125, -5.732615745956872],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "silent-a0",
+              "difficulty": "ascension-0",
+              "stratum": "silent",
+              "a": "immediate",
+              "b": "growth",
+              "winDifference": {
+                "n": 20,
+                "mean": -0.2,
+                "aOnly": 0,
+                "bOnly": 4,
+                "bothWon": 0,
+                "bothLost": 16,
+                "interval95": null,
+                "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+              },
+              "progressDifference": {
+                "n": 20,
+                "mean": -7.85,
+                "interval95": [-15.84485482784331, 0.14485482784331083],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "silent-a2",
+              "difficulty": "ascension-2",
+              "stratum": "silent",
+              "a": "immediate",
+              "b": "growth",
+              "winDifference": {
+                "n": 20,
+                "mean": -0.05,
+                "aOnly": 0,
+                "bOnly": 1,
+                "bothWon": 0,
+                "bothLost": 19,
+                "interval95": null,
+                "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+              },
+              "progressDifference": {
+                "n": 20,
+                "mean": -9.2,
+                "interval95": [-17.122903165208015, -1.277096834791985],
+                "reason": null
+              }
+            },
+            {
+              "setupId": "silent-a5",
+              "difficulty": "ascension-5",
+              "stratum": "silent",
+              "a": "immediate",
+              "b": "growth",
+              "winDifference": {
+                "n": 20,
+                "mean": 0,
+                "aOnly": 0,
+                "bOnly": 0,
+                "bothWon": 0,
+                "bothLost": 20,
+                "interval95": null,
+                "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+              },
+              "progressDifference": {
+                "n": 20,
+                "mean": -4.7,
+                "interval95": [-12.202140843189538, 2.8021408431895374],
+                "reason": null
+              }
+            }
+          ]
+        },
+        "family": [
+          {
+            "id": "ironclad-strength",
+            "n": 100,
+            "difference": 0.12,
+            "aOnly": 12,
+            "bOnly": 0,
+            "exactP": 0.00048828125,
+            "pairedInterval95": null,
+            "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+            "adjustedP": 0.0009765625
+          },
+          {
+            "id": "ironclad-difficulty",
+            "n": 100,
+            "difference": 0.1,
+            "aOnly": 11,
+            "bOnly": 1,
+            "exactP": 0.00634765625,
+            "pairedInterval95": null,
+            "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+            "adjustedP": 0.00634765625
+          },
+          {
+            "id": "silent-strength",
+            "n": 100,
+            "difference": 0.24,
+            "aOnly": 29,
+            "bOnly": 5,
+            "exactP": 0.000038558151572942734,
+            "pairedInterval95": null,
+            "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+            "adjustedP": 0.0001156744547188282
+          },
+          {
+            "id": "silent-difficulty",
+            "n": 100,
+            "difference": 0.3,
+            "aOnly": 30,
+            "bOnly": 0,
+            "exactP": 1.862645149230957e-9,
+            "pairedInterval95": null,
+            "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+            "adjustedP": 7.450580596923828e-9
+          }
+        ],
+        "strata": [
+          {
+            "character": "ironclad",
+            "policy": "survival",
+            "levels": [
+              {
+                "ascension": 0,
+                "wins": {
+                  "wins": 12,
+                  "attempts": 100,
+                  "rate": 0.12,
+                  "interval95": [0.06999337365267776, 0.19812268002908368]
+                },
+                "progress": {
+                  "n": 100,
+                  "mean": 32.92,
+                  "interval95": [30.457003655228128, 35.382996344771875],
+                  "reason": null
+                }
+              },
+              {
+                "ascension": 2,
+                "wins": {
+                  "wins": 8,
+                  "attempts": 100,
+                  "rate": 0.08,
+                  "interval95": [0.04109296948581091, 0.14998266879403072]
+                },
+                "progress": {
+                  "n": 100,
+                  "mean": 27.97,
+                  "interval95": [25.628527621109512, 30.311472378890485],
+                  "reason": null
+                }
+              },
+              {
+                "ascension": 5,
+                "wins": {
+                  "wins": 2,
+                  "attempts": 100,
+                  "rate": 0.02,
+                  "interval95": [0.005501852234968185, 0.07001316294199365]
+                },
+                "progress": {
+                  "n": 100,
+                  "mean": 27.24,
+                  "interval95": [24.993922367716007, 29.48607763228399],
+                  "reason": null
+                }
+              }
+            ],
+            "strengthPassed": false,
+            "difficultyPassed": true,
+            "scope": "Statistical thresholds only; promotion also requires overall integrity.",
+            "ordered": true,
+            "adjacentProgress": [
+              {
+                "a": 0,
+                "b": 2,
+                "n": 100,
+                "mean": 4.95,
+                "interval95": [2.328161915484837, 7.571838084515163],
+                "reason": null
+              },
+              {
+                "a": 2,
+                "b": 5,
+                "n": 100,
+                "mean": 0.73,
+                "interval95": [-0.8955291558570753, 2.3555291558570755],
+                "reason": null
+              }
+            ]
+          },
+          {
+            "character": "silent",
+            "policy": "survival",
+            "levels": [
+              {
+                "ascension": 0,
+                "wins": {
+                  "wins": 35,
+                  "attempts": 100,
+                  "rate": 0.35,
+                  "interval95": [0.2636410465347802, 0.4474573957080203]
+                },
+                "progress": {
+                  "n": 100,
+                  "mean": 34.73,
+                  "interval95": [31.824528917735584, 37.63547108226441],
+                  "reason": null
+                }
+              },
+              {
+                "ascension": 2,
+                "wins": {
+                  "wins": 25,
+                  "attempts": 100,
+                  "rate": 0.25,
+                  "interval95": [0.1754509400372426, 0.3430464637007583]
+                },
+                "progress": {
+                  "n": 100,
+                  "mean": 29.25,
+                  "interval95": [26.119951753816828, 32.38004824618317],
+                  "reason": null
+                }
+              },
+              {
+                "ascension": 5,
+                "wins": {
+                  "wins": 5,
+                  "attempts": 100,
+                  "rate": 0.05,
+                  "interval95": [0.02154336145631356, 0.11175196527208817]
+                },
+                "progress": {
+                  "n": 100,
+                  "mean": 25.16,
+                  "interval95": [22.365884276189615, 27.954115723810386],
+                  "reason": null
+                }
+              }
+            ],
+            "strengthPassed": true,
+            "difficultyPassed": true,
+            "scope": "Statistical thresholds only; promotion also requires overall integrity.",
+            "ordered": true,
+            "adjacentProgress": [
+              {
+                "a": 0,
+                "b": 2,
+                "n": 100,
+                "mean": 5.48,
+                "interval95": [1.7292238029200124, 9.230776197079988],
+                "reason": null
+              },
+              {
+                "a": 2,
+                "b": 5,
+                "n": 100,
+                "mean": 4.09,
+                "interval95": [1.6366413206052361, 6.543358679394764],
+                "reason": null
+              }
+            ]
+          }
+        ],
+        "integrity": false,
+        "allCriteriaPassed": false,
+        "limits": "Paired confidence intervals unavailable. Adjacent win-rate significance not claimed. Policies use different work; no human-equivalent strength claim."
+      }
+    },
+    "confirmationCompanion": {
+      "directory": "test-results/spire-strength/alternatives-2",
+      "artifacts": {
+        "report.json": "b2ea4db479c370dd9b9f6225ca8ae980c8278630facfc08f53a812a4a5440aed",
+        "protocol.json": "ae44bd76255cf58607d1e0c4674f6cfd4b02edd10fbfdde72cc581252e4fde24"
+      },
+      "identity": {
+        "rules": 3,
+        "observation": "spire-observation-1",
+        "score": "spire-progress-1",
+        "content": [
+          {
+            "id": "base",
+            "version": "3",
+            "digest": "8192b770"
+          }
+        ]
+      },
+      "attempts": 240,
+      "terminal": 240,
+      "auditsPassed": 240,
+      "protocol": {
+        "schema": "policy-study-protocol-2",
+        "game": "spire",
+        "identity": {
+          "rules": 3,
+          "observation": "spire-observation-1",
+          "score": "spire-progress-1",
+          "content": [
+            {
+              "id": "base",
+              "version": "3",
+              "digest": "8192b770"
+            }
+          ]
+        },
+        "split": "evaluation",
+        "seeds": [
+          "SPIRE-STRENGTH-3-RESERVED-01",
+          "SPIRE-STRENGTH-3-RESERVED-02",
+          "SPIRE-STRENGTH-3-RESERVED-03",
+          "SPIRE-STRENGTH-3-RESERVED-04",
+          "SPIRE-STRENGTH-3-RESERVED-05",
+          "SPIRE-STRENGTH-3-RESERVED-06",
+          "SPIRE-STRENGTH-3-RESERVED-07",
+          "SPIRE-STRENGTH-3-RESERVED-08",
+          "SPIRE-STRENGTH-3-RESERVED-09",
+          "SPIRE-STRENGTH-3-RESERVED-10",
+          "SPIRE-STRENGTH-3-RESERVED-11",
+          "SPIRE-STRENGTH-3-RESERVED-12",
+          "SPIRE-STRENGTH-3-RESERVED-13",
+          "SPIRE-STRENGTH-3-RESERVED-14",
+          "SPIRE-STRENGTH-3-RESERVED-15",
+          "SPIRE-STRENGTH-3-RESERVED-16",
+          "SPIRE-STRENGTH-3-RESERVED-17",
+          "SPIRE-STRENGTH-3-RESERVED-18",
+          "SPIRE-STRENGTH-3-RESERVED-19",
+          "SPIRE-STRENGTH-3-RESERVED-20"
+        ],
+        "policies": [
+          {
+            "id": "immediate",
+            "version": "spire-policy-3"
+          },
+          {
+            "id": "growth",
+            "version": "spire-policy-3"
+          }
+        ],
+        "study": {
+          "setups": [
+            {
+              "id": "ironclad-a0",
+              "difficulty": "ascension-0",
+              "stratum": "ironclad",
+              "setup": {
+                "character": "ironclad",
+                "ascension": 0
+              }
+            },
+            {
+              "id": "ironclad-a2",
+              "difficulty": "ascension-2",
+              "stratum": "ironclad",
+              "setup": {
+                "character": "ironclad",
+                "ascension": 2
+              }
+            },
+            {
+              "id": "ironclad-a5",
+              "difficulty": "ascension-5",
+              "stratum": "ironclad",
+              "setup": {
+                "character": "ironclad",
+                "ascension": 5
+              }
+            },
+            {
+              "id": "silent-a0",
+              "difficulty": "ascension-0",
+              "stratum": "silent",
+              "setup": {
+                "character": "silent",
+                "ascension": 0
+              }
+            },
+            {
+              "id": "silent-a2",
+              "difficulty": "ascension-2",
+              "stratum": "silent",
+              "setup": {
+                "character": "silent",
+                "ascension": 2
+              }
+            },
+            {
+              "id": "silent-a5",
+              "difficulty": "ascension-5",
+              "stratum": "silent",
+              "setup": {
+                "character": "silent",
+                "ascension": 5
+              }
+            }
+          ],
+          "defaultSetup": {
+            "character": "ironclad",
+            "ascension": 0
+          },
+          "ranking": "win, then rooms reached, then HP, then gold",
+          "reviewPath": "/?game=spire&review=policy"
+        },
+        "policySeed": "POLICY-STREAM-1",
+        "maxDecisions": 2000,
+        "workers": 2,
+        "provenance": {
+          "sourceDigests": {
+            "src/games/spire/agent/adapter.ts": "96ec54db530dbd0a9809db287c96a60de73affa9f1e05555365aa70752b044ff",
+            "src/games/spire/agent/forecast.ts": "d94e8df4d7d08e86016915cadbfdb67d66ca3403fe9c67613cae56d4a7ccfb8c",
+            "src/games/spire/agent/legality.ts": "aedc0f669bc9a8ba406ca2e5f643b76177de5031cb831518e5d2480752b8b090",
+            "src/games/spire/agent/observation.ts": "8b4e89b3af8aed736b86bae2a96be88dc95d29bd7d71efbfc7390d67c8cef1bf",
+            "src/games/spire/agent/policy.ts": "7a9b1e25c16d7bca7f574a3ee7cc73b8b51316c6d6e99b635ac36bc2a38c8b28",
+            "src/games/spire/agent/public-model.ts": "4ca5689c0c19ce73daf31f0145878ab0cbad17aa89ccef07d437c472e82f3be9",
+            "src/games/spire/agent/tactics.ts": "aaaad1acd8e93c9ae16ffd1221870f15d7c660e5ef16d565e3c9444309fbb545",
+            "src/games/spire/application/evidence.ts": "14fd05cda32988d0c3cb4712e800f80e391fda35fc792ef46b418919efb64b67",
+            "src/games/spire/application/scenario.ts": "1e86c2477d92a38e261d1c32873126cefa7b3ab00e3cf0e0d397167e10b25b3c",
+            "src/games/spire/application/session.ts": "f903b64c5bff5409d0f69f3031cfa2f8d7638c92cd8d12bdaf4b583925b82b60",
+            "src/games/spire/content/bosses.ts": "7afd7747e92cc8467e63a8e66c550c9dbd676cf72c7416037502e1ea5ce490f1",
+            "src/games/spire/content/cards.ts": "832bc5b3296ac0850de63e49311e6e1410cc41179f75fb5677084df5c8e24752",
+            "src/games/spire/content/silent.ts": "26f2da82b2360903a4028673a80e0897b232d7ad511832317031546d801d078a",
+            "src/games/spire/content/world.ts": "9837867ecc8f19b04909f73b806256e83caf872882414f13f40745339d2c1a61",
+            "src/games/spire/domain/combat.ts": "356d00c33e46fd7c9426d5bbb64f2f1f884e43dad84c133074b3c8c9d249690d",
+            "src/games/spire/domain/commands.ts": "eb8940e93c15db950cac4fddbfbbfcebc5803224939199178b3b3747ed39ee4a",
+            "src/games/spire/domain/difficulty.ts": "a8b9c2b445c1c95cdc57b484409a0e6901c895357c3f5a568bfc40f66a99a3c5",
+            "src/games/spire/domain/enemies.ts": "a4d8a0c75522eb47c1f680da2720c42d8b7c1cd7d8be1bb526f42340a008dd22",
+            "src/games/spire/domain/game.ts": "24c9ea17b5310e563bd5b15c959334e153c30266bc9a8df30f7e33594023e0a1",
+            "src/games/spire/domain/map.ts": "df72e70657b9c571c5edc7309f3696a76d2a5682a992ce6d0700348eae1c2ca9",
+            "src/games/spire/domain/rewards.ts": "0794ffab5d5990ce0abf8e2a27a9fe4b152da5f738d9481360ef193a73e39026",
+            "src/games/spire/domain/state.ts": "e419cd30195978104a1b7fe96d2a0885da6622bdedbb5a12bfa9fd787ca7e640",
+            "src/mods/spire.ts": "cd95f72ae69fd4af0cdf75b677cdc6fe11ec684f3b5019fcef9a18c1e4846f35",
+            "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+            "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+            "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+            "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+            "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+            "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+            "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6"
+          },
+          "bundleDigest": "699179a206afd9131b8de813802910565ead506b6929e4d3caed49ab4a254b2e",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+            "packages/workshop-tools/policy/cli.ts": "1921b2f903c6b073eb8b99cb5625500904cab61c2cf71f258ba71c669e47921e",
+            "packages/workshop-tools/policy/study.ts": "849b45737b70ffbc16ad1d4b43d2e966c0885a54d141266609af7ac30e5a405c",
+            "packages/workshop-tools/policy/calibration.ts": "190a35375cc6ebe3ad6cc5399d56fa067bb9310f167be314295b499c4ff91e69",
+            "packages/workshop-tools/policy/analyze-spire.ts": "180b2e51e8f17480b7f075d02b6653d6cbe99fcac799ba39bed7a0bd0e785d25",
+            "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "ranking": "win, then rooms reached, then HP, then gold",
+        "analysis": "Independent paired seed blocks within each setup/stratum. 95% Wilson win intervals and approximate t intervals for mean/paired progress; paired wins report point estimates/discordance counts with intervals unavailable. No pooling across characters; no multiple-comparison adjustment. All attempts retained. No tuning on evaluation."
+      },
+      "summary": [
+        {
+          "setupId": "ironclad-a0",
+          "difficulty": "ascension-0",
+          "stratum": "ironclad",
+          "policy": "immediate",
+          "attempts": 20,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 20,
+            "rate": 0,
+            "interval95": [0, 0.16113012549493322]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 23.1,
+            "interval95": [19.014626982759104, 27.1853730172409],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 1018.65,
+            "interval95": [773.8352790645172, 1263.4647209354828],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a0",
+          "difficulty": "ascension-0",
+          "stratum": "ironclad",
+          "policy": "growth",
+          "attempts": 20,
+          "wins": 1,
+          "winRate": {
+            "wins": 1,
+            "attempts": 20,
+            "rate": 0.05,
+            "interval95": [0.008881219432873136, 0.23613589351256675]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 38.4,
+            "interval95": [33.61179224519675, 43.188207754803244],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 10957.95,
+            "interval95": [9072.433714223454, 12843.466285776547],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a2",
+          "difficulty": "ascension-2",
+          "stratum": "ironclad",
+          "policy": "immediate",
+          "attempts": 20,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 20,
+            "rate": 0,
+            "interval95": [0, 0.16113012549493322]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 24.3,
+            "interval95": [20.552542401560057, 28.047457598439944],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 1016.15,
+            "interval95": [805.2674906576691, 1227.032509342331],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a2",
+          "difficulty": "ascension-2",
+          "stratum": "ironclad",
+          "policy": "growth",
+          "attempts": 20,
+          "wins": 3,
+          "winRate": {
+            "wins": 3,
+            "attempts": 20,
+            "rate": 0.15,
+            "interval95": [0.05236779195949584, 0.36042329588695743]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 35.5,
+            "interval95": [29.96973356571218, 41.03026643428782],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 9565.1,
+            "interval95": [7688.800459244653, 11441.399540755348],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a5",
+          "difficulty": "ascension-5",
+          "stratum": "ironclad",
+          "policy": "immediate",
+          "attempts": 20,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 20,
+            "rate": 0,
+            "interval95": [0, 0.16113012549493322]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 22.6,
+            "interval95": [18.85469637826953, 26.345303621730473],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 942.9,
+            "interval95": [726.7203585991612, 1159.0796414008387],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "ironclad-a5",
+          "difficulty": "ascension-5",
+          "stratum": "ironclad",
+          "policy": "growth",
+          "attempts": 20,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 20,
+            "rate": 0,
+            "interval95": [0, 0.16113012549493322]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 34.95,
+            "interval95": [29.30629970336044, 40.59370029663957],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 9337.9,
+            "interval95": [7493.190857154649, 11182.609142845351],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a0",
+          "difficulty": "ascension-0",
+          "stratum": "silent",
+          "policy": "immediate",
+          "attempts": 20,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 20,
+            "rate": 0,
+            "interval95": [0, 0.16113012549493322]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 23.15,
+            "interval95": [17.529223780671998, 28.770776219328],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 1648.7,
+            "interval95": [1151.9362005893552, 2145.463799410645],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a0",
+          "difficulty": "ascension-0",
+          "stratum": "silent",
+          "policy": "growth",
+          "attempts": 20,
+          "wins": 4,
+          "winRate": {
+            "wins": 4,
+            "attempts": 20,
+            "rate": 0.2,
+            "interval95": [0.0806563532712, 0.41602172202575993]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 31,
+            "interval95": [24.30343280989588, 37.69656719010412],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 19674.1,
+            "interval95": [14339.583510025004, 25008.616489974993],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a2",
+          "difficulty": "ascension-2",
+          "stratum": "silent",
+          "policy": "immediate",
+          "attempts": 20,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 20,
+            "rate": 0,
+            "interval95": [0, 0.16113012549493322]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 20.85,
+            "interval95": [16.40936255555283, 25.290637444447174],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 1507.1,
+            "interval95": [1034.8629647160726, 1979.3370352839272],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a2",
+          "difficulty": "ascension-2",
+          "stratum": "silent",
+          "policy": "growth",
+          "attempts": 20,
+          "wins": 1,
+          "winRate": {
+            "wins": 1,
+            "attempts": 20,
+            "rate": 0.05,
+            "interval95": [0.008881219432873136, 0.23613589351256675]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 30.05,
+            "interval95": [23.36812456508181, 36.731875434918194],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 19055.55,
+            "interval95": [13517.776223838959, 24593.32377616104],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a5",
+          "difficulty": "ascension-5",
+          "stratum": "silent",
+          "policy": "immediate",
+          "attempts": 20,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 20,
+            "rate": 0,
+            "interval95": [0, 0.16113012549493322]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 20.9,
+            "interval95": [15.958942566775704, 25.841057433224293],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 1472.35,
+            "interval95": [992.4038861865379, 1952.296113813462],
+            "reason": null
+          }
+        },
+        {
+          "setupId": "silent-a5",
+          "difficulty": "ascension-5",
+          "stratum": "silent",
+          "policy": "growth",
+          "attempts": 20,
+          "wins": 0,
+          "winRate": {
+            "wins": 0,
+            "attempts": 20,
+            "rate": 0,
+            "interval95": [0, 0.16113012549493322]
+          },
+          "errors": 0,
+          "timeouts": 0,
+          "auditsPassed": 20,
+          "progress": {
+            "n": 20,
+            "mean": 25.6,
+            "interval95": [19.497153211906156, 31.702846788093847],
+            "reason": null
+          },
+          "work": {
+            "n": 20,
+            "mean": 14603.8,
+            "interval95": [9646.193267974868, 19561.40673202513],
+            "reason": null
+          }
+        }
+      ]
+    }
+  },
+  "historicalSourceRecovery": [
+    "test-results/spire-strength/frozen-sources-2",
+    "test-results/spire-strength/frozen-sources-3"
+  ],
+  "verification": {
+    "isolatedGate": "513 application tests / 89 files; 37 seeded simulations / 8 files; maintenance/static/build passed",
+    "actualV3Browser": "2/2 complete development win/loss review journeys; original input, late before/after, evaluator opt-in, exact downloads, 390px layout",
+    "browserScreenshots": [
+      "test-results/spire-strength/browser/actual-v3-0.png",
+      "test-results/spire-strength/browser/actual-v3-1.png"
+    ],
+    "scope": "No geometry change; no human-equivalent playtesting claim"
+  },
+  "limits": [
+    "Original strength-2 failure retained; reference selection informed by its complete outcomes is development evidence only.",
+    "Companion strategy comparisons use twenty matched blocks; primary comparisons use one hundred. No pooling across characters or Ascensions.",
+    "Policy implementations use different work. Paired binary intervals are unavailable; adjacent difficulty significance is not claimed.",
+    "Raw attempted cases, input knowledge, commands, replay, work and audit links remain pinned by each protected report hash."
+  ],
+  "matchedStrategies": {
+    "seeds": [
+      "SPIRE-STRENGTH-3-RESERVED-01",
+      "SPIRE-STRENGTH-3-RESERVED-02",
+      "SPIRE-STRENGTH-3-RESERVED-03",
+      "SPIRE-STRENGTH-3-RESERVED-04",
+      "SPIRE-STRENGTH-3-RESERVED-05",
+      "SPIRE-STRENGTH-3-RESERVED-06",
+      "SPIRE-STRENGTH-3-RESERVED-07",
+      "SPIRE-STRENGTH-3-RESERVED-08",
+      "SPIRE-STRENGTH-3-RESERVED-09",
+      "SPIRE-STRENGTH-3-RESERVED-10",
+      "SPIRE-STRENGTH-3-RESERVED-11",
+      "SPIRE-STRENGTH-3-RESERVED-12",
+      "SPIRE-STRENGTH-3-RESERVED-13",
+      "SPIRE-STRENGTH-3-RESERVED-14",
+      "SPIRE-STRENGTH-3-RESERVED-15",
+      "SPIRE-STRENGTH-3-RESERVED-16",
+      "SPIRE-STRENGTH-3-RESERVED-17",
+      "SPIRE-STRENGTH-3-RESERVED-18",
+      "SPIRE-STRENGTH-3-RESERVED-19",
+      "SPIRE-STRENGTH-3-RESERVED-20"
+    ],
+    "attempts": 360,
+    "summary": [
+      {
+        "setupId": "ironclad-a0",
+        "difficulty": "ascension-0",
+        "stratum": "ironclad",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 23.1,
+          "interval95": [19.014626982759104, 27.1853730172409],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 1018.65,
+          "interval95": [773.8352790645172, 1263.4647209354828],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a0",
+        "difficulty": "ascension-0",
+        "stratum": "ironclad",
+        "policy": "survival",
+        "attempts": 20,
+        "wins": 2,
+        "winRate": {
+          "wins": 2,
+          "attempts": 20,
+          "rate": 0.1,
+          "interval95": [0.027865893984153206, 0.30103820641179335]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 28.1,
+          "interval95": [22.17640324718166, 34.02359675281834],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 8497.95,
+          "interval95": [6300.463226096297, 10695.436773903704],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a0",
+        "difficulty": "ascension-0",
+        "stratum": "ironclad",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 1,
+        "winRate": {
+          "wins": 1,
+          "attempts": 20,
+          "rate": 0.05,
+          "interval95": [0.008881219432873136, 0.23613589351256675]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 38.4,
+          "interval95": [33.61179224519675, 43.188207754803244],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 10957.95,
+          "interval95": [9072.433714223454, 12843.466285776547],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a2",
+        "difficulty": "ascension-2",
+        "stratum": "ironclad",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 24.3,
+          "interval95": [20.552542401560057, 28.047457598439944],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 1016.15,
+          "interval95": [805.2674906576691, 1227.032509342331],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a2",
+        "difficulty": "ascension-2",
+        "stratum": "ironclad",
+        "policy": "survival",
+        "attempts": 20,
+        "wins": 1,
+        "winRate": {
+          "wins": 1,
+          "attempts": 20,
+          "rate": 0.05,
+          "interval95": [0.008881219432873136, 0.23613589351256675]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 25.7,
+          "interval95": [20.307785117753948, 31.09221488224605],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 9663,
+          "interval95": [5223.806278431215, 14102.193721568785],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a2",
+        "difficulty": "ascension-2",
+        "stratum": "ironclad",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 3,
+        "winRate": {
+          "wins": 3,
+          "attempts": 20,
+          "rate": 0.15,
+          "interval95": [0.05236779195949584, 0.36042329588695743]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 35.5,
+          "interval95": [29.96973356571218, 41.03026643428782],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 9565.1,
+          "interval95": [7688.800459244653, 11441.399540755348],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a5",
+        "difficulty": "ascension-5",
+        "stratum": "ironclad",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 22.6,
+          "interval95": [18.85469637826953, 26.345303621730473],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 942.9,
+          "interval95": [726.7203585991612, 1159.0796414008387],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a5",
+        "difficulty": "ascension-5",
+        "stratum": "ironclad",
+        "policy": "survival",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 23.3,
+          "interval95": [19.110971753245718, 27.489028246754284],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 7323.65,
+          "interval95": [5553.7292417455155, 9093.570758254484],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a5",
+        "difficulty": "ascension-5",
+        "stratum": "ironclad",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 34.95,
+          "interval95": [29.30629970336044, 40.59370029663957],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 9337.9,
+          "interval95": [7493.190857154649, 11182.609142845351],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a0",
+        "difficulty": "ascension-0",
+        "stratum": "silent",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 23.15,
+          "interval95": [17.529223780671998, 28.770776219328],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 1648.7,
+          "interval95": [1151.9362005893552, 2145.463799410645],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a0",
+        "difficulty": "ascension-0",
+        "stratum": "silent",
+        "policy": "survival",
+        "attempts": 20,
+        "wins": 10,
+        "winRate": {
+          "wins": 10,
+          "attempts": 20,
+          "rate": 0.5,
+          "interval95": [0.2992949144298199, 0.7007050855701801]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 37.5,
+          "interval95": [30.924164171797344, 44.075835828202656],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 28299.5,
+          "interval95": [21641.44494689239, 34957.55505310761],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a0",
+        "difficulty": "ascension-0",
+        "stratum": "silent",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 4,
+        "winRate": {
+          "wins": 4,
+          "attempts": 20,
+          "rate": 0.2,
+          "interval95": [0.0806563532712, 0.41602172202575993]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 31,
+          "interval95": [24.30343280989588, 37.69656719010412],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 19674.1,
+          "interval95": [14339.583510025004, 25008.616489974993],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a2",
+        "difficulty": "ascension-2",
+        "stratum": "silent",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 20.85,
+          "interval95": [16.40936255555283, 25.290637444447174],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 1507.1,
+          "interval95": [1034.8629647160726, 1979.3370352839272],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a2",
+        "difficulty": "ascension-2",
+        "stratum": "silent",
+        "policy": "survival",
+        "attempts": 20,
+        "wins": 4,
+        "winRate": {
+          "wins": 4,
+          "attempts": 20,
+          "rate": 0.2,
+          "interval95": [0.0806563532712, 0.41602172202575993]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 29.65,
+          "interval95": [22.03019241143777, 37.26980758856222],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 20524.55,
+          "interval95": [12779.558322470144, 28269.541677529854],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a2",
+        "difficulty": "ascension-2",
+        "stratum": "silent",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 1,
+        "winRate": {
+          "wins": 1,
+          "attempts": 20,
+          "rate": 0.05,
+          "interval95": [0.008881219432873136, 0.23613589351256675]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 30.05,
+          "interval95": [23.36812456508181, 36.731875434918194],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 19055.55,
+          "interval95": [13517.776223838959, 24593.32377616104],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a5",
+        "difficulty": "ascension-5",
+        "stratum": "silent",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 20.9,
+          "interval95": [15.958942566775704, 25.841057433224293],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 1472.35,
+          "interval95": [992.4038861865379, 1952.296113813462],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a5",
+        "difficulty": "ascension-5",
+        "stratum": "silent",
+        "policy": "survival",
+        "attempts": 20,
+        "wins": 1,
+        "winRate": {
+          "wins": 1,
+          "attempts": 20,
+          "rate": 0.05,
+          "interval95": [0.008881219432873136, 0.23613589351256675]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 25.7,
+          "interval95": [18.938162414231186, 32.46183758576881],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 15508.35,
+          "interval95": [9762.665178326222, 21254.034821673777],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a5",
+        "difficulty": "ascension-5",
+        "stratum": "silent",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 25.6,
+          "interval95": [19.497153211906156, 31.702846788093847],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 14603.8,
+          "interval95": [9646.193267974868, 19561.40673202513],
+          "reason": null
+        }
+      }
+    ],
+    "paired": [
+      {
+        "setupId": "ironclad-a0",
+        "difficulty": "ascension-0",
+        "stratum": "ironclad",
+        "a": "immediate",
+        "b": "survival",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.1,
+          "aOnly": 0,
+          "bOnly": 2,
+          "bothWon": 0,
+          "bothLost": 18,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -5,
+          "interval95": [-11.694845486208813, 1.6948454862088127],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a0",
+        "difficulty": "ascension-0",
+        "stratum": "ironclad",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.05,
+          "aOnly": 0,
+          "bOnly": 1,
+          "bothWon": 0,
+          "bothLost": 19,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -15.3,
+          "interval95": [-20.70502706936111, -9.894972930638893],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a0",
+        "difficulty": "ascension-0",
+        "stratum": "ironclad",
+        "a": "survival",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": 0.05,
+          "aOnly": 1,
+          "bOnly": 0,
+          "bothWon": 1,
+          "bothLost": 18,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -10.3,
+          "interval95": [-18.86947002288694, -1.7305299771130613],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a2",
+        "difficulty": "ascension-2",
+        "stratum": "ironclad",
+        "a": "immediate",
+        "b": "survival",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.05,
+          "aOnly": 0,
+          "bOnly": 1,
+          "bothWon": 0,
+          "bothLost": 19,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -1.4,
+          "interval95": [-7.698065091171381, 4.898065091171381],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a2",
+        "difficulty": "ascension-2",
+        "stratum": "ironclad",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.15,
+          "aOnly": 0,
+          "bOnly": 3,
+          "bothWon": 0,
+          "bothLost": 17,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -11.2,
+          "interval95": [-18.297058621784988, -4.102941378215012],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a2",
+        "difficulty": "ascension-2",
+        "stratum": "ironclad",
+        "a": "survival",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.1,
+          "aOnly": 0,
+          "bOnly": 2,
+          "bothWon": 1,
+          "bothLost": 17,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -9.8,
+          "interval95": [-17.640998400244165, -1.959001599755835],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a5",
+        "difficulty": "ascension-5",
+        "stratum": "ironclad",
+        "a": "immediate",
+        "b": "survival",
+        "winDifference": {
+          "n": 20,
+          "mean": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "bothWon": 0,
+          "bothLost": 20,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -0.7,
+          "interval95": [-6.117808957940179, 4.7178089579401785],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a5",
+        "difficulty": "ascension-5",
+        "stratum": "ironclad",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "bothWon": 0,
+          "bothLost": 20,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -12.35,
+          "interval95": [-18.967384254043125, -5.732615745956872],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a5",
+        "difficulty": "ascension-5",
+        "stratum": "ironclad",
+        "a": "survival",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "bothWon": 0,
+          "bothLost": 20,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -11.65,
+          "interval95": [-18.490106762584382, -4.809893237415617],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a0",
+        "difficulty": "ascension-0",
+        "stratum": "silent",
+        "a": "immediate",
+        "b": "survival",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.5,
+          "aOnly": 0,
+          "bOnly": 10,
+          "bothWon": 0,
+          "bothLost": 10,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -14.35,
+          "interval95": [-24.62184565552467, -4.07815434447533],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a0",
+        "difficulty": "ascension-0",
+        "stratum": "silent",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.2,
+          "aOnly": 0,
+          "bOnly": 4,
+          "bothWon": 0,
+          "bothLost": 16,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -7.85,
+          "interval95": [-15.84485482784331, 0.14485482784331083],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a0",
+        "difficulty": "ascension-0",
+        "stratum": "silent",
+        "a": "survival",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": 0.3,
+          "aOnly": 10,
+          "bOnly": 4,
+          "bothWon": 0,
+          "bothLost": 6,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": 6.5,
+          "interval95": [-4.6151171754365325, 17.61511717543653],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a2",
+        "difficulty": "ascension-2",
+        "stratum": "silent",
+        "a": "immediate",
+        "b": "survival",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.2,
+          "aOnly": 0,
+          "bOnly": 4,
+          "bothWon": 0,
+          "bothLost": 16,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -8.8,
+          "interval95": [-18.053158245019286, 0.45315824501928503],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a2",
+        "difficulty": "ascension-2",
+        "stratum": "silent",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.05,
+          "aOnly": 0,
+          "bOnly": 1,
+          "bothWon": 0,
+          "bothLost": 19,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -9.2,
+          "interval95": [-17.122903165208015, -1.277096834791985],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a2",
+        "difficulty": "ascension-2",
+        "stratum": "silent",
+        "a": "survival",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": 0.15,
+          "aOnly": 4,
+          "bOnly": 1,
+          "bothWon": 0,
+          "bothLost": 15,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -0.4,
+          "interval95": [-8.957758401652423, 8.157758401652423],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a5",
+        "difficulty": "ascension-5",
+        "stratum": "silent",
+        "a": "immediate",
+        "b": "survival",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.05,
+          "aOnly": 0,
+          "bOnly": 1,
+          "bothWon": 0,
+          "bothLost": 19,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -4.8,
+          "interval95": [-12.801088746111862, 3.2010887461118616],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a5",
+        "difficulty": "ascension-5",
+        "stratum": "silent",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "bothWon": 0,
+          "bothLost": 20,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -4.7,
+          "interval95": [-12.202140843189538, 2.8021408431895374],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a5",
+        "difficulty": "ascension-5",
+        "stratum": "silent",
+        "a": "survival",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": 0.05,
+          "aOnly": 1,
+          "bOnly": 0,
+          "bothWon": 0,
+          "bothLost": 19,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": 0.1,
+          "interval95": [-6.737789003648844, 6.937789003648843],
+          "reason": null
+        }
+      }
+    ]
+  }
+}

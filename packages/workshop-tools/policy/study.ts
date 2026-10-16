@@ -5,12 +5,21 @@ import type { Runtime } from './runtime.ts';
 import { casePool } from './pool.ts';
 
 /** Frozen independent blocks; no environment seed ever enters policy configuration. */
-export const cohortSeeds = (split: 'development' | 'evaluation') =>
-  Array.from(
-    { length: split === 'development' ? 10 : 20 },
+export const cohortSeeds = (
+  split: 'development' | 'evaluation',
+  namespace = 'POLICY-ADOPTION-1',
+  blocks = split === 'development' ? 10 : 20,
+) => {
+  if (!/^[A-Z][A-Z0-9-]{2,63}$/.test(namespace))
+    throw new Error('Cohort namespace must be 3–64 uppercase letters, digits or hyphens.');
+  if (![10, 20, 40, 60, 100].includes(blocks))
+    throw new Error('Use 10, 20, 40, 60 or 100 independent blocks.');
+  return Array.from(
+    { length: blocks },
     (_, i) =>
-      `POLICY-ADOPTION-1-${split === 'development' ? 'DEV' : 'RESERVED'}-${String(i + 1).padStart(2, '0')}`,
+      `${namespace}-${split === 'development' ? 'DEV' : 'RESERVED'}-${String(i + 1).padStart(2, '0')}`,
   );
+};
 export const auditPassed = (a: PolicyAudit) =>
   a.integrity === 'passed' &&
   a.replay === 'passed' &&
@@ -31,7 +40,10 @@ export function meanInterval(values: number[]) {
         'Observed sample does not support a variance-based interval; finite constant observations do not establish zero population uncertainty.',
     };
   // Student t, 95%, for the predeclared 10/20 independent seed blocks.
-  const critical = values.length === 10 ? 2.262 : values.length === 20 ? 2.093 : 1.96;
+  const critical =
+    ({ 10: 2.262, 20: 2.093, 40: 2.023, 60: 2.001, 100: 1.984 } as Record<number, number>)[
+      values.length
+    ] ?? 1.96;
   const halfWidth = critical * Math.sqrt(variance / values.length);
   return { n: values.length, mean, interval95: [mean - halfWidth, mean + halfWidth], reason: null };
 }
@@ -88,9 +100,13 @@ export async function benchmark(
     directory: string;
     maxDecisions: number;
     provenance: JsonObject;
+    seeds?: string[];
   },
 ) {
-  const jobs: CaseJob[] = cohortSeeds(options.split).flatMap((seed) =>
+  const seeds = options.seeds ?? cohortSeeds(options.split);
+  if (!seeds.length || new Set(seeds).size !== seeds.length)
+    throw new Error('Study requires unique independent seed labels.');
+  const jobs: CaseJob[] = seeds.flatMap((seed) =>
     runtime.study.setups.flatMap((setup) =>
       Object.keys(runtime.builtins).map((policy) => ({
         seed,
@@ -113,7 +129,7 @@ export async function benchmark(
     rows,
     runtime.study,
     Object.keys(runtime.builtins),
-    cohortSeeds(options.split),
+    seeds,
   );
   return {
     schema: 'policy-study-2',
@@ -121,7 +137,7 @@ export async function benchmark(
     identity: runtime.adapter.identity,
     study: runtime.study,
     split: options.split,
-    seeds: cohortSeeds(options.split),
+    seeds,
     policySeed: 'POLICY-STREAM-1',
     maxDecisions: options.maxDecisions,
     workers: options.workers ?? 1,

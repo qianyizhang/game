@@ -65,6 +65,38 @@ or future intents. Work counts declared deterministic candidate evaluations, not
 time or model compute. Private policy memory resets each episode; optional randomness
 uses the independent `POLICY-STREAM-1` stream, never the environment seed.
 
+### Visible-hand planning
+
+`spire-policy-3` keeps Immediate as a greedy strategy; Survival and Growth additionally
+search at most five visible-hand actions with beam width twelve, replanning after each
+actual command. Candidate evaluations are included in recorded work. Collection
+choices value lasting scaling, energy relics and redundant-card costs; routes consider
+three connected future rows of public node kinds, and low-health campfires prioritize
+healing. These policies have different work costs as well as strategic priorities.
+
+The projector constructs a **synthetic state from the public observation and fixed
+placeholder private fields**, then reuses native deterministic card resolution. It
+never receives the real state, seed, RNG, ordered draw pile, AI history or replay.
+Draws, generated cards, random effects, pending choices, Hex generation, Dark Embrace
+draws, stasis release and Time Warp turn endings cut a branch. Lethal Awakened One
+branches also stop because its private phase flag is unavailable. The model asserts
+that its placeholder RNG did not change. Current displayed intents stay intact unless
+a native deterministic public trigger changes them. Future intent selection and
+unobserved draws are never simulated as if known.
+
+The endpoint utility and estimates beyond those deterministic effects remain
+approximate. Regression witnesses protect Block absorption, Sharp Hide before Rage,
+Reaper healing only after survival, public Split cancellation and indirect draw cuts.
+Do not duplicate a second combat resolver: the first hand-written projection missed
+these orders and could stall safely winnable fights. All received observations remain
+detached, and hidden-state substitutions produce identical policy decisions.
+
+Persistent defenses require a separate progress check: avoiding current-turn damage
+can still lose a winnable long fight. The v3 policy values breaking Spheric Guardian's
+retained Block; its complete encounter regression wins in thirteen decisions where
+the frozen v2 policy loses after forty-four. A local valuation fix is evidence for that
+encounter, not a substitute for fresh full-run strength calibration.
+
 ## Run, record, audit and extend
 
 ```sh
@@ -125,8 +157,31 @@ policies after development, then evaluate once on reserved cases. Report Wilson 
 intervals and approximate paired progress intervals per setup over independent seed
 blocks. Paired wins retain point estimates/discordance counts; their interval is explicitly
 unavailable until a suitable paired-binomial method is supplied. Do not pool character
-repetitions or claim adjusted significance. Publish
+repetitions. Any adjusted significance claim requires a preregistered contrast family
+and an explicit inferential addendum, separate from descriptive study summaries. Publish
 negative results and uncertainty; future tuning needs a new version/protocol/fresh cases.
 
 The [dated adoption report](../research/experiments/2026-10-16-spire-policy.md) owns measured
 results, sparse-win limits and the source-pinned correction to original paired-win analysis.
+
+The [strength-2 protocol](../research/experiments/2026-10-16-spire-strength-protocol.md)
+preregisters a fresh sixty-block matrix, frozen character-specific references and
+historical policy control. Shared benchmarks accept `--cohort NEW-NAMESPACE` and
+`--blocks 10|20|40|60|100`; changing block count alone reuses the same seed prefix.
+Default adoption seed identities remain unchanged. Original v1 studies and bundles
+retain their identities; they are not retroactively reproduced with v2 policies.
+
+The [strength-3 protocol](../research/experiments/2026-10-16-spire-strength-3-protocol.md)
+retains that first failed confirmation, fixes Survival for both characters and uses
+one hundred fresh primary blocks plus twenty matched companion blocks. Shared
+`--policies ID,ID` selects an explicit frozen subset. Statistical promotion requires
+both complete matrices and all independent audits; changing references after seeing
+reserved results requires another prospective study. Historical v1/v2 source snapshots
+and compiled bundles remain executable under their original identities.
+
+The [dated strength report](../research/experiments/2026-10-16-spire-strength.md)
+preserves both failed confirmations. The hundred-block follow-up shows improved
+A0 wins and ordered difficulty endpoints, but Ironclad misses its absolute strength
+confidence threshold and three historical-control timeouts fail the overall terminal
+requirement. These findings require another prospective development slice, not a
+retroactive change to the frozen criteria.

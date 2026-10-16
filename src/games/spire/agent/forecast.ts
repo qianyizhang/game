@@ -31,14 +31,17 @@ export function incoming(view: Observation): number {
     .reduce(
       (sum, e) =>
         sum +
-        e.intent.effects.reduce(
-          (total, effect) =>
-            total +
-            (effect.type === 'damage'
-              ? attackDamage(effect.amount, e, c.player) * (effect.hits ?? 1)
-              : 0),
-          0,
-        ),
+        (e.powers.constrict ?? 0) +
+        ((e.powers.intangible ? Math.min(1, e.status.poison) : e.status.poison) >= e.hp
+          ? 0
+          : e.intent.effects.reduce(
+              (total, effect) =>
+                total +
+                (effect.type === 'damage'
+                  ? attackDamage(effect.amount, e, c.player) * (effect.hits ?? 1)
+                  : 0),
+              0,
+            )),
       0,
     );
 }
@@ -220,7 +223,8 @@ export function cardValue(view: Observation, card: Card, target?: string, inComb
   for (const [id, damage] of damageByEnemy) {
     const enemy = enemies.find((entry) => entry.id === id)!;
     value.damage +=
-      Math.min(enemy.hp, Math.max(0, damage - enemy.block)) + Math.min(enemy.block, damage) * 0.25;
+      Math.min(enemy.hp, Math.max(0, damage - enemy.block)) +
+      Math.min(enemy.block, damage) * (enemy.definitionId === 'sphericGuardian' ? 1 : 0.6);
     if (damage >= enemy.hp + enemy.block) {
       value.kills++;
       value.defense += enemy.intent.effects.reduce(

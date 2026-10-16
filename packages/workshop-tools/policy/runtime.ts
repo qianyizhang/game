@@ -63,6 +63,8 @@ export async function withRuntime<T>(
           'policy/runtime.ts',
           'policy/cli.ts',
           'policy/study.ts',
+          'policy/calibration.ts',
+          'policy/analyze-spire.ts',
           'policy/pool.ts',
           'policy/worker.ts',
           'runtime-bundle.ts',

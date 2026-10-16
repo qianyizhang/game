@@ -143,3 +143,11 @@ wire game as `dungeon-cartographer`; the CLI selector remains `cartographer`.
 10/20-block studies; explicit `--suite` retains legacy summary semantics. Every native
 study case has original knowledge, replay, audit and a spectator manifest. See the
 [six-game workflow evidence](../../docs/research/experiments/2026-10-16-policy-workflow.md).
+
+Shared policy benchmarks accept `--cohort NEW-NAMESPACE`, `--blocks 10|20|40|60|100`
+and `--policies ID,ID`. Defaults preserve the original adoption populations. Increasing
+blocks reuses the seed prefix; choose a fresh namespace for a new reserved study.
+Policy subsets enter the frozen protocol and complete-grid validation. Spire's
+[prospective confirmation](../../docs/research/experiments/2026-10-16-spire-strength-3-protocol.md)
+uses separate primary/companion grids with explicit denominators and an inferential
+addendum; the common report remains descriptive.

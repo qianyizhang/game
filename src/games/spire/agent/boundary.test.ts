@@ -61,6 +61,10 @@ describe('Spire restricted player boundary', () => {
     for (const node of changed.map) if (node.kind !== 'boss') node.encounter = ['nemesis'];
     const original = observe(run);
     expect(observe(changed)).toEqual(original);
+    for (const factory of Object.values(builtins)) {
+      const config = { setup: {}, options: {}, policySeed: 'PUBLIC-ONLY' };
+      expect(factory.create(config)(observe(changed))).toEqual(factory.create(config)(original));
+    }
     const serialized = JSON.stringify(original);
     for (const key of [
       'seed',

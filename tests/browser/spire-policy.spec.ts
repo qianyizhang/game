@@ -100,6 +100,11 @@ test('Spire policy review connects original knowledge to a passive map and comba
   await mkdir('test-results/spire-policy-review', { recursive: true });
   await page.screenshot({ path: 'test-results/spire-policy-review/desktop.png', fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
+  // A late-run label can be wider than the phone. Exercise native select sizing
+  // without recording a thousand decisions just to produce multi-digit counters.
+  await page.getByLabel('Rollout location').evaluate((select: HTMLSelectElement) => {
+    select.options[0].textContent = 'Decision 1010 · Act 3 · Room 16 · combat · Turn 13';
+  });
   await page.screenshot({ path: 'test-results/spire-policy-review/phone.png', fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(

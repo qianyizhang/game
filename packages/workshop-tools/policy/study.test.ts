@@ -7,6 +7,11 @@ void test('development and reserved seed blocks stay disjoint and paired interva
   assert.equal(dev.length, 10);
   assert.equal(evaluation.length, 20);
   assert.equal(new Set([...dev, ...evaluation]).size, 30);
+  const fresh = cohortSeeds('evaluation', 'SPIRE-STRENGTH-2', 60);
+  assert.equal(fresh.length, 60);
+  assert.ok(fresh.every((seed) => ![...dev, ...evaluation].includes(seed)));
+  assert.throws(() => cohortSeeds('evaluation', '../escape'), /namespace/);
+  assert.throws(() => cohortSeeds('evaluation', 'VALID', 19), /blocks/);
   const result = meanInterval(Array.from({ length: 20 }, () => -2));
   assert.equal(result.mean, -2);
   assert.equal(result.interval95, null);

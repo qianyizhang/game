@@ -12,6 +12,9 @@ const usage = `policy run|record --game blindside|spire|hearth|emberwake|cartogr
 policy record --game blindside|spire|hearth|emberwake|cartographer|night-passage --out NEW_DIRECTORY [same options]
 policy benchmark --game blindside|spire|hearth|emberwake|cartographer|night-passage --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
 policy audit --input ROLLOUT --out NEW_RECEIPT [--policy-module ./policy.ts]
+Shared study options (five adapters): --cohort UPPERCASE-NAMESPACE --blocks 10|20|40|60|100.
+  --policies ID,ID selects a declared subset; default is every loaded policy.
+Choose a NEW cohort namespace for fresh evidence; increasing --blocks reuses the same prefix.
 A local TS module default-exports a game-typed PolicyFactory (Night Passage: native PolicyPlayer). It is trusted in-process code.
 Night Passage policies are quick|balanced|deliberate; preserve --max-actions/--max-ticks and native PolicyPlayer timing. Benchmark uses recorded 10/20-block studies; explicit --suite training|held-out selects legacy summaries.
 Run prints result/audit; record retains exact knowledge, replay, audit and compiled source-pinned bundle.
@@ -42,7 +45,17 @@ async function main() {
       mode === 'audit'
         ? ['input', 'out', 'policy-module']
         : mode === 'benchmark'
-          ? ['game', 'out', 'split', 'max-decisions', 'policy-module', 'pool']
+          ? [
+              'game',
+              'out',
+              'split',
+              'max-decisions',
+              'policy-module',
+              'pool',
+              'cohort',
+              'blocks',
+              'policies',
+            ]
           : [
               'game',
               'out',
@@ -105,6 +118,11 @@ async function main() {
       throw new Error('Use 1–4 independent case workers.');
     const split = options.split ?? 'development';
     if (!['development', 'evaluation'].includes(split)) throw new Error('Unknown study split.');
+    const seeds = cohortSeeds(
+      split as 'development' | 'evaluation',
+      options.cohort,
+      options.blocks === undefined ? undefined : Number(options.blocks),
+    );
     const directory = ['record', 'benchmark'].includes(mode)
       ? await freshDirectory(resolve(options.out))
       : undefined;
@@ -165,12 +183,21 @@ async function main() {
             throw new Error('Custom study policy ID must differ from built-ins.');
           if (runtime.custom)
             runtime.builtins = { ...runtime.builtins, [runtime.custom.id]: runtime.custom };
+          if (options.policies) {
+            const selected = options.policies.split(',');
+            if (
+              new Set(selected).size !== selected.length ||
+              selected.some((id) => !Object.hasOwn(runtime.builtins, id))
+            )
+              throw new Error('Study policies must be unique available policy IDs.');
+            runtime.builtins = Object.fromEntries(selected.map((id) => [id, runtime.builtins[id]]));
+          }
           const protocol = {
             schema: 'policy-study-protocol-2',
             game,
             identity: runtime.adapter.identity,
             split,
-            seeds: cohortSeeds(split as 'development' | 'evaluation'),
+            seeds,
             policies: Object.values(runtime.builtins).map((p) => ({
               id: p.id,
               version: p.version,
@@ -190,6 +217,7 @@ async function main() {
             { flag: 'wx' },
           );
           const report = await benchmark(runtime, {
+            seeds,
             split: split as 'development' | 'evaluation',
             directory: directory!,
             workers,
