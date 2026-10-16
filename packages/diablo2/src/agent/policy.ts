@@ -1,12 +1,14 @@
 import type { PolicyFactory, Proposal } from '../../../../src/shared/policy/types';
 import { freeCell } from '../domain/loot';
 import { lineOfSight } from '../domain/maps';
+import { STEP_SCALE } from '../domain/timing';
 import type { Item, Point } from '../domain/types';
 import { terrainRows, type Observation, type PolicyCommand } from './observation';
 
 export const STRATEGIES = ['immediate', 'survival', 'growth'] as const;
 export type Strategy = (typeof STRATEGIES)[number];
 const distance = (a: Point, b: Point) => Math.hypot(a.x - b.x, a.y - b.y);
+const MOVEMENT_HORIZON_TICKS = 5;
 const directions = [
   [1, 0],
   [0, 1],
@@ -14,11 +16,45 @@ const directions = [
   [0, -1],
 ] as const;
 const cellKey = (at: Point, width: number) => Math.floor(at.y) * width + Math.floor(at.x);
+/** Distance between two disclosed swept segments; intersections are conservative
+ * even if the two objects would reach that point at different instants. */
+function segmentDistance(a: Point, b: Point, c: Point, d: Point): number {
+  const cross = (p: Point, q: Point, r: Point) =>
+    (q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x);
+  const pointSegment = (p: Point, q: Point, r: Point) => {
+    const dx = r.x - q.x,
+      dy = r.y - q.y,
+      length = dx * dx + dy * dy;
+    const t = length ? Math.max(0, Math.min(1, ((p.x - q.x) * dx + (p.y - q.y) * dy) / length)) : 0;
+    return distance(p, { x: q.x + t * dx, y: q.y + t * dy });
+  };
+  if (cross(a, b, c) * cross(a, b, d) < 0 && cross(c, d, a) * cross(c, d, b) < 0) return 0;
+  return Math.min(
+    pointSegment(a, c, d),
+    pointSegment(b, c, d),
+    pointSegment(c, a, b),
+    pointSegment(d, a, b),
+  );
+}
+function compareRank(a: readonly number[], b: readonly number[]): number {
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] - b[i];
+  return 0;
+}
 interface RegionMemory {
   exhausted: Set<number>;
   frontier: number | null;
   goal: string | null;
   visits: Map<number, number>;
+}
+interface CombatProgress {
+  region: string;
+  uid: number;
+  hp: number;
+  changedAt: number;
+  casts: number;
+  at: Point;
+  origin: number | null;
+  failedOrigins: Set<number>;
 }
 interface Memory {
   regions: Map<string, RegionMemory>;
@@ -28,6 +64,10 @@ interface Memory {
   lastRefillAt: { region: string; at: Point } | null;
   refills: number;
   attributes: number;
+  combat: CombatProgress | null;
+  combatRegion: string | null;
+  targets: Map<number, CombatProgress>;
+  recovering: boolean;
   pursuit: { region: string; uid: number; at: { x: number; y: number } } | null;
 }
 function navigationMemory(memory: Memory, region: string): RegionMemory {
@@ -94,6 +134,7 @@ function navigate(
   memory: RegionMemory,
   strategy: Strategy,
   combatTarget?: Point,
+  excludedAttackCells: ReadonlySet<number> = new Set(),
 ): Navigation {
   const { player: p } = input;
   const r = { ...input.region, tiles: terrainRows(input.region) };
@@ -212,8 +253,14 @@ function navigate(
   for (const goal of candidates) {
     for (const cell of queue) {
       evaluations++;
-      const at = { x: (cell % width) + 0.5, y: Math.floor(cell / width) + 0.5 };
-      if (distance(at, goal.at) > goal.reach || (combatTarget && !lineOfSight(r, at, goal.at)))
+      // The current node is an actual fractional position, not an ideal center.
+      // Otherwise a goal can appear reached while native pickup is still out of range.
+      const at =
+        cell === start ? p : { x: (cell % width) + 0.5, y: Math.floor(cell / width) + 0.5 };
+      if (
+        distance(at, goal.at) > goal.reach ||
+        (combatTarget && (excludedAttackCells.has(cell) || !lineOfSight(r, at, goal.at)))
+      )
         continue;
       const value = goal.priority - steps.get(cell)! * 0.8 - distance(at, goal.at) * 0.1;
       if (value > best) {
@@ -288,7 +335,7 @@ function navigate(
 function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> {
   return {
     id: strategy,
-    version: 'emberwake-policy-2',
+    version: 'emberwake-policy-6',
     create() {
       const memory: Memory = {
         regions: new Map(),
@@ -299,6 +346,10 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
         refills: 0,
         attributes: 0,
         pursuit: null,
+        combat: null,
+        combatRegion: null,
+        targets: new Map(),
+        recovering: false,
       };
       return (input): Proposal<PolicyCommand> => {
         const p = input.player,
@@ -308,6 +359,24 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
         const melee =
           input.definitions.heroes.find((hero) => hero.id === input.hero)!.attack === 'melee';
         const choose = (command: PolicyCommand, reason: string): Proposal<PolicyCommand> => {
+          if (
+            command.type === 'cast' &&
+            memory.combat &&
+            input.enemies.some(
+              (foe) => foe.uid === memory.combat!.uid && distance(foe, command.target) < 0.05,
+            ) &&
+            input.definitions.skills.some(
+              (skill) => skill.id === command.skill && skill.effect === 'projectile',
+            )
+          ) {
+            const origin = cellKey(p, input.region.width);
+            if (memory.combat.origin !== origin) {
+              memory.combat.origin = origin;
+              memory.combat.casts = 0;
+              memory.combat.changedAt = input.tick;
+            }
+            memory.combat.casts++;
+          }
           memory.lastTick = input.tick;
           memory.previous = command;
           return {
@@ -320,6 +389,16 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
               pathNodes,
               portalRefills: memory.refills,
               lastSeenFoe: memory.pursuit,
+              recovering: memory.recovering,
+              combatProgress: memory.combat
+                ? {
+                    uid: memory.combat.uid,
+                    hp: memory.combat.hp,
+                    casts: memory.combat.casts,
+                    failedOrigins: memory.combat.failedOrigins.size,
+                    unchangedTicks: input.tick - memory.combat.changedAt,
+                  }
+                : null,
             },
           };
         };
@@ -434,6 +513,45 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
           .sort((a, b) => distance(p, a) - distance(p, b));
         work += input.enemies.length;
         const enemy = enemies[0];
+        if (memory.combatRegion !== input.region.id) {
+          memory.targets.clear();
+          memory.combat = null;
+          memory.combatRegion = input.region.id;
+        }
+        for (const foe of input.enemies) {
+          if (foe.hp <= 0) {
+            memory.targets.delete(foe.uid);
+            if (memory.combat?.uid === foe.uid) memory.combat = null;
+            continue;
+          }
+          let progress = memory.targets.get(foe.uid);
+          if (!progress) {
+            progress = {
+              region: input.region.id,
+              uid: foe.uid,
+              hp: foe.hp,
+              at: { x: foe.x, y: foe.y },
+              changedAt: input.tick,
+              casts: 0,
+              origin: null,
+              failedOrigins: new Set(),
+            };
+            memory.targets.set(foe.uid, progress);
+          } else {
+            if (foe.hp < progress.hp) {
+              progress.failedOrigins.clear();
+              progress.casts = 0;
+              progress.origin = null;
+              progress.changedAt = input.tick;
+            }
+            progress.hp = foe.hp;
+            progress.at = { x: foe.x, y: foe.y };
+          }
+        }
+        // Sensor loss is not evidence of damage or death. Retain disclosed feedback.
+        if (enemy) memory.combat = memory.targets.get(enemy.uid)!;
+        if (p.hp >= input.stats.maxHp * 0.7 || heal || input.location !== 'field')
+          memory.recovering = false;
         if (enemy)
           memory.pursuit = {
             region: input.region.id,
@@ -447,8 +565,63 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
         )
           memory.pursuit = null;
         const moves = actions.filter((c) => c.type === 'move');
-        const hazard = input.hazards.find((h) => h.delay > 0 && distance(p, h) < h.radius + 0.5);
+        const warnings = input.hazards.filter((h) => h.delay > 0);
+        const hostileShots = input.projectiles.filter((shot) => !shot.friendly);
+        const hazard = warnings.some((h) => distance(p, h) < h.radius + 0.5);
+        // Once warning/projectile danger is tied, a healthy melee escape should
+        // preserve attack reach instead of repeatedly retreating and pursuing back.
+        // Recovery retains its existing maximum-foe-clearance objective.
+        const engagementTarget =
+          hazard && melee && !memory.recovering && p.hp >= input.stats.maxHp * 0.7
+            ? (enemy ?? memory.pursuit?.at)
+            : undefined;
+        // A five-tick public geometric envelope, not a stepped-world prediction.
+        // Expand the straight movement prefix for initial cell alignment/axis sliding.
+        // Walls, later shots and foe motion are deliberately not predicted here.
+        const safety = (at: Point, teleport = false) => {
+          work +=
+            warnings.length + hostileShots.length + enemies.length + Number(!!engagementTarget);
+          const length = distance(p, at);
+          const travel = Math.min(
+            length,
+            (p.running ? 0.52 : 0.34) * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
+          );
+          const end =
+            teleport || !length
+              ? at
+              : {
+                  x: p.x + ((at.x - p.x) * travel) / length,
+                  y: p.y + ((at.y - p.y) * travel) / length,
+                };
+          const warning = Math.min(2, ...warnings.map((h) => distance(at, h) - h.radius - 0.4));
+          const projectile = Math.min(
+            2,
+            ...hostileShots.map(
+              (shot) =>
+                segmentDistance(teleport ? at : p, end, shot, {
+                  x: shot.x + shot.dx * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
+                  y: shot.y + shot.dy * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
+                }) -
+                shot.radius -
+                0.35 -
+                (teleport ? 0 : 0.5),
+            ),
+          );
+          const foes = Math.min(8, ...enemies.map((foe) => distance(at, foe)));
+          return [
+            Number(warning >= 0 && projectile >= 0),
+            Math.min(projectile, 0),
+            Math.min(warning, 0),
+            engagementTarget ? -Math.max(0, distance(at, engagementTarget) - 1.6) : foes,
+            warning,
+            projectile,
+          ];
+        };
+        const rankedMoves = moves
+          .map((command) => ({ command, rank: safety(command.target) }))
+          .sort((a, b) => compareRank(b.rank, a.rank));
         if (hazard && strategy !== 'immediate') {
+          const current = safety(p);
           const blink = actions
             .filter((c) => c.type === 'cast')
             .filter((c) =>
@@ -456,14 +629,13 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
                 (skill) => skill.id === c.skill && skill.effect === 'leap' && skill.damage === 0,
               ),
             )
-            .sort((a, b) => distance(b.target, hazard) - distance(a.target, hazard))[0];
-          if (blink && distance(blink.target, hazard) > distance(p, hazard) + 0.5)
-            return choose(blink, 'blink to an offered known landing outside the warning');
-          const escape = [...moves].sort(
-            (a, b) => distance(b.target, hazard) - distance(a.target, hazard),
-          )[0];
-          if (escape && distance(escape.target, hazard) > distance(p, hazard) + 0.15)
-            return choose(escape, 'leave the visible hazard warning');
+            .map((command) => ({ command, rank: safety(command.target, true) }))
+            .sort((a, b) => compareRank(b.rank, a.rank))[0];
+          if (blink && compareRank(blink.rank, current) > 0)
+            return choose(blink.command, 'blink to an offered known landing outside the warning');
+          const escape = rankedMoves[0];
+          if (escape && compareRank(escape.rank, current) > 0)
+            return choose(escape.command, 'leave the visible hazard warning');
         }
         const refill = find('portal');
         const healthLow = p.hp < input.stats.maxHp * (strategy === 'survival' ? 0.6 : 0.3);
@@ -488,6 +660,81 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
               ? 'sell carried gear to free public inventory space'
               : 'legal refuge heal; return is limited by executed ticks',
           );
+        }
+        // Recovery is owned public state. Do not keep trading damage merely because
+        // an offensive spell is ready while the health potion is still unavailable.
+        // Keep the best disclosed danger class for route roots; foe clearance then
+        // ranks direct retreat without overriding warnings or incoming shot motion.
+        const safeMoves = rankedMoves
+          .filter(
+            (move) => compareRank(move.rank.slice(0, 3), rankedMoves[0].rank.slice(0, 3)) === 0,
+          )
+          .map((move) => move.command);
+        if (strategy === 'survival' && !heal && enemy && p.hp < input.stats.maxHp * 0.6)
+          memory.recovering = true;
+        if (strategy === 'survival' && memory.recovering) {
+          if (enemy) {
+            const clearance = (at: { x: number; y: number }) =>
+              Math.min(...enemies.map((foe) => distance(at, foe)));
+            work += enemies.length;
+            const retreat = safeMoves[0];
+            if (retreat && clearance(retreat.target) > clearance(p) + 0.5)
+              return choose(retreat, 'retreat while health recovery is unavailable');
+          } else if ((p.cooldowns['@health-potion'] ?? 0) > 0) {
+            const stop = find('steer');
+            if (stop && (p.target !== null || p.destination))
+              return choose(stop, 'stop chasing while health recovery is unavailable');
+            // Losing sight while retreating must not immediately chase the same foe.
+            return choose(advance(), 'hold the known safe position for health recovery');
+          } else memory.recovering = false;
+        }
+        const progress = memory.combat;
+        if (
+          progress &&
+          progress.casts >= 3 &&
+          input.tick - progress.changedAt >= 80 &&
+          progress.origin !== null
+        ) {
+          progress.failedOrigins.add(progress.origin);
+          progress.casts = 0;
+        }
+        if (
+          progress?.failedOrigins.size &&
+          p.destination &&
+          progress.failedOrigins.has(cellKey(p.destination, input.region.width))
+        ) {
+          const stop = find('steer');
+          if (stop) return choose(stop, 'cancel pursuit of a disclosed failed firing origin');
+        }
+        if (
+          progress?.failedOrigins.size &&
+          (!enemy || progress.failedOrigins.has(cellKey(p, input.region.width)))
+        ) {
+          const navigation = navigate(
+            {
+              ...input,
+              actions: actions.filter(
+                (command) => command.type !== 'move' || safeMoves.includes(command),
+              ),
+            },
+            navigationMemory(memory, input.region.id),
+            strategy,
+            progress.at,
+            progress.failedOrigins,
+          );
+          pathNodes = navigation.nodes;
+          work += pathNodes + navigation.evaluations;
+          if (navigation.move) {
+            if (
+              p.destination &&
+              navigation.move.type === 'move' &&
+              distance(p.destination, navigation.move.target) < 0.01
+            )
+              return choose(advance(), 'complete the known combat reposition');
+            return choose(navigation.move, 'change known firing angle after stalled damage');
+          }
+          if (progress.failedOrigins.has(cellKey(p, input.region.width)))
+            return choose(advance(), 'no alternative disclosed firing route is currently offered');
         }
         const mana = actions.find((c) => c.type === 'potion' && c.kind === 'mana');
         if (mana && enemy && p.mana < input.stats.maxMana * (strategy === 'immediate' ? 0.15 : 0.3))
@@ -537,9 +784,7 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
             distance(p, enemy) < 2.6 &&
             p.hp < input.stats.maxHp * 0.8
           ) {
-            const retreat = [...moves].sort(
-              (a, b) => distance(b.target, enemy) - distance(a.target, enemy),
-            )[0];
+            const retreat = safeMoves[0];
             if (retreat && distance(retreat.target, enemy) > distance(p, enemy) + 0.5)
               return choose(retreat, 'ranged spacing while wounded');
           }
@@ -585,7 +830,13 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
               };
               memory.regions.set(input.region.id, regionMemory);
             }
-            const navigation = navigate(input, regionMemory, strategy, memory.pursuit.at);
+            const navigation = navigate(
+              input,
+              regionMemory,
+              strategy,
+              memory.pursuit.at,
+              memory.targets.get(memory.pursuit.uid)?.failedOrigins,
+            );
             pathNodes = navigation.nodes;
             work += pathNodes + navigation.evaluations;
             if (navigation.move)

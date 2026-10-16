@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { playCampaign } from './campaign-policy';
 import { exportSession, importSession } from '../application/session';
-describe('Emberwake legal-command campaign', () => {
+import { PREVIOUS_RULES_VERSION } from './game';
+describe('Emberwake historical v3 legal-command campaign', () => {
   for (const hero of ['barbarian', 'sorceress', 'necromancer'])
     it(`${hero} can clear four acts, build a character, and reconstruct the ending`, () => {
-      const { session, deaths } = playCampaign(hero);
+      const { session, deaths } = playCampaign(hero, PREVIOUS_RULES_VERSION);
       expect(session.state.status).toBe('victory');
       expect(Object.keys(session.state.worlds)).toHaveLength(20);
       for (const act of session.replay.content.acts) {

@@ -1,3 +1,4 @@
+import { HEALTH_POTION_COOLDOWN, RULES_VERSION, hasVisiblePortalGuard } from '../domain/game';
 import type { Session } from '../application/session';
 import {
   knownCell,
@@ -174,7 +175,7 @@ export function observe(session: Session, memory: Aliases) {
         });
   }
   const input = {
-    schema: 'emberwake-observation-2' as const,
+    schema: 'emberwake-observation-3' as const,
     requestedTicks,
     requestedTickLimit: 100000,
     hero: s.hero,
@@ -263,7 +264,12 @@ export function observe(session: Session, memory: Aliases) {
         (p.skills[skill.id] ?? 0) < 10
       )
         actions.push({ type: 'learn', skill: skill.id });
-  if (p.healthPotions && p.hp < input.stats.maxHp) actions.push({ type: 'potion', kind: 'health' });
+  if (
+    p.healthPotions &&
+    p.hp < input.stats.maxHp &&
+    !(s.rulesVersion === RULES_VERSION && p.cooldowns[HEALTH_POTION_COOLDOWN] > 0)
+  )
+    actions.push({ type: 'potion', kind: 'health' });
   if (p.manaPotions && p.mana < input.stats.maxMana) actions.push({ type: 'potion', kind: 'mana' });
   // Item transfer capacity is checked by the ordinary command boundary, not sampled RNG.
   for (const value of inventory) {
@@ -344,7 +350,12 @@ export function observe(session: Session, memory: Aliases) {
       )
         actions.push({ type: 'attack', target: e.uid });
     const guards = enemies.filter((e) => e.hp > 0 && !e.warded);
-    if (!guards.some((e) => distance(p, e) < 3)) actions.push({ type: 'portal' });
+    if (
+      s.rulesVersion === RULES_VERSION
+        ? !hasVisiblePortalGuard(s, content)
+        : !guards.some((e) => distance(p, e) < 3)
+    )
+      actions.push({ type: 'portal' });
     const nearby = markers.filter((m) => distance(p, m.at) < 2);
     if (
       nearby.some(

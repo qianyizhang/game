@@ -11,7 +11,7 @@ control and result semantics.
 own resources, equipment/inventory/stash, learned skills/cooldowns and derived stats;
 current region and seen terrain; visible enemies and conservative active effects;
 discovered static markers; public atlas topology/progress; public definitions without
-region geometry; and an ordinary action menu. Observation v2 carries only the current
+region geometry; and an ordinary action menu. Observation v3 carries only the current
 hero and that hero’s skill definitions, all item/monster mechanical definitions, and
 public atlas topology/progress. Act narrative and duplicated portal labels are omitted.
 Region-to-dungeon/floor membership remains in the public dungeon floor lists.
@@ -55,16 +55,39 @@ the action menu must remain equal too.
 
 ## Difficulty and results
 
-Campaign rules v3 add Relaxed/Standard/Severe incoming hostile damage multipliers
-**0.75/1/1.3**. Standard retains existing arithmetic, map/RNG and rewards. Old rules-v2
-replays retain their original Standard meaning and can be explicitly restored from
-their old save slot. New campaigns use a separate v3 save. Sandbox keeps its existing
-rules and ordinary developer controls; it is outside this fair campaign study.
+Campaign rules v4 use these fixed pressure settings. Their measured ordering remains
+an evaluation question; the names and parameters alone do not establish calibration.
+
+| Tier     | Hostile damage multiplier | Life-potion recovery |
+| -------- | ------------------------- | -------------------- |
+| Relaxed  | 0.75                      | 0 seconds            |
+| Standard | 3                         | 20 seconds           |
+| Severe   | 6                         | 60 seconds           |
+
+Damage scales once at hostile impact, after the player's existing mitigation, and
+also applies to summoned allies. Health recovery uses the owned cooldown key
+`@health-potion`; content IDs cannot occupy that namespace. The public menu excludes
+unavailable drinks, and the live HUD displays remaining recovery. Mana potions retain
+their original behavior. Maps, content and rewards remain unchanged.
+
+Native portal availability and the public menu use the same living, nonwarded enemy
+sensor: radius eight plus line of sight. An undisclosed enemy behind a wall cannot
+make an offered portal fail. Historical rules v3 retain the original distance-three
+native guard, instant life potions and **0.75/1/1.3** player damage arithmetic; rules
+v2 retain their original Standard meaning. V4, v3 and v2 campaigns have separate
+save slots and exact versioned replay reconstruction. First upgrade resumes an old
+v3 journey under its original rules; starting v4 requires an explicit new journey.
+Sandbox keeps its existing rules and ordinary developer controls, outside this study.
 
 The three priorities are Immediate (damage/direct objectives), Survival (defense,
 earlier protection and safer positioning), and Growth (loot, upgrades and scaling).
 These are versioned heuristics with fresh factory memory, not a total strength order.
-Policy v2 uses five-tick combat observations and ten-tick quiet travel. Its public
+Policy v6 uses five-tick combat observations and ten-tick quiet travel. Healthy
+melee warning escapes preserve attack reach after the shared danger priorities;
+low-health recovery retains enemy clearance. These tie-breaks do not predict hidden
+movement, future shots or wall collision. Navigation tests a current goal from the
+actual player position, while hypothetical future nodes use cell centers; otherwise
+a fractional start can stall just outside native pickup reach. Its public
 scouting preference estimates discovery through known terrain; unknown walls remain
 uncertain, and only known walkable cells can become movement destinations.
 All three heroes—Barbarian, Sorceress and Necromancer—are separate setup strata.
@@ -117,6 +140,19 @@ and clear the target on an observed corpse, region change or arrival at an attac
 position. Updating this memory from hidden live entities would violate the boundary.
 Without public-history pursuit, an older exploration frontier can reverse the route
 on every lost-sight frame and oscillate until death.
+
+Line of sight does not guarantee that a projectile hits: segmented collision can
+clip a known corner. V3 remembers a visible target's disclosed HP and its own casts;
+after sustained no-damage feedback it routes toward another known firing position.
+V4 preserves failed firing origins across sensor loss and reacquisition, rather than
+letting ordinary pursuit return to the same blocked corner. Observed corpses, region
+changes and actual HP progress reset this memory. Survival also puts
+defensive movement before offensive casts when life is low and healing unavailable.
+Movement ranks all disclosed warnings and a five-tick envelope of disclosed hostile
+projectiles before enemy clearance. This uses current public geometry and motion;
+walls, future shots and enemy movement are not predicted. It is a conservative
+heuristic, not an exact native successor simulation or a guarantee against damage.
+These repairs address observed control failures; they do not prove higher win rates.
 
 BFS must also respect the current action menu at its first edge. A fractional avatar
 footprint can make the nominally shortest adjacent center unavailable because it
@@ -185,9 +221,9 @@ with short episodes; the shared review parser limits one JSON rollout to 150 MB.
 
 ## Long-campaign development
 
-The v2 candidate targets campaign completion rather than treating living partial
+The long-campaign candidate targets completion rather than treating living partial
 progress as a win. Development uses original public-policy inputs and a fixed
-8,000-decision probe budget before choosing a prospective study. Every built-in v2
+8,000-decision probe budget before choosing a prospective study. Every current built-in
 advance is capped at ten ticks, including an idle dead end, so at most 80,000 requested
 ticks can enter such a probe; the native replay limit remains 100,000. Full recorded
 envelopes, not input-byte estimates, must remain below the shared 150 MB parser
@@ -195,8 +231,8 @@ limit and pass integrity, native replay, original-input and decision audits.
 Lossless terrain runs and explicit atlas progress keep long observations inspectable;
 pack management bounds repeated carried-item data while serving ordinary gameplay.
 
-Historical observation-v1/policy-v1 artifacts and frozen bundles retain their original
-meaning. Current observation-v2 identity must not claim to audit their original
+Historical observation-v1/v2 and policy-v1/v2 artifacts and frozen bundles retain their original
+meaning. Current observation-v3 identity must not claim to audit their original
 sampling. Historical score-v1 artifacts also keep their original bytes and evaluator
 identity. Current-identity audit availability must not relabel historical identity
 mismatches as corrupt recordings. A score-v2 evaluator sidecar may explicitly reconstruct
@@ -216,4 +252,5 @@ The [performance score assessment](../research/experiments/2026-10-16-emberwake-
 records the score-v2 reconstruction and exploratory policy comparisons. Better score
 discrimination does not establish ordered win-rate difficulty: the retained development
 data include tier ties and a Severe campaign faster than Standard. Native balance
-remains unchanged, and prospective calibration still requires frozen independent seeds.
+was unchanged in that assessment. The later versioned pressure candidate above still
+requires prospective calibration on frozen independent seeds.

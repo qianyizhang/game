@@ -3,6 +3,7 @@ import {
   applyCommand,
   createGame,
   RULES_VERSION,
+  PREVIOUS_RULES_VERSION,
   LEGACY_RULES_VERSION,
   DIFFICULTIES,
   validCommand,
@@ -17,9 +18,12 @@ export const saveKey = (session: Session): string =>
     ? SANDBOX_SAVE_KEY
     : session.replay.rulesVersion === LEGACY_RULES_VERSION
       ? LEGACY_SAVE_KEY
-      : SAVE_KEY;
+      : session.replay.rulesVersion === PREVIOUS_RULES_VERSION
+        ? PREVIOUS_SAVE_KEY
+        : SAVE_KEY;
 export const LEGACY_SAVE_KEY = 'card-workshop.emberwake.v2';
-export const SAVE_KEY = 'card-workshop.emberwake.v3';
+export const PREVIOUS_SAVE_KEY = 'card-workshop.emberwake.v3';
+export const SAVE_KEY = 'card-workshop.emberwake.v4';
 export interface Session {
   state: State;
   replay: Replay;
@@ -39,8 +43,10 @@ export function newSession(
       format:
         sandbox || rulesVersion === LEGACY_RULES_VERSION
           ? 'emberwake-replay-v2'
-          : 'emberwake-replay-v3',
-      ...(!sandbox && rulesVersion === RULES_VERSION ? { difficulty } : {}),
+          : rulesVersion === PREVIOUS_RULES_VERSION
+            ? 'emberwake-replay-v3'
+            : 'emberwake-replay-v4',
+      ...(!sandbox && rulesVersion !== LEGACY_RULES_VERSION ? { difficulty } : {}),
       rulesVersion: sandbox ? SANDBOX_RULES_VERSION : rulesVersion,
       ...(sandbox ? { mode: 'sandbox' as const } : {}),
       content: pack,
@@ -90,14 +96,15 @@ export function importSession(text: string): Session {
   const r = value as Record<string, unknown>;
   const sandbox = r.mode === 'sandbox';
   const legacy = !sandbox && r.rulesVersion === LEGACY_RULES_VERSION;
+  const previous = !sandbox && r.rulesVersion === PREVIOUS_RULES_VERSION;
   if (
     (r.mode !== undefined && !sandbox) ||
     (sandbox
       ? r.format !== 'emberwake-replay-v2' || r.rulesVersion !== SANDBOX_RULES_VERSION
       : legacy
         ? r.format !== 'emberwake-replay-v2'
-        : r.format !== 'emberwake-replay-v3' ||
-          r.rulesVersion !== RULES_VERSION ||
+        : r.format !== (previous ? 'emberwake-replay-v3' : 'emberwake-replay-v4') ||
+          (!previous && r.rulesVersion !== RULES_VERSION) ||
           typeof r.difficulty !== 'string' ||
           !Object.hasOwn(DIFFICULTIES, r.difficulty))
   )
@@ -113,7 +120,7 @@ export function importSession(text: string): Session {
     content,
     sandbox,
     legacy || sandbox ? 'standard' : (r.difficulty as Difficulty),
-    legacy ? LEGACY_RULES_VERSION : RULES_VERSION,
+    legacy ? LEGACY_RULES_VERSION : previous ? PREVIOUS_RULES_VERSION : RULES_VERSION,
   );
   let state = session.state;
   const commands: Command[] = [];

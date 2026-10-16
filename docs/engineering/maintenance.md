@@ -84,7 +84,9 @@ keep raw histories in their existing protected homes.
 - **Verify isolated candidates with Git metadata:** when preserving concurrent edits,
   use a disposable clone plus exact owned files for the full gate. A source archive
   lacks the Git metadata used by maintenance tests; that failure is an incomplete
-  verification environment, not an application regression.
+  verification environment, not an application regression. Creating a clone does
+  not change the caller's working directory: verify the gate's explicit working
+  directory and logged project path before attributing its result.
 - **Match artifact routes by pathname:** browser-test route globs can match the
   document URL when a query parameter ends in the artifact filename. Use a URL
   pathname predicate for fixture responses so navigation still loads the app.
@@ -104,3 +106,16 @@ keep raw histories in their existing protected homes.
   `/private/var` can name the same temporary entry. Excluding only the original path
   leaves a deleted dependency in provenance and breaks unchanged-source comparison.
   Filter the canonical generated entry and verify pins after temporary cleanup.
+  Derive repository-relative locators with `path.relative`, not root-length slicing:
+  a trailing root separator can remove the first character of a valid path. Verify
+  that retained locators resolve to their recorded hashes before publishing receipts.
+
+- **Use the actual current position:** a navigation search may represent future
+  nodes by cell centers, but its starting node must test interaction reach from
+  the player's actual position. A fractional position can share a collectible's
+  goal cell while remaining outside native pickup range. Reproduce the original
+  public input and verify an already-offered move before widening action legality.
+- **Match complete seed identities:** compare the full namespace and seed label,
+  not just a numeric suffix. An adoption-development case is not a reproduction
+  of a strength-development case with the same number. Retain an explicit
+  correction when a published selection description uses the wrong namespace.

@@ -1,4 +1,5 @@
-/** Verification policy: only accepted player commands, no injected state or test-only powers. */
+/** Full-state lifecycle fixture, using only accepted native commands. Callers declare
+ * the historical rules they exercise; restricted current policies live in ../agent. */
 import { newSession, dispatch, type Session } from '../application/session';
 import { stats } from './game';
 import { freeCell } from './loot';
@@ -7,9 +8,10 @@ import { currentRegion, currentWorld, routeTo, wardsLit } from './world';
 import type { Command, Point } from './types';
 export function playCampaign(
   hero: string,
+  rulesVersion: string,
   seed = 'campaign-baseline',
 ): { session: Session; deaths: number } {
-  let session = newSession(seed, hero);
+  let session = newSession(seed, hero, undefined, false, 'standard', rulesVersion);
   let deaths = 0;
   const act = (command: Command) => {
     const result = dispatch(session, command);

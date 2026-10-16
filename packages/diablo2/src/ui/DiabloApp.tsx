@@ -1,7 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { generatedDungeonContent } from '../domain/generated-dungeon';
 import { BASE_CONTENT } from '../domain/content';
-import { DIFFICULTIES, LEGACY_RULES_VERSION, stats, validateContent } from '../domain/game';
+import {
+  DIFFICULTIES,
+  HEALTH_POTION_COOLDOWN,
+  LEGACY_RULES_VERSION,
+  PREVIOUS_RULES_VERSION,
+  RULES_VERSION,
+  difficultyProfile,
+  stats,
+  validateContent,
+} from '../domain/game';
 import { bodyFits, distance, lineOfSight } from '../domain/maps';
 import type { Command, Content, Difficulty, Point, SkillDef } from '../domain/types';
 import {
@@ -10,6 +19,7 @@ import {
   importSession,
   newSession,
   SAVE_KEY,
+  PREVIOUS_SAVE_KEY,
   LEGACY_SAVE_KEY,
   SANDBOX_SAVE_KEY,
   ACTIVE_MODE_KEY,
@@ -53,15 +63,33 @@ function download(text: string, filename: string): void {
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+function campaignMode(session: Session): string {
+  return (
+    session.replay.mode ??
+    (session.replay.rulesVersion === LEGACY_RULES_VERSION
+      ? 'campaign-v2'
+      : session.replay.rulesVersion === PREVIOUS_RULES_VERSION
+        ? 'campaign-v3'
+        : 'campaign-v4')
+  );
+}
+function preferredCampaignKey(): string {
+  return [SAVE_KEY, PREVIOUS_SAVE_KEY].find((key) => localStorage.getItem(key)) ?? SAVE_KEY;
+}
 export default function DiabloApp() {
   const [initial] = useState(() => {
     try {
+      const mode = localStorage.getItem(ACTIVE_MODE_KEY);
       const saved = localStorage.getItem(
-        localStorage.getItem(ACTIVE_MODE_KEY) === 'sandbox'
+        mode === 'sandbox'
           ? SANDBOX_SAVE_KEY
-          : localStorage.getItem(ACTIVE_MODE_KEY) === 'campaign-v2'
+          : mode === 'campaign-v2'
             ? LEGACY_SAVE_KEY
-            : SAVE_KEY,
+            : mode === 'campaign-v3' || mode === 'campaign'
+              ? PREVIOUS_SAVE_KEY
+              : mode === 'campaign-v4'
+                ? SAVE_KEY
+                : preferredCampaignKey(),
       );
       return { session: saved ? importSession(saved) : null, error: '' };
     } catch (error) {
@@ -73,6 +101,8 @@ export default function DiabloApp() {
   });
   const [session, setSession] = useState<Session | null>(initial.session);
   const current = useRef(session);
+  const dirty = useRef(false);
+  const liveControls = useRef(false);
   const previous = useRef<State | null>(null);
   const effects = useRef(new SkillEffects());
   const viewCamera = useRef<Point | undefined>(undefined);
@@ -84,11 +114,17 @@ export default function DiabloApp() {
   const [difficulty, setDifficulty] = useState<Difficulty>(
     initial.session?.state.difficulty ?? 'standard',
   );
-  const [previousCampaign] = useState(() => {
+  const [previousCampaigns] = useState(() => {
     try {
-      return localStorage.getItem(LEGACY_SAVE_KEY);
+      return [
+        { key: PREVIOUS_SAVE_KEY, version: 3, description: 'original difficulty rules' },
+        { key: LEGACY_SAVE_KEY, version: 2, description: 'original Standard rules' },
+      ].flatMap((entry) => {
+        const bytes = localStorage.getItem(entry.key);
+        return bytes ? [{ ...entry, bytes }] : [];
+      });
     } catch {
-      return null;
+      return [];
     }
   });
   const includesVault = content.regions.some((r) => r.id === 'charted-vault');
@@ -114,13 +150,11 @@ export default function DiabloApp() {
   const replayInput = useRef<HTMLInputElement>(null),
     modInput = useRef<HTMLInputElement>(null);
   const save = useCallback((next: Session) => {
+    dirty.current = true;
     try {
       localStorage.setItem(saveKey(next), exportSession(next));
-      localStorage.setItem(
-        ACTIVE_MODE_KEY,
-        next.replay.mode ??
-          (next.replay.rulesVersion === LEGACY_RULES_VERSION ? 'campaign-v2' : 'campaign'),
-      );
+      localStorage.setItem(ACTIVE_MODE_KEY, campaignMode(next));
+      dirty.current = false;
       setSaved('Journey saved');
     } catch {
       setSaved('Storage unavailable — export your journey');
@@ -136,6 +170,7 @@ export default function DiabloApp() {
         return;
       }
       effects.current.record(before.state, result.session.state, command, before.replay.content);
+      dirty.current = true;
       if (command.type !== 'advance') setMessage('');
       previous.current = command.type === 'advance' ? before.state : null;
       current.current = result.session;
@@ -163,9 +198,10 @@ export default function DiabloApp() {
     [save],
   );
   const release = useCallback(() => {
+    const held = pressed.current.size > 0;
     pressed.current.clear();
     const state = current.current?.state;
-    if (state?.status === 'playing' && state.location === 'field')
+    if ((held || liveControls.current) && state?.status === 'playing' && state.location === 'field')
       send({ type: 'steer', direction: { x: 0, y: 0 } });
   }, [send]);
   const openPanel = useCallback(
@@ -215,6 +251,9 @@ export default function DiabloApp() {
     !panel &&
     session.state.status === 'playing' &&
     session.state.location === 'field';
+  useEffect(() => {
+    liveControls.current = ticking;
+  }, [ticking]);
   useFieldRuntime(
     canvas,
     current,
@@ -238,7 +277,7 @@ export default function DiabloApp() {
       setPaused(true);
     };
     const unload = () => {
-      if (current.current) save(current.current);
+      if (dirty.current && current.current) save(current.current);
     };
     document.addEventListener('visibilitychange', visibility);
     window.addEventListener('blur', blur);
@@ -247,7 +286,7 @@ export default function DiabloApp() {
       document.removeEventListener('visibilitychange', visibility);
       window.removeEventListener('blur', blur);
       window.removeEventListener('pagehide', unload);
-      if (current.current) save(current.current);
+      if (dirty.current && current.current) save(current.current);
     };
   }, [release, save]);
   useEffect(() => {
@@ -395,9 +434,10 @@ export default function DiabloApp() {
   const startSandbox = (hero = chosen) => {
     start(true, hero);
   };
-  const returnCampaign = (key = SAVE_KEY) => {
+  const returnCampaign = (selectedKey?: string) => {
     release();
     try {
+      const key = selectedKey ?? preferredCampaignKey();
       const raw = localStorage.getItem(key);
       const next = raw ? importSession(raw) : null;
       installSession(next);
@@ -406,7 +446,7 @@ export default function DiabloApp() {
       setPanel(null);
       setPaused(next?.state.location === 'field');
       setMessage('');
-      localStorage.setItem(ACTIVE_MODE_KEY, key === LEGACY_SAVE_KEY ? 'campaign-v2' : 'campaign');
+      if (next) localStorage.setItem(ACTIVE_MODE_KEY, campaignMode(next));
     } catch (error) {
       setMessage(`Campaign could not load: ${String(error)}. Its save remains preserved.`);
     }
@@ -528,7 +568,8 @@ export default function DiabloApp() {
             >
               {Object.entries(DIFFICULTIES).map(([id, tier]) => (
                 <option key={id} value={id}>
-                  {tier.label} · ×{tier.incomingDamage} incoming damage
+                  {tier.label} · ×{tier.incomingDamage} damage · {tier.healthPotionRecovery / 10}s
+                  potion recovery
                 </option>
               ))}
             </select>
@@ -566,24 +607,24 @@ export default function DiabloApp() {
               Return to current journey
             </button>
           )}
-          {(previousCampaign || session?.replay.rulesVersion === LEGACY_RULES_VERSION) && (
-            <p className="ew-fine">
-              Your previous campaign is preserved with its original Standard rules.{' '}
-              <button onClick={() => returnCampaign(LEGACY_SAVE_KEY)}>
-                Restore previous campaign
+          {previousCampaigns.map((campaign) => (
+            <p className="ew-fine" key={campaign.key}>
+              Your v{campaign.version} campaign keeps its {campaign.description}.{' '}
+              <button onClick={() => returnCampaign(campaign.key)}>
+                Restore v{campaign.version} campaign
               </button>{' '}
               <button
                 onClick={() =>
                   download(
-                    localStorage.getItem(LEGACY_SAVE_KEY) ?? previousCampaign ?? '',
-                    'emberwake-campaign-v2.json',
+                    localStorage.getItem(campaign.key) ?? campaign.bytes,
+                    `emberwake-campaign-v${campaign.version}.json`,
                   )
                 }
               >
-                Export previous campaign
+                Export v{campaign.version} campaign
               </button>
             </p>
-          )}
+          ))}
           {legacySave && (
             <p className="ew-fine">
               Your original demo journey is preserved separately. This expanded world starts a new
@@ -619,7 +660,9 @@ export default function DiabloApp() {
     map = currentRegion(state, pack),
     chapter = pack.acts[state.act],
     world = currentWorld(state),
-    s = stats(state, pack);
+    s = stats(state, pack),
+    profile = difficultyProfile(state),
+    healthRecovery = p.cooldowns[HEALTH_POTION_COOLDOWN] ?? 0;
   const uiCast = (index: number) => {
     setActive(index);
     const skill = pack.skills.find((s) => s.id === h.skills[index])!;
@@ -700,10 +743,14 @@ export default function DiabloApp() {
         <strong>
           {h.name} · {h.className} <span>Lv. {p.level}</span>
           {!state.sandbox && (
-            <span>
+            <span
+              title={`Incoming damage ×${profile.incomingDamage}; life potion recovery ${profile.healthPotionRecovery / 10}s.`}
+            >
               {' '}
-              · {DIFFICULTIES[state.difficulty ?? 'standard'].label}
-              {state.rulesVersion === LEGACY_RULES_VERSION ? ' · previous rules' : ''}
+              · {profile.label}
+              {state.rulesVersion === RULES_VERSION
+                ? ''
+                : ` · previous rules v${state.rulesVersion === PREVIOUS_RULES_VERSION ? 3 : 2}`}
             </span>
           )}
         </strong>
@@ -909,10 +956,13 @@ export default function DiabloApp() {
           </span>
           <meter min={0} max={s.maxHp} value={p.hp} aria-label="Life" />
           <button
-            disabled={p.healthPotions === 0}
+            disabled={p.healthPotions === 0 || healthRecovery > 0}
             onClick={() => send({ type: 'potion', kind: 'health' })}
           >
             1 · Life potion ×{p.healthPotions}
+            {healthRecovery > 0 && (
+              <small>Ready in {(Math.ceil(healthRecovery) / 10).toFixed(1)}s</small>
+            )}
           </button>
         </div>
         <div className="ew-hotbar">

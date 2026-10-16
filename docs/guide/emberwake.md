@@ -2,6 +2,21 @@
 
 A Diablo II-inspired action RPG study (`/?game=diablo2`). Choose a hero and seed, resupply at the refuge, and explore connected maps.
 
+## Difficulty
+
+Choose a tier before starting. Current campaigns use rules v4:
+
+| Tier     | Incoming hostile damage | Life-potion recovery |
+| -------- | ----------------------- | -------------------- |
+| Relaxed  | ×0.75                   | None                 |
+| Standard | ×3                      | 20 seconds           |
+| Severe   | ×6                      | 60 seconds           |
+
+The damage setting also affects summoned allies. Life potions still restore 60% of
+maximum life, but another drink must wait for recovery; the belt shows the countdown.
+Mana potions have no added recovery. These settings create different pressure;
+their measured difficulty and human feel are still being evaluated.
+
 ## Heroes and skills
 
 | Hero                | Play style                      | Skills                                      |
@@ -35,7 +50,7 @@ Locate ward stones in outdoor region 2 and dungeon floor 2 to unlock floor 3 sta
 | Interact    | F or on-screen Interact button beside objects                                            |
 | Potions     | 1 for Life, 2 for Mana; restores 60% max pool                                            |
 | Run / Walk  | Shift or Walk/Run toggle; running consumes stamina                                       |
-| Town Portal | T or Town Portal button (usable when clear of close foes)                                |
+| Town Portal | T or Town Portal button (usable when no active foe is visible within 8 paces)            |
 | Panels      | I (Inventory), K (Skills), J (Journal), Tab (Minimap), Esc (Pause/Close), F8 (Dev tools) |
 
 ## Loot, inventory, and death
@@ -47,5 +62,6 @@ Locate ward stones in outdoor region 2 and dungeon floor 2 to unlock floor 3 sta
 ## Saves, content packs, and sandbox
 
 - **Persistence**: Autosaves locally every 5 simulation seconds. Export/import portable JSON replays.
+- **Previous campaigns**: V2 and v3 journeys retain their original rules and separate save slots. First upgrade resumes an existing v3 journey. Start a new journey for v4; the chooser can restore or export older campaigns without overwriting the new one.
 - **Content packs**: JSON-based modding for heroes, skills, loot, and maps. See [package README](../../packages/diablo2/README.md#make-content-mods).
 - **Developer sandbox (F8)**: Level 20 testing environment with God mode, map reveal, teleports, and cooldown resets. Saves independently from the campaign.

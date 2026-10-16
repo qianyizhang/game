@@ -329,6 +329,25 @@ fairness, measured policy performance and human acceptance as separate findings.
 - **Reason labels are not control-flow proof:** a shared fallback can execute under a
   successful-sounding diagnostic. Verify recorded commands and original inputs before
   asserting a change was unused or behavior preserving; retain reproduction mismatches.
+- **Matched seeds do not fix later rewards:** different accepted combat decisions can
+  consume shared seeded randomness differently, changing later offers and routes.
+  Compare whole attempts under the frozen paired design; do not explain a tier effect
+  as though both policies received identical later encounters. More damage can also
+  trigger a safer policy branch, so per-seed difficulty monotonicity is not guaranteed.
+- **Visibility is not hit confirmation:** a legal cast and apparent line of sight can
+  still produce no damage around a collision corner. Inspect disclosed HP over time;
+  use bounded public-history stall detection and offered repositioning before changing
+  monster health or granting private geometry. A dead draw or failed control is a
+  correctness witness, not proof that its repair improves campaign win rate.
+- **Recovery changes action priority:** instant healing can hide missing defensive
+  control. When a versioned rule adds recovery, expose it in the menu and live HUD,
+  make rejected drinks atomic, and test low-health movement before offensive casts.
+  Preserve old potion/replay arithmetic; measure the changed policy separately.
+- **Opening a save is not a new command:** mount cleanup can rewrite a reconstructed
+  historical save even before play, and an unconditional input release can append a
+  stop command to a paused import. Flush changed sessions only and release active
+  controls. First-upgrade and restore journeys must compare untouched stored bytes,
+  not just equivalent reconstructed states.
 
 ## Settled adoption choices
 
@@ -339,8 +358,12 @@ Accepted 2026-10-16 after the design interview:
   pressure/opponent differences rather than assigning names alone. The later accepted
   Cartographer calibration slice may rebalance Standard and the full ladder under a
   new rules version, with exact v1/v2 replay preservation.
-  Emberwake has the same approved versioned-rebalance option; the later score-first
-  refinement keeps its native balance unchanged while measuring completion efficiency.
+  Emberwake has the same approved versioned-rebalance option. Its score-first slice
+  measured completion efficiency without changing native balance; the subsequent
+  rules-v4 candidate introduces explicit recovery and coherent hostile pressure while
+  retaining exact historical environments. After the v4 development screen, the user
+  chose further gameplay pressure under a new version while keeping completion/time
+  scoring. Preserve v4 and older replays exactly; fresh calibration remains required.
 - **Strategies:** the remaining games start with immediate-gain, survival and
   long-term-growth priorities, adapted to their mechanics. Night Passage retains
   its existing effort spectrum and frozen comparison.
@@ -372,7 +395,7 @@ bound playing-strength and difficulty claims; unresolved calibration stays expli
 | 2     | Blindside            | [Policy contract](blindside-agent.md): restricted observations, local TS factories, immediate/survival/growth strategies, three selectable target tiers, v4 replay continuity, shared recording/audit/navigation and isolated original-input review. Dated evaluation evidence accompanies this adoption; uncertainty remains explicit.                                                                                                                        |
 | 3     | Spire                | [Policy contract](spire-agent.md): public legal menus, extensible factories, all native Ascensions 0–5 and original-input review. [Fresh confirmation](../research/experiments/2026-10-16-spire-strength-confirmation-4.md) meets preregistered strength and difficulty criteria: Survival wins 98/86/32 Ironclad and 135/74/43 Silent attempts per 400 A0/A3/A5 seeds. Earlier failed confirmations remain intact; human difficulty is untested.              |
 | 4     | Last Hearth          | [Policy contract](hearth-policy.md) and [adoption evidence](../research/experiments/2026-10-16-hearth-policy.md): v6 spell-aware policies, opaque public identity, three starting-health tiers, all-actor native replay audit, isolated original-input review and 1,350 audited episodes. Original v1/v2 environments and frozen v5 results remain intact; strength ordering is qualified.                                                                     |
-| 5     | Emberwake            | [Policy contract](emberwake-policy.md): public navigation, extensible priorities, first-death campaigns and packed-tick review. [Score v2](../research/experiments/2026-10-16-emberwake-performance-2.md) ranks campaign completion and native winning time; a full 7,820-decision Sorceress witness passes every audit. Historical three-hero victories and score sidecars remain inspectable; tier ties/reversals leave difficulty calibration open.         |
+| 5     | Emberwake            | [Policy contract](emberwake-policy.md): public navigation, extensible priorities, first-death campaigns and packed-tick review. [Rules v4 and policy v6](../research/experiments/2026-10-16-emberwake-pressure-4.md) preserve v2/v3 replays and repair cast, warning-escape and fractional pickup stalls. Score v2 ranks completion and native time; development counterexamples remain inspectable and meaningful tier calibration is open.                   |
 | 6     | Dungeon Cartographer | [Policy contract](cartographer-policy.md): v3 encounter pressure, extensible public priorities, ordinal health/efficiency score and exact v1/v2 native replay. [Fresh confirmation](../research/experiments/2026-10-16-cartographer-strength-confirmation-3.md) meets five declared criteria over 900 attempts: Survival wins 100/83/30 per 100 Relaxed/Standard/Severe seeds. Independent raw/native/statistical review passed; human difficulty is untested. |
 
 For each game, close with a working extension example, complete-episode evidence,

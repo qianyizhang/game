@@ -1,4 +1,4 @@
-import { DIFFICULTIES } from './difficulty';
+import { difficultyProfile } from './difficulty';
 import type { Content, Element, Enemy, Point, State, World } from './types';
 import { distance, lineOfSight, reveal, slide, toward, bodyFits } from './maps';
 import { note, random } from './random';
@@ -104,16 +104,7 @@ function hurt(state: State, content: Content, damage: number, element: Element):
   p.hp = Math.max(
     0,
     p.hp -
-      Math.max(
-        1,
-        Math.round(
-          damage *
-            (1 - mitigation) *
-            (state.rulesVersion === 'emberwake-3'
-              ? DIFFICULTIES[state.difficulty ?? 'standard'].incomingDamage
-              : 1),
-        ),
-      ),
+      Math.max(1, Math.round(damage * (1 - mitigation) * difficultyProfile(state).incomingDamage)),
   );
   if (element === 'cold') p.slow = 15;
   if (p.hp === 0) {
@@ -292,7 +283,10 @@ export function tick(state: State, content: Content): void {
       const damage = def.damage * (1 + state.act * 0.15) * (enemy.elite ? 1.35 : 1);
       if (def.pattern === 'ranged')
         projectile(state, world, enemy, target, damage, def.element, false);
-      else if (ally) ally.hp -= damage;
+      else if (ally)
+        ally.hp -=
+          damage *
+          (state.rulesVersion === 'emberwake-4' ? difficultyProfile(state).incomingDamage : 1);
       else hurt(state, content, damage, def.element);
       enemy.cooldown = enemy.elite ? 12 : 18;
     }
@@ -357,7 +351,9 @@ export function tick(state: State, content: Content): void {
     } else {
       const ally = world.allies.find((a) => a.hp > 0 && segmentDistance(a) < 0.4 + shot.radius);
       if (ally) {
-        ally.hp -= shot.damage;
+        ally.hp -=
+          shot.damage *
+          (state.rulesVersion === 'emberwake-4' ? difficultyProfile(state).incomingDamage : 1);
         shot.life = 0;
       } else if (segmentDistance(p) < 0.35 + shot.radius) {
         hurt(state, content, shot.damage, shot.element);

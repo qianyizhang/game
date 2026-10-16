@@ -19,3 +19,25 @@ Verification includes legal-command campaigns and exact reconstruction for all t
 Campaign rules `emberwake-3` add explicit Relaxed/Standard/Severe incoming-damage tiers and replay format v3. Standard retains v2 arithmetic, RNG and content meaning. This is a bounded compatibility addition: the current importer reconstructs `emberwake-2` v2 campaigns under their original Standard semantics, preserving their original storage slot and continuation. Sandbox rules remain `emberwake-2-sandbox-1` with replay format v2. The chooser explicitly restores or exports a previous v2 campaign; current v3 saves use a separate slot. The original v1 recovery boundary above remains unchanged.
 
 Policy attempts stop on first death independently of ordinary gameplay's respawn command. Recorded requested ticks remain native replay syntax; executed ticks stop at death. The policy review therefore keeps original decision inputs and requested-unit navigation alongside actual simulation time.
+
+## 2026-10-16 versioned pressure and recovery
+
+The user approved rebalancing the whole ladder, including Standard, while preserving
+old replays. Score v2 first made native completion efficiency explicit. Development
+then showed that instant healing could absorb substantially larger hostile hits,
+while a portal's native hidden-enemy guard could reject an offered public action.
+Changing score cannot repair that action contract or create sustained healing pressure.
+
+Rules `emberwake-4` therefore isolate a new pressure candidate: incoming hostile
+damage multipliers 0.75/3/6, coherent player/summon impact scaling and life-potion
+recovery of 0/20/60 seconds. The native portal guard and public menu share the same
+visible living, nonwarded enemy predicate. This records an implementation choice;
+measured tier ordering remains subject to fresh frozen evaluation. Native time, not
+the difficulty label, continues to determine winning efficiency under score v2.
+
+Historical v3 preserves its exact arithmetic, potion and portal behavior; v2 and
+sandbox retain their earlier environments. Replay format and save slot v4 are
+separate. First upgrade resumes an existing v3 campaign without migration, and
+explicit restore/export controls keep both earlier campaign slots recoverable.
+Historical lifecycle fixtures name their original rules version; they must not be
+reported as current-ladder policy evidence.

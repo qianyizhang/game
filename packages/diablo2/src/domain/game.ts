@@ -1,8 +1,17 @@
 import { BASE_CONTENT } from './content';
 import { validateContent } from './validate';
 import type { Command, Content, Difficulty, Point, State, World } from './types';
-import { DIFFICULTIES } from './difficulty';
-import { findPath, tilesFor, distance, reveal, lineOfSight, walkable, bodyFits } from './maps';
+import { DIFFICULTIES, difficultyProfile, HEALTH_POTION_COOLDOWN } from './difficulty';
+import {
+  findPath,
+  tilesFor,
+  distance,
+  reveal,
+  lineOfSight,
+  walkable,
+  bodyFits,
+  visibleActor,
+} from './maps';
 import { hashSeed, choose, note, random } from './random';
 import { carry, rollItem, freeCell } from './loot';
 import { cast, spawnEnemy, tick } from './combat';
@@ -12,9 +21,25 @@ import { equipTestCharacter, refill, landingFor, SANDBOX_RULES_VERSION } from '.
 export { stats } from './stats';
 export { validateContent } from './validate';
 export type { Command, State, Content } from './types';
-export const RULES_VERSION = 'emberwake-3';
+export const RULES_VERSION = 'emberwake-4';
+export const PREVIOUS_RULES_VERSION = 'emberwake-3';
 export const LEGACY_RULES_VERSION = 'emberwake-2';
-export { DIFFICULTIES } from './difficulty';
+export {
+  DIFFICULTIES,
+  PREVIOUS_DIFFICULTIES,
+  difficultyProfile,
+  HEALTH_POTION_COOLDOWN,
+} from './difficulty';
+/** Exactly the public actor sensor; hidden and warded enemies cannot veto a v4 portal. */
+export function hasVisiblePortalGuard(state: State, content: Content): boolean {
+  const world = currentWorld(state);
+  return world.enemies.some(
+    (enemy) =>
+      enemy.hp > 0 &&
+      (!enemy.boss || wardsLit(state, content)) &&
+      visibleActor(world, state.player, enemy),
+  );
+}
 function stop(state: State): void {
   state.player.direction = { x: 0, y: 0 };
   state.player.destination = null;
@@ -79,7 +104,11 @@ export function createGame(
   rulesVersion = RULES_VERSION,
 ): State {
   if (!Object.hasOwn(DIFFICULTIES, difficulty)) throw new Error('Unknown difficulty');
-  if (rulesVersion !== RULES_VERSION && rulesVersion !== LEGACY_RULES_VERSION)
+  if (
+    rulesVersion !== RULES_VERSION &&
+    rulesVersion !== PREVIOUS_RULES_VERSION &&
+    rulesVersion !== LEGACY_RULES_VERSION
+  )
     throw new Error('Unsupported rules version');
   const content = validateContent(pack);
   const hero = content.heroes.find((h) => h.id === heroId);
@@ -87,7 +116,7 @@ export function createGame(
   if (typeof seed !== 'string' || seed.length > 100) throw new Error('Invalid seed');
   const state: State = {
     rulesVersion,
-    ...(!sandbox && rulesVersion === RULES_VERSION ? { difficulty } : {}),
+    ...(!sandbox && rulesVersion !== LEGACY_RULES_VERSION ? { difficulty } : {}),
     contentId: content.id,
     contentVersion: content.version,
     hero: heroId,
@@ -307,11 +336,15 @@ function execute(state: State, content: Content, command: Command): string | nul
     case 'portal':
       if (state.location !== 'field') return 'You are already at the refuge.';
       if (
-        world.enemies.some(
-          (e) => e.hp > 0 && (!e.boss || wardsLit(state, content)) && distance(p, e) < 3,
-        )
+        state.rulesVersion === RULES_VERSION
+          ? hasVisiblePortalGuard(state, content)
+          : world.enemies.some(
+              (e) => e.hp > 0 && (!e.boss || wardsLit(state, content)) && distance(p, e) < 3,
+            )
       )
-        return 'Clear the enemies within three paces before opening a portal.';
+        return state.rulesVersion === RULES_VERSION
+          ? 'Clear visible enemies before opening a portal.'
+          : 'Clear the enemies within three paces before opening a portal.';
       state.portal = { act: state.act, region: state.region, position: { x: p.x, y: p.y } };
       state.location = 'town';
       stop(state);
@@ -406,6 +439,12 @@ function execute(state: State, content: Content, command: Command): string | nul
       return null;
     }
     case 'potion': {
+      if (
+        command.kind === 'health' &&
+        state.rulesVersion === RULES_VERSION &&
+        p.cooldowns[HEALTH_POTION_COOLDOWN] > 0
+      )
+        return 'Your health potion is still recovering.';
       const s = stats(state, content);
       const key = command.kind === 'health' ? 'healthPotions' : 'manaPotions';
       const resource = command.kind === 'health' ? 'hp' : 'mana';
@@ -414,6 +453,8 @@ function execute(state: State, content: Content, command: Command): string | nul
       if (p[resource] >= max) return `Your ${command.kind === 'health' ? 'life' : 'mana'} is full.`;
       p[key]--;
       p[resource] = Math.min(max, p[resource] + max * 0.6);
+      if (command.kind === 'health' && state.rulesVersion === RULES_VERSION)
+        p.cooldowns[HEALTH_POTION_COOLDOWN] = difficultyProfile(state).healthPotionRecovery;
       return null;
     }
     case 'move':
@@ -577,9 +618,11 @@ export function applyCommand(
   if (
     (state.sandbox
       ? state.rulesVersion !== SANDBOX_RULES_VERSION
-      : state.rulesVersion !== RULES_VERSION && state.rulesVersion !== LEGACY_RULES_VERSION) ||
+      : state.rulesVersion !== RULES_VERSION &&
+        state.rulesVersion !== PREVIOUS_RULES_VERSION &&
+        state.rulesVersion !== LEGACY_RULES_VERSION) ||
     (!state.sandbox &&
-      state.rulesVersion === RULES_VERSION &&
+      state.rulesVersion !== LEGACY_RULES_VERSION &&
       (!state.difficulty || !Object.hasOwn(DIFFICULTIES, state.difficulty))) ||
     state.contentId !== content.id ||
     state.contentVersion !== content.version

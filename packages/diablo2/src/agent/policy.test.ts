@@ -44,6 +44,57 @@ function moves(input: Observation): PolicyCommand[] {
   });
 }
 
+/** Public-only fixture for the retained stationary-casting and recovery traces. */
+function combatFixture(): Observation {
+  const input = adapter.observe(adapter.create('PUBLIC-COMBAT-FIXTURE', { hero: 'sorceress' }));
+  input.location = 'field';
+  input.player.x = 3.5;
+  input.player.y = 3.5;
+  input.player.running = true;
+  input.player.target = null;
+  input.player.destination = null;
+  input.region = {
+    ...input.region,
+    width: 9,
+    height: 7,
+    terrain: terrainRuns([
+      '#########',
+      '#.......#',
+      '#.......#',
+      '#.......#',
+      '#.......#',
+      '#.......#',
+      '#########',
+    ]),
+  };
+  input.enemies = [
+    {
+      x: 5.5,
+      y: 3.5,
+      uid: 999,
+      kind: 'cultist',
+      hp: 32,
+      maxHp: 78,
+      boss: false,
+      elite: false,
+      slow: 0,
+      cursed: 0,
+      windup: 0,
+      warded: false,
+    },
+  ];
+  input.hazards = [];
+  input.projectiles = [];
+  input.drops = [];
+  input.markers = [];
+  input.actions = [
+    ...moves(input),
+    { type: 'cast', skill: 'firebolt', target: { x: 5.5, y: 3.5 } },
+    { type: 'advance', ticks: 5 },
+  ];
+  return input;
+}
+
 describe('Emberwake public policies', () => {
   it('plays the same bounded first-death contract across all heroes and priorities using offered actions', () => {
     for (const hero of ['barbarian', 'sorceress', 'necromancer']) {
@@ -115,6 +166,44 @@ describe('Emberwake public policies', () => {
     expect(builtins.immediate.create(config)(input).diagnostics).toMatchObject({
       reason: 'no reachable revealed objective or frontier',
     });
+  });
+
+  it('checks current-node loot reach from the actual fractional player position', () => {
+    // Exact positions from the retained policy5 DEV02 BarbarianSurvival gold stop.
+    const input = fresh();
+    input.location = 'field';
+    Object.assign(input.player, {
+      x: 50.85034503338453,
+      y: 13.288720803348419,
+      running: true,
+      target: null,
+      destination: null,
+    });
+    input.region = {
+      ...input.region,
+      width: 64,
+      height: 44,
+      terrain: terrainRuns(Array.from({ length: 44 }, () => '.'.repeat(64))),
+    };
+    input.enemies = [];
+    input.hazards = [];
+    input.projectiles = [];
+    input.markers = [];
+    input.drops = [
+      { x: 49.65905338835959, y: 14.023233075959219, uid: 224, kind: 'gold', amount: 10 },
+    ];
+    input.actions = [...moves(input), { type: 'advance', ticks: 10 }];
+    const gold = input.drops[0],
+      center = { x: 50.5, y: 13.5 };
+    expect(Math.hypot(input.player.x - gold.x, input.player.y - gold.y)).toBeGreaterThan(1.35);
+    expect(Math.hypot(center.x - gold.x, center.y - gold.y)).toBeLessThan(1);
+    const original = JSON.stringify(input),
+      proposal = builtins.survival.create(config)(input);
+    expect(proposal.command).toEqual({ type: 'move', target: { x: 49.5, y: 13.5 } });
+    expect(input.actions).toContainEqual(proposal.command);
+    expect(proposal.diagnostics).toMatchObject({ reason: 'known gold loot' });
+    expect(builtins.survival.create(config)(structuredClone(input))).toEqual(proposal);
+    expect(JSON.stringify(input)).toBe(original);
   });
 
   it('takes a four-cell offered route prefix and shortens observation intervals around danger', () => {
@@ -220,6 +309,271 @@ describe('Emberwake public policies', () => {
       reason: 'pursue the last visible foe through known terrain',
       lastSeenFoe: { region: input.region.id, uid: 999, at: { x: 4.5, y: 1.5 } },
     });
+  });
+
+  it('changes an offered known firing angle after sustained unchanged target HP and reproduces public history', () => {
+    const stream = [0, 40, 80, 120].map((tick) => ({ ...combatFixture(), tick }));
+    const original = JSON.stringify(stream);
+    const replay = () => {
+      const decide = builtins.growth.create(config);
+      return stream.map((input) => decide(structuredClone(input)));
+    };
+    const proposals = replay();
+    expect(builtins.growth.version).toBe('emberwake-policy-6');
+    expect(proposals.slice(0, 3).every((p) => p.command.type === 'cast')).toBe(true);
+    const reposition = proposals.at(-1)!;
+    expect(reposition.command.type).toBe('move');
+    expect(stream.at(-1)!.actions).toContainEqual(reposition.command);
+    expect(reposition.diagnostics).toMatchObject({
+      reason: 'change known firing angle after stalled damage',
+    });
+    expect(replay()).toEqual(proposals);
+    expect(JSON.stringify(stream)).toBe(original);
+    // A new episode has no retained evidence of the failed casts.
+    expect(builtins.growth.create(config)(stream.at(-1)!).command.type).toBe('cast');
+    const decide = builtins.growth.create(config);
+    stream.slice(0, 3).forEach((input) => decide(input));
+    const damaged = structuredClone(stream.at(-1)!);
+    damaged.enemies[0].hp = 20;
+    expect(decide(damaged).command.type).toBe('cast');
+  });
+
+  it('retains failed firing origins through sensor loss and clears only on disclosed progress, corpse or region change', () => {
+    const history = [0, 40, 80, 120].map((tick) => ({ ...combatFixture(), tick }));
+    const hidden: Observation = { ...combatFixture(), tick: 125, enemies: [] };
+    const reacquired = { ...combatFixture(), tick: 130 };
+    const stream = [...history, hidden, reacquired];
+    const run = () => {
+      const decide = builtins.growth.create(config);
+      return stream.map((input) => decide(structuredClone(input)));
+    };
+    const before = JSON.stringify(stream),
+      proposals = run();
+    expect(proposals.at(-1)?.command.type).toBe('move');
+    expect(proposals.at(-1)?.diagnostics).toMatchObject({ combatProgress: { failedOrigins: 1 } });
+    expect(run()).toEqual(proposals);
+    expect(JSON.stringify(stream)).toBe(before);
+    const progressed = builtins.growth.create(config);
+    stream.forEach((input) => progressed(structuredClone(input)));
+    const hurt = structuredClone(reacquired);
+    hurt.tick = 135;
+    hurt.enemies[0].hp--;
+    expect(progressed(hurt).command.type).toBe('cast');
+    expect(progressed(hurt).diagnostics).toMatchObject({ combatProgress: { failedOrigins: 0 } });
+    const pursuit = builtins.growth.create(config);
+    history.forEach((input) => pursuit(structuredClone(input)));
+    const returning = structuredClone(hidden);
+    returning.player.x = 2.5;
+    returning.player.destination = { x: 3.5, y: 3.5 };
+    returning.actions.push({ type: 'steer', direction: { x: 0, y: 0 } });
+    expect(pursuit(returning).command).toEqual({ type: 'steer', direction: { x: 0, y: 0 } });
+    for (const reset of ['corpse', 'region'] as const) {
+      const decide = builtins.growth.create(config);
+      stream.forEach((input) => decide(structuredClone(input)));
+      const cleared = structuredClone(hidden);
+      cleared.tick = 135;
+      if (reset === 'corpse') cleared.enemies = [{ ...reacquired.enemies[0], hp: 0 }];
+
+      // The reset observation is consumed before a newly disclosed live alias.
+      if (reset === 'region')
+        cleared.region.id = cleared.atlas.regions.find((r) => r.id !== reacquired.region.id)!.id;
+      decide(cleared);
+      const seen = structuredClone(reacquired);
+      seen.tick = 140;
+      if (reset === 'region') seen.region.id = cleared.region.id;
+      expect(decide(seen).command.type).toBe('cast');
+    }
+  });
+
+  it('escapes all simultaneous active warnings rather than the first warning alone', () => {
+    const input = combatFixture();
+    input.enemies = [];
+    input.actions = [
+      { type: 'move', target: { x: 2.5, y: 3.5 } },
+      { type: 'move', target: { x: 3.5, y: 4.5 } },
+      { type: 'advance', ticks: 5 },
+    ];
+    input.hazards = [
+      { x: 3.5, y: 3.5, radius: 0.6, delay: 12, damage: 10, element: 'physical', uid: 1, life: 20 },
+      { x: 2.5, y: 3.5, radius: 0.8, delay: 16, damage: 10, element: 'physical', uid: 2, life: 20 },
+    ];
+    const original = JSON.stringify(input);
+    const proposal = builtins.survival.create(config)(input);
+    expect(proposal.command).toEqual({ type: 'move', target: { x: 3.5, y: 4.5 } });
+    expect(builtins.survival.create(config)(structuredClone(input))).toEqual(proposal);
+    expect(JSON.stringify(input)).toBe(original);
+  });
+
+  it('preserves healthy melee reach among warning-safe escapes while recovery keeps foe clearance', () => {
+    // Combat projection of retained DEV01 decision7969/tick29445. The separate
+    // frozen-bundle receipt replays the complete original public input unchanged.
+    const input = adapter.observe(
+      adapter.create('PUBLIC-MELEE-WARNING', { hero: 'barbarian', difficulty: 'severe' }),
+    );
+    input.location = 'field';
+    input.tick = 29445;
+    Object.assign(input.player, {
+      x: 40.5,
+      y: 11.739999999999998,
+      hp: 263.6,
+      mana: 87,
+      stamina: 0,
+      running: true,
+      target: null,
+      destination: { x: 40.5, y: 12.5 },
+    });
+    input.stats.maxHp = 311;
+    input.enemies = [
+      {
+        x: 44.90253425599096,
+        y: 14.052166779205423,
+        uid: 200,
+        kind: 'briar',
+        hp: 70,
+        maxHp: 280,
+        boss: true,
+        elite: false,
+        slow: 0,
+        cursed: 0,
+        windup: 12,
+        warded: false,
+      },
+    ];
+    input.hazards = [
+      {
+        x: 40.5,
+        y: 11.739999999999998,
+        uid: 985,
+        radius: 1.8,
+        delay: 12.5,
+        damage: 30.400000000000002,
+        element: 'poison',
+        life: 15.5,
+      },
+      {
+        x: 44.90253425599096,
+        y: 14.052166779205423,
+        uid: 986,
+        radius: 3,
+        delay: 16.5,
+        damage: 30.400000000000002,
+        element: 'poison',
+        life: 19.5,
+      },
+    ];
+    input.projectiles = [];
+    input.actions = [
+      ...[
+        { x: 39.5, y: 11.5 },
+        { x: 38.5, y: 11.5 },
+        { x: 40.5, y: 12.5 },
+        { x: 40.5, y: 13.5 },
+        { x: 40.5, y: 14.5 },
+        { x: 40.5, y: 10.5 },
+        { x: 40.5, y: 9.5 },
+        { x: 40.5, y: 8.5 },
+        { x: 40.5, y: 7.5 },
+      ].map((target) => ({ type: 'move' as const, target })),
+      { type: 'advance', ticks: 5 },
+    ];
+    const original = JSON.stringify(input),
+      proposal = builtins.survival.create(config)(input);
+    expect(proposal.command).toEqual({ type: 'move', target: { x: 40.5, y: 14.5 } });
+    expect(builtins.survival.create(config)(structuredClone(input))).toEqual(proposal);
+    expect(JSON.stringify(input)).toBe(original);
+    const wounded = structuredClone(input);
+    wounded.player.hp = input.stats.maxHp * 0.2;
+    wounded.player.cooldowns['@health-potion'] = 300;
+    expect(builtins.survival.create(config)(wounded).command).toEqual({
+      type: 'move',
+      target: { x: 40.5, y: 7.5 },
+    });
+  });
+
+  it('ranks disclosed moving projectile clearance before foe clearance when retreating', () => {
+    const input = combatFixture();
+    input.player.x = 38.730793147;
+    input.player.y = 25.5001707;
+    input.player.hp = 47;
+    input.player.stamina = 0;
+    input.stats.maxHp = 110;
+    input.player.cooldowns['@health-potion'] = 345;
+    input.region = {
+      ...input.region,
+      width: 45,
+      height: 33,
+      terrain: terrainRuns(Array.from({ length: 33 }, () => '.'.repeat(45))),
+    };
+    input.enemies = [
+      { ...input.enemies[0], x: 38.5, y: 26.5, kind: 'archer' },
+      { ...input.enemies[0], uid: 1000, x: 38.5, y: 29.5, kind: 'archer' },
+    ];
+    input.projectiles = [
+      {
+        x: 38.30594408668401,
+        y: 27.81111211073467,
+        dx: -0.09702795665799879,
+        dy: -0.8444439446326639,
+        radius: 0.2,
+        friendly: false,
+        element: 'physical',
+        uid: 28,
+      },
+    ];
+    input.actions = [
+      { type: 'move', target: { x: 34.5, y: 25.5 } },
+      { type: 'move', target: { x: 40.5, y: 25.5 } },
+      { type: 'move', target: { x: 38.5, y: 24.5 } },
+      { type: 'move', target: { x: 38.5, y: 23.5 } },
+      { type: 'cast', skill: 'firebolt', target: { x: 38.5, y: 26.5 } },
+      { type: 'advance', ticks: 5 },
+    ];
+    const original = JSON.stringify(input),
+      proposal = builtins.survival.create(config)(input);
+    expect(proposal.command).toEqual({ type: 'move', target: { x: 38.5, y: 23.5 } });
+    expect(proposal.diagnostics).toMatchObject({
+      reason: 'retreat while health recovery is unavailable',
+    });
+    expect(builtins.survival.create(config)(structuredClone(input))).toEqual(proposal);
+    expect(JSON.stringify(input)).toBe(original);
+    // Reversing only disclosed velocity changes which route intersects the shot.
+    const outgoing = structuredClone(input);
+    outgoing.projectiles[0].dy *= -1;
+    expect(builtins.survival.create(config)(outgoing).command).toEqual({
+      type: 'move',
+      target: { x: 34.5, y: 25.5 },
+    });
+  });
+
+  it('retreats before casting during unavailable healing and does not chase back on losing sight', () => {
+    const input = combatFixture();
+    input.player.hp = input.stats.maxHp * 0.2;
+    input.player.healthPotions = 8;
+    input.player.cooldowns['@health-potion'] = 300;
+    const decide = builtins.survival.create(config);
+    const retreat = decide(input);
+    expect(retreat.command.type).toBe('move');
+    expect(input.actions).toContainEqual(retreat.command);
+    expect(retreat.diagnostics).toMatchObject({
+      reason: 'retreat while health recovery is unavailable',
+    });
+    const hidden = structuredClone(input);
+    hidden.tick = 5;
+    hidden.enemies = [];
+    hidden.actions = [{ type: 'advance', ticks: 5 }];
+    expect(decide(hidden).diagnostics).toMatchObject({
+      reason: 'hold the known safe position for health recovery',
+    });
+    // Replay only detached original inputs: no environment handle or private state.
+    const replay = builtins.survival.create(config);
+    expect(replay(structuredClone(input))).toEqual(retreat);
+    expect(replay(structuredClone(hidden))).toEqual(decide(structuredClone(hidden)));
+    const ready = structuredClone(input);
+    ready.tick = 10;
+    ready.player.cooldowns['@health-potion'] = 0;
+    ready.actions.push({ type: 'potion', kind: 'health' });
+    expect(decide(ready).command).toEqual({ type: 'potion', kind: 'health' });
+    expect(builtins.immediate.create(config)(input).command.type).toBe('cast');
   });
 
   it('permits ordinary refuge healing while preventing a stationary heal-return loop', () => {
