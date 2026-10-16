@@ -7,10 +7,18 @@ export interface StudySetup {
   stratum: string;
   setup: JsonObject;
 }
+/** Ordered game-owned outcome components; no scalar conversion or cross-game scale. */
+export interface ScoreDefinition {
+  components: readonly {
+    name: string;
+    direction: 'maximize' | 'minimize';
+  }[];
+}
 export interface StudyDefinition {
   setups: readonly StudySetup[];
   defaultSetup: JsonObject;
   ranking: string;
+  score?: ScoreDefinition;
   reviewPath: string;
 }
 export interface PolicyConfig {

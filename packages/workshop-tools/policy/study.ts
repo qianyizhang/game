@@ -1,6 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import type { JsonObject, PolicyAudit, StudyDefinition } from '../../../src/shared/policy/types';
+import { compareScores, scoreVector } from '../../../src/shared/policy/scoring.ts';
 import type { Runtime } from './runtime.ts';
 import { casePool } from './pool.ts';
 
@@ -25,6 +26,7 @@ export const auditPassed = (a: PolicyAudit) =>
   a.replay === 'passed' &&
   a.inputs === 'passed' &&
   a.decisions === 'passed';
+const scoreEligible = (row: StudyRow) => row.status !== 'error' && auditPassed(row.audit);
 export function meanInterval(values: number[]) {
   if (!values.length || values.some((v) => !Number.isFinite(v)))
     throw new Error('Intervals require finite observed values.');
@@ -181,6 +183,7 @@ export function summarizeStudy(
       ![0, 1, false, true].includes(row.metrics.won as number | boolean)
     )
       throw new Error('Study contains mismatched cases or nonnumeric native outcome metrics.');
+    if (study.score) scoreVector(study.score, row.metrics.score);
   }
   const summary = study.setups.flatMap(({ id: setupId, difficulty, stratum }) =>
     policies.map((policy) => {
@@ -201,6 +204,38 @@ export function summarizeStudy(
         auditsPassed: cases.filter((r) => auditPassed(r.audit)).length,
         progress: meanInterval(cases.map((r) => Number(r.metrics.progress))),
         work: meanInterval(cases.map((r) => r.work)),
+        ...(study.score
+          ? {
+              score: {
+                invalid: cases.filter((r) => !scoreEligible(r)).length,
+                components: study.score.components.map(({ name, direction }, index) => {
+                  const values = cases
+                    .filter(scoreEligible)
+                    .map((r) => scoreVector(study.score!, r.metrics.score)[index]);
+                  return {
+                    name,
+                    direction,
+                    distribution: values.length
+                      ? (() => {
+                          const ordered = [...values].sort((a, b) => a - b);
+                          const middle = Math.floor(ordered.length / 2);
+                          return {
+                            n: values.length,
+                            min: ordered[0],
+                            median:
+                              ordered.length % 2
+                                ? ordered[middle]
+                                : (ordered[middle - 1] + ordered[middle]) / 2,
+                            max: ordered.at(-1)!,
+                            mean: values.reduce((sum, value) => sum + value, 0) / values.length,
+                          };
+                        })()
+                      : null,
+                  };
+                }),
+              },
+            }
+          : {}),
       };
     }),
   );
@@ -235,6 +270,36 @@ export function summarizeStudy(
             return Number(aRow.metrics.progress) - Number(bRow.metrics.progress);
           }),
         ),
+        ...(study.score
+          ? {
+              scoreComparison: (() => {
+                const comparisons = seeds.map((seed) => {
+                  const aRow = rows.find(
+                    (r) => r.seed === seed && r.setupId === setupId && r.policy === a,
+                  )!;
+                  const bRow = rows.find(
+                    (r) => r.seed === seed && r.setupId === setupId && r.policy === b,
+                  )!;
+                  return !scoreEligible(aRow) || !scoreEligible(bRow)
+                    ? null
+                    : compareScores(
+                        study.score!,
+                        scoreVector(study.score!, aRow.metrics.score),
+                        scoreVector(study.score!, bRow.metrics.score),
+                      );
+                });
+                return {
+                  n: comparisons.length,
+                  aBetter: comparisons.filter((value) => value === 1).length,
+                  bBetter: comparisons.filter((value) => value === -1).length,
+                  tied: comparisons.filter((value) => value === 0).length,
+                  invalid: comparisons.filter((value) => value === null).length,
+                  inference:
+                    'Descriptive paired ordinal counts; no scalar mean or promotion verdict.',
+                };
+              })(),
+            }
+          : {}),
       })),
     );
   });

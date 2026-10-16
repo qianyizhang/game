@@ -60,17 +60,18 @@ export async function withRuntime<T>(
     const toolDigests = Object.fromEntries(
       await Promise.all(
         [
-          'policy/runtime.ts',
-          'policy/cli.ts',
-          'policy/study.ts',
-          'policy/calibration.ts',
-          'policy/analyze-spire.ts',
-          'policy/pool.ts',
-          'policy/worker.ts',
-          'runtime-bundle.ts',
-          'io.ts',
+          'packages/workshop-tools/policy/runtime.ts',
+          'packages/workshop-tools/policy/cli.ts',
+          'packages/workshop-tools/policy/study.ts',
+          'packages/workshop-tools/policy/calibration.ts',
+          'packages/workshop-tools/policy/analyze-spire.ts',
+          'packages/workshop-tools/policy/pool.ts',
+          'packages/workshop-tools/policy/worker.ts',
+          'packages/workshop-tools/runtime-bundle.ts',
+          'packages/workshop-tools/io.ts',
+          'src/shared/policy/scoring.ts',
         ].map(async (name) => {
-          const path = resolve(repositoryRoot, 'packages/workshop-tools', name);
+          const path = resolve(repositoryRoot, name);
           return [relative(repositoryRoot, path), sha256(await readFile(path))] as const;
         }),
       ),

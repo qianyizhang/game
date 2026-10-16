@@ -151,3 +151,10 @@ Policy subsets enter the frozen protocol and complete-grid validation. Spire's
 [prospective confirmation](../../docs/research/experiments/2026-10-16-spire-strength-3-protocol.md)
 uses separate primary/companion grids with explicit denominators and an inferential
 addendum; the common report remains descriptive.
+
+Games may declare `study.score.components` and return a matching numeric
+`metrics.score` vector. The study compares components in declared order and
+direction, reports their distributions and paired better/tied/worse/invalid counts,
+and excludes execution errors and incomplete/failed audits from score ranking. This ordinal score has no scalar
+mean or automatic promotion verdict. Historical records without these components
+require their original contract; retain evaluator rescoring as a separate sidecar.

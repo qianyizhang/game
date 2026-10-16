@@ -153,6 +153,22 @@ ladder. Declare setup, hero/weapon/deck, content and starting resources beside s
 Define deaths, game draws, budget stops and invalid execution separately; errors do
 not become ordinary losses. Budget stops remain in attempted-run denominators.
 
+When wins saturate, a versioned score can distinguish how policies win without
+changing native balance. Declare an ordered component vector in `StudyDefinition.score`
+and return matching numeric `metrics.score` components from the game adapter. Earlier
+components take precedence; an efficient loss must never outrank a victory. Keep
+farmable XP, gold and damage out of the ranking unless the game explicitly makes
+them the objective. Winning efficiency uses native time or accepted commands,
+including zero-turn menu loops where relevant, rather than policy decision count.
+Report components and paired better/tied/worse counts; do not average an ordinal
+vector into a fabricated scalar score. Historical rescoring is a labeled sidecar,
+with old bytes and identities retained. It is exploratory if chosen after outcomes.
+
+Score discrimination does not establish win-rate or human difficulty. Equal native
+paths should remain ties; multiplying by the difficulty label or rewarding a larger
+starting HP budget cannot establish a harder challenge. Freeze the objective before
+fresh comparisons, retain counterexamples and report a saturated ladder honestly.
+
 Each adopted game needs a baseline and at least two additional meaningful policy
 variants, plus at least three documented gameplay difficulty configurations. Reuse
 existing levels where available. Variants can isolate tactical search effort or
@@ -323,6 +339,8 @@ Accepted 2026-10-16 after the design interview:
   pressure/opponent differences rather than assigning names alone. The later accepted
   Cartographer calibration slice may rebalance Standard and the full ladder under a
   new rules version, with exact v1/v2 replay preservation.
+  Emberwake has the same approved versioned-rebalance option; the later score-first
+  refinement keeps its native balance unchanged while measuring completion efficiency.
 - **Strategies:** the remaining games start with immediate-gain, survival and
   long-term-growth priorities, adapted to their mechanics. Night Passage retains
   its existing effort spectrum and frozen comparison.
