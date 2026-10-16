@@ -175,6 +175,172 @@ test('dodge readiness follows combat time and restores without changing the chro
   await expect(readiness.locator('strong')).toHaveText('Ready');
 });
 
+// Depleted resources expose misleading availability even when ordinary attack journeys pass.
+for (const [presentation, rules, runes, countdown] of [
+  ['canvas', 'night-passage-5', [], '2.4 s'],
+  ['scene', 'night-passage-4', ['focus'], '1.4 s'],
+] as const) {
+  test(`cast charges freeze, restore and replenish in ${presentation} (${rules})`, async ({
+    page,
+  }) => {
+    await page.clock.install({ time: new Date('2026-10-16T00:00:00Z') });
+    await page.goto('/?game=night-passage');
+    await expect(page.getByRole('button', { name: 'Begin passage', exact: true })).toBeVisible();
+    await page.clock.pauseAt(new Date('2026-10-16T00:01:00Z'));
+    await page.getByRole('button', { name: 'Sound on', exact: true }).click();
+    const casts = page.getByRole('group', { name: 'Cast charges', exact: true });
+    const call = page.getByRole('group', { name: 'Call availability', exact: true });
+    await expect(casts).toHaveCount(0);
+    await page.getByRole('button', { name: 'Begin passage', exact: true }).click();
+    await expect(casts).toContainText('3 / 3 charges');
+    await expect(casts).toContainText('Fully replenished');
+    await expect(call).toContainText('No call equipped');
+    await page.getByRole('button', { name: 'Pause', exact: true }).click();
+    await page.getByLabel('Arena view').selectOption(presentation);
+    const depleted = dispatch(
+      dispatch(createChronicle('cast-availability', rules), {
+        type: 'start',
+        weapon: 'sword',
+        runes: [...runes],
+      }).chronicle,
+      {
+        type: 'frame',
+        ticks: 100,
+        input: {
+          x: 0,
+          y: 0,
+          aim: 0,
+          attack: false,
+          special: false,
+          dash: false,
+          cast: true,
+          call: false,
+        },
+      },
+    );
+    expect(depleted.error).toBeNull();
+    expect(depleted.chronicle.state.player.casts).toBe(0);
+    expect(depleted.chronicle.state.player.castClock).toBe(99);
+    const saved = exportChronicle(depleted.chronicle);
+    await page.getByLabel('Import Night Passage chronicle').setInputFiles({
+      name: 'empty-casts.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(saved),
+    });
+    await expect(casts).toContainText('0 / 3 charges');
+    await expect(casts).toContainText(`Next charge in ${countdown}`);
+    const pausedText = await casts.innerText();
+    await page.clock.runFor(1000);
+    await expect(casts).toHaveText(pausedText, { useInnerText: true });
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
+    await page.clock.resume();
+    await page.reload();
+    await expect(casts).toHaveText(pausedText, { useInnerText: true });
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
+    // The suite's init script selects Canvas on every navigation; restore this case's view.
+    await page.getByLabel('Arena view').selectOption(presentation);
+    await expect(page.locator('canvas[aria-label="Night Passage combat arena"]')).toHaveAttribute(
+      'data-view',
+      presentation,
+    );
+    await page.clock.pauseAt(new Date('2026-10-16T00:02:00Z'));
+    await page.screenshot({ path: `${review}/cast-empty-${presentation}.png`, fullPage: true });
+    await page.getByRole('button', { name: 'Resume passage', exact: true }).last().click();
+    await page.clock.runFor(2500);
+    await expect(casts).toContainText('1 / 3 charges');
+    await expect(casts).toContainText('Next charge in');
+    await page.getByRole('button', { name: 'Pause', exact: true }).click();
+    await page.setViewportSize({ width: 390, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    await page.screenshot({
+      path: `${review}/cast-recharging-${presentation}-phone.png`,
+      fullPage: true,
+    });
+  });
+}
+
+test('call availability requires a boon even at full charge and resets after use', async ({
+  page,
+}) => {
+  test.setTimeout(browserBudget(45000));
+  let session = dispatch(createChronicle('spell-availability'), {
+    type: 'start',
+    weapon: 'bow',
+    runes: ['vigor', 'focus'],
+  }).chronicle;
+  let missing = '';
+  let charged = '';
+  // Produce portable checkpoints through legal play, never injected player state.
+  for (let i = 0; i < 12000; i++) {
+    const hasCall = session.state.player.boons.some((entry) => boon(entry.id).slot === 'call');
+    if (session.state.phase === 'combat' && session.state.player.charge === 100) {
+      if (!hasCall && !missing) missing = exportChronicle(session);
+      if (hasCall) {
+        charged = exportChronicle(session);
+        break;
+      }
+    }
+    if (session.state.phase === 'won' || session.state.phase === 'lost') break;
+    let command = passageCommand(session.state);
+    if (session.state.phase === 'reward') {
+      const id = session.state.offers.find((id) =>
+        missing ? boon(id).slot === 'call' : boon(id).slot !== 'call',
+      );
+      if (id && !hasCall) command = { type: 'choose', id };
+    }
+    if (command.type === 'frame')
+      command = { ...command, input: { ...command.input, call: false, cast: false } };
+    const result = dispatch(session, command);
+    expect(result.error).toBeNull();
+    session = result.chronicle;
+  }
+  expect(missing).not.toBe('');
+  expect(charged).not.toBe('');
+  await page.clock.install({ time: new Date('2026-10-16T00:00:00Z') });
+  await page.goto('/?game=night-passage');
+  await expect(page.getByRole('button', { name: 'Begin passage', exact: true })).toBeVisible();
+  await page.clock.pauseAt(new Date('2026-10-16T00:01:00Z'));
+  await page.getByRole('button', { name: 'Sound on', exact: true }).click();
+  const call = page.getByRole('group', { name: 'Call availability', exact: true });
+  const importSave = async (text: string) => {
+    await page.getByLabel('Import Night Passage chronicle').setInputFiles({
+      name: 'call-availability.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(text),
+    });
+  };
+  await importSave(missing);
+  await expect(call).toContainText('No call equipped');
+  await importSave(charged);
+  await expect(call.locator('strong')).toHaveText('Charged');
+  await page.clock.runFor(1000);
+  await expect(call.locator('strong')).toHaveText('Charged');
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(charged);
+  await page.clock.resume();
+  await page.reload();
+  await expect(call.locator('strong')).toHaveText('Charged');
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(charged);
+  await page.clock.pauseAt(new Date('2026-10-16T00:02:00Z'));
+  await page.getByLabel('Arena view').selectOption('scene');
+  await expect(call.locator('strong')).toHaveText('Charged');
+  await page.screenshot({ path: `${review}/call-charged-scene.png`, fullPage: true });
+  await page.getByRole('button', { name: 'Resume passage', exact: true }).last().click();
+  await page.keyboard.down('r');
+  await page.clock.runFor(150);
+  await page.keyboard.up('r');
+  await expect(call.locator('strong')).toHaveText(/Charging \d+%/);
+  await page.getByRole('button', { name: 'Pause', exact: true }).click();
+  const used = (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!;
+  const charge = restoreChronicle(used).state.player.charge;
+  expect(charge).toBeLessThan(100);
+  await expect(call.locator('strong')).toHaveText(`Charging ${Math.floor(charge)}%`);
+  await page.getByLabel('Arena view').selectOption('canvas');
+  await expect(call.locator('strong')).toHaveText(`Charging ${Math.floor(charge)}%`);
+  await page.screenshot({ path: `${review}/call-charging-canvas.png`, fullPage: true });
+});
+
 test('live aiming, combat, reward selection, pause/reload and portable chronicle', async ({
   page,
 }) => {

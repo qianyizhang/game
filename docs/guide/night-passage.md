@@ -41,6 +41,13 @@ During combat, the dodge hint below the arena shows **Ready**, **Dodging**, or
 paused, and restores with your save. The pale ring around the player shows damage
 protection; it does not indicate dodge readiness.
 
+Beside **Q**, the cast display shows available charges and the combat-time countdown
+to the next charge (four seconds, or three with the Well rune). Beside **R**, the
+call display shows **No call equipped**, **Charging …%**, or **Charged**. Charging
+requires combat; a full meter still needs a call boon. These displays freeze while
+paused and restore with your save. Charges describe available resources; a cast or
+call still waits for the current attack's windup and recovery to finish.
+
 The **Sound** toggle enables weapon-themed impacts and distinct damage, dodge, defeat and chamber-clear cues. Turning it off immediately stops active sounds. All warnings remain visible with sound off. The game pauses when the window loses focus or the tab becomes hidden. A reloaded combat save begins paused. The page fits narrow screens, but touch combat controls are not implemented.
 
 ## Weapons, runes and patrons

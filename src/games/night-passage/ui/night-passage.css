@@ -293,7 +293,7 @@
   font-family: inherit;
   color: #e4d5b6;
 }
-.np-dodge {
+.np-ability {
   display: grid;
   gap: 6px;
   min-width: 148px;
@@ -302,15 +302,15 @@
   border-radius: 5px;
   background: #18262d;
 }
-.np-dodge strong {
+.np-ability strong {
   color: #dce6dc;
   font-size: 12px;
 }
-.np-dodge-meter {
+.np-ability-meter {
   height: 4px;
   background: #34464b;
 }
-.np-dodge-meter > span {
+.np-ability-meter > span {
   display: block;
   height: 100%;
   background: #84c5b0;

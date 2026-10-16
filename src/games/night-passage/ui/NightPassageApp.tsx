@@ -21,6 +21,7 @@ import ReplayViewer from './ReplayViewer';
 import './night-passage.css';
 
 const VIEW_KEY = 'card-workshop.night-passage.view.v1';
+const secondsLeft = (ticks: number): string => `${(Math.ceil(ticks / 6) / 10).toFixed(1)} s`;
 type Presentation = 'scene' | 'canvas';
 function preferredView(): Presentation {
   try {
@@ -201,10 +202,12 @@ function PassageGame() {
           }
           const after = live.snapshot();
           if (soundEnabled.current) audio.current?.update(before, after.state);
-          const dodgeChanged =
+          const abilityChanged =
             after.state.player.dashLeft > 0 !== before.player.dashLeft > 0 ||
-            (after.state.player.dashCooldown === 0) !== (before.player.dashCooldown === 0);
-          if (now - lastHud > 100 || after.state.phase !== before.phase || dodgeChanged) {
+            (after.state.player.dashCooldown === 0) !== (before.player.dashCooldown === 0) ||
+            after.state.player.casts !== before.player.casts ||
+            after.state.player.charge >= 100 !== before.player.charge >= 100;
+          if (now - lastHud > 100 || after.state.phase !== before.phase || abilityChanged) {
             setView(after.state);
             setSaveState(after);
             lastHud = now;
@@ -253,8 +256,15 @@ function PassageGame() {
     p.dashLeft > 0
       ? 'Dodging'
       : p.dashCooldown > 0
-        ? `Ready in ${(Math.ceil(p.dashCooldown / 6) / 10).toFixed(1)} s`
+        ? `Ready in ${secondsLeft(p.dashCooldown)}`
         : 'Ready';
+  const castDuration = p.runes.includes('focus') ? 180 : 240;
+  const hasCall = p.boons.some((entry) => boon(entry.id).slot === 'call');
+  const callAvailability = !hasCall
+    ? 'No call equipped'
+    : p.charge >= 100
+      ? 'Charged'
+      : `Charging ${Math.floor(p.charge)}%`;
   const score = passageScore(view);
   const legacy = view.rulesVersion === 'night-passage-4';
   const region = REGIONS[view.region];
@@ -473,8 +483,6 @@ function PassageGame() {
               <span>
                 {view.difficulty} · {legacy ? 'original score' : 'speed score'}
               </span>
-              <span>{p.casts} / 3 casts</span>
-              <span>{Math.floor(p.charge)}% call</span>
               {view.phase !== 'hub' && <span data-testid="np-score">{score.value} points</span>}
             </div>
           </div>
@@ -765,12 +773,12 @@ function PassageGame() {
               <kbd>Right click / K</kbd> special
             </span>
             {view.phase === 'combat' ? (
-              <span className="np-dodge" role="group" aria-label="Dodge readiness">
+              <span className="np-ability" role="group" aria-label="Dodge readiness">
                 <span>
                   <kbd>Space</kbd> dodge
                 </span>
                 <strong>{dodgeReadiness}</strong>
-                <span className="np-dodge-meter" aria-hidden="true">
+                <span className="np-ability-meter" aria-hidden="true">
                   <span style={{ width: `${(1 - p.dashCooldown / dodgeDuration) * 100}%` }} />
                 </span>
               </span>
@@ -779,12 +787,48 @@ function PassageGame() {
                 <kbd>Space</kbd> dodge
               </span>
             )}
-            <span>
-              <kbd>Q</kbd> cast
-            </span>
-            <span>
-              <kbd>R</kbd> call
-            </span>
+            {view.phase === 'combat' ? (
+              <>
+                <span className="np-ability" role="group" aria-label="Cast charges">
+                  <span>
+                    <kbd>Q</kbd> cast
+                  </span>
+                  <strong>{p.casts} / 3 charges</strong>
+                  <span>
+                    {p.casts < 3
+                      ? `Next charge in ${secondsLeft(castDuration - p.castClock)}`
+                      : 'Fully replenished'}
+                  </span>
+                  <span className="np-ability-meter" aria-hidden="true">
+                    <span
+                      style={{
+                        width: `${p.casts === 3 ? 100 : (p.castClock / castDuration) * 100}%`,
+                      }}
+                    />
+                  </span>
+                </span>
+                <span className="np-ability" role="group" aria-label="Call availability">
+                  <span>
+                    <kbd>R</kbd> call
+                  </span>
+                  <strong>{callAvailability}</strong>
+                  {hasCall && (
+                    <span className="np-ability-meter" aria-hidden="true">
+                      <span style={{ width: `${p.charge}%` }} />
+                    </span>
+                  )}
+                </span>
+              </>
+            ) : (
+              <>
+                <span>
+                  <kbd>Q</kbd> cast
+                </span>
+                <span>
+                  <kbd>R</kbd> call
+                </span>
+              </>
+            )}
             <span>
               <kbd>Esc</kbd> pause
             </span>
