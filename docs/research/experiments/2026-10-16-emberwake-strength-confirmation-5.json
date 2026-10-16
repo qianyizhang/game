@@ -1,0 +1,672 @@
+{
+  "schema": "emberwake-strength5-confirmation-receipt-1",
+  "status": "FAILED",
+  "closedAt": "2026-10-16T15:46:40.623Z",
+  "baseCommit": "2060310f61907ef3c9c5936e6e30f5a2856f1049",
+  "identity": {
+    "rules": "emberwake-5",
+    "policy": "emberwake-policy-8",
+    "observation": "emberwake-observation-3",
+    "score": "emberwake-performance-2"
+  },
+  "completion": {
+    "attempts": 1170,
+    "nativeWins": 571,
+    "nativeDeaths": 450,
+    "budgetStops": 149,
+    "errors": 0
+  },
+  "family": [
+    {
+      "id": "barbarian-immediate-difficulty",
+      "hero": "barbarian",
+      "exact": {
+        "attempted": 60,
+        "better": 54,
+        "worse": 1,
+        "tied": 5,
+        "invalid": 0
+      },
+      "n": 60,
+      "difference": 0.7833333333333333,
+      "aOnly": 47,
+      "bOnly": 0,
+      "exactP": 1.4210854715202004e-14,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial sign test on discordant practical score2 pairs; bits encode material superiority, not native wins.",
+      "materialTies": 13,
+      "invalidPairs": 0,
+      "effect": "Net proportion of blocks with materially higher score: (A better minus B better)/ALL matched blocks; not a victory-rate or time-percent effect.",
+      "victoryDescriptive": {
+        "a": {
+          "wins": 59,
+          "attempts": 60,
+          "rate": 0.9833333333333333,
+          "interval95": [0.9114466177322051, 0.9970519161391262]
+        },
+        "b": {
+          "wins": 13,
+          "attempts": 60,
+          "rate": 0.21666666666666667,
+          "interval95": [0.13122921046407016, 0.3362026834734252]
+        },
+        "difference": 0.7666666666666667,
+        "pairedInterval95": null
+      },
+      "adjustedP": 9.947598300641403e-14,
+      "passed": true
+    },
+    {
+      "id": "barbarian-survival-difficulty",
+      "hero": "barbarian",
+      "exact": {
+        "attempted": 60,
+        "better": 48,
+        "worse": 4,
+        "tied": 8,
+        "invalid": 0
+      },
+      "n": 60,
+      "difference": 0.7166666666666667,
+      "aOnly": 46,
+      "bOnly": 3,
+      "exactP": 6.981082378842984e-11,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial sign test on discordant practical score2 pairs; bits encode material superiority, not native wins.",
+      "materialTies": 11,
+      "invalidPairs": 0,
+      "effect": "Net proportion of blocks with materially higher score: (A better minus B better)/ALL matched blocks; not a victory-rate or time-percent effect.",
+      "victoryDescriptive": {
+        "a": {
+          "wins": 41,
+          "attempts": 60,
+          "rate": 0.6833333333333333,
+          "interval95": [0.5576599505698345, 0.7869429415882567]
+        },
+        "b": {
+          "wins": 4,
+          "attempts": 60,
+          "rate": 0.06666666666666667,
+          "interval95": [0.02622827414319792, 0.15925579893767722]
+        },
+        "difference": 0.6166666666666667,
+        "pairedInterval95": null
+      },
+      "adjustedP": 3.533386916387826e-10,
+      "passed": true
+    },
+    {
+      "id": "barbarian-standard-strength",
+      "hero": "barbarian",
+      "exact": {
+        "attempted": 60,
+        "better": 44,
+        "worse": 13,
+        "tied": 3,
+        "invalid": 0
+      },
+      "n": 60,
+      "difference": 0.48333333333333334,
+      "aOnly": 41,
+      "bOnly": 12,
+      "exactP": 8.171334999262925e-5,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial sign test on discordant practical score2 pairs; bits encode material superiority, not native wins.",
+      "materialTies": 7,
+      "invalidPairs": 0,
+      "effect": "Net proportion of blocks with materially higher score: (A better minus B better)/ALL matched blocks; not a victory-rate or time-percent effect.",
+      "victoryDescriptive": {
+        "a": {
+          "wins": 41,
+          "attempts": 60,
+          "rate": 0.6833333333333333,
+          "interval95": [0.5576599505698345, 0.7869429415882567]
+        },
+        "b": {
+          "wins": 13,
+          "attempts": 60,
+          "rate": 0.21666666666666667,
+          "interval95": [0.13122921046407016, 0.3362026834734252]
+        },
+        "difference": 0.4666666666666667,
+        "pairedInterval95": null
+      },
+      "adjustedP": 0.0001634266999852585,
+      "passed": true
+    },
+    {
+      "id": "sorceress-immediate-difficulty",
+      "hero": "sorceress",
+      "exact": {
+        "attempted": 60,
+        "better": 57,
+        "worse": 0,
+        "tied": 3,
+        "invalid": 0
+      },
+      "n": 60,
+      "difference": 0.9333333333333333,
+      "aOnly": 56,
+      "bOnly": 0,
+      "exactP": 2.7755575615628914e-17,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial sign test on discordant practical score2 pairs; bits encode material superiority, not native wins.",
+      "materialTies": 4,
+      "invalidPairs": 0,
+      "effect": "Net proportion of blocks with materially higher score: (A better minus B better)/ALL matched blocks; not a victory-rate or time-percent effect.",
+      "victoryDescriptive": {
+        "a": {
+          "wins": 51,
+          "attempts": 60,
+          "rate": 0.85,
+          "interval95": [0.7388517410884038, 0.9190265075770431]
+        },
+        "b": {
+          "wins": 3,
+          "attempts": 60,
+          "rate": 0.05,
+          "interval95": [0.01714919117914121, 0.13700734625099836]
+        },
+        "difference": 0.8,
+        "pairedInterval95": null
+      },
+      "adjustedP": 2.498001805406602e-16,
+      "passed": true
+    },
+    {
+      "id": "sorceress-survival-difficulty",
+      "hero": "sorceress",
+      "exact": {
+        "attempted": 60,
+        "better": 47,
+        "worse": 8,
+        "tied": 5,
+        "invalid": 0
+      },
+      "n": 60,
+      "difference": 0.6,
+      "aOnly": 39,
+      "bOnly": 3,
+      "exactP": 5.631591193377972e-9,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial sign test on discordant practical score2 pairs; bits encode material superiority, not native wins.",
+      "materialTies": 18,
+      "invalidPairs": 0,
+      "effect": "Net proportion of blocks with materially higher score: (A better minus B better)/ALL matched blocks; not a victory-rate or time-percent effect.",
+      "victoryDescriptive": {
+        "a": {
+          "wins": 42,
+          "attempts": 60,
+          "rate": 0.7,
+          "interval95": [0.5749105303360957, 0.801019897472731]
+        },
+        "b": {
+          "wins": 17,
+          "attempts": 60,
+          "rate": 0.2833333333333333,
+          "interval95": [0.1850667860430859, 0.40767525049735165]
+        },
+        "difference": 0.4166666666666667,
+        "pairedInterval95": null
+      },
+      "adjustedP": 2.2526364773511887e-8,
+      "passed": true
+    },
+    {
+      "id": "sorceress-standard-strength",
+      "hero": "sorceress",
+      "exact": {
+        "attempted": 60,
+        "better": 57,
+        "worse": 1,
+        "tied": 2,
+        "invalid": 0
+      },
+      "n": 60,
+      "difference": 0.9166666666666666,
+      "aOnly": 56,
+      "bOnly": 1,
+      "exactP": 8.049116928532385e-16,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial sign test on discordant practical score2 pairs; bits encode material superiority, not native wins.",
+      "materialTies": 3,
+      "invalidPairs": 0,
+      "effect": "Net proportion of blocks with materially higher score: (A better minus B better)/ALL matched blocks; not a victory-rate or time-percent effect.",
+      "victoryDescriptive": {
+        "a": {
+          "wins": 42,
+          "attempts": 60,
+          "rate": 0.7,
+          "interval95": [0.5749105303360957, 0.801019897472731]
+        },
+        "b": {
+          "wins": 3,
+          "attempts": 60,
+          "rate": 0.05,
+          "interval95": [0.01714919117914121, 0.13700734625099836]
+        },
+        "difference": 0.65,
+        "pairedInterval95": null
+      },
+      "adjustedP": 6.439293542825908e-15,
+      "passed": true
+    },
+    {
+      "id": "necromancer-immediate-difficulty",
+      "hero": "necromancer",
+      "exact": {
+        "attempted": 60,
+        "better": 47,
+        "worse": 11,
+        "tied": 2,
+        "invalid": 0
+      },
+      "n": 60,
+      "difference": 0.6833333333333333,
+      "aOnly": 43,
+      "bOnly": 2,
+      "exactP": 5.88897819397971e-11,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial sign test on discordant practical score2 pairs; bits encode material superiority, not native wins.",
+      "materialTies": 15,
+      "invalidPairs": 0,
+      "effect": "Net proportion of blocks with materially higher score: (A better minus B better)/ALL matched blocks; not a victory-rate or time-percent effect.",
+      "victoryDescriptive": {
+        "a": {
+          "wins": 54,
+          "attempts": 60,
+          "rate": 0.9,
+          "interval95": [0.7985030550748896, 0.9533578005427642]
+        },
+        "b": {
+          "wins": 15,
+          "attempts": 60,
+          "rate": 0.25,
+          "interval95": [0.1577638557841185, 0.372323109454848]
+        },
+        "difference": 0.65,
+        "pairedInterval95": null
+      },
+      "adjustedP": 3.533386916387826e-10,
+      "passed": true
+    },
+    {
+      "id": "necromancer-survival-difficulty",
+      "hero": "necromancer",
+      "exact": {
+        "attempted": 60,
+        "better": 33,
+        "worse": 21,
+        "tied": 6,
+        "invalid": 0
+      },
+      "n": 60,
+      "difference": 0.15,
+      "aOnly": 20,
+      "bOnly": 11,
+      "exactP": 0.14961278438568115,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial sign test on discordant practical score2 pairs; bits encode material superiority, not native wins.",
+      "materialTies": 29,
+      "invalidPairs": 0,
+      "effect": "Net proportion of blocks with materially higher score: (A better minus B better)/ALL matched blocks; not a victory-rate or time-percent effect.",
+      "victoryDescriptive": {
+        "a": {
+          "wins": 46,
+          "attempts": 60,
+          "rate": 0.7666666666666667,
+          "interval95": [0.6456348865960799, 0.8556056838156894]
+        },
+        "b": {
+          "wins": 37,
+          "attempts": 60,
+          "rate": 0.6166666666666667,
+          "interval95": [0.4901736454040315, 0.7291191041511176]
+        },
+        "difference": 0.15,
+        "pairedInterval95": null
+      },
+      "adjustedP": 0.14961278438568115,
+      "passed": false
+    },
+    {
+      "id": "necromancer-standard-strength",
+      "hero": "necromancer",
+      "exact": {
+        "attempted": 60,
+        "better": 45,
+        "worse": 13,
+        "tied": 2,
+        "invalid": 0
+      },
+      "n": 60,
+      "difference": 0.6166666666666667,
+      "aOnly": 45,
+      "bOnly": 8,
+      "exactP": 2.3683513772354559e-7,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial sign test on discordant practical score2 pairs; bits encode material superiority, not native wins.",
+      "materialTies": 7,
+      "invalidPairs": 0,
+      "effect": "Net proportion of blocks with materially higher score: (A better minus B better)/ALL matched blocks; not a victory-rate or time-percent effect.",
+      "victoryDescriptive": {
+        "a": {
+          "wins": 46,
+          "attempts": 60,
+          "rate": 0.7666666666666667,
+          "interval95": [0.6456348865960799, 0.8556056838156894]
+        },
+        "b": {
+          "wins": 15,
+          "attempts": 60,
+          "rate": 0.25,
+          "interval95": [0.1577638557841185, 0.372323109454848]
+        },
+        "difference": 0.5166666666666667,
+        "pairedInterval95": null
+      },
+      "adjustedP": 7.105054131706368e-7,
+      "passed": true
+    }
+  ],
+  "viability": [
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": {
+        "wins": 59,
+        "attempts": 60,
+        "rate": 0.9833333333333333,
+        "interval95": [0.9114466177322051, 0.9970519161391262]
+      },
+      "passed": true
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": {
+        "wins": 41,
+        "attempts": 60,
+        "rate": 0.6833333333333333,
+        "interval95": [0.5576599505698345, 0.7869429415882567]
+      },
+      "passed": true
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": {
+        "wins": 51,
+        "attempts": 60,
+        "rate": 0.85,
+        "interval95": [0.7388517410884038, 0.9190265075770431]
+      },
+      "passed": true
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": {
+        "wins": 42,
+        "attempts": 60,
+        "rate": 0.7,
+        "interval95": [0.5749105303360957, 0.801019897472731]
+      },
+      "passed": true
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": {
+        "wins": 54,
+        "attempts": 60,
+        "rate": 0.9,
+        "interval95": [0.7985030550748896, 0.9533578005427642]
+      },
+      "passed": true
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": {
+        "wins": 46,
+        "attempts": 60,
+        "rate": 0.7666666666666667,
+        "interval95": [0.6456348865960799, 0.8556056838156894]
+      },
+      "passed": true
+    }
+  ],
+  "severeExistence": [
+    {
+      "hero": "barbarian",
+      "declaredAttempts": 70,
+      "victories": 4,
+      "passed": true,
+      "scope": "Observed terminal existence with reported audits only; independent raw verification required, no population>=5% claim."
+    },
+    {
+      "hero": "sorceress",
+      "declaredAttempts": 70,
+      "victories": 19,
+      "passed": true,
+      "scope": "Observed terminal existence with reported audits only; independent raw verification required, no population>=5% claim."
+    },
+    {
+      "hero": "necromancer",
+      "declaredAttempts": 70,
+      "victories": 40,
+      "passed": true,
+      "scope": "Observed terminal existence with reported audits only; independent raw verification required, no population>=5% claim."
+    }
+  ],
+  "independentCoverage": {
+    "rawCases": 1170,
+    "originalInputsIndependentlyReconstructed": 5969504,
+    "nativeFinalStatesAndJournalsVerified": 1170,
+    "independentFullFourDimensionSample": 27,
+    "producerFullFourDimensionAuditsVerified": 1170,
+    "allProducerReportRowsComparedToRaw": true,
+    "allFinalArtifactPinsVerified": 2348
+  },
+  "artifacts": [
+    {
+      "path": "test-results/emberwake-strength/strength5-freeze/freeze.json",
+      "sha256": "a73699bb804f9ea45f0b5bd34922f09d390e52065e16a29580048378c5ae5af2",
+      "bytes": 84763
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-freeze/plan.json",
+      "sha256": "b5cfe0834681328a5aee5fe5dea02a60e927e98fad65ca7219b2efcb28343b24",
+      "bytes": 7523
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-freeze/selection.json",
+      "sha256": "1d0f7d1ecb810cf88673214d79ddc57f25927f12948e27b99e85b091dec09220",
+      "bytes": 2215
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-freeze/producer.ts",
+      "sha256": "7f7abe8466d13226abf97ff98983461f06eed999b814237a623e8eb2baa9470c",
+      "bytes": 17833
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-freeze/execution-closing.json",
+      "sha256": "923ffdf4f082e23be07d5693c79d75aa1ba11d6c0aacbcbfb13c0cefd00d0b33",
+      "bytes": 478004
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-freeze/analysis-1.json",
+      "sha256": "b9fda107820a8c30d7a9740a258214239788fe48771237d36b4da889ffc2bdf2",
+      "bytes": 278052
+    },
+    {
+      "path": ".work/sessions/emberwake-strength5-2026-10-16/astra-review-1/result-audit-1/independent-results.json",
+      "sha256": "e86f86121811bff335958eab18e7227a63176e62d490237271d399997b2bd55b",
+      "bytes": 14124
+    },
+    {
+      "path": ".work/sessions/emberwake-strength5-2026-10-16/astra-review-1/result-audit-1/audit.mjs",
+      "sha256": "1c51d1be335b6e207ea692e3bcb9cd9512ad5bb921eecc23f115a91c60994fbb",
+      "bytes": 11217
+    },
+    {
+      "path": ".work/sessions/emberwake-strength5-2026-10-16/astra-review-1/result-audit-1/aggregate.mjs",
+      "sha256": "9c081d96334235e538a74dc1629ed7ebaa44d1157dc02d887ad128711239d754",
+      "bytes": 8984
+    },
+    {
+      "path": ".work/sessions/emberwake-strength5-2026-10-16/astra-review-1/prospective-closure.json",
+      "sha256": "f6494d0f0621705812bd317f512e07ebd734b55fb496f34d48ce2e6ffecc4c8d",
+      "bytes": 5240
+    },
+    {
+      "path": ".work/sessions/emberwake-strength5-2026-10-16/full-gate-2.json",
+      "sha256": "d31739b1e95f54e77c0e5f2c867512d965a6b53b41b3a1b6a462671a3b3ce13f",
+      "bytes": 829
+    },
+    {
+      "path": "docs/research/experiments/2026-10-16-emberwake-pressure-5.json",
+      "sha256": "24deef66e1d34f800804151327020102bd956e8d11ebf100f2d2d03ec2fc7124",
+      "bytes": 24820
+    },
+    {
+      "path": "docs/research/experiments/2026-10-16-emberwake-recovery-policy-8.json",
+      "sha256": "e75febf4e69cd625692f22e135bc74d541a5a76a711932d4627204ef92044676",
+      "bytes": 43149
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-primary-60/protocol.json",
+      "sha256": "3c15ffe53013fcbafb3f805bcb6ba5ebc5d8003713f1e2f55b40717c528512f5",
+      "bytes": 9559
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-primary-60/report.json",
+      "sha256": "ec3cf5dbc8ae83a6391e5bb657469556d047a6dd173d0f35474a933054307db0",
+      "bytes": 1753051
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-primary-60/closing.json",
+      "sha256": "52dedd8c202537befa99bc18eb724428f3273561c7a6e16d573b3e801be0cea3",
+      "bytes": 236
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-growth-10/protocol.json",
+      "sha256": "3f0abe4e942b43714a60a8f242218ca99989738037f5a64db3a075fb44f80131",
+      "bytes": 7481
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-growth-10/report.json",
+      "sha256": "fcc6188bb35bd6ce6e9578f51f6c9f94f2aa03ca696ab3c295ff1765b89f2ad8",
+      "bytes": 168042
+    },
+    {
+      "path": "test-results/emberwake-strength/strength5-growth-10/closing.json",
+      "sha256": "3e17b9798948939ff7d5c5b7ae63ee54587cf3d5e037e022b19dcb735e8b5c24",
+      "bytes": 230
+    },
+    {
+      "path": ".work/sessions/emberwake-strength5-2026-10-16/astra-review-1/result-audit-1/comparison-source-closure.json",
+      "sha256": "b79f489b9b70c437635008db86b3af0ae525a5a219c3e687af9880174e7b9c94",
+      "bytes": 292172
+    },
+    {
+      "path": ".work/sessions/emberwake-strength5-2026-10-16/execution-handoff-1/receipt.json",
+      "sha256": "975fc58985a0dc22a931765786cc80aa99afad8620b141258cc07b026eb57c5e",
+      "bytes": 4630
+    }
+  ],
+  "limits": "Summary validation does not independently prove raw artifact/container/header/input/policy integrity. Paired intervals unavailable. 9-test Holm only; no hero pooling, total policy order, Survival Relaxed/Standard time order, population Severe5%, compute-isolated causality or human-equivalent claim. Native errors/timeouts remain nonwins; invalid pairs retain denominator but block promotion. Primary effect is practical score superiority, not victory difference or speed percentage.",
+  "allCriteriaPassed": false,
+  "integrity": true,
+  "navigationExamples": [
+    {
+      "purpose": "First planned Severe Survival victory: barbarian",
+      "seed": "EMBERWAKE-STRENGTH-5-RESERVED-27",
+      "setupId": "barbarian-severe",
+      "policy": "survival",
+      "path": "test-results/emberwake-strength/strength5-primary-60/EMBERWAKE-STRENGTH-5-RESERVED-27-barbarian-severe-survival.rollout.json.gzip",
+      "artifact": {
+        "file": "EMBERWAKE-STRENGTH-5-RESERVED-27-barbarian-severe-survival.rollout.json.gzip",
+        "format": "gzip",
+        "sha256": "b6f93f736fb08dc0252e862652523e5ce5b0a5699d67f900bf1322dd6b11307b",
+        "bytes": 2127993,
+        "decodedSha256": "389aa04694396e64ff969ac0c2fff9414d3aefc2ddfa7764f3013da98b776e4f",
+        "decodedBytes": 110397469,
+        "review": "/?game=diablo2&review=policy&rollout=%2Ftest-results%2Femberwake-strength%2Fstrength5-primary-60%2FEMBERWAKE-STRENGTH-5-RESERVED-27-barbarian-severe-survival.rollout.json.gzip"
+      }
+    },
+    {
+      "purpose": "First planned Severe Survival victory: sorceress",
+      "seed": "EMBERWAKE-STRENGTH-5-RESERVED-02",
+      "setupId": "sorceress-severe",
+      "policy": "survival",
+      "path": "test-results/emberwake-strength/strength5-primary-60/EMBERWAKE-STRENGTH-5-RESERVED-02-sorceress-severe-survival.rollout.json.gzip",
+      "artifact": {
+        "file": "EMBERWAKE-STRENGTH-5-RESERVED-02-sorceress-severe-survival.rollout.json.gzip",
+        "format": "gzip",
+        "sha256": "7ecb0314081883b7831df7d19bc7d8a29480b9d1595fa1254aea2f7092e8b76d",
+        "bytes": 2380033,
+        "decodedSha256": "0c3a96084e942062913c5c0a10ded1e7f1fc4a85fca831fd7014fd5f5bdfc881",
+        "decodedBytes": 122164487,
+        "review": "/?game=diablo2&review=policy&rollout=%2Ftest-results%2Femberwake-strength%2Fstrength5-primary-60%2FEMBERWAKE-STRENGTH-5-RESERVED-02-sorceress-severe-survival.rollout.json.gzip"
+      }
+    },
+    {
+      "purpose": "First planned Severe Survival victory: necromancer",
+      "seed": "EMBERWAKE-STRENGTH-5-RESERVED-02",
+      "setupId": "necromancer-severe",
+      "policy": "survival",
+      "path": "test-results/emberwake-strength/strength5-primary-60/EMBERWAKE-STRENGTH-5-RESERVED-02-necromancer-severe-survival.rollout.json.gzip",
+      "artifact": {
+        "file": "EMBERWAKE-STRENGTH-5-RESERVED-02-necromancer-severe-survival.rollout.json.gzip",
+        "format": "gzip",
+        "sha256": "b444a4d9abe6068ba61a9674c80dfddaec7f26459433060ef67c657cd6b2080b",
+        "bytes": 2112425,
+        "decodedSha256": "f43932c31af571039769664e10dfdca18eb965517f6e5f8b6cf9933870fa9861",
+        "decodedBytes": 104692499,
+        "review": "/?game=diablo2&review=policy&rollout=%2Ftest-results%2Femberwake-strength%2Fstrength5-primary-60%2FEMBERWAKE-STRENGTH-5-RESERVED-02-necromancer-severe-survival.rollout.json.gzip"
+      }
+    },
+    {
+      "purpose": "First planned Necromancer winning pair with a practical time tie",
+      "seed": "EMBERWAKE-STRENGTH-5-RESERVED-02",
+      "setupId": "necromancer-standard",
+      "policy": "survival",
+      "score": [1, 4, 8, 20, 32865],
+      "path": "test-results/emberwake-strength/strength5-primary-60/EMBERWAKE-STRENGTH-5-RESERVED-02-necromancer-standard-survival.rollout.json.gzip",
+      "artifact": {
+        "file": "EMBERWAKE-STRENGTH-5-RESERVED-02-necromancer-standard-survival.rollout.json.gzip",
+        "format": "gzip",
+        "sha256": "8b3732793a20d0d66cf2fc4fcd54a030e0b8fa92ca25dbb46d23b33356e5821e",
+        "bytes": 2044672,
+        "decodedSha256": "43db974c6557b7a678299d4bac0768905f7f8588813ecd8fc57bd955e5899da4",
+        "decodedBytes": 101201629,
+        "review": "/?game=diablo2&review=policy&rollout=%2Ftest-results%2Femberwake-strength%2Fstrength5-primary-60%2FEMBERWAKE-STRENGTH-5-RESERVED-02-necromancer-standard-survival.rollout.json.gzip"
+      }
+    },
+    {
+      "purpose": "First planned Necromancer winning pair with a practical time tie",
+      "seed": "EMBERWAKE-STRENGTH-5-RESERVED-02",
+      "setupId": "necromancer-severe",
+      "policy": "survival",
+      "score": [1, 4, 8, 20, 34415],
+      "path": "test-results/emberwake-strength/strength5-primary-60/EMBERWAKE-STRENGTH-5-RESERVED-02-necromancer-severe-survival.rollout.json.gzip",
+      "artifact": {
+        "file": "EMBERWAKE-STRENGTH-5-RESERVED-02-necromancer-severe-survival.rollout.json.gzip",
+        "format": "gzip",
+        "sha256": "b444a4d9abe6068ba61a9674c80dfddaec7f26459433060ef67c657cd6b2080b",
+        "bytes": 2112425,
+        "decodedSha256": "f43932c31af571039769664e10dfdca18eb965517f6e5f8b6cf9933870fa9861",
+        "decodedBytes": 104692499,
+        "review": "/?game=diablo2&review=policy&rollout=%2Ftest-results%2Femberwake-strength%2Fstrength5-primary-60%2FEMBERWAKE-STRENGTH-5-RESERVED-02-necromancer-severe-survival.rollout.json.gzip"
+      }
+    }
+  ]
+}

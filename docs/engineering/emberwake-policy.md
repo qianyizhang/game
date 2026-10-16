@@ -55,8 +55,9 @@ the action menu must remain equal too.
 
 ## Difficulty and results
 
-Campaign rules v5 use these fixed pressure settings. Their measured ordering remains
-an evaluation question; the names and parameters alone do not establish calibration.
+Campaign rules v5 use these fixed pressure settings. The [fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
+passes eight of nine declared contrasts; Necromancer Survival Standard–Severe remains
+insufficiently separated. The full ladder is not calibrated.
 
 | Tier     | Hostile damage multiplier | Player per-impact ceiling | Life-potion recovery |
 | -------- | ------------------------- | ------------------------- | -------------------- |
@@ -286,5 +287,11 @@ The [performance score assessment](../research/experiments/2026-10-16-emberwake-
 records the score-v2 reconstruction and exploratory policy comparisons. Better score
 discrimination does not establish ordered win-rate difficulty: the retained development
 data include tier ties and a Severe campaign faster than Standard. Native balance
-was unchanged in that assessment. The later versioned pressure candidate above still
-requires prospective calibration on frozen independent seeds.
+was unchanged in that assessment. The later native5 [fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
+retains all 1,170 attempts: 571 victories, 450 deaths, 149 living stops and no execution
+errors. All six absolute completion and three Severe-existence gates pass; only
+Necromancer Survival Standard–Severe fails the nine-contrast family (15-point net
+material effect, Holm p=0.149613). Its Standard/Severe wins are 46/60 and 37/60.
+All 1,170 original-input/native sequences and 27 full factory reproductions were
+independently audited. Keep this negative confirmation intact; further development
+and a new prospective namespace are required before claiming full calibration.
