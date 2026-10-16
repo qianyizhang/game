@@ -56,8 +56,8 @@ the action menu must remain equal too.
 ## Difficulty and results
 
 The accepted baseline remains **policy8 under native7** with these pressure settings.
-Policy10 is rejected by the independently audited D12 screen; the working built-ins
-have been restored exactly to policy8 after source-hold release. The [native5 fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
+Policies10 and11 are rejected by their independently audited D12/D13 screens; the
+working built-ins have been restored exactly to policy8 after each source-hold release. The [native5 fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
 failed one contrast; the [native6 Standard-relief screen](../research/experiments/2026-10-17-emberwake-standard-relief-6.md)
 failed two. The [native7 Standard-pressure screen](../research/experiments/2026-10-17-emberwake-standard-pressure-7.md)
 also fails overall: all six difficulty comparisons pass on consumed development
@@ -245,6 +245,17 @@ four complete native replays and six guard records. Severe's improving rank stil
 indicates exposure. No local result establishes campaign strength or difficulty
 calibration; the complete D12 screen is independently confirmed negative. The local
 four branches remain outside that cohort.
+
+Rejected policy11 modeled in-range, public-clear-LOS attacks as stationary even on
+cooldown, while preserving other owned movement. Added exposed-margin detours shared
+one allowance reset by observed tracked foe damage/death or monotone objective
+progress; class-clearing escapes remained available. Native7/observation3/score2 and
+warning/recovery geometry stayed fixed. Its [D13 screen](../research/experiments/2026-10-17-emberwake-policy-11-development.md)
+([receipt](../research/experiments/2026-10-17-emberwake-policy-11-development.json)) is negative:
+107 victories, 61 deaths and 30 living timeouts across 198 attempts, with zero errors;
+eight of nine comparisons, five of six completion floors and all three Severe-existence
+checks pass. Exact policy8 was restored after hold release. The report owns detailed
+results and audit limits; this correctness repair did not establish stronger play.
 
 BFS must also respect the current action menu at its first edge. A fractional avatar
 footprint can make the nominally shortest adjacent center unavailable because it

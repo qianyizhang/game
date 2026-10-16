@@ -341,7 +341,10 @@ fairness, measured policy performance and human acceptance as separate findings.
   A policy8 death at 14 ticks became a 40-tick living policy9 branch, yet the
   full cross-hero screen regressed completion and Severe existence. Local probes require the complete
   development gates before promotion; preserve the negative and accepted baseline
-  rather than changing thresholds or treating the bounded branch as a campaign.
+  rather than changing thresholds or treating the bounded branch as a campaign. A
+  defensive attribute plan can also win more slowly; distinguish that style tradeoff
+  from broken control. Any future endpoint change must be prospective and cannot
+  relabel an already negative experiment.
 - **Safety at the wrong boundary:** a warning-aware escape rank does not protect
   damaging movement, remembered pursuit or a forced pending advance that bypasses
   it. Inspect the command that actually advances time. An instantaneous relocation
@@ -354,12 +357,20 @@ fairness, measured policy performance and human acceptance as separate findings.
   cooldown prevents firing. A disclosed target point is not automatically a movement endpoint.
   Check the actual native control effect using public knowledge before ranking a
   replacement; preserve uncertainty where necessary. The [D12 traces](../research/experiments/2026-10-17-emberwake-policy-10-development.md)
-  support this mismatch, not a causal explanation of every campaign loss.
+  support this mismatch, not a causal explanation of every campaign loss. Other
+  owned movement can still apply after a stationary attack; preserve native owner
+  priority, not just the target point. Policy11 corrects that public model but still
+  fails its complete development gates.
 - **Clock progress versus goal progress:** zero-tick defenses followed by ordinary
   advances can still cycle between retreat and pursuit without improving combat or
   objectives. Bound defensive detours by observed combat/objective progress, not
   elapsed ticks alone. A bounded living continuation does not establish that an
   uninterrupted route would survive or complete; retain the [negative full screen](../research/experiments/2026-10-17-emberwake-policy-10-development.md).
+  Reset an added allowance only on observed tracked combat or monotone objective
+  progress, not movement, ticks or reacquisition. The [D13 follow-up](../research/experiments/2026-10-17-emberwake-policy-11-development.md)
+  does not establish sustained guard starvation: its selected longest quiet gap is
+  mainly frontier travel. Classify explicit control ownership before calling quiet
+  time wasted or loot-caused; recorded intervals are not counterfactual savings.
 - **Functional witnesses versus balance:** a short progression test should declare
   its intended tier. A rebalance can invalidate an implicit current-Standard success
   assumption for every policy. Preserve the original failure, keep the functional
@@ -561,6 +572,11 @@ Accepted 2026-10-16 after the design interview:
   policy8 as the accepted baseline; exact committed policy8 was restored after
   source-hold release. Its consumed identity cannot be reused. The game
   contract and dated reports own detailed results; no fresh confirmation is launched.
+  The subsequent [policy11 D13 screen](../research/experiments/2026-10-17-emberwake-policy-11-development.md)
+  is independently negative too: Barbarian Standard Survival–Immediate net is −0.20
+  and Sorceress Standard Survival wins 5/10 against the fixed 8/10 floor. Reject the
+  consumed identity and retain exact native7/policy8 after hold release; detailed
+  results and qualifications remain in the dated report.
 - **Strategies:** the remaining games start with immediate-gain, survival and
   long-term-growth priorities, adapted to their mechanics. Night Passage retains
   its existing effort spectrum and frozen comparison.
@@ -586,14 +602,14 @@ Accepted direction on 2026-10-16: establish this guide first, then complete one 
 at a time. The rows link adopted mechanisms and their measured limits. Dated reports
 bound playing-strength and difficulty claims; unresolved calibration stays explicit.
 
-| Order | Game                 | Starting point and remaining adoption work                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| ----- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1     | Night Passage        | [Adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md) and [workflow evidence](../research/experiments/2026-10-16-policy-workflow.md): constrained native policies, local TS factories, original-input review and per-case audited study backend behind the common CLI. Existing calibration remains strength evidence; old recordings lack original knowledge and prefix branching is not offered.                                                                                                                                                                        |
-| 2     | Blindside            | [Policy contract](blindside-agent.md): restricted observations, local TS factories, immediate/survival/growth strategies, three selectable target tiers, v4 replay continuity, shared recording/audit/navigation and isolated original-input review. Dated evaluation evidence accompanies this adoption; uncertainty remains explicit.                                                                                                                                                                                                                                                                  |
-| 3     | Spire                | [Policy contract](spire-agent.md): public legal menus, extensible factories, all native Ascensions 0–5 and original-input review. [Fresh confirmation](../research/experiments/2026-10-16-spire-strength-confirmation-4.md) meets preregistered strength and difficulty criteria: Survival wins 98/86/32 Ironclad and 135/74/43 Silent attempts per 400 A0/A3/A5 seeds. Earlier failed confirmations remain intact; human difficulty is untested.                                                                                                                                                        |
-| 4     | Last Hearth          | [Policy contract](hearth-policy.md) and [adoption evidence](../research/experiments/2026-10-16-hearth-policy.md): v6 spell-aware policies, opaque public identity, three starting-health tiers, all-actor native replay audit, isolated original-input review and 1,350 audited episodes. Original v1/v2 environments and frozen v5 results remain intact; strength ordering is qualified.                                                                                                                                                                                                               |
-| 5     | Emberwake            | [Policy contract](emberwake-policy.md). Native7/policy8 remains the accepted baseline; policy10 is rejected by the [independently audited negative D12 screen](../research/experiments/2026-10-17-emberwake-policy-10-development.md) ([receipt](../research/experiments/2026-10-17-emberwake-policy-10-development.json)), with all 198 input/native checks passed (27 independent factory cases; 171 producer-qualified). Exact policy8 was restored after source-hold release; keep consumed identities and all prior negatives. Strength/difficulty calibration remains open; no fresh confirmation. |
-| 6     | Dungeon Cartographer | [Policy contract](cartographer-policy.md): v3 encounter pressure, extensible public priorities, ordinal health/efficiency score and exact v1/v2 native replay. [Fresh confirmation](../research/experiments/2026-10-16-cartographer-strength-confirmation-3.md) meets five declared criteria over 900 attempts: Survival wins 100/83/30 per 100 Relaxed/Standard/Severe seeds. Independent raw/native/statistical review passed; human difficulty is untested.                                                                                                                                           |
+| Order | Game                 | Starting point and remaining adoption work                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ----- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1     | Night Passage        | [Adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md) and [workflow evidence](../research/experiments/2026-10-16-policy-workflow.md): constrained native policies, local TS factories, original-input review and per-case audited study backend behind the common CLI. Existing calibration remains strength evidence; old recordings lack original knowledge and prefix branching is not offered.                                                                |
+| 2     | Blindside            | [Policy contract](blindside-agent.md): restricted observations, local TS factories, immediate/survival/growth strategies, three selectable target tiers, v4 replay continuity, shared recording/audit/navigation and isolated original-input review. Dated evaluation evidence accompanies this adoption; uncertainty remains explicit.                                                                                                                                                          |
+| 3     | Spire                | [Policy contract](spire-agent.md): public legal menus, extensible factories, all native Ascensions 0–5 and original-input review. [Fresh confirmation](../research/experiments/2026-10-16-spire-strength-confirmation-4.md) meets preregistered strength and difficulty criteria: Survival wins 98/86/32 Ironclad and 135/74/43 Silent attempts per 400 A0/A3/A5 seeds. Earlier failed confirmations remain intact; human difficulty is untested.                                                |
+| 4     | Last Hearth          | [Policy contract](hearth-policy.md) and [adoption evidence](../research/experiments/2026-10-16-hearth-policy.md): v6 spell-aware policies, opaque public identity, three starting-health tiers, all-actor native replay audit, isolated original-input review and 1,350 audited episodes. Original v1/v2 environments and frozen v5 results remain intact; strength ordering is qualified.                                                                                                       |
+| 5     | Emberwake            | [Policy contract](emberwake-policy.md). Native7/policy8 remains accepted; policy11 is rejected by the [independently audited negative D13 screen](../research/experiments/2026-10-17-emberwake-policy-11-development.md) ([receipt](../research/experiments/2026-10-17-emberwake-policy-11-development.json)). Exact policy8 was restored after source-hold release. Keep consumed identities and all prior negatives; strength/difficulty calibration remains open, with no fresh confirmation. |
+| 6     | Dungeon Cartographer | [Policy contract](cartographer-policy.md): v3 encounter pressure, extensible public priorities, ordinal health/efficiency score and exact v1/v2 native replay. [Fresh confirmation](../research/experiments/2026-10-16-cartographer-strength-confirmation-3.md) meets five declared criteria over 900 attempts: Survival wins 100/83/30 per 100 Relaxed/Standard/Severe seeds. Independent raw/native/statistical review passed; human difficulty is untested.                                   |
 
 For each game, close with a working extension example, complete-episode evidence,
 boundary tests including a leak counterexample, audited replay/decision linkage,

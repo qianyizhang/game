@@ -1,0 +1,1764 @@
+{
+  "schema": "emberwake-policy11-native7-development-report-1",
+  "renderedAt": "2026-10-16T23:09:35.931Z",
+  "status": "development-failed",
+  "allDevelopmentCriteriaPassed": false,
+  "failedCriteria": [
+    "barbarian:Standard Survival > Immediate",
+    "sorceress standard survival completion"
+  ],
+  "identity": {
+    "rules": "emberwake-7",
+    "observation": "emberwake-observation-3",
+    "score": "emberwake-performance-2",
+    "content": {
+      "id": "emberwake",
+      "version": "2.0.0"
+    }
+  },
+  "policy": "emberwake-policy-11",
+  "profile": {
+    "incomingDamage": [0.75, 7, 12],
+    "playerImpactCapFraction": [null, 0.55, 0.7],
+    "healthRecoverySeconds": [0, 20, 60]
+  },
+  "acceptedControlBaseline": "emberwake-policy-8",
+  "design": {
+    "attempts": 198,
+    "primary": 180,
+    "growth": 18,
+    "blocks": 10,
+    "growthBlocks": 2,
+    "policySeed": "POLICY-STREAM-1",
+    "options": {},
+    "decisions": 8000,
+    "workers": 4,
+    "workerOldGenerationMiB": 2048,
+    "encodedAndDecodedLimitBytes": 150000000,
+    "practicalWinningTimeTie": "20*abs(deltaTicks)<maxTicks; exact5% directional",
+    "requiredNet": 0.2
+  },
+  "totals": {
+    "attempts": 198,
+    "victories": 107,
+    "deaths": 61,
+    "timeouts": 30,
+    "errors": 0
+  },
+  "cells": [
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 10,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 9891602
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 12022620
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 10178505
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 8578001
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 17017325
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 11465921
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 11480900
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 8610092
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 11170724
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 17564292
+        }
+      ]
+    },
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 9,
+      "deaths": 0,
+      "timeouts": 1,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 9961578
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 10391771
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 11270839
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 10363245
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 17860515
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 11103582
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 11918400
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 9943629
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 2632509
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 16223518
+        }
+      ]
+    },
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 9114535
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 11104490
+        }
+      ]
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 6,
+      "deaths": 4,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 9897637
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 133327
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 10186869
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 8608706
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 16901644
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 11230672
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 11495160
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 8612703
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 9702773
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 290056
+        }
+      ]
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 9,
+      "deaths": 0,
+      "timeouts": 1,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 10679419
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 10092728
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 13301923
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 10375923
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 15956553
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 11126716
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 12828576
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 8690021
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 2612994
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 13527598
+        }
+      ]
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 1,
+      "deaths": 1,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 9094278
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 137555
+        }
+      ]
+    },
+    {
+      "hero": "barbarian",
+      "tier": "severe",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 0,
+      "deaths": 10,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 125375
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 129669
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 36363
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 182671
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 94271
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 332091
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 133581
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 1147660
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 4007978
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 151154
+        }
+      ]
+    },
+    {
+      "hero": "barbarian",
+      "tier": "severe",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 1,
+      "deaths": 6,
+      "timeouts": 3,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 2544955
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 5261351
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 6465609
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 3799975
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 13374864
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 12312747
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 3775381
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 2446896
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 2612699
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 10835990
+        }
+      ]
+    },
+    {
+      "hero": "barbarian",
+      "tier": "severe",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 0,
+      "deaths": 2,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 342230
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 136127
+        }
+      ]
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 8,
+      "deaths": 0,
+      "timeouts": 2,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 17116204
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 13327869
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 10073912
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 12946185
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 15437391
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 13234582
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 17427610
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 15873310
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 13553120
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 11766620
+        }
+      ]
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 5,
+      "deaths": 0,
+      "timeouts": 5,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 16641425
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 16322093
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 14906401
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 11212685
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 16717752
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 13702874
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 16544538
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 15423916
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 12690089
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 12135362
+        }
+      ]
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 10633494
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 12026292
+        }
+      ]
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 2,
+      "deaths": 8,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 114021
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 13336388
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 39108
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 80488
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 1231521
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 398014
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 521979
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 1117922
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 6647815
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 11778194
+        }
+      ]
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 5,
+      "deaths": 0,
+      "timeouts": 5,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 13647175
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 15766395
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 14923349
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 10614692
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 16642325
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 13702877
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 17528273
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 15471444
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 12795967
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 12106565
+        }
+      ]
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 10623880
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 12042511
+        }
+      ]
+    },
+    {
+      "hero": "sorceress",
+      "tier": "severe",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 0,
+      "deaths": 10,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 512796
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 2303190
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 85485
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 103250
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 617928
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 397945
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 521801
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 5740017
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 466654
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 2508720
+        }
+      ]
+    },
+    {
+      "hero": "sorceress",
+      "tier": "severe",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 8,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 16197530
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 16317518
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 15362895
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 10632655
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 16033835
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 13683414
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 15906211
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 15142387
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 12923301
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 11663055
+        }
+      ]
+    },
+    {
+      "hero": "sorceress",
+      "tier": "severe",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 0,
+      "deaths": 2,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 1236907
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 931457
+        }
+      ]
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 9,
+      "deaths": 0,
+      "timeouts": 1,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 13522266
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 13513419
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 11825733
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 13082015
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 14997236
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 11399073
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 16363888
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 17535293
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 15292787
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 12289506
+        }
+      ]
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 10,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 12407563
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 13389787
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 11901495
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 14583466
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 14987099
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 15896022
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 14704189
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 15168440
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 16799192
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 12267089
+        }
+      ]
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 9340518
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 12129106
+        }
+      ]
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 6,
+      "deaths": 4,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 606835
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 13833521
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 37730
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 80982
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 15319862
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 11924020
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 9344655
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 16556369
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 15348433
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 12231135
+        }
+      ]
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 9,
+      "deaths": 0,
+      "timeouts": 1,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 14646456
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 13407608
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 10551244
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 12439253
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 15336944
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 13965610
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 18313770
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 15502902
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 15170524
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 11400502
+        }
+      ]
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 9304102
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 12129945
+        }
+      ]
+    },
+    {
+      "hero": "necromancer",
+      "tier": "severe",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 0,
+      "deaths": 10,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 534932
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 2496736
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 271986
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 105276
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 546954
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 479688
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 2636960
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 12605522
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 2498997
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 833302
+        }
+      ]
+    },
+    {
+      "hero": "necromancer",
+      "tier": "severe",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 4,
+      "deaths": 3,
+      "timeouts": 3,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 13389187
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 13795735
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-03",
+          "work": 14338836
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+          "work": 3568576
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+          "work": 549047
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-06",
+          "work": 14911835
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-07",
+          "work": 16119704
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+          "work": 4606531
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-09",
+          "work": 17842884
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-10",
+          "work": 10168602
+        }
+      ]
+    },
+    {
+      "hero": "necromancer",
+      "tier": "severe",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 1,
+      "deaths": 1,
+      "timeouts": 0,
+      "errors": 0,
+      "work": [
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+          "work": 4608463
+        },
+        {
+          "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-02",
+          "work": 12600061
+        }
+      ]
+    }
+  ],
+  "contrasts": [
+    {
+      "hero": "barbarian",
+      "name": "barbarian:Immediate Relaxed > Standard",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 1,
+        "tied": 1,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 0,
+        "tied": 6,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.4,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "barbarian",
+      "name": "barbarian:Survival Standard > Severe",
+      "exact": {
+        "attempted": 10,
+        "better": 9,
+        "worse": 0,
+        "tied": 1,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 0,
+        "tied": 2,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.8,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "barbarian",
+      "name": "barbarian:Standard Survival > Immediate",
+      "exact": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 6,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 3,
+        "worse": 5,
+        "tied": 2,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": -0.2,
+      "passed": false,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "sorceress",
+      "name": "sorceress:Immediate Relaxed > Standard",
+      "exact": {
+        "attempted": 10,
+        "better": 9,
+        "worse": 0,
+        "tied": 1,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 0,
+        "tied": 2,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.8,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "sorceress",
+      "name": "sorceress:Survival Standard > Severe",
+      "exact": {
+        "attempted": 10,
+        "better": 3,
+        "worse": 3,
+        "tied": 4,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 3,
+        "worse": 1,
+        "tied": 6,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.2,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "sorceress",
+      "name": "sorceress:Standard Survival > Immediate",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 2,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 2,
+        "tied": 0,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.6,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "necromancer",
+      "name": "necromancer:Immediate Relaxed > Standard",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 2,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 1,
+        "tied": 5,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.3,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "necromancer",
+      "name": "necromancer:Survival Standard > Severe",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 2,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 6,
+        "worse": 2,
+        "tied": 2,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.4,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "necromancer",
+      "name": "necromancer:Standard Survival > Immediate",
+      "exact": {
+        "attempted": 10,
+        "better": 6,
+        "worse": 4,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 2,
+        "tied": 4,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.2,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    }
+  ],
+  "completion": [
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": 10,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": 9,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": 8,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": 5,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": false
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": 9,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": 9,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    }
+  ],
+  "severeExistence": [
+    {
+      "hero": "barbarian",
+      "wins": 1,
+      "attempted": 12,
+      "minimum": 1,
+      "passed": true,
+      "qualification": "Observed native victories only, no population lower-bound claim."
+    },
+    {
+      "hero": "sorceress",
+      "wins": 2,
+      "attempted": 12,
+      "minimum": 1,
+      "passed": true,
+      "qualification": "Observed native victories only, no population lower-bound claim."
+    },
+    {
+      "hero": "necromancer",
+      "wins": 5,
+      "attempted": 12,
+      "minimum": 1,
+      "passed": true,
+      "qualification": "Observed native victories only, no population lower-bound claim."
+    }
+  ],
+  "nativeTotals": {
+    "cases": 198,
+    "decisions": 1068929,
+    "acceptedCommands": 873817
+  },
+  "independent": {
+    "originalInputCases": 198,
+    "nativeFinalCases": 198,
+    "originalInputDecisions": 1068929,
+    "fixedDEV01FactoryCases": 27,
+    "independentFactoryProposals": 135647,
+    "otherProducerQualifiedFactoryCases": 171,
+    "unchangedExactOriginal8Native7Controls": 108,
+    "normalizations": []
+  },
+  "resource": {
+    "sampleIntervalMs": 500,
+    "sampleCount": 1760,
+    "peakSampledProcessRssBytes": 6683181056,
+    "sampleError": null,
+    "qualification": "Sampled process-wide RSS includes worker threads; sampling may miss peaks. 2,048 MiB is each worker V8 old-generation limit, not an RSS ceiling. No extra technical jobs; these consumed198 attempts are current resource evidence, not equal-compute proof.",
+    "scope": "These 198 current matrix executions only; sampled process-wide RSS includes worker threads and may miss spikes. Old-generation cap is not an RSS ceiling or equal-compute claim."
+  },
+  "verification": {
+    "requiredNpmCheck": {
+      "application": 574,
+      "seeded": 37,
+      "tools": 128,
+      "unrelatedToolSkip": 1,
+      "pureDCC": 79,
+      "python": 16,
+      "gate": {
+        "path": ".work/sessions/emberwake-policy11-development-2026-10-17/full-gate-1/full-gate.json",
+        "sha256": "c8baf0cb2c73595fb47b7e1c426065f02e62448bca8c92627b1cff003348869f"
+      }
+    },
+    "gateRoot8": "Historical as-of-gate root8 metadata. Candidate11 source/runtime matched then-applied11 and frozen50live/54retained through the original render; those are historical experiment pins after exact8 restoration.",
+    "newBrowserGate": false,
+    "newGeometryGate": false,
+    "extraGrowthTechnicalJobs": 0
+  },
+  "priorNegatives": [
+    {
+      "path": "docs/research/experiments/2026-10-16-emberwake-strength-confirmation-5.json",
+      "sha256": "bf3054c518568c03cf2d689197861e9d91c8f2567e53c9431154a0e5ffb96866",
+      "status": "retained-negative",
+      "reanalysis": false
+    },
+    {
+      "path": "docs/research/experiments/2026-10-17-emberwake-standard-relief-6.json",
+      "sha256": "c148ddca6716ae0ba7bdf30fb30bd1f8d93f110b66ba3983cda886bfa003e5b9",
+      "status": "retained-negative",
+      "reanalysis": false
+    },
+    {
+      "path": "docs/research/experiments/2026-10-17-emberwake-standard-pressure-7.json",
+      "sha256": "90d7af8dbc3dd10eba19a443f74c46abacd82d0bd073cbd2556cafc9c36792b0",
+      "status": "retained-negative",
+      "reanalysis": false
+    },
+    {
+      "path": "docs/research/experiments/2026-10-17-emberwake-policy-9-development.json",
+      "sha256": "aae0332fcdb9c8b6ada772c9823267f3532491b4aba9005b13e2febe5482e744",
+      "status": "retained-negative",
+      "reanalysis": false
+    },
+    {
+      "path": "docs/research/experiments/2026-10-17-emberwake-policy-10-development.json",
+      "sha256": "75d060ae7f592af202f67f5e3cd4b167b8a8a3b62c853feb3d3157c5614e2bb0",
+      "status": "retained-negative",
+      "reanalysis": false
+    }
+  ],
+  "evidenceInventory": {
+    "path": ".work/sessions/emberwake-policy11-development-2026-10-17/report-draft-1/candidate-1/complete-pins.json",
+    "sha256": "ff0b3b3973d605870d0b9711a356de9b218282e595ba0fd7a746fe06fa88824c"
+  },
+  "evidenceCounts": {
+    "logicalEntries": 6816,
+    "uniquePhysicalFiles": 1385,
+    "completeMaps": [
+      {
+        "label": "root-authorization",
+        "logicalEntries": 1385,
+        "uniquePhysicalEntries": 1384,
+        "aliasEntries": 1
+      },
+      {
+        "label": "publisher",
+        "logicalEntries": 3,
+        "uniquePhysicalEntries": 3,
+        "aliasEntries": 0
+      },
+      {
+        "label": "actual-proofs",
+        "logicalEntries": 17,
+        "uniquePhysicalEntries": 17,
+        "aliasEntries": 0
+      },
+      {
+        "label": "finite-negative-references",
+        "logicalEntries": 5,
+        "uniquePhysicalEntries": 5,
+        "aliasEntries": 0
+      },
+      {
+        "label": "live50",
+        "logicalEntries": 50,
+        "uniquePhysicalEntries": 50,
+        "aliasEntries": 0
+      },
+      {
+        "label": "retained54",
+        "logicalEntries": 54,
+        "uniquePhysicalEntries": 54,
+        "aliasEntries": 0
+      },
+      {
+        "label": "original-native216",
+        "logicalEntries": 216,
+        "uniquePhysicalEntries": 216,
+        "aliasEntries": 0
+      },
+      {
+        "label": "execution-artifacts-complete",
+        "logicalEntries": 403,
+        "uniquePhysicalEntries": 403,
+        "aliasEntries": 0
+      },
+      {
+        "label": "current198raw396native",
+        "logicalEntries": 594,
+        "uniquePhysicalEntries": 594,
+        "aliasEntries": 0
+      },
+      {
+        "label": "independent-inputs-complete",
+        "logicalEntries": 1125,
+        "uniquePhysicalEntries": 1125,
+        "aliasEntries": 0
+      },
+      {
+        "label": "independent-outputs-complete",
+        "logicalEntries": 199,
+        "uniquePhysicalEntries": 199,
+        "aliasEntries": 0
+      },
+      {
+        "label": "independent-closing-inputs",
+        "logicalEntries": 1125,
+        "uniquePhysicalEntries": 1125,
+        "aliasEntries": 0
+      },
+      {
+        "label": "independent-closing-outputs",
+        "logicalEntries": 200,
+        "uniquePhysicalEntries": 200,
+        "aliasEntries": 0
+      },
+      {
+        "label": "independent-terminal-proofs",
+        "logicalEntries": 11,
+        "uniquePhysicalEntries": 11,
+        "aliasEntries": 0
+      },
+      {
+        "label": "final-review-proofs",
+        "logicalEntries": 1379,
+        "uniquePhysicalEntries": 1378,
+        "aliasEntries": 1
+      },
+      {
+        "label": "root-source3",
+        "logicalEntries": 3,
+        "uniquePhysicalEntries": 3,
+        "aliasEntries": 0
+      },
+      {
+        "label": "root-runtime19",
+        "logicalEntries": 19,
+        "uniquePhysicalEntries": 19,
+        "aliasEntries": 0
+      },
+      {
+        "label": "reviewed-method4",
+        "logicalEntries": 4,
+        "uniquePhysicalEntries": 4,
+        "aliasEntries": 0
+      },
+      {
+        "label": "current-candidate-gate4",
+        "logicalEntries": 4,
+        "uniquePhysicalEntries": 4,
+        "aliasEntries": 0
+      },
+      {
+        "label": "current-candidate-runtime19",
+        "logicalEntries": 19,
+        "uniquePhysicalEntries": 19,
+        "aliasEntries": 0
+      },
+      {
+        "label": "this-authorization",
+        "logicalEntries": 1,
+        "uniquePhysicalEntries": 1,
+        "aliasEntries": 0
+      }
+    ]
+  },
+  "proofs": {
+    "freeze": {
+      "path": "test-results/emberwake-strength/policy11-development-198-1/freeze.json",
+      "sha256": "fd7417fcd171ff551bd5330ecb76b76134e19d42c1b0b6e738cfd77549612e30"
+    },
+    "execution": {
+      "path": "test-results/emberwake-strength/policy11-development-198-1/execution-closing.json",
+      "sha256": "c615fd52d8ca9be3b590fea1958282dd9470abfe38f8250412a51d08443f7574"
+    },
+    "analysisClosing": {
+      "path": "test-results/emberwake-strength/policy11-development-198-1/analysis-closing.json",
+      "sha256": "7bd123de892da5262448c6023a040f7e6b3e066a69a87ce449219757c090f65d"
+    },
+    "analysis": {
+      "path": "test-results/emberwake-strength/policy11-development-198-1/analysis.json",
+      "sha256": "da023cdd720653f68c0cc5db14892aac444689549d52210155a253528b71e7d2"
+    },
+    "controls": {
+      "path": "test-results/emberwake-strength/policy11-development-198-1/unchanged-policy-comparison.json",
+      "sha256": "019299cdb41ae70e668979921ac94c20776c4befa22373356ff08936102283a9"
+    },
+    "independent": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/astra-review-1/result-audit-1/result.json",
+      "sha256": "b45e3ad8360e443508904035be3610f1b4774e533a42af48485144aafd9df648"
+    },
+    "independentClosing": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/astra-review-1/result-audit-1/closing.json",
+      "sha256": "26029d0654f5c83753619520f500c348037ff909beb4c483212fda7740223515"
+    },
+    "independentTerminal": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/astra-review-1/result-audit-1/terminal.json",
+      "sha256": "f62ae5cb863e20ca6904dff57aa0a5f84644c753497d142f77f1ff753d2b326e"
+    },
+    "finalReview": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/astra-review-1/final-development-review-1.json",
+      "sha256": "c7ec016a600ab003a577e2e44763d270b6e267bfcaa2176aa7742fc2a91305d6"
+    },
+    "sourceReview": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/astra-review-1/source-method-review-1.json",
+      "sha256": "83c51fbf2186ecd014300f9b241343c17656b66d506a2689c4ac38a80d0e45f2"
+    },
+    "sourceClosure": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/implementation-1/source-closure.json",
+      "sha256": "8e9c80414d24fa90f238cdfb6ad4f2b2ce22a43a0bcf2e7ceb847c6fd1b4374c"
+    },
+    "sourceApplied": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/source-applied-1.json",
+      "sha256": "89b822fb3faa26282815068b21482fb45b5a6ecc4a8ae92debd1faf43a3c71cf"
+    },
+    "requiredGate": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/full-gate-1/full-gate.json",
+      "sha256": "c8baf0cb2c73595fb47b7e1c426065f02e62448bca8c92627b1cff003348869f"
+    },
+    "gateOwner": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/full-gate-1/owner-terminal-1.json",
+      "sha256": "a931582df8fe10fad2680daedc9dc88d4978613202947e08aa1194b49be7914f"
+    },
+    "protocol": {
+      "path": "docs/research/experiments/2026-10-17-emberwake-policy-11-development-protocol.md",
+      "sha256": "48410d17e8cdc62cfe10247ffe08dae72c3c57a80b82f30265209499998c7e23"
+    },
+    "auditorPreparation": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/astra-review-1/result-audit-1/preparation-receipt-1.json",
+      "sha256": "614d38ef036debdc8eeb992474edf5f96e8ee0357904c0691d481847ca6cc6f0"
+    },
+    "prospectiveScope": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/astra-review-1/result-audit-1/prospective-scope.json",
+      "sha256": "79453253e1ac96ffe99e3d1243b0decdc0085e4e6d52b3108bc295a603ead78f"
+    }
+  },
+  "limits": [
+    "Consumed adaptive development; no fresh calibration, n10 significance, human-equivalent or equal-compute claim.",
+    "All ties/deaths/timeouts remain in ten-block denominators; net 20 pp is not 20% more wins or 20% faster time.",
+    "Only fixed 27 factories independently reproduced; other 171 factory verdicts remain producer-qualified.",
+    "Exact native replay/controls and policy fairness are distinct verdicts; structured sensors exceed human perception.",
+    "One margin detour can expose ordinary execution; class-clearing escape can still stall. No native safety guarantee.",
+    "Prior native5 fresh 1,170 and native6/native7/policy9/policy10 consumed 198 failures remain negative; baseline8 retained."
+  ],
+  "next": "Preserve this negative; no criterion tuning, retry or confirmation under a failed gate.",
+  "postRenderDisposition": {
+    "decision": "rejected-consumed-policy11",
+    "acceptedBaseline": "native7/policy8",
+    "sourceHoldReleased": true,
+    "sourceHoldRelease": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/source-hold-release-1.json",
+      "sha256": "66d28459a43dae2399a9470fa74fd7fb2e392db7126b7cc4b0e821b2527a3171"
+    },
+    "exactPolicy8Restoration": {
+      "path": ".work/sessions/emberwake-policy11-development-2026-10-17/policy8-restoration-1.json",
+      "sha256": "9c98f17d2245273e19a9a76d49140cad21cc0e28a4057e55af3160352262e01e"
+    },
+    "restoredSourcePins": {
+      "packages/diablo2/src/agent/policy.ts": "3364bf3ac46d4fcadab6eb06465d106c3ada523e8de204993773a73cce447989",
+      "packages/diablo2/src/agent/policy.test.ts": "c31f2e6202d3897fd5b8e6c6e91a7396e63bf979a15465b04c3b770da0ba5ea4",
+      "packages/diablo2/src/agent/example.ts": "e85081d75384eec76d406d570e3362a44c0d4910e9e0d7697a040cafdd58afca"
+    },
+    "rawPublisher": {
+      "json": {
+        "path": ".work/sessions/emberwake-policy11-development-2026-10-17/report-draft-1/candidate-1/2026-10-17-emberwake-policy-11-development.json",
+        "sha256": "a7c760be5511bff7de74ec262b5324bbccd5e61ab3dfba04f686852f95cf795d"
+      },
+      "markdown": {
+        "path": ".work/sessions/emberwake-policy11-development-2026-10-17/report-draft-1/candidate-1/2026-10-17-emberwake-policy-11-development.md",
+        "sha256": "28d306a918530c277e04b8b04c8a656f95af0d117c6028392e043fe0ae068060"
+      },
+      "closing": {
+        "path": ".work/sessions/emberwake-policy11-development-2026-10-17/report-draft-1/candidate-1/closing.json",
+        "sha256": "d21ba04e7b3df8e3b8d0c8710c6650068cfa2446af7ae793b7d2a7baccc25550"
+      },
+      "inventory": {
+        "path": ".work/sessions/emberwake-policy11-development-2026-10-17/report-draft-1/candidate-1/complete-pins.json",
+        "sha256": "ff0b3b3973d605870d0b9711a356de9b218282e595ba0fd7a746fe06fa88824c"
+      }
+    },
+    "qualification": "Original raw publisher/evidence inventory describe the held policy11 graph as of render. After publication closure root released the hold and restored exact accepted8 sources; the policy11 code gate is historical candidate evidence, not a new test of the restored baseline. Final scoped publication is documentation-only. No endpoint change or successor adoption is implied."
+  }
+}
