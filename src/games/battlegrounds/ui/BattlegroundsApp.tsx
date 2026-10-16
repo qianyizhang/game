@@ -9,7 +9,7 @@ import { rivalArtKind } from './rivalArt';
 import { Scouting } from './Scouting';
 import { useMixedRivals } from './useMixedRivals';
 import { ArenaInspector } from './ArenaInspector';
-import { RIVAL_STYLES } from '../domain/arena';
+import { DIFFICULTIES, RIVAL_STYLES, type Difficulty } from '../domain/arena';
 import { hearthPacks } from '../../../mods/hearth';
 import { useState } from 'react';
 import { GameShell } from '../../../app/GameShell';
@@ -57,6 +57,7 @@ export function BattlegroundsApp({
   const [tribe, setTribe] = useState('all');
   if (!game) return <p role="status">Loading Last Hearth…</p>;
   const run = game.state;
+  const mixedDifficulty = mixed?.state.arena.version === 3 ? mixed.difficulty : 'standard';
   const player = run.players[0];
   const target = player.board.find((u) => u.id === selected) ?? player.board[0];
   const hero = HEROES.find((h) => h.id === player.hero)!;
@@ -271,6 +272,12 @@ export function BattlegroundsApp({
                   ROUND {run.round} · {run.players.filter((p) => p.hp > 0).length} / 8 REMAIN
                 </span>
                 <h2>{mode === 'mixed' ? 'Mixed Rivals' : 'Last Hearth'}</h2>
+                {mode === 'mixed' && mixed?.state.arena.config && (
+                  <p className="muted small">
+                    {DIFFICULTIES[mixedDifficulty].label} · Starting health{' '}
+                    {DIFFICULTIES[mixedDifficulty].hp}
+                  </p>
+                )}
               </div>
               <div className="adventure-resources">
                 <span className="health">♥ {Math.max(0, player.hp)}</span>
@@ -288,6 +295,31 @@ export function BattlegroundsApp({
                 <p className="muted">
                   Choose a hero, recruit a team, and outlast seven local rivals.
                 </p>
+                {mode === 'mixed' && mixed && (
+                  <div className="collection-controls">
+                    <label>
+                      Difficulty{' '}
+                      <select
+                        aria-label="Mixed Rivals difficulty"
+                        value={mixed.state.arena.version < 3 ? 'standard' : mixed.difficulty}
+                        disabled={mixed.state.arena.version < 3}
+                        onChange={(event) => mixed.setDifficulty(event.target.value as Difficulty)}
+                      >
+                        {Object.entries(DIFFICULTIES).map(([id, level]) => (
+                          <option key={id} value={id}>
+                            {level.label} · {level.hp} starting HP
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <p className="muted small">
+                      Your starting health changes; all seven rivals start at 40 HP.
+                    </p>
+                    <button onClick={mixed.restorePrevious}>
+                      Restore previous Mixed Rivals v2 save
+                    </button>
+                  </div>
+                )}
                 <div className="hero-choices">
                   {HEROES.map((h) => (
                     <button

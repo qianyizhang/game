@@ -5,6 +5,7 @@
 - [Architectural decisions](decisions/README.md) preserve consequential trade-offs.
 - [Settled game decisions](scope-history.md) records accepted scope and superseded choices.
 - [Development direction](roadmap.md) separates delivered scope, evidence-led next steps and future candidates.
+- [Last Hearth policy play](hearth-policy.md) — opaque public aliases, all-actor journal audits, difficulty and local extensions.
 - [Spire policy play](spire-agent.md) — public legal menus, local extensions, paired character/Ascension evaluation and original-input review.
 - [Blindside policy play](blindside-agent.md) — restricted observations, local extensions, difficulty, evidence and review.
 - [Policy development and rollout review](policy-development.md) defines extensible player boundaries, difficulty evaluation, replay inspection and information-fairness audits across games.

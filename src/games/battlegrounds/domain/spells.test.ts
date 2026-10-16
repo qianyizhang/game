@@ -300,7 +300,7 @@ describe('spell replay and observation contracts', () => {
     session = result.session;
     expect(bgSession.decode(bgSession.encode(session))).toEqual(session);
     expect(bgSession.key).toBe('card-workshop.last-hearth.v6');
-    expect(arenaSession.key).toBe('card-workshop.last-hearth-arena.v2');
+    expect(arenaSession.key).toBe('card-workshop.last-hearth-arena.v3');
     expect(() => bgSession.decode(bgSessionV5.encode(bgSessionV5.create('OLD')))).toThrow(
       'Incompatible',
     );

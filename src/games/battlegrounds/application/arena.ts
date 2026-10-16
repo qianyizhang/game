@@ -20,26 +20,36 @@ import { hearthEvents, legalHearthCommands, type HearthObservation } from './age
 import { bgSession, bgSessionV5 } from './session';
 import { TAVERN_SPELLS } from '../content/spells';
 
-export const arenaSession = replayCodec({
-  game: 'last-hearth-arena',
-  version: ARENA_VERSION,
-  content: bgSession.rules.content,
-  create: (seed) => createArena(seed),
-  transition: transitionArena,
-  isCommand: isArenaCommand,
-});
 export const arenaSessionV1 = replayCodec({
   game: 'last-hearth-arena',
   version: 1,
   content: bgSessionV5.rules.content,
   create: (seed) => createArena(seed, 1),
   transition: transitionArena,
+  isCommand: (value): value is ArenaCommand => isArenaCommand(value, 1),
+});
+export const arenaSessionV2 = replayCodec({
+  game: 'last-hearth-arena',
+  version: 2,
+  content: bgSession.rules.content,
+  create: (seed) => createArena(seed, 2),
+  transition: transitionArena,
+  isCommand: (value): value is ArenaCommand => isArenaCommand(value, 2),
+});
+/** Main play accepts v2 journals without reinterpreting their setup or accepted commands. */
+export const arenaSession = replayCodec({
+  game: 'last-hearth-arena',
+  version: ARENA_VERSION,
+  content: bgSession.rules.content,
+  compatible: [arenaSessionV2.rules],
+  create: (seed) => createArena(seed),
+  transition: transitionArena,
   isCommand: isArenaCommand,
 });
 export type ArenaSession = Session<ArenaState, ArenaCommand>;
 /** Shared actor helpers retain the explicitly selected historical study environment. */
 export function arenaSessionForVersion(version: number) {
-  const codec = [arenaSessionV1, arenaSession].find(
+  const codec = [arenaSessionV1, arenaSessionV2, arenaSession].find(
     (candidate) => candidate.rules.version === version,
   );
   if (!codec) throw new Error('Unsupported Hearth arena rules version.');

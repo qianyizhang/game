@@ -5,7 +5,13 @@ import { createBG, resolveLobbyCombat } from './game';
 import { bgLog, recruitAction, startRecruitment } from './recruitment';
 import type { BGCommand, BGState, Player } from './types';
 
-export const ARENA_VERSION = 2;
+export const ARENA_VERSION = 3;
+export const DIFFICULTIES = {
+  relaxed: { label: 'Relaxed', hp: 52 },
+  standard: { label: 'Standard', hp: 40 },
+  severe: { label: 'Severe', hp: 28 },
+} as const;
+export type Difficulty = keyof typeof DIFFICULTIES;
 export const RIVAL_STYLES = {
   'baseline-v1': { label: 'Classic', description: 'The original value and upgrade heuristic.' },
   'tempo-v1': { label: 'Tempo', description: 'Fill the board and buy immediate combat strength.' },
@@ -18,6 +24,10 @@ export const RIVAL_STYLES = {
 export type RivalStyle = keyof typeof RIVAL_STYLES;
 export type StyleVisibility = 'hidden' | 'disclosed';
 export interface ArenaConfig {
+  /** v3 only. Omission preserves the historical Standard configuration. */
+  difficulty?: Difficulty;
+  /** The seat whose starting health changes; every rival still starts at 40 HP. */
+  focalSeat?: number;
   visibility: StyleVisibility;
   firstSeat: number;
   /** null applies the visibility condition to every seat; an ID isolates one policy. */
@@ -57,7 +67,7 @@ export const publicLobby = (state: BGState): PublicSeat[] =>
     placement,
   }));
 
-export function createArena(seed: string, version: 1 | 2 = ARENA_VERSION): ArenaState {
+export function createArena(seed: string, version: 1 | 2 | 3 = ARENA_VERSION): ArenaState {
   const state = createBG(seed, version === 1 ? 5 : 6);
   return {
     ...state,
@@ -76,6 +86,8 @@ export function mixedRivalsConfig(
   seed: string,
   hero: string,
   visibility: StyleVisibility = 'disclosed',
+  difficulty?: Difficulty,
+  focalSeat = 0,
 ): ArenaConfig {
   // Setup randomness is separate from shop/combat randomness. Neither stream reaches policies.
   const [styles] = shuffle<RivalStyle>(
@@ -91,20 +103,31 @@ export function mixedRivalsConfig(
     hashSeed(`${seed}:styles`),
   );
   const [heroes] = shuffle([...HEROES, ...HEROES], hashSeed(`${seed}:heroes`));
+  const seats = [
+    { hero, style: 'baseline-v1' as RivalStyle },
+    ...styles.map((style, i) => ({ style, hero: heroes[i].id })),
+  ];
+  // Seat rotation changes no setup or game RNG consumption.
+  if (focalSeat !== 0 && Number.isInteger(focalSeat) && focalSeat >= 0 && focalSeat < 8)
+    [seats[0], seats[focalSeat]] = [seats[focalSeat], seats[0]];
   return {
+    ...(difficulty === undefined ? {} : { difficulty }),
+    ...(focalSeat === 0 ? {} : { focalSeat }),
     visibility,
     visibilitySeat: null,
     firstSeat: 0,
-    seats: [
-      { hero, style: 'baseline-v1' },
-      ...styles.map((style, i) => ({ style, hero: heroes[i].id })),
-    ],
+    seats,
   };
 }
-export function isArenaConfig(value: unknown): value is ArenaConfig {
+export function isArenaConfig(value: unknown, version = ARENA_VERSION): value is ArenaConfig {
   if (!value || typeof value !== 'object') return false;
   const c = value as ArenaConfig;
   return (
+    (version < 3 ||
+      ((c.difficulty === undefined ||
+        (typeof c.difficulty === 'string' && Object.hasOwn(DIFFICULTIES, c.difficulty))) &&
+        (c.focalSeat === undefined ||
+          (Number.isInteger(c.focalSeat) && c.focalSeat >= 0 && c.focalSeat < 8)))) &&
     (c.visibility === 'hidden' || c.visibility === 'disclosed') &&
     (c.visibilitySeat === null ||
       (Number.isInteger(c.visibilitySeat) && c.visibilitySeat >= 0 && c.visibilitySeat < 8)) &&
@@ -119,10 +142,10 @@ export function isArenaConfig(value: unknown): value is ArenaConfig {
     )
   );
 }
-export function isArenaCommand(value: unknown): value is ArenaCommand {
+export function isArenaCommand(value: unknown, version = ARENA_VERSION): value is ArenaCommand {
   if (!value || typeof value !== 'object') return false;
   const c = value as ArenaCommand;
-  if (c.type === 'configure') return isArenaConfig(c.config);
+  if (c.type === 'configure') return isArenaConfig(c.config, version);
   if (c.type === 'nextRound') return true;
   const action: unknown = (value as { action?: unknown }).action;
   return (
@@ -155,7 +178,7 @@ export function transitionArena(
   command: ArenaCommand,
 ): { state: ArenaState; error?: string } {
   const reject = (error: string) => ({ state: previous, error });
-  if (!isArenaCommand(command)) return reject('Invalid arena command.');
+  if (!isArenaCommand(command, previous.arena.version)) return reject('Invalid arena command.');
   const state = structuredClone(previous);
   if (command.type === 'configure') {
     if (state.phase !== 'hero' || state.arena.config)
@@ -164,6 +187,9 @@ export function transitionArena(
     command.config.seats.forEach((seat, id) => {
       state.players[id].hero = seat.hero;
     });
+    if (state.arena.version >= 3)
+      state.players[command.config.focalSeat ?? 0].hp =
+        DIFFICULTIES[command.config.difficulty ?? 'standard'].hp;
     beginRound(state);
   } else if (command.type === 'nextRound') {
     if (state.phase !== 'combat') return reject('Resolve this round before advancing.');

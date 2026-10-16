@@ -6,10 +6,10 @@ import { withRuntime } from './runtime.ts';
 import { auditPassed, benchmark, cohortSeeds } from './study.ts';
 import type { JsonObject } from '../../../src/shared/policy/types';
 
-const usage = `policy run|record --game blindside|spire [--policy immediate|survival|growth | --policy-module ./policy.ts]
+const usage = `policy run|record --game blindside|spire|hearth [--policy immediate|survival|growth | --policy-module ./policy.ts]
   [--seed SEED] [--setup JSON] [--difficulty relaxed|standard|severe] [--policy-seed SEED] [--policy-options JSON] [--max-decisions N]
-policy record --game blindside|spire --out NEW_DIRECTORY [same options]
-policy benchmark --game blindside|spire --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
+policy record --game blindside|spire|hearth --out NEW_DIRECTORY [same options]
+policy benchmark --game blindside|spire|hearth --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
 policy audit --input ROLLOUT --out NEW_RECEIPT [--policy-module ./policy.ts]
 A local TS module default-exports a game-typed PolicyFactory. It is trusted in-process code.
 Run prints result/audit; record retains exact knowledge, replay, audit and compiled source-pinned bundle.
@@ -23,7 +23,7 @@ try {
       mode === 'audit'
         ? ['input', 'out', 'policy-module']
         : mode === 'benchmark'
-          ? ['game', 'out', 'split', 'max-decisions', 'policy-module']
+          ? ['game', 'out', 'split', 'max-decisions', 'policy-module', 'pool']
           : [
               'game',
               'out',
@@ -56,16 +56,26 @@ try {
     if (mode === 'audit' && !options.input) throw new Error('An input rollout is required.');
     const input = mode === 'audit' ? await readFile(resolve(options.input), 'utf8') : undefined;
     const wireGame = input ? (JSON.parse(input) as { game?: string }).game : options.game;
-    const game = wireGame === 'slay-the-spire' ? 'spire' : wireGame;
-    if (game !== 'blindside' && game !== 'spire')
-      throw new Error('Select --game blindside or spire. Other adapters are not adopted yet.');
+    const game =
+      wireGame === 'slay-the-spire'
+        ? 'spire'
+        : wireGame === 'last-hearth-arena'
+          ? 'hearth'
+          : wireGame;
+    if (game !== 'blindside' && game !== 'spire' && game !== 'hearth')
+      throw new Error(
+        'Select --game blindside, spire or hearth. Other adapters are not adopted yet.',
+      );
     if (options.setup && options.difficulty)
       throw new Error('Choose --setup or --difficulty, not both.');
     if (game !== 'blindside' && options.difficulty)
-      throw new Error('Use --setup for Spire character/ascension.');
+      throw new Error('Use --setup for game-owned character/hero/difficulty configuration.');
     const maxDecisions = Number(options['max-decisions'] ?? 2000);
     if (!Number.isSafeInteger(maxDecisions) || maxDecisions < 1 || maxDecisions > 10000)
       throw new Error('Decision budget must be 1–10000.');
+    const workers = Number(options.pool ?? 4);
+    if (!Number.isInteger(workers) || workers < 1 || workers > 4)
+      throw new Error('Use 1–4 independent case workers.');
     const split = options.split ?? 'development';
     if (!['development', 'evaluation'].includes(split)) throw new Error('Unknown study split.');
     const directory = ['record', 'benchmark'].includes(mode)
@@ -141,6 +151,7 @@ try {
             study: runtime.study,
             policySeed: 'POLICY-STREAM-1',
             maxDecisions,
+            workers,
             provenance,
             ranking: runtime.study.ranking,
             analysis:
@@ -154,6 +165,7 @@ try {
           const report = await benchmark(runtime, {
             split: split as 'development' | 'evaluation',
             directory: directory!,
+            workers,
             maxDecisions,
             provenance,
           });

@@ -1,6 +1,13 @@
 # Last Hearth arena and Mixed Rivals
 
-An eight-seat policy arena supporting full-lobby competition. Current modes include [tavern spells](tavern-spells.md) (Hearth v6 / arena v2).
+Mixed Rivals now offers Relaxed/Standard/Severe starting-health tiers before hero
+selection (52/40/28 HP for the human seat; rivals retain 40 HP). Standard preserves existing
+native behavior. Old v2 saves retain their original environment and can be explicitly
+restored; the current v3 slot does not replace the original v2 slot. See
+[current policy play](../engineering/hearth-policy.md) for local extensions and
+original-input replay inspection.
+
+An eight-seat policy arena supporting full-lobby competition. Current modes include [tavern spells](tavern-spells.md) (Hearth v6 / arena v3).
 
 ## Play and inspect
 

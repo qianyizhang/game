@@ -274,7 +274,9 @@ export async function auditRollout<S, O, C>(
       } else {
         const p = proposal(row.output, adapter.isCommand);
         work += p.work;
-        const next = adapter.act(state, p.command);
+        const next = adapter.replayDecision
+          ? adapter.replayDecision(state, p.command, run.replay, row.after)
+          : adapter.act(state, p.command);
         const error = next.error ?? null;
         if (
           error !== row.error ||

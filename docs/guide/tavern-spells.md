@@ -1,6 +1,6 @@
 # Last Hearth tavern spells
 
-Eight local spells introduce recruitment choices in Classic and Mixed Rivals under **Hearth rules v6 / arena envelope v2**. Previous v5/v1 saves remain separate and are rejected on v6 import. Historical AI experiment paths retain frozen v5/v1 codecs.
+Eight local spells introduce recruitment choices in Classic and Mixed Rivals under **Hearth rules v6 / current arena envelope v3**. Previous v5/v1 saves remain separate and are rejected on v6 import. Historical AI experiment paths retain frozen v5/v1 codecs. Current arena v3 adds selectable starting-health tiers and accepts bounded v2 journals without changing spell rules; [policy play](../engineering/hearth-policy.md) owns that workflow.
 
 ## Play
 

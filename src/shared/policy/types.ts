@@ -35,6 +35,9 @@ export interface EpisodeAdapter<S, O, C> {
   create(seed: string, setup: JsonObject): S;
   observe(state: S): O;
   act(state: S, command: C): { state: S; error?: string };
+  /** Multi-actor games validate a proposal against its recorded native journal span.
+   * This path must apply recorded commands only, without executing any policy. */
+  replayDecision?(state: S, command: C, replay: Json, after: number): { state: S; error?: string };
   isCommand(this: void, value: unknown): value is C;
   terminal(state: S): boolean;
   metrics(state: S): JsonObject;

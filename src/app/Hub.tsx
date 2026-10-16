@@ -5,6 +5,7 @@ import './Hub.css';
 
 const BlindsidePolicyReview = lazy(() => import('../games/balatro/agent/Review'));
 const SpirePolicyReview = lazy(() => import('../games/spire/agent/Review'));
+const HearthPolicyReview = lazy(() => import('../games/battlegrounds/agent/Review'));
 const CartographerApp = lazy(() => import('../games/cartographer/ui/CartographerApp'));
 const DiabloApp = lazy(() => import('@card-workshop/diablo2'));
 const NightPassageApp = lazy(() => import('../games/night-passage/ui/NightPassageApp'));
@@ -28,7 +29,7 @@ export default function Hub() {
   const query = new URLSearchParams(location.search);
   if (
     query.get('review') === 'policy' &&
-    ['balatro', 'blindside', 'spire'].includes(query.get('game') ?? '')
+    ['balatro', 'blindside', 'spire', 'battlegrounds', 'hearth'].includes(query.get('game') ?? '')
   )
     return (
       <ContentBoundary>
@@ -39,7 +40,13 @@ export default function Hub() {
             </main>
           }
         >
-          {query.get('game') === 'spire' ? <SpirePolicyReview /> : <BlindsidePolicyReview />}
+          {['battlegrounds', 'hearth'].includes(query.get('game') ?? '') ? (
+            <HearthPolicyReview />
+          ) : query.get('game') === 'spire' ? (
+            <SpirePolicyReview />
+          ) : (
+            <BlindsidePolicyReview />
+          )}
         </Suspense>
       </ContentBoundary>
     );

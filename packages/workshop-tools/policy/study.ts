@@ -2,6 +2,7 @@ import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import type { JsonObject, PolicyAudit, StudyDefinition } from '../../../src/shared/policy/types';
 import type { Runtime } from './runtime.ts';
+import { casePool } from './pool.ts';
 
 /** Frozen independent blocks; no environment seed ever enters policy configuration. */
 export const cohortSeeds = (split: 'development' | 'evaluation') =>
@@ -83,55 +84,31 @@ export async function benchmark(
   runtime: Runtime,
   options: {
     split: 'development' | 'evaluation';
+    workers?: number;
     directory: string;
     maxDecisions: number;
     provenance: JsonObject;
   },
 ) {
-  const rows: StudyRow[] = [];
-  // Each game owns setups and strata. Character/hero repetitions are never pooled as independent seeds.
-  for (const seed of cohortSeeds(options.split))
-    for (const { id: setupId, difficulty, stratum, setup } of runtime.study.setups)
-      for (const [id, factory] of Object.entries(runtime.builtins)) {
-        const run = await runtime.recordEpisode(
-          runtime.adapter,
-          factory,
-          {
-            seed,
-            setup,
-            policySeed: 'POLICY-STREAM-1',
-            policyOptions: {},
-            maxDecisions: options.maxDecisions,
-          },
-          options.provenance,
-        );
-        const audit = await runtime.auditRollout(runtime.adapter, run, factory);
-        const name = `${seed}-${setupId}-${id}`;
-        // Keep complete original evidence for every attempted case, including errors.
-        await writeFile(
-          resolve(options.directory, `${name}.rollout.json`),
-          JSON.stringify(run) + '\n',
-          { flag: 'wx' },
-        );
-        await writeFile(
-          resolve(options.directory, `${name}.audit.json`),
-          JSON.stringify(audit, null, 2) + '\n',
-          { flag: 'wx' },
-        );
-        rows.push({
-          seed,
-          policy: id,
-          difficulty,
-          stratum,
-          setupId,
-          status: run.episode.status,
-          metrics: run.episode.metrics,
-          work: run.episode.work,
-          digest: run.digest,
-          audit,
-        });
-        process.stderr.write(`${options.split} ${rows.length}: ${name} ${run.episode.status}\n`);
-      }
+  const jobs: CaseJob[] = cohortSeeds(options.split).flatMap((seed) =>
+    runtime.study.setups.flatMap((setup) =>
+      Object.keys(runtime.builtins).map((policy) => ({
+        seed,
+        policy,
+        setupId: setup.id,
+        difficulty: setup.difficulty,
+        stratum: setup.stratum,
+        setup: setup.setup,
+        directory: options.directory,
+        maxDecisions: options.maxDecisions,
+        provenance: options.provenance,
+      })),
+    ),
+  );
+  const rows =
+    options.workers === undefined || options.workers === 1
+      ? await serialCases(runtime, jobs)
+      : await casePool(runtime.moduleURL, jobs, options.workers);
   const { summary, paired } = summarizeStudy(
     rows,
     runtime.study,
@@ -147,6 +124,7 @@ export async function benchmark(
     seeds: cohortSeeds(options.split),
     policySeed: 'POLICY-STREAM-1',
     maxDecisions: options.maxDecisions,
+    workers: options.workers ?? 1,
     provenance: options.provenance,
     uncertainty:
       '95% Wilson intervals on win rates; approximate Student t intervals on mean/paired progress. Paired-win differences report point estimates and discordance counts, with intervals unavailable, within each setup stratum over independent seed blocks. No pooling across characters/heroes. Unadjusted for multiple comparisons, descriptive only. No human-difficulty claim.',
@@ -242,4 +220,68 @@ export function summarizeStudy(
     );
   });
   return { summary, paired };
+}
+
+export interface CaseJob {
+  seed: string;
+  policy: string;
+  setupId: string;
+  difficulty: string;
+  stratum: string;
+  setup: JsonObject;
+  directory: string;
+  maxDecisions: number;
+  provenance: JsonObject;
+}
+export async function runCase(
+  runtime: Omit<Runtime, 'moduleURL'>,
+  job: CaseJob,
+): Promise<StudyRow> {
+  const factory = runtime.custom?.id === job.policy ? runtime.custom : runtime.builtins[job.policy];
+  if (!factory) throw new Error('Assigned policy unavailable.');
+  const run = await runtime.recordEpisode(
+    runtime.adapter,
+    factory,
+    {
+      seed: job.seed,
+      setup: job.setup,
+      policySeed: 'POLICY-STREAM-1',
+      policyOptions: {},
+      maxDecisions: job.maxDecisions,
+    },
+    job.provenance,
+  );
+  const audit = await runtime.auditRollout(runtime.adapter, run, factory);
+  const name = `${job.seed}-${job.setupId}-${job.policy}`;
+  await writeFile(resolve(job.directory, `${name}.rollout.json`), JSON.stringify(run) + '\n', {
+    flag: 'wx',
+  });
+  await writeFile(
+    resolve(job.directory, `${name}.audit.json`),
+    JSON.stringify(audit, null, 2) + '\n',
+    { flag: 'wx' },
+  );
+  return {
+    seed: job.seed,
+    policy: job.policy,
+    setupId: job.setupId,
+    difficulty: job.difficulty,
+    stratum: job.stratum,
+    status: run.episode.status,
+    metrics: run.episode.metrics,
+    work: run.episode.work,
+    digest: run.digest,
+    audit,
+  };
+}
+async function serialCases(runtime: Runtime, jobs: CaseJob[]) {
+  const rows: StudyRow[] = [];
+  for (const job of jobs) {
+    const row = await runCase(runtime, job);
+    rows.push(row);
+    process.stderr.write(
+      `Case ${rows.length}/${jobs.length}: ${job.seed}-${job.setupId}-${job.policy} ${row.status}\n`,
+    );
+  }
+  return rows;
 }

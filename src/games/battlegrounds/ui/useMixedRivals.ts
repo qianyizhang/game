@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useLocalGame } from '../../../app/useLocalGame';
 import { advanceRivals } from '../application/arena-controller';
-import { arenaSession } from '../application/arena';
-import { activeSeat, mixedRivalsConfig, type ArenaCommand } from '../domain/arena';
+import { arenaSession, arenaSessionV2 } from '../application/arena';
+import { activeSeat, mixedRivalsConfig, type ArenaCommand, type Difficulty } from '../domain/arena';
 import type { BGCommand } from '../domain/types';
 
 export function useMixedRivals(enabled: boolean) {
   const game = useLocalGame(arenaSession, 'HEARTH-01', enabled);
   const [controllerError, setControllerError] = useState('');
+  const [difficulty, setDifficulty] = useState<Difficulty>('standard');
   // Imported prefixes may stop inside a rival turn. Resume through the same journaled controller.
   useEffect(() => {
     if (!enabled || !game?.state.arena.config) return;
@@ -24,7 +25,15 @@ export function useMixedRivals(enabled: boolean) {
   const dispatch = (command: BGCommand) => {
     const arenaCommand: ArenaCommand =
       command.type === 'chooseHero'
-        ? { type: 'configure', config: mixedRivalsConfig(game.state.seed, command.hero) }
+        ? {
+            type: 'configure',
+            config: mixedRivalsConfig(
+              game.state.seed,
+              command.hero,
+              'disclosed',
+              game.state.arena.version >= 3 ? difficulty : undefined,
+            ),
+          }
         : command.type === 'nextRound'
           ? command
           : { type: 'seat', seat: 0, action: command };
@@ -33,6 +42,26 @@ export function useMixedRivals(enabled: boolean) {
   return {
     ...game,
     dispatch,
+    difficulty:
+      game.state.arena.version < 3
+        ? 'standard'
+        : game.state.arena.config
+          ? (game.state.arena.config.difficulty ?? 'standard')
+          : difficulty,
+    setDifficulty: (next: Difficulty) => {
+      if (game.state.phase === 'hero' && !game.state.arena.config && game.state.arena.version >= 3)
+        setDifficulty(next);
+    },
+    restorePrevious: () => {
+      try {
+        const raw = localStorage.getItem(arenaSessionV2.key);
+        if (!raw) throw new Error('No previous Mixed Rivals v2 save found.');
+        setControllerError('');
+        game.restore(raw);
+      } catch (error) {
+        setControllerError(String(error));
+      }
+    },
     error: game.error || controllerError,
     clearError: () => {
       game.clearError();

@@ -8,6 +8,8 @@ import type {
   StudyDefinition,
 } from '../../../src/shared/policy/types';
 export interface Runtime {
+  /** Evaluator-only retained-lifetime module used by independent study workers. */
+  moduleURL: string;
   adapter: EpisodeAdapter<unknown, unknown, unknown>;
   study: StudyDefinition;
   builtins: Record<string, PolicyFactory<unknown, unknown>>;
@@ -19,6 +21,7 @@ export interface Runtime {
 const adapters: Record<string, string> = {
   blindside: 'src/games/balatro/agent/adapter.ts',
   spire: 'src/games/spire/agent/adapter.ts',
+  hearth: 'src/games/battlegrounds/agent/adapter.ts',
 };
 /** Selected adapter/module is statically bundled: no unpinned runtime chunks. */
 export async function withRuntime<T>(
@@ -54,12 +57,17 @@ export async function withRuntime<T>(
     const pins = await runtimePins(bundle);
     const toolDigests = Object.fromEntries(
       await Promise.all(
-        ['policy/runtime.ts', 'policy/cli.ts', 'policy/study.ts', 'runtime-bundle.ts'].map(
-          async (name) => {
-            const path = resolve(repositoryRoot, 'packages/workshop-tools', name);
-            return [relative(repositoryRoot, path), sha256(await readFile(path))] as const;
-          },
-        ),
+        [
+          'policy/runtime.ts',
+          'policy/cli.ts',
+          'policy/study.ts',
+          'policy/pool.ts',
+          'policy/worker.ts',
+          'runtime-bundle.ts',
+        ].map(async (name) => {
+          const path = resolve(repositoryRoot, 'packages/workshop-tools', name);
+          return [relative(repositoryRoot, path), sha256(await readFile(path))] as const;
+        }),
       ),
     );
     if (options.retain) {
@@ -70,11 +78,17 @@ export async function withRuntime<T>(
         { flag: 'wx' },
       );
     }
-    return await use((await import(bundle.moduleURL)) as Runtime, {
-      ...pins,
-      toolDigests,
-      runtime: `${process.version} / ${process.platform} / ${process.arch}`,
-    });
+    return await use(
+      {
+        ...((await import(bundle.moduleURL)) as Omit<Runtime, 'moduleURL'>),
+        moduleURL: bundle.moduleURL,
+      },
+      {
+        ...pins,
+        toolDigests,
+        runtime: `${process.version} / ${process.platform} / ${process.arch}`,
+      },
+    );
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

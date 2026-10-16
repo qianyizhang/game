@@ -1,6 +1,11 @@
 # Last Hearth agent interface and experiments
 
-Last Hearth supports external agent processes, public observation contracts, structured decision traces, and competitive policy experiments ([roadmap](roadmap.md)). Current gameplay uses [tavern spells](../guide/tavern-spells.md) (Hearth v6 / arena v2).
+The [current policy workflow](hearth-policy.md) adds opaque public aliases, local TS
+factories, three selectable Mixed Rivals health tiers and original-input rollout
+review. This document retains the existing transport schemas and frozen research
+interfaces; the adoption module does not reinterpret their stored inputs.
+
+Last Hearth supports external agent processes, public observation contracts, structured decision traces, and competitive policy experiments ([roadmap](roadmap.md)). Current gameplay uses [tavern spells](../guide/tavern-spells.md) (Hearth v6 / arena v3).
 
 Use the [policy development guide](policy-development.md) for the cross-game
 extension, evaluation and rollout-review standard. This page and the linked arena
