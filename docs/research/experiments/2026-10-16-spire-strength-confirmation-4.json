@@ -1,0 +1,1422 @@
+{
+  "schema": "spire-strength-confirmation-4-receipt-1",
+  "scope": "Fixed prospective strength v4 confirmation. Statistical criteria, producer integrity and independent raw/native closure all pass.",
+  "report": "2026-10-16-spire-strength-confirmation-4.md",
+  "identity": {
+    "rules": 3,
+    "observation": "spire-observation-1",
+    "score": "spire-progress-1",
+    "content": [
+      {
+        "id": "base",
+        "version": "3",
+        "digest": "8192b770"
+      }
+    ]
+  },
+  "design": {
+    "planSchema": "spire-strength-plan-3",
+    "namespace": "SPIRE-STRENGTH-4",
+    "independentBlocksPerCharacter": 400,
+    "seedFirst": "SPIRE-STRENGTH-4-RESERVED-01",
+    "seedLast": "SPIRE-STRENGTH-4-RESERVED-400",
+    "characters": ["ironclad", "silent"],
+    "ascensions": [0, 3, 5],
+    "endpoint": "Victory within 2,000 decisions; timeouts are nonwins for both candidate and control.",
+    "policySeed": "POLICY-STREAM-1",
+    "maxDecisions": 2000,
+    "primaryPolicies": [
+      {
+        "id": "survival",
+        "version": "spire-policy-4"
+      },
+      {
+        "id": "legacy-reference",
+        "version": "spire-policy-1"
+      }
+    ],
+    "primaryAttempts": 4800,
+    "companionPolicies": [
+      {
+        "id": "immediate",
+        "version": "spire-policy-4"
+      },
+      {
+        "id": "growth",
+        "version": "spire-policy-4"
+      }
+    ],
+    "companionAttempts": 240,
+    "companionBlocks": 20,
+    "frozenReference": {
+      "ironclad": "survival",
+      "silent": "survival"
+    },
+    "sampleRule": "Fixed 400 blocks, no optional stopping, tuning on partial outcomes or posthoc expansion.",
+    "selection": "A0/A3/A5 representative study points selected in development before the A3 probe, not all native Ascensions. A3 development Ironclad ordering failed and was retained."
+  },
+  "preregisteredCriteria": {
+    "family": "Four exact two-sided conditional binomial paired-win tests; Holm adjustment across two character strength and two A0\u2013A5 contrasts.",
+    "strengthPerCharacter": [
+      "A0 individual 95% Wilson lower bound > 0.10",
+      "A0 candidate minus historical win rate >= 0.10",
+      "Holm adjusted p < 0.05"
+    ],
+    "difficultyPerCharacter": [
+      "A0\u2013A5 candidate win-rate gap >= 0.10",
+      "Holm adjusted p < 0.05",
+      "A3 point estimate lies between A0 and A5"
+    ],
+    "integrity": "Complete exact grids, matching identity/population/stream/budget/policies, complete frozen source provenance, no source drift, zero errors, all four audits pass; timeout cannot claim victory.",
+    "pairedBinaryInterval": "Unavailable; individual Wilson intervals do not substitute for a paired difference interval.",
+    "progressInterval": "Approximate paired Student t interval, descriptive."
+  },
+  "verdict": {
+    "analyzerAllCriteriaPassed": true,
+    "analyzerIntegrity": true,
+    "independentRawReview": "passed",
+    "promotionConfirmed": true
+  },
+  "primaryResults": [
+    {
+      "character": "ironclad",
+      "policy": "survival",
+      "levels": [
+        {
+          "ascension": 0,
+          "wins": {
+            "wins": 98,
+            "attempts": 400,
+            "rate": 0.245,
+            "interval95": [0.20540805053884156, 0.28944339616699555]
+          },
+          "progress": {
+            "n": 400,
+            "mean": 35.75,
+            "interval95": [34.45715902280839, 37.04284097719161],
+            "reason": null
+          }
+        },
+        {
+          "ascension": 3,
+          "wins": {
+            "wins": 86,
+            "attempts": 400,
+            "rate": 0.215,
+            "interval95": [0.17755084865785345, 0.25787135648396453]
+          },
+          "progress": {
+            "n": 400,
+            "mean": 32.73,
+            "interval95": [31.346176381620122, 34.11382361837987],
+            "reason": null
+          }
+        },
+        {
+          "ascension": 5,
+          "wins": {
+            "wins": 32,
+            "attempts": 400,
+            "rate": 0.08,
+            "interval95": [0.057235397942962354, 0.11075522016076943]
+          },
+          "progress": {
+            "n": 400,
+            "mean": 29.725,
+            "interval95": [28.435471843945663, 31.01452815605434],
+            "reason": null
+          }
+        }
+      ],
+      "strengthPassed": true,
+      "difficultyPassed": true,
+      "scope": "Statistical thresholds only; promotion also requires overall integrity.",
+      "ordered": true,
+      "adjacentProgress": [
+        {
+          "a": 0,
+          "b": 3,
+          "n": 400,
+          "mean": 3.02,
+          "interval95": [1.3162008010272896, 4.72379919897271],
+          "reason": null
+        },
+        {
+          "a": 3,
+          "b": 5,
+          "n": 400,
+          "mean": 3.005,
+          "interval95": [2.1954439278452313, 3.8145560721547684],
+          "reason": null
+        }
+      ]
+    },
+    {
+      "character": "silent",
+      "policy": "survival",
+      "levels": [
+        {
+          "ascension": 0,
+          "wins": {
+            "wins": 135,
+            "attempts": 400,
+            "rate": 0.3375,
+            "interval95": [0.29290085318846415, 0.3851907550064321]
+          },
+          "progress": {
+            "n": 400,
+            "mean": 32.9975,
+            "interval95": [31.468936584347542, 34.52606341565246],
+            "reason": null
+          }
+        },
+        {
+          "ascension": 3,
+          "wins": {
+            "wins": 74,
+            "attempts": 400,
+            "rate": 0.185,
+            "interval95": [0.15000638716506282, 0.225986576412736]
+          },
+          "progress": {
+            "n": 400,
+            "mean": 26.4775,
+            "interval95": [24.98895181752797, 27.96604818247203],
+            "reason": null
+          }
+        },
+        {
+          "ascension": 5,
+          "wins": {
+            "wins": 43,
+            "attempts": 400,
+            "rate": 0.1075,
+            "interval95": [0.08079329401678037, 0.14167412885396896]
+          },
+          "progress": {
+            "n": 400,
+            "mean": 24.76,
+            "interval95": [23.371650073835962, 26.14834992616404],
+            "reason": null
+          }
+        }
+      ],
+      "strengthPassed": true,
+      "difficultyPassed": true,
+      "scope": "Statistical thresholds only; promotion also requires overall integrity.",
+      "ordered": true,
+      "adjacentProgress": [
+        {
+          "a": 0,
+          "b": 3,
+          "n": 400,
+          "mean": 6.52,
+          "interval95": [4.740079696838081, 8.299920303161919],
+          "reason": null
+        },
+        {
+          "a": 3,
+          "b": 5,
+          "n": 400,
+          "mean": 1.7175,
+          "interval95": [1.053434310244299, 2.381565689755701],
+          "reason": null
+        }
+      ]
+    }
+  ],
+  "plannedFamily": [
+    {
+      "id": "ironclad-strength",
+      "n": 400,
+      "difference": 0.2325,
+      "aOnly": 97,
+      "bOnly": 4,
+      "exactP": 3.35638779268828e-24,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+      "adjustedP": 1.342555117075312e-23
+    },
+    {
+      "id": "ironclad-difficulty",
+      "n": 400,
+      "difference": 0.165,
+      "aOnly": 87,
+      "bOnly": 21,
+      "exactP": 9.903173446450255e-11,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+      "adjustedP": 9.903173446450255e-11
+    },
+    {
+      "id": "silent-strength",
+      "n": 400,
+      "difference": 0.23,
+      "aOnly": 117,
+      "bOnly": 25,
+      "exactP": 1.9856569224439693e-15,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+      "adjustedP": 3.971313844887939e-15
+    },
+    {
+      "id": "silent-difficulty",
+      "n": 400,
+      "difference": 0.23,
+      "aOnly": 115,
+      "bOnly": 23,
+      "exactP": 6.529423138028675e-16,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+      "adjustedP": 1.9588269414086023e-15
+    }
+  ],
+  "historicalSummary": [
+    {
+      "setupId": "ironclad-a0",
+      "difficulty": "ascension-0",
+      "stratum": "ironclad",
+      "policy": "legacy-reference",
+      "attempts": 400,
+      "wins": 5,
+      "winRate": {
+        "wins": 5,
+        "attempts": 400,
+        "rate": 0.0125,
+        "interval95": [0.005350671853550634, 0.02892415273113802]
+      },
+      "errors": 0,
+      "timeouts": 3,
+      "auditsPassed": 400,
+      "progress": {
+        "n": 400,
+        "mean": 25.945,
+        "interval95": [25.01477420292619, 26.87522579707381],
+        "reason": null
+      },
+      "work": {
+        "n": 400,
+        "mean": 1760.0975,
+        "interval95": [1663.4568538220135, 1856.7381461779867],
+        "reason": null
+      }
+    },
+    {
+      "setupId": "ironclad-a3",
+      "difficulty": "ascension-3",
+      "stratum": "ironclad",
+      "policy": "legacy-reference",
+      "attempts": 400,
+      "wins": 1,
+      "winRate": {
+        "wins": 1,
+        "attempts": 400,
+        "rate": 0.0025,
+        "interval95": [0.00044143642943440895, 0.014023640967247855]
+      },
+      "errors": 0,
+      "timeouts": 1,
+      "auditsPassed": 400,
+      "progress": {
+        "n": 400,
+        "mean": 22.2625,
+        "interval95": [21.39781173785713, 23.12718826214287],
+        "reason": null
+      },
+      "work": {
+        "n": 400,
+        "mean": 1418.89,
+        "interval95": [1339.4791736271898, 1498.3008263728104],
+        "reason": null
+      }
+    },
+    {
+      "setupId": "ironclad-a5",
+      "difficulty": "ascension-5",
+      "stratum": "ironclad",
+      "policy": "legacy-reference",
+      "attempts": 400,
+      "wins": 0,
+      "winRate": {
+        "wins": 0,
+        "attempts": 400,
+        "rate": 0,
+        "interval95": [0, 0.009512640599680667]
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "auditsPassed": 400,
+      "progress": {
+        "n": 400,
+        "mean": 20.94,
+        "interval95": [20.191845838835224, 21.68815416116478],
+        "reason": null
+      },
+      "work": {
+        "n": 400,
+        "mean": 1288.835,
+        "interval95": [1231.8369877556001, 1345.8330122444],
+        "reason": null
+      }
+    },
+    {
+      "setupId": "silent-a0",
+      "difficulty": "ascension-0",
+      "stratum": "silent",
+      "policy": "legacy-reference",
+      "attempts": 400,
+      "wins": 43,
+      "winRate": {
+        "wins": 43,
+        "attempts": 400,
+        "rate": 0.1075,
+        "interval95": [0.08079329401678037, 0.14167412885396896]
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "auditsPassed": 400,
+      "progress": {
+        "n": 400,
+        "mean": 27.46,
+        "interval95": [26.053553446751756, 28.866446553248245],
+        "reason": null
+      },
+      "work": {
+        "n": 400,
+        "mean": 3154.0825,
+        "interval95": [2965.5845317723224, 3342.5804682276776],
+        "reason": null
+      }
+    },
+    {
+      "setupId": "silent-a3",
+      "difficulty": "ascension-3",
+      "stratum": "silent",
+      "policy": "legacy-reference",
+      "attempts": 400,
+      "wins": 17,
+      "winRate": {
+        "wins": 17,
+        "attempts": 400,
+        "rate": 0.0425,
+        "interval95": [0.02670146955162519, 0.06700259659708263]
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "auditsPassed": 400,
+      "progress": {
+        "n": 400,
+        "mean": 21.1825,
+        "interval95": [19.97743298299072, 22.38756701700928],
+        "reason": null
+      },
+      "work": {
+        "n": 400,
+        "mean": 2269.2175,
+        "interval95": [2120.8905701928347, 2417.5444298071657],
+        "reason": null
+      }
+    },
+    {
+      "setupId": "silent-a5",
+      "difficulty": "ascension-5",
+      "stratum": "silent",
+      "policy": "legacy-reference",
+      "attempts": 400,
+      "wins": 7,
+      "winRate": {
+        "wins": 7,
+        "attempts": 400,
+        "rate": 0.0175,
+        "interval95": [0.008502182660789141, 0.03567751551790271]
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "auditsPassed": 400,
+      "progress": {
+        "n": 400,
+        "mean": 19.7475,
+        "interval95": [18.711535473413637, 20.78346452658636],
+        "reason": null
+      },
+      "work": {
+        "n": 400,
+        "mean": 2076.16,
+        "interval95": [1948.7018653024716, 2203.618134697528],
+        "reason": null
+      }
+    }
+  ],
+  "matchedTwentyBlockStrategies": [
+    {
+      "setupId": "ironclad-a0",
+      "attemptsPerPolicy": 20,
+      "immediateWins": 0,
+      "survivalWins": 6,
+      "growthWins": 2
+    },
+    {
+      "setupId": "ironclad-a3",
+      "attemptsPerPolicy": 20,
+      "immediateWins": 0,
+      "survivalWins": 8,
+      "growthWins": 0
+    },
+    {
+      "setupId": "ironclad-a5",
+      "attemptsPerPolicy": 20,
+      "immediateWins": 0,
+      "survivalWins": 3,
+      "growthWins": 0
+    },
+    {
+      "setupId": "silent-a0",
+      "attemptsPerPolicy": 20,
+      "immediateWins": 0,
+      "survivalWins": 7,
+      "growthWins": 4
+    },
+    {
+      "setupId": "silent-a3",
+      "attemptsPerPolicy": 20,
+      "immediateWins": 0,
+      "survivalWins": 5,
+      "growthWins": 3
+    },
+    {
+      "setupId": "silent-a5",
+      "attemptsPerPolicy": 20,
+      "immediateWins": 0,
+      "survivalWins": 1,
+      "growthWins": 2
+    }
+  ],
+  "companionSummary": {
+    "summary": [
+      {
+        "setupId": "ironclad-a0",
+        "difficulty": "ascension-0",
+        "stratum": "ironclad",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 22.25,
+          "interval95": [18.44522461353533, 26.05477538646467],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 954.2,
+          "interval95": [711.5915192773019, 1196.808480722698],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a0",
+        "difficulty": "ascension-0",
+        "stratum": "ironclad",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 2,
+        "winRate": {
+          "wins": 2,
+          "attempts": 20,
+          "rate": 0.1,
+          "interval95": [0.027865893984153206, 0.30103820641179335]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 35.3,
+          "interval95": [30.08825083060045, 40.51174916939954],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 10825.9,
+          "interval95": [8609.035567631354, 13042.764432368645],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a3",
+        "difficulty": "ascension-3",
+        "stratum": "ironclad",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 20.85,
+          "interval95": [17.336977689349016, 24.363022310650987],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 858.95,
+          "interval95": [650.3100894152512, 1067.5899105847488],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a3",
+        "difficulty": "ascension-3",
+        "stratum": "ironclad",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 29.9,
+          "interval95": [24.16627364250511, 35.633726357494886],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 8257.7,
+          "interval95": [6147.837736028523, 10367.562263971478],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a5",
+        "difficulty": "ascension-5",
+        "stratum": "ironclad",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 19.95,
+          "interval95": [16.6425057709602, 23.2574942290398],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 826.25,
+          "interval95": [623.9645361957009, 1028.535463804299],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a5",
+        "difficulty": "ascension-5",
+        "stratum": "ironclad",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 25.7,
+          "interval95": [20.48603936991223, 30.913960630087768],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 6606.85,
+          "interval95": [4964.40579044276, 8249.29420955724],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a0",
+        "difficulty": "ascension-0",
+        "stratum": "silent",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 23.95,
+          "interval95": [18.77515482190657, 29.12484517809343],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 1832.25,
+          "interval95": [1207.339257253495, 2457.160742746505],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a0",
+        "difficulty": "ascension-0",
+        "stratum": "silent",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 4,
+        "winRate": {
+          "wins": 4,
+          "attempts": 20,
+          "rate": 0.2,
+          "interval95": [0.0806563532712, 0.41602172202575993]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 36.75,
+          "interval95": [29.762165834795823, 43.73783416520418],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 24536.15,
+          "interval95": [17346.366103187964, 31725.93389681204],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a3",
+        "difficulty": "ascension-3",
+        "stratum": "silent",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 20.45,
+          "interval95": [15.51927738066561, 25.38072261933439],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 1319.95,
+          "interval95": [903.7884114196729, 1736.1115885803272],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a3",
+        "difficulty": "ascension-3",
+        "stratum": "silent",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 3,
+        "winRate": {
+          "wins": 3,
+          "attempts": 20,
+          "rate": 0.15,
+          "interval95": [0.05236779195949584, 0.36042329588695743]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 29.15,
+          "interval95": [22.98536647673325, 35.31463352326675],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 17452.9,
+          "interval95": [12751.924507105196, 22153.875492894807],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a5",
+        "difficulty": "ascension-5",
+        "stratum": "silent",
+        "policy": "immediate",
+        "attempts": 20,
+        "wins": 0,
+        "winRate": {
+          "wins": 0,
+          "attempts": 20,
+          "rate": 0,
+          "interval95": [0, 0.16113012549493322]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 20,
+          "interval95": [15.567872705134166, 24.432127294865836],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 1283.15,
+          "interval95": [908.0874836038562, 1658.212516396144],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a5",
+        "difficulty": "ascension-5",
+        "stratum": "silent",
+        "policy": "growth",
+        "attempts": 20,
+        "wins": 2,
+        "winRate": {
+          "wins": 2,
+          "attempts": 20,
+          "rate": 0.1,
+          "interval95": [0.027865893984153206, 0.30103820641179335]
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "auditsPassed": 20,
+        "progress": {
+          "n": 20,
+          "mean": 29.2,
+          "interval95": [22.88876973691466, 35.51123026308534],
+          "reason": null
+        },
+        "work": {
+          "n": 20,
+          "mean": 18165.45,
+          "interval95": [12740.354058400999, 23590.545941599004],
+          "reason": null
+        }
+      }
+    ],
+    "paired": [
+      {
+        "setupId": "ironclad-a0",
+        "difficulty": "ascension-0",
+        "stratum": "ironclad",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.1,
+          "aOnly": 0,
+          "bOnly": 2,
+          "bothWon": 0,
+          "bothLost": 18,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -13.05,
+          "interval95": [-19.52509426481881, -6.574905735181189],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a3",
+        "difficulty": "ascension-3",
+        "stratum": "ironclad",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "bothWon": 0,
+          "bothLost": 20,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -9.05,
+          "interval95": [-16.613927891218466, -1.486072108781535],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "ironclad-a5",
+        "difficulty": "ascension-5",
+        "stratum": "ironclad",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "bothWon": 0,
+          "bothLost": 20,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -5.75,
+          "interval95": [-12.430840194117959, 0.9308401941179598],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a0",
+        "difficulty": "ascension-0",
+        "stratum": "silent",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.2,
+          "aOnly": 0,
+          "bOnly": 4,
+          "bothWon": 0,
+          "bothLost": 16,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -12.8,
+          "interval95": [-20.090954862885354, -5.509045137114646],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a3",
+        "difficulty": "ascension-3",
+        "stratum": "silent",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.15,
+          "aOnly": 0,
+          "bOnly": 3,
+          "bothWon": 0,
+          "bothLost": 17,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -8.7,
+          "interval95": [-15.665072093517391, -1.734927906482607],
+          "reason": null
+        }
+      },
+      {
+        "setupId": "silent-a5",
+        "difficulty": "ascension-5",
+        "stratum": "silent",
+        "a": "immediate",
+        "b": "growth",
+        "winDifference": {
+          "n": 20,
+          "mean": -0.1,
+          "aOnly": 0,
+          "bOnly": 2,
+          "bothWon": 0,
+          "bothLost": 18,
+          "interval95": null,
+          "reason": "Paired-binomial interval unavailable. Zero/few observed discordant wins cannot establish zero population difference; use individual Wilson intervals without treating them as a paired difference interval."
+        },
+        "progressDifference": {
+          "n": 20,
+          "mean": -9.2,
+          "interval95": [-15.2386624775603, -3.1613375224396973],
+          "reason": null
+        }
+      }
+    ]
+  },
+  "completion": {
+    "attempts": 5040,
+    "terminal": 5033,
+    "budgetTimeouts": [
+      {
+        "seed": "SPIRE-STRENGTH-4-RESERVED-67",
+        "setupId": "silent-a0",
+        "policy": "survival"
+      },
+      {
+        "seed": "SPIRE-STRENGTH-4-RESERVED-117",
+        "setupId": "silent-a5",
+        "policy": "survival"
+      },
+      {
+        "seed": "SPIRE-STRENGTH-4-RESERVED-216",
+        "setupId": "ironclad-a0",
+        "policy": "legacy-reference"
+      },
+      {
+        "seed": "SPIRE-STRENGTH-4-RESERVED-248",
+        "setupId": "ironclad-a0",
+        "policy": "legacy-reference"
+      },
+      {
+        "seed": "SPIRE-STRENGTH-4-RESERVED-327",
+        "setupId": "silent-a0",
+        "policy": "survival"
+      },
+      {
+        "seed": "SPIRE-STRENGTH-4-RESERVED-361",
+        "setupId": "ironclad-a3",
+        "policy": "legacy-reference"
+      },
+      {
+        "seed": "SPIRE-STRENGTH-4-RESERVED-395",
+        "setupId": "ironclad-a0",
+        "policy": "legacy-reference"
+      }
+    ],
+    "endpoint": "Victory within 2000 decisions; budget timeouts are nonwins, not discarded cases."
+  },
+  "producerFourPartAudits": {
+    "attempts": 5040,
+    "passed": 5040,
+    "errors": 0
+  },
+  "independentReview": {
+    "mathematics": {
+      "status": "passed",
+      "method": "Independent integer binomial coefficients, Holm, Wilson and summary recomputation; no production arithmetic imported.",
+      "receipt": "test-results/spire-strength/review-4/statistics-independent.json"
+    },
+    "analyzerRerun": "Byte-identical inference output.",
+    "companion": {
+      "status": "passed",
+      "allRawCases": 240,
+      "nativeCommands": 81524,
+      "inputDigests": 81284,
+      "freshFourPartAudits": 12,
+      "remainingFreshFourPartNotRepeated": 228,
+      "selection": "First reserved block, all six setups and both policies, without outcome filtering.",
+      "receipt": "test-results/spire-strength/review-4/companion-integrity.json"
+    },
+    "primary": {
+      "status": "passed",
+      "scope": "Complete primary integrity and native replay review; sampled fresh four-part reproduction.",
+      "statuses": {
+        "terminal": 4793,
+        "timeout": 7
+      },
+      "reportSha256": "92e6b1ac0efcd6a5a8f0c1b51218b85bfd815259669c40d5b6b5ef86504753c1",
+      "protocolSha256": "d37ebc634f7806850449830fcd897160d2cbdfaa644be291a5b82448a2c11187",
+      "planDigest": "b036ed333ac4dcc2f3c03cea27fea92ae1a2c88d5d81e127b15200d0e8fae158",
+      "bundleDigest": "f91de8c4790662ff12915dad479c9a3435d66120dea1b7217a476f285b776f21",
+      "pinsVerifiedBeforeAndAfter": 44,
+      "grid": 4800,
+      "canonicalRawDigests": 4800,
+      "inputDigests": 2173392,
+      "nativeReplayMetricsAndCursors": 4800,
+      "nativeReplayCommands": 2178192,
+      "retainedFourPartAudits": 4800,
+      "freshFourPartAuditSelection": "First recorded win and death per character/policy, plus every declared timeout.",
+      "remainingFreshFourPartNotRepeated": 4785,
+      "scriptSha256": "4b6736fb16a9f4aa315e4256a59603100f64047141f94f9f4dbad4cf0e36f6b7",
+      "receipt": "test-results/spire-strength/review-4/primary-integrity.json",
+      "freshFourPartAudits": 15
+    },
+    "finalClosure": {
+      "receipt": "test-results/spire-strength/review-4/final-independent-review.json",
+      "status": "passed",
+      "closureTimeUTC": "2026-10-16T10:59:43.373Z",
+      "sourceFreezeRelease": "Cleared after final verification of all 44 current and archived source pins; retained study bytes and prior failed studies remain immutable.",
+      "planDigest": "b036ed333ac4dcc2f3c03cea27fea92ae1a2c88d5d81e127b15200d0e8fae158",
+      "independentCoverage": {
+        "rawCanonicalDigests": 5040,
+        "inputDigests": 2254676,
+        "nativeReplayMetricsAndCursors": 5040,
+        "exactReplayCommandSequences": 5040,
+        "nativeReplayCommands": 2259716,
+        "retainedFourPartAuditsVerified": 5040,
+        "freshPrimaryFourPartAudits": 15,
+        "freshCompanionFourPartAudits": 12,
+        "totalFreshFourPartAudits": 27,
+        "remainingFourPartReproductionsNotIndependentlyRepeated": 5013
+      },
+      "completion": {
+        "attempts": 5040,
+        "terminal": 5033,
+        "budgetTimeouts": 7,
+        "errors": 0
+      },
+      "statistics": {
+        "allCriteriaPassed": true,
+        "independentBigIntPairedTestsAndHolm": true,
+        "independentWilsonAndSummaryChecks": true,
+        "analyzerExclusiveRerunByteIdentical": true
+      },
+      "receiptSha256": {
+        "primary-integrity.json": "989b9551ecfb45a6a84bf0484862bd663f2e3e68f4338cc77226734cdba0e827",
+        "companion-integrity.json": "ce3f67fd4be3a23b64ef4cabc7a1e18500f28be3ce78eb1a14740ea826f60bff",
+        "companion-command-integrity.json": "83e2c0654ed6c6136705887f708606048062f211964c5298feb82e2c232e3059",
+        "companion-receipt-refresh.json": "66cc4e9d58b7bd8a3a56ebf4308f7daa0fbd2c226ecb169a7a68d66749ec9737",
+        "statistics-independent.json": "cf37d61e9975ce5162ce2f429154fcac48f844e0c7bf95b973787b5c2dcecccf"
+      },
+      "scriptSha256": "9475fa2c564de809a076c21697016e458d3cf3b6d5e2fb6e292d29594ce7ba80",
+      "limits": "Victory within 2,000 decisions, with all seven timeouts retained as nonwins. Fresh complete four-part reproductions cover 27/5,040; remaining four-part results are producer audits, while all 5,040 raw/native replay results were independently verified. Holm covers the four contrasts of this study only. Prior failed studies 2/3 remain failed; no adjacent win-rate significance, ordering of all Ascensions, human-equivalent strength, or universal native completion claim."
+    }
+  },
+  "freeze": {
+    "sourceFiles": 44,
+    "sourceSnapshotRoot": "test-results/spire-strength/frozen-sources-4",
+    "sourceDigests": {
+      "docs/research/experiments/2026-10-16-spire-strength-4-protocol.md": "96949fcd7c30cd75fa63aab7ca23220b3e0109cc9d4132f77baedc25d57e5abe",
+      "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd",
+      "packages/workshop-tools/policy/analyze-spire.ts": "bbe3f402f536f973c0b7c61fdba833acac26e317e0c31e429c3156d6dedfcf57",
+      "packages/workshop-tools/policy/calibration.ts": "849eb5f92d80ff866f221f7075702d2e81f01fdf69f49f5f500f049ba84c9449",
+      "packages/workshop-tools/policy/cli.ts": "a9ef1250e1fbc025fca9dfb8eba781d6c7c9f69fe4d8008d10231f2c0527f289",
+      "packages/workshop-tools/policy/pool.ts": "10234612f112389d2cc5cd1de7127829f53bb424b98d238ca9c080ab9081d401",
+      "packages/workshop-tools/policy/runtime.ts": "2e055828c484c75c338b75203aed380c3e574184073047e85df6c4c4a1564858",
+      "packages/workshop-tools/policy/study.ts": "3c6c258eaab78c9f6da1424ac81f4d0b3ca52fc889f3988c79cb6b5a31867bf7",
+      "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+      "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+      "src/games/spire/agent/adapter.ts": "06ac138235692cb8e401c3b614f2cdca4ef5c083d588eb3c8521eda13e8a8c87",
+      "src/games/spire/agent/collection.ts": "9efbdd1f0ac52654b2ce0931c813790d8390b3c377a82f336931ec567b28bf2e",
+      "src/games/spire/agent/forecast.ts": "3cd7ee74b14b72e7a465236d0292ec337a78a9e9d332dd7972018a6889c5dd63",
+      "src/games/spire/agent/legality.ts": "aedc0f669bc9a8ba406ca2e5f643b76177de5031cb831518e5d2480752b8b090",
+      "src/games/spire/agent/observation.ts": "8b4e89b3af8aed736b86bae2a96be88dc95d29bd7d71efbfc7390d67c8cef1bf",
+      "src/games/spire/agent/policy.ts": "8705555a220d0058aede26540011bf13082654d24f004c2076d069819b9725fd",
+      "src/games/spire/agent/public-model.ts": "4ca5689c0c19ce73daf31f0145878ab0cbad17aa89ccef07d437c472e82f3be9",
+      "src/games/spire/agent/tactics.ts": "4a7ba32eed60bcb9fc30feb3f27643584489a7054a24f25739549c589124523d",
+      "src/games/spire/application/evidence.ts": "14fd05cda32988d0c3cb4712e800f80e391fda35fc792ef46b418919efb64b67",
+      "src/games/spire/application/scenario.ts": "1e86c2477d92a38e261d1c32873126cefa7b3ab00e3cf0e0d397167e10b25b3c",
+      "src/games/spire/application/session.ts": "f903b64c5bff5409d0f69f3031cfa2f8d7638c92cd8d12bdaf4b583925b82b60",
+      "src/games/spire/content/bosses.ts": "7afd7747e92cc8467e63a8e66c550c9dbd676cf72c7416037502e1ea5ce490f1",
+      "src/games/spire/content/cards.ts": "832bc5b3296ac0850de63e49311e6e1410cc41179f75fb5677084df5c8e24752",
+      "src/games/spire/content/silent.ts": "26f2da82b2360903a4028673a80e0897b232d7ad511832317031546d801d078a",
+      "src/games/spire/content/world.ts": "9837867ecc8f19b04909f73b806256e83caf872882414f13f40745339d2c1a61",
+      "src/games/spire/domain/combat.ts": "9d7fc7ebb3a2f2869a6473b8a9c5fb2d2c8d86faf643da421bc32f7f9f886957",
+      "src/games/spire/domain/commands.ts": "eb8940e93c15db950cac4fddbfbbfcebc5803224939199178b3b3747ed39ee4a",
+      "src/games/spire/domain/difficulty.ts": "a8b9c2b445c1c95cdc57b484409a0e6901c895357c3f5a568bfc40f66a99a3c5",
+      "src/games/spire/domain/enemies.ts": "a4d8a0c75522eb47c1f680da2720c42d8b7c1cd7d8be1bb526f42340a008dd22",
+      "src/games/spire/domain/game.ts": "24c9ea17b5310e563bd5b15c959334e153c30266bc9a8df30f7e33594023e0a1",
+      "src/games/spire/domain/map.ts": "df72e70657b9c571c5edc7309f3696a76d2a5682a992ce6d0700348eae1c2ca9",
+      "src/games/spire/domain/rewards.ts": "0794ffab5d5990ce0abf8e2a27a9fe4b152da5f738d9481360ef193a73e39026",
+      "src/games/spire/domain/state.ts": "e419cd30195978104a1b7fe96d2a0885da6622bdedbb5a12bfa9fd787ca7e640",
+      "src/mods/spire.ts": "cd95f72ae69fd4af0cdf75b677cdc6fe11ec684f3b5019fcef9a18c1e4846f35",
+      "src/mods/validation.ts": "c507a29bf4d7efc5e59d4563cac8316244bc50678049172498b206fec7ef8660",
+      "src/shared/contentPack.ts": "63eefbc7312e216df6ecb9b6175486d8c3c7bbc09a4f41dc436c667aabfcd9ff",
+      "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+      "src/shared/policy/rollout.ts": "d9f3b20594485fc5e625f0169caa20272f88d58ccfd0de1986e28eeafb58686b",
+      "src/shared/policy/scoring.ts": "f32cf115a989e697981d5043bea27b039350b5691cfb364d591a4019192a2617",
+      "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+      "src/shared/replay.ts": "7725ad47444e6bae692a94cc8824945c1c5698f1235a29a5628d97f471d4cf30",
+      "src/shared/scenario.ts": "d166085c856564a1e8331a0bfa8455e63628b74a3b3d820d293bad765e7f12d6",
+      "test-results/spire-policy/development-1/bundles/ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47.mjs": "ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47",
+      "test-results/spire-strength/baseline-reference-3.ts": "3f0ae5a3d64443d0dc86189c6890a04a14d7ac0357037f25caf4037e14b8ded9"
+    },
+    "primaryBundleSha256": "f91de8c4790662ff12915dad479c9a3435d66120dea1b7217a476f285b776f21",
+    "companionBundleSha256": "f994cfb4124eceb4142a88f3089f651a47a2fc53b4bb64ecf6afdb81b17c4601",
+    "historicalFactoryBundleSha256": "ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47",
+    "runtime": "v24.21.0 / darwin / arm64",
+    "archiveVerification": "Every archived source file checked against plan hash while authoring this receipt; no original bytes changed."
+  },
+  "limits": [
+    "Holm covers the four tests within this study, not adaptive repeated confirmation campaigns2/3/4.",
+    "Earlier failed confirmations remain failed and are not reinterpreted by the prospective bounded endpoint.",
+    "No adjacent-level win-rate significance or ordering of every native Ascension is claimed.",
+    "Policies consume different work; improvement is not compute-isolated causal evidence.",
+    "Companion strategy comparisons have20matchedblocks, not400, and are descriptive.",
+    "No human-equivalent strength or human difficulty/feel claim.",
+    "Seven budget timeouts are retained as nonwins; bounded victory does not guarantee native campaign termination.",
+    "Independent raw review must close before final promotion; producer audit verdicts alone are insufficient."
+  ],
+  "artifacts": [
+    {
+      "path": "test-results/spire-strength/evaluation-plan-4.json",
+      "bytes": 5099,
+      "sha256": "b036ed333ac4dcc2f3c03cea27fea92ae1a2c88d5d81e127b15200d0e8fae158"
+    },
+    {
+      "path": "test-results/spire-strength/frozen-sources-4/retention.json",
+      "bytes": 14855,
+      "sha256": "376f925bb6fd89f574a0fd8e0414f003f9cdf8573c7e501d4a7c9b0ef7ed2c3d"
+    },
+    {
+      "path": "test-results/spire-strength/evaluation-4/report.json",
+      "bytes": 3851348,
+      "sha256": "92e6b1ac0efcd6a5a8f0c1b51218b85bfd815259669c40d5b6b5ef86504753c1"
+    },
+    {
+      "path": "test-results/spire-strength/evaluation-4/protocol.json",
+      "bytes": 22175,
+      "sha256": "d37ebc634f7806850449830fcd897160d2cbdfaa644be291a5b82448a2c11187"
+    },
+    {
+      "path": "test-results/spire-strength/evaluation-4/inference.json",
+      "bytes": 22870,
+      "sha256": "70f34c8bc82f12f2e74d5142c93602493497a93cd57d0d8b19fc4a4f83454a52"
+    },
+    {
+      "path": "test-results/spire-strength/alternatives-4/report.json",
+      "bytes": 211009,
+      "sha256": "8515ba4d2d5607f03a21bf80e0a928de146f9662a5abee480b054e27f92f6826"
+    },
+    {
+      "path": "test-results/spire-strength/alternatives-4/protocol.json",
+      "bytes": 7862,
+      "sha256": "63fabf30fda9a22b66dbeb30b27e35a465b0322754dee997a8ad3c215dbc8d6f"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/freeze-precheck.json",
+      "bytes": 1227,
+      "sha256": "6d96a9b89bbee3bf94cfd85bc327c065bcca08ecd2ccf889c4d43b8900119362"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/statistics-independent.json",
+      "bytes": 3980,
+      "sha256": "cf37d61e9975ce5162ce2f429154fcac48f844e0c7bf95b973787b5c2dcecccf"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/statistics-independent-audit.mjs",
+      "bytes": 7494,
+      "sha256": "5a86448bab10af40923ab0a816c922f44348a29a73be6e22c288b56f83d7a4b2"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/inference-independent-rerun.json",
+      "bytes": 22870,
+      "sha256": "70f34c8bc82f12f2e74d5142c93602493497a93cd57d0d8b19fc4a4f83454a52"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/companion-integrity.json",
+      "bytes": 85203,
+      "sha256": "ce3f67fd4be3a23b64ef4cabc7a1e18500f28be3ce78eb1a14740ea826f60bff"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/companion-integrity-audit.mjs",
+      "bytes": 6774,
+      "sha256": "df5d5b2a117da90aff5c81247a85a63de97e501a6520e6740cd37538d8511a39"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/companion-command-integrity.json",
+      "bytes": 388,
+      "sha256": "83e2c0654ed6c6136705887f708606048062f211964c5298feb82e2c232e3059"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/companion-command-audit.mjs",
+      "bytes": 1494,
+      "sha256": "7f57f0f8d85e68eb394af15407c81541cd465cbc3c726c1c2517005e5bb6acdc"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/companion-receipt-refresh.json",
+      "bytes": 401,
+      "sha256": "66cc4e9d58b7bd8a3a56ebf4308f7daa0fbd2c226ecb169a7a68d66749ec9737"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/companion-receipt-refresh.mjs",
+      "bytes": 1280,
+      "sha256": "26e375a4aa1dcae1ad4ac9d741111fa01407b532001678dd17c9732973eb472d"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-integrity-audit.mjs",
+      "bytes": 7826,
+      "sha256": "4b6736fb16a9f4aa315e4256a59603100f64047141f94f9f4dbad4cf0e36f6b7"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/analyzer-results.json",
+      "bytes": 3886,
+      "sha256": "3a00ac9c77fd618239903bb39e9f2160c14021a862ab4681046bf5161bea51c7"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/a3-results.json",
+      "bytes": 1205,
+      "sha256": "860fd5eec0a8ed2cb266b72fdd54f930c5f9c578e0a72065886b40dbc80614e3"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/a3-raw-integrity.json",
+      "bytes": 11825,
+      "sha256": "4baa11dba6373873414bfe986f68608789f7a7303e0b30c3c071a309e7f0c6fd"
+    },
+    {
+      "path": "docs/research/experiments/2026-10-16-spire-strength-4-protocol.md",
+      "bytes": 7587,
+      "sha256": "96949fcd7c30cd75fa63aab7ca23220b3e0109cc9d4132f77baedc25d57e5abe"
+    },
+    {
+      "path": "docs/research/experiments/2026-10-16-spire-strength-development-4.md",
+      "bytes": 3664,
+      "sha256": "ce9f9a14af671d42aeec2d5ad03c1a1811d72ba13750babce21a33de9598cc7e"
+    },
+    {
+      "path": "docs/research/experiments/2026-10-16-spire-strength-development-4.json",
+      "bytes": 5063,
+      "sha256": "780ae0895309abb78b7bd2c6c8c82ed8fcd7d157b8588a8c3b34ae71536f3855"
+    },
+    {
+      "path": "docs/research/experiments/2026-10-16-spire-strength.json",
+      "bytes": 145151,
+      "sha256": "ea8e68201a420bad0160b991a21ade02f9c4ae5f32415da67d7942892a660d62"
+    },
+    {
+      "path": "test-results/spire-strength/evaluation-4/bundles/f91de8c4790662ff12915dad479c9a3435d66120dea1b7217a476f285b776f21.mjs",
+      "bytes": 355307,
+      "sha256": "f91de8c4790662ff12915dad479c9a3435d66120dea1b7217a476f285b776f21"
+    },
+    {
+      "path": "test-results/spire-strength/frozen-sources-4/primary-f91de8c4790662ff12915dad479c9a3435d66120dea1b7217a476f285b776f21.mjs",
+      "bytes": 355307,
+      "sha256": "f91de8c4790662ff12915dad479c9a3435d66120dea1b7217a476f285b776f21"
+    },
+    {
+      "path": "test-results/spire-strength/alternatives-4/bundles/f994cfb4124eceb4142a88f3089f651a47a2fc53b4bb64ecf6afdb81b17c4601.mjs",
+      "bytes": 196178,
+      "sha256": "f994cfb4124eceb4142a88f3089f651a47a2fc53b4bb64ecf6afdb81b17c4601"
+    },
+    {
+      "path": "test-results/spire-strength/frozen-sources-4/companion-f994cfb4124eceb4142a88f3089f651a47a2fc53b4bb64ecf6afdb81b17c4601.mjs",
+      "bytes": 196178,
+      "sha256": "f994cfb4124eceb4142a88f3089f651a47a2fc53b4bb64ecf6afdb81b17c4601"
+    },
+    {
+      "path": "test-results/spire-policy/development-1/bundles/ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47.mjs",
+      "bytes": 182139,
+      "sha256": "ebb2e5a27cd1591d94ff2ddf354900ea120b9913c7860b829fb254e86b8bbb47"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-integrity.json",
+      "bytes": 1668356,
+      "sha256": "989b9551ecfb45a6a84bf0484862bd663f2e3e68f4338cc77226734cdba0e827"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/final-independent-review.json",
+      "bytes": 2184,
+      "sha256": "008d909443023d39d84ac96811fbe07422e8f3857128c76fbe5a84a2f4df7a9d"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/close-independent-review.mjs",
+      "bytes": 3795,
+      "sha256": "9475fa2c564de809a076c21697016e458d3cf3b6d5e2fb6e292d29594ce7ba80"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-01-ironclad-a0-legacy-reference.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-01-ironclad-a0-survival.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-01-silent-a0-legacy-reference.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-01-silent-a0-survival.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-02-ironclad-a0-survival.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-03-silent-a0-survival.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-117-silent-a5-survival.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-13-silent-a0-legacy-reference.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-216-ironclad-a0-legacy-reference.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-248-ironclad-a0-legacy-reference.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-327-silent-a0-survival.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-361-ironclad-a3-legacy-reference.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-395-ironclad-a0-legacy-reference.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-67-silent-a0-survival.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    },
+    {
+      "path": "test-results/spire-strength/review-4/primary-fresh-SPIRE-STRENGTH-4-RESERVED-75-ironclad-a0-legacy-reference.audit.json",
+      "bytes": 224,
+      "sha256": "10c37e952a1c0cf73e6814153362a3bbf0d0f5242cdd091ce120138abecf4d57"
+    }
+  ]
+}

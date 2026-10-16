@@ -211,3 +211,12 @@ within 2,000 decisions; budget timeouts count as nonwins for both candidate and 
 with native completion reported separately. Execution errors, audit failures, incomplete
 grids and drift still block promotion. This does not change either earlier failed verdict.
 Holm correction covers this study's four contrasts, not the repeated development campaign.
+
+The [strength-4 confirmation](../research/experiments/2026-10-16-spire-strength-confirmation-4.md)
+meets every preregistered criterion on 400 fresh seed blocks. Survival4 wins
+98/86/32 Ironclad and 135/74/43 Silent attempts at A0/A3/A5; the frozen Survival1
+control wins 5 and 43 A0 attempts respectively. Both characters pass the absolute
+strength, paired improvement and A0–A5 separation criteria, with A3 point estimates
+between the endpoints. Seven budget stops remain nonwins. These findings establish
+the declared policy benchmarks; adjacent-tier significance, equal-compute strategy
+causality and human difficulty remain untested.
