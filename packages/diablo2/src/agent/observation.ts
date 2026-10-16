@@ -1,5 +1,13 @@
 import type { Session } from '../application/session';
-import { knownCell, visibleActor, distance, walkable, lineOfSight, bodyFits } from '../domain/maps';
+import {
+  knownCell,
+  visibleActor,
+  distance,
+  walkable,
+  lineOfSight,
+  bodyFits,
+  BODY_RADIUS,
+} from '../domain/maps';
 import { freeCell } from '../domain/loot';
 import { playerStats } from '../domain/stats';
 import { currentRegion, currentWorld, portalOpen, wardsLit } from '../domain/world';
@@ -166,7 +174,7 @@ export function observe(session: Session, memory: Aliases) {
         });
   }
   const input = {
-    schema: 'emberwake-observation-1' as const,
+    schema: 'emberwake-observation-2' as const,
     requestedTicks,
     requestedTickLimit: 100000,
     hero: s.hero,
@@ -186,8 +194,10 @@ export function observe(session: Session, memory: Aliases) {
       theme: map.theme,
       width: map.width,
       height: map.height,
-      tiles: world.tiles.map((row, y) =>
-        [...row].map((tile, x) => (field && known.has(y * map.width + x) ? tile : '?')).join(''),
+      terrain: terrainRuns(
+        world.tiles.map((row, y) =>
+          [...row].map((tile, x) => (field && known.has(y * map.width + x) ? tile : '?')).join(''),
+        ),
       ),
     },
     enemies,
@@ -201,29 +211,35 @@ export function observe(session: Session, memory: Aliases) {
       ? { act: s.portal.act, region: s.portal.region, position: point(s.portal.position) }
       : null,
     atlas: {
-      acts: content.acts.map((a) => ({ ...a, wards: [...a.wards] })),
+      acts: content.acts.map((a) => ({
+        id: a.id,
+        name: a.name,
+        entry: a.entry,
+        wards: [...a.wards],
+        bossRegion: a.bossRegion,
+      })),
       dungeons: content.dungeons.map((d) => ({ ...d, floors: [...d.floors] })),
+      progress: {
+        visited: content.regions.filter((r) => s.worlds[r.id].visited).map((r) => r.id),
+        wards: content.regions.filter((r) => s.worlds[r.id].ward).map((r) => r.id),
+        bosses: content.regions.filter((r) => s.worlds[r.id].bossDefeated).map((r) => r.id),
+        waypoints: content.regions.filter((r) => s.worlds[r.id].waypoint).map((r) => r.id),
+      },
       regions: content.regions.map((r) => ({
         id: r.id,
-        name: r.name,
         act: r.act,
-        dungeon: r.dungeon,
-        floor: r.floor,
-        visited: s.worlds[r.id].visited,
-        ward: s.worlds[r.id].ward,
-        bossDefeated: s.worlds[r.id].bossDefeated,
-        waypoint: s.worlds[r.id].waypoint,
         portals: r.portals.map((v) => ({
           id: v.id,
-          name: v.name,
           target: v.target,
           requires: v.requires,
         })),
       })),
     },
     definitions: structuredClone({
-      heroes: content.heroes,
-      skills: content.skills,
+      heroes: content.heroes.filter((hero) => hero.id === s.hero),
+      skills: content.skills.filter((skill) =>
+        content.heroes.find((hero) => hero.id === s.hero)!.skills.includes(skill.id),
+      ),
       items: content.items,
       monsters: content.monsters,
     }),
@@ -292,14 +308,29 @@ export function observe(session: Session, memory: Aliases) {
       [0, -1],
     ];
     for (const [dx, dy] of steps) {
-      const target = { x: Math.floor(p.x) + dx + 0.5, y: Math.floor(p.y) + dy + 0.5 };
-      if (
-        knownCell(world, target) &&
-        walkable(publicTerrain, target) &&
-        lineOfSight(publicTerrain, p, target) &&
-        bodyFits(publicTerrain, target)
-      )
+      let from = point(p);
+      // A straight cardinal cell route is the unique shortest native grid path.
+      // Check every footprint along it against masked terrain, so neither the
+      // action menu nor native pathfinding can consult an undiscovered detour.
+      for (let length = 1; length <= 4; length++) {
+        const target = {
+          x: Math.floor(p.x) + dx * length + 0.5,
+          y: Math.floor(p.y) + dy * length + 0.5,
+        };
+        // Native slide applies x then y. The complete swept bounding box
+        // includes both that alignment and every intermediate body footprint;
+        // point sampling can miss a tiny unknown corner of a fractional start.
+        let clear = true;
+        const left = Math.floor(Math.min(from.x, target.x) - BODY_RADIUS);
+        const right = Math.floor(Math.max(from.x, target.x) + BODY_RADIUS);
+        const top = Math.floor(Math.min(from.y, target.y) - BODY_RADIUS);
+        const bottom = Math.floor(Math.max(from.y, target.y) + BODY_RADIUS);
+        for (let y = top; y <= bottom; y++)
+          for (let x = left; x <= right; x++) if (!walkable(publicTerrain, { x, y })) clear = false;
+        if (!clear) break;
         actions.push({ type: 'move', target });
+        from = target;
+      }
     }
     // Stopping is permitted; directional movement is restricted to the known-cell move menu.
     actions.push({ type: 'steer', direction: { x: 0, y: 0 } });
@@ -356,3 +387,21 @@ export function observe(session: Session, memory: Aliases) {
   return structuredClone(input);
 }
 export type Observation = ReturnType<typeof observe>;
+
+/** Lossless row runs keep full original knowledge affordable in long campaigns.
+ * Each pair is [consecutive cell count, native terrain glyph], including unknown '?'. */
+export function terrainRuns(rows: readonly string[]): [number, string][][] {
+  return rows.map((row) => {
+    const runs: [number, string][] = [];
+    for (const glyph of row) {
+      const previous = runs.at(-1);
+      if (previous?.[1] === glyph) previous[0]++;
+      else runs.push([1, glyph]);
+    }
+    return runs;
+  });
+}
+/** Extension policies can recover the ordinary row-string grid without private state. */
+export function terrainRows(region: Pick<Observation['region'], 'terrain'>): string[] {
+  return region.terrain.map((row) => row.map(([count, glyph]) => glyph.repeat(count)).join(''));
+}

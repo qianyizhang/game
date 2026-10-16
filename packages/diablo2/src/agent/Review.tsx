@@ -6,7 +6,7 @@ import { knownCell, visibleActor } from '../domain/maps';
 import { currentWorld } from '../domain/world';
 import { render, TILE, VIEW_HEIGHT, VIEW_WIDTH } from '../ui/render';
 import { adapter, builtins, type EpisodeState } from './adapter';
-import { emptyAliases, observe } from './observation';
+import { emptyAliases, observe, terrainRows } from './observation';
 import { createReviewSeeker } from './review-seek';
 import './review.css';
 
@@ -33,7 +33,7 @@ function RecordedField({ state: { session, input } }: { state: EpisodeState }) {
     const context = canvas.current.getContext('2d');
     if (!context) return;
     context.fillStyle = '#0d1214';
-    input.region.tiles.forEach((row, y) =>
+    terrainRows(input.region).forEach((row, y) =>
       [...row].forEach((tile, x) => {
         if (tile === '?')
           context.fillRect((x - camera.x) * TILE, (y - camera.y) * TILE, TILE + 1, TILE + 1);

@@ -1,7 +1,8 @@
 import type { PolicyFactory, Proposal } from '../../../../src/shared/policy/types';
 import { freeCell } from '../domain/loot';
+import { lineOfSight } from '../domain/maps';
 import type { Item, Point } from '../domain/types';
-import type { Observation, PolicyCommand } from './observation';
+import { terrainRows, type Observation, type PolicyCommand } from './observation';
 
 export const STRATEGIES = ['immediate', 'survival', 'growth'] as const;
 export type Strategy = (typeof STRATEGIES)[number];
@@ -27,6 +28,15 @@ interface Memory {
   lastRefillAt: { region: string; at: Point } | null;
   refills: number;
   attributes: number;
+  pursuit: { region: string; uid: number; at: { x: number; y: number } } | null;
+}
+function navigationMemory(memory: Memory, region: string): RegionMemory {
+  let result = memory.regions.get(region);
+  if (!result) {
+    result = { exhausted: new Set(), frontier: null, goal: null, visits: new Map() };
+    memory.regions.set(region, result);
+  }
+  return result;
 }
 function gearValue(item: Item, strategy: Strategy, melee: boolean): number {
   const damage = melee ? item.damage : item.damage * 0.65;
@@ -47,10 +57,10 @@ function gearValue(item: Item, strategy: Strategy, melee: boolean): number {
 function nextRegion(input: Observation): string | null {
   const chapter = input.atlas.acts[input.act];
   const region = input.atlas.regions.find((r) => r.id === input.region.id)!;
-  const wards = chapter.wards.filter((id) => !input.atlas.regions.find((r) => r.id === id)!.ward);
+  const wards = chapter.wards.filter((id) => !input.atlas.progress.wards.includes(id));
   const destination = wards[0] ?? chapter.bossRegion;
   if (input.region.id === destination) return null;
-  if (region.id === chapter.bossRegion && region.bossDefeated) {
+  if (region.id === chapter.bossRegion && input.atlas.progress.bosses.includes(region.id)) {
     const onward = region.portals.find((p) => p.requires === 'boss');
     return onward?.target ?? null;
   }
@@ -61,7 +71,7 @@ function nextRegion(input: Observation): string | null {
     for (const portal of current.portals) {
       if (!portal.target || previous.has(portal.target)) continue;
       if (portal.requires === 'wards' && wards.length) continue;
-      if (portal.requires === 'boss' && !current.bossDefeated) continue;
+      if (portal.requires === 'boss' && !input.atlas.progress.bosses.includes(current.id)) continue;
       previous.set(portal.target, current.id);
       queue.push(portal.target);
     }
@@ -78,15 +88,27 @@ interface Navigation {
   evaluations: number;
 }
 /** BFS is over the detached, masked terrain only. Unknown cells are impassable.
- * A route produces one offered adjacent step, never a distant engine waypoint. */
-function navigate(input: Observation, memory: RegionMemory, strategy: Strategy): Navigation {
-  const { player: p, region: r } = input;
+ * A route selects the furthest offered straight prefix, stopping at each turn. */
+function navigate(
+  input: Observation,
+  memory: RegionMemory,
+  strategy: Strategy,
+  combatTarget?: Point,
+): Navigation {
+  const { player: p } = input;
+  const r = { ...input.region, tiles: terrainRows(input.region) };
   const width = r.width,
     start = cellKey(p, width),
     queue = [start];
   const parent = new Map<number, number>([[start, -1]]),
     steps = new Map<number, number>([[start, 0]]);
   const walkable = (x: number, y: number) => '.,:;='.includes(r.tiles[y]?.[x] ?? '#');
+  // Fractional footprint restrictions belong in the search, not after it.
+  const firstSteps = new Set(
+    input.actions.flatMap((command) =>
+      command.type === 'move' ? [cellKey(command.target, width)] : [],
+    ),
+  );
   for (let i = 0; i < queue.length; i++) {
     const cell = queue[i],
       x = cell % width,
@@ -101,6 +123,7 @@ function navigate(input: Observation, memory: RegionMemory, strategy: Strategy):
         nx >= width ||
         ny >= r.height ||
         parent.has(next) ||
+        (cell === start && !firstSteps.has(next)) ||
         !walkable(nx, ny)
       )
         continue;
@@ -114,11 +137,21 @@ function navigate(input: Observation, memory: RegionMemory, strategy: Strategy):
   memory.exhausted.add(start);
   const wanted = nextRegion(input);
   const chapter = input.atlas.acts[input.act];
-  const wardNeeded =
-    chapter.wards.includes(r.id) && !input.atlas.regions.find((region) => region.id === r.id)!.ward;
-  const bossDone = input.atlas.regions.find((region) => region.id === r.id)!.bossDefeated;
+  const wardNeeded = chapter.wards.includes(r.id) && !input.atlas.progress.wards.includes(r.id);
+  const bossDone = input.atlas.progress.bosses.includes(r.id);
   const goals: { id: string; at: Point; priority: number; reason: string; reach: number }[] = [];
-  for (const marker of input.markers) {
+  if (combatTarget)
+    goals.push({
+      id: 'visible-foe',
+      at: combatTarget,
+      priority: 200,
+      reason: 'route around known terrain to the visible foe',
+      reach:
+        input.definitions.heroes.find((hero) => hero.id === input.hero)!.attack === 'melee'
+          ? 1.6
+          : 5.9,
+    });
+  for (const marker of combatTarget ? [] : input.markers) {
     if (marker.kind === 'ward' && !marker.active)
       goals.push({ id: marker.id, at: marker.at, priority: 120, reason: 'known ward', reach: 1.5 });
     if (
@@ -146,7 +179,7 @@ function navigate(input: Observation, memory: RegionMemory, strategy: Strategy):
         reach: 1.5,
       });
   }
-  for (const drop of input.drops) {
+  for (const drop of combatTarget ? [] : input.drops) {
     if (
       (drop.kind === 'health' && p.healthPotions >= 8) ||
       (drop.kind === 'mana' && p.manaPotions >= 8)
@@ -180,7 +213,8 @@ function navigate(input: Observation, memory: RegionMemory, strategy: Strategy):
     for (const cell of queue) {
       evaluations++;
       const at = { x: (cell % width) + 0.5, y: Math.floor(cell / width) + 0.5 };
-      if (distance(at, goal.at) > goal.reach) continue;
+      if (distance(at, goal.at) > goal.reach || (combatTarget && !lineOfSight(r, at, goal.at)))
+        continue;
       const value = goal.priority - steps.get(cell)! * 0.8 - distance(at, goal.at) * 0.1;
       if (value > best) {
         best = value;
@@ -192,6 +226,7 @@ function navigate(input: Observation, memory: RegionMemory, strategy: Strategy):
   }
   if (
     target === null &&
+    !combatTarget &&
     memory.frontier !== null &&
     parent.has(memory.frontier) &&
     !memory.exhausted.has(memory.frontier)
@@ -205,7 +240,18 @@ function navigate(input: Observation, memory: RegionMemory, strategy: Strategy):
         y = Math.floor(cell / width);
       const fog = directions.filter(([dx, dy]) => r.tiles[y + dy]?.[x + dx] === '?').length;
       if (!fog || memory.exhausted.has(cell)) continue;
-      const value = fog * 2 - steps.get(cell)! - (memory.visits.get(cell) ?? 0) * 2;
+      // Unknown walls remain uncertain: optimistic discovery only ranks
+      // scouting positions; movement itself never crosses unknown terrain.
+      const at = { x: x + 0.5, y: y + 0.5 };
+      let discovery = 0;
+      for (let ny = Math.max(0, y - 7); ny <= Math.min(r.height - 1, y + 7); ny++)
+        for (let nx = Math.max(0, x - 7); nx <= Math.min(r.width - 1, x + 7); nx++) {
+          if (r.tiles[ny][nx] !== '?') continue;
+          const unseen = { x: nx + 0.5, y: ny + 0.5 };
+          evaluations++;
+          if (distance(at, unseen) <= 7 && lineOfSight(r, at, unseen)) discovery++;
+        }
+      const value = discovery - steps.get(cell)! * 0.5 - (memory.visits.get(cell) ?? 0) * 2;
       if (value > best) {
         best = value;
         target = cell;
@@ -225,17 +271,24 @@ function navigate(input: Observation, memory: RegionMemory, strategy: Strategy):
       nodes: queue.length,
       evaluations,
     };
-  while (parent.get(target) !== start) target = parent.get(target)!;
-  const at = { x: (target % width) + 0.5, y: Math.floor(target / width) + 0.5 };
-  const move =
-    input.actions.find((c) => c.type === 'move' && distance(c.target, at) < 0.01) ?? null;
+  const route: number[] = [];
+  for (let cell = target; cell !== start; cell = parent.get(cell)!) route.unshift(cell);
+  const firstDirection = route[0] - start;
+  let move: PolicyCommand | null = null;
+  for (let i = 0; i < Math.min(4, route.length); i++) {
+    if (route[i] - (i ? route[i - 1] : start) !== firstDirection) break;
+    const at = { x: (route[i] % width) + 0.5, y: Math.floor(route[i] / width) + 0.5 };
+    const offered = input.actions.find((c) => c.type === 'move' && distance(c.target, at) < 0.01);
+    if (!offered) break;
+    move = offered;
+  }
   return { move, reason, nodes: queue.length, evaluations };
 }
 
 function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> {
   return {
     id: strategy,
-    version: 'emberwake-policy-1',
+    version: 'emberwake-policy-2',
     create() {
       const memory: Memory = {
         regions: new Map(),
@@ -245,6 +298,7 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
         lastRefillAt: null,
         refills: 0,
         attributes: 0,
+        pursuit: null,
       };
       return (input): Proposal<PolicyCommand> => {
         const p = input.player,
@@ -265,6 +319,7 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
               candidates: actions.length,
               pathNodes,
               portalRefills: memory.refills,
+              lastSeenFoe: memory.pursuit,
             },
           };
         };
@@ -287,7 +342,18 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
           memory.previous &&
           ['move', 'steer', 'attack', 'cast'].includes(memory.previous.type)
         )
-          return choose(advance(), 'execute the selected control');
+          return choose(
+            advance(
+              memory.previous.type === 'move' &&
+                !memory.pursuit &&
+                !input.enemies.some((e) => e.hp > 0 && !e.warded) &&
+                !input.hazards.length &&
+                !input.projectiles.some((v) => !v.friendly)
+                ? 10
+                : 5,
+            ),
+            'execute the selected control',
+          );
         const attribute = actions.filter((c) => c.type === 'attribute');
         if (attribute.length) {
           const offense = melee ? 'strength' : 'energy';
@@ -368,6 +434,18 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
           .sort((a, b) => distance(p, a) - distance(p, b));
         work += input.enemies.length;
         const enemy = enemies[0];
+        if (enemy)
+          memory.pursuit = {
+            region: input.region.id,
+            uid: enemy.uid,
+            at: { x: enemy.x, y: enemy.y },
+          };
+        else if (
+          memory.pursuit &&
+          (memory.pursuit.region !== input.region.id ||
+            input.enemies.some((foe) => foe.uid === memory.pursuit!.uid && foe.hp === 0))
+        )
+          memory.pursuit = null;
         const moves = actions.filter((c) => c.type === 'move');
         const hazard = input.hazards.find((h) => h.delay > 0 && distance(p, h) < h.radius + 0.5);
         if (hazard && strategy !== 'immediate') {
@@ -390,10 +468,12 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
         const refill = find('portal');
         const healthLow = p.hp < input.stats.maxHp * (strategy === 'survival' ? 0.6 : 0.3);
         const manaLow = p.mana < input.stats.maxMana * 0.18;
+        const packFull =
+          p.inventory.length > 0 &&
+          input.definitions.items.some((item) => freeCell(p.inventory, item) === null);
         if (
           refill &&
-          strategy !== 'immediate' &&
-          (healthLow || manaLow) &&
+          (packFull || (strategy !== 'immediate' && (healthLow || manaLow))) &&
           input.tick - memory.lastRefillTick >= 80 &&
           (!memory.lastRefillAt ||
             memory.lastRefillAt.region !== input.region.id ||
@@ -402,7 +482,12 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
           memory.lastRefillTick = input.tick;
           memory.lastRefillAt = { region: input.region.id, at: { x: p.x, y: p.y } };
           memory.refills++;
-          return choose(refill, 'legal refuge heal; return is limited by executed ticks');
+          return choose(
+            refill,
+            packFull
+              ? 'sell carried gear to free public inventory space'
+              : 'legal refuge heal; return is limited by executed ticks',
+          );
         }
         const mana = actions.find((c) => c.type === 'potion' && c.kind === 'mana');
         if (mana && enemy && p.mana < input.stats.maxMana * (strategy === 'immediate' ? 0.15 : 0.3))
@@ -462,16 +547,52 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
           if (attack && p.target !== enemy.uid)
             return choose(attack, 'focus the nearest visible foe');
           if (!attack && p.target === null && !p.destination) {
-            const approach = [...moves].sort(
-              (a, b) => distance(a.target, enemy) - distance(b.target, enemy),
-            )[0];
-            if (approach && distance(approach.target, enemy) < distance(p, enemy) - 0.1)
-              return choose(approach, 'approach the visible foe through offered known terrain');
+            let regionMemory = memory.regions.get(input.region.id);
+            if (!regionMemory) {
+              regionMemory = {
+                exhausted: new Set(),
+                frontier: null,
+                goal: null,
+                visits: new Map(),
+              };
+              memory.regions.set(input.region.id, regionMemory);
+            }
+            const navigation = navigate(input, regionMemory, strategy, enemy);
+            pathNodes = navigation.nodes;
+            work += pathNodes + navigation.evaluations;
+            if (navigation.move) return choose(navigation.move, navigation.reason);
           }
           return choose(advance(), 'resolve combat and cooldowns');
         }
         if (p.target !== null)
           return choose(find('steer')!, 'stop chasing a target outside the current sensor');
+        if (memory.pursuit) {
+          if (
+            distance(p, memory.pursuit.at) <= (melee ? 1.6 : 5.9) &&
+            lineOfSight({ tiles: terrainRows(input.region) }, p, memory.pursuit.at)
+          )
+            memory.pursuit = null;
+          else {
+            if (p.destination)
+              return choose(advance(), 'follow the known route toward the last visible foe');
+            let regionMemory = memory.regions.get(input.region.id);
+            if (!regionMemory) {
+              regionMemory = {
+                exhausted: new Set(),
+                frontier: null,
+                goal: null,
+                visits: new Map(),
+              };
+              memory.regions.set(input.region.id, regionMemory);
+            }
+            const navigation = navigate(input, regionMemory, strategy, memory.pursuit.at);
+            pathNodes = navigation.nodes;
+            work += pathNodes + navigation.evaluations;
+            if (navigation.move)
+              return choose(navigation.move, 'pursue the last visible foe through known terrain');
+            memory.pursuit = null;
+          }
+        }
         const nearby = input.markers.filter((m) => distance(p, m.at) < 2);
         const interaction = find('interact');
         if (
@@ -485,24 +606,24 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
           (m) =>
             m.kind === 'portal' &&
             m.active &&
-            (m.target === wanted || (local.bossDefeated && m.requires === 'boss')),
+            (m.target === wanted ||
+              (input.atlas.progress.bosses.includes(local.id) && m.requires === 'boss')),
         );
         const use = portal && actions.find((c) => c.type === 'use-portal' && c.id === portal.id);
         if (use) return choose(use, 'follow public atlas topology');
         if (p.destination && distance(p, p.destination) > 0.15)
-          return choose(advance(), 'complete the adjacent known-cell step');
-        let regionMemory = memory.regions.get(input.region.id);
-        if (!regionMemory) {
-          regionMemory = { exhausted: new Set(), frontier: null, goal: null, visits: new Map() };
-          memory.regions.set(input.region.id, regionMemory);
-        }
+          return choose(
+            advance(input.hazards.length || input.projectiles.some((v) => !v.friendly) ? 5 : 10),
+            'complete the known straight route segment',
+          );
+        const regionMemory = navigationMemory(memory, input.region.id);
         const current = cellKey(p, input.region.width);
         regionMemory.visits.set(current, (regionMemory.visits.get(current) ?? 0) + 1);
         const navigation = navigate(input, regionMemory, strategy);
         pathNodes = navigation.nodes;
         work += pathNodes + navigation.evaluations;
         if (navigation.move) return choose(navigation.move, navigation.reason);
-        return choose(advance(20), navigation.reason);
+        return choose(advance(10), navigation.reason);
       };
     },
   };

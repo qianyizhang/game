@@ -97,12 +97,13 @@ export function findPath(world: Pick<World, 'tiles'>, from: Point, to: Point): P
   path.push(to);
   return path;
 }
+export const BODY_RADIUS = 0.22;
 export function bodyFits(world: Pick<World, 'tiles'>, point: Point): boolean {
   return [
-    [-0.22, -0.22],
-    [0.22, -0.22],
-    [-0.22, 0.22],
-    [0.22, 0.22],
+    [-BODY_RADIUS, -BODY_RADIUS],
+    [BODY_RADIUS, -BODY_RADIUS],
+    [-BODY_RADIUS, BODY_RADIUS],
+    [BODY_RADIUS, BODY_RADIUS],
   ].every(([x, y]) => walkable(world, { x: point.x + x, y: point.y + y }));
 }
 export function slide(world: World, entity: Point, dx: number, dy: number): void {

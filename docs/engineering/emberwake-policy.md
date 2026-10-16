@@ -11,7 +11,14 @@ control and result semantics.
 own resources, equipment/inventory/stash, learned skills/cooldowns and derived stats;
 current region and seen terrain; visible enemies and conservative active effects;
 discovered static markers; public atlas topology/progress; public definitions without
-region geometry; and an ordinary action menu. Environment seed, RNG, allocation
+region geometry; and an ordinary action menu. Observation v2 carries only the current
+hero and that hero’s skill definitions, all item/monster mechanical definitions, and
+public atlas topology/progress. Act narrative and duplicated portal labels are omitted.
+Region-to-dungeon/floor membership remains in the public dungeon floor lists.
+`atlas.progress` names visited, ward, boss and waypoint region IDs.
+Terrain uses lossless row runs: each `[count, glyph]` pair describes consecutive
+cells, including `?` for unknown cells. Import `terrainRows(input.region)` from
+`observation.ts` for the ordinary row-string grid; encoding never fills unseen cells. Environment seed, RNG, allocation
 counters, unexplored tiles/objective positions and other regions' live entities remain
 private. Instance IDs use stable first-seen aliases; hidden allocations cannot change
 the public numbering.
@@ -26,9 +33,15 @@ structured owned-unit count beyond the visual sensor; unseen allies' positions
 remain private. This count supports public summon-capacity checks.
 
 Actions bind aliases to native commands after membership validation. Respawn and
-developer commands are excluded. Movement targets one adjacent known walkable cell;
-policy BFS treats unknown cells as blocked. Sending a distant waypoint to native
-full-map pathfinding would silently grant navigation knowledge. Ordinary native
+developer commands are excluded. Movement offers at most four consecutive known walkable cells on a straight cardinal
+route. The menu checks every tile in the complete swept avatar rectangle along each
+unit segment against masked terrain, including initial fractional alignment and native
+x-then-y movement. It reuses the native body radius; distance samples can miss an
+unknown corner and are insufficient. This is the unique shortest native grid route; changing hidden
+detours cannot change it. Policy BFS treats unknown cells as blocked and selects
+the furthest offered straight prefix, stopping at each turn. Arbitrary distant
+waypoints remain excluded: native full-map pathfinding would silently grant
+navigation knowledge. Ordinary native
 target-following after a selected visible attack is assisted game control between
 decisions; it is not policy lookahead. Public menus must not probe hidden sampled
 successors or hidden rejection conditions. A native rejection stays an explicit
@@ -51,6 +64,9 @@ rules and ordinary developer controls; it is outside this fair campaign study.
 The three priorities are Immediate (damage/direct objectives), Survival (defense,
 earlier protection and safer positioning), and Growth (loot, upgrades and scaling).
 These are versioned heuristics with fresh factory memory, not a total strength order.
+Policy v2 uses five-tick combat observations and ten-tick quiet travel. Its public
+scouting preference estimates discovery through known terrain; unknown walls remain
+uncertain, and only known walkable cells can become movement destinations.
 All three heroes—Barbarian, Sorceress and Necromancer—are separate setup strata.
 Work is self-reported heuristic action/entity/BFS accounting, excluding sorting,
 helper loops and recording. It is neither CPU time nor a complete operation count.
@@ -66,7 +82,31 @@ It is permitted and reported rather than mislabeled cheating. A separate decisio
 budget bounds zero-tick commands; policy refill logic must avoid stationary loops.
 Use native attack reach to approach an out-of-range visible foe through known
 cells. Loot collection must check public inventory geometry rather than item count,
-or an uncollectible drop can cause endless collection advances.
+or an uncollectible drop can cause endless collection advances. When the public pack
+can no longer fit a base item, v2 uses an offered safe portal, sells unequipped gear
+and returns. The same tick/location guard used for healing prevents stationary
+portal loops. These visits are reported in `portalRefills`, including ordinary refill
+side effects.
+
+A visible ranged attacker can stand across impassable water. Greedy movement that
+requires every step to reduce straight-line distance can then wait under fire forever.
+The same public BFS used for objectives now plans toward reachable attack positions,
+allowing an initially sideways or backward known detour. The regression’s original
+development tail recorded 2,294 combat advances and no progress before death;
+changing native damage or granting private enemy paths would not address that defect.
+
+Detours can temporarily lose sight of the attacker. Keep its last disclosed alias and
+position in factory-local memory (`lastSeenFoe` diagnostics), pursue that known route,
+and clear the target on an observed corpse, region change or arrival at an attack
+position. Updating this memory from hidden live entities would violate the boundary.
+Without public-history pursuit, an older exploration frontier can reverse the route
+on every lost-sight frame and oscillate until death.
+
+BFS must also respect the current action menu at its first edge. A fractional avatar
+footprint can make the nominally shortest adjacent center unavailable because it
+crosses an unknown corner. Searching through that edge and only checking membership
+at the end can again turn a legal detour into endless waiting. Later center-to-center
+edges remain over known walkable cells; the root edges come from offered moves.
 
 ## Extend, record and inspect
 
@@ -120,9 +160,33 @@ unavailable where the analyzer cannot justify uncertainty. Never tune on reserve
 outcomes or relabel the historical full-state, respawn-tolerant campaign verifier as
 an observation-only first-death policy.
 
-The initial cohort uses a 4,000-decision limit. Built-ins advance at most twenty
+The retained initial cohort uses a 4,000-decision limit. Built-ins advance at most twenty
 ticks per decision, so requested ticks cannot reach the native limit in this study.
 Long living campaigns remain timeouts with their actual partial progress; they are
 not counted as deaths. Retaining every original structured input also has a storage
 cost: a 500-decision development probe occupied approximately 10 MB. Start extensions
 with short episodes; the shared review parser limits one JSON rollout to 150 MB.
+
+## Long-campaign development
+
+The v2 candidate targets campaign completion rather than treating living partial
+progress as a win. Development uses original public-policy inputs and a fixed
+8,000-decision probe budget before choosing a prospective study. Every built-in v2
+advance is capped at ten ticks, including an idle dead end, so at most 80,000 requested
+ticks can enter such a probe; the native replay limit remains 100,000. Full recorded
+envelopes, not input-byte estimates, must remain below the shared 150 MB parser
+limit and pass integrity, native replay, original-input and decision audits.
+Lossless terrain runs and explicit atlas progress keep long observations inspectable;
+pack management bounds repeated carried-item data while serving ordinary gameplay.
+
+Historical observation-v1/policy-v1 artifacts and frozen bundles retain their original
+meaning. Current observation-v2 identity must not claim to audit their original
+sampling. Native rules-v3 replay reconstruction remains unchanged. Winning development
+witnesses establish playability on those inputs; they do not establish strength or a
+calibrated difficulty ladder on independent seeds.
+
+The [campaign development evidence](../research/experiments/2026-10-16-emberwake-strength-development.md)
+retains full recorded wins, failed navigation candidates, the independent swept-collision
+audit, recording-memory measurements and the unresolved difficulty ceiling. A successful
+main-process recording does not establish that a worker’s heap limit can record, audit
+and serialize the same trace. Probe one real worker case before scheduling a cohort.

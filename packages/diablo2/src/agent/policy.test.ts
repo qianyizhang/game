@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { adapter } from './adapter';
-import type { Observation, PolicyCommand } from './observation';
+import { terrainRows, terrainRuns, type Observation, type PolicyCommand } from './observation';
 import { builtins, STRATEGIES, type Strategy } from './policy';
 import example from './example';
 
@@ -36,7 +36,9 @@ function moves(input: Observation): PolicyCommand[] {
     [0, -1],
   ].flatMap(([dx, dy]) => {
     const target = { x: Math.floor(p.x) + dx + 0.5, y: Math.floor(p.y) + dy + 0.5 };
-    return '.,:;='.includes(input.region.tiles[Math.floor(target.y)]?.[Math.floor(target.x)] ?? '#')
+    return '.,:;='.includes(
+      terrainRows(input.region)[Math.floor(target.y)]?.[Math.floor(target.x)] ?? '#',
+    )
       ? [{ type: 'move' as const, target }]
       : [];
   });
@@ -54,9 +56,8 @@ describe('Emberwake public policies', () => {
         expect(['playing', 'dead', 'victory']).toContain(state.input.status);
         for (const key of Object.keys(counts)) used.add(key);
       }
-      const skills = fresh().definitions.heroes.find(
-        (definition) => definition.id === hero,
-      )!.skills;
+      const skills = adapter.observe(adapter.create('POLICY-SKILLS', { hero })).definitions
+        .heroes[0].skills;
       for (const skill of skills) expect(used.has(`cast:${skill}`), `${hero}/${skill}`).toBe(true);
     }
   }, 120000);
@@ -89,7 +90,15 @@ describe('Emberwake public policies', () => {
       ...input.region,
       width: 7,
       height: 7,
-      tiles: ['#######', '#..#..#', '#..#..#', '#..#..#', '#..#..#', '#.....#', '#######'],
+      terrain: terrainRuns([
+        '#######',
+        '#..#..#',
+        '#..#..#',
+        '#..#..#',
+        '#..#..#',
+        '#.....#',
+        '#######',
+      ]),
     };
     input.drops = [{ x: 4.5, y: 1.5, uid: 100, kind: 'gold', amount: 10 }];
     input.actions = [...moves(input), { type: 'advance', ticks: 20 }];
@@ -105,6 +114,111 @@ describe('Emberwake public policies', () => {
     // A fresh policy has never acquired this distant item and does not pursue it.
     expect(builtins.immediate.create(config)(input).diagnostics).toMatchObject({
       reason: 'no reachable revealed objective or frontier',
+    });
+  });
+
+  it('takes a four-cell offered route prefix and shortens observation intervals around danger', () => {
+    const input = fresh();
+    input.location = 'field';
+    input.player.x = 1.5;
+    input.player.y = 1.5;
+    input.player.running = true;
+    input.region = {
+      ...input.region,
+      width: 9,
+      height: 3,
+      terrain: terrainRuns(['#########', '#.......?', '#########']),
+    };
+    input.enemies = [];
+    input.hazards = [];
+    input.projectiles = [];
+    input.drops = [];
+    input.markers = [];
+    input.actions = [1, 2, 3, 4].map((length) => ({
+      type: 'move',
+      target: { x: 1.5 + length, y: 1.5 },
+    }));
+    input.actions.push({ type: 'advance', ticks: 5 }, { type: 'advance', ticks: 10 });
+    const choose = builtins.survival.create(config);
+    expect(choose(input).command).toEqual({ type: 'move', target: { x: 5.5, y: 1.5 } });
+    expect(choose(input).command).toEqual({ type: 'advance', ticks: 10 });
+    const cautious = builtins.survival.create(config);
+    cautious(input);
+    input.projectiles = [
+      { x: 6, y: 1.5, uid: 999, dx: -1, dy: 0, friendly: false, radius: 0.2, element: 'physical' },
+    ];
+    expect(cautious(input).command).toEqual({ type: 'advance', ticks: 5 });
+  });
+
+  it('routes around a known barrier to a visible ranged attacker instead of waiting under fire', () => {
+    const input = fresh();
+    input.location = 'field';
+    input.player.x = 2.5;
+    input.player.y = 1.5;
+    input.player.running = true;
+    input.player.target = null;
+    input.player.destination = null;
+    input.region = {
+      ...input.region,
+      width: 7,
+      height: 7,
+      terrain: terrainRuns([
+        '#######',
+        '#..~..#',
+        '#..~..#',
+        '#..~..#',
+        '#..~..#',
+        '#.....#',
+        '#######',
+      ]),
+    };
+    input.enemies = [
+      {
+        x: 4.5,
+        y: 1.5,
+        uid: 999,
+        kind: 'archer',
+        hp: 32,
+        maxHp: 32,
+        boss: false,
+        elite: false,
+        slow: 0,
+        cursed: 0,
+        windup: 0,
+        warded: false,
+      },
+    ];
+    input.hazards = [];
+    input.actions = [...moves(input), { type: 'advance', ticks: 5 }];
+    // A fractional footprint can make the otherwise shortest first step unavailable.
+    // Route through another offered edge instead of selecting that blocked step.
+    const corner = structuredClone(input);
+    corner.actions = [
+      { type: 'move', target: { x: 1.5, y: 1.5 } },
+      { type: 'advance', ticks: 5 },
+    ];
+    expect(builtins.survival.create(config)(corner).command).toEqual({
+      type: 'move',
+      target: { x: 1.5, y: 1.5 },
+    });
+    const proposal = builtins.survival.create(config)(input);
+    expect(proposal.command).toEqual({ type: 'move', target: { x: 2.5, y: 2.5 } });
+    expect(proposal.diagnostics).toMatchObject({
+      reason: 'route around known terrain to the visible foe',
+    });
+    // The detour temporarily loses line of sight. Remember the disclosed location,
+    // rather than reversing toward an older exploration frontier.
+    const pursue = builtins.survival.create(config);
+    pursue(input);
+    input.player.y = 2.5;
+    input.tick += 5;
+    input.enemies = [];
+    input.actions = [...moves(input), { type: 'advance', ticks: 5 }];
+    const continued = pursue(input);
+    expect(continued.command).toEqual({ type: 'move', target: { x: 2.5, y: 3.5 } });
+    expect(continued.diagnostics).toMatchObject({
+      reason: 'pursue the last visible foe through known terrain',
+      lastSeenFoe: { region: input.region.id, uid: 999, at: { x: 4.5, y: 1.5 } },
     });
   });
 
@@ -126,6 +240,47 @@ describe('Emberwake public policies', () => {
     input.player.hp = input.stats.maxHp * 0.55;
     input.actions = [{ type: 'portal' }, { type: 'advance', ticks: 20 }];
     expect(decide(input).command.type).toBe('advance');
+  });
+
+  it('returns to sell a full public pack even with healthy resources, then avoids a stationary return loop', () => {
+    const input = fresh();
+    input.location = 'field';
+    input.player.running = true;
+    const item = input.player.equipment.weapon!;
+    input.player.inventory = [0, 2, 4, 6].map((cell, i) => ({
+      ...item,
+      uid: 100 + i,
+      cell,
+      width: 2,
+      height: 3,
+    }));
+    input.actions = [{ type: 'portal' }, { type: 'advance', ticks: 20 }];
+    const choose = builtins.immediate.create(config);
+    expect(choose(input).command).toEqual({ type: 'portal' });
+    expect(choose(input).command).toEqual({ type: 'advance', ticks: 20 });
+  });
+
+  it('caps idle time at ten ticks so an eight-thousand-decision attempt stays below the native tick limit', () => {
+    const input = fresh();
+    input.location = 'field';
+    input.player.running = true;
+    input.region = {
+      ...input.region,
+      width: 3,
+      height: 3,
+      terrain: terrainRuns(['###', '#.#', '###']),
+    };
+    input.player.x = 1.5;
+    input.player.y = 1.5;
+    input.markers = [];
+    input.drops = [];
+    input.enemies = [];
+    input.actions = [1, 5, 10, 20, 50].map((ticks) => ({ type: 'advance', ticks }));
+    for (const strategy of STRATEGIES)
+      expect(builtins[strategy].create(config)(input).command).toEqual({
+        type: 'advance',
+        ticks: 10,
+      });
   });
 
   it('uses a remaining native tick and reports native time-budget exhaustion explicitly', () => {

@@ -1,0 +1,2566 @@
+{
+  "schema": "emberwake-strength-development-2",
+  "date": "2026-10-16",
+  "scope": "Development only; no reserved outcomes inspected or confirmation claimed. Native rules3 remain unchanged.",
+  "candidate": {
+    "observation": "emberwake-observation-2",
+    "policy": "emberwake-policy-2",
+    "sourceDigests": {
+      "packages/diablo2/src/agent/observation.ts": "b12c983fe6966273d5ce585e2457baa1a157598f1baa2daa143258452403ad41",
+      "packages/diablo2/src/agent/adapter.ts": "aacec49e717565328aea7aa6ec448a43b434d0b8da9b97e68b2a705791303680",
+      "packages/diablo2/src/agent/policy.ts": "bb009a2ced096807f4a8b65c165df716eff8665ba6562baa2a155a4469d57356",
+      "packages/diablo2/src/agent/policy.test.ts": "937f404d9326977e5c6a5618fde5ca29fb4ccef3f0f3f8eed5e47f4b59f2b1f0",
+      "packages/diablo2/src/agent/boundary.test.ts": "2d28e0fa323e77205d4d4092cf2915d57e1ee54ef42204b1ed25fbd98f31ca61",
+      "packages/diablo2/src/agent/example.ts": "bd0d09af2bd3c451585e4504945ad321449ef24fd764b301393c49228bdf8c41",
+      "packages/diablo2/src/agent/Review.tsx": "0228baa12ef3d44b1e9ba7e99dc3180c4a3b5966a37d996c94f4f36f073a2ec1",
+      "packages/diablo2/src/domain/maps.ts": "d376a48f9ae99f773bf8f8713b9d646eb8ee785d67d9bda7bf668ce788800da8",
+      "docs/engineering/emberwake-policy.md": "072ede0df8d57beb60b8f02cc181fdd2836e4aaf9d037e4e6a127e40f8f15210"
+    }
+  },
+  "recordingCaveat": "Recorded-development-3 pins the exact final swept-rectangle and ten-tick-cap runtime. Recorded-development-2 remains a retained pre-cap candidate; its attempted post-cap proposal reproduction correctly differs at known-loot arrival (advance20 versus10). No source pins were replaced.",
+  "developmentScreenCaveat": "ALL3 screen3 is an exact compiled pre-swept-boundary candidate (sourceChanges=[]); not current-source calibration. Retained to diagnose saturation and prior routing behavior.",
+  "recordedWitnesses": {
+    "sha256": "e849d9edbbde18e927cc676f2bc40bda602a0d22b0a1d906f9e93ee863b53125",
+    "value": {
+      "scope": "Historical development playability witnesses; not reserved calibration.",
+      "provenance": {
+        "sourceDigests": {
+          "packages/diablo2/src/agent/adapter.ts": "aacec49e717565328aea7aa6ec448a43b434d0b8da9b97e68b2a705791303680",
+          "packages/diablo2/src/agent/observation.ts": "b12c983fe6966273d5ce585e2457baa1a157598f1baa2daa143258452403ad41",
+          "packages/diablo2/src/agent/policy.ts": "bb009a2ced096807f4a8b65c165df716eff8665ba6562baa2a155a4469d57356",
+          "packages/diablo2/src/application/session.ts": "32867f2c2bf5d32016476898f000043ffd3467e0a06f7e0b76cde49d21eebf24",
+          "packages/diablo2/src/domain/combat.ts": "b6b2c3c6778696d0d3d9d8689ce6cc68066f6f860666748c266bedc31d5eb57e",
+          "packages/diablo2/src/domain/content.ts": "f93f70b03b4f688c042a3ea402bce7e5727c4bed04bae183352d40c5dc0ef7fe",
+          "packages/diablo2/src/domain/difficulty.ts": "8b28e64cfd2bbc873f08a5d4bd400e5fd1977f09328df56d3a2e700ac5123227",
+          "packages/diablo2/src/domain/game.ts": "010b807cf7b555a7082416265206df0fbad1f3db6f011b9ec64ed7c5b51e2ac7",
+          "packages/diablo2/src/domain/loot.ts": "6b0acabaf6727be407f7fb5424238ca732dd2119792fadbe8c2f9102ab1f217f",
+          "packages/diablo2/src/domain/maps.ts": "d376a48f9ae99f773bf8f8713b9d646eb8ee785d67d9bda7bf668ce788800da8",
+          "packages/diablo2/src/domain/random.ts": "2555c83cf6631a5dac69702ab58b2169413ac0e2243532f425ccf1e1459602d0",
+          "packages/diablo2/src/domain/sandbox.ts": "0307b350e37358ae36f3fbb0b8e179783a314b5963412380aa1abda18e6b593f",
+          "packages/diablo2/src/domain/stats.ts": "fcd0b488f16e97cb5baee27493a0980afa714b808ea97a2bbea177195927f8ef",
+          "packages/diablo2/src/domain/timing.ts": "62012ec950a782a47bfed0624581c11f9aa8337feb39eb5cc8d4d11576611b21",
+          "packages/diablo2/src/domain/validate.ts": "1429bef407311f1cfb706475faa7cf510799a0f45ab8b0299cb074e8d6444d70",
+          "packages/diablo2/src/domain/world-content.ts": "de2f863fefc3b1480c87a67def19c5f860a4e4037f73bfc4c787eb00d97e6b58",
+          "packages/diablo2/src/domain/world.ts": "72f61b714861efcae72b521e74cf769bb10612ad5d112589374ecf4078dd3504",
+          "src/shared/policy/rollout.ts": "d9f3b20594485fc5e625f0169caa20272f88d58ccfd0de1986e28eeafb58686b"
+        },
+        "bundleDigest": "04c6331852928955163827b79e1350db0cd2912585ef3e68249c18d678b3760c",
+        "toolDigests": {
+          "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+          "packages/workshop-tools/policy/cli.ts": "a9ef1250e1fbc025fca9dfb8eba781d6c7c9f69fe4d8008d10231f2c0527f289",
+          "packages/workshop-tools/policy/study.ts": "8e9b21703b0a30b360eff266e2e4e08049a3177d30b552f2d65750f78968df12",
+          "packages/workshop-tools/policy/calibration.ts": "849eb5f92d80ff866f221f7075702d2e81f01fdf69f49f5f500f049ba84c9449",
+          "packages/workshop-tools/policy/analyze-spire.ts": "ee86616e7786bc8c222aa39c902b9f98aa6545e00bdc71c9814507e49c068f4c",
+          "packages/workshop-tools/policy/pool.ts": "10234612f112389d2cc5cd1de7127829f53bb424b98d238ca9c080ab9081d401",
+          "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+          "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+          "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+        },
+        "runtime": "v24.21.0 / darwin / arm64"
+      },
+      "rows": [
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-01",
+          "policy": "survival",
+          "setupId": "barbarian-standard",
+          "difficulty": "standard",
+          "stratum": "barbarian",
+          "status": "terminal",
+          "metrics": {
+            "outcome": "victory",
+            "won": 1,
+            "progress": 40820,
+            "bosses": 4,
+            "wards": 8,
+            "regions": 20,
+            "level": 9,
+            "xp": 356,
+            "hp": 478.08,
+            "gold": 8781,
+            "executedTicks": 34325
+          },
+          "work": 12490874,
+          "digest": "6668bb5155dd883d6fbd6cfb89d3570553515c23897d5ae5279c858eb0480976",
+          "audit": {
+            "integrity": "passed",
+            "replay": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+          }
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-01",
+          "policy": "survival",
+          "setupId": "sorceress-standard",
+          "difficulty": "standard",
+          "stratum": "sorceress",
+          "status": "terminal",
+          "metrics": {
+            "outcome": "victory",
+            "won": 1,
+            "progress": 40820,
+            "bosses": 4,
+            "wards": 8,
+            "regions": 20,
+            "level": 9,
+            "xp": 78,
+            "hp": 411,
+            "gold": 6147,
+            "executedTicks": 39545
+          },
+          "work": 15084963,
+          "digest": "a288cb41b29af6ed9c03fb0c3676686950c161631118cbbefa22fa8ea2f24732",
+          "audit": {
+            "integrity": "passed",
+            "replay": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+          }
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-01",
+          "policy": "survival",
+          "setupId": "necromancer-standard",
+          "difficulty": "standard",
+          "stratum": "necromancer",
+          "status": "terminal",
+          "metrics": {
+            "outcome": "victory",
+            "won": 1,
+            "progress": 40820,
+            "bosses": 4,
+            "wards": 8,
+            "regions": 20,
+            "level": 9,
+            "xp": 180,
+            "hp": 441,
+            "gold": 5856,
+            "executedTicks": 37650
+          },
+          "work": 15143176,
+          "digest": "ddf7232be487148e089ef51d41d518bcee4e377bebe9f11237d3246c067da3df",
+          "audit": {
+            "integrity": "passed",
+            "replay": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "test-results/emberwake-strength/recorded-development-3/POLICY-ADOPTION-1-DEV-01-barbarian-standard-survival.rollout.json",
+          "bytes": 101316611,
+          "sha256": "1b5230b15aca6818f660a787cca92e42f4253ba2c23f4bfc58535be1c9ef9e6e",
+          "digest": "6668bb5155dd883d6fbd6cfb89d3570553515c23897d5ae5279c858eb0480976",
+          "parser": "passed",
+          "episode": {
+            "status": "terminal",
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 356,
+              "hp": 478.08,
+              "gold": 8781,
+              "executedTicks": 34325
+            },
+            "decisions": 6979,
+            "work": 12490874,
+            "cursor": 37241
+          }
+        },
+        {
+          "path": "test-results/emberwake-strength/recorded-development-3/POLICY-ADOPTION-1-DEV-01-sorceress-standard-survival.rollout.json",
+          "bytes": 119350699,
+          "sha256": "e35d25b09a160b624ad63605055eda9cedefbdd8b268b9ffde61d2d1b3709c9f",
+          "digest": "a288cb41b29af6ed9c03fb0c3676686950c161631118cbbefa22fa8ea2f24732",
+          "parser": "passed",
+          "episode": {
+            "status": "terminal",
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 78,
+              "hp": 411,
+              "gold": 6147,
+              "executedTicks": 39545
+            },
+            "decisions": 7820,
+            "work": 15084963,
+            "cursor": 42921
+          }
+        },
+        {
+          "path": "test-results/emberwake-strength/recorded-development-3/POLICY-ADOPTION-1-DEV-01-necromancer-standard-survival.rollout.json",
+          "bytes": 114256402,
+          "sha256": "b45fda4425f773fc2c707e1deb6780d0a424f8508dc7a4a6940d791bef67ac39",
+          "digest": "ddf7232be487148e089ef51d41d518bcee4e377bebe9f11237d3246c067da3df",
+          "parser": "passed",
+          "episode": {
+            "status": "terminal",
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 180,
+              "hp": 441,
+              "gold": 5856,
+              "executedTicks": 37650
+            },
+            "decisions": 7401,
+            "work": 15143176,
+            "cursor": 40842
+          }
+        }
+      ],
+      "sourceChanges": []
+    }
+  },
+  "workerProbe": {
+    "sha256": "9e66be034fe22580b46a73ec962f6cd42d36085043799fca336095b626e15b92",
+    "value": {
+      "status": "completed",
+      "rows": [
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-01",
+          "policy": "survival",
+          "setupId": "sorceress-standard",
+          "difficulty": "standard",
+          "stratum": "sorceress",
+          "status": "terminal",
+          "metrics": {
+            "outcome": "victory",
+            "won": 1,
+            "progress": 40820,
+            "bosses": 4,
+            "wards": 8,
+            "regions": 20,
+            "level": 9,
+            "xp": 78,
+            "hp": 411,
+            "gold": 6147,
+            "executedTicks": 39565
+          },
+          "work": 15085294,
+          "digest": "842df5ec7a1a6bb2365de928d1e06da3a4d99bbb83c113f60bb79f4566a6a0c8",
+          "audit": {
+            "integrity": "passed",
+            "replay": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+          }
+        }
+      ],
+      "peakRss": 1887338496,
+      "elapsedMs": 24117
+    }
+  },
+  "workerFailure": {
+    "path": "test-results/emberwake-strength/worker-probe-512-1",
+    "log": "test-results/emberwake-strength/worker-probe-512-1/failure.log",
+    "result": "Infrastructure/no-verdict:512MiB worker aborted V8 heap limit after27s; not a policy loss or failed game assertion.",
+    "logSha256": "088080c1d7da4995e217ff8c8ecc4772354b93ebae0a4e4583261f392ae8a947"
+  },
+  "development": {
+    "development-screen-3.json": {
+      "sha256": "572643e96ae2e899dd860ab056a1dd26e5663540803b2ba55f8a798b83e551b0",
+      "value": {
+        "note": "Diagnostic development rollouts, not original-input recorded studies.",
+        "provenance": {
+          "sourceDigests": {
+            "packages/diablo2/src/agent/adapter.ts": "aacec49e717565328aea7aa6ec448a43b434d0b8da9b97e68b2a705791303680",
+            "packages/diablo2/src/agent/observation.ts": "41088c722cdda5128f43aa3c00ede959e7e2cf7198e5a66467655e841c41ba2e",
+            "packages/diablo2/src/agent/policy.ts": "e163776a79cd7926931ec91e85701b4b5972dfc5d0679222e9650e10a7b51d6b",
+            "packages/diablo2/src/application/session.ts": "32867f2c2bf5d32016476898f000043ffd3467e0a06f7e0b76cde49d21eebf24",
+            "packages/diablo2/src/domain/combat.ts": "b6b2c3c6778696d0d3d9d8689ce6cc68066f6f860666748c266bedc31d5eb57e",
+            "packages/diablo2/src/domain/content.ts": "f93f70b03b4f688c042a3ea402bce7e5727c4bed04bae183352d40c5dc0ef7fe",
+            "packages/diablo2/src/domain/difficulty.ts": "8b28e64cfd2bbc873f08a5d4bd400e5fd1977f09328df56d3a2e700ac5123227",
+            "packages/diablo2/src/domain/game.ts": "010b807cf7b555a7082416265206df0fbad1f3db6f011b9ec64ed7c5b51e2ac7",
+            "packages/diablo2/src/domain/loot.ts": "6b0acabaf6727be407f7fb5424238ca732dd2119792fadbe8c2f9102ab1f217f",
+            "packages/diablo2/src/domain/maps.ts": "71bc62fb33e584c37728d5c430cd0247174e69c2c3f54d92d89187c36dfb500d",
+            "packages/diablo2/src/domain/random.ts": "2555c83cf6631a5dac69702ab58b2169413ac0e2243532f425ccf1e1459602d0",
+            "packages/diablo2/src/domain/sandbox.ts": "0307b350e37358ae36f3fbb0b8e179783a314b5963412380aa1abda18e6b593f",
+            "packages/diablo2/src/domain/stats.ts": "fcd0b488f16e97cb5baee27493a0980afa714b808ea97a2bbea177195927f8ef",
+            "packages/diablo2/src/domain/timing.ts": "62012ec950a782a47bfed0624581c11f9aa8337feb39eb5cc8d4d11576611b21",
+            "packages/diablo2/src/domain/validate.ts": "1429bef407311f1cfb706475faa7cf510799a0f45ab8b0299cb074e8d6444d70",
+            "packages/diablo2/src/domain/world-content.ts": "de2f863fefc3b1480c87a67def19c5f860a4e4037f73bfc4c787eb00d97e6b58",
+            "packages/diablo2/src/domain/world.ts": "72f61b714861efcae72b521e74cf769bb10612ad5d112589374ecf4078dd3504",
+            "src/shared/policy/rollout.ts": "d9f3b20594485fc5e625f0169caa20272f88d58ccfd0de1986e28eeafb58686b"
+          },
+          "bundleDigest": "5f191e25f26c9ab9abb128944b84a57289ab30b37b711a323dc4a6448c04b8d5",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+            "packages/workshop-tools/policy/cli.ts": "a9ef1250e1fbc025fca9dfb8eba781d6c7c9f69fe4d8008d10231f2c0527f289",
+            "packages/workshop-tools/policy/study.ts": "8e9b21703b0a30b360eff266e2e4e08049a3177d30b552f2d65750f78968df12",
+            "packages/workshop-tools/policy/calibration.ts": "849eb5f92d80ff866f221f7075702d2e81f01fdf69f49f5f500f049ba84c9449",
+            "packages/workshop-tools/policy/analyze-spire.ts": "ee86616e7786bc8c222aa39c902b9f98aa6545e00bdc71c9814507e49c068f4c",
+            "packages/workshop-tools/policy/pool.ts": "0fc983379e49840e4c65e14a7952503cb4ddea5c388be6712d9dcb07c158c8b5",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "results": [
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "difficulty": "relaxed",
+            "strategy": "survival",
+            "decisions": 7218,
+            "inputBytes": 101148730,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 292,
+              "hp": 529,
+              "gold": 7873,
+              "executedTicks": 35630
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "difficulty": "relaxed",
+            "strategy": "immediate",
+            "decisions": 6688,
+            "inputBytes": 92974145,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 99,
+              "hp": 458,
+              "gold": 7843,
+              "executedTicks": 33330
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "difficulty": "relaxed",
+            "strategy": "growth",
+            "decisions": 7272,
+            "inputBytes": 98979500,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 206,
+              "hp": 506,
+              "gold": 138,
+              "executedTicks": 33555
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "difficulty": "standard",
+            "strategy": "survival",
+            "decisions": 7219,
+            "inputBytes": 101163146,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 292,
+              "hp": 525,
+              "gold": 7873,
+              "executedTicks": 35630
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "difficulty": "standard",
+            "strategy": "immediate",
+            "decisions": 6688,
+            "inputBytes": 92974938,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 99,
+              "hp": 456,
+              "gold": 7843,
+              "executedTicks": 33330
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "difficulty": "standard",
+            "strategy": "growth",
+            "decisions": 7272,
+            "inputBytes": 98979500,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 206,
+              "hp": 506,
+              "gold": 138,
+              "executedTicks": 33555
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "difficulty": "severe",
+            "strategy": "survival",
+            "decisions": 7230,
+            "inputBytes": 101272491,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 292,
+              "hp": 519,
+              "gold": 7873,
+              "executedTicks": 35680
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "difficulty": "severe",
+            "strategy": "immediate",
+            "decisions": 6688,
+            "inputBytes": 92972680,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 99,
+              "hp": 452,
+              "gold": 7843,
+              "executedTicks": 33330
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "difficulty": "severe",
+            "strategy": "growth",
+            "decisions": 7272,
+            "inputBytes": 98979552,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 206,
+              "hp": 506,
+              "gold": 138,
+              "executedTicks": 33555
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "difficulty": "relaxed",
+            "strategy": "survival",
+            "decisions": 7345,
+            "inputBytes": 109433577,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 207,
+              "hp": 459,
+              "gold": 5374,
+              "executedTicks": 36650
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "difficulty": "relaxed",
+            "strategy": "immediate",
+            "decisions": 7103,
+            "inputBytes": 105163121,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 154,
+              "hp": 405,
+              "gold": 5118,
+              "executedTicks": 35360
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "difficulty": "relaxed",
+            "strategy": "growth",
+            "decisions": 7695,
+            "inputBytes": 111207145,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 449,
+              "hp": 436,
+              "gold": 378,
+              "executedTicks": 36010
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "difficulty": "standard",
+            "strategy": "survival",
+            "decisions": 6861,
+            "inputBytes": 101523698,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 148,
+              "hp": 466,
+              "gold": 5566,
+              "executedTicks": 33750
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "difficulty": "standard",
+            "strategy": "immediate",
+            "decisions": 7103,
+            "inputBytes": 105163121,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 154,
+              "hp": 402,
+              "gold": 5118,
+              "executedTicks": 35360
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "difficulty": "standard",
+            "strategy": "growth",
+            "decisions": 7695,
+            "inputBytes": 111207145,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 449,
+              "hp": 436,
+              "gold": 378,
+              "executedTicks": 36010
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "difficulty": "severe",
+            "strategy": "survival",
+            "decisions": 7341,
+            "inputBytes": 109178495,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 183,
+              "hp": 454,
+              "gold": 5411,
+              "executedTicks": 36610
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "difficulty": "severe",
+            "strategy": "immediate",
+            "decisions": 7103,
+            "inputBytes": 105163057,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 154,
+              "hp": 400,
+              "gold": 5118,
+              "executedTicks": 35360
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "difficulty": "severe",
+            "strategy": "growth",
+            "decisions": 7695,
+            "inputBytes": 111207145,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 449,
+              "hp": 436,
+              "gold": 378,
+              "executedTicks": 36010
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "difficulty": "relaxed",
+            "strategy": "survival",
+            "decisions": 7540,
+            "inputBytes": 110614349,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1602,
+              "hp": 400,
+              "gold": 4702,
+              "executedTicks": 38650
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "difficulty": "relaxed",
+            "strategy": "immediate",
+            "decisions": 7614,
+            "inputBytes": 112795497,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 16,
+              "hp": 401,
+              "gold": 5329,
+              "executedTicks": 39225
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "difficulty": "relaxed",
+            "strategy": "growth",
+            "decisions": 8000,
+            "inputBytes": 114677118,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 349,
+              "hp": 436,
+              "gold": 279,
+              "executedTicks": 37915
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "difficulty": "standard",
+            "strategy": "survival",
+            "decisions": 7541,
+            "inputBytes": 110616271,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1602,
+              "hp": 387,
+              "gold": 4702,
+              "executedTicks": 38650
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "difficulty": "standard",
+            "strategy": "immediate",
+            "decisions": 7614,
+            "inputBytes": 112795497,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 16,
+              "hp": 401,
+              "gold": 5329,
+              "executedTicks": 39225
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "difficulty": "standard",
+            "strategy": "growth",
+            "decisions": 8000,
+            "inputBytes": 114677118,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 349,
+              "hp": 435,
+              "gold": 279,
+              "executedTicks": 37915
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "difficulty": "severe",
+            "strategy": "survival",
+            "decisions": 7541,
+            "inputBytes": 110618528,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1602,
+              "hp": 371,
+              "gold": 4702,
+              "executedTicks": 38650
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "difficulty": "severe",
+            "strategy": "immediate",
+            "decisions": 7614,
+            "inputBytes": 112795497,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 16,
+              "hp": 401,
+              "gold": 5329,
+              "executedTicks": 39225
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "difficulty": "severe",
+            "strategy": "growth",
+            "decisions": 8000,
+            "inputBytes": 114677118,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 349,
+              "hp": 433,
+              "gold": 279,
+              "executedTicks": 37915
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "difficulty": "relaxed",
+            "strategy": "survival",
+            "decisions": 6427,
+            "inputBytes": 89290984,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1579,
+              "hp": 496.54,
+              "gold": 7922,
+              "executedTicks": 31875
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "difficulty": "relaxed",
+            "strategy": "immediate",
+            "decisions": 6046,
+            "inputBytes": 84055707,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1609,
+              "hp": 399,
+              "gold": 7781,
+              "executedTicks": 30090
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "difficulty": "relaxed",
+            "strategy": "growth",
+            "decisions": 6806,
+            "inputBytes": 93062844,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1429,
+              "hp": 423.8,
+              "gold": 294,
+              "executedTicks": 32280
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "difficulty": "standard",
+            "strategy": "survival",
+            "decisions": 6427,
+            "inputBytes": 89292148,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1579,
+              "hp": 488.54,
+              "gold": 7922,
+              "executedTicks": 31875
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "difficulty": "standard",
+            "strategy": "immediate",
+            "decisions": 6046,
+            "inputBytes": 84055707,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1609,
+              "hp": 389,
+              "gold": 7781,
+              "executedTicks": 30090
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "difficulty": "standard",
+            "strategy": "growth",
+            "decisions": 6806,
+            "inputBytes": 93064980,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1429,
+              "hp": 411.8,
+              "gold": 294,
+              "executedTicks": 32280
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "difficulty": "severe",
+            "strategy": "survival",
+            "decisions": 6428,
+            "inputBytes": 89277693,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1579,
+              "hp": 477.54,
+              "gold": 7922,
+              "executedTicks": 31890
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "difficulty": "severe",
+            "strategy": "immediate",
+            "decisions": 6046,
+            "inputBytes": 84055707,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1609,
+              "hp": 378,
+              "gold": 7781,
+              "executedTicks": 30090
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "difficulty": "severe",
+            "strategy": "growth",
+            "decisions": 6806,
+            "inputBytes": 93069910,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1429,
+              "hp": 396.8,
+              "gold": 294,
+              "executedTicks": 32280
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "difficulty": "relaxed",
+            "strategy": "survival",
+            "decisions": 7933,
+            "inputBytes": 119288630,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 112,
+              "hp": 456,
+              "gold": 5411,
+              "executedTicks": 40485
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "difficulty": "relaxed",
+            "strategy": "immediate",
+            "decisions": 7682,
+            "inputBytes": 115621695,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 160,
+              "hp": 401,
+              "gold": 6321,
+              "executedTicks": 38950
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "difficulty": "relaxed",
+            "strategy": "growth",
+            "decisions": 8000,
+            "inputBytes": 108538353,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 20615,
+              "bosses": 2,
+              "wards": 6,
+              "regions": 15,
+              "level": 7,
+              "xp": 525,
+              "hp": 367,
+              "gold": 127,
+              "executedTicks": 34715
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "difficulty": "standard",
+            "strategy": "survival",
+            "decisions": 7935,
+            "inputBytes": 119283843,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 112,
+              "hp": 455,
+              "gold": 5411,
+              "executedTicks": 40485
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "difficulty": "standard",
+            "strategy": "immediate",
+            "decisions": 7682,
+            "inputBytes": 115621695,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 160,
+              "hp": 400,
+              "gold": 6321,
+              "executedTicks": 38950
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "difficulty": "standard",
+            "strategy": "growth",
+            "decisions": 8000,
+            "inputBytes": 108538353,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 20615,
+              "bosses": 2,
+              "wards": 6,
+              "regions": 15,
+              "level": 7,
+              "xp": 525,
+              "hp": 367,
+              "gold": 127,
+              "executedTicks": 34715
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "difficulty": "severe",
+            "strategy": "survival",
+            "decisions": 7944,
+            "inputBytes": 119376678,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 112,
+              "hp": 453,
+              "gold": 5411,
+              "executedTicks": 40525
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "difficulty": "severe",
+            "strategy": "immediate",
+            "decisions": 7682,
+            "inputBytes": 115621383,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 160,
+              "hp": 398,
+              "gold": 6321,
+              "executedTicks": 38950
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "difficulty": "severe",
+            "strategy": "growth",
+            "decisions": 8000,
+            "inputBytes": 108538353,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 20615,
+              "bosses": 2,
+              "wards": 6,
+              "regions": 15,
+              "level": 7,
+              "xp": 525,
+              "hp": 367,
+              "gold": 127,
+              "executedTicks": 34715
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "difficulty": "relaxed",
+            "strategy": "survival",
+            "decisions": 7223,
+            "inputBytes": 106659922,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 260,
+              "hp": 516,
+              "gold": 6253,
+              "executedTicks": 36665
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "difficulty": "relaxed",
+            "strategy": "immediate",
+            "decisions": 7899,
+            "inputBytes": 118929808,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 521,
+              "hp": 424,
+              "gold": 6953,
+              "executedTicks": 40555
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "difficulty": "relaxed",
+            "strategy": "growth",
+            "decisions": 7789,
+            "inputBytes": 111203863,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1712,
+              "hp": 434,
+              "gold": 413,
+              "executedTicks": 37560
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "difficulty": "standard",
+            "strategy": "survival",
+            "decisions": 7223,
+            "inputBytes": 106659922,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 260,
+              "hp": 516,
+              "gold": 6253,
+              "executedTicks": 36665
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "difficulty": "standard",
+            "strategy": "immediate",
+            "decisions": 7899,
+            "inputBytes": 118929808,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 521,
+              "hp": 421,
+              "gold": 6953,
+              "executedTicks": 40555
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "difficulty": "standard",
+            "strategy": "growth",
+            "decisions": 7789,
+            "inputBytes": 111203863,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1712,
+              "hp": 434,
+              "gold": 413,
+              "executedTicks": 37560
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "difficulty": "severe",
+            "strategy": "survival",
+            "decisions": 6976,
+            "inputBytes": 103423157,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 260,
+              "hp": 516,
+              "gold": 6384,
+              "executedTicks": 35190
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "difficulty": "severe",
+            "strategy": "immediate",
+            "decisions": 7899,
+            "inputBytes": 118929748,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 521,
+              "hp": 416,
+              "gold": 6953,
+              "executedTicks": 40555
+            }
+          },
+          {
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "difficulty": "severe",
+            "strategy": "growth",
+            "decisions": 7789,
+            "inputBytes": 111203863,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1712,
+              "hp": 434,
+              "gold": 413,
+              "executedTicks": 37560
+            }
+          }
+        ]
+      }
+    },
+    "balance-development-1.json": {
+      "sha256": "6de9731c98965f9ecf06d3336573beca0a52b83e042ce64340124c4e546c11cb",
+      "value": {
+        "note": "ISOLATED COUNTERFACTUAL DEVELOPMENT: bundle-local Severe damage mutation3/5; Standard1 unchanged; NOT rules-v3 campaign/replay evidence.",
+        "provenance": {
+          "sourceDigests": {
+            ".work/sessions/emberwake-strength-2026-10-16/balance-prototype.ts": "a83c2ecf9af483a9e7ef9041a1086b23b0baba3f09adaf881e22589bea66fc4b",
+            "packages/diablo2/src/agent/adapter.ts": "aacec49e717565328aea7aa6ec448a43b434d0b8da9b97e68b2a705791303680",
+            "packages/diablo2/src/agent/observation.ts": "41088c722cdda5128f43aa3c00ede959e7e2cf7198e5a66467655e841c41ba2e",
+            "packages/diablo2/src/agent/policy.ts": "e163776a79cd7926931ec91e85701b4b5972dfc5d0679222e9650e10a7b51d6b",
+            "packages/diablo2/src/application/session.ts": "32867f2c2bf5d32016476898f000043ffd3467e0a06f7e0b76cde49d21eebf24",
+            "packages/diablo2/src/domain/combat.ts": "b6b2c3c6778696d0d3d9d8689ce6cc68066f6f860666748c266bedc31d5eb57e",
+            "packages/diablo2/src/domain/content.ts": "f93f70b03b4f688c042a3ea402bce7e5727c4bed04bae183352d40c5dc0ef7fe",
+            "packages/diablo2/src/domain/difficulty.ts": "8b28e64cfd2bbc873f08a5d4bd400e5fd1977f09328df56d3a2e700ac5123227",
+            "packages/diablo2/src/domain/game.ts": "010b807cf7b555a7082416265206df0fbad1f3db6f011b9ec64ed7c5b51e2ac7",
+            "packages/diablo2/src/domain/loot.ts": "6b0acabaf6727be407f7fb5424238ca732dd2119792fadbe8c2f9102ab1f217f",
+            "packages/diablo2/src/domain/maps.ts": "71bc62fb33e584c37728d5c430cd0247174e69c2c3f54d92d89187c36dfb500d",
+            "packages/diablo2/src/domain/random.ts": "2555c83cf6631a5dac69702ab58b2169413ac0e2243532f425ccf1e1459602d0",
+            "packages/diablo2/src/domain/sandbox.ts": "0307b350e37358ae36f3fbb0b8e179783a314b5963412380aa1abda18e6b593f",
+            "packages/diablo2/src/domain/stats.ts": "fcd0b488f16e97cb5baee27493a0980afa714b808ea97a2bbea177195927f8ef",
+            "packages/diablo2/src/domain/timing.ts": "62012ec950a782a47bfed0624581c11f9aa8337feb39eb5cc8d4d11576611b21",
+            "packages/diablo2/src/domain/validate.ts": "1429bef407311f1cfb706475faa7cf510799a0f45ab8b0299cb074e8d6444d70",
+            "packages/diablo2/src/domain/world-content.ts": "de2f863fefc3b1480c87a67def19c5f860a4e4037f73bfc4c787eb00d97e6b58",
+            "packages/diablo2/src/domain/world.ts": "72f61b714861efcae72b521e74cf769bb10612ad5d112589374ecf4078dd3504",
+            "src/shared/policy/rollout.ts": "d9f3b20594485fc5e625f0169caa20272f88d58ccfd0de1986e28eeafb58686b"
+          },
+          "bundleDigest": "ec5b2bb1bf4246955f6323202f832c2a4769d2c663178900faf7ae291fd8f66b",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+            "packages/workshop-tools/policy/cli.ts": "a9ef1250e1fbc025fca9dfb8eba781d6c7c9f69fe4d8008d10231f2c0527f289",
+            "packages/workshop-tools/policy/study.ts": "8e9b21703b0a30b360eff266e2e4e08049a3177d30b552f2d65750f78968df12",
+            "packages/workshop-tools/policy/calibration.ts": "849eb5f92d80ff866f221f7075702d2e81f01fdf69f49f5f500f049ba84c9449",
+            "packages/workshop-tools/policy/analyze-spire.ts": "ee86616e7786bc8c222aa39c902b9f98aa6545e00bdc71c9814507e49c068f4c",
+            "packages/workshop-tools/policy/pool.ts": "0fc983379e49840e4c65e14a7952503cb4ddea5c388be6712d9dcb07c158c8b5",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "results": [
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "decisions": 7245,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 292,
+              "hp": 492,
+              "gold": 7873,
+              "executedTicks": 35690
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "decisions": 6884,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 148,
+              "hp": 466,
+              "gold": 5542,
+              "executedTicks": 33770
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "decisions": 7553,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1602,
+              "hp": 439,
+              "gold": 4690,
+              "executedTicks": 38670
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "decisions": 6445,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1579,
+              "hp": 416.54,
+              "gold": 7910,
+              "executedTicks": 31885
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "decisions": 7943,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 112,
+              "hp": 442,
+              "gold": 5411,
+              "executedTicks": 40485
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "decisions": 7239,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 260,
+              "hp": 516,
+              "gold": 6262,
+              "executedTicks": 36735
+            }
+          },
+          {
+            "coefficient": 5,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "decisions": 7261,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 292,
+              "hp": 460,
+              "gold": 7849,
+              "executedTicks": 35690
+            }
+          },
+          {
+            "coefficient": 5,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "decisions": 7382,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 207,
+              "hp": 419,
+              "gold": 5290,
+              "executedTicks": 36650
+            }
+          },
+          {
+            "coefficient": 5,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "decisions": 7569,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1631,
+              "hp": 439,
+              "gold": 4654,
+              "executedTicks": 38670
+            }
+          },
+          {
+            "coefficient": 5,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "decisions": 6474,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1579,
+              "hp": 514,
+              "gold": 7898,
+              "executedTicks": 31945
+            }
+          },
+          {
+            "coefficient": 5,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "decisions": 7959,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 112,
+              "hp": 429,
+              "gold": 5351,
+              "executedTicks": 40485
+            }
+          },
+          {
+            "coefficient": 5,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "decisions": 7236,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 260,
+              "hp": 516,
+              "gold": 6241,
+              "executedTicks": 36665
+            }
+          }
+        ]
+      }
+    },
+    "endurance-development-1.json": {
+      "sha256": "f7cb051943b1a9274d10704e2cdb03e896ced30bbecb93778a63d1fe28376602",
+      "value": {
+        "note": "ISOLATED COUNTERFACTUAL DEVELOPMENT: bundle-local monsterHP2/3; Severeincoming1.3; XP/rewards fixed; productionStandard unchanged; NOT rules-v3 campaign/replay evidence.",
+        "provenance": {
+          "sourceDigests": {
+            ".work/sessions/emberwake-strength-2026-10-16/endurance-prototype.ts": "744008a76845a11d83f16a95e15192f0d899a4366a5e5bc10606b4bf38ca5f3a",
+            "packages/diablo2/src/agent/adapter.ts": "aacec49e717565328aea7aa6ec448a43b434d0b8da9b97e68b2a705791303680",
+            "packages/diablo2/src/agent/observation.ts": "41088c722cdda5128f43aa3c00ede959e7e2cf7198e5a66467655e841c41ba2e",
+            "packages/diablo2/src/agent/policy.ts": "e163776a79cd7926931ec91e85701b4b5972dfc5d0679222e9650e10a7b51d6b",
+            "packages/diablo2/src/application/session.ts": "32867f2c2bf5d32016476898f000043ffd3467e0a06f7e0b76cde49d21eebf24",
+            "packages/diablo2/src/domain/combat.ts": "b6b2c3c6778696d0d3d9d8689ce6cc68066f6f860666748c266bedc31d5eb57e",
+            "packages/diablo2/src/domain/content.ts": "f93f70b03b4f688c042a3ea402bce7e5727c4bed04bae183352d40c5dc0ef7fe",
+            "packages/diablo2/src/domain/difficulty.ts": "8b28e64cfd2bbc873f08a5d4bd400e5fd1977f09328df56d3a2e700ac5123227",
+            "packages/diablo2/src/domain/game.ts": "010b807cf7b555a7082416265206df0fbad1f3db6f011b9ec64ed7c5b51e2ac7",
+            "packages/diablo2/src/domain/loot.ts": "6b0acabaf6727be407f7fb5424238ca732dd2119792fadbe8c2f9102ab1f217f",
+            "packages/diablo2/src/domain/maps.ts": "71bc62fb33e584c37728d5c430cd0247174e69c2c3f54d92d89187c36dfb500d",
+            "packages/diablo2/src/domain/random.ts": "2555c83cf6631a5dac69702ab58b2169413ac0e2243532f425ccf1e1459602d0",
+            "packages/diablo2/src/domain/sandbox.ts": "0307b350e37358ae36f3fbb0b8e179783a314b5963412380aa1abda18e6b593f",
+            "packages/diablo2/src/domain/stats.ts": "fcd0b488f16e97cb5baee27493a0980afa714b808ea97a2bbea177195927f8ef",
+            "packages/diablo2/src/domain/timing.ts": "62012ec950a782a47bfed0624581c11f9aa8337feb39eb5cc8d4d11576611b21",
+            "packages/diablo2/src/domain/validate.ts": "1429bef407311f1cfb706475faa7cf510799a0f45ab8b0299cb074e8d6444d70",
+            "packages/diablo2/src/domain/world-content.ts": "de2f863fefc3b1480c87a67def19c5f860a4e4037f73bfc4c787eb00d97e6b58",
+            "packages/diablo2/src/domain/world.ts": "72f61b714861efcae72b521e74cf769bb10612ad5d112589374ecf4078dd3504",
+            "src/shared/policy/rollout.ts": "d9f3b20594485fc5e625f0169caa20272f88d58ccfd0de1986e28eeafb58686b"
+          },
+          "bundleDigest": "8bc221e340a74dfdc041a8e27619f5b95ccc6b648f53119d86fe7e452c8d047f",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+            "packages/workshop-tools/policy/cli.ts": "a9ef1250e1fbc025fca9dfb8eba781d6c7c9f69fe4d8008d10231f2c0527f289",
+            "packages/workshop-tools/policy/study.ts": "8e9b21703b0a30b360eff266e2e4e08049a3177d30b552f2d65750f78968df12",
+            "packages/workshop-tools/policy/calibration.ts": "849eb5f92d80ff866f221f7075702d2e81f01fdf69f49f5f500f049ba84c9449",
+            "packages/workshop-tools/policy/analyze-spire.ts": "ee86616e7786bc8c222aa39c902b9f98aa6545e00bdc71c9814507e49c068f4c",
+            "packages/workshop-tools/policy/pool.ts": "0fc983379e49840e4c65e14a7952503cb4ddea5c388be6712d9dcb07c158c8b5",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "results": [
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "decisions": 7467,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 250,
+              "hp": 457.6000000000001,
+              "gold": 8237,
+              "executedTicks": 34730
+            }
+          },
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "decisions": 7792,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 121,
+              "hp": 432,
+              "gold": 5316,
+              "executedTicks": 37075
+            }
+          },
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "decisions": 7848,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 500,
+              "hp": 434,
+              "gold": 6410,
+              "executedTicks": 38505
+            }
+          },
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30819,
+              "bosses": 3,
+              "wards": 8,
+              "regions": 19,
+              "level": 8,
+              "xp": 1276,
+              "hp": 497,
+              "gold": 7379,
+              "executedTicks": 38995
+            }
+          },
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "decisions": 7963,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 281,
+              "hp": 456,
+              "gold": 6531,
+              "executedTicks": 38265
+            }
+          },
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30820,
+              "bosses": 3,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1351,
+              "hp": 417,
+              "gold": 6065,
+              "executedTicks": 40295
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "decisions": 7865,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 201,
+              "hp": 546,
+              "gold": 8335,
+              "executedTicks": 34570
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30617,
+              "bosses": 3,
+              "wards": 6,
+              "regions": 17,
+              "level": 8,
+              "xp": 757,
+              "hp": 308,
+              "gold": 5102,
+              "executedTicks": 37775
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30820,
+              "bosses": 3,
+              "wards": 8,
+              "regions": 20,
+              "level": 8,
+              "xp": 1601,
+              "hp": 341,
+              "gold": 5546,
+              "executedTicks": 38245
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30719,
+              "bosses": 3,
+              "wards": 7,
+              "regions": 19,
+              "level": 8,
+              "xp": 1099,
+              "hp": 481.5600000000003,
+              "gold": 7052,
+              "executedTicks": 37595
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30819,
+              "bosses": 3,
+              "wards": 8,
+              "regions": 19,
+              "level": 8,
+              "xp": 1286,
+              "hp": 345,
+              "gold": 5502,
+              "executedTicks": 37405
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30819,
+              "bosses": 3,
+              "wards": 8,
+              "regions": 19,
+              "level": 8,
+              "xp": 1178,
+              "hp": 378,
+              "gold": 5074,
+              "executedTicks": 39310
+            }
+          }
+        ]
+      }
+    },
+    "combined-development-1.json": {
+      "sha256": "003511ad5ee5c21e03d14476a5b515a49bfc520ea2438deb952222a1244ed9c2",
+      "value": {
+        "note": "ISOLATED COUNTERFACTUAL DEVELOPMENT: bundle-local monsterHP2/3; Severeincoming3; XP/rewards fixed; productionStandard unchanged; NOT rules-v3 campaign/replay evidence.",
+        "provenance": {
+          "sourceDigests": {
+            ".work/sessions/emberwake-strength-2026-10-16/combined-prototype.ts": "8f439d3dda84145edb1bf97c8f9f8420848a20667111974610d32520b022557f",
+            "packages/diablo2/src/agent/adapter.ts": "aacec49e717565328aea7aa6ec448a43b434d0b8da9b97e68b2a705791303680",
+            "packages/diablo2/src/agent/observation.ts": "b12c983fe6966273d5ce585e2457baa1a157598f1baa2daa143258452403ad41",
+            "packages/diablo2/src/agent/policy.ts": "bb009a2ced096807f4a8b65c165df716eff8665ba6562baa2a155a4469d57356",
+            "packages/diablo2/src/application/session.ts": "32867f2c2bf5d32016476898f000043ffd3467e0a06f7e0b76cde49d21eebf24",
+            "packages/diablo2/src/domain/combat.ts": "b6b2c3c6778696d0d3d9d8689ce6cc68066f6f860666748c266bedc31d5eb57e",
+            "packages/diablo2/src/domain/content.ts": "f93f70b03b4f688c042a3ea402bce7e5727c4bed04bae183352d40c5dc0ef7fe",
+            "packages/diablo2/src/domain/difficulty.ts": "8b28e64cfd2bbc873f08a5d4bd400e5fd1977f09328df56d3a2e700ac5123227",
+            "packages/diablo2/src/domain/game.ts": "010b807cf7b555a7082416265206df0fbad1f3db6f011b9ec64ed7c5b51e2ac7",
+            "packages/diablo2/src/domain/loot.ts": "6b0acabaf6727be407f7fb5424238ca732dd2119792fadbe8c2f9102ab1f217f",
+            "packages/diablo2/src/domain/maps.ts": "d376a48f9ae99f773bf8f8713b9d646eb8ee785d67d9bda7bf668ce788800da8",
+            "packages/diablo2/src/domain/random.ts": "2555c83cf6631a5dac69702ab58b2169413ac0e2243532f425ccf1e1459602d0",
+            "packages/diablo2/src/domain/sandbox.ts": "0307b350e37358ae36f3fbb0b8e179783a314b5963412380aa1abda18e6b593f",
+            "packages/diablo2/src/domain/stats.ts": "fcd0b488f16e97cb5baee27493a0980afa714b808ea97a2bbea177195927f8ef",
+            "packages/diablo2/src/domain/timing.ts": "62012ec950a782a47bfed0624581c11f9aa8337feb39eb5cc8d4d11576611b21",
+            "packages/diablo2/src/domain/validate.ts": "1429bef407311f1cfb706475faa7cf510799a0f45ab8b0299cb074e8d6444d70",
+            "packages/diablo2/src/domain/world-content.ts": "de2f863fefc3b1480c87a67def19c5f860a4e4037f73bfc4c787eb00d97e6b58",
+            "packages/diablo2/src/domain/world.ts": "72f61b714861efcae72b521e74cf769bb10612ad5d112589374ecf4078dd3504",
+            "src/shared/policy/rollout.ts": "d9f3b20594485fc5e625f0169caa20272f88d58ccfd0de1986e28eeafb58686b"
+          },
+          "bundleDigest": "0a42c0ffc11e16706fd7da27e44767febee7a5f440c7d7e26fce1c7a0580163b",
+          "toolDigests": {
+            "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+            "packages/workshop-tools/policy/cli.ts": "a9ef1250e1fbc025fca9dfb8eba781d6c7c9f69fe4d8008d10231f2c0527f289",
+            "packages/workshop-tools/policy/study.ts": "8e9b21703b0a30b360eff266e2e4e08049a3177d30b552f2d65750f78968df12",
+            "packages/workshop-tools/policy/calibration.ts": "849eb5f92d80ff866f221f7075702d2e81f01fdf69f49f5f500f049ba84c9449",
+            "packages/workshop-tools/policy/analyze-spire.ts": "ee86616e7786bc8c222aa39c902b9f98aa6545e00bdc71c9814507e49c068f4c",
+            "packages/workshop-tools/policy/pool.ts": "10234612f112389d2cc5cd1de7127829f53bb424b98d238ca9c080ab9081d401",
+            "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+            "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+            "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+          },
+          "runtime": "v24.21.0 / darwin / arm64"
+        },
+        "results": [
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "decisions": 7446,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 226,
+              "hp": 526,
+              "gold": 8196,
+              "executedTicks": 34435
+            }
+          },
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "decisions": 7769,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 81,
+              "hp": 392,
+              "gold": 5564,
+              "executedTicks": 36890
+            }
+          },
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30820,
+              "bosses": 3,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 69,
+              "hp": 421,
+              "gold": 6646,
+              "executedTicks": 39650
+            }
+          },
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30819,
+              "bosses": 3,
+              "wards": 8,
+              "regions": 19,
+              "level": 8,
+              "xp": 1276,
+              "hp": 489.84999999999997,
+              "gold": 7392,
+              "executedTicks": 38875
+            }
+          },
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 329,
+              "hp": 336,
+              "gold": 6329,
+              "executedTicks": 38280
+            }
+          },
+          {
+            "coefficient": 2,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30819,
+              "bosses": 3,
+              "wards": 8,
+              "regions": 19,
+              "level": 8,
+              "xp": 1229,
+              "hp": 402,
+              "gold": 6101,
+              "executedTicks": 40415
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "barbarian",
+            "decisions": 7895,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 201,
+              "hp": 546,
+              "gold": 8323,
+              "executedTicks": 34635
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "sorceress",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30719,
+              "bosses": 3,
+              "wards": 7,
+              "regions": 19,
+              "level": 8,
+              "xp": 1297,
+              "hp": 323,
+              "gold": 6044,
+              "executedTicks": 36725
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-01",
+            "hero": "necromancer",
+            "decisions": 7844,
+            "error": null,
+            "metrics": {
+              "outcome": "victory",
+              "won": 1,
+              "progress": 40820,
+              "bosses": 4,
+              "wards": 8,
+              "regions": 20,
+              "level": 9,
+              "xp": 107,
+              "hp": 457,
+              "gold": 5611,
+              "executedTicks": 37320
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "barbarian",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30718,
+              "bosses": 3,
+              "wards": 7,
+              "regions": 18,
+              "level": 8,
+              "xp": 866,
+              "hp": 372.32000000000016,
+              "gold": 6928,
+              "executedTicks": 37650
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "sorceress",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30719,
+              "bosses": 3,
+              "wards": 7,
+              "regions": 19,
+              "level": 8,
+              "xp": 1207,
+              "hp": 313,
+              "gold": 5861,
+              "executedTicks": 37315
+            }
+          },
+          {
+            "coefficient": 3,
+            "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+            "hero": "necromancer",
+            "decisions": 8000,
+            "error": null,
+            "metrics": {
+              "outcome": "playing",
+              "won": 0,
+              "progress": 30819,
+              "bosses": 3,
+              "wards": 8,
+              "regions": 19,
+              "level": 8,
+              "xp": 1168,
+              "hp": 404,
+              "gold": 5298,
+              "executedTicks": 39300
+            }
+          }
+        ]
+      }
+    }
+  },
+  "reservedEvaluation": null,
+  "calibration": "Unresolved. Immediate/Survival mastered all old tier development cases; Growth timeouts do not separate tiers. Damage-only prototypes3/5 all won. HP2/3 created living completion timeouts, not deaths.",
+  "review": {
+    "freshAstraAgent": "/root/emberwake_v2_astra_review",
+    "confirmedFinding": "Discrete bodyFits sampling missed a hidden swept corner under native axis-separated slide. Fixed exact swept rectangle with shared BODY_RADIUS.",
+    "independentSweep": {
+      "path": "test-results/emberwake-strength/review/swept-after.json",
+      "fractionalStarts": 200,
+      "offeredMoves": 1632,
+      "denseSamples": 1633632,
+      "nativeTicksPerMove": 8,
+      "mismatches": 0
+    },
+    "artifacts": {
+      "test-results/emberwake-strength/review/swept-before-native.json": "0dde380afff66730328f9378bb3d3b25d0dabc32f43a5ab2a9998f464c1b5aff",
+      "test-results/emberwake-strength/review/swept-after.json": "beb307fc0d97754157dd2711862d9665adc7f109379c1c1fa987168ff3ae1d3a",
+      "test-results/emberwake-strength/review/swept-before-public.json": "c643ec9b6524f1dc66ffb7592f7276d8f7dbd62c621307d7f7b4e14696835f12"
+    }
+  },
+  "traceFootguns": [
+    "Adjacent-cell control plus five-tick observations consumes campaign decision budget before completion.",
+    "Greedy straight-line distance cannot approach a ranged foe across an impassable barrier; known BFS must allow initially backward steps.",
+    "Temporary loss of sight around a detour can reverse into an old exploration goal; use disclosed last-seen history, never hidden live enemy positions.",
+    "A fractional footprint can forbid the shortest root edge; constrain BFS root edges to the offered menu before search.",
+    "Point samples miss tiny unknown corners and native x-then-y slide positions; check the entire swept rectangle using native body radius.",
+    "Full inventory blocks useful pickups and repeats large observations; ordinary safe portal/sell/return must guard against stationary loops.",
+    "Budget decisions times maximum advance must fit the native requested-tick limit; v2 caps all advances10.",
+    "A successful main-process recording does not prove a bounded worker can audit/serialize the same large trace; probe one actual worker before a cohort.",
+    "A diagnostic reason does not identify a control branch: known-loot arrival also used the shared no-move advance fallback. Check actual proposals or replay decisions before claiming a change cannot affect winning paths."
+  ],
+  "diagnosticRetentionLimit": "Direct diagnostic screens retain metrics/provenance and selected negative tails, not complete original inputs or compiled counterfactual bundles. They cannot receive the four-audit or independent-confirmation status of recorded witnesses.",
+  "priorRecordedWitnesses": {
+    "sha256": "0a42531a87ff30f2037093922cff5d017da0e4ccc530bf720d257b8c35711185",
+    "value": {
+      "scope": "Historical development playability witnesses; not reserved calibration.",
+      "provenance": {
+        "sourceDigests": {
+          "packages/diablo2/src/agent/adapter.ts": "aacec49e717565328aea7aa6ec448a43b434d0b8da9b97e68b2a705791303680",
+          "packages/diablo2/src/agent/observation.ts": "b12c983fe6966273d5ce585e2457baa1a157598f1baa2daa143258452403ad41",
+          "packages/diablo2/src/agent/policy.ts": "e163776a79cd7926931ec91e85701b4b5972dfc5d0679222e9650e10a7b51d6b",
+          "packages/diablo2/src/application/session.ts": "32867f2c2bf5d32016476898f000043ffd3467e0a06f7e0b76cde49d21eebf24",
+          "packages/diablo2/src/domain/combat.ts": "b6b2c3c6778696d0d3d9d8689ce6cc68066f6f860666748c266bedc31d5eb57e",
+          "packages/diablo2/src/domain/content.ts": "f93f70b03b4f688c042a3ea402bce7e5727c4bed04bae183352d40c5dc0ef7fe",
+          "packages/diablo2/src/domain/difficulty.ts": "8b28e64cfd2bbc873f08a5d4bd400e5fd1977f09328df56d3a2e700ac5123227",
+          "packages/diablo2/src/domain/game.ts": "010b807cf7b555a7082416265206df0fbad1f3db6f011b9ec64ed7c5b51e2ac7",
+          "packages/diablo2/src/domain/loot.ts": "6b0acabaf6727be407f7fb5424238ca732dd2119792fadbe8c2f9102ab1f217f",
+          "packages/diablo2/src/domain/maps.ts": "d376a48f9ae99f773bf8f8713b9d646eb8ee785d67d9bda7bf668ce788800da8",
+          "packages/diablo2/src/domain/random.ts": "2555c83cf6631a5dac69702ab58b2169413ac0e2243532f425ccf1e1459602d0",
+          "packages/diablo2/src/domain/sandbox.ts": "0307b350e37358ae36f3fbb0b8e179783a314b5963412380aa1abda18e6b593f",
+          "packages/diablo2/src/domain/stats.ts": "fcd0b488f16e97cb5baee27493a0980afa714b808ea97a2bbea177195927f8ef",
+          "packages/diablo2/src/domain/timing.ts": "62012ec950a782a47bfed0624581c11f9aa8337feb39eb5cc8d4d11576611b21",
+          "packages/diablo2/src/domain/validate.ts": "1429bef407311f1cfb706475faa7cf510799a0f45ab8b0299cb074e8d6444d70",
+          "packages/diablo2/src/domain/world-content.ts": "de2f863fefc3b1480c87a67def19c5f860a4e4037f73bfc4c787eb00d97e6b58",
+          "packages/diablo2/src/domain/world.ts": "72f61b714861efcae72b521e74cf769bb10612ad5d112589374ecf4078dd3504",
+          "src/shared/policy/rollout.ts": "d9f3b20594485fc5e625f0169caa20272f88d58ccfd0de1986e28eeafb58686b"
+        },
+        "bundleDigest": "5f55646c291ed11198f4f1e18e1cd9411d14db575954370112d9a4f468145517",
+        "toolDigests": {
+          "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+          "packages/workshop-tools/policy/cli.ts": "a9ef1250e1fbc025fca9dfb8eba781d6c7c9f69fe4d8008d10231f2c0527f289",
+          "packages/workshop-tools/policy/study.ts": "8e9b21703b0a30b360eff266e2e4e08049a3177d30b552f2d65750f78968df12",
+          "packages/workshop-tools/policy/calibration.ts": "849eb5f92d80ff866f221f7075702d2e81f01fdf69f49f5f500f049ba84c9449",
+          "packages/workshop-tools/policy/analyze-spire.ts": "ee86616e7786bc8c222aa39c902b9f98aa6545e00bdc71c9814507e49c068f4c",
+          "packages/workshop-tools/policy/pool.ts": "10234612f112389d2cc5cd1de7127829f53bb424b98d238ca9c080ab9081d401",
+          "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+          "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+          "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+        },
+        "runtime": "v24.21.0 / darwin / arm64"
+      },
+      "rows": [
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-01",
+          "policy": "survival",
+          "setupId": "barbarian-standard",
+          "difficulty": "standard",
+          "stratum": "barbarian",
+          "status": "terminal",
+          "metrics": {
+            "outcome": "victory",
+            "won": 1,
+            "progress": 40820,
+            "bosses": 4,
+            "wards": 8,
+            "regions": 20,
+            "level": 9,
+            "xp": 356,
+            "hp": 478.08,
+            "gold": 8781,
+            "executedTicks": 34385
+          },
+          "work": 12490930,
+          "digest": "62190899fdeced2dde5f875021ba04227affe8831b273c6923995b0680028778",
+          "audit": {
+            "integrity": "passed",
+            "replay": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+          }
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-01",
+          "policy": "survival",
+          "setupId": "sorceress-standard",
+          "difficulty": "standard",
+          "stratum": "sorceress",
+          "status": "terminal",
+          "metrics": {
+            "outcome": "victory",
+            "won": 1,
+            "progress": 40820,
+            "bosses": 4,
+            "wards": 8,
+            "regions": 20,
+            "level": 9,
+            "xp": 78,
+            "hp": 411,
+            "gold": 6147,
+            "executedTicks": 39565
+          },
+          "work": 15085090,
+          "digest": "b26ee149f6b011b42601e45cdc8e875f096982b4d28b3de72e8231fce859af83",
+          "audit": {
+            "integrity": "passed",
+            "replay": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+          }
+        },
+        {
+          "seed": "POLICY-ADOPTION-1-DEV-01",
+          "policy": "survival",
+          "setupId": "necromancer-standard",
+          "difficulty": "standard",
+          "stratum": "necromancer",
+          "status": "terminal",
+          "metrics": {
+            "outcome": "victory",
+            "won": 1,
+            "progress": 40820,
+            "bosses": 4,
+            "wards": 8,
+            "regions": 20,
+            "level": 9,
+            "xp": 180,
+            "hp": 441,
+            "gold": 5856,
+            "executedTicks": 37680
+          },
+          "work": 15143188,
+          "digest": "540e9b082b65a1241ead2b964b002de3b18fc6a45d97c1a87ab2f937a97f67e4",
+          "audit": {
+            "integrity": "passed",
+            "replay": "passed",
+            "inputs": "passed",
+            "decisions": "passed",
+            "firstMismatch": null,
+            "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "test-results/emberwake-strength/recorded-development-2/POLICY-ADOPTION-1-DEV-01-barbarian-standard-survival.rollout.json",
+          "bytes": 101321862,
+          "sha256": "533019ca33af241b559293cef478f6502f71d969dea3bb44db7c551a1f1500f9",
+          "digest": "62190899fdeced2dde5f875021ba04227affe8831b273c6923995b0680028778",
+          "parser": "passed"
+        },
+        {
+          "path": "test-results/emberwake-strength/recorded-development-2/POLICY-ADOPTION-1-DEV-01-sorceress-standard-survival.rollout.json",
+          "bytes": 119350335,
+          "sha256": "cc2440c07daadfaeb2800e965729253efe875229bbad57a02eeb51a075060759",
+          "digest": "b26ee149f6b011b42601e45cdc8e875f096982b4d28b3de72e8231fce859af83",
+          "parser": "passed"
+        },
+        {
+          "path": "test-results/emberwake-strength/recorded-development-2/POLICY-ADOPTION-1-DEV-01-necromancer-standard-survival.rollout.json",
+          "bytes": 114257346,
+          "sha256": "7db12e013171b9b834862f7eedf7fd87218b8968498a7ee582368e6232f6eaae",
+          "digest": "540e9b082b65a1241ead2b964b002de3b18fc6a45d97c1a87ab2f937a97f67e4",
+          "parser": "passed"
+        }
+      ],
+      "sourceChanges": []
+    }
+  },
+  "postCapNegativeReproduction": {
+    "path": "test-results/emberwake-strength/recorded-development-2/post-cap-reproduction-mismatch.json",
+    "sha256": "fbacfbdbf0ccd21976b09df86bc426cbcd0fe2c83ecac361de85d43ced2da1b6"
+  }
+}

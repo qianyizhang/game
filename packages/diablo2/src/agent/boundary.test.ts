@@ -3,9 +3,24 @@ import { auditRollout, recordEpisode } from '../../../../src/shared/policy/rollo
 import type { PolicyFactory } from '../../../../src/shared/policy/types';
 import { dispatch, newSession, importSession } from '../application/session';
 import { currentWorld } from '../domain/world';
-import { distance, knownCell, walkable, visibleActor, reveal, bodyFits } from '../domain/maps';
+import {
+  distance,
+  knownCell,
+  walkable,
+  visibleActor,
+  reveal,
+  bodyFits,
+  findPath,
+} from '../domain/maps';
 import { adapter, at, cursor, type EpisodeState } from './adapter';
-import { emptyAliases, observe, type Observation, type PolicyCommand } from './observation';
+import {
+  emptyAliases,
+  observe,
+  terrainRuns,
+  terrainRows,
+  type Observation,
+  type PolicyCommand,
+} from './observation';
 const fresh = () =>
   adapter.create('EMBERWAKE-BOUNDARY', { hero: 'barbarian', difficulty: 'standard' });
 const waiting: PolicyFactory<Observation, PolicyCommand> = {
@@ -21,6 +36,20 @@ const waiting: PolicyFactory<Observation, PolicyCommand> = {
 };
 
 describe('Emberwake restricted campaign boundary', () => {
+  it('retains every known and unknown terrain glyph in a compact public round trip', () => {
+    const rows = ['???###...,,,::;;==~!^', '????', '####', '.?.?.?'];
+    const terrain = terrainRuns(rows);
+    expect(terrain[1]).toEqual([[4, '?']]);
+    expect(terrainRows({ terrain })).toEqual(rows);
+    const input = fresh().input;
+    expect(input.definitions.heroes.map((hero) => hero.id)).toEqual([input.hero]);
+    expect(input.definitions.skills.map((skill) => skill.id)).toEqual(
+      input.definitions.heroes[0].skills,
+    );
+    expect(input.atlas.progress.visited).toEqual([]);
+    expect(input.atlas.regions.every((region) => !('floor' in region))).toBe(true);
+  });
+
   it('withholds hidden geometry, enemy state, RNG and global allocation order while keeping stable observed aliases', () => {
     const town = fresh();
     const moved = adapter.act(
@@ -83,7 +112,7 @@ describe('Emberwake restricted campaign boundary', () => {
     expect(JSON.stringify(original)).not.toMatch(
       /PRIVATE-|nextUid|"rng"|"seed"|"path"|"revealOrigin"/,
     );
-    expect(original.region.tiles.join('')).toContain('?');
+    expect(terrainRows(original.region).join('')).toContain('?');
     expect(original.definitions).not.toHaveProperty('regions');
     const memory = emptyAliases();
     observe(left, memory);
@@ -159,9 +188,88 @@ describe('Emberwake restricted campaign boundary', () => {
     ).state;
     for (const command of field.input.actions)
       if (command.type === 'move') {
-        expect(distance(field.session.state.player, command.target)).toBeLessThan(2);
+        expect(distance(field.session.state.player, command.target)).toBeLessThan(4.6);
         expect(knownCell(currentWorld(field.session.state), command.target)).toBe(true);
       }
+  });
+
+  it('offers only known straight four-cell routes, unchanged by hidden detours', () => {
+    const session = dispatch(newSession('EMBERWAKE-STRAIGHT-ROUTE', 'barbarian'), {
+      type: 'travel',
+      act: 0,
+    }).session;
+    const world = currentWorld(session.state);
+    const player = session.state.player;
+    player.x = 10.7;
+    player.y = 10.6;
+    world.tiles = world.tiles.map((row) => '.'.repeat(row.length));
+    const width = world.tiles[0].length;
+    // Reveal exactly the strip needed by the diagonal alignment and cardinal route.
+    world.seen = [];
+    for (let x = 10; x <= 14; x++) world.seen.push(10 * width + x);
+    const input = observe(session, emptyAliases());
+    const command = { type: 'move' as const, target: { x: 14.5, y: 10.5 } };
+    expect(input.actions).toContainEqual(command);
+    expect(input.actions).not.toContainEqual({ type: 'move', target: { x: 15.5, y: 10.5 } });
+    const changed = structuredClone(session);
+    const other = currentWorld(changed.state);
+    other.tiles = other.tiles.map((row, y) => (y === 10 ? row : '#'.repeat(row.length)));
+    expect(observe(changed, emptyAliases())).toEqual(input);
+    expect(findPath(world, player, command.target)).toEqual([
+      { x: 11.5, y: 10.5 },
+      { x: 12.5, y: 10.5 },
+      { x: 13.5, y: 10.5 },
+      command.target,
+      command.target,
+    ]);
+    expect(findPath(other, player, command.target)).toEqual(
+      findPath(world, player, command.target),
+    );
+    const shadow = structuredClone(session);
+    shadow.state.player.y = 10.9;
+    // The alignment crosses the footprint into unseen row 11.
+    expect(observe(shadow, emptyAliases()).actions).not.toContainEqual(command);
+  });
+
+  it('blocks an unknown swept corner that point samples miss while retaining safe native routes', () => {
+    const session = dispatch(newSession('EMBERWAKE-SWEPT-CORNER', 'barbarian'), {
+      type: 'travel',
+      act: 0,
+    }).session;
+    const world = currentWorld(session.state);
+    session.state.player.x = 10.25;
+    session.state.player.y = 10.01;
+    session.state.player.running = true;
+    world.tiles = world.tiles.map((row) => '.'.repeat(row.length));
+    world.enemies = [];
+    world.drops = [];
+    world.hazards = [];
+    world.projectiles = [];
+    world.allies = [];
+    const width = world.tiles[0].length;
+    world.seen = [];
+    for (let y = 8; y <= 12; y++)
+      for (let x = 8; x <= 15; x++) if (x !== 11 || y !== 9) world.seen.push(y * width + x);
+    const hiddenWall = structuredClone(session);
+    const other = currentWorld(hiddenWall.state);
+    other.tiles[9] = other.tiles[9].slice(0, 11) + '#' + other.tiles[9].slice(12);
+    const input = observe(session, emptyAliases());
+    expect(observe(hiddenWall, emptyAliases())).toEqual(input);
+    // The old 0.1-distance samples offered this alignment, whose native third
+    // tick depended on the undisclosed (11,9) footprint corner.
+    const unsafe = { type: 'move' as const, target: { x: 11.5, y: 10.5 } };
+    expect(input.actions).not.toContainEqual(unsafe);
+    const unrestricted = (source: typeof session, command: PolicyCommand) =>
+      dispatch(dispatch(source, command).session, { type: 'advance', ticks: 3 }).session;
+    expect(unrestricted(session, unsafe).state.player.x).not.toBe(
+      unrestricted(hiddenWall, unsafe).state.player.x,
+    );
+    const safe = { type: 'move' as const, target: { x: 9.5, y: 10.5 } };
+    expect(input.actions).toContainEqual(safe);
+    const left = unrestricted(session, safe),
+      right = unrestricted(hiddenWall, safe);
+    expect(left.state.player).toEqual(right.state.player);
+    expect(left.replay.commands).toEqual(right.replay.commands);
   });
 
   it('audits original decisions without a policy and seeks through packed requested ticks', async () => {

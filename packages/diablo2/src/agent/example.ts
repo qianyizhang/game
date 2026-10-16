@@ -5,7 +5,7 @@ import { builtins } from './policy';
 /** A local extension adds its own resettable memory without touching game rules. */
 const example: PolicyFactory<Observation, PolicyCommand> = {
   id: 'example-counted-immediate',
-  version: '1',
+  version: '2',
   create(config) {
     let decisions = 0;
     const choose = builtins.immediate.create(config);

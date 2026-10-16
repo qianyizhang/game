@@ -59,7 +59,7 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
   game: 'emberwake',
   identity: {
     rules: RULES_VERSION,
-    observation: 'emberwake-observation-1',
+    observation: 'emberwake-observation-2',
     score: 'emberwake-first-death-1',
     content: { id: BASE_CONTENT.id, version: BASE_CONTENT.version },
   },
