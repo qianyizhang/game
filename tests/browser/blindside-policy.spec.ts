@@ -131,11 +131,11 @@ test('damaged Blindside evidence stays inspectable and newer selection supersede
   bad.replay = 'invalid replay';
   const original = JSON.stringify(bad);
   await page.addInitScript(() => {
-    const originalText = (file: File) => Blob.prototype.text.call(file);
-    File.prototype.text = function () {
-      if (this.name !== 'delayed.json') return originalText(this);
-      const contents = originalText(this);
-      return new Promise<string>((resolve) => {
+    const originalBytes = (file: File) => Blob.prototype.arrayBuffer.call(file);
+    File.prototype.arrayBuffer = function () {
+      if (this.name !== 'delayed.json') return originalBytes(this);
+      const contents = originalBytes(this);
+      return new Promise<ArrayBuffer>((resolve) => {
         (window as unknown as { releaseFile: () => void }).releaseFile = () => {
           void contents.then(resolve);
         };

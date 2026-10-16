@@ -4,6 +4,8 @@ import type { JsonObject, PolicyAudit, StudyDefinition } from '../../../src/shar
 import { compareScores, scoreVector } from '../../../src/shared/policy/scoring.ts';
 import type { Runtime } from './runtime.ts';
 import { casePool } from './pool.ts';
+import { writeRolloutArtifact } from './artifact.ts';
+import type { RolloutFormat } from '../../../src/shared/policy/artifact.ts';
 
 /** Frozen independent blocks; no environment seed ever enters policy configuration. */
 export const cohortSeeds = (
@@ -95,6 +97,8 @@ export type StudyRow = {
   work: number;
   digest: string;
   audit: PolicyAudit;
+  /** Container receipt. Absent on historical reports. Native digest still identifies decoded rollout. */
+  rollout?: Awaited<ReturnType<typeof writeRolloutArtifact>>;
 };
 
 export async function benchmark(
@@ -102,6 +106,7 @@ export async function benchmark(
   options: {
     split: 'development' | 'evaluation';
     workers?: number;
+    rolloutFormat?: RolloutFormat;
     directory: string;
     maxDecisions: number;
     provenance: JsonObject;
@@ -123,6 +128,7 @@ export async function benchmark(
         directory: options.directory,
         maxDecisions: options.maxDecisions,
         provenance: options.provenance,
+        rolloutFormat: options.rolloutFormat ?? 'json',
       })),
     ),
   );
@@ -138,6 +144,8 @@ export async function benchmark(
   );
   return {
     schema: 'policy-study-2',
+    rolloutFormat: options.rolloutFormat ?? 'json',
+    rolloutSuffix: options.rolloutFormat === 'gzip' ? '.json.gzip' : '.json',
     game: runtime.adapter.game,
     identity: runtime.adapter.identity,
     study: runtime.study,
@@ -316,6 +324,7 @@ export interface CaseJob {
   directory: string;
   maxDecisions: number;
   provenance: JsonObject;
+  rolloutFormat?: RolloutFormat;
 }
 export async function runCase(
   runtime: Omit<Runtime, 'moduleURL'>,
@@ -337,9 +346,13 @@ export async function runCase(
   );
   const audit = await runtime.auditRollout(runtime.adapter, run, factory);
   const name = `${job.seed}-${job.setupId}-${job.policy}`;
-  await writeFile(resolve(job.directory, `${name}.rollout.json`), JSON.stringify(run) + '\n', {
-    flag: 'wx',
-  });
+  const rollout = await writeRolloutArtifact(
+    job.directory,
+    `${name}.rollout`,
+    JSON.stringify(run) + '\n',
+    job.rolloutFormat ?? 'json',
+    runtime.study.reviewPath,
+  );
   await writeFile(
     resolve(job.directory, `${name}.audit.json`),
     JSON.stringify(audit, null, 2) + '\n',
@@ -356,6 +369,7 @@ export async function runCase(
     work: run.episode.work,
     digest: run.digest,
     audit,
+    rollout,
   };
 }
 async function serialCases(runtime: Runtime, jobs: CaseJob[]) {

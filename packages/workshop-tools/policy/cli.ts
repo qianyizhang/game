@@ -1,10 +1,12 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { dirname, relative, resolve } from 'node:path';
+import { mkdir, open, readFile, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
 import { freshDirectory, repositoryRoot, reportFailure } from '../io.ts';
 import { policyMain, type PolicyMode } from '../night-passage/policy-cli.ts';
 import { sha256 } from '../runtime-bundle.ts';
 import { withRuntime } from './runtime.ts';
 import { auditPassed, benchmark, cohortSeeds } from './study.ts';
+import { readRolloutArtifact, writeRolloutArtifact } from './artifact.ts';
+import { isGzip, rolloutFormat } from '../../../src/shared/policy/artifact.ts';
 import type { JsonObject } from '../../../src/shared/policy/types';
 
 const usage = `policy run|record --game blindside|spire|hearth|emberwake|cartographer|night-passage [--policy immediate|survival|growth | --policy-module ./policy.ts]
@@ -12,6 +14,8 @@ const usage = `policy run|record --game blindside|spire|hearth|emberwake|cartogr
 policy record --game blindside|spire|hearth|emberwake|cartographer|night-passage --out NEW_DIRECTORY [same options]
 policy benchmark --game blindside|spire|hearth|emberwake|cartographer|night-passage --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
 policy audit --input ROLLOUT --out NEW_RECEIPT [--policy-module ./policy.ts]
+Shared record/benchmark storage (five adapters): --rollout-format json|gzip (default json).
+Gzip retains exact rollout JSON inside a lossless container; replay/audit remain JSON. Night Passage compression is unsupported.
 Shared study options (five adapters): --cohort UPPERCASE-NAMESPACE --blocks 10|20|40|60|100|400.
   --policies ID,ID selects a declared subset; default is every loaded policy.
 Choose a NEW cohort namespace for fresh evidence; increasing --blocks reuses the same prefix.
@@ -26,18 +30,38 @@ async function main() {
     if (!['run', 'record', 'benchmark', 'audit'].includes(mode)) throw new Error(usage);
     const inputIndex = args.indexOf('--input');
     let nativeBySchema = false;
+    let auditInput: Awaited<ReturnType<typeof readRolloutArtifact>> | undefined;
     if (mode === 'audit' && inputIndex >= 0 && args[inputIndex + 1] !== undefined) {
-      const artifact: unknown = JSON.parse(await readFile(resolve(args[inputIndex + 1]), 'utf8'));
+      const inputPath = resolve(args[inputIndex + 1]);
+      const file = await open(inputPath, 'r');
+      const prefix = Buffer.alloc(2);
+      try {
+        await file.read(prefix, 0, prefix.length, 0);
+      } finally {
+        await file.close();
+      }
+      // Native plaintext retains its existing unbounded UTF-8/schema routing contract.
+      // The limit below bounds accepted shared artifacts, not this legacy routing allocation.
+      auditInput = isGzip(prefix)
+        ? await readRolloutArtifact(inputPath)
+        : { text: await readFile(inputPath, 'utf8'), format: 'json' };
+      const artifact: unknown = JSON.parse(auditInput.text.replace(/^\uFEFF/, ''));
       nativeBySchema =
         !!artifact &&
         typeof artifact === 'object' &&
         'schema' in artifact &&
         artifact.schema === 'night-passage-rollout-1';
+      if (!nativeBySchema && auditInput.format === 'json')
+        auditInput = await readRolloutArtifact(inputPath);
     }
     if (
       args.some((value, index) => value === '--game' && args[index + 1] === 'night-passage') ||
       nativeBySchema
     ) {
+      if (args.includes('--rollout-format') || auditInput?.format === 'gzip')
+        throw new Error(
+          'Night Passage does not support compressed rollout containers or --rollout-format.',
+        );
       await policyMain(mode as PolicyMode, args);
       return;
     }
@@ -55,6 +79,7 @@ async function main() {
               'cohort',
               'blocks',
               'policies',
+              'rollout-format',
             ]
           : [
               'game',
@@ -67,6 +92,7 @@ async function main() {
               'policy-seed',
               'policy-options',
               'max-decisions',
+              ...(mode === 'record' ? ['rollout-format'] : []),
             ];
     const options: Record<string, string> = {};
     for (let i = 0; i < args.length; i += 2) {
@@ -86,7 +112,8 @@ async function main() {
       throw new Error('Choose a built-in OR a local module.');
     if (mode !== 'run' && !options.out) throw new Error('A fresh output path is required.');
     if (mode === 'audit' && !options.input) throw new Error('An input rollout is required.');
-    const input = mode === 'audit' ? await readFile(resolve(options.input), 'utf8') : undefined;
+    const format = rolloutFormat(options['rollout-format']);
+    const input = auditInput?.text;
     const wireGame = input ? (JSON.parse(input) as { game?: string }).game : options.game;
     const game =
       wireGame === 'slay-the-spire'
@@ -194,6 +221,8 @@ async function main() {
           }
           const protocol = {
             schema: 'policy-study-protocol-2',
+            rolloutFormat: format,
+            rolloutSuffix: format === 'gzip' ? '.json.gzip' : '.json',
             game,
             identity: runtime.adapter.identity,
             split,
@@ -223,6 +252,7 @@ async function main() {
             workers,
             maxDecisions,
             provenance,
+            rolloutFormat: format,
           });
           await checkSources();
           await writeFile(
@@ -257,29 +287,36 @@ async function main() {
           const audit = await runtime.auditRollout(runtime.adapter, run, factory);
           await checkSources();
           const artifacts = {
-            'rollout.json': JSON.stringify(run) + '\n',
             'replay.json': JSON.stringify(run.replay, null, 2) + '\n',
             'audit.json': JSON.stringify(audit, null, 2) + '\n',
           };
           if (directory) {
+            const rollout = await writeRolloutArtifact(
+              directory,
+              'rollout',
+              JSON.stringify(run) + '\n',
+              format,
+              runtime.study.reviewPath,
+            );
             for (const [name, bytes] of Object.entries(artifacts))
               await writeFile(resolve(directory, name), bytes, { flag: 'wx' });
-            const location = relative(repositoryRoot, directory);
             await writeFile(
               resolve(directory, 'manifest.json'),
               JSON.stringify(
                 {
                   schema: 'policy-manifest-1',
                   digest: run.digest,
+                  rollout,
                   policy: run.policy,
                   episode: run.episode,
                   provenance,
-                  artifacts: Object.fromEntries(
-                    Object.entries(artifacts).map(([name, bytes]) => [name, sha256(bytes)]),
-                  ),
-                  review: location.startsWith('..')
-                    ? null
-                    : `${runtime.study.reviewPath}&rollout=${encodeURIComponent('/' + location + '/rollout.json')}`,
+                  artifacts: {
+                    [rollout.file]: rollout.sha256,
+                    ...Object.fromEntries(
+                      Object.entries(artifacts).map(([name, bytes]) => [name, sha256(bytes)]),
+                    ),
+                  },
+                  review: rollout.review,
                 },
                 null,
                 2,

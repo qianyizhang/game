@@ -227,6 +227,25 @@ explicit limitation, preserving original bytes and recovery paths. Follow
 [retention governance](maintenance.md#retention-and-deletion-authority); a new run or
 source refactor never overwrites frozen evidence.
 
+Shared record/study producers may retain the rollout as plain JSON (default) or a
+lossless gzip container with `--rollout-format gzip`. New compressed artifacts use
+`.json.gzip`; `.gz` can trigger automatic HTTP decoding that loses the saved container
+bytes before browser inspection. Freeze the storage format and source-pinned encoder
+before execution; manifests and study rows identify the exact encoded bytes, decoded
+JSON bytes, and review path. Native replay, audit JSON, rollout schema and native
+identities remain unchanged. CLI audit and the generic inspector detect containers by
+magic bytes and retain exact original bytes for download, including local `.gz` files.
+Accepted shared containers and decoded UTF-8 JSON are each limited to 150,000,000 bytes.
+The common CLI preserves Night Passage’s legacy plaintext schema routing, whose
+initial read/parse has no such allocation bound; this is not a peak-memory or hostile-file
+isolation guarantee. The browser’s encoded and decoded reads remain bounded. Compression
+reduces retained disk space; it does not reduce the decoded graph required for audit.
+Remote `.gz` and `.gzip` links require gzip magic even when the response lacks an
+encoding header. If the container is absent, explain possible server decoding or a
+misnamed file and offer local-file recovery rather than relabel decoded JSON as the
+original. Night Passage's separate native recorder does not support this
+container option.
+
 ### Navigation is part of completion
 
 Provide a browser or standalone inspector with these journeys:

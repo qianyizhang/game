@@ -1,0 +1,349 @@
+{
+  "schema": "policy-artifact-compression-acceptance-1",
+  "date": "2026-10-16",
+  "scope": "Lossless storage, exact original-byte review/download and technical worker/browser acceptance on consumed development cases. No fresh independent policy-strength or difficulty confirmation.",
+  "nativeRulesChangedByStorage": false,
+  "defaultFormat": "json",
+  "optionalFormat": "gzip",
+  "newGzipSuffix": ".json.gzip",
+  "nativeReplayAndAuditFormat": "json",
+  "maximumAcceptedSharedEncodedBytes": 150000000,
+  "maximumAcceptedSharedDecodedUtf8Bytes": 150000000,
+  "limits": [
+    "Legacy plain CLI schema-routing read/parse is unbounded before strict shared acceptance; no peak-memory or hostile-file isolation claim.",
+    "Compression does not reduce the decoded graph required by reconstruction or policy audit.",
+    "Worker old-generation limit is not an RSS ceiling or measured peak.",
+    "Night Passage compressed containers and --rollout-format remain explicitly unsupported."
+  ],
+  "historicalPolicy5": {
+    "policyVersion": "emberwake-policy-5",
+    "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+    "independentNewSeed": false,
+    "setup": "sorceress-severe",
+    "policy": "growth",
+    "metrics": {
+      "outcome": "victory",
+      "won": 1,
+      "score": [1, 4, 8, 20, 35490],
+      "progress": 40820,
+      "bosses": 4,
+      "wards": 8,
+      "regions": 20,
+      "level": 9,
+      "xp": 36,
+      "hp": 436,
+      "gold": 161,
+      "executedTicks": 35490
+    },
+    "decisions": 7559,
+    "rolloutDigest": "9eaf31e0539f45338759ef4d7acf6b83a5a48f2c602c84627e5f1ee2563e6a18",
+    "storage": {
+      "file": "EMBERWAKE-STRENGTH-2-DEV-02-sorceress-severe-growth.rollout.json.gzip",
+      "format": "gzip",
+      "sha256": "70974ad46c963c6f3bb10d8911d63c5f2f91f82137ecc7cd3182ed180d75d26c",
+      "bytes": 2194677,
+      "decodedSha256": "06c1f0507fc4d09f008979da9c833ab894a56bfca8144b48d13cb54c083ab70c",
+      "decodedBytes": 112389735,
+      "review": "/?game=diablo2&review=policy&rollout=%2Ftest-results%2Fpolicy-score%2Fcompression-worker-1%2FEMBERWAKE-STRENGTH-2-DEV-02-sorceress-severe-growth.rollout.json.gzip"
+    },
+    "worker": {
+      "result": {
+        "path": "test-results/policy-score/compression-worker-1/result.json",
+        "sha256": "a4f6226e09f5c6b3aab717cf91c22025c845512f6a4678057f1cde41aebd95db",
+        "bytes": 5670
+      },
+      "job": {
+        "path": "test-results/policy-score/compression-worker-1/job.json",
+        "sha256": "797865e4517aba9f68b73caf060e459b48619665aefdc577e3dc6bfc67726deb",
+        "bytes": 4408
+      },
+      "producer": {
+        "path": "test-results/policy-score/compression-worker-1/producer.ts",
+        "sha256": "7494e61302b3a4c54df74ca5b6705c79023e25c03892f6efbea618d0a4eab754",
+        "bytes": 3456
+      },
+      "oldGenerationMiB": 2048,
+      "elapsedMilliseconds": 21987,
+      "sourceChanges": [],
+      "audit": {
+        "integrity": "passed",
+        "replay": "passed",
+        "inputs": "passed",
+        "decisions": "passed",
+        "firstMismatch": null,
+        "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+      },
+      "pinsRetainedBeforeExecution": 30,
+      "bundleDigest": "943e385a572fbc8ff9d76c257535e345730d2ba58152630bd69b1247ff1099a2"
+    },
+    "browser": {
+      "receipt": {
+        "path": "test-results/policy-score/compression-integration-1/browser-3/emberwake-policy-large-ret-6155a-d-exact-compressed-download-functional/large-review-receipt.json",
+        "sha256": "74039a5ec2730bd90fac76679b298c32846cb63a022d7f72376361360cde7ee3",
+        "bytes": 751
+      },
+      "audit": {
+        "integrity": "passed",
+        "replay": "passed",
+        "inputs": "passed",
+        "decisions": "passed"
+      },
+      "exactOriginalDownload": true,
+      "firstLastKnowledge": true,
+      "nativeBeforeAfterSeek": true,
+      "evaluatorOptIn": true,
+      "viewportWidth": 390
+    }
+  },
+  "currentPolicy6": {
+    "policyVersion": "emberwake-policy-6",
+    "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+    "independentNewSeed": false,
+    "setup": "barbarian-severe",
+    "policy": "survival",
+    "metrics": {
+      "outcome": "victory",
+      "won": 1,
+      "score": [1, 4, 8, 20, 31270],
+      "progress": 40820,
+      "bosses": 4,
+      "wards": 8,
+      "regions": 20,
+      "level": 8,
+      "xp": 1512,
+      "hp": 504,
+      "gold": 7758,
+      "executedTicks": 31270
+    },
+    "decisions": 6689,
+    "rolloutDigest": "66f5a53f929155e9ad38da5fc02f64e540a329fc63af1292f69bc26ada036d0e",
+    "storage": {
+      "file": "EMBERWAKE-STRENGTH-2-DEV-02-barbarian-severe-survival.rollout.json.gzip",
+      "format": "gzip",
+      "sha256": "00898af8a5dca656adcfd30b499dc760e23ca042768bf01af64bdde33310275c",
+      "bytes": 1869673,
+      "decodedSha256": "1acd62240f89c48d46df75f593b605bbd98025c0e5138350f41a61f0927fda6e",
+      "decodedBytes": 96340701,
+      "review": "/?game=diablo2&review=policy&rollout=%2Ftest-results%2Fpolicy-score%2Fcompression-worker-3%2FEMBERWAKE-STRENGTH-2-DEV-02-barbarian-severe-survival.rollout.json.gzip"
+    },
+    "worker": {
+      "result": {
+        "path": "test-results/policy-score/compression-worker-3/result.json",
+        "sha256": "e5c972bba9325d69df6e1b581a6870b553dd399dd71cc2f4223cfe095d55ab3d",
+        "bytes": 5744
+      },
+      "job": {
+        "path": "test-results/policy-score/compression-worker-3/job.json",
+        "sha256": "9dacd643470e3619838bf0c76ab2ca966e6303b4bf92f4f29113bd12c0f0104c",
+        "bytes": 4410
+      },
+      "producer": {
+        "path": "test-results/policy-score/compression-worker-3/producer.ts",
+        "sha256": "90a15a2d13bea071361bd500222e31374170af5768bf494b90261ea2ccfd47d3",
+        "bytes": 3637
+      },
+      "oldGenerationMiB": 2048,
+      "elapsedMilliseconds": 18653,
+      "sourceChanges": [],
+      "audit": {
+        "integrity": "passed",
+        "replay": "passed",
+        "inputs": "passed",
+        "decisions": "passed",
+        "firstMismatch": null,
+        "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+      },
+      "pinsRetainedBeforeExecution": 30,
+      "bundleDigest": "11a4369188084d50a063c085cacdcf96d098b4fea0c0fbc81d855edbb2060a06"
+    },
+    "browser": {
+      "receipt": {
+        "path": "test-results/policy-score/compression-integration-1/browser-5/emberwake-policy-large-ret-6155a-d-exact-compressed-download-functional/large-review-receipt.json",
+        "sha256": "a577652f2e9e51d4677575de0b816b543395f75fd4595c315143396e9c1fef2b",
+        "bytes": 755
+      },
+      "audit": {
+        "integrity": "passed",
+        "replay": "passed",
+        "inputs": "passed",
+        "decisions": "passed"
+      },
+      "exactOriginalDownload": true,
+      "firstLastKnowledge": true,
+      "nativeBeforeAfterSeek": true,
+      "evaluatorOptIn": true,
+      "viewportWidth": 390
+    }
+  },
+  "policy5MemoryClarification": {
+    "path": "test-results/policy-score/compression-worker-1/memory-interpretation.json",
+    "sha256": "393efbed13e806f97412c66383a79a7837b11ee0a4989a74ebcd59313a818a58",
+    "bytes": 786
+  },
+  "policy4BytePrimitive": {
+    "node": {
+      "path": "test-results/policy-score/compression-integration-1/node-roundtrip.json",
+      "sha256": "c7bf538585a5217285463085c09ff92722758496a11d1192edeede94a8ec340c",
+      "bytes": 681
+    },
+    "browser": {
+      "path": "test-results/policy-score/compression-integration-1/browser-4/emberwake-policy-large-ret-19b3a-inal-bytes-in-actual-Chrome-functional/large-container-bytes.json",
+      "sha256": "a7657e2887f038786a39863877fc115a267577db8593d4162efa838add6ce8ae",
+      "bytes": 484
+    },
+    "historicalPolicyReproductionClaim": false
+  },
+  "reviewFindings": [
+    {
+      "id": "remote-container-magic",
+      "status": "fixed",
+      "regression": "Remote gzip-looking URLs require gzip magic with or without Content-Encoding. Actual Vite and helper regressions pass."
+    },
+    {
+      "id": "native-plain-routing",
+      "status": "fixed",
+      "regression": "Generated 150000001-byte valid native artifact passes automatic/explicit native audit; shared BOM routes through strict decoder; native raw reread unchanged."
+    }
+  ],
+  "focusedChecks": {
+    "tools": {
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "command": "node --test packages/workshop-tools/policy/{artifact,cli,pool,runtime}.test.ts",
+      "log": {
+        "path": "test-results/policy-score/compression-integration-1/logs/policy-compression-tools-final.log",
+        "sha256": "ea528b8ff0a3b97683a3ad0c5ebd8b67154b9bc1092629412d88ca9c28da3591",
+        "bytes": 1511
+      }
+    },
+    "browserRuns": [
+      {
+        "output": "test-results/policy-score/compression-integration-1/browser-3",
+        "passed": 5,
+        "scope": "Complete policy5 plus primitive/shared/default JSON cases before final review fixes.",
+        "log": {
+          "path": "test-results/policy-score/compression-integration-1/logs/policy-compression-browser-3.log",
+          "sha256": "b29b66f464091293b19625e7243de44e32e1a5083012fab28f6a40ef30a5e2d0",
+          "bytes": 1281
+        }
+      },
+      {
+        "output": "test-results/policy-score/compression-integration-1/browser-4",
+        "passed": 2,
+        "scope": "Final HTTP guard and 106MB primitive.",
+        "log": {
+          "path": "test-results/policy-score/compression-integration-1/logs/policy-compression-browser-4.log",
+          "sha256": "37b8cd74f19401ee03a3248a9397abd885a9a259a9bb5641c8169e5bd2487192",
+          "bytes": 741
+        }
+      },
+      {
+        "output": "test-results/policy-score/compression-integration-1/browser-5",
+        "passed": 1,
+        "scope": "Complete current policy6 Review.",
+        "log": {
+          "path": "test-results/policy-score/compression-integration-1/logs/policy-compression-browser-5.log",
+          "sha256": "f4ca49dd4b9abb66030df9a90d6323561088881688467c44c1ddc9807efdf9ce",
+          "bytes": 586
+        }
+      }
+    ],
+    "typedLint": {
+      "exitCode": 0,
+      "command": "npx eslint [owned source/test paths] --max-warnings=0",
+      "log": {
+        "path": "test-results/policy-score/compression-integration-1/logs/policy-compression-lint-closeout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "applicationTypes": {
+      "exitCode": 0,
+      "command": "npx tsc --noEmit",
+      "log": {
+        "path": "test-results/policy-score/compression-integration-1/logs/policy-compression-app-types-closeout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "toolTypes": {
+      "exitCode": 0,
+      "command": "npx tsc --noEmit -p packages/workshop-tools/tsconfig.json",
+      "log": {
+        "path": "test-results/policy-score/compression-integration-1/logs/policy-compression-tool-types-closeout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  },
+  "freshIndependentReview": {
+    "status": "closed: no open supported findings",
+    "closure": {
+      "path": "test-results/policy-score/compression-review-1/review-closure.json",
+      "sha256": "29ff4e47d8a8a2baa2a74ab69910a9bb7184440b9675ad92b51427afdef36082",
+      "bytes": 4151
+    },
+    "freshFrozenAudit": {
+      "path": "test-results/policy-score/compression-review-1/fresh-frozen-audit.json",
+      "sha256": "84cb8a693b3206c3dae06e927d6473ce7ce477e22bbd2f9805946915a4b9010f",
+      "bytes": 1178
+    },
+    "sourcePinVerification": {
+      "path": "test-results/policy-score/compression-review-1/independent-receipt.json",
+      "sha256": "f405f630660a88cd62b4b5e14aaea78f35292de892b16ef658cf95badb86b420",
+      "bytes": 2199
+    },
+    "reviewerScopedTests": {
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "scope": "artifact, CLI, two-worker serial equivalence and exit handling; excludes owner runtime test",
+      "log": {
+        "path": "test-results/policy-score/compression-review-1/final-scoped-tests.log",
+        "sha256": "3eb4a4777f4dc0a8ff6dcf99dfca70c9ffb91772dc70561df6cc21fee432c128",
+        "bytes": 1414
+      }
+    },
+    "scope": "Read-only source audit, 30 retained source/tool pins and bundle verified, missing-header matrix and native/BOM regressions checked, independent fresh four-part audit of frozen complete policy5 artifact. Inspected owner browser receipts; no independent Chrome launch or full gate."
+  },
+  "fullRepositoryGate": {
+    "status": "passed",
+    "owner": "root",
+    "command": "npm run check",
+    "workingDirectory": "/private/tmp/emberwake-pressure4-candidate-1",
+    "maintenance": "passed",
+    "applicationTests": 554,
+    "applicationFiles": 93,
+    "seededTests": 37,
+    "seededFiles": 8,
+    "geometry": "not selected; no geometry changes",
+    "capsule": {
+      "path": ".work/sessions/emberwake-native4-2026-10-16/final-code-gate.json",
+      "sha256": "aecd0a70d59d79fd3f2ffea353c1315378381981e608b54741a1c06cdee7f98c",
+      "bytes": 1383
+    },
+    "log": {
+      "path": ".work/sessions/emberwake-native4-2026-10-16/final-code-check.log",
+      "sha256": "ce47020e607a2a06a9bf5e1cfa6df56db933b88f9de1e35893cfe80cb697edf8"
+    },
+    "manifest": {
+      "path": ".work/sessions/emberwake-native4-2026-10-16/candidate-manifest-final-code-before-gate.json",
+      "sha256": "5c9d084790e36896002068ed3104ae0c39c1636add00943d4e2a29c72a8713ae"
+    },
+    "recoverableTestedBytes": {
+      "path": ".work/sessions/emberwake-native4-2026-10-16/tested-native4-policy6-and-compression.tar.gz",
+      "sha256": "d8da2de78d13e1a839d3b01eff87f465831c6ea7c5702331f2d89c5f67d520e3"
+    },
+    "scope": "Exact isolated native4/policy6 and compression implementation; later report/doc-only refresh requires formatting/inventory; excludes unrelated guide/art changes.",
+    "documentationRefresh": {
+      "status": "pending root formatting/inventory after final report copy",
+      "sourceChangesAfterCodeGate": false
+    }
+  },
+  "retainedFailedAttempts": [
+    "test-results/policy-score/compression-integration-1/browser",
+    "test-results/policy-score/compression-integration-1/browser-2",
+    "test-results/policy-score/compression-worker-2/preflight.json"
+  ]
+}

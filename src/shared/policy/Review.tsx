@@ -1,13 +1,21 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
-import { auditRollout, digest, parseRollout } from './rollout';
+import { auditRollout, parseRollout } from './rollout';
 import type { EpisodeAdapter, Json, PolicyAudit, PolicyFactory, PolicyRollout } from './types';
 import { DecisionNavigator } from './Navigator';
+import {
+  assertFetchedArtifact,
+  decodeArtifact,
+  isGzip,
+  MAX_ARTIFACT_BYTES,
+  readArtifactStream,
+} from './artifact';
 import './review.css';
 
 interface Entry {
   id: string;
   name: string;
-  original: string;
+  downloadName: string;
+  original: Uint8Array<ArrayBuffer>;
   source: string | null;
   run: PolicyRollout;
   audit: PolicyAudit;
@@ -21,8 +29,12 @@ interface Props<S, O, C> {
   renderState: (state: S) => ReactNode;
 }
 const json = (value: unknown) => JSON.stringify(value, null, 2);
-function download(name: string, contents: string) {
-  const url = URL.createObjectURL(new Blob([contents], { type: 'application/json' }));
+function download(
+  name: string,
+  contents: string | Uint8Array<ArrayBuffer>,
+  type = 'application/json',
+) {
+  const url = URL.createObjectURL(new Blob([contents], { type }));
   const link = document.createElement('a');
   link.href = url;
   link.download = name;
@@ -72,15 +84,27 @@ export function PolicyReview<S, O, C>({
     [link],
   );
   const read = useCallback(
-    async (text: string, name: string, source: string | null = null): Promise<Entry> => {
+    async (
+      original: Uint8Array<ArrayBuffer>,
+      name: string,
+      source: string | null = null,
+    ): Promise<Entry> => {
+      const text = await decodeArtifact(original);
       const run = parseRollout(text);
       const factory = factories.find(
         (f) => f.id === run.policy.id && f.version === run.policy.version,
       );
       return {
-        id: await digest(text),
+        id: Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', original)), (byte) =>
+          byte.toString(16).padStart(2, '0'),
+        ).join(''),
         name,
-        original: text,
+        downloadName: source
+          ? decodeURIComponent(
+              new URL(source, location.href).pathname.split('/').at(-1) || 'rollout.json',
+            )
+          : name,
+        original,
         source,
         run,
         audit: await auditRollout(adapter, run, factory),
@@ -100,7 +124,10 @@ export function PolicyReview<S, O, C>({
         throw new Error('Rollout links must use this site. Open a local file below.');
       const response = await fetch(url, { signal: controller.signal });
       if (!response.ok) throw new Error('Rollout file unavailable. Open a local file below.');
-      const entry = await read(await response.text(), path, path);
+      if (!response.body) throw new Error('Rollout response has no readable body.');
+      const original = await readArtifactStream(response.body);
+      assertFetchedArtifact(original, url.pathname, response.headers.get('content-encoding'));
+      const entry = await read(original, path, path);
       if (controller.signal.aborted || current !== generation.current) return;
       setEntries([entry]);
       const raw = new URL(location.href).searchParams.get('decision');
@@ -184,7 +211,7 @@ export function PolicyReview<S, O, C>({
         <input
           type="file"
           multiple
-          accept=".json,application/json"
+          accept=".json,.gz,.gzip,application/json,application/gzip"
           aria-label="Open policy rollouts"
           onChange={(event) => {
             const files = Array.from(event.target.files ?? []);
@@ -198,7 +225,9 @@ export function PolicyReview<S, O, C>({
                 failures: string[] = [];
               for (const file of files) {
                 try {
-                  loaded.push(await read(await file.text(), file.name));
+                  if (file.size > MAX_ARTIFACT_BYTES)
+                    throw new Error('Rollout exceeds its byte limit.');
+                  loaded.push(await read(new Uint8Array(await file.arrayBuffer()), file.name));
                 } catch (error) {
                   failures.push(
                     `${file.name}: ${error instanceof Error ? error.message : String(error)}`,
@@ -440,7 +469,15 @@ export function PolicyReview<S, O, C>({
             </pre>
           </details>
           <div className="policy-review-controls">
-            <button onClick={() => download(active.name, active.original)}>
+            <button
+              onClick={() =>
+                download(
+                  active.downloadName,
+                  active.original,
+                  isGzip(active.original) ? 'application/gzip' : 'application/json',
+                )
+              }
+            >
               Download original rollout
             </button>
             <button onClick={() => download('replay.json', json(active.run.replay))}>

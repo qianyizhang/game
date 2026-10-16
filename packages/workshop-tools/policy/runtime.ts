@@ -70,6 +70,8 @@ export async function withRuntime<T>(
           'packages/workshop-tools/runtime-bundle.ts',
           'packages/workshop-tools/io.ts',
           'src/shared/policy/scoring.ts',
+          'src/shared/policy/artifact.ts',
+          'packages/workshop-tools/policy/artifact.ts',
         ].map(async (name) => {
           const path = resolve(repositoryRoot, name);
           return [relative(repositoryRoot, path), sha256(await readFile(path))] as const;
