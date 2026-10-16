@@ -82,7 +82,7 @@ Sandbox keeps its existing rules and ordinary developer controls, outside this s
 The three priorities are Immediate (damage/direct objectives), Survival (defense,
 earlier protection and safer positioning), and Growth (loot, upgrades and scaling).
 These are versioned heuristics with fresh factory memory, not a total strength order.
-Policy v6 uses five-tick combat observations and ten-tick quiet travel. Healthy
+Policy v7 uses five-tick combat observations and ten-tick quiet travel. Healthy
 melee warning escapes preserve attack reach after the shared danger priorities;
 low-health recovery retains enemy clearance. These tie-breaks do not predict hidden
 movement, future shots or wall collision. Navigation tests a current goal from the
@@ -153,6 +153,17 @@ projectiles before enemy clearance. This uses current public geometry and motion
 walls, future shots and enemy movement are not predicted. It is a conservative
 heuristic, not an exact native successor simulation or a guarantee against damage.
 These repairs address observed control failures; they do not prove higher win rates.
+
+V7 completes Survival's pending-recovery branch: potion stock and an active owned
+cooldown permit a short defensive hold, but no offensive fallthrough when no
+retreat improves clearance. Empty stock or elapsed recovery cannot justify waiting.
+During pending recovery only, relative player/shot motion over the same five-tick
+horizon lets an offered escape avoid a shot that crosses the starting position
+later. A safer disclosed danger class precedes enemy clearance. The existing
+alignment/axis expansion remains; walls, future shots and foe motion are not
+predicted. Healthy controls and Immediate/Growth retain their earlier ranking.
+The [recovery development record](../research/experiments/2026-10-16-emberwake-recovery-policy-7.md)
+distinguishes original saved inputs, reconstructed inputs and local counterfactuals.
 
 BFS must also respect the current action menu at its first edge. A fractional avatar
 footprint can make the nominally shortest adjacent center unavailable because it

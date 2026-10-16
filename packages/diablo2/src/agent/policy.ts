@@ -335,7 +335,7 @@ function navigate(
 function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> {
   return {
     id: strategy,
-    version: 'emberwake-policy-6',
+    version: 'emberwake-policy-7',
     create() {
       const memory: Memory = {
         regions: new Map(),
@@ -552,6 +552,11 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
         if (enemy) memory.combat = memory.targets.get(enemy.uid)!;
         if (p.hp >= input.stats.maxHp * 0.7 || heal || input.location !== 'field')
           memory.recovering = false;
+        const healthRecoveryPending =
+          p.healthPotions > 0 && (p.cooldowns['@health-potion'] ?? 0) > 0;
+        if (strategy === 'survival' && !heal && enemy && p.hp < input.stats.maxHp * 0.6)
+          memory.recovering = true;
+        const timedRecovery = strategy === 'survival' && memory.recovering && healthRecoveryPending;
         if (enemy)
           memory.pursuit = {
             region: input.region.id,
@@ -577,7 +582,10 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
             : undefined;
         // A five-tick public geometric envelope, not a stepped-world prediction.
         // Expand the straight movement prefix for initial cell alignment/axis sliding.
-        // Walls, later shots and foe motion are deliberately not predicted here.
+        // Pending Survival recovery uses relative motion over that same interval:
+        // an untimed intersection at the starting point cannot distinguish escape.
+        // Other decisions retain the untimed envelope. Walls, later shots, arrival
+        // timing and foe motion are not predicted; the existing expansion remains.
         const safety = (at: Point, teleport = false) => {
           work +=
             warnings.length + hostileShots.length + enemies.length + Number(!!engagementTarget);
@@ -598,10 +606,20 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
             2,
             ...hostileShots.map(
               (shot) =>
-                segmentDistance(teleport ? at : p, end, shot, {
-                  x: shot.x + shot.dx * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
-                  y: shot.y + shot.dy * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
-                }) -
+                (timedRecovery && !teleport
+                  ? segmentDistance(
+                      { x: p.x - shot.x, y: p.y - shot.y },
+                      {
+                        x: end.x - shot.x - shot.dx * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
+                        y: end.y - shot.y - shot.dy * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
+                      },
+                      { x: 0, y: 0 },
+                      { x: 0, y: 0 },
+                    )
+                  : segmentDistance(teleport ? at : p, end, shot, {
+                      x: shot.x + shot.dx * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
+                      y: shot.y + shot.dy * STEP_SCALE * MOVEMENT_HORIZON_TICKS,
+                    })) -
                 shot.radius -
                 0.35 -
                 (teleport ? 0 : 0.5),
@@ -670,9 +688,16 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
             (move) => compareRank(move.rank.slice(0, 3), rankedMoves[0].rank.slice(0, 3)) === 0,
           )
           .map((move) => move.command);
-        if (strategy === 'survival' && !heal && enemy && p.hp < input.stats.maxHp * 0.6)
-          memory.recovering = true;
         if (strategy === 'survival' && memory.recovering) {
+          if (healthRecoveryPending) {
+            const escape = rankedMoves[0],
+              currentDanger = safety(p).slice(0, 3);
+            if (escape && compareRank(escape.rank.slice(0, 3), currentDanger) > 0)
+              return choose(
+                escape.command,
+                'escape disclosed danger while awaiting health recovery',
+              );
+          }
           if (enemy) {
             const clearance = (at: { x: number; y: number }) =>
               Math.min(...enemies.map((foe) => distance(at, foe)));
@@ -680,7 +705,17 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
             const retreat = safeMoves[0];
             if (retreat && clearance(retreat.target) > clearance(p) + 0.5)
               return choose(retreat, 'retreat while health recovery is unavailable');
-          } else if ((p.cooldowns['@health-potion'] ?? 0) > 0) {
+            if (healthRecoveryPending) {
+              // No improving retreat is not permission to chase or leap back into combat.
+              // Warning escape already ran; retreat keeps the disclosed shot ranking.
+              const stop = find('steer');
+              if (stop && (p.target !== null || p.destination))
+                return choose(stop, 'stop offensive control while awaiting health recovery');
+              return choose(advance(), 'await health recovery without offensive pursuit');
+            }
+            // An empty belt or elapsed cooldown cannot justify indefinite recovery waits.
+            memory.recovering = false;
+          } else if (healthRecoveryPending) {
             const stop = find('steer');
             if (stop && (p.target !== null || p.destination))
               return choose(stop, 'stop chasing while health recovery is unavailable');

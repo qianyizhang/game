@@ -45,8 +45,8 @@ function moves(input: Observation): PolicyCommand[] {
 }
 
 /** Public-only fixture for the retained stationary-casting and recovery traces. */
-function combatFixture(): Observation {
-  const input = adapter.observe(adapter.create('PUBLIC-COMBAT-FIXTURE', { hero: 'sorceress' }));
+function combatFixture(hero = 'sorceress'): Observation {
+  const input = adapter.observe(adapter.create('PUBLIC-COMBAT-FIXTURE', { hero }));
   input.location = 'field';
   input.player.x = 3.5;
   input.player.y = 3.5;
@@ -319,7 +319,7 @@ describe('Emberwake public policies', () => {
       return stream.map((input) => decide(structuredClone(input)));
     };
     const proposals = replay();
-    expect(builtins.growth.version).toBe('emberwake-policy-6');
+    expect(builtins.growth.version).toBe('emberwake-policy-7');
     expect(proposals.slice(0, 3).every((p) => p.command.type === 'cast')).toBe(true);
     const reposition = proposals.at(-1)!;
     expect(reposition.command.type).toBe('move');
@@ -532,7 +532,7 @@ describe('Emberwake public policies', () => {
       proposal = builtins.survival.create(config)(input);
     expect(proposal.command).toEqual({ type: 'move', target: { x: 38.5, y: 23.5 } });
     expect(proposal.diagnostics).toMatchObject({
-      reason: 'retreat while health recovery is unavailable',
+      reason: 'escape disclosed danger while awaiting health recovery',
     });
     expect(builtins.survival.create(config)(structuredClone(input))).toEqual(proposal);
     expect(JSON.stringify(input)).toBe(original);
@@ -574,6 +574,243 @@ describe('Emberwake public policies', () => {
     ready.actions.push({ type: 'potion', kind: 'health' });
     expect(decide(ready).command).toEqual({ type: 'potion', kind: 'health' });
     expect(builtins.immediate.create(config)(input).command.type).toBe('cast');
+  });
+
+  it('does not resume offensive pursuit at a recovery corner with no improving retreat', () => {
+    // Mechanically reduced public scene from A198 DEV04 Barbarian Standard d213.
+    // Earlier input is reconstructed with the exact retained bundle and full native
+    // journal/state parity; the original terminal tail independently shows this fallthrough.
+    const input = combatFixture('barbarian');
+    Object.assign(input.player, {
+      x: 51.47561370393834,
+      y: 35.50043330458749,
+      hp: 51,
+      stamina: 0.325,
+      target: null,
+      destination: null,
+      running: true,
+    });
+    input.stats.maxHp = 155;
+    input.player.cooldowns['@health-potion'] = 15;
+    input.region = {
+      ...input.region,
+      width: 72,
+      height: 48,
+      terrain: terrainRuns(Array.from({ length: 48 }, () => '.'.repeat(72))),
+    };
+    input.enemies = [
+      {
+        ...input.enemies[0],
+        uid: 22,
+        kind: 'archer',
+        x: 47.80027085114824,
+        y: 41.8552943224179,
+        hp: 32,
+      },
+    ];
+    input.actions = [
+      ...[50.5, 49.5, 48.5, 47.5].map((x) => ({ type: 'move' as const, target: { x, y: 35.5 } })),
+      ...[36.5, 37.5, 38.5, 39.5].map((y) => ({ type: 'move' as const, target: { x: 51.5, y } })),
+      { type: 'steer', direction: { x: 0, y: 0 } },
+      { type: 'advance', ticks: 5 },
+    ];
+    const chasing = structuredClone(input);
+    chasing.tick += 5;
+    chasing.player.destination = { x: 51.5, y: 39.5 };
+    const history = [input, chasing];
+    const play = () => {
+      const choose = builtins.survival.create(config);
+      return history.map((frame) => choose(structuredClone(frame)));
+    };
+    const original = JSON.stringify(history),
+      proposals = play();
+    expect(proposals[0].command).toEqual({ type: 'advance', ticks: 5 });
+    expect(proposals[1].command).toEqual({ type: 'steer', direction: { x: 0, y: 0 } });
+    expect(proposals[0].diagnostics).toMatchObject({
+      recovering: true,
+      reason: 'await health recovery without offensive pursuit',
+    });
+    expect(play()).toEqual(proposals);
+    expect(JSON.stringify(history)).toBe(original);
+    for (let i = 0; i < history.length; i++)
+      expect(history[i].actions).toContainEqual(proposals[i].command);
+  });
+
+  it('stops pending pursuit instead of using a damaging leap while recovery has no improving retreat', () => {
+    // Exact positions, shots and offered movement from the original A198 DEV05
+    // saved tail d7660/t38225, reduced to the public controls relevant to this defect.
+    const input = combatFixture('barbarian');
+    Object.assign(input.player, {
+      x: 46.5,
+      y: 16.930000000000003,
+      hp: 175,
+      stamina: 0,
+      running: true,
+      target: null,
+      destination: { x: 46.5, y: 17.5 },
+    });
+    input.stats.maxHp = 514;
+    input.player.cooldowns['@health-potion'] = 155;
+    input.region = {
+      ...input.region,
+      width: 64,
+      height: 44,
+      terrain: terrainRuns(Array.from({ length: 44 }, () => '.'.repeat(64))),
+    };
+    input.enemies = [
+      {
+        ...input.enemies[0],
+        uid: 915,
+        kind: 'demon',
+        x: 46.53100886827329,
+        y: 12.032001978927449,
+        hp: 258,
+      },
+      {
+        ...input.enemies[0],
+        uid: 914,
+        kind: 'demon',
+        x: 46.063075163059764,
+        y: 13.159895542712794,
+        hp: 258,
+      },
+      {
+        ...input.enemies[0],
+        uid: 919,
+        kind: 'lucent',
+        x: 51.14043181775607,
+        y: 13.794269048475808,
+        hp: 420,
+      },
+      {
+        ...input.enemies[0],
+        uid: 922,
+        kind: 'cultist',
+        x: 49.934227421243975,
+        y: 19.455470197819153,
+        hp: 94,
+      },
+    ];
+    input.projectiles = [
+      {
+        x: 47.16284625994427,
+        y: 15.690490588472896,
+        dx: -0.503887483872677,
+        dy: -0.6845417471538624,
+        uid: 923,
+        radius: 0.2,
+        element: 'fire',
+        friendly: false,
+      },
+    ];
+    input.actions = [
+      ...[47.5, 48.5, 49.5, 50.5, 45.5, 44.5, 43.5].map((x) => ({
+        type: 'move' as const,
+        target: { x, y: 16.5 },
+      })),
+      ...[17.5, 18.5, 19.5, 20.5, 15.5, 14.5, 13.5, 12.5].map((y) => ({
+        type: 'move' as const,
+        target: { x: 46.5, y },
+      })),
+      { type: 'cast', skill: 'leap', target: { x: 46.53100886827329, y: 12.032001978927449 } },
+      { type: 'steer', direction: { x: 0, y: 0 } },
+      { type: 'advance', ticks: 5 },
+    ];
+    const original = JSON.stringify(input),
+      decide = builtins.survival.create(config),
+      proposal = decide(input);
+    expect(proposal.command).toEqual({ type: 'steer', direction: { x: 0, y: 0 } });
+    expect(proposal.diagnostics).toMatchObject({
+      recovering: true,
+      reason: 'stop offensive control while awaiting health recovery',
+    });
+    expect(builtins.survival.create(config)(structuredClone(input))).toEqual(proposal);
+    expect(JSON.stringify(input)).toBe(original);
+    for (const strategy of ['immediate', 'growth'] as const)
+      expect(builtins[strategy].create(config)(input).command.type).toBe('cast');
+    const healthy = structuredClone(input);
+    healthy.player.hp = healthy.stats.maxHp;
+    expect(builtins.survival.create(config)(healthy).command.type).toBe('cast');
+    for (const [stock, cooldown] of [
+      [0, 155],
+      [6, 0],
+    ]) {
+      const unavailable = structuredClone(input);
+      unavailable.player.healthPotions = stock;
+      unavailable.player.cooldowns['@health-potion'] = cooldown;
+      const choice = builtins.survival.create(config)(unavailable);
+      expect(choice.command.type).toBe('cast');
+      expect(choice.diagnostics).toMatchObject({ recovering: false });
+    }
+    const outOfStock = structuredClone(input);
+    outOfStock.tick += 5;
+    outOfStock.enemies = [];
+    outOfStock.projectiles = [];
+    outOfStock.player.destination = null;
+    outOfStock.player.healthPotions = 0;
+    outOfStock.actions = [{ type: 'advance', ticks: 5 }];
+    expect(decide(outOfStock).diagnostics).toMatchObject({ recovering: false });
+  });
+
+  it('still leaves a disclosed warning during recovery when escape reduces foe clearance', () => {
+    const input = combatFixture('barbarian');
+    input.player.hp = input.stats.maxHp * 0.2;
+    input.player.cooldowns['@health-potion'] = 100;
+    input.actions = [{ type: 'advance', ticks: 5 }];
+    const decide = builtins.survival.create(config);
+    expect(decide(input).diagnostics).toMatchObject({ recovering: true });
+    input.tick += 5;
+    input.hazards = [
+      { x: 3.5, y: 3.5, radius: 1, delay: 10, damage: 10, element: 'fire', life: 20, uid: 1001 },
+    ];
+    input.actions = [
+      { type: 'move', target: { x: 4.5, y: 3.5 } },
+      { type: 'advance', ticks: 5 },
+    ];
+    expect(decide(input).command).toEqual({ type: 'move', target: { x: 4.5, y: 3.5 } });
+    expect(input.actions).toContainEqual(builtins.survival.create(config)(input).command);
+  });
+
+  it('escapes an incoming shot during pending recovery even when the offered route approaches the foe', () => {
+    const input = combatFixture('barbarian');
+    input.player.hp = input.stats.maxHp * 0.2;
+    input.player.cooldowns['@health-potion'] = 100;
+    input.projectiles = [
+      { x: 3.5, y: 6, dx: 0, dy: -1, radius: 0.2, uid: 1001, element: 'physical', friendly: false },
+    ];
+    input.actions = [
+      { type: 'move', target: { x: 5.5, y: 3.5 } },
+      { type: 'cast', skill: 'cleave', target: { x: 5.5, y: 3.5 } },
+      { type: 'advance', ticks: 5 },
+    ];
+    // The untimed paths cross at the player's starting point. Relative motion
+    // instead distinguishes standing still until tick5 from leaving before arrival.
+    const original = JSON.stringify(input),
+      proposal = builtins.survival.create(config)(input);
+    expect(proposal.command).toEqual({ type: 'move', target: { x: 5.5, y: 3.5 } });
+    expect(proposal.diagnostics).toMatchObject({
+      reason: 'escape disclosed danger while awaiting health recovery',
+    });
+    expect(builtins.survival.create(config)(structuredClone(input))).toEqual(proposal);
+    expect(JSON.stringify(input)).toBe(original);
+    for (const strategy of ['immediate', 'growth'] as const)
+      expect(builtins[strategy].create(config)(input).command.type).toBe('cast');
+    const healthy = structuredClone(input);
+    healthy.player.hp = healthy.stats.maxHp;
+    expect(builtins.survival.create(config)(healthy).command.type).toBe('cast');
+    const prime = structuredClone(input);
+    prime.projectiles = [];
+    prime.actions = [{ type: 'advance', ticks: 5 }];
+    const hidden = structuredClone(input);
+    hidden.tick += 5;
+    hidden.enemies = [];
+    const history = [prime, hidden];
+    const play = () => {
+      const choose = builtins.survival.create(config);
+      return history.map((frame) => choose(structuredClone(frame)));
+    };
+    expect(play()[1].command).toEqual({ type: 'move', target: { x: 5.5, y: 3.5 } });
+    expect(play()).toEqual(play());
   });
 
   it('permits ordinary refuge healing while preventing a stationary heal-return loop', () => {

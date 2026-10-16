@@ -1,0 +1,1224 @@
+{
+  "schema": "emberwake-pressure-development-5-receipt-1",
+  "status": "Policy7 repair reviewed and verified; negative A/B/C6/C7 pressure development retained. No calibrated ladder, official native5 or reserved confirmation.",
+  "report": "2026-10-16-emberwake-pressure-development-5.md",
+  "lockedDecision": {
+    "userChoice": "Further gameplay pressure, preserve old replays, keep completion/time score2.",
+    "noHealthRecoveryCostScore": true,
+    "currentNativeCommit": "ff31945",
+    "losslessTraceCommit": "ddad184",
+    "scoreIdentity": "emberwake-performance-2",
+    "scoreOrder": [
+      "victory maximize",
+      "bosses maximize",
+      "wards maximize",
+      "regions maximize",
+      "victorious executed ticks minimize"
+    ]
+  },
+  "currentNative4Policy6Baseline": {
+    "identity": {
+      "rules": "emberwake-4",
+      "observation": "emberwake-observation-3",
+      "score": "emberwake-performance-2",
+      "content": {
+        "id": "emberwake",
+        "version": "2.0.0"
+      }
+    },
+    "policy": "emberwake-policy-6",
+    "bundleSha256": "9070081a2cc2e7713a558339a9e4a9da8bec6321ff527259a6e80c959b5cdc93",
+    "nativeProfile": [0.75, 3, 6],
+    "recoverySeconds": [0, 20, 60],
+    "sourceTransforms": 0,
+    "totals": {
+      "attempted": 54,
+      "wins": 42,
+      "deaths": 9,
+      "livingBudgetStops": 3,
+      "apiErrors": 0
+    },
+    "scope": "Fixed54 consumed diagnostic, two blocks per hero/tier/priority across Immediate/Survival/Growth; not reserved or a full four-audit original-input study.",
+    "relaxedVsStandardPracticalResult": "All nine hero/priority cells are0better/2ties/0worse at5% threshold.",
+    "artifactManifest": ".work/sessions/emberwake-strength-2026-10-16/policy6-screen-development-handoff.json"
+  },
+  "diagnosticDesign": {
+    "predeclaredProfiles": [
+      {
+        "id": "a",
+        "incoming": {
+          "relaxed": 0.75,
+          "standard": 6,
+          "severe": 12
+        }
+      },
+      {
+        "id": "b",
+        "incoming": {
+          "relaxed": 0.75,
+          "standard": 8,
+          "severe": 16
+        }
+      }
+    ],
+    "healthRecoverySeconds": [0, 20, 60],
+    "unchanged": [
+      "policy6",
+      "mana",
+      "maps",
+      "content",
+      "rewards",
+      "score2",
+      "public LOS8 refuge boundary",
+      "coherent player/ally hostile scaling"
+    ],
+    "seedBlocks": ["EMBERWAKE-STRENGTH-2-DEV-01", "EMBERWAKE-STRENGTH-2-DEV-02"],
+    "heroes": ["barbarian", "sorceress", "necromancer"],
+    "priorities": ["immediate", "survival"],
+    "tiers": ["relaxed", "standard", "severe"],
+    "attempts": 72,
+    "perProfile": 36,
+    "budgetDecisions": 8000,
+    "policySeed": "INDEPENDENT-POLICY-2",
+    "transformedModules": [
+      "application/session.ts",
+      "domain/game.ts",
+      "domain/difficulty.ts",
+      "domain/combat.ts"
+    ],
+    "transformCountCorrection": "Four retained transforms, not the earlier verbal five; observation imports RULES_VERSION unchanged.",
+    "diagnosticIdentity": "Distinct diagnostic rules/replay versions; production4 replay headers rejected rather than silently reinterpreted. No production4 or5 outcome claim.",
+    "retention": "Native accepted journals, evaluator states, scalar impact/potion diagnostics and final40/worst-HP input windows; not complete original-input four-audit rollouts.",
+    "practicalComparison": "Completion/progress retains exact lexicographic order. If first four score components tie and both won, abs(ticksA-ticksB)/max(ticksA,ticksB)<0.05 is a practical tie; otherwise exact direction. This descriptive tolerance does not change score2."
+  },
+  "profiles": [
+    {
+      "profile": "a",
+      "incoming": {
+        "relaxed": 0.75,
+        "standard": 6,
+        "severe": 12
+      },
+      "diagnosticRules": "emberwake-pressure-diagnostic-a-2026-10-16",
+      "diagnosticReplay": "emberwake-diagnostic-replay-a-2026-10-16",
+      "bundleSha256": "df7d2441d345b59b740988e366cbcbbdb63acb480cb3353cd5b80b1169b1addc",
+      "totals": {
+        "attempted": 36,
+        "wins": 22,
+        "deaths": 14,
+        "livingBudgetStops": 0,
+        "apiErrors": 0
+      },
+      "winMatrix": [
+        {
+          "hero": "barbarian",
+          "attemptsPerCell": 2,
+          "relaxed": [2, 2],
+          "standard": [1, 2],
+          "severe": [0, 0]
+        },
+        {
+          "hero": "sorceress",
+          "attemptsPerCell": 2,
+          "relaxed": [2, 2],
+          "standard": [1, 2],
+          "severe": [0, 1]
+        },
+        {
+          "hero": "necromancer",
+          "attemptsPerCell": 2,
+          "relaxed": [2, 2],
+          "standard": [0, 2],
+          "severe": [0, 1]
+        }
+      ],
+      "matrixColumnOrder": ["immediate", "survival"],
+      "relaxedInvariance": {
+        "cases": 12,
+        "allMetricsCommandsAndFullNativeStateExactExceptRulesIdentity": true,
+        "independentNewSeeds": false
+      },
+      "snapshotVerification": {
+        "originalSources": 18,
+        "transformedModules": 4,
+        "allSnapshotAndTransformBytesMatchedFreeze": true,
+        "provenanceMap": "test-results/emberwake-strength/pressure5-development-a-1/freeze.json"
+      },
+      "closure": {
+        "sourceChanges": [],
+        "workspaceSourceChanges": []
+      },
+      "survivalRelaxedVsStandardPracticalPairs": [
+        {
+          "hero": "barbarian",
+          "practical5Percent": {
+            "better": 0,
+            "tied": 1,
+            "worse": 1
+          }
+        },
+        {
+          "hero": "sorceress",
+          "practical5Percent": {
+            "better": 0,
+            "tied": 1,
+            "worse": 1
+          }
+        },
+        {
+          "hero": "necromancer",
+          "practical5Percent": {
+            "better": 0,
+            "tied": 1,
+            "worse": 1
+          }
+        }
+      ]
+    },
+    {
+      "profile": "b",
+      "incoming": {
+        "relaxed": 0.75,
+        "standard": 8,
+        "severe": 16
+      },
+      "diagnosticRules": "emberwake-pressure-diagnostic-b-2026-10-16",
+      "diagnosticReplay": "emberwake-diagnostic-replay-b-2026-10-16",
+      "bundleSha256": "3a1ac6278743422b1d55d0d0dd5ef0fdb68941f1ca542cca1bbae357554a5bca",
+      "totals": {
+        "attempted": 36,
+        "wins": 19,
+        "deaths": 17,
+        "livingBudgetStops": 0,
+        "apiErrors": 0
+      },
+      "winMatrix": [
+        {
+          "hero": "barbarian",
+          "attemptsPerCell": 2,
+          "relaxed": [2, 2],
+          "standard": [0, 2],
+          "severe": [0, 0]
+        },
+        {
+          "hero": "sorceress",
+          "attemptsPerCell": 2,
+          "relaxed": [2, 2],
+          "standard": [1, 2],
+          "severe": [0, 0]
+        },
+        {
+          "hero": "necromancer",
+          "attemptsPerCell": 2,
+          "relaxed": [2, 2],
+          "standard": [0, 2],
+          "severe": [0, 0]
+        }
+      ],
+      "matrixColumnOrder": ["immediate", "survival"],
+      "relaxedInvariance": {
+        "cases": 12,
+        "allMetricsCommandsAndFullNativeStateExactExceptRulesIdentity": true,
+        "independentNewSeeds": false
+      },
+      "snapshotVerification": {
+        "originalSources": 18,
+        "transformedModules": 4,
+        "allSnapshotAndTransformBytesMatchedFreeze": true,
+        "provenanceMap": "test-results/emberwake-strength/pressure5-development-b-1/freeze.json"
+      },
+      "closure": {
+        "sourceChanges": [],
+        "workspaceSourceChanges": []
+      },
+      "survivalRelaxedVsStandardPracticalPairs": [
+        {
+          "hero": "barbarian",
+          "practical5Percent": {
+            "better": 0,
+            "tied": 2,
+            "worse": 0
+          }
+        },
+        {
+          "hero": "sorceress",
+          "practical5Percent": {
+            "better": 0,
+            "tied": 2,
+            "worse": 0
+          }
+        },
+        {
+          "hero": "necromancer",
+          "practical5Percent": {
+            "better": 0,
+            "tied": 2,
+            "worse": 0
+          }
+        }
+      ]
+    }
+  ],
+  "lethality": {
+    "definition": "potentialDamage>=maxHp records potential one-hit impact; actual near-full lethality requires a lethal transition from at least95%maxHp. Potential impact and actual near-full death are different.",
+    "profileA": {
+      "actualNearFullLethalHits": 0,
+      "potentialExample": {
+        "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+        "hero": "necromancer",
+        "tier": "severe",
+        "priorities": ["immediate", "survival"],
+        "potentialDamage": 126,
+        "maxHp": 110,
+        "hpBefore": 81,
+        "hpAfter": 0,
+        "hitsPerPriority": 1
+      },
+      "interpretation": "One potential event per priority row on the same seed, not two independent seeds and not an actual near-full death. Risk remains unresolved."
+    },
+    "profileB": {
+      "actualNearFullExample": {
+        "seed": "EMBERWAKE-STRENGTH-2-DEV-02",
+        "hero": "necromancer",
+        "tier": "severe",
+        "priorities": ["immediate", "survival"],
+        "firstHit": true,
+        "potentialDamage": 126,
+        "maxHp": 110,
+        "hpBefore": 110,
+        "hpAfter": 0
+      },
+      "allSevereCellsWins": 0,
+      "interpretation": "Rejected for near-full first-hit deaths and all-zero Severe wins; apparent separation is a floor, not useful calibrated challenge."
+    }
+  },
+  "historicalReplayProtection": {
+    "cases": 9,
+    "native4CheckpointsCapturedBeforeAny5": 24,
+    "fixtureSha256": "cbda033c1e09525576363e2d7395553f374820ea25aef002a31290ae97fb12ba",
+    "originalV4NativeBundleSha256": "36a3d76acbbed810b3e6e6c14623e515f501b27ef5c543ba90f78a13f8ea6c2b",
+    "allOriginalNativeExact": true,
+    "allCurrentNativeExactAtCapture": true,
+    "scope": "Safeguard captured before any possible native5 adoption, not proof of an as-yet unimplemented native5 compatibility path."
+  },
+  "recommendation": "Keep all profiles development-only. Repair and measure traced public recovery fallthrough before selecting pressure. Use prospective score2 paired material comparisons, not saturated binary victories alone; keep victory viability separate. No reserved outcomes inspected.",
+  "limits": [
+    "No fresh reserved, inferential calibration, human-feel or general-strength claim.",
+    "Native pressure prototypes are frozen transformed diagnostics, not authoritative rules5.",
+    "Repeated Relaxed cases and two priorities on the same seed are not independent new samples.",
+    "Profiles, hero strata and consumed cohorts are not pooled as independent confirmations.",
+    "Zero API errors or matched source pins do not replace four-part fair policy audits.",
+    "Earlier negative policy3 evidence and current6 ladder ties remain preserved.",
+    "Fresh Astra review, final profile decision, version5 compatibility, gates and scoped commit remain parent-owned future work."
+  ],
+  "artifacts": [
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-protocol-1/profiles.json",
+      "bytes": 1702,
+      "sha256": "c7619dbb4ecdd21584bd603a08561065916daa03482402590d0a74b107f5b4e1"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-protocol-1/seal.json",
+      "bytes": 575,
+      "sha256": "da09484c434e250fcf6c073ca4aff0b07a3dc66d82c90f747fbdc990aa140651"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-protocol-1/analysis.json",
+      "bytes": 172802,
+      "sha256": "068dfc79489103a049d29b0f0ef24738f5842421fc6c6dc7341b8492864d89a1"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-protocol-1/freeze-script.mjs",
+      "bytes": 8065,
+      "sha256": "5bb3bebd4931e2e9689b0bce1c135c8672922e0db3551cfcae0829622a7facac"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-protocol-1/analysis-script.mjs",
+      "bytes": 5745,
+      "sha256": "4c63624ac5cc67c0e4eef7e64f5b9909917e38540eb3e62dff33eed7b3a6387e"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-protocol-1/worker-script.mjs",
+      "bytes": 4859,
+      "sha256": "9eb46d7393548f0c7ca873b5d3d29e2985b68569eaf7b08f72df71ee04881d35"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-protocol-1/scoring.ts",
+      "bytes": 1268,
+      "sha256": "f32cf115a989e697981d5043bea27b039350b5691cfb364d591a4019192a2617"
+    },
+    {
+      "path": "test-results/emberwake-strength/native4-policy6-screen-1/freeze.json",
+      "bytes": 18068,
+      "sha256": "b62a7711ee2d832d1545bcdab9ed5f47bc6669d4d7a121bacc12122356132d11"
+    },
+    {
+      "path": "test-results/emberwake-strength/native4-policy6-screen-1/seal.json",
+      "bytes": 759,
+      "sha256": "08fbf2b013f92dc8a46025b7ccf58acff7be4fdd979b6eff4e289b878138e2c0"
+    },
+    {
+      "path": "test-results/emberwake-strength/native4-policy6-screen-1/analysis.json",
+      "bytes": 263090,
+      "sha256": "928942e7b56778f71e612452bd2ee54651180d4d3dd8dd7a3d36d512632ce671"
+    },
+    {
+      "path": "test-results/emberwake-strength/native4-policy6-screen-1/candidate.mjs",
+      "bytes": 132357,
+      "sha256": "9070081a2cc2e7713a558339a9e4a9da8bec6321ff527259a6e80c959b5cdc93"
+    },
+    {
+      "path": "test-results/emberwake-strength/native4-policy6-screen-1/shard-A.closing.json",
+      "bytes": 264,
+      "sha256": "d005ffe045a4c43f611bca4738a442a422378cd88e7d461e5480d87b7e5962e4"
+    },
+    {
+      "path": "test-results/emberwake-strength/native4-policy6-screen-1/shard-B.closing.json",
+      "bytes": 264,
+      "sha256": "1084deace06122bec1ef2b6aeb984f7b36d695dba507b72e2b577590098bae80"
+    },
+    {
+      "path": ".work/sessions/emberwake-strength-2026-10-16/policy6-screen-development-handoff.json",
+      "bytes": 95154,
+      "sha256": "4125a6af0c71187482f952e180fdc50ad95311e8a403e489891482ee70f8c9dd"
+    },
+    {
+      "path": "test-results/emberwake-strength/v4-continuity-before-v5/freeze.json",
+      "bytes": 2134,
+      "sha256": "2fb529266ff4440a4c0c83d4b1d3ab06f4bf6cf46ff0566924a85db160578646"
+    },
+    {
+      "path": "test-results/emberwake-strength/v4-continuity-before-v5/verification.json",
+      "bytes": 4720,
+      "sha256": "be4bd0d20b42d359e67b4e7d216f99b0729a8b025b7872006c6436c6b40e3d22"
+    },
+    {
+      "path": "test-results/emberwake-strength/v4-continuity-before-v5/original-native-v4.mjs",
+      "bytes": 89299,
+      "sha256": "36a3d76acbbed810b3e6e6c14623e515f501b27ef5c543ba90f78a13f8ea6c2b"
+    },
+    {
+      "path": "test-results/emberwake-strength/v4-continuity-before-v5/verify-frozen.ts",
+      "bytes": 5783,
+      "sha256": "11956e516949e960264f4f643560188bf9ec9224325784977973ff76e4ff5b35"
+    },
+    {
+      "path": "tests/fixtures/emberwake-v4-continuity.json",
+      "bytes": 1017036,
+      "sha256": "cbda033c1e09525576363e2d7395553f374820ea25aef002a31290ae97fb12ba"
+    },
+    {
+      "path": "test-results/emberwake-strength/coherent-policy3-development-10/protocol.json",
+      "bytes": 41937,
+      "sha256": "795282a01df2e8e36136711129bf4800e0e0a34c657fac52dbd2a7775aefa09c"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-1/freeze.json",
+      "bytes": 15810,
+      "sha256": "4e2193003c6dcfa884ff2d3d9ae3e7065062d3d84194267a792bd002374e1c15"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-1/closing.json",
+      "bytes": 266,
+      "sha256": "2b095ad01066c4794be5df16b763ec3f34970288917143c3f51e17a8fabf3db7"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-1/analysis.json",
+      "bytes": 72394,
+      "sha256": "545b997ccd390279796d16aa01442f5e43f91bd9c8cef42234ef7c0abbd6b030"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-1/diagnostic.mjs",
+      "bytes": 134074,
+      "sha256": "df7d2441d345b59b740988e366cbcbbdb63acb480cb3353cd5b80b1169b1addc"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-b-1/freeze.json",
+      "bytes": 15810,
+      "sha256": "c8e0d807f678cf259fe07f8f7892f72f088556b2a4b4ed593faf9e9ff0cf73e7"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-b-1/closing.json",
+      "bytes": 266,
+      "sha256": "4ee8544ab26888433bc416e70d62558253440b6312a6f49c8a92c6d9459b824b"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-b-1/analysis.json",
+      "bytes": 75523,
+      "sha256": "62e3401deda745dec99bf171ae0ac41f2c780a2ffb1ec5706c49e7142ca8bfd8"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-b-1/diagnostic.mjs",
+      "bytes": 134074,
+      "sha256": "3a1ac6278743422b1d55d0d0dd5ef0fdb68941f1ca542cca1bbae357554a5bca"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-characterization-10-1/analysis.json",
+      "sha256": "f67456533bfe7c579bd07c98c4055ee8bc8c9b43c18d38002c3efef016258ec9",
+      "bytes": 962334
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-characterization-10-1/shard-A.closing.json",
+      "sha256": "5d81f94551eb265a20c09cc6ab220b491788b123b2d1eb224d0caf9c9a8a5695",
+      "bytes": 266
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-characterization-10-1/shard-B.closing.json",
+      "sha256": "fb4ebd3226507d1a8618e5830379f31f8a8f44103c27a150f23015fab95e9458",
+      "bytes": 266
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-characterization-10-1/protocol.json",
+      "sha256": "bf90c5136bc8438d447f3ef361d8ee104d4016fac148e9f85eaafc7f94ded953",
+      "bytes": 77959
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-c-1/protocol.json",
+      "sha256": "1049d80f2bcb7dd2eed306c38188b24c84b7b32215fecd4a05c4bc959db803c0",
+      "bytes": 29672
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-c-1/analysis.json",
+      "sha256": "91cc17cac2617f76b7245c608e30f0cedaea3e31ae5840c9312a74cb3eab0649",
+      "bytes": 250141
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-c-1/closure-verification.json",
+      "sha256": "3f77bc51bdcc7ea57a02e5f98a1902d1c8dd2bb56600a1de9fdc1345984e403a",
+      "bytes": 121985
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-c-1/evidence-manifest.json",
+      "sha256": "2047368a1dcd4ce9bd19178b2395d2116e16cfded79a98bf138e278cf5076056",
+      "bytes": 98150
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/development-astra-review-1/receipt.json",
+      "sha256": "aa1d8c63da6acb7829001a553bc096d88725641639b5b6aacbd040df35e99001",
+      "bytes": 953
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-c-policy7-1/analysis.json",
+      "bytes": 254199,
+      "sha256": "103f7c47b70eb0d914cc032c27428a214316a2277885e3c97cd8a5de7d5def38"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-c-policy7-1/closure-verification.json",
+      "bytes": 116696,
+      "sha256": "3e43c53ed8d45f309010f047ca00ca5253925a53a280acdf5aeaffd3f61730ae"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-c-policy7-1/evidence-manifest.json",
+      "bytes": 94090,
+      "sha256": "2dc5130fac32cd160ae5692fcfd32fbceba56dd6b1bd18721bda5044affaefed"
+    }
+  ],
+  "widerA": {
+    "design": "WIDER FIXED-A CHARACTERIZATION ONLY. Exact retained diagnostic A(.75/6/12), recovery0/20/60seconds,policy6,score2,content/maps unchanged. Ten previously consumed full seed identities discovered from original180 protocol; no fresh reserved evidence or calibration claim. Immediate+Survival n10perhero/tier; Growth n2 on first2samefullidentities. No retuning or production edits.",
+    "seedNamespace": "EMBERWAKE-COHERENT-POLICY3-DEV-01..10",
+    "primaryPerCell": 10,
+    "growthPerCell": 2,
+    "policySeed": "INDEPENDENT-POLICY-2",
+    "totals": {
+      "attempted": 198,
+      "wins": 116,
+      "deaths": 68,
+      "livingBudgetStops": 14,
+      "apiErrors": 0
+    },
+    "groups": [
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 10,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "tier": "standard",
+        "n": 10,
+        "wins": 9,
+        "deaths": 1,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "tier": "severe",
+        "n": 10,
+        "wins": 0,
+        "deaths": 10,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 10,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "tier": "standard",
+        "n": 10,
+        "wins": 7,
+        "deaths": 3,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "tier": "severe",
+        "n": 10,
+        "wins": 0,
+        "deaths": 9,
+        "livingBudgetStops": 1,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "tier": "severe",
+        "n": 2,
+        "wins": 0,
+        "deaths": 2,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 8,
+        "deaths": 0,
+        "livingBudgetStops": 2,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "tier": "standard",
+        "n": 10,
+        "wins": 3,
+        "deaths": 6,
+        "livingBudgetStops": 1,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "tier": "severe",
+        "n": 10,
+        "wins": 0,
+        "deaths": 10,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 1,
+        "potentialMaxHpImpacts": 1
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 8,
+        "deaths": 0,
+        "livingBudgetStops": 2,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "tier": "standard",
+        "n": 10,
+        "wins": 8,
+        "deaths": 0,
+        "livingBudgetStops": 2,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "tier": "severe",
+        "n": 10,
+        "wins": 1,
+        "deaths": 5,
+        "livingBudgetStops": 4,
+        "apiErrors": 0,
+        "nearFullLethalHits": 1,
+        "potentialMaxHpImpacts": 1
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "tier": "severe",
+        "n": 2,
+        "wins": 0,
+        "deaths": 2,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 1,
+        "potentialMaxHpImpacts": 1
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 9,
+        "deaths": 0,
+        "livingBudgetStops": 1,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "tier": "standard",
+        "n": 10,
+        "wins": 8,
+        "deaths": 1,
+        "livingBudgetStops": 1,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "tier": "severe",
+        "n": 10,
+        "wins": 0,
+        "deaths": 10,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "tier": "relaxed",
+        "n": 10,
+        "wins": 10,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "tier": "standard",
+        "n": 10,
+        "wins": 9,
+        "deaths": 1,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "tier": "severe",
+        "n": 10,
+        "wins": 4,
+        "deaths": 6,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "tier": "severe",
+        "n": 2,
+        "wins": 0,
+        "deaths": 2,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 1,
+        "potentialMaxHpImpacts": 1
+      }
+    ],
+    "analysis": "test-results/emberwake-strength/pressure5-development-a-characterization-10-1/analysis.json",
+    "analysisSha256": "f67456533bfe7c579bd07c98c4055ee8bc8c9b43c18d38002c3efef016258ec9",
+    "decision": "Rejected: full-health Severe deaths, zero Barbarian Severe wins, weak low/mid separation for Barbarian/Necromancer, Standard Survival does not consistently beat Immediate. Do not tune on reserved cases."
+  },
+  "durabilityPrototypeC": {
+    "status": "Completed, not accepted for native5 adoption",
+    "incomingDamage": [0.75, 3, 6],
+    "enemyHealth": [1, 1.35, 1.7],
+    "healthRecoverySeconds": [0, 20, 60],
+    "policy": "emberwake-policy-6",
+    "seeds": ["EMBERWAKE-COHERENT-POLICY3-DEV-01", "EMBERWAKE-COHERENT-POLICY3-DEV-02"],
+    "policySeed": "INDEPENDENT-POLICY-2",
+    "attempts": 54,
+    "limit": 8000,
+    "authority": "Distinct diagnostic identity only; production4 unchanged.",
+    "totals": {
+      "attempted": 54,
+      "wins": 39,
+      "deaths": 11,
+      "livingBudgetStops": 4,
+      "apiErrors": 0
+    },
+    "groups": [
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "immediate",
+        "tier": "severe",
+        "n": 2,
+        "wins": 0,
+        "deaths": 2,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "survival",
+        "tier": "severe",
+        "n": 2,
+        "wins": 0,
+        "deaths": 2,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "barbarian",
+        "strategy": "growth",
+        "tier": "severe",
+        "n": 2,
+        "wins": 0,
+        "deaths": 2,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 1,
+        "deaths": 0,
+        "livingBudgetStops": 1,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "immediate",
+        "tier": "severe",
+        "n": 2,
+        "wins": 0,
+        "deaths": 2,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "tier": "standard",
+        "n": 2,
+        "wins": 1,
+        "deaths": 0,
+        "livingBudgetStops": 1,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "survival",
+        "tier": "severe",
+        "n": 2,
+        "wins": 1,
+        "deaths": 0,
+        "livingBudgetStops": 1,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "sorceress",
+        "strategy": "growth",
+        "tier": "severe",
+        "n": 2,
+        "wins": 0,
+        "deaths": 2,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "immediate",
+        "tier": "severe",
+        "n": 2,
+        "wins": 1,
+        "deaths": 1,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "survival",
+        "tier": "severe",
+        "n": 2,
+        "wins": 1,
+        "deaths": 0,
+        "livingBudgetStops": 1,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "tier": "relaxed",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "tier": "standard",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      },
+      {
+        "hero": "necromancer",
+        "strategy": "growth",
+        "tier": "severe",
+        "n": 2,
+        "wins": 2,
+        "deaths": 0,
+        "livingBudgetStops": 0,
+        "apiErrors": 0,
+        "nearFullLethalHits": 0,
+        "potentialMaxHpImpacts": 0
+      }
+    ],
+    "bundleSha256": "69eed2dcf3b2c50a953c1cbb9c8b588ceadc611e72a40cc7424eba96077091b7",
+    "limits": "No near-full lethal or potential-maxHP impacts observed in54. Barbarian Severe allthree styles0/2; lower/middle calibration remains mixed. Eighteen Relaxed acceptedjournals/states exactly reconstruct with originalnative4; reused decisions, not new executions."
+  },
+  "C7Development": {
+    "totals": {
+      "attempted": 54,
+      "wins": 39,
+      "deaths": 11,
+      "livingBudgetStops": 4,
+      "apiErrors": 0
+    },
+    "policy": "emberwake-policy-7",
+    "sameOutcomeCellsAsC6": true,
+    "unaffectedImmediateGrowthCasesExact": 36,
+    "retainedPublicProposalWindowsExact": 72,
+    "workCountDifferences": 0,
+    "relaxedFullStateOriginal4Parity": 18,
+    "barbarianSevereSurvivalWins": 0,
+    "barbarianSevereSurvivalAttempts": 2,
+    "decision": "C remains unaccepted; progress gain is not victory."
+  }
+}

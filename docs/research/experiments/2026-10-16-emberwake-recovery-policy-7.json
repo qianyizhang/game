@@ -1,0 +1,302 @@
+{
+  "schema": "emberwake-recovery-policy7-receipt-1",
+  "status": "Policy7 repair reviewed and verified; negative A/B/C6/C7 pressure development retained. No calibrated ladder, official native5 or reserved confirmation.",
+  "identity": {
+    "rules": "emberwake-4",
+    "policy": "emberwake-policy-7",
+    "observation": "emberwake-observation-3",
+    "score": "emberwake-performance-2"
+  },
+  "ownedSourceSha256": {
+    "packages/diablo2/src/agent/policy.ts": "fb6e641f3c652fe573a2f17ab5e1599295c46e9d446a0d7c97d732fb3788c70f",
+    "packages/diablo2/src/agent/policy.test.ts": "08af2fc86a9f16340ce814a46a0d7a0c59e9b2aa42609d66062187d83cecb601"
+  },
+  "repair": "Complete pending Survival recovery branch; conditional public relative-motion shot envelope; potion stock/cooldown exit; no healthy/Immediate/Growth ranking change.",
+  "knowledgeLabels": {
+    "DEV04": "Earlier public input reconstructed by exact original bundle; complete original accepted journal/final state match.",
+    "DEV05": "Original saved tail input/proposal match reconstruction exactly.",
+    "counterfactual": "Separately executed native branch, not original policy knowledge or campaign inference."
+  },
+  "matchedDevelopment": {
+    "scope": "Six selected consumed matched trace-repair checks in EXACT original diagnosticAenvironment; no fresh calibration/general strength claim. Immediate is unchanged control; prior policy6 outcomes retained byte-exact.",
+    "identity": "emberwake-pressure-diagnostic-a-2026-10-16",
+    "bundleSha256": "629cf88a07e062273d50659e61c3157a943e41d3340b63380de351e92e6f5dce",
+    "totals": {
+      "attempted": 6,
+      "wins": 4,
+      "deaths": 1,
+      "livingBudgetStops": 1,
+      "errors": 0
+    },
+    "cases": [
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+        "strategy": "immediate",
+        "old6": [1, 4, 8, 20, 27830],
+        "new7": [1, 4, 8, 20, 27830],
+        "oldDecisions": 5742,
+        "newDecisions": 5742,
+        "immediateJournalAndFullStateExact": true
+      },
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-04",
+        "strategy": "survival",
+        "old6": [0, 0, 0, 2, 0],
+        "new7": [1, 4, 8, 20, 27690],
+        "oldDecisions": 286,
+        "newDecisions": 6014,
+        "immediateJournalAndFullStateExact": null
+      },
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+        "strategy": "immediate",
+        "old6": [1, 4, 8, 20, 40285],
+        "new7": [1, 4, 8, 20, 40285],
+        "oldDecisions": 7876,
+        "newDecisions": 7876,
+        "immediateJournalAndFullStateExact": true
+      },
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-05",
+        "strategy": "survival",
+        "old6": [0, 3, 8, 20, 0],
+        "new7": [0, 4, 8, 20, 0],
+        "oldDecisions": 7662,
+        "newDecisions": 8000,
+        "immediateJournalAndFullStateExact": null
+      },
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+        "strategy": "immediate",
+        "old6": [0, 1, 4, 10, 0],
+        "new7": [0, 1, 4, 10, 0],
+        "oldDecisions": 2604,
+        "newDecisions": 2604,
+        "immediateJournalAndFullStateExact": true
+      },
+      {
+        "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-08",
+        "strategy": "survival",
+        "old6": [0, 3, 6, 15, 0],
+        "new7": [1, 4, 8, 20, 32680],
+        "oldDecisions": 4829,
+        "newDecisions": 6847,
+        "immediateJournalAndFullStateExact": null
+      }
+    ],
+    "noRevisedA198WinRateInferred": true,
+    "remainingDEV05": "Living decision-budget stop after all bosses; healthy, recovery inactive, no enemies, final-region frontier exploration cycle."
+  },
+  "focused": {
+    "policyTests": 21,
+    "lint": "passed",
+    "diablo2Types": "passed",
+    "redRegression": "Both offensive fallthroughs and crossing-shot behavior fail with old6, valid corrected fixture; earlier invalid/no-verdict attempts preserved."
+  },
+  "gate": {
+    "isolated": true,
+    "maintenance": "passed",
+    "applicationTests": 558,
+    "applicationFiles": 93,
+    "seededTests": 37,
+    "seededFiles": 8,
+    "browserCases": 14,
+    "geometry": "Not affected; not run."
+  },
+  "currentFullTrace": {
+    "scope": "Consumed technical worker/browser witness, not fresh reserved evidence.",
+    "metrics": {
+      "outcome": "victory",
+      "won": 1,
+      "score": [1, 4, 8, 20, 30140],
+      "progress": 40820,
+      "bosses": 4,
+      "wards": 8,
+      "regions": 20,
+      "level": 8,
+      "xp": 1578,
+      "hp": 452,
+      "gold": 6975,
+      "executedTicks": 30140
+    },
+    "audit": {
+      "integrity": "passed",
+      "replay": "passed",
+      "inputs": "passed",
+      "decisions": "passed",
+      "firstMismatch": null,
+      "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+    },
+    "artifact": {
+      "file": "EMBERWAKE-STRENGTH-2-DEV-02-barbarian-severe-survival.rollout.json.gzip",
+      "format": "gzip",
+      "sha256": "73772047578434e9717f4eecbf1c7e04205274710143a8400a5d605b79aad8d7",
+      "bytes": 1853412,
+      "decodedSha256": "5a440c70e837d6ccbc05bb9bead3b04378b2e86e82debca3415a71c96fd8ea9b",
+      "decodedBytes": 94885351,
+      "review": "/?game=diablo2&review=policy&rollout=%2Ftest-results%2Fpolicy-score%2Fcompression-worker-policy7-1%2FEMBERWAKE-STRENGTH-2-DEV-02-barbarian-severe-survival.rollout.json.gzip"
+    },
+    "producerPins": 30,
+    "sourceChanges": [],
+    "workerElapsedMilliseconds": 22919,
+    "browserReceipt": "test-results/policy-score/recovery-policy7-browser-1/emberwake-policy-large-ret-6155a-d-exact-compressed-download-functional/large-review-receipt.json"
+  },
+  "limits": [
+    "No population strength/calibration/native5 or human-playability claim.",
+    "Native A environment differs from production4 Standard: damage6 vs3.",
+    "Six matched repair cases were selected from known failures; all attempted outcomes retained.",
+    "C6 and C7 pressure diagnostics remain unaccepted; separate pressure-development report.",
+    "Four audit dimensions do not establish hostile-code isolation."
+  ],
+  "artifacts": [
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/policy7-development-receipt.json",
+      "bytes": 5546,
+      "sha256": "568848f070828078d9933b0b40da85c1577dc6f3d6c20f85a55c1f1d93b03475"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/policy7-development-handoff.md",
+      "bytes": 1765,
+      "sha256": "fe18595c1ea66c1024570148e7cb0f145f8715cfa1cd5d925c77b0d2ee40095a"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/policy7-recovery-draft/final-source-freeze.json",
+      "bytes": 915,
+      "sha256": "7a9fa67aa953c0ae0762ccc79c08a8ee46bd77f08cccdea7f9e785dfec522359"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/policy7-astra-review-1/check-results.json",
+      "bytes": 4126,
+      "sha256": "813b4abbe816adbdfb322e4e9ba1f33440941bd90c4f696ee040ae50f6dbf603"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/policy7-astra-review-1/review.md",
+      "bytes": 3266,
+      "sha256": "23f7f7be8a30c6128c79d896b5749a1d0ed848c48f274f1be186c38b1dcf96c7"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/development-astra-review-1/receipt.json",
+      "bytes": 953,
+      "sha256": "aa1d8c63da6acb7829001a553bc096d88725641639b5b6aacbd040df35e99001"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/barbarian-standard-DEV04-recovery-branch.json",
+      "bytes": 168247,
+      "sha256": "4070e579140036cc3f42fcb7ffb9f5878c08259a5a3c3a55031e89fb19a61b21"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/barbarian-standard-DEV05-recovery-branch.json",
+      "bytes": 370678,
+      "sha256": "a1d38217b2836b4ce10ab63b7ec21c3368d13f14581559cba86bd0ae3329504a"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-policy7-campaigns-2/analysis.json",
+      "bytes": 13346,
+      "sha256": "2b85c05906449b71232ecff1cf3742ec2f03176e387357fe63acc54d60f4a0b4"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-policy7-campaigns-2/freeze.json",
+      "bytes": 11931,
+      "sha256": "42534f706958d32746e39a5bac4bbd550f764bf5a86e2bcf9405502eec0286e0"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-policy7-campaigns-2/closing.json",
+      "bytes": 265,
+      "sha256": "a7cf1ce6fa067dff8eb273e1c92d20c51b1ee44fb5a4eaeb24759e71eee13ba5"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-policy7-campaigns-2/native-original6-parity.json",
+      "bytes": 1326,
+      "sha256": "546fcfe05217402d4550eb556fee8be08a887b1888308dcdf04511b911b9dedf"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-a-policy7-protocol-2/seal.json",
+      "bytes": 558,
+      "sha256": "c31b418b248d5ff7caf661e4749144cabed04ec6324c96a1cdb4613ae3087c32"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-policy7-corridor-2/freeze.json",
+      "bytes": 265276,
+      "sha256": "23859579c4ec438f79d094a2efbf256906237e8e2e7f056eb996a6797d4c6c6c"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-policy7-corridor-2/result.json",
+      "bytes": 3677,
+      "sha256": "88ae99c8c438850ef49365e36fa248e84eb8343536db5c0f4f016af95271ec22"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-policy7-corridor-2/closing.json",
+      "bytes": 6356,
+      "sha256": "63b73e160eb6afffa54b2ccc4ec64b350c897f2a63a469fb017e32b428c3f386"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/policy7-code-gate.json",
+      "bytes": 520,
+      "sha256": "292aafa63b7f7512a052350983132a7f46dbce9b3f76384f208d4ced3f5ccf1e"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/policy7-browser-gate.json",
+      "bytes": 1704,
+      "sha256": "517f025034963b63accccec50e159618c4867d425af8c3d1b754bf1ed2b6b7cc"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/policy7-final-code-check-1.log",
+      "bytes": 37147,
+      "sha256": "92a28cf24024b54fc35a4b8a313b44cffcc2abb61bf20264718d085d6b35e545"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/policy7-final-browser-check-1.log",
+      "bytes": 3086,
+      "sha256": "c89babc954a9721f16d6c6a5faaa6db7e7141c14568c85c9c602d7051a09b6bc"
+    },
+    {
+      "path": "test-results/policy-score/compression-worker-policy7-1/result.json",
+      "bytes": 5751,
+      "sha256": "8de24312bb55f52558734c0df0f713e0e784359983a2d588f67667801361ba54"
+    },
+    {
+      "path": "test-results/policy-score/compression-worker-policy7-1/job.json",
+      "bytes": 4418,
+      "sha256": "604bd93bea35914268b3756ce05549c9a4f693d31418156a8c15bb67c3525208"
+    },
+    {
+      "path": "test-results/policy-score/recovery-policy7-browser-1/emberwake-policy-large-ret-6155a-d-exact-compressed-download-functional/large-review-receipt.json",
+      "bytes": 763,
+      "sha256": "c7391459e0785e36b84c49a92382abd5db8d902b65fe57fb50a0fe71cba4de4c"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-c-policy7-1/analysis.json",
+      "bytes": 254199,
+      "sha256": "103f7c47b70eb0d914cc032c27428a214316a2277885e3c97cd8a5de7d5def38"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-c-policy7-1/closure-verification.json",
+      "bytes": 116696,
+      "sha256": "3e43c53ed8d45f309010f047ca00ca5253925a53a280acdf5aeaffd3f61730ae"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-c-policy7-1/evidence-manifest.json",
+      "bytes": 94090,
+      "sha256": "2dc5130fac32cd160ae5692fcfd32fbceba56dd6b1bd18721bda5044affaefed"
+    }
+  ],
+  "C7Development": {
+    "totals": {
+      "attempted": 54,
+      "wins": 39,
+      "deaths": 11,
+      "livingBudgetStops": 4,
+      "apiErrors": 0
+    },
+    "policy": "emberwake-policy-7",
+    "sameOutcomeCellsAsC6": true,
+    "unaffectedImmediateGrowthCasesExact": 36,
+    "retainedPublicProposalWindowsExact": 72,
+    "workCountDifferences": 0,
+    "relaxedFullStateOriginal4Parity": 18,
+    "barbarianSevereSurvivalWins": 0,
+    "barbarianSevereSurvivalAttempts": 2,
+    "decision": "C remains unaccepted; progress gain is not victory."
+  },
+  "finalReviewReceipt": ".work/sessions/emberwake-pressure5-2026-10-16/policy7-astra-review-1/final-closure.json"
+}
