@@ -1,0 +1,491 @@
+{
+  "schema": "emberwake-native5-pressure-receipt-1",
+  "status": "Versioned D pressure candidate implemented and verified; fresh policy-strength/difficulty calibration remains open.",
+  "baseCommit": "3748b2e5cd9b32031492148343825f62ae6271a0",
+  "identity": {
+    "rules": "emberwake-5",
+    "policy": "emberwake-policy-8",
+    "observation": "emberwake-observation-3",
+    "score": "emberwake-performance-2",
+    "content": {
+      "id": "emberwake",
+      "version": "2.0.0"
+    }
+  },
+  "ownedSourceSha256": {
+    "tests/browser/emberwake-policy.spec.ts": "79fe524bf9c246e2761b925ea4d96fa7cb1ba8389c0005818abd364587d32ec1",
+    "tests/browser/diablo2.spec.ts": "d8af0dc076576f83bfa0217f610854517a52b8648a943495f0cb9f5b417f2e6c",
+    "packages/diablo2/src/ui/DiabloApp.tsx": "e94059615b68c524852c173c65d789b79961968741bdddc1a3a045037af67a6c",
+    "packages/diablo2/src/agent/boundary.test.ts": "ecca9f3d477a4c4969e828d7b152ee45c38dbbc289c054000ea19486eeac0129",
+    "packages/diablo2/src/agent/observation.ts": "a41e3284701c883332cc5aea96a25e1c6b2fa81f8d822776c0745650727d0a23",
+    "packages/diablo2/src/application/versions.test.ts": "5babb31065be8090ead36913cbb050f3bf51174adc526c641ce39e963d9f8c1a",
+    "packages/diablo2/src/application/session.ts": "0481201a65da985948855810bb5e59b8290b052a08e1367963ac2708c343b9ad",
+    "packages/diablo2/src/domain/campaign.test.ts": "4f85a0bad38974aa9cb15b16a2704f593f1b3427fd73b6cf85ada6dbf4669fc4",
+    "packages/diablo2/src/domain/versions.ts": "66e2a6ac6bd5e2ed1941c22dd9b4d0320ed2dd207d3c54cd61255879f44c911b",
+    "packages/diablo2/src/domain/types.ts": "e121d582b79de22ef92a624809a4247713feab743431e508a4d05a2f7b0c53ad",
+    "packages/diablo2/src/domain/difficulty.ts": "da8b0f1fe8ec905d0ee1c44defbac14bd49067e30fc12c77510da7120ca8fb5b",
+    "packages/diablo2/src/domain/combat.ts": "94ea188e265079b8f8a3df3d8e219c9cb4989381e14c95ff83654716c4c8b291",
+    "packages/diablo2/src/domain/game.ts": "3e09758df009ac15e3c7de2c4ac325c7a20788451e77003297d379aede7de4e9",
+    "packages/diablo2/src/domain/difficulty.test.ts": "735de0e89a6dc30513f66b5112b03200d46a1415b7e67c538524c1578597fd15",
+    "packages/diablo2/src/agent/policy.test.ts": "c31f2e6202d3897fd5b8e6c6e91a7396e63bf979a15465b04c3b770da0ba5ea4"
+  },
+  "protectedPolicy8RuntimeSha256": {
+    "packages/diablo2/src/agent/policy.ts": "3364bf3ac46d4fcadab6eb06465d106c3ada523e8de204993773a73cce447989",
+    "packages/diablo2/src/agent/example.ts": "e85081d75384eec76d406d570e3362a44c0d4910e9e0d7697a040cafdd58afca",
+    "packages/diablo2/src/domain/stats.ts": "fbb56e52fa291cfd6576e4e9076c32a803b183126c5dfcb1b265b120f7d041c6"
+  },
+  "immutableHistoricalFixtures": {
+    "tests/fixtures/emberwake-v2-continuity.json": "1fa36bed5c88e6224a56b3ead904cd3791728bd8caafe816dd8cf7c8015be913",
+    "tests/fixtures/emberwake-v3-continuity.json": "124874f9b0ef184a1757bbb45e77bb9a969982fe9c9a77d050fe6121e81637cf",
+    "tests/fixtures/emberwake-v4-continuity.json": "cbda033c1e09525576363e2d7395553f374820ea25aef002a31290ae97fb12ba"
+  },
+  "profile": {
+    "incomingDamage": {
+      "relaxed": 0.75,
+      "standard": 8,
+      "severe": 12
+    },
+    "playerMaxHitFraction": {
+      "relaxed": null,
+      "standard": 0.55,
+      "severe": 0.7
+    },
+    "healthRecoverySeconds": {
+      "relaxed": 0,
+      "standard": 20,
+      "severe": 60
+    },
+    "playerFormula": "min(max(1,round(damage*(1-mitigation)*incoming)),max(1,floor(currentDerivedMaxHp*fraction))) when capped; original mitigation/rounding when uncapped.",
+    "allies": "Uncapped floating native incoming damage; tier multiplier once.",
+    "unchanged": "Enemy HP/spawn order/RNG, maps/content/rewards, mana, outgoing damage, observation3 and score2."
+  },
+  "history": {
+    "v4": "0.75/3/6 incoming, no ceiling, 0/20/60s recovery, scaled uncapped allies/public8+LOS portal.",
+    "v3": "0.75/1/1.3 incoming, no ceiling, instant life, unscaled allies/old distance3 native guard.",
+    "v2AndSandbox": "Original Standard arithmetic and separate sandbox semantics.",
+    "slots": "Explicit5/4/3/2 registry; active historical identity preserved; first discovery5 then4 then3, v2 explicitly restorable; unreadable bytes protected."
+  },
+  "adoption": {
+    "cases": 198,
+    "allExact": true,
+    "commands": 808513,
+    "preservedTerminalPaddingTicks": 158,
+    "permittedChanges": ["replay.rulesVersion", "replay.format", "expectedState.rulesVersion"],
+    "scope": "Native adoption only; reused diagnostic decisions, no fresh policy execution or confirmation.",
+    "officialBundleSha256": "4c49e79dca5a3dbcb982452e216191a798934d957e533d2c8ea6fbf69127ea83",
+    "historicalCases": {
+      "v2": 3,
+      "v3": 15,
+      "v4": 24
+    },
+    "historicalOriginalHeaders": true,
+    "historicalContinuationsRejectionsRoundtripsExact": true,
+    "changes": []
+  },
+  "verification": {
+    "ownerFocusedTests": 71,
+    "ownerFocusedFiles": 14,
+    "independentAstraTargetedTests": 27,
+    "independentNativeAdoptionCases": 198,
+    "independentHistoricalCases": 42,
+    "independentProducerHashesBeforeAfter": 467,
+    "maintenance": "passed",
+    "applicationTests": 563,
+    "applicationFiles": 93,
+    "seededTests": 37,
+    "seededFiles": 8,
+    "browserJourneys": 16,
+    "geometry": "Unaffected; not run.",
+    "postAdoptionDelta": "Only browser coverage; all native/runtime bytes fixed.",
+    "progressionFixture": "Explicit Relaxed functional first-boss/region/offered-action/finite-work/skills witness; original currentStandard failure retained, no calibration inference."
+  },
+  "actualWorkerAcceptance": {
+    "scope": "Both authorized consumed native5 technical producer/resource proofs closed. Four independently executed copies of ONE known worst consumed case are concurrent resource stress, NOT four independent population samples. Separate pressure witness is a consumed technical case, not fresh calibration/strength/adoption evidence.",
+    "resourceAcceptancePassed": true,
+    "workerPolicySeed": "POLICY-STREAM-1",
+    "limitBytes": 150000000,
+    "limitsRaised": false,
+    "retries": 0,
+    "sourceClosureUnchanged": true,
+    "allSourcesJobsProtocolsAndProducerUnchanged": true,
+    "phases": [
+      {
+        "phase": "stress",
+        "workers": 4,
+        "actualCasePool": true,
+        "poolSourceSha256": "10234612f112389d2cc5cd1de7127829f53bb424b98d238ca9c080ab9081d401",
+        "configuredWorkerOldGenerationMiB": 2048,
+        "allAuditsPassed": true,
+        "poolElapsedMilliseconds": 28815.321459,
+        "elapsedMilliseconds": 32794.945042,
+        "rss": {
+          "requestedIntervalMilliseconds": 500,
+          "sampleCount": 68,
+          "poolSampleCount": 59,
+          "peakSampledProcessRssBytes": 5702008832,
+          "peakSampledPoolProcessRssBytes": 5702008832,
+          "maximumObservedSampleGapMilliseconds": 825.7421250000007,
+          "maximumObservedPoolSampleGapMilliseconds": 501.4388340000005,
+          "qualification": "Process-wide sampled RSS includes threads; samples may miss peaks. Old-generation limit is not RSS ceiling. Postcompletion memory is not peak. Elapsed time is not isolated throughput."
+        },
+        "postcompletionProcessMemory": {
+          "rss": 4565532672,
+          "heapTotal": 1525334016,
+          "heapUsed": 1427899672,
+          "external": 70505522,
+          "arrayBuffers": 39856620
+        },
+        "sourceAndToolPins": 31,
+        "supplementalOwnedPaths": 15,
+        "immutableFixturePaths": 3,
+        "producerSourceUnchanged": true,
+        "jobsSnapshotUnchanged": true,
+        "protocolSnapshotUnchanged": true,
+        "sourceChanges": [],
+        "retainedSourceChanges": [],
+        "supplementalSourceChanges": [],
+        "supplementalSnapshotChanges": [],
+        "result": {
+          "path": "test-results/policy-score/native5-resource-four-workers-1/stress/result.json",
+          "sha256": "b6fd636fa859e1d6dc477e11f75f4a18a222626914fc007d41e3f29c8e3100d0"
+        },
+        "closure": {
+          "path": "test-results/policy-score/native5-resource-four-workers-1/stress/closure.json",
+          "sha256": "9b0721ad07fec22368d5ab89ff13dcee10fb810c3c6714467eba392f82901a65"
+        },
+        "protocol": {
+          "path": "test-results/policy-score/native5-resource-four-workers-1/stress/protocol.json",
+          "sha256": "74c5d030059f1f62962350a4eaf1d191952e05b56c149c7e1acef59e474cbe3f"
+        },
+        "jobs": {
+          "path": "test-results/policy-score/native5-resource-four-workers-1/stress/jobs.json",
+          "sha256": "c4591076bd76a9e3534ee5c4580a948740caa81a36537efb27b43f90c456d8fe"
+        },
+        "preflight": {
+          "path": "test-results/policy-score/native5-resource-four-workers-1/stress/preflight.json",
+          "sha256": "dc7d5661dce2930142968795d52bc8dd2cf967d18b71bb4f2fb67610cb6bda25"
+        }
+      },
+      {
+        "phase": "pressure",
+        "workers": 1,
+        "actualCasePool": true,
+        "poolSourceSha256": "10234612f112389d2cc5cd1de7127829f53bb424b98d238ca9c080ab9081d401",
+        "configuredWorkerOldGenerationMiB": 2048,
+        "allAuditsPassed": true,
+        "poolElapsedMilliseconds": 22888.344833,
+        "elapsedMilliseconds": 24449.027958,
+        "rss": {
+          "requestedIntervalMilliseconds": 500,
+          "sampleCount": 51,
+          "poolSampleCount": 47,
+          "peakSampledProcessRssBytes": 2073165824,
+          "peakSampledPoolProcessRssBytes": 2033729536,
+          "maximumObservedSampleGapMilliseconds": 712.7463339999995,
+          "maximumObservedPoolSampleGapMilliseconds": 501.436416,
+          "qualification": "Process-wide sampled RSS includes threads; samples may miss peaks. Old-generation limit is not RSS ceiling. Postcompletion memory is not peak. Elapsed time is not isolated throughput."
+        },
+        "postcompletionProcessMemory": {
+          "rss": 2073313280,
+          "heapTotal": 866877440,
+          "heapUsed": 601877704,
+          "external": 39514497,
+          "arrayBuffers": 8860268
+        },
+        "sourceAndToolPins": 31,
+        "supplementalOwnedPaths": 15,
+        "immutableFixturePaths": 3,
+        "producerSourceUnchanged": true,
+        "jobsSnapshotUnchanged": true,
+        "protocolSnapshotUnchanged": true,
+        "sourceChanges": [],
+        "retainedSourceChanges": [],
+        "supplementalSourceChanges": [],
+        "supplementalSnapshotChanges": [],
+        "result": {
+          "path": "test-results/policy-score/native5-resource-four-workers-1/pressure/result.json",
+          "sha256": "6f178fb4bf2f84979f187cfc938bbbd3b386ea954aad6c3f9580022cfb5d190f"
+        },
+        "closure": {
+          "path": "test-results/policy-score/native5-resource-four-workers-1/pressure/closure.json",
+          "sha256": "6eecf193c10a55e835ce60890cae8ae8db77150a125c8dc644a3e03dc624bf5a"
+        },
+        "protocol": {
+          "path": "test-results/policy-score/native5-resource-four-workers-1/pressure/protocol.json",
+          "sha256": "c6251b511ac8bed8ed670a4a683f0caf806aa468af10c458ff7af08b30878fd3"
+        },
+        "jobs": {
+          "path": "test-results/policy-score/native5-resource-four-workers-1/pressure/jobs.json",
+          "sha256": "53af88e48be03e1365a370033034f83abf67370475966a5a57a82631ad223b0e"
+        },
+        "preflight": {
+          "path": "test-results/policy-score/native5-resource-four-workers-1/pressure/preflight.json",
+          "sha256": "2b99b8d29635cb9df23c989370c16b0129fb924eef433511c5e1c56e4ecbe9d1"
+        }
+      }
+    ],
+    "artifacts": [
+      {
+        "phase": "stress",
+        "index": 0,
+        "slot": "slot-01",
+        "rollout": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-01/EMBERWAKE-STRENGTH-2-DEV-01-necromancer-relaxed-growth.rollout.json.gzip",
+        "audit": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-01/EMBERWAKE-STRENGTH-2-DEV-01-necromancer-relaxed-growth.audit.json",
+        "jobClosure": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-01/job-closure.json",
+        "encodedSha256": "3ac4d7590b1efc535c6946b4ad8b3bb1652d4a14b72a2c512fccbbc0e1530658",
+        "encodedBytes": 2480890,
+        "decodedSha256": "1a2a4ba93f055410f1048c8efcf7a8bf962420299bb5a306846f18983a98d358",
+        "decodedBytes": 119124958,
+        "status": "timeout",
+        "nativeOutcome": "playing",
+        "decisions": 8000,
+        "executedTicks": 37840,
+        "auditDimensions": {
+          "integrity": "passed",
+          "replay": "passed",
+          "inputs": "passed",
+          "decisions": "passed",
+          "firstMismatch": null,
+          "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+        }
+      },
+      {
+        "phase": "stress",
+        "index": 1,
+        "slot": "slot-02",
+        "rollout": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-02/EMBERWAKE-STRENGTH-2-DEV-01-necromancer-relaxed-growth.rollout.json.gzip",
+        "audit": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-02/EMBERWAKE-STRENGTH-2-DEV-01-necromancer-relaxed-growth.audit.json",
+        "jobClosure": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-02/job-closure.json",
+        "encodedSha256": "3ac4d7590b1efc535c6946b4ad8b3bb1652d4a14b72a2c512fccbbc0e1530658",
+        "encodedBytes": 2480890,
+        "decodedSha256": "1a2a4ba93f055410f1048c8efcf7a8bf962420299bb5a306846f18983a98d358",
+        "decodedBytes": 119124958,
+        "status": "timeout",
+        "nativeOutcome": "playing",
+        "decisions": 8000,
+        "executedTicks": 37840,
+        "auditDimensions": {
+          "integrity": "passed",
+          "replay": "passed",
+          "inputs": "passed",
+          "decisions": "passed",
+          "firstMismatch": null,
+          "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+        }
+      },
+      {
+        "phase": "stress",
+        "index": 2,
+        "slot": "slot-03",
+        "rollout": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-03/EMBERWAKE-STRENGTH-2-DEV-01-necromancer-relaxed-growth.rollout.json.gzip",
+        "audit": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-03/EMBERWAKE-STRENGTH-2-DEV-01-necromancer-relaxed-growth.audit.json",
+        "jobClosure": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-03/job-closure.json",
+        "encodedSha256": "3ac4d7590b1efc535c6946b4ad8b3bb1652d4a14b72a2c512fccbbc0e1530658",
+        "encodedBytes": 2480890,
+        "decodedSha256": "1a2a4ba93f055410f1048c8efcf7a8bf962420299bb5a306846f18983a98d358",
+        "decodedBytes": 119124958,
+        "status": "timeout",
+        "nativeOutcome": "playing",
+        "decisions": 8000,
+        "executedTicks": 37840,
+        "auditDimensions": {
+          "integrity": "passed",
+          "replay": "passed",
+          "inputs": "passed",
+          "decisions": "passed",
+          "firstMismatch": null,
+          "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+        }
+      },
+      {
+        "phase": "stress",
+        "index": 3,
+        "slot": "slot-04",
+        "rollout": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-04/EMBERWAKE-STRENGTH-2-DEV-01-necromancer-relaxed-growth.rollout.json.gzip",
+        "audit": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-04/EMBERWAKE-STRENGTH-2-DEV-01-necromancer-relaxed-growth.audit.json",
+        "jobClosure": "test-results/policy-score/native5-resource-four-workers-1/stress/slot-04/job-closure.json",
+        "encodedSha256": "3ac4d7590b1efc535c6946b4ad8b3bb1652d4a14b72a2c512fccbbc0e1530658",
+        "encodedBytes": 2480890,
+        "decodedSha256": "1a2a4ba93f055410f1048c8efcf7a8bf962420299bb5a306846f18983a98d358",
+        "decodedBytes": 119124958,
+        "status": "timeout",
+        "nativeOutcome": "playing",
+        "decisions": 8000,
+        "executedTicks": 37840,
+        "auditDimensions": {
+          "integrity": "passed",
+          "replay": "passed",
+          "inputs": "passed",
+          "decisions": "passed",
+          "firstMismatch": null,
+          "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+        }
+      },
+      {
+        "phase": "pressure",
+        "index": 0,
+        "slot": "barbarian-severe-survival",
+        "rollout": "test-results/policy-score/native5-resource-four-workers-1/pressure/barbarian-severe-survival/EMBERWAKE-COHERENT-POLICY3-DEV-09-barbarian-severe-survival.rollout.json.gzip",
+        "audit": "test-results/policy-score/native5-resource-four-workers-1/pressure/barbarian-severe-survival/EMBERWAKE-COHERENT-POLICY3-DEV-09-barbarian-severe-survival.audit.json",
+        "jobClosure": "test-results/policy-score/native5-resource-four-workers-1/pressure/barbarian-severe-survival/job-closure.json",
+        "encodedSha256": "b50c0d8c0351185acba62796310a77a97bb80871ca7dbff67621b3f2f93ef743",
+        "encodedBytes": 2092000,
+        "decodedSha256": "ab9479cfd32be99649d5bf176c4c6080b999e24525a8bc8e020e22eda077815b",
+        "decodedBytes": 108784498,
+        "status": "terminal",
+        "nativeOutcome": "victory",
+        "decisions": 7610,
+        "executedTicks": 34940,
+        "auditDimensions": {
+          "integrity": "passed",
+          "replay": "passed",
+          "inputs": "passed",
+          "decisions": "passed",
+          "firstMismatch": null,
+          "message": "Complete checks finished. Input reconstruction does not prove hostile-code isolation."
+        }
+      }
+    ],
+    "pressureVsD8": {
+      "scope": "Native journal byte comparison after only header identity normalization; original D8 policy configuration differs. Not a matched-config or fresh cohort claim.",
+      "actualWorkerPolicySeed": "POLICY-STREAM-1",
+      "originalD8PolicySeed": "INDEPENDENT-POLICY-2",
+      "exactAfterIdentityOnly": true,
+      "fullStateExactAfterIdentityOnly": true,
+      "originalStatePath": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/EMBERWAKE-COHERENT-POLICY3-DEV-09-barbarian-severe-survival.evaluator-state.json",
+      "originalStateSha256": "564387c28d4299cce8e7756cc6a11fcf89762500d0ad942ca873cd0d2fde0160",
+      "actualNativeOutcome": "victory",
+      "actualExecutedTicks": 34940,
+      "originalJournalPath": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/EMBERWAKE-COHERENT-POLICY3-DEV-09-barbarian-severe-survival.native-replay.json",
+      "originalJournalSha256": "fc3111e88cf81ca879d2c9b9ccafe67712a1a61b3ca1e0de8a763265110ca637"
+    },
+    "memoryQualification": "RSS sampled process-wide with Node process.memoryUsage.rss every nominal500ms; includes allworkerthreads and can miss transients. V8 old-generation2048MiB perworker is not an RSS ceiling. Retention-stage/postcompletion snapshots are not worker peak.",
+    "timingQualification": "Root isolated fullgate2 ran concurrently. These elapsed times measure this concurrent technical acceptance only, not isolated throughput or CPU speed."
+  },
+  "limits": [
+    "No fresh reserved calibration or human playability evidence.",
+    "Per-impact ceiling does not prevent same-tick volleys or promise a reaction opportunity; fullHP363 death from3x134 fire hits remains retained.",
+    "Minimum1 damage can kill custom maxHP1.",
+    "Independent resource reruns cover2 unique full traces;3 other stress outputs byte-identical, not independent population attempts.",
+    "Output-folder producer copy is not standalone: use pinned canonical .work producer/helper graph.",
+    "Four audit dimensions do not establish hostile-code isolation."
+  ],
+  "artifacts": [
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/source-freeze-1.json",
+      "bytes": 2981,
+      "sha256": "b865d6e348ad46961cee589050babacd2317b574754f823e642ee034b813768e"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/source-freeze-2.json",
+      "bytes": 4200,
+      "sha256": "790299331b0e4cb36eefdac237515c0c80839e654f800202122879bb3cd330c0"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/runtime-handoff-1/verification.json",
+      "bytes": 2170,
+      "sha256": "3b892373c9d38e2afa5476da590a5e081539ef7ce40300ee712e06ae6bea702a"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/astra-review-1/initial-review.md",
+      "bytes": 3198,
+      "sha256": "588ee098f62dd1aa92d75cd817dc89af22ff7b74d85c2f45fff688feee16b540"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/astra-review-1/source-pin.json",
+      "bytes": 3183,
+      "sha256": "fb74a06448cfad6bac2338d7925f2d5694371cc9bb592146a3b72e8cf17f49c6"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/astra-review-1/reconstruction-receipt.json",
+      "bytes": 43407,
+      "sha256": "ba35a8a67bb2b0e82a310f201079350c13cb224a32c1845894a5723fe5ff6e2f"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/astra-review-1/resource-stress-receipt.json",
+      "bytes": 894,
+      "sha256": "ea5ea786342924b940f84939971310686096138d554c234fd84a5334e1a6bd2f"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/astra-review-1/resource-pressure-receipt.json",
+      "bytes": 866,
+      "sha256": "87f3d4e876c6fdab1662cdc151952af6eca45672f44faecab00f2f6ef9f3e15f"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/full-gate-2.json",
+      "bytes": 599,
+      "sha256": "46a1d3249eea27946caeab876971830ee77cd903304f15d71a8de17fa1297b91"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/browser-gate-1.json",
+      "bytes": 1725,
+      "sha256": "7bbfa35a3e29b18eb4a16b053f23a5dea5ae99a9db0f5cd8143ec93e7738a44e"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/resource-1/producer.ts",
+      "bytes": 18636,
+      "sha256": "bf09d0ba28bfdaa4959b69edcefab0e585e3cf4db5cbf83219e794f9ce7201ef"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/resource-1/HANDOFF.md",
+      "bytes": 4420,
+      "sha256": "ed2af731be3c32e018a4566cdf3bcf414d8dfeae0edba080cd6a7e8764e00c9a"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/adoption-198-1/producer.ts",
+      "bytes": 11638,
+      "sha256": "2f6e6c6fbf24c9e6f4791c597047bd8e11763887e415df2311b093acc4272e50"
+    },
+    {
+      "path": ".work/sessions/emberwake-native5-2026-10-16/adoption-198-1/historical.mjs",
+      "bytes": 6032,
+      "sha256": "d573f9830b5f93f7f501b8c62578009080f99950cbdef8a6d39a75588734f389"
+    },
+    {
+      "path": ".work/sessions/emberwake-pressure5-2026-10-16/runtime-draft/adoption-d8-198/manifest.json",
+      "bytes": 211428,
+      "sha256": "f7253de770a3256b065d59f3a9ee63d8f3d2197fcc9c3892bb57cbdc5b152811"
+    },
+    {
+      "path": "test-results/emberwake-strength/native5-d8-adoption-198-1/receipt.json",
+      "bytes": 483040,
+      "sha256": "362841efe55e27cc7008a0aa392a6996f5800fc500b2cbf6ec3339615244ce32"
+    },
+    {
+      "path": "test-results/emberwake-strength/native5-d8-adoption-198-1/freeze.json",
+      "bytes": 246586,
+      "sha256": "fb6478836a0962a6be5ea8b022f29f7fbf50d16afa537ffb3e6302a905dfe3df"
+    },
+    {
+      "path": "test-results/emberwake-strength/native5-d8-adoption-198-1/input-manifest.json",
+      "bytes": 211428,
+      "sha256": "f7253de770a3256b065d59f3a9ee63d8f3d2197fcc9c3892bb57cbdc5b152811"
+    },
+    {
+      "path": "test-results/policy-score/native5-resource-four-workers-1/receipt.json",
+      "bytes": 14186,
+      "sha256": "ff199a4dcdd1c88b6290e7e43907406f733e59016354c2cd4d67296265d31b2e"
+    },
+    {
+      "path": "test-results/policy-score/native5-resource-four-workers-1/evidence-manifest.json",
+      "bytes": 35826,
+      "sha256": "b244fa57fb036e91cb35573b435840689cd892e62282eae3accb98a15784fdad"
+    },
+    {
+      "path": "docs/research/experiments/2026-10-16-emberwake-recovery-policy-8.json",
+      "bytes": 43149,
+      "sha256": "e75febf4e69cd625692f22e135bc74d541a5a76a711932d4627204ef92044676"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/analysis.json",
+      "bytes": 1137741,
+      "sha256": "017c4ebb24d1a2189c23e13a658d5790c5d52a9ae001b7020a694100b6661c59"
+    },
+    {
+      "path": "test-results/emberwake-strength/pressure5-development-d-policy8-characterization-10-1/evidence-manifest.json",
+      "bytes": 493319,
+      "sha256": "ee07bb4a2543905e8ad1052df82b524c0c6a3b83b51d558e6072b2d3d0ff1955"
+    }
+  ],
+  "finalIndependentReview": ".work/sessions/emberwake-native5-2026-10-16/astra-review-1/final-closure.json"
+}

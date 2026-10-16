@@ -4,8 +4,6 @@ import { BASE_CONTENT } from '../domain/content';
 import {
   DIFFICULTIES,
   HEALTH_POTION_COOLDOWN,
-  LEGACY_RULES_VERSION,
-  PREVIOUS_RULES_VERSION,
   RULES_VERSION,
   difficultyProfile,
   stats,
@@ -19,8 +17,8 @@ import {
   importSession,
   newSession,
   SAVE_KEY,
-  PREVIOUS_SAVE_KEY,
-  LEGACY_SAVE_KEY,
+  CAMPAIGN_VERSIONS,
+  campaignVersion,
   SANDBOX_SAVE_KEY,
   ACTIVE_MODE_KEY,
   saveKey,
@@ -63,18 +61,17 @@ function download(text: string, filename: string): void {
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+const hitCeilingLabel = (fraction: number | null): string =>
+  fraction === null ? 'none' : `${Math.round(fraction * 100)}% max life (minimum 1 damage)`;
 function campaignMode(session: Session): string {
-  return (
-    session.replay.mode ??
-    (session.replay.rulesVersion === LEGACY_RULES_VERSION
-      ? 'campaign-v2'
-      : session.replay.rulesVersion === PREVIOUS_RULES_VERSION
-        ? 'campaign-v3'
-        : 'campaign-v4')
-  );
+  return session.replay.mode ?? campaignVersion(session.replay.rulesVersion)!.mode;
 }
 function preferredCampaignKey(): string {
-  return [SAVE_KEY, PREVIOUS_SAVE_KEY].find((key) => localStorage.getItem(key)) ?? SAVE_KEY;
+  return (
+    CAMPAIGN_VERSIONS.filter((entry) => entry.version >= 3).find((entry) =>
+      localStorage.getItem(entry.key),
+    )?.key ?? SAVE_KEY
+  );
 }
 export default function DiabloApp() {
   const [initial] = useState(() => {
@@ -83,13 +80,9 @@ export default function DiabloApp() {
       const saved = localStorage.getItem(
         mode === 'sandbox'
           ? SANDBOX_SAVE_KEY
-          : mode === 'campaign-v2'
-            ? LEGACY_SAVE_KEY
-            : mode === 'campaign-v3' || mode === 'campaign'
-              ? PREVIOUS_SAVE_KEY
-              : mode === 'campaign-v4'
-                ? SAVE_KEY
-                : preferredCampaignKey(),
+          : (CAMPAIGN_VERSIONS.find(
+              (entry) => entry.mode === (mode === 'campaign' ? 'campaign-v3' : mode),
+            )?.key ?? preferredCampaignKey()),
       );
       return { session: saved ? importSession(saved) : null, error: '' };
     } catch (error) {
@@ -116,13 +109,12 @@ export default function DiabloApp() {
   );
   const [previousCampaigns] = useState(() => {
     try {
-      return [
-        { key: PREVIOUS_SAVE_KEY, version: 3, description: 'original difficulty rules' },
-        { key: LEGACY_SAVE_KEY, version: 2, description: 'original Standard rules' },
-      ].flatMap((entry) => {
-        const bytes = localStorage.getItem(entry.key);
-        return bytes ? [{ ...entry, bytes }] : [];
-      });
+      return CAMPAIGN_VERSIONS.filter((entry) => entry.rulesVersion !== RULES_VERSION).flatMap(
+        (entry) => {
+          const bytes = localStorage.getItem(entry.key);
+          return bytes ? [{ ...entry, bytes }] : [];
+        },
+      );
     } catch {
       return [];
     }
@@ -503,6 +495,7 @@ export default function DiabloApp() {
       />
     </>
   );
+  const draftProfile = DIFFICULTIES[difficulty];
   if (selecting || !session)
     return (
       <main className="emberwake ew-selection">
@@ -563,6 +556,7 @@ export default function DiabloApp() {
             Difficulty{' '}
             <select
               aria-label="Difficulty"
+              aria-describedby="ew-difficulty-rules"
               value={difficulty}
               onChange={(event) => setDifficulty(event.target.value as Difficulty)}
             >
@@ -574,6 +568,11 @@ export default function DiabloApp() {
               ))}
             </select>
           </label>
+          <p id="ew-difficulty-rules" className="ew-fine" data-testid="difficulty-rules">
+            Incoming damage ×{draftProfile.incomingDamage}; player hit ceiling{' '}
+            {hitCeilingLabel(draftProfile.maxHitFraction)}; life potion recovery{' '}
+            {draftProfile.healthPotionRecovery / 10}s.
+          </p>
           <label className="ew-generated">
             <input
               type="checkbox"
@@ -744,13 +743,13 @@ export default function DiabloApp() {
           {h.name} · {h.className} <span>Lv. {p.level}</span>
           {!state.sandbox && (
             <span
-              title={`Incoming damage ×${profile.incomingDamage}; life potion recovery ${profile.healthPotionRecovery / 10}s.`}
+              title={`Incoming damage ×${profile.incomingDamage}; life potion recovery ${profile.healthPotionRecovery / 10}s; player hit ceiling ${hitCeilingLabel(profile.maxHitFraction)}.`}
             >
               {' '}
               · {profile.label}
               {state.rulesVersion === RULES_VERSION
                 ? ''
-                : ` · previous rules v${state.rulesVersion === PREVIOUS_RULES_VERSION ? 3 : 2}`}
+                : ` · previous rules v${campaignVersion(state.rulesVersion)!.version}`}
             </span>
           )}
         </strong>

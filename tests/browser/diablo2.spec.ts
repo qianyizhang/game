@@ -6,7 +6,7 @@ import {
   exportSession,
   importSession,
   SAVE_KEY,
-  PREVIOUS_SAVE_KEY,
+  SAVE_V3_KEY,
   SANDBOX_SAVE_KEY,
   ACTIVE_MODE_KEY,
   dispatch,
@@ -17,7 +17,7 @@ import { currentWorld } from '../../packages/diablo2/src/domain/world';
 import { camera, TILE } from '../../packages/diablo2/src/ui/render';
 import { bodyFits } from '../../packages/diablo2/src/domain/maps';
 import { BASE_CONTENT } from '../../packages/diablo2/src/domain/content';
-import { PREVIOUS_RULES_VERSION } from '../../packages/diablo2/src/domain/game';
+import { RULES_V3 } from '../../packages/diablo2/src/domain/game';
 const review = 'test-results/emberwake';
 test.beforeEach(() => {
   mkdirSync(review, { recursive: true });
@@ -110,7 +110,7 @@ test('historical v3 campaign replay reaches the ending; mod import preserves inv
   page,
 }) => {
   test.setTimeout(browserBudget(60000));
-  const { session } = playCampaign('necromancer', PREVIOUS_RULES_VERSION);
+  const { session } = playCampaign('necromancer', RULES_V3);
   await page.goto('/?game=diablo2');
   await page
     .locator('input[type=file]')
@@ -166,14 +166,14 @@ test('real stairs traverse persistent dungeon floors; legacy demo storage stays 
     (value) => localStorage.setItem('card-workshop.emberwake.v1', value),
     legacy,
   );
-  const campaign = playCampaign('barbarian', PREVIOUS_RULES_VERSION, 'browser-stairs').session;
+  const campaign = playCampaign('barbarian', RULES_V3, 'browser-stairs').session;
   let prefix = newSession(
     campaign.replay.seed,
     campaign.replay.hero,
     campaign.replay.content,
     false,
     'standard',
-    PREVIOUS_RULES_VERSION,
+    RULES_V3,
   );
   for (const command of campaign.replay.commands) {
     const next = dispatch(prefix, command).session;
@@ -198,14 +198,14 @@ test('real stairs traverse persistent dungeon floors; legacy demo storage stays 
   await expect(page.getByRole('heading', { name: 'Buried Sanctuary', exact: true })).toBeVisible();
   await expect(page.locator('.ew-header')).toContainText('Floor 2');
   const first = importSession(
-    await page.evaluate((key) => localStorage.getItem(key)!, PREVIOUS_SAVE_KEY),
+    await page.evaluate((key) => localStorage.getItem(key)!, SAVE_V3_KEY),
   );
   await page.keyboard.press('f');
   await expect(page.getByRole('heading', { name: 'Root Cellars', exact: true })).toBeVisible();
   await page.keyboard.press('f');
   await expect(page.getByRole('heading', { name: 'Buried Sanctuary', exact: true })).toBeVisible();
   const returned = importSession(
-    await page.evaluate((key) => localStorage.getItem(key)!, PREVIOUS_SAVE_KEY),
+    await page.evaluate((key) => localStorage.getItem(key)!, SAVE_V3_KEY),
   );
   expect(currentWorld(returned.state).enemies.map((e) => e.uid)).toEqual(
     currentWorld(first.state).enemies.map((e) => e.uid),

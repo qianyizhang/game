@@ -1,4 +1,4 @@
-import { HEALTH_POTION_COOLDOWN, RULES_VERSION, hasVisiblePortalGuard } from '../domain/game';
+import { HEALTH_POTION_COOLDOWN, usesPressureRules, hasVisiblePortalGuard } from '../domain/game';
 import type { Session } from '../application/session';
 import {
   knownCell,
@@ -267,7 +267,7 @@ export function observe(session: Session, memory: Aliases) {
   if (
     p.healthPotions &&
     p.hp < input.stats.maxHp &&
-    !(s.rulesVersion === RULES_VERSION && p.cooldowns[HEALTH_POTION_COOLDOWN] > 0)
+    !(usesPressureRules(s.rulesVersion) && p.cooldowns[HEALTH_POTION_COOLDOWN] > 0)
   )
     actions.push({ type: 'potion', kind: 'health' });
   if (p.manaPotions && p.mana < input.stats.maxMana) actions.push({ type: 'potion', kind: 'mana' });
@@ -351,7 +351,7 @@ export function observe(session: Session, memory: Aliases) {
         actions.push({ type: 'attack', target: e.uid });
     const guards = enemies.filter((e) => e.hp > 0 && !e.warded);
     if (
-      s.rulesVersion === RULES_VERSION
+      usesPressureRules(s.rulesVersion)
         ? !hasVisiblePortalGuard(s, content)
         : !guards.some((e) => distance(p, e) < 3)
     )

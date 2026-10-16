@@ -4,7 +4,7 @@ import type { PolicyFactory } from '../../../../src/shared/policy/types';
 import { dispatch, newSession, importSession } from '../application/session';
 import { currentWorld } from '../domain/world';
 import { BASE_CONTENT } from '../domain/content';
-import { HEALTH_POTION_COOLDOWN, PREVIOUS_RULES_VERSION, RULES_VERSION } from '../domain/game';
+import { HEALTH_POTION_COOLDOWN, RULES_V3, RULES_V4, RULES_VERSION } from '../domain/game';
 import {
   distance,
   knownCell,
@@ -57,70 +57,79 @@ describe('Emberwake restricted campaign boundary', () => {
       session.state.player.y = 5.5;
       return { session, world, enemy };
     };
-    const clear = field();
-    clear.world.tiles[5] = '......#.......................';
-    const hidden = structuredClone(clear.session);
-    currentWorld(hidden.state).enemies = [clear.enemy];
-    expect(visibleActor(currentWorld(hidden.state), hidden.state.player, clear.enemy)).toBe(false);
-    expect(observe(hidden, emptyAliases())).toEqual(observe(clear.session, emptyAliases()));
-    for (const session of [clear.session, hidden]) {
-      expect(observe(session, emptyAliases()).actions).toContainEqual({ type: 'portal' });
-      const opened = dispatch(session, { type: 'portal' });
-      expect(opened.error).toBeNull();
-      expect(opened.session.state.location).toBe('town');
-    }
-    // The old hidden three-pace veto remains part of historical v3 replay meaning.
-    const old = field(PREVIOUS_RULES_VERSION);
-    old.world.tiles[5] = clear.world.tiles[5];
-    old.world.enemies = [old.enemy];
-    expect(dispatch(old.session, { type: 'portal' }).session).toBe(old.session);
-    for (const [x, hp, boss, lit, guarded] of [
-      [13.4, 100, false, false, true],
-      [13.5, 100, false, false, false],
-      [7.5, 0, false, false, false],
-      [7.5, 100, true, false, false],
-      [7.5, 100, true, true, true],
-    ] as const) {
-      const { session, world, enemy } = field();
-      world.enemies = [{ ...enemy, x, hp, boss }];
-      if (lit) for (const id of BASE_CONTENT.acts[0].wards) session.state.worlds[id].ward = true;
-      const original = structuredClone(session);
-      expect(observe(session, emptyAliases()).actions.some((c) => c.type === 'portal')).toBe(
-        !guarded,
+    for (const version of [RULES_VERSION, RULES_V4]) {
+      const clear = field(version);
+      clear.world.tiles[5] = '......#.......................';
+      const hidden = structuredClone(clear.session);
+      currentWorld(hidden.state).enemies = [clear.enemy];
+      expect(visibleActor(currentWorld(hidden.state), hidden.state.player, clear.enemy)).toBe(
+        false,
       );
-      const result = dispatch(session, { type: 'portal' });
-      if (guarded) {
-        expect(result.error).toBeTruthy();
-        expect(result.session).toBe(session);
-        expect(session).toEqual(original);
-      } else {
-        expect(result.error).toBeNull();
-        expect(result.session.state.location).toBe('town');
+      expect(observe(hidden, emptyAliases())).toEqual(observe(clear.session, emptyAliases()));
+      for (const session of [clear.session, hidden]) {
+        expect(observe(session, emptyAliases()).actions).toContainEqual({ type: 'portal' });
+        const opened = dispatch(session, { type: 'portal' });
+        expect(opened.error).toBeNull();
+        expect(opened.session.state.location).toBe('town');
+      }
+      // The old hidden three-pace veto remains part of historical v3 replay meaning.
+      const old = field(RULES_V3);
+      old.world.tiles[5] = clear.world.tiles[5];
+      old.world.enemies = [old.enemy];
+      expect(dispatch(old.session, { type: 'portal' }).session).toBe(old.session);
+      for (const [x, hp, boss, lit, guarded] of [
+        [13.4, 100, false, false, true],
+        [13.5, 100, false, false, false],
+        [7.5, 0, false, false, false],
+        [7.5, 100, true, false, false],
+        [7.5, 100, true, true, true],
+      ] as const) {
+        const { session, world, enemy } = field(version);
+        world.enemies = [{ ...enemy, x, hp, boss }];
+        if (lit) for (const id of BASE_CONTENT.acts[0].wards) session.state.worlds[id].ward = true;
+        const original = structuredClone(session);
+        expect(observe(session, emptyAliases()).actions.some((c) => c.type === 'portal')).toBe(
+          !guarded,
+        );
+        const result = dispatch(session, { type: 'portal' });
+        if (guarded) {
+          expect(result.error).toBeTruthy();
+          expect(result.session).toBe(session);
+          expect(session).toEqual(original);
+        } else {
+          expect(result.error).toBeNull();
+          expect(result.session.state.location).toBe('town');
+        }
       }
     }
   });
 
   it('offers health drinks exactly when recovery permits while leaving mana available', () => {
-    const session = dispatch(newSession('POTION-MENU', 'barbarian'), {
-      type: 'travel',
-      act: 0,
-    }).session;
-    currentWorld(session.state).enemies = [];
-    currentWorld(session.state).hazards = [];
-    currentWorld(session.state).projectiles = [];
-    session.state.player.hp = 1;
-    session.state.player.mana = 0;
-    session.state.player.cooldowns[HEALTH_POTION_COOLDOWN] = 0.5;
-    const recovering = observe(session, emptyAliases());
-    expect(recovering.actions).not.toContainEqual({ type: 'potion', kind: 'health' });
-    expect(recovering.actions).toContainEqual({ type: 'potion', kind: 'mana' });
-    expect(dispatch(session, { type: 'potion', kind: 'health' }).session).toBe(session);
-    const ready = dispatch(session, { type: 'advance', ticks: 1 }).session;
-    expect(observe(ready, emptyAliases()).actions).toContainEqual({
-      type: 'potion',
-      kind: 'health',
-    });
-    expect(dispatch(ready, { type: 'potion', kind: 'health' }).error).toBeNull();
+    for (const version of [RULES_VERSION, RULES_V4]) {
+      const session = dispatch(
+        newSession('POTION-MENU', 'barbarian', BASE_CONTENT, false, 'standard', version),
+        {
+          type: 'travel',
+          act: 0,
+        },
+      ).session;
+      currentWorld(session.state).enemies = [];
+      currentWorld(session.state).hazards = [];
+      currentWorld(session.state).projectiles = [];
+      session.state.player.hp = 1;
+      session.state.player.mana = 0;
+      session.state.player.cooldowns[HEALTH_POTION_COOLDOWN] = 0.5;
+      const recovering = observe(session, emptyAliases());
+      expect(recovering.actions).not.toContainEqual({ type: 'potion', kind: 'health' });
+      expect(recovering.actions).toContainEqual({ type: 'potion', kind: 'mana' });
+      expect(dispatch(session, { type: 'potion', kind: 'health' }).session).toBe(session);
+      const ready = dispatch(session, { type: 'advance', ticks: 1 }).session;
+      expect(observe(ready, emptyAliases()).actions).toContainEqual({
+        type: 'potion',
+        kind: 'health',
+      });
+      expect(dispatch(ready, { type: 'potion', kind: 'health' }).error).toBeNull();
+    }
   });
 
   it('retains every known and unknown terrain glyph in a compact public round trip', () => {

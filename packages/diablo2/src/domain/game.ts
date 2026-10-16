@@ -18,19 +18,19 @@ import { cast, spawnEnemy, tick } from './combat';
 import { stats } from './stats';
 import { currentRegion, currentWorld, wardsLit, portalOpen } from './world';
 import { equipTestCharacter, refill, landingFor, SANDBOX_RULES_VERSION } from './sandbox';
+import { RULES_VERSION, RULES_V2, isCampaignVersion, usesPressureRules } from './versions';
 export { stats } from './stats';
 export { validateContent } from './validate';
 export type { Command, State, Content } from './types';
-export const RULES_VERSION = 'emberwake-4';
-export const PREVIOUS_RULES_VERSION = 'emberwake-3';
-export const LEGACY_RULES_VERSION = 'emberwake-2';
+export { RULES_VERSION, RULES_V4, RULES_V3, RULES_V2, usesPressureRules } from './versions';
 export {
   DIFFICULTIES,
-  PREVIOUS_DIFFICULTIES,
+  V4_DIFFICULTIES,
+  V3_DIFFICULTIES,
   difficultyProfile,
   HEALTH_POTION_COOLDOWN,
 } from './difficulty';
-/** Exactly the public actor sensor; hidden and warded enemies cannot veto a v4 portal. */
+/** Exactly the public actor sensor; hidden and warded enemies cannot veto a v4/v5 portal. */
 export function hasVisiblePortalGuard(state: State, content: Content): boolean {
   const world = currentWorld(state);
   return world.enemies.some(
@@ -104,19 +104,14 @@ export function createGame(
   rulesVersion = RULES_VERSION,
 ): State {
   if (!Object.hasOwn(DIFFICULTIES, difficulty)) throw new Error('Unknown difficulty');
-  if (
-    rulesVersion !== RULES_VERSION &&
-    rulesVersion !== PREVIOUS_RULES_VERSION &&
-    rulesVersion !== LEGACY_RULES_VERSION
-  )
-    throw new Error('Unsupported rules version');
+  if (!isCampaignVersion(rulesVersion)) throw new Error('Unsupported rules version');
   const content = validateContent(pack);
   const hero = content.heroes.find((h) => h.id === heroId);
   if (!hero) throw new Error('Unknown hero');
   if (typeof seed !== 'string' || seed.length > 100) throw new Error('Invalid seed');
   const state: State = {
     rulesVersion,
-    ...(!sandbox && rulesVersion !== LEGACY_RULES_VERSION ? { difficulty } : {}),
+    ...(!sandbox && rulesVersion !== RULES_V2 ? { difficulty } : {}),
     contentId: content.id,
     contentVersion: content.version,
     hero: heroId,
@@ -336,13 +331,13 @@ function execute(state: State, content: Content, command: Command): string | nul
     case 'portal':
       if (state.location !== 'field') return 'You are already at the refuge.';
       if (
-        state.rulesVersion === RULES_VERSION
+        usesPressureRules(state.rulesVersion)
           ? hasVisiblePortalGuard(state, content)
           : world.enemies.some(
               (e) => e.hp > 0 && (!e.boss || wardsLit(state, content)) && distance(p, e) < 3,
             )
       )
-        return state.rulesVersion === RULES_VERSION
+        return usesPressureRules(state.rulesVersion)
           ? 'Clear visible enemies before opening a portal.'
           : 'Clear the enemies within three paces before opening a portal.';
       state.portal = { act: state.act, region: state.region, position: { x: p.x, y: p.y } };
@@ -441,7 +436,7 @@ function execute(state: State, content: Content, command: Command): string | nul
     case 'potion': {
       if (
         command.kind === 'health' &&
-        state.rulesVersion === RULES_VERSION &&
+        usesPressureRules(state.rulesVersion) &&
         p.cooldowns[HEALTH_POTION_COOLDOWN] > 0
       )
         return 'Your health potion is still recovering.';
@@ -453,7 +448,7 @@ function execute(state: State, content: Content, command: Command): string | nul
       if (p[resource] >= max) return `Your ${command.kind === 'health' ? 'life' : 'mana'} is full.`;
       p[key]--;
       p[resource] = Math.min(max, p[resource] + max * 0.6);
-      if (command.kind === 'health' && state.rulesVersion === RULES_VERSION)
+      if (command.kind === 'health' && usesPressureRules(state.rulesVersion))
         p.cooldowns[HEALTH_POTION_COOLDOWN] = difficultyProfile(state).healthPotionRecovery;
       return null;
     }
@@ -618,11 +613,9 @@ export function applyCommand(
   if (
     (state.sandbox
       ? state.rulesVersion !== SANDBOX_RULES_VERSION
-      : state.rulesVersion !== RULES_VERSION &&
-        state.rulesVersion !== PREVIOUS_RULES_VERSION &&
-        state.rulesVersion !== LEGACY_RULES_VERSION) ||
+      : !isCampaignVersion(state.rulesVersion)) ||
     (!state.sandbox &&
-      state.rulesVersion !== LEGACY_RULES_VERSION &&
+      state.rulesVersion !== RULES_V2 &&
       (!state.difficulty || !Object.hasOwn(DIFFICULTIES, state.difficulty))) ||
     state.contentId !== content.id ||
     state.contentVersion !== content.version

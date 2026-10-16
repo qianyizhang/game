@@ -55,17 +55,21 @@ the action menu must remain equal too.
 
 ## Difficulty and results
 
-Campaign rules v4 use these fixed pressure settings. Their measured ordering remains
+Campaign rules v5 use these fixed pressure settings. Their measured ordering remains
 an evaluation question; the names and parameters alone do not establish calibration.
 
-| Tier     | Hostile damage multiplier | Life-potion recovery |
-| -------- | ------------------------- | -------------------- |
-| Relaxed  | 0.75                      | 0 seconds            |
-| Standard | 3                         | 20 seconds           |
-| Severe   | 6                         | 60 seconds           |
+| Tier     | Hostile damage multiplier | Player per-impact ceiling | Life-potion recovery |
+| -------- | ------------------------- | ------------------------- | -------------------- |
+| Relaxed  | 0.75                      | Unlimited                 | 0 seconds            |
+| Standard | 8                         | 55% of current maximum HP | 20 seconds           |
+| Severe   | 12                        | 70% of current maximum HP | 60 seconds           |
 
-Damage scales once at hostile impact, after the player's existing mitigation, and
-also applies to summoned allies. Health recovery uses the owned cooldown key
+Player damage scales once after mitigation and rounds once, then takes the minimum
+with `max(1, floor(currentMaxHp * fraction))` when a ceiling applies. Allies retain
+uncapped floating impact arithmetic with the same tier multiplier. A per-impact
+ceiling does not prevent several impacts within one accepted advance from killing
+a full-health player; a custom one-HP maximum can also die to the minimum-one floor.
+Health recovery uses the owned cooldown key
 `@health-potion`; content IDs cannot occupy that namespace. The public menu excludes
 unavailable drinks, and the live HUD displays remaining recovery. Mana potions retain
 their original behavior. Maps, content and rewards remain unchanged.
@@ -74,10 +78,14 @@ Native portal availability and the public menu use the same living, nonwarded en
 sensor: radius eight plus line of sight. An undisclosed enemy behind a wall cannot
 make an offered portal fail. Historical rules v3 retain the original distance-three
 native guard, instant life potions and **0.75/1/1.3** player damage arithmetic; rules
-v2 retain their original Standard meaning. V4, v3 and v2 campaigns have separate
-save slots and exact versioned replay reconstruction. First upgrade resumes an old
-v3 journey under its original rules; starting v4 requires an explicit new journey.
+v2 retain their original Standard meaning. Historical v4 keeps **0.75/3/6**, no hit
+ceiling and **0/20/60-second** recovery. V5, v4, v3 and v2 campaigns have separate
+save slots and exact versioned replay reconstruction. First upgrade checks v5/v4/v3
+slots in that order and preserves unreadable bytes; a valid loaded campaign keeps its
+original rules. V2 remains explicitly restorable. Starting v5 requires an explicit new journey when an older game loads.
 Sandbox keeps its existing rules and ordinary developer controls, outside this study.
+The [native5 record](../research/experiments/2026-10-16-emberwake-pressure-5.md)
+pins development adoption and compatibility evidence; fresh calibration is separate.
 
 The three priorities are Immediate (damage/direct objectives), Survival (defense,
 earlier protection and safer positioning), and Growth (loot, upgrades and scaling).
@@ -264,7 +272,7 @@ identity. Current-identity audit availability must not relabel historical identi
 mismatches as corrupt recordings. A score-v2 evaluator sidecar may explicitly reconstruct
 an old native journal and add a new score, retaining both original and evaluator pins;
 it is neither fresh policy execution nor a new audit of original input sampling.
-Native rules-v3 replay reconstruction remains unchanged. Winning development
+Native rules-v2/v3/v4 replay reconstruction remains unchanged. Winning development
 witnesses establish playability on those inputs; they do not establish strength or a
 calibrated difficulty ladder on independent seeds.
 

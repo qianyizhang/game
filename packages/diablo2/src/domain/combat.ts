@@ -1,4 +1,5 @@
-import { difficultyProfile } from './difficulty';
+import { usesPressureRules } from './versions';
+import { difficultyProfile, playerHitDamage } from './difficulty';
 import type { Content, Element, Enemy, Point, State, World } from './types';
 import { distance, lineOfSight, reveal, slide, toward, bodyFits } from './maps';
 import { note, random } from './random';
@@ -100,11 +101,7 @@ function hurt(state: State, content: Content, damage: number, element: Element):
   const p = state.player;
   const s = stats(state, content);
   const mitigation = element === 'physical' ? s.armor / (s.armor + 70) : s.resist / 100;
-  p.hp = Math.max(
-    0,
-    p.hp -
-      Math.max(1, Math.round(damage * (1 - mitigation) * difficultyProfile(state).incomingDamage)),
-  );
+  p.hp = Math.max(0, p.hp - playerHitDamage(state, damage, mitigation, s.maxHp));
   if (element === 'cold') p.slow = 15;
   if (p.hp === 0) {
     const lost = Math.floor(p.gold * 0.25);
@@ -285,7 +282,7 @@ export function tick(state: State, content: Content): void {
       else if (ally)
         ally.hp -=
           damage *
-          (state.rulesVersion === 'emberwake-4' ? difficultyProfile(state).incomingDamage : 1);
+          (usesPressureRules(state.rulesVersion) ? difficultyProfile(state).incomingDamage : 1);
       else hurt(state, content, damage, def.element);
       enemy.cooldown = enemy.elite ? 12 : 18;
     }
@@ -352,7 +349,7 @@ export function tick(state: State, content: Content): void {
       if (ally) {
         ally.hp -=
           shot.damage *
-          (state.rulesVersion === 'emberwake-4' ? difficultyProfile(state).incomingDamage : 1);
+          (usesPressureRules(state.rulesVersion) ? difficultyProfile(state).incomingDamage : 1);
         shot.life = 0;
       } else if (segmentDistance(p) < 0.35 + shot.radius) {
         hurt(state, content, shot.damage, shot.element);

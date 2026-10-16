@@ -3,27 +3,59 @@ import {
   applyCommand,
   createGame,
   RULES_VERSION,
-  PREVIOUS_RULES_VERSION,
-  LEGACY_RULES_VERSION,
   DIFFICULTIES,
   validCommand,
   validateContent,
 } from '../domain/game';
 import type { Command, Content, Difficulty, Replay, State } from '../domain/types';
 import { SANDBOX_RULES_VERSION } from '../domain/sandbox';
+import { RULES_V4, RULES_V3, RULES_V2 } from '../domain/versions';
 export const SANDBOX_SAVE_KEY = 'card-workshop.emberwake.sandbox.v1';
 export const ACTIVE_MODE_KEY = 'card-workshop.emberwake.active-mode';
+export const SAVE_V2_KEY = 'card-workshop.emberwake.v2';
+export const SAVE_V3_KEY = 'card-workshop.emberwake.v3';
+export const SAVE_V4_KEY = 'card-workshop.emberwake.v4';
+export const SAVE_KEY = 'card-workshop.emberwake.v5';
+export const CAMPAIGN_VERSIONS = [
+  {
+    rulesVersion: RULES_VERSION,
+    version: 5,
+    format: 'emberwake-replay-v5',
+    key: SAVE_KEY,
+    mode: 'campaign-v5',
+    description: 'current pressure rules',
+  },
+  {
+    rulesVersion: RULES_V4,
+    version: 4,
+    format: 'emberwake-replay-v4',
+    key: SAVE_V4_KEY,
+    mode: 'campaign-v4',
+    description: 'previous pressure rules',
+  },
+  {
+    rulesVersion: RULES_V3,
+    version: 3,
+    format: 'emberwake-replay-v3',
+    key: SAVE_V3_KEY,
+    mode: 'campaign-v3',
+    description: 'original difficulty rules',
+  },
+  {
+    rulesVersion: RULES_V2,
+    version: 2,
+    format: 'emberwake-replay-v2',
+    key: SAVE_V2_KEY,
+    mode: 'campaign-v2',
+    description: 'original Standard rules',
+  },
+] as const;
+export const campaignVersion = (rulesVersion: unknown) =>
+  CAMPAIGN_VERSIONS.find((version) => version.rulesVersion === rulesVersion);
 export const saveKey = (session: Session): string =>
   session.replay.mode === 'sandbox'
     ? SANDBOX_SAVE_KEY
-    : session.replay.rulesVersion === LEGACY_RULES_VERSION
-      ? LEGACY_SAVE_KEY
-      : session.replay.rulesVersion === PREVIOUS_RULES_VERSION
-        ? PREVIOUS_SAVE_KEY
-        : SAVE_KEY;
-export const LEGACY_SAVE_KEY = 'card-workshop.emberwake.v2';
-export const PREVIOUS_SAVE_KEY = 'card-workshop.emberwake.v3';
-export const SAVE_KEY = 'card-workshop.emberwake.v4';
+    : campaignVersion(session.replay.rulesVersion)!.key;
 export interface Session {
   state: State;
   replay: Replay;
@@ -40,13 +72,8 @@ export function newSession(
   return {
     state: createGame(seed, hero, pack, sandbox, difficulty, rulesVersion),
     replay: {
-      format:
-        sandbox || rulesVersion === LEGACY_RULES_VERSION
-          ? 'emberwake-replay-v2'
-          : rulesVersion === PREVIOUS_RULES_VERSION
-            ? 'emberwake-replay-v3'
-            : 'emberwake-replay-v4',
-      ...(!sandbox && rulesVersion !== LEGACY_RULES_VERSION ? { difficulty } : {}),
+      format: sandbox ? 'emberwake-replay-v2' : campaignVersion(rulesVersion)!.format,
+      ...(!sandbox && rulesVersion !== RULES_V2 ? { difficulty } : {}),
       rulesVersion: sandbox ? SANDBOX_RULES_VERSION : rulesVersion,
       ...(sandbox ? { mode: 'sandbox' as const } : {}),
       content: pack,
@@ -95,18 +122,16 @@ export function importSession(text: string): Session {
   if (!value || typeof value !== 'object') throw new Error('Invalid save.');
   const r = value as Record<string, unknown>;
   const sandbox = r.mode === 'sandbox';
-  const legacy = !sandbox && r.rulesVersion === LEGACY_RULES_VERSION;
-  const previous = !sandbox && r.rulesVersion === PREVIOUS_RULES_VERSION;
+  const version = campaignVersion(r.rulesVersion);
+  const legacy = !sandbox && r.rulesVersion === RULES_V2;
   if (
     (r.mode !== undefined && !sandbox) ||
     (sandbox
       ? r.format !== 'emberwake-replay-v2' || r.rulesVersion !== SANDBOX_RULES_VERSION
-      : legacy
-        ? r.format !== 'emberwake-replay-v2'
-        : r.format !== (previous ? 'emberwake-replay-v3' : 'emberwake-replay-v4') ||
-          (!previous && r.rulesVersion !== RULES_VERSION) ||
-          typeof r.difficulty !== 'string' ||
-          !Object.hasOwn(DIFFICULTIES, r.difficulty))
+      : !version ||
+        r.format !== version.format ||
+        (!legacy &&
+          (typeof r.difficulty !== 'string' || !Object.hasOwn(DIFFICULTIES, r.difficulty))))
   )
     throw new Error('Unsupported save or rules version.');
   if (typeof r.seed !== 'string' || r.seed.length > 100 || typeof r.hero !== 'string')
@@ -120,7 +145,7 @@ export function importSession(text: string): Session {
     content,
     sandbox,
     legacy || sandbox ? 'standard' : (r.difficulty as Difficulty),
-    legacy ? LEGACY_RULES_VERSION : previous ? PREVIOUS_RULES_VERSION : RULES_VERSION,
+    sandbox ? RULES_VERSION : version!.rulesVersion,
   );
   let state = session.state;
   const commands: Command[] = [];

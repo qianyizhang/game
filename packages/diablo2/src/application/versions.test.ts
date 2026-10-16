@@ -3,13 +3,7 @@ import baseline from '../../../../tests/fixtures/emberwake-v2-continuity.json';
 import historicalV3 from '../../../../tests/fixtures/emberwake-v3-continuity.json';
 import { expect, it } from 'vitest';
 import { BASE_CONTENT } from '../domain/content';
-import {
-  applyCommand,
-  createGame,
-  LEGACY_RULES_VERSION,
-  PREVIOUS_RULES_VERSION,
-  RULES_VERSION,
-} from '../domain/game';
+import { applyCommand, createGame, RULES_V2, RULES_V3, RULES_VERSION } from '../domain/game';
 import type { Command, Content, Difficulty, Replay, State } from '../domain/types';
 import {
   dispatch,
@@ -18,8 +12,8 @@ import {
   newSession,
   saveKey,
   SAVE_KEY,
-  LEGACY_SAVE_KEY,
-  PREVIOUS_SAVE_KEY,
+  SAVE_V2_KEY,
+  SAVE_V3_KEY,
   SANDBOX_SAVE_KEY,
 } from './session';
 
@@ -43,7 +37,7 @@ const digest = async (value: unknown) => {
 const legacyShape = (state: State) => {
   const result = structuredClone(state);
   delete result.difficulty;
-  result.rulesVersion = LEGACY_RULES_VERSION;
+  result.rulesVersion = RULES_V2;
   return result;
 };
 
@@ -52,7 +46,7 @@ it('reconstructs and continues complete pre-change v2 states without reinterpret
     const restored = importSession(JSON.stringify(saved.replay));
     expect(await digest(restored.state)).toBe(saved.stateDigest);
     expect(restored.replay).toEqual(saved.replay);
-    expect(saveKey(restored)).toBe(LEGACY_SAVE_KEY);
+    expect(saveKey(restored)).toBe(SAVE_V2_KEY);
     expect(restored.state.difficulty).toBeUndefined();
     const next = dispatch(restored, saved.continuation);
     expect(next.error).toBeNull();
@@ -66,7 +60,7 @@ it('reconstructs and continues complete pre-change v2 states without reinterpret
       BASE_CONTENT,
       false,
       'standard',
-      PREVIOUS_RULES_VERSION,
+      RULES_V3,
     );
     let state = current.state;
     for (const command of saved.replay.commands) {
@@ -82,7 +76,7 @@ it('persists the chosen tier, rejects mismatched envelopes, and keeps sandbox un
   for (const difficulty of ['relaxed', 'standard', 'severe'] as const) {
     const session = newSession('tiers', 'barbarian', BASE_CONTENT, false, difficulty);
     expect(session.state.rulesVersion).toBe(RULES_VERSION);
-    expect(session.replay.format).toBe('emberwake-replay-v4');
+    expect(session.replay.format).toBe('emberwake-replay-v5');
     expect(session.state.difficulty).toBe(difficulty);
     expect(saveKey(session)).toBe(SAVE_KEY);
     expect(importSession(exportSession(session))).toEqual(session);
@@ -94,24 +88,17 @@ it('persists the chosen tier, rejects mismatched envelopes, and keeps sandbox un
   }
   // Imported and continued v3 games keep their original tier, envelope and save slot.
   for (const difficulty of ['relaxed', 'standard', 'severe'] as const) {
-    const previous = newSession(
-      'tiers',
-      'barbarian',
-      BASE_CONTENT,
-      false,
-      difficulty,
-      PREVIOUS_RULES_VERSION,
-    );
+    const previous = newSession('tiers', 'barbarian', BASE_CONTENT, false, difficulty, RULES_V3);
     expect(previous.replay.format).toBe('emberwake-replay-v3');
     expect(previous.state.difficulty).toBe(difficulty);
-    expect(saveKey(previous)).toBe(PREVIOUS_SAVE_KEY);
+    expect(saveKey(previous)).toBe(SAVE_V3_KEY);
     const continued = dispatch(importSession(exportSession(previous)), {
       type: 'run',
       enabled: false,
     });
     expect(continued.error).toBeNull();
     expect(importSession(exportSession(continued.session))).toEqual(continued.session);
-    expect(continued.session.state.rulesVersion).toBe(PREVIOUS_RULES_VERSION);
+    expect(continued.session.state.rulesVersion).toBe(RULES_V3);
   }
   const replay = newSession('tiers', 'barbarian').replay;
   for (const change of [
@@ -136,7 +123,7 @@ it('preserves historical v3 hostile hit arithmetic and respawns', () => {
     ['severe', 26],
   ] as const) {
     let state = applyCommand(
-      createGame('damage', 'barbarian', BASE_CONTENT, false, difficulty, PREVIOUS_RULES_VERSION),
+      createGame('damage', 'barbarian', BASE_CONTENT, false, difficulty, RULES_V3),
       {
         type: 'travel',
         act: 0,
@@ -202,7 +189,7 @@ it('reconstructs and continues historical v3 native combat, potion and town jour
         JSON.stringify({ ...saved.replayHeader, content: v3.content, commands }),
       );
       expect(restored.state.rulesVersion).toBe(saved.replayHeader.rulesVersion);
-      expect(saveKey(restored)).toBe(PREVIOUS_SAVE_KEY);
+      expect(saveKey(restored)).toBe(SAVE_V3_KEY);
       expect(restored.state.hero).toBe(saved.hero);
       expect(restored.state.difficulty).toBe(saved.difficulty);
       expect(await digest(restored.state)).toBe(witness.stateSha256);

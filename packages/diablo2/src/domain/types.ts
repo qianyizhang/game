@@ -281,7 +281,8 @@ export type Command =
   | { type: 'dev-options'; god: boolean; reveal: boolean }
   | { type: 'dev-refill' | 'dev-corpses' };
 export interface Replay {
-  format: 'emberwake-replay-v2' | 'emberwake-replay-v3' | 'emberwake-replay-v4';
+  format:
+    'emberwake-replay-v2' | 'emberwake-replay-v3' | 'emberwake-replay-v4' | 'emberwake-replay-v5';
   difficulty?: Difficulty;
   mode?: 'sandbox';
   rulesVersion: string;
