@@ -1,6 +1,18 @@
 /** Evidence plumbing only. Each game owns observations, legality, timing and outcomes. */
 export type Json = null | boolean | number | string | Json[] | { [key: string]: Json };
 export type JsonObject = { [key: string]: Json };
+export interface StudySetup {
+  id: string;
+  difficulty: string;
+  stratum: string;
+  setup: JsonObject;
+}
+export interface StudyDefinition {
+  setups: readonly StudySetup[];
+  defaultSetup: JsonObject;
+  ranking: string;
+  reviewPath: string;
+}
 export interface PolicyConfig {
   setup: JsonObject;
   policySeed: string;

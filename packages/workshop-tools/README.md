@@ -110,7 +110,7 @@ Default usage output is `test-results/disposable/usage-dashboard-<UUID>`, closed
 ## Policy adoption commands
 
 `npm run engine:policy -- run|record|benchmark|audit` supplies the checked policy
-workflow, initially for Blindside. Built-in policies and trusted local TypeScript
+workflow for Blindside and Spire. Built-in policies and trusted local TypeScript
 factory modules use the same game-owned observation/command adapter. `record` and
 `benchmark` require fresh output directories, retain source-pinned compiled bundles,
 original inputs/proposals, native results and independent audits; `audit` writes an
@@ -118,3 +118,8 @@ exclusive new receipt. Benchmark writes its frozen protocol before cases execute
 No policy module receives the hidden environment seed. See the
 [Blindside contract](../../docs/engineering/blindside-agent.md) for options, extension
 example, fairness limits, difficulty/metrics, reserved cohorts and isolated review.
+The [Spire contract](../../docs/engineering/spire-agent.md) uses explicit `--setup` JSON
+for character/Ascension. Each adapter owns its study setups, ranking and review URL;
+reports keep character/hero strata separate over paired independent seed blocks.
+`policy-study-2` adds setup/stratum identities and paired win differences; original
+`policy-study-1` receipts remain unchanged.

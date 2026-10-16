@@ -113,6 +113,9 @@ board belongs only in the review perspective.
 Verify the boundary with complete legal journeys and focused counterexamples:
 
 - Mutating received data cannot mutate the game or another seat's view.
+- **Generation is not disclosure:** phase/fog/seat boundaries determine visibility.
+  An unopened chest may already hold a generated reward; a nonempty rules field is
+  not permission to expose it. Mask unrevealed values and test populated hidden fields.
 - States with the same permitted history and public legal choices expose identical
   policy inputs despite different hidden state. With identical policy memory and
   policy RNG, their next decisions also agree. Preserve legitimately observed history
@@ -158,6 +161,9 @@ pair or seed to order monotonically. If all policies saturate or differences rem
 uncertain, publish that result and continue development before claiming calibrated
 difficulty or differentiated policy strength. Human difficulty/enjoyment requires
 separate evidence.
+For rare binary outcomes, zero observed variance does not establish a zero-width
+population interval. Use a suitable binomial/paired method or mark uncertainty
+unavailable; retain original reports and source-pin corrected analyses.
 
 ## Make every rollout reviewable
 
@@ -283,14 +289,14 @@ Accepted direction on 2026-10-16: establish this guide first, then complete one 
 at a time. The rows below are a starting inventory, not certification against this
 new standard. Update each row with its game contract and dated evidence when adopted.
 
-| Order | Game                 | Starting point and remaining adoption work                                                                                                                                                                                                                                                                                                                                   |
-| ----- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1     | Night Passage        | [Adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md): extensible constrained policies, original inputs/proposals, exact CLI audit and multi-rollout spectator navigation with policy/evaluator perspectives. Existing calibration remains the strength evidence; old recordings lack original knowledge and prefix branching is not offered. |
-| 2     | Blindside            | [Policy contract](blindside-agent.md): restricted observations, local TS factories, immediate/survival/growth strategies, three selectable target tiers, v4 replay continuity, shared recording/audit/navigation and isolated original-input review. Dated evaluation evidence accompanies this adoption; uncertainty remains explicit.                                      |
-| 3     | Spire                | [Command/search seam](../guide/engines.md), Ascensions 0–5 and a lifecycle heuristic exist. Add restricted policy play, extension example, distinct policies, matrix and rollout review; full-state transition lookahead is diagnostic.                                                                                                                                      |
-| 4     | Last Hearth          | [Agent contract](hearth-agents.md), [arena](../guide/hearth-arena.md), versioned policies, [historical decision explorer](../research/hearth-recruitment-v2.md) and frozen v5 evidence exist. Complete current v6 spell-aware evaluation, declared difficulty populations and the review journeys; preserve old v5 environments/results.                                     |
-| 5     | Emberwake            | [Campaign command/replay boundary](../../packages/diablo2/README.md) and a verification policy exist. Define restricted policy play, score/difficulty contracts, extension example, matrix and rollout review.                                                                                                                                                               |
-| 6     | Dungeon Cartographer | [Expedition commands and replay](../../src/games/cartographer/application/session.ts) and a simulation policy exist. Define restricted policy play, score/difficulty contracts, extension example, matrix and rollout review.                                                                                                                                                |
+| Order | Game                 | Starting point and remaining adoption work                                                                                                                                                                                                                                                                                                                                        |
+| ----- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1     | Night Passage        | [Adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md): extensible constrained policies, original inputs/proposals, exact CLI audit and multi-rollout spectator navigation with policy/evaluator perspectives. Existing calibration remains the strength evidence; old recordings lack original knowledge and prefix branching is not offered.      |
+| 2     | Blindside            | [Policy contract](blindside-agent.md): restricted observations, local TS factories, immediate/survival/growth strategies, three selectable target tiers, v4 replay continuity, shared recording/audit/navigation and isolated original-input review. Dated evaluation evidence accompanies this adoption; uncertainty remains explicit.                                           |
+| 3     | Spire                | [Policy contract](spire-agent.md) and [adoption evidence](../research/experiments/2026-10-16-spire-policy.md): restricted public legal menus, local TS factories, three priorities, both characters at Ascensions 0/2/5, shared recording/audit/review and 540 audited episodes. Sparse wins leave strength and win-rate calibration open; progress differences remain qualified. |
+| 4     | Last Hearth          | [Agent contract](hearth-agents.md), [arena](../guide/hearth-arena.md), versioned policies, [historical decision explorer](../research/hearth-recruitment-v2.md) and frozen v5 evidence exist. Complete current v6 spell-aware evaluation, declared difficulty populations and the review journeys; preserve old v5 environments/results.                                          |
+| 5     | Emberwake            | [Campaign command/replay boundary](../../packages/diablo2/README.md) and a verification policy exist. Define restricted policy play, score/difficulty contracts, extension example, matrix and rollout review.                                                                                                                                                                    |
+| 6     | Dungeon Cartographer | [Expedition commands and replay](../../src/games/cartographer/application/session.ts) and a simulation policy exist. Define restricted policy play, score/difficulty contracts, extension example, matrix and rollout review.                                                                                                                                                     |
 
 For each game, close with a working extension example, complete-episode evidence,
 boundary tests including a leak counterexample, audited replay/decision linkage,

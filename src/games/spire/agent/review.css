@@ -1,0 +1,25 @@
+.spire-policy-board {
+  min-width: 0;
+  margin: 1rem 0;
+}
+.spire-policy-board .table-area {
+  min-width: 0;
+  padding: clamp(0.6rem, 2vw, 1.4rem);
+  border-radius: 0.6rem;
+}
+.spire-policy-board .table-area button:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.spire-policy-board .spire-recorded-choices {
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.spire-policy-board details {
+  margin: 0.8rem 0;
+}
+.spire-policy-board summary {
+  cursor: pointer;
+}

@@ -2,9 +2,14 @@ import { mkdir, mkdtemp, readFile, realpath, rm, writeFile } from 'node:fs/promi
 import { tmpdir } from 'node:os';
 import { relative, resolve } from 'node:path';
 import { buildRuntime, runtimePins, repositoryRoot, sha256 } from '../runtime-bundle.ts';
-import type { EpisodeAdapter, PolicyFactory } from '../../../src/shared/policy/types';
+import type {
+  EpisodeAdapter,
+  PolicyFactory,
+  StudyDefinition,
+} from '../../../src/shared/policy/types';
 export interface Runtime {
   adapter: EpisodeAdapter<unknown, unknown, unknown>;
+  study: StudyDefinition;
   builtins: Record<string, PolicyFactory<unknown, unknown>>;
   custom?: PolicyFactory<unknown, unknown>;
   recordEpisode: (typeof import('../../../src/shared/policy/rollout'))['recordEpisode'];
@@ -13,6 +18,7 @@ export interface Runtime {
 }
 const adapters: Record<string, string> = {
   blindside: 'src/games/balatro/agent/adapter.ts',
+  spire: 'src/games/spire/agent/adapter.ts',
 };
 /** Selected adapter/module is statically bundled: no unpinned runtime chunks. */
 export async function withRuntime<T>(
@@ -35,7 +41,7 @@ export async function withRuntime<T>(
     await writeFile(
       entry,
       [
-        `export { adapter, builtins } from ${JSON.stringify(resolve(repositoryRoot, adapterPath))};`,
+        `export { adapter, builtins, study } from ${JSON.stringify(resolve(repositoryRoot, adapterPath))};`,
         `export { recordEpisode, auditRollout, parseRollout } from ${JSON.stringify(resolve(repositoryRoot, 'src/shared/policy/rollout.ts'))};`,
         ...(options.policyModule
           ? [`export { default as custom } from ${JSON.stringify(resolve(options.policyModule))};`]

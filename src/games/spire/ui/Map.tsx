@@ -9,9 +9,11 @@ const y = (row: number) => 65 + (MAP_ROWS - row) * 72;
 export function RouteMap({
   run,
   dispatch,
+  readOnly = false,
 }: {
   run: SpireState;
   dispatch: (c: SpireCommand) => void;
+  readOnly?: boolean;
 }) {
   const scroll = useRef<HTMLDivElement>(null);
   const available = availableNodes(run);
@@ -26,7 +28,11 @@ export function RouteMap({
         <ActArt act={run.act} />
         <p className="eyebrow">ACT {run.act}</p>
         <h2>{ACT_NAMES[run.act - 1]}</h2>
-        <p>Choose a highlighted room. Follow the dotted paths upward.</p>
+        <p>
+          {readOnly
+            ? 'Recorded route. Highlighted rooms were available at this boundary.'
+            : 'Choose a highlighted room. Follow the dotted paths upward.'}
+        </p>
         <p className="map-boss">
           Boss:{' '}
           {run.map
@@ -63,7 +69,7 @@ export function RouteMap({
               className={`sts-map-node ${node.kind} ${node.visited ? 'visited' : ''} ${reachable.has(node.id) ? 'reachable' : ''}`}
               data-node-id={node.id}
               style={{ left: `${(x(node.lane) / canvasWidth) * 100}%`, top: y(node.row) }}
-              disabled={!reachable.has(node.id)}
+              disabled={readOnly || !reachable.has(node.id)}
               onClick={() => dispatch({ type: 'chooseNode', id: node.id })}
               aria-label={`Floor ${node.row + 1} lane ${node.lane + 1} ${node.kind}`}
               title={`${node.kind} · floor ${node.row + 1}`}

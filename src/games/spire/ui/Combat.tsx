@@ -11,11 +11,13 @@ export function Battle({
   dispatch,
   targetId,
   onTarget,
+  readOnly = false,
 }: {
   run: SpireState;
   dispatch: (c: SpireCommand) => void;
   targetId?: string;
   onTarget: (id: string) => void;
+  readOnly?: boolean;
 }) {
   const combat = run.combat!;
   const [pile, setPile] = useState<'draw' | 'discard' | 'exhaust' | 'powersPlayed' | null>(null);
@@ -29,11 +31,15 @@ export function Battle({
         </div>
         <div>
           <span className="eyebrow">TURN {combat.turn}</span>
-          <p>Select an enemy, then play a card.</p>
+          <p>
+            {readOnly
+              ? 'Recorded combat · inspect cards and piles below.'
+              : 'Select an enemy, then play a card.'}
+          </p>
         </div>
         <button
           className="primary"
-          disabled={!!combat.choice}
+          disabled={readOnly || !!combat.choice}
           onClick={() => dispatch({ type: 'endTurn' })}
         >
           End turn →
@@ -58,7 +64,7 @@ export function Battle({
               <button
                 className={`enemy ${targetId === enemy.id ? 'targeted' : ''}`}
                 key={enemy.id}
-                disabled={!!enemy.powers.rebirthing}
+                disabled={readOnly || !!enemy.powers.rebirthing}
                 onClick={() => onTarget(enemy.id)}
                 aria-label={`Target ${ENEMY_BY_ID[enemy.definitionId].name}`}
                 aria-pressed={targetId === enemy.id}
@@ -98,8 +104,9 @@ export function Battle({
                 key={id}
                 definition={CARD_BY_ID[combat.cards[id].definitionId]}
                 upgraded={combat.cards[id].upgraded}
+                disabled={readOnly}
                 onClick={() => dispatch({ type: 'chooseCard', id })}
-                footnote="Select this card"
+                footnote={readOnly ? 'Recorded choice' : 'Select this card'}
               />
             ))}
           </div>
@@ -117,7 +124,7 @@ export function Battle({
                 definition={definition}
                 upgraded={card.upgraded}
                 cost={cost}
-                disabled={cost === -1 || cost > combat.energy}
+                disabled={readOnly || cost === -1 || cost > combat.energy}
                 onClick={() =>
                   dispatch({
                     type: 'playCard',
@@ -126,9 +133,11 @@ export function Battle({
                   })
                 }
                 footnote={
-                  definition.target
-                    ? `Target: ${selected ? ENEMY_BY_ID[selected.definitionId].name : ''}`
-                    : 'Click to play'
+                  readOnly
+                    ? 'Recorded hand'
+                    : definition.target
+                      ? `Target: ${selected ? ENEMY_BY_ID[selected.definitionId].name : ''}`
+                      : 'Click to play'
                 }
               />
             );

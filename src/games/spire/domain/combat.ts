@@ -20,8 +20,8 @@ import type { Combat, Effect, Enemy, Fighter, Power, SpireState } from './types'
 export { aliveEnemies, hit, log, nextId, statuses } from './state';
 export function attackDamage(
   base: number,
-  source: Fighter,
-  target: Fighter,
+  source: Pick<Fighter, 'status'>,
+  target: Pick<Fighter, 'status'>,
   strengthScale = 1,
   multiplier = 1,
 ): number {
@@ -35,7 +35,10 @@ export function attackDamage(
     ),
   );
 }
-export function combatCardCost(run: SpireState, id: string): number {
+export function combatCardCost(
+  run: { combat: Pick<Combat, 'cards' | 'powers'> | null },
+  id: string,
+): number {
   const card = run.combat!.cards[id],
     definition = CARD_BY_ID[card.definitionId];
   if (definition.kind === 'skill' && run.combat!.powers.corruption) return 0;
@@ -423,24 +426,45 @@ export function chooseCard(run: SpireState, id: string): string | undefined {
     choice.x,
   );
 }
-export function playCard(run: SpireState, id: string, targetId?: string): string | undefined {
-  const c = run.combat!;
+/** Legality depends only on public combat data; it never resolves effects or RNG. */
+export function cardPlayError(
+  c: Pick<Combat, 'hand' | 'cards' | 'powers' | 'energy'> & {
+    choice: unknown;
+    enemies: readonly Pick<Enemy, 'id' | 'hp' | 'powers'>[];
+  },
+  id: string,
+  targetId?: string,
+): string | undefined {
   if (c.choice) return 'Resolve the card choice first.';
   if (!c.hand.includes(id)) return 'That card is not in your hand.';
   const instance = c.cards[id],
     definition = CARD_BY_ID[instance.definitionId],
-    cost = combatCardCost(run, id);
+    cost = combatCardCost({ combat: c }, id);
   if (cost === -1) return 'This card is unplayable.';
   if (cost > c.energy) return 'Not enough Energy.';
-  if (definition.target && !aliveEnemies(run).some((e) => e.id === targetId))
+  if (
+    definition.target &&
+    !c.enemies.some((e) => e.hp > 0 && !e.powers.rebirthing && e.id === targetId)
+  )
     return 'Choose a living enemy.';
   if (
     definition.onlyAttacks &&
     c.hand.some((card) => CARD_BY_ID[c.cards[card].definitionId].kind !== 'attack')
   )
     return 'Clash requires a hand containing only Attacks.';
-  if (definition.kind === 'attack' && aliveEnemies(run).some((e) => e.powers.entangle > 0))
+  if (
+    definition.kind === 'attack' &&
+    c.enemies.some((e) => e.hp > 0 && !e.powers.rebirthing && e.powers.entangle > 0)
+  )
     return 'Entangled: you cannot play Attacks this turn.';
+}
+export function playCard(run: SpireState, id: string, targetId?: string): string | undefined {
+  const c = run.combat!;
+  const error = cardPlayError(c, id, targetId);
+  if (error) return error;
+  const instance = c.cards[id],
+    definition = CARD_BY_ID[instance.definitionId],
+    cost = combatCardCost(run, id);
   const x = c.energy;
   const mustExhaust =
     !!(instance.upgraded

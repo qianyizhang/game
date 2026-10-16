@@ -6,10 +6,10 @@ import { withRuntime } from './runtime.ts';
 import { auditPassed, benchmark, cohortSeeds } from './study.ts';
 import type { JsonObject } from '../../../src/shared/policy/types';
 
-const usage = `policy run|record --game blindside [--policy immediate|survival|growth | --policy-module ./policy.ts]
-  [--seed SEED] [--difficulty relaxed|standard|severe] [--policy-seed SEED] [--policy-options JSON] [--max-decisions N]
-policy record --game blindside --out NEW_DIRECTORY [same options]
-policy benchmark --game blindside --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
+const usage = `policy run|record --game blindside|spire [--policy immediate|survival|growth | --policy-module ./policy.ts]
+  [--seed SEED] [--setup JSON] [--difficulty relaxed|standard|severe] [--policy-seed SEED] [--policy-options JSON] [--max-decisions N]
+policy record --game blindside|spire --out NEW_DIRECTORY [same options]
+policy benchmark --game blindside|spire --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
 policy audit --input ROLLOUT --out NEW_RECEIPT [--policy-module ./policy.ts]
 A local TS module default-exports a game-typed PolicyFactory. It is trusted in-process code.
 Run prints result/audit; record retains exact knowledge, replay, audit and compiled source-pinned bundle.
@@ -31,6 +31,7 @@ try {
               'policy-module',
               'seed',
               'difficulty',
+              'setup',
               'policy-seed',
               'policy-options',
               'max-decisions',
@@ -54,9 +55,14 @@ try {
     if (mode !== 'run' && !options.out) throw new Error('A fresh output path is required.');
     if (mode === 'audit' && !options.input) throw new Error('An input rollout is required.');
     const input = mode === 'audit' ? await readFile(resolve(options.input), 'utf8') : undefined;
-    const game = input ? (JSON.parse(input) as { game?: string }).game : options.game;
-    if (game !== 'blindside')
-      throw new Error('Select --game blindside. Other adapters are not adopted yet.');
+    const wireGame = input ? (JSON.parse(input) as { game?: string }).game : options.game;
+    const game = wireGame === 'slay-the-spire' ? 'spire' : wireGame;
+    if (game !== 'blindside' && game !== 'spire')
+      throw new Error('Select --game blindside or spire. Other adapters are not adopted yet.');
+    if (options.setup && options.difficulty)
+      throw new Error('Choose --setup or --difficulty, not both.');
+    if (game !== 'blindside' && options.difficulty)
+      throw new Error('Use --setup for Spire character/ascension.');
     const maxDecisions = Number(options['max-decisions'] ?? 2000);
     if (!Number.isSafeInteger(maxDecisions) || maxDecisions < 1 || maxDecisions > 10000)
       throw new Error('Decision budget must be 1–10000.');
@@ -123,7 +129,7 @@ try {
           if (runtime.custom)
             runtime.builtins = { ...runtime.builtins, [runtime.custom.id]: runtime.custom };
           const protocol = {
-            schema: 'policy-study-protocol-1',
+            schema: 'policy-study-protocol-2',
             game,
             identity: runtime.adapter.identity,
             split,
@@ -132,14 +138,13 @@ try {
               id: p.id,
               version: p.version,
             })),
-            difficulties: ['relaxed', 'standard', 'severe'],
+            study: runtime.study,
             policySeed: 'POLICY-STREAM-1',
             maxDecisions,
             provenance,
-            ranking:
-              'won, then blind stages passed (cleared or skipped) + current-blind score fraction, then cash; win rates and progress reported separately',
+            ranking: runtime.study.ranking,
             analysis:
-              'Paired independent environment-seed blocks. 95% t intervals on mean progress and paired differences. All attempts retained. No tuning on evaluation.',
+              'Independent paired seed blocks within each setup/stratum. 95% Wilson win intervals and approximate t intervals for mean/paired progress; paired wins report point estimates/discordance counts with intervals unavailable. No pooling across characters; no multiple-comparison adjustment. All attempts retained. No tuning on evaluation.',
           };
           await writeFile(
             resolve(directory!, 'protocol.json'),
@@ -169,7 +174,11 @@ try {
             factory,
             {
               seed: options.seed ?? 'POLICY-ADOPTION-1-DEV-01',
-              setup: { difficulty: options.difficulty ?? 'standard' },
+              setup: options.setup
+                ? (JSON.parse(options.setup) as JsonObject)
+                : options.difficulty
+                  ? { difficulty: options.difficulty }
+                  : runtime.study.defaultSetup,
               policySeed: options['policy-seed'] ?? 'POLICY-STREAM-1',
               policyOptions: options['policy-options']
                 ? (JSON.parse(options['policy-options']) as JsonObject)
@@ -203,7 +212,7 @@ try {
                   ),
                   review: location.startsWith('..')
                     ? null
-                    : `/?game=balatro&review=policy&rollout=${encodeURIComponent('/' + location + '/rollout.json')}`,
+                    : `${runtime.study.reviewPath}&rollout=${encodeURIComponent('/' + location + '/rollout.json')}`,
                 },
                 null,
                 2,

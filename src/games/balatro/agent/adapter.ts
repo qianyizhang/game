@@ -1,4 +1,4 @@
-import type { EpisodeAdapter, Json } from '../../../shared/policy/types';
+import type { EpisodeAdapter, Json, StudyDefinition } from '../../../shared/policy/types';
 import type { Session } from '../../../shared/replay';
 import { blindsideSession } from '../application/session';
 import { validCommand } from '../domain/commands';
@@ -77,3 +77,16 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, Command> = {
 
 export const at = (session: EpisodeState, cursor: number) => blindsideSession.at(session, cursor);
 export { builtins } from './policy';
+
+export const study: StudyDefinition = {
+  setups: DIFFICULTIES.map((difficulty) => ({
+    id: difficulty,
+    difficulty,
+    stratum: 'standard-deck',
+    setup: { difficulty },
+  })),
+  defaultSetup: { difficulty: 'standard' },
+  ranking:
+    'win, then blind stages passed (cleared or skipped) + current-blind score fraction, then cash',
+  reviewPath: '/?game=balatro&review=policy',
+};
