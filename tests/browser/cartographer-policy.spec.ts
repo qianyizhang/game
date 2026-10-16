@@ -6,6 +6,7 @@ import { adapter, builtins } from '../../src/games/cartographer/agent/adapter';
 import {
   ACTIVE_SAVE_KEY,
   LEGACY_SAVE_KEY,
+  PREVIOUS_SAVE_KEY,
   SAVE_KEY,
   exportSession,
   importSession,
@@ -154,4 +155,56 @@ test('Cartographer difficulty applies only on a new expedition and historical re
   await expect(status).toContainText('Relaxed');
   await expect(status).toContainText('48 / 48');
   await expect(status).not.toContainText('Severe');
+});
+
+test('Cartographer v2 restore, continuation and export preserve its slot beside a new v3 expedition', async ({
+  page,
+}) => {
+  const historical = JSON.parse(
+    readFileSync('tests/fixtures/cartographer-v2-continuity.json', 'utf8'),
+  ) as {
+    cases: { prefixReplay: unknown }[];
+  };
+  const previous = JSON.stringify(historical.cases[2].prefixReplay);
+  await page.addInitScript(
+    ({ key, text }) => {
+      if (localStorage.getItem(key) === null) localStorage.setItem(key, text);
+    },
+    {
+      key: PREVIOUS_SAVE_KEY,
+      text: previous,
+    },
+  );
+  await page.goto('/?game=cartographer');
+  await page.getByLabel('Difficulty', { exact: true }).selectOption('severe');
+  await page.getByRole('button', { name: 'New expedition', exact: true }).click();
+  const current = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
+  expect(importSession(current).replay.rules).toBe('cartographer-3');
+  await page.getByRole('button', { name: 'Restore v2 expedition', exact: true }).click();
+  await expect(page.getByLabel('Expedition status')).toContainText(
+    'Standard · previous rules · cartographer-2',
+  );
+  await expect(page.getByRole('button', { name: /Brace \/ wait/ })).toContainText(
+    'block 3 per hit',
+  );
+  await page.getByRole('button', { name: /Brace \/ wait/ }).click();
+  const continued = await page.evaluate((key) => localStorage.getItem(key)!, PREVIOUS_SAVE_KEY);
+  expect(importSession(continued).replay.commands.length).toBe(
+    importSession(previous).replay.commands.length + 1,
+  );
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(current);
+  await page.reload();
+  await expect(page.getByLabel('Expedition status')).toContainText('cartographer-2');
+  expect(await page.evaluate((key) => localStorage.getItem(key), ACTIVE_SAVE_KEY)).toBe(
+    PREVIOUS_SAVE_KEY,
+  );
+  const downloaded = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export v2 expedition', exact: true }).click();
+  const download = await downloaded;
+  expect((await readFile(await download.path())).equals(Buffer.from(continued))).toBe(true);
+  await page.getByRole('button', { name: 'New expedition', exact: true }).click();
+  await expect(page.getByLabel('Expedition status')).not.toContainText('previous rules');
+  expect(await page.evaluate((key) => localStorage.getItem(key), PREVIOUS_SAVE_KEY)).toBe(
+    continued,
+  );
 });

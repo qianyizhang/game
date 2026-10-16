@@ -10,7 +10,7 @@ import {
   type Session,
 } from '../../src/games/cartographer/application/session';
 import { chamber, RELICS } from '../../src/games/cartographer/domain/content';
-import { expeditionCommand } from '../simulation/cartographer-policy';
+import { adapter, builtins } from '../../src/games/cartographer/agent/adapter';
 import { type Command } from '../../src/games/cartographer/domain/game';
 
 const review = 'test-results/cartographer';
@@ -22,14 +22,21 @@ async function act(page: Page, session: Session, command: Command): Promise<Sess
     await page
       .getByRole('button', { name: `Explore ${command.direction} · draft a room`, exact: true })
       .click();
-  else if (command.type === 'draft')
-    await page
-      .getByRole('button', {
-        name: `Place ${chamber(session.state.offers[command.offer]).name}`,
-        exact: true,
-      })
-      .click();
-  else if (command.type === 'relic')
+  else if (command.type === 'draft') {
+    const name = chamber(session.state.offers[command.offer]).name;
+    const offer = page
+      .locator('.dc-offers article')
+      .filter({ has: page.getByRole('heading', { name, exact: true }) });
+    const label = `${name} preview, ${command.rotation * 90} degrees`;
+    for (
+      let rotation = 0;
+      rotation < 3 && (await offer.locator('.dc-mini').getAttribute('aria-label')) !== label;
+      rotation++
+    )
+      await offer.getByRole('button', { name: `Rotate ${name}`, exact: true }).click();
+    await expect(offer.locator('.dc-mini')).toHaveAttribute('aria-label', label);
+    await offer.getByRole('button', { name: `Place ${name}`, exact: true }).click();
+  } else if (command.type === 'relic')
     await page
       .getByRole('button', {
         name: `Take ${RELICS.find((r) => r.id === command.id)!.name}`,
@@ -59,6 +66,8 @@ test(
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto('/?game=cartographer');
     await expect(page).toHaveTitle('Dungeon Cartographer · Card Workshop');
+    await page.getByLabel('Difficulty', { exact: true }).selectOption('relaxed');
+    await page.getByRole('button', { name: 'New expedition', exact: true }).click();
     await page.getByRole('group', { name: 'Tactical room', exact: true }).focus();
     await page.keyboard.press('ArrowUp');
     await page.keyboard.press('ArrowUp');
@@ -104,15 +113,32 @@ test(
   },
 );
 
-test('wins a complete expedition using visible controls and reloads the ending', async ({
+test('wins a complete Relaxed expedition through the public Survival policy using visible controls and reloads the ending', async ({
   page,
 }) => {
   test.setTimeout(browserBudget(120000));
   await page.goto('/?game=cartographer');
-  let session = newSession('ink-and-ember');
-  for (let step = 0; step < 600 && session.state.status === 'playing'; step++)
-    session = await act(page, session, expeditionCommand(session.state));
+  await page.getByLabel('Difficulty', { exact: true }).selectOption('relaxed');
+  await page.getByRole('button', { name: 'New expedition', exact: true }).click();
+  let state = adapter.create('ink-and-ember', { difficulty: 'relaxed' });
+  let session = state.session;
+  const choose = builtins.survival.create({
+    setup: { difficulty: 'relaxed' },
+    options: {},
+    policySeed: 'BROWSER-SURVIVAL-1',
+  });
+  for (let step = 0; step < 600 && !adapter.terminal(state); step++) {
+    const next = adapter.act(state, choose(adapter.observe(state)).command);
+    expect(next.error).toBeUndefined();
+    // The adapter binds opaque policy targets to native IDs before the browser clicks.
+    session = await act(page, session, next.state.session.replay.commands.at(-1)!);
+    expect(session).toEqual(next.state.session);
+    state = next.state;
+  }
   expect(session.state.status).toBe('won');
+  expect(session.state.difficulty).toBe('relaxed');
+  expect(session.state.layout.rooms).toHaveLength(9);
+  expect(session.state.relics).toHaveLength(3);
   await expect(page.getByRole('heading', { name: 'A way home, written in light.' })).toBeVisible();
   const saved = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
   expect(importSession(saved)).toEqual(session);

@@ -37,7 +37,7 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
   identity: {
     rules: RULES_VERSION,
     generator: GENERATOR_VERSION,
-    observation: 'cartographer-observation-1',
+    observation: 'cartographer-observation-2',
     score: 'cartographer-progress-1',
   },
   create(seed, setup) {

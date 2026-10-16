@@ -24,18 +24,37 @@ Forecasts apply only visible announced-turn consequences: player movement, strik
 shove/water/wall effects, flare/focus, kill/interrupt cancellation, ordered enemy
 intentions, shell/brace mitigation, room healing and victory. They do not invoke
 authoritative `applyCommand` or generate future encounters, relics or intentions.
-The older full-state simulation policy remains a rules verifier, not fair-policy
-evidence. New mechanics must enter public forecasts explicitly and gain behavior
-comparisons where relevant.
+Lifecycle verification uses the restricted Survival policy on explicit Relaxed
+expeditions; fixed Standard/Severe strength belongs to the separate calibration
+matrix. New mechanics must enter public forecasts explicitly and gain behavior
+comparisons where relevant. Observation v2 adds the effective public combat profile;
+native and forecast hit mitigation use the same small `incomingHit` rule helper.
+Room descriptions use the effective healing value without rewriting historical content.
 
 ## Tiers, priorities and score
 
-Rules v2 set starting/max HP to **48/36/28** for Relaxed/Standard/Severe. Standard
-preserves v1 arithmetic and seeded generation. Generator `rooms-1` is unchanged.
-Historical v1 journals retain their original state shape and Standard semantics,
-including continuation; the old slot remains available through explicit restore
-and export. New v2 saves have a separate slot. Setup drafts affect a new expedition;
-the current expedition's effective tier is displayed independently.
+Rules **v3** rebalance all three tiers. Generator `rooms-1`, nine-room victory,
+ordinary actions, announced attack cells and seeded stream names stay fixed.
+The current ladder changes encounter pressure and defensive resources together:
+
+| Tier     | Starting/max HP | Extra enemies per ordinary room | Enemy HP bonus | Hit damage bonus | Brace per hit | Healing room | King's guards |
+| -------- | --------------: | ------------------------------: | -------------: | ---------------: | ------------: | -----------: | ------------: |
+| Relaxed  |              48 |                               0 |              0 |                0 |             3 |            8 |             1 |
+| Standard |              36 |                               2 |              4 |                1 |             2 |            6 |             2 |
+| Severe   |              28 |                               2 |              4 |                2 |             1 |            4 |             3 |
+
+Base encounters have two enemies, or three in permanent-attack upgrade rooms.
+Guards accompany the King instead of leaving a permanently interruptible lone boss.
+The eight-threat bonus adds one more damage independently. Every enemy's final hit
+damage and threatened cells are announced before a turn. No difficulty label changes
+policy logic or grants a hidden advantage.
+
+Historical v1 journals retain their original state shape and Standard semantics.
+Historical v2 journals retain their own **48/36/28** HP-only ladder. Both dispatch
+through their original native arithmetic, generation, continuation and replay-prefix
+meaning. Explicit v1/v2 restore/export controls preserve their separate storage slots;
+new v3 saves use a third slot. The selected setup applies only to a new expedition.
+The current run displays its effective tier, historical version and combat resources.
 
 Immediate favors current damage, interrupts and direct progress. Survival prioritizes
 announced damage avoidance, healing and defensive relics. Growth favors permanent
@@ -43,6 +62,10 @@ attack and relic combinations, accepting different room risk. Public-floor BFS
 handles atlas routes and tactical approach around obstacles. Persistent stationary
 bracing can stall against ranged enemies; Manhattan distance can oscillate around
 walls. Use announced-position benefit and actual public walkable routes instead.
+Policy v2 also remembers previously observed combat positions and enemy life. A bounded
+revisit penalty discourages repeated safe movement without progress for every priority;
+lethal outcomes retain their explicit rejection value. This history contains no seed,
+inactive enemies or unobserved future intent. Effective room healing informs draft values.
 
 Rank victory, then rooms cleared **including the entrance**, then remaining HP;
 turns are secondary. Report attack, threat and relics separately. Work counts menu,
@@ -74,15 +97,45 @@ Turns and accepted-command cursors differ because draft/relic choices are zero-t
 
 ## Evidence and limits
 
-Ten development and twenty reserved independent seed blocks cross three tiers and
-three priorities: **90/180 attempted episodes**. Freeze sources/ranking/budgets first;
+The historical adoption study used ten development and twenty reserved independent
+seed blocks crossed with three tiers and priorities: **90/180 attempted episodes**.
+Current v3 confirmation uses the separate prospective protocol below. Freeze sources/ranking/budgets first;
 report per-tier paired results without counting repeated tiers as new independent
 seeds. Preserve timeouts/errors and uncertainty. Wilson intervals retain uncertainty
 at all/zero wins; constant-sample and paired-binomial intervals are unavailable where
 the analyzer cannot justify them. Do not tune on reserved outcomes.
+
+The [strength development report](../research/experiments/2026-10-16-cartographer-strength-3.md)
+retains the balance and cycle investigations. Its final development cohort supports a
+candidate ladder and differentiated strategies; a separate prospective confirmation
+must evaluate the frozen candidate before claiming reserved calibration.
 
 The [initial adoption study](../research/experiments/2026-10-16-cartographer-policy.md)
 has saturated wins/progress. It demonstrates playable policies with distinct resource
 and turn behavior, not a total strength ordering or a calibrated win-rate difficulty
 ladder. Structured exact intentions and public arithmetic do not establish human
 equivalent perception or enjoyment.
+
+## Prevent repeated development mistakes
+
+- **HP alone can leave a saturated ladder:** exact warnings plus shove cancellation
+  made the former lone King reliably safe. Verify the whole encounter, including
+  simultaneous threats and durability, before claiming difficulty from HP labels.
+- **Safe movement can oscillate:** inspect unchanged enemy life and repeated positions
+  in original inputs. The v2 policies retain public history to escape two-position
+  cycles; budget stops remain nonwins and are reported separately from deaths.
+- **Aliases are not native IDs:** policy target aliases bind through the adapter.
+  Historical continuation witnesses take commands from the accepted native journal;
+  dispatching an unbound proposal can attack a different enemy or reject silently.
+- **Separate completion coverage from calibration:** use an explicit Relaxed setup
+  and the actual public policy for the complete nine-room/relic/replay journey. A
+  versioned Standard rebalance can invalidate an old verification heuristic; retain
+  victory assertions and repair the journey instead of weakening the game or
+  accepting a loss. Standard/Severe strength still requires the frozen matrix.
+- **Observe browser evidence directly:** comparing two native evaluator successors
+  inside a browser journey checks evaluator consistency. Browser acceptance reads
+  its actual saved replay and reloads the ending; that is the stated evidence, not
+  a claim that every intermediate browser state was independently inspected.
+- **Freeze before reserved play:** keep negative development runs, fix source versions
+  and a reference strategy, then use a new reserved namespace. Changing balance or a
+  policy after reserved inspection requires a new prospective study and fresh seeds.

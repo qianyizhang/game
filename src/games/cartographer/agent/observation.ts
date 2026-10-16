@@ -24,7 +24,17 @@ import {
   chamber,
   type RelicId,
 } from '../domain/content';
-import { activeRoom, distance, type Command, type Enemy, type State } from '../domain/game';
+import {
+  chamberDescription,
+  combatProfile,
+  incomingHit,
+  type CombatProfile,
+  activeRoom,
+  distance,
+  type Command,
+  type Enemy,
+  type State,
+} from '../domain/game';
 
 export type PolicyCommand = Command;
 export interface Aliases {
@@ -44,10 +54,11 @@ export interface Forecast {
   enemiesAfter: { id: number; x: number; y: number; hp: number }[];
 }
 export interface Observation {
-  schema: 'cartographer-observation-1';
+  schema: 'cartographer-observation-2';
   phase: 'field' | 'draft' | 'relic' | 'ended';
   status: State['status'];
   player: State['player'];
+  combat: CombatProfile;
   layout: Layout;
   tiles: string[];
   room: PlacedRoom;
@@ -94,7 +105,10 @@ function sight(tiles: string[], a: Cell, b: Cell): boolean {
 }
 /** Exactly the public announced-turn consequences. This never generates offers, relics or enemies. */
 export function combatForecast(
-  input: Pick<Observation, 'player' | 'enemies' | 'room' | 'tiles' | 'relics' | 'cleared'>,
+  input: Pick<
+    Observation,
+    'player' | 'enemies' | 'room' | 'tiles' | 'relics' | 'cleared' | 'combat'
+  >,
   command: PolicyCommand,
 ): Forecast | null {
   if (!['move', 'strike', 'shove', 'flare', 'brace'].includes(command.type)) return null;
@@ -143,10 +157,10 @@ export function combatForecast(
       player.hp = Math.max(
         0,
         player.hp -
-          Math.max(
-            0,
-            Math.max(1, enemy.intent.damage - (has('shell') ? 1 : 0)) -
-              (command.type === 'brace' ? 3 : 0),
+          incomingHit(
+            enemy.intent.damage,
+            has('shell'),
+            command.type === 'brace' ? input.combat.brace : 0,
           ),
       );
     else if (enemy.intent.kind === 'move') {
@@ -164,7 +178,7 @@ export function combatForecast(
   if (clearedRoom) {
     player.focus = 3;
     if (chamber(input.room.template).reward === 'heal')
-      player.hp = Math.min(player.maxHp, player.hp + 8);
+      player.hp = Math.min(player.maxHp, player.hp + input.combat.healing);
   }
   return {
     command,
@@ -196,10 +210,11 @@ export function observe(state: State, aliases: Aliases): Observation {
           : 'field';
   const layout = structuredClone(state.layout);
   const input: Observation = {
-    schema: 'cartographer-observation-1',
+    schema: 'cartographer-observation-2',
     phase,
     status: state.status,
     player: { ...state.player },
+    combat: { ...combatProfile(state) },
     layout,
     tiles: renderLayout(layout),
     room: structuredClone(room),
@@ -227,6 +242,9 @@ export function observe(state: State, aliases: Aliases): Observation {
     actions: [],
     forecasts: [],
   };
+  input.definitions.chambers.forEach((definition) => {
+    definition.description = chamberDescription(definition.id, input.combat);
+  });
   const actions = input.actions;
   if (phase === 'ended') return input;
   if (phase === 'relic') {

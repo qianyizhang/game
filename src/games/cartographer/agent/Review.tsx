@@ -2,7 +2,7 @@ import { PolicyReview } from '../../../shared/policy/Review';
 import type { Json } from '../../../shared/policy/types';
 import { ROOM_SIZE, sameCell, threshold } from '../../../shared/layout/layout';
 import { chamber, ENEMIES, RELICS } from '../domain/content';
-import { DIFFICULTIES } from '../domain/game';
+import { chamberDescription, DIFFICULTIES } from '../domain/game';
 import { adapter, at, builtins, type EpisodeState } from './adapter';
 import '../ui/styles.css';
 import './review.css';
@@ -94,7 +94,7 @@ function Board({ state }: { state: EpisodeState }) {
           <h3>Room draft</h3>
           {input.offers.map((id) => (
             <p key={id}>
-              {chamber(id).name} · {chamber(id).description}
+              {chamber(id).name} · {chamberDescription(id, input.combat)}
             </p>
           ))}
         </section>

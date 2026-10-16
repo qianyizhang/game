@@ -14,7 +14,9 @@ import {
   activeRoom,
   distance,
   DIFFICULTIES,
-  LEGACY_RULES_VERSION,
+  RULES_VERSION,
+  combatProfile,
+  chamberDescription,
   type Difficulty,
   type Command,
 } from '../domain/game';
@@ -25,6 +27,7 @@ import {
   newSession,
   SAVE_KEY,
   LEGACY_SAVE_KEY,
+  PREVIOUS_SAVE_KEY,
   ACTIVE_SAVE_KEY,
   saveKey,
   type Session,
@@ -45,7 +48,9 @@ export default function CartographerApp() {
   const [initial] = useState(() => {
     try {
       const key =
-        localStorage.getItem(ACTIVE_SAVE_KEY) === LEGACY_SAVE_KEY ? LEGACY_SAVE_KEY : SAVE_KEY;
+        [SAVE_KEY, PREVIOUS_SAVE_KEY, LEGACY_SAVE_KEY].find(
+          (key) => key === localStorage.getItem(ACTIVE_SAVE_KEY),
+        ) ?? SAVE_KEY;
       const text = localStorage.getItem(key);
       return { session: text ? importSession(text) : newSession('ink-and-ember'), error: '' };
     } catch (error) {
@@ -58,11 +63,11 @@ export default function CartographerApp() {
   const [session, setSession] = useState<Session>(initial.session);
   const [seed, setSeed] = useState(session.state.seed);
   const [difficulty, setDifficulty] = useState<Difficulty>(session.state.difficulty ?? 'standard');
-  const [previousSave] = useState(() => {
+  const [previousSaves] = useState(() => {
     try {
-      return localStorage.getItem(LEGACY_SAVE_KEY);
+      return [PREVIOUS_SAVE_KEY, LEGACY_SAVE_KEY].filter((key) => localStorage.getItem(key));
     } catch {
-      return null;
+      return [];
     }
   });
   const [message, setMessage] = useState(initial.error);
@@ -155,17 +160,18 @@ export default function CartographerApp() {
       setMessage(String(error));
     }
   };
-  const restorePrevious = () => {
+  const restorePrevious = (key: string) => {
     try {
-      const text = localStorage.getItem(LEGACY_SAVE_KEY);
+      const text = localStorage.getItem(key);
       if (!text) throw new Error('No previous expedition is saved.');
       const next = importSession(text);
       setSession(next);
       setSeed(next.state.seed);
       setTarget(null);
       setRecovery(false);
-      setMessage('Previous expedition restored with original Standard rules.');
-      localStorage.setItem(ACTIVE_SAVE_KEY, LEGACY_SAVE_KEY);
+      setDifficulty(next.state.difficulty ?? 'standard');
+      setMessage(`Previous expedition restored with ${next.replay.rules} rules.`);
+      localStorage.setItem(ACTIVE_SAVE_KEY, key);
     } catch (error) {
       setMessage(`Restore failed: ${String(error)}. Its save remains preserved.`);
     }
@@ -205,18 +211,16 @@ export default function CartographerApp() {
             </select>
           </label>
           <button onClick={start}>New expedition</button>
-          {(previousSave || session.replay.rules === LEGACY_RULES_VERSION) && (
-            <div>
-              <button onClick={restorePrevious}>Restore previous expedition</button>
-              <button
-                onClick={() =>
-                  download(localStorage.getItem(LEGACY_SAVE_KEY) ?? previousSave ?? '')
-                }
-              >
-                Export previous expedition
+          {previousSaves.map((key) => (
+            <div key={key}>
+              <button onClick={() => restorePrevious(key)}>
+                Restore {key === PREVIOUS_SAVE_KEY ? 'v2 expedition' : 'previous expedition'}
+              </button>
+              <button onClick={() => download(localStorage.getItem(key) ?? '')}>
+                Export {key === PREVIOUS_SAVE_KEY ? 'v2' : 'v1'} expedition
               </button>
             </div>
-          )}
+          ))}
           <div>
             <button onClick={() => download(exportSession(session))}>Export replay</button>
             <button onClick={() => file.current?.click()}>Import replay</button>
@@ -250,7 +254,9 @@ export default function CartographerApp() {
         <div>
           <span>
             LANTERN KEEPER · {DIFFICULTIES[s.difficulty ?? 'standard'].label}
-            {session.replay.rules === LEGACY_RULES_VERSION ? ' · previous rules' : ''}
+            {session.replay.rules !== RULES_VERSION
+              ? ` · previous rules · ${session.replay.rules}`
+              : ''}
           </span>
           <strong>
             {s.player.hp} / {s.player.maxHp} <small>life</small>
@@ -317,7 +323,11 @@ export default function CartographerApp() {
               {enemies.length ? `${enemies.length} guardians` : 'Room clear'}
             </span>
           </div>
-          <p className="dc-room-copy">{chamber(room.template).description}</p>
+          <p className="dc-room-copy">
+            Encounter pressure: +{combatProfile(s).enemyHp} enemy life, +{combatProfile(s).damage}{' '}
+            damage; {combatProfile(s).healing} life at healing rooms.
+          </p>
+          <p className="dc-room-copy">{chamberDescription(room.template, combatProfile(s))}</p>
           <div
             className="dc-board"
             role="group"
@@ -419,7 +429,7 @@ export default function CartographerApp() {
                 Flare <small>4 damage · 1 focus</small>
               </button>
               <button disabled={busy} onClick={() => send({ type: 'brace' })}>
-                Brace / wait <small>block 3 per hit</small>
+                Brace / wait <small>block {combatProfile(s).brace} per hit</small>
               </button>
             </div>
           </div>
@@ -525,8 +535,8 @@ export default function CartographerApp() {
               water.
             </p>
             <p>
-              Flare travels in a straight line up to 5 tiles. Brace blocks 3 damage from each hit.
-              Water blocks movement unless you find Reed boots.
+              Flare travels in a straight line up to 5 tiles. Brace blocks {combatProfile(s).brace}{' '}
+              damage from each hit. Water blocks movement unless you find Reed boots.
             </p>
             <p>
               Rotating a draft rotates both terrain and doorways. Gold arrows mark frontiers;

@@ -29,7 +29,10 @@ import {
   type RelicId,
 } from './content';
 
-export const RULES_VERSION = 'cartographer-2';
+export const RULES_VERSION = 'cartographer-3';
+export const PREVIOUS_RULES_VERSION = 'cartographer-2';
+export type RulesVersion =
+  typeof RULES_VERSION | typeof PREVIOUS_RULES_VERSION | typeof LEGACY_RULES_VERSION;
 export const LEGACY_RULES_VERSION = 'cartographer-1';
 export type Difficulty = 'relaxed' | 'standard' | 'severe';
 export const DIFFICULTIES = {
@@ -37,6 +40,37 @@ export const DIFFICULTIES = {
   standard: { label: 'Standard', hp: 36 },
   severe: { label: 'Severe', hp: 28 },
 } as const;
+/** Public encounter arithmetic. Historical profiles retain every original operation. */
+export interface CombatProfile {
+  extraEnemies: number;
+  enemyHp: number;
+  damage: number;
+  brace: number;
+  healing: number;
+  bossGuards: number;
+}
+const HISTORICAL_PROFILE: CombatProfile = {
+  extraEnemies: 0,
+  enemyHp: 0,
+  damage: 0,
+  brace: 3,
+  healing: 8,
+  bossGuards: 0,
+};
+export const COMBAT_PROFILES: Record<Difficulty, CombatProfile> = {
+  relaxed: { extraEnemies: 0, enemyHp: 0, damage: 0, brace: 3, healing: 8, bossGuards: 1 },
+  standard: { extraEnemies: 2, enemyHp: 4, damage: 1, brace: 2, healing: 6, bossGuards: 2 },
+  severe: { extraEnemies: 2, enemyHp: 4, damage: 2, brace: 1, healing: 4, bossGuards: 3 },
+};
+export const combatProfile = (state: Pick<State, 'rulesVersion' | 'difficulty'>): CombatProfile =>
+  state.rulesVersion === RULES_VERSION ? COMBAT_PROFILES[state.difficulty!] : HISTORICAL_PROFILE;
+/** Shared by native resolution and seedless announced-turn forecasts. */
+export function incomingHit(damage: number, shell: boolean, brace: number): number {
+  return Math.max(0, Math.max(1, damage - Number(shell)) - brace);
+}
+/** Presentation text follows the effective historical or current healing rule. */
+export const chamberDescription = (id: string, profile: CombatProfile): string =>
+  chamber(id).description.replace(/8 life/g, `${profile.healing} life`);
 export interface Intent {
   kind: 'attack' | 'move' | 'wait';
   cells: Cell[];
@@ -51,7 +85,7 @@ export interface Enemy extends Cell {
 }
 export interface State {
   /** Historical v1 state has no setup metadata. */
-  rulesVersion?: typeof RULES_VERSION;
+  rulesVersion?: typeof RULES_VERSION | typeof PREVIOUS_RULES_VERSION;
   difficulty?: Difficulty;
   seed: string;
   layout: Layout;
@@ -129,7 +163,7 @@ function stepToward(s: State, enemy: Enemy): Cell | null {
 }
 function plan(s: State): void {
   for (const e of local(s)) {
-    const damage = ENEMIES[e.kind].damage + (s.threat >= 8 ? 1 : 0);
+    const damage = ENEMIES[e.kind].damage + (s.threat >= 8 ? 1 : 0) + combatProfile(s).damage;
     if (
       (e.kind === 'archer' || e.kind === 'king') &&
       distance(e, s.player) <= 6 &&
@@ -166,14 +200,23 @@ export function createGame(
   rulesVersion: string = RULES_VERSION,
 ): State {
   if (!Object.hasOwn(DIFFICULTIES, difficulty)) throw new Error('Unknown difficulty.');
-  if (rulesVersion !== RULES_VERSION && rulesVersion !== LEGACY_RULES_VERSION)
+  if (
+    rulesVersion !== RULES_VERSION &&
+    rulesVersion !== PREVIOUS_RULES_VERSION &&
+    rulesVersion !== LEGACY_RULES_VERSION
+  )
     throw new Error('Unsupported Cartographer rules version.');
   if (typeof seed !== 'string' || !seed.trim() || seed.length > 80)
     throw new Error('Use a seed of 1–80 characters.');
   const layout = placeRoom(emptyLayout(), ENTRANCE, { x: 2, y: 2 });
   const hp = rulesVersion === LEGACY_RULES_VERSION ? 36 : DIFFICULTIES[difficulty].hp;
   return {
-    ...(rulesVersion === RULES_VERSION ? { rulesVersion, difficulty } : {}),
+    ...(rulesVersion !== LEGACY_RULES_VERSION
+      ? {
+          rulesVersion,
+          difficulty,
+        }
+      : {}),
     seed,
     layout,
     player: { ...center(layout.rooms[0]), hp, maxHp: hp, attack: 3, focus: 3 },
@@ -222,14 +265,17 @@ function spawn(s: State, from: Direction): void {
     'crawler',
     'bomber',
   ]);
-  const count = boss ? 1 : definition.reward === 'power' ? 3 : 2;
+  const profile = combatProfile(s);
+  const count = boss
+    ? 1 + profile.bossGuards
+    : (definition.reward === 'power' ? 3 : 2) + profile.extraEnemies;
   for (let n = 0; n < count; n++) {
-    const kind = boss ? 'king' : kinds[n];
+    const kind = boss && n === 0 ? 'king' : kinds[(boss ? n - 1 : n) % kinds.length];
     s.enemies.push({
       ...ordered[n],
       id: s.enemies.length + 1,
       kind,
-      hp: ENEMIES[kind].hp,
+      hp: ENEMIES[kind].hp + profile.enemyHp,
       room: room.id,
       intent: { kind: 'wait', cells: [], damage: 0 },
     });
@@ -241,9 +287,10 @@ function finishTurn(s: State, braced = false): void {
   s.turn++;
   for (const e of local(s)) {
     if (e.intent.kind === 'attack' && e.intent.cells.some((p) => sameCell(p, s.player))) {
-      const amount = Math.max(
-        0,
-        Math.max(1, e.intent.damage - (has(s, 'shell') ? 1 : 0)) - (braced ? 3 : 0),
+      const amount = incomingHit(
+        e.intent.damage,
+        has(s, 'shell'),
+        braced ? combatProfile(s).brace : 0,
       );
       s.player.hp = Math.max(0, s.player.hp - amount);
       if (amount) note(s, `${ENEMIES[e.kind].name} hits for ${amount}.`);
@@ -269,11 +316,12 @@ function finishTurn(s: State, braced = false): void {
     s.cleared.push(room.id);
     s.player.focus = 3;
     const definition = chamber(room.template);
-    if (definition.reward === 'heal') s.player.hp = Math.min(s.player.maxHp, s.player.hp + 8);
+    if (definition.reward === 'heal')
+      s.player.hp = Math.min(s.player.maxHp, s.player.hp + combatProfile(s).healing);
     if (definition.reward === 'power') s.player.attack++;
     note(
       s,
-      `${definition.name} cleared. Focus restored.${definition.reward === 'heal' ? ' Restored 8 life.' : definition.reward === 'power' ? ' Strike damage increased.' : ''}`,
+      `${definition.name} cleared. Focus restored.${definition.reward === 'heal' ? ` Restored ${combatProfile(s).healing} life.` : definition.reward === 'power' ? ' Strike damage increased.' : ''}`,
     );
     if (room.template === 'guardian') {
       s.status = 'won';
@@ -413,7 +461,7 @@ export function applyCommand(
 ): { state: State; error: string | null } {
   if (
     state.rulesVersion !== undefined &&
-    (state.rulesVersion !== RULES_VERSION ||
+    (![RULES_VERSION, PREVIOUS_RULES_VERSION].includes(state.rulesVersion) ||
       !state.difficulty ||
       !Object.hasOwn(DIFFICULTIES, state.difficulty))
   )

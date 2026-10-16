@@ -5,6 +5,7 @@ import {
   applyCommand,
   LEGACY_RULES_VERSION,
   RULES_VERSION,
+  PREVIOUS_RULES_VERSION,
   type Command,
   type State,
 } from '../domain/game';
@@ -16,6 +17,7 @@ import {
   saveKey,
   SAVE_KEY,
   LEGACY_SAVE_KEY,
+  PREVIOUS_SAVE_KEY,
   type Replay,
 } from './session';
 
@@ -50,7 +52,7 @@ it('reconstructs and continues complete pre-change v1 expeditions with exact Sta
     expect(digest(continued.session.state)).toBe(saved.continuedStateDigest);
     expect(continued.session.replay.commands).toEqual(saved.continuedCommands);
     expect(importSession(exportSession(continued.session))).toEqual(continued.session);
-    let current = newSession(saved.replay.seed);
+    let current = newSession(saved.replay.seed, 'standard', PREVIOUS_RULES_VERSION);
     for (const command of saved.replay.commands) {
       const next = dispatch(current, command);
       expect(next.error).toBeNull();
@@ -100,4 +102,31 @@ it('rejects ambiguous version envelopes and preserves old extra fields as semant
   const rejected = applyCommand(malformed, { type: 'brace' });
   expect(rejected.state).toBe(malformed);
   expect(rejected.error).toContain('difficulty');
+});
+
+it('reconstructs and continues every historical v2 tier without rebalancing the saved run', () => {
+  const historical = JSON.parse(
+    readFileSync('tests/fixtures/cartographer-v2-continuity.json', 'utf8'),
+  ) as {
+    cases: {
+      replay: Replay;
+      stateDigest: string;
+      prefixReplay: Replay;
+      prefixDigest: string;
+      continuation: Command;
+      continuedStateDigest: string;
+    }[];
+  };
+  for (const saved of historical.cases) {
+    const restored = importSession(JSON.stringify(saved.replay));
+    expect(digest(restored.state)).toBe(saved.stateDigest);
+    expect(restored.replay).toEqual(saved.replay);
+    expect(saveKey(restored)).toBe(PREVIOUS_SAVE_KEY);
+    const prefix = importSession(JSON.stringify(saved.prefixReplay));
+    expect(digest(prefix.state)).toBe(saved.prefixDigest);
+    const next = dispatch(prefix, saved.continuation);
+    expect(next.error).toBeNull();
+    expect(digest(next.session.state)).toBe(saved.continuedStateDigest);
+    expect(importSession(exportSession(next.session))).toEqual(next.session);
+  }
 });

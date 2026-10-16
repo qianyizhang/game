@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { rotated, type Direction, type Rotation } from '../../../shared/layout/layout';
 import { chamber, RELICS } from '../domain/content';
-import { draftRotations, type Command, type State } from '../domain/game';
+import {
+  chamberDescription,
+  combatProfile,
+  draftRotations,
+  type Command,
+  type State,
+} from '../domain/game';
 
 const arrows: Record<Direction, string> = { north: '↑', east: '→', south: '↓', west: '←' };
 
@@ -71,7 +77,7 @@ export function ExpeditionChoice({
                     )}
                   </div>
                   <h3>{definition.name}</h3>
-                  <p>{definition.description}</p>
+                  <p>{chamberDescription(id, combatProfile(s))}</p>
                   <small>
                     Threat +{definition.danger} · {preview.doors.length} exits
                   </small>

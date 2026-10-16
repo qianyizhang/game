@@ -108,3 +108,16 @@ describe('Cartographer public priorities', () => {
     expect(example.create(config)(input)).toEqual(first);
   });
 });
+
+// DEV trace: avoiding two alternating marked attacks revisited the same two positions
+// forever with unchanged enemy life. A complete winning fixture can miss that cycle.
+it('uses public combat history to leave a safe two-position oscillation and clear more rooms', () => {
+  let state = adapter.create('CARTOGRAPHER-STRENGTH-3-DEV-02', { difficulty: 'severe' });
+  const choose = builtins.survival.create(config);
+  for (let step = 0; step < 300 && !adapter.terminal(state); step++) {
+    const next = adapter.act(state, choose(adapter.observe(state)).command);
+    expect(next.error).toBeUndefined();
+    state = next.state;
+  }
+  expect(state.session.state.cleared.length).toBeGreaterThanOrEqual(3);
+});

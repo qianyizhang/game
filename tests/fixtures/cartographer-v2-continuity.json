@@ -1,0 +1,3402 @@
+{
+  "provenance": {
+    "sourceDigests": {
+      "src/games/cartographer/agent/adapter.ts": "77447d01b96bf6e41cb56d8c245d306917044cfca13699367e5444930f4fcc19",
+      "src/games/cartographer/agent/observation.ts": "56afe92dc3f8a84775f1a996d77fe2cec8060b441f35c7a0c5dc679b37e6315f",
+      "src/games/cartographer/agent/policy.ts": "815bf82e1b1249943f71e714720257cc8e2de836e195416bf92ce2fc7c621ad1",
+      "src/games/cartographer/application/session.ts": "e0a190d1e6e0008951574a99ce341ff693d54a5d6a70485dc41f810c527dcbf2",
+      "src/games/cartographer/domain/content.ts": "ae296e58c3c035a0dbce91b3fd747aae65423780b6efc8d0c006baf8ade8ea36",
+      "src/games/cartographer/domain/game.ts": "cf694d36b531cf0bdc92246d08ca35a9233158d23195e507545ff70b0b7a758a",
+      "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+      "src/shared/layout/layout.ts": "f5226b7ac4ab99e1e5ae39a68321aee885de6ba7d0e309314ec28341efd861ec",
+      "src/shared/policy/rollout.ts": "9f8d6b340165e89327e94523561932c7fad5c37f11da5341f6ccfd9d83fe0b24",
+      "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+    },
+    "bundleDigest": "9f16677834bc58367a0ec3d4a46675d8000d767aab0bad8b4e3edd57d32889b6",
+    "toolDigests": {
+      "packages/workshop-tools/policy/runtime.ts": "148f79ac7358c76a441e243826845c73d30bdfc089a2ec3243e27f200582388c",
+      "packages/workshop-tools/policy/cli.ts": "a9ef1250e1fbc025fca9dfb8eba781d6c7c9f69fe4d8008d10231f2c0527f289",
+      "packages/workshop-tools/policy/study.ts": "8e9b21703b0a30b360eff266e2e4e08049a3177d30b552f2d65750f78968df12",
+      "packages/workshop-tools/policy/calibration.ts": "849eb5f92d80ff866f221f7075702d2e81f01fdf69f49f5f500f049ba84c9449",
+      "packages/workshop-tools/policy/analyze-spire.ts": "c82490098265e451ebb54bd51192e491b2f96465761d65ada78ee5b37fce7f5c",
+      "packages/workshop-tools/policy/pool.ts": "51d42b0614a0331618fa127012240c3af8a3e0ab454ed22ae48828e5f2a5037a",
+      "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+      "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+      "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd"
+    },
+    "runtime": "v24.21.0 / darwin / arm64"
+  },
+  "cases": [
+    {
+      "replay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "relaxed",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-01",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "shove",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 3
+          },
+          {
+            "type": "flare",
+            "target": 3
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "relic",
+            "id": "moss"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 5
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 2
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "shove",
+            "target": 7
+          },
+          {
+            "type": "flare",
+            "target": 7
+          },
+          {
+            "type": "relic",
+            "id": "boots"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 3
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 9
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "west"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 1
+          },
+          {
+            "type": "flare",
+            "target": 11
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 12
+          },
+          {
+            "type": "flare",
+            "target": 12
+          },
+          {
+            "type": "relic",
+            "id": "shell"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "flare",
+            "target": 13
+          },
+          {
+            "type": "strike",
+            "target": 14
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "strike",
+            "target": 15
+          }
+        ]
+      },
+      "stateDigest": "cea01b1b9cba56cfbc64064f43bbde9c86372ef2368611477102bb99ccfe199b",
+      "prefixReplay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "relaxed",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-01",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "shove",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 3
+          }
+        ]
+      },
+      "prefixDigest": "03ec721ad6db223468fa1166038549415f4190230665f011b9b4418637f48ab2",
+      "continuation": {
+        "type": "flare",
+        "target": 3
+      },
+      "continuedStateDigest": "ceee6d476e6b54fccb733a0cf5a545a8392f12d6f93398a8e736826e2dcb58e4"
+    },
+    {
+      "replay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "relaxed",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-02",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 3
+          },
+          {
+            "type": "relic",
+            "id": "boots"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "brace"
+          },
+          {
+            "type": "brace"
+          },
+          {
+            "type": "brace"
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 5
+          },
+          {
+            "type": "flare",
+            "target": 5
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 7
+          },
+          {
+            "type": "flare",
+            "target": 7
+          },
+          {
+            "type": "relic",
+            "id": "shell"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "shove",
+            "target": 9
+          },
+          {
+            "type": "flare",
+            "target": 9
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 10
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 3
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 12
+          },
+          {
+            "type": "shove",
+            "target": 11
+          },
+          {
+            "type": "flare",
+            "target": 11
+          },
+          {
+            "type": "relic",
+            "id": "chisel"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "west"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 14
+          },
+          {
+            "type": "strike",
+            "target": 13
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "flare",
+            "target": 15
+          }
+        ]
+      },
+      "stateDigest": "1e2e263e4084b3e83a3a6b89f709e909aef429cdc421eb96fa3a7851de5881fd",
+      "prefixReplay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "relaxed",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-02",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 3
+          }
+        ]
+      },
+      "prefixDigest": "78d05d78bc039f1bf585bfe0f93508e20ba0970ab6970f406180546a0aaa1a44",
+      "continuation": {
+        "type": "relic",
+        "id": "boots"
+      },
+      "continuedStateDigest": "691cc95db7163524d59820ae120ecc5b8d912f98b47240ccd047c29b718b033b"
+    },
+    {
+      "replay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "standard",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-01",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "shove",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 3
+          },
+          {
+            "type": "flare",
+            "target": 3
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "relic",
+            "id": "moss"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 5
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 2
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "shove",
+            "target": 7
+          },
+          {
+            "type": "flare",
+            "target": 7
+          },
+          {
+            "type": "relic",
+            "id": "boots"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 3
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 9
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "west"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 1
+          },
+          {
+            "type": "flare",
+            "target": 11
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 12
+          },
+          {
+            "type": "flare",
+            "target": 12
+          },
+          {
+            "type": "relic",
+            "id": "shell"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "flare",
+            "target": 13
+          },
+          {
+            "type": "strike",
+            "target": 14
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "strike",
+            "target": 15
+          }
+        ]
+      },
+      "stateDigest": "5dc5e3f5f4d37167bbea32f6831945b5824156718a316f601f743458df68a6ef",
+      "prefixReplay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "standard",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-01",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "shove",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 3
+          }
+        ]
+      },
+      "prefixDigest": "0a06a4c0f5115651c6ebbdfc258802148d47b209894861aa12db0be0a70a0f70",
+      "continuation": {
+        "type": "flare",
+        "target": 3
+      },
+      "continuedStateDigest": "3abfb3b5a1f7d60eadbeba380bb42816df07919666cf5f24d2c0f92c1425c9c1"
+    },
+    {
+      "replay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "standard",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-02",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 3
+          },
+          {
+            "type": "relic",
+            "id": "boots"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "brace"
+          },
+          {
+            "type": "brace"
+          },
+          {
+            "type": "brace"
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 5
+          },
+          {
+            "type": "flare",
+            "target": 5
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 7
+          },
+          {
+            "type": "flare",
+            "target": 7
+          },
+          {
+            "type": "relic",
+            "id": "shell"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "shove",
+            "target": 9
+          },
+          {
+            "type": "flare",
+            "target": 9
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 10
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 3
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 12
+          },
+          {
+            "type": "shove",
+            "target": 11
+          },
+          {
+            "type": "flare",
+            "target": 11
+          },
+          {
+            "type": "relic",
+            "id": "chisel"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "west"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 14
+          },
+          {
+            "type": "strike",
+            "target": 13
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "flare",
+            "target": 15
+          }
+        ]
+      },
+      "stateDigest": "805a0d0e5273c9ecd6aae7ec2c637dd315ed8ac109d9672c242c8fca3fcd68fe",
+      "prefixReplay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "standard",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-02",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 3
+          }
+        ]
+      },
+      "prefixDigest": "92c63a0c683a4d7a025b61956beaf4e5e304779dd3ae85445b74ed17112ed9ab",
+      "continuation": {
+        "type": "relic",
+        "id": "boots"
+      },
+      "continuedStateDigest": "0e1ebb2ea715873fb3b6014304b61d82e840e89ca52e1536f52b0335cf187f1a"
+    },
+    {
+      "replay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "severe",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-01",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "shove",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 3
+          },
+          {
+            "type": "flare",
+            "target": 3
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "relic",
+            "id": "moss"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 5
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 2
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "shove",
+            "target": 7
+          },
+          {
+            "type": "flare",
+            "target": 7
+          },
+          {
+            "type": "relic",
+            "id": "boots"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 3
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 9
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "west"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 1
+          },
+          {
+            "type": "flare",
+            "target": 11
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 12
+          },
+          {
+            "type": "flare",
+            "target": 12
+          },
+          {
+            "type": "relic",
+            "id": "shell"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "flare",
+            "target": 13
+          },
+          {
+            "type": "strike",
+            "target": 14
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "strike",
+            "target": 15
+          }
+        ]
+      },
+      "stateDigest": "4658e390106d57441fa0b52e047d5373d89b62f75f70cb4bc2685a9a6baf22d8",
+      "prefixReplay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "severe",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-01",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "shove",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 3
+          }
+        ]
+      },
+      "prefixDigest": "e99a23864b0a494443e1ad8aa06276267181ed5f976506d1b97dc622095d950e",
+      "continuation": {
+        "type": "flare",
+        "target": 3
+      },
+      "continuedStateDigest": "63cf395d025857e94d35a0167cdb107df940281d990d68d309066749bfc862e7"
+    },
+    {
+      "replay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "severe",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-02",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 3
+          },
+          {
+            "type": "relic",
+            "id": "boots"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "brace"
+          },
+          {
+            "type": "brace"
+          },
+          {
+            "type": "brace"
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 5
+          },
+          {
+            "type": "flare",
+            "target": 5
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 7
+          },
+          {
+            "type": "flare",
+            "target": 7
+          },
+          {
+            "type": "relic",
+            "id": "shell"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "shove",
+            "target": 9
+          },
+          {
+            "type": "flare",
+            "target": 9
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 10
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 3
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 12
+          },
+          {
+            "type": "shove",
+            "target": 11
+          },
+          {
+            "type": "flare",
+            "target": 11
+          },
+          {
+            "type": "relic",
+            "id": "chisel"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "west"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 14
+          },
+          {
+            "type": "strike",
+            "target": 13
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 15
+          },
+          {
+            "type": "flare",
+            "target": 15
+          }
+        ]
+      },
+      "stateDigest": "2b8e05862990f730d46c1a7dc7bf1173cf5236bd16c89dfbdd6e7b01f0e53734",
+      "prefixReplay": {
+        "format": "cartographer-replay-v2",
+        "rules": "cartographer-2",
+        "difficulty": "severe",
+        "generator": "rooms-1",
+        "seed": "CARTOGRAPHER-V2-CONTINUITY-02",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 2
+          },
+          {
+            "type": "strike",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 3
+          }
+        ]
+      },
+      "prefixDigest": "5d154496ff8151a499841fed3ea703a0a948d137a1d4e0d524b04525e92f2961",
+      "continuation": {
+        "type": "relic",
+        "id": "boots"
+      },
+      "continuedStateDigest": "4c275b557c7a4d421212a32bbda8abdf0845c778311e9b229aa941cf033c2558"
+    }
+  ],
+  "nativeWitness": {
+    "commit": "35c0ea1",
+    "note": "Native continuation taken from the accepted original journal; policy aliases never enter native dispatch.",
+    "archivedSources": {
+      "src/games/cartographer/application/session.ts": "e0a190d1e6e0008951574a99ce341ff693d54a5d6a70485dc41f810c527dcbf2",
+      "src/games/cartographer/domain/content.ts": "ae296e58c3c035a0dbce91b3fd747aae65423780b6efc8d0c006baf8ade8ea36",
+      "src/games/cartographer/domain/game.ts": "cf694d36b531cf0bdc92246d08ca35a9233158d23195e507545ff70b0b7a758a",
+      "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+      "src/shared/layout/layout.ts": "f5226b7ac4ab99e1e5ae39a68321aee885de6ba7d0e309314ec28341efd861ec",
+      "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56"
+    },
+    "archivedEntryDigest": "973e244006c9a2b77169e424acfce1b6f8914c431a49fc373aaf712b8cd31584",
+    "bundleDigest": "2428da466b62ca740b6ff8e17c4aabdf33a1d8aecdc301e2ab2278052912b4bd"
+  }
+}

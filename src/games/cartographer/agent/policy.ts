@@ -129,10 +129,20 @@ const relicValues = {
 function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> {
   return {
     id: strategy,
-    version: 'cartographer-policy-1',
+    version: 'cartographer-policy-2',
     create() {
       let decisions = 0;
       let frontierGoal: string | null = null;
+      // Public combat history distinguishes real progress from a repeated safe oscillation.
+      const visits = new Map<string, number>();
+      const positionKey = (
+        player: Cell,
+        enemies: { id: number; x: number; y: number; hp: number }[],
+      ) =>
+        JSON.stringify([
+          key(player),
+          enemies.filter((e) => e.hp > 0).map((e) => [e.id, e.x, e.y, e.hp]),
+        ]);
       return (input): Proposal<PolicyCommand> => {
         let work = input.actions.length,
           routeNodes = 0;
@@ -172,7 +182,7 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
                 chamber = [...input.definitions.chambers, input.definitions.guardian].find(
                   (room) => room.id === id,
                 )!;
-              const missing = Math.min(8, input.player.maxHp - input.player.hp),
+              const missing = Math.min(input.combat.healing, input.player.maxHp - input.player.hp),
                 healing = chamber.reward === 'heal' ? missing : 0;
               const power = Number(chamber.reward === 'power'),
                 focus = Number(chamber.reward === 'focus');
@@ -207,13 +217,20 @@ function factory(strategy: Strategy): PolicyFactory<Observation, PolicyCommand> 
           );
         }
         if (input.enemies.length) {
+          const position = positionKey(input.player, input.enemies);
+          visits.set(position, (visits.get(position) ?? 0) + 1);
           const ranked = input.forecasts
             .map((forecast) => {
               const approach = combatDistance(input, forecast);
               work += approach.nodes;
               return {
                 command: forecast.command,
-                value: combatValue(input, forecast, strategy, approach.distance),
+                value:
+                  combatValue(input, forecast, strategy, approach.distance) -
+                  Math.min(
+                    200,
+                    (visits.get(positionKey(forecast.playerAfter, forecast.enemiesAfter)) ?? 0) * 8,
+                  ),
               };
             })
             .filter((entry) =>

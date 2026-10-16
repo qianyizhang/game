@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest';
 import { auditRollout, recordEpisode } from '../../../shared/policy/rollout';
 import type { Json, PolicyFactory } from '../../../shared/policy/types';
 import { dispatch, newSession, type Session } from '../application/session';
-import { activeRoom, applyCommand, type Command } from '../domain/game';
+import { activeRoom, applyCommand, type Difficulty, type Command } from '../domain/game';
 import { adapter, at, type EpisodeState } from './adapter';
 import { emptyAliases, observe, type Observation, type PolicyCommand } from './observation';
 const toJson = (value: unknown): Json => JSON.parse(JSON.stringify(value)) as Json;
-function firstRoom(seed = 'CARTOGRAPHER-BOUNDARY'): Session {
-  let session = newSession(seed);
+function firstRoom(seed = 'CARTOGRAPHER-BOUNDARY', difficulty: Difficulty = 'standard'): Session {
+  let session = newSession(seed, difficulty);
   for (let n = 0; n < 3; n++)
     session = dispatch(session, { type: 'move', direction: 'north' }).session;
   session = dispatch(session, { type: 'explore', direction: 'north' }).session;
@@ -96,8 +96,13 @@ describe('Cartographer public policy boundary', () => {
   it('forecasts announced consequences without producing future seeded reward information', () => {
     const session = firstRoom('CARTOGRAPHER-FORECASTS');
     // Every menu forecast is compared at the native accepted-command boundary.
-    for (const seed of ['CARTOGRAPHER-FORECASTS', 'CARTOGRAPHER-FORECASTS-2']) {
-      const native = firstRoom(seed);
+    for (const [seed, difficulty] of (['relaxed', 'standard', 'severe'] as const).flatMap(
+      (difficulty) =>
+        ['CARTOGRAPHER-FORECASTS', 'CARTOGRAPHER-FORECASTS-2'].map(
+          (seed) => [seed, difficulty] as const,
+        ),
+    )) {
+      const native = firstRoom(seed, difficulty);
       for (let step = 0; step < 30 && native.state.status === 'playing'; step++) {
         const aliases = emptyAliases();
         const input = observe(native.state, aliases);

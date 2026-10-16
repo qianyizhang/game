@@ -43,7 +43,7 @@ it('resolves marked cells without retargeting, cancels a shoved attack, and ends
   expect(shoved.player.hp).toBe(36);
   expect(shoved.enemies[0].hp).toBe(4);
   expect(shoved.enemies[0].x).toBe(enemy.x + 1);
-  expect(applyCommand(state, { type: 'brace' }).state.player.hp).toBe(35);
+  expect(applyCommand(state, { type: 'brace' }).state.player.hp).toBe(34);
   state.player.hp = 1;
   const lost = applyCommand(state, { type: 'brace' }).state;
   expect(lost.status).toBe('lost');
