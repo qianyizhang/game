@@ -23,11 +23,13 @@ part of the shared module.
 ## Reproducibility
 
 `rooms-1` identifies generator behavior. Named seeded streams isolate layout offers,
-placement, encounters and relics. Cartographer replay identity pins both `cartographer-1`
-and `rooms-1`; changing their accepted-command meaning requires a version change.
+placement, encounters and relics. Current Cartographer replay identity pins `cartographer-2`
+and `rooms-1`; bounded v1 imports retain `cartographer-1` and the same generator. Difficulty
+changes starting/maximum life without changing seeded generation. Changes to rules or
+generator replay meaning require the corresponding version bump.
 
 The Charted Vault is an opt-in content expansion. It receives a derived pack identity and
-version; the exact expanded geometry is embedded in the existing Emberwake v2 replay.
+version; the exact expanded geometry is embedded in the versioned Emberwake campaign replay (v2 or v3).
 The original content is cloned and never mutated. No existing campaign is regenerated,
 and reconstructing a generated campaign does not run the generator again. Adding a region
 changes RNG consumption for that new pack, which is part of its new-run identity.

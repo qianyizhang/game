@@ -1,0 +1,1544 @@
+{
+  "sourceCommit": "377aadc9c2db0b8b21e2640402bf349b3c135d03",
+  "cases": [
+    {
+      "seed": "cartographer-v1-continuity",
+      "replay": {
+        "format": "cartographer-replay-v1",
+        "rules": "cartographer-1",
+        "generator": "rooms-1",
+        "seed": "cartographer-v1-continuity",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "shove",
+            "target": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 3
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 4
+          },
+          {
+            "type": "flare",
+            "target": 5
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "relic",
+            "id": "shell"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "shove",
+            "target": 7
+          },
+          {
+            "type": "flare",
+            "target": 7
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 9
+          },
+          {
+            "type": "flare",
+            "target": 9
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 8
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "relic",
+            "id": "chisel"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          }
+        ]
+      },
+      "stateDigest": "7c92813743b735729ed95e264a5bf3c065fe959675e9867cbb9b1d72a2c75823",
+      "continuation": {
+        "type": "flare",
+        "target": 11
+      },
+      "continuedStateDigest": "0384ac5a6ebbb4af8c807c5dff7c30a63c1f3a84e0f503e081b76f9d4af9a02a",
+      "continuedCommands": [
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "explore",
+          "direction": "north"
+        },
+        {
+          "type": "draft",
+          "offer": 0,
+          "rotation": 0
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "flare",
+          "target": 1
+        },
+        {
+          "type": "shove",
+          "target": 1
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "flare",
+          "target": 2
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "explore",
+          "direction": "north"
+        },
+        {
+          "type": "draft",
+          "offer": 2,
+          "rotation": 1
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "flare",
+          "target": 3
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "shove",
+          "target": 4
+        },
+        {
+          "type": "flare",
+          "target": 5
+        },
+        {
+          "type": "flare",
+          "target": 4
+        },
+        {
+          "type": "relic",
+          "id": "shell"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "explore",
+          "direction": "east"
+        },
+        {
+          "type": "draft",
+          "offer": 0,
+          "rotation": 0
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "flare",
+          "target": 6
+        },
+        {
+          "type": "flare",
+          "target": 6
+        },
+        {
+          "type": "shove",
+          "target": 7
+        },
+        {
+          "type": "flare",
+          "target": 7
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "explore",
+          "direction": "south"
+        },
+        {
+          "type": "draft",
+          "offer": 1,
+          "rotation": 0
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "flare",
+          "target": 9
+        },
+        {
+          "type": "flare",
+          "target": 9
+        },
+        {
+          "type": "move",
+          "direction": "west"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "shove",
+          "target": 8
+        },
+        {
+          "type": "flare",
+          "target": 8
+        },
+        {
+          "type": "relic",
+          "id": "chisel"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "explore",
+          "direction": "east"
+        },
+        {
+          "type": "draft",
+          "offer": 1,
+          "rotation": 2
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "flare",
+          "target": 11
+        }
+      ]
+    },
+    {
+      "seed": "ink-and-ember",
+      "replay": {
+        "format": "cartographer-replay-v1",
+        "rules": "cartographer-1",
+        "generator": "rooms-1",
+        "seed": "ink-and-ember",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "flare",
+            "target": 2
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 5
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 4
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 3
+          },
+          {
+            "type": "flare",
+            "target": 3
+          },
+          {
+            "type": "relic",
+            "id": "chisel"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 7
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "shove",
+            "target": 8
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 8
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "flare",
+            "target": 9
+          },
+          {
+            "type": "shove",
+            "target": 9
+          },
+          {
+            "type": "relic",
+            "id": "shell"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          }
+        ]
+      },
+      "stateDigest": "5ff8426831780f00c08b6576fa41c3ec5197001ce5ecb062f9c3db581b198065",
+      "continuation": {
+        "type": "shove",
+        "target": 12
+      },
+      "continuedStateDigest": "1c255021c30382d1937a0d506b97baaeeaa672f8a773fd5448d99b4e44d37278",
+      "continuedCommands": [
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "explore",
+          "direction": "north"
+        },
+        {
+          "type": "draft",
+          "offer": 0,
+          "rotation": 0
+        },
+        {
+          "type": "flare",
+          "target": 2
+        },
+        {
+          "type": "flare",
+          "target": 1
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "shove",
+          "target": 2
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "explore",
+          "direction": "north"
+        },
+        {
+          "type": "draft",
+          "offer": 0,
+          "rotation": 1
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "flare",
+          "target": 5
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "shove",
+          "target": 4
+        },
+        {
+          "type": "flare",
+          "target": 4
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "shove",
+          "target": 3
+        },
+        {
+          "type": "flare",
+          "target": 3
+        },
+        {
+          "type": "relic",
+          "id": "chisel"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "explore",
+          "direction": "east"
+        },
+        {
+          "type": "draft",
+          "offer": 1,
+          "rotation": 0
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "flare",
+          "target": 7
+        },
+        {
+          "type": "flare",
+          "target": 6
+        },
+        {
+          "type": "flare",
+          "target": 6
+        },
+        {
+          "type": "shove",
+          "target": 8
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "shove",
+          "target": 8
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "explore",
+          "direction": "east"
+        },
+        {
+          "type": "draft",
+          "offer": 0,
+          "rotation": 0
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "flare",
+          "target": 10
+        },
+        {
+          "type": "flare",
+          "target": 10
+        },
+        {
+          "type": "flare",
+          "target": 9
+        },
+        {
+          "type": "shove",
+          "target": 9
+        },
+        {
+          "type": "relic",
+          "id": "shell"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "explore",
+          "direction": "south"
+        },
+        {
+          "type": "draft",
+          "offer": 0,
+          "rotation": 0
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "shove",
+          "target": 12
+        }
+      ]
+    },
+    {
+      "seed": "rooms-legacy",
+      "replay": {
+        "format": "cartographer-replay-v1",
+        "rules": "cartographer-1",
+        "generator": "rooms-1",
+        "seed": "rooms-legacy",
+        "commands": [
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 0,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "shove",
+            "target": 2
+          },
+          {
+            "type": "flare",
+            "target": 2
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "explore",
+            "direction": "north"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "flare",
+            "target": 4
+          },
+          {
+            "type": "flare",
+            "target": 3
+          },
+          {
+            "type": "flare",
+            "target": 3
+          },
+          {
+            "type": "relic",
+            "id": "chisel"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "north"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 0
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 5
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "flare",
+            "target": 6
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "explore",
+            "direction": "east"
+          },
+          {
+            "type": "draft",
+            "offer": 1,
+            "rotation": 1
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "flare",
+            "target": 7
+          },
+          {
+            "type": "flare",
+            "target": 7
+          },
+          {
+            "type": "shove",
+            "target": 8
+          },
+          {
+            "type": "flare",
+            "target": 8
+          },
+          {
+            "type": "relic",
+            "id": "moss"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          },
+          {
+            "type": "explore",
+            "direction": "south"
+          },
+          {
+            "type": "draft",
+            "offer": 2,
+            "rotation": 0
+          },
+          {
+            "type": "flare",
+            "target": 11
+          },
+          {
+            "type": "move",
+            "direction": "east"
+          },
+          {
+            "type": "shove",
+            "target": 9
+          },
+          {
+            "type": "flare",
+            "target": 9
+          },
+          {
+            "type": "move",
+            "direction": "west"
+          },
+          {
+            "type": "shove",
+            "target": 10
+          },
+          {
+            "type": "flare",
+            "target": 10
+          },
+          {
+            "type": "move",
+            "direction": "south"
+          }
+        ]
+      },
+      "stateDigest": "f1d57d02ee73bee9c5bcc94c105ba38ea81a3b947644ffc6aab000f4b8a2d15f",
+      "continuation": {
+        "type": "move",
+        "direction": "south"
+      },
+      "continuedStateDigest": "02ee00a00deda6d43770456e598fa1ca8d158f3a05a256c22641e7764768f563",
+      "continuedCommands": [
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "explore",
+          "direction": "north"
+        },
+        {
+          "type": "draft",
+          "offer": 0,
+          "rotation": 0
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "flare",
+          "target": 1
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "shove",
+          "target": 2
+        },
+        {
+          "type": "flare",
+          "target": 2
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "explore",
+          "direction": "north"
+        },
+        {
+          "type": "draft",
+          "offer": 1,
+          "rotation": 1
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "flare",
+          "target": 4
+        },
+        {
+          "type": "flare",
+          "target": 3
+        },
+        {
+          "type": "flare",
+          "target": 3
+        },
+        {
+          "type": "relic",
+          "id": "chisel"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "north"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "explore",
+          "direction": "east"
+        },
+        {
+          "type": "draft",
+          "offer": 2,
+          "rotation": 0
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "flare",
+          "target": 5
+        },
+        {
+          "type": "flare",
+          "target": 6
+        },
+        {
+          "type": "flare",
+          "target": 6
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "explore",
+          "direction": "east"
+        },
+        {
+          "type": "draft",
+          "offer": 1,
+          "rotation": 1
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "flare",
+          "target": 7
+        },
+        {
+          "type": "flare",
+          "target": 7
+        },
+        {
+          "type": "shove",
+          "target": 8
+        },
+        {
+          "type": "flare",
+          "target": 8
+        },
+        {
+          "type": "relic",
+          "id": "moss"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "explore",
+          "direction": "south"
+        },
+        {
+          "type": "draft",
+          "offer": 2,
+          "rotation": 0
+        },
+        {
+          "type": "flare",
+          "target": 11
+        },
+        {
+          "type": "move",
+          "direction": "east"
+        },
+        {
+          "type": "shove",
+          "target": 9
+        },
+        {
+          "type": "flare",
+          "target": 9
+        },
+        {
+          "type": "move",
+          "direction": "west"
+        },
+        {
+          "type": "shove",
+          "target": 10
+        },
+        {
+          "type": "flare",
+          "target": 10
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        },
+        {
+          "type": "move",
+          "direction": "south"
+        }
+      ]
+    }
+  ]
+}

@@ -23,6 +23,7 @@ const adapters: Record<string, string> = {
   spire: 'src/games/spire/agent/adapter.ts',
   hearth: 'src/games/battlegrounds/agent/adapter.ts',
   emberwake: 'packages/diablo2/src/agent/adapter.ts',
+  cartographer: 'src/games/cartographer/agent/adapter.ts',
 };
 /** Selected adapter/module is statically bundled: no unpinned runtime chunks. */
 export async function withRuntime<T>(

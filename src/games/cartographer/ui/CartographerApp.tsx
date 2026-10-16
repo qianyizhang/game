@@ -10,13 +10,23 @@ import {
   type Direction,
 } from '../../../shared/layout/layout';
 import { CHAMBERS, chamber, ENEMIES, RELICS, ROOM_LIMIT } from '../domain/content';
-import { activeRoom, distance, type Command } from '../domain/game';
+import {
+  activeRoom,
+  distance,
+  DIFFICULTIES,
+  LEGACY_RULES_VERSION,
+  type Difficulty,
+  type Command,
+} from '../domain/game';
 import {
   dispatch,
   exportSession,
   importSession,
   newSession,
   SAVE_KEY,
+  LEGACY_SAVE_KEY,
+  ACTIVE_SAVE_KEY,
+  saveKey,
   type Session,
 } from '../application/session';
 import { ExpeditionChoice } from './ExpeditionChoice';
@@ -34,7 +44,9 @@ function download(text: string) {
 export default function CartographerApp() {
   const [initial] = useState(() => {
     try {
-      const text = localStorage.getItem(SAVE_KEY);
+      const key =
+        localStorage.getItem(ACTIVE_SAVE_KEY) === LEGACY_SAVE_KEY ? LEGACY_SAVE_KEY : SAVE_KEY;
+      const text = localStorage.getItem(key);
       return { session: text ? importSession(text) : newSession('ink-and-ember'), error: '' };
     } catch (error) {
       return {
@@ -45,6 +57,14 @@ export default function CartographerApp() {
   });
   const [session, setSession] = useState<Session>(initial.session);
   const [seed, setSeed] = useState(session.state.seed);
+  const [difficulty, setDifficulty] = useState<Difficulty>(session.state.difficulty ?? 'standard');
+  const [previousSave] = useState(() => {
+    try {
+      return localStorage.getItem(LEGACY_SAVE_KEY);
+    } catch {
+      return null;
+    }
+  });
   const [message, setMessage] = useState(initial.error);
   const [saved, setSaved] = useState('');
   const [target, setTarget] = useState<number | null>(null);
@@ -53,7 +73,8 @@ export default function CartographerApp() {
   const save = useCallback((next: Session) => {
     setSession(next);
     try {
-      localStorage.setItem(SAVE_KEY, exportSession(next));
+      localStorage.setItem(saveKey(next), exportSession(next));
+      localStorage.setItem(ACTIVE_SAVE_KEY, saveKey(next));
       setSaved('Expedition saved');
     } catch {
       setSaved('Storage unavailable — export your expedition');
@@ -126,12 +147,27 @@ export default function CartographerApp() {
   const decisionOpen = !!s.draft || s.relicOffers.length > 0;
   const start = () => {
     try {
-      save(newSession(seed.trim()));
+      save(newSession(seed.trim(), difficulty));
       setRecovery(false);
       setMessage('');
       setTarget(null);
     } catch (error) {
       setMessage(String(error));
+    }
+  };
+  const restorePrevious = () => {
+    try {
+      const text = localStorage.getItem(LEGACY_SAVE_KEY);
+      if (!text) throw new Error('No previous expedition is saved.');
+      const next = importSession(text);
+      setSession(next);
+      setSeed(next.state.seed);
+      setTarget(null);
+      setRecovery(false);
+      setMessage('Previous expedition restored with original Standard rules.');
+      localStorage.setItem(ACTIVE_SAVE_KEY, LEGACY_SAVE_KEY);
+    } catch (error) {
+      setMessage(`Restore failed: ${String(error)}. Its save remains preserved.`);
     }
   };
   return (
@@ -154,7 +190,33 @@ export default function CartographerApp() {
               onChange={(e) => setSeed(e.target.value)}
             />
           </label>
+          <label>
+            Difficulty
+            <select
+              aria-label="Difficulty"
+              value={difficulty}
+              onChange={(event) => setDifficulty(event.target.value as Difficulty)}
+            >
+              {Object.entries(DIFFICULTIES).map(([id, tier]) => (
+                <option key={id} value={id}>
+                  {tier.label} · {tier.hp} life
+                </option>
+              ))}
+            </select>
+          </label>
           <button onClick={start}>New expedition</button>
+          {(previousSave || session.replay.rules === LEGACY_RULES_VERSION) && (
+            <div>
+              <button onClick={restorePrevious}>Restore previous expedition</button>
+              <button
+                onClick={() =>
+                  download(localStorage.getItem(LEGACY_SAVE_KEY) ?? previousSave ?? '')
+                }
+              >
+                Export previous expedition
+              </button>
+            </div>
+          )}
           <div>
             <button onClick={() => download(exportSession(session))}>Export replay</button>
             <button onClick={() => file.current?.click()}>Import replay</button>
@@ -186,7 +248,10 @@ export default function CartographerApp() {
       </header>
       <div className="dc-stats" aria-label="Expedition status">
         <div>
-          <span>LANTERN KEEPER</span>
+          <span>
+            LANTERN KEEPER · {DIFFICULTIES[s.difficulty ?? 'standard'].label}
+            {session.replay.rules === LEGACY_RULES_VERSION ? ' · previous rules' : ''}
+          </span>
           <strong>
             {s.player.hp} / {s.player.maxHp} <small>life</small>
           </strong>

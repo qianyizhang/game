@@ -6,10 +6,10 @@ import { withRuntime } from './runtime.ts';
 import { auditPassed, benchmark, cohortSeeds } from './study.ts';
 import type { JsonObject } from '../../../src/shared/policy/types';
 
-const usage = `policy run|record --game blindside|spire|hearth|emberwake [--policy immediate|survival|growth | --policy-module ./policy.ts]
+const usage = `policy run|record --game blindside|spire|hearth|emberwake|cartographer [--policy immediate|survival|growth | --policy-module ./policy.ts]
   [--seed SEED] [--setup JSON] [--difficulty relaxed|standard|severe] [--policy-seed SEED] [--policy-options JSON] [--max-decisions N]
-policy record --game blindside|spire|hearth|emberwake --out NEW_DIRECTORY [same options]
-policy benchmark --game blindside|spire|hearth|emberwake --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
+policy record --game blindside|spire|hearth|emberwake|cartographer --out NEW_DIRECTORY [same options]
+policy benchmark --game blindside|spire|hearth|emberwake|cartographer --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
 policy audit --input ROLLOUT --out NEW_RECEIPT [--policy-module ./policy.ts]
 A local TS module default-exports a game-typed PolicyFactory. It is trusted in-process code.
 Run prints result/audit; record retains exact knowledge, replay, audit and compiled source-pinned bundle.
@@ -61,10 +61,18 @@ try {
         ? 'spire'
         : wireGame === 'last-hearth-arena'
           ? 'hearth'
-          : wireGame;
-    if (game !== 'blindside' && game !== 'spire' && game !== 'hearth' && game !== 'emberwake')
+          : wireGame === 'dungeon-cartographer'
+            ? 'cartographer'
+            : wireGame;
+    if (
+      game !== 'blindside' &&
+      game !== 'spire' &&
+      game !== 'hearth' &&
+      game !== 'emberwake' &&
+      game !== 'cartographer'
+    )
       throw new Error(
-        'Select --game blindside, spire, hearth or emberwake. Other adapters are not adopted yet.',
+        'Select --game blindside, spire, hearth, emberwake or cartographer. Other adapters are not adopted yet.',
       );
     if (options.setup && options.difficulty)
       throw new Error('Choose --setup or --difficulty, not both.');

@@ -6,6 +6,7 @@
 - [Settled game decisions](scope-history.md) records accepted scope and superseded choices.
 - [Development direction](roadmap.md) separates delivered scope, evidence-led next steps and future candidates.
 - [Last Hearth policy play](hearth-policy.md) — opaque public aliases, all-actor journal audits, difficulty and local extensions.
+- [Cartographer policy play](cartographer-policy.md) — public announced-turn forecasts, native replay and local extensions.
 - [Emberwake policy play](emberwake-policy.md) — conservative campaign sensors, first-death attempts, packed-tick replay and original-input review.
 - [Spire policy play](spire-agent.md) — public legal menus, local extensions, paired character/Ascension evaluation and original-input review.
 - [Blindside policy play](blindside-agent.md) — restricted observations, local extensions, difficulty, evidence and review.

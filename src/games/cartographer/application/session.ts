@@ -1,12 +1,26 @@
 import { isRecord, isList } from '../../../shared/json';
 import { DIRECTIONS, GENERATOR_VERSION } from '../../../shared/layout/layout';
 import { RELICS } from '../domain/content';
-import { applyCommand, createGame, RULES_VERSION, type Command, type State } from '../domain/game';
+import {
+  applyCommand,
+  createGame,
+  DIFFICULTIES,
+  RULES_VERSION,
+  LEGACY_RULES_VERSION,
+  type Difficulty,
+  type Command,
+  type State,
+} from '../domain/game';
 
-export const SAVE_KEY = 'card-workshop.cartographer.v1';
+export const SAVE_KEY = 'card-workshop.cartographer.v2';
+export const LEGACY_SAVE_KEY = 'card-workshop.cartographer.v1';
+export const ACTIVE_SAVE_KEY = 'card-workshop.cartographer.active-save';
+export const saveKey = (session: Session): string =>
+  session.replay.rules === LEGACY_RULES_VERSION ? LEGACY_SAVE_KEY : SAVE_KEY;
 export interface Replay {
-  format: 'cartographer-replay-v1';
-  rules: typeof RULES_VERSION;
+  format: 'cartographer-replay-v1' | 'cartographer-replay-v2';
+  rules: typeof RULES_VERSION | typeof LEGACY_RULES_VERSION;
+  difficulty?: Difficulty;
   generator: typeof GENERATOR_VERSION;
   seed: string;
   commands: Command[];
@@ -15,12 +29,18 @@ export interface Session {
   state: State;
   replay: Replay;
 }
-export function newSession(seed: string): Session {
+export function newSession(
+  seed: string,
+  difficulty: Difficulty = 'standard',
+  rulesVersion: typeof RULES_VERSION | typeof LEGACY_RULES_VERSION = RULES_VERSION,
+): Session {
   return {
-    state: createGame(seed),
+    state: createGame(seed, difficulty, rulesVersion),
     replay: {
-      format: 'cartographer-replay-v1',
-      rules: RULES_VERSION,
+      format:
+        rulesVersion === LEGACY_RULES_VERSION ? 'cartographer-replay-v1' : 'cartographer-replay-v2',
+      rules: rulesVersion,
+      ...(rulesVersion === RULES_VERSION ? { difficulty } : {}),
       generator: GENERATOR_VERSION,
       seed,
       commands: [],
@@ -84,15 +104,23 @@ export function importSession(text: string): Session {
   const r: unknown = JSON.parse(text);
   if (
     !isRecord(r) ||
-    r.format !== 'cartographer-replay-v1' ||
-    r.rules !== RULES_VERSION ||
+    (r.rules === LEGACY_RULES_VERSION
+      ? r.format !== 'cartographer-replay-v1'
+      : r.rules !== RULES_VERSION ||
+        r.format !== 'cartographer-replay-v2' ||
+        typeof r.difficulty !== 'string' ||
+        !Object.hasOwn(DIFFICULTIES, r.difficulty)) ||
     r.generator !== GENERATOR_VERSION ||
     typeof r.seed !== 'string' ||
     !isList(r.commands) ||
     r.commands.length > 12000
   )
     throw new Error('Unsupported or malformed Cartographer replay.');
-  let session = newSession(r.seed);
+  let session = newSession(
+    r.seed,
+    r.rules === LEGACY_RULES_VERSION ? 'standard' : (r.difficulty as Difficulty),
+    r.rules as typeof RULES_VERSION | typeof LEGACY_RULES_VERSION,
+  );
   // Reconstruct directly to avoid repeatedly copying the growing journal.
   const commands: Command[] = [];
   for (const command of r.commands) {

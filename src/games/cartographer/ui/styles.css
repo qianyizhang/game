@@ -13,7 +13,8 @@
   box-sizing: border-box;
 }
 .dc-app button,
-.dc-app input {
+.dc-app input,
+.dc-app select {
   font: inherit;
 }
 .dc-app button {
@@ -31,6 +32,7 @@
 }
 .dc-app button:focus-visible,
 .dc-app input:focus-visible,
+.dc-app select:focus-visible,
 .dc-board:focus-visible {
   outline: 3px solid #f7d886;
   outline-offset: 3px;
@@ -91,7 +93,8 @@
   align-items: center;
   gap: 8px;
 }
-.dc-run-tools input {
+.dc-run-tools input,
+.dc-run-tools select {
   background: #0e1b23;
   color: var(--dc-paper);
   border: 1px solid #64706b;
@@ -564,7 +567,8 @@
   .dc-run-tools label {
     grid-column: 1 / -1;
   }
-  .dc-run-tools input {
+  .dc-run-tools input,
+  .dc-run-tools select {
     width: auto;
     flex: 1;
     min-width: 0;

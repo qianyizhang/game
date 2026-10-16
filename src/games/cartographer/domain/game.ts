@@ -29,7 +29,14 @@ import {
   type RelicId,
 } from './content';
 
-export const RULES_VERSION = 'cartographer-1';
+export const RULES_VERSION = 'cartographer-2';
+export const LEGACY_RULES_VERSION = 'cartographer-1';
+export type Difficulty = 'relaxed' | 'standard' | 'severe';
+export const DIFFICULTIES = {
+  relaxed: { label: 'Relaxed', hp: 48 },
+  standard: { label: 'Standard', hp: 36 },
+  severe: { label: 'Severe', hp: 28 },
+} as const;
 export interface Intent {
   kind: 'attack' | 'move' | 'wait';
   cells: Cell[];
@@ -43,6 +50,9 @@ export interface Enemy extends Cell {
   intent: Intent;
 }
 export interface State {
+  /** Historical v1 state has no setup metadata. */
+  rulesVersion?: typeof RULES_VERSION;
+  difficulty?: Difficulty;
   seed: string;
   layout: Layout;
   player: Cell & { hp: number; maxHp: number; attack: number; focus: number };
@@ -150,14 +160,23 @@ function plan(s: State): void {
     }
   }
 }
-export function createGame(seed: string): State {
+export function createGame(
+  seed: string,
+  difficulty: Difficulty = 'standard',
+  rulesVersion: string = RULES_VERSION,
+): State {
+  if (!Object.hasOwn(DIFFICULTIES, difficulty)) throw new Error('Unknown difficulty.');
+  if (rulesVersion !== RULES_VERSION && rulesVersion !== LEGACY_RULES_VERSION)
+    throw new Error('Unsupported Cartographer rules version.');
   if (typeof seed !== 'string' || !seed.trim() || seed.length > 80)
     throw new Error('Use a seed of 1–80 characters.');
   const layout = placeRoom(emptyLayout(), ENTRANCE, { x: 2, y: 2 });
+  const hp = rulesVersion === LEGACY_RULES_VERSION ? 36 : DIFFICULTIES[difficulty].hp;
   return {
+    ...(rulesVersion === RULES_VERSION ? { rulesVersion, difficulty } : {}),
     seed,
     layout,
-    player: { ...center(layout.rooms[0]), hp: 36, maxHp: 36, attack: 3, focus: 3 },
+    player: { ...center(layout.rooms[0]), hp, maxHp: hp, attack: 3, focus: 3 },
     enemies: [],
     cleared: [layout.rooms[0].id],
     relics: [],
@@ -392,6 +411,13 @@ export function applyCommand(
   state: State,
   command: Command,
 ): { state: State; error: string | null } {
+  if (
+    state.rulesVersion !== undefined &&
+    (state.rulesVersion !== RULES_VERSION ||
+      !state.difficulty ||
+      !Object.hasOwn(DIFFICULTIES, state.difficulty))
+  )
+    return { state, error: 'Unsupported Cartographer rules or difficulty.' };
   const next = structuredClone(state);
   try {
     execute(next, command);

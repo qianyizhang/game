@@ -7,6 +7,11 @@ and the Unwritten King. An expedition contains nine rooms including the entrance
 
 ## Play
 
+Choose **Relaxed**, **Standard** or **Severe**, then **New expedition** to apply it.
+Starting and maximum life are **48**, **36** or **28** respectively. Standard preserves
+original gameplay; seeded rooms, encounters, rewards and combat calculations are unchanged.
+The current expedition's tier appears beside Lantern Keeper, independently of the new-run selector.
+
 - Move with arrow keys, WASD, the direction buttons, or an adjacent tile. Reach a gold
   doorway in a cleared room, then use **Explore** or **E** to draft a chamber.
 - Choose one of three seeded offers. Rotate its terrain and exits before placing it.
@@ -31,8 +36,11 @@ not player enjoyment or balance.
 
 ## Save and reproduce
 
-Accepted actions save locally under `card-workshop.cartographer.v1`. Export/import carries
-seed, rules version, generator version and accepted commands. Import reconstructs the game;
+Current v2 expeditions save locally under `card-workshop.cartographer.v2`. Export/import carries
+seed, fixed difficulty, rules version, generator version and accepted commands. Historical
+`cartographer-1` v1 expeditions retain their original Standard meaning and
+`card-workshop.cartographer.v1` slot. **Restore previous expedition** and **Export previous
+expedition** provide explicit recovery; continuing either version preserves the other slot. Import reconstructs the game;
 it does not trust a mutable state snapshot. Replays from unsupported versions are rejected.
 A corrupt save remains stored while an unsaved preview runs, until the player explicitly
 starts an expedition or imports a valid replay. Storage failure leaves play and export usable.
