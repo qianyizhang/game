@@ -1,7 +1,12 @@
-import type { Content, State } from './types';
+import type { Content, State, Player, HeroDef } from './types';
 export function stats(state: State, content: Content) {
-  const p = state.player;
-  const hero = content.heroes.find((h) => h.id === state.hero)!;
+  return playerStats(
+    state.player,
+    content.heroes.find((h) => h.id === state.hero)!,
+  );
+}
+/** Derived player values require no world, seed or full content handle. */
+export function playerStats(p: Player, hero: HeroDef) {
   const gear = Object.values(p.equipment);
   const vitality = p.attributes.vitality + gear.reduce((n, i) => n + i.vitality, 0);
   const energy = p.attributes.energy + gear.reduce((n, i) => n + i.energy, 0);

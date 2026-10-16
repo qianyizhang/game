@@ -3,16 +3,23 @@ import {
   applyCommand,
   createGame,
   RULES_VERSION,
+  LEGACY_RULES_VERSION,
+  DIFFICULTIES,
   validCommand,
   validateContent,
 } from '../domain/game';
-import type { Command, Content, Replay, State } from '../domain/types';
+import type { Command, Content, Difficulty, Replay, State } from '../domain/types';
 import { SANDBOX_RULES_VERSION } from '../domain/sandbox';
 export const SANDBOX_SAVE_KEY = 'card-workshop.emberwake.sandbox.v1';
 export const ACTIVE_MODE_KEY = 'card-workshop.emberwake.active-mode';
 export const saveKey = (session: Session): string =>
-  session.replay.mode === 'sandbox' ? SANDBOX_SAVE_KEY : SAVE_KEY;
-export const SAVE_KEY = 'card-workshop.emberwake.v2';
+  session.replay.mode === 'sandbox'
+    ? SANDBOX_SAVE_KEY
+    : session.replay.rulesVersion === LEGACY_RULES_VERSION
+      ? LEGACY_SAVE_KEY
+      : SAVE_KEY;
+export const LEGACY_SAVE_KEY = 'card-workshop.emberwake.v2';
+export const SAVE_KEY = 'card-workshop.emberwake.v3';
 export interface Session {
   state: State;
   replay: Replay;
@@ -22,13 +29,19 @@ export function newSession(
   hero: string,
   content: Content = BASE_CONTENT,
   sandbox = false,
+  difficulty: Difficulty = 'standard',
+  rulesVersion = RULES_VERSION,
 ): Session {
   const pack = validateContent(content);
   return {
-    state: createGame(seed, hero, pack, sandbox),
+    state: createGame(seed, hero, pack, sandbox, difficulty, rulesVersion),
     replay: {
-      format: 'emberwake-replay-v2',
-      rulesVersion: sandbox ? SANDBOX_RULES_VERSION : RULES_VERSION,
+      format:
+        sandbox || rulesVersion === LEGACY_RULES_VERSION
+          ? 'emberwake-replay-v2'
+          : 'emberwake-replay-v3',
+      ...(!sandbox && rulesVersion === RULES_VERSION ? { difficulty } : {}),
+      rulesVersion: sandbox ? SANDBOX_RULES_VERSION : rulesVersion,
       ...(sandbox ? { mode: 'sandbox' as const } : {}),
       content: pack,
       seed,
@@ -75,10 +88,18 @@ export function importSession(text: string): Session {
   const value: unknown = JSON.parse(text);
   if (!value || typeof value !== 'object') throw new Error('Invalid save.');
   const r = value as Record<string, unknown>;
+  const sandbox = r.mode === 'sandbox';
+  const legacy = !sandbox && r.rulesVersion === LEGACY_RULES_VERSION;
   if (
-    r.format !== 'emberwake-replay-v2' ||
-    r.rulesVersion !== (r.mode === 'sandbox' ? SANDBOX_RULES_VERSION : RULES_VERSION) ||
-    (r.mode !== undefined && r.mode !== 'sandbox')
+    (r.mode !== undefined && !sandbox) ||
+    (sandbox
+      ? r.format !== 'emberwake-replay-v2' || r.rulesVersion !== SANDBOX_RULES_VERSION
+      : legacy
+        ? r.format !== 'emberwake-replay-v2'
+        : r.format !== 'emberwake-replay-v3' ||
+          r.rulesVersion !== RULES_VERSION ||
+          typeof r.difficulty !== 'string' ||
+          !Object.hasOwn(DIFFICULTIES, r.difficulty))
   )
     throw new Error('Unsupported save or rules version.');
   if (typeof r.seed !== 'string' || r.seed.length > 100 || typeof r.hero !== 'string')
@@ -86,7 +107,14 @@ export function importSession(text: string): Session {
   if (!Array.isArray(r.commands) || r.commands.length > 50000)
     throw new Error('Invalid command history.');
   const content = validateContent(r.content);
-  const session = newSession(r.seed, r.hero, content, r.mode === 'sandbox');
+  const session = newSession(
+    r.seed,
+    r.hero,
+    content,
+    sandbox,
+    legacy || sandbox ? 'standard' : (r.difficulty as Difficulty),
+    legacy ? LEGACY_RULES_VERSION : RULES_VERSION,
+  );
   let state = session.state;
   const commands: Command[] = [];
   let ticks = 0;

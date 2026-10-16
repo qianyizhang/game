@@ -81,6 +81,10 @@ keep raw histories in their existing protected homes.
 - **Separate failure scopes:** batch independent reads without making a missing path
   suppress unrelated evidence. Treat tooling failure, execution restriction, artifact
   corruption, numeric runtime drift and application assertion failures separately.
+- **Verify isolated candidates with Git metadata:** when preserving concurrent edits,
+  use a disposable clone plus exact owned files for the full gate. A source archive
+  lacks the Git metadata used by maintenance tests; that failure is an incomplete
+  verification environment, not an application regression.
 - **Match artifact routes by pathname:** browser-test route globs can match the
   document URL when a query parameter ends in the artifact filename. Use a URL
   pathname predicate for fixture responses so navigation still loads the app.

@@ -236,7 +236,10 @@ export interface Player extends Point {
   running: boolean;
   corpse: { act: number; region: string; position: Point; gold: number } | null;
 }
+export type Difficulty = 'relaxed' | 'standard' | 'severe';
 export interface State {
+  /** Absent in historical campaign v2 and the unchanged sandbox. */
+  difficulty?: Difficulty;
   rulesVersion: string;
   contentId: string;
   contentVersion: string;
@@ -278,7 +281,8 @@ export type Command =
   | { type: 'dev-options'; god: boolean; reveal: boolean }
   | { type: 'dev-refill' | 'dev-corpses' };
 export interface Replay {
-  format: 'emberwake-replay-v2';
+  format: 'emberwake-replay-v2' | 'emberwake-replay-v3';
+  difficulty?: Difficulty;
   mode?: 'sandbox';
   rulesVersion: string;
   content: Content;

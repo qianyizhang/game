@@ -33,7 +33,7 @@ export function rollItem(state: State, content: Content, unique = false, baseId?
     runes: 0,
   };
 }
-export function freeCell(items: Item[], item: Item): number | null {
+export function freeCell(items: Item[], item: Pick<Item, 'width' | 'height'>): number | null {
   const occupied = new Set<number>();
   for (const carried of items)
     for (let y = 0; y < carried.height; y++)

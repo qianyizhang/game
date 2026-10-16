@@ -140,3 +140,18 @@ export function reveal(world: World, point: Point): void {
         known.add(y * WIDTH + x);
   world.seen = [...known];
 }
+
+/** Historical terrain knowledge; this deliberately excludes adjacent dim renderer tiles. */
+export function knownCell(world: Pick<World, 'tiles' | 'seen'>, point: Point): boolean {
+  const width = world.tiles[0].length;
+  return world.seen.includes(Math.floor(point.y) * width + Math.floor(point.x));
+}
+/** Existing live-enemy sensor, also used conservatively for policy active effects. */
+export function visibleActor(
+  world: Pick<World, 'tiles'>,
+  player: Point,
+  actor: Point,
+  radius = 8,
+): boolean {
+  return distance(player, actor) < radius && lineOfSight(world, player, actor);
+}

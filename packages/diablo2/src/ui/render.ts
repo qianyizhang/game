@@ -1,6 +1,6 @@
 import { drawSkillEffects, type SkillEffects } from './skill-effects';
 import type { Content, Point, State, Enemy, Ally, Player } from '../domain/types';
-import { distance, dimensions, lineOfSight, walkable } from '../domain/maps';
+import { distance, dimensions, lineOfSight, walkable, visibleActor } from '../domain/maps';
 import { currentRegion, currentWorld, wardsLit, portalOpen } from '../domain/world';
 export const VIEW_WIDTH = 960,
   VIEW_HEIGHT = 576,
@@ -575,12 +575,7 @@ export function render(
     }
   const entities: { entity: Enemy | Ally | Player; ally: boolean }[] = [
     ...world.enemies
-      .filter(
-        (e) =>
-          e.hp > 0 &&
-          (state.sandbox?.reveal ||
-            (distance(e, state.player) < 8 && lineOfSight(world, state.player, e))),
-      )
+      .filter((e) => e.hp > 0 && (state.sandbox?.reveal || visibleActor(world, state.player, e)))
       .map((e) => ({ entity: e, ally: false })),
     ...world.allies.map((a) => ({ entity: a, ally: true })),
     { entity: state.player, ally: true },

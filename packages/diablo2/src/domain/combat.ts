@@ -1,3 +1,4 @@
+import { DIFFICULTIES } from './difficulty';
 import type { Content, Element, Enemy, Point, State, World } from './types';
 import { distance, lineOfSight, reveal, slide, toward, bodyFits } from './maps';
 import { note, random } from './random';
@@ -100,7 +101,20 @@ function hurt(state: State, content: Content, damage: number, element: Element):
   const p = state.player;
   const s = stats(state, content);
   const mitigation = element === 'physical' ? s.armor / (s.armor + 70) : s.resist / 100;
-  p.hp = Math.max(0, p.hp - Math.max(1, Math.round(damage * (1 - mitigation))));
+  p.hp = Math.max(
+    0,
+    p.hp -
+      Math.max(
+        1,
+        Math.round(
+          damage *
+            (1 - mitigation) *
+            (state.rulesVersion === 'emberwake-3'
+              ? DIFFICULTIES[state.difficulty ?? 'standard'].incomingDamage
+              : 1),
+        ),
+      ),
+  );
   if (element === 'cold') p.slow = 15;
   if (p.hp === 0) {
     const lost = Math.floor(p.gold * 0.25);

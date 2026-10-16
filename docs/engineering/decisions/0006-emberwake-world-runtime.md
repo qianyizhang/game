@@ -13,3 +13,9 @@ This avoids introducing a second owner of combat or replay meaning. Anime.js sup
 The graph and clock change replay meaning. Rules `emberwake-2`, content `2.0.0`, replay format v2 and a new local storage key make that boundary explicit. The v1 storage slot remains untouched and exportable; baseline commit `d0db60e` is its recovery source. Current loaders reject old histories in accordance with [accepted-command reconstruction](0002-reconstruct-from-accepted-commands.md).
 
 Verification includes legal-command campaigns and exact reconstruction for all three heroes, persistent floor and gate contracts, malformed world content, snapshot isolation, refresh-independent timing, and browser interaction/rendering checks. Imported browser campaigns or staircase approaches are labelled as reconstructed fixtures, not full live browser playthroughs.
+
+## 2026-10-16 campaign difficulty compatibility
+
+Campaign rules `emberwake-3` add explicit Relaxed/Standard/Severe incoming-damage tiers and replay format v3. Standard retains v2 arithmetic, RNG and content meaning. This is a bounded compatibility addition: the current importer reconstructs `emberwake-2` v2 campaigns under their original Standard semantics, preserving their original storage slot and continuation. Sandbox rules remain `emberwake-2-sandbox-1` with replay format v2. The chooser explicitly restores or exports a previous v2 campaign; current v3 saves use a separate slot. The original v1 recovery boundary above remains unchanged.
+
+Policy attempts stop on first death independently of ordinary gameplay's respawn command. Recorded requested ticks remain native replay syntax; executed ticks stop at death. The policy review therefore keeps original decision inputs and requested-unit navigation alongside actual simulation time.

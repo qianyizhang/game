@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { generatedDungeonContent } from '../domain/generated-dungeon';
 import { BASE_CONTENT } from '../domain/content';
-import { stats, validateContent } from '../domain/game';
+import { DIFFICULTIES, LEGACY_RULES_VERSION, stats, validateContent } from '../domain/game';
 import { bodyFits, distance, lineOfSight } from '../domain/maps';
-import type { Command, Content, Point, SkillDef } from '../domain/types';
+import type { Command, Content, Difficulty, Point, SkillDef } from '../domain/types';
 import {
   dispatch,
   exportSession,
   importSession,
   newSession,
   SAVE_KEY,
+  LEGACY_SAVE_KEY,
   SANDBOX_SAVE_KEY,
   ACTIVE_MODE_KEY,
   saveKey,
@@ -56,7 +57,11 @@ export default function DiabloApp() {
   const [initial] = useState(() => {
     try {
       const saved = localStorage.getItem(
-        localStorage.getItem(ACTIVE_MODE_KEY) === 'sandbox' ? SANDBOX_SAVE_KEY : SAVE_KEY,
+        localStorage.getItem(ACTIVE_MODE_KEY) === 'sandbox'
+          ? SANDBOX_SAVE_KEY
+          : localStorage.getItem(ACTIVE_MODE_KEY) === 'campaign-v2'
+            ? LEGACY_SAVE_KEY
+            : SAVE_KEY,
       );
       return { session: saved ? importSession(saved) : null, error: '' };
     } catch (error) {
@@ -76,6 +81,16 @@ export default function DiabloApp() {
   const [selecting, setSelecting] = useState(!initial.session);
   const [chosen, setChosen] = useState(content.heroes[0].id);
   const [generated, setGenerated] = useState(false);
+  const [difficulty, setDifficulty] = useState<Difficulty>(
+    initial.session?.state.difficulty ?? 'standard',
+  );
+  const [previousCampaign] = useState(() => {
+    try {
+      return localStorage.getItem(LEGACY_SAVE_KEY);
+    } catch {
+      return null;
+    }
+  });
   const includesVault = content.regions.some((r) => r.id === 'charted-vault');
   const canGenerate = !includesVault && content.regions.some((r) => r.id === 'fen-1');
   const [seed, setSeed] = useState('lantern-1');
@@ -101,7 +116,11 @@ export default function DiabloApp() {
   const save = useCallback((next: Session) => {
     try {
       localStorage.setItem(saveKey(next), exportSession(next));
-      localStorage.setItem(ACTIVE_MODE_KEY, next.replay.mode ?? 'campaign');
+      localStorage.setItem(
+        ACTIVE_MODE_KEY,
+        next.replay.mode ??
+          (next.replay.rulesVersion === LEGACY_RULES_VERSION ? 'campaign-v2' : 'campaign'),
+      );
       setSaved('Journey saved');
     } catch {
       setSaved('Storage unavailable — export your journey');
@@ -357,6 +376,7 @@ export default function DiabloApp() {
         hero,
         generated && canGenerate ? generatedDungeonContent(seed, content) : content,
         sandbox,
+        difficulty,
       );
     } catch (error) {
       setMessage(String(error));
@@ -375,10 +395,10 @@ export default function DiabloApp() {
   const startSandbox = (hero = chosen) => {
     start(true, hero);
   };
-  const returnCampaign = () => {
+  const returnCampaign = (key = SAVE_KEY) => {
     release();
     try {
-      const raw = localStorage.getItem(SAVE_KEY);
+      const raw = localStorage.getItem(key);
       const next = raw ? importSession(raw) : null;
       installSession(next);
       setContent(next?.replay.content ?? BASE_CONTENT);
@@ -386,7 +406,7 @@ export default function DiabloApp() {
       setPanel(null);
       setPaused(next?.state.location === 'field');
       setMessage('');
-      localStorage.setItem(ACTIVE_MODE_KEY, 'campaign');
+      localStorage.setItem(ACTIVE_MODE_KEY, key === LEGACY_SAVE_KEY ? 'campaign-v2' : 'campaign');
     } catch (error) {
       setMessage(`Campaign could not load: ${String(error)}. Its save remains preserved.`);
     }
@@ -499,6 +519,20 @@ export default function DiabloApp() {
             World seed{' '}
             <input value={seed} maxLength={100} onChange={(e) => setSeed(e.target.value)} />
           </label>
+          <label className="ew-seed">
+            Difficulty{' '}
+            <select
+              aria-label="Difficulty"
+              value={difficulty}
+              onChange={(event) => setDifficulty(event.target.value as Difficulty)}
+            >
+              {Object.entries(DIFFICULTIES).map(([id, tier]) => (
+                <option key={id} value={id}>
+                  {tier.label} · ×{tier.incomingDamage} incoming damage
+                </option>
+              ))}
+            </select>
+          </label>
           <label className="ew-generated">
             <input
               type="checkbox"
@@ -531,6 +565,24 @@ export default function DiabloApp() {
             >
               Return to current journey
             </button>
+          )}
+          {(previousCampaign || session?.replay.rulesVersion === LEGACY_RULES_VERSION) && (
+            <p className="ew-fine">
+              Your previous campaign is preserved with its original Standard rules.{' '}
+              <button onClick={() => returnCampaign(LEGACY_SAVE_KEY)}>
+                Restore previous campaign
+              </button>{' '}
+              <button
+                onClick={() =>
+                  download(
+                    localStorage.getItem(LEGACY_SAVE_KEY) ?? previousCampaign ?? '',
+                    'emberwake-campaign-v2.json',
+                  )
+                }
+              >
+                Export previous campaign
+              </button>
+            </p>
           )}
           {legacySave && (
             <p className="ew-fine">
@@ -641,12 +693,19 @@ export default function DiabloApp() {
             Lv. 20 · all skills rank 10 · {state.sandbox.god ? 'God mode' : 'Normal damage'} ·{' '}
             {state.sandbox.reveal ? 'Map revealed' : 'Fog enabled'}
           </span>
-          <button onClick={returnCampaign}>Return to campaign</button>
+          <button onClick={() => returnCampaign()}>Return to campaign</button>
         </aside>
       )}
       <div className="ew-topline">
         <strong>
           {h.name} · {h.className} <span>Lv. {p.level}</span>
+          {!state.sandbox && (
+            <span>
+              {' '}
+              · {DIFFICULTIES[state.difficulty ?? 'standard'].label}
+              {state.rulesVersion === LEGACY_RULES_VERSION ? ' · previous rules' : ''}
+            </span>
+          )}
         </strong>
         <span>
           {p.gold} gold · {p.runes} runes

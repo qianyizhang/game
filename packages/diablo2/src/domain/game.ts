@@ -1,6 +1,7 @@
 import { BASE_CONTENT } from './content';
 import { validateContent } from './validate';
-import type { Command, Content, Point, State, World } from './types';
+import type { Command, Content, Difficulty, Point, State, World } from './types';
+import { DIFFICULTIES } from './difficulty';
 import { findPath, tilesFor, distance, reveal, lineOfSight, walkable, bodyFits } from './maps';
 import { hashSeed, choose, note, random } from './random';
 import { carry, rollItem, freeCell } from './loot';
@@ -11,7 +12,9 @@ import { equipTestCharacter, refill, landingFor, SANDBOX_RULES_VERSION } from '.
 export { stats } from './stats';
 export { validateContent } from './validate';
 export type { Command, State, Content } from './types';
-export const RULES_VERSION = 'emberwake-2';
+export const RULES_VERSION = 'emberwake-3';
+export const LEGACY_RULES_VERSION = 'emberwake-2';
+export { DIFFICULTIES } from './difficulty';
 function stop(state: State): void {
   state.player.direction = { x: 0, y: 0 };
   state.player.destination = null;
@@ -72,13 +75,19 @@ export function createGame(
   heroId: string,
   pack: Content = BASE_CONTENT,
   sandbox = false,
+  difficulty: Difficulty = 'standard',
+  rulesVersion = RULES_VERSION,
 ): State {
+  if (!Object.hasOwn(DIFFICULTIES, difficulty)) throw new Error('Unknown difficulty');
+  if (rulesVersion !== RULES_VERSION && rulesVersion !== LEGACY_RULES_VERSION)
+    throw new Error('Unsupported rules version');
   const content = validateContent(pack);
   const hero = content.heroes.find((h) => h.id === heroId);
   if (!hero) throw new Error('Unknown hero');
   if (typeof seed !== 'string' || seed.length > 100) throw new Error('Invalid seed');
   const state: State = {
-    rulesVersion: RULES_VERSION,
+    rulesVersion,
+    ...(!sandbox && rulesVersion === RULES_VERSION ? { difficulty } : {}),
     contentId: content.id,
     contentVersion: content.version,
     hero: heroId,
@@ -566,7 +575,12 @@ export function applyCommand(
 ): { state: State; accepted: boolean; error: string | null } {
   if (!validCommand(command)) return { state, accepted: false, error: 'Malformed command.' };
   if (
-    state.rulesVersion !== (state.sandbox ? SANDBOX_RULES_VERSION : RULES_VERSION) ||
+    (state.sandbox
+      ? state.rulesVersion !== SANDBOX_RULES_VERSION
+      : state.rulesVersion !== RULES_VERSION && state.rulesVersion !== LEGACY_RULES_VERSION) ||
+    (!state.sandbox &&
+      state.rulesVersion === RULES_VERSION &&
+      (!state.difficulty || !Object.hasOwn(DIFFICULTIES, state.difficulty))) ||
     state.contentId !== content.id ||
     state.contentVersion !== content.version
   )

@@ -110,7 +110,7 @@ Default usage output is `test-results/disposable/usage-dashboard-<UUID>`, closed
 ## Policy adoption commands
 
 `npm run engine:policy -- run|record|benchmark|audit` supplies the checked policy
-workflow for Blindside, Spire and current Mixed Rivals. Built-in policies and trusted local TypeScript
+workflow for Blindside, Spire, current Mixed Rivals and Emberwake. Built-in policies and trusted local TypeScript
 factory modules use the same game-owned observation/command adapter. `record` and
 `benchmark` require fresh output directories, retain source-pinned compiled bundles,
 original inputs/proposals, native results and independent audits; `audit` writes an
@@ -128,3 +128,8 @@ reports keep character/hero strata separate over paired independent seed blocks.
 and all-actor native journal spans. Audits never rerun rival policies. `benchmark --pool
 1–4` distributes independent cases, validates assigned-case replies, fails on early worker
 exit and retains exact serial evidence bytes; source pins include the worker tooling.
+
+[Emberwake policy play](../../docs/engineering/emberwake-policy.md) uses first-death
+campaign attempts, conservative structured sensors and game-owned setup JSON. Native
+requested-tick cursor units remain distinct from executed time; living budget stops
+remain timeouts. The initial 270/540-case cohorts use `--max-decisions 4000`.

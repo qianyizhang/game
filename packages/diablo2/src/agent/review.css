@@ -1,0 +1,19 @@
+.emberwake-policy-board {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #67583f;
+  background: #11191c;
+  color: #f1dfc1;
+}
+.emberwake-policy-board canvas {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+}
+.emberwake-policy-board p {
+  overflow-wrap: anywhere;
+}
+.emberwake-policy-board section {
+  margin-top: 1rem;
+}
