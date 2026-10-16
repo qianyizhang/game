@@ -52,6 +52,8 @@ function RecordedField({ state: { session, input } }: { state: EpisodeState }) {
   );
 }
 
+const resource = (value: number): number => Number(value.toFixed(1));
+
 function Board({ state }: { state: EpisodeState }) {
   const input = state.input;
   const player = input.player;
@@ -66,8 +68,8 @@ function Board({ state }: { state: EpisodeState }) {
           {input.status}
         </p>
         <p>
-          Life {player.hp}/{input.stats.maxHp} · Mana {player.mana}/{input.stats.maxMana} · Level{' '}
-          {player.level} · {player.gold} gold
+          Life {resource(player.hp)}/{resource(input.stats.maxHp)} · Mana {resource(player.mana)}/
+          {resource(input.stats.maxMana)} · Level {player.level} · {player.gold} gold
         </p>
       </header>
       <RecordedField state={state} />
@@ -84,7 +86,7 @@ function Board({ state }: { state: EpisodeState }) {
             <p key={enemy.uid}>
               {input.definitions.monsters.find((definition) => definition.id === enemy.kind)
                 ?.name ?? enemy.kind}{' '}
-              · {enemy.hp}/{enemy.maxHp} life{enemy.warded ? ' · warded' : ''}
+              · {resource(enemy.hp)}/{resource(enemy.maxHp)} life{enemy.warded ? ' · warded' : ''}
             </p>
           ))}
       </section>

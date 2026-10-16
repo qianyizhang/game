@@ -60,7 +60,7 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
   identity: {
     rules: RULES_VERSION,
     observation: 'emberwake-observation-2',
-    score: 'emberwake-first-death-1',
+    score: 'emberwake-performance-2',
     content: { id: BASE_CONTENT.id, version: BASE_CONTENT.version },
   },
   create(seed, setup) {
@@ -102,6 +102,13 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
     return {
       outcome: s.status,
       won: Number(s.status === 'victory'),
+      score: [
+        Number(s.status === 'victory'),
+        bosses,
+        wards,
+        regions,
+        s.status === 'victory' ? s.tick : 0,
+      ],
       progress: bosses * 10000 + wards * 100 + regions,
       bosses,
       wards,
@@ -155,7 +162,16 @@ export const study: StudyDefinition = {
   setups: studySetups,
   defaultSetup: { hero: 'barbarian', difficulty: 'standard' },
   ranking:
-    'victory, then bosses defeated, then wards lit, then distinct regions visited; level, XP and living HP secondary',
+    'victory, then bosses defeated, then wards lit, then distinct regions visited; among victories minimize executed ticks. HP, level, XP and gold remain descriptive.',
+  score: {
+    components: [
+      { name: 'won', direction: 'maximize' },
+      { name: 'bosses', direction: 'maximize' },
+      { name: 'wards', direction: 'maximize' },
+      { name: 'regions', direction: 'maximize' },
+      { name: 'victoryTicks', direction: 'minimize' },
+    ],
+  },
   reviewPath: '/?game=diablo2&review=policy',
 };
 

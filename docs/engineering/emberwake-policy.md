@@ -71,11 +71,27 @@ All three heroes—Barbarian, Sorceress and Necromancer—are separate setup str
 Work is self-reported heuristic action/entity/BFS accounting, excluding sorting,
 helper loops and recording. It is neither CPU time nor a complete operation count.
 
-Rank victory, then bosses defeated, wards lit and distinct regions visited. Numeric
-`progress = 10000*bosses + 100*wards + regions` preserves this ordering for the base
-campaign's four bosses, eight wards and twenty regions. Report these components,
-level/XP, HP and actual executed ticks separately. Act number alone is unsuitable
-because travel can revisit an earlier chapter. Timeouts/errors remain attempted cases.
+Score identity `emberwake-performance-2` declares the ordinal vector
+`[won, bosses, wards, regions, won ? executedTicks : 0]`. Maximize the first four
+components in order, then minimize the last. Every earlier component takes precedence;
+there is no weighted sum. Victory outranks any unfinished campaign, and a fast death
+or living timeout receives no speed bonus. Among equally complete victories, actual
+native executed ticks distinguish campaign efficiency. Policy decisions, packed native
+command counts and requested replay padding do not measure elapsed simulation time.
+The decision budget still bounds zero-tick commands independently.
+
+Numeric `progress = 10000*bosses + 100*wards + regions` remains a descriptive legacy
+metric for the base campaign's four bosses, eight wards and twenty regions. Report
+all components, level/XP, HP and gold separately. Act number alone is unsuitable
+because travel can revisit an earlier chapter. Timeouts/errors remain attempted cases;
+execution errors are invalid evidence rather than ordinary scored losses.
+
+Final HP, mana and potion stocks are deliberately outside the rank: a zero-tick
+portal/return can refill them without improving campaign execution. Gold penalizes
+legitimate upgrade spending, while optional kills, XP and level can be farmed.
+A new resource objective would need its own declared, versioned semantics rather
+than silently adding bonuses to this score. The passive board rounds resource
+numbers to at most one decimal for readability; original policy JSON stays exact.
 
 Native portal/return healing is ordinary gameplay, including its zero-tick refill.
 It is permitted and reported rather than mislabeled cheating. A separate decision
@@ -181,7 +197,12 @@ pack management bounds repeated carried-item data while serving ordinary gamepla
 
 Historical observation-v1/policy-v1 artifacts and frozen bundles retain their original
 meaning. Current observation-v2 identity must not claim to audit their original
-sampling. Native rules-v3 replay reconstruction remains unchanged. Winning development
+sampling. Historical score-v1 artifacts also keep their original bytes and evaluator
+identity. Current-identity audit availability must not relabel historical identity
+mismatches as corrupt recordings. A score-v2 evaluator sidecar may explicitly reconstruct
+an old native journal and add a new score, retaining both original and evaluator pins;
+it is neither fresh policy execution nor a new audit of original input sampling.
+Native rules-v3 replay reconstruction remains unchanged. Winning development
 witnesses establish playability on those inputs; they do not establish strength or a
 calibrated difficulty ladder on independent seeds.
 
@@ -190,3 +211,9 @@ retains full recorded wins, failed navigation candidates, the independent swept-
 audit, recording-memory measurements and the unresolved difficulty ceiling. A successful
 main-process recording does not establish that a worker’s heap limit can record, audit
 and serialize the same trace. Probe one real worker case before scheduling a cohort.
+
+The [performance score assessment](../research/experiments/2026-10-16-emberwake-performance-2.md)
+records the score-v2 reconstruction and exploratory policy comparisons. Better score
+discrimination does not establish ordered win-rate difficulty: the retained development
+data include tier ties and a Severe campaign faster than Standard. Native balance
+remains unchanged, and prospective calibration still requires frozen independent seeds.
