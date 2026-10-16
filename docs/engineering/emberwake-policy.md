@@ -55,7 +55,9 @@ the action menu must remain equal too.
 
 ## Difficulty and results
 
-Current built-ins use **policy8 under native7** with these pressure settings. The [native5 fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
+The accepted baseline remains **policy8 under native7** with these pressure settings.
+Policy10 is rejected by the independently audited D12 screen; the working built-ins
+have been restored exactly to policy8 after source-hold release. The [native5 fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
 failed one contrast; the [native6 Standard-relief screen](../research/experiments/2026-10-17-emberwake-standard-relief-6.md)
 failed two. The [native7 Standard-pressure screen](../research/experiments/2026-10-17-emberwake-standard-pressure-7.md)
 also fails overall: all six difficulty comparisons pass on consumed development
@@ -208,7 +210,8 @@ recorded policy8 public-history warmup. Accepted warmup commands matched, but si
 full proposal/diagnostic outputs differed; full-output identity is not claimed.
 The [D11 development result](../research/experiments/2026-10-17-emberwake-policy-9-development.md)
 rejects policy9 after the full cross-hero screen. A local escape success did not
-establish campaign strength. Current built-ins and the delegating example remain on policy8.
+establish campaign strength. Policy8 remains the accepted baseline; the subsequent
+policy10 D12 screen is also independently confirmed negative.
 
 The rejected traces expose two unresolved control boundaries: Standard Barbarian
 DEV01 used damaging Leap into disclosed warnings before later HP losses, and Severe
@@ -217,6 +220,31 @@ These are recorded-action findings, not executed alternatives or exact damage
 attribution. A successor should check the movement/continuation boundary that
 advances time, preserve finite progress and validate actual native continuations;
 it must not infer campaign strength from either local repair.
+
+Rejected policy10 started from policy8's conservative geometry and checked three
+Survival boundaries: damaging Leap landing admission, remembered pursuit, and the
+pending control before advance. Unknown target positions remained unknown. The
+attack-intent model treated a disclosed target point as movement even when native
+ranged reach and clear line of sight leave the attack stationary, including while
+cooldown prevents firing; this
+limits the model's interpretation of native control priority. A replacement had
+to strictly improve the danger prefix, so foe clearance alone could not redirect
+control. Tied danger, including all-unsafe ties, or no strictly improving offered
+defense retained bounded ordinary advancement. Nonmovement casts retained
+movement; zero-tick relocation was reassessed separately. Immediate/Growth,
+recovery and the pending ten-tick model stayed fixed. The public calculation was
+heuristic, not a prediction of future shots, walls or foe motion.
+
+The two historical policy9 Barbarian prefixes are counterfactual local tests,
+not policy10 campaigns from the start. Producer results reach 40 executed ticks
+alive in both cases: Standard tick7,010 with 311 HP; Severe tick16,390 with 258.8 HP.
+Original9 references reproduce deaths at ticks6,983 and16,362. Candidate warmup
+uses exact original9 public history, with command/full-output differences 8/151
+and 28/245 respectively. Fresh independent audit verified all 4,799 warmup inputs, 39 branch proposals,
+four complete native replays and six guard records. Severe's improving rank still
+indicates exposure. No local result establishes campaign strength or difficulty
+calibration; the complete D12 screen is independently confirmed negative. The local
+four branches remain outside that cohort.
 
 BFS must also respect the current action menu at its first edge. A fractional avatar
 footprint can make the nominally shortest adjacent center unavailable because it
@@ -400,14 +428,52 @@ Growth technical executions and the two local branches are outside the 198.
 The dated report owns the final independent audit's actual scope; these consumed
 results have no population, human-difficulty or equal-compute interpretation.
 
-Policy9 is not adopted; the three tested source files return exactly to committed
-policy8, retaining native7/observation3/score2 and every original negative result.
-Version9 remains consumed by its recordings even though promotion was rejected.
-A later revision of this built-in family needs a fresh identity, next
-`emberwake-policy-10`; never reuse `emberwake-policy-9`.
-After the restore, the current policy8 factory cannot audit policy9 decision
+Policy9 was not adopted; its closeout restored the three tested source files
+exactly to committed policy8. The subsequent independently audited D12 screen
+rejects policy10 under unchanged native7/observation3/score2. Its closeout also
+restored those working files exactly to policy8 after source-hold release. The accepted policy8 baseline and all negative
+results remain retained. Both version9 and version10
+are consumed by their native recordings; any later behavioral revision needs a
+fresh identity. Never reuse a rejected identity.
+A current factory with a different identity cannot audit policy9 decision
 reproduction: use the retained frozen policy9 runtime bundle and complete source
 snapshots for factory audits.
 Native7 journal replay and the original recorded policy knowledge remain valid and
 inspectable. Preserve original policy9 inputs, proposals, scores and receipts without
 relabeling them as policy8 or retrospectively rescoring them.
+
+## Rejected policy10 development
+
+The [D12 development result](../research/experiments/2026-10-17-emberwake-policy-10-development.md)
+([machine receipt](../research/experiments/2026-10-17-emberwake-policy-10-development.json))
+is **negative: 102 victories, 59 deaths, 37 living timeouts and zero execution
+errors across 198 consumed attempts**. It passes **8/9 material comparisons,
+4/6 completion floors and 3/3 Severe-existence checks**. Independent audit verifies all 198 original inputs and native finals, plus 27 fixed
+factory reproductions; the other 171 factory checks remain producer-qualified.
+These are consumed development results, not a fresh confirmation.
+
+| Failed gate                             | Producer result                        | Fixed requirement           |
+| --------------------------------------- | -------------------------------------- | --------------------------- |
+| Barbarian Standard Survival > Immediate | Net −0.20; 3 better / 5 worse / 2 tied | Net ≥0.20 over all 10 pairs |
+| Barbarian Standard Survival completion  | 7/10 victories                         | ≥8/10                       |
+| Sorceress Standard Survival completion  | 3/10 victories                         | ≥8/10                       |
+
+All six difficulty comparisons pass. Necromancer's Standard policy comparison
+passes at net 0.30, and every hero has an observed Severe Survival/Growth victory
+among its 12 declared attempts. These existence results are not population win-rate
+bounds. All four producer audits pass, with **108 Immediate/Growth native journals
+and full final states exact against original policy8/native7**, without normalization.
+The separate five Growth technical executions do not assure Survival performance.
+
+Selected saved traces show a stationary ranged attack replaced by retreat and a
+retreat/pursuit cycle that advances time without observed combat/objective progress.
+Defensive detours need a progress bound; a ticking clock is insufficient. No
+alternate native continuation ran in this diagnosis. The causal share of these
+findings in the whole-campaign regressions is unresolved; no counterfactual
+survival or completion is claimed. The dated report owns the complete evidence scope.
+
+Policy10 is rejected and consumed. Following the exact restoration, current policy8
+cannot reproduce its decisions: use the retained frozen policy10 bundle and source
+snapshots. Native7 replay and the original recorded policy knowledge remain
+inspectable. Preserve original inputs, proposals, scores and all old5/6/7/9 negatives;
+no calibrated ladder, fresh promotion or reused rejected identity follows.

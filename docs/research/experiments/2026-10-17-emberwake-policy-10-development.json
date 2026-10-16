@@ -1,0 +1,1556 @@
+{
+  "schema": "emberwake-policy10-native7-development-report-1",
+  "renderedAt": "2026-10-16T21:59:37.365Z",
+  "status": "development-failed",
+  "allDevelopmentCriteriaPassed": false,
+  "failedCriteria": [
+    "barbarian:Standard Survival > Immediate",
+    "barbarian standard survival completion",
+    "sorceress standard survival completion"
+  ],
+  "identity": {
+    "rules": "emberwake-7",
+    "observation": "emberwake-observation-3",
+    "score": "emberwake-performance-2",
+    "content": {
+      "id": "emberwake",
+      "version": "2.0.0"
+    }
+  },
+  "profile": {
+    "incomingDamage": {
+      "relaxed": 0.75,
+      "standard": 7,
+      "severe": 12
+    },
+    "playerImpactCapFraction": {
+      "relaxed": null,
+      "standard": 0.55,
+      "severe": 0.7
+    },
+    "healthPotionRecoverySeconds": {
+      "relaxed": 0,
+      "standard": 20,
+      "severe": 60
+    }
+  },
+  "design": {
+    "primaryBlocks": 10,
+    "primaryAttempts": 180,
+    "growthMatchedBlocks": 2,
+    "growthAttempts": 18,
+    "totalAttempts": 198,
+    "policyVersion": "emberwake-policy-10",
+    "policySeed": "POLICY-STREAM-1",
+    "options": {},
+    "maxDecisions": 8000,
+    "workers": 4,
+    "workerOldGenerationMiB": 2048,
+    "encodedAndDecodedLimitBytes": 150000000
+  },
+  "totals": {
+    "attempts": 198,
+    "victories": 102,
+    "deaths": 59,
+    "timeouts": 37,
+    "errors": 0
+  },
+  "cells": [
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 10,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 8,
+      "deaths": 0,
+      "timeouts": 2,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 6,
+      "deaths": 4,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 7,
+      "deaths": 0,
+      "timeouts": 3,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 1,
+      "deaths": 1,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "severe",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 0,
+      "deaths": 10,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "severe",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 1,
+      "deaths": 5,
+      "timeouts": 4,
+      "errors": 0
+    },
+    {
+      "hero": "barbarian",
+      "tier": "severe",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 0,
+      "deaths": 2,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 8,
+      "deaths": 0,
+      "timeouts": 2,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 3,
+      "deaths": 0,
+      "timeouts": 7,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 2,
+      "deaths": 8,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 3,
+      "deaths": 0,
+      "timeouts": 7,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "severe",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 0,
+      "deaths": 10,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "severe",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 8,
+      "errors": 0
+    },
+    {
+      "hero": "sorceress",
+      "tier": "severe",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 0,
+      "deaths": 2,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 9,
+      "deaths": 0,
+      "timeouts": 1,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 10,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 6,
+      "deaths": 4,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 9,
+      "deaths": 0,
+      "timeouts": 1,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 2,
+      "deaths": 0,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "severe",
+      "policy": "immediate",
+      "attempts": 10,
+      "victories": 0,
+      "deaths": 10,
+      "timeouts": 0,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "severe",
+      "policy": "survival",
+      "attempts": 10,
+      "victories": 6,
+      "deaths": 2,
+      "timeouts": 2,
+      "errors": 0
+    },
+    {
+      "hero": "necromancer",
+      "tier": "severe",
+      "policy": "growth",
+      "attempts": 2,
+      "victories": 1,
+      "deaths": 1,
+      "timeouts": 0,
+      "errors": 0
+    }
+  ],
+  "contrasts": [
+    {
+      "hero": "barbarian",
+      "name": "barbarian:Immediate Relaxed > Standard",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 1,
+        "tied": 1,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 0,
+        "tied": 6,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.4,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "barbarian",
+      "name": "barbarian:Survival Standard > Severe",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 1,
+        "tied": 1,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 1,
+        "tied": 1,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.7,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "barbarian",
+      "name": "barbarian:Standard Survival > Immediate",
+      "exact": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 6,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 3,
+        "worse": 5,
+        "tied": 2,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": -0.2,
+      "passed": false,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "sorceress",
+      "name": "sorceress:Immediate Relaxed > Standard",
+      "exact": {
+        "attempted": 10,
+        "better": 9,
+        "worse": 0,
+        "tied": 1,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 0,
+        "tied": 2,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.8,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "sorceress",
+      "name": "sorceress:Survival Standard > Severe",
+      "exact": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 0,
+        "tied": 6,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 2,
+        "worse": 0,
+        "tied": 8,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.2,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "sorceress",
+      "name": "sorceress:Standard Survival > Immediate",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 2,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 2,
+        "tied": 0,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.6,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "necromancer",
+      "name": "necromancer:Immediate Relaxed > Standard",
+      "exact": {
+        "attempted": 10,
+        "better": 8,
+        "worse": 2,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 4,
+        "worse": 1,
+        "tied": 5,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.3,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "necromancer",
+      "name": "necromancer:Survival Standard > Severe",
+      "exact": {
+        "attempted": 10,
+        "better": 7,
+        "worse": 3,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 5,
+        "worse": 0,
+        "tied": 5,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.5,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    },
+    {
+      "hero": "necromancer",
+      "name": "necromancer:Standard Survival > Immediate",
+      "exact": {
+        "attempted": 10,
+        "better": 7,
+        "worse": 3,
+        "tied": 0,
+        "invalid": 0
+      },
+      "practical": {
+        "attempted": 10,
+        "better": 5,
+        "worse": 2,
+        "tied": 3,
+        "invalid": 0
+      },
+      "netMaterialSuperiority": 0.3,
+      "passed": true,
+      "qualification": "All ten matched blocks retain denominator, including ties/nonwins. Descriptive consumed development; no p-value, confidence or population claim. Native score2 remains exact; practical margin only ties equally complete winning times strictly below5%."
+    }
+  ],
+  "completion": [
+    {
+      "hero": "barbarian",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": 10,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "barbarian",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": 7,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": false
+    },
+    {
+      "hero": "sorceress",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": 8,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "sorceress",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": 3,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": false
+    },
+    {
+      "hero": "necromancer",
+      "tier": "relaxed",
+      "policy": "immediate",
+      "wins": 9,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    },
+    {
+      "hero": "necromancer",
+      "tier": "standard",
+      "policy": "survival",
+      "wins": 9,
+      "attempted": 10,
+      "minimum": 8,
+      "passed": true
+    }
+  ],
+  "severeExistence": [
+    {
+      "hero": "barbarian",
+      "wins": 1,
+      "attempted": 12,
+      "minimum": 1,
+      "passed": true,
+      "qualification": "Observed native victories only, no population lower-bound claim."
+    },
+    {
+      "hero": "sorceress",
+      "wins": 2,
+      "attempted": 12,
+      "minimum": 1,
+      "passed": true,
+      "qualification": "Observed native victories only, no population lower-bound claim."
+    },
+    {
+      "hero": "necromancer",
+      "wins": 7,
+      "attempted": 12,
+      "minimum": 1,
+      "passed": true,
+      "qualification": "Observed native victories only, no population lower-bound claim."
+    }
+  ],
+  "unchangedControls": {
+    "attempted": 108,
+    "allExact": true,
+    "baselineRules": "emberwake-7",
+    "baselinePolicy": "emberwake-policy-8",
+    "currentPolicy": "emberwake-policy-10",
+    "policies": ["immediate", "growth"],
+    "normalizedFields": [],
+    "reusedBaselineNotNewExecution": true
+  },
+  "independent": {
+    "originalInputCases": 198,
+    "nativeFinalReplayCases": 198,
+    "originalPublicInputDecisions": 1087464,
+    "fixedDEV01FactoryCases": 27,
+    "factoryOriginalProposals": 142004,
+    "remainingProducerQualifiedFactoryCases": 171,
+    "prospectiveScope": {
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/result-audit-1/prospective-scope.json",
+      "sha256": "210fea055855482ce04e150c5f33030586fbfe4246d6659e1ba8aa493a82b35c"
+    }
+  },
+  "technical": {
+    "currentPolicy10GrowthExecutions": 5,
+    "outside198": true,
+    "stressWitness": {
+      "occurrence": "stress/copy-1",
+      "seed": "EMBERWAKE-COHERENT-POLICY3-DEV-01",
+      "setupId": "necromancer-relaxed",
+      "rawSha256": "a508d7752680b4182e51566150fd167ff8aa48418f54943c79a0ace7b1c0cd35",
+      "decodedSha256": "906c6658c5a36fe1f1560bade48f7a5d4820578e2f5be1ce11b5e883afb7185d",
+      "digest": "0971eefb06e97023a3d65298e785319eb077cc42408bdfea32454b968fd5bf68",
+      "decisions": 7186,
+      "independentInputs": true,
+      "independentFactory10FullOutputs": true,
+      "acceptedControlReplay": true,
+      "exactOriginal8Native7Parity": true,
+      "exactOriginal8PublicInputsAndFullProposals": true,
+      "expectedVictoryTicks": 33440
+    },
+    "sampledProcessRssPeakBytes": 5322948608,
+    "sampleCount": 121,
+    "maximumObservedSampleGapMilliseconds": 1488.6533750000017,
+    "qualification": "Growth-only actual-worker evidence; not changed Survival resources, isolated throughput, RSS ceiling or worst-case guarantee."
+  },
+  "localPrefix": {
+    "cases": 2,
+    "branches": 4,
+    "outside198": true,
+    "teacherForcedOriginal9Warmup": true,
+    "noPrivateMemoryTransplant": true,
+    "standard": {
+      "referenceDeathTick": 6983,
+      "candidateExecutedTicks": 40,
+      "candidateHp": 311,
+      "warmupCommandDifferences": 8,
+      "warmupFullOutputDifferences": 151
+    },
+    "severe": {
+      "referenceDeathTick": 16362,
+      "candidateExecutedTicks": 40,
+      "candidateHp": 258.8,
+      "warmupCommandDifferences": 28,
+      "warmupFullOutputDifferences": 245,
+      "strictImprovementStillExposed": true
+    },
+    "qualification": "Original9 references reproduce exactly; candidate history is counterfactual. Two local survivals are not campaign strength."
+  },
+  "historicalContinuity": {
+    "inheritedNative7Evidence": true,
+    "original6": {
+      "campaigns": 9,
+      "commands": 51300,
+      "checkpoints": 25,
+      "rejections": 15
+    },
+    "original5": {
+      "campaigns": 9,
+      "commands": 43070,
+      "checkpoints": 25
+    },
+    "older234": [
+      {
+        "version": 2,
+        "cases": 3,
+        "checkpoints": 3
+      },
+      {
+        "version": 3,
+        "cases": 9,
+        "checkpoints": 15
+      },
+      {
+        "version": 4,
+        "cases": 9,
+        "checkpoints": 24
+      }
+    ],
+    "newHistoryExecutionsByReport": 0,
+    "nativeReplayDoesNotImplyHistoricalFactoryAvailability": true
+  },
+  "priorNegatives": {
+    "native5FreshAttempts": 1170,
+    "native6ConsumedAttempts": 198,
+    "native7ConsumedAttempts": 198,
+    "policy9ConsumedAttempts": 198,
+    "allRemainNegative": true
+  },
+  "verification": {
+    "applicationTests": 571,
+    "seededTests": 37,
+    "maintenanceToolsPassed": 128,
+    "unrelatedToolSkip": 1,
+    "DCCPureTests": 79,
+    "approvedDisposableBrowserJourneys": 20,
+    "browserRetainedArtifacts": 8,
+    "fullGeometry": "unaffected; not run",
+    "humanPlaytest": false,
+    "equalComputeClaim": false
+  },
+  "runtimeBundles": {
+    "root": "20e174260553e40e0a1c2a2d093bfcefe7db607a3cf15023717072c9aca5011b",
+    "local": "2ceb057f94a0b869f79170dd3d3a1bc6c9c301cd5389baaa2a695330a160f986",
+    "sourceGraphKeys": 19,
+    "sourceGraphExact": true,
+    "byteIdentical": false,
+    "differingSourceLocationCommentLines": 17
+  },
+  "historicalInputRelocations": [
+    {
+      "label": "methodInitialSource3",
+      "originalPath": "/private/tmp/emberwake-policy10-candidate-1/packages/diablo2/src/agent/policy.test.ts",
+      "originalSha256": "96f9144e4e6cd38c9eeafa24f50309c01fdbe07b04661fc8f5231997d0a09cda",
+      "retainedPath": ".work/sessions/emberwake-policy10-development-2026-10-17/implementation-1/files/packages/diablo2/src/agent/policy.test.ts",
+      "newLocatorBoundAtRender": true,
+      "notClaimedBoundAtEarlierGate": true
+    },
+    {
+      "label": "publicationComplete",
+      "originalPath": "docs/engineering/emberwake-policy.md",
+      "originalSha256": "7ac031db1f788360bc6ea54cb16b335b540e8ae75283b2ae8719e527bec4a888",
+      "retainedPath": ".work/sessions/emberwake-policy10-development-2026-10-17/root-publication-draft-1/emberwake-policy.md",
+      "newLocatorBoundAtRender": true,
+      "notClaimedBoundAtEarlierGate": true
+    },
+    {
+      "label": "publicationComplete",
+      "originalPath": "docs/research/experiments/2026-10-17-emberwake-policy-10-development-protocol.md",
+      "originalSha256": "3c48c9fc66df21b564dfdd445a5b7d235e8624e18dede1b5eb844510e4fccea6",
+      "retainedPath": ".work/sessions/emberwake-policy10-development-2026-10-17/root-publication-draft-1/2026-10-17-emberwake-policy-10-development-protocol.md",
+      "newLocatorBoundAtRender": true,
+      "notClaimedBoundAtEarlierGate": true
+    },
+    {
+      "label": "fullGateRoot6",
+      "originalPath": "docs/engineering/emberwake-policy.md",
+      "originalSha256": "7ac031db1f788360bc6ea54cb16b335b540e8ae75283b2ae8719e527bec4a888",
+      "retainedPath": ".work/sessions/emberwake-policy10-development-2026-10-17/root-publication-draft-1/emberwake-policy.md",
+      "newLocatorBoundAtRender": true,
+      "notClaimedBoundAtEarlierGate": true
+    },
+    {
+      "label": "fullGateRoot6",
+      "originalPath": "docs/research/experiments/2026-10-17-emberwake-policy-10-development-protocol.md",
+      "originalSha256": "3c48c9fc66df21b564dfdd445a5b7d235e8624e18dede1b5eb844510e4fccea6",
+      "retainedPath": ".work/sessions/emberwake-policy10-development-2026-10-17/root-publication-draft-1/2026-10-17-emberwake-policy-10-development-protocol.md",
+      "newLocatorBoundAtRender": true,
+      "notClaimedBoundAtEarlierGate": true
+    },
+    {
+      "label": "fullGateCandidate6",
+      "originalPath": "docs/engineering/emberwake-policy.md",
+      "originalSha256": "7ac031db1f788360bc6ea54cb16b335b540e8ae75283b2ae8719e527bec4a888",
+      "retainedPath": ".work/sessions/emberwake-policy10-development-2026-10-17/root-publication-draft-1/emberwake-policy.md",
+      "newLocatorBoundAtRender": true,
+      "notClaimedBoundAtEarlierGate": true
+    },
+    {
+      "label": "fullGateCandidate6",
+      "originalPath": "docs/research/experiments/2026-10-17-emberwake-policy-10-development-protocol.md",
+      "originalSha256": "3c48c9fc66df21b564dfdd445a5b7d235e8624e18dede1b5eb844510e4fccea6",
+      "retainedPath": ".work/sessions/emberwake-policy10-development-2026-10-17/root-publication-draft-1/2026-10-17-emberwake-policy-10-development-protocol.md",
+      "newLocatorBoundAtRender": true,
+      "notClaimedBoundAtEarlierGate": true
+    }
+  ],
+  "sourceHold": {
+    "livePins": 3274,
+    "retainedPins": 3282,
+    "completeNamedMapCounts": [
+      {
+        "label": "live3274",
+        "logicalEntries": 3274,
+        "uniquePhysicalEntries": 3220,
+        "aliasEntries": 54,
+        "physicalAliasGroups": 54
+      },
+      {
+        "label": "retained3282",
+        "logicalEntries": 3282,
+        "uniquePhysicalEntries": 3282,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "prepareArtifactMap",
+        "logicalEntries": 3285,
+        "uniquePhysicalEntries": 3285,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "preparedReviewArtifacts",
+        "logicalEntries": 5,
+        "uniquePhysicalEntries": 5,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "prepareSourceAfterLive",
+        "logicalEntries": 3274,
+        "uniquePhysicalEntries": 3220,
+        "aliasEntries": 54,
+        "physicalAliasGroups": 54
+      },
+      {
+        "label": "prepareSourceAfterRetained",
+        "logicalEntries": 3282,
+        "uniquePhysicalEntries": 3282,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "executionArtifacts",
+        "logicalEntries": 402,
+        "uniquePhysicalEntries": 402,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "independentRaw198",
+        "logicalEntries": 198,
+        "uniquePhysicalEntries": 198,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "independentCompleteInputs",
+        "logicalEntries": 810,
+        "uniquePhysicalEntries": 810,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "independentRows198",
+        "logicalEntries": 198,
+        "uniquePhysicalEntries": 198,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "original108Native216",
+        "logicalEntries": 216,
+        "uniquePhysicalEntries": 216,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "finalReviewComplete",
+        "logicalEntries": 7634,
+        "uniquePhysicalEntries": 7634,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "rootRenderApprovalComplete",
+        "logicalEntries": 7709,
+        "uniquePhysicalEntries": 7644,
+        "aliasEntries": 65,
+        "physicalAliasGroups": 65
+      },
+      {
+        "label": "technicalComplete",
+        "logicalEntries": 36,
+        "uniquePhysicalEntries": 36,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "technicalIndependentComplete",
+        "logicalEntries": 5,
+        "uniquePhysicalEntries": 5,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "technicalIndependentInputs",
+        "logicalEntries": 3,
+        "uniquePhysicalEntries": 3,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "technicalIndependentClosing",
+        "logicalEntries": 7,
+        "uniquePhysicalEntries": 7,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "technicalOwnerProofs",
+        "logicalEntries": 9,
+        "uniquePhysicalEntries": 9,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "browser111",
+        "logicalEntries": 111,
+        "uniquePhysicalEntries": 111,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "browserRetained8",
+        "logicalEntries": 8,
+        "uniquePhysicalEntries": 8,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "browserWorker8",
+        "logicalEntries": 8,
+        "uniquePhysicalEntries": 8,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "browserOwnerRetained8",
+        "logicalEntries": 8,
+        "uniquePhysicalEntries": 8,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "browserOwnerTerminalProofs",
+        "logicalEntries": 2,
+        "uniquePhysicalEntries": 2,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "browserRootSources",
+        "logicalEntries": 34,
+        "uniquePhysicalEntries": 34,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "browserCandidateSources",
+        "logicalEntries": 34,
+        "uniquePhysicalEntries": 34,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "browserInputsAndProofs",
+        "logicalEntries": 30,
+        "uniquePhysicalEntries": 30,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "localComplete",
+        "logicalEntries": 515,
+        "uniquePhysicalEntries": 467,
+        "aliasEntries": 48,
+        "physicalAliasGroups": 48
+      },
+      {
+        "label": "localDispatchArtifacts",
+        "logicalEntries": 281,
+        "uniquePhysicalEntries": 281,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "localIndependentComplete",
+        "logicalEntries": 523,
+        "uniquePhysicalEntries": 475,
+        "aliasEntries": 48,
+        "physicalAliasGroups": 48
+      },
+      {
+        "label": "localReviewFiles",
+        "logicalEntries": 9,
+        "uniquePhysicalEntries": 9,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "sourceReviewInput",
+        "logicalEntries": 58,
+        "uniquePhysicalEntries": 58,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "sourceReviewCurrent3",
+        "logicalEntries": 3,
+        "uniquePhysicalEntries": 3,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "sourceReviewCurrentDocs",
+        "logicalEntries": 3,
+        "uniquePhysicalEntries": 3,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "methodInputs",
+        "logicalEntries": 22,
+        "uniquePhysicalEntries": 22,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "methodArtifacts",
+        "logicalEntries": 16,
+        "uniquePhysicalEntries": 16,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "methodInitialSource3",
+        "logicalEntries": 3,
+        "uniquePhysicalEntries": 3,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "publicationComplete",
+        "logicalEntries": 24,
+        "uniquePhysicalEntries": 24,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "fullGateRoot6",
+        "logicalEntries": 6,
+        "uniquePhysicalEntries": 6,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "fullGateCandidate6",
+        "logicalEntries": 6,
+        "uniquePhysicalEntries": 6,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "fullGateUnrelatedPreservation",
+        "logicalEntries": 17,
+        "uniquePhysicalEntries": 17,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "currentDocRoot6",
+        "logicalEntries": 6,
+        "uniquePhysicalEntries": 6,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "currentDocCandidate6",
+        "logicalEntries": 6,
+        "uniquePhysicalEntries": 6,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "docDeltaUnrelatedPreservation",
+        "logicalEntries": 17,
+        "uniquePhysicalEntries": 17,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "matrixAdmissionComplete",
+        "logicalEntries": 15,
+        "uniquePhysicalEntries": 15,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      },
+      {
+        "label": "rootProofManifest",
+        "logicalEntries": 23,
+        "uniquePhysicalEntries": 23,
+        "aliasEntries": 0,
+        "physicalAliasGroups": 0
+      }
+    ],
+    "uniqueFilesChecked": 7729,
+    "beforeAndAfterRender": true,
+    "scope": "Complete named maps as of render; later authorized documentation promotion changes live bytes, while source snapshots remain historical authority.",
+    "completeNamedMapLogicalEntriesReference": {
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/report-draft-revision2/candidate-1/2026-10-17-emberwake-policy-10-development.json",
+      "sha256": "bacf1e024ba5c6bee86702cc6d8fefaf54f1ad9c0a80d4b3f51797dae0e3f001",
+      "jsonPointer": "/sourceHold/completeNamedMapLogicalEntries",
+      "namedMaps": 45,
+      "scope": "Canonical summary refers to byte-exact retained full logical entries and alias groups; no outcome, count or original evidence is removed."
+    }
+  },
+  "artifacts": [
+    {
+      "name": "freeze",
+      "path": "test-results/emberwake-strength/policy10-development-198-1/freeze.json",
+      "sha256": "ebcd28410151836775bc03ae03e3d77f443c3f9b29fa59e184aee77cb9140771",
+      "bytes": 2309115
+    },
+    {
+      "name": "execution",
+      "path": "test-results/emberwake-strength/policy10-development-198-1/execution-closing.json",
+      "sha256": "38fc7cd3715c3cdc66e00c512ac30c048864cb851d858cb490b3499d4ed05304",
+      "bytes": 88099
+    },
+    {
+      "name": "analysis",
+      "path": "test-results/emberwake-strength/policy10-development-198-1/analysis.json",
+      "sha256": "857f615ce1b9feaf16c6a5a21bb5bae920eeed6c41558b012921f204dccdf17c",
+      "bytes": 458662
+    },
+    {
+      "name": "analysisClosure",
+      "path": "test-results/emberwake-strength/policy10-development-198-1/analysis-closing.json",
+      "sha256": "4d1738e1a070ae661f79f599a99d92209127c2469a17d3f5d85bb6bac8673e43",
+      "bytes": 203
+    },
+    {
+      "name": "controls",
+      "path": "test-results/emberwake-strength/policy10-development-198-1/unchanged-policy-comparison.json",
+      "sha256": "aef46763f9dbaf86f3a193650f9efcdbfbb292937a1e678dce2e38b91e2307e9",
+      "bytes": 195590
+    },
+    {
+      "name": "prepareClosure",
+      "path": "test-results/emberwake-strength/policy10-development-198-1/prepare-closing.json",
+      "sha256": "e29bf8cd5bc8c1f1bfb5035d79168967a066fa295431073ac779454d9c89344d",
+      "bytes": 95
+    },
+    {
+      "name": "primaryProtocol",
+      "path": "test-results/emberwake-strength/policy10-development-198-1/primary/protocol.json",
+      "sha256": "5753245b05aae6819a9d4e55e0fce136ffb86f3bbdde5bcf21c1eead51e7580b",
+      "bytes": 7595
+    },
+    {
+      "name": "growthProtocol",
+      "path": "test-results/emberwake-strength/policy10-development-198-1/growth/protocol.json",
+      "sha256": "7ddce456be83708deaaa28957149c4c1c0c23ac9346743a985b71c49c043b72b",
+      "bytes": 7188
+    },
+    {
+      "name": "independent",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/result-audit-1/result.json",
+      "sha256": "65af137511848f143e61b1189f8469b4a53dc401c77ee56cd2aa552bbe324406",
+      "bytes": 295979
+    },
+    {
+      "name": "independentClosure",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/result-audit-1/closing.json",
+      "sha256": "f072c05f11e6795c1b5203c6d21ffce671914b28f6e68de9ead9b8c1befed10f",
+      "bytes": 220336
+    },
+    {
+      "name": "independentTerminal",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/result-audit-1/terminal.json",
+      "sha256": "7d832c2f9005f0f1a3da348148499c7d672910244c3a2c8864346c4f537f7bc1",
+      "bytes": 752
+    },
+    {
+      "name": "independentScript",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/result-audit-1/audit.mjs",
+      "sha256": "4ce0b8ecfd5f58866ec4e0a8aabbebeda0caff4b8d94fbdced6c2db81c294f24",
+      "bytes": 14825
+    },
+    {
+      "name": "prospectiveScope",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/result-audit-1/prospective-scope.json",
+      "sha256": "210fea055855482ce04e150c5f33030586fbfe4246d6659e1ba8aa493a82b35c",
+      "bytes": 3814
+    },
+    {
+      "name": "finalReview",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/final-development-review-1.json",
+      "sha256": "7002b0ac76e29a4ac6547598b0ec5f63d6a2a09b3fa6f2a5a22a96c12050090f",
+      "bytes": 2341920
+    },
+    {
+      "name": "sourceClosure",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/implementation-1/attempt-2/closure-2.json",
+      "sha256": "a8e77739c7503e9d7bd256c3e920f0bff8da98e5da48cc5bad4c85e1b4390f6c",
+      "bytes": 2812
+    },
+    {
+      "name": "testAddendum",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/test-addendum-2.json",
+      "sha256": "28d32e957165d0832b9c8b799877950de8c1b245c2b96427803f29c7a0f3a4fc",
+      "bytes": 5732
+    },
+    {
+      "name": "sourceReview",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/final-preparation-review-1.json",
+      "sha256": "68f416d19d544f4f7bf8dbd64388c39bcb729af1b8fb8e540c02e3df41080cbf",
+      "bytes": 19217
+    },
+    {
+      "name": "publication",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/publication-execution-copy-review-1.json",
+      "sha256": "3e3857b12ea6b0b48d6e3a9f834895bf8c7e0a852ff1e799dcdf68f886abdd75",
+      "bytes": 6484
+    },
+    {
+      "name": "method",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/method-review-1.json",
+      "sha256": "30fd6ba656a956531d3afaa5f8c4588a46ee2e0aa6cb1ef35b8f8494253c2428",
+      "bytes": 7980
+    },
+    {
+      "name": "prepared",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/prepared-review-1/result.json",
+      "sha256": "494246112c0e30f286d4314b6c350a49942c24f76d73a4c463ef03a1cd24c34f",
+      "bytes": 4180
+    },
+    {
+      "name": "preparedClosing",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/prepared-review-1/closing.json",
+      "sha256": "533cae4f87899aaa75e5937aa3d2e8d4ef795216800e87d365aaf77caef5855d",
+      "bytes": 2798
+    },
+    {
+      "name": "bundleDifferences",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/prepared-review-1/bundle-path-comment-differences.json",
+      "sha256": "4222a471efedcdfede80f4d61040f8566cb07fe38c6423acf62120b5cb197874",
+      "bytes": 3593
+    },
+    {
+      "name": "prepareOwner",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/producer-attempt1/prepare-owner-closure-1.json",
+      "sha256": "afac274809099f6c7410b76d62c60b40836cf3e915e58e929c93f211b373de70",
+      "bytes": 6890
+    },
+    {
+      "name": "preparePins",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/producer-attempt1/prepare-artifact-pins-1.json",
+      "sha256": "25b91c43549f5b2bb12e8e57d1ba45d86985cae125788bc7a53355a4d3aecd68",
+      "bytes": 1088178
+    },
+    {
+      "name": "prepareAfter",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/producer-attempt1/prepare-source-after-2.json",
+      "sha256": "3d5338a1437e30292b52452ef5a6de7a7370e3afbf87e23b2ab4b3114e133e82",
+      "bytes": 1929037
+    },
+    {
+      "name": "rootProofs",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/producer-attempt1/root-proofs-1.json",
+      "sha256": "0eb48d6aed25c7534e4a032ec4e44459878d2fe4a0b523e00a6ef8e0b2265d3f",
+      "bytes": 5564
+    },
+    {
+      "name": "matrixReadiness",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/matrix-readiness-1.json",
+      "sha256": "a3ecb56d5e21bc426c703b1f61fa89bee7254913f077351bda251d231897ce40",
+      "bytes": 4067
+    },
+    {
+      "name": "technical",
+      "path": "test-results/emberwake-strength/policy10-resource-5-1/closure.json",
+      "sha256": "6927833ea4d3c8a5fd7b3278eefc8e382bc813bf814abeea840b0a7a2dd44376",
+      "bytes": 35801
+    },
+    {
+      "name": "technicalOwner",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/producer-attempt1/technical-owner-closure-1.json",
+      "sha256": "cf609682c93c1f82636cd71a3cee6e22e194458244a81f7efa7c4371572b0e90",
+      "bytes": 3950
+    },
+    {
+      "name": "technicalReview",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/technical-audit-1/technical-raw-audit.json",
+      "sha256": "aa02df916a4d1877c441c74d3a27aee688b1b3c63da8b654ad7e5c53b3dc48e4",
+      "bytes": 9890
+    },
+    {
+      "name": "technicalReviewClosure",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/technical-audit-1/closing.json",
+      "sha256": "c7bf95bcf3863641b18da3c56eb5af1143bd625ad734cad6a2438e34bd54a621",
+      "bytes": 2374
+    },
+    {
+      "name": "technicalReviewTerminal",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/technical-audit-1/terminal.json",
+      "sha256": "10f480217520e2d51cac500552d188e95ab346b3a2a361ec709316b58f902106",
+      "bytes": 777
+    },
+    {
+      "name": "local",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/local-prefix-1/receipt.json",
+      "sha256": "7170124ceea9bd15aad23bd6f7b5f08ad9a5fd34f4fc3d613daf326497ef83e5",
+      "bytes": 124391
+    },
+    {
+      "name": "localDispatch",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/local-prefix-dispatch-1/closure.json",
+      "sha256": "00ce894e5e1f566c26b45acdbcdb0ee73519494cdfd88d616362d44b63e902bf",
+      "bytes": 56908
+    },
+    {
+      "name": "localReview",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/actual-audit-1/run-2/result.json",
+      "sha256": "a287ef77e885c5b4b2661aeb771fba05d3d54970ee0210730ee4a62423262e92",
+      "bytes": 103223
+    },
+    {
+      "name": "localClosing",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/astra-review-1/actual-audit-1/closing.json",
+      "sha256": "be16f2daa7f49cbcaf72c7859695b3b1cffa7b6657aa9769ba7c586cf6a828cc",
+      "bytes": 2875
+    },
+    {
+      "name": "fullGate",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/full-gate-1/full-gate.json",
+      "sha256": "a56c9f2e99f6cd344e81c45dc8857518239d025d70f0f1ef7794437bc17a9307",
+      "bytes": 1924
+    },
+    {
+      "name": "fullGateManifest",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/full-gate-1/candidate-before-gate.json",
+      "sha256": "788830e9a22d3a9e8461cb09b674fdabe6ed6caffb97680944a307404f7b6398",
+      "bytes": 3937
+    },
+    {
+      "name": "fullGateStarted",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/full-gate-1/gate-started.json",
+      "sha256": "8b787d27f4855414f2a3915c8f0ccfc658110a4d0a79d6b6db897289d5204ce5",
+      "bytes": 432
+    },
+    {
+      "name": "fullGateLog",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/full-gate-1/npm-check.log",
+      "sha256": "c1f98d8eb9b0d00d7afc493d97896353cbd80f4b6f0c24d74a7860637cacda92",
+      "bytes": 38791
+    },
+    {
+      "name": "docDelta",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/doc-delta-1/gate.json",
+      "sha256": "8c2859a05d76119efaf566df0209c208f4760bf884f8bf3814cbdd9714681c83",
+      "bytes": 2440
+    },
+    {
+      "name": "docDeltaManifest",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/doc-delta-1/manifest.json",
+      "sha256": "1d9918f1a14aff7e8fd4ac7a03e8afb995ec7d9e0e17d6d7062e0b2052b54fe0",
+      "bytes": 3545
+    },
+    {
+      "name": "docFormatLog",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/doc-delta-1/format.log",
+      "sha256": "aaeced25f14234544c077da8b61ec408e94af0b8ecc2bacac45bf681116f50ba",
+      "bytes": 633
+    },
+    {
+      "name": "docInventoryLog",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/doc-delta-1/inventory.log",
+      "sha256": "0e1520e98947c035438c3a30ff2c7fc0352b59a1555d16332b22cd8242fd25c6",
+      "bytes": 125
+    },
+    {
+      "name": "browserGate",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/browser-gate-1.json",
+      "sha256": "2be68b622d06b327f210b73003ed3ad4fe48dea2843bdd02c0dfd01e0bf3dcde",
+      "bytes": 20460
+    },
+    {
+      "name": "browser",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/browser-review-1/closure.json",
+      "sha256": "6186fe96f4e0548f404825f2ae8167882b6238fcef454793196dd2d2e9bfd3ac",
+      "bytes": 17684
+    },
+    {
+      "name": "browserOwner",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/browser-review-1/owner-terminal-1.json",
+      "sha256": "09fe36a6e4ddc2633bb178492a17fc5f12decb26271f71142a7b0eb2d10074ae",
+      "bytes": 2878
+    },
+    {
+      "name": "browserPreflight",
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/browser-review-1/preflight.json",
+      "sha256": "63c0a3682ef8e19f6ec4c61fb48bdbbe5ce26f5f95bb30163576c2df000ea88a",
+      "bytes": 15617
+    },
+    {
+      "name": "protocol",
+      "path": "docs/research/experiments/2026-10-17-emberwake-policy-10-development-protocol.md",
+      "sha256": "cbcc4c37f80295794a7ac2df7e89b72d42132dd887d86a068f32a038881eb288",
+      "bytes": 8594
+    },
+    {
+      "name": "canonicalGuide",
+      "path": "docs/engineering/policy-development.md",
+      "sha256": "c17edbfacdf36cbb613238ce1bb1ba22f9f4e22ff7f71306895f9475c5143db3",
+      "bytes": 61747
+    },
+    {
+      "name": "gameGuide",
+      "path": "docs/engineering/emberwake-policy.md",
+      "sha256": "43a3670b5abb6a7db4a013a341031eeea19812db4d9e3bdb96e1fe86d10fa658",
+      "bytes": 31016
+    },
+    {
+      "name": "continuity",
+      "path": ".work/sessions/emberwake-native7-2026-10-17/astra-review-1/continuity-result.json",
+      "sha256": "c783b73c3b798a072cd1348a9ed6eb43214f37ddd3e78d8027f6c4195cdd41f4",
+      "bytes": 4333
+    },
+    {
+      "name": "old5Review",
+      "path": ".work/sessions/emberwake-native6-2026-10-17/astra-review-1/original5-audit.json",
+      "sha256": "8ad59f979af0ba39be5da12e768172b240b68a64d5fef49b49ead40d7e9b6afb",
+      "bytes": 1554
+    },
+    {
+      "name": "olderHistory",
+      "path": ".work/sessions/emberwake-native6-2026-10-17/astra-review-1/older-history-audit.json",
+      "sha256": "fe09b7dc56e054cae0034e750579086e28a7200bf298a1a9eb3cec8cbeb97d02",
+      "bytes": 360
+    },
+    {
+      "name": "native5Negative",
+      "path": "docs/research/experiments/2026-10-16-emberwake-strength-confirmation-5.json",
+      "sha256": "bf3054c518568c03cf2d689197861e9d91c8f2567e53c9431154a0e5ffb96866",
+      "bytes": 24393
+    },
+    {
+      "name": "native6Negative",
+      "path": "docs/research/experiments/2026-10-17-emberwake-standard-relief-6.json",
+      "sha256": "c148ddca6716ae0ba7bdf30fb30bd1f8d93f110b66ba3983cda886bfa003e5b9",
+      "bytes": 25587
+    },
+    {
+      "name": "native7Negative",
+      "path": "docs/research/experiments/2026-10-17-emberwake-standard-pressure-7.json",
+      "sha256": "90d7af8dbc3dd10eba19a443f74c46abacd82d0bd073cbd2556cafc9c36792b0",
+      "bytes": 25866
+    },
+    {
+      "name": "policy9Negative",
+      "path": "docs/research/experiments/2026-10-17-emberwake-policy-9-development.json",
+      "sha256": "aae0332fcdb9c8b6ada772c9823267f3532491b4aba9005b13e2febe5482e744",
+      "bytes": 36753
+    },
+    {
+      "name": "fixture2",
+      "path": "tests/fixtures/emberwake-v2-continuity.json",
+      "sha256": "1fa36bed5c88e6224a56b3ead904cd3791728bd8caafe816dd8cf7c8015be913",
+      "bytes": 416425
+    },
+    {
+      "name": "fixture3",
+      "path": "tests/fixtures/emberwake-v3-continuity.json",
+      "sha256": "124874f9b0ef184a1757bbb45e77bb9a969982fe9c9a77d050fe6121e81637cf",
+      "bytes": 500057
+    },
+    {
+      "name": "fixture4",
+      "path": "tests/fixtures/emberwake-v4-continuity.json",
+      "sha256": "cbda033c1e09525576363e2d7395553f374820ea25aef002a31290ae97fb12ba",
+      "bytes": 1017036
+    },
+    {
+      "name": "fixture5",
+      "path": "tests/fixtures/emberwake-v5-continuity.json",
+      "sha256": "3a5a94bb7283025d5864f32210f053d450b07688b174164e4836fa9f634f9394",
+      "bytes": 767987
+    },
+    {
+      "name": "fixture6",
+      "path": "tests/fixtures/emberwake-v6-continuity.json",
+      "sha256": "8be32896a4347f7b16f53d583af6f822f9574ab77699371ecc41c107a9ec3f05",
+      "bytes": 6082507
+    }
+  ],
+  "generator": {
+    "path": ".work/sessions/emberwake-policy10-development-2026-10-17/report-draft-revision2/generate.mjs",
+    "sha256": "497322241659f13bc6d51fdff4f7b8942f3b42941c611eccac68b90498e9d634",
+    "reusedReviewedPolicy9": {
+      "path": ".work/sessions/emberwake-policy9-development-2026-10-17/report-draft/generate.mjs",
+      "sha256": "0a5eecde0b21be275d9faf44924e33022db3e48789179a570ef317b158f014c7"
+    }
+  },
+  "limits": [
+    "Consumed development only; no fresh calibration/population inference or human-equivalent difficulty.",
+    "All ten pairs including practical ties stay in each net denominator; 20 pp net is neither win-rate gain nor percent time saved.",
+    "Score2 exact; only equally complete victories have practical tie when 20 * absolute tick difference < maximum ticks; exact 5% remains directional.",
+    "All 198 public-input/native audits; only prospectively fixed 27 factory reproductions, 171 factory verdicts remain producer-qualified.",
+    "Five Growth technical executions and four local branches are outside 198 and establish no changed-Survival resource or campaign guarantee.",
+    "Original8 controls are reused exact native7 journals/states without normalization; policy/raw recording provenance differs deliberately and compute is not equalized.",
+    "Native5 fresh 1,170 plus native6/native7/policy9 consumed 198 negatives remain preserved and negative."
+  ],
+  "next": "Preserve this negative screen and declare any successor separately; do not alter these gates or launch confirmation as though they passed.",
+  "postRenderDisposition": {
+    "recordedAt": "2026-10-16T22:01:43.694460+00:00",
+    "candidatePolicy": "emberwake-policy-10",
+    "adopted": false,
+    "currentBaselinePolicy": "emberwake-policy-8",
+    "currentNativeRules": "emberwake-7",
+    "reason": "Three fixed gates fail; preserve the negative rather than changing scores, criteria, references, seeds or budgets.",
+    "rawRenderPins": {
+      ".work/sessions/emberwake-policy10-development-2026-10-17/report-draft-revision2/candidate-1/2026-10-17-emberwake-policy-10-development.json": "bacf1e024ba5c6bee86702cc6d8fefaf54f1ad9c0a80d4b3f51797dae0e3f001",
+      ".work/sessions/emberwake-policy10-development-2026-10-17/report-draft-revision2/candidate-1/2026-10-17-emberwake-policy-10-development.md": "600af271af47bf38cbe311879f400d518298d136339e7557e3b693cc59085f4f"
+    },
+    "releaseReceipt": {
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/source-hold-release-1.json",
+      "sha256": "7ccf7469134348ac549e37d9cd2208406c926c3219b5d5eee926c63079de9b84"
+    },
+    "restorationReceipt": {
+      "path": ".work/sessions/emberwake-policy10-development-2026-10-17/policy8-restoration-1.json",
+      "sha256": "3f467294f120fab91e7ebd101b83f44a110804f6641d9f7be91bc8875fad5289"
+    },
+    "restoredSourcePins": {
+      "packages/diablo2/src/agent/policy.ts": "3364bf3ac46d4fcadab6eb06465d106c3ada523e8de204993773a73cce447989",
+      "packages/diablo2/src/agent/policy.test.ts": "c31f2e6202d3897fd5b8e6c6e91a7396e63bf979a15465b04c3b770da0ba5ea4",
+      "packages/diablo2/src/agent/example.ts": "e85081d75384eec76d406d570e3362a44c0d4910e9e0d7697a040cafdd58afca"
+    },
+    "factoryAvailability": "Current factory8 cannot reproduce version10 proposals. Use retained frozen10 runtime/source for factory audits; native7 journals and original recorded knowledge remain inspectable. Version10 remains consumed.",
+    "traceDiagnosis": {
+      "receipt": {
+        "path": ".work/sessions/emberwake-policy10-development-2026-10-17/failure-diagnosis-1/receipt.json",
+        "sha256": "f81e130080abe22292f8f23662fbd2ad5a1fd23a5450ab85b351227297f63d38"
+      },
+      "findings": {
+        "path": ".work/sessions/emberwake-policy10-development-2026-10-17/failure-diagnosis-1/FINDINGS.md",
+        "sha256": "906cbe1e3c8ba7eb77d485b14726cbc186ce1705008ddb035384079cb61fd331"
+      },
+      "scope": "Four selected consumed traces; no new factory/native execution. Stationary attack modeling and repeated margin-detour goal starvation are supported; causal whole-campaign attribution and alternate route viability are unresolved."
+    },
+    "resultValuesChanged": false
+  }
+}
