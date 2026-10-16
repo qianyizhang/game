@@ -1,0 +1,766 @@
+{
+  "schema": "cartographer-strength-confirmation-3",
+  "status": "all five declared criteria passed; independent final raw audit passed",
+  "date": "2026-10-16",
+  "identity": {
+    "rules": "cartographer-3",
+    "generator": "rooms-1",
+    "observation": "cartographer-observation-2",
+    "score": "cartographer-performance-2"
+  },
+  "policyVersions": {
+    "immediate": "cartographer-policy-2",
+    "survival": "cartographer-policy-2",
+    "growth": "cartographer-policy-2"
+  },
+  "population": {
+    "independentBlocks": 100,
+    "namespace": "CARTOGRAPHER-STRENGTH-3",
+    "attempts": 900,
+    "maxDecisions": 2000,
+    "workers": 2,
+    "reference": "survival"
+  },
+  "freeze": {
+    "plan": {
+      "schema": "cartographer-strength-plan-3",
+      "namespace": "CARTOGRAPHER-STRENGTH-3",
+      "blocks": 100,
+      "reference": "survival",
+      "bundleDigest": "0cc9b45537103e8317bf3a5e5518093e0573988ba72f0769c7a824379408b4ac",
+      "runtime": "v24.21.0 / darwin / arm64",
+      "runtimeDigests": {
+        "src/games/cartographer/agent/adapter.ts": "cab7b66a74aa43688023d6bd33bb7914199efbc519a972c3fa622eefa55cd992",
+        "src/games/cartographer/agent/observation.ts": "223a6a2a908637096bfdcd049e592e7c17666eaaf87641e50fa0526b7bf3de74",
+        "src/games/cartographer/agent/policy.ts": "ce2d48c93c50066d2d8e5f0b23dec8caec774ba1ffcffd80a89cd9ed36975661",
+        "src/games/cartographer/application/session.ts": "b1ad3a03e248c25e7688a48468b1530bcd739e9b570ee680069d6af123a19255",
+        "src/games/cartographer/domain/content.ts": "ae296e58c3c035a0dbce91b3fd747aae65423780b6efc8d0c006baf8ade8ea36",
+        "src/games/cartographer/domain/game.ts": "c0efdde4a49ddcf0360d253827b98caed952331faeafdea5cbe73736a4a7e646",
+        "src/shared/json.ts": "d030f16b60733a5d4acd670c3a4cac463f691e01038988d9ef03a92fa2077606",
+        "src/shared/layout/layout.ts": "f5226b7ac4ab99e1e5ae39a68321aee885de6ba7d0e309314ec28341efd861ec",
+        "src/shared/policy/rollout.ts": "d9f3b20594485fc5e625f0169caa20272f88d58ccfd0de1986e28eeafb58686b",
+        "src/shared/random.ts": "8bad1acfa3ab6d1b1865116b140e5be66c8bc39454c7ebffb8f4620781c7bc56",
+        "packages/workshop-tools/policy/runtime.ts": "2e055828c484c75c338b75203aed380c3e574184073047e85df6c4c4a1564858",
+        "packages/workshop-tools/policy/cli.ts": "a9ef1250e1fbc025fca9dfb8eba781d6c7c9f69fe4d8008d10231f2c0527f289",
+        "packages/workshop-tools/policy/study.ts": "3c6c258eaab78c9f6da1424ac81f4d0b3ca52fc889f3988c79cb6b5a31867bf7",
+        "packages/workshop-tools/policy/calibration.ts": "849eb5f92d80ff866f221f7075702d2e81f01fdf69f49f5f500f049ba84c9449",
+        "packages/workshop-tools/policy/analyze-spire.ts": "bbe3f402f536f973c0b7c61fdba833acac26e317e0c31e429c3156d6dedfcf57",
+        "packages/workshop-tools/policy/pool.ts": "10234612f112389d2cc5cd1de7127829f53bb424b98d238ca9c080ab9081d401",
+        "packages/workshop-tools/policy/worker.ts": "f3f732a5b6ce17b54764b8e65d9af8b9bfde110642ac79b77e01ccb88c7e7f91",
+        "packages/workshop-tools/runtime-bundle.ts": "92313bc43774d7c9631fc5cd038abd5188ec9004325cefb5816479812a801e2e",
+        "packages/workshop-tools/io.ts": "d5b686ffdc2128837096e571b82bca2e5dddaaa6c967fdded37ce86a4657dabd",
+        "src/shared/policy/scoring.ts": "f32cf115a989e697981d5043bea27b039350b5691cfb364d591a4019192a2617"
+      },
+      "analysisDigests": {
+        "packages/workshop-tools/policy/analyze-cartographer.ts": "ba1a691f90519f7eda57095b253797f90f63ab9845c693e5a25270fd59228229",
+        "packages/workshop-tools/policy/calibration.ts": "849eb5f92d80ff866f221f7075702d2e81f01fdf69f49f5f500f049ba84c9449",
+        "packages/workshop-tools/policy/study.ts": "3c6c258eaab78c9f6da1424ac81f4d0b3ca52fc889f3988c79cb6b5a31867bf7",
+        "docs/research/experiments/2026-10-16-cartographer-strength-3-protocol.md": "d709d5d682c5d0f1d4f2a8a43a068d9635e773759a7451451f3514898560bfbf",
+        "tests/fixtures/cartographer-v1-continuity.json": "1cd39fd447ab860d518214a161803ec7a84d583787e718cc0e2c9f3914f0737c",
+        "tests/fixtures/cartographer-v2-continuity.json": "856ae689e5285fea80da7ed0e6e0d81bbcb611678418ee4be044d920df2675fd"
+      }
+    },
+    "sourceBytes": "test-results/cartographer-strength/confirmation-freeze-3/sources",
+    "beforeReservedExecution": true
+  },
+  "artifacts": [
+    {
+      "path": "test-results/cartographer-strength/evaluation-3/report.json",
+      "sha256": "5d3fe0ef4854aa16515f09a6d29281f4b28b5d46223aa42b0f68a8eee48845c7",
+      "bytes": 918484
+    },
+    {
+      "path": "test-results/cartographer-strength/evaluation-3/protocol.json",
+      "sha256": "e03752dd463570576466d0313fac86e1e25750e4653775062b31af77d6191387",
+      "bytes": 9145
+    },
+    {
+      "path": "test-results/cartographer-strength/evaluation-3/inference.json",
+      "sha256": "3f77c03750a2c35d3b498a79845a65167486357a591e7f1235d1ad7b55be0366",
+      "bytes": 92536
+    },
+    {
+      "path": "test-results/cartographer-strength/confirmation-freeze-3/plan.json",
+      "sha256": "d1b81087d1699ab00a0cc4cd94e1178568fae781ccf04d6bc4e2bc6f1d431a17",
+      "bytes": 3312
+    },
+    {
+      "path": "test-results/cartographer-strength/confirmation-freeze-3/contract.json",
+      "sha256": "aefe2bea14fb3f07855a3969299c0e1623a6eab9dd8944577321ba8dff396a48",
+      "bytes": 7603
+    },
+    {
+      "path": "test-results/cartographer-strength/confirmation-freeze-3/0cc9b45537103e8317bf3a5e5518093e0573988ba72f0769c7a824379408b4ac.mjs",
+      "sha256": "0cc9b45537103e8317bf3a5e5518093e0573988ba72f0769c7a824379408b4ac",
+      "bytes": 56448
+    }
+  ],
+  "integrity": true,
+  "allCriteriaPassed": true,
+  "family": [
+    {
+      "id": "relaxed-standard",
+      "n": 100,
+      "difference": 0.17,
+      "aOnly": 17,
+      "bOnly": 0,
+      "exactP": 1.52587890625e-5,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+      "adjustedP": 3.0517578125e-5,
+      "passed": true
+    },
+    {
+      "id": "standard-severe",
+      "n": 100,
+      "difference": 0.53,
+      "aOnly": 57,
+      "bOnly": 4,
+      "exactP": 4.85494457136415e-13,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+      "adjustedP": 1.4564833714092451e-12,
+      "passed": true
+    },
+    {
+      "id": "severe-strength",
+      "n": 100,
+      "difference": 0.24,
+      "aOnly": 28,
+      "bOnly": 4,
+      "exactP": 1.9301194697618484e-5,
+      "pairedInterval95": null,
+      "method": "Two-sided exact conditional binomial test on discordant paired wins; paired interval unavailable.",
+      "adjustedP": 3.0517578125e-5,
+      "passed": true
+    }
+  ],
+  "playability": [
+    {
+      "setupId": "relaxed",
+      "policy": "survival",
+      "wins": {
+        "wins": 100,
+        "attempts": 100,
+        "rate": 1,
+        "interval95": [0.9630051925239981, 0.9999999999999999]
+      },
+      "lowerBoundRequired": 0.5,
+      "passed": true
+    },
+    {
+      "setupId": "standard",
+      "policy": "survival",
+      "wins": {
+        "wins": 83,
+        "attempts": 100,
+        "rate": 0.83,
+        "interval95": [0.7445181876635703, 0.8910652394022684]
+      },
+      "lowerBoundRequired": 0.1,
+      "passed": true
+    }
+  ],
+  "completion": {
+    "attempts": 900,
+    "nativeTerminal": 849,
+    "nativeWins": 489,
+    "nativeDeaths": 360,
+    "livingBudgetStops": 51,
+    "reportedBudgetStops": 51,
+    "endpoint": "Victory within 2000 decisions; living budget stops remain nonwins in all denominators."
+  },
+  "summary": [
+    {
+      "setupId": "relaxed",
+      "policy": "immediate",
+      "attempts": 100,
+      "wins": 100,
+      "winRate": {
+        "wins": 100,
+        "attempts": 100,
+        "rate": 1,
+        "interval95": [0.9630051925239981, 0.9999999999999999]
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "auditsPassed": 100,
+      "score": {
+        "invalid": 0,
+        "components": [
+          {
+            "name": "victory",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 1,
+              "median": 1,
+              "max": 1,
+              "mean": 1
+            }
+          },
+          {
+            "name": "rooms cleared",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 9,
+              "median": 9,
+              "max": 9,
+              "mean": 9
+            }
+          },
+          {
+            "name": "victorious health fraction",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0.375,
+              "median": 0.6875,
+              "max": 1,
+              "mean": 0.6816666666666669
+            }
+          },
+          {
+            "name": "victorious accepted commands",
+            "direction": "minimize",
+            "distribution": {
+              "n": 100,
+              "min": 93,
+              "median": 110,
+              "max": 126,
+              "mean": 109.04
+            }
+          }
+        ]
+      }
+    },
+    {
+      "setupId": "relaxed",
+      "policy": "survival",
+      "attempts": 100,
+      "wins": 100,
+      "winRate": {
+        "wins": 100,
+        "attempts": 100,
+        "rate": 1,
+        "interval95": [0.9630051925239981, 0.9999999999999999]
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "auditsPassed": 100,
+      "score": {
+        "invalid": 0,
+        "components": [
+          {
+            "name": "victory",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 1,
+              "median": 1,
+              "max": 1,
+              "mean": 1
+            }
+          },
+          {
+            "name": "rooms cleared",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 9,
+              "median": 9,
+              "max": 9,
+              "mean": 9
+            }
+          },
+          {
+            "name": "victorious health fraction",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0.5208333333333334,
+              "median": 1,
+              "max": 1,
+              "mean": 0.9858333333333331
+            }
+          },
+          {
+            "name": "victorious accepted commands",
+            "direction": "minimize",
+            "distribution": {
+              "n": 100,
+              "min": 96,
+              "median": 117.5,
+              "max": 135,
+              "mean": 118.16
+            }
+          }
+        ]
+      }
+    },
+    {
+      "setupId": "relaxed",
+      "policy": "growth",
+      "attempts": 100,
+      "wins": 100,
+      "winRate": {
+        "wins": 100,
+        "attempts": 100,
+        "rate": 1,
+        "interval95": [0.9630051925239981, 0.9999999999999999]
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "auditsPassed": 100,
+      "score": {
+        "invalid": 0,
+        "components": [
+          {
+            "name": "victory",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 1,
+              "median": 1,
+              "max": 1,
+              "mean": 1
+            }
+          },
+          {
+            "name": "rooms cleared",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 9,
+              "median": 9,
+              "max": 9,
+              "mean": 9
+            }
+          },
+          {
+            "name": "victorious health fraction",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0.6666666666666666,
+              "median": 1,
+              "max": 1,
+              "mean": 0.9658333333333334
+            }
+          },
+          {
+            "name": "victorious accepted commands",
+            "direction": "minimize",
+            "distribution": {
+              "n": 100,
+              "min": 102,
+              "median": 120,
+              "max": 163,
+              "mean": 122.05
+            }
+          }
+        ]
+      }
+    },
+    {
+      "setupId": "standard",
+      "policy": "immediate",
+      "attempts": 100,
+      "wins": 40,
+      "winRate": {
+        "wins": 40,
+        "attempts": 100,
+        "rate": 0.4,
+        "interval95": [0.3093997461136028, 0.4979992153815976]
+      },
+      "errors": 0,
+      "timeouts": 11,
+      "auditsPassed": 100,
+      "score": {
+        "invalid": 0,
+        "components": [
+          {
+            "name": "victory",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 1,
+              "mean": 0.4
+            }
+          },
+          {
+            "name": "rooms cleared",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 1,
+              "median": 8,
+              "max": 9,
+              "mean": 6.69
+            }
+          },
+          {
+            "name": "victorious health fraction",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 0.8333333333333334,
+              "mean": 0.07999999999999999
+            }
+          },
+          {
+            "name": "victorious accepted commands",
+            "direction": "minimize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 272,
+              "mean": 83.44
+            }
+          }
+        ]
+      }
+    },
+    {
+      "setupId": "standard",
+      "policy": "survival",
+      "attempts": 100,
+      "wins": 83,
+      "winRate": {
+        "wins": 83,
+        "attempts": 100,
+        "rate": 0.83,
+        "interval95": [0.7445181876635703, 0.8910652394022684]
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "auditsPassed": 100,
+      "score": {
+        "invalid": 0,
+        "components": [
+          {
+            "name": "victory",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 1,
+              "max": 1,
+              "mean": 0.83
+            }
+          },
+          {
+            "name": "rooms cleared",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 1,
+              "median": 9,
+              "max": 9,
+              "mean": 8.41
+            }
+          },
+          {
+            "name": "victorious health fraction",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0.7083333333333333,
+              "max": 1,
+              "mean": 0.5911111111111111
+            }
+          },
+          {
+            "name": "victorious accepted commands",
+            "direction": "minimize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 249,
+              "max": 293,
+              "mean": 210.01
+            }
+          }
+        ]
+      }
+    },
+    {
+      "setupId": "standard",
+      "policy": "growth",
+      "attempts": 100,
+      "wins": 24,
+      "winRate": {
+        "wins": 24,
+        "attempts": 100,
+        "rate": 0.24,
+        "interval95": [0.16691211265459965, 0.3323251872329213]
+      },
+      "errors": 0,
+      "timeouts": 12,
+      "auditsPassed": 100,
+      "score": {
+        "invalid": 0,
+        "components": [
+          {
+            "name": "victory",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 1,
+              "mean": 0.24
+            }
+          },
+          {
+            "name": "rooms cleared",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 1,
+              "median": 6,
+              "max": 9,
+              "mean": 5.85
+            }
+          },
+          {
+            "name": "victorious health fraction",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 1,
+              "mean": 0.08166666666666667
+            }
+          },
+          {
+            "name": "victorious accepted commands",
+            "direction": "minimize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 246,
+              "mean": 53.75
+            }
+          }
+        ]
+      }
+    },
+    {
+      "setupId": "severe",
+      "policy": "immediate",
+      "attempts": 100,
+      "wins": 6,
+      "winRate": {
+        "wins": 6,
+        "attempts": 100,
+        "rate": 0.06,
+        "interval95": [0.02778574526665662, 0.12476968531222507]
+      },
+      "errors": 0,
+      "timeouts": 13,
+      "auditsPassed": 100,
+      "score": {
+        "invalid": 0,
+        "components": [
+          {
+            "name": "victory",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 1,
+              "mean": 0.06
+            }
+          },
+          {
+            "name": "rooms cleared",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 1,
+              "median": 4,
+              "max": 9,
+              "mean": 4.59
+            }
+          },
+          {
+            "name": "victorious health fraction",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 0.10714285714285714,
+              "mean": 0.004285714285714285
+            }
+          },
+          {
+            "name": "victorious accepted commands",
+            "direction": "minimize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 226,
+              "mean": 11.87
+            }
+          }
+        ]
+      }
+    },
+    {
+      "setupId": "severe",
+      "policy": "survival",
+      "attempts": 100,
+      "wins": 30,
+      "winRate": {
+        "wins": 30,
+        "attempts": 100,
+        "rate": 0.3,
+        "interval95": [0.21894753866228117, 0.39585038432811953]
+      },
+      "errors": 0,
+      "timeouts": 4,
+      "auditsPassed": 100,
+      "score": {
+        "invalid": 0,
+        "components": [
+          {
+            "name": "victory",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 1,
+              "mean": 0.3
+            }
+          },
+          {
+            "name": "rooms cleared",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 1,
+              "median": 7.5,
+              "max": 9,
+              "mean": 6.22
+            }
+          },
+          {
+            "name": "victorious health fraction",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 1,
+              "mean": 0.16714285714285715
+            }
+          },
+          {
+            "name": "victorious accepted commands",
+            "direction": "minimize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 302,
+              "mean": 74.16
+            }
+          }
+        ]
+      }
+    },
+    {
+      "setupId": "severe",
+      "policy": "growth",
+      "attempts": 100,
+      "wins": 6,
+      "winRate": {
+        "wins": 6,
+        "attempts": 100,
+        "rate": 0.06,
+        "interval95": [0.02778574526665662, 0.12476968531222507]
+      },
+      "errors": 0,
+      "timeouts": 11,
+      "auditsPassed": 100,
+      "score": {
+        "invalid": 0,
+        "components": [
+          {
+            "name": "victory",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 1,
+              "mean": 0.06
+            }
+          },
+          {
+            "name": "rooms cleared",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 1,
+              "median": 3,
+              "max": 9,
+              "mean": 3.91
+            }
+          },
+          {
+            "name": "victorious health fraction",
+            "direction": "maximize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 0.5357142857142857,
+              "mean": 0.018214285714285714
+            }
+          },
+          {
+            "name": "victorious accepted commands",
+            "direction": "minimize",
+            "distribution": {
+              "n": 100,
+              "min": 0,
+              "median": 0,
+              "max": 258,
+              "mean": 13.97
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "verification": {
+    "isolatedCodeGate": "maintenance/static/build; 541 application tests and 37 seeded simulations",
+    "browser": "5 maintained policy review journeys plus full Emberwake score2 recording passed; prior Cartographer native gameplay/replay six-journey suite passed",
+    "independentFinalRawAudit": {
+      "receipt": "test-results/cartographer-strength/score-review-1/confirmation-receipt.json",
+      "sha256": "f73c9281e8daab4909a726c25b7e7abdf14d40d0e3497a52ced1a7142ee9f066",
+      "scope": "900 canonical/raw hashes, 224771 original-input digests and accepted-command boundaries/work, 900 frozen native reconstructions/metrics/scores, 24 pins, independent exact binomial/Holm/Wilson, identical analyzer rerun. Four selected originals independently pass every rollout audit dimension; other cases retain producer four-pass audits."
+    }
+  },
+  "limits": [
+    "No human skill, perceived difficulty or enjoyment claim.",
+    "Holm correction covers the three predeclared tests, not the development campaign.",
+    "51 living decision-budget stops remain nonwins, not native deaths.",
+    "Ordinal score comparisons are descriptive; no scalar mean or independent score-confirmation criterion was substituted."
+  ]
+}

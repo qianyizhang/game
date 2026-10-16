@@ -120,15 +120,20 @@ at all/zero wins; constant-sample and paired-binomial intervals are unavailable 
 the analyzer cannot justify them. Do not tune on reserved outcomes.
 
 The [strength development report](../research/experiments/2026-10-16-cartographer-strength-3.md)
-retains the balance and cycle investigations. Its final development cohort supports a
-candidate ladder and differentiated strategies; a separate prospective confirmation
-must evaluate the frozen candidate before claiming reserved calibration.
+retains the balance and cycle investigations and candidate selection. Its reused
+development cohorts remain separate from the fresh confirmation below.
 
 The [initial adoption study](../research/experiments/2026-10-16-cartographer-policy.md)
 has saturated wins/progress. It demonstrates playable policies with distinct resource
 and turn behavior, not a total strength ordering or a calibrated win-rate difficulty
 ladder. Structured exact intentions and public arithmetic do not establish human
 equivalent perception or enjoyment.
+
+The [fresh 900-case confirmation](../research/experiments/2026-10-16-cartographer-strength-confirmation-3.md)
+passed the five predeclared statistical/playability criteria: Survival wins are
+100/100 Relaxed, 83/100 Standard and 30/100 Severe. Fifty-one living budget stops
+remain nonwins across all policies. Independent raw/native/statistical review passed. The
+confirmation does not establish human difficulty or enjoyment.
 
 ## Prevent repeated development mistakes
 
