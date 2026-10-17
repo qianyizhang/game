@@ -31,6 +31,7 @@ Start with the [policy development standard](policy-development.md) and [trace-d
 
 - [Usage dashboard](usage-dashboard.md): local accounting, trends and source evidence.
 - [Trace debugger](trace-visualizer.md): curated episodes and retained artifacts.
+- [Repo Canvas](../../packages/repo-canvas/README.md): architecture maps and native-chat review; [design contract](repo-canvas-design.md).
 - [MCP Apps](mcp-apps.md): server lifetime, messaging and integration constraints.
 
 [Test audit](history/test-audit-2026-10-07.md), [committed-file audit](committed-file-review.md) and [cleanup history](history/cleanup-triage.md) retain dated verification and recovery. Temporary discussions and handoffs belong in ignored `.work/sessions/`; [maintenance governance](maintenance.md#documentation-homes) owns their promotion and retention.

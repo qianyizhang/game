@@ -1,6 +1,6 @@
 # Playing engines
 
-The playing engine provides a browser-independent command interface across all three games, paired with a bounded solver for tactical challenges. Authoritative rules, scoring, combat, and replay validation remain inside the respective game engines.
+The playing engine provides a browser-independent command interface across the three card studies, paired with a bounded solver for tactical challenges. Authoritative rules, scoring, combat, and replay validation remain inside the respective game engines.
 
 For developing playable policies, difficulty comparisons and inspectable policy
 rollouts, follow the [canonical policy development guide](../engineering/policy-development.md).
