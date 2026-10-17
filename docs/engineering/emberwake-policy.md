@@ -56,7 +56,7 @@ the action menu must remain equal too.
 ## Difficulty and results
 
 The accepted baseline remains **policy8 under native7** with these pressure settings.
-Policies10 and11 are rejected by their independently audited D12/D13 screens; the
+Policies 10, 11 and 12 are rejected by their independently audited D12/D13/D14 screens; the
 working built-ins have been restored exactly to policy8 after each source-hold release. The [native5 fresh confirmation](../research/experiments/2026-10-16-emberwake-strength-confirmation-5.md)
 failed one contrast; the [native6 Standard-relief screen](../research/experiments/2026-10-17-emberwake-standard-relief-6.md)
 failed two. The [native7 Standard-pressure screen](../research/experiments/2026-10-17-emberwake-standard-pressure-7.md)
@@ -256,6 +256,9 @@ warning/recovery geometry stayed fixed. Its [D13 screen](../research/experiments
 eight of nine comparisons, five of six completion floors and all three Severe-existence
 checks pass. Exact policy8 was restored after hold release. The report owns detailed
 results and audit limits; this correctness repair did not establish stronger play.
+
+Rejected policy 12 began from accepted policy 8 and required Survival cached-frontier retention to remain eligible under current public adjacent fog; stale caches fell through the existing ranker. It inherited no policy 11 guard patches. The [D14 screen](../research/experiments/2026-10-17-emberwake-policy-12-development.md)
+([receipt](../research/experiments/2026-10-17-emberwake-policy-12-development.json)) is independently negative: 125 victories, 67 deaths and 6 living timeouts / 198, zero errors; eight of nine comparisons and all completion/existence gates pass, but Necromancer Standard>Severe remains net −.30. All 90 matched Survival pairs show 11 gained / 3 lost victories, with completion regressions in Barbarian Standard 9/10 → 8/10 and Sorceress Severe 4/10 → 3/10. Exact policy 8 was restored without a hero split. This was the final attempt; calibration remains unresolved. The future victory-primary design is not started, and no new study or fresh confirmation follows.
 
 BFS must also respect the current action menu at its first edge. A fractional avatar
 footprint can make the nominally shortest adjacent center unavailable because it
