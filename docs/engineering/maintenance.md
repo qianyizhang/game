@@ -4,7 +4,7 @@ Every maintained source must enter an enforced check scope. The inventory gate r
 
 ## Check scope and finish line
 
-Use [verification contracts](checks.md) for gate coverage, CI, browser/native execution and geometry budgets. Run `npm run check:maintenance` for maintained tooling and static checks; `npm run check` also runs application tests and seeded simulations. Geometry is opt-in through `npm run check:full` for the [affected areas](checks.md#gate-selection). Report those scopes separately. Technical checks do not establish aesthetic acceptance.
+Use [verification contracts](checks.md#gate-selection) for commands, gate selection and execution requirements, and the [testing policy](testing.md) for meaningful coverage. Report maintenance, application/simulation, geometry and browser/native scopes separately; technical checks do not establish aesthetic acceptance.
 
 Use `nvm install && nvm use`, hydrate native binaries with `git lfs install --local` and `git lfs pull`, then run `npm ci` and `uv sync --locked`. Runtime versions come from [`.node-version`](../../.node-version), [`.python-version`](../../.python-version) and [`package.json`](../../package.json); dependency versions come from the lockfiles. Git LFS follows the [native storage decision](decisions/0004-native-asset-storage.md); the inventory check names unhydrated binaries before delivery validation.
 
@@ -87,9 +87,6 @@ keep raw histories in their existing protected homes.
   verification environment, not an application regression. Creating a clone does
   not change the caller's working directory: verify the gate's explicit working
   directory and logged project path before attributing its result.
-- **Match artifact routes by pathname:** browser-test route globs can match the
-  document URL when a query parameter ends in the artifact filename. Use a URL
-  pathname predicate for fixture responses so navigation still loads the app.
 - **Keep evidence exact:** preserve original input bytes and source/runtime pins.
   Any numerical tolerance belongs to an explicit diagnostic with its field scope,
   bound and observed differences; never apply it to hashes or silently normalize a
@@ -110,12 +107,4 @@ keep raw histories in their existing protected homes.
   a trailing root separator can remove the first character of a valid path. Verify
   that retained locators resolve to their recorded hashes before publishing receipts.
 
-- **Use the actual current position:** a navigation search may represent future
-  nodes by cell centers, but its starting node must test interaction reach from
-  the player's actual position. A fractional position can share a collectible's
-  goal cell while remaining outside native pickup range. Reproduce the original
-  public input and verify an already-offered move before widening action legality.
-- **Match complete seed identities:** compare the full namespace and seed label,
-  not just a numeric suffix. An adoption-development case is not a reproduction
-  of a strength-development case with the same number. Retain an explicit
-  correction when a published selection description uses the wrong namespace.
+Browser fixture routing belongs in the [testing policy](testing.md#artifact-fixture-routes); public-position navigation and complete seed identities belong in [policy preflight checks](policy-footguns.md). Keep specialized failure examples with their owning contracts.

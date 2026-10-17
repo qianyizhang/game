@@ -1,28 +1,36 @@
 # Engineering
 
-- [Architecture](architecture.md) describes game ownership and the rules, application and presentation layers.
-- [Domain vocabulary](glossary.md) distinguishes workshop and game concepts.
-- [Architectural decisions](decisions/README.md) preserve consequential trade-offs.
-- [Settled game decisions](scope-history.md) records accepted scope and superseded choices.
-- [Development direction](roadmap.md) separates delivered scope, evidence-led next steps and future candidates.
-- [Last Hearth policy play](hearth-policy.md) — opaque public aliases, all-actor journal audits, difficulty and local extensions.
-- [Cartographer policy play](cartographer-policy.md) — public announced-turn forecasts, native replay and local extensions.
-- [Emberwake policy play](emberwake-policy.md) — conservative campaign sensors, first-death attempts, packed-tick replay and original-input review.
-- [Spire policy play](spire-agent.md) — public legal menus, local extensions, paired character/Ascension evaluation and original-input review.
-- [Blindside policy play](blindside-agent.md) — restricted observations, local extensions, difficulty, evidence and review.
-- [Policy development and rollout review](policy-development.md) defines extensible player boundaries, difficulty evaluation, replay inspection and information-fairness audits across games.
-- [Maintenance governance](maintenance.md) defines source ownership, checks and retention.
-- [Verification contracts](checks.md) define gate coverage, measured geometry budgets and inventory limits.
-- [Testing policy](testing.md) favors observable behavior and end-to-end journeys.
-- [Test audit](history/test-audit-2026-10-07.md) classifies the initial suite and records the first consolidation.
-- [Installed review skills](agent-skills.md) maps upstream conventions to the repository.
-- [Offline Codex usage dashboard](usage-dashboard.md): local session accounting, usage trends, pricing and source evidence.
-- [Trace behavior debugger](trace-visualizer.md) connects curated episodes, records and retained artifacts.
-- [MCP Apps in Codex](mcp-apps.md) records server lifetime, current-chat messaging, verification and integration caveats.
-- [Tools package](../../packages/workshop-tools/README.md) documents maintenance commands.
-- [DCC package](../../packages/dcc-workbench/README.md) documents Blender authoring and delivery.
+## Understand ownership
 
-Keep accepted engineering decisions here. Working plans and handoffs live under ignored `.work/sessions/`; move only their enduring conclusions into these documents.
+- [Architecture](architecture.md), [domain vocabulary](glossary.md) and [architectural decisions](decisions/README.md).
+- [Settled scope](scope-history.md) and [development direction](roadmap.md).
+- [Night Passage](night-passage.md) and [shared room generation](map-generation.md).
 
-[Migration and cleanup history](history/cleanup-triage.md) records source/document consolidation,
-dated verification, artifact retirement and recovery of the original reports.
+## Build and evaluate policies
+
+Start with the [policy development standard](policy-development.md) and [trace-derived preflight checks](policy-footguns.md). [Research](../research/README.md#policy-evidence) owns current evidence and limitations.
+
+| Game                 | Owning contract                                                                                     |
+| -------------------- | --------------------------------------------------------------------------------------------------- |
+| Blindside            | [Restricted observations and policy play](blindside-agent.md)                                       |
+| Slay the Spire       | [Public legal menus and character/Ascension studies](spire-agent.md)                                |
+| Last Hearth          | [Policy play](hearth-policy.md); [agent transport and frozen research interfaces](hearth-agents.md) |
+| Emberwake            | [Campaign sensors, first-death attempts and replay](emberwake-policy.md)                            |
+| Dungeon Cartographer | [Announced-turn forecasts and policy play](cartographer-policy.md)                                  |
+| Night Passage        | [Controls, policy play and chronicle review](night-passage-agent.md)                                |
+
+## Verify and maintain
+
+- [Verification contracts](checks.md): commands, gate coverage and execution requirements.
+- [Testing policy](testing.md): meaningful behavior and regression coverage.
+- [Maintenance governance](maintenance.md): source ownership, document homes and retention.
+- [Installed review skills](agent-skills.md): upstream conventions mapped here.
+- [Tools](../../packages/workshop-tools/README.md) and [DCC](../../packages/dcc-workbench/README.md): package commands and integration contracts.
+
+## Inspect developer evidence
+
+- [Usage dashboard](usage-dashboard.md): local accounting, trends and source evidence.
+- [Trace debugger](trace-visualizer.md): curated episodes and retained artifacts.
+- [MCP Apps](mcp-apps.md): server lifetime, messaging and integration constraints.
+
+[Test audit](history/test-audit-2026-10-07.md), [committed-file audit](committed-file-review.md) and [cleanup history](history/cleanup-triage.md) retain dated verification and recovery. Temporary discussions and handoffs belong in ignored `.work/sessions/`; [maintenance governance](maintenance.md#documentation-homes) owns their promotion and retention.

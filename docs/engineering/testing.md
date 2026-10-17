@@ -31,11 +31,7 @@ every asset. Named camera controls remain in those journeys; pointer orbit is ch
 a reduced-motion rigid representative so animation cannot masquerade as successful dragging.
 CI does not generate all 29 contact sheets or establish aesthetic acceptance.
 
-Automatic GitHub CI keeps five game journeys tagged `@smoke`, covering
-play/recruitment, persistence and navigation. The full browser suite, 3D rendering/export
-journeys and geometry regressions remain local completion gates for affected changes,
-as defined by [verification contracts](checks.md#gate-selection). Moving execution local
-preserves the cases and assertions; smoke success is only evidence for its selected journeys.
+[Verification contracts](checks.md#gate-selection) own CI selection and local completion gates. A smoke pass establishes only its selected journeys.
 
 Video delivery checks decode the downloaded artifact away from the live WebGL scene,
 require supported dimensions and compare actual presented frames for visible motion.
@@ -113,6 +109,6 @@ Classify a test cluster as **keep**, **consolidate**, **replace** or **delete**.
 
 An imported winning replay proves reconstruction and the victory screen, not a full browser playthrough. A seeded headless run proves rules lifecycle, not browser interaction. A changed screenshot proves changed pixels, not attractive artwork. State those limits beside results.
 
-Use the [verification contracts](checks.md#gate-selection) to select the default `check` or geometry-inclusive `check:full` gate and affected browser/native checks. Report maintenance, application/simulation, geometry and browser/native results separately. Run relevant checks once after the final change; broaden or repeat them for a new failure, change or unresolved concern.
+Run the affected [verification gates](checks.md#gate-selection) once after the final change; repeat for a new failure, change or unresolved concern. Report each scope separately.
 
 The [2026-10-07 test audit](history/test-audit-2026-10-07.md) records the initial inventory and export-normal consolidation. Further deletions depend on behavior review, not a target ratio of unit to browser tests.

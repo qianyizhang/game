@@ -158,3 +158,17 @@ direction, reports their distributions and paired better/tied/worse/invalid coun
 and excludes execution errors and incomplete/failed audits from score ranking. This ordinal score has no scalar
 mean or automatic promotion verdict. Historical records without these components
 require their original contract; retain evaluator rescoring as a separate sidecar.
+
+### Recording and audit
+
+`--setup` contains game-owned configuration. The five shared-recording adapters use
+`--max-decisions`, independent `--policy-seed` and JSON `--policy-options`. Night Passage
+uses native `--max-actions` (including evaluator start), `--max-ticks` and public
+`PlayerConfig`; unsupported shared flags fail explicitly. Native work totals determine
+control latency and must retain their breakdown.
+
+`benchmark --split development|evaluation` retains each attempted case and its game-owned setup and character/hero/weapon stratum. Night Passage's legacy native `benchmark`/`evaluate` commands and `--suite training|held-out` retain their labelled summary semantics; they cannot supply missing original knowledge retroactively or substitute for a recorded study.
+
+Audit auto-detects each recorded identity, including Night Passage's native schema.
+An implementation that is absent leaves policy reproduction unavailable while native
+replay and information-boundary checks remain independent.

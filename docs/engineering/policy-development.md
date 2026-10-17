@@ -7,8 +7,8 @@ episode through permitted observations and ordinary commands, and inspect how it
 decisions produced the result.
 
 This is the canonical development standard for all six games. It defines the target;
-the [adoption sequence](#adoption-sequence) distinguishes existing capabilities from
-remaining work. Game documents own concrete APIs, rules, scores and reproduction
+[policy evidence](../research/README.md#policy-evidence) distinguishes existing capabilities
+from remaining work. Game documents own concrete APIs, rules, scores and reproduction
 commands. [Domain vocabulary](glossary.md#policy-play) owns the terms.
 
 When explaining work to readers, expand game abbreviations on first use and pair
@@ -336,25 +336,6 @@ counterexamples; a local correctness repair never substitutes for a complete stu
   attempt; calibration remains unresolved, the saved goal is paused, and the proposed
   victory-primary study was not started. No successor experiment is authorized.
 
-## Adoption sequence
-
-All six games implement policy extensions and original-input review. Performance
-claims remain game-specific; infrastructure completion does not imply calibration.
-The linked reports retain full counts, uncertainty, failures and audit scope.
-
-| Game                                           | Current evidence                                                                                                                                                           | Remaining limit                                                                      |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [Night Passage](night-passage-agent.md)        | [Declared targets met](../research/experiments/2026-10-14-night-passage-control.md); [review adopted](../research/experiments/2026-10-16-night-passage-rollout-review.md). | Weapon variation; old replays lack original policy knowledge; no prefix branching.   |
-| [Blindside](blindside-agent.md)                | [Growth wins 14/20 Standard](../research/experiments/2026-10-16-blindside-policy.md), versus Immediate 3/20 and Survival 5/20.                                             | Small cohorts; progress and strict tier ordering remain uncertain.                   |
-| [Spire](spire-agent.md)                        | [Fresh confirmation passed](../research/experiments/2026-10-16-spire-strength-confirmation-4.md) for Ironclad/Silent at Ascensions 0/3/5.                                  | Does not establish every adjacent Ascension or a universal strategy order.           |
-| [Last Hearth](hearth-policy.md)                | [1,350 audited episodes](../research/experiments/2026-10-16-hearth-policy.md), including 900 reserved attempts.                                                            | Hero/objective-dependent strategy results; limited statistical separation.           |
-| [Emberwake](emberwake-policy.md)               | Native7/policy8 retained; [policy12 rejected](../research/experiments/2026-10-17-emberwake-policy-12-development.md).                                                      | Strength/difficulty unresolved; final-attempt limit and paused goal remain in force. |
-| [Dungeon Cartographer](cartographer-policy.md) | [Fresh 900-case confirmation passed all five criteria](../research/experiments/2026-10-16-cartographer-strength-confirmation-3.md).                                        | Fixed policy/budget/cohort; individual seeds can reverse the tier ordering.          |
-
-None establishes human-equivalent skill, human difficulty or enjoyment. The
-[six-game workflow evidence](../research/experiments/2026-10-16-policy-workflow.md)
-verifies common CLI dispatch and per-case inspection separately from strength.
-
 ## Common CLI, game-owned policies
 
 Use `npm run engine:policy -- run|record|benchmark|audit` across all six games.
@@ -376,21 +357,4 @@ npm run engine:policy -- record --game cartographer --policy-module src/games/ca
 npm run engine:policy -- audit --input test-results/new-policy-episode/rollout.json --out test-results/new-policy-audit.json --policy-module src/games/cartographer/agent/example.ts
 ```
 
-`--setup` contains game-owned configuration. The five shared-recording adapters use
-`--max-decisions`, independent `--policy-seed` and JSON `--policy-options`. Night Passage
-uses native `--max-actions` (including evaluator start), `--max-ticks` and public
-`PlayerConfig`; unsupported shared flags fail explicitly. Native work totals determine
-control latency and must retain their breakdown.
-
-`benchmark --split development|evaluation` freezes a ten/twenty-block study before
-execution and retains original rollout/audit evidence for each attempted case. Report
-game-owned setups and separate character/hero/weapon strata. Night Passage's native
-audited backend preserves its delayed controller and score model. Its explicit
-`--suite training|held-out` path and old native `benchmark`/`evaluate` commands retain
-their labelled historical semantics. A summary-only legacy run cannot supply missing
-original knowledge retroactively or substitute for a recorded study.
-
-Audit auto-detects each recorded identity, including Night Passage's native schema.
-An implementation that is absent leaves policy reproduction unavailable while native
-replay and information-boundary checks remain independent. Keep new selector/wire-ID
-mappings covered by an actual record → CLI audit regression.
+The [tools command contract](../../packages/workshop-tools/README.md#policy-adoption-commands) owns flags, source pinning, study dispatch and audit routing. Game guides own setup and timing; Night Passage retains its native controller and distinct budgets. Keep new selector/wire-ID mappings covered by an actual record → CLI audit regression.

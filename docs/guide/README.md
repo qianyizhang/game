@@ -15,8 +15,12 @@ Use **Look up a term** or `/?guide=glossary` for the [visual glossary](glossary.
 | Buy, hold and cast Hearth spells                           | [Tavern spells](tavern-spells.md) |
 | Inspect/export SVG or 3D assets                            | [Art workflows](../art/README.md) |
 
-Normal play, separate practice branches, imported histories and automated evidence retain their own identities. Current versions and frozen experimental environments are distinguished in the relevant guide; old saves are retained rather than silently migrated.
+## Game-specific guides
 
-[Dungeon Cartographer](cartographer.md) covers room drafting, tactical combat, replay saves, and the optional generated Emberwake dungeon.
+| Game                 | Read it for                                                     |
+| -------------------- | --------------------------------------------------------------- |
+| Emberwake            | [Exploration, equipment, wards and controls](emberwake.md)      |
+| Dungeon Cartographer | [Room drafting, tactical combat and replay](cartographer.md)    |
+| Night Passage        | [Weapons, patrons, runes and chronicle saves](night-passage.md) |
 
-[Night Passage](night-passage.md) covers the action roguelite prototype, weapons, gods, runes and chronicle saves.
+Normal play, practice branches, imported histories and automated evidence retain separate identities. Each guide distinguishes current versions from frozen experiments; old saves are retained rather than silently migrated.

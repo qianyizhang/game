@@ -1,8 +1,10 @@
-# Architecture: three independent games, four layers
+# Architecture and game ownership
 
 The [glossary](glossary.md) defines domain terms. [Independent game rules](decisions/0001-independent-game-rules.md) and [accepted-command reconstruction](decisions/0002-reconstruct-from-accepted-commands.md) record foundational design choices. See [testing policy](testing.md) for verification boundaries.
 
 ## Repository organization
+
+The card studies below share a shell. [Emberwake](../../packages/diablo2/README.md), [Dungeon Cartographer](../guide/cartographer.md) and [Night Passage](night-passage.md) retain their own rules and runtime contracts.
 
 `src/games/` owns the three card studies loaded by the workshop browser shell. Each keeps its content, domain rules, application adapters and UI together. Game styles live under their owning `ui/` directories; Blindside separates table controls, playing cards and shop styles. `src/styles.css` owns global tokens, element defaults and utility classes; `src/app/layout.css` owns shared shell, panels and collection layouts. Hub styles also live under `src/app/`. The entry point loads these shared/game sheets explicitly before theme overrides; responsive rules stay with their owning selectors.
 
