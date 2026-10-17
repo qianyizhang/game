@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { Architecture, ChatMessage } from '../model/document';
+import { parseDocument, type Architecture, type ChatMessage } from '../model/document';
 import type { CanvasExchange } from '../model/bridge';
 import { request } from './api';
 import { hosted, requireMessaging, sendToChat } from './host';
@@ -10,8 +10,9 @@ interface Props {
   selection: string | null;
   token: string;
   apply: (document: Architecture) => void;
+  close: () => void;
 }
-export function SideChat({ document, scope, selection, token, apply }: Props) {
+export function SideChat({ document, scope, selection, token, apply, close }: Props) {
   const [canvasId] = useState(() => {
     const key = 'repo-canvas:chat-tab';
     try {
@@ -55,8 +56,16 @@ export function SideChat({ document, scope, selection, token, apply }: Props) {
     : [];
   const pending = exchange?.status === 'pending';
   const proposal = exchange?.response?.proposal;
-  const stale =
-    !!exchange && JSON.stringify(exchange.context.document) !== JSON.stringify(document);
+  let stale = false;
+  if (exchange) {
+    try {
+      // Compare validated values in schema order, not UI object insertion order.
+      stale = JSON.stringify(exchange.context.document) !== JSON.stringify(parseDocument(document));
+    } catch {
+      // An incomplete source-path edit must still block applying an older proposal.
+      stale = true;
+    }
+  }
   async function send() {
     if (!hosted || !input.trim() || busy || pending) return;
     setBusy(true);
@@ -83,39 +92,42 @@ export function SideChat({ document, scope, selection, token, apply }: Props) {
   }
   return (
     <aside className="side-chat">
-      <div className="panel-eyebrow">CURRENT CODEX CHAT · MCP APP</div>
-      <h2>Think through the system.</h2>
-      <p className="muted">Messages go directly to this Codex conversation.</p>
+      <div className="panel-heading">
+        <h2>Side chat</h2>
+        <button aria-label="Close side chat" onClick={close}>
+          ×
+        </button>
+      </div>
+      <p className="muted">Discuss the selection. Review proposals before saving.</p>
       <div className="context-chip">
-        ◇ {context.name}
-        <span>Selection + unsaved map included</span>
+        {context.name}
+        <span>Selection and current draft included</span>
       </div>
       <div className="chat-log" aria-live="polite">
         {!exchange && (
           <div className="chat-welcome">
-            <span>✳</span>
-            <p>
-              Ask about the selected module or propose an architecture change. Your message goes to
-              the current chat; its reply and proposed map appear here.
-            </p>
-            <button
-              onClick={() =>
-                setInput(
-                  'Explain the selected module using source evidence. Where does its responsibility begin and end?',
-                )
-              }
-            >
-              Explain this module ↗
-            </button>
-            <button
-              onClick={() =>
-                setInput(
-                  'Inspect this repository and propose a semantic architecture map with responsibilities and dependency relationships. Preserve existing notes and layout.',
-                )
-              }
-            >
-              Propose an architecture map ↗
-            </button>
+            <p>Ask about responsibilities, sources or a proposed change.</p>
+            <details className="discussion-prompts">
+              <summary>Suggested questions</summary>
+              <button
+                onClick={() =>
+                  setInput(
+                    'Explain the selected module using source evidence. Where does its responsibility begin and end?',
+                  )
+                }
+              >
+                Explain this module ↗
+              </button>
+              <button
+                onClick={() =>
+                  setInput(
+                    'Inspect this repository and propose a semantic architecture map with responsibilities and dependency relationships. Preserve existing notes and layout.',
+                  )
+                }
+              >
+                Propose an architecture map ↗
+              </button>
+            </details>
           </div>
         )}
         {messages.map((m, i) => (
@@ -201,7 +213,6 @@ export function SideChat({ document, scope, selection, token, apply }: Props) {
           onChange={(e) => setInput(e.target.value)}
         />
         <footer>
-          <small>Uses your current conversation.</small>
           <button
             className="primary"
             disabled={!hosted || !input.trim() || busy || pending}

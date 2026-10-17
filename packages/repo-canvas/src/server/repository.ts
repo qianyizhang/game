@@ -80,10 +80,8 @@ export function discover(root: string): Architecture {
 }
 export class Repository {
   readonly root: string;
-  private readonly initial: Architecture;
   constructor(root: string) {
     this.root = realpathSync(root);
-    this.initial = discover(this.root);
   }
   private documentPath(): string {
     const folder = resolve(this.root, '.repo-canvas');
@@ -99,7 +97,7 @@ export class Repository {
     const saved = existsSync(path);
     if (saved && statSync(path).size > 2_000_000)
       throw new Error('Architecture document exceeds 2 MB');
-    const raw = saved ? readFileSync(path, 'utf8') : JSON.stringify(this.initial);
+    const raw = saved ? readFileSync(path, 'utf8') : JSON.stringify(discover(this.root));
     return {
       document: parseDocument(JSON.parse(raw) as unknown),
       revision: digest(raw),

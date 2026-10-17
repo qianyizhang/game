@@ -7,8 +7,9 @@ interface Props {
   token: string;
   edit: (document: Architecture) => void;
   enter: (id: string) => void;
+  close: () => void;
 }
-export function Inspector({ document, module, token, edit, enter }: Props) {
+export function Inspector({ document, module, token, edit, enter, close }: Props) {
   const [note, setNote] = useState(''),
     [target, setTarget] = useState(''),
     [label, setLabel] = useState('depends on');
@@ -27,10 +28,12 @@ export function Inspector({ document, module, token, edit, enter }: Props) {
   }
   return (
     <aside className="inspector">
-      <div className="panel-eyebrow">
-        MODULE INSPECTOR <span>◇</span>
+      <div className="panel-heading">
+        <h2>{module.name}</h2>
+        <button aria-label="Close inspector" onClick={close}>
+          ×
+        </button>
       </div>
-      <h2>{module.name}</h2>
       <span className="kind-label">{module.kind}</span>
       <label>
         Name
@@ -58,17 +61,20 @@ export function Inspector({ document, module, token, edit, enter }: Props) {
         <h3>
           Source references <span>{module.sources.length}</span>
         </h3>
-        <label className="sr-only" htmlFor="source-paths">
-          Source paths, one per line
-        </label>
-        <textarea
-          id="source-paths"
-          className="source-editor"
-          rows={2}
-          value={module.sources.join('\n')}
-          onChange={(e) => update({ sources: e.target.value.split('\n').filter(Boolean) })}
-          placeholder="src/path.ts"
-        />
+        <details className="source-path-editor">
+          <summary>Edit source paths</summary>
+          <label className="sr-only" htmlFor="source-paths">
+            Source paths, one per line
+          </label>
+          <textarea
+            id="source-paths"
+            className="source-editor"
+            rows={2}
+            value={module.sources.join('\n')}
+            onChange={(e) => update({ sources: e.target.value.split('\n').filter(Boolean) })}
+            placeholder="src/path.ts"
+          />
+        </details>
         {module.sources.map((path) => (
           <button
             className="source-link"

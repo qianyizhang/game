@@ -59,3 +59,17 @@ it('rejects an oversized encoded document before replacing a readable save', () 
   expect(() => repo.save(oversized, saved.revision)).toThrow('2 MB');
   expect(repo.snapshot()).toEqual(saved);
 });
+it('refreshes unsaved directory discovery while preserving drafts and curated maps', () => {
+  const { root, repo } = setup();
+  const first = repo.snapshot();
+  mkdirSync(join(root, 'new-module'));
+  writeFileSync(join(root, 'new-module/current.ts'), 'export const current = 1;');
+  const fresh = repo.snapshot();
+  expect(fresh.document.modules.find((m) => m.id === 'new-module')?.sources).toEqual([
+    'new-module/current.ts',
+  ]);
+  expect(() => repo.save(first.document, first.revision)).toThrow('Conflict');
+  const saved = repo.save(fresh.document, fresh.revision);
+  rmSync(join(root, 'new-module'), { recursive: true });
+  expect(repo.snapshot()).toEqual(saved);
+});
