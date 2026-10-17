@@ -1,9 +1,10 @@
+import { cohortSeeds } from '../policy/study.ts';
 import { strict as assert } from 'node:assert';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { test } from 'node:test';
-import { runStudy, cohortSeeds, auditPassed, summarize, type StudyRow } from './study.ts';
+import { runStudy, auditPassed, summarize, type StudyRow } from './study.ts';
 import { withRuntime } from './runtime.ts';
 import { repositoryRoot, sha256 } from '../runtime-bundle.ts';
 import type { RolloutAudit } from '../../../src/games/night-passage/agent/rollout';

@@ -2,7 +2,8 @@ import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { recordEpisode } from '../../src/shared/policy/rollout';
 import type { JsonObject } from '../../src/shared/policy/types';
-import { adapter, builtins } from '../../src/games/spire/agent/adapter';
+import { adapter } from '../../src/games/spire/agent/adapter';
+import { builtins } from '../../src/games/spire/agent/policy';
 import { spireSession } from '../../src/games/spire/application/session';
 
 // Shared multi-file, damaged-artifact and delayed-import behavior is covered by

@@ -11,7 +11,7 @@ export const STRATEGIES = ['immediate', 'survival', 'growth'] as const;
 export type Strategy = (typeof STRATEGIES)[number];
 
 /** Static public-effect estimates; these are utility scores, never win probabilities. */
-export function collectionValue(view: Observation, card: Card, strategy: Strategy): number {
+function collectionValue(view: Observation, card: Card, strategy: Strategy): number {
   const def = CARD_BY_ID[card.definitionId],
     value = cardValue(view, card);
   if (def.kind === 'curse' || def.kind === 'status') return -30;

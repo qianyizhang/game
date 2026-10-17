@@ -106,139 +106,84 @@ session. A separate process gives an independent game. There is no open network 
 
 ## Baseline and benchmarks
 
-The baseline adapts the earlier verification pilot: approach or kite the nearest
-enemy, avoid announced threats/projectiles/pillars, use available attacks, prioritize
-survival rewards and fill blessing slots. Its input is only `Observation`; it cannot
-advance or modify the game itself. The exact reference retains three bounded configuration knobs:
-decision interval (default 6 ticks), bow distance (230), and melee reach ratio (0.7).
+The exact baseline approaches/kites enemies, avoids disclosed threats, uses available
+attacks and ranks survival rewards. Its public configuration is decision interval
+(default 6 ticks), bow distance 230 and melee reach ratio 0.7. `runEpisode` and
+`runBenchmark` accept configuration/budget overrides; invalid configuration is an
+error, not a model loss. Timeouts retain partial score and remain nonwins.
 
 ```sh
 npm run --silent engine:night-passage -- play --control exact --rules night-passage-4 --seed a-light-in-the-dark --weapon bow --out test-results/night-passage-agent/run.json --replay test-results/night-passage-agent/run.replay.json
-npm run --silent engine:night-passage -- benchmark --control exact --rules night-passage-4 --suite training --out test-results/night-passage-agent/training.json
 npm run --silent engine:night-passage -- benchmark --control exact --rules night-passage-4 --suite held-out --out test-results/night-passage-agent/held-out.json
 ```
 
-Each suite uses three fixed seeds × five weapons, with a fresh profile and Root/Feather
-runes in every episode. Budgets are 20,000 accepted actions (including start) and
-120,000 executed ticks. Reports identify engine, score, API, benchmark, rules/content,
-configuration, seed suite, budgets and source/bundle hashes. Large replays and raw
-reports stay under ignored `test-results/`; regenerate them when needed.
-
-The TypeScript functions `runEpisode(options)` and `runBenchmark(options)` accept
-configuration and budget overrides. Invalid configuration is an error, not a model
-loss. A timeout preserves partial score and remains a non-win. The baseline is frozen
-before its separate held-out suite is inspected; do not tune against that suite.
+Legacy `training`/`held-out` suites each use three fixed seeds × five weapons, fresh
+profiles and Root/Feather runes. Defaults are 20,000 accepted actions including start
+and 120,000 executed ticks. Reports retain game/score/API/configuration/budget and
+source/bundle identities. Preserve original evidence under `test-results/`; new
+execution needs new output paths. Inspected evaluation seeds are no longer held out.
 
 ## Constrained control and policy work
 
-`application/control.ts` owns a player's history, redaction, held input, delayed
-delivery, eight-direction movement and per-tick aim bound. Policy functions receive
-only a detached `Sight`; the evaluator owns exact results and replay export.
+`application/control.ts` owns history, redaction, held input, delayed delivery,
+eight-direction movement and per-tick aim bounds. A constrained policy receives
+only detached `Sight`; the evaluator owns exact results and replay export.
 
-A decision sees an aged snapshot; early bootstrap is explicitly marked until enough
-history exists. Every observation returned by the constrained protocol—including
-rejected steps—uses this view. Enemy windup, player buffer/strike/cooldown clocks,
-hazard offset/cycle/countdown and exact projectile velocity/lifetime are omitted.
-Visible attack geometry and coarse early/late warnings remain. Projectile velocity
-is a continuous sensor estimate from consecutive aged simulation snapshots, even
-between delivered decisions; first sightings are marked unknown. It can be exact
-for straight-moving shots, so this is still richer perception than screenshots.
-Menus and terminal states are current, and transitions reset history and held input.
+- **Perception:** aged tactical snapshots omit exact windup, cooldown/buffer/strike,
+  hazard-cycle and projectile-lifetime clocks. Coarse early/late warnings remain.
+  Velocity is derived from adjacent aged simulation samples, even between decisions;
+  first sightings are unknown. Straight flight can therefore reveal exact velocity.
+- **Transitions:** bootstrap is marked; menus/terminal states are current. Chamber
+  transitions reset history/held input. Rejected commands receive the same restricted
+  view. At most `observationTicks + 3` immutable chronicles are retained; the
+  [observation comparison](../research/experiments/2026-10-15-night-passage-observation.md)
+  records allocation changes without changing inputs, work or replay meaning.
+- **Compute delay:** `reactionTicks + ceil(workUnits / workPerTick)`. Work meters
+  marked entity scans, escape candidates and distance/threat/cover helpers; general
+  arithmetic, allocation, menu ranking and some scans are omitted.
+- **Hold:** `max(holdTicks, requestedTicks) + switchTicks * min(changes, 3)`.
+  Changes count movement direction, offensive slot and a new dash. Old input continues
+  during compute delay. Only delivered low-level controls enter authoritative replay;
+  Chronicle owns canonical payloads and strips caller metadata before recording.
+- **Effort:** Quick checks four escape landings, Balanced eight, Deliberate eight plus
+  intermediate path points. Observations, ability windows and controls are shared;
+  additional work can improve a choice or lose time. No ranking is forced.
+- **Axes:** Light/Standard/Heavy control presets differ from Standard/Veteran/Ordeal
+  gameplay tiers. [Calibration](../research/experiments/2026-10-14-night-passage-control.md)
+  met selected Deliberate targets at 49/50, 38/50, 16/50 escapes under Standard controls.
+  Heavy is a stress preset; the mechanism is not a human latency model.
 
-History retains at most `observationTicks + 3` immutable chronicles. Exact views are
-constructed only when requested, then redacted from that detached copy; previous
-projectile positions come from the adjacent simulation sample. Keeping the historical
-chronicle also preserves its replay capacity when checking legal actions. The benchmark
-reads its exact result once per decision. This changes allocation work, not policy
-observations, metered work or replay semantics; see the
-[local implementation comparison](../research/experiments/2026-10-15-night-passage-observation.md).
-
-Chronicle dispatch owns canonical accepted-command payloads for every recording path.
-Agent, controller and live-play callers cannot place extra metadata in the journal.
-The controller still validates commands before computing delays and constructs its own
-detached low-level controls; Chronicle owns recording rather than controller timing.
-
-Compute delay is `reactionTicks + ceil(workUnits / workPerTick)`. The supplied
-policies charge marked entity scans, escape candidate evaluations and distance,
-threat-containment and cover helpers. This proxy excludes general arithmetic,
-allocation, menu ranking and some additional scans; it is not an instruction count.
-Holding
-controls costs `max(holdTicks, requestedTicks) + switchTicks × min(changes, 3)`.
-Changes count movement direction, offensive slot and a newly requested dash.
-Previous controls continue during computation; new controls then remain active
-through the hold. Actual low-level inputs reconstruct the same outcome without
-rerunning a policy. Controller identity/configuration survives import/export as
-origin metadata, not certification of later manually appended commands.
-
-Quick checks four executable escape directions; balanced checks eight; deliberate
-checks eight landings and their intermediate path points. All share observations
-and control rules. Additional work can improve a choice or lose time; no policy
-ranking is forced. Their ability request windows are shared, so changing control
-cadence can also change when a buffered ability actually starts.
-
-`light`, `standard` and `heavy` are separately measured control presets. The original
-proposal's 100 ms perception/50 ms reaction settings were initial tuning inputs,
-not a human timing requirement. Final calibration and targets are recorded in the
-[balance report](../research/experiments/2026-10-14-night-passage-control.md).
-These are structured tactical controls, not a calibrated human model.
-
-The JSONL `reset` operation accepts `control`, `policy` and `rules`. `act` computes
-and submits the selected policy with its measured work. `suggest` previews without
-advancing time. `step` accepts caller-declared `workUnits` for external cooperative
-policies; it cannot securely measure arbitrary caller code. Constrained `export`
-is refused until the passage ends so a policy does not accidentally recover exact
-state from a replay. A trusted caller choosing a seed can still reconstruct state:
-this research process is not a hostile-code sandbox. `suggest` followed by a
-manual `step` can underreport work; use evaluator-owned `act` or `evaluate` for
-metered built-in policy comparisons.
+JSONL `reset` accepts control/policy/rules. `act` computes and submits evaluator-owned
+built-in work; `suggest` previews; manual `step` accepts self-reported work and can
+underreport it. Constrained `export` is refused before terminal play, but a trusted
+caller can reconstruct a chosen seed. Use `act`/`evaluate` for metered built-in
+comparisons; the process is not a hostile-code sandbox. Imported controller metadata
+identifies origin, not certification of later manually appended controls.
 
 ```sh
 npm run --silent engine:night-passage -- play --control standard --policy deliberate --difficulty veteran --seed my-seed --out test-results/night-passage-control/run.json --replay test-results/night-passage-control/run.replay.json
-npm run --silent engine:night-passage -- evaluate --split development --seeds 10 --controls yes --witnesses yes --out test-results/night-passage-control/development.json
 ```
 
-Freeze policy, difficulty and control parameters before running `--split evaluation`
-on fresh seeds. If those results inform more tuning, retire that evaluation pool and
-reserve a fresh pool (`--pool 2`, then 3, etc.) before the next evaluation claim.
-Light/standard/heavy comparisons keep balanced fixed; exact uses the separate
-original baseline and cannot isolate the effect of perception alone.
-Raw reports and replays stay
-under ignored `test-results/`; retain compact receipts and reproducible commands.
+Native `evaluate --split development|evaluation` retains its published calibration
+meaning. Freeze policies, controls and difficulty first; after tuning on evaluation,
+retire that pool and reserve a new one. Light/Standard/Heavy comparisons hold Balanced
+fixed; Exact changes both policy and perception and cannot isolate either effect.
 
 ### Frozen legacy baseline · 2026-10-13
 
-The unchanged baseline escaped on all 30 measured episodes. No parameter search
-preceded this result. The [compact receipt](evidence/night-passage-agent-baseline.json)
-pins the identical source graph used by both suites and retains individual outcomes.
-Its historical `application/session.ts` path belongs to that recorded source revision;
-current callers use `application/chronicle.ts`. Historical hashes are not rewritten
-after a refactor.
-
-| Suite               | Escapes | Mean score | Median winning ticks | Errors / timeouts |
-| ------------------- | ------- | ---------- | -------------------- | ----------------- |
-| Training            | 15/15   | 12,780     | 28,995               | 0 / 0             |
-| Separate evaluation | 15/15   | 12,786.67  | 26,929               | 0 / 0             |
-
-Win rate is already saturated on this small sample. The next search should preserve
-those wins, then improve the declared score/time ranking. Broaden the seed set before
-interpreting a small time gain as general robustness. Evaluation seeds cease to be
-held out if later decisions are tuned to their individual results.
+The exact rules4 baseline escaped 30/30 training/evaluation episodes. The
+[original receipt](evidence/night-passage-agent-baseline.json) retains source hashes
+and individual outcomes, including the historical `application/session.ts` path.
+Current Chronicle ownership does not rewrite those pins. This saturated diagnostic
+is separate from constrained-policy calibration and is not human-balance evidence.
 
 ## Verification
 
-Application tests protect observation isolation, rejected-action atomicity, score
-accounting, replay reconstruction and bounded episode outcomes. Seeded simulations
-exercise the player through the public agent interface across all weapons. The
-tooling check launches the actual JSONL process and checks state preservation and
-export after malformed input. A browser journey imports a winning agent replay,
-checks the identical score after reload, and verifies the next run starts at zero.
-The spectator journey covers play/pause, speed, seek/restart, both views and phone
-layout while preserving the player's exact save. Invalid or external replay links
-leave the viewer available for file recovery.
-
-Run `npm run check` and the focused
-`tests/browser/night-passage-agent.spec.ts` journey. Native assets and rendering
-are unchanged; geometry/native gates are outside this slice.
+Use `npm run check` and affected disposable-profile browser journeys under the
+[verification contract](checks.md#gate-selection). Existing checks cover observation
+isolation, rejected-action atomicity, controller timing/work, replay/score accounting,
+JSONL recovery, saved-game isolation and original-input inspection. Imported victories
+prove reconstruction; they do not constitute new policy-strength measurements.
 
 ## Record and review policy knowledge
 
@@ -320,106 +265,44 @@ reviewer; original replay export remains available for separate experiments.
 ### Add a developer policy
 
 `PolicyPlayer` in [rollout.ts](../../src/games/night-passage/agent/rollout.ts) is the
-extension point. Supply it to `runEpisode`, `runBenchmark` or `recordEpisode` as `player`; no changes to
-rules, observations, controls or the episode loop are needed. Its factory runs once
-per episode, receives only public configuration, and creates fresh policy memory.
-The decision function receives `Sight` and returns the existing `Decision` shape.
-Factory exceptions and malformed returns remain reviewable execution errors: traces
-retain the attempted input, failure stage and JSON representation of malformed output.
-No rejected proposal advances the replay. Factories are created when the episode
-first has budget to request a policy decision.
+extension point for `runEpisode`, `runBenchmark` and `recordEpisode` through `player`.
+The factory receives only public `PlayerConfig`, runs once per episode when budget
+permits a decision, and creates fresh memory. Its decision receives `Sight` and returns
+`Decision`, including the metered `work` breakdown. Errors/malformed output retain
+the attempted input and failure stage; rejected proposals never enter replay.
 
-```ts
-import { recordEpisode, auditRollout, type PolicyPlayer } from './agent/rollout';
-import { createPolicy } from './agent/policy';
-
-const candidate: PolicyPlayer = {
-  id: 'my-policy',
-  version: 'my-policy-1',
-  create(config) {
-    const baseline = createPolicy('balanced', config);
-    // Replace or refine this rule using only sight and episode-local memory.
-    return (sight) => baseline(sight);
-  },
-};
-const rollout = await recordEpisode({
-  seed: 'my-development-seed',
-  weapon: 'bow',
-  control: 'standard',
-  player: candidate,
-});
-const audit = await auditRollout(rollout, candidate);
-```
-
-The imports above are relative to the Night Passage directory in a TypeScript/Vite
-caller. Local TypeScript modules default-export this same `PolicyPlayer`; the CLI
-statically bundles the module with the native controller and pins its source. Start
-with [the example module](../../src/games/night-passage/agent/example.ts):
+Start from the [local module](../../src/games/night-passage/agent/example.ts):
 
 ```sh
-npm run engine:night-passage -- record --out test-results/my-passage-policy \
-  --policy-module src/games/night-passage/agent/example.ts --max-actions 100 --max-ticks 200
-npm run engine:night-passage -- audit --input test-results/my-passage-policy/rollout.json \
-  --out test-results/my-passage-policy/recheck.json \
-  --policy-module src/games/night-passage/agent/example.ts
+npm run engine:policy -- record --game night-passage --policy-module src/games/night-passage/agent/example.ts --out test-results/my-passage-policy --max-actions 100 --max-ticks 200
+npm run engine:policy -- audit --input test-results/my-passage-policy/rollout.json --out test-results/my-passage-policy/recheck.json --policy-module src/games/night-passage/agent/example.ts
 ```
 
-`play` and the published native `benchmark` also accept `--policy-module`. A module
-must use its own ID, distinct from quick/balanced/deliberate. Each factory receives
-only `PlayerConfig` and starts fresh episode memory. Preserve the `Decision.work`
-component counts: their total affects simulated latency. Modules execute as trusted
-local code, without a hostile-code sandbox. Audit without a matching custom module
-still checks replay and original inputs, but decision reproduction is unavailable.
-Browser review likewise preserves original custom inputs without inventing a missing
-implementation.
+Modules default-export `PolicyPlayer` and use an ID distinct from
+quick/balanced/deliberate. The native `play`, `record` and legacy `benchmark` commands
+also accept `--policy-module`. Static bundling pins actual sources; modules remain
+trusted local code. Missing custom factories leave policy reproduction unavailable
+while replay/input audits and original knowledge remain inspectable. Programmatic
+recording labels absent source/runtime provenance as null.
 
-The common workflow backend retains the native rollout schema, delayed controls,
-replay, review URL and budgets. `--max-actions` includes the evaluator-owned start;
-`--max-ticks` limits actual simulation. Its `--setup` accepts weapon, difficulty,
-control, rules and public player `config` (decisionTicks, bowDistance,
-meleeReachRatio). Native factories have no recorded policy-seed/options contract;
-those shared flags and `--max-decisions` are rejected explicitly.
+The common workflow keeps the native schema, delayed controls and budgets.
+`--max-actions` includes evaluator start; `--max-ticks` bounds actual simulation.
+`--setup` accepts weapon, difficulty, control, rules and public player config
+(decisionTicks, bowDistance, meleeReachRatio). Shared `--max-decisions`,
+`--policy-seed` and `--policy-options` are unsupported and rejected explicitly.
 
-The common `engine:policy benchmark --game night-passage` freezes its protocol
-before execution and records/audits every attempt through the native controller.
-Development uses 10 seed blocks; evaluation uses 20 distinct reserved blocks. The
-default grid is quick/balanced/deliberate × Standard/Veteran/Ordeal × five weapons
-(**450 development or 900 evaluation attempts**). A supplied custom module adds an
-explicit policy to this grid. Each attempt retains original inputs, native replay,
-audit and a spectator manifest, sharing the retained source-pinned bundle. Errors
-and timeouts remain in the denominator. Reports preserve each difficulty/weapon
-stratum, native wins/score/win ticks, paired seed comparisons and honest intervals;
-weapons are not pooled. These mechanisms do not constitute a new strength result.
+| Benchmark route                         | Meaning                                                                                                                                                                                                                  |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Common `--split` development/evaluation | Freeze 10/20 independent blocks across three effort policies, three gameplay tiers and five weapons (450/900 attempts); retain original rollout/replay/audit/manifest per case. A custom module adds an explicit policy. |
+| Explicit `--suite` training/held-out    | Labelled legacy summary: three existing seeds × five weapons, one policy/control, without per-case original inputs/audits. Cannot combine with `--split`.                                                                |
 
-Select a bounded development matrix before a larger study; selections and native
-budgets are frozen in the protocol:
+Choose a bounded development grid and native budgets before a larger study. Report
+weapon/difficulty strata, all errors/timeouts, score, winning time and paired seed
+uncertainty; repeated weapons are not independent seeds. Native `benchmark`/`evaluate`
+and frozen calibration retain their historical meanings. Summary-only results cannot
+supply missing original knowledge or substitute for a recorded study.
 
-```sh
-npm run engine:policy -- benchmark --game night-passage --split development \
-  --out test-results/passage-study --weapon bow --difficulty standard --policy quick \
-  --max-actions 100 --max-ticks 200
-```
-
-Explicit `--suite training|held-out` selects the labelled legacy summary benchmark
-instead. It uses three existing seeds across five weapons for one policy/control
-and does not retain per-case original inputs/audits. `--suite` and `--split` cannot
-be combined. The original `engine:night-passage benchmark` and `evaluate` commands
-and frozen calibration remain separate and retain their published semantics.
-
-Retained bundles are content-addressed. Successive reports may reuse an existing
-bundle only when its bytes match exactly; a mismatching file is preserved and
-rejected. Fresh report/receipt paths remain exclusive. The
-[workflow evidence](../research/experiments/2026-10-16-policy-workflow.md) verifies
-native module recording, common CLI dispatch and per-case study inspection without
-reinterpreting historical strength results.
-
-Pass source/runtime provenance when retaining custom results through the
-programmatic recorder; it labels missing provenance as null. Meter new tactical
-work consistently with the documented proxy and bump policy identity/configuration
-for changed behavior. A custom policy's presence in a trace does not certify its
-hidden dependencies or work claims.
-
-The [adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md)
-records coverage, concrete footguns and the limits of this slice. Existing frozen
-strength/calibration reports remain unchanged; recording/review evidence is not a
-new reserved strength comparison.
+Content-addressed bundles may be reused only when bytes match; preserve/reject a
+conflict. Report/receipt paths remain exclusive. The [workflow evidence](../research/experiments/2026-10-16-policy-workflow.md)
+verifies dispatch and inspection; the [adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md)
+records concrete review failures and fixes. Neither is a new strength comparison.

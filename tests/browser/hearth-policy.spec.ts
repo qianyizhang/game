@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { recordEpisode } from '../../src/shared/policy/rollout';
-import { adapter, builtins } from '../../src/games/battlegrounds/agent/adapter';
+import { adapter } from '../../src/games/battlegrounds/agent/adapter';
+import { builtins } from '../../src/games/battlegrounds/agent/policy';
 import type { Observation } from '../../src/games/battlegrounds/agent/observation';
 import { arenaSession, arenaSessionV2 } from '../../src/games/battlegrounds/application/arena';
 import { bgSession } from '../../src/games/battlegrounds/application/session';

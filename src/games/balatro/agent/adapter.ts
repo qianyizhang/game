@@ -75,9 +75,6 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, Command> = {
   restore: (replay) => blindsideSession.decode(JSON.stringify(replay)),
 };
 
-export const at = (session: EpisodeState, cursor: number) => blindsideSession.at(session, cursor);
-export { builtins } from './policy';
-
 export const study: StudyDefinition = {
   setups: DIFFICULTIES.map((difficulty) => ({
     id: difficulty,

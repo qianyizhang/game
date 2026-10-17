@@ -1,6 +1,6 @@
 import { CARD_BY_ID } from '../content/cards';
 import { POTIONS } from '../content/world';
-import { cardPlayError } from './public-model';
+import { cardPlayError } from '../domain/combat';
 import type { PolicyCommand, PublicState } from './observation';
 
 /** Enumerate public preconditions only. Never probe the seeded transition for legality. */
@@ -22,14 +22,15 @@ export function legalActions(s: PublicState): PolicyCommand[] {
           actions.push({ type: 'chooseNode', id: n.id });
       break;
     }
-    case 'combat':
+    case 'combat': {
       if (!c) break;
+      const playable = { ...c, enemies: c.enemies.filter((enemy) => enemy.targetable) };
       for (const id of c.hand) {
         const targets = CARD_BY_ID[c.cards[id].definitionId].target
           ? c.enemies.filter((e) => e.targetable).map((e) => e.id)
           : [undefined];
         for (const target of targets)
-          if (!cardPlayError(c, id, target))
+          if (!cardPlayError(playable, id, target))
             actions.push({ type: 'playCard', id, ...(target ? { target } : {}) });
       }
       for (const [index, potion] of s.potions.entries()) {
@@ -41,6 +42,7 @@ export function legalActions(s: PublicState): PolicyCommand[] {
       }
       actions.push({ type: 'endTurn' });
       break;
+    }
     case 'reward':
       for (const card of [...s.reward, null]) actions.push({ type: 'takeReward', card });
       break;

@@ -73,9 +73,7 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
   replay: (session) => JSON.parse(spireSession.encode(session)) as Json,
   restore: (replay) => spireSession.decode(JSON.stringify(replay)),
 };
-export const at = (session: EpisodeState, cursor: number) => spireSession.at(session, cursor);
-export { builtins } from './policy';
-export const studySetups: StudySetup[] = (['ironclad', 'silent'] as const).flatMap((character) =>
+const studySetups: StudySetup[] = (['ironclad', 'silent'] as const).flatMap((character) =>
   [0, 3, 5].map((ascension) => ({
     id: `${character}-a${ascension}`,
     difficulty: `ascension-${ascension}`,

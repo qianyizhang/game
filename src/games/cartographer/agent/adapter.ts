@@ -113,7 +113,7 @@ export function at(state: EpisodeState, cursor: number): EpisodeState {
     emptyAliases(),
   );
 }
-export const studySetups: StudySetup[] = (['relaxed', 'standard', 'severe'] as const).map(
+const studySetups: StudySetup[] = (['relaxed', 'standard', 'severe'] as const).map(
   (difficulty) => ({
     id: difficulty,
     difficulty,
@@ -136,4 +136,3 @@ export const study: StudyDefinition = {
   },
   reviewPath: '/?game=cartographer&review=policy',
 };
-export { builtins } from './policy';

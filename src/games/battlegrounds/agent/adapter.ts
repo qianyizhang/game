@@ -197,8 +197,7 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
 };
 export const at = (state: EpisodeState, cursor: number) =>
   reconstruct(state.session.replay, cursor);
-export { builtins } from './policy';
-export const studySetups: StudySetup[] = HEROES.flatMap((hero) =>
+const studySetups: StudySetup[] = HEROES.flatMap((hero) =>
   (['relaxed', 'standard', 'severe'] as const).map((difficulty) => ({
     id: `${hero}-${difficulty}`,
     difficulty,

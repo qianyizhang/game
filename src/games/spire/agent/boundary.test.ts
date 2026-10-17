@@ -9,7 +9,8 @@ import { spireCommands } from '../application/engine';
 import { CARD_BY_ID } from '../content/cards';
 import { createSpire, transitionSpire } from '../domain/game';
 import type { SpireCommand, SpireState } from '../domain/types';
-import { adapter, builtins, studySetups } from './adapter';
+import { adapter, study } from './adapter';
+import { builtins } from './policy';
 import { observe, type PolicyCommand } from './observation';
 
 const combat = () =>
@@ -116,7 +117,7 @@ describe('Spire restricted player boundary', () => {
   });
 
   it('fixes evaluator setup and rejects malformed or stale commands without changing replay', () => {
-    expect(studySetups).toHaveLength(6);
+    expect(study.setups).toHaveLength(6);
     for (const setup of ['ironclad', 'silent'].flatMap((character) =>
       Array.from({ length: 6 }, (_, ascension) => ({ character, ascension })),
     )) {

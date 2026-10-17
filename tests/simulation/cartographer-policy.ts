@@ -1,4 +1,5 @@
-import { adapter, builtins } from '../../src/games/cartographer/agent/adapter';
+import { adapter } from '../../src/games/cartographer/agent/adapter';
+import { builtins } from '../../src/games/cartographer/agent/policy';
 import type { Session } from '../../src/games/cartographer/application/session';
 
 /** Complete lifecycle coverage uses the actual restricted policy API on explicit Relaxed rules.

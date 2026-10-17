@@ -9,10 +9,9 @@ import type {
   PolicyRollout,
   Proposal,
 } from './types';
-export type { PolicyAudit, PolicyRollout } from './types';
 
 /** Reject lossy JSON rather than silently dropping undefined fields or nonfinite values. */
-export function jsonValue(value: unknown): Json {
+function jsonValue(value: unknown): Json {
   const seen = new Set<object>();
   const visit = (v: unknown): Json => {
     if (v === null || typeof v === 'string' || typeof v === 'boolean') return v;

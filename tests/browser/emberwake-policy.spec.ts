@@ -2,7 +2,8 @@ import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { relative } from 'node:path';
 import { recordEpisode } from '../../src/shared/policy/rollout';
-import { adapter, builtins } from '../../packages/diablo2/src/agent/adapter';
+import { adapter } from '../../packages/diablo2/src/agent/adapter';
+import { builtins } from '../../packages/diablo2/src/agent/policy';
 import {
   ACTIVE_MODE_KEY,
   SAVE_V2_KEY,
@@ -447,8 +448,8 @@ test('lossless rollout containers keep distinct originals selectable and reject 
 }, testInfo) => {
   test.setTimeout(120000);
   // A small known policy isolates shared storage/review behavior from campaign strength.
-  const { adapter: sharedAdapter, builtins: sharedPolicies } =
-    await import('../../src/games/balatro/agent/adapter');
+  const { adapter: sharedAdapter } = await import('../../src/games/balatro/agent/adapter');
+  const { builtins: sharedPolicies } = await import('../../src/games/balatro/agent/policy');
   const { gzipSync } = await import('node:zlib');
   const run = await recordEpisode(sharedAdapter, sharedPolicies.immediate, {
     seed: 'POLICY-CONTAINER-BROWSER-DEV-01',

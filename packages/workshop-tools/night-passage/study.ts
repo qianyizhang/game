@@ -17,7 +17,6 @@ import type { Policy } from '../../../src/games/night-passage/agent/policy';
 import type { Difficulty } from '../../../src/games/night-passage/domain/contracts';
 import type { WeaponId } from '../../../src/games/night-passage/domain/types';
 
-export { cohortSeeds };
 export const STUDY_VERSION = 'night-passage-policy-study-1';
 export interface StudyOptions {
   directory: string;

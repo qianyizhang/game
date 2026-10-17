@@ -6,7 +6,8 @@ import { HeroArt } from '../ui/HeroArt';
 import { MinionCard } from '../ui/MinionCard';
 import { SpellCard } from '../ui/SpellCard';
 import '../ui/TavernSpells.css';
-import { adapter, at, builtins, type EpisodeState } from './adapter';
+import { adapter, at, type EpisodeState } from './adapter';
+import { builtins } from './policy';
 import './review.css';
 
 function Minions({ label, units }: { label: string; units: Unit[] }) {

@@ -182,41 +182,30 @@ negative results and uncertainty; future tuning needs a new version/protocol/fre
 The [dated adoption report](../research/experiments/2026-10-16-spire-policy.md) owns measured
 results, sparse-win limits and the source-pinned correction to original paired-win analysis.
 
-The [strength-2 protocol](../research/experiments/2026-10-16-spire-strength-protocol.md)
-preregisters a fresh sixty-block matrix, frozen character-specific references and
-historical policy control. Shared benchmarks accept `--cohort NEW-NAMESPACE` and
-`--blocks 10|20|40|60|100|400`; changing block count alone reuses the same seed prefix.
-Default adoption seed identities remain unchanged. Original v1 studies and bundles
-retain their identities; they are not retroactively reproduced with v2 policies.
-
-The [strength-3 protocol](../research/experiments/2026-10-16-spire-strength-3-protocol.md)
-retains that first failed confirmation, fixes Survival for both characters and uses
-one hundred fresh primary blocks plus twenty matched companion blocks. Shared
-`--policies ID,ID` selects an explicit frozen subset. Statistical promotion requires
-both complete matrices and all independent audits; changing references after seeing
-reserved results requires another prospective study. Historical v1/v2 source snapshots
-and compiled bundles remain executable under their original identities.
-
-The [dated strength report](../research/experiments/2026-10-16-spire-strength.md)
-preserves both failed confirmations. The hundred-block follow-up shows improved
-A0 wins and ordered difficulty endpoints, but Ironclad misses its absolute strength
-confidence threshold and three historical-control timeouts fail the overall terminal
-requirement. These findings require another prospective development slice, not a
-retroactive change to the frozen criteria.
-
-The [strength-4 protocol](../research/experiments/2026-10-16-spire-strength-4-protocol.md)
-is prospective: Survival remains fixed for both characters, with 400 fresh primary
-blocks and twenty matched companion blocks after source freeze. Its endpoint is victory
-within 2,000 decisions; budget timeouts count as nonwins for both candidate and control,
-with native completion reported separately. Execution errors, audit failures, incomplete
-grids and drift still block promotion. This does not change either earlier failed verdict.
-Holm correction covers this study's four contrasts, not the repeated development campaign.
+## Current strength and historical evidence
 
 The [strength-4 confirmation](../research/experiments/2026-10-16-spire-strength-confirmation-4.md)
-meets every preregistered criterion on 400 fresh seed blocks. Survival4 wins
-98/86/32 Ironclad and 135/74/43 Silent attempts at A0/A3/A5; the frozen Survival1
-control wins 5 and 43 A0 attempts respectively. Both characters pass the absolute
-strength, paired improvement and A0–A5 separation criteria, with A3 point estimates
-between the endpoints. Seven budget stops remain nonwins. These findings establish
-the declared policy benchmarks; adjacent-tier significance, equal-compute strategy
-causality and human difficulty remain untested.
+passed every declared criterion for both characters. Its [prospective protocol](../research/experiments/2026-10-16-spire-strength-4-protocol.md)
+fixed Survival v4, exact historical Survival v1, 400 fresh primary blocks per character
+and twenty matched companion blocks. Victory within 2,000 decisions was the endpoint;
+seven budget stops remain nonwins. Errors, incomplete grids, audit failures and source
+drift still block promotion. Holm correction covers four tests in this study, not the
+adaptive series of confirmations.
+
+Survival v4 wins per 400 attempts at Ascensions 0/3/5 were **98/86/32 Ironclad** and
+**135/74/43 Silent**; historical Survival v1 A0 wins were 5 and 43. Absolute-strength,
+paired-improvement and A0–A5 separation criteria pass, with A3 estimates between the
+endpoints. Adjacent-tier significance, equal-compute causality, universal strategy
+ordering and human difficulty remain untested.
+
+Shared benchmarks accept `--cohort NEW-NAMESPACE`,
+`--blocks 10|20|40|60|100|400` and `--policies ID,ID`. Increasing the block count alone
+reuses the same prefix. Original adoption seeds and historical factories/bundles retain
+their identities; different current sources cannot certify historical reproduction.
+
+The [earlier strength report](../research/experiments/2026-10-16-spire-strength.md)
+retains both failed confirmations. Their [strength-2](../research/experiments/2026-10-16-spire-strength-protocol.md)
+and [strength-3](../research/experiments/2026-10-16-spire-strength-3-protocol.md) protocols
+remain unchanged. Those failures were not retrospectively repaired by the later
+budget endpoint or successful confirmation. Dated reports own full counts, audit
+coverage and inferential limits; this page owns the current developer contract.

@@ -3,7 +3,8 @@ import type { Json } from '../../../shared/policy/types';
 import { ROOM_SIZE, sameCell, threshold } from '../../../shared/layout/layout';
 import { chamber, ENEMIES, RELICS } from '../domain/content';
 import { chamberDescription, DIFFICULTIES } from '../domain/game';
-import { adapter, at, builtins, type EpisodeState } from './adapter';
+import { adapter, at, type EpisodeState } from './adapter';
+import { builtins } from './policy';
 import '../ui/styles.css';
 import './review.css';
 

@@ -1,6 +1,6 @@
 import { mkdir, mkdtemp, readFile, realpath, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { relative, resolve } from 'node:path';
+import { dirname, relative, resolve } from 'node:path';
 import { buildRuntime, runtimePins, repositoryRoot, sha256 } from '../runtime-bundle.ts';
 import type {
   EpisodeAdapter,
@@ -46,7 +46,8 @@ export async function withRuntime<T>(
     await writeFile(
       entry,
       [
-        `export { adapter, builtins, study } from ${JSON.stringify(resolve(repositoryRoot, adapterPath))};`,
+        `export { adapter, study } from ${JSON.stringify(resolve(repositoryRoot, adapterPath))};`,
+        `export { builtins } from ${JSON.stringify(resolve(repositoryRoot, dirname(adapterPath), 'policy.ts'))};`,
         `export { recordEpisode, auditRollout, parseRollout } from ${JSON.stringify(resolve(repositoryRoot, 'src/shared/policy/rollout.ts'))};`,
         ...(options.policyModule
           ? [`export { default as custom } from ${JSON.stringify(resolve(options.policyModule))};`]

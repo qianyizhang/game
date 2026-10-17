@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { adapter, builtins } from '../../games/balatro/agent/adapter';
+import { adapter } from '../../games/balatro/agent/adapter';
+import { builtins } from '../../games/balatro/agent/policy';
 import { auditRollout, digest, parseRollout, recordEpisode } from './rollout';
 import type { PolicyFactory } from './types';
 import type { Observation } from '../../games/balatro/agent/observation';

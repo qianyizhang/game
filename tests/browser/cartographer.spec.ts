@@ -10,7 +10,8 @@ import {
   type Session,
 } from '../../src/games/cartographer/application/session';
 import { chamber, RELICS } from '../../src/games/cartographer/domain/content';
-import { adapter, builtins } from '../../src/games/cartographer/agent/adapter';
+import { adapter } from '../../src/games/cartographer/agent/adapter';
+import { builtins } from '../../src/games/cartographer/agent/policy';
 import { type Command } from '../../src/games/cartographer/domain/game';
 
 const review = 'test-results/cartographer';

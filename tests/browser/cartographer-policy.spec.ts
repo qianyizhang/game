@@ -2,7 +2,8 @@ import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import { recordEpisode } from '../../src/shared/policy/rollout';
-import { adapter, builtins } from '../../src/games/cartographer/agent/adapter';
+import { adapter } from '../../src/games/cartographer/agent/adapter';
+import { builtins } from '../../src/games/cartographer/agent/policy';
 import {
   ACTIVE_SAVE_KEY,
   LEGACY_SAVE_KEY,

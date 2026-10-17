@@ -36,7 +36,7 @@ export const cursor = (session: Session): number =>
   session.replay.commands.reduce((n, c) => n + units(c), 0);
 const key = (command: PolicyCommand): string =>
   JSON.stringify(command, Object.keys(command).sort().concat(['x', 'y']));
-export function isPolicyCommand(value: unknown): value is PolicyCommand {
+function isPolicyCommand(value: unknown): value is PolicyCommand {
   return validCommand(value) && value.type !== 'respawn' && !value.type.startsWith('dev-');
 }
 function nativeCommand(state: EpisodeState, command: PolicyCommand): Command | null {
@@ -134,7 +134,7 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
 /** Requested-tick cursor, independent of native adjacent-advance packing. A seek may
  * end inside a packed command, including terminal padding. This reconstructed view
  * is evaluator presentation; the review keeps each recorded original policy input. */
-function atSession(session: Session, requested: number): EpisodeState {
+export function at({ session }: EpisodeState, requested: number): EpisodeState {
   const limit = cursor(session);
   if (!Number.isSafeInteger(requested) || requested < 0 || requested > limit)
     throw new Error('Invalid Emberwake replay cursor.');
@@ -148,9 +148,7 @@ function atSession(session: Session, requested: number): EpisodeState {
   }
   return snapshot(importSession(JSON.stringify({ ...session.replay, commands })), emptyAliases());
 }
-export const at = (state: EpisodeState, requested: number): EpisodeState =>
-  atSession(state.session, requested);
-export const studySetups: StudySetup[] = BASE_CONTENT.heroes.flatMap((hero) =>
+const studySetups: StudySetup[] = BASE_CONTENT.heroes.flatMap((hero) =>
   (['relaxed', 'standard', 'severe'] as const).map((difficulty) => ({
     id: `${hero.id}-${difficulty}`,
     difficulty,
@@ -174,5 +172,3 @@ export const study: StudyDefinition = {
   },
   reviewPath: '/?game=diablo2&review=policy',
 };
-
-export { builtins } from './policy';

@@ -1,6 +1,8 @@
+import { blindsideSession } from '../application/session';
 import { PolicyReview } from '../../../shared/policy/Review';
 import type { Json } from '../../../shared/policy/types';
-import { adapter, at, builtins, type EpisodeState } from './adapter';
+import { adapter, type EpisodeState } from './adapter';
+import { builtins } from './policy';
 import { JOKER_BY_ID } from '../content/jokers';
 import { CONSUMABLE_BY_ID } from '../content/consumables';
 import { currentBoss } from '../content/blinds';
@@ -87,7 +89,7 @@ function Board({ state: { state: run } }: { state: EpisodeState }) {
   );
 }
 function seek(replay: Json, cursor: number) {
-  return at(adapter.restore(replay), cursor);
+  return blindsideSession.at(adapter.restore(replay), cursor);
 }
 const factories = Object.values(builtins);
 const renderState = (state: EpisodeState) => <Board state={state} />;

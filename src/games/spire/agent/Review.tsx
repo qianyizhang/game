@@ -1,3 +1,4 @@
+import { spireSession } from '../application/session';
 import { PolicyReview } from '../../../shared/policy/Review';
 import type { Json } from '../../../shared/policy/types';
 import { ACT_NAMES, POTIONS, RELIC_BY_ID } from '../content/world';
@@ -7,7 +8,8 @@ import { RouteMap } from '../ui/Map';
 import { Resolution } from '../ui/Resolution';
 import { Room } from '../ui/Rooms';
 import { PotionArt, RelicArt } from '../ui/WorldItemArt';
-import { adapter, at, builtins, type EpisodeState } from './adapter';
+import { adapter, type EpisodeState } from './adapter';
+import { builtins } from './policy';
 import './review.css';
 
 // Passive native components receive no command boundary or live session handle.
@@ -93,7 +95,7 @@ function Board({ state: { state: run } }: { state: EpisodeState }) {
   );
 }
 function seek(replay: Json, cursor: number) {
-  return at(adapter.restore(replay), cursor);
+  return spireSession.at(adapter.restore(replay), cursor);
 }
 const factories = Object.values(builtins);
 const renderState = (state: EpisodeState) => (

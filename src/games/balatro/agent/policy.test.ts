@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { adapter, builtins } from './adapter';
+import { adapter } from './adapter';
+import { builtins } from './policy';
 import { observe } from './observation';
 import { forecastState } from './forecast';
 import { scoreHand } from '../domain/scoring';

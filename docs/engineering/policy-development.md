@@ -305,332 +305,48 @@ fairness, measured policy performance and human acceptance as separate findings.
 
 ### Calibration footguns from recorded traces
 
-- **Behavior before labels:** assert commands and native behavior before diagnostic
-  wording. A negative control that first fails on a reason label has not reached
-  its behavior assertion. Preserve that failure and correct the test order before
-  claiming behavioral coverage.
-- **Complete child output:** capture stdout and stderr together. A stdout-only
-  receipt parser can fail after successful checks; retain the wrapper failure and
-  recover from closed combined logs without rerunning those checks.
-- **Metadata-only trace locators:** locate large evidence by filename, then parse
-  explicit metadata keys. Content search over a one-line JSON can print historical
-  observations while merely locating paths. Record accidental exposure and stop
-  that pattern; distinguish historical development data from new or reserved outcomes.
-- **Duplicate combat arithmetic:** a separate projector missed retaliation ordering,
-  healing after death, and deterministic intent cancellation. Reuse the native deterministic
-  resolver on an explicit public-only synthetic state; cut branches involving hidden
-  draws, random effects or private phases, and check complete encounter outcomes.
-- **Safe-looking stalls:** reducing immediate HP loss can accumulate an unbeatable
-  persistent enemy defense. Inspect long-turn traces and require a native regression
-  for the traced failure, including eventual victory or defeat.
-- **Unstable reference selection:** a winner on ten development seeds failed the
-  reserved study. Preserve that failure; fix references before a fresh confirmation
-  and never replace them after inspecting its outcomes.
-- **Incomplete promotion checks:** a primary matrix can pass while companion cases
-  are missing or timed out. Freeze and validate every required matrix, seed/policy
-  grid, exact source-pin set and audit; statistical flags cannot override integrity.
-  Before PREPARE, read the current admission assertions and validate the exact
-  clearance fields in a read-only structural preflight. An earlier envelope can
-  fail before outputs/build/cases; retain that failure and issue a new clearance
-  rather than modifying a sealed attempt.
-- **Reused seed prefixes:** increasing block count under one namespace reuses the
-  earlier blocks. Fresh evidence requires a new namespace, not a larger denominator.
-- **Correctness versus strength:** a more faithful public model can make the policy
-  worse when its utility underprices exhausted cards or setup costs. Retain negative
-  experiments; native parity is a correctness result, not proof of stronger play.
-  A policy8 death at 14 ticks became a 40-tick living policy9 branch, yet the
-  full cross-hero screen regressed completion and Severe existence. Local probes require the complete
-  development gates before promotion; preserve the negative and accepted baseline
-  rather than changing thresholds or treating the bounded branch as a campaign. A
-  defensive attribute plan can also win more slowly; distinguish that style tradeoff
-  from broken control. Any future endpoint change must be prospective and cannot
-  relabel an already negative experiment.
-- **Safety at the wrong boundary:** a warning-aware escape rank does not protect
-  damaging movement, remembered pursuit or a forced pending advance that bypasses
-  it. Inspect the command that actually advances time. An instantaneous relocation
-  may still permit a zero-tick escape before damage; a recorded unsafe destination
-  alone does not prove a counterfactual death. Any shared safety check must preserve
-  finite progress when every offered route appears unsafe, rather than repeatedly
-  redirecting without advancing the simulation.
-- **Attack intent versus native effect:** an accepted attack can remain stationary
-  when the target is within reach and clear line of sight, including while attack
-  cooldown prevents firing. A disclosed target point is not automatically a movement endpoint.
-  Check the actual native control effect using public knowledge before ranking a
-  replacement; preserve uncertainty where necessary. The [D12 traces](../research/experiments/2026-10-17-emberwake-policy-10-development.md)
-  support this mismatch, not a causal explanation of every campaign loss. Other
-  owned movement can still apply after a stationary attack; preserve native owner
-  priority, not just the target point. Policy11 corrects that public model but still
-  fails its complete development gates.
-- **Clock progress versus goal progress:** zero-tick defenses followed by ordinary
-  advances can still cycle between retreat and pursuit without improving combat or
-  objectives. Bound defensive detours by observed combat/objective progress, not
-  elapsed ticks alone. A bounded living continuation does not establish that an
-  uninterrupted route would survive or complete; retain the [negative full screen](../research/experiments/2026-10-17-emberwake-policy-10-development.md).
-  Reset an added allowance only on observed tracked combat or monotone objective
-  progress, not movement, ticks or reacquisition. The [D13 follow-up](../research/experiments/2026-10-17-emberwake-policy-11-development.md)
-  does not establish sustained guard starvation: its selected longest quiet gap is
-  mainly frontier travel. Classify explicit control ownership before calling quiet
-  time wasted or loot-caused; recorded intervals are not counterfactual savings.
-- **Functional witnesses versus balance:** a short progression test should declare
-  its intended tier. A rebalance can invalidate an implicit current-Standard success
-  assumption for every policy. Preserve the original failure, keep the functional
-  journey explicit, and assess strength with the separate frozen study criteria.
-- **Budget endpoints:** distinguish execution failure from failure to win within a
-  declared budget. If timeouts count as nonwins, freeze that rule before execution,
-  apply it to both candidate and control, retain every denominator and report native
-  completion separately. Never reinterpret a failed all-terminal protocol afterward.
-- **Every recovery owner matters:** portal entry and each ordinary town tick can
-  both restore HP and mana. Changing only one owner leaves a lawful bypass. Inspect
-  all restoration paths before adding recovery pressure, and preserve escape as a
-  separate capability from healing. Existing lawful refuge use is not cheating.
-- **Cross-hero balance assumptions:** a recovery limit intended to constrain one
-  class can burden other classes more. Inspect original or explicitly reconstructed
-  HP/mana dependency across all heroes, retain different survival lengths, and check
-  actual damage breakpoints before adding a resource system or raising multipliers.
-- **Check the whole ladder after a rebalance:** native6 Standard relief passed the
-  upper-tier checks but failed Necromancer's lower-tier and policy-separation checks.
-  Native7 then passed all six difficulty comparisons but still failed two policy
-  comparisons. Keep difficulty and strategy endpoints separate, retain the complete
-  contrast family and viability gates, and inspect practical ties before deciding
-  whether pressure or policy control needs repair. Passing tier checks alone does
-  not establish the full contract or justify changing thresholds.
-- **Exact time versus material separation:** in Emberwake’s failed fresh confirmation,
-  Necromancer Survival Standard–Severe had 23 exact directional winning-time pairs
-  become practical ties. Report exact and
-  practical counts together; freeze the tolerance and full contrast family before
-  execution. A large count of tiny time differences does not establish meaningful
-  difficulty separation, and a failed threshold cannot be relaxed afterward.
-- **Witness identity and expected outcomes:** two full seed namespaces can share a
-  `DEV-01` suffix while one recorded attempt times out and the other wins. Bind a
-  technical witness to its full seed, setup, policy version/configuration and artifact hash;
-  derive and validate its expected native outcome before dispatch. Preserve a
-  mistaken frozen attempt as failed, then repair the harness in a new attempt.
-  Record planned jobs, pool starts, returned rows and validated artifacts
-  separately; a rejected pool can leave actual completion unknown.
-- **Quiet workers and process ownership:** process handles can be local to their
-  owning agent. A different agent’s unknown handle does not prove that execution
-  stopped. Ask the owner to poll the original handle, retain start/closure markers
-  and closed artifact counts, and never restart solely after an observation timeout.
-- **Repeated confirmations:** a correction within one study does not cover adaptive
-  repeated attempts. Retain failed studies and state the scope of multiplicity control;
-  larger samples improve precision, not the policy itself. When carrying a design
-  forward, copy its actual protocol and analyzer method rather than a summary: the
-  confirmation7 draft brief mistakenly said one-sided, while the preceding method
-  used two-sided exact conditional binomial probabilities with Holm correction.
-  The discrepancy was caught before application or execution; preserve the literal
-  method and never silently halve p-values or relax criteria.
-- **Shared source freezes:** study provenance includes shared analysis/tool files even
-  when a different game's source is under development. One owner coordinates shared
-  mutations; freeze the entire pinned graph across active studies, and retain drift
-  failures. Independent game-owned edits may overlap only outside that graph.
-- **Policy aliases versus replay IDs:** a permitted policy command may contain an
-  observation-scoped target alias. Derive historical continuations from accepted native
-  journal commands; dispatching the recorded proposal directly can target another entity.
-- **Known-route promises:** sampled center points can miss unknown footprint corners,
-  especially with fractional starts and axis-separated native sliding. Check the entire
-  swept body corridor on masked terrain and exercise paired hidden-wall/floor states.
-  A control that intentionally explores unknown space needs an explicit different contract.
-- **Preserved geometry versus choice:** unchanged teleport endpoint geometry does
-  not prove unchanged blink selection when the warning rank changes. Name the
-  preserved seam precisely and retain the tested pre-clarification document bytes;
-  a wording correction is not permission to rewrite the original gate.
-- **Trace resource limits:** test the actual recorded/audited case in a worker before a
-  bulk matrix. The parser envelope, decoded object graphs, hashing and serialization
-  need separate headroom. A V8 old-generation limit is not a process RSS limit; retain
-  observed memory and distinguish infrastructure failure from policy outcomes.
-  For large cohorts, retain hashes and small receipts in memory while streaming
-  recordings and final states one case at a time; loading every parsed state before
-  decoding a large trace can exhaust the diagnostic heap before any replay executes.
-- **Fixture and receipt publication:** a reused output path can publish a new fixture
-  before an exclusive receipt write fails, leaving two different generations beside
-  each other. Use a fresh directory per attempt, preflight all exclusive outputs,
-  verify the complete candidate, then publish the tracked fixture atomically. Retain
-  the failed attempt and recover its original bytes against the earlier hash.
-  Analysis-derived journals and states need a later receipt linked to original raw
-  hashes; they cannot be claimed as files pinned by the earlier execution closure.
-  Before and after rendering a report, rehash the complete independent input/output,
-  final-review, technical and browser pin maps, including derived native files.
-  Checking only their intersection with a curated report list can miss changed
-  later outputs. Bind final review to the exact technical, browser and full-gate
-  receipts supplied for publication; aggregate flags cannot substitute for those
-  artifact checks. Native7's initial uninvoked report draft exposed this gap.
-- **Late mode identity:** generation can run before a sandbox or historical mode is
-  tagged. A new version-based spawn rule can then alter the initial world even when
-  later commands use the correct mode. Set the authoritative identity before rule
-  execution, and compare complete generated states, RNG and dynamic spawns against
-  the frozen original.
-- **Reason labels are not control-flow proof:** a shared fallback can execute under a
-  successful-sounding diagnostic. Verify recorded commands and original inputs before
-  asserting a change was unused or behavior preserving; retain reproduction mismatches.
-  During counterfactual public-history warmup, accepted commands can match while
-  complete proposals/diagnostics differ. Report both identities and the original
-  history owner; neither matching commands nor a bounded branch is an on-policy campaign.
-- **Matched seeds do not fix later rewards:** different accepted combat decisions can
-  consume shared seeded randomness differently, changing later offers and routes.
-  Compare whole attempts under the frozen paired design; do not explain a tier effect
-  as though both policies received identical later encounters. More damage can also
-  trigger a safer policy branch, so per-seed difficulty monotonicity is not guaranteed.
-- **Visibility is not hit confirmation:** a legal cast and apparent line of sight can
-  still produce no damage around a collision corner. Inspect disclosed HP over time;
-  use bounded public-history stall detection and offered repositioning before changing
-  monster health or granting private geometry. A dead draw or failed control is a
-  correctness witness, not proof that its repair improves campaign win rate.
-- **Recovery changes action priority:** instant healing can hide missing defensive
-  control. When a versioned rule adds recovery, expose it in the menu and live HUD,
-  make rejected drinks atomic, and test low-health movement before offensive casts.
-  Preserve old potion/replay arithmetic; measure the changed policy separately.
-- **Per-impact ceilings:** limiting one hit does not prevent several hits in one
-  accepted advance from killing a full-health player. Record raw mitigated damage,
-  applied rule damage and HP-clipped loss separately; inspect the complete advance
-  with its starting HP. Retain original nonfatal ceiling demonstrations as well as
-  deaths, rather than later reconstructing the only available policy inputs.
-- **Recovery fallthrough:** a defensive state flag does not enforce defensive control.
-  When no offered retreat improves clearance, a recovering policy can fall through
-  into pursuit or a damaging leap. Trace the selected command, test the no-retreat
-  branch, and cancel pursuit before a safe hold when the public danger permits it.
-  A short survival counterfactual establishes that branch's behavior, not campaign
-  strength; label reconstructed public inputs separately from originally saved ones.
-- **Untimed danger envelopes:** every movement segment includes its start, so a shot
-  crossing that position later can make every route appear equally unsafe. Prove
-  that a safer-action comparison can distinguish the intended case. If using relative
-  motion, keep its horizon and public inputs explicit, retain conservative movement
-  allowances, and verify a controlled native crossing rather than claiming an exact
-  prediction of walls, future shots or enemy motion.
-  Apply the same timing reasoning outside recovery: healthy HP does not remove a
-  disclosed shot, and a running flag does not promise running speed with empty
-  stamina. A changed rank or escape label is not native survival evidence; retain
-  the selected route and its actual continuation. A factory warmed on another
-  policy's recorded public inputs has a counterfactual history, not an on-policy run.
-- **Delegated policy versions:** an example or wrapper can keep its version while
-  importing a changed baseline. Its behavior has still changed. Bump the wrapper's
-  identity with its delegated policy, test the version relationship directly, and
-  retain the earlier source/bundle for historical reproduction rather than treating
-  an unchanged wrapper body as proof. A rejected candidate's version is still consumed
-  by its recordings; restoring an older accepted factory does not free that identity.
-  Use a new version for different future behavior, and retain the rejected factory's
-  bundle/sources when the current factory can no longer reproduce its decisions.
-  Update wrapper metadata and current-version test expectations together; search old
-  literals and run the whole policy test file. Focused selections can skip stale
-  assertions. A failure before behavior assertions establishes no gameplay regression;
-  retain that technical attempt separately from rollout outcomes.
-- **Actual proof contracts:** source review, method review, process exit and scientific
-  verdict can use different typed fields. Read the actual declared schema before
-  copying a helper and test that boundary during inert preparation. A path list and
-  hash map, or separate review flags and a generic pass flag, are different contracts.
-  Reject mismatches before build, output reservation or execution.
-- **Defensive passivity:** retreat or holding can lose to a disclosed weak attacker
-  that an offered, nonmoving instant skill would finish without advancing time.
-  Reuse exact public native damage arithmetic, cover every known live threat, and
-  keep warnings and hostile shots ahead of this narrow option. A successful local
-  continuation does not establish campaign strength or safety against hidden foes.
-- **Decision cadence versus forecast horizon:** a threat just beyond the next
-  observation can become unavoidable before the following movement takes effect.
-  Choose and disclose a forecast horizon separately from the action cadence, account
-  for public stamina, slowing and initial alignment, and reproduce the earlier
-  offered escape on the original prefix. Longer geometry is still an approximation.
-- **Syntax-only draft checks:** parsing does not resolve imports, argument positions
-  or call signatures. Broad text replacement can alter an ordinary function call
-  while appearing to update only imports. Use contextual edits, inspect affected
-  callers and check the proposed files semantically against the real project before
-  applying them. Generate bundle-entry imports from resolved repository paths and
-  check that each file exists; resolve retained manifest paths against their recorded
-  build root. Keep invalid draft checks separate from runtime outcomes.
-- **Opening a save is not a new command:** mount cleanup can rewrite a reconstructed
-  historical save even before play, and an unconditional input release can append a
-  stop command to a paused import. Flush changed sessions only and release active
-  controls. First-upgrade and restore journeys must compare untouched stored bytes,
-  not just equivalent reconstructed states.
+Use the [policy footguns](policy-footguns.md) before implementation, study admission
+and publication. They condense the retained trace findings into checks for control,
+information, calibration, provenance and execution. Dated reports own the original
+counterexamples; a local correctness repair never substitutes for a complete study.
 
 ## Settled adoption choices
 
-Accepted 2026-10-16 after the design interview:
-
-- **Difficulty:** give missing ladders three real player-selectable configurations,
-  preserving current gameplay as Standard and historical replay meanings. Calibrate
-  pressure/opponent differences rather than assigning names alone. The later accepted
-  Cartographer calibration slice may rebalance Standard and the full ladder under a
-  new rules version, with exact v1/v2 replay preservation.
-  Emberwake has the same approved versioned-rebalance option. Its score-first slice
-  measured completion efficiency without changing native balance; the subsequent
-  rules-v4 candidate introduces explicit recovery and coherent hostile pressure while
-  retaining exact historical environments. After the v4 development screen, the user
-  chose further gameplay pressure under a new version while keeping completion/time
-  scoring. The native6 consumed candidate tested uniform Standard damage relief
-  (×5 instead of v5’s ×8), retaining Severe and exact v5/4/3/2 histories. It failed
-  Necromancer’s lower-tier and policy-separation checks despite passing the upper-tier
-  checks. Preserve this negative screen and its original native6 environment; another
-  declared development candidate must pass before fresh confirmation. Neither the
-  native5 confirmation nor native6 development is relabeled. Native7 then selects
-  uniform Standard ×7 using source breakpoints, with score2, other tiers and all
-  development criteria fixed. Its consumed [D10 screen](../research/experiments/2026-10-17-emberwake-standard-pressure-7.md)
-  ([machine receipt](../research/experiments/2026-10-17-emberwake-standard-pressure-7.json))
-  also fails overall: all six
-  difficulty checks pass, but Barbarian and Necromancer Standard Survival–Immediate
-  net material effects are 0.00 and 0.10 against the fixed 0.20 threshold.
-  Preserve native7 and its negative result; confirmation7 remains dormant.
-  The subsequent [policy9 screen](../research/experiments/2026-10-17-emberwake-policy-9-development.md)
-  ([receipt](../research/experiments/2026-10-17-emberwake-policy-9-development.json))
-  also fails overall: 115 victories, 70 deaths and 13 living stops across 198 consumed
-  attempts, with no execution errors. Its Barbarian/Necromancer Standard policy nets
-  are −0.20/0.10; Barbarian also fails the 8/10 completion and 1/12 Severe-existence
-  gates. Keep native7/policy8 as the accepted baseline, reject policy9 and preserve its
-  frozen environment; never reuse its consumed version. No calibrated ladder or
-  fresh promotion follows from these consumed comparisons.
-  The subsequent [policy10 D12 screen](../research/experiments/2026-10-17-emberwake-policy-10-development.md)
-  is also independently confirmed negative. Reject policy10 and retain native7/
-  policy8 as the accepted baseline; exact committed policy8 was restored after
-  source-hold release. Its consumed identity cannot be reused. The game
-  contract and dated reports own detailed results; no fresh confirmation is launched.
-  The subsequent [policy11 D13 screen](../research/experiments/2026-10-17-emberwake-policy-11-development.md)
-  is independently negative too: Barbarian Standard Survival–Immediate net is −0.20
-  and Sorceress Standard Survival wins 5/10 against the fixed 8/10 floor. Reject the
-  consumed identity and retain exact native7/policy8 after hold release; detailed
-  results and qualifications remain in the dated report.
-  The [policy 12 D14 screen](../research/experiments/2026-10-17-emberwake-policy-12-development.md)
-  is independently negative too: the original Necromancer Standard>Severe score
-  comparison fails, and the full matched Survival comparison includes two completion
-  regressions. Reject policy 12 and retain exact accepted policy 8 after release/restoration.
-  This final attempt closes without a successor study or fresh confirmation; the
-  prospective victory-primary concept remains not started.
-- **Strategies:** the remaining games start with immediate-gain, survival and
-  long-term-growth priorities, adapted to their mechanics. Night Passage retains
-  its existing effort spectrum and frozen comparison.
-- **Emberwake episodes:** first death ends a scored benchmark attempt. Ordinary
-  gameplay keeps respawns; respawn-assisted diagnostics use separate conditions.
-- **Developer entry:** consistent run/record/benchmark/audit commands accept built-in
-  policies and a local TypeScript policy module. Preserve existing commands.
-- **Shared review:** extract evidence plumbing and review navigation when the second
-  game proves the seam. Each game keeps its observation/action types, timing, metrics
-  and presentation adapter; rules remain independent.
-- **Cohorts:** begin with ten development seed blocks and twenty fresh reserved
-  evaluation blocks, balancing relevant characters/heroes/weapons and matched
-  conditions. Freeze the complete design before evaluation; expand if needed to
-  establish useful differentiation while reporting uncertainty and negative results.
-- **Closeout:** after each vertical slice, use a fresh Astra reviewer, resolve material
-  findings, polish/clean up, verify and make a scoped commit. Independent game-owned
-  development may proceed concurrently; shared mutations and commit closeouts have
-  one owner, and each slice still receives its own fresh review and scoped commit.
+- **Difficulty:** preserve historical replay meanings. Existing Standard gameplay was
+  the initial default; later approved, versioned rebalances cover Cartographer and
+  Emberwake. Their game contracts own the current ladders.
+- **Strategies:** Immediate/Survival/Growth express priorities, not a strength order.
+  Night Passage keeps Quick/Balanced/Deliberate effort and separate control presets.
+- **Episodes:** Emberwake benchmarks stop at first death; normal play keeps respawns.
+- **Evidence:** start with ten development and twenty disjoint reserved seed blocks,
+  then preregister the actual design, budgets and uncertainty method before execution.
+  A larger prefix of an inspected namespace is not fresh evidence.
+- **Ownership:** share recording/review plumbing; retain game-owned observations,
+  commands, timing and score. One owner coordinates shared pinned-source changes.
+- **Closeout:** use a fresh Astra review, resolve material findings, polish, verify
+  and commit only owned changes. Preserve negative results and consumed identities.
+- **Emberwake stop:** native7/policy8 remains accepted. Policy12 was the final rejected
+  attempt; calibration remains unresolved, the saved goal is paused, and the proposed
+  victory-primary study was not started. No successor experiment is authorized.
 
 ## Adoption sequence
 
-Accepted direction on 2026-10-16: establish this guide first, then complete one game
-at a time. The rows link adopted mechanisms and their measured limits. Dated reports
-bound playing-strength and difficulty claims; unresolved calibration stays explicit.
+All six games implement policy extensions and original-input review. Performance
+claims remain game-specific; infrastructure completion does not imply calibration.
+The linked reports retain full counts, uncertainty, failures and audit scope.
 
-| Order | Game                 | Starting point and remaining adoption work                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ----- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1     | Night Passage        | [Adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md) and [workflow evidence](../research/experiments/2026-10-16-policy-workflow.md): constrained native policies, local TS factories, original-input review and per-case audited study backend behind the common CLI. Existing calibration remains strength evidence; old recordings lack original knowledge and prefix branching is not offered.                                                                                                    |
-| 2     | Blindside            | [Policy contract](blindside-agent.md): restricted observations, local TS factories, immediate/survival/growth strategies, three selectable target tiers, v4 replay continuity, shared recording/audit/navigation and isolated original-input review. Dated evaluation evidence accompanies this adoption; uncertainty remains explicit.                                                                                                                                                                                              |
-| 3     | Spire                | [Policy contract](spire-agent.md): public legal menus, extensible factories, all native Ascensions 0–5 and original-input review. [Fresh confirmation](../research/experiments/2026-10-16-spire-strength-confirmation-4.md) meets preregistered strength and difficulty criteria: Survival wins 98/86/32 Ironclad and 135/74/43 Silent attempts per 400 A0/A3/A5 seeds. Earlier failed confirmations remain intact; human difficulty is untested.                                                                                    |
-| 4     | Last Hearth          | [Policy contract](hearth-policy.md) and [adoption evidence](../research/experiments/2026-10-16-hearth-policy.md): v6 spell-aware policies, opaque public identity, three starting-health tiers, all-actor native replay audit, isolated original-input review and 1,350 audited episodes. Original v1/v2 environments and frozen v5 results remain intact; strength ordering is qualified.                                                                                                                                           |
-| 5     | Emberwake            | [Policy contract](emberwake-policy.md). Native7/policy 8 remains accepted; policy 12 is rejected by the [independently audited negative D14 screen](../research/experiments/2026-10-17-emberwake-policy-12-development.md) ([receipt](../research/experiments/2026-10-17-emberwake-policy-12-development.json)). Exact policy 8 was restored after source-hold release. Keep consumed identities and all prior negatives. This was the final attempt; calibration remains unresolved, with no successor study or fresh confirmation. |
-| 6     | Dungeon Cartographer | [Policy contract](cartographer-policy.md): v3 encounter pressure, extensible public priorities, ordinal health/efficiency score and exact v1/v2 native replay. [Fresh confirmation](../research/experiments/2026-10-16-cartographer-strength-confirmation-3.md) meets five declared criteria over 900 attempts: Survival wins 100/83/30 per 100 Relaxed/Standard/Severe seeds. Independent raw/native/statistical review passed; human difficulty is untested.                                                                       |
+| Game                                           | Current evidence                                                                                                                                                           | Remaining limit                                                                      |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [Night Passage](night-passage-agent.md)        | [Declared targets met](../research/experiments/2026-10-14-night-passage-control.md); [review adopted](../research/experiments/2026-10-16-night-passage-rollout-review.md). | Weapon variation; old replays lack original policy knowledge; no prefix branching.   |
+| [Blindside](blindside-agent.md)                | [Growth wins 14/20 Standard](../research/experiments/2026-10-16-blindside-policy.md), versus Immediate 3/20 and Survival 5/20.                                             | Small cohorts; progress and strict tier ordering remain uncertain.                   |
+| [Spire](spire-agent.md)                        | [Fresh confirmation passed](../research/experiments/2026-10-16-spire-strength-confirmation-4.md) for Ironclad/Silent at Ascensions 0/3/5.                                  | Does not establish every adjacent Ascension or a universal strategy order.           |
+| [Last Hearth](hearth-policy.md)                | [1,350 audited episodes](../research/experiments/2026-10-16-hearth-policy.md), including 900 reserved attempts.                                                            | Hero/objective-dependent strategy results; limited statistical separation.           |
+| [Emberwake](emberwake-policy.md)               | Native7/policy8 retained; [policy12 rejected](../research/experiments/2026-10-17-emberwake-policy-12-development.md).                                                      | Strength/difficulty unresolved; final-attempt limit and paused goal remain in force. |
+| [Dungeon Cartographer](cartographer-policy.md) | [Fresh 900-case confirmation passed all five criteria](../research/experiments/2026-10-16-cartographer-strength-confirmation-3.md).                                        | Fixed policy/budget/cohort; individual seeds can reverse the tier ordering.          |
 
-For each game, close with a working extension example, complete-episode evidence,
-boundary tests including a leak counterexample, audited replay/decision linkage,
-usable inspection journeys, and the frozen policy × difficulty report. Record
-uncertain performance separation as remaining calibration work. Keep historical
-formats and evidence intact; adopt this contract through versioned new work.
+None establishes human-equivalent skill, human difficulty or enjoyment. The
+[six-game workflow evidence](../research/experiments/2026-10-16-policy-workflow.md)
+verifies common CLI dispatch and per-case inspection separately from strength.
 
 ## Common CLI, game-owned policies
 

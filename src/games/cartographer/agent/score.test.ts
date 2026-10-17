@@ -2,7 +2,8 @@ import { expect, it } from 'vitest';
 import type { Json } from '../../../shared/policy/types';
 import { compareScores } from '../../../shared/policy/scoring';
 import { exportSession, importSession } from '../application/session';
-import { adapter, builtins, study, type EpisodeState } from './adapter';
+import { adapter, study, type EpisodeState } from './adapter';
+import { builtins } from './policy';
 
 const seed = 'CARTOGRAPHER-STRENGTH-3-DEV-01';
 function play(difficulty: string, policy: 'immediate' | 'survival'): EpisodeState {
