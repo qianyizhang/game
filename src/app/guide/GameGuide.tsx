@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { GAME_GUIDES } from './games';
+import { canonicalGameId } from '../games';
 import { GameGuideArt } from './GameGuideArt';
 import './GameGuide.css';
 
@@ -7,7 +8,7 @@ export default function GameGuide() {
   useEffect(() => {
     document.title = 'Game guide · Card Workshop';
   }, []);
-  const requested = new URLSearchParams(location.search).get('game');
+  const requested = canonicalGameId(new URLSearchParams(location.search).get('game'));
   const current = GAME_GUIDES.find((entry) => entry.id === requested);
   return (
     <main className="game-guide">

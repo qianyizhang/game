@@ -1,6 +1,7 @@
 import { ContentBoundary } from './ContentBoundary';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { GamePicker, type GameId } from './GamePicker';
+import { canonicalGameId, GAME_METADATA } from './games';
 import './Hub.css';
 
 const BlindsidePolicyReview = lazy(() => import('../games/balatro/agent/Review'));
@@ -31,6 +32,7 @@ const GameGuide = lazy(() => import('./guide/GameGuide'));
 const Glossary = lazy(() => import('./guide/GameGlossary'));
 export default function Hub() {
   const query = new URLSearchParams(location.search);
+  const requested = canonicalGameId(query.get('game'));
   if (query.get('guide') === 'games' || query.get('guide') === 'glossary')
     return (
       <ContentBoundary>
@@ -45,19 +47,7 @@ export default function Hub() {
         </Suspense>
       </ContentBoundary>
     );
-  if (
-    query.get('review') === 'policy' &&
-    [
-      'balatro',
-      'blindside',
-      'spire',
-      'battlegrounds',
-      'hearth',
-      'diablo2',
-      'emberwake',
-      'cartographer',
-    ].includes(query.get('game') ?? '')
-  )
+  if (query.get('review') === 'policy' && requested && requested !== 'night-passage')
     return (
       <ContentBoundary>
         <Suspense
@@ -67,13 +57,13 @@ export default function Hub() {
             </main>
           }
         >
-          {query.get('game') === 'cartographer' ? (
+          {requested === 'cartographer' ? (
             <CartographerPolicyReview />
-          ) : ['diablo2', 'emberwake'].includes(query.get('game') ?? '') ? (
+          ) : requested === 'diablo2' ? (
             <EmberwakePolicyReview />
-          ) : ['battlegrounds', 'hearth'].includes(query.get('game') ?? '') ? (
+          ) : requested === 'battlegrounds' ? (
             <HearthPolicyReview />
-          ) : query.get('game') === 'spire' ? (
+          ) : requested === 'spire' ? (
             <SpirePolicyReview />
           ) : (
             <BlindsidePolicyReview />
@@ -156,46 +146,21 @@ function GameHub() {
     }
   }, [challengeOpen]);
   const [game, setGame] = useState<GameId>(() => {
+    const requested = canonicalGameId(new URLSearchParams(location.search).get('game'));
+    if (requested) return requested;
     try {
-      const requested = new URLSearchParams(location.search).get('game');
-      if (
-        requested === 'balatro' ||
-        requested === 'spire' ||
-        requested === 'battlegrounds' ||
-        requested === 'diablo2' ||
-        requested === 'cartographer' ||
-        requested === 'night-passage'
-      )
-        return requested;
-      const saved = localStorage.getItem(KEY);
-      return saved === 'spire' ||
-        saved === 'battlegrounds' ||
-        saved === 'diablo2' ||
-        saved === 'night-passage' ||
-        saved === 'cartographer'
-        ? saved
-        : 'balatro';
+      return canonicalGameId(localStorage.getItem(KEY)) ?? 'balatro';
     } catch {
       return 'balatro';
     }
   });
   useEffect(() => {
-    const names: Record<GameId, string> = {
-      balatro: 'Blindside',
-      spire: 'Slay the Spire',
-      battlegrounds: 'Last Hearth',
-      diablo2: 'Emberwake',
-      cartographer: 'Dungeon Cartographer',
-      'night-passage': 'Night Passage',
-    };
-    document.title = `${dccOpen ? 'DCC Workbench' : artOpen ? '3D Object Studies' : challengeOpen ? 'Challenges' : names[game]} · Card Workshop`;
+    document.title = `${dccOpen ? 'DCC Workbench' : artOpen ? '3D Object Studies' : challengeOpen ? 'Challenges' : GAME_METADATA[game].name} · Card Workshop`;
   }, [game, challengeOpen, artOpen, dccOpen]);
   const change = (id: GameId) => {
     setGame(id);
     const url = new URL(location.href);
-    if (id === 'diablo2' || id === 'cartographer' || id === 'night-passage')
-      url.searchParams.set('game', id);
-    else url.searchParams.delete('game');
+    url.searchParams.set('game', id);
     history.replaceState(null, '', url);
     try {
       localStorage.setItem(KEY, id);
@@ -253,7 +218,7 @@ function GameHub() {
           </Suspense>
         )}
         <button
-          hidden={game === 'diablo2' || game === 'cartographer' || game === 'night-passage'}
+          hidden={!GAME_METADATA[game].workshopTools}
           ref={dccEntry}
           className="dcc-workbench-entry"
           onClick={() => showDcc(true)}
@@ -261,7 +226,7 @@ function GameHub() {
           ↗ DCC workbench
         </button>
         <button
-          hidden={game === 'diablo2' || game === 'cartographer' || game === 'night-passage'}
+          hidden={!GAME_METADATA[game].workshopTools}
           ref={artEntry}
           className="art-studio-entry"
           onClick={() => showArt(true)}

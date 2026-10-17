@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
+import { gzipSync } from 'node:zlib';
+import { MAX_ARTIFACT_BYTES } from '../../src/shared/policy/artifact';
 import { recordEpisode, digest } from '../../src/games/night-passage/agent/rollout';
 import {
   createChronicle,
@@ -77,15 +79,20 @@ test('new selections supersede delayed URL and file imports', async ({ page }) =
     },
   );
   await page.addInitScript(() => {
-    const original = (file: File) => Blob.prototype.text.call(file);
-    File.prototype.text = function () {
-      if (!this.name.startsWith('delayed')) return original(this);
-      const content = original(this);
-      return new Promise<string>((resolve) => {
+    // Delay both native byte reads and the plain replay viewer's text reads.
+    function delayed<T>(file: File, content: Promise<T>): Promise<T> {
+      if (!file.name.startsWith('delayed')) return content;
+      return new Promise<T>((resolve) => {
         (window as unknown as { releaseFile: () => void }).releaseFile = () => {
           void content.then(resolve);
         };
       });
+    }
+    File.prototype.text = function () {
+      return delayed(this, Blob.prototype.text.call(this));
+    };
+    File.prototype.arrayBuffer = function () {
+      return delayed(this, Blob.prototype.arrayBuffer.call(this));
     };
   });
   await page.goto('/?game=night-passage&watch=1&replay=/delayed-replay.json', {
@@ -279,4 +286,94 @@ test('a complete recorded victory stays navigable through menu boundaries and te
   await expect(
     page.getByText(`Replay complete · Escaped · ${rollout.episode.score} points`, { exact: true }),
   ).toBeVisible();
+});
+
+test('rollout imports bound input and retain original BOM and gzip bytes', async ({ page }) => {
+  const rollout = await recordEpisode(options);
+  const original = Buffer.concat([
+    Buffer.from([0xef, 0xbb, 0xbf]),
+    Buffer.from(JSON.stringify(rollout)),
+  ]);
+  const compressed = gzipSync(original);
+  await page.route(
+    (url) => url.pathname === '/original.json.gzip',
+    (route) => route.fulfill({ contentType: 'application/gzip', body: compressed }),
+  );
+  await page.goto('/?game=night-passage&watch=1');
+  const input = page.getByLabel('Open policy rollouts');
+  await input.setInputFiles({ name: 'bom.json', mimeType: 'application/json', buffer: original });
+  await expect(page.getByTestId('rollout-audit')).toContainText('Artifact integrity: passed');
+  const localDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
+  expect((await readFile(await (await localDownload).path())).equals(original)).toBe(true);
+
+  // A synthetic size lets the UI budget guard be exercised without allocating a 150 MB file.
+  await input.evaluate((element, limit) => {
+    const file = new File(['{}'], 'oversized.json');
+    Object.defineProperty(file, 'size', { value: limit + 1 });
+    file.arrayBuffer = () => {
+      throw new Error('Oversized file was read');
+    };
+    const transfer = new DataTransfer();
+    transfer.items.add(file);
+    (element as HTMLInputElement).files = transfer.files;
+    element.dispatchEvent(new Event('change', { bubbles: true }));
+  }, MAX_ARTIFACT_BYTES);
+  await expect(page.locator('.np-review > [aria-live]')).toContainText(
+    'Rollout exceeds its byte limit.',
+  );
+  await expect(page.getByTestId('policy-knowledge')).toHaveText(
+    JSON.stringify(rollout.decisions[0].input, null, 2),
+  );
+  await input.setInputFiles({
+    name: 'invalid.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from([0xff]),
+  });
+  await expect(page.locator('.np-review > [aria-live]')).toContainText('encoded data');
+  await expect(page.getByTestId('rollout-audit')).toContainText('Artifact integrity: passed');
+
+  await page.goto('/?game=night-passage&watch=1&rollout=/original.json.gzip');
+  await expect(page.getByTestId('rollout-audit')).toContainText('Artifact integrity: passed');
+  const remoteDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
+  const downloaded = await remoteDownload;
+  expect(downloaded.suggestedFilename()).toBe('rollout.json.gzip');
+  expect((await readFile(await downloaded.path())).equals(compressed)).toBe(true);
+});
+
+test('oversized remote rollout stops its stream before parsing or selecting it', async ({
+  page,
+}) => {
+  await page.addInitScript((limit) => {
+    const fetchOriginal = window.fetch.bind(window);
+    window.fetch = (input, init) => {
+      const url = input instanceof Request ? input.url : input;
+      if (new URL(url, location.href).pathname !== '/oversized.json')
+        return fetchOriginal(input, init);
+      // Controlled streaming source: exceed the budget without retaining hundreds of MB.
+      const chunk = new Uint8Array(1_000_000);
+      let sent = 0;
+      return Promise.resolve(
+        new Response(
+          new ReadableStream({
+            pull(controller) {
+              controller.enqueue(chunk);
+              sent += chunk.length;
+              if (sent > limit + 10_000_000) controller.close();
+            },
+            cancel() {
+              document.documentElement.dataset.rolloutCanceled = 'true';
+            },
+          }),
+        ),
+      );
+    };
+  }, MAX_ARTIFACT_BYTES);
+  await page.goto('/?game=night-passage&watch=1&rollout=/oversized.json');
+  await expect(page.locator('.np-review > [aria-live]')).toContainText(
+    'Rollout exceeds its byte limit.',
+  );
+  await expect(page.locator('html')).toHaveAttribute('data-rollout-canceled', 'true');
+  await expect(page.getByTestId('rollout-audit')).toHaveCount(0);
 });

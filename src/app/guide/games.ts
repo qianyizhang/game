@@ -1,8 +1,7 @@
-import type { GameId } from '../GamePicker';
+import { GAME_METADATA, type GameId } from '../games';
 
-export const GAME_GUIDES: {
+const guides: {
   id: GameId;
-  name: string;
   reference: string;
   genre: string;
   hook: string;
@@ -14,7 +13,6 @@ export const GAME_GUIDES: {
 }[] = [
   {
     id: 'balatro',
-    name: 'Blindside',
     reference: 'A study of Balatro',
     genre: 'Poker · Turn-based',
     hook: 'Make a small hand score big.',
@@ -31,7 +29,6 @@ export const GAME_GUIDES: {
   },
   {
     id: 'spire',
-    name: 'Slay the Spire',
     reference: 'A study of Slay the Spire 1',
     genre: 'Deck building · Turn-based',
     hook: 'Build the deck that gets you to the top.',
@@ -48,7 +45,6 @@ export const GAME_GUIDES: {
   },
   {
     id: 'battlegrounds',
-    name: 'Last Hearth',
     reference: 'A study of Hearthstone Battlegrounds',
     genre: 'Recruitment · Auto-battler',
     hook: 'Build a warband. Let it fight.',
@@ -65,7 +61,6 @@ export const GAME_GUIDES: {
   },
   {
     id: 'diablo2',
-    name: 'Emberwake',
     reference: 'Inspired by Diablo II',
     genre: 'Action RPG · Real-time',
     hook: 'Follow the embers. Bring better gear.',
@@ -83,7 +78,6 @@ export const GAME_GUIDES: {
   },
   {
     id: 'cartographer',
-    name: 'Dungeon Cartographer',
     reference: 'An original room-drafting roguelike',
     genre: 'Room drafting · Turn-based tactics',
     hook: 'Draw the dungeon you have to survive.',
@@ -101,7 +95,6 @@ export const GAME_GUIDES: {
   },
   {
     id: 'night-passage',
-    name: 'Night Passage',
     reference: 'An original action roguelite',
     genre: 'Arena combat · Real-time',
     hook: 'Carry a little light through the dark.',
@@ -118,3 +111,5 @@ export const GAME_GUIDES: {
     tip: 'Desktop keyboard and mouse required for combat. Watch orange warnings and use pillars for cover.',
   },
 ];
+
+export const GAME_GUIDES = guides.map((game) => ({ ...game, name: GAME_METADATA[game.id].name }));

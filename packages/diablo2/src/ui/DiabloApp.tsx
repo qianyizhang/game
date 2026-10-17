@@ -136,7 +136,7 @@ export default function DiabloApp() {
   const [mapVisible, setMapVisible] = useState(true);
   const [active, setActive] = useState(0);
   const canvas = useRef<HTMLCanvasElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDialogElement>(null);
   const aim = useRef<Point>({ x: 6, y: 5 });
   const pressed = useRef(new Set<string>());
   const replayInput = useRef<HTMLInputElement>(null),
@@ -205,37 +205,11 @@ export default function DiabloApp() {
   );
   useEffect(() => {
     const dialog = panelRef.current;
-    if (!panel || !dialog) return;
-    const previous = document.activeElement;
-    const siblings = Array.from(dialog.parentElement?.children ?? []).filter(
-      (node): node is HTMLElement => node instanceof HTMLElement && node !== dialog,
-    );
-    for (const node of siblings) node.inert = true;
-    const trap = (event: KeyboardEvent) => {
-      if (event.key !== 'Tab') return;
-      const controls = Array.from(
-        dialog.querySelectorAll<HTMLElement>(
-          'button:not(:disabled), input, select, [tabindex="0"]',
-        ),
-      );
-      const first = controls[0],
-        last = controls.at(-1);
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last?.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first?.focus();
-      }
-    };
-    dialog.addEventListener('keydown', trap);
-    dialog.querySelector<HTMLElement>('button')?.focus();
-    return () => {
-      for (const node of siblings) node.inert = false;
-      dialog.removeEventListener('keydown', trap);
-      if (previous instanceof HTMLElement && previous.isConnected) previous.focus();
-    };
-  }, [panel]);
+    if (!dialog) return;
+    if (panel) {
+      if (!dialog.open) dialog.showModal();
+    } else dialog.close();
+  }, [panel, selecting]);
   const ticking =
     !!session &&
     !selecting &&
@@ -306,10 +280,11 @@ export default function DiabloApp() {
         return;
       }
       if (key === 'escape') {
+        // The modal owns Escape through its native cancel event.
+        if (panel) return;
         event.preventDefault();
         release();
-        if (panel) setPanel(null);
-        else setPaused((p) => !p);
+        setPaused((p) => !p);
         return;
       }
       if (
@@ -1033,73 +1008,75 @@ export default function DiabloApp() {
         </p>
         <p key={state.log.length + state.log.join('').length}>{state.log.at(-1)}</p>
       </div>
-      {panel && (
-        <div
-          ref={panelRef}
-          className="ew-panel"
-          role="dialog"
-          aria-modal="true"
-          aria-label={
-            panel === 'developer'
-              ? 'Developer tools'
-              : panel === 'inventory'
-                ? 'Inventory and stash'
-                : panel === 'skills'
-                  ? 'Character and skills'
-                  : 'Quest journal'
-          }
-        >
-          <header>
-            <h2>
-              {panel === 'developer'
-                ? 'Developer tools'
-                : panel === 'inventory'
-                  ? 'Inventory & stash'
-                  : panel === 'skills'
-                    ? `${h.name} · ${h.className}`
-                    : 'The lantern chain'}
-            </h2>
-            <button autoFocus onClick={() => setPanel(null)}>
-              Close · Esc
-            </button>
-          </header>
-          {panel === 'developer' ? (
-            <DeveloperTools
-              state={state}
-              content={pack}
-              send={send}
-              start={(hero) => startSandbox(hero)}
-              close={() => {
-                setPanel(null);
-                setPaused(false);
-              }}
-            />
-          ) : panel === 'inventory' ? (
-            <InventoryPanel state={state} content={pack} send={send} />
-          ) : panel === 'skills' ? (
-            <CharacterPanel state={state} content={pack} send={send} />
-          ) : (
-            <>
-              <WorldAtlas state={state} content={pack} />
-              <h3>Recent events</h3>
-              {state.log.map((line, i) => (
-                <p key={i}>{line}</p>
-              ))}
-              <h3>Content mods</h3>
-              <p>
-                Export a content pack, change definitions, give it a new identity/version, then load
-                it to begin a new journey.
-              </p>
-              <button
-                onClick={() => download(JSON.stringify(pack, null, 2), 'emberwake-content.json')}
-              >
-                Export content pack
-              </button>
-              <button onClick={() => modInput.current?.click()}>Load content mod</button>
-            </>
-          )}
-        </div>
-      )}
+      <dialog
+        ref={panelRef}
+        className="ew-panel"
+        onCancel={(event) => {
+          event.preventDefault();
+          setPanel(null);
+        }}
+        aria-label={
+          panel === 'developer'
+            ? 'Developer tools'
+            : panel === 'inventory'
+              ? 'Inventory and stash'
+              : panel === 'skills'
+                ? 'Character and skills'
+                : 'Quest journal'
+        }
+      >
+        {panel && (
+          <>
+            <header>
+              <h2>
+                {panel === 'developer'
+                  ? 'Developer tools'
+                  : panel === 'inventory'
+                    ? 'Inventory & stash'
+                    : panel === 'skills'
+                      ? `${h.name} · ${h.className}`
+                      : 'The lantern chain'}
+              </h2>
+              <button onClick={() => setPanel(null)}>Close · Esc</button>
+            </header>
+            {panel === 'developer' ? (
+              <DeveloperTools
+                state={state}
+                content={pack}
+                send={send}
+                start={(hero) => startSandbox(hero)}
+                close={() => {
+                  setPanel(null);
+                  setPaused(false);
+                }}
+              />
+            ) : panel === 'inventory' ? (
+              <InventoryPanel state={state} content={pack} send={send} />
+            ) : panel === 'skills' ? (
+              <CharacterPanel state={state} content={pack} send={send} />
+            ) : (
+              <>
+                <WorldAtlas state={state} content={pack} />
+                <h3>Recent events</h3>
+                {state.log.map((line, i) => (
+                  <p key={i}>{line}</p>
+                ))}
+                <h3>Content mods</h3>
+                <p>
+                  Export a content pack, change definitions, give it a new identity/version, then
+                  load it to begin a new journey.
+                </p>
+                <button
+                  onClick={() => download(JSON.stringify(pack, null, 2), 'emberwake-content.json')}
+                >
+                  Export content pack
+                </button>
+                <button onClick={() => modInput.current?.click()}>Load content mod</button>
+              </>
+            )}
+          </>
+        )}
+      </dialog>
     </main>
   );
 }

@@ -127,3 +127,55 @@ test('glossary translates chat terms, finds abbreviations and teaches Block on p
   await expect(page.locator('.glossary-term')).toHaveCount(0);
   expect(errors).toEqual([]);
 });
+
+test('game aliases agree across play, policy review, guides and saved navigation', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    if (!localStorage.getItem('card-workshop.active-game'))
+      localStorage.setItem('card-workshop.active-game', 'spire');
+  });
+  for (const [alias, id, name] of [
+    ['blindside', 'balatro', 'Blindside'],
+    ['hearth', 'battlegrounds', 'Last Hearth'],
+    ['emberwake', 'diablo2', 'Emberwake'],
+  ]) {
+    await page.goto(`/?game=${alias}`);
+    await expect(page.getByRole('combobox', { name: 'Choose game' })).toHaveValue(id);
+    await expect(page).toHaveTitle(`${name} · Card Workshop`);
+    await page.goto(`/?guide=games&game=${alias}`);
+    await expect(
+      page.getByRole('link', { name: new RegExp(`Return to ${name}$`) }),
+    ).toHaveAttribute('href', `?game=${id}`);
+    await page.goto(`/?guide=glossary&game=${alias}&group=${alias}`);
+    await expect(page.getByRole('combobox', { name: 'Glossary topic' })).toHaveValue(id);
+    await expect(
+      page.getByRole('link', { name: `Return to ${name}`, exact: true }),
+    ).toHaveAttribute('href', `?game=${id}`);
+    await page.goto(`/?review=policy&game=${alias}`);
+    await expect(
+      page.getByRole('heading', { name: `${name} policy review`, exact: true }),
+    ).toBeVisible();
+  }
+  await page.goto('/?game=unknown');
+  await expect(page.getByRole('combobox', { name: 'Choose game' })).toHaveValue('spire');
+  for (const id of ['night-passage', 'cartographer', 'balatro']) {
+    await page.getByRole('combobox', { name: 'Choose game' }).selectOption(id);
+    await expect(page).toHaveURL(new RegExp(`game=${id}`));
+    await page.reload();
+    await expect(page.getByRole('combobox', { name: 'Choose game' })).toHaveValue(id);
+  }
+  await page.goto('/');
+  await expect(page.getByRole('combobox', { name: 'Choose game' })).toHaveValue('balatro');
+});
+
+test('an explicit game alias works when local storage is unavailable', async ({ page }) => {
+  await page.addInitScript(() => {
+    Storage.prototype.getItem = () => {
+      throw new Error('Storage unavailable');
+    };
+  });
+  await page.goto('/?game=emberwake');
+  await expect(page.getByRole('combobox', { name: 'Choose game' })).toHaveValue('diablo2');
+  await expect(page.getByRole('button', { name: 'Begin journey', exact: true })).toBeVisible();
+});

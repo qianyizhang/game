@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { GAME_GUIDES } from './games';
+import { canonicalGameId } from '../games';
 import { GLOSSARY, GLOSSARY_GROUPS, termHref } from './glossary';
 import { TermDiagram } from './TermDiagram';
 import './GameGuide.css';
@@ -11,9 +12,10 @@ export default function Glossary() {
     const selected = GLOSSARY.find((term) => term.id === params.get('term'));
     return {
       selected,
-      group: selected?.group ?? params.get('group') ?? 'all',
+      group:
+        selected?.group ?? canonicalGameId(params.get('group')) ?? params.get('group') ?? 'all',
       search: params.get('q') ?? '',
-      game: GAME_GUIDES.find((game) => game.id === params.get('game')),
+      game: GAME_GUIDES.find((game) => game.id === canonicalGameId(params.get('game'))),
     };
   });
   const [group, setGroup] = useState(

@@ -502,8 +502,12 @@
   margin-bottom: 12px;
 }
 .ew-panel {
-  position: absolute;
-  z-index: 10;
+  position: fixed;
+  margin: 0;
+  width: auto;
+  max-width: none;
+  bottom: auto;
+  color: inherit;
   top: 90px;
   left: 8%;
   right: 8%;
@@ -511,9 +515,12 @@
   border: 1px solid #b19162;
   box-shadow: 0 20px 80px #000b;
   padding: 24px;
-  max-height: 80vh;
+  max-height: min(80vh, calc(100dvh - 110px));
   overflow: auto;
   line-height: 1.5;
+}
+.ew-panel::backdrop {
+  background: #0008;
 }
 .ew-panel > header {
   display: flex;
@@ -815,6 +822,7 @@
   .ew-panel {
     padding: 15px;
     top: 120px;
+    max-height: calc(100dvh - 140px);
   }
   .ew-panel h2 {
     font-size: 24px;

@@ -212,6 +212,13 @@ make rollout files substantially larger than replays; retain them as experiment
 evidence under the existing retention rules.
 
 Open **Watch replay → Open rollouts**, selecting one or more `rollout.json` files.
+The viewer also accepts gzip containers (`.gz` or `.gzip`). Local files and linked
+responses are limited to 150 MB (150,000,000 bytes), with the same limit applied
+after decompression; invalid UTF-8 and corrupt containers are rejected. Original
+downloads retain the input bytes, including a UTF-8 BOM or compressed container.
+For linked gzip artifacts, serve the original container without HTTP content
+decoding; otherwise open the local file to retain its original bytes.
+
 Filter runs by policy, difficulty, controls, outcome, weapon or seed; select an episode,
 then use first/previous/next/last, a decision number or a region/chamber/phase marker.
 **Before decision** and **After decision** seek the replay to that exact boundary.

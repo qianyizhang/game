@@ -1,5 +1,5 @@
-export type GameId =
-  'balatro' | 'spire' | 'battlegrounds' | 'diablo2' | 'cartographer' | 'night-passage';
+import { GAME_METADATA, type GameId } from './games';
+export type { GameId } from './games';
 export function GamePicker({
   current,
   onSwitch,
@@ -16,12 +16,12 @@ export function GamePicker({
         value={current}
         onChange={(event) => onSwitch(event.target.value as GameId)}
       >
-        <option value="balatro">♠ Blindside · Balatro</option>
-        <option value="spire">↑ Slay the Spire</option>
-        <option value="battlegrounds">⚑ Last Hearth · Battlegrounds</option>
-        <option value="cartographer">◇ Dungeon Cartographer</option>
-        <option value="diablo2">✧ Emberwake · Diablo II</option>
-        <option value="night-passage">☾ Night Passage · Action Roguelite</option>
+        {Object.entries(GAME_METADATA).map(([id, game]) => (
+          <option key={id} value={id}>
+            {game.icon} {game.name}
+            {game.detail ? ` · ${game.detail}` : ''}
+          </option>
+        ))}
       </select>
       <a className="game-guide-entry" href={`?guide=games&game=${current}`}>
         Explore all games →

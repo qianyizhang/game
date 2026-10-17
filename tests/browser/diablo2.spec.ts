@@ -23,6 +23,86 @@ test.beforeEach(() => {
   mkdirSync(review, { recursive: true });
 });
 
+test('modal panels pause play, contain focus, switch with shortcuts and restore their opener', async ({
+  page,
+}, info) => {
+  await page.goto('/?game=emberwake');
+  await page.getByRole('button', { name: 'Begin journey', exact: true }).click();
+  await page.getByRole('button', { name: '→ Briarfen Enter from the road', exact: true }).click();
+  const canvas = page.locator('.ew-canvas-wrap canvas');
+  const opener = page.getByRole('button', { name: 'Inventory · I', exact: true });
+  await canvas.focus();
+  await page.keyboard.down('d');
+  await opener.click();
+  await page.keyboard.up('d');
+  const saved = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
+  expect(importSession(saved).state.player.direction).toEqual({ x: 0, y: 0 });
+  const dialog = page.getByRole('dialog');
+  const close = dialog.getByRole('button', { name: 'Close · Esc', exact: true });
+  await expect(dialog).toHaveAccessibleName('Inventory and stash');
+  await expect(close).toBeFocused();
+  const tick = await canvas.getAttribute('data-ticks');
+  await page.keyboard.press('d');
+  await page.waitForTimeout(200);
+  await expect(canvas).toHaveAttribute('data-ticks', tick!);
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(opener).toBeFocused();
+  await expect.poll(() => canvas.getAttribute('data-ticks')).not.toBe(tick);
+  await opener.click();
+  // The game picker is outside the game root; native modality must exclude it too.
+  await page.getByRole('combobox', { name: 'Choose game' }).evaluate((element) => element.focus());
+  await expect(close).toBeFocused();
+  await page.keyboard.press('Shift+Tab');
+  // Native dialogs can traverse browser chrome; they must never focus the inert page.
+  expect(
+    await dialog.evaluate(
+      (element) =>
+        document.activeElement === document.body || element.contains(document.activeElement),
+    ),
+  ).toBe(true);
+  await page.keyboard.press('Tab');
+  await expect(close).toBeFocused();
+  await page.keyboard.press('k');
+  await expect(dialog).toHaveAccessibleName('Character and skills');
+  await page.keyboard.press('j');
+  await expect(dialog).toHaveAccessibleName('Quest journal');
+  await page.screenshot({ path: info.outputPath('modal-desktop.png') });
+  await page.setViewportSize({ width: 390, height: 844 });
+  const bounds = await dialog.boundingBox();
+  expect(bounds).not.toBeNull();
+  expect(bounds!.x).toBeGreaterThanOrEqual(0);
+  expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(390);
+  expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(844);
+  await page.evaluate(
+    () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
+  );
+  await page.screenshot({ path: info.outputPath('modal-phone.png') });
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(opener).toBeFocused();
+  await opener.click();
+  await close.click();
+  await expect(dialog).toBeHidden();
+  await expect(opener).toBeFocused();
+  await opener.click();
+  await page.keyboard.press('j');
+  const choosing = page.waitForEvent('filechooser');
+  await dialog.getByRole('button', { name: 'Load content mod', exact: true }).click();
+  await (
+    await choosing
+  ).setFiles({
+    name: 'content.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify(BASE_CONTENT)),
+  });
+  await page.getByRole('button', { name: 'Return to current journey', exact: true }).click();
+  await expect(dialog).toHaveAccessibleName('Quest journal');
+  await expect(dialog).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+});
+
 test(
   'real hero selection, town shopping, movement, spells, pause, and save reload',
   { tag: '@smoke' },
@@ -95,7 +175,16 @@ test(
     await page.keyboard.press('i');
     await expect(page.getByRole('dialog', { name: 'Inventory and stash' })).toBeVisible();
     await page.keyboard.press('Shift+Tab');
-    await expect(page.getByRole('dialog').locator('button').last()).toBeFocused();
+    expect(
+      await page
+        .getByRole('dialog')
+        .evaluate(
+          (element) =>
+            document.activeElement === document.body || element.contains(document.activeElement),
+        ),
+    ).toBe(true);
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('button', { name: 'Close · Esc', exact: true })).toBeFocused();
     await page.keyboard.press('Escape');
     await page.reload();
     await expect(

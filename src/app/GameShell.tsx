@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { GamePicker, type GameId } from './GamePicker';
+import { GAME_METADATA } from './games';
 
 interface Controls {
   error: string;
@@ -68,7 +69,7 @@ export function GameShell({
           className={`game-choice ${view === 'play' ? 'selected' : ''}`}
           onClick={() => onView('play')}
         >
-          <span>{gameId === 'balatro' ? '♠' : gameId === 'spire' ? '↑' : '⚑'}</span>
+          <span>{GAME_METADATA[gameId].icon}</span>
           <div>
             <strong>{title}</strong>
             <small>{subtitle}</small>

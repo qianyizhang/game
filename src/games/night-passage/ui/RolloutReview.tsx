@@ -3,10 +3,17 @@ import { auditRollout, parseRollout, type Rollout, type RolloutAudit } from '../
 import type { StateView } from '../domain/types';
 import './rollout-review.css';
 import { DecisionNavigator } from '../../../shared/policy/Navigator';
+import {
+  assertFetchedArtifact,
+  decodeArtifact,
+  isGzip,
+  MAX_ARTIFACT_BYTES,
+  readArtifactStream,
+} from '../../../shared/policy/artifact';
 
 interface Entry {
   name: string;
-  original: string;
+  original: Uint8Array<ArrayBuffer>;
   sourceUrl: string | null;
   rollout: Rollout;
   audit: RolloutAudit;
@@ -20,8 +27,12 @@ interface Props {
   children: ReactNode;
 }
 const json = (value: unknown) => JSON.stringify(value, null, 2);
-function download(name: string, content: string) {
-  const url = URL.createObjectURL(new Blob([content], { type: 'application/json' }));
+function download(
+  name: string,
+  content: string | Uint8Array<ArrayBuffer>,
+  type = 'application/json',
+) {
+  const url = URL.createObjectURL(new Blob([content], { type }));
   const link = document.createElement('a');
   link.href = url;
   link.download = name;
@@ -72,11 +83,15 @@ export default function RolloutReview({
     [open, beginImport],
   );
   const read = useCallback(
-    async (text: string, name: string, sourceUrl: string | null = null): Promise<Entry> => {
-      const rollout = parseRollout(text);
+    async (
+      original: Uint8Array<ArrayBuffer>,
+      name: string,
+      sourceUrl: string | null = null,
+    ): Promise<Entry> => {
+      const rollout = parseRollout(await decodeArtifact(original));
       return {
         name,
-        original: text,
+        original,
         sourceUrl,
         rollout,
         audit: await auditRollout(rollout, undefined, { continuousTolerance: 1e-10 }),
@@ -96,7 +111,11 @@ export default function RolloutReview({
         throw new Error('Rollout links must use this site. Open a local file below.');
       const response = await fetch(url, { signal: controller.signal });
       if (!response.ok) throw new Error('Rollout file unavailable. Open a local file below.');
-      const entry = await read(await response.text(), path, path);
+      if (!response.body) throw new Error('Rollout response has no readable body.');
+      const original = await readArtifactStream(response.body);
+      if (controller.signal.aborted || !isCurrentImport(generation)) return;
+      assertFetchedArtifact(original, url.pathname, response.headers.get('content-encoding'));
+      const entry = await read(original, path, path);
       if (controller.signal.aborted || !isCurrentImport(generation)) return;
       setEntries([entry]);
       let selected = 0;
@@ -164,7 +183,7 @@ export default function RolloutReview({
           <input
             type="file"
             multiple
-            accept=".json,application/json"
+            accept=".json,.gz,.gzip,application/json,application/gzip"
             aria-label="Open policy rollouts"
             onChange={(event) => {
               const files = Array.from(event.target.files ?? []);
@@ -177,7 +196,12 @@ export default function RolloutReview({
                   failures: string[] = [];
                 for (const file of files) {
                   try {
-                    loaded.push(await read(await file.text(), file.name));
+                    if (!isCurrentImport(generation)) return;
+                    if (file.size > MAX_ARTIFACT_BYTES)
+                      throw new Error('Rollout exceeds its byte limit.');
+                    const original = new Uint8Array(await file.arrayBuffer());
+                    if (!isCurrentImport(generation)) return;
+                    loaded.push(await read(original, file.name));
                   } catch (error) {
                     failures.push(
                       `${file.name}: ${error instanceof Error ? error.message : 'Invalid rollout.'}`,
@@ -465,7 +489,15 @@ export default function RolloutReview({
             <p>No policy decisions: this episode stopped after setup.</p>
           )}
           <div className="np-tools">
-            <button onClick={() => download('rollout.json', active.original)}>
+            <button
+              onClick={() =>
+                download(
+                  isGzip(active.original) ? 'rollout.json.gzip' : 'rollout.json',
+                  active.original,
+                  isGzip(active.original) ? 'application/gzip' : 'application/json',
+                )
+              }
+            >
               Download original rollout
             </button>
             <button onClick={() => download('replay.json', active.rollout.replay)}>
