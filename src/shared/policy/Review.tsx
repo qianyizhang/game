@@ -1,14 +1,9 @@
+import { downloadFile } from '../download';
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { auditRollout, parseRollout } from './rollout';
 import type { EpisodeAdapter, Json, PolicyAudit, PolicyFactory, PolicyRollout } from './types';
 import { DecisionNavigator } from './Navigator';
-import {
-  assertFetchedArtifact,
-  decodeArtifact,
-  isGzip,
-  MAX_ARTIFACT_BYTES,
-  readArtifactStream,
-} from './artifact';
+import { fetchArtifact, decodeArtifact, isGzip, MAX_ARTIFACT_BYTES } from './artifact';
 import './review.css';
 
 interface Entry {
@@ -29,18 +24,6 @@ interface Props<S, O, C> {
   renderState: (state: S) => ReactNode;
 }
 const json = (value: unknown) => JSON.stringify(value, null, 2);
-function download(
-  name: string,
-  contents: string | Uint8Array<ArrayBuffer>,
-  type = 'application/json',
-) {
-  const url = URL.createObjectURL(new Blob([contents], { type }));
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = name;
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
 
 /** Original evidence is retained even when its game replay cannot reconstruct. */
 export function PolicyReview<S, O, C>({
@@ -119,14 +102,8 @@ export function PolicyReview<S, O, C>({
     const current = ++generation.current;
     setNotice('Loading and auditing rollout…');
     void (async () => {
-      const url = new URL(path, location.href);
-      if (url.origin !== location.origin)
-        throw new Error('Rollout links must use this site. Open a local file below.');
-      const response = await fetch(url, { signal: controller.signal });
-      if (!response.ok) throw new Error('Rollout file unavailable. Open a local file below.');
-      if (!response.body) throw new Error('Rollout response has no readable body.');
-      const original = await readArtifactStream(response.body);
-      assertFetchedArtifact(original, url.pathname, response.headers.get('content-encoding'));
+      const original = await fetchArtifact(path, controller.signal);
+      if (controller.signal.aborted || current !== generation.current) return;
       const entry = await read(original, path, path);
       if (controller.signal.aborted || current !== generation.current) return;
       setEntries([entry]);
@@ -471,19 +448,19 @@ export function PolicyReview<S, O, C>({
           <div className="policy-review-controls">
             <button
               onClick={() =>
-                download(
-                  active.downloadName,
+                downloadFile(
                   active.original,
+                  active.downloadName,
                   isGzip(active.original) ? 'application/gzip' : 'application/json',
                 )
               }
             >
               Download original rollout
             </button>
-            <button onClick={() => download('replay.json', json(active.run.replay))}>
+            <button onClick={() => downloadFile(json(active.run.replay), 'replay.json')}>
               Download replay
             </button>
-            <button onClick={() => download('audit.json', json(active.audit))}>
+            <button onClick={() => downloadFile(json(active.audit), 'audit.json')}>
               Download current audit
             </button>
           </div>

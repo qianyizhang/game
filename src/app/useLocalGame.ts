@@ -1,3 +1,4 @@
+import { downloadFile } from '../shared/download';
 import { beginEvidence, recordAccepted } from '../shared/evidence/recorder';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { MAX_REPLAY_SIZE, replayCodec, type Session } from '../shared/replay';
@@ -230,7 +231,7 @@ function useGameSession<S extends { seed: string }, C>(
     }
   };
   const download = () =>
-    downloadJSON(
+    downloadFile(
       activeCodec.encode(session),
       `${practice ? 'practice-' : ''}${session.replay.game}-${session.state.seed.replace(/[^a-z0-9_-]/gi, '_')}.json`,
     );
@@ -257,12 +258,4 @@ function useGameSession<S extends { seed: string }, C>(
     returnToNormal,
     resumePractice,
   };
-}
-export function downloadJSON(text: string, name: string) {
-  const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = name;
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

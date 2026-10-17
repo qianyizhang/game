@@ -42,11 +42,11 @@ export default [
   },
   {
     files: [
+      'src/**/*.{ts,tsx}',
       'packages/session-review/src/**/*.{ts,tsx}',
+      'packages/dcc-workbench/src/**/*.{ts,tsx}',
       'packages/diablo2/src/ui/**/*.{ts,tsx}',
       'packages/repo-canvas/src/ui/**/*.{ts,tsx}',
-      'src/games/cartographer/ui/**/*.{ts,tsx}',
-      'src/games/night-passage/ui/**/*.{ts,tsx}',
     ],
     plugins: { 'react-hooks': reactHooks },
     rules: {

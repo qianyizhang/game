@@ -5,7 +5,7 @@ import {
   encodeChallenge,
   type Challenge,
 } from '../shared/challenges';
-import { downloadJSON } from './useLocalGame';
+import { downloadFile } from '../shared/download';
 import { ChallengeArt, ChallengeSymbol } from '../shared/art/ChallengeArt';
 import { useChallengeProgress } from './useChallengeProgress';
 
@@ -34,18 +34,19 @@ export function ChallengePlayer<S extends { seed: string }, C>({
     showHint,
     endAttempt,
   } = useChallengeProgress(definition);
+  const { current: attempt, previous } = progress;
   const file = useRef<HTMLInputElement>(null);
   const title = useRef<HTMLHeadingElement>(null);
   const reviewTitle = useRef<HTMLHeadingElement>(null);
-  const result = attemptResult(definition, progress.current);
+  const result = attemptResult(definition, attempt);
   const finished = result.status !== 'active';
   useEffect(() => {
     (finished ? reviewTitle : title).current?.focus();
   }, [finished, revision]);
-  const previousResult = progress.previous ? attemptResult(definition, progress.previous) : null;
+  const previousResult = previous ? attemptResult(definition, previous) : null;
   const decisions = useMemo(
-    () => (finished ? challengeDecisions(definition, progress.current) : []),
-    [definition, finished, progress.current],
+    () => (finished ? challengeDecisions(definition, attempt) : []),
+    [definition, finished, attempt],
   );
   return (
     <article className="challenge-player">
@@ -67,20 +68,20 @@ export function ChallengePlayer<S extends { seed: string }, C>({
         <p className="challenge-constraints">{definition.constraints}</p>
         <div className="challenge-actions">
           {!finished && (
-            <button disabled={progress.current.hints >= definition.hints.length} onClick={showHint}>
+            <button disabled={attempt.hints >= definition.hints.length} onClick={showHint}>
               <ChallengeSymbol kind="hint" />
-              {progress.current.hints === definition.hints.length
+              {attempt.hints === definition.hints.length
                 ? 'All hints shown'
-                : progress.current.hints
+                : attempt.hints
                   ? 'Show next hint'
                   : 'Show a hint'}{' '}
-              · {progress.current.hints}/{definition.hints.length}
+              · {attempt.hints}/{definition.hints.length}
             </button>
           )}
           {!finished && <button onClick={endAttempt}>End attempt & review</button>}
           <button
             onClick={() =>
-              downloadJSON(encodeChallenge(progress), `${definition.id}-attempts.json`)
+              downloadFile(encodeChallenge(progress), `${definition.id}-attempts.json`)
             }
           >
             Export attempts
@@ -105,9 +106,9 @@ export function ChallengePlayer<S extends { seed: string }, C>({
             });
           }}
         />
-        {!!progress.current.hints && (
+        {!!attempt.hints && (
           <ol className="challenge-hints">
-            {definition.hints.slice(0, progress.current.hints).map((hint) => (
+            {definition.hints.slice(0, attempt.hints).map((hint) => (
               <li key={hint}>{hint}</li>
             ))}
           </ol>
@@ -131,7 +132,7 @@ export function ChallengePlayer<S extends { seed: string }, C>({
               </div>
             </div>
             <span>
-              {progress.current.hints} / {definition.hints.length} hints used
+              {attempt.hints} / {definition.hints.length} hints used
             </span>
           </div>
           <p>{result.summary}</p>
@@ -157,8 +158,8 @@ export function ChallengePlayer<S extends { seed: string }, C>({
                 ))}
                 <tr>
                   <th scope="row">Hints used</th>
-                  <td>{progress.current.hints}</td>
-                  {progress.previous && <td>{progress.previous.hints}</td>}
+                  <td>{attempt.hints}</td>
+                  {previous && <td>{previous.hints}</td>}
                 </tr>
               </tbody>
             </table>
@@ -179,7 +180,7 @@ export function ChallengePlayer<S extends { seed: string }, C>({
         </section>
       )}
       <div className="challenge-board" key={revision}>
-        {renderBoard({ state: progress.current.session.state, dispatch, finished })}
+        {renderBoard({ state: attempt.session.state, dispatch, finished })}
       </div>
       {finished && (
         <section className="challenge-decisions" aria-label="Your decisions">

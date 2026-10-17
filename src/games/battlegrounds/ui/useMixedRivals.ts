@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useEffectEvent, useState } from 'react';
 import { useLocalGame } from '../../../app/useLocalGame';
 import { advanceRivals } from '../application/arena-controller';
 import { arenaSession, arenaSessionV2 } from '../application/arena';
@@ -9,9 +9,8 @@ export function useMixedRivals(enabled: boolean) {
   const game = useLocalGame(arenaSession, 'HEARTH-01', enabled);
   const [controllerError, setControllerError] = useState('');
   const [difficulty, setDifficulty] = useState<Difficulty>('standard');
-  // Imported prefixes may stop inside a rival turn. Resume through the same journaled controller.
-  useEffect(() => {
-    if (!enabled || !game?.state.arena.config) return;
+  const resumeRivals = useEffectEvent(() => {
+    if (!game?.state.arena.config) return;
     try {
       const commands = advanceRivals(game.session);
       if (commands.length) game.dispatchMany(commands);
@@ -19,7 +18,11 @@ export function useMixedRivals(enabled: boolean) {
     } catch (error) {
       setControllerError(String(error));
     }
-    // Session identity changes only after a committed action, restore or restart.
+  });
+  // Imported prefixes may stop inside a rival turn. Resume through the same journaled controller.
+  // Only committed actions, restore/restart or mode activation schedule more rival work.
+  useEffect(() => {
+    if (enabled) resumeRivals();
   }, [game?.session, enabled]);
   if (!game) return null;
   const dispatch = (command: BGCommand) => {

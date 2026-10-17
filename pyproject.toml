@@ -6,7 +6,7 @@ dependencies = []
 
 [dependency-groups]
 dev = [
-  "ruff==0.16.10",
+  "ruff==0.17.1",
   "mypy==2.4.0",
   "fake-bpy-module-4.5==20260730",
 ]

@@ -23,6 +23,21 @@ export function assertFetchedArtifact(
     'This gzip artifact URL returned non-gzip bytes. The server may have decoded it or the file may be misnamed. Open the original local file below to inspect its actual bytes.',
   );
 }
+/** Both inspectors enforce the same origin, size and original-container contract. */
+export async function fetchArtifact(
+  path: string,
+  signal: AbortSignal,
+): Promise<Uint8Array<ArrayBuffer>> {
+  const url = new URL(path, location.href);
+  if (url.origin !== location.origin)
+    throw new Error('Rollout links must use this site. Open a local file below.');
+  const response = await fetch(url, { signal });
+  if (!response.ok) throw new Error('Rollout file unavailable. Open a local file below.');
+  if (!response.body) throw new Error('Rollout response has no readable body.');
+  const original = await readArtifactStream(response.body);
+  assertFetchedArtifact(original, url.pathname, response.headers.get('content-encoding'));
+  return original;
+}
 function byteLimit(maxBytes: number) {
   if (!Number.isSafeInteger(maxBytes) || maxBytes < 1 || maxBytes > MAX_ARTIFACT_BYTES)
     throw new Error('Invalid rollout byte limit.');

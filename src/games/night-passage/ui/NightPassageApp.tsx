@@ -1,3 +1,4 @@
+import { downloadFile } from '../../../shared/download';
 import { useEffect, useRef, useState } from 'react';
 import { openLiveChronicle, SAVE_KEY } from '../application/live-chronicle';
 import {
@@ -41,14 +42,6 @@ const emptyInput = (): Input => ({
   cast: false,
   call: false,
 });
-function downloadText(text: string, name = 'night-passage.json'): void {
-  const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
-  const anchor = document.createElement('a');
-  anchor.href = url;
-  anchor.download = name;
-  anchor.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
 export default function NightPassageApp() {
   return new URLSearchParams(location.search).get('watch') === '1' ? (
     <ReplayViewer />
@@ -315,7 +308,7 @@ function PassageGame() {
           <button
             onClick={() => {
               setPaused(true);
-              downloadText(live.exportReplay());
+              downloadFile(live.exportReplay(), 'night-passage.json');
             }}
           >
             Export chronicle
@@ -409,7 +402,7 @@ function PassageGame() {
             <button
               disabled={!newSeed.trim()}
               onClick={() => {
-                const result = live.reset(newSeed.trim(), downloadText);
+                const result = live.reset(newSeed.trim(), downloadFile);
                 if (result.error) {
                   setError(result.error);
                   return;
@@ -441,7 +434,7 @@ function PassageGame() {
         <div>
           {saveState.original !== null && (
             <button
-              onClick={() => downloadText(saveState.original!, 'night-passage-unreadable.json')}
+              onClick={() => downloadFile(saveState.original!, 'night-passage-unreadable.json')}
             >
               Download original save
             </button>

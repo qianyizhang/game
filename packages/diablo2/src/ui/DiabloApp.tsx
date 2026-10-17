@@ -1,3 +1,4 @@
+import { downloadFile } from '../../../../src/shared/download';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { generatedDungeonContent } from '../domain/generated-dungeon';
 import { BASE_CONTENT } from '../domain/content';
@@ -51,15 +52,6 @@ function Portrait({ id, color }: { id: string; color: string }) {
     ctx.restore();
   }, [id, color]);
   return <canvas ref={ref} width={200} height={160} aria-hidden="true" />;
-}
-function download(text: string, filename: string): void {
-  const blob = new Blob([text], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 const hitCeilingLabel = (fraction: number | null): string =>
   fraction === null ? 'none' : `${Math.round(fraction * 100)}% max life (minimum 1 damage)`;
@@ -589,7 +581,7 @@ export default function DiabloApp() {
               </button>{' '}
               <button
                 onClick={() =>
-                  download(
+                  downloadFile(
                     localStorage.getItem(campaign.key) ?? campaign.bytes,
                     `emberwake-campaign-v${campaign.version}.json`,
                   )
@@ -603,7 +595,7 @@ export default function DiabloApp() {
             <p className="ew-fine">
               Your original demo journey is preserved separately. This expanded world starts a new
               journey.{' '}
-              <button onClick={() => download(legacySave, 'emberwake-demo-v1.json')}>
+              <button onClick={() => downloadFile(legacySave, 'emberwake-demo-v1.json')}>
                 Export original demo save
               </button>
             </p>
@@ -612,7 +604,9 @@ export default function DiabloApp() {
             <button onClick={() => replayInput.current?.click()}>Import journey</button>
             <button onClick={() => modInput.current?.click()}>Load content mod</button>
             <button
-              onClick={() => download(JSON.stringify(content, null, 2), 'emberwake-content.json')}
+              onClick={() =>
+                downloadFile(JSON.stringify(content, null, 2), 'emberwake-content.json')
+              }
             >
               Export content pack
             </button>
@@ -743,7 +737,7 @@ export default function DiabloApp() {
         <button
           onClick={() => {
             release();
-            download(exportSession(session), 'emberwake-journey.json');
+            downloadFile(exportSession(session), 'emberwake-journey.json');
           }}
         >
           Export journey
@@ -893,7 +887,7 @@ export default function DiabloApp() {
                     <h2>Dawn belongs to everyone.</h2>
                     <p>{chapter.conclusion}</p>
                     <button
-                      onClick={() => download(exportSession(session), 'emberwake-victory.json')}
+                      onClick={() => downloadFile(exportSession(session), 'emberwake-victory.json')}
                     >
                       Export completed journey
                     </button>
@@ -1067,7 +1061,9 @@ export default function DiabloApp() {
                   load it to begin a new journey.
                 </p>
                 <button
-                  onClick={() => download(JSON.stringify(pack, null, 2), 'emberwake-content.json')}
+                  onClick={() =>
+                    downloadFile(JSON.stringify(pack, null, 2), 'emberwake-content.json')
+                  }
                 >
                   Export content pack
                 </button>

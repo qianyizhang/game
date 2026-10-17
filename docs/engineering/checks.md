@@ -7,10 +7,12 @@ Use exact Node/npm pins via `nvm use` and Python via `uv`. Browser and Blender r
 | `npm run check:maintenance`        | Formatting, lint, types, Python, tools/DCC tests, inventory/link checks, production build     |
 | `npm run check`                    | Maintained gate, whole-repo format, app behavior/regressions, simulations (excludes geometry) |
 | `npm run check:full`               | Complete check suite including geometry test project                                          |
+| `npm run format:maintenance`       | Whole-repo formatting and inventory/link checks for documentation changes                     |
 | `npm run test`                     | Application tests only; `test:watch` uses the same selection                                  |
 | `npm run test:geometry`            | Geometry project only (3D animation, deformation and recording regressions)                   |
 | `npm run test:browser`             | Browser interactions, persistence, rendering, exported artifact checks                        |
 | `npm run test:browser:smoke`       | Five game journeys selected by `@smoke` for automatic GitHub CI                               |
+| `npm run test:browser:canvas`      | Repo Canvas standalone and hosted-app journeys on a disposable repository                     |
 | `npm run test:browser:review`      | Opt-in 3D visual contact sheets for human inspection                                          |
 | `npm run dcc -- verify`            | Validates artist source, recipe, and published GLB against receipts                           |
 | `npm run maintenance -- inventory` | Read-only occurrences, hashes, asset classifications, tracked-text refs                       |
@@ -18,20 +20,26 @@ Use exact Node/npm pins via `nvm use` and Python via `uv`. Browser and Blender r
 
 All maintained source requires enforced check coverage. Passing a slice does not establish whole-repo or aesthetic acceptance. See [testing policy](testing.md) for strategy.
 
+The maintained gate runs formatting and inventory once through `format:maintenance`.
+All inventoried Markdown is checked for repository-local link targets, including root
+documents, research and package READMEs. React hook checks cover every application UI,
+shared hook and workspace UI.
+
 ## Gate selection
 
 - **Application & tool code**: Run `npm run check` for game rules, saves, UI, SVG, and tools.
 - **Documentation-only work**: Run `npm run format:maintenance` (or focused Prettier and inventory checks). Skip application test suites and simulations.
 - **3D / DCC work**: Run `npm run check:full` for changes affecting 3D construction, animation, rendering/export or DCC delivery (`src/art3d`, DCC sources/delivery, or their shared helpers/dependencies). Geometry assertions or configuration affecting their behavior also use this gate. Use `npm run test:geometry -- <file>` for focused iteration.
-- **CI**: Runs the non-geometry checks in parallel scopes and `npm run test:browser:smoke`.
+- **CI**: Runs the non-geometry checks in parallel scopes, `npm run test:browser:smoke` and `npm run test:browser:canvas`.
   Geometry and full browser rendering/export verification are local completion gates.
 
 GitHub targets **under two minutes of execution**, excluding queue delay. Its four
 maintenance scopes run formatting/lint, types/Python, rules/simulations, and tools/DCC
 contracts/build independently; inventory and hydration checks run before each scope.
 The browser job runs one existing recruitment/play/save-reload journey for Blindside,
-Spire, Last Hearth, Emberwake and Dungeon Cartographer, with one worker and failure artifacts. Jobs have a
-five-minute failure ceiling; that ceiling is not the performance target or proof of it.
+Spire, Last Hearth, Emberwake and Dungeon Cartographer, followed by Repo Canvas's four
+standalone/hosted journeys. Both runners use one worker and retain failure artifacts.
+Jobs have a five-minute failure ceiling; that ceiling is not the performance target or proof of it.
 
 The 2026-10-11 full hosted run spent **499 seconds** in geometry. Its browser jobs took
 **11.6–33.5 minutes**, with a single canid journey taking **4.2 minutes**. Removing geometry
@@ -46,6 +54,11 @@ asset's loading, motion, phone layout and export. The separate `visual-review` p
 generates 29 contact sheets on demand; it does not provide an automated aesthetic verdict.
 
 ### Browser prerequisites
+
+Playwright remains pinned to **1.63.0**. On 2026-10-18, 1.64.1 twice failed the hosted
+Repo Canvas rejection journey after viewport resizing: its reported click never reached
+the enabled form. The unchanged journey passed with isolated 1.63.0 and the same app
+dependencies. Reassess later versions with `test:browser:canvas` before changing the pin.
 
 `npm run test:browser` selects three explicit projects. Each case belongs to exactly one:
 

@@ -1,9 +1,15 @@
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { test } from 'node:test';
-import { checkDocumentLinks, checkInventory, checkNativeHydration } from './governance.mjs';
+import {
+  checkDocumentLinks,
+  checkGovernance,
+  checkInventory,
+  checkNativeHydration,
+} from './governance.mjs';
 
 await test('new source and scattered documentation cannot silently bypass governance', () => {
   const errors = checkInventory(['scripts/new.py', 'docs/another-review.md', 'session-review.md']);
@@ -43,6 +49,31 @@ await test('ignored local receipts cannot hide broken clean-checkout documentati
     assert.equal(errors.length, 2);
     assert.match(errors[0], /unavailable in a clean checkout.*receipt.json/);
     assert.match(errors[1], /Broken local link.*missing.md/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+await test('the governance command checks root, research and package documentation links', () => {
+  const root = mkdtempSync(join(tmpdir(), 'workshop-documents-'));
+  const documents = [
+    'README.md',
+    'AGENTS.md',
+    'docs/research/study.md',
+    'packages/example/README.md',
+  ];
+  try {
+    execFileSync('git', ['init', '--quiet', root]);
+    for (const pin of ['.node-version', '.nvmrc'])
+      writeFileSync(join(root, pin), process.versions.node);
+    for (const document of documents) {
+      mkdirSync(dirname(join(root, document)), { recursive: true });
+      writeFileSync(join(root, document), '[missing](missing.md)');
+    }
+    const { errors } = checkGovernance(root);
+    assert.equal(errors.length, documents.length);
+    for (const document of documents)
+      assert.ok(errors.includes(`Broken local link in ${document}: missing.md`));
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

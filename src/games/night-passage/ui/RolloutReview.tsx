@@ -1,14 +1,14 @@
+import { downloadFile } from '../../../shared/download';
 import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { auditRollout, parseRollout, type Rollout, type RolloutAudit } from '../agent/rollout';
 import type { StateView } from '../domain/types';
 import './rollout-review.css';
 import { DecisionNavigator } from '../../../shared/policy/Navigator';
 import {
-  assertFetchedArtifact,
+  fetchArtifact,
   decodeArtifact,
   isGzip,
   MAX_ARTIFACT_BYTES,
-  readArtifactStream,
 } from '../../../shared/policy/artifact';
 
 interface Entry {
@@ -27,18 +27,6 @@ interface Props {
   children: ReactNode;
 }
 const json = (value: unknown) => JSON.stringify(value, null, 2);
-function download(
-  name: string,
-  content: string | Uint8Array<ArrayBuffer>,
-  type = 'application/json',
-) {
-  const url = URL.createObjectURL(new Blob([content], { type }));
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = name;
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
 function linkedDecision(count: number) {
   const raw = new URL(location.href).searchParams.get('decision');
   if (raw === null) return 0;
@@ -106,15 +94,8 @@ export default function RolloutReview({
     const generation = beginImport();
     setNotice('Loading and auditing rollout…');
     void (async () => {
-      const url = new URL(path, location.href);
-      if (url.origin !== location.origin)
-        throw new Error('Rollout links must use this site. Open a local file below.');
-      const response = await fetch(url, { signal: controller.signal });
-      if (!response.ok) throw new Error('Rollout file unavailable. Open a local file below.');
-      if (!response.body) throw new Error('Rollout response has no readable body.');
-      const original = await readArtifactStream(response.body);
+      const original = await fetchArtifact(path, controller.signal);
       if (controller.signal.aborted || !isCurrentImport(generation)) return;
-      assertFetchedArtifact(original, url.pathname, response.headers.get('content-encoding'));
       const entry = await read(original, path, path);
       if (controller.signal.aborted || !isCurrentImport(generation)) return;
       setEntries([entry]);
@@ -491,19 +472,19 @@ export default function RolloutReview({
           <div className="np-tools">
             <button
               onClick={() =>
-                download(
-                  isGzip(active.original) ? 'rollout.json.gzip' : 'rollout.json',
+                downloadFile(
                   active.original,
+                  isGzip(active.original) ? 'rollout.json.gzip' : 'rollout.json',
                   isGzip(active.original) ? 'application/gzip' : 'application/json',
                 )
               }
             >
               Download original rollout
             </button>
-            <button onClick={() => download('replay.json', active.rollout.replay)}>
+            <button onClick={() => downloadFile(active.rollout.replay, 'replay.json')}>
               Download replay
             </button>
-            <button onClick={() => download('audit.json', json(active.audit))}>
+            <button onClick={() => downloadFile(json(active.audit), 'audit.json')}>
               Download current audit
             </button>
           </div>

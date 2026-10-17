@@ -98,6 +98,6 @@ The local API provides `GET /api/state`, `PUT /api/state`, `GET /api/source?path
 - `npm run typecheck --workspace @card-workshop/repo-canvas`
 - `npm run test --workspace @card-workshop/repo-canvas`
 - `npm run build --workspace @card-workshop/repo-canvas` builds the UI. The hosted app uses the stdio server; the standalone preview uses the local CLI. Built files alone do not provide repository operations.
-- `npx playwright test --config packages/repo-canvas/playwright.config.ts` runs the disposable-repo browser journey with the existing startup guard. On macOS, request approved execution outside the restricted sandbox from the first launch.
+- `npm run test:browser:canvas` runs the disposable-repo browser journeys with the existing startup guard; CI runs these alongside game smoke checks. On macOS, request approved execution outside the restricted sandbox from the first launch.
 
 The package participates in root formatting, typed lint, workspace typechecking, application tests, build and maintenance inventory. Root `npm run check` is the ordinary completion gate. The browser journey renders the actual self-contained resource in an isolated MCP Apps host, forwards real SDK tool calls, records direct `ui/message` delivery, and verifies proposal review, stale protection, source previews and persistence. It does not by itself establish that the installed Codex host has refreshed its tool catalog or rendered the app.

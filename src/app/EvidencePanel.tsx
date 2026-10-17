@@ -9,7 +9,7 @@ import {
   MAX_EVENTS,
 } from '../shared/evidence/recorder';
 import type { RunEvidence } from '../shared/evidence/types';
-import { downloadJSON } from './useLocalGame';
+import { downloadFile } from '../shared/download';
 const cohort = (r: RunEvidence) =>
   `${r.game} · v${r.version}/${contentDigest(r.content)} · ${r.mode} · ${r.source} · ${r.summary.context}`;
 export function EvidencePanel({ game }: { game: string }) {
@@ -66,7 +66,7 @@ export function EvidencePanel({ game }: { game: string }) {
         <button
           onClick={() => {
             try {
-              downloadJSON(
+              downloadFile(
                 localStorage.getItem(EVIDENCE_KEY) ?? '[]',
                 'card-workshop-evidence.json',
               );
@@ -205,7 +205,7 @@ export function EvidencePanel({ game }: { game: string }) {
               </p>
               <button
                 onClick={() =>
-                  downloadJSON(
+                  downloadFile(
                     JSON.stringify([r], null, 2),
                     `${r.game}-${r.seed.replace(/[^a-z0-9_-]/gi, '_')}-evidence.json`,
                   )

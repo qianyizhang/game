@@ -1,3 +1,4 @@
+import { downloadFile } from '../../../shared/download';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   DIRECTIONS,
@@ -36,14 +37,6 @@ import { ExpeditionChoice } from './ExpeditionChoice';
 import './styles.css';
 
 const arrows: Record<Direction, string> = { north: '↑', east: '→', south: '↓', west: '←' };
-function download(text: string) {
-  const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'dungeon-cartographer.json';
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
 export default function CartographerApp() {
   const [initial] = useState(() => {
     try {
@@ -216,13 +209,21 @@ export default function CartographerApp() {
               <button onClick={() => restorePrevious(key)}>
                 Restore {key === PREVIOUS_SAVE_KEY ? 'v2 expedition' : 'previous expedition'}
               </button>
-              <button onClick={() => download(localStorage.getItem(key) ?? '')}>
+              <button
+                onClick={() =>
+                  downloadFile(localStorage.getItem(key) ?? '', 'dungeon-cartographer.json')
+                }
+              >
                 Export {key === PREVIOUS_SAVE_KEY ? 'v2' : 'v1'} expedition
               </button>
             </div>
           ))}
           <div>
-            <button onClick={() => download(exportSession(session))}>Export replay</button>
+            <button
+              onClick={() => downloadFile(exportSession(session), 'dungeon-cartographer.json')}
+            >
+              Export replay
+            </button>
             <button onClick={() => file.current?.click()}>Import replay</button>
           </div>
           <small role="status">{saved || 'One hero · nine rooms · one king'}</small>

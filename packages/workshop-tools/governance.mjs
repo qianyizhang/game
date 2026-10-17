@@ -112,13 +112,7 @@ export function checkGovernance(root) {
     );
   if (readFileSync(resolve(root, '.nvmrc'), 'utf8').trim() !== expectedNode)
     errors.push('Node runtime pins disagree');
-  // Check repository-local Markdown links in the new canonical homes and maintained package.
-  const documents = files.filter(
-    (path) =>
-      (/^docs\/(engineering|art|guide)\//.test(path) || path.startsWith('skills/card-art/')) &&
-      path.endsWith('.md'),
-  );
-  documents.push('docs/README.md', 'packages/workshop-tools/README.md');
+  const documents = files.filter((path) => path.endsWith('.md'));
   errors.push(...checkDocumentLinks(root, documents, files));
   return {
     managedSources: files.filter(managedSource).length,

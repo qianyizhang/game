@@ -1,7 +1,8 @@
 import { isList, isRecord } from '../shared/json';
 import { WorkshopArt } from '../shared/art/WorkshopArt';
 import { useMemo, useRef, useState } from 'react';
-import { downloadJSON, type useLocalGame } from './useLocalGame';
+import type { useLocalGame } from './useLocalGame';
+import { downloadFile } from '../shared/download';
 
 type Game<S extends { seed: string }, C> = ReturnType<typeof useLocalGame<S, C>>;
 interface SavedBranch {
@@ -280,7 +281,7 @@ export function PracticeLab<S extends { seed: string }, C>({
           </button>
           <button
             aria-label={`Export ${branch.name}`}
-            onClick={() => downloadJSON(branch.text, `practice-${i + 1}.json`)}
+            onClick={() => downloadFile(branch.text, `practice-${i + 1}.json`)}
           >
             Export
           </button>
