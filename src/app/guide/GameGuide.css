@@ -1,0 +1,216 @@
+.game-guide {
+  --guide-paper: #f1e7cc;
+  color: #263d35;
+  background: #efe7d2;
+  min-height: 100vh;
+  padding: 0 max(24px, calc((100vw - 1240px) / 2));
+}
+.game-guide-masthead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 25px 0;
+  border-bottom: 1px solid #bdb8a1;
+  font-size: 13px;
+  font-weight: 650;
+}
+.game-guide a:focus-visible {
+  outline-color: #94432c;
+}
+.game-guide-intro {
+  padding: 62px 0 44px;
+}
+.game-guide-intro .eyebrow {
+  color: #715c39;
+}
+.game-guide h1 {
+  font:
+    400 clamp(44px, 6vw, 82px)/1.02 Georgia,
+    serif;
+  letter-spacing: -0.055em;
+  margin: 20px 0 24px;
+}
+.game-guide h1 em {
+  color: #a14930;
+  font-weight: 400;
+}
+.game-guide-intro > p:not(.eyebrow) {
+  max-width: 570px;
+  font-size: 17px;
+  color: #536155;
+}
+.game-guide-intro nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 32px;
+}
+.game-guide-intro nav a {
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px solid #9a9c81;
+}
+.game-guide-intro nav span {
+  color: #7c6545;
+  font-size: 10px;
+  margin-right: 5px;
+}
+.game-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  padding-bottom: 48px;
+}
+.game-guide-card {
+  background: #faf5e7;
+  border: 1px solid #b9b8a2;
+  scroll-margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.game-guide-plate {
+  position: relative;
+  background: #1a3b33;
+}
+.game-guide-plate svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.game-guide-plate > span {
+  display: block;
+  color: #eee3c2;
+  background: #18392f;
+  padding: 12px 24px;
+  font-size: 11px;
+  letter-spacing: 0.07em;
+}
+.game-guide-copy {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.game-guide-reference {
+  color: #836139;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.game-guide h2 {
+  font:
+    400 clamp(28px, 3vw, 38px)/1.12 Georgia,
+    serif;
+  margin-bottom: 12px;
+}
+.game-guide-hook {
+  font-weight: 650;
+  color: #943f2d;
+}
+.game-guide-copy p,
+.game-guide-copy li,
+.game-guide-copy dd {
+  font-size: 14px;
+  line-height: 1.65;
+}
+.game-guide h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 12px 0;
+}
+.game-guide ol {
+  padding-left: 22px;
+  margin: 0 0 18px;
+}
+.game-guide li {
+  padding: 3px 0 3px 4px;
+}
+.game-guide li::marker {
+  color: #9c482d;
+  font-weight: 650;
+}
+.game-guide dl {
+  display: grid;
+  grid-template-columns: 67px 1fr;
+  gap: 10px 14px;
+  border-top: 1px solid #d6ceb6;
+  padding-top: 18px;
+  margin: 0 0 22px;
+}
+.game-guide dt {
+  font-size: 11px;
+  font-weight: 700;
+  padding-top: 4px;
+}
+.game-guide dd {
+  margin: 0;
+}
+.game-guide aside {
+  background: #eee9d8;
+  border-left: 2px solid #a38a55;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+}
+.game-guide aside strong {
+  font-size: 11px;
+}
+.game-guide aside p {
+  margin: 5px 0 0;
+  font-size: 13px;
+}
+.game-guide-play {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  background: #234b3c;
+  color: #faf0d7;
+  padding: 15px 18px;
+  font-size: 14px;
+  font-weight: 650;
+}
+.game-guide-play:hover {
+  background: #36634c;
+}
+.game-guide footer {
+  padding: 30px 0 40px;
+  border-top: 1px solid #bdb8a1;
+  max-width: 680px;
+  font-size: 13px;
+}
+.game-guide footer p {
+  margin: 10px 0;
+}
+.game-guide footer a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 700px) {
+  .game-guide-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .game-guide-intro {
+    padding-top: 38px;
+  }
+  .game-guide-copy {
+    padding: 23px;
+  }
+}
+
+.game-guide-glossary,
+.game-guide-terms {
+  display: inline-block;
+  color: #77452b;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.game-guide-terms {
+  margin-bottom: 20px;
+}

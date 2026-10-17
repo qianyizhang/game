@@ -11,6 +11,13 @@ the [adoption sequence](#adoption-sequence) distinguishes existing capabilities 
 remaining work. Game documents own concrete APIs, rules, scores and reproduction
 commands. [Domain vocabulary](glossary.md#policy-play) owns the terms.
 
+When explaining work to readers, expand game abbreviations on first use and pair
+specialist terms with a short plain-language explanation. The
+[visual glossary](../guide/glossary.md) provides searchable definitions and examples:
+for instance, “A0 (Ascension 0, Spire's baseline difficulty)” and “rollout (a recorded
+bot attempt, including what it knew).” Use direct term links in the browser guide
+when a reader needs more detail.
+
 ## Start with a complete vertical slice
 
 For each game, deliver these together before moving to the next:

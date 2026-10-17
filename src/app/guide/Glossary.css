@@ -1,0 +1,308 @@
+.glossary .game-guide-intro {
+  padding-bottom: 30px;
+}
+.glossary h1 {
+  font-size: clamp(40px, 5vw, 70px);
+}
+.glossary-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+}
+.glossary-shortcuts a {
+  padding: 9px 13px;
+  border: 1px solid #9e9d80;
+  background: #f8f0dc;
+  font-size: 12px;
+}
+.glossary-translations {
+  background: #e4ddc8;
+  border: 1px solid #b8b59c;
+  padding: 18px 22px;
+  margin-bottom: 26px;
+}
+.glossary summary {
+  cursor: pointer;
+}
+.glossary-translations > summary {
+  font-size: 14px;
+  font-weight: 650;
+}
+.glossary-translations article {
+  max-width: 760px;
+  margin-top: 24px;
+}
+.glossary blockquote {
+  margin: 0 0 10px;
+  padding-left: 16px;
+  border-left: 2px solid #a15d3e;
+  font:
+    400 20px/1.5 Georgia,
+    serif;
+}
+.glossary-translations p {
+  font-size: 14px;
+}
+.glossary-translations a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.glossary .glossary-source {
+  font-size: 12px;
+  color: #586252;
+  margin-bottom: 0;
+}
+.glossary-lookup {
+  background: #efe7d2;
+  padding: 18px 0 10px;
+  border-top: 1px solid #bdb8a1;
+}
+.glossary-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 12px;
+}
+.glossary-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 650;
+}
+.glossary-controls label:first-child {
+  flex: 1 1 260px;
+}
+.glossary-controls input,
+.glossary-controls select {
+  width: 100%;
+  border: 1px solid #989c80;
+  background: #fcf7e9;
+  color: #243e34;
+  border-radius: 0;
+  padding: 12px;
+  min-height: 46px;
+  font-size: 14px;
+}
+.glossary-controls input::placeholder {
+  color: #66705d;
+}
+.glossary-controls button,
+.glossary-empty button {
+  min-height: 46px;
+  border-radius: 0;
+}
+.glossary [role='status'] {
+  font-size: 12px;
+  margin: 12px 0;
+  color: #536350;
+}
+.glossary-sections {
+  padding-bottom: 38px;
+}
+.glossary-section {
+  border-top: 1px solid #aaa98c;
+}
+.glossary-section > summary {
+  padding: 22px 0;
+  font:
+    400 26px/1.3 Georgia,
+    serif;
+}
+.glossary-section > summary small {
+  margin-left: 16px;
+  color: #6f674e;
+  font:
+    500 12px/1.5 system-ui,
+    sans-serif;
+  white-space: nowrap;
+}
+.glossary-terms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding-bottom: 28px;
+  align-items: start;
+}
+.glossary-term {
+  min-width: 0;
+  padding: 25px;
+  background: #fcf7e9;
+  border: 1px solid #c3bda4;
+}
+.glossary-term-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  justify-content: space-between;
+}
+.glossary-term h3 {
+  font:
+    400 25px/1.15 Georgia,
+    serif;
+  margin: 0 0 16px;
+  scroll-margin-top: 25px;
+  overflow-wrap: anywhere;
+  text-transform: none;
+  letter-spacing: -0.02em;
+}
+.glossary-term h3:focus {
+  outline: 2px solid #965138;
+  outline-offset: 5px;
+}
+.glossary-term-heading > a {
+  color: #85613d;
+  padding: 6px;
+}
+.glossary-term p {
+  font-size: 14px;
+  line-height: 1.65;
+}
+.glossary-example {
+  color: #4e5e4d;
+  padding-left: 12px;
+  border-left: 2px solid #c4ae78;
+}
+.glossary-example strong {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+  margin-bottom: 4px;
+}
+.glossary-term .glossary-aliases {
+  font-size: 11px;
+  color: #73664c;
+  margin-bottom: 0;
+}
+.glossary-aliases strong {
+  font-weight: 600;
+}
+.term-diagram {
+  background: #eae6d4;
+  border: 1px solid #c7c4aa;
+  padding: 16px;
+  margin: 20px 0 14px;
+  min-width: 0;
+}
+.term-diagram figcaption {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.term-diagram p {
+  font-size: 12px;
+  margin: 12px 0 0;
+}
+.glossary-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.glossary-flow > div {
+  background: #254b3e;
+  color: #f7eccf;
+  padding: 12px 9px;
+  min-width: 0;
+}
+.glossary-flow span {
+  display: block;
+  color: #e9c181;
+  font-size: 10px;
+  margin-bottom: 8px;
+}
+.glossary-flow strong,
+.glossary-flow small {
+  display: block;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.glossary-flow small {
+  font-size: 10px;
+  line-height: 1.45;
+  color: #d6dfc7;
+  margin-top: 6px;
+}
+.term-diagram table {
+  border-collapse: collapse;
+  font-size: 11px;
+  width: 100%;
+}
+.term-diagram caption {
+  text-align: left;
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+.term-diagram th,
+.term-diagram td {
+  padding: 8px 4px;
+  border: 1px solid #aab097;
+  text-align: left;
+}
+.term-diagram td {
+  background: #d1dbc5;
+  text-align: center;
+}
+.block-demo label {
+  display: block;
+  font-size: 12px;
+}
+.block-demo output {
+  float: right;
+  font-weight: 700;
+}
+.block-demo input {
+  width: 100%;
+  display: block;
+  padding: 12px 0;
+  margin: 0 0 8px;
+  accent-color: #33553e;
+  background: transparent;
+  border: 0;
+}
+.block-result {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  background: #254b3e;
+  color: #f7eccf;
+  padding: 12px;
+  font-size: 12px;
+}
+.glossary-empty {
+  padding: 35px 0;
+}
+@media (max-width: 700px) {
+  .glossary-terms {
+    grid-template-columns: 1fr;
+  }
+  .glossary-term {
+    padding: 20px;
+  }
+  .glossary-controls label:nth-child(2) {
+    flex: 1 1 180px;
+  }
+  .glossary-section > summary {
+    font-size: 23px;
+  }
+  .glossary-translations {
+    padding: 16px;
+  }
+  .glossary-flow {
+    grid-template-columns: 1fr;
+  }
+  .glossary-flow > div {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 3px 5px;
+  }
+  .glossary-flow span {
+    margin: 0;
+    grid-row: span 2;
+  }
+  .glossary-flow small {
+    margin: 0;
+  }
+}

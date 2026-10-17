@@ -2,6 +2,10 @@
 
 Start with [play locally](../../README.md#play-locally). The repository README describes the games and supported content.
 
+Open **Explore all games** below any game picker, or visit `/?guide=games`, for an illustrated introduction to all six games. Each entry explains the workshop name, its genre or inspiration, first moves, goal and controls. **Play** opens the selected game with its existing local save; it does not start a new run.
+
+Use **Look up a term** or `/?guide=glossary` for the [visual glossary](glossary.md): game mechanics, AI policies and experiment language in plain words, with searchable abbreviations and worked examples.
+
 | Task                                                       | Guide                             |
 | ---------------------------------------------------------- | --------------------------------- |
 | Create a trusted local content pack; preview and replay it | [Modding](modding.md)             |

@@ -39,6 +39,8 @@ import { CARDS } from '../../../src/games/spire/content/cards';
 import { HEROES, MINIONS } from '../../../src/games/battlegrounds/content/minions';
 import { HeroArt, HeroPowerArt } from '../../../src/games/battlegrounds/ui/HeroArt';
 import type { ReactNode } from 'react';
+import { GAME_GUIDES } from '../../../src/app/guide/games';
+import { GameGuideArt } from '../../../src/app/guide/GameGuideArt';
 import {
   ChallengeArt,
   ChallengeSymbol,
@@ -108,6 +110,12 @@ export function cardArtCatalogue(): Asset[] {
     'seed',
   ];
   return [
+    ...GAME_GUIDES.map((game) => ({
+      id: `guide/${game.id}`,
+      group: 'Workshop · Game guide',
+      name: `${game.name} · Introduction`,
+      node: <GameGuideArt game={game.id} />,
+    })),
     ...GODS.map((god) => ({
       id: `night-passage/patrons/${god.id}`,
       group: 'Night Passage · Patrons',

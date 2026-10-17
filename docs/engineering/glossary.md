@@ -2,6 +2,8 @@
 
 Canonical meanings for the workshop and its games. Read the relevant context when naming a feature, interface or test; the same word can have a different role in another game.
 
+For reader-facing explanations, diagrams and searchable abbreviations, use the [visual glossary](../guide/glossary.md). This document remains the canonical vocabulary for development.
+
 ## Workshop play and replay
 
 **Run**: One seeded playthrough under one game's rules, from its starting position to an ending. A Last Hearth run contains a lobby.

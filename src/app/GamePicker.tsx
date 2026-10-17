@@ -23,6 +23,12 @@ export function GamePicker({
         <option value="diablo2">✧ Emberwake · Diablo II</option>
         <option value="night-passage">☾ Night Passage · Action Roguelite</option>
       </select>
+      <a className="game-guide-entry" href={`?guide=games&game=${current}`}>
+        Explore all games →
+      </a>
+      <a className="game-guide-entry" href={`?guide=glossary&game=${current}`}>
+        Look up a term →
+      </a>
     </div>
   );
 }

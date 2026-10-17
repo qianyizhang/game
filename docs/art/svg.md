@@ -14,6 +14,7 @@ Paths below are relative to the repository root. Extend the existing renderer fo
 | Spire abilities                        | `src/games/spire/ui/AbilityArt.tsx` composes `art/ironclad.tsx` and `art/primitives.tsx` · `SilentArt.tsx`, `SilentUpgradeArt.tsx`, `SilentPrimitives.tsx` | `catalyst` base/upgrade: a recognizably related but distinct alchemy scene             |
 | Hearth creatures                       | `src/games/battlegrounds/ui/MinionArt.tsx` · `CreatureIllustrations.tsx`, `FiendIllustrations.tsx`, `ExpansionPortraits.tsx`, `NightMarketPortraits.tsx`   | `Phoenix`: curved pinions, chest and trailing plumage; `Hydra`: separate neck gestures |
 | Challenges                             | `src/shared/art/ChallengeArt.tsx` · `src/app/ChallengeArtwork.tsx`, `src/app/challenge-art.css`                                                            | Three 360 × 192 plates and 64 × 64 symbols; illustrated status keeps its HTML label    |
+| Game introductions                     | `src/app/guide/GameGuideArt.tsx`                                                                                                                           | Six 360 × 192 engraved plates; explanatory text and Play links remain HTML             |
 | Standalone export                      | `packages/workshop-tools/art/catalogue.tsx` · `export.ts`                                                                                                  | Content registry → live renderer → self-contained SVG + manifest                       |
 
 Feature artwork extends the source map:

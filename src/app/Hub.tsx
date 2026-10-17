@@ -27,8 +27,24 @@ const BattlegroundsApp = lazy(() =>
 );
 
 const KEY = 'card-workshop.active-game';
+const GameGuide = lazy(() => import('./guide/GameGuide'));
+const Glossary = lazy(() => import('./guide/GameGlossary'));
 export default function Hub() {
   const query = new URLSearchParams(location.search);
+  if (query.get('guide') === 'games' || query.get('guide') === 'glossary')
+    return (
+      <ContentBoundary>
+        <Suspense
+          fallback={
+            <main className="game-loading">
+              <p role="status">Opening the game guide…</p>
+            </main>
+          }
+        >
+          {query.get('guide') === 'glossary' ? <Glossary /> : <GameGuide />}
+        </Suspense>
+      </ContentBoundary>
+    );
   if (
     query.get('review') === 'policy' &&
     [
