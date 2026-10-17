@@ -66,93 +66,43 @@ Enemy stats and guardian pattern definitions live in `domain/encounter-content.t
 
 `ui/audio.ts` reads confirmed state transitions without changing combat, RNG or
 replay. The app submits only live combat steps, never save restores. Enemy damage
-uses five equipped-weapon palettes: a layered sword impact,
-a higher spear tone, a low shield thump, a short bright bow response, and a brief
-fist impact. A kill adds a rising accent. Player damage, defeat, dash and chamber
-clear use separate envelopes. A four-millisecond attack avoids starting tones at
-full gain. No external sound file is required; the envelope definitions are the
-authoritative source.
+uses five equipped-weapon palettes: a layered sword impact, a higher spear tone,
+a low shield thump, a short bright bow response, and a brief fist impact. A kill
+adds a rising accent. Player damage, defeat, dash and chamber clear use separate
+envelopes. A four-millisecond attack avoids starting tones at full gain. No
+external sound file is required; the envelope definitions are authoritative.
 
-The prior single 65 ms cooldown could discard player-damage feedback immediately
-after an outgoing hit. The new 45 ms throttle applies only to ordinary impacts;
-hurt and defeat bypass it. Each confirmed transition emits at most two cues,
-with danger first, and simultaneous enemy hits coalesce into one impact. The
-live mixer caps overlap at six voices and evicts a lower-priority voice when
-needed. Muting stops current sources and zeros the output bus immediately.
-Close releases the bus/context; a pending resume cannot revive a closed player.
-Identical snapshots, tick rewinds, different runs and noncombat transitions do
-not replay effects.
-
-These are synthesized damage-confirmation sounds. The impact palette follows
-the equipped weapon even for spell or status damage: current snapshots do not
-retain per-hit source attribution. This slice does not claim material-accurate
-foley, independently reviewed sound quality, equal loudness across devices or
-improved human reaction times. Playback is optional; warnings and status remain
-fully visual. That audio delivery retained rules/content identities 4/3 and unchanged replay bytes;
-current supported identities are listed under [time and saves](#time-and-saves).
-
-Verification: `npm run check` passed maintenance/build gates, 383 application
-tests and 22 seeded simulations. The nine Canvas/2.5D browser journeys and two
-focused audio journeys passed. The latter render actual Web Audio envelopes at
-24 kHz, check finite/distinct waveforms and silent tails, and exercise a real
-dodge, immediate mute, unmute and context cleanup through the UI. Six identical
-shield-kill voices through the 0.8 output bus peaked at 0.676 (clipping starts at
-1.0). This is a declared overlap stress case, not a human listening review.
-
-Regenerate with `npx playwright test tests/browser/night-passage-audio.spec.ts --project=functional`.
-It writes ignored `test-results/night-passage-audio/metrics.json` and
-`audition.wav`. The 7.7-second audition has 0.7-second slots: sword, spear, shield,
-bow, fists, sword kill, hurt, defeat, dash, clear, then six overlapping shield
-kills. Keep the small synthesis definitions authoritative; do not commit the
-regenerable WAV or measurements.
+A 45 ms throttle coalesces rapid ordinary impacts; danger, hurt and defeat bypass it.
+Each confirmed transition emits at most two cues, danger first, and simultaneous
+enemy hits coalesce into one impact. The live mixer caps overlap at six voices
+and evicts lower-priority voices when needed. Muting stops current sources and
+zeros the output bus immediately; close releases the Web Audio context. Testing
+under `tests/browser/night-passage-audio.spec.ts` verifies envelope synthesis,
+finite waveforms, silent tails, and mute/unmute lifecycle without requiring
+committed audio binaries.
 
 ## Blessing draft variety
 
-Current and retained rules-4 chronicles use `domain/boon-offers.ts` for ordinary chamber, trial and market
-audiences. Shuffle the eligible pool with the explicit run RNG, reserve one
-currently empty action slot if available, then take the first candidates with
-different slots until three choices are present. An eligible duo may occupy
-one choice; it does not count as filling an empty action slot. The five patrons
-remain available, including replacements and rank-ups. Caps and duo prerequisites
-still filter eligibility before the draw. Upgrade shrines continue to draw only
-owned, uncapped regular boons, with the existing 45-gold exhaustion fallback.
+`domain/boon-offers.ts` generates reward choices for ordinary chamber, trial,
+and market audiences. It shuffles the eligible pool with the run RNG, reserves one
+empty action slot if available, then selects candidates with different slots until
+three choices are present. An eligible duo may occupy one choice without counting
+toward empty-slot reservation. The five patrons remain available, including
+replacements and rank-ups. Patron caps and duo prerequisites filter eligibility
+before the draw. Upgrade shrines draw only owned, uncapped regular boons, falling
+back to 45 gold on exhaustion.
 
-The 2026-10-13 comparison uses the rules-3 shuffle at `638b585` and rules-4 draft
-on the same **512 RNG seeds** (`reward-variety-0` through `reward-variety-511`)
-for each of three declared loadouts. These are controlled reward draws, not
-human runs or reward-frequency measurements across a campaign.
+The 2026-10-13 comparison used the same 512 RNG seeds across three loadouts for
+the rules-3 and rules-4 drafts. Repeated slots and empty-slot droughts disappeared,
+while distinct offer combinations decreased: broader slot choices traded away
+combinatorial variety. These controlled draws do not establish human enjoyment,
+balance or equal patron probabilities. `tests/simulation/night-passage-rewards.test.ts`
+regenerates the comparison under ignored `test-results/night-passage-rewards/`.
 
-| Loadout                   | Audiences with repeated slots, old → new | No empty-slot choice, old → new | Distinct unordered triples, old → new |
-| ------------------------- | ---------------------------------------- | ------------------------------- | ------------------------------------- |
-| Empty                     | 237/512 → 0/512                          | 0/512 → 0/512                   | 467 → 424                             |
-| Attack/cast/dash, level 2 | 211/512 → 0/512                          | 108/512 → 0/512                 | 472 → 417                             |
-| All five slots, level 2   | 216/512 → 0/512                          | Not applicable                  | 481 → 457                             |
-
-The partial build carries storm attack, winter cast and veil dash; the full
-build adds tide special and cinder call. All five patrons and every eligible
-blessing appeared in each sampled condition: 25, 26 and 28 distinct blessings
-respectively. The tradeoff is fewer combinations: filtering competing same-slot
-options improves the breadth of a decision while reducing combinatorial variety.
-This does not prove equal patron probabilities, subjective enjoyment or balance.
-
-`tests/simulation/night-passage-rewards.test.ts` regenerates the comparison under
-ignored `test-results/night-passage-rewards/`. Command-level tests cover choosing
-an empty slot, preserving existing equipment, caps, duos, determinism and shrine
-rank-ups. Fifteen legal weapon/seed campaigns still clear all four guardians.
-The browser journey covers offered slot labels, selection, portable replay and
-reload; previous rules-3 bytes remain downloadable until explicit replacement.
-
-The blessing-draft delivery advanced the rules identity to `night-passage-4`; content remained
-`night-passage-content-3` and the packed replay format is unchanged. Older rules
-are rejected for reconstruction and retained for export/recovery, following the
-[accepted-command replay decision](decisions/0002-reconstruct-from-accepted-commands.md).
-They are not silently reinterpreted with the new draft.
-
-Delivery checks passed: maintenance/build, 378 application tests, 22 simulations
-and 12 affected browser journeys. No renderer or native asset changed. A bounded
-browser-test worker supplied the reward and previous-save journeys; both passed
-integration without rework. The primary owned rules, comparison and review; no
-single-agent timing comparison was measured.
+`src/games/night-passage/domain/boon-offers.test.ts` covers draft determinism,
+slot diversity and shrine rank-ups. Current rules 5 and retained
+rules 4 use this draft; older rules 1–3 replays are rejected for reconstruction
+and preserved for export/recovery, following the [accepted-command replay decision](decisions/0002-reconstruct-from-accepted-commands.md).
 
 ## Chamber layouts
 
@@ -179,23 +129,11 @@ journeys remain the playability gates. The four renderer captures are controlled
 layout comparisons, not evidence of human combat balance. No renderer or native
 asset changes are part of this slice.
 
-The 2026-10-13 layout delivery checks all 81 entry/spawn endpoint pairs in each
-layout using the existing enemy steering (324 paths total). Initial denser cover
-made that steering oscillate; adjusted pillar spacing/radii resolve those probes
-without changing the movement rules. All 15 weapon/seed campaigns encounter all
-four layouts and clear all four guardians. The layout browser journey covers
-announced terrain, selected geometry, export/import and paused reload, plus
-byte-exact recovery of an incompatible version-2 chronicle. Controlled captures
-from `night-passage-layouts-review.ts` show distinct cover silhouettes and readable
-route descriptions in the existing 2.5D renderer; this is visual self-review,
-not user acceptance or human difficulty evidence.
-
-Two bounded delegated subtasks produced the catalog/navigation checks and browser
-journeys while integration remained with the primary agent. Catalog review caught
-the steering issue; browser execution caught one unresolved bare-module import in
-the test harness, repaired by using the established Vite helper pattern. Both
-outputs were usable after that bounded rework; no elapsed-time comparison against
-a single-agent implementation was measured.
+Pillar spacing and radii are tuned so enemy steering navigates freely across all
+81 entry/spawn endpoint pairs in each layout (324 paths total) without oscillation.
+All 15 weapon/seed campaign simulations encounter each layout and defeat all four
+guardians. The layout browser journey covers announced terrain, selected geometry,
+export/import, and paused reload.
 
 ## Presentation lifecycle
 
@@ -239,25 +177,13 @@ private sprite materials belong to the renderer lifecycle; solid native assets
 keep their existing saved-source authority. The [patron light record](../art/assets/night-passage/patrons.md)
 documents silhouettes, actual-size review and the legacy cue-color mapping.
 
-The browser parity matrix covers **85 controlled rendering cases**. It uses explicitly controlled encounter/build snapshots,
-then real `applyCommand` steps for release outcomes. It covers all five patrons'
-casts/calls, patron-marked weapon projectiles, all ordinary and guardian attack
-patterns, four hazards and concurrent statuses. Pixel probes independently check
-selected threat interiors and safe space; repeated paused draws check stability
-and input snapshots remain unchanged. This is renderer family coverage, not a
-claim of human-played campaign completion. Five additional legal-command campaigns
-render all 32 chamber entries and victory for each weapon: **165 checkpoints**,
-covering all four regions and guardians. Each checkpoint checks painted pixels
-and snapshot purity; four region captures must differ. Initial hero/weapon
-activation is observed, but later checkpoints do not wait for every native
-family. These fast-forwarded campaigns establish renderer traversal and purity;
-the continuous UI campaign below separately checks authored readiness at every
-chamber entry.
-
-The [combat-mark review](../art/assets/night-passage/combat-marks.md) retains a
-matching before/after comparison and an angled play-scale capture. The remaining
-matrix images and summaries are regenerable ignored output. Owner visual review
-is separate from technical coverage and user acceptance.
+The browser parity matrix (`tests/browser/night-passage-parity.spec.ts`) covers
+85 controlled rendering cases across all five patrons' casts/calls, patron-marked
+projectiles, attack patterns, four hazards and concurrent statuses. Pixel probes check
+threat interiors and safe space, while paused draws ensure snapshot stability. Five
+legal campaigns render 32 chamber entries and victories for each weapon across all
+four regions. The [combat-mark review](../art/assets/night-passage/combat-marks.md)
+retains a matching before/after comparison.
 
 ### Authored hero and weapon batches
 
@@ -278,10 +204,7 @@ hand sockets. The armory preserves export transforms and game-unit dimensions.
 The bow string and nocked arrow draw together, release at recovery and renock at
 rest. Animation introduces no rules RNG, timing or replay changes.
 
-These are lightweight authored assets with owner visual self-review. Precise
-two-hand choreography, directional locomotion and hit reactions remain polish
-opportunities. The guardian and first environment batches are described below. Native
-checks cover every authored hero frame, all weapon vertices at three bow draw
+Native checks cover authored hero frames, weapon vertices at three bow draw
 values, and saved motion/geometry edits. Browser comparisons, unretimed playback,
 real socket attachment and live chamber journeys provide separate evidence.
 
@@ -315,12 +238,10 @@ saved sources and GLB delivery remain authoritative.
 The [enemy source guide](../../packages/dcc-workbench/subjects/night-passage/README.md#ordinary-enemy-family)
 locates saved masters, exporters and edit proofs. The
 [visual record](../art/assets/night-passage/enemies.md) distinguishes native
-surface agreement from owner art self-review. Browser coverage exercises all
+surface agreement from visual inspection. Browser coverage exercises all
 sixteen clips, real actor activation, matching native/fallback combat views at
-desktop and 390 pixels, independent paused poses and reduced motion. The native
+desktop and mobile widths, independent paused poses and reduced motion. The native
 journey compares saved and deliberately edited masters to delivered surfaces.
-These are controlled presentation encounters; legal campaign and live UI
-journeys remain separate evidence. The four guardian batches follow below; the first environment batch follows below.
 
 ### Authored guardians
 
@@ -449,98 +370,22 @@ stay outside the playable interior. Content, rules versions, seeded layouts
 and collisions are unchanged. The [source guide](../../packages/dcc-workbench/subjects/night-passage/README.md#root-sepulcher-environment)
 owns saved-source export and edit-proof commands.
 
-## Integrated delivery audit · 2026-10-13
+## Delivered 2.5D campaign
 
-The scoped 2.5D refinement milestone is delivered. The audit covers the committed
-game at `fc7abf6`, adds campaign UI and rune evidence, and leaves rules version 4,
-content version 3 and all native sources/deliveries unchanged. The requirement
-matrix above is the completion boundary; further regions and systems are new scope.
+The 2.5D refinement milestone delivers a complete campaign across all four regions:
 
-- **Continuous UI campaign:** the bow with Root/Feather, seed
-  `a-light-in-the-dark`, traversed 32 chamber entries, defeated all four guardians,
-  won, reloaded its own exact chronicle and returned to the quay. All required
-  hero/weapon, environment and current enemy roots were active at each entry.
-  The run defeated 207 foes and finished with 239 HP. Its 27 combat clears exclude
-  noncombat chambers. Virtual time and synthetic DOM input make this a repeatable
-  application journey, not human pacing or a performance measurement.
-- **Rune audit:** eight controlled cases protect Thorn's strict half-health
-  boundary, Comet's simultaneous dodge attack and Moth's once-per-clear capped
-  healing/reset. The ordinary campaign pilot uses Root/Feather and could win
-  without exposing defects in these other runes.
-- **Native coverage:** the [hash audit](evidence/night-passage-native-audit.json)
-  checks all 14 current source/model receipts and 97 retained evidence files:
-  no missing delivery or mismatched pin. Coverage is the 16-clip hero, five held
-  weapons, four ordinary enemy families, four guardians and four environment kits.
-  Native edit/export and visual proofs remain their dated, hash-matched records;
-  this read-only audit did not rerun Blender. The current hero authority is the
-  weapons review; the earlier first-hero review is deliberately historical.
-- **Other authored assets:** 26 editable reward/loadout symbols and five raised
-  patron light forms have their own browser/visual records above. Load-failure
-  fallbacks remain intentional recovery behavior, not missing normal deliveries.
-- **Expansion:** the ownership table, content/versioning contracts and
-  [saved-source guide](../../packages/dcc-workbench/subjects/night-passage/README.md)
-  describe adding content and editing/exporting assets. Rules remain seeded and
-  browser-independent; rendering and audio consume confirmed state.
+- **Authored characters & weapons:** 16-clip masked hero, five held weapon identities with socket attachments and matching animations, four ordinary enemy families with draw batching, and four regional guardians with distinct pattern mappings and phase transitions.
+- **Authored environments:** All four regional kits—Root Sepulcher, Drowned Archive, Cinder Court, and Starless Gate—replace earlier blockouts with native boundary, pillar, and lantern geometry.
+- **Readability & presentation:** 26 SVG symbols in `Artwork.tsx` for choices and loadouts; five raised patron light forms; ground threat telegraphs on transparent decals; reduced motion support.
+- **Verification & evidence:** The 2026-10-13 audit at `fc7abf6` (rules 4 / content 3) recorded one continuous automated bow UI campaign under virtual time: 32 chamber entries, all four guardians defeated, and chronicle reload. Rune audits covered Thorn, Comet, and Moth boundaries. The [campaign receipt](evidence/night-passage-campaign.json) retains compact results, source pins, and image hashes. Retained visual evidence includes [first guardian](../art/assets/night-passage/campaign/region-0-warning.png), [last guardian](../art/assets/night-passage/campaign/region-3-warning.png), and [victory](../art/assets/night-passage/campaign/victory.png).
+- **Native coverage:** The [hash audit](evidence/night-passage-native-audit.json), dated 2026-10-13 at the same revision, checked all 14 source/model receipts and 97 retained evidence files without missing deliveries or mismatched pins. It revalidated historical native proofs without a fresh Blender run.
+- **Evidence limits:** Visual records are agent self-review, without independent aesthetic acceptance or human combat-feel testing. The automated campaign does not establish human pacing or real-time performance; high-DPI and cross-device performance remain unmeasured.
 
-The [campaign receipt](evidence/night-passage-campaign.json) retains compact
-results, source pins and image hashes. Detailed progress and the remaining
-captures are regenerable under `test-results/night-passage-campaign/`.
-Run `npx playwright test night-passage --project=functional` for the current game
-suite, or select `tests/browser/night-passage-campaign.spec.ts` for this journey.
+The full dated reward comparison and delivery reports remain recoverable with
+`git show 9e20c67a92a2fcc15a677afd698141e931a6d88d:docs/engineering/night-passage.md`.
 
-Visual self-review of the four live guardian-warning captures found distinct
-region palettes and visible warning edges/safe ground around the player.
-Damage flashes whiten a struck guardian in these instants; their dedicated native
-records remain the authority for material and silhouette review. The retained
-[first guardian](../art/assets/night-passage/campaign/region-0-warning.png),
-[last guardian](../art/assets/night-passage/campaign/region-3-warning.png) and
-[victory](../art/assets/night-passage/campaign/victory.png) show actual UI progression.
-This is agent self-review, not independent aesthetic acceptance. Human difficulty
-and combat-feel testing, high-DPI/cross-device performance and touch controls are
-not established by this audit. The dated local performance comparison above
-remains the performance evidence; concurrent completion checks are not a benchmark.
+### Compatibility and extension
 
-Final verification passed: `npm run check:full` covered maintenance/static checks,
-392 application tests, 22 seeded simulations and 128 geometry tests. Its sandbox
-loopback skip was resolved by all nine `test:usage` cases under approved execution.
-All 48 Night Passage functional browser journeys passed in the disposable Chrome
-harness. Native Blender execution is not included in that functional project;
-the unchanged native evidence is revalidated separately above. Results and the
-final focused campaign rerun are recorded with the campaign receipt.
-
-Two bounded agent audits found the rune coverage and integrated UI evidence gaps; the rune additions
-integrated without repair. Root's new UI harness needed timer handling at lazy
-startup and reload. A separate read-only review confirmed the UI/observer boundary.
-No controlled agent speedup measurement was made.
-
-## Progressive refinement
-
-The lightweight campaign was the playable baseline. The completed refinement goal delivers a maintainable 2.5D campaign across all four regions, with authored gameplay assets, seeded reward and encounter variety, combat-audio feedback and measured rendering improvements. Hades informs the camera, readability and responsiveness; Night Passage retains its own characters, environments and visual identity.
-
-Each turn selects **one general direction** and finishes one bounded, reviewable slice. Examples include graphics, seeded generation, a map, an incomplete feature, a module refactor, performance or an asset family. Tests, documentation and cleanup supporting that direction belong to the same slice. Unrelated opportunities stay queued. Begin with the observed problem and a finish line; conclude with the implemented change, verification, remaining limits and a scoped commit. A milestone can span several turns.
-
-### Milestones
-
-| Milestone               | Finish line                                                                                                                                                                                                                                                                                                              | Status                                                                                                                              |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Playable baseline       | Four regions, five weapons, patron spells, runes, complete run lifecycle and portable saves; rules and browser journeys pass.                                                                                                                                                                                            | Delivered; original baseline superseded by the authored campaign below.                                                             |
-| Presentation boundary   | A game-owned renderer lifecycle separates view creation, resize, drawing, pointer-to-ground conversion and disposal from input, sessions and decision UI. Keep the current Canvas view usable for comparison.                                                                                                            | Delivered; Canvas baseline retained.                                                                                                |
-| **2.5D vertical slice** | One complete chamber plays through an angled orthographic 3D scene: camera projection and inverse aiming, grounded hero/enemies, depth and occlusion handling, light/shadow, terrain, projectiles and exact ground-plane telegraphs. Validate movement, dodge, melee, ranged attacks and a guardian at actual play size. | Playable renderer, hero and five weapon identities delivered.                                                                       |
-| **2.5D campaign**       | All four regions and guardians, five weapons and every spell/threat family work through the new presentation. Pause, resize, import/resume, context/resource lifecycle and reduced-motion behavior remain usable.                                                                                                        | Delivered; renderer parity, authored readiness at all 32 UI chamber entries and local enemy submission benchmark.                   |
-| Authored asset coverage | Replace gameplay-critical placeholders in small coherent batches: hero and motion set; five weapon identities and attacks; ordinary enemy families; four guardians; four environment kits; patron spell effects and reward/icon treatment. Track each asset's source, delivery, motion coverage and visual review.       | Delivered; all listed batches present, 14 native receipts revalidated, symbols and raised patron effects reviewed.                  |
-| Campaign refinement     | Independently close combat-feel, reward/RNG variety, encounter/map variety and measured performance slices. Compare declared seeds and loadouts, review actual play and document tuning rationale.                                                                                                                       | Delivered; measured rendering, four-layout encounters, seeded blessing drafts, audio feedback and continuous automated UI campaign. |
-| Delivery closeout       | Complete campaigns and browser journeys cover the final content/rendering; no gameplay-critical placeholder remains; extension and asset-authoring paths are documented; report technical results separately from visual self-review and user feedback.                                                                  | Delivered; integrated audit above records scope, evidence and human-review limits.                                                  |
-
-The 2.5D implementation uses the existing Three.js dependency and a fixed angled orthographic camera over the authoritative two-dimensional combat plane. Elevation and animation are presentation until a separately scoped gameplay change says otherwise. Shared threat geometry must project into the scene without changing its damage footprint. Foreground scenery must not conceal actionable enemies or warnings. Establish camera, silhouette, contact and depth before decorative detail. Keep the baseline renderer through migration until campaign parity is established.
-
-Asset work follows the [art workflow](../../skills/card-art/SKILL.md), [aesthetic rulebook](../art/art-direction.md) and [native modeling workflow](../../skills/card-art/references/native-modeling.md). Editable saved Blender masters own native geometry and animation; baked deliveries serve the browser. Reuse proven loading/export utilities while keeping game-specific presentation local. Start with one representative authored character/environment combination, verify its edit/export/consumer loop, then expand. A completed model count or passing geometry check does not establish visual quality. Compare matching views and inspect actual motion, combat readability and enlarged forms.
-
-### Compatibility and evidence
-
-- Preserve seeded rules and validated command replay. Renderer changes must not consume rules RNG or alter combat timing. Changes to gameplay or reward generation explicitly decide rules/content versioning and old-save recovery.
-- Use `npm run check` for code, UI and rules. Changes to 3D construction, animation, rendering/export or DCC delivery require `npm run check:full` plus affected browser/native checks. Browser launches use the approved disposable-profile harness. Review screenshots and motion separately from automated results.
-- Establish performance measurements on a named local browser/device, viewport and repeatable combat workload before selecting budgets or claiming improvements. Track frame timing, long stalls, loaded asset size and memory/resource cleanup as applicable. Do not convert simulation speed into a human pacing claim.
-- Keep test inputs regenerable. Commit authoritative source and delivery assets, compact evidence and owned code; exclude disposable screenshots and bulky generated replay fixtures.
-- Optional Astra/Sol trials own one bounded subtask within the turn's direction. Give explicit file ownership and acceptance criteria, preserve concurrent edits and compare elapsed time, rework and usable output before expanding delegation. The primary agent remains responsible for integration and verification.
-
-The goal closes when the milestones above are delivered and their evidence is recorded. New regions, weapon counts or unrelated systems are subsequent scope, rather than reasons to expand this goal indefinitely.
+- Seeded rules and validated command replay remain preserved. Renderer changes never consume rules RNG or alter combat timing.
+- Adding weapons, enemies, regions, or threat shapes follows the ownership table and content contracts; rules changes bump version identities explicitly.
+- Run `npm run check` for code, UI and rules changes; changes affecting 3D assets or rendering use `npm run check:full`.

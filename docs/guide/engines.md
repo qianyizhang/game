@@ -6,8 +6,9 @@ For developing playable policies, difficulty comparisons and inspectable policy
 rollouts, follow the [canonical policy development guide](../engineering/policy-development.md).
 The full-state search seam below is a diagnostic capability; restricted player
 observations and policy evaluation have their own game-owned boundaries.
-[Blindside policy play](../engineering/blindside-agent.md) uses `engine:policy` for
-run/record/benchmark/audit and a separate isolated original-input inspector.
+Policy play across all games ([policy development](../engineering/policy-development.md)) uses
+`npm run engine:policy` for run/record/benchmark/audit and separate isolated original-input
+inspectors.
 
 The [repository organization](../engineering/architecture.md#repository-organization) distinguishes card studies in `src/games/`, the independent Emberwake package and specialized tooling. Hearth experiment harnesses live in `src/engines/hearth/`; current command names are unchanged.
 

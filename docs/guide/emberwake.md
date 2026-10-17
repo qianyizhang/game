@@ -4,18 +4,20 @@ A Diablo II-inspired action RPG study (`/?game=diablo2`). Choose a hero and seed
 
 ## Difficulty
 
-Choose a tier before starting. Current campaigns use rules v4:
+Choose a tier before starting. Current campaigns use rules v7:
 
-| Tier     | Incoming hostile damage | Life-potion recovery |
-| -------- | ----------------------- | -------------------- |
-| Relaxed  | ×0.75                   | None                 |
-| Standard | ×3                      | 20 seconds           |
-| Severe   | ×6                      | 60 seconds           |
+| Tier     | Incoming hostile damage | Player per-impact ceiling | Life-potion recovery |
+| -------- | ----------------------- | ------------------------- | -------------------- |
+| Relaxed  | ×0.75                   | Unlimited                 | None                 |
+| Standard | ×7                      | 55% of max HP             | 20 seconds           |
+| Severe   | ×12                     | 70% of max HP             | 60 seconds           |
 
-The damage setting also affects summoned allies. Life potions still restore 60% of
-maximum life, but another drink must wait for recovery; the belt shows the countdown.
-Mana potions have no added recovery. These settings create different pressure;
-their measured difficulty and human feel are still being evaluated.
+The damage multiplier also scales hostile impacts on summoned allies. Player impacts
+scale after mitigation, round once, and apply the per-impact ceiling when capped.
+Life potions restore 60% of maximum life, but another drink must wait for recovery;
+the belt shows the countdown. Mana potions have no added recovery. These settings
+create distinct encounter pressure; their measured difficulty and human feel are
+still being evaluated.
 
 ## Heroes and skills
 
@@ -61,7 +63,7 @@ Locate ward stones in outdoor region 2 and dungeon floor 2 to unlock floor 3 sta
 
 ## Saves, content packs, and sandbox
 
-- **Persistence**: Autosaves locally every 5 simulation seconds. Export/import portable JSON replays.
-- **Previous campaigns**: V2 and v3 journeys retain their original rules and separate save slots. First upgrade resumes an existing v3 journey. Start a new journey for v4; the chooser can restore or export older campaigns without overwriting the new one.
+- **Persistence**: Autosaves locally every 5 simulation seconds to `card-workshop.emberwake.v7`. Export/import portable JSON replays (`emberwake-replay-v7`).
+- **Previous campaigns**: V2 through v6 journeys retain their original rules and separate save slots. Continuing an older campaign resumes under its original rules without overwriting v7.
 - **Content packs**: JSON-based modding for heroes, skills, loot, and maps. See [package README](../../packages/diablo2/README.md#make-content-mods).
-- **Developer sandbox (F8)**: Level 20 testing environment with God mode, map reveal, teleports, and cooldown resets. Saves independently from the campaign.
+- **Developer sandbox (F8)**: Level 20 testing environment with God mode, map reveal, teleports, and cooldown resets. Saves independently from the campaign (`card-workshop.emberwake.sandbox.v1`).

@@ -1,6 +1,6 @@
 # Content expansion history
 
-Historical records for the first card expansion (rules v2) and Night Market (rules v4). For current Hearth rules v6 / arena v2, see [tavern spells](../guide/tavern-spells.md).
+Historical records for the first card expansion (rules v2) and Night Market (rules v4). For current Hearth rules v6 / arena v3, see [tavern spells](../guide/tavern-spells.md).
 
 ## Card suite expansion
 

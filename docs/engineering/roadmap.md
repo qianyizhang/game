@@ -12,7 +12,7 @@ Classic remains the reference/default for the historical Hearth studies. Unit va
 
 ## Remaining candidates
 
-Night Passage has an authorized [progressive refinement track](night-passage.md#progressive-refinement): one direction per turn, a major 2.5D campaign uplift and incremental authored asset coverage. That page owns its milestone finish lines and compatibility requirements.
+Night Passage's 2.5D campaign and authored asset coverage are delivered ([Night Passage architecture](night-passage.md)). Future directions include deeper encounter variety or policy leagues under the existing contracts.
 
 | Area                  | Bounded direction                                               | Evidence required                                                                |
 | --------------------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------- |
