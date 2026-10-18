@@ -48,11 +48,12 @@ proposal edits the diagram; it does not implement the refactor.
 
 ## Reproduce locally
 
-From a clean checkout of the PR branch (or its merged successor):
+From a clean checkout, fetch the tested snapshot by commit so reproduction does not
+depend on the feature branch surviving after merge:
 
 ```sh
-git fetch origin
-git switch --track origin/codex/architecture-canvas
+git fetch origin 82dca57ebc6e70ddfa28ad30bcb3e7f317c2238f
+git switch --detach 82dca57ebc6e70ddfa28ad30bcb3e7f317c2238f
 nvm install
 nvm use
 npm ci
@@ -63,7 +64,8 @@ npm run repo:canvas -- --repo "$PWD" --port 4317
 
 Open `http://127.0.0.1:4317`. The pinned runtime is Node 24.21.0 / npm 11.19.0.
 This canvas-only workflow needs neither Python/Blender nor game LFS assets.
-If the branch already exists locally, switch to it rather than recreating it.
+For ongoing edits, switch to the branch containing this change (`main` after merge)
+before saving. The detached snapshot above reproduces the reviewed map exactly.
 Use a different port for another checkout. Stop the preview with Ctrl-C.
 
 For native Codex integration, run this from the same checkout after `nvm use`:
