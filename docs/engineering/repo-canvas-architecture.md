@@ -30,9 +30,13 @@ interfaces, source previews and notes; double-click to enter a focused view. Use
 - **Retained evidence** separates default benchmark summaries from opt-in detailed
   recordings. Shared retained rollouts default to gzip; native production stays
   plaintext. Summaries cannot reopen discarded inputs. Compression saves disk,
-  not transient audit memory.
+  not transient audit memory. Completed summaries currently remain in memory until the
+  final report write; interruption can lose them. The frozen Emberwake strength
+  validator requires retained gzip receipts, so summary-only output cannot replace
+  its historical input contract.
 - **Proposed seams** contains three discussion options with triggers and tradeoffs:
-  retention options, review loading and game-dispatch metadata. They are not
+  a compact completed-case ledger (the leading interruption-recovery seam), review
+  loading and game-dispatch metadata. They are not
   implemented modules or commitments. There are no proposed imports into live code.
 
 Names are intentionally ordinary: a **game** owns rules; an **adapter** exposes permitted

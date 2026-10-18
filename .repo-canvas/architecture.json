@@ -379,7 +379,7 @@
       "parent": "hearth",
       "name": "Classic & frozen APIs",
       "kind": "module",
-      "summary": "Classic is the ordinary default. Legacy agent transports, experiment entry points and historical source hashes retain their recorded meanings; inspect the owning contract before consolidation.",
+      "summary": "Classic is the ordinary default. Legacy synchronous JSONL agent transports, experiment entry points and historical source hashes retain their recorded meanings; they are separate from the shared adoption recorder. Inspect the owning contract before consolidation.",
       "sources": [
         "src/games/battlegrounds/application/session.ts",
         "src/engines/hearth/runtime.ts",
@@ -532,8 +532,9 @@
       "parent": "policy-storage",
       "name": "Benchmark summaries",
       "kind": "data",
-      "summary": "DEFAULT: retain protocol, compiled bundle, all case outcomes/audit verdicts and aggregates. Record and audit transient full input for each case, then discard it. rolloutRetention = none. No promise to reopen original observations from these reports.",
+      "summary": "DEFAULT for completed studies: protocol, compiled bundle, all case outcomes/audit verdicts and aggregates; transient full input is audited then discarded. rolloutRetention = none. Current interruption gap: report.json is written only after the matrix completes, so completed in-memory rows may be lost if a later case aborts. No detailed-input reopening promise.",
       "sources": [
+        "packages/workshop-tools/policy/cli.ts",
         "packages/workshop-tools/policy/study.ts",
         "packages/workshop-tools/policy/pool.ts",
         "packages/workshop-tools/night-passage/study.ts"
@@ -546,11 +547,12 @@
       "parent": "policy-storage",
       "name": "Selected full rollouts",
       "kind": "data",
-      "summary": "OPT IN: record one selected episode or benchmark --retain-rollouts all. Five shared adapters write rollout.json.gzip by default; --rollout-format json is explicit. Native Night Passage writes rollout.json and its native manifest/replay/audit. Fresh paths prevent accidental overwrite.",
+      "summary": "OPT IN: record one selected episode or benchmark --retain-rollouts all. Five shared adapters write rollout.json.gzip by default; --rollout-format json is explicit. Native Night Passage writes rollout.json and its native manifest/replay/audit. Fresh paths prevent accidental overwrite. Frozen Emberwake strength-validation contracts require retained gzip row.rollout receipts; summary-only reports cannot satisfy that frozen consumer.",
       "sources": [
         "packages/workshop-tools/policy/cli.ts",
         "packages/workshop-tools/policy/artifact.ts",
-        "packages/workshop-tools/night-passage/policy-cli.ts"
+        "packages/workshop-tools/night-passage/policy-cli.ts",
+        "packages/workshop-tools/policy/analyze-emberwake.ts"
       ],
       "x": 460,
       "y": 40
@@ -587,13 +589,13 @@
     {
       "id": "proposal-retention",
       "parent": "proposals",
-      "name": "Proposed: retention option",
+      "name": "Proposed: case ledger",
       "kind": "module",
-      "summary": "WHY: shared/native studies now use the same summary-first intent but separate option parsing/report construction. AFTER another consumer needs it, extract a tiny retention-option validator or summary envelope. COST: compatibility/versioning work; do not merge native rollout schemas or add an artifact framework. Preserve none/all meanings and native --suite rejection.",
+      "summary": "WHY: shared benchmark rows stay in memory until report.json is written after all cases; a later interruption can lose completed summaries. FIRST seam: append one compact outcome/audit row after each completed case, then derive the final report. COST: define partial-run status, ordering and duplicate handling. Keep observations opt-in and native formats intact; do not build a resume/archive framework or change frozen validators.",
       "sources": [
         "packages/workshop-tools/policy/cli.ts",
-        "packages/workshop-tools/night-passage/policy-cli.ts",
         "packages/workshop-tools/policy/study.ts",
+        "packages/workshop-tools/policy/pool.ts",
         "packages/workshop-tools/night-passage/study.ts"
       ],
       "x": 40,
