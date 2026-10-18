@@ -20,6 +20,7 @@ import type { WeaponId } from '../../../src/games/night-passage/domain/types';
 export const STUDY_VERSION = 'night-passage-policy-study-1';
 export interface StudyOptions {
   directory: string;
+  retainRollouts?: boolean;
   split: 'development' | 'evaluation';
   provenance: NonNullable<Rollout['provenance']>;
   base: Pick<
@@ -44,7 +45,7 @@ export interface StudyRow {
   work: number;
   digest: string;
   audit: RolloutAudit;
-  artifacts: string;
+  artifacts?: string;
 }
 const json = (value: unknown) => JSON.stringify(value, null, 2) + '\n';
 const median = (values: number[]) => {
@@ -145,7 +146,7 @@ export function summarize(
   return { summary, paired };
 }
 
-/** Freeze first, then retain every attempt, including errors/timeouts and their original inputs. */
+/** Freeze first; retain every attempt summary, with full inputs only on explicit request. */
 export async function runStudy(runtime: Runtime, options: StudyOptions) {
   const seeds = cohortSeeds(options.split);
   const weapons = [
@@ -181,6 +182,7 @@ export async function runStudy(runtime: Runtime, options: StudyOptions) {
   const grid = { seeds, weapons, difficulties, policies: policyIds };
   const protocol = {
     schema: 'night-passage-policy-study-protocol-1',
+    rolloutRetention: options.retainRollouts ? 'all' : 'none',
     split: options.split,
     versions: { study: STUDY_VERSION, builtins: runtime.POLICY_VERSION },
     grid,
@@ -215,35 +217,39 @@ export async function runStudy(runtime: Runtime, options: StudyOptions) {
             options.provenance,
           );
           const audit = await runtime.auditRollout(rollout, player);
-          const artifacts = `cases/${difficulty}/${weapon}/${policy}/${seed}`;
-          const directory = resolve(options.directory, artifacts);
-          await mkdir(directory, { recursive: true });
-          const files = {
-            'rollout.json': JSON.stringify(rollout) + '\n',
-            'replay.json': rollout.replay,
-            'audit.json': json(audit),
-          };
-          for (const [name, bytes] of Object.entries(files))
-            await writeFile(resolve(directory, name), bytes, { flag: 'wx' });
-          const location = relative(repositoryRoot, directory);
-          await writeFile(
-            resolve(directory, 'manifest.json'),
-            json({
-              schema: 'night-passage-rollout-manifest-1',
-              protocolDigest: sha256(protocolBytes),
-              digest: rollout.digest,
-              episode: rollout.episode,
-              decisions: rollout.decisions.length,
-              provenance: options.provenance,
-              artifacts: Object.fromEntries(
-                Object.entries(files).map(([name, bytes]) => [name, sha256(bytes)]),
-              ),
-              review: location.startsWith('..')
-                ? null
-                : `/?game=night-passage&watch=1&rollout=${encodeURIComponent('/' + location + '/rollout.json')}`,
-            }),
-            { flag: 'wx' },
-          );
+          const artifacts = options.retainRollouts
+            ? `cases/${difficulty}/${weapon}/${policy}/${seed}`
+            : undefined;
+          if (artifacts) {
+            const directory = resolve(options.directory, artifacts);
+            await mkdir(directory, { recursive: true });
+            const files = {
+              'rollout.json': JSON.stringify(rollout) + '\n',
+              'replay.json': rollout.replay,
+              'audit.json': json(audit),
+            };
+            for (const [name, bytes] of Object.entries(files))
+              await writeFile(resolve(directory, name), bytes, { flag: 'wx' });
+            const location = relative(repositoryRoot, directory);
+            await writeFile(
+              resolve(directory, 'manifest.json'),
+              json({
+                schema: 'night-passage-rollout-manifest-1',
+                protocolDigest: sha256(protocolBytes),
+                digest: rollout.digest,
+                episode: rollout.episode,
+                decisions: rollout.decisions.length,
+                provenance: options.provenance,
+                artifacts: Object.fromEntries(
+                  Object.entries(files).map(([name, bytes]) => [name, sha256(bytes)]),
+                ),
+                review: location.startsWith('..')
+                  ? null
+                  : `/?game=night-passage&watch=1&rollout=${encodeURIComponent('/' + location + '/rollout.json')}`,
+              }),
+              { flag: 'wx' },
+            );
+          }
           rows.push({
             seed,
             difficulty,
@@ -256,7 +262,7 @@ export async function runStudy(runtime: Runtime, options: StudyOptions) {
             work: rollout.decisions.reduce((total, row) => total + (row.work?.total ?? 0), 0),
             digest: rollout.digest,
             audit,
-            artifacts,
+            ...(artifacts ? { artifacts } : {}),
           });
           process.stderr.write(
             `Native case ${rows.length}/${protocol.cases}: ${seed}/${difficulty}/${weapon}/${policy} ${rollout.episode.status}\n`,

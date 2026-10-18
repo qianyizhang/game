@@ -19,7 +19,7 @@ Upgrade TypeScript and typed ESLint together when peer support and repository ch
 - Moves and new files must enter the owning checker scopes in the same change.
 - Let the owning module and import path supply naming context. Omit repeated game/module prefixes; retain qualifiers that distinguish operations exposed together, such as arena and recruitment. Use import aliases when different modules meet at one caller.
 - Preserve concurrent changes. Record starting status and source hashes, edit only the slice, and report the owned delta. Do not reset or broadly stage the worktree.
-- A move or formatting change can change experiment source pins and asset receipts. Preserve historical reports, hashes, rules versions and frozen environments. Validate new outputs as new results; never rewrite old evidence to match current code.
+- A move or formatting change can change experiment source pins and asset receipts. Preserve historical reports, hashes and rules versions; retain experiment payloads only under the retention rule below. Validate new outputs as new results; never rewrite old evidence to match current code.
 
 ## Commit closeout
 
@@ -42,18 +42,68 @@ Before removing a script, inspect imports, npm commands, CI, documentation and f
 
 `npm run maintenance -- inventory` reports streamed content hashes, every occurrence path and tracked-text references for the artifact roots. It does not grant deletion authority. [Verification contracts](checks.md#retention-and-inventory) describe its consistency and reference limits.
 
-| Material                                                                     | Home                                                           | Lifetime                                        |
-| ---------------------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------- |
-| Active discussions and handoffs                                              | `.work/sessions/<session>/`                                    | Protected while open or pinned                  |
-| Closed session notes                                                         | Same, with valid closure receipt and tracked promotion targets | 30 days after closure                           |
-| Reproducible disposable renders and test output                              | `test-results/disposable/<run>/`                               | 14 days after closure                           |
-| Artist sources, backups, accepted evidence, experiments and frozen snapshots | Existing source/evidence homes                                 | Protected; explicit migration decision required |
+| Material                                                  | Home                                                           | Lifetime                                         |
+| --------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------ |
+| Active discussions and handoffs                           | `.work/sessions/<session>/`                                    | Protected while open or pinned                   |
+| Closed session notes                                      | Same, with valid closure receipt and tracked promotion targets | 30 days after closure                            |
+| Reproducible disposable renders and test output           | `test-results/disposable/<run>/`                               | 14 days after closure                            |
+| Artist sources, backups and named regression fixtures     | Existing source/fixture homes                                  | Protected; explicit migration decision required  |
+| Policy experiment observations and intermediate artifacts | Fresh experiment output                                        | Temporary; apply the policy iteration rule below |
 
 `npm run maintenance -- prune` is read-only. `npm run maintenance -- prune --apply` automatically deletes only eligible entries in the first two opt-in roots. The monthly local maintenance automation runs tests and governance checks first, then uses this same command. No files are eligible merely because they are old or ignored by Git.
 
 Each candidate has a versioned `.retention.json` with `kind`, `state`, `pinned`, UTC `closedAt` and SHA-256 `files`. Sessions also name Git-tracked durable `promotedTo` documents. Open, unclassified, pinned, changed, source-containing, tracked or symlinked entries are retained. Apply rechecks the planned bytes and removes only the enumerated files. New arrivals stop directory removal. Root-level `test-results/` evidence and `dcc-backups/` are outside automatic deletion authority.
 
 The DCC review renderer writes four PNGs into a fresh run directory and closes it only after all four succeed. Interrupted runs remain unclassified and protected. Pin a needed review by setting its receipt's `pinned` to true before expiry; retain a separately identified durable evidence set before linking it as lasting proof.
+
+### Policy iteration retention
+
+Optimize for fast forward iteration. Routine policy experiments do not require
+pixel-perfect reproduction or retrospective audit. Keep enough to understand a
+choice and avoid repeating a failed idea; keeping every observation is not a goal.
+This rule supersedes older instructions to preserve all raw policy evidence.
+
+- **Default output:** keep the protocol, source/policy identity, compiled policy
+  bundle, per-case outcomes and audit verdicts, aggregate comparison and limitations.
+  Every error/timeout remains in the denominator. Shared and Night Passage study
+  commands default to summary-only storage; `record` explicitly captures an episode.
+- **Superseded policies:** keep the policy source or compiled bundle once, the
+  outcome, rejection reason and useful lesson in the research home. Prune their
+  observations, full replay matrices, screenshots, repeated source trees and
+  intermediate diagnostics after conclusions are recorded. An archive or restore
+  test is not required for these disposable payloads.
+- **Detailed capture:** use `--retain-rollouts all` only for a named active debugging
+  question or a study that explicitly needs later input inspection. Prefer selected
+  `record` cases. Close the question, promote a minimal useful regression fixture,
+  then delete the bulk capture; ordinary closed captures should expire within 14 days.
+  A longer exception needs an owner, reason and expiry, rather than an indefinite hold.
+- **Storage design:** reuse existing source control and compiled bundles. Copy only
+  changed policy sources when Git cannot recover them. Choose compression for
+  retained recordings; build a new codec, archive store or restoration system only
+  for a demonstrated consumer requirement. Video is an optional visual explanation,
+  not the default replacement for structured observations.
+- **Honest history:** retain published metrics and negative results without rewriting
+  them. Record that raw inputs were pruned and old file links may be unavailable.
+  An old audit verdict describes the checks performed then; it does not promise
+  that the complete run can still be reopened today.
+
+This standing rule authorizes pruning classified, closed policy payloads after
+preserving their compact conclusions. It does not authorize deleting active runs,
+actual user saves, artist sources, unique acquisitions, original Git-history backups
+or named regression fixtures. Automatic `maintenance prune` remains limited to its
+existing receipt-qualified roots; this rule does not broaden that command.
+
+### 2026-10-18 storage disposition
+
+`test-results` fell from **145.87 to 6.7 GiB**; surviving same-disk recovery holds
+**0.47 GiB**. Permanent pruning removed closed policy recordings, obsolete synthetic
+fixtures and large scratch diagnostics after preserving policy code/bundles, results,
+lessons and selected inspector/regression examples.
+
+Local `.work/policy-retention-2026-10-18/` records the scope and completion. In
+`.work/artifact-archives/evidence-2026-10-18/`, only `retained-plan.json` and
+`RECOVERY.txt` describe current recovery; older manifests are historical. Pruned
+policy payloads are intentionally unrecoverable.
 
 ## Maintenance cadence
 
@@ -66,7 +116,7 @@ The DCC review renderer writes four PNGs into a fresh run directory and closes i
 
 When investigating a failed development run, inspect its first error or trace before
 repeating it. Promote a concrete failure and its prevention into the owning contract;
-keep raw histories in their existing protected homes.
+keep the lasting lesson and use the policy iteration rule for raw histories.
 
 - **Discover paths first:** use `rg --files` to locate modules/configuration rather
   than guessing names from old layouts. Refresh the relevant lines after formatting
@@ -87,7 +137,7 @@ keep raw histories in their existing protected homes.
   verification environment, not an application regression. Creating a clone does
   not change the caller's working directory: verify the gate's explicit working
   directory and logged project path before attributing its result.
-- **Keep evidence exact:** preserve original input bytes and source/runtime pins.
+- **Keep retained evidence exact:** while a detailed recording is retained, preserve its original input bytes and source/runtime pins.
   Any numerical tolerance belongs to an explicit diagnostic with its field scope,
   bound and observed differences; never apply it to hashes or silently normalize a
   frozen result. Follow the game's policy guide for the concrete audit contract.

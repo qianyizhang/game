@@ -5,7 +5,7 @@ import { compareScores, scoreVector } from '../../../src/shared/policy/scoring.t
 import type { Runtime } from './runtime.ts';
 import { casePool } from './pool.ts';
 import { writeRolloutArtifact } from './artifact.ts';
-import type { RolloutFormat } from '../../../src/shared/policy/artifact.ts';
+import { rolloutFormat, type RolloutFormat } from '../../../src/shared/policy/artifact.ts';
 
 /** Frozen independent blocks; no environment seed ever enters policy configuration. */
 export const cohortSeeds = (
@@ -97,7 +97,7 @@ export type StudyRow = {
   work: number;
   digest: string;
   audit: PolicyAudit;
-  /** Container receipt. Absent on historical reports. Native digest still identifies decoded rollout. */
+  /** Present only when a full rollout was retained; digest alone cannot reconstruct it. */
   rollout?: Awaited<ReturnType<typeof writeRolloutArtifact>>;
 };
 
@@ -107,12 +107,14 @@ export async function benchmark(
     split: 'development' | 'evaluation';
     workers?: number;
     rolloutFormat?: RolloutFormat;
+    retainRollouts?: boolean;
     directory: string;
     maxDecisions: number;
     provenance: JsonObject;
     seeds?: string[];
   },
 ) {
+  const format = rolloutFormat(options.rolloutFormat);
   const seeds = options.seeds ?? cohortSeeds(options.split);
   if (!seeds.length || new Set(seeds).size !== seeds.length)
     throw new Error('Study requires unique independent seed labels.');
@@ -128,7 +130,8 @@ export async function benchmark(
         directory: options.directory,
         maxDecisions: options.maxDecisions,
         provenance: options.provenance,
-        rolloutFormat: options.rolloutFormat ?? 'json',
+        rolloutFormat: format,
+        retainRollouts: options.retainRollouts,
       })),
     ),
   );
@@ -144,8 +147,9 @@ export async function benchmark(
   );
   return {
     schema: 'policy-study-2',
-    rolloutFormat: options.rolloutFormat ?? 'json',
-    rolloutSuffix: options.rolloutFormat === 'gzip' ? '.json.gzip' : '.json',
+    rolloutRetention: options.retainRollouts ? 'all' : 'none',
+    rolloutFormat: format,
+    rolloutSuffix: format === 'gzip' ? '.json.gzip' : '.json',
     game: runtime.adapter.game,
     identity: runtime.adapter.identity,
     study: runtime.study,
@@ -325,6 +329,7 @@ export interface CaseJob {
   maxDecisions: number;
   provenance: JsonObject;
   rolloutFormat?: RolloutFormat;
+  retainRollouts?: boolean;
 }
 export async function runCase(
   runtime: Omit<Runtime, 'moduleURL'>,
@@ -346,18 +351,21 @@ export async function runCase(
   );
   const audit = await runtime.auditRollout(runtime.adapter, run, factory);
   const name = `${job.seed}-${job.setupId}-${job.policy}`;
-  const rollout = await writeRolloutArtifact(
-    job.directory,
-    `${name}.rollout`,
-    JSON.stringify(run) + '\n',
-    job.rolloutFormat ?? 'json',
-    runtime.study.reviewPath,
-  );
-  await writeFile(
-    resolve(job.directory, `${name}.audit.json`),
-    JSON.stringify(audit, null, 2) + '\n',
-    { flag: 'wx' },
-  );
+  let rollout: StudyRow['rollout'];
+  if (job.retainRollouts) {
+    rollout = await writeRolloutArtifact(
+      job.directory,
+      `${name}.rollout`,
+      JSON.stringify(run) + '\n',
+      rolloutFormat(job.rolloutFormat),
+      runtime.study.reviewPath,
+    );
+    await writeFile(
+      resolve(job.directory, `${name}.audit.json`),
+      JSON.stringify(audit, null, 2) + '\n',
+      { flag: 'wx' },
+    );
+  }
   return {
     seed: job.seed,
     policy: job.policy,
@@ -369,7 +377,7 @@ export async function runCase(
     work: run.episode.work,
     digest: run.digest,
     audit,
-    rollout,
+    ...(rollout ? { rollout } : {}),
   };
 }
 async function serialCases(runtime: Runtime, jobs: CaseJob[]) {

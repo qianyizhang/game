@@ -38,7 +38,7 @@ export async function policyMain(mode: PolicyMode, args: string[]): Promise<void
           'max-ticks',
           'setup',
           'policy-module',
-          ...(mode === 'benchmark' ? ['suite', 'split'] : []),
+          ...(mode === 'benchmark' ? ['suite', 'split', 'retain-rollouts'] : []),
         ];
   const options: Record<string, string> = {};
   for (let i = 0; i < args.length; i += 2) {
@@ -64,6 +64,10 @@ export async function policyMain(mode: PolicyMode, args: string[]): Promise<void
     throw new Error('Choose a built-in OR a local module.');
   if (mode !== 'run' && !options.out) throw new Error('A fresh output path is required.');
   if (mode === 'audit' && !options.input) throw new Error('An input rollout is required.');
+  const retention = options['retain-rollouts'] ?? 'none';
+  if (!['none', 'all'].includes(retention)) throw new Error('Use --retain-rollouts none|all.');
+  if (options.suite && retention === 'all')
+    throw new Error('Legacy --suite benchmarks do not retain rollouts; use --split instead.');
   const setup: unknown = options.setup ? JSON.parse(options.setup) : {};
   if (
     !isRecord(setup) ||
@@ -188,6 +192,7 @@ export async function policyMain(mode: PolicyMode, args: string[]): Promise<void
         if (!options.suite) {
           const report = await runStudy(runtime, {
             directory: directory!,
+            retainRollouts: retention === 'all',
             split: split as 'development' | 'evaluation',
             provenance,
             base: {

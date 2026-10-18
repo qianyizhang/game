@@ -25,6 +25,7 @@ void test('parallel episodes retain exact serial evidence and worker exits fail 
         setup: { difficulty: 'standard' },
         directory: serial,
         maxDecisions: 2,
+        retainRollouts: true,
         provenance: { ...pins },
       }));
       const expected = [];
@@ -36,7 +37,7 @@ void test('parallel episodes retain exact serial evidence and worker exits fail 
       );
       assert.deepEqual(actual, expected);
       for (const job of jobs) {
-        const name = `${job.seed}-${job.setupId}-${job.policy}.rollout.json`;
+        const name = `${job.seed}-${job.setupId}-${job.policy}.rollout.json.gzip`;
         assert.ok(
           (await readFile(resolve(serial, name))).equals(await readFile(resolve(parallel, name))),
         );

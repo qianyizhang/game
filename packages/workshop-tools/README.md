@@ -109,11 +109,22 @@ Default usage output is `test-results/disposable/usage-dashboard-<UUID>`, closed
 
 ## Policy adoption commands
 
+Policy benchmarks default to summaries, per-case outcomes/audit verdicts and one
+compiled bundle, with no per-case rollout files. Use `--retain-rollouts all` for a
+named detailed investigation, or `record` for selected episodes. The protocol/report
+records `rolloutRetention`. Shared retained rollouts default to `.json.gzip`; use
+`--rollout-format json` for an explicit plaintext requirement. Manifests and retained
+study rows identify encoded/decoded bytes; the protocol records the storage mode.
+Apply the [iteration retention rule](../../docs/engineering/maintenance.md#policy-iteration-retention)
+when closing a study. The native Night
+Passage recorder retains its existing plaintext format.
+
 `npm run engine:policy -- run|record|benchmark|audit` supplies the checked policy
 workflow for Blindside, Spire, current Mixed Rivals, Emberwake, Cartographer and Night Passage. Built-in policies and trusted local TypeScript
 factory modules use the same game-owned observation/command adapter. `record` and
 `benchmark` require fresh output directories, retain source-pinned compiled bundles,
-original inputs/proposals, native results and independent audits; `audit` writes an
+native results and audit verdicts. `record` and explicitly opted-in benchmarks also
+retain original inputs/proposals; `audit` writes an
 exclusive new receipt. Benchmark writes its frozen protocol before cases execute.
 No policy module receives the hidden environment seed. See the
 [Blindside contract](../../docs/engineering/blindside-agent.md) for options, extension
@@ -127,7 +138,7 @@ reports keep character/hero strata separate over paired independent seed blocks.
 [Hearth policy play](../../docs/engineering/hearth-policy.md) uses aliased public commands
 and all-actor native journal spans. Audits never rerun rival policies. `benchmark --pool
 1–4` distributes independent cases, validates assigned-case replies, fails on early worker
-exit and retains exact serial evidence bytes; source pins include the worker tooling.
+exit and produces matching serial results (and exact rollout bytes when retained); source pins include the worker tooling.
 
 [Emberwake policy play](../../docs/engineering/emberwake-policy.md) uses first-death
 campaign attempts, conservative structured sensors and game-owned setup JSON. Native
@@ -141,7 +152,8 @@ wire game as `dungeon-cartographer`; the CLI selector remains `cartographer`.
 [Night Passage](../../docs/engineering/night-passage-agent.md) preserves its native
 `PolicyPlayer` work/timing and action/tick budgets. Common benchmark freezes recorded
 10/20-block studies; explicit `--suite` retains legacy summary semantics. Every native
-study case has original knowledge, replay, audit and a spectator manifest. See the
+study case retains its outcome/audit verdict; `--retain-rollouts all` additionally
+saves original knowledge, replay and a spectator manifest. See the
 [six-game workflow evidence](../../docs/research/experiments/2026-10-16-policy-workflow.md).
 
 Shared policy benchmarks accept `--cohort NEW-NAMESPACE`, `--blocks 10|20|40|60|100|400`
@@ -167,7 +179,12 @@ uses native `--max-actions` (including evaluator start), `--max-ticks` and publi
 `PlayerConfig`; unsupported shared flags fail explicitly. Native work totals determine
 control latency and must retain their breakdown.
 
-`benchmark --split development|evaluation` retains each attempted case and its game-owned setup and character/hero/weapon stratum. Night Passage's legacy native `benchmark`/`evaluate` commands and `--suite training|held-out` retain their labelled summary semantics; they cannot supply missing original knowledge retroactively or substitute for a recorded study.
+`benchmark --split development|evaluation` reports every attempted outcome/audit verdict
+within its game-owned setup and character/hero/weapon stratum. Reports are written
+after the complete matrix returns; an interrupted summary-only study has no final
+report. Night Passage's legacy native `benchmark`/`evaluate` commands and
+`--suite training|held-out` retain their labelled summary semantics; they cannot
+supply missing original knowledge retroactively.
 
 Audit auto-detects each recorded identity, including Night Passage's native schema.
 An implementation that is absent leaves policy reproduction unavailable while native

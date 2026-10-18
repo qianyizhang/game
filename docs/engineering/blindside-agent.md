@@ -69,7 +69,7 @@ privileged tactical/search tool; it is not this restricted policy evaluator.
 npm run engine:policy -- run --game blindside --policy survival --difficulty standard
 npm run engine:policy -- record --game blindside --policy growth --out test-results/my-new-rollout
 npm run engine:policy -- run --game blindside --policy-module src/games/balatro/agent/example.ts
-npm run engine:policy -- audit --input test-results/my-new-rollout/rollout.json --out test-results/my-new-audit.json
+npm run engine:policy -- audit --input test-results/my-new-rollout/rollout.json.gzip --out test-results/my-new-audit.json
 ```
 
 Use `--policy-options '{"key":"value"}'` to pass an explicit JSON object to a custom
@@ -86,7 +86,7 @@ Local modules are trusted in-process code. Restricted inputs, reconstruction and
 review support cooperative fairness; hostile code could import private modules or use
 ambient Node capabilities. No sandbox/isolation claim is made.
 
-`record` requires a fresh directory and retains `rollout.json`, `replay.json`, `audit.json`,
+`record` requires a fresh directory and retains `rollout.json.gzip`, `replay.json`, `audit.json`,
 `manifest.json` and the compiled bundle. Source/tool hashes and runtime identify the
 implementation; source drift stops successful closeout. Original knowledge is captured
 before the policy can mutate its input. Factory/malformed-output failures retain raw
@@ -130,7 +130,9 @@ npm run engine:policy -- benchmark --game blindside --split evaluation --out tes
 Each split freezes `protocol.json` before execution. Development has ten independent
 seed blocks, evaluation twenty disjoint reserved blocks, crossed with all three tiers
 and all three strategies. Use the same policy stream and decision budget throughout.
-Every attempt retains full original rollout and audit, including errors/timeouts.
+Every attempt retains its outcome and audit verdict, including errors/timeouts.
+Full original rollouts require `--retain-rollouts all`; apply the
+[iteration retention rule](maintenance.md#policy-iteration-retention) when closing a study.
 Freeze policies after development; never tune on reserved results and rerun under the
 same claimed holdout. The study reports paired progress differences with uncertainty.
 The [dated adoption report](../research/experiments/2026-10-16-blindside-policy.md)

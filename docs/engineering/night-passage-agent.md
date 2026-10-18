@@ -208,8 +208,8 @@ Recording requires a **new directory**; auditing requires a new receipt path. Op
 under `bundles/`. The manifest pins source/tool/bundle hashes and runtime, records
 artifact hashes and provides a same-origin review URL for output inside this repo.
 Source drift fails recording. Full observations repeat public definitions and can
-make rollout files substantially larger than replays; retain them as experiment
-evidence under the existing retention rules.
+make rollout files substantially larger than replays. Keep selected diagnostic
+captures under the [iteration retention rule](maintenance.md#policy-iteration-retention).
 
 Open **Watch replay → Open rollouts**, selecting one or more `rollout.json` files.
 The viewer also accepts gzip containers (`.gz` or `.gzip`). Local files and linked
@@ -298,16 +298,17 @@ The common workflow keeps the native schema, delayed controls and budgets.
 (decisionTicks, bowDistance, meleeReachRatio). Shared `--max-decisions`,
 `--policy-seed` and `--policy-options` are unsupported and rejected explicitly.
 
-| Benchmark route                         | Meaning                                                                                                                                                                                                                  |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Common `--split` development/evaluation | Freeze 10/20 independent blocks across three effort policies, three gameplay tiers and five weapons (450/900 attempts); retain original rollout/replay/audit/manifest per case. A custom module adds an explicit policy. |
-| Explicit `--suite` training/held-out    | Labelled legacy summary: three existing seeds × five weapons, one policy/control, without per-case original inputs/audits. Cannot combine with `--split`.                                                                |
+| Benchmark route                         | Meaning                                                                                                                                                                                                                                                                                             |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Common `--split` development/evaluation | Freeze 10/20 independent blocks across three effort policies, three gameplay tiers and five weapons (450/900 attempts); retain per-case outcomes/audit verdicts by default. `--retain-rollouts all` saves original rollout/replay/audit/manifest per case. A custom module adds an explicit policy. |
+| Explicit `--suite` training/held-out    | Labelled legacy summary: three existing seeds × five weapons, one policy/control, without per-case original inputs/audits. Cannot combine with `--split`.                                                                                                                                           |
 
 Choose a bounded development grid and native budgets before a larger study. Report
 weapon/difficulty strata, all errors/timeouts, score, winning time and paired seed
 uncertainty; repeated weapons are not independent seeds. Native `benchmark`/`evaluate`
 and frozen calibration retain their historical meanings. Summary-only results cannot
-supply missing original knowledge or substitute for a recorded study.
+supply missing original knowledge for later inspection. They remain the default for
+routine iteration; opt into detailed capture only when that inspection is needed.
 
 Content-addressed bundles may be reused only when bytes match; preserve/reject a
 conflict. Report/receipt paths remain exclusive. The [workflow evidence](../research/experiments/2026-10-16-policy-workflow.md)

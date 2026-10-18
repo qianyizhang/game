@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { execFileSync } from 'node:child_process';
-import { mkdtemp, open, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, open, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { test } from 'node:test';
@@ -25,6 +25,8 @@ void test('recorded Cartographer wire identity routes back through the public au
       'POLICY-ADOPTION-1-DEV-01',
       '--max-decisions',
       '2',
+      '--rollout-format',
+      'json',
       '--out',
       episode,
     ]);
@@ -78,40 +80,41 @@ void test('fresh study subsets freeze the requested policy and independent seed 
         ),
       /unique available policy IDs/,
     );
+    const studyArgs = [
+      cli,
+      'benchmark',
+      '--game',
+      'spire',
+      '--policies',
+      'survival',
+      '--cohort',
+      'SUBSET-TEST',
+      '--blocks',
+      '10',
+      '--max-decisions',
+      '1',
+    ];
     const out = resolve(directory, 'study');
-    execFileSync(
-      process.execPath,
-      [
-        cli,
-        'benchmark',
-        '--game',
-        'spire',
-        '--policies',
-        'survival',
-        '--cohort',
-        'SUBSET-TEST',
-        '--blocks',
-        '10',
-        '--max-decisions',
-        '1',
-        '--pool',
-        '2',
-        '--rollout-format',
-        'gzip',
-        '--out',
-        out,
-      ],
-      { cwd: repositoryRoot, stdio: 'pipe' },
-    );
+    execFileSync(process.execPath, [...studyArgs, '--pool', '2', '--out', out], {
+      cwd: repositoryRoot,
+      stdio: 'pipe',
+    });
     const protocol = JSON.parse(await readFile(resolve(out, 'protocol.json'), 'utf8')) as {
       policies: { id: string }[];
       seeds: string[];
+      rolloutRetention: string;
       rolloutFormat: string;
       rolloutSuffix: string;
     };
     const report = JSON.parse(await readFile(resolve(out, 'report.json'), 'utf8')) as {
-      rows: { policy: string; rollout: { file: string; format: string; sha256: string } }[];
+      rows: {
+        policy: string;
+        rollout?: { file: string; format: string; sha256: string };
+        audit: { integrity: string };
+        status: string;
+      }[];
       seeds: string[];
+      rolloutRetention: string;
       rolloutFormat: string;
       rolloutSuffix: string;
     };
@@ -128,12 +131,35 @@ void test('fresh study subsets freeze the requested policy and independent seed 
     assert.equal(report.rolloutFormat, 'gzip');
     assert.equal(protocol.rolloutSuffix, '.json.gzip');
     assert.equal(report.rolloutSuffix, '.json.gzip');
+    assert.equal(protocol.rolloutRetention, 'none');
+    assert.equal(report.rolloutRetention, 'none');
+    assert.ok(report.rows.every((row) => !row.rollout && row.audit.integrity === 'passed'));
+    assert.deepEqual((await readdir(out)).sort(), ['bundles', 'protocol.json', 'report.json']);
+    // Opting in changes retained files, not the attempted population or outcomes.
+    const retainedOut = resolve(directory, 'retained');
+    execFileSync(
+      process.execPath,
+      [...studyArgs, '--pool', '1', '--retain-rollouts', 'all', '--out', retainedOut],
+      { cwd: repositoryRoot, stdio: 'pipe' },
+    );
+    const retainedReport = JSON.parse(
+      await readFile(resolve(retainedOut, 'report.json'), 'utf8'),
+    ) as typeof report;
+    assert.equal(retainedReport.rolloutRetention, 'all');
+    assert.deepEqual(
+      retainedReport.rows.map(({ rollout, ...row }) => {
+        assert.ok(rollout);
+        return row;
+      }),
+      report.rows,
+    );
     const { sha256 } = await import('../runtime-bundle.ts');
     const { readRolloutArtifact } = await import('./artifact.ts');
-    for (const row of report.rows) {
+    for (const row of retainedReport.rows) {
+      assert.ok(row.rollout);
       assert.equal(row.rollout.format, 'gzip');
       assert.ok(row.rollout.file.endsWith('.rollout.json.gzip'));
-      const path = resolve(out, row.rollout.file);
+      const path = resolve(retainedOut, row.rollout.file);
       assert.equal(sha256(await readFile(path)), row.rollout.sha256);
       assert.equal((await readRolloutArtifact(path)).format, 'gzip');
     }
@@ -223,7 +249,7 @@ void test('calibration cannot certify a plan with empty source provenance', asyn
   }
 });
 
-void test('gzip record receipts pin original bytes and audit without a format flag', async () => {
+void test('default gzip records pin original bytes and audit without a format flag', async () => {
   const directory = await mkdtemp(resolve(tmpdir(), 'policy-cli-gzip-'));
   const cli = resolve(repositoryRoot, 'packages/workshop-tools/policy/cli.ts');
   const run = (args: string[]) =>
@@ -234,17 +260,7 @@ void test('gzip record receipts pin original bytes and audit without a format fl
     });
   try {
     const episode = resolve(directory, 'recording');
-    run([
-      'record',
-      '--game',
-      'cartographer',
-      '--max-decisions',
-      '2',
-      '--rollout-format',
-      'gzip',
-      '--out',
-      episode,
-    ]);
+    run(['record', '--game', 'cartographer', '--max-decisions', '2', '--out', episode]);
     const manifest = JSON.parse(await readFile(resolve(episode, 'manifest.json'), 'utf8')) as {
       rollout: { format: string; file: string; sha256: string; decodedSha256: string };
       artifacts: Record<string, string>;

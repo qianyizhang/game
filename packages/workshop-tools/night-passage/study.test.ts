@@ -1,6 +1,6 @@
 import { cohortSeeds } from '../policy/study.ts';
 import { strict as assert } from 'node:assert';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, readdir, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { test } from 'node:test';
@@ -29,6 +29,7 @@ void test('native studies freeze first and retain every bounded built-in/custom 
         };
         const report = await runStudy(guarded, {
           directory,
+          retainRollouts: true,
           split: 'development',
           provenance: pins,
           base: { control: 'standard', rules: 'night-passage-5', maxActions: 5, maxTicks: 3 },
@@ -52,6 +53,7 @@ void test('native studies freeze first and retain every bounded built-in/custom 
         const frozenBytes = await readFile(resolve(directory, 'protocol.json'), 'utf8');
         assert.equal(report.protocolDigest, sha256(frozenBytes));
         for (const row of report.rows) {
+          assert.ok(row.artifacts);
           const path = resolve(directory, row.artifacts);
           const rolloutBytes = await readFile(resolve(path, 'rollout.json'), 'utf8');
           const rollout = runtime.parseRollout(rolloutBytes);
@@ -74,6 +76,26 @@ void test('native studies freeze first and retain every bounded built-in/custom 
           assert.equal(manifest.artifacts['rollout.json'], sha256(rolloutBytes));
           assert.equal(await readFile(resolve(path, 'replay.json'), 'utf8'), rollout.replay);
         }
+        const summaryDirectory = resolve(directory, 'summary');
+        const summary = await runStudy(runtime, {
+          directory: summaryDirectory,
+          split: 'development',
+          provenance: pins,
+          base: { control: 'standard', rules: 'night-passage-5', maxActions: 5, maxTicks: 3 },
+          weapons: ['bow'],
+          difficulties: ['standard'],
+          policies: ['quick'],
+        });
+        assert.equal(summary.protocol.rolloutRetention, 'none');
+        assert.deepEqual(await readdir(summaryDirectory), ['protocol.json']);
+        assert.deepEqual(
+          summary.rows,
+          report.rows.map(({ artifacts, ...row }) => {
+            assert.ok(artifacts);
+            return row;
+          }),
+        );
+        assert.deepEqual(summary.summary, report.summary);
         await assert.rejects(
           runStudy(guarded, {
             directory,
@@ -87,6 +109,7 @@ void test('native studies freeze first and retain every bounded built-in/custom 
           /EEXIST/,
         );
         const first = report.rows[0];
+        assert.ok(first.artifacts);
         const retained = runtime.parseRollout(
           await readFile(resolve(directory, first.artifacts, 'rollout.json'), 'utf8'),
         );

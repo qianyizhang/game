@@ -92,7 +92,7 @@ loops and recording are omitted. This is a declared proxy, not elapsed compute t
 npm run engine:policy -- run --game cartographer --policy survival --setup '{"difficulty":"standard"}'
 npm run engine:policy -- record --game cartographer --policy growth --out test-results/new-cartographer-rollout
 npm run engine:policy -- run --game cartographer --policy-module src/games/cartographer/agent/example.ts
-npm run engine:policy -- audit --input test-results/new-cartographer-rollout/rollout.json --out test-results/new-cartographer-audit.json
+npm run engine:policy -- audit --input test-results/new-cartographer-rollout/rollout.json.gzip --out test-results/new-cartographer-audit.json
 ```
 
 Local modules default-export `PolicyFactory<Observation, PolicyCommand>`; factory

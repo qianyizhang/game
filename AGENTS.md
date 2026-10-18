@@ -20,6 +20,7 @@ Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone B
 - Structure files into cohesive modules with clear hierarchy; avoid flat directory dumping.
 - Tidy before commit: reorganize directory structure, consolidate module layout, and sharpen terminology to be concise and precise.
 - For maintenance, script changes, documentation placement, cleanup or check coverage, read [maintenance governance](docs/engineering/maintenance.md).
+- For policy experiments, keep summaries and lessons by default; follow the [iteration retention rule](docs/engineering/maintenance.md#policy-iteration-retention) when saving or closing runs.
 
 ## Checks
 

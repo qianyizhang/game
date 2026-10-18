@@ -86,7 +86,7 @@ remain attempted cases with explicit incomplete-result status.
 npm run engine:policy -- run --game hearth --policy survival --setup '{"hero":"archivist","difficulty":"standard"}'
 npm run engine:policy -- record --game hearth --policy growth --out test-results/new-hearth-rollout
 npm run engine:policy -- run --game hearth --policy-module src/games/battlegrounds/agent/example.ts
-npm run engine:policy -- audit --input test-results/new-hearth-rollout/rollout.json --out test-results/new-hearth-audit.json
+npm run engine:policy -- audit --input test-results/new-hearth-rollout/rollout.json.gzip --out test-results/new-hearth-audit.json
 ```
 
 A local TS module default-exports `PolicyFactory<Observation, PolicyCommand>`. Factory
@@ -139,7 +139,8 @@ Ten development seed blocks × five heroes × three tiers × three policies prod
 identities in the protocol before execution. Each hero/tier is reported separately over
 independent paired seeds; do not count correlated hero repetitions as extra seed blocks.
 Four independent workers share no episode state/RNG and preserve exact serial artifact
-bytes. Worker failure aborts the incomplete study, retaining completed evidence.
+bytes when full capture is enabled. Worker failure aborts the incomplete study;
+summary-only reports are written after the complete matrix returns.
 
 Use approximate paired progress/placement uncertainty and Wilson rate intervals; binary
 paired intervals and constant-sample variance intervals remain explicitly unavailable.

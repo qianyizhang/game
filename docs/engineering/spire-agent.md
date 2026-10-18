@@ -121,7 +121,7 @@ encounter, not a substitute for fresh full-run strength calibration.
 npm run engine:policy -- run --game spire --policy survival --setup '{"character":"silent","ascension":2}'
 npm run engine:policy -- record --game spire --policy growth --out test-results/new-spire-rollout
 npm run engine:policy -- run --game spire --policy-module src/games/spire/agent/example.ts
-npm run engine:policy -- audit --input test-results/new-spire-rollout/rollout.json --out test-results/new-spire-audit.json
+npm run engine:policy -- audit --input test-results/new-spire-rollout/rollout.json.gzip --out test-results/new-spire-audit.json
 ```
 
 A local TypeScript module default-exports `PolicyFactory<Observation, PolicyCommand>`.
@@ -168,7 +168,9 @@ npm run engine:policy -- benchmark --game spire --split evaluation --out test-re
 Game-owned study definitions declare six character/Ascension setups. Ten development
 seed blocks yield 180 attempts; twenty disjoint reserved blocks yield 360 attempts.
 Every setup/policy uses the same independent policy stream and fixed decision budget.
-Each attempt retains original knowledge and an audit, including errors/timeouts.
+Each attempt retains its outcome and audit verdict, including errors/timeouts.
+Original knowledge is saved only with `--retain-rollouts all`; apply the
+[iteration retention rule](maintenance.md#policy-iteration-retention) when closing a study.
 
 The protocol freezes setup/ranking/policy/source identities before execution. Freeze
 policies after development, then evaluate once on reserved cases. Report Wilson win-rate

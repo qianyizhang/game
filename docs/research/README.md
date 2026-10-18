@@ -31,6 +31,11 @@ Keep source links beside the relevant claims. Do not treat marketing pages as co
 All six games implement policy extensions and original-input review. Performance
 claims remain game-specific; infrastructure completion does not imply calibration.
 The linked reports retain full counts, uncertainty, failures and audit scope.
+On 2026-10-18, closed policy bulk recordings and superseded observations were
+intentionally pruned under the [iteration retention rule](../engineering/maintenance.md#policy-iteration-retention).
+Historical artifact paths and “preserved” statements describe availability at the
+time of the study; they do not promise current raw-input recovery. Policy sources/
+bundles, result summaries and lessons remain.
 
 | Game                                                          | Current evidence                                                                                                                                   | Remaining limit                                                                      |
 | ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |

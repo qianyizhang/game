@@ -14,7 +14,8 @@ const usage = `policy run|record --game blindside|spire|hearth|emberwake|cartogr
 policy record --game blindside|spire|hearth|emberwake|cartographer|night-passage --out NEW_DIRECTORY [same options]
 policy benchmark --game blindside|spire|hearth|emberwake|cartographer|night-passage --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
 policy audit --input ROLLOUT --out NEW_RECEIPT [--policy-module ./policy.ts]
-Shared record/benchmark storage (five adapters): --rollout-format json|gzip (default json).
+Benchmark storage: --retain-rollouts none|all (default none; summaries keep every attempt and audit verdict).
+Shared record/retained-benchmark storage (five adapters): --rollout-format json|gzip (default gzip).
 Gzip retains exact rollout JSON inside a lossless container; replay/audit remain JSON. Night Passage compression is unsupported.
 Shared study options (five adapters): --cohort UPPERCASE-NAMESPACE --blocks 10|20|40|60|100|400.
   --policies ID,ID selects a declared subset; default is every loaded policy.
@@ -22,7 +23,7 @@ Choose a NEW cohort namespace for fresh evidence; increasing --blocks reuses the
 A local TS module default-exports a game-typed PolicyFactory (Night Passage: native PolicyPlayer). It is trusted in-process code.
 Night Passage policies are quick|balanced|deliberate; preserve --max-actions/--max-ticks and native PolicyPlayer timing. Benchmark uses recorded 10/20-block studies; explicit --suite training|held-out selects legacy summaries.
 Run prints result/audit; record retains exact knowledge, replay, audit and compiled source-pinned bundle.
-Benchmark freezes the protocol before execution; errors/timeouts remain attempted cases.`;
+Benchmark freezes the protocol before execution; errors/timeouts remain attempted cases. Use record for selected diagnostic episodes.`;
 async function main() {
   const [mode = 'help', ...args] = process.argv.slice(2);
   if (mode === 'help' || mode === '--help') console.log(usage);
@@ -80,6 +81,7 @@ async function main() {
               'blocks',
               'policies',
               'rollout-format',
+              'retain-rollouts',
             ]
           : [
               'game',
@@ -113,6 +115,8 @@ async function main() {
     if (mode !== 'run' && !options.out) throw new Error('A fresh output path is required.');
     if (mode === 'audit' && !options.input) throw new Error('An input rollout is required.');
     const format = rolloutFormat(options['rollout-format']);
+    const retention = options['retain-rollouts'] ?? 'none';
+    if (!['none', 'all'].includes(retention)) throw new Error('Use --retain-rollouts none|all.');
     const input = auditInput?.text;
     const wireGame = input ? (JSON.parse(input) as { game?: string }).game : options.game;
     const game =
@@ -221,6 +225,7 @@ async function main() {
           }
           const protocol = {
             schema: 'policy-study-protocol-2',
+            rolloutRetention: retention,
             rolloutFormat: format,
             rolloutSuffix: format === 'gzip' ? '.json.gzip' : '.json',
             game,
@@ -238,7 +243,7 @@ async function main() {
             provenance,
             ranking: runtime.study.ranking,
             analysis:
-              'Independent paired seed blocks within each setup/stratum. 95% Wilson win intervals and approximate t intervals for mean/paired progress; paired wins report point estimates/discordance counts with intervals unavailable. No pooling across characters; no multiple-comparison adjustment. All attempts retained. No tuning on evaluation.',
+              'Independent paired seed blocks within each setup/stratum. 95% Wilson win intervals and approximate t intervals for mean/paired progress; paired wins report point estimates/discordance counts with intervals unavailable. No pooling across characters; no multiple-comparison adjustment. All attempt summaries and audit verdicts retained; full rollouts follow rolloutRetention. No tuning on evaluation.',
           };
           await writeFile(
             resolve(directory!, 'protocol.json'),
@@ -253,6 +258,7 @@ async function main() {
             maxDecisions,
             provenance,
             rolloutFormat: format,
+            retainRollouts: retention === 'all',
           });
           await checkSources();
           await writeFile(

@@ -30,4 +30,4 @@ callers, CI, docs and frozen reproduction references during cleanup.
 Use `finish-work` against the [testing policy](testing.md), [verification gates](checks.md),
 and [maintenance rules](maintenance.md). Replay/save contracts remain authoritative;
 art changes also follow the [art rulebook](../art/art-direction.md). Keep technical
-checks, native authoring, and visual acceptance distinct; retain historical evidence.
+checks, native authoring, and visual acceptance distinct; retain historical conclusions under the [iteration retention rule](maintenance.md#policy-iteration-retention).

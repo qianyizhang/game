@@ -195,9 +195,27 @@ unavailable; retain original reports and source-pin corrected analyses.
 
 ## Make every rollout reviewable
 
-### Retain a coherent evidence set
+### Routine iteration and retention
 
-Use existing game formats where they satisfy these requirements. Logical artifacts
+Benchmarks default to **summary-only storage**: protocol, compiled policy bundle,
+per-case outcomes/audit verdicts and aggregates. Recording/auditing still runs during
+the study; large observations are discarded after each case instead of written to
+storage. This reduces disk use, not the transient decoded memory needed by audits.
+Use `record` for selected diagnostic episodes, or `benchmark --retain-rollouts all`
+when a named investigation needs every detailed recording. The protocol/report
+records `rolloutRetention`; a summary-only report makes no claim that its inputs can
+later be reopened. Explicitly retained shared rollouts default to lossless gzip.
+
+After a policy is superseded, retain its source/bundle, outcome and lessons, then
+prune bulk observations and intermediate artifacts. Follow the
+[iteration retention rule](maintenance.md#policy-iteration-retention); permanent
+raw-input archives and pixel-perfect retrospective reproduction are not requirements
+for routine iteration. Evaluation boundaries and honest denominators still apply.
+
+### Deliberately retained recordings
+
+These requirements apply while a detailed recording is retained, not to every routine
+benchmark result. Use existing game formats. Logical artifacts
 may share a file; this table is not a new mandatory wire schema.
 
 | Artifact                | Minimum retained information                                                                                                                                                                                                                                                  |
@@ -230,12 +248,17 @@ leaves unperformed checks unavailable, never implicitly passed. Hashes identify 
 Keep raw evidence in fresh output directories, with compact durable receipts and
 reproduction instructions in the existing documentation homes. State which dependencies
 are required to open an old run. Unsupported versions or unavailable evidence show an
-explicit limitation, preserving original bytes and recovery paths. Follow
+explicit limitation. Preserve exact bytes while retained; deliberately pruned inputs
+are unavailable rather than reconstructed and relabeled as originals. Follow
 [retention governance](maintenance.md#retention-and-deletion-authority); a new run or
 source refactor never overwrites frozen evidence.
 
-Shared record/study producers may retain the rollout as plain JSON (default) or a
-lossless gzip container with `--rollout-format gzip`. New compressed artifacts use
+Shared record producers and explicitly retained study rollouts use a lossless gzip container by default. Use
+`--rollout-format json` only when a declared plaintext consumer requires it. Full
+original observations remain in the decoded JSON: repeated maps, definitions and
+visible state support independent input audits, while gzip removes their disk
+repetition. This does not change observations, policy identity or replay meaning.
+New compressed artifacts use
 `.json.gzip`; `.gz` can trigger automatic HTTP decoding that loses the saved container
 bytes before browser inspection. Freeze the storage format and source-pinned encoder
 before execution; manifests and study rows identify the exact encoded bytes, decoded
@@ -252,6 +275,12 @@ encoding header. If the container is absent, explain possible server decoding or
 misnamed file and offer local-file recovery rather than relabel decoded JSON as the
 original. Night Passage's separate native recorder does not support this
 container option.
+
+Source freezes identify executable source/build identities once. Keep changed policy
+sources or a compiled bundle and compact protocol/outcome records; prior experiments
+need only a result/lesson reference. Recursively copying an earlier evidence tree
+under `source-snapshot/` multiplies storage and is unnecessary. Existing historical
+hashes stay historical even after their payloads are intentionally pruned.
 
 ### Navigation is part of completion
 
@@ -300,7 +329,8 @@ not as though correlated seat rotations were independent samples. Declare sample
 size and desired precision before execution; the same episode count is not appropriate
 for every game. Shared seeds can consume RNG differently after decisions diverge.
 
-Retain every attempted case and failure. A run with execution errors, source drift,
+Retain the outcome and audit verdict for every attempted case and failure; this does
+not require permanently retaining every observation or replay. A run with execution errors, source drift,
 missing cases or failed audit cannot support promotion; report failures and follow the
 predeclared complete-block rule. Include insensitive-policy/disclosure controls where
 relevant. Review representative successes, failures and a suspected leak in the
@@ -354,7 +384,7 @@ game-owned.
 
 ```sh
 npm run engine:policy -- record --game cartographer --policy-module src/games/cartographer/agent/example.ts --out test-results/new-policy-episode
-npm run engine:policy -- audit --input test-results/new-policy-episode/rollout.json --out test-results/new-policy-audit.json --policy-module src/games/cartographer/agent/example.ts
+npm run engine:policy -- audit --input test-results/new-policy-episode/rollout.json.gzip --out test-results/new-policy-audit.json --policy-module src/games/cartographer/agent/example.ts
 ```
 
 The [tools command contract](../../packages/workshop-tools/README.md#policy-adoption-commands) owns flags, source pinning, study dispatch and audit routing. Game guides own setup and timing; Night Passage retains its native controller and distinct budgets. Keep new selector/wire-ID mappings covered by an actual record → CLI audit regression.

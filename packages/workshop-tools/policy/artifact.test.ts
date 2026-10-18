@@ -25,7 +25,8 @@ void test('lossless containers preserve original JSON bytes, Unicode and exact e
     assert.equal(artifact.metadata.bytes, artifact.bytes.byteLength);
   }
   assert.deepEqual(encodeRolloutArtifact(text, 'json').bytes, Buffer.from(text));
-  assert.equal(rolloutFormat(), 'json');
+  assert.equal(rolloutFormat(), 'gzip');
+  assert.equal(rolloutFormat('json'), 'json');
   assert.throws(() => rolloutFormat('zip'), /json\|gzip/);
 });
 void test('malformed containers, invalid UTF-8 and oversized encoded/decoded inputs fail closed', async () => {

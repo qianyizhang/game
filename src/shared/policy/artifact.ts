@@ -1,7 +1,7 @@
 /** A lossless storage container, independent of rollout schema and native identity. */
 export const MAX_ARTIFACT_BYTES = 150_000_000;
 export type RolloutFormat = 'json' | 'gzip';
-export function rolloutFormat(value = 'json'): RolloutFormat {
+export function rolloutFormat(value = 'gzip'): RolloutFormat {
   if (value !== 'json' && value !== 'gzip') throw new Error('Use --rollout-format json|gzip.');
   return value;
 }
