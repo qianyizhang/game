@@ -56,8 +56,8 @@ From a clean checkout, fetch the tested snapshot by commit so reproduction does 
 depend on the feature branch surviving after merge:
 
 ```sh
-git fetch origin 82dca57ebc6e70ddfa28ad30bcb3e7f317c2238f
-git switch --detach 82dca57ebc6e70ddfa28ad30bcb3e7f317c2238f
+git fetch origin b60e69d843787df01e66f863957bc6a6441b529b
+git switch --detach b60e69d843787df01e66f863957bc6a6441b529b
 nvm install
 nvm use
 npm ci
