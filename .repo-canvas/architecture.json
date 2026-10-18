@@ -7,167 +7,216 @@
       "parent": null,
       "name": "Card Workshop",
       "kind": "system",
-      "summary": "Independent games, shared presentation utilities, and dedicated workbenches. Enter a module to explore its responsibilities and source evidence.",
-      "sources": ["AGENTS.md", "package.json"],
-      "x": 0,
-      "y": 0
+      "summary": "Implemented architecture at 1c152a65 (2026-10-18). Eight entry points; enter for focused views. Ownership and interfaces are selected from source, not inferred from folders. “Proposed seams” is discussion only. Start with Game systems, then Policy evidence.",
+      "sources": ["docs/engineering/repo-canvas-architecture.md", "AGENTS.md", "package.json"],
+      "x": 40,
+      "y": 40
     },
     {
       "id": "app",
       "parent": "repo",
       "name": "Workshop shell",
       "kind": "module",
-      "summary": "Chooses the active game and lazily opens game and art workbenches. Owns navigation, not game rules.",
-      "sources": ["src/app/Hub.tsx", "src/main.tsx"],
-      "x": 60,
-      "y": 80
+      "summary": "Navigation and lazy UI entry points; browser storage stays in presentation adapters. Selects all six games and their policy inspectors. Commands cross into each game’s application layer; React never owns rules.",
+      "sources": ["src/app/Hub.tsx", "src/app/GameShell.tsx", "src/app/useLocalGame.ts"],
+      "x": 40,
+      "y": 40
     },
     {
       "id": "games",
       "parent": "repo",
       "name": "Game systems",
       "kind": "package",
-      "summary": "Each game owns its content, authoritative rules and saved sessions. Browser UI submits commands.",
-      "sources": ["AGENTS.md", "src/app/Hub.tsx"],
-      "x": 400,
-      "y": 80
+      "summary": "Six independent rule systems. Each owns legal commands, content, score, observations and replay meaning. Enter for real shared versus native paths; Hearth and Night Passage expose additional focused views.",
+      "sources": ["docs/engineering/architecture.md", "src/app/Hub.tsx", "src/shared/engine.ts"],
+      "x": 430,
+      "y": 40
     },
     {
       "id": "shared",
       "parent": "repo",
       "name": "Shared utilities",
       "kind": "module",
-      "summary": "Small proven utilities for seeded randomness, replay, playback and deterministic layouts. No universal game engine.",
-      "sources": ["src/shared/random.ts", "src/shared/replay.ts", "src/shared/layout/layout.ts"],
-      "x": 740,
-      "y": 80
+      "summary": "Small proven functions: seeded randomness, accepted-command replay, downloads, layout and presentation clocks. Domain timing and content stay game-owned; these helpers are not a universal rules engine.",
+      "sources": [
+        "src/shared/random.ts",
+        "src/shared/replay.ts",
+        "src/shared/download.ts",
+        "src/shared/usePlaybackClock.ts",
+        "src/shared/layout/layout.ts"
+      ],
+      "x": 430,
+      "y": 250
     },
     {
       "id": "dcc",
       "parent": "repo",
       "name": "Art workbench",
       "kind": "package",
-      "summary": "Blender authoring and asset delivery, with its own source, export and verification pipeline.",
-      "sources": ["packages/dcc-workbench/README.md", "packages/dcc-workbench/package.json"],
-      "x": 60,
-      "y": 380
+      "summary": "Native Blender authoring, editable artist sources and delivered assets. Exports are consumed by game/viewer presentation; art delivery does not own simulation rules or policy evidence.",
+      "sources": ["packages/dcc-workbench/README.md", "src/shared/three/lifetime.ts"],
+      "x": 430,
+      "y": 460
     },
     {
       "id": "tools",
       "parent": "repo",
       "name": "Repository tools",
       "kind": "package",
-      "summary": "Maintenance gates, experiment runners and evidence processing. Session review is a separate presentation package.",
-      "sources": ["packages/workshop-tools/package.json", "packages/workshop-tools/README.md"],
-      "x": 400,
-      "y": 380
+      "summary": "Node tooling owns study orchestration, source-pinned bundling and maintenance. Trace normalization/session review concerns developer sessions; game policy rollout review lives under Policy evidence.",
+      "sources": [
+        "packages/workshop-tools/README.md",
+        "packages/workshop-tools/policy/runtime.ts",
+        "packages/workshop-tools/runtime-bundle.ts"
+      ],
+      "x": 40,
+      "y": 460
     },
     {
       "id": "canvas",
       "parent": "repo",
       "name": "Repo Canvas",
       "kind": "package",
-      "summary": "Shared architecture interface inside Codex: an isolated document model, repository bridge and MCP App with discussion in the current conversation.",
-      "sources": ["packages/repo-canvas/README.md", "packages/repo-canvas/package.json"],
-      "x": 740,
-      "y": 380
+      "summary": "Versioned architecture document, local repository operations and MCP App. Hosted chat proposals require explicit Apply to draft then Save map. Standalone preview and stdio probes do not establish native Codex host attachment.",
+      "sources": ["packages/repo-canvas/README.md", "docs/engineering/mcp-apps.md"],
+      "x": 40,
+      "y": 670
     },
     {
       "id": "blindside",
       "parent": "games",
       "name": "Blindside",
       "kind": "module",
-      "summary": "Poker hands, blinds, jokers and shop progression in an independent seeded game.",
-      "sources": ["src/games/balatro/domain/game.ts", "src/games/balatro/ui/BlindsideApp.tsx"],
-      "x": 60,
-      "y": 70
+      "summary": "SHARED policy path: balatro/agent adapter + PolicyFactory → shared recorder/audit/review. Ordinary play: BlindsideApp → useLocalGame/blindsideSession → domain transition. Seed, rules version and accepted commands reconstruct saves. Own public view, scoring and difficulty remain local.",
+      "sources": [
+        "src/games/balatro/ui/BlindsideApp.tsx",
+        "src/games/balatro/application/session.ts",
+        "src/games/balatro/domain/game.ts",
+        "src/games/balatro/agent/adapter.ts",
+        "src/games/balatro/agent/policy.ts",
+        "src/games/balatro/agent/Review.tsx",
+        "docs/engineering/blindside-agent.md"
+      ],
+      "x": 40,
+      "y": 40
     },
     {
       "id": "spire",
       "parent": "games",
       "name": "Slay the Spire",
       "kind": "module",
-      "summary": "Deckbuilding runs with character content, combat commands and validated session persistence.",
-      "sources": ["src/games/spire/domain/game.ts", "src/games/spire/application/session.ts"],
-      "x": 380,
-      "y": 70
+      "summary": "SHARED policy path: spire/agent adapter + PolicyFactory → shared recorder/audit/review. Ordinary play: SpireApp → useLocalGame/spireSession → combat/map/rewards. Character and Ascension setup, frame-scoped legal menus and score stay game-owned. Enter for command flow.",
+      "sources": [
+        "src/games/spire/agent/adapter.ts",
+        "src/games/spire/agent/policy.ts",
+        "src/games/spire/agent/Review.tsx",
+        "src/games/spire/application/session.ts",
+        "docs/engineering/spire-agent.md"
+      ],
+      "x": 430,
+      "y": 40
     },
     {
       "id": "hearth",
       "parent": "games",
       "name": "Last Hearth",
       "kind": "module",
-      "summary": "Tavern recruitment and automatic combat own distinct timing and command rules.",
+      "summary": "SHARED policy adoption covers spell-enabled Mixed Rivals (Arena), not every Hearth mode. All eight actors’ commands are journaled; replayDecision reconstructs recorded native spans without rerunning rivals. Classic, recruitment and frozen transports retain separate paths. Enter for those boundaries.",
       "sources": [
-        "src/games/battlegrounds/domain/game.ts",
-        "src/games/battlegrounds/domain/combat.ts"
+        "src/games/battlegrounds/ui/BattlegroundsApp.tsx",
+        "src/games/battlegrounds/agent/adapter.ts",
+        "src/games/battlegrounds/application/arena.ts",
+        "docs/engineering/hearth-policy.md",
+        "docs/engineering/hearth-agents.md"
       ],
-      "x": 700,
-      "y": 70
+      "x": 40,
+      "y": 260
     },
     {
       "id": "emberwake",
       "parent": "games",
       "name": "Emberwake",
       "kind": "package",
-      "summary": "Action RPG with content, world rules, application persistence and its own UI package.",
-      "sources": ["packages/diablo2/package.json", "packages/diablo2/src/domain/game.ts"],
-      "x": 60,
-      "y": 300
+      "summary": "SHARED policy path: diablo2/agent adapter + PolicyFactory → shared recorder/audit/review. Own package, campaign sensors and session/replay continuity; first-death policy attempts differ from ordinary resumed play. No forced GameShell/useLocalGame adoption.",
+      "sources": [
+        "packages/diablo2/src/ui/DiabloApp.tsx",
+        "packages/diablo2/src/application/session.ts",
+        "packages/diablo2/src/agent/adapter.ts",
+        "packages/diablo2/src/agent/policy.ts",
+        "packages/diablo2/src/agent/Review.tsx",
+        "docs/engineering/emberwake-policy.md"
+      ],
+      "x": 430,
+      "y": 260
     },
     {
       "id": "cartographer",
       "parent": "games",
       "name": "Dungeon Cartographer",
       "kind": "module",
-      "summary": "A playable map study using shared deterministic room geometry.",
-      "sources": ["src/games/cartographer/ui/CartographerApp.tsx", "src/shared/layout/layout.ts"],
-      "x": 380,
-      "y": 300
+      "summary": "SHARED policy path: cartographer/agent adapter + PolicyFactory → shared recorder/audit/review. Own expedition session, public forecast and legal actions; generated geometry uses shared layout. Its UI owns local save handling rather than the card-game hook.",
+      "sources": [
+        "src/games/cartographer/ui/CartographerApp.tsx",
+        "src/games/cartographer/application/session.ts",
+        "src/games/cartographer/agent/adapter.ts",
+        "src/games/cartographer/agent/policy.ts",
+        "src/games/cartographer/agent/Review.tsx",
+        "src/shared/layout/layout.ts",
+        "docs/engineering/cartographer-policy.md"
+      ],
+      "x": 40,
+      "y": 480
     },
     {
       "id": "night",
       "parent": "games",
       "name": "Night Passage",
       "kind": "module",
-      "summary": "A separately loaded game surface with dedicated rules and presentation.",
-      "sources": ["src/games/night-passage/ui/NightPassageApp.tsx"],
-      "x": 700,
-      "y": 300
+      "summary": "NATIVE policy path: common CLI dispatches to night-passage/policy-cli → PolicyPlayer/controller → native recorder/audit and RolloutReview. Own chronicle, constrained timing and executed controls. Shared DecisionNavigator and artifact input helpers are reused; shared EpisodeAdapter and gzip output are not. Enter for details.",
+      "sources": [
+        "src/games/night-passage/ui/NightPassageApp.tsx",
+        "src/games/night-passage/application/live-chronicle.ts",
+        "src/games/night-passage/agent/player.ts",
+        "packages/workshop-tools/night-passage/policy-cli.ts",
+        "src/games/night-passage/ui/RolloutReview.tsx",
+        "docs/engineering/night-passage-agent.md"
+      ],
+      "x": 430,
+      "y": 480
     },
     {
       "id": "spire-ui",
       "parent": "spire",
       "name": "Presentation",
       "kind": "module",
-      "summary": "Displays run state and submits player commands.",
-      "sources": ["src/games/spire/ui/SpireApp.tsx"],
-      "x": 50,
-      "y": 100
+      "summary": "SpireApp submits playCard/endTurn commands. useLocalGame owns browser persistence and practice selection; selected cards and playback frames are temporary UI state.",
+      "sources": ["src/games/spire/ui/SpireApp.tsx", "src/app/useLocalGame.ts"],
+      "x": 40,
+      "y": 40
     },
     {
       "id": "spire-session",
       "parent": "spire",
       "name": "Session",
       "kind": "module",
-      "summary": "Persists and reconstructs validated runs and replays.",
-      "sources": ["src/games/spire/application/session.ts"],
-      "x": 390,
-      "y": 100
+      "summary": "spireSession wraps validated accepted-command reconstruction. Rejected commands do not enter authoritative replay. Rules versions select replay meaning; browser storage stays outside the pure session.",
+      "sources": ["src/games/spire/application/session.ts", "src/shared/replay.ts"],
+      "x": 430,
+      "y": 40
     },
     {
       "id": "spire-rules",
       "parent": "spire",
       "name": "Rules & content",
       "kind": "module",
-      "summary": "Owns legal transitions, combat and rewards.",
+      "summary": "Owns legal transitions, combat/turn order, map, rewards and content IDs. Explicit seeded state drives randomness; pure rules run without React, clocks or storage.",
       "sources": [
         "src/games/spire/domain/game.ts",
         "src/games/spire/domain/combat.ts",
         "src/games/spire/content/world.ts"
       ],
-      "x": 730,
-      "y": 100
+      "x": 430,
+      "y": 270
     },
     {
       "id": "trace",
@@ -179,8 +228,8 @@
         "packages/workshop-tools/trace/build.ts",
         "packages/workshop-tools/trace/jsonl.ts"
       ],
-      "x": 70,
-      "y": 100
+      "x": 40,
+      "y": 40
     },
     {
       "id": "review",
@@ -193,7 +242,7 @@
         "packages/session-review/src/model/contracts.ts"
       ],
       "x": 430,
-      "y": 100
+      "y": 40
     },
     {
       "id": "maintenance",
@@ -202,8 +251,8 @@
       "kind": "module",
       "summary": "Enforces source checker scope, document placement and artifact retention contracts.",
       "sources": ["packages/workshop-tools/governance.mjs", "docs/engineering/maintenance.md"],
-      "x": 70,
-      "y": 350
+      "x": 40,
+      "y": 270
     },
     {
       "id": "canvas-ui",
@@ -216,8 +265,8 @@
         "packages/repo-canvas/src/ui/Canvas.tsx",
         "packages/repo-canvas/src/ui/Inspector.tsx"
       ],
-      "x": 60,
-      "y": 80
+      "x": 40,
+      "y": 40
     },
     {
       "id": "canvas-model",
@@ -226,8 +275,8 @@
       "kind": "data",
       "summary": "One versioned document shared with the agent. Validates hierarchy, IDs, endpoints, annotations and layout.",
       "sources": ["packages/repo-canvas/src/model/document.ts"],
-      "x": 420,
-      "y": 80
+      "x": 430,
+      "y": 40
     },
     {
       "id": "canvas-repo",
@@ -237,25 +286,347 @@
       "summary": "Loads and saves the shared file with revision checks; previews bounded repo source.",
       "sources": [
         "packages/repo-canvas/src/server/repository.ts",
-        "packages/repo-canvas/src/server/api.ts"
+        "packages/repo-canvas/src/server/api.ts",
+        "packages/repo-canvas/src/server/operations.ts"
       ],
-      "x": 420,
-      "y": 350
+      "x": 430,
+      "y": 280
     },
     {
       "id": "canvas-chat",
       "parent": "canvas",
-      "name": "Codex side-chat plugin",
+      "name": "Current chat bridge",
       "kind": "external",
-      "summary": "Hosted MCP App sends user messages to the owning Codex conversation. The chat reads captured context and returns replies and map proposals for review; no separate agent runs.",
+      "summary": "Hosted MCP App uses ui/initialize, tools/call and ui/message with the owning conversation. canvas_read captures unsaved context; canvas_reply returns answer/proposal. A local harness can test bridge semantics, but cannot establish that the user’s installed Codex sidebar is attached.",
       "sources": [
         "packages/repo-canvas/src/server/stdio.ts",
         "packages/repo-canvas/src/server/mcp.ts",
         "packages/repo-canvas/src/ui/host.ts",
         "packages/repo-canvas/src/ui/SideChat.tsx"
       ],
-      "x": 60,
-      "y": 350
+      "x": 40,
+      "y": 280
+    },
+    {
+      "id": "policy",
+      "parent": "repo",
+      "name": "Policy evidence",
+      "kind": "module",
+      "summary": "Implemented record/audit/review pipeline for five EpisodeAdapters, plus CLI dispatch to Night Passage’s native backend. Enter to follow permitted input → proposal → accepted commands → evidence, then inspect storage defaults.",
+      "sources": [
+        "src/shared/policy/types.ts",
+        "src/shared/policy/rollout.ts",
+        "packages/workshop-tools/policy/cli.ts"
+      ],
+      "x": 40,
+      "y": 250
+    },
+    {
+      "id": "proposals",
+      "parent": "repo",
+      "name": "Proposed seams",
+      "kind": "module",
+      "summary": "DISCUSSION ONLY — three bounded consolidation options with adoption conditions and tradeoffs. No new engine, schema or future feature is implemented by this map. Enter and annotate the option before changing code.",
+      "sources": ["docs/engineering/repo-canvas-architecture.md"],
+      "x": 430,
+      "y": 670
+    },
+    {
+      "id": "spire-agent",
+      "parent": "spire",
+      "name": "Policy boundary",
+      "kind": "module",
+      "summary": "Adapter constructs detached public input, binds frame-local menu choices, applies ordinary sessions and returns native metrics. Policies return proposals; they receive neither full state nor the environment seed.",
+      "sources": [
+        "src/games/spire/agent/adapter.ts",
+        "src/games/spire/agent/observation.ts",
+        "src/games/spire/agent/policy.ts"
+      ],
+      "x": 40,
+      "y": 270
+    },
+    {
+      "id": "hearth-arena",
+      "parent": "hearth",
+      "name": "Mixed Rivals policy",
+      "kind": "module",
+      "summary": "Current shared adapter = last-hearth-arena. Opaque aliases hide allocation counters; all-actor journal spans let audits replay recorded rival commands. Policy decisions and native commands have different cursors.",
+      "sources": [
+        "src/games/battlegrounds/agent/adapter.ts",
+        "src/games/battlegrounds/agent/observation.ts",
+        "src/games/battlegrounds/application/arena.ts"
+      ],
+      "x": 40,
+      "y": 40
+    },
+    {
+      "id": "hearth-recruitment",
+      "parent": "hearth",
+      "name": "Recruitment harness",
+      "kind": "module",
+      "summary": "Game-owned recruitment policies and existing headless runtime/inspectors remain supported. They are not automatically equivalent to the restricted adoption observation contract.",
+      "sources": [
+        "src/games/battlegrounds/ai/recruitment-policy.ts",
+        "src/engines/hearth/recruitment-runtime.ts",
+        "src/engines/hearth/recruitment-inspector.ts",
+        "docs/engineering/hearth-agents.md"
+      ],
+      "x": 430,
+      "y": 40
+    },
+    {
+      "id": "hearth-legacy",
+      "parent": "hearth",
+      "name": "Classic & frozen APIs",
+      "kind": "module",
+      "summary": "Classic is the ordinary default. Legacy agent transports, experiment entry points and historical source hashes retain their recorded meanings; inspect the owning contract before consolidation.",
+      "sources": [
+        "src/games/battlegrounds/application/session.ts",
+        "src/engines/hearth/runtime.ts",
+        "src/engines/hearth/experiment.ts",
+        "docs/engineering/hearth-agents.md"
+      ],
+      "x": 40,
+      "y": 270
+    },
+    {
+      "id": "night-player",
+      "parent": "night",
+      "name": "PolicyPlayer",
+      "kind": "module",
+      "summary": "Game-owned player factory receives public PlayerConfig and detached Sight. quick/balanced/deliberate expose deterministic work components; shared PolicyFactory seed/options are not accepted by this CLI path.",
+      "sources": [
+        "src/games/night-passage/agent/player.ts",
+        "src/games/night-passage/agent/policy.ts"
+      ],
+      "x": 40,
+      "y": 40
+    },
+    {
+      "id": "night-control",
+      "parent": "night",
+      "name": "Controller & chronicle",
+      "kind": "module",
+      "summary": "Constrained observation/action delivery has native timing. Old controls may execute while proposals are delayed/cancelled. Native replay records executed commands; trace records policy knowledge and delivery.",
+      "sources": [
+        "src/games/night-passage/application/control.ts",
+        "src/games/night-passage/application/chronicle.ts"
+      ],
+      "x": 430,
+      "y": 40
+    },
+    {
+      "id": "night-record",
+      "parent": "night",
+      "name": "Native record & audit",
+      "kind": "module",
+      "summary": "night-passage-rollout-1 keeps native timeline, replay and work semantics. Audits use original controller/rules context. --max-actions includes start; --max-ticks is independent. Native output stays plaintext JSON.",
+      "sources": [
+        "src/games/night-passage/agent/rollout.ts",
+        "src/games/night-passage/agent/benchmark.ts",
+        "packages/workshop-tools/night-passage/policy-cli.ts"
+      ],
+      "x": 40,
+      "y": 280
+    },
+    {
+      "id": "night-review",
+      "parent": "night",
+      "name": "Native rollout review",
+      "kind": "module",
+      "summary": "RolloutReview reuses DecisionNavigator and shared artifact input helpers, while interpreting native decisions/chronicle. Native benchmark defaults to summaries; explicit record or --retain-rollouts all retains detail. Legacy --suite is summary-only.",
+      "sources": [
+        "src/games/night-passage/ui/RolloutReview.tsx",
+        "src/shared/policy/Navigator.tsx",
+        "src/shared/policy/artifact.ts",
+        "packages/workshop-tools/night-passage/study.ts"
+      ],
+      "x": 430,
+      "y": 280
+    },
+    {
+      "id": "policy-runner",
+      "parent": "policy",
+      "name": "CLI & evaluator",
+      "kind": "module",
+      "summary": "Node-only owner: dispatch game, bundle policy/adapters with source/runtime digests, freeze protocol and run cases. Five adapters use withRuntime; Night Passage dispatches to its native backend. Trusted local policy modules are not a hostile-code sandbox.",
+      "sources": [
+        "packages/workshop-tools/policy/cli.ts",
+        "packages/workshop-tools/policy/runtime.ts",
+        "packages/workshop-tools/policy/study.ts",
+        "packages/workshop-tools/runtime-bundle.ts"
+      ],
+      "x": 40,
+      "y": 40
+    },
+    {
+      "id": "policy-adapter",
+      "parent": "policy",
+      "name": "Game adapter",
+      "kind": "module",
+      "summary": "EpisodeAdapter owns create/observe/act/terminal/metrics/cursor/replay/restore. Observe returns permitted game data; act uses native application commands. replayDecision is optional for multi-actor native spans. Five concrete implementations live with their games.",
+      "sources": [
+        "src/shared/policy/types.ts",
+        "src/games/battlegrounds/agent/adapter.ts",
+        "src/games/spire/agent/adapter.ts"
+      ],
+      "x": 460,
+      "y": 40
+    },
+    {
+      "id": "policy-factory",
+      "parent": "policy",
+      "name": "Policy",
+      "kind": "module",
+      "summary": "PolicyFactory {id, version, create(config)} returns a decision closure. Input = detached observation; output = {command, work, diagnostics?}. Public setup, independent policySeed/options and per-episode closure memory stay distinct from private environment seed.",
+      "sources": [
+        "src/shared/policy/types.ts",
+        "src/games/balatro/agent/policy.ts",
+        "src/games/spire/agent/example.ts"
+      ],
+      "x": 40,
+      "y": 270
+    },
+    {
+      "id": "policy-recorder",
+      "parent": "policy",
+      "name": "Record & audit",
+      "kind": "module",
+      "summary": "recordEpisode retains original inputs, raw proposals/rejections, accepted native cursor spans, replay and result. auditRollout checks integrity/replay/input reconstruction/decisions separately; unavailable is not passed. Fairness also needs source and boundary tests.",
+      "sources": ["src/shared/policy/rollout.ts", "src/shared/policy/types.ts"],
+      "x": 460,
+      "y": 270
+    },
+    {
+      "id": "policy-storage",
+      "parent": "policy",
+      "name": "Retained evidence",
+      "kind": "module",
+      "summary": "Enter for the storage decision: routine benchmark summaries versus explicitly retained rollouts. Gzip changes the container only; decoded observations, identities and replay meaning stay intact. Disk savings do not remove transient audit memory.",
+      "sources": [
+        "packages/workshop-tools/policy/study.ts",
+        "packages/workshop-tools/policy/artifact.ts",
+        "src/shared/policy/artifact.ts",
+        "docs/engineering/maintenance.md"
+      ],
+      "x": 40,
+      "y": 500
+    },
+    {
+      "id": "policy-review",
+      "parent": "policy",
+      "name": "Policy inspector",
+      "kind": "module",
+      "summary": "Five game Review wrappers configure shared PolicyReview with the matching adapter. DecisionNavigator moves among decisions and before/after accepted-command state; policy input and evaluator state remain distinct perspectives. Night Passage owns a native inspector.",
+      "sources": [
+        "src/shared/policy/Review.tsx",
+        "src/shared/policy/Navigator.tsx",
+        "src/games/spire/agent/Review.tsx",
+        "src/app/Hub.tsx"
+      ],
+      "x": 460,
+      "y": 500
+    },
+    {
+      "id": "policy-summary",
+      "parent": "policy-storage",
+      "name": "Benchmark summaries",
+      "kind": "data",
+      "summary": "DEFAULT: retain protocol, compiled bundle, all case outcomes/audit verdicts and aggregates. Record and audit transient full input for each case, then discard it. rolloutRetention = none. No promise to reopen original observations from these reports.",
+      "sources": [
+        "packages/workshop-tools/policy/study.ts",
+        "packages/workshop-tools/policy/pool.ts",
+        "packages/workshop-tools/night-passage/study.ts"
+      ],
+      "x": 40,
+      "y": 40
+    },
+    {
+      "id": "policy-full",
+      "parent": "policy-storage",
+      "name": "Selected full rollouts",
+      "kind": "data",
+      "summary": "OPT IN: record one selected episode or benchmark --retain-rollouts all. Five shared adapters write rollout.json.gzip by default; --rollout-format json is explicit. Native Night Passage writes rollout.json and its native manifest/replay/audit. Fresh paths prevent accidental overwrite.",
+      "sources": [
+        "packages/workshop-tools/policy/cli.ts",
+        "packages/workshop-tools/policy/artifact.ts",
+        "packages/workshop-tools/night-passage/policy-cli.ts"
+      ],
+      "x": 460,
+      "y": 40
+    },
+    {
+      "id": "policy-container",
+      "parent": "policy-storage",
+      "name": "Container & input",
+      "kind": "data",
+      "summary": "Shared gzip codec retains exact decoded JSON and separate container/decoded hashes. Shared browser artifact input rejects misleading auto-decoded remote .gz bytes; local files retain original bytes. Both inspectors use common size/origin/input contracts; native production still rejects gzip.",
+      "sources": [
+        "src/shared/policy/artifact.ts",
+        "packages/workshop-tools/policy/artifact.ts",
+        "src/shared/policy/Review.tsx",
+        "src/games/night-passage/ui/RolloutReview.tsx"
+      ],
+      "x": 40,
+      "y": 270
+    },
+    {
+      "id": "policy-retention",
+      "parent": "policy-storage",
+      "name": "Iteration retention",
+      "kind": "data",
+      "summary": "Keep policy source/bundle, outcomes, lessons and selected regressions. Superseded bulk input may be deliberately pruned under the owning retention rule; retained historical bytes/hashes are not rewritten by a refactor. This map authorizes no deletion.",
+      "sources": [
+        "docs/engineering/maintenance.md",
+        "docs/engineering/policy-development.md",
+        "docs/research/README.md"
+      ],
+      "x": 460,
+      "y": 270
+    },
+    {
+      "id": "proposal-retention",
+      "parent": "proposals",
+      "name": "Proposed: retention option",
+      "kind": "module",
+      "summary": "WHY: shared/native studies now use the same summary-first intent but separate option parsing/report construction. AFTER another consumer needs it, extract a tiny retention-option validator or summary envelope. COST: compatibility/versioning work; do not merge native rollout schemas or add an artifact framework. Preserve none/all meanings and native --suite rejection.",
+      "sources": [
+        "packages/workshop-tools/policy/cli.ts",
+        "packages/workshop-tools/night-passage/policy-cli.ts",
+        "packages/workshop-tools/policy/study.ts",
+        "packages/workshop-tools/night-passage/study.ts"
+      ],
+      "x": 40,
+      "y": 40
+    },
+    {
+      "id": "proposal-review",
+      "parent": "proposals",
+      "name": "Proposed: review loading",
+      "kind": "module",
+      "summary": "WHY: codec, navigator and downloads are already shared while inspector loading/error state remains in two owners. On a real loader change, compare a small shared loading hook against two simple vertical paths. COST: native audit/controller errors may diverge; keep schema dispatch, replay timelines and perspectives game-owned. No rewrite of retained inputs.",
+      "sources": [
+        "src/shared/policy/Review.tsx",
+        "src/games/night-passage/ui/RolloutReview.tsx",
+        "src/shared/policy/artifact.ts",
+        "src/shared/policy/Navigator.tsx"
+      ],
+      "x": 460,
+      "y": 40
+    },
+    {
+      "id": "proposal-dispatch",
+      "parent": "proposals",
+      "name": "Proposed: game dispatch",
+      "kind": "module",
+      "summary": "WHY: adding a seventh game may touch runtime adapter lookup, CLI wire-name routing and Hub review selection. Consolidate only proven static metadata if those lists drift. COST: mixing browser and Node dependencies would harm lazy bundles. Keep separate loaders and native Night Passage dispatch; no universal engine or policy interface.",
+      "sources": [
+        "packages/workshop-tools/policy/runtime.ts",
+        "packages/workshop-tools/policy/cli.ts",
+        "src/app/Hub.tsx"
+      ],
+      "x": 40,
+      "y": 290
     }
   ],
   "connections": [
@@ -263,19 +634,22 @@
       "id": "app-games",
       "from": "app",
       "to": "games",
-      "label": "opens"
+      "label": "opens",
+      "description": "Hub lazy-loads game-owned UI. Each UI delivers native commands to application sessions."
     },
     {
       "id": "app-dcc",
       "from": "app",
       "to": "dcc",
-      "label": "opens"
+      "label": "opens",
+      "description": "The workshop exposes DCC viewers as a separate workbench; this does not execute game rules."
     },
     {
       "id": "games-shared",
       "from": "games",
       "to": "shared",
-      "label": "uses utilities"
+      "label": "uses utilities",
+      "description": "Games selectively reuse replay/RNG/layout/presentation utilities. Night Passage keeps native controller and chronicle semantics."
     },
     {
       "id": "trace-review",
@@ -287,13 +661,15 @@
       "id": "spire-ui-spire-session",
       "from": "spire-ui",
       "to": "spire-session",
-      "label": "uses"
+      "label": "submits command",
+      "description": "UI invokes application act; persistence saves validated replay, not arbitrary domain snapshots."
     },
     {
       "id": "spire-session-spire-rules",
       "from": "spire-session",
       "to": "spire-rules",
-      "label": "reconstructs"
+      "label": "applies / replays",
+      "description": "Ordinary commands and accepted-command reconstruction use the game-owned transition boundary."
     },
     {
       "id": "canvas-ui-canvas-model",
@@ -318,6 +694,62 @@
       "from": "canvas-repo",
       "to": "canvas-model",
       "label": "validates"
+    },
+    {
+      "id": "tools-policy",
+      "to": "policy",
+      "label": "runs studies",
+      "description": "Tooling bundles five adapters or dispatches to the native Night Passage workflow; it records/audits before reducing retained output.",
+      "from": "tools"
+    },
+    {
+      "id": "spire-agent-session",
+      "to": "spire-session",
+      "label": "delivers proposal",
+      "description": "Adapter owns observation/menu binding and metrics; policy cannot mutate rules state.",
+      "from": "spire-agent"
+    },
+    {
+      "id": "night-player-control",
+      "to": "night-control",
+      "label": "proposes controls",
+      "description": "Controller delivers according to native observation/delay constraints; a proposal is not an executed command.",
+      "from": "night-player"
+    },
+    {
+      "id": "night-record-review",
+      "to": "night-review",
+      "label": "opens retained input",
+      "description": "Native inspector interprets native schema; shared navigation does not unify rules or controller semantics.",
+      "from": "night-record"
+    },
+    {
+      "id": "policy-runner-adapter",
+      "to": "policy-adapter",
+      "label": "selects runtime",
+      "description": "withRuntime statically bundles the selected game adapter, builtin/custom policy and recorder with source pins.",
+      "from": "policy-runner"
+    },
+    {
+      "id": "policy-factory-recorder",
+      "to": "policy-recorder",
+      "label": "returns proposal",
+      "description": "Recorder copies permitted input before invocation; it validates command syntax and delegates accepted execution to adapter.act.",
+      "from": "policy-factory"
+    },
+    {
+      "id": "policy-storage-review",
+      "to": "policy-review",
+      "label": "opens full rollout",
+      "description": "Only retained detailed input can be reopened. A digest or summary row alone is not a reconstructable recording.",
+      "from": "policy-storage"
+    },
+    {
+      "id": "policy-full-container",
+      "to": "policy-container",
+      "label": "encodes / opens",
+      "description": "Container format does not change policy-rollout-1 or native replay identities. Native output support and shared input decoding are distinct contracts.",
+      "from": "policy-full"
     }
   ],
   "annotations": [
@@ -331,6 +763,30 @@
       "id": "canvas-native",
       "target": "canvas",
       "text": "Side chat captures unsaved map context for the current Codex conversation. Review proposals, apply to draft, then save. Direct external file edits appear automatically when the local draft is clean.",
+      "author": "agent"
+    },
+    {
+      "id": "policy-loop",
+      "target": "policy",
+      "text": "Read this as a workflow, not an import graph: evaluator → adapter.observe → policy decision → recorder validates → adapter.act → native session/rules → recorder/audit → storage choice → review. The adapter owns public/private separation and native cursor meaning. Inspect relationship descriptions and source paths for interfaces.",
+      "author": "agent"
+    },
+    {
+      "id": "current-source-pin",
+      "target": "repo",
+      "text": "Current source baseline: origin/main 1c152a65ec274cdaf3772553eaef687167e75509, Keep policy iteration evidence lean (2026-10-18). This map updates the earlier curated orientation; historical annotations and existing IDs are preserved. Labels describe implemented ownership unless inside Proposed seams. See the companion guide for source evidence, navigation and reproduction.",
+      "author": "agent"
+    },
+    {
+      "id": "shared-vs-native",
+      "target": "games",
+      "text": "Five shared adapters: Blindside, Spire, Hearth Mixed Rivals, Emberwake, Dungeon Cartographer. Night Passage uses native PolicyPlayer/controller/chronicle/rollout. Shared playing/search APIs expose full seeded state and do not prove restricted-policy fairness. Each game keeps score units, legality and timing.",
+      "author": "agent"
+    },
+    {
+      "id": "proposal-rule",
+      "target": "proposals",
+      "text": "All children here are proposals, not current modules or committed refactor plans. Discuss the trigger, smallest useful change, native exceptions and migration cost. Apply to draft changes this diagram only; Save persists architecture.json, not game code.",
       "author": "agent"
     }
   ]
