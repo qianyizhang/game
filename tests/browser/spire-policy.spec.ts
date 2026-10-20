@@ -105,6 +105,13 @@ test('Spire policy review connects original knowledge to a passive map and comba
   await mkdir('test-results/spire-policy-review', { recursive: true });
   await page.screenshot({ path: 'test-results/spire-policy-review/desktop.png', fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
+  const hand = board.getByRole('region', { name: 'Cards in hand', exact: true });
+  const handTops = await hand
+    .locator('.ability-card')
+    .evaluateAll((cards) => cards.map((card) => Math.round(card.getBoundingClientRect().top)));
+  expect(handTops.length).toBeGreaterThan(1);
+  expect(new Set(handTops).size).toBe(1);
+  expect(await hand.evaluate((el) => el.scrollWidth > el.clientWidth)).toBe(true);
   // A late-run label can be wider than the phone. Exercise native select sizing
   // without recording a thousand decisions just to produce multi-digit counters.
   await page.getByLabel('Rollout location').evaluate((select: HTMLSelectElement) => {

@@ -429,13 +429,30 @@ export function PolicyReview<S, O, C>({
           </div>
           {row && (
             <>
-              <p data-testid="rollout-decision">
-                Decision {index + 1} · {row.marker} · {boundary} · Replay units {row.before} →{' '}
-                {row.after} · {row.accepted ? 'Accepted' : 'Rejected / error'}
-              </p>
-              {playbackError && <p role="alert">Playback unavailable: {playbackError}</p>}
-              {decisionSummary(row.output)}
-              {board}
+              <div className="policy-decision-caption">
+                <p data-testid="rollout-decision">
+                  <span
+                    className="policy-decision-location"
+                    title={`${row.marker} · ${boundary} · Replay units ${row.before} → ${row.after}`}
+                  >
+                    Decision {index + 1} · {row.marker} · {boundary} · Replay units {row.before} →{' '}
+                    {row.after}
+                  </span>
+                  <span className="policy-decision-result" data-rejected={!row.accepted}>
+                    {row.accepted ? 'Accepted' : 'Rejected / error'}
+                  </span>
+                </p>
+                {decisionSummary(row.output)}
+              </div>
+              <div
+                className="policy-review-stage"
+                role="region"
+                aria-label="Recorded game scene"
+                tabIndex={0}
+              >
+                {playbackError && <p role="alert">Playback unavailable: {playbackError}</p>}
+                {board}
+              </div>
               <details className="policy-disclosure policy-decision-details">
                 <summary>Decision details</summary>
                 <div className="policy-review-columns">

@@ -97,7 +97,12 @@ export function Battle({
               ? 'put on top of your draw pile'
               : combat.choice.action}
           </h3>
-          <div className="battle-hand" role="region" aria-label="Cards in hand">
+          <div
+            className="battle-hand"
+            role="region"
+            aria-label="Cards in hand"
+            tabIndex={readOnly ? 0 : undefined}
+          >
             {combat.choice.options.map((id) => (
               <AbilityCard
                 character={run.character}
@@ -112,7 +117,12 @@ export function Battle({
           </div>
         </div>
       ) : (
-        <div className="battle-hand" role="region" aria-label="Cards in hand">
+        <div
+          className="battle-hand"
+          role="region"
+          aria-label="Cards in hand"
+          tabIndex={readOnly ? 0 : undefined}
+        >
           {combat.hand.map((id) => {
             const card = combat.cards[id],
               definition = CARD_BY_ID[card.definitionId],

@@ -16,7 +16,12 @@ function Minions({ label, units }: { label: string; units: Unit[] }) {
       <h3>
         {label} · {units.length}
       </h3>
-      <div className="hearth-recorded-minions">
+      <div
+        className="hearth-recorded-minions"
+        role="group"
+        aria-label={`${label} cards`}
+        tabIndex={0}
+      >
         {units.map((unit) => (
           <MinionCard key={unit.id} unit={unit} disabled />
         ))}
@@ -64,7 +69,7 @@ function Board({ state }: { state: EpisodeState }) {
             <p>No offer</p>
           )}
           <h4>Hand</h4>
-          <div className="spell-hand">
+          <div className="spell-hand" role="group" aria-label="Recorded spell hand" tabIndex={0}>
             {self.tavern?.hand.map((spell) => (
               <SpellCard key={spell.id} spell={spell} mode="catalogue" />
             ))}

@@ -10,20 +10,18 @@
   gap: 0.8rem;
 }
 .hearth-policy-board .round-strip > svg {
-  width: 72px;
-  height: 72px;
+  width: 48px;
+  height: 48px;
 }
 .hearth-recorded-minions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
 }
 .hearth-policy-board .minion-card:disabled {
   opacity: 1;
   cursor: default;
 }
 .hearth-policy-board section {
-  margin: 1rem 0;
+  margin: 0.65rem 0;
 }
 .hearth-public-lobby {
   display: grid;
@@ -32,4 +30,28 @@
 }
 .hearth-public-lobby p {
   margin: 0.2rem 0;
+}
+.hearth-policy-board .hearth-recorded-minions,
+.hearth-policy-board .spell-hand {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  align-items: stretch;
+  gap: 0.4rem;
+  padding: 0.3rem 0 0.65rem;
+}
+.hearth-policy-board .hearth-recorded-minions > .minion-card {
+  flex: 0 1 168px;
+  min-width: 112px;
+}
+.hearth-policy-board .spell-hand > .spell-card {
+  flex: 0 1 180px;
+  min-width: 140px;
+}
+
+.hearth-policy-board .round-strip h2 {
+  margin: 0.25rem 0;
+  font-size: 1.4rem;
+}
+.hearth-policy-board h3 {
+  margin: 0.7rem 0 0.4rem;
 }

@@ -23,3 +23,17 @@
 .spire-policy-board summary {
   cursor: pointer;
 }
+.spire-policy-board .battle-hand,
+.spire-policy-board .reward-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding: 0.8rem 0.5rem;
+}
+.spire-policy-board :is(.battle-hand, .reward-cards) > .ability-card {
+  flex: 0 1 174px;
+  min-width: 140px;
+  width: auto;
+}

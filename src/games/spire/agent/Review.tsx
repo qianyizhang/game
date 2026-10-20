@@ -47,7 +47,13 @@ function Board({ state: { state: run } }: { state: EpisodeState }) {
         {run.phase === 'map' ? (
           <RouteMap run={run} dispatch={noCommand} readOnly />
         ) : run.phase === 'combat' ? (
-          <Battle run={run} dispatch={noCommand} onTarget={noTarget} readOnly />
+          <Battle
+            key={`${run.act}-${run.row}`}
+            run={run}
+            dispatch={noCommand}
+            onTarget={noTarget}
+            readOnly
+          />
         ) : run.phase === 'won' || run.phase === 'lost' ? (
           <h3>{run.phase === 'won' ? 'Victory' : 'Defeat'} · recorded final state</h3>
         ) : (
@@ -98,9 +104,7 @@ function seek(replay: Json, cursor: number) {
   return spireSession.at(adapter.restore(replay), cursor);
 }
 const factories = Object.values(builtins);
-const renderState = (state: EpisodeState) => (
-  <Board key={state.replay.commands.length} state={state} />
-);
+const renderState = (state: EpisodeState) => <Board state={state} />;
 export default function SpireReview() {
   return (
     <PolicyReview

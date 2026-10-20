@@ -86,7 +86,7 @@ test('Hearth policy review navigates original all-actor spans through a passive 
   );
   await expect(page.getByTestId('evaluator-knowledge')).toHaveCount(0);
   await expect(board).toContainText('Round 1');
-  await expect(board.getByLabel('Your tavern offers')).toBeVisible();
+  await expect(board.getByLabel('Your tavern offers', { exact: true })).toBeVisible();
   await expect(board.getByLabel('Public lobby')).toContainText('round-opening snapshot');
   await expect(board.locator('.minion-card:enabled')).toHaveCount(0);
   expect(

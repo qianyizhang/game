@@ -41,7 +41,7 @@ function Board({ state: { state: run } }: { state: EpisodeState }) {
       </dl>
       <h3>Jokers · resolve left to right</h3>
       {run.jokers.length ? (
-        <ol className="policy-review-jokers">
+        <ol className="policy-review-jokers" aria-label="Recorded jokers" tabIndex={0}>
           {run.jokers.map((owned) => (
             <li key={owned.id}>
               <strong>{JOKER_BY_ID[owned.definitionId].name}</strong>
@@ -53,7 +53,7 @@ function Board({ state: { state: run } }: { state: EpisodeState }) {
       ) : (
         <p>No Jokers owned.</p>
       )}
-      <div className="policy-cards">
+      <div className="policy-cards" role="group" aria-label="Recorded hand" tabIndex={0}>
         {run.hand.map((id) => (
           <PlayingCard key={id} card={cards.get(id)!} disabled />
         ))}

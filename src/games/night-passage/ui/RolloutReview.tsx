@@ -404,7 +404,14 @@ export default function RolloutReview({
                 {row.accepted ? 'Accepted' : 'Rejected / error'}
                 {row.error ? `: ${row.error}` : ''}
               </p>
-              {children}
+              <div
+                className="policy-review-stage"
+                role="region"
+                aria-label="Recorded game scene"
+                tabIndex={0}
+              >
+                {children}
+              </div>
               <details className="policy-disclosure policy-decision-details">
                 <summary>Decision details</summary>
                 <dl className="np-review-facts">

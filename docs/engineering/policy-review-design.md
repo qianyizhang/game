@@ -19,3 +19,15 @@ stay above diagnostic detail on desktop and narrow screens.
 
 The shared inspector serves five games. Night Passage retains its native playback
 and timing controls while using the same disclosure and navigation hierarchy.
+
+## Playback stability and card density
+
+Keep the scene viewport and decision caption stable as autoplay crosses phases.
+Scene content scrolls inside that viewport, without browser scroll anchoring moving
+playback controls or the evidence panels. Retain component identity across decisions;
+reset encounter-specific inspection only when the encounter changes.
+
+Card rows never wrap during review. Cards share available width down to a readable
+minimum, then overflow horizontally with a visible scrollbar and keyboard-accessible
+row. This preserves order and access to every card without hiding cards behind a fan.
+Scope these styles to recorded review; live game layouts and commands stay unchanged.
