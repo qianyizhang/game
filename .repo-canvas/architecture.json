@@ -77,8 +77,8 @@
       "parent": "repo",
       "name": "Repo Canvas",
       "kind": "package",
-      "summary": "Versioned architecture document, local repository operations and MCP App. Hosted chat proposals require explicit Apply to draft then Save map. Standalone preview and stdio probes do not establish native Codex host attachment.",
-      "sources": ["packages/repo-canvas/README.md", "docs/engineering/mcp-apps.md"],
+      "summary": "External Repo Workbench implementation in repo-kit. Versioned architecture document, local repository operations and MCP App. Hosted chat proposals require explicit Apply to draft then Save map. Standalone preview and stdio probes do not establish native Codex host attachment.",
+      "sources": ["docs/engineering/repo-workbench.md"],
       "x": 40,
       "y": 670
     },
@@ -223,11 +223,8 @@
       "parent": "tools",
       "name": "Trace normalization",
       "kind": "module",
-      "summary": "Normalizes local session evidence and produces review documents.",
-      "sources": [
-        "packages/workshop-tools/trace/build.ts",
-        "packages/workshop-tools/trace/jsonl.ts"
-      ],
+      "summary": "External Repo Workbench implementation in repo-kit. Normalizes local session evidence and produces review documents.",
+      "sources": ["docs/engineering/repo-workbench.md"],
       "x": 40,
       "y": 40
     },
@@ -236,11 +233,8 @@
       "parent": "tools",
       "name": "Session review",
       "kind": "package",
-      "summary": "Shared frontend for offline exports and local session review.",
-      "sources": [
-        "packages/session-review/package.json",
-        "packages/session-review/src/model/contracts.ts"
-      ],
+      "summary": "External Repo Workbench implementation in repo-kit. Shared frontend for offline exports and local session review.",
+      "sources": ["docs/engineering/repo-workbench.md"],
       "x": 430,
       "y": 40
     },
@@ -259,12 +253,8 @@
       "parent": "canvas",
       "name": "Canvas & inspector",
       "kind": "module",
-      "summary": "Renders the current hierarchy scope, projected relationships and source overlays. Changes remain drafts until saved.",
-      "sources": [
-        "packages/repo-canvas/src/ui/App.tsx",
-        "packages/repo-canvas/src/ui/Canvas.tsx",
-        "packages/repo-canvas/src/ui/Inspector.tsx"
-      ],
+      "summary": "External Repo Workbench implementation in repo-kit. Renders the current hierarchy scope, projected relationships and source overlays. Changes remain drafts until saved.",
+      "sources": ["docs/engineering/repo-workbench.md"],
       "x": 40,
       "y": 40
     },
@@ -273,8 +263,8 @@
       "parent": "canvas",
       "name": "Architecture document",
       "kind": "data",
-      "summary": "One versioned document shared with the agent. Validates hierarchy, IDs, endpoints, annotations and layout.",
-      "sources": ["packages/repo-canvas/src/model/document.ts"],
+      "summary": "External Repo Workbench implementation in repo-kit. One versioned document shared with the agent. Validates hierarchy, IDs, endpoints, annotations and layout.",
+      "sources": ["docs/engineering/repo-workbench.md"],
       "x": 430,
       "y": 40
     },
@@ -283,12 +273,8 @@
       "parent": "canvas",
       "name": "Repository bridge",
       "kind": "module",
-      "summary": "Loads and saves the shared file with revision checks; previews bounded repo source.",
-      "sources": [
-        "packages/repo-canvas/src/server/repository.ts",
-        "packages/repo-canvas/src/server/api.ts",
-        "packages/repo-canvas/src/server/operations.ts"
-      ],
+      "summary": "External Repo Workbench implementation in repo-kit. Loads and saves the shared file with revision checks; previews bounded repo source.",
+      "sources": ["docs/engineering/repo-workbench.md"],
       "x": 430,
       "y": 280
     },
@@ -297,13 +283,8 @@
       "parent": "canvas",
       "name": "Current chat bridge",
       "kind": "external",
-      "summary": "Hosted MCP App uses ui/initialize, tools/call and ui/message with the owning conversation. canvas_read captures unsaved context; canvas_reply returns answer/proposal. A local harness can test bridge semantics, but cannot establish that the user’s installed Codex sidebar is attached.",
-      "sources": [
-        "packages/repo-canvas/src/server/stdio.ts",
-        "packages/repo-canvas/src/server/mcp.ts",
-        "packages/repo-canvas/src/ui/host.ts",
-        "packages/repo-canvas/src/ui/SideChat.tsx"
-      ],
+      "summary": "External Repo Workbench implementation in repo-kit. Hosted MCP App uses ui/initialize, tools/call and ui/message with the owning conversation. canvas_read captures unsaved context; canvas_reply returns answer/proposal. A local harness can test bridge semantics, but cannot establish that the user’s installed Codex sidebar is attached.",
+      "sources": ["docs/engineering/repo-workbench.md"],
       "x": 40,
       "y": 280
     },

@@ -66,12 +66,10 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chrome
       - run: npm run test:browser:smoke
-      - run: npm run test:browser:canvas -- --max-failures=1
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:
           name: browser-smoke-failures
           path: |
             test-results/browser
-            test-results/repo-canvas
           retention-days: 14

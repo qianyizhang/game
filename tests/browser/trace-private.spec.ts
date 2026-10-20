@@ -1,4 +1,3 @@
-import { parseCase } from '../../packages/workshop-tools/trace/contracts';
 import { join, relative, resolve, sep } from 'node:path';
 import { expect, test } from '@playwright/test';
 import { existsSync, readFileSync } from 'node:fs';
@@ -13,9 +12,9 @@ function bundleUrl(json: string): string {
     throw new Error('Trace bundle escaped repository');
   return '/' + path.split(sep).join('/');
 }
-const caseStudy = parseCase(
-  JSON.parse(readFileSync('packages/workshop-tools/trace/case-study.json', 'utf8')),
-);
+const caseStudy = JSON.parse(
+  readFileSync('packages/workshop-tools/trace/case-study.json', 'utf8'),
+) as { threads: Array<{ id: string }>; stages: Array<{ title: string }> };
 const input = resolve(process.env.TRACE_PRIVATE_INPUT ?? 'test-results/trace-visualizer-input');
 const inputsAvailable = caseStudy.threads.every((thread) =>
   existsSync(join(input, `${thread.id}.json`)),
@@ -28,9 +27,21 @@ test.describe('requires private sculpture evidence', { tag: '@requires-private-e
   let url = '';
   test.beforeAll(() => {
     url = bundleUrl(
-      execFileSync(process.execPath, ['packages/workshop-tools/trace/build.ts', input], {
-        encoding: 'utf8',
-      }),
+      execFileSync(
+        process.env.REPO_WORKBENCH_CLI ?? 'repo-workbench',
+        [
+          'trace',
+          '--repo',
+          process.cwd(),
+          '--input',
+          input,
+          '--case',
+          'packages/workshop-tools/trace/case-study.json',
+          '--out',
+          `test-results/private-trace-${Date.now()}`,
+        ],
+        { encoding: 'utf8' },
+      ),
     );
   });
   test('creation story connects superseded review decisions to records and retained source', async ({

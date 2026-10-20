@@ -4,7 +4,7 @@ The editable [canonical map](../../.repo-canvas/architecture.json) describes sou
 `1c152a65ec274cdaf3772553eaef687167e75509` (2026-10-18). It is a selected architecture
 view, not an import graph. [Architecture](architecture.md) owns layer contracts;
 [policy development](policy-development.md) owns evidence and retention requirements.
-[Repo Canvas](../../packages/repo-canvas/README.md) owns the UI/MCP contract.
+[Repo Canvas](repo-workbench.md) owns the UI/MCP contract.
 
 ## Read and discuss
 
@@ -50,68 +50,17 @@ layout and unrelated notes. To discuss a feature, identify its owner, input/outp
 native exception, and one concrete source before proposing a consolidation. A canvas
 proposal edits the diagram; it does not implement the refactor.
 
-## Reproduce locally
+## Open and validate
 
-From a clean checkout, fetch the tested snapshot by commit so reproduction does not
-depend on the feature branch surviving after merge:
-
-```sh
-git fetch origin b60e69d843787df01e66f863957bc6a6441b529b
-git switch --detach b60e69d843787df01e66f863957bc6a6441b529b
-nvm install
-nvm use
-npm ci
-node packages/repo-canvas/src/server/cli.ts --repo "$PWD" --validate
-npm run repo:canvas -- --verify --stdio --repo "$PWD"
-npm run repo:canvas -- --repo "$PWD" --port 4317
-```
-
-Open `http://127.0.0.1:4317`. The pinned runtime is Node 24.21.0 / npm 11.19.0.
-This canvas-only workflow needs neither Python/Blender nor game LFS assets.
-For ongoing edits, switch to the branch containing this change (`main` after merge)
-before saving. The detached snapshot above reproduces the reviewed map exactly.
-Use a different port for another checkout. Stop the preview with Ctrl-C.
-
-For native Codex integration, run this from the same checkout after `nvm use`:
+Install [Repo Workbench](repo-workbench.md), then call its `canvas_open` with this repository's absolute path. Each opening has its own repository context. Existing chats may need a restart after replacing the old direct registration.
 
 ```sh
-codex mcp add repo_canvas -- "$(command -v node)" "$PWD/packages/repo-canvas/src/server/stdio.ts" --repo "$PWD"
-```
-
-Fully quit/reopen Codex after registration; open **Repo Canvas** from the apps menu
-or call `canvas_open`. The stdio probe reports server health only. Native attachment
-is established only when that installed host actually renders the app and a side-chat
-request reaches the owning conversation. The localhost preview disables side-chat
-sending. Separate server processes share saved JSON, not unsaved drafts or requests.
-
-In the hosted app, select `policy-storage`, ask which outputs are retained by default,
-and send to chat. The conversation reads the request with `canvas_read`, inspects
-source and replies using `canvas_reply`, optionally with a complete map proposal.
-Review → **Apply to draft** → **Save map** → reload. Applying alone must not change the
-shared file. If the draft changed after the request, reconcile before applying.
-
-## Validate changes
-
-```sh
-node packages/repo-canvas/src/server/cli.ts --repo "$PWD" --validate
-npm run typecheck --workspace @card-workshop/repo-canvas
-npm run test --workspace @card-workshop/repo-canvas
-npm run build --workspace @card-workshop/repo-canvas
-npm run repo:canvas -- --verify --stdio --repo "$PWD"
-npx playwright test --config packages/repo-canvas/playwright.config.ts
+repo-workbench canvas --repo "$PWD" --validate
+repo-workbench canvas --repo "$PWD"
 npx prettier --check .repo-canvas/architecture.json docs/engineering/repo-canvas-architecture.md
 npm run maintenance -- check
 ```
 
-The browser suite requires Chrome; on macOS follow the repository's approved browser
-execution guidance. It runs on disposable fixtures and tests actual delivered MCP HTML,
-proposal review, stale protection, source previews, Save/reload and external-file
-conflicts. It does not prove native host attachment or inspect this map's visual layout.
+The plugin's generic browser/protocol checks run in repo-kit. This repository owns the saved map and its source accuracy. Review a proposal, Apply to draft, then Save map. A standalone preview has no side-chat host; a passing protocol check alone does not prove native Codex attachment.
 
-For this map, also inspect overview, six-game view, policy workflow, retained evidence,
-Hearth, Night Passage and proposed seams at a desktop viewport. Confirm readable names,
-no overlapping cards, usable Fit/zoom, selected-node responsibilities and source previews.
-Exercise edits on a disposable checkout: add a note, Save, reload and compare JSON; then
-restore the original map. Keep screenshots and run receipts as private review evidence,
-not additional permanent architecture snapshots. Documentation/map-only changes use the
-formatting/inventory gate; code fixes additionally require the root `npm run check`.
+The game architecture review remains pinned to the source above. On 2026-10-20, the map's developer-tool source references were updated for extraction to repo-kit, preserving existing IDs, layout and annotations. The earlier combined implementation is recoverable at `2db3b0d`.

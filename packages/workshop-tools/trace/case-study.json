@@ -4655,5 +4655,15 @@
     "src/art3d/phoenix.ts": "phoenix",
     "src/art3d/phoenix.test.ts": "phoenix",
     "src/art3d/nightjar.test.ts": "nightjar"
+  },
+  "assetRoot": "test-results",
+  "captureSubjects": ["hydra", "nightjar", "spiral", "vajra", "phoenix", "catalyst"],
+  "captureViews": {
+    "hero": ["{subject}-hero.png", "{subject}-frame.png", "{subject}-desktop.png"],
+    "side": ["{subject}-side.png"],
+    "back": ["{subject}-back.png"],
+    "large": ["{subject}-large.png"],
+    "roundtrip-live": ["{subject}-roundtrip-live.png"],
+    "roundtrip-exported": ["{subject}-roundtrip-exported.png"]
   }
 }

@@ -9,3 +9,5 @@ test-results/
 .ruff_cache/
 __pycache__/
 .work/
+
+.cache/repo-workbench/

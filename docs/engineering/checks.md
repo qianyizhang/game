@@ -12,7 +12,6 @@ Use exact Node/npm pins via `nvm use` and Python via `uv`. Browser and Blender r
 | `npm run test:geometry`            | Geometry project only (3D animation, deformation and recording regressions)                   |
 | `npm run test:browser`             | Browser interactions, persistence, rendering, exported artifact checks                        |
 | `npm run test:browser:smoke`       | Five game journeys selected by `@smoke` for automatic GitHub CI                               |
-| `npm run test:browser:canvas`      | Repo Canvas standalone and hosted-app journeys on a disposable repository                     |
 | `npm run test:browser:review`      | Opt-in 3D visual contact sheets for human inspection                                          |
 | `npm run dcc -- verify`            | Validates artist source, recipe, and published GLB against receipts                           |
 | `npm run maintenance -- inventory` | Read-only occurrences, hashes, asset classifications, tracked-text refs                       |
@@ -30,15 +29,14 @@ shared hook and workspace UI.
 - **Application & tool code**: Run `npm run check` for game rules, saves, UI, SVG, and tools.
 - **Documentation-only work**: Run `npm run format:maintenance` (or focused Prettier and inventory checks). Skip application test suites and simulations.
 - **3D / DCC work**: Run `npm run check:full` for changes affecting 3D construction, animation, rendering/export or DCC delivery (`src/art3d`, DCC sources/delivery, or their shared helpers/dependencies). Geometry assertions or configuration affecting their behavior also use this gate. Use `npm run test:geometry -- <file>` for focused iteration.
-- **CI**: Runs the non-geometry checks in parallel scopes, `npm run test:browser:smoke` and `npm run test:browser:canvas`.
+- **CI**: Runs the non-geometry checks in parallel scopes, `npm run test:browser:smoke` only. Repo Workbench runs its own browser gates in repo-kit.
   Geometry and full browser rendering/export verification are local completion gates.
 
 GitHub targets **under two minutes of execution**, excluding queue delay. Its four
 maintenance scopes run formatting/lint, types/Python, rules/simulations, and tools/DCC
 contracts/build independently; inventory and hydration checks run before each scope.
 The browser job runs one existing recruitment/play/save-reload journey for Blindside,
-Spire, Last Hearth, Emberwake and Dungeon Cartographer, followed by Repo Canvas's four
-standalone/hosted journeys. Both runners use one worker and retain failure artifacts.
+Spire, Last Hearth, Emberwake and Dungeon Cartographer. The runner uses one worker and retains failure artifacts.
 Jobs have a five-minute failure ceiling; that ceiling is not the performance target or proof of it.
 
 The 2026-10-11 full hosted run spent **499 seconds** in geometry. Its browser jobs took

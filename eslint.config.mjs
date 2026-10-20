@@ -6,8 +6,6 @@ import tseslint from 'typescript-eslint';
 const typedFiles = [
   'src/**/*.{ts,tsx}',
   'packages/diablo2/**/*.{ts,tsx}',
-  'packages/repo-canvas/**/*.{ts,tsx}',
-  'packages/session-review/**/*.{ts,tsx}',
   'tests/**/*.ts',
   '*.config.ts',
   'packages/workshop-tools/**/*.{mjs,ts,tsx}',
@@ -43,43 +41,13 @@ export default [
   {
     files: [
       'src/**/*.{ts,tsx}',
-      'packages/session-review/src/**/*.{ts,tsx}',
       'packages/dcc-workbench/src/**/*.{ts,tsx}',
       'packages/diablo2/src/ui/**/*.{ts,tsx}',
-      'packages/repo-canvas/src/ui/**/*.{ts,tsx}',
     ],
     plugins: { 'react-hooks': reactHooks },
     rules: {
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'error',
-    },
-  },
-  {
-    files: ['packages/session-review/src/model/**/*.{ts,tsx}'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            {
-              group: [
-                'react',
-                'react/*',
-                'react-dom',
-                'react-dom/*',
-                '**/app/**',
-                '**/actions/**',
-                '**/conversation/**',
-                '**/records/**',
-                '**/curation/**',
-                '**/*.tsx',
-              ],
-              message:
-                'The review model owns data and classification; presentation depends on it, not the reverse.',
-            },
-          ],
-        },
-      ],
     },
   },
   {

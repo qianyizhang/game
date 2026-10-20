@@ -35,11 +35,9 @@ Size flags prompt review; they do not prove complexity or obsolescence. Role hin
 
 The snapshot review in [committed-file review](../../docs/engineering/committed-file-review.md) records the first measured candidates and caller checks. This module and its integration tests join the existing tools lint/type/inventory gate and `test:tools`.
 
-## Trace bundles
+## Session evidence
 
-`npm run trace:build -- [input-directory] [new-output-directory] [case-study.json]` builds a private offline evidence viewer. Relative arguments resolve from the repository root. Default output is a fresh `test-results/disposable/trace-visualizer-<UUID>` directory with a closure receipt after a successful build, eligible for the existing 14-day retention. Explicit output remains unclassified and an existing output is refused.
-
-The `trace/` modules validate unknown exports and case specifications, preserve observable record identities and omissions, and associate authored assessments with exact evidence. They execute through the pinned Node runtime with native TypeScript stripping and pass the package strict type/lint gate. `npm run test:trace` selects the trace tests; the package test command also includes them. The browser runtime is separately typechecked and embedded in each offline bundle. Revision-pinned document references preserve original Git bytes through documentation moves. See the [trace guide](../../docs/engineering/trace-visualizer.md) for schema, privacy, output and provenance boundaries.
+The optional [Repo Workbench plugin](../../docs/engineering/repo-workbench.md) owns session reading, visualization and usage accounting. `trace/case-study.json` retains this project's authored sculpture case and collection conventions.
 
 ## Art scaffolding and SVG tools
 
@@ -96,16 +94,6 @@ command covers the real JSONL process; lint, types and inventory cover these mod
 Plans, reserved seed sets and v5/v1 replay semantics remain frozen. New runs pin the current implementation paths and exact headless dependency graph; historical reports keep their original paths and hashes. Recruitment audit requires the recorded bundle, source hashes and exact case grid, then reconstructs decisions, controller bindings, diagnostics, metrics, placement, lifecycle and comparison totals. Restore the recorded checkout when auditing an older environment; do not edit its receipts to match a newer one. Worker results are validated against their assigned case, and early exits reject the pool instead of leaving it waiting indefinitely.
 
 `node packages/workshop-tools/hearth/recruitment-inspect.ts replay.json receipt.json new.html` validates the replay/receipt hash and case, reconstructs evaluator-only observations, and embeds a separately checked viewer runtime. The output works offline. Alternative proposals inspect the same position; they neither simulate future turns nor estimate playing strength. Downloaded prefixes require the frozen arena-v1/Hearth-v5 environment; the current game rejects them.
-
-## Session review frontend
-
-Trace adapters and artifact collection stay in `trace/`; the [session-review workspace](../session-review/README.md) owns the shared React/Vite frontend. Both authored offline bundles and raw local sessions use its explicit delivery contract and HTML builder.
-
-## Offline Codex usage
-
-`npm run usage:dashboard -- --serve` opens a standalone local usage dashboard from Codex session logs. It supports dates, model/project/effort filters, trends, activity, reasoning/output analytics, sortable sessions with row-click evidence, persistent incremental indexing, current official API-equivalent pricing with editable overrides and filtered CSV export. Omit `--serve` for a self-contained offline report. `npm run test:usage` verifies accounting and local refresh; its tests also join this workspace gate. See the [usage dashboard guide](../../docs/engineering/usage-dashboard.md) for source discovery, coverage and privacy boundaries.
-
-Default usage output is `test-results/disposable/usage-dashboard-<UUID>`, closed with a byte-hashed receipt after a successful build. Serving marks it open; graceful shutdown rehashes refreshed files and starts the 14-day retention. Ctrl-C and SIGTERM close the CLI server gracefully. Interrupted or changed outputs stay protected. `--out` selects an unclassified output outside automatic closure. Pin a default receipt before expiry or choose explicit output for lasting evidence.
 
 ## Policy adoption commands
 
