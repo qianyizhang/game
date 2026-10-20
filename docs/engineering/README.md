@@ -8,7 +8,7 @@
 
 ## Build and evaluate policies
 
-Start with the [policy development standard](policy-development.md) and [trace-derived preflight checks](policy-footguns.md). [Research](../research/README.md#policy-evidence) owns current evidence and limitations.
+Start with the [policy development standard](policy-development.md), [review interface principles](policy-review-design.md) and [trace-derived preflight checks](policy-footguns.md). [Research](../research/README.md#policy-evidence) owns current evidence and limitations.
 
 | Game                 | Owning contract                                                                                     |
 | -------------------- | --------------------------------------------------------------------------------------------------- |

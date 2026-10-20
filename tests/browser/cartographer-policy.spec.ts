@@ -1,3 +1,4 @@
+import { openReviewSection } from './policy-review';
 import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
@@ -87,10 +88,12 @@ test('Cartographer policy review navigates original knowledge across a seeded dr
   await expect(page.getByTestId('policy-knowledge')).toHaveText(
     JSON.stringify(run.decisions[explore].input, null, 2),
   );
+  await openReviewSection(page, 'Decision details');
   await page.getByRole('button', { name: 'Show evaluator view', exact: true }).click();
   await expect(page.getByTestId('evaluator-knowledge')).toContainText('"seed"');
   await page.getByRole('button', { name: 'Hide evaluator view', exact: true }).click();
   const downloading = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   expect((await readFile(await (await downloading).path())).equals(Buffer.from(original))).toBe(
     true,

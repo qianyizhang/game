@@ -1,3 +1,4 @@
+import { openReviewSection } from './policy-review';
 import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { gzipSync } from 'node:zlib';
@@ -31,6 +32,7 @@ test('damaged artifacts retain their audit and original knowledge, clear unrelat
     mimeType: 'application/json',
     buffer: Buffer.from(JSON.stringify(valid)),
   });
+  await openReviewSection(page, 'Decision details');
   await expect(page.getByTestId('policy-knowledge')).toBeVisible();
   for (const [name, rollout] of [
     ['boundary.json', badBoundary],
@@ -40,12 +42,14 @@ test('damaged artifacts retain their audit and original knowledge, clear unrelat
     await page
       .getByLabel('Open policy rollouts')
       .setInputFiles({ name, mimeType: 'application/json', buffer: Buffer.from(original) });
+    await openReviewSection(page, 'Audit');
     await expect(page.getByTestId('rollout-audit')).toBeVisible();
     await expect(page.getByTestId('policy-knowledge')).toHaveText(
       JSON.stringify(rollout.decisions[0].input, null, 2),
     );
     await expect(page.getByRole('status')).toContainText('Playback unavailable:');
     await expect(page.getByLabel('Recorded Night Passage arena')).toHaveCount(0);
+    await openReviewSection(page, 'Decision details');
     await page.getByRole('button', { name: 'Show evaluator view', exact: true }).click();
     await expect(page.getByTestId('evaluator-knowledge')).toHaveCount(0);
     await expect(
@@ -54,6 +58,7 @@ test('damaged artifacts retain their audit and original knowledge, clear unrelat
       }),
     ).toBeVisible();
     const downloading = page.waitForEvent('download');
+    await openReviewSection(page, 'Downloads');
     await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
     expect(await readFile(await (await downloading).path(), 'utf8')).toBe(original);
     if (name === 'boundary.json') {
@@ -103,6 +108,7 @@ test('new selections supersede delayed URL and file imports', async ({ page }) =
     mimeType: 'application/json',
     buffer: Buffer.from(JSON.stringify(rollout)),
   });
+  await openReviewSection(page, 'Decision details');
   await expect(page.getByTestId('policy-knowledge')).toBeVisible();
   const fetched = page.waitForResponse(
     (response) => new URL(response.url()).pathname === '/delayed-replay.json',
@@ -123,9 +129,10 @@ test('new selections supersede delayed URL and file imports', async ({ page }) =
         page.evaluate(() => typeof (window as unknown as { releaseFile?: unknown }).releaseFile),
       )
       .toBe('function');
-    if (label === 'Open policy rollouts')
+    if (label === 'Open policy rollouts') {
+      await openReviewSection(page, 'Runs ·');
       await page.getByRole('button', { name: 'selected.json', exact: true }).click();
-    else await page.getByRole('button', { name: 'Next decision', exact: true }).click();
+    } else await page.getByRole('button', { name: 'Next decision', exact: true }).click();
     await page.evaluate(() => {
       const state = window as unknown as { releaseFile?: () => void };
       state.releaseFile!();
@@ -174,6 +181,7 @@ test('rollout review navigates original knowledge, consequences, multiple runs a
     String(first.decisions[1].input.perception.observedTick),
   );
   expect(new URL(page.url()).searchParams.get('decision')).toBe('2');
+  await openReviewSection(page, 'Decision details');
   await page.getByRole('button', { name: 'Show evaluator view', exact: true }).click();
   await expect(page.getByTestId('evaluator-knowledge')).toContainText('"dashCooldown"');
   await expect(page.getByTestId('policy-knowledge')).not.toContainText('"dashCooldown"');
@@ -187,16 +195,26 @@ test('rollout review navigates original knowledge, consequences, multiple runs a
   await expect(page.getByTestId('policy-knowledge')).toHaveText(
     JSON.stringify(first.decisions[0].input, null, 2),
   );
+  await openReviewSection(page, 'Runs ·');
   await page.getByLabel('Filter rollouts').fill('veteran');
   await expect(page.getByRole('button', { name: 'episode-0.json', exact: true })).toHaveCount(0);
+  await openReviewSection(page, 'Runs ·');
   await page.getByRole('button', { name: 'episode-1.json', exact: true }).click();
   await expect(page.getByTestId('evaluator-knowledge')).toHaveCount(0);
   const downloading = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   const downloaded = await downloading;
   expect(downloaded.suggestedFilename()).toBe('rollout.json');
   expect(await readFile(await downloaded.path(), 'utf8')).toBe(JSON.stringify(second));
   await page.getByLabel('Replay view').selectOption('canvas');
+  // Native playback can move independently of the selected decision. These
+  // seek actions must not claim to be a persistent selected-frame toggle.
+  for (const name of ['Before decision', 'After decision'])
+    await expect(page.getByRole('button', { name, exact: true })).not.toHaveAttribute(
+      'aria-pressed',
+      /true|false/,
+    );
   await mkdir('test-results/night-passage-rollout-review', { recursive: true });
   await page.screenshot({
     path: 'test-results/night-passage-rollout-review/desktop.png',
@@ -246,6 +264,7 @@ test('a same-origin decision link reloads the selected knowledge and flags a reh
     mimeType: 'application/json',
     buffer: Buffer.from(JSON.stringify(rollout)),
   });
+  await openReviewSection(page, 'Runs ·');
   await expect(page.getByRole('button', { name: 'local-copy.json', exact: true })).toBeVisible();
   expect(new URL(page.url()).searchParams.has('rollout')).toBe(false);
   await page.goto('/?game=night-passage&watch=1&rollout=https://example.com/secret.json');
@@ -304,6 +323,7 @@ test('rollout imports bound input and retain original BOM and gzip bytes', async
   await input.setInputFiles({ name: 'bom.json', mimeType: 'application/json', buffer: original });
   await expect(page.getByTestId('rollout-audit')).toContainText('Artifact integrity: passed');
   const localDownload = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   expect((await readFile(await (await localDownload).path())).equals(original)).toBe(true);
 
@@ -336,6 +356,7 @@ test('rollout imports bound input and retain original BOM and gzip bytes', async
   await page.goto('/?game=night-passage&watch=1&rollout=/original.json.gzip');
   await expect(page.getByTestId('rollout-audit')).toContainText('Artifact integrity: passed');
   const remoteDownload = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   const downloaded = await remoteDownload;
   expect(downloaded.suggestedFilename()).toBe('rollout.json.gzip');

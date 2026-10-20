@@ -1,3 +1,4 @@
+import { openReviewSection } from './policy-review';
 import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { recordEpisode } from '../../src/shared/policy/rollout';
@@ -60,6 +61,7 @@ test('Blindside review navigates original knowledge and consequences without rea
     'Replay reconstruction: passed · Artifact integrity: passed · Permitted inputs: passed · Policy reproduction: passed',
   );
   await expect(page.getByTestId('evaluator-knowledge')).toHaveCount(0);
+  await openReviewSection(page, 'Decision details');
   const input = JSON.parse(await page.getByTestId('policy-knowledge').innerText()) as Record<
     string,
     unknown
@@ -73,6 +75,7 @@ test('Blindside review navigates original knowledge and consequences without rea
   await expect(page.getByLabel('Recorded Blindside table')).toContainText('ready');
   await page.getByRole('button', { name: 'Next decision', exact: true }).click();
   await expect(page.getByLabel('Recorded Blindside table')).toContainText('playing');
+  await openReviewSection(page, 'Decision details');
   await page.getByRole('button', { name: 'Show evaluator view', exact: true }).click();
   await expect(page.getByTestId('evaluator-knowledge')).toContainText('"rng"');
   await page.getByLabel('Decision number').fill('4');
@@ -89,6 +92,7 @@ test('Blindside review navigates original knowledge and consequences without rea
     String(rollout.decisions.length - 1),
   );
   const downloading = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   expect((await readFile(await (await downloading).path())).equals(Buffer.from(original))).toBe(
     true,
@@ -98,9 +102,11 @@ test('Blindside review navigates original knowledge and consequences without rea
     mimeType: 'application/json',
     buffer: Buffer.from(JSON.stringify(other)),
   });
+  await openReviewSection(page, 'Runs ·');
   await expect(page.getByRole('button', { name: 'survival.json', exact: true })).toBeVisible();
   await expect(page.getByLabel('Decision number')).toHaveValue('1');
   expect(new URL(page.url()).searchParams.has('rollout')).toBe(false);
+  await openReviewSection(page, 'Runs ·');
   await page.getByLabel('Filter rollouts').fill('relaxed');
   await expect(page.getByRole('button', { name: '/policy-fixture.json', exact: true })).toHaveCount(
     0,
@@ -172,16 +178,19 @@ test('damaged Blindside evidence stays inspectable and newer selection supersede
   await expect(page.getByTestId('policy-knowledge')).toHaveText(
     JSON.stringify(bad.decisions[0].input, null, 2),
   );
+  await openReviewSection(page, 'Decision details');
   await page.getByRole('button', { name: 'Show evaluator view', exact: true }).click();
   await expect(page.getByTestId('evaluator-knowledge')).toHaveCount(0);
   await expect(
     page.getByText('Evaluator unavailable: playback could not reconstruct this boundary.'),
   ).toBeVisible();
   const downloading = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   expect((await readFile(await (await downloading).path())).equals(Buffer.from(original))).toBe(
     true,
   );
+  await openReviewSection(page, 'Runs ·');
   await page.getByRole('button', { name: 'valid.json', exact: true }).click();
   await open.setInputFiles({
     name: 'delayed.json',

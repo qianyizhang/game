@@ -1,3 +1,4 @@
+import { openReviewSection } from './policy-review';
 import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { relative } from 'node:path';
@@ -92,10 +93,12 @@ test('Emberwake policy review retains original decisions and seeks requested tic
   await expect(page.getByTestId('policy-knowledge')).toHaveText(
     JSON.stringify(run.decisions[travel].input, null, 2),
   );
+  await openReviewSection(page, 'Decision details');
   await page.getByRole('button', { name: 'Show evaluator view', exact: true }).click();
   await expect(page.getByTestId('evaluator-knowledge')).toContainText('"rng"');
   await page.getByRole('button', { name: 'Hide evaluator view', exact: true }).click();
   const downloading = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   expect((await readFile(await (await downloading).path())).equals(Buffer.from(original))).toBe(
     true,
@@ -485,14 +488,18 @@ test('lossless rollout containers keep distinct originals selectable and reject 
     'Replay reconstruction: passed · Artifact integrity: passed · Permitted inputs: passed · Policy reproduction: passed',
   );
   for (const original of originals) {
+    await openReviewSection(page, 'Runs ·');
     await expect(page.getByRole('button', { name: original.name, exact: true })).toBeVisible();
+    await openReviewSection(page, 'Runs ·');
     await page.getByRole('button', { name: original.name, exact: true }).click();
     const downloading = page.waitForEvent('download');
+    await openReviewSection(page, 'Downloads');
     await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
     const downloaded = await downloading;
     expect(downloaded.suggestedFilename()).toBe(original.name);
     expect((await readFile(await downloaded.path())).equals(original.bytes)).toBe(true);
   }
+  await openReviewSection(page, 'Runs ·');
   await page.getByRole('button', { name: originals[0].name, exact: true }).click();
   await expect(page.getByTestId('policy-knowledge')).toHaveText(
     JSON.stringify(run.decisions[0].input, null, 2),
@@ -507,6 +514,7 @@ test('lossless rollout containers keep distinct originals selectable and reject 
   await expect(page.getByTestId('policy-knowledge')).toHaveText(
     JSON.stringify(run.decisions.at(-1)!.input, null, 2),
   );
+  await openReviewSection(page, 'Decision details');
   await page.getByRole('button', { name: 'Show evaluator view', exact: true }).click();
   await expect(page.getByTestId('evaluator-knowledge')).toContainText('"rng"');
   await page.getByRole('button', { name: 'Hide evaluator view', exact: true }).click();
@@ -553,6 +561,7 @@ test('lossless rollout containers keep distinct originals selectable and reject 
   await page.goto('/?game=balatro&review=policy&rollout=/container.json.gzip');
   await expect(page.getByTestId('rollout-audit')).toContainText('Policy reproduction: passed');
   const downloading = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   const downloaded = await downloading;
   expect(downloaded.suggestedFilename()).toBe('container.json.gzip');
@@ -599,6 +608,7 @@ test('lossless rollout containers keep distinct originals selectable and reject 
   await page.goto('/?game=balatro&review=policy&rollout=/transport.json');
   await expect(page.getByTestId('rollout-audit')).toContainText('Policy reproduction: passed');
   const transportDownload = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   expect((await readFile(await (await transportDownload).path())).equals(plain)).toBe(true);
   // An actual Vite HTTP gzip layer over the saved inner container remains valid.
@@ -606,6 +616,7 @@ test('lossless rollout containers keep distinct originals selectable and reject 
   await page.goto('/?game=balatro&review=policy&rollout=' + encodeURIComponent(outerUrl));
   await expect(page.getByTestId('rollout-audit')).toContainText('Policy reproduction: passed');
   const outerDownload = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   expect((await readFile(await (await outerDownload).path())).equals(first)).toBe(true);
   expect(errors).toEqual([]);
@@ -717,6 +728,7 @@ test('large retained campaign review preserves knowledge, native boundaries and 
   );
   await page.getByRole('button', { name: 'After decision', exact: true }).click();
   await expect(page.getByTestId('rollout-decision')).toContainText('after');
+  await openReviewSection(page, 'Decision details');
   await page.getByRole('button', { name: 'Show evaluator view', exact: true }).click();
   const evaluator = JSON.parse(await page.getByTestId('evaluator-knowledge').innerText()) as {
     session: { state: { tick: number; status: string } };
@@ -730,6 +742,7 @@ test('large retained campaign review preserves knowledge, native boundaries and 
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: testInfo.outputPath('large-review-phone.png'), fullPage: true });
   const downloading = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   const downloaded = await downloading;
   expect(downloaded.suggestedFilename()).toBe(witness!.split('/').at(-1));

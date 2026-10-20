@@ -1,5 +1,5 @@
 import { downloadFile } from '../download';
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { auditRollout, parseRollout } from './rollout';
 import type { EpisodeAdapter, Json, PolicyAudit, PolicyFactory, PolicyRollout } from './types';
 import { DecisionNavigator } from './Navigator';
@@ -24,6 +24,23 @@ interface Props<S, O, C> {
   renderState: (state: S) => ReactNode;
 }
 const json = (value: unknown) => JSON.stringify(value, null, 2);
+function decisionSummary(output: Json) {
+  if (!output || typeof output !== 'object' || Array.isArray(output)) return null;
+  const command = output.command;
+  const diagnostics = output.diagnostics;
+  const action =
+    command && typeof command === 'object' && !Array.isArray(command) ? command.type : null;
+  const reason =
+    diagnostics && typeof diagnostics === 'object' && !Array.isArray(diagnostics)
+      ? diagnostics.reason
+      : null;
+  return typeof action === 'string' ? (
+    <p className="policy-decision-summary">
+      <strong>{action.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase()}</strong>
+      {typeof reason === 'string' && <span>{reason.replace(/-/g, ' ')}</span>}
+    </p>
+  ) : null;
+}
 
 /** Original evidence is retained even when its game replay cannot reconstruct. */
 export function PolicyReview<S, O, C>({
@@ -39,9 +56,7 @@ export function PolicyReview<S, O, C>({
   const [index, setIndex] = useState(0);
   const [boundary, setBoundary] = useState<'before' | 'after'>('before');
   const [filter, setFilter] = useState('');
-  const [notice, setNotice] = useState(
-    'Open recorded rollouts to inspect original policy knowledge.',
-  );
+  const [notice, setNotice] = useState('Open a rollout to begin.');
   const [evaluator, setEvaluator] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(2);
@@ -118,9 +133,7 @@ export function PolicyReview<S, O, C>({
         setNotice('Decision link is outside this rollout. Select a decision below.');
       } else {
         choose(entry, selected);
-        setNotice(
-          'Original inputs loaded. Audit uses the current implementation and recorded source pins.',
-        );
+        setNotice('');
       }
     })().catch((error: unknown) => {
       if (!controller.signal.aborted && current === generation.current)
@@ -149,15 +162,29 @@ export function PolicyReview<S, O, C>({
     return () => clearInterval(timer);
   }, [active, index, move, playing, speed]);
   const row = active?.run.decisions[index];
-  let playback: S | null = null;
-  let playbackError: string | null = null;
-  if (active && row) {
+  const { playback, playbackError } = useMemo(() => {
+    if (!active || !row) return { playback: null, playbackError: null };
     try {
-      playback = seek(active.run.replay, row[boundary]);
+      return { playback: seek(active.run.replay, row[boundary]), playbackError: null };
     } catch (error) {
-      playbackError = error instanceof Error ? error.message : String(error);
+      return {
+        playback: null,
+        playbackError: error instanceof Error ? error.message : String(error),
+      };
     }
-  }
+  }, [active, row, boundary, seek]);
+  const board = useMemo(
+    () => (playback === null ? null : renderState(playback)),
+    [playback, renderState],
+  );
+  const verdicts = active
+    ? [active.audit.integrity, active.audit.replay, active.audit.inputs, active.audit.decisions]
+    : [];
+  const auditLabel = verdicts.includes('failed')
+    ? 'Audit failed'
+    : verdicts.includes('unavailable')
+      ? 'Audit incomplete'
+      : '4 checks passed';
   const visible = entries.filter((e) =>
     `${e.name} ${json(e.run.policy)} ${json(e.run.options.setup)} ${e.run.options.seed} ${json(e.run.episode.metrics)}`
       .toLowerCase()
@@ -183,52 +210,59 @@ export function PolicyReview<S, O, C>({
         <h1>{title} policy review</h1>
         <a href={gameHref}>Return to game</a>
       </header>
-      <label>
-        Open rollouts{' '}
-        <input
-          type="file"
-          multiple
-          accept=".json,.gz,.gzip,application/json,application/gzip"
-          aria-label="Open policy rollouts"
-          onChange={(event) => {
-            const files = Array.from(event.target.files ?? []);
-            event.target.value = '';
-            if (!files.length) return;
-            const current = ++generation.current;
-            setPlaying(false);
-            setNotice('Loading and auditing rollouts…');
-            void (async () => {
-              const loaded: Entry[] = [],
-                failures: string[] = [];
-              for (const file of files) {
-                try {
-                  if (file.size > MAX_ARTIFACT_BYTES)
-                    throw new Error('Rollout exceeds its byte limit.');
-                  loaded.push(await read(new Uint8Array(await file.arrayBuffer()), file.name));
-                } catch (error) {
-                  failures.push(
-                    `${file.name}: ${error instanceof Error ? error.message : String(error)}`,
-                  );
+      <div className="policy-review-heading">
+        {active && (
+          <p className="policy-run-identity">
+            <strong>{active.run.policy.id}</strong> · {active.run.policy.version}
+            <small>{active.run.options.seed}</small>
+          </p>
+        )}
+        <label className="policy-file-button">
+          Open rollouts
+          <input
+            type="file"
+            multiple
+            accept=".json,.gz,.gzip,application/json,application/gzip"
+            aria-label="Open policy rollouts"
+            onChange={(event) => {
+              const files = Array.from(event.target.files ?? []);
+              event.target.value = '';
+              if (!files.length) return;
+              const current = ++generation.current;
+              setPlaying(false);
+              setNotice('Loading and auditing rollouts…');
+              void (async () => {
+                const loaded: Entry[] = [],
+                  failures: string[] = [];
+                for (const file of files) {
+                  try {
+                    if (file.size > MAX_ARTIFACT_BYTES)
+                      throw new Error('Rollout exceeds its byte limit.');
+                    loaded.push(await read(new Uint8Array(await file.arrayBuffer()), file.name));
+                  } catch (error) {
+                    failures.push(
+                      `${file.name}: ${error instanceof Error ? error.message : String(error)}`,
+                    );
+                  }
                 }
-              }
-              if (current !== generation.current) return;
-              setEntries((previous) => [
-                ...previous.filter((e) => !loaded.some((n) => n.id === e.id)),
-                ...loaded,
-              ]);
-              if (loaded[0]) choose(loaded[0]);
-              setNotice(
-                failures.length
-                  ? failures.join(' ')
-                  : 'Original inputs loaded. Select a run and a decision.',
-              );
-            })();
-          }}
-        />
-      </label>
-      <p role="status">{notice}</p>
+                if (current !== generation.current) return;
+                setEntries((previous) => [
+                  ...previous.filter((e) => !loaded.some((n) => n.id === e.id)),
+                  ...loaded,
+                ]);
+                if (loaded[0]) choose(loaded[0]);
+                setNotice(failures.length ? failures.join(' ') : '');
+              })();
+            }}
+          />
+        </label>
+      </div>
+      <p role="status" className="policy-notice">
+        {notice}
+      </p>
       {entries.length > 0 && (
-        <>
+        <details className="policy-disclosure policy-run-library">
+          <summary>Runs · {entries.length} loaded</summary>
           <label>
             Filter runs{' '}
             <input
@@ -306,16 +340,19 @@ export function PolicyReview<S, O, C>({
               </details>
             ))}
           </details>
-        </>
+        </details>
       )}
       {active && (
         <>
-          <p data-testid="rollout-audit">
-            Replay reconstruction: {active.audit.replay} · Artifact integrity:{' '}
-            {active.audit.integrity} · Permitted inputs: {active.audit.inputs} · Policy
-            reproduction: {active.audit.decisions}
-          </p>
-          <p>{active.audit.message}</p>
+          <details className="policy-disclosure policy-audit">
+            <summary>{auditLabel}</summary>
+            <p data-testid="rollout-audit">
+              Replay reconstruction: {active.audit.replay} · Artifact integrity:{' '}
+              {active.audit.integrity} · Permitted inputs: {active.audit.inputs} · Policy
+              reproduction: {active.audit.decisions}
+            </p>
+            <p>{active.audit.message}</p>
+          </details>
           {active.audit.firstMismatch && (
             <div role="alert">
               {active.audit.firstMismatch.decision === null
@@ -330,63 +367,65 @@ export function PolicyReview<S, O, C>({
               <pre>{json(active.audit.firstMismatch)}</pre>
             </div>
           )}
-          <DecisionNavigator
-            index={index}
-            count={active.run.decisions.length}
-            onMove={move}
-            onBefore={() => {
-              generation.current++;
-              setBoundary('before');
-              setPlaying(false);
-            }}
-            onAfter={() => {
-              generation.current++;
-              setBoundary('after');
-              setPlaying(false);
-            }}
-          />
-          <div className="policy-review-controls">
-            <button
-              disabled={!row}
-              onClick={() => {
+          <div className="policy-playback-bar">
+            <DecisionNavigator
+              index={index}
+              count={active.run.decisions.length}
+              onMove={move}
+              boundary={boundary}
+              playing={playing}
+              onPlay={() => {
                 generation.current++;
                 setPlaying(!playing);
               }}
-            >
-              {playing ? 'Pause decisions' : 'Play decisions'}
-            </button>
-            <label>
-              Speed{' '}
-              <select
-                aria-label="Playback speed"
-                value={speed}
-                onChange={(event) => setSpeed(Number(event.target.value))}
-              >
-                {[0.5, 1, 2, 4, 8].map((n) => (
-                  <option key={n} value={n}>
-                    {n} decisions / second
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label>
-              Location{' '}
-              <select
-                aria-label="Rollout location"
-                value={index}
-                onChange={(event) => move(Number(event.target.value))}
-              >
-                {active.run.decisions.flatMap((r, i, rows) =>
-                  i === 0 || r.marker !== rows[i - 1].marker || i === index
-                    ? [
-                        <option key={i} value={i}>
-                          Decision {i + 1} · {r.marker}
-                        </option>,
-                      ]
-                    : [],
-                )}
-              </select>
-            </label>
+              onBefore={() => {
+                generation.current++;
+                setBoundary('before');
+                setPlaying(false);
+              }}
+              onAfter={() => {
+                generation.current++;
+                setBoundary('after');
+                setPlaying(false);
+              }}
+            />
+            <details className="policy-playback-options">
+              <summary>Playback options</summary>
+              <div className="policy-review-controls">
+                <label>
+                  Speed{' '}
+                  <select
+                    aria-label="Playback speed"
+                    value={speed}
+                    onChange={(event) => setSpeed(Number(event.target.value))}
+                  >
+                    {[0.5, 1, 2, 4, 8].map((n) => (
+                      <option key={n} value={n}>
+                        {n} decisions / second
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  Location{' '}
+                  <select
+                    aria-label="Rollout location"
+                    value={index}
+                    onChange={(event) => move(Number(event.target.value))}
+                  >
+                    {active.run.decisions.flatMap((r, i, rows) =>
+                      i === 0 || r.marker !== rows[i - 1].marker || i === index
+                        ? [
+                            <option key={i} value={i}>
+                              Decision {i + 1} · {r.marker}
+                            </option>,
+                          ]
+                        : [],
+                    )}
+                  </select>
+                </label>
+              </div>
+            </details>
           </div>
           {row && (
             <>
@@ -395,44 +434,48 @@ export function PolicyReview<S, O, C>({
                 {row.after} · {row.accepted ? 'Accepted' : 'Rejected / error'}
               </p>
               {playbackError && <p role="alert">Playback unavailable: {playbackError}</p>}
-              {playback !== null && renderState(playback)}
-              <div className="policy-review-columns">
-                <section>
-                  <h2>Original policy knowledge</h2>
-                  <p>This is the exact recorded input at this decision.</p>
-                  <pre data-testid="policy-knowledge">{json(row.input)}</pre>
-                </section>
-                <section>
-                  <h2>Original proposal</h2>
-                  <pre data-testid="policy-proposal">
-                    {json({
-                      output: row.output,
-                      accepted: row.accepted,
-                      failureStage: row.failureStage,
-                      error: row.error,
-                    })}
-                  </pre>
-                </section>
-              </div>
-              <button onClick={() => setEvaluator(!evaluator)}>
-                {evaluator ? 'Hide evaluator view' : 'Show evaluator view'}
-              </button>
-              {evaluator && (
-                <section>
-                  <h2>Privileged evaluator view</h2>
-                  <p>
-                    This reconstruction includes hidden state. It was not supplied to the policy.
-                  </p>
-                  {playback !== null ? (
-                    <pre data-testid="evaluator-knowledge">{json(playback)}</pre>
-                  ) : (
-                    <p>Evaluator unavailable: playback could not reconstruct this boundary.</p>
-                  )}
-                </section>
-              )}
+              {decisionSummary(row.output)}
+              {board}
+              <details className="policy-disclosure policy-decision-details">
+                <summary>Decision details</summary>
+                <div className="policy-review-columns">
+                  <section>
+                    <h2>Original policy knowledge</h2>
+
+                    <pre data-testid="policy-knowledge">{json(row.input)}</pre>
+                  </section>
+                  <section>
+                    <h2>Original proposal</h2>
+                    <pre data-testid="policy-proposal">
+                      {json({
+                        output: row.output,
+                        accepted: row.accepted,
+                        failureStage: row.failureStage,
+                        error: row.error,
+                      })}
+                    </pre>
+                  </section>
+                </div>
+                <button onClick={() => setEvaluator(!evaluator)}>
+                  {evaluator ? 'Hide evaluator view' : 'Show evaluator view'}
+                </button>
+                {evaluator && (
+                  <section>
+                    <h2>Privileged evaluator view</h2>
+                    <p>
+                      This reconstruction includes hidden state. It was not supplied to the policy.
+                    </p>
+                    {playback !== null ? (
+                      <pre data-testid="evaluator-knowledge">{json(playback)}</pre>
+                    ) : (
+                      <p>Evaluator unavailable: playback could not reconstruct this boundary.</p>
+                    )}
+                  </section>
+                )}
+              </details>
             </>
           )}
-          <details>
+          <details className="policy-disclosure">
             <summary>Versions, configuration and provenance</summary>
             <pre>
               {json({
@@ -445,25 +488,28 @@ export function PolicyReview<S, O, C>({
               })}
             </pre>
           </details>
-          <div className="policy-review-controls">
-            <button
-              onClick={() =>
-                downloadFile(
-                  active.original,
-                  active.downloadName,
-                  isGzip(active.original) ? 'application/gzip' : 'application/json',
-                )
-              }
-            >
-              Download original rollout
-            </button>
-            <button onClick={() => downloadFile(json(active.run.replay), 'replay.json')}>
-              Download replay
-            </button>
-            <button onClick={() => downloadFile(json(active.audit), 'audit.json')}>
-              Download current audit
-            </button>
-          </div>
+          <details className="policy-disclosure">
+            <summary>Downloads</summary>
+            <div className="policy-review-controls">
+              <button
+                onClick={() =>
+                  downloadFile(
+                    active.original,
+                    active.downloadName,
+                    isGzip(active.original) ? 'application/gzip' : 'application/json',
+                  )
+                }
+              >
+                Download original rollout
+              </button>
+              <button onClick={() => downloadFile(json(active.run.replay), 'replay.json')}>
+                Download replay
+              </button>
+              <button onClick={() => downloadFile(json(active.audit), 'audit.json')}>
+                Download current audit
+              </button>
+            </div>
+          </details>
         </>
       )}
     </main>

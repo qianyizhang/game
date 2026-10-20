@@ -100,7 +100,9 @@ Filter runs, compare matched-condition descriptive groups, jump to first/previou
 last or a numbered decision, choose an ante/phase marker, play at a selected speed,
 and inspect before/after consequences on a passive Blindside table.
 
-Original policy knowledge and proposal/work/diagnostics are the default. The explicit
+The board and compact decision controls lead the page. Expand Decision details for
+original policy knowledge and proposal/work/diagnostics; Runs, audit and Downloads
+expand separately. The explicit
 privileged evaluator view reconstructs hidden state at the selected boundary. Download
 original rollout bytes independently of replay availability. A damaged/unsupported
 replay preserves artifact inspection and audit, while stale table/evaluator state clears.

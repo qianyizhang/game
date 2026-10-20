@@ -1,3 +1,4 @@
+import { openReviewSection } from './policy-review';
 import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { recordEpisode } from '../../src/shared/policy/rollout';
@@ -77,6 +78,12 @@ test('Hearth policy review navigates original all-actor spans through a passive 
   await expect(page.getByTestId('policy-knowledge')).toHaveText(
     JSON.stringify(first.input, null, 2),
   );
+  await expect(page.getByTestId('policy-knowledge')).not.toBeVisible();
+  await expect(page.getByTestId('rollout-audit')).not.toBeVisible();
+  await expect(page.getByRole('button', { name: 'Before decision', exact: true })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
   await expect(page.getByTestId('evaluator-knowledge')).toHaveCount(0);
   await expect(board).toContainText('Round 1');
   await expect(board.getByLabel('Your tavern offers')).toBeVisible();
@@ -102,10 +109,12 @@ test('Hearth policy review navigates original all-actor spans through a passive 
   );
   await page.getByRole('button', { name: 'Before decision', exact: true }).click();
   await expect(board).toContainText(`Round ${beforeRound}`);
+  await openReviewSection(page, 'Decision details');
   await page.getByRole('button', { name: 'Show evaluator view', exact: true }).click();
   await expect(page.getByTestId('evaluator-knowledge')).toContainText('"rng"');
   await page.getByRole('button', { name: 'Hide evaluator view', exact: true }).click();
   const downloading = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   expect((await readFile(await (await downloading).path())).equals(Buffer.from(original))).toBe(
     true,

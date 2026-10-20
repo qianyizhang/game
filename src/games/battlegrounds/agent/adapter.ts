@@ -197,6 +197,46 @@ export const adapter: EpisodeAdapter<EpisodeState, Observation, PolicyCommand> =
 };
 export const at = (state: EpisodeState, cursor: number) =>
   reconstruct(state.session.replay, cursor);
+
+/** Review-only checkpoints retain native state and observed alias history. The
+ * complete journal is validated before indexing; no rival policy is rerun. */
+export function createReviewSeeker() {
+  let cached: {
+    original: string;
+    replay: Replay<ArenaCommand>;
+    checkpoints: { cursor: number; session: ArenaSession; aliases: AliasMemory }[];
+  } | null = null;
+  return (value: Json, cursor: number): EpisodeState => {
+    const original = JSON.stringify(value);
+    if (!cached || cached.original !== original) {
+      // Invalidate before decoding so a failed import cannot reuse stale state.
+      cached = null;
+      const validated = arenaSession.decode(original);
+      if (validated.replay.version !== ARENA_VERSION)
+        throw new Error('Policy review requires the current v6 arena envelope.');
+      const replay = validated.replay;
+      let session = arenaSession.create(replay.seed);
+      let aliases = emptyAliases();
+      const checkpoints = [{ cursor: 0, session, aliases }];
+      for (const [index, command] of replay.commands.entries()) {
+        if (activeSeat(session.state) === 0) aliases = sync(session, aliases).aliases;
+        session = nativeAct(session, command);
+        if ((index + 1) % 32 === 0) checkpoints.push({ cursor: index + 1, session, aliases });
+      }
+      cached = { original, replay, checkpoints };
+    }
+    if (!Number.isSafeInteger(cursor) || cursor < 0 || cursor > cached.replay.commands.length)
+      throw new Error('Choose a valid all-actor replay cursor.');
+    const checkpoint = cached.checkpoints[Math.floor(cursor / 32)];
+    let { session, aliases } = checkpoint;
+    for (let index = checkpoint.cursor; index < cursor; index++) {
+      if (activeSeat(session.state) === 0) aliases = sync(session, aliases).aliases;
+      session = nativeAct(session, cached.replay.commands[index]);
+    }
+    // Detach the exposed state so callers cannot mutate stored checkpoints.
+    return structuredClone(sync(session, aliases));
+  };
+}
 const studySetups: StudySetup[] = HEROES.flatMap((hero) =>
   (['relaxed', 'standard', 'severe'] as const).map((difficulty) => ({
     id: `${hero}-${difficulty}`,

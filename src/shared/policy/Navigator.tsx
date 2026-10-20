@@ -6,18 +6,49 @@ interface Props {
   onMove: (index: number) => void;
   onBefore?: () => void;
   onAfter?: () => void;
+  boundary?: 'before' | 'after';
+  playing?: boolean;
+  onPlay?: () => void;
 }
 
 /** Navigation operates on original policy decisions, independently of replay packing. */
-export function DecisionNavigator({ index, count, onMove, onBefore, onAfter }: Props) {
+export function DecisionNavigator({
+  index,
+  count,
+  onMove,
+  onBefore,
+  onAfter,
+  boundary,
+  playing,
+  onPlay,
+}: Props) {
   return (
     <nav className="policy-navigation" aria-label="Decision navigation">
-      <button disabled={!count || index === 0} onClick={() => onMove(0)}>
-        First decision
+      <button
+        aria-label="First decision"
+        title="First decision"
+        disabled={!count || index === 0}
+        onClick={() => onMove(0)}
+      >
+        ⇤
       </button>
-      <button disabled={!count || index === 0} onClick={() => onMove(index - 1)}>
-        Previous decision
+      <button
+        aria-label="Previous decision"
+        title="Previous decision"
+        disabled={!count || index === 0}
+        onClick={() => onMove(index - 1)}
+      >
+        ←
       </button>
+      {onPlay && (
+        <button
+          aria-label={playing ? 'Pause decisions' : 'Play decisions'}
+          disabled={!count}
+          onClick={onPlay}
+        >
+          {playing ? 'Pause' : 'Play'}
+        </button>
+      )}
       <label>
         Decision{' '}
         <input
@@ -34,22 +65,44 @@ export function DecisionNavigator({ index, count, onMove, onBefore, onAfter }: P
         />{' '}
         / {count}
       </label>
-      <button disabled={!count || index >= count - 1} onClick={() => onMove(index + 1)}>
-        Next decision
+      <button
+        aria-label="Next decision"
+        title="Next decision"
+        disabled={!count || index >= count - 1}
+        onClick={() => onMove(index + 1)}
+      >
+        →
       </button>
-      <button disabled={!count || index >= count - 1} onClick={() => onMove(count - 1)}>
-        Last decision
+      <button
+        aria-label="Last decision"
+        title="Last decision"
+        disabled={!count || index >= count - 1}
+        onClick={() => onMove(count - 1)}
+      >
+        ⇥
       </button>
-      {onBefore && (
-        <button disabled={!count} onClick={onBefore}>
-          Before decision
-        </button>
-      )}
-      {onAfter && (
-        <button disabled={!count} onClick={onAfter}>
-          After decision
-        </button>
-      )}
+      <span className="policy-boundary-controls" role="group" aria-label="Decision boundary">
+        {onBefore && (
+          <button
+            aria-label="Before decision"
+            aria-pressed={boundary === undefined ? undefined : boundary === 'before'}
+            disabled={!count}
+            onClick={onBefore}
+          >
+            Before
+          </button>
+        )}
+        {onAfter && (
+          <button
+            aria-label="After decision"
+            aria-pressed={boundary === undefined ? undefined : boundary === 'after'}
+            disabled={!count}
+            onClick={onAfter}
+          >
+            After
+          </button>
+        )}
+      </span>
     </nav>
   );
 }

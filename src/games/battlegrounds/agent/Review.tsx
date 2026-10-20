@@ -1,16 +1,16 @@
 import { PolicyReview } from '../../../shared/policy/Review';
-import type { Json } from '../../../shared/policy/types';
 import { HEROES } from '../content/minions';
 import type { Unit } from '../domain/types';
 import { HeroArt } from '../ui/HeroArt';
 import { MinionCard } from '../ui/MinionCard';
 import { SpellCard } from '../ui/SpellCard';
 import '../ui/TavernSpells.css';
-import { adapter, at, type EpisodeState } from './adapter';
+import { adapter, createReviewSeeker, type EpisodeState } from './adapter';
 import { builtins } from './policy';
 import './review.css';
 
 function Minions({ label, units }: { label: string; units: Unit[] }) {
+  if (!units.length) return null;
   return (
     <section aria-label={label}>
       <h3>
@@ -20,7 +20,6 @@ function Minions({ label, units }: { label: string; units: Unit[] }) {
         {units.map((unit) => (
           <MinionCard key={unit.id} unit={unit} disabled />
         ))}
-        {!units.length && <p className="muted">Empty</p>}
       </div>
     </section>
   );
@@ -47,29 +46,34 @@ function Board({ state }: { state: EpisodeState }) {
           <span>Tier {self.tier}</span>
         </div>
       </header>
-      <p>{hero.text}</p>
+      <details>
+        <summary>Hero ability</summary>
+        <p>{hero.text}</p>
+      </details>
       <Minions label="Your warband" units={self.board} />
       <Minions label="Your minion hand" units={self.hand} />
       <Minions label="Your tavern offers" units={self.shop} />
       <Minions label="Your Discover options" units={self.discover} />
-      <section aria-label="Your tavern spells" className="tavern-spells">
-        <h3>Your tavern spells</h3>
-        <h4>Offer</h4>
-        {self.tavern?.offer ? (
-          <SpellCard spell={self.tavern.offer} mode="catalogue" />
-        ) : (
-          <p>No offer</p>
-        )}
-        <h4>Hand</h4>
-        <div className="spell-hand">
-          {self.tavern?.hand.map((spell) => (
-            <SpellCard key={spell.id} spell={spell} mode="catalogue" />
-          ))}
-          {!self.tavern?.hand.length && <p>Empty</p>}
-        </div>
-      </section>
-      <section aria-label="Public lobby">
-        <h3>Public lobby · round-opening snapshot</h3>
+      {(self.tavern?.offer || !!self.tavern?.hand.length) && (
+        <section aria-label="Your tavern spells" className="tavern-spells">
+          <h3>Your tavern spells</h3>
+          <h4>Offer</h4>
+          {self.tavern?.offer ? (
+            <SpellCard spell={self.tavern.offer} mode="catalogue" />
+          ) : (
+            <p>No offer</p>
+          )}
+          <h4>Hand</h4>
+          <div className="spell-hand">
+            {self.tavern?.hand.map((spell) => (
+              <SpellCard key={spell.id} spell={spell} mode="catalogue" />
+            ))}
+            {!self.tavern?.hand.length && <p>Empty</p>}
+          </div>
+        </section>
+      )}
+      <details aria-label="Public lobby">
+        <summary>Public lobby · round-opening snapshot</summary>
         <div className="hearth-public-lobby">
           {view.lobby.map((seat) => (
             <p key={seat.id}>
@@ -79,9 +83,9 @@ function Board({ state }: { state: EpisodeState }) {
             </p>
           ))}
         </div>
-      </section>
-      <section aria-label="Known opponent">
-        <h3>Known opponent</h3>
+      </details>
+      <details aria-label="Known opponent">
+        <summary>Known opponent</summary>
         {view.opponent ? (
           <>
             <p>
@@ -98,7 +102,7 @@ function Board({ state }: { state: EpisodeState }) {
         ) : (
           <p>No opponent announced</p>
         )}
-      </section>
+      </details>
       {view.lastCombat && (
         <section aria-label="Last combat result">
           <h3>Last combat result</h3>
@@ -117,7 +121,7 @@ function Board({ state }: { state: EpisodeState }) {
   );
 }
 const factories = Object.values(builtins);
-const seek = (replay: Json, cursor: number) => at(adapter.restore(replay), cursor);
+const seek = createReviewSeeker();
 const renderState = (state: EpisodeState) => <Board state={state} />;
 export default function HearthReview() {
   return (

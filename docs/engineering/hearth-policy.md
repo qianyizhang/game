@@ -126,6 +126,9 @@ The isolated route never mounts live game save hooks. Shared filters/condition g
 first/previous/next/last/numbered links, round markers, play/speed and before/after
 controls connect the original decision to its full native span. The passive board uses
 the reconstructed public view, with original knowledge/proposal JSON authoritative.
+The board and compact playback bar lead; run selection, audit, exact decision details
+and downloads expand on demand. Validated native checkpoints retain observed alias
+history, so seeking replays at most 31 native commands instead of the whole lobby.
 Full evaluator state is explicit. Exact original downloads remain available independently
 of playback; current audits and unsupported versions are labeled honestly.
 

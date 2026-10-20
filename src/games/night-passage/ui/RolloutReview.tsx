@@ -47,9 +47,7 @@ export default function RolloutReview({
   const [active, setActive] = useState<Entry | null>(null);
   const [index, setIndex] = useState(0);
   const [filter, setFilter] = useState('');
-  const [notice, setNotice] = useState(
-    'Open recorded rollouts to inspect original policy knowledge. Plain replays contain executed actions only.',
-  );
+  const [notice, setNotice] = useState('Open a rollout to inspect policy decisions.');
   const [showEvaluator, setShowEvaluator] = useState(false);
   const choose = useCallback(
     (entry: Entry, next = 0) => {
@@ -108,9 +106,7 @@ export default function RolloutReview({
         return;
       }
       choose(entry, selected);
-      setNotice(
-        'Original inputs loaded. Audit uses the current implementation; original source pins remain in the artifact.',
-      );
+      setNotice('');
     })().catch((error: unknown) => {
       if (!controller.signal.aborted && isCurrentImport(generation))
         setNotice(error instanceof Error ? error.message : 'Rollout could not load.');
@@ -159,7 +155,7 @@ export default function RolloutReview({
     <section className="np-review" aria-label="Policy rollout review">
       <header className="np-tools">
         <h2>Policy rollout review</h2>
-        <label className="np-import">
+        <label className="policy-file-button">
           Open rollouts
           <input
             type="file"
@@ -203,20 +199,25 @@ export default function RolloutReview({
                     failures.push(String(error));
                   }
                 }
-                setNotice(
-                  failures.length
-                    ? failures.join(' ')
-                    : 'Original inputs loaded. Select a run and a decision.',
-                );
+                setNotice(failures.length ? failures.join(' ') : '');
               })();
             }}
           />
         </label>
       </header>
-      <p aria-live="polite">{notice}</p>
+      <p aria-live="polite" className="policy-notice">
+        {notice}
+      </p>
       {!row && children}
+      {active && (
+        <p className="policy-run-identity">
+          <strong>{active.rollout.episode.policy}</strong> · {active.rollout.episode.difficulty} ·{' '}
+          {active.rollout.episode.control} controls<small>{active.rollout.episode.seed}</small>
+        </p>
+      )}
       {entries.length > 0 && (
-        <>
+        <details className="policy-disclosure policy-run-library">
+          <summary>Runs · {entries.length} loaded</summary>
           <label>
             Filter runs{' '}
             <input
@@ -297,28 +298,47 @@ export default function RolloutReview({
               </p>
             ))}
           </details>
-        </>
+        </details>
       )}
       {active && (
         <>
-          <p className="np-review-verdict" data-testid="rollout-audit">
-            Replay reconstruction: {active.audit.replay} · Artifact integrity:{' '}
-            {active.audit.integrity} · Permitted inputs: {active.audit.inputs} · Policy
-            reproduction: {active.audit.decisions}
-          </p>
-          <p>{active.audit.scope}</p>
-          <p>
-            Browser cross-runtime check: coordinates and angles allow absolute drift up to{' '}
-            {active.audit.numericDrift.tolerance}; hashes, field visibility, button choices, timing
-            and outcomes remain exact. {active.audit.numericDrift.count} numeric differences
-            observed.
-          </p>
-          {active.audit.numericDrift.first && (
-            <details>
-              <summary>First numeric difference</summary>
-              <p>{active.audit.numericDrift.first}</p>
-            </details>
-          )}
+          <details className="policy-disclosure policy-audit">
+            <summary>
+              {[
+                active.audit.replay,
+                active.audit.integrity,
+                active.audit.inputs,
+                active.audit.decisions,
+              ].includes('failed')
+                ? 'Audit failed'
+                : [
+                      active.audit.replay,
+                      active.audit.integrity,
+                      active.audit.inputs,
+                      active.audit.decisions,
+                    ].includes('unavailable')
+                  ? 'Audit incomplete'
+                  : '4 checks passed'}
+            </summary>
+            <p className="np-review-verdict" data-testid="rollout-audit">
+              Replay reconstruction: {active.audit.replay} · Artifact integrity:{' '}
+              {active.audit.integrity} · Permitted inputs: {active.audit.inputs} · Policy
+              reproduction: {active.audit.decisions}
+            </p>
+            <p>{active.audit.scope}</p>
+            <p>
+              Browser cross-runtime check: coordinates and angles allow absolute drift up to{' '}
+              {active.audit.numericDrift.tolerance}; hashes, field visibility, button choices,
+              timing and outcomes remain exact. {active.audit.numericDrift.count} numeric
+              differences observed.
+            </p>
+            {active.audit.numericDrift.first && (
+              <details>
+                <summary>First numeric difference</summary>
+                <p>{active.audit.numericDrift.first}</p>
+              </details>
+            )}
+          </details>
           {active.audit.firstMismatch && (
             <p role="alert">
               {active.audit.firstMismatch.decision === null
@@ -347,148 +367,158 @@ export default function RolloutReview({
                   seek(row.after);
                 }}
               />
-              <label>
-                Location{' '}
-                <select
-                  aria-label="Rollout location"
-                  value={index}
-                  onChange={(e) => move(Number(e.target.value))}
-                >
-                  {active.rollout.decisions.flatMap((r, i, rows) =>
-                    i === 0 ||
-                    r.input.phase !== rows[i - 1].input.phase ||
-                    r.input.region !== rows[i - 1].input.region ||
-                    r.input.chamber !== rows[i - 1].input.chamber
-                      ? [
-                          <option key={i} value={i}>
-                            Decision {i + 1} · Region {r.input.region + 1}, chamber{' '}
-                            {r.input.chamber + 1} · {r.input.phase}
-                          </option>,
-                        ]
-                      : i === index
+              <details className="policy-playback-options">
+                <summary>Jump to location</summary>
+                <label>
+                  Location{' '}
+                  <select
+                    aria-label="Rollout location"
+                    value={index}
+                    onChange={(e) => move(Number(e.target.value))}
+                  >
+                    {active.rollout.decisions.flatMap((r, i, rows) =>
+                      i === 0 ||
+                      r.input.phase !== rows[i - 1].input.phase ||
+                      r.input.region !== rows[i - 1].input.region ||
+                      r.input.chamber !== rows[i - 1].input.chamber
                         ? [
                             <option key={i} value={i}>
-                              Decision {i + 1} · {r.input.phase}
+                              Decision {i + 1} · Region {r.input.region + 1}, chamber{' '}
+                              {r.input.chamber + 1} · {r.input.phase}
                             </option>,
                           ]
-                        : [],
-                  )}
-                </select>
-              </label>
+                        : i === index
+                          ? [
+                              <option key={i} value={i}>
+                                Decision {i + 1} · {r.input.phase}
+                              </option>,
+                            ]
+                          : [],
+                    )}
+                  </select>
+                </label>
+              </details>
               <p data-testid="rollout-decision">
                 Decision {index + 1} · Region {row.input.region + 1}, chamber{' '}
                 {row.input.chamber + 1} · {row.input.phase} ·{' '}
                 {row.accepted ? 'Accepted' : 'Rejected / error'}
                 {row.error ? `: ${row.error}` : ''}
               </p>
-              <dl className="np-review-facts">
-                <div>
-                  <dt>Policy observed tick</dt>
-                  <dd data-testid="policy-observed-tick">{row.input.perception.observedTick}</dd>
-                </div>
-                <div>
-                  <dt>Decision tick</dt>
-                  <dd>{row.input.perception.decisionTick}</dd>
-                </div>
-                <div>
-                  <dt>Snapshot age</dt>
-                  <dd>
-                    {row.input.perception.ageTicks} ticks
-                    {row.input.perception.bootstrap ? ' · bootstrap' : ''}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Delivery tick</dt>
-                  <dd>
-                    {row.timing ? (row.timing.deliveryTick ?? 'Cancelled') : 'Menu / no delivery'}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Replay units</dt>
-                  <dd>
-                    {row.before} → {row.after}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Declared work</dt>
-                  <dd>{row.work?.total ?? 'Unavailable'}</dd>
-                </div>
-              </dl>
               {children}
-              <div className="np-review-columns">
-                <section>
-                  <h3>Recorded policy knowledge</h3>
-                  <p>
-                    Original input, including legal menus and control bounds. The contract withholds
-                    enemy clocks, player cooldown clocks and future RNG; the audit checks this
-                    boundary. Projectile velocity is inferred from adjacent aged samples.
-                  </p>
-                  <details open>
-                    <summary>Exact policy input</summary>
-                    <pre data-testid="policy-knowledge">{json(row.input)}</pre>
-                  </details>
-                </section>
-                <section>
-                  <h3>Recorded proposal</h3>
-                  <pre data-testid="policy-proposal">
-                    {json({
-                      command: row.command,
-                      work: row.work,
-                      timing: row.timing,
-                      failureStage: row.failureStage,
-                      rawOutput: row.rawOutput,
-                    })}
-                  </pre>
-                  <p>
-                    Decision reasons and alternative values were not supplied by these heuristics.
-                    Work and proposal are recorded diagnostics.
-                  </p>
-                  <button
-                    aria-pressed={showEvaluator}
-                    onClick={() => setShowEvaluator(!showEvaluator)}
-                  >
-                    {showEvaluator ? 'Hide evaluator view' : 'Show evaluator view'}
-                  </button>
-                  {showEvaluator && evaluator && (
-                    <>
-                      <h3>Evaluator at playback tick {evaluator?.tick}</h3>
-                      <p>
-                        Privileged review data: exact clocks, seed, RNG and journal-independent game
-                        state. The policy contract excludes these privileged fields. Select Before
-                        decision for the decision-time comparison.
-                      </p>
-                      <pre data-testid="evaluator-knowledge">{json(evaluator)}</pre>
-                    </>
-                  )}
-                  {showEvaluator && !evaluator && (
-                    <p>Evaluator unavailable: playback could not reconstruct this boundary.</p>
-                  )}
-                </section>
-              </div>
+              <details className="policy-disclosure policy-decision-details">
+                <summary>Decision details</summary>
+                <dl className="np-review-facts">
+                  <div>
+                    <dt>Policy observed tick</dt>
+                    <dd data-testid="policy-observed-tick">{row.input.perception.observedTick}</dd>
+                  </div>
+                  <div>
+                    <dt>Decision tick</dt>
+                    <dd>{row.input.perception.decisionTick}</dd>
+                  </div>
+                  <div>
+                    <dt>Snapshot age</dt>
+                    <dd>
+                      {row.input.perception.ageTicks} ticks
+                      {row.input.perception.bootstrap ? ' · bootstrap' : ''}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Delivery tick</dt>
+                    <dd>
+                      {row.timing ? (row.timing.deliveryTick ?? 'Cancelled') : 'Menu / no delivery'}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Replay units</dt>
+                    <dd>
+                      {row.before} → {row.after}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Declared work</dt>
+                    <dd>{row.work?.total ?? 'Unavailable'}</dd>
+                  </div>
+                </dl>
+                <div className="np-review-columns">
+                  <section>
+                    <h3>Recorded policy knowledge</h3>
+                    <p>
+                      Original input, including legal menus and control bounds. The contract
+                      withholds enemy clocks, player cooldown clocks and future RNG; the audit
+                      checks this boundary. Projectile velocity is inferred from adjacent aged
+                      samples.
+                    </p>
+                    <details open>
+                      <summary>Exact policy input</summary>
+                      <pre data-testid="policy-knowledge">{json(row.input)}</pre>
+                    </details>
+                  </section>
+                  <section>
+                    <h3>Recorded proposal</h3>
+                    <pre data-testid="policy-proposal">
+                      {json({
+                        command: row.command,
+                        work: row.work,
+                        timing: row.timing,
+                        failureStage: row.failureStage,
+                        rawOutput: row.rawOutput,
+                      })}
+                    </pre>
+                    <p>
+                      Decision reasons and alternative values were not supplied by these heuristics.
+                      Work and proposal are recorded diagnostics.
+                    </p>
+                    <button
+                      aria-pressed={showEvaluator}
+                      onClick={() => setShowEvaluator(!showEvaluator)}
+                    >
+                      {showEvaluator ? 'Hide evaluator view' : 'Show evaluator view'}
+                    </button>
+                    {showEvaluator && evaluator && (
+                      <>
+                        <h3>Evaluator at playback tick {evaluator?.tick}</h3>
+                        <p>
+                          Privileged review data: exact clocks, seed, RNG and journal-independent
+                          game state. The policy contract excludes these privileged fields. Select
+                          Before decision for the decision-time comparison.
+                        </p>
+                        <pre data-testid="evaluator-knowledge">{json(evaluator)}</pre>
+                      </>
+                    )}
+                    {showEvaluator && !evaluator && (
+                      <p>Evaluator unavailable: playback could not reconstruct this boundary.</p>
+                    )}
+                  </section>
+                </div>
+              </details>
             </>
           ) : (
             <p>No policy decisions: this episode stopped after setup.</p>
           )}
-          <div className="np-tools">
-            <button
-              onClick={() =>
-                downloadFile(
-                  active.original,
-                  isGzip(active.original) ? 'rollout.json.gzip' : 'rollout.json',
-                  isGzip(active.original) ? 'application/gzip' : 'application/json',
-                )
-              }
-            >
-              Download original rollout
-            </button>
-            <button onClick={() => downloadFile(active.rollout.replay, 'replay.json')}>
-              Download replay
-            </button>
-            <button onClick={() => downloadFile(json(active.audit), 'audit.json')}>
-              Download current audit
-            </button>
-          </div>
-          <details>
+          <details className="policy-disclosure">
+            <summary>Downloads</summary>
+            <div className="np-tools">
+              <button
+                onClick={() =>
+                  downloadFile(
+                    active.original,
+                    isGzip(active.original) ? 'rollout.json.gzip' : 'rollout.json',
+                    isGzip(active.original) ? 'application/gzip' : 'application/json',
+                  )
+                }
+              >
+                Download original rollout
+              </button>
+              <button onClick={() => downloadFile(active.rollout.replay, 'replay.json')}>
+                Download replay
+              </button>
+              <button onClick={() => downloadFile(json(active.audit), 'audit.json')}>
+                Download current audit
+              </button>
+            </div>
+          </details>
+          <details className="policy-disclosure">
             <summary>Original versions, configuration and source pins</summary>
             <pre>
               {json({

@@ -1,3 +1,4 @@
+import { openReviewSection } from './policy-review';
 import { expect, test } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { recordEpisode } from '../../src/shared/policy/rollout';
@@ -77,6 +78,7 @@ test('Spire policy review connects original knowledge to a passive map and comba
   await expect(board.locator('.battle-hand .ability-card:enabled')).toHaveCount(0);
   await expect(board.getByRole('button', { name: 'End turn' })).toBeDisabled();
   await expect(board.locator('.enemy:enabled')).toHaveCount(0);
+  await openReviewSection(page, 'Decision details');
   const knowledge = JSON.parse(
     await page.getByTestId('policy-knowledge').innerText(),
   ) as JsonObject;
@@ -90,10 +92,12 @@ test('Spire policy review connects original knowledge to a passive map and comba
   await expect(board.locator('.sts-pile')).toContainText('This pile is empty.');
   await board.getByText(/^Permanent deck ·/).click();
   await expect(board.locator('.deck-list button')).toHaveCount(12);
+  await openReviewSection(page, 'Decision details');
   await page.getByRole('button', { name: 'Show evaluator view', exact: true }).click();
   await expect(page.getByTestId('evaluator-knowledge')).toContainText('"rng"');
   await page.getByRole('button', { name: 'Hide evaluator view', exact: true }).click();
   const downloading = page.waitForEvent('download');
+  await openReviewSection(page, 'Downloads');
   await page.getByRole('button', { name: 'Download original rollout', exact: true }).click();
   expect((await readFile(await (await downloading).path())).equals(Buffer.from(original))).toBe(
     true,
