@@ -36,6 +36,20 @@ void test('parallel episodes retain exact serial evidence and worker exits fail 
         2,
       );
       assert.deepEqual(actual, expected);
+      let delivered = 0;
+      await assert.rejects(
+        casePool(
+          runtime.moduleURL,
+          jobs.map((job) => ({ ...job, retainRollouts: false })),
+          2,
+          () => {
+            delivered++;
+            throw new Error('injected ledger write failure');
+          },
+        ),
+        /ledger write failure/,
+      );
+      assert.equal(delivered, 1);
       for (const job of jobs) {
         const name = `${job.seed}-${job.setupId}-${job.policy}.rollout.json.gzip`;
         assert.ok(

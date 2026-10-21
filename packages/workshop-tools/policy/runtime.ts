@@ -64,6 +64,7 @@ export async function withRuntime<T>(
           'packages/workshop-tools/policy/runtime.ts',
           'packages/workshop-tools/policy/cli.ts',
           'packages/workshop-tools/policy/study.ts',
+          'packages/workshop-tools/policy/ledger.ts',
           'packages/workshop-tools/policy/calibration.ts',
           'packages/workshop-tools/policy/analyze-spire.ts',
           'packages/workshop-tools/policy/pool.ts',
