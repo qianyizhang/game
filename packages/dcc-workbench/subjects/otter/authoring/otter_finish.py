@@ -63,9 +63,11 @@ def refine(root: Path) -> None:
         pale = max(muzzle, throat) * 0.83
         brown = (0.18, 0.079, 0.035)
         silver = (0.52, 0.42, 0.30)
-        require(colors.data[vertex.index], bpy.types.FloatColorAttributeValue).color = (
-            *[a + (b - a) * pale for a, b in zip(brown, silver, strict=True)],
-            1,
+        require(colors.data[vertex.index], bpy.types.FloatColorAttributeValue).color.foreach_set(
+            (
+                *[a + (b - a) * pale for a, b in zip(brown, silver, strict=True)],
+                1,
+            )
         )
     nodes = present(mat.node_tree).nodes
     attr = require(nodes.new("ShaderNodeVertexColor"), bpy.types.ShaderNodeVertexColor)

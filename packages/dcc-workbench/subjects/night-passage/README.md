@@ -49,9 +49,9 @@ installation can run the same Python entrypoint. Output paths must be fresh.
 
 ```sh
 nvm use
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/hero_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/hero/source.blend --output test-results/hero-export
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/hero_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/hero/source.blend --output test-results/hero-review
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/hero_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/hero/source.blend --output test-results/hero-native
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/hero_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/hero/source.blend --output test-results/hero-export
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/hero_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/hero/source.blend --output test-results/hero-review
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/hero_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/hero/source.blend --output test-results/hero-native
 NIGHT_PASSAGE_NATIVE_RESULTS=test-results/hero-native npm run test:browser -- tests/browser/night-passage-hero.spec.ts tests/browser/night-passage-scene.spec.ts
 npm run check:full
 ```
@@ -98,9 +98,9 @@ the hero sampler's phase. Failed or late loads and repeated disposal retain the
 existing fallback ownership contract.
 
 ```sh
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/weapon_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/weapons/source.blend --output test-results/weapons-export
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/weapon_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/weapons/source.blend --output test-results/weapons-review
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/weapon_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/weapons/source.blend --output test-results/weapons-native
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/weapon_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/weapons/source.blend --output test-results/weapons-export
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/weapon_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/weapons/source.blend --output test-results/weapons-review
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/weapon_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/weapons/source.blend --output test-results/weapons-native
 NIGHT_PASSAGE_NATIVE_RESULTS=test-results/hero-native NIGHT_PASSAGE_WEAPON_RESULTS=test-results/weapons-native npm run test:browser -- tests/browser/night-passage-hero.spec.ts tests/browser/night-passage-scene.spec.ts
 ```
 
@@ -159,9 +159,9 @@ names, geometry, materials, clips and delivered GLB files remain unchanged.
 Use a fresh output directory for every operation; repeat with each saved kind:
 
 ```sh
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/enemy_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend --output test-results/enemy-hunter-export
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/enemy_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend --output test-results/enemy-hunter-review
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/enemy_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend --output test-results/night-passage-enemies/native/hunter
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/enemy_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend --output test-results/enemy-hunter-export
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/enemy_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend --output test-results/enemy-hunter-review
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/enemy_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend --output test-results/night-passage-enemies/native/hunter
 ```
 
 Native edit evidence is generated under
@@ -193,9 +193,9 @@ and verifies a disposable saved sweep head-key edit. Receipts pin all contributi
 construction/export scripts; temporary vertex samples are never runtime inputs.
 
 ```sh
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend --output test-results/bellwarden-export
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend --output test-results/bellwarden-review
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend --output test-results/night-passage-bellwarden/native
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend --output test-results/bellwarden-export
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend --output test-results/bellwarden-review
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend --output test-results/night-passage-bellwarden/native
 NIGHT_PASSAGE_GUARDIAN_RESULTS=test-results/night-passage-bellwarden/native npm run test:browser -- tests/browser/night-passage-guardian.spec.ts
 npm run check:full
 ```
@@ -219,9 +219,9 @@ artist edits. Export and review select the saved scene's `guardian_kind`.
 and review modules evaluate the saved master unchanged.
 
 ```sh
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend --output test-results/undertow-export
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend --output test-results/undertow-review
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend --output test-results/night-passage-undertow/native
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend --output test-results/undertow-export
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend --output test-results/undertow-review
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend --output test-results/night-passage-undertow/native
 NIGHT_PASSAGE_GUARDIAN_RESULTS=test-results/night-passage-bellwarden/native NIGHT_PASSAGE_UNDERTOW_RESULTS=test-results/night-passage-undertow/native npm run test:browser -- tests/browser/night-passage-guardian.spec.ts
 npm run check:full
 ```
@@ -248,9 +248,9 @@ do not rerun them over subsequent artist edits. Export evaluates the saved maste
 The shared catalog, delivery, review and runtime modules add no second pipeline.
 
 ```sh
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend --output test-results/ashregent-export
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend --output test-results/ashregent-review
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend --output test-results/night-passage-ashregent/native
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend --output test-results/ashregent-export
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend --output test-results/ashregent-review
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend --output test-results/night-passage-ashregent/native
 NIGHT_PASSAGE_GUARDIAN_RESULTS=test-results/night-passage-bellwarden/native NIGHT_PASSAGE_UNDERTOW_RESULTS=test-results/night-passage-undertow/native NIGHT_PASSAGE_ASHREGENT_RESULTS=test-results/night-passage-ashregent/native npm run test:browser -- tests/browser/night-passage-guardian.spec.ts
 npm run check:full
 ```
@@ -275,9 +275,9 @@ Export evaluates saved geometry and keys without reconstructing the master.
 The shared catalog, exporter, review and runtime accommodate the larger clip set.
 
 ```sh
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend --output test-results/sovereign-export
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend --output test-results/sovereign-review
-packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend --output test-results/night-passage-sovereign/native
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- export --source packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend --output test-results/sovereign-export
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- review --source packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend --output test-results/sovereign-review
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python packages/dcc-workbench/subjects/night-passage/authoring/guardian_delivery.py -- verify --source packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend --output test-results/night-passage-sovereign/native
 NIGHT_PASSAGE_GUARDIAN_RESULTS=test-results/night-passage-bellwarden/native NIGHT_PASSAGE_UNDERTOW_RESULTS=test-results/night-passage-undertow/native NIGHT_PASSAGE_ASHREGENT_RESULTS=test-results/night-passage-ashregent/native NIGHT_PASSAGE_SOVEREIGN_RESULTS=test-results/night-passage-sovereign/native npm run test:browser -- tests/browser/night-passage-guardian.spec.ts
 npm run check:full
 ```
@@ -311,7 +311,7 @@ changing collision footprints belongs to a separate rules change.
 Use the repository Blender runtime and fresh output directories:
 
 ```sh
-BLENDER=packages/dcc-workbench/.runtime/Blender.app/Contents/MacOS/Blender
+BLENDER=/Applications/Blender.app/Contents/MacOS/Blender
 SOURCE=packages/dcc-workbench/subjects/night-passage/environments/sepulcher/source.blend
 SCRIPT=packages/dcc-workbench/subjects/night-passage/authoring/environment_delivery.py
 "$BLENDER" --background --python-exit-code 1 --python "$SCRIPT" -- export --source "$SOURCE" --output test-results/sepulcher-export

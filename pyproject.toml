@@ -8,7 +8,7 @@ dependencies = []
 dev = [
   "ruff==0.17.1",
   "mypy==2.4.0",
-  "fake-bpy-module-4.5==20260730",
+  "fake-bpy-module-5.2==20260730",
 ]
 
 [tool.uv]
@@ -20,7 +20,7 @@ target-version = "py312"
 line-length = 100
 include = ["packages/dcc-workbench/blender/*.py", "packages/dcc-workbench/subjects/canid/authoring/*.py", "packages/dcc-workbench/subjects/boar/authoring/*.py", "packages/dcc-workbench/subjects/raven/authoring/*.py", "packages/dcc-workbench/subjects/otter/authoring/*.py", "packages/dcc-workbench/subjects/night-passage/authoring/*.py"]
 
-# Blender 4.5 embeds Python 3.11; native scripts must remain parseable there.
+# Keep the Python 3.11 syntax subset for historical recipes; Blender 5.2 embeds Python 3.13.
 [tool.ruff.per-file-target-version]
 "packages/dcc-workbench/blender/*.py" = "py311"
 "packages/dcc-workbench/subjects/canid/authoring/*.py" = "py311"

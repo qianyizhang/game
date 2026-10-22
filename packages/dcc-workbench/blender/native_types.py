@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Protocol, TypeVar, runtime_checkable
+from typing import TYPE_CHECKING, Protocol, TypeVar, cast
 
 if TYPE_CHECKING:
     import bpy
@@ -31,17 +31,14 @@ def active_object() -> bpy.types.Object:
 # Cycles is a bundled add-on, absent from generated bpy stubs. Keep its used interface narrow.
 
 
-@runtime_checkable
 class CyclesSettings(Protocol):
     samples: int
 
 
-@runtime_checkable
 class FloatSocket(Protocol):
     default_value: float
 
 
-@runtime_checkable
 class ColorSocket(Protocol):
     default_value: tuple[float, float, float, float]
 
@@ -53,34 +50,36 @@ def present(value: T | None) -> T:
 
 
 def cycles_settings(value: object) -> CyclesSettings:
-    if not isinstance(value, CyclesSettings):
+    if not isinstance(getattr(value, "samples", None), int):
         raise ValueError("Missing Cycles settings")
-    return value
+    return cast(CyclesSettings, value)
 
 
 def float_socket(value: object) -> FloatSocket:
-    if not isinstance(value, FloatSocket):
+    if not isinstance(getattr(value, "default_value", None), (int, float)):
         raise ValueError("Missing numeric shader socket")
-    return value
+    return cast(FloatSocket, value)
 
 
 def color_socket(value: object) -> ColorSocket:
-    if not isinstance(value, ColorSocket):
+    # Python 3.12+ runtime Protocol checks use static attribute lookup, which misses
+    # Blender's dynamically exposed RNA properties. Check the actual value instead.
+    default = getattr(value, "default_value", None)
+    if default is None or not hasattr(default, "__len__") or len(default) != 4:
         raise ValueError("Missing color shader socket")
-    return value
+    return cast(ColorSocket, value)
 
 
 class PropertyUI(Protocol):
     def update(self, *, min: float, max: float, description: str) -> None: ...
 
 
-@runtime_checkable
 class EditableProperties(Protocol):
     def id_properties_ui(self, key: str) -> PropertyUI: ...
 
 
 def property_controls(value: object) -> EditableProperties:
     """Generated stubs omit the native IDProperty UI manager return type."""
-    if not isinstance(value, EditableProperties):
+    if not callable(getattr(value, "id_properties_ui", None)):
         raise ValueError("Missing native custom-property controls")
-    return value
+    return cast(EditableProperties, value)

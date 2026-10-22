@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf-thorn",
+  "title": "Thorn Tyrant",
+  "subtitle": "Evil evolved Greatwood Wolf.",
+  "interpretation": "Living listening wolf with native sculpted neck, layered fur locks and distinct grown crown.",
+  "gesture": "Forward-reaching black crown, angular swept ruff, lowered brow and small canines.",
+  "polish": [
+    "Preserve quiet forest coat, pale throat, unequal paws and seated antlers.",
+    "Preserve inherited stylized facial and paw forms."
+  ],
+  "palette": [
+    {
+      "name": "Forest coat",
+      "color": "#6d7863"
+    },
+    {
+      "name": "Pale throat",
+      "color": "#b6ba9b"
+    }
+  ],
+  "nativeFeatures": [
+    "Native sculpted neck volume and fur roots fused into continuous anatomy",
+    "Editable fur topology, with native nearest-surface skin and original coat markings",
+    "Altered seated antler crown with preserved smooth normals",
+    "Ten-joint six-second idle and native Tail relax control"
+  ],
+  "animation": {
+    "name": "wolf_idle",
+    "seconds": 6,
+    "fps": 24
+  },
+  "budgets": {
+    "maxTriangles": 225000,
+    "maxBytes": 12000000,
+    "maxJoints": 16
+  },
+  "reference": "Separate evolved source from accepted Greatwood Wolf; base is preserved byte-for-byte.",
+  "reviewStatus": "Direct parent authorship and visual review; independent review omitted by explicit user instruction; user aesthetic approval pending.",
+  "origin": {
+    "kind": "imported-delivery",
+    "path": "references/wolf/legacy-gallery.glb",
+    "sha256": "c1190eaba885f9ea3064aff2d6b896398e63c90d67c093174be6b3044533c5b1",
+    "legacyStudyId": "wolf-thorn",
+    "nativeTrial": "Direct parent refinement after separately preserved stopped delegated experiment."
+  },
+  "nativeEdit": {
+    "control": {
+      "object": "EDIT | Tail",
+      "property": "Tail relax"
+    },
+    "values": [0, 0.5, 1],
+    "moved": ["Wolf_LivingTail"],
+    "fixed": [
+      "Thorn_canine_-1",
+      "Thorn_canine_1",
+      "Thorn_scowling_brow_-1",
+      "Thorn_scowling_brow_1",
+      "Wolf_BranchingAntlers",
+      "Wolf_Catchlight_-1",
+      "Wolf_Catchlight_1",
+      "Wolf_ContinuousAnatomy",
+      "Wolf_EyeSocket_-1",
+      "Wolf_EyeSocket_1",
+      "Wolf_InnerEar_-1",
+      "Wolf_InnerEar_1",
+      "Wolf_Iris_-1",
+      "Wolf_Iris_1",
+      "Wolf_LeatherNose",
+      "Wolf_Lip_-1",
+      "Wolf_Lip_1",
+      "Wolf_Nostril_-1",
+      "Wolf_Nostril_1",
+      "Wolf_Philtrum",
+      "Wolf_PointedEar_-1",
+      "Wolf_PointedEar_1",
+      "Wolf_Pupil_-1",
+      "Wolf_Pupil_1",
+      "Wolf_ToeCrease_0_0",
+      "Wolf_ToeCrease_0_1",
+      "Wolf_ToeCrease_0_2",
+      "Wolf_ToeCrease_1_0",
+      "Wolf_ToeCrease_1_1",
+      "Wolf_ToeCrease_1_2",
+      "Wolf_ToeCrease_2_0",
+      "Wolf_ToeCrease_2_1",
+      "Wolf_ToeCrease_2_2",
+      "Wolf_ToeCrease_3_0",
+      "Wolf_ToeCrease_3_1",
+      "Wolf_ToeCrease_3_2",
+      "Wolf_Whisker_-1_0",
+      "Wolf_Whisker_-1_1",
+      "Wolf_Whisker_-1_2",
+      "Wolf_Whisker_1_0",
+      "Wolf_Whisker_1_1",
+      "Wolf_Whisker_1_2"
+    ]
+  }
+}

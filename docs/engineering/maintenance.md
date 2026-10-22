@@ -8,7 +8,7 @@ Use [verification contracts](checks.md#gate-selection) for commands, gate select
 
 Use `nvm install && nvm use`, hydrate native binaries with `git lfs install --local` and `git lfs pull`, then run `npm ci` and `uv sync --locked`. Runtime versions come from [`.node-version`](../../.node-version), [`.python-version`](../../.python-version) and [`package.json`](../../package.json); dependency versions come from the lockfiles. Git LFS follows the [native storage decision](decisions/0004-native-asset-storage.md); the inventory check names unhydrated binaries before delivery validation.
 
-Upgrade TypeScript and typed ESLint together when peer support and repository checks agree. Native scripts retain Python 3.11 syntax for Blender 4.5; standalone checks use the pinned Python runtime. Four Blender-stub assignment exceptions cover Workbench/Cycles engine enums and sRGB/Non-Color color-space names. Native rendering and isolated construction exercise these calls; there is no blanket missing-import or untyped-file suppression.
+Upgrade TypeScript and typed ESLint together when peer support and repository checks agree. Native authoring uses the system Blender 5.2 LTS app and matching pinned bpy stubs. Native scripts retain a Python 3.11 syntax subset for historical recipes; standalone checks use the pinned Python 3.12 runtime. See the [runtime migration and gates](blender-runtime.md). Four Blender-stub assignment exceptions cover Workbench/Cycles engine enums and sRGB/Non-Color color-space names. Native rendering and isolated construction exercise these calls; there is no blanket missing-import or untyped-file suppression.
 
 ## Source ownership
 

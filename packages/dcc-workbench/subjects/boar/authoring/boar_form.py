@@ -16,7 +16,7 @@ def material(name: str, color: Point, rough: float = 0.8) -> bpy.types.Material:
     import bpy
 
     mat = bpy.data.materials.new(name)
-    mat.diffuse_color = (*color, 1)
+    mat.diffuse_color.foreach_set((*color, 1))
     mat.use_nodes = True
     shader = require(
         present(mat.node_tree).nodes.get("Principled BSDF"), bpy.types.ShaderNodeBsdfPrincipled

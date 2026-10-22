@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "matriarch",
+  "definitionDigest": "9b4b2357e437ded53ed8ff9aeb4d19ab015342487dcc0e8414d47a4b370cedcd",
+  "candidate": {
+    "path": "candidate.json",
+    "sha256": "1041112989be1a64fe60d29591a3e3998409df91600d28d151032c660f04ee1a"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "a61857512a9de1b74fc1a82537cf7db40e12229777f21b0d2a4052cd1c1d3764"
+  },
+  "source": {
+    "path": "source.blend",
+    "sha256": "2700bc670306f4284ce94d7fa8b6d47626757bb5a015e861d61eef34cef3095d"
+  },
+  "brief": {
+    "path": "brief.json",
+    "sha256": "6e6e6308cb2e290d7c5fe700f3e2d16bcf1b5367402a1b9fbefd980ca8981ad1"
+  },
+  "outputs": {
+    "model": {
+      "path": "model.glb",
+      "sha256": "520f1eddaaade576e7eb84c1ad74c627fe241b9b72ce4e3c84c6670e949b4e46"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "1d76c0d3db9cf93ac41b94fdc99ecb8d9523abdc08adf79fe5d3a4ff2867f810"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "6ffcc2ef695aeb52446022496f128e0da975563527e5ede669f4df832bf5028f"
+    }
+  },
+  "previous": {
+    "kind": "release",
+    "receipt": {
+      "path": "assets/matriarch/published/releases/34dbd1b3085e1295797c49dec112de36740b6cb174514d7a32fa94c20df2e678/receipt.json",
+      "sha256": "34dbd1b3085e1295797c49dec112de36740b6cb174514d7a32fa94c20df2e678"
+    }
+  },
+  "previousReceipt": {
+    "path": "previous-receipt.json",
+    "sha256": "34dbd1b3085e1295797c49dec112de36740b6cb174514d7a32fa94c20df2e678"
+  }
+}

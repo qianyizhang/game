@@ -3,16 +3,16 @@
   "character": "otter",
   "sourceSha256": "35695f31f0422682aca33b6d9ff12c0ae0c8da020a97a57b5c475939d3f26f9d",
   "motionSha256": "548a7d37b2e7a85979888d61cb3be1fa46172a5c229ae22f57219842eac54703",
-  "modelSha256": "5b9ff334888bc12ad62cd87f8d9dbf6dc07809606e150809966411236bbeecf4",
+  "modelSha256": "e9082379850e43fcabf5b71177d725049404f8c71e1e590aca94e68656b5176c",
   "meshSha256": "802aef98deeba45f515c4ebb63beae61151418c391dd15e1a4f4cfb667788c4e",
   "geometryDigestVersion": 2,
   "sourceTransformContract": "identity object, parent inverse and scene transforms",
-  "blender": "4.5.14 LTS",
+  "blender": "5.2.3 LTS Release Candidate",
   "exportScripts": {
-    "subjects/otter/authoring/otter_delivery.py": "e9a41f2e8108a174c1f4d6209c59ced44a946fa58ab3c866bf24c84eaa658886",
+    "subjects/otter/authoring/otter_delivery.py": "d8debbc7d7f3202e0b2187bcfbcce42bf98f51e1fa688378247c2c74b18bed89",
     "subjects/otter/authoring/otter_rig.py": "921d12ea7bf7e0f479b1aecf3b3eb117aa5ce7d330cc5bbdeb86f98e10ad7c84",
     "subjects/otter/authoring/otter_motion.py": "be1748c012ee9010374f96b0b98d7f3bc6b99c336c1efe978c1ede738e372065",
-    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
+    "blender/native_types.py": "b0df7ac9ae11e3355c040b47d4bae4032264dd0e0683fabc674714f8cf80eaac"
   },
   "clips": {
     "idle": {
@@ -350,10 +350,10 @@
   },
   "support": {
     "idle": {
-      "minimumSurfaceHeight": 0.01799958571791649,
-      "maximumPawTargetError": 5.949744628147759e-07,
-      "maximumPlantedDigitDisplacement": 5.831507368508055e-07,
-      "maximumPlantedHeightDrift": 0.001060079008340837,
+      "minimumSurfaceHeight": 0.01799960993230343,
+      "maximumPawTargetError": 5.040580712432518e-07,
+      "maximumPlantedDigitDisplacement": 5.056558434529611e-07,
+      "maximumPlantedHeightDrift": 0.0010598871558904661,
       "loopMatrixError": 0.0,
       "frames": 253,
       "supportSites": "five toes plus connected web of each paw; saved stance intervals",
@@ -361,10 +361,10 @@
       "space": "evaluated scene/world geometry plus scene trajectory"
     },
     "walk": {
-      "minimumSurfaceHeight": 0.01799948327243328,
-      "maximumPawTargetError": 5.372690074837192e-07,
-      "maximumPlantedDigitDisplacement": 7.841028152664343e-07,
-      "maximumPlantedHeightDrift": 0.0010601404756307616,
+      "minimumSurfaceHeight": 0.0179995596408844,
+      "maximumPawTargetError": 5.519970191118555e-07,
+      "maximumPlantedDigitDisplacement": 8.780964412005797e-07,
+      "maximumPlantedHeightDrift": 0.001060039892792703,
       "loopMatrixError": 0.0,
       "frames": 97,
       "supportSites": "five toes plus connected web of each paw; saved stance intervals",
@@ -372,21 +372,21 @@
       "space": "evaluated scene/world geometry plus scene trajectory"
     },
     "bound": {
-      "minimumSurfaceHeight": 0.017999574542045593,
-      "maximumPawTargetError": 0.00023701924145926604,
-      "maximumPlantedDigitDisplacement": 9.109671862743448e-06,
-      "maximumPlantedHeightDrift": 0.001063757732510568,
-      "loopMatrixError": 2.449293581093244e-18,
+      "minimumSurfaceHeight": 0.017999636009335518,
+      "maximumPawTargetError": 0.00023679016420942155,
+      "maximumPlantedDigitDisplacement": 9.069656860408208e-06,
+      "maximumPlantedHeightDrift": 0.0010635528415441527,
+      "loopMatrixError": 0.0,
       "frames": 58,
       "supportSites": "five toes plus connected web of each paw; saved stance intervals",
       "supportPlaneHeight": 0.018,
       "space": "evaluated scene/world geometry plus scene trajectory"
     },
     "scent": {
-      "minimumSurfaceHeight": 0.017999619245529175,
-      "maximumPawTargetError": 5.027347924660843e-07,
-      "maximumPlantedDigitDisplacement": 5.685920723777685e-07,
-      "maximumPlantedHeightDrift": 0.0010600510686635985,
+      "minimumSurfaceHeight": 0.01799955777823925,
+      "maximumPawTargetError": 5.075699487403363e-07,
+      "maximumPlantedDigitDisplacement": 5.155457226039825e-07,
+      "maximumPlantedHeightDrift": 0.0010599150955677046,
       "loopMatrixError": 0.0,
       "frames": 313,
       "supportSites": "five toes plus connected web of each paw; saved stance intervals",
@@ -394,10 +394,10 @@
       "space": "evaluated scene/world geometry plus scene trajectory"
     },
     "groom": {
-      "minimumSurfaceHeight": 0.01799965836107731,
-      "maximumPawTargetError": 5.066942613100798e-07,
-      "maximumPlantedDigitDisplacement": 7.760080141362181e-07,
-      "maximumPlantedHeightDrift": 0.001060039892792703,
+      "minimumSurfaceHeight": 0.01799960993230343,
+      "maximumPawTargetError": 5.02292924841737e-07,
+      "maximumPlantedDigitDisplacement": 8.626621371389812e-07,
+      "maximumPlantedHeightDrift": 0.0010599933266639723,
       "loopMatrixError": 0.0,
       "frames": 361,
       "supportSites": "five toes plus connected web of each paw; saved stance intervals",

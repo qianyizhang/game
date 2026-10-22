@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "scope": "Closed Blender 5.2 migration outputs only",
+  "authorization": "User requested review, cleanup of old migration artifacts and commit on 2026-10-22",
+  "archive": ".work/artifact-archives/blender-migration-2026-10-22/source-evidence.tar.gz",
+  "archiveSha256": "b053932c14b2094508455018eb9c56ecbe2d2afeb89cfb6b70ce58d5f64e96cc",
+  "manifest": ".work/artifact-archives/blender-migration-2026-10-22/occurrences.json",
+  "manifestSha256": "7664f01a895cfb6385e62f7e487339eaca577a37c6b00475d7382bba3105ecbf",
+  "archivedOccurrences": 956,
+  "archiveBytes": 968092269,
+  "restoredSourceChecks": 2,
+  "independentBackup": false,
+  "removedFiles": 2031,
+  "retainedFiles": 94,
+  "removedLogicalBytes": 2091875567,
+  "originalAllocatedBytes": 2104516608,
+  "retainedAllocatedBytes": 4018176,
+  "archiveAllocatedBytes": 973193216,
+  "publishedReleasesAndWorkingMasters": "preserved",
+  "disposition": "Source-bearing copies archived and verified; regenerable media and exports retired; selected captures, logs and compact comparisons retained.",
+  "allocatedFootprintReductionBytes": 1127305216
+}

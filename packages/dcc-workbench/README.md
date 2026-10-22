@@ -1,6 +1,6 @@
 # DCC workbench
 
-`@card-workshop/dcc-workbench` owns editable Blender subjects, validated GLB candidates and reviewed immutable publications. The registry currently names **Briar Hydra**, **Nightjar**, **Phoenix**, **Storm Roc**, **Alley Prowler** and **Greatwood Wolf**, plus its three separately published evolved forms: **Bloom Warden**, **Elder Sentinel** and **Thorn Tyrant**. Their working masters live under `subjects/`; the earlier Hydra pilot and procedural gallery sources remain preserved. See the [native pilot record](../../docs/art/trials/native-pilots.md) and [batch record](../../docs/art/trials/native-batch-1.md) for the first batch, and the [Prowler trial](../../docs/art/trials/native-prowler-trial.md) for its later delegated native edit and limits. The [Wolf trial](../../docs/art/trials/native-wolf-trial.md) records the next bounded distal-tail refinement. The [evolved forms record](../../docs/art/assets/creatures/wolf-evolutions.md) separates a stopped delegated prototype from the user-authorized direct parent completion.
+`@card-workshop/dcc-workbench` owns editable Blender subjects, validated GLB candidates and reviewed immutable publications. The registry currently names **Briar Hydra**, **Nightjar**, **Phoenix**, **Storm Roc**, **Alley Prowler**, **Greatwood Wolf** and **Briar Matriarch**, plus its three separately published evolved forms: **Bloom Warden**, **Elder Sentinel** and **Thorn Tyrant**. Their working masters live under `subjects/`; the earlier Hydra pilot and procedural gallery sources remain preserved. See the [native pilot record](../../docs/art/trials/native-pilots.md) and [batch record](../../docs/art/trials/native-batch-1.md) for the first batch, and the [Prowler trial](../../docs/art/trials/native-prowler-trial.md) for its later delegated native edit and limits. The [Wolf trial](../../docs/art/trials/native-wolf-trial.md) records the next bounded distal-tail refinement. The [evolved forms record](../../docs/art/assets/creatures/wolf-evolutions.md) separates a stopped delegated prototype from the user-authorized direct parent completion.
 
 Open **DCC workbench** from any game table, or visit `/?workbench=dcc&asset=briar-hydra`. **Choose native asset** lists published deliveries. Intent, Form, Surface, Motion and Delivery inspect the same selected release using its frozen brief; they are not historical build stages. Downloads return that release’s exact GLB and editable source. Registered drafts without a publication are absent from the selector and do not break the browser.
 
@@ -17,21 +17,13 @@ npm run dcc -- doctor
 npm run dcc -- verify --asset briar-hydra
 ```
 
-Viewing and building need no Blender runtime. Selected deliveries have embedded dependencies and make no remote asset requests. Local authoring uses **Blender 4.5 LTS**; this checkout’s earlier pilot used 4.5.14 on macOS ARM64. Set `BLENDER_BIN` explicitly or use the discovered installed app, ignored `.runtime/Blender.app`, or `blender` on PATH. Blender is not a frontend dependency. The original ARM64 runtime came from the [official Blender 4.5 release directory](https://download.blender.org/release/Blender4.5/); its recorded DMG SHA-256 was `65134d9b07b20e2fa8d3c9e44f6f44ffb5c9774dd521b95f50387310241ca170`. This records that installation, not a checksum for every Blender version.
+Viewing and building need no Blender runtime. Native authoring targets **Blender 5.2 LTS** installed at `/Applications/Blender.app` on macOS. Set `BLENDER_BIN` to select another 5.2 executable, or use `blender` on PATH. The active launcher rejects other version families and stops on unusable overrides or startup failures. It no longer discovers a repo-local runtime. Blender is not a frontend dependency.
 
-`blender.ts` owns executable discovery, background Python flags and launch failures for
-the family commands and native verification gates. A set `BLENDER_BIN` must start
-successfully, including the version probe; empty or unusable overrides fail without
-automatic fallback. With the variable unset, discovery skips missing candidates in
-the order above and stops at any other startup failure. These probes also require
-approved execution outside the restricted macOS sandbox.
+The 2026-10-22 migration tested the installed **5.2.3 LTS Release Candidate**, build `fab76e95306d`, with Python 3.13.13. This is evidence for that exact RC build, not a stable-release certification. Prefer the official stable 5.2 LTS installer for routine upgrades and rerun the native gates after replacement. The [migration record](../../docs/engineering/blender-runtime.md) identifies source preservation, fresh deliveries and verification limits.
 
-The active `dcc` command enters through `cli.ts`, which validates explicit overrides
-before delegating to the publication coordinator. `pipeline.ts` and `pipeline.mjs`
-retain their compatibility discovery and launch code because existing publication
-receipts pin their bytes. Do not rewrite those receipts or regenerate artist assets
-to remove that duplication. Listing, verification, promotion and help do not probe
-Blender.
+`blender.ts` owns runtime discovery, the 5.2 version check, background Python flags and launch failures for all active native commands. `cli.ts` passes its validated executable to the publication coordinator. A set `BLENDER_BIN` must start successfully; empty or unusable overrides fail without fallback. With the variable unset, discovery tries the system app then PATH, skipping only missing executables. These probes require approved execution outside the restricted macOS sandbox.
+
+`pipeline.ts` and `pipeline.mjs` remain receipt-pinned historical coordinator implementations, including their old discovery messages and local-runtime candidate. Use the active `npm run dcc` entry point, which supplies the validated system runtime. Historical release receipts and their input hashes are preserved; new exports create new candidates. Listing, verification, promotion and help do not probe Blender.
 
 On this Mac, run commands that launch Blender or a browser with approved execution outside the restricted sandbox. Follow [AGENTS.md](../../AGENTS.md) for disposable browser profiles and startup failures. Hash, unit, lint and frontend-build checks remain sandboxed.
 
@@ -118,7 +110,7 @@ Shared investment follows actual variation: Hydra’s fitted muzzle operation an
 
 `blender/saved_export_plan.py` checks source, profile and fresh-output boundaries. `export_saved.py` identifies the delivery collection through `scene["dcc_delivery_collection"]` or a unique `dcc_delivery` tag. It samples every delivery mesh at five times in world Y-up coordinates, including rigid attachments. Native finite/loop checks inspect all evaluated vertices; consumer evidence uses up to 16 points per named mesh. Motion and loop tolerances are **1e-6** and **1e-5 model units**, respectively. Stationary supports are allowed; `dcc_require_rigid_motion` explicitly requires moving rigid attachments where offered.
 
-All Python modules receive Ruff, strict mypy and maintained contract tests while retaining Blender 4.5’s Python 3.11 syntax compatibility. CLI, registry, receipt and frontend code receive typed ESLint and strict TypeScript. Add new nested source homes only together with enforced checker and discovery coverage.
+All Python modules receive Ruff, strict mypy with Blender 5.2 stubs, and maintained contract tests. Native scripts retain a Python 3.11 syntax subset for historical recipes; the installed Blender 5.2 embeds Python 3.13. CLI, registry, receipt and frontend code receive typed ESLint and strict TypeScript. Add new nested source homes only together with enforced checker and discovery coverage.
 
 Greatwood Wolf also offers `wolf-bloom`, `wolf-elder` and `wolf-thorn` as separately editable and published forms. Each retains the same native Tail relax operation; all added anatomy stays fixed under that operation. The original `wolf` source and release remain unchanged.
 
@@ -134,7 +126,7 @@ npm run test:dcc:saved -- --asset phoenix
 npm run test:browser -- tests/browser/dcc-workbench.spec.ts tests/browser/art3d.spec.ts tests/browser/shell.spec.ts
 ```
 
-- **Maintained checks:** registry identity and ownership, declared dependency closure, GLB contracts, immutable candidates, review binding, publication isolation and recovery; lint/type/Python checks and production build. `npm run check` also covers application/geometry behavior and seeded simulations.
+- **Maintained checks:** registry identity and ownership, declared dependency closure, GLB contracts, immutable candidates, review binding, publication isolation and recovery; lint/type/Python checks and production build. `npm run check` also covers application behavior and seeded simulations; `npm run check:full` adds geometry checks.
 - **Native edit gate:** `test:dcc:saved` copies the selected source, brief and dependencies into protected `test-results/dcc-native/saved-*/package/`. The brief’s `nativeEdit` declaration names one control, three values and moved/fixed probes. At five frames it checks all probe vertices, movement through adjacent values, fixed parts and restoration within 1e-6; then saves/reloads a distinct edited value, exports and seals the copy, and runs the independent browser comparison. Production source, pointer, published model, source and receipt remain hash-pinned, including on failure. The gate never promotes its candidate.
 - **Consumer agreement:** browser comparison matches initial world points by named mesh, then evaluates those same vertices at five times. It includes skinned and rigid meshes and checks errors below 1e-4 model units. Vertex sampling is not exhaustive animation or contact verification.
 - **Browser behavior:** correct selected downloads, load errors, playback, reduced motion, phone layout, navigation/focus, save preservation and native/procedural gallery coexistence. Review the captured pixels separately for quality.
@@ -196,8 +188,9 @@ moments. Movement space selects in-place inspection or one-pass scene travel.
 Visible playback accounts for all elapsed time, including slow render frames; returning
 from a hidden tab does not advance through the time spent away.
 
-The initial 20-joint, three-clip baseline's Blender sources and GLBs remain byte-identical
-at their original paths. Its receipts retain provenance and contact summaries without pose arrays.
+The initial 20-joint, three-clip baseline keeps its original Blender masters. Its current
+deliveries and receipts are exported with Blender 5.2; pre-migration GLBs remain in Git
+history. Receipts retain provenance and contact summaries without pose arrays.
 Use `--baseline` to select its command adapter. The [trial record](../../docs/art/trials/canid-retargeting.md)
 records the accepted scope, evidence and limitations. Neither revision replaces the Wolf gallery.
 
@@ -232,7 +225,7 @@ constraint-free deformation skeleton and does not save over the master.
 ### Commands
 
 Use the pinned Node runtime. Native commands require approved execution outside the
-restricted macOS sandbox. `BLENDER_BIN` can select another Blender 4.5 executable.
+restricted macOS sandbox. `BLENDER_BIN` can select another Blender 5.2 executable.
 
 ```sh
 nvm use

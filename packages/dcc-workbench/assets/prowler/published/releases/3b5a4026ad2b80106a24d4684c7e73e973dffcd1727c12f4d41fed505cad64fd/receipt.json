@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "prowler",
+  "definitionDigest": "b72c1d8793a50777ed9cbd9c23c7e49fe7f3b8ba630ec2e1a1c959cd3b2c6390",
+  "candidate": {
+    "path": "candidate.json",
+    "sha256": "006914f2e66536ddcc93194d81773722982b42b005f7ae8796c325bd57ad2263"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "78ffb78a90668a29ae16aa578d68940a894ed22bd275486a5d407d57917d272c"
+  },
+  "source": {
+    "path": "source.blend",
+    "sha256": "789f9bbb9ff46f04c165d7ffa72e35a16dc97af7b693f31350d792dec562e2ab"
+  },
+  "brief": {
+    "path": "brief.json",
+    "sha256": "8df1d95de208075cfab5f6ebb8b389bbd9295fe4da54af99ef1769348e4690e9"
+  },
+  "outputs": {
+    "model": {
+      "path": "model.glb",
+      "sha256": "d49fa20f641210fd8e3768beb7984c543826b837820236f710afaf27dc63b96d"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "a76031936817151fa8f80a259e6e78c349fb8fc801b9ea350acb3908b6b23dbf"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "33c822cdbe7194dbbf6856395fb8924f782bf233265e0a6e1e3d97f431486aac"
+    }
+  },
+  "previous": {
+    "kind": "release",
+    "receipt": {
+      "path": "assets/prowler/published/releases/40a5e938cf0619e32e43c138f35f7ae4a343831ef0464722114b65114c95f294/receipt.json",
+      "sha256": "40a5e938cf0619e32e43c138f35f7ae4a343831ef0464722114b65114c95f294"
+    }
+  },
+  "previousReceipt": {
+    "path": "previous-receipt.json",
+    "sha256": "40a5e938cf0619e32e43c138f35f7ae4a343831ef0464722114b65114c95f294"
+  }
+}

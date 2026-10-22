@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "kind": "ashregent",
   "sourceSha256": "d071806c5f0df8deab4b1c44a88f338631b9efd106af17ec7d07800e2edfff6b",
-  "modelSha256": "4212ef6eba17dcde4ab7b7c66f64af9ed9aa7a4b8f875f3869331d979bb4af84",
+  "modelSha256": "2681b11565db50c26160bf08b1265e91e1767f080feab4b421d2bd8686d0c74e",
   "meshSha256": "056e59d8ff348830afa02b3643b102f0498efe799b5a6c94ee28cff004e995b7",
-  "blender": "4.5.14 LTS",
+  "blender": "5.2.3 LTS Release Candidate",
   "clips": {
     "idle": {
       "seconds": 2.0,
@@ -81,14 +81,14 @@
     "enemy_rig.py": "4f3b2b416ed63b42f433cc91eeb9f16c9c0ce50912acb04c01fa65cf482fa3f6",
     "guardian_ashregent.py": "a650adc551d5690b994abb9e93ac410a63c6da3192f24ae1a69faba579510b4a",
     "guardian_catalog.py": "4c039448640db0f80fb0ef8c10114fb383fefeeabc415d11ca8fb2927e1ae21d",
-    "guardian_delivery.py": "30f1fdfc744fce506412ad11ba5d54a71e548ee5a70dfcdd793905c45a0fa74d",
+    "guardian_delivery.py": "8d2c3039208122ae905332b1de1b9a3b79efc577f83de57c48c3d5bfcd0ce827",
     "guardian_edit.py": "fba445fd513e69f4f5f4729f76b5abeccfb0476f78ba37f95ff3c621cafa60a9",
     "guardian_form.py": "f9a9fbd1c2214de4cc0e6a881262f8091db2e41fb7ca60ba0c5b1d56c74374d9",
     "guardian_review.py": "d6db18be3407f097d815a22947dc4f4618ee82bc21be7139016bcde0bdcc22a2",
     "guardian_rig.py": "f8fee7e505d0ec7c849985b4e2510ca884fda223d3c5104a0e22fa084ba3aa24",
     "guardian_sovereign.py": "b72a7f6eda6ec143f1911a0d4b7ac5feb46b2f4072df3da8fac1863d9a91a03b",
     "guardian_undertow.py": "46af9033bb851a88428146e941e03a059f1ac3fedfb9e17f0db7b6eb8ec6956b",
-    "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "hero_form.py": "01675393ab1ad871d47743c4c8d749973ae0a4eb1dc23c10b835a4246926bca2",
     "hero_rig.py": "c63a2cba5d230169dae82f58b7efeee65f7a00c84d3228d07265d60dde0540cc"
   }
 }

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "kind": "archive",
   "sourceSha256": "e225e205cf44da6a6e28d904b307a2ac047f165e63fbf747ca3d386b8ccf8edf",
-  "modelSha256": "489d41a5227f6778ac85ec1269828cd752a726bb4713c9d2c23fc866435a483c",
-  "blender": "4.5.14 LTS",
+  "modelSha256": "7440ee5b3c011a2cd9f9a5a0ec1baa6250948a3d76cd17f97798cf4b3656d507",
+  "blender": "5.2.3 LTS Release Candidate",
   "roots": [
     "Floor",
     "Boundary",
@@ -71,7 +71,7 @@
     "environment_starless.py": "bef57b1bb723ae93489ab839b49ed91dc1880c7c79acf759755a37baf6141d30"
   },
   "helperScripts": {
-    "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "hero_form.py": "01675393ab1ad871d47743c4c8d749973ae0a4eb1dc23c10b835a4246926bca2",
     "enemy_form.py": "b971b4ba635f7e7711da8275fac1fb3a65aea21da84162a5250b86b15e249fd9"
   }
 }

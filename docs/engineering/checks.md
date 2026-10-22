@@ -98,6 +98,8 @@ verification.
 
 ## Native authoring gate
 
+The active launcher requires Blender 5.2 LTS. The [runtime record](blender-runtime.md) names the exact tested build and migration evidence. `npm run test:dcc:runtime -- --output test-results/FRESH` opens, samples, saves and reopens every saved master on fresh copies. Add `--baseline PRIOR/samples.json` for a hash-bound cross-version comparison. This checks sampled geometry, rig matrices and saved curves; it does not replace export/browser or visual review.
+
 - `npm run test:dcc:saved -- --asset <id>`: Tests the saved-source edit loop (probe deformation, save/reload, export, and Three.js comparison on disposable copies). See [DCC contracts](../../packages/dcc-workbench/README.md#verification-and-provenance).
 - `npm run test:dcc:native`: Evaluates native Blender head-control parity against 64 sampled points.
 - `npm run dcc:canid -- test`: Generates temporary poses from saved canid Blender sources,

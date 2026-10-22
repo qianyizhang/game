@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "prowler",
+  "title": "Alley Prowler",
+  "subtitle": "A compact forest feline stalks low with a turned amber-eyed head.",
+  "interpretation": "Living feline with continuous shoulders and haunches, unequal planted paws and a low curled tail.",
+  "gesture": "A quiet forward stalk; Tail lift raises the distal curl for an alert gesture while anchoring the rump attachment.",
+  "polish": [
+    "Preserve continuous anatomy, rounded ears, amber eyes and whiskers.",
+    "Retain inherited quiet fur, rounded paw and eyelid style limits."
+  ],
+  "palette": [
+    {
+      "name": "Forest coat",
+      "color": "#3e564b"
+    },
+    {
+      "name": "Amber eyes",
+      "color": "#ba9658"
+    }
+  ],
+  "nativeFeatures": [
+    "Editable imported triangle meshes and packed materials",
+    "Tail lift native shape key with anchored proximal arclength half",
+    "Preserved 10-bone rig and six-second idle"
+  ],
+  "animation": {
+    "name": "prowler_idle",
+    "seconds": 6,
+    "fps": 24
+  },
+  "budgets": {
+    "maxTriangles": 180000,
+    "maxBytes": 10000000,
+    "maxJoints": 16
+  },
+  "reference": "Editable native import of the preserved procedural Alley Prowler. The original GLB has 158,456 triangles; native import omits 10 zero-area body faces. Original procedural construction and quad topology are not recovered.",
+  "reviewStatus": "Delegated native tail edit independently cleared; parent exact-byte publication review is recorded separately.",
+  "origin": {
+    "kind": "imported-delivery",
+    "path": "references/prowler/legacy-gallery.glb",
+    "sha256": "1a974712d1c806e3255b4ca1711a9a8623b97cf7c4e1e768c439fcc553eaf8a3",
+    "legacyStudyId": "prowler",
+    "nativeTrial": "Sol 6.1 high authored the native tail edit on the parent-frozen import. A distinct Sol 6.1 high reviewer audited the specification and cleared the frozen candidate; parent owns final native/browser gates and gallery acceptance. No parent modeling of this candidate."
+  },
+  "nativeEdit": {
+    "control": {
+      "object": "EDIT | Tail",
+      "property": "Tail lift"
+    },
+    "values": [0, 0.5, 1],
+    "moved": ["Prowler_LivingTail"],
+    "fixed": [
+      "Prowler_Catchlight_-1",
+      "Prowler_Catchlight_1",
+      "Prowler_ContinuousAnatomy",
+      "Prowler_EarBowl_-1",
+      "Prowler_EarBowl_1",
+      "Prowler_EyeSocket_-1",
+      "Prowler_EyeSocket_1",
+      "Prowler_Follicle_-1_0",
+      "Prowler_Follicle_-1_1",
+      "Prowler_Follicle_-1_2",
+      "Prowler_Follicle_1_0",
+      "Prowler_Follicle_1_1",
+      "Prowler_Follicle_1_2",
+      "Prowler_Iris_-1",
+      "Prowler_Iris_1",
+      "Prowler_LeatherNose",
+      "Prowler_Mouth_-1",
+      "Prowler_Mouth_1",
+      "Prowler_Nostril_-1",
+      "Prowler_Nostril_1",
+      "Prowler_Philtrum",
+      "Prowler_Pupil_-1",
+      "Prowler_Pupil_1",
+      "Prowler_RoundedPinna_-1",
+      "Prowler_RoundedPinna_1",
+      "Prowler_ToeCrease_0_0",
+      "Prowler_ToeCrease_0_1",
+      "Prowler_ToeCrease_0_2",
+      "Prowler_ToeCrease_1_0",
+      "Prowler_ToeCrease_1_1",
+      "Prowler_ToeCrease_1_2",
+      "Prowler_ToeCrease_2_0",
+      "Prowler_ToeCrease_2_1",
+      "Prowler_ToeCrease_2_2",
+      "Prowler_ToeCrease_3_0",
+      "Prowler_ToeCrease_3_1",
+      "Prowler_ToeCrease_3_2",
+      "Prowler_Whisker_-1_0",
+      "Prowler_Whisker_-1_1",
+      "Prowler_Whisker_-1_2",
+      "Prowler_Whisker_1_0",
+      "Prowler_Whisker_1_1",
+      "Prowler_Whisker_1_2"
+    ]
+  }
+}
