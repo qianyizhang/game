@@ -206,6 +206,56 @@ when a named investigation needs every detailed recording. The protocol/report
 records `rolloutRetention`; a summary-only report makes no claim that its inputs can
 later be reopened. Explicitly retained shared rollouts default to lossless gzip.
 
+Shared benchmarks (the five adapters; not native Night Passage) also retain
+`cases.jsonl`: a frozen case-identity grid followed by one compact `StudyRow` per
+completed recording/audit, including error/timeout outcomes. The parent alone appends
+and calls `fsync` before acknowledging a result or dispatching the next case. Parallel
+completion order is allowed on disk; recovery and the unchanged `policy-study-2`
+report use declared seed/setup/policy grid order. Duplicate or mismatched cases fail
+before collection. There are no per-decision writes or additional rollout recordings.
+
+After the process stops, recover completed summaries with:
+
+```sh
+npm run engine:policy -- recover --input test-results/stopped-study --out test-results/recovery.json
+```
+
+Recovery writes a separate `policy-study-recovery-1` snapshot with `status`,
+`expectedCases`, `completedCases`, `ignoredTail` and ordered `rows`. It does not resume
+execution, overwrite evidence or calculate aggregates for a partial population.
+An unterminated last line is ignored; malformed complete lines, duplicates and wrong
+identities are rejected. Run recovery only after stopping execution: `interrupted`
+means no committed success receipt, not a live-process diagnosis. Even a full set of
+rows remains interrupted if source-drift checks, aggregation or final publication
+failed. `complete` requires a full grid and a receipt matching the final report's
+SHA-256. This describes execution completion; ordinary audit/error verdicts still
+determine whether the report is acceptable evidence. Frozen Emberwake validators
+still require their existing retained gzip receipts; a ledger cannot replace them.
+
+The added write budget is linear: one header, one small append plus sync per case,
+and one success receipt, rather than rewriting a growing report after each result.
+The ledger contains summary data already represented in the final report and a
+compact identity grid. One incomplete in-flight append can be lost; acknowledged
+summaries survive process termination. File/directory sync requests durability from
+the host filesystem; physical-device guarantees and latency remain host-dependent.
+
+Measured 2026-10-21 on this Linux container with Node 24.21.0: 60 Spire development
+cases, one Survival policy, six setups, two-decision budget, six alternating runs per
+mode. The ledger added **37,426 bytes** (about **624 bytes/case**, including the grid,
+excluding the 84-byte success receipt). Append/sync median was 1.17 ms with one worker
+and 1.24 ms with four; p95 was 2.02/3.40 ms. Median collection times were 390 → 482 ms
+serial and 498 → 547 ms with four workers, including ledger creation/readback. These
+tiny runs expose a real 23%/10% wall-time cost; they do not establish production-disk
+latency or longer-study throughput. A representative retained two-decision case wrote
+4,196 gzip bytes plus a 224-byte audit, versus its 535-byte summary. An isolated
+60-case append probe reported 286,720 bytes of Linux `write_bytes` (about 4.7 KiB/case),
+reflecting repeated page flushing; the 37 KB file size is not a physical-write estimate.
+Those counters do not include all filesystem/device write amplification. A longer
+100-decision throughput probe was stopped before completion, so no longer-study
+performance claim follows from it. Accept the bounded
+per-case sync cost for acknowledged-case durability; do not batch acknowledgements
+or turn on detailed capture to hide that tradeoff.
+
 After a policy is superseded, retain its source/bundle, outcome and lessons, then
 prune bulk observations and intermediate artifacts. Follow the
 [iteration retention rule](maintenance.md#policy-iteration-retention); permanent

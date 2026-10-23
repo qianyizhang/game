@@ -6,6 +6,7 @@ import type { Runtime } from './runtime.ts';
 import { casePool } from './pool.ts';
 import { writeRolloutArtifact } from './artifact.ts';
 import { rolloutFormat, type RolloutFormat } from '../../../src/shared/policy/artifact.ts';
+import { createCaseLedger, readCaseLedger } from './ledger.ts';
 
 /** Frozen independent blocks; no environment seed ever enters policy configuration. */
 export const cohortSeeds = (
@@ -135,10 +136,15 @@ export async function benchmark(
       })),
     ),
   );
-  const rows =
-    options.workers === undefined || options.workers === 1
-      ? await serialCases(runtime, jobs)
-      : await casePool(runtime.moduleURL, jobs, options.workers);
+  const ledger = createCaseLedger(options.directory, jobs);
+  try {
+    if (options.workers === undefined || options.workers === 1)
+      await serialCases(runtime, jobs, ledger.record);
+    else await casePool(runtime.moduleURL, jobs, options.workers, ledger.record);
+  } finally {
+    ledger.close();
+  }
+  const { rows } = readCaseLedger(options.directory);
   const { summary, paired } = summarizeStudy(
     rows,
     runtime.study,
@@ -380,10 +386,15 @@ export async function runCase(
     ...(rollout ? { rollout } : {}),
   };
 }
-async function serialCases(runtime: Runtime, jobs: CaseJob[]) {
+async function serialCases(
+  runtime: Runtime,
+  jobs: CaseJob[],
+  onCase: (row: StudyRow, index: number) => void,
+) {
   const rows: StudyRow[] = [];
   for (const job of jobs) {
     const row = await runCase(runtime, job);
+    onCase(row, rows.length);
     rows.push(row);
     process.stderr.write(
       `Case ${rows.length}/${jobs.length}: ${job.seed}-${job.setupId}-${job.policy} ${row.status}\n`,

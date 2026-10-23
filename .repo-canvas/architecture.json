@@ -7,7 +7,7 @@
       "parent": null,
       "name": "Card Workshop",
       "kind": "system",
-      "summary": "Implemented architecture at 1c152a65 (2026-10-18). Eight entry points; enter for focused views. Ownership and interfaces are selected from source, not inferred from folders. “Proposed seams” is discussion only. Start with Game systems, then Policy evidence.",
+      "summary": "Architecture baseline at 1c152a65 (2026-10-18), updated for shared case-ledger implementation (2026-10-21). Eight entry points; enter for focused views. Ownership and interfaces are selected from source, not inferred from folders. “Proposed seams” is discussion only. Start with Game systems, then Policy evidence.",
       "sources": ["docs/engineering/repo-canvas-architecture.md", "AGENTS.md", "package.json"],
       "x": 40,
       "y": 40
@@ -307,7 +307,7 @@
       "parent": "repo",
       "name": "Proposed seams",
       "kind": "module",
-      "summary": "DISCUSSION ONLY — three bounded consolidation options with adoption conditions and tradeoffs. No new engine, schema or future feature is implemented by this map. Enter and annotate the option before changing code.",
+      "summary": "DISCUSSION ONLY — two bounded consolidation options with adoption conditions and tradeoffs. No new engine, schema or future feature is implemented by this map. Enter and annotate the option before changing code.",
       "sources": ["docs/engineering/repo-canvas-architecture.md"],
       "x": 430,
       "y": 670
@@ -513,11 +513,12 @@
       "parent": "policy-storage",
       "name": "Benchmark summaries",
       "kind": "data",
-      "summary": "DEFAULT for completed studies: protocol, compiled bundle, all case outcomes/audit verdicts and aggregates; transient full input is audited then discarded. rolloutRetention = none. Current interruption gap: report.json is written only after the matrix completes, so completed in-memory rows may be lost if a later case aborts. No detailed-input reopening promise.",
+      "summary": "DEFAULT: protocol, compiled bundle, case outcomes/audit verdicts and complete-study aggregates; transient full input is audited then discarded. Five shared adapters sync each completed summary to cases.jsonl and derive report.json in grid order. Native Night Passage retains its own final-report path. rolloutRetention = none; no detailed-input reopening promise.",
       "sources": [
         "packages/workshop-tools/policy/cli.ts",
         "packages/workshop-tools/policy/study.ts",
         "packages/workshop-tools/policy/pool.ts",
+        "packages/workshop-tools/policy/ledger.ts",
         "packages/workshop-tools/night-passage/study.ts"
       ],
       "x": 40,
@@ -569,18 +570,18 @@
     },
     {
       "id": "proposal-retention",
-      "parent": "proposals",
-      "name": "Proposed: case ledger",
+      "parent": "policy-storage",
+      "name": "Completed-case ledger",
       "kind": "module",
-      "summary": "WHY: shared benchmark rows stay in memory until report.json is written after all cases; a later interruption can lose completed summaries. FIRST seam: append one compact outcome/audit row after each completed case, then derive the final report. COST: define partial-run status, ordering and duplicate handling. Keep observations opt-in and native formats intact; do not build a resume/archive framework or change frozen validators.",
+      "summary": "IMPLEMENTED for the five shared adapters: one parent-owned append and fsync per completed case, validated against a frozen identity grid. Recovery orders rows deterministically, rejects duplicates and marks runs interrupted without a matching final-report success receipt. No partial aggregates, execution resume, extra observations or frozen-validator changes. Native Night Passage remains separate.",
       "sources": [
+        "packages/workshop-tools/policy/ledger.ts",
         "packages/workshop-tools/policy/cli.ts",
         "packages/workshop-tools/policy/study.ts",
-        "packages/workshop-tools/policy/pool.ts",
-        "packages/workshop-tools/night-passage/study.ts"
+        "packages/workshop-tools/policy/pool.ts"
       ],
       "x": 40,
-      "y": 40
+      "y": 500
     },
     {
       "id": "proposal-review",

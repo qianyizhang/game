@@ -378,6 +378,14 @@ void test('native4 identity, missing provenance pins and changed source receipt 
   );
 });
 void test('gzip receipt syntax, bounded bytes, exact case filename and format metadata are mandatory', () => {
+  // A compact ledger/audit summary does not replace the frozen raw-rollout contract.
+  assert.throws(
+    () =>
+      alter((f) => {
+        delete row(f).rollout;
+      }),
+    /gzip receipts/,
+  );
   for (const change of [
     (r: StudyRow) => {
       r.rollout!.format = 'json';

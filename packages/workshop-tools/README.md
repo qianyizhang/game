@@ -107,6 +107,12 @@ Apply the [iteration retention rule](../../docs/engineering/maintenance.md#polic
 when closing a study. The native Night
 Passage recorder retains its existing plaintext format.
 
+Five shared adapters durably append completed summaries to `cases.jsonl` before
+dispatching more work. After stopping a run, `recover --input STUDY_DIRECTORY --out
+NEW_RECOVERY_JSON` exports ordered summaries and completion status without resuming
+execution or computing partial aggregates. See [recovery and retention](../../docs/engineering/policy-development.md#routine-iteration-and-retention)
+for the crash-tail and final-report receipt contracts. Native Night Passage remains separate.
+
 `npm run engine:policy -- run|record|benchmark|audit` supplies the checked policy
 workflow for Blindside, Spire, current Mixed Rivals, Emberwake, Cartographer and Night Passage. Built-in policies and trusted local TypeScript
 factory modules use the same game-owned observation/command adapter. `record` and
