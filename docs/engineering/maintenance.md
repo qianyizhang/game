@@ -40,6 +40,16 @@ Before removing a script, inspect imports, npm commands, CI, documentation and f
 
 ## Retention and deletion authority
 
+New manual review output follows installed `practices/artifacts.md`: one bundle
+per major outcome in ignored `.artifacts/<outcome>/`, with its README owning the
+outcome, source reference, final checks, limits and retention. Promote useful
+conclusions and delete spent captures/logs at closeout. Review leftovers older
+than 30 days; retain only a named active need with a next review date.
+
+Native release manifests, research results and recovery maps retain their real
+consumers. The automated prune receipts below remain executable safety contracts;
+this manual-bundle policy does not change that command or broaden its roots.
+
 `npm run maintenance -- inventory` reports streamed content hashes, every occurrence path and tracked-text references for the artifact roots. It does not grant deletion authority. [Verification contracts](checks.md#retention-and-inventory) describe its consistency and reference limits.
 
 | Material                                                  | Home                                                           | Lifetime                                         |

@@ -111,4 +111,4 @@ An imported winning replay proves reconstruction and the victory screen, not a f
 
 Run the affected [verification gates](checks.md#gate-selection) once after the final change; repeat for a new failure, change or unresolved concern. Report each scope separately.
 
-The [2026-10-07 test audit](history/test-audit-2026-10-07.md) records the initial inventory and export-normal consolidation. Further deletions depend on behavior review, not a target ratio of unit to browser tests.
+The completed October audit consolidated repeated normal-construction checks into delivered-GLB gallery journeys and reduced shared startup/recording cases to representative paths. Further deletions depend on behavior review, not a target ratio of unit to browser tests.

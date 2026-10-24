@@ -11,3 +11,6 @@ __pycache__/
 .work/
 
 .cache/repo-workbench/
+
+# Temporary review bundles; native sources/releases keep their existing homes.
+/.artifacts/

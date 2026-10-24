@@ -39,7 +39,7 @@ Size flags prompt review; they do not prove complexity or obsolescence. Role hin
 - **Remove** only confirmed obsolete outputs with verified recovery and updated callers; this tool never deletes files or rewrites history.
 - **Keep** dependency lockfiles, editable artist sources and frozen evidence unless their owning contract changes. Review storage separately for large binaries and immutable sample data.
 
-The snapshot review in [committed-file review](../../docs/engineering/committed-file-review.md) records the first measured candidates and caller checks. This module and its integration tests join the existing tools lint/type/inventory gate and `test:tools`.
+This module and its integration tests join the existing tools lint/type/inventory gate and `test:tools`.
 
 ## Session evidence
 

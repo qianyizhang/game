@@ -143,7 +143,7 @@ The active launcher requires Blender 5.2 LTS. The [runtime record](blender-runti
 
 ## Budgets
 
-- **Vitest**: At most 2 workers. Geometry tests use the project-level budget: 15 seconds locally and 60 seconds when `CI` is set. The hosted runner measured 495 seconds for the geometry suite versus 155 seconds locally; nine tests exceeded the old 15-second limit. Application tests retain their 5-second default. Unit normals on loaded GLBs are verified across all 29 gallery journeys at 0.0005 tolerance. See [test audit](history/test-audit-2026-10-07.md).
+- **Vitest**: At most 2 workers. Geometry tests use the project-level budget: 15 seconds locally and 60 seconds when `CI` is set. The hosted runner measured 495 seconds for the geometry suite versus 155 seconds locally; nine tests exceeded the old 15-second limit. Application tests retain their 5-second default. Unit normals on loaded GLBs are verified across all 29 gallery journeys at 0.0005 tolerance.
 - **Browser**: One worker per runner. Test and explicit operation budgets use `browserBudget`: existing local limits and four times those limits when `CI` is set. Default test/assertion limits are 30/5 seconds locally and 120/20 seconds in CI. Cold scene readiness uses `sceneReadyTimeout`, 15 seconds locally and 60 seconds in CI. Per-model export remains 60 seconds locally. Contact sheets use 120 seconds locally. Automatic GitHub smoke checks stop on the first failure; full rendering/export checks run locally.
 
 ## Retention and inventory

@@ -32,4 +32,4 @@ Start with the [policy development standard](policy-development.md), [review int
 - [Repo Workbench](repo-workbench.md): external architecture canvas, session/trace review, usage dashboard and MCP integration.
 - [Game architecture map](repo-canvas-architecture.md): repository-owned map and navigation.
 
-[Test audit](history/test-audit-2026-10-07.md), [committed-file audit](committed-file-review.md) and [cleanup history](history/cleanup-triage.md) retain dated verification and recovery. Temporary discussions and handoffs belong in ignored `.work/sessions/`; [maintenance governance](maintenance.md#documentation-homes) owns their promotion and retention.
+[Cleanup history](history/cleanup-triage.md) retains migration and recovery context. Current checks and tests own verification; completed audit inventories are retired. Temporary discussions and handoffs belong in ignored `.work/sessions/`; [maintenance governance](maintenance.md#documentation-homes) owns their promotion and retention.

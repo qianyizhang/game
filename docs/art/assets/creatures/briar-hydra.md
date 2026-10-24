@@ -37,4 +37,4 @@ The authoring model provides three native head modules (**Scent**, **Search**, *
 - **Receipt:** Pinned by [receipt `872fbf5a08a5`](../../../../packages/dcc-workbench/assets/receipts/872fbf5a08a52abb13b93d8cc92233625cc86b6faa02adf858b95add4913344f.json). Delivery model is 10,421,936 bytes (108,940 triangles, 22 joints).
 - **Checks:** Passes 11 Python contract tests, 8 DCC pipeline tests, 390 application tests, and 4 simulations.
 - **Pose agreement:** Blender-to-Three.js comparison of 64 vertices across 5 timestamps yields max position difference of `8.89538e-7` model units.
-- **Verification history:** The [dated test audit](../../../engineering/history/test-audit-2026-10-07.md#blender-first-consolidation) records the native edit gate and gallery coverage. Source and delivery receipts retain artifact identity.
+- **Verification:** [Current testing policy](../../../engineering/testing.md) owns native-edit and gallery coverage. Source and delivery receipts retain artifact identity; the historical counts above do not certify a later build.
