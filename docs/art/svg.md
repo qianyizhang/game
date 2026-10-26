@@ -30,6 +30,11 @@ Feature artwork extends the source map:
 | Night Passage choices     | `src/games/night-passage/ui/Artwork.tsx`                 | 26 patron/duo, rune, weapon and reward symbols; 24–64 px beside HTML labels                                     |
 | Feature placement         | `src/shared/art/FeatureArt.css`                          | Scoped desktop/phone sizing; symbols remain decorative beside HTML labels                                       |
 
+Spire's six [intent cues](asset-enrichment.md) live in
+`src/games/spire/ui/IntentArt.tsx` and `IntentCue.tsx`. They retain exact rule-owned
+action text and export under `spire/intents/`. `npm run assets:gallery -- <fresh-directory>`
+builds the independent offline before/after gallery with a visible dated changelog.
+
 `ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](../research/content-expansions.md#card-suite-expansion), [Night Market](../research/content-expansions.md#night-market), and [feature artwork coverage](history/feature-coverage.md) document their sets.
 
 ## Integration boundaries

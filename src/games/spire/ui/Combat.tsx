@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { CARD_BY_ID } from '../content/cards';
 import { ENEMY_BY_ID } from '../content/world';
 import { combatCardCost, intentText } from '../domain/combat';
+import { currentIntent } from '../domain/enemies';
 import type { SpireCommand, SpireState } from '../domain/types';
 import { AbilityCard } from './Card';
 import { Portrait } from './Portrait';
+import { IntentCue, intentArtKinds } from './IntentCue';
 import { statusText, powerText, enemyPowerText } from './statuses';
 export function Battle({
   run,
@@ -20,6 +22,7 @@ export function Battle({
   readOnly?: boolean;
 }) {
   const combat = run.combat!;
+  const intentDescriptionId = useId();
   const [pile, setPile] = useState<'draw' | 'discard' | 'exhaust' | 'powersPlayed' | null>(null);
   const selected = combat.enemies.find((e) => e.id === targetId);
   return (
@@ -67,11 +70,19 @@ export function Battle({
                 disabled={readOnly || !!enemy.powers.rebirthing}
                 onClick={() => onTarget(enemy.id)}
                 aria-label={`Target ${ENEMY_BY_ID[enemy.definitionId].name}`}
+                aria-describedby={`${intentDescriptionId}-${enemy.id}`}
                 aria-pressed={targetId === enemy.id}
               >
-                <span className="intent">{intentText(enemy, combat)}</span>
+                <IntentCue
+                  kinds={intentArtKinds(currentIntent(enemy, combat).effects)}
+                  text={intentText(enemy, combat)}
+                  descriptionId={`${intentDescriptionId}-${enemy.id}`}
+                />
                 <Portrait id={enemy.definitionId} />
                 <strong>{ENEMY_BY_ID[enemy.definitionId].name}</strong>
+                <span className="sts-target-marker" aria-hidden="true">
+                  {targetId === enemy.id ? '◆ Targeted' : '\u00a0'}
+                </span>
                 <span className="enemy-hp">
                   ♥ {enemy.hp}/{enemy.maxHp} {enemy.block > 0 ? `· ◈ ${enemy.block}` : ''}
                 </span>

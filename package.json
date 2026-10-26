@@ -21,6 +21,7 @@
     "format:check": "prettier --check .",
     "playtest": "vitest run --config vitest.playtest.config.ts",
     "assets:export": "node packages/workshop-tools/art/export.ts",
+    "assets:gallery": "node packages/workshop-tools/art/gallery.ts",
     "assets:scaffold": "node packages/workshop-tools/art/scaffold.ts",
     "assets:review": "node packages/workshop-tools/art/review.ts",
     "playtest:compare": "node packages/workshop-tools/experiments/compare-playtests.ts",

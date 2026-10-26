@@ -1,0 +1,512 @@
+:root {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color: #243e35;
+  background: #f3f0e7;
+  color-scheme: light;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-padding-top: 18px;
+}
+body {
+  margin: 0;
+}
+a {
+  color: #714a2e;
+  text-underline-offset: 4px;
+}
+a:hover {
+  color: #314f43;
+}
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #a6593d;
+  outline-offset: 5px;
+}
+header,
+main,
+footer {
+  max-width: 1180px;
+  margin: auto;
+  padding-inline: 36px;
+}
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 92px;
+  border-bottom: 1px solid #c5c9b9;
+  gap: 25px;
+}
+.wordmark {
+  font:
+    bold 25px Georgia,
+    serif;
+  text-decoration: none;
+  color: #243e35;
+  white-space: nowrap;
+}
+.wordmark span {
+  font:
+    10px ui-sans-serif,
+    system-ui,
+    sans-serif;
+  letter-spacing: 0.18em;
+  margin-left: 14px;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  font-size: 12px;
+}
+.gallery-intro {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 90px;
+  align-items: center;
+  padding-block: 64px;
+}
+.eyebrow,
+.specimen-index,
+.specimen-size,
+figcaption {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+.eyebrow {
+  color: #8b513a;
+}
+h1 {
+  font:
+    76px/1.04 Georgia,
+    serif;
+  font-weight: 400;
+  margin: 24px 0;
+  letter-spacing: -0.045em;
+}
+h1 em {
+  color: #995b3f;
+  font-weight: 400;
+}
+.lede {
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 480px;
+  color: #5a655a;
+}
+.review-link {
+  display: inline-flex;
+  gap: 35px;
+  padding-block: 14px;
+  margin-top: 10px;
+  border-bottom: 1px solid #995b3f;
+  text-decoration: none;
+  font-size: 13px;
+}
+.hero-specimen {
+  padding: 28px;
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+  background: #e2e5d8;
+  border: 1px solid #c0c8b6;
+  border-radius: 140px 140px 10px 10px;
+}
+.hero-specimen .sts-intent-art {
+  width: 180px;
+  height: 180px;
+}
+.hero-specimen p {
+  text-align: center;
+  font:
+    19px/1.5 Georgia,
+    serif;
+  margin: 0;
+}
+.specimen-index {
+  margin-top: 15px;
+}
+.specimen-size {
+  color: #68735d;
+  font-size: 9px;
+}
+section {
+  margin-bottom: 40px;
+}
+.section-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #bbc4b2;
+}
+h2 {
+  font:
+    28px/1.2 Georgia,
+    serif;
+  margin: 0;
+  font-weight: 400;
+}
+.section-title > span,
+.sample-note {
+  font-size: 11px;
+  color: #64705f;
+}
+.changelog {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+.changelog li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 28px;
+  border-bottom: 1px solid #d5d7c9;
+  padding-block: 24px;
+}
+time {
+  font:
+    12px ui-monospace,
+    monospace;
+  color: #69705f;
+  padding-top: 5px;
+}
+h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.status {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid #aab69c;
+  border-radius: 3px;
+  background: #e3e9d9;
+  font-size: 10px;
+}
+.changelog p,
+.validation p,
+.comparison p,
+.asset-card p,
+.next-studies p,
+.provenance p,
+dd {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #5f685b;
+}
+.change-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  font-size: 11px;
+}
+.change-links span {
+  color: #68735d;
+}
+.validation {
+  background: #e6e9df;
+  padding: 25px;
+}
+.validation h2 {
+  font-size: 20px;
+}
+dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 0;
+}
+dt {
+  font-weight: 600;
+  font-size: 12px;
+}
+dd {
+  margin: 6px 0 0;
+  font-size: 12px;
+}
+.validation p {
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.comparison {
+  border-bottom: 1px solid #c5c9b9;
+}
+summary {
+  cursor: pointer;
+}
+.comparison > summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  font-size: 15px;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.comparison summary b {
+  font:
+    11px ui-monospace,
+    monospace;
+  color: #925b3b;
+  margin-right: 16px;
+}
+.detail-hint {
+  font-size: 11px;
+  color: #714a2e;
+}
+.detail-hint::after {
+  content: ' +';
+  font-size: 18px;
+}
+details[open] > summary .detail-hint::after {
+  content: ' −';
+}
+.comparison-body {
+  padding-bottom: 25px;
+}
+.comparison .review-question {
+  color: #243e35;
+  margin-top: 0;
+  font-size: 15px;
+}
+.matched-views {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+figure {
+  margin: 0;
+  min-width: 0;
+}
+figcaption {
+  color: #66705e;
+  margin-bottom: 12px;
+  font-size: 9px;
+}
+.matched-views img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #b9bfac;
+}
+.lesson {
+  border-left: 2px solid #ac7650;
+  padding-left: 16px;
+  margin-top: 22px;
+}
+.lesson strong {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.lesson p {
+  margin: 5px 0 0;
+}
+.cue-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+  max-width: 560px;
+}
+.cue-comparison figure {
+  display: grid;
+  justify-items: start;
+}
+.cue-comparison .sts-intent-cue {
+  width: 190px;
+}
+.baseline-intent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3ead3;
+  color: #803830;
+  border: 1px solid #bd9b79;
+  border-radius: 6px;
+  padding: 7px;
+  font-size: 11px;
+  line-height: 1.3;
+  min-height: 36px;
+}
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-block: 28px 16px;
+  align-items: start;
+}
+.asset-card {
+  border: 1px solid #c5c9b9;
+  padding: 18px;
+  background: #faf8f0;
+  scroll-margin-top: 20px;
+}
+.asset-preview {
+  background: #e9e6d9;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 122px;
+  margin-bottom: 20px;
+  padding: 18px;
+}
+.asset-preview .sts-intent-art {
+  width: 64px;
+  height: 64px;
+}
+.asset-preview > span {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: #6d705d;
+}
+.asset-card .asset-id {
+  font:
+    10px ui-monospace,
+    monospace;
+  margin: 0 0 20px;
+}
+.asset-card .status {
+  margin-bottom: 16px;
+}
+.asset-review {
+  border-top: 1px solid #d5d7c9;
+}
+.asset-review summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14px;
+  font-size: 12px;
+}
+.asset-review-body {
+  padding-top: 22px;
+}
+.asset-review-body figure {
+  margin-bottom: 20px;
+}
+.asset-review-body .sts-intent-cue {
+  max-width: 190px;
+}
+.asset-review-body p {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.sample-note {
+  line-height: 1.7;
+}
+.next-studies {
+  margin-top: 48px;
+}
+.next-studies ol {
+  list-style-position: inside;
+  padding: 0;
+}
+.next-studies li {
+  padding: 15px 0;
+  border-bottom: 1px solid #d5d7c9;
+  font-size: 13px;
+}
+.next-studies p {
+  margin: 7px 0 0;
+}
+.provenance {
+  padding-top: 12px;
+}
+.provenance h2 {
+  font-size: 23px;
+}
+.provenance dl {
+  grid-template-columns: repeat(3, 1fr);
+}
+footer {
+  border-top: 1px solid #bbc4b2;
+  padding-block: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 10px;
+  color: #69705f;
+}
+@media (max-width: 760px) {
+  header,
+  main,
+  footer {
+    padding-inline: 20px;
+  }
+  .gallery-header {
+    align-items: start;
+    flex-direction: column;
+    padding-block: 22px;
+    gap: 18px;
+  }
+  nav {
+    gap: 18px;
+  }
+  .gallery-intro {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-block: 35px;
+  }
+  h1 {
+    font-size: 58px;
+  }
+  .hero-specimen {
+    max-width: 330px;
+    width: 100%;
+    justify-self: center;
+    padding: 20px;
+  }
+  .hero-specimen .sts-intent-art {
+    width: 125px;
+    height: 125px;
+  }
+  .lede {
+    font-size: 15px;
+  }
+  .section-title {
+    display: block;
+  }
+  .section-title > span {
+    display: block;
+    margin-top: 9px;
+  }
+  .changelog li {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  dl {
+    grid-template-columns: 1fr 1fr;
+  }
+  .matched-views,
+  .asset-grid,
+  .provenance dl {
+    grid-template-columns: 1fr;
+  }
+  .cue-comparison {
+    gap: 15px;
+  }
+  .cue-comparison .sts-intent-cue {
+    width: 100%;
+  }
+  .comparison > summary {
+    font-size: 13px;
+  }
+  .detail-hint {
+    white-space: nowrap;
+    font-size: 10px;
+  }
+  footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

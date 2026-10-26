@@ -18,6 +18,12 @@ Use `nvm use`, then run root npm commands. `npm run maintenance -- help` lists g
 
 Retain audit JSON in ignored session directories. The root lockfile supplies runtime dependencies; [verification contracts](../../docs/engineering/checks.md) own lint, types, tests and gate coverage. Root npm scripts are the public command entry points.
 
+`npm run assets:gallery -- <fresh-output-directory>` generates the independent
+[game asset review gallery](../../docs/art/asset-enrichment.md). The single offline HTML
+contains only named asset captures, inline SVG/CSS and independently expandable reviews;
+it ships no JavaScript. Its visible Latest changes section and companion `CHANGELOG.json`
+come from the preserved dated source history. This command never publishes the gallery.
+
 ## Committed-file size audit
 
 `npm run maintenance -- files` prints Markdown rankings for the largest blobs and most physical lines, plus review suggestions. Defaults: `--ref HEAD --top 20 --min-bytes 262144 --min-lines 1000`. Lines at least 2,000 bytes also receive a signal, so one-line JSON cannot hide behind a low line count. `--json` returns the complete inventory; `--top` limits only Markdown sections. For clean JSON redirection use `npm run --silent maintenance -- files --json > .work/sessions/<session>/files.json` after creating the session directory.

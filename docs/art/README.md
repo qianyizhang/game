@@ -16,6 +16,10 @@ The [aesthetic rulebook](art-direction.md) is the single visual standard. Use th
 
 ## Asset records
 
+[Game asset enrichment](asset-enrichment.md) inventories the six games, prioritizes
+readability and feedback studies, and records the Spire intent pilot with its independent
+offline gallery, dated changelog, provenance and validation limits.
+
 The [creature asset index](assets/README.md) keeps individual procedural and native records, their acceptance status and evidence locations. The [native trial index](trials/README.md) separates trial outcomes from asset identity. Original review bytes remain recoverable through the [document migration record](../../maintenance/document-migration.json).
 
 The [Night Passage Bellwarden](assets/night-passage/bellwarden.md),
