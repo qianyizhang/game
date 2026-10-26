@@ -7,7 +7,7 @@
     "summary": "The first blade was too narrow and the gallery PNGs exceeded budget. A wider diagonal blade, compact cues and lossless WebP resolved those issues; phone shortcuts no longer cover combat. Author reviewed 32/64 px, desktop and phone views. Focused browser checks: 7/7; five-game smoke: 5/5. Full app gate: 558 passes, 3 five-second timeouts; unchanged baseline reproduces the Hearth timeout. Gameplay testing is pending.",
     "assets": ["attack", "block", "status", "card", "special", "wait"],
     "review": "review-combat",
-    "pr": null
+    "pr": "https://github.com/qianyizhang/game/pull/18"
   },
   {
     "id": "2026-10-26-pilot",
