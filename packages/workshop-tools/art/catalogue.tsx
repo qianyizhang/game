@@ -31,6 +31,7 @@ import {
 import { AbilityArt } from '../../../src/games/spire/ui/AbilityArt';
 import { MinionArt } from '../../../src/games/battlegrounds/ui/MinionArt';
 import { ShieldBreakArt } from '../../../src/games/battlegrounds/ui/ShieldBreakArt';
+import { FrontierArt } from '../../../src/games/cartographer/ui/FrontierArt';
 import { ShopArt } from '../../../src/games/balatro/ui/ShopArt';
 import { PACKS, VOUCHERS, TAGS } from '../../../src/games/balatro/content/shop';
 import { JOKERS } from '../../../src/games/balatro/content/jokers';
@@ -112,6 +113,12 @@ export function cardArtCatalogue(): Asset[] {
     'seed',
   ];
   return [
+    {
+      id: 'cartographer/feedback/frontier',
+      group: 'Dungeon Cartographer · Navigation',
+      name: 'Unexplored doorway',
+      node: <FrontierArt />,
+    },
     {
       id: 'hearth/feedback/shield-break',
       group: 'Last Hearth · Combat feedback',

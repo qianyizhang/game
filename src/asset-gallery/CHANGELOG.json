@@ -1,5 +1,16 @@
 [
   {
+    "id": "2026-10-26-cartographer-local",
+    "date": "2026-10-26",
+    "title": "Cartographer retains occupied doorway cues and separates threat marks",
+    "status": "visually reviewed",
+    "summary": "Author inspected matched desktop and phone captures, including 320 px controls. Occupied cell labels retain the doorway direction; threat cells and accepted commands are unchanged in the matched fixture. Static cues support reduced motion. Human recognition and enjoyment remain untested. Local candidate only; no PR or hosted CI has been submitted.",
+    "assets": ["cartographer-map"],
+    "review": "review-cartographer",
+    "pr": null,
+    "publication": "Local only · not submitted"
+  },
+  {
     "id": "2026-10-26-game-feedback-integration",
     "date": "2026-10-26",
     "title": "Spire, Blindside and Hearth reviews coexist",

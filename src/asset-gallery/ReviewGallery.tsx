@@ -3,6 +3,7 @@ import { IntentCue } from '../games/spire/ui/IntentCue';
 import changes from './CHANGELOG.json';
 import { ScoreFeedback } from '../games/balatro/ui/ScoreFeedback';
 import { HearthShieldReview, type HearthShieldEvidence } from './HearthShieldReview';
+import { CartographerReview, type CartographerEvidence } from './CartographerReview';
 
 const examples: Record<IntentArtKind, { text: string; lesson: string }> = {
   attack: {
@@ -42,6 +43,7 @@ export interface GalleryEvidence {
   screenshotBytes: number;
   score: { before: string; after: string; screenshotBytes: number };
   shield: HearthShieldEvidence;
+  cartographer: CartographerEvidence;
 }
 
 export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
@@ -60,7 +62,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
       <main id="top">
         <section className="gallery-intro" aria-labelledby="gallery-title">
           <div>
-            <p className="eyebrow">STUDIES 01–03 / ACTIONS, PAYOFFS & PROTECTION</p>
+            <p className="eyebrow">STUDIES 01–04 / ACTIONS, PAYOFFS, PROTECTION & PATHS</p>
             <h1 id="gallery-title">
               Follow
               <br />
@@ -68,9 +70,9 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
             </h1>
             <p className="lede">
               Small visual studies for clearer decisions and feedback: Spire’s next action,
-              Blindside’s scoring effects and Last Hearth’s lost protection.
+              Blindside’s scoring effects, Last Hearth’s lost protection and Cartographer’s paths.
             </p>
-            <a className="review-link" href="#review-hearth-shield">
+            <a className="review-link" href="#review-cartographer">
               Compare the latest study
             </a>
           </div>
@@ -105,7 +107,11 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
                         {kind}
                       </a>
                     ))}
-                    {change.pr ? <a href={change.pr}>Review PR</a> : <span>Draft PR pending</span>}
+                    {change.pr ? (
+                      <a href={change.pr}>Review PR</a>
+                    ) : (
+                      <span>{change.publication ?? 'Draft PR pending'}</span>
+                    )}
                   </div>
                 </div>
               </li>
@@ -145,6 +151,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
             <h2 id="reviews-title">The comparisons</h2>
             <span>Open any number · each stays independent</span>
           </div>
+          <CartographerReview evidence={evidence.cartographer} />
           <HearthShieldReview evidence={evidence.shield} />
           <details className="comparison" id="review-score" open>
             <summary>
@@ -332,10 +339,11 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
               </p>
             </li>
             <li>
-              <strong>Cartographer · hazard readability</strong>
+              <strong>Cartographer · player recognition review</strong>
               <p>
-                Differentiate threatened tiles, cover, and exits by shape as well as color. Keep
-                cell labels authoritative.
+                Ask players to identify an occupied doorway and the next threatened cell at phone
+                size. Review the local candidate before extending the visual language to other
+                terrain.
               </p>
             </li>
             <li>
@@ -361,9 +369,10 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
           <p>
             Original code-drawn SVG compositions reuse the project’s sword, shield, eye, book,
             spark, hourglass, card and Joker artwork. The new split-shield contour uses Last
-            Hearth’s ink and ochre palette. No purchased assets, external fonts, generated raster
-            artwork, or third-party artwork were added. The repository has no explicit
-            redistribution license; this preview does not grant one.
+            Hearth’s ink and ochre palette; Cartographer uses its existing gold and dark ink. No
+            purchased assets, external fonts, generated raster artwork, or third-party artwork were
+            added. The repository has no explicit redistribution license; this preview does not
+            grant one.
           </p>
           <dl>
             <div>
@@ -372,17 +381,18 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
                 Spire: six vectors, ≤ 12 KiB total. Blindside: one existing source portrait and
                 three running values. Hearth: one 64 × 64 vector, ≤ 2 KiB, at 22/18 px. Finite 180
                 ms emphasis is disabled for reduced motion. No new requests, timers, loops or
-                filters.
+                filters. Cartographer: one ≤ 1 KiB vector at 12–16 px and a static 14 px warning.
               </dd>
             </div>
             <div>
               <dt>Gallery budget</dt>
               <dd>
-                One offline HTML file, ≤ 600 KiB. Zero JavaScript. Six embedded captures:{' '}
+                One offline HTML file, ≤ 600 KiB. Zero JavaScript. Ten embedded captures:{' '}
                 {(
                   (evidence.screenshotBytes +
                     evidence.score.screenshotBytes +
-                    evidence.shield.screenshotBytes) /
+                    evidence.shield.screenshotBytes +
+                    evidence.cartographer.screenshotBytes) /
                   1024
                 ).toFixed(1)}{' '}
                 KiB.
@@ -400,7 +410,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
       </main>
       <footer>
         <span>CARD WORKSHOP / ASSET FIELDNOTES</span>
-        <span>Studies 01–03 · player review pending</span>
+        <span>Studies 01–04 · player review pending</span>
       </footer>
     </>
   );

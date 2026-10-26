@@ -40,6 +40,11 @@ Last Hearth's [shield-loss feedback](assets/hearth-shield/README.md) uses
 The 64 × 64 symbol exports as `hearth/feedback/shield-break` and appears at 22/18 px
 beside explicit HTML text. `HearthShieldReview.tsx` owns its additive gallery comparison.
 
+Cartographer's [map-cue study](assets/cartographer-map/README.md) uses
+`src/games/cartographer/ui/FrontierArt.tsx` and `MapCues.tsx`. The 64 × 64 arrow
+exports as `cartographer/feedback/frontier`; occupied frontiers display it at
+12–16 px. Existing threat cells receive a static, filled warning triangle.
+
 `ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](../research/content-expansions.md#card-suite-expansion), [Night Market](../research/content-expansions.md#night-market), and [feature artwork coverage](history/feature-coverage.md) document their sets.
 
 ## Integration boundaries

@@ -55,7 +55,15 @@ test('independent asset comparisons, changelog links, offline delivery and phone
       }),
     );
   }
-  expect(decoded).toEqual([true, true, true, true, true, true]);
+  expect(decoded).toEqual(Array<boolean>(10).fill(true));
+  const map = page.locator('#review-cartographer');
+  await map.locator('summary').click();
+  await expect(map).not.toHaveAttribute('open', '');
+  await expect(page.locator('#review-hearth-shield')).toHaveAttribute('open', '');
+  await expect(page.locator('#review-score')).toHaveAttribute('open', '');
+  await expect(page.locator('#review-combat')).toHaveAttribute('open', '');
+  await map.locator('summary').click();
+  await expect(page.getByText('Local only · not submitted', { exact: true })).toBeVisible();
   const shield = page.locator('#review-hearth-shield');
   const score = page.locator('#review-score');
   await shield.locator('summary').click();
@@ -72,6 +80,7 @@ test('independent asset comparisons, changelog links, offline delivery and phone
   await score.locator('summary').click();
   await expect(score.locator('.score-source h3')).toHaveText('Spark');
   await expect(page.locator('script')).toHaveCount(0);
+  await map.screenshot({ path: info.outputPath('gallery-cartographer-desktop.png') });
   await shield.screenshot({
     path: info.outputPath('gallery-shield-desktop.png'),
     animations: 'disabled',
@@ -83,6 +92,7 @@ test('independent asset comparisons, changelog links, offline delivery and phone
   await page.screenshot({ path: info.outputPath('gallery-desktop.png'), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await map.screenshot({ path: info.outputPath('gallery-cartographer-phone.png') });
   await shield.screenshot({
     path: info.outputPath('gallery-shield-phone.png'),
     animations: 'disabled',

@@ -255,13 +255,6 @@
   color: var(--dc-gold);
   border-color: #b49a5d;
 }
-.dc-danger-dot {
-  position: absolute;
-  top: 1px;
-  left: 4px;
-  font: bold 11px system-ui;
-  color: #ffa68c;
-}
 .dc-legend {
   display: flex;
   flex-wrap: wrap;
