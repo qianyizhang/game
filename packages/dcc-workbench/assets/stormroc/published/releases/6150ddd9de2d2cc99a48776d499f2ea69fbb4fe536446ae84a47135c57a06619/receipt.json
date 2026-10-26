@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "stormroc",
+  "definitionDigest": "faf459ed80288ac45e3e9eb54e3a95be0cb3d6eb72199982ae4cbe873fb23030",
+  "candidate": {
+    "path": "candidate.json",
+    "sha256": "11d4f02928312959b1e2fd7af40df5e03ac52f0834a714b6d668945b51646b7c"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "cde7a9247be5558afb73e9d818fa2558292a736c81c0894e7db6a0f6891f3d19"
+  },
+  "source": {
+    "path": "source.blend",
+    "sha256": "7fd1e59d9a976ef27fb308a7e1f8bdfd33513eb5cf7d8cea2f777033ba05496e"
+  },
+  "brief": {
+    "path": "brief.json",
+    "sha256": "7e4e6f2e97f0af737d1a6865e4c4382041a22537a3a2ad226e437856627277e4"
+  },
+  "outputs": {
+    "model": {
+      "path": "model.glb",
+      "sha256": "f4700fdbaaec84ac719dfd11522a44a0cb7f718a3ec42e93450a63e44d902444"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "24f82a01e0ad4e2d69b702f30a2b24278a72a1f69d57f39c69fef5dab2d1b7d0"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "c253de116134fab5e42254ada03b80fa04cd479e938cd1d5010d8a2bc0a75967"
+    }
+  },
+  "previous": {
+    "kind": "release",
+    "receipt": {
+      "path": "assets/stormroc/published/releases/ab75cdff0fdc2db93762041349eae0125c5e3dc79903eaf1689ac4f672c4cbf4/receipt.json",
+      "sha256": "ab75cdff0fdc2db93762041349eae0125c5e3dc79903eaf1689ac4f672c4cbf4"
+    }
+  },
+  "previousReceipt": {
+    "path": "previous-receipt.json",
+    "sha256": "ab75cdff0fdc2db93762041349eae0125c5e3dc79903eaf1689ac4f672c4cbf4"
+  }
+}

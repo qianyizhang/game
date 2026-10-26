@@ -68,7 +68,7 @@ def install_heads(collection: bpy.types.Collection, rig: bpy.types.Object) -> No
         raise ValueError("Head controls already exist; edit their native custom properties instead")
     for index, design in enumerate(HEADS):
         frame = (
-            Matrix.Translation(armature.bones[f"Head.{index}"].head_local)
+            Matrix.Translation(armature.bones[f"Head.{index}"].head_local[:])
             @ Matrix.Rotation([0.03, -0.37, 0.32][index], 4, "Z")
             @ Matrix.Scale([1.02, 0.88, 0.94][index], 4)
         )

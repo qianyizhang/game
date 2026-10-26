@@ -53,7 +53,7 @@ source = { virtual = "." }
 
 [package.dev-dependencies]
 dev = [
-    { name = "fake-bpy-module-4-5" },
+    { name = "fake-bpy-module-5-2" },
     { name = "mypy" },
     { name = "ruff" },
 ]
@@ -62,18 +62,18 @@ dev = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "fake-bpy-module-4-5", specifier = "==20260730" },
+    { name = "fake-bpy-module-5-2", specifier = "==20260730" },
     { name = "mypy", specifier = "==2.4.0" },
     { name = "ruff", specifier = "==0.17.1" },
 ]
 
 [[package]]
-name = "fake-bpy-module-4-5"
+name = "fake-bpy-module-5-2"
 version = "20260730"
 source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }
-sdist = { url = "https://pypi.tuna.tsinghua.edu.cn/packages/bd/e4/216c22184f76462a1e52d51c64af5d57134db5f17df1ccfd72dc8401e782/fake_bpy_module_4_5-20260730.tar.gz", hash = "sha256:f4e9aac5627f735f0aa28f99d6ae4c1f6c4833e6ca1ba537c552eea17b0563ef", size = 838581, upload-time = "2026-07-30T04:10:17.079Z" }
+sdist = { url = "https://pypi.tuna.tsinghua.edu.cn/packages/76/8c/95c6ead563863ff10551bb72e12305934e31f1dda152182aae125e80d2c9/fake_bpy_module_5_2-20260730.tar.gz", hash = "sha256:0db44b866f9bf6e018ec1802207481617529b6c9402930c92e9513205d6f4f34", size = 948626, upload-time = "2026-07-30T04:10:22.707Z" }
 wheels = [
-    { url = "https://pypi.tuna.tsinghua.edu.cn/packages/9e/c0/9502daf14b9871a8271f009d39b02fdb095bb0e8a37ec5a8729288516752/fake_bpy_module_4_5-20260730-py3-none-any.whl", hash = "sha256:c6a0b6e4e0e9e5d918fbcfb6754063af89979ad64fbbb20f4a16e8a6c0ca7ae2", size = 967552, upload-time = "2026-07-30T04:10:15.422Z" },
+    { url = "https://pypi.tuna.tsinghua.edu.cn/packages/79/89/a27073478c3d0154e2b62013dc7d405e0686fc1b75f0a3499f875fee43ae/fake_bpy_module_5_2-20260730-py3-none-any.whl", hash = "sha256:bc8faaafabd277b347128a2fb5189f7b635427812a1832e69295c14589965fe8", size = 1095618, upload-time = "2026-07-30T04:10:21.169Z" },
 ]
 
 [[package]]

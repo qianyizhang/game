@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "phoenix",
+  "definitionDigest": "ef64739bc424ccb3a55dc46a308c26ad9ad04d75a6da1f7ea43cc5bd3436de22",
+  "candidate": {
+    "path": "candidate.json",
+    "sha256": "bbf4fcb44b59a3de18b21b93e61cfd5608c37f199396a0e3d2d5caa87edda66c"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "76044c4f8ba6bb91fbf64dfe865d64dc41e40ee19ddf9a70456f7f2f886eeeb1"
+  },
+  "source": {
+    "path": "source.blend",
+    "sha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb"
+  },
+  "brief": {
+    "path": "brief.json",
+    "sha256": "94ceb1159fe097dfb1183d811145b5ee5e0feb4cac3ef29a6d45285888cea7e2"
+  },
+  "outputs": {
+    "model": {
+      "path": "model.glb",
+      "sha256": "a2ce234a0fe8772270636ca3cc83d82dbd750f2b965075f6a750118bbdee8e44"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "f9664267882678380661b0cd70da6eb133a8a05eba7f93149d3a0def83094972"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "fccb3b89a7a4ed7ab4ae47b2298166713c6929fd3cbcc137bc47dafa93e4131b"
+    }
+  },
+  "previous": {
+    "kind": "release",
+    "receipt": {
+      "path": "assets/phoenix/published/releases/d467985aa6562b42a86c226c24439a8e3f621cb5fe766f6a07466f0e19c617f8/receipt.json",
+      "sha256": "d467985aa6562b42a86c226c24439a8e3f621cb5fe766f6a07466f0e19c617f8"
+    }
+  },
+  "previousReceipt": {
+    "path": "previous-receipt.json",
+    "sha256": "d467985aa6562b42a86c226c24439a8e3f621cb5fe766f6a07466f0e19c617f8"
+  }
+}

@@ -14,8 +14,9 @@ import {
 } from '../application/session';
 import type { Command } from './types';
 
-it('sandbox journeys jump through all regions and objective pads, cast all hero skills, and reconstruct exactly', () => {
-  for (const hero of BASE_CONTENT.heroes) {
+it.each(BASE_CONTENT.heroes)(
+  '$id sandbox visits every region and objective pad, casts every skill, and reconstructs exactly',
+  (hero) => {
     let session = newSession('sandbox-journey', hero.id, BASE_CONTENT, true);
     const act = (command: Command) => {
       const result = dispatch(session, command);
@@ -62,8 +63,8 @@ it('sandbox journeys jump through all regions and objective pads, cast all hero 
     act({ type: 'advance', ticks: 50 });
     expect(session.state.player.hp).toBeLessThan(stats(session.state, BASE_CONTENT).maxHp);
     expect(importSession(exportSession(session))).toEqual(session);
-  }
-});
+  },
+);
 
 it('campaigns reject developer commands and forged sandbox histories without changing resources or RNG', () => {
   const normal = newSession('campaign', 'barbarian');

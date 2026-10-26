@@ -50,4 +50,6 @@ def recolor(obj: bpy.types.Object, form: Form) -> None:
             + dark[k] * (stockings + dorsal)
             for k in range(3)
         )
-        require(colors.data[vertex.index], bpy.types.FloatColorAttributeValue).color = (*color, 1)
+        require(colors.data[vertex.index], bpy.types.FloatColorAttributeValue).color.foreach_set(
+            (*color, 1)
+        )

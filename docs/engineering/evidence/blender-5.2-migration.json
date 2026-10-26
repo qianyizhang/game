@@ -1,0 +1,1775 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "status": "complete",
+  "target": "system Blender 5.2 LTS",
+  "runtime": {
+    "blender": "5.2.3 LTS Release Candidate",
+    "buildHash": "fab76e95306d",
+    "releaseCycle": "rc",
+    "python": "3.13.13",
+    "binary": "/Applications/Blender.app/Contents/MacOS/Blender"
+  },
+  "sourceCompatibility": {
+    "schemaVersion": 1,
+    "blender": "5.2.3 LTS Release Candidate",
+    "buildHash": "fab76e95306d",
+    "releaseCycle": "rc",
+    "python": "3.13.13",
+    "binary": "/Applications/Blender.app/Contents/MacOS/Blender",
+    "baseline": "test-results/blender-migration-2026-10-22/baseline-final/samples.json",
+    "scriptSha256": "8844f6c40298c20e2182607f7bcfce567e9e37b79f139b3ca2f331b5a3726cba",
+    "completed": true,
+    "authoritativeSourcesUnchanged": true,
+    "files": [
+      {
+        "source": "sources/briar-hydra.blend",
+        "sourceSha256": "0237f8efa119aacfd6d831f80d43a90b9302fd4875bca1219000ee1f0c9cba70",
+        "savedCopySha256": "e90e019c78fb4c9b1698d962b647d1dbd3abc28538b1cac616ff091cf1deafd9",
+        "sampleCount": 68934,
+        "maximumBaselineError": 9.5367431640625e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/boar/boar/source.blend",
+        "sourceSha256": "eaeb03c0e5186f4c7871e73959e904c74aae6434ad5fc3cc9910dbb119207526",
+        "savedCopySha256": "a03f41eb254f119bc3f87ca07c82dd1b4411f6eb118e941b99f7a9ddb99249e5",
+        "sampleCount": 134914,
+        "maximumBaselineError": 4.76837158203125e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/boar/motion.blend",
+        "sourceSha256": "4fa9a1ac607ec5fb09029d35e738c9ed92cdb9db858a837177790f40b76ce7be",
+        "savedCopySha256": "e75337a5e284bc81b383f8f3b132f0b24f7e29e290817fe477ff4f41dd68f4fc",
+        "sampleCount": 141264,
+        "maximumBaselineError": 7.748603820800781e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/briar-hydra/source.blend",
+        "sourceSha256": "13c8176b226376a7e4cdb026eece3b0b02ff173a9317a5e3c5d6953274be7fcb",
+        "savedCopySha256": "a1f7fbb61945c3130cedb45eac34621d338d7928bb5c46777ede980b7a5b2d93",
+        "sampleCount": 74810,
+        "maximumBaselineError": 4.76837158203125e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/canid/ash/source.blend",
+        "sourceSha256": "db83ceb8d6b55b160520e54f15a0600c0963ee8144bb8284036a0e9af7c0bd8a",
+        "savedCopySha256": "5b4c1255bcccc38dba8135a403eec0a65769753abc39a7e6f3d82aead063b37d",
+        "sampleCount": 25892,
+        "maximumBaselineError": 2.980232238769531e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/canid/moss/source.blend",
+        "sourceSha256": "82d9d5076a90ec2a5ccba70391d95c77501cd5747239a33e16f6120418453995",
+        "savedCopySha256": "a292f3a2976dfb4fae8d75d3f1a5814561bbbd6a8898ce733412955fa8a232e6",
+        "sampleCount": 25892,
+        "maximumBaselineError": 7.152557373046875e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/canid/motion.blend",
+        "sourceSha256": "3c4a28a2663e4d5f120d711a3ec14b634cf33467bd20cc6a8fb32172a3ac66e2",
+        "savedCopySha256": "c5c2a09ed94585abf209e4da499de1bda4da17e9fdc2c288c0996487603c205a",
+        "sampleCount": 22892,
+        "maximumBaselineError": 2.980232238769531e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/canid/refined/ash/source.blend",
+        "sourceSha256": "bd4452f0d5c4bc03ddb5ec693f82f80bc981f8636f93af60d7b592be6bcf83b9",
+        "savedCopySha256": "85c1218ae732abbd4c66ec5cf5f479a7b3260a8f666e83f0889c8564c91b1132",
+        "sampleCount": 243872,
+        "maximumBaselineError": 4.172325134277344e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/canid/refined/moss/source.blend",
+        "sourceSha256": "f6d9d7ad68945aba507c2756dea00e4f4bec122e01cf3f6747d65b7ba43585fe",
+        "savedCopySha256": "609a99f220854f7c2ccf21d55c59aeca745976dfe2e29f86f51cae77c4f953c2",
+        "sampleCount": 243872,
+        "maximumBaselineError": 7.152557373046875e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/canid/refined/motion.blend",
+        "sourceSha256": "d3f2486c5d5eaf621d65a8d01fbed411cf449e926a99e0858d5fac5d14b52d20",
+        "savedCopySha256": "6dcc721046ba9257195899768775a75278bf963db723f055223042feca5772bc",
+        "sampleCount": 281072,
+        "maximumBaselineError": 1.1473894119262695e-6,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/canid/refined/russet/source.blend",
+        "sourceSha256": "e80111bcd8b4100fe242b54d7596b8806df05e3886204e66df0fb4de78704ce5",
+        "savedCopySha256": "9fd5459cc612bdfaaffecd449c524d71f2ab2287c1ddcf676075e7fb105d1aaf",
+        "sampleCount": 243872,
+        "maximumBaselineError": 4.172325134277344e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/canid/russet/source.blend",
+        "sourceSha256": "859bb9e603743e6a582799ec0b45a2ab526953c761bd44637b85a268d3cce3f8",
+        "savedCopySha256": "e2cff8e10fff1bcbed9cfc38280ac20523e231fc1f90833e019ab7b80ebc86ab",
+        "sampleCount": 25892,
+        "maximumBaselineError": 2.980232238769531e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/fox/fox/source.blend",
+        "sourceSha256": "46c4f064d93eb4fc3cef27d0ea1d86237e74bec3278ab649d54010be5ee0b65f",
+        "savedCopySha256": "63936dd74e4c73a1202e603b950af1f80bebd02a73ab1b2e1f2cf5911ed329cf",
+        "sampleCount": 207704,
+        "maximumBaselineError": 5.960464477539062e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/fox/motion.blend",
+        "sourceSha256": "b1234bf2e35fd31c9359bd2759153440eca2a3d88ca6f8723f92a4a0626a0244",
+        "savedCopySha256": "5dcfdfbc2c05f11d0abde70cd9b7ebe42a9d6f6a1f74595ed690dbcae499bc30",
+        "sampleCount": 221304,
+        "maximumBaselineError": 1.0132789611816406e-6,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/matriarch/source.blend",
+        "sourceSha256": "2700bc670306f4284ce94d7fa8b6d47626757bb5a015e861d61eef34cef3095d",
+        "savedCopySha256": "ae587283159758fc172552d1bae6eb8ec62ae21ced1ad39c6a0836d014a50140",
+        "sampleCount": 16620,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/enemies/archer/source.blend",
+        "sourceSha256": "9761d9769509226fb5a3bc7138c709e6f823c074e1bc2eb0dd058ab9ea08b306",
+        "savedCopySha256": "ae7fc98cfb2fe33939acdaf729b681f178afcaba115abe0da0d397c9b012f7a6",
+        "sampleCount": 51504,
+        "maximumBaselineError": 2.384185791015625e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/enemies/brute/source.blend",
+        "sourceSha256": "d20848a108eff3e52e10e6003455afc4e37edf946e640eda0f08854554880752",
+        "savedCopySha256": "94a3a420f00b1c8e7685a50b0b5d9a4a808e33b02b8813c4394c95874eeb2b8c",
+        "sampleCount": 52878,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/enemies/hunter/source.blend",
+        "sourceSha256": "ec4621999731108756b4d67d472137a5bce47e802055476cb22b4029b8caf9f6",
+        "savedCopySha256": "d2cd9662e57e1039bd3f2be4a7ba96e3071e1dfe764edc3cb65360891515a874",
+        "sampleCount": 50826,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/enemies/witch/source.blend",
+        "sourceSha256": "99e957d89679104c1eb7c996781544a18c7a1634de0925b795fda0ea5201f823",
+        "savedCopySha256": "a5676da272e9239d2cb6e1aee4f3817a18e7bbfa413be60c6cffc334b5a2526b",
+        "sampleCount": 54560,
+        "maximumBaselineError": 1.1920928955078125e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/environments/archive/source.blend",
+        "sourceSha256": "e225e205cf44da6a6e28d904b307a2ac047f165e63fbf747ca3d386b8ccf8edf",
+        "savedCopySha256": "3d15862573c640442aad04bf9355b678dbfecccac39070324a4c1b98b7b6296d",
+        "sampleCount": 3750,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/environments/cinder/source.blend",
+        "sourceSha256": "27651a84df3e97d4be57fbc94a343408f98c96cf2d5aec32c80ed6d7b0f83dc9",
+        "savedCopySha256": "136b0214d9189951433cd26aabc53b37a14b852ccff5279ec22e9de5b1360359",
+        "sampleCount": 4440,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/environments/sepulcher/source.blend",
+        "sourceSha256": "ee66b9ec7b1e3c79941a01574e7d6f55e74d7281b11d020b4ab899ffc5f0ef41",
+        "savedCopySha256": "6ca7e83fa9f83abc3b6d9ec7940cb21bb156edafa1d292a222ff7f0cdc8c426f",
+        "sampleCount": 3500,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/environments/starless/source.blend",
+        "sourceSha256": "e404722c73ce6e4bbcdc7a053c9d0fe9ce0ccc870f6484900199e63f3705d003",
+        "savedCopySha256": "acd9973a9722e83c6d80ebde14d0b2127202346f3ea88bdd375ae5107ccb7878",
+        "sampleCount": 3500,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/guardians/ashregent/source.blend",
+        "sourceSha256": "d071806c5f0df8deab4b1c44a88f338631b9efd106af17ec7d07800e2edfff6b",
+        "savedCopySha256": "ae722436cbdad62f66ed1fc51a6422440e07b3fe0fc40a0db29029bfdf6a1314",
+        "sampleCount": 91114,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/guardians/bellwarden/source.blend",
+        "sourceSha256": "e3d136bd450edbf4177f28d3d05857a24350fcb8aed7e2881c47b5276d7f7f27",
+        "savedCopySha256": "0d499668cd747f497e06d3e61cc58b135d88a9440e72ad9a8228d7f91f04da3d",
+        "sampleCount": 92490,
+        "maximumBaselineError": 2.384185791015625e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/guardians/sovereign/source.blend",
+        "sourceSha256": "b3904c559df88d3f229d8a2c6a4866a001d4efe20c46b22803b63a6c888682d4",
+        "savedCopySha256": "5ecb5499a3abcaec7e8302533cda43caf14bf60fb1b3d557cc3153478dd81833",
+        "sampleCount": 109410,
+        "maximumBaselineError": 2.384185791015625e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/guardians/undertow/source.blend",
+        "sourceSha256": "be8b6f07bad161f950d979ac1f4f9575efc763a53ad895cb249497c33d4ac9d1",
+        "savedCopySha256": "aa286ce29e34a724f6df543533e73752581db391cbd95a48807781ea1c011c71",
+        "sampleCount": 102572,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/hero/source.blend",
+        "sourceSha256": "22da6084622d81c4e87ae6a534c113f657f6aa6fae21c14c8052c02ca860c120",
+        "savedCopySha256": "56751919065cfbc991e2a003488eba39a598b296791c20b1913adffa9c569cc4",
+        "sampleCount": 102796,
+        "maximumBaselineError": 2.384185791015625e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/night-passage/weapons/source.blend",
+        "sourceSha256": "308a4181f86362d38c98eb0edc65ae7e9154e576739722caa1ceb1981890a2ed",
+        "savedCopySha256": "921f6fdf8b92c4768ca42a16d88388189f96a53120797e660f14d028bb283c63",
+        "sampleCount": 7940,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/nightjar/source.blend",
+        "sourceSha256": "9f9dca7636c787c1aaa10aae4925dd6ebd4da7c7694c2ff9ceafbea45626982e",
+        "savedCopySha256": "bb9205534653c300b1f51e112a6bafc1a0daab21ac42db645162253c020f7982",
+        "sampleCount": 31520,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/otter/motion.blend",
+        "sourceSha256": "548a7d37b2e7a85979888d61cb3be1fa46172a5c229ae22f57219842eac54703",
+        "savedCopySha256": "3cf82c97954528dcfddb724c61dcf3138fe4485f298a3aff949713d93ce2fbda",
+        "sampleCount": 216360,
+        "maximumBaselineError": 1.6093254089355469e-6,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/otter/otter/source.blend",
+        "sourceSha256": "35695f31f0422682aca33b6d9ff12c0ae0c8da020a97a57b5c475939d3f26f9d",
+        "savedCopySha256": "71b5813c0791534bf47f1fad29ac1c539d621dff1359c36da1a9792d943a9167",
+        "sampleCount": 214860,
+        "maximumBaselineError": 1.3709068298339844e-6,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/phoenix/source.blend",
+        "sourceSha256": "95b2d9f983842efbf56c61a2246f36684539d6f1bb8d4b399765b977a67d3cfb",
+        "savedCopySha256": "4919bf5f5c80a0f8175330438230caec8d97935ca768b306ef2fd46af992cb20",
+        "sampleCount": 129360,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/prowler/source.blend",
+        "sourceSha256": "789f9bbb9ff46f04c165d7ffa72e35a16dc97af7b693f31350d792dec562e2ab",
+        "savedCopySha256": "e90e78d3d80dcce87a7744fb49c46c8957ee3811edeaa51773a5e47badbc538c",
+        "sampleCount": 24230,
+        "maximumBaselineError": 1.1920928955078125e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/raven/motion.blend",
+        "sourceSha256": "90a4ef9e36e61137304a4fadeba8d0375f542d84ffcf67cb271e9e66885e0aaa",
+        "savedCopySha256": "de9e778ce936999a2237a0632d74d0e5e98f0444d836ab5415f3843b9749e2ca",
+        "sampleCount": 529404,
+        "maximumBaselineError": 5.364418029785156e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/raven/raven/source.blend",
+        "sourceSha256": "5e3fd4ce2daa7c5df3f2232c2b89693fc48c1ad8943fc0bb939e7329b149935a",
+        "savedCopySha256": "248a120eea5f6038b416ad074bb548c6bb61107882b5445880e543ff03652faf",
+        "sampleCount": 514804,
+        "maximumBaselineError": 7.152557373046875e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/stormroc/source.blend",
+        "sourceSha256": "7fd1e59d9a976ef27fb308a7e1f8bdfd33513eb5cf7d8cea2f777033ba05496e",
+        "savedCopySha256": "6550b7134a9b28f2b9609f01c68cad4c2c5d7e95b2b21a36cb749fd80abb371e",
+        "sampleCount": 111850,
+        "maximumBaselineError": 0.0,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/wolf/source.blend",
+        "sourceSha256": "bd58fb4398f1a663d076aae9bfceedf822d26520d160e87ce1ca93c0ea1d3fe7",
+        "savedCopySha256": "1cf35f54cc70954e12a773bb2afef262306dd86ccce0c9d78f19f60db12661bc",
+        "sampleCount": 22650,
+        "maximumBaselineError": 1.1920928955078125e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/wolf-bloom/source.blend",
+        "sourceSha256": "badec14cb795465150ecc95e76c928a5ce901a5f48c886b4a74b07cf2068c965",
+        "savedCopySha256": "ef71f43749e7e0e4920bd9fb37f98f2c7747153bcae0e0200b9c1f856ce8d5d6",
+        "sampleCount": 23900,
+        "maximumBaselineError": 1.1920928955078125e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/wolf-elder/source.blend",
+        "sourceSha256": "391f7a76fba52bef41f8cff6f9a852ef44053217e9b250e274a9ed929037347c",
+        "savedCopySha256": "0fa9714b2a383b3f2b2733bd17d4d3f05c994564c64b2653d10b08660977270b",
+        "sampleCount": 22650,
+        "maximumBaselineError": 1.1920928955078125e-7,
+        "maximumReloadError": 0.0
+      },
+      {
+        "source": "subjects/wolf-thorn/source.blend",
+        "sourceSha256": "77d7b574d98871072a70c469f6c6d0eaf0399256e6ae2160b77d553719979c52",
+        "savedCopySha256": "a2492016a74a7bbb3c76e56e66cf11ea8548b02f59db62e413c6de8c03240ce8",
+        "sampleCount": 23650,
+        "maximumBaselineError": 1.1920928955078125e-7,
+        "maximumReloadError": 0.0
+      }
+    ],
+    "sampledNumericComponents": 4575324,
+    "maximumBaselineError": 1.6093254089355469e-6,
+    "maximumReloadError": 0.0
+  },
+  "registeredAssets": [
+    {
+      "id": "briar-hydra",
+      "previousReceipt": "packages/dcc-workbench/assets/briar-hydra/releases/629eaf0d643e011e2e68f7edfc8b9cb0bbce347ef0d92b188312a28aae5b499b/receipt.json",
+      "receipt": "packages/dcc-workbench/assets/briar-hydra/releases/79b5493d0d523a9406d1247c75c3d06f172181fb47e0bffea5983deaa813aba9/receipt.json",
+      "model": "packages/dcc-workbench/assets/briar-hydra/releases/79b5493d0d523a9406d1247c75c3d06f172181fb47e0bffea5983deaa813aba9/model.glb",
+      "source": "packages/dcc-workbench/assets/briar-hydra/releases/79b5493d0d523a9406d1247c75c3d06f172181fb47e0bffea5983deaa813aba9/source.blend",
+      "reviewScope": "gallery",
+      "modelSha256": "59cfb1b708083994d91d6afef9d7bc7bb474a0c94cfd6cbecdf521f41d70669c",
+      "poseAgreement": {
+        "sampleVertices": 2624,
+        "sampledObjects": 164,
+        "sampledSkins": 11,
+        "sampledRigid": 153,
+        "maxRestMatchError": 9.923301524748396e-7,
+        "maxPoseError": 1.232444360491636e-6,
+        "perPose": [
+          {
+            "seconds": 0,
+            "maxError": 9.923301524748396e-7
+          },
+          {
+            "seconds": 1.5,
+            "maxError": 1.232444360491636e-6
+          },
+          {
+            "seconds": 3,
+            "maxError": 1.0668515254693693e-6
+          },
+          {
+            "seconds": 4.5,
+            "maxError": 1.119535790508068e-6
+          },
+          {
+            "seconds": 6,
+            "maxError": 9.923301524748396e-7
+          }
+        ]
+      }
+    },
+    {
+      "id": "nightjar",
+      "previousReceipt": "packages/dcc-workbench/assets/nightjar/published/releases/98308026c04bbde1bd352d97a322899920d1217c285e97720de309c54e54cf3e/receipt.json",
+      "receipt": "packages/dcc-workbench/assets/nightjar/published/releases/c1f9f20a0da199a02d309b105cb97c70736e54f2f6496bc3c14585727dc15926/receipt.json",
+      "model": "packages/dcc-workbench/assets/nightjar/published/releases/c1f9f20a0da199a02d309b105cb97c70736e54f2f6496bc3c14585727dc15926/model.glb",
+      "source": "packages/dcc-workbench/assets/nightjar/published/releases/c1f9f20a0da199a02d309b105cb97c70736e54f2f6496bc3c14585727dc15926/source.blend",
+      "reviewScope": "gallery",
+      "modelSha256": "6f93cfe60992f551025c004da66254e218999ef48f653f9d3188f49050dd244c",
+      "poseAgreement": {
+        "sampleVertices": 1360,
+        "sampledObjects": 85,
+        "sampledSkins": 1,
+        "sampledRigid": 84,
+        "maxRestMatchError": 2.115843883255861e-7,
+        "maxPoseError": 2.482095032213916e-7,
+        "perPose": [
+          {
+            "seconds": 0,
+            "maxError": 2.115843883255861e-7
+          },
+          {
+            "seconds": 1.5,
+            "maxError": 2.482095032213916e-7
+          },
+          {
+            "seconds": 3,
+            "maxError": 2.115843883255861e-7
+          },
+          {
+            "seconds": 4.5,
+            "maxError": 2.4603079790732975e-7
+          },
+          {
+            "seconds": 6,
+            "maxError": 2.115843883255861e-7
+          }
+        ]
+      }
+    },
+    {
+      "id": "phoenix",
+      "previousReceipt": "packages/dcc-workbench/assets/phoenix/published/releases/d467985aa6562b42a86c226c24439a8e3f621cb5fe766f6a07466f0e19c617f8/receipt.json",
+      "receipt": "packages/dcc-workbench/assets/phoenix/published/releases/8ae925cba429c146a7677857978b4cceea948f1235c127b0760d8a4e7bfa36d4/receipt.json",
+      "model": "packages/dcc-workbench/assets/phoenix/published/releases/8ae925cba429c146a7677857978b4cceea948f1235c127b0760d8a4e7bfa36d4/model.glb",
+      "source": "packages/dcc-workbench/assets/phoenix/published/releases/8ae925cba429c146a7677857978b4cceea948f1235c127b0760d8a4e7bfa36d4/source.blend",
+      "reviewScope": "gallery",
+      "modelSha256": "a2ce234a0fe8772270636ca3cc83d82dbd750f2b965075f6a750118bbdee8e44",
+      "poseAgreement": {
+        "sampleVertices": 7728,
+        "sampledObjects": 483,
+        "sampledSkins": 169,
+        "sampledRigid": 314,
+        "maxRestMatchError": 5.588915315718309e-7,
+        "maxPoseError": 7.2497894971696e-7,
+        "perPose": [
+          {
+            "seconds": 0,
+            "maxError": 5.588915315718309e-7
+          },
+          {
+            "seconds": 1.5,
+            "maxError": 7.2497894971696e-7
+          },
+          {
+            "seconds": 3,
+            "maxError": 4.0985807507221564e-7
+          },
+          {
+            "seconds": 4.5,
+            "maxError": 5.073193332119584e-7
+          },
+          {
+            "seconds": 6,
+            "maxError": 5.588915315718309e-7
+          }
+        ]
+      }
+    },
+    {
+      "id": "stormroc",
+      "previousReceipt": "packages/dcc-workbench/assets/stormroc/published/releases/ab75cdff0fdc2db93762041349eae0125c5e3dc79903eaf1689ac4f672c4cbf4/receipt.json",
+      "receipt": "packages/dcc-workbench/assets/stormroc/published/releases/6150ddd9de2d2cc99a48776d499f2ea69fbb4fe536446ae84a47135c57a06619/receipt.json",
+      "model": "packages/dcc-workbench/assets/stormroc/published/releases/6150ddd9de2d2cc99a48776d499f2ea69fbb4fe536446ae84a47135c57a06619/model.glb",
+      "source": "packages/dcc-workbench/assets/stormroc/published/releases/6150ddd9de2d2cc99a48776d499f2ea69fbb4fe536446ae84a47135c57a06619/source.blend",
+      "reviewScope": "gallery",
+      "modelSha256": "f4700fdbaaec84ac719dfd11522a44a0cb7f718a3ec42e93450a63e44d902444",
+      "poseAgreement": {
+        "sampleVertices": 6496,
+        "sampledObjects": 406,
+        "sampledSkins": 67,
+        "sampledRigid": 339,
+        "maxRestMatchError": 1.8907453925087333e-7,
+        "maxPoseError": 1.208540837415993e-6,
+        "perPose": [
+          {
+            "seconds": 0,
+            "maxError": 1.8907453925087333e-7
+          },
+          {
+            "seconds": 1.5,
+            "maxError": 1.208540837415993e-6
+          },
+          {
+            "seconds": 3,
+            "maxError": 5.02796752643694e-7
+          },
+          {
+            "seconds": 4.5,
+            "maxError": 9.540729039331507e-7
+          },
+          {
+            "seconds": 6,
+            "maxError": 1.8907453925087333e-7
+          }
+        ]
+      }
+    },
+    {
+      "id": "prowler",
+      "previousReceipt": "packages/dcc-workbench/assets/prowler/published/releases/40a5e938cf0619e32e43c138f35f7ae4a343831ef0464722114b65114c95f294/receipt.json",
+      "receipt": "packages/dcc-workbench/assets/prowler/published/releases/3b5a4026ad2b80106a24d4684c7e73e973dffcd1727c12f4d41fed505cad64fd/receipt.json",
+      "model": "packages/dcc-workbench/assets/prowler/published/releases/3b5a4026ad2b80106a24d4684c7e73e973dffcd1727c12f4d41fed505cad64fd/model.glb",
+      "source": "packages/dcc-workbench/assets/prowler/published/releases/3b5a4026ad2b80106a24d4684c7e73e973dffcd1727c12f4d41fed505cad64fd/source.blend",
+      "reviewScope": "gallery",
+      "modelSha256": "d49fa20f641210fd8e3768beb7984c543826b837820236f710afaf27dc63b96d",
+      "poseAgreement": {
+        "sampleVertices": 704,
+        "sampledObjects": 44,
+        "sampledSkins": 2,
+        "sampledRigid": 42,
+        "maxRestMatchError": 3.91264154287527e-7,
+        "maxPoseError": 5.226391680327049e-7,
+        "perPose": [
+          {
+            "seconds": 0,
+            "maxError": 3.91264154287527e-7
+          },
+          {
+            "seconds": 1.5,
+            "maxError": 4.7333195603737185e-7
+          },
+          {
+            "seconds": 3,
+            "maxError": 5.226391680327049e-7
+          },
+          {
+            "seconds": 4.5,
+            "maxError": 4.4880846546771126e-7
+          },
+          {
+            "seconds": 6,
+            "maxError": 3.91264154287527e-7
+          }
+        ]
+      }
+    },
+    {
+      "id": "wolf",
+      "previousReceipt": "packages/dcc-workbench/assets/wolf/published/releases/d3d1accf1ec83581ed90a0e11b215548b8061690a245bfcfd18a499425fccb60/receipt.json",
+      "receipt": "packages/dcc-workbench/assets/wolf/published/releases/acd143fab168d59a66e376ac1afdb21826e0e1da12f1684b0b8cda9750b0b533/receipt.json",
+      "model": "packages/dcc-workbench/assets/wolf/published/releases/acd143fab168d59a66e376ac1afdb21826e0e1da12f1684b0b8cda9750b0b533/model.glb",
+      "source": "packages/dcc-workbench/assets/wolf/published/releases/acd143fab168d59a66e376ac1afdb21826e0e1da12f1684b0b8cda9750b0b533/source.blend",
+      "reviewScope": "gallery",
+      "modelSha256": "d25092d2541327aabba2d124759519304e87ac64231e5462a7a57c63cc89c22f",
+      "poseAgreement": {
+        "sampleVertices": 602,
+        "sampledObjects": 39,
+        "sampledSkins": 2,
+        "sampledRigid": 37,
+        "maxRestMatchError": 3.1996801262385106e-7,
+        "maxPoseError": 8.680933141032038e-7,
+        "perPose": [
+          {
+            "seconds": 0,
+            "maxError": 3.1996801262385106e-7
+          },
+          {
+            "seconds": 1.5,
+            "maxError": 7.237172311519383e-7
+          },
+          {
+            "seconds": 3,
+            "maxError": 5.440336885463208e-7
+          },
+          {
+            "seconds": 4.5,
+            "maxError": 8.680933141032038e-7
+          },
+          {
+            "seconds": 6,
+            "maxError": 3.1996801262385106e-7
+          }
+        ]
+      }
+    },
+    {
+      "id": "wolf-bloom",
+      "previousReceipt": "packages/dcc-workbench/assets/wolf-bloom/published/releases/25a52679cb024b9f00d98f0310c641a6c82a5b1f2caa1f2ef417674286209bdf/receipt.json",
+      "receipt": "packages/dcc-workbench/assets/wolf-bloom/published/releases/ac79e2c7939496161c898a57e3f6ba516756ab4bb1a706f2e957c8c15bb43efa/receipt.json",
+      "model": "packages/dcc-workbench/assets/wolf-bloom/published/releases/ac79e2c7939496161c898a57e3f6ba516756ab4bb1a706f2e957c8c15bb43efa/model.glb",
+      "source": "packages/dcc-workbench/assets/wolf-bloom/published/releases/ac79e2c7939496161c898a57e3f6ba516756ab4bb1a706f2e957c8c15bb43efa/source.blend",
+      "reviewScope": "gallery",
+      "modelSha256": "1245476aac7bf855a875436754e87706f345ff83bf5f7bdcaa7febda6a008743",
+      "poseAgreement": {
+        "sampleVertices": 682,
+        "sampledObjects": 44,
+        "sampledSkins": 2,
+        "sampledRigid": 42,
+        "maxRestMatchError": 3.1996801262385106e-7,
+        "maxPoseError": 8.680933141032038e-7,
+        "perPose": [
+          {
+            "seconds": 0,
+            "maxError": 3.1996801262385106e-7
+          },
+          {
+            "seconds": 1.5,
+            "maxError": 7.237172311519383e-7
+          },
+          {
+            "seconds": 3,
+            "maxError": 5.440336885463208e-7
+          },
+          {
+            "seconds": 4.5,
+            "maxError": 8.680933141032038e-7
+          },
+          {
+            "seconds": 6,
+            "maxError": 3.1996801262385106e-7
+          }
+        ]
+      }
+    },
+    {
+      "id": "wolf-elder",
+      "previousReceipt": "packages/dcc-workbench/assets/wolf-elder/published/releases/aab4df591adb92f6afeb7e0ac3087f7a5510add05bb176114ec0adf283663533/receipt.json",
+      "receipt": "packages/dcc-workbench/assets/wolf-elder/published/releases/eec418d1c7d31960587b517b1490584bd3b8850ff1c73880757ea7216bb5f20e/receipt.json",
+      "model": "packages/dcc-workbench/assets/wolf-elder/published/releases/eec418d1c7d31960587b517b1490584bd3b8850ff1c73880757ea7216bb5f20e/model.glb",
+      "source": "packages/dcc-workbench/assets/wolf-elder/published/releases/eec418d1c7d31960587b517b1490584bd3b8850ff1c73880757ea7216bb5f20e/source.blend",
+      "reviewScope": "gallery",
+      "modelSha256": "d65b45dfd2e196d9bf92c8d6b948e0bee4df7326ba48f9a6cd2b1a4350cb8fca",
+      "poseAgreement": {
+        "sampleVertices": 602,
+        "sampledObjects": 39,
+        "sampledSkins": 2,
+        "sampledRigid": 37,
+        "maxRestMatchError": 3.1996801262385106e-7,
+        "maxPoseError": 8.680933141032038e-7,
+        "perPose": [
+          {
+            "seconds": 0,
+            "maxError": 3.1996801262385106e-7
+          },
+          {
+            "seconds": 1.5,
+            "maxError": 7.237172311519383e-7
+          },
+          {
+            "seconds": 3,
+            "maxError": 5.440336885463208e-7
+          },
+          {
+            "seconds": 4.5,
+            "maxError": 8.680933141032038e-7
+          },
+          {
+            "seconds": 6,
+            "maxError": 3.1996801262385106e-7
+          }
+        ]
+      }
+    },
+    {
+      "id": "matriarch",
+      "previousReceipt": "packages/dcc-workbench/assets/matriarch/published/releases/34dbd1b3085e1295797c49dec112de36740b6cb174514d7a32fa94c20df2e678/receipt.json",
+      "receipt": "packages/dcc-workbench/assets/matriarch/published/releases/d153d16e1080081e183b3e6d4ceea62bd6f43b881b9098bd1161fbcfcb7f0922/receipt.json",
+      "model": "packages/dcc-workbench/assets/matriarch/published/releases/d153d16e1080081e183b3e6d4ceea62bd6f43b881b9098bd1161fbcfcb7f0922/model.glb",
+      "source": "packages/dcc-workbench/assets/matriarch/published/releases/d153d16e1080081e183b3e6d4ceea62bd6f43b881b9098bd1161fbcfcb7f0922/source.blend",
+      "reviewScope": "gallery",
+      "modelSha256": "520f1eddaaade576e7eb84c1ad74c627fe241b9b72ce4e3c84c6670e949b4e46",
+      "poseAgreement": {
+        "sampleVertices": 624,
+        "sampledObjects": 39,
+        "sampledSkins": 1,
+        "sampledRigid": 38,
+        "maxRestMatchError": 5.192178940243268e-7,
+        "maxPoseError": 7.063015528977608e-7,
+        "perPose": [
+          {
+            "seconds": 0,
+            "maxError": 5.192178940243268e-7
+          },
+          {
+            "seconds": 1.5,
+            "maxError": 5.960024938795243e-7
+          },
+          {
+            "seconds": 3,
+            "maxError": 5.274674044598914e-7
+          },
+          {
+            "seconds": 4.5,
+            "maxError": 7.063015528977608e-7
+          },
+          {
+            "seconds": 6,
+            "maxError": 5.192178940243268e-7
+          }
+        ]
+      }
+    },
+    {
+      "id": "wolf-thorn",
+      "previousReceipt": "packages/dcc-workbench/assets/wolf-thorn/published/releases/144e0b9ab19a6922caa2676f859bb0167e744c40fac42851203f031320b587c3/receipt.json",
+      "receipt": "packages/dcc-workbench/assets/wolf-thorn/published/releases/31397195e80f44ab47b34a2a989e9d446f26c41f2479e03fc5078d632eb710e1/receipt.json",
+      "model": "packages/dcc-workbench/assets/wolf-thorn/published/releases/31397195e80f44ab47b34a2a989e9d446f26c41f2479e03fc5078d632eb710e1/model.glb",
+      "source": "packages/dcc-workbench/assets/wolf-thorn/published/releases/31397195e80f44ab47b34a2a989e9d446f26c41f2479e03fc5078d632eb710e1/source.blend",
+      "reviewScope": "gallery",
+      "modelSha256": "e183310b25d34310a112747f5df25dbadf1dac782b5f5205fd7dc64a9b7c08b7",
+      "poseAgreement": {
+        "sampleVertices": 666,
+        "sampledObjects": 43,
+        "sampledSkins": 2,
+        "sampledRigid": 41,
+        "maxRestMatchError": 3.1996801262385106e-7,
+        "maxPoseError": 8.680933141032038e-7,
+        "perPose": [
+          {
+            "seconds": 0,
+            "maxError": 3.1996801262385106e-7
+          },
+          {
+            "seconds": 1.5,
+            "maxError": 7.237172311519383e-7
+          },
+          {
+            "seconds": 3,
+            "maxError": 5.440336885463208e-7
+          },
+          {
+            "seconds": 4.5,
+            "maxError": 8.680933141032038e-7
+          },
+          {
+            "seconds": 6,
+            "maxError": 3.1996801262385106e-7
+          }
+        ]
+      }
+    }
+  ],
+  "deliveryChanges": [
+    {
+      "path": "packages/dcc-workbench/assets/canid/russet.json",
+      "before": "7f98571938097beb79fbb828bd974ffdd22eadc87bbd4abdd68c84a33f936fd2",
+      "after": "2e16b0f95c684660eeacaf0ee3c9eecdcc3c3485edfc9161a55352b58c1d537b",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/ash.json",
+      "before": "681ea537d4088e278dcd0bf47bde7337268667d41718cc8e328a98fc206180df",
+      "after": "6f0661bd6d18510303073df6e3b9a32948c4557d32657648bd73a5601a2cec97",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/moss.glb",
+      "before": "fbb1e1abda26c100c51baa819bb25cf5b1de713319a2469302922e90753b4a63",
+      "after": "5184d771bd1acf1831e64ecfef69d39c136167146af10aa9d327d7e0a5034f3f",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/russet.glb",
+      "before": "9490c9ea22117be85700d51a13f42de0ad75b72d4e45408fdb7e588f93a1b2aa",
+      "after": "bf79ac62ef2ad7b499173baa34643423f223ed7020affbaff5ab41f37ef2d6b5",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/moss.json",
+      "before": "165fa225c3c4b82f1568c06bcacec0ac9250e48e810c98ce7ca84654bcc80f28",
+      "after": "13d1db16468655bbe734f50a6fb3aec64699ef43d604f87c4431e5636d47aa9f",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/ash.glb",
+      "before": "5cb8579885bca68871c82ba31241590e200e58ff9599e788b4ff186a1e612e3c",
+      "after": "977993b330627a106f94db253ffde42fd3e2c7878ae0e3519e8874d766119bc4",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/russet.json",
+      "before": "c0654c624b9692d26196f59b650dc9e1cc23d6ef36a6e77a2af0cf01f482eada",
+      "after": "373238fb6e38724865a96709525535966d99bb518e7d11cab8bf9fba1520535a",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/russet.motions.json",
+      "before": "e6a785895c6127269d86714f3ea6d165c5b504d3fd4315d1e85d73c79a56e94f",
+      "after": "e6a785895c6127269d86714f3ea6d165c5b504d3fd4315d1e85d73c79a56e94f",
+      "bytesChanged": false
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/ash.json",
+      "before": "86a81fc50765af042d51075bed217e1138206e601b1874caef0f7289a3d41049",
+      "after": "da316d930ea6013488743635a2ffbda3390cfdc642c2431a04b773206f62359b",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/moss.glb",
+      "before": "c4b4743e84a2195952073e66135d54e3dae6f325ec2990a3de54739a74c96382",
+      "after": "34dfc42cece1b95ec7dd2ae445c6c81a69c266283fdb249a8803a253a68d3af3",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/ash.motions.json",
+      "before": "e6a785895c6127269d86714f3ea6d165c5b504d3fd4315d1e85d73c79a56e94f",
+      "after": "e6a785895c6127269d86714f3ea6d165c5b504d3fd4315d1e85d73c79a56e94f",
+      "bytesChanged": false
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/russet.glb",
+      "before": "999e661e60f9b5e54c7d9c300723bba90a35232ea0ed41a1ea12c97d3e33c8af",
+      "after": "019200ef4dc69a75e65a77cfe16c80b83e61ac53e4cbc9a380c0a24c2d488737",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/moss.json",
+      "before": "20db0acbc62ace2f2e9de4e355dec35fbd128be3c599d88bb12f30b13a92caa3",
+      "after": "3bc8a86ef521137b9434734fe47b363438112594d10addd10666c516d9e0f63e",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/ash.glb",
+      "before": "487ba909578f29dba01e511d022d864bafd8def23cd79356773dd53e9d0b5e43",
+      "after": "ec50731cdc78c113743594346665a76b94e75beb0c91b9b4a9f323e32b5b3c44",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/moss.motions.json",
+      "before": "d679992df8529186a3bcec6ad056cdf194ce40023b885778e750c3d311152c5f",
+      "after": "d679992df8529186a3bcec6ad056cdf194ce40023b885778e750c3d311152c5f",
+      "bytesChanged": false
+    },
+    {
+      "path": "packages/dcc-workbench/assets/fox/fox.json",
+      "before": "0d666ff1842c1a2d527bfc968b36139e4b6bb1fe0691a9659e4c144ee9feacb4",
+      "after": "d30d552bcd4748343c4e415a727d35e9e965cbbb9905b0e3ed2317eea2bae494",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/fox/fox.motions.json",
+      "before": "2cfb82e1cc99e07cd48c15187283b4527cb204ee7968827b4200826fc6df064b",
+      "after": "2cfb82e1cc99e07cd48c15187283b4527cb204ee7968827b4200826fc6df064b",
+      "bytesChanged": false
+    },
+    {
+      "path": "packages/dcc-workbench/assets/fox/fox.glb",
+      "before": "9385d129add455a32f9fcfd9b3e3cf39d2f4a2a52ecf7d948474e5a7a05f1d5e",
+      "after": "a13a2321c73f747378e966f556ff9c5fe9e1c722f83c79a470334c12eca1230f",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/boar/boar.glb",
+      "before": "978f892ffaea98e93a43c678596c64317b807dab1efa6e902fd198572a43e767",
+      "after": "ad23a6952efb06c50b39b0382cd90d1e4cebf570dbcd8c50d90d674d2e88cde8",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/boar/boar.json",
+      "before": "5ce239a81e7051daec4a9013a76eded01512d80327f064769841ac52c3153fb9",
+      "after": "46afa0ea38cf775838a316b4953a529334c8f73d20d4818db1436340b698749c",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/boar/boar.motions.json",
+      "before": "c19878647670ea4fbb7c285e8a1f246ce383d6b16bbba9b9b7ef87b71ee9f7a8",
+      "after": "c19878647670ea4fbb7c285e8a1f246ce383d6b16bbba9b9b7ef87b71ee9f7a8",
+      "bytesChanged": false
+    },
+    {
+      "path": "packages/dcc-workbench/assets/raven/raven.glb",
+      "before": "c05566c928fa465cf0e0342da901d0aa94d6093af2da44e6bb8280cf9f9eea51",
+      "after": "e3b3dbb974533a4045d0c696cf54e72a45afd3dbffc5fcc6e545153d735a0ca0",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/raven/raven.json",
+      "before": "8c440b9cca35f5f4ca7329d16bce855482fe47c766ae84ec9b742c4ab264c2df",
+      "after": "e04da8ea69e6a274341c02acba747005006faebf276e92566708d4aba9b66af1",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/raven/raven.motions.json",
+      "before": "5641cc1598a5a44999405378d01b07c8567eea7b651d0c8146ed1ab2c0e483db",
+      "after": "5641cc1598a5a44999405378d01b07c8567eea7b651d0c8146ed1ab2c0e483db",
+      "bytesChanged": false
+    },
+    {
+      "path": "packages/dcc-workbench/assets/otter/otter.json",
+      "before": "096ae2e7d9ac75f12d2ba7e3681ea970b12e9661526d7818baf0e5d048dbec37",
+      "after": "a6e3f19cf797fbc5895b0fdc5004414bfe6e969a4d7e153141d14744453b2208",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/otter/otter.motions.json",
+      "before": "2fb2e96986b5c131c6519aed4156ad37a914b64b114151ba5e6e8ef1ab49d0f8",
+      "after": "2fb2e96986b5c131c6519aed4156ad37a914b64b114151ba5e6e8ef1ab49d0f8",
+      "bytesChanged": false
+    },
+    {
+      "path": "packages/dcc-workbench/assets/otter/otter.glb",
+      "before": "5b9ff334888bc12ad62cd87f8d9dbf6dc07809606e150809966411236bbeecf4",
+      "after": "e9082379850e43fcabf5b71177d725049404f8c71e1e590aca94e68656b5176c",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/hero.glb",
+      "before": "3001c751e883c6a4aa861a23c8d1d9900c7f5347369aaf6156997aca2c18ec8d",
+      "after": "2eba67272f4828b13a03190bc5541e7de5bb06d550b0ae4e9c73104e6352ad3b",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/hero.json",
+      "before": "556feb0197baac2582122fe2cf9cd07b21cd8f2e517a9121a8d0a8adc3cc01f0",
+      "after": "3e69d57a543edc219158c68205ae7b9fe608696912701be4a7fa494e30026748",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/weapons.json",
+      "before": "4d749b64bd15f3b6081b75c282a49b25b0f3976851c2c6dc16b362393cc80e0c",
+      "after": "14e391fb66f1eb4e2cb7f7095b1ca9cb12fd03873906487c96b9b88f4bf9a382",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/weapons.glb",
+      "before": "11201528012f0bc6e75efdc81650e966d4e4509426122c57487858660ff0853d",
+      "after": "dac3b271c91c3a3b9dd91c68231c7f5542c827e1bd78e9d8e0e9333a4e8a0c0c",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-hunter.json",
+      "before": "c63223dabac5b6a69c04f3f83d3b4e3dd6670790a4367f2eeef2896693b53e10",
+      "after": "cef0ad34b0b9feae411c55961e2c840508c2d2fd441f9d94d0e6f8f2ac1521a3",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-hunter.glb",
+      "before": "cf2415716a6d85ffc3b1611c6102e9b089530c623ceb0ac13a4a5ac1086a836a",
+      "after": "ec4567cad3bd2ab1a4e927240bb4d7753cb390e7295e24fe5f39aecb243dac7b",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-archer.json",
+      "before": "16f2e7eda23c83d1ce373458e2daf984bb7d29b03b5f788d29feeeb82ba8c9a5",
+      "after": "e648a2e997d85c66d61a3e8adc39fd4c73408f9ed3c79a595d3554907c7fa318",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-archer.glb",
+      "before": "cbbf4c0a2c7c7cbbd0d035aaefe95eb7da36509e97fe39a59cbcde9fe81037fe",
+      "after": "8645a65132b89bfe85c33affce183bfd973d327e4ce5b3034fcb38e4f10d880a",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-witch.json",
+      "before": "6f894183389c22fb6e43ee85c5b7d502c8bb04ec7d434f10e6d2b83123712e41",
+      "after": "5c568fb1a2ad172f02fe0c5172219f92ca6459efe3f784a458b39969cc67eae2",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-witch.glb",
+      "before": "cf24f938252b567bea320fe7721efffddf3ffd2a723b69fe96fad111a134cf44",
+      "after": "3159b49782d6c99b0ae906ff71b71ed18b79cd4ec4f07f85e7883cc15fdabf9f",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-brute.glb",
+      "before": "b65164652e911cbcc56fdf8dde091906e8a23ffec9d4d58b3c750ea6a3c333e2",
+      "after": "87faf89532ee29b6388b75387c23e1c1e7787f75fe45910ee98f232e3060251d",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-brute.json",
+      "before": "7c4b25ee96d33c4c34b1195f489cec2fd9f719590d889d3046905225e1a1ed86",
+      "after": "03b7e12645e2d9c46e8a4c407f9686e1dba7d27aff391dd1139c12b685bc3205",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-bellwarden.glb",
+      "before": "f1d85bd5771119428ebe72eda562c70d1b795d5e72286618f48e44521826097c",
+      "after": "d2349994deebfb771d235e5715d0dc4a66654e79364c6c1ac4d7ff05f37de683",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-bellwarden.json",
+      "before": "776b93f08d0a541bbf8221be55fd71f91e02bffb21b62328d5d4339f5625a104",
+      "after": "c9de76a2bd3510fd5190e155dfb8ce8a60b3613eba102bdbd50703cca2abd0c1",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-undertow.glb",
+      "before": "9f83c4158bc4dfa4c08a47dfe41b9237d1bc359cdf3876cd1f4952b58463df81",
+      "after": "900c43d2dcf15550571d25cb714181f2486df38759082e870073d2c01f24540a",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-undertow.json",
+      "before": "5ba8b42f98c9aa10ed693018cc3fd702ce02eda6b153a41b5d29af1e18545efa",
+      "after": "596975b78b4936d12116b1da9474b55e6d8e2bb0a84274d71e66a4d12a386192",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-ashregent.glb",
+      "before": "4212ef6eba17dcde4ab7b7c66f64af9ed9aa7a4b8f875f3869331d979bb4af84",
+      "after": "2681b11565db50c26160bf08b1265e91e1767f080feab4b421d2bd8686d0c74e",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-ashregent.json",
+      "before": "dff3e4f47787c5fbf95935bd017ed025f479d474cf04ada1563a98c13c54f746",
+      "after": "556d305784a9ab007534ea16f527252e488de72f0fddb846d6290c62ef7af8d1",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-sovereign.json",
+      "before": "74f37d89130fd7ba1b2f93ceda329e63fc99bf5daaa48398f4004fd28d6d663c",
+      "after": "e6445252008c77593ea2c527609f649ddef4a55c8f2c09ec9aec7b6d98956fd2",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-sovereign.glb",
+      "before": "d14a30dc04c92b16297244c1ea117d1ad4ca0371319949b47473b8dd1dafff65",
+      "after": "6b8b30334a1e5903b81a473d1d6e798ac5382fb8a6d9ac9c099cd3309a33475a",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-sepulcher.json",
+      "before": "44d80a4fc6b9ceb198fcddd7edea2549d4e68fe6b40f7d7b93f20a4137b8cc35",
+      "after": "4ff1a941801f957b0d4c32f7f7dcc38634b333235d2b74940561b96283a745e9",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-sepulcher.glb",
+      "before": "2830a603ea8734a5316dc7cd4f901bbe8c2af9b7b807e09602e34a71401f8076",
+      "after": "aaeb79585c6dc863166b9b7c8299abdc7830e664ae2a36ef1e6a373d3b5485fc",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-archive.glb",
+      "before": "489d41a5227f6778ac85ec1269828cd752a726bb4713c9d2c23fc866435a483c",
+      "after": "7440ee5b3c011a2cd9f9a5a0ec1baa6250948a3d76cd17f97798cf4b3656d507",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-archive.json",
+      "before": "7e3090999617737c17a714204871fb104ab4b4917d6312b67a7882545654670c",
+      "after": "af6a05561fddf29545ff5911b4ee8d6eb72885ed3cc0ff652a49852586e908b1",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-cinder.json",
+      "before": "9774355bf1d41b631b179538a9a20d4bfa3ef0db6d102b06faf5373a55752d49",
+      "after": "e4d7393bad471ab9fd965b35fb02f08820b2e67ed450d3cfbcb2e6e3d6208dd1",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-cinder.glb",
+      "before": "c301582c7552dfaffa75c7317024ca0d42aa4cabd8c748b4dff44c8c4f3e92dc",
+      "after": "5b1d60479bd2d2bced628bae0f9b2c35866e816ee61810394842c0627c5b641e",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-starless.glb",
+      "before": "a8639a7a0f3b255277b8a420f3c20cba3f6a487ef45a5236e6093a5dfeb207f4",
+      "after": "fa5e3ccfedf562e02b3d6ae69ce8b56d0c6685a06e33d8482e285ea2169293fa",
+      "bytesChanged": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-starless.json",
+      "before": "ea24ba1b4a854011ba1e4ca755e2b5f7dc82f41893d97c3e2d4d4885e778aa8a",
+      "after": "5a16afa8c618fd6e7b4e844055f13b420cef846b7ae4cb2c3c6e20f82d422c19",
+      "bytesChanged": true
+    }
+  ],
+  "verification": {
+    "registeredCandidateBrowserCases": 10,
+    "nativeFamilies": [
+      {
+        "id": "canid",
+        "script": "subjects/canid/authoring/verify.py",
+        "args": [
+          "packages/dcc-workbench/subjects/canid/refined",
+          "test-results/blender-migration-2026-10-22/native/canid"
+        ],
+        "status": 0
+      },
+      {
+        "id": "fox",
+        "script": "subjects/canid/authoring/fox_verify.py",
+        "args": [
+          "verify",
+          "--root",
+          "packages/dcc-workbench/subjects/fox",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/fox"
+        ],
+        "status": 0
+      },
+      {
+        "id": "boar",
+        "script": "subjects/boar/authoring/boar_delivery.py",
+        "args": [
+          "verify",
+          "--root",
+          "packages/dcc-workbench/subjects/boar",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/boar"
+        ],
+        "status": 0
+      },
+      {
+        "id": "raven",
+        "script": "subjects/raven/authoring/raven_delivery.py",
+        "args": [
+          "verify",
+          "--root",
+          "packages/dcc-workbench/subjects/raven",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/raven"
+        ],
+        "status": 0
+      },
+      {
+        "id": "otter",
+        "script": "subjects/otter/authoring/otter_delivery.py",
+        "args": [
+          "verify",
+          "--root",
+          "packages/dcc-workbench/subjects/otter",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/otter"
+        ],
+        "status": 0
+      },
+      {
+        "id": "hero",
+        "script": "subjects/night-passage/authoring/hero_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/hero/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/hero"
+        ],
+        "status": 0
+      },
+      {
+        "id": "weapons",
+        "script": "subjects/night-passage/authoring/weapon_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/weapons/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/weapons"
+        ],
+        "status": 0
+      },
+      {
+        "id": "enemy-hunter",
+        "script": "subjects/night-passage/authoring/enemy_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/enemies/hunter/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/enemy-hunter"
+        ],
+        "status": 0
+      },
+      {
+        "id": "enemy-archer",
+        "script": "subjects/night-passage/authoring/enemy_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/enemies/archer/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/enemy-archer"
+        ],
+        "status": 0
+      },
+      {
+        "id": "enemy-witch",
+        "script": "subjects/night-passage/authoring/enemy_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/enemies/witch/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/enemy-witch"
+        ],
+        "status": 0
+      },
+      {
+        "id": "enemy-brute",
+        "script": "subjects/night-passage/authoring/enemy_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/enemies/brute/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/enemy-brute"
+        ],
+        "status": 0
+      },
+      {
+        "id": "guardian-bellwarden",
+        "script": "subjects/night-passage/authoring/guardian_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/guardians/bellwarden/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/guardian-bellwarden"
+        ],
+        "status": 0
+      },
+      {
+        "id": "guardian-undertow",
+        "script": "subjects/night-passage/authoring/guardian_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/guardians/undertow/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/guardian-undertow"
+        ],
+        "status": 0
+      },
+      {
+        "id": "guardian-ashregent",
+        "script": "subjects/night-passage/authoring/guardian_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/guardians/ashregent/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/guardian-ashregent"
+        ],
+        "status": 0
+      },
+      {
+        "id": "guardian-sovereign",
+        "script": "subjects/night-passage/authoring/guardian_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/guardians/sovereign/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/guardian-sovereign"
+        ],
+        "status": 0
+      },
+      {
+        "id": "environment-sepulcher",
+        "script": "subjects/night-passage/authoring/environment_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/environments/sepulcher/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/environment-sepulcher"
+        ],
+        "status": 0
+      },
+      {
+        "id": "environment-archive",
+        "script": "subjects/night-passage/authoring/environment_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/environments/archive/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/environment-archive"
+        ],
+        "status": 0
+      },
+      {
+        "id": "environment-cinder",
+        "script": "subjects/night-passage/authoring/environment_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/environments/cinder/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/environment-cinder"
+        ],
+        "status": 0
+      },
+      {
+        "id": "environment-starless",
+        "script": "subjects/night-passage/authoring/environment_delivery.py",
+        "args": [
+          "verify",
+          "--source",
+          "packages/dcc-workbench/subjects/night-passage/environments/starless/source.blend",
+          "--output",
+          "test-results/blender-migration-2026-10-22/native/environment-starless"
+        ],
+        "status": 0
+      }
+    ],
+    "fullGate": {
+      "command": "npm run check:full",
+      "status": "passed",
+      "applicationTests": 561,
+      "seededSimulations": 37,
+      "geometryTests": 128,
+      "log": "test-results/blender-migration-2026-10-22/check-full-final.log",
+      "sandboxLfsStorage": ".work/cache/lfs-verification",
+      "environmentNote": "The initial application provenance check could not write Git LFS temporary files under protected .git. The final run used process-local lfs.storage in the writable workspace; no persistent Git config changed."
+    },
+    "nativeFamiliesPassed": 19,
+    "hydraRecipe": "passed: fresh construction, Cycles pigment/normal bake, layered animation, saved .blend",
+    "canidRetiming": "passed: 10 newly constructed and retimed actions; all keys linear",
+    "historicalReleaseFileCount": 284,
+    "maintenance": "passed: formatting, inventory, lint, types, Python, tools/DCC contracts and production build",
+    "functionalBrowser": {
+      "status": "passed",
+      "cases": 82,
+      "skipped": 0,
+      "log": "test-results/blender-migration-2026-10-22/browser-functional.log"
+    },
+    "historicalReleases": {
+      "unchanged": true,
+      "files": 284,
+      "pinsSha256": "8661e329c28c7680c071379bf5cd0d7e81fdfe992ab241cf9f0a8420b9aaa73c"
+    },
+    "nativeEditReports": [
+      {
+        "id": "canid",
+        "report": "test-results/blender-migration-2026-10-22/native/canid/verification.json",
+        "summary": {
+          "schemaVersion": 1,
+          "sourceEdit": "look head +0.18 and bite jaw +0.10 at their clip midpoints; bite contact +0.01 seconds",
+          "authoritativeSourcesUnchanged": true,
+          "reconstructionOfExistingMastersRefused": true
+        }
+      },
+      {
+        "id": "fox",
+        "report": "test-results/blender-migration-2026-10-22/native/fox/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "headChangeRadians": 0.18000000715255737,
+          "authoritativeSourcesAndDeliveryUnchanged": true,
+          "editedClip": "sniff",
+          "editedFrame": 120
+        }
+      },
+      {
+        "id": "boar",
+        "report": "test-results/blender-migration-2026-10-22/native/boar/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourcesAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.11999999731779099,
+          "editedClip": "root",
+          "editedFrame": 144
+        }
+      },
+      {
+        "id": "raven",
+        "report": "test-results/blender-migration-2026-10-22/native/raven/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourcesAndDeliveryUnchanged": true,
+          "wristChangeRadians": 0.11999999731779099,
+          "editedClip": "spread",
+          "editedFrame": 156
+        }
+      },
+      {
+        "id": "otter",
+        "report": "test-results/blender-migration-2026-10-22/native/otter/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourcesAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.12000000104308128,
+          "editedClip": "scent",
+          "editedFrame": 150,
+          "samplerSha256": "580164a78dcd6860f7fd80672c70032e2caf09f392123aa8d8991964209eb5dc",
+          "coverage": "each clip at 12 Hz plus both endpoints; 16 vertices per mesh",
+          "geometryDigestVersion": 2,
+          "transformFaultCasesRejected": 4,
+          "validSavedSourceAccepted": true
+        }
+      },
+      {
+        "id": "hero",
+        "report": "test-results/blender-migration-2026-10-22/native/hero/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.30000001192092896,
+          "editedClip": "cast",
+          "editedFrame": 10,
+          "sourceSha256": "22da6084622d81c4e87ae6a534c113f657f6aa6fae21c14c8052c02ca860c120",
+          "modelSha256": "2eba67272f4828b13a03190bc5541e7de5bb06d550b0ae4e9c73104e6352ad3b"
+        }
+      },
+      {
+        "id": "weapons",
+        "report": "test-results/blender-migration-2026-10-22/native/weapons/verification.json",
+        "summary": {
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "edit": "Extend saved sword tip by eight game units, save/reload/export",
+          "sourceSha256": "308a4181f86362d38c98eb0edc65ae7e9154e576739722caa1ceb1981890a2ed",
+          "modelSha256": "dac3b271c91c3a3b9dd91c68231c7f5542c827e1bd78e9d8e0e9333a4e8a0c0c"
+        }
+      },
+      {
+        "id": "enemy-hunter",
+        "report": "test-results/blender-migration-2026-10-22/native/enemy-hunter/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.30000001192092896,
+          "editedClip": "attack",
+          "editedFrame": 10,
+          "sourceSha256": "ec4621999731108756b4d67d472137a5bce47e802055476cb22b4029b8caf9f6",
+          "modelSha256": "ec4567cad3bd2ab1a4e927240bb4d7753cb390e7295e24fe5f39aecb243dac7b"
+        }
+      },
+      {
+        "id": "enemy-archer",
+        "report": "test-results/blender-migration-2026-10-22/native/enemy-archer/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.30000001192092896,
+          "editedClip": "attack",
+          "editedFrame": 10,
+          "sourceSha256": "9761d9769509226fb5a3bc7138c709e6f823c074e1bc2eb0dd058ab9ea08b306",
+          "modelSha256": "8645a65132b89bfe85c33affce183bfd973d327e4ce5b3034fcb38e4f10d880a"
+        }
+      },
+      {
+        "id": "enemy-witch",
+        "report": "test-results/blender-migration-2026-10-22/native/enemy-witch/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.30000001192092896,
+          "editedClip": "attack",
+          "editedFrame": 10,
+          "sourceSha256": "99e957d89679104c1eb7c996781544a18c7a1634de0925b795fda0ea5201f823",
+          "modelSha256": "3159b49782d6c99b0ae906ff71b71ed18b79cd4ec4f07f85e7883cc15fdabf9f"
+        }
+      },
+      {
+        "id": "enemy-brute",
+        "report": "test-results/blender-migration-2026-10-22/native/enemy-brute/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.30000001192092896,
+          "editedClip": "attack",
+          "editedFrame": 10,
+          "sourceSha256": "d20848a108eff3e52e10e6003455afc4e37edf946e640eda0f08854554880752",
+          "modelSha256": "87faf89532ee29b6388b75387c23e1c1e7787f75fe45910ee98f232e3060251d"
+        }
+      },
+      {
+        "id": "guardian-bellwarden",
+        "report": "test-results/blender-migration-2026-10-22/native/guardian-bellwarden/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.30000001192092896,
+          "editedClip": "sweep",
+          "editedFrame": 10,
+          "sourceSha256": "e3d136bd450edbf4177f28d3d05857a24350fcb8aed7e2881c47b5276d7f7f27",
+          "modelSha256": "d2349994deebfb771d235e5715d0dc4a66654e79364c6c1ac4d7ff05f37de683"
+        }
+      },
+      {
+        "id": "guardian-undertow",
+        "report": "test-results/blender-migration-2026-10-22/native/guardian-undertow/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.29999998956918716,
+          "editedClip": "charge",
+          "editedFrame": 10,
+          "sourceSha256": "be8b6f07bad161f950d979ac1f4f9575efc763a53ad895cb249497c33d4ac9d1",
+          "modelSha256": "900c43d2dcf15550571d25cb714181f2486df38759082e870073d2c01f24540a"
+        }
+      },
+      {
+        "id": "guardian-ashregent",
+        "report": "test-results/blender-migration-2026-10-22/native/guardian-ashregent/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.30000000819563866,
+          "editedClip": "cross",
+          "editedFrame": 10,
+          "sourceSha256": "d071806c5f0df8deab4b1c44a88f338631b9efd106af17ec7d07800e2edfff6b",
+          "modelSha256": "2681b11565db50c26160bf08b1265e91e1767f080feab4b421d2bd8686d0c74e"
+        }
+      },
+      {
+        "id": "guardian-sovereign",
+        "report": "test-results/blender-migration-2026-10-22/native/guardian-sovereign/verification.json",
+        "summary": {
+          "meshAndWeightsUnchanged": true,
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "headChangeRadians": 0.30000001937150955,
+          "editedClip": "cross",
+          "editedFrame": 10,
+          "sourceSha256": "b3904c559df88d3f229d8a2c6a4866a001d4efe20c46b22803b63a6c888682d4",
+          "modelSha256": "6b8b30334a1e5903b81a473d1d6e798ac5382fb8a6d9ac9c099cd3309a33475a"
+        }
+      },
+      {
+        "id": "environment-sepulcher",
+        "report": "test-results/blender-migration-2026-10-22/native/environment-sepulcher/verification.json",
+        "summary": {
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "editedObject": "Pillar_cap",
+          "vertexChangeUnits": 4,
+          "edit": "Raise saved Pillar_cap top by four game units, save/reload/export",
+          "sourceSha256": "ee66b9ec7b1e3c79941a01574e7d6f55e74d7281b11d020b4ab899ffc5f0ef41",
+          "modelSha256": "aaeb79585c6dc863166b9b7c8299abdc7830e664ae2a36ef1e6a373d3b5485fc"
+        }
+      },
+      {
+        "id": "environment-archive",
+        "report": "test-results/blender-migration-2026-10-22/native/environment-archive/verification.json",
+        "summary": {
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "editedObject": "Pillar_cap",
+          "vertexChangeUnits": 4,
+          "edit": "Raise saved Pillar_cap top by four game units, save/reload/export",
+          "sourceSha256": "e225e205cf44da6a6e28d904b307a2ac047f165e63fbf747ca3d386b8ccf8edf",
+          "modelSha256": "7440ee5b3c011a2cd9f9a5a0ec1baa6250948a3d76cd17f97798cf4b3656d507"
+        }
+      },
+      {
+        "id": "environment-cinder",
+        "report": "test-results/blender-migration-2026-10-22/native/environment-cinder/verification.json",
+        "summary": {
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "editedObject": "Pillar_cap",
+          "vertexChangeUnits": 4,
+          "edit": "Raise saved Pillar_cap top by four game units, save/reload/export",
+          "sourceSha256": "27651a84df3e97d4be57fbc94a343408f98c96cf2d5aec32c80ed6d7b0f83dc9",
+          "modelSha256": "5b1d60479bd2d2bced628bae0f9b2c35866e816ee61810394842c0627c5b641e"
+        }
+      },
+      {
+        "id": "environment-starless",
+        "report": "test-results/blender-migration-2026-10-22/native/environment-starless/verification.json",
+        "summary": {
+          "authoritativeSourceAndDeliveryUnchanged": true,
+          "editedObject": "Pillar_cap",
+          "vertexChangeUnits": 4,
+          "edit": "Raise saved Pillar_cap top by four game units, save/reload/export",
+          "sourceSha256": "e404722c73ce6e4bbcdc7a053c9d0fe9ce0ccc870f6484900199e63f3705d003",
+          "modelSha256": "fa5e3ccfedf562e02b3d6ae69ce8b56d0c6685a06e33d8482e285ea2169293fa"
+        }
+      }
+    ],
+    "nativeBrowser": {
+      "status": "passed",
+      "cases": 17,
+      "skipped": 0,
+      "log": "test-results/blender-migration-2026-10-22/browser-native.log"
+    },
+    "visualSelfReview": {
+      "scope": "Runtime migration; inherited art limitations remain",
+      "galleryAssets": 10,
+      "motionSubjects": ["fox", "boar", "raven", "otter"],
+      "captures": [
+        "test-results/blender-migration-2026-10-22/gallery/contact-0.jpg",
+        "test-results/blender-migration-2026-10-22/gallery/contact-1.jpg",
+        "test-results/blender-migration-2026-10-22/gallery/contact-2.jpg",
+        "test-results/blender-migration-2026-10-22/motion-review.jpg"
+      ]
+    },
+    "legacyNativeBrowser": {
+      "status": "passed",
+      "cases": 1,
+      "skipped": 0,
+      "log": "test-results/blender-migration-2026-10-22/legacy-native.log"
+    },
+    "temporaryFamilyPoseArrays": {
+      "removedAfterAgreement": 14,
+      "bytes": 49926364,
+      "receipt": "test-results/blender-migration-2026-10-22/native/temporary-pose-retirement.json"
+    },
+    "postRemoval": {
+      "authoringCli": "/Applications/Blender.app/Contents/MacOS/Blender",
+      "sourceAndDeliveryHashesIntact": true,
+      "allPublicationsVerified": true,
+      "formatAndInventory": "passed",
+      "gitDiffCheck": "passed"
+    }
+  },
+  "localRuntime": {
+    "path": "packages/dcc-workbench/.runtime/Blender.app",
+    "priorVersion": "4.5.14 LTS",
+    "removalAuthorized": true,
+    "removed": true,
+    "allocatedBytesBeforeRemoval": 853102592,
+    "executableSha256": "4708959c3d9a59e549a4ee94c7aaeddd96019bf4dccfe5e4335de6a7c8d04a47"
+  },
+  "limits": [
+    "Installed build is a release candidate, not a certified stable release.",
+    "Original working masters and historical releases are preserved; new-format saves were tested on fresh copies.",
+    "Owner migration self-review is not independent aesthetic approval.",
+    "Cross-version surface and bone checks are sampled, not exhaustive."
+  ],
+  "deliveryStructure": [
+    {
+      "path": "packages/dcc-workbench/assets/canid/moss.glb",
+      "beforeBytes": 1056724,
+      "afterBytes": 1056852,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/russet.glb",
+      "beforeBytes": 1084240,
+      "afterBytes": 1084192,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/ash.glb",
+      "beforeBytes": 1084268,
+      "afterBytes": 1084220,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/moss.glb",
+      "beforeBytes": 3801084,
+      "afterBytes": 3801056,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/russet.glb",
+      "beforeBytes": 3810280,
+      "afterBytes": 3810312,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/canid/refined/ash.glb",
+      "beforeBytes": 3803760,
+      "afterBytes": 3803792,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/fox/fox.glb",
+      "beforeBytes": 3283740,
+      "afterBytes": 3283892,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/boar/boar.glb",
+      "beforeBytes": 2828860,
+      "afterBytes": 2828340,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/raven/raven.glb",
+      "beforeBytes": 2930324,
+      "afterBytes": 2930940,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/otter/otter.glb",
+      "beforeBytes": 3940020,
+      "afterBytes": 3940172,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/hero.glb",
+      "beforeBytes": 351500,
+      "afterBytes": 351088,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/weapons.glb",
+      "beforeBytes": 81392,
+      "afterBytes": 81392,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-hunter.glb",
+      "beforeBytes": 98284,
+      "afterBytes": 98284,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-archer.glb",
+      "beforeBytes": 104488,
+      "afterBytes": 104820,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-witch.glb",
+      "beforeBytes": 85148,
+      "afterBytes": 85412,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/enemy-brute.glb",
+      "beforeBytes": 160984,
+      "afterBytes": 160984,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-bellwarden.glb",
+      "beforeBytes": 296224,
+      "afterBytes": 296224,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-undertow.glb",
+      "beforeBytes": 310364,
+      "afterBytes": 310364,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-ashregent.glb",
+      "beforeBytes": 248288,
+      "afterBytes": 248288,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/guardian-sovereign.glb",
+      "beforeBytes": 458248,
+      "afterBytes": 458248,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-sepulcher.glb",
+      "beforeBytes": 191980,
+      "afterBytes": 191980,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-archive.glb",
+      "beforeBytes": 279016,
+      "afterBytes": 279024,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-cinder.glb",
+      "beforeBytes": 170176,
+      "afterBytes": 170180,
+      "structuralMetadataEqual": true
+    },
+    {
+      "path": "packages/dcc-workbench/assets/night-passage/environment-starless.glb",
+      "beforeBytes": 90900,
+      "afterBytes": 90896,
+      "structuralMetadataEqual": true
+    }
+  ],
+  "closeout": {
+    "review": "Two owner review passes; no further behavior changes required. README asset list and gate scope corrected.",
+    "cleanupReceipt": "docs/engineering/evidence/blender-5.2-cleanup.json",
+    "archivedLocalPaths": "Source-bearing copies and superseded candidate paths resolve through the cleanup occurrence manifest. Selected logs and captures remain live; routine browser media was pruned.",
+    "sourceCodeUnchangedSinceFullVerification": true
+  }
+}

@@ -3,14 +3,14 @@
   "character": "boar",
   "sourceSha256": "eaeb03c0e5186f4c7871e73959e904c74aae6434ad5fc3cc9910dbb119207526",
   "motionSha256": "4fa9a1ac607ec5fb09029d35e738c9ed92cdb9db858a837177790f40b76ce7be",
-  "modelSha256": "978f892ffaea98e93a43c678596c64317b807dab1efa6e902fd198572a43e767",
+  "modelSha256": "ad23a6952efb06c50b39b0382cd90d1e4cebf570dbcd8c50d90d674d2e88cde8",
   "meshSha256": "305ce26c7c5a4a6c72dad9a2d6116144f44c9b77dea846dbee3fec380affd44c",
-  "blender": "4.5.14 LTS",
+  "blender": "5.2.3 LTS Release Candidate",
   "exportScripts": {
-    "subjects/boar/authoring/boar_delivery.py": "636e707f9b3f23c61f10e9e6d064c3bc55ed84adf4a60d119390b492c034eb5c",
+    "subjects/boar/authoring/boar_delivery.py": "934733d1a1fa081fcfcdad71daac20fb19df9c18790b81a6801510d81803a06b",
     "subjects/boar/authoring/boar_rig.py": "8eb7a580a354a9ed8896335649c329b141fc78e99332e71facdd63ffd6eee13d",
     "subjects/boar/authoring/boar_motion.py": "3fe47bd399cb2bc31083515638a3ca3fc128d484e7516ef55784cf092de51510",
-    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
+    "blender/native_types.py": "b0df7ac9ae11e3355c040b47d4bae4032264dd0e0683fabc674714f8cf80eaac"
   },
   "clips": {
     "idle": {
@@ -5460,44 +5460,44 @@
     "idle": {
       "minimumSurfaceHeight": 0.011999390088021755,
       "maximumHoofTargetError": 6.96539634020343e-07,
-      "maximumPlantedDigitDisplacement": 7.084622918737195e-07,
-      "maximumSoleHeightError": 6.231591105458623e-07,
+      "maximumPlantedDigitDisplacement": 5.832221263090799e-07,
+      "maximumSoleHeightError": 6.061866879465694e-07,
       "loopMatrixError": 0.0,
       "frames": 241,
       "supportSites": "both digits of each hoof; saved stance intervals"
     },
     "walk": {
-      "minimumSurfaceHeight": 0.011999424546957016,
-      "maximumHoofTargetError": 5.383012255486382e-07,
-      "maximumPlantedDigitDisplacement": 9.904789627801387e-07,
-      "maximumSoleHeightError": 7.535442709920293e-07,
+      "minimumSurfaceHeight": 0.011999462731182575,
+      "maximumHoofTargetError": 5.894911421791459e-07,
+      "maximumPlantedDigitDisplacement": 7.165569501166472e-07,
+      "maximumSoleHeightError": 6.659999489781743e-07,
       "loopMatrixError": 3.3334886513422546e-18,
       "frames": 73,
       "supportSites": "both digits of each hoof; saved stance intervals"
     },
     "trot": {
-      "minimumSurfaceHeight": 0.011999543756246567,
-      "maximumHoofTargetError": 4.6385474253515543e-07,
-      "maximumPlantedDigitDisplacement": 7.797306024058472e-07,
-      "maximumSoleHeightError": 6.231591105458623e-07,
+      "minimumSurfaceHeight": 0.011999554932117462,
+      "maximumHoofTargetError": 5.198348624262932e-07,
+      "maximumPlantedDigitDisplacement": 8.055208099174141e-07,
+      "maximumSoleHeightError": 7.405057549474126e-07,
       "loopMatrixError": 0.0,
       "frames": 43,
       "supportSites": "both digits of each hoof; saved stance intervals"
     },
     "root": {
-      "minimumSurfaceHeight": 0.010073482990264893,
-      "maximumHoofTargetError": 5.909959082320911e-07,
-      "maximumPlantedDigitDisplacement": 7.753443619583782e-07,
-      "maximumSoleHeightError": 6.296783685681706e-07,
+      "minimumSurfaceHeight": 0.01007351279258728,
+      "maximumHoofTargetError": 5.99945251321715e-07,
+      "maximumPlantedDigitDisplacement": 7.731750045167107e-07,
+      "maximumSoleHeightError": 7.43299722671259e-07,
       "loopMatrixError": 0.0,
       "frames": 289,
       "supportSites": "both digits of each hoof; saved stance intervals"
     },
     "charge": {
-      "minimumSurfaceHeight": 0.011999472975730896,
-      "maximumHoofTargetError": 5.249355719628494e-07,
-      "maximumPlantedDigitDisplacement": 4.173665773938122e-07,
-      "maximumSoleHeightError": 5.130544304850215e-07,
+      "minimumSurfaceHeight": 0.011999538168311119,
+      "maximumHoofTargetError": 4.695639388736704e-07,
+      "maximumPlantedDigitDisplacement": 3.993636735396018e-07,
+      "maximumSoleHeightError": 4.618316888811702e-07,
       "loopMatrixError": 0.0,
       "frames": 205,
       "supportSites": "both digits of each hoof; saved stance intervals"

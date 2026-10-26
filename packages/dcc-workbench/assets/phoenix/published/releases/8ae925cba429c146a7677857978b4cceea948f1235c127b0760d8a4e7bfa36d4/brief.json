@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "id": "phoenix",
+  "title": "Phoenix",
+  "subtitle": "An ember-winged stretch above basalt.",
+  "interpretation": "A living firebird settles from a wing stretch, supported by a firm grip on a basalt ledge.",
+  "gesture": "One wing rises while the other opens outward; the lifted breast and swept tail hold an asymmetric, alert balance.",
+  "polish": [
+    "Preserve unequal wing planes, tapered breast, long flight feathers and tail sweep.",
+    "Bury feather roots under thin fitted coverts that follow the flight planes.",
+    "Keep the ankle, toes and keratin tips visibly connected around the basalt ledge."
+  ],
+  "palette": [
+    {
+      "name": "Ember plumage",
+      "color": "#bc6735"
+    },
+    {
+      "name": "Charcoal vanes",
+      "color": "#493b35"
+    },
+    {
+      "name": "Warm ochre",
+      "color": "#ca914f"
+    }
+  ],
+  "nativeFeatures": [
+    "Editable native meshes with selectively rebuilt lower-wing coverts and fitted digits",
+    "Fitted Fan lift control carries lower-wing mantle, coverts, secondary vanes and shafts, wrist and primary fan",
+    "Armature, skin weights and rigid wing/feather hierarchy",
+    "Saved six-second settling idle",
+    "Packed plumage and basalt materials"
+  ],
+  "animation": {
+    "name": "phoenix_idle",
+    "seconds": 6,
+    "fps": 24
+  },
+  "budgets": {
+    "maxTriangles": 350000,
+    "maxBytes": 20000000,
+    "maxJoints": 16
+  },
+  "reference": "Preserves the procedural Phoenix body, face, outer flight vanes, shafts and asymmetric gesture, with selective native reconstruction of lower-wing coverage and fitted grip. Imported triangulated meshes remain editable; original procedural recipes and quad topology are not recovered.",
+  "reviewStatus": "Regional wing and grip reconstruction; publication scope and parent observations belong to its immutable review.",
+  "origin": {
+    "kind": "imported-delivery",
+    "path": "references/phoenix/legacy-gallery.glb",
+    "sha256": "ae98892d0c7d1b330245cab29a74d0293236ea01efb88833805d34a9042eb809",
+    "legacyStudyId": "phoenix",
+    "nativeTrial": "Sol gpt-6.1-sol high with parent direction and independent review; parent directly rebuilt and fitted lower-wing mantle and coverts after repeated plate/root failures, then merged six artist claw meshes. Artist installed the fitted Fan lift edit on the frozen combined source. Rejected sources and evidence are preserved."
+  },
+  "nativeEdit": {
+    "control": {
+      "object": "EDIT | Wing.1",
+      "property": "Fan lift"
+    },
+    "values": [0, 0.5, 1],
+    "moved": [
+      "PhoenixWingMantle_1",
+      "PhoenixGreaterCovert_1_front_8",
+      "PhoenixGreaterCovert_1_rear_8",
+      "PhoenixLesserCovert_1_front_0_8",
+      "PhoenixLesserCovert_1_rear_0_8",
+      "PhoenixSecondary_1_8",
+      "PhoenixSecondary_1_8_FineShaft",
+      "PhoenixPrimary_1_8",
+      "PhoenixPrimary_1_8_FineShaft"
+    ],
+    "fixed": [
+      "Mesh_0",
+      "PhoenixHookedUpperBill",
+      "PhoenixIris_1",
+      "PhoenixPrimary_-1_0",
+      "PhoenixBasalt_0",
+      "PhoenixToe_1_0",
+      "PhoenixClaw_1_0",
+      "PhoenixRearToe_-1",
+      "PhoenixGreaterCovert_1_front_0"
+    ]
+  }
+}

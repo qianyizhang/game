@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf-thorn",
+  "definitionDigest": "0162dfc1ff67804557998574fc89d755a981190081850d3e04d457d73ce6a4ce",
+  "candidate": {
+    "path": "candidate.json",
+    "sha256": "e43bc3c7e985a595e6b6d81a09774ef42efbe135aeed10a138d431dea8c1c1ad"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "2deffaf9895a4463142eaa032e966fa91855c8e7d09133cc6fe82d841928c805"
+  },
+  "source": {
+    "path": "source.blend",
+    "sha256": "77d7b574d98871072a70c469f6c6d0eaf0399256e6ae2160b77d553719979c52"
+  },
+  "brief": {
+    "path": "brief.json",
+    "sha256": "10516eb143b3def58817acd4234d9aa2a473136cb6696073a6a4f79ac0996905"
+  },
+  "outputs": {
+    "model": {
+      "path": "model.glb",
+      "sha256": "e183310b25d34310a112747f5df25dbadf1dac782b5f5205fd7dc64a9b7c08b7"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "13f369217c9ea6c93e4ff3e4389410b4394292d6f948437e1cf22726336f25da"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "7dd011b74f6e02779f89938411267d644c9b096e5eaeee0c62d1ffcb03f1c1ea"
+    }
+  },
+  "previous": {
+    "kind": "release",
+    "receipt": {
+      "path": "assets/wolf-thorn/published/releases/144e0b9ab19a6922caa2676f859bb0167e744c40fac42851203f031320b587c3/receipt.json",
+      "sha256": "144e0b9ab19a6922caa2676f859bb0167e744c40fac42851203f031320b587c3"
+    }
+  },
+  "previousReceipt": {
+    "path": "previous-receipt.json",
+    "sha256": "144e0b9ab19a6922caa2676f859bb0167e744c40fac42851203f031320b587c3"
+  }
+}

@@ -47,7 +47,10 @@ def mesh_digest() -> str:
             [
                 obj.name,
                 [[v.co.x, v.co.y, v.co.z] for v in mesh.vertices],
-                [list(p.vertices) for p in mesh.polygons],
+                [
+                    [mesh.loops[p.loop_start + i].vertex_index for i in range(p.loop_total)]
+                    for p in mesh.polygons
+                ],
                 [[(g.group, g.weight) for g in v.groups] for v in mesh.vertices],
             ]
         )

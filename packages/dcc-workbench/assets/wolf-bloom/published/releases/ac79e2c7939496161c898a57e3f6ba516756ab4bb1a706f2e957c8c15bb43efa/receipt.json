@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf-bloom",
+  "definitionDigest": "de72ec3bc1397e10d6bf92a7919ae70bf67a7af193b6e85277213c734500b73c",
+  "candidate": {
+    "path": "candidate.json",
+    "sha256": "06f66523182e92a26d8c18550359b04f06f606bb1455195a025fc7b2b66504e1"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "34f7b9cddd8abd02b3d5509838d804252d9dc9d128cd568c7fc091e4e995c4eb"
+  },
+  "source": {
+    "path": "source.blend",
+    "sha256": "badec14cb795465150ecc95e76c928a5ce901a5f48c886b4a74b07cf2068c965"
+  },
+  "brief": {
+    "path": "brief.json",
+    "sha256": "e6a1805e24f9f7beed1d2d40eaf7aecb4fea08f2a1b164a036d8804d28afc1c3"
+  },
+  "outputs": {
+    "model": {
+      "path": "model.glb",
+      "sha256": "1245476aac7bf855a875436754e87706f345ff83bf5f7bdcaa7febda6a008743"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "4ae935a97a5aaac5a6d46fbb6bd1b20fda03799d85e92ebd69e2d50624dc105b"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "58b5f1f402b70653619103d4d35b593f4db0c661f3b0ed85fb42195c4a3794b2"
+    }
+  },
+  "previous": {
+    "kind": "release",
+    "receipt": {
+      "path": "assets/wolf-bloom/published/releases/25a52679cb024b9f00d98f0310c641a6c82a5b1f2caa1f2ef417674286209bdf/receipt.json",
+      "sha256": "25a52679cb024b9f00d98f0310c641a6c82a5b1f2caa1f2ef417674286209bdf"
+    }
+  },
+  "previousReceipt": {
+    "path": "previous-receipt.json",
+    "sha256": "25a52679cb024b9f00d98f0310c641a6c82a5b1f2caa1f2ef417674286209bdf"
+  }
+}

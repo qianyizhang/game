@@ -17,7 +17,7 @@ def material(name: str, color: Point, roughness: float = 0.65) -> bpy.types.Mate
     import bpy
 
     result = bpy.data.materials.new(name)
-    result.diffuse_color = (*color, 1)
+    result.diffuse_color.foreach_set((*color, 1))
     result.use_nodes = True
     shader = require(
         present(result.node_tree).nodes.get("Principled BSDF"), bpy.types.ShaderNodeBsdfPrincipled
@@ -237,7 +237,9 @@ def build_character(form: Form, rig: bpy.types.Object) -> None:
             light = 1
         value = [mid[k] * (1 - top * 0.8) + dark[k] * top * 0.8 for k in range(3)]
         value = [value[k] * (1 - light * 0.85) + pale[k] * light * 0.85 for k in range(3)]
-        require(colors.data[vertex.index], bpy.types.FloatColorAttributeValue).color = (*value, 1)
+        require(colors.data[vertex.index], bpy.types.FloatColorAttributeValue).color.foreach_set(
+            (*value, 1)
+        )
     nodes = present(coat.node_tree).nodes
     attr = require(nodes.new("ShaderNodeVertexColor"), bpy.types.ShaderNodeVertexColor)
     attr.layer_name = "Pigment"

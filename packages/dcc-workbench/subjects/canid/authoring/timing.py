@@ -17,7 +17,7 @@ if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "blender"))
 
 from motion_spec import Contact, read_spec, save_spec  # noqa: E402
-from native_types import present  # noqa: E402
+from native_types import present, require  # noqa: E402
 from parameters import FEET, FORMS, FPS, contact_offset  # noqa: E402
 from rig import CONTROLS  # noqa: E402
 
@@ -141,9 +141,12 @@ def refine_actions(rig: bpy.types.Object) -> None:
                 bone.location, bone.rotation_euler = location, rotation
                 bone.keyframe_insert("location", frame=frame, group=name)
                 bone.keyframe_insert("rotation_euler", frame=frame, group=name)
-        for curve in action.fcurves:
-            for key in curve.keyframe_points:
-                key.interpolation = "LINEAR"
+        for layer in action.layers:
+            for strip in layer.strips:
+                for bag in require(strip, bpy.types.ActionKeyframeStrip).channelbags:
+                    for curve in bag.fcurves:
+                        for key in curve.keyframe_points:
+                            key.interpolation = "LINEAR"
         spec = copy.deepcopy(old)
         spec["seconds"], spec["trajectory"] = duration, trajectory
         for marker in spec["markers"]:

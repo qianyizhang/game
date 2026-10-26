@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "id": "briar-hydra",
+  "candidateDigest": "90977666ba6dd2e70e482a6f8ba0a0714074456b6259581c51d5ef2180f3342c",
+  "reviewer": {
+    "role": "parent",
+    "name": "Codex migration owner self-review"
+  },
+  "decision": "accepted",
+  "scope": "gallery",
+  "evidence": [
+    {
+      "view": "Front-Clay-0.png",
+      "reference": "evidence/Front-Clay-0.png",
+      "observation": "Migration owner self-review: inspected fresh clay front, side and rear, material and narrow captures. Saved source geometry is preserved; existing stylization and previous art-review limitations remain. This is runtime migration acceptance, not independent aesthetic approval.",
+      "sha256": "df2c7f780b8749ae30a8ed687872a7fb410ba2053df2e626466f2a2de29432bd"
+    },
+    {
+      "view": "Side-Clay-3.png",
+      "reference": "evidence/Side-Clay-3.png",
+      "observation": "Migration owner self-review: inspected fresh clay front, side and rear, material and narrow captures. Saved source geometry is preserved; existing stylization and previous art-review limitations remain. This is runtime migration acceptance, not independent aesthetic approval.",
+      "sha256": "8368673c8f6312c193d18b0dcb5ae72b17c654dcc8893268d892f3417052bce8"
+    },
+    {
+      "view": "Back-Clay-4.5.png",
+      "reference": "evidence/Back-Clay-4.5.png",
+      "observation": "Migration owner self-review: inspected fresh clay front, side and rear, material and narrow captures. Saved source geometry is preserved; existing stylization and previous art-review limitations remain. This is runtime migration acceptance, not independent aesthetic approval.",
+      "sha256": "6ad4990535eeda40d8ef10844e63e8fbb42f0ee8c193b42de05a5d74d91e256d"
+    },
+    {
+      "view": "Front-Material-0.png",
+      "reference": "evidence/Front-Material-0.png",
+      "observation": "Migration owner self-review: inspected fresh clay front, side and rear, material and narrow captures. Saved source geometry is preserved; existing stylization and previous art-review limitations remain. This is runtime migration acceptance, not independent aesthetic approval.",
+      "sha256": "05a1e140c75010387cb00ebe3636f2b94e76bbc6e297dd775201e6315437151a"
+    },
+    {
+      "view": "phone-material.png",
+      "reference": "evidence/phone-material.png",
+      "observation": "Migration owner self-review: inspected fresh clay front, side and rear, material and narrow captures. Saved source geometry is preserved; existing stylization and previous art-review limitations remain. This is runtime migration acceptance, not independent aesthetic approval.",
+      "sha256": "1a567ff0e85afa9adc9dc1ac907ad10d69e002848a9a40f0cd62fef88b61aed2"
+    },
+    {
+      "view": "native-three-poses.json",
+      "reference": "evidence/native-three-poses.json",
+      "observation": "Fresh system Blender samples agree with Three.js within 0.0001 model units.",
+      "sha256": "a7c376b69e9c5dc1b38decba0b6f532acb01817ae0d8f6d4e96a2a8fb6d56b9b"
+    }
+  ]
+}

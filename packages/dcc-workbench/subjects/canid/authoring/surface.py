@@ -99,7 +99,9 @@ def paint(obj: bpy.types.Object, form: Form, coat: bpy.types.Material) -> None:
         color = pigment((vertex.co.x, vertex.co.y, vertex.co.z), form)
         if vertex.co.z < 0.025 * form.height and vertex.normal.z < -0.65:
             color = (0.08, 0.075, 0.065, 1)
-        require(colors.data[vertex.index], bpy.types.FloatColorAttributeValue).color = color
+        require(colors.data[vertex.index], bpy.types.FloatColorAttributeValue).color.foreach_set(
+            color
+        )
     uv = mesh.uv_layers.new(name="Coat flow")
     for polygon in mesh.polygons:
         for index in polygon.loop_indices:

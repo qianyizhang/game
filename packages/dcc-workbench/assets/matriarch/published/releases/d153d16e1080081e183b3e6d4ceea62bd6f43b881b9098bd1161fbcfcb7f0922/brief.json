@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "matriarch",
+  "title": "Briar Matriarch",
+  "subtitle": "A protective bear braces beneath high shoulders and watches the approach.",
+  "interpretation": "Living fantasy bear with warm umber fur, pale broad muzzle and grounded guarding stance.",
+  "gesture": "Low watchful head leads from the high shoulders into staggered planted forepaws; cambered throat carries the compressed guarding pose.",
+  "polish": [
+    "Retain shoulder hump, low head, broad face, round ears and planted paws.",
+    "Native throat camber softens the former planar underside/steep throat turn without adding a dewlap."
+  ],
+  "palette": [
+    {
+      "name": "Umber coat",
+      "color": "#78613f"
+    },
+    {
+      "name": "Pale muzzle",
+      "color": "#bca579"
+    }
+  ],
+  "nativeFeatures": [
+    "Editable preserved triangle meshes, packed materials, weights and three-joint rig",
+    "Native throat camber construction shape key",
+    "Guard reach carries upper neck, skull and fitted facial details from fixed shoulders"
+  ],
+  "animation": {
+    "name": "matriarch_idle",
+    "seconds": 6,
+    "fps": 24
+  },
+  "budgets": {
+    "maxTriangles": 180000,
+    "maxBytes": 10000000,
+    "maxJoints": 8
+  },
+  "reference": "Preserved procedural Matriarch delivery has 163348 triangles; Blender import retains 163338 after omitting 10 repeated-index zero-area continuous-skin faces. Native source retains imported triangle topology; no quad reconstruction.",
+  "reviewStatus": "Frozen author candidate preparation; independent pixel/technical review and exact-byte art-direction acceptance pending.",
+  "origin": {
+    "kind": "imported-delivery",
+    "path": "references/matriarch/legacy-gallery.glb",
+    "sha256": "97dd27bed0e61d08e8832c080ca29bb103261cd76e18244c878a117db2c43fa0",
+    "legacyStudyId": "matriarch",
+    "nativeTrial": "Bounded native underjaw/throat continuity trial with fitted neck edit."
+  },
+  "nativeEdit": {
+    "control": {
+      "object": "EDIT | Neck",
+      "property": "Guard reach"
+    },
+    "values": [0, 0.5, 1],
+    "moved": [
+      "Matriarch_Catchlight_-1",
+      "Matriarch_Catchlight_1",
+      "Matriarch_ContinuousAnatomy",
+      "Matriarch_EarBowl_-1",
+      "Matriarch_EarBowl_1",
+      "Matriarch_EyeSocket_-1",
+      "Matriarch_EyeSocket_1",
+      "Matriarch_Iris_-1",
+      "Matriarch_Iris_1",
+      "Matriarch_LeatherNose",
+      "Matriarch_Lip_-1",
+      "Matriarch_Lip_1",
+      "Matriarch_Nostril_-1",
+      "Matriarch_Nostril_1",
+      "Matriarch_Philtrum",
+      "Matriarch_Pupil_-1",
+      "Matriarch_Pupil_1",
+      "Matriarch_RoundedPinna_-1",
+      "Matriarch_RoundedPinna_1"
+    ],
+    "fixed": [
+      "Matriarch_Claw_0_0",
+      "Matriarch_Claw_0_1",
+      "Matriarch_Claw_0_2",
+      "Matriarch_Claw_0_3",
+      "Matriarch_Claw_0_4",
+      "Matriarch_Claw_1_0",
+      "Matriarch_Claw_1_1",
+      "Matriarch_Claw_1_2",
+      "Matriarch_Claw_1_3",
+      "Matriarch_Claw_1_4",
+      "Matriarch_Claw_2_0",
+      "Matriarch_Claw_2_1",
+      "Matriarch_Claw_2_2",
+      "Matriarch_Claw_2_3",
+      "Matriarch_Claw_2_4",
+      "Matriarch_Claw_3_0",
+      "Matriarch_Claw_3_1",
+      "Matriarch_Claw_3_2",
+      "Matriarch_Claw_3_3",
+      "Matriarch_Claw_3_4"
+    ]
+  }
+}

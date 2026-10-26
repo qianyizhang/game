@@ -3,22 +3,22 @@
   "character": "fox",
   "sourceSha256": "46c4f064d93eb4fc3cef27d0ea1d86237e74bec3278ab649d54010be5ee0b65f",
   "motionSha256": "b1234bf2e35fd31c9359bd2759153440eca2a3d88ca6f8723f92a4a0626a0244",
-  "modelSha256": "9385d129add455a32f9fcfd9b3e3cf39d2f4a2a52ecf7d948474e5a7a05f1d5e",
+  "modelSha256": "a13a2321c73f747378e966f556ff9c5fe9e1c722f83c79a470334c12eca1230f",
   "meshSha256": "0ff5c7bbd4b87ce4468999646e83634831c8e4498df0619a28791419ceb91d50",
   "exportScripts": {
-    "subjects/canid/authoring/delivery.py": "393e0c8ab21cb07a352b20c5583562d94f9e4a707af7b91f314e4ffb04656247",
+    "subjects/canid/authoring/delivery.py": "ba5a0afa3efc664cdccc80dd42a880e581859856785d5f0da58fad581255ae27",
     "subjects/canid/authoring/rig.py": "d59af7efe46575b3b611713f74798faf65d0a2a027eea37b56755de57ccc50c1",
     "subjects/canid/authoring/parameters.py": "9f392845d0ad49fbb972fe2330f0ca236501e54f87dc9d43c3687e8b0f29adc0",
     "subjects/canid/authoring/contacts.py": "b7fb41377b53a325b2c3a699b9f7b3aa894632c6ed8169b6721fa1b05e29cf75",
     "subjects/canid/authoring/motion_spec.py": "acae5a503d8bcfb03c94cfd0f467ae2bf8048364947fb3bbd89db5db8cf5d5b5",
-    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
+    "blender/native_types.py": "b0df7ac9ae11e3355c040b47d4bae4032264dd0e0683fabc674714f8cf80eaac"
   },
-  "blender": "4.5.14 LTS",
+  "blender": "5.2.3 LTS Release Candidate",
   "space": "glTF world, Y up",
   "contacts": {
     "idle": {
       "maxIkError": 5.817181258184653e-07,
-      "maxSoleHeight": 6.661296083620982e-07,
+      "maxSoleHeight": 6.277084594330518e-07,
       "maxSoleFrameSlip": 5.664401593431297e-07,
       "maxRollingHeight": 0.0,
       "supportPhases": [
@@ -39,8 +39,8 @@
             "front.R"
           ],
           "mode": "planted",
-          "maxHeight": 6.661296083620982e-07,
-          "maxFrameSlip": 4.717547744277401e-07
+          "maxHeight": 6.277084594330518e-07,
+          "maxFrameSlip": 4.68274058769654e-07
         },
         {
           "start": 0.0,
@@ -68,7 +68,7 @@
       "travelSpeed": 0.0,
       "frames": 217,
       "minSoleHeight": -3.710031535320013e-07,
-      "maxSwingHeight": 6.661296083620982e-07,
+      "maxSwingHeight": 6.277084594330518e-07,
       "stanceFraction": 1.0,
       "footOffsets": [
         0.0,
@@ -83,9 +83,9 @@
       ]
     },
     "look": {
-      "maxIkError": 6.537857940340133e-07,
-      "maxSoleHeight": 7.161617077144911e-07,
-      "maxSoleFrameSlip": 9.184666625237044e-07,
+      "maxIkError": 5.924968526384545e-07,
+      "maxSoleHeight": 6.014585665070626e-07,
+      "maxSoleFrameSlip": 8.221817248182516e-07,
       "maxRollingHeight": 0.0,
       "supportPhases": [
         {
@@ -95,8 +95,8 @@
             "front.L"
           ],
           "mode": "planted",
-          "maxHeight": 4.721641744254157e-07,
-          "maxFrameSlip": 7.439912225889849e-07
+          "maxHeight": 4.5950412186357426e-07,
+          "maxFrameSlip": 6.87369631899404e-07
         },
         {
           "start": 0.0,
@@ -105,8 +105,8 @@
             "front.R"
           ],
           "mode": "planted",
-          "maxHeight": 7.161617077144911e-07,
-          "maxFrameSlip": 9.184666625237044e-07
+          "maxHeight": 6.014585665070626e-07,
+          "maxFrameSlip": 8.221817248182516e-07
         },
         {
           "start": 0.0,
@@ -129,12 +129,12 @@
           "maxFrameSlip": 5.124634466389962e-07
         }
       ],
-      "minBodyHeight": -5.022844788982184e-07,
+      "minBodyHeight": -4.4018793232680764e-07,
       "ankleLoopError": 0.0,
       "travelSpeed": 0.0,
       "frames": 193,
-      "minSoleHeight": -4.721641744254157e-07,
-      "maxSwingHeight": 7.161617077144911e-07,
+      "minSoleHeight": -4.033327059005387e-07,
+      "maxSwingHeight": 6.014585665070626e-07,
       "stanceFraction": 1.0,
       "footOffsets": [
         0.0,
@@ -142,7 +142,7 @@
         0.0,
         0.0
       ],
-      "minFootHeight": -5.022844788982184e-07,
+      "minFootHeight": -4.4018793232680764e-07,
       "minSwingClearance": 1.9524097183420963e-07,
       "observedSupportCounts": [
         4
@@ -190,7 +190,7 @@
     "trot": {
       "maxIkError": 1.4631240672213094e-06,
       "maxSoleHeight": 6.854534149169922e-07,
-      "maxSoleFrameSlip": 6.873982202379308e-07,
+      "maxSoleFrameSlip": 7.935830206844272e-07,
       "maxRollingHeight": 0.0,
       "supportPhases": [
         {
@@ -211,7 +211,7 @@
           ],
           "mode": "planted",
           "maxHeight": 6.854534149169922e-07,
-          "maxFrameSlip": 4.6235533311198165e-07
+          "maxFrameSlip": 7.935830206844272e-07
         },
         {
           "start": 0.25,
@@ -231,7 +231,7 @@
           ],
           "mode": "planted",
           "maxHeight": 4.038572285480768e-07,
-          "maxFrameSlip": 6.338661189221422e-07
+          "maxFrameSlip": 4.4436135217432846e-07
         }
       ],
       "minBodyHeight": -4.2834318492168677e-07,
@@ -239,7 +239,7 @@
       "travelSpeed": 3.1304347826086953,
       "frames": 31,
       "minSoleHeight": -4.092693188795238e-07,
-      "maxSwingHeight": 0.2392064929008484,
+      "maxSwingHeight": 0.23920631408691406,
       "stanceFraction": 0.46,
       "footOffsets": [
         0.0,
@@ -266,8 +266,8 @@
             "front.L"
           ],
           "mode": "planted",
-          "maxHeight": 4.7597885100003623e-07,
-          "maxFrameSlip": 8.520228000695179e-07
+          "maxHeight": 4.61769104731502e-07,
+          "maxFrameSlip": 7.832292385982694e-07
         },
         {
           "start": 0.0,
@@ -286,7 +286,7 @@
             "front.R"
           ],
           "mode": "planted",
-          "maxHeight": 5.651116339322471e-07,
+          "maxHeight": 6.247162787076377e-07,
           "maxFrameSlip": 7.226024217604143e-07
         },
         {
@@ -296,8 +296,8 @@
             "hind.L"
           ],
           "mode": "planted",
-          "maxHeight": 4.797220185537299e-07,
-          "maxFrameSlip": 4.5932001223428095e-07
+          "maxHeight": 7.522106102442194e-07,
+          "maxFrameSlip": 7.222409005535248e-07
         },
         {
           "start": 0.6166666666666667,
@@ -316,16 +316,16 @@
             "hind.R"
           ],
           "mode": "planted",
-          "maxHeight": 6.395339937625977e-07,
-          "maxFrameSlip": 7.11928817971392e-07
+          "maxHeight": 5.730867655984184e-07,
+          "maxFrameSlip": 6.391264358816763e-07
         }
       ],
       "minBodyHeight": -5.061543788542622e-07,
       "ankleLoopError": 0.0,
       "travelSpeed": 1.2812499999999998,
       "frames": 49,
-      "minSoleHeight": -4.7597885100003623e-07,
-      "maxSwingHeight": 0.1617085039615631,
+      "minSoleHeight": -4.61769104731502e-07,
+      "maxSwingHeight": 0.16170839965343475,
       "stanceFraction": 0.64,
       "footOffsets": [
         0.0,
