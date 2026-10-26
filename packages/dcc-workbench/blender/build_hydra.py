@@ -59,7 +59,7 @@ def build(request: AuthoringRequest) -> None:
         name: str, color: tuple[float, float, float], roughness: float = 0.6, metallic: float = 0
     ) -> bpy.types.Material:
         m = bpy.data.materials.new(name)
-        m.diffuse_color = (*color, 1)
+        m.diffuse_color.foreach_set((*color, 1))
         m.use_nodes = True
         bsdf = require(
             require(m.node_tree, bpy.types.ShaderNodeTree).nodes.get("Principled BSDF"),
@@ -600,10 +600,14 @@ def build(request: AuthoringRequest) -> None:
     links.new(present(texcoord.outputs)["Object"], present(noise.inputs)["Vector"])
     ramp = require(nodes.new("ShaderNodeValToRGB"), bpy.types.ShaderNodeValToRGB)
     require(ramp.color_ramp, bpy.types.ColorRamp).elements[0].position = 0.2
-    require(ramp.color_ramp, bpy.types.ColorRamp).elements[0].color = (0.033, 0.065, 0.040, 1)
+    require(ramp.color_ramp, bpy.types.ColorRamp).elements[0].color.foreach_set(
+        (0.033, 0.065, 0.040, 1)
+    )
     require(ramp.color_ramp, bpy.types.ColorRamp).elements[1].position = 0.8
-    require(ramp.color_ramp, bpy.types.ColorRamp).elements[1].color = (0.105, 0.155, 0.069, 1)
-    links.new(present(noise.outputs)["Fac"], present(ramp.inputs)["Fac"])
+    require(ramp.color_ramp, bpy.types.ColorRamp).elements[1].color.foreach_set(
+        (0.105, 0.155, 0.069, 1)
+    )
+    links.new(present(noise.outputs)["Factor"], present(ramp.inputs)["Factor"])
     links.new(present(ramp.outputs)["Color"], present(bsdf.inputs)["Base Color"])
     image = bpy.data.images.new("Hydra | baked marsh pigment", width=2048, height=2048)
     # Generated enum contains only NONE; native baking verifies the configured color space.
@@ -704,9 +708,12 @@ def build(request: AuthoringRequest) -> None:
     action = require(require(rig.animation_data, bpy.types.AnimData).action, bpy.types.Action)
     action.name = action_name
     # Linear interpolation avoids unexpected handle overshoot; endpoints coincide.
-    for curve_data in action.fcurves:
-        for key in curve_data.keyframe_points:
-            key.interpolation = "LINEAR"
+    for layer in action.layers:
+        for strip in layer.strips:
+            for bag in require(strip, bpy.types.ActionKeyframeStrip).channelbags:
+                for curve_data in bag.fcurves:
+                    for key in curve_data.keyframe_points:
+                        key.interpolation = "LINEAR"
     scene.frame_set(1)
     scene["dcc_brief"] = "briefs/briar-hydra.json"
     scene["dcc_recipe"] = "blender/build_hydra.py"
@@ -728,7 +735,7 @@ def build(request: AuthoringRequest) -> None:
                 region.view_distance = 5.8
                 region.view_location = (0, 0, 1.4)
                 require(space.shading, bpy.types.View3DShading).type = "MATERIAL"
-    scene.render.engine = "BLENDER_EEVEE_NEXT"
+    scene.render.engine = "BLENDER_EEVEE"
     install_heads(asset, rig)
     install_scales(asset, rig)
     bpy.ops.wm.save_as_mainfile(filepath=str(request.output), compress=True)

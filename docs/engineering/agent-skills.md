@@ -1,6 +1,6 @@
 # Shared agent skills
 
-The nine-skill generic suite is installed once for the user account from
+The shared skill suite is installed once for the user account from
 repo-kit. Its source and maintenance procedure at
 `../repo-kit/docs/skill-suite.md` own the upstream pin, complete directories, licenses and sync verification.
 This project no longer keeps duplicate generic skills or a separate skills lock.
@@ -17,9 +17,8 @@ The [Card Workshop art skill](../../skills/card-art/SKILL.md) remains local.
 | Session evidence      | `.work/sessions/<session>/` with its existing retention rules             |
 
 Read this mapping before using generic skills. `retro` and
-`improve-codebase-architecture` require explicit invocation; the other seven can
-be selected for relevant requests. Accepted choices stay settled. Existing
-explicit authorization takes precedence over repeated confirmation prompts.
+`improve-codebase-architecture` require explicit invocation. Other shared skills
+can be selected for relevant requests.
 
 The [testing policy](testing.md) governs meaningful test selection. Generic
 skills do not require unit tests for every file or replace checking command

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "kind": "sepulcher",
   "sourceSha256": "ee66b9ec7b1e3c79941a01574e7d6f55e74d7281b11d020b4ab899ffc5f0ef41",
-  "modelSha256": "2830a603ea8734a5316dc7cd4f901bbe8c2af9b7b807e09602e34a71401f8076",
-  "blender": "4.5.14 LTS",
+  "modelSha256": "aaeb79585c6dc863166b9b7c8299abdc7830e664ae2a36ef1e6a373d3b5485fc",
+  "blender": "5.2.3 LTS Release Candidate",
   "roots": [
     "Floor",
     "Boundary",
@@ -71,7 +71,7 @@
     "environment_starless.py": "bef57b1bb723ae93489ab839b49ed91dc1880c7c79acf759755a37baf6141d30"
   },
   "helperScripts": {
-    "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "hero_form.py": "01675393ab1ad871d47743c4c8d749973ae0a4eb1dc23c10b835a4246926bca2",
     "enemy_form.py": "b971b4ba635f7e7711da8275fac1fb3a65aea21da84162a5250b86b15e249fd9"
   }
 }

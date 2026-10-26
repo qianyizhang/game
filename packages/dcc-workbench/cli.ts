@@ -9,14 +9,21 @@ export function main(
   rebuild = process.argv.includes('--rebuild'),
   args = process.argv.slice(3),
 ) {
-  // Keep non-native commands usable without Blender. The coordinator remains byte-pinned
-  // by published receipts; validate explicit overrides before its compatibility discovery.
-  if (
-    ['doctor', 'build', 'components', 'render', 'export'].includes(command) &&
-    process.env.BLENDER_BIN !== undefined
-  )
-    findBlender(root);
-  pipeline(command, rebuild, args);
+  // Keep non-native commands usable without Blender. Pass the validated runtime into
+  // the receipt-pinned coordinator so its historical discovery cannot select 4.5.
+  if (!['doctor', 'build', 'components', 'render', 'export'].includes(command)) {
+    pipeline(command, rebuild, args);
+    return;
+  }
+  const prior = process.env.BLENDER_BIN;
+  const binary = findBlender(root);
+  try {
+    process.env.BLENDER_BIN = binary;
+    pipeline(command, rebuild, args);
+  } finally {
+    if (prior === undefined) delete process.env.BLENDER_BIN;
+    else process.env.BLENDER_BIN = prior;
+  }
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

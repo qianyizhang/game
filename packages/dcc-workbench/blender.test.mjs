@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import childProcess from 'node:child_process';
 import { syncBuiltinESMExports } from 'node:module';
-import { join } from 'node:path';
 import { test } from 'node:test';
 import { findBlender, runBlender } from './blender.ts';
 import { main } from './cli.ts';
@@ -10,7 +9,15 @@ import { main } from './cli.ts';
  * @param {Partial<import('node:child_process').SpawnSyncReturns<string>>} overrides
  */
 function outcome(overrides = {}) {
-  return { pid: 1, output: [], stdout: '', stderr: '', status: 0, signal: null, ...overrides };
+  return {
+    pid: 1,
+    output: [],
+    stdout: 'Blender 5.2.3 LTS Release Candidate\n',
+    stderr: '',
+    status: 0,
+    signal: null,
+    ...overrides,
+  };
 }
 /** @param {import('node:test').TestContext} t */
 function processStub(t) {
@@ -51,16 +58,10 @@ await test('automatic discovery skips only missing candidates and stops after st
   spawn.mock.mockImplementationOnce(() =>
     outcome({ status: null, error: Object.assign(new Error('missing'), { code: 'ENOENT' }) }),
   );
-  assert.equal(
-    findBlender('/package'),
-    join('/package', '.runtime/Blender.app/Contents/MacOS/Blender'),
-  );
+  assert.equal(findBlender('/package'), 'blender');
   assert.deepEqual(
     spawn.mock.calls.map((call) => call.arguments[0]),
-    [
-      '/Applications/Blender.app/Contents/MacOS/Blender',
-      join('/package', '.runtime/Blender.app/Contents/MacOS/Blender'),
-    ],
+    ['/Applications/Blender.app/Contents/MacOS/Blender', 'blender'],
   );
   spawn.mock.resetCalls();
   spawn.mock.mockImplementation(() =>
@@ -74,6 +75,19 @@ await test('automatic discovery skips only missing candidates and stops after st
   );
   assert.throws(() => findBlender('/package'), /Blender is missing/);
   assert.equal(spawn.mock.calls.at(-1)?.arguments[0], 'blender');
+});
+
+await test('unsupported Blender versions fail before an authoring command or fallback', (t) => {
+  const spawn = processStub(t);
+  for (const version of ['4.5.14 LTS', '5.3.0 Beta', 'unknown']) {
+    spawn.mock.mockImplementation(() => outcome({ stdout: `Blender ${version}\n` }));
+    spawn.mock.resetCalls();
+    assert.throws(() => main('doctor', false, []), /Unsupported Blender runtime/);
+    assert.equal(spawn.mock.callCount(), 1);
+    assert.equal(process.env.BLENDER_BIN, undefined);
+  }
+  spawn.mock.mockImplementation(() => outcome({ stdout: 'Blender 5.2.2 LTS\n' }));
+  assert.equal(findBlender('/package'), '/Applications/Blender.app/Contents/MacOS/Blender');
 });
 
 await test('native invocation preserves saved-source ordering and script arguments, and reports failures', (t) => {

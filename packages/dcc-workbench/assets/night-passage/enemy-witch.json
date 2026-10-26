@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "kind": "witch",
   "sourceSha256": "99e957d89679104c1eb7c996781544a18c7a1634de0925b795fda0ea5201f823",
-  "modelSha256": "cf24f938252b567bea320fe7721efffddf3ffd2a723b69fe96fad111a134cf44",
+  "modelSha256": "3159b49782d6c99b0ae906ff71b71ed18b79cd4ec4f07f85e7883cc15fdabf9f",
   "meshSha256": "9687d8eaf63672ad4f1494820091bf64a8d2697593519e721ea5af68430cb07f",
-  "blender": "4.5.14 LTS",
+  "blender": "5.2.3 LTS Release Candidate",
   "clips": {
     "idle": {
       "seconds": 2.0,
@@ -55,13 +55,13 @@
   },
   "supportScope": "All authored 30fps frames: complete evaluated surface floor, loop closure and planted-foot IK reach (floating witch excludes foot targets); in-place run, no claim of world-space foot locking at every rules speed",
   "exportScripts": {
-    "enemy_delivery.py": "19e134a1c7b3d51fae3ed6ef880eb5d913a76f4f3b010816d2c690a7a75b74cc",
+    "enemy_delivery.py": "c5b0dfcca75abce8d1fa78b2827ee61e6b264ec35d2282c3a38993ef8726a676",
     "enemy_edit.py": "756fa474183216915a285dfc8e6c206c8f36c5cd3709133f001e8ebf3ff0151c",
     "enemy_form.py": "b971b4ba635f7e7711da8275fac1fb3a65aea21da84162a5250b86b15e249fd9",
     "enemy_motion.py": "22fdb6d8d0edb9802fc5573c589f9fe74b21572f9620ba9ce4c692a0efa5c588",
     "enemy_review.py": "16d5efe4ad796552d5d843a99ea64dcbd7744f6f4098d25559b4195c57a77409",
     "enemy_rig.py": "4f3b2b416ed63b42f433cc91eeb9f16c9c0ce50912acb04c01fa65cf482fa3f6",
-    "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "hero_form.py": "01675393ab1ad871d47743c4c8d749973ae0a4eb1dc23c10b835a4246926bca2",
     "hero_rig.py": "c63a2cba5d230169dae82f58b7efeee65f7a00c84d3228d07265d60dde0540cc"
   }
 }

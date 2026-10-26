@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "sourceSha256": "22da6084622d81c4e87ae6a534c113f657f6aa6fae21c14c8052c02ca860c120",
-  "modelSha256": "3001c751e883c6a4aa861a23c8d1d9900c7f5347369aaf6156997aca2c18ec8d",
+  "modelSha256": "2eba67272f4828b13a03190bc5541e7de5bb06d550b0ae4e9c73104e6352ad3b",
   "meshSha256": "d9034f59fb7c28a9fcc7aaa7a15912cd52363901d0f3d4f7c24ba707c4112fbe",
-  "blender": "4.5.14 LTS",
+  "blender": "5.2.3 LTS Release Candidate",
   "clips": {
     "idle": {
       "seconds": 2.0,
@@ -186,8 +186,8 @@
   },
   "supportScope": "All authored 30fps frames: surface floor and IK reach; in-place run, no claim of world-space foot locking at every rules speed",
   "exportScripts": {
-    "hero_delivery.py": "01b9362349dbbe087410bd413c672f2d42b84a0caff2119bc1e4d8a86997c83a",
-    "hero_form.py": "fd22eb32d20e6ff0237024e7c98673e1296acf69392ee314899126fd1a481ab9",
+    "hero_delivery.py": "2a8b1bd50b0adba79e8ac3a55ec786dea87f6f6be5a64fb6931c0fa16848a51e",
+    "hero_form.py": "01675393ab1ad871d47743c4c8d749973ae0a4eb1dc23c10b835a4246926bca2",
     "hero_review.py": "6d1927a35f6e061e01f01f070b40f7957e54fa46e592ba0044050dff416b613e",
     "hero_rig.py": "c63a2cba5d230169dae82f58b7efeee65f7a00c84d3228d07265d60dde0540cc"
   }

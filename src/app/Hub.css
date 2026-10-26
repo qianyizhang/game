@@ -48,3 +48,13 @@
   box-shadow: 0 6px 24px #0006;
   font-size: 12px;
 }
+
+/* Keep workshop shortcuts reachable without covering the phone's combat controls. */
+@media (max-width: 600px) {
+  .art-studio-entry,
+  .dcc-workbench-entry {
+    position: static;
+    margin: 12px;
+    box-shadow: none;
+  }
+}

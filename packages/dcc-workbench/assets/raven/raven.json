@@ -3,14 +3,14 @@
   "character": "raven",
   "sourceSha256": "5e3fd4ce2daa7c5df3f2232c2b89693fc48c1ad8943fc0bb939e7329b149935a",
   "motionSha256": "90a4ef9e36e61137304a4fadeba8d0375f542d84ffcf67cb271e9e66885e0aaa",
-  "modelSha256": "c05566c928fa465cf0e0342da901d0aa94d6093af2da44e6bb8280cf9f9eea51",
+  "modelSha256": "e3b3dbb974533a4045d0c696cf54e72a45afd3dbffc5fcc6e545153d735a0ca0",
   "meshSha256": "2ba8fcc098533a46179d7f8ec95dfb70a6655f590d8642b6030bd143b7331740",
-  "blender": "4.5.14 LTS",
+  "blender": "5.2.3 LTS Release Candidate",
   "exportScripts": {
-    "subjects/raven/authoring/raven_delivery.py": "f7abccbee753147ad39d8bf9a90b47383c01833b58f4bf0d61bf855d368d4e44",
+    "subjects/raven/authoring/raven_delivery.py": "064a2242eb6de2d052577c0a2bec7bbad433506a1455397cef1542efaed921c0",
     "subjects/raven/authoring/raven_rig.py": "8103e5bcca1f89b49556db8a6f39c504bbe494b70a4bf434f16cc1e3eaf60575",
     "subjects/raven/authoring/raven_motion.py": "514a3c28cee1d2430e187106f982252c0e74d90e89366e7a7574f0abb55c7f03",
-    "blender/native_types.py": "a0871336479ef915f96221ec3e69262baffbe47813aa94ae407f33855fcfcd31"
+    "blender/native_types.py": "b0df7ac9ae11e3355c040b47d4bae4032264dd0e0683fabc674714f8cf80eaac"
   },
   "clips": {
     "idle": {
@@ -258,7 +258,7 @@
       "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
     },
     "walk": {
-      "minimumSurfaceHeight": 0.018376842141151428,
+      "minimumSurfaceHeight": 0.018376901745796204,
       "maximumFootTargetError": 9.388341326863141e-07,
       "maximumPlantedDigitDisplacement": 7.155661108221394e-07,
       "maximumPlantedHeightDrift": 4.209578037261963e-07,
@@ -276,8 +276,8 @@
       "supportSites": "three forward toes plus hallux per foot; saved stance intervals"
     },
     "spread": {
-      "minimumSurfaceHeight": 0.018376745283603668,
-      "maximumFootTargetError": 6.255382522509206e-07,
+      "minimumSurfaceHeight": 0.018376795575022697,
+      "maximumFootTargetError": 6.242946362052626e-07,
       "maximumPlantedDigitDisplacement": 5.873331010072938e-07,
       "maximumPlantedHeightDrift": 5.774199962615967e-07,
       "loopMatrixError": 0.0,

@@ -12,6 +12,7 @@ import { TavernSpellArt } from '../../../src/games/battlegrounds/ui/TavernSpellA
 import { RELICS, POTIONS, ACT_NAMES } from '../../../src/games/spire/content/world';
 import { RelicArt, PotionArt } from '../../../src/games/spire/ui/WorldItemArt';
 import { CharacterArt } from '../../../src/games/spire/ui/CharacterArt';
+import { IntentArt, INTENT_ART, type IntentArtKind } from '../../../src/games/spire/ui/IntentArt';
 import { ActArt, NodeArt, ROOM_KINDS } from '../../../src/games/spire/ui/SpireSceneArt';
 import {
   WorkshopArt,
@@ -110,6 +111,12 @@ export function cardArtCatalogue(): Asset[] {
     'seed',
   ];
   return [
+    ...Object.entries(INTENT_ART).map(([kind, art]) => ({
+      id: `spire/intents/${kind}`,
+      group: 'Slay the Spire · Intent cues',
+      name: art.name,
+      node: <IntentArt kind={kind as IntentArtKind} />,
+    })),
     ...GAME_GUIDES.map((game) => ({
       id: `guide/${game.id}`,
       group: 'Workshop · Game guide',

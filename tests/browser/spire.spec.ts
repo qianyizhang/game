@@ -9,6 +9,49 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('card-workshop.playback-speed', '100'));
 });
 
+test('intent symbols preserve mixed actions, accessible planned text and replay bytes', async ({
+  page,
+}) => {
+  await page.goto('/?game=spire');
+  await page.getByRole('button', { name: '+ New run', exact: true }).click();
+  await page.getByLabel('Run seed').fill('asset-readability-pilot');
+  await page.getByRole('button', { name: 'Start new run →', exact: true }).click();
+  await page.getByRole('button', { name: 'Obtain +8 Max HP', exact: true }).click();
+  await page.getByRole('button', { name: 'Floor 1 lane 1 fight', exact: true }).click();
+  const enemy = page.getByRole('button', { name: 'Target Jaw Worm', exact: true });
+  await expect(enemy).toHaveAccessibleDescription(/Chomp: 11 damage/);
+  await expect(enemy.locator('[data-intent-art="attack"]')).toHaveCount(1);
+  const before = await page.evaluate((key) => localStorage.getItem(key), spireSession.key);
+  await enemy.focus();
+  await page.keyboard.press('Enter');
+  await expect(enemy).toHaveAttribute('aria-pressed', 'true');
+  await expect(enemy.locator('.sts-target-marker')).toHaveText('◆ Targeted');
+  expect(await page.evaluate((key) => localStorage.getItem(key), spireSession.key)).toBe(before);
+  await page.getByRole('button', { name: 'End turn' }).click();
+  await expect(enemy).toHaveAccessibleDescription(/Thrash: 7 damage · 5 Block/);
+  await expect(enemy.locator('[data-intent-art="attack"]')).toHaveCount(1);
+  await expect(enemy.locator('[data-intent-art="block"]')).toHaveCount(1);
+  const next = await saved(page);
+  await page.reload();
+  expect(await saved(page)).toEqual(next);
+  await expect(enemy).toHaveAccessibleDescription(/Thrash: 7 damage · 5 Block/);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await enemy.locator('.sts-intent-cue').scrollIntoViewIfNeeded();
+  const covered = await page.evaluate(() => {
+    const cue = document.querySelector('.sts-intent-cue')!.getBoundingClientRect();
+    return [...document.querySelectorAll('.art-studio-entry, .dcc-workbench-entry')].some((el) => {
+      const shortcut = el.getBoundingClientRect();
+      return (
+        shortcut.left < cue.right &&
+        shortcut.right > cue.left &&
+        shortcut.top < cue.bottom &&
+        shortcut.bottom > cue.top
+      );
+    });
+  });
+  expect(covered).toBe(false);
+});
+
 async function saved(page: Page) {
   return spireSession.decode(
     (await page.evaluate((key) => localStorage.getItem(key), spireSession.key))!,

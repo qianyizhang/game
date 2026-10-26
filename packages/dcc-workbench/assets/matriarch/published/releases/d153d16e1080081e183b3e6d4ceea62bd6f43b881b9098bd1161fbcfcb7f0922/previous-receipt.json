@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "matriarch",
+  "definitionDigest": "9b4b2357e437ded53ed8ff9aeb4d19ab015342487dcc0e8414d47a4b370cedcd",
+  "candidate": {
+    "path": "candidate.json",
+    "sha256": "ad0be458544f542f561d277d1f0660c58b07ba9041bae7b94a72ce27fa55f074"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "ce0839215f44169f4fa03fe51c53196a5fc26b6b08d41837c40574860922c917"
+  },
+  "source": {
+    "path": "source.blend",
+    "sha256": "2700bc670306f4284ce94d7fa8b6d47626757bb5a015e861d61eef34cef3095d"
+  },
+  "brief": {
+    "path": "brief.json",
+    "sha256": "6e6e6308cb2e290d7c5fe700f3e2d16bcf1b5367402a1b9fbefd980ca8981ad1"
+  },
+  "outputs": {
+    "model": {
+      "path": "model.glb",
+      "sha256": "c7604d9ae10816719af0813247aecf8828da94806d34b41739ea51b79e3566ee"
+    },
+    "audit": {
+      "path": "authoring.json",
+      "sha256": "1a6c2a66b15e35864ce40d9855397a0c72ca58f7567c3db4d4a7615e9ab002c8"
+    },
+    "poses": {
+      "path": "pose-samples.json",
+      "sha256": "6ffcc2ef695aeb52446022496f128e0da975563527e5ede669f4df832bf5028f"
+    }
+  },
+  "previous": null
+}

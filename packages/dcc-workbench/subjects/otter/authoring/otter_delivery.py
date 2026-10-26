@@ -76,7 +76,10 @@ def mesh_digest() -> str:
                 obj.parent_type,
                 obj.parent_bone,
                 [[v.co.x, v.co.y, v.co.z] for v in data.vertices],
-                [list(p.vertices) for p in data.polygons],
+                [
+                    [data.loops[p.loop_start + i].vertex_index for i in range(p.loop_total)]
+                    for p in data.polygons
+                ],
                 [group.name for group in obj.vertex_groups],
                 [[(g.group, g.weight) for g in v.groups] for v in data.vertices],
             ]

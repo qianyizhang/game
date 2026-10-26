@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING
 
 from native_types import float_socket, mesh_data, present, require
 
@@ -21,7 +21,10 @@ def install_scales(collection: bpy.types.Collection, rig: bpy.types.Object) -> N
     body = next(obj for obj in collection.objects if obj.name.startswith("Skin |"))
     data = mesh_data(body)
     positions = [body.matrix_world @ vertex.co for vertex in data.vertices]
-    polygons = [tuple(poly.vertices) for poly in data.polygons]
+    polygons = [
+        tuple(data.loops[poly.loop_start + i].vertex_index for i in range(poly.loop_total))
+        for poly in data.polygons
+    ]
     material = bpy.data.materials["Dorsal shields | deep olive"]
     shader = require(
         present(material.node_tree).nodes.get("Principled BSDF"), bpy.types.ShaderNodeBsdfPrincipled
@@ -57,13 +60,8 @@ def install_scales(collection: bpy.types.Collection, rig: bpy.types.Object) -> N
             > 0.9
         }
         face_ids = [i for i, poly in enumerate(polygons) if all(v in owned for v in poly)]
-        # The generated stub omits the native BVHTree return type. Native
-        # installation exercises ray casts and validates every fitted patch.
-        tree = cast(
-            BVHTree,
-            BVHTree.FromPolygons(
-                [(p.x, p.y, p.z) for p in positions], [polygons[i] for i in face_ids]
-            ),
+        tree = BVHTree.FromPolygons(
+            [(p.x, p.y, p.z) for p in positions], [polygons[i] for i in face_ids]
         )
         path = [armature.bones[f"Neck.{index}.{j}"].head_local.copy() for j in range(5)]
         path.append(armature.bones[f"Neck.{index}.4"].tail_local.copy())

@@ -1,6 +1,5 @@
 /** Blender process policy shared by native authoring and disposable verification. */
 import { spawnSync } from 'node:child_process';
-import { join } from 'node:path';
 
 export function findBlender(root: string): string {
   const override = process.env.BLENDER_BIN;
@@ -11,14 +10,16 @@ export function findBlender(root: string): string {
   const candidates =
     override !== undefined
       ? [override]
-      : [
-          '/Applications/Blender.app/Contents/MacOS/Blender',
-          join(root, '.runtime/Blender.app/Contents/MacOS/Blender'),
-          'blender',
-        ];
+      : ['/Applications/Blender.app/Contents/MacOS/Blender', 'blender'];
   for (const binary of candidates) {
     const result = spawnSync(binary, ['--version'], { encoding: 'utf8' });
-    if (result.status === 0) return binary;
+    if (result.status === 0) {
+      if (!/^Blender 5\.2\.\d+(?:\s|$)/m.test(result.stdout))
+        throw new Error(
+          `Unsupported Blender runtime at ${binary}: ${result.stdout.split('\n')[0]}. Expected Blender 5.2 LTS.`,
+        );
+      return binary;
+    }
     if (
       override === undefined &&
       result.error &&
@@ -30,7 +31,7 @@ export function findBlender(root: string): string {
       `${override !== undefined ? 'BLENDER_BIN' : 'Blender'} startup failed for ${binary}: ${result.stderr || String(result.error ?? result.signal ?? result.status)}`,
     );
   }
-  throw new Error('Blender is missing. Set BLENDER_BIN or install Blender 4.5 LTS.');
+  throw new Error(`Blender is missing for ${root}. Set BLENDER_BIN or install Blender 5.2 LTS.`);
 }
 
 export function runBlender(

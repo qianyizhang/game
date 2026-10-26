@@ -1,0 +1,43 @@
+.sts-intent-cue {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #b59d7e;
+  border-radius: 7px;
+  background: #f4ebd8;
+  color: #4c342c;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.sts-intent-compound {
+  flex-direction: column;
+}
+.sts-intent-symbols {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+.sts-intent-art {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.sts-intent-copy {
+  display: grid;
+  gap: 2px;
+}
+.sts-intent-caption {
+  color: #725d45;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

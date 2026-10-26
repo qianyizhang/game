@@ -1,6 +1,9 @@
 # Card Workshop
 
-Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone Battlegrounds, in that order. The Hearthstone choice is Battlegrounds (tavern recruitment and automatic combat), not Tavern Brawl duels. All three are implemented: Blindside, Slay the Spire (Ironclad and Silent, Ascensions 0–5) and Last Hearth. The original Slay the Spire implementation supersedes the earlier Emberpath hybrid.
+Use `$CODEX_HOME/AGENTS.md` (default `~/.codex/AGENTS.md`) and its practice guides
+when present; local contracts and checks below still apply.
+
+Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone Battlegrounds, in that order. Battlegrounds means tavern recruitment and automatic combat.
 
 ## Boundaries
 
@@ -12,13 +15,11 @@ Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone B
 - Test interaction order, resource accounting, invalid actions, and run lifecycle. Keep tests meaningful.
 - Prefer overall behavior and end-to-end journeys. For test additions, consolidation or removal, read [testing policy](docs/engineering/testing.md).
 - For policy interfaces, rollout recording/review, or strength/difficulty/score evaluation, read [policy development](docs/engineering/policy-development.md) and the owning game's contract before implementation or study preparation. Apply its trace-derived preflight checks before dispatch.
-- Preserve concurrent edits. No subagent delegation is required by this file.
 
 ## Governance
 
-- Reach for simple vertical solutions first over bulletproof complex architecture. Focus on core functions; stub secondary branches with `TODO` or `NotImplemented` instead of overengineering.
+- Build the core flow first; mark deferred branches with `TODO` or `NotImplemented`.
 - Structure files into cohesive modules with clear hierarchy; avoid flat directory dumping.
-- Tidy before commit: reorganize directory structure, consolidate module layout, and sharpen terminology to be concise and precise.
 - For maintenance, script changes, documentation placement, cleanup or check coverage, read [maintenance governance](docs/engineering/maintenance.md).
 - For policy experiments, keep summaries and lessons by default; follow the [iteration retention rule](docs/engineering/maintenance.md#policy-iteration-retention) when saving or closing runs.
 
@@ -41,12 +42,3 @@ selection and reporting. `npm run test:browser` runs the disposable-profile brow
 with a single startup guard.
 Automatic GitHub CI runs non-geometry checks and game-browser smoke journeys; full
 geometry and rendering/export verification remain local completion gates for affected changes.
-
-On this Mac, request approved execution outside the restricted command sandbox from the first browser-launching test command (`sandbox_permissions: require_escalated`). Ordinary checks stay sandboxed. Never use personal profiles, kill unrelated browsers, or retry unchanged LaunchServices/WindowServer startup failures. Headless and `--no-sandbox` do not fix outer sandbox permissions. Report blocked verification accurately.
-
-## Communication
-
-- Lead with the result. Keep explanations concise and distinguish implemented features, verified behavior, and remaining work. Clear accepted decisions stay settled.
-- Be blunt and push back upfront. Reason about underlying intent first rather than following literal requests uncritically.
-- Propose before building: clarify, refine, and suggest standard patterns, existing solutions, or proven frameworks with concise reasoning.
-- Sharpen terminology: rephrase broad or imprecise terms into concise, technically precise language.
