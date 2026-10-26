@@ -30,6 +30,7 @@ import {
 } from '../../../src/games/balatro/ui/Artwork';
 import { AbilityArt } from '../../../src/games/spire/ui/AbilityArt';
 import { MinionArt } from '../../../src/games/battlegrounds/ui/MinionArt';
+import { ShieldBreakArt } from '../../../src/games/battlegrounds/ui/ShieldBreakArt';
 import { ShopArt } from '../../../src/games/balatro/ui/ShopArt';
 import { PACKS, VOUCHERS, TAGS } from '../../../src/games/balatro/content/shop';
 import { JOKERS } from '../../../src/games/balatro/content/jokers';
@@ -111,6 +112,12 @@ export function cardArtCatalogue(): Asset[] {
     'seed',
   ];
   return [
+    {
+      id: 'hearth/feedback/shield-break',
+      group: 'Last Hearth · Combat feedback',
+      name: 'Shield broken',
+      node: <ShieldBreakArt />,
+    },
     ...Object.entries(INTENT_ART).map(([kind, art]) => ({
       id: `spire/intents/${kind}`,
       group: 'Slay the Spire · Intent cues',

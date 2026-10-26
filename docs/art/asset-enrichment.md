@@ -1,9 +1,11 @@
 # Game asset enrichment · 2026-10-26 pilot
 
-**Next slice:** [Blindside score feedback](assets/blindside-score/README.md) reuses existing
-card/Joker illustrations and shows which running values changed. Its matched comparison,
-validation boundary and next candidate continue this review surface; the original Spire
-pilot and failed results below remain retained history.
+**Studies 02 and 03:** [Blindside score feedback](assets/blindside-score/README.md) reuses
+existing card/Joker illustrations and names changed running values.
+[Last Hearth shield feedback](assets/hearth-shield/README.md) marks lost protection on the
+affected minion and in the combat announcement. Both comparisons and their changelog entries
+coexist with the original Spire study and retained failure history. The composed gallery
+keeps each review independently expandable; its changelog links the owning PR evidence.
 
 The first slice adds six Spire intent symbols, clearer target feedback and an independent
 offline review gallery. It aims to make the next decision easier to read. Human playtesting
@@ -22,12 +24,12 @@ Native binaries use Git LFS. These counts describe inventory, not visual accepta
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1 · implemented pilot | Spire: engraved ability cards, portraits, relic/potion/route SVGs; muted copper, forged metal, cloth                            | Small action silhouettes paired with exact intent text; explicit target marker. Help players scan a threat and aim a card.                                                                             | `ui/Combat.tsx`, `IntentArt.tsx`, `IntentCue.tsx`; `currentIntent` and `intentText` remain authoritative.                                                                                                                          |
 | 2 · implemented slice | Blindside: cream/forest/ochre cut-paper cards, Jokers, shops; ordered score trace                                               | Reused source portraits and explicit changed-value cues make scoring effects easier to follow. Owned-instance highlighting remains proposed because the trace has no actor IDs.                        | `src/games/balatro/ui/ScoreFeedback.tsx`, shared `Playback.tsx`; consume immutable score steps, preserve pause/seek and reduced motion.                                                                                            |
-| 3 · proposed          | Last Hearth: creature SVGs, selected native canid combat stage, immutable combat frames                                         | Distinct shield-break, rebirth and finishing-hit shapes; one fitted 3D contact-pose study only after the 2D cue is useful. Clarify why a warband won or lost.                                          | `ui/CombatPlayer.tsx`, `CanidAttackStage.tsx`; frame results already exist, no combat recalculation or hidden rival state.                                                                                                         |
+| 3 · implemented slice | Last Hearth: creature SVGs, selected native canid combat stage, immutable combat frames                                         | A split-shield cue names lost protection. Rebirth and finishing-hit shapes, then a fitted 3D contact-pose study, remain proposed after player review.                                                  | `ui/CombatPlayer.tsx`, `ShieldBreakCue.tsx`; compare adjacent recorded snapshots by side and unit ID. Preserve rules, frames and the playback clock.                                                                               |
 | 4 · proposed          | Cartographer: DOM room grid, symbolic units, marked threat cells                                                                | Small 2D tile kit that separates hazards, water, cover and exits by contour as well as color. Reduce navigation mistakes.                                                                              | `src/games/cartographer/ui/CartographerApp.tsx`; preserve existing cell labels, danger-cell sets and click/keyboard commands.                                                                                                      |
 | 5 · proposed          | Night Passage: Canvas fallback and orthographic Three.js; native hero/enemies/guardians/environment kits, pooled patron effects | Review one brute/guardian anticipation silhouette from the real camera; refine a saved Blender pose or raised threat edge only if it improves reaction clarity. Keep safe space visible under effects. | `ui/presentation/scene/{enemies,guardians,ground-effects}.ts`; preserve rules-tick contact, enrage timing, collision geometry, reduced-motion stills and resource disposal. Native edits require saved-source/export/reload proof. |
 | 6 · proposed          | Emberwake: Canvas terrain and sprites, finite elemental skill-effect families                                                   | Different 2D impact shapes for physical, fire, cold and poison; bounded decay and a clear kill finish. Help players read hit confirmation in crowded combat.                                           | `packages/diablo2/src/ui/{render,skill-effects,field-runtime}.ts`; reuse accepted casts/damage deltas and simulation time. No new damage or timing rules.                                                                          |
 
-The later studies are candidates, not authored or validated deliveries. Existing native
+Items marked proposed remain candidates. Existing native
 art is a reusable starting point, not permission to infer that every pose works in gameplay.
 
 ## Pilot contracts and reusable sources

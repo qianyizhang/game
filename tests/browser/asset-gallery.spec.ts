@@ -43,24 +43,39 @@ test('independent asset comparisons, changelog links, offline delivery and phone
   await attack.locator('summary').click();
   await expect(attack).not.toHaveAttribute('open', '');
   await expect(block).toHaveAttribute('open', '');
-  const decoded = await page.locator('img').evaluateAll(async (images) =>
-    Promise.all(
-      images.map(async (image) => {
-        const img = image as HTMLImageElement;
+  const decoded: boolean[] = [];
+  for (const image of await page.locator('img').all()) {
+    // Retained history can put a lazy capture outside the initial preload distance.
+    await image.scrollIntoViewIfNeeded();
+    decoded.push(
+      await image.evaluate(async (node) => {
+        const img = node as HTMLImageElement;
         await img.decode();
         return img.naturalWidth > 0 && img.naturalHeight > 0;
       }),
-    ),
-  );
-  expect(decoded).toEqual([true, true, true, true]);
+    );
+  }
+  expect(decoded).toEqual([true, true, true, true, true, true]);
+  const shield = page.locator('#review-hearth-shield');
   const score = page.locator('#review-score');
+  await shield.locator('summary').click();
+  await expect(shield).not.toHaveAttribute('open', '');
+  await expect(score).toHaveAttribute('open', '');
+  await expect(page.locator('#review-combat')).toHaveAttribute('open', '');
+  await shield.locator('summary').click();
+  await expect(shield.locator('.hearth-shield-break')).toHaveText('Shield broken');
   await score.locator('summary').click();
   await expect(score).not.toHaveAttribute('open', '');
+  await expect(shield).toHaveAttribute('open', '');
   await expect(page.locator('#review-combat')).toHaveAttribute('open', '');
   await expect(block).toHaveAttribute('open', '');
   await score.locator('summary').click();
   await expect(score.locator('.score-source h3')).toHaveText('Spark');
   await expect(page.locator('script')).toHaveCount(0);
+  await shield.screenshot({
+    path: info.outputPath('gallery-shield-desktop.png'),
+    animations: 'disabled',
+  });
   await score.screenshot({
     path: info.outputPath('gallery-score-desktop.png'),
     animations: 'disabled',
@@ -68,6 +83,10 @@ test('independent asset comparisons, changelog links, offline delivery and phone
   await page.screenshot({ path: info.outputPath('gallery-desktop.png'), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await shield.screenshot({
+    path: info.outputPath('gallery-shield-phone.png'),
+    animations: 'disabled',
+  });
   await score.screenshot({
     path: info.outputPath('gallery-score-phone.png'),
     animations: 'disabled',

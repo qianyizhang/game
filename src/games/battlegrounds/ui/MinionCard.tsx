@@ -1,6 +1,7 @@
 import { MINION_BY_ID } from '../content/minions';
 import type { Unit } from '../domain/types';
 import { MinionArt } from './MinionArt';
+import { ShieldBreakCue } from './ShieldBreakCue';
 
 export function minionKeywordText(unit: Unit): string {
   return unit.keywords
@@ -25,6 +26,7 @@ export function MinionCard({
   disabled,
   footnote,
   compact = false,
+  shieldBroken = false,
 }: {
   unit: Unit;
   onClick?: () => void;
@@ -32,6 +34,7 @@ export function MinionCard({
   disabled?: boolean;
   footnote?: string;
   compact?: boolean;
+  shieldBroken?: boolean;
 }) {
   const definition = MINION_BY_ID[unit.definitionId];
   const keywords = minionKeywordText(unit);
@@ -42,7 +45,7 @@ export function MinionCard({
       onClick={onClick}
       disabled={disabled}
       aria-pressed={selected}
-      aria-label={`${definition.name}${unit.golden ? ' golden' : ''}, ${unit.attack} attack, ${Math.max(0, unit.health)} health${keywords ? `, ${keywords}` : ''}`}
+      aria-label={`${definition.name}${unit.golden ? ' golden' : ''}, ${unit.attack} attack, ${Math.max(0, unit.health)} health${keywords ? `, ${keywords}` : ''}${shieldBroken ? ', Shield broken' : ''}`}
     >
       <span className="minion-tier">{'★'.repeat(definition.tier)}</span>
       <span className="minion-art">
@@ -56,7 +59,10 @@ export function MinionCard({
           {unit.golden ? ' Golden: double stats and bonuses; summons golden tokens.' : ''}
         </span>
       )}
-      <span className="minion-keywords">{keywords}</span>
+      <span className="minion-keywords">
+        {keywords}
+        {shieldBroken && <ShieldBreakCue />}
+      </span>
       <span className="minion-stats">
         <b>{unit.attack}</b>
         <b>{Math.max(0, unit.health)}</b>

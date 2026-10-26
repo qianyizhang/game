@@ -3,6 +3,7 @@ import { usePlaybackClock } from '../../../shared/usePlaybackClock';
 import { MINION_BY_ID } from '../content/minions';
 import type { CombatResult } from '../domain/types';
 import { MinionCard } from './MinionCard';
+import { shieldLosses } from './shieldFeedback';
 const CanidAttackStage = lazy(() => import('./CanidAttackStage'));
 
 export function CombatPlayer({ result, opponent }: { result: CombatResult; opponent: string }) {
@@ -18,6 +19,7 @@ export function CombatPlayer({ result, opponent }: { result: CombatResult; oppon
   const frame = result.frames[Math.min(index, result.frames.length - 1)];
   if (!frame) return null;
   const selected = frame.boards.flat().find((unit) => unit.id === selectedId);
+  const brokenShields = shieldLosses(result.frames[index - 1], frame);
   return (
     <section className="combat-replay">
       <div className="replay-heading">
@@ -46,12 +48,24 @@ export function CombatPlayer({ result, opponent }: { result: CombatResult; oppon
             key={unit.id}
             onClick={() => setSelectedId(unit.id)}
             selected={unit.id === frame.target || unit.id === frame.attacker}
+            shieldBroken={brokenShields.some((loss) => loss.unit === unit)}
           />
         ))}
         {!frame.boards[1].length && <p className="empty">Warband defeated</p>}
       </div>
       <div className="combat-caption" aria-live="polite">
         {frame.text}
+        {brokenShields.length > 0 && (
+          <span className="hearth-shield-summary">
+            Shield broken ·{' '}
+            {brokenShields
+              .map(
+                ({ side, position, unit }) =>
+                  `${side === 0 ? 'Your' : 'Rival'} ${MINION_BY_ID[unit.definitionId].name} (slot ${position + 1})`,
+              )
+              .join(' · ')}
+          </span>
+        )}
       </div>
       <div className="combat-warband">
         {frame.boards[0].map((unit) => (
@@ -61,6 +75,7 @@ export function CombatPlayer({ result, opponent }: { result: CombatResult; oppon
             key={unit.id}
             onClick={() => setSelectedId(unit.id)}
             selected={unit.id === frame.target || unit.id === frame.attacker}
+            shieldBroken={brokenShields.some((loss) => loss.unit === unit)}
           />
         ))}
         {!frame.boards[0].length && <p className="empty">Warband defeated</p>}

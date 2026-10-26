@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-10-26-game-feedback-integration",
+    "date": "2026-10-26",
+    "title": "Spire, Blindside and Hearth reviews coexist",
+    "status": "technically verified",
+    "summary": "The integration rehearsal passed 21 browser journeys and eight focused tests. All 643 SVG exports are unchanged; independent comparisons and earlier history are retained. The linked PR records the final combined gates. Human gameplay testing remains pending.",
+    "assets": ["blindside-score", "hearth-shield"],
+    "review": "reviews",
+    "pr": "https://github.com/qianyizhang/game/pull/20"
+  },
+  {
+    "id": "2026-10-26-hearth-shield",
+    "date": "2026-10-26",
+    "title": "Last Hearth names lost shields on the affected minion",
+    "status": "visually reviewed",
+    "summary": "Author reviewed the cue at 64/22/18 px and in desktop/phone combat. Eleven focused browser journeys pass; all 643 SVGs decode and the original 642 remain byte-identical. The default gate passes 573 application tests and 37 simulations. Matched saves and combat results are unchanged. Human gameplay testing remains pending; the PR records hosted CI.",
+    "assets": ["hearth-shield"],
+    "review": "review-hearth-shield",
+    "pr": "https://github.com/qianyizhang/game/pull/20"
+  },
+  {
     "id": "2026-10-26-blindside-score",
     "date": "2026-10-26",
     "title": "Blindside scoring shows its source and changed values",

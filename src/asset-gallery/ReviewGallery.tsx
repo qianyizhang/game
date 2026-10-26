@@ -2,6 +2,7 @@ import { IntentArt, INTENT_ART, type IntentArtKind } from '../games/spire/ui/Int
 import { IntentCue } from '../games/spire/ui/IntentCue';
 import changes from './CHANGELOG.json';
 import { ScoreFeedback } from '../games/balatro/ui/ScoreFeedback';
+import { HearthShieldReview, type HearthShieldEvidence } from './HearthShieldReview';
 
 const examples: Record<IntentArtKind, { text: string; lesson: string }> = {
   attack: {
@@ -40,6 +41,7 @@ export interface GalleryEvidence {
   after: string;
   screenshotBytes: number;
   score: { before: string; after: string; screenshotBytes: number };
+  shield: HearthShieldEvidence;
 }
 
 export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
@@ -58,17 +60,17 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
       <main id="top">
         <section className="gallery-intro" aria-labelledby="gallery-title">
           <div>
-            <p className="eyebrow">STUDIES 01 + 02 / ACTIONS & PAYOFFS</p>
+            <p className="eyebrow">STUDIES 01–03 / ACTIONS, PAYOFFS & PROTECTION</p>
             <h1 id="gallery-title">
               Follow
               <br />
-              <em>each effect.</em>
+              <em>what changed.</em>
             </h1>
             <p className="lede">
-              Small visual studies for clearer decisions and payoffs. Read Spire’s next action, then
-              follow the cards and Jokers behind a Blindside score.
+              Small visual studies for clearer decisions and feedback: Spire’s next action,
+              Blindside’s scoring effects and Last Hearth’s lost protection.
             </p>
-            <a className="review-link" href="#review-score">
+            <a className="review-link" href="#review-hearth-shield">
               Compare the latest study
             </a>
           </div>
@@ -143,6 +145,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
             <h2 id="reviews-title">The comparisons</h2>
             <span>Open any number · each stays independent</span>
           </div>
+          <HearthShieldReview evidence={evidence.shield} />
           <details className="comparison" id="review-score" open>
             <summary>
               <span>
@@ -322,10 +325,10 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
               </p>
             </li>
             <li>
-              <strong>Last Hearth · combat event cues</strong>
+              <strong>Last Hearth · shield review, then contact cues</strong>
               <p>
-                Distinguish shield loss, rebirth, and a finishing hit at board size. Use existing
-                combat frames.
+                Review shield recognition and the added height first. Rebirth and finishing-hit cues
+                remain proposed; any later 3D contact study must preserve existing combat frames.
               </p>
             </li>
             <li>
@@ -357,24 +360,31 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
           <h2 id="provenance-title">Materials & review notes</h2>
           <p>
             Original code-drawn SVG compositions reuse the project’s sword, shield, eye, book,
-            spark, hourglass, card and Joker artwork. No purchased assets, external fonts, generated
-            raster artwork, or third-party artwork were added. The repository has no explicit
+            spark, hourglass, card and Joker artwork. The new split-shield contour uses Last
+            Hearth’s ink and ochre palette. No purchased assets, external fonts, generated raster
+            artwork, or third-party artwork were added. The repository has no explicit
             redistribution license; this preview does not grant one.
           </p>
           <dl>
             <div>
               <dt>In-game budget</dt>
               <dd>
-                Spire: six 64 × 64 vectors at 32 px; ≤ 12 KiB total standalone SVG. Blindside: one
-                existing source portrait, three running values and a 180 ms emphasis disabled for
-                reduced motion. No new asset requests, timers, loops or filters.
+                Spire: six vectors, ≤ 12 KiB total. Blindside: one existing source portrait and
+                three running values. Hearth: one 64 × 64 vector, ≤ 2 KiB, at 22/18 px. Finite 180
+                ms emphasis is disabled for reduced motion. No new requests, timers, loops or
+                filters.
               </dd>
             </div>
             <div>
               <dt>Gallery budget</dt>
               <dd>
-                One offline HTML file, ≤ 600 KiB. Zero JavaScript. Four embedded captures:{' '}
-                {((evidence.screenshotBytes + evidence.score.screenshotBytes) / 1024).toFixed(1)}{' '}
+                One offline HTML file, ≤ 600 KiB. Zero JavaScript. Six embedded captures:{' '}
+                {(
+                  (evidence.screenshotBytes +
+                    evidence.score.screenshotBytes +
+                    evidence.shield.screenshotBytes) /
+                  1024
+                ).toFixed(1)}{' '}
                 KiB.
               </dd>
             </div>
@@ -390,7 +400,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
       </main>
       <footer>
         <span>CARD WORKSHOP / ASSET FIELDNOTES</span>
-        <span>Studies 01 + 02 · player review pending</span>
+        <span>Studies 01–03 · player review pending</span>
       </footer>
     </>
   );
