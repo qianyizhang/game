@@ -1,5 +1,15 @@
 [
   {
+    "id": "2026-10-26-game-feedback-integration",
+    "date": "2026-10-26",
+    "title": "Spire, Blindside and Hearth reviews coexist",
+    "status": "technically verified",
+    "summary": "The integration rehearsal passed 21 browser journeys and eight focused tests. All 643 SVG exports are unchanged; independent comparisons and earlier history are retained. The linked PR records the final combined gates. Human gameplay testing remains pending.",
+    "assets": ["blindside-score", "hearth-shield"],
+    "review": "reviews",
+    "pr": "https://github.com/qianyizhang/game/pull/20"
+  },
+  {
     "id": "2026-10-26-hearth-shield",
     "date": "2026-10-26",
     "title": "Last Hearth names lost shields on the affected minion",
@@ -8,6 +18,16 @@
     "assets": ["hearth-shield"],
     "review": "review-hearth-shield",
     "pr": "https://github.com/qianyizhang/game/pull/20"
+  },
+  {
+    "id": "2026-10-26-blindside-score",
+    "date": "2026-10-26",
+    "title": "Blindside scoring shows its source and changed values",
+    "status": "visually reviewed",
+    "summary": "Author reviewed card, Joker and cash-only effects at desktop and phone sizes. Eleven focused browser journeys pass, including exact values, pause/seek, reduced motion and unchanged saves. The local default gate passes 571 application tests and 37 simulations. Matched saves and score steps are identical before/after. Human gameplay testing remains pending; the PR records hosted CI.",
+    "assets": ["blindside-score"],
+    "review": "review-score",
+    "pr": "https://github.com/qianyizhang/game/pull/19"
   },
   {
     "id": "2026-10-26-default-checks",

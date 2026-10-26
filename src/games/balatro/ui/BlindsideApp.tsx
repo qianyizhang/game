@@ -12,6 +12,7 @@ import type { GameId } from '../../../app/GamePicker';
 import { Playback } from '../../../shared/Playback';
 import { WorkshopTools } from '../../../app/WorkshopTools';
 import { BLINDSIDE_SCENARIOS } from '../application/scenario';
+import { ScoreFeedback } from './ScoreFeedback';
 
 type View = 'play' | 'collection' | 'guide';
 
@@ -203,17 +204,8 @@ export function BlindsideApp({
                   sequence={`${game.timelineRevision}-${run.seed}-${game.session.replay.commands.reduce((last, c, i) => (c.type === 'play' ? i : last), -1)}`}
                   frames={run.lastScore?.steps ?? []}
                   label="Scoring resolution"
-                  render={(step) => (
-                    <>
-                      <div className="resolution-score">
-                        <span>{step.chips}</span> × <span>{Number(step.mult.toFixed(2))}</span>
-                      </div>
-                      <div className="resolution-explanation">
-                        <strong>{step.source}</strong>
-                        <p>{step.detail}</p>
-                      </div>
-                      <p>Scoring effects resolve from left to right.</p>
-                    </>
+                  render={(step, index) => (
+                    <ScoreFeedback step={step} previous={run.lastScore?.steps[index - 1]} />
                   )}
                 >
                   <Table

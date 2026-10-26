@@ -1,6 +1,7 @@
 import { IntentArt, INTENT_ART, type IntentArtKind } from '../games/spire/ui/IntentArt';
 import { IntentCue } from '../games/spire/ui/IntentCue';
 import changes from './CHANGELOG.json';
+import { ScoreFeedback } from '../games/balatro/ui/ScoreFeedback';
 import { HearthShieldReview, type HearthShieldEvidence } from './HearthShieldReview';
 
 const examples: Record<IntentArtKind, { text: string; lesson: string }> = {
@@ -39,6 +40,7 @@ export interface GalleryEvidence {
   before: string;
   after: string;
   screenshotBytes: number;
+  score: { before: string; after: string; screenshotBytes: number };
   shield: HearthShieldEvidence;
 }
 
@@ -58,15 +60,15 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
       <main id="top">
         <section className="gallery-intro" aria-labelledby="gallery-title">
           <div>
-            <p className="eyebrow">STUDIES 01 + 03 / INTENT & SHIELD LOSS</p>
+            <p className="eyebrow">STUDIES 01–03 / ACTIONS, PAYOFFS & PROTECTION</p>
             <h1 id="gallery-title">
-              Read the
+              Follow
               <br />
               <em>what changed.</em>
             </h1>
             <p className="lede">
-              Small visual studies for clearer decisions and feedback: Spire’s next action and Last
-              Hearth’s lost protection. Familiar shapes stay beside exact words.
+              Small visual studies for clearer decisions and feedback: Spire’s next action,
+              Blindside’s scoring effects and Last Hearth’s lost protection.
             </p>
             <a className="review-link" href="#review-hearth-shield">
               Compare the latest study
@@ -144,6 +146,64 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
             <span>Open any number · each stays independent</span>
           </div>
           <HearthShieldReview evidence={evidence.shield} />
+          <details className="comparison" id="review-score" open>
+            <summary>
+              <span>
+                <b>03</b> Blindside · follow a scoring effect
+              </span>
+              <span className="detail-hint">Before / after</span>
+            </summary>
+            <div className="comparison-body">
+              <p className="review-question">
+                Which source fired, and which running value changed?
+              </p>
+              <div className="matched-views">
+                <figure>
+                  <figcaption>BEFORE · numbers and source text</figcaption>
+                  <img
+                    src={evidence.score.before}
+                    alt="Before: Spark adds four Mult below an unlabeled Chips times Mult equation."
+                    loading="lazy"
+                  />
+                </figure>
+                <figure>
+                  <figcaption>AFTER · source artwork and explicit change</figcaption>
+                  <img
+                    src={evidence.score.after}
+                    alt="After: Spark’s existing illustration accompanies its exact effect. Mult is marked Updated; Chips and Cash earned are unchanged."
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+              <p>
+                Same practice seed, accepted hand, paused event and desktop viewport. Exact save
+                bytes and score steps match; the new panel is 46 px taller.
+              </p>
+              <article id="asset-blindside-score" className="score-specimen">
+                <h3>blindside/feedback/score-step</h3>
+                <p>Live component specimen · existing artwork, recorded text and running values.</p>
+                <ScoreFeedback
+                  step={{ source: 'Spark', detail: '+4 mult', chips: 112, mult: 8, cash: 0 }}
+                  previous={{
+                    source: 'Granite',
+                    detail: '+50 chips',
+                    chips: 112,
+                    mult: 4,
+                    cash: 0,
+                  }}
+                />
+              </article>
+              <div className="lesson">
+                <strong>Keep attribution honest</strong>
+                <p>
+                  The trace names a source but does not identify an owned instance. Show its
+                  familiar illustration, without guessing which duplicate Joker fired. Unknown
+                  labels keep their exact text. Cash-only effects must remain visible even when
+                  Chips and Mult stay unchanged.
+                </p>
+              </div>
+            </div>
+          </details>
           <details className="comparison combat-comparison" id="review-combat" open>
             <summary>
               <span>
@@ -257,11 +317,11 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
           </div>
           <ol>
             <li>
-              <strong>Blindside · separate scoring review</strong>
+              <strong>Blindside · player review, then instance-level cues</strong>
               <p>
-                The scoring study is available in{' '}
-                <a href="https://github.com/qianyizhang/game/pull/19">PR19</a>. Review its source
-                portraits and changed-value cues alongside this study.
+                Compare the two scoring views with players: ask which source fired and what changed.
+                Exact owned-card or duplicate-Joker highlighting needs stable source identity in the
+                trace; it remains proposed.
               </p>
             </li>
             <li>
@@ -300,33 +360,39 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
           <h2 id="provenance-title">Materials & review notes</h2>
           <p>
             Original code-drawn SVG compositions reuse the project’s sword, shield, eye, book,
-            spark, and hourglass primitives. The new split-shield contour uses Last Hearth’s ink and
-            ochre palette. No purchased assets, external fonts, generated raster artwork, or
-            third-party artwork were added. The repository has no explicit redistribution license;
-            this preview does not grant one.
+            spark, hourglass, card and Joker artwork. The new split-shield contour uses Last
+            Hearth’s ink and ochre palette. No purchased assets, external fonts, generated raster
+            artwork, or third-party artwork were added. The repository has no explicit
+            redistribution license; this preview does not grant one.
           </p>
           <dl>
             <div>
               <dt>In-game budget</dt>
               <dd>
-                Spire: six vectors, ≤ 12 KiB total. Hearth: one 64 × 64 vector, ≤ 2 KiB, at 22/18 px
-                with a 180 ms emphasis disabled for reduced motion. No new requests, timers,
-                animation loops or filters.
+                Spire: six vectors, ≤ 12 KiB total. Blindside: one existing source portrait and
+                three running values. Hearth: one 64 × 64 vector, ≤ 2 KiB, at 22/18 px. Finite 180
+                ms emphasis is disabled for reduced motion. No new requests, timers, loops or
+                filters.
               </dd>
             </div>
             <div>
               <dt>Gallery budget</dt>
               <dd>
-                One offline HTML file, ≤ 600 KiB. Zero JavaScript. Four embedded captures:{' '}
-                {((evidence.screenshotBytes + evidence.shield.screenshotBytes) / 1024).toFixed(1)}{' '}
+                One offline HTML file, ≤ 600 KiB. Zero JavaScript. Six embedded captures:{' '}
+                {(
+                  (evidence.screenshotBytes +
+                    evidence.score.screenshotBytes +
+                    evidence.shield.screenshotBytes) /
+                  1024
+                ).toFixed(1)}{' '}
                 KiB.
               </dd>
             </div>
             <div>
               <dt>Review prompt</dt>
               <dd>
-                Which cue reads slowly? Which competing element draws your eye? Does the added
-                height help enough on a phone?
+                Which cue reads slowly? Can you name the source and changed value? Does the added
+                height earn its space on a phone?
               </dd>
             </div>
           </dl>
@@ -334,7 +400,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
       </main>
       <footer>
         <span>CARD WORKSHOP / ASSET FIELDNOTES</span>
-        <span>Studies 01 + 03 · player review pending</span>
+        <span>Studies 01–03 · player review pending</span>
       </footer>
     </>
   );

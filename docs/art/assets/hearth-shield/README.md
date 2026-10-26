@@ -66,12 +66,15 @@ Aggregate gates, the complete SVG export comparison and hosted CI are reported i
 - **Keep the gallery bounded.** Full combat images total 74,238 bytes before embedding.
   Matched unit captures show the local change within budget; complete desktop and phone views
   were also inspected. No screenshot content was retouched.
+- **Visit lazy captures before decoding.** Longer retained history moved the Hearth images
+  outside the initial preload distance. The gallery test now scrolls every capture into view
+  before decoding it; no images, assertions or timeout limits were removed or relaxed.
 
 ## Additive gallery handoff
 
-This branch starts from main and contains no unmerged PR19 implementation. Its generated
-gallery contains Spire and Hearth. **Do not replace a combined published gallery wholesale.**
-To retain the separate Blindside review, add only these Hearth inputs to that gallery:
+The original PR20 review was isolated from PR19. The reconciled source now contains Spire,
+Blindside and Hearth with all prior changelog entries retained. For a gallery already
+containing Blindside, add these Hearth inputs without replacing the other comparisons:
 
 1. [HearthShieldReview.tsx](../../../../src/asset-gallery/HearthShieldReview.tsx), the cue/art
    components above, `ShieldFeedback.css`, and the `.shield-*` gallery CSS rules.
@@ -82,7 +85,7 @@ To retain the separate Blindside review, add only these Hearth inputs to that ga
 4. Keep the 600 KiB budget, image decoding, independent expansion, phone and no-script checks.
 
 Build this branch's review with `npm run assets:gallery -- <fresh-directory>`. Parent owns
-private publication and reconciliation with PR19. No Site or access setting changed here.
+private publication. No Site or access setting changed here.
 
 Raw captures, the baseline export, failed browser trace and synthetic practice save remain
 under `test-results/hearth-shield-2026-10-26/` for active review. Revisit retention when the
