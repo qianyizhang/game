@@ -34,6 +34,7 @@ import {
   type Session,
 } from '../application/session';
 import { ExpeditionChoice } from './ExpeditionChoice';
+import { FrontierCue, ThreatCue } from './MapCues';
 import './styles.css';
 
 const arrows: Record<Direction, string> = { north: '↑', east: '→', south: '↓', west: '←' };
@@ -347,7 +348,7 @@ export default function CartographerApp() {
                 (e) => e.intent.kind === 'attack' && e.intent.cells.some((c) => sameCell(c, p)),
               );
               const door = exits.find((f) => sameCell(threshold(room, f.direction), p));
-              const label = `${x},${y}: ${hero ? 'Keeper (you)' : enemy ? `${ENEMIES[enemy.kind].name}, ${enemy.hp} life` : door ? `${door.direction} doorway` : tile === '#' ? 'wall' : tile === '~' ? 'water' : 'floor'}${danger.length ? `; threatened for ${danger.reduce((sum, e) => sum + e.intent.damage, 0)}` : ''}`;
+              const label = `${x},${y}: ${hero ? 'Keeper (you)' : enemy ? `${ENEMIES[enemy.kind].name}, ${enemy.hp} life` : door ? `${door.direction} doorway` : tile === '#' ? 'wall' : tile === '~' ? 'water' : 'floor'}${door && (hero || enemy) ? `; ${door.direction} doorway` : ''}${danger.length ? `; threatened for ${danger.reduce((sum, e) => sum + e.intent.damage, 0)}` : ''}`;
               return (
                 <button
                   key={i}
@@ -385,14 +386,17 @@ export default function CartographerApp() {
                             : ''}
                   </span>
                   {enemy && <small>{enemy.hp}</small>}
-                  {danger.length > 0 && <b className="dc-danger-dot">!</b>}
+                  {door && (hero || enemy) && <FrontierCue direction={door.direction} />}
+                  {danger.length > 0 && <ThreatCue />}
                 </button>
               );
             })}
           </div>
           <div className="dc-legend">
             <span>◈ You</span>
-            <span className="dc-danger-key">! Next attack</span>
+            <span className="dc-danger-key">
+              <ThreatCue /> Next attack
+            </span>
             <span>≈ Water</span>
             <span>↑ Unexplored doorway</span>
           </div>

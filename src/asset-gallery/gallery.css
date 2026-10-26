@@ -561,3 +561,36 @@ footer {
 .shield-symbol-sizes figcaption {
   margin-top: 8px;
 }
+.cartographer-views,
+.cartographer-threats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 24px 0;
+}
+.cartographer-views figure {
+  width: 320px;
+  max-width: 100%;
+  margin: 0;
+}
+.cartographer-views img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+}
+.cartographer-threats figure {
+  margin: 0;
+  text-align: center;
+}
+.cartographer-threats img {
+  display: block;
+  margin: 12px auto 0;
+}
+.cartographer-threat-sample {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  background: #b6c2a5;
+}

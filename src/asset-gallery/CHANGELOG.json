@@ -1,5 +1,26 @@
 [
   {
+    "id": "2026-10-26-cartographer-repository-review",
+    "date": "2026-10-26",
+    "title": "Cartographer map cues enter repository review",
+    "status": "visually reviewed",
+    "summary": "Author reviewed occupied doorways and threat marks at desktop and phone sizes. The local default gate passed 574 application tests and 37 simulations; nine browser journeys passed, including full expedition victory and historical saves. The prior 643 SVGs are unchanged. Human recognition and enjoyment remain untested; the linked PR records hosted CI.",
+    "assets": ["cartographer-map"],
+    "review": "review-cartographer",
+    "pr": "https://github.com/qianyizhang/game/pull/21"
+  },
+  {
+    "id": "2026-10-26-cartographer-local",
+    "date": "2026-10-26",
+    "title": "Cartographer retains occupied doorway cues and separates threat marks",
+    "status": "visually reviewed",
+    "summary": "Author inspected matched desktop and phone captures, including 320 px controls. Occupied cell labels retain the doorway direction; threat cells and accepted commands are unchanged in the matched fixture. Static cues support reduced motion. Human recognition and enjoyment remain untested. Local candidate only; no PR or hosted CI has been submitted.",
+    "assets": ["cartographer-map"],
+    "review": "review-cartographer",
+    "pr": null,
+    "publication": "Local only · not submitted"
+  },
+  {
     "id": "2026-10-26-game-feedback-integration",
     "date": "2026-10-26",
     "title": "Spire, Blindside and Hearth reviews coexist",
