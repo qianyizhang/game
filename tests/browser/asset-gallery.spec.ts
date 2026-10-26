@@ -52,11 +52,26 @@ test('independent asset comparisons, changelog links, offline delivery and phone
       }),
     ),
   );
-  expect(decoded).toEqual([true, true]);
+  expect(decoded).toEqual([true, true, true, true]);
+  const score = page.locator('#review-score');
+  await score.locator('summary').click();
+  await expect(score).not.toHaveAttribute('open', '');
+  await expect(page.locator('#review-combat')).toHaveAttribute('open', '');
+  await expect(block).toHaveAttribute('open', '');
+  await score.locator('summary').click();
+  await expect(score.locator('.score-source h3')).toHaveText('Spark');
   await expect(page.locator('script')).toHaveCount(0);
+  await score.screenshot({
+    path: info.outputPath('gallery-score-desktop.png'),
+    animations: 'disabled',
+  });
   await page.screenshot({ path: info.outputPath('gallery-desktop.png'), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await score.screenshot({
+    path: info.outputPath('gallery-score-phone.png'),
+    animations: 'disabled',
+  });
   await page.screenshot({ path: info.outputPath('gallery-phone.png'), fullPage: true });
   expect(await page.evaluate(() => ({ ...localStorage }))).toEqual(saved);
   expect(external).toEqual([]);
