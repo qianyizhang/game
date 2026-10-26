@@ -67,7 +67,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
               exact action text, and a clear target.
             </p>
             <a className="review-link" href="#review-combat">
-              Compare the combat view <span aria-hidden="true">↘</span>
+              Compare the combat view
             </a>
           </div>
           <div className="hero-specimen">
