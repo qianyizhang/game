@@ -2,15 +2,27 @@ import { Worker } from 'node:worker_threads';
 import type { CaseJob, StudyRow } from './study.ts';
 
 /** Each worker owns independent episodes; assigned case identity is checked before collection. */
-export async function casePool(moduleURL: string, jobs: CaseJob[], workers: number) {
+export async function casePool(
+  moduleURL: string,
+  jobs: CaseJob[],
+  workers: number,
+  onCase: (row: StudyRow, index: number) => void = () => {},
+) {
   if (!Number.isInteger(workers) || workers < 1 || workers > 4) throw new Error('Use 1–4 workers.');
   const pool: Worker[] = [],
     rows: StudyRow[] = [],
     assigned = new Map<Worker, number>();
   let next = 0,
-    completed = 0;
+    completed = 0,
+    settled = false;
   try {
     await new Promise<void>((resolve, reject) => {
+      const fail = (error: unknown) => {
+        settled = true;
+        reject(
+          error instanceof Error ? error : new Error('Policy worker failed.', { cause: error }),
+        );
+      };
       if (!jobs.length) {
         resolve();
         return;
@@ -31,12 +43,13 @@ export async function casePool(moduleURL: string, jobs: CaseJob[], workers: numb
           resourceLimits: { maxOldGenerationSizeMb: 2048 },
         });
         pool.push(worker);
-        worker.on('error', reject);
+        worker.on('error', fail);
         worker.on('exit', (code) => {
-          if (completed !== jobs.length)
-            reject(new Error(`Policy worker exited early with code ${code}.`));
+          if (!settled && completed !== jobs.length)
+            fail(new Error(`Policy worker exited early with code ${code}.`));
         });
         worker.on('message', (value: unknown) => {
+          if (settled) return;
           try {
             const message = value as {
               ready?: boolean;
@@ -63,16 +76,19 @@ export async function casePool(moduleURL: string, jobs: CaseJob[], workers: numb
               row.difficulty !== jobs[index].difficulty
             )
               throw new Error('Policy worker result does not match its assigned case.');
+            onCase(row, index);
             assigned.delete(worker);
             rows[index] = row;
             completed++;
             process.stderr.write(
               `Case ${completed}/${jobs.length}: ${row.seed}-${row.setupId}-${row.policy} ${row.status}\n`,
             );
-            if (completed === jobs.length) resolve();
-            else dispatch(worker);
+            if (completed === jobs.length) {
+              settled = true;
+              resolve();
+            } else dispatch(worker);
           } catch (error) {
-            reject(
+            fail(
               error instanceof Error ? error : new Error('Policy worker failed.', { cause: error }),
             );
           }

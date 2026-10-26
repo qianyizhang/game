@@ -134,7 +134,16 @@ void test('fresh study subsets freeze the requested policy and independent seed 
     assert.equal(protocol.rolloutRetention, 'none');
     assert.equal(report.rolloutRetention, 'none');
     assert.ok(report.rows.every((row) => !row.rollout && row.audit.integrity === 'passed'));
-    assert.deepEqual((await readdir(out)).sort(), ['bundles', 'protocol.json', 'report.json']);
+    assert.deepEqual((await readdir(out)).sort(), [
+      'bundles',
+      'cases.jsonl',
+      'protocol.json',
+      'report.json',
+    ]);
+    const { readCaseLedger } = await import('./ledger.ts');
+    const completed = readCaseLedger(out);
+    assert.equal(completed.status, 'complete');
+    assert.deepEqual(completed.rows, report.rows);
     // Opting in changes retained files, not the attempted population or outcomes.
     const retainedOut = resolve(directory, 'retained');
     execFileSync(

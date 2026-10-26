@@ -8,12 +8,14 @@ import { auditPassed, benchmark, cohortSeeds } from './study.ts';
 import { readRolloutArtifact, writeRolloutArtifact } from './artifact.ts';
 import { isGzip, rolloutFormat } from '../../../src/shared/policy/artifact.ts';
 import type { JsonObject } from '../../../src/shared/policy/types';
+import { completeCaseLedger, readCaseLedger } from './ledger.ts';
 
 const usage = `policy run|record --game blindside|spire|hearth|emberwake|cartographer|night-passage [--policy immediate|survival|growth | --policy-module ./policy.ts]
   [--seed SEED] [--setup JSON] [--difficulty relaxed|standard|severe] [--policy-seed SEED] [--policy-options JSON] [--max-decisions N]
 policy record --game blindside|spire|hearth|emberwake|cartographer|night-passage --out NEW_DIRECTORY [same options]
 policy benchmark --game blindside|spire|hearth|emberwake|cartographer|night-passage --split development|evaluation --out NEW_DIRECTORY [--max-decisions N]
 policy audit --input ROLLOUT --out NEW_RECEIPT [--policy-module ./policy.ts]
+policy recover --input STOPPED_STUDY_DIRECTORY --out NEW_RECOVERY_JSON
 Benchmark storage: --retain-rollouts none|all (default none; summaries keep every attempt and audit verdict).
 Shared record/retained-benchmark storage (five adapters): --rollout-format json|gzip (default gzip).
 Gzip retains exact rollout JSON inside a lossless container; replay/audit remain JSON. Night Passage compression is unsupported.
@@ -26,6 +28,29 @@ Run prints result/audit; record retains exact knowledge, replay, audit and compi
 Benchmark freezes the protocol before execution; errors/timeouts remain attempted cases. Use record for selected diagnostic episodes.`;
 async function main() {
   const [mode = 'help', ...args] = process.argv.slice(2);
+  if (mode === 'recover') {
+    const options: Record<string, string> = {};
+    for (let i = 0; i < args.length; i += 2) {
+      const key = args[i],
+        value = args[i + 1];
+      if (!['--input', '--out'].includes(key) || key in options || !value || value.startsWith('--'))
+        throw new Error(usage);
+      options[key] = value;
+    }
+    if (!options['--input'] || !options['--out']) throw new Error(usage);
+    const recovery = readCaseLedger(resolve(options['--input']));
+    await writeFile(resolve(options['--out']), JSON.stringify(recovery, null, 2) + '\n', {
+      flag: 'wx',
+    });
+    console.log(
+      JSON.stringify({
+        status: recovery.status,
+        completedCases: recovery.completedCases,
+        expectedCases: recovery.expectedCases,
+      }),
+    );
+    return;
+  }
   if (mode === 'help' || mode === '--help') console.log(usage);
   else {
     if (!['run', 'record', 'benchmark', 'audit'].includes(mode)) throw new Error(usage);
@@ -266,6 +291,7 @@ async function main() {
             JSON.stringify(report, null, 2) + '\n',
             { flag: 'wx' },
           );
+          completeCaseLedger(directory!);
           console.log(
             JSON.stringify({ directory, summary: report.summary, paired: report.paired }, null, 2),
           );
