@@ -1,6 +1,7 @@
 import { IntentArt, INTENT_ART, type IntentArtKind } from '../games/spire/ui/IntentArt';
 import { IntentCue } from '../games/spire/ui/IntentCue';
 import changes from './CHANGELOG.json';
+import { ScoreFeedback } from '../games/balatro/ui/ScoreFeedback';
 
 const examples: Record<IntentArtKind, { text: string; lesson: string }> = {
   attack: {
@@ -38,6 +39,7 @@ export interface GalleryEvidence {
   before: string;
   after: string;
   screenshotBytes: number;
+  score: { before: string; after: string; screenshotBytes: number };
 }
 
 export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
@@ -56,18 +58,18 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
       <main id="top">
         <section className="gallery-intro" aria-labelledby="gallery-title">
           <div>
-            <p className="eyebrow">STUDY 01 / SPIRE / READABILITY</p>
+            <p className="eyebrow">STUDIES 01 + 02 / ACTIONS & PAYOFFS</p>
             <h1 id="gallery-title">
-              Read the
+              Follow
               <br />
-              <em>next move.</em>
+              <em>each effect.</em>
             </h1>
             <p className="lede">
-              A small experiment in making enemy actions easier to scan. Familiar engraved shapes,
-              exact action text, and a clear target.
+              Small visual studies for clearer decisions and payoffs. Read Spire’s next action, then
+              follow the cards and Jokers behind a Blindside score.
             </p>
-            <a className="review-link" href="#review-combat">
-              Compare the combat view
+            <a className="review-link" href="#review-score">
+              Compare the latest study
             </a>
           </div>
           <div className="hero-specimen">
@@ -101,7 +103,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
                         {kind}
                       </a>
                     ))}
-                    {change.pr ? <a href={change.pr}>Draft PR</a> : <span>Draft PR pending</span>}
+                    {change.pr ? <a href={change.pr}>Review PR</a> : <span>Draft PR pending</span>}
                   </div>
                 </div>
               </li>
@@ -141,6 +143,64 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
             <h2 id="reviews-title">The comparisons</h2>
             <span>Open any number · each stays independent</span>
           </div>
+          <details className="comparison" id="review-score" open>
+            <summary>
+              <span>
+                <b>03</b> Blindside · follow a scoring effect
+              </span>
+              <span className="detail-hint">Before / after</span>
+            </summary>
+            <div className="comparison-body">
+              <p className="review-question">
+                Which source fired, and which running value changed?
+              </p>
+              <div className="matched-views">
+                <figure>
+                  <figcaption>BEFORE · numbers and source text</figcaption>
+                  <img
+                    src={evidence.score.before}
+                    alt="Before: Spark adds four Mult below an unlabeled Chips times Mult equation."
+                    loading="lazy"
+                  />
+                </figure>
+                <figure>
+                  <figcaption>AFTER · source artwork and explicit change</figcaption>
+                  <img
+                    src={evidence.score.after}
+                    alt="After: Spark’s existing illustration accompanies its exact effect. Mult is marked Updated; Chips and Cash earned are unchanged."
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+              <p>
+                Same practice seed, accepted hand, paused event and desktop viewport. Exact save
+                bytes and score steps match; the new panel is 46 px taller.
+              </p>
+              <article id="asset-blindside-score" className="score-specimen">
+                <h3>blindside/feedback/score-step</h3>
+                <p>Live component specimen · existing artwork, recorded text and running values.</p>
+                <ScoreFeedback
+                  step={{ source: 'Spark', detail: '+4 mult', chips: 112, mult: 8, cash: 0 }}
+                  previous={{
+                    source: 'Granite',
+                    detail: '+50 chips',
+                    chips: 112,
+                    mult: 4,
+                    cash: 0,
+                  }}
+                />
+              </article>
+              <div className="lesson">
+                <strong>Keep attribution honest</strong>
+                <p>
+                  The trace names a source but does not identify an owned instance. Show its
+                  familiar illustration, without guessing which duplicate Joker fired. Unknown
+                  labels keep their exact text. Cash-only effects must remain visible even when
+                  Chips and Mult stay unchanged.
+                </p>
+              </div>
+            </div>
+          </details>
           <details className="comparison combat-comparison" id="review-combat" open>
             <summary>
               <span>
@@ -254,10 +314,11 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
           </div>
           <ol>
             <li>
-              <strong>Blindside · scoring emphasis</strong>
+              <strong>Blindside · player review, then instance-level cues</strong>
               <p>
-                Make the card or Joker causing each score step easier to follow. Reuse the immutable
-                score trace.
+                Compare the two scoring views with players: ask which source fired and what changed.
+                Exact owned-card or duplicate-Joker highlighting needs stable source identity in the
+                trace; it remains proposed.
               </p>
             </li>
             <li>
@@ -296,30 +357,32 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
           <h2 id="provenance-title">Materials & review notes</h2>
           <p>
             Original code-drawn SVG compositions reuse the project’s sword, shield, eye, book,
-            spark, and hourglass primitives. No purchased assets, external fonts, generated raster
-            artwork, or third-party artwork were added. The repository has no explicit
+            spark, hourglass, card and Joker artwork. No purchased assets, external fonts, generated
+            raster artwork, or third-party artwork were added. The repository has no explicit
             redistribution license; this preview does not grant one.
           </p>
           <dl>
             <div>
               <dt>In-game budget</dt>
               <dd>
-                Six 64 × 64 vectors, shown at 32 px. ≤ 2 KiB each; ≤ 12 KiB total standalone SVG. No
-                asset requests, timers, filters, or animation.
+                Spire: six 64 × 64 vectors at 32 px; ≤ 12 KiB total standalone SVG. Blindside: one
+                existing source portrait, three running values and a 180 ms emphasis disabled for
+                reduced motion. No new asset requests, timers, loops or filters.
               </dd>
             </div>
             <div>
               <dt>Gallery budget</dt>
               <dd>
-                One offline HTML file, ≤ 600 KiB. Zero JavaScript. Two embedded combat captures:{' '}
-                {(evidence.screenshotBytes / 1024).toFixed(1)} KiB.
+                One offline HTML file, ≤ 600 KiB. Zero JavaScript. Four embedded captures:{' '}
+                {((evidence.screenshotBytes + evidence.score.screenshotBytes) / 1024).toFixed(1)}{' '}
+                KiB.
               </dd>
             </div>
             <div>
               <dt>Review prompt</dt>
               <dd>
-                Which cue reads slowly? Which competing element draws your eye? Does the added
-                height help enough on a phone?
+                Which cue reads slowly? Can you name the source and changed value? Does the added
+                height earn its space on a phone?
               </dd>
             </div>
           </dl>
@@ -327,7 +390,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
       </main>
       <footer>
         <span>CARD WORKSHOP / ASSET FIELDNOTES</span>
-        <span>Study 01 · player review pending</span>
+        <span>Studies 01 + 02 · player review pending</span>
       </footer>
     </>
   );

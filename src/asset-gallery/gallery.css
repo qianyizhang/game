@@ -297,6 +297,13 @@ figcaption {
   display: block;
   border: 1px solid #b9bfac;
 }
+.score-specimen {
+  max-width: 660px;
+  margin: 28px auto 0;
+  padding: 18px;
+  border: 1px solid #c5c9b9;
+  background: #faf8f0;
+}
 .lesson {
   border-left: 2px solid #ac7650;
   padding-left: 16px;
