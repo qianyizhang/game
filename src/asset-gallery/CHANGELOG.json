@@ -1,5 +1,15 @@
 [
   {
+    "id": "2026-10-26-default-checks",
+    "date": "2026-10-26",
+    "title": "Default checks pass; complete CI coverage split across jobs",
+    "status": "technically verified",
+    "summary": "The default local gate now passes 570 application tests and 37 simulations. Independent scenarios have their own test deadlines; application workers are bounded and CI uses two complete shards plus a separate simulation job. No timeouts increased or coverage removed. Asset images are unchanged. Human gameplay testing remains pending.",
+    "assets": ["attack", "block", "status", "card", "special", "wait"],
+    "review": "review-combat",
+    "pr": "https://github.com/qianyizhang/game/pull/18"
+  },
+  {
     "id": "2026-10-26-review",
     "date": "2026-10-26",
     "title": "Intent cues reviewed; phone overlap and size budget corrected",

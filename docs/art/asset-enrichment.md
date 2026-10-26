@@ -103,16 +103,23 @@ Spire gameplay/import/reload/targeting journeys. The phone-shortcut correction h
 own subsequent rerun. Exact seeded save bytes match before and after the visual pilot;
 all 636 pre-existing exported SVG files are unchanged.
 
-The maintained gate passed: formatting/inventory, lint, types, Python (19 tests), tools
+**Later validation on 2026-10-26:** the [CI follow-up](../engineering/checks.md#gate-selection)
+separates independent scenarios and bounds application concurrency without changing
+gameplay or deadlines. The default `npm run check` now passes all **570 application
+tests and 37 simulations**, plus the maintained gate. CI runs the complete application
+selection in two shards and simulations separately. The earlier failed results below
+remain historical evidence; this follow-up changes no asset images or gameplay-test status.
+
+The initial maintained gate passed: formatting/inventory, lint, types, Python (19 tests), tools
 (99 tests), DCC contracts (80 tests), and production build. The full `npm run check`
 application scope recorded **558 passes and 3 failures**, all default 5-second timeouts:
 `src/games/battlegrounds/application/arena-versions.test.ts:136`,
 `src/shared/policy/rollout.test.ts`, and
 `packages/diablo2/src/domain/sandbox.test.ts:17`. The clean baseline at `f01f7c4`, using
 the same pins and two workers, reproduced the Hearth timeout; the other eight tests in
-those three files passed in isolation. All three test files are byte-identical to baseline.
-Do not describe the default full gate as green. No timeout or benchmark contract was
-changed in source. The retained first baseline probe overlapped simulations and is
+those three files passed in isolation. At that point all three files were byte-identical to baseline;
+that initial result did not establish a green default gate. No timeout or benchmark contract was
+changed. The retained first baseline probe overlapped simulations and is
 explicitly excluded from the clean comparison.
 
 `npm run playtest -- --maxWorkers=2` passed **37 tests in 8 files**. A separate diagnostic
