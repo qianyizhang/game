@@ -7,7 +7,7 @@
     "summary": "Author reviewed card, Joker and cash-only effects at desktop and phone sizes. Eleven focused browser journeys pass, including exact values, pause/seek, reduced motion and unchanged saves. The local default gate passes 571 application tests and 37 simulations. Matched saves and score steps are identical before/after. Human gameplay testing remains pending; the PR records hosted CI.",
     "assets": ["blindside-score"],
     "review": "review-score",
-    "pr": null
+    "pr": "https://github.com/qianyizhang/game/pull/19"
   },
   {
     "id": "2026-10-26-default-checks",
