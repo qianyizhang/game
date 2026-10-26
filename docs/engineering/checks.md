@@ -72,10 +72,22 @@ generates 29 contact sheets on demand; it does not provide an automated aestheti
 
 ### Browser prerequisites
 
-Playwright remains pinned to **1.63.0**. On 2026-10-18, 1.64.1 twice failed the hosted
+Playwright is pinned to **1.64.0**. On 2026-10-18, 1.64.1 twice failed the hosted
 Repo Canvas rejection journey after viewport resizing: its reported click never reached
 the enabled form. The unchanged journey passed with isolated 1.63.0 and the same app
-dependencies. Reassess later versions with `test:browser:canvas` before changing the pin.
+dependencies. That historical failure remains distinct from the 1.64.0 acceptance check.
+
+On 2026-10-26, [PR17](https://github.com/qianyizhang/game/pull/17) reassessed the original
+pointer action using Repo Workbench at `177cddf`, the same delivered Canvas bundle and
+cloud Chromium 154. Both 1.63.0 and 1.64.0 passed the complete journey, including the
+resized rejection form. The isolated diagnostic restored the pointer click where the
+current upstream test uses Enter; no upstream source was published. This establishes
+that tested configuration, not cross-platform browser compatibility.
+
+Repo Workbench now owns Canvas verification in repo-kit. Run `npm run test:browser --
+--project=canvas` from `plugins/repo-workbench` for its current gate, and preserve the
+original pointer diagnostic when reassessing this regression. Game browser checks remain
+owned here.
 
 `npm run test:browser` selects three explicit projects. Each case belongs to exactly one:
 
