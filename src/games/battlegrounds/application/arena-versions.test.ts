@@ -133,8 +133,9 @@ describe('arena difficulty and version continuity', () => {
     }
   });
 
-  it('finishes and replays all eight placements at every difficulty through ordinary commands', () => {
-    for (const difficulty of Object.keys(DIFFICULTIES) as (keyof typeof DIFFICULTIES)[]) {
+  it.each(Object.keys(DIFFICULTIES) as (keyof typeof DIFFICULTIES)[])(
+    'finishes and replays all eight placements on %s through ordinary commands',
+    (difficulty) => {
       const seed = `HEARTH-DIFFICULTY-${difficulty}`;
       const config = mixedRivalsConfig(seed, 'archivist', 'disclosed', difficulty);
       let session = arenaSession.act(arenaSession.create(seed), {
@@ -164,6 +165,6 @@ describe('arena difficulty and version continuity', () => {
         1, 2, 3, 4, 5, 6, 7, 8,
       ]);
       expect(arenaSession.decode(arenaSession.encode(session))).toEqual(session);
-    }
-  });
+    },
+  );
 });

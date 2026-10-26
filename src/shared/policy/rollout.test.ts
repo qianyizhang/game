@@ -1,8 +1,8 @@
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 import { adapter } from '../../games/balatro/agent/adapter';
 import { builtins } from '../../games/balatro/agent/policy';
 import { auditRollout, digest, parseRollout, recordEpisode } from './rollout';
-import type { PolicyFactory } from './types';
+import type { PolicyFactory, PolicyRollout } from './types';
 import type { Observation } from '../../games/balatro/agent/observation';
 import type { Command } from '../../games/balatro/domain/types';
 const options = {
@@ -19,53 +19,68 @@ async function rehash<T extends { digest: string }>(run: T) {
   return run;
 }
 describe('policy evidence across the ordinary Blindside boundary', () => {
-  it('reconstructs a complete episode independently and catches rehashed hidden input, replay and budget lies', async () => {
-    const run = await recordEpisode(adapter, builtins.immediate, options);
-    const audit = await auditRollout(
-      adapter,
-      parseRollout(JSON.stringify(run)),
-      builtins.immediate,
-    );
-    expect(audit).toMatchObject({
-      integrity: 'passed',
-      replay: 'passed',
-      inputs: 'passed',
-      decisions: 'passed',
+  describe('a recorded terminal episode', () => {
+    let run: PolicyRollout;
+    beforeAll(async () => {
+      run = await recordEpisode(adapter, builtins.immediate, options);
     });
-    expect(run.episode.status).toBe('terminal');
-    const invalidRows = { ...run, decisions: [null] };
-    expect(() => parseRollout(JSON.stringify(invalidRows))).toThrow('Invalid decision row');
-    expect(() =>
-      parseRollout(
-        JSON.stringify({ ...run, episode: { ...run.episode, status: { broken: true } } }),
-      ),
-    ).toThrow('Invalid episode result');
-    const damagedBoundary = structuredClone(run);
-    damagedBoundary.decisions[0].before = -1;
-    expect(() => parseRollout(JSON.stringify(damagedBoundary))).not.toThrow();
-    expect((await auditRollout(adapter, run)).decisions).toBe('unavailable');
-    const hidden = structuredClone(run);
-    hidden.decisions[0].input = { ...(hidden.decisions[0].input as object), privateRng: 123 };
-    hidden.decisions[0].inputDigest = await digest(hidden.decisions[0].input);
-    await rehash(hidden);
-    expect(await auditRollout(adapter, hidden, builtins.immediate)).toMatchObject({
-      integrity: 'passed',
-      replay: 'passed',
-      inputs: 'failed',
-      firstMismatch: { decision: 0, path: 'input' },
+    it('reconstructs the complete episode independently', async () => {
+      const audit = await auditRollout(
+        adapter,
+        parseRollout(JSON.stringify(run)),
+        builtins.immediate,
+      );
+      expect(audit).toMatchObject({
+        integrity: 'passed',
+        replay: 'passed',
+        inputs: 'passed',
+        decisions: 'passed',
+      });
+      expect(run.episode.status).toBe('terminal');
     });
-    const budget = structuredClone(run);
-    budget.options.maxDecisions = 1;
-    await rehash(budget);
-    expect(await auditRollout(adapter, budget, builtins.immediate)).toMatchObject({
-      replay: 'failed',
-      inputs: 'unavailable',
-      decisions: 'unavailable',
+    it('rejects malformed rows and results but retains damaged boundaries for audit', () => {
+      const invalidRows = { ...run, decisions: [null] };
+      expect(() => parseRollout(JSON.stringify(invalidRows))).toThrow('Invalid decision row');
+      expect(() =>
+        parseRollout(
+          JSON.stringify({ ...run, episode: { ...run.episode, status: { broken: true } } }),
+        ),
+      ).toThrow('Invalid episode result');
+      const damagedBoundary = structuredClone(run);
+      damagedBoundary.decisions[0].before = -1;
+      expect(() => parseRollout(JSON.stringify(damagedBoundary))).not.toThrow();
     });
-    const replay = structuredClone(run);
-    replay.replay = null;
-    await rehash(replay);
-    expect((await auditRollout(adapter, replay)).replay).toBe('failed');
+    it('keeps policy checks unavailable without the matching factory', async () => {
+      expect((await auditRollout(adapter, run)).decisions).toBe('unavailable');
+    });
+    it('catches a rehashed hidden input while preserving the native replay verdict', async () => {
+      const hidden = structuredClone(run);
+      hidden.decisions[0].input = { ...(hidden.decisions[0].input as object), privateRng: 123 };
+      hidden.decisions[0].inputDigest = await digest(hidden.decisions[0].input);
+      await rehash(hidden);
+      expect(await auditRollout(adapter, hidden, builtins.immediate)).toMatchObject({
+        integrity: 'passed',
+        replay: 'passed',
+        inputs: 'failed',
+        firstMismatch: { decision: 0, path: 'input' },
+      });
+    });
+    it('catches a rehashed decision budget lie', async () => {
+      const budget = structuredClone(run);
+      budget.options.maxDecisions = 1;
+      await rehash(budget);
+      expect(await auditRollout(adapter, budget, builtins.immediate)).toMatchObject({
+        replay: 'failed',
+        inputs: 'unavailable',
+        decisions: 'unavailable',
+      });
+    });
+    it('catches a rehashed missing replay', async () => {
+      const replay = structuredClone(run);
+      replay.replay = null;
+      await rehash(replay);
+      expect((await auditRollout(adapter, replay)).replay).toBe('failed');
+    });
   });
   it('keeps historical API checks unavailable while the native replay remains usable', async () => {
     const historical = {

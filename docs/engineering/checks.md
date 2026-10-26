@@ -32,12 +32,31 @@ shared hook and workspace UI.
 - **CI**: Runs the non-geometry checks in parallel scopes, `npm run test:browser:smoke` only. Repo Workbench runs its own browser gates in repo-kit.
   Geometry and full browser rendering/export verification are local completion gates.
 
-GitHub targets **under two minutes of execution**, excluding queue delay. Its four
-maintenance scopes run formatting/lint, types/Python, rules/simulations, and tools/DCC
-contracts/build independently; inventory and hydration checks run before each scope.
+GitHub targets **under two minutes of execution**, excluding queue delay. Maintenance
+scopes run formatting/lint, types/Python, two application shards, simulations, and
+tools/DCC contracts/build independently; inventory and hydration checks run before each scope.
 The browser job runs one existing recruitment/play/save-reload journey for Blindside,
 Spire, Last Hearth, Emberwake and Dungeon Cartographer. The runner uses one worker and retains failure artifacts.
 Jobs have a five-minute failure ceiling; that ceiling is not the performance target or proof of it.
+
+Application commands use one worker per process; CI distributes all application files
+across two complementary Vitest shards. Simulations remain a separate automatic job.
+`npm run check` still runs every application test and simulation locally. No seed,
+assertion, replay witness or retention check is excluded by the CI split.
+
+On 2026-10-26, [PR18's rules job](https://github.com/qianyizhang/game/actions/runs/40269909170)
+failed a five-second test deadline after 208.8 seconds of application execution, not
+the job ceiling. Checkout/LFS took about 17 seconds and dependency installation 4 seconds.
+The three-difficulty Hearth test also failed at 7.7 seconds on the unchanged base with
+one worker. Tests now identify each difficulty/hero and each rollout-audit failure separately;
+the audit cases share one recorded episode. CPU profiling attributed 87% of the Hearth
+worker's samples to `structuredClone`. Two simultaneous heavy files pushed an individual
+case over five seconds locally; one worker passed all 18 affected cases. The ordinary
+five-second deadline and existing longer integration deadlines remain unchanged.
+The complete default local gate then passed 570 application tests and 37 simulations.
+Serial application execution took 395 seconds versus 227 seconds for the failing
+two-worker run; hosted shards recover parallel execution on separate runners. These
+local results do not establish the two-minute hosted target.
 
 The 2026-10-11 full hosted run spent **499 seconds** in geometry. Its browser jobs took
 **11.6–33.5 minutes**, with a single canid journey taking **4.2 minutes**. Removing geometry

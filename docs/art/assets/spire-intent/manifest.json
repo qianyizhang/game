@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-26",
+  "baselineCommit": "f01f7c4",
+  "source": "src/games/spire/ui/IntentArt.tsx",
+  "reusedSource": "src/shared/art/CardArt.tsx",
+  "provenance": "Repository-authored vector compositions; no external artwork or generation services.",
+  "license": "No explicit repository redistribution license; no new license grant.",
+  "budgets": {
+    "perSvgBytes": 2048,
+    "totalSvgBytes": 12288,
+    "galleryBytes": 614400
+  },
+  "assets": [
+    {
+      "id": "spire/intents/attack",
+      "filename": "spire/intents/attack.svg",
+      "viewBox": [0, 0, 64, 64],
+      "displayPixels": 32,
+      "bytes": 803,
+      "sha256": "c3b03cbd7008ab4e540012f170018b9bf6fbc604b597d7d0e6b76461532b2103"
+    },
+    {
+      "id": "spire/intents/block",
+      "filename": "spire/intents/block.svg",
+      "viewBox": [0, 0, 64, 64],
+      "displayPixels": 32,
+      "bytes": 744,
+      "sha256": "05684a0bce75ca49de5337fc4583135357ec9bd683e3a5233b2c71b37e6d9d1d"
+    },
+    {
+      "id": "spire/intents/status",
+      "filename": "spire/intents/status.svg",
+      "viewBox": [0, 0, 64, 64],
+      "displayPixels": 32,
+      "bytes": 926,
+      "sha256": "b6773f0d1fd2f7aacc1430728467d29bf5707363726b3260088f8400f17af6b0"
+    },
+    {
+      "id": "spire/intents/card",
+      "filename": "spire/intents/card.svg",
+      "viewBox": [0, 0, 64, 64],
+      "displayPixels": 32,
+      "bytes": 794,
+      "sha256": "354689cfd7f9abb93c97abd833095d0756ee427572e0992595367c9b15ac4739"
+    },
+    {
+      "id": "spire/intents/special",
+      "filename": "spire/intents/special.svg",
+      "viewBox": [0, 0, 64, 64],
+      "displayPixels": 32,
+      "bytes": 695,
+      "sha256": "a6b4e332afc64797e4981e21c4a2015c2b756e24edce545e254b47bf3d3910db"
+    },
+    {
+      "id": "spire/intents/wait",
+      "filename": "spire/intents/wait.svg",
+      "viewBox": [0, 0, 64, 64],
+      "displayPixels": 32,
+      "bytes": 809,
+      "sha256": "142b27cb504a62b388ee2fc6bba9e049ba106f092bcdf86f6c77dadab1857fc9"
+    }
+  ],
+  "comparison": {
+    "baselineExportCount": 636,
+    "currentExportCount": 642,
+    "changedExistingIds": [],
+    "newIds": [
+      "spire/intents/attack",
+      "spire/intents/block",
+      "spire/intents/status",
+      "spire/intents/card",
+      "spire/intents/special",
+      "spire/intents/wait"
+    ]
+  }
+}

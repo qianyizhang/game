@@ -173,18 +173,13 @@
   border-color: #ad6b4e;
   box-shadow: 0 0 0 2px #f6ead499;
 }
-.spire-theme .enemy .intent {
-  background: #f3ead3;
-  color: #803830;
-  border: 1px solid #bd9b79;
-  border-radius: 6px;
-  padding: 7px;
-  font-size: 11px;
-  line-height: 1.3;
-  min-height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.spire-theme .sts-target-marker {
+  color: #753c2e;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 .spire-theme .enemy strong {
   font-size: 12px;
