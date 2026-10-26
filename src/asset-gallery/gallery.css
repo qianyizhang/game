@@ -509,3 +509,48 @@ footer {
     gap: 8px;
   }
 }
+.shield-unit-views {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 28px;
+  margin: 26px auto;
+}
+.shield-unit-views figure {
+  margin: 0;
+  min-width: 0;
+  flex: 0 1 180px;
+  text-align: center;
+}
+.shield-unit-views img {
+  display: block;
+  width: 127px;
+  max-width: 100%;
+  height: auto;
+  margin: 14px auto 0;
+  border-radius: 8px;
+}
+.shield-specimen {
+  border: 1px solid #c5c9b9;
+  padding: 22px;
+  max-width: 620px;
+  margin: 26px auto;
+  background: #faf7ed;
+}
+.shield-symbol-sizes {
+  display: flex;
+  align-items: end;
+  gap: 32px;
+  margin: 20px 0;
+}
+.shield-symbol-sizes figure {
+  margin: 0;
+  text-align: center;
+}
+.shield-symbol-sizes svg {
+  width: 100%;
+  height: 100%;
+}
+.shield-symbol-sizes figcaption {
+  margin-top: 8px;
+}

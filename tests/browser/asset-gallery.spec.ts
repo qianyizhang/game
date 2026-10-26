@@ -52,11 +52,26 @@ test('independent asset comparisons, changelog links, offline delivery and phone
       }),
     ),
   );
-  expect(decoded).toEqual([true, true]);
+  expect(decoded).toEqual([true, true, true, true]);
+  const shield = page.locator('#review-hearth-shield');
+  await shield.locator('summary').click();
+  await expect(shield).not.toHaveAttribute('open', '');
+  await expect(page.locator('#review-combat')).toHaveAttribute('open', '');
+  await expect(block).toHaveAttribute('open', '');
+  await shield.locator('summary').click();
+  await expect(shield.locator('.hearth-shield-break')).toHaveText('Shield broken');
   await expect(page.locator('script')).toHaveCount(0);
+  await shield.screenshot({
+    path: info.outputPath('gallery-shield-desktop.png'),
+    animations: 'disabled',
+  });
   await page.screenshot({ path: info.outputPath('gallery-desktop.png'), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await shield.screenshot({
+    path: info.outputPath('gallery-shield-phone.png'),
+    animations: 'disabled',
+  });
   await page.screenshot({ path: info.outputPath('gallery-phone.png'), fullPage: true });
   expect(await page.evaluate(() => ({ ...localStorage }))).toEqual(saved);
   expect(external).toEqual([]);

@@ -35,6 +35,11 @@ Spire's six [intent cues](asset-enrichment.md) live in
 action text and export under `spire/intents/`. `npm run assets:gallery -- <fresh-directory>`
 builds the independent offline before/after gallery with a visible dated changelog.
 
+Last Hearth's [shield-loss feedback](assets/hearth-shield/README.md) uses
+`src/games/battlegrounds/ui/ShieldBreakArt.tsx` and `ShieldBreakCue.tsx`.
+The 64 × 64 symbol exports as `hearth/feedback/shield-break` and appears at 22/18 px
+beside explicit HTML text. `HearthShieldReview.tsx` owns its additive gallery comparison.
+
 `ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](../research/content-expansions.md#card-suite-expansion), [Night Market](../research/content-expansions.md#night-market), and [feature artwork coverage](history/feature-coverage.md) document their sets.
 
 ## Integration boundaries

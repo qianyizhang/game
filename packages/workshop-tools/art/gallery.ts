@@ -11,13 +11,17 @@ export async function exportGallery(output = newOutput('asset-gallery')) {
   output = fromRoot(output);
   await freshDirectory(output);
   const capture = fromRoot('docs/art/assets/spire-intent');
-  const [before, after, galleryCss, cueCss, changelog] = await Promise.all([
-    readFile(resolve(capture, 'before-battlefield.webp')),
-    readFile(resolve(capture, 'after-battlefield.webp')),
-    readFile(fromRoot('src/asset-gallery/gallery.css'), 'utf8'),
-    readFile(fromRoot('src/games/spire/ui/IntentCue.css'), 'utf8'),
-    readFile(fromRoot('src/asset-gallery/CHANGELOG.json'), 'utf8'),
-  ]);
+  const [before, after, shieldBefore, shieldAfter, galleryCss, cueCss, shieldCss, changelog] =
+    await Promise.all([
+      readFile(resolve(capture, 'before-battlefield.webp')),
+      readFile(resolve(capture, 'after-battlefield.webp')),
+      readFile(fromRoot('docs/art/assets/hearth-shield/before-unit.webp')),
+      readFile(fromRoot('docs/art/assets/hearth-shield/after-unit.webp')),
+      readFile(fromRoot('src/asset-gallery/gallery.css'), 'utf8'),
+      readFile(fromRoot('src/games/spire/ui/IntentCue.css'), 'utf8'),
+      readFile(fromRoot('src/games/battlegrounds/ui/ShieldFeedback.css'), 'utf8'),
+      readFile(fromRoot('src/asset-gallery/CHANGELOG.json'), 'utf8'),
+    ]);
   await withBundle<typeof import('../../../src/asset-gallery/ReviewGallery'), void>(
     'src/asset-gallery/ReviewGallery.tsx',
     async ({ ReviewGallery }) => {
@@ -27,10 +31,15 @@ export async function exportGallery(output = newOutput('asset-gallery')) {
             before: `data:image/webp;base64,${before.toString('base64')}`,
             after: `data:image/webp;base64,${after.toString('base64')}`,
             screenshotBytes: before.length + after.length,
+            shield: {
+              before: `data:image/webp;base64,${shieldBefore.toString('base64')}`,
+              after: `data:image/webp;base64,${shieldAfter.toString('base64')}`,
+              screenshotBytes: shieldBefore.length + shieldAfter.length,
+            },
           },
         }),
       );
-      const html = `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Asset Fieldnotes · Spire intent pilot</title><style>${galleryCss}\n${cueCss}</style></head><body>${body}</body></html>\n`;
+      const html = `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Asset Fieldnotes · Game feedback studies</title><style>${galleryCss}\n${cueCss}\n${shieldCss}</style></head><body>${body}</body></html>\n`;
       const bytes = Buffer.byteLength(html);
       if (bytes > 600 * 1024) throw new Error(`Gallery exceeds 600 KiB budget: ${bytes} bytes`);
       await writeFile(resolve(output, 'index.html'), html, { flag: 'wx' });
