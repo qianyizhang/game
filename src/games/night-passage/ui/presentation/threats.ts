@@ -4,8 +4,6 @@ import type { ThreatShape } from '../../domain/threats';
 export function drawThreat(ctx: CanvasRenderingContext2D, shape: ThreatShape): void {
   ctx.save();
   ctx.fillStyle = '#ef826330';
-  ctx.strokeStyle = '#ffb18c';
-  ctx.lineWidth = 2;
   ctx.beginPath();
   if (shape.kind === 'line') {
     const aim = Math.atan2(shape.to.y - shape.from.y, shape.to.x - shape.from.x);
@@ -30,6 +28,14 @@ export function drawThreat(ctx: CanvasRenderingContext2D, shape: ThreatShape): v
     }
   }
   ctx.fill();
+  // Keep the entire rim inside the footprint, including the annulus's inner edge.
+  // Two broad value bands separate threats from the floor without interior texture.
+  ctx.clip();
+  ctx.strokeStyle = '#3c1520';
+  ctx.lineWidth = 18;
+  ctx.stroke();
+  ctx.strokeStyle = '#ffb18c';
+  ctx.lineWidth = 8;
   ctx.stroke();
   ctx.restore();
 }
