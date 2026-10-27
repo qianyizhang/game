@@ -21,6 +21,32 @@ Upgrade TypeScript and typed ESLint together when peer support and repository ch
 - Preserve concurrent changes. Record starting status and source hashes, edit only the slice, and report the owned delta. Do not reset or broadly stage the worktree.
 - A move or formatting change can change experiment source pins and asset receipts. Preserve historical reports, hashes and rules versions; retain experiment payloads only under the retention rule below. Validate new outputs as new results; never rewrite old evidence to match current code.
 
+## Issue and pull request lifecycle
+
+Scan for problems and track actionable findings as issues with concise problem,
+impact, evidence (including an authorized screenshot or illustration when useful),
+acceptance criteria and out-of-scope notes. Reuse existing semantic labels when useful.
+A tiny, self-contained fix may explain the problem in its PR instead of creating an
+issue; say why a separate issue was unnecessary.
+
+Keep issue status current, including work already implemented locally but not pushed.
+Distinguish not started, local implementation/unpushed, validation pending and delivery
+blocked; identify a recoverable branch, commit or artifact and the next action for
+local work. Work items may continue, pause or be cancelled independently; record
+dependencies rather than silently changing related work. Closing as not planned is
+distinct from completion and does not itself authorize artifact deletion; follow the
+existing retention rules.
+
+Open a draft/WIP PR after concrete progress. Link related issues and PRs as needed:
+their relationship can be many-to-many. Use scoped commits and record checks and
+remaining work. Reference partially addressed issues without auto-closing them.
+Mark a PR ready only when its scoped acceptance criteria and applicable checks have
+supporting evidence for the exact tested commit, with limitations explicit; retain
+separate technical, visual and runtime verdicts under the owning contracts.
+Merge only with applicable authorization. Close an issue as completed only after its
+acceptance is met, and track residual work. Repository docs, issues and PRs are the
+source of truth; keep chat summaries concise.
+
 ## Commit closeout
 
 Group related fixes into a coherent, verified commit before publication. Use a title that
