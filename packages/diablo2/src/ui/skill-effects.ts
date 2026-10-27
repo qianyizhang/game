@@ -122,7 +122,7 @@ function drawFrostImpact(
     ctx.fill();
   }
 }
-/** Draw accepted skill cues in world space, beneath the minimap and above actors. */
+/** Draw accepted skill cues in world space; the caller selects their presentation layer. */
 export function drawSkillEffects(
   ctx: CanvasRenderingContext2D,
   cues: VisualCue[],
