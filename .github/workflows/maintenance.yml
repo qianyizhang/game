@@ -26,9 +26,13 @@ jobs:
           - scope: types
             command: npm run typecheck && npm run check:python
           - scope: rules-1
-            command: npm run test -- --shard=1/2
+            command: npm run test -- --shard=1/4
           - scope: rules-2
-            command: npm run test -- --shard=2/2
+            command: npm run test -- --shard=2/4
+          - scope: rules-3
+            command: npm run test -- --shard=3/4
+          - scope: rules-4
+            command: npm run test -- --shard=4/4
           - scope: simulations
             command: npm run playtest
           - scope: tools
@@ -51,8 +55,8 @@ jobs:
       - run: npm ci
       - run: uv sync --locked
         if: matrix.scope == 'types'
-      # Geometry and full rendering/export journeys are local completion gates.
-      # Existing non-geometry checks run independently to target <2 minutes.
+      # Asset-build CI runs geometry and public rendering/export journeys separately.
+      # Native and visual review remain local gates; these fast checks target <2 minutes.
       - run: ${{ matrix.command }}
 
   browser:

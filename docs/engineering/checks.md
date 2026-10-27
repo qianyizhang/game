@@ -29,20 +29,21 @@ shared hook and workspace UI.
 - **Application & tool code**: Run `npm run check` for game rules, saves, UI, SVG, and tools.
 - **Documentation-only work**: Run `npm run format:maintenance` (or focused Prettier and inventory checks). Skip application test suites and simulations.
 - **3D / DCC work**: Run `npm run check:full` for changes affecting 3D construction, animation, rendering/export or DCC delivery (`src/art3d`, DCC sources/delivery, or their shared helpers/dependencies). Geometry assertions or configuration affecting their behavior also use this gate. Use `npm run test:geometry -- <file>` for focused iteration.
-- **CI**: Runs the non-geometry checks in parallel scopes, `npm run test:browser:smoke` only. Repo Workbench runs its own browser gates in repo-kit.
-  Geometry and full browser rendering/export verification are local completion gates.
+- **CI**: Repository checks run non-geometry scopes and `npm run test:browser:smoke`. The path-aware asset-build workflow also runs geometry and the public functional browser project for relevant PRs and main pushes; it can be dispatched manually. Repo Workbench runs its browser gates in repo-kit. Native and private-evidence checks remain local completion gates.
 
 GitHub targets **under two minutes of execution**, excluding queue delay. Maintenance
-scopes run formatting/lint, types/Python, two application shards, simulations, and
+scopes run formatting/lint, types/Python, four application shards, simulations, and
 tools/DCC contracts/build independently; inventory and hydration checks run before each scope.
 The browser job runs one existing recruitment/play/save-reload journey for Blindside,
 Spire, Last Hearth, Emberwake and Dungeon Cartographer. The runner uses one worker and retains failure artifacts.
 Jobs have a five-minute failure ceiling; that ceiling is not the performance target or proof of it.
 
 Application commands use one worker per process; CI distributes all application files
-across two complementary Vitest shards. Simulations remain a separate automatic job.
+across four complementary Vitest shards. Simulations remain a separate automatic job.
 `npm run check` still runs every application test and simulation locally. No seed,
 assertion, replay witness or retention check is excluded by the CI split.
+
+The previous two hosted rules jobs took 195–204 seconds. Four one-worker shards target the two-minute gate while retaining every application file; their hosted timing must be measured on the proposed revision.
 
 On 2026-10-26, [PR18's rules job](https://github.com/qianyizhang/game/actions/runs/40269909170)
 failed a five-second test deadline after 208.8 seconds of application execution, not
@@ -58,10 +59,10 @@ Serial application execution took 395 seconds versus 227 seconds for the failing
 two-worker run; hosted shards recover parallel execution on separate runners. These
 local results do not establish the two-minute hosted target.
 
-The 2026-10-11 full hosted run spent **499 seconds** in geometry. Its browser jobs took
+Before the asset-build workflow, the 2026-10-11 full hosted run spent **499 seconds** in geometry. Its browser jobs took
 **11.6–33.5 minutes**, with a single canid journey taking **4.2 minutes**. Removing geometry
-alone cannot meet the target: software-rendered 3D interaction, screenshots and exports
-also belong in the local full gate. The user selected this scope on 2026-10-11.
+alone cannot meet the fast CI target: software-rendered 3D interaction, screenshots and exports
+run in the separate asset-build workflow and remain local completion gates.
 
 Local full browser runs remain serial and retain every case. Inspect the current selection
 with `npm run test:browser -- --list`; counts change when new studies enter the suite.
@@ -115,11 +116,44 @@ Available but invalid inputs fail rather than becoming skips.
 Static checks still cover 3D sources. Automatic GitHub smoke checks select five of the
 existing functional journeys through a separate `smoke` project; they do not establish
 full browser, 3D delivery/export, native or private-evidence verification.
-Browser/native gates run locally for affected behavior;
+Browser/native gates also run locally for affected behavior;
 `check:full` does not invoke them. Run the selected completion gate once after the final
 change, with one gate owner per checkout to avoid overlapping agent runs. Report the command
 used and distinguish application/simulation verification from geometry, browser and native
 verification.
+
+## Asset construction and delivery inventory
+
+The [asset-build workflow](../../.github/workflows/asset-build.yml) automatically checks PRs and main pushes affecting shipped source (`src`, `packages`, `public`), tests, asset policies/manifests, workflows or runtime/build configuration. It also supports manual dispatch and reusable calls. Geometry was already absent from ordinary CI, which retains application tests, DCC contracts, hashes, pointers and integrity checks. Asset jobs use two geometry workers and one browser worker; browser failure artifacts retain 14 days. Asset release requires successful regular and asset checks on the same source revision. This repository has no deployment workflow; a future deployment must call this workflow and depend on its success. Branch protection is unchanged. New source roots and GitHub path-diff limits still require scope review; dispatch manually if automatic selection is uncertain.
+
+| Family and command                                                                                         | Inputs → validation/output                                                                                                                                                                                               | When required                                                    | Runner / cost                                                                      |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Procedural studies: `npm run test:geometry`                                                                | [Catalogue](../../src/art3d/catalogue.ts) and [factory/source map](../../src/art3d/procedural/factory.ts) → constructed meshes, animation and recording assertions.                                                      | 3D construction, animation, rendering/export and shared helpers. | Two workers; 30-minute CI job. See measurements below.                             |
+| DCC contracts: `npm run test:dcc`; `npm run check:python`                                                  | [Workbench contracts](../../packages/dcc-workbench/README.md#verification-and-provenance): hydrated masters, receipts and GLBs → hashes, geometry, motion and pointer checks.                                            | Fast CI and asset release.                                       | Node/Python; per-family costs unknown. No native rebuild.                          |
+| SVG tooling: `npm run test:tools`; `npm run assets:export -- <destination>`                                | [SVG sources](../art/svg.md) → temporary or explicit catalogue and manifest.                                                                                                                                             | SVG/tool changes and delivery.                                   | Fast CI; time, size and memory unknown.                                            |
+| Public browser: `npx playwright test --project=functional`                                                 | [Browser projects](#browser-prerequisites): delivered assets + Chrome → loading, motion, layout and export checks.                                                                                                       | Rendering and delivery changes.                                  | One worker; 90-minute CI job. Historical hosted jobs 11.6–33.5 min; canid 4.2 min. |
+| Saved-source native: `npm run test:dcc:runtime`, `test:dcc:saved`, `test:dcc:native`                       | [Native authoring gate](#native-authoring-gate): Blender 5.2 masters → samples, edits and exports.                                                                                                                       | Affected native authoring and delivery.                          | Local; per-family costs unknown. Not run in asset-build CI.                        |
+| Species native: `npm run dcc:<species> -- verify --output <fresh-directory>`                               | [Workbench species guides](../../packages/dcc-workbench/README.md#extending-motion-studies-copper-fox): fox, boar, raven and otter → edit/export proofs. Canid uses `npm run dcc:canid -- test` or `verify <directory>`. | Corresponding study and release.                                 | Local Blender; rebuild time and memory unknown.                                    |
+| Night Passage native producers                                                                             | [Hero, enemies, guardians, weapons and environments](../../packages/dcc-workbench/subjects/night-passage/README.md#reproduce-and-extend): saved masters + Blender scripts → exports, reviews and native verification.    | Corresponding native asset changes and release.                  | Local Blender; per-family time, output and memory unknown.                         |
+| Conditional / visual browser: `npm run test:browser:native`, `test:browser:private`, `test:browser:review` | Fresh native or private evidence → parity checks; review → contact sheets.                                                                                                                                               | Affected evidence and visual acceptance.                         | One worker; missing prerequisites skip; costs unknown.                             |
+
+The geometry project contains 28 files. The [full path inventory](asset-geometry-tests.txt) maps these groups to the [catalogue](../../src/art3d/catalogue.ts) and [factory](../../src/art3d/procedural/factory.ts):
+
+- Study construction and motion (24): `amalgam.test.ts`, `bannerbearer.test.ts`, `bogtoad.test.ts`, `crocolisk.test.ts`, `guardian.test.ts`, `herald.test.ts`, `hydra.test.ts`, `imp.test.ts`, `juggler.test.ts`, `matriarch.test.ts`, `matron.test.ts`, `moonmoth.test.ts`, `nightjar.test.ts`, `packcaller.test.ts`, `patron.test.ts`, `phoenix.test.ts`, `prowler.test.ts`, `scavenger.test.ts`, `squire.test.ts`, `stormroc.test.ts`, `thornstag.test.ts`, `tortoise.test.ts`, `watcher.test.ts`, `wolf.test.ts`.
+- Legacy Cub and Stray closure and skinning: `legacy-creatures.test.ts`.
+- Shared animation and surface construction: `animation.test.ts`, `surfaceSculpt.test.ts`.
+- Gallery recording: `recording.test.ts`.
+
+Geometry evidence: the 2026-10-11 hosted run took 499 s. On 2026-10-27, the local art gate had 122 passes and six timeouts in 434.82 s. At base, four cases had two timeouts in 44.3 s with two workers; all four passed serially in 56.1 s. The dedicated 120-second budget passed all 128 base tests in 440.03 s locally; **raising the limit did not fix the historical 15-second timeouts**.
+
+Browser evidence: unchanged base and this workflow branch both exceeded Nightjar's local 60-second deadline during the final gallery return, after export and roundtrip checks. The branch passed in 69.5 s wall time with `CI=1`, selecting the existing 240-second budget. No browser limit or assertion changed; this is one local diagnostic, not a full or hosted browser result.
+
+Measured unprofiled construction outputs: Watcher 306,112 vertices / 576,812 triangles / 24,051,404 raw bytes; Banner Bearer 509,409 / 968,512 / 30,390,396; Matron 269,770 / 515,220 / 17,203,496. Raw bytes count geometry attributes and indices, not total memory. A separate sampled process-family peak was 1,107,636,224 bytes summed RSS, not deduplicated physical memory; sampled cumulative allocations are not retained memory. Other family measurements are unknown. The local runner has a four-CPU quota and 16 GiB memory limit; configured limits are not usage measurements or hosted runner estimates.
+
+Delivered GLB bytes and triangle/material counts are recorded in the selected DCC release or subject audit/manifest. The [registry](../../packages/dcc-workbench/registry.json) and [publication resolver](../../packages/dcc-workbench/releases.ts) identify current registered deliveries; these output statistics are separate from the construction measurements above.
+
+`npm run check:full` remains the complete local code, simulation and geometry command; it does not run browser or native checks.
+Use `CI=1 ASSET_BUILD_CI=1 npm run check:full` to reproduce the dedicated CI budgets locally; the ordinary local geometry deadline remains 15 seconds.
 
 ## Static-check scope
 
@@ -143,8 +177,8 @@ The active launcher requires Blender 5.2 LTS. The [runtime record](blender-runti
 
 ## Budgets
 
-- **Vitest**: At most 2 workers. Geometry tests use the project-level budget: 15 seconds locally and 60 seconds when `CI` is set. The hosted runner measured 495 seconds for the geometry suite versus 155 seconds locally; nine tests exceeded the old 15-second limit. Application tests retain their 5-second default. Unit normals on loaded GLBs are verified across all 29 gallery journeys at 0.0005 tolerance.
-- **Browser**: One worker per runner. Test and explicit operation budgets use `browserBudget`: existing local limits and four times those limits when `CI` is set. Default test/assertion limits are 30/5 seconds locally and 120/20 seconds in CI. Cold scene readiness uses `sceneReadyTimeout`, 15 seconds locally and 60 seconds in CI. Per-model export remains 60 seconds locally. Contact sheets use 120 seconds locally. Automatic GitHub smoke checks stop on the first failure; full rendering/export checks run locally.
+- **Vitest**: At most 2 workers. Geometry tests use the project-level budget: 15 seconds locally, 60 seconds when `CI` is set, and 120 seconds in the dedicated asset-build job. The hosted runner measured 495 seconds for the geometry suite versus 155 seconds locally; nine tests exceeded the old 15-second limit. Application tests retain their 5-second default. Unit normals on loaded GLBs are verified across all 29 gallery journeys at 0.0005 tolerance.
+- **Browser**: One worker per runner. Test and explicit operation budgets use `browserBudget`: existing local limits and four times those limits when `CI` is set. Default test/assertion limits are 30/5 seconds locally and 120/20 seconds in CI. Cold scene readiness uses `sceneReadyTimeout`, 15 seconds locally and 60 seconds in CI. Per-model export remains 60 seconds locally. Contact sheets use 120 seconds locally. Automatic GitHub smoke checks stop on the first failure; the asset-build functional browser job also stops on the first failure in CI. Full local rendering/export checks remain required.
 
 ## Retention and inventory
 
