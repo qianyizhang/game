@@ -57,7 +57,13 @@ const studyNames = [
 for (const name of studyNames) {
   test(
     `${name} renders, exports real meshes, and works on phone without changing saves`,
-    { tag: '@asset-delivery' },
+    // Rigid motion, skinning and layered transparency are the routine representatives.
+    {
+      tag: [
+        '@asset-delivery',
+        ...(['Vajra', 'Hydra', 'Catalyst'].includes(name) ? ['@asset-smoke'] : []),
+      ],
+    },
     async ({ page }, info) => {
       // Each study owns its browser/export budget; a slow subject cannot consume the next one.
       test.setTimeout(browserBudget(60_000));
@@ -109,31 +115,17 @@ for (const name of studyNames) {
         await expect(
           page.getByRole('button', { name: 'Layers assembled as one object' }),
         ).toBeDisabled();
-      await page.locator('.art-studio').screenshot({
-        path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-desktop.png`),
-      });
-      const before = await page.locator('canvas').screenshot({
-        path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-object.png`),
-      });
+      const before = await page.locator('canvas').screenshot();
       await page.getByRole('button', { name: 'Side', exact: true }).click();
       await expect(async () => {
         expect((await page.locator('canvas').screenshot()).equals(before)).toBe(false);
       }).toPass();
-      await page.locator('canvas').screenshot({
-        path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-side.png`),
-      });
       await page.getByRole('button', { name: 'Front', exact: true }).click();
-      await page.locator('canvas').screenshot({
-        path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-front.png`),
-      });
       await page.getByRole('button', { name: 'Reset camera' }).click();
       await page.setViewportSize({ width: 390, height: 844 });
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
         true,
       );
-      await page.locator('.studio-stage').screenshot({
-        path: info.outputPath(`${name.toLowerCase().replaceAll(' ', '')}-phone-stage.png`),
-      });
       await page.setViewportSize({ width: 1440, height: 1080 });
       const modelEvent = page.waitForEvent('download');
       await page.getByRole('button', { name: 'Download 3D model' }).click();
@@ -144,7 +136,7 @@ for (const name of studyNames) {
       const modelPath = info.outputPath(download.suggestedFilename());
       await download.saveAs(modelPath);
       const bytes = await readFile(modelPath);
-      if (delivery) expect(bytes).toEqual(await readFile(delivery.modelPath));
+      if (delivery) expect(bytes.equals(await readFile(delivery.modelPath))).toBe(true);
       expect(bytes.toString('utf8', 0, 4)).toBe('glTF');
       expect(bytes.readUInt32LE(4)).toBe(2);
       expect(bytes.readUInt32LE(8)).toBe(bytes.length);
@@ -328,40 +320,40 @@ for (const name of studyNames) {
         );
       }
       if (name === 'Catalyst') expect(gltf.extensionsUsed).toContain('KHR_materials_transmission');
-      await page
-        .getByRole('navigation', { name: 'Choose a 3D study' })
-        .getByRole('button', { name: /Catalyst/ })
-        .click();
-      await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
-        timeout: sceneReadyTimeout,
-      });
-      await page.getByRole('button', { name: 'Wireframe', exact: true }).click();
-      await page.getByRole('button', { name: 'Separate the layers' }).click();
-      await page.getByLabel('Lighting', { exact: true }).selectOption('moon');
-      await expect(page.getByRole('button', { name: 'Wireframe', exact: true })).toHaveAttribute(
-        'aria-pressed',
-        'true',
-      );
-      await page
-        .locator('.studio-stage')
-        .screenshot({ path: info.outputPath('catalyst-wireframe.png') });
-      await page.getByRole('button', { name: 'Wireframe', exact: true }).click();
-      await page.getByRole('button', { name: 'Separate the layers' }).click();
-      await page.getByLabel('Lighting', { exact: true }).selectOption('studio');
-      await page.setViewportSize({ width: 390, height: 844 });
-      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
-        true,
-      );
-      await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
-        timeout: sceneReadyTimeout,
-      });
-      await page.locator('.art-studio').screenshot({ path: info.outputPath('catalyst-phone.png') });
-      const imageEvent = page.waitForEvent('download');
-      await page.getByRole('button', { name: 'Save image' }).click();
-      const image = await imageEvent;
-      await image.saveAs(info.outputPath(image.suggestedFilename()));
-      const png = await readFile(info.outputPath(image.suggestedFilename()));
-      expect(png.subarray(1, 4).toString()).toBe('PNG');
+      // Shared controls and PNG delivery have one representative; per-asset GLB,
+      // motion, phone layout and save isolation stay in every journey.
+      if (name === 'Catalyst') {
+        await page
+          .getByRole('navigation', { name: 'Choose a 3D study' })
+          .getByRole('button', { name: /Catalyst/ })
+          .click();
+        await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+          timeout: sceneReadyTimeout,
+        });
+        await page.getByRole('button', { name: 'Wireframe', exact: true }).click();
+        await page.getByRole('button', { name: 'Separate the layers' }).click();
+        await page.getByLabel('Lighting', { exact: true }).selectOption('moon');
+        await expect(page.getByRole('button', { name: 'Wireframe', exact: true })).toHaveAttribute(
+          'aria-pressed',
+          'true',
+        );
+        await page.getByRole('button', { name: 'Wireframe', exact: true }).click();
+        await page.getByRole('button', { name: 'Separate the layers' }).click();
+        await page.getByLabel('Lighting', { exact: true }).selectOption('studio');
+        await page.setViewportSize({ width: 390, height: 844 });
+        expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+          true,
+        );
+        await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+          timeout: sceneReadyTimeout,
+        });
+        const imageEvent = page.waitForEvent('download');
+        await page.getByRole('button', { name: 'Save image' }).click();
+        const image = await imageEvent;
+        await image.saveAs(info.outputPath(image.suggestedFilename()));
+        const png = await readFile(info.outputPath(image.suggestedFilename()));
+        expect(png.subarray(1, 4).toString()).toBe('PNG');
+      }
       await page.getByRole('button', { name: 'My table' }).click();
       await expect(page).not.toHaveURL(/art=3d/);
       await expect(page.getByRole('button', { name: '3D art gallery' })).toBeFocused();

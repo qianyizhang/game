@@ -40,8 +40,8 @@ Use `npm run check` for code, UI, and rule changes; documentation-only edits req
 Read [verification contracts](docs/engineering/checks.md#gate-selection) for scope
 selection and reporting. `npm run test:browser` runs the disposable-profile browser suite
 with a single startup guard.
-Automatic GitHub CI retains a safety core and selects affected application/browser/geometry
-modules. Shared, unknown and configuration changes use comprehensive fallback; main,
-weekly, manual and reusable release calls run full public coverage. The canonical
-scope matrix and measured limitations are in verification contracts. Native,
-private-evidence and visual review remain separate completion gates.
+Routine PR/main CI selects affected application and bounded browser checks; shared or
+unknown changes expand application coverage. Documentation-only changes use formatting
+and inventory. Explicit full validation retains exhaustive public browser and geometry
+coverage for local/release work. Verification contracts own the scope matrix, full-mode
+invocation and measured limits. Native, private-evidence and visual review remain separate.

@@ -5,9 +5,17 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      full:
+        description: Include exhaustive public browser, campaign and geometry validation
+        type: boolean
+        default: false
   workflow_call:
-  schedule:
-    - cron: '23 3 * * 1'
+    inputs:
+      full:
+        description: Release callers must select comprehensive validation
+        type: boolean
+        required: true
 
 permissions:
   contents: read
@@ -22,7 +30,10 @@ jobs:
     timeout-minutes: 5
     outputs:
       plan: ${{ steps.select.outputs.plan }}
-      unit: ${{ steps.select.outputs.unit }}
+      documentation: ${{ steps.select.outputs.documentation }}
+      core: ${{ steps.select.outputs.core }}
+      application: ${{ steps.select.outputs.application }}
+      assets: ${{ steps.select.outputs.assets }}
       unit_matrix: ${{ steps.select.outputs.unit_matrix }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -31,20 +42,38 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .node-version
-          cache: npm
-      - run: npm ci
+      # A fresh cache verifies registry URLs before downstream jobs reuse caches.
+      - run: npm ci --cache "$RUNNER_TEMP/npm-install-cache"
       - id: select
         run: npm run ci -- plan
         env:
-          CI_BASE: ${{ github.event.pull_request.base.sha }}
-          CI_FULL: ${{ github.event_name != 'pull_request' && '1' || '0' }}
+          CI_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          CI_FULL: ${{ inputs.full && '1' || '0' }}
+
+  documentation:
+    needs: plan
+    if: needs.plan.outputs.documentation == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          lfs: true
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run format:maintenance
 
   core:
+    needs: plan
+    if: needs.plan.outputs.core == 'true'
     uses: ./.github/workflows/check-core.yml
 
   application:
     needs: plan
-    if: needs.plan.outputs.unit == 'true'
+    if: needs.plan.outputs.application == 'true'
     uses: ./.github/workflows/check-application.yml
     with:
       plan: ${{ needs.plan.outputs.plan }}
@@ -52,13 +81,14 @@ jobs:
 
   assets:
     needs: plan
+    if: needs.plan.outputs.assets == 'true'
     uses: ./.github/workflows/asset-build.yml
     with:
       plan: ${{ needs.plan.outputs.plan }}
 
   gate:
     if: always()
-    needs: [plan, core, application, assets]
+    needs: [plan, documentation, core, application, assets]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -66,9 +96,8 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .node-version
-          cache: npm
       - run: node packages/workshop-tools/ci/gate.ts
         env:
           CI_PLAN: ${{ needs.plan.outputs.plan }}
           CI_RESULTS: >-
-            {"plan":"${{ needs.plan.result }}","core":"${{ needs.core.result }}","application":"${{ needs.application.result }}","assets":"${{ needs.assets.result }}"}
+            {"plan":"${{ needs.plan.result }}","documentation":"${{ needs.documentation.result }}","core":"${{ needs.core.result }}","application":"${{ needs.application.result }}","assets":"${{ needs.assets.result }}"}

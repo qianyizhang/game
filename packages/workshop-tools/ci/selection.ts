@@ -14,9 +14,9 @@ export type Change = { path: string; status: string };
 export type Catalogue = { application: string[]; browser: string[]; geometry: string[] };
 export type DependencyGraph = Map<string, Set<string>>;
 export type Plan = {
-  version: 1;
+  version: 2;
   head: string;
-  mode: 'scoped' | 'full';
+  mode: 'documentation' | 'scoped' | 'application' | 'full';
   reasons: string[];
   families: Family[];
   coreFiles: string[];
@@ -65,6 +65,33 @@ const modelBrowser = new Set([
   'wolf-forms',
 ]);
 
+// These retained journeys need the explicit full gate. Ordinary CI covers game
+// interaction and representative delivery without playing a whole 3D campaign.
+export const fullBrowserFiles = [
+  'asset-lifetime',
+  'boar',
+  'canid',
+  'dcc-workbench',
+  'fox',
+  'hydra-comparison',
+  'otter',
+  'raven',
+  'wolf-forms',
+  'night-passage-art',
+  'night-passage-batches',
+  'night-passage-campaign',
+  'night-passage-enemies',
+  'night-passage-environment',
+  'night-passage-guardian',
+  'night-passage-hero',
+  'night-passage-layouts',
+  'night-passage-parity',
+  'night-passage-patrons',
+  'night-passage-performance',
+].map((name) => `tests/browser/${name}.spec.ts`);
+
+const routineBrowser = (path: string) => !fullBrowserFiles.includes(path);
+
 /** Ownership supplies browser entry points; literal import edges add cross-module dependants. */
 export function sourceFamily(path: string): Family | 'core' | undefined {
   if (path.startsWith('packages/diablo2/')) return 'emberwake';
@@ -108,16 +135,16 @@ export function browserFamilies(path: string): Family[] | undefined {
 }
 
 function isDocumentation(path: string): boolean {
-  return path === 'README.md' || /^docs\/(guide|research)\/.+\.md$/.test(path);
+  return /\.md$/.test(path);
 }
-function requiresFull(path: string): boolean {
+function repositoryPath(path: string): boolean {
+  return /^[^\x00-\x1f]+$/.test(path) && !path.startsWith('/') && !path.split('/').includes('..');
+}
+function requiresApplication(path: string): boolean {
   return (
     /(^|\/)(package(-lock)?\.json|tsconfig[^/]*\.json)$/.test(path) ||
     path.startsWith('.github/') ||
     path.startsWith('maintenance/') ||
-    path.startsWith('docs/engineering/') ||
-    path.startsWith('docs/art/') ||
-    path.startsWith('skills/') ||
     path.startsWith('packages/workshop-tools/ci/') ||
     path.startsWith('src/shared/') ||
     path.startsWith('src/app/') ||
@@ -125,7 +152,6 @@ function requiresFull(path: string): boolean {
     /(^|\/)[^/]*\.config\.[^/]+$/.test(path) ||
     path.startsWith('packages/dcc-workbench/') ||
     [
-      'AGENTS.md',
       '.node-version',
       '.nvmrc',
       '.python-version',
@@ -157,10 +183,19 @@ export function selectPlan(
   changes: Change[],
   catalogue: Catalogue,
   dependants: DependencyGraph,
-  options: { head: string; full?: boolean; uncertain?: string[] },
+  options: { head: string; full?: boolean; allApplications?: boolean; uncertain?: string[] },
 ): Plan {
+  const documentation =
+    !options.full &&
+    !options.allApplications &&
+    changes.length > 0 &&
+    changes.every((change) => repositoryPath(change.path) && isDocumentation(change.path));
+  const stylesOnly =
+    changes.length > 0 &&
+    changes.every(({ path }) => isDocumentation(path) || path.endsWith('.css'));
   const reasons: string[] = [];
   if (options.full) reasons.push('comprehensive event');
+  if (options.allApplications) reasons.push('complete application selection');
   if (options.uncertain?.length) reasons.push('dependency graph could not be resolved completely');
   if (
     catalogue.application.some((p) => sourceFamily(p) === undefined) ||
@@ -169,11 +204,11 @@ export function selectPlan(
     reasons.push('unclassified test family');
   for (const change of changes) {
     const path = change.path;
-    if (!/^[^\x00-\x1f]+$/.test(path) || path.startsWith('/') || path.split('/').includes('..'))
-      reasons.push('unsupported path');
+    if (!repositoryPath(path)) reasons.push('unsupported path');
+    else if (isDocumentation(path)) continue;
     else if (!['A', 'M'].includes(change.status))
       reasons.push('deleted, renamed or uncertain path');
-    else if (requiresFull(path))
+    else if (requiresApplication(path))
       reasons.push('shared source, configuration or verification policy');
     else if (
       !isDocumentation(path) &&
@@ -182,9 +217,10 @@ export function selectPlan(
     )
       reasons.push('unknown ownership');
   }
-  const full = reasons.length > 0;
+  const allApplications = reasons.length > 0;
+  const full = options.full === true;
   const affected = reverseClosure(
-    changes.map((c) => c.path),
+    changes.filter((c) => !isDocumentation(c.path)).map((c) => c.path),
     dependants,
   );
   const chosen = new Set<Family>();
@@ -198,9 +234,10 @@ export function selectPlan(
   const coreFiles = catalogue.application
     .filter(
       (p) =>
-        sourceFamily(p) === 'core' ||
-        p === 'packages/diablo2/src/agent/policy.test.ts' ||
-        p === 'src/games/spire/agent/policy.test.ts',
+        !documentation &&
+        (sourceFamily(p) === 'core' ||
+          p === 'packages/diablo2/src/agent/policy.test.ts' ||
+          p === 'src/games/spire/agent/policy.test.ts'),
     )
     .sort();
   const semantic = new Set<Family>();
@@ -215,32 +252,67 @@ export function selectPlan(
       semantic.add(family);
   }
   const unitFiles = catalogue.application
-    .filter((p) => !coreFiles.includes(p) && (full || affected.has(p)))
+    .filter((p) => !documentation && !coreFiles.includes(p) && (allApplications || affected.has(p)))
     .sort();
   for (const path of catalogue.application.filter((p) => p.endsWith('/policy-rollout.test.ts'))) {
-    if ((full || semantic.has(sourceFamily(path) as Family)) && !unitFiles.includes(path))
+    if (
+      !documentation &&
+      (allApplications || semantic.has(sourceFamily(path) as Family)) &&
+      !unitFiles.includes(path)
+    )
       unitFiles.push(path);
   }
   const browserFiles = catalogue.browser
-    .filter((p) => full || browserFamilies(p)?.some((f) => chosen.has(f)))
+    .filter(
+      (p) =>
+        !documentation &&
+        (full ||
+          (routineBrowser(p) &&
+            (allApplications ||
+              affected.has(p) ||
+              ((!stylesOnly ||
+                !crossGameBrowser.has(p.split('/').at(-1)!.replace('.spec.ts', ''))) &&
+                browserFamilies(p)?.some((f) => chosen.has(f)))))),
+    )
     .sort();
   const geometry =
     full ||
-    chosen.has('models') ||
-    [...affected].some((path) => path.startsWith('src/games/night-passage/ui/presentation/scene/'));
+    (!documentation &&
+      (catalogue.geometry.some((path) => affected.has(path)) ||
+        changes.some(
+          ({ path }) =>
+            !isDocumentation(path) &&
+            (path.startsWith('src/art3d/') || path.startsWith('packages/dcc-workbench/')),
+        )));
   return {
-    version: 1,
+    version: 2,
     head: options.head,
-    mode: full ? 'full' : 'scoped',
+    mode: full
+      ? 'full'
+      : documentation
+        ? 'documentation'
+        : allApplications
+          ? 'application'
+          : 'scoped',
     reasons: [
-      ...new Set(reasons.length ? reasons : ['affected imports and declared browser ownership']),
+      ...new Set(
+        documentation
+          ? ['documentation only']
+          : reasons.length
+            ? reasons
+            : ['affected imports and declared browser ownership'],
+      ),
     ],
-    families: full ? [...families] : families.filter((f) => chosen.has(f)),
+    families: documentation
+      ? []
+      : allApplications
+        ? [...families]
+        : families.filter((f) => chosen.has(f)),
     coreFiles,
     unitFiles,
     browserFiles,
     geometry,
     unitShards: Math.max(1, Math.min(4, Math.ceil(unitFiles.length / 24))),
-    browserShards: Math.max(1, Math.min(4, Math.ceil(browserFiles.length / 16))),
+    browserShards: Math.max(1, Math.min(4, Math.ceil(browserFiles.length / 8))),
   };
 }

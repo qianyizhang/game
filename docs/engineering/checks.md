@@ -16,30 +16,32 @@ Use the pinned Node/npm runtime (`nvm use`) and Python through `uv`. One gate ow
 
 Locally, use `check` for code/UI/rules and `check:full` for 3D construction, animation, rendering/export or shared DCC dependencies. Run affected browser/native gates separately. Documentation-only changes use formatting/inventory. See [testing policy](testing.md).
 
-The scoped CI extension separates focused policy regressions from unchanged rollout matrices. Both remain in the default application suite. [PR22](https://github.com/qianyizhang/game/pull/22) retains the dated pre-extension measurements below; measure each final revision rather than assuming a speedup.
+Routine CI and full validation have separate triggers. Focused policy regressions and complete rollout matrices remain in the application suite; policy/rules changes retain the affected matrix.
 
-| Proposed automatic scope                                                            | What runs                                                                                                                                                          |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Every PR                                                                            | Formatting/lint/types, Python and DCC/tool contracts, pointers/hashes/manifests, build, all simulations, shared/focused policy regressions and six smoke journeys. |
-| Owned source change                                                                 | Literal import/re-export dependants plus declared browser ownership. HTTP/browser entry points need ownership; imports alone are insufficient.                     |
-| Policy/observation/adapter/rules/content/replay change                              | Affected game's complete rollout matrix, including transitive semantic dependants. UI-only changes retain focused policy regressions.                              |
-| Shared evaluator/source, configuration, unknown/deleted paths or unclassified tests | Comprehensive fallback: every application file, geometry and public browser journey.                                                                               |
-| 3D scene or native source/delivery                                                  | Geometry plus affected browser delivery. Native DCC changes conservatively use comprehensive fallback. Fresh Blender remains a separate local release requirement. |
-| Main push, weekly Monday 03:23 UTC, manual or reusable release call                 | Comprehensive validation. The full suite is not major-release-only.                                                                                                |
+| Trigger                                                                                | Required coverage                                                                                                                                                                                 |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Documentation-only PR/main diff, including package READMEs                             | Formatting, inventory and links.                                                                                                                                                                  |
+| Ordinary PR/main source diff                                                           | Safety core: static checks, Python/tool/DCC contracts, build, simulations, shared/focused policy regressions and six smoke journeys. Add affected application files and bounded browser families. |
+| Shared/configuration/unknown/deleted source, unresolved imports or missing diff base   | Every application file and the bounded browser set. This fallback does not select exhaustive rendering or campaigns.                                                                              |
+| Model/native source or a dependency reaching geometry tests                            | Geometry plus routine browser delivery. Night Passage scene unit tests belong to the application project; unrelated procedural geometry is not selected by a scene-only edit.                     |
+| Manual Repository checks with `full: true`, or reusable release call with `full: true` | Every application file, geometry and all public functional browser journeys, including all asset deliveries and the continuous campaign.                                                          |
 
-Modules: [safety core](../../.github/workflows/check-core.yml), [application](../../.github/workflows/check-application.yml), [asset build](../../.github/workflows/asset-build.yml), orchestrated by [Repository checks](../../.github/workflows/maintenance.yml). The safety core starts in parallel with selection; the final gate needs no dependency install. The final gate rejects failed/cancelled/skipped required modules. No deployment or protection setting is added. A future release must call `maintenance.yml` and depend on its success; asset-only success is insufficient.
+Modules: [safety core](../../.github/workflows/check-core.yml), [application](../../.github/workflows/check-application.yml), [asset checks](../../.github/workflows/asset-build.yml), orchestrated by [Repository checks](../../.github/workflows/maintenance.yml). Selection precedes dispatch so documentation can skip runtime jobs. The aggregate gate requires every selected module to succeed and allows only intentional skips. A reusable release caller must pass `full: true` and depend on this aggregate gate; standalone asset validation is not a release gate. Main pushes use their before-SHA diff; they do not repeat the full browser suite. There is no scheduled exhaustive run.
 
-Selection uses Git merge-base diff and exact checkout SHA. Shared/unknown changes fall back to full; there is no GitHub path-filter diff limit. Generated policy bundles cannot be inferred from literal imports: tool contracts, simulations and explicit policy ownership cover that boundary. New source/test roots require scope review.
+Selection uses Git merge-base diff and the exact checkout SHA. Plan mode is `documentation`, `scoped`, `application` (conservative application fallback), or `full` (explicit exhaustive validation). Invalid/stale plans fail before execution. There is no GitHub path-filter diff limit. Generated policy bundles need explicit semantic ownership as well as literal import edges.
+
+Routine browser execution uses `ci-games` and `ci-assets`. The first keeps public game interactions, replay/import recovery and bounded loading failures; smoke-tagged journeys run once in the safety core. The second selects the existing Vajra, Hydra and Catalyst delivery journeys. The retained expensive files are declared once in `ci/selection.ts` and shared with Playwright configuration. Game-owned CSS selects its game family without unrelated cross-game journeys. Full mode uses `functional` without these exclusions. All local default test commands retain complete discovery. A routine pass is not full asset acceptance.
 
 ```sh
 CI_BASE=<exact-base-sha> npm run ci -- plan /tmp/ci-plan.json
 npm run ci -- core
 CI_PLAN="$(cat /tmp/ci-plan.json)" CI_SHARD=1 npm run ci -- run unit
 CI_FULL=1 npm run ci -- plan /tmp/full-plan.json
-CI=1 ASSET_BUILD_CI=1 npm run check:full
+CI_PLAN="$(cat /tmp/full-plan.json)" CI_SHARD=1 npm run ci -- run browser
+ASSET_BUILD_CI=1 npm run check:full
 ```
 
-Run every shard listed in the plan; use `run browser` or `run geometry` for asset modules. An empty selection explicitly runs nothing. Default `npm test`, `check`, `check:full` and browser commands retain their complete discovery.
+Run every shard listed in the selected plan. Empty selections execute nothing. Full local browser/native verification remains required for affected deliveries. The continuous campaign retains its assertions, control cadence and deadline; its known timeout is unresolved, not a passing or removed check. Browser jobs have a 15-minute routine failure ceiling and 90 minutes in explicit full mode; ceilings are not performance targets. Measure hosted elapsed time separately from queue delays and summed runner time.
 
 ### Measured CI evidence (2026-10-27)
 
@@ -60,7 +62,7 @@ Follow-up local checks reproduce the cooldown failure on clean main and PR sourc
 
 ### Browser prerequisites
 
-Playwright 1.64.0 and Chrome are pinned. `functional` selects public inputs; startup failure fails. `requires-blender` and `requires-private-evidence` skip explicitly when their named evidence is absent; available invalid evidence fails. `visual-review` produces 29 contact sheets, not automated aesthetic approval. Static checks/smoke do not establish model delivery or native acceptance.
+Playwright is pinned to 1.64.0. The harness uses the installed stable Chrome channel; CI installs its current release, so Chrome itself is not version-pinned. `functional` selects public inputs; startup failure fails. `requires-blender` and `requires-private-evidence` skip explicitly when their named evidence is absent; available invalid evidence fails. `visual-review` produces 29 contact sheets, not automated aesthetic approval. Static checks/smoke do not establish model delivery or native acceptance.
 
 Run `npm run test:browser -- --list` to inspect current discovery. Fresh producer commands below supply native evidence; installed Blender alone is insufficient. Private input uses `TRACE_PRIVATE_INPUT`; available authorized exports remain required. Repo Workbench owns Canvas verification in repo-kit, including the historic 1.64.1 pointer diagnostic; game verification remains here.
 

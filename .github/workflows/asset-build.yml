@@ -58,7 +58,7 @@ jobs:
     needs: plan
     if: needs.plan.outputs.browser == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: ${{ fromJSON(needs.plan.outputs.plan).mode == 'full' && 90 || 15 }}
     strategy:
       fail-fast: false
       matrix:

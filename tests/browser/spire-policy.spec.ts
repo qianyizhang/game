@@ -74,7 +74,9 @@ test('Spire policy review connects original knowledge to a passive map and comba
   await expect(board.locator('.sts-map-panel')).toBeVisible();
   await page.getByLabel('Decision number').fill(String(combatIndex + 1));
   await expect(board.locator('.sts-battle')).toBeVisible();
-  await expect(board.locator('.enemy .intent').first()).toBeVisible();
+  const enemy = board.getByRole('button', { name: /^Target / }).first();
+  await expect(enemy.getByText('Next action', { exact: true })).toBeVisible();
+  await expect(enemy).toHaveAccessibleDescription(/Next action\s+\S/);
   await expect(board.locator('.battle-hand .ability-card:enabled')).toHaveCount(0);
   await expect(board.getByRole('button', { name: 'End turn' })).toBeDisabled();
   await expect(board.locator('.enemy:enabled')).toHaveCount(0);

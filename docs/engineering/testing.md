@@ -31,6 +31,15 @@ every asset. Named camera controls remain in those journeys; pointer orbit is ch
 a reduced-motion rigid representative so animation cannot masquerade as successful dragging.
 CI does not generate all 29 contact sheets or establish aesthetic acceptance.
 
+Routine CI uses the existing Vajra, Hydra and Catalyst delivery journeys for rigid
+motion, skinning and transmission. Full/local validation retains all 29 deliveries
+and the continuous Night Passage campaign. Keep per-asset motion, phone layout,
+GLB validity and save isolation. Shared wireframe/layer/light controls and PNG
+download use Catalyst once; repeated successful-view captures belong in visual
+review. Pixel comparisons that assert motion or camera behavior remain functional
+checks. This consolidates repeated work without claiming full asset acceptance
+from the routine representatives.
+
 [Verification contracts](checks.md#gate-selection) own CI selection and local completion gates. A smoke pass establishes only its selected journeys.
 
 Video delivery checks decode the downloaded artifact away from the live WebGL scene,

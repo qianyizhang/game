@@ -26,7 +26,7 @@ come from the preserved dated source history. This command never publishes the g
 
 `npm run ci -- core` runs the safety regressions without waiting for selection.
 `npm run ci -- plan <output.json>` selects MR modules from an exact `CI_BASE` SHA;
-`CI_FULL=1` selects everything. `npm run ci -- run <core|unit|browser|geometry>`
+`CI_FULL=1` explicitly selects exhaustive validation; missing base information expands only application and bounded browser coverage. `npm run ci -- run <core|unit|browser|geometry>`
 executes a SHA-bound plan from `CI_PLAN`. The canonical [scope rules and measured
 limits](../../docs/engineering/checks.md#gate-selection) own this contract.
 

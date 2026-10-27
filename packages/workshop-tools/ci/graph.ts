@@ -38,6 +38,8 @@ export function dependencyGraph(
   root: string,
   files: string[],
 ): { dependants: DependencyGraph; uncertain: string[]; dynamic: string[] } {
+  // Resolved targets and their root must share filesystem identity before relative().
+  root = realpathSync(root);
   const dependants: DependencyGraph = new Map(),
     uncertain: string[] = [],
     dynamic: string[] = [];

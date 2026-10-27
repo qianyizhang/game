@@ -2,7 +2,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { appendFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { catalogueFrom, dependencyGraph, trackedFiles } from './graph.ts';
-import { commandFor, type Module } from './commands.ts';
+import { commandFor, readPlan, requiredModules, type Module } from './commands.ts';
 import { selectPlan, type Change, type Plan } from './selection.ts';
 
 const root = resolve(import.meta.dirname, '../../..');
@@ -11,28 +11,12 @@ const git = (...args: string[]) =>
 const head = git('rev-parse', 'HEAD');
 
 function planFromEnvironment(): Plan {
-  const value: unknown = JSON.parse(process.env.CI_PLAN ?? 'null');
-  if (
-    !value ||
-    typeof value !== 'object' ||
-    !('version' in value) ||
-    value.version !== 1 ||
-    !('head' in value) ||
-    value.head !== head
-  )
-    throw new Error('CI plan does not match checkout');
-  const plan = value as Plan;
+  const plan = readPlan(JSON.parse(process.env.CI_PLAN ?? 'null'), head);
   const catalogue = catalogueFrom(trackedFiles(root));
   const allowed = new Set(catalogue.application);
   if (
-    !Array.isArray(plan.coreFiles) ||
-    !Array.isArray(plan.unitFiles) ||
-    !Array.isArray(plan.browserFiles) ||
     [...plan.coreFiles, ...plan.unitFiles].some((p) => !allowed.has(p)) ||
-    plan.browserFiles.some((p) => !catalogue.browser.includes(p)) ||
-    typeof plan.geometry !== 'boolean' ||
-    ![1, 2, 3, 4].includes(plan.unitShards) ||
-    ![1, 2, 3, 4].includes(plan.browserShards)
+    plan.browserFiles.some((p) => !catalogue.browser.includes(p))
   )
     throw new Error('Invalid CI plan');
   return plan;
@@ -40,7 +24,7 @@ function planFromEnvironment(): Plan {
 
 const operation = process.argv[2];
 if (operation === 'plan') {
-  const base = process.env.CI_BASE;
+  const base = /^0{40}$/.test(process.env.CI_BASE ?? '') ? undefined : process.env.CI_BASE;
   const changes: Change[] = [];
   if (base) {
     if (!/^[a-f0-9]{40}$/.test(base)) throw new Error('CI_BASE must be an exact commit SHA');
@@ -58,7 +42,8 @@ if (operation === 'plan') {
   const graph = dependencyGraph(root, files);
   const plan = selectPlan(changes, catalogueFrom(files), graph.dependants, {
     head,
-    full: process.env.CI_FULL === '1' || !base,
+    full: process.env.CI_FULL === '1',
+    allApplications: !base,
     uncertain: graph.uncertain,
   });
   const json = JSON.stringify(plan);
@@ -67,7 +52,12 @@ if (operation === 'plan') {
   if (process.env.GITHUB_OUTPUT)
     appendFileSync(
       process.env.GITHUB_OUTPUT,
-      `plan=${json}\nunit=${plan.unitFiles.length > 0}\nbrowser=${plan.browserFiles.length > 0}\ngeometry=${plan.geometry}\nunit_matrix=${JSON.stringify(Array.from({ length: plan.unitShards }, (_, i) => i + 1))}\nbrowser_matrix=${JSON.stringify(Array.from({ length: plan.browserShards }, (_, i) => i + 1))}\n`,
+      `plan=${json}\n${Object.entries(requiredModules(plan))
+        .filter(([name]) => name !== 'plan')
+        .map(([name, required]) => `${name}=${required}`)
+        .join(
+          '\n',
+        )}\nunit_matrix=${JSON.stringify(Array.from({ length: plan.unitShards }, (_, i) => i + 1))}\n`,
     );
   console.log(
     JSON.stringify({

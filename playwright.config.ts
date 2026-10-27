@@ -1,5 +1,6 @@
 import { defineConfig } from '@playwright/test';
 import { browserBudget } from './tests/browser/budget';
+import { fullBrowserFiles } from './packages/workshop-tools/ci/selection';
 
 export default defineConfig({
   testDir: './tests/browser',
@@ -25,6 +26,21 @@ export default defineConfig({
         '**/cartographer-cues.spec.ts',
       ],
       grep: /@smoke/,
+    },
+    {
+      name: 'ci-games',
+      testIgnore: [
+        ...fullBrowserFiles.map((path) => `**/${path.split('/').at(-1)}`),
+        '**/art3d.spec.ts',
+        '**/art3d-review.spec.ts',
+        '**/trace-private.spec.ts',
+      ],
+      grepInvert: /@requires-blender|@smoke/,
+    },
+    {
+      name: 'ci-assets',
+      testMatch: '**/art3d.spec.ts',
+      grep: /@asset-smoke/,
     },
     {
       name: 'functional',

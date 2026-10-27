@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, realpathSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { dirname, join } from 'node:path';
+import { dirname, join, sep } from 'node:path';
 import { test } from 'node:test';
 import { catalogueFrom, dependencyGraph } from './graph.ts';
 import { reverseClosure, selectPlan } from './selection.ts';
@@ -27,6 +27,42 @@ void test('literal import, re-export and declared dynamic imports retain transit
     assert.ok(reached.has('tests/browser/spire.spec.ts'));
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+void test('canonical and symlinked roots select the same affected tests without external files', () => {
+  const directory = mkdtempSync(join(tmpdir(), 'ci-graph-alias-'));
+  const root = join(directory, 'repository');
+  const alias = join(directory, 'repository-link');
+  const files = {
+    'tsconfig.json': '{"compilerOptions":{"moduleResolution":"Bundler"}}',
+    'src/games/spire/content.ts': 'export const card=1;',
+    'src/games/spire/game.test.ts':
+      'import {card} from "./content"; import "../../../../outside.ts";',
+  };
+  try {
+    for (const [path, content] of Object.entries(files)) {
+      mkdirSync(dirname(join(root, path)), { recursive: true });
+      writeFileSync(join(root, path), content);
+    }
+    writeFileSync(join(directory, 'outside.ts'), 'export const external=1;');
+    symlinkSync(root, alias, 'dir');
+    const canonical = realpathSync(root);
+    for (const location of [canonical, canonical + sep, alias, alias + sep]) {
+      const graph = dependencyGraph(location, Object.keys(files));
+      assert.deepEqual(graph.uncertain, [], location);
+      assert.deepEqual([...graph.dependants.keys()], ['src/games/spire/content.ts'], location);
+      const plan = selectPlan(
+        [{ path: 'src/games/spire/content.ts', status: 'M' }],
+        catalogueFrom(Object.keys(files)),
+        graph.dependants,
+        { head: 'a'.repeat(40), uncertain: graph.uncertain },
+      );
+      assert.equal(plan.mode, 'scoped', location);
+      assert.deepEqual(plan.unitFiles, ['src/games/spire/game.test.ts'], location);
+    }
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
   }
 });
 
@@ -68,7 +104,7 @@ void test('catalogue retains default application, all geometry and public browse
   );
 });
 
-void test('an unresolved Emberwake package loader forces full selection', () => {
+void test('an unresolved Emberwake package loader forces application fallback', () => {
   const root = mkdtempSync(join(tmpdir(), 'ci-package-loader-'));
   const file = 'packages/diablo2/src/loader.ts';
   try {
@@ -83,8 +119,8 @@ void test('an unresolved Emberwake package loader forces full selection', () => 
     );
     assert.deepEqual(graph.dynamic, [file]);
     assert.deepEqual(graph.uncertain, [`${file}: nonliteral import`]);
-    assert.equal(plan.mode, 'full');
-    assert.equal(plan.geometry, true);
+    assert.equal(plan.mode, 'application');
+    assert.equal(plan.geometry, false);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

@@ -2,7 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { appendFileSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import type { Plan } from './selection.ts';
+import { readPlan } from './commands.ts';
 
 let json = process.env.CI_PLAN;
 if (!json) {
@@ -18,9 +18,10 @@ if (!json) {
     rmSync(directory, { recursive: true, force: true });
   }
 }
-const plan = JSON.parse(json) as Plan;
-if (plan.head !== execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim())
-  throw new Error('Asset plan does not match checkout');
+const plan = readPlan(
+  JSON.parse(json),
+  execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+);
 if (!process.env.GITHUB_OUTPUT) throw new Error('GITHUB_OUTPUT is required');
 appendFileSync(
   process.env.GITHUB_OUTPUT,
