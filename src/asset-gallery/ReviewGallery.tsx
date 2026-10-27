@@ -62,7 +62,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
       <main id="top">
         <section className="gallery-intro" aria-labelledby="gallery-title">
           <div>
-            <p className="eyebrow">STUDIES 01–04 / ACTIONS, PAYOFFS, PROTECTION & PATHS</p>
+            <p className="eyebrow">STUDIES 01–05 / FEEDBACK, PATHS & SILHOUETTES</p>
             <h1 id="gallery-title">
               Follow
               <br />
@@ -70,9 +70,10 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
             </h1>
             <p className="lede">
               Small visual studies for clearer decisions and feedback: Spire’s next action,
-              Blindside’s scoring effects, Last Hearth’s lost protection and Cartographer’s paths.
+              Blindside’s scoring effects, Last Hearth’s lost protection, Cartographer’s paths and
+              Emberwake’s silhouettes.
             </p>
-            <a className="review-link" href="#review-cartographer">
+            <a className="review-link" href="#review-emberwake">
               Compare the latest study
             </a>
           </div>
@@ -130,6 +131,10 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
               <dd>Named automated and browser checks passed.</dd>
             </div>
             <div>
+              <dt>Repository reviewed</dt>
+              <dd>Comparison images were independently inspected; browser checks are separate.</dd>
+            </div>
+            <div>
               <dt>Visually reviewed</dt>
               <dd>Matched desktop, phone, and native-size views inspected by the author.</dd>
             </div>
@@ -142,8 +147,8 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
           </dl>
           <p>
             Browser journeys establish working controls and rendering. They do not establish that
-            this is more fun. Visual review here is author self-review; player approval is still
-            open.
+            this is more fun. Visual review is author self-review unless a study says otherwise;
+            player approval is still open.
           </p>
         </section>
         <section id="reviews" aria-labelledby="reviews-title">
@@ -151,6 +156,13 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
             <h2 id="reviews-title">The comparisons</h2>
             <span>Open any number · each stays independent</span>
           </div>
+          <article className="comparison" id="review-emberwake">
+            <div className="comparison-body" id="asset-emberwake-silhouettes">
+              <h3>05 · Emberwake silhouettes</h3>
+              <p>Three heroes and crypt enemies in matched scenes and enlarged details.</p>
+              <a href="emberwake.html">Open the Emberwake comparison</a>
+            </div>
+          </article>
           <CartographerReview evidence={evidence.cartographer} />
           <HearthShieldReview evidence={evidence.shield} />
           <details className="comparison" id="review-score" open>

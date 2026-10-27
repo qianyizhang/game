@@ -14,6 +14,14 @@ test('independent asset comparisons, changelog links, offline delivery and phone
   await page.route('**/asset-review.html', (route) =>
     route.fulfill({ contentType: 'text/html', body: html }),
   );
+  const emberwakeHtml = readFileSync(`${output}/emberwake.html`);
+  expect(emberwakeHtml.length).toBeLessThanOrEqual(600 * 1024);
+  await page.route('**/emberwake.html', (route) =>
+    route.fulfill({ contentType: 'text/html', body: emberwakeHtml }),
+  );
+  await page.route('**/index.html', (route) =>
+    route.fulfill({ contentType: 'text/html', body: html }),
+  );
   const external: string[] = [];
   const errors: string[] = [];
   page.on('request', (request) => {
@@ -110,4 +118,32 @@ test('independent asset comparisons, changelog links, offline delivery and phone
     readFileSync('src/asset-gallery/CHANGELOG.json', 'utf8'),
   );
   expect(relative(process.cwd(), output)).not.toContain('..');
+  await page
+    .locator('#review-emberwake')
+    .getByRole('link', { name: 'Open the Emberwake comparison' })
+    .click();
+  await expect(page.getByRole('heading', { name: 'Heroes and crypt silhouettes' })).toBeVisible();
+  for (const image of await page.locator('img').all()) {
+    await image.scrollIntoViewIfNeeded();
+    expect(
+      await image.evaluate(async (node) => {
+        const img = node as HTMLImageElement;
+        await img.decode();
+        return img.naturalWidth > 0 && img.naturalHeight > 0;
+      }),
+    ).toBe(true);
+  }
+  expect(await page.locator('img').count()).toBe(4);
+  const scenes = page.locator('details').first();
+  await scenes.locator('summary').click();
+  await expect(scenes).not.toHaveAttribute('open', '');
+  await expect(page.locator('details').last()).toHaveAttribute('open', '');
+  await scenes.locator('summary').click();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: info.outputPath('gallery-emberwake-phone.png'), fullPage: true });
+  await page.getByRole('link', { name: 'Return to the gallery changelog' }).click();
+  await expect(page.getByRole('heading', { name: 'Latest changes', exact: true })).toBeVisible();
+  expect(await page.evaluate(() => ({ ...localStorage }))).toEqual(saved);
+  expect(external).toEqual([]);
+  expect(errors).toEqual([]);
 });
