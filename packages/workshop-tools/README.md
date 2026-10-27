@@ -24,6 +24,12 @@ contains only named asset captures, inline SVG/CSS and independently expandable 
 it ships no JavaScript. Its visible Latest changes section and companion `CHANGELOG.json`
 come from the preserved dated source history. This command never publishes the gallery.
 
+`npm run ci -- core` runs the safety regressions without waiting for selection.
+`npm run ci -- plan <output.json>` selects MR modules from an exact `CI_BASE` SHA;
+`CI_FULL=1` selects everything. `npm run ci -- run <core|unit|browser|geometry>`
+executes a SHA-bound plan from `CI_PLAN`. The canonical [scope rules and measured
+limits](../../docs/engineering/checks.md#gate-selection) own this contract.
+
 ## Committed-file size audit
 
 `npm run maintenance -- files` prints Markdown rankings for the largest blobs and most physical lines, plus review suggestions. Defaults: `--ref HEAD --top 20 --min-bytes 262144 --min-lines 1000`. Lines at least 2,000 bytes also receive a signal, so one-line JSON cannot hide behind a low line count. `--json` returns the complete inventory; `--top` limits only Markdown sections. For clean JSON redirection use `npm run --silent maintenance -- files --json > .work/sessions/<session>/files.json` after creating the session directory.

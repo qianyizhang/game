@@ -93,6 +93,17 @@ filename can also match the page navigation when its query parameter ends in tha
 filename, returning JSON instead of the app. Use `page.route(url =>
 url.pathname === '/fixture.json', handler)` and exercise the ordinary page URL.
 
+## Policy rollout scope
+
+Emberwake and Spire keep focused policy regressions in `policy.test.ts` and their
+full progression or terminal/replay matrices in `policy-rollout.test.ts`. Both files
+remain in the application suite. A focused regression run gives faster feedback but
+does not establish progression, terminal completion or replay across those matrices.
+Run both files when changing the corresponding policy or its observation, adapter,
+rules, content or replay dependencies; shared evaluator changes can affect every game.
+The Emberwake Relaxed matrix is a bounded functional witness, not evidence of winning
+or calibrated strength at other difficulties.
+
 ## Before adding or retaining a test
 
 - Name the failure it catches and the outcome that would be wrong.

@@ -40,6 +40,8 @@ Use `npm run check` for code, UI, and rule changes; documentation-only edits req
 Read [verification contracts](docs/engineering/checks.md#gate-selection) for scope
 selection and reporting. `npm run test:browser` runs the disposable-profile browser suite
 with a single startup guard.
-Automatic GitHub CI runs non-geometry checks and game-browser smoke journeys. The path-aware
-asset-build workflow runs geometry and public browser delivery checks for relevant changes;
-native, private-evidence and visual review remain local completion gates.
+Automatic GitHub CI retains a safety core and selects affected application/browser/geometry
+modules. Shared, unknown and configuration changes use comprehensive fallback; main,
+weekly, manual and reusable release calls run full public coverage. The canonical
+scope matrix and measured limitations are in verification contracts. Native,
+private-evidence and visual review remain separate completion gates.
