@@ -98,10 +98,13 @@ The accepted Hydra reference is `test-results/hydra-delivery/` ([creature redesi
 
 Reviews use the brief format: **subject / physical interpretation / gesture / identifying contour / material & light / target size / reference / intended change**.
 
-1. **Side-by-side comparison:** Compare candidates against baselines at matching camera angles, lighting, animation frames, and display sizes.
-2. **Multi-angle inspection:** Review default, front, side, and rear views, mobile viewports (390 px), and motion extremes in clay and textured modes.
-3. **Clarity & Restraint:** Check what reads first, what looks structurally weak, and what decorative noise can be removed.
-4. **Independent verification:** Report technical checks separately from visual assessments. Passing automated checks does not confer aesthetic approval.
+Judge in order: domain-appropriate anatomical and geometric validity, authentic and useful appearance, practical performance, then exact source fidelity. Medical authenticity includes tissue relationships and clearly labeled inferred reconstruction; game art follows its declared stylized direction and gameplay needs.
+
+1. **Baseline and references:** Pin provenance and preserve the untouched reference, baseline, and failed candidates separately from revisions. Source is evidence, not automatic ground truth. Measure and document departures against the chosen reference; an evidence-supported valid improvement need not be rejected for differing from it. State the visual direction and intended changes.
+2. **Matched pixels:** Review the desktop scene at its actual display size and a matching zoom, with the same camera, lighting, animation frame, and scale as the baseline. Check clarity and restraint in context. For 3D, also inspect front, side, rear, motion extremes, and clay and textured views; check the 390 px viewport where applicable.
+3. **Technical validity:** Pass the applicable [verification gates](../engineering/checks.md#gate-selection), including geometry and export checks when relevant. Report gameplay readability, input, saves, and replay separately from visual assessment when affected. Passing technical checks does not establish visual quality.
+4. **Efficiency:** Choose budgets from the asset's measured needs and target runtime. Report relevant draw, resource, or delivery costs and their quality tradeoffs; file count alone is not an optimization goal.
+5. **Independent acceptance:** An author may self-review a candidate, but final visual acceptance requires independent pixel review. Record findings, unresolved limits, and the exact candidate reviewed; follow the [delegation protocol](delegation.md) when applicable.
 
 ## Maintainable artist sources
 
