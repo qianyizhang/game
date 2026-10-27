@@ -47,6 +47,14 @@ Merge only with applicable authorization. Close an issue as completed only after
 acceptance is met, and track residual work. Repository docs, issues and PRs are the
 source of truth; keep chat summaries concise.
 
+Keep issue/PR scope balanced: split oversized issues into independently closable
+outcomes with explicit dependencies, not one ticket per mechanical commit. After
+each merge, add a concise comment to every relevant issue: delivered change/PR,
+checks, remaining work and current status; partial delivery leaves the issue open.
+When a surface's actionable backlog is cleared, audit that surface and propose the
+next evidence-backed batch of meaningful improvements. Do not create filler;
+blocked or paused issues remain visible and are not counted as completed.
+
 ## Commit closeout
 
 Group related fixes into a coherent, verified commit before publication. Use a title that
