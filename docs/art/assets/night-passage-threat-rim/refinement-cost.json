@@ -1,0 +1,110 @@
+{
+  "browser": "154.0.8037.57",
+  "sourceSha256": [
+    {
+      "path": ".artifacts/issue26/baseline.ts",
+      "sha256": "5f6dd89cd0dae44d5796f5755bd9cb8042dabc2e7c78346b208a6f4196db09c3"
+    },
+    {
+      "path": ".artifacts/issue26/refinement/recovered.ts",
+      "sha256": "7c48547cdc21414fec92ca23cd707c92b5d1b488049256e1b19e89a434ac97f6"
+    },
+    {
+      "path": "src/games/night-passage/ui/presentation/threats.ts",
+      "sha256": "d47c955dcb040525657dbc84a2eca3f38de324e068c664dad8156d5118b5a1a1"
+    }
+  ],
+  "method": "ABC-CBA repeated 3 times, 20 warmup + 100 measured frames/batch, six threats at 2x backing resolution, clear + draw + single-pixel readback. Sequential isolated run; not FPS.",
+  "runs": [
+    {
+      "round": 0,
+      "variant": "thin",
+      "drawReadbackMs": 3.5529999999981374
+    },
+    {
+      "round": 0,
+      "variant": "clipped",
+      "drawReadbackMs": 13.333000000002794
+    },
+    {
+      "round": 0,
+      "variant": "inset",
+      "drawReadbackMs": 4.658000000002794
+    },
+    {
+      "round": 0,
+      "variant": "inset",
+      "drawReadbackMs": 4.846999999997206
+    },
+    {
+      "round": 0,
+      "variant": "clipped",
+      "drawReadbackMs": 14.572999999998137
+    },
+    {
+      "round": 0,
+      "variant": "thin",
+      "drawReadbackMs": 4.097999999998137
+    },
+    {
+      "round": 1,
+      "variant": "thin",
+      "drawReadbackMs": 6.671000000000931
+    },
+    {
+      "round": 1,
+      "variant": "clipped",
+      "drawReadbackMs": 17.012999999998137
+    },
+    {
+      "round": 1,
+      "variant": "inset",
+      "drawReadbackMs": 4.765
+    },
+    {
+      "round": 1,
+      "variant": "inset",
+      "drawReadbackMs": 4.217000000001863
+    },
+    {
+      "round": 1,
+      "variant": "clipped",
+      "drawReadbackMs": 9.361000000000931
+    },
+    {
+      "round": 1,
+      "variant": "thin",
+      "drawReadbackMs": 3.3089999999990685
+    },
+    {
+      "round": 2,
+      "variant": "thin",
+      "drawReadbackMs": 2.83
+    },
+    {
+      "round": 2,
+      "variant": "clipped",
+      "drawReadbackMs": 9.880999999996275
+    },
+    {
+      "round": 2,
+      "variant": "inset",
+      "drawReadbackMs": 4.442000000001863
+    },
+    {
+      "round": 2,
+      "variant": "inset",
+      "drawReadbackMs": 4.343000000002794
+    },
+    {
+      "round": 2,
+      "variant": "clipped",
+      "drawReadbackMs": 10.22
+    },
+    {
+      "round": 2,
+      "variant": "thin",
+      "drawReadbackMs": 3.8679999999981374
+    }
+  ]
+}

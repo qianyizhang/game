@@ -1,5 +1,71 @@
 # Night Passage inward threat rim: validation, 2026-10-27
 
+## Inset refinement: awaiting independent final review
+
+The current candidate preserves the recovered rim's 9px dark / 4px coral inward
+bands while avoiding clip masks on supported footprints. It uses inset stroke
+centerlines; wide-sector corners use parallel radial edges and bevel joins.
+Narrow or degenerate sectors, small circles/capsules and thin annuli retain the
+clipped construction. Rules geometry and the translucent fill remain unchanged.
+Current renderer source SHA-256: `d47c955dcb040525657dbc84a2eca3f38de324e068c664dad8156d5118b5a1a1`.
+
+Self-review of matched desktop views and identical enlarged crops finds equivalent
+boundary readability: the annulus hole stays open, line ends remain rounded, and
+sector edges and crowded circles remain distinct. Beveled sector corner pixels
+are slightly different from the clipped construction. This is not independent
+visual approval. Captures wait for asset loading before the final redraw; a timed
+capture that still showed fallback models was replaced before publication.
+
+![Thin outline and current inset rim](../assets/night-passage-threat-rim/inset-scene.webp)
+
+[Canvas comparison](../assets/night-passage-threat-rim/inset-canvas.webp),
+[clipped/inset scene zoom](../assets/night-passage-threat-rim/inset-scene-zoom.webp),
+and [clipped/inset canvas zoom](../assets/night-passage-threat-rim/inset-canvas-zoom.webp)
+cover the same four scenes. The zoom pairs compare the recovered rim with this
+refinement; the full-scene pairs compare the thin outline with this refinement.
+
+A new browser regression checks **114 cases** at 1× and 2× backing resolutions:
+all four shapes, rotations, small radii, narrow/wide sectors and thin annuli.
+All painted pixel centers must lie within a **continuous one-backing-pixel rules
+expansion** for antialiasing. All 114 pass locally in Chromium, with clear annulus
+centers and restored context paint/join/clip state. The old thin outline fails all
+114 cases as a negative control. This continuous test resolves a limitation of
+the old grid-neighbor probe: that probe flagged the same 12 narrow-apex pixels in
+both recovered and experimental rendering because it could miss a thin footprint
+between sample points. The old results are retained; no existing check was weakened.
+
+The 240-command legal replay again has byte-identical exports for clipped/inset,
+normal/reduced motion and both consumers: hash
+`e86cf14c443eef03c7291a73d92ec41def2b9a446e5939ed658a6c54cb3da1c0`.
+Matched frozen renders preserve state under both motion settings.
+
+The sequential isolated comparison uses the same Linux/Chromium environment and
+six-threat 1920×1200 clear/draw/readback workload described below. Order is
+ABC–CBA repeated three times, with 20 warmup and 100 measured frames per batch.
+[Raw batches and source hashes](../assets/night-passage-threat-rim/refinement-cost.json)
+record the exact inputs.
+
+| Variant | Median per frame |     Batch range |
+| ------- | ---------------: | --------------: |
+| thin    |        3.7105 ms |  2.830–6.671 ms |
+| clipped |       11.7765 ms | 9.361–17.013 ms |
+| inset   |        4.5500 ms |  4.217–4.847 ms |
+
+Inset drawing is about 61% cheaper than the clipped candidate in this run, with
+about 0.84 ms remaining overhead versus thin outlines. Batch drift and software
+rendering limit extrapolation. These are draw/readback measurements, **not GPU
+FPS**, end-to-end frame timings or a hardware performance guarantee.
+
+Targeted ESLint and TypeScript checks pass. All 71 scoped application tests across
+9 scene/chronicle files pass (38.10 seconds). Exact-head CI results belong to
+PR #31; no passing CI result is implied before that run finishes.
+The earlier full-suite timeouts below remain historical failures, not waived
+checks or an all-green baseline. Stable Chrome was not installed locally; the
+canonical browser gate remains required through CI. Final visual acceptance and
+merge belong to independent review.
+
+## Recovered clipped candidate: historical validation
+
 The recovered rim improves desktop threat recognition in self-review, but is **not
 accepted**. Its measured draw/readback cost is materially higher, the local full
 gate fails time limits, stable Chrome is unavailable, and independent visual review
