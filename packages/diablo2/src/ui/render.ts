@@ -555,6 +555,13 @@ export function render(
         ctx.fillText(drop.item?.name ?? 'Loot', sx(drop.x), sy(drop.y) - 10);
       }
     }
+  const cues = frame?.effects?.visible(state.region, time) ?? [];
+  const coldImpacts: typeof cues = [],
+    foreground: typeof cues = [];
+  for (const cue of cues)
+    (cue.kind === 'impact' && cue.element === 'cold' ? coldImpacts : foreground).push(cue);
+  // Filled frost shards sit beneath bodies, actor silhouettes and their health/status cues.
+  drawSkillEffects(ctx, coldImpacts, c, TILE, time);
   for (const body of world.enemies)
     if (body.hp === 0 && visible(body)) {
       ctx.save();
@@ -690,13 +697,9 @@ export function render(
     ctx.fill();
     ctx.restore();
   }
-  canvas.dataset.effects = drawSkillEffects(
-    ctx,
-    frame?.effects?.visible(state.region, time) ?? [],
-    c,
-    TILE,
-    time,
-  ).join(',');
+  drawSkillEffects(ctx, foreground, c, TILE, time);
+  // Preserve receipt order even though the effects use two presentation layers.
+  canvas.dataset.effects = cues.map((cue) => cue.skill).join(',');
   canvas.dataset.mapReveal = state.sandbox?.reveal ? 'full' : 'explored';
   const gradient = ctx.createRadialGradient(
     VIEW_WIDTH / 2,

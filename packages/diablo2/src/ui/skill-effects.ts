@@ -81,6 +81,47 @@ const colors: Record<Element, string> = {
   cold: '#99eaff',
   poison: '#b8e87d',
 };
+/** Faceted ice reads as cold without relying on the shared impact palette. */
+function drawFrostImpact(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  inner: number,
+  reach: number,
+): void {
+  ctx.shadowBlur = 4;
+  ctx.lineWidth = 1;
+  // Six broad facets make a frost silhouette; the open centre preserves the hit actor.
+  for (let n = 0; n < 6; n++) {
+    const angle = (n * Math.PI) / 3 - Math.PI / 2,
+      dx = Math.cos(angle),
+      dy = Math.sin(angle),
+      tip = inner + (reach - inner) * (n % 2 ? 0.88 : 1),
+      middle = inner + (tip - inner) * 0.45,
+      width = Math.max(2, (tip - inner) * 0.3);
+    const root = [x + dx * inner, y + dy * inner],
+      end = [x + dx * tip, y + dy * tip],
+      left = [x + dx * middle - dy * width, y + dy * middle + dx * width],
+      right = [x + dx * middle + dy * width, y + dy * middle - dx * width];
+    ctx.beginPath();
+    ctx.moveTo(root[0], root[1]);
+    ctx.lineTo(left[0], left[1]);
+    ctx.lineTo(end[0], end[1]);
+    ctx.lineTo(right[0], right[1]);
+    ctx.closePath();
+    ctx.fillStyle = '#b7e9f7';
+    ctx.fill();
+    ctx.strokeStyle = '#31566a';
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(root[0], root[1]);
+    ctx.lineTo(left[0], left[1]);
+    ctx.lineTo(end[0], end[1]);
+    ctx.closePath();
+    ctx.fillStyle = '#f1ffff';
+    ctx.fill();
+  }
+}
 /** Draw accepted skill cues in world space, beneath the minimap and above actors. */
 export function drawSkillEffects(
   ctx: CanvasRenderingContext2D,
@@ -116,15 +157,17 @@ export function drawSkillEffects(
       ctx.stroke();
     };
     if (cue.kind === 'impact') {
-      for (let n = 0; n < 8; n++) {
-        const angle = (n * Math.PI) / 4,
-          inner = 4 + age * 8,
-          outer = inner + cue.radius * tile * fade;
-        ctx.beginPath();
-        ctx.moveTo(x + Math.cos(angle) * inner, y + Math.sin(angle) * inner);
-        ctx.lineTo(x + Math.cos(angle) * outer, y + Math.sin(angle) * outer);
-        ctx.stroke();
-      }
+      const inner = 4 + age * 8,
+        outer = inner + cue.radius * tile * fade;
+      if (cue.element === 'cold') drawFrostImpact(ctx, x, y, inner, outer);
+      else
+        for (let n = 0; n < 8; n++) {
+          const angle = (n * Math.PI) / 4;
+          ctx.beginPath();
+          ctx.moveTo(x + Math.cos(angle) * inner, y + Math.sin(angle) * inner);
+          ctx.lineTo(x + Math.cos(angle) * outer, y + Math.sin(angle) * outer);
+          ctx.stroke();
+        }
     } else if (cue.effect === 'nova') {
       const radius = cue.radius * tile * (0.15 + age * 0.85);
       ring(fx, fy, radius);
