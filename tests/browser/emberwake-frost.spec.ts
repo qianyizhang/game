@@ -212,13 +212,19 @@ test('overlapping cold hits preserve the opaque player and living target silhoue
       const livingBoss = after.worlds[after.region].enemies.find((e) => e.boss && e.hp > 0)!;
       const monster = content.monsters.find((m) => m.id === livingBoss.kind)!;
       return [
-        { point: after.player, kind: hero.id, color: hero.color, scale: 1 },
-        { point: livingBoss, kind: monster.shape, color: monster.color, scale: 1.85 },
-      ].map(({ point, kind, color, scale }) => {
+        { point: after.player, kind: hero.id, color: hero.color, scale: 1, monsterId: undefined },
+        {
+          point: livingBoss,
+          kind: monster.shape,
+          color: monster.color,
+          scale: 1.85,
+          monsterId: monster.id,
+        },
+      ].map(({ point, kind, color, scale, monsterId }) => {
         ctx.clearRect(0, 0, 960, 576);
         ctx.save();
         ctx.translate((point.x - c.x) * TILE, (point.y - c.y) * TILE);
-        figure(ctx, kind, color, scale, time * 4);
+        figure(ctx, kind, color, scale, time * 4, monsterId);
         ctx.restore();
         const silhouette = ctx.getImageData(0, 0, 960, 576).data;
         let opaque = 0,

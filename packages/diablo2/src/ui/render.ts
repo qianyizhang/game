@@ -1,5 +1,6 @@
 import { drawSkillEffects, type SkillEffects } from './skill-effects';
 import { drawHero } from './hero-art';
+import { drawCryptMonster } from './crypt-art';
 import type { Content, Point, State, Enemy, Ally, Player } from '../domain/types';
 import { distance, dimensions, lineOfSight, walkable, visibleActor } from '../domain/maps';
 import { currentRegion, currentWorld, wardsLit, portalOpen } from '../domain/world';
@@ -35,6 +36,7 @@ export function figure(
   color: string,
   scale = 1,
   time = 0,
+  monsterId?: string,
 ): void {
   ctx.save();
   ctx.scale(scale, scale);
@@ -42,6 +44,10 @@ export function figure(
   ctx.beginPath();
   ctx.ellipse(0, 9, 12, 5, 0, 0, Math.PI * 2);
   ctx.fill();
+  if (kind === 'skeleton' && drawCryptMonster(ctx, monsterId, color, time)) {
+    ctx.restore();
+    return;
+  }
   const sway = Math.sin(time) * 1.2;
   if (drawHero(ctx, kind, color, time)) {
     ctx.restore();
@@ -640,6 +646,7 @@ export function render(
           state.player.target !== null)
           ? 16
           : 4),
+      def?.id,
     );
     if (enemy?.slow || enemy?.cursed) {
       ctx.strokeStyle = enemy.cursed ? '#d297ee' : '#99eaff';
