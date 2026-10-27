@@ -47,8 +47,8 @@ function Portrait({ id, color }: { id: string; color: string }) {
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, 200, 160);
     ctx.save();
-    ctx.translate(100, 95);
-    figure(ctx, id, color, 3.2);
+    ctx.translate(100, 105);
+    figure(ctx, id, color, 2.8);
     ctx.restore();
   }, [id, color]);
   return <canvas ref={ref} width={200} height={160} aria-hidden="true" />;

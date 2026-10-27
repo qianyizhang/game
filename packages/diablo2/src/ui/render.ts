@@ -1,4 +1,5 @@
 import { drawSkillEffects, type SkillEffects } from './skill-effects';
+import { drawHero } from './hero-art';
 import type { Content, Point, State, Enemy, Ally, Player } from '../domain/types';
 import { distance, dimensions, lineOfSight, walkable, visibleActor } from '../domain/maps';
 import { currentRegion, currentWorld, wardsLit, portalOpen } from '../domain/world';
@@ -42,6 +43,10 @@ export function figure(
   ctx.ellipse(0, 9, 12, 5, 0, 0, Math.PI * 2);
   ctx.fill();
   const sway = Math.sin(time) * 1.2;
+  if (drawHero(ctx, kind, color, time)) {
+    ctx.restore();
+    return;
+  }
   if (kind === 'beast') {
     polygon(
       ctx,
