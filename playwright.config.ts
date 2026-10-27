@@ -22,6 +22,7 @@ export default defineConfig({
         '**/battlegrounds.spec.ts',
         '**/diablo2.spec.ts',
         '**/cartographer.spec.ts',
+        '**/cartographer-cues.spec.ts',
       ],
       grep: /@smoke/,
     },

@@ -2,15 +2,15 @@
 
 Use the pinned Node/npm runtime (`nvm use`) and Python through `uv`. One gate owner per checkout; retain failure logs. Passing a focused check does not credit full validation, native execution or visual quality.
 
-| Local command                              | Required scope                                                                    |
-| ------------------------------------------ | --------------------------------------------------------------------------------- |
-| `npm run format:maintenance`               | Documentation formatting, inventory and links.                                    |
-| `npm run check`                            | Maintenance/build, every application test and 37 seeded simulations; no geometry. |
-| `npm run check:full`                       | `check` plus every geometry test; no browser/native execution.                    |
-| `npm run test:geometry -- <file>`          | Focused construction/motion iteration.                                            |
-| `npm run test:browser:smoke`               | Five real game journeys; limited smoke evidence.                                  |
-| `npx playwright test --project=functional` | All public loading, interaction and exported-artifact journeys.                   |
-| `npm run test:browser`                     | Functional plus conditional native/private projects.                              |
+| Local command                              | Required scope                                                                         |
+| ------------------------------------------ | -------------------------------------------------------------------------------------- |
+| `npm run format:maintenance`               | Documentation formatting, inventory and links.                                         |
+| `npm run check`                            | Maintenance/build, every application test and 37 seeded simulations; no geometry.      |
+| `npm run check:full`                       | `check` plus every geometry test; no browser/native execution.                         |
+| `npm run test:geometry -- <file>`          | Focused construction/motion iteration.                                                 |
+| `npm run test:browser:smoke`               | Six real game journeys, including phone cue/layout regression; limited smoke evidence. |
+| `npx playwright test --project=functional` | All public loading, interaction and exported-artifact journeys.                        |
+| `npm run test:browser`                     | Functional plus conditional native/private projects.                                   |
 
 ## Gate selection
 
@@ -18,14 +18,14 @@ Locally, use `check` for code/UI/rules and `check:full` for 3D construction, ani
 
 The scoped CI extension separates focused policy regressions from unchanged rollout matrices. Both remain in the default application suite. [PR22](https://github.com/qianyizhang/game/pull/22) retains the dated pre-extension measurements below; measure each final revision rather than assuming a speedup.
 
-| Proposed automatic scope                                                            | What runs                                                                                                                                                           |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Every PR                                                                            | Formatting/lint/types, Python and DCC/tool contracts, pointers/hashes/manifests, build, all simulations, shared/focused policy regressions and five smoke journeys. |
-| Owned source change                                                                 | Literal import/re-export dependants plus declared browser ownership. HTTP/browser entry points need ownership; imports alone are insufficient.                      |
-| Policy/observation/adapter/rules/content/replay change                              | Affected game's complete rollout matrix, including transitive semantic dependants. UI-only changes retain focused policy regressions.                               |
-| Shared evaluator/source, configuration, unknown/deleted paths or unclassified tests | Comprehensive fallback: every application file, geometry and public browser journey.                                                                                |
-| 3D scene or native source/delivery                                                  | Geometry plus affected browser delivery. Native DCC changes conservatively use comprehensive fallback. Fresh Blender remains a separate local release requirement.  |
-| Main push, weekly Monday 03:23 UTC, manual or reusable release call                 | Comprehensive validation. The full suite is not major-release-only.                                                                                                 |
+| Proposed automatic scope                                                            | What runs                                                                                                                                                          |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Every PR                                                                            | Formatting/lint/types, Python and DCC/tool contracts, pointers/hashes/manifests, build, all simulations, shared/focused policy regressions and six smoke journeys. |
+| Owned source change                                                                 | Literal import/re-export dependants plus declared browser ownership. HTTP/browser entry points need ownership; imports alone are insufficient.                     |
+| Policy/observation/adapter/rules/content/replay change                              | Affected game's complete rollout matrix, including transitive semantic dependants. UI-only changes retain focused policy regressions.                              |
+| Shared evaluator/source, configuration, unknown/deleted paths or unclassified tests | Comprehensive fallback: every application file, geometry and public browser journey.                                                                               |
+| 3D scene or native source/delivery                                                  | Geometry plus affected browser delivery. Native DCC changes conservatively use comprehensive fallback. Fresh Blender remains a separate local release requirement. |
+| Main push, weekly Monday 03:23 UTC, manual or reusable release call                 | Comprehensive validation. The full suite is not major-release-only.                                                                                                |
 
 Modules: [safety core](../../.github/workflows/check-core.yml), [application](../../.github/workflows/check-application.yml), [asset build](../../.github/workflows/asset-build.yml), orchestrated by [Repository checks](../../.github/workflows/maintenance.yml). The safety core starts in parallel with selection; the final gate needs no dependency install. The final gate rejects failed/cancelled/skipped required modules. No deployment or protection setting is added. A future release must call `maintenance.yml` and depend on its success; asset-only success is insufficient.
 
@@ -43,17 +43,20 @@ Run every shard listed in the plan; use `run browser` or `run geometry` for asse
 
 ### Measured CI evidence (2026-10-27)
 
-| Revision/run                                                                                                   | Result and time                                                                                                                                                                                                                                       |
-| -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Historical `97983798`, [40272928660](https://github.com/qianyizhang/game/actions/runs/40272928660)             | Geometry was already excluded. Rules-1 log span 201.9 s: application command 177.1 s, checkout 13.7 s, Node/cache 4.9 s, npm 3.4 s, other 2.8 s. Rules-2 span 193.4 s.                                                                                |
-| Before scoped selection `1b587da`, [40480644866](https://github.com/qianyizhang/game/actions/runs/40480644866) | All 9 lean jobs pass; 574 tests across 93 files. Concurrent log window 160.9 s; slowest job 159.8 s (test 138.25 s). Two-minute target **not met**. Overlapping job spans total 753.6 runner-seconds, not elapsed time.                               |
-| Same head, [40480645028](https://github.com/qianyizhang/game/actions/runs/40480645028)                         | Geometry 128/28 pass 292.28 s. Browser 59 pass, 1 fails, 180 not run: Cartographer phone horizontal-overflow assertion, not timeout.                                                                                                                  |
-| Earlier local full gate                                                                                        | Maintenance/build, 574 app tests and 37 simulations pass. Sequential logged span 538.6 s; application 368.55 s. Five smoke journeys pass 36.2 s.                                                                                                      |
-| Local public browser                                                                                           | 145 pass, 2 fixture skips, 1 Night Passage campaign timeout, 92 not run. Existing 16-minute per-test deadline fired before 90-minute process ceiling. No clean-main campaign rerun; rendering source unchanged is not proof of baseline reproduction. |
+| Revision/run                                                                                                   | Result and time                                                                                                                                                                                                                                                                                   |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Historical `97983798`, [40272928660](https://github.com/qianyizhang/game/actions/runs/40272928660)             | Geometry was already excluded. Rules-1 log span 201.9 s: application command 177.1 s, checkout 13.7 s, Node/cache 4.9 s, npm 3.4 s, other 2.8 s. Rules-2 span 193.4 s.                                                                                                                            |
+| Before scoped selection `1b587da`, [40480644866](https://github.com/qianyizhang/game/actions/runs/40480644866) | All 9 lean jobs pass; 574 tests across 93 files. Concurrent log window 160.9 s; slowest job 159.8 s (test 138.25 s). Two-minute target **not met**. Overlapping job spans total 753.6 runner-seconds, not elapsed time.                                                                           |
+| Same head, [40480645028](https://github.com/qianyizhang/game/actions/runs/40480645028)                         | Geometry 128/28 pass 292.28 s. Browser 59 pass, 1 fails, 180 not run: Cartographer phone horizontal-overflow assertion, not timeout.                                                                                                                                                              |
+| Scoped `257d44e`, [40491962820](https://github.com/qianyizhang/game/actions/runs/40491962820)                  | Safety core 6/6 passes 89.1 s; all 574 application and 128 geometry tests pass. Overall 14 jobs pass/4 fail. Public browser 144 pass, 3 fail, 2 fixture skips, 91 not run: Cartographer phone overflow, Night Passage cooldown timing and campaign 960000 ms. Model delivery file takes 49.9 min. |
+| Earlier local full gate                                                                                        | Maintenance/build, 574 app tests and 37 simulations pass. Sequential logged span 538.6 s; application 368.55 s. Five smoke journeys pass 36.2 s.                                                                                                                                                  |
+| Local public browser                                                                                           | 145 pass, 2 fixture skips, 1 Night Passage campaign timeout, 92 not run. Existing 16-minute per-test deadline fired before 90-minute process ceiling. No clean-main campaign rerun; rendering source unchanged is not proof of baseline reproduction.                                             |
 
 Log spans use timestamped markers, not official step API durations; queue/pre-log time is unknown. Runner differences and changed revisions prevent a controlled speedup claim. The separate policy split measured 119.77 s before/121.78 s after for the full matrix: it improves selectable feedback, not full execution cost. Focused 41 tests took 2.38 s in that worker. In this checkout they passed in 2.57 s (3.23 s process wall); the complete 90-test safety core passed in 13.65 s (14.82 s wall, overlapping maintenance lint). These are local timings, not hosted guarantees.
 
 Final local application selection retained **574 tests across 95 files**, passing in 353.2 seconds process wall time. The reviewed policy patch was applied byte-for-byte; its full matrices, seeds and assertions are unchanged.
+
+Follow-up local checks reproduce the cooldown failure on clean main and PR source; protocol calls consume 3.3 s around a 180 ms hold. Controlled time retains all assertions and passes both scene journeys. Cartographer's wider-font probe overflows 337 px at 320 px; wrapping controls fixes it, and all six smoke journeys pass locally in 46.2 s. A faster campaign-cadence experiment still fails the 16-minute deadline; it is unpromoted, and the original campaign assertions/cadence/budget remain unchanged.
 
 ### Browser prerequisites
 

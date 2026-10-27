@@ -13,14 +13,17 @@ export function trackedFiles(root: string): string[] {
     .filter(Boolean);
 }
 
+/** Same application roots as the Vitest application project, excluding geometry. */
+export function isApplicationSource(path: string): boolean {
+  return (
+    (path.startsWith('src/') && !path.startsWith('src/art3d/')) ||
+    path.startsWith('packages/diablo2/src/')
+  );
+}
+
 export function catalogueFrom(files: string[]): Catalogue {
   return {
-    application: files.filter(
-      (p) =>
-        (p.startsWith('src/') || p.startsWith('packages/diablo2/src/')) &&
-        p.endsWith('.test.ts') &&
-        !p.startsWith('src/art3d/'),
-    ),
+    application: files.filter((p) => isApplicationSource(p) && p.endsWith('.test.ts')),
     browser: files.filter(
       (p) =>
         /^tests\/browser\/.+\.spec\.ts$/.test(p) &&
@@ -132,8 +135,7 @@ export function dependencyGraph(
           // Procedural delivery has model ownership; generated tool bundles use
           // the always-on tool/simulation gates. Unknown application imports
           // must conservatively expand selection.
-          if (file.startsWith('src/') && !file.startsWith('src/art3d/'))
-            uncertain.push(`${file}: nonliteral import`);
+          if (isApplicationSource(file)) uncertain.push(`${file}: nonliteral import`);
         }
       }
       ts.forEachChild(node, visit);

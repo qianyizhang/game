@@ -213,7 +213,6 @@ export function selectPlan(
       !path.endsWith('.test.ts')
     )
       semantic.add(family);
-    if (path.startsWith('src/games/night-passage/ui/presentation/scene/')) chosen.add('models');
   }
   const unitFiles = catalogue.application
     .filter((p) => !coreFiles.includes(p) && (full || affected.has(p)))
@@ -225,7 +224,10 @@ export function selectPlan(
   const browserFiles = catalogue.browser
     .filter((p) => full || browserFamilies(p)?.some((f) => chosen.has(f)))
     .sort();
-  const geometry = full || chosen.has('models');
+  const geometry =
+    full ||
+    chosen.has('models') ||
+    [...affected].some((path) => path.startsWith('src/games/night-passage/ui/presentation/scene/'));
   return {
     version: 1,
     head: options.head,

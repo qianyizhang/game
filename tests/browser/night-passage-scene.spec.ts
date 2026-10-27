@@ -35,15 +35,19 @@ test('2.5D live movement, aim, dodge, casts and a complete ranged chamber', asyn
   test.setTimeout(browserBudget(60000));
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
+  await page.clock.install({ time: new Date('2026-10-27T00:00:00Z') });
   await page.goto('/?game=night-passage');
   await expect(field(page)).toHaveAttribute('data-view', 'scene');
+  // Protocol/render latency must not consume the short dodge/cast witness.
+  // Advance the real input loop deliberately, then resume wall time for combat.
+  await page.clock.pauseAt(new Date('2026-10-27T00:01:00Z'));
   await page.getByRole('button', { name: 'Far Lantern bow' }).click();
   await page.getByRole('button', { name: 'Begin passage', exact: true }).click();
   await expect(field(page)).toHaveAttribute('data-view', 'scene');
   await field(page).focus();
   const before = await savedState(page);
   await page.keyboard.down('d');
-  await page.waitForTimeout(200);
+  await page.clock.runFor(200);
   await page.keyboard.up('d');
   await page.keyboard.press('Escape');
   await expect(page.getByRole('heading', { name: 'Passage paused' })).toBeVisible();
@@ -58,7 +62,7 @@ test('2.5D live movement, aim, dodge, casts and a complete ranged chamber', asyn
   await page.mouse.move(aim.x, aim.y);
   await page.keyboard.down('Space');
   await page.keyboard.down('q');
-  await page.waitForTimeout(180);
+  await page.clock.runFor(180);
   await page.keyboard.up('Space');
   await page.keyboard.up('q');
   await page.keyboard.press('Escape');
@@ -69,6 +73,7 @@ test('2.5D live movement, aim, dodge, casts and a complete ranged chamber', asyn
   expect(
     Math.hypot(cast.player.x - moved.player.x, cast.player.y - moved.player.y),
   ).toBeGreaterThan(30);
+  await page.clock.resume();
   await page.keyboard.press('Escape');
   await page.keyboard.down('j');
   await page.waitForTimeout(180);

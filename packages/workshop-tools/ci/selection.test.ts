@@ -96,7 +96,10 @@ void test('native producer/delivery changes retain both model and Night Passage 
     assert.ok(plan.browserFiles.includes('tests/browser/night-passage-hero.spec.ts'));
     assert.ok(plan.browserFiles.includes('tests/browser/art3d.spec.ts'));
   }
-  assert.equal(select('src/games/night-passage/ui/presentation/scene/hero.ts').geometry, true);
+  const scene = select('src/games/night-passage/ui/presentation/scene/hero.ts');
+  assert.equal(scene.geometry, true);
+  assert.ok(scene.browserFiles.includes('tests/browser/night-passage-hero.spec.ts'));
+  assert.ok(!scene.browserFiles.includes('tests/browser/art3d.spec.ts'));
 });
 
 void test('new unclassified tests and unresolved imports fail safely to comprehensive selection', () => {

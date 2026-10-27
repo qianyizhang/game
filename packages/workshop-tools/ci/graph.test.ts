@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { test } from 'node:test';
 import { catalogueFrom, dependencyGraph } from './graph.ts';
-import { reverseClosure } from './selection.ts';
+import { reverseClosure, selectPlan } from './selection.ts';
 
 void test('literal import, re-export and declared dynamic imports retain transitive dependants without executing modules', () => {
   const root = mkdtempSync(join(tmpdir(), 'ci-graph-'));
@@ -66,4 +66,26 @@ void test('catalogue retains default application, all geometry and public browse
       browser: ['tests/browser/art3d.spec.ts'],
     },
   );
+});
+
+void test('an unresolved Emberwake package loader forces full selection', () => {
+  const root = mkdtempSync(join(tmpdir(), 'ci-package-loader-'));
+  const file = 'packages/diablo2/src/loader.ts';
+  try {
+    mkdirSync(dirname(join(root, file)), { recursive: true });
+    writeFileSync(join(root, file), 'const path=globalThis.location.href; import(path);');
+    const graph = dependencyGraph(root, [file]);
+    const plan = selectPlan(
+      [{ path: file, status: 'M' }],
+      catalogueFrom([file]),
+      graph.dependants,
+      { head: 'a'.repeat(40), uncertain: graph.uncertain },
+    );
+    assert.deepEqual(graph.dynamic, [file]);
+    assert.deepEqual(graph.uncertain, [`${file}: nonliteral import`]);
+    assert.equal(plan.mode, 'full');
+    assert.equal(plan.geometry, true);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });

@@ -54,6 +54,10 @@ pause label is **replace**: keep completion, final-pose hold and replay checks, 
 a phase marker to pause at a defined pose and verify it holds. Looping-motion journeys
 retain the direct pause-button check. Start and measure a deliberate slow-frame probe
 within one browser task so protocol latency cannot consume the action first.
+For short live input checks, pause browser time between automation calls and advance
+the real input loop by the intended interval. Keep movement and resource assertions,
+then resume the clock for ordinary live combat; slow automation must not consume the
+cooldown being checked.
 
 Prefer outcomes over incidental construction: supported motion, fitted attachments and
 resource release matter; exact mesh counts, vertex counts, helper calls and intermediate
