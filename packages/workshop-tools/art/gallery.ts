@@ -87,6 +87,32 @@ export async function exportGallery(output = newOutput('asset-gallery')) {
     },
     [react()],
   );
+  const [beforeScene, afterScene, beforeZoom, afterZoom] = await Promise.all(
+    ['before-scene', 'after-scene', 'before-zoom', 'after-zoom'].map((name) =>
+      readFile(fromRoot(`docs/art/assets/emberwake-silhouettes/${name}.webp`)),
+    ),
+  );
+  await withBundle<typeof import('../../../src/asset-gallery/EmberwakeReview'), void>(
+    'src/asset-gallery/EmberwakeReview.tsx',
+    async ({ EmberwakeReview }) => {
+      const data = (image: Buffer) => `data:image/webp;base64,${image.toString('base64')}`;
+      const body = renderToStaticMarkup(
+        createElement(EmberwakeReview, {
+          evidence: {
+            beforeScene: data(beforeScene),
+            afterScene: data(afterScene),
+            beforeZoom: data(beforeZoom),
+            afterZoom: data(afterZoom),
+          },
+        }),
+      );
+      const html = `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Emberwake silhouettes · Asset Fieldnotes</title><style>${galleryCss}</style></head><body>${body}</body></html>\n`;
+      if (Buffer.byteLength(html) > 600 * 1024)
+        throw new Error('Emberwake gallery exceeds 600 KiB budget');
+      await writeFile(resolve(output, 'emberwake.html'), html, { flag: 'wx' });
+    },
+    [react()],
+  );
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

@@ -62,7 +62,7 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
       <main id="top">
         <section className="gallery-intro" aria-labelledby="gallery-title">
           <div>
-            <p className="eyebrow">STUDIES 01–04 / ACTIONS, PAYOFFS, PROTECTION & PATHS</p>
+            <p className="eyebrow">STUDIES 01–05 / FEEDBACK, PATHS & SILHOUETTES</p>
             <h1 id="gallery-title">
               Follow
               <br />
@@ -70,9 +70,10 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
             </h1>
             <p className="lede">
               Small visual studies for clearer decisions and feedback: Spire’s next action,
-              Blindside’s scoring effects, Last Hearth’s lost protection and Cartographer’s paths.
+              Blindside’s scoring effects, Last Hearth’s lost protection, Cartographer’s paths and
+              Emberwake’s silhouettes.
             </p>
-            <a className="review-link" href="#review-cartographer">
+            <a className="review-link" href="#review-emberwake">
               Compare the latest study
             </a>
           </div>
@@ -151,6 +152,13 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
             <h2 id="reviews-title">The comparisons</h2>
             <span>Open any number · each stays independent</span>
           </div>
+          <article className="comparison" id="review-emberwake">
+            <div className="comparison-body" id="asset-emberwake-silhouettes">
+              <h3>05 · Emberwake silhouettes</h3>
+              <p>Three heroes and crypt enemies in matched scenes and enlarged details.</p>
+              <a href="emberwake.html">Open the Emberwake comparison</a>
+            </div>
+          </article>
           <CartographerReview evidence={evidence.cartographer} />
           <HearthShieldReview evidence={evidence.shield} />
           <details className="comparison" id="review-score" open>

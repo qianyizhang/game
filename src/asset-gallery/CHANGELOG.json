@@ -1,5 +1,15 @@
 [
   {
+    "id": "2026-10-27-emberwake-merged",
+    "date": "2026-10-27",
+    "title": "Emberwake heroes and crypt figures gain distinct silhouettes",
+    "status": "visually reviewed",
+    "summary": "Rook, Mira and Silas, hollow archers, salt wraiths and the Bellkeeper received authored silhouettes in merged PR 24. New matched scene and enlarged captures present the accepted artwork; gallery publication is separate. Review was sampled, and CPU submission timings do not measure GPU FPS.",
+    "assets": ["emberwake-silhouettes"],
+    "review": "review-emberwake",
+    "pr": "https://github.com/qianyizhang/game/pull/24"
+  },
+  {
     "id": "2026-10-26-cartographer-repository-review",
     "date": "2026-10-26",
     "title": "Cartographer map cues enter repository review",
