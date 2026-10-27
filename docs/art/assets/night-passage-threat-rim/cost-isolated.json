@@ -1,0 +1,66 @@
+{
+  "browser": "154.0.8037.57",
+  "order": "ABBA, repeated three times; 20 warmup + 100 measured frames per batch; 6 threats, clear, 1-pixel forced readback; no concurrent gate",
+  "runs": [
+    {
+      "round": 0,
+      "variant": "baseline",
+      "drawReadbackMs": 2.7339999999990687
+    },
+    {
+      "round": 0,
+      "variant": "candidate",
+      "drawReadbackMs": 8.745999999998602
+    },
+    {
+      "round": 0,
+      "variant": "candidate",
+      "drawReadbackMs": 8.2
+    },
+    {
+      "round": 0,
+      "variant": "baseline",
+      "drawReadbackMs": 2.535
+    },
+    {
+      "round": 1,
+      "variant": "baseline",
+      "drawReadbackMs": 2.606000000000931
+    },
+    {
+      "round": 1,
+      "variant": "candidate",
+      "drawReadbackMs": 8.021000000000932
+    },
+    {
+      "round": 1,
+      "variant": "candidate",
+      "drawReadbackMs": 7.9230000000004654
+    },
+    {
+      "round": 1,
+      "variant": "baseline",
+      "drawReadbackMs": 2.9369999999995344
+    },
+    {
+      "round": 2,
+      "variant": "baseline",
+      "drawReadbackMs": 2.9410000000009315
+    },
+    {
+      "round": 2,
+      "variant": "candidate",
+      "drawReadbackMs": 9.826999999999535
+    },
+    {
+      "round": 2,
+      "variant": "candidate",
+      "drawReadbackMs": 8.350999999998603
+    },
+    {
+      "round": 2,
+      "variant": "baseline",
+      "drawReadbackMs": 3.778000000000466
+    }
+  ]
+}
