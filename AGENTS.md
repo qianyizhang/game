@@ -35,10 +35,13 @@ For domain naming or interface changes, read the relevant [glossary](docs/engine
 
 For SVG or 3D artwork, read [the Card Workshop art skill](skills/card-art/SKILL.md) and the [aesthetic rulebook](docs/art/art-direction.md). The rulebook is the shared visual standard; the skill covers creation and review. [SVG sources](docs/art/svg.md) and [3D sources](docs/art/3d.md) locate renderers and export integration. Passing technical checks does not establish visual quality.
 
-Use `npm run check` for code, UI, and rule changes; documentation-only edits require only formatting and inventory checks (`npm run format:maintenance`). Geometry tests are opt-in. For changes affecting
+Use `npm run check` for code, UI, and rule changes; documentation-only edits require only formatting and inventory checks (`npm run format:maintenance`). Local geometry tests are selected separately. For changes affecting
 3D construction, animation, rendering/export or DCC delivery, use `npm run check:full`.
 Read [verification contracts](docs/engineering/checks.md#gate-selection) for scope
 selection and reporting. `npm run test:browser` runs the disposable-profile browser suite
 with a single startup guard.
-Automatic GitHub CI runs non-geometry checks and game-browser smoke journeys; full
-geometry and rendering/export verification remain local completion gates for affected changes.
+Routine PR/main CI selects affected application and bounded browser checks; shared or
+unknown changes expand application coverage. Documentation-only changes use formatting
+and inventory. Explicit full validation retains exhaustive public browser and geometry
+coverage for local/release work. Verification contracts own the scope matrix, full-mode
+invocation and measured limits. Native, private-evidence and visual review remain separate.

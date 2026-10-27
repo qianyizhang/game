@@ -592,6 +592,7 @@
   }
   .dc-controls {
     flex-direction: row;
+    flex-wrap: wrap;
   }
   .dc-section-heading {
     align-items: flex-start;

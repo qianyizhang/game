@@ -55,7 +55,7 @@ Typed checks must pass before treating the old surface as unused.
 
 | Failure                                                      | Prevention                                                                                                                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| A wrapper imports changed behavior under its old version.    | Update delegated identities, examples and current-version tests together; run the whole policy test file, not only a focused selection.                            |
+| A wrapper imports changed behavior under its old version.    | Update delegated identities, examples and current-version tests together; run all affected policy regression and rollout tests, not only a focused selection.      |
 | A rejected version is reused after rollback.                 | Its identity remains consumed. Keep its source/bundle, scores and rejection lesson; apply the iteration retention rule to bulk inputs/proposals.                   |
 | Two seed namespaces share a suffix.                          | Bind the complete seed, setup, policy/configuration and artifact hash; validate the native expected outcome before dispatch.                                       |
 | A primary matrix passes while companion cases are absent.    | Validate every frozen grid, budget, source pin and audit before promotion; statistics cannot override integrity.                                                   |

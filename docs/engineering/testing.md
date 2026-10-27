@@ -31,6 +31,15 @@ every asset. Named camera controls remain in those journeys; pointer orbit is ch
 a reduced-motion rigid representative so animation cannot masquerade as successful dragging.
 CI does not generate all 29 contact sheets or establish aesthetic acceptance.
 
+Routine CI uses the existing Vajra, Hydra and Catalyst delivery journeys for rigid
+motion, skinning and transmission. Full/local validation retains all 29 deliveries
+and the continuous Night Passage campaign. Keep per-asset motion, phone layout,
+GLB validity and save isolation. Shared wireframe/layer/light controls and PNG
+download use Catalyst once; repeated successful-view captures belong in visual
+review. Pixel comparisons that assert motion or camera behavior remain functional
+checks. This consolidates repeated work without claiming full asset acceptance
+from the routine representatives.
+
 [Verification contracts](checks.md#gate-selection) own CI selection and local completion gates. A smoke pass establishes only its selected journeys.
 
 Video delivery checks decode the downloaded artifact away from the live WebGL scene,
@@ -54,6 +63,10 @@ pause label is **replace**: keep completion, final-pose hold and replay checks, 
 a phase marker to pause at a defined pose and verify it holds. Looping-motion journeys
 retain the direct pause-button check. Start and measure a deliberate slow-frame probe
 within one browser task so protocol latency cannot consume the action first.
+For short live input checks, pause browser time between automation calls and advance
+the real input loop by the intended interval. Keep movement and resource assertions,
+then resume the clock for ordinary live combat; slow automation must not consume the
+cooldown being checked.
 
 Prefer outcomes over incidental construction: supported motion, fitted attachments and
 resource release matter; exact mesh counts, vertex counts, helper calls and intermediate
@@ -92,6 +105,17 @@ Match fetched replay/rollout fixtures by URL pathname. A glob ending in the arti
 filename can also match the page navigation when its query parameter ends in that
 filename, returning JSON instead of the app. Use `page.route(url =>
 url.pathname === '/fixture.json', handler)` and exercise the ordinary page URL.
+
+## Policy rollout scope
+
+Emberwake and Spire keep focused policy regressions in `policy.test.ts` and their
+full progression or terminal/replay matrices in `policy-rollout.test.ts`. Both files
+remain in the application suite. A focused regression run gives faster feedback but
+does not establish progression, terminal completion or replay across those matrices.
+Run both files when changing the corresponding policy or its observation, adapter,
+rules, content or replay dependencies; shared evaluator changes can affect every game.
+The Emberwake Relaxed matrix is a bounded functional witness, not evidence of winning
+or calibrated strength at other difficulties.
 
 ## Before adding or retaining a test
 

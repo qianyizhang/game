@@ -23,7 +23,7 @@ export default defineConfig({
           name: 'geometry',
           include: ['src/art3d/**/*.test.ts'],
           // The hosted runner takes ~3.2x the local geometry runtime (495s vs 155s).
-          testTimeout: process.env.CI ? 60_000 : 15_000,
+          testTimeout: process.env.ASSET_BUILD_CI ? 120_000 : process.env.CI ? 60_000 : 15_000,
         },
       },
     ],

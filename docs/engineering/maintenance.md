@@ -159,12 +159,19 @@ keep the lasting lesson and use the policy iteration rule for raw histories.
 - **Validate evidence before rendering:** a guarded artifact envelope must also check
   decision-row structure and rendered result types. Preserve damaged replay fields for inspection, while rejecting
   null rows that would crash the review surface before it can show an audit.
-- **Canonicalize generated paths before pinning:** on macOS, `/var` and
-  `/private/var` can name the same temporary entry. Excluding only the original path
-  leaves a deleted dependency in provenance and breaks unchanged-source comparison.
-  Filter the canonical generated entry and verify pins after temporary cleanup.
-  Derive repository-relative locators with `path.relative`, not root-length slicing:
-  a trailing root separator can remove the first character of a valid path. Verify
-  that retained locators resolve to their recorded hashes before publishing receipts.
+- **Use the same filesystem identity on macOS and Linux:** before comparing existing
+  paths or deriving containment/dependency keys, resolve both the repository root and
+  targets with `realpath`. Resolving only a target can silently drop CI dependencies
+  when the root is a symlink; macOS `/var` and `/private/var` expose the same fault.
+  Use `path.relative`, not prefix replacement or root-length slicing, and normalize
+  separators only when writing repository locators. Test with an explicit symlinked
+  root, a trailing separator and an outside file on both platforms; do not depend on
+  a host's temporary-directory spelling or skip the regression on Linux. For outputs
+  that do not exist yet, resolve the existing parent and retain the owning boundary's
+  traversal/symlink checks.
+  For generated policy entries, exclude the canonical path before pinning and verify
+  source pins after temporary cleanup. Verify retained locators against their recorded
+  hashes before publishing receipts. Canonicalization does not authorize following
+  symlinks during cleanup.
 
 Browser fixture routing belongs in the [testing policy](testing.md#artifact-fixture-routes); public-position navigation and complete seed identities belong in [policy preflight checks](policy-footguns.md). Keep specialized failure examples with their owning contracts.

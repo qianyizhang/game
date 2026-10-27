@@ -1,11 +1,26 @@
 import { expect, test } from '@playwright/test';
 import { importSession, SAVE_KEY } from '../../src/games/cartographer/application/session';
 
-test('occupied frontiers retain direction and threat cues preserve commands at phone size', async ({
+test('occupied frontiers retain direction and threat cues preserve commands at phone size @smoke', async ({
   page,
 }, info) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
+  const expectFits = async () => {
+    const layout = await page.evaluate(() => ({
+      width: innerWidth,
+      scroll: document.documentElement.scrollWidth,
+      overflow: [...document.querySelectorAll<HTMLElement>('.dc-app *')]
+        .map((element) => ({
+          class: element.getAttribute('class'),
+          right: element.getBoundingClientRect().right,
+          font: getComputedStyle(element).font,
+        }))
+        .filter((element) => element.right > innerWidth)
+        .slice(0, 8),
+    }));
+    expect(layout.scroll <= layout.width, JSON.stringify(layout)).toBe(true);
+  };
   await page.setViewportSize({ width: 320, height: 740 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/?game=cartographer');
@@ -56,7 +71,13 @@ test('occupied frontiers retain direction and threat cues preserve commands at p
   await expect(threatened.locator('.dc-danger-dot')).toBeVisible();
   const saved = await page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
   await room.screenshot({ path: info.outputPath('threat-320.png') });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expectFits();
+  // Wider fallback metrics must wrap controls rather than expand the viewport.
+  await page.locator('.dc-app').evaluate((element: HTMLElement) => {
+    element.style.fontFamily = 'monospace';
+  });
+  await expectFits();
+  await page.screenshot({ path: info.outputPath('fallback-font-320.png'), fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1080 });
   await page.reload();
   await expect(threatened).toBeVisible();
