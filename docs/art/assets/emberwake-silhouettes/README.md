@@ -13,4 +13,4 @@ The baseline renderer is from pre-art `e2515a988562b185b9f10ffe340c63f641323a03`
 | before-zoom.webp  | `a0bdb5cf9d8fe9bfb44556dafcbe1a49d2aef6c191e838f20745bd04cc5c94da` |
 | after-zoom.webp   | `31bb6cd1211913b9774be75d46bc64c82ffed3e788938dbef583cb6ac7dfc0de` |
 
-The prior art acceptance was sampled desktop review, not exhaustive effects or campaign coverage. Its sampled CPU submission p90 of 1.05–1.65 ms is not GPU FPS or physical-device performance. Independent review of this gallery presentation remains pending.
+The prior art acceptance was sampled desktop review, not exhaustive effects or campaign coverage. Its sampled CPU submission p90 of 1.05–1.65 ms is not GPU FPS or physical-device performance. An independent reviewer inspected all four comparison images. Hosted Chrome checked the generated gallery's navigation, controls, images and phone layout separately; local full-page visual QA was blocked by browser administrator policy. No Site publication has occurred.

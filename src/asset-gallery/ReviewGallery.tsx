@@ -131,6 +131,10 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
               <dd>Named automated and browser checks passed.</dd>
             </div>
             <div>
+              <dt>Repository reviewed</dt>
+              <dd>Comparison images were independently inspected; browser checks are separate.</dd>
+            </div>
+            <div>
               <dt>Visually reviewed</dt>
               <dd>Matched desktop, phone, and native-size views inspected by the author.</dd>
             </div>
@@ -143,8 +147,8 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
           </dl>
           <p>
             Browser journeys establish working controls and rendering. They do not establish that
-            this is more fun. Visual review here is author self-review; player approval is still
-            open.
+            this is more fun. Visual review is author self-review unless a study says otherwise;
+            player approval is still open.
           </p>
         </section>
         <section id="reviews" aria-labelledby="reviews-title">

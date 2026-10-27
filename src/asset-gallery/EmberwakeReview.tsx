@@ -77,7 +77,9 @@ export function EmberwakeReview({ evidence }: { evidence: EmberwakeEvidence }) {
           <p>
             Acceptance was based on sampled desktop review, not exhaustive combat effects, campaign
             coverage or physical-device performance. Sampled CPU submission p90 was 1.05–1.65 ms;
-            this is not GPU FPS. Independent review of this presentation remains pending.
+            this is not GPU FPS. The comparison images were independently reviewed; hosted Chrome
+            checked gallery interactions and phone layout. Local full-page visual QA was blocked; no
+            Site publication has occurred.
           </p>
           <p>
             <a href="index.html#latest">Return to the gallery changelog</a>
