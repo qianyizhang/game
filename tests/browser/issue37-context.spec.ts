@@ -46,11 +46,14 @@ async function collection(page: Page, url: string, label: string, size: string) 
     expect(clipContains(clip, rect), `${names[index]} is inside the collection capture`).toBe(true);
   expect(clip.width).toBeGreaterThan(100);
   expect(clip.height).toBeGreaterThan(80);
-  await page.screenshot({
+  const screenshot = await page.screenshot({
     path: join(output, `${label}-collection-${size}.png`),
     clip,
+    fullPage: true,
     animations: 'disabled',
   });
+  expect(screenshot.readUInt32BE(16)).toBe(clip.width);
+  expect(screenshot.readUInt32BE(20)).toBe(clip.height);
   return { clip, cards: rects.map((rect, index) => ({ name: names[index], rect })) };
 }
 
