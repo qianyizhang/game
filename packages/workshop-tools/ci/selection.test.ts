@@ -237,6 +237,24 @@ void test('offline gallery generator retains its browser delivery check', () => 
   assert.deepEqual(plan.browserFiles, ['tests/browser/asset-gallery.spec.ts']);
 });
 
+void test('missing diff base and unresolved constructor imports conservatively retain geometry', () => {
+  const missingBase = selectPlan([], catalogue, new Map(), {
+    head: 'a'.repeat(40),
+    allApplications: true,
+  });
+  assert.deepEqual(missingBase.geometryFiles, catalogue.geometry);
+  const unresolved = selectPlan(
+    [{ path: 'src/art3d/procedural/watcher.ts', status: 'M' }],
+    catalogue,
+    new Map(),
+    {
+      head: 'a'.repeat(40),
+      uncertain: ['src/art3d/procedural/watcher.ts: ./missing'],
+    },
+  );
+  assert.deepEqual(unresolved.geometryFiles, catalogue.geometry);
+});
+
 void test('empty selection never runs a whole suite and shard indices are bounded', () => {
   const plan = select('docs/engineering/maintenance.md');
   assert.equal(commandFor(plan, 'unit'), null);

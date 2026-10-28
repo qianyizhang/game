@@ -286,9 +286,15 @@ export function selectPlan(
     .sort();
   // Saved deliveries and viewer edits do not reconstruct historical models.
   // Constructor dependencies (including shared helpers) follow actual import edges.
-  const allGeometry = full || changes.some(({ path, status }) =>
-    ['package-lock.json', '.node-version', '.nvmrc', 'vite.config.ts'].includes(path) ||
-    (path.startsWith('src/art3d/procedural/') && status !== 'M'));
+  const allGeometry =
+    full ||
+    (changes.length === 0 && options.allApplications === true) ||
+    options.uncertain?.some((entry) => entry.startsWith('src/art3d/procedural/')) ||
+    changes.some(
+      ({ path, status }) =>
+        ['package-lock.json', '.node-version', '.nvmrc', 'vite.config.ts'].includes(path) ||
+        (path.startsWith('src/art3d/procedural/') && status !== 'M'),
+    );
   const geometryFiles = catalogue.geometry
     .filter((path) => !documentation && (allGeometry || affected.has(path)))
     .sort();
