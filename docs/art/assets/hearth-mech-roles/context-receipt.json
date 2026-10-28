@@ -1,0 +1,22 @@
+{
+  "baselineCommit": "73a24f5c98e77c365c909bbeac9f37347ef845c7",
+  "views": [
+    {
+      "width": 1440,
+      "matchingCardText": true,
+      "beforeScrollWidth": 1440,
+      "afterScrollWidth": 1440,
+      "beforePageErrors": [],
+      "afterPageErrors": []
+    },
+    {
+      "width": 390,
+      "matchingCardText": true,
+      "beforeScrollWidth": 390,
+      "afterScrollWidth": 390,
+      "beforePageErrors": [],
+      "afterPageErrors": []
+    }
+  ],
+  "method": "Fresh browser contexts at 1440 × 900 and 390 × 844, same collection and mech filter, system Chromium over local Vite HTTP; first row scrolled to same heading; source images converted losslessly to WebP with identical decoded pixels"
+}

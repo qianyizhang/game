@@ -126,45 +126,8 @@ function AnimalPortrait({
   );
 }
 
-type Machine =
-  | 'pup'
-  | 'harvester'
-  | 'guardian'
-  | 'sentinel'
-  | 'bomb'
-  | 'egg'
-  | 'reaper'
-  | 'colossus'
-  | 'scrap'
-  | 'drake';
+type Machine = 'pup' | 'bomb' | 'egg' | 'reaper' | 'scrap' | 'drake';
 function MachineFace({ kind }: { kind: Machine }) {
-  if (kind === 'harvester')
-    return (
-      <>
-        <path d="M48 30q8-21 31-21h20l21 24-9 41-37 7-22-17Z" fill="#545f56" />
-
-        <path d="M60 28q7-11 22-11h15l16 19-10 29-27 10-19-15Z" fill="#a6a58a" />
-
-        <ellipse cx="70" cy="46" rx="18" ry="21" fill="#534f3f" />
-        <ellipse cx="72" cy="45" rx="11" ry="14" fill="#859a8e" />
-        <ellipse cx="73" cy="44" rx="7" ry="10" fill="#b9cec0" />
-        <path d="M91 37h17l-4 12-15 4Z" fill="#3d4b46" />
-        <Cut d="M92 44h10M84 62l18-4m-17 8 16-3m-15 8 12-2" color="#424d42" width={1.5} />
-        <Cut d="M61 29q5-8 15-10m7 0h12l12 17" color="#d4caae" />
-      </>
-    );
-  if (kind === 'guardian')
-    return (
-      <>
-        <path d="M49 30Q60 4 89 10q31 3 32 31l-17 36-30 4-21-20Z" fill="#354f53" />
-
-        <path d="M57 29Q69 10 89 17q22 4 25 25L99 70l-24 4-18-17Z" fill="#7c9b9e" />
-        <path d="M58 37q29-11 54 0l-6 13-41 7Z" fill="#293b3c" />
-        <path d="m66 42 33-6-2 4-29 7Z" fill="#a9d1c9" />
-        <path d="M65 58 85 54l15-4-5 19-18 4Z" fill="#acb1a1" />
-        <Cut d="M73 60l16-3m-14 8 11-3M64 26q12-10 24-5m7 3 10 7" color="#d0d0b8" />
-      </>
-    );
   if (kind === 'scrap')
     return (
       <>
@@ -174,31 +137,6 @@ function MachineFace({ kind }: { kind: Machine }) {
         <path d="m63 43 10-3 1 9-11 4Z" fill="#abc5af" />
         <path d="m92 34 15-3-2 12-14 3Z" fill="#41483e" />
         <Cut d="m81 57 4 11m4-13 5 13m-17-7 18-2M64 28l15-5m12 2 8 5" color="#d6c7a4" width={1} />
-      </>
-    );
-  if (kind === 'sentinel')
-    return (
-      <>
-        <path d="M49 28 64 9h37l21 21-8 40-30 12-27-13Z" fill="#434f49" />
-        <path d="M61 28 72 17h25l16 16-11 33-17 10-20-12Z" fill="#9fa48f" />
-        <path d="M78 15h12l4 39-11 19-9-21Z" fill="#6a7160" />
-        <path d="M57 38 82 42l32-7-5 13-25 5-23-5Z" fill="#2e3d39" />
-        <path d="m66 43 15 2 22-6-4 4-17 6-14-3Z" fill="#b4cabc" />
-        <Cut d="M77 59l9 3m-8 3 8 3M66 28l7-6m26-1 7 10" color="#dbd0b4" />
-      </>
-    );
-  if (kind === 'colossus')
-    return (
-      <>
-        <path d="M42 33Q55 3 86 10q29 1 42 29l-19 42H62Z" fill="#5b593e" />
-
-        <path d="M52 34Q64 12 86 17q20 0 32 23l-16 33H67Z" fill="#b3a46d" />
-        <path d="M78 18 90 17l9 46-14 11-13-16Z" fill="#e0c68a" />
-
-        <path d="M55 37 83 41l31-4-9 13-21 4-24-7Z" fill="#5e6045" />
-        <path d="M66 43h15l-2 3-12-1Zm23-1h15l-4 4H89Z" fill="#eadba4" />
-
-        <Cut d="M80 59h9m-8 5h7M57 31q8-12 20-13m21 3q10 4 15 14" color="#e6d2a0" width={1} />
       </>
     );
   return (
@@ -216,9 +154,112 @@ function MachineFace({ kind }: { kind: Machine }) {
   );
 }
 
+function HarvesterPortrait() {
+  return (
+    <g>
+      {/* A forward rake and rear scrap hopper lead a low, working silhouette. */}
+      <path d="M24 112 36 82 58 69 67 41 85 29 113 40 124 74 143 112Z" fill={shadow} />
+      <path d="M37 112 47 84 70 74 76 43 88 38 107 49 114 83 130 112Z" fill="#737f79" />
+      <path d="M87 40 117 22 141 37 130 68 111 74 102 54Z" fill="#4b5954" />
+      <path d="m101 43 18-12 16 9-8 21-16 6Z" fill="#a59470" />
+      <path d="m111 47 18-8-6 13-10 4Z" fill="#d4ba87" />
+      <path d="M75 45 88 34l17 12-4 21-20 12-13-17Z" fill="#a9b1a3" />
+      <path d="m77 52 20-5-3 12-20 10Z" fill="#354d4d" />
+      <path d="m82 54 10-3-2 4-9 5Z" fill="#b7d3c3" />
+      <path d="M65 65 43 55 30 30 21 33l7 29 24 18-7 32h13l10-41Z" fill="#4a5d59" />
+      <path d="M37 54 24 21 13 14l8 34 14 20 26 10 7-10Z" fill="#a89169" />
+      <path d="M12 14 30 22l19-9-8 18-16 8-13-8Z" fill="#c8cab4" />
+      <path d="m24 37 12-7-4 25-5-3Zm16 30 23 9-8 8-18-10Z" fill="#dbbf88" />
+      <path d="M46 112 55 93l19-8 9 27Zm41 0 10-22 20 5 11 17Z" fill="#435552" />
+      <Cut
+        d="m76 75 12-7m-11 16 11-5m27-24 11-4M46 103l9-19m38 22 7-16"
+        color="#d5c7a6"
+        width={1.1}
+      />
+    </g>
+  );
+}
+
+function GuardianPortrait() {
+  return (
+    <g>
+      {/* The shield is the leading mass; the machine braces behind its inner edge. */}
+      <path d="M18 31 53 12 91 29 88 82 55 111 16 86Z" fill={shadow} />
+      <path d="M25 35 53 21 83 34 79 79 55 101 24 81Z" fill="#6b959a" />
+      <path d="M34 40 54 29l20 11-3 34-17 18-20-17Z" fill="#a6c2b8" />
+      <path d="M53 29v63l-19-17V40Z" fill="#54777c" />
+      <path d="m37 48 16-9 17 8-2 22-15 14-16-13Z" fill="#35575d" />
+      <path d="m41 52 12-7 13 6-2 14-11 11-12-10Z" fill="#8caba7" />
+      <path d="M88 112 85 70l11-17 21-1 16 22 17 38Z" fill={shadow} />
+      <path d="M94 112 91 75l13-13 17 4 11 46Z" fill="#66878c" />
+      <path d="M88 37 106 21l24 9 3 24-16 17-24-7Z" fill="#304b4e" />
+      <path d="m95 39 14-10 15 7 2 17-11 11-18-6Z" fill="#a4b9aa" />
+      <path d="m98 45 24-7-1 9-20 7Z" fill="#183e44" />
+      <path d="m100 47 18-5-1 3-16 6Z" fill="#b9d5c9" />
+      <path d="M80 75 95 68l10 10-8 13-17 2Z" fill="#b38d65" />
+      <path d="M101 88 126 83l15 29h-37Z" fill="#42646a" />
+      <Cut d="M29 41v35l24 19 22-20M96 33l9-6m6 36 9-10m-26 38 5-11" color="#d3d6bd" width={1.1} />
+    </g>
+  );
+}
+
+function SentinelPortrait() {
+  return (
+    <g>
+      {/* Tall watch head and splayed load-bearing feet replace the shared bust. */}
+      <path d="M63 112 60 53l12-32 36-1 15 36-4 56Z" fill={shadow} />
+      <path d="M69 111 68 57l10-27 25-1 11 29-5 53Z" fill="#78847c" />
+      <path d="M76 35 88 26l16 6 7 22-10 16-23-1-10-15Z" fill="#aab2a0" />
+      <path d="m71 45 31 3 8-5-2 13-27 5-12-8Z" fill="#314c49" />
+      <path d="m79 50 24 2-3 4-20 2Z" fill="#c1d2bc" />
+      <path d="M77 14 86 3l20 2 6 12-9 14-25 1Z" fill="#404d48" />
+      <path d="m84 13 9-5 11 4 2 8-9 7-13-4Z" fill="#c0b28a" />
+      <path d="M68 61 47 69 30 103 37 112h22l18-25Z" fill="#3e5551" />
+      <path d="m62 66-15 11-14 30h21l19-27Z" fill="#9da999" />
+      <path d="M111 61 127 71l18 36-9 5h-23L99 85Z" fill="#3e5551" />
+      <path d="m118 70 12 13 10 24h-21l-15-25Z" fill="#a29476" />
+      <path d="M72 75 88 83l18-8-4 37H77Z" fill="#5b6d63" />
+      <path d="M28 104h35l-7 8H26Zm79 0h38l7 8h-43Z" fill="#c2ad7e" />
+      <Cut
+        d="m75 33 3-9 9-6m17 12 5 15M44 99l19-27m65 25-16-25M82 91l6 4 9-6"
+        color="#d0c5a5"
+        width={1.1}
+      />
+    </g>
+  );
+}
+
+function ColossusPortrait() {
+  return (
+    <g>
+      {/* Small crown over a broad, uneven furnace body and two heavy supports. */}
+      <path d="M11 112 17 52 46 28 72 35 88 20 119 28 147 55 154 112Z" fill={shadow} />
+      <path d="M21 108 25 56 48 38 71 43 88 29 115 37 140 59 145 108Z" fill="#7f7654" />
+      <path d="M13 58 35 29 56 35 64 53 54 82 22 90Z" fill="#bba56d" />
+      <path d="m21 59 17-21 14 5 5 17-10 15-27 7Z" fill="#ded19b" />
+      <path d="M111 36 136 42l19 28-5 29-34-18-11-30Z" fill="#ae9863" />
+      <path d="m119 43 14 7 13 21-3 15-23-12-8-24Z" fill="#d6ba7e" />
+      <path d="M58 49 82 36l33 12 5 37-17 27H61L45 82Z" fill="#495249" />
+      <path d="m61 55 23-10 25 10 3 27-15 24H67L54 80Z" fill="#a7a078" />
+      <path d="M65 60 82 52l19 8-4 23-17 16-18-18Z" fill="#ccb985" />
+      <path d="M68 26 77 12l25 1 10 15-10 21-25 1Z" fill="#3d493f" />
+      <path d="m76 26 9-8 15 1 7 11-8 12-18-1Z" fill="#d2bf87" />
+      <path d="m78 30 24 1-5 7-16-1Z" fill="#313b36" />
+      <path d="M76 13 69 2l16 6 10-8 8 9 15-5-8 12Z" fill="#e5d49e" />
+      <path d="M22 93 53 84l16 28H18Zm90-9 35 12 8 16h-52Z" fill="#5f654e" />
+      <path d="m26 99 25-7 10 20H22Zm91-7 26 9 5 11h-35Z" fill="#c5ae78" />
+      <Cut
+        d="m28 58 14-15m88 10 13 18M63 67l17-10m23 10-3 13M70 103h27"
+        color="#ead9a3"
+        width={1.2}
+      />
+    </g>
+  );
+}
+
 function MetalPortrait({ kind }: { kind: Machine }) {
   const copper = '#98734f';
-  const steel = kind === 'guardian' ? '#718f95' : kind === 'colossus' ? '#b59b62' : '#88908a';
+  const steel = '#88908a';
   return (
     <g>
       {kind === 'pup' || kind === 'drake' ? (
@@ -280,18 +321,13 @@ function MetalPortrait({ kind }: { kind: Machine }) {
         </>
       ) : (
         <>
-          {kind === 'reaper' || kind === 'harvester' ? (
+          {kind === 'reaper' ? (
             <>
               <path d="M28 112V21h5v91Z" fill="#625d4b" />
               <path d="M26 25Q40 1 79 10 47 13 35 38Z" fill="#a4b2ad" />
               <Cut d="M31 24q16-14 34-12" color="#d7d1b7" />
             </>
           ) : null}
-          {kind === 'colossus' && (
-            <g fill="none" stroke="#887544" strokeWidth="2" opacity=".65">
-              <path d="M38 53Q39 13 80 10q34 4 41 43M49 27l-7-8m30-7-1-9m33 16 7-8m12 28 9-3" />
-            </g>
-          )}
           {!(kind === 'scrap') && (
             <path d="M18 112 25 81l28-16-8-36 17-20h43l18 22-8 34 26 15 13 32Z" fill={shadow} />
           )}
@@ -313,15 +349,7 @@ function MetalPortrait({ kind }: { kind: Machine }) {
             color="#c9ba96"
             opacity={0.6}
           />
-          <path d="m78 94 7-3 8 8-8 10-9-7Z" fill={kind === 'guardian' ? '#8cbbbd' : '#b59c6b'} />
-          {kind === 'colossus' && <path d="m65 17-6-12 18 6 7-10 6 11 17-6-6 11Z" fill="#c4ad73" />}
-          {kind === 'sentinel' && (
-            <>
-              <path d="M70 10V0h24v10Z" fill="#8c8e78" />
-              <Cut d="M78 2v7m7-7v7" color="#d2c7a8" />
-            </>
-          )}
-          {kind === 'harvester' && <path d="M20 104 24 79l14-6 11 11-7 28H20Z" fill="#a4916b" />}
+          <path d="m78 94 7-3 8 8-8 10-9-7Z" fill="#b59c6b" />
         </>
       )}
     </g>
@@ -539,17 +567,17 @@ const portraits: Record<string, ReactNode> = {
   squire: <HumanPortrait kind="squire" />,
   cat: <Panther />,
   leader: <Wolf coat="#526f61" pale="#b4b59a" pack />,
-  harvester: <MetalPortrait kind="harvester" />,
+  harvester: <HarvesterPortrait />,
   matron: <DemonPortrait kind="matron" />,
   molten: <ElementPortrait kind="molten" />,
   banner: <HumanPortrait kind="banner" />,
   hyena: <AnimalPortrait species="hyena" coat="#929070" pale="#c1b696" />,
   rat: <AnimalPortrait species="rat" coat="#7b7468" pale="#a7a18c" />,
-  cobalt: <MetalPortrait kind="guardian" />,
+  cobalt: <GuardianPortrait />,
   juggler: <DemonPortrait kind="juggler" />,
   tempest: <ElementPortrait kind="tempest" />,
   captain: <HumanPortrait kind="captain" />,
-  sentinel: <MetalPortrait kind="sentinel" />,
+  sentinel: <SentinelPortrait />,
   hydra: <Hydra />,
   bomb: <MetalPortrait kind="bomb" />,
   watcher: <DemonPortrait kind="watcher" />,
@@ -567,7 +595,7 @@ const portraits: Record<string, ReactNode> = {
   devourer: <DemonPortrait kind="devourer" />,
   elder: <ElementPortrait kind="elder" />,
   amalgam: <Amalgam />,
-  colossus: <MetalPortrait kind="colossus" />,
+  colossus: <ColossusPortrait />,
   cub: <Bear young />,
   scrap: <MetalPortrait kind="scrap" />,
   wisp: <Wisp />,

@@ -1,0 +1,55 @@
+{
+  "baselineCommit": "73a24f5c98e77c365c909bbeac9f37347ef845c7",
+  "exported": 644,
+  "unchanged": 636,
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "id": "hearth/harvester",
+      "beforeSha256": "68a421eaa292e1795b991493ddd7a7511c6c2a81af042c6dd3bb90f9a6b5b38c",
+      "afterSha256": "36b75d33cafa766564e8ce10325813077ee87864834cfbb424f82399e08e9a34"
+    },
+    {
+      "id": "hearth/harvester-golden",
+      "beforeSha256": "ad38be14afd9c18fea4c893560408d8c2293f48eda0c2a8090e40f468a3d7241",
+      "afterSha256": "0d3540614a5eca7e67633c458b9f5f2b8128a4faa380dbcc34543ab9bdbb736f"
+    },
+    {
+      "id": "hearth/cobalt",
+      "beforeSha256": "6663138322ef16a8621f6ef76396f33bee8e57c87d085fbf73d2528543222127",
+      "afterSha256": "25f720ca8a8901adf033781d5cfcf81919658a0216efd2377e5da45d53d3bacb"
+    },
+    {
+      "id": "hearth/cobalt-golden",
+      "beforeSha256": "a45651ec62fe6ae280bb53743c10364f20a4bd1c00a189813ed4bc81937f18a3",
+      "afterSha256": "f914af70d0195c90da82ecec43c550ac8adb935440475fb0ab7fb75e93034267"
+    },
+    {
+      "id": "hearth/sentinel",
+      "beforeSha256": "2ba1278955c6a94770959182dda4b834da28b8e443ebee9b8a3ed68327d12d27",
+      "afterSha256": "4f31dfa35245f50090c2fce4135a3277e978d7aeb8ae15ebef35cdd2a4cf4f30"
+    },
+    {
+      "id": "hearth/sentinel-golden",
+      "beforeSha256": "3a0522edc5a7c0bd323af7de6e13e6caee3a364ef8aa4255802e2445cbc72335",
+      "afterSha256": "65c50cce1f850d22470f010c6e8d10c9d85c0cb92014b4f0bb26d3387a0e5fab"
+    },
+    {
+      "id": "hearth/colossus",
+      "beforeSha256": "2a8248c7ddd9d64dcb31359e2ba469b7c0f0e0e14ce07d0080266d69e0262652",
+      "afterSha256": "663eaa884a48d2129a156ffb9ef85b7b1826a9a556bb50d88eb2e3dae0f3d1b5"
+    },
+    {
+      "id": "hearth/colossus-golden",
+      "beforeSha256": "e46a07e0f9d0878d9d6cabad04ed6665709ffefec70e5ec44bb35d7e9951fad3",
+      "afterSha256": "e58faf7ab48671928b79ea1e0a51161d9eb03eca0268f7ef829f5fc0f7aeb919"
+    }
+  ],
+  "allSvgDigestBefore": "f190762df2b342dcf131e7665cf1bd5aa78ddc88d979962aaeca967fdacb9ff9",
+  "allSvgDigestAfter": "58977c01ffa86acdff3a167833dabfd7cdc3d8d9d5f5a60752fc88e5222c62cd",
+  "manifestSha256Before": "e73f1a83cf5d895d4f55ccf9112b66dc9f209a2b1d57807117ea4358bf18b05b",
+  "manifestSha256After": "e73f1a83cf5d895d4f55ccf9112b66dc9f209a2b1d57807117ea4358bf18b05b",
+  "sourceSha256": "7dae74611efa539020e0a163534a9f75c3bb73bf0fb90b4786af30ad913239d3",
+  "method": "SHA-256 over sorted ID and standalone SVG bytes; all 644 SVGs decoded by assets:review; four normal and four Golden IDs changed"
+}
