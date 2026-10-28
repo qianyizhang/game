@@ -1,0 +1,2641 @@
+{
+  "baselineCommit": "3dfba6aeadefe0dcbdc1a7b80bf847822d40196e",
+  "candidateArtCommit": "f757731",
+  "exportedAndDecodedPerRevision": 644,
+  "changed": [
+    {
+      "id": "hearth/squire",
+      "beforeSha256": "2ed5745d4909662c976554917af489bb476f0f5609f4acbf72899c4a3c0cc54a",
+      "afterSha256": "c4eb6c0548ca914dc39008632d236ae06eca112f8a389d2cba197782b502407c"
+    },
+    {
+      "id": "hearth/squire-golden",
+      "beforeSha256": "d8a6d76c8fa40af7b9748734ed6e585c2985bfeaceddf417ce862ffacaa757f1",
+      "afterSha256": "a328e68d1c538bdb4a64f6b2b4dd1c596560719eb54579de29612cbc6d033f2a"
+    },
+    {
+      "id": "hearth/banner",
+      "beforeSha256": "85c0680c4da4fd80124ceae5a44fe4857670ef62d2cc81757b74798c8d15755f",
+      "afterSha256": "26a91d6856b0e75df55e96fb010803d4b6dc8d17d60ddde91ebbdbe956590246"
+    },
+    {
+      "id": "hearth/banner-golden",
+      "beforeSha256": "2178bcb8fa64ca34f17e7d81e395dda6b1de4aed8ac98b2d6a27c811ce384c67",
+      "afterSha256": "6698fd73c7fd4622f4a797572f764fd393673b792d86c932f69b045e9bc33fb1"
+    },
+    {
+      "id": "hearth/captain",
+      "beforeSha256": "10e84e5c19b793f94177ba3d66b9216c8bf13ca32212ec792b3f3b7303d0d7b7",
+      "afterSha256": "3bd982bc6eff6ca03e3a5c45e0c23a252dcdb585184fa9da211f67ba1531885b"
+    },
+    {
+      "id": "hearth/captain-golden",
+      "beforeSha256": "85b714c9d9e019c6a5479d8d64ba05225391266b7d0161d3d0195935dc170066",
+      "afterSha256": "2b3961c74c4c1631adf303fd726fe2f7a8f4c1488291eaeb9eccadb5a58db616"
+    },
+    {
+      "id": "hearth/menagerie",
+      "beforeSha256": "7076d6e085c369260a5cd3fd8943e55f525b578c6b0dee732753b0e7d33591db",
+      "afterSha256": "e42bea274326ade83b533bd6ceac40fa45624fe098b4f68b6ddad42cc2395aea"
+    },
+    {
+      "id": "hearth/menagerie-golden",
+      "beforeSha256": "9362022da9f9d6a8eae9f7cdf7ad93acde992fe441ebf79033f081db62cad359",
+      "afterSha256": "8a61c41eacc34ee906275401d5a3fc48b8ba1375086ea834d11ac250b391e942"
+    },
+    {
+      "id": "hearth/baron",
+      "beforeSha256": "e542e172e86a6a92b4317530bfd0e516761dac6aac93bdd00be17a7f6465053d",
+      "afterSha256": "96d0a67f14c74ff3d58ab6b3aad1a909aa5ae2dd8efc36146d10ee89d85e60fa"
+    },
+    {
+      "id": "hearth/baron-golden",
+      "beforeSha256": "a2cbcd36676c3347eb3df520c67bc9a86a066e8737e3f97fe15fa63b824e31bf",
+      "afterSha256": "8a56c706f7f84bff56c0f2139567653d8d5412281aa20c79d3c424dc4b75f783"
+    }
+  ],
+  "unchanged": 634,
+  "unchangedExportHashes": [
+    {
+      "id": "cartographer/feedback/frontier",
+      "sha256": "34af29dcf4d199982704e07d2d87cf16aac40c1e78a38b0c46c43ae354c10a9f"
+    },
+    {
+      "id": "hearth/feedback/shield-break",
+      "sha256": "6363b49ec4ba98b9f560b12ac4e4dd58e0cc590ed2da49b96ffab6ef7525614d"
+    },
+    {
+      "id": "spire/intents/attack",
+      "sha256": "c3b03cbd7008ab4e540012f170018b9bf6fbc604b597d7d0e6b76461532b2103"
+    },
+    {
+      "id": "spire/intents/block",
+      "sha256": "05684a0bce75ca49de5337fc4583135357ec9bd683e3a5233b2c71b37e6d9d1d"
+    },
+    {
+      "id": "spire/intents/status",
+      "sha256": "b6773f0d1fd2f7aacc1430728467d29bf5707363726b3260088f8400f17af6b0"
+    },
+    {
+      "id": "spire/intents/card",
+      "sha256": "354689cfd7f9abb93c97abd833095d0756ee427572e0992595367c9b15ac4739"
+    },
+    {
+      "id": "spire/intents/special",
+      "sha256": "a6b4e332afc64797e4981e21c4a2015c2b756e24edce545e254b47bf3d3910db"
+    },
+    {
+      "id": "spire/intents/wait",
+      "sha256": "142b27cb504a62b388ee2fc6bba9e049ba106f092bcdf86f6c77dadab1857fc9"
+    },
+    {
+      "id": "guide/balatro",
+      "sha256": "0f21846d5f827cb23c9c5ec6c4a11c2dd4556d3a29222998990997128a3a671c"
+    },
+    {
+      "id": "guide/spire",
+      "sha256": "979511f0dc166b42f04bc986bbef049c7bd7e274eb485e76b1a6f239baafe46d"
+    },
+    {
+      "id": "guide/battlegrounds",
+      "sha256": "dc09977a0c00cfe4ab8430792899a4b9df2486620704c771746fff34678df719"
+    },
+    {
+      "id": "guide/diablo2",
+      "sha256": "608e8ae9d8009cbb4c239399fa012ee543f54b8967c9a6b8a093cbe7497e031a"
+    },
+    {
+      "id": "guide/cartographer",
+      "sha256": "65c076e39e820a3f021a4fd9268e872756a23d123b5d27e369983b8da28bf5a0"
+    },
+    {
+      "id": "guide/night-passage",
+      "sha256": "5e965b82bf78e483f2eeef3575de52c867de1d3a073af5163f5bf14fcfce3605"
+    },
+    {
+      "id": "night-passage/patrons/storm",
+      "sha256": "bec93fefbb048ae294650d4171e455b9f68495d0ca2e150f1952172ba93bb277"
+    },
+    {
+      "id": "night-passage/patrons/tide",
+      "sha256": "f9b00f25aa1e57e65d6ffab0dbed06eadcf0d94f717315a4140b3f2e80355239"
+    },
+    {
+      "id": "night-passage/patrons/cinder",
+      "sha256": "aa04fbaf5cad9bdf30b648bf0b738665265c3cdbe79ae698ffd2782946359ccb"
+    },
+    {
+      "id": "night-passage/patrons/winter",
+      "sha256": "60faf3217a7f050b36870da64989fed3105021e32418c6454f05500548893f38"
+    },
+    {
+      "id": "night-passage/patrons/veil",
+      "sha256": "e2fab253d5c9e312066e5c760c522afa3e477b3d65dca90916e358187a54553a"
+    },
+    {
+      "id": "night-passage/duos/steam",
+      "sha256": "32daa7ef27c3ed507a1d726e228e5b601b33f5df9576296ebdd9204b3e6496a6"
+    },
+    {
+      "id": "night-passage/duos/conductor",
+      "sha256": "39ad2c56f3d5d62008acd986a3aaf161e0fe11a4f98874600bdf95fe447f04dd"
+    },
+    {
+      "id": "night-passage/duos/eclipse",
+      "sha256": "769d991e3bb418c02a09c88a695f52a4440622f107aab7653b3b8009fe68078e"
+    },
+    {
+      "id": "night-passage/runes/vigor",
+      "sha256": "9b8f73438e5e36ea4afc50dd2554f4d8be7bfad080688b125a242c0296e60cfa"
+    },
+    {
+      "id": "night-passage/runes/fleet",
+      "sha256": "3a953deb33e95d58e19a1a9174981acc73964806483c7bb5e1602aaaf7863828"
+    },
+    {
+      "id": "night-passage/runes/focus",
+      "sha256": "ca137fe1cefce84e9b7c4024da2e05da19c667405d66f44b5b1e937e3b746dbb"
+    },
+    {
+      "id": "night-passage/runes/fury",
+      "sha256": "c40fd361e2ae9d3bcfd7762373804ea350ab9906b6822029c86de63736f7413e"
+    },
+    {
+      "id": "night-passage/runes/echo",
+      "sha256": "d96745455fd37704a85b5c4d6eb729fdad13438e1cfd908ff966da2a3614fc00"
+    },
+    {
+      "id": "night-passage/runes/mercy",
+      "sha256": "2a371c993e8d15a23c0039260d11254e257bb6908f3df21b53e8898fdee177eb"
+    },
+    {
+      "id": "night-passage/weapons/sword",
+      "sha256": "b833678a407631829314c8cfcd6832ff04f314a3d17f9bbfce2f0b695b5b1506"
+    },
+    {
+      "id": "night-passage/weapons/spear",
+      "sha256": "ed5cee8fc7280f303e7c8d368dc75ed3df7b2f6a486b79ddbf6fc32a99f012ff"
+    },
+    {
+      "id": "night-passage/weapons/shield",
+      "sha256": "cf44cd068aee58557d84d40729a4e803a48f1d38fa1f1e7162509a4d5d761b70"
+    },
+    {
+      "id": "night-passage/weapons/bow",
+      "sha256": "1ffe9ad80340f6d4167a75a32ed8beb811fb1e56b7c645ab98a3b893c30340ee"
+    },
+    {
+      "id": "night-passage/weapons/fists",
+      "sha256": "8010b3d37c2c17bab0e0a6a7795f84c0fd29cf69883ca4a30755de58a205bf7b"
+    },
+    {
+      "id": "night-passage/rewards/boon",
+      "sha256": "c3f7aa0b2923267a8b171a58187770436c290e55c79d5a68fafdfff79dcb4a48"
+    },
+    {
+      "id": "night-passage/rewards/coin",
+      "sha256": "c2f6761d7d13af7901f07084c98ab643322435355493cc499a5ce7f268f95d46"
+    },
+    {
+      "id": "night-passage/rewards/heart",
+      "sha256": "9fe26d9a0c24c69e21d70f1e084119125288188856e765382789ddb9e71e7120"
+    },
+    {
+      "id": "night-passage/rewards/upgrade",
+      "sha256": "5a5478fac4eb020d9bbff0213992509e2962f088d62abecb963bd58a02c312d4"
+    },
+    {
+      "id": "night-passage/rewards/fountain",
+      "sha256": "853b4681196d85a38498b409c2b4a6f5a4c397d0c3902d3e6079fa406903f673"
+    },
+    {
+      "id": "night-passage/rewards/shop",
+      "sha256": "2f788fdb45a77ef5c2e554e855e01bcb9ea48157ab5e99e50ca2b0bbafdcda42"
+    },
+    {
+      "id": "night-passage/rewards/trial",
+      "sha256": "a80f585f6a2aa1831a4f68b58df3a1ac1dca0e91e9031b8a1832274b8af14e0d"
+    },
+    {
+      "id": "workshop/practice",
+      "sha256": "a8681d466d145383d8d06883322c443e37f33055d2cd2040ac2524f6e59b7b8f"
+    },
+    {
+      "id": "workshop/packs",
+      "sha256": "26371efcb9c3b7736f6419aa61e354ddb5f4f4d9bbe70db2f3694da3a2794d50"
+    },
+    {
+      "id": "workshop/evidence",
+      "sha256": "6fd783e96c5407c1a87530a28dce2989bc5224e454bcf8bc5df2ff38ec558fc1"
+    },
+    {
+      "id": "workshop/arena",
+      "sha256": "9226c54da5eb483704d24f248134ea9560da61f89342667a0f37389c24c8e572"
+    },
+    {
+      "id": "workshop/symbols/classic",
+      "sha256": "d344ff892a32dc1883e35f86a6fc86c1be06ca340cb580521e16c5d96c19684c"
+    },
+    {
+      "id": "workshop/symbols/tempo",
+      "sha256": "331b9c71c5fabe1fdf785e9c12ebb8dc0ef6c86eac8442b1acaa0d68e4afa9be"
+    },
+    {
+      "id": "workshop/symbols/economy",
+      "sha256": "53295020376a4f03cef4ecf8f479b472cb8f5ef8c3014767dc6b45f49e1de6dc"
+    },
+    {
+      "id": "workshop/symbols/composition",
+      "sha256": "965b5ea98a2b3520d80f1dcdffadc30eccd12a77c8c0966b15b19d7fc2eb4cf3"
+    },
+    {
+      "id": "workshop/symbols/scout",
+      "sha256": "21c4587c81f72efb5797dda5fc57b06e6452a5855f9450bcd97a5e692e5c3b39"
+    },
+    {
+      "id": "workshop/symbols/ascension",
+      "sha256": "01054df612b313de9b266b4733228d1f3283b6f3a059bd0b771cc0127f7ebb52"
+    },
+    {
+      "id": "spire/relics/ringOfTheSnake",
+      "sha256": "39f5fb3421314415f0cee6808e2241ef8fe2bfa19bd78b9b5c8b271a8787fae4"
+    },
+    {
+      "id": "spire/relics/burningBlood",
+      "sha256": "305581f1781e2524a94efe422fd3a598a21edbd3c12cdc2e3173d262cdb62d56"
+    },
+    {
+      "id": "spire/relics/vajra",
+      "sha256": "bdcb8b34ec41e0cd54310d40450613a52081c7f3c916e7308a6c1fa8fccda00e"
+    },
+    {
+      "id": "spire/relics/oddlySmoothStone",
+      "sha256": "309bd4b4db6541e65f17d28d2c98e293d35f6defe2752165033acfdfdeb8a4ab"
+    },
+    {
+      "id": "spire/relics/anchor",
+      "sha256": "38f003f8d07c5456bb217200392d8b67856b41482141a4236934a18e7b92ec5d"
+    },
+    {
+      "id": "spire/relics/lantern",
+      "sha256": "a99ed22c5775f17a9e01978d0cc9ab0716acba0172258c00b878c7aa17667318"
+    },
+    {
+      "id": "spire/relics/bagOfPreparation",
+      "sha256": "4f50988d17913584853e82981592e6e96fb9858b724bcdf5c489d4917a31ddb2"
+    },
+    {
+      "id": "spire/relics/bagOfMarbles",
+      "sha256": "f27a94f2de58a6b121e0a240a240482bfb96dbfe9984a3b95b961522c0bdc1ed"
+    },
+    {
+      "id": "spire/relics/orichalcum",
+      "sha256": "3ef8368fed0ff2aa04593b09e6f55f7cec31292bd4dd7b20a44d22bf3d41a321"
+    },
+    {
+      "id": "spire/relics/akabeko",
+      "sha256": "f970fbd404a514d75583aab30e8c54958ca1df81fcc39c7baab0d3943ce34d33"
+    },
+    {
+      "id": "spire/relics/penNib",
+      "sha256": "ee489db5b42d534aa1eb80befc9583646f83b695d77c5c2e944c17a61fe78f37"
+    },
+    {
+      "id": "spire/relics/bronzeScales",
+      "sha256": "c52a7084f5faffa77f226934274afc83d8cf722ccdbe616d8d58aa4129f51bb8"
+    },
+    {
+      "id": "spire/relics/happyFlower",
+      "sha256": "7ac6880b2616499f2da7800aac83f5559b7ce1ef5e6a715192f9829ad2b4a7b7"
+    },
+    {
+      "id": "spire/relics/strawberry",
+      "sha256": "2bca490a4df7802666270090741908f33f2e889a68ae18ea94d30fdaa6c43ceb"
+    },
+    {
+      "id": "spire/relics/warPaint",
+      "sha256": "c126538cce52160a8c5b287dea0ed8264175c25486b70021b56fb06f4af91f1f"
+    },
+    {
+      "id": "spire/relics/whetstone",
+      "sha256": "102a527061a580e113f172f7934c2dbf5921f1998ce19a802d4f8e6ba4d2762f"
+    },
+    {
+      "id": "spire/relics/regalPillow",
+      "sha256": "43938da08dfc1e685f815ddb1115884cae9036789cd931430eed84b10eca2d2a"
+    },
+    {
+      "id": "spire/relics/preservedInsect",
+      "sha256": "2a3263b02a5fcbd007a6fe8b6e9c06b007f999a663e3bf0e2210276d8d3f3989"
+    },
+    {
+      "id": "spire/relics/kunai",
+      "sha256": "95e43ddfac456554194daa7eec40efa10a8e6f44b1d2d2fae448bb0330769b45"
+    },
+    {
+      "id": "spire/relics/shuriken",
+      "sha256": "4c36f135cb9baf22298ad2e80652a6b29194bad35d1a3c0e09a5fdda123c361f"
+    },
+    {
+      "id": "spire/relics/ornamentalFan",
+      "sha256": "fe6d1be5b807fa500b00844007af6fbeb941a8c595e48a6f3fb0f0367c189520"
+    },
+    {
+      "id": "spire/relics/meatOnTheBone",
+      "sha256": "e012526caf5b7ee15667226df41e1c605eb4dd0c3ae29ff630c82c7cdce71975"
+    },
+    {
+      "id": "spire/relics/letterOpener",
+      "sha256": "59b93d3a9220714fcd4bbed4920fd77e2cbeeb5aede4b2308c2a53c06c210e6b"
+    },
+    {
+      "id": "spire/relics/pear",
+      "sha256": "12267e020465eaaa7eb9fd071499542779ac916bcf0da604fd78ebfc66a06004"
+    },
+    {
+      "id": "spire/relics/mango",
+      "sha256": "42af107c224a2cea69ef5d6ea8c72e96bba37d9960432162aaddac367f06d87f"
+    },
+    {
+      "id": "spire/relics/blackBlood",
+      "sha256": "20638e2814394b7aba0c004e5635b409bbce80d61887b50c49a60935ac7cc92c"
+    },
+    {
+      "id": "spire/relics/coffeeDripper",
+      "sha256": "f22aef6b864eba71465657820b46022070b822b9758abe550d1adee68b3279c3"
+    },
+    {
+      "id": "spire/relics/fusionHammer",
+      "sha256": "e20a103b856332eddbf226400cb3c8da5395b5ed37341b73e47d8f99b3711064"
+    },
+    {
+      "id": "spire/relics/cursedKey",
+      "sha256": "4490931b61e88d60f41a72fbdcfad69e7ad276e39fbac5b48e4ac7198a5afd12"
+    },
+    {
+      "id": "spire/relics/sozu",
+      "sha256": "3b703bbd0648dc8f96cbe56acbdbe2c70eb7c842ab42b8baec69ebb9e091d3b8"
+    },
+    {
+      "id": "spire/relics/bustedCrown",
+      "sha256": "0bf85ea9d60a9ade43cdb4101832438b7eda18b794ad1aa5b681546b6cbae003"
+    },
+    {
+      "id": "spire/relics/neowsLament",
+      "sha256": "ab30b2d62d31a4889168cb261f68cb90a62aec1ccc1c9a7079d71fe4646865d6"
+    },
+    {
+      "id": "spire/relics/goldenIdol",
+      "sha256": "60e9e139716918baf0b0650ca4329047efeed094e463d867bbf590b69e9dee5b"
+    },
+    {
+      "id": "spire/potions/fire",
+      "sha256": "70c6dceeccad92b56867e244a4448709a0a5cc31169c7d8486a441d8b9ea2564"
+    },
+    {
+      "id": "spire/potions/block",
+      "sha256": "361e644178cddee29ae3e43f4cba2385780efddbb8c1a39e6f708f70b0a374aa"
+    },
+    {
+      "id": "spire/potions/strength",
+      "sha256": "830dda4049cfb429ddc5a205bcc533a67064c65a18f5dd9e2c92478dd418d9f1"
+    },
+    {
+      "id": "spire/potions/dexterity",
+      "sha256": "822b2a01d7bdb2d6f3d6daf174212c787cb1d1c7436eccc74e8e7df58bea40d7"
+    },
+    {
+      "id": "spire/potions/energy",
+      "sha256": "3db0f167c1f15b30c15d527234752ba70d2ccebf1e6f97da08f2b45fc70d901a"
+    },
+    {
+      "id": "spire/potions/blood",
+      "sha256": "1b864c7c404a7f369dc20b5261a3b6b38beba48012ae1bf55c3e9867f4ee7abc"
+    },
+    {
+      "id": "spire/potions/explosive",
+      "sha256": "feb604829d3a6a347bab2087173d581b280715cde10a6a5ea3c30dd86212415f"
+    },
+    {
+      "id": "spire/potions/weak",
+      "sha256": "90b83cb846a9c98122da7444a8952b5a5c0769c786a98ac970ec5c72738fc381"
+    },
+    {
+      "id": "spire/characters/ironclad",
+      "sha256": "a323a5311b889256dd6ffcb5ca0b701e066b11b8d2e02b1122967bb8ac8b89d2"
+    },
+    {
+      "id": "spire/characters/silent",
+      "sha256": "fbd2e5af340ed830324428a61ccf3b3d213b1220b62f1cffdb007994c5592207"
+    },
+    {
+      "id": "spire/rooms/fight",
+      "sha256": "c9555671fce540330fe616052d9ea3d8910da2817e19f6f4b98020df3ec71ff7"
+    },
+    {
+      "id": "spire/rooms/elite",
+      "sha256": "4ac25754dfb6274b3b5201e32823e5d7b0aa39477f4d9ef0a2f7372cf7d43fdd"
+    },
+    {
+      "id": "spire/rooms/event",
+      "sha256": "87460e8f45fe2e918874296daac65e452fff79b52bf0466b7c3a3d4ce1d9e791"
+    },
+    {
+      "id": "spire/rooms/rest",
+      "sha256": "cea6cd8c35a7397d0bc43c54026c439941fb163aa9d06f3e3fa0e1c0dee4be39"
+    },
+    {
+      "id": "spire/rooms/shop",
+      "sha256": "7dc7f5cfd450fb3d3ea9c1a620bf15b40987f4dd6d361feb5dc393afc3b34d7e"
+    },
+    {
+      "id": "spire/rooms/treasure",
+      "sha256": "cd99385d3a46bf83874f35f26c938bce8d107356a919c87d10439f35ecf2669d"
+    },
+    {
+      "id": "spire/rooms/boss",
+      "sha256": "f6fcdd1617c6f63b29a122cc7bff645c2aebb52e7e422724ca5dd3a13d85fbb9"
+    },
+    {
+      "id": "spire/acts/1",
+      "sha256": "74796c11ff0bef81c1e54b3dece2a9acc54402de0fe613db3939f910d4f27042"
+    },
+    {
+      "id": "spire/acts/2",
+      "sha256": "9be824f8650b0e2c610f1e34e583af3fafa870b464c209f0b3e2a0cff8a29c32"
+    },
+    {
+      "id": "spire/acts/3",
+      "sha256": "7d51e2001f0f52bffd0e58e4964679f30b5d6b6b15ef92409d07eabf9d2ceac0"
+    },
+    {
+      "id": "hearth/spells/pocket-change",
+      "sha256": "8092aa6a881beb24bc105faf15ee63b6dd9a666fe665f49567f327adf8185afa"
+    },
+    {
+      "id": "hearth/spells/promissory-note",
+      "sha256": "16c0b0da5c2d68b337eafccb5b2fc612659ce58617749ea61697ca1d5a68d029"
+    },
+    {
+      "id": "hearth/spells/whetstone",
+      "sha256": "ee5fe3b42d79844f05e793cb45ba3e52cd92380cecadcba52dae992be6613de3"
+    },
+    {
+      "id": "hearth/spells/hearth-bread",
+      "sha256": "38404208d4d533a800ae2454c1c70a7fc750623138ecb508437550c9f49b37b8"
+    },
+    {
+      "id": "hearth/spells/guard-oath",
+      "sha256": "03e4bb382e62e718938052c833b8b60cfe7ecbb5937a976849f7140fc95bfa9a"
+    },
+    {
+      "id": "hearth/spells/market-polish",
+      "sha256": "8a6c5d911a8b7d71f692746e2a71688705200511201f2e65ee06f11075918b2e"
+    },
+    {
+      "id": "hearth/spells/recruit-coupon",
+      "sha256": "827f0acd9e43a9de784c9beefabbd9e2826a5c5680efa1ef2df428cdc9739f91"
+    },
+    {
+      "id": "hearth/spells/warband-banner",
+      "sha256": "e019a5483c190f4cba31999f079dbb0359554c0e2c9c20170e48f5c1b52845a7"
+    },
+    {
+      "id": "hearth/heroes/forgekeeper",
+      "sha256": "718c5d5e316895b05cf4083bee85639df5a62e04dbbb34a80e4c4a08ecfd32b3"
+    },
+    {
+      "id": "hearth/powers/forgekeeper",
+      "sha256": "b4c0c35c60b39df7840cba27631080a9fb8a95d82efc1bd76802bbb913b10c05"
+    },
+    {
+      "id": "hearth/heroes/quartermaster",
+      "sha256": "96bcbbb0a89084b21a11f4cd1e02f635509da516695ede106a2ed92d42d56240"
+    },
+    {
+      "id": "hearth/powers/quartermaster",
+      "sha256": "118f792699ef82926ea31b2cd798b54f6870e905ce4168fff50874c9e8e772fd"
+    },
+    {
+      "id": "hearth/heroes/wildspeaker",
+      "sha256": "473dd70b103abe945fc528a2449a7729244ea2d2a5f83f5363289306f2d72d44"
+    },
+    {
+      "id": "hearth/powers/wildspeaker",
+      "sha256": "ef4b79eb867dee9063622b2f0c0384163f357eeba857f9829974d2a7124b3749"
+    },
+    {
+      "id": "hearth/heroes/archivist",
+      "sha256": "7735f224dad70899ca2f272f79f0bae49a55825b06d20d80e82a58e81c78a2ef"
+    },
+    {
+      "id": "hearth/powers/archivist",
+      "sha256": "7cc5cf0fd7d0af0903f62c70249db7190157c6e8f495f58c6a1d32b0a3ab94bd"
+    },
+    {
+      "id": "hearth/heroes/oathkeeper",
+      "sha256": "2f5120fa4120a9b4dbcf5a7dcf0ce6387d26d3b958746bdaeb482f9ec11cee2c"
+    },
+    {
+      "id": "hearth/powers/oathkeeper",
+      "sha256": "0e5215a89f00104ad2f1e2714e19dc155ff93a7091cb4cabfe6d87e6caad45cb"
+    },
+    {
+      "id": "challenges/blindside-order",
+      "sha256": "8617cbe5839983d83e67f897565a2d923e83562153faa5d4a70b83777f8df0f4"
+    },
+    {
+      "id": "challenges/spire-artifact",
+      "sha256": "c26995a72ed2024aa97c5b5f778578acde235bdd64ec3c885ef95a5de28f219e"
+    },
+    {
+      "id": "challenges/hearth-position",
+      "sha256": "b864e19aca5a06a64b3595579c2492dafcb1b7a4767ba5a3d33d27cc2f2dd32e"
+    },
+    {
+      "id": "challenges/symbols/choice",
+      "sha256": "ee3abb29a267adb314afa46f8397879c4af4a9c2303bc97565a38f2cd268e146"
+    },
+    {
+      "id": "challenges/symbols/resolve",
+      "sha256": "39e8a9c602e86a939747d1ab5d0092b865474c2fdbdb417c9f8beff225b49ac2"
+    },
+    {
+      "id": "challenges/symbols/retry",
+      "sha256": "4cbe8418664ebcb5b1dafeed91801bffb389d9edf5eaa532c3e73d16bc2c66dc"
+    },
+    {
+      "id": "challenges/symbols/hint",
+      "sha256": "ad0f333b0ad078e470019955290548f46e7f80a28844a58eefb1daa53e17264d"
+    },
+    {
+      "id": "challenges/symbols/cleared",
+      "sha256": "6304bd67676ad32ef61a5d4ad4f70dc3f9876c8d7a07a75acfb5720670bffa27"
+    },
+    {
+      "id": "challenges/symbols/new",
+      "sha256": "12a8ecd6395c4759ef38d0b9ea75e00dc9122f161d5072d91506eb6a3248fcc9"
+    },
+    {
+      "id": "challenges/symbols/active",
+      "sha256": "fd750d8484a52a31d9b34bb0e0735d25a1416ff624ea5c4995d258469bbd0ff8"
+    },
+    {
+      "id": "challenges/symbols/attention",
+      "sha256": "9154922db1bdf7aff460e03586346730b0ed01c86ebbebd79a49020ed8656405"
+    },
+    {
+      "id": "challenges/symbols/stone",
+      "sha256": "fb9f2a86f62fdc74f7e03f5651cabaf27ed74b12acd4bdb02f715a2f826aacd9"
+    },
+    {
+      "id": "blindside/jokers/spark",
+      "sha256": "e4fff5f94875be4a1c39f31434d0c29e928e18dba07dc92101b76b177eaca5e2"
+    },
+    {
+      "id": "blindside/jokers/granite",
+      "sha256": "727cd1dd2d74370d6d6e025a4b76fbfed59db2b2272a4a204c15281df5f52b81"
+    },
+    {
+      "id": "blindside/jokers/duet",
+      "sha256": "8401a789ba4e8abe91a0c19ad0b623da5cb24d5269654631a4cf585ade09c802"
+    },
+    {
+      "id": "blindside/jokers/twins",
+      "sha256": "a731e7a54b5371dc2b6e62263755d47ab13675d1105b7000fad1d4db82c22ed9"
+    },
+    {
+      "id": "blindside/jokers/trio",
+      "sha256": "1fa8c285ea5f92dcec7db12a9169b6c0626ee7acd4c925171d06c4e32b9b88e5"
+    },
+    {
+      "id": "blindside/jokers/stair",
+      "sha256": "d508fb1faf40e9a4f87d3434b371c80523ddf85615c35e11a7b54cb3d0ae2837"
+    },
+    {
+      "id": "blindside/jokers/river",
+      "sha256": "da6c7878cb2dd226a0612b5de84891312be1bed4523edb90e62936e769521056"
+    },
+    {
+      "id": "blindside/jokers/house",
+      "sha256": "d2c75fa7b33dc9d26637ba38043b48d37639863c75c9c4da9c4644038b9deece"
+    },
+    {
+      "id": "blindside/jokers/crown",
+      "sha256": "69da3b461ab914c08d4eabf162f3d9044c725aa37c5121da863d41297f498bbf"
+    },
+    {
+      "id": "blindside/jokers/constellation",
+      "sha256": "c0f3763e8fdea46a24c8e047af081b355b3b16924ab35d5b3eb289a1d9c86a6a"
+    },
+    {
+      "id": "blindside/jokers/hearts",
+      "sha256": "ba5d9e864894af4cc0e3354db4c02a9879d1fd5671eb5caace924850b900113f"
+    },
+    {
+      "id": "blindside/jokers/diamonds",
+      "sha256": "965f836b23d639dd518a437cc12035a43a9b25555665a4637a47082c59a08e41"
+    },
+    {
+      "id": "blindside/jokers/clubs",
+      "sha256": "91f4ecbdaceb6fd37615ff8227cb035ced92314f1d30c05128a99ab88b54c939"
+    },
+    {
+      "id": "blindside/jokers/spades",
+      "sha256": "bf951648703562697b83bf325e1bc5d2c5700d9744692263eb3ad3078b2d7ed5"
+    },
+    {
+      "id": "blindside/jokers/portrait",
+      "sha256": "721f6650324de6d70615296a60a58c24636fe5ff3595bc1ec060c1fef209a392"
+    },
+    {
+      "id": "blindside/jokers/even",
+      "sha256": "e31b0f4763e9b42a4d40be8a611cff1d5ea9a6936eeebd827eae7ebb973bb320"
+    },
+    {
+      "id": "blindside/jokers/odd",
+      "sha256": "eed70a2505ad50de1aa18ca2eb0adf3eac3359186d24b105d599d10313bfdcf4"
+    },
+    {
+      "id": "blindside/jokers/fibonacci",
+      "sha256": "a624ea536bf4a103977b1200de274595306c2e242fd77f3e9c7a4c9d94761384"
+    },
+    {
+      "id": "blindside/jokers/ace",
+      "sha256": "f77c71b89c4a6bbd470180b3506d8bfe0883f389ab2b9030f741bad0bba1edfe"
+    },
+    {
+      "id": "blindside/jokers/low",
+      "sha256": "1e5b48e1beb3f8d2a9bf0db94f5d67ca46c003e80802f8b1a95d5945a150798b"
+    },
+    {
+      "id": "blindside/jokers/solo",
+      "sha256": "b595895a9e3a2579428e66b3739ef3e979693d6d9578caf98597c68e88c9635f"
+    },
+    {
+      "id": "blindside/jokers/minimal",
+      "sha256": "f6e4beb2c3bc68c0524456d0762f1904cfa222a41ff52bdd873fbf47cc6179c3"
+    },
+    {
+      "id": "blindside/jokers/banquet",
+      "sha256": "c400e8c8a610c060a4920f43ff21dd232d5a166ae55572fe0775ddb8cebd48b6"
+    },
+    {
+      "id": "blindside/jokers/rainy",
+      "sha256": "a74fd2b3a8aa28ccb69f3ca1647945dd0470770b313b521e0bbb95fb4f6e46e1"
+    },
+    {
+      "id": "blindside/jokers/last",
+      "sha256": "2108b6b1f9f3d511605c6df5ae40fc1eeb2bc2a13adb7384b160613c95b100ef"
+    },
+    {
+      "id": "blindside/jokers/bankroll",
+      "sha256": "7e4b3da5f39a4a12feb8be82e4462638258c0778933f1f3cdf7f2ea6d80d34c0"
+    },
+    {
+      "id": "blindside/jokers/purse",
+      "sha256": "bf854088c89084f844d51fe010dc48847ba79a703b90107997c9e40e21b75474"
+    },
+    {
+      "id": "blindside/jokers/scholar",
+      "sha256": "65b81944c7d261e8eb80aab4000ba7ac93f007cb40140b61c2b6ff4421ce7a6c"
+    },
+    {
+      "id": "blindside/jokers/collector",
+      "sha256": "1ea045bf3f586e490da529bfe6e4f3a1ff4d8e8d1887fdc2a6d592af3b42279e"
+    },
+    {
+      "id": "blindside/jokers/sculptor",
+      "sha256": "fc7d0e1faa915c092c24826a4cf7f197a89f4dab03b5883a9a494e4db5727b44"
+    },
+    {
+      "id": "blindside/jokers/runner",
+      "sha256": "9ddaaebb6ace7b40bb0b7d5720618219eece17c5e65626d8cda2986d6d47a055"
+    },
+    {
+      "id": "blindside/jokers/vine",
+      "sha256": "6938e2dd19898410097896dab9e3b8c58907607d425d787a80b44548cd76ea81"
+    },
+    {
+      "id": "blindside/jokers/paircraft",
+      "sha256": "958f4b541e549341d920f7f640a44912fe35131bc78f1e91a5309bb10c7ac89c"
+    },
+    {
+      "id": "blindside/jokers/tidal",
+      "sha256": "de42d73d35485fd50d6f6c475546aca162e8e2fa5a55dc2bad345cb7d192d1e2"
+    },
+    {
+      "id": "blindside/jokers/toll",
+      "sha256": "a05cd4a1d84f70510de613fa010645570a1589a623c2c89b942acd6bb3c24f71"
+    },
+    {
+      "id": "blindside/jokers/dividend",
+      "sha256": "e1824ba931bfea683d91ab8b66d0d2d80e0d0fa9255a594f2d0aecdcaf7fd284"
+    },
+    {
+      "id": "blindside/jokers/reserve",
+      "sha256": "f109b09c8ac9b269be721d3421fe5be8bc7a2b362245f48b5d81b88d6fa4c15f"
+    },
+    {
+      "id": "blindside/jokers/satchel",
+      "sha256": "71e1f4c3fd617241811a1b2a1aef210a58a7108f4740fe117296b6c1eeb679b1"
+    },
+    {
+      "id": "blindside/jokers/echo",
+      "sha256": "bc920c603ffedd4f70cc0786bc326f8bac36c221b258df4809bb8f1ea1d1e68f"
+    },
+    {
+      "id": "blindside/jokers/splash",
+      "sha256": "be8b5ddb0078872d2fdf9c918ba2d44877a63f15c24827e7776f1a800115adcb"
+    },
+    {
+      "id": "blindside/jokers/observatory",
+      "sha256": "ebfc54b9bace25e4441e43f3101d86377dc902c9b9b684e1aa65c1e6a7d49fe7"
+    },
+    {
+      "id": "blindside/jokers/locket",
+      "sha256": "f2ac5baa963d4497e89dde3aa2d9652bdd7b3516c2d0e531b0af45e7467c70bc"
+    },
+    {
+      "id": "blindside/jokers/harlequin",
+      "sha256": "6d6897f187acf980c20c80dc75281c9a781dce82673baed68eb85fdca56ebd6b"
+    },
+    {
+      "id": "blindside/jokers/undertow",
+      "sha256": "d86420d1a5dfede55995462394c1a527019503ad0cb7b3a313cc5c155d066c24"
+    },
+    {
+      "id": "blindside/jokers/hourglass",
+      "sha256": "8d56cfa53dfcec74b606bf2928ac21d803001775654e76275294f331097daf0e"
+    },
+    {
+      "id": "blindside/jokers/sundial",
+      "sha256": "1548187b598807150b6556b70da5fcaa6f22003c0189b7639179e8866c10561d"
+    },
+    {
+      "id": "blindside/jokers/mosaic",
+      "sha256": "e044e7d76cbdc4b4b5bd9b8b1031b836b55efd7b454e15ce032e6676a28023ac"
+    },
+    {
+      "id": "blindside/jokers/glassblower",
+      "sha256": "36610882ed214a59b9d35ff4577679f4163962b974b995110d82e8e1a3b30e91"
+    },
+    {
+      "id": "blindside/jokers/orchard",
+      "sha256": "cc41c7156a031d578bc09b5838b942b5faff17ec5b66f8109fbb972efffdf6ee"
+    },
+    {
+      "id": "blindside/jokers/compass",
+      "sha256": "8dda7431921a5c40ff476d03371102dedd54be04ac4dc8daa188409cc4347b9f"
+    },
+    {
+      "id": "blindside/jokers/encore",
+      "sha256": "e7b9645fe21d31167276bc8dec33cb3502c14d32711bc1be0c1712a8a68067c3"
+    },
+    {
+      "id": "blindside/jokers/palimpsest",
+      "sha256": "22ce0e020c762629717b22ce3b4c338ef6830cb5e20a243fae0b6d60edc1c170"
+    },
+    {
+      "id": "blindside/jokers/velvetpurse",
+      "sha256": "cbe0eca60fc6ae23043775edd33261a5fa225ddae6fb047dd65750c41920e95e"
+    },
+    {
+      "id": "blindside/jokers/filigree",
+      "sha256": "4613f3402bc4b2f1cb53fb6182967fef85c74df410c951edaa89862afcf2ea34"
+    },
+    {
+      "id": "blindside/jokers/nightjar",
+      "sha256": "5c36a18ead4eb22848564039e46a9ebf00d757addb3f39f9e0cfef0b80fa6ffa"
+    },
+    {
+      "id": "blindside/jokers/prism",
+      "sha256": "943c931adf70e830eadc20c009e46ea67e12a168808a902571e0b5817c5d4eab"
+    },
+    {
+      "id": "blindside/jokers/gildedloom",
+      "sha256": "22931e09e6b68986222eba2a369e31e34f183c4448709c0efb994fa168ba8339"
+    },
+    {
+      "id": "blindside/jokers/emptypockets",
+      "sha256": "61541b5be83e87b31952c810ee56c266dc145efe39f4a22bfa57e2dbae77ecb1"
+    },
+    {
+      "id": "blindside/jokers/moonledger",
+      "sha256": "35a569752c6c14073093a8c56d936ec8537be59832d823e143f659a23bb0fe50"
+    },
+    {
+      "id": "blindside/jokers/receiptribbon",
+      "sha256": "76e8a36afb30f1133905efe1975f6ad6161f2351b801ef9a222d36cbce5b8a52"
+    },
+    {
+      "id": "blindside/packs/buffoon",
+      "sha256": "fec4ab48c0f6f4eb724bf2a544c789d5d3252cc2425a219e7f559d59aa5fd35c"
+    },
+    {
+      "id": "blindside/packs/megaBuffoon",
+      "sha256": "87398a7317a39fd2c823c74476cdf4f4e365e66abac9b61caa4ec258479cd1cd"
+    },
+    {
+      "id": "blindside/packs/celestial",
+      "sha256": "36459d720b5e73eb663900979c9368a0cf7469d329c2764efd97f412f160de7b"
+    },
+    {
+      "id": "blindside/packs/megaCelestial",
+      "sha256": "9774f6a279b0f06113b41eea155e0bd24ea56ce15697dfea9db6aabd4da088d4"
+    },
+    {
+      "id": "blindside/packs/standard",
+      "sha256": "1cf4f64a302bfa716f6264f27f30840174656acd2da334c506ad7a8df4653e7c"
+    },
+    {
+      "id": "blindside/packs/megaStandard",
+      "sha256": "63c1dd786729edbec4ff1c31d6455b9ceb367e827a2570a81e46828c8a9ce6bb"
+    },
+    {
+      "id": "blindside/vouchers/extraHand",
+      "sha256": "017451d81d91cd90499770f888f3b4a6805fa7c3878449cb1df206ad1da933b0"
+    },
+    {
+      "id": "blindside/vouchers/extraDiscard",
+      "sha256": "c8d4627fd426844767df7045c9a7238b0c5487c07fa0a494c450d9f1c5dbd282"
+    },
+    {
+      "id": "blindside/vouchers/handSize",
+      "sha256": "c35c79bcf3c6fa2239fc1ef96ae136972cabf29b4b97ab8770bac3fd04b9c47f"
+    },
+    {
+      "id": "blindside/vouchers/interest",
+      "sha256": "217ff10cf1e1615cccf6124d824b1375ea09ee03791bab3e016c7da09408c16d"
+    },
+    {
+      "id": "blindside/vouchers/rerolls",
+      "sha256": "4fda0dff897f77fd387697498009d51c7e42c4035b4344fd4b592d269be5c60f"
+    },
+    {
+      "id": "blindside/vouchers/discount",
+      "sha256": "1ef0c011b893d12f80e3e6eeff3e99316e49c6b3e9b480cc684bcbdbef3f7489"
+    },
+    {
+      "id": "blindside/tags/investment",
+      "sha256": "0bf34fada75e0be7a2403c60c9079f76a7a73e6054486d0e32f6f2d84a777e31"
+    },
+    {
+      "id": "blindside/tags/economy",
+      "sha256": "e1b62a1567952bb7148ca6e9f0ba645ef20af1c097adffee5f450be6b5271dd3"
+    },
+    {
+      "id": "blindside/tags/orbital",
+      "sha256": "8ada790d7459fc809e6e3a25ea3865b2c59afc0088a1d0352a626dcadc2f6005"
+    },
+    {
+      "id": "blindside/tags/buffoon",
+      "sha256": "251531d260957a375c33ab84b43f371a3828c7e95b9a75d197f4e5a64d1fdca2"
+    },
+    {
+      "id": "blindside/consumables/planet-high",
+      "sha256": "7304c40ea5d193e6ec07fb4eb855694e015c028050381888e61b43e285cc50aa"
+    },
+    {
+      "id": "blindside/consumables/planet-pair",
+      "sha256": "22eb02f024433ce1ef9d6370850d6134add17f6317dcbd75c799439acf7e161f"
+    },
+    {
+      "id": "blindside/consumables/planet-twoPair",
+      "sha256": "2bda85e2a11fbd146e2cd4544e11081a791d15ec28e3386d9a0272b4a88dad0b"
+    },
+    {
+      "id": "blindside/consumables/planet-three",
+      "sha256": "7a7e05452e0361391c9305c13d33550dc57f2cc2599f9626dc8a659df61a785f"
+    },
+    {
+      "id": "blindside/consumables/planet-straight",
+      "sha256": "080019167ac60d35266a12f0505b7e0f6b548cbe1b9e188e65423fbd9c5d986c"
+    },
+    {
+      "id": "blindside/consumables/planet-flush",
+      "sha256": "3454e1b14b41f2570892b8e48f4cfa63fbb13fd91eee7c197ff2d233be458be9"
+    },
+    {
+      "id": "blindside/consumables/planet-fullHouse",
+      "sha256": "f05adf2f711b24d64faf6df18ca95cb4683abb0f279dc6c115211b50c095c53b"
+    },
+    {
+      "id": "blindside/consumables/planet-four",
+      "sha256": "4d9278cc8f9eba27cb000496a08b2dfdbf5965fa63670b81937a9c3094b490c5"
+    },
+    {
+      "id": "blindside/consumables/planet-straightFlush",
+      "sha256": "a2b9c4f311ccba45ee6728270ab70f8dd1662e85dea0003feeb8d3f52aa33d33"
+    },
+    {
+      "id": "blindside/consumables/bonus",
+      "sha256": "85e03e899ae428df8947425501885f0a58783883e3b0a9f545d0bd1b0dae2052"
+    },
+    {
+      "id": "blindside/consumables/mult",
+      "sha256": "bdf8d1a4c7970140e23921b6447c6ea773d5548600139d6b1539f810c8ff0a46"
+    },
+    {
+      "id": "blindside/consumables/glass",
+      "sha256": "7f1fdb81a08d6fe819e0ac580f8501347a92b06c441b46352ef018fa40410351"
+    },
+    {
+      "id": "blindside/consumables/steel",
+      "sha256": "365ef9d5ede02cde2647c3f045136eb3261730993121d6fbc698a32925c656ef"
+    },
+    {
+      "id": "blindside/consumables/garden",
+      "sha256": "4a8ac3465628b97a800d457616cd684ae3911ad3faeb78b4d26324cd54acf529"
+    },
+    {
+      "id": "blindside/consumables/rank",
+      "sha256": "56c5b9859a3b08986c221ac6313f5a89958e9ece194fb919339c561a07f35280"
+    },
+    {
+      "id": "blindside/consumables/destroy",
+      "sha256": "162fcf81dcbac7b46e5b5a5c63a5c97e1a1330d64576078e78564bcd212268da"
+    },
+    {
+      "id": "blindside/consumables/copy",
+      "sha256": "7753cf8d26259d2b0a6adb7965bc4705a8440106b2897c05c0a8f04afacc7f9b"
+    },
+    {
+      "id": "blindside/consumables/wild",
+      "sha256": "8ea573cbf346e3e40aebb2ee1e54c38346145b20ef6ea1a4f657aec95ad48362"
+    },
+    {
+      "id": "blindside/bosses/thorn",
+      "sha256": "965386e8fec173252cc424e7119a63c1f0a90d748dc413f830582733139f9c0e"
+    },
+    {
+      "id": "blindside/bosses/mask",
+      "sha256": "cdd01e5d24b651b6b6485a83c648918127b8aaac841ba509442e8b2038030d9e"
+    },
+    {
+      "id": "blindside/bosses/pinch",
+      "sha256": "093cca020e495a7bcd906b6dd24e8cddf6bf4b1ce17819f54f475c3db885b955"
+    },
+    {
+      "id": "blindside/bosses/narrow",
+      "sha256": "3aba09601c62e112b94a1a0e643620fe6dcce45e123958db6694029782994df8"
+    },
+    {
+      "id": "blindside/bosses/lock",
+      "sha256": "6dc9319b4603200e6183ac8c07a26b7be98c50cd2f1a657d6faef94a77fa96a8"
+    },
+    {
+      "id": "blindside/bosses/five",
+      "sha256": "ef50b196f015dde33d5faa6dfe394e086a1af27787162690534313749936f8b5"
+    },
+    {
+      "id": "blindside/bosses/wall",
+      "sha256": "8ce099dc87f2dc3b36b3ec712691a6e1272416f763d8f55c16f7162602cdbb30"
+    },
+    {
+      "id": "blindside/bosses/crown",
+      "sha256": "67db064536ba4b2900f930cbb70a5557e0586833b6b564a19c3fc47bcd7daf77"
+    },
+    {
+      "id": "blindside/playing/spades-2",
+      "sha256": "3b7ed21f37aafa98d62c64973767d5b465ce1091e6a7edeb2412a5538843cf81"
+    },
+    {
+      "id": "blindside/playing/spades-3",
+      "sha256": "f247150a26572c65d6fb54c516b0b554ebf56a261430aa5ea55875a87a450818"
+    },
+    {
+      "id": "blindside/playing/spades-4",
+      "sha256": "25abdb0caac7b46955b776fdf32a4fbadd1eaef052a86d255ea8d34283fd3257"
+    },
+    {
+      "id": "blindside/playing/spades-5",
+      "sha256": "07bf47793473eaa46eec21bfe4969dee8b7ac91cf72b47ea8da4c123911e91ff"
+    },
+    {
+      "id": "blindside/playing/spades-6",
+      "sha256": "1edd136d8f75654cc73e1cc017c64205ef19a10e7701546e728e9d91122909cb"
+    },
+    {
+      "id": "blindside/playing/spades-7",
+      "sha256": "3e91c0e5fa5584a42ca42f0740c0a7eea4cacbd29614967766cd9a05db762e6a"
+    },
+    {
+      "id": "blindside/playing/spades-8",
+      "sha256": "7770a3d894f8ec2094354caedeacd71203db9f991da47f5814f29082101e7084"
+    },
+    {
+      "id": "blindside/playing/spades-9",
+      "sha256": "725fe5b92d4c4220a7fd45a531908d0e9ef09de43057673e182e8cb5850ab9a8"
+    },
+    {
+      "id": "blindside/playing/spades-10",
+      "sha256": "06b75d64f1d3c5b6b241bf34456bcdf1ac2583602b95a1eac01365f04b3e6a11"
+    },
+    {
+      "id": "blindside/playing/spades-11",
+      "sha256": "231bb7fe2cef110fd2944ed6dc172d979f98449c20875578a6897877b51f7c78"
+    },
+    {
+      "id": "blindside/playing/spades-12",
+      "sha256": "3888356d3a73f21d9ed9494355cbf966d08db22e24efa8b809df4c537e03b18a"
+    },
+    {
+      "id": "blindside/playing/spades-13",
+      "sha256": "1db727ee4024a3cb2187f08b6e1705726bb9e7aa82c4e38c4f1a94dae63d5a8e"
+    },
+    {
+      "id": "blindside/playing/spades-14",
+      "sha256": "322cc8887d5cb8e3ea3422e3e9d6516647433ea738f51409e64fb2a76470191b"
+    },
+    {
+      "id": "blindside/playing/hearts-2",
+      "sha256": "63a0b368aa363a551bb10e480f2c5aeb4cce7826d1748b1c9d30a719e3edba12"
+    },
+    {
+      "id": "blindside/playing/hearts-3",
+      "sha256": "c30ea0a4aa0a289ad6ed61f55a8a922e26438ea16ec8d1a8119556dae783cf06"
+    },
+    {
+      "id": "blindside/playing/hearts-4",
+      "sha256": "74c0083406a4edb74e0864d4dde35b98334f3725ca6667d6978bfdf5d0463626"
+    },
+    {
+      "id": "blindside/playing/hearts-5",
+      "sha256": "f0865e5464442c7ac5bf1d882fb01446c4c636dfa786bd713f08b60b7a7a0a94"
+    },
+    {
+      "id": "blindside/playing/hearts-6",
+      "sha256": "99b607a375e5f8b3b957bed19c65bc308e4e655ef7f91156e24ed591af132000"
+    },
+    {
+      "id": "blindside/playing/hearts-7",
+      "sha256": "c40e2056da4405f2250034f83e2035cb3ab31a074633ca5d0b249cc003d4113f"
+    },
+    {
+      "id": "blindside/playing/hearts-8",
+      "sha256": "a018a11b16a13b67252a436917afa5099a961e1b1e3fe6e2ae16cdb3bacd40e6"
+    },
+    {
+      "id": "blindside/playing/hearts-9",
+      "sha256": "448b12df67210ea5e0d4ffb24a834c51152a4f2cbc433cc58d1fed9d69145567"
+    },
+    {
+      "id": "blindside/playing/hearts-10",
+      "sha256": "22b83db40d48f7adc6baf5b65cfd1b1abd01b04fcac6a975383a37482ecd1287"
+    },
+    {
+      "id": "blindside/playing/hearts-11",
+      "sha256": "c619089c59ade34504d34e485064db0d6838e70ca449c0cb4045b9caab441849"
+    },
+    {
+      "id": "blindside/playing/hearts-12",
+      "sha256": "a0d7c8b5f4810c99be373f9b3d765bb9fbaaa3fca643f5c12febace00a8e62cb"
+    },
+    {
+      "id": "blindside/playing/hearts-13",
+      "sha256": "4f87625f1a018490cafc7bdbde329e6abce18b045445c7db4315ed4024461cf5"
+    },
+    {
+      "id": "blindside/playing/hearts-14",
+      "sha256": "a574aec157e9552bd23635077946859565899d4fe463a1a22d0366470982779d"
+    },
+    {
+      "id": "blindside/playing/clubs-2",
+      "sha256": "e6496f1689755d2d964d23654cef75bd13cfb77c029b2614f9266581ff52c93a"
+    },
+    {
+      "id": "blindside/playing/clubs-3",
+      "sha256": "d8b1d0670e5531ff630fe64a03b5e0927c1bd83fd5d2b72dd3c8901f11f19021"
+    },
+    {
+      "id": "blindside/playing/clubs-4",
+      "sha256": "d677f6d845befb942751e654287920b3003892ddb3d0ff06abc04467f51ad13a"
+    },
+    {
+      "id": "blindside/playing/clubs-5",
+      "sha256": "c8a720dc0af003da09dfd6d567b597ed637b5e53fa126979912f79cfbd03f748"
+    },
+    {
+      "id": "blindside/playing/clubs-6",
+      "sha256": "4f5eab3063935a8c20d15e9eb0a1bc92b876f2988d1b98cc938e4d3232086759"
+    },
+    {
+      "id": "blindside/playing/clubs-7",
+      "sha256": "688aa92d4c3cf20e5c42f7c87061c9edcede3f577333a3452e0c9053b9d7f973"
+    },
+    {
+      "id": "blindside/playing/clubs-8",
+      "sha256": "7ffb809c7e111c4a4287c3aa2e6fc6455c39583b038c84b58a723abd314048ea"
+    },
+    {
+      "id": "blindside/playing/clubs-9",
+      "sha256": "9b0faa05b7ab3dc4f13a145ee394934cda7b99a15cf7514bd44a8b99e7bc0282"
+    },
+    {
+      "id": "blindside/playing/clubs-10",
+      "sha256": "2e422083251b49e0b85423a03f6096a367716ce753b92328195c69487491fdf9"
+    },
+    {
+      "id": "blindside/playing/clubs-11",
+      "sha256": "ffccd0c29be04c29b638912ff87e368e043ec4485d6f58f0ba0040574fea5b0a"
+    },
+    {
+      "id": "blindside/playing/clubs-12",
+      "sha256": "03d8362a1683ce67c0387ca259a0f28a6b89bd6c912f334ab46acb421b381e5a"
+    },
+    {
+      "id": "blindside/playing/clubs-13",
+      "sha256": "213ffe0cd78d5a6a38fa0084eb4b23bbe6fde8faac368dfe663c7ee4bade51b0"
+    },
+    {
+      "id": "blindside/playing/clubs-14",
+      "sha256": "862e45de0768e6d6c17f49b22324f19d322d4c24710271c680067f7405a00880"
+    },
+    {
+      "id": "blindside/playing/diamonds-2",
+      "sha256": "0301fecf9e3ec959c3cd975b594a33e18d5063c5cd20740a6eded1aa457c0e9b"
+    },
+    {
+      "id": "blindside/playing/diamonds-3",
+      "sha256": "d27903c7c619c7673302c8250f3d06a8d98621f640a0394b04cf3f6ccbfc41d4"
+    },
+    {
+      "id": "blindside/playing/diamonds-4",
+      "sha256": "b377da2c8d9aa6a281b479ab0d0d3a87b322727ca37d9039693deac24714e703"
+    },
+    {
+      "id": "blindside/playing/diamonds-5",
+      "sha256": "dddd39fc070ed92917dfa34d0452828168d1f83c471abe627c45fc29311d5a5c"
+    },
+    {
+      "id": "blindside/playing/diamonds-6",
+      "sha256": "0d21fafc4e0d83d1eaa36163985910bafc2df86c1248696418c65658434a3dcc"
+    },
+    {
+      "id": "blindside/playing/diamonds-7",
+      "sha256": "d7a8f6b6b1fcbaf6cb3b341f89102aeed8b72538fc474f1e5d7d55ad84b8abd3"
+    },
+    {
+      "id": "blindside/playing/diamonds-8",
+      "sha256": "ce9b710a098b3e03b69fc2ee677e2b104c7dc9108256c47af52eeea6be393016"
+    },
+    {
+      "id": "blindside/playing/diamonds-9",
+      "sha256": "2c201093f3c63f4bfd8373d5693b1752d3554cd4b809c7893c76896438e6206d"
+    },
+    {
+      "id": "blindside/playing/diamonds-10",
+      "sha256": "3dee8397c09984a30db6ef972805f5a2131e54e69dd91af1a0a2a2c09054a970"
+    },
+    {
+      "id": "blindside/playing/diamonds-11",
+      "sha256": "bbd109157744f72ebfff72ff263aedd6f6d0be6d46c7795f0b4a2e38e623f477"
+    },
+    {
+      "id": "blindside/playing/diamonds-12",
+      "sha256": "b2def91049fcdfcd6e930bf63bf3e346e4a41a1780133d5758bb82115208c087"
+    },
+    {
+      "id": "blindside/playing/diamonds-13",
+      "sha256": "5a27d7359487cf878fb587c7a8eb7132af4be2146ea4c76666edeb464cfb8093"
+    },
+    {
+      "id": "blindside/playing/diamonds-14",
+      "sha256": "f2318431b7f6f9a197d3b9c2b7b985f5f004440e227b05be8e44219648e60135"
+    },
+    {
+      "id": "spire/strike",
+      "sha256": "8a4d4dcd3dba2f0f3aca352ced4699326d6737b400ec33b6be5566d4f328c682"
+    },
+    {
+      "id": "spire/strike-upgraded",
+      "sha256": "ef60f42e209c0401df222b586058549adcaefc881f2739693ee2c51ce0207e21"
+    },
+    {
+      "id": "spire/defend",
+      "sha256": "174f73326c955a16856c83754e4559c3e6dc0fbc7fb331b6f41540cc7ade891b"
+    },
+    {
+      "id": "spire/defend-upgraded",
+      "sha256": "e9ff2a21e12c9a024bfb10f06680175cc84fe6995a98ca785a3fae8338fe2a38"
+    },
+    {
+      "id": "spire/bash",
+      "sha256": "5235955e8006ddad37c5966484ce8bd030a7c1a5a0121d934a94f7d210922e35"
+    },
+    {
+      "id": "spire/bash-upgraded",
+      "sha256": "3b67a8c119b066b65892aeb1d313dc7b5682a4ad7c10db927f727a7616d6f7c1"
+    },
+    {
+      "id": "spire/anger",
+      "sha256": "c223f8e81e4b128c9589b662201aabb6be4592e3c9ce01d034c939d70eceb9c2"
+    },
+    {
+      "id": "spire/anger-upgraded",
+      "sha256": "774de92a93c4805a57e7695811dd3fc9ce56e66931a8b99d1c69ac06fdf4b117"
+    },
+    {
+      "id": "spire/bodySlam",
+      "sha256": "ee463bafc38c4e94dfdee974d5848d0c43d1628b4b928e23f06d1b0a0dc7efa5"
+    },
+    {
+      "id": "spire/bodySlam-upgraded",
+      "sha256": "65586231437e7ee6590ff171cffd1e48a46fc33816e760529fa68bf459a1169c"
+    },
+    {
+      "id": "spire/clash",
+      "sha256": "9e087e37cb748f943a1c4153dd59ce859280d6dde8cb4eba4e3ea81d3ad3c2cc"
+    },
+    {
+      "id": "spire/clash-upgraded",
+      "sha256": "1a9bf98982a49a27bf579776cda32239cdd9a4774ddabf23bd24bcc267a08af3"
+    },
+    {
+      "id": "spire/cleave",
+      "sha256": "7099235006face3f0b270b7e8c199df43d2a00fdada8c7fcbfee7c69c45676cb"
+    },
+    {
+      "id": "spire/cleave-upgraded",
+      "sha256": "51e818adb0046c26df67dd989cecbd55e9d54398e6d32f113878b929f79cba20"
+    },
+    {
+      "id": "spire/clothesline",
+      "sha256": "6baebcb6a1e26fc342cfde3ef4013e5bf7b6259418817b4b1e9e6e07d5f742df"
+    },
+    {
+      "id": "spire/clothesline-upgraded",
+      "sha256": "c5cb816fe7e03741e05423401aa8d60ccf8b4ef4afd26a08ca99b265821be5c0"
+    },
+    {
+      "id": "spire/flex",
+      "sha256": "697697b5710e229f8bb6064dd19094a6dc7c7254dc1671c3b07e7f067161c363"
+    },
+    {
+      "id": "spire/flex-upgraded",
+      "sha256": "9541d34355a3acee479a0ca7c3c0eb4196264cbe7dd24609213a6a373617105b"
+    },
+    {
+      "id": "spire/headbutt",
+      "sha256": "b6179887904369fc65d47ce3290e3e8bf6467934dabfc45b47171351a2c80101"
+    },
+    {
+      "id": "spire/headbutt-upgraded",
+      "sha256": "33e89bdbefae507c75903854f1805b9470d26861d4720a2d2818f297921579c2"
+    },
+    {
+      "id": "spire/heavyBlade",
+      "sha256": "5ef4df81651abbfbb49a56536a75dc76e00cdeb5c0e0834e556a9b5d8df2f43f"
+    },
+    {
+      "id": "spire/heavyBlade-upgraded",
+      "sha256": "a211d8a30835556115b89c27f7d8a1dcd6a5c73ee8082acf65eac8e1f7d61a64"
+    },
+    {
+      "id": "spire/ironWave",
+      "sha256": "534197207431e8858bcac825e1d440c49fd3f85edd71364938d822e0095330ce"
+    },
+    {
+      "id": "spire/ironWave-upgraded",
+      "sha256": "92be7be6ef61d27222aa6819816b5f25f65a46099dcb7d7615eece75bd3070ea"
+    },
+    {
+      "id": "spire/perfectedStrike",
+      "sha256": "6eec0fcad7c1ec4878f79ac35e004d5adff2897f7b45adff58511177bdbb8c1b"
+    },
+    {
+      "id": "spire/perfectedStrike-upgraded",
+      "sha256": "6ca99eb3d68a8f01cd124d76d18083b34e990ba5270a2e1a7c3163b75ce637fd"
+    },
+    {
+      "id": "spire/pommelStrike",
+      "sha256": "ccdf6c939d013d9ccd42842fb5493dbd975c7522191671cba37d5cd8c6842b79"
+    },
+    {
+      "id": "spire/pommelStrike-upgraded",
+      "sha256": "8416c1baeeac5da353351dc86ee690c9f8c19f1a018efb4b43d19b5b105d1bf1"
+    },
+    {
+      "id": "spire/shrugItOff",
+      "sha256": "aa462ef9e891b7fde51a6ecb8c6d1b392041e26c632c0fe712a018274d4e59a7"
+    },
+    {
+      "id": "spire/shrugItOff-upgraded",
+      "sha256": "b2e5b9ad53b9df66274536a6130171bfe85342ebb413e5383df3247090c02a49"
+    },
+    {
+      "id": "spire/swordBoomerang",
+      "sha256": "f61b1f5ebb66e0dd5ebb586ab3d396e67431c7cc816b2ad8b10d7ac2fc216a67"
+    },
+    {
+      "id": "spire/swordBoomerang-upgraded",
+      "sha256": "e40ed6ddc0ae48f4530931014d23ec81b0cc442f4920ea212564a5298752c9b0"
+    },
+    {
+      "id": "spire/thunderclap",
+      "sha256": "d6a321215185899abc0c97c4a1c598a4a44e0696ecb62a502dd242f0cb2f292a"
+    },
+    {
+      "id": "spire/thunderclap-upgraded",
+      "sha256": "0757293000bc4d11a16742c7bef9122c1fc25febdd91d2722774e297ab72785d"
+    },
+    {
+      "id": "spire/trueGrit",
+      "sha256": "3762a7aae112f6efee2e53080950009f77c166018935ea8b550f68a7c0e0b5eb"
+    },
+    {
+      "id": "spire/trueGrit-upgraded",
+      "sha256": "bbeb65b0d1b8cbf4d155b162638407d119412c3502126f6107ab558f74e54952"
+    },
+    {
+      "id": "spire/twinStrike",
+      "sha256": "424e353d0a7397414ab03ce726f89ac0c81876da4de9c1a0762f7f389fd5f935"
+    },
+    {
+      "id": "spire/twinStrike-upgraded",
+      "sha256": "04aa2a85966c2760211d9b313701eb0a4de34823627200c70eb80f3f6379aaf7"
+    },
+    {
+      "id": "spire/wildStrike",
+      "sha256": "bf8cb452b67e254f33755b062fe2ba4e6e62171c0c2580c05030b72d5996520e"
+    },
+    {
+      "id": "spire/wildStrike-upgraded",
+      "sha256": "06affad6fd8af56fb19667d64b259d444714da0ab94759f06bd96d32ef0c6dc8"
+    },
+    {
+      "id": "spire/battleTrance",
+      "sha256": "bf5181923d906220b36d35935d068082d93bdcf68b4dd212694523da479ba34c"
+    },
+    {
+      "id": "spire/battleTrance-upgraded",
+      "sha256": "88a068f8ac60f2eea8b111d47b588dc7e781983eb97829d910ffbbaa5611b1ef"
+    },
+    {
+      "id": "spire/bloodletting",
+      "sha256": "ea1ea4352920e4a1ea511d71ea5939267e981a8ae639b9c76b77bf37f28cf39a"
+    },
+    {
+      "id": "spire/bloodletting-upgraded",
+      "sha256": "7a7336d5c2477ebf065808939a7a661536fd29e48925b065892174dec0ecc3ef"
+    },
+    {
+      "id": "spire/burningPact",
+      "sha256": "70d4d14f494ecb61ace86c52e7d75f5528bd10226953b53e7063fdbfdde13b6d"
+    },
+    {
+      "id": "spire/burningPact-upgraded",
+      "sha256": "e6b872d379a48b0dc45d7edab68659761590404b82aa46becdca1f0794b950a2"
+    },
+    {
+      "id": "spire/carnage",
+      "sha256": "79434fa8692c5c3b851dda45c1c44b8e65422f8907fc1c070323eb20b6f7e197"
+    },
+    {
+      "id": "spire/carnage-upgraded",
+      "sha256": "c2b9adc4c339e5a1ef137a4ba7d2def55c8658d0e3b5b3d4583db64398d1a2c5"
+    },
+    {
+      "id": "spire/combust",
+      "sha256": "c2d5b47c89887fdf1f201390556834d33816feaf2f031aab9e275c9a04c72201"
+    },
+    {
+      "id": "spire/combust-upgraded",
+      "sha256": "0096e24651c973705e9322b1d927926386f19d51ccf09e381ee68bb888dfbc05"
+    },
+    {
+      "id": "spire/darkEmbrace",
+      "sha256": "f562f77e3cb4b3550993374895b283312d3ab976d690f7e687ccf194526c0c41"
+    },
+    {
+      "id": "spire/darkEmbrace-upgraded",
+      "sha256": "dad638d6fc01d7768e4ac6807ee9796d169c1f5477a3c8e6c1e2b159f80382b2"
+    },
+    {
+      "id": "spire/disarm",
+      "sha256": "b36b0f731fd4388793e85af3806d471d05283a211c393d8826efbe91084ba181"
+    },
+    {
+      "id": "spire/disarm-upgraded",
+      "sha256": "1e83b208eeedbbe9279c81765bda03d2b77d0a533903f6acae24ec0662d1ff90"
+    },
+    {
+      "id": "spire/entrench",
+      "sha256": "6f1c57b9d9b403d95910518683decef876dcf0b415d2e8a4e994d9833c6f1747"
+    },
+    {
+      "id": "spire/entrench-upgraded",
+      "sha256": "898af28bdf96f2bbe43f7399bba22d4f077cf6794529e4d6afccc715850e9b07"
+    },
+    {
+      "id": "spire/feelNoPain",
+      "sha256": "810c509611e2efb8905118a2bdab9fd0b0b881b7a42610c1ac8d40f75a3f55c6"
+    },
+    {
+      "id": "spire/feelNoPain-upgraded",
+      "sha256": "5b1fa796466b000122249b9667c1907bbc9338b1168bcef9db439ae5deff19f4"
+    },
+    {
+      "id": "spire/fireBreathing",
+      "sha256": "c400798ab8a784066aa61fcf8210bbe02685773b1e00285a944dff4b8c411236"
+    },
+    {
+      "id": "spire/fireBreathing-upgraded",
+      "sha256": "b265f35063446618f8568ea265b22e7df37af03ebc92cfe8375469ec8c3d750a"
+    },
+    {
+      "id": "spire/flameBarrier",
+      "sha256": "653743b754494e0cacba9cd69cb5aa510a2e774e6dbc37ce73156ea1603b08ed"
+    },
+    {
+      "id": "spire/flameBarrier-upgraded",
+      "sha256": "46c31725d6779d57d31d5fb9f6ad25c30035ae4b3cfb24920837222b9e28fb16"
+    },
+    {
+      "id": "spire/ghostlyArmor",
+      "sha256": "041a115c22114d3d7a345d096116d974f6c6fada6f4326973bfd2a9f441b4d0d"
+    },
+    {
+      "id": "spire/ghostlyArmor-upgraded",
+      "sha256": "5703696aab09be49e6294c204251a8dfe2f8b6955bf039e98a238d6c1db8e172"
+    },
+    {
+      "id": "spire/hemokinesis",
+      "sha256": "fdfbefc939fee097e7ed582e7403eaf5f5de33b93a7763e08689c403606db14b"
+    },
+    {
+      "id": "spire/hemokinesis-upgraded",
+      "sha256": "59a57222945be3a61c864324876aa71d1c10eb8f440dbd7133f7692fac79ff9c"
+    },
+    {
+      "id": "spire/inflame",
+      "sha256": "bb89c3759808d646d0a798030fafdfb5b52f96f455df4f887ce1837861698225"
+    },
+    {
+      "id": "spire/inflame-upgraded",
+      "sha256": "e01453793c4ee9b5f6353b3f35136e8dbfbf22b70d81bc1cd0ff65ae38834ac5"
+    },
+    {
+      "id": "spire/intimidate",
+      "sha256": "9de7b1e1a7f63e334bd97f136dac738a079ce0eb71cfc545a1bba4390c562724"
+    },
+    {
+      "id": "spire/intimidate-upgraded",
+      "sha256": "13d128a17f67b004d6311c478522c5778e0f02e222d624d63d765ab6fcf7f97a"
+    },
+    {
+      "id": "spire/metallicize",
+      "sha256": "0a4778e4e001b453c318611a298050cc671fa047841c9ec55125d66d949df67b"
+    },
+    {
+      "id": "spire/metallicize-upgraded",
+      "sha256": "4dc24074d8489d8f719176bff0811b15dc2f6c643adfa42b30d84a6dad5c0d2e"
+    },
+    {
+      "id": "spire/powerThrough",
+      "sha256": "51b080e23c9589348480969cc2555e6dd30784e14261289d9437387131e8ef41"
+    },
+    {
+      "id": "spire/powerThrough-upgraded",
+      "sha256": "1d108df127f2488d13d9eac2f33357f82dbf865ae9c3164d38572509bcdbe997"
+    },
+    {
+      "id": "spire/pummel",
+      "sha256": "fd4ef7991bfac4af8aef02b1f32fbd9167ea7aef598763ce8deb654ae191e8f0"
+    },
+    {
+      "id": "spire/pummel-upgraded",
+      "sha256": "bdc6fce4436d86f3cb5d869b04e28710b6a8f6693e8568d8335ce5017869f9ce"
+    },
+    {
+      "id": "spire/rage",
+      "sha256": "b6cd79d95c5d9f222f3167ccdf0dd4f56ac2e93a17dcab56f61dbe14cc9c42cf"
+    },
+    {
+      "id": "spire/rage-upgraded",
+      "sha256": "0dce2ede4c2707a50d42e489b76f330b6f4ef3643ad97915ea517c6243d6a9b5"
+    },
+    {
+      "id": "spire/rupture",
+      "sha256": "c2bf7babad4cabc0c63d924ecc886f6d69cf12b78ca57e15878f03de19a9f9b9"
+    },
+    {
+      "id": "spire/rupture-upgraded",
+      "sha256": "25c52e00f1b0429631d7d6cc6dcebbe05143d5ed4ca120d7fbf75719f6962a0e"
+    },
+    {
+      "id": "spire/secondWind",
+      "sha256": "3daecb2f9d01d3720ae8d9e955c020f8f50840fc235cf1bfd018f50fd902b738"
+    },
+    {
+      "id": "spire/secondWind-upgraded",
+      "sha256": "976b0934e4cdfa77871fdea6afc6d9043ada3197fc0382d89a0ee11f934e696e"
+    },
+    {
+      "id": "spire/seeingRed",
+      "sha256": "fe41b8e503e03f3096a7dd47011a2298356c19b58b8ac1783a50856b68cba21f"
+    },
+    {
+      "id": "spire/seeingRed-upgraded",
+      "sha256": "fe78f69a1b140c6729cf3f3b661970bbd17e180d12a55dbbc4d4b3af82c9421f"
+    },
+    {
+      "id": "spire/sentinel",
+      "sha256": "b2fd03a14d7e313c2c083c53abb6d3b735580d548eea4bda0df2c0f5357bdb83"
+    },
+    {
+      "id": "spire/sentinel-upgraded",
+      "sha256": "a6c8b45af67ebba484acaaf56a5e160150811e43ce072f0b0dfa73e797c45a67"
+    },
+    {
+      "id": "spire/shockwave",
+      "sha256": "a3d04e4781fabc705504d3cccc0b06a8e621b865c8b47b65a7798837851fb3fa"
+    },
+    {
+      "id": "spire/shockwave-upgraded",
+      "sha256": "1e22b5675b6a25625701ccefc9838eebd63d1fc2614b379efa483bc841a05097"
+    },
+    {
+      "id": "spire/uppercut",
+      "sha256": "3398b33bd2fabb22f9271468f4e06b7bea7991a48ba7ab702b2795ba2a98bed5"
+    },
+    {
+      "id": "spire/uppercut-upgraded",
+      "sha256": "5ecc8f303ee1aa9bc53afb3ffa25a3abc1e480f37c4a2da7c94882ac9466b328"
+    },
+    {
+      "id": "spire/whirlwind",
+      "sha256": "52cfa21998c47fe97034a7c8bc6fdbee79ff7a5ff6e1baf9230298965f4a3b6e"
+    },
+    {
+      "id": "spire/whirlwind-upgraded",
+      "sha256": "a49ee914375d05d07b1a0374e1779adc1fb2d59b6f778462852730b10149f234"
+    },
+    {
+      "id": "spire/barricade",
+      "sha256": "7978054f09f762d4d9e6fded7e15e13c45814a225d0edd39517aa2c27e421a95"
+    },
+    {
+      "id": "spire/barricade-upgraded",
+      "sha256": "d2ebcb7e82508c3e25e3354cebc5e87509f240d7be7495810d0b86d66cc90ad2"
+    },
+    {
+      "id": "spire/bludgeon",
+      "sha256": "f61d2fe6ccf501e8ae235f6b6d7ffbe44c1ac971911803adf406d8001dea054b"
+    },
+    {
+      "id": "spire/bludgeon-upgraded",
+      "sha256": "586d38d66b951bf96492f1f79847a05351a6b3a3b492e56d56d9c2cf9437ba13"
+    },
+    {
+      "id": "spire/corruption",
+      "sha256": "d0c76de11a2e04fa19425e043f3ae23143f520170d2d26cafa6f537b1e5be924"
+    },
+    {
+      "id": "spire/corruption-upgraded",
+      "sha256": "51bd4f5b653863a1d054d3c997208f59a4eacbe657c7e1e646cce9b019a59485"
+    },
+    {
+      "id": "spire/demonForm",
+      "sha256": "22e9ee4a740e2a2626b67af659e9f4b374ab5d1e3f88acd90151b720bc77d84f"
+    },
+    {
+      "id": "spire/demonForm-upgraded",
+      "sha256": "e66315ac0c06ec72546487dcff8ebef3add215c77be21e637ec35bf6f283f634"
+    },
+    {
+      "id": "spire/feed",
+      "sha256": "8cdabedc8992726cdb02459b7f3f19d207074677fc4ebf9904f7682ee2184c28"
+    },
+    {
+      "id": "spire/feed-upgraded",
+      "sha256": "3aeab917315adf25c6c7e7ee04f00c6bbfb7580fecbd97acb1c896aa89e76c0e"
+    },
+    {
+      "id": "spire/fiendFire",
+      "sha256": "2bd4165d5784b853aa5d4e9263699f09b63d26491f9610e0d56d6b79bda87d3e"
+    },
+    {
+      "id": "spire/fiendFire-upgraded",
+      "sha256": "d2121dfd2cd34739a67d3ca965179b97af86296ea2f7115a5d50d5a23b936583"
+    },
+    {
+      "id": "spire/immolate",
+      "sha256": "a34479756e7514335a82f722cc05f5d9b5415a9efa882e1ecbc22055c2e206ce"
+    },
+    {
+      "id": "spire/immolate-upgraded",
+      "sha256": "126e398ab57d6d65ef7bb2bb4c9cfe517c3bd3df0b26a1763b7561a2ce7df870"
+    },
+    {
+      "id": "spire/impervious",
+      "sha256": "4709eed3f3bad9ede9ffcbf395f5797169d1c4d3771eea521c62fd4eb7a96076"
+    },
+    {
+      "id": "spire/impervious-upgraded",
+      "sha256": "11cc596a5f86107dd8b588eff949e5534435a237cdb2c966fec6acd82c31eb35"
+    },
+    {
+      "id": "spire/limitBreak",
+      "sha256": "af3a843d4fdefa79e6678bb3d3de8c895d1f655c14ec991c38b4873709fbbd9d"
+    },
+    {
+      "id": "spire/limitBreak-upgraded",
+      "sha256": "7e9386bcfbcdd041a74638949a5649edf3b210f9545cb9b78729cd3aa0d6574c"
+    },
+    {
+      "id": "spire/offering",
+      "sha256": "046bb3678a10ddf980bcac78e458963a342d0dd4758d794a988ad75973ae00dc"
+    },
+    {
+      "id": "spire/offering-upgraded",
+      "sha256": "519a61a2e59457d4ca02f1ac2c339c4ea4b40bc28d1854441cbaacefb75ed5db"
+    },
+    {
+      "id": "spire/reaper",
+      "sha256": "fbab33ea3eef942064a9bc6e90c54dd36deefb0420926a9e5c1b082d1e8a78c7"
+    },
+    {
+      "id": "spire/reaper-upgraded",
+      "sha256": "300642562b2df4f5210fb4fad3447ad8ed33780328fe281dc226a3363c3070b6"
+    },
+    {
+      "id": "spire/dazed",
+      "sha256": "ec3c3426945fc7b545b1f35525672646278975e909addd0cc7094d551bf4e786"
+    },
+    {
+      "id": "spire/wound",
+      "sha256": "be633340acdb34f65e31ba98634090c4d46e714b8f5f1a4c4db5a12f80fbea36"
+    },
+    {
+      "id": "spire/burn",
+      "sha256": "b3c65727102a4a1fab3cc04b7a8d8ad3a9818cda027ece02f76927f9526647e2"
+    },
+    {
+      "id": "spire/slimed",
+      "sha256": "f977f3755125d96abfd3e6e713c28811eb7873fdf110b55e2d95b56b49c197ac"
+    },
+    {
+      "id": "spire/injury",
+      "sha256": "d13ad543c52d2ab3bf97773130219f9250671e6de9c01b91126b913917fdba12"
+    },
+    {
+      "id": "spire/regret",
+      "sha256": "268578bbd7f4396f8af4ffca2e31046c18577f81eaf8c781a8bcf6ce9093c942"
+    },
+    {
+      "id": "spire/neutralize",
+      "sha256": "9227bd0e52468fe5711ddd0eeb16ac5b54e4488ac381cd74c8b41f20f18fb544"
+    },
+    {
+      "id": "spire/neutralize-upgraded",
+      "sha256": "8f56b6f5d5f273c0f854ebfba32dcbc6ac9f88abb5089c735edabd6a531486bd"
+    },
+    {
+      "id": "spire/survivor",
+      "sha256": "98b4ee9e529d8f5bf360c07b055acf2a2c3e0d08b5c8c9665b967290edec1e85"
+    },
+    {
+      "id": "spire/survivor-upgraded",
+      "sha256": "d17a3b4edc1532228ff8d724c8288d79ac54cbf857b20c3dd7e8183d56d024be"
+    },
+    {
+      "id": "spire/deadlyPoison",
+      "sha256": "5383f85668765bbaf21352a5b4d6d629cc0c94514be25088b1caa32f71421cce"
+    },
+    {
+      "id": "spire/deadlyPoison-upgraded",
+      "sha256": "4d6969293fe75500f2875d6a9b24fdfbaec35b49e872d78b22c6447d3310e3e1"
+    },
+    {
+      "id": "spire/poisonedStab",
+      "sha256": "2862e9658d780bd6e5218aa5d962b0975e9851ef76c71046d8acd89e867c816b"
+    },
+    {
+      "id": "spire/poisonedStab-upgraded",
+      "sha256": "203bb34f766f92f384fb545bec1af34b50fd81351936a22020177bb5afa7b948"
+    },
+    {
+      "id": "spire/bladeDance",
+      "sha256": "c5fe4b55191c6caaea8396716dd51241d5c41250ba78b6d0241927f0b331e5e7"
+    },
+    {
+      "id": "spire/bladeDance-upgraded",
+      "sha256": "f33dab0c69134ef47be85f6b3941bca6597f41002ab6c780777e2a1b8f1f53e2"
+    },
+    {
+      "id": "spire/cloakAndDagger",
+      "sha256": "5421a9712f3ecc95f98ce8149615b64453c353fdf14d95f0d3343b584bd9b8b3"
+    },
+    {
+      "id": "spire/cloakAndDagger-upgraded",
+      "sha256": "9856a703acceb36daa47a89f49876765e9367763c5bc184b2b604205dc710920"
+    },
+    {
+      "id": "spire/acrobatics",
+      "sha256": "339e9f5233e086882bdc8d4becffca1ff6928353dcc75d51ffa95aa0da620528"
+    },
+    {
+      "id": "spire/acrobatics-upgraded",
+      "sha256": "b8ac821b6c4f9527fd35296632d9b653cb09d22631f7a942fdd6e7fe54818303"
+    },
+    {
+      "id": "spire/backflip",
+      "sha256": "9a62b454509d10c21d6537d8e5557fef9db593c6f1052c0b544788845b118f3e"
+    },
+    {
+      "id": "spire/backflip-upgraded",
+      "sha256": "61a85a060d16102fd1bc08729604fd192651157b5ff59b8dd6fdf332127dfb26"
+    },
+    {
+      "id": "spire/daggerThrow",
+      "sha256": "d9c04b338e9754599eaff390781ebffa51f8f3f2f85c27e092d373a53112b490"
+    },
+    {
+      "id": "spire/daggerThrow-upgraded",
+      "sha256": "1c2339a0f350ee5f4ec228f36b10d3eba83e48e670a310508377df1352968639"
+    },
+    {
+      "id": "spire/daggerSpray",
+      "sha256": "14e697b234f4c978f640912e184596084b59e0c009c969c754702cc63c52ad12"
+    },
+    {
+      "id": "spire/daggerSpray-upgraded",
+      "sha256": "58296470a463a5dbc5bff5ffa43af5021abbb85a7d6172ff78c97d3506bb27fd"
+    },
+    {
+      "id": "spire/deflect",
+      "sha256": "5e50e1fc03d51894c46ebbc450c5dcb034b9d77fafec23f0682b64880851addb"
+    },
+    {
+      "id": "spire/deflect-upgraded",
+      "sha256": "877b53d8da8ad56eb70ed1f2c8b017dae067cd43587c724234408d088e36a34b"
+    },
+    {
+      "id": "spire/dodgeAndRoll",
+      "sha256": "e15b7c0cc4198b7f1f7e90cf27d4afd03f7217482b34d0f6ae3295ed1372107e"
+    },
+    {
+      "id": "spire/dodgeAndRoll-upgraded",
+      "sha256": "5906c4c04089c48bc04f96d80b32e0796e0a0ba8be865a02e0bc0273ebd97367"
+    },
+    {
+      "id": "spire/prepared",
+      "sha256": "62eae414d0f4ed9fe4ea794b2070d34bc55bdcc6c5b85236f9a5e6d5e643c5ee"
+    },
+    {
+      "id": "spire/prepared-upgraded",
+      "sha256": "a9b8a3c734a90a404d89f6e09c99c814b3c6019c719c8f0e3bbf40955b1c46b0"
+    },
+    {
+      "id": "spire/suckerPunch",
+      "sha256": "1e299d14ffab3186db8f16a59ff696e7a3cc249b1675dcb2f12bcc1a07237569"
+    },
+    {
+      "id": "spire/suckerPunch-upgraded",
+      "sha256": "74287d7e3f047030a67d0d6fc1b2fc7452291cb6c5a2d92710306ff9e70a6cdf"
+    },
+    {
+      "id": "spire/quickSlash",
+      "sha256": "58f4544b2f92abfe211523605f6a7f7c70e69b97bc1079960d6dd2fa90e5862d"
+    },
+    {
+      "id": "spire/quickSlash-upgraded",
+      "sha256": "6f9e47c208e8474dfde2a1f01ca0578f03537c34da26d785d0ece847ff3416b5"
+    },
+    {
+      "id": "spire/slice",
+      "sha256": "15b0d03981294b81edd263972db3816e19ace390900f7cd52c9853b906586fab"
+    },
+    {
+      "id": "spire/slice-upgraded",
+      "sha256": "a014c3b8169430ec777c4dd46974cbcbe9aadedd7d7d1e47792f5e82f4a336a1"
+    },
+    {
+      "id": "spire/bane",
+      "sha256": "968051bc51803b7185ba4911e3db4bf925d6fb3cf2df808b6d0c8265d3a2a0b8"
+    },
+    {
+      "id": "spire/bane-upgraded",
+      "sha256": "18393ae9297ab130077efdba801b37ce4c9f82be8bbf12f36b5dc13cc828e149"
+    },
+    {
+      "id": "spire/flyingKnee",
+      "sha256": "bd9b142c7c8d4db76bd1bbaa27560e4964b18b012b561de0869822f5f95045f6"
+    },
+    {
+      "id": "spire/flyingKnee-upgraded",
+      "sha256": "d8f58307cf08e4793d397596a927f293c5062b8b8ed20d75b20a01dc596870b9"
+    },
+    {
+      "id": "spire/footwork",
+      "sha256": "4b6da65d9fa57d9c916cc56e8743d7b5dcefb8a906a788beadd64b6ffa986408"
+    },
+    {
+      "id": "spire/footwork-upgraded",
+      "sha256": "415f52d1eba7a4edea1e8cb3d816991e24ba773e5ffdc33247165fdb45769ee1"
+    },
+    {
+      "id": "spire/noxiousFumes",
+      "sha256": "3e77587802027a06b8709110e0d7121b1cd59ec68db8312d8fff691d4fcc164b"
+    },
+    {
+      "id": "spire/noxiousFumes-upgraded",
+      "sha256": "9e47da785c3f54748c36382c7850b0aa2c44b07ca27a744742e5c3e5a41ef7ed"
+    },
+    {
+      "id": "spire/accuracy",
+      "sha256": "d35ac271868b55c10122d7cf2bed126442deab32a72ad1707c36cb09129d237c"
+    },
+    {
+      "id": "spire/accuracy-upgraded",
+      "sha256": "a65b8ff349b62c5de4e6c6247a92c88d0584fd06ad4062862f1f6f781a300c5e"
+    },
+    {
+      "id": "spire/infiniteBlades",
+      "sha256": "ebe3124175693e5503fc8a3273611bc4ece82a9a552a4257a1ca43c5bdbf2080"
+    },
+    {
+      "id": "spire/infiniteBlades-upgraded",
+      "sha256": "db4149f2ed66e185a5a845f002db0006124a5c77fb2125fd2d40a289292c709e"
+    },
+    {
+      "id": "spire/blur",
+      "sha256": "db30d638bb19774007a8e8c2a29f31779b343af6448a65e19fb8616d95d48e90"
+    },
+    {
+      "id": "spire/blur-upgraded",
+      "sha256": "b81485f205442fd92a21b1de6cbfde6f22dce2ac473cd6a4c4c53ee55dd1889b"
+    },
+    {
+      "id": "spire/legSweep",
+      "sha256": "ec7bf7bbb54b366e1697c74829ab5813e237bcfd00a3e71a33fa3743a3d8e707"
+    },
+    {
+      "id": "spire/legSweep-upgraded",
+      "sha256": "82c2b553606da0ee092c0662d1a3a9d15c51e7ef42e1eb2733493292306c2565"
+    },
+    {
+      "id": "spire/dash",
+      "sha256": "5265c6196ffbf30edfec69dbfba3a90251530329797b4e927030754165bfd131"
+    },
+    {
+      "id": "spire/dash-upgraded",
+      "sha256": "917198580cc865b107108bc14f45f0022884f55d41e85f7979232f19a574801a"
+    },
+    {
+      "id": "spire/catalyst",
+      "sha256": "7f2b86a11dedaeae777a44b7275552148072f4de3e5c4cb3e494c6af5db2cfe0"
+    },
+    {
+      "id": "spire/catalyst-upgraded",
+      "sha256": "57b5ced36dc3bf44f01f17c79ed3947cc7d9e8dd5695f2626db7117259752955"
+    },
+    {
+      "id": "spire/bouncingFlask",
+      "sha256": "63b40bce300097174d78b4732b74d71e9f67352a5729c76e0b4d84e4cb2055ca"
+    },
+    {
+      "id": "spire/bouncingFlask-upgraded",
+      "sha256": "9585def4d93bda4dcbc29b6259399897fbe581403d14d6cba2a016860df6fdc0"
+    },
+    {
+      "id": "spire/cripplingCloud",
+      "sha256": "5c21fadd0df2d08a7754457929274ac5022ea8fbd6c31473b67eb00967c9d5ac"
+    },
+    {
+      "id": "spire/cripplingCloud-upgraded",
+      "sha256": "2135141d9659aedfd5ac696e352f04374ba6d91c7d9617843cb6dbb865d8d2b3"
+    },
+    {
+      "id": "spire/calculatedGamble",
+      "sha256": "4102183657072901c7162de07c6e8a4050df3deef89923372ac76ccc16083b5a"
+    },
+    {
+      "id": "spire/calculatedGamble-upgraded",
+      "sha256": "a636cb2e0ec3e7280f61a796943a1841680fd33f5b5ab8f31206cf8b71f0899d"
+    },
+    {
+      "id": "spire/concentrate",
+      "sha256": "3f8e25ad179f7aaccc25d0616ed5319c3102306004049c8c940363acdce050f3"
+    },
+    {
+      "id": "spire/concentrate-upgraded",
+      "sha256": "511659f002ad160f54c0d063965d2cef8b1b6ed4c9123ad300e84feaa240bd81"
+    },
+    {
+      "id": "spire/reflex",
+      "sha256": "f3f2d1d29f54ec9959441a0d8debfeb9b45234a0e503e8b442970938fe5199e6"
+    },
+    {
+      "id": "spire/reflex-upgraded",
+      "sha256": "9e8f333aae90e97e685424713c3938583a5ca276f8d15640ebcab6b8da2a683e"
+    },
+    {
+      "id": "spire/tactician",
+      "sha256": "2ce09536af18549d78852f0379f3c506480cbee0b0436374b2b11fff02d602db"
+    },
+    {
+      "id": "spire/tactician-upgraded",
+      "sha256": "3996e759cb9ba7ace4491fea402a36824d7b54084de5585a1e19c0330edc153e"
+    },
+    {
+      "id": "spire/sneakyStrike",
+      "sha256": "4ef15853d8b8f29ebaeff645d00e965d2d1a93a58bae70308596583eef9644ec"
+    },
+    {
+      "id": "spire/sneakyStrike-upgraded",
+      "sha256": "82f68a716775d00ad993c06e912f6fbffc03c9fa5285aab86080ed5a8c338b60"
+    },
+    {
+      "id": "spire/adrenaline",
+      "sha256": "98534678426114db2fc3f71cfd204145123d6380dea5f37575e4d445d6aa2075"
+    },
+    {
+      "id": "spire/adrenaline-upgraded",
+      "sha256": "0b3da8a685086e9a50d90c4fe08a5c2cf6453d22bbfa2a5970a6d3428434cd1f"
+    },
+    {
+      "id": "spire/afterImage",
+      "sha256": "ded69665ceebeba5adbbc6936beb3e3eab5d81704b182b375edc015b4fbd000b"
+    },
+    {
+      "id": "spire/afterImage-upgraded",
+      "sha256": "12950baf6eb8f2c1d64034381f46b7cda6eff0b60abd3e67f660fc49d56e880b"
+    },
+    {
+      "id": "spire/envenom",
+      "sha256": "30adf7a23ef3991e7609f7d322d9e3185ace0dd5094215aa0c146d17fe083c77"
+    },
+    {
+      "id": "spire/envenom-upgraded",
+      "sha256": "b3cf802f5bed3905f47f86a9d601924eacee5f8b5e769c6ab8ac7adc645b8f0c"
+    },
+    {
+      "id": "spire/thousandCuts",
+      "sha256": "fd7beba180f8015a6c394128bcabd1b7c6d475f2b7ef3abb7d5d4075961ff90d"
+    },
+    {
+      "id": "spire/thousandCuts-upgraded",
+      "sha256": "dd8b6e1d6f1c96ad453c4ec5bbaa215458ab4e1eb1951bd180d4e72ea0c7de17"
+    },
+    {
+      "id": "spire/dieDieDie",
+      "sha256": "ac31d4bb726e8ba15d55a816ae21ba6a668685e558f9e28d98eeedfb114b9e29"
+    },
+    {
+      "id": "spire/dieDieDie-upgraded",
+      "sha256": "73e36056037c6cf2accf01752e48f0e7e52c874d8eb1fcd30f5fc0267276567a"
+    },
+    {
+      "id": "spire/shiv",
+      "sha256": "5563646f34a33aa2076d293321f666cd86cb1f2d89cfd3bfc40875c3d995e24f"
+    },
+    {
+      "id": "spire/void",
+      "sha256": "1a1220e1a195b62f2fd199713f758c741e6a7591426bfb4cd32c5869fe57650e"
+    },
+    {
+      "id": "hearth/stray",
+      "sha256": "a6ef155ae06f191bb357058d4fea1c37f87eed8cce8b62d1a57ff0d3b1912953"
+    },
+    {
+      "id": "hearth/stray-golden",
+      "sha256": "59e29182a963cf8fa870b79be25159df1d1dde14afbdd4fec079375b38619167"
+    },
+    {
+      "id": "hearth/pup",
+      "sha256": "2aa9b402f5d49f9cf79073586638c93ddf4e5f46e30d2f66f04248689683eb5e"
+    },
+    {
+      "id": "hearth/pup-golden",
+      "sha256": "3309892ee4b2526f688787f4b7e1efd82354e9cdadd40b38d63898d4fcc3a810"
+    },
+    {
+      "id": "hearth/imp",
+      "sha256": "4082586feae57c4e97c2f0eaeb1bb41f0576e038a9dd04005fed1c13042bda7f"
+    },
+    {
+      "id": "hearth/imp-golden",
+      "sha256": "af9169be396eff567021ba1acbfc18eaab8a8fa2cc08a1ad3137e8148a798b98"
+    },
+    {
+      "id": "hearth/spark",
+      "sha256": "c9747d187d6aa74bed0eb7b8b1cbb35736636a699b08e58b12fb77c0d98afeaf"
+    },
+    {
+      "id": "hearth/spark-golden",
+      "sha256": "8da597838dfe1dd6b30a8f4a7071bac19d005dcee855bc5752c30a9666c93903"
+    },
+    {
+      "id": "hearth/cat",
+      "sha256": "a2124b29120e067867c12235ff8002faa93ff5bc974992d56c49a79723b5d9dd"
+    },
+    {
+      "id": "hearth/cat-golden",
+      "sha256": "500ce3f54d4aa72beceec97852f30b8df4af42bb3c97e208d568f89d35ed9444"
+    },
+    {
+      "id": "hearth/leader",
+      "sha256": "ec37527411c49808a8f116e088b1e9431320978d2e531a61c07d8c0cae35a09e"
+    },
+    {
+      "id": "hearth/leader-golden",
+      "sha256": "5d8c4b1a48e7b44aa9f81f1120a11c0ba23d95ac4a210f56810ed5f180de8887"
+    },
+    {
+      "id": "hearth/harvester",
+      "sha256": "36b75d33cafa766564e8ce10325813077ee87864834cfbb424f82399e08e9a34"
+    },
+    {
+      "id": "hearth/harvester-golden",
+      "sha256": "0d3540614a5eca7e67633c458b9f5f2b8128a4faa380dbcc34543ab9bdbb736f"
+    },
+    {
+      "id": "hearth/matron",
+      "sha256": "7374ae6366f793a0379bfd9eaafd18933b6c87fb96695990acb2a24ad8f11fbb"
+    },
+    {
+      "id": "hearth/matron-golden",
+      "sha256": "c65db4dad03b550b217aa7701b265556816e647b647a2ffbc76f36fb1a7cdb19"
+    },
+    {
+      "id": "hearth/molten",
+      "sha256": "36c1bd9ed511843e44acbce174154d5c4839b2b345d6cbb2d147028469d2bdbd"
+    },
+    {
+      "id": "hearth/molten-golden",
+      "sha256": "d2a94e2a671086c1da23abbf9440eca93076461c7712c79053a55398f63ac73b"
+    },
+    {
+      "id": "hearth/hyena",
+      "sha256": "4f98fb9253662ba14c46961b05dd1ee07494bac9cbbf26e19371029fe896d4c2"
+    },
+    {
+      "id": "hearth/hyena-golden",
+      "sha256": "06f740f3d4dd9a5a37edd2d81d7323d88dd789367975c4c3b1ca9b2ea6427b19"
+    },
+    {
+      "id": "hearth/rat",
+      "sha256": "0ecfd0d5ccb29aaa1f59af9405d196d9685ba52ec49ccba3f68085039f4c3654"
+    },
+    {
+      "id": "hearth/rat-golden",
+      "sha256": "5a5555bb7949c909088dfab25d3d2d5bd59ff8001e64d1a28205d6b38a3df237"
+    },
+    {
+      "id": "hearth/cobalt",
+      "sha256": "25f720ca8a8901adf033781d5cfcf81919658a0216efd2377e5da45d53d3bacb"
+    },
+    {
+      "id": "hearth/cobalt-golden",
+      "sha256": "f914af70d0195c90da82ecec43c550ac8adb935440475fb0ab7fb75e93034267"
+    },
+    {
+      "id": "hearth/juggler",
+      "sha256": "b795457d719ca92c59f3b5a7794bea297da2efe07c46ff5bf2f368c7821010f1"
+    },
+    {
+      "id": "hearth/juggler-golden",
+      "sha256": "2a7c8873e222c2630de7ab3859cc9b1d6642d9dcb2009916e3a31b944a9fb5ae"
+    },
+    {
+      "id": "hearth/tempest",
+      "sha256": "fe9b6fcd7aade6e59789f1729a8f6abb1027b8e0c1ad5b25eff0a37d066b9963"
+    },
+    {
+      "id": "hearth/tempest-golden",
+      "sha256": "29692098214dc450312d16f796e062e41a380428904f71024717f76af2b08ef8"
+    },
+    {
+      "id": "hearth/sentinel",
+      "sha256": "4f31dfa35245f50090c2fce4135a3277e978d7aeb8ae15ebef35cdd2a4cf4f30"
+    },
+    {
+      "id": "hearth/sentinel-golden",
+      "sha256": "65c50cce1f850d22470f010c6e8d10c9d85c0cb92014b4f0bb26d3387a0e5fab"
+    },
+    {
+      "id": "hearth/hydra",
+      "sha256": "8c793b4f8e90c458caf1cf487d2cebca1828ad3a5b21a179481d8cfd57eeaa2c"
+    },
+    {
+      "id": "hearth/hydra-golden",
+      "sha256": "4c11fd6d79b9bdc55ee28654019cfbf6f9cfd5be2931f40c96dc14e55c860f35"
+    },
+    {
+      "id": "hearth/bomb",
+      "sha256": "f313df4244f1af6fd89aa8838dc660958cda86dd90366a2078bf1dcb566429fe"
+    },
+    {
+      "id": "hearth/bomb-golden",
+      "sha256": "148f7918404ce96a9df9dde8ac078535055dc5471274f37e2c5135900ea8c33b"
+    },
+    {
+      "id": "hearth/watcher",
+      "sha256": "49a62079b2acfc1659920b26e59e24f2964b3f60611c962755d6bbd43ec4b999"
+    },
+    {
+      "id": "hearth/watcher-golden",
+      "sha256": "77e05393ce0bed296ec2987f75ea2c759eca2519ccfaa2954cf1fb13376c3397"
+    },
+    {
+      "id": "hearth/dancer",
+      "sha256": "78b13a95805609c46c1ef798ba2690bc78c3607e43e5bafad1532e34cce5262c"
+    },
+    {
+      "id": "hearth/dancer-golden",
+      "sha256": "69d5a79eeca621effccbae0502a1c34857499f360e640275ceb7f9769e78cce5"
+    },
+    {
+      "id": "hearth/mother",
+      "sha256": "553ab0fa6e7a3e7539352accee7ebadb432e82bade6c48b2bcbf1a8a6eebe17d"
+    },
+    {
+      "id": "hearth/mother-golden",
+      "sha256": "61d657c318405582d9b1ffe61bff4a6b6caf8841af5d3952a5310638591c4134"
+    },
+    {
+      "id": "hearth/croc",
+      "sha256": "6cd6cb951e041deab9a9b53da10717676d814911fbb3d153693a69b8597227ca"
+    },
+    {
+      "id": "hearth/croc-golden",
+      "sha256": "047748fb57250200ced5eb1abe04ba59fabb5b72a02d0542116b72d4e7e884fc"
+    },
+    {
+      "id": "hearth/egg",
+      "sha256": "5ae90e3f4187fde64db7db550897a38551578040d7a8243338ae1ea91691dbfd"
+    },
+    {
+      "id": "hearth/egg-golden",
+      "sha256": "ec24fe38cef5b60cb109919b61c5517575367a3d2ed2ce865a4c888814c6fadf"
+    },
+    {
+      "id": "hearth/infernal",
+      "sha256": "418643160954e46c7d3bf20d70e8c73e5709e39d60e1711a344643f460eca795"
+    },
+    {
+      "id": "hearth/infernal-golden",
+      "sha256": "d89322b565f4115d107f9dd0bf601b3e91aabbe694b83728c3e56dd0734ee440"
+    },
+    {
+      "id": "hearth/cyclone",
+      "sha256": "cf0d979d4a6c760b896f24e9517bb009642187b39ba682124ed5870ac144c6a2"
+    },
+    {
+      "id": "hearth/cyclone-golden",
+      "sha256": "05fc30d5097e55fe2b5b4170812c50b7ac37dd9ef6b9f1a1a2492f72bf65d9b7"
+    },
+    {
+      "id": "hearth/phoenix",
+      "sha256": "9afc6d912b2a58bf6a244dcd1980908f31cf2410e4a3e6f11c880290eeff7689"
+    },
+    {
+      "id": "hearth/phoenix-golden",
+      "sha256": "c2c81355af7a1dae3b7aa6f78942b5cce713ef0b4d7f8bd5a400f7d0b05ac105"
+    },
+    {
+      "id": "hearth/wolf",
+      "sha256": "8c49888dded632dd21731d12297d15b1eae50a96e9fc16fd56eae035453ec2e1"
+    },
+    {
+      "id": "hearth/wolf-golden",
+      "sha256": "05f402d258cf22cfc08bc4966db8d92d79091dafcdbfe22b4549ce9a8b2a685d"
+    },
+    {
+      "id": "hearth/reaper",
+      "sha256": "db6f2c26a0c9dbeb44cbfb4509e9c9859c8fb72b0f5c2f84144fda4251631410"
+    },
+    {
+      "id": "hearth/reaper-golden",
+      "sha256": "7dd89d4b190e493f5902a36c42f0d468c6425b53f19f9094e61ca1f527acea4d"
+    },
+    {
+      "id": "hearth/devourer",
+      "sha256": "de49d520a461f47fb27e1734d9fc28104b7f57a9731235344e409b22d4952b85"
+    },
+    {
+      "id": "hearth/devourer-golden",
+      "sha256": "1a0ed301604da42c1584203e9bdfe5ca02c020bdc05a574e6a7092ebaac86ed5"
+    },
+    {
+      "id": "hearth/elder",
+      "sha256": "19e06d2c0faab2d205c0e5a3dfa5ae71ad123859c4af550325b90ccb43e3e473"
+    },
+    {
+      "id": "hearth/elder-golden",
+      "sha256": "51e0cde3ac78a3b48151d97c4e30ba29e37e7e6b4f4f61b63230301d5e603f49"
+    },
+    {
+      "id": "hearth/amalgam",
+      "sha256": "66ab397bd45c3a262df53fe360cde24127bea408fbcd441ea1869c6d5fc21648"
+    },
+    {
+      "id": "hearth/amalgam-golden",
+      "sha256": "dd297069c9822e2065af81410ccfddc050f1ee6ae29fe0f8bf2d021ab78197de"
+    },
+    {
+      "id": "hearth/colossus",
+      "sha256": "663eaa884a48d2129a156ffb9ef85b7b1826a9a556bb50d88eb2e3dae0f3d1b5"
+    },
+    {
+      "id": "hearth/colossus-golden",
+      "sha256": "e58faf7ab48671928b79ea1e0a51161d9eb03eca0268f7ef829f5fc0f7aeb919"
+    },
+    {
+      "id": "hearth/cub",
+      "sha256": "e338ad79a0dd76881f37dcd7504059e031a58f7076db34d62e3aab58f373880e"
+    },
+    {
+      "id": "hearth/cub-golden",
+      "sha256": "42e3a73e405485d1fdfce913f802872042736d637ff5128c9febffd2b0b86a40"
+    },
+    {
+      "id": "hearth/scrap",
+      "sha256": "28b02cd7fe4064d219e18c7d3b5367833f05d0f5fb4e855a05d9582024d37bdf"
+    },
+    {
+      "id": "hearth/scrap-golden",
+      "sha256": "d1b7cb0628a29e1ab5bfb6fd71ac393aea41f9e77393031934b3e5895c997f0a"
+    },
+    {
+      "id": "hearth/wisp",
+      "sha256": "61ed9275b69e1a5e7e5d06caf0e08fba04b9d475ad25a795d87ee10c969f9be3"
+    },
+    {
+      "id": "hearth/wisp-golden",
+      "sha256": "30160e4b35950ee906cd23b8da6963c60dfbaf19c705b4753e7350363a56c597"
+    },
+    {
+      "id": "hearth/drake",
+      "sha256": "9ddf151d00d17d4a26adba0f57969d0f734f55e274c13aa918f84960718665b7"
+    },
+    {
+      "id": "hearth/drake-golden",
+      "sha256": "0ae25d607d8c3906c65fa385037dcccd096b7c383b2c0e6504c92f9edc4a1e98"
+    },
+    {
+      "id": "hearth/copperbeetle",
+      "sha256": "012c2f700a9966cfd42890069b02a95c135e4804befe2a5863e9c23da3ad7549"
+    },
+    {
+      "id": "hearth/copperbeetle-golden",
+      "sha256": "c7dd899ded78192a62cc7957ed47e3f41b513e40701c8f882dfb471fb80f761c"
+    },
+    {
+      "id": "hearth/bogtoad",
+      "sha256": "3a16bc6476719b6f137cca69799b5e0801b87750bff7ce918f21b340a7b04a13"
+    },
+    {
+      "id": "hearth/bogtoad-golden",
+      "sha256": "e39f2560878571c6dc83571b4063a45d55434203ae066171ae7c8e0b1caa2ffe"
+    },
+    {
+      "id": "hearth/lanternkeeper",
+      "sha256": "ba2586def98f13468a24a3d5af5c949e06e652e4ca09ad1a1fd02248f53d41b8"
+    },
+    {
+      "id": "hearth/lanternkeeper-golden",
+      "sha256": "eb063e75a64050e9691dd62d68a2417fe4cbe8317af1375ec9813ec73e7bd352"
+    },
+    {
+      "id": "hearth/tidewisp",
+      "sha256": "561114c4966b992f63dc67da2df24bc1fc19823b786146fd0cac2b3bcbb7ec3f"
+    },
+    {
+      "id": "hearth/tidewisp-golden",
+      "sha256": "bf1522376f9b86d2d48ff22d03d34ad79a289b33ba73aa1698c0cda61ee1eb4f"
+    },
+    {
+      "id": "hearth/thornstag",
+      "sha256": "cb1a009401e842581d487831817466eb1a0ef6f25ab4bfbf1a6a7c6c3f7a3acb"
+    },
+    {
+      "id": "hearth/thornstag-golden",
+      "sha256": "8f8db2ff41b2367465f7d4db41d098fb892e96caa6f107263ba03038681599e3"
+    },
+    {
+      "id": "hearth/cinderwitch",
+      "sha256": "20bb743e30078ee0e09857e376ca776ba46801b67f7914bcfde325ed9abc14cf"
+    },
+    {
+      "id": "hearth/cinderwitch-golden",
+      "sha256": "105e75bb617c8cb648b9dafe67bea7ae2652a9693964f7e14f453929bcf16398"
+    },
+    {
+      "id": "hearth/brassheron",
+      "sha256": "d9f613643a76849d04af38a8fb36b78844a4adccc21dd3ccef41ee3ea1ae002f"
+    },
+    {
+      "id": "hearth/brassheron-golden",
+      "sha256": "fb1a1738cbd87993000e995cf2335924c217519cff8af5598335695ca675804a"
+    },
+    {
+      "id": "hearth/mistweaver",
+      "sha256": "0d4035eb832cde2af474f5d9cd70a3e95927100167fc0c6696d6ba1b438d5f45"
+    },
+    {
+      "id": "hearth/mistweaver-golden",
+      "sha256": "68671b63cf6f5ba0e11e017f2d1c4606f4f68ff1b8736ca0c79f403aa52fba9e"
+    },
+    {
+      "id": "hearth/moonmoth",
+      "sha256": "719a973bddf847fff7532530ee6228811f696fbc9da505a31740c0e88c65ce2d"
+    },
+    {
+      "id": "hearth/moonmoth-golden",
+      "sha256": "39f70ccc20be046e49bcce434261aaa4ac0207c8e2de8fe86c2f3e75cfa94791"
+    },
+    {
+      "id": "hearth/soulbell",
+      "sha256": "176f65a521755e315159c6140f7645dfacd5cc1dcb493b0e307cab7e7e8aa3bc"
+    },
+    {
+      "id": "hearth/soulbell-golden",
+      "sha256": "cb07f1cfb8a4abbc981bf3fc3b3afb2ed5774a77ac5a453a7dcdafa71c082316"
+    },
+    {
+      "id": "hearth/stormroc",
+      "sha256": "c9eb2d95363883a418c6baacaa122f5cda36ca4cf56f6addb7c277840fd15648"
+    },
+    {
+      "id": "hearth/stormroc-golden",
+      "sha256": "8b1d37a845719c160a1e9b73d70383caa6712f1ea218908a0b457f72c2dc33ad"
+    },
+    {
+      "id": "hearth/ancienttortoise",
+      "sha256": "5d9ecb758c557012eb0e7dbee63f82bd3924bd2d036e0b40ab9736612d90412e"
+    },
+    {
+      "id": "hearth/ancienttortoise-golden",
+      "sha256": "7c2770be24095e8e6773d2613232248b7a45a8007804512a02f071d25a5741e4"
+    },
+    {
+      "id": "hearth/rivetmouse",
+      "sha256": "488fa6057d807a48c183027092d9fa5b93332867776fadc6f0290af29ae3e4a5"
+    },
+    {
+      "id": "hearth/rivetmouse-golden",
+      "sha256": "297941eb1d87fded343a9a5b42d1d4a6fecb869abaa33e3a77b3d15039b005fb"
+    },
+    {
+      "id": "hearth/wickimp",
+      "sha256": "95255d05fde0e0dbf280815b121b761b65413ae6beb75c1c5e4fc3c7ddcabbb3"
+    },
+    {
+      "id": "hearth/wickimp-golden",
+      "sha256": "f48c98a04dd09787d42c2707c585a9f8989b3918ba24268e9f01d356a8219e54"
+    },
+    {
+      "id": "hearth/streetapothecary",
+      "sha256": "9d140e3e62cf70f84e72e43a6a1d14bc97f0d794f2bcc09ba8c4f55611a945ac"
+    },
+    {
+      "id": "hearth/streetapothecary-golden",
+      "sha256": "37a5e7a312a94fb68eb721274545429a56a019b8bb9200219a562f4ac36a97c0"
+    },
+    {
+      "id": "hearth/glassimp",
+      "sha256": "ea2c411caa45eb6fd58911e700dd127c619429000abc87fd4d8ebd6ee7b45e71"
+    },
+    {
+      "id": "hearth/glassimp-golden",
+      "sha256": "8825cf3fb82a2ddc253f34d8d7fd9acabf3f744baab9d4082b6de780cb4a653a"
+    },
+    {
+      "id": "hearth/coilserpent",
+      "sha256": "20367487e65e27e4258e8417ab4464bfa00125beff68b50b7cb7f79f1c35f3c5"
+    },
+    {
+      "id": "hearth/coilserpent-golden",
+      "sha256": "ccd01bd4ced63232165b40506a7796a67be07c705e77982ac0a23ced3ecfed9a"
+    },
+    {
+      "id": "hearth/nightporter",
+      "sha256": "3c3fee1bc5508a67944b55c21c2a307e4ddc52fac51a41155ef66464d6778e2c"
+    },
+    {
+      "id": "hearth/nightporter-golden",
+      "sha256": "e0824c8331d1d6e114e3d3ed1ffb4afcce2a795d8f49a4d4f6536f5d91020830"
+    },
+    {
+      "id": "hearth/furnacescribe",
+      "sha256": "545ea483e1c3dea1a85de7666a77d5534264261bd37c446d3f64e62d483cc7b0"
+    },
+    {
+      "id": "hearth/furnacescribe-golden",
+      "sha256": "d2d515057c80796da9bd5940cbd9651053f0d2263f989da966bdcf206fee4683"
+    },
+    {
+      "id": "hearth/clockworkmanta",
+      "sha256": "7235abfc2dcaf6d25547778c21cb37eacf4699e38e953d7b8383bc783c5b245d"
+    },
+    {
+      "id": "hearth/clockworkmanta-golden",
+      "sha256": "7f2a00739537fcfc17a68afe589dda17bbecd10be3e7941ba4c348c990fb7ebc"
+    },
+    {
+      "id": "hearth/maskmerchant",
+      "sha256": "654b9c9d87ac6ebce741fb394138401146b4a72a35f601ccf78669f6a60a3075"
+    },
+    {
+      "id": "hearth/maskmerchant-golden",
+      "sha256": "c6e8084a01e144da685b7ff630477d73e072d0263c8b47647b366d17e16ac823"
+    },
+    {
+      "id": "hearth/embernotary",
+      "sha256": "f82d0cf4b990538da690cab11a0ec0870d445baf99ca69adb563788917c4574e"
+    },
+    {
+      "id": "hearth/embernotary-golden",
+      "sha256": "b004236bc0f9fd2a8b4d9b9a8c7c545df4f5da457e6acea6f16346bd7c7cb164"
+    },
+    {
+      "id": "hearth/lanternengine",
+      "sha256": "86ad5cf221f074bf332a1cb240d32269fb4729655b0d3b2b6c7ba42c264d3a0a"
+    },
+    {
+      "id": "hearth/lanternengine-golden",
+      "sha256": "2c5320ea162d950a511703b30fda4f109ff188c7a1c59456583c65c16f485cde"
+    },
+    {
+      "id": "hearth/twilightauctioneer",
+      "sha256": "b3316520cd667de5135fdc24dfb0391f09b9c722932da996f35530984f73f9af"
+    },
+    {
+      "id": "hearth/twilightauctioneer-golden",
+      "sha256": "e703a24b98aaf8120bfa2a3243c8691be9b9f8a663d167fd2a262a729cabf31a"
+    },
+    {
+      "id": "primitives/sword",
+      "sha256": "66ae11fd6c203d90977e7fedf1397a7fdc009794dfcad246bb29cde57f2d511f"
+    },
+    {
+      "id": "primitives/shield",
+      "sha256": "798036a1f9070f53fc5f2d9ff421688266b3c9bff3164a5035821ae50e86a38a"
+    },
+    {
+      "id": "primitives/flame",
+      "sha256": "99070dd4cbaa88c50a39969c68ad20aabd13d6d6798b4a2722a8318bd6627ec1"
+    },
+    {
+      "id": "primitives/leaf",
+      "sha256": "3d4e98b129bc10485d3ce05b46cd76cd15ecaa52c9f72d25b76a49929aebfa8b"
+    },
+    {
+      "id": "primitives/bolt",
+      "sha256": "2dc65482350209a48f191b56909b4fff7b06a5380cf1aff15fde43b93d5092b8"
+    },
+    {
+      "id": "primitives/heart",
+      "sha256": "742e287673313f110609ce42db36485ea2c4e31d89f2263331503e77d94beb9f"
+    },
+    {
+      "id": "primitives/diamond",
+      "sha256": "639cc2695205f507b2a6897737df60471d7b40f3467b851f2322a63024859eac"
+    },
+    {
+      "id": "primitives/club",
+      "sha256": "37b7a96ab179c229d09432d3321ca6d6c686a2acae0ed83446d455eb00cfdc8b"
+    },
+    {
+      "id": "primitives/spade",
+      "sha256": "986cb2fd5a74fe63989035477cb4d3a52851eb0ef8d7188cbfc18e1e6b8b6491"
+    },
+    {
+      "id": "primitives/star",
+      "sha256": "e4de8e7534366e98f5974e14e362904957cb6976413e39c72cf6ca0a4a13deb1"
+    },
+    {
+      "id": "primitives/moon",
+      "sha256": "197f9c79b8d079f4dbc774f5e4bb013cbbe1292fc3af036c02917a1e40141898"
+    },
+    {
+      "id": "primitives/sun",
+      "sha256": "2a0b73a74c3c31ea9039b8299f2b2593e76b9e74df95db9e10c2b0e0b926e2de"
+    },
+    {
+      "id": "primitives/skull",
+      "sha256": "9ec820bac3fcdd5d6a21c9079e9b7524255398328fa9073b813e088e961bf755"
+    },
+    {
+      "id": "primitives/eye",
+      "sha256": "60b75ee62add4b9f400503da43e794ac994b7da3481484f0bd5a76489da9ebbd"
+    },
+    {
+      "id": "primitives/coin",
+      "sha256": "5aa181e909dec921c17bee18c7e2de588894013866c3ef14be338f7df1e1c370"
+    },
+    {
+      "id": "primitives/gem",
+      "sha256": "5a107802ace035fbd134b737aebc6ef0ad5890a7834be0dd60ec8995aaa865e3"
+    },
+    {
+      "id": "primitives/crown",
+      "sha256": "12e235dd7b222a94b601878bc545f9261bb239904af0185dd9c7caf0f3e22ad4"
+    },
+    {
+      "id": "primitives/book",
+      "sha256": "744fbb2cdbda236cec783c7b648428cda72ff3970fcf07a0b2a2505e9fda6ce5"
+    },
+    {
+      "id": "primitives/flask",
+      "sha256": "993c97c533a97da2a3d403aa677160c8647c6f80b1bee5fc0ee4aa94874f22a4"
+    },
+    {
+      "id": "primitives/feather",
+      "sha256": "ec4dd5105b9a754465aa9bf3c87e478455f3b5659cb5d2f37e5f9f3b9b08f15e"
+    },
+    {
+      "id": "primitives/gear",
+      "sha256": "edbb6dc868420646537daa4f9282bd2fd5d030c1fc4735eabda5932c2cc45897"
+    },
+    {
+      "id": "primitives/anchor",
+      "sha256": "27205620b49a551e2bc478d38a2ad05f53b6a8a2d9121f21709280039719630f"
+    },
+    {
+      "id": "primitives/wing",
+      "sha256": "e827ff98fcd4f639035e63fd7f194065ed06fc8014de771bade417f3daddb361"
+    },
+    {
+      "id": "primitives/claw",
+      "sha256": "7656b8bbd6cdeeaf7d369140b53f90da935e07eb41eefcb09c0fbf6c59f4793b"
+    },
+    {
+      "id": "primitives/fang",
+      "sha256": "d422d3f9459a8ecff6a860b285216be45aa5f9425fc6c0d8baa1fc9e9ae6f1f5"
+    },
+    {
+      "id": "primitives/mountain",
+      "sha256": "4d5f5bf3af60d60888cf3e57ab8f6749461453350a04c863d77fd00d1ef44fe0"
+    },
+    {
+      "id": "primitives/wave",
+      "sha256": "08a4ddf5cf26fb40a6f24ee0417379350a7452ccaf6d183a9bd10d788e2c511c"
+    },
+    {
+      "id": "primitives/key",
+      "sha256": "26aa6e04c5792a2bfe031c877961b1cbcb186cf50c0f24c0bf657c932f582445"
+    },
+    {
+      "id": "primitives/hourglass",
+      "sha256": "20a4e0dfe6087fcb890fd91985819c9ef5c0b8eb14093e2435d6acd5b7a39534"
+    },
+    {
+      "id": "primitives/spark",
+      "sha256": "e6512f6477fc016f94b61ec72c664e4357335c1ddf8f33f9554d30b55b7e2c71"
+    },
+    {
+      "id": "primitives/seed",
+      "sha256": "6f22c982a3152932909118765e36866e49d3d95a387b7d1f0ede2bdade96d903"
+    }
+  ],
+  "acceptedMechExportsUnchanged": [
+    {
+      "id": "hearth/harvester",
+      "beforeSha256": "36b75d33cafa766564e8ce10325813077ee87864834cfbb424f82399e08e9a34",
+      "afterSha256": "36b75d33cafa766564e8ce10325813077ee87864834cfbb424f82399e08e9a34"
+    },
+    {
+      "id": "hearth/harvester-golden",
+      "beforeSha256": "0d3540614a5eca7e67633c458b9f5f2b8128a4faa380dbcc34543ab9bdbb736f",
+      "afterSha256": "0d3540614a5eca7e67633c458b9f5f2b8128a4faa380dbcc34543ab9bdbb736f"
+    },
+    {
+      "id": "hearth/cobalt",
+      "beforeSha256": "25f720ca8a8901adf033781d5cfcf81919658a0216efd2377e5da45d53d3bacb",
+      "afterSha256": "25f720ca8a8901adf033781d5cfcf81919658a0216efd2377e5da45d53d3bacb"
+    },
+    {
+      "id": "hearth/cobalt-golden",
+      "beforeSha256": "f914af70d0195c90da82ecec43c550ac8adb935440475fb0ab7fb75e93034267",
+      "afterSha256": "f914af70d0195c90da82ecec43c550ac8adb935440475fb0ab7fb75e93034267"
+    },
+    {
+      "id": "hearth/sentinel",
+      "beforeSha256": "4f31dfa35245f50090c2fce4135a3277e978d7aeb8ae15ebef35cdd2a4cf4f30",
+      "afterSha256": "4f31dfa35245f50090c2fce4135a3277e978d7aeb8ae15ebef35cdd2a4cf4f30"
+    },
+    {
+      "id": "hearth/sentinel-golden",
+      "beforeSha256": "65c50cce1f850d22470f010c6e8d10c9d85c0cb92014b4f0bb26d3387a0e5fab",
+      "afterSha256": "65c50cce1f850d22470f010c6e8d10c9d85c0cb92014b4f0bb26d3387a0e5fab"
+    },
+    {
+      "id": "hearth/colossus",
+      "beforeSha256": "663eaa884a48d2129a156ffb9ef85b7b1826a9a556bb50d88eb2e3dae0f3d1b5",
+      "afterSha256": "663eaa884a48d2129a156ffb9ef85b7b1826a9a556bb50d88eb2e3dae0f3d1b5"
+    },
+    {
+      "id": "hearth/colossus-golden",
+      "beforeSha256": "e58faf7ab48671928b79ea1e0a51161d9eb03eca0268f7ef829f5fc0f7aeb919",
+      "afterSha256": "e58faf7ab48671928b79ea1e0a51161d9eb03eca0268f7ef829f5fc0f7aeb919"
+    }
+  ],
+  "baselineManifestSha256": "e73f1a83cf5d895d4f55ccf9112b66dc9f209a2b1d57807117ea4358bf18b05b",
+  "candidateManifestSha256": "e73f1a83cf5d895d4f55ccf9112b66dc9f209a2b1d57807117ea4358bf18b05b",
+  "renderer": "sharp 0.35.5 at 144 dpi; compared 644 decoded SVG pixel hashes in assets:review"
+}

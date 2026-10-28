@@ -465,73 +465,101 @@ function ElementPortrait({ kind }: { kind: Element }) {
 
 type Person = 'squire' | 'banner' | 'captain' | 'menagerie' | 'baron';
 function HumanPortrait({ kind }: { kind: Person }) {
-  const baron = kind === 'baron';
-  const keeper = kind === 'menagerie';
+  if (kind === 'squire')
+    return (
+      <g>
+        {/* A small guard braces behind a shield that carries most of the weight. */}
+        <path d="M73 112 76 72 94 57l24 5 20 50Z" fill="#24292a" />
+        <path d="M85 112 84 78l15-14 17 5 13 43Z" fill="#777e72" />
+        <path d="M82 42q1-23 19-25 20 0 23 23l-8 23-16 8-15-12Z" fill="#aa957d" />
+        <path d="M82 43q-4-24 17-31 23-1 28 27l-10-5-7-13-13 13-13 16Z" fill="#929789" />
+        <path d="M85 47 102 51l17-9-4 11-14 8-15-7Z" fill="#354543" />
+        <path d="M107 68 136 83l7 29h-19l-23-24Z" fill="#a49b7f" />
+        <path d="M100 77 122 90l-4 8-25-13Z" fill="#d0b899" />
+        <path d="M18 52 48 39 76 53 75 91 49 112 20 94Z" fill="#26312f" />
+        <path d="M24 55 48 46 69 57 68 88 49 104 26 89Z" fill="#a8ada0" />
+        <path d="M48 46v58L26 89l-2-34Z" fill="#687b73" />
+        <path d="m33 67 15-8 13 8-2 17-11 10-14-11Z" fill="#3b514e" />
+        <Cut d="M48 59v35m-14-24 14-8 10 5M85 35q6-12 16-14" color="#d6cdb2" width={1.1} />
+      </g>
+    );
+  if (kind === 'banner')
+    return (
+      <g>
+        {/* The planted pole and wind-pulled cloth counter a forward stepping bearer. */}
+        <path d="M31 112 39 5l5 1-7 106Z" fill="#71674f" />
+        <path d="M43 9q27-13 54 3l-15 20 18 15q-29-11-61-3Z" fill="#81764b" />
+        <path d="M46 14q20-7 43 1L77 31l12 9q-22-7-47 0Z" fill="#b9a26a" />
+        <Cut d="M50 17v18l22-3m-8-16 9 4-6 8-9-6Z" color="#e3d1a0" width={1.1} />
+        <path d="M54 112 67 81l19-19 25 2 13 22 31 26Z" fill="#24292a" />
+        <path d="M65 112 77 83l15-12 15 2 15 39Z" fill="#777b69" />
+        <path d="M88 35q8-15 24-8l10 15-5 20-15 8-15-13Z" fill="#aa957d" />
+        <path d="M85 43q-1-19 20-23 18 1 23 23l-11-4-12-9-17 15Z" fill="#394541" />
+        <path d="m93 47 9 3-6 3Zm14 3 10-3-4 6Z" fill="#3a3a36" />
+        <path d="M64 83 41 75 40 57l7-1 4 14 22 5Z" fill="#9c9278" />
+        <path d="M42 56q-8-3-7-12l9 3 4 11Z" fill="#c5ac8e" />
+        <path d="M119 78 140 91l15 21h-31l-22-25Z" fill="#9c9278" />
+        <Cut d="m77 89 14-12 15 1m-28 34 12-23m20-24 7-12" color="#d1c2a0" width={1.1} />
+      </g>
+    );
+  if (kind === 'captain')
+    return (
+      <g>
+        {/* An outstretched order and raised blade make a broad command gesture. */}
+        <path d="M137 8 115 55l-5-2 21-48Z" fill="#c2c5af" />
+        <path d="m131 5 8-4-1 14-7-1Z" fill="#d8c8a1" />
+        <path d="M28 112 49 79 75 66l38 3 26 43Z" fill="#24292a" />
+        <path d="M47 112 62 79l22-8 27 9 14 32Z" fill="#777263" />
+        <path d="M70 37q5-18 24-18 19 5 19 23l-11 25-16 5-16-14Z" fill="#aa957d" />
+        <path d="M68 42q-5-25 22-31 24 0 29 28l-15-10-15-6-18 24Z" fill="#3d413c" />
+        <path d="M65 23q13-18 34-13 21 3 29 21l-35-8-26 9Z" fill="#b7a16f" />
+        <path d="M70 17q24-21 46 3l-18 1-22 5Z" fill="#9c5f50" />
+        <path d="m77 46 10 2-7 5Zm18 3 13-4-5 7Z" fill="#343b38" />
+        <path d="M58 80 25 70 10 52l-6 6 15 27 37 13Z" fill="#a49b7f" />
+        <path d="m7 52 17-5 7 6-13 8Z" fill="#c4ad91" />
+        <path d="M110 78 115 57l8-6 12 7-7 30Z" fill="#a49b7f" />
+        <path d="m113 53-7-4 3-7 16 7 1 9Z" fill="#c4ad91" />
+        <path d="M82 72 95 86l12-11-1 37H72Z" fill="#994f43" />
+        <Cut d="M62 94 75 79m32 10 13-13M82 35q14-7 25 4" color="#d6c6a3" width={1.1} />
+      </g>
+    );
+  if (kind === 'menagerie')
+    return (
+      <g>
+        {/* A bent handler offers a gloved arm to a small, alert companion. */}
+        <path d="M24 112 35 70 52 47l35-8 26 25-2 48Z" fill="#26312d" />
+        <path d="M31 112 43 73l20-22 24 2 16 25-5 34Z" fill="#61715c" />
+        <path d="M52 24q14-16 35-9 22 8 24 34L97 69 72 74 52 55Z" fill="#aa957d" />
+        <path d="M46 51q-4-34 21-44 35-7 49 27l-11 22-8-29-21-8-18 20-7 35Z" fill="#53664f" />
+        <path d="m72 40 13 5-9 4Zm18 6 12-1-7 6Z" fill="#35423b" />
+        <path d="M54 68 79 80l-7 32H37Z" fill="#87927a" />
+        <path d="M77 77 105 82l18-12 7 8-19 19-35-4Z" fill="#9d9b80" />
+        <path d="M119 68q10-9 18 0l-2 11-10 4-9-7Z" fill="#bca98c" />
+        <path d="M114 66 111 52l12 8 7-14 8 13 13 6-4 17-19 8-16-9Z" fill="#5b6553" />
+        <path d="m116 66 8-5 6 4 6-5 7 9-3 9-15 5-13-8Z" fill="#9d9a78" />
+        <path d="m112 52 12 8 7-14 8 15-9 8Z" fill="#35463c" />
+        <path d="m130 70 5 1-3 3Z" fill="#293b34" />
+        <path d="M95 81 88 100l-17 12h34l10-19Z" fill="#4c5d4c" />
+        <Cut d="M47 95 58 70m-3 32 9-20m18-33 11-3m31 28 7 2" color="#cdc9aa" width={1.1} />
+      </g>
+    );
   return (
     <g>
-      {kind === 'banner' && (
-        <>
-          <path d="M28 112V3h4v109Z" fill="#827357" />
-          <path d="M32 7q22-7 41 4L59 34l13 13-40-6Z" fill="#887c4c" />
-          <Cut d="M38 12v22l20 4m-10-24 10 3-8 13Z" color="#c7b386" width={1.1} />
-        </>
-      )}
-      <path
-        d="M9 112Q20 84 52 77l13-18-3-30Q68 7 91 8q25 4 29 27l-7 30 8 16q28 11 35 31Z"
-        fill="#24292a"
-      />
-      <path
-        d="M26 112q12-25 38-26l12-21 21 4 11 18q26 4 34 25Z"
-        fill={baron ? '#625c6d' : keeper ? '#677158' : '#7f7970'}
-      />
-      <path d="M72 28q15-16 31 0l4 22-10 25-14 6-16-23Z" fill="#aa957d" />
-      <path d="M73 29 81 24l6 17-10 13 7 19-15-12Z" fill="#6b655c" />
-      <path d="M96 30 105 37l-9 13 8 8-8 5-2-9Z" fill="#d0b899" />
-      <path d="M75 39 89 43l-7 7-9-4Zm19 4 13-7-3 11-9 4Z" fill="#3a3a36" />
-      <Eye d="m95 43 8-3-5 4Z" color="#c8c6aa" />
-      <Cut d="M88 64l9-3m-5-9-3 4 5 1M76 33l8 3" color="#5d584d" width={1} />
-      <path
-        d="M31 99q9-12 29-13l14 20-8 6H22Zm82-12 18 11 11 14h-29l-13-10Z"
-        fill={keeper ? '#9b9274' : '#a49b7f'}
-      />
-      <Cut
-        d="M30 103q13-12 27-13l10 15m50-12 9 8 5 8M76 89l10 16 15-19"
-        color="#c9b797"
-        width={1.2}
-      />
-      {kind === 'squire' && (
-        <>
-          <path d="M62 35Q60 9 89 8q22 0 31 27l-10 17-8-27-14 6-11-5-9 27Z" fill="#929789" />
-          <path d="M67 36 87 39l24-9-7 23-16 10-17-14Z" fill="#6b7772" />
-          <path d="m72 40 16 5 18-8-3 7-15 6-14-5Z" fill="#202b2b" />
-          <Cut d="m89 52 4 1m-3 4 4 1M70 22q8-10 19-9" color="#c7caba" />
-        </>
-      )}
-      {kind === 'captain' && (
-        <>
-          <path d="M64 28Q66 9 90 8q25 4 31 21l-30-9-21 13Z" fill="#a7946f" />
-          <path d="M89 15Q71 10 73 2q19 1 35 14l-10 4Z" fill="#a15f50" />
-          <path d="M69 58q7 24 19 24l12-11-13 4-10-10Z" fill="#615b51" />
-          <path d="M72 87 86 105l16-23-4 30H77Z" fill="#7f5a48" />
-        </>
-      )}
-      {baron && (
-        <>
-          <path d="M62 29 67 7l31-7 12 23 11 8-34-10Z" fill="#5c5467" />
-          <Cut d="M72 12l24-6 8 15" color="#ac9b95" />
-          <path d="M72 57 83 67l13-4 10-7-6 27-11 10-13-16Z" fill="#a6a99e" />
-          <path d="M53 80 69 66l10 33-5 13H44Zm54-11 15 15 13 28h-31l-6-17Z" fill="#494253" />
-          <Cut d="M78 73l8 10m6-10-2 11m-32 1 10 22m48-19 9 21" color="#c5c4b5" />
-        </>
-      )}
-      {keeper && (
-        <>
-          <path d="M54 68Q44 18 79 9q26-7 46 20l-13 27-7-28-18-7-14 14-6 35Z" fill="#566450" />
-          <path d="M26 105 48 80l14-3 13 19-8 16H20Zm81-23 15 3 23 27h-39l-10-12Z" fill="#989780" />
-          <Cut d="m39 103 6-10m3 8 6-12m6 13 3-10m57 2 8 12" color="#d2c8aa" />
-          <path d="M82 96q5-5 10-1l-1 10-9 2Z" fill="#bca378" />
-        </>
-      )}
+      {/* A tall, hollow court silhouette echoes its raised staff and hand. */}
+      <path d="M24 112 28 20h4l-2 92Z" fill="#6b615b" />
+      <path d="M30 17q10-19 21 0-9 14-21 0Z" fill="#b7b9b0" />
+      <path d="M34 17q10-8 16 0-7 8-16 0Z" fill="#596564" />
+      <path d="M31 112 47 67l23-17 35 5 22 32 18 25Z" fill="#282934" />
+      <path d="M44 112 56 77l19-13 27 6 20 42Z" fill="#625c6d" />
+      <path d="M48 99 68 70l14 42H40Zm54-30 20 11 22 32h-34Z" fill="#474654" />
+      <path d="M67 31q4-19 22-18 22 1 26 23l-9 29-20 10-17-19Z" fill="#aa957d" />
+      <path d="M64 38 69 8 97 3l18 27-13 7-14-20-19 23Z" fill="#5d5669" />
+      <path d="m69 38 18-21 14 4 13 16-12-6-13-6-17 22Z" fill="#8a7d88" />
+      <path d="m75 47 11 1-7 6Zm18 2 13-5-4 7Z" fill="#32353a" />
+      <path d="M75 61 87 69l14-7-4 22-9 15-12-17Z" fill="#b1b2a7" />
+      <path d="M96 80 115 67l3-22 9-4 2 29-20 25Z" fill="#7f8390" />
+      <path d="M119 44q-7-11-1-18l5 9 4-16 4 16 8-9q5 14-10 20Z" fill="#bdc2ba" />
+      <Cut d="M34 83 46 61m64 27 11-16M73 11l21-4m-10 69 5 7 6-8" color="#c6c3b6" width={1.1} />
     </g>
   );
 }

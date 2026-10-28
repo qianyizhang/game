@@ -1,0 +1,316 @@
+{
+  "baselineCommit": "3dfba6aeadefe0dcbdc1a7b80bf847822d40196e",
+  "candidateArtCommit": "f757731",
+  "browser": "system Chromium 154.0.8037.57 via Playwright 1.64.0",
+  "servers": {
+    "baseline": "/workspace/game-before-44 at http://127.0.0.1:4174",
+    "candidate": "/workspace/game at http://127.0.0.1:4173"
+  },
+  "practiceScenario": {
+    "seed": "crew-44-0",
+    "setup": {
+      "hero": "forgekeeper",
+      "tier": 6,
+      "gold": 10,
+      "board": ["squire", "banner", "captain", "menagerie", "baron"]
+    },
+    "commands": ["refresh"],
+    "selected": "Hearth Captain"
+  },
+  "goldenScenario": {
+    "seed": "crew-44-baron-9",
+    "setup": {
+      "hero": "forgekeeper",
+      "tier": 6,
+      "gold": 10,
+      "board": ["baron", "baron"]
+    },
+    "commands": ["refresh", "buy Echo Baron", "play Golden Echo Baron"],
+    "selected": "Golden Echo Baron"
+  },
+  "contexts": [
+    {
+      "revision": "before",
+      "width": 1440,
+      "cards": [
+        {
+          "name": "Hearth Squire",
+          "found": 1,
+          "accessibleName": "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+          "text": "★\nHearth Squire\nNEUTRAL\nTaunt.\n▣ Taunt\n1\n4\n16 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Banner Bearer",
+          "found": 1,
+          "accessibleName": "Banner Bearer, 2 attack, 3 health",
+          "text": "★★\nBanner Bearer\nNEUTRAL\nBattlecry: give another friendly minion +2/+2.\n2\n3\n15 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Hearth Captain",
+          "found": 1,
+          "accessibleName": "Hearth Captain, 3 attack, 3 health",
+          "text": "★★★\nHearth Captain\nNEUTRAL\nBattlecry: give your other minions +1/+1.\n3\n3\n13 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Menagerie Keeper",
+          "found": 1,
+          "accessibleName": "Menagerie Keeper, 4 attack, 4 health",
+          "text": "★★★★\nMenagerie Keeper\nNEUTRAL\nAt recruitment end, give your leftmost Beast, Mech, Demon and Elemental +1/+1.\n4\n4\n11 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Echo Baron",
+          "found": 1,
+          "accessibleName": "Echo Baron, 1 attack, 7 health",
+          "text": "★★★★★\nEcho Baron\nNEUTRAL\nYour Deathrattles trigger one extra time while this minion survives. Golden: two extra times.\n1\n7\n9 copies in the shared pool",
+          "artDecorative": "true"
+        }
+      ],
+      "warbandNames": [
+        "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+        "Banner Bearer, 2 attack, 3 health",
+        "Hearth Captain, 3 attack, 3 health",
+        "Menagerie Keeper, 4 attack, 4 health",
+        "Echo Baron, 1 attack, 7 health"
+      ],
+      "shopNames": [
+        "Briar Stray, 2 attack, 1 health",
+        "Clockwork Bomb, 4 attack, 4 health",
+        "Cinder Dancer, 4 attack, 4 health",
+        "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+        "Hearth Captain, 3 attack, 3 health",
+        "Briar Matriarch, 4 attack, 5 health"
+      ],
+      "selected": "true",
+      "practiceSaveSha256": "963f25fcccd87611e7f89086e9a780cd9a1987ad093c21a92f1391251db8d24d",
+      "overflow": 0,
+      "errors": []
+    },
+    {
+      "revision": "before",
+      "width": 390,
+      "cards": [
+        {
+          "name": "Hearth Squire",
+          "found": 1,
+          "accessibleName": "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+          "text": "★\nHearth Squire\nNEUTRAL\nTaunt.\n▣ Taunt\n1\n4\n16 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Banner Bearer",
+          "found": 1,
+          "accessibleName": "Banner Bearer, 2 attack, 3 health",
+          "text": "★★\nBanner Bearer\nNEUTRAL\nBattlecry: give another friendly minion +2/+2.\n2\n3\n15 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Hearth Captain",
+          "found": 1,
+          "accessibleName": "Hearth Captain, 3 attack, 3 health",
+          "text": "★★★\nHearth Captain\nNEUTRAL\nBattlecry: give your other minions +1/+1.\n3\n3\n13 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Menagerie Keeper",
+          "found": 1,
+          "accessibleName": "Menagerie Keeper, 4 attack, 4 health",
+          "text": "★★★★\nMenagerie Keeper\nNEUTRAL\nAt recruitment end, give your leftmost Beast, Mech, Demon and Elemental +1/+1.\n4\n4\n11 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Echo Baron",
+          "found": 1,
+          "accessibleName": "Echo Baron, 1 attack, 7 health",
+          "text": "★★★★★\nEcho Baron\nNEUTRAL\nYour Deathrattles trigger one extra time while this minion survives. Golden: two extra times.\n1\n7\n9 copies in the shared pool",
+          "artDecorative": "true"
+        }
+      ],
+      "warbandNames": [
+        "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+        "Banner Bearer, 2 attack, 3 health",
+        "Hearth Captain, 3 attack, 3 health",
+        "Menagerie Keeper, 4 attack, 4 health",
+        "Echo Baron, 1 attack, 7 health"
+      ],
+      "shopNames": [
+        "Briar Stray, 2 attack, 1 health",
+        "Clockwork Bomb, 4 attack, 4 health",
+        "Cinder Dancer, 4 attack, 4 health",
+        "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+        "Hearth Captain, 3 attack, 3 health",
+        "Briar Matriarch, 4 attack, 5 health"
+      ],
+      "selected": "true",
+      "practiceSaveSha256": "963f25fcccd87611e7f89086e9a780cd9a1987ad093c21a92f1391251db8d24d",
+      "overflow": 0,
+      "errors": []
+    },
+    {
+      "revision": "after",
+      "width": 1440,
+      "cards": [
+        {
+          "name": "Hearth Squire",
+          "found": 1,
+          "accessibleName": "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+          "text": "★\nHearth Squire\nNEUTRAL\nTaunt.\n▣ Taunt\n1\n4\n16 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Banner Bearer",
+          "found": 1,
+          "accessibleName": "Banner Bearer, 2 attack, 3 health",
+          "text": "★★\nBanner Bearer\nNEUTRAL\nBattlecry: give another friendly minion +2/+2.\n2\n3\n15 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Hearth Captain",
+          "found": 1,
+          "accessibleName": "Hearth Captain, 3 attack, 3 health",
+          "text": "★★★\nHearth Captain\nNEUTRAL\nBattlecry: give your other minions +1/+1.\n3\n3\n13 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Menagerie Keeper",
+          "found": 1,
+          "accessibleName": "Menagerie Keeper, 4 attack, 4 health",
+          "text": "★★★★\nMenagerie Keeper\nNEUTRAL\nAt recruitment end, give your leftmost Beast, Mech, Demon and Elemental +1/+1.\n4\n4\n11 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Echo Baron",
+          "found": 1,
+          "accessibleName": "Echo Baron, 1 attack, 7 health",
+          "text": "★★★★★\nEcho Baron\nNEUTRAL\nYour Deathrattles trigger one extra time while this minion survives. Golden: two extra times.\n1\n7\n9 copies in the shared pool",
+          "artDecorative": "true"
+        }
+      ],
+      "warbandNames": [
+        "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+        "Banner Bearer, 2 attack, 3 health",
+        "Hearth Captain, 3 attack, 3 health",
+        "Menagerie Keeper, 4 attack, 4 health",
+        "Echo Baron, 1 attack, 7 health"
+      ],
+      "shopNames": [
+        "Briar Stray, 2 attack, 1 health",
+        "Clockwork Bomb, 4 attack, 4 health",
+        "Cinder Dancer, 4 attack, 4 health",
+        "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+        "Hearth Captain, 3 attack, 3 health",
+        "Briar Matriarch, 4 attack, 5 health"
+      ],
+      "selected": "true",
+      "practiceSaveSha256": "963f25fcccd87611e7f89086e9a780cd9a1987ad093c21a92f1391251db8d24d",
+      "overflow": 0,
+      "errors": []
+    },
+    {
+      "revision": "after",
+      "width": 390,
+      "cards": [
+        {
+          "name": "Hearth Squire",
+          "found": 1,
+          "accessibleName": "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+          "text": "★\nHearth Squire\nNEUTRAL\nTaunt.\n▣ Taunt\n1\n4\n16 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Banner Bearer",
+          "found": 1,
+          "accessibleName": "Banner Bearer, 2 attack, 3 health",
+          "text": "★★\nBanner Bearer\nNEUTRAL\nBattlecry: give another friendly minion +2/+2.\n2\n3\n15 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Hearth Captain",
+          "found": 1,
+          "accessibleName": "Hearth Captain, 3 attack, 3 health",
+          "text": "★★★\nHearth Captain\nNEUTRAL\nBattlecry: give your other minions +1/+1.\n3\n3\n13 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Menagerie Keeper",
+          "found": 1,
+          "accessibleName": "Menagerie Keeper, 4 attack, 4 health",
+          "text": "★★★★\nMenagerie Keeper\nNEUTRAL\nAt recruitment end, give your leftmost Beast, Mech, Demon and Elemental +1/+1.\n4\n4\n11 copies in the shared pool",
+          "artDecorative": "true"
+        },
+        {
+          "name": "Echo Baron",
+          "found": 1,
+          "accessibleName": "Echo Baron, 1 attack, 7 health",
+          "text": "★★★★★\nEcho Baron\nNEUTRAL\nYour Deathrattles trigger one extra time while this minion survives. Golden: two extra times.\n1\n7\n9 copies in the shared pool",
+          "artDecorative": "true"
+        }
+      ],
+      "warbandNames": [
+        "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+        "Banner Bearer, 2 attack, 3 health",
+        "Hearth Captain, 3 attack, 3 health",
+        "Menagerie Keeper, 4 attack, 4 health",
+        "Echo Baron, 1 attack, 7 health"
+      ],
+      "shopNames": [
+        "Briar Stray, 2 attack, 1 health",
+        "Clockwork Bomb, 4 attack, 4 health",
+        "Cinder Dancer, 4 attack, 4 health",
+        "Hearth Squire, 1 attack, 4 health, ▣ Taunt",
+        "Hearth Captain, 3 attack, 3 health",
+        "Briar Matriarch, 4 attack, 5 health"
+      ],
+      "selected": "true",
+      "practiceSaveSha256": "963f25fcccd87611e7f89086e9a780cd9a1987ad093c21a92f1391251db8d24d",
+      "overflow": 0,
+      "errors": []
+    }
+  ],
+  "goldens": [
+    {
+      "revision": "before",
+      "width": 1440,
+      "handName": "Echo Baron golden, 2 attack, 14 health",
+      "boardName": "Echo Baron golden, 2 attack, 14 health",
+      "selected": "true",
+      "saveSha256": "84908ac365ce482a1cf4bc052f0c0dc260ca796f28808a59b0909a9a99927fab",
+      "overflow": 0,
+      "errors": []
+    },
+    {
+      "revision": "before",
+      "width": 390,
+      "handName": "Echo Baron golden, 2 attack, 14 health",
+      "boardName": "Echo Baron golden, 2 attack, 14 health",
+      "selected": "true",
+      "saveSha256": "84908ac365ce482a1cf4bc052f0c0dc260ca796f28808a59b0909a9a99927fab",
+      "overflow": 0,
+      "errors": []
+    },
+    {
+      "revision": "after",
+      "width": 1440,
+      "handName": "Echo Baron golden, 2 attack, 14 health",
+      "boardName": "Echo Baron golden, 2 attack, 14 health",
+      "selected": "true",
+      "saveSha256": "84908ac365ce482a1cf4bc052f0c0dc260ca796f28808a59b0909a9a99927fab",
+      "overflow": 0,
+      "errors": []
+    },
+    {
+      "revision": "after",
+      "width": 390,
+      "handName": "Echo Baron golden, 2 attack, 14 health",
+      "boardName": "Echo Baron golden, 2 attack, 14 health",
+      "selected": "true",
+      "saveSha256": "84908ac365ce482a1cf4bc052f0c0dc260ca796f28808a59b0909a9a99927fab",
+      "overflow": 0,
+      "errors": []
+    }
+  ],
+  "imageMethod": "Fresh context for each revision and viewport through ordinary app controls; lossless WebP from element screenshots. Horizontal phone rows captured at start/end scroll positions."
+}
