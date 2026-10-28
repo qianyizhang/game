@@ -1,0 +1,114 @@
+{
+  "baseline": "da8b3c39097a27a300b414af9b89bdceb234a1ff",
+  "current": "9ed7497b40141d5283e5270ea6922a90a70f2584",
+  "source": "src/games/battlegrounds/ui/MinionArt.tsx",
+  "sourceHashes": {
+    "before": "9ef9c7230da5b6b7dfeba1018151c010b685bd6fd3df7f53dde797b1f20896dd",
+    "current": "d90adad4ce2f38eedec5ecd4c13645c857fdd45571ad63c14a08fad38f5a8fa8"
+  },
+  "outsideElementPortraitUnchanged": true,
+  "decoded": {
+    "current": 644,
+    "before": 644
+  },
+  "comparison": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "hearth/spark",
+      "hearth/spark-golden",
+      "hearth/molten",
+      "hearth/molten-golden",
+      "hearth/tempest",
+      "hearth/tempest-golden",
+      "hearth/dancer",
+      "hearth/dancer-golden",
+      "hearth/cyclone",
+      "hearth/cyclone-golden",
+      "hearth/elder",
+      "hearth/elder-golden"
+    ],
+    "unchanged": 632
+  },
+  "renderer": {
+    "aom": "3.15.1",
+    "archive": "3.8.9",
+    "cairo": "1.18.6",
+    "cgif": "0.5.4",
+    "exif": "0.6.26",
+    "expat": "2.8.5",
+    "ffi": "3.8.0",
+    "fontconfig": "2.18.3",
+    "freetype": "2.14.3",
+    "fribidi": "1.0.17",
+    "glib": "2.90.0",
+    "harfbuzz": "14.5.0",
+    "heif": "1.23.5",
+    "highway": "1.4.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.19.1",
+    "mozjpeg": "0826579",
+    "pango": "1.58.2",
+    "pixman": "0.46.4",
+    "png": "1.6.58",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.63.2",
+    "tiff": "4.7.2",
+    "uhdr": "2.0.2",
+    "vips": "8.18.7",
+    "webp": "1.6.0",
+    "xml2": "2.15.4",
+    "zlib-ng": "2.3.3",
+    "sharp": "0.35.5"
+  },
+  "changedSvgSha256": {
+    "hearth/cyclone": {
+      "before": "cf0d979d4a6c760b896f24e9517bb009642187b39ba682124ed5870ac144c6a2",
+      "current": "b59f6fdeac5c23055364af71c8ff112d8ee82805fce2a264e5982347cb4810f4"
+    },
+    "hearth/cyclone-golden": {
+      "before": "05fc30d5097e55fe2b5b4170812c50b7ac37dd9ef6b9f1a1a2492f72bf65d9b7",
+      "current": "49e5ede0b26239f5dbf24889c8d4829521fee63a0e8d12856b0e13e05f637744"
+    },
+    "hearth/dancer": {
+      "before": "78b13a95805609c46c1ef798ba2690bc78c3607e43e5bafad1532e34cce5262c",
+      "current": "6fe8bd4ba69fa25657bf84b7813da66da0926768c1113c206ef37e553ba85f94"
+    },
+    "hearth/dancer-golden": {
+      "before": "69d5a79eeca621effccbae0502a1c34857499f360e640275ceb7f9769e78cce5",
+      "current": "270a5db0f8c4a4ff808f466b3fc7fbf9f4442dfe52097afd1cbdfb1e26a8b280"
+    },
+    "hearth/elder": {
+      "before": "19e06d2c0faab2d205c0e5a3dfa5ae71ad123859c4af550325b90ccb43e3e473",
+      "current": "cbe6d4dde36c062351e2e53d81f53d59e57cb7373e0c9a0aa6f118e6f6d53cf1"
+    },
+    "hearth/elder-golden": {
+      "before": "51e0cde3ac78a3b48151d97c4e30ba29e37e7e6b4f4f61b63230301d5e603f49",
+      "current": "0462de1613f8209fded21b2d1862d4d7979953d1701fcda2e39a23c3467ee314"
+    },
+    "hearth/molten": {
+      "before": "36c1bd9ed511843e44acbce174154d5c4839b2b345d6cbb2d147028469d2bdbd",
+      "current": "4a52fe47e09491c4363a8a93f7e31e31e5eb27025aa0d710f118b19575724b23"
+    },
+    "hearth/molten-golden": {
+      "before": "d2a94e2a671086c1da23abbf9440eca93076461c7712c79053a55398f63ac73b",
+      "current": "e68a82bb54929468f433e0195097e2dd3cedc3c5ffb9a4524637e4a04b01ede9"
+    },
+    "hearth/spark": {
+      "before": "c9747d187d6aa74bed0eb7b8b1cbb35736636a699b08e58b12fb77c0d98afeaf",
+      "current": "e1d5cf11c7fce071d8bf1c25b76d5c33b69daa51ad06a4aedfdca63ac433abeb"
+    },
+    "hearth/spark-golden": {
+      "before": "8da597838dfe1dd6b30a8f4a7071bac19d005dcee855bc5752c30a9666c93903",
+      "current": "afe712959ba7fad217e853c8f87b13e7212593f4fc0671eb9728007cc90f0cb8"
+    },
+    "hearth/tempest": {
+      "before": "fe9b6fcd7aade6e59789f1729a8f6abb1027b8e0c1ad5b25eff0a37d066b9963",
+      "current": "7352b2984ad9f27f93bef1ff70e6be960e1b9f6714ec0b6e50d55be0bcd5a655"
+    },
+    "hearth/tempest-golden": {
+      "before": "29692098214dc450312d16f796e062e41a380428904f71024717f76af2b08ef8",
+      "current": "d257719acdfb6029d567edb781f2548a9e1b7714c6a31d30cb642733eb43e832"
+    }
+  }
+}
