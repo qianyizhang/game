@@ -72,6 +72,7 @@ jobs:
     env:
       CI_PLAN: ${{ needs.plan.outputs.plan }}
       CI_SHARD: ${{ matrix.shard }}
+      STUDY_REBUILD_PARITY: ${{ fromJSON(needs.plan.outputs.plan).geometry && '1' || '0' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

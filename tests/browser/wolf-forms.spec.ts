@@ -113,7 +113,7 @@ test('Wolf form selection and keyboard alignment deliver exact separate models a
   await captureDownload('Editable Blender source', 'wolf.blend', base.sourcePath);
   await studies.getByRole('button', { name: /Spiral/ }).click();
   await expect(render).toHaveAttribute('data-ready', 'true', { timeout: sceneReadyTimeout });
-  await expect(render).toHaveAttribute('data-delivery', 'procedural');
+  await expect(render).toHaveAttribute('data-delivery', 'baked');
   await expect(page.getByRole('region', { name: 'Wolf forms', exact: true })).toHaveCount(0);
   await studies.getByRole('button', { name: /Wolf/ }).click();
   await expect(render).toHaveAttribute('data-form', 'base');
@@ -189,7 +189,7 @@ test('an unavailable evolved Wolf fails closed and the base remains recoverable'
   await page.route('**/*.glb', (route) => route.abort());
   await page.goto('/?art=3d&study=wolf&form=thorn');
   await expect(page.getByRole('alert')).toContainText('could not be loaded');
-  await expect(page.locator('.study-render')).not.toHaveAttribute('data-delivery', 'procedural');
+  await expect(page.locator('.study-render')).not.toHaveAttribute('data-delivery', 'baked');
   await page.unroute('**/*.glb');
   await page.getByRole('button', { name: 'Original base' }).click();
   await expect(page.locator('.study-render')).toHaveAttribute('data-form', 'base');

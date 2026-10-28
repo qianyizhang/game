@@ -44,6 +44,7 @@ export function checkNativeHydration(root, files) {
   const errors = [];
   for (const path of files) {
     if (
+      !/^src\/art3d\/baked\/[^/]+\.glb$/.test(path) &&
       !/^packages\/dcc-workbench\/(sources|subjects|assets|references)\/.*\.(blend|glb)$/.test(
         path,
       ) &&

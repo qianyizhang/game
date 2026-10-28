@@ -132,7 +132,7 @@ export function mount({
         object.receiveShadow = true;
       }
     });
-    element.dataset.delivery = loaded.native ? 'native' : 'procedural';
+    element.dataset.delivery = loaded.native ? 'native' : 'baked';
     element.dataset.form = id === 'wolf' ? form : 'base';
     element.dataset.duration = String(duration);
     const bounds = new T.Box3().setFromObject(asset);
