@@ -2,6 +2,11 @@ name: Asset build and release checks
 
 on:
   workflow_dispatch:
+    inputs:
+      blindside_joker_capture:
+        description: Capture issue 37 collection and shop review pixels
+        type: boolean
+        default: false
   workflow_call:
     inputs:
       plan:
@@ -13,6 +18,7 @@ permissions:
 
 jobs:
   plan:
+    if: inputs.blindside_joker_capture != true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -84,3 +90,51 @@ jobs:
           name: asset-browser-failures-${{ matrix.shard }}
           path: test-results/browser
           retention-days: 14
+
+  blindside-joker-capture:
+    if: github.event_name == 'workflow_dispatch' && inputs.blindside_joker_capture == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Verify capture branch
+        run: |
+          test "$GITHUB_REPOSITORY" = qianyizhang/game
+          test "$GITHUB_REF" = refs/heads/art/issue-37-opening-jokers
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          lfs: true
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm run maintenance -- check
+      - run: npm ci
+      - run: npx playwright install --with-deps chrome
+      - name: Start exact baseline
+        env:
+          BASE_SHA: 73a24f5c98e77c365c909bbeac9f37347ef845c7
+        run: |
+          git worktree add --detach "$RUNNER_TEMP/issue37-baseline" "$BASE_SHA"
+          ln -s "$GITHUB_WORKSPACE/node_modules" "$RUNNER_TEMP/issue37-baseline/node_modules"
+          (cd "$RUNNER_TEMP/issue37-baseline" && npm run dev -- --port 4174 --strictPort > "$RUNNER_TEMP/issue37-baseline-vite.log" 2>&1 &)
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4174/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat "$RUNNER_TEMP/issue37-baseline-vite.log"
+          exit 1
+      - name: Capture matched contexts
+        run: npx playwright test tests/browser/issue37-context.spec.ts --project=functional
+        env:
+          BLINDSIDE_JOKER_CAPTURE: '1'
+          BLINDSIDE_JOKER_BASE_DIR: ${{ runner.temp }}/issue37-baseline
+          BLINDSIDE_JOKER_BASE_SHA: 73a24f5c98e77c365c909bbeac9f37347ef845c7
+          BLINDSIDE_JOKER_BASE_SOURCE_SHA256: 3ea6b5315fc18627116765a7ba0a67b32ade83e910f9609730c99af1afc6c9d1
+          BLINDSIDE_JOKER_CANDIDATE_SOURCE_SHA256: 6603921f69ff9df004e6d16150425e8d26099e242744e3aa30c8cd90d4cd71d4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: blindside-joker-context-${{ github.sha }}
+          path: test-results/issue37-context
+          retention-days: 7
