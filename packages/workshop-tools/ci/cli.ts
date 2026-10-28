@@ -3,7 +3,7 @@ import { appendFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { catalogueFrom, dependencyGraph, trackedFiles } from './graph.ts';
 import { commandFor, readPlan, requiredModules, type Module } from './commands.ts';
-import { selectPlan, type Change, type Plan } from './selection.ts';
+import { isDocumentation, selectPlan, type Change, type Plan } from './selection.ts';
 
 const root = resolve(import.meta.dirname, '../../..');
 const git = (...args: string[]) =>
@@ -16,7 +16,8 @@ function planFromEnvironment(): Plan {
   const allowed = new Set(catalogue.application);
   if (
     [...plan.coreFiles, ...plan.unitFiles].some((p) => !allowed.has(p)) ||
-    plan.browserFiles.some((p) => !catalogue.browser.includes(p))
+    plan.browserFiles.some((p) => !catalogue.browser.includes(p)) ||
+    plan.geometryFiles.some((p) => !catalogue.geometry.includes(p))
   )
     throw new Error('Invalid CI plan');
   return plan;
@@ -43,7 +44,11 @@ if (operation === 'plan') {
   const plan = selectPlan(changes, catalogueFrom(files), graph.dependants, {
     head,
     full: process.env.CI_FULL === '1',
-    allApplications: !base,
+    // Only the independent fast classifier can establish that Markdown is prose.
+    allApplications:
+      !base ||
+      changes.length === 0 ||
+      changes.some(({ path }) => path.endsWith('.md') || isDocumentation(path)),
     uncertain: graph.uncertain,
   });
   const json = JSON.stringify(plan);

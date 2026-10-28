@@ -1,0 +1,25 @@
+
+> card-workshop@0.1.0 test:browser
+> playwright test --project=functional --project=requires-blender --project=requires-private-evidence --project=functional tests/browser/hearth-elementals.spec.ts --output=test-results/elementals-paused-current
+
+[1028/070127.113653:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/google-chrome/extracted/opt/google/chrome/CHROME_VERSION_EXTRA
+[WebServer] (node:2943) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2956) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[1028/070128.222060:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/google-chrome/extracted/opt/google/chrome/CHROME_VERSION_EXTRA
+
+Running 2 tests using 1 worker
+
+(node:3083) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1028/070129.163159:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/google-chrome/extracted/opt/google/chrome/CHROME_VERSION_EXTRA
+  ✓  1 [functional] › tests/browser/hearth-elementals.spec.ts:33:1 › six core elementals retain recruitment, selected board, combat and practice reload (4.2s)
+  ✓  2 [functional] › tests/browser/hearth-elementals.spec.ts:123:1 › Glass Cyclone forms a Golden triple, discovers, fights and reloads without losing its identity (2.6s)
+
+  2 passed (9.4s)
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

@@ -84,9 +84,7 @@ The local `npm run test:dcc:native` gate uses a disposable source copy and check
 published source and delivery remain unchanged. Its browser case is explicitly skipped in
 ordinary runs without that native candidate; CI is not credited with native execution.
 
-The TypeScript gallery is a compatibility surface while it remains available. Retain its
-delivery checks and named regressions, consolidate repeated machinery, and avoid expanding
-constructor-specific coverage. Retire remaining legacy tests with the corresponding user
+The fixed TypeScript studies are baked into saved GLBs for the gallery. The generators remain an authoring and rebuild surface. Retain delivery checks and named regressions. Normal CI checks source/file fingerprints and lightweight loading; viewer checks exercise the saved artifact. Constructor tests follow changed source dependencies or explicit full validation. Source/export reconstruction is reserved for bake acceptance (`STUDY_REBUILD_PARITY=1`), not unchanged-asset delivery checks. Avoid expanding constructor-specific coverage. Retire remaining legacy tests with the corresponding user
 surface or a verified replacement, recording any deliberately dropped contract. This
 testing policy does not authorize deletion of artist sources, accepted baselines or evidence.
 

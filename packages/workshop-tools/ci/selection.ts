@@ -14,7 +14,7 @@ export type Change = { path: string; status: string };
 export type Catalogue = { application: string[]; browser: string[]; geometry: string[] };
 export type DependencyGraph = Map<string, Set<string>>;
 export type Plan = {
-  version: 2;
+  version: 3;
   head: string;
   mode: 'documentation' | 'scoped' | 'application' | 'full';
   reasons: string[];
@@ -23,6 +23,7 @@ export type Plan = {
   unitFiles: string[];
   browserFiles: string[];
   geometry: boolean;
+  geometryFiles: string[];
   unitShards: number;
   browserShards: number;
 };
@@ -61,6 +62,7 @@ const modelBrowser = new Set([
   'otter',
   'raven',
   'study-loading',
+  'study-delivery',
   'study-mount-failure',
   'wolf-forms',
 ]);
@@ -134,8 +136,15 @@ export function browserFamilies(path: string): Family[] | undefined {
   return undefined;
 }
 
-function isDocumentation(path: string): boolean {
-  return /\.md$/.test(path);
+export function isDocumentation(path: string): boolean {
+  return (
+    path === 'docs/engineering/maintenance.md' ||
+    /^docs\/guide\/(?:[^/]+\/)*[^/]+\.md$/.test(path) ||
+    /^docs\/art\/assets\/(?:[^/]+\/)+README\.md$/.test(path) ||
+    /^docs\/art\/assets\/(?:hearth-mech-roles|spire-act1-enemies)\/[^/]+\.(?:png|jpe?g|webp)$/.test(
+      path,
+    )
+  );
 }
 function repositoryPath(path: string): boolean {
   return /^[^\x00-\x1f]+$/.test(path) && !path.startsWith('/') && !path.split('/').includes('..');
@@ -275,17 +284,22 @@ export function selectPlan(
                 browserFamilies(p)?.some((f) => chosen.has(f)))))),
     )
     .sort();
-  const geometry =
+  // Saved deliveries and viewer edits do not reconstruct historical models.
+  // Constructor dependencies (including shared helpers) follow actual import edges.
+  const allGeometry =
     full ||
-    (!documentation &&
-      (catalogue.geometry.some((path) => affected.has(path)) ||
-        changes.some(
-          ({ path }) =>
-            !isDocumentation(path) &&
-            (path.startsWith('src/art3d/') || path.startsWith('packages/dcc-workbench/')),
-        )));
+    (changes.length === 0 && options.allApplications === true) ||
+    options.uncertain?.some((entry) => entry.startsWith('src/art3d/procedural/')) ||
+    changes.some(
+      ({ path, status }) =>
+        ['package-lock.json', '.node-version', '.nvmrc', 'vite.config.ts'].includes(path) ||
+        (path.startsWith('src/art3d/procedural/') && status !== 'M'),
+    );
+  const geometryFiles = catalogue.geometry
+    .filter((path) => !documentation && (allGeometry || affected.has(path)))
+    .sort();
   return {
-    version: 2,
+    version: 3,
     head: options.head,
     mode: full
       ? 'full'
@@ -311,7 +325,8 @@ export function selectPlan(
     coreFiles,
     unitFiles,
     browserFiles,
-    geometry,
+    geometry: geometryFiles.length > 0,
+    geometryFiles,
     unitShards: Math.max(1, Math.min(4, Math.ceil(unitFiles.length / 24))),
     browserShards: Math.max(1, Math.min(4, Math.ceil(browserFiles.length / 8))),
   };

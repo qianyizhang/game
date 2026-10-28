@@ -44,14 +44,7 @@ export const scenes: Record<string, ReactNode> = {
     </>
   ),
   bash: physicalActionScenes.bash,
-  anger: (
-    <>
-      <Echo>
-        <Glyph kind="flame" x={22} y={0} size={118} color={copper} />
-      </Echo>
-      <Fist x={47} y={14} scale={1.02} />
-    </>
-  ),
+  anger: physicalActionScenes.anger,
   bodySlam: (
     <>
       <Echo>
@@ -87,12 +80,7 @@ export const scenes: Record<string, ReactNode> = {
       <Impact x={135} y={58} size={0.45} />
     </>
   ),
-  flex: (
-    <>
-      <Rays radius={40} />
-      <Fist x={44} y={8} scale={1.12} />
-    </>
-  ),
+  flex: physicalActionScenes.flex,
   headbutt: (
     <>
       <Echo>
@@ -350,25 +338,8 @@ export const scenes: Record<string, ReactNode> = {
       <Fist x={49} y={6} scale={1.07} />
     </>
   ),
-  pummel: (
-    <>
-      <Echo>
-        <Impact x={119} y={43} size={0.75} />
-        <Impact x={31} y={30} size={0.4} />
-        <path d="M11 85H42M17 92H51" stroke={copper} strokeWidth=".9" />
-      </Echo>
-      <Fist x={43} y={13} scale={1.03} />
-    </>
-  ),
-  rage: (
-    <>
-      <Echo>
-        <Glyph kind="shield" x={20} y={24} size={79} color={sea} />
-        <Glyph kind="flame" x={110} y={45} size={45} color={copper} />
-      </Echo>
-      <Fist x={54} y={11} scale={1.04} />
-    </>
-  ),
+  pummel: physicalActionScenes.pummel,
+  rage: physicalActionScenes.rage,
   rupture: (
     <>
       <Rays radius={41} />

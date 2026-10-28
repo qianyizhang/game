@@ -5,7 +5,7 @@ export type Module = 'core' | 'unit' | 'browser' | 'geometry';
 /** File arguments come from a checked catalogue, never from shell interpolation. */
 export function commandFor(plan: Plan, module: Module, shard = 1): string[] | null {
   if (module === 'geometry')
-    return plan.geometry ? ['vitest', 'run', '--project', 'geometry'] : null;
+    return plan.geometry ? ['vitest', 'run', '--project', 'geometry', ...plan.geometryFiles] : null;
   const files =
     module === 'core' ? plan.coreFiles : module === 'unit' ? plan.unitFiles : plan.browserFiles;
   if (!files.length) return null;
@@ -49,13 +49,15 @@ export function readPlan(value: unknown, head: string): Plan {
   if (!value || typeof value !== 'object') throw new Error('Missing CI plan');
   const plan = value as Plan;
   if (
-    plan.version !== 2 ||
+    plan.version !== 3 ||
     plan.head !== head ||
     !['documentation', 'scoped', 'application', 'full'].includes(plan.mode) ||
-    ![plan.coreFiles, plan.unitFiles, plan.browserFiles].every(
+    ![plan.coreFiles, plan.unitFiles, plan.browserFiles, plan.geometryFiles].every(
       (files) => Array.isArray(files) && files.every((path) => typeof path === 'string'),
     ) ||
     typeof plan.geometry !== 'boolean' ||
+    plan.geometry !== plan.geometryFiles.length > 0 ||
+    !plan.geometryFiles.every((path) => /^src\/art3d\/(?!.*\.\.)[^\s]+\.test\.ts$/.test(path)) ||
     ![1, 2, 3, 4].includes(plan.unitShards) ||
     ![1, 2, 3, 4].includes(plan.browserShards) ||
     (plan.mode === 'documentation' &&

@@ -1,0 +1,27 @@
+
+> card-workshop@0.1.0 test:browser
+> playwright test --project=functional --project=requires-blender --project=requires-private-evidence --project=functional tests/browser/artwork.spec.ts tests/browser/art-export.spec.ts --grep standalone SVG|battlegrounds illustrations --output=test-results/elementals-integration-browser
+
+[1028/070020.690108:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/google-chrome/extracted/opt/google/chrome/CHROME_VERSION_EXTRA
+[WebServer] (node:2486) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2499) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[1028/070021.750516:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/google-chrome/extracted/opt/google/chrome/CHROME_VERSION_EXTRA
+
+Running 2 tests using 1 worker
+
+(node:2629) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1028/070022.936353:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/google-chrome/extracted/opt/google/chrome/CHROME_VERSION_EXTRA
+(node:2750) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [functional] › tests/browser/art-export.spec.ts:7:1 › standalone SVG assets load without app CSS and the cabinet filters by collection (5.4s)
+  ✓  2 [functional] › tests/browser/artwork.spec.ts:15:3 › battlegrounds illustrations preserve collection labels and phone layout (1.6s)
+
+  2 passed (9.8s)
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

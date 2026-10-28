@@ -12,7 +12,7 @@ import {
 } from '../../packages/dcc-workbench/releases';
 
 // Expected defaults come from verified on-disk reviews, independently of the
-// browser loader. Drafts have no current release and keep their procedural study.
+// browser loader. Remaining fixed studies use fingerprinted baked deliveries.
 const dccRoot = resolve('packages/dcc-workbench');
 const nativeDeliveries = new Map<string, ResolvedPublication>();
 for (const asset of Object.values(loadRegistry(dccRoot).assets)) {
@@ -96,7 +96,7 @@ for (const name of studyNames) {
       });
       await expect(page.locator('.study-render')).toHaveAttribute(
         'data-delivery',
-        delivery ? 'native' : 'procedural',
+        delivery ? 'native' : 'baked',
       );
       // Every legacy asset must still move; shared recording controls use representatives below.
       await page.getByLabel('Animation timeline').fill('0');
@@ -137,6 +137,14 @@ for (const name of studyNames) {
       await download.saveAs(modelPath);
       const bytes = await readFile(modelPath);
       if (delivery) expect(bytes.equals(await readFile(delivery.modelPath))).toBe(true);
+      else
+        expect(
+          bytes.equals(
+            await readFile(
+              resolve('src/art3d/baked', `${name.toLowerCase().replaceAll(' ', '')}.glb`),
+            ),
+          ),
+        ).toBe(true);
       expect(bytes.toString('utf8', 0, 4)).toBe('glTF');
       expect(bytes.readUInt32LE(4)).toBe(2);
       expect(bytes.readUInt32LE(8)).toBe(bytes.length);
@@ -253,6 +261,7 @@ for (const name of studyNames) {
         expect(primitive.attributes.WEIGHTS_0).toBeDefined();
       }
       if (
+        process.env.STUDY_REBUILD_PARITY === '1' &&
         [
           'Nightjar',
           'Phoenix',

@@ -72,7 +72,6 @@ void test('transitive imports select cross-game dependants and their browser cov
 void test('shared evaluator, configuration, deleted and unknown paths retain all application coverage without exhaustive rendering', () => {
   const changes: Change[] = [
     { path: 'src/shared/policy/rollout.ts', status: 'M' },
-    { path: 'vite.config.ts', status: 'M' },
     { path: '.github/workflows/maintenance.yml', status: 'M' },
     { path: 'new-source/asset.ts', status: 'A' },
     { path: 'src/games/spire/game.ts', status: 'D' },
@@ -102,7 +101,7 @@ void test('native producer/delivery changes retain both model and Night Passage 
     'packages/dcc-workbench/authoring/hero_delivery.py',
   ]) {
     const plan = select(path);
-    assert.equal(plan.geometry, true);
+    assert.equal(plan.geometry, false);
     assert.ok(plan.browserFiles.includes('tests/browser/night-passage-scene.spec.ts'));
     assert.ok(!plan.browserFiles.includes('tests/browser/night-passage-hero.spec.ts'));
     assert.ok(plan.browserFiles.includes('tests/browser/art3d.spec.ts'));
@@ -155,12 +154,7 @@ void test('explicit full validation retains every application, geometry and publ
 });
 
 void test('documentation changes and deletions run only formatting and inventory', () => {
-  for (const path of [
-    'README.md',
-    'AGENTS.md',
-    'docs/engineering/checks.md',
-    'packages/dcc-workbench/README.md',
-  ]) {
+  for (const path of ['docs/engineering/maintenance.md', 'docs/art/assets/example/README.md']) {
     for (const status of ['M', 'D']) {
       const plan = select(path, new Map(), status);
       assert.equal(plan.mode, 'documentation', path);
@@ -183,7 +177,7 @@ void test('documentation changes and deletions run only formatting and inventory
     new Map(),
     { head: 'a'.repeat(40) },
   );
-  assert.equal(mixed.mode, 'scoped');
+  assert.equal(mixed.mode, 'application');
 });
 
 void test('CSS retains bounded game journeys while shared 3D dependencies retain geometry', () => {
@@ -197,6 +191,42 @@ void test('CSS retains bounded game journeys while shared 3D dependencies retain
   assert.equal(shared.geometry, true);
 });
 
+void test('baked assets and viewer edits skip constructors; generator dependencies select their tests', () => {
+  for (const path of [
+    'src/art3d/baked/watcher.glb',
+    'src/art3d/baked/manifest.json',
+    'src/art3d/delivery.ts',
+    'src/art3d/gallery/controller.ts',
+  ]) {
+    assert.deepEqual(select(path).geometryFiles, []);
+    assert.equal(commandFor(select(path), 'geometry'), null);
+  }
+  const plan = select(
+    'src/art3d/procedural/surfaceSculpt.ts',
+    new Map([
+      ['src/art3d/procedural/surfaceSculpt.ts', new Set(['src/art3d/procedural/watcher.test.ts'])],
+    ]),
+  );
+  assert.deepEqual(plan.geometryFiles, catalogue.geometry);
+  assert.deepEqual(commandFor(plan, 'geometry'), [
+    'vitest',
+    'run',
+    '--project',
+    'geometry',
+    ...catalogue.geometry,
+  ]);
+  for (const path of ['package-lock.json', '.node-version', 'vite.config.ts'])
+    assert.deepEqual(select(path).geometryFiles, catalogue.geometry);
+  assert.deepEqual(
+    select('src/art3d/procedural/new.ts', new Map(), 'A').geometryFiles,
+    catalogue.geometry,
+  );
+  assert.deepEqual(
+    select('src/art3d/procedural/removed.ts', new Map(), 'D').geometryFiles,
+    catalogue.geometry,
+  );
+});
+
 void test('offline gallery generator retains its browser delivery check', () => {
   const plan = selectPlan(
     [{ path: 'packages/workshop-tools/art/gallery.ts', status: 'M' }],
@@ -207,8 +237,26 @@ void test('offline gallery generator retains its browser delivery check', () => 
   assert.deepEqual(plan.browserFiles, ['tests/browser/asset-gallery.spec.ts']);
 });
 
+void test('missing diff base and unresolved constructor imports conservatively retain geometry', () => {
+  const missingBase = selectPlan([], catalogue, new Map(), {
+    head: 'a'.repeat(40),
+    allApplications: true,
+  });
+  assert.deepEqual(missingBase.geometryFiles, catalogue.geometry);
+  const unresolved = selectPlan(
+    [{ path: 'src/art3d/procedural/watcher.ts', status: 'M' }],
+    catalogue,
+    new Map(),
+    {
+      head: 'a'.repeat(40),
+      uncertain: ['src/art3d/procedural/watcher.ts: ./missing'],
+    },
+  );
+  assert.deepEqual(unresolved.geometryFiles, catalogue.geometry);
+});
+
 void test('empty selection never runs a whole suite and shard indices are bounded', () => {
-  const plan = select('README.md');
+  const plan = select('docs/engineering/maintenance.md');
   assert.equal(commandFor(plan, 'unit'), null);
   assert.equal(commandFor(plan, 'browser'), null);
   assert.equal(commandFor(plan, 'geometry'), null);
@@ -218,7 +266,7 @@ void test('empty selection never runs a whole suite and shard indices are bounde
 
 void test('aggregate gate refuses skipped, failed or cancelled required modules', () => {
   for (const plan of [
-    select('README.md'),
+    select('docs/engineering/maintenance.md'),
     select('vite.config.ts'),
     select('src/games/spire/ui/Card.tsx'),
   ]) {
@@ -242,7 +290,7 @@ void test('aggregate gate refuses skipped, failed or cancelled required modules'
 });
 
 void test('execution and aggregate gate reject stale or malformed plans before permitting skips', () => {
-  const plan = select('README.md');
+  const plan = select('docs/engineering/maintenance.md');
   assert.deepEqual(readPlan(plan, plan.head), plan);
   for (const invalid of [
     null,
