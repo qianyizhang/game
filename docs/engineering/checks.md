@@ -81,6 +81,13 @@ Follow-up local checks reproduce the cooldown failure on clean main and PR sourc
 
 Playwright is pinned to 1.64.0. The harness uses the installed stable Chrome channel; CI installs its current release, so Chrome itself is not version-pinned. `functional` selects public inputs; startup failure fails. `requires-blender` and `requires-private-evidence` skip explicitly when their named evidence is absent; available invalid evidence fails. `visual-review` produces 29 contact sheets, not automated aesthetic approval. Static checks/smoke do not establish model delivery or native acceptance.
 
+A local executor can unpack a Google Chrome package into a user-writable directory
+and set `CARD_WORKSHOP_CHROME_EXECUTABLE` to its absolute binary path. The startup
+guard checks its `Google Chrome` version string, and Playwright workers launch
+that same path; unset, the normal `chrome` channel remains in use. The version
+string is a compatibility check, not proof of origin. Record the official vendor
+download URL, package version and checksum as separate provenance evidence.
+
 Run `npm run test:browser -- --list` to inspect current discovery. Fresh producer commands below supply native evidence; installed Blender alone is insufficient. Private input uses `TRACE_PRIVATE_INPUT`; available authorized exports remain required. Repo Workbench owns Canvas verification in repo-kit, including the historic 1.64.1 pointer diagnostic; game verification remains here.
 
 ## Asset construction and delivery inventory

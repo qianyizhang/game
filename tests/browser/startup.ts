@@ -1,9 +1,10 @@
 import { chromium } from '@playwright/test';
+import { chromeLaunchOptions } from './chrome';
 
 /** Once per run: a failed macOS startup stops before individual tests retry it. */
 export default async function startup() {
   try {
-    const browser = await chromium.launch({ channel: 'chrome', headless: true });
+    const browser = await chromium.launch({ ...chromeLaunchOptions(), headless: true });
     await browser.close();
   } catch (error) {
     throw new Error(
