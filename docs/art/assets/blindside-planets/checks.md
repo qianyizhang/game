@@ -61,12 +61,15 @@ This is scoped art validation. Full application/simulation, unrelated browser,
 geometry and native Blender suites were not run. No mechanics, content or model
 construction changed. Do not credit this result as a full release validation.
 
-## Delivery blocker
+## Delivery status
 
-Draft PR creation for `qianyizhang/game`, head `art/issue-71-engraved-planets`, base
-`main`, was **denied**, known not executed. Automatic approval review stated:
-"Opening a draft pull request is an external repository commitment, and the transcript
-contains no user authorization for this unrelated game-art change or repository action."
-The exact action stopped; no indirect PR route or retry was used. Implementation,
-evidence and scoped checks continued locally. Current direct authorization is needed
-to retry the draft PR action; no approval or merge was attempted.
+[Draft PR #74](https://github.com/qianyizhang/game/pull/74) is open. Source head at
+creation: `49a810517ee5f4892d3c7dbd03e4b4b640dd0524`; subsequent status-note edits
+preserve the validated renderer, tests and screenshots, bound by provenance hashes.
+
+The first draft-PR action was denied because automatic approval review could not
+resolve the user authorization. The parent then supplied the complete four-batch
+proposal and the user's direct approval, including the planet batch and the WIP
+PR/screenshot requirements. After checking that no PR existed, one reconsideration
+of the same scoped operation succeeded. No alternate route, approval or merge was
+used. Independent visual acceptance remains pending.

@@ -49,7 +49,7 @@ a highlight around the pocket region; labels sit above the screenshots.
   export/import and reload checks.
 - 🟢 Scoped lint, workspace types, production build, inventory; 22 rule/save tests.
 - 🟡 Author pixel review complete; independent visual review pending.
-- 🔴 Draft PR creation denied by automatic approval review; no PR created or retry.
+- 🟢 [Draft PR #74](https://github.com/qianyizhang/game/pull/74) open for review.
 
 [Checks and limits](checks.md) · [SVG pixel report](svg-review.json) ·
 [Source/image hashes and Chrome provenance](provenance.json)
