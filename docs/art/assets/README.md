@@ -31,3 +31,8 @@ Use the [art overview](../README.md) for standards and the [native trials](../tr
 | [Greatwood Wolf and evolved forms](creatures/wolf-evolutions.md) | Parent-accepted native sources and gallery forms; user approval unrecorded |
 
 Original review bytes, exact historical counts and prior gate failures are recoverable through [the migration record](../../../maintenance/document-migration.json). Retained source snapshots and captures remain protected; missing local evidence is unavailable, not permission to recreate a historical result.
+
+## Diorama studies
+
+- [Little Haunt](little-haunt/README.md): fifteen-second pixel diorama with a
+  full-resolution animated GIF; author-reviewed, user approval unrecorded.
