@@ -3,6 +3,9 @@
 30 秒黑金猫科英雄动作短片。单文件 HTML 无按钮、文字叠层或播放控件；
 人物、场景、动作、金白电弧、火花、残影和声音均随文件交付，无运行时网络依赖。
 
+[Creation journey](creation-journey.md) records the initial 3D attempt, the 2.5D
+pivot, export adjustments and the gap against the original brief.
+
 - [播放源文件](film.html)：1280 × 720，16:9，900 个确定性帧，30fps。
 - [完整 GIF](golden-claw.gif)：512 × 288，900 帧，30 秒，无声，循环播放。
 - [带音效 MP4](golden-claw.mp4)：960 × 540，恒定 30fps，30 秒，H.264/AAC。
