@@ -58,7 +58,7 @@ CI_PLAN="$(cat /tmp/full-plan.json)" CI_SHARD=1 npm run ci -- run browser
 ASSET_BUILD_CI=1 npm run check:full
 ```
 
-Run every shard listed in the selected plan. Empty selections execute nothing. Full local browser/native verification remains required for affected deliveries. The continuous campaign retains its assertions, control cadence and deadline; its known timeout is unresolved, not a passing or removed check. Browser jobs have a 15-minute routine failure ceiling and 90 minutes in explicit full mode; ceilings are not performance targets. Measure hosted elapsed time separately from queue delays and summed runner time.
+Run every shard listed in the selected plan. Empty selections execute nothing. Complete the local browser/native journeys relevant to affected deliveries; this does not require unrelated full-suite coverage. The continuous campaign retains its assertions, control cadence and deadline; its known timeout is unresolved, not a passing or removed check. Browser jobs have a 15-minute routine failure ceiling and 90 minutes in explicit full mode; ceilings are not performance targets. Measure hosted elapsed time separately from queue delays and summed runner time.
 
 ### Measured CI evidence (2026-10-27)
 
