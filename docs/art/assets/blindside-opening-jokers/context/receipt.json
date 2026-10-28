@@ -1,0 +1,345 @@
+{
+  "status": "complete",
+  "baselineSha": "73a24f5c98e77c365c909bbeac9f37347ef845c7",
+  "candidateSha": "a235551e441ea96ceb3fc4a9031be693056287a8",
+  "baselineSourceSha256": "3ea6b5315fc18627116765a7ba0a67b32ade83e910f9609730c99af1afc6c9d1",
+  "candidateSourceSha256": "6603921f69ff9df004e6d16150425e8d26099e242744e3aa30c8cd90d4cd71d4",
+  "browser": "156.0.8078.73",
+  "seed": "JOKER-REVIEW-5",
+  "setup": {
+    "cash": 100,
+    "jokers": [
+      "spark",
+      "granite",
+      "duet",
+      "twins",
+      "trio"
+    ],
+    "deck": [
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      }
+    ]
+  },
+  "viewports": [
+    "1440x1080",
+    "390x844"
+  ],
+  "collectionBounds": {
+    "baseline-desktop": {
+      "clip": {
+        "x": 243,
+        "y": 338,
+        "width": 1159,
+        "height": 671
+      },
+      "cards": [
+        {
+          "name": "Spark",
+          "rect": {
+            "left": 243,
+            "top": 338.984375,
+            "right": 521.5,
+            "bottom": 657.125
+          }
+        },
+        {
+          "name": "Granite",
+          "rect": {
+            "left": 536.5,
+            "top": 338.984375,
+            "right": 815,
+            "bottom": 657.125
+          }
+        },
+        {
+          "name": "Duet",
+          "rect": {
+            "left": 830,
+            "top": 338.984375,
+            "right": 1108.5,
+            "bottom": 657.125
+          }
+        },
+        {
+          "name": "Double Take",
+          "rect": {
+            "left": 1123.5,
+            "top": 338.984375,
+            "right": 1402,
+            "bottom": 657.125
+          }
+        },
+        {
+          "name": "Trio",
+          "rect": {
+            "left": 243,
+            "top": 672.125,
+            "right": 521.5,
+            "bottom": 1008.265625
+          }
+        },
+        {
+          "name": "Stairway",
+          "rect": {
+            "left": 536.5,
+            "top": 672.125,
+            "right": 815,
+            "bottom": 1008.265625
+          }
+        }
+      ]
+    },
+    "baseline-phone": {
+      "clip": {
+        "x": 18,
+        "y": 506,
+        "width": 354,
+        "height": 774
+      },
+      "cards": [
+        {
+          "name": "Spark",
+          "rect": {
+            "left": 18,
+            "top": 506.96875,
+            "right": 190,
+            "bottom": 746.859375
+          }
+        },
+        {
+          "name": "Granite",
+          "rect": {
+            "left": 200,
+            "top": 506.96875,
+            "right": 372,
+            "bottom": 746.859375
+          }
+        },
+        {
+          "name": "Duet",
+          "rect": {
+            "left": 18,
+            "top": 756.859375,
+            "right": 190,
+            "bottom": 1013.25
+          }
+        },
+        {
+          "name": "Double Take",
+          "rect": {
+            "left": 200,
+            "top": 756.859375,
+            "right": 372,
+            "bottom": 1013.25
+          }
+        },
+        {
+          "name": "Trio",
+          "rect": {
+            "left": 18,
+            "top": 1023.25,
+            "right": 190,
+            "bottom": 1279.640625
+          }
+        },
+        {
+          "name": "Stairway",
+          "rect": {
+            "left": 200,
+            "top": 1023.25,
+            "right": 372,
+            "bottom": 1279.640625
+          }
+        }
+      ]
+    },
+    "candidate-desktop": {
+      "clip": {
+        "x": 243,
+        "y": 338,
+        "width": 1159,
+        "height": 671
+      },
+      "cards": [
+        {
+          "name": "Spark",
+          "rect": {
+            "left": 243,
+            "top": 338.984375,
+            "right": 521.5,
+            "bottom": 657.125
+          }
+        },
+        {
+          "name": "Granite",
+          "rect": {
+            "left": 536.5,
+            "top": 338.984375,
+            "right": 815,
+            "bottom": 657.125
+          }
+        },
+        {
+          "name": "Duet",
+          "rect": {
+            "left": 830,
+            "top": 338.984375,
+            "right": 1108.5,
+            "bottom": 657.125
+          }
+        },
+        {
+          "name": "Double Take",
+          "rect": {
+            "left": 1123.5,
+            "top": 338.984375,
+            "right": 1402,
+            "bottom": 657.125
+          }
+        },
+        {
+          "name": "Trio",
+          "rect": {
+            "left": 243,
+            "top": 672.125,
+            "right": 521.5,
+            "bottom": 1008.265625
+          }
+        },
+        {
+          "name": "Stairway",
+          "rect": {
+            "left": 536.5,
+            "top": 672.125,
+            "right": 815,
+            "bottom": 1008.265625
+          }
+        }
+      ]
+    },
+    "candidate-phone": {
+      "clip": {
+        "x": 18,
+        "y": 506,
+        "width": 354,
+        "height": 774
+      },
+      "cards": [
+        {
+          "name": "Spark",
+          "rect": {
+            "left": 18,
+            "top": 506.96875,
+            "right": 190,
+            "bottom": 746.859375
+          }
+        },
+        {
+          "name": "Granite",
+          "rect": {
+            "left": 200,
+            "top": 506.96875,
+            "right": 372,
+            "bottom": 746.859375
+          }
+        },
+        {
+          "name": "Duet",
+          "rect": {
+            "left": 18,
+            "top": 756.859375,
+            "right": 190,
+            "bottom": 1013.25
+          }
+        },
+        {
+          "name": "Double Take",
+          "rect": {
+            "left": 200,
+            "top": 756.859375,
+            "right": 372,
+            "bottom": 1013.25
+          }
+        },
+        {
+          "name": "Trio",
+          "rect": {
+            "left": 18,
+            "top": 1023.25,
+            "right": 190,
+            "bottom": 1279.640625
+          }
+        },
+        {
+          "name": "Stairway",
+          "rect": {
+            "left": 200,
+            "top": 1023.25,
+            "right": 372,
+            "bottom": 1279.640625
+          }
+        }
+      ]
+    }
+  },
+  "screenshots": {
+    "baseline-collection-desktop.png": "f381e7434e2780181a3daa14ca2ec1ca01960108372baebbd8da3c0af0501385",
+    "baseline-collection-phone.png": "cc51f3ac9b92d5e3df9650da34d53ba8163e0d77feb0926d4a1eb34eb741fdbb",
+    "baseline-held-desktop.png": "0f6818c8716cea7d2f44fa3ef6052b1b860b7a68be840e5bb305364f3fdd85e3",
+    "baseline-held-phone.png": "69d21fda7c52b243fb1eb5862bef8829bbeed0bd6502a522fb92b4bb623a7bce",
+    "baseline-shop-desktop.png": "95cdfc65d4d9260280316e9d7787aa2ec798058f69467067f33e479082160baf",
+    "baseline-shop-phone.png": "b285b6f323f719454c1e9c6ce32d5873e426e0a5ec7264c496d56c9aa741563a",
+    "candidate-collection-desktop.png": "7c2fd668c2412bb17ae9379c485ee2aa9579c0f922dd0fdd899709f8d7f3b5e4",
+    "candidate-collection-phone.png": "4a299d716693d4f809583af4865d67feeb45a9b1ffd0f8f10ba40d3df1d4043d",
+    "candidate-held-desktop.png": "921feaffc47410bf3d2a0e4105c87df07c6c79598c7b58eb6affcdf4584791b7",
+    "candidate-held-phone.png": "d1f2dae120271b5ec7be9f1ade9c9c777ab7aea3f3e7659e0f77e51a85cafad8",
+    "candidate-shop-desktop.png": "ec686ca1d1e340e118aaf1215b4229c95d601a94dd0dc1c4d8ecf7cf2d94eb05",
+    "candidate-shop-phone.png": "a7ca25e48c66ba2dfd88990f28de2602f4547085257df7afa313bd75ebf10589"
+  }
+}

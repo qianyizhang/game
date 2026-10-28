@@ -23,7 +23,38 @@ At native size, Spark reads as a struck flame, Granite as a grounded stone,
 Duet as two facing birds, Double Take as two card pairs, Trio as three cups,
 and Stairway as an ascent to a doorway. Trio's repeated cups and Stairway's
 literal steps are the closest to their baselines and need independent scrutiny.
-The sheets do not show the actual collection, shop or held-Joker UI.
+The sheets show the exported art at fixed sizes. The contextual captures below
+show it in the actual collection, held-Joker row, and shop.
+
+## Local Chrome context captures
+
+[The context receipt](context/receipt.json) records the matched baseline and
+candidate screenshots, crop bounds, source hashes, Chrome version, and a SHA-256
+for each PNG. The twelve screenshots cover the collection, five held Jokers,
+and Stairway in the shop, at 1440 × 1080 and 390 × 844 viewports. The collection
+crops include all six first cards. The shop follows a legal Practice Lab setup;
+five held slots make Stairway's purchase action correctly display “Slots full.”
+
+| Context | Desktop baseline | Desktop candidate | Phone baseline | Phone candidate |
+| --- | --- | --- | --- | --- |
+| Collection | [PNG](context/baseline-collection-desktop.png) | [PNG](context/candidate-collection-desktop.png) | [PNG](context/baseline-collection-phone.png) | [PNG](context/candidate-collection-phone.png) |
+| Held Jokers | [PNG](context/baseline-held-desktop.png) | [PNG](context/candidate-held-desktop.png) | [PNG](context/baseline-held-phone.png) | [PNG](context/candidate-held-phone.png) |
+| Shop | [PNG](context/baseline-shop-desktop.png) | [PNG](context/candidate-shop-desktop.png) | [PNG](context/baseline-shop-phone.png) | [PNG](context/candidate-shop-phone.png) |
+
+The candidate capture ran at local validation commit
+`a235551e441ea96ceb3fc4a9031be693056287a8`, which layers the separate
+Chrome test-harness commit `acdb4cffff46d9829eedab080be08c02dc9abb7a`
+over art commit `0ac0adc4636610b84fe740c0b495fdec0d43cef6`. The overlay changes
+only Playwright startup/configuration and its tests. The illustration source
+hash is the same as the art branch: `6603921f69ff9df004e6d16150425e8d26099e242744e3aa30c8cd90d4cd71d4`.
+Both startup and test workers launched the official Google Chrome binary from
+the extracted vendor package, version `156.0.8078.73`; package SHA-256 is
+`fd19c6895dad77f4d7f712c2d9f0d5eb682f4a6e7ff22b1bd0d40d03710d288c`.
+
+The local context capture and four relevant existing Playwright journeys passed:
+Balatro collection labels/phone layout; play, shop, buy, reorder, save and
+resume; collection/mod guide/export/import; and phone action reachability.
+This is author review evidence; independent visual acceptance is still needed.
 
 ## Provenance and reproduction
 
@@ -53,12 +84,14 @@ npm run assets:review -- blindside/jokers/spark blindside/jokers/granite \
 The two inputs come from `npm run assets:export -- <directory>` at the baseline
 and PR revisions respectively. The retained files here are the three selected
 comparison sheets and manifest. The full 644-SVG exports remain local under
-ignored `test-results/`; the superseded trial captures were discarded.
+ignored `test-results/`; incomplete trial captures are quarantined there and
+are not part of the review set.
 
 `npm run check` passed on the WIP source bytes (574 application tests, 37 seeded
 playtests). Hosted Chrome passed collection/phone layout, SVG export, and the
 shop/buy/reorder smoke journey in [run 40625045254](https://github.com/qianyizhang/game/actions/runs/40625045254).
 Those tests produce screenshots in the runner, but the workflow uploads browser
-artifacts on failure only. No downloadable screenshots were available when this
-record was written.
-Actual UI screenshot inspection and independent visual acceptance remain open.
+artifacts on failure only. The retained contextual screenshots above came from
+the local Chrome run.
+The matched context screenshots above have now been inspected locally;
+independent visual acceptance remains open.
