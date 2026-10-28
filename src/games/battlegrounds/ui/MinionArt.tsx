@@ -373,6 +373,54 @@ function Wisp() {
 
 type Element = 'spark' | 'molten' | 'tempest' | 'dancer' | 'cyclone' | 'elder';
 function ElementPortrait({ kind }: { kind: Element }) {
+  if (kind === 'tempest')
+    return (
+      <g>
+        {/* A low storm front drives right; the trailing gusts leave open sky. */}
+        <path
+          d="M8 49Q19 22 66 29L49 14q35-4 57 15l17-7 23 13-9 18-24 9q-8 20-36 23l23 14Q42 107 19 86q31 6 46-7Q12 82 6 66l34 1Z"
+          fill="#2b4e59"
+        />
+        <path
+          d="M14 47q27-21 66-9L66 23q29 4 39 18l20-10 13 7-9 10-30 9q-9 18-39 19l13 12q-23 0-40-8 42-2 43-19-32 7-55 0l26-5Z"
+          fill="#73a5af"
+        />
+        <path
+          d="M28 44q27-7 57 3l18-3-8 10q-31 2-45-5Zm43 25q15-7 19-17l22 3-12 14-23 8Z"
+          fill="#c0d9d4"
+        />
+        <path d="m108 34 15-4 16 8-13 9-20 1Z" fill="#a9c9cd" />
+        <path d="m117 39 15-1-8 6-8-1Z" fill="#243f4d" />
+        <path d="m87 73-18 19 10 1-9 17 26-24-12 1 16-17Z" fill="#e5d7a3" />
+        <Cut
+          d="M16 37q18-12 41-10M26 95q20 5 36 0m-42-26 29 2m54-14 18-6"
+          color="#c4d9d1"
+          width={1.1}
+        />
+      </g>
+    );
+  if (kind === 'cyclone')
+    return (
+      <g>
+        {/* A hollow glass funnel carries a broad lip over a narrow twisting foot. */}
+        <path d="M32 31 47 16l57-6 29 16-4 25-25 15-4 21-19 24-7-30-20-18-18-5Z" fill="#2d5862" />
+        <path d="m40 32 14-10 47-5 23 12-8 18-26 17 2 23-11 17-1-28-23-20-13-3Z" fill="#81bbc0" />
+        <path d="m58 27 43-5 17 9-24 10-40-2-11-6Z" fill="#244853" />
+        <path d="m45 34 14-10 38-4-31 10 15 10-24-1Z" fill="#d0e4d9" />
+        <path d="m106 24 18 7-8 16-27 18 3 19-10 19 2-31 19-25 10-13Z" fill="#b3d7d2" />
+        <path d="m49 45 25 5 27-3-12 16-10 1-4 14-17-19Z" fill="#4a8792" />
+        <path d="m62 48 13 5-7 6-9-8Zm18 6 15-4-10 10-7 1Z" fill="#e2eee1" />
+        <path
+          d="m21 48 9-17 3 17-7 13Zm110 15 17-14-6 26-13 10ZM48 83l9-11 4 17-7 11Z"
+          fill="#83b7bc"
+        />
+        <Cut
+          d="M26 71q35 18 84 0m-69-4q39 12 79-14M57 46l8 2m32-27 9 3M78 85l4 15"
+          color="#d1e7df"
+          width={1.2}
+        />
+      </g>
+    );
   return (
     <g>
       {kind === 'elder' || kind === 'molten' ? (
