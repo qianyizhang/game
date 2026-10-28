@@ -1,6 +1,7 @@
 import { defineConfig } from '@playwright/test';
-import { browserBudget } from './tests/browser/budget';
-import { fullBrowserFiles } from './packages/workshop-tools/ci/selection';
+import { browserBudget } from './tests/browser/budget.ts';
+import { fullBrowserFiles } from './packages/workshop-tools/ci/selection.ts';
+import { chromeTestUseOptions } from './tests/browser/chrome.ts';
 
 export default defineConfig({
   testDir: './tests/browser',
@@ -76,7 +77,7 @@ export default defineConfig({
   ],
   use: {
     baseURL: 'http://127.0.0.1:4173',
-    channel: 'chrome',
+    ...chromeTestUseOptions(),
     headless: true,
     viewport: { width: 1440, height: 1080 },
     screenshot: 'only-on-failure',
