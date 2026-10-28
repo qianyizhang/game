@@ -3,6 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
+import { clipContains, enclosingClip } from './issue37-clip.ts';
 
 test.skip(process.env.BLINDSIDE_JOKER_CAPTURE !== '1', 'Manual issue 37 capture only.');
 
@@ -28,18 +29,21 @@ async function collection(page: Page, url: string, label: string, size: string) 
     await expect(cards.nth(index)).toContainText(name);
     await expect(cards.nth(index).locator('svg.card-art')).toHaveAttribute('aria-hidden', 'true');
   }
-  const clip = await cards.evaluateAll((nodes) => {
-    const first = nodes[0].getBoundingClientRect();
-    const last = nodes[5].getBoundingClientRect();
-    const x = Math.floor(first.left + window.scrollX);
-    const y = Math.floor(first.top + window.scrollY);
-    return {
-      x,
-      y,
-      width: Math.ceil(last.right + window.scrollX - x),
-      height: Math.ceil(last.bottom + window.scrollY - y),
-    };
-  });
+  const rects = await cards.evaluateAll((nodes) =>
+    nodes.slice(0, 6).map((node) => {
+      const rect = node.getBoundingClientRect();
+      return {
+        left: rect.left + window.scrollX,
+        top: rect.top + window.scrollY,
+        right: rect.right + window.scrollX,
+        bottom: rect.bottom + window.scrollY,
+      };
+    }),
+  );
+  expect(rects).toHaveLength(names.length);
+  const clip = enclosingClip(rects);
+  for (const [index, rect] of rects.entries())
+    expect(clipContains(clip, rect), `${names[index]} is inside the collection capture`).toBe(true);
   expect(clip.width).toBeGreaterThan(100);
   expect(clip.height).toBeGreaterThan(80);
   await page.screenshot({
@@ -47,6 +51,7 @@ async function collection(page: Page, url: string, label: string, size: string) 
     clip,
     animations: 'disabled',
   });
+  return { clip, cards: rects.map((rect, index) => ({ name: names[index], rect })) };
 }
 
 async function shopAndHeld(page: Page, url: string, label: string, size: string) {
@@ -96,6 +101,7 @@ test('capture matched opening Joker collection, held rack and shop at desktop an
   expect(candidateSourceSha256).toBe(process.env.BLINDSIDE_JOKER_CANDIDATE_SOURCE_SHA256);
   mkdirSync(output, { recursive: true });
   await page.addInitScript(() => localStorage.setItem('card-workshop.playback-speed', '1000'));
+  const collectionBounds: Record<string, Awaited<ReturnType<typeof collection>>> = {};
   for (const [label, url] of [
     ['baseline', 'http://127.0.0.1:4174/'],
     ['candidate', 'http://127.0.0.1:4173/'],
@@ -105,7 +111,12 @@ test('capture matched opening Joker collection, held rack and shop at desktop an
       { name: 'phone', width: 390, height: 844 },
     ]) {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
-      await collection(page, url, label, viewport.name);
+      collectionBounds[`${label}-${viewport.name}`] = await collection(
+        page,
+        url,
+        label,
+        viewport.name,
+      );
       if (viewport.name === 'phone')
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
           true,
@@ -125,6 +136,7 @@ test('capture matched opening Joker collection, held rack and shop at desktop an
     join(output, 'receipt.json'),
     JSON.stringify(
       {
+        status: 'complete',
         baselineSha,
         candidateSha,
         baselineSourceSha256,
@@ -133,6 +145,7 @@ test('capture matched opening Joker collection, held rack and shop at desktop an
         seed,
         setup,
         viewports: ['1440x1080', '390x844'],
+        collectionBounds,
         screenshots: Object.fromEntries(files.map((name) => [name, sha256(join(output, name))])),
       },
       null,

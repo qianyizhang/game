@@ -22,9 +22,14 @@ function verifyCaptureScope(text: string) {
     /if: github\.event_name == 'workflow_dispatch' && inputs\.blindside_joker_capture == true/,
   );
   assert.match(capture, /test "\$GITHUB_REF" = refs\/heads\/art\/issue-37-opening-jokers/);
+  assert.match(capture, /fetch-depth: 0\n\s+lfs: true\n\s+persist-credentials: false/);
   assert.match(capture, /git worktree add --detach .*"\$BASE_SHA"/);
   assert.match(capture, /BLINDSIDE_JOKER_BASE_SHA: 73a24f5c98e77c365c909bbeac9f37347ef845c7/);
   assert.match(capture, /path: test-results\/issue37-context\n\s+retention-days: 7/);
+  assert.match(
+    capture,
+    /name: blindside-joker-context-\$\{\{ job\.status \}\}-\$\{\{ github\.sha \}\}/,
+  );
   assert.doesNotMatch(capture, /secrets\.|pull_request_target|path: test-results\/browser/);
 }
 
