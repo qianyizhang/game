@@ -30,7 +30,7 @@ import { patron } from './patron';
 import { squire } from './squire';
 import { bannerbearer } from './bannerbearer';
 
-// Delivery loads this synchronous backend only for procedural fallback.
+// Authoring-only backend for explicit baking and construction regressions.
 export { createStudyClip } from './animation';
 
 /** Construct the registered asset and preserve its assembled inspection transforms. */

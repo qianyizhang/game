@@ -32,7 +32,8 @@ test('review scope selects gallery defaults and native workbench downloads stay 
   await page.route('**/*.glb', (route) => route.abort());
   await page.reload();
   await expect(page.getByRole('alert')).toContainText('could not be loaded');
-  await expect(page.locator('.study-render')).not.toHaveAttribute('data-delivery', 'procedural');
+  await expect(page.locator('.study-render')).not.toHaveAttribute('data-delivery', 'baked');
+  await page.unroute('**/*.glb');
   await page
     .getByRole('navigation', { name: 'Choose a 3D study' })
     .getByRole('button', { name: /Spiral/ })
@@ -40,8 +41,7 @@ test('review scope selects gallery defaults and native workbench downloads stay 
   await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
     timeout: sceneReadyTimeout,
   });
-  await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'procedural');
-  await page.unroute('**/*.glb');
+  await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'baked');
   await page
     .getByRole('navigation', { name: 'Choose a 3D study' })
     .getByRole('button', { name: /Nightjar/ })
@@ -79,10 +79,9 @@ test('review scope selects gallery defaults and native workbench downloads stay 
     .getByRole('navigation', { name: 'Choose a 3D study' })
     .getByRole('button', { name: /Nightjar/ })
     .click();
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
-    timeout: sceneReadyTimeout,
-  });
-  await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'procedural');
+  // Revoking the native default cannot silently regenerate an unshipped legacy model.
+  await expect(page.getByRole('alert')).toContainText('could not be loaded');
+  await expect(page.locator('.study-render canvas')).toHaveCount(0);
   await page.goto('/?workbench=dcc');
   await page.getByLabel('Choose native asset').selectOption('nightjar');
   await expect(page).toHaveURL(/asset=nightjar/);

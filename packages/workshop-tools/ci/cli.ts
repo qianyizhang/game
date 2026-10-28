@@ -16,7 +16,8 @@ function planFromEnvironment(): Plan {
   const allowed = new Set(catalogue.application);
   if (
     [...plan.coreFiles, ...plan.unitFiles].some((p) => !allowed.has(p)) ||
-    plan.browserFiles.some((p) => !catalogue.browser.includes(p))
+    plan.browserFiles.some((p) => !catalogue.browser.includes(p)) ||
+    plan.geometryFiles.some((p) => !catalogue.geometry.includes(p))
   )
     throw new Error('Invalid CI plan');
   return plan;

@@ -21,6 +21,8 @@
     "format:check": "prettier --check .",
     "playtest": "vitest run --config vitest.playtest.config.ts",
     "assets:export": "node packages/workshop-tools/art/export.ts",
+    "assets:bake": "node packages/workshop-tools/art/bake-studies.ts",
+    "assets:check": "node packages/workshop-tools/art/bake-studies.ts --check",
     "assets:gallery": "node packages/workshop-tools/art/gallery.ts",
     "assets:scaffold": "node packages/workshop-tools/art/scaffold.ts",
     "assets:review": "node packages/workshop-tools/art/review.ts",
