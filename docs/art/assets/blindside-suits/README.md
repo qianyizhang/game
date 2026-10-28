@@ -101,5 +101,17 @@ CARD_WORKSHOP_CHROME_EXECUTABLE=/absolute/path/to/google/chrome \
 The supplemental evidence formatting/inventory check passed
 ([log](logs/doc-check.txt)). Hosted [run 40646993117](https://github.com/qianyizhang/game/actions/runs/40646993117)
 passed for the art commit and is treated only as a sanity check. Local
-maintenance/build passed; the broader application gate remains in progress with
-a reported Hearth recruitment-harness failure. It is not credited as passing.
+maintenance/build passed. The full application run finished before a stop was
+needed: **572 passed, 2 timed out** ([complete local log](logs/check.txt)).
+Hearth recruitment-harness exceeded its unchanged 30 s limit (30.198 s reported);
+Emberwake public policy progression exceeded its unchanged 120 s limit
+(139.403 s reported). These files are unchanged. No new baseline reproduction
+was run, so this record does not classify the failures as pre-existing.
+`npm run check` exited 1 and is not credited as passing; seeded simulations
+were therefore invoked separately. No tests, limits or workflow files changed.
+
+The separate seeded simulation run passed **37/37** across eight files
+([log](logs/playtest.txt)). Node 24.21.0 and npm 11.19.0 came from the preinstalled
+pinned cloud binaries; Python checks used the locked environment through `uv`.
+No native or geometry gate was selected for this SVG-only change. Parent visual
+acceptance remains pending; the PR remains draft and unmerged.
