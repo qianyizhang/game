@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ArtGlyph } from '../../../../shared/art/CardArt';
 import { ArtScene } from '../../../../shared/art/CardArt';
+import { GiantPlanet } from './planets';
 import {
   ink,
   paper,
@@ -25,6 +26,7 @@ const planets = [
 ];
 
 function Planet({ id }: { id: string }) {
+  if (id === 'planet-straight' || id === 'planet-flush') return <GiantPlanet id={id} />;
   const index = planets.indexOf(id.replace('planet-', ''));
   const colors = [gold, coral, ink, coral, gold, gold, '#7eada4', '#437b87', '#947485'];
   const radii = [18, 24, 25, 22, 32, 27, 24, 25, 15];
