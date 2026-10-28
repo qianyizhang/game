@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { physicalActionScenes } from './physical-actions';
 import {
   ink,
   metal,
@@ -42,15 +43,7 @@ export const scenes: Record<string, ReactNode> = {
       </Echo>
     </>
   ),
-  bash: (
-    <>
-      <Echo>
-        <Glyph kind="shield" x={83} y={20} size={77} color={copper} />
-      </Echo>
-      <Fist x={33} y={9} scale={1.05} />
-      <Impact x={108} y={52} size={0.45} />
-    </>
-  ),
+  bash: physicalActionScenes.bash,
   anger: (
     <>
       <Echo>
@@ -421,15 +414,7 @@ export const scenes: Record<string, ReactNode> = {
       <path d="M66 80H96" stroke={ink} strokeWidth=".8" />
     </>
   ),
-  uppercut: (
-    <>
-      <path d="M24 103Q20 44 96 14Q40 52 40 103Z" fill={copper} opacity=".5" />
-      <Echo>
-        <Impact x={114} y={32} size={0.65} />
-      </Echo>
-      <Fist x={68} y={4} scale={1.03} />
-    </>
-  ),
+  uppercut: physicalActionScenes.uppercut,
   whirlwind: (
     <>
       <Wind />
