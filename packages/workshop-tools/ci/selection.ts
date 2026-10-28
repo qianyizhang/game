@@ -134,8 +134,15 @@ export function browserFamilies(path: string): Family[] | undefined {
   return undefined;
 }
 
-function isDocumentation(path: string): boolean {
-  return /\.md$/.test(path);
+export function isDocumentation(path: string): boolean {
+  return (
+    path === 'docs/engineering/maintenance.md' ||
+    /^docs\/guide\/(?:[^/]+\/)*[^/]+\.md$/.test(path) ||
+    /^docs\/art\/assets\/(?:[^/]+\/)+README\.md$/.test(path) ||
+    /^docs\/art\/assets\/(?:hearth-mech-roles|spire-act1-enemies)\/[^/]+\.(?:png|jpe?g|webp)$/.test(
+      path,
+    )
+  );
 }
 function repositoryPath(path: string): boolean {
   return /^[^\x00-\x1f]+$/.test(path) && !path.startsWith('/') && !path.split('/').includes('..');

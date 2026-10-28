@@ -155,12 +155,7 @@ void test('explicit full validation retains every application, geometry and publ
 });
 
 void test('documentation changes and deletions run only formatting and inventory', () => {
-  for (const path of [
-    'README.md',
-    'AGENTS.md',
-    'docs/engineering/checks.md',
-    'packages/dcc-workbench/README.md',
-  ]) {
+  for (const path of ['docs/engineering/maintenance.md', 'docs/art/assets/example/README.md']) {
     for (const status of ['M', 'D']) {
       const plan = select(path, new Map(), status);
       assert.equal(plan.mode, 'documentation', path);
@@ -183,7 +178,7 @@ void test('documentation changes and deletions run only formatting and inventory
     new Map(),
     { head: 'a'.repeat(40) },
   );
-  assert.equal(mixed.mode, 'scoped');
+  assert.equal(mixed.mode, 'application');
 });
 
 void test('CSS retains bounded game journeys while shared 3D dependencies retain geometry', () => {
@@ -208,7 +203,7 @@ void test('offline gallery generator retains its browser delivery check', () => 
 });
 
 void test('empty selection never runs a whole suite and shard indices are bounded', () => {
-  const plan = select('README.md');
+  const plan = select('docs/engineering/maintenance.md');
   assert.equal(commandFor(plan, 'unit'), null);
   assert.equal(commandFor(plan, 'browser'), null);
   assert.equal(commandFor(plan, 'geometry'), null);
@@ -218,7 +213,7 @@ void test('empty selection never runs a whole suite and shard indices are bounde
 
 void test('aggregate gate refuses skipped, failed or cancelled required modules', () => {
   for (const plan of [
-    select('README.md'),
+    select('docs/engineering/maintenance.md'),
     select('vite.config.ts'),
     select('src/games/spire/ui/Card.tsx'),
   ]) {
@@ -242,7 +237,7 @@ void test('aggregate gate refuses skipped, failed or cancelled required modules'
 });
 
 void test('execution and aggregate gate reject stale or malformed plans before permitting skips', () => {
-  const plan = select('README.md');
+  const plan = select('docs/engineering/maintenance.md');
   assert.deepEqual(readPlan(plan, plan.head), plan);
   for (const invalid of [
     null,
