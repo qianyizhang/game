@@ -18,5 +18,76 @@
       "afterPageErrors": []
     }
   ],
-  "method": "Fresh browser contexts at 1440 × 900 and 390 × 844, same collection and mech filter, system Chromium over local Vite HTTP; first row scrolled to same heading; source images converted losslessly to WebP with identical decoded pixels"
+  "method": "Fresh browser contexts at 1440 × 900 and 390 × 844, same collection and mech filter, system Chromium over local Vite HTTP; first row scrolled to same heading; source images converted losslessly to WebP with identical decoded pixels",
+  "practiceScenario": {
+    "seed": "mech-role-review-36",
+    "setup": {
+      "hero": "forgekeeper",
+      "tier": 6,
+      "gold": 10,
+      "board": ["harvester", "cobalt", "sentinel", "colossus"]
+    },
+    "commands": ["refresh"],
+    "selected": "Iron Sentinel",
+    "views": [
+      {
+        "width": 1440,
+        "sameSave": true,
+        "saveSha256": "386d1560a55cf07c50d4c8692834e6933b0e041fa98aa36db5457479b516d68c",
+        "sameShopText": true,
+        "sameWarbandText": true,
+        "beforePageWidth": 1440,
+        "afterPageWidth": 1440,
+        "beforePageErrors": [],
+        "afterPageErrors": []
+      },
+      {
+        "width": 390,
+        "sameSave": true,
+        "saveSha256": "386d1560a55cf07c50d4c8692834e6933b0e041fa98aa36db5457479b516d68c",
+        "sameShopText": true,
+        "sameWarbandText": true,
+        "beforePageWidth": 390,
+        "afterPageWidth": 390,
+        "beforePageErrors": [],
+        "afterPageErrors": []
+      }
+    ],
+    "method": "Validated Practice Lab scenario through the normal UI; one identical refresh yields Cobalt and Harvester in the tavern; four target roles in warband; selected Sentinel. Fresh browser context per revision and viewport."
+  },
+  "goldenScenario": {
+    "seed": "mech-role-review-36",
+    "setup": {
+      "hero": "forgekeeper",
+      "tier": 6,
+      "gold": 10,
+      "board": ["harvester", "harvester"]
+    },
+    "commands": ["refresh", "buy third Scrap Harvester"],
+    "views": [
+      {
+        "width": 1440,
+        "sameSave": true,
+        "saveSha256": "becf7b060a102aedc89b51c4f3de5fd7f1da4d62f27e6d517fb726e28345ef3e",
+        "sameHandText": true,
+        "sameWarbandText": true,
+        "beforePageWidth": 1440,
+        "afterPageWidth": 1440,
+        "beforePageErrors": [],
+        "afterPageErrors": []
+      },
+      {
+        "width": 390,
+        "sameSave": true,
+        "saveSha256": "becf7b060a102aedc89b51c4f3de5fd7f1da4d62f27e6d517fb726e28345ef3e",
+        "sameHandText": true,
+        "sameWarbandText": true,
+        "beforePageWidth": 390,
+        "afterPageWidth": 390,
+        "beforePageErrors": [],
+        "afterPageErrors": []
+      }
+    ],
+    "method": "Validated a Golden Harvester card by buying the third copy through the normal Practice Lab UI. Fresh browser context per revision and viewport; matched hand-panel screenshot and identical save/card text."
+  }
 }
