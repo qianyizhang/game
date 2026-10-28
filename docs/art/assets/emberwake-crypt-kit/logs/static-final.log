@@ -1,0 +1,258 @@
+fcd0d369e3123f87c29e8b998fab3134121ed990
+
+> card-workshop@0.1.0 format:maintenance
+> npm run format:check && npm run maintenance -- check
+
+
+> card-workshop@0.1.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+> card-workshop@0.1.0 maintenance
+> node packages/workshop-tools/cli.mjs check
+
+{
+  "managedSources": 816,
+  "errors": []
+}
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+> card-workshop@0.1.0 typecheck
+> tsc --noEmit && npm run typecheck --workspaces --if-present
+
+
+> @card-workshop/dcc-workbench@0.1.0 typecheck
+> tsc -p tsconfig.json && tsc -p tsconfig.tools.json
+
+
+> @card-workshop/tools@0.1.0 typecheck
+> tsc -p tsconfig.json
+
+
+> @card-workshop/diablo2@0.1.0 typecheck
+> tsc -p tsconfig.json
+
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+> card-workshop@0.1.0 build
+> tsc -b && vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 460 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                          0.44 kB │ gzip:     0.28 kB
+dist/assets/weapons-DQmiCMVC.glb                        81.39 kB
+dist/assets/enemy-witch-kMknJd9x.glb                    85.41 kB
+dist/assets/environment-starless-Chy0e4gp.glb           90.89 kB
+dist/assets/enemy-hunter-62bZVet8.glb                   98.28 kB
+dist/assets/enemy-archer-Bm8Xp7BT.glb                  104.82 kB
+dist/assets/motion-B50UWxYz.blend                      111.45 kB
+dist/assets/enemy-brute-BTnWpJJy.glb                   160.98 kB
+dist/assets/environment-cinder-B_0d-iMy.glb            170.18 kB
+dist/assets/environment-sepulcher-Dx-QukVm.glb         191.98 kB
+dist/assets/guardian-ashregent-DVxZBGI1.glb            248.28 kB
+dist/assets/environment-archive-DKl5NFjS.glb           279.02 kB
+dist/assets/motion-Dwpe79OM.blend                      284.75 kB
+dist/assets/hydra-before-fBeNbnQc.png                  288.80 kB
+dist/assets/guardian-bellwarden-CxWB0w1a.glb           296.22 kB
+dist/assets/guardian-undertow-DeW-Kjj7.glb             310.36 kB
+dist/assets/hero-Bf2Ecrrl.glb                          351.08 kB
+dist/assets/pose-samples-4NoYFKbt.json                 418.55 kB │ gzip:    76.57 kB
+dist/assets/pose-samples-DAmlSplh.json                 418.60 kB │ gzip:    76.69 kB
+dist/assets/pose-samples-CXYPgxty.json                 434.31 kB │ gzip:    73.13 kB
+dist/assets/motion-BnB9ZQAF.blend                      434.36 kB
+dist/assets/guardian-sovereign-MCs8RX7v.glb            458.24 kB
+dist/assets/pose-samples-xmIxuNmy.json                 462.76 kB │ gzip:    86.43 kB
+dist/assets/pose-samples-BL03zx7H.json                 474.44 kB │ gzip:    89.27 kB
+dist/assets/pose-samples-uppOo1nn.json                 488.40 kB │ gzip:    90.87 kB
+dist/assets/motion-DA4O6GuP.blend                      515.02 kB
+dist/assets/motion-BsELuBy0.blend                      621.42 kB
+dist/assets/source-f1qe0Jwz.blend                      863.65 kB
+dist/assets/source-3ywFtJM7.blend                      883.98 kB
+dist/assets/source-BqdWdJ_j.blend                      887.64 kB
+dist/assets/pose-samples-jH37quaH.json                 953.12 kB │ gzip:   202.63 kB
+dist/assets/moss-CDRCArcO.glb                        1,056.85 kB
+dist/assets/motion-DZgJxkYo.blend                    1,064.30 kB
+dist/assets/russet-DHUhWoGx.glb                      1,084.19 kB
+dist/assets/ash-DBVSQFyz.glb                         1,084.22 kB
+dist/assets/vajra-B7kgsmcI.glb                       1,604.33 kB
+dist/assets/pose-samples-Dn_0jHJp.json               1,812.31 kB │ gzip:   398.67 kB
+dist/assets/source-7N6UrsgN.blend                    2,137.37 kB
+dist/assets/source-CIB_23Wm.blend                    2,268.31 kB
+dist/assets/source-C82Rgxg-.blend                    2,433.19 kB
+dist/assets/boar-XBkeYS15.glb                        2,828.34 kB
+dist/assets/raven-C94SJMNc.glb                       2,930.94 kB
+dist/assets/source-CCq-bqeC.blend                    3,061.44 kB
+dist/assets/source-CE96kL48.blend                    3,066.56 kB
+dist/assets/source-DoH2Y6XX.blend                    3,076.83 kB
+dist/assets/source-ngwYzvcD.blend                    3,268.70 kB
+dist/assets/fox-B228-TAK.glb                         3,283.89 kB
+dist/assets/moss-C6FQphpb.glb                        3,801.05 kB
+dist/assets/ash-BLpifl5o.glb                         3,803.79 kB
+dist/assets/russet-DkdMUP3J.glb                      3,810.31 kB
+dist/assets/otter-UnzE6BtT.glb                       3,940.17 kB
+dist/assets/pose-samples-Db4Vk_z9.json               4,545.01 kB │ gzip:   977.34 kB
+dist/assets/spiral-BbM8JKvv.glb                      4,623.02 kB
+dist/assets/catalyst-_QcBoFTt.glb                    5,345.86 kB
+dist/assets/pose-samples-C4JkbC1-.json               5,406.72 kB │ gzip: 1,165.62 kB
+dist/assets/guardian-Bj1JLLiV.glb                    6,133.32 kB
+dist/assets/source-DPvS_Ccy.blend                    6,239.52 kB
+dist/assets/source-rmvyrIDE.blend                    6,266.70 kB
+dist/assets/model-BaqNgc-m.glb                       6,491.44 kB
+dist/assets/source-BPFa84qg.blend                    7,026.80 kB
+dist/assets/source-C-m6mdQ0.blend                    7,027.40 kB
+dist/assets/model-DjZgiyrC.glb                       7,033.98 kB
+dist/assets/source-BeqFKQ6o.blend                    7,042.28 kB
+dist/assets/model-C0d7X1Dy.glb                       7,142.48 kB
+dist/assets/model-d69qsjZs.glb                       7,143.15 kB
+dist/assets/source-0Hqo7PAp.blend                    7,213.30 kB
+dist/assets/thornstag-Bj2wFpL6.glb                   7,213.79 kB
+dist/assets/model-BYXySwWc.glb                       7,232.17 kB
+dist/assets/stray-DlH-3LTE.glb                       7,296.81 kB
+dist/assets/source-DtmCRGJZ.blend                    7,705.83 kB
+dist/assets/model-C8bB9lop.glb                       7,776.62 kB
+dist/assets/scavenger-7pqiNUuq.glb                   8,040.28 kB
+dist/assets/source-DczAipRa.blend                    8,490.94 kB
+dist/assets/cub-Biv33zYJ.glb                         8,865.93 kB
+dist/assets/moonmoth-Bcz6yHo1.glb                    9,058.76 kB
+dist/assets/bogtoad-B4qRWU9S.glb                     9,769.15 kB
+dist/assets/model-D69y35Pz.glb                      10,000.62 kB
+dist/assets/blender-before-C6ieOXEh.glb             10,165.27 kB
+dist/assets/blender-gesture-DLVh8-rU.glb            10,165.41 kB
+dist/assets/packcaller-TNDsqBZx.glb                 10,530.68 kB
+dist/assets/imp-DYe05M3y.glb                        10,864.30 kB
+dist/assets/tortoise-C3Wf3jLi.glb                   10,927.43 kB
+dist/assets/juggler-BorT9HZM.glb                    11,228.91 kB
+dist/assets/model--EpQOT6s.glb                      12,204.81 kB
+dist/assets/crocolisk-DotMylSt.glb                  12,926.10 kB
+dist/assets/amalgam-BONAamwh.glb                    13,772.13 kB
+dist/assets/source-CkliMk47.blend                   16,200.17 kB
+dist/assets/herald-Dz0MAfbK.glb                     16,257.30 kB
+dist/assets/model-B-LLPiCO.glb                      16,711.20 kB
+dist/assets/model-DUX4qTEu.glb                      17,612.72 kB
+dist/assets/source-CxPNREsK.blend                   18,205.97 kB
+dist/assets/patron-DMPVJO3O.glb                     20,009.66 kB
+dist/assets/matron-jGrKFlkv.glb                     20,344.34 kB
+dist/assets/accepted-hydra-CiVnLLg9.glb             20,734.66 kB
+dist/assets/squire-BqktAPQm.glb                     26,564.60 kB
+dist/assets/watcher-BLfAxsJs.glb                    26,883.66 kB
+dist/assets/bannerbearer-BUbfg5MY.glb               32,930.24 kB
+dist/assets/AbilityArt-JEyagk1I.css                      0.05 kB │ gzip:     0.07 kB
+dist/assets/CardArt-UOfMBC95.css                         0.17 kB │ gzip:     0.14 kB
+dist/assets/Review-DQCJoY7X.css                          0.27 kB │ gzip:     0.17 kB
+dist/assets/Review-C719borX.css                          0.28 kB │ gzip:     0.19 kB
+dist/assets/Resolution-gmJ3FfVe.css                      0.60 kB │ gzip:     0.34 kB
+dist/assets/CartographerApp-C9hB2Jj0.css                 0.65 kB │ gzip:     0.36 kB
+dist/assets/Review-B4Hm-d68.css                          0.66 kB │ gzip:     0.32 kB
+dist/assets/MinionCard-CgMYQjX-.css                      0.88 kB │ gzip:     0.45 kB
+dist/assets/CanidAttackStage-8GYgGhqR.css                0.95 kB │ gzip:     0.46 kB
+dist/assets/Review-BCcE3zfg.css                          0.99 kB │ gzip:     0.44 kB
+dist/assets/Artwork-DFj8VZ-A.css                         1.26 kB │ gzip:     0.55 kB
+dist/assets/arena-BlS1rn85.css                           1.28 kB │ gzip:     0.58 kB
+dist/assets/CanidComparison-aFTAlHnm.css                 2.04 kB │ gzip:     0.80 kB
+dist/assets/BlindsideApp-DITagJ1b.css                    2.48 kB │ gzip:     1.01 kB
+dist/assets/GameGuide-BMo83m2H.css                       3.16 kB │ gzip:     1.11 kB
+dist/assets/GameGlossary-DneZpMdu.css                    4.46 kB │ gzip:     1.44 kB
+dist/assets/workshop-rMOslDfO.css                        5.60 kB │ gzip:     1.83 kB
+dist/assets/artifact-0GvWhWaW.css                        5.91 kB │ gzip:     1.83 kB
+dist/assets/Challenges-BFkyMx6x.css                      8.60 kB │ gzip:     2.28 kB
+dist/assets/NightPassageApp-D6EhOYXu.css                 8.73 kB │ gzip:     2.72 kB
+dist/assets/Studio-BHR9nqf3.css                          9.69 kB │ gzip:     2.62 kB
+dist/assets/styles-BUfL8EuK.css                          9.74 kB │ gzip:     3.02 kB
+dist/assets/Workbench-CSHgRy6n.css                      11.15 kB │ gzip:     2.96 kB
+dist/assets/DiabloApp-D_aTQFMt.css                      14.17 kB │ gzip:     3.89 kB
+dist/assets/index-Crl1cT6I.css                          65.15 kB │ gzip:    15.07 kB
+dist/assets/json-dzmhDLuq.js                             0.09 kB │ gzip:     0.09 kB
+dist/assets/download-BOR3yhXs.js                         0.20 kB │ gzip:     0.18 kB
+dist/assets/random-D5NGInjb.js                           0.40 kB │ gzip:     0.27 kB
+dist/assets/lifetime-Dl6zzCzK.js                         0.70 kB │ gzip:     0.41 kB
+dist/assets/workshop-DAEb5AoT.js                         1.35 kB │ gzip:     0.60 kB
+dist/assets/motion-contract-vK92O05R.js                  1.65 kB │ gzip:     0.81 kB
+dist/assets/Playback-B3Rbhu3s.js                         2.04 kB │ gzip:     0.89 kB
+dist/assets/layout-LrkDoyQ_.js                           2.82 kB │ gzip:     1.41 kB
+dist/assets/scenario-Cv02oCTf.js                         3.16 kB │ gzip:     1.33 kB
+dist/assets/artifact-3LaPjCrK.js                         3.46 kB │ gzip:     1.44 kB
+dist/assets/GameGuide-Luq9eXuU.js                        4.50 kB │ gzip:     2.09 kB
+dist/assets/CombatPlayer-CbyMFnot.js                     4.66 kB │ gzip:     1.86 kB
+dist/assets/CanidAttackStage-D8oIzSYT.js                 5.15 kB │ gzip:     2.48 kB
+dist/assets/WorkshopArt-f61XrWB3.js                      7.10 kB │ gzip:     2.21 kB
+dist/assets/SpireApp-C2jJQ515.js                         8.36 kB │ gzip:     3.33 kB
+dist/assets/GameGuide-Bgww2Z1G.js                       10.79 kB │ gzip:     3.87 kB
+dist/assets/Review-DJVHEwkn.js                          12.29 kB │ gzip:     4.66 kB
+dist/assets/HydraComparison-DhNpw6MV.js                 12.56 kB │ gzip:     5.53 kB
+dist/assets/Review-Caw7RVlC.js                          13.58 kB │ gzip:     5.27 kB
+dist/assets/styles-BrVU6hI7.js                          13.66 kB │ gzip:     5.24 kB
+dist/assets/Review-XHlf4T-U.js                          13.91 kB │ gzip:     5.50 kB
+dist/assets/WorldItemArt-8Tqc9aRu.js                    15.33 kB │ gzip:     4.97 kB
+dist/assets/CardArt-BxrE1nxq.js                         16.44 kB │ gzip:     5.60 kB
+dist/assets/CartographerApp-BP7lLkWn.js                 17.13 kB │ gzip:     5.95 kB
+dist/assets/Review-711md1ta.js                          17.92 kB │ gzip:     5.87 kB
+dist/assets/Rooms-LurV_Pvp.js                           21.01 kB │ gzip:     7.09 kB
+dist/assets/BattlegroundsApp-4Q1SFS00.js                24.63 kB │ gzip:     8.16 kB
+dist/assets/Challenges-CfG2imX3.js                      25.74 kB │ gzip:     8.80 kB
+dist/assets/WorkshopTools-GTfeoR02.js                   26.44 kB │ gzip:     8.14 kB
+dist/assets/arena-SxkpAbLS.js                           26.55 kB │ gzip:     9.45 kB
+dist/assets/Review-B6ZJHVvg.js                          27.55 kB │ gzip:    10.22 kB
+dist/assets/Review-BVo50wp9.js                          29.20 kB │ gzip:    10.90 kB
+dist/assets/BlindsideApp-BSEugC6e.js                    33.45 kB │ gzip:    10.14 kB
+dist/assets/ash-BPaul3Pf.js                             34.49 kB │ gzip:     7.89 kB
+dist/assets/DiabloApp-BWkmO2B5.js                       34.58 kB │ gzip:    10.95 kB
+dist/assets/Card-B_Kdlh6q.js                            36.70 kB │ gzip:    12.30 kB
+dist/assets/_virtual_card-workshop-dcc-CenBr2mQ.js      38.89 kB │ gzip:    10.18 kB
+dist/assets/MinionCard-Bpb1F6J5.js                      40.60 kB │ gzip:    12.81 kB
+dist/assets/GameGlossary-9Zj83sse.js                    43.16 kB │ gzip:    16.02 kB
+dist/assets/Studio-BAvYltVK.js                          47.65 kB │ gzip:    18.34 kB
+dist/assets/Artwork-BxOjqX22.js                         62.87 kB │ gzip:    18.47 kB
+dist/assets/Workbench-fG8JGBp4.js                       70.21 kB │ gzip:    14.95 kB
+dist/assets/MinionArt-CXEhy3xE.js                       80.05 kB │ gzip:    26.94 kB
+dist/assets/CanidComparison-CvhDTnP6.js                 85.98 kB │ gzip:    22.75 kB
+dist/assets/session-B5rsPe3X.js                         89.00 kB │ gzip:    30.52 kB
+dist/assets/Resolution-DAJZ30_-.js                      90.46 kB │ gzip:    30.19 kB
+dist/assets/AbilityArt-foIKMbKe.js                      97.62 kB │ gzip:    26.86 kB
+dist/assets/NightPassageApp-DehAw-NS.js                145.02 kB │ gzip:    50.44 kB
+dist/assets/index-CCX--RGy.js                          232.08 kB │ gzip:    72.91 kB
+dist/assets/resources-BYF2F5n6.js                      645.15 kB │ gzip:   162.82 kB
+
+✓ built in 1.22s
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

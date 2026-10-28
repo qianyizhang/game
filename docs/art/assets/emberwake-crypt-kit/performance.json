@@ -1,0 +1,102 @@
+{
+  "environment": {
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "platform": "Linux x86_64",
+    "hardwareConcurrency": 5,
+    "dpr": 1,
+    "backing": [960, 576]
+  },
+  "timing": "CPU canvas submission, performance.now(), interleaved baseline/current; no GPU fence, FPS or physical-device claim",
+  "rows": [
+    {
+      "region": "bells-3",
+      "baseline": {
+        "cold": {
+          "p50": 12.199999999953434,
+          "p90": 20.699999999953434,
+          "min": 9.800000000046566,
+          "max": 25.400000000023283,
+          "n": 12
+        },
+        "warm": {
+          "p50": 0.30000000004656613,
+          "p90": 0.6000000000931323,
+          "min": 0.09999999997671694,
+          "max": 4.299999999930151,
+          "n": 240
+        }
+      },
+      "current": {
+        "cold": {
+          "p50": 24.5,
+          "p90": 36.40000000002328,
+          "min": 15.099999999976717,
+          "max": 46.5,
+          "n": 12
+        },
+        "warm": {
+          "p50": 0.30000000004656613,
+          "p90": 0.5999999999767169,
+          "min": 0.09999999997671694,
+          "max": 2.199999999953434,
+          "n": 240
+        }
+      }
+    },
+    {
+      "region": "bells-5",
+      "baseline": {
+        "cold": {
+          "p50": 11.599999999976717,
+          "p90": 16.20000000006985,
+          "min": 9.79999999993015,
+          "max": 20,
+          "n": 12
+        },
+        "warm": {
+          "p50": 0.30000000004656613,
+          "p90": 0.5999999999767169,
+          "min": 0.09999999997671694,
+          "max": 2.300000000046566,
+          "n": 240
+        }
+      },
+      "current": {
+        "cold": {
+          "p50": 18.5,
+          "p90": 25,
+          "min": 15,
+          "max": 28.099999999976717,
+          "n": 12
+        },
+        "warm": {
+          "p50": 0.30000000004656613,
+          "p90": 0.5999999999767169,
+          "min": 0.19999999995343387,
+          "max": 3.900000000023283,
+          "n": 240
+        }
+      }
+    }
+  ],
+  "sibling": [
+    {
+      "region": "fen-1",
+      "before": "2b0344f69e884dd8cab5fd0d237081f112dc59d3f6e348916ff5700cd36df0aa",
+      "after": "2b0344f69e884dd8cab5fd0d237081f112dc59d3f6e348916ff5700cd36df0aa",
+      "identical": true
+    },
+    {
+      "region": "dunes-1",
+      "before": "2a9c33d343eca5cd1b5bc742c3de4ab63ef5072cf21c0fdefcd69e44cc6666d6",
+      "after": "2a9c33d343eca5cd1b5bc742c3de4ab63ef5072cf21c0fdefcd69e44cc6666d6",
+      "identical": true
+    },
+    {
+      "region": "furnace-1",
+      "before": "1cd811305f54bd6a8af02f9ad5746afbb06b9a90dc00ff38b8aa106514276fa2",
+      "after": "1cd811305f54bd6a8af02f9ad5746afbb06b9a90dc00ff38b8aa106514276fa2",
+      "identical": true
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "baseline": "14f31860a4bf5c7bf568fbacf804c8cd60a3a9ca",
+  "artAndTestSource": "e142ce2d624edcb468ad56b823b0e7c1041d742f",
+  "baselineRenderSha256": "d8ae5592ffb889beaaff97280ff64664e5d0ca4b31b4610b80ee9ecb6d483480",
+  "sourceSha256": {
+    "packages/diablo2/src/ui/render.ts": "8936647d879c46cba77364aa0d0adf9321fdd2298fae197879b8f8653982804d",
+    "packages/diablo2/src/ui/crypt-environment.ts": "7d6188f049d9b4b37059d0631ed501025145a55fedb66b2a529bec41ba677a3e",
+    "tests/browser/emberwake-crypt.spec.ts": "f54b1d6ef4c853800fce5634ab7aff1ee7c27549196450c7670a5c54cbed0de8"
+  },
+  "evidenceSha256": {
+    "baseline-altar.png": "8665f5b4b9796ebb526e69d730f28a4264602d6e8fb19af38a13081d1e5b8921",
+    "baseline-combat.png": "7eeff71728d5b8f562093bb2a19df3f0d08290fc8a75f1b8c60f5ab39b169a2d",
+    "baseline-entrance.png": "598c100878070940929bf1605e13f1ea241b7e14a664883077ced6dfbf271dad",
+    "baseline-fog.png": "0c5646a8a09ff19ea1c45da680e78726c36c9f26ad8b45b2bbca45f1f07db4df",
+    "baseline-ui-desktop.png": "c63646ccc2e9f5b4dee689ebc0c8d0a230e0d2137585c7016f701dc0d04b8654",
+    "baseline-ui-phone.png": "591ddf4f3e1720e806cbd647bb0d7eed3514fe822b71fac3c74d889614f56abf",
+    "combat.png": "748501fa0a3bd57904220a4248d9594eaa3ee121f353fec6a4e096a310f4d76a",
+    "current-altar.png": "27554a5879f7af352e1582801e6fa4fee8fe23620d170249b70c00c5e2dae84e",
+    "current-combat.png": "d5ca5f7f786e4c8c32fd5aca65529a59b2295afd2ca54d60920cbe78a799587c",
+    "current-entrance.png": "52d15ab1ce5b171557ef6e7517346d4a02887e1040d95207ba52517257c079f0",
+    "current-fog.png": "992241c2392f3c06a06578118722585e6e2c7330b101b308a0e74631c32d3684",
+    "current-ui-desktop.png": "1916ce6f1ae33074a1eab48a40bde41d6b06889295daf26e6b721e1a351717de",
+    "current-ui-phone.png": "3bfb7f6f89d24fbf95e5d9bd143cf669b289dbedb5af457e62d7c5a49d97f5f9",
+    "details.png": "97663c927e290a9c499792683d584e155bec036a78eb7b43c8c03449d1fcc0e3",
+    "fog.png": "7988a2c9462c9d5e6ebd32faac81f81ffc81bcaa318f3acae4afd779fc157f4c",
+    "iteration.png": "2d4499c41b19d254736c3bf481766b829d112c2abdacc310d96ff0adfc48a185",
+    "overview.png": "b31be4a2505ff7e2708888d8df5183eb95df9b82b1aba4c3212cd8a2d959e87f"
+  },
+  "chrome": {
+    "url": "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb",
+    "version": "156.0.8078.73",
+    "packageSha256": "fd19c6895dad77f4d7f712c2d9f0d5eb682f4a6e7ff22b1bd0d40d03710d288c",
+    "executable": "/workspace/.cloud-tools/chrome/opt/google/chrome/chrome"
+  },
+  "visualReview": {
+    "author": "completed native scenes, crops, combat, fog and phone UI",
+    "independent": "Parent independent review accepted the visual direction and narrow art/cache scope on 2026-10-28; cold-cost regression disclosed. User merge approval remains unrecorded."
+  }
+}

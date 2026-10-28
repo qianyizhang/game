@@ -1,6 +1,7 @@
 import { drawSkillEffects, type SkillEffects } from './skill-effects';
 import { drawHero } from './hero-art';
 import { drawCryptMonster } from './crypt-art';
+import { drawCryptCell, drawCryptProp } from './crypt-environment';
 import type { Content, Point, State, Enemy, Ally, Player } from '../domain/types';
 import { distance, dimensions, lineOfSight, walkable, visibleActor } from '../domain/maps';
 import { currentRegion, currentWorld, wardsLit, portalOpen } from '../domain/world';
@@ -233,7 +234,10 @@ function terrainFor(canvas: HTMLCanvasElement, state: State, content: Content): 
       const px = x * TILE,
         py = y * TILE;
       const hash = (x * 17 + y * 31) % 11;
-      if (walkable(world, { x, y })) {
+      const open = walkable(world, { x, y });
+      if (map.theme === 'crypt' && (open || '#^'.includes(world.tiles[y][x]))) {
+        drawCryptCell(ctx, world, x, y, TILE, open);
+      } else if (open) {
         ctx.fillStyle =
           world.tiles[y][x] === '=' ? colors.light : hash < 3 ? colors.light : colors.floor;
         ctx.fillRect(px, py, TILE, TILE);
@@ -296,7 +300,9 @@ function terrainFor(canvas: HTMLCanvasElement, state: State, content: Content): 
   for (const landmark of map.landmarks) {
     ctx.save();
     ctx.translate(landmark.at.x * TILE, landmark.at.y * TILE);
-    if (landmark.kind === 'tree') {
+    if (map.theme === 'crypt' && drawCryptProp(ctx, landmark.kind)) {
+      // The crypt kit replaces only existing stone props in the static cache.
+    } else if (landmark.kind === 'tree') {
       ctx.fillStyle = '#6b5943';
       ctx.fillRect(-3, -22, 6, 36);
       for (const [x, y, r] of [
