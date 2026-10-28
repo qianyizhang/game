@@ -26,9 +26,9 @@ test('Golden Claw plays offline, seeks deterministically and ends in black', asy
     }
   });
   await page.goto('/golden-claw-offline');
-  await page.waitForFunction(() => (window as FilmWindow).film?.ready);
+  await page.waitForFunction(() => (window as unknown as FilmWindow).film?.ready);
   const result = await page.evaluate(() => {
-    const film = (window as FilmWindow).film;
+    const film = (window as unknown as FilmWindow).film;
     const canvas = document.querySelector('canvas');
     if (!canvas) throw new Error('Missing film canvas');
     const context = canvas.getContext('2d');
