@@ -1,0 +1,22 @@
+fcd0d369e3123f87c29e8b998fab3134121ed990
+[1028/141752.344350:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+[WebServer] (node:4475) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:4488) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[1028/141753.412518:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+
+Running 2 tests using 1 worker
+
+(node:4589) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1028/141754.999436:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+  ✓  1 [functional] › tests/browser/diablo2.spec.ts:320:1 › developer atlas reaches every region and floor, reloads separately, and preserves the campaign (11.3s)
+  ✓  2 [functional] › tests/browser/generated-dungeon.spec.ts:10:1 › opts into a generated campaign dungeon and visits its reciprocal portals in the sandbox (4.0s)
+
+  2 passed (18.5s)
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
