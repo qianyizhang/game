@@ -1,0 +1,9 @@
+
+ RUN  v5.0.5 /workspace/game
+
+
+ Test Files  2 passed (2)
+      Tests  12 passed (12)
+   Start at  07:00:35
+   Duration  445ms (transform 54%, tests 26%, import 17%, worker 2%)
+

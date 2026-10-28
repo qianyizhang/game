@@ -1,0 +1,149 @@
+{
+  "baseline": "da8b3c39097a27a300b414af9b89bdceb234a1ff",
+  "current": "9ed7497b40141d5283e5270ea6922a90a70f2584",
+  "sourceHash": "d90adad4ce2f38eedec5ecd4c13645c857fdd45571ad63c14a08fad38f5a8fa8",
+  "testHash": "c3b612bed26ececd3c9ecc555589c8833f9fb231ab679323a26ae542b7586dc5",
+  "browser": {
+    "version": "156.0.8078.73",
+    "path": "/workspace/.cloud-tools/google-chrome/extracted/opt/google/chrome/chrome",
+    "officialURL": "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb",
+    "packageSha256": "fd19c6895dad77f4d7f712c2d9f0d5eb682f4a6e7ff22b1bd0d40d03710d288c"
+  },
+  "runtime": {
+    "node": "24.21.0",
+    "npm": "11.19.0",
+    "playwright": "1.64.0"
+  },
+  "matchedReceipts": {
+    "before": {
+      "golden": {
+        "seed": "GLASS-TRIPLE-1",
+        "unit": {
+          "id": "unit-42",
+          "definitionId": "cyclone",
+          "attack": 10,
+          "health": 12,
+          "maxHealth": 12,
+          "golden": true,
+          "keywords": ["shield", "windfury"],
+          "copies": 3,
+          "tripleReward": true
+        },
+        "boardSave": "9b4dfa81897aeb36d963c30f291cdea6923b027d5e037e114c137cbc7aee5bb7",
+        "combatSave": "89e8eee12ee4f3dd3cafa4a52084693b0ed4640331e1a41b0926044137179fe4",
+        "browser": "156.0.8078.73"
+      },
+      "normal": {
+        "seed": "ELEMENTAL-REVIEW-804",
+        "elements": ["spark", "molten", "tempest", "dancer", "cyclone", "elder"],
+        "labels": [
+          "Kindle Spark, 2 attack, 2 health",
+          "Molten Pebble, 3 attack, 3 health",
+          "Young Tempest, 4 attack, 3 health, » Windfury",
+          "Cinder Dancer, 4 attack, 4 health",
+          "Glass Cyclone, 5 attack, 6 health, ◉ Shield · » Windfury",
+          "Mountain Elder, 6 attack, 8 health"
+        ],
+        "sizes": {
+          "390": {
+            "x": 23,
+            "y": 234.03125,
+            "width": 68,
+            "height": 48.1875
+          },
+          "1440": {
+            "x": 244,
+            "y": 491.84375,
+            "width": 107.84375,
+            "height": 76.078125
+          }
+        },
+        "selectedBoardSave": "cbc58e95e0bdc4b363226e9a6bb259e39a8d21fce52a2b74ae292640bbd5c9ee",
+        "combatSave": "880e8e4031a40568bf47f35c2609544293553b140274172604bc5d951a5b751b",
+        "browser": "156.0.8078.73",
+        "errors": []
+      }
+    },
+    "after": {
+      "golden": {
+        "seed": "GLASS-TRIPLE-1",
+        "unit": {
+          "id": "unit-42",
+          "definitionId": "cyclone",
+          "attack": 10,
+          "health": 12,
+          "maxHealth": 12,
+          "golden": true,
+          "keywords": ["shield", "windfury"],
+          "copies": 3,
+          "tripleReward": true
+        },
+        "boardSave": "9b4dfa81897aeb36d963c30f291cdea6923b027d5e037e114c137cbc7aee5bb7",
+        "combatSave": "89e8eee12ee4f3dd3cafa4a52084693b0ed4640331e1a41b0926044137179fe4",
+        "browser": "156.0.8078.73"
+      },
+      "normal": {
+        "seed": "ELEMENTAL-REVIEW-804",
+        "elements": ["spark", "molten", "tempest", "dancer", "cyclone", "elder"],
+        "labels": [
+          "Kindle Spark, 2 attack, 2 health",
+          "Molten Pebble, 3 attack, 3 health",
+          "Young Tempest, 4 attack, 3 health, » Windfury",
+          "Cinder Dancer, 4 attack, 4 health",
+          "Glass Cyclone, 5 attack, 6 health, ◉ Shield · » Windfury",
+          "Mountain Elder, 6 attack, 8 health"
+        ],
+        "sizes": {
+          "390": {
+            "x": 23,
+            "y": 234.03125,
+            "width": 68,
+            "height": 48.1875
+          },
+          "1440": {
+            "x": 244,
+            "y": 491.84375,
+            "width": 107.84375,
+            "height": 76.078125
+          }
+        },
+        "selectedBoardSave": "cbc58e95e0bdc4b363226e9a6bb259e39a8d21fce52a2b74ae292640bbd5c9ee",
+        "combatSave": "880e8e4031a40568bf47f35c2609544293553b140274172604bc5d951a5b751b",
+        "browser": "156.0.8078.73",
+        "errors": []
+      }
+    }
+  },
+  "identicalReceipts": true,
+  "combatFrame": 0,
+  "imagesSha256": {
+    "after-collection-1440.webp": "142b37c078ca728b7ebc479471dfb362e0f81ca0a312b9d3354a7cab412c883e",
+    "after-collection-390.webp": "774bf942eb85dd9a31dbaa4d145a5461969c5d2aa3937dbc172b4770f95961ca",
+    "after-combat-1440.webp": "7b2f7947efa0ad37daf3c2be4ce66e5c5e41e3f27c7ec771abd6260480c5bb54",
+    "after-combat-390.webp": "58c2e7634ece4d95f0bc4b0b1c4ccf2c4c58234df87ff1f82ef079f7365b6c48",
+    "after-golden-board-1440.webp": "a902a97ee16a86ed2c66eae1556d08640c1f4c384ef6db6dd92677a82f238aae",
+    "after-golden-board-390.webp": "5d2f7fffcaa7de2e88a3bd8f96e88e377fd7aa9856cf8bf242e885a820a0728e",
+    "after-golden-hand-1440.webp": "c0516fa218991f01bc5272edefa84bdbf4d77d3c4fcfc78cc0b03afc5c43ecf5",
+    "after-recruited-hand-1440.webp": "d063ed9248c2361758691b164a36151f426a36068666abfdb63152f3fad7cd2a",
+    "after-selected-warband-1440.webp": "a707c1dcecc6ad11cb354a1ccc27b8e3b8e852b689b0fa74e72054c490f2d281",
+    "after-selected-warband-390-end.webp": "24c7e95be816e03d8c38bc5fba1e3b2e95dfffc3271a1263c640ff590f3225a8",
+    "after-selected-warband-390.webp": "531cbdd810ae23e9a29a4e8932bba7433efb0d362751e96307886f594d4e6755",
+    "after-tavern-1440.webp": "d363caab6a2fcbe21d4b620aeb18d4e5fa4a95f76b169b82dd575e5c99c213fe",
+    "after-tavern-390-end.webp": "40f984f8dae977189c2c9936f296fab1d16b6e1162e51cb80344272ad77a352b",
+    "after-tavern-390.webp": "a1d39c1437a59dcf62e4e69e35155a1e090c8ccf68034536104cf3cba990688f",
+    "before-collection-1440.webp": "4b972468a61014391b9ef340b5ead9a9501eb354b786b71b6f45115a783b3f3e",
+    "before-collection-390.webp": "b4f8ec30b4b739f54bbc4904771123b3b31f407fe0d2e61207565183a61ea542",
+    "before-combat-1440.webp": "4ca307f83453d730e94f531ad0463d07a0036837df455535a619df6096e7996b",
+    "before-combat-390.webp": "96d32e2ac1d578f6b221a976d372b0be5a6a90a0957c5fb668acf9728c1c20d0",
+    "before-golden-board-1440.webp": "d43895250abc982212d8e18d134b9a254990b08021c8f5289e1b1d036f3650ed",
+    "before-golden-board-390.webp": "76a1631becf5c6f7c8227e8a00427ac39c11804e55d50afda3feb23c56684dde",
+    "before-golden-hand-1440.webp": "31a5b1c954869b27978f6762cd18fd1575b234d0b660ceab35db324948689746",
+    "before-recruited-hand-1440.webp": "daca8e21ac2df635c2e094ac4d2ab2bb2c9e62c0f4d46d9fdc8601ff624777fd",
+    "before-selected-warband-1440.webp": "08fd73757702a74c2bb410ded19656de46c9a8d1594af8c030ad061570db6d3b",
+    "before-selected-warband-390-end.webp": "e0fc4109f8fe76abd0d8c47265d15f2f25182918db3adec16028540a66573213",
+    "before-selected-warband-390.webp": "f5d4b0abd56679aff40ba18e3715799daa739cb7c52c7274fe6c45f8ade852fe",
+    "before-tavern-1440.webp": "515238916c8578331f9ee0dd97bc33c4204d18a90161212ee4d91d614fe91ff3",
+    "before-tavern-390-end.webp": "5e8665a9fb3e09cc95ec708828f126662b1db52f00dede51ad9338c939c2fe7d",
+    "before-tavern-390.webp": "5c2f265d48570ccc612c34e0c4e08d752e28f2dcd475dd46659ef0f854c997a9"
+  }
+}
