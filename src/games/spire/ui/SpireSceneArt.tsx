@@ -123,6 +123,124 @@ export function NodeArt({ kind }: { kind: NodeKind }) {
   );
 }
 
+function ExordiumScene() {
+  return (
+    <>
+      <circle cx="115" cy="29" r="20" fill="#d8d7aa" opacity=".17" />
+      <path d="M0 78 27 56 50 70 79 47 110 67 140 43 160 58v54H0Z" fill="#405b4d" />
+      <path d="M0 87 35 66 56 75 0 106Zm160-5-31-25-29 22 60 29Z" fill="#293f38" />
+      <path d="M14 86 24 43l13-12 6-24 20 3 2 18-8 11 7 47Z" fill="#566b57" />
+      <path d="M24 43 37 31l6-24 7 2-4 28-8 10-5 41-19-2Z" fill="#a5ac83" />
+      <path d="m43 7 20 3 2 18-8 11-11-2 4-28Z" fill="#c2bc91" />
+      <path d="M107 88 103 46l9-10 2-28 22-4 1 26 10 12 5 42Z" fill="#526956" />
+      <path d="m112 36 2-28 16-3-2 30 8 12 5 42-22-2-3-42Z" fill="#aeb58f" />
+      <path d="m130 5 6-1 1 26 10 12-11 5-8-12Z" fill="#6c8065" />
+      <path
+        d="M52 89V55Q79 18 107 54v35H94V56Q79 38 65 57v32Z"
+        fill="#bbb791"
+        stroke={ink}
+        strokeWidth="2"
+      />
+      <path d="M65 89V57Q79 38 94 56v33Z" fill="#243a34" />
+      <path d="M67 89 74 66l9-6 8 29Z" fill="#66775e" />
+      <path d="M51 54q27-37 56 0l-5 6Q79 30 57 61Z" fill="#d8ca9e" stroke={ink} strokeWidth="1.5" />
+      <path d="m69 36 5 10m12-11-3 10m13-4-5 8" stroke="#727b61" strokeWidth="2" />
+      <path d="M73 112 78 83h8l16 29Z" fill="#b89c6e" />
+      <path d="m0 112 27-13 32-10 13 23Zm160 0-33-18-24-5-2 23Z" fill="#30483d" />
+      <path d="m4 97 19-9 17 3-7 11-21 5Zm118 2 16-14 19 5 3 19-21-7Z" fill="#788568" />
+      <path
+        d="m15 94 22-7m98 4 18 5M31 48l15 2m72 7 18-4m-6-29-12 3"
+        stroke="#d5c79a"
+        strokeWidth="2"
+        opacity=".72"
+      />
+      <path d="m22 79 8-14 8 5m85 16 8-22 8 8" fill="none" stroke="#78926d" strokeWidth="3" />
+      <path d="m76 101 13-3m-5 10 13-3" stroke="#e0c590" strokeWidth="2" opacity=".75" />
+    </>
+  );
+}
+
+function CityScene() {
+  return (
+    <>
+      <circle cx="115" cy="25" r="19" fill="#e4c69a" opacity=".18" />
+      <path d="M0 65 19 48 32 56 51 29 71 54 94 33 117 54 142 31 160 51v61H0Z" fill="#5d554b" />
+      <path d="M7 86V46l23-17 20 16v40Z" fill="#536257" />
+      <path d="m7 46 23-17 20 16-8 6-14-12-15 13Z" fill="#998867" />
+      <path d="M12 52h30v37H12Z" fill="#bba67d" />
+      <path d="M37 52h9v37h-9Z" fill="#776f58" />
+      <path d="M42 85V37l23-22 24 22v51Z" fill="#65705e" />
+      <path d="m42 37 23-22 24 22-8 5-16-16-17 17Z" fill="#c2ad82" />
+      <path d="M49 42h31v42H49Z" fill="#aa9772" />
+      <path d="M78 42h10v47H78Z" fill="#6c6651" />
+      <path d="M91 86V33l8-6V16l10-10 10 10v12l10 8v51Z" fill="#5a6255" />
+      <path d="m91 33 8-6V16l10-10 10 10v12l10 8-10 4-11-5-10 4Z" fill="#d4bd8f" />
+      <path d="M98 40h22v50H98Z" fill="#c6ae82" />
+      <path d="M120 41 139 27l18 18v50h-37Z" fill="#555e53" />
+      <path d="m120 41 19-14 18 18-7 6-13-13-12 12Z" fill="#9d8968" />
+      <path d="M125 51h25v42h-25Z" fill="#ad9873" />
+      <path d="M0 89 22 76l29 7 28-8 22 9 21-7 38 12v23H0Z" fill="#3c493e" />
+      <path d="M47 112 67 81l14-2 25 33Z" fill="#766d55" />
+      <path d="M64 112 76 86h8l13 26Z" fill="#a3906a" />
+      <path d="M23 76 52 82l17-5 8 5-24 12-30-7Z" fill="#cfb58a" />
+      <path d="M52 82 77 77l4 5-28 12Z" fill="#81775d" />
+      <path d="M88 81 120 73l25 7-4 9-32-4-20 6Z" fill="#b6a077" />
+      <path
+        d="m18 61 5-5 4 5v10h-9Zm15 0 4-4 4 4v10h-8Zm22-12h7v10h-7Zm14 0h7v10h-7Zm30-1h6v11h-6Zm13 0h6v11h-6Zm17 13h6v10h-6Zm13 0h6v10h-6Z"
+        fill="#efcf94"
+      />
+      <path d="m0 95 24-8 26 7-7 18H0Zm160 0-20-8-22 8 5 17h37Z" fill="#2a4039" />
+      <path d="m24 87 7 7-4 18m112-25-7 9 3 16" stroke="#7b8764" strokeWidth="3" fill="none" />
+      <path d="m76 98 13-2m-18 9 22-1" stroke="#d7b786" strokeWidth="1.5" />
+    </>
+  );
+}
+
+function BeyondScene() {
+  return (
+    <>
+      <circle cx="111" cy="24" r="20" fill="#d9d0c5" opacity=".15" />
+      <path d="M0 74Q25 51 50 72 70 57 88 68 119 47 160 69v43H0Z" fill="#50566b" />
+      <path
+        d="M24 33q57-42 109 7M11 44q41 24 69-4m39-15q26-9 37 4"
+        fill="none"
+        stroke="#b4acb8"
+        strokeWidth="1.5"
+        opacity=".52"
+      />
+      <path d="m4 72 30-13 25 12-9 14-32 4Zm109-7 35-14 12 9v17l-34 10Z" fill="#4b5b5e" />
+      <path d="m4 72 30-13 25 12-12 4-27-4Zm109-7 35-14 12 9-29 9Z" fill="#a6a69d" />
+      <path d="m18 89 32-4-9 16-11 8Zm108-2 34-10-16 23-16 3Z" fill="#37474a" />
+      <path d="M55 74 80 60l31 15-16 12-28-1Z" fill="#aeb0a7" />
+      <path d="m67 86 28 1-7 21-17-11Z" fill="#455561" />
+      <path d="m55 74 12 12 4 11-15-9Z" fill="#586674" />
+      <path
+        d="M69 72V37l9-5 5-26 7 25 13 6v37L87 84Z"
+        fill="#d4c9af"
+        stroke={ink}
+        strokeWidth="2"
+      />
+      <path d="m83 6 7 25 13 6v37L87 84V33Z" fill="#718785" />
+      <path d="m69 37 18-4 16 4-16 9Z" fill="#f0deb8" />
+      <path d="M78 72V48q7-8 13 0v24Z" fill="#293b43" />
+      <path d="M82 63V49l5-4 3 4v14Z" fill="#e2d2a7" />
+      <path d="M24 61V43l16-5v23m86-5V31l12-5v30" fill="none" stroke="#e3d4b6" strokeWidth="3" />
+      <path d="m33 77 22-3 14 6-22 5Zm63 8 17-12 15-5-4 12-18 10Z" fill="#c8bda8" />
+      <path d="m33 77 14 8-5 6-17-6Zm73 13 18-10 4 7-13 9Z" fill="#687478" />
+      <path d="M0 100q28-19 50 0 32 22 59 0 26-15 51 1v11H0Z" fill="#65667a" />
+      <path
+        d="M0 104q28-15 50 0 32 14 59-1 26-12 51 1"
+        fill="none"
+        stroke="#bcb2bb"
+        strokeWidth="2"
+        opacity=".72"
+      />
+      <path d="m30 17 3 7-3 7-3-7m103 72 4 7-4 7-4-7" fill="#e9daae" />
+      <path d="M129 18q12-5 23 1" fill="none" stroke="#d3bec5" strokeWidth="2" />
+    </>
+  );
+}
+
 export function ActArt({ act }: { act: number }) {
   return (
     <ArtScene
@@ -130,103 +248,7 @@ export function ActArt({ act }: { act: number }) {
       variant="night"
       className="act-art"
     >
-      <circle cx="117" cy="29" r="18" fill={bone} opacity=".16" />
-      {act === 1 ? (
-        <>
-          <path d="M0 77Q30 52 62 76 100 52 160 67V112H0Z" fill="#44594a" />
-          <path
-            d="M22 95V49l8-10V14h20v23l8 10v51m40-8V40l9-10V7h20v26l11 11v51"
-            fill="#8f9c7a"
-            stroke={ink}
-            strokeWidth="2"
-          />
-          <path
-            d="M49 95V58Q79 15 106 54v43H93V58Q78 39 62 61v37Z"
-            fill="#adac83"
-            stroke={ink}
-            strokeWidth="2"
-          />
-          <path d="M67 112 77 63l8 0 17 49" fill="#bda879" />
-          <path
-            d="M30 22h20m-20 7h20m55-13h19m-19 8h19M24 54h20m-20 8h18m67-12h20m-21 8h20M55 50l8 8m7-24 3 13m15-13-5 12m15-4-8 10"
-            fill="none"
-            stroke={ink}
-            strokeWidth="1"
-            opacity=".6"
-          />
-          <path d="M0 103Q27 77 62 94L60 112H0m97-8q37-32 63-16v24H99Z" fill="#314739" />
-          <path
-            d="M25 80q12-10 10-28m-2 17-10-8m11 1 10-12M120 94q-9-14-7-27m0 10 12-7"
-            fill="none"
-            stroke={sage}
-            strokeWidth="2"
-          />
-        </>
-      ) : act === 2 ? (
-        <>
-          <path
-            d="M0 70 18 51 33 61 40 32 58 60 70 46 93 68 113 41 126 56 142 34 160 62V112H0Z"
-            fill="#665c4b"
-          />
-          <path
-            d="M16 98V58h26v42m9 0V44h32v56m18 3V66h34v37"
-            fill="#a99066"
-            stroke={ink}
-            strokeWidth="2"
-          />
-          <path
-            d="m12 58 19-19 16 19m0-14 20-23 22 23m8 22 21-18 21 18"
-            fill="#6e7964"
-            stroke={ink}
-            strokeWidth="2"
-          />
-          <path d="M88 95V32h9V19l6-9 7 9v13h8v63" fill="#c5b18a" stroke={ink} strokeWidth="2" />
-          <path d="M0 101Q40 66 83 91T160 89V112H0Z" fill="#4a5142" />
-          <path
-            d="M15 111V99Q26 83 38 94v17m37 0V98q13-14 23 0v13m28 0V99q11-15 22-2v14"
-            fill={ink}
-          />
-          <path
-            d="M25 65v9m9-9v9m22-23v8m15-8v8m-14 8v8m15-8v8m25-29v8m10-8v8m-10 9v8m10-8v8m7 9v8m10-8v8"
-            stroke={bone}
-            strokeWidth="3"
-          />
-        </>
-      ) : (
-        <>
-          <path d="M0 83Q34 62 68 76t92-12v48H0Z" fill="#5d6173" />
-          <path
-            d="M9 74 48 68 41 89 28 103 20 89Zm103-20 40 4-7 20-16 9-13-18Z"
-            fill="#96948e"
-            stroke={ink}
-            strokeWidth="2"
-          />
-          <path d="M53 72 77 58 101 70 86 104 74 99Z" fill="#6a7580" stroke={ink} strokeWidth="2" />
-          <path
-            d="M58 70V39l11-5 8-23 8 23 11 5v32l-19 8Z"
-            fill="#bdb8a1"
-            stroke={ink}
-            strokeWidth="2"
-          />
-          <path d="m77 11 8 23 11 5v32l-19 8Z" fill="#81948e" />
-          <path d="M71 66V45q6-12 12 0v21Z" fill={ink} />
-          <path d="M76 62V47" stroke={bone} strokeWidth="2" />
-          <path
-            d="M20 73V52h18v19m85-16V35h14v21M58 40l19 6 19-7"
-            fill="none"
-            stroke={bone}
-            strokeWidth="2"
-          />
-          <path
-            d="M4 94Q24 83 48 98t54-2 54-3M13 44q16 7 34-5m66-18q18-8 31-2"
-            fill="none"
-            stroke="#b4b1b8"
-            strokeWidth="1.5"
-            opacity=".65"
-          />
-          <path d="m40 21 3 6-3 6-3-6m99 71 3 5-3 5-3-5" fill={bone} />
-        </>
-      )}
+      {act === 1 ? <ExordiumScene /> : act === 2 ? <CityScene /> : <BeyondScene />}
     </ArtScene>
   );
 }

@@ -125,7 +125,8 @@
 }
 .map-heading > .act-art {
   display: block;
-  width: 176px;
+  width: 240px;
+  max-width: 100%;
   height: auto;
   margin: 0 auto 16px;
   border-radius: 6px;
