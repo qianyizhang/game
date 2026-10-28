@@ -1,0 +1,183 @@
+{
+  "baseline": "c9dad09ed48c2d6f1f8176fc1ffb2d66eca4db41",
+  "viewport": [
+    {
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "seed": "BEYOND-CONSTRUCTS",
+  "deviceScaleFactor": 1,
+  "reducedMotion": true,
+  "browser": "Google Chrome 156.0.8078.73",
+  "browserPackageURL": "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb",
+  "browserPackageSha256": "fd19c6895dad77f4d7f712c2d9f0d5eb682f4a6e7ff22b1bd0d40d03710d288c",
+  "pairs": [
+    {
+      "group": "trio",
+      "initialReplaySha256": "009d5da6d0803347c24765765ccb21d5a23fab0a6e9e8ecef02550245f2ea13b",
+      "initialReplayEqual": true,
+      "boxesAndCuesEqual": true,
+      "views": [
+        {
+          "id": "spiker",
+          "width": 1440,
+          "box": {
+            "x": 501.25,
+            "y": 522.1875,
+            "width": 150,
+            "height": 170
+          },
+          "intent": "Cut: 7 damage"
+        },
+        {
+          "id": "repulsor",
+          "width": 1440,
+          "box": {
+            "x": 728.5,
+            "y": 536.1875,
+            "width": 150,
+            "height": 170
+          },
+          "intent": "Bash: 11 damage"
+        },
+        {
+          "id": "exploder",
+          "width": 1440,
+          "box": {
+            "x": 955.75,
+            "y": 536.1875,
+            "width": 150,
+            "height": 170
+          },
+          "intent": "Slam: 9 damage"
+        },
+        {
+          "id": "spiker",
+          "width": 390,
+          "box": {
+            "x": 31,
+            "y": 589.5625,
+            "width": 97.328125,
+            "height": 115
+          },
+          "intent": "Cut: 7 damage"
+        },
+        {
+          "id": "repulsor",
+          "width": 390,
+          "box": {
+            "x": 146.328125,
+            "y": 603.5625,
+            "width": 97.34375,
+            "height": 115
+          },
+          "intent": "Bash: 11 damage"
+        },
+        {
+          "id": "exploder",
+          "width": 390,
+          "box": {
+            "x": 261.671875,
+            "y": 603.5625,
+            "width": 97.328125,
+            "height": 115
+          },
+          "intent": "Slam: 9 damage"
+        }
+      ]
+    },
+    {
+      "group": "orb",
+      "initialReplaySha256": "82c149bfb97523cfdb0a02c8ce118198f1b2d8f16548e400e5454185c3c64050",
+      "initialReplayEqual": true,
+      "boxesAndCuesEqual": true,
+      "views": [
+        {
+          "id": "orbWalker",
+          "width": 1440,
+          "box": {
+            "x": 728.5,
+            "y": 558.578125,
+            "width": 150,
+            "height": 170
+          },
+          "intent": "Laser: 10 damage · 2 Burn"
+        },
+        {
+          "id": "orbWalker",
+          "width": 390,
+          "box": {
+            "x": 105,
+            "y": 581.578125,
+            "width": 180,
+            "height": 115
+          },
+          "intent": "Laser: 10 damage · 2 Burn"
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "file": "context/trioBefore-1440.webp",
+      "width": 940,
+      "height": 912,
+      "pixelSha256": "cd40281ddcd8ca4bf385d5db0c6604f5a7b5ea926a4462afa3b5b535cbf7f83c",
+      "fileSha256": "8c9fc3b39d96bfcb3d2c26a032239f9b3c3e33c085018a01e8ccf3349c6681ec"
+    },
+    {
+      "file": "context/trioBefore-390.webp",
+      "width": 362,
+      "height": 1004,
+      "pixelSha256": "45e602d962a3aeab85593720149f5d5383355c876e741dac5c955b3cc2a7aa54",
+      "fileSha256": "07049e24ca9291a064d14a451a43cc0c2cfd49161ec8829e7221553457084683"
+    },
+    {
+      "file": "context/orbBefore-1440.webp",
+      "width": 940,
+      "height": 949,
+      "pixelSha256": "d8d9407eebd173ed98db8e9b46ee4bd0b56d30849f4aece5e63f7d5f3c284a23",
+      "fileSha256": "b31026ec87d0f94c85f4df96f324a87fb69567d74b48f1fe42a3fa9eafda84c2"
+    },
+    {
+      "file": "context/orbBefore-390.webp",
+      "width": 362,
+      "height": 992,
+      "pixelSha256": "bd90695c68a42e723c393769f6b871703c1f8321715f0026656b658f2fe83860",
+      "fileSha256": "3b1da3cbe0d2fd2a526455e1d9c7f49ffc674c9d9cad8913cdc2f0c743cab3a0"
+    },
+    {
+      "file": "context/trioAfter-1440.webp",
+      "width": 940,
+      "height": 912,
+      "pixelSha256": "6f7ab5fda75995a4b8ccc38f4da77fa72be7a6c89e0b2389c7664869a5c12e11",
+      "fileSha256": "a54d4059115402bbae064fa0e84075399ce99f4ef2a7c043815b83baf5f31fe2"
+    },
+    {
+      "file": "context/trioAfter-390.webp",
+      "width": 362,
+      "height": 1004,
+      "pixelSha256": "d3029a0148e277a5cbfc36b9b00282ef479b3e6bafacf99e7815160d90bd3907",
+      "fileSha256": "950961f7de284c5c7e9926c3bc869ffad767c133fbe762e183bd344bf952fa2f"
+    },
+    {
+      "file": "context/orbAfter-1440.webp",
+      "width": 940,
+      "height": 949,
+      "pixelSha256": "13291d4a7d200a04ad98d942924fce7644c88f4a9276ad38fca227f218beee5a",
+      "fileSha256": "7cf464ceee1d8ef75b0bec832fbd13f2138b3ccb0e8b83e2fe7da1536d44b758"
+    },
+    {
+      "file": "context/orbAfter-390.webp",
+      "width": 362,
+      "height": 992,
+      "pixelSha256": "fa99cb3a2d6bdb60c1cd053243666598eca6d1c4ac2826d7201fedcd95896692",
+      "fileSha256": "1cd3af9246503aa770630fa4375abba9e213d9a795edbb978a3e65fdacef0db8"
+    }
+  ]
+}

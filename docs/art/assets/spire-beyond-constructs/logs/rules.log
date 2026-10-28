@@ -1,0 +1,12 @@
+
+> card-workshop@0.1.0 test
+> vitest run --project application --maxWorkers=1 src/games/spire/domain/game.test.ts src/games/spire/domain/expansion.test.ts
+
+
+ RUN  v5.0.5 /workspace/game
+
+
+ Test Files  2 passed (2)
+      Tests  48 passed (48)
+   Start at  15:54:06
+   Duration  1.02s (transform 46%, tests 36%, import 14%, worker 3%)

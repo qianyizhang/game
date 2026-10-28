@@ -1,0 +1,5 @@
+{
+  "src/games/spire/ui/BeyondConstructArt.tsx": "58d95c273cbc0d9d273a3935616a2d2f4fc5685249202c5d68d1d250dcad183b",
+  "src/games/spire/ui/Portrait.tsx": "05935c513a7a3eb2a8054eeaa37d399c606ef9e4ce6043991dcd8192113c4fc3",
+  "tests/browser/spire-constructs.spec.ts": "cd3c7748323f5a9da5982fd56cf2f4f79c943aa0420cc3492814eb9f6e587b3d"
+}

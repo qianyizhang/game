@@ -1,0 +1,24 @@
+
+> card-workshop@0.1.0 test:browser
+> playwright test --project=functional --project=requires-blender --project=requires-private-evidence --project=functional tests/browser/spire.spec.ts tests/browser/spire-city-art.spec.ts tests/browser/spire-constructs.spec.ts --output=test-results/beyond-final
+
+[1028/155324.422730:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/toolchain/chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+[WebServer] (node:4381) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[1028/155325.440937:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/toolchain/chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+
+Running 8 tests using 1 worker
+
+(node:4485) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1028/155326.920520:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/toolchain/chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+  ✓  1 [functional] › tests/browser/spire-city-art.spec.ts:37:1 › City portraits preserve combat cues, keyboard targeting and practice replay on desktop and phone (14.1s)
+  ✓  2 [functional] › tests/browser/spire-constructs.spec.ts:18:3 › Beyond constructs: Spiker, Repulsor, Exploder keep target, cues and replay on phone (4.4s)
+  ✓  3 [functional] › tests/browser/spire-constructs.spec.ts:18:3 › Beyond constructs: Orb Walker keep target, cues and replay on phone (3.4s)
+  ✓  4 [functional] › tests/browser/spire.spec.ts:12:1 › intent symbols preserve mixed actions, accessible planned text and replay bytes (5.2s)
+  ✓  5 [functional] › tests/browser/spire.spec.ts:78:1 › Spire map, targeted combat, reward, save/resume and collection @smoke (11.5s)
+  ✓  6 [functional] › tests/browser/spire.spec.ts:145:1 › Spire shop, campfire upgrades, legal victory replay and phone layout (3.9s)
+  ✓  7 [functional] › tests/browser/spire.spec.ts:166:1 › Spire boss relic tradeoffs, suspended card choice, and legacy save isolation (3.9s)
+  ✓  8 [functional] › tests/browser/spire.spec.ts:208:1 › phone map edges reach their rooms and the combat hand scrolls within the viewport (2.5s)
+
+  8 passed (52.0s)
