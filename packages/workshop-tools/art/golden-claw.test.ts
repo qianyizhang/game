@@ -18,6 +18,19 @@ await test('Golden Claw opens as one offline HTML with no visible controls', asy
   for (const image of images) assert.ok(Buffer.from(image[1], 'base64').length > 10_000);
 });
 
+await test('Golden Claw embeds the delivered reference-derived front and back masters', async () => {
+  const html = await readFile(new URL('film.html', delivery), 'utf8');
+  for (const name of ['hero-front.webp', 'hero-back.webp']) {
+    const bytes = await readFile(new URL(name, delivery));
+    assert.equal(bytes.toString('ascii', 0, 4), 'RIFF');
+    assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
+    assert.ok(
+      html.includes(`data:image/webp;base64,${bytes.toString('base64')}`),
+      `The standalone film must embed the delivered ${name}`,
+    );
+  }
+});
+
 await test('Golden Claw GIF contains 900 timed frames, 30 seconds and a 16:9 canvas', async () => {
   const bytes = await readFile(new URL('golden-claw.gif', delivery));
   assert.equal(bytes.toString('ascii', 0, 6), 'GIF89a');

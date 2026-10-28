@@ -1,5 +1,8 @@
 # Golden Claw creation journey
 
+This account covers the initial delivery. A subsequent reference-based revision
+is recorded at the end.
+
 The brief called for a hyperreal cinematic cat-superhero fight: 30 seconds,
 16:9, 30fps, black armor and gold-white electricity, feline movement, no music,
 a standalone HTML with no UI, and a GIF submitted to the `game` repository.
@@ -55,3 +58,25 @@ movement, subtle ear animation and physical destruction remain unresolved.
 The main lesson is to prove a short sequence containing a closeup, a full-body
 pounce and a clear impact against the visual brief before expanding the timeline
 and committing to final exports.
+
+## Revision using the supplied character reference
+
+The user then supplied a front, three-quarter and rear character sheet and asked
+for a redo using it as an asset. Image Gen produced reference-derived transparent
+front and back masters with the compact feline proportions, furry paws, jagged
+black armor, glowing seams and chest lightning emblem. These are derived assets,
+not pixel-exact extractions of the supplied sheet.
+
+I replaced the hero's eight whole-body pose stamps with fitted head, ear, torso,
+limb, paw and tail cutouts. Two-segment limb IK and interpolated poses provide
+continuous motion, with foot placement constraints, ear movement and a bending
+tail. Front/back views support the aerial and wall sequences. Enemy states now
+distinguish recoverable blows from terminal defeats, across twelve opponents.
+
+A short combat sample exposed a clipped forehead, a tail crossing the floor,
+floating distant enemies and enemy-atlas crops that included neighboring figures.
+These were corrected before the full export. The initial opening and action
+stills remain as baseline evidence. Full-sequence review also caught a cropped
+face in the upside-down shot; its camera was retargeted to the animated head.
+The revised film retains the 30-second,
+900-frame delivery contract and the stated 2.5D limitations.
