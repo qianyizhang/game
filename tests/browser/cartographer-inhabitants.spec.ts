@@ -139,3 +139,44 @@ test('the crowned king shares his inspector identity and an imported historical 
     exportSession(won),
   );
 });
+
+test('life fraction stays on one line at 320/390px and keeps the desktop portrait', async ({
+  page,
+}, info) => {
+  const saved = exportSession(opening());
+  await page.addInitScript(({ key, saved }) => localStorage.setItem(key, saved), {
+    key: SAVE_KEY,
+    saved,
+  });
+  await page.goto('/?game=cartographer');
+  const life = page.locator('.dc-stats > div').first();
+  const portrait = life.locator('[data-inhabitant="hero"]');
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({ width, height: 1080 });
+    await expect(life.locator('.dc-life-value')).toHaveText('36 / 36');
+    const layout = await life.evaluate((element) => {
+      const fraction = element.querySelector('.dc-life-value')!;
+      const range = document.createRange();
+      range.selectNodeContents(fraction);
+      const lines = [...range.getClientRects()];
+      const value = element.querySelector('strong')!.getBoundingClientRect();
+      return {
+        tops: [
+          ...new Set(lines.filter((line) => line.width > 0).map((line) => Math.round(line.top))),
+        ],
+        contained: lines.every((line) => line.right <= element.getBoundingClientRect().right),
+        fits: document.documentElement.scrollWidth <= innerWidth,
+        value: { x: value.x, y: value.y, width: value.width, height: value.height },
+      };
+    });
+    expect(layout.tops).toHaveLength(1);
+    expect(layout.contained).toBe(true);
+    expect(layout.fits).toBe(true);
+    if (width === 1440) {
+      await expect(portrait).toBeVisible();
+      expect(await portrait.boundingBox()).toMatchObject({ width: 35, height: 35 });
+    } else await expect(portrait).toBeHidden();
+    await page.locator('.dc-stats').screenshot({ path: info.outputPath(`life-${width}.png`) });
+  }
+  expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
+});

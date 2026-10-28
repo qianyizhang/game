@@ -267,7 +267,10 @@ export default function CartographerApp() {
           </span>
           <strong>
             <InhabitantArt kind="hero" />
-            {s.player.hp} / {s.player.maxHp} <small>life</small>
+            <span className="dc-life-value">
+              {s.player.hp} / {s.player.maxHp}
+            </span>
+            <small>life</small>
           </strong>
           <meter aria-label="Life" min={0} max={s.player.maxHp} value={s.player.hp} />
         </div>
