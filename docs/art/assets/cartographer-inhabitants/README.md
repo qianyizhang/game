@@ -33,6 +33,6 @@ Chrome was extracted from the official vendor package at `https://dl.google.com/
 
 ## Handoff
 
-The implemented branch is `art/70-cartographer-inhabitants`. Draft PR creation was denied by automatic approval review: it considered the game task unrelated to the earlier video-editing request. That action stopped; specific confirmation is pending. No PR was created, approved or merged.
+The implemented branch is `art/70-cartographer-inhabitants`; [draft PR #75](https://github.com/qianyizhang/game/pull/75) contains the source, tests and matched comparisons. The initial PR-creation denial was resolved by one reconsideration after the full game-batch proposal and user approval were supplied. No approval or merge has occurred. Independent visual acceptance and hosted checks remain pending.
 
 Detailed command output and export manifests are retained in the cloud checkout at `.artifacts/cartographer-inhabitants/`. Keep this review bundle through review or 2026-11-27, then reassess. This document and its seven images are the durable review evidence.
