@@ -443,7 +443,7 @@
   gap: 6px;
   font-size: 13px;
 }
-.dc-enemy-card strong span {
+.dc-enemy-card strong span:last-child {
   margin-left: auto;
   color: #edb8a2;
 }
@@ -662,4 +662,70 @@
   .dc-app * {
     scroll-behavior: auto;
   }
+}
+
+.dc-inhabitant {
+  display: block;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+.dc-tile > .dc-inhabitant {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.dc-enemy-card .dc-inhabitant {
+  width: 48px;
+  height: 48px;
+}
+.dc-tile.enemy small {
+  z-index: 1;
+  padding: 0 2px;
+  background: #14262d;
+  color: #ffe3c4;
+  border-radius: 2px;
+}
+
+.dc-app .dc-enemy-card {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+.dc-enemy-card strong {
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.dc-enemy-copy {
+  min-width: 0;
+}
+.dc-stats > div:first-child > strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dc-stats .dc-inhabitant {
+  width: 35px;
+  height: 35px;
+}
+.dc-you-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.dc-you-key .dc-inhabitant {
+  width: 22px;
+  height: 22px;
+}
+.dc-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }

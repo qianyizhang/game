@@ -35,6 +35,7 @@ import {
 } from '../application/session';
 import { ExpeditionChoice } from './ExpeditionChoice';
 import { FrontierCue, ThreatCue } from './MapCues';
+import { InhabitantArt } from './InhabitantArt';
 import './styles.css';
 
 const arrows: Record<Direction, string> = { north: '↑', east: '→', south: '↓', west: '←' };
@@ -265,6 +266,7 @@ export default function CartographerApp() {
               : ''}
           </span>
           <strong>
+            <InhabitantArt kind="hero" />
             {s.player.hp} / {s.player.maxHp} <small>life</small>
           </strong>
           <meter aria-label="Life" min={0} max={s.player.maxHp} value={s.player.hp} />
@@ -379,17 +381,11 @@ export default function CartographerApp() {
                       setMessage('Move one tile at a time with arrows, WASD, or adjacent tiles.');
                   }}
                 >
-                  <span>
-                    {hero
-                      ? '◈'
-                      : enemy
-                        ? ENEMIES[enemy.kind].symbol
-                        : door
-                          ? arrows[door.direction]
-                          : tile === '~'
-                            ? '≈'
-                            : ''}
-                  </span>
+                  {hero || enemy ? (
+                    <InhabitantArt kind={hero ? 'hero' : enemy!.kind} />
+                  ) : (
+                    <span>{door ? arrows[door.direction] : tile === '~' ? '≈' : ''}</span>
+                  )}
                   {enemy && <small>{enemy.hp}</small>}
                   {door && (hero || enemy) && <FrontierCue direction={door.direction} />}
                   {danger.length > 0 && <ThreatCue />}
@@ -398,7 +394,9 @@ export default function CartographerApp() {
             })}
           </div>
           <div className="dc-legend">
-            <span>◈ You</span>
+            <span className="dc-you-key">
+              <InhabitantArt kind="hero" /> You
+            </span>
             <span className="dc-danger-key">
               <ThreatCue /> Next attack
             </span>
@@ -497,17 +495,21 @@ export default function CartographerApp() {
                   onClick={() => setTarget(e.id)}
                   aria-pressed={selected?.id === e.id}
                 >
-                  <strong>
-                    {ENEMIES[e.kind].symbol} {ENEMIES[e.kind].name} <span>{e.hp} life</span>
-                  </strong>
-                  <small>
-                    {e.intent.kind === 'attack'
-                      ? `Attack marked tiles · ${e.intent.damage} damage`
-                      : e.intent.kind === 'move'
-                        ? 'Advance one tile'
-                        : 'Waiting'}
-                    {selected?.id === e.id ? ' · selected' : ''}
-                  </small>
+                  <InhabitantArt kind={e.kind} />
+                  <div className="dc-enemy-copy">
+                    <strong>
+                      <span className="dc-sr-only">{ENEMIES[e.kind].symbol} </span>
+                      {ENEMIES[e.kind].name} <span>{e.hp} life</span>
+                    </strong>
+                    <small>
+                      {e.intent.kind === 'attack'
+                        ? `Attack marked tiles · ${e.intent.damage} damage`
+                        : e.intent.kind === 'move'
+                          ? 'Advance one tile'
+                          : 'Waiting'}
+                      {selected?.id === e.id ? ' · selected' : ''}
+                    </small>
+                  </div>
                 </button>
               ))
             ) : (
