@@ -16,7 +16,7 @@ Use the pinned Node/npm runtime (`nvm use`) and Python through `uv`. One gate ow
 
 Choose local checks by affected behavior and dependency risk, not change size alone.
 Feature changes must reuse or add relevant E2E journeys and pass scoped validation
-locally in the authorized cloud executor before acceptance. Include affected
+locally in the authorized development environment before acceptance. Include affected
 application, browser, geometry or native checks as appropriate; use the broader
 commands above when that scope warrants them. Documentation-only edits require
 formatting, inventory and links, not unrelated functional suites. See [testing policy](testing.md).
