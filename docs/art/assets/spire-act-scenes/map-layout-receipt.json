@@ -1,0 +1,132 @@
+{
+  "baselineCommit": "8918f475831f55dd1016779f4ee24550c7c2013d",
+  "sameBeforeAfterStateAndLayout": true,
+  "panelSizes": [
+    {
+      "act": 1,
+      "view": "desktop",
+      "width": 940,
+      "height": 925
+    },
+    {
+      "act": 2,
+      "view": "desktop",
+      "width": 940,
+      "height": 925
+    },
+    {
+      "act": 3,
+      "view": "desktop",
+      "width": 940,
+      "height": 925
+    },
+    {
+      "act": 1,
+      "view": "phone",
+      "width": 362,
+      "height": 902
+    },
+    {
+      "act": 2,
+      "view": "phone",
+      "width": 362,
+      "height": 902
+    },
+    {
+      "act": 3,
+      "view": "phone",
+      "width": 362,
+      "height": 902
+    }
+  ],
+  "acts": [
+    {
+      "act": 1,
+      "phase": "map",
+      "row": -1,
+      "views": [
+        {
+          "view": "desktop",
+          "viewport": 1440,
+          "pageWidth": 1440,
+          "artWidth": 176,
+          "panelWidth": 940,
+          "routeButtons": 5,
+          "visibleHitTargets": 5,
+          "mapScrollTop": 660
+        },
+        {
+          "view": "phone",
+          "viewport": 390,
+          "pageWidth": 390,
+          "artWidth": 176,
+          "panelWidth": 362,
+          "routeButtons": 5,
+          "visibleHitTargets": 5,
+          "mapScrollTop": 740
+        }
+      ],
+      "savedBeforeClickSha256": "e5ca872af992f3a7ed3a4f54be643050177e06120930c00df7163e8b8345fb63",
+      "phoneRouteClickAdvancedToRow": 0
+    },
+    {
+      "act": 2,
+      "phase": "map",
+      "row": -1,
+      "views": [
+        {
+          "view": "desktop",
+          "viewport": 1440,
+          "pageWidth": 1440,
+          "artWidth": 176,
+          "panelWidth": 940,
+          "routeButtons": 5,
+          "visibleHitTargets": 5,
+          "mapScrollTop": 660
+        },
+        {
+          "view": "phone",
+          "viewport": 390,
+          "pageWidth": 390,
+          "artWidth": 176,
+          "panelWidth": 362,
+          "routeButtons": 5,
+          "visibleHitTargets": 5,
+          "mapScrollTop": 740
+        }
+      ],
+      "savedBeforeClickSha256": "9e657cea2ffb9399103fa2978c850cff8706a3dd815d5880285fc1e1ad4048a1",
+      "phoneRouteClickAdvancedToRow": 0
+    },
+    {
+      "act": 3,
+      "phase": "map",
+      "row": -1,
+      "views": [
+        {
+          "view": "desktop",
+          "viewport": 1440,
+          "pageWidth": 1440,
+          "artWidth": 176,
+          "panelWidth": 940,
+          "routeButtons": 5,
+          "visibleHitTargets": 5,
+          "mapScrollTop": 660
+        },
+        {
+          "view": "phone",
+          "viewport": 390,
+          "pageWidth": 390,
+          "artWidth": 176,
+          "panelWidth": 362,
+          "routeButtons": 5,
+          "visibleHitTargets": 5,
+          "mapScrollTop": 740
+        }
+      ],
+      "savedBeforeClickSha256": "27184771f1fd91d48be9b5a00f34bd30dc6e7182a0a12ddec773d8ddf6637d94",
+      "phoneRouteClickAdvancedToRow": 0
+    }
+  ],
+  "method": "First map state of each act from checked-in winning replay; bottom of route viewport shown; all five reachable buttons visible and hit-testable; phone click advances to row 0"
+}

@@ -1,0 +1,31 @@
+{
+  "baselineCommit": "8918f475831f55dd1016779f4ee24550c7c2013d",
+  "candidateSourceSha256": "a69359b7579663f81fcd761f4b25485aaf5fe96acfca8ea55fc2399c0be016da",
+  "exported": 644,
+  "unchanged": 641,
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "id": "spire/acts/1",
+      "beforeSha256": "bab880a589072b26e0d57f50150f645200a3c8d8db6442f80d0f44f3d31789d8",
+      "afterSha256": "74796c11ff0bef81c1e54b3dece2a9acc54402de0fe613db3939f910d4f27042"
+    },
+    {
+      "id": "spire/acts/2",
+      "beforeSha256": "1c0a5165bba5cb91a5bf7c486f531679705d08d503ce6a8632a87c309c66d427",
+      "afterSha256": "9be824f8650b0e2c610f1e34e583af3fafa870b464c209f0b3e2a0cff8a29c32"
+    },
+    {
+      "id": "spire/acts/3",
+      "beforeSha256": "e5b81645eb76bbc63fd822f1f0326f2aa2c05c3d68258ebe52b9d3cfe6a21707",
+      "afterSha256": "7d51e2001f0f52bffd0e58e4964679f30b5d6b6b15ef92409d07eabf9d2ceac0"
+    }
+  ],
+  "allSvgDigestBefore": "9a1a36dd64d5fc38b0b432002125fbbff8ce86c52308ac6fa940853f5c72f1b5",
+  "allSvgDigestAfter": "0c8cd88d929a570f54e51f64277a643d828cb668d80d561b16d7098e87dd6f14",
+  "manifestSha256Before": "e73f1a83cf5d895d4f55ccf9112b66dc9f209a2b1d57807117ea4358bf18b05b",
+  "manifestSha256After": "e73f1a83cf5d895d4f55ccf9112b66dc9f209a2b1d57807117ea4358bf18b05b",
+  "pixelReviewSha256": "d90b31647c4f31ddec67157a92fcfd48fced6f2bdaab0f457c22b4af9aa3b73a",
+  "method": "SHA-256 of every exported SVG byte stream in sorted ID order; pixel review decoded all 644 exports"
+}
