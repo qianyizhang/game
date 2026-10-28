@@ -1,0 +1,44 @@
+{
+  "entrance": {
+    "replaySha256": "7cfba741960d32f79b9f1ca70088715e834c60cb75b9f7f545ca969c5b489198",
+    "dangerLabel": [],
+    "boardWidthPx": {
+      "1440": 580,
+      "390": 320,
+      "320": 250
+    },
+    "noHorizontalOverflow": {
+      "1440": true,
+      "390": true,
+      "320": true
+    }
+  },
+  "bridge": {
+    "replaySha256": "e3ac8ff215db3f38814d4b683bd820df9489995b0544f924303475a13a123bab",
+    "dangerLabel": ["22,16: Keeper (you); threatened for 2"],
+    "boardWidthPx": {
+      "1440": 580,
+      "390": 320,
+      "320": 250
+    },
+    "noHorizontalOverflow": {
+      "1440": true,
+      "390": true,
+      "320": true
+    }
+  },
+  "shrine": {
+    "replaySha256": "933434398cf75654d85ed1c1121465cfb54dee111ff97c1e60687419dade981c",
+    "dangerLabel": ["22,16: Keeper (you); threatened for 3"],
+    "boardWidthPx": {
+      "1440": 580,
+      "390": 320,
+      "320": 250
+    },
+    "noHorizontalOverflow": {
+      "1440": true,
+      "390": true,
+      "320": true
+    }
+  }
+}

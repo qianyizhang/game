@@ -38,6 +38,10 @@ import { FrontierCue, ThreatCue } from './MapCues';
 import './styles.css';
 
 const arrows: Record<Direction, string> = { north: '↑', east: '→', south: '↓', west: '←' };
+const wetRooms = new Set(['bridge', 'cistern']);
+const overgrownRooms = new Set(['shrine', 'garden', 'archive']);
+const roomMaterial = (template: string) =>
+  wetRooms.has(template) ? 'wet' : overgrownRooms.has(template) ? 'overgrown' : 'dry';
 export default function CartographerApp() {
   const [initial] = useState(() => {
     try {
@@ -336,6 +340,7 @@ export default function CartographerApp() {
             aria-label="Tactical room"
             tabIndex={0}
             data-room={room.id}
+            data-material={roomMaterial(room.template)}
           >
             {Array.from({ length: ROOM_SIZE * ROOM_SIZE }, (_, i) => {
               const x = room.x * ROOM_SIZE + (i % ROOM_SIZE),
