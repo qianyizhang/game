@@ -56,7 +56,7 @@ test('board and inspector share all four guardian identities through pointer/key
         'aria-hidden',
         'true',
       );
-      await expect(host.locator('svg')).toHaveAttribute('focusable', 'false');
+      await expect(host.locator('[data-inhabitant]')).toHaveAttribute('focusable', 'false');
     }
     await expect(tile.locator('small')).toHaveText(String(enemy.hp));
     // Clicking the subject's center must still reach the original tile button.
