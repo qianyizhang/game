@@ -8,13 +8,7 @@
   "seed": "JOKER-REVIEW-5",
   "setup": {
     "cash": 100,
-    "jokers": [
-      "spark",
-      "granite",
-      "duet",
-      "twins",
-      "trio"
-    ],
+    "jokers": ["spark", "granite", "duet", "twins", "trio"],
     "deck": [
       {
         "rank": 10,
@@ -66,10 +60,7 @@
       }
     ]
   },
-  "viewports": [
-    "1440x1080",
-    "390x844"
-  ],
+  "viewports": ["1440x1080", "390x844"],
   "collectionBounds": {
     "baseline-desktop": {
       "clip": {

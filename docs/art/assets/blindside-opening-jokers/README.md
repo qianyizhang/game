@@ -35,11 +35,11 @@ and Stairway in the shop, at 1440 × 1080 and 390 × 844 viewports. The collecti
 crops include all six first cards. The shop follows a legal Practice Lab setup;
 five held slots make Stairway's purchase action correctly display “Slots full.”
 
-| Context | Desktop baseline | Desktop candidate | Phone baseline | Phone candidate |
-| --- | --- | --- | --- | --- |
-| Collection | [PNG](context/baseline-collection-desktop.png) | [PNG](context/candidate-collection-desktop.png) | [PNG](context/baseline-collection-phone.png) | [PNG](context/candidate-collection-phone.png) |
-| Held Jokers | [PNG](context/baseline-held-desktop.png) | [PNG](context/candidate-held-desktop.png) | [PNG](context/baseline-held-phone.png) | [PNG](context/candidate-held-phone.png) |
-| Shop | [PNG](context/baseline-shop-desktop.png) | [PNG](context/candidate-shop-desktop.png) | [PNG](context/baseline-shop-phone.png) | [PNG](context/candidate-shop-phone.png) |
+| Context     | Desktop baseline                               | Desktop candidate                               | Phone baseline                               | Phone candidate                               |
+| ----------- | ---------------------------------------------- | ----------------------------------------------- | -------------------------------------------- | --------------------------------------------- |
+| Collection  | [PNG](context/baseline-collection-desktop.png) | [PNG](context/candidate-collection-desktop.png) | [PNG](context/baseline-collection-phone.png) | [PNG](context/candidate-collection-phone.png) |
+| Held Jokers | [PNG](context/baseline-held-desktop.png)       | [PNG](context/candidate-held-desktop.png)       | [PNG](context/baseline-held-phone.png)       | [PNG](context/candidate-held-phone.png)       |
+| Shop        | [PNG](context/baseline-shop-desktop.png)       | [PNG](context/candidate-shop-desktop.png)       | [PNG](context/baseline-shop-phone.png)       | [PNG](context/candidate-shop-phone.png)       |
 
 The candidate capture ran at local validation commit
 `a235551e441ea96ceb3fc4a9031be693056287a8`, which layers the separate
