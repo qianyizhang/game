@@ -180,15 +180,44 @@
   font-size: 13px;
 }
 .dc-board {
+  --dc-floor: #4d514bdb;
+  --dc-floor-rim: #777a6b;
+  --dc-floor-shadow: #303b3a;
+  --dc-wall: #1a292d;
+  --dc-wall-course: #304044;
+  --dc-water: #225365;
+  --dc-water-rim: #6596a0;
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   width: min(100%, 580px);
   margin: auto;
   gap: 3px;
   padding: 8px;
-  background: #09141b;
-  border: 1px solid #52605a;
+  background: radial-gradient(ellipse at 48% 42%, #4c55492e, transparent 78%), #0c191e;
+  border: 1px solid #687169;
   border-radius: 8px;
+}
+.dc-board[data-material='wet'] {
+  --dc-floor: #405c61e0;
+  --dc-floor-rim: #718d8b;
+  --dc-floor-shadow: #28454c;
+  --dc-wall: #122b34;
+  --dc-wall-course: #2a4d55;
+  --dc-water: #1b596b;
+  --dc-water-rim: #82b9bb;
+  background: radial-gradient(ellipse at 50% 40%, #3e707166, transparent 77%), #0b2029;
+  border-color: #587b7c;
+}
+.dc-board[data-material='overgrown'] {
+  --dc-floor: #4b594bdc;
+  --dc-floor-rim: #829078;
+  --dc-floor-shadow: #2d403a;
+  --dc-wall: #1c302e;
+  --dc-wall-course: #3b5146;
+  --dc-water: #285b60;
+  --dc-water-rim: #83ada0;
+  background: radial-gradient(ellipse at 24% 18%, #637a4b73, transparent 75%), #172822;
+  border-color: #73836c;
 }
 .dc-app .dc-tile {
   padding: 0;
@@ -205,18 +234,30 @@
   opacity: 1;
 }
 .dc-tile.floor {
-  background: #34454a;
-  border: 1px solid #425456;
-  box-shadow: inset 0 -3px #293a40;
+  background-color: var(--dc-floor);
+  background-image: linear-gradient(155deg, #ffffff14, transparent 49%, #081c1c22);
+  border: 1px solid var(--dc-floor-shadow);
+  box-shadow:
+    inset 1px 1px var(--dc-floor-rim),
+    inset 0 -3px var(--dc-floor-shadow);
 }
 .dc-tile.wall {
-  background: repeating-linear-gradient(0deg, #14232c, #14232c 12px, #1c2e37 13px, #1c2e37 14px);
-  border: 1px solid #22343a;
+  background: repeating-linear-gradient(
+    0deg,
+    var(--dc-wall),
+    var(--dc-wall) 16px,
+    var(--dc-wall-course) 17px,
+    var(--dc-wall-course) 18px
+  );
+  border: 1px solid var(--dc-wall-course);
+  box-shadow: inset 0 3px #07161a66;
 }
 .dc-tile.water {
-  background: #163d4d;
-  color: #82b8bf;
-  border: 1px solid #2b5966;
+  background-color: var(--dc-water);
+  background-image: linear-gradient(160deg, #b4e5df24, transparent 44%, #0b293850);
+  color: #a0ced0;
+  border: 1px solid var(--dc-water-rim);
+  box-shadow: inset 0 -3px #092e3b;
 }
 .dc-app .dc-tile.hero {
   background: #b6c2a5;
@@ -236,13 +277,9 @@
   outline-offset: -3px;
 }
 .dc-app .dc-tile.danger {
-  background-image: repeating-linear-gradient(
-    135deg,
-    #983e3440,
-    #983e3440 5px,
-    transparent 5px,
-    transparent 10px
-  );
+  background-image:
+    repeating-linear-gradient(135deg, #983e3440, #983e3440 5px, transparent 5px, transparent 10px),
+    linear-gradient(155deg, #ffffff14, transparent 49%, #081c1c22);
   border-color: #c27965;
 }
 .dc-tile small {
