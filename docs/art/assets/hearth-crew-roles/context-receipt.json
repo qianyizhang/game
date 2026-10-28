@@ -2,6 +2,10 @@
   "baselineCommit": "3dfba6aeadefe0dcbdc1a7b80bf847822d40196e",
   "candidateArtCommit": "f757731",
   "browser": "system Chromium 154.0.8037.57 via Playwright 1.64.0",
+  "servers": {
+    "baseline": "/workspace/game-before-44 at http://127.0.0.1:4174",
+    "candidate": "/workspace/game at http://127.0.0.1:4173"
+  },
   "practiceScenario": {
     "seed": "crew-44-0",
     "setup": {
