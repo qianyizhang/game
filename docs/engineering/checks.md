@@ -14,7 +14,24 @@ Use the pinned Node/npm runtime (`nvm use`) and Python through `uv`. One gate ow
 
 ## Gate selection
 
-Locally, use `check` for code/UI/rules and `check:full` for 3D construction, animation, rendering/export or shared DCC dependencies. Run affected browser/native gates separately. Documentation-only changes use formatting/inventory. See [testing policy](testing.md).
+Choose local checks by affected behavior and dependency risk, not change size alone.
+Feature changes must reuse or add relevant E2E journeys and pass scoped validation
+locally in the authorized development environment before acceptance. Include affected
+application, browser, geometry or native checks as appropriate; use the broader
+commands above when that scope warrants them. Documentation-only edits require
+formatting, inventory and links, not unrelated functional suites. See [testing policy](testing.md).
+
+Regular hosted CI is a selective core/must-pass sanity layer, never the only or
+final delivery guard. Run full suites deliberately for releases, major refactors
+or broad/uncertain risk, not every tiny change. Each PR records affected scope,
+chosen commands and rationale, exact revision, passed/failed/blocked coverage and
+remaining limits. Hosted green cannot replace missing required local E2E evidence.
+
+Keep runtime and security guards intact. If local E2E is barred or prerequisites
+are unavailable, report it blocked; require a reviewed, explicitly authorized local
+mode where needed. Never spoof CI flags, bypass startup guards or relabel a preview
+as the required suite. This strategy does not change existing job selection or
+workflow permissions; changes to execution modes require separate review.
 
 Routine CI and full validation have separate triggers. Focused policy regressions and complete rollout matrices remain in the application suite; policy/rules changes retain the affected matrix.
 
@@ -41,7 +58,7 @@ CI_PLAN="$(cat /tmp/full-plan.json)" CI_SHARD=1 npm run ci -- run browser
 ASSET_BUILD_CI=1 npm run check:full
 ```
 
-Run every shard listed in the selected plan. Empty selections execute nothing. Full local browser/native verification remains required for affected deliveries. The continuous campaign retains its assertions, control cadence and deadline; its known timeout is unresolved, not a passing or removed check. Browser jobs have a 15-minute routine failure ceiling and 90 minutes in explicit full mode; ceilings are not performance targets. Measure hosted elapsed time separately from queue delays and summed runner time.
+Run every shard listed in the selected plan. Empty selections execute nothing. Complete the local browser/native journeys relevant to affected deliveries; this does not require unrelated full-suite coverage. The continuous campaign retains its assertions, control cadence and deadline; its known timeout is unresolved, not a passing or removed check. Browser jobs have a 15-minute routine failure ceiling and 90 minutes in explicit full mode; ceilings are not performance targets. Measure hosted elapsed time separately from queue delays and summed runner time.
 
 ### Measured CI evidence (2026-10-27)
 

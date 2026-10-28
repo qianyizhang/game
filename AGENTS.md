@@ -35,8 +35,10 @@ For domain naming or interface changes, read the relevant [glossary](docs/engine
 
 For SVG or 3D artwork, read [the Card Workshop art skill](skills/card-art/SKILL.md) and the [aesthetic rulebook](docs/art/art-direction.md). The rulebook is the shared visual standard; the skill covers creation and review. [SVG sources](docs/art/svg.md) and [3D sources](docs/art/3d.md) locate renderers and export integration. Passing technical checks does not establish visual quality.
 
-Use `npm run check` for code, UI, and rule changes; documentation-only edits require only formatting and inventory checks (`npm run format:maintenance`). Local geometry tests are selected separately. For changes affecting
-3D construction, animation, rendering/export or DCC delivery, use `npm run check:full`.
+Choose scoped local validation by affected behavior and dependencies; feature changes
+must reuse or add relevant E2E tests. Hosted sanity checks are not the final guard.
+Documentation-only edits use `npm run format:maintenance`; reserve full suites for
+releases, major refactors or broad risk. Record test choices and blocked coverage.
 Read [verification contracts](docs/engineering/checks.md#gate-selection) for scope
 selection and reporting. `npm run test:browser` runs the disposable-profile browser suite
 with a single startup guard.
