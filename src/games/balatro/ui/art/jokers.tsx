@@ -203,51 +203,136 @@ export function JokerMotif({ id }: { id: string }): ReactNode {
       );
     case 'hearts':
       return (
-        <g>
-          <path d="M77 88V53M77 70 52 57M77 78 104 56" strokeWidth="5" />
-          <g color={coral}>
-            <SuitPip suit="hearts" x={56} y={16} size={44} />
-          </g>
-          <ArtGlyph kind="leaf" x={31} y={41} size={34} color={ink} accent={gold} />
-          <ArtGlyph kind="leaf" x={89} y={40} size={35} color={ink} accent={gold} />
+        <g strokeWidth="1.25">
+          <path d="M29 89q38-7 72-2l26 5-35 4-56-2Z" fill={ink} stroke="none" opacity=".16" />
+          <path d="M69 62q9 13-1 23l-18 7 27-3 13 5 17-2-17-11 1-22Z" fill={ink} />
+          <path d="M80 65q5 14-3 21l-12 5m20-9 13 8" fill="none" stroke={gold} />
+          <path d="M90 70q13-9 21-25l5-4" fill="none" strokeWidth="3" />
+          <path d="M108 51q-9-16 9-25 8 18-9 25Z" fill={ink} />
+          <path d="m109 45 6-13" fill="none" stroke={gold} />
+          <path
+            d="M76 39C64 15 37 27 40 46c2 18 24 31 40 36 17-13 37-29 32-46-4-15-25-18-36 3Z"
+            fill={ink}
+          />
+          <path
+            d="M73 31C60 10 34 22 37 41c2 16 25 31 40 36 17-14 35-29 31-46-4-15-25-17-35 0Z"
+            fill={gold}
+          />
+          <path
+            d="M68 32c-11-10-23-5-22 7 1 12 17 24 29 28 12-10 27-23 23-33-3-8-16-9-22 0"
+            fill="none"
+            stroke={paper}
+          />
+          <path
+            d="M68 40c-8-9-16-5-13 3 3 8 13 16 20 18 9-8 18-16 15-22-2-4-10-3-14 4M68 48q6 10 12 3"
+            fill="none"
+            stroke={ink}
+            strokeWidth=".8"
+          />
+          <path d="m43 27 10 10-3 7m51 8-13 1-4 6M65 20l5 7" fill="none" strokeWidth=".9" />
+          <path d="M43 34q-3 9 8 19m29 17 13-12" fill="none" stroke={paper} strokeWidth="2" />
+          <path
+            d="m78 76 3 5m9-15 4 6m5-16 5 6m3-16 5 4M45 49l-3 5m13 3-3 5"
+            fill="none"
+            stroke={gold}
+          />
         </g>
       );
     case 'diamonds':
       return (
-        <g>
-          <path d="m80 20 29 54H51Z" fill={paper} />
+        <g strokeWidth="1.25">
+          <path d="M29 89q44-10 101 1l-30 6H45Z" fill={ink} stroke="none" opacity=".16" />
+          <path d="m52 79 25-8 29 10-17 12-35-5Z" fill={ink} />
+          <path d="m54 78 25-7 26 8-18 8Z" fill={gold} />
+          <path d="m59 80 24 3 14-5M62 88l24 4" fill="none" stroke={paper} strokeWidth=".8" />
+          <path d="m73 15 37 32-22 37-36-32Z" fill={ink} />
+          <path d="m73 15 30 31-22 35-36-32Z" fill={paper} />
+          <path d="m73 15-8 33 16 33 22-35Z" fill={gold} stroke="none" />
+          <path d="m73 15-8 33-20 1Z" fill={paper} />
+          <path d="m65 48 38-2-22 35Z" fill={coral} opacity=".65" stroke="none" />
+          <path d="m73 15-8 33 16 33m-36-32 20-1 38-2m0 0 7 1-22 37-7-3" fill="none" />
           <path
-            d="m23 54 43 4m27 0 39-17m-39 17 39 2m-39-2 39 18"
+            d="m72 26-5 19m3 11 10 18m24-22-12 21M55 48l6-1"
             fill="none"
-            stroke={coral}
-            strokeWidth="3"
+            stroke={paper}
+            strokeWidth="1.5"
           />
-          <g color={gold}>
-            <SuitPip suit="diamonds" x={70} y={41} size={20} />
-          </g>
-          <path d="m132 37 5 1m-5 22h6m-6 22 5-1" />
+          <path
+            d="m26 43 19 6m60 0 28-12m-27 16 29 5m-32 1 26 17"
+            fill="none"
+            stroke={gold}
+            strokeWidth="2"
+          />
+          <path d="m112 45 17-7m-16 21 17 14" fill="none" stroke={coral} strokeWidth="1" />
+          <path d="m41 24 3-5m71 65 5 3" fill="none" stroke={gold} />
         </g>
       );
     case 'clubs':
       return (
-        <g>
-          <g color={ink}>
-            <SuitPip suit="clubs" x={54} y={19} size={60} />
-          </g>
-          <path d="M47 91q33-17 67 0m-66-5q12-26-4-45m64 45q-9-16 6-36" fill="none" />
-          <ArtGlyph kind="leaf" x={28} y={40} size={24} color={gold} />
-          <ArtGlyph kind="leaf" x={105} y={54} size={22} color={coral} />
+        <g transform="translate(0 5) scale(1 .94)" strokeWidth="1.25">
+          <path d="M32 89q45-9 94 1l-20 5-54-1Z" fill={ink} stroke="none" opacity=".16" />
+          <path d="M71 60q17 16 0 28l-16 4 26-1 17 3 9-4-20-6q4-16-4-25Z" fill={ink} />
+          <path d="M76 66q8 15-1 20m9-1 12 5" fill="none" stroke={gold} />
+          <path
+            d="M74 62C55 76 32 66 35 49c2-13 16-18 29-11-11-18-3-31 12-30 18 0 25 17 12 31 22-12 41-1 38 17-3 17-25 21-43 7Z"
+            fill={ink}
+          />
+          <path d="M67 38C58 21 63 12 76 12c12 0 20 14 8 28l-7 14Z" fill={gold} stroke="none" />
+          <path d="M72 56C58 39 42 40 40 51c-2 10 14 18 31 9Z" fill={gold} stroke="none" />
+          <path
+            d="M85 57c11-15 29-17 35-7 5 11-13 20-34 11Z"
+            fill={paper}
+            opacity=".8"
+            stroke="none"
+          />
+          <path d="M79 62 76 20m2 39L46 48m35 12 34-10" fill="none" stroke={paper} />
+          <path
+            d="m76 33-6-8m7 17 8-11m-7 19-8-9m-11 12-6 7m13-4-3-8m36 8 7 6m-11-5 8-9"
+            fill="none"
+            stroke={ink}
+            strokeWidth=".8"
+          />
+          <path d="M40 74q4 9 15 9-3-12-15-9Zm62 6q11-13 23-4-12 10-23 4Z" fill={gold} />
+          <path d="m47 79 17 9m44-9-14 7" fill="none" />
+          <path
+            d="M73 13q10-2 15 9M40 50q-1 8 7 12m68-17q7 2 8 8"
+            fill="none"
+            stroke={paper}
+            strokeWidth="1.2"
+          />
         </g>
       );
     case 'spades':
       return (
-        <g>
-          <path d="M22 88 49 61 69 77 99 42 136 88Z" fill={ink} />
-          <ArtGlyph kind="moon" x={31} y={18} size={35} color={gold} accent={paper} />
-          <g color={paper}>
-            <SuitPip suit="spades" x={79} y={37} size={30} />
-          </g>
-          <path d="m115 22 3 6 6 3-6 3-3 6-3-6-6-3 6-3Z" fill={coral} />
+        <g strokeWidth="1.25">
+          <path d="M26 90q47-9 107 0l-22 5-64-1Z" fill={ink} stroke="none" opacity=".16" />
+          <path
+            d="M33 82q10-10 8-30l-2-24q0-16 22-15l32 2q13 0 11 13"
+            fill="none"
+            stroke={ink}
+            strokeWidth="4"
+          />
+          <path d="M43 47 44 29q-1-12 16-12l30 2" fill="none" stroke={gold} strokeWidth=".9" />
+          <path d="m29 84 22-2 6 9H25Z" fill={ink} />
+          <path d="M99 26v7m-5 4q0-8 6-8t6 8" fill="none" stroke={gold} strokeWidth="2" />
+          <path
+            d="M94 34c-8 11-27 19-28 33-1 16 16 23 27 12l-5 14h23l-6-14c13 10 28 1 25-13-3-13-22-23-30-32Z"
+            fill={ink}
+          />
+          <path
+            d="M94 39C85 50 71 56 71 67c0 12 12 17 23 5l-2 14h11l-5-15c15 10 25 3 22-7-3-9-18-17-26-25Z"
+            fill={gold}
+          />
+          <path d="M94 39 98 71c15 10 25 3 22-7-3-9-18-17-26-25Z" fill={paper} stroke="none" />
+          <path d="M91 49c-12 5-16 17-7 21 5 3 9 0 11-3-11 1-13-8-4-18Z" fill={ink} stroke="none" />
+          <path
+            d="m94 39 4 32m7-23 8 9m-9-3 10 10M75 75l7 2m21 4 1 4M92 90h14"
+            fill="none"
+            stroke={gold}
+            strokeWidth=".9"
+          />
+          <path d="m99 38 5 3m12 11 6 5m4 11-1 5" fill="none" stroke={paper} strokeWidth=".8" />
+          <path d="m55 35 1 5 5 1-5 1-1 5-1-5-5-1 5-1Z" fill={coral} stroke="none" />
         </g>
       );
     case 'portrait':
