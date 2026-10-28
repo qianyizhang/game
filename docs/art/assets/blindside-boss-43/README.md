@@ -17,8 +17,8 @@ Eight boss plates now depict a card encountering the blind rule. The print groun
 
 Each image places the baseline on the left and candidate on the right. The four SVG sheets show all eight exports at enlarged and native size: [Thorn and Mask](sheet-01.png), [Pinch and Narrow](sheet-02.png), [Lock and Five](sheet-03.png), [Wall and Crown](sheet-04.png).
 
-- [Bosses collection at desktop size](collection-desktop-comparison.png)
-- [Boss blind intro at desktop size](boss-intro-desktop-comparison.png)
+- [Bosses collection at desktop size](collection-desktop-comparison.png) and [390 px](collection-phone-comparison.png)
+- [Boss blind intro at desktop size](boss-intro-desktop-comparison.png) and [390 px](boss-intro-phone-comparison.png)
 - [Active boss blind at desktop size](boss-playing-desktop-comparison.png)
 - [Active boss blind at 390 px](boss-playing-phone-comparison.png)
 
