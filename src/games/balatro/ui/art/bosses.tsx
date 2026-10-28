@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { ArtScene } from '../../../../shared/art/CardArt';
-import { ink, paper, coral, gold, PrintGround, SuitPip, MiniCard, Mask } from './primitives';
+import { ink, paper, coral, gold, PrintGround, SuitPip, MiniCard, Coin, Mask } from './primitives';
 
 /** Each plate shows the rule's interruption at the table, not a second rules label. */
 export function BossArt({ id, className = '' }: { id: string; className?: string }) {
@@ -187,7 +187,7 @@ export function BossArt({ id, className = '' }: { id: string; className?: string
       motif = (
         <g>
           <MiniCard x={66} y={25} value="A" />
-          <path d="M60 85h40" fill="none" stroke={gold} />
+          <Coin x={81} y={80} />
         </g>
       );
   }
