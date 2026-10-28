@@ -1,0 +1,59 @@
+{
+  "baselineCommit": "3dfba6aeadefe0dcbdc1a7b80bf847822d40196e",
+  "seed": "act-one-roles-42",
+  "scenes": {
+    "common": ["jawWorm", "redLouse", "greenLouse"],
+    "elites": ["lagavulin", "sentry", "gremlinNob"]
+  },
+  "views": [
+    {
+      "scene": "common",
+      "width": 1440,
+      "sameTargetNames": true,
+      "sameCombatText": true,
+      "sameSave": true,
+      "saveSha256": "d8336e22d57ef260a89642c038be192bd958fe47555fcf607a4dc00bf24b7c9b",
+      "beforeDocumentWidth": 1440,
+      "afterDocumentWidth": 1440,
+      "beforePageErrors": [],
+      "afterPageErrors": []
+    },
+    {
+      "scene": "common",
+      "width": 390,
+      "sameTargetNames": true,
+      "sameCombatText": true,
+      "sameSave": true,
+      "saveSha256": "d8336e22d57ef260a89642c038be192bd958fe47555fcf607a4dc00bf24b7c9b",
+      "beforeDocumentWidth": 390,
+      "afterDocumentWidth": 390,
+      "beforePageErrors": [],
+      "afterPageErrors": []
+    },
+    {
+      "scene": "elites",
+      "width": 1440,
+      "sameTargetNames": true,
+      "sameCombatText": true,
+      "sameSave": true,
+      "saveSha256": "2d0fa2e88fbc729334876dbd262561b90732535d13eda28d7d0f099665ae377a",
+      "beforeDocumentWidth": 1440,
+      "afterDocumentWidth": 1440,
+      "beforePageErrors": [],
+      "afterPageErrors": []
+    },
+    {
+      "scene": "elites",
+      "width": 390,
+      "sameTargetNames": true,
+      "sameCombatText": true,
+      "sameSave": true,
+      "saveSha256": "2d0fa2e88fbc729334876dbd262561b90732535d13eda28d7d0f099665ae377a",
+      "beforeDocumentWidth": 390,
+      "afterDocumentWidth": 390,
+      "beforePageErrors": [],
+      "afterPageErrors": []
+    }
+  ],
+  "method": "Fresh system Chromium browser context for each revision, trio and width over Vite HTTP; Practice Lab scenario started through normal UI; matched full-page captures converted losslessly to WebP with equal decoded pixels."
+}

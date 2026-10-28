@@ -1,0 +1,8 @@
+{
+  "baselineCommit": "3dfba6aeadefe0dcbdc1a7b80bf847822d40196e",
+  "catalogueSvgCount": 644,
+  "changedIds": [],
+  "manifestSha256Before": "e73f1a83cf5d895d4f55ccf9112b66dc9f209a2b1d57807117ea4358bf18b05b",
+  "manifestSha256After": "e73f1a83cf5d895d4f55ccf9112b66dc9f209a2b1d57807117ea4358bf18b05b",
+  "method": "All standalone catalogue SVG bytes compared by stable ID after separate baseline/candidate exports; changed combat figures are inline and not registered in catalogue."
+}
