@@ -1,0 +1,138 @@
+[
+  {
+    "stage": "baseline",
+    "id": "desktop",
+    "errors": [],
+    "labels": [
+      "Inventory · I",
+      "Character · K",
+      "Journal · J",
+      "Developer tools · F8",
+      "Pause",
+      "Return to campaign",
+      "New journey",
+      "Export journey",
+      "Import journey",
+      "Interact · F",
+      "Town portal · T",
+      "1 · Life potion ×8",
+      "QFire bolt6 mana · rank 10",
+      "EFrost nova14 mana · rank 10",
+      "RTeleport16 mana · rank 10",
+      "2 · Mana potion ×8",
+      "Shift · Walk · 100 stamina",
+      "Tab · map",
+      "↗ DCC workbench",
+      "↗ 3D art gallery"
+    ],
+    "canvas": {
+      "x": 26,
+      "y": 377.796875,
+      "width": 1388,
+      "height": 702
+    },
+    "overflow": false
+  },
+  {
+    "stage": "baseline",
+    "id": "phone",
+    "errors": [],
+    "labels": [
+      "Inventory · I",
+      "Character · K",
+      "Journal · J",
+      "Developer tools · F8",
+      "Pause",
+      "Return to campaign",
+      "New journey",
+      "Export journey",
+      "Import journey",
+      "Interact · F",
+      "Town portal · T",
+      "1 · Life potion ×8",
+      "QFire bolt6 mana · rank 10",
+      "EFrost nova14 mana · rank 10",
+      "RTeleport16 mana · rank 10",
+      "2 · Mana potion ×8",
+      "Shift · Walk · 100 stamina",
+      "Tab · map",
+      "↗ DCC workbench",
+      "↗ 3D art gallery"
+    ],
+    "canvas": {
+      "x": 19,
+      "y": 555.796875,
+      "width": 352,
+      "height": 211.1875
+    },
+    "overflow": false
+  },
+  {
+    "stage": "current",
+    "id": "desktop",
+    "errors": [],
+    "labels": [
+      "Inventory · I",
+      "Character · K",
+      "Journal · J",
+      "Developer tools · F8",
+      "Pause",
+      "Return to campaign",
+      "New journey",
+      "Export journey",
+      "Import journey",
+      "Interact · F",
+      "Town portal · T",
+      "1 · Life potion ×8",
+      "QFire bolt6 mana · rank 10",
+      "EFrost nova14 mana · rank 10",
+      "RTeleport16 mana · rank 10",
+      "2 · Mana potion ×8",
+      "Shift · Walk · 100 stamina",
+      "Tab · map",
+      "↗ DCC workbench",
+      "↗ 3D art gallery"
+    ],
+    "canvas": {
+      "x": 26,
+      "y": 377.796875,
+      "width": 1388,
+      "height": 702
+    },
+    "overflow": false
+  },
+  {
+    "stage": "current",
+    "id": "phone",
+    "errors": [],
+    "labels": [
+      "Inventory · I",
+      "Character · K",
+      "Journal · J",
+      "Developer tools · F8",
+      "Pause",
+      "Return to campaign",
+      "New journey",
+      "Export journey",
+      "Import journey",
+      "Interact · F",
+      "Town portal · T",
+      "1 · Life potion ×8",
+      "QFire bolt6 mana · rank 10",
+      "EFrost nova14 mana · rank 10",
+      "RTeleport16 mana · rank 10",
+      "2 · Mana potion ×8",
+      "Shift · Walk · 100 stamina",
+      "Tab · map",
+      "↗ DCC workbench",
+      "↗ 3D art gallery"
+    ],
+    "canvas": {
+      "x": 19,
+      "y": 555.796875,
+      "width": 352,
+      "height": 211.1875
+    },
+    "overflow": false
+  }
+]
