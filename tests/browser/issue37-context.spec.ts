@@ -74,7 +74,8 @@ async function shopAndHeld(page: Page, url: string, label: string, size: string)
     await expect(held.nth(index)).toContainText(name);
   const stair = page.locator('.shop-card').filter({ hasText: 'Stairway' });
   await expect(stair).toHaveCount(1);
-  await expect(stair).toContainText('Buy');
+  await expect(stair.locator('svg.card-art')).toHaveCount(1);
+  await expect(stair.getByRole('button', { name: 'Slots full' })).toBeDisabled();
   await page.locator('.joker-rack').screenshot({
     path: join(output, `${label}-held-${size}.png`),
     animations: 'disabled',
