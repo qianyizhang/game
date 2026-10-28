@@ -275,6 +275,14 @@ await test('unknown, stale, partial and decreasing telemetry cannot authorize an
     () => evaluate([init, { ...usage(1), credits: Number.NaN }], start + 60_000),
     /finite/,
   );
+  assert.throws(
+    () =>
+      evaluate(
+        [init, { ...usage(1), through: new Date(start + 60_001).toISOString() }],
+        start + 120_000,
+      ),
+    /Usage coverage must advance within the trial/,
+  );
 });
 
 await test('director spec revisions require re-audit and retain active package clocks and failures', () => {
@@ -325,10 +333,12 @@ await test('disk receipts refuse overwrite, changed pins, symlinks and rewritten
     }),
     /pin changed/,
   );
+  // One instant keeps coverage from accidentally extending past the receipt timestamp.
+  const receiptAt = new Date().toISOString();
   await record(directory, {
     kind: 'usage',
-    at: new Date().toISOString(),
-    through: new Date().toISOString(),
+    at: receiptAt,
+    through: receiptAt,
     credits: 1,
     coverage: 'complete',
     source: 'test receipt',
