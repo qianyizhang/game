@@ -1,0 +1,147 @@
+{
+  "status": "passed",
+  "baseline": "da8b3c39097a27a300b414af9b89bdceb234a1ff",
+  "candidate": "030efb73619fb21f6975a7fc15bfdde5e932bcc8",
+  "baselineSourceSha256": "6603921f69ff9df004e6d16150425e8d26099e242744e3aa30c8cd90d4cd71d4",
+  "candidateSourceSha256": "04950eeee5daed51c44b05e05819d28a74d88dcf373b3478fcaa1b746663aa6d",
+  "browser": {
+    "name": "Google Chrome",
+    "version": "156.0.8078.73",
+    "officialPackageUrl": "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb",
+    "packageSha256": "fd19c6895dad77f4d7f712c2d9f0d5eb682f4a6e7ff22b1bd0d40d03710d288c"
+  },
+  "seed": "SUIT-REVIEW-14",
+  "setup": {
+    "cash": 100,
+    "jokers": ["hearts", "diamonds", "clubs"],
+    "deck": [
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      },
+      {
+        "rank": 10,
+        "suit": "hearts"
+      }
+    ]
+  },
+  "captures": [
+    {
+      "label": "baseline",
+      "size": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "collectionClip": {
+        "x": 243,
+        "y": 338,
+        "width": 1159,
+        "height": 338
+      }
+    },
+    {
+      "label": "baseline",
+      "size": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "collectionClip": {
+        "x": 18,
+        "y": 506,
+        "width": 354,
+        "height": 557
+      }
+    },
+    {
+      "label": "candidate",
+      "size": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "collectionClip": {
+        "x": 243,
+        "y": 338,
+        "width": 1159,
+        "height": 338
+      }
+    },
+    {
+      "label": "candidate",
+      "size": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "collectionClip": {
+        "x": 18,
+        "y": 506,
+        "width": 354,
+        "height": 557
+      }
+    }
+  ],
+  "checks": [
+    "baseline/desktop: effects, purchase price, four held, reorder, resume, horizontal fit",
+    "baseline/phone: effects, purchase price, four held, reorder, resume, horizontal fit",
+    "candidate/desktop: effects, purchase price, four held, reorder, resume, horizontal fit",
+    "candidate/phone: effects, purchase price, four held, reorder, resume, horizontal fit"
+  ],
+  "pageErrors": [],
+  "screenshots": {
+    "baseline-collection-desktop.png": "e4da95b1beeb749c7f8a38e68e6be9f271b96d68605d5691e9876d672841c6b7",
+    "baseline-shop-desktop.png": "cc7c238346805883fba70955f2ee60cf1ba570391b27bd08d0122db315d61b20",
+    "baseline-held-desktop.png": "3651cc9a231d90530c36a12a53346e1c52c4304fd609d1e4307fdb294721254f",
+    "baseline-collection-phone.png": "2b4c794a3dc8beff50636a572c4b7a94c2ba5ce868c2783caeabedf4359928d9",
+    "baseline-shop-phone.png": "bcfbbf27a65b4472f69100e0bea3206971d9211b98004c34501ef29258fcbce3",
+    "baseline-held-phone.png": "1f24976a2a27ba9da3ea2cc81a8eae31b84d3a86d6d5bbe85152229f61e9296d",
+    "candidate-collection-desktop.png": "c2ca168dbeaeaef97893a19e6cfb1b2dc31dc4897240b7e8418785e632bddfa6",
+    "candidate-shop-desktop.png": "42dd33addf78f1b55ae51b5687c3f0019bf7fd5d8ab5d0335b1ac8f1ebf94d6b",
+    "candidate-held-desktop.png": "5ddb898ddc92930d9adf09f001d44a27a2e71de654a50ffc88d643ff69bdfceb",
+    "candidate-collection-phone.png": "ccda634756d80dc223d5b87a7b37646fee632f488aa7bd433bc4f71657639f1a",
+    "candidate-shop-phone.png": "f381afb58179dc0ea2970e8f9082ebf7f5d3e81e6ec1c1675e76bf85fbf491f8",
+    "candidate-held-phone.png": "78115c8ddb0bb18675b2cbf1acb67b3ac77c4f7e5b4d8eb723b2e9ebf6fe48c1"
+  }
+}

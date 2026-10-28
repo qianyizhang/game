@@ -1,0 +1,23 @@
+[1028/070312.488669:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+[WebServer] (node:6179) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:6192) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[1028/070313.491358:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+
+Running 4 tests using 1 worker
+
+(node:6295) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1028/070315.260798:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+  ✓  1 [suit-context] › test-results/suits/context.spec.ts:21:191 › suit baseline desktop collection shop purchase reorder resume (4.8s)
+  ✓  2 [suit-context] › test-results/suits/context.spec.ts:21:191 › suit baseline phone collection shop purchase reorder resume (5.5s)
+  ✓  3 [suit-context] › test-results/suits/context.spec.ts:21:191 › suit candidate desktop collection shop purchase reorder resume (5.8s)
+  ✓  4 [suit-context] › test-results/suits/context.spec.ts:21:191 › suit candidate phone collection shop purchase reorder resume (4.6s)
+
+  4 passed (24.4s)
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
