@@ -3,6 +3,11 @@
 Use `$CODEX_HOME/AGENTS.md` (default `~/.codex/AGENTS.md`) and its practice guides
 when present; local contracts and checks below still apply.
 
+For local Codex and cloud jobs, use repo-kit's
+[GitHub guide](https://github.com/qianyizhang/repo-kit/blob/main/user/practices/github.md)
+for issue/PR/follow-up communication and bounded delivery. Repository-specific QA
+and authorization rules still govern.
+
 Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone Battlegrounds, in that order. Battlegrounds means tavern recruitment and automatic combat.
 
 ## Boundaries
