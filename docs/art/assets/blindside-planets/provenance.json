@@ -1,0 +1,44 @@
+{
+  "baseline": "14f31860a4bf5c7bf568fbacf804c8cd60a3a9ca",
+  "seed": "PLANET-PRINT-16",
+  "viewport": {
+    "desktop": [1440, 1080],
+    "phone": [390, 844]
+  },
+  "pocketWidth": {
+    "desktop": 56,
+    "phone": 48
+  },
+  "sourceHashes": {
+    "src/games/balatro/ui/art/planets.tsx": "691428f09890facb5572188df4af564192cb0a38bc8dd9ec52574927e0d39706",
+    "src/games/balatro/ui/art/consumables.tsx": "ea37547eddb61e7291b87ab5dcb9a6c1871d3c411498aaa4bf87cfb3dfa69450",
+    "tests/browser/artwork.spec.ts": "86ed1bab5d6c82f10aff681318666e183f2f3653891e0028ffcff5597c9acd93"
+  },
+  "browser": {
+    "vendorURL": "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb",
+    "version": "Google Chrome 156.0.8078.73",
+    "packageSHA256": "fd19c6895dad77f4d7f712c2d9f0d5eb682f4a6e7ff22b1bd0d40d03710d288c",
+    "playwright": "1.64.0"
+  },
+  "runtime": {
+    "node": "24.21.0",
+    "npm": "11.19.0"
+  },
+  "images": {
+    "booster-phone.png": "2c523cf230bd3ceb0db2a853a8af7f8a416c811957f9d3bc6509ef5d8da1e05c",
+    "collection-desktop.png": "4d156d3b9d71429bbd329e439250bd545ddbd913899bdcc421f06c6799b8fa2f",
+    "collection-phone.png": "405a419a28b3c38b7edf76f87aebd2e8892f830a83ef84fbad11bae6ef173989",
+    "giants-v1.png": "a25fe499dcacf4a86e66e3eb950c6430e9f37341706f03fd9a026c2b684d3847",
+    "locator-desktop.png": "afdba6bd63ecd6620d0d71ba75af7bcbe5850c7655633f7970686f17529684f5",
+    "overview.png": "52f146a0c4820d3942a03d9645d1bf8a8e171763d2e5b529c4a0583b878a59ab",
+    "playing-desktop.png": "8bfa7481eee94fb94614676ef80737733aa384a5242c4f72b997d9d329344b57",
+    "playing-phone.png": "6c8bacb33f0608bf1a4d737a6c4b973e26a5abbb8feb0b8560ea71eb62e00dab",
+    "pocket-desktop.png": "5c1b328d34dcdfba7eee2dc26349f3407db30ee2952e9082d0995c14e61ae666",
+    "pocket-phone.png": "964cc5fe4b667df19f667379acfe7a578fb24d6834fa407e4876d8a333b2fdcd",
+    "surfaces-01.png": "25344e0c22c11cca64387c20d82f6e98ee45b01186b127ae2512427f5f9c515e",
+    "surfaces-02.png": "124895d0d91c1a0da3e396b5d291defa0031e08fa5185961d439ea3e2979cadb",
+    "surfaces-03.png": "a7392492bd26cce6d9d5fc453e08bb7cb8f223427c1e6aae29b452acc18d5357",
+    "surfaces-04.png": "b61bae95ce4b4ba16768c09b22db0f1c53c2e43e936340a4b6375aa40bc141d8",
+    "surfaces-05.png": "a58ffd8491fc65ee17aabc5cee832c304d5886775f6536d8bf69e2533a63421b"
+  }
+}

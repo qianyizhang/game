@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ArtGlyph } from '../../../../shared/art/CardArt';
 import { ArtScene } from '../../../../shared/art/CardArt';
+import { Planet } from './planets';
 import {
   ink,
   paper,
@@ -12,110 +13,6 @@ import {
   Ladder,
   Book,
 } from './primitives';
-const planets = [
-  'high',
-  'pair',
-  'twoPair',
-  'three',
-  'straight',
-  'flush',
-  'fullHouse',
-  'four',
-  'straightFlush',
-];
-
-function Planet({ id }: { id: string }) {
-  const index = planets.indexOf(id.replace('planet-', ''));
-  const colors = [gold, coral, ink, coral, gold, gold, '#7eada4', '#437b87', '#947485'];
-  const radii = [18, 24, 25, 22, 32, 27, 24, 25, 15];
-  const radius = radii[index] ?? 22;
-  return (
-    <g>
-      <ellipse
-        cx="80"
-        cy="57"
-        rx="59"
-        ry="33"
-        fill="none"
-        opacity=".35"
-        transform="rotate(-19 80 57)"
-      />
-      <circle cx="80" cy="56" r={radius} fill={colors[index]} />
-      {index === 0 && (
-        <g opacity=".7">
-          <circle cx="76" cy="47" r="5" />
-          <circle cx="87" cy="60" r="3" />
-          <path d="m67 63 6 3" />
-        </g>
-      )}
-      {index === 1 && (
-        <g stroke={paper}>
-          <path d="M59 49q21 9 41-1m-43 12q22 12 45 0m-29-29 8 5" fill="none" />
-        </g>
-      )}
-      {index === 2 && (
-        <g fill={gold} stroke="none">
-          <path d="m63 41 14-7 8 9-7 9 4 11-12 10-8-15 6-9Zm30-2 9 11-1 11-10-4-2-11Z" />
-          <path d="M63 75q14 8 30 1" stroke={paper} />
-        </g>
-      )}
-      {index === 3 && (
-        <g>
-          <path d="M62 45q19-15 32-3m-26 31 14-10 14 6" fill="none" />
-          <circle cx="88" cy="48" r="5" fill={gold} />
-        </g>
-      )}
-      {index === 4 && (
-        <g stroke={paper} fill="none">
-          <path d="M52 40q29 9 56 0M49 50q29 8 62 0M49 62q31 10 60 0M55 76q24 5 50-1" />
-          <ellipse cx="92" cy="62" rx="8" ry="4" fill={coral} stroke={ink} />
-        </g>
-      )}
-      {index === 5 && (
-        <g>
-          <path d="M54 51q26 8 51-2m-50 16q23 9 49-2" fill="none" stroke={paper} />
-          <path
-            d="M53 48Q10 54 31 71Q75 100 130 47Q139 32 105 37M31 71Q91 79 130 47"
-            fill="none"
-            stroke={coral}
-            strokeWidth="5"
-          />
-        </g>
-      )}
-      {index === 6 && (
-        <g>
-          <ellipse
-            cx="80"
-            cy="56"
-            rx="38"
-            ry="9"
-            fill="none"
-            transform="rotate(67 80 56)"
-            stroke={paper}
-            strokeWidth="3"
-          />
-          <path d="M61 50q17-6 36-1m-37 12q19-4 36-1" fill="none" />
-        </g>
-      )}
-      {index === 7 && (
-        <g stroke={paper} fill="none">
-          <path d="M59 47q20 12 42 0m-41 10q22 10 43 0m-34 19 14-5 10 2" />
-          <path d="m116 77-6-8m6 8 8-7m-8 7V92" stroke={gold} strokeWidth="3" />
-        </g>
-      )}
-      {index === 8 && (
-        <g>
-          <circle cx="110" cy="30" r="7" fill={paper} />
-          <path d="M73 55q8-10 13 0q-2 10-10 9" fill={paper} />
-          <path d="M48 79q18 9 34 0" stroke={gold} />
-        </g>
-      )}
-      <ArtGlyph kind="star" x={27} y={20} size={11} color={paper} />
-      <ArtGlyph kind="star" x={126} y={78} size={10} color={gold} />
-    </g>
-  );
-}
-
 function ToolMotif({ id }: { id: string }): ReactNode {
   if (id.startsWith('planet-')) return <Planet id={id} />;
   switch (id) {
