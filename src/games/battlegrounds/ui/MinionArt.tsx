@@ -260,17 +260,63 @@ function ColossusPortrait() {
 function MetalPortrait({ kind }: { kind: Machine }) {
   const copper = '#98734f';
   const steel = '#88908a';
+  if (kind === 'drake')
+    return (
+      <g
+        data-art-subject="iron-drake"
+        stroke={shadow}
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      >
+        {/* One folded metal sail leads into the shoulder and rising neck. */}
+        <path
+          d="M83 98 61 85Q41 91 30 107l1-27Q19 80 9 88l11-33L8 17q27 0 47 15 25 21 31 52Z"
+          fill="#384f51"
+        />
+        <path d="M16 25q23 2 38 15l22 47-19-11-18 17 2-22-17 6 6-23Z" fill="#81998e" />
+        <path d="m18 29 35 16-25 11Zm35 16 21 40-28-16Z" fill="#aabbab" stroke="none" />
+        <path
+          d="m81 94-27-50L12 21m42 23L24 59m30-15L35 83"
+          fill="none"
+          stroke="#b9a276"
+          strokeWidth="4"
+        />
+        <path d="M61 112q2-34 24-45l28 17 18 28Z" fill="#3d5758" />
+        <path
+          d="M69 88Q89 76 84 58 76 34 94 23l15 6Q97 40 109 56q19 29-4 54l-30 2Z"
+          fill="#788f86"
+        />
+        <path
+          d="M95 31q-9 13 3 30 11 21-4 40l10 8q22-24 5-53-11-18 0-27Z"
+          fill="#c0c6af"
+          stroke="none"
+        />
+        <path d="m84 57 14 5 8 18-15 9-16-6 12-10Z" fill="#a28460" />
+        <path d="m83 89 14 3-9 19H69Z" fill="#536e6a" />
+        <path d="M103 30 79 15l8 22 18 9m15-15 1-16 13 21" fill="#b9ba9e" />
+        <path d="m105 20 19 6 4 10 22 7-4 14-23 5-19-11-11-16Z" fill="#a8b6a5" />
+        <path d="m103 28 12-3 9 11-16 7-10-8Z" fill="#d1d4b8" stroke="none" />
+        <path d="m109 45 16 5 22-3-6 15-17 7-18-10Z" fill="#8a9e91" />
+        <path d="m116 51 11 4 14-4-7 9-12 2Z" fill="#273d3f" />
+        <path d="m120 54 2 8 5-7m7-2 1 6 5-8" fill="#e5d9ac" strokeWidth=".8" />
+        <path d="m108 35 12-2-6 8-8-1Z" fill="#253c3d" />
+        <path d="m110 36 7-1-4 4-3-1Z" fill="#d8e6bf" stroke="none" />
+        <path d="m142 43 7 1-3 6-6-1Z" fill="#3a504f" />
+        <path d="M79 101 95 96l13 16H76Z" fill="#8e7758" />
+        <path d="m73 82 9 2 4 8-8 6-9-5Z" fill="#b59b70" />
+        <path d="m76 87 5 2-2 4-5-2Z" fill="#3f5957" strokeWidth="1" />
+        <Cut
+          d="m90 40-1 7m1 10 6 11-2 8m4 20 5-9M46 43l4 9m-17-9 4 8m77-28 7 3m-41 78 11-3"
+          color="#d3caa8"
+          width="1"
+        />
+      </g>
+    );
   return (
     <g>
-      {kind === 'pup' || kind === 'drake' ? (
+      {kind === 'pup' ? (
         <>
-          {kind === 'drake' && (
-            <>
-              <path d="M34 112 10 25l22 15 5-18 33 55Z" fill="#514c42" />
-              <Cut d="M15 35 40 98m-12-48 27 44" color="#b8a47b" />
-            </>
-          )}
-
           <path
             d="M22 112 39 80l17-19-8-43 27 20 24-13 22 19-4 17 33 9-8 18-34 12-7 12Z"
             fill={shadow}
