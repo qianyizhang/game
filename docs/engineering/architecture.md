@@ -10,7 +10,7 @@ The card studies below share a shell. [Emberwake](../../packages/diablo2/README.
 
 `packages/diablo2/` owns the independently checked Emberwake engine and UI, integrated into the same hub. Its package boundary reflects its own runtime and contracts, rather than requiring every game to become a package. `packages/dcc-workbench` and `packages/workshop-tools` own native authoring and game tooling. The external [Repo Workbench plugin](repo-workbench.md) owns architecture-canvas and development-session review tooling.
 
-`src/engines/` owns shared challenge and replay protocols. `src/engines/hearth/` groups Hearth experiment harnesses, inspectors and headless runtime entry points; game rules and policies remain under `src/games/battlegrounds/`. Frozen experiment reports retain their recorded revision, source paths and hashes. Reproducing those reports requires that revision; current tools use the relocated entry points.
+`src/engines/` owns shared challenge and replay protocols. `src/engines/hearth/` owns Hearth experiment logic, replay inspection and headless runtime exports; `packages/workshop-tools/hearth/` owns their filesystem CLI entry points, worker pool and offline viewer. Game rules and policies remain under `src/games/battlegrounds/`. See the [tools contract](../../packages/workshop-tools/README.md#frozen-hearth-experiments-and-inspector) for current commands. Frozen reports retain their recorded revision, source paths and hashes; reproduction requires that revision.
 
 ## The dependency direction
 
@@ -32,13 +32,13 @@ The domain imports content definitions to interpret IDs. Content imports domain 
 ## Trace a concrete action
 
 1. `Table.tsx` renders hands and selection IDs (temporary UI state).
-2. `scoreHand(run, ids)` calculates a pure preview without consuming RNG or mutating state.
-3. The Play button submits `{ type: 'play', cards: ids }` to `act()`.
+2. `BlindsideApp.tsx` calls `scoreHand(run, ids)` for a pure preview without consuming RNG or mutating state.
+3. The Play button submits `{ type: 'play', cards: ids }` through `dispatch` to the browser session hook.
 4. `transition()` validates selections and phases, returning a cloned new state or the original state upon rejection.
 5. `evaluateHand()` identifies poker hand category by visible hand order.
 6. `scoreHand()` builds an ordered trace: card enhancements and per-card hooks execute before held effects; whole-hand Jokers resolve left-to-right.
 7. `transition()` applies results, Jokers growth, glass breakage, and card-zone movements. Surviving blinds refill hands from draw piles.
-8. `act()` appends successful commands to replay history. The browser adapter persists replay state.
+8. The session codec's `act()` appends successful commands to replay history. The browser adapter persists replay state.
 
 ## State ownership
 
@@ -87,7 +87,7 @@ Module ownership:
 
 1. `recruitAction` enforces economic constraints: costs, pool capacity, triples, and Discover.
 2. The shared pool owns unallocated copies; boards, hands, and offers own allocated copies.
-3. `endRecruit` executes bot turns, triggers end-of-recruit effects, and delivers paired boards to `resolveCombat`.
+3. The `endRecruit` command calls `combatRound` for bot turns, then `resolveLobbyCombat` triggers end-of-recruit effects and delivers paired boards to `resolveCombat`.
 4. Combat resolver executes simultaneous attacks, damage, and death queues using isolated combat copies.
 5. Post-combat applies hero damage, fatigue, and eliminations. Temporary combat modifications never mutate recruitment boards.
 6. UI replays immutable animation frames. Advancing frames is local UI state; round progression is an authoritative command.

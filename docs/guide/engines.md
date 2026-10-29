@@ -10,7 +10,7 @@ Policy play across all games ([policy development](../engineering/policy-develop
 `npm run engine:policy` for run/record/benchmark/audit and separate isolated original-input
 inspectors.
 
-The [repository organization](../engineering/architecture.md#repository-organization) distinguishes card studies in `src/games/`, the independent Emberwake package and specialized tooling. Hearth experiment harnesses live in `src/engines/hearth/`; current command names are unchanged.
+The [repository organization](../engineering/architecture.md#repository-organization) owns the source map, including the split between Hearth experiment logic and its CLI tooling. The [tools contract](../../packages/workshop-tools/README.md#frozen-hearth-experiments-and-inspector) owns current experiment commands.
 
 ## Run the challenge solver
 

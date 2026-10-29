@@ -179,8 +179,8 @@ is separate from constrained-policy calibration and is not human-balance evidenc
 
 ## Verification
 
-Use `npm run check` and affected disposable-profile browser journeys under the
-[verification contract](checks.md#gate-selection). Existing checks cover observation
+Select affected application, policy rollout and disposable-profile browser checks under
+the [verification contract](checks.md#gate-selection). Existing checks cover observation
 isolation, rejected-action atomicity, controller timing/work, replay/score accounting,
 JSONL recovery, saved-game isolation and original-input inspection. Imported victories
 prove reconstruction; they do not constitute new policy-strength measurements.
