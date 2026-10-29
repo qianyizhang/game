@@ -1,0 +1,252 @@
+[
+  {
+    "pr": 78,
+    "head": "af887d8b8058911f702b399a1b53f7745b932a21",
+    "changes": [
+      {
+        "path": "docs/art/assets/spire-damage-potions/README.md",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/belt-desktop.png",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/belt-phone.png",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/checks.md",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/collection-desktop.png",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/collection-phone.png",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/combat-desktop.png",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/combat-phone.png",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/independent-review.md",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/native-enlarged.png",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/overview.png",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/provenance.json",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/svg-review.json",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-damage-potions/v1.png",
+        "status": "A"
+      },
+      {
+        "path": "src/games/spire/ui/WorldItemArt.tsx",
+        "status": "M"
+      },
+      {
+        "path": "tests/browser/feature-art.spec.ts",
+        "status": "M"
+      }
+    ]
+  },
+  {
+    "pr": 79,
+    "head": "5e394122ca2762416fc8ef6895d527795b805526",
+    "changes": [
+      {
+        "path": "docs/art/assets/README.md",
+        "status": "M"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/README.md",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/cabinet-review.json",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/capture-receipt.json",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/context/orbAfter-1440.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/context/orbAfter-390.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/context/orbBefore-1440.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/context/orbBefore-390.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/context/trioAfter-1440.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/context/trioAfter-390.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/context/trioBefore-1440.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/context/trioBefore-390.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/iterations.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/logs/browser.log",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/logs/build.log",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/logs/maintenance.log",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/logs/rules.log",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/logs/types.log",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/overview.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/phone-detail.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/portrait-review.json",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/portraits-01.png",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/portraits-02.png",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/spire-beyond-constructs/source-receipt.json",
+        "status": "A"
+      },
+      {
+        "path": "src/games/spire/ui/BeyondConstructArt.tsx",
+        "status": "A"
+      },
+      {
+        "path": "src/games/spire/ui/Portrait.tsx",
+        "status": "M"
+      },
+      {
+        "path": "tests/browser/spire-constructs.spec.ts",
+        "status": "A"
+      }
+    ]
+  },
+  {
+    "pr": 81,
+    "head": "96494882ba31d47450e2d100afc936b3e136491b",
+    "changes": [
+      {
+        "path": "docs/art/assets/hearth-iron-drake/README.md",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/before-collection-desktop.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/before-collection-phone.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/before-combat-desktop.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/before-combat-phone.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/before-identities.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/comparison.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/current-collection-desktop.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/current-collection-phone.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/current-combat-desktop.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/current-combat-phone.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/assets/hearth-iron-drake/source-review.webp",
+        "status": "A"
+      },
+      {
+        "path": "docs/art/svg.md",
+        "status": "M"
+      },
+      {
+        "path": "src/games/battlegrounds/ui/MinionArt.tsx",
+        "status": "M"
+      },
+      {
+        "path": "tests/browser/hearth-drake.spec.ts",
+        "status": "A"
+      }
+    ]
+  }
+]

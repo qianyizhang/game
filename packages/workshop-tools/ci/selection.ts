@@ -128,7 +128,8 @@ export function browserFamilies(path: string): Family[] | undefined {
     ['tavern-spells', 'recruitment-inspector'].includes(name)
   )
     return ['hearth'];
-  if (name.startsWith('blindside') || name === 'workshop') return ['balatro'];
+  if (name.startsWith('blindside') || ['workshop', 'issue37-context'].includes(name))
+    return ['balatro'];
   if (name === 'asset-gallery') return ['gallery'];
   if (name === 'art-export') return ['svg', 'balatro', 'spire', 'hearth'];
   if (modelBrowser.has(name)) return ['models'];
@@ -144,6 +145,44 @@ export function isDocumentation(path: string): boolean {
     /^docs\/art\/assets\/(?:hearth-mech-roles|spire-act1-enemies)\/[^/]+\.(?:png|jpe?g|webp)$/.test(
       path,
     )
+  );
+}
+
+/** Audited non-runtime review files. Keep the dependency-free prose allowlist narrower.
+ * These three bundles have no app/gallery consumers; gallery input images and unknown
+ * manifests deliberately remain outside this list. Audit consumers before extending it.
+ */
+export function isReviewEvidence(path: string): boolean {
+  if (isDocumentation(path)) return true;
+  if (['docs/art/assets/README.md', 'docs/art/svg.md'].includes(path)) return true;
+  const file = path.match(
+    /^docs\/art\/assets\/(?:spire-damage-potions|spire-beyond-constructs|hearth-iron-drake)\/(.+)$/,
+  )?.[1];
+  return (
+    file !== undefined &&
+    (/^(?:context\/)?[^/]+\.(?:png|jpe?g|webp)$/.test(file) ||
+      /^(?:checks|independent-review)\.md$/.test(file) ||
+      /^(?:provenance|svg-review|cabinet-review|capture-receipt|portrait-review|source-receipt)\.json$/.test(
+        file,
+      ) ||
+      /^logs\/(?:browser|build|maintenance|rules|types)\.log$/.test(file))
+  );
+}
+
+/** Normal selection follows a failed/skipped fast-path attempt. A docs-only diff must
+ * not gain a second, less strict route to skipping checks. Mixed changes can classify
+ * each reviewed regular file without making unrelated code a complete application run.
+ */
+export function normalApplicationFallback(
+  changes: Change[],
+  hasBase: boolean,
+  regular: (change: Change) => boolean,
+): boolean {
+  return (
+    !hasBase ||
+    changes.length === 0 ||
+    changes.every(({ path }) => isReviewEvidence(path)) ||
+    changes.some((change) => isReviewEvidence(change.path) && !regular(change))
   );
 }
 function repositoryPath(path: string): boolean {
@@ -194,14 +233,18 @@ export function selectPlan(
   dependants: DependencyGraph,
   options: { head: string; full?: boolean; allApplications?: boolean; uncertain?: string[] },
 ): Plan {
+  const reviewEvidence = (path: string) => isReviewEvidence(path) && !dependants.get(path)?.size;
   const documentation =
     !options.full &&
     !options.allApplications &&
     changes.length > 0 &&
-    changes.every((change) => repositoryPath(change.path) && isDocumentation(change.path));
+    changes.every(
+      (change) =>
+        repositoryPath(change.path) && isDocumentation(change.path) && reviewEvidence(change.path),
+    );
   const stylesOnly =
     changes.length > 0 &&
-    changes.every(({ path }) => isDocumentation(path) || path.endsWith('.css'));
+    changes.every(({ path }) => reviewEvidence(path) || path.endsWith('.css'));
   const reasons: string[] = [];
   if (options.full) reasons.push('comprehensive event');
   if (options.allApplications) reasons.push('complete application selection');
@@ -214,30 +257,30 @@ export function selectPlan(
   for (const change of changes) {
     const path = change.path;
     if (!repositoryPath(path)) reasons.push('unsupported path');
-    else if (isDocumentation(path)) continue;
+    else if (reviewEvidence(path) && ['A', 'M', 'D'].includes(change.status)) continue;
     else if (!['A', 'M'].includes(change.status))
       reasons.push('deleted, renamed or uncertain path');
     else if (requiresApplication(path))
       reasons.push('shared source, configuration or verification policy');
-    else if (
-      !isDocumentation(path) &&
-      sourceFamily(path) === undefined &&
-      browserFamilies(path) === undefined
-    )
+    else if (sourceFamily(path) === undefined && browserFamilies(path) === undefined)
       reasons.push('unknown ownership');
   }
   const allApplications = reasons.length > 0;
   const full = options.full === true;
   const affected = reverseClosure(
-    changes.filter((c) => !isDocumentation(c.path)).map((c) => c.path),
+    changes.filter((c) => !reviewEvidence(c.path)).map((c) => c.path),
     dependants,
   );
   const chosen = new Set<Family>();
   for (const path of affected) {
     const family = sourceFamily(path);
     if (family && family !== 'core') chosen.add(family);
-    for (const browserFamily of browserFamilies(path) ?? []) chosen.add(browserFamily);
   }
+  // Changed/reached specs run directly below. Their declared owners must not fan
+  // back out into every suite covered by a cross-game spec such as feature-art.
+  // Retain offline gallery delivery for game/SVG changes: its generator inlines
+  // captures through filesystem reads, which are not literal import edges.
+  if (chosen.has('svg') || games.some((family) => chosen.has(family))) chosen.add('gallery');
   // Keep focused policy regressions in the safety core. Rollout matrices remain
   // separate only after their reviewed split is present in the catalogue.
   const coreFiles = catalogue.application
