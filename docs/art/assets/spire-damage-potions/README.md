@@ -1,4 +1,4 @@
-# Spire damage potions · local checkpoint
+# Spire damage potions
 
 **Two vessels. Clear at 24 px.**
 
@@ -53,7 +53,7 @@ This does not claim parent pixel review or user approval.
   area damage, no Energy use, reload, export, collection labels and phone layout.
 - 🟢 30 domain tests; targeted ESLint, application/test types, production build,
   formatting and inventory.
-- 🟡 Local checkpoint only; no push, issue, PR, merge, Library or Site publication.
+- 🟡 Reviewed implementation published for draft delivery; [issue #77](https://github.com/qianyizhang/game/issues/77) owns current PR/CI status and remaining review. No merge authorized.
 
 [Check record and limits](checks.md) · [Pixel scope report](svg-review.json) ·
 [Source/image hashes and capture conditions](provenance.json) ·
@@ -64,3 +64,11 @@ IDs, potion rules, targeting, costs, persistence, unknown-ID fallback and access
 HTML controls remain intact. The combat witness is a legal prefix of the existing
 winning replay. Its enemy portraits are unchanged latest-main assets; no preserved
 Beyond candidate files were accessed or transported.
+
+## Delivery
+
+The independently accepted artwork and original comparisons are preserved at
+`c3a679c202ae6987d77f1f7f49940f76b772c789`, on
+`art/local-spire-damage-potions`. Subsequent delivery documentation does not change
+those reviewed source or image bytes. Issue #77 tracks the draft PR, terminal CI
+and review decision; it remains open until delivery is complete.

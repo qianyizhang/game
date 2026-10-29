@@ -73,9 +73,14 @@ full application/simulation suite or hosted CI run is claimed. Those unrelated
 scopes were not rerun. Existing content, rules, save/replay versions, labels and
 keyboard targets remain unchanged. Medical QA policies are outside this work.
 
-## Local retention
+## Checkpoint / delivery
 
-Implementation and selected evidence are committed locally only, on
-`art/local-spire-damage-potions`. No issue or draft PR was created; no branch was
-pushed; no merge, publication, external asset generation or Beyond transport was
-attempted. This is ready for a later authorized review/delivery step.
+The local-only checkpoint was preserved at
+`c3a679c202ae6987d77f1f7f49940f76b772c789` before publication was authorized.
+Its implementation and selected evidence are now pushed on
+`art/local-spire-damage-potions` for draft delivery.
+[Issue #77](https://github.com/qianyizhang/game/issues/77) owns current PR/CI status
+and the remaining review decision. Existing checks and independently reviewed
+source/image bytes are reused; no unchanged suite was rerun for publication.
+No merge, external asset generation, Library/Site publication or Beyond transport
+is part of this delivery.
