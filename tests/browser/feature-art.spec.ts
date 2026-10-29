@@ -1,6 +1,8 @@
 import { expect, test, type Page } from '@playwright/test';
 import { HEROES } from '../../src/games/battlegrounds/content/minions';
 import { RELICS, POTIONS } from '../../src/games/spire/content/world';
+import { spireSession } from '../../src/games/spire/application/session';
+import { readFileSync } from 'node:fs';
 
 async function withinViewport(page: Page) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -84,6 +86,85 @@ test('Spire collections cover every registered item and character changes remain
     .last()
     .screenshot({ path: info.outputPath('potions-phone.png') });
   expect(errors).toEqual([]);
+});
+
+test('Spire damage potions retain single-target and area effects through belt use and reload', async ({
+  page,
+}) => {
+  const fixture = spireSession.decode(readFileSync('tests/fixtures/spire-win.json', 'utf8'));
+  let witness = spireSession.create(fixture.replay.seed);
+  for (const command of fixture.replay.commands) {
+    const result = spireSession.act(witness, command);
+    expect(result.error).toBeUndefined();
+    witness = result.session;
+    if (
+      witness.state.phase === 'combat' &&
+      witness.state.potions.includes('fire') &&
+      witness.state.potions.includes('explosive')
+    )
+      break;
+  }
+  expect(witness.state.phase).toBe('combat');
+  expect(witness.state.potions).toEqual(['explosive', 'fire']);
+  const saved = async () =>
+    spireSession.decode(
+      (await page.evaluate((key) => localStorage.getItem(key), spireSession.key))!,
+    );
+  await page.addInitScript(() => localStorage.setItem('card-workshop.playback-speed', '100'));
+  await page.goto('/?game=spire');
+  await page.getByLabel('Import replay file').setInputFiles({
+    name: 'damage-potions.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(spireSession.encode(witness)),
+  });
+  const skip = page.getByRole('button', { name: 'Skip to result' });
+  if (await skip.isVisible()) await skip.click();
+  const fire = page
+    .locator('.potion-belt')
+    .getByRole('button', { name: 'Fire Potion', exact: true });
+  const explosive = page
+    .locator('.potion-belt')
+    .getByRole('button', { name: 'Explosive Potion', exact: true });
+  await expect(fire.locator('svg')).toHaveAttribute('data-potion-art', 'fire');
+  await expect(fire.locator('svg')).toHaveAttribute('aria-hidden', 'true');
+  await expect(fire.locator('svg')).toHaveAttribute('focusable', 'false');
+  await expect(explosive.locator('svg')).toHaveAttribute('data-potion-art', 'explosive');
+  const before = await saved();
+  expect(before.state.combat!.enemies.map((e) => e.block)).toEqual([0, 0, 0]);
+  await page.locator('.enemy').nth(1).focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.enemy').nth(1)).toHaveAttribute('aria-pressed', 'true');
+  expect(await saved()).toEqual(before);
+  await fire.focus();
+  await page.keyboard.press('Enter');
+  await expect(fire).toHaveCount(0);
+  const afterFire = await saved();
+  expect(afterFire.state.combat!.enemies.map((e) => e.hp)).toEqual(
+    before.state.combat!.enemies.map((e, i) => e.hp - (i === 1 ? 20 : 0)),
+  );
+  expect(afterFire.state.combat!.energy).toBe(before.state.combat!.energy);
+  expect(afterFire.state.potions).toEqual(['explosive']);
+  await page.reload();
+  expect(await saved()).toEqual(afterFire);
+  await expect(explosive).toBeEnabled();
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect((await explosive.locator('svg').boundingBox())!.width).toBe(24);
+  await withinViewport(page);
+  await explosive.click();
+  const afterBurst = await saved();
+  expect(afterBurst.state.combat!.enemies.map((e) => e.hp)).toEqual(
+    afterFire.state.combat!.enemies.map((e) => e.hp - 10),
+  );
+  expect(afterBurst.state.combat!.energy).toBe(before.state.combat!.energy);
+  expect(afterBurst.state.potions).toEqual([]);
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export', exact: true }).click();
+  expect(spireSession.decode(readFileSync(await (await download).path(), 'utf8'))).toEqual(
+    afterBurst,
+  );
+  await page.reload();
+  expect(await saved()).toEqual(afterBurst);
+  await expect(page.locator('.potion-belt')).toContainText('Empty belt');
 });
 
 test('workshop illustrations fit beside the tools on desktop and phone', async ({ page }, info) => {
