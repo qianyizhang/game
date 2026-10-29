@@ -48,7 +48,26 @@ Routine CI and full validation have separate triggers. Focused policy regression
 
 Modules: [safety core](../../.github/workflows/check-core.yml), [application](../../.github/workflows/check-application.yml), [asset checks](../../.github/workflows/asset-build.yml), orchestrated by [Repository checks](../../.github/workflows/maintenance.yml). Selection precedes dispatch so documentation can skip runtime jobs. The aggregate gate requires every selected module to succeed and allows only intentional skips. A reusable release caller must pass `full: true` and depend on this aggregate gate; standalone asset validation is not a release gate. Main pushes use their before-SHA diff; they do not repeat the full browser suite. There is no scheduled exhaustive run.
 
-Hosted documentation fast selection is narrower than the local documentation rule: it accepts only allowlisted prose without executable blocks and raster review evidence in two explicitly classified documentation-only asset directories. Images consumed by the gallery retain normal coverage. It checks changed whitespace, tracked-file inventory and local links without hydrating LFS or installing dependencies. Prettier remains part of local `format:maintenance`; the fast hosted path does not run it. Policy/test contracts, code examples, manifests, unknown paths and unavailable diffs use conservative normal coverage. Mixed changes retain normal selection. The required aggregate gate still verifies the selected documentation job.
+Hosted documentation fast selection accepts allowlisted prose and raster review evidence
+in two explicitly classified documentation-only asset directories. It also accepts prose/link
+modifications to exactly `AGENTS.md`, this checks document and
+`skills/card-art/assets/native-handoff.md.template`. Those three inputs must be regular,
+non-executable files in both revisions; additions, deletions and renames retain normal
+coverage. Changed inline code, command lines, HTML or code blocks remain conservative.
+Only this checks document may retain unchanged, complete top-level triple-backtick examples;
+their bytes are compared without interpreting their contents. Other fence forms and
+indented code still use normal coverage. Instruction meaning and approval remain human
+review responsibilities; classification does not establish instruction trust.
+
+The hosted documentation job checks changed whitespace, tracked-file inventory and local
+links without hydrating LFS or installing dependencies. The named handoff template receives
+Markdown content/link checks and runs the native packet renderer's focused identity
+substitution contract when changed. It emits Markdown, not the executable motion-study
+adapter. Local `format:maintenance` includes its Markdown formatting; hosted checks do not
+run Prettier. Images consumed by the gallery, other policy/test contracts or templates,
+manifests, unknown paths and unavailable diffs retain normal coverage. Mixed changes use
+normal selection; the three named inputs retain conservative application coverage there.
+The required aggregate gate still verifies the selected documentation job.
 
 Normal mixed-code selection classifies reviewed documentation per file. The potion,
 Beyond-construct and Iron Drake review bundles have an explicit non-runtime evidence

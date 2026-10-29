@@ -1,1 +1,11 @@
-{ "singleQuote": true, "trailingComma": "all", "printWidth": 100 }
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "overrides": [
+    {
+      "files": "skills/card-art/assets/native-handoff.md.template",
+      "options": { "parser": "markdown" }
+    }
+  ]
+}

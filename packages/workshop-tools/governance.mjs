@@ -2,6 +2,13 @@ import { execFileSync } from 'node:child_process';
 import { closeSync, existsSync, openSync, readFileSync, readSync } from 'node:fs';
 import { resolve, sep } from 'node:path';
 
+/** The named handoff renders Markdown; executable and other templates are not documents.
+ * @param {string} path
+ */
+export function isMarkdownDocument(path) {
+  return path.endsWith('.md') || path === 'skills/card-art/assets/native-handoff.md.template';
+}
+
 /** These are the same explicit scopes used by ESLint, tsc and pyproject.toml. @param {string} path */
 export function managedSource(path) {
   return (
@@ -111,7 +118,7 @@ export function checkGovernance(root) {
     );
   if (readFileSync(resolve(root, '.nvmrc'), 'utf8').trim() !== expectedNode)
     errors.push('Node runtime pins disagree');
-  const documents = files.filter((path) => path.endsWith('.md'));
+  const documents = files.filter(isMarkdownDocument);
   errors.push(...checkDocumentLinks(root, documents, files));
   return {
     managedSources: files.filter(managedSource).length,

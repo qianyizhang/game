@@ -9,6 +9,7 @@ import {
   checkGovernance,
   checkInventory,
   checkNativeHydration,
+  isMarkdownDocument,
 } from './governance.mjs';
 
 await test('new source and scattered documentation cannot silently bypass governance', () => {
@@ -61,6 +62,7 @@ await test('the governance command checks root, research and package documentati
     'AGENTS.md',
     'docs/research/study.md',
     'packages/example/README.md',
+    'skills/card-art/assets/native-handoff.md.template',
   ];
   try {
     execFileSync('git', ['init', '--quiet', root]);
@@ -77,6 +79,16 @@ await test('the governance command checks root, research and package documentati
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+await test('only the named Markdown handoff extends document link coverage', () => {
+  assert.equal(isMarkdownDocument('skills/card-art/assets/native-handoff.md.template'), true);
+  for (const path of [
+    'skills/card-art/assets/native-brief.md.template',
+    'skills/card-art/assets/motion-study.ts.template',
+    'other/handoff.md.template',
+  ])
+    assert.equal(isMarkdownDocument(path), false, path);
 });
 
 await test('unhydrated native binaries and pose arrays name recovery before delivery validation', () => {

@@ -3,6 +3,7 @@ import { mkdir, lstat, readFile, writeFile } from 'node:fs/promises';
 import { dirname, extname, isAbsolute, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { format, resolveConfig } from 'prettier';
+import { renderNativePacket } from './native-packet.ts';
 
 function destinationPath(destination: string) {
   const output = resolve(root, destination);
@@ -32,17 +33,7 @@ async function scaffoldStudy(args: string[]) {
   if (!destination || extra.length)
     throw new Error('Provide a study ID and one fresh destination directory.');
   const output = destinationPath(destination);
-  const files = [
-    ['native-brief.md.template', 'brief.md'],
-    ['motion-study.ts.template', 'study.ts.template'],
-    ['native-handoff.md.template', 'handoff.md'],
-  ];
-  const rendered = await Promise.all(
-    files.map(async ([template, filename]) => {
-      const source = await readFile(resolve(root, 'skills/card-art/assets', template), 'utf8');
-      return { filename, content: source.replaceAll('{{id}}', id) };
-    }),
-  );
+  const rendered = await renderNativePacket(root, id);
   await prepareParent(output);
   await mkdir(output); // Exclusive: preserve even an existing empty or partially authored packet.
   for (const { filename, content } of rendered)
