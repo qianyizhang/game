@@ -73,6 +73,8 @@ void test('actual CLI keeps mixed review changes scoped and rejects docs-only, e
       );
       const plan = JSON.parse(readFileSync(join(root, 'plan.json'), 'utf8')) as Plan;
       assert.equal(plan.head, git('rev-parse', 'HEAD'));
+      assert.equal(plan.version, 4);
+      assert.deepEqual(plan.browserMatrix, [1]);
       assert.ok(output.includes(plan.mode));
       assert.equal(plan.mode, kind === 'mixed' ? 'scoped' : 'application', kind);
       assert.deepEqual(plan.coreFiles, ['src/shared/replay.test.ts']);
