@@ -42,23 +42,26 @@ if (operation === 'plan') {
   const files = trackedFiles(root);
   const graph = dependencyGraph(root, files);
   const ancestor = base ? git('merge-base', base, head) : undefined;
-  const plan = selectPlan(changes, catalogueFrom(files), graph.dependants, {
-    head,
-    full: process.env.CI_FULL === '1',
-    allApplications: normalApplicationFallback(changes, Boolean(base), ({ path, status }) => {
-      const refs = status === 'A' ? [head] : status === 'D' ? [ancestor!] : [ancestor!, head];
-      try {
-        return refs.every(
-          (ref) =>
-            git('ls-tree', '-z', ref, '--', path) ===
-            `100644 blob ${git('rev-parse', `${ref}:${path}`)}\t${path}\0`,
-        );
-      } catch {
-        return false;
-      }
+  const plan = readPlan(
+    selectPlan(changes, catalogueFrom(files), graph.dependants, {
+      head,
+      full: process.env.CI_FULL === '1',
+      allApplications: normalApplicationFallback(changes, Boolean(base), ({ path, status }) => {
+        const refs = status === 'A' ? [head] : status === 'D' ? [ancestor!] : [ancestor!, head];
+        try {
+          return refs.every(
+            (ref) =>
+              git('ls-tree', '-z', ref, '--', path) ===
+              `100644 blob ${git('rev-parse', `${ref}:${path}`)}\t${path}\0`,
+          );
+        } catch {
+          return false;
+        }
+      }),
+      uncertain: graph.uncertain,
     }),
-    uncertain: graph.uncertain,
-  });
+    head,
+  );
   const json = JSON.stringify(plan);
   const output = process.argv[3];
   if (output) writeFileSync(output, json + '\n');

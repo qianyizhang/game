@@ -14,7 +14,7 @@ export type Change = { path: string; status: string };
 export type Catalogue = { application: string[]; browser: string[]; geometry: string[] };
 export type DependencyGraph = Map<string, Set<string>>;
 export type Plan = {
-  version: 3;
+  version: 4;
   head: string;
   mode: 'documentation' | 'scoped' | 'application' | 'full';
   reasons: string[];
@@ -26,6 +26,7 @@ export type Plan = {
   geometryFiles: string[];
   unitShards: number;
   browserShards: number;
+  browserMatrix: number[];
 };
 
 const games: Family[] = [
@@ -341,8 +342,9 @@ export function selectPlan(
   const geometryFiles = catalogue.geometry
     .filter((path) => !documentation && (allGeometry || affected.has(path)))
     .sort();
+  const browserShards = Math.max(1, Math.min(4, Math.ceil(browserFiles.length / 8)));
   return {
-    version: 3,
+    version: 4,
     head: options.head,
     mode: full
       ? 'full'
@@ -371,6 +373,7 @@ export function selectPlan(
     geometry: geometryFiles.length > 0,
     geometryFiles,
     unitShards: Math.max(1, Math.min(4, Math.ceil(unitFiles.length / 24))),
-    browserShards: Math.max(1, Math.min(4, Math.ceil(browserFiles.length / 8))),
+    browserShards,
+    browserMatrix: Array.from({ length: browserShards }, (_, i) => i + 1),
   };
 }
