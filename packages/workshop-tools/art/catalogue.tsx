@@ -31,6 +31,11 @@ import {
 import { AbilityArt } from '../../../src/games/spire/ui/AbilityArt';
 import { MinionArt } from '../../../src/games/battlegrounds/ui/MinionArt';
 import { ShieldBreakArt } from '../../../src/games/battlegrounds/ui/ShieldBreakArt';
+import {
+  InhabitantArt,
+  type InhabitantKind,
+} from '../../../src/games/cartographer/ui/InhabitantArt';
+import { ENEMIES } from '../../../src/games/cartographer/domain/content';
 import { FrontierArt } from '../../../src/games/cartographer/ui/FrontierArt';
 import { ShopArt } from '../../../src/games/balatro/ui/ShopArt';
 import { PACKS, VOUCHERS, TAGS } from '../../../src/games/balatro/content/shop';
@@ -113,6 +118,12 @@ export function cardArtCatalogue(): Asset[] {
     'seed',
   ];
   return [
+    ...(['hero', ...Object.keys(ENEMIES)] as InhabitantKind[]).map((kind) => ({
+      id: `cartographer/inhabitants/${kind}`,
+      group: 'Dungeon Cartographer · Inhabitants',
+      name: kind === 'hero' ? 'Lantern Keeper (you)' : ENEMIES[kind].name,
+      node: <InhabitantArt kind={kind} />,
+    })),
     {
       id: 'cartographer/feedback/frontier',
       group: 'Dungeon Cartographer · Navigation',
