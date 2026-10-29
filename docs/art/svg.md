@@ -35,6 +35,10 @@ Spire's six [intent cues](asset-enrichment.md) live in
 action text and export under `spire/intents/`. `npm run assets:gallery -- <fresh-directory>`
 builds the independent offline before/after gallery with a visible dated changelog.
 
+Last Hearth’s [Iron Drake portrait](assets/hearth-iron-drake/README.md) uses the existing
+`MetalPortrait` renderer in `src/games/battlegrounds/ui/MinionArt.tsx`. Normal/golden
+exports retain their IDs; this SVG study does not change the 3D gallery model.
+
 Last Hearth's [shield-loss feedback](assets/hearth-shield/README.md) uses
 `src/games/battlegrounds/ui/ShieldBreakArt.tsx` and `ShieldBreakCue.tsx`.
 The 64 × 64 symbol exports as `hearth/feedback/shield-break` and appears at 22/18 px

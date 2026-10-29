@@ -14,16 +14,14 @@ for (const golden of [false, true]) {
     const normal = await page.evaluate((key) => localStorage.getItem(key), bgSession.key);
     await page.getByRole('button', { name: 'Practice lab', exact: true }).click();
     await page.getByLabel('Scenario seed').fill('IRON-DRAKE-5');
-    await page
-      .getByLabel('Scenario setup')
-      .fill(
-        JSON.stringify({
-          hero: 'forgekeeper',
-          tier: 5,
-          gold: 10,
-          board: golden ? ['egg', 'egg', 'egg'] : ['egg'],
-        }),
-      );
+    await page.getByLabel('Scenario setup').fill(
+      JSON.stringify({
+        hero: 'forgekeeper',
+        tier: 5,
+        gold: 10,
+        board: golden ? ['egg', 'egg', 'egg'] : ['egg'],
+      }),
+    );
     await page.getByRole('button', { name: /^Start practice scenario/ }).click();
     if (golden) {
       await page.getByRole('button', { name: /Refresh/ }).click();
