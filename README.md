@@ -35,4 +35,4 @@ Open the Vite URL. **Explore all games** explains goals, first moves and control
 
 ## Verification
 
-Run `npm run check` for code and UI changes. [Verification contracts](docs/engineering/checks.md#gate-selection) own gate selection, CI scope and affected browser/native checks, including the full geometry gate for 3D changes. Browser launches on macOS require approved execution outside the restricted sandbox and disposable profiles.
+Choose checks by affected behavior using [verification contracts](docs/engineering/checks.md#gate-selection), the authoritative source for local gates, CI scope and browser/native prerequisites. Documentation-only edits use `npm run format:maintenance`; code and UI changes use the relevant application, browser, geometry or native checks.

@@ -10,7 +10,7 @@ updates:
         dependency-type: development
     ignore:
       # 1.64.1 misses the hosted Canvas send click after resize on macOS.
-      # Reassess later releases with test:browser:canvas; 1.63.0 passes that journey.
+      # Reassess with repo-kit's Canvas journey; see docs/engineering/repo-workbench.md.
       - dependency-name: '@playwright/test'
         versions: ['1.64.1']
       # Keep declarations aligned with the pinned Node 24 runtime.

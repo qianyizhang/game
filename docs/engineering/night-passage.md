@@ -388,4 +388,4 @@ The full dated reward comparison and delivery reports remain recoverable with
 
 - Seeded rules and validated command replay remain preserved. Renderer changes never consume rules RNG or alter combat timing.
 - Adding weapons, enemies, regions, or threat shapes follows the ownership table and content contracts; rules changes bump version identities explicitly.
-- Run `npm run check` for code, UI and rules changes; changes affecting 3D assets or rendering use `npm run check:full`.
+- Select affected application, browser, geometry and native checks under [verification contracts](checks.md#gate-selection). Use full suites for releases, major refactors or broad risk.
