@@ -23,9 +23,12 @@ formatting, inventory and links, not unrelated functional suites. See [testing p
 
 Regular hosted CI is a selective core/must-pass sanity layer, never the only or
 final delivery guard. Run full suites deliberately for releases, major refactors
-or broad/uncertain risk, not every tiny change. Each PR records affected scope,
-chosen commands and rationale, exact revision, passed/failed/blocked coverage and
-remaining limits. Hosted green cannot replace missing required local E2E evidence.
+or broad/uncertain risk, not every tiny change. PR verification evidence retains
+affected scope, chosen commands and rationale, exact revision, passed/failed/blocked
+coverage and remaining limits. Use the
+[shared GitHub guide](https://github.com/qianyizhang/repo-kit/blob/main/user/practices/github.md)
+to shape the public brief and link or collapse detailed evidence. Hosted green
+cannot replace missing required local E2E evidence.
 
 Keep runtime and security guards intact. If local E2E is barred or prerequisites
 are unavailable, report it blocked; require a reviewed, explicitly authorized local
