@@ -1,5 +1,5 @@
 {
-  "current": "/workspace/game/test-results/potion-offense/current",
+  "current": "/workspace/game/test-results/potion-offense/fire-v3",
   "before": "/workspace/game/test-results/potion-offense/before",
   "renderer": {
     "aom": "3.15.1",
@@ -43,7 +43,7 @@
     "unchanged": 648
   },
   "sheets": ["sheet-01.png"],
-  "selected": ["spire/potions/fire", "spire/potions/explosive"],
+  "selected": ["spire/potions/fire"],
   "pixels": {
     "cartographer/inhabitants/hero": "73bc2ef5b8e15a183a7a4524c45a50dbd562efddfa1b810baefa98c1a04d144e",
     "cartographer/inhabitants/keeper": "dae810bec93ce2e2c15a4aa2d4e658b8f58efc4a19bafe1f0c6744f6e304ba4d",
@@ -134,7 +134,7 @@
     "spire/relics/bustedCrown": "5c291d8297484c4ebd231b03f8b0296c2b93c353a446d57906d8e19af4366325",
     "spire/relics/neowsLament": "0fa886b42793afb4e4a8119caafb381559570c334b2aa490531c6673aae2cc83",
     "spire/relics/goldenIdol": "95c4aa4163f45ee755b4c1d6caf4d8536eeab823fba713fa3e975a913f7557c0",
-    "spire/potions/fire": "e4e0fe32c4e82b447ad09871fc9252afcbd9604fdda329e1888e8e500ab2b829",
+    "spire/potions/fire": "a636e6781687117fa798b53d009eecb7f5ca5cea9d2653d9071179ae85d47a0f",
     "spire/potions/block": "0aabf989ff9088c4e6cdc46a20e3fc9296e030514a2d4f10e959607a75adf948",
     "spire/potions/strength": "8c60f11065b4a941c1380d1369f8562cf2f5fafde4c659448d4177dbbf322e5e",
     "spire/potions/dexterity": "c296486ed1590b01ca4c71dd8580265c88fa8a090869338fc0440328a184111d",

@@ -508,20 +508,15 @@ function DamagePotion({ explosive }: { explosive: boolean }) {
         fill={teal}
         stroke="none"
       />
-      <path d="M18 40Q32 44 46 40V49C46 57 18 57 18 49Z" fill={rust} stroke="none" />
+      <path d="M22 36Q32 40 42 36L45 43V49C45 57 19 57 19 49V43Z" fill={rust} stroke="none" />
       <path
-        d="M30 37C35 42 29 44 34 47L38 41C44 51 38 56 31 55C24 54 23 49 27 45L30 48C27 44 31 41 30 37Z"
+        d="M32 42C35 45 31 46 35 48L38 45C40 50 37 53 32 53C27 53 25 50 28 47L30 49C29 46 32 46 32 42Z"
         fill={ivory}
         stroke="none"
       />
       <path d="M24 9H40V17H24Z" fill={rust} />
       <path d="M28 9V4H36V9" fill={gold} />
-      <path
-        d="M28 21V29M24 36Q20 40 19 46M24 53 28 54"
-        fill="none"
-        stroke={ivory}
-        strokeWidth="2"
-      />
+      <path d="M28 21V29M24 36Q20 40 19 46" fill="none" stroke={ivory} strokeWidth="2" />
       <path d="M26 13H38" fill="none" stroke={gold} strokeWidth="1" />
     </g>
   );

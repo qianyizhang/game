@@ -19,18 +19,18 @@
     "packageSHA256": "fd19c6895dad77f4d7f712c2d9f0d5eb682f4a6e7ff22b1bd0d40d03710d288c"
   },
   "sourceHashes": {
-    "src/games/spire/ui/WorldItemArt.tsx": "85a1d15e557db451342da98650ec80fa07f7d676acd92ab8e0ca7e3ef14a50b7",
+    "src/games/spire/ui/WorldItemArt.tsx": "aef503303f3275f4057124f7bb449d5104fb185fe8a4c9590f912a5029ba5547",
     "tests/browser/feature-art.spec.ts": "e9a4971fe67970a55a2f3aa2bbb450d872991755da125153824088fad0b155f2"
   },
   "images": {
-    "belt-desktop.png": "ec0cca6f28cccf95b8294bc69bb19627b59834192a8c58ff41e421de382fd31c",
-    "belt-phone.png": "8deb22942299d262b7fc2903336471d0f5bf0bf64c8fa892d14620eae8d38db9",
-    "collection-desktop.png": "57e33b5689e7d84af3f2353d51f3195b47edabc3df2dfa007aeb76276d766255",
-    "collection-phone.png": "d619004d11bb712bdd2ccf805dd7e97c10f6fdfeb23f960b1393bfca55a9a7ff",
-    "combat-desktop.png": "71ad5df8cb9faa6cf1024c8c0aed74e7f43db1766d171fb88f83327c1ceaee66",
-    "combat-phone.png": "5351f6d12e8c239952c53561e8964580c6d9c945f38e63f2c8e70b42513153ed",
-    "native-enlarged.png": "4c19a8074ce6a32d1152c11c1a97cea3d886cddd9a2d442afdd251a3c3e50bb2",
-    "overview.png": "692b4fe2e2d8b2c4bce707e667358141c3bacd4318c380e9d32ffd7c4626ee2b",
+    "belt-desktop.png": "889875fb218c5386f4cae26308dae5db5296039b9861d2e9d05ca2ed00e52faf",
+    "belt-phone.png": "2c7c148c03d01c8b0870ad8d49c26d6862f721a9cf28e93d2bc06b86cc081a05",
+    "collection-desktop.png": "f02342c4b19c85527340096d942a4fe3aa64ca862e4787ab66aa6a256e176347",
+    "collection-phone.png": "6fad7e2cbef5083bba45a26c8f7727afd5d31ddb6899b2148de41756292f896b",
+    "combat-desktop.png": "fc0887bb8b6b59b21f2f98a6aeaa61fccfdf7a57a20e15b7f8a5880ac2868d07",
+    "combat-phone.png": "6030ec3228145430a34fbf5df459cb9c8be8f4b070c0c8c60702ec5f4a4b4860",
+    "native-enlarged.png": "8a9bde968142ef9e5d8039cf44f0d17929e80964a317a92ecb89537c8b6ee0bd",
+    "overview.png": "3a702ed6dcf95346608e15b08c2576406ebb8ddd4816892fb8881c31685f7c8d",
     "v1.png": "b652c66bbae701c285845523be62708b63323d057d34c7d1b54782f0def04fab"
   },
   "testedSourceHashes": {
@@ -41,5 +41,24 @@
     "tokensUnchanged": true,
     "testedSHA256": "4e45c113f7b5844738c2bbb98d2d32b4f066340786f4fb80422b77fe1179612d",
     "finalSHA256": "e9a4971fe67970a55a2f3aa2bbb450d872991755da125153824088fad0b155f2"
+  },
+  "independentReviewCorrection": {
+    "from": "9ab579fae8b1c95fe7f4ebf6630a9912a4c40557",
+    "scope": "Fire fill, flame and lower highlight paths only",
+    "exportChanged": ["spire/potions/fire"],
+    "exportUnchanged": 649,
+    "explosiveEvidence": "Prior Explosive overview/enlarged pixels retained byte-for-byte; no new Explosive artwork render.",
+    "functionalEvidence": "Prior three browser journeys and 30 domain tests reused; tests and rules unchanged."
+  },
+  "independentReview": {
+    "reviewer": "independent_potion_review",
+    "mode": "same-executor read-only",
+    "initialCommit": "9ab579fae8b1c95fe7f4ebf6630a9912a4c40557",
+    "initialVerdict": "ACCEPT WITH NONBLOCKING LIMIT",
+    "boundedCorrection": "Three Fire path strings: fill, flame, lower highlight",
+    "finalVerdict": "ACCEPT",
+    "confirmedArtSourceSHA256": "aef503303f3275f4057124f7bb449d5104fb185fe8a4c9590f912a5029ba5547",
+    "parentOrUserApproval": false,
+    "record": "independent-review.md"
   }
 }

@@ -35,9 +35,16 @@ resume a held native trial or overlap the preserved Beyond constructs batch.
 - **Explosive:** broad dark body, reinforced copper band and fitted stopper loop.
   V1's regular star read as a badge; v2 uses an uneven burst and fewer edge cuts.
 
-The whole collection, desktop/phone combat context, 24 px belt and enlarged
-subjects were inspected directly by the author. Parent/independent pixel review
-has **not** been claimed.
+## Independent review → Fire contrast correction
+
+A separate same-executor reviewer accepted v2 with one nonblocking limit: Fire's
+flame merged with highlights at 24 px. A three-path Fire-only correction raised
+the coral fill, isolated the flame and removed the nearby lower highlight.
+
+**Independent final verdict: ACCEPT.** Native belt and combat recognition improved;
+no visible label, control, spacing or hierarchy regression. No further correction
+requested. [Review evidence and exact source pin](independent-review.md).
+This does not claim parent pixel review or user approval.
 
 ## Scope / verification
 
@@ -49,7 +56,8 @@ has **not** been claimed.
 - 🟡 Local checkpoint only; no push, issue, PR, merge, Library or Site publication.
 
 [Check record and limits](checks.md) · [Pixel scope report](svg-review.json) ·
-[Source/image hashes and capture conditions](provenance.json)
+[Source/image hashes and capture conditions](provenance.json) ·
+[Independent review](independent-review.md)
 
 Only `WorldItemArt.tsx` presentation and its relevant browser regression change.
 IDs, potion rules, targeting, costs, persistence, unknown-ID fallback and accessible

@@ -47,12 +47,26 @@ no post-validation art changes or repeated successful suites were needed. The fi
 formatting gate flagged the browser-test file; Prettier corrected it, a TypeScript
 token comparison confirmed identical code, and the formatting/inventory gate passed.
 
-## Visual verdict / limits
+## Independent review / bounded correction
 
-Author self-review: accepted for this local checkpoint. The tilted neck and broad
-reinforced body separate at 24 px, and glass/liquid/metal planes remain readable
-in the 80 px collection. V2 fixes the two observed v1 defects documented in the
-asset record. No independent or parent pixel-review verdict is claimed.
+[Independent same-executor review](independent-review.md) accepted the final pair.
+The initial v2 verdict identified one concrete nonblocking Fire contrast limit;
+the author changed only its fill, flame and lower-highlight paths. The same
+reviewer rechecked the affected overview, actual 24 px belt and desktop/phone
+combat pixels and returned **ACCEPT**, confirming source SHA-256
+`aef503303f3275f4057124f7bb449d5104fb185fe8a4c9590f912a5029ba5547`.
+No parent pixel review or user approval is claimed.
+
+Final correction checks: all 650 SVGs exported and decoded; exactly Fire changed
+from `9ab579f`, with 649 SVGs byte-identical. Against original baseline, the same
+two intended IDs differ and 648 are unchanged. Explosive overview/enlarged pixels
+were reused. Affected actual UI captures passed at both viewports with 24 px belt
+art and zero page errors. Targeted artwork ESLint and Prettier passed.
+
+Existing three functional browser journeys and 30 domain tests were reused:
+source changes are confined to three SVG path strings, with no logic, types,
+control, test or rule changes. Prior application types/build evidence is retained;
+no broad suite or build was repeated for this paint-only correction.
 
 This is a two-icon SVG change. No native/geometry checks, complete game campaign,
 full application/simulation suite or hosted CI run is claimed. Those unrelated
