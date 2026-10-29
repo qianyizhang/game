@@ -309,7 +309,7 @@ function MetalPortrait({ kind }: { kind: Machine }) {
         <Cut
           d="m90 40-1 7m1 10 6 11-2 8m4 20 5-9M46 43l4 9m-17-9 4 8m77-28 7 3m-41 78 11-3"
           color="#d3caa8"
-          width="1"
+          width={1}
         />
       </g>
     );
