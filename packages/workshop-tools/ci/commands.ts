@@ -49,7 +49,7 @@ export function readPlan(value: unknown, head: string): Plan {
   if (!value || typeof value !== 'object') throw new Error('Missing CI plan');
   const plan = value as Plan;
   if (
-    plan.version !== 3 ||
+    plan.version !== 4 ||
     plan.head !== head ||
     !['documentation', 'scoped', 'application', 'full'].includes(plan.mode) ||
     ![plan.coreFiles, plan.unitFiles, plan.browserFiles, plan.geometryFiles].every(
@@ -60,6 +60,11 @@ export function readPlan(value: unknown, head: string): Plan {
     !plan.geometryFiles.every((path) => /^src\/art3d\/(?!.*\.\.)[^\s]+\.test\.ts$/.test(path)) ||
     ![1, 2, 3, 4].includes(plan.unitShards) ||
     ![1, 2, 3, 4].includes(plan.browserShards) ||
+    !Array.isArray(plan.browserMatrix) ||
+    plan.browserMatrix.length !== plan.browserShards ||
+    Array.from({ length: plan.browserShards }, (_, index) => index + 1).some(
+      (shard, index) => plan.browserMatrix[index] !== shard,
+    ) ||
     (plan.mode === 'documentation' &&
       (plan.geometry ||
         plan.coreFiles.length + plan.unitFiles.length + plan.browserFiles.length > 0))

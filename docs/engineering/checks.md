@@ -57,7 +57,7 @@ other families. Game/SVG changes retain offline gallery delivery. Real Studio im
 can still select 3D delivery, and affected policy dependencies retain their rollouts.
 The exact mixed PR inputs are retained in the planner regression fixture.
 
-Selection uses Git merge-base diff and the exact checkout SHA. Plan version 3 carries an explicit geometry-file list; an empty list runs no construction tests. Plan mode is `documentation`, `scoped`, `application` (conservative application fallback), or `full` (explicit exhaustive validation). Invalid/stale plans fail before execution. There is no GitHub path-filter diff limit. Generated policy bundles need explicit semantic ownership as well as literal import edges.
+Selection uses Git merge-base diff and the exact checkout SHA. Plan version 4 carries the geometry-file list and complete browser-shard matrix. The parent validates that matrix before dispatch; browser plans reuse it without another planning runner. Empty, geometry-only and standalone calls retain the asset planning/validation fallback. Execution and the aggregate gate reject stale/malformed plans, including omitted or duplicate shards. An empty geometry list runs no construction tests. Plan mode is `documentation`, `scoped`, `application` (conservative application fallback), or `full` (explicit exhaustive validation). There is no GitHub path-filter diff limit. Generated policy bundles need explicit semantic ownership as well as literal import edges.
 
 Normal tool checks include `assets:check` behavior: source pins, saved GLB fingerprints, embedded resources and motion metadata, without executing constructors.
 

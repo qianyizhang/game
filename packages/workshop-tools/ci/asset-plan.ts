@@ -25,5 +25,5 @@ const plan = readPlan(
 if (!process.env.GITHUB_OUTPUT) throw new Error('GITHUB_OUTPUT is required');
 appendFileSync(
   process.env.GITHUB_OUTPUT,
-  `plan=${JSON.stringify(plan)}\nbrowser=${plan.browserFiles.length > 0}\ngeometry=${plan.geometry}\nbrowser_matrix=${JSON.stringify(Array.from({ length: plan.browserShards }, (_, i) => i + 1))}\n`,
+  `plan=${JSON.stringify(plan)}\nbrowser=${plan.browserFiles.length > 0}\ngeometry=${plan.geometry}\nbrowser_matrix=${JSON.stringify(plan.browserMatrix)}\n`,
 );

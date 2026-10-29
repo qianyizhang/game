@@ -296,11 +296,17 @@ void test('execution and aggregate gate reject stale or malformed plans before p
     null,
     {},
     { ...plan, version: 1 },
+    { ...plan, version: 3 },
     { ...plan, mode: 'unknown' },
     { ...plan, head: 'b'.repeat(40) },
     { ...plan, unitFiles: null },
     { ...plan, geometry: true },
     { ...plan, browserShards: 0 },
+    { ...plan, browserMatrix: undefined },
+    { ...plan, browserMatrix: [] },
+    { ...plan, browserMatrix: new Array(1) },
+    { ...plan, browserMatrix: [2] },
+    { ...plan, browserMatrix: [1, 1] },
     { ...plan, coreFiles: ['src/shared/replay.test.ts'] },
   ])
     assert.throws(() => readPlan(invalid, plan.head), /CI plan/);

@@ -18,7 +18,9 @@ permissions:
 
 jobs:
   plan:
-    if: inputs.blindside_joker_capture != true
+    # Parent browser plans already carry a validated matrix. Empty/malformed
+    # matrices and empty/geometry-only calls retain this validation/fallback job.
+    if: inputs.blindside_joker_capture != true && (inputs.plan == '' || !fromJSON(inputs.plan).browserFiles[0] || !fromJSON(inputs.plan).browserMatrix[0])
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -42,12 +44,16 @@ jobs:
 
   geometry:
     needs: plan
-    if: needs.plan.outputs.geometry == 'true'
+    if: >-
+      ${{ !cancelled() && inputs.blindside_joker_capture != true &&
+          (needs.plan.result == 'success' ||
+           (inputs.plan != '' && needs.plan.result == 'skipped')) &&
+          fromJSON(inputs.plan || needs.plan.outputs.plan).geometry }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
       ASSET_BUILD_CI: '1'
-      CI_PLAN: ${{ needs.plan.outputs.plan }}
+      CI_PLAN: ${{ inputs.plan || needs.plan.outputs.plan }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -62,17 +68,21 @@ jobs:
 
   browser-delivery:
     needs: plan
-    if: needs.plan.outputs.browser == 'true'
+    if: >-
+      ${{ !cancelled() && inputs.blindside_joker_capture != true &&
+          (needs.plan.result == 'success' ||
+           (inputs.plan != '' && needs.plan.result == 'skipped')) &&
+          toJSON(fromJSON(inputs.plan || needs.plan.outputs.plan).browserFiles) != '[]' }}
     runs-on: ubuntu-latest
-    timeout-minutes: ${{ fromJSON(needs.plan.outputs.plan).mode == 'full' && 90 || 15 }}
+    timeout-minutes: ${{ fromJSON(inputs.plan || needs.plan.outputs.plan).mode == 'full' && 90 || 15 }}
     strategy:
       fail-fast: false
       matrix:
-        shard: ${{ fromJSON(needs.plan.outputs.browser_matrix) }}
+        shard: ${{ fromJSON(inputs.plan || needs.plan.outputs.plan).browserMatrix }}
     env:
-      CI_PLAN: ${{ needs.plan.outputs.plan }}
+      CI_PLAN: ${{ inputs.plan || needs.plan.outputs.plan }}
       CI_SHARD: ${{ matrix.shard }}
-      STUDY_REBUILD_PARITY: ${{ fromJSON(needs.plan.outputs.plan).geometry && '1' || '0' }}
+      STUDY_REBUILD_PARITY: ${{ fromJSON(inputs.plan || needs.plan.outputs.plan).geometry && '1' || '0' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
