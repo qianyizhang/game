@@ -47,6 +47,16 @@ Modules: [safety core](../../.github/workflows/check-core.yml), [application](..
 
 Hosted documentation fast selection is narrower than the local documentation rule: it accepts only allowlisted prose without executable blocks and raster review evidence in two explicitly classified documentation-only asset directories. Images consumed by the gallery retain normal coverage. It checks changed whitespace, tracked-file inventory and local links without hydrating LFS or installing dependencies. Prettier remains part of local `format:maintenance`; the fast hosted path does not run it. Policy/test contracts, code examples, manifests, unknown paths and unavailable diffs use conservative normal coverage. Mixed changes retain normal selection. The required aggregate gate still verifies the selected documentation job.
 
+Normal mixed-code selection classifies reviewed documentation per file. The potion,
+Beyond-construct and Iron Drake review bundles have an explicit non-runtime evidence
+allowlist; executable/symlink reports, unknown files and gallery-consumed images remain
+conservative. Extending that list requires a consumer audit. A failed docs-only fast
+classification still receives full normal application coverage. Changed browser specs
+run directly without selecting every suite they cover; source dependencies select the
+other families. Game/SVG changes retain offline gallery delivery. Real Studio imports
+can still select 3D delivery, and affected policy dependencies retain their rollouts.
+The exact mixed PR inputs are retained in the planner regression fixture.
+
 Selection uses Git merge-base diff and the exact checkout SHA. Plan version 3 carries an explicit geometry-file list; an empty list runs no construction tests. Plan mode is `documentation`, `scoped`, `application` (conservative application fallback), or `full` (explicit exhaustive validation). Invalid/stale plans fail before execution. There is no GitHub path-filter diff limit. Generated policy bundles need explicit semantic ownership as well as literal import edges.
 
 Normal tool checks include `assets:check` behavior: source pins, saved GLB fingerprints, embedded resources and motion metadata, without executing constructors.
