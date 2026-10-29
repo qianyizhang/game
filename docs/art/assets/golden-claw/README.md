@@ -18,7 +18,7 @@ pivot and the subsequent reference-based revision.
 
 ![开场：棕褐毛发、冷峻眼神、黑金装甲](opening.jpg)
 
-![战斗：低位切入、金弧裂爪、受击反应](action.jpg)
+![战斗：蓄爪后伸向躯干，爪尖与受击位置相接](action.jpg)
 
 ## 动作与声音
 
@@ -58,6 +58,36 @@ GIF 格式不支持音轨，MP4 保留完整音效。
 [原版开场](baseline-opening.jpg)与[原版战斗帧](baseline-action.jpg)保留为对应时间点的
 对照；当前预览和视频采用新的参考角色与运动实现。
 
+### 接触动作修订
+
+先以 1.40–2.30 秒的短段验证首击：保留足底支撑，加入收爪与可达的躯干高度伸展，
+让命中特效来自求解后的爪尖轨迹。该短段经独立查看实际 MP4 后获得局部认可；
+这不代表整片或原始电影级 brief 已验收。
+
+随后逐个检查其余命中点，仅修正实际出现同类问题的动作：
+
+| 范围（秒）                                                  | 修正                                                                     |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------ |
+| 2.60、7.25、14.55、21.40、23.05、24.06、24.40、24.74、25.42 | 减少击打时躯干下沉，爪击伸向躯干；落地动作保留足底支撑，扑击保留悬空腿姿 |
+| 5.85、15.10、23.72、25.08                                   | 按空中身体高度调整可达手臂，避免爪尖从敌人上方掠过                       |
+| 11.14、18.00                                                | 修正踢击脚端高度，并用实际脚端驱动接触                                   |
+| 10.50、11.48、13.45、14.00、18.85、20.35、23.38             | 保留原有出击姿态，将独立的大弧线改为窄幅爪尖轨迹                         |
+
+相关段落在伸展与收势期间朝向当前敌人，在两击之间转向。快速连击的敌人先完成当前
+接触，再移向下一击；不再在受击瞬间提前离位。肘击、滑铲、落地冲击、重击和终结
+的主角姿态没有重做。重击与终结附近仍可见前一击重新定位后的少量飞散碎片。
+
+![接触修订对照：左为首击修订后的基线，右为本次版本；2.60、5.85、23.72 秒](contact-review.jpg)
+
+十个短段共 331 帧的同时间对照用于本轮作者自审。首击已认可的 28 帧保持像素一致；
+15 个新增姿态修正保留 200/162 的上臂、前臂长度，命中时腕部可达距离为
+96.88–326.79，处于 38–362 的双段臂可达范围内。技术数值只用于排除脱节和支撑回归，
+视觉结论仍限于这些接触比原稿更清楚，二维切片、转身和遮挡限制仍存在。
+
+最终 GIF、MP4、开场与战斗预览来自同一次 900 帧捕获；其中 331 帧与已审阅短段的
+JPEG 字节一致。捕获源的 SHA-256 为
+`84aa3b0315047db933d7efb5a044196af07781b27707de21a2e118f9ff0a9178`。
+
 ## 导出与验证
 
 HTML 暴露无界面的捕获接口：`window.film.ready`、`film.frame(0..899)`、
@@ -71,7 +101,7 @@ HTML 暴露无界面的捕获接口：`window.film.ready`、`film.frame(0..899)`
 ```sh
 ffmpeg -framerate 30 -i '%04d.jpg' -vf scale=512:288:flags=lanczos,palettegen=max_colors=96:stats_mode=diff palette.png
 ffmpeg -framerate 30 -i '%04d.jpg' -i palette.png -lavfi '[0:v]scale=512:288:flags=lanczos[v];[v][1:v]paletteuse=dither=none:diff_mode=rectangle' -loop 0 -final_delay 3 golden-claw.gif
-ffmpeg -framerate 30 -i '%04d.jpg' -i foley.wav -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -c:a aac -b:a 160k -movflags +faststart -t 30 golden-claw.mp4
+ffmpeg -framerate 30 -i '%04d.jpg' -i foley.wav -vf scale=960:540:flags=lanczos -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -c:a aac -b:a 160k -movflags +faststart -frames:v 900 -t 30 golden-claw.mp4
 ```
 
 GIF 时间单位为 10ms，无法表达恒定的 33⅓ms 帧间隔。交付使用 30/40ms

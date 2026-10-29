@@ -101,6 +101,31 @@
           [25.42, 7, -3, 1, -1, 'claw'],
           [26.28, 9, 0, 1.5, -5, 'final'],
         ].map(([t, id, x, y, z, type]) => ({ t, id, p: v(x, y, z), type }));
+        // Contact fits are limited to impacts identified in the rendered survey.
+        const contactFits = new Map([
+          [2.6, { hip: 210, wristY: -190, ground: true }],
+          [5.85, { hip: 300, wristY: 95 }],
+          [7.25, { hip: 210, wristY: -190, lean: 0.4 }],
+          [10.5, {}],
+          [11.14, { hip: 65, footY: 90, rapid: true }],
+          [11.48, {}],
+          [13.45, {}],
+          [14, {}],
+          [14.55, { hip: 210, wristY: -190, ground: true }],
+          [15.1, { hip: 300, wristY: 95 }],
+          [18, { hip: 230, footY: 500 }],
+          [18.85, {}],
+          [20.35, {}],
+          [21.4, { hip: 210, wristY: -190, lean: 0.4 }],
+          [23.05, { hip: 210, wristY: -190, ground: true, rapid: true }],
+          [23.38, {}],
+          [23.72, { hip: 300, wristY: 95, rapid: true }],
+          [24.06, { hip: 210, wristY: -190, ground: true, rapid: true }],
+          [24.4, { hip: 210, wristY: -190, ground: true, rapid: true }],
+          [24.74, { hip: 210, wristY: -190, ground: true, rapid: true }],
+          [25.08, { hip: 300, wristY: 95, rapid: true }],
+          [25.42, { hip: 210, wristY: -190, ground: true, rapid: true }],
+        ]);
         // Each attack has a visible compression / strike / follow-through arc.
         const motion = [
           [0, 0, 0, 1, 0, 'guard'],
@@ -333,6 +358,18 @@
           // The first track shot anticipates the foe on the right, even while
           // the root finishes travelling left into its strike stance.
           if (t >= 1.38 && t <= hits[0].t) return 1;
+          if (t > hits[0].t && t < 3.2) return 1;
+          if (t >= 5.2 && t < 6.3) return -1;
+          // Face the current opponent through extension and recovery. Turn
+          // between impacts rather than when the travel spline reverses.
+          if (t >= 10.12 && t < 10.96) return 1;
+          if (t >= 10.96 && t < 11.9) return -1;
+          if (t >= 13.2 && t < 14.8) return 1;
+          if (t >= 14.8 && t < 15.65) return -1;
+          if (t >= 20.85 && t < 21.65) return 1;
+          if (t >= 22.65 && t < 24.2) return 1;
+          if (t >= 24.2 && t < 25.2) return -1;
+          if (t >= 25.2 && t < 25.65) return 1;
           const a = sampleMotion(Math.max(0, t - 0.07)).p,
             b = sampleMotion(Math.min(29.999, t + 0.07)).p;
           return b.x < a.x - 0.02 ? -1 : 1;
@@ -1028,6 +1065,31 @@
             leftFoot = lerpP(leftFoot, P(-332, 600), weight);
             rightFoot = lerpP(rightFoot, P(332, 600), weight);
           }
+          const fit = !close && blow && contactFits.get(blow.t);
+          if (fit?.hip !== undefined) {
+            const weight = fit.rapid
+              ? smooth((t - (blow.t - 0.16)) / 0.1) * (1 - smooth((t - (blow.t + 0.08)) / 0.08))
+              : smooth((t - (blow.t - 0.26)) / 0.12) * (1 - smooth((t - (blow.t + 0.12)) / 0.14));
+            hipY = mix(hipY, mix(fit.hip + 60, fit.hip, strike), weight);
+            lean = mix(lean, mix(-0.12, fit.lean ?? 0.12, strike), weight);
+            if (fit.footY !== undefined) {
+              rightFoot = lerpP(rightFoot, P(650, fit.footY), weight * strike);
+              rightToe = lerpP(rightToe, P(125, 15), weight * strike);
+              rightWrist = lerpP(rightWrist, P(250, -250), weight);
+              rightPaw = lerpP(rightPaw, P(25, 142), weight);
+            } else {
+              rightWrist = lerpP(
+                rightWrist,
+                lerpP(P(170, -320), P(555, fit.wristY - hipY), strike),
+                weight,
+              );
+              rightPaw = lerpP(rightPaw, rotate(P(155, 0), mix(-1.4, -0.1, strike)), weight);
+            }
+            if (fit.ground) {
+              leftFoot = lerpP(leftFoot, P(-332, 600), weight);
+              rightFoot = lerpP(rightFoot, P(332, 600), weight);
+            }
+          }
           if (t > 27) {
             lean = -0.04;
             headAngle = 0.05 * Math.sin((t - 27) * 2) - 0.08 * smooth((t - 28.4) / 0.7);
@@ -1174,7 +1236,11 @@
             scale,
             world,
             paw: world(
-              pose.blow && ['kick', 'slide'].includes(pose.blow.type) ? pose.kick : pose.hand,
+              pose.blow &&
+                (['kick', 'slide'].includes(pose.blow.type) ||
+                  contactFits.get(pose.blow.t)?.footY !== undefined)
+                ? pose.kick
+                : pose.hand,
             ),
           };
         }
@@ -1213,8 +1279,11 @@
         }
 
         const spawnAt = [0, 0, 0, 0, 0, 0, 7.9, 16.9, 21.8, 21.8, 11.85, 21.8];
-        // Prove the first full-body contact before fitting the remaining attacks.
+        // Impacts and trails share the solved hand or foot endpoint.
         const firstPaw = heroAt(hits[0].t).paw;
+        const contactPaws = new Map(
+          hits.filter((h) => contactFits.has(h.t)).map((h) => [h, heroAt(h.t).paw]),
+        );
         const eventIDs = [
           0, 0, 1, 2, 2, 3, 4, 4, 5, 5, 6, 10, 10, 10, 10, 10, 7, 7, 6, 6, 8, 8, 9, 9, 8, 8, 9, 9,
           11,
@@ -1282,7 +1351,8 @@
               if (recover > 0.85) index = 0;
               if (next) {
                 const b = attackAnchors.get(next),
-                  u = smooth((t - (next.t - 0.55)) / 0.55);
+                  approachStart = next.t - last.t < 0.5 ? last.t + 0.08 : next.t - 0.55,
+                  u = smooth((t - approachStart) / (next.t - approachStart));
                 x = mix(x, b.x, u);
                 depth = mix(depth, b.z, u);
                 if (u > 0.25) index = 1;
@@ -1319,12 +1389,16 @@
             const age = t - event.t;
             if (age < 0 || age > 1.15) continue;
             const a = attackAnchors.get(event),
-              p = event === hits[0] ? firstPaw : project(v(a.x, event.p.y, a.z)),
+              p =
+                event === hits[0]
+                  ? firstPaw
+                  : (contactPaws.get(event) ?? project(v(a.x, event.p.y, a.z))),
               big = ['land', 'heavy', 'final'].includes(event.type),
               fade = 1 - clamp(age / (big ? 0.75 : 0.45));
             if (age < 0.38) {
               glow(p.x, p.y, (big ? 240 : 130) * (1 + age * 1.5), fade);
               if (event === hits[0]) firstClawTrail(fade);
+              else if (contactPaws.has(event)) firstClawTrail(fade, event);
               else if (event.type !== 'land')
                 claw(p.x, p.y, t, age, fade, facing(event.t), big ? 1.2 : 0.8);
             }
@@ -1388,13 +1462,14 @@
             }
           }
         }
-        function firstClawTrail(fade) {
+        function firstClawTrail(fade, event = hits[0]) {
           ctx.save();
           ctx.globalCompositeOperation = 'lighter';
           ctx.lineCap = 'round';
           // Freeze the swept path at contact during recoil; no free-standing arc.
-          const end = hits[0].t;
-          for (let claw = -1; claw <= 1; claw++) {
+          const end = event.t,
+            spread = contactFits.get(event.t)?.footY !== undefined ? 0 : 1;
+          for (let claw = -spread; claw <= spread; claw++) {
             ctx.strokeStyle = `rgba(255,225,162,${fade * 0.8})`;
             ctx.lineWidth = 1.2;
             ctx.beginPath();

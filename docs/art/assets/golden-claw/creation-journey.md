@@ -80,3 +80,34 @@ stills remain as baseline evidence. Full-sequence review also caught a cropped
 face in the upside-down shot; its camera was retargeted to the animated head.
 The revised film retains the 30-second,
 900-frame delivery contract and the stated 2.5D limitations.
+
+## Contact staging continuation
+
+Review of the actual first-impact MP4 sequence found a low body position and an
+oversized claw arc that separated the apparent hit from the gesture. The paw
+already extended; simply moving a flash would not solve the staging. A bounded
+revision added a visible chamber, a reachable torso-height strike and a narrow
+trail sampled from the solved paw. Independent review accepted that short proof,
+which was preserved in local commit `5604a30ecea5fbd8d7d1c03861c705bfa9d924b6`.
+This was acceptance of the first-contact improvement only.
+
+I surveyed the remaining impacts before extending the change. Four initial
+trials at 2.60, 5.85, 18.00 and 23.72 seconds exposed three related problems:
+deep body compression on low hits, airborne hand/foot targets that missed the
+opponent, and direction changes driven by travel instead of the current target.
+The rapid sequence also moved an opponent toward its next attack before the
+current contact. Matched short samples led to 15 local pose fits, seven further
+trail-only corrections, held strike directions and delayed next-hit approaches.
+The existing front/back image masters, camera shots and sound timeline were reused.
+
+Ten matched short segments (331 frames) were reviewed through decoded motion
+samples and impact frames before one full 900-frame capture refreshed the GIF,
+MP4 and preview stills together. The accepted first-contact frames remained
+pixel-identical. The [delivery notes](README.md#接触动作修订) record the affected
+times, reach/support checks and capture source hash.
+
+This pass makes the surveyed contacts easier to read. It does not resolve the
+2.5D cutout seams, physical deformation, true 3D camera movement or original
+cinematic quality gap. The user has not approved a reduction of that original
+quality target, and neither the local contact acceptance nor the technical
+checks establish acceptance of the complete film.
