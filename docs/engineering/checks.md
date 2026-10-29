@@ -47,6 +47,16 @@ Modules: [safety core](../../.github/workflows/check-core.yml), [application](..
 
 Hosted documentation fast selection is narrower than the local documentation rule: it accepts only allowlisted prose without executable blocks and raster review evidence in two explicitly classified documentation-only asset directories. Images consumed by the gallery retain normal coverage. It checks changed whitespace, tracked-file inventory and local links without hydrating LFS or installing dependencies. Prettier remains part of local `format:maintenance`; the fast hosted path does not run it. Policy/test contracts, code examples, manifests, unknown paths and unavailable diffs use conservative normal coverage. Mixed changes retain normal selection. The required aggregate gate still verifies the selected documentation job.
 
+Normal mixed-code selection classifies reviewed documentation per file. The potion,
+Beyond-construct and Iron Drake review bundles have an explicit non-runtime evidence
+allowlist; executable/symlink reports, unknown files and gallery-consumed images remain
+conservative. Extending that list requires a consumer audit. A failed docs-only fast
+classification still receives full normal application coverage. Changed browser specs
+run directly without selecting every suite they cover; source dependencies select the
+other families. Game/SVG changes retain offline gallery delivery. Real Studio imports
+can still select 3D delivery, and affected policy dependencies retain their rollouts.
+The exact mixed PR inputs are retained in the planner regression fixture.
+
 Selection uses Git merge-base diff and the exact checkout SHA. Plan version 3 carries an explicit geometry-file list; an empty list runs no construction tests. Plan mode is `documentation`, `scoped`, `application` (conservative application fallback), or `full` (explicit exhaustive validation). Invalid/stale plans fail before execution. There is no GitHub path-filter diff limit. Generated policy bundles need explicit semantic ownership as well as literal import edges.
 
 Normal tool checks include `assets:check` behavior: source pins, saved GLB fingerprints, embedded resources and motion metadata, without executing constructors.
@@ -82,6 +92,9 @@ Final local application selection retained **574 tests across 95 files**, passin
 Follow-up local checks reproduce the cooldown failure on clean main and PR source; protocol calls consume 3.3 s around a 180 ms hold. Controlled time retains all assertions and passes both scene journeys. Cartographer's wider-font probe overflows 337 px at 320 px; wrapping controls fixes it, and all six smoke journeys pass locally in 46.2 s. A faster campaign-cadence experiment still fails the 16-minute deadline; it is unpromoted, and the original campaign assertions/cadence/budget remain unchanged.
 
 ### Browser prerequisites
+
+Browser suites use disposable profiles and a single startup guard. On macOS,
+launching the browser outside the restricted sandbox requires approved execution.
 
 Playwright is pinned to 1.64.0. The harness uses the installed stable Chrome channel; CI installs its current release, so Chrome itself is not version-pinned. `functional` selects public inputs; startup failure fails. `requires-blender` and `requires-private-evidence` skip explicitly when their named evidence is absent; available invalid evidence fails. `visual-review` produces 29 contact sheets, not automated aesthetic approval. Static checks/smoke do not establish model delivery or native acceptance.
 

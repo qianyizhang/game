@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { physicalActionScenes } from './physical-actions';
 import {
   ink,
   metal,
@@ -42,23 +43,8 @@ export const scenes: Record<string, ReactNode> = {
       </Echo>
     </>
   ),
-  bash: (
-    <>
-      <Echo>
-        <Glyph kind="shield" x={83} y={20} size={77} color={copper} />
-      </Echo>
-      <Fist x={33} y={9} scale={1.05} />
-      <Impact x={108} y={52} size={0.45} />
-    </>
-  ),
-  anger: (
-    <>
-      <Echo>
-        <Glyph kind="flame" x={22} y={0} size={118} color={copper} />
-      </Echo>
-      <Fist x={47} y={14} scale={1.02} />
-    </>
-  ),
+  bash: physicalActionScenes.bash,
+  anger: physicalActionScenes.anger,
   bodySlam: (
     <>
       <Echo>
@@ -94,12 +80,7 @@ export const scenes: Record<string, ReactNode> = {
       <Impact x={135} y={58} size={0.45} />
     </>
   ),
-  flex: (
-    <>
-      <Rays radius={40} />
-      <Fist x={44} y={8} scale={1.12} />
-    </>
-  ),
+  flex: physicalActionScenes.flex,
   headbutt: (
     <>
       <Echo>
@@ -357,25 +338,8 @@ export const scenes: Record<string, ReactNode> = {
       <Fist x={49} y={6} scale={1.07} />
     </>
   ),
-  pummel: (
-    <>
-      <Echo>
-        <Impact x={119} y={43} size={0.75} />
-        <Impact x={31} y={30} size={0.4} />
-        <path d="M11 85H42M17 92H51" stroke={copper} strokeWidth=".9" />
-      </Echo>
-      <Fist x={43} y={13} scale={1.03} />
-    </>
-  ),
-  rage: (
-    <>
-      <Echo>
-        <Glyph kind="shield" x={20} y={24} size={79} color={sea} />
-        <Glyph kind="flame" x={110} y={45} size={45} color={copper} />
-      </Echo>
-      <Fist x={54} y={11} scale={1.04} />
-    </>
-  ),
+  pummel: physicalActionScenes.pummel,
+  rage: physicalActionScenes.rage,
   rupture: (
     <>
       <Rays radius={41} />
@@ -421,15 +385,7 @@ export const scenes: Record<string, ReactNode> = {
       <path d="M66 80H96" stroke={ink} strokeWidth=".8" />
     </>
   ),
-  uppercut: (
-    <>
-      <path d="M24 103Q20 44 96 14Q40 52 40 103Z" fill={copper} opacity=".5" />
-      <Echo>
-        <Impact x={114} y={32} size={0.65} />
-      </Echo>
-      <Fist x={68} y={4} scale={1.03} />
-    </>
-  ),
+  uppercut: physicalActionScenes.uppercut,
   whirlwind: (
     <>
       <Wind />

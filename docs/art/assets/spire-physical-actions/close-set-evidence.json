@@ -1,0 +1,30 @@
+{
+  "baselineCommit": "da8b3c39097a27a300b414af9b89bdceb234a1ff",
+  "approvedDirectionCommit": "2af07ce1319c6dbb40a5d5df5daacc280b7febf3",
+  "acceptedBasePixelsUnchanged": ["spire/bash", "spire/uppercut"],
+  "sourceSha256": {
+    "src/games/spire/ui/AbilityArt.tsx": "0eac96c8d62a8359178c843b752dcb3b62def237ea6f98f061c7e2bded846130",
+    "src/games/spire/ui/art/ironclad.tsx": "bd3f45044bfa4032430a0233919b46db70a0030c62173e81c77efe8377ca3766",
+    "src/games/spire/ui/art/physical-actions.tsx": "e83b08479ec24a7c550cf0945e822ba660c6e2615a1e2bf1912044b9675c75dd"
+  },
+  "changedExports": [
+    "spire/bash",
+    "spire/bash-upgraded",
+    "spire/anger",
+    "spire/anger-upgraded",
+    "spire/flex",
+    "spire/flex-upgraded",
+    "spire/pummel",
+    "spire/pummel-upgraded",
+    "spire/rage",
+    "spire/rage-upgraded",
+    "spire/uppercut",
+    "spire/uppercut-upgraded"
+  ],
+  "unchangedExports": 632,
+  "review": {
+    "library_file_id": "libfile_cf237cace1548191b6ed98e3567d99a5",
+    "sha256": "ab816309893b574e45e99444c5297430bd54049dfb15e60187af098dc841278d",
+    "status": "full set pending final visual acceptance"
+  }
+}

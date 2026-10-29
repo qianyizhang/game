@@ -50,5 +50,6 @@ changes RNG consumption for that new pack, which is part of its new-run identity
   complete normal-mode dungeon clear.
 
 The maintained source lives in existing `src`, `tests`, and `packages/diablo2` check scopes.
-Use `npm run check`, plus the Cartographer and generated-dungeon functional browser journeys.
+Select affected shared-layout and game checks under [verification contracts](checks.md#gate-selection),
+including the Cartographer and generated-dungeon functional browser journeys.
 No 3D construction or DCC delivery changes are involved.
