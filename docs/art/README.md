@@ -16,6 +16,9 @@ The [aesthetic rulebook](art-direction.md) is the single visual standard. Use th
 
 ## Asset records
 
+[Lantern Keep](studies/lantern-keep/README.md) is a standalone 15-second pixel-art
+ghost-hunt diorama, delivered as a self-contained Three.js HTML file and animated GIF.
+
 [Game asset enrichment](asset-enrichment.md) inventories the six games, prioritizes
 readability and feedback studies, and records the Spire intent pilot with its independent
 offline gallery, dated changelog, provenance and validation limits.
