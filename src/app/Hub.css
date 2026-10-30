@@ -24,6 +24,17 @@
   color: #a8b9aa;
   font-size: 14px;
 }
+.content-error {
+  padding: 24px;
+}
+.content-error .game-picker {
+  order: 0;
+}
+.content-error > pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
 
 .art-studio-entry {
   position: fixed;
