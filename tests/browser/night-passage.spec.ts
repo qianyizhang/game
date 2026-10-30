@@ -20,6 +20,59 @@ test.beforeEach(async ({ page }) => {
   );
 });
 
+for (const presentation of ['canvas', 'scene']) {
+  test(`held Escape toggles pause once per press in ${presentation}`, async ({ page }) => {
+    await page.clock.install({ time: new Date('2026-10-30T00:00:00Z') });
+    await page.goto('/?game=night-passage');
+    await page.getByLabel('Arena view').selectOption(presentation);
+    await page.getByRole('button', { name: 'Sound on', exact: true }).click();
+    await page.clock.pauseAt(new Date('2026-10-30T00:01:00Z'));
+    await page.getByRole('button', { name: 'Begin passage', exact: true }).click();
+    const arena = page.getByLabel('Night Passage combat arena', { exact: true });
+    const paused = page.getByRole('heading', { name: 'Passage paused', exact: true });
+    await expect(arena).toHaveAttribute('data-view', presentation);
+    await expect(arena).toBeFocused();
+    await page.clock.runFor(100);
+
+    await page.keyboard.down('Escape');
+    await expect(paused).toBeVisible();
+    const tick = await arena.getAttribute('data-tick');
+    const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
+    await page.keyboard.down('Escape');
+    await page.clock.runFor(100);
+    await expect(paused).toBeVisible();
+    await expect(arena).toHaveAttribute('data-tick', tick!);
+    expect(await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY)).toBe(saved);
+    await page.keyboard.up('Escape');
+
+    await page.keyboard.down('Escape');
+    await expect(paused).toBeHidden();
+    await page.keyboard.down('Escape');
+    await page.clock.runFor(150);
+    await expect(paused).toBeHidden();
+    expect(Number(await arena.getAttribute('data-tick'))).toBeGreaterThan(Number(tick));
+    await page.keyboard.up('Escape');
+    await page.keyboard.press('Escape');
+    await expect(paused).toBeVisible();
+
+    await page.getByRole('button', { name: 'Resume passage', exact: true }).last().click();
+    await expect(paused).toBeHidden();
+    await page.keyboard.down('d');
+    await page.keyboard.down('d');
+    await page.clock.runFor(100);
+    await page.keyboard.up('d');
+    await page.getByRole('button', { name: 'Pause', exact: true }).click();
+    await expect(paused).toBeVisible();
+    const moved = restoreChronicle(
+      (await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!,
+    ).state;
+    const original = restoreChronicle(saved!).state;
+    expect(
+      Math.hypot(moved.player.x - original.player.x, moved.player.y - original.player.y),
+    ).toBeGreaterThan(0);
+  });
+}
+
 test.describe('presentation lifecycle', () => {
   test.use({ deviceScaleFactor: 2 });
   test('resizing reprojects a stationary cursor and remounting releases the old surface', async ({
