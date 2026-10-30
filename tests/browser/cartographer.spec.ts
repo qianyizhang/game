@@ -59,6 +59,53 @@ async function act(page: Page, session: Session, command: Command): Promise<Sess
   return result.session;
 }
 
+test('Field guide keyboard activation does not consume a combat turn', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/?game=cartographer');
+  await page.getByRole('button', { name: 'New expedition', exact: true }).click();
+  const room = page.getByRole('group', { name: 'Tactical room', exact: true });
+  await room.focus();
+  for (let step = 0; step < 3; step++) await page.keyboard.press('ArrowUp');
+  await page.keyboard.press('e');
+  await page
+    .getByRole('region', { name: 'Room draft' })
+    .getByRole('button', { name: /^Place / })
+    .first()
+    .click();
+  await expect(page.locator('.dc-enemy-card')).toHaveCount(4);
+  const saved = () => page.evaluate((key) => localStorage.getItem(key)!, SAVE_KEY);
+  const before = await saved();
+  const guide = page.locator('.dc-sidebar details');
+  const summary = guide.locator('summary');
+  await summary.focus();
+  await page.keyboard.press('Space');
+  await expect(guide).toHaveJSProperty('open', true);
+  expect(await saved()).toBe(before);
+  await expect(guide.getByText(/Clear eight rooms/)).toBeVisible();
+  await page.keyboard.press('Space');
+  await expect(guide).toHaveJSProperty('open', false);
+  expect(await saved()).toBe(before);
+  await page.keyboard.press('Enter');
+  await expect(guide).toHaveJSProperty('open', true);
+  await summary.click();
+  await expect(guide).toHaveJSProperty('open', false);
+  expect(await saved()).toBe(before);
+
+  const enemy = page.locator('.dc-enemy-card').last();
+  await enemy.focus();
+  await page.keyboard.press('Space');
+  await expect(enemy).toHaveAttribute('aria-pressed', 'true');
+  expect(await saved()).toBe(before);
+
+  await room.focus();
+  await page.keyboard.press('Space');
+  const after = importSession(await saved());
+  const original = importSession(before);
+  expect(after.replay.commands).toEqual([...original.replay.commands, { type: 'brace' }]);
+  expect(after.state.turn).toBe(original.state.turn + 1);
+  await expect(page.getByTestId('dc-turn')).toHaveText(String(after.state.turn));
+});
+
 test(
   'draft rotation, combat, keyboard, reload, export/import and mobile navigation',
   { tag: '@smoke' },
