@@ -1,0 +1,86 @@
+{
+  "baselineRevision": "89e37bc0f5a6ee8c7494946764ac5c0943ce67b7",
+  "source": "packages/diablo2/src/ui/render.ts",
+  "baselineSourceSha256": "8936647d879c46cba77364aa0d0adf9321fdd2298fae197879b8f8653982804d",
+  "currentSourceSha256": "ebd65c8addfa2d1860bf866f9259449b44631696578025b694fdc4425cbf5b3b",
+  "capture": {
+    "seed": "CRYPT-KIT-69",
+    "region": "bells-3",
+    "player": {
+      "x": 10.35,
+      "y": 23.5
+    },
+    "portal": {
+      "id": "up",
+      "target": "bells-1",
+      "at": {
+        "x": 8.5,
+        "y": 23.5
+      }
+    },
+    "view": "actual UI, legal sandbox replay, fog retained",
+    "viewport": [
+      {
+        "label": "desktop",
+        "backingWidth": 960,
+        "backingHeight": 576,
+        "x": 26,
+        "y": 395.796875,
+        "width": 1388,
+        "height": 702,
+        "documentWidth": 1440,
+        "viewportWidth": 1440
+      },
+      {
+        "label": "phone",
+        "backingWidth": 960,
+        "backingHeight": 576,
+        "x": 19,
+        "y": 555.796875,
+        "width": 352,
+        "height": 211.1875,
+        "documentWidth": 390,
+        "viewportWidth": 390
+      }
+    ],
+    "errors": []
+  },
+  "comparison": [
+    {
+      "size": [1388, 703],
+      "changedBounds": [411, 325, 427, 367],
+      "changedPixels": 208,
+      "baselineSha256": "b6cb0601c398874060ac44bd5a5790d5ad20e39f141d0182ed7087030f5a87d2",
+      "currentSha256": "2c6ad3e914650fb5cdf2bf09b4c81bac9da6cd6c9409c179ce9bb84934125580",
+      "baseline": "baseline-canvas-desktop.png",
+      "current": "current-canvas-desktop.png"
+    },
+    {
+      "size": [352, 212],
+      "changedBounds": [104, 98, 108, 111],
+      "changedPixels": 15,
+      "baselineSha256": "d661f9f6a600d89af017d1735b7d90f13906c64b5c86accb6805fb82006fdadc",
+      "currentSha256": "d978f95d45b917b47eb1924c472dd45171c5f11084da577973f6f09013237774",
+      "baseline": "baseline-canvas-phone.png",
+      "current": "current-canvas-phone.png"
+    },
+    {
+      "size": [1440, 1405],
+      "changedBounds": [437, 720, 453, 762],
+      "changedPixels": 208,
+      "baselineSha256": "4249b3423b308d8cd9b3ffec72bf3b1b2da7f96d60c45c9da671d68436d90ac6",
+      "currentSha256": "b2a29a85724882556aea12fc1c2587c970173c303097656e46ab38fa7409c912",
+      "baseline": "baseline-desktop.png",
+      "current": "current-desktop.png"
+    },
+    {
+      "size": [390, 1224],
+      "changedBounds": [123, 671, 127, 684],
+      "changedPixels": 15,
+      "baselineSha256": "63404b806e4d508e35036335cb4bc3db6f793b7f9f6d8b3bd64c0e2b63a63556",
+      "currentSha256": "4d90fc4e6494a55d956f6e5413ddcea4cc017a571c92ad3aa0f29d2f584771c6",
+      "baseline": "baseline-phone.png",
+      "current": "current-phone.png"
+    }
+  ]
+}

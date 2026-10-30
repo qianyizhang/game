@@ -448,6 +448,7 @@ export function render(
     label: string,
     color: string,
     shape: 'ward' | 'chest' | 'portal' | 'stairs',
+    ascending = false,
   ) => {
     if (!visible(p)) return;
     const x = sx(p.x),
@@ -487,11 +488,13 @@ export function render(
       ctx.strokeStyle = color;
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(18, -19);
-      ctx.lineTo(18, 9);
-      ctx.lineTo(14, 5);
-      ctx.moveTo(18, 9);
-      ctx.lineTo(22, 5);
+      const tip = ascending ? -19 : 9;
+      const wing = ascending ? -15 : 5;
+      ctx.moveTo(18, ascending ? 9 : -19);
+      ctx.lineTo(18, tip);
+      ctx.lineTo(14, wing);
+      ctx.moveTo(18, tip);
+      ctx.lineTo(22, wing);
       ctx.stroke();
     } else {
       ctx.strokeStyle = color;
@@ -527,6 +530,7 @@ export function render(
       map.dungeon || content.regions.find((r) => r.id === portal.target)?.dungeon
         ? 'stairs'
         : 'portal',
+      portal.id === 'up',
     );
   if (state.player.corpse?.region === state.region)
     marker(state.player.corpse.position, 'Your grave · F', '#a9bbc9', 'ward');

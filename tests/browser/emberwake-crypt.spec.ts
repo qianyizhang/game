@@ -10,6 +10,69 @@ import { bodyFits, distance } from '../../packages/diablo2/src/domain/maps';
 import { currentWorld } from '../../packages/diablo2/src/domain/world';
 import type { Command } from '../../packages/diablo2/src/domain/types';
 
+test('Sepulcher return and descent arrows agree with their destination floors', async ({
+  page,
+}) => {
+  let fixture = newSession('CRYPT-STAIRS-69', 'sorceress', undefined, true);
+  const act = (command: Command) => {
+    const result = dispatch(fixture, command);
+    expect(result.error).toBeNull();
+    fixture = result.session;
+  };
+  act({ type: 'dev-jump', region: 'bells-3', landing: 'entrance', reset: false });
+  act({ type: 'dev-options', god: true, reveal: false });
+  const map = fixture.replay.content.regions.find((r) => r.id === 'bells-3')!;
+  const views = [];
+  for (const [id, target, offset] of [
+    ['up', 'bells-1', 2],
+    ['down', 'bells-4', -2],
+  ] as const) {
+    const portal = map.portals.find((p) => p.id === id)!;
+    expect(portal.target).toBe(target);
+    const beside = { x: portal.at.x + offset, y: portal.at.y };
+    act({ type: 'move', target: beside });
+    for (let n = 0; n < 800 && distance(fixture.state.player, beside) > 0.3; n++)
+      act({ type: 'advance', ticks: 1 });
+    expect(distance(fixture.state.player, beside)).toBeLessThan(0.3);
+    views.push({ id, at: portal.at, saved: exportSession(fixture) });
+  }
+  await page.goto('/?game=emberwake');
+  const arrows = await page.evaluate(async (views) => {
+    const sessionPath = '/packages/diablo2/src/application/session.ts';
+    const renderPath = '/packages/diablo2/src/ui/render.ts';
+    const { importSession } = (await import(
+      sessionPath
+    )) as typeof import('../../packages/diablo2/src/application/session');
+    const { render, TILE, VIEW_WIDTH, VIEW_HEIGHT } = (await import(
+      renderPath
+    )) as typeof import('../../packages/diablo2/src/ui/render');
+    return views.map(({ id, at, saved }) => {
+      const fixture = importSession(saved);
+      const canvas = document.createElement('canvas');
+      canvas.width = VIEW_WIDTH;
+      canvas.height = VIEW_HEIGHT;
+      const c = render(canvas, fixture.state, fixture.replay.content, false);
+      const ctx = canvas.getContext('2d')!;
+      const x = Math.round((at.x - c.x) * TILE);
+      const y = Math.round((at.y - c.y) * TILE);
+      // The old surface-return glyph put its amber arrowhead in the lower band.
+      // Sample the wing, away from the common stem, stairs and label.
+      const amber = (top: number) => {
+        const pixels = ctx.getImageData(x + 12, y + top, 5, 8).data;
+        let count = 0;
+        for (let i = 0; i < pixels.length; i += 4)
+          if (pixels[i] > 190 && pixels[i + 1] > 135 && pixels[i + 1] < 195 && pixels[i + 2] < 145)
+            count++;
+        return count;
+      };
+      return { id, upper: amber(-20), lower: amber(3) };
+    });
+  }, views);
+  const [up, down] = arrows;
+  expect(down.lower).toBeGreaterThan(down.upper);
+  expect(up.upper).toBeGreaterThan(up.lower);
+});
+
 test('crypt stairs preserve explored terrain and encounters on return and reload', async ({
   page,
 }) => {
