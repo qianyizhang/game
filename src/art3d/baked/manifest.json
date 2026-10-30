@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "inputs": {
-    "package-lock.json": "1505414251f14d6817e0e07dbb4434a4eceb7edacd16cb8dab71c65e34ba4ac7",
+    "package-lock.json": "53cc51aff4434d18104ce501099581df82bcd7d297d2657260df5342a0a517eb",
     "packages/workshop-tools/art/bake-client.ts": "8d615592d924ae9adda0a750884d86c507372279f82f9df101e24020f9203f6d",
     "src/art3d/catalogue.ts": "0b3ca1d91e8097037ba2352036bdd0011b1cfe131246145fb526e52d2c876b2b",
     "src/art3d/procedural/amalgam.ts": "820cf4ec48f468ff804a12da1b5a5decf47d639dd148b5e7505f16699bf78234",
