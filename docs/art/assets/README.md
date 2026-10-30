@@ -33,3 +33,8 @@ Use the [art overview](../README.md) for standards and the [native trials](../tr
 | [Spire Beyond constructs](spire-beyond-constructs/README.md)     | Four combat SVG subjects; local self-review, publication blocked           |
 
 Original review bytes, exact historical counts and prior gate failures are recoverable through [the migration record](../../../maintenance/document-migration.json). Retained source snapshots and captures remain protected; missing local evidence is unavailable, not permission to recreate a historical result.
+
+## Diorama studies
+
+- [Little Haunt](little-haunt/README.md): fifteen-second pixel diorama with a
+  full-resolution animated GIF; author-reviewed, user approval unrecorded.
