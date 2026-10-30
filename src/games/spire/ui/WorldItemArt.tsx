@@ -459,6 +459,69 @@ const potionMarks: Record<string, ReactNode> = {
   ),
 };
 
+/** The two damage potions keep different vessel silhouettes at the 24 px belt size. */
+function DamagePotion({ explosive }: { explosive: boolean }) {
+  if (explosive)
+    return (
+      <g {...edge} strokeLinecap="round">
+        <path
+          d="M26 22V17H38V22C49 24 57 32 57 43C57 57 45 60 32 60C19 60 7 57 7 43C7 32 15 24 26 22Z"
+          fill="#55475e"
+        />
+        <path
+          d="M36 23C52 28 52 48 43 57Q57 55 57 43C57 32 49 24 36 23Z"
+          fill={ink}
+          stroke="none"
+        />
+        <path d="M13 37Q33 43 51 37V47Q33 54 12 47Z" fill={rust} />
+        <path d="M16 40Q33 44 48 40" fill="none" stroke={gold} strokeWidth="2" />
+        <path
+          d="M29 35L34 40 42 37 38 44 43 49 35 48 32 54 29 48 22 51 26 44 22 39 29 41Z"
+          fill={ivory}
+          stroke="none"
+        />
+        <path d="M23 14H41V23H23Z" fill={gold} />
+        <path d="M26 14V9H38V14" fill={rust} />
+        <path
+          d="M31 9C26 4 37 0 42 5C46 9 41 13 38 10"
+          fill="none"
+          stroke={gold}
+          strokeWidth="2.5"
+        />
+        <path
+          d="M14 32Q17 27 22 26M13 50Q17 55 24 55"
+          fill="none"
+          stroke={ivory}
+          strokeWidth="2.1"
+        />
+        <path d="M24 18H40" fill="none" stroke={gold} strokeWidth=".9" />
+      </g>
+    );
+  return (
+    <g transform="rotate(-16 32 32)" {...edge} strokeLinecap="round">
+      <path
+        d="M27 15H37V30C41 35 49 40 49 48C49 61 15 61 15 48C15 40 23 35 27 30Z"
+        fill="#bbc5b4"
+      />
+      <path
+        d="M35 16V31C44 39 46 43 45 50Q45 56 38 58C46 57 49 54 49 48C49 40 41 35 37 30V16Z"
+        fill={teal}
+        stroke="none"
+      />
+      <path d="M22 36Q32 40 42 36L45 43V49C45 57 19 57 19 49V43Z" fill={rust} stroke="none" />
+      <path
+        d="M32 42C35 45 31 46 35 48L38 45C40 50 37 53 32 53C27 53 25 50 28 47L30 49C29 46 32 46 32 42Z"
+        fill={ivory}
+        stroke="none"
+      />
+      <path d="M24 9H40V17H24Z" fill={rust} />
+      <path d="M28 9V4H36V9" fill={gold} />
+      <path d="M28 21V29M24 36Q20 40 19 46" fill="none" stroke={ivory} strokeWidth="2" />
+      <path d="M26 13H38" fill="none" stroke={gold} strokeWidth="1" />
+    </g>
+  );
+}
+
 export function RelicArt({ id }: { id: string }) {
   return (
     <svg
@@ -485,12 +548,22 @@ export function PotionArt({ id }: { id: string }) {
       aria-hidden="true"
       focusable="false"
     >
-      <path d={potionShapes[id] ?? potionShapes.fire} fill={potionColors[id] ?? sage} {...edge} />
-      <path d="M25 9H39V18H25Z" fill={gold} {...edge} />
-      <path d="M28 9V5H36V9" fill="#8e6244" {...edge} />
-      <path d="M24 19H40" stroke={ivory} strokeWidth="1.2" />
-      <path d="M23 35Q18 45 21 50" stroke={ivory} strokeWidth="1.5" fill="none" opacity=".6" />
-      {potionMarks[id]}
+      {id === 'fire' || id === 'explosive' ? (
+        <DamagePotion explosive={id === 'explosive'} />
+      ) : (
+        <>
+          <path
+            d={potionShapes[id] ?? potionShapes.fire}
+            fill={potionColors[id] ?? sage}
+            {...edge}
+          />
+          <path d="M25 9H39V18H25Z" fill={gold} {...edge} />
+          <path d="M28 9V5H36V9" fill="#8e6244" {...edge} />
+          <path d="M24 19H40" stroke={ivory} strokeWidth="1.2" />
+          <path d="M23 35Q18 45 21 50" stroke={ivory} strokeWidth="1.5" fill="none" opacity=".6" />
+          {potionMarks[id]}
+        </>
+      )}
     </svg>
   );
 }
