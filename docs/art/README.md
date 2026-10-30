@@ -1,5 +1,8 @@
 # Art
 
+[金弧裂爪 · 黑甲雷袭](assets/golden-claw/README.md) is a standalone 30-second
+black-and-gold feline action animatic, with offline HTML, GIF and Foley MP4 delivery.
+
 The [aesthetic rulebook](art-direction.md) is the single visual standard. Use the [art skill](../../skills/card-art/SKILL.md), [SVG source map](svg.md), [3D source map](3d.md) and [DCC package](../../packages/dcc-workbench/README.md) for implementation and review. [SVG integration rules](svg.md#integration-boundaries) govern current behavior; [feature coverage history](history/feature-coverage.md) retains the dated regression evidence.
 
 [Native 3D migration](migration.md) owns the settled authoring/delivery boundaries, parent acceptance and promotion rules, pilot gate and planned 29-study cohort. Its stages do not establish visual approval or batch completion.

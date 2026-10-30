@@ -118,6 +118,8 @@ export function sourceFamily(path: string): Family | 'core' | undefined {
 export function browserFamilies(path: string): Family[] | undefined {
   const name = path.match(/^tests\/browser\/(.+)\.spec\.ts$/)?.[1];
   if (!name || name === 'art3d-review' || name === 'trace-private') return undefined;
+  // Standalone film: direct spec changes and conservative delivery fallback select it.
+  if (name === 'golden-claw') return [];
   if (name.startsWith('night-passage')) return ['night-passage'];
   if (name.startsWith('emberwake') || name === 'diablo2') return ['emberwake'];
   if (name.startsWith('cartographer')) return ['cartographer'];
