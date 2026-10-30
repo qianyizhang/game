@@ -1,5 +1,6 @@
 import { CharacterArt } from './CharacterArt';
 import { ActOneEnemyArt, isActOneEnemy } from './ActOneEnemyArt';
+import { BeyondConstructArt } from './BeyondConstructArt';
 
 /** City subjects share ink and light, but each owns its gesture and contour. */
 function CityEnemyArt({ id }: { id: string }) {
@@ -307,6 +308,13 @@ function CityEnemyArt({ id }: { id: string }) {
 /** Original, code-drawn silhouettes: no commercial art assets. */
 export function Portrait({ id }: { id: string }) {
   if (id === 'ironclad' || id === 'silent') return <CharacterArt id={id} />;
+  if (id === 'spiker' || id === 'repulsor' || id === 'exploder' || id === 'orbWalker')
+    return (
+      <svg className="fighter-portrait" viewBox="0 0 180 180" aria-hidden="true" focusable="false">
+        <ellipse cx="90" cy="162" rx="66" ry="10" fill="#000" opacity=".25" />
+        <BeyondConstructArt id={id} />
+      </svg>
+    );
   if (
     id === 'bookOfStabbing' ||
     id === 'mystic' ||

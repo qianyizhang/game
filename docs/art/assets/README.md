@@ -30,5 +30,6 @@ Use the [art overview](../README.md) for standards and the [native trials](../tr
 | [Greatwood Wolf procedural study](creatures/wolf.md)             | Author-reviewed; user approval unrecorded                                  |
 | [Greatwood Wolf and evolved forms](creatures/wolf-evolutions.md) | Parent-accepted native sources and gallery forms; user approval unrecorded |
 | [Last Hearth core elementals](hearth-elementals/README.md)       | Six SVG forms and Golden exports; independent visual review pending        |
+| [Spire Beyond constructs](spire-beyond-constructs/README.md)     | Four combat SVG subjects; local self-review, publication blocked           |
 
 Original review bytes, exact historical counts and prior gate failures are recoverable through [the migration record](../../../maintenance/document-migration.json). Retained source snapshots and captures remain protected; missing local evidence is unavailable, not permission to recreate a historical result.

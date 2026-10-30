@@ -1,0 +1,15 @@
+
+> card-workshop@0.1.0 typecheck
+> tsc --noEmit && npm run typecheck --workspaces --if-present
+
+
+> @card-workshop/dcc-workbench@0.1.0 typecheck
+> tsc -p tsconfig.json && tsc -p tsconfig.tools.json
+
+
+> @card-workshop/tools@0.1.0 typecheck
+> tsc -p tsconfig.json
+
+
+> @card-workshop/diablo2@0.1.0 typecheck
+> tsc -p tsconfig.json
