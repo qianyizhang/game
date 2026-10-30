@@ -239,3 +239,78 @@ test('phone map edges reach their rooms and the combat hand scrolls within the v
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: info.outputPath('spire-phone-hand.png'), fullPage: true });
 });
+
+test.describe('narrow phone route choices', () => {
+  test.use({ viewport: { width: 320, height: 844 }, hasTouch: true });
+
+  test('room edges select the intended route and all paths remain accessible', async ({ page }) => {
+    await page.goto('/?game=spire');
+    await page.getByRole('button', { name: 'Obtain +8 Max HP', exact: true }).click();
+    const map = page.locator('.sts-map-scroll');
+    await map.scrollIntoViewIfNeeded();
+    const mapSave = (await page.evaluate((key) => localStorage.getItem(key), spireSession.key))!;
+    const rooms = map.locator('.sts-map-node.reachable');
+    const bounds = await rooms.evaluateAll((nodes) =>
+      nodes.map((node) => {
+        const { left, right, top, width, height } = node.getBoundingClientRect();
+        return { left, right, top, width, height };
+      }),
+    );
+    for (let i = 1; i < bounds.length; i++) {
+      expect(bounds[i].left).toBeGreaterThanOrEqual(bounds[i - 1].right);
+    }
+    expect(bounds.every((room) => room.width >= 44 && room.height >= 44)).toBe(true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+
+    // This point used to hit the overlapping second room instead of the first.
+    const first = bounds[0];
+    await page.touchscreen.tap(first.right - 2, first.top + first.height / 2);
+    expect((await saved(page)).state.currentNode).toBe('act1-0-0');
+
+    const restoreMap = async () => {
+      await page.getByLabel('Import replay file').setInputFiles({
+        name: 'map.json',
+        mimeType: 'application/json',
+        buffer: Buffer.from(mapSave),
+      });
+      await map.scrollIntoViewIfNeeded();
+    };
+    await restoreMap();
+    const area = (await map.boundingBox())!;
+    const touch = await page.context().newCDPSession(page);
+    const start = area.x + area.width - 30;
+    const y = area.y + area.height / 2;
+    await touch.send('Input.dispatchTouchEvent', {
+      type: 'touchStart',
+      touchPoints: [{ x: start, y }],
+    });
+    for (let step = 1; step <= 6; step++) {
+      await touch.send('Input.dispatchTouchEvent', {
+        type: 'touchMove',
+        touchPoints: [{ x: start - step * 20, y }],
+      });
+    }
+    await touch.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+    await touch.detach();
+    await expect.poll(() => map.evaluate((el) => el.scrollLeft)).toBeGreaterThan(0);
+    expect(await page.evaluate((key) => localStorage.getItem(key), spireSession.key)).toBe(mapSave);
+    const last = page.getByRole('button', { name: 'Floor 1 lane 7 fight', exact: true });
+    await expect(last).toBeInViewport({ ratio: 1 });
+    await last.tap();
+    expect((await saved(page)).state.currentNode).toBe('act1-0-6');
+
+    await restoreMap();
+    await map.focus();
+    for (const room of await rooms.all()) {
+      await page.keyboard.press('Tab');
+      await expect(room).toBeFocused();
+    }
+    await expect(last).toBeInViewport({ ratio: 1 });
+    expect(await map.evaluate((el) => el.scrollLeft)).toBeGreaterThan(0);
+    expect(await page.evaluate((key) => localStorage.getItem(key), spireSession.key)).toBe(mapSave);
+    await page.keyboard.press('Enter');
+    expect((await saved(page)).state.currentNode).toBe('act1-0-6');
+  });
+});
