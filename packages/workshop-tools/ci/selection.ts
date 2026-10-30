@@ -138,8 +138,18 @@ export function browserFamilies(path: string): Family[] | undefined {
   return undefined;
 }
 
+/** These instruction/consumer inputs qualify only through the checked docs-only route. */
+export function isNamedDocumentation(path: string): boolean {
+  return [
+    'AGENTS.md',
+    'docs/engineering/checks.md',
+    'skills/card-art/assets/native-handoff.md.template',
+  ].includes(path);
+}
+
 export function isDocumentation(path: string): boolean {
   return (
+    isNamedDocumentation(path) ||
     path === 'docs/engineering/maintenance.md' ||
     /^docs\/guide\/(?:[^/]+\/)*[^/]+\.md$/.test(path) ||
     /^docs\/art\/assets\/(?:[^/]+\/)+README\.md$/.test(path) ||
@@ -154,6 +164,7 @@ export function isDocumentation(path: string): boolean {
  * manifests deliberately remain outside this list. Audit consumers before extending it.
  */
 export function isReviewEvidence(path: string): boolean {
+  if (isNamedDocumentation(path)) return false;
   if (isDocumentation(path)) return true;
   if (['docs/art/assets/README.md', 'docs/art/svg.md'].includes(path)) return true;
   const file = path.match(
@@ -182,7 +193,7 @@ export function normalApplicationFallback(
   return (
     !hasBase ||
     changes.length === 0 ||
-    changes.every(({ path }) => isReviewEvidence(path)) ||
+    changes.every(({ path }) => isDocumentation(path) || isReviewEvidence(path)) ||
     changes.some((change) => isReviewEvidence(change.path) && !regular(change))
   );
 }
@@ -241,7 +252,10 @@ export function selectPlan(
     changes.length > 0 &&
     changes.every(
       (change) =>
-        repositoryPath(change.path) && isDocumentation(change.path) && reviewEvidence(change.path),
+        repositoryPath(change.path) &&
+        isDocumentation(change.path) &&
+        (!isNamedDocumentation(change.path) || change.status === 'M') &&
+        !dependants.get(change.path)?.size,
     );
   const stylesOnly =
     changes.length > 0 &&

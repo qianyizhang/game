@@ -1,16 +1,20 @@
 import { execFileSync } from 'node:child_process';
 import { appendFileSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { checkDocumentLinks, checkInventory } from '../governance.mjs';
+import { checkDocumentLinks, checkInventory, isMarkdownDocument } from '../governance.mjs';
 import { requiredModules } from './commands.ts';
-import { isDocumentation, selectPlan, type Change } from './selection.ts';
+import { isDocumentation, isNamedDocumentation, selectPlan, type Change } from './selection.ts';
 
 const root = resolve(import.meta.dirname, '../../..');
 const git = (...args: string[]) => execFileSync('git', args, { cwd: root, encoding: 'utf8' });
 const exactSha = (value: string | undefined): value is string =>
   /^[a-f0-9]{40}$/.test(value ?? '') && !/^0{40}$/.test(value!);
 
-/** Only prose without executable blocks, or reviewed raster evidence in the docs asset home. */
+// Only the simple, complete triple-backtick examples already used by checks.md.
+// Compare these opaque bytes; unsupported fence forms still fail the block guard below.
+const checkExamples = /^```[^`\r\n]*\r?\n[\s\S]*?^```[ \t]*\r?$/gm;
+
+/** Prose edits, with unchanged examples allowed only in the named checks document. */
 export function safeDocumentation(
   changes: Change[],
   read: (ref: 'base' | 'head', path: string) => string,
@@ -21,18 +25,21 @@ export function safeDocumentation(
       if (
         path.split('/').includes('..') ||
         !isDocumentation(path) ||
-        !['A', 'M', 'D'].includes(status)
+        !['A', 'M', 'D'].includes(status) ||
+        (isNamedDocumentation(path) && status !== 'M')
       )
         return false;
-      if (!path.endsWith('.md')) return true;
+      if (!isMarkdownDocument(path)) return true;
       const refs: ('base' | 'head')[] =
         status === 'A' ? ['head'] : status === 'D' ? ['base'] : ['base', 'head'];
-      return refs.every(
-        (ref) =>
-          !/^(?: {0,3}(?:`{3,}|~{3,})| {4}\S|\t\S)|<(?:script|iframe|object|embed)\b/im.test(
-            read(ref, path),
-          ),
-      );
+      let texts = refs.map((ref) => read(ref, path));
+      if (texts.some((text) => /<(?:script|iframe|object|embed)\b/i.test(text))) return false;
+      if (path === 'docs/engineering/checks.md' && status === 'M') {
+        const examples = texts.map((text) => text.match(checkExamples) ?? []);
+        if (JSON.stringify(examples[0]) !== JSON.stringify(examples[1])) return false;
+        texts = texts.map((text) => text.replace(checkExamples, ''));
+      }
+      return texts.every((text) => !/^(?: {0,3}(?:`{3,}|~{3,})| {4}\S|\t\S)/m.test(text));
     });
   } catch {
     return false;
@@ -89,7 +96,7 @@ function fastPlan() {
       );
     });
     const changedProse = changes
-      .filter(({ path }) => path.endsWith('.md'))
+      .filter(({ path }) => isMarkdownDocument(path))
       .every(({ path }) =>
         safeChangedLines(git('diff', '--no-ext-diff', '--unified=0', ancestor, head, '--', path)),
       );
@@ -125,17 +132,24 @@ if (process.argv[1] && resolve(process.argv[1]) === import.meta.filename) {
   } else if (operation === 'check' && plan?.mode === 'documentation') {
     if (readFileSync(resolve(root, '.node-version'), 'utf8').trim() !== process.versions.node)
       throw new Error('Pinned Node required');
+    const changes = diffChanges(process.env.CI_BASE, plan.head);
+    if (!changes) throw new Error('Unavailable documentation diff');
     git('diff', '--check', `${process.env.CI_BASE}...${plan.head}`);
     const files = git('ls-files', '-z').split('\0').filter(Boolean);
     const errors = [
       ...checkInventory(files),
-      ...checkDocumentLinks(
-        root,
-        files.filter((p) => p.endsWith('.md')),
-        files,
-      ),
+      ...checkDocumentLinks(root, files.filter(isMarkdownDocument), files),
     ];
     if (errors.length) throw new Error(errors.join('\n'));
+    if (changes.some(({ path }) => path === 'skills/card-art/assets/native-handoff.md.template'))
+      execFileSync(
+        process.execPath,
+        ['--test', 'packages/workshop-tools/art/native-packet.test.ts'],
+        {
+          cwd: root,
+          stdio: 'inherit',
+        },
+      );
     console.log('Documentation diff whitespace, inventory and local links passed');
   } else throw new Error('Invalid documentation fast-path request');
 }

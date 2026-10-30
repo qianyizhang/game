@@ -1,7 +1,13 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
 import { commandFor, readPlan, requiredModules, verifyResults } from './commands.ts';
-import { selectPlan, type Catalogue, type Change, type DependencyGraph } from './selection.ts';
+import {
+  isNamedDocumentation,
+  selectPlan,
+  type Catalogue,
+  type Change,
+  type DependencyGraph,
+} from './selection.ts';
 
 const catalogue: Catalogue = {
   application: [
@@ -153,9 +159,15 @@ void test('explicit full validation retains every application, geometry and publ
   assert.ok(!commandFor(routine, 'browser')?.includes('--project=functional'));
 });
 
-void test('documentation changes and deletions run only formatting and inventory', () => {
-  for (const path of ['docs/engineering/maintenance.md', 'docs/art/assets/example/README.md']) {
-    for (const status of ['M', 'D']) {
+void test('eligible documentation changes select only the documentation module', () => {
+  for (const path of [
+    'docs/engineering/maintenance.md',
+    'docs/art/assets/example/README.md',
+    'AGENTS.md',
+    'docs/engineering/checks.md',
+    'skills/card-art/assets/native-handoff.md.template',
+  ]) {
+    for (const status of isNamedDocumentation(path) ? ['M'] : ['M', 'D']) {
       const plan = select(path, new Map(), status);
       assert.equal(plan.mode, 'documentation', path);
       assert.deepEqual(requiredModules(plan), {
@@ -267,6 +279,7 @@ void test('empty selection never runs a whole suite and shard indices are bounde
 void test('aggregate gate refuses skipped, failed or cancelled required modules', () => {
   for (const plan of [
     select('docs/engineering/maintenance.md'),
+    select('skills/card-art/assets/native-handoff.md.template'),
     select('vite.config.ts'),
     select('src/games/spire/ui/Card.tsx'),
   ]) {

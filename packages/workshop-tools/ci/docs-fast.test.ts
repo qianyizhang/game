@@ -32,9 +32,10 @@ void test('only allowlisted prose and reviewed raster changes qualify, including
   assert.equal(safeDocumentation([], prose), false);
   assert.equal(safeDocumentation([{ path: doc, status: 'R100' }], prose), false);
   for (const path of [
-    'AGENTS.md',
-    'docs/engineering/checks.md',
+    'nested/AGENTS.md',
     'docs/engineering/testing.md',
+    'skills/card-art/assets/native-brief.md.template',
+    'skills/card-art/assets/motion-study.ts.template',
     'docs/art/assets/review/manifest.json',
     'docs/art/assets/review/scene.svg',
     'docs/art/assets/cartographer-map/before-board.webp',
@@ -56,6 +57,70 @@ void test('only allowlisted prose and reviewed raster changes qualify, including
       path,
     );
   }
+});
+
+void test('only modifications of the three named inputs qualify; unchanged checks examples are opaque bytes', () => {
+  const examples = '\n```sh\nnpm run ci -- core\nplain example line\n```\n';
+  for (const path of [
+    'AGENTS.md',
+    'docs/engineering/checks.md',
+    'skills/card-art/assets/native-handoff.md.template',
+  ]) {
+    assert.equal(safeDocumentation([{ path, status: 'M' }], prose), true, path);
+    for (const status of ['A', 'D', 'R100', 'T'])
+      assert.equal(safeDocumentation([{ path, status }], prose), false, `${path} ${status}`);
+    assert.equal(
+      safeDocumentation([{ path, status: 'M' }], (ref) => `${ref} prose${examples}`),
+      path === 'docs/engineering/checks.md',
+      path,
+    );
+  }
+  for (const changed of [
+    examples.replace('plain example line', 'changed example line'),
+    examples.replace('npm run ci -- core', 'npm run ci -- browser'),
+    examples.replace('```sh', '```bash'),
+    '',
+    examples + examples,
+    examples.slice(0, -4),
+  ])
+    assert.equal(
+      safeDocumentation(
+        [{ path: 'docs/engineering/checks.md', status: 'M' }],
+        (ref) => prose() + (ref === 'base' ? examples : changed),
+      ),
+      false,
+      changed,
+    );
+  for (const unsupported of [
+    '~~~sh\nnpm test\n~~~',
+    '````sh\nnpm test\n````',
+    '  ```sh\nnpm test\n  ```',
+    '```sh\n<script>alert(1)</script>\n```',
+    '    npm test',
+  ])
+    assert.equal(
+      safeDocumentation([{ path: 'docs/engineering/checks.md', status: 'M' }], () => unsupported),
+      false,
+      unsupported,
+    );
+});
+
+void test('the named Markdown handoff receives the same executable content guard as documents', () => {
+  const path = 'skills/card-art/assets/native-handoff.md.template';
+  for (const unsafe of [
+    '```js\ncode\n```',
+    '    node script.js',
+    '<SCRIPT>code</SCRIPT>',
+    '<iframe src="x">',
+    '<object>',
+    '<embed>',
+  ])
+    for (const side of ['base', 'head'])
+      assert.equal(
+        safeDocumentation([{ path, status: 'M' }], (ref) => (ref === side ? unsafe : prose())),
+        false,
+        `${side}: ${unsafe}`,
+      );
 });
 
 void test('old and new document versions with executable blocks or unreadable blobs fail closed', () => {

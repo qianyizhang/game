@@ -16,15 +16,15 @@ Status: pending. Fill from observed evidence; do not treat this checklist as pro
 
 ## Verification
 
-| Scope | Status (pending/pass/skip/blocked) | Command, evidence path and material limits |
-| --- | --- | --- |
-| Application/tooling and full geometry gate | pending | |
-| Saved source edit, reload, fit and export | pending | |
-| Mesh/weight preservation during fitting | pending | |
-| Species support, reach, clearance and loops | pending | |
-| Sampled native/browser surface agreement | pending | |
-| Actual consumer journeys and source downloads | pending | |
-| Visual review and actual 1× playback | pending | |
+| Scope                                         | Status (pending/pass/skip/blocked) | Command, evidence path and material limits |
+| --------------------------------------------- | ---------------------------------- | ------------------------------------------ |
+| Application/tooling and full geometry gate    | pending                            |                                            |
+| Saved source edit, reload, fit and export     | pending                            |                                            |
+| Mesh/weight preservation during fitting       | pending                            |                                            |
+| Species support, reach, clearance and loops   | pending                            |                                            |
+| Sampled native/browser surface agreement      | pending                            |                                            |
+| Actual consumer journeys and source downloads | pending                            |                                            |
+| Visual review and actual 1× playback          | pending                            |                                            |
 
 Record maximum errors with units, sample coverage, skipped prerequisites and any
 unassessed motion/biomechanical/reference-fidelity claims. For trajectory compaction,
