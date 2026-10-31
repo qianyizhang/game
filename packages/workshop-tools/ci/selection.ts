@@ -65,6 +65,7 @@ const modelBrowser = new Set([
   'study-loading',
   'study-delivery',
   'study-mount-failure',
+  'study-recording-resize',
   'wolf-forms',
 ]);
 
