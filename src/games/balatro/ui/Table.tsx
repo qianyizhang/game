@@ -377,6 +377,7 @@ export function Table({ run, selected, toggle, dispatch, preview, newRun }: Prop
           const usable =
             !isFinished &&
             run.phase !== 'pack' &&
+            (definition.effect.type !== 'destroy' || run.deck.length - selected.length >= 5) &&
             (!definition.targets ||
               (run.phase === 'playing' &&
                 selected.length > 0 &&
