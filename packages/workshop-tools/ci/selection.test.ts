@@ -28,6 +28,7 @@ const catalogue: Catalogue = {
     'tests/browser/shell.spec.ts',
     'tests/browser/art3d.spec.ts',
     'tests/browser/study-capture-failure.spec.ts',
+    'tests/browser/study-recording-resize.spec.ts',
   ],
   geometry: ['src/art3d/procedural/watcher.test.ts'],
 };
@@ -214,6 +215,7 @@ void test('baked assets and viewer edits skip constructors; generator dependenci
     assert.deepEqual(select(path).geometryFiles, []);
     assert.equal(commandFor(select(path), 'geometry'), null);
     assert.ok(select(path).browserFiles.includes('tests/browser/study-capture-failure.spec.ts'));
+    assert.ok(select(path).browserFiles.includes('tests/browser/study-recording-resize.spec.ts'));
   }
   const plan = select(
     'src/art3d/procedural/surfaceSculpt.ts',

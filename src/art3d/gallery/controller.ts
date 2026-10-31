@@ -293,14 +293,20 @@ export function mount({
     floor.position.y = -0.016;
     floor.receiveShadow = true;
     scene.add(floor);
-    const resize = new ResizeObserver(() => {
+    let resizePending = false;
+    const resizeViewport = () => {
       const { width, height } = element.getBoundingClientRect();
       if (!width || !height) return;
-      renderer.setSize(width, height);
+      renderer.setSize(width, height, false);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       resetCamera(getOptions().view);
       dirty = true;
+    };
+    const resize = new ResizeObserver(() => {
+      // A recording owns its canvas size and camera until the stream has stopped.
+      if (recording) resizePending = true;
+      else resizeViewport();
     });
     own(() => resize.disconnect());
     let dirty = true;
@@ -362,6 +368,10 @@ export function mount({
             mixer.setTime(savedTime);
             asset.rotation.y = savedRotation;
             controls.enabled = true;
+            if (resizePending) {
+              resizePending = false;
+              resizeViewport();
+            }
             dirty = true;
           }
         }
