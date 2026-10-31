@@ -19,12 +19,14 @@ export function Viewer({
   options,
   api,
   onTime,
+  onReady,
 }: {
   id: StudyId;
   form?: WolfForm;
   options: Options;
   api: React.RefObject<Capture | null>;
   onTime: (seconds: number) => void;
+  onReady: (ready: boolean) => void;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const current = useRef(options);
@@ -38,8 +40,12 @@ export function Viewer({
     const loading = new AbortController();
     let cancelled = false;
     let cleanup: (() => void) | undefined;
+    const reportReady = (value: boolean) => {
+      setReady(value);
+      onReady(value);
+    };
     api.current = null;
-    setReady(false);
+    reportReady(false);
     setFailed(false);
     void loadStudy(id, loading.signal, form)
       .then((loaded) => {
@@ -54,10 +60,10 @@ export function Viewer({
           loaded,
           getOptions: () => current.current,
           onTime: (seconds) => reportTime.current(seconds),
-          onReady: setReady,
+          onReady: reportReady,
           onFailure: () => {
             setFailed(true);
-            setReady(false);
+            reportReady(false);
           },
         });
         api.current = controller.capture;
@@ -78,7 +84,7 @@ export function Viewer({
       loading.abort();
       cleanup?.();
     };
-  }, [id, form, api]);
+  }, [id, form, api, onReady]);
   return (
     <div className="study-render" ref={host} data-ready={ready}>
       {!ready && !failed && (

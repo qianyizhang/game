@@ -62,6 +62,7 @@ const modelBrowser = new Set([
   'native-assets',
   'otter',
   'raven',
+  'study-capture-failure',
   'study-loading',
   'study-delivery',
   'study-mount-failure',
