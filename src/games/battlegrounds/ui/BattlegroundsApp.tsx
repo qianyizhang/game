@@ -63,6 +63,10 @@ export function BattlegroundsApp({
   const hero = HEROES.find((h) => h.id === player.hero)!;
   const terminal = run.phase === 'won' || run.phase === 'lost';
   const pending = player.discover.length > 0;
+  const moveMinion = (id: string, direction: -1 | 1) => {
+    setSelected(target?.id ?? null);
+    game.dispatch({ type: 'move', id, direction });
+  };
   return (
     <GameShell
       title="Last Hearth"
@@ -449,9 +453,7 @@ export function BattlegroundsApp({
                           <button
                             aria-label={`Move minion ${index + 1} left`}
                             disabled={index === 0 || pending}
-                            onClick={() =>
-                              game.dispatch({ type: 'move', id: unit.id, direction: -1 })
-                            }
+                            onClick={() => moveMinion(unit.id, -1)}
                           >
                             ←
                           </button>
@@ -464,9 +466,7 @@ export function BattlegroundsApp({
                           <button
                             aria-label={`Move minion ${index + 1} right`}
                             disabled={index === player.board.length - 1 || pending}
-                            onClick={() =>
-                              game.dispatch({ type: 'move', id: unit.id, direction: 1 })
-                            }
+                            onClick={() => moveMinion(unit.id, 1)}
                           >
                             →
                           </button>
