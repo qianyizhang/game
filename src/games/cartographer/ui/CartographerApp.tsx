@@ -136,7 +136,10 @@ export default function CartographerApp() {
         event.preventDefault();
         send({ type: 'move', direction: keys[key] });
       }
-      if (key === ' ' && !(event.target instanceof HTMLButtonElement)) {
+      if (
+        key === ' ' &&
+        !(event.target instanceof Element && event.target.closest('button, summary'))
+      ) {
         event.preventDefault();
         send({ type: 'brace' });
       }
