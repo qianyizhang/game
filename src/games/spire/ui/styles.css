@@ -524,6 +524,9 @@
     overflow-x: auto;
     scroll-snap-type: x proximity;
   }
+  .spire-theme .battle-hand:has(.ability-card:focus-visible) {
+    scroll-snap-type: none;
+  }
   .spire-theme .ability-card {
     width: 145px;
     min-width: 0;
