@@ -35,6 +35,7 @@ export default function Studio({ onExit }: { onExit: () => void }) {
   const [exporting, setExporting] = useState(false);
   const [message, setMessage] = useState('');
   const [recording, setRecording] = useState(false);
+  const [captureReady, setCaptureReady] = useState(false);
   const [time, setTime] = useState(0);
   const api = useRef<Capture | null>(null);
   const study = STUDIES.find((study) => study.id === id)!;
@@ -46,6 +47,7 @@ export default function Studio({ onExit }: { onExit: () => void }) {
   const duration = delivery ? (delivery.brief.animation?.seconds ?? 0) : LOOP_SECONDS;
   const update = (patch: Partial<Options>) => setOptions((current) => ({ ...current, ...patch }));
   const select = (id: StudyId) => {
+    if (id !== study.id || activeForm !== 'base') setCaptureReady(false);
     setId(id);
     setForm('base');
     const url = new URL(location.href);
@@ -62,6 +64,7 @@ export default function Studio({ onExit }: { onExit: () => void }) {
     });
   };
   const selectForm = (next: WolfForm) => {
+    if (next !== activeForm) setCaptureReady(false);
     setForm(next);
     setMessage('');
     setTime(0);
@@ -73,7 +76,7 @@ export default function Studio({ onExit }: { onExit: () => void }) {
     history.replaceState(null, '', url);
   };
   const saveVideo = async () => {
-    if (!api.current || recording) return;
+    if (!captureReady || !api.current || recording) return;
     setRecording(true);
     setMessage(`Recording one ${duration}-second loop…`);
     try {
@@ -183,7 +186,14 @@ export default function Studio({ onExit }: { onExit: () => void }) {
               {String(STUDIES.length).padStart(2, '0')}
             </span>
           </div>
-          <Viewer id={id} form={activeForm} options={options} api={api} onTime={setTime} />
+          <Viewer
+            id={id}
+            form={activeForm}
+            options={options}
+            api={api}
+            onTime={setTime}
+            onReady={setCaptureReady}
+          />
           <div className="stage-caption">
             <span>
               {id === 'wolf' && activeForm !== 'base' ? wolfForm.title : study.name}
@@ -341,14 +351,22 @@ export default function Studio({ onExit }: { onExit: () => void }) {
             <button
               className="study-export study-video"
               onClick={() => void saveVideo()}
-              disabled={recording || options.exploded || exporting || duration === 0}
+              disabled={
+                !captureReady || recording || options.exploded || exporting || duration === 0
+              }
             >
               {recording ? 'Recording…' : '↓ Save animation loop'}
               <small>{duration}s · WEBM</small>
             </button>
             <button
+              disabled={!captureReady}
               onClick={() => {
-                if (api.current) download(api.current.png(), `${fileId}-study.png`);
+                if (!captureReady || !api.current) return;
+                try {
+                  download(api.current.png(), `${fileId}-study.png`);
+                } catch (error) {
+                  setMessage(error instanceof Error ? error.message : 'Image capture failed.');
+                }
               }}
             >
               Save image ↗
