@@ -308,8 +308,17 @@ export function mount({
     controls.addEventListener('change', () => {
       dirty = true;
     });
+    let failed = false;
+    const requireCapture = () => {
+      if (disposed || failed || renderer.getContext().isContextLost())
+        throw new Error(
+          'The sculpture cannot be captured. Reload the gallery or choose another study.',
+        );
+    };
     const contextLost = (event: Event) => {
       event.preventDefault();
+      failed = true;
+      recordingAbort.abort();
       onFailure();
       onReady(false);
     };
@@ -317,11 +326,14 @@ export function mount({
     own(() => renderer.domElement.removeEventListener('webglcontextlost', contextLost));
     const capture: Capture = {
       png: () => {
+        requireCapture();
         renderer.render(scene, camera);
+        requireCapture();
         return renderer.domElement.toDataURL('image/png');
       },
       model: loaded.download,
       video: async () => {
+        requireCapture();
         if (!clip) throw new Error('This study has no animation to record.');
         if (recording) throw new Error('An animation is already recording.');
         recording = true;
@@ -330,16 +342,20 @@ export function mount({
         controls.enabled = false;
         asset.rotation.y = 0;
         try {
-          return await recordLoop(
+          const video = await recordLoop(
             renderer.domElement,
             (seconds) => {
+              requireCapture();
               mixer.setTime(seconds);
               renderer.render(scene, camera);
+              requireCapture();
               onTime(seconds);
             },
             duration,
             recordingAbort.signal,
           );
+          requireCapture();
+          return video;
         } finally {
           recording = false;
           if (mounted) {
@@ -361,7 +377,7 @@ export function mount({
       // A costly model build can finish after the current RAF timestamp.
       const delta = Math.max(0, Math.min((time - last) / 1000, 0.05));
       last = time;
-      if (document.hidden || recording) return;
+      if (document.hidden || recording || failed) return;
       const value = getOptions();
       if (previous !== value) {
         if (!previous || previous.seekVersion !== value.seekVersion) mixer.setTime(value.seek);

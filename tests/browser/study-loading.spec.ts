@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { readFileSync } from 'node:fs';
+import { sceneReadyTimeout } from './budget';
 
 const spiralURL = (url: URL) =>
   url.pathname.endsWith('/baked/spiral.glb') && !url.searchParams.has('url');
@@ -39,6 +40,8 @@ test('native and baked delivery never request procedural constructors', async ({
 test('switching studies during a delayed baked fetch keeps the current native scene', async ({
   page,
 }) => {
+  // This journey checks load ownership; continuous animation has separate coverage.
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   let release: () => void = () => {};
   let arrived: () => void = () => {};
   let finished: () => void = () => {};
@@ -50,6 +53,10 @@ test('switching studies during a delayed baked fetch keeps the current native sc
   });
   const completed = new Promise<void>((resolve) => {
     finished = resolve;
+  });
+  await page.goto('/?art=3d&study=phoenix');
+  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
   });
   await page.route(spiralURL, async (route) => {
     arrived();
@@ -63,12 +70,12 @@ test('switching studies during a delayed baked fetch keeps the current native sc
       finished();
     }
   });
-  await page.goto('/?art=3d&study=phoenix');
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
   await page.getByRole('button', { name: /Spiral/ }).click();
   await requested;
   await page.getByRole('button', { name: /Phoenix/ }).click();
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   release();
   await completed;
   await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'native');
@@ -76,7 +83,9 @@ test('switching studies during a delayed baked fetch keeps the current native sc
   await expect(page.getByRole('alert')).toHaveCount(0);
   await page.unroute(spiralURL);
   await page.getByRole('button', { name: /Spiral/ }).click();
-  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('.study-render')).toHaveAttribute('data-ready', 'true', {
+    timeout: sceneReadyTimeout,
+  });
   await expect(page.locator('.study-render')).toHaveAttribute('data-delivery', 'baked');
 });
 
