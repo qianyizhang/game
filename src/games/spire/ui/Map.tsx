@@ -32,6 +32,7 @@ export function RouteMap({
           {readOnly
             ? 'Recorded route. Highlighted rooms were available at this boundary.'
             : 'Choose a highlighted room. Follow the dotted paths upward.'}
+          <span className="sts-map-pan-hint"> Scroll sideways to see every path.</span>
         </p>
         <p className="map-boss">
           Boss:{' '}
@@ -42,7 +43,13 @@ export function RouteMap({
             .join(' & ')}
         </p>
       </div>
-      <div className="sts-map-scroll" ref={scroll}>
+      <div
+        className="sts-map-scroll"
+        ref={scroll}
+        role="region"
+        aria-label={`Act ${run.act} route map`}
+        tabIndex={0}
+      >
         <div className="sts-map-canvas">
           <svg viewBox={`0 0 ${canvasWidth} 1220`} preserveAspectRatio="none" aria-hidden="true">
             {run.map.flatMap((n) =>

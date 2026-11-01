@@ -292,6 +292,7 @@
 .sts-map-panel {
   background: #e9ddbd;
   color: #534736;
+  container-type: inline-size;
 }
 .map-heading {
   text-align: center;
@@ -308,13 +309,22 @@
 }
 .sts-map-scroll {
   height: 560px;
-  overflow-y: auto;
+  overflow: auto;
   background: radial-gradient(ellipse at center, #f2e8cb, #ddceaa);
+}
+.sts-map-pan-hint {
+  display: none;
+}
+@container (max-width: 359px) {
+  .sts-map-pan-hint {
+    display: inline;
+  }
 }
 .sts-map-canvas {
   position: relative;
   height: 1220px;
   width: min(100%, 492px);
+  min-width: 360px;
   margin: auto;
 }
 .sts-map-canvas > svg {
