@@ -14,13 +14,99 @@ import {
 } from '../../packages/diablo2/src/application/session';
 import { distance, lineOfSight } from '../../packages/diablo2/src/domain/maps';
 import { currentWorld } from '../../packages/diablo2/src/domain/world';
-import { camera, TILE } from '../../packages/diablo2/src/ui/render';
+import { camera, TILE, VIEW_WIDTH, VIEW_HEIGHT } from '../../packages/diablo2/src/ui/render';
 import { bodyFits } from '../../packages/diablo2/src/domain/maps';
 import { BASE_CONTENT } from '../../packages/diablo2/src/domain/content';
 import { RULES_V3 } from '../../packages/diablo2/src/domain/game';
 const review = 'test-results/emberwake';
 test.beforeEach(() => {
   mkdirSync(review, { recursive: true });
+});
+
+for (const control of ['keyboard', 'hotbar']) {
+  test(`${control} casts follow a stationary cursor after camera movement`, async ({ page }) => {
+    await page.clock.install({ time: new Date('2026-10-30T00:00:00Z') });
+    await page.goto('/?game=diablo2');
+    await page.getByRole('button', { name: /Sorceress Mira/ }).click();
+    await page.getByRole('button', { name: 'Begin journey', exact: true }).click();
+    await page.clock.pauseAt(new Date('2026-10-30T00:01:00Z'));
+    await page.getByRole('button', { name: '→ Briarfen Enter from the road', exact: true }).click();
+    await page.clock.runFor(100);
+    const read = async () =>
+      importSession((await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY))!);
+    const initial = await read();
+    const field = page.locator('.ew-canvas-wrap canvas');
+    await field.focus();
+    const bounds = (await field.boundingBox())!;
+    const c = camera(initial.state);
+    const cursor = {
+      x: ((initial.state.player.x + 2 - c.x) * TILE * bounds.width) / VIEW_WIDTH,
+      y: ((initial.state.player.y - c.y) * TILE * bounds.height) / VIEW_HEIGHT,
+    };
+    await field.hover({ position: cursor });
+    await page.keyboard.down('w');
+    await page.clock.runFor(800);
+    await page.keyboard.up('w');
+    await page.clock.runFor(100);
+    const moved = await read();
+    expect(initial.state.player.y - moved.state.player.y).toBeGreaterThan(2);
+    expect(c.y - camera(moved.state).y).toBeGreaterThan(2);
+    if (control === 'keyboard') await page.keyboard.press('q');
+    else await page.locator('.ew-hotbar button').first().click();
+    const cast = (await read()).replay.commands.at(-1);
+    if (cast?.type !== 'cast') throw new Error('Skill cast was not accepted.');
+    expect(cast.skill).toBe('firebolt');
+    // The camera follows vertically: the unchanged cursor remains two tiles right.
+    expect(cast.target.x).toBeCloseTo(moved.state.player.x + 2, 1);
+    expect(cast.target.y).toBeCloseTo(moved.state.player.y, 1);
+    await page.clock.runFor(600);
+    await expect(page.locator('.ew-hotbar button').first()).toBeEnabled();
+    const beforeClick = await read();
+    await field.click({ button: 'right', position: cursor });
+    const clicked = await read();
+    expect(clicked.replay.commands.filter((command) => command.type === 'cast')).toHaveLength(
+      beforeClick.replay.commands.filter((command) => command.type === 'cast').length + 1,
+    );
+    expect(clicked.replay.commands.at(-1)).toEqual(cast);
+  });
+}
+
+test('self-centered skills and region arrival ignore an old field cursor', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-10-30T00:00:00Z') });
+  await page.goto('/?game=diablo2');
+  await page.getByRole('button', { name: 'Developer sandbox · Lv. 20', exact: true }).click();
+  await page.clock.pauseAt(new Date('2026-10-30T00:01:00Z'));
+  await page.getByRole('button', { name: /^Jump to Lantern Approach/ }).click();
+  await page.clock.runFor(100);
+  const read = async () =>
+    importSession((await page.evaluate((key) => localStorage.getItem(key), SANDBOX_SAVE_KEY))!);
+  const before = await read();
+  const field = page.locator('.ew-canvas-wrap canvas');
+  await field.focus();
+  const bounds = (await field.boundingBox())!;
+  await field.hover({ position: { x: bounds.width - 10, y: bounds.height - 10 } });
+  await page.keyboard.press('q');
+  const cleave = (await read()).replay.commands.at(-1);
+  expect(cleave).toEqual({
+    type: 'cast',
+    skill: 'cleave',
+    target: { x: before.state.player.x, y: before.state.player.y },
+  });
+  await page.getByRole('button', { name: 'Developer tools · F8', exact: true }).click();
+  await page.getByRole('button', { name: /^Drowned Grove/ }).click();
+  await page.getByRole('button', { name: /^Jump to Drowned Grove/ }).click();
+  await page.clock.runFor(100);
+  const arrived = await read();
+  expect(arrived.state.region).not.toBe(before.state.region);
+  await page.keyboard.press('e');
+  const leaped = await read();
+  const leap = leaped.replay.commands.at(-1);
+  expect(leap?.type).toBe('cast');
+  if (leap?.type !== 'cast') throw new Error('Arrival cast was not accepted.');
+  expect(leap.skill).toBe('leap');
+  expect(distance(arrived.state.player, leap.target)).toBeCloseTo(2, 1);
+  expect(leaped.state.player.x).toBe(leap.target.x);
+  expect(leaped.state.player.y).toBe(leap.target.y);
 });
 
 test('modal panels pause play, contain focus, switch with shortcuts and restore their opener', async ({

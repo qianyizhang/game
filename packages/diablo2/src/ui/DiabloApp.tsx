@@ -130,6 +130,7 @@ export default function DiabloApp() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const panelRef = useRef<HTMLDialogElement>(null);
   const aim = useRef<Point>({ x: 6, y: 5 });
+  const fieldCursor = useRef<Point | null>(null);
   const pressed = useRef(new Set<string>());
   const replayInput = useRef<HTMLInputElement>(null),
     modInput = useRef<HTMLInputElement>(null);
@@ -161,8 +162,10 @@ export default function DiabloApp() {
       if (
         before.state.region !== result.session.state.region ||
         before.state.location !== result.session.state.location
-      )
+      ) {
         aim.current = clearAim(result.session.state);
+        fieldCursor.current = null;
+      }
       const now = performance.now();
       if (
         command.type !== 'advance' ||
@@ -195,6 +198,13 @@ export default function DiabloApp() {
     },
     [release],
   );
+  const currentAim = useCallback(() => {
+    const state = current.current?.state;
+    const cursor = fieldCursor.current;
+    return state && cursor
+      ? screenToWorld(state, cursor.x, cursor.y, viewCamera.current)
+      : aim.current;
+  }, []);
   useEffect(() => {
     const dialog = panelRef.current;
     if (!dialog) return;
@@ -331,7 +341,7 @@ export default function DiabloApp() {
         const state = current.current.state;
         const h = current.current.replay.content.heroes.find((h) => h.id === state.hero)!;
         const skill = current.current.replay.content.skills.find((s) => s.id === h.skills[index])!;
-        send({ type: 'cast', skill: skill.id, target: castAim(state, skill, aim.current) });
+        send({ type: 'cast', skill: skill.id, target: castAim(state, skill, currentAim()) });
       } else if (key === ' ') {
         event.preventDefault();
         const state = current.current.state;
@@ -358,7 +368,7 @@ export default function DiabloApp() {
       window.removeEventListener('keydown', keydown);
       window.removeEventListener('keyup', keyup);
     };
-  }, [selecting, panel, paused, send, release, openPanel]);
+  }, [selecting, panel, paused, send, release, openPanel, currentAim]);
   const installSession = (next: Session | null) => {
     effects.current.clear();
     previous.current = null;
@@ -634,15 +644,21 @@ export default function DiabloApp() {
   const uiCast = (index: number) => {
     setActive(index);
     const skill = pack.skills.find((s) => s.id === h.skills[index])!;
-    const target = castAim(current.current!.state, skill, aim.current);
+    const target = castAim(current.current!.state, skill, currentAim());
     send({ type: 'cast', skill: skill.id, target });
   };
   const pointer = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
+    // Preserve the field position so a moving camera cannot leave casts aiming behind it.
+    const cursor = {
+      x: ((event.clientX - rect.left) / rect.width) * VIEW_WIDTH,
+      y: ((event.clientY - rect.top) / rect.height) * VIEW_HEIGHT,
+    };
+    fieldCursor.current = cursor;
     const point = screenToWorld(
       current.current?.state ?? state,
-      ((event.clientX - rect.left) / rect.width) * VIEW_WIDTH,
-      ((event.clientY - rect.top) / rect.height) * VIEW_HEIGHT,
+      cursor.x,
+      cursor.y,
       viewCamera.current,
     );
     aim.current = point;
