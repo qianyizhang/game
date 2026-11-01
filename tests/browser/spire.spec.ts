@@ -75,6 +75,77 @@ async function loadPhase(page: Page, phase: string) {
   });
 }
 
+for (const width of [320, 390, 1440]) {
+  test(`keyboard card choices stay visible at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto('/?game=spire');
+    await page.getByLabel('Character', { exact: true }).selectOption('silent');
+    await page.getByRole('button', { name: 'Obtain +7 Max HP', exact: true }).click();
+    await page.getByRole('button', { name: 'Floor 1 lane 1 fight', exact: true }).click();
+    const finishResolution = async () => {
+      const skip = page.getByRole('button', { name: 'Skip to result', exact: true });
+      if (await skip.isVisible()) await skip.click();
+    };
+    await finishResolution();
+    const hand = page.getByRole('region', { name: 'Cards in hand', exact: true });
+    for (const name of [/Strike/, /Strike/, /Defend/, /Neutralize/]) {
+      await hand.getByRole('button', { name }).first().focus();
+      await page.keyboard.press('Enter');
+      await finishResolution();
+    }
+    await page.getByRole('button', { name: 'End turn →', exact: true }).focus();
+    await page.keyboard.press('Enter');
+    await finishResolution();
+    const before = await saved(page);
+    await hand.getByRole('button', { name: /Survivor/ }).focus();
+    await page.keyboard.press('Enter');
+    await finishResolution();
+    await expect(page.getByRole('region', { name: 'Choose a card', exact: true })).toBeVisible();
+    const choosing = await saved(page);
+    expect(choosing.state.combat!.energy).toBe(before.state.combat!.energy - 1);
+    await expect(page.getByRole('button', { name: 'End turn →', exact: true })).toBeDisabled();
+
+    const traverseHand = async () => {
+      const cards = hand.locator('.ability-card');
+      const count = await cards.count();
+      await cards.first().focus();
+      for (const direction of ['Tab', 'Shift+Tab']) {
+        for (let step = 1; step < count; step++) {
+          await page.keyboard.press(direction);
+          await expect
+            .poll(() =>
+              hand.evaluate((region) => {
+                const focused = document.activeElement;
+                if (!focused?.matches('.ability-card')) return false;
+                const card = focused.getBoundingClientRect();
+                const bounds = region.getBoundingClientRect();
+                return card.left >= bounds.left - 1 && card.right <= bounds.right + 1;
+              }),
+            )
+            .toBe(true);
+        }
+      }
+    };
+    await traverseHand();
+    expect((await saved(page)).replay).toEqual(choosing.replay);
+    await page.keyboard.press('Enter');
+    await finishResolution();
+    const after = await saved(page);
+    const discarded = choosing.state.combat!.choice!.options[0];
+    expect(after.replay.commands.at(-1)).toEqual({ type: 'chooseCard', id: discarded });
+    expect(after.state.combat!.choice).toBeNull();
+    expect(after.state.combat!.discard).toContain(discarded);
+    expect(after.state.combat!.hand).not.toContain(discarded);
+    expect(after.state.combat!.energy).toBe(choosing.state.combat!.energy);
+    await expect(page.getByRole('button', { name: 'End turn →', exact: true })).toBeEnabled();
+    await traverseHand();
+    expect((await saved(page)).replay).toEqual(after.replay);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  });
+}
+
 test(
   'Spire map, targeted combat, reward, save/resume and collection',
   { tag: '@smoke' },

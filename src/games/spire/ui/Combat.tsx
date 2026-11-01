@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useId, useState, type FocusEvent } from 'react';
 import { CARD_BY_ID } from '../content/cards';
 import { ENEMY_BY_ID } from '../content/world';
 import { combatCardCost, intentText } from '../domain/combat';
@@ -8,6 +8,12 @@ import { AbilityCard } from './Card';
 import { Portrait } from './Portrait';
 import { IntentCue, intentArtKinds } from './IntentCue';
 import { statusText, powerText, enemyPowerText } from './statuses';
+
+function revealFocusedCard(event: FocusEvent<HTMLDivElement>) {
+  if (event.target.matches('.ability-card:focus-visible'))
+    event.target.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+}
+
 export function Battle({
   run,
   dispatch,
@@ -113,6 +119,7 @@ export function Battle({
             role="region"
             aria-label="Cards in hand"
             tabIndex={readOnly ? 0 : undefined}
+            onFocus={revealFocusedCard}
           >
             {combat.choice.options.map((id) => (
               <AbilityCard
@@ -133,6 +140,7 @@ export function Battle({
           role="region"
           aria-label="Cards in hand"
           tabIndex={readOnly ? 0 : undefined}
+          onFocus={revealFocusedCard}
         >
           {combat.hand.map((id) => {
             const card = combat.cards[id],
