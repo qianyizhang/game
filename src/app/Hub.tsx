@@ -168,8 +168,14 @@ function GameHub() {
       /* Game saves report storage failure separately. */
     }
   };
+  const recoverGame = (id: GameId) => {
+    if (challengeOpen) showChallenges(false);
+    if (artOpen) showArt(false);
+    if (dccOpen) showDcc(false);
+    change(id);
+  };
   return (
-    <ContentBoundary key={game}>
+    <ContentBoundary key={game} navigation={<GamePicker current={game} onSwitch={recoverGame} />}>
       <div hidden={artOpen || dccOpen}>
         <div hidden={challengeOpen}>
           <Suspense

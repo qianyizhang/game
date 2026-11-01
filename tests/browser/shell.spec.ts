@@ -25,6 +25,77 @@ test('a loading game keeps navigation available without replacing another game s
   await expect(page).toHaveTitle('Slay the Spire · Card Workshop');
 });
 
+test('a failed game module keeps keyboard navigation to the saved run and can recover on reload', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/?game=balatro');
+  await page.getByRole('button', { name: 'Play Small Blind' }).click();
+  await expect(page.locator('.playing-card')).toHaveCount(8);
+  const before = await page.evaluate((key) => localStorage.getItem(key), blindsideSession.key);
+  const failedModule = '**/src/games/battlegrounds/ui/BattlegroundsApp.tsx*';
+  await page.route(failedModule, (route) => route.abort('failed'));
+  await page.getByLabel('Choose game').selectOption('battlegrounds');
+  await expect(page.getByRole('heading', { name: 'Could not open this game' })).toBeVisible();
+  await expect(page.getByRole('alert')).toContainText(
+    'Failed to fetch dynamically imported module',
+  );
+  expect(await page.evaluate((key) => localStorage.getItem(key), blindsideSession.key)).toBe(
+    before,
+  );
+
+  const picker = page.getByLabel('Choose game');
+  await expect(picker).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await picker.focus();
+  await page.keyboard.press('Home');
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.playing-card')).toHaveCount(8);
+  await expect(page).toHaveTitle('Blindside · Card Workshop');
+  await expect(page.getByRole('heading', { name: 'Could not open this game' })).toHaveCount(0);
+  expect(await page.evaluate((key) => localStorage.getItem(key), blindsideSession.key)).toBe(
+    before,
+  );
+
+  await picker.selectOption('battlegrounds');
+  await expect(page.getByRole('heading', { name: 'Could not open this game' })).toBeVisible();
+  await page.unroute(failedModule);
+  await page.getByRole('button', { name: 'Reload after fixing', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Who will lead your warband?' })).toBeVisible();
+  expect(await page.evaluate((key) => localStorage.getItem(key), blindsideSession.key)).toBe(
+    before,
+  );
+});
+
+for (const screen of [
+  { name: 'Challenges', entry: '◇ Challenges', module: '**/src/app/Challenges.tsx*' },
+  { name: 'gallery', entry: '↗ 3D art gallery', module: '**/src/art3d/gallery/Studio.tsx*' },
+  {
+    name: 'workbench',
+    entry: '↗ DCC workbench',
+    module: '**/packages/dcc-workbench/src/Workbench.tsx*',
+  },
+]) {
+  test(`navigation leaves a failed ${screen.name} screen and stays in the chosen game after reload`, async ({
+    page,
+  }) => {
+    await page.goto('/?game=balatro');
+    await page.getByRole('button', { name: 'Play Small Blind' }).click();
+    const before = await page.evaluate((key) => localStorage.getItem(key), blindsideSession.key);
+    await page.route(screen.module, (route) => route.abort('failed'));
+    await page.getByRole('button', { name: screen.entry, exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Could not open this game' })).toBeVisible();
+    await page.getByLabel('Choose game').selectOption('battlegrounds');
+    await expect(page.getByRole('heading', { name: 'Who will lead your warband?' })).toBeVisible();
+    expect(new URL(page.url()).search).toBe('?game=battlegrounds');
+    await page.reload();
+    await expect(page.getByRole('heading', { name: 'Who will lead your warband?' })).toBeVisible();
+    expect(await page.evaluate((key) => localStorage.getItem(key), blindsideSession.key)).toBe(
+      before,
+    );
+  });
+}
+
 test('a loading challenge can return to the same table with keyboard focus restored', async ({
   page,
 }) => {
