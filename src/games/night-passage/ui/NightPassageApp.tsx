@@ -505,7 +505,7 @@ function PassageGame() {
                 if (event.ctrlKey || event.metaKey || event.altKey) return;
                 if (key === 'escape') {
                   event.preventDefault();
-                  setPaused((value) => !value);
+                  if (!event.repeat) setPaused((value) => !value);
                   return;
                 }
                 if (
