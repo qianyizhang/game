@@ -67,6 +67,67 @@ test(
   },
 );
 
+test('reordering the warband preserves the displayed buff target', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/?game=battlegrounds');
+  await page.getByRole('button', { name: /The Oathkeeper/ }).click();
+  await page
+    .locator('.tavern-offers')
+    .getByRole('button', { name: /^Coal Imp,/ })
+    .click();
+  await page.locator('.recruit-hand button').click();
+  await page.getByRole('button', { name: 'Ready · fight →', exact: true }).click();
+  await page.getByRole('button', { name: /Return to tavern/ }).click();
+  await page
+    .locator('.tavern-offers')
+    .getByRole('button', { name: /^Hearth Squire,/ })
+    .click();
+  await page.locator('.recruit-hand button').click();
+  const before = (await saved(page)).state.players[0];
+  const [imp, squire] = before.board;
+  expect(before.board.map((unit) => unit.definitionId)).toEqual(['imp', 'squire']);
+  const impCard = page.locator('.warband').getByRole('button', { name: /^Coal Imp,/ });
+  const squireCard = page.locator('.warband').getByRole('button', { name: /^Hearth Squire,/ });
+  await expect(impCard).toHaveAttribute('aria-pressed', 'true');
+
+  await page.getByRole('button', { name: 'Move minion 1 right', exact: true }).focus();
+  await page.keyboard.press('Enter');
+  expect((await saved(page)).state.players[0].board.map((unit) => unit.id)).toEqual([
+    squire.id,
+    imp.id,
+  ]);
+  await expect(impCard).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: /Hero power/ }).focus();
+  await page.keyboard.press('Enter');
+  const powered = await saved(page);
+  expect(powered.replay.commands.at(-1)).toEqual({ type: 'power', target: imp.id });
+  expect(powered.state.players[0].board.find((unit) => unit.id === imp.id)).toMatchObject({
+    health: imp.health + 3,
+    keywords: [...imp.keywords, 'taunt'],
+  });
+  expect(powered.state.players[0].board.find((unit) => unit.id === squire.id)).toEqual(squire);
+  expect(powered.state.players[0].gold).toBe(before.gold - 1);
+
+  await page.getByRole('button', { name: 'Move minion 1 right', exact: true }).click();
+  await expect(impCard).toHaveAttribute('aria-pressed', 'true');
+  await squireCard.focus();
+  await page.keyboard.press('Enter');
+  await page.getByRole('button', { name: 'Move minion 2 left', exact: true }).click();
+  await expect(squireCard).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: 'Move minion 2 left', exact: true }).click();
+  await expect(squireCard).toHaveAttribute('aria-pressed', 'true');
+  expect((await saved(page)).state.players[0].board.map((unit) => unit.id)).toEqual([
+    imp.id,
+    squire.id,
+  ]);
+  await expect(
+    page.getByRole('button', { name: 'Move minion 1 left', exact: true }),
+  ).toBeDisabled();
+  await expect(
+    page.getByRole('button', { name: 'Move minion 2 right', exact: true }),
+  ).toBeDisabled();
+});
+
 test('Battlegrounds triples, Discover, legal victory, invalid import and phone controls', async ({
   page,
 }, info) => {
