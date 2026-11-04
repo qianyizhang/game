@@ -23,6 +23,10 @@ await test('the maintained slice and canonical document homes are accepted', () 
   assert.deepEqual(
     checkInventory([
       'packages/workshop-tools/task.mjs',
+      'packages/shader-pipeline-lab/server.js',
+      'packages/shader-pipeline-lab/src/pipeline.js',
+      'packages/shader-pipeline-lab/tests/browser.spec.js',
+      'packages/shader-pipeline-lab/README.md',
       'packages/dcc-workbench/blender/render_review.py',
       'docs/art/assets/example.md',
       '.agents/skills/vendor/example.py',

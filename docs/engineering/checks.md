@@ -12,6 +12,15 @@ Use the pinned Node/npm runtime (`nvm use`) and Python through `uv`. One gate ow
 | `npx playwright test --project=functional` | All public loading, interaction and exported-artifact journeys.                        |
 | `npm run test:browser`                     | Functional plus conditional native/private projects.                                   |
 
+The separate [Shader Pipeline Lab](../../packages/shader-pipeline-lab/README.md)
+uses `npm run test:shader-lab` for its CPU pipeline and
+`npm run test:browser:shader-lab` for its full browser journeys. Root `npm run check`
+also runs its CPU tests; safety-core CI includes both scopes. Root `lint:app` and
+format/inventory checks cover its JavaScript and static files. Its plain-browser
+frontend has no build step; `npm run build` continues to build the game frontend.
+The browser harness starts the lab automatically on port 4179, leaving the local
+port 4178 development session separate.
+
 ## Gate selection
 
 Choose local checks by affected behavior and dependency risk, not change size alone.

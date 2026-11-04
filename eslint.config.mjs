@@ -20,7 +20,11 @@ export default [
     ignores: ['node_modules/**', 'dist/**', 'test-results/**', '.agents/**', '.work/**'],
   },
   {
-    files: ['packages/workshop-tools/*.mjs', 'eslint.config.mjs'],
+    files: [
+      'packages/workshop-tools/*.mjs',
+      'eslint.config.mjs',
+      'packages/shader-pipeline-lab/**/*.js',
+    ],
     languageOptions: { globals: globals.node },
     rules: {
       ...js.configs.recommended.rules,
@@ -29,6 +33,14 @@ export default [
       'no-var': 'error',
       'prefer-const': 'error',
     },
+  },
+  // The shader teaching app deliberately uses plain browser JavaScript.
+  {
+    files: [
+      'packages/shader-pipeline-lab/src/*.js',
+      'packages/shader-pipeline-lab/tests/browser.spec.js',
+    ],
+    languageOptions: { globals: globals.browser },
   },
   ...tseslint.configs.recommendedTypeChecked.map((config) => ({ ...config, files: typedFiles })),
   {

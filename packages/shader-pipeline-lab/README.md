@@ -1,33 +1,36 @@
 # Shader Pipeline Lab
 
 A small, inspectable rendering pipeline for learning how a triangle becomes a pixel.
-This is an isolated Git repository with a dependency-free application. It does not modify or import the
-Card Workshop application. All rendering math is plain JavaScript; WebGL is used
-only in the comparison view.
+This is a separate app maintained in the Card Workshop repository under
+`packages/shader-pipeline-lab/`. It has its own viewport and rendering code, and
+shares the repository's Git history, pinned runtime and test tools. It does not
+import game rules or game UI. All calculations are plain JavaScript; WebGL is
+used only in the comparison view.
 
 ## Run
 
-```sh
-npm start
-```
-
-Open http://127.0.0.1:4178. Set `PORT=4180 npm start` if needed. There is no install
-or build step. Use a modern browser with JavaScript modules. WebGL is optional:
-if it is unavailable, the full CPU lesson remains usable. Node is pinned to
-24.21.0 in `.nvmrc`, matching the parent workspace.
+From the repository root:
 
 ```sh
 nvm use
-npm run check
+npm run dev:shader-lab
 ```
 
-Browser verification is optional and reuses the parent repository's installed
-Playwright/Chrome harness. With the server running, use `npm run test:browser`
-from this folder. It checks all stages, CPU/GPU agreement, controls, clipping and
-reset, narrow reflow, a small window equivalent to desktop 200% zoom, and the
-WebGL-unavailable fallback. Only browser verification depends on the parent; `npm start` and `npm run check` work
-with Node alone. Set `CAPTURE_REVIEW=1 npm run test:browser` to save successful
-review screenshots; routine runs capture only failures.
+Open http://127.0.0.1:4178. Set `PORT=4180 npm run dev:shader-lab` if needed.
+The frontend has no build step or runtime dependencies. Use a modern browser with
+JavaScript modules. WebGL is optional: if unavailable, the CPU lesson remains
+usable. Repository dependency setup is documented in the [root guide](../../README.md).
+
+```sh
+npm run test:shader-lab
+npm run test:browser:shader-lab
+```
+
+Browser tests use the repository's disposable Chrome harness and start their own
+server on port 4179. There is no manual server prerequisite. They check all stages,
+CPU/GPU agreement, controls, clipping/reset, narrow and small-window layouts, and
+unavailable WebGL recovery. Set `CAPTURE_REVIEW=1 npm run test:browser:shader-lab`
+to save successful review screenshots; routine runs capture only failures.
 
 ## Workspace and learning journey
 
@@ -139,7 +142,8 @@ on the next render. Nothing is uploaded or saved by the app.
 
 ## Verified locally — 2026-11-04
 
-- `npm run check`: all maintained JavaScript syntax checks and 8 CPU tests pass.
+- `npm run test:shader-lab`: 8 CPU pipeline tests; root `lint:app`, formatting
+  and inventory checks own static validation.
 - Browser checks exercise every exposed knob at every stage and require an actual
   change in the viewport or live output data; stage navigation and inspector
   scrolling preserve viewport bounds and retained selections.
@@ -149,27 +153,34 @@ on the next render. Nothing is uploaded or saved by the app.
   levels at 1 of 36,864 pixels; scoped numerical agreement is not GPU conformance.
 - Screenshot review is separate from technical checks. Temporary review maps,
   captures and capture scripts were retired at closeout; the conclusions and
-  regression journeys remain in this guide and the tests. Parent game, simulation,
-  Blender and maintenance scopes are unaffected by this standalone workspace.
+  regression journeys remain in this guide and the tests.
+- Repository integration passed format/inventory, both lint scopes, TypeScript,
+  Python checks, all 80 DCC tests, and the game build. The full maintenance command
+  reached 155 passing tooling tests and 2 pre-existing CI-selection failures:
+  Scrapyard tests have no family classification in `ci/selection.ts`. The same
+  missing classifications exist at pre-import revision `4b74bef`. This is a
+  qualified integration result; the complete maintenance gate is not green.
 
-## Delivery and retention
+## Maintenance and history
 
-This independent repository lives under the game's ignored
-`.work/shader-pipeline-lab/` directory on branch `codex/shader-pipeline-lab`. Its
-source, tests and guide are committed together; parent game sources are separate.
-No push, hosted issue, PR or deployment is part of this slice. The portable UI
-lessons live in repo-kit's `user/practices/ui-ux.md`, with their provenance in
-`docs/reviews/README.md` there.
+This directory is an ordinary part of this repository, with no nested Git
+repository. The original lab commit `681300b` was imported as a subtree so its
+history remains reachable from the game repository. No hosted issue, PR, push or
+deployment is part of this local move.
 
-`npm run check` covers every maintained JavaScript source with syntax checks and
-numeric/end-to-end CPU tests. `npm run test:browser` covers the actual controls
-and GPU comparison. Parent game, simulation and native-art suites do not cover
-this independent app and are outside this slice.
+The root `npm run check` command includes the lab's CPU tests. Safety-core CI also runs
+its CPU and browser suites; root lint, format and governance checks cover the new
+source. The game frontend and lab remain separate apps, with independent servers.
+See [verification contracts](../../docs/engineering/checks.md#gate-selection) for
+scope selection. The portable UI lessons remain in repo-kit's
+`user/practices/ui-ux.md`, with their provenance in its `docs/reviews/README.md`.
 
-Keep the learning app and its tests as source. `.artifacts/` is ignored temporary
-verification output: retire successful review captures after conclusions are
-recorded, and review remaining failure/debug evidence within 30 days. Nothing
-cleans up automatically.
+Source, tests and this guide stay in Git. Browser failure output belongs under
+`test-results/browser/shader-lab/`. Optional successful review screenshots go to
+`.artifacts/shader-lab-review/`; retire them after conclusions are recorded, and
+review remaining failure/debug evidence within 30 days. Nothing cleans up
+automatically. Earlier temporary review captures and maps were retired after
+recording their conclusions and regression coverage.
 
 Reference: [Khronos rendering pipeline overview](https://wikis.khronos.org/opengl/Rendering_Pipeline_Overview).
 The stage grouping here is deliberately simplified for one WebGL draw.

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 // Routine verification keeps screenshots only on failure. Review capture is opt-in.
-const captures = new URL('../.artifacts/layout-review/', import.meta.url).pathname;
+const captures = new URL('../../../.artifacts/shader-lab-review/', import.meta.url).pathname;
 async function captureReview(page, name) {
   if (process.env.CAPTURE_REVIEW !== '1') return;
   await mkdir(captures, { recursive: true });

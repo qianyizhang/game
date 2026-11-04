@@ -23,9 +23,9 @@ jobs:
           - scope: simulations
             command: npm run playtest
           - scope: core-rules
-            command: npm run ci -- core
+            command: npm run ci -- core && npm run test:shader-lab
           - scope: smoke
-            command: npm run test:browser:smoke
+            command: npm run test:browser:smoke && npm run test:browser:shader-lab
     name: safety (${{ matrix.scope }})
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

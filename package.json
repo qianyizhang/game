@@ -15,7 +15,7 @@
     "test:browser:native": "playwright test --project=requires-blender",
     "test:browser:private": "playwright test --project=requires-private-evidence",
     "test:browser:review": "playwright test --project=visual-review",
-    "check": "npm run check:maintenance && npm run test && npm run playtest",
+    "check": "npm run check:maintenance && npm run test && npm run test:shader-lab && npm run playtest",
     "check:full": "npm run check && npm run test:geometry",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -42,7 +42,7 @@
     "check:python": "uv run --locked ruff check && uv run --locked ruff format --check && uv run --locked mypy && uv run --locked python -m unittest discover -s packages/dcc-workbench/blender -p \"test_*.py\"",
     "format:maintenance": "npm run format:check && npm run maintenance -- check",
     "check:maintenance": "npm run format:maintenance && npm run lint:tools && npm run lint:app && npm run typecheck && npm run check:python && npm run test:tools && npm run test:dcc && npm run build",
-    "lint:app": "eslint src tests packages/diablo2 *.config.ts --max-warnings=0",
+    "lint:app": "eslint src tests packages/diablo2 packages/shader-pipeline-lab *.config.ts --max-warnings=0",
     "test:dcc:saved": "node packages/dcc-workbench/verify-saved.ts",
     "test:diablo2": "npm run test --workspace @card-workshop/diablo2",
     "dcc:canid": "node packages/dcc-workbench/canid.ts",
@@ -51,7 +51,10 @@
     "dcc:boar": "node packages/dcc-workbench/boar.ts",
     "dcc:fox": "node packages/dcc-workbench/fox.ts",
     "engine:policy": "node packages/workshop-tools/policy/cli.ts",
-    "ci": "node packages/workshop-tools/ci/cli.ts"
+    "ci": "node packages/workshop-tools/ci/cli.ts",
+    "dev:shader-lab": "node packages/shader-pipeline-lab/server.js",
+    "test:shader-lab": "node --test packages/shader-pipeline-lab/tests/*.test.js",
+    "test:browser:shader-lab": "playwright test --config packages/shader-pipeline-lab/playwright.config.js"
   },
   "dependencies": {
     "react": "19.3.1",

@@ -33,6 +33,14 @@ Open the Vite URL. **Explore all games** explains goals, first moves and control
 - [Tools](packages/workshop-tools/README.md): export, policy experiments and maintenance commands.
 - [DCC workbench](packages/dcc-workbench/README.md): Blender authoring and asset delivery.
 
+## Learning apps
+
+[Shader Pipeline Lab](packages/shader-pipeline-lab/README.md) is a separate frontend
+in this repository. It walks through vertex input, shaders, clipping,
+interpolation and depth with inspectable calculations. Run `npm run dev:shader-lab`
+and open http://127.0.0.1:4178. It shares repository tooling while keeping its UI
+and rendering code separate from the games.
+
 ## Verification
 
 Choose checks by affected behavior using [verification contracts](docs/engineering/checks.md#gate-selection), the authoritative source for local gates, CI scope and browser/native prerequisites. Documentation-only edits use `npm run format:maintenance`; code and UI changes use the relevant application, browser, geometry or native checks.
