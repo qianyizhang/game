@@ -54,6 +54,10 @@ verifies common CLI dispatch and per-case inspection separately from strength.
 
 The [game-owned policy contracts](../engineering/README.md#build-and-evaluate-policies) link each study's protocols, earlier attempts and negative results. [Artifact compression](experiments/2026-10-16-policy-artifact-compression.md) records storage measurements separately from gameplay findings.
 
+## Effect-authoring studies
+
+- [PVFX Foundry transfer study](pvfx-foundry.md): verified sprite-pack structure, public toolkit mechanisms and a private Cinder timing trial awaiting browser/visual acceptance.
+
 ## Experiments and historical delivery
 
 - [Night Passage observation construction](experiments/2026-10-15-night-passage-observation.md): local runtime and memory comparisons for repeated evaluator reads and lazy views, with exact behavior checks.
