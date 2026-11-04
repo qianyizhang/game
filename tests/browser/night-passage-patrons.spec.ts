@@ -25,6 +25,10 @@ test('patron decoration is snapshot-pure, pauses exactly, respects reduced motio
   }
   for (const key of [
     'pure',
+    'cinderCools',
+    'cinderSeekRestores',
+    'cinderReducedTintStable',
+    'cinderPoolTintCleared',
     'resetHidden',
     'resetRestores',
     'expiredHidden',

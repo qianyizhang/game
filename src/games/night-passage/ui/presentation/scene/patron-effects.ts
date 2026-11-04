@@ -1,4 +1,5 @@
 import * as T from 'three';
+import { cinderCueStyle } from './cinder-cue';
 import { boon, GODS, SPELLS } from '../../../domain/content';
 import type { GodId, StateView as State } from '../../../domain/types';
 
@@ -99,9 +100,19 @@ export function createPatronEffects(parent: T.Group) {
   // Unknown/non-patron colors retain only their original ground cue.
   const cueGods = new Map(GODS.map((god) => [god.color, god.id]));
   const sprites: T.Sprite[] = [];
+  const warm = new T.Color('#ffd284');
+  const ember = new T.Color('#b43c18');
   let used = 0;
   let disposed = false;
-  function light(god: GodId, x: number, y: number, height: number, size: number, opacity: number) {
+  function light(
+    god: GodId,
+    x: number,
+    y: number,
+    height: number,
+    size: number,
+    opacity: number,
+    cooling = 0,
+  ) {
     if (used >= 48) return;
     let sprite = sprites[used++];
     if (!sprite) {
@@ -115,6 +126,12 @@ export function createPatronEffects(parent: T.Group) {
     sprite.visible = true;
     sprite.material.map = textures.get(god)!;
     sprite.material.opacity = opacity;
+    // Pool slots also carry projectiles and other patrons: reset tint on every use.
+    sprite.material.color.setRGB(1, 1, 1);
+    if (cooling > 0) {
+      sprite.material.color.lerp(warm, Math.min(1, cooling * 2));
+      if (cooling > 0.5) sprite.material.color.lerp(ember, (cooling - 0.5) * 2);
+    }
     sprite.position.set(x, height, y);
     sprite.scale.set(size * (2 / 3), size, 1);
   }
@@ -153,6 +170,7 @@ export function createPatronEffects(parent: T.Group) {
         if (!god || cue.life <= 0) continue;
         const remaining = Math.min(1, cue.life / cue.total);
         const elapsed = 1 - remaining;
+        const heat = god === 'cinder' ? cinderCueStyle(remaining, reducedMotion) : null;
         const rise = reducedMotion ? 0 : elapsed * 15;
         const size =
           (cue.kind === 'hit' ? 30 : Math.min(85, cue.radius * 0.45)) *
@@ -168,7 +186,8 @@ export function createPatronEffects(parent: T.Group) {
             cue.y + Math.sin(angle) * reach,
             2 + rise,
             size,
-            remaining * 0.8,
+            heat?.opacity ?? remaining * 0.8,
+            heat?.cooling,
           );
         }
       }
