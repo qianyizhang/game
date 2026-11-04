@@ -1,0 +1,267 @@
+.scrapyard {
+  --scrap-ink: #f0ead6;
+  max-width: 1320px;
+  margin: auto;
+  padding: 36px 28px;
+  color: var(--scrap-ink);
+  font-family: system-ui, sans-serif;
+}
+.scrap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.scrap-eyebrow {
+  color: #bbd39d;
+  font:
+    700 10px/1.5 system-ui,
+    sans-serif;
+  letter-spacing: 0.18em;
+}
+.scrapyard h1 {
+  font:
+    700 clamp(32px, 5vw, 52px)/1.1 Georgia,
+    serif;
+  margin: 8px 0;
+}
+.scrapyard h1 span {
+  display: block;
+  color: #bdc8bb;
+  font:
+    400 14px/1.5 system-ui,
+    sans-serif;
+  margin-top: 10px;
+  letter-spacing: normal;
+}
+.scrapyard a {
+  color: #d0ddbc;
+}
+.scrap-error {
+  padding: 12px 16px;
+  border: 1px solid #e6a674;
+  border-radius: 5px;
+  background: #442f28;
+}
+.scrap-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 28px;
+  align-items: start;
+}
+.scrap-play {
+  min-width: 0;
+}
+.scrap-hud,
+.scrap-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  padding: 12px 0;
+}
+.scrap-hud strong {
+  color: #f1d48a;
+}
+.scrap-hud strong span {
+  color: #bdc8bb;
+  font-weight: 400;
+}
+.scrap-health {
+  height: 5px;
+  background: #4b3533;
+  margin-bottom: 12px;
+}
+.scrap-health span {
+  display: block;
+  height: 100%;
+  background: #b6d792;
+}
+.scrap-stage {
+  position: relative;
+  border: 1px solid #59735d;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #142622;
+}
+.scrap-stage canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 8/5;
+  outline-offset: -5px;
+}
+.scrap-stage canvas:focus-visible {
+  outline: 3px solid #f4cf74;
+}
+.scrap-overlay {
+  position: absolute;
+  inset: 0;
+  background: #10201cea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  gap: 12px;
+}
+.scrap-overlay h2 {
+  font:
+    700 clamp(22px, 3vw, 36px)/1.1 Georgia,
+    serif;
+  margin: 0;
+}
+.scrap-overlay p {
+  margin: 0;
+  font-size: 13px;
+  max-width: 420px;
+}
+.scrapyard button {
+  min-height: 42px;
+  font:
+    600 12px/1.4 system-ui,
+    sans-serif;
+  border: 1px solid #68806b;
+  background: #263d32;
+  color: var(--scrap-ink);
+  border-radius: 5px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+.scrapyard button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.scrapyard button:not(:disabled):hover {
+  background: #3b5540;
+}
+.scrapyard button.scrap-primary {
+  background: #ecd18a;
+  color: #18281f;
+  border-color: #ecd18a;
+  padding: 12px 24px;
+}
+.scrap-sidebar section {
+  border-top: 1px solid #48624c;
+  padding: 16px 0;
+}
+.scrap-sidebar h2 {
+  font:
+    600 20px/1.3 Georgia,
+    serif;
+  margin: 8px 0 20px;
+}
+.scrap-sidebar p {
+  color: #bdc8bb;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.scrap-loadout {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 16px 0;
+  font-size: 13px;
+}
+.scrap-loadout > span {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #617454;
+  color: #f1d48a;
+  font-size: 23px;
+}
+.scrap-loadout p {
+  margin: 4px 0;
+}
+.scrapyard label {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+  font-size: 12px;
+}
+.scrapyard input,
+.scrapyard select {
+  width: 100%;
+  min-width: 0;
+  color: var(--scrap-ink);
+  background: #20362b;
+  border: 1px solid #68806b;
+  border-radius: 4px;
+  padding: 10px;
+  font: inherit;
+}
+.scrapyard input[type='file'] {
+  padding: 6px;
+}
+.scrapyard summary {
+  cursor: pointer;
+  font-size: 12px;
+  padding: 12px 0;
+}
+.scrap-shop {
+  display: flex;
+  gap: 10px;
+  margin: 6px 0;
+}
+.scrap-shop button {
+  flex: 1;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+.scrap-shop span {
+  font-size: 11px;
+  font-weight: 400;
+}
+.scrap-shop b {
+  color: #f1d48a;
+}
+@media (max-width: 850px) {
+  .scrap-layout {
+    grid-template-columns: 1fr;
+  }
+  .scrap-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .scrapyard {
+    padding: 20px 16px;
+  }
+}
+@media (max-width: 520px) {
+  .scrap-sidebar {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .scrap-header {
+    align-items: start;
+  }
+  .scrap-header a {
+    font-size: 12px;
+  }
+  .scrap-overlay {
+    position: relative;
+    min-height: 250px;
+  }
+  .scrap-stage:has(.scrap-overlay) canvas {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+  .scrap-shop {
+    flex-wrap: wrap;
+  }
+  .scrap-shop button {
+    min-width: 100px;
+  }
+  .scrap-hud {
+    gap: 8px;
+    font-size: 10px;
+  }
+}

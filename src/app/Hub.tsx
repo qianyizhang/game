@@ -12,6 +12,7 @@ const CartographerPolicyReview = lazy(() => import('../games/cartographer/agent/
 const CartographerApp = lazy(() => import('../games/cartographer/ui/CartographerApp'));
 const DiabloApp = lazy(() => import('@card-workshop/diablo2'));
 const NightPassageApp = lazy(() => import('../games/night-passage/ui/NightPassageApp'));
+const ScrapyardApp = lazy(() => import('../games/scrapyard/ui/ScrapyardApp'));
 const BalatroApp = lazy(() =>
   import('../games/balatro/ui/BlindsideApp').then((module) => ({ default: module.BlindsideApp })),
 );
@@ -32,6 +33,14 @@ const GameGuide = lazy(() => import('./guide/GameGuide'));
 const Glossary = lazy(() => import('./guide/GameGlossary'));
 export default function Hub() {
   const query = new URLSearchParams(location.search);
+  if (query.get('prototype') === 'scrapyard')
+    return (
+      <ContentBoundary>
+        <Suspense fallback={<p role="status">Opening Scrapyard…</p>}>
+          <ScrapyardApp />
+        </Suspense>
+      </ContentBoundary>
+    );
   const requested = canonicalGameId(query.get('game'));
   if (query.get('guide') === 'games' || query.get('guide') === 'glossary')
     return (

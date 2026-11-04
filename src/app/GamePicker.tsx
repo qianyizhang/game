@@ -29,6 +29,9 @@ export function GamePicker({
       <a className="game-guide-entry" href={`?guide=glossary&game=${current}`}>
         Look up a term →
       </a>
+      <a className="game-guide-entry" href="?prototype=scrapyard">
+        Try Scrapyard · horde prototype →
+      </a>
     </div>
   );
 }

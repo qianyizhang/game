@@ -5,6 +5,7 @@
 - [Architecture](architecture.md), [domain vocabulary](glossary.md) and [architectural decisions](decisions/README.md).
 - [Settled scope](scope-history.md) and [development direction](roadmap.md).
 - [Night Passage](night-passage.md) and [shared room generation](map-generation.md).
+- [Scrapyard](scrapyard.md): playable horde prototype and 100/300/500-enemy measurement.
 
 ## Build and evaluate policies
 
