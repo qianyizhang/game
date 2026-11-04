@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b111b" />
+    <title>Shader Pipeline Lab</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="/" class="brand"
+        ><span class="brand-icon">◈</span> Shader Pipeline <span class="muted">/ Lab</span></a
+      >
+      <a href="/README.md" target="_blank" rel="noreferrer" class="guide-link">Learning guide ↗</a>
+    </header>
+    <main class="app-shell">
+      <header class="lesson-heading">
+        <div>
+          <p class="eyebrow" id="stage-kind"></p>
+          <h1 id="stage-title"></h1>
+        </div>
+        <p class="lead" id="stage-lead"></p>
+      </header>
+      <div class="workspace">
+        <section class="viewport-panel" aria-label="Stage viewport">
+          <div class="panel-bar">
+            <span id="view-label"></span>
+            <div class="viewport-tools">
+              <label id="triangle-control"
+                >Triangle
+                <select id="triangle" aria-label="Selected triangle"></select></label
+              ><button id="compare-gpu" aria-pressed="false">Compare GPU</button>
+            </div>
+          </div>
+          <div class="render-area" id="render-area">
+            <div class="canvas-wrap">
+              <span class="view-badge" id="view-badge"></span
+              ><canvas
+                id="scene"
+                width="576"
+                height="576"
+                tabindex="0"
+                aria-label="Stage view"
+              ></canvas>
+            </div>
+            <div class="gpu-view" id="gpu-view" hidden>
+              <span class="view-badge">WebGL · final color</span
+              ><canvas
+                id="gpu"
+                width="192"
+                height="192"
+                aria-label="GPU final render using equivalent GLSL shaders"
+              ></canvas>
+              <p id="gpu-status" role="status"></p>
+            </div>
+          </div>
+          <p class="caption" id="stage-visual"></p>
+          <div class="viewport-footer">
+            <div id="pixel-controls" class="pixel-controls">
+              <span>Pixel</span
+              ><label>X <input id="pixel-x" type="number" min="0" max="191" value="96" /></label
+              ><label>Y <input id="pixel-y" type="number" min="0" max="191" value="96" /></label
+              ><span class="mono" id="pixel-color"></span>
+            </div>
+            <p id="geometry-note" class="muted">Select a triangle to follow its corners.</p>
+            <span class="resolution">192 × 192</span>
+          </div>
+        </section>
+        <aside class="inspector" aria-label="Stage inspector">
+          <section class="scene-controls" aria-label="Stage controls">
+            <div class="section-title">
+              <h2>Stage controls</h2>
+              <button id="reset" class="text-button">Reset scene</button>
+            </div>
+            <p id="controls-empty" class="muted">
+              The mesh is fixed. Choose a triangle in the viewport to inspect its input records.
+            </p>
+            <div id="controls" class="control-grid"></div>
+            <div class="experiments">
+              <button id="clip-preset">Clip the cube</button
+              ><button id="depth-preset">Disable depth test</button>
+            </div>
+          </section>
+          <div class="inspector-tabs" role="tablist" aria-label="Inspector views">
+            <button id="tab-data" role="tab" aria-selected="true" aria-controls="panel-data">
+              Data</button
+            ><button
+              id="tab-trace"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-trace"
+              tabindex="-1"
+            >
+              Trace</button
+            ><button
+              id="tab-code"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-code"
+              tabindex="-1"
+            >
+              Code
+            </button>
+          </div>
+          <section
+            id="panel-data"
+            role="tabpanel"
+            aria-labelledby="tab-data"
+            class="inspector-content"
+            tabindex="0"
+          >
+            <article class="data-block">
+              <p class="eyebrow">01 / INPUT</p>
+              <h2 id="input-label"></h2>
+              <pre id="stage-input"></pre>
+            </article>
+            <article class="data-block process">
+              <p class="eyebrow">02 / PROCESS</p>
+              <p id="stage-process"></p>
+              <code id="stage-formula" class="formula"></code>
+            </article>
+            <article class="data-block">
+              <p class="eyebrow">03 / OUTPUT</p>
+              <h2 id="output-label"></h2>
+              <pre id="stage-output"></pre>
+            </article>
+            <p class="insight" id="stage-hint"></p>
+          </section>
+          <section
+            id="panel-trace"
+            role="tabpanel"
+            aria-labelledby="tab-trace"
+            class="inspector-content"
+            tabindex="0"
+            hidden
+          >
+            <h2>Selected triangle · first corner</h2>
+            <div id="coordinate-trace" class="coordinate-trace"></div>
+            <section id="pixel-section">
+              <div class="section-title">
+                <h2 id="pixel-title"></h2>
+                <span id="hit-count" class="tag"></span>
+              </div>
+              <p class="muted">
+                In draw order. A passing fragment can still be replaced by a closer one.
+              </p>
+              <div
+                class="table-scroll"
+                tabindex="0"
+                role="region"
+                aria-label="Fragment contributions; scroll horizontally for more columns"
+              >
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Triangle</th>
+                      <th>UV</th>
+                      <th>Screen weights λ</th>
+                      <th>Attribute weights q</th>
+                      <th>Depth / stored</th>
+                      <th>Result</th>
+                      <th>RGBA</th>
+                    </tr>
+                  </thead>
+                  <tbody id="pixel-hits"></tbody>
+                </table>
+              </div>
+              <span class="scroll-hint">← More columns →</span>
+            </section>
+            <div id="stats" class="stats"></div>
+          </section>
+          <section
+            id="panel-code"
+            role="tabpanel"
+            aria-labelledby="tab-code"
+            class="inspector-content"
+            tabindex="0"
+            hidden
+          >
+            <h2>CPU implementation</h2>
+            <p class="muted">The actual function used by this lesson.</p>
+            <pre id="cpu-source"></pre>
+            <details id="glsl-source">
+              <summary>Equivalent GLSL</summary>
+              <h3>Vertex shader</h3>
+              <pre id="vertex-source"></pre>
+              <h3>Fragment shader</h3>
+              <pre id="fragment-source"></pre>
+            </details>
+          </section>
+        </aside>
+      </div>
+    </main>
+    <nav class="pipeline-dock" aria-label="Pipeline navigator">
+      <button id="previous" aria-label="Previous stage">←</button>
+      <details id="pipeline-picker">
+        <summary>
+          <span class="eyebrow" id="step-count"></span><span id="current-stage"></span
+          ><span aria-hidden="true">⌃</span>
+        </summary>
+        <div class="stage-menu">
+          <p class="eyebrow">THE RENDERING PIPELINE</p>
+          <div id="stages"></div>
+          <p class="menu-note">● Vertex and fragment shaders are programmable.</p>
+        </div>
+      </details>
+      <button id="next" aria-label="Next stage">→</button>
+    </nav>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
