@@ -6737,6 +6737,31 @@
         "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-plates/generation.json",
         "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-plates/contact.png"
       ]
+    },
+    {
+      "id": "expansion-en-cont-20261106/authored",
+      "title": "Targeted Night Passage authored derivatives",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "Three optional derivatives and one retained failed construction; original parent judgments unchanged; $0 API spend.",
+      "files": [
+        "docs/art/assets/night-passage-interaction-studies-2026-11-06/targeted-derivatives/authoring.json",
+        "docs/art/assets/night-passage-interaction-studies-2026-11-06/targeted-derivatives/comparison.png",
+        "docs/art/assets/night-passage-interaction-studies-2026-11-06/README.md",
+        "docs/art/assets/night-passage-interaction-studies-2026-11-06/study.json",
+        "docs/art/assets/night-passage-interaction-studies-2026-11-06/validation.json"
+      ]
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-passage-decision-tools",
+      "title": "night-passage-decision-tools · future source concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Exact request, usage, source/child lineage and self-review in the one canonical call record; no runtime identity.",
+      "files": [
+        "docs/art/assets/night-passage-interaction-studies-2026-11-06/night-passage-decision-tools/generation.json",
+        "docs/art/assets/night-passage-interaction-studies-2026-11-06/night-passage-decision-tools/contact.png"
+      ]
     }
   ],
   "revisions": [
@@ -8515,6 +8540,158 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Ordered source cell 5; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/authored/vesta-coal-resting",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/authored",
+      "label": "vesta-coal-resting · candidate-with-caveat",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/targeted-derivatives/vesta-coal-resting.svg",
+      "digest": "4906f267dc0cabde4b893f4216eca53ba2a1affb685ddd14f055da2a0f5c99ac",
+      "parents": [
+        "expansion-en-20261106/night-offering-instruments/vesta-coal-tongs"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Assistant-authored derivative of the registered parent; exact construction operation and finding in authoring.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/authored/nyra-cloth-screen",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/authored",
+      "label": "nyra-cloth-screen · candidate",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/targeted-derivatives/nyra-cloth-screen.svg",
+      "digest": "236b63aff6925e622281a22660845a107fd2abfcb4e069a2ea2f09548ca028fc",
+      "parents": [
+        "expansion-en-20261106/night-reliquaries/nyra-folded-screen"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Assistant-authored derivative of the registered parent; exact construction operation and finding in authoring.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/authored/neris-glazed-coffer",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/authored",
+      "label": "neris-glazed-coffer · candidate-with-caveat",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/targeted-derivatives/neris-glazed-coffer.svg",
+      "digest": "7a4975bcf262978e7e3f2237780ab48ac388189896fe95635f7ff72f6e760faf",
+      "parents": [
+        "expansion-en-20261106/night-reliquaries/neris-current-coffer"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Assistant-authored derivative of the registered parent; exact construction operation and finding in authoring.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/authored/neris-coffer-cutoff-failed",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/authored",
+      "label": "neris-coffer-cutoff-failed · hold",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/targeted-derivatives/neris-coffer-cutoff-failed.svg",
+      "digest": "3be68393797eabc08caa0d42d5dc4032b1583cee21e240722d67fb8f4ffba68e",
+      "parents": [
+        "expansion-en-20261106/night-reliquaries/neris-current-coffer"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Assistant-authored derivative of the registered parent; exact construction operation and finding in authoring.json. Held: initial cutoff removed the lid/rim; retained as a failed sibling."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-passage-decision-tools/sheet",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-passage-decision-tools",
+      "label": "night-passage-decision-tools · exact original",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/night-passage-decision-tools/sheet.svg",
+      "digest": "e83795db97919c06de360a6be4f3169c6d7ecf453e2c9dd8bd9af112cd3e2d4e",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded native SVG original."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-passage-decision-tools/quay-mooring-cleat",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-passage-decision-tools",
+      "label": "quay-mooring-cleat · candidate",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/night-passage-decision-tools/quay-mooring-cleat.svg",
+      "digest": "eb61d3a7446a69df02ec8555ac46d2c1fb5b97242c92de6e2acc8fc23f4535cb",
+      "parents": [
+        "expansion-en-cont-20261106/night-passage-decision-tools/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 1; copy named group, remove only grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-passage-decision-tools/memory-rubbing-frame",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-passage-decision-tools",
+      "label": "memory-rubbing-frame · candidate",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/night-passage-decision-tools/memory-rubbing-frame.svg",
+      "digest": "bc7635dfa1e4f377466319ff6382ed04f1d8ff6feeec1130e810607ec3f8c304",
+      "parents": [
+        "expansion-en-cont-20261106/night-passage-decision-tools/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 2; copy named group, remove only grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-passage-decision-tools/ash-sifting-tray",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-passage-decision-tools",
+      "label": "ash-sifting-tray · candidate-with-caveat",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/night-passage-decision-tools/ash-sifting-tray.svg",
+      "digest": "9ce3d21e03dad78b447976d43d53d919bf8e94c04a09ac55e2a1ced761293ba5",
+      "parents": [
+        "expansion-en-cont-20261106/night-passage-decision-tools/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 3; copy named group, remove only grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-passage-decision-tools/market-exchange-chute",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-passage-decision-tools",
+      "label": "market-exchange-chute · candidate-with-caveat",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/night-passage-decision-tools/market-exchange-chute.svg",
+      "digest": "527b22d98a86290d180dbf3b840e5af1abb6f1d201001f92d82e369e726c5043",
+      "parents": [
+        "expansion-en-cont-20261106/night-passage-decision-tools/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 4; copy named group, remove only grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-passage-decision-tools/trial-oath-knot",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-passage-decision-tools",
+      "label": "trial-oath-knot · candidate-with-caveat",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/night-passage-decision-tools/trial-oath-knot.svg",
+      "digest": "e166cfd09b505bba79f21bf2a95fd5443dafe0dc92c5afd7c3ef6d7283ef40e6",
+      "parents": [
+        "expansion-en-cont-20261106/night-passage-decision-tools/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 5; copy named group, remove only grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-passage-decision-tools/spring-flow-diverter",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-passage-decision-tools",
+      "label": "spring-flow-diverter · candidate",
+      "file": "docs/art/assets/night-passage-interaction-studies-2026-11-06/night-passage-decision-tools/spring-flow-diverter.svg",
+      "digest": "f0ead46dbbd5b9b20b61beb7af35db47e3a12cd2862d00e87f3543fabf4524d6",
+      "parents": [
+        "expansion-en-cont-20261106/night-passage-decision-tools/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 6; copy named group, remove only grid translation and preserve paint. Exact author finding in generation.json."
     }
   ]
 }
