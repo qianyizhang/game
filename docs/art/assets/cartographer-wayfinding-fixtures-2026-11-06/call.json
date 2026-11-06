@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "id": "cartographer-wayfinding-20261106",
+  "date": "2026-11-06T16:20:50.753542+00:00",
+  "status": "returned",
+  "grant": {
+    "source": "Coordinator one-call wayfinding grant after equipment settlement",
+    "pool_usd": 40,
+    "reservation_usd": 6.5,
+    "scope": "One six-fixture request only",
+    "worker_opening_usage_estimate_usd": 0.927917,
+    "id": "archive-wayfinding-02"
+  },
+  "endpoint": "https://api.openai.com/v1/images/generations",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable SVG source sheet: exact canvas 1440x672, viewBox=\"0 0 1440 672\". Three columns, two rows, six local scenes of 480x336, row-major. These are future Cartographer Sunken Archive WAYFINDING FIXTURES, not established canon, inventory relics, UI arrows or implemented mechanics. Ground them in quiet archive stone, moss, lantern warmth, wet surfaces and clearly fitted metal/rope. No people, creatures, faces, inscriptions, symbols or numbers.\n\nSix separate TOP-LEVEL <g id=\"SUBJECT-ID\" transform=\"translate(X Y)\"> groups as below. Each begins with its own <rect x=\"0\" y=\"0\" width=\"480\" height=\"336\" fill=\"#172928\"/>. No other root drawing. All content stays within its group/cell; at least 28px inset INCLUDING shadows. Native static vector paths/simple shapes, explicit colors only. No raster/image, script, external resource, text/font, animation, CSS, gradients, defs, masks, filters or use references. No labels, card frame, statistics, gutters or visible grid. Each group must extract by removing only its grid translation.\n\nRestrained engraved fantasy illustration, expressive unequal contours, quiet negative space, three clear value groups. Ink #172928/#2d403a; mid stone #63746d and sage #82937d; pale worn stone #d6cfb6. Selective copper #b97c5e, rope #a78a65, warm light #d9b677, water #659a9a. Broad upper-left light planes before sparse form-following cuts. Distinguish stone, matte rope and metal. Around 35-60 purposeful shapes per scene; no glossy plastic, noisy hatching, glows, gold borders or repeated decorative dots. Fit every bearing, bracket, rope and chain visibly to its load. Subjects fill 70-78% of the scene, stable grounding, identifying contour readable at 160x112 and 80x56, with a 64x45 silhouette check. Vary vertical, horizontal and angular compositions; these are six different functional roles, not recolors. Do not repeat archive furniture, garden/forge props, a circular floodgate wheel, gates, ladders or previous encounter panoramas.\n\nROW-MAJOR SUBJECTS:\n1. id=\"shuttered-lantern-waypost\" translate(0 0): An asymmetric short stone post carries a long fitted copper hood with a directional shutter, casting one broad warm patch to the right. Lamp, arm and footing visibly meet; a tall L contour. Environmental beacon, not a portable lantern or relic.\n2. id=\"forked-route-stela\" translate(480 0): A weathered Y-shaped stone route stela with two unequal blank arms and one thick planted foot. One arm rises while the other extends low; broad negative space splits them. No arrowheads, writing, compass or floating parts.\n3. id=\"tether-anchor-station\" translate(960 0): A low stone route-tether station: a horizontal rope spool in a fixed iron fork, one large attached cleat, and a single rope clearly winding from spool through guide to a tied end. Broad low silhouette; no steering wheel or forge bench.\n4. id=\"flood-level-marker\" translate(0 336): A tall irregular stone flood marker at a narrow water edge. Broad dry cream upper face contrasts with a wet cool lower band, one projecting stone tab and stepped supported foot. No numbers, ruler ticks, basin or game status symbol.\n5. id=\"corner-light-reflector\" translate(480 336): A low wall-corner fixture holds one folded aged-copper reflector on a fitted bracket. One broad pale reflected-light patch meets the adjacent stone face. Large angular planes, visibly attached support; no glass lens, orb or magic portal.\n6. id=\"boundary-chain-posts\" translate(960 336): Two unequal short stone posts hold one heavy sagging chain through visibly fitted iron eyelets. Wide clear gap below, six broad unequal connected links at most, both posts planted. Horizontal barrier contour, no tiny link texture or doorway.\n\nDeliver six self-contained finished prop illustrations. Do not imply current route or combat rules changed; these remain source concepts needing later consumer review.\n",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "request_wire_encoding": "UTF-8 JSON, sorted keys, comma/colon separators, ensure_ascii=false; no extra whitespace",
+  "automatic_retries": 0,
+  "billing": {
+    "reserved_usd": 0,
+    "uncertain_reserved_usd": 0,
+    "call_usage_estimate_usd": 0.165535,
+    "worker_lifetime_usage_estimate_usd": 1.093452,
+    "rates_per_million": {
+      "image_text_input": 5,
+      "image_input": 8,
+      "image_output": 30,
+      "author_short_input": 2,
+      "author_short_output": 10,
+      "author_long_input": 4,
+      "author_long_output": 15
+    },
+    "pricing": "https://developers.openai.com/api/docs/pricing",
+    "bound": "922k author input at $4/M plus 128k output at $15/M = $5.608; $0.892 allowance for fixed single reference rendering and short prompt. Reservation, not endpoint dollar cap."
+  },
+  "outputs": [
+    {
+      "file": "original.svg",
+      "sha256": "15806e150f87fa8f7fc6046736206624bfe3283dfb53d240c8d184f6129f7d32",
+      "kind": "exact-api-original"
+    },
+    {
+      "file": "shuttered-lantern-waypost.svg",
+      "sha256": "0f2bdfaa6080e271aaf89fcfc93700e78a8b558dbfb3ad85cfa620fab87aaca5",
+      "cell": [0, 0]
+    },
+    {
+      "file": "forked-route-stela.svg",
+      "sha256": "9481045ff0cefcedc59753cc79d77867b69253debb2befd0505d039982fda506",
+      "cell": [1, 0]
+    },
+    {
+      "file": "tether-anchor-station.svg",
+      "sha256": "5e4c900ff347f64b1eb1de6349c70751f1e9721d96755aa5107cb10f9b3ff3e2",
+      "cell": [2, 0]
+    },
+    {
+      "file": "flood-level-marker.svg",
+      "sha256": "8fa553f8c81d72d0ccacaed6fe23f2ecf472c6b2b692f08dbadc80925c2970b5",
+      "cell": [0, 1]
+    },
+    {
+      "file": "corner-light-reflector.svg",
+      "sha256": "e3a845377ff4041e7b1071c7306f344f98f957a7c06aa4bd36f2220371ebdf92",
+      "cell": [1, 1]
+    },
+    {
+      "file": "boundary-chain-posts.svg",
+      "sha256": "8a5db8d81bafd5e93902680c8373f7028dc56dbd1cec5748530e16e427c721aa",
+      "cell": [2, 1]
+    }
+  ],
+  "started_at": "2026-11-06T16:20:50.821219+00:00",
+  "request_sha256": "4ab405ccc908c95e8574fcb1b2dbd413bdf18da117180479d90ff716eb908016",
+  "response": {
+    "request_id": "req_534d044e1dbc490080b6e3025ef4d079",
+    "http_status": 200,
+    "created": 1793982093,
+    "elapsed_seconds": 240.885,
+    "usage": {
+      "input_tokens": 963,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 963
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1747
+    },
+    "svg_usage": {
+      "input_tokens": 2340,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 13252,
+      "reasoning_tokens": 471,
+      "total_tokens": 15592
+    }
+  },
+  "extraction": {
+    "source": "original.svg",
+    "grid": [3, 2],
+    "cell_size": [480, 336],
+    "recipe": "Copy each top-level group by filename stem; remove only its grid translate; keep local background and vector contents.",
+    "verified": {
+      "cairo_crop_pixel_equal": 5,
+      "inside_cell": 6,
+      "minimum_foreground_inset_px": 28,
+      "vector_contents_unchanged": 6
+    },
+    "exceptions": {
+      "inset": {},
+      "cairo_raster_differences": {
+        "tether-anchor-station": {
+          "pixels": 1,
+          "max_channel_delta": 1
+        }
+      }
+    }
+  },
+  "review": {
+    "contact": "contact.png",
+    "sha256": "445f48b082dc07c6814a1a54a88f91160a9321fc3ad6ea7328a83a3b6fb25db6",
+    "dimensions": [960, 756],
+    "sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "png": "RGBA, no color profile; smaller of original/optimized encoding retained after exact decoded-pixel/dimension/alpha/mode/color-metadata equality.",
+    "png_original_bytes": 110267,
+    "png_retained_bytes": 108043,
+    "verdict": "5 author candidates; corner-light-reflector is a semantic hold",
+    "exceptions": {
+      "corner-light-reflector.svg": {
+        "status": "hold",
+        "reason": "The folded copper panel and bracket read clearly, but can read as an awning; the reflected-light function is not explicit enough at compact size. Retain as a folded-panel source until its role is chosen."
+      },
+      "tether-anchor-station.svg": {
+        "note": "Spool/guide/cleat composition reads; its stiff-looking line and knot/load path are a visual concept, not engineering certification."
+      }
+    },
+    "default": "candidate"
+  },
+  "verification": {
+    "svg_safety": 7,
+    "isolated_import_revisions": 7,
+    "new_slots": 0,
+    "selections": 0,
+    "gallery": {
+      "decoded_revisions": 7,
+      "phone_width": 390,
+      "overflow": false,
+      "source_only": true,
+      "call_and_lineage_visible": true,
+      "hold_visible": true,
+      "browser": "154.0.8037.57"
+    },
+    "maintenance": "format/inventory/local links and unchanged live-source history passed"
+  }
+}
