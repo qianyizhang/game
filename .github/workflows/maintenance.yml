@@ -166,7 +166,9 @@ jobs:
       - uses: ./.github/actions/environment
       - run: npm ci
       - run: npm run format:check
-      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+      - uses: ./.github/actions/hosted-deps
+        with:
+          profile: media
       - run: node --test packages/workshop-tools/art/movies.test.ts packages/workshop-tools/art/golden-claw.test.ts
 
   integrity:
@@ -193,7 +195,7 @@ jobs:
         id: environment
       - run: npm ci
       - run: npm run format:maintenance && npm run assets:check
-      - uses: ./.github/actions/browser
+      - uses: ./.github/actions/hosted-deps
       - run: npm run test:browser:smoke
         timeout-minutes: 5
 

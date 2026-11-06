@@ -106,7 +106,7 @@ jobs:
             .node-version
       - uses: ./.github/actions/environment
       - run: npm ci
-      - uses: ./.github/actions/browser
+      - uses: ./.github/actions/hosted-deps
       - run: npm run ci -- run browser
         timeout-minutes: ${{ fromJSON(inputs.plan || needs.plan.outputs.plan).mode == 'full' && 75 || 12 }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

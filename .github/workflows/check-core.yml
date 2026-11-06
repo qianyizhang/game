@@ -52,9 +52,11 @@ jobs:
           enable-cache: true
       - run: uv sync --locked
         if: matrix.scope == 'style'
-      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+      - uses: ./.github/actions/hosted-deps
         if: matrix.scope == 'contracts'
-      - uses: ./.github/actions/browser
+        with:
+          profile: media
+      - uses: ./.github/actions/hosted-deps
         if: matrix.scope == 'smoke'
       - run: ${{ matrix.command }}
         timeout-minutes: 8
