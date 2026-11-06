@@ -1,0 +1,40 @@
+{
+  "model": "gpt-image-2.6-sunburst",
+  "n": 1,
+  "quality": "high",
+  "complexity": "high",
+  "kinds": {
+    "svg": {
+      "endpoint": "/v1/images/generations",
+      "output_format": "svg",
+      "size": "1280x896",
+      "svg": {
+        "model": "gpt-6.1-sol",
+        "reasoning": {
+          "effort": "medium"
+        }
+      }
+    },
+    "gif-edit": {
+      "endpoint": "/v1/images/edits",
+      "output_format": "gif",
+      "size": "480x336",
+      "frame_count": 16,
+      "frame_duration_ms": 300
+    }
+  },
+  "transport": "https://api.openai.com, inherited HTTPS proxy/TLS verification; OPENAI_API_TOKEN binding, value never retained",
+  "reconstruction": "Request = common fields + kind fields + call.prompt + call.inputs resolved in its story references.json, in order, as PNG data URLs. No retries. Returned format/size/quality matched request; empty data objects omitted.",
+  "reservations_usd": {
+    "svg": 3,
+    "gif-edit": 1.5
+  },
+  "rates_usd_per_million": {
+    "image_text_input": 5,
+    "image_input": 8,
+    "image_output": 30,
+    "svg_sol_input": 2,
+    "svg_sol_output": 10
+  },
+  "pricing_source": "https://developers.openai.com/api/docs/pricing"
+}

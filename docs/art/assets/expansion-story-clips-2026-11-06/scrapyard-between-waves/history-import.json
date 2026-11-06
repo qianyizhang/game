@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "assets": [],
+  "attempts": [
+    {
+      "id": "story-clips-20261106-scrapyard-between-waves-reference",
+      "title": "Between Waves \u00b7 SVG opening pilot",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Candidate fiction, author self-review only. Oversized wrench makes later lift/contact a motion gate; no GIF result or accepted canon.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/calls/reference.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/continuation-generation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/brief.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/review.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/validation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/README.md"
+      ]
+    },
+    {
+      "id": "story-clips-20261106-scrapyard-between-waves-chapter-1",
+      "title": "Between Waves \u00b7 Notice",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Original GIF chapter; observed grip event,unchanged loose fastener. Reference-to-GIF composition/texture drift and small ending motion remain documented.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/calls/chapter-1.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/continuation-generation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/references.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/reference.png",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/animation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/review.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/validation.json"
+      ]
+    },
+    {
+      "id": "story-clips-20261106-scrapyard-between-waves-chapter-2",
+      "title": "Between Waves \u00b7 Engage held trial",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Author hold: jaw engagement visible,but grip slides toward head and ring end leaves frame; rigid tool continuity unverified. No automatic retry.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/calls/chapter-2.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/continuation-generation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/references.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/reference.png",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/references/chapter-1-last.png",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/animation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/review.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/validation.json"
+      ]
+    },
+    {
+      "id": "story-clips-20261106-scrapyard-between-waves-chapter-2-r1",
+      "title": "Between Waves \u00b7 Engage continuity revision held",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Ring end remains visible and grip stays near it,but apparent length still decreases; author hold persists. Exact same two PNG inputs; no automatic retry.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/calls/chapter-2-r1.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/continuation-generation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/references.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/reference.png",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/references/chapter-1-last.png",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/animation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/review.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/validation.json"
+      ]
+    },
+    {
+      "id": "story-clips-20261106-scrapyard-between-waves-chapter-2-r2",
+      "title": "Between Waves \u00b7 final Engage repair held",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Single actual-endpoint PNG input. Full tool/ring visibility improves; apparent-length variation smaller and foreshortening plausible,but jaw/hex-fastener seating remains unconvincing. Finishing path stopped.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/calls/chapter-2-r2.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/continuation-generation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/references.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/references/chapter-1-last.png",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/animation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/review.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/validation.json"
+      ]
+    }
+  ],
+  "revisions": [
+    {
+      "id": "story-clips-20261106-scrapyard-between-waves-reference",
+      "asset": null,
+      "attempt": "story-clips-20261106-scrapyard-between-waves-reference",
+      "label": "Between Waves \u00b7 original SVG pilot",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/reference.svg",
+      "digest": "f81f4ef3c3b0630d1e26a33894e71fefe3a28c5030e66318bf607c6403c9b0a6",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original. Text-guided; existing source SVGs informed visual comparison, not actual image inputs. Source study only; no game slot or adoption."
+    },
+    {
+      "id": "story-clips-20261106-scrapyard-between-waves-chapter-1",
+      "asset": null,
+      "attempt": "story-clips-20261106-scrapyard-between-waves-chapter-1",
+      "label": "Between Waves \u00b7 chapter1 Notice original GIF",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/chapter-1.gif",
+      "digest": "255fefe79bc9a4b100e3b9b8cc88d295b4b9548e063c3c88dd3816280c4332e1",
+      "parents": ["story-clips-20261106-scrapyard-between-waves-reference"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API GIF original. Sixteen300ms frames,480x336. Single PNG input is the exact rasterization in references.json. Source study only; no accepted canon,game trigger or runtime consumer."
+    },
+    {
+      "id": "story-clips-20261106-scrapyard-between-waves-chapter-2",
+      "asset": null,
+      "attempt": "story-clips-20261106-scrapyard-between-waves-chapter-2",
+      "label": "Between Waves \u00b7 chapter2 Engage HELD tool-continuity trial",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/chapter-2.gif",
+      "digest": "aa352465be2f3644a75aefa8894bf00f280d57688d51717b79e28a4e6668e1a0",
+      "parents": [
+        "story-clips-20261106-scrapyard-between-waves-chapter-1",
+        "story-clips-20261106-scrapyard-between-waves-reference"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact original GIF,all16frames retained. Both actual inputs are PNG stills,not GIF-as-input. Held source-study evidence; not selected for a completed story or runtime."
+    },
+    {
+      "id": "story-clips-20261106-scrapyard-between-waves-chapter-2-r1",
+      "asset": null,
+      "attempt": "story-clips-20261106-scrapyard-between-waves-chapter-2-r1",
+      "label": "Between Waves \u00b7 chapter2-r1 HELD apparent-length study",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/chapter-2-r1.gif",
+      "digest": "b8f90d572fb9248ae28ab05d68340dc77f3e217691f5e22a4876ca30fa0c3698",
+      "parents": [
+        "story-clips-20261106-scrapyard-between-waves-chapter-2",
+        "story-clips-20261106-scrapyard-between-waves-chapter-1",
+        "story-clips-20261106-scrapyard-between-waves-reference"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact original GIF; all16frames retained. First parent identifies the revised held trial; actual API inputs were only the same opening/first-chapter endpoint PNGs. Ring/grip improved; constant apparent length not verified. No runtime or completed-story selection."
+    },
+    {
+      "id": "story-clips-20261106-scrapyard-between-waves-chapter-2-r2",
+      "asset": null,
+      "attempt": "story-clips-20261106-scrapyard-between-waves-chapter-2-r2",
+      "label": "Between Waves \u00b7 chapter2-r2 HELD fastener-contact study",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/scrapyard-between-waves/chapter-2-r2.gif",
+      "digest": "5027815c5cc5894ad46f8bb3814e69a2adfc4a9c81d5b4bc94d08ac950fdba10",
+      "parents": [
+        "story-clips-20261106-scrapyard-between-waves-chapter-2-r1",
+        "story-clips-20261106-scrapyard-between-waves-chapter-1"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact original GIF,all16frames. First parent identifies reviewed repair lineage; sole actual API input was chapter1 endpoint PNG,not prior held GIF. No completed-story/runtime selection. No Tighten/Test request followed."
+    }
+  ]
+}

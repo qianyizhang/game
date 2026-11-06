@@ -1,0 +1,43 @@
+{
+  "status": "returned",
+  "kind": "gif-edit",
+  "prompt": "Animate the supplied opening reference as CHAPTER ONE, Notice, of the candidate Scrapyard story Between Waves. Preserve the same small yellow-hooded survivor, dark featureless face opening, worn steel, exact image-left shoulder plate and proud hex fastener, opposite gloved hand, long wrench, ledge, palette, upper-left light and locked three-quarter camera. Keep the arm under the shoulder plate relaxed down; only the opposite arm on the image right reaches the tool across the lower torso. One connected figure with exactly two attached arms and two hands.\n\nThis is a single deliberate event, not a repeated idle loop. Across the first four frames the hood inclines slightly toward the loose shoulder fastener. Across the middle eight frames the opposite gloved hand moves a short distance down and right from its existing rest toward the ring-ended HANDLE on the left end of the wrench. The connected elbow/forearm extends naturally; the glove curls around that handle with visible contact. The wrench stays supported flat on the ledge, with its open jaw still pointing right and well clear of the shoulder. Across the final four frames hold this clear grip and the downward-looking pose. End ready to lift the tool in a LATER chapter; do not lift, rotate, tighten, shrink or flip the wrench now. Do not move the loose plate or fastener yet.\n\nUse all sixteen frames as readable small motions and settling,480x336,300ms each. Maintain subject scale and the original composition; no camera move, cuts, new eyes or face, additional figures/limbs/tools/plates, floating fingers, hand swaps, sparks, text or flashes. Existing chest and forearm armor may remain; do not multiply the single shoulder plate or hex fastener. Preserve the matte cut-plane illustration and quiet background. Candidate fiction only, not accepted history or a new game rule. Do not reset to the initial pose within the clip.",
+  "inputs": ["opening"],
+  "client_request_id": "b278a37b-ddeb-46cc-b2c1-3274c05d8c2a",
+  "started_at": "2026-11-06T16:50:52Z",
+  "settings_sha256": "e67c076000649183dc4cae965e72d99e3ebdd3491fda2bf0d6067af62c7e5825",
+  "grant_id": "story-scrapyard-gif-04",
+  "reservation_usd": 1.5,
+  "request_id": "req_3e3a2038129e4b5dbec7fd9ac6003312",
+  "http_status": 200,
+  "output": "chapter-1.gif",
+  "sha256": "255fefe79bc9a4b100e3b9b8cc88d295b4b9548e063c3c88dd3816280c4332e1",
+  "response": {
+    "created": 1793983893,
+    "background": "opaque",
+    "data": [
+      {
+        "generation_id": "9ae1d0ea-8a4e-4365-83ed-151675285b4b"
+      }
+    ],
+    "output_format": "gif",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "480x336",
+    "usage": {
+      "input_tokens": 1054,
+      "input_tokens_details": {
+        "image_tokens": 630,
+        "text_tokens": 424
+      },
+      "output_tokens": 1869,
+      "output_tokens_details": {
+        "image_tokens": 1869,
+        "text_tokens": 0
+      },
+      "total_tokens": 2923
+    }
+  },
+  "cost_estimate_usd": 0.06323,
+  "elapsed_s": 41.218
+}

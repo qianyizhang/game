@@ -1,0 +1,45 @@
+{
+  "status": "returned",
+  "kind": "svg",
+  "prompt": "Create ONE native editable SVG opening keyframe for an original Scrapyard story proposal, Between Waves. Landscape exactly 1280x896, viewBox=\"0 0 1280 896\". One opening scene only, no comic panels or later actions.\n\nA small survivor in an angular mustard-yellow hood and ragged yellow coat waits during a quiet interval between waves. The survivor has a broad dark face opening, no visible facial detail, short sturdy proportions, muted steel armor and dark forest-green gloves. LOCKED waist-up three-quarter view, figure occupying the left two-thirds, a narrow steel work ledge crossing the lower right. The near shoulder, on the LEFT side of the picture, matching the existing survivor reference, bears ONE broad muted steel shoulder plate. It remains attached by a short copper strap but tilts outward slightly; ONE large hexagonal fastener is visibly loose on the FRONT LOWER edge, where a hand from the opposite side could reach across the chest. Keep the shoulder, upper arm and torso physically connected. The arm below that plate hangs relaxed down, with a clearly connected elbow and forearm. The opposite forearm rests across the lower chest/ledge, its single gloved hand beside ONE broad open-ended wrench lying horizontally on the ledge. That is the hand that will later lift the wrench and reach across to tighten the fastener. Both arms belong to this one figure. Do not make an arm reach its own shoulder or duplicate hands. No tool touches the fastener yet. The hood is angled slightly down toward the loose plate. This is the initial state before repair, not an action montage. The wrench jaw and fastener should look mechanically compatible and stay large enough to read at 480x336.\n\nThe later story will show noticing the loose plate, picking up and seating the wrench, one short tightening turn, then lifting and lowering the repaired arm to test that the plate stays attached. Leave room around the near shoulder and above the ledge and to the left of the plate for these motions. Do not draw those future poses now. Exactly one person, one visible shoulder plate, one wrench and one readable fastener. No other tools, enemies, weapons, signs, text, panels, UI, sparks or motion effects. Quiet forest-dark background with broad negative space on the right, not a detailed shop interior.\n\nSTYLE: expressive cut-plane fantasy illustration, connected broad sculptural shapes, economical curved contours, upper-left diffuse cream light, three clear value groups. Recognizable angular yellow hood silhouette with a deep face opening and frayed cloth edges. Matte worn steel, coarse cloth, restrained copper; no plastic gloss, dense hatching or tiny clutter. Palette: ink #142622, forest #30483e, mustard #f4cf74, steel #a5b4a2, cream #e9dbb7 and copper #b97c5e. Generous safe margins. Native display 480x336, compact review 160x112. This is a candidate fictional scene inspired by existing survivor and Field repair artwork, not established history, a new game mechanic or a replacement game sprite.\n\nSelf-contained static editable SVG paths and simple shapes ONLY. No embedded raster, scripts, external references, fonts, text, numbers, logos, gradients or animation. Separate coherent groups for the survivor, attached plate, wrench, ledge and quiet backdrop. No contact sheet or new static asset family.",
+  "inputs": [],
+  "started_at": "2026-11-06T16:40:47Z",
+  "settings_sha256": "e67c076000649183dc4cae965e72d99e3ebdd3491fda2bf0d6067af62c7e5825",
+  "request_id": "req_110d598f61e347f09f19fa8c294ffe7f",
+  "http_status": 200,
+  "output": "reference.svg",
+  "sha256": "f81f4ef3c3b0630d1e26a33894e71fefe3a28c5030e66318bf607c6403c9b0a6",
+  "response": {
+    "created": 1793983292,
+    "background": "transparent",
+    "data": [{}],
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1280x896",
+    "svg_usage": {
+      "input_tokens": 2348,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 5895,
+      "reasoning_tokens": 903,
+      "total_tokens": 8243
+    },
+    "usage": {
+      "input_tokens": 762,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 762
+      },
+      "output_tokens": 1284,
+      "output_tokens_details": {
+        "image_tokens": 1284,
+        "text_tokens": 0
+      },
+      "total_tokens": 2046
+    }
+  },
+  "cost_estimate_usd": 0.105976,
+  "elapsed_s": 167.11,
+  "grant_id": "story-scrapyard-pilot-03",
+  "reservation_usd": 3
+}

@@ -1,0 +1,43 @@
+{
+  "status": "returned",
+  "kind": "gif-edit",
+  "prompt": "Create a targeted correction of CHAPTER TWO, Engage, for Between Waves. Image ONE is the identity/palette anchor; image TWO is the actual chapter-one ENDPOINT and owns the starting pose. Do not use a later failed pose. Same survivor,camera,matte painted texture,scale,glove already gripping the ring-ended HANDLE,wrench lying horizontal with jaw pointing right.\n\nThe concrete correction is RIGID TOOL AND GRIP CONTINUITY. Keep the complete wrench visible inside480x336 during the entire action. The SAME gloved hand grips beside the ring end throughout; the ring hole must stay directly beside/just beyond that glove, never become a long tail extending out of frame. Do not slide the hand toward the jaw, lengthen the shaft, resize the wrench or lose the ring. Treat the complete wrench as one rigid flat shape turning in the image plane,without depth push,foreshortening,stretching or change of apparent length. Rotate it about the held handle while the connected hand moves only a little up/left: from its lower-right waist position around(280,285) toward(270,265), not high up beside the shoulder. The jaw swings counterclockwise from right,through up,toward the loose shoulder fastener around(140,175). Final ring end remains visible just below/right of the working glove. These approximate image coordinates explain the reach; do not draw guides or labels.\n\nFirst four frames lift clear of the ledge,middle eight turn through the upper arc and seat the open jaw on the proud hex fastener,final four settle. Allow brief foreground overlap; do not pass through the shoulder or detach the elbow. The near arm beneath the image-left plate stays relaxed down. The fastener still stands proud and plate stays loose on its copper strap. STOP BEFORE TIGHTENING or an arm test. One continuous event,not a reset/idle loop.\n\nSixteen frames,300ms each,locked480x336. Same yellow hood,dark featureless face,one figure,two connected arms,two hands,one rigid complete ring-and-open-jaw wrench,one shoulder plate,one bolt,quiet background and ledge. No extra tools,eyes,text,sparks,flashes,cuts or zoom. Candidate fiction,not accepted canon or a new game rule.",
+  "inputs": ["opening", "chapter-1-last"],
+  "client_request_id": "55a18431-f21a-436c-8a01-5e799c92202d",
+  "started_at": "2026-11-06T17:10:00Z",
+  "settings_sha256": "e67c076000649183dc4cae965e72d99e3ebdd3491fda2bf0d6067af62c7e5825",
+  "grant_id": "story-scrapyard-gif-06",
+  "reservation_usd": 1.5,
+  "request_id": "req_978dcd8ac611469697a53f973d3a2728",
+  "http_status": 200,
+  "output": "chapter-2-r1.gif",
+  "sha256": "b8f90d572fb9248ae28ab05d68340dc77f3e217691f5e22a4876ca30fa0c3698",
+  "response": {
+    "created": 1793985048,
+    "background": "opaque",
+    "data": [
+      {
+        "generation_id": "b47209c3-2b99-4016-ac3f-594f0fb43cc0"
+      }
+    ],
+    "output_format": "gif",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "480x336",
+    "usage": {
+      "input_tokens": 1779,
+      "input_tokens_details": {
+        "image_tokens": 1260,
+        "text_tokens": 519
+      },
+      "output_tokens": 1869,
+      "output_tokens_details": {
+        "image_tokens": 1869,
+        "text_tokens": 0
+      },
+      "total_tokens": 3648
+    }
+  },
+  "cost_estimate_usd": 0.068745,
+  "elapsed_s": 47.754
+}

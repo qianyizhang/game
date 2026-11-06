@@ -1,0 +1,14 @@
+{
+  "svg_safety": "Passed production validateSvg;1280x896,86 leaf shapes,10 groups.",
+  "render": "Chromium154.0.8037.57,DPR1,unmodified whole-SVG PNG renders at1280x896,480x336,160x112;temporary only.",
+  "visual": "Notice useful. Three Engage attempts held. Final repair improves full-tool/ring/grip continuity; jaw appears at copper strap above hex fastener,so seating/repair remains unconvincing. No Tighten/Test.",
+  "history": "Passed production isolated import/verify and five source-study gallery cards including all three explicit held motion trials; canonical request/response inspected,0 selections,no runtime action. Baseline library unchanged;desktop and390/320px enlarged-text layout passed at publication.",
+  "animation": "Four exact original GIFs:16frames each,480x336,300ms each,4.8s. All64 composed RGBA frames inspected temporarily; extracted PNG pixels match original GIF composition.",
+  "review_harness_exception": "Initial gallery probe omitted the unassigned-source filter and showed no cards; corrected filter passed. No artwork or registry change was needed.",
+  "native_playback": "Chromium native GIF img real-time review near0.35s/4s,480x336,DPR1; no external requests/page errors. Visual witness only,no frame-exact screenshot or pause/seek claim.",
+  "decode_exception": "Pinned Python lacks Pillow; installed ImageMagick used. Its PNG writer warned about GIF C2PA profile text metadata; original GIF unchanged and every temporary PNG decoded to identical RGBA pixels. No extracted frame PNG retained.",
+  "reference_input": "Exact480x336 PNG,RGB8,opaque sRGB backdrop; bytes match actual sent input catalog and original rasterization. No optimization or recoloring.",
+  "rigidity_method": "Manual approximate2D ring/jaw landmarks: r1about178->133px; final repair sampled about160-175px. Several-pixel uncertainty and possible foreshortening; neither calibrated3D rigidity nor proof of deformation claimed.",
+  "stop": "Finite block stopped after1of3calls under visual stop rule;2unusedcalls/USD3returned. No paid activity or unknown billing remains locally.",
+  "independent_audit": "Read-only second worker at source0f980266 verified five outputs,settings,input hashes,all64 decoded frames/digests,cost0.370241 and visual samples; no preservation blocker. Current publication gallery/mobile checks rerun separately."
+}

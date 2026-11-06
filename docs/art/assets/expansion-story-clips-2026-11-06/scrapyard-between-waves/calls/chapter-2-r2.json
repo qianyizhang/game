@@ -1,0 +1,44 @@
+{
+  "status": "returned",
+  "kind": "gif-edit",
+  "prompt": "Repair the tool-continuity failure in CHAPTER TWO, Engage, of Between Waves. The SINGLE supplied PNG is the actual chapter-one endpoint and is the sole visual authority for identity,pose,scale,material and camera. Start from this exact low-waist grip and horizontal wrench. No conflicting earlier pose is supplied.\n\nKeep the complete wrench a single rigid flat shape in the image plane,with unchanged ring-to-jaw span and shaft width through all16frames. The glove holds beside the RING END throughout; ring hole remains visible just beside that glove. Do not slide the grip toward the head. The working glove MUST stay in the lower-right waist region,roughly x245-300,y245-300 of480x336. It must not reach up to the jaw or move far left across the chest. Wrist/forearm may rotate naturally while the glove shifts only about20px up/left. Keep elbow,forearm,glove and upper arm connected. This low stationary fulcrum is the precise correction: move the wrench around the held handle,not the hand toward the shoulder.\n\nFirst four frames lift the wrench only a little off the ledge. Middle eight: turn the same rigid wrench counterclockwise through the upper arc from pointing right,through up,toward the proud fastener on the image-left plate. The jaw reaches the fastener while the ring end stays visible near the low working glove,inside the frame. A short foreground overlap is allowed; do not shorten/stretch the shaft to reach,zoom,foreshorten or change tool geometry. Final four settle with jaw seated but fastener still proud and plate still loose. STOP BEFORE TIGHTENING. The arm below the plate remains down. No repaired-arm test.\n\nLocked480x336,300ms per frame,one continuous event,no reset. Whole wrench inside frame always; quiet background,steel ledge,yellow hood,dark featureless face,one survivor,two connected arms,two hands,one wrench,one shoulder plate,one bolt. Existing chest/forearm armor remains. No extra tools,eyes,text,flashes,sparks,cuts or camera motion. If the rigid tool would not reach,stop short instead of shrinking it. Candidate fiction only,not accepted history or new gameplay.",
+  "inputs": ["chapter-1-last"],
+  "client_request_id": "1730b8b0-4932-4840-a8b3-819b217cb249",
+  "started_at": "2026-11-06T17:20:49Z",
+  "settings_sha256": "e67c076000649183dc4cae965e72d99e3ebdd3491fda2bf0d6067af62c7e5825",
+  "grant_id": "story-scrapyard-finish-block-07",
+  "reservation_usd": 1.5,
+  "block_call_index": 1,
+  "request_id": "req_686e9df83ce5432fa7131ab2b409663f",
+  "http_status": 200,
+  "output": "chapter-2-r2.gif",
+  "sha256": "5027815c5cc5894ad46f8bb3814e69a2adfc4a9c81d5b4bc94d08ac950fdba10",
+  "response": {
+    "created": 1793985693,
+    "background": "opaque",
+    "data": [
+      {
+        "generation_id": "95ffa682-6438-424b-aae7-9df09855412c"
+      }
+    ],
+    "output_format": "gif",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "480x336",
+    "usage": {
+      "input_tokens": 1130,
+      "input_tokens_details": {
+        "image_tokens": 630,
+        "text_tokens": 500
+      },
+      "output_tokens": 1869,
+      "output_tokens_details": {
+        "image_tokens": 1869,
+        "text_tokens": 0
+      },
+      "total_tokens": 2999
+    }
+  },
+  "cost_estimate_usd": 0.06361,
+  "elapsed_s": 44.508
+}
