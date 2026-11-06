@@ -1,0 +1,22 @@
+{
+  "state": "proposal-not-dispatched-no-grant",
+  "endpoint": "https://api.openai.com/v1/images/edits",
+  "method": "POST multipart/form-data",
+  "automatic_retries": 0,
+  "image_form_field": "image[]",
+  "image_file": "reference-manual.png",
+  "image_sha256": "49e290e2d9d17691020b10b8f915a8ff9897dcae664ef6c2207167ba88f33c54",
+  "fields": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Animate the supplied manually composed Emberwake reference as the FIRST clip, Too Close, in a proposed two-clip story called An Empty Target. The image is an explicit manual composition of the existing accepted game figure, not a returned SVG generation. Keep its exact small cut-plane drawing, colors, proportions and frontal pose. This is a new GIF reference edit, not a retry or reconstruction of an earlier unknown SVG request.\n\nUse a locked 480 by 336 camera for twelve 160ms frames. The first frame should match the supplied composition. There is exactly one Mira at left and exactly one hostile fire projectile at right. Mira remains at the same scale and position, with both boots planted, her blue hood, swept cyan cape, fitted split coat, brass belt and the entire upright bronze crescent staff visible. Preserve the small warm staff ember. Keep all 35 source-shaped figure planes stable: do not redesign her face, invent a gaze turn, lift feet, raise hands, bend the staff, lengthen a cape or substitute a robed character. Do not animate her body in this first clip.\n\nThe single projectile is the only moving object: translate the existing warm orange circular head and its short rightward trail horizontally LEFT, at a fixed height of y=164. Its head begins at x=437, then moves approximately through x=418,400,381,362,344,325,306,287,269,250 and holds at 250 in the final frame. Keep the small head size, warm core and 26px trail pointing to the RIGHT throughout. It is not a spell fired by Mira. Do not bend it, make it grow, split it, create a second shot or add an impact. No fire damage or hit occurs during this clip.\n\nThe bare floor centered on x=355, with the future standing baseline near y=227, is the later landing place. At the start the shot is to its right. During this clip the shot must visibly pass LEFT of this space; by the ending even its rightmost trail must be left of x=300. The empty future figure footprint around x=302 to 415 stays free of objects. Do not draw Mira or a ghost there yet, and do not move her from her original left position. The teleport belongs to a separately funded later clip. End while the missile is still clearly separated from her present staff and body.\n\nAt most, in the last three frames, add a tiny restrained cold-cyan #99eaff glimmer immediately beside the existing free hand at about x=63,y=177. It must not obscure or reshape that hand, spread across her body or imply a shield. Keep the stone slabs, quiet rear wall, lighting, all floor seams and contact shadows fixed. No new caster, captions, arrows, destination marker, portal, ring, props, sparks, camera movement, cut, zoom, dissolve or loop reset. Hold the final state instead of returning the projectile to the opening. Candidate fiction assumes she has learned Teleport; this clip adds no gameplay rule or accepted history. Return one native GIF, not a sprite sheet or PNG frame catalogue.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "gif",
+    "size": "480x336",
+    "frame_count": 12,
+    "frame_duration_ms": 160
+  },
+  "planning_reservation_usd": 0.25,
+  "endpoint_enforced_cost_cap": false
+}

@@ -1,0 +1,70 @@
+{
+  "grant": "story-emberwake-gif-12",
+  "reserved_usd": 0.25,
+  "status": "returned",
+  "allowed_calls": 1,
+  "automatic_retries": 0,
+  "endpoint": "https://api.openai.com/v1/images/edits",
+  "method": "POST multipart/form-data",
+  "client_trace_id": "story-emberwake-gif-12-e521aaad-14ff-41f5-8c0a-378b35307695",
+  "multipart_boundary": "emberwake-e598ef5b-1153-4bcc-baa1-84e4c9f7038b",
+  "request_fields_source": "docs/art/iterations/files/story-emberwake-empty-target-composition-2026-11-06/first-gif-draft.json",
+  "request_fields_pointer": "/fields",
+  "request_source_commit": "8ad0f0e0c4abb5643659cb8ec57108c8f724bc83",
+  "request_source_sha256": "fcb11bd45e1c42e1bba1319e05a5660b42f5108bdc50da913c0a1d4f31177c96",
+  "request_fields_sha256": "24431c13f36d2a53d8b32d9d0f587983802f8de6c8826a17afb2ecaa6e757efd",
+  "reference": {
+    "field": "image[]",
+    "file": "docs/art/iterations/files/story-emberwake-empty-target-composition-2026-11-06/reference-manual.png",
+    "mime_type": "image/png",
+    "sha256": "49e290e2d9d17691020b10b8f915a8ff9897dcae664ef6c2207167ba88f33c54"
+  },
+  "prepared_at": "2026-11-06T21:04:21.934026+00:00",
+  "planning_bound_usd": 0.25,
+  "endpoint_enforced_charge_cap": false,
+  "shared_exposure_at_grant": {
+    "successful_estimates_usd": 6.760155,
+    "unknown_holds_usd": 28,
+    "this_grant_usd": 0.25,
+    "inclusive_usd": 35.010155,
+    "uncommitted_usd": 4.989845
+  },
+  "dispatched_at": "2026-11-06T21:04:53.727034+00:00",
+  "multipart_body_sha256": "c402b03944a3761b71837f7a6a2b38650a354d59da724155a6764c17fd60e5de",
+  "multipart_bytes": 18544,
+  "http_status": 200,
+  "request_id": "req_afe88892a69e46a28c9bfa4e62242ce3",
+  "response": {
+    "created": 1793999136,
+    "background": "transparent",
+    "output_format": "gif",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "480x336",
+    "usage": {
+      "input_tokens": 1303,
+      "input_tokens_details": {
+        "image_tokens": 630,
+        "text_tokens": 673
+      },
+      "output_tokens": 2126,
+      "output_tokens_details": {
+        "image_tokens": 2126,
+        "text_tokens": 0
+      },
+      "total_tokens": 3429
+    },
+    "data": [
+      {
+        "generation_id": "86acba75-0a8e-48a5-b42c-21abc06334eb"
+      }
+    ]
+  },
+  "original": "too-close-original.gif",
+  "original_sha256": "12fe7cf91b3a105c6ed201691c34b63d7ed9225fa867ff2cf0db534a896c0fe8",
+  "original_bytes": 327560,
+  "cost_estimate_usd": 0.072185,
+  "billing": "usage-derived-estimate-not-invoice",
+  "elapsed_seconds": 42.84,
+  "terminal_at": "2026-11-06T21:05:36.567411+00:00"
+}

@@ -1,0 +1,71 @@
+{
+  "grant": "story-scrapyard-still-live-14",
+  "status": "success_usage_returned",
+  "authorized_calls": 1,
+  "reservation_usd": 0.25,
+  "client_trace_id": "story-scrapyard-still-live-14-b79fcc8d-cb24-417d-87d5-9cd01b369d5f",
+  "endpoint": "https://api.openai.com/v1/images/edits",
+  "credential_binding": "OPENAI_API_TOKEN",
+  "retries": 0,
+  "redirects": false,
+  "source_commit": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "reference_sha256": "677497c46ecd194789e5d5762d798d179b61bd16634f44035342032d3bd3af64",
+  "inclusive_shared_exposure_usd_before_receipt": 35.33234,
+  "uncommitted_usd_at_grant": 4.66766,
+  "basis": {
+    "successful_estimates_usd": 6.83234,
+    "unknown_holds_usd": 28,
+    "other_lane_active_usd": 0.25,
+    "this_grant_usd": 0.25
+  },
+  "planning_bound_usd": 0.2476128,
+  "bound_basis": "Current official calculator formula: medium 480x336 gives 729 estimated output tokens per frame; conservatively sum all 8 = 5832 output tokens at $30/M. Reserve 3000 input text tokens at $5/M (prompt bytes below 3000), 2048 input image tokens at $8/M (one 480x336 reference; prior same-sized input 630 tokens), plus 20% contingency: (0.174960+0.015+0.016384)*1.2=$0.2476128. GIF pricing has no endpoint charge cap; calculator is an estimate, not a guarantee. Eight frames chosen to fit the finite planning reservation. No auto retries, no other paid calls.",
+  "docs_checked_utc": "2026-11-06",
+  "sources": [
+    "https://developers.openai.com/api/docs/guides/image-generation",
+    "https://developers.openai.com/api/reference/resources/images/methods/edit",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+    "https://developers.openai.com/_astro/GptImageTokenCalculator.react.0r3iPVP0.js"
+  ],
+  "historical_holds": "Historical tortoise/badger/equipment/brute/SVG-pilot unknown calls are unchanged, must never be retried, released or guessed successful. User reported approx $40 credit and expiry remain unverified.",
+  "dispatched_at_unix": 1794000462.1547766,
+  "http_status": 200,
+  "request_id": "req_7ab9d8cf9bb3456e8fdcdf34f3a3a313",
+  "elapsed_seconds": 25.685,
+  "usage": {
+    "input_tokens": 1172,
+    "input_tokens_details": {
+      "image_tokens": 630,
+      "text_tokens": 542
+    },
+    "output_tokens": 1109,
+    "output_tokens_details": {
+      "image_tokens": 1109,
+      "text_tokens": 0
+    },
+    "total_tokens": 2281
+  },
+  "created": 1794000487,
+  "results": [
+    {
+      "file": "apparent-victory.gif",
+      "bytes": 215586,
+      "sha256": "0e57c254bbcf367a8ed7cb36ccbd638ee6ab549a4d3d205842665efdc22594de",
+      "revised_prompt": null
+    }
+  ],
+  "estimated_cost_usd": 0.04102,
+  "cost_basis": "542 text input at $5/M + 630 image input at $8/M + 1109 image output at $30/M; usage-derived estimate, not invoice.",
+  "native_gif": {
+    "width": 480,
+    "height": 336,
+    "frames": 8,
+    "durations_ms": [200, 200, 200, 200, 200, 200, 200, 200],
+    "total_duration_ms": 1600,
+    "loop": 0,
+    "loop_note": "Raw bytes unchanged; loop=0 means infinite playback."
+  },
+  "review_status": "held_unadopted",
+  "unused_this_reservation_usd": 0.20898,
+  "review_summary": "Four pellets persist and defeat/scrap event reads. Hold for shifting transparent floor patches (24.88\u201332.52%), redraw drift and uneven pellet motion. No second call or reroll."
+}

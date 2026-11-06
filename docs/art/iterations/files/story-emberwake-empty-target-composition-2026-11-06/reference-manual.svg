@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 336" width="480" height="336">
+  <title>An Empty Target: manually composed accepted-art reference</title>
+  <desc>Candidate layout, not generated art or a gameplay screenshot. Unchanged accepted Mira at left; one left-moving fire projectile at far right; clear future landing floor at x=355. No API request produced this image.</desc>
+  <g id="manual-courtyard">
+    <rect width="480" height="336" fill="#353f49"/>
+    <path fill="#38424c" d="M0 104H480V164H0Z M0 232H480V296H0Z"/>
+    <path fill="#323d47" d="M0 296H480V336H0Z"/>
+    <path fill="none" stroke="#2b3540" stroke-width="1" d="M0 104H480 M0 164H480 M0 232H480 M0 296H480 M208 104V164 M394 104V164 M38 164V232 M246 164V232 M157 232V296 M412 232V296 M51 296V336 M292 296V336"/>
+    <path fill="none" stroke="#74818a" stroke-opacity="0.18" stroke-width="1" d="M1 105H479 M1 165H479 M1 233H479 M1 297H479"/>
+    <path fill="#252c35" d="M0 0H480V90H0Z"/>
+    <path fill="#34404b" d="M0 7H480V41H0Z M0 44H480V78H0Z"/>
+    <path fill="#38434d" d="M0 44H158V78H0Z M318 7H480V41H318Z"/>
+    <path fill="none" stroke="#252c35" stroke-width="2" d="M157 7V41 M317 7V41 M79 44V78 M239 44V78 M399 44V78"/>
+    <path fill="#46535e" d="M0 80H480V87H0Z"/>
+    <path fill="#75818a" fill-opacity="0.25" d="M0 79H480V81H0Z"/>
+    <path fill="#252c35" d="M0 87H480V93H0Z"/>
+  </g>
+  <ellipse cx="108" cy="226" rx="29" ry="5" fill="#111c27" fill-opacity="0.5"/>
+  <ellipse cx="146" cy="223" rx="5" ry="2" fill="#111c27" fill-opacity="0.5"/>
+  <g id="accepted-mira-time-zero" transform="translate(108 190) scale(2.5)">
+    <path fill="#172630" d="M-7-21L3-19L6-8L3 4L-8 14L-21 11L-15 3L-13-10Z"/>
+    <path fill="#285369" d="M-8-19L-2-16L0-4L-5 5L-17 11L-12 1L-11-9Z"/>
+    <path fill="#75cfe7" d="M-8-18L-5-18L-9-4L-8 3L-17 11L-13 4L-12-3Z"/>
+    <path fill="#a0dce1" d="M-16 10L-8 6L-9 9L-18 12Z"/>
+    <path fill="#17252e" d="M-5 1L1 1L0 10L-3 15L-9 15L-8 12Z M1 2L6 2L6 10L10 12L9 15L3 14L1 10Z"/>
+    <path fill="#9a8170" d="M-4 4L-1 4L-2 9L-5 11L-6 10Z M3 3L5 3L5 9L3 9Z"/>
+    <path fill="#638994" d="M-7 12L-3 12L-4 14L-8 14Z M4 12L8 12L9 14L4 13Z"/>
+    <path fill="#142a36" d="M-6-18L2-20L7-13L6-2L8 8L2 6L0 0L-3 9L-9 6L-6-4Z"/>
+    <path fill="#387f9c" d="M-5-16L1-18L4-13L3-5L0-1L-6 5L-4-5Z"/>
+    <path fill="#75cfe7" d="M-5-15L-1-16L0-9L-2-4L-6 5L-7 3Z"/>
+    <path fill="#b6e2de" d="M-5-15L-3-16L-2-11L-3-8L-5-8Z"/>
+    <path fill="#1e455f" d="M1-15L5-14L4-4L7 6L3 4L0-2Z"/>
+    <path fill="#cbac6b" d="M-7-3L5-5L5-2L-6 0Z M-1-4L1-4L1-1L-1-1Z"/>
+    <path fill="#162a34" d="M-6-16L-10-15L-12-7L-18-8L-20-4L-10-3L-6-9Z"/>
+    <path fill="#498ca5" d="M-8-14L-10-13L-11-6L-7-7Z"/>
+    <path fill="#ccb77c" d="M-13-7L-10-6L-11-3L-14-4Z"/>
+    <path fill="#e3b596" d="M-14-6L-18-7L-20-6L-18-3L-14-4Z"/>
+    <path fill="#172b36" d="M4-16L8-13L9-6L14-9L17-5L10 0L6-3L4-8Z"/>
+    <path fill="#75cfe7" d="M5-13L7-12L8-5L6-5Z"/>
+    <path fill="#cbb17b" d="M10-5L13-7L15-5L12-3Z"/>
+    <path fill="#17232d" d="M-6-23Q-6-30 0-30L5-26L5-18L1-15L-5-18Z"/>
+    <path fill="#bb8c71" d="M-3-26L1-27L3-24L2-20L-1-18L-4-21Z"/>
+    <path fill="#f0c4a3" d="M-3-25L0-26L1-23L0-20L-2-21Z"/>
+    <path fill="#252c37" d="M-5-26L-1-29L3-27L4-23L1-24L-1-27L-3-23L-4-18L-6-20Z"/>
+    <path fill="#3c7892" d="M-6-23L-7-27L-2-32L3-30L6-25L3-27L-1-29L-5-25Z"/>
+    <path fill="#75cfe7" d="M-7-27L-2-32L0-30L-5-25Z"/>
+    <path fill="#bad8d0" d="M-1-24L1-24L1-23L-1-23Z"/>
+    <path fill="#bb9b62" d="M-5-19L-1-17L4-20L4-17L0-14L-5-16Z"/>
+    <path fill="#1a2830" d="M14-22L18-22L17 13L13 13Z M16-34Q27-30 21-21L17-18L11-23L12-30Z"/>
+    <path fill="#91764e" d="M15-22L17-22L16 12L14 12Z"/>
+    <path fill="#d6bd7d" d="M16-32Q24-29 20-23L17-21L13-24L13-28L15-30L14-26L17-24L20-26L20-29Z"/>
+    <path fill="#efad66" d="M17-30L19-27L17-24L15-27Z"/>
+    <path fill="#ffe5ab" d="M17-29L18-27L17-26L16-27Z"/>
+    <path fill="#d9b293" d="M13-7L17-7L18-5L16-3L13-4Z"/>
+    <path fill="#dfc891" d="M14 7L16 7L16 9L14 9Z"/>
+  </g>
+  <g id="manual-approaching-projectile">
+    <path fill="none" stroke="#ff9952" stroke-width="8" stroke-opacity="0.14" stroke-linecap="round" d="M437 164L467 164"/>
+    <path fill="none" stroke="#ffb579" stroke-width="3" stroke-linecap="round" d="M437 164L463 164"/>
+    <circle cx="437" cy="164" r="5" fill="#ffb579"/>
+    <circle cx="436" cy="163" r="2" fill="#ffe5ab"/>
+  </g>
+</svg>
