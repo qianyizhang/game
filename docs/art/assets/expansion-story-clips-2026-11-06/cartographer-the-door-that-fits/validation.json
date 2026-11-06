@@ -12,5 +12,14 @@
   "history": "Passed production isolated import/verify,6 source-study revisions,0 selections; canonical requests/settings,actual references and nativeGIF controls inspected.",
   "exception": "Enlarged-text path overflow corrected; original failure logged in local inspection scratch.",
   "maintenance": "Passed repository format/inventory/links; original GIF/reference hashes and isolated imports verified. Source-only delivery, no game code or geometry changed.",
-  "browser_note": "Native ending was inspected visually after real-time playback. Byte preservation is established by decoded-GIF equality, not CSS screenshot equality."
+  "browser_note": "Native ending was inspected visually after real-time playback. Byte preservation is established by decoded-GIF equality, not CSS screenshot equality.",
+  "registration": {
+    "handoff_head": "a724112f0f3a0eaf437198946b3e151df447f642",
+    "source_records": "6 attempts/6 unassigned revisions; zero selections; no runtime mapping",
+    "preservation": "64 exact assembled RGBA frames/timings; aggregate072a131baef3841de998a1857c66c883022a5a62e7b3516f79a1ae0056ab48be. Four exact sent PNG hashes and three frame15 RGBA parents match. One shared continuation-generation.json unchanged.",
+    "gallery": "6 actual revisions, 20 exact desktop/mobile document views; play/stop/reduced-motion blocking, lineage, disabled Use,1440/390/320px at16/20px passed; no page errors.",
+    "blocker": "Once-playing assembled GIF Stop then Play retains final frame; actual compositorend == restart, first frame distinct. #142 shared fix pending; no pause/seek promised.",
+    "checks": "Full check:maintenance passed,202 tooling/81 DCC/19 Python plus lint/types/build. Three asset-history browser journeys passed at normal limits30.6s aggregate. Existing asset/source records and selected-art bytes unchanged; 20 other owned files exact. No game adoption, native geometry execution or aesthetic acceptance inferred.",
+    "transport": "Redundant history-import retired after canonical comparison and README consumer migration; originals/calls/inputs/assembly/review unchanged."
+  }
 }
