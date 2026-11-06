@@ -6657,6 +6657,86 @@
         "docs/art/assets/scrapyard-suite/visual-qa.json",
         "docs/art/assets/scrapyard-suite/technical-qa.json"
       ]
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-a",
+      "title": "ember-equipment-a · future concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Source study; exact request, usage, lineage and unchanged judgments in generation.json.",
+      "files": [
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-a/generation.json",
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-a/contact.png",
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/README.md",
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/study.json",
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/validation.json"
+      ]
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-b",
+      "title": "ember-equipment-b · future concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Source study; exact request, usage, lineage and unchanged judgments in generation.json.",
+      "files": [
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-b/generation.json",
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-b/contact.png"
+      ]
+    },
+    {
+      "id": "expansion-en-20261106/ember-skill-studies",
+      "title": "ember-skill-studies · future concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Source study; exact request, usage, lineage and unchanged judgments in generation.json.",
+      "files": [
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-skill-studies/generation.json",
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-skill-studies/contact.png"
+      ]
+    },
+    {
+      "id": "expansion-en-20261106/night-offering-instruments",
+      "title": "night-offering-instruments · future concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Source study; exact request, usage, lineage and unchanged judgments in generation.json.",
+      "files": [
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/night-offering-instruments/generation.json",
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/night-offering-instruments/contact.png"
+      ]
+    },
+    {
+      "id": "expansion-en-20261106/night-reliquaries",
+      "title": "night-reliquaries · future concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Source study; exact request, usage, lineage and unchanged judgments in generation.json.",
+      "files": [
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/night-reliquaries/generation.json",
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/night-reliquaries/contact.png"
+      ]
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-furnishings",
+      "title": "night-sanctum-furnishings · future concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Source study; exact request, usage, lineage and unchanged judgments in generation.json.",
+      "files": [
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-furnishings/generation.json",
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-furnishings/contact.png"
+      ]
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-plates",
+      "title": "night-sanctum-plates · future concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Source study; exact request, usage, lineage and unchanged judgments in generation.json.",
+      "files": [
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-plates/generation.json",
+        "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-plates/contact.png"
+      ]
     }
   ],
   "revisions": [
@@ -7819,6 +7899,622 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-a/sheet",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-a",
+      "label": "ember-equipment-a · exact packed original",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-a/sheet.svg",
+      "digest": "3db87c0a88dbc804a0885adb519465ef30627b1053c911c0c091e5e00c94745d",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded native original."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-a/briar-hook",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-a",
+      "label": "briar-hook · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-a/briar-hook.svg",
+      "digest": "d2006928619d45dde62f0ce30d1e99c9f3fd968298d18ec3b214de4f591b5268",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-a/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 1; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-a/saltglass-glaive",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-a",
+      "label": "saltglass-glaive · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-a/saltglass-glaive.svg",
+      "digest": "b6b4f53a85570d0d7b4128fae933d1cc46a47a1b461bed97b75fd4c8005300c3",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-a/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 2; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-a/bellows-maul",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-a",
+      "label": "bellows-maul · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-a/bellows-maul.svg",
+      "digest": "337b49892bffc749c9403cc4c92d3820157f1df73c83b5f08daeb0be5cff2640",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-a/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 3; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-a/ossuary-lantern-flail",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-a",
+      "label": "ossuary-lantern-flail · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-a/ossuary-lantern-flail.svg",
+      "digest": "403670b56d78a726d6f1cfb37ba8ce437d4936257a66d2fc8fbe22126093649b",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-a/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 4; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-a/furnace-kite",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-a",
+      "label": "furnace-kite · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-a/furnace-kite.svg",
+      "digest": "88f87dfb8d08505cd0356d9bcaaca6707a0c17a7777c8a55cd7f0de371997aad",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-a/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 5; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-a/reed-quiver",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-a",
+      "label": "reed-quiver · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-a/reed-quiver.svg",
+      "digest": "788197a0c00f52faf20195946f72e31fd3eacea827263c4a2a792742265099bf",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-a/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 6; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-b/sheet",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-b",
+      "label": "ember-equipment-b · exact packed original",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-b/sheet.svg",
+      "digest": "a1d09c1db4bfda1c60a6b2d9e4b849b8ea12e335f3c84ac9f3e4ffeee230547f",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded native original."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-b/cinder-mantle",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-b",
+      "label": "cinder-mantle · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-b/cinder-mantle.svg",
+      "digest": "b950321ade53d5188049b4b7f452aa50cc024b62fbd4224fc740ca36f5a51bc7",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-b/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 1; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-b/glassworker-visor",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-b",
+      "label": "glassworker-visor · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-b/glassworker-visor.svg",
+      "digest": "fed0a863be240097eacf91736088bbe1d6730c0eb349bac4c38f27fb3b639ef1",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-b/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 2; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-b/rootstep-boots",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-b",
+      "label": "rootstep-boots · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-b/rootstep-boots.svg",
+      "digest": "692e23bc60ff3b67f728fe9c6855cbf4e5762ab5fa01fa1c1f05c289edc0d1b3",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-b/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 3; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-b/choir-bracers",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-b",
+      "label": "choir-bracers · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-b/choir-bracers.svg",
+      "digest": "63a0317acb1cbb4ad5523f093e9d9da502fcc989fa006d8aadd895c15f6824c6",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-b/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 4; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-b/slag-belt",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-b",
+      "label": "slag-belt · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-b/slag-belt.svg",
+      "digest": "40895e6a9235b39cfe27b59eca24b9e7d4c492be9a9d64a21394bd0bf7ff3f5a",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-b/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 5; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-equipment-b/cistern-torc",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-equipment-b",
+      "label": "cistern-torc · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-equipment-b/cistern-torc.svg",
+      "digest": "bc7166eda3581946f2130fde2405fd1d25292fb7cac1fd847bacbf86f6fe25de",
+      "parents": [
+        "expansion-en-20261106/ember-equipment-b/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 6; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-skill-studies/sheet",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-skill-studies",
+      "label": "ember-skill-studies · exact packed original",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-skill-studies/sheet.svg",
+      "digest": "f0e224fbd30557a411d897eb844120dd580197bfc665d664e42d569affafa29f",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded native original."
+    },
+    {
+      "id": "expansion-en-20261106/ember-skill-studies/root-snag",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-skill-studies",
+      "label": "root-snag · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-skill-studies/root-snag.svg",
+      "digest": "56e2b6ebf7155061e7393e628ef05b687a403cbf0d959d69b14a08b2d22f5719",
+      "parents": [
+        "expansion-en-20261106/ember-skill-studies/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 1; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-skill-studies/glass-shear",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-skill-studies",
+      "label": "glass-shear · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-skill-studies/glass-shear.svg",
+      "digest": "65ab29804f296ee9ab0e25f81afea1b9f702e8ac02432c06c543f3f678bb2afd",
+      "parents": [
+        "expansion-en-20261106/ember-skill-studies/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 2; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-skill-studies/bell-repulse",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-skill-studies",
+      "label": "bell-repulse · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-skill-studies/bell-repulse.svg",
+      "digest": "e8eeda1aeb4b08e1c655edf305d972cd1b95983be6bd923b76e001b6c67cd2b8",
+      "parents": [
+        "expansion-en-20261106/ember-skill-studies/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 3; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-skill-studies/furnace-draft",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-skill-studies",
+      "label": "furnace-draft · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-skill-studies/furnace-draft.svg",
+      "digest": "46efc27066e0b254a5488d02805fef72ca3fe124c44eff383aaae8f81acdfb04",
+      "parents": [
+        "expansion-en-20261106/ember-skill-studies/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 4; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-skill-studies/ash-decoy",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-skill-studies",
+      "label": "ash-decoy · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-skill-studies/ash-decoy.svg",
+      "digest": "3523ae4f296c8a77413b3caec43f82272423d6d613fb7627d108886ccff6141d",
+      "parents": [
+        "expansion-en-20261106/ember-skill-studies/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 5; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/ember-skill-studies/rime-tether",
+      "asset": null,
+      "attempt": "expansion-en-20261106/ember-skill-studies",
+      "label": "rime-tether · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/ember-skill-studies/rime-tether.svg",
+      "digest": "de367a39d4f65fb88b27964cbd9eae31c0294101606451625ad5d85dc4a68763",
+      "parents": [
+        "expansion-en-20261106/ember-skill-studies/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 6; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-offering-instruments/sheet",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-offering-instruments",
+      "label": "night-offering-instruments · exact packed original",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-offering-instruments/sheet.svg",
+      "digest": "c2ec2145c612ad7b391466e99c9ed0785f8e0a4bd03586e4052946182031fdca",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded native original."
+    },
+    {
+      "id": "expansion-en-20261106/night-offering-instruments/aster-tuning-fork",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-offering-instruments",
+      "label": "aster-tuning-fork · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-offering-instruments/aster-tuning-fork.svg",
+      "digest": "0f746302f48da94ec189459aea072a96d7af5dec6b4483e5bd050ea73bf6cfbe",
+      "parents": [
+        "expansion-en-20261106/night-offering-instruments/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 1; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-offering-instruments/neris-tide-balance",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-offering-instruments",
+      "label": "neris-tide-balance · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-offering-instruments/neris-tide-balance.svg",
+      "digest": "e788da890896ad4445c5e3a3af667d73b4e2cd15f6292ba2b8c4b9a955d550cc",
+      "parents": [
+        "expansion-en-20261106/night-offering-instruments/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 2; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-offering-instruments/vesta-coal-tongs",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-offering-instruments",
+      "label": "vesta-coal-tongs · hold",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-offering-instruments/vesta-coal-tongs.svg",
+      "digest": "80f77ec198c5c38710deb8257db3aebb1635253a025087bccaa76a5ffd0e63a2",
+      "parents": [
+        "expansion-en-20261106/night-offering-instruments/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 3; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json. Hold: coal lacks clear support from both jaws."
+    },
+    {
+      "id": "expansion-en-20261106/night-offering-instruments/isen-stillness-chime",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-offering-instruments",
+      "label": "isen-stillness-chime · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-offering-instruments/isen-stillness-chime.svg",
+      "digest": "17906fa4499331afd63720117920a064cc3375ad03a7a34b11d6850078bc234d",
+      "parents": [
+        "expansion-en-20261106/night-offering-instruments/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 4; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-offering-instruments/nyra-witness-mirror",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-offering-instruments",
+      "label": "nyra-witness-mirror · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-offering-instruments/nyra-witness-mirror.svg",
+      "digest": "86f34b0ac9b5513670db0515f2ec5508608481ad366aebc7f2bdea2efcacf69e",
+      "parents": [
+        "expansion-en-20261106/night-offering-instruments/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 5; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-reliquaries/sheet",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-reliquaries",
+      "label": "night-reliquaries · exact packed original",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-reliquaries/sheet.svg",
+      "digest": "1b5ff469ae4066b9f6cfe2f464d343319c58a40544612fbb4acf0d9ce585d04d",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded native original."
+    },
+    {
+      "id": "expansion-en-20261106/night-reliquaries/aster-cloud-vessel",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-reliquaries",
+      "label": "aster-cloud-vessel · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-reliquaries/aster-cloud-vessel.svg",
+      "digest": "190ec90d78f76619db290c169ae470207e69c8dd7d95d89bc34b1ce8f2ce03dd",
+      "parents": [
+        "expansion-en-20261106/night-reliquaries/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 1; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-reliquaries/neris-current-coffer",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-reliquaries",
+      "label": "neris-current-coffer · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-reliquaries/neris-current-coffer.svg",
+      "digest": "4d2ac3c07f7474a263cb7657c0620add1b9ac2969891bfff43a43eecce56e299",
+      "parents": [
+        "expansion-en-20261106/night-reliquaries/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 2; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-reliquaries/vesta-ember-press",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-reliquaries",
+      "label": "vesta-ember-press · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-reliquaries/vesta-ember-press.svg",
+      "digest": "82792f4a5ecb73cbed999fbcc3aec14aaf25fae1375ba15b0b15956ad8e3d52b",
+      "parents": [
+        "expansion-en-20261106/night-reliquaries/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 3; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-reliquaries/isen-salt-casket",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-reliquaries",
+      "label": "isen-salt-casket · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-reliquaries/isen-salt-casket.svg",
+      "digest": "d7cb385e8f433361e7e8b2de2ffe04af57432b2cd5bcc2a5287da3786fb5b3e6",
+      "parents": [
+        "expansion-en-20261106/night-reliquaries/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 4; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-reliquaries/nyra-folded-screen",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-reliquaries",
+      "label": "nyra-folded-screen · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-reliquaries/nyra-folded-screen.svg",
+      "digest": "308540ee6db88e702111a947175476e50c889e6e77aa1452b4d183e0f3875071",
+      "parents": [
+        "expansion-en-20261106/night-reliquaries/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 5; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-furnishings/sheet",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-furnishings",
+      "label": "night-sanctum-furnishings · exact packed original",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-furnishings/sheet.svg",
+      "digest": "cd114a625da239164b637dba6793d41d5618233195979b813c42270713fd198a",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded native original."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-furnishings/aster-reading-desk",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-furnishings",
+      "label": "aster-reading-desk · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-furnishings/aster-reading-desk.svg",
+      "digest": "b2e7ee5a7d291a8ae3e2ae28898f9d12dece715180cb605e568af3b6b4022556",
+      "parents": [
+        "expansion-en-20261106/night-sanctum-furnishings/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 1; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-furnishings/neris-footbath",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-furnishings",
+      "label": "neris-footbath · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-furnishings/neris-footbath.svg",
+      "digest": "83ac8c1d8960b957ed891ecea442a3cd5d657e649d7d79191ec5f27a79d9a590",
+      "parents": [
+        "expansion-en-20261106/night-sanctum-furnishings/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 2; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-furnishings/vesta-warming-bench",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-furnishings",
+      "label": "vesta-warming-bench · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-furnishings/vesta-warming-bench.svg",
+      "digest": "8d52b34e22252a6f7911e2a4875bd8b2e7de2af5cb62ebf141e4654a13ca4072",
+      "parents": [
+        "expansion-en-20261106/night-sanctum-furnishings/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 3; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-furnishings/isen-resting-cradle",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-furnishings",
+      "label": "isen-resting-cradle · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-furnishings/isen-resting-cradle.svg",
+      "digest": "768ead008a1b1de972d5900c5ca60f186a6cb397e2eb1caab861cc40897c4240",
+      "parents": [
+        "expansion-en-20261106/night-sanctum-furnishings/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 4; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-furnishings/nyra-curtain-frame",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-furnishings",
+      "label": "nyra-curtain-frame · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-furnishings/nyra-curtain-frame.svg",
+      "digest": "7bbf9b95d443ffa159fc082014a0d133289f61896589fa8de6d18a7146d3c925",
+      "parents": [
+        "expansion-en-20261106/night-sanctum-furnishings/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 5; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-plates/sheet",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-plates",
+      "label": "night-sanctum-plates · exact packed original",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-plates/sheet.svg",
+      "digest": "7ea85997ad50a188c7008fc9292a87cb03e72d5c994b145a352162420bd74007",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded native original."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-plates/aster-listening-alcove",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-plates",
+      "label": "aster-listening-alcove · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-plates/aster-listening-alcove.svg",
+      "digest": "49a5f76fd11ec0fab2560a05bfd2ef8e27cad31bf67996f0e6fe7ce24b08eb06",
+      "parents": [
+        "expansion-en-20261106/night-sanctum-plates/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 1; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-plates/neris-water-table",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-plates",
+      "label": "neris-water-table · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-plates/neris-water-table.svg",
+      "digest": "205c31cb47ea92bf9a3a2591f37a0dbc9afa361647f54532ed4bb1ee8d626cb9",
+      "parents": [
+        "expansion-en-20261106/night-sanctum-plates/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 2; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-plates/vesta-bread-stone",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-plates",
+      "label": "vesta-bread-stone · candidate-with-caveat",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-plates/vesta-bread-stone.svg",
+      "digest": "378be5267e1af9888713aa5624d63b3374b3d73ebcfea252a734a30666a65ba7",
+      "parents": [
+        "expansion-en-20261106/night-sanctum-plates/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 3; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-plates/isen-quiet-ledge",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-plates",
+      "label": "isen-quiet-ledge · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-plates/isen-quiet-ledge.svg",
+      "digest": "350b092ecf43e0601da7273efa77df6c44277a7eeb5bedee0017722f568e22fa",
+      "parents": [
+        "expansion-en-20261106/night-sanctum-plates/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 4; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
+    },
+    {
+      "id": "expansion-en-20261106/night-sanctum-plates/nyra-unseen-seat",
+      "asset": null,
+      "attempt": "expansion-en-20261106/night-sanctum-plates",
+      "label": "nyra-unseen-seat · candidate",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-sanctum-plates/nyra-unseen-seat.svg",
+      "digest": "f4bc446d9909030bd0a09ac85d1045fb5d12de44637bf966441ffee76a4ec260",
+      "parents": [
+        "expansion-en-20261106/night-sanctum-plates/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Ordered source cell 5; copy named group, remove grid translation and preserve paint. Exact author finding in generation.json."
     }
   ]
 }

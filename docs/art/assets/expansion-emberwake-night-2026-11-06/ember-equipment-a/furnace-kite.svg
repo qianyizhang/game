@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="furnace-kite">
+    <rect width="480" height="336" fill="#10232c"/>
+    <path d="M94 300L290 282 391 294 328 309 204 312Z" fill="#1b3038"/>
+    <g stroke="#10232c" stroke-width="2.5" stroke-linejoin="round">
+      <path d="M164 53L298 32 355 88 318 190 294 279 211 306 97 287 112 223 132 136C153 144 171 130 167 113 165 99 155 91 145 91Z" fill="#26373d"/>
+      <path d="M164 53L298 32 275 123 236 177 110 274 132 136C153 144 171 130 167 113 165 99 155 91 145 91Z" fill="#53666a"/>
+      <path d="M164 53L298 32 275 51 183 72 158 93 145 91Z" fill="#95a6aa"/>
+      <path d="M280 48L260 113 222 157 183 182 201 135 216 110 236 89 241 70Z" fill="#78898b" stroke="none"/>
+      <path d="M110 274L236 177 275 123 239 252 210 294 105 282Z" fill="#34464b"/>
+      <path d="M167 61L153 88C174 94 183 115 172 131 162 147 146 150 132 143L110 238" fill="none" stroke="#78898b" stroke-width="3"/>
+      <path d="M145 96C160 96 171 109 167 122 164 135 151 141 138 136" fill="none" stroke="#b68d62" stroke-width="2"/>
+      <path d="M298 32L327 52 362 91 339 99 325 163 327 189 307 198 298 244 240 284 209 301 236 177 269 125C288 97 294 63 298 32Z" fill="#a46c50"/>
+      <path d="M298 32L327 52 362 91 305 120 269 141C287 101 293 68 298 32Z" fill="#ca8c65"/>
+      <path d="M298 32C306 65 306 85 291 118L269 141 305 120 339 100 327 145 306 159 299 181 272 192 256 249 240 284 209 301 236 177 269 125C288 97 294 63 298 32Z" fill="#b77b58" stroke="none"/>
+      <path d="M305 120L339 100 325 163 327 189 307 198 288 211 256 249 272 192 299 181Z" fill="#865b46" stroke="none"/>
+      <path d="M240 284L298 244 307 198 288 211 256 249Z" fill="#634a40" stroke="none"/>
+      <path d="M300 37C302 75 291 111 275 133M306 44L340 80M278 146L313 127M244 214L239 242M280 221L291 209" fill="none" stroke="#dfa078" stroke-width="2"/>
+      <path d="M339 100L305 120 269 141M327 189C303 193 277 219 256 249" fill="none" stroke="#513f37" stroke-width="3"/>
+      <path d="M105 269C139 282 176 287 213 291L294 253 292 279 211 307 96 288Z" fill="#78898b"/>
+      <path d="M105 269C139 282 176 287 213 291L294 253 291 261 214 299 103 279Z" fill="#b4b8a7"/>
+      <path d="M104 283L211 303 292 272 292 279 211 311 96 291 96 282Z" fill="#34464b"/>
+      <circle cx="121" cy="285" r="6" fill="#34464b"/>
+      <path d="M118 282L122 281" stroke="#ead7b5" stroke-width="2"/>
+      <circle cx="188" cy="297" r="6" fill="#34464b"/>
+      <path d="M185 294L189 293" stroke="#ead7b5" stroke-width="2"/>
+      <circle cx="274" cy="275" r="4" fill="#34464b"/>
+      <circle cx="268" cy="153" r="6" fill="#34464b"/>
+      <path d="M265 150L269 149" stroke="#95a6aa" stroke-width="2"/>
+      <circle cx="251" cy="206" r="6" fill="#34464b"/>
+      <path d="M248 203L252 202" stroke="#95a6aa" stroke-width="2"/>
+      <circle cx="233" cy="257" r="6" fill="#34464b"/>
+      <path d="M230 254L234 253" stroke="#95a6aa" stroke-width="2"/>
+      <path d="M182 199L197 184M153 219L164 210M176 239L197 221M213 124L224 109M198 158L205 147" fill="none" stroke="#65787a" stroke-width="2"/>
+    </g>
+  </g>
+
+  </svg>
