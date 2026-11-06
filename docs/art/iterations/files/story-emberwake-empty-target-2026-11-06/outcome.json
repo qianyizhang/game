@@ -1,0 +1,19 @@
+{
+  "grant": "story-emberwake-pilot-11",
+  "reserved_usd": 3.0,
+  "status": "prepared-not-dispatched",
+  "client_trace_id": "story-emberwake-pilot-11-45340a68-266b-4689-b764-7c8aaea9223e",
+  "endpoint": "https://api.openai.com/v1/images/generations",
+  "automatic_retries": 0,
+  "allowed_calls": 1,
+  "request_sha256": "41cba59fed495e3a179b2a59af0cf21fca74ef4414f3d1df9e0541b5e097943f",
+  "prepared_at": "2026-11-06T20:44:02.732622+00:00",
+  "shared_planning_usd": {
+    "successful_usage_estimates": 6.645626,
+    "unresolved_historical_reservations": 25,
+    "separate_acolyte_grant": 4.2,
+    "this_grant": 3,
+    "inclusive_total": 38.845626,
+    "uncommitted": 1.154374
+  }
+}
