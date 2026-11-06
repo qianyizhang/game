@@ -15,6 +15,14 @@ let state: HistoryState;
 let busy = false;
 let artwork = new AbortController();
 let artworkRequests = new Map<string, Promise<string>>();
+interface GifPlayback {
+  controller: AbortController;
+  reset: () => void;
+  image?: HTMLImageElement;
+  url?: string;
+}
+const gifPlaybacks = new Map<Element, GifPlayback>();
+const attachmentReads = new Map<Element, AbortController>();
 let removeId: string | undefined;
 let removeKind: 'revision' | 'attempt' = 'revision';
 
@@ -39,6 +47,7 @@ function report(error: unknown) {
 async function act(action: () => Promise<unknown>, message: string) {
   if (busy) return;
   busy = true;
+  stopPreviews();
   artwork.abort();
   for (const button of detail.querySelectorAll('button')) button.disabled = true;
   try {
@@ -55,23 +64,85 @@ async function act(action: () => Promise<unknown>, message: string) {
   }
 }
 /** A view owns its requests; changing assets or reloading discards every old result. */
-function artworkUrl(kind: 'asset' | 'revision', id: string): Promise<string> {
+function readArtwork(kind: 'asset' | 'revision', id: string, signal: AbortSignal): Promise<string> {
   if (!state.live) return Promise.resolve((kind === 'asset' ? state.current : state.previews)[id]);
+  return request<HistoryDocument>(
+    `api/artwork?${kind}=${encodeURIComponent(id)}&version=${encodeURIComponent(state.version)}`,
+    undefined,
+    signal,
+  ).then((document) => {
+    if (document.kind !== 'image') throw new Error('Artwork preview is unavailable.');
+    return document.url;
+  });
+}
+function artworkUrl(kind: 'asset' | 'revision', id: string): Promise<string> {
   const key = kind + ':' + id;
   let pending = artworkRequests.get(key);
   if (!pending) {
-    pending = request<HistoryDocument>(
-      `api/artwork?${kind}=${encodeURIComponent(id)}&version=${encodeURIComponent(state.version)}`,
-      undefined,
-      artwork.signal,
-    ).then((document) => {
-      if (document.kind !== 'image') throw new Error('Artwork preview is unavailable.');
-      return document.url;
-    });
+    pending = readArtwork(kind, id, artwork.signal);
     artworkRequests.set(key, pending);
   }
   return pending;
 }
+
+function stopGif(container: Element) {
+  const playback = gifPlaybacks.get(container);
+  if (!playback) return;
+  gifPlaybacks.delete(container);
+  playback.controller.abort();
+  playback.image?.removeAttribute('src');
+  playback.image?.remove();
+  if (playback.url) URL.revokeObjectURL(playback.url);
+  playback.reset();
+}
+function stopPreviews() {
+  for (const container of [...gifPlaybacks.keys()]) stopGif(container);
+  for (const controller of attachmentReads.values()) controller.abort();
+  attachmentReads.clear();
+}
+
+/** Fresh native image identity restarts one-shot GIFs; original download bytes stay untouched. */
+function playGif(
+  container: Element,
+  load: (signal: AbortSignal) => Promise<string>,
+  alt: string,
+  reset: () => void,
+  stopLabel = 'Stop GIF',
+) {
+  stopGif(container);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    status.textContent = 'GIF playback is disabled by reduced motion.';
+    reset();
+    return;
+  }
+  const playback: GifPlayback = { controller: new AbortController(), reset };
+  gifPlaybacks.set(container, playback);
+  const stop = document.createElement('button');
+  stop.textContent = stopLabel;
+  stop.addEventListener('click', () => stopGif(container));
+  container.replaceChildren(document.createTextNode('Loading GIF…'), stop);
+  void (async () => {
+    const source = await load(playback.controller.signal);
+    const response = await fetch(source, { signal: playback.controller.signal });
+    if (!response.ok) throw new Error('GIF preview is unavailable.');
+    const blob = await response.blob();
+    if (playback.controller.signal.aborted || gifPlaybacks.get(container) !== playback) return;
+    if (!container.isConnected || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      stopGif(container);
+      return;
+    }
+    playback.url = URL.createObjectURL(blob);
+    playback.image = document.createElement('img');
+    playback.image.src = playback.url;
+    playback.image.alt = alt;
+    container.replaceChildren(playback.image, stop);
+  })().catch((error: unknown) => {
+    if (playback.controller.signal.aborted || gifPlaybacks.get(container) !== playback) return;
+    stopGif(container);
+    report(error);
+  });
+}
+
 function showArtwork(
   container: Element,
   kind: 'asset' | 'revision',
@@ -104,6 +175,7 @@ function revisionCard(revision: ArtRevision) {
   return `<article class="revision" data-revision="${escape(revision.id)}"><div class="revision-head"><h3>${escape(revision.label)}</h3>${selected ? '<span class="badge">In game · canonical</span>' : ''}${!revision.runtimeFile ? '<span class="badge">Source study</span>' : ''}</div><p>${escape(revision.notes)}</p><div class="revision-preview">${animated ? '<button data-play>Play GIF</button>' : '<p>Loading artwork…</p>'}</div><p class="source-note">${escape(revision.id)}</p><div class="actions"><button data-use${!state.live || !revision.runtimeFile || !asset || selected ? ' disabled' : ''}>${selected ? 'Used in game' : 'Use in game'}</button><button data-enlarge>${animated ? 'Download GIF' : 'Inspect source'}</button><button data-remove${!state.live || selected ? ' disabled' : ''}>Remove</button></div>${!state.live ? '<p>Offline snapshot · open the local gallery to change selections or remove records.</p>' : !revision.runtimeFile ? '<p>No game-compatible adaptation is registered for this source.</p>' : ''}${attemptDetails(attempt)}<details><summary>Lineage and files</summary><p>${escape(revision.file)}</p><p>${revision.parents.length ? 'Parents: ' + revision.parents.map(escape).join(', ') : 'Earlier parentage is unknown or this is a source checkpoint.'}</p></details></article>`;
 }
 function renderDetail() {
+  stopPreviews();
   artwork.abort();
   artwork = new AbortController();
   artworkRequests = new Map();
@@ -193,20 +265,14 @@ function renderDetail() {
         preview.replaceChildren(image);
       });
     });
-    article.querySelector('[data-play]')?.addEventListener('click', () => {
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        status.textContent = 'GIF playback is disabled by reduced motion.';
-        return;
-      }
-      showArtwork(preview, 'revision', revision.id, (url) => {
-        const image = document.createElement('img');
-        image.src = url;
-        image.alt = revision.label;
-        const stop = document.createElement('button');
-        stop.textContent = 'Stop GIF';
-        stop.addEventListener('click', renderDetail);
-        preview.replaceChildren(image, stop);
-      });
+    const play = article.querySelector<HTMLButtonElement>('[data-play]');
+    play?.addEventListener('click', () => {
+      playGif(
+        preview,
+        (signal) => readArtwork('revision', revision.id, signal),
+        revision.label,
+        () => preview.replaceChildren(play),
+      );
     });
   }
   bindFiles(detail);
@@ -219,30 +285,80 @@ function bindFiles(parent: HTMLElement) {
   for (const button of parent.querySelectorAll<HTMLButtonElement>('[data-file]')) {
     button.disabled = !state.live && !state.documents?.[button.dataset.file!];
     button.addEventListener('click', () => {
+      const file = button.dataset.file!;
+      const owner = button.closest('details')!;
+      attachmentReads.get(owner)?.abort();
+      attachmentReads.delete(owner);
+      for (const preview of owner.querySelectorAll('[data-file-preview]')) {
+        stopGif(preview);
+        preview.remove();
+      }
+      if (file.toLowerCase().endsWith('.gif')) {
+        const container = button.closest('details')!;
+        const pre = container.querySelector('pre')!;
+        pre.hidden = true;
+        const copy = container.querySelector<HTMLButtonElement>('[data-copy]');
+        if (copy) copy.hidden = true;
+        const preview = document.createElement('div');
+        preview.dataset.filePreview = '';
+        preview.className = 'attachment-preview';
+        pre.after(preview);
+        playGif(
+          preview,
+          async (signal) => {
+            const fileDocument =
+              state.documents?.[file] ??
+              (await request<HistoryDocument>(
+                'api/file?file=' + encodeURIComponent(file),
+                undefined,
+                signal,
+              ));
+            if (fileDocument.kind !== 'image' || !fileDocument.animated)
+              throw new Error('GIF attachment is unavailable.');
+            return fileDocument.url;
+          },
+          file.split('/').at(-1)!,
+          () => preview.remove(),
+          'Close attachment',
+        );
+        return;
+      }
+      const controller = new AbortController();
+      const signal = controller.signal;
+      attachmentReads.set(owner, controller);
       void (async () => {
         const fileDocument =
           state.documents?.[button.dataset.file!] ??
           (await request<HistoryDocument>(
             'api/file?file=' + encodeURIComponent(button.dataset.file!),
+            undefined,
+            signal,
           ));
+        if (signal.aborted || !button.isConnected) return;
         const container = button.closest('details')!;
         const pre = container.querySelector('pre')!;
         let copy = container.querySelector<HTMLButtonElement>('[data-copy]');
-        container.querySelector('[data-file-preview]')?.remove();
         if (fileDocument.kind === 'image') {
           pre.hidden = true;
           if (copy) copy.hidden = true;
           const preview = window.document.createElement('div');
           preview.dataset.filePreview = '';
           preview.className = 'attachment-preview';
-          if (fileDocument.animated && matchMedia('(prefers-reduced-motion: reduce)').matches)
-            preview.textContent = 'GIF playback is disabled by reduced motion.';
-          else {
-            const image = window.document.createElement('img');
-            image.src = fileDocument.url;
-            image.alt = button.dataset.file!.split('/').at(-1)!;
-            preview.append(image);
+          if (fileDocument.animated) {
+            pre.after(preview);
+            playGif(
+              preview,
+              () => Promise.resolve(fileDocument.url),
+              file.split('/').at(-1)!,
+              () => preview.remove(),
+              'Close attachment',
+            );
+            return;
           }
+          const image = window.document.createElement('img');
+          image.src = fileDocument.url;
+          image.alt = file.split('/').at(-1)!;
+          preview.append(image);
           const close = window.document.createElement('button');
           close.textContent = 'Close attachment';
           close.addEventListener('click', () => preview.remove());
@@ -269,7 +385,13 @@ function bindFiles(parent: HTMLElement) {
               });
           });
         }
-      })().catch(report);
+      })()
+        .catch((error: unknown) => {
+          if (!signal.aborted) report(error);
+        })
+        .finally(() => {
+          if (attachmentReads.get(owner) === controller) attachmentReads.delete(owner);
+        });
     });
   }
 }
@@ -327,6 +449,7 @@ function render() {
   bindFiles(element('failures'));
 }
 element('reload').addEventListener('click', () => {
+  stopPreviews();
   if (state.live) void act(() => Promise.resolve(), 'History reloaded.');
   else status.textContent = 'This is an offline snapshot; rebuild the export to refresh it.';
 });
@@ -335,17 +458,24 @@ collection.addEventListener('change', renderList);
 matchMedia('(max-width: 720px)').addEventListener('change', (event) => {
   if (event.matches && location.hash) element<HTMLDetailsElement>('browse').open = false;
 });
-matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (event) => {
-  renderDetail();
-  if (event.matches)
-    for (const preview of document.querySelectorAll<HTMLElement>('[data-file-preview]')) {
-      const image = preview.querySelector('img');
-      if (image?.src.startsWith('data:image/gif')) {
-        image.remove();
-        preview.prepend('GIF playback is disabled by reduced motion.');
-      }
+matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', renderDetail);
+document.addEventListener(
+  'toggle',
+  (event) => {
+    const disclosure = event.target;
+    if (disclosure instanceof HTMLDetailsElement && !disclosure.open) {
+      for (const container of [...gifPlaybacks.keys()])
+        if (disclosure.contains(container)) stopGif(container);
+      for (const [container, controller] of attachmentReads)
+        if (disclosure.contains(container)) {
+          controller.abort();
+          attachmentReads.delete(container);
+        }
     }
-});
+  },
+  true,
+);
+window.addEventListener('pagehide', stopPreviews);
 window.addEventListener('hashchange', () => {
   renderList();
   renderDetail();

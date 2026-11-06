@@ -17,6 +17,10 @@ JPEG, WebP and GIF use their actual MIME type; `.svg.gz` originals are decoded
 within a 16 MiB bound and checked as static SVG without changing archive bytes.
 Source evidence retains its natural aspect ratio. Preview support does not make
 an archive or raster image a game-compatible SVG adaptation.
+Each explicit GIF play starts at the beginning, including completed one-shot
+clips. Stop, attachment/disclosure dismissal, navigation, reload and reduced
+motion cancel pending playback and release temporary player resources. Downloads
+preserve the original GIF bytes; no stored frame catalog is created.
 
 ## Save, compare and use
 
