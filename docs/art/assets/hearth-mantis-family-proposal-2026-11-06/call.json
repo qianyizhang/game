@@ -1,0 +1,25 @@
+{
+  "state": "reserved-not-dispatched",
+  "grant": {
+    "id": "character-mantis-pilot-02",
+    "maximum_planning_reservation_usd": 4.2,
+    "scope": "One never-dispatched Briar Mantis NORMAL only; no ascended, retry or other request."
+  },
+  "request_file": "pilot-request.json",
+  "request_sha256": "0b156ccbce9eec21e85075e5333f206269f485361f1cfe131879ea134f48d31f",
+  "reservation_basis": "README.md#proposed-bound-and-funding-gate; image-side token allowance is a planning assumption, not an enforced API cap. Standard processing only.",
+  "opening": {
+    "known_usage_estimate_usd": 0.750694,
+    "unknown_tortoise_usd": 7.5,
+    "unknown_badger_usd": 7.5,
+    "owner_receipt_commit": "28734956a69f613992189783680e7a7b57023a28"
+  },
+  "transport": {
+    "endpoint": "https://api.openai.com/v1/images/generations",
+    "client_timeout_seconds": 1800,
+    "automatic_retries": 0,
+    "redirects": false,
+    "tls_verification": true
+  },
+  "review": "pending; no aesthetic acceptance"
+}
