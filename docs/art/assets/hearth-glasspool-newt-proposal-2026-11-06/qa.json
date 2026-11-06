@@ -78,5 +78,11 @@
     "isolated_history_gallery": "Disposable Git clone import/verify passed (709 assets, 96 revisions, zero selections, 709 registered sources). Existing focused history UI decoded all four revisions and exposed exact request/receipt/trace and parent linkage at 1440/390px with zero page errors; mutation controls disabled.",
     "scope": "Source candidates only; no shared registry, runtime/default, frozen branch or dependency changes.",
     "preservation_exception": "Whitespace-only lines inherited in exact generated SVG bytes are preserved; git diff --check may report those lines, not artwork corruption."
+  },
+  "registration": {
+    "handoff_head": "1ac74c40ee84fab1e2d09f133dace58014001fe3",
+    "records": "2 attempts/4 source revisions, exact original/normal/held ascended/manual two-path cleanup with explicit parents; runtime null and no selections",
+    "transport": "Retired duplicate prepared-history after exact comparison and README consumer migration; all art/request/receipt/review bytes unchanged.",
+    "gallery": "Actual4 revisions/2attempts, exact request/receipt/QA text and lineage, held ascended, disabled Use, six1440/390/320px×16/20px layouts passed without page errors. Historical PNG caption unchanged; current README owns status."
   }
 }

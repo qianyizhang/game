@@ -2,8 +2,7 @@
 
 **One returned native SVG pair, candidate-only.** Normal is an exact extraction;
 the reviewed ascended choice is a separate manual support cleanup. The packed
-original and held ascended extraction remain intact. User review and central
-registration are pending; no runtime slot, accepted canon or mechanics are added.
+original and held ascended extraction remain intact. Canonical source registration is complete; user review remains pending; no runtime slot, accepted canon or mechanics are added.
 
 ![Normal and refined ascended at portrait and compact sizes](review.png)
 
@@ -99,13 +98,32 @@ The stricter $3 preflight stop and revised authorization remain in Git history.
 
 ## Registration and checks
 
-[Temporary additive import](prepared-history.json) stages one paid attempt, one
-manual attempt and four exact sheet/cell/derivative revisions. No invented runtime
-slot. Serial central registration is a draft blocker; shared registry mutation
-remains with its coordinator. Source originals, grant amendment, exact settings,
-usage, trace ID, hold and authored derivative are all retained.
+[Canonical shared history](../../iterations/library.json) now owns one returned
+attempt, one separate manual attempt and four sheet/cell/derivative revisions.
+Open `/__art/#asset=__unassigned` and find `Glasspool Newt`. Exact request/receipt
+and artwork bytes, normal and ascended identities, held ascended source and the
+explicit two-path manual cleanup parent remain intact. The documented ascended
+antialias translation exception and geometry equality are preserved.
+
+Redundant import transport was retired after exact canonical comparison and
+README migration. No runtime slot or cross-branch dependency is invented;
+independent library additions need serial reconciliation when landing.
 
 Final maintenance and isolated history/gallery results are in QA. No frozen PR
 branch, game source/default, dependency, account or credential change. No merge,
 deployment or issue edit. A future unknown request must retain its full bound and
 stop; no retry follows from this study.
+
+Actual canonical gallery and scoped repository checks follow. User art selection
+and runtime compatibility remain separate from source registration.
+
+Actual shared-gallery inspection passed all four native/compact/enlarged
+revisions, both exact request/receipt/QA records, held/raw and manual parents,
+disabled Use and six desktop/phone/font combinations without page errors.
+The retained review PNG keeps its original unregistered caption; this README
+owns current status. Scoped repository gate results follow.
+
+Registration passed `format:maintenance`, `assets:history -- verify`
+(709 assets/96 revisions/zero selections) and all three normal-limit
+asset-history browser journeys. All original art, exact request/receipt/review
+bytes and existing registered asset/source/selection records remain unchanged.
