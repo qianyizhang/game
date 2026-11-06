@@ -1,5 +1,9 @@
 # An Empty Target · Emberwake opening pilot
 
+**Held: HTTP 502, no artwork or usage returned. Billing is unknown.** The one
+authorized call ended after 208.49 seconds; the full US$3 reservation remains
+held. No retry, second call, original SVG, derivative or GIF exists.
+
 Candidate composition study, owned by the Emberwake story worker. Source base:
 `3a59621069dd1fe912a749d851d27e993507f5dd`. No accepted history, game selection,
 runtime change or completed animation is claimed. Registration belongs to the
@@ -100,12 +104,44 @@ this US$3 grant: **US$38.845626 inclusive**, US$1.154374 uncommitted. The
 approximate US$40 balance/expiry is unverified, estimates are not invoices, and
 historical tortoise/badger/Bells-Furnace/brute uncertainties stay reserved.
 
-## Review and continuation
+## Outcome and portable continuation
 
-Pending the single request. Preserve its exact original; inspect rendered
-pixels at 640 × 448 and 320 × 224. Check one Mira, full crescent staff, human
-face, connected limbs, grounded feet, an unambiguous left-moving missile and
-empty right landing. Hold defects; no reroll or manual derivative is implied.
-Record success or uncertainty immediately, before extended QA. Source and
-selection files must remain unchanged. A still pilot is not a completed GIF
-series, and one image does not warrant a filler PR.
+One POST to `https://api.openai.com/v1/images/generations` on November 6 returned
+HTTP 502 with the exact error body `error code: 502\n`. No server request ID,
+usage or image was returned. Client trace:
+`story-emberwake-pilot-11-45340a68-266b-4689-b764-7c8aaea9223e`.
+The pending state was saved before dispatch; the uncertain terminal outcome was
+saved and reported immediately. Automatic retries were disabled. Environment
+status afterwards still showed enforced network policy, connected executor and
+the ready existing binding; that does not identify the 502's origin or establish
+whether generation ran or incurred a charge. There was no policy denial.
+
+**Visual verdict unavailable:** there are no returned pixels to review for
+coherence, identity, staff drift, projectile direction, duplicated Miras,
+foot contact or background consistency. The source-grounded story proposal is
+plausible, but neither a usable reference nor an animated story was produced.
+No mock result or manual substitute is presented. If a real original is later
+recovered, preserve it exactly and inspect at 640 × 448 and 320 × 224 before
+funding motion; hold a poor result. The still cannot prove projectile ordering.
+
+A possible later single GIF call would use Sunburst, high quality/complexity,
+`n=1`, 480 × 336, 12 frames at 160 ms, with an actual rendered opening PNG sent
+to the edits endpoint. Those inputs do not exist yet. Official docs support
+2–16 frames and reference-guided GIF edits. For a **US$0.25 conservative planning
+estimate**, allow 4,000 output image tokens (US$0.12), 10,000 input image tokens
+(US$0.08) and 10,000 text tokens (US$0.05). This has substantial headroom against
+the independently read [same-model Spire call](https://github.com/qianyizhang/game/blob/art/story-spire-quiet-breath-2026-11-06/docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/calls/chapter-1.json):
+16 high-quality 480 × 336 frames, 1,869 output image tokens, 630 image input and
+417 text input, estimated US$0.063195. Neither empirical comparison nor these
+planning allowances are endpoint-enforced bounds or authorization. Before any
+next call, recheck current schema/prices, resolve this attempt's uncertainty if
+possible and obtain a distinct grant. Do not reuse this consumed call grant.
+
+**Coordinator handoff:** register one attempt
+`story-emberwake-empty-target-2026-11-06-opening`, outcome `unknown`, referencing
+this README, `request.json` and `outcome.json`, with no revision or invented
+image. Canonical `library.json`, game defaults and selections remain unchanged.
+No one-image PR, merge, deployment or adoption is requested. Keep this branch
+as the compact source/attempt handoff; the full US$3 and all older uncertain
+reservations stay held. Local checks and final revision are reported in the
+delivery message, without duplicating prompts or geometry in metadata.

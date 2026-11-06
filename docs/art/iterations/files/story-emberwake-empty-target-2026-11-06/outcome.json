@@ -1,7 +1,7 @@
 {
   "grant": "story-emberwake-pilot-11",
   "reserved_usd": 3.0,
-  "status": "prepared-not-dispatched",
+  "status": "http-error-no-retry",
   "client_trace_id": "story-emberwake-pilot-11-45340a68-266b-4689-b764-7c8aaea9223e",
   "endpoint": "https://api.openai.com/v1/images/generations",
   "automatic_retries": 0,
@@ -15,5 +15,15 @@
     "this_grant": 3,
     "inclusive_total": 38.845626,
     "uncommitted": 1.154374
-  }
+  },
+  "dispatched_at": "2026-11-06T20:45:13.931411+00:00",
+  "http_status": 502,
+  "request_id": null,
+  "error": "error code: 502\n",
+  "billing": "unknown",
+  "elapsed_seconds": 208.49,
+  "terminal_at": "2026-11-06T20:48:42.423611+00:00",
+  "outcome": "unknown-no-artwork-no-usage",
+  "reservation_disposition": "hold-full-3-usd-no-release-no-retry",
+  "server_request_id_returned": false
 }
