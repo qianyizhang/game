@@ -22,5 +22,16 @@
     "inspection_exception": "First scratch probe used ambiguous substring chapter-2 also matching chapter-2-r1; exact attempt locator fixes harness, no product/assertion/timeout change. Original failure log retained. First canonical verification caught a nonexistent compact.png attachment copied from the sibling recipe; removed that mistaken metadata link, preserving existing cup-repair.png. Original failed verify log retained; no new artwork.",
     "checks": "Passed format:maintenance, corrected assets:history verify (709 assets/99 revisions/0 selections) and all3 asset-history browser journeys at normal limits41.0s aggregate. Metadata-only registration; no runtime code changed, so unrelated full suites not repeated.",
     "transport": "history-import retired after exact comparison; canonical call/settings/art/input/review/assembly bytes unchanged."
+  },
+  "shared_replay_compatibility": {
+    "source_head": "60b0e76949424668add7f3731765a76289bb875a",
+    "governance_head": "d6cc4728c87b1c4d13489b5a91ce5e4cb73f3304",
+    "replay_head": "6fdc26d94ac5434446e35f23c44e249164312940",
+    "resolved_shared_tree": "f78b8a50c29a823df315cfcdb8c61fa774cd12af",
+    "disposable_combination_tree": "8713d37367ad70c05cc2f849e5bab5ebfc083dfd",
+    "proof": "2 live/offline cases passed: completed once-playing story, Stop, fresh-URL Play, compositor opening pixel-identical to initial opening and different from ending, then visible advancement. Original playback/download SHA-256 exact; old object URL revoked; reduced motion interrupts and blocks playback; no page errors or offline network requests.",
+    "checks": "Resolved shared baseline passed full maintenance (208 tooling, 81 DCC, 19 Python tests) and 19 affected browser journeys at normal limits. This story combination passed history verification and actual native replay checks. No shared implementation, artwork, inputs, library records, defaults or selections changed in this evidence follow-up.",
+    "limits": "Compatibility tested at these exact heads only. Shared implementation is not landed or included in this candidate branch; its historical independent-code replay failure remains valid. Draft source study; independent library additions require serial landing reconciliation. No pause/seek, runtime adoption or art acceptance.",
+    "combined_browser_blocker": "Unchanged #137 retained-refinement browser test failed at tests/browser/asset-history.spec.ts:65: expected four globally HELD revisions, received five including this story cup-loss trial. Actual replay checks passed. Shared test scoping requires its owner; no assertion, timeout or shared code changed here."
   }
 }

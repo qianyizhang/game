@@ -34,13 +34,33 @@ held cup-loss trial remain unchanged. Redundant import transport was retired
 after exact canonical comparison; reference raster copies do not invent extra
 artwork states. Assembly chapter choice is provenance, not game selection.
 
-Draft blocker: after the once-playing joined GIF ends, actual shared-gallery
+The historical independent-code check found that after the once-playing joined GIF ends,
 Stop then Play retains its final frame. Initial playback advances; end/restart
-compositor captures are identical. #142 owns the implementation fix and needs a
-fresh integration check. No pause/seek is promised. Source continuity caveats
+compositor captures are identical. The shared implementation fix is checked separately below. No pause/seek is promised. Source continuity caveats
 remain independent of this technical blocker and user acceptance.
 
 Scoped formatting/inventory/links, history integrity and affected browser checks
 are required for this metadata-only registration. Existing game/default/selection
 bytes remain unchanged; independent candidate history changes require later
 serial reconciliation. No merge, adoption or deployment is included.
+
+Shared replay compatibility was subsequently checked in a disposable, unpushed
+combination with #137 `d6cc4728c87b1c4d13489b5a91ce5e4cb73f3304` and #142
+`6fdc26d94ac5434446e35f23c44e249164312940`, using this story at
+`60b0e76949424668add7f3731765a76289bb875a`. The resolved shared tree is
+`f78b8a50c29a823df315cfcdb8c61fa774cd12af`; combination tree
+`8713d37367ad70c05cc2f849e5bab5ebfc083dfd`. Both live and offline galleries completed the
+once-playing GIF, then Stop → Play restored the initial opening pixels and
+advanced again. Playback/download bytes matched the originals; reduced motion
+interrupted and blocked playback. See [validation](validation.json) for checks
+and historical probe outcomes. The shared implementation is not landed or
+included here, so this is conditional compatibility evidence. This PR remains a
+draft source study; game selections are unchanged and independent library
+additions still need serial reconciliation when landing.
+
+The combined retained-refinement browser test failed at
+`tests/browser/asset-history.spec.ts:65`: its global HELD count expects four but
+includes this story’s correctly retained fifth held cup-loss trial. The shared
+test owner must scope that check to its refinement attempts. Actual native replay
+passed; this separate integration-test blocker remains. Assertions, timeouts and
+shared source files are unchanged here.
