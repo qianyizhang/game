@@ -9,7 +9,7 @@ runs:
     # Cache signed package payloads, not installed OS state or browser profiles.
     - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
       with:
-        path: ${{ runner.temp }}/browser-apt
+        path: ${{ runner.temp }}/browser-apt/*.deb
         key: browser-apt-${{ runner.os }}-${{ runner.arch }}-${{ steps.image.outputs.version }}-${{ hashFiles('package-lock.json', '.github/actions/browser/action.yml', 'packages/workshop-tools/ci/browser-host.ts') }}
     - shell: bash
       run: |
