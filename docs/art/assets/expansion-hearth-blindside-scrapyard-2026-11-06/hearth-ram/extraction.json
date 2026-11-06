@@ -1,0 +1,28 @@
+[
+  {
+    "id": "ram-normal",
+    "x": 0,
+    "y": 0,
+    "width": 800,
+    "height": 560,
+    "file": "ram-normal.svg",
+    "sha256": "4d0d235eaf5d1b4d8b88d810ada6bb95fc373c2815bcca376031f9b8c0edc8e4",
+    "parent": "original.svg",
+    "parent_sha256": "e5b3eb2c64a794680b99329296d35b79739a6afa8e705233995649e86d1e9bbe",
+    "operation": "Copy named top-level group; remove exact cell translate; preserve root presentation attributes and all local paint definitions; set cell viewBox. No geometry or paint edits.",
+    "removed_transform": "translate(0 0)"
+  },
+  {
+    "id": "ram-ascended",
+    "x": 800,
+    "y": 0,
+    "width": 800,
+    "height": 560,
+    "file": "ram-ascended.svg",
+    "sha256": "61fcd0ae951e252243c1e75e156a1c92db2239d3d116963139cf69cee8198663",
+    "parent": "original.svg",
+    "parent_sha256": "e5b3eb2c64a794680b99329296d35b79739a6afa8e705233995649e86d1e9bbe",
+    "operation": "Copy named top-level group; remove exact cell translate; preserve root presentation attributes and all local paint definitions; set cell viewBox. No geometry or paint edits.",
+    "removed_transform": "translate(800 0)"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "model": "gpt-image-2.6-sunburst",
+  "prompt": "Create ONE polished native editable static SVG containing TWO Last Hearth future-expansion creature portraits, normal LEFT and ascended RIGHT. This is visual development, no canon or new rules. Exact 1600x560 canvas/viewBox. Two 800x560 cells. Top-level named groups tortoise-normal at translate(0 0) and tortoise-ascended at translate(800 0). Every painted shape belongs to a cell group. Each group begins with its own local 800x560 #172928 background rectangle. Safe subject area x=48..752 y=42..518. No labels, text, card borders, stats, logos, visible writing, watermark or UI. Same creature identity in both cells; deliberately different action, silhouette and supporting structure in ascended, not a recolor or mirror.\nSTYLE grounded in the existing Hearth illustrations: expressive engraved fantasy, natural creature colors, selective brass, continuous organic curves and three clear modeled value groups. Quiet dark forest field. Ivory upper-left light. Broad planes first; sparse cuts follow form, quiet areas separate accents. Connected head/neck/chest, believable joints, visible load-bearing contact. Small fitted intelligent eyes, no baby mascot eyes. Avoid floating limbs, stacked blobs, stiff tubes, scales everywhere, identical repeated hatching, plastic gloss and all-gold bodies. Compose for 160x112 portrait art and 64x45 board art. No ultra-fine details essential for identity.\nNative editable paths and simple shapes, explicit flat paints. No raster, image, use, scripts, animation, external resources, filters, gradients or defs. Every cell extracts cleanly.\n\nSUBJECT: Kiln-shell tortoise. Natural ochre tortoise with sage limbs, deep brown thick shell rim and a few broad scutes. Head joins wrinkled neck and shoulder girdle inside open shell, four bent legs have broad planted feet. NORMAL: low resting crawl, head extended left, shell tilted slightly toward viewer, three feet visible on a quiet stone. ASCENDED: front half climbs a sloped split stone, near front elbow bends and supports higher edge, rear leg pushes below; neck reaches upward, shell rolls diagonal, fitted tiny copper shell repair follows rim. Real opening and wall thickness, no fantasy house on back, no isolated foot blobs.",
+  "n": 1,
+  "quality": "high",
+  "complexity": "high",
+  "output_format": "svg",
+  "size": "1600x560",
+  "svg": {
+    "model": "gpt-6.1-sol",
+    "reasoning": {
+      "effort": "medium"
+    }
+  }
+}

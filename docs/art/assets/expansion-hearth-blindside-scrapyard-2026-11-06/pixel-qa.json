@@ -1,0 +1,77 @@
+{
+  "method": "Chromium SVG image decode into transparent native-size RGBA canvas. Compare every extracted cell against integer crop of the exact original SVG render. Retained PNG optimization admitted only for smaller bytes and identical decoded pixels, mode, dimensions, ICC, sRGB and gamma metadata.",
+  "results": [
+    {
+      "cell": "hearth-ram/ram-normal",
+      "dimensions": [800, 560],
+      "exact_rendered_pixels_equal_to_original_cell": true,
+      "mode": "RGBA",
+      "alpha_extrema": [255, 255],
+      "different_color_channels": 0,
+      "maximum_channel_delta": 0,
+      "alpha_equal": true
+    },
+    {
+      "cell": "hearth-ram/ram-ascended",
+      "dimensions": [800, 560],
+      "exact_rendered_pixels_equal_to_original_cell": true,
+      "mode": "RGBA",
+      "alpha_extrema": [255, 255],
+      "different_color_channels": 0,
+      "maximum_channel_delta": 0,
+      "alpha_equal": true
+    },
+    {
+      "cell": "hearth-heron/heron-normal",
+      "dimensions": [800, 560],
+      "exact_rendered_pixels_equal_to_original_cell": true,
+      "mode": "RGBA",
+      "alpha_extrema": [255, 255],
+      "different_color_channels": 0,
+      "maximum_channel_delta": 0,
+      "alpha_equal": true
+    },
+    {
+      "cell": "hearth-heron/heron-ascended",
+      "dimensions": [800, 560],
+      "exact_rendered_pixels_equal_to_original_cell": false,
+      "mode": "RGBA",
+      "alpha_extrema": [255, 255],
+      "different_color_channels": 130,
+      "maximum_channel_delta": 5,
+      "alpha_equal": true
+    }
+  ],
+  "evidence_optimization": [
+    {
+      "file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/review.png",
+      "before_bytes": 141988,
+      "after_bytes": 141988,
+      "before_sha256": "ed2cbf7f25a9c6419cc8187210db79b9f1d4e8dc507a09f731df7024cfcd9bd8",
+      "after_sha256": "ed2cbf7f25a9c6419cc8187210db79b9f1d4e8dc507a09f731df7024cfcd9bd8",
+      "pixels_dimensions_mode_and_color_metadata_equal": true,
+      "dimensions": [1200, 900],
+      "mode": "RGB",
+      "alpha_extrema": [255, 255],
+      "icc_profile_present": false,
+      "srgb": null,
+      "gamma": null,
+      "optimized_admitted": false
+    },
+    {
+      "file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/review.png",
+      "before_bytes": 177229,
+      "after_bytes": 177229,
+      "before_sha256": "3e2e695ad7566d7ce510bf4826057a06008333ec4518601b96215f85a5efc998",
+      "after_sha256": "3e2e695ad7566d7ce510bf4826057a06008333ec4518601b96215f85a5efc998",
+      "pixels_dimensions_mode_and_color_metadata_equal": true,
+      "dimensions": [1200, 900],
+      "mode": "RGB",
+      "alpha_extrema": [255, 255],
+      "icc_profile_present": false,
+      "srgb": null,
+      "gamma": null,
+      "optimized_admitted": false
+    }
+  ]
+}

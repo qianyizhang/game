@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-06",
+  "method": "Repository importHistory/verifyHistory against isolated empty history, containing only this additive bundle. Incoming schema also validated against current main history. No shared registry or defaults changed.",
+  "result": {
+    "assets": 0,
+    "revisions": 6,
+    "selections": 0
+  },
+  "central_registration": "pending",
+  "runtime_selections_changed": 0
+}

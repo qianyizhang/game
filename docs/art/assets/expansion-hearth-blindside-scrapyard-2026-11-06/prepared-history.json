@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "assets": [],
+  "attempts": [
+    {
+      "id": "expansion-hbs-20261106-hearth-heron",
+      "title": "hearth-heron expansion concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Unassigned future expansion source study. Exact native SVG originals distinct from extracted derivatives. No runtime adoption or user aesthetic approval. Shared request retained once. See bundle spend ledger for pre-call reservation and usage estimates.",
+      "files": [
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/prompt.md",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/request.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/response.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/cells.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/extraction.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/review.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/review.png",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/README.md",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/spend-ledger.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/inventory.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/contact-sheet.png",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/technical-qa.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/pixel-qa.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/request-inventory.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/gallery-qa.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/evidence-qa.json"
+      ]
+    },
+    {
+      "id": "expansion-hbs-20261106-hearth-ram",
+      "title": "hearth-ram expansion concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Unassigned future expansion source study. Exact native SVG originals distinct from extracted derivatives. No runtime adoption or user aesthetic approval. Shared request retained once. See bundle spend ledger for pre-call reservation and usage estimates.",
+      "files": [
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/prompt.md",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/request.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/response.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/cells.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/extraction.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/review.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/review.png"
+      ]
+    },
+    {
+      "id": "expansion-hbs-20261106-hearth-tortoise",
+      "title": "hearth-tortoise expansion concepts",
+      "date": "2026-11-06",
+      "outcome": "failed",
+      "notes": "Transport failed with unknown charge; full reservation retained; no SVG returned. Unassigned future expansion source study. Exact native SVG originals distinct from extracted derivatives. No runtime adoption or user aesthetic approval. Shared request retained once. See bundle spend ledger for pre-call reservation and usage estimates.",
+      "files": [
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-tortoise/prompt.md",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-tortoise/request.json",
+        "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-tortoise/error.json"
+      ]
+    }
+  ],
+  "revisions": [
+    {
+      "id": "expansion-hbs-20261106-hearth-heron:original",
+      "asset": null,
+      "attempt": "expansion-hbs-20261106-hearth-heron",
+      "label": "hearth-heron exact packed original",
+      "file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/original.svg",
+      "digest": "f0d45d92b243a660a66e14b01687f7326c78ab72177cbcc4b2d84bcb76412c20",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned native vector bytes, no adaptation. Source concept only, no game slot."
+    },
+    {
+      "id": "expansion-hbs-20261106-hearth-heron:heron-normal",
+      "asset": null,
+      "attempt": "expansion-hbs-20261106-hearth-heron",
+      "label": "hearth-heron / heron-normal",
+      "file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/heron-normal.svg",
+      "digest": "fd506564cd2abac7d1616696e7890d5729ea8a8270f4ded81f0153e45a4e0aa0",
+      "parents": ["expansion-hbs-20261106-hearth-heron:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Copy named top-level group; remove exact cell translate; preserve root presentation attributes and all local paint definitions; set cell viewBox. No geometry or paint edits. Removed translate(0 0). Unassigned expansion concept, not accepted canon or runtime-ready artwork. Review at intended sizes is retained separately."
+    },
+    {
+      "id": "expansion-hbs-20261106-hearth-heron:heron-ascended",
+      "asset": null,
+      "attempt": "expansion-hbs-20261106-hearth-heron",
+      "label": "hearth-heron / heron-ascended",
+      "file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/heron-ascended.svg",
+      "digest": "24021b283419e59852dc670a79f7d2a55b255f940486b702150aca8f925314c6",
+      "parents": ["expansion-hbs-20261106-hearth-heron:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Copy named top-level group; remove exact cell translate; preserve root presentation attributes and all local paint definitions; set cell viewBox. No geometry or paint edits. Removed translate(800 0). Unassigned expansion concept, not accepted canon or runtime-ready artwork. Review at intended sizes is retained separately."
+    },
+    {
+      "id": "expansion-hbs-20261106-hearth-ram:original",
+      "asset": null,
+      "attempt": "expansion-hbs-20261106-hearth-ram",
+      "label": "hearth-ram exact packed original",
+      "file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/original.svg",
+      "digest": "e5b3eb2c64a794680b99329296d35b79739a6afa8e705233995649e86d1e9bbe",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned native vector bytes, no adaptation. Source concept only, no game slot."
+    },
+    {
+      "id": "expansion-hbs-20261106-hearth-ram:ram-normal",
+      "asset": null,
+      "attempt": "expansion-hbs-20261106-hearth-ram",
+      "label": "hearth-ram / ram-normal",
+      "file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/ram-normal.svg",
+      "digest": "4d0d235eaf5d1b4d8b88d810ada6bb95fc373c2815bcca376031f9b8c0edc8e4",
+      "parents": ["expansion-hbs-20261106-hearth-ram:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Copy named top-level group; remove exact cell translate; preserve root presentation attributes and all local paint definitions; set cell viewBox. No geometry or paint edits. Removed translate(0 0). Unassigned expansion concept, not accepted canon or runtime-ready artwork. Review at intended sizes is retained separately."
+    },
+    {
+      "id": "expansion-hbs-20261106-hearth-ram:ram-ascended",
+      "asset": null,
+      "attempt": "expansion-hbs-20261106-hearth-ram",
+      "label": "hearth-ram / ram-ascended",
+      "file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/ram-ascended.svg",
+      "digest": "61fcd0ae951e252243c1e75e156a1c92db2239d3d116963139cf69cee8198663",
+      "parents": ["expansion-hbs-20261106-hearth-ram:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Copy named top-level group; remove exact cell translate; preserve root presentation attributes and all local paint definitions; set cell viewBox. No geometry or paint edits. Removed translate(800 0). Unassigned expansion concept, not accepted canon or runtime-ready artwork. Review at intended sizes is retained separately."
+    }
+  ]
+}

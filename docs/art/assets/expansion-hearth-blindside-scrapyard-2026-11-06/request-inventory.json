@@ -1,0 +1,62 @@
+{
+  "requested_concepts": 36,
+  "returned_concepts": 4,
+  "requests": [
+    {
+      "request": "blindside",
+      "state": "prepared-not-dispatched",
+      "concept_count": 12,
+      "request_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/blindside/request.json",
+      "prompt_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/blindside/prompt.md"
+    },
+    {
+      "request": "hearth-badger",
+      "state": "prepared-not-dispatched",
+      "concept_count": 2,
+      "request_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-badger/request.json",
+      "prompt_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-badger/prompt.md"
+    },
+    {
+      "request": "hearth-heron",
+      "state": "returned",
+      "concept_count": 2,
+      "request_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/request.json",
+      "prompt_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-heron/prompt.md"
+    },
+    {
+      "request": "hearth-mantis",
+      "state": "prepared-not-dispatched",
+      "concept_count": 2,
+      "request_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-mantis/request.json",
+      "prompt_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-mantis/prompt.md"
+    },
+    {
+      "request": "hearth-moth",
+      "state": "prepared-not-dispatched",
+      "concept_count": 2,
+      "request_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-moth/request.json",
+      "prompt_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-moth/prompt.md"
+    },
+    {
+      "request": "hearth-ram",
+      "state": "returned",
+      "concept_count": 2,
+      "request_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/request.json",
+      "prompt_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-ram/prompt.md"
+    },
+    {
+      "request": "hearth-tortoise",
+      "state": "failed-unknown-billing",
+      "concept_count": 2,
+      "request_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-tortoise/request.json",
+      "prompt_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/hearth-tortoise/prompt.md"
+    },
+    {
+      "request": "scrapyard",
+      "state": "prepared-not-dispatched",
+      "concept_count": 12,
+      "request_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/scrapyard/request.json",
+      "prompt_file": "docs/art/assets/expansion-hearth-blindside-scrapyard-2026-11-06/scrapyard/prompt.md"
+    }
+  ]
+}

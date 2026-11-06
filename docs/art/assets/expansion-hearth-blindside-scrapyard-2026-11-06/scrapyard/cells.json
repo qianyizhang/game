@@ -1,0 +1,98 @@
+[
+  {
+    "id": "cable-winch",
+    "brief": "WORKSHOP: squat drum winch with a thick wound cable passing through fitted guide rollers, asymmetrical crank; copper steel",
+    "x": 0,
+    "y": 0,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "flywheel-press",
+    "brief": "WORKSHOP: broad flywheel side silhouette drives a closed press head over thick platen, visible joined arm, no anvil",
+    "x": 384,
+    "y": 0,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "condenser-tower",
+    "brief": "WORKSHOP: squat twin unequal pressure tanks joined by thick curved pipe and fin cap; pale teal accent",
+    "x": 768,
+    "y": 0,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "sorting-magnet",
+    "brief": "WORKSHOP: suspended horseshoe electromagnet in a low A-frame, three broad attached metal chunks; no particles",
+    "x": 1152,
+    "y": 0,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "treadle-shear",
+    "brief": "WORKSHOP: wide open steel cutting jaws above a low foot lever, hinged into one strong bracket; ochre accent",
+    "x": 0,
+    "y": 384,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "battery-cradle",
+    "brief": "WORKSHOP: two unequal rectangular battery blocks seated in a braced charging cradle, thick cable loop; muted acid-green strip",
+    "x": 384,
+    "y": 384,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "sawback-crawler",
+    "brief": "ENEMY: broad low beetle-like tracked machine, one thick serrated steel back arch, two visible short tread feet; rust dominant, no human hood",
+    "x": 768,
+    "y": 384,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "bellows-leaper",
+    "brief": "ENEMY: compact bent mechanical spring legs carry a wedge leather bellows body, large negative space beneath lifted front, coral dominant",
+    "x": 1152,
+    "y": 384,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "coil-stalker",
+    "brief": "ENEMY: narrow leaning steel torso with a single heavy bent coil at its back, two stout unequal connected legs, pale teal dominant",
+    "x": 0,
+    "y": 768,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "bucket-shield",
+    "brief": "ENEMY: heavy inverted bucket helmet integrated into broad asymmetrical shield torso and two squat feet, ivory/ochre dominant, no brute shoulder copy",
+    "x": 384,
+    "y": 768,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "wheel-impeller",
+    "brief": "ENEMY: a single thick tilted wheel with two fitted stabilizer feet and crescent guard, plum body, pale steel rim, no detached spikes",
+    "x": 768,
+    "y": 768,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "id": "clamp-crab",
+    "brief": "ENEMY: squat crab-shaped salvage machine, two unequal joined clamp forearms and four short load-bearing feet, sage/copper planes",
+    "x": 1152,
+    "y": 768,
+    "width": 384,
+    "height": 384
+  }
+]
