@@ -48,7 +48,7 @@
     "sha256": "ec9e050a8a665df10cd903710f1894f1a8170c49ecbd427f84839f9302f829d3"
   },
   "joined_r1": {
-    "file": "story.gif",
+    "file": "story-r1.gif",
     "source_order": ["chapter-1", "chapter-2-r1"],
     "recipe": "Individually coalesce each original GIF to temporary full-frame PNGs;concatenate all32 in order with30cs delay,Background disposal,loop1,strip copied metadata on local derivative only. No omission,interpolation,retouch or palette optimization.",
     "frames": 32,

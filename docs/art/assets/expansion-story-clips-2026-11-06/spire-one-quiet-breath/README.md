@@ -31,10 +31,34 @@ outputs are temporary. Exact prompts/settings/responses/usage and lineage live
 once per call/shared record,not a permanent PNG catalogue.
 
 [Grounding and original proposal](brief.md) · [Checks](validation.json) ·
-[Staged source-only import](history-import.json)
+[Canonical source history](../../../iterations/library.json)
 
 The HTML uses native GIF playback once and an SVG for reduced motion. Shared
 gallery Stop/Play after a nonlooping ending has a known restart limitation;this
-package does not fix it or claim true pause/seek. Central registration remains
-pending. Existing game defaults stay unchanged;technical/author checks do not
+package does not fix it or claim true pause/seek. Canonical source registration is complete. Existing game defaults stay unchanged;technical/author checks do not
 establish user acceptance.
+
+Six actual attempts/revisions preserve the original reference, clips and first
+assembly plus the targeted framing correction and distinct revised assembly.
+All original artwork, exact sent inputs, call records and first identities stay
+unchanged. The redundant import is retired after exact canonical comparison.
+One animation-record filename typo was corrected: `joined_r1.file` now names
+`story-r1.gif`, whose existing digest and source order already identified the
+revised bytes. The original `joined` record and `story.gif` stay unchanged.
+
+Open `/__art/#asset=__unassigned` and find `One Quiet Breath`. Native/compact,
+exact records/lineage, held originals and desktop/phone enlarged-text inspection
+are checked separately from aesthetics. Current main still has the known native
+replay limitation; compatibility with the frozen shared fix will be tested in an
+unpushed disposable combination. No implementation is added to this candidate.
+
+Actual registration inspection passed six revisions, 21 exact desktop/mobile
+text/input views and six viewport/font combinations. Both once-playing source
+assemblies still reproduce the old Stop/Play final-frame behavior. A first
+scratch mobile chooser missed animation.json; its corrected rerun passed with
+assertions/timeouts unchanged. Scoped repository gate outcomes follow.
+
+Registration passed `format:maintenance`, `assets:history -- verify`
+(709 assets/98 revisions/zero selections), and all three asset-history browser
+journeys at normal limits (21.8s aggregate). Exact original art/input/call bytes
+and existing asset/source/selection records remain unchanged.
