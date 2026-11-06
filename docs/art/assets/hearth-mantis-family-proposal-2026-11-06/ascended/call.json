@@ -1,0 +1,27 @@
+{
+  "state": "reserved-not-dispatched",
+  "grant": {
+    "id": "character-mantis-ascended-03",
+    "maximum_planning_reservation_usd": 4.2,
+    "scope": "One never-dispatched ascended companion only; no normal generation, retry or other request."
+  },
+  "request_file": "request.json",
+  "request_sha256": "61f7f89c42bcdfeff8837a37b2ef870b186a2a9e9a4c95b7bc61b93645d49f9c",
+  "reservation_basis": "../README.md#actual-call-and-spending; same standard-only 4.20 planning bound, image allowance not API-enforced. Prompt under 8000 UTF-8 bytes.",
+  "opening": {
+    "known_usage_estimate_usd": 0.818273,
+    "unknown_tortoise_usd": 7.5,
+    "unknown_badger_usd": 7.5,
+    "normal_receipt_commit": "1a75db016f3d6623704734f8941d2121d401a11a"
+  },
+  "transport": {
+    "endpoint": "https://api.openai.com/v1/images/generations",
+    "client_timeout_seconds": 1800,
+    "automatic_retries": 0,
+    "redirects": false,
+    "tls_verification": true,
+    "client_request_id": "cw-mantis-ascended-20261106-8fbb55f7bc014a978f0481ee321d41e1"
+  },
+  "continuity": "Shared textual anatomy/palette plus reviewed normal; no image/reference input available for this native SVG generation route.",
+  "review": "pending; no aesthetic acceptance"
+}
