@@ -1,0 +1,118 @@
+{
+  "format": "card",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed study sheet, exactly 1440 by 672, viewBox=\"0 0 1440 672\". 3 columns by 2 rows, cells exactly 480 by 336, no gutters. Row-major order of named subjects below. Each subject MUST be an individual top-level <g id=\"SUBJECT-ID\" transform=\"translate(CELL-X CELL-Y)\"> using LOCAL coordinates; every group owns its own full-cell dark background rectangle. NO cross-cell content. If there are five subjects, sixth bottom-right cell stays empty dark background in a group id=\"unused\". Keep all subject geometry at least 30 units from cell edges, major silhouette occupies 65-80% of cell. All paint definitions must be local to the group or explicit flat fills. Do not use a shared sheet-wide backdrop.\n\nThese are FUTURE EXPANSION ART CONCEPTS for later review, not canonical history or active content. This is an engraved fantasy illustration set: confident irregular contours, expressive asymmetric gestures, three broad value groups, broad sculptural material planes before detail, sparse form-following engraving, no repeated tiny decoration. Connected joinery and credible support. Upper-left light, quiet background #10232c. Ink #10232c, shadow #34464b, worn ivory #ead7b5, muted bronze #b68d62, smoky steel #95a6aa. Emberwake adds moss #7c987a, saltglass #75a99f, restrained cinder #ca7658. Night Passage patron accents: Aster warm yellow #dfc777; Neris aqua #6dbfb0; Vesta coral #d78568; Isen pale ice blue #a5cbda; Nyra restrained lavender #a18cb8. Materials must look different: wood grain follows stress, leather folds, stone thickness, translucent glass has a clear rim and broad transmission planes, metal has restrained flat highlights. No plastic gloss, no golden edge on everything. Do not turn every object into a symmetrical emblem.\n\nEach scene reads as one distinct designed subject at 160x112 and 80x56, and should survive a 64px silhouette glance for props. This is illustration art only: no frame, captions, labels, text, digits, watermark, logo or UI. Static SVG paths and simple shapes only; no raster embedding, image, text, use, CSS stylesheets, scripts, animation, external resources or filters. No inaccessible gradient references. Economical construction with large quiet areas.\n\nSUBJECTS in exact row-major cell order:\nCell 1: id=\"aster-cloud-vessel\"; origin (0,0); Aster cloud vessel. A shallow lidded electrum vessel with an offset stepped lid and three broad slots, seated in a dark stone cradle; quiet warm yellow reflected planes, no lightning icon.\nCell 2: id=\"neris-current-coffer\"; origin (480,0); Neris current coffer. A sea-worn ceramic coffer with one rounded hinged lid lifted to show a pale inner cavity and aqua glass insert; broad wet rim highlights, not a book or scroll niche.\nCell 3: id=\"vesta-ember-press\"; origin (960,0); Vesta ember press. A compact soot-black iron screw press holding a single glowing coal behind a thick slotted copper plate; supported screw and deep recess, no ornamental flames.\nCell 4: id=\"isen-salt-casket\"; origin (0,336); Isen salt casket. A long pale ceramic cold casket whose thick lid slides partly aside, clear dark interior and thin blue frost lip; quiet faceted planes, not a crystal lamp.\nCell 5: id=\"nyra-folded-screen\"; origin (480,336); Nyra folded screen. Three unequal folded panels of dark plum cloth framed in blackened silver, one partly open revealing a pale inner surface; tangible hinges and cloth sag; no eye symbol.\n\nKeep each object composition distinct, readable and structurally grounded; the five Night Passage patrons have elemental/material affinities but these objects do not claim established lore or gameplay effects.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "response": {
+    "created": 1793977302,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1440x672",
+    "svg_usage": {
+      "input_tokens": 2291,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 8954,
+      "reasoning_tokens": 146,
+      "total_tokens": 11245
+    },
+    "usage": {
+      "input_tokens": 915,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 915
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1699
+    },
+    "request_id": "req_78fc30fab0de4d08985fd0420ed88a2c",
+    "http_status": 200,
+    "elapsed_seconds": 189.6,
+    "started_utc": "2026-11-06T15:01:01.485817+00:00"
+  },
+  "estimated_usd": 0.122217,
+  "original": {
+    "file": "sheet.svg",
+    "sha256": "1b5ff469ae4066b9f6cfe2f464d343319c58a40544612fbb4acf0d9ce585d04d"
+  },
+  "outputs": [
+    {
+      "id": "aster-cloud-vessel",
+      "name": "Aster cloud vessel",
+      "sha256": "190ec90d78f76619db290c169ae470207e69c8dd7d95d89bc34b1ce8f2ce03dd",
+      "verdict": "candidate",
+      "note": "Offset stepped lid, broad slots and stone cradle make a compact solid offering vessel. Warm broad planes stay readable without repeating the bolt mark."
+    },
+    {
+      "id": "neris-current-coffer",
+      "name": "Neris current coffer",
+      "sha256": "4d2ac3c07f7474a263cb7657c0620add1b9ac2969891bfff43a43eecce56e299",
+      "verdict": "candidate-with-caveat",
+      "note": "Supported hinged lid, hollow rim and aqua insert read at native/compact sizes. Exterior planes lean toward stone rather than glazed ceramic; material remains a proposal."
+    },
+    {
+      "id": "vesta-ember-press",
+      "name": "Vesta ember press",
+      "sha256": "82792f4a5ecb73cbed999fbcc3aec14aaf25fae1375ba15b0b15956ad8e3d52b",
+      "verdict": "candidate",
+      "note": "Screw, connected frame, slotted copper cheek and recessed coal read clearly. Strong supported construction distinguishes it from an existing brazier or furnace monument."
+    },
+    {
+      "id": "isen-salt-casket",
+      "name": "Isen salt casket",
+      "sha256": "d7cb385e8f433361e7e8b2de2ffe04af57432b2cd5bcc2a5287da3786fb5b3e6",
+      "verdict": "candidate",
+      "note": "Sliding thick lid, open dark cavity and icy rim establish a distinct long casket. Broad pale surfaces stay legible; fine frost is intentionally subordinate."
+    },
+    {
+      "id": "nyra-folded-screen",
+      "name": "Nyra folded screen",
+      "sha256": "308540ee6db88e702111a947175476e50c889e6e77aa1452b4d183e0f3875071",
+      "verdict": "candidate-with-caveat",
+      "note": "Unequal panels, feet and actual hinge positions are clear at compact size. The returned panels are gray and rigid rather than the requested plum cloth; useful screen construction study, not a finished patron-material match."
+    }
+  ],
+  "review_context": {
+    "actual_game_ui": "Unsupported future sanctum props, no native 3D or runtime placement review.",
+    "aesthetic_acceptance": "Optional candidates with explicit material departures. No reroll; user acceptance pending."
+  },
+  "qa": {
+    "svg_checked": 6,
+    "source_original_and_extraction_hashes_verified": true,
+    "contact": {
+      "initial_bytes": 255734,
+      "optimized_bytes": 253381,
+      "retained_bytes": 253381,
+      "pixel_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "mode": "RGBA",
+      "color_metadata_equal": true,
+      "sha256": "f3b68c643d239f02469b29807ab3372506e9780fa956191a04eb44dafd3a6b8a",
+      "file": "contact.png"
+    },
+    "crop_pixel_comparison": {
+      "exact_cells": 3,
+      "total_cells": 5,
+      "max_channel_delta": 3
+    },
+    "native_compact_author_review": 5
+  }
+}
