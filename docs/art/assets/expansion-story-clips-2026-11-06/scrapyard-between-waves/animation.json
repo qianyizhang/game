@@ -1,0 +1,36 @@
+{
+  "decoder": "Version: ImageMagick 7.1.1-43 Q16 x86_64 22550 https://imagemagick.org",
+  "digest_recipe": "ImageMagick coalesce; concatenate full composed RGBA8 frames in source order. Temporary extracted PNGs independently decode to those exact RGBA bytes.",
+  "default_size": [480, 336],
+  "default_frame_duration_ms": 300,
+  "clips": {
+    "chapter-1": {
+      "call": "calls/chapter-1.json",
+      "frames": 16,
+      "duration_ms": 4800,
+      "rgba_sha256": "d822995f78a7a0a5029929bdf2e218ef97e51778622822c3a761a90103b069bf"
+    },
+    "chapter-2": {
+      "call": "calls/chapter-2.json",
+      "frames": 16,
+      "duration_ms": 4800,
+      "rgba_sha256": "d11e934b2a9f04ffee2c790495c0c1b82d747e62f8e25d7a36cd2dc006e7da82",
+      "review": "held"
+    },
+    "chapter-2-r1": {
+      "call": "calls/chapter-2-r1.json",
+      "frames": 16,
+      "duration_ms": 4800,
+      "rgba_sha256": "b60b1a327e1f5764300e7226adf2b8291f0a9696f25ee176119d80f2150559b3",
+      "review": "held"
+    },
+    "chapter-2-r2": {
+      "call": "calls/chapter-2-r2.json",
+      "frames": 16,
+      "duration_ms": 4800,
+      "rgba_sha256": "ee088b57e3d96b83609c1b59dc42d0007232a32a4bf1398adde40f5a30bab3ba",
+      "review": "held"
+    }
+  },
+  "exceptions": []
+}

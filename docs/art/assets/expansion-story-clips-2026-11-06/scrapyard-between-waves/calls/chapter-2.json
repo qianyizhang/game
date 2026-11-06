@@ -1,0 +1,43 @@
+{
+  "status": "returned",
+  "kind": "gif-edit",
+  "prompt": "Create CHAPTER TWO, Engage, of the candidate Scrapyard story Between Waves as a sixteen-frame GIF. Image ONE is the original identity/palette reference. Image TWO is the ACTUAL CURRENT endpoint of chapter one and owns the STARTING POSE: opposite glove gripping the long wrench handle on the ledge, wrench jaw pointing right, near arm relaxed below the image-left shoulder plate. Begin from image two's placement, tool scale, glove contact, matte painted texture and lighting. Do not reset to image one's earlier hand position or cleaner redraw.\n\nOne deliberate connected action: lift the wrench clear of the ledge, then turn its open jaw COUNTERCLOCKWISE through the upper arc, from pointing right through upward toward the loose hexagonal fastener on the image-left shoulder plate. The same opposite hand maintains its grip near the ring-ended handle; wrist, elbow and upper arm stay visibly connected to the torso. Let that hand move slightly up and left to make the reach, without shrinking the tool. The jaw ends seated against/around the proud hex fastener, with the ring end extending diagonally down/right toward the working hand. The arm beneath the plate remains relaxed down and attached. No hand swap, new bracing arm or instantaneous tool jump.\n\nAcross the first four frames lift clear; across the middle eight frames turn and approach the fastener with readable easing; across the final four settle and hold the visible jaw/bolt contact. STOP BEFORE TIGHTENING. The fastener still stands proud, plate stays loose/outward on its copper strap, and no repaired-arm test occurs. The wrench must retain its long rigid shaft and ring/open-jaw shapes, not melt, shorten or pass through the shoulder. A brief foreground overlap while it turns is allowed; no disappearing tool or severed limb.\n\nLocked480x336 camera,300ms per frame,one continuous shot. Same yellow hood,dark featureless face,one survivor,two attached arms,two hands,one wrench,one shoulder plate,one hex fastener,quiet background and steel ledge. Existing chest/forearm armor remains. No new eyes,text,sparks,flashes,cuts,zoom,extra tools or reset within the clip. Candidate fiction only; no accepted canon or new game mechanic.",
+  "inputs": ["opening", "chapter-1-last"],
+  "client_request_id": "9596959a-394f-4050-8ea7-36514e5488b5",
+  "started_at": "2026-11-06T17:02:19Z",
+  "settings_sha256": "e67c076000649183dc4cae965e72d99e3ebdd3491fda2bf0d6067af62c7e5825",
+  "grant_id": "story-scrapyard-gif-05",
+  "reservation_usd": 1.5,
+  "request_id": "req_76fecbfb96404ebda837b5f2f12f65c1",
+  "http_status": 200,
+  "output": "chapter-2.gif",
+  "sha256": "aa352465be2f3644a75aefa8894bf00f280d57688d51717b79e28a4e6668e1a0",
+  "response": {
+    "created": 1793984587,
+    "background": "opaque",
+    "data": [
+      {
+        "generation_id": "10977c8c-5456-47c8-9f44-e0e32ad5c080"
+      }
+    ],
+    "output_format": "gif",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "480x336",
+    "usage": {
+      "input_tokens": 1766,
+      "input_tokens_details": {
+        "image_tokens": 1260,
+        "text_tokens": 506
+      },
+      "output_tokens": 1869,
+      "output_tokens_details": {
+        "image_tokens": 1869,
+        "text_tokens": 0
+      },
+      "total_tokens": 3635
+    }
+  },
+  "cost_estimate_usd": 0.06868,
+  "elapsed_s": 48.231
+}
