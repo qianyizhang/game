@@ -8,7 +8,7 @@ Metallicize, Ghostly Armor and Sentinel share the Helmet primitive as their domi
 
 Reuse and adaptation remain valid alternatives. The generated artwork is compared directly with both current base and upgraded exports in the per-game cabinet. A trial is not admission as a runtime asset. Do not promote a candidate without matched review, a decision about the upgraded illustration, and actual in-game review. No rules, card effects, labels, content IDs, saves or replay versions change.
 
-The art catalogue owns review integration; each SVG is its only generated vector source. There are no new dependencies or generated raster masters. Three review files add about 30 KiB of SVG source. Keep these candidates through the user decision; after acceptance or rejection, retain the decision and accepted source, and retire superseded trial files with their catalogue references. Reassess by November 20, 2026 if undecided.
+The art catalogue owns review integration; each SVG is its only generated vector source. There are no new dependencies or generated raster masters. Three review files add about 30 KiB of SVG source. The user's November 6 preservation hold keeps these candidates, intermediate artwork and prompts for future-session reference, including after acceptance or rejection. Reassessing the work does not authorize deletion; follow the [current batch workflow](../../README.md#image-26-batch-workflow).
 
 ## Request and provenance
 

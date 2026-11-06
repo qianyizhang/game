@@ -4,7 +4,7 @@ import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promis
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { writeGalleryPages } from './gallery/pages.ts';
-import type { BatchCandidate } from './gallery/library.ts';
+import { WIP_BATCHES, type BatchCandidate } from './gallery/library.ts';
 
 await test('generated candidates retain their own trial records and share one copy within a batch', async (t) => {
   const root = await mkdtemp(resolve(tmpdir(), 'gallery-trials-'));
@@ -27,7 +27,7 @@ await test('generated candidates retain their own trial records and share one co
   }));
   const output = resolve(root, 'export');
   await mkdir(output);
-  await writeGalleryPages(output, [], candidates);
+  await writeGalleryPages(output, [], candidates, []);
   const html = await readFile(resolve(output, 'spire.html'), 'utf8');
   const records = [...html.matchAll(/href="([^"]+)">Prompt, usage and generation record/g)].map(
     (match) => match[1],
@@ -49,8 +49,15 @@ await test('generated candidates retain their own trial records and share one co
       failed,
       [],
       [{ ...candidates[0], trial: { file: svg, record: resolve(root, 'missing.md') } }],
+      [],
     ),
     { code: 'ENOENT' },
   );
   assert.equal(await readFile(first, 'utf8'), 'First batch: original prompt and review limits.');
+  await assert.rejects(
+    writeGalleryPages(resolve(root, 'invalid-proposal'), [], candidates, [
+      { ...WIP_BATCHES[0], candidates: ['missing-candidate'] },
+    ]),
+    /Batch proposal references missing candidate: missing-candidate/,
+  );
 });

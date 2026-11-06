@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { physicalActionScenes } from './physical-actions';
+import { defensiveScenes } from './defense';
 import {
   ink,
   metal,
@@ -281,20 +282,7 @@ export const scenes: Record<string, ReactNode> = {
       <Glyph kind="shield" x={42} y={15} size={84} />
     </>
   ),
-  ghostlyArmor: (
-    <>
-      <Echo>
-        <path
-          d="M18 91Q74 80 143 93M32 101Q87 89 136 101"
-          fill="none"
-          stroke={sea}
-          strokeWidth=".8"
-        />
-        <Glyph kind="moon" x={119} y={12} size={26} />
-      </Echo>
-      <Helmet x={77} y={55} ghost />
-    </>
-  ),
+  ghostlyArmor: defensiveScenes.ghostlyArmor,
   hemokinesis: (
     <>
       <Rays radius={41} />
@@ -319,16 +307,7 @@ export const scenes: Record<string, ReactNode> = {
       </Echo>
     </>
   ),
-  metallicize: (
-    <>
-      <Rays radius={41} />
-      <Echo>
-        <Glyph kind="gear" x={17} y={63} size={32} color={copper} />
-        <Glyph kind="gear" x={113} y={70} size={27} color={copper} />
-      </Echo>
-      <Helmet x={78} y={55} />
-    </>
-  ),
+  metallicize: defensiveScenes.metallicize,
   powerThrough: (
     <>
       <Echo>
@@ -363,17 +342,7 @@ export const scenes: Record<string, ReactNode> = {
       <Glyph kind="bolt" x={68} y={32} size={30} />
     </>
   ),
-  sentinel: (
-    <>
-      <Echo>
-        <Wall x={32} y={44} tall />
-      </Echo>
-      <Helmet x={77} y={44} />
-      <Echo>
-        <Glyph kind="bolt" x={72} y={80} size={25} color={copper} />
-      </Echo>
-    </>
-  ),
+  sentinel: defensiveScenes.sentinel,
   shockwave: (
     <>
       <g fill="none" stroke={sea} strokeWidth=".9" opacity=".62">

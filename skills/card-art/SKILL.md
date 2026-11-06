@@ -23,6 +23,8 @@ When delegation is requested, use the user's selected ownership and budget. For 
 
 For SVG illustrations, follow the build and export workflow below. For 3D studies, use the [3D source map and verification](../../docs/art/3d.md); preserve exportable geometry, animation bindings, reduced motion and camera fit. Review still structure before animating. SVG export is necessary only when SVG sources change.
 
+For **API batches, packed sheets, or generated SVG/GIF sets**, read the [batch workflow](references/batch-assets.md). It covers WIP agreement, simple asset families and tile seams, shared references, extraction, cost review and selective promotion. Prefer GIF for purposeful events such as boss transformations and VFX. [Artifact preservation](../../docs/art/README.md#image-26-batch-workflow) owns the current artwork/prompt hold.
+
 For **animated native modeling, rig fitting, or a new motion study**, read the [native modeling playbook](references/native-modeling.md). It owns the saved-source workflow, species-specific support checks, deformation/timing review and starter scaffold; trial history is optional evidence. It applies when refining an existing native study as well as building a new one.
 
 For direct Blender saves and renders, use the [lean session helpers](../../packages/dcc-workbench/README.md#lean-session-save-and-capture-protection); keep selected decision evidence and temporary previews under the existing retention policy.

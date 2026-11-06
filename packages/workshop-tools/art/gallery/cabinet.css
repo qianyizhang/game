@@ -17,6 +17,7 @@ a {
   text-underline-offset: 4px;
 }
 a:focus-visible,
+button:focus-visible,
 summary:focus-visible,
 input:focus-visible,
 select:focus-visible {
@@ -95,6 +96,7 @@ label {
   flex-direction: column;
   gap: 8px;
 }
+button,
 input,
 select {
   font: inherit;
@@ -104,6 +106,13 @@ select {
   border-radius: 5px;
   padding: 12px;
   max-width: 100%;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+  opacity: 0.65;
 }
 .filters {
   display: flex;
@@ -166,12 +175,51 @@ select {
 }
 .review,
 .candidate,
-.specimen {
+.specimen,
+.batch-proposal {
   padding: 22px;
   background: #1b352f;
   border: 1px solid #526757;
   border-radius: 8px;
   min-width: 0;
+}
+.batch-proposal {
+  border-color: #b99b61;
+  margin-bottom: 24px;
+}
+.batch-proposal p {
+  margin-bottom: 12px;
+}
+.batch-current {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 650px;
+  margin-block: 18px;
+}
+.batch-current img {
+  display: block;
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+}
+.request-plan {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 18px;
+  padding-block: 8px;
+}
+.request-plan h4 {
+  margin: 8px 0;
+  color: #f1d7a1;
+}
+.approval-note,
+.retention-note {
+  padding-top: 12px;
+  border-top: 1px solid #526757;
+}
+.other-candidates {
+  margin-top: 28px;
 }
 .review {
   display: grid;
@@ -295,6 +343,29 @@ summary {
   border: 1px dashed #7a8b72;
   border-radius: 8px;
 }
+.packed-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.packed-grid figure {
+  margin: 0 0 20px;
+}
+.packed-sheet {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+}
+.play-effect {
+  margin: 24px 0;
+}
+.play-effect > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 12px 0;
+}
 footer {
   margin-top: 36px;
   padding-top: 20px;
@@ -321,6 +392,9 @@ footer {
     height: 112px;
   }
   .review {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .packed-grid {
     grid-template-columns: minmax(0, 1fr);
   }
   .review,

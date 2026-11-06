@@ -35,6 +35,14 @@ Spire's six [intent cues](asset-enrichment.md) live in
 action text and export under `spire/intents/`. `npm run assets:gallery -- <fresh-directory>`
 builds the unified offline asset gallery, including the dated before/after reports.
 
+Spire's [selected defensive illustrations](assets/spire-defense-batch/README.md)
+live in `src/games/spire/ui/art/defense.tsx`: editable JSX adapted from six packed
+SVG cells, shared by the current card renderer and export catalogue. The original
+sheet, unused cells, earlier independent trials, prompts and before/current
+comparisons remain preserved; selected third-row artwork serves existing card
+upgrades, without introducing a new game level. The API batch method is in the
+[art skill](../../skills/card-art/references/batch-assets.md).
+
 Last Hearth’s [Iron Drake portrait](assets/hearth-iron-drake/README.md) uses the existing
 `MetalPortrait` renderer in `src/games/battlegrounds/ui/MinionArt.tsx`. Normal/golden
 exports retain their IDs; this SVG study does not change the 3D gallery model.
@@ -77,17 +85,37 @@ The commands resolve relative paths from the repository, even when called from a
 
 The exporter produces `manifest.json`, an offline `index.html` cabinet, and one `.svg` per entry. The manifest is the current count and ID authority; tokens, statuses and curses have no upgrade export. SVGs contain intrinsic dimensions, accessible labels and resolved palette colors. Export to separate directories for before/after review. Generated exports and reviews normally belong under ignored `test-results/`.
 
+Current gallery pages embed their image previews, including candidate comparisons
+and retained upgrade captures. They can display those images when a preview host
+receives only the HTML and cannot load neighbouring files. The separate SVG files,
+manifest and review records remain in the export for source access; keep the full
+directory when opening those files or moving between game pages. View controls
+update the current document's fragment without navigating an isolated preview to
+its host's base URL. Browser coverage tests both the full export and an isolated,
+sandboxed HTML document with sibling-file requests unavailable.
+
 The cabinet also writes one page per game: `blindside.html`, `spire.html`,
 `hearth.html`, `cartographer.html`, `emberwake.html`, `night-passage.html`, and
 `scrapyard.html`, plus `shared.html`. Each page has **Current assets**, **Recent
-upgrades**, and **Next batch** views. Spire combat portraits enter the same SVG
+upgrades**, and **WIP** views. `wip.html` opens directly on the proposed batches.
+Links to the former `#candidates` view still open WIP. Spire combat portraits enter the same SVG
 manifest. Canvas games use fixed specimens from their current presentation
 renderers; Cartographer room samples reuse its current CSS. The scope statement
 on each page names coverage limits. No session, save, background clock, polling,
 or API request runs while browsing.
 
-`packages/workshop-tools/art/gallery/library.ts` owns curated upgrade records and batch proposals;
-the renderer/content catalogue still owns current SVG identity and artwork.
+Generated WIP batches can display a packed original, extracted regular/upgrade/
+future-tier scenes and a GIF play-effect study. Previews remain embedded in each
+HTML file. Effects start only from their play control, return to the retained
+still after one play, and use the still when reduced motion is enabled. These
+review controls do not install artwork or effects into any game. The batch
+record retains exact requests, prompts, response usage and quality limitations.
+
+`packages/workshop-tools/art/gallery/library.ts` owns curated upgrade records,
+WIP batch proposals and candidate metadata. WIP shows the proposed scope and
+current/earlier-trial comparisons before any new generation. A batch proposal
+does not authorize API calls; follow the [batch workflow and preservation hold](README.md#image-26-batch-workflow).
+The renderer/content catalogue still owns current SVG identity and artwork.
 The same export writes retained feedback-study comparisons under `reviews/`, linked
 from **Recent upgrades**. Their dated history records review transitions rather than
 the current game's full upgrade inventory. Each historical report remains at most

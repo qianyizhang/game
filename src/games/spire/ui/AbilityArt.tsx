@@ -5,6 +5,7 @@ import { silentUpgradeScenes } from './SilentUpgradeArt';
 import { Glyph, ink, copper } from './art/primitives';
 import { scenes } from './art/ironclad';
 import { physicalActionUpgrades } from './art/physical-actions';
+import { defensiveUpgrades } from './art/defense';
 
 export function AbilityArt({
   definition,
@@ -39,7 +40,9 @@ export function AbilityArt({
       }
     >
       {(upgraded
-        ? (physicalActionUpgrades[definition.id] ?? silentUpgradeScenes[definition.id])
+        ? (defensiveUpgrades[definition.id] ??
+          physicalActionUpgrades[definition.id] ??
+          silentUpgradeScenes[definition.id])
         : undefined) ??
         silentScenes[definition.id] ??
         scenes[definition.id] ?? <Glyph kind="book" />}

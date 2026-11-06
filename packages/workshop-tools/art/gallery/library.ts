@@ -56,6 +56,17 @@ export interface Upgrade {
 /** Retained, dated comparisons; these are not fresh captures or blanket user approval. */
 export const RECENT_UPGRADES: Upgrade[] = [
   {
+    id: 'spire-defense-packed',
+    game: 'spire',
+    date: '2026-11-06',
+    title: 'Three defensive cards gain distinct base and upgrade silhouettes',
+    summary:
+      'Selected six packed SVG scenes replace the repeated helmets. Stronger third-row scenes become the actual upgrades; unused variants, originals and prompts remain preserved.',
+    record: 'docs/art/assets/spire-defense-batch/README.md',
+    image: 'docs/art/assets/spire-defense-batch/adoption-comparison.webp',
+    revision: '2026-11-06 adoption',
+  },
+  {
     id: 'backflip',
     game: 'spire',
     date: '2026-10-31',
@@ -208,11 +219,183 @@ export interface BatchCandidate {
   reason: string;
   brief: string;
   current: string[];
-  status: 'Review first' | 'SVG trial';
+  status: 'Review first' | 'SVG trial' | 'Installed';
   trial?: { file: string; record: string };
 }
 
+export interface BatchProposal {
+  id: string;
+  game: CollectionId;
+  title: string;
+  reason: string;
+  candidates: string[];
+  reference: string;
+  deliverables: string;
+  requests: { format: 'SVG' | 'GIF'; plan: string }[];
+  stop: string;
+  acceptance: string[];
+  record: string;
+  state?: 'Generating' | 'Generated · awaiting review' | 'Accepted · selected art installed';
+  study?: {
+    summary: string;
+    sheet: string;
+    subjects: { title: string; tiers: { label: string; file: string }[] }[];
+    effect?: { title: string; file: string; still: string; durationMs: number };
+    attachments: string[];
+  };
+}
+
+/** Proposed and retained batches. Generation agreement and artwork acceptance are separate. */
+export const WIP_BATCHES: BatchProposal[] = [
+  {
+    id: 'spire-defense-01',
+    state: 'Accepted · selected art installed',
+    game: 'spire',
+    title: 'Batch 01 · Three defensive identities',
+    reason:
+      'Selected scenes now replace the repeated helmets with a plated arm, hollow armor and planted shield bearer, each with a distinct upgrade.',
+    candidates: ['metallicize', 'ghostlyArmor', 'sentinel'],
+    reference:
+      'Ironclad ink, steel and copper; the live game frame and light direction. Earlier independent SVGs and unused packed cells remain reference material.',
+    deliverables:
+      'Nine SVG illustrations: regular, upgrade and future-tier concepts for three cards, plus one Metallicize play-effect GIF.',
+    requests: [
+      {
+        format: 'SVG',
+        plan: 'One native SVG sheet: 3 columns × 3 rows, 1440 × 1008, with nine separable 480 × 336 scenes. The third row explores a future tier; judge consistency and clean extraction.',
+      },
+      {
+        format: 'GIF',
+        plan: 'Only if the SVG sheet is useful: rasterize its Metallicize scene as a shared reference, then request one native 12-frame play-effect GIF. Plates form, lock and settle into a useful still.',
+      },
+    ],
+    stop: 'Two requests completed. The user accepted the batch November 6 and authorized selection for the game. Six static scenes are installed; the GIF remains a motion study. Further paid requests require a new agreed batch.',
+    acceptance: [
+      'Different subjects and real base/upgrade changes read at 160 × 112 and 80 × 56.',
+      'One visual style across the set; clean vector scenes, with no raster wrappers or cross-cell debris.',
+      'The GIF preserves the static subject and palette; the play action forms, locks and settles with a useful reduced-motion still.',
+      'Review in the actual card frame and phone hand before runtime promotion. Report cost and time per accepted illustration, including rejected work.',
+    ],
+    record: 'docs/art/assets/spire-defense-batch/README.md',
+    study: {
+      summary:
+        'Six scenes are installed: the regular row supplies base art, and the strongest third-row silhouettes supply upgrades. The middle row remains an alternate. The $0.16 sheet yielded nine scenes (1.7¢ each; 2.6¢ per selected scene). The $0.06 GIF remains a reference study because its formation motion is weak.',
+      sheet: 'docs/art/assets/spire-defense-batch/sheet.svg',
+      subjects: [
+        { id: 'metallicize', title: 'Metallicize' },
+        { id: 'ghostlyArmor', title: 'Ghostly Armor' },
+        { id: 'sentinel', title: 'Sentinel' },
+      ].map(({ id, title }) => ({
+        title,
+        tiers: [
+          { suffix: 'base', label: 'Regular · selected for game' },
+          { suffix: 'upgraded', label: 'Alternate upgrade · retained' },
+          { suffix: 'future', label: 'Upgrade · selected from future concept' },
+        ].map(({ suffix, label }) => ({
+          label,
+          file: `docs/art/assets/spire-defense-batch/${id}-${suffix}.svg`,
+        })),
+      })),
+      effect: {
+        title: 'Metallicize · play-effect study',
+        file: 'docs/art/assets/spire-defense-batch/metallicize-play.gif',
+        still: 'docs/art/assets/spire-defense-batch/metallicize-still.png',
+        durationMs: 1200,
+      },
+      attachments: [
+        'docs/art/assets/spire-defense-batch/svg-prompt.md',
+        'docs/art/assets/spire-defense-batch/svg-request.json',
+        'docs/art/assets/spire-defense-batch/svg-response.json',
+        'docs/art/assets/spire-defense-batch/gif-prompt.md',
+        'docs/art/assets/spire-defense-batch/gif-request.json',
+        'docs/art/assets/spire-defense-batch/gif-response.json',
+        'docs/art/assets/spire-defense-batch/reference.png',
+        'docs/art/assets/spire-defense-batch/adoption-comparison.webp',
+        ...['metallicize', 'ghostlyArmor', 'sentinel'].flatMap((id) =>
+          ['', '-upgraded'].map(
+            (suffix) => `docs/art/assets/spire-defense-batch/before-${id}${suffix}.svg`,
+          ),
+        ),
+      ],
+    },
+  },
+  {
+    id: 'hearth-small-units-02',
+    game: 'hearth',
+    title: 'Batch 02 · Six small units, normal and Golden',
+    reason:
+      'These frequently repeated small units use the same pose for normal and Golden. Give Golden versions a distinct gesture while keeping simple, related shapes.',
+    candidates: [
+      'hearth-squire',
+      'hearth-pup',
+      'hearth-imp',
+      'hearth-spark',
+      'hearth-cub',
+      'hearth-wisp',
+    ],
+    reference:
+      'Hearth forest ink, cream planes and warm accents; current species colors and card framing. Gold supports the gesture rather than replacing it.',
+    deliverables:
+      'Twelve SVG scenes: six normal/Golden pairs in one sheet. Select only cells that improve the existing game art.',
+    requests: [
+      {
+        format: 'SVG',
+        plan: 'One 1920 × 1008 sheet, 4 columns × 3 rows of 480 × 336 scenes. Two adjacent normal/Golden pairs per row; preserve separable groups and quiet margins.',
+      },
+    ],
+    stop: 'Await agreement. One SVG request maximum; no automatic retries or rerolls. Show weak cells before proposing repair. Boss transformation and VFX GIFs belong to a separate effect brief.',
+    acceptance: [
+      'Distinct normal/Golden gestures survive at 160 × 112 and 80 × 56 without relying on color or border.',
+      'Connected anatomy, clear material planes, consistent style and clean cell extraction; retain stronger existing normal art when appropriate.',
+      'Judge recruitment/combat board and phone sizes before promotion; report cost per useful cell, including rejects.',
+    ],
+    record: 'docs/art/assets/hearth-small-units-batch/README.md',
+  },
+];
+
 export const NEXT_BATCH: BatchCandidate[] = [
+  ...[
+    {
+      id: 'squire',
+      title: 'Hearth Squire',
+      brief: 'Connected shield-bearing arm; Golden raises and angles the shield.',
+    },
+    {
+      id: 'pup',
+      title: 'Clockwork Pup',
+      brief: 'Compact mechanical paws and head; Golden springs forward on a raised forepaw.',
+    },
+    {
+      id: 'imp',
+      title: 'Coal Imp',
+      brief: 'Crouched coal-bearing imp; Golden plants its feet and offers the coal outward.',
+    },
+    {
+      id: 'spark',
+      title: 'Kindle Spark',
+      brief: 'Compact flame with an open center; Golden lifts into a wider sweep.',
+    },
+    {
+      id: 'cub',
+      title: 'Briar Cub',
+      brief: 'Crouched young bear; Golden raises a leading paw and broadens its shoulder gesture.',
+    },
+    {
+      id: 'wisp',
+      title: 'Coal Wisp',
+      brief:
+        'A single curled spirit; Golden rises on a split tail around the same hollow identity.',
+    },
+  ].map(({ id, title, brief }): BatchCandidate => ({
+    id: `hearth-${id}`,
+    game: 'hearth',
+    title,
+    reason:
+      'Normal and Golden currently share the same subject pose; the Golden cue comes from the palette and frame.',
+    brief,
+    current: [`hearth/${id}`, `hearth/${id}-golden`],
+    status: 'Review first',
+  })),
   {
     id: 'metallicize',
     trial: {
@@ -222,11 +405,11 @@ export const NEXT_BATCH: BatchCandidate[] = [
     game: 'spire',
     title: 'Metallicize',
     reason:
-      'The dominant helmet repeats across several Ironclad cards; small gears carry the hardening identity.',
+      'A plated forearm now replaces the repeated helmet; its stronger upgrade extends the connected plating and copper lock.',
     brief:
       'A plated forearm hardening into fitted steel, preserving the restrained ink and copper palette.',
     current: ['spire/metallicize', 'spire/metallicize-upgraded'],
-    status: 'SVG trial',
+    status: 'Installed',
   },
   {
     id: 'ghostlyArmor',
@@ -237,11 +420,11 @@ export const NEXT_BATCH: BatchCandidate[] = [
     game: 'spire',
     title: 'Ghostly Armor',
     reason:
-      'A tinted helmet carries most of the shape; spectral details are smaller than the main contour.',
+      'Hollow connected armor now replaces the tinted helmet; the upgrade opens its arms around a larger empty center.',
     brief:
       'An empty, hollow suit of spectral armor with open negative space and restrained teal vapor.',
     current: ['spire/ghostlyArmor', 'spire/ghostlyArmor-upgraded'],
-    status: 'SVG trial',
+    status: 'Installed',
   },
   {
     id: 'sentinel',
@@ -251,11 +434,12 @@ export const NEXT_BATCH: BatchCandidate[] = [
     },
     game: 'spire',
     title: 'Sentinel',
-    reason: 'The helmet repeats Metallicize; the wall and energy mark remain small secondary cues.',
+    reason:
+      'A planted watchman and tall shield now replace the helmet; the upgrade adds a wider brace and visible copper reserve.',
     brief:
       'A grounded watchman behind a tall shield, with a small energy reserve visible at its edge.',
     current: ['spire/sentinel', 'spire/sentinel-upgraded'],
-    status: 'SVG trial',
+    status: 'Installed',
   },
   {
     id: 'joker-recognition',
@@ -363,6 +547,17 @@ export const FEEDBACK_STYLES = [
 /** Explicit filesystem inputs supplement the import graph without loading renderers. */
 export const GALLERY_INPUTS: readonly string[] = [
   ...RECENT_UPGRADES.map((upgrade) => upgrade.image),
+  ...WIP_BATCHES.map((batch) => batch.record),
+  ...WIP_BATCHES.flatMap((batch) =>
+    batch.study
+      ? [
+          batch.study.sheet,
+          ...batch.study.subjects.flatMap((subject) => subject.tiers.map((tier) => tier.file)),
+          ...(batch.study.effect ? [batch.study.effect.file, batch.study.effect.still] : []),
+          ...batch.study.attachments,
+        ]
+      : [],
+  ),
   ...NEXT_BATCH.flatMap((candidate) =>
     candidate.trial ? [candidate.trial.file, candidate.trial.record] : [],
   ),

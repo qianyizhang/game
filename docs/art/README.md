@@ -69,9 +69,30 @@ trials, their sources and rendered exports, comparison outcomes, and known limit
 ## Asset records
 
 The [per-game 2D cabinet](svg.md#scaffold-and-export) browses current artwork,
-recent upgrades and proposed next batches. Its export includes live-renderer
+recent upgrades and WIP batches. Its export includes live-renderer
 specimens for Canvas games and staged Image 2.6 comparisons; browsing does not
 generate or install artwork.
+
+### Image 2.6 batch workflow
+
+The art skill's [batch workflow](../../skills/card-art/references/batch-assets.md)
+owns WIP agreement, packing, extraction, cost review and selective promotion.
+The user accepted the first Spire trial on November 6 and requested consolidation:
+pack simple related assets such as tiles and repeated minions; use GIF for
+purposeful events such as boss transformations and VFX. The
+[Spire batch record](assets/spire-defense-batch/README.md) preserves the source
+trial and selected replacements. The next [Hearth small-unit proposal](assets/hearth-small-units-batch/README.md)
+awaits agreement.
+
+**Preservation hold · user request, 2026-11-06:** retain intermediate artwork,
+reference boards, sheets, extracted variants, GIF originals and review frames,
+prompt drafts and exact sent prompts, settings, usage, failures and review notes
+for future-session reference. Do not retire that artwork/prompt lineage during
+routine acceptance, rejection or closeout until the user revisits this hold.
+This does not require keeping every routine tooling log.
+
+Later batches should refine the consolidated method using their observed
+quality, cost and extraction limits.
 
 [Game asset enrichment](asset-enrichment.md) inventories the six games, prioritizes
 readability and feedback studies, and records the Spire intent pilot with its independent

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336" role="img" aria-label="ghostlyArmor-base"><g id="ghostlyArmor-base">
+<rect width="480" height="336" fill="#172928" />
+<path d="M216 219 Q149 278 228 272 Q309 237 327 267 Q350 299 242 310 Q302 289 288 278 Q276 270 232 286 Q153 303 164 264 Q171 241 216 219Z" fill="#80a69c" opacity=".65" />
+<g stroke="#172928" stroke-width="2.5" stroke-linejoin="round">
+<path d="M170 65 213 45 Q246 34 292 58 L321 94 313 159 288 220 Q244 198 202 235 L178 194 166 128Z" fill="#4c5b55" />
+<path d="M198 51 Q201 26 230 24 Q270 22 298 48 Q313 63 300 83 Q285 101 251 88 Q214 77 198 51Z" fill="#a9b4aa" />
+<path d="M207 48 Q215 28 242 31 Q272 32 290 49 Q304 62 293 77 Q275 91 247 80 Q221 73 207 48Z" fill="#172928" />
+<path d="M213 84 251 98 281 96 294 130 279 192 251 214 229 174 203 160 190 125Z" fill="#a9b4aa" />
+<path d="M241 97 277 101 284 129 278 158 261 139Z" fill="#dfd0b0" stroke="none" />
+<path d="M210 152 Q244 145 256 184 L251 211 Q219 207 198 229 L185 198Z" fill="#4c5b55" stroke="none" />
+<path d="M197 224 Q230 201 269 207 Q292 217 276 236 Q241 257 205 249 Q189 244 197 224Z" fill="#172928" />
+<path d="M302 57 Q339 71 351 130 L325 139 305 121Z" fill="#4c5b55" />
+<path d="M309 67 Q329 81 337 112 L318 108Z" fill="#a9b4aa" stroke="none" />
+<path d="M304 129 328 139 341 183 324 201 299 166Z" fill="#4c5b55" />
+<path d="M323 182 Q338 174 351 187 L391 248 368 271 347 230 326 216Z" fill="#a9b4aa" />
+<path d="M333 186 345 191 372 240 355 231Z" fill="#dfd0b0" stroke="none" />
+<ellipse cx="376" cy="260" rx="18" ry="10" transform="rotate(-35 376 260)" fill="#172928" />
+<path d="M104 118 135 105 174 121 160 164 139 187 104 167Z" fill="#4c5b55" />
+<path d="M115 118 157 125 146 159 113 168 97 172Z" fill="#a9b4aa" />
+<path d="M108 190 Q129 178 148 198 L139 241 128 292 81 310 78 272 62 225Z" fill="#a9b4aa" />
+<path d="M91 208 109 196 122 203 107 247 94 290 84 292 88 247 72 225Z" fill="#dfd0b0" stroke="none" />
+<ellipse cx="104" cy="300" rx="25" ry="13" transform="rotate(-25 104 300)" fill="#172928" />
+<path d="M60 125 102 80 130 48 Q177 48 199 77 Q219 102 210 117 Q200 133 183 130 Q117 111 76 139Z" fill="#a9b4aa" />
+<path d="M66 122 132 55 Q167 54 188 78 Q137 68 93 116Z" fill="#dfd0b0" stroke="none" />
+<path d="M79 138 Q131 113 181 130 L164 143 Q113 125 79 144Z" fill="#4c5b55" />
+<path d="M156 68 179 78 M124 214 117 237 M316 153 322 172" fill="none" />
+</g>
+</g>
+</svg>

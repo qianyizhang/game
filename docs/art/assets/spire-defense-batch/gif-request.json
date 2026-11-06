@@ -1,0 +1,12 @@
+{
+  "model": "gpt-image-2.6-sunburst",
+  "prompt": "Create ONE finished native animated GIF: a brief fantasy card PLAY EFFECT, not an idle portrait, not a comic strip, and not a montage. Use the supplied still reference as the exact final identity, composition, drawing style and palette: one connected bent gauntleted forearm, diagonal upward fist, fitted broad forged-steel plates and restrained copper seams. Keep the camera locked, dark ink background #172928, three broad value groups and clean engraved contours. The final arm must still match the reference closely; do not add a face, warrior, helmet, text, card frame, logo or separate shield.\n\nTwelve consecutive animation frames, landscape 10:7. A single clear action takes place over about 1.2 seconds: first the same forearm has slightly separated plates aligned just above its surface; then the broad plates slide a short distance into place from elbow toward wrist; each locks into connected steel with a small warm copper glint traveling toward the clenched fist. The fist braces once with a tiny purposeful recoil, and everything settles into the supplied reference pose. Keep anatomy, scale and connected wrist/elbow stable; no melting, camera zoom, whole-image sliding, flying shards or detached hand. Use two or three large readable moving forms rather than dense sparks. Last three frames hold the final finished armored pose, motionless and useful as a reduced-motion still.\n\nThis is a one-shot effect triggered when a card is played. It should read as formation, lock, settle. Do NOT return to the unarmored starting state or design continuous idle motion. Keep the quiet background unchanged and all action inside generous margins. Maintain recognizable material and restrained copper/ivory accents when shown at 160 by 112 and 80 by 56.\n",
+  "image": "reference.png",
+  "n": 1,
+  "quality": "medium",
+  "complexity": "high",
+  "output_format": "gif",
+  "size": "480x336",
+  "frame_count": 12,
+  "frame_duration_ms": 100
+}

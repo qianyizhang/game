@@ -1,0 +1,28 @@
+{
+  "created": 1793954378,
+  "background": "opaque",
+  "data": [
+    {
+      "generation_id": "3f4fc8f5-48c0-41c9-bb88-59db68990bbc"
+    }
+  ],
+  "output_format": "gif",
+  "quality": "medium",
+  "safety_identifier": null,
+  "size": "480x336",
+  "usage": {
+    "input_tokens": 1020,
+    "input_tokens_details": {
+      "image_tokens": 630,
+      "text_tokens": 390
+    },
+    "output_tokens": 1716,
+    "output_tokens_details": {
+      "image_tokens": 1716,
+      "text_tokens": 0
+    },
+    "total_tokens": 2736
+  },
+  "request_id": "req_2f290dc5f866441998d486890cc43796",
+  "elapsed_seconds": 28.77
+}
