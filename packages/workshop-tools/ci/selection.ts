@@ -5,6 +5,7 @@ export const families = [
   'emberwake',
   'cartographer',
   'night-passage',
+  'scrapyard',
   'svg',
   'models',
   'gallery',
@@ -36,6 +37,7 @@ const games: Family[] = [
   'emberwake',
   'cartographer',
   'night-passage',
+  'scrapyard',
 ];
 const crossGameBrowser = new Set([
   'artwork',
@@ -121,6 +123,7 @@ export function browserFamilies(path: string): Family[] | undefined {
   const name = path.match(/^tests\/browser\/(.+)\.spec\.ts$/)?.[1];
   if (!name || name === 'art3d-review' || name === 'trace-private') return undefined;
   if (name.startsWith('night-passage')) return ['night-passage'];
+  if (name === 'scrapyard') return ['scrapyard'];
   if (name.startsWith('emberwake') || name === 'diablo2') return ['emberwake'];
   if (name.startsWith('cartographer')) return ['cartographer'];
   if (name === 'generated-dungeon') return ['cartographer', 'emberwake'];

@@ -141,6 +141,31 @@ void test('new unclassified tests and unresolved imports expand application cove
   );
 });
 
+void test('Scrapyard rules select their tests and browser journey without expanding unrelated changes', () => {
+  const current = {
+    ...catalogue,
+    application: [...catalogue.application, 'src/games/scrapyard/domain/world.test.ts'],
+    browser: [...catalogue.browser, 'tests/browser/scrapyard.spec.ts'],
+  };
+  const world = 'src/games/scrapyard/domain/world.ts';
+  const graph = new Map([[world, new Set(['src/games/scrapyard/domain/world.test.ts'])]]);
+  const plan = selectPlan([{ path: world, status: 'M' }], current, graph, {
+    head: 'a'.repeat(40),
+  });
+  assert.equal(plan.mode, 'scoped');
+  assert.deepEqual(plan.unitFiles, ['src/games/scrapyard/domain/world.test.ts']);
+  assert.ok(plan.browserFiles.includes('tests/browser/scrapyard.spec.ts'));
+  assert.ok(!plan.browserFiles.includes('tests/browser/spire.spec.ts'));
+  const unrelated = selectPlan(
+    [{ path: 'src/games/spire/ui/SpireGame.tsx', status: 'M' }],
+    current,
+    graph,
+    { head: 'a'.repeat(40) },
+  );
+  assert.equal(unrelated.mode, 'scoped');
+  assert.ok(!unrelated.browserFiles.includes('tests/browser/scrapyard.spec.ts'));
+});
+
 void test('explicit full validation retains every application, geometry and public browser journey', () => {
   const full = selectPlan([], catalogue, new Map(), { head: 'a'.repeat(40), full: true });
   assert.equal(full.mode, 'full');
