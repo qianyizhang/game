@@ -1,0 +1,175 @@
+{
+  "xml_native_vector_validation": "passed",
+  "sources": [
+    {
+      "file": "actors/sheet.svg",
+      "bytes": 8688,
+      "paths": 64,
+      "sha256": "d22a25310d840e17c825242325d80596939310f0bca9c2cd26c9bb24ee3aa3e7",
+      "status": "passed"
+    },
+    {
+      "file": "actors/survivor.svg",
+      "bytes": 1735,
+      "paths": 13,
+      "sha256": "bc9f7d440a8ae1ebd468a5329ee4a5f772a14a211f30fb526b0ce8e3b811056c",
+      "status": "passed"
+    },
+    {
+      "file": "actors/drifter.svg",
+      "bytes": 1934,
+      "paths": 13,
+      "sha256": "d7ebc75c92535416987238b7f1c63b3d5ad696de2f1cfee94ff98b9718a4bee3",
+      "status": "passed"
+    },
+    {
+      "file": "actors/runner.svg",
+      "bytes": 1629,
+      "paths": 12,
+      "sha256": "42b4068ed347bca9ddf5d0b221f64b479799f7903ea8a0b0f348b240563e5369",
+      "status": "passed"
+    },
+    {
+      "file": "actors/brute.svg",
+      "bytes": 1771,
+      "paths": 13,
+      "sha256": "45c0b362b3567e358ef0350ea136a9f14fedcf9ba767cefd725583cdba46a8cc",
+      "status": "passed"
+    },
+    {
+      "file": "actors/spitter.svg",
+      "bytes": 1798,
+      "paths": 13,
+      "sha256": "b75a5395f2c96a1193ad84abe5399c0ef79fbf40fac73d8f532e6e07e90fca77",
+      "status": "passed"
+    },
+    {
+      "file": "equipment/sheet.svg",
+      "bytes": 7381,
+      "paths": 49,
+      "sha256": "5f0932da33b9b5d3ee2635bcf94d0b21f42403772554cbc493a1dd1fd605e899",
+      "status": "passed"
+    },
+    {
+      "file": "equipment/rivet-gun.svg",
+      "bytes": 1013,
+      "paths": 7,
+      "sha256": "07aa4a92268327e95693ced3b6303868be8b363783150e25c03bcba610317622",
+      "status": "passed"
+    },
+    {
+      "file": "equipment/scattergun.svg",
+      "bytes": 1351,
+      "paths": 10,
+      "sha256": "ec041a5d331ae8e36eb988283217fcea2059fc7d8bb072eb926ff0bdff10ba09",
+      "status": "passed"
+    },
+    {
+      "file": "equipment/scrap-cannon.svg",
+      "bytes": 1456,
+      "paths": 9,
+      "sha256": "4c2e3f09a4be3b45402f820949641285d514a7ec5ebddd8851920ac22f01c33b",
+      "status": "passed"
+    },
+    {
+      "file": "equipment/hotter-rounds.svg",
+      "bytes": 1047,
+      "paths": 8,
+      "sha256": "d91dbe155643eec2777ac4d1d6f9b0ace931c96bea80aa21729e46d023fb36fd",
+      "status": "passed"
+    },
+    {
+      "file": "equipment/better-boots.svg",
+      "bytes": 1437,
+      "paths": 9,
+      "sha256": "25c6545262406d4f4c06d696a3028efcf30368988c9939c765d0248e10e617f8",
+      "status": "passed"
+    },
+    {
+      "file": "equipment/field-repair.svg",
+      "bytes": 1326,
+      "paths": 6,
+      "sha256": "4bce12771dcf7985aedc3e261db2d8cbd9ed2f924a3f09656a8ba9f9247ccaa2",
+      "status": "passed"
+    },
+    {
+      "file": "combat/sheet.svg",
+      "bytes": 1504,
+      "paths": 13,
+      "sha256": "2a28c8f11c6b99c753791f14bbc64c4d05153fb1bd8c171f567fa7b556959ad0",
+      "status": "passed"
+    },
+    {
+      "file": "combat/light-round.svg",
+      "bytes": 269,
+      "paths": 1,
+      "sha256": "7b2866bf19114164c20a1417b24bce5d8b5ec1f81cc3a73d532d691b5100015c",
+      "status": "passed"
+    },
+    {
+      "file": "combat/heavy-round.svg",
+      "bytes": 267,
+      "paths": 1,
+      "sha256": "51ee275b9daf112ff970227bb862fed4b70e562965da94dde4795a21c2b1c173",
+      "status": "passed"
+    },
+    {
+      "file": "combat/hostile-diamond.svg",
+      "bytes": 257,
+      "paths": 2,
+      "sha256": "472331d453dac2c4e3f2af97afc51ee0e5d5bfabfd64adc8b06a0ba136e649ad",
+      "status": "passed"
+    },
+    {
+      "file": "combat/scrap-pickup.svg",
+      "bytes": 278,
+      "paths": 2,
+      "sha256": "fa5bb0eaeba899599e06fae099c78dcda0c0d938f303d9c5100234a558cd8f24",
+      "status": "passed"
+    },
+    {
+      "file": "combat/player-hit.svg",
+      "bytes": 380,
+      "paths": 4,
+      "sha256": "e7beeb5f0f27f05a5439454076949bdacc6b361cb97bf261e276902a2f19f30b",
+      "status": "passed"
+    },
+    {
+      "file": "combat/scrap-sparkle.svg",
+      "bytes": 343,
+      "paths": 3,
+      "sha256": "34126d69f9ad2b5f54ad6dd74d22c760876b40c68944067c9a895215b016e36b",
+      "status": "passed"
+    },
+    {
+      "file": "arena/sheet.svg",
+      "bytes": 862,
+      "paths": 3,
+      "sha256": "aca67e62eb49c8103bcf33eea92c96aa654b688f2157e1315c2d336b5c61d857",
+      "status": "passed"
+    },
+    {
+      "file": "arena/floor-tile.svg",
+      "bytes": 499,
+      "paths": 2,
+      "sha256": "2f9d1ebab4aafb50ed9d38ad870c9075b54fdd079f913708011cda2a8aedc277",
+      "status": "passed"
+    },
+    {
+      "file": "arena/boundary-strip.svg",
+      "bytes": 231,
+      "paths": 0,
+      "sha256": "6ad690bcea5c05bf7bb4de21d6d3819e5af3d26ce0213209bc044b94302a4e82",
+      "status": "passed"
+    },
+    {
+      "file": "arena/corner-join.svg",
+      "bytes": 231,
+      "paths": 1,
+      "sha256": "2c44b9de0044b32e08209fd19734a922ff5564f94355f621ae401632de27b983",
+      "status": "passed"
+    }
+  ],
+  "sheets": 4,
+  "extracted": 20
+}

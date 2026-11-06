@@ -1,0 +1,29 @@
+<svg viewBox="0 0 1152 768" xmlns="http://www.w3.org/2000/svg" width="1152" height="768">
+  <g id="light-round" transform="translate(0 0)">
+    <circle cx="192" cy="192" r="68" fill="#b97c5e" />
+    <path d="M246.4 151.2A68 68 0 1 0 137.6 232.8Q210 255 246.4 151.2Z" fill="#e9dbb7" />
+  </g>
+  <g id="heavy-round" transform="translate(384 0)">
+    <circle cx="192" cy="192" r="124" fill="#b97c5e" />
+    <path d="M283 107.8A124 124 0 1 0 99.2 274.2Q213 306 283 107.8Z" fill="#e9dbb7" />
+  </g>
+  <g id="hostile-diamond" transform="translate(768 0)">
+    <path d="M192 52 328 192 192 332 56 192Z" fill="#ff927e" />
+    <path d="M192 84 220 192 192 300 164 192Z" fill="#e9dbb7" />
+  </g>
+  <g id="scrap-pickup" transform="translate(0 384)">
+    <path d="M176 84 222 85 300 162 300 202 198 300 160 263 84 187Z" fill="#a9e177" />
+    <path d="M160 263 300 162 300 202 198 300Z" fill="#567b4b" />
+  </g>
+  <g id="player-hit" transform="translate(384 384)">
+    <path d="M48 92 101 40 152 128 139 144Z" fill="#ff927e" />
+    <path d="M232 128 283 42 329 86 246 144Z" fill="#e9dbb7" />
+    <path d="M54 286 140 232 153 245 99 332Z" fill="#e9dbb7" />
+    <path d="M232 245 246 232 336 282 284 336Z" fill="#ff927e" />
+  </g>
+  <g id="scrap-sparkle" transform="translate(768 384)">
+    <path d="M106 62 142 77 166 160 145 171 93 103Z" fill="#e9dbb7" />
+    <path d="M198 164 281 116 319 131 301 167 207 186Z" fill="#a9e177" />
+    <path d="M197 214 268 253 278 292 237 299 180 232Z" fill="#a9e177" />
+  </g>
+</svg>

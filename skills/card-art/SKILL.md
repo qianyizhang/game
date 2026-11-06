@@ -48,4 +48,6 @@ Use explicit colors or established scene variables. Separate interpolated coordi
 3. **Inspect the actual UI yourself.** Check the full card and smallest hand/board view, text/stats, selected/golden states and phone layout. Preserve accessible control names.
 4. **Verify scope.** Use the [gate selection](../../docs/engineering/checks.md#gate-selection): `npm run check` for SVG/UI code, `npm run check:full` for native construction, animation or delivery. Export all assets when SVG sources change and run affected browser/native checks separately. Follow `AGENTS.md` for browser execution; report blocked checks. Repeat checks after material fixes, not to accumulate passing runs.
 
+Use losslessly optimized PNGs or another supported lossless format for retained review/evidence images. Verify decoded pixels, dimensions, alpha and color interpretation, preserve provenance for every distinct state, and keep the original if equivalence or a smaller file is unproven.
+
 Finish with a preview, the changes, verification and material limitations. Temporary reviews stay under ignored `test-results/`; retain selected decision evidence with the owning delivery and its hashes. Components, saved native masters and catalogue integration remain the durable sources.

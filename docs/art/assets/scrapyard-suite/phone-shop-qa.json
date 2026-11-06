@@ -1,0 +1,8 @@
+{
+  "phase": "shop",
+  "hp": 24,
+  "purchaseDisabled": true,
+  "horizontalOverflow": false,
+  "viewport": 390,
+  "derivedFrom": "Production World replay, seed scrap-01, 100 enemies, waypoint inputs; imported via actual UI."
+}

@@ -1,0 +1,15 @@
+<svg viewBox="0 0 1152 768" width="1152" height="768" xmlns="http://www.w3.org/2000/svg">
+  <g id="floor-tile" transform="translate(0 0)">
+    <rect width="384" height="384" fill="#142622" />
+    <path d="M48 116 L135 68 H322 L303 107 Q296 122 278 132 L251 148 Q239 156 231 172 L207 213 Q201 228 181 229 L165 230 Q154 231 144 239 L48 314 Z" fill="#193029" />
+    <path d="M146 346 Q153 318 174 309 L225 288 Q237 284 243 270 L256 242 Q263 229 279 220 Q306 203 338 210 V326 Q338 350 314 352 H146 Z" fill="#193029" />
+  </g>
+  <g id="boundary-strip" transform="translate(384 0)">
+    <rect width="384" height="96" fill="#142622" />
+    <rect width="384" height="40" fill="#293e32" />
+  </g>
+  <g id="corner-join" transform="translate(768 0)">
+    <rect width="96" height="96" fill="#142622" />
+    <path d="M0 0 H96 V40 H40 V96 H0 Z" fill="#293e32" />
+  </g>
+</svg>

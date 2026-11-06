@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" width="384" height="384"><g id="scattergun" stroke="#142622" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M63 191 L76 166 L119 145 L161 145 L193 157 L218 188 L195 214 L167 219 L154 246 L135 255 L115 250 L101 285 L66 275 L73 232 L57 218 Z" fill="#30483e" />
+    <path d="M78 227 L116 239 L103 287 L94 306 L69 310 L52 294 L61 265 Z" fill="#b97c5e" />
+    <path d="M62 258 L108 276 M56 279 L102 297" fill="none" />
+    <path d="M145 153 L246 87 L265 91 L270 111 L169 178 Z" fill="#a5b4a2" />
+    <path d="M154 170 L263 129 L280 135 L282 155 L172 198 Z" fill="#a5b4a2" />
+    <path d="M163 189 L280 178 L296 188 L294 209 L171 217 Z" fill="#a5b4a2" />
+    <path d="M245 87 Q256 78 265 91 Q276 105 270 113 Q260 119 251 105 Q245 97 245 87 Z M263 130 Q274 122 282 136 Q291 150 283 157 Q273 161 266 148 Q261 139 263 130 Z M280 178 Q291 171 298 186 Q304 201 296 209 Q286 214 280 200 Q276 189 280 178 Z" fill="#30483e" />
+    <path d="M83 165 L130 143 L153 146 L140 163 L92 185 L81 181 Z" fill="#e9dbb7" />
+    <path d="M93 188 L139 169 L159 178 L159 205 L103 222 L92 214 Z" fill="#a5b4a2" />
+    <path d="M157 145 Q141 170 151 194 L170 220 L191 210 Q170 185 176 163 L186 146 Z" fill="#e9dbb7" />
+    <circle cx="109" cy="201" r="6" fill="#142622" />
+  </g>
+  </svg>

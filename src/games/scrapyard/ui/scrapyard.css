@@ -265,3 +265,12 @@
     font-size: 10px;
   }
 }
+
+.scrap-loadout svg {
+  width: 30px;
+  height: 30px;
+}
+.scrap-shop svg {
+  width: 24px;
+  height: 24px;
+}

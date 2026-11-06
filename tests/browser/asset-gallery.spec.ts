@@ -174,9 +174,17 @@ test('per-game galleries preserve navigation, show current renderers and compare
       exact: true,
     }),
   ).toBeVisible();
-  await expect(page.locator('.packed-grid > article')).toHaveCount(3);
-  await expect(page.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(9);
-  const effect = page.locator('.play-effect');
+  const spireBatch = page.locator('#batch-spire-defense-01');
+  await expect(spireBatch.locator('.packed-grid > article')).toHaveCount(3);
+  await expect(spireBatch.locator('.packed-grid > article > h4')).toHaveText([
+    'Metallicize',
+    'Ghostly Armor',
+    'Sentinel',
+  ]);
+  await expect(spireBatch.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(9);
+  for (const subject of await spireBatch.locator('.packed-grid > article').all())
+    await expect(subject.locator('img[alt]:not([alt=""])')).toHaveCount(3);
+  const effect = spireBatch.locator('.play-effect');
   await expect(effect.locator('img')).toHaveAttribute('src', /^data:image\/png;/);
   await effect.getByRole('button', { name: 'Play effect', exact: true }).click();
   await expect(effect.locator('img')).toHaveAttribute('src', /^data:image\/gif;/);
@@ -190,13 +198,13 @@ test('per-game galleries preserve navigation, show current renderers and compare
   await expect(effect.getByRole('status')).toContainText('reduced motion');
   await expect(effect.locator('img')).toHaveAttribute('src', /^data:image\/png;/);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
-  const plan = page.locator('#batch-spire-defense-01 details').filter({
+  const plan = spireBatch.locator('details').filter({
     has: page.locator('summary', { hasText: 'Request plan and acceptance checks' }),
   });
   await plan.locator('summary').focus();
   await page.keyboard.press('Enter');
-  await expect(page.getByRole('heading', { name: 'One SVG request', exact: true })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'One GIF request', exact: true })).toBeVisible();
+  await expect(plan.getByRole('heading', { name: 'One SVG request', exact: true })).toBeVisible();
+  await expect(plan.getByRole('heading', { name: 'One GIF request', exact: true })).toBeVisible();
   await page.keyboard.press('Enter');
   await expect(page.locator('#batch-spire-defense-01 .retention-note')).toBeVisible();
   await page.locator('#wip img').evaluateAll(async (elements) => {
@@ -209,7 +217,9 @@ test('per-game galleries preserve navigation, show current renderers and compare
     );
   });
   await page.screenshot({ path: info.outputPath('wip-proposal-desktop.png'), fullPage: true });
-  await page.locator('.packed-study').screenshot({ path: info.outputPath('packed-desktop.png') });
+  await spireBatch
+    .locator('.packed-study')
+    .screenshot({ path: info.outputPath('packed-desktop.png') });
   await page.goto(`${base}/index.html`);
   for (const [id, name] of [
     ['blindside', 'Blindside'],
@@ -316,7 +326,9 @@ test('per-game galleries preserve navigation, show current renderers and compare
   });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: info.outputPath('wip-proposal-phone.png'), fullPage: true });
-  await page.locator('.packed-study').screenshot({ path: info.outputPath('packed-phone.png') });
+  await spireBatch
+    .locator('.packed-study')
+    .screenshot({ path: info.outputPath('packed-phone.png') });
   expect(errors).toEqual([]);
   expect(external).toEqual([]);
   await page.addInitScript(() => {
@@ -324,6 +336,125 @@ test('per-game galleries preserve navigation, show current renderers and compare
   });
   await page.goto(`${base}/emberwake.html`);
   await expect(page.getByText('Canvas 2D is unavailable.', { exact: true })).toHaveCount(6);
+});
+
+test('Scrapyard gallery isolates its four source families and filters the live suite', async ({
+  page,
+}, info) => {
+  const output = info.outputPath('scrapyard-gallery');
+  execFileSync(process.execPath, ['packages/workshop-tools/art/gallery/export.ts', output]);
+  const base = pathToFileURL(output + '/').href.replace(/\/$/, '');
+  const sources = {
+    actors: ['survivor', 'drifter', 'runner', 'brute', 'spitter'],
+    equipment: [
+      'rivet-gun',
+      'scattergun',
+      'scrap-cannon',
+      'hotter-rounds',
+      'better-boots',
+      'field-repair',
+    ],
+    combat: [
+      'light-round',
+      'heavy-round',
+      'hostile-diamond',
+      'scrap-pickup',
+      'player-hit',
+      'scrap-sparkle',
+    ],
+    arena: ['floor-tile', 'boundary-strip', 'corner-join'],
+  };
+  const errors: string[] = [];
+  const external: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('request', (request) => {
+    if (/^https?:/.test(request.url())) external.push(request.url());
+  });
+  await page.goto(`${base}/wip.html`);
+  // The combined view must contain both collections, with each source in its owning batch.
+  for (const [family, ids] of Object.entries(sources)) {
+    const batch = page.locator(`#batch-scrapyard-${family}`);
+    await expect(batch).toBeVisible();
+    await expect(batch.locator('.packed-grid > article > h4')).toHaveText(
+      ids.map((id) => id.replaceAll('-', ' ')),
+    );
+    await expect(batch.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(ids.length);
+    expect(
+      await batch
+        .locator('.packed-grid .art-stage a')
+        .evaluateAll((links) => links.map((link) => link.getAttribute('href'))),
+    ).toEqual(ids.map((id) => `batches/scrapyard-${family}/${id}.svg`));
+  }
+  await page
+    .getByRole('navigation', { name: 'Game galleries' })
+    .getByRole('link', { name: 'Scrapyard', exact: true })
+    .click();
+  await expect(page).toHaveURL(`${base}/scrapyard.html`);
+  await expect(page.locator('#current')).toBeVisible();
+  await expect(page.locator('#current .asset')).toHaveCount(20);
+  expect(
+    await page
+      .locator('#current .asset')
+      .evaluateAll((cards) => cards.map((card) => card.getAttribute('href')).sort()),
+  ).toEqual(
+    Object.values(sources)
+      .flat()
+      .map((id) => `scrapyard/${id}.svg`)
+      .sort(),
+  );
+  const collection = page.getByLabel('Collection', { exact: true });
+  const search = page.getByLabel('Find an illustration');
+  for (const [family, ids] of Object.entries(sources)) {
+    await collection.selectOption(`Scrapyard · ${family}`);
+    await expect(page.locator('.asset:visible')).toHaveCount(ids.length);
+  }
+  await collection.selectOption('Scrapyard · equipment');
+  await search.fill('rivet');
+  await expect(page.locator('.asset:visible')).toHaveAttribute('href', 'scrapyard/rivet-gun.svg');
+  await page.getByRole('link', { name: /WIP \(/ }).click();
+  await expect(page.locator('#wip')).toBeVisible();
+  await expect(page.locator('#wip .batch-proposal')).toHaveCount(4);
+  await expect(page.locator('#batch-spire-defense-01')).toHaveCount(0);
+  await expect(page.locator('#wip .play-effect')).toHaveCount(0);
+  await page.getByRole('link', { name: 'Current assets', exact: true }).click();
+  await expect(collection).toHaveValue('Scrapyard · equipment');
+  await expect(search).toHaveValue('rivet');
+  await expect(page.locator('.asset:visible')).toHaveCount(1);
+  await collection.selectOption('Scrapyard · combat');
+  await expect(page.locator('.asset:visible')).toHaveCount(0);
+  await expect(page.locator('#empty')).toBeVisible();
+  await search.fill('');
+  await expect(page.locator('.asset:visible')).toHaveCount(6);
+  await collection.selectOption('');
+  const decoded = await page.locator('#current .asset img').evaluateAll(async (images) =>
+    Promise.all(
+      images.map(async (element) => {
+        const image = element as HTMLImageElement;
+        image.loading = 'eager';
+        await image.decode();
+        return image.naturalWidth > 0 && image.naturalHeight > 0;
+      }),
+    ),
+  );
+  expect(decoded).toEqual(Array<boolean>(20).fill(true));
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: info.outputPath('scrapyard-current-phone.png'), fullPage: true });
+  await page.getByRole('link', { name: /WIP \(/ }).click();
+  for (const family of Object.keys(sources))
+    await page.locator(`#batch-scrapyard-${family} .packed-study`).screenshot({
+      path: info.outputPath(`scrapyard-${family}-phone.png`),
+    });
+  await page
+    .getByRole('navigation', { name: 'Game galleries' })
+    .getByRole('link', { name: 'Slay the Spire', exact: true })
+    .click();
+  await page.getByRole('link', { name: /WIP \(/ }).click();
+  await expect(page.locator('#wip .batch-proposal')).toHaveCount(1);
+  await expect(page.locator('#batch-spire-defense-01 .packed-grid > article')).toHaveCount(3);
+  await expect(page.locator('[id^="batch-scrapyard-"]')).toHaveCount(0);
+  expect(errors).toEqual([]);
+  expect(external).toEqual([]);
 });
 
 test('gallery image previews work inside an isolated document without sibling files', async ({

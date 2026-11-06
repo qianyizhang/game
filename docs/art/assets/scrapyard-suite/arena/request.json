@@ -1,0 +1,15 @@
+{
+  "model": "gpt-image-2.6-sunburst",
+  "prompt": "Create ONE native editable SVG contact sheet for Scrapyard, a compact top-down salvage-yard survival game. Static vector paths and simple shapes only. No raster images, fonts, visible text, scripts, animation, filters, gradients, external resources, use references or defs. Each cell must be a named top-level group using LOCAL coordinates with a single grid translate. No background rectangles for sprites; genuinely transparent outside silhouettes. No borders, labels, cast shadows or debris outside the named subject. Each sprite centered on its exact cell center, safe margins, with all its paths INSIDE its group. Economical geometry, fewer than 14 filled shapes per subject. Do not use strokes thinner than 5 units. Broad worn steel and cloth planes, strong asymmetrical silhouettes, three value groups, upper-left light. Dark forest ink #142622; shadow #30483e; steel #a5b4a2; cream #e9dbb7; restrained copper #b97c5e. Favor readable 20px contours over detailed engraving. No photorealism, plastic gloss, ornament or tiny clutter. All subjects are finished coherent siblings. THREE columns TWO rows; the second row is empty, canvas/viewBox1152x768, 384x384 cells. Groups floor-tile translate(0 0), boundary-strip translate(384 0), corner-join translate(768 0). MATERIAL STUDY, quiet dark planes only, never bright actor-like specks. floor-tile: exactly FULL 384x384 square, dark green #142622 base, sparse broad slightly lighter #193029 inset worn-steel planes at least38 units away from ALL edges; NO lines or texture meet outer edges, so every edge repeats seamlessly in3x3 at40px. No gradients or grid lines: existing grid is separate overlay. boundary-strip: long straight dark metal strip occupying local x0..384,y0..96, transparent rest, constant cross-section along x; top edge #293e32, inner shadow #142622, no rivets; intended40x10logical, kept OUTSIDE existing inset12px boundary. corner-join: local x0..96,y0..96 right-angle L corner with same 96unit thickness/cross-section as strip, transparent rest; inside dark base and quiet same highlight. Intended10x10logical, no diagonal hazard stripe. Keep boundary components rotationally reusable and agreeing at join endpoints. All colors close in value; maximum #304838; no ivory, bullets, scrap flecks, junk piles, obstacles or perspective. Upper-left light only as a very broad restrained plane. No tile borders. At most4simple filled paths per piece.",
+  "n": 1,
+  "quality": "medium",
+  "complexity": "high",
+  "output_format": "svg",
+  "size": "1152x768",
+  "svg": {
+    "model": "gpt-6.1-terra",
+    "reasoning": {
+      "effort": "low"
+    }
+  }
+}

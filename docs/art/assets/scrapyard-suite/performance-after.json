@@ -1,0 +1,526 @@
+{
+  "version": "scrapyard-2",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "hardwareConcurrency": 5,
+  "viewport": {
+    "width": 1000,
+    "height": 740
+  },
+  "protocol": "Rules-2 production World with local separation and ranged volleys + Canvas renderer + fixed-step clock. 120 warmup ticks, 600 measured ticks per workload; 3 rounds with rotated density order; fixed seed and waypoint inputs. Normal damage and health. Hostile and total projectile distributions are measured. Excludes React HUD, GPU timing and human input latency.",
+  "results": [
+    {
+      "density": 100,
+      "round": 1,
+      "simulationMs": {
+        "count": 600,
+        "min": 0,
+        "median": 0.10000000009313226,
+        "p95": 0.19999999995343387,
+        "max": 0.30000000004656613
+      },
+      "drawSubmissionMs": {
+        "count": 600,
+        "min": 0.19999999995343387,
+        "median": 0.5,
+        "p95": 0.6000000000931323,
+        "max": 1.1999999999534339
+      },
+      "combinedMs": {
+        "count": 600,
+        "min": 0.2999999998137355,
+        "median": 0.5999999998603016,
+        "p95": 0.7000000001862645,
+        "max": 1.3000000000465661
+      },
+      "rafMs": {
+        "count": 600,
+        "min": 16.5,
+        "median": 16.699999999999818,
+        "p95": 16.799999999999272,
+        "max": 16.80000000000109
+      },
+      "intervalsOver25ms": 0,
+      "intervalsOver50ms": 0,
+      "sampledTicks": 600,
+      "kills": 57,
+      "hp": 70,
+      "maxShots": 11,
+      "maxPickups": 5,
+      "hostileShots": {
+        "count": 600,
+        "min": 210,
+        "median": 564,
+        "p95": 595,
+        "max": 605
+      },
+      "totalShots": {
+        "count": 600,
+        "min": 214,
+        "median": 567,
+        "p95": 601,
+        "max": 611
+      },
+      "framesWithHundreds": 600,
+      "hostileCapacityFrames": 0,
+      "rangedEnemies": 52,
+      "activeEnemies": 100
+    },
+    {
+      "density": 300,
+      "round": 1,
+      "simulationMs": {
+        "count": 600,
+        "min": 0.09999999986030161,
+        "median": 0.2999999998137355,
+        "p95": 0.4000000001396984,
+        "max": 0.6999999999534339
+      },
+      "drawSubmissionMs": {
+        "count": 600,
+        "min": 0.5999999998603016,
+        "median": 1.1999999999534339,
+        "p95": 1.4000000001396984,
+        "max": 4
+      },
+      "combinedMs": {
+        "count": 600,
+        "min": 0.7999999998137355,
+        "median": 1.5,
+        "p95": 1.7000000001862645,
+        "max": 4.300000000046566
+      },
+      "rafMs": {
+        "count": 600,
+        "min": 16.5,
+        "median": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "intervalsOver25ms": 0,
+      "intervalsOver50ms": 0,
+      "sampledTicks": 600,
+      "kills": 60,
+      "hp": 56,
+      "maxShots": 6,
+      "maxPickups": 5,
+      "hostileShots": {
+        "count": 600,
+        "min": 582,
+        "median": 1446,
+        "p95": 1478,
+        "max": 1488
+      },
+      "totalShots": {
+        "count": 600,
+        "min": 582,
+        "median": 1447,
+        "p95": 1480,
+        "max": 1490
+      },
+      "framesWithHundreds": 600,
+      "hostileCapacityFrames": 0,
+      "rangedEnemies": 129,
+      "activeEnemies": 300
+    },
+    {
+      "density": 500,
+      "round": 1,
+      "simulationMs": {
+        "count": 598,
+        "min": 0.2999999998137355,
+        "median": 0.5,
+        "p95": 0.6999999999534339,
+        "max": 1.2999999998137355
+      },
+      "drawSubmissionMs": {
+        "count": 598,
+        "min": 1.0999999998603016,
+        "median": 2,
+        "p95": 2.2000000001862645,
+        "max": 3.9000000001396984
+      },
+      "combinedMs": {
+        "count": 598,
+        "min": 1.5999999998603016,
+        "median": 2.5,
+        "p95": 2.800000000046566,
+        "max": 4.5
+      },
+      "rafMs": {
+        "count": 598,
+        "min": 16.5,
+        "median": 16.69999999999709,
+        "p95": 16.799999999999272,
+        "max": 50.099999999998545
+      },
+      "intervalsOver25ms": 1,
+      "intervalsOver50ms": 1,
+      "sampledTicks": 600,
+      "kills": 55,
+      "hp": 48,
+      "maxShots": 3,
+      "maxPickups": 4,
+      "hostileShots": {
+        "count": 598,
+        "min": 1021,
+        "median": 2391,
+        "p95": 2464,
+        "max": 2479
+      },
+      "totalShots": {
+        "count": 598,
+        "min": 1021,
+        "median": 2392,
+        "p95": 2464,
+        "max": 2481
+      },
+      "framesWithHundreds": 598,
+      "hostileCapacityFrames": 0,
+      "rangedEnemies": 225,
+      "activeEnemies": 500
+    },
+    {
+      "density": 300,
+      "round": 2,
+      "simulationMs": {
+        "count": 600,
+        "min": 0.09999999986030161,
+        "median": 0.30000000004656613,
+        "p95": 0.4000000001396984,
+        "max": 0.6000000000931323
+      },
+      "drawSubmissionMs": {
+        "count": 600,
+        "min": 0.5999999998603016,
+        "median": 1.2000000001862645,
+        "p95": 1.5,
+        "max": 8.899999999906868
+      },
+      "combinedMs": {
+        "count": 600,
+        "min": 0.7999999998137355,
+        "median": 1.5,
+        "p95": 1.8000000000465661,
+        "max": 9.199999999953434
+      },
+      "rafMs": {
+        "count": 600,
+        "min": 16.5,
+        "median": 16.69999999999709,
+        "p95": 16.799999999995634,
+        "max": 16.80000000000291
+      },
+      "intervalsOver25ms": 0,
+      "intervalsOver50ms": 0,
+      "sampledTicks": 600,
+      "kills": 60,
+      "hp": 56,
+      "maxShots": 6,
+      "maxPickups": 5,
+      "hostileShots": {
+        "count": 600,
+        "min": 582,
+        "median": 1446,
+        "p95": 1478,
+        "max": 1488
+      },
+      "totalShots": {
+        "count": 600,
+        "min": 582,
+        "median": 1447,
+        "p95": 1480,
+        "max": 1490
+      },
+      "framesWithHundreds": 600,
+      "hostileCapacityFrames": 0,
+      "rangedEnemies": 129,
+      "activeEnemies": 300
+    },
+    {
+      "density": 500,
+      "round": 2,
+      "simulationMs": {
+        "count": 600,
+        "min": 0.2999999998137355,
+        "median": 0.5,
+        "p95": 0.6000000000931323,
+        "max": 2.300000000046566
+      },
+      "drawSubmissionMs": {
+        "count": 600,
+        "min": 1.0999999998603016,
+        "median": 2,
+        "p95": 2.300000000046566,
+        "max": 4.100000000093132
+      },
+      "combinedMs": {
+        "count": 600,
+        "min": 1.3999999999068677,
+        "median": 2.5,
+        "p95": 2.8999999999068677,
+        "max": 6.400000000139698
+      },
+      "rafMs": {
+        "count": 600,
+        "min": 16.5,
+        "median": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "max": 16.80000000000291
+      },
+      "intervalsOver25ms": 0,
+      "intervalsOver50ms": 0,
+      "sampledTicks": 600,
+      "kills": 55,
+      "hp": 48,
+      "maxShots": 3,
+      "maxPickups": 4,
+      "hostileShots": {
+        "count": 600,
+        "min": 1021,
+        "median": 2391,
+        "p95": 2464,
+        "max": 2479
+      },
+      "totalShots": {
+        "count": 600,
+        "min": 1021,
+        "median": 2391,
+        "p95": 2464,
+        "max": 2481
+      },
+      "framesWithHundreds": 600,
+      "hostileCapacityFrames": 0,
+      "rangedEnemies": 225,
+      "activeEnemies": 500
+    },
+    {
+      "density": 100,
+      "round": 2,
+      "simulationMs": {
+        "count": 600,
+        "min": 0,
+        "median": 0.09999999986030161,
+        "p95": 0.19999999995343387,
+        "max": 0.39999999990686774
+      },
+      "drawSubmissionMs": {
+        "count": 600,
+        "min": 0.19999999995343387,
+        "median": 0.5,
+        "p95": 0.6000000000931323,
+        "max": 2.2000000001862645
+      },
+      "combinedMs": {
+        "count": 600,
+        "min": 0.2999999998137355,
+        "median": 0.5999999998603016,
+        "p95": 0.7000000001862645,
+        "max": 2.2000000001862645
+      },
+      "rafMs": {
+        "count": 600,
+        "min": 16.5,
+        "median": 16.69999999999709,
+        "p95": 16.70000000001164,
+        "max": 16.80000000000291
+      },
+      "intervalsOver25ms": 0,
+      "intervalsOver50ms": 0,
+      "sampledTicks": 600,
+      "kills": 57,
+      "hp": 70,
+      "maxShots": 11,
+      "maxPickups": 5,
+      "hostileShots": {
+        "count": 600,
+        "min": 210,
+        "median": 564,
+        "p95": 595,
+        "max": 605
+      },
+      "totalShots": {
+        "count": 600,
+        "min": 214,
+        "median": 567,
+        "p95": 601,
+        "max": 611
+      },
+      "framesWithHundreds": 600,
+      "hostileCapacityFrames": 0,
+      "rangedEnemies": 52,
+      "activeEnemies": 100
+    },
+    {
+      "density": 500,
+      "round": 3,
+      "simulationMs": {
+        "count": 600,
+        "min": 0.30000000004656613,
+        "median": 0.5,
+        "p95": 0.6000000000931323,
+        "max": 1.6999999999534339
+      },
+      "drawSubmissionMs": {
+        "count": 600,
+        "min": 1,
+        "median": 2,
+        "p95": 2.2000000001862645,
+        "max": 4.199999999953434
+      },
+      "combinedMs": {
+        "count": 600,
+        "min": 1.5,
+        "median": 2.5,
+        "p95": 2.800000000046566,
+        "max": 4.7999999998137355
+      },
+      "rafMs": {
+        "count": 600,
+        "min": 16.5,
+        "median": 16.69999999999709,
+        "p95": 16.79999999998836,
+        "max": 16.80000000000291
+      },
+      "intervalsOver25ms": 0,
+      "intervalsOver50ms": 0,
+      "sampledTicks": 600,
+      "kills": 55,
+      "hp": 48,
+      "maxShots": 3,
+      "maxPickups": 4,
+      "hostileShots": {
+        "count": 600,
+        "min": 1021,
+        "median": 2391,
+        "p95": 2464,
+        "max": 2479
+      },
+      "totalShots": {
+        "count": 600,
+        "min": 1021,
+        "median": 2391,
+        "p95": 2464,
+        "max": 2481
+      },
+      "framesWithHundreds": 600,
+      "hostileCapacityFrames": 0,
+      "rangedEnemies": 225,
+      "activeEnemies": 500
+    },
+    {
+      "density": 100,
+      "round": 3,
+      "simulationMs": {
+        "count": 600,
+        "min": 0,
+        "median": 0.09999999986030161,
+        "p95": 0.19999999995343387,
+        "max": 0.20000000018626451
+      },
+      "drawSubmissionMs": {
+        "count": 600,
+        "min": 0.19999999995343387,
+        "median": 0.5,
+        "p95": 0.6000000000931323,
+        "max": 0.8000000000465661
+      },
+      "combinedMs": {
+        "count": 600,
+        "min": 0.2999999998137355,
+        "median": 0.5,
+        "p95": 0.6999999999534339,
+        "max": 0.8000000000465661
+      },
+      "rafMs": {
+        "count": 600,
+        "min": 16.59999999999127,
+        "median": 16.69999999999709,
+        "p95": 16.70000000001164,
+        "max": 16.80000000000291
+      },
+      "intervalsOver25ms": 0,
+      "intervalsOver50ms": 0,
+      "sampledTicks": 600,
+      "kills": 57,
+      "hp": 70,
+      "maxShots": 11,
+      "maxPickups": 5,
+      "hostileShots": {
+        "count": 600,
+        "min": 210,
+        "median": 564,
+        "p95": 595,
+        "max": 605
+      },
+      "totalShots": {
+        "count": 600,
+        "min": 214,
+        "median": 567,
+        "p95": 601,
+        "max": 611
+      },
+      "framesWithHundreds": 600,
+      "hostileCapacityFrames": 0,
+      "rangedEnemies": 52,
+      "activeEnemies": 100
+    },
+    {
+      "density": 300,
+      "round": 3,
+      "simulationMs": {
+        "count": 600,
+        "min": 0.09999999986030161,
+        "median": 0.2999999998137355,
+        "p95": 0.39999999990686774,
+        "max": 0.6000000000931323
+      },
+      "drawSubmissionMs": {
+        "count": 600,
+        "min": 0.5,
+        "median": 1.1999999999534339,
+        "p95": 1.4000000001396984,
+        "max": 1.8999999999068677
+      },
+      "combinedMs": {
+        "count": 600,
+        "min": 0.7999999998137355,
+        "median": 1.5,
+        "p95": 1.6999999999534339,
+        "max": 2.300000000046566
+      },
+      "rafMs": {
+        "count": 600,
+        "min": 16.5,
+        "median": 16.69999999999709,
+        "p95": 16.70000000001164,
+        "max": 16.80000000000291
+      },
+      "intervalsOver25ms": 0,
+      "intervalsOver50ms": 0,
+      "sampledTicks": 600,
+      "kills": 60,
+      "hp": 56,
+      "maxShots": 6,
+      "maxPickups": 5,
+      "hostileShots": {
+        "count": 600,
+        "min": 582,
+        "median": 1446,
+        "p95": 1478,
+        "max": 1488
+      },
+      "totalShots": {
+        "count": 600,
+        "min": 582,
+        "median": 1447,
+        "p95": 1480,
+        "max": 1490
+      },
+      "framesWithHundreds": 600,
+      "hostileCapacityFrames": 0,
+      "rangedEnemies": 129,
+      "activeEnemies": 300
+    }
+  ]
+}
