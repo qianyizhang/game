@@ -1,4 +1,5 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite';
+import type {} from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { dccAssetsPlugin } from './packages/dcc-workbench/vite-assets.ts';
 

@@ -1,0 +1,46 @@
+name: Hosted browser and media prerequisites
+description: Cache signed OS packages from the primary Ubuntu archive; preserve Chrome startup guards
+inputs:
+  profile:
+    description: Install browser libraries or the media decoder
+    default: browser
+runs:
+  using: composite
+  steps:
+    - id: image
+      shell: bash
+      env:
+        PROFILE: ${{ inputs.profile }}
+      run: |
+        case "$PROFILE" in browser|media) ;; *) echo "Unknown provisioning profile" >&2; exit 1 ;; esac
+        echo "version=$ImageVersion" >> "$GITHUB_OUTPUT"
+    # Cache signed package payloads, not installed OS state or browser profiles.
+    - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+      with:
+        path: ${{ runner.temp }}/browser-apt/*.deb
+        key: hosted-apt-${{ runner.os }}-${{ runner.arch }}-${{ steps.image.outputs.version }}-${{ inputs.profile }}-${{ hashFiles('package-lock.json', '.github/actions/hosted-deps/action.yml', 'packages/workshop-tools/ci/browser-host.ts') }}
+    - shell: bash
+      env:
+        PROFILE: ${{ inputs.profile }}
+      run: |
+        mkdir -p "$RUNNER_TEMP/browser-apt/partial"
+        sudo chmod -R a+rX "$RUNNER_TEMP/browser-apt"
+        sudo tee /etc/apt/apt.conf.d/99-workshop-browser > /dev/null <<EOF_CONFIG
+        Dir::Cache::archives "$RUNNER_TEMP/browser-apt/";
+        Binary::apt::APT::Keep-Downloaded-Packages "true";
+        APT::Keep-Downloaded-Packages "true";
+        Acquire::Retries "3";
+        Acquire::http::Timeout "30";
+        Acquire::https::Timeout "30";
+        EOF_CONFIG
+        # Pin the maintained LTS image and use Ubuntu's signed primary archive.
+        sudo find /etc/apt -type f \( -name '*.list' -o -name '*.sources' \) -exec sed -i 's|http://azure\.archive\.ubuntu\.com/ubuntu|http://archive.ubuntu.com/ubuntu|g' {} +
+        if [ -f /etc/apt/apt-mirrors.txt ]; then
+          printf '%s\n' 'http://archive.ubuntu.com/ubuntu/' | sudo tee /etc/apt/apt-mirrors.txt > /dev/null
+        fi
+        if [ "$PROFILE" = media ]; then
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+        else
+          node packages/workshop-tools/ci/browser-host.ts
+        fi

@@ -2,24 +2,26 @@ name: Safety core
 
 on:
   workflow_call:
+    inputs:
+      plan:
+        type: string
+        required: true
 
 permissions:
   contents: read
 
 jobs:
   core:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
     strategy:
       fail-fast: false
       matrix:
         include:
           - scope: style
-            command: npm run format:check && npm run lint:tools && npm run lint:app
-          - scope: types
-            command: npm run typecheck && npm run check:python
+            command: npm run format:check && npm run lint:tools && npm run lint:app && npm run typecheck && npm run check:python
           - scope: contracts
-            command: npm run test:tools && npm run test:dcc && npm run build
+            command: node packages/workshop-tools/ci/integrity.ts hydration && npm run test:tools && npm run test:dcc && npm run build
           - scope: simulations
             command: npm run playtest
           - scope: core-rules
@@ -27,26 +29,37 @@ jobs:
           - scope: smoke
             command: npm run test:browser:smoke && npm run test:browser:shader-lab
     name: safety (${{ matrix.scope }})
+    env:
+      CI_PLAN: ${{ inputs.plan }}
+      VALIDATION_SCOPE: ${{ matrix.scope }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          lfs: true
+          lfs: ${{ contains(fromJSON('["contracts","smoke"]'), matrix.scope) }}
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .node-version
           cache: npm
-      - run: npm run maintenance -- check
+          cache-dependency-path: |
+            package-lock.json
+            .node-version
+      - uses: ./.github/actions/environment
       - run: npm ci
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
-        if: matrix.scope == 'types'
+        if: matrix.scope == 'style'
         with:
           version: '0.11.8'
           enable-cache: true
       - run: uv sync --locked
-        if: matrix.scope == 'types'
-      - run: npx playwright install --with-deps chrome
+        if: matrix.scope == 'style'
+      - uses: ./.github/actions/hosted-deps
+        if: matrix.scope == 'contracts'
+        with:
+          profile: media
+      - uses: ./.github/actions/hosted-deps
         if: matrix.scope == 'smoke'
       - run: ${{ matrix.command }}
+        timeout-minutes: 8
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure() && matrix.scope == 'smoke'
         with:

@@ -54,7 +54,8 @@
     "ci": "node packages/workshop-tools/ci/cli.ts",
     "dev:shader-lab": "node packages/shader-pipeline-lab/server.js",
     "test:shader-lab": "node --test packages/shader-pipeline-lab/tests/*.test.js",
-    "test:browser:shader-lab": "playwright test --config packages/shader-pipeline-lab/playwright.config.js"
+    "test:browser:shader-lab": "playwright test --config packages/shader-pipeline-lab/playwright.config.js",
+    "check:changed": "node packages/workshop-tools/ci/cli.ts check"
   },
   "dependencies": {
     "react": "19.3.1",

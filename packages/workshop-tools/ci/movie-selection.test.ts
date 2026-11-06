@@ -17,9 +17,9 @@ void test('offline movie specs are selected directly and absent from unrelated g
     assert.deepEqual(browserFamilies(film), []);
     for (const status of ['A', 'M']) {
       const plan = select([{ path: film, status }]);
-      assert.equal(plan.mode, 'scoped');
+      assert.equal(plan.mode, 'movies');
       assert.deepEqual(plan.browserFiles, [film]);
-      assert.ok(plan.coreFiles.includes('src/shared/replay.test.ts'));
+      assert.deepEqual(plan.coreFiles, []);
     }
   }
   const unrelated = select([{ path: 'src/games/spire/ui/Card.tsx', status: 'M' }]);
@@ -28,7 +28,7 @@ void test('offline movie specs are selected directly and absent from unrelated g
   for (const film of films) assert.ok(!unrelated.browserFiles.includes(film));
 });
 
-void test('movie delivery and reference inputs retain conservative application and browser coverage', () => {
+void test('known movie delivery uses focused coverage; deletion stays conservative', () => {
   for (const file of [
     'golden-claw/film.html',
     'golden-claw/golden-claw.gif',
@@ -43,12 +43,12 @@ void test('movie delivery and reference inputs retain conservative application a
     for (const status of ['M', 'D']) {
       const path = `docs/art/movie-experiments/${file}`;
       const plan = select([{ path, status }]);
-      assert.equal(plan.mode, 'application', `${path} ${status}`);
-      assert.deepEqual(plan.browserFiles, [...catalogue.browser].sort());
-      assert.deepEqual(
-        [...plan.coreFiles, ...plan.unitFiles].sort(),
-        [...catalogue.application].sort(),
-      );
+      assert.equal(plan.mode, status === 'D' ? 'application' : 'movies', `${path} ${status}`);
+      if (status === 'D') assert.deepEqual(plan.browserFiles, [...catalogue.browser].sort());
+      else {
+        assert.deepEqual(plan.coreFiles, []);
+        assert.deepEqual(plan.unitFiles, []);
+      }
     }
   }
 });

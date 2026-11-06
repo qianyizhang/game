@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "inputs": {
-    "package-lock.json": "6713dc5dcff317cf3a0f5e4ae3608de5cffd244f6c0c4fbce0f09fb488399186",
     "packages/workshop-tools/art/bake-client.ts": "8d615592d924ae9adda0a750884d86c507372279f82f9df101e24020f9203f6d",
+    "packages/workshop-tools/art/bake-studies.ts": "8f4d9144d53fbdff6050cae08ee737a1046dd0378755e29ad64ec35965302ff5",
     "src/art3d/catalogue.ts": "0b3ca1d91e8097037ba2352036bdd0011b1cfe131246145fb526e52d2c876b2b",
     "src/art3d/procedural/amalgam.ts": "820cf4ec48f468ff804a12da1b5a5decf47d639dd148b5e7505f16699bf78234",
     "src/art3d/procedural/animation.ts": "fc65dcf4534b4cf0a35b3702dfbdd3924e2772e0d552a7f4c709a3a0ababedbd",
@@ -36,7 +36,58 @@
     "src/art3d/procedural/watcher.ts": "09ed045565ac8b24518ff11b465da87df4295f7a2977ce3a1de306cafac2f889",
     "src/art3d/procedural/wolf.ts": "89b6fcd9b15ec5d5e471caa28d3a9dba90c782a9ed258e0a413617c929dd1836",
     "src/shared/three/objects.ts": "609e13d93141ec36595358a055ddf2bd18a761846452843e2cfc04e0377564f3",
-    "src/shared/three/resources.ts": "2fb84f381a518ba27aebae8ceb43f9714018c6d524cc6ecdc1f1dd73a2a151b8"
+    "src/shared/three/resources.ts": "2fb84f381a518ba27aebae8ceb43f9714018c6d524cc6ecdc1f1dd73a2a151b8",
+    "vite.config.ts": "977434f4c602508f2bdd01dffd37475b37427d8f25ad9139e7001d3f5638dbd7"
+  },
+  "dependencies": {
+    "node_modules/@oxc-project/types": "ea8aae5e35daf3c2e3a2af152639c88017fbdcf3f925d41c603ad39e5d0b7051",
+    "node_modules/@playwright/test": "3e6c8c3f388aa4f339900ba3af94111b346ebc5633c05c971d96dde45e339820",
+    "node_modules/@rolldown/binding-android-arm-eabi": "e6df3dbe1b2ddad44f9941ce1ea1924821f66a0fa4bb5ca8428ed03fb649f5e2",
+    "node_modules/@rolldown/binding-android-arm64": "3bf1ca7a802b5ad3010c2f63f36e4a00f23d3245b19677f6cef706193c72ea27",
+    "node_modules/@rolldown/binding-darwin-arm64": "7b30909580c7da401eafe3628538fa516012631202284bcb859f0c0081fb4a0e",
+    "node_modules/@rolldown/binding-darwin-x64": "09d79ab3c072af90b0e86c904a974a7ef2d15a2c29500e5c0816f1e76c5c8571",
+    "node_modules/@rolldown/binding-freebsd-x64": "32c00a4fab4f8d0c8f91ad15195c07844aa1b7f97fa38b443e26cca1df20312b",
+    "node_modules/@rolldown/binding-linux-arm-gnueabihf": "d0cefaa86812e7b8e28b2163f28fdca242c17e3000502cedc6675d4ece069759",
+    "node_modules/@rolldown/binding-linux-arm64-gnu": "aaf560fc27cd723704621462a112b87a7bc4d6a63def7b1a87cc974d1db06517",
+    "node_modules/@rolldown/binding-linux-arm64-musl": "6c286a10a1d48bf7c2232bd867f5a2eabeaf49705c64e94e1652a386efc01967",
+    "node_modules/@rolldown/binding-linux-ppc64-gnu": "0e53f4aacb0ff6119532d29841db615f7677838e057d75dda35e9bd0a0af7783",
+    "node_modules/@rolldown/binding-linux-s390x-gnu": "1c2fad6ae442a483826ec913b9ff24b0045d626fb291197bb6ba91e55791fe56",
+    "node_modules/@rolldown/binding-linux-x64-gnu": "b134ee7b0d1e3c84cf28eaec1bc9730c7af60fc6c0d042f0b162d8ad0c8f5a6a",
+    "node_modules/@rolldown/binding-linux-x64-musl": "9d6b7d1e92026b3bf27deca1b5e2894cefb860fedd9a25c28fdbed3f90f81062",
+    "node_modules/@rolldown/binding-openharmony-arm64": "e07e1dd899c021149b2b383a496bff219aff242188c69bced0d236d6331e74dc",
+    "node_modules/@rolldown/binding-win32-arm64-msvc": "6ff1fbaf5135cb3958dd38326d80f2b80a119a712f9762df6b071a6f297c17f5",
+    "node_modules/@rolldown/binding-win32-x64-msvc": "dc3b437183683dc817e03cec6673d81c43d41b1b968ca99446992befd3acd1de",
+    "node_modules/@rolldown/pluginutils": "1189bfd85cf7c11a2df82658a752c95ca991293925405d05aef7126b86f279ff",
+    "node_modules/@types/node": "8aea050c162929e91228074a26019604bc5c3f76175e64b0334fd789ea8804d1",
+    "node_modules/@vitejs/plugin-react": "762f4ea8854a00de4e5e9cfc090b447a4aed790292cc7e3f7ec7bd83b1569ac7",
+    "node_modules/detect-libc": "cca161352fec050561d1be67100d8789724b4050cfc759d5515a57169aa14aee",
+    "node_modules/fdir": "c92d2a38af9fcbd00c016c4ee7d6e8ece0de51e7886d81ea2a91e615f713030f",
+    "node_modules/fsevents": "d2c08780deffc0fcaa2d4030204c1ee3626b721f46764c1062f06f70b75a016c",
+    "node_modules/lightningcss": "d4eac53d22870526620a52fd0832d2ee2227d1e6c808e49193ddbd2854ea562c",
+    "node_modules/lightningcss-android-arm64": "2a8ebb4c82ad254970957f930b5840e7a2e2dc27a4bf013c6ee5a11db896e437",
+    "node_modules/lightningcss-darwin-arm64": "1d83dd4e0650e097368e8871c0b7085edded2c6ef9d5345cc39baab9fdb2246e",
+    "node_modules/lightningcss-darwin-x64": "5dd7979405e2101efa6f3f906f64ae40fc1f631f587701b60e9609bfee4b699a",
+    "node_modules/lightningcss-freebsd-x64": "a3b7ff4dacca4aacbe0b5dc2397d064ae3fd0c50b3fffd8934a7ab466beb9190",
+    "node_modules/lightningcss-linux-arm-gnueabihf": "7784957e84de8f08616ac98787822cb047a3633b4f7304744078a55dc995ec9f",
+    "node_modules/lightningcss-linux-arm64-gnu": "c548a65218da941730ffae32ebe7459b36b36ca2d1f584aab4344a7810c259d5",
+    "node_modules/lightningcss-linux-arm64-musl": "6ddf8da66b08a63c26898c652736e9b18303cef715b697179346148fb7b62061",
+    "node_modules/lightningcss-linux-x64-gnu": "b82cd4b31aa49c1e4ac892062e7aa0ad9b1e0d5cd5623621589e3ff97193563d",
+    "node_modules/lightningcss-linux-x64-musl": "0c85c8b16703bca67729fc3b4347656635ecd5c0e08543d5267d799f251da1e2",
+    "node_modules/lightningcss-win32-arm64-msvc": "a63520dbc27bdf33a2877c9e98d1aba2b3c6ef04807406cf71c09723975f8c8b",
+    "node_modules/lightningcss-win32-x64-msvc": "8f87ceb18c94e0338a3dae2f1deb7901d9b4c8af901748d73c09e7c1802dcb91",
+    "node_modules/nanoid": "a2024bc45861c151cb807409ba466569ed8654499c5489057a4348a5153dc694",
+    "node_modules/picocolors": "6837fc1b0b6fc9f44ce3b9c38f7a246ede4c8e3ee3d1dde036862bc9f4557c10",
+    "node_modules/picomatch": "9a4ed8da4552bd89d8107aae7a0fd1e575fb3c947793ec6fa92f4073cc96ad06",
+    "node_modules/playwright": "e9c30ee9408f87011784034f46a0185956d24ddd313a911b180eba4eeaab53d2",
+    "node_modules/playwright-core": "81040b0b1a56986e2a8251bf19d0a8146e68350d6bad1ef3743cf6a973b01402",
+    "node_modules/postcss": "7117441c2e47d658f3e5c718ff49f832c9e5bae3e155846e7b88a3164f8d36d2",
+    "node_modules/rolldown": "2ff4aefe2cc4c3d0e12a38407ae45a367a074e5aa10c22332d275f5be0de1dc4",
+    "node_modules/source-map-js": "baf3d7e44fc43bc52a11a6802ee0725e55231c11ea21041d5c6dea500e5c0c9b",
+    "node_modules/three": "bb5a6aba07735c2143a5aad5d26a0725543040910fbc4d785a92565a5888d53e",
+    "node_modules/tinyglobby": "fa7305dcf9b9b124c7fde4cfdf733b38f6e325f979d60016e109fc0b82897aa1",
+    "node_modules/typescript": "55c7b436aa276dcf3e0e727d43216b7eed3dccea54ce4142f10b403a48b24e6a",
+    "node_modules/undici-types": "b2b41c794ae5ffff2c7fa6377a822e030f512197b85f1d56a00a874914b642c7",
+    "node_modules/vite": "caad4831db6c32164124283b93ee93a01df2122f30ffe33f5ebd20e2e7f0dca6"
   },
   "assets": {
     "catalyst": {
@@ -171,5 +222,8 @@
       "seconds": 6,
       "tracks": 1
     }
+  },
+  "provenance": {
+    "legacyLockSha256": "6713dc5dcff317cf3a0f5e4ae3608de5cffd244f6c0c4fbce0f09fb488399186"
   }
 }

@@ -1,0 +1,18 @@
+name: Record validation environment
+description: Keep normal checks running across hosted image rollouts; prevent uncertain result reuse
+outputs:
+  matching:
+    description: Whether this runner matches the planned validation environment
+    value: ${{ steps.environment.outputs.matching }}
+runs:
+  using: composite
+  steps:
+    - id: environment
+      shell: bash
+      run: node packages/workshop-tools/ci/environment.ts
+    - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      if: steps.environment.outputs.matching != 'true'
+      with:
+        name: environment-mismatch-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}-${{ env.VALIDATION_SCOPE || env.CI_SHARD || 'single' }}
+        path: ${{ runner.temp }}/environment-mismatch.json
+        retention-days: 2

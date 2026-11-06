@@ -43,9 +43,19 @@ function fixture() {
   git('config', 'user.name', 'Documentation fixture');
   git('config', 'user.email', 'docs-fixture@example.invalid');
   for (const file of [
-    ...['docs-fast', 'selection', 'commands', 'gate', 'cli', 'graph'].map(
-      (name) => `packages/workshop-tools/ci/${name}.ts`,
-    ),
+    ...[
+      'docs-fast',
+      'selection',
+      'commands',
+      'gate',
+      'cli',
+      'graph',
+      'movies',
+      'sharding',
+      'changes',
+      'local',
+      'environment',
+    ].map((name) => `packages/workshop-tools/ci/${name}.ts`),
     'packages/workshop-tools/governance.mjs',
     'packages/workshop-tools/art/native-packet.ts',
     'packages/workshop-tools/art/native-packet.test.ts',
@@ -109,6 +119,7 @@ void test('actual docs CLI checks named prose, retained examples and the Markdow
       plan: true,
       documentation: true,
       core: false,
+      movies: false,
       application: false,
       assets: false,
     });
@@ -120,6 +131,7 @@ void test('actual docs CLI checks named prose, retained examples and the Markdow
       plan: 'success',
       documentation: 'success',
       core: 'skipped',
+      movies: 'skipped',
       application: 'skipped',
       assets: 'skipped',
     };

@@ -19,8 +19,7 @@ export function commandFor(plan: Plan, module: Module, shard = 1): string[] | nu
       ...(plan.mode === 'full'
         ? ['--project=functional']
         : ['--project=ci-games', '--project=ci-assets']),
-      ...files,
-      `--shard=${shard}/${shards}`,
+      ...plan.browserGroups[shard - 1],
     ];
   return [
     'vitest',
@@ -38,7 +37,8 @@ export function requiredModules(plan: Plan): Record<string, boolean> {
   return {
     plan: true,
     documentation: plan.mode === 'documentation',
-    core: plan.mode !== 'documentation',
+    core: !['documentation', 'movies'].includes(plan.mode),
+    movies: plan.mode === 'movies',
     application: plan.unitFiles.length > 0,
     assets: plan.geometry || plan.browserFiles.length > 0,
   };
@@ -49,9 +49,9 @@ export function readPlan(value: unknown, head: string): Plan {
   if (!value || typeof value !== 'object') throw new Error('Missing CI plan');
   const plan = value as Plan;
   if (
-    plan.version !== 4 ||
+    plan.version !== 5 ||
     plan.head !== head ||
-    !['documentation', 'scoped', 'application', 'full'].includes(plan.mode) ||
+    !['documentation', 'movies', 'scoped', 'application', 'full'].includes(plan.mode) ||
     ![plan.coreFiles, plan.unitFiles, plan.browserFiles, plan.geometryFiles].every(
       (files) => Array.isArray(files) && files.every((path) => typeof path === 'string'),
     ) ||
@@ -65,6 +65,16 @@ export function readPlan(value: unknown, head: string): Plan {
     Array.from({ length: plan.browserShards }, (_, index) => index + 1).some(
       (shard, index) => plan.browserMatrix[index] !== shard,
     ) ||
+    !Array.isArray(plan.browserGroups) ||
+    plan.browserGroups.length !== plan.browserShards ||
+    !plan.browserGroups.every(
+      (group) => Array.isArray(group) && group.every((file) => typeof file === 'string'),
+    ) ||
+    new Set(plan.browserGroups.flat()).size !== plan.browserFiles.length ||
+    plan.browserGroups.flat().length !== plan.browserFiles.length ||
+    !plan.browserFiles.every((file) => plan.browserGroups.flat().includes(file)) ||
+    (plan.mode === 'movies' &&
+      (plan.geometry || plan.coreFiles.length + plan.unitFiles.length > 0)) ||
     (plan.mode === 'documentation' &&
       (plan.geometry ||
         plan.coreFiles.length + plan.unitFiles.length + plan.browserFiles.length > 0))
@@ -73,8 +83,22 @@ export function readPlan(value: unknown, head: string): Plan {
   return plan;
 }
 
-export function verifyResults(plan: Plan, results: Record<string, Result>): void {
-  for (const [name, required] of Object.entries(requiredModules(plan))) {
+export function verifyResults(plan: Plan, results: Record<string, Result>, reused = false): void {
+  const modules = reused
+    ? {
+        plan: true,
+        documentation: false,
+        core: false,
+        movies: false,
+        application: false,
+        assets: false,
+        integrity: true,
+      }
+    : {
+        ...requiredModules(plan),
+        ...(results.integrity === undefined ? {} : { integrity: false }),
+      };
+  for (const [name, required] of Object.entries(modules)) {
     if (required && results[name] !== 'success')
       throw new Error(`Required ${name} checks: ${results[name] ?? 'missing'}`);
     if (!required && !['success', 'skipped'].includes(results[name]))

@@ -201,6 +201,7 @@ void test('eligible documentation changes select only the documentation module',
         plan: true,
         documentation: true,
         core: false,
+        movies: false,
         application: false,
         assets: false,
       });

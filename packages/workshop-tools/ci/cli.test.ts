@@ -32,7 +32,17 @@ void test('actual CLI keeps mixed review changes scoped and rejects docs-only, e
       git('init', '--quiet');
       git('config', 'user.name', 'CI planner fixture');
       git('config', 'user.email', 'ci-fixture@example.invalid');
-      for (const name of ['cli', 'selection', 'graph', 'commands']) {
+      for (const name of [
+        'cli',
+        'selection',
+        'graph',
+        'commands',
+        'movies',
+        'sharding',
+        'changes',
+        'local',
+        'environment',
+      ]) {
         const path = `packages/workshop-tools/ci/${name}.ts`;
         put(path, '');
         copyFileSync(new URL(`./${name}.ts`, import.meta.url), join(root, path));
@@ -73,7 +83,7 @@ void test('actual CLI keeps mixed review changes scoped and rejects docs-only, e
       );
       const plan = JSON.parse(readFileSync(join(root, 'plan.json'), 'utf8')) as Plan;
       assert.equal(plan.head, git('rev-parse', 'HEAD'));
-      assert.equal(plan.version, 4);
+      assert.equal(plan.version, 5);
       assert.deepEqual(plan.browserMatrix, [1]);
       assert.ok(output.includes(plan.mode));
       assert.equal(plan.mode, kind === 'mixed' ? 'scoped' : 'application', kind);
@@ -84,6 +94,20 @@ void test('actual CLI keeps mixed review changes scoped and rejects docs-only, e
         plan.browserFiles.includes('tests/browser/blindside-policy.spec.ts'),
         kind !== 'mixed',
       );
+      if (kind === 'mixed') {
+        put('new-script.sh', 'echo untracked executable input');
+        const local = JSON.parse(
+          execFileSync(
+            process.execPath,
+            ['packages/workshop-tools/ci/cli.ts', 'check', '--base', base, '--plan'],
+            { cwd: root, encoding: 'utf8' },
+          ),
+        ) as Plan;
+        assert.equal(local.mode, 'application');
+        assert.ok(local.reasons.includes('unknown ownership'));
+        assert.ok(local.browserFiles.includes('tests/browser/blindside-policy.spec.ts'));
+        assert.equal(local.browserShards, 1);
+      }
     } finally {
       rmSync(root, { recursive: true, force: true });
     }

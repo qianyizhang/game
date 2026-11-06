@@ -21,7 +21,7 @@ jobs:
     # Parent browser plans already carry a validated matrix. Empty/malformed
     # matrices and empty/geometry-only calls retain this validation/fallback job.
     if: inputs.blindside_joker_capture != true && (inputs.plan == '' || !fromJSON(inputs.plan).browserFiles[0] || !fromJSON(inputs.plan).browserMatrix[0])
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     outputs:
       plan: ${{ steps.select.outputs.plan }}
@@ -30,10 +30,17 @@ jobs:
       browser_matrix: ${{ steps.select.outputs.browser_matrix }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          lfs: ${{ inputs.plan == '' }}
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .node-version
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            .node-version
+      - run: node packages/workshop-tools/ci/integrity.ts metadata && node packages/workshop-tools/ci/integrity.ts hydration
+        if: inputs.plan == ''
       - run: npm ci
         if: inputs.plan == ''
       - id: select
@@ -49,7 +56,7 @@ jobs:
           (needs.plan.result == 'success' ||
            (inputs.plan != '' && needs.plan.result == 'skipped')) &&
           fromJSON(inputs.plan || needs.plan.outputs.plan).geometry }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       ASSET_BUILD_CI: '1'
@@ -62,7 +69,10 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
-      - run: npm run maintenance -- check
+          cache-dependency-path: |
+            package-lock.json
+            .node-version
+      - uses: ./.github/actions/environment
       - run: npm ci
       - run: npm run ci -- run geometry
 
@@ -73,8 +83,8 @@ jobs:
           (needs.plan.result == 'success' ||
            (inputs.plan != '' && needs.plan.result == 'skipped')) &&
           toJSON(fromJSON(inputs.plan || needs.plan.outputs.plan).browserFiles) != '[]' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: ${{ fromJSON(inputs.plan || needs.plan.outputs.plan).mode == 'full' && 90 || 15 }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: ${{ fromJSON(inputs.plan || needs.plan.outputs.plan).mode == 'full' && 90 || 20 }}
     strategy:
       fail-fast: false
       matrix:
@@ -86,15 +96,19 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          lfs: true
+          lfs: ${{ fromJSON(inputs.plan || needs.plan.outputs.plan).mode != 'movies' }}
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .node-version
           cache: npm
-      - run: npm run maintenance -- check
+          cache-dependency-path: |
+            package-lock.json
+            .node-version
+      - uses: ./.github/actions/environment
       - run: npm ci
-      - run: npx playwright install --with-deps chrome
+      - uses: ./.github/actions/hosted-deps
       - run: npm run ci -- run browser
+        timeout-minutes: ${{ fromJSON(inputs.plan || needs.plan.outputs.plan).mode == 'full' && 75 || 12 }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:
@@ -104,7 +118,7 @@ jobs:
 
   blindside-joker-capture:
     if: github.event_name == 'workflow_dispatch' && inputs.blindside_joker_capture == true
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - name: Verify capture branch
@@ -120,6 +134,9 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            .node-version
       - run: npm run maintenance -- check
       - run: npm ci
       - run: npx playwright install --with-deps chrome
