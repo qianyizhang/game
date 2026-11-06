@@ -3,7 +3,9 @@
 Proposed fiction for a future Scrapyard story, **not established campaign canon**.
 This independent study does not reuse the held “Between Waves” repair scene.
 One first-clip request completed; the result is held for visual defects. No second
-clip, reroll, gallery registration, game selection or runtime change was made.
+clip, reroll, gallery registration, game selection or runtime change was made by
+the source owner at frozen `054886c43152395922b0125de4fdd7b71e7dd12b`.
+The coordinator’s local source registration remains unpublished.
 
 [Original native GIF](apparent-victory.gif) · [sent PNG](reference.png) ·
 [composed SVG](reference.svg) · [selected review](review.png) ·
@@ -75,9 +77,11 @@ remains upright without collecting it. No hit or repeated bright flash occurs.
 24.88–32.52% of each frame is unexpectedly transparent, in changing large floor
 patches. A matching forest backing reduces their visibility but does not repair
 floor continuity; the checker-backed panel exposes the issue. Pellet movement
-also stalls around frames 2–3 and accelerates at the end, with path/fan drift
-from the supplied straight-ray staging. The core event reads, but the locked
-staging and constant trajectories are insufficient for a coherent continuation.
+also stalls around frames 2–3 and accelerates at the end. The tracks are nearly
+straight; an earlier description overstated their bending. The demonstrated
+motion defect is nonuniform speed, not materially curved paths. The core event
+reads, but floor continuity and steady pellet speed are insufficient for a
+coherent continuation.
 No endpoint PNG or second-call proposal is promoted from this held result.
 
 ## Spend and verification
@@ -98,3 +102,39 @@ Visual verdict is held. Gallery registration is deliberately deferred to the coo
 publication workflow; this bundle is not gallery-ready. No PR, merge or deployment.
 Browser `file://` navigation was unsupported (`ERR_BLOCKED_BY_ADMINISTRATOR`);
 local allowed file reads and in-memory browser document rendering completed review.
+
+
+## No-spend diagnosis and local registration
+
+Independent checks of the frozen bytes confirm the exact sent PNG is480×336 and
+fully opaque. All eight original GIF graphics-control extensions explicitly
+enable transparency; Pillow and FFmpeg produce identical full-frame alpha masks.
+The transparent fractions range24.882–32.525%. This establishes a returned-artifact
+defect; it does not distinguish model output from the service’s GIF encoder.
+The source owner found tan patches when disabling transparency and no way for one
+replacement palette color to recover the two obscured floor colors. No
+pixel-preserving display repair is established; no derivative was created.
+
+An independent coral-component centroid estimate, sorted top-to-bottom, measures
+roughly0.7–2.3px in the slow interval and22.6–23.2px in the final200ms interval.
+Small centroid/contour differences are measurement limits. Tracks remain nearly
+straight; correct200ms encoded delays do not provide uniform displacement.
+The hold remains. No further paid trial or new parameter/repair promise follows.
+
+The final composition was checked against the merged renderer: every live path,
+paint, path order and centered uniform fit matches. Its actual geometry parents
+are the existing survivor, Spitter, hostile diamond, heavy round and floor-tile
+source revisions. Scrap-pickup/player-hit are contextual references for proposed
+consequences, not falsely inserted into the composed initial frame.
+The earlier cluttered floor preparation is mentioned historically above; its
+bytes/settings were not retained, so no additional artwork revision is invented.
+The exact final sent PNG is an input attachment, not another invented art state;
+its original rasterizer/version is unrecorded.
+
+[Canonical source history](../../library.json) is prepared locally with two
+authoring/generation attempts and two source revisions: composed SVG and exact
+held GIF. Both new runtime fields are null and the scene has no invented game
+slot. Existing accepted source geometry does not make this new story adopted.
+No decoded-frame catalogue, palette repair or unchanged-source export is stored.
+Publication and any coherent grouping with other held studies remain a separate
+coordinator sequencing decision. No other moving story was read into this branch.

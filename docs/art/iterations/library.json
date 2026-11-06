@@ -6657,6 +6657,30 @@
         "docs/art/assets/scrapyard-suite/visual-qa.json",
         "docs/art/assets/scrapyard-suite/technical-qa.json"
       ]
+    },
+    {
+      "id": "scrapyard-still-live-14-composition",
+      "title": "Still Live · accepted-source composition study",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "Manual staged reference, not a production screenshot or adopted story. Existing accepted renderer geometry at3a59621069dd1fe912a749d851d27e993507f5dd; exact sources/fits/placements/draw order in README. No SVG API call. PNG rasterizer/version not retained; exact actual sentPNG preserved by the subsequent call.",
+      "files": [
+        "docs/art/iterations/files/scrapyard-still-live-14/README.md"
+      ]
+    },
+    {
+      "id": "scrapyard-still-live-14-gif",
+      "title": "Still Live · apparent victory · HELD",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One actual GIF edit; held returned-artifact transparency and nonuniform pellet speed. Correct eight200ms frames, infinite loop; no secondclip/assembly/repair or accepted story. Request, input, receipt and review retained once. Model versus GIF-encoder cause unknown; no paid revision justified.",
+      "files": [
+        "docs/art/iterations/files/scrapyard-still-live-14/request.json",
+        "docs/art/iterations/files/scrapyard-still-live-14/receipt.json",
+        "docs/art/iterations/files/scrapyard-still-live-14/reference.png",
+        "docs/art/iterations/files/scrapyard-still-live-14/README.md",
+        "docs/art/iterations/files/scrapyard-still-live-14/review.png"
+      ]
     }
   ],
   "revisions": [
@@ -7819,6 +7843,38 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-still-live-14-reference",
+      "asset": null,
+      "attempt": "scrapyard-still-live-14-composition",
+      "label": "Still Live · composed reference source study",
+      "file": "docs/art/iterations/files/scrapyard-still-live-14/reference.svg",
+      "digest": "c7fd0535d33c242e7188e43ab2691fbbfd5b7bf6a11af61682784a0c7f09259e",
+      "parents": [
+        "scrapyard-suite/arena/floor-tile",
+        "scrapyard-suite/actors/spitter",
+        "scrapyard-suite/combat/hostile-diamond",
+        "scrapyard-suite/combat/heavy-round",
+        "scrapyard-suite/actors/survivor"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "New manual placement of accepted-source geometry; actual reused parents only. Survivor/Spitter/round/pellets enlarged1.5x; floor12x clipped by480x336 canvas. Exact transforms and contextual future pickup/hit references in README. Not a stable game slot or accepted story."
+    },
+    {
+      "id": "scrapyard-still-live-14-apparent-victory",
+      "asset": null,
+      "attempt": "scrapyard-still-live-14-gif",
+      "label": "Still Live · apparent victory · HELD",
+      "file": "docs/art/iterations/files/scrapyard-still-live-14/apparent-victory.gif",
+      "digest": "0e57c254bbcf367a8ed7cb36ccbd638ee6ab549a4d3d205842665efdc22594de",
+      "parents": [
+        "scrapyard-still-live-14-reference"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned native GIF; actual sent opaquePNG is call attachment. HELD: all8frames encode changing transparent floor patches and pellet speed stalls/jumps despite correct delays. Tracks nearly straight, not materially curved. Infinite loop, not a once-playing assembly; no repair or continuation invented."
     }
   ]
 }
