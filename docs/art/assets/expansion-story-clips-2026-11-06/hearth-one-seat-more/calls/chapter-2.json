@@ -1,0 +1,28 @@
+{
+  "kind": "gif-edit",
+  "prompt": "Generate one native animated GIF chapter of the Last Hearth story proposal One Seat More: chapter 2, Make room. This is candidate fiction, not accepted history or a new game rule. One shot, not a comic sheet or montage.\n\nREFERENCE ORDER: image 1 is the exact CURRENT scene state and starting composition. Follow its existing object count, positions, body pose, tile/cup/fixture state and camera. If image 2 exists it is ONLY the original visual identity/palette anchor; never reset action state or object placement to it. Preserve camera, crop, scale, all background edges and the same explicit palette throughout. Do not apply new color grading, repaint quiet surfaces or add engraving. Palette: forest ink #172928, warm gray steel #929f95, cream #dfd4b4, muted sage cloth #789579 and selective copper #a77655, sage Wisp #789579 with ivory inner plane and dark face, quiet brown wood #675340; three value groups, no gold upgrade effect.\n\nCURRENT ACTION: Begin from the supplied current state. The Squire uses the arm CLOSEST to the center stool, currently resting near the cups, to reach carefully over and down around the near table edge. Lean forward slightly with connected shoulder/elbow/wrist, contact the SINGLE low stool, and slide it a SHORT distance LEFT along the floor, at most one stool-seat width, toward the waiting Wisp. Do not try to drag it all the way across the room beneath the Wisp. All three stool legs remain grounded. Let go and begin to straighten. Wisp watches and stays to the left for now. Keep the other hand, two cups, loaf, shield and table stable. No arm through solid tabletop, long stretching arm, new stool or floating seat. End with stool nearer the left edge of the table, leaving room for the Wisp to approach.\n\nSixteen sequential frames, 300 ms each. Readable anticipation, one physical action and settling. Do not loop back to start. Fixed 480x336 view, restrained upper-left diffuse light, no flashing, magic spark storms, camera movement, zoom or full-image sliding. Preserve connected joints, weight/contact, rigid-object geometry, negative spaces and material planes. No new objects, duplicate bodies/props, extra hands/fingers, labels, text, numbers, logos or UI. End at the requested state so a later chapter can start from it. Last still must be useful for review at 480x336 and 160x112. Never invent intermediate history or claim an established world event.",
+  "inputs": ["chapter-1-last", "opening"],
+  "output": "chapter-2.gif",
+  "request_id": "req_542eb0aed2e1412b8bb9cd84cbe9aa9d",
+  "started_at": "2026-11-06T15:27:10Z",
+  "created": 1793978878,
+  "elapsed_s": 47.87,
+  "usage": {
+    "input_tokens": 1831,
+    "input_tokens_details": {
+      "image_tokens": 1260,
+      "text_tokens": 571
+    },
+    "output_tokens": 1869,
+    "output_tokens_details": {
+      "image_tokens": 1869,
+      "text_tokens": 0
+    },
+    "total_tokens": 3700
+  },
+  "output_metadata": {
+    "generation_id": "4356af91-1854-4ab9-8f95-bbe0a4a8a52b"
+  },
+  "background": "opaque",
+  "cost_estimate_usd": 0.069005
+}

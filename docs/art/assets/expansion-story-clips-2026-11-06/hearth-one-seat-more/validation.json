@@ -1,0 +1,17 @@
+{
+  "gif": {
+    "selected_clips": 4,
+    "held_clips": 1,
+    "frames_each": 16,
+    "joined_frames": 64,
+    "duration_ms": 19200,
+    "size": [480, 336],
+    "assembled_pixels_and_timing_exact": true
+  },
+  "svg_safety": true,
+  "review": "All80 actual generated frames inspected temporarily. Missing-cup original held; selected revision keeps both cups. Remaining reach/pose/edge drift recorded in review.md.",
+  "browser": "Passed loopback Chromium native GIF default and real-time ending review;390/320px enlarged text,reduced-motion SVG,links,no false pause/seek or external requests. Separate from repository Google Chrome suite.",
+  "history": "Passed production isolated import/verify,7 source-study revisions,0 selections; canonical requests/settings,actual references and nativeGIF controls inspected.",
+  "maintenance": "Passed repository format/inventory/links; original GIF/reference hashes and isolated imports verified. Source-only delivery, no game code or geometry changed.",
+  "browser_note": "Native ending was inspected visually after real-time playback. Byte preservation is established by decoded-GIF equality, not CSS screenshot equality."
+}

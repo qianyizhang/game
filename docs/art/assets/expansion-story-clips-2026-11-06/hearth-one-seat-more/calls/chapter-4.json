@@ -1,0 +1,29 @@
+{
+  "kind": "gif-edit",
+  "prompt": "Generate the FINAL native GIF chapter of Last Hearth candidate story One Seat More. Image1 is the exact settled current state: one Coal Wisp hovering over its stool at left, the Squire already seated, TWO wooden cups on the table. Image2 is only the original style/identity palette anchor, not an earlier scene reset. Fixed480x336 camera,16 sequential frames at300ms; end the story without a reset loop.\n\nONE PHYSICAL ACTION: the Squire uses the hand nearest the CENTER/LEFT spare cup to slide that cup gently LEFT along the tabletop toward the Wisp. The other cup near the Squire stays exactly in place. Keep hand-to-cup contact during the short push, then release and withdraw the hand to the table edge. End with TWO separate clearly visible wooden cups: one beside the Squire and the offered one nearer the Wisp. Do not remove, duplicate, merge, conceal or replace a cup. Do not lift a cup through the air or spill liquid. The Wisp only tilts its two pale eyes toward the offered cup and slightly uncurls its connected cool-green C tail, still hovering over the same stool. It grows no hands or legs and does not drink or become orange. Last four frames hold the two companions and their two cups in a quiet shared tableau.\n\nFREEZE the stool/three grounded legs, table boards/edge, loaf/board, chair, shield and timber background. Preserve Squire face/profile, steel cap helmet, cream linen and sage cloth; connected shoulder/elbow/wrist and broad glove planes. No extra limbs, stretched arm, new prop, second spirit, camera shift, zoom, background repainting, color grading, flashing, text, numbers, logos or UI. Broad engraved material planes, stable upper-left light, readable at480x336 and160x112. This friendship is original candidate fiction outside combat, not accepted lore or a new game ability.",
+  "inputs": ["chapter-3-last", "opening"],
+  "status": "returned",
+  "started_at": "2026-11-06T16:01:08Z",
+  "output": "chapter-4.gif",
+  "request_id": "req_442d6c7be6a64201a50babf53a496124",
+  "created": 1793980914,
+  "elapsed_s": 45.763,
+  "usage": {
+    "input_tokens": 1698,
+    "input_tokens_details": {
+      "image_tokens": 1260,
+      "text_tokens": 438
+    },
+    "output_tokens": 1869,
+    "output_tokens_details": {
+      "image_tokens": 1869,
+      "text_tokens": 0
+    },
+    "total_tokens": 3567
+  },
+  "output_metadata": {
+    "generation_id": "0b37e670-c179-4c23-82a5-561a96b26dea"
+  },
+  "background": "opaque",
+  "cost_estimate_usd": 0.06834
+}
