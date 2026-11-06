@@ -61,3 +61,79 @@ await test('generated candidates retain their own trial records and share one co
     /Batch proposal references missing candidate: missing-candidate/,
   );
 });
+
+await test('a candidate and packed batch can share one record without dropping study files', async (t) => {
+  const root = await mkdtemp(resolve(tmpdir(), 'gallery-shared-record-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const record = resolve(root, 'record.md');
+  const candidate = resolve(root, 'candidate.svg');
+  const sheet = resolve(root, 'sheet.svg');
+  const scene = resolve(root, 'scene.svg');
+  const attachment = resolve(root, 'request.json');
+  await writeFile(record, 'One owning record for the candidate and packed batch.');
+  const svg =
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 7"><path d="M0 0h10v7H0z"/></svg>';
+  for (const file of [candidate, sheet, scene]) await writeFile(file, svg);
+  await writeFile(attachment, '{"prompt":"Retain this exact request."}\n');
+  const output = resolve(root, 'export');
+  await mkdir(output);
+  await writeGalleryPages(
+    output,
+    [],
+    [
+      {
+        id: 'one',
+        game: 'spire',
+        title: 'One',
+        reason: 'Compare existing and packed artwork.',
+        brief: 'Review the silhouette.',
+        current: [],
+        status: 'SVG trial',
+        trial: { file: candidate, record },
+      },
+    ],
+    [
+      {
+        id: 'shared-study',
+        game: 'spire',
+        title: 'Shared study',
+        reason: 'Keep one source record.',
+        candidates: ['one'],
+        reference: 'Existing artwork.',
+        deliverables: 'One packed scene.',
+        requests: [{ format: 'SVG', plan: 'One bounded request.' }],
+        stop: 'Await review.',
+        acceptance: ['Inspect the scene at its intended size.'],
+        record,
+        study: {
+          summary: 'A packed scene with its original request.',
+          sheet,
+          subjects: [{ title: 'One', tiers: [{ label: 'Regular', file: scene }] }],
+          attachments: [attachment],
+        },
+      },
+    ],
+  );
+  for (const [name, source] of [
+    ['sheet.svg', sheet],
+    ['scene.svg', scene],
+    ['request.json', attachment],
+  ])
+    assert.deepEqual(
+      await readFile(resolve(output, 'batches/shared-study', name)),
+      await readFile(source),
+    );
+  const html = await readFile(resolve(output, 'spire.html'), 'utf8');
+  assert.match(html, /href="batches\/shared-study\/sheet\.svg"/);
+  assert.match(html, /href="batches\/shared-study\/scene\.svg"/);
+  assert.doesNotMatch(html, /<img\b[^>]*src="(?!data:)/);
+  assert.match(html, /href="candidates\/one\.md">Full proposal and preservation record/);
+  assert.equal(
+    await readFile(resolve(output, 'candidates/one.md'), 'utf8'),
+    await readFile(record, 'utf8'),
+  );
+  assert.equal(
+    (await readdir(output, { recursive: true })).filter((file) => file.endsWith('.md')).length,
+    1,
+  );
+});

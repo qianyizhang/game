@@ -122,7 +122,7 @@ the current game's full upgrade inventory. Each historical report remains at mos
 600 KiB with zero JavaScript; current gallery pages use scripts for navigation,
 filtering and fixed renderer specimens. Opening any page makes no generation request.
 
-The [Image 2.6 Spire trial](assets/spire-image-2.6/README.md) stages three SVG
+The retained earlier [Image 2.6 Spire trial](assets/spire-image-2.6/README.md) contains three SVG
 replacement candidates next to current base and upgrade art. These files are
 review sources, not active game artwork. Promotion still requires the reuse-first
 admission decision, actual-size and in-game review, and a decision about upgrade

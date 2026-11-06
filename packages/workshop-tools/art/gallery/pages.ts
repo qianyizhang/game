@@ -184,11 +184,12 @@ export async function writeGalleryPages(
   if (proposals.length) {
     await mkdir(resolve(output, 'batches'));
     for (const proposal of proposals) {
-      if (records.has(proposal.record)) continue;
       await mkdir(resolve(output, 'batches', proposal.id));
-      const file = `batches/${proposal.id}/README.md`;
-      await copyFile(fromRoot(proposal.record), resolve(output, file));
-      records.set(proposal.record, file);
+      if (!records.has(proposal.record)) {
+        const file = `batches/${proposal.id}/README.md`;
+        await copyFile(fromRoot(proposal.record), resolve(output, file));
+        records.set(proposal.record, file);
+      }
       if (proposal.study) {
         const study = proposal.study;
         for (const source of new Set([

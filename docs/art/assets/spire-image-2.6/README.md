@@ -1,10 +1,10 @@
 # Spire · Image 2.6 replacement trial
 
-Three user-selected SVG replacement candidates, generated November 6, 2026. These are review candidates, not active game art or accepted upgrades. The current base and upgrade renderers remain unchanged.
+Three user-selected SVG replacement candidates, generated November 6, 2026. These individual-trial candidates remain review material, not active game art or accepted upgrades. At the time of this individual trial, the base and upgrade renderers remained unchanged. The later [packed batch](../spire-defense-batch/README.md) supplied the six illustrations now used by the game.
 
 ## Need, reuse and ownership
 
-Metallicize, Ghostly Armor and Sentinel share the Helmet primitive as their dominant subject in `src/games/spire/ui/art/ironclad.tsx`. The existing source-backed cabinet exposed this repetition. The user selected these three for a bounded replacement trial. The purpose is to test whether materially different focal silhouettes improve identity at 160 × 112 and 80 × 56, while matching the existing ink palette.
+At the start of this trial, Metallicize, Ghostly Armor and Sentinel shared the Helmet primitive as their dominant subject in `src/games/spire/ui/art/ironclad.tsx`. The existing source-backed cabinet exposed this repetition. The user selected these three for a bounded replacement trial. The purpose is to test whether materially different focal silhouettes improve identity at 160 × 112 and 80 × 56, while matching the existing ink palette.
 
 Reuse and adaptation remain valid alternatives. The generated artwork is compared directly with both current base and upgraded exports in the per-game cabinet. A trial is not admission as a runtime asset. Do not promote a candidate without matched review, a decision about the upgraded illustration, and actual in-game review. No rules, card effects, labels, content IDs, saves or replay versions change.
 
