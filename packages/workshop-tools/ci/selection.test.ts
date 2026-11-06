@@ -77,6 +77,36 @@ void test('transitive imports select cross-game dependants and their browser cov
   assert.ok(plan.browserFiles.includes('tests/browser/diablo2.spec.ts'));
 });
 
+void test('Hearth experiment and bundle-entry changes retain their application and inspector journeys', () => {
+  const experimentTest = 'src/games/battlegrounds/experiments/recruitment-experiment.test.ts';
+  const hearthCatalogue = {
+    ...catalogue,
+    application: [...catalogue.application, experimentTest],
+    browser: [
+      ...catalogue.browser,
+      'tests/browser/hearth-arena.spec.ts',
+      'tests/browser/recruitment-inspector.spec.ts',
+    ],
+  };
+  for (const path of [
+    'src/games/battlegrounds/experiments/recruitment-experiment.ts',
+    'packages/workshop-tools/hearth/runtime-entry.ts',
+    'packages/workshop-tools/hearth/recruitment-entry.ts',
+  ]) {
+    const plan = selectPlan(
+      [{ path, status: 'M' }],
+      hearthCatalogue,
+      new Map([[path, new Set([experimentTest])]]),
+      { head: 'a'.repeat(40) },
+    );
+    assert.equal(plan.mode, 'scoped', path);
+    assert.deepEqual(plan.unitFiles, [experimentTest], path);
+    assert.ok(plan.browserFiles.includes('tests/browser/hearth-arena.spec.ts'), path);
+    assert.ok(plan.browserFiles.includes('tests/browser/recruitment-inspector.spec.ts'), path);
+    assert.ok(!plan.browserFiles.includes('tests/browser/diablo2.spec.ts'), path);
+  }
+});
+
 void test('shared evaluator, configuration, deleted and unknown paths retain all application coverage without exhaustive rendering', () => {
   const changes: Change[] = [
     { path: 'src/shared/policy/rollout.ts', status: 'M' },

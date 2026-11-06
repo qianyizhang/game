@@ -10,7 +10,7 @@ The card studies below share a shell. [Emberwake](../../packages/diablo2/README.
 
 `packages/diablo2/` owns the independently checked Emberwake engine and UI, integrated into the same hub. Its package boundary reflects its own runtime and contracts, rather than requiring every game to become a package. `packages/dcc-workbench` and `packages/workshop-tools` own native authoring and game tooling. The external [Repo Workbench plugin](repo-workbench.md) owns architecture-canvas and development-session review tooling.
 
-`src/engines/` owns shared challenge and replay protocols. `src/engines/hearth/` owns Hearth experiment logic, replay inspection and headless runtime exports; `packages/workshop-tools/hearth/` owns their filesystem CLI entry points, worker pool and offline viewer. Game rules and policies remain under `src/games/battlegrounds/`. See the [tools contract](../../packages/workshop-tools/README.md#frozen-hearth-experiments-and-inspector) for current commands. Frozen reports retain their recorded revision, source paths and hashes; reproduction requires that revision.
+`src/engines/` owns cross-game challenge solving and lifecycle checks. `src/games/battlegrounds/experiments/` owns Hearth experiment logic, receipt-envelope parsing and replay inspection beside its game rules and policies. `packages/workshop-tools/hearth/` owns their filesystem CLI entry points, headless bundle entries, worker pool and offline viewer. See the [tools contract](../../packages/workshop-tools/README.md#frozen-hearth-experiments-and-inspector) for current commands. Frozen reports retain their recorded revision, source paths and hashes; reproduction requires that revision.
 
 ## The dependency direction
 

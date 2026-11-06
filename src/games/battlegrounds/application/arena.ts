@@ -1,4 +1,3 @@
-import type { AgentFrame } from '../../../shared/agent';
 import { replayCodec, type Session } from '../../../shared/replay';
 import { HEROES, MINIONS } from '../content/minions';
 import {
@@ -16,7 +15,12 @@ import {
   type SeatCombat,
 } from '../domain/arena';
 import type { Player } from '../domain/types';
-import { hearthEvents, legalHearthCommands, type HearthObservation } from './agent';
+import {
+  hearthEvents,
+  legalHearthCommands,
+  type AgentFrame,
+  type HearthObservation,
+} from './agent';
 import { bgSession, bgSessionV5 } from './session';
 import { TAVERN_SPELLS } from '../content/spells';
 

@@ -1,8 +1,8 @@
-import { objectValue } from '../../shared/json';
-import { replayEnvelope } from '../replay-envelope';
+import { objectValue } from '../../../shared/json';
+import { replayEnvelope } from './replay-envelope';
 import { expect, it } from 'vitest';
-import { arenaSessionV1 as arenaSession } from '../../games/battlegrounds/application/arena';
-import { decideRecruitment } from '../../games/battlegrounds/ai/recruitment-policy';
+import { arenaSessionV1 as arenaSession } from '../application/arena';
+import { decideRecruitment } from '../ai/recruitment-policy';
 import { runArenaEpisode } from './arena-experiment';
 import {
   compareRecruitmentReports,

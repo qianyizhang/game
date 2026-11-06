@@ -1,14 +1,13 @@
 import { fileURLToPath } from 'node:url';
-import { objectValue } from '../../shared/json';
+import { objectValue } from '../../../shared/json';
 import { expect, it } from 'vitest';
 import { spawn, spawnSync } from 'node:child_process';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createInterface } from 'node:readline';
-import { createHearthPolicy } from '../../games/battlegrounds/ai/policy';
-import { bgSession } from '../../games/battlegrounds/application/session';
-import type { HearthFrame } from '../../games/battlegrounds/application/agent';
+import { decideRecruitment } from '../ai/recruitment-policy';
+import { arenaSession, type ArenaFrame } from '../application/arena';
 
 // This test drives the local protocol implementation and asserts its declared reply fields.
 interface Reply {
@@ -16,17 +15,17 @@ interface Reply {
   ok?: boolean;
   id?: string;
   error?: string;
-  frame: HearthFrame;
+  frame: ArenaFrame;
   catalogue: { heroes: { id: string }[] };
 }
 
-it('drives a complete external JSONL agent and preserves evaluator replay separately', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'hearth-protocol-test-'));
+it('binds an external controller to seat 6, hides styles, and records a complete lobby', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'hearth-arena-protocol-'));
   const output = join(root, 'evaluator');
   const script = fileURLToPath(
-    new URL('../../../packages/workshop-tools/hearth/agent.ts', import.meta.url),
+    new URL('../../../../packages/workshop-tools/hearth/arena-agent.ts', import.meta.url),
   );
-  const child = spawn(process.execPath, [script, 'PRIVATE-PROTOCOL-SEED', output], {
+  const child = spawn(process.execPath, [script, 'SECRET-ARENA-PROTOCOL', output, '6', 'hidden'], {
     cwd: root,
     stdio: ['pipe', 'pipe', 'pipe'],
   });
@@ -42,12 +41,13 @@ it('drives a complete external JSONL agent and preserves evaluator replay separa
   const iterator = lines[Symbol.asyncIterator]();
   const receive = async () => {
     const line = await iterator.next();
-    if (line.done) throw new Error(`Agent ended unexpectedly: ${stderr}`);
-    expect(line.value).not.toContain('PRIVATE-PROTOCOL-SEED');
+    if (line.done) throw new Error(`Unexpected exit: ${stderr}`);
+    expect(line.value).not.toContain('SECRET-ARENA-PROTOCOL');
     expect(line.value).not.toContain('"rng"');
+    expect(line.value).not.toContain('"style":');
     return JSON.parse(line.value) as Reply;
   };
-  const request = async (value: unknown) => {
+  const request = (value: unknown) => {
     child.stdin.write(JSON.stringify(value) + '\n');
     return receive();
   };
@@ -62,39 +62,27 @@ it('drives a complete external JSONL agent and preserves evaluator replay separa
       { op: 'act', action: null },
     ])
       expect((await request(invalid)).ok).toBe(false);
-    expect(ready.frame.step).toBe(0);
-    child.stdin.write('{invalid json\n');
-    expect((await receive()).ok).toBe(false);
-    expect((await request({ op: 'act', step: 9, action: 'a0' })).ok).toBe(false);
-    expect((await request({ op: 'act', step: 0, action: 'unknown' })).ok).toBe(false);
-    const catalogue = await request({ id: 'catalogue', op: 'catalogue' });
-    expect(catalogue.id).toBe('catalogue');
-    expect(catalogue.catalogue.heroes.some((hero: { id: string }) => hero.id === 'archivist')).toBe(
-      true,
+    expect(ready.frame.observation.self.id).toBe(6);
+    expect((await request({ op: 'inspect' })).ok).toBe(false);
+    expect((await request({ op: 'act', seat: 0, step: ready.frame.step, action: 'a0' })).ok).toBe(
+      false,
     );
-    let frame: HearthFrame = (await request({ op: 'observe' })).frame;
-    expect(frame.step).toBe(0);
-    const policy = createHearthPolicy({
-      kind: 'heuristic-v1',
-      hero: 'archivist',
-      seed: 'PUBLIC-POLICY-SEED',
-      samples: 4,
-      maxOrders: 6,
-    });
-    for (let step = 0; frame.actions.length && step < 2000; step++) {
-      const decision = policy.decide(frame);
+    expect((await request({ op: 'act', step: 0, action: 'a0' })).ok).toBe(false);
+    let frame: ArenaFrame = (await request({ op: 'observe' })).frame;
+    expect(frame.step).toBe(ready.frame.step);
+    for (let i = 0; frame.actions.length && i < 1500; i++) {
+      const decision = decideRecruitment(frame, 'tempo-v1');
       const action = frame.actions.find(
-        (entry) => JSON.stringify(entry.command) === JSON.stringify(decision.command),
+        (a) => JSON.stringify(a.command) === JSON.stringify(decision.command),
       )!;
       const result = await request({ op: 'act', step: frame.step, action: action.id });
       expect(result.ok, result.error).toBe(true);
-      expect(result.frame.step).toBe(frame.step + 1);
-      policy.accepted(decision.command);
+      expect(result.frame.step).toBeGreaterThan(frame.step);
       frame = result.frame;
     }
     expect(['won', 'lost']).toContain(frame.observation.phase);
-    expect(frame.actions).toEqual([]);
-    expect((await request({ op: 'quit' })).event).toBe('closed');
+    expect(frame.observation.self.placement).not.toBeNull();
+    await request({ op: 'quit' });
     child.stdin.end();
     expect(await ended, stderr).toBe(0);
     const replayBytes = await readFile(join(output, 'replay.json'));
@@ -105,8 +93,9 @@ it('drives a complete external JSONL agent and preserves evaluator replay separa
     expect(duplicate.status).toBe(1);
     expect(duplicate.stderr).toContain('EEXIST');
     expect(await readFile(join(output, 'replay.json'))).toEqual(replayBytes);
-    const session = bgSession.decode(await readFile(join(output, 'replay.json'), 'utf8'));
-    expect(session.state.players[0].placement).toBe(frame.observation.self.placement);
+    const replay = arenaSession.decode(await readFile(join(output, 'replay.json'), 'utf8'));
+    expect(new Set(replay.state.players.map((p) => p.placement)).size).toBe(8);
+    expect(replay.state.players[6].placement).toBe(frame.observation.self.placement);
     expect(
       objectValue(JSON.parse(await readFile(join(output, 'receipt.json'), 'utf8'))).replayVerified,
     ).toBe(true);

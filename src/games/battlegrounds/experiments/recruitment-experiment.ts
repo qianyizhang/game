@@ -1,13 +1,13 @@
-import { replayEnvelope } from '../replay-envelope';
+import { replayEnvelope } from './replay-envelope';
 import {
   RECRUITMENT_POLICIES,
   decideRecruitmentV2,
   type RecruitmentPolicyId,
   type RecruitmentV2Decision,
-} from '../../games/battlegrounds/ai/recruitment-v2';
-import { decideRecruitment } from '../../games/battlegrounds/ai/recruitment-policy';
-import { mixedRivalsConfig, type StyleVisibility } from '../../games/battlegrounds/domain/arena';
-import { arenaSessionV1 as arenaSession } from '../../games/battlegrounds/application/arena';
+} from '../ai/recruitment-v2';
+import { decideRecruitment } from '../ai/recruitment-policy';
+import { mixedRivalsConfig, type StyleVisibility } from '../domain/arena';
+import { arenaSessionV1 as arenaSession } from '../application/arena';
 import { runArenaEpisode, type ArenaReport, type ArenaTrace } from './arena-experiment';
 
 export type RecruitmentCohort = 'development' | 'evaluation';

@@ -1,12 +1,9 @@
-import {
-  arenaFrame,
-  arenaSessionV1 as arenaSession,
-} from '../../games/battlegrounds/application/arena';
+import { arenaFrame, arenaSessionV1 as arenaSession } from '../application/arena';
 import {
   decideRecruitmentV2,
   RECRUITMENT_POLICIES,
   type RecruitmentPolicyId,
-} from '../../games/battlegrounds/ai/recruitment-v2';
+} from '../ai/recruitment-v2';
 import { recruitmentCases, recruitmentSetup, type RecruitmentCase } from './recruitment-experiment';
 
 /** Evaluator-only replay reconstruction. Each alternative sees only the same public policy frame. */

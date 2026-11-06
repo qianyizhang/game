@@ -1,4 +1,3 @@
-import type { AgentFrame } from '../../../shared/agent';
 import type { ContentPin } from '../../../shared/contentPack';
 import type { Session } from '../../../shared/replay';
 import { HEROES, MINIONS } from '../content/minions';
@@ -7,6 +6,15 @@ import type { BGCommand, BGState, Player, Unit } from '../domain/types';
 import { hearthCommands } from './engine';
 import { bgSession, bgSessionV5 } from './session';
 import { TAVERN_SPELLS } from '../content/spells';
+
+/** Hearth transport only. Observation, legality and rewards stay with its game modes. */
+export interface AgentFrame<O, C> {
+  protocol: 'card-workshop.agent.v1';
+  game: string;
+  step: number;
+  observation: O;
+  actions: { id: string; command: C }[];
+}
 
 export type HearthSession = Session<BGState, BGCommand>;
 export interface HearthObservation {

@@ -5,11 +5,7 @@ import {
   runArenaEpisode,
   type ArenaReport,
 } from './arena-experiment';
-import {
-  mixedRivalsConfig,
-  type RivalStyle,
-  type StyleVisibility,
-} from '../../games/battlegrounds/domain/arena';
+import { mixedRivalsConfig, type RivalStyle, type StyleVisibility } from '../domain/arena';
 
 function block(seed: string): ArenaReport[] {
   return Array.from({ length: 8 }, (_, seat) =>

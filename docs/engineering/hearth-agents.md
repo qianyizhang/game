@@ -15,7 +15,7 @@ Recall transfers existing units without duplicating pool copies. Full hands reje
 
 ## Information boundary
 
-`src/games/battlegrounds/application/agent.ts` defines policy observations; `src/shared/agent.ts` provides transport contracts.
+`src/games/battlegrounds/application/agent.ts` defines Hearth policy observations and transport contracts shared by its Classic and arena modes.
 
 | Included in observation                                           | Excluded from observation                                |
 | ----------------------------------------------------------------- | -------------------------------------------------------- |

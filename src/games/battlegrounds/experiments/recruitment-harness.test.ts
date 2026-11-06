@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'node:url';
-import { objectValue } from '../../shared/json';
+import { objectValue } from '../../../shared/json';
 import { it, expect } from 'vitest';
 import { mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -9,7 +9,10 @@ import { execFileSync, spawnSync } from 'node:child_process';
 it('produces identical gameplay across worker counts and audits metrics against reconstructed decisions', () => {
   const directory = mkdtempSync(resolve(tmpdir(), 'recruitment-harness-test-'));
   const cli = fileURLToPath(
-    new URL('../../../packages/workshop-tools/hearth/recruitment-experiment.ts', import.meta.url),
+    new URL(
+      '../../../../packages/workshop-tools/hearth/recruitment-experiment.ts',
+      import.meta.url,
+    ),
   );
   const run = (...args: string[]) =>
     execFileSync(process.execPath, [cli, ...args], { encoding: 'utf8', cwd: directory });

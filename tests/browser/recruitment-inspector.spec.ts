@@ -1,5 +1,5 @@
 import { objectValue } from '../../src/shared/json';
-import { replayEnvelope } from '../../src/engines/replay-envelope';
+import { replayEnvelope } from '../../src/games/battlegrounds/experiments/replay-envelope';
 import { expect, test } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
 import { mkdtempSync, readFileSync } from 'node:fs';

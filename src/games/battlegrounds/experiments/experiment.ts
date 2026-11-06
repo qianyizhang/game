@@ -1,19 +1,15 @@
-import { replayEnvelope } from '../replay-envelope';
+import { replayEnvelope } from './replay-envelope';
 import {
   actHearthAgent,
   hearthFrame,
   type HearthFrame,
   type HearthEvent,
-} from '../../games/battlegrounds/application/agent';
-import { bgSessionV5 as bgSession } from '../../games/battlegrounds/application/session';
-import {
-  createHearthPolicy,
-  type HearthPolicyConfig,
-  type PolicyDecision,
-} from '../../games/battlegrounds/ai/policy';
-import { RECRUITS } from '../../games/battlegrounds/content/minions';
-import { supplyTotal } from '../../games/battlegrounds/domain/game';
-import { POOL_COPIES } from '../../games/battlegrounds/domain/recruitment';
+} from '../application/agent';
+import { bgSessionV5 as bgSession } from '../application/session';
+import { createHearthPolicy, type HearthPolicyConfig, type PolicyDecision } from '../ai/policy';
+import { RECRUITS } from '../content/minions';
+import { supplyTotal } from '../domain/game';
+import { POOL_COPIES } from '../domain/recruitment';
 
 export interface EpisodeDecision {
   step: number;

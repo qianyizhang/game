@@ -1,7 +1,7 @@
 import type {
   RecruitmentCase,
   RecruitmentMetrics,
-} from '../../../src/engines/hearth/recruitment-experiment';
+} from '../../../src/games/battlegrounds/experiments/recruitment-experiment';
 import type { Runtime } from './recruitment-runtime.ts';
 import { caseSpec, objectValue, text } from './contracts.ts';
 import { parentPort, workerData } from 'node:worker_threads';

@@ -1,23 +1,11 @@
-import { isRecord } from '../../shared/json';
-import { replayEnvelope } from '../replay-envelope';
-import {
-  decideRecruitment,
-  type RecruitmentDecision,
-} from '../../games/battlegrounds/ai/recruitment-policy';
-import {
-  arenaFrame,
-  arenaSessionV1 as arenaSession,
-  type ArenaFrame,
-} from '../../games/battlegrounds/application/arena';
-import {
-  activeSeat,
-  type ArenaConfig,
-  type ArenaCommand,
-  type RivalStyle,
-} from '../../games/battlegrounds/domain/arena';
-import { RECRUITS } from '../../games/battlegrounds/content/minions';
-import { supplyTotal } from '../../games/battlegrounds/domain/game';
-import { POOL_COPIES } from '../../games/battlegrounds/domain/recruitment';
+import { isRecord } from '../../../shared/json';
+import { replayEnvelope } from './replay-envelope';
+import { decideRecruitment, type RecruitmentDecision } from '../ai/recruitment-policy';
+import { arenaFrame, arenaSessionV1 as arenaSession, type ArenaFrame } from '../application/arena';
+import { activeSeat, type ArenaConfig, type ArenaCommand, type RivalStyle } from '../domain/arena';
+import { RECRUITS } from '../content/minions';
+import { supplyTotal } from '../domain/game';
+import { POOL_COPIES } from '../domain/recruitment';
 
 export interface ArenaTrace {
   step: number;

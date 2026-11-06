@@ -117,7 +117,13 @@ export function sourceFamily(path: string): Family | 'core' | undefined {
   if (game === 'battlegrounds') return 'hearth';
   if (game === 'diablo2') return 'emberwake';
   if (games.includes(game as Family)) return game as Family;
-  if (path.startsWith('src/engines/hearth/')) return 'hearth';
+  if (
+    [
+      'packages/workshop-tools/hearth/runtime-entry.ts',
+      'packages/workshop-tools/hearth/recruitment-entry.ts',
+    ].includes(path)
+  )
+    return 'hearth';
   if (path.startsWith('src/engines/playing.')) return 'balatro';
   if (/^src\/(app|shared|mods)\//.test(path) || path.startsWith('src/engines/challenges.'))
     return 'core';
