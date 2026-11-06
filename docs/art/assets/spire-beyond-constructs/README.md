@@ -34,6 +34,11 @@ Actual Practice lab screenshots use seed `BEYOND-CONSTRUCTS`, the same deck, ene
 
 ## Verification and delivery
 
+Current integration note · 2026-11-06: local `main` includes the four-subject
+implementation, browser regressions and evidence through `9f7ada7` (PR #79).
+The publication block recorded below describes the earlier handoff. Independent
+visual approval remains a separate claim; main integration does not establish it.
+
 Source bytes are pinned by the [source receipt](source-receipt.json). Node 24.21.0 / npm 11.19.0; official Google Chrome 156.0.8078.73 in a disposable profile, through the repository's unchanged startup guard. The [capture receipt](capture-receipt.json) includes the vendor URL and package checksum.
 
 - Eight browser journeys pass: the two new construct scenarios, the existing City portrait journey and all five existing Spire journeys. They cover accessible names/intents/HP, keyboard targeting, target selection without save changes, Strike accounting, practice reload and normal-save isolation, map/reward/shop/rest/collection flows and phone layout.

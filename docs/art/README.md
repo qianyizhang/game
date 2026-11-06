@@ -68,6 +68,11 @@ trials, their sources and rendered exports, comparison outcomes, and known limit
 
 ## Asset records
 
+The [per-game 2D cabinet](svg.md#scaffold-and-export) browses current artwork,
+recent upgrades and proposed next batches. Its export includes live-renderer
+specimens for Canvas games and staged Image 2.6 comparisons; browsing does not
+generate or install artwork.
+
 [Game asset enrichment](asset-enrichment.md) inventories the six games, prioritizes
 readability and feedback studies, and records the Spire intent pilot with its independent
 offline gallery, dated changelog, provenance and validation limits.

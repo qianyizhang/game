@@ -38,6 +38,12 @@ Chrome 156.0.8078.73, pinned Node 24.21.0 / npm 11.19.0, reduced motion, same ca
 
 ## Delivery status
 
+Current integration note · 2026-11-06: local `main` includes the implementation,
+browser regression and retained evidence through `3fc9145` (PR #81). The paragraph
+below records the earlier publication block; it is historical, not the current
+checkout's delivery status. Integration alone does not establish independent
+visual acceptance or user approval.
+
 Branch: `art/hearth-iron-drake`. Baseline evidence was pushed at `069a19d` before automatic approval review denied creation of the specific Iron Drake issue, citing missing authorization for that issue and payload. That denied operation is known not to have executed and was not retried. Implementation, tests and final evidence remain local; no draft PR was attempted as an alternate route. Specific publication confirmation is pending.
 
 Detailed logs, v1 captures, source exports and the failure/correction records live in `.artifacts/hearth-drake/`. Retain through review or 2026-11-28, then reassess. No merge authority is claimed.

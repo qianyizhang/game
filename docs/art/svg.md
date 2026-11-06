@@ -77,6 +77,28 @@ All three commands resolve relative paths from the repository, even when called 
 
 The exporter produces `manifest.json`, an offline `index.html` cabinet, and one `.svg` per entry. The manifest is the current count and ID authority; tokens, statuses and curses have no upgrade export. SVGs contain intrinsic dimensions, accessible labels and resolved palette colors. Export to separate directories for before/after review. Generated exports and reviews normally belong under ignored `test-results/`.
 
+The cabinet also writes one page per game: `blindside.html`, `spire.html`,
+`hearth.html`, `cartographer.html`, `emberwake.html`, `night-passage.html`, and
+`scrapyard.html`, plus `shared.html`. Each page has **Current assets**, **Recent
+upgrades**, and **Next batch** views. Spire combat portraits enter the same SVG
+manifest. Canvas games use fixed specimens from their current presentation
+renderers; Cartographer room samples reuse its current CSS. The scope statement
+on each page names coverage limits. No session, save, background clock, polling,
+or API request runs while browsing.
+
+`src/asset-gallery/library.ts` owns curated upgrade records and batch proposals;
+the renderer/content catalogue still owns current SVG identity and artwork.
+The old `assets:gallery` output remains the retained feedback-study comparison,
+with its own dated history. Its October entries are not the current game's full
+upgrade inventory.
+
+The [Image 2.6 Spire trial](assets/spire-image-2.6/README.md) stages three SVG
+replacement candidates next to current base and upgrade art. These files are
+review sources, not active game artwork. Promotion still requires the reuse-first
+admission decision, actual-size and in-game review, and a decision about upgrade
+art. The gallery is rebuilt after changes; generated SVGs are not automatically
+installed into a game.
+
 ## Repeatable review
 
 Before changing approved assets, export a baseline. After editing, export the current version and select IDs to inspect:

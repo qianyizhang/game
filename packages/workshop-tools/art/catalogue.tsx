@@ -9,7 +9,13 @@ import {
 import type { Reward } from '../../../src/games/night-passage/domain/types';
 import { TAVERN_SPELLS } from '../../../src/games/battlegrounds/content/spells';
 import { TavernSpellArt } from '../../../src/games/battlegrounds/ui/TavernSpellArt';
-import { RELICS, POTIONS, ACT_NAMES } from '../../../src/games/spire/content/world';
+import {
+  RELICS,
+  POTIONS,
+  ACT_NAMES,
+  ENEMIES as SPIRE_ENEMIES,
+} from '../../../src/games/spire/content/world';
+import { Portrait } from '../../../src/games/spire/ui/Portrait';
 import { RelicArt, PotionArt } from '../../../src/games/spire/ui/WorldItemArt';
 import { CharacterArt } from '../../../src/games/spire/ui/CharacterArt';
 import { IntentArt, INTENT_ART, type IntentArtKind } from '../../../src/games/spire/ui/IntentArt';
@@ -118,6 +124,12 @@ export function cardArtCatalogue(): Asset[] {
     'seed',
   ];
   return [
+    ...SPIRE_ENEMIES.map((enemy) => ({
+      id: `spire/enemies/${enemy.id}`,
+      group: 'Slay the Spire · Enemies',
+      name: enemy.name,
+      node: <Portrait id={enemy.id} />,
+    })),
     ...(['hero', ...Object.keys(ENEMIES)] as InhabitantKind[]).map((kind) => ({
       id: `cartographer/inhabitants/${kind}`,
       group: 'Dungeon Cartographer · Inhabitants',

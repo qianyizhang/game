@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { relative } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 test('independent asset comparisons, changelog links, offline delivery and phone layout', async ({
   page,
@@ -146,4 +147,112 @@ test('independent asset comparisons, changelog links, offline delivery and phone
   expect(await page.evaluate(() => ({ ...localStorage }))).toEqual(saved);
   expect(external).toEqual([]);
   expect(errors).toEqual([]);
+});
+
+test('per-game galleries preserve navigation, show current renderers and compare staged SVG candidates', async ({
+  page,
+}, info) => {
+  const output = info.outputPath('per-game');
+  execFileSync(process.execPath, ['packages/workshop-tools/art/export.ts', output]);
+  const base = pathToFileURL(output + '/').href.replace(/\/$/, '');
+  const errors: string[] = [];
+  const external: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('request', (request) => {
+    if (/^https?:/.test(request.url()) && new URL(request.url()).origin !== 'http://127.0.0.1:4173')
+      external.push(request.url());
+  });
+  await page.goto(`${base}/index.html`);
+  for (const [id, name] of [
+    ['blindside', 'Blindside'],
+    ['spire', 'Slay the Spire'],
+    ['hearth', 'Last Hearth'],
+    ['cartographer', 'Dungeon Cartographer'],
+    ['emberwake', 'Emberwake'],
+    ['night-passage', 'Night Passage'],
+    ['scrapyard', 'Scrapyard'],
+  ]) {
+    await page
+      .getByRole('navigation', { name: 'Game galleries' })
+      .getByRole('link', { name, exact: true })
+      .click();
+    await expect(page).toHaveURL(`${base}/${id}.html`);
+    await expect(page.getByRole('heading', { level: 1, name, exact: true })).toBeVisible();
+    await expect(page.locator('canvas')).toHaveCount(
+      id === 'emberwake' ? 6 : id === 'night-passage' || id === 'scrapyard' ? 1 : 0,
+    );
+    for (const canvas of await page.locator('canvas').all()) {
+      await expect(canvas).toHaveAttribute('data-ready', 'true');
+      expect(
+        await canvas.evaluate((element) => {
+          const canvas = element as HTMLCanvasElement;
+          const pixels = canvas
+            .getContext('2d')!
+            .getImageData(0, 0, canvas.width, canvas.height).data;
+          return new Set(Array.from(pixels.filter((_, index) => index % 4 === 0))).size > 3;
+        }),
+      ).toBe(true);
+    }
+    await page.getByRole('link', { name: /Recent upgrades \(/ }).click();
+    await expect(page.locator('#upgrades')).toBeVisible();
+    await expect(page.locator('#current')).toBeHidden();
+    const dates = await page
+      .locator('#upgrades time')
+      .evaluateAll((elements) => elements.map((element) => element.getAttribute('datetime')!));
+    expect(dates).toEqual([...dates].sort().reverse());
+    await page.getByRole('link', { name: /Next batch \(/ }).click();
+    await expect(page.locator('#candidates .candidate')).not.toHaveCount(0);
+  }
+  await page.goto(`${base}/spire.html#candidates`);
+  await expect(page.locator('#candidates .candidate')).toHaveCount(3);
+  await expect(page.getByText('Generated · awaiting review', { exact: true })).toHaveCount(3);
+  await page.locator('#candidate-metallicize summary').click();
+  for (const image of await page.locator('#candidates img').all()) {
+    await image.evaluate((element) => {
+      (element as HTMLImageElement).loading = 'eager';
+    });
+    await expect(async () =>
+      expect(
+        await image.evaluate(async (element) => {
+          const image = element as HTMLImageElement;
+          await image.decode();
+          return image.naturalWidth > 0;
+        }),
+      ).toBe(true),
+    ).toPass();
+  }
+  await page.screenshot({ path: info.outputPath('spire-candidates-desktop.png'), fullPage: true });
+  for (const id of ['metallicize', 'ghostlyArmor', 'sentinel'])
+    await page
+      .locator(`#candidate-${id} .comparisons`)
+      .screenshot({ path: info.outputPath(`${id}-comparison.png`) });
+  await page.getByRole('link', { name: 'Current assets', exact: true }).click();
+  await page.getByLabel('Find an illustration').fill('sentinel');
+  await expect(page.locator('.asset:visible')).toHaveCount(2);
+  await page.getByRole('link', { name: /Recent upgrades \(/ }).click();
+  await expect(
+    page.getByRole('heading', { name: 'Backflip+ gains a distinct flip silhouette' }),
+  ).toBeVisible();
+  await page.getByRole('link', { name: 'Current assets', exact: true }).click();
+  await expect(page.getByLabel('Find an illustration')).toHaveValue('sentinel');
+  await expect(page.locator('.asset:visible')).toHaveCount(2);
+  await page.goBack();
+  await expect(page.locator('#upgrades')).toBeVisible();
+  await page.goto(`${base}/spire.html#unknown`);
+  await expect(page.locator('#current')).toBeVisible();
+  for (const id of ['spire', 'cartographer', 'emberwake', 'scrapyard']) {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(`${base}/${id}.html${id === 'spire' ? '#candidates' : ''}`);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    await page.screenshot({ path: info.outputPath(`${id}-phone.png`), fullPage: true });
+  }
+  expect(errors).toEqual([]);
+  expect(external).toEqual([]);
+  await page.addInitScript(() => {
+    Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', { value: () => null });
+  });
+  await page.goto(`${base}/emberwake.html`);
+  await expect(page.getByText('Canvas 2D is unavailable.', { exact: true })).toHaveCount(6);
 });

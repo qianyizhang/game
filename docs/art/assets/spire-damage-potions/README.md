@@ -67,6 +67,11 @@ Beyond candidate files were accessed or transported.
 
 ## Delivery
 
+Current integration note · 2026-11-06: local `main` includes the reviewed potion
+art and evidence through `5735697` (PR #78). The local branch and draft handoff
+below are historical. This note does not claim a new hosted CI or issue-status
+check; the recorded independent visual verdict remains unchanged.
+
 The independently accepted artwork and original comparisons are preserved at
 `c3a679c202ae6987d77f1f7f49940f76b772c789`, on
 `art/local-spire-damage-potions`. Subsequent delivery documentation does not change
