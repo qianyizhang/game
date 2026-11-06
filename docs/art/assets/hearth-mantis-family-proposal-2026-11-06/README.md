@@ -1,144 +1,147 @@
-# Briar Mantis family proposal
+# Briar Mantis normal pilot
 
-**Prepared, never dispatched. No reservation or output.** This proposes one normal
-portrait pilot, followed only after visual review and a separate pool grant by one
-ascended portrait. Deliver the two useful poses as one candidate family. No paid
-request, runtime slot, game rule, accepted canon or publication is implied.
+**Returned and self-reviewed; ascended ungenerated.** Grant
+`character-mantis-pilot-02` reserved $4.20 for one normal-only call. It returned in
+**120.97s** for **$0.067579 estimated usage**. The exact original has an anatomy
+hold; a separate manual cervical repair is a useful source candidate. No runtime
+slot, rule, canonical history, user adoption or published PR is implied.
+
+![Exact original and connected derivative at actual art-window sizes](review.png)
 
 ## Brief and admission decision
 
-Purpose: evaluate an elongated, articulated insect silhouette for the user's
-requested future Hearth expansion candidates. Six connected legs, the triangular
-head and unequal folded forelegs supply a distinct compact reading. The mantis
-was in the original unexecuted inventory; neither that packed brief nor this
-single-subject proposal has been sent. Tortoise and badger are excluded.
+Purpose: evaluate the user's requested future Hearth expansion direction through
+an elongated, articulated insect silhouette: triangular head, long prothorax,
+unequal folded forelegs, tapered abdomen and four anchored walking legs.
+The old packed mantis brief remains never dispatched. Only this normal pilot ran
+once. Tortoise and badger are excluded; neither unknown request was retried.
 
-At source base `3a59621069dd1fe912a749d851d27e993507f5dd`, inspected
-[Copper Beetle and Moon Moth](../../../../src/games/battlegrounds/ui/ExpansionPortraits.tsx)
-already provide insect subjects. Copper Beetle's broad armored body and six
-short limbs do not supply a mantis's long prothorax, raptorial forelegs or narrow
-diagonal gesture. Reuse the existing Hearth art window and palette conventions;
-retain its beetle intact. A moth would overlap the existing
-[Moon Moth SVG and living 3D study](../creatures/moonmoth.md), so defer that original
-inventory item rather than generate another moth. Open-PR title/body search for
-mantis found no other proposal at preparation time.
+At base `3a59621069dd1fe912a749d851d27e993507f5dd`,
+[existing Copper Beetle and Moon Moth renderers](../../../../src/games/battlegrounds/ui/ExpansionPortraits.tsx)
+were inspected and temporarily rendered at matched 160x112 and 64x45 sizes.
+Their compact armored body and broad wing planes do not supply the mantis's long
+narrow diagonal gesture or open raptorial forelegs. The matched comparison above
+supports a distinct source candidate while reusing Hearth's natural palette,
+three value groups and art-window conventions. A new moth is deferred because
+[Moon Moth already has SVG and living 3D artwork](../creatures/moonmoth.md).
+No existing asset is edited, superseded, selected or checkpointed by this study.
 
-This is a preliminary source comparison, not a claim that matched visual admission
-has passed. Before a generated family becomes review-ready, compare it with those
-live portraits at matched 160x112 and 64x45 sizes and record the distinct benefit.
-No existing asset needs a checkpoint because this proposal edits none. The family
-owner retains at most two original SVGs, shared exact call records and a useful
-combined review sheet; no dependency, runtime export or permanent frame catalogue
-is proposed. Central registration and user review remain later gates.
+The owner retains one exact original, one necessary distinct derivative, a shared
+call record and one combined review PNG. Temporary reference SVGs/native renders
+remain ignored. No new dependency, runtime export or unchanged catalogue dump.
+Central registration and user review remain later gates.
 
-Normal: poised on a low diagonal twig, two forelegs at unequal heights and four
-walking feet visibly anchored. Ascended: the same species, proportions, palette
-and lighting leaning outward on a forked branch; one foreleg opens diagonally,
-the other folds close to the thorax, wing covers lift asymmetrically and four
-supporting feet grip two branch levels. Gesture, support and silhouette change
-together. This is a meaningful second pose, not a recolor or separate tiny PR.
+## Actual call and spending
 
-## Exact pilot and transport
+[Exact sent payload](pilot-request.json) · [grant, usage and request ID](call.json)
+· [technical/visual QA](qa.json) · [staged history import](prepared-history.json).
 
-[The sole prepared payload](pilot-request.json) uses
-`gpt-image-2.6-sunburst`, `n=1`, `output_format=svg`, `size=1024x720`,
-`quality=medium`, `complexity=medium`, and
-`svg={model:gpt-6.1-terra, reasoning:{effort:medium}}`.
-Send only its JSON body to `https://api.openai.com/v1/images/generations` if a
-future grant explicitly reserves this call. Use the existing bound credential
-through the configured HTTPS proxy, standard processing, TLS verification,
-1800-second client timeout, no redirects and no automatic retries. This document
-contains no dispatch helper. Never reuse either unknown creature request.
+One `POST https://api.openai.com/v1/images/generations` used the existing bound
+credential through the configured HTTPS proxy, standard processing, verified TLS,
+1800-second timeout, no redirects and zero automatic retries. Exact settings:
+`gpt-image-2.6-sunburst`, `n=1`, native SVG, `1024x720`, medium quality and
+complexity, `gpt-6.1-terra` author with medium reasoning. This payload is consumed,
+not permission to rerun it. Request: `req_ddaba39188104bd0a522b70420073907`.
 
-The 737,280-pixel canvas has 16-pixel-divisible edges and is 17.7% smaller in total
-area than the old 1600x560 pair, while giving its single subject more room than
-one old cell. Contain-fit it into 160x112, 80x56 and 64x45 windows. Forty to
-sixty-five paths is a soft drawing target, not an output-token limit. The API
-does not expose a SVG-author output-token cap in this request schema.
+Returned usage: image text input 599, reference output 924, Terra input 1,724 and
+Terra output 7,028 tokens, with reported reasoning 1,128. At standard rates,
+`(599*5 + 924*30 + 1724*1 + 7028*5)/1e6 = $0.067579`.
+Reasoning is included in output and is not charged twice. This is a token-derived
+estimate, not verified billing. The settled grant releases $4.132421 of planning
+capacity; current shared free capacity remains the coordinator's decision.
 
-The [official guide](https://developers.openai.com/api/docs/guides/image-generation)
-separates reference quality, reference complexity and SVG author effort. It warns
-that higher complexity can increase latency. SVG uses one image and cannot
-stream partials; image edits cannot return SVG. No unverified raster-reference,
-heartbeat or asynchronous workaround is proposed. Share textual species constants
-with the later pose and judge consistency side by side.
+Lane cumulative known usage is **$0.818273 estimated**, with **two separate unknown
+holds: tortoise $7.50 and badger $7.50; zero active calls**. The opening owner
+receipt is local commit `28734956a69f613992189783680e7a7b57023a28`, under
+`docs/art/assets/expansion-hearth-blindside-scrapyard-continuation-2026-11-06/`.
+That ledger plus this incremental call are the receipts; other lanes' accounting
+is not duplicated here. The common $40 pool is not this worker's allowance.
 
-## Evidence for a smaller Terra pilot
+The granted **$4.20 planning bound** used
+[Terra's published limits/rates](https://developers.openai.com/api/docs/models/gpt-6.1-terra):
+1.05M input at long-context $2/M plus 128K output at $7.50/M = $3.06, deliberately
+overcounting context overlap. The $1.14 image/prompt allowance covers 32,768
+reference-output tokens at [$30/M](https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst),
+up to 8,000 prompt bytes at $5/M and 10% contingency ($1.125344).
+That image-token allowance is a conservative planning assumption, not a documented
+or API-enforced output cap. The coordinator granted it with that limitation.
+Initial free capacity was $3.487463; a later equipment settlement freed capacity.
+No assumption about current pool availability or another call follows.
 
-| Observed request                                                      | Settings and scope                                                       |    Time | SVG output tokens |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------: | ----------------: |
-| [Scrapyard actors](../scrapyard-suite/actors/response.json)           | Terra/low; medium quality, high complexity; six simple sprites, 1152x768 |  82.41s |             4,251 |
-| [Scrapyard equipment](../scrapyard-suite/equipment/response.json)     | Same controls; six simple objects                                        |  66.53s |             3,234 |
-| [Single Cub](../hearth-effort-comparison/single-medium-response.json) | Sol/medium; high quality/complexity; one creature, 1280x896              | 208.80s |             9,895 |
+## Visual outcome and manual derivative
 
-The Cub returned but retained eye/foreleg quality limits. The earlier low-effort
-packed Hearth trial had structural failures; see the
-[batch workflow](../../../../skills/card-art/references/batch-assets.md).
-Terra/low is faster in those simple historical examples, but subject, prompt,
-quality and output length also differ. These are not controlled comparisons.
-Recommend **Terra/medium** for this connected living subject; low effort is a
-supported alternative with insufficient anatomy evidence, not an automatic retry.
-Changing effort does not reduce the model's conservative maximum token budget.
+[Exact original](original.svg): useful long diagonal silhouette, unequal forelegs,
+natural leaf-green chitin and quiet dark field. **Hold unchanged:** the head floats
+above the prothorax. Technical decoding did not excuse that anatomy failure.
 
-The owner's continuation receipt at local commit
-`28734956a69f613992189783680e7a7b57023a28`, under
-`docs/art/assets/expansion-hearth-blindside-scrapyard-continuation-2026-11-06/`,
-records returned Sol/medium ram/heron pairs at 225.44/229.84s and two separate
-tortoise/badger disconnects at 301.04s. Both clients already used 1800s timeouts.
-The repeated boundary is consistent with a service/intermediary close near 300s;
-available diagnostics do not identify which. Smaller scope and simpler reference
-planning are a plausible latency experiment, not a guarantee of avoiding it or
-preserving quality. Do not retry either unknown request.
+[Connected derivative](mantis-normal-connected.svg): insert one group,
+`cervical-connection`, containing three flat-paint paths before `prothorax`.
+Every original node/attribute is unchanged. It bridges the posterior head edge to
+the thorax with a short tapered cervical segment and two modeled value planes.
+No paid request or recoloring. The full-size changed-pixel box is only
+`(695,147)..(731,182)`. A pixel-component check confirms that the original head
+and thorax are disconnected and the repaired ones connected; this supports the
+visual finding rather than establishing biological accuracy by itself.
 
-## Proposed bound and funding gate
+Self-review at 1024x720, 160x112, 80x56 and 64x45 finds the connected normal useful
+for continuing this family: six leg chains, two head-rooted antennae, clear foreleg
+negative spaces and four twig contacts remain readable. Fine tarsal/antenna detail
+reduces at 64x45. The original has 82 paths (85 after repair), above the suggested
+40–65 soft target. Both are safe native SVGs and remain inside the viewport.
+The highest antenna reaches y=53.714714, 0.285286px above the requested safe margin;
+this minor prompt deviation causes no crop. Exact API metadata says transparent,
+but the actual original has its requested opaque background rectangle.
 
-**Request a maximum reservation of US$4.20 for one pilot; nothing is granted or
-reserved here.** Standard pricing only, no Fast mode or regional premium:
+The retained PNG was losslessly optimized from 161,039 to 158,962 bytes; decoded
+RGB pixels, 1170x950 dimensions and alpha/color metadata match. Native captures
+and discarded comparison layouts remain temporary, not additional artwork states.
+No actual-game selection, frame adaptation or independent visual acceptance is claimed.
 
-- [Terra](https://developers.openai.com/api/docs/models/gpt-6.1-terra) has a 1.05M
-  context and 128K output limit. Reserve even the full context as input at the
-  long-context $2/M rate plus 128K output at $7.50/M: $2.10 + $0.96 = **$3.06**.
-  This deliberately overcounts input/output overlap and covers either effort.
-- Retain **$1.14** for the image reference and prompt: 32,768 reference-output
-  tokens at [$30/M](https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst)
-  plus at most 8,000 UTF-8 prompt bytes at $5/M, with 10% contingency, totals
-  $1.125344. This is the prior accepted sub-megapixel reservation policy, far
-  above the observed 915 reference-output tokens for larger medium examples.
-  The 32,768 allowance is a conservative planning assumption, not a documented or
-  enforceable image-output cap. Reconfirm the size/quality calculator and rates
-  before a future grant; do not represent $4.20 as an API-enforced charge ceiling.
+## Latency evidence and next family gate
 
-Coordinator receipt at preparation: shared free capacity **$3.487463**, so this
-proposal is **$0.712537 short** even under that conservative policy. If a strict
-documented worst-case reference-token maximum is required, that maximum remains
-unverified and must be resolved before spending. Do not shrink the reservation
-merely to fit. A later ascended call needs its own separately confirmed $4.20
-reservation; two calls would total at most $8.40 under this policy, not reserved
-now. No third call or automatic revision is proposed.
+Historical [Terra/low actors](../scrapyard-suite/actors/response.json) and
+[equipment](../scrapyard-suite/equipment/response.json) sheets at medium quality,
+high complexity and 1152x768 returned in 82.41/66.53s with 4,251/3,234 SVG output
+tokens. The [single Sol/medium Cub](../hearth-effort-comparison/single-medium-response.json)
+returned in 208.80s but retained eye/foreleg limits. Earlier low-effort living
+batches had structural failures; the
+[batch workflow](../../../../skills/card-art/references/batch-assets.md) recommends
+an anatomy pilot before repetition. Keep medium author effort for this living
+family rather than treating low effort as a proven equal-quality shortcut.
 
-Our lane remains **$0.750694 known usage estimate, $7.50 tortoise unknown + $7.50
-badger unknown, zero active requests**. These holds are separate and unreleased;
-the owner ledger remains canonical. Other workers' reservations are coordinated
-externally, not duplicated here. The shared $40 pool is not this lane's allowance.
+The smaller normal pilot returned below the earlier 301.04s tortoise/badger
+boundary, and its defect was small enough to repair by hand. Subject, scope,
+quality, complexity, model and output length changed together; this is not a
+controlled latency/quality experiment or a guarantee against future disconnects.
+Both prior clients already used 1800s timeouts. A server/intermediary close near
+300s remains an inference; diagnostics do not identify the component. The
+[official guide](https://developers.openai.com/api/docs/guides/image-generation)
+warns that complexity can increase latency, and SVG cannot stream partials or
+use the image-edit endpoint. No heartbeat/reference-edit workaround is claimed.
 
-## Future review and stop
+**Propose one ascended call only if separately granted:** same species, palette,
+1024x720 native SVG and medium/medium/Terra-medium controls; same $4.20 planning
+policy. Lean outward on a forked branch, one raptorial foreleg extended diagonally,
+the other close to the thorax, wing covers lifted asymmetrically and four walking
+feet supported at two levels. Explicitly require a continuous cervical connection.
+Changed gesture, support and silhouette should make this a coherent two-pose
+family, not a recolor or separate tiny PR. No ascended payload has been dispatched.
 
-If funded, first inspect the exact SVG at native and compact sizes: six connected
-legs, distinct antennae, thorax-to-abdomen continuity, convincing twig contacts,
-clear foreleg negative spaces, restrained eye size and three readable value groups.
-Check resource safety, viewBox/bounds, safe margins and true native vector content.
-Anatomy failure holds the pilot; it does not automatically authorize another call.
-Only a useful reviewed normal permits proposing the ascended payload and grant.
+Retain exact originals, holds, usage and meaningful derivative lineage. A new
+uncertain outcome retains its full reservation and stops further paid work.
+Only completed pair QA, isolated history/gallery verification, serial central
+registration and user review can advance the family toward publication/adoption.
 
-Retain each actual call once with its original, usage/request ID or exact error,
-plus meaningful QA and any actual derivative lineage. Inspect rendered pixels
-temporarily; retain only useful combined review evidence. On any uncertain result,
-keep the full new reservation and stop. No fabricated history attempt or gallery
-entry exists for this unexecuted proposal. Registration, matched live comparison
-and both-pose visual review must precede a candidate draft; adoption stays with
-the user.
+Preparation and delivery checks: pinned Node 24.21.0/npm 11.19.0
+`npm run format:maintenance` passed (901 managed sources). Disposable-clone
+history import/verify passed: 709 assets, 94 revisions, zero selections and 709
+source registrations. Existing gallery UI decoded both focused revisions and
+exposed exact settings/usage/lineage at 1440px and 390px without page errors.
+Chromium blocked file-URL navigation; the supported localhost HTTP preview worked
+without policy or TLS changes. No hosted CI or central registration is claimed.
 
-Preparation checks: pinned Node 24.21.0/npm 11.19.0
-`npm run format:maintenance` passed (901 managed sources, no errors). Payload
-parsing, 16-pixel dimensions, 737,280-pixel area, 2,578-byte prompt, seven local
-links and two-file scope passed. No visual verdict exists before generation.
+Later tracing guidance arrived after this call completed. For a future separately
+granted, never-dispatched call, add a unique ASCII `X-Client-Request-Id` and retain
+it with sanitized request facts; it is a support-tracing identifier, not an
+idempotency key or retrieval handle. Do not alter completed call facts, enable SVG
+streaming/partials or test an unverified background workaround.

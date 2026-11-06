@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "assets": [],
+  "attempts": [
+    {
+      "id": "hearth-mantis-pilot-20261106",
+      "title": "Briar Mantis normal pilot",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One granted paid call; exact original held for head detachment. Usage/grant in call.json.",
+      "files": [
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/pilot-request.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/call.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/README.md",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/qa.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/review.png"
+      ]
+    },
+    {
+      "id": "hearth-mantis-neck-repair-20261106",
+      "title": "Briar Mantis manual cervical repair",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "No paid request. One three-path group connects head and prothorax; all existing nodes/attributes unchanged.",
+      "files": ["docs/art/assets/hearth-mantis-family-proposal-2026-11-06/qa.json"]
+    }
+  ],
+  "revisions": [
+    {
+      "id": "hearth-mantis-pilot-20261106:original",
+      "asset": null,
+      "attempt": "hearth-mantis-pilot-20261106",
+      "label": "Briar Mantis / exact original / anatomy hold",
+      "file": "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/original.svg",
+      "digest": "88b27625c91fb66f58b6c03a2a1fe308ec9e3eb6d367f51e94cc817975de8ae2",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API bytes retained; head/prothorax gap documented."
+    },
+    {
+      "id": "hearth-mantis-neck-repair-20261106:connected",
+      "asset": null,
+      "attempt": "hearth-mantis-neck-repair-20261106",
+      "label": "Briar Mantis / connected normal source candidate",
+      "file": "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/mantis-normal-connected.svg",
+      "digest": "1fcdd4209973e93c186cf85da05565046acd9fd1db2ac8a7d76df1e0adcf2dd8",
+      "parents": ["hearth-mantis-pilot-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Added cervical-connection group with three paths before prothorax. No other original nodes or attributes changed."
+    }
+  ]
+}
