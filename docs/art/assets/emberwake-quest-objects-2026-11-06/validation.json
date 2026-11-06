@@ -56,6 +56,20 @@
   "visual_review": "Source/contact and native/compact self-review: four candidates and two candidates with caveats. No user acceptance or runtime placement claim.",
   "checks": ["npm run format:maintenance", "npm run assets:history -- verify"],
   "runtime_evidence": "Unchanged runtime; historical a335184 validation and hosted run 42244231708 linked in README; not rerun here.",
-  "registration": "Isolated import passed; shared canonical registration pending serial coordinator; draft blocker",
-  "temporary_evidence": "/tmp/ember-quest-review; /tmp/ember-quest-history-sandbox; README reconstructs /tmp/ember-quest-prepared-history.json"
+  "registration": {
+    "handoff_head": "366cc90168eea0f3f36e2ae7b59bd980f5d03aeb",
+    "attempts": 2,
+    "source_revisions": 7,
+    "selected": 0,
+    "runtime_files": 0,
+    "actual_gallery": "All7native/compact/enlarged revisions, both exact call records and auxiliary text, parents, disabled Use, six1440/390/320px and16/20px layouts passed, no page errors. Unknown attempt has no output.",
+    "gate_scope": "Scoped format:maintenance/history integrity and asset-history browser journeys; metadata-only. No broad application or geometry execution claimed."
+  },
+  "temporary_evidence": "Original isolated evidence paths remain historical; current ignored test-results/registration contains reconstructed import and gallery/check logs. No duplicate import committed.",
+  "source_ci_history": {
+    "run": 42251241786,
+    "original_failed_job": 128007188532,
+    "held_escape": "Expected tick1, observed4 at20000ms; unchanged failed-job rerun later passed",
+    "local_exception": "Owner separately reported cast-charge timeout, exact local duration/log not provided; not conflated with hosted held-Escape outcome"
+  }
 }

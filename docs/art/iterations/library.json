@@ -6657,6 +6657,30 @@
         "docs/art/assets/scrapyard-suite/visual-qa.json",
         "docs/art/assets/scrapyard-suite/technical-qa.json"
       ]
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "title": "ember-fen-salt-quest · optional future source concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Canonical request, response and outcome in generation.json. No runtime identity or user acceptance.",
+      "files": [
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/generation.json",
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/contact.png",
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/README.md",
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/validation.json",
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/concepts.json"
+      ]
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-bells-furnace-quest",
+      "title": "ember-bells-furnace-quest · optional future source concepts",
+      "date": "2026-11-06",
+      "outcome": "unknown",
+      "notes": "RemoteDisconnected; no output, usage or request ID. US$7 uncertainty retained once; not retried.",
+      "files": [
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/uncertain-bells-furnace/generation.json"
+      ]
     }
   ],
   "revisions": [
@@ -7819,6 +7843,102 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/sheet",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "Fen/Salt · exact packed original",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/sheet.svg",
+      "digest": "16c7c475f579a2b5e7f434d54fda7ba6178c709a67bc6a9d59244fdd68baeb99",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact native vector output; 3×2 cells of 480×336. Source study only."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/fen-root-core",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "fen-root-core · candidate-with-caveat",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/fen-root-core.svg",
+      "digest": "2320e8a397efdd8bbacbbe14b400bf1fbdb86534160e46ff4c47d7a67025f30f",
+      "parents": [
+        "expansion-en-cont-20261106/ember-fen-salt-quest/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 0, origin (0,0); remove only grid translation, preserve paint. Review: generation.json output fen-root-core."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/fen-water-gauge",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "fen-water-gauge · candidate",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/fen-water-gauge.svg",
+      "digest": "9f5f0befbfb2eaf2c961070bbc65565c447775aafb339e40ffe52a3eca980df6",
+      "parents": [
+        "expansion-en-cont-20261106/ember-fen-salt-quest/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 1, origin (480,0); remove only grid translation, preserve paint. Review: generation.json output fen-water-gauge."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/fen-mire-dispatch",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "fen-mire-dispatch · candidate",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/fen-mire-dispatch.svg",
+      "digest": "afdb9d0a9c4d8e2e5f055c5f4ef7a0671c3a43eb43854585dd03444894f3f181",
+      "parents": [
+        "expansion-en-cont-20261106/ember-fen-salt-quest/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 2, origin (960,0); remove only grid translation, preserve paint. Review: generation.json output fen-mire-dispatch."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/salt-proof-tile",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "salt-proof-tile · candidate-with-caveat",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/salt-proof-tile.svg",
+      "digest": "d677cefa6c5cf0262982f75bbb0aca8b87bec67f462af341b8611117b2c98912",
+      "parents": [
+        "expansion-en-cont-20261106/ember-fen-salt-quest/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 3, origin (0,336); remove only grid translation, preserve paint. Review: generation.json output salt-proof-tile."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/salt-depth-spool",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "salt-depth-spool · candidate",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/salt-depth-spool.svg",
+      "digest": "4629c2e8a0c59c886ef6e8cdd78bdd7e8054b86a3df52e0e2192ed1858553858",
+      "parents": [
+        "expansion-en-cont-20261106/ember-fen-salt-quest/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 4, origin (480,336); remove only grid translation, preserve paint. Review: generation.json output salt-depth-spool."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/salt-bead-mold",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "salt-bead-mold · candidate",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/salt-bead-mold.svg",
+      "digest": "9ff1c2d5893ed509ac513d0034a1c011abbc143ef2477265c8bbddfdc63bdd76",
+      "parents": [
+        "expansion-en-cont-20261106/ember-fen-salt-quest/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 5, origin (960,336); remove only grid translation, preserve paint. Review: generation.json output salt-bead-mold."
     }
   ]
 }
