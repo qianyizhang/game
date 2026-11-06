@@ -10,13 +10,13 @@ The first suite already provides a circular floodgate wheel, stairs, hinged scre
 
 Common brief: nonliving stone/forged-metal mechanisms, visibly connected support, unequal planes and useful passage-shaped negative space; subdued archive stone/sage/copper and upper-left light. Intended review sizes are 160×112 and 80×56, with an additional 64×45 contour check. The exact subject gestures, material interpretations, positions, safe inset and vector constraints occur once in `call.json.request.prompt`. No prior asset is edited, so there is no old source to checkpoint or unchanged catalogue to freeze.
 
-Ownership and cost: the archive art lane owns source review, exact original and six actual extractions. Keep only useful candidates; no permanent runtime slot, default, selector, game art or canonical history is created. Any future interactive use needs its own rules, accessibility and game-context review. Artwork validity and self-review do not establish independent or user acceptance.
+Ownership and cost: the archive art lane owns source review, exact original and six actual extractions. Keep only useful candidates; no permanent runtime slot, default, selector or game art is created. Any future interactive use needs its own rules, accessibility and game-context review. Artwork validity and self-review do not establish independent or user acceptance.
 
 ## Provenance and review
 
 `call.json` is the authoritative request/settings, grant, response usage/request ID, cost, output digest, lineage and exception record. The exact sent request is reconstructible from its documented JSON serialization; the prompt is not duplicated into another file. No credentials are stored. Model support and standard pricing were rechecked immediately before this request; both requested models appeared in a successful authenticated models-list preflight, using the existing configured proxy/binding.
 
-A terminal result will be preserved as `original.svg`; extracted groups retain their local background and remove only the grid translation. This is a source-art bundle, not an animation or a player. Retain a single useful native/compact contact sheet; use temporary rasterizations for comparison rather than a permanent raster catalogue. Generate the required additive gallery import from this shared call record, validate it in isolation, and keep that redundant transport document temporary. The reconstruction recipe below preserves the registration contract without committing another output inventory. Shared registries stay untouched.
+The terminal result is preserved as `original.svg`; extracted groups retain their local background and remove only the grid translation. This is a source-art bundle, not an animation or a player. Retain a single useful native/compact contact sheet; use temporary rasterizations for comparison rather than a permanent raster catalogue. Generate the required additive gallery import from this shared call record, validate it in isolation, and keep that redundant transport document temporary. The reconstruction recipe below preserves the registration contract without committing another output inventory. Shared registries stay untouched.
 
 ![Six threshold source concepts at native and compact sizes](contact.png)
 
@@ -24,38 +24,32 @@ Status: one successful request, **$0.141775** usage-derived cost, lifetime worke
 
 All six extractions preserve exact vector geometry/paint and remove only the group grid translation. Rasterizer rounding creates a few edge-pixel differences (documented in `call.json`), so universal byte-identical raster extraction is not claimed. The contact PNG's lossless optimization was verified exactly for decoded pixels, dimensions, alpha, mode and color metadata.
 
-SVG safety (seven files), the seven-revision staged import, 390px gallery decoding/lineage/settings, disabled selection and formatting/inventory/links checks passed. Central registration remains a draft blocker; this is not merge-ready or adopted game art. No continuation artwork existed before this grant. The earlier coordination ledger remains a historical record; this confirmed shared-pool grant supersedes its former fixed lane ceiling for this one call.
+SVG safety (seven files), the seven-revision staged import, 390px gallery decoding/lineage/settings, disabled selection and formatting/inventory/links checks passed. Shared gallery registration now preserves this as an unassigned source study; independent/user review remains pending. No continuation artwork existed before this grant. The earlier coordination ledger remains a historical record; this confirmed shared-pool grant supersedes its former fixed lane ceiling for this one call.
 
-## Rebuild the staged additive import
+## Shared gallery registration
 
-The gallery transport is derived, not another source of truth. This recipe writes only an ignored staging file; it does not register or select art. Each original/extraction receives a revision, with shared prompt/settings/usage through the one attempt.
+The [canonical history](../../../iterations/library.json) registers one actual
+attempt and seven source revisions, with exact call settings and source/cell
+parents. Open `/__art/#asset=__unassigned` and find `archive-thresholds-20261106`.
+The redundant transport was generated from `call.json` only in ignored staging;
+its temporary reconstruction recipe is retired now that stable IDs, digests,
+parents and cell recipes are registered. No new inventory duplicates the call.
 
-```python
-import json
-from pathlib import Path
+This branch contains 709 assets, 99 revisions and zero selections. All source
+registrations, artwork and call-record bytes remain unchanged. Other candidate
+PRs independently add canonical records and require later serial reconciliation;
+no first-suite ancestor or unrelated artwork is included.
 
-d = Path("docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds")
-c = json.loads((d / "call.json").read_text())
-a = c["id"]
-revisions = []
-for o in c["outputs"]:
-    original = "cell" not in o
-    revisions.append(dict(
-        id=a + ":" + Path(o["file"]).stem, asset=None, attempt=a,
-        label="Threshold source / " + Path(o["file"]).stem,
-        file=(d / o["file"]).as_posix(), digest=o["sha256"],
-        parents=[] if original else [a + ":original"],
-        runtimeFile=None, runtimeDigest=None,
-        notes="Exact API original." if original else
-              f"Cell {o['cell']}; remove its grid translation only. Review: call.json.",
-    ))
-h = dict(schema=1, assets=[], attempts=[dict(
-    id=a, title="Threshold mechanisms / one native SVG request",
-    date=c["date"][:10], outcome="returned",
-    notes="Future source concepts; exact request, usage, lineage and review: call.json.",
-    files=[(d / f).as_posix() for f in ["call.json", "README.md", "contact.png"]],
-)], revisions=revisions)
-p = Path("test-results/thresholds-history-import.json")
-p.parent.mkdir(parents=True, exist_ok=True)
-p.write_text(json.dumps(h, indent=2) + "\n")
-```
+Registration checks passed with pinned Node 24.21.0/npm 11.19.0 and Google Chrome
+157.0.8103.38: maintenance/build, lint/types, 19 Python tests, 202 tooling tests,
+81 DCC contracts and all three affected history/selection/offline browser
+journeys at normal local limits. History verification reports 709 assets, 99
+revisions, 709 source registrations and zero selections. All seven revisions,
+the exact call document and parents were inspected in the live gallery at
+1440/390/320px and 16/20px text without overflow or page errors. Artwork, call
+record and selection bytes match the handoff. Final-head hosted checks are tracked
+on the PR; application/simulation/geometry/native execution is not claimed.
+
+Technical checks and gallery inspection do not establish aesthetic acceptance,
+engineering certification or game-context compatibility. No runtime adapter or
+adoption is registered.
