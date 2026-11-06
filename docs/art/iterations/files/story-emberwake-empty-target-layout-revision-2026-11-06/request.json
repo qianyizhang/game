@@ -1,0 +1,30 @@
+{
+  "endpoint": "https://api.openai.com/v1/images/edits",
+  "method": "POST multipart/form-data",
+  "inputs": [
+    {
+      "field": "image[]",
+      "file": "docs/art/iterations/files/story-emberwake-too-close-2026-11-06/too-close-end-reference.png",
+      "sha256": "9c41ea5a15ed9814a0395604c68298c0eeb41e3d76d5ebb90f558c30f45f0fa4",
+      "role": "unchanged actual previous endpoint; primary reference"
+    },
+    {
+      "field": "image[]",
+      "file": "docs/art/iterations/files/story-emberwake-empty-target-layout-revision-2026-11-06/layout-reference.png",
+      "sha256": "a982095cefeb06baf6b05d1e1d8e8998232b6c0612d8383aa5512172496c0282",
+      "role": "manually annotated layout reference; no guaranteed first/last-frame control"
+    }
+  ],
+  "fields": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Revise only the second Emberwake story beat, Empty Target. Image 1 is the actual last frame of Too Close and is the primary appearance, scale, camera, background and opening-state reference. Image 2 is the same frame with manually drawn layout annotations. Its two boxes have exactly equal dimensions; the blue box is empty destination space, not another Mira. The guide is an ordinary spatial reference, not a storyboard or guaranteed start/end frame. Omit every guide box, line, arrow and word from all animation frames.\n\nKeep the one existing Mira at her image-1 size: hood/crescent top around y=105, boots around y=221, the same cape, fitted split coat, brass belt, full upright bronze staff and supported feet. Translate that same-size figure approximately 253px to the right with no vertical shift or change in scale. The guide's common baseline and equal-size envelopes show the intended relationship. Do not expand her to fill a larger subject area, lengthen her legs or widen her staff. Keep the slate masonry and slab seams at the same camera scale.\n\nBegin with Mira left and one warm projectile near x=196,y=159, as in image 1. The guide's dashed line conveys the projectile's horizontal path: keep its head centered at y=159, moving steadily left with a short rightward trail, without a vertical jump or impact. In the first few frames let the existing small cold cue brighten briefly, remove the whole left Mira for one frame, then reveal one complete Mira at the empty right landing, unchanged in scale and with boots on the same baseline. The projectile must cross her old position only after she has left. Never show two Miras, a ghost, detached staff, walking/sliding transfer, shield, portal, new caster or damage effect. Settle the single right-hand Mira while the projectile continues toward the left edge. No scene cut, zoom, captions, new props or internal reset. Candidate fiction assumes a learned Teleport; it adds no gameplay rule or accepted canon. Return one native GIF: twelve 160ms frames, 480x336.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "gif",
+    "size": "480x336",
+    "frame_count": 12,
+    "frame_duration_ms": 160
+  },
+  "automatic_retries": 0
+}

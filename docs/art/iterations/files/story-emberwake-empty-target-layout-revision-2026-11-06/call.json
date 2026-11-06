@@ -1,0 +1,23 @@
+{
+  "grant": "story-emberwake-revision-15",
+  "reserved_usd": 0.25,
+  "status": "prepared-not-dispatched",
+  "allowed_calls": 1,
+  "automatic_retries": 0,
+  "endpoint": "https://api.openai.com/v1/images/edits",
+  "client_trace_id": "story-emberwake-revision-15-b719de1f-6194-454c-a9da-8203a0cbfc52",
+  "multipart_boundary": "emberwake-ddacbe6e-e754-4d68-a372-d806c7080f1c",
+  "request_file": "docs/art/iterations/files/story-emberwake-empty-target-layout-revision-2026-11-06/request.json",
+  "request_sha256": "e125f2fbb6f67a4fb473ce3bedc1b6ae995027b6f4211697770f04020da96bbf",
+  "prepared_at": "2026-11-06T21:35:03.937250+00:00",
+  "historical_checkpoint": "0c2b7f2c30c8d28168e5547452f50d5f514a14e6",
+  "planning_bound_usd": 0.25,
+  "endpoint_enforced_charge_cap": false,
+  "exposure_at_grant": {
+    "successful_estimates_usd": 6.94544,
+    "unknown_holds_usd": 28,
+    "this_grant_usd": 0.25,
+    "inclusive_usd": 35.19544,
+    "other_active_grants": 0
+  }
+}
