@@ -1,7 +1,7 @@
 {
   "self_excluded": true,
   "file_count_excluding_manifest": 136,
-  "bytes_excluding_manifest": 3839250,
+  "bytes_excluding_manifest": 3839454,
   "files": [
     {
       "path": "README.md",
@@ -300,8 +300,8 @@
     },
     {
       "path": "logs/browser-selected.log",
-      "bytes": 47379,
-      "sha256": "fb9251406317448acb219947f9ab2e6cb81cd3ed0eebdd3264bb11c500c23a4b"
+      "bytes": 47358,
+      "sha256": "df347a231550af82452c0a699e557456da88140ef1a421a7e63270ec983d2b0e"
     },
     {
       "path": "logs/format-maintenance-final.log",
@@ -315,8 +315,8 @@
     },
     {
       "path": "logs/maintenance.log",
-      "bytes": 51804,
-      "sha256": "b0d85e1c88d3c91256a597a80f33dbd84b83270ac9ac08dabc65be7c6afde31f"
+      "bytes": 51803,
+      "sha256": "0e26db10e62e872a59b9392632a0699d47cf76cf3965a3b666f04f70cb6dabe9"
     },
     {
       "path": "logs/shader.log",
@@ -680,8 +680,8 @@
     },
     {
       "path": "validation.json",
-      "bytes": 4577,
-      "sha256": "c62e2791ad24a8728221ff06a8700101294a6656516fd49c33b095d167e015ca"
+      "bytes": 4803,
+      "sha256": "b2ea43cca55739a3c57dfc82a0128e78883c4d358db193624de7c08581d74163"
     }
   ]
 }

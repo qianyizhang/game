@@ -212,38 +212,38 @@ Running 195 tests using 1 worker
   -  153 [ci-games] › tests/browser/scrapyard.spec.ts:128:1 › bounded 100 / 300 / 500 enemy performance experiment
   ✓  154 [ci-games] › tests/browser/shell.spec.ts:4:1 › a loading game keeps navigation available without replacing another game save (1.4s)
 [WebServer] 3:05:13 PM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/src/games/battlegrounds/ui/BattlegroundsApp.tsx?t=1793976785057
-[WebServer] 
+[WebServer]
 [WebServer] The above error occurred in one of your React components.
-[WebServer] 
+[WebServer]
 [WebServer] React will try to recreate this component tree from scratch using the error boundary you provided, ContentBoundary.
-[WebServer] 
+[WebServer]
 [WebServer] 3:05:13 PM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/src/games/battlegrounds/ui/BattlegroundsApp.tsx?t=1793976785057
-[WebServer] 
+[WebServer]
 [WebServer] The above error occurred in one of your React components.
-[WebServer] 
+[WebServer]
 [WebServer] React will try to recreate this component tree from scratch using the error boundary you provided, ContentBoundary.
-[WebServer] 
+[WebServer]
   ✓  155 [ci-games] › tests/browser/shell.spec.ts:28:1 › a failed game module keeps keyboard navigation to the saved run and can recover on reload (1.8s)
 [WebServer] 3:05:15 PM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/src/app/Challenges.tsx
-[WebServer] 
+[WebServer]
 [WebServer] The above error occurred in one of your React components.
-[WebServer] 
+[WebServer]
 [WebServer] React will try to recreate this component tree from scratch using the error boundary you provided, ContentBoundary.
-[WebServer] 
+[WebServer]
   ✓  156 [ci-games] › tests/browser/shell.spec.ts:79:3 › navigation leaves a failed Challenges screen and stays in the chosen game after reload (2.2s)
 [WebServer] 3:05:17 PM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/src/art3d/gallery/Studio.tsx
-[WebServer] 
+[WebServer]
 [WebServer] The above error occurred in one of your React components.
-[WebServer] 
+[WebServer]
 [WebServer] React will try to recreate this component tree from scratch using the error boundary you provided, ContentBoundary.
-[WebServer] 
+[WebServer]
   ✓  157 [ci-games] › tests/browser/shell.spec.ts:79:3 › navigation leaves a failed gallery screen and stays in the chosen game after reload (2.2s)
 [WebServer] 3:05:19 PM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/packages/dcc-workbench/src/Workbench.tsx
-[WebServer] 
+[WebServer]
 [WebServer] The above error occurred in one of your React components.
-[WebServer] 
+[WebServer]
 [WebServer] React will try to recreate this component tree from scratch using the error boundary you provided, ContentBoundary.
-[WebServer] 
+[WebServer]
   ✓  158 [ci-games] › tests/browser/shell.spec.ts:79:3 › navigation leaves a failed workbench screen and stays in the chosen game after reload (2.2s)
   ✓  159 [ci-games] › tests/browser/shell.spec.ts:99:1 › a loading challenge can return to the same table with keyboard focus restored (1.7s)
   ✓  160 [ci-games] › tests/browser/shell.spec.ts:126:1 › all game navigation identifies the current view and new-run dialogs have names (3.2s)
@@ -296,7 +296,7 @@ Running 195 tests using 1 worker
   ✓  195 [ci-assets] › tests/browser/art3d.spec.ts:58:3 › Vajra renders, exports real meshes, and works on phone without changing saves @asset-delivery @asset-smoke (21.2s)
 
 
-  1) [ci-games] › tests/browser/native-assets.spec.ts:10:1 › review scope selects gallery defaults and native workbench downloads stay isolated 
+  1) [ci-games] › tests/browser/native-assets.spec.ts:10:1 › review scope selects gallery defaults and native workbench downloads stay isolated
 
     Test timeout of 30000ms exceeded.
 
@@ -328,7 +328,7 @@ Running 195 tests using 1 worker
 
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
-  2) [ci-games] › tests/browser/night-passage-agent.spec.ts:50:1 › spectator plays, pauses and seeks a recorded run without replacing the player save 
+  2) [ci-games] › tests/browser/night-passage-agent.spec.ts:50:1 › spectator plays, pauses and seeks a recorded run without replacing the player save
 
     Test timeout of 30000ms exceeded.
 
@@ -362,7 +362,7 @@ Running 195 tests using 1 worker
 
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
-  3) [ci-games] › tests/browser/night-passage.spec.ts:236:3 › cast charges freeze, restore and replenish in scene (night-passage-4) 
+  3) [ci-games] › tests/browser/night-passage.spec.ts:236:3 › cast charges freeze, restore and replenish in scene (night-passage-4)
 
     Test timeout of 30000ms exceeded.
 
@@ -397,8 +397,8 @@ Running 195 tests using 1 worker
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
   3 failed
-    [ci-games] › tests/browser/native-assets.spec.ts:10:1 › review scope selects gallery defaults and native workbench downloads stay isolated 
-    [ci-games] › tests/browser/night-passage-agent.spec.ts:50:1 › spectator plays, pauses and seeks a recorded run without replacing the player save 
-    [ci-games] › tests/browser/night-passage.spec.ts:236:3 › cast charges freeze, restore and replenish in scene (night-passage-4) 
+    [ci-games] › tests/browser/native-assets.spec.ts:10:1 › review scope selects gallery defaults and native workbench downloads stay isolated
+    [ci-games] › tests/browser/night-passage-agent.spec.ts:50:1 › spectator plays, pauses and seeks a recorded run without replacing the player save
+    [ci-games] › tests/browser/night-passage.spec.ts:236:3 › cast charges freeze, restore and replenish in scene (night-passage-4)
   4 skipped
   188 passed (19.2m)
