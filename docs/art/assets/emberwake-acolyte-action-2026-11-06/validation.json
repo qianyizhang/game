@@ -1,0 +1,110 @@
+{
+  "cells": [
+    {
+      "pose": "preparation",
+      "alphaBounds": [33, 26, 272, 327],
+      "nativeFootprint": [27.2, 32.7],
+      "edgePixels": 0,
+      "extractionChannelDifferences": 0,
+      "maxDelta": 0
+    },
+    {
+      "pose": "release",
+      "alphaBounds": [33, 26, 311, 327],
+      "nativeFootprint": [31.1, 32.7],
+      "edgePixels": 0,
+      "extractionChannelDifferences": 7,
+      "maxDelta": 1
+    },
+    {
+      "pose": "follow-through",
+      "alphaBounds": [33, 30, 274, 323],
+      "nativeFootprint": [27.4, 32.3],
+      "edgePixels": 0,
+      "extractionChannelDifferences": 0,
+      "maxDelta": 0
+    },
+    {
+      "pose": "recovery",
+      "alphaBounds": [33, 24, 268, 329],
+      "nativeFootprint": [26.8, 32.9],
+      "edgePixels": 0,
+      "extractionChannelDifferences": 7,
+      "maxDelta": 1
+    }
+  ],
+  "pairs": [
+    {
+      "poses": ["preparation", "release"],
+      "silhouetteIoU": 0.9381188118811881
+    },
+    {
+      "poses": ["preparation", "follow-through"],
+      "silhouetteIoU": 0.9523202349213709
+    },
+    {
+      "poses": ["preparation", "recovery"],
+      "silhouetteIoU": 0.9652109124254928
+    },
+    {
+      "poses": ["release", "follow-through"],
+      "silhouetteIoU": 0.9319005116331179
+    },
+    {
+      "poses": ["release", "recovery"],
+      "silhouetteIoU": 0.9445480909544304
+    },
+    {
+      "poses": ["follow-through", "recovery"],
+      "silhouetteIoU": 0.933822833677119
+    }
+  ],
+  "source_safety": {
+    "svg_documents_validated": 6,
+    "embedded_raster_or_external_resources": false,
+    "no_manual_geometry_correction": true,
+    "source_groups_deep_copied_without_inner_changes": true
+  },
+  "extraction_exception": "Release and recovery each differ from sheet raster by seven RGBA channels at max1/255. Local geometry is unchanged; viewport rasterization antialiasing exception, not claimed pixel equality. Preparation and follow-through are pixel-identical.",
+  "preview": {
+    "viewport_phone_px": 390,
+    "overflow": false,
+    "decoded_images": 15,
+    "page_errors": [],
+    "browser": "154.0.8037.57"
+  },
+  "comparison_png": {
+    "before_bytes": 109276,
+    "retained_bytes": 105768,
+    "decoded_scanline_bytes_identical": true,
+    "non_IDAT_chunks_unchanged": true,
+    "sha256": "b3a85b017649411348d3a8f3a55c86063dcba9887611a75340a744d4fcb01167"
+  },
+  "visual_review": {
+    "verdict": "Useful source-only four-pose concept set; no runtime acceptance.",
+    "continuity": "Hood/mantle, palette, right-hand crook/collar, left-hand gesture and boot/staff anchors retained; connected torso and sleeve joins. Text-guided continuity only.",
+    "native": "Release and follow-through clearest. Preparation versus recovery remains subtle at32px; higher/lower hand and sleeve contour distinguish them. Face/stitches are not relied on at native scale.",
+    "limits": "No timing, playback, interpolation or reduced-motion integration tested. Modest torso motion; fixed feet/staff. Future preparation implies no added combat delay."
+  },
+  "gallery": {
+    "incomingRevisions": 5,
+    "allSourcesDecoded": true,
+    "allRequestAndParentLinksInspected": true,
+    "allNonselectable": true,
+    "pageErrors": [],
+    "browser": "154.0.8037.57"
+  },
+  "history_validation": {
+    "isolated_import_revisions": 13,
+    "new_revisions": 5,
+    "reference_ancestor_revisions": 8,
+    "assets": 0,
+    "selections": 0,
+    "shared_baseline_verify": {
+      "assets": 709,
+      "revisions": 92,
+      "selections": 0,
+      "registeredSources": 709
+    }
+  }
+}

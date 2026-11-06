@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><title>Cinder acolyte action concepts</title
+  ><style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #20262f;
+      color: #f1eeeb;
+      font:
+        15px/1.5 system-ui,
+        sans-serif;
+    }
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 24px;
+    }
+    h1 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+    p {
+      max-width: 980px;
+      color: #c8c9cc;
+    }
+    section {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+    article {
+      background: #2c333f;
+      border: 1px solid #62616a;
+      border-radius: 8px;
+      padding: 12px;
+      min-width: 0;
+    }
+    h2 {
+      font-size: 16px;
+      margin: 0 0 10px;
+    }
+    .large {
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .large img {
+      width: 153.6px;
+      height: 153.6px;
+    }
+    .samples {
+      display: flex;
+      justify-content: space-around;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .samples > div {
+      text-align: center;
+    }
+    .tile {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: 32px 32px;
+      background-image:
+        linear-gradient(0deg, transparent 31px, #ffffff12 31px),
+        linear-gradient(90deg, transparent 31px, #ffffff12 31px);
+    }
+    .inferno {
+      background-color: #493432;
+    }
+    .crypt {
+      background-color: #343b48;
+    }
+    .tile img {
+      width: 38.4px;
+      height: 38.4px;
+    }
+    .tile img.small {
+      width: 32px;
+      height: 32px;
+    }
+    span {
+      font-size: 10px;
+      white-space: nowrap;
+      color: #c6c6cb;
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #c6c6cb;
+    }
+    @media (max-width: 700px) {
+      main {
+        padding: 16px;
+      }
+      h1 {
+        font-size: 23px;
+      }
+      section {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      article:first-child {
+        grid-column: 1/-1;
+      }
+      .large {
+        height: 160px;
+      }
+      .samples {
+        gap: 4px;
+      }
+      h2 {
+        font-size: 15px;
+      }
+    }
+  </style>
+  <main>
+    <h1>Cinder acolyte · four action concepts</h1>
+    <p>
+      Fixed SE quarter view, same hood, staff and robe family. Enlarged views above actual-scale
+      samples. Native static SVG source candidates for future presentation; no frame timing or
+      runtime adoption.
+    </p>
+    <section>
+      <article>
+        <h2>Reference</h2>
+        <div class="large"><img alt="Reference enlarged" src="reference/acolyte-se.svg" /></div>
+        <div class="samples">
+          <div>
+            <div class="tile inferno">
+              <img alt="Reference 38.4px" src="reference/acolyte-se.svg" />
+            </div>
+            <span>38.4 px · inferno</span>
+          </div>
+          <div>
+            <div class="tile crypt">
+              <img alt="Reference 32px" class="small" src="reference/acolyte-se.svg" />
+            </div>
+            <span>32 px · crypt</span>
+          </div>
+        </div>
+      </article>
+      <article>
+        <h2>Preparation</h2>
+        <div class="large"><img alt="Preparation enlarged" src="cultist-se-preparation.svg" /></div>
+        <div class="samples">
+          <div>
+            <div class="tile inferno">
+              <img alt="Preparation 38.4px" src="cultist-se-preparation.svg" />
+            </div>
+            <span>38.4 px · inferno</span>
+          </div>
+          <div>
+            <div class="tile crypt">
+              <img alt="Preparation 32px" class="small" src="cultist-se-preparation.svg" />
+            </div>
+            <span>32 px · crypt</span>
+          </div>
+        </div>
+      </article>
+      <article>
+        <h2>Release</h2>
+        <div class="large"><img alt="Release enlarged" src="cultist-se-release.svg" /></div>
+        <div class="samples">
+          <div>
+            <div class="tile inferno">
+              <img alt="Release 38.4px" src="cultist-se-release.svg" />
+            </div>
+            <span>38.4 px · inferno</span>
+          </div>
+          <div>
+            <div class="tile crypt">
+              <img alt="Release 32px" class="small" src="cultist-se-release.svg" />
+            </div>
+            <span>32 px · crypt</span>
+          </div>
+        </div>
+      </article>
+      <article>
+        <h2>Follow-through</h2>
+        <div class="large">
+          <img alt="Follow-through enlarged" src="cultist-se-follow-through.svg" />
+        </div>
+        <div class="samples">
+          <div>
+            <div class="tile inferno">
+              <img alt="Follow-through 38.4px" src="cultist-se-follow-through.svg" />
+            </div>
+            <span>38.4 px · inferno</span>
+          </div>
+          <div>
+            <div class="tile crypt">
+              <img alt="Follow-through 32px" class="small" src="cultist-se-follow-through.svg" />
+            </div>
+            <span>32 px · crypt</span>
+          </div>
+        </div>
+      </article>
+      <article>
+        <h2>Recovery</h2>
+        <div class="large"><img alt="Recovery enlarged" src="cultist-se-recovery.svg" /></div>
+        <div class="samples">
+          <div>
+            <div class="tile inferno">
+              <img alt="Recovery 38.4px" src="cultist-se-recovery.svg" />
+            </div>
+            <span>38.4 px · inferno</span>
+          </div>
+          <div>
+            <div class="tile crypt">
+              <img alt="Recovery 32px" class="small" src="cultist-se-recovery.svg" />
+            </div>
+            <span>32 px · crypt</span>
+          </div>
+        </div>
+      </article>
+    </section>
+    <footer>
+      Reference: preserved repaired directional SE. Generation continuity uses its SVG as text, with
+      no image conditioning. Preparation is a visual concept only: the current ranged attack
+      releases immediately. No projectile, added cast delay or persistent VFX is introduced.
+    </footer>
+  </main>
+</html>
