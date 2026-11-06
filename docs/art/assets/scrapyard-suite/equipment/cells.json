@@ -1,0 +1,44 @@
+[
+  {
+    "id": "rivet-gun",
+    "width": 38,
+    "height": 38,
+    "index": 0,
+    "cell": 384
+  },
+  {
+    "id": "scattergun",
+    "width": 38,
+    "height": 38,
+    "index": 1,
+    "cell": 384
+  },
+  {
+    "id": "scrap-cannon",
+    "width": 38,
+    "height": 38,
+    "index": 2,
+    "cell": 384
+  },
+  {
+    "id": "hotter-rounds",
+    "width": 24,
+    "height": 24,
+    "index": 3,
+    "cell": 384
+  },
+  {
+    "id": "better-boots",
+    "width": 24,
+    "height": 24,
+    "index": 4,
+    "cell": 384
+  },
+  {
+    "id": "field-repair",
+    "width": 24,
+    "height": 24,
+    "index": 5,
+    "cell": 384
+  }
+]

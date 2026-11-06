@@ -4,6 +4,7 @@ import { createGame } from '../../../../src/games/night-passage/domain/game';
 import { ARENA as NIGHT_ARENA } from '../../../../src/games/night-passage/domain/content';
 import { drawArena } from '../../../../src/games/night-passage/ui/presentation/draw';
 import { World } from '../../../../src/games/scrapyard/domain/world';
+import { ENEMIES as SCRAP_ENEMIES } from '../../../../src/games/scrapyard/domain/content';
 import { createRenderer } from '../../../../src/games/scrapyard/ui/renderer';
 
 /** Fixed presentation specimens. No sessions, saves, clocks or animation loops. */
@@ -30,7 +31,7 @@ for (const canvas of document.querySelectorAll<HTMLCanvasElement>('canvas[data-s
         x: 250 + enemyKind * 140,
         y: 250,
         hp: 10,
-        radius: 14,
+        radius: SCRAP_ENEMIES[enemyKind].radius,
         aim: -Math.PI / 2,
         cooldown: 0,
       }));

@@ -1,0 +1,31 @@
+{
+  "created": 1793962912,
+  "background": "transparent",
+  "output_format": "svg",
+  "quality": "medium",
+  "safety_identifier": null,
+  "size": "1152x768",
+  "svg_usage": {
+    "input_tokens": 1917,
+    "model": "gpt-6.1-terra",
+    "output_tokens": 4251,
+    "reasoning_tokens": 51,
+    "total_tokens": 6168
+  },
+  "usage": {
+    "input_tokens": 639,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 639
+    },
+    "output_tokens": 915,
+    "output_tokens_details": {
+      "image_tokens": 915,
+      "text_tokens": 0
+    },
+    "total_tokens": 1554
+  },
+  "data": [{}],
+  "request_id": "req_4383708dc8b745a6bbb4d75401923228",
+  "elapsed_seconds": 82.41
+}

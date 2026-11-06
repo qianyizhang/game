@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" width="384" height="384"><g id="field-repair" stroke="#142622" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M72 115 L233 115 L248 128 L248 262 L236 274 L72 274 L62 264 L62 128 Z" fill="#a5b4a2" />
+    <path d="M78 151 L110 123 L143 124 L126 136 L117 149 L110 144 L91 164 Z M174 258 L197 231 L207 237 L222 218 L215 249 L205 261 Z" fill="#e9dbb7" stroke="none" />
+    <circle cx="82" cy="136" r="7" fill="#142622" />
+    <circle cx="82" cy="250" r="7" fill="#142622" />
+    <circle cx="226" cy="251" r="7" fill="#142622" />
+    <path d="M192 112 Q183 83 197 57 Q211 32 244 31 Q254 31 263 35 L231 70 L232 91 L254 104 L286 70 Q297 91 292 115 Q287 140 266 150 Q252 156 235 154 Q221 153 211 165 L111 285 Q96 302 78 295 Q60 289 58 274 Q56 262 68 249 L174 133 Q190 118 192 112 Z" fill="#a5b4a2" />
+    <path d="M193 112 Q183 80 199 57 Q215 35 243 34 L263 35 L246 52 L231 55 L220 70 L211 67 L202 88 L201 111 L207 123 L194 143 L188 140 L172 157 L157 169 L177 140 Q190 124 193 112 Z" fill="#e9dbb7" stroke="none" />
+    <path d="M91 223 L120 190 Q141 198 157 217 L127 252 Q108 232 91 223 Z" fill="#b97c5e" />
+    <path d="M107 205 L141 233 M94 219 L128 247" fill="none" />
+    <circle cx="83" cy="270" r="10" fill="#30483e" />
+  </g>
+</svg>

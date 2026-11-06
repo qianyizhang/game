@@ -1,0 +1,38 @@
+[
+  {
+    "id": "floor-tile",
+    "width": 40,
+    "height": 40,
+    "index": 0,
+    "cell": 384,
+    "source": "sheet.svg",
+    "removed_grid_transform": "translate(0 0)",
+    "bytes": 499,
+    "paths": 2,
+    "sha256": "2f9d1ebab4aafb50ed9d38ad870c9075b54fdd079f913708011cda2a8aedc277"
+  },
+  {
+    "id": "boundary-strip",
+    "width": 40,
+    "height": 10,
+    "index": 1,
+    "cell": 384,
+    "source": "sheet.svg",
+    "removed_grid_transform": "translate(384 0)",
+    "bytes": 231,
+    "paths": 0,
+    "sha256": "6ad690bcea5c05bf7bb4de21d6d3819e5af3d26ce0213209bc044b94302a4e82"
+  },
+  {
+    "id": "corner-join",
+    "width": 10,
+    "height": 10,
+    "index": 2,
+    "cell": 384,
+    "source": "sheet.svg",
+    "removed_grid_transform": "translate(768 0)",
+    "bytes": 231,
+    "paths": 1,
+    "sha256": "2c44b9de0044b32e08209fd19734a922ff5564f94355f621ae401632de27b983"
+  }
+]

@@ -1,0 +1,242 @@
+{
+  "cap_usd": 5,
+  "pricing_date": "2026-11-06",
+  "estimated_usd": 0.174851,
+  "reserved_usd": 0,
+  "remaining_usd": 4.807664,
+  "calls": [
+    {
+      "family": "actors",
+      "status": "rejected_invalid_dimensions",
+      "reservation_usd": 4.2,
+      "model": "gpt-image-2.6-sunburst",
+      "svg_model": "gpt-6.1-terra",
+      "purpose": "actors packed source candidates",
+      "settings": {
+        "model": "gpt-image-2.6-sunburst",
+        "n": 1,
+        "quality": "medium",
+        "complexity": "high",
+        "output_format": "svg",
+        "size": "960x640",
+        "svg": {
+          "model": "gpt-6.1-terra",
+          "reasoning": {
+            "effort": "low"
+          }
+        }
+      },
+      "started_utc": "2026-11-06T11:00:42Z",
+      "http_status": 400,
+      "elapsed_seconds": 1.05,
+      "estimated_usd": 0,
+      "billing_status": "HTTP400 validation rejection; no image or usage returned; no successful generation",
+      "cause": "614400 pixels is below documented 655360 minimum; corrected to884736 pixels",
+      "reservation_released_reason": "Known synchronous validation rejection, not a timeout or uncertain generation",
+      "request_id": null,
+      "request_id_note": "Not retained from validation response; no artwork or usage returned."
+    },
+    {
+      "family": "actors",
+      "status": "completed",
+      "reservation_usd": 4.2,
+      "model": "gpt-image-2.6-sunburst",
+      "svg_model": "gpt-6.1-terra",
+      "purpose": "actors packed source candidates",
+      "settings": {
+        "model": "gpt-image-2.6-sunburst",
+        "n": 1,
+        "quality": "medium",
+        "complexity": "high",
+        "output_format": "svg",
+        "size": "1152x768",
+        "svg": {
+          "model": "gpt-6.1-terra",
+          "reasoning": {
+            "effort": "low"
+          }
+        }
+      },
+      "started_utc": "2026-11-06T11:01:17Z",
+      "request_id": "req_4383708dc8b745a6bbb4d75401923228",
+      "elapsed_seconds": 82.41,
+      "usage": {
+        "input_tokens": 639,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 639
+        },
+        "output_tokens": 915,
+        "output_tokens_details": {
+          "image_tokens": 915,
+          "text_tokens": 0
+        },
+        "total_tokens": 1554
+      },
+      "svg_usage": {
+        "input_tokens": 1917,
+        "model": "gpt-6.1-terra",
+        "output_tokens": 4251,
+        "reasoning_tokens": 51,
+        "total_tokens": 6168
+      },
+      "estimated_usd": 0.053817,
+      "billing_status": "usage-derived estimate; not a billing statement",
+      "bytes": 8688
+    },
+    {
+      "family": "equipment",
+      "status": "completed",
+      "reservation_usd": 4.2,
+      "model": "gpt-image-2.6-sunburst",
+      "svg_model": "gpt-6.1-terra",
+      "purpose": "equipment packed source candidates",
+      "settings": {
+        "model": "gpt-image-2.6-sunburst",
+        "n": 1,
+        "quality": "medium",
+        "complexity": "high",
+        "output_format": "svg",
+        "size": "1152x768",
+        "svg": {
+          "model": "gpt-6.1-terra",
+          "reasoning": {
+            "effort": "low"
+          }
+        }
+      },
+      "started_utc": "2026-11-06T11:03:09Z",
+      "request_id": "req_917d0b71c3034b3ebc41201eac942135",
+      "elapsed_seconds": 66.53,
+      "usage": {
+        "input_tokens": 591,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 591
+        },
+        "output_tokens": 915,
+        "output_tokens_details": {
+          "image_tokens": 915,
+          "text_tokens": 0
+        },
+        "total_tokens": 1506
+      },
+      "svg_usage": {
+        "input_tokens": 1869,
+        "model": "gpt-6.1-terra",
+        "output_tokens": 3234,
+        "reasoning_tokens": 50,
+        "total_tokens": 5103
+      },
+      "estimated_usd": 0.048444,
+      "billing_status": "usage-derived estimate; not a billing statement",
+      "bytes": 7381
+    },
+    {
+      "family": "combat",
+      "status": "completed",
+      "reservation_usd": 4.2,
+      "model": "gpt-image-2.6-sunburst",
+      "svg_model": "gpt-6.1-terra",
+      "purpose": "combat packed source candidates",
+      "settings": {
+        "model": "gpt-image-2.6-sunburst",
+        "n": 1,
+        "quality": "medium",
+        "complexity": "high",
+        "output_format": "svg",
+        "size": "1152x768",
+        "svg": {
+          "model": "gpt-6.1-terra",
+          "reasoning": {
+            "effort": "low"
+          }
+        }
+      },
+      "started_utc": "2026-11-06T11:04:41Z",
+      "request_id": "req_9db03267103d433daf5ebe31f390fe34",
+      "elapsed_seconds": 40.85,
+      "usage": {
+        "input_tokens": 641,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 641
+        },
+        "output_tokens": 915,
+        "output_tokens_details": {
+          "image_tokens": 915,
+          "text_tokens": 0
+        },
+        "total_tokens": 1556
+      },
+      "svg_usage": {
+        "input_tokens": 1919,
+        "model": "gpt-6.1-terra",
+        "output_tokens": 1081,
+        "reasoning_tokens": 414,
+        "total_tokens": 3000
+      },
+      "estimated_usd": 0.037979,
+      "billing_status": "usage-derived estimate; not a billing statement",
+      "bytes": 1504
+    },
+    {
+      "family": "arena",
+      "status": "completed",
+      "reservation_usd": 4.2,
+      "model": "gpt-image-2.6-sunburst",
+      "svg_model": "gpt-6.1-terra",
+      "purpose": "arena packed source candidates",
+      "settings": {
+        "model": "gpt-image-2.6-sunburst",
+        "n": 1,
+        "quality": "medium",
+        "complexity": "high",
+        "output_format": "svg",
+        "size": "1152x768",
+        "svg": {
+          "model": "gpt-6.1-terra",
+          "reasoning": {
+            "effort": "low"
+          }
+        }
+      },
+      "started_utc": "2026-11-06T11:06:14Z",
+      "request_id": "req_046691c2bd20433784597550102e3929",
+      "elapsed_seconds": 35.1,
+      "usage": {
+        "input_tokens": 618,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 618
+        },
+        "output_tokens": 915,
+        "output_tokens_details": {
+          "image_tokens": 915,
+          "text_tokens": 0
+        },
+        "total_tokens": 1533
+      },
+      "svg_usage": {
+        "input_tokens": 1896,
+        "model": "gpt-6.1-terra",
+        "output_tokens": 435,
+        "reasoning_tokens": 94,
+        "total_tokens": 2331
+      },
+      "estimated_usd": 0.034611,
+      "billing_status": "usage-derived estimate; not a billing statement",
+      "bytes": 862
+    }
+  ],
+  "next_call_reservation_usd": 4.2,
+  "bound_basis": "Standard API, no Fast mode or caching requested. Author maximum 922000 input at long-context $2/M plus 128000 output at $7.5/M = $2.804; add 10% contingency. Image reserve 32768 output tokens at $30/M (far above medium sub-megapixel reference), at most 8000 UTF-8 prompt bytes at $5/M, plus 10% contingency. Combined less than $4.2. Exact actual usage required before releasing reservation; missing/uncertain usage retains full reservation and stops. No retries, redirects or SDK retry. All reservations sequential; no delegated spend.",
+  "sources": [
+    "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/reference/resources/images/methods/generate"
+  ],
+  "generation_status": "complete; no further calls authorized in this task",
+  "estimated_remaining_usd": 4.825149
+}

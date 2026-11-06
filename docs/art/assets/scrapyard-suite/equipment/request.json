@@ -1,0 +1,15 @@
+{
+  "model": "gpt-image-2.6-sunburst",
+  "prompt": "Create ONE native editable SVG contact sheet for Scrapyard, a compact top-down salvage-yard survival game. Static vector paths and simple shapes only. No raster images, fonts, visible text, scripts, animation, filters, gradients, external resources, use references or defs. Each cell must be a named top-level group using LOCAL coordinates with a single grid translate. No background rectangles for sprites; genuinely transparent outside silhouettes. No borders, labels, cast shadows or debris outside the named subject. Each sprite centered on its exact cell center, safe margins, with all its paths INSIDE its group. Economical geometry, fewer than 14 filled shapes per subject. Do not use strokes thinner than 5 units. Broad worn steel and cloth planes, strong asymmetrical silhouettes, three value groups, upper-left light. Dark forest ink #142622; shadow #30483e; steel #a5b4a2; cream #e9dbb7; restrained copper #b97c5e. Favor readable 20px contours over detailed engraving. No photorealism, plastic gloss, ornament or tiny clutter. All subjects are finished coherent siblings. THREE columns, TWO rows, 384x384 cells, no gutters; canvas/viewBox 1152x768. Row-major group IDs rivet-gun, scattergun, scrap-cannon, hotter-rounds, better-boots, field-repair; translates (0 0),(384 0),(768 0),(0 384),(384 384),(768 384). All silhouettes centered 192,192 within x48..336 y48..336. All symbols need to read at 38px and 24px. Top row equipment, bottom row upgrades. Rivet gun: long narrow SINGLE steel barrel rising diagonally right, compact worn olive receiver, short copper grip; recognizable tool. Scattergun: SHORT SPLAYED THREE-BARREL cluster and squat receiver, broader than rivet gun. Scrap cannon: WIDE heavy chamber with huge dark open bore and braced steel collar, strongest round mass. Hotter rounds: ONE heated copper cartridge, cream pointed tip, short coral heat zigzag fitted beside it, no explosion. Better boots: ONE reinforced leather work boot with tall cuff, angled toe and thick clear cream sole, olive cloth/copper fittings. Field repair: fitted WRENCH overlapping a small rectangular patch plate; open wrench jaw unambiguous, no medical cross. Reuse steel/cream broad surfaces and copper grips consistently; no weapon tiers, circles behind icons, generic gears or stars.",
+  "n": 1,
+  "quality": "medium",
+  "complexity": "high",
+  "output_format": "svg",
+  "size": "1152x768",
+  "svg": {
+    "model": "gpt-6.1-terra",
+    "reasoning": {
+      "effort": "low"
+    }
+  }
+}
