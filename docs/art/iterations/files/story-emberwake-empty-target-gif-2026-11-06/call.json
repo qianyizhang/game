@@ -1,0 +1,32 @@
+{
+  "grant": "story-emberwake-gif-13",
+  "reserved_usd": 0.25,
+  "status": "prepared-not-dispatched",
+  "allowed_calls": 1,
+  "automatic_retries": 0,
+  "endpoint": "https://api.openai.com/v1/images/edits",
+  "method": "POST multipart/form-data",
+  "client_trace_id": "story-emberwake-gif-13-bff829da-ea24-4299-8276-f7bcc3ef5b7d",
+  "multipart_boundary": "emberwake-bfc69995-4f46-4b61-9919-79c59e70b740",
+  "request_fields_source": "docs/art/iterations/files/story-emberwake-too-close-2026-11-06/second-gif-draft.json",
+  "request_fields_pointer": "/fields",
+  "request_source_commit": "2f4f7a8788b9787c17f7d2e89e1d6ece10ed5549",
+  "request_source_sha256": "7c4e8e95a1b832ec999ad915d6024306203f76f7f852e564211a516a5b0751ba",
+  "request_fields_sha256": "18df350c1bab64b73baf81fd6d6d7681075b45cdc4e3003324a7d2477925fc92",
+  "reference": {
+    "field": "image[]",
+    "file": "docs/art/iterations/files/story-emberwake-too-close-2026-11-06/too-close-end-reference.png",
+    "mime_type": "image/png",
+    "sha256": "9c41ea5a15ed9814a0395604c68298c0eeb41e3d76d5ebb90f558c30f45f0fa4"
+  },
+  "prepared_at": "2026-11-06T21:14:23.243593+00:00",
+  "planning_bound_usd": 0.25,
+  "endpoint_enforced_charge_cap": false,
+  "shared_exposure_at_grant": {
+    "successful_estimates_usd": 6.83234,
+    "unknown_holds_usd": 28,
+    "this_grant_usd": 0.25,
+    "inclusive_usd": 35.08234,
+    "uncommitted_usd": 4.91766
+  }
+}
