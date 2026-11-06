@@ -4,5 +4,12 @@
     "sha256": "3d54a83e42c02679ace8102460830fbd888e3f9b578cf49c486f2346c50498fc",
     "parent": "reference.svg",
     "recipe": "Unmodified whole SVG rasterized by Chromium154 at480x336,DPR1; exact sent PNG. See validation.json for renderer/safety review."
+  },
+  "watch-end": {
+    "file": "references/chapter-1-last.png",
+    "sha256": "66f33282a4f8532b16661ca5e80e5595b6c276c9194f8bb86bf534831c7b8342",
+    "parent": "chapter-1.gif",
+    "frame_index": 15,
+    "recipe": "ImageMagick coalesce,index15,full480x336 PNG;decodedRGBA exactly matches original composed frame. This exact PNG is sent."
   }
 }

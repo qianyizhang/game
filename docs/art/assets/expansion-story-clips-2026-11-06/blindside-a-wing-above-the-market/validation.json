@@ -3,9 +3,14 @@
     "technical": "Production validateSvg passed;self-contained1280x896 native SVG,25leafshapes,7groups;Chromium154 renders at1280x896,480x336,160x112 without console errors.",
     "visual": "Reviewed against live Nightjar native/compact source:forest-ink body,coral folded wing,ochre cheek/feet,pale eye,attached tapering tail retained. Two supported feet on rail;head/neck/breast connected. Small subject but silhouette and coral identity readable at160x112. Wide right/up flight room.",
     "limits": [
-      "Decorative crescent intentionally observed touching top edge;no bird crop in pilot.",
+      "Moon fully visible:ochre crescent x408-450,y32-81 at480x336. Earlier visual top-edge concern was a misread and corrected before second GIF dispatch.",
       "New rail/card/watch/departure are candidate fiction;face-down card has no scoring assertion."
     ],
     "renderer": "Chromium154.0.8036.0,wholeSVG,DPR1,transparent PNG screenshot480x336;no retouch."
+  },
+  "watch": {
+    "technical": "16 unique480x336 frames,300ms each;original hash and aggregate decodedRGBA recorded. TEMP PNGs independently decode byte-equal to composed source frames. Chromium native initial playback checked.",
+    "visual": "Author reviewed all16 at480x336 and160x112;independent preflight reviewed all16 contacts plus00/07/15native. Two supported feet/claws throughout,one attached folded coral wing,connected head/body/tail,no crop or extra bird,card/rail/moon remain visually fixed. Skyward attention readable.",
+    "limits": "Head rises about30px and neck/breast elongates;visible posture/proportion drift,not just a tiny rotation or perfect scale lock. API redraw changes placement/print texture from SVG. Away uses actual taller endpoint only."
   }
 }
