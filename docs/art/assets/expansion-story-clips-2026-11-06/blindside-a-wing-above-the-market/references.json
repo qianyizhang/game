@@ -1,0 +1,8 @@
+{
+  "opening": {
+    "file": "reference.png",
+    "sha256": "3d54a83e42c02679ace8102460830fbd888e3f9b578cf49c486f2346c50498fc",
+    "parent": "reference.svg",
+    "recipe": "Unmodified whole SVG rasterized by Chromium154 at480x336,DPR1; exact sent PNG. See validation.json for renderer/safety review."
+  }
+}
