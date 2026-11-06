@@ -9,7 +9,7 @@ import { changedInputs } from './changes.ts';
 import { browserGroups, browserSeconds } from './sharding.ts';
 import { selectPlan } from './selection.ts';
 import { reusable, type Receipt, type Run } from './reuse.ts';
-import { verifyResults } from './commands.ts';
+import { requiredModules, verifyResults } from './commands.ts';
 const head = 'a'.repeat(40);
 const catalogue = {
   application: ['src/shared/replay.test.ts'],
@@ -160,6 +160,16 @@ void test('reuse requires exact trusted successful evidence and the main integri
   for (const integrity of ['failure', 'skipped', 'cancelled'] as const)
     assert.throws(() => verifyResults(plan, { ...results, integrity }, true));
   assert.throws(() => verifyResults(plan, results, false));
+  const freshResults = {
+    ...Object.fromEntries(
+      Object.entries(requiredModules(plan)).map(([name, required]) => [
+        name,
+        required ? 'success' : 'skipped',
+      ]),
+    ),
+    integrity: 'success',
+  } as Parameters<typeof verifyResults>[1];
+  assert.doesNotThrow(() => verifyResults(plan, freshResults, false));
 });
 
 void test('actual reuse CLI falls back on direct pushes and missing evidence without skipping checks', () => {
@@ -287,4 +297,22 @@ void test('PR planning uses the tested merge base and stops stale snapshots befo
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
+});
+
+void test('main scheduling confirms the integrity environment before skipping selected jobs', () => {
+  const workflow = readFileSync(
+    new URL('../../../.github/workflows/maintenance.yml', import.meta.url),
+    'utf8',
+  );
+  for (const name of ['core', 'application', 'assets', 'movies']) {
+    const block = workflow.split(`  ${name}:\n`)[1].split(/\n  [a-z]+:\n/)[0];
+    assert.match(block, /needs: \[plan, integrity\]/);
+    assert.match(block, /!cancelled\(\) && needs\.plan\.result == 'success'/);
+    assert.match(
+      block,
+      /needs\.plan\.outputs\.reused != 'true' \|\| needs\.integrity\.outputs\.reused != 'true'/,
+    );
+  }
+  assert.match(workflow, /CI_REUSED: \$\{\{ needs\.integrity\.outputs\.reused \"?\}\}/);
+  assert.match(workflow, /reused: \$\{\{ steps\.environment\.outputs\.matching \"?\}\}/);
 });

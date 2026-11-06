@@ -1,5 +1,9 @@
 name: Record validation environment
 description: Keep normal checks running across hosted image rollouts; prevent uncertain result reuse
+outputs:
+  matching:
+    description: Whether this runner matches the planned validation environment
+    value: ${{ steps.environment.outputs.matching }}
 runs:
   using: composite
   steps:

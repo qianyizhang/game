@@ -91,7 +91,7 @@ jobs:
           CI_FULL: ${{ inputs.full && '1' || '0' }}
           DOCS_FAST: ${{ steps.classify.outputs.fast }}
       - id: reuse
-        if: steps.select.outputs.documentation != 'true' && inputs.full != true
+        if: steps.select.outputs.core == 'true' && inputs.full != true
         run: node packages/workshop-tools/ci/reuse.ts check
         env:
           CI_PLAN: ${{ steps.select.outputs.plan }}
@@ -114,30 +114,42 @@ jobs:
           CI_BASE: ${{ needs.plan.outputs.base }}
 
   core:
-    needs: plan
-    if: needs.plan.outputs.core == 'true' && needs.plan.outputs.reused != 'true'
+    needs: [plan, integrity]
+    if: >-
+      ${{ !cancelled() && needs.plan.result == 'success' &&
+          needs.plan.outputs.core == 'true' &&
+          (needs.plan.outputs.reused != 'true' || needs.integrity.outputs.reused != 'true') }}
     uses: ./.github/workflows/check-core.yml
     with:
       plan: ${{ needs.plan.outputs.plan }}
 
   application:
-    needs: plan
-    if: needs.plan.outputs.application == 'true' && needs.plan.outputs.reused != 'true'
+    needs: [plan, integrity]
+    if: >-
+      ${{ !cancelled() && needs.plan.result == 'success' &&
+          needs.plan.outputs.application == 'true' &&
+          (needs.plan.outputs.reused != 'true' || needs.integrity.outputs.reused != 'true') }}
     uses: ./.github/workflows/check-application.yml
     with:
       plan: ${{ needs.plan.outputs.plan }}
       shards: ${{ needs.plan.outputs.unit_matrix }}
 
   assets:
-    needs: plan
-    if: needs.plan.outputs.assets == 'true' && needs.plan.outputs.reused != 'true'
+    needs: [plan, integrity]
+    if: >-
+      ${{ !cancelled() && needs.plan.result == 'success' &&
+          needs.plan.outputs.assets == 'true' &&
+          (needs.plan.outputs.reused != 'true' || needs.integrity.outputs.reused != 'true') }}
     uses: ./.github/workflows/asset-build.yml
     with:
       plan: ${{ needs.plan.outputs.plan }}
 
   movies:
-    needs: plan
-    if: needs.plan.outputs.movies == 'true' && needs.plan.outputs.reused != 'true'
+    needs: [plan, integrity]
+    if: >-
+      ${{ !cancelled() && needs.plan.result == 'success' &&
+          needs.plan.outputs.movies == 'true' &&
+          (needs.plan.outputs.reused != 'true' || needs.integrity.outputs.reused != 'true') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     env:
@@ -160,6 +172,8 @@ jobs:
   integrity:
     needs: plan
     if: needs.plan.outputs.reused == 'true'
+    outputs:
+      reused: ${{ steps.environment.outputs.matching }}
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     env:
@@ -176,6 +190,7 @@ jobs:
             package-lock.json
             .node-version
       - uses: ./.github/actions/environment
+        id: environment
       - run: npm ci
       - run: npm run format:maintenance && npm run assets:check
       - uses: ./.github/actions/browser
@@ -195,7 +210,7 @@ jobs:
       - run: node packages/workshop-tools/ci/gate.ts
         env:
           CI_PLAN: ${{ needs.plan.outputs.plan }}
-          CI_REUSED: ${{ needs.plan.outputs.reused }}
+          CI_REUSED: ${{ needs.integrity.outputs.reused }}
           CI_RESULTS: >-
             {"plan":"${{ needs.plan.result }}","documentation":"${{ needs.documentation.result }}","core":"${{ needs.core.result }}","application":"${{ needs.application.result }}","assets":"${{ needs.assets.result }}","movies":"${{ needs.movies.result }}","integrity":"${{ needs.integrity.result }}"}
       - run: node packages/workshop-tools/ci/reuse.ts receipt
