@@ -246,355 +246,97 @@ export interface BatchProposal {
   };
 }
 
-/** Proposed and retained batches. Generation agreement and artwork acceptance are separate. */
-export const WIP_BATCHES: BatchProposal[] = [
+const SCRAPYARD_BATCHES = [
   {
-    id: 'scrapyard-actors',
-    state: 'Generated \u00b7 awaiting review',
-    game: 'scrapyard',
+    family: 'actors',
     title: 'Five actor silhouettes',
     reason:
       'Replaces shared circular bodies with five distinct contours, preserving aimed state overlays.',
-    candidates: [],
-    reference:
-      'Worn steel, cloth and forest ink; three values, cream upper-left light and existing role accents.',
-    deliverables:
-      '5 extracted native SVG sources; editable local adaptation and matched native/phone review.',
-    requests: [
-      {
-        format: 'SVG',
-        plan: 'One Image 2.6 Sunburst native SVG sheet, 1152\u00d7768, named 384px cells for actors. Terra SVG author, low reasoning.',
-      },
-    ],
-    stop: 'Generation complete. No artwork rerolls or revisions used. The shared US$5 cap includes all four families; publication and user acceptance remain pending.',
-    acceptance: [
-      'Technical XML/resource validation and standalone decoding.',
-      'Review every source at actual logical and 390px phone scale.',
-      'Matched sparse and 100/300/500-enemy comparisons; preserve collision geometry and state-driven overlays.',
-      'Separate application/browser/performance evidence from author visual review.',
-    ],
-    record: 'docs/art/assets/scrapyard-suite/README.md',
-    study: {
-      summary:
-        'Locally integrated for review. Native source originals, prompts and usage are preserved; no published runtime change or user visual acceptance is implied.',
-      sheet: 'docs/art/assets/scrapyard-suite/actors/sheet.svg',
-      subjects: [
-        {
-          title: 'survivor',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/actors/survivor.svg',
-            },
-          ],
-        },
-        {
-          title: 'drifter',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/actors/drifter.svg',
-            },
-          ],
-        },
-        {
-          title: 'runner',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/actors/runner.svg',
-            },
-          ],
-        },
-        {
-          title: 'brute',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/actors/brute.svg',
-            },
-          ],
-        },
-        {
-          title: 'spitter',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/actors/spitter.svg',
-            },
-          ],
-        },
-      ],
-      attachments: [
-        'docs/art/assets/scrapyard-suite/actors/prompt.md',
-        'docs/art/assets/scrapyard-suite/actors/request.json',
-        'docs/art/assets/scrapyard-suite/actors/response.json',
-        'docs/art/assets/scrapyard-suite/actors/cells.json',
-        'docs/art/assets/scrapyard-suite/actors/extraction.json',
-        'docs/art/assets/scrapyard-suite/actors/review.png',
-      ],
-    },
+    subjects: ['survivor', 'drifter', 'runner', 'brute', 'spitter'],
   },
   {
-    id: 'scrapyard-equipment',
-    state: 'Generated \u00b7 awaiting review',
-    game: 'scrapyard',
+    family: 'equipment',
     title: 'Equipment and shop tools',
     reason: 'Replaces text glyphs with named salvage tools while HTML retains controls and prices.',
-    candidates: [],
-    reference:
-      'Worn steel, cloth and forest ink; three values, cream upper-left light and existing role accents.',
-    deliverables:
-      '6 extracted native SVG sources; editable local adaptation and matched native/phone review.',
-    requests: [
-      {
-        format: 'SVG',
-        plan: 'One Image 2.6 Sunburst native SVG sheet, 1152\u00d7768, named 384px cells for equipment. Terra SVG author, low reasoning.',
-      },
+    subjects: [
+      'rivet-gun',
+      'scattergun',
+      'scrap-cannon',
+      'hotter-rounds',
+      'better-boots',
+      'field-repair',
     ],
-    stop: 'Generation complete. No artwork rerolls or revisions used. The shared US$5 cap includes all four families; publication and user acceptance remain pending.',
-    acceptance: [
-      'Technical XML/resource validation and standalone decoding.',
-      'Review every source at actual logical and 390px phone scale.',
-      'Matched sparse and 100/300/500-enemy comparisons; preserve collision geometry and state-driven overlays.',
-      'Separate application/browser/performance evidence from author visual review.',
-    ],
-    record: 'docs/art/assets/scrapyard-suite/README.md',
-    study: {
-      summary:
-        'Locally integrated for review. Native source originals, prompts and usage are preserved; no published runtime change or user visual acceptance is implied.',
-      sheet: 'docs/art/assets/scrapyard-suite/equipment/sheet.svg',
-      subjects: [
-        {
-          title: 'rivet gun',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/equipment/rivet-gun.svg',
-            },
-          ],
-        },
-        {
-          title: 'scattergun',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/equipment/scattergun.svg',
-            },
-          ],
-        },
-        {
-          title: 'scrap cannon',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/equipment/scrap-cannon.svg',
-            },
-          ],
-        },
-        {
-          title: 'hotter rounds',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/equipment/hotter-rounds.svg',
-            },
-          ],
-        },
-        {
-          title: 'better boots',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/equipment/better-boots.svg',
-            },
-          ],
-        },
-        {
-          title: 'field repair',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/equipment/field-repair.svg',
-            },
-          ],
-        },
-      ],
-      attachments: [
-        'docs/art/assets/scrapyard-suite/equipment/prompt.md',
-        'docs/art/assets/scrapyard-suite/equipment/request.json',
-        'docs/art/assets/scrapyard-suite/equipment/response.json',
-        'docs/art/assets/scrapyard-suite/equipment/cells.json',
-        'docs/art/assets/scrapyard-suite/equipment/extraction.json',
-        'docs/art/assets/scrapyard-suite/equipment/review.png',
-      ],
-    },
   },
   {
-    id: 'scrapyard-combat',
-    state: 'Generated \u00b7 awaiting review',
-    game: 'scrapyard',
+    family: 'combat',
     title: 'Combat marks and bounded VFX',
     reason:
       'Keeps tiny mark footprints and adds confirmed hit/collection cues with bounded lifetimes.',
-    candidates: [],
-    reference:
-      'Worn steel, cloth and forest ink; three values, cream upper-left light and existing role accents.',
-    deliverables:
-      '6 extracted native SVG sources; editable local adaptation and matched native/phone review.',
-    requests: [
-      {
-        format: 'SVG',
-        plan: 'One Image 2.6 Sunburst native SVG sheet, 1152\u00d7768, named 384px cells for combat. Terra SVG author, low reasoning.',
-      },
+    subjects: [
+      'light-round',
+      'heavy-round',
+      'hostile-diamond',
+      'scrap-pickup',
+      'player-hit',
+      'scrap-sparkle',
     ],
-    stop: 'Generation complete. No artwork rerolls or revisions used. The shared US$5 cap includes all four families; publication and user acceptance remain pending.',
-    acceptance: [
-      'Technical XML/resource validation and standalone decoding.',
-      'Review every source at actual logical and 390px phone scale.',
-      'Matched sparse and 100/300/500-enemy comparisons; preserve collision geometry and state-driven overlays.',
-      'Separate application/browser/performance evidence from author visual review.',
-    ],
-    record: 'docs/art/assets/scrapyard-suite/README.md',
-    study: {
-      summary:
-        'Locally integrated for review. Native source originals, prompts and usage are preserved; no published runtime change or user visual acceptance is implied.',
-      sheet: 'docs/art/assets/scrapyard-suite/combat/sheet.svg',
-      subjects: [
-        {
-          title: 'light round',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/combat/light-round.svg',
-            },
-          ],
-        },
-        {
-          title: 'heavy round',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/combat/heavy-round.svg',
-            },
-          ],
-        },
-        {
-          title: 'hostile diamond',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/combat/hostile-diamond.svg',
-            },
-          ],
-        },
-        {
-          title: 'scrap pickup',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/combat/scrap-pickup.svg',
-            },
-          ],
-        },
-        {
-          title: 'player hit',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/combat/player-hit.svg',
-            },
-          ],
-        },
-        {
-          title: 'scrap sparkle',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/combat/scrap-sparkle.svg',
-            },
-          ],
-        },
-      ],
-      attachments: [
-        'docs/art/assets/scrapyard-suite/combat/prompt.md',
-        'docs/art/assets/scrapyard-suite/combat/request.json',
-        'docs/art/assets/scrapyard-suite/combat/response.json',
-        'docs/art/assets/scrapyard-suite/combat/cells.json',
-        'docs/art/assets/scrapyard-suite/combat/extraction.json',
-        'docs/art/assets/scrapyard-suite/combat/review.png',
-      ],
-    },
   },
   {
-    id: 'scrapyard-arena',
-    state: 'Generated \u00b7 awaiting review',
-    game: 'scrapyard',
+    family: 'arena',
     title: 'Quiet arena materials',
     reason:
       'Composes a 35% material layer over the original dark floor and keeps the inset boundary cue.',
-    candidates: [],
-    reference:
-      'Worn steel, cloth and forest ink; three values, cream upper-left light and existing role accents.',
-    deliverables:
-      '3 extracted native SVG sources; editable local adaptation and matched native/phone review.',
-    requests: [
-      {
-        format: 'SVG',
-        plan: 'One Image 2.6 Sunburst native SVG sheet, 1152\u00d7768, named 384px cells for arena. Terra SVG author, low reasoning.',
-      },
-    ],
-    stop: 'Generation complete. No artwork rerolls or revisions used. The shared US$5 cap includes all four families; publication and user acceptance remain pending.',
-    acceptance: [
-      'Technical XML/resource validation and standalone decoding.',
-      'Review every source at actual logical and 390px phone scale.',
-      'Matched sparse and 100/300/500-enemy comparisons; preserve collision geometry and state-driven overlays.',
-      'Separate application/browser/performance evidence from author visual review.',
-    ],
-    record: 'docs/art/assets/scrapyard-suite/README.md',
-    study: {
-      summary:
-        'Locally integrated for review. Native source originals, prompts and usage are preserved; no published runtime change or user visual acceptance is implied.',
-      sheet: 'docs/art/assets/scrapyard-suite/arena/sheet.svg',
-      subjects: [
-        {
-          title: 'floor tile',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/arena/floor-tile.svg',
-            },
-          ],
-        },
-        {
-          title: 'boundary strip',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/arena/boundary-strip.svg',
-            },
-          ],
-        },
-        {
-          title: 'corner join',
-          tiers: [
-            {
-              label: 'Source candidate \u00b7 local adaptation',
-              file: 'docs/art/assets/scrapyard-suite/arena/corner-join.svg',
-            },
-          ],
-        },
-      ],
-      attachments: [
-        'docs/art/assets/scrapyard-suite/arena/prompt.md',
-        'docs/art/assets/scrapyard-suite/arena/request.json',
-        'docs/art/assets/scrapyard-suite/arena/response.json',
-        'docs/art/assets/scrapyard-suite/arena/cells.json',
-        'docs/art/assets/scrapyard-suite/arena/extraction.json',
-        'docs/art/assets/scrapyard-suite/arena/review.png',
-      ],
-    },
+    subjects: ['floor-tile', 'boundary-strip', 'corner-join'],
   },
+];
+
+/** Proposed and retained batches. Generation agreement and artwork acceptance are separate. */
+export const WIP_BATCHES: BatchProposal[] = [
+  ...SCRAPYARD_BATCHES.map(({ family, title, reason, subjects }): BatchProposal => {
+    const folder = `docs/art/assets/scrapyard-suite/${family}`;
+    return {
+      id: `scrapyard-${family}`,
+      state: 'Generated · awaiting review',
+      game: 'scrapyard',
+      title,
+      reason,
+      candidates: [],
+      reference:
+        'Worn steel, cloth and forest ink; three values, cream upper-left light and existing role accents.',
+      deliverables: `${subjects.length} extracted native SVG sources; editable local adaptation and matched native/phone review.`,
+      requests: [
+        {
+          format: 'SVG',
+          plan: `One Image 2.6 Sunburst native SVG sheet, 1152×768, named 384px cells for ${family}. Terra SVG author, low reasoning.`,
+        },
+      ],
+      stop: 'Generation complete. No artwork rerolls or revisions used. The shared US$5 cap includes all four families; publication and user acceptance remain pending.',
+      acceptance: [
+        'Technical XML/resource validation and standalone decoding.',
+        'Review every source at actual logical and 390px phone scale.',
+        'Matched sparse and 100/300/500-enemy comparisons; preserve collision geometry and state-driven overlays.',
+        'Separate application/browser/performance evidence from author visual review.',
+      ],
+      record: 'docs/art/assets/scrapyard-suite/README.md',
+      study: {
+        summary:
+          'Locally integrated for review. Native source originals, prompts and usage are preserved; no published runtime change or user visual acceptance is implied.',
+        sheet: `${folder}/sheet.svg`,
+        subjects: subjects.map((id) => ({
+          title: id.replaceAll('-', ' '),
+          tiers: [{ label: 'Source candidate · local adaptation', file: `${folder}/${id}.svg` }],
+        })),
+        attachments: [
+          'prompt.md',
+          'request.json',
+          'response.json',
+          'cells.json',
+          'extraction.json',
+          'review.png',
+        ].map((name) => `${folder}/${name}`),
+      },
+    };
+  }),
   {
     id: 'spire-defense-01',
     state: 'Accepted · selected art installed',

@@ -224,3 +224,89 @@ request. The full application-test phase took 210.81 seconds, seeded simulations
 17.17 seconds, and the first functional browser run 40.3 seconds. Editing and
 one-time dependency setup were interleaved and not separately timed. No hosted
 CI or publication wait occurred.
+
+## Lossless evidence and source simplification · November 6
+
+The 35 review PNGs were losslessly recompressed with Oxipng 10.2.1 (`-o 4`,
+two threads, without alpha optimization or metadata stripping). They retain every
+review state, filename, dimension and decoded RGBA/alpha value. All had no color
+profile/gamma/chromaticity chunks; that absence and decoded sRGB interpretation
+remain unchanged. ImageMagick raw RGBA and independent Chrome decoding compare
+equal for every file. Before bytes remain recoverable at
+`ddafc4ffd48c32606d5435a09c7c28e9a58e0a7c`; no duplicate before-images are
+committed. The upstream Linux release archive SHA-256 is
+`1813750ef592c5350ca79c88f98b2c0876d05c826dc7156245256d4255c1ad17`.
+
+Total PNG storage: **6,993,184 → 5,114,931 bytes**, saving **1,878,253 bytes (26.86%)**. All 35 replacements were smaller.
+
+| Evidence PNG                | Before bytes | After bytes | RGBA / alpha / color |
+| --------------------------- | -----------: | ----------: | -------------------- |
+| `actors/review.png`         |       75,721 |      58,529 | Equal                |
+| `after-100-phone.png`       |       56,762 |      38,086 | Equal                |
+| `after-100.png`             |      217,984 |     161,883 | Equal                |
+| `after-300-phone.png`       |      100,474 |      68,227 | Equal                |
+| `after-300.png`             |      477,610 |     350,100 | Equal                |
+| `after-500-phone.png`       |      132,462 |      91,623 | Equal                |
+| `after-500.png`             |      683,941 |     502,727 | Equal                |
+| `after-desktop.png`         |       99,507 |      86,821 | Equal                |
+| `after-phone.png`           |       69,214 |      51,049 | Equal                |
+| `arena/review.png`          |       24,672 |      18,233 | Equal                |
+| `before-100-phone.png`      |       55,719 |      36,761 | Equal                |
+| `before-100.png`            |      148,599 |      96,430 | Equal                |
+| `before-300-phone.png`      |      108,439 |      88,324 | Equal                |
+| `before-300.png`            |      322,428 |     199,773 | Equal                |
+| `before-500-phone.png`      |      131,480 |      91,245 | Equal                |
+| `before-500.png`            |      453,567 |     280,069 | Equal                |
+| `before-desktop.png`        |       80,433 |      71,659 | Equal                |
+| `before-phone.png`          |       61,825 |      45,742 | Equal                |
+| `combat/review.png`         |       54,295 |      40,470 | Equal                |
+| `equipment/review.png`      |       81,000 |      59,136 | Equal                |
+| `gallery.png`               |      122,472 |      89,988 | Equal                |
+| `game-100-phone.png`        |      292,074 |     219,269 | Equal                |
+| `game-300-phone.png`        |      449,599 |     352,040 | Equal                |
+| `game-500-desktop.png`      |      759,917 |     593,221 | Equal                |
+| `game-500-phone.png`        |      556,297 |     449,762 | Equal                |
+| `game-phone.png`            |      124,067 |      94,488 | Equal                |
+| `motion-hit.png`            |      179,524 |     137,130 | Equal                |
+| `native-size.png`           |       49,432 |      35,937 | Equal                |
+| `player-hit-context.png`    |      242,632 |     137,130 | Equal                |
+| `reduced-motion-hit.png`    |      178,473 |     136,309 | Equal                |
+| `scrap-sparkle-context.png` |      207,921 |     117,342 | Equal                |
+| `shop-desktop.png`          |      159,997 |     133,859 | Equal                |
+| `shop-phone-purchased.png`  |      110,789 |      87,447 | Equal                |
+| `shop-phone.png`            |      103,626 |      80,275 | Equal                |
+| `tile-review.png`           |       20,232 |      13,847 | Equal                |
+
+The typed runtime source now stores the 147 shapes once and resolves shared plain
+paint/tool-outline defaults once, before either SVG or Canvas consumes them. Every
+normalized field, including non-drawing stroke defaults, matches the earlier
+expanded data exactly. Both consumers still emit/use explicit paint values; no
+SVG/CSS inheritance assumption was introduced. `adaptation.json` is now a small
+lineage descriptor identifying that canonical source, the hash-bound previous
+expanded snapshot and the unchanged extraction maps. It no longer repeats the
+geometry. All original SVG sheets/cells, prompts, requests, responses, rejects and
+usage records remain byte-for-byte intact. The API estimate remains US$0.174851.
+
+Four gallery definitions now share their common projection while retaining their
+independent historical subject lists. Full batch metadata compares exactly equal;
+a future runtime change cannot silently remove a preserved generated subject.
+
+| Maintained source/data file | Before lines | After lines |
+| --------------------------- | -----------: | ----------: |
+| `ui/art-data.ts`            |        1,340 |         594 |
+| `adaptation.json`           |        1,338 |          16 |
+| Gallery `library.ts`        |          917 |         659 |
+| Total                       |        3,595 |       1,269 |
+
+This removes 2,326 lines (64.7%) from those representations without deleting unique
+geometry or provenance. The 20 standalone SVG exports are byte-identical and all
+20 cached native-size sprites have identical RGBA hashes. Full scene, pickup/hit,
+shop, phone and active reduced-motion captures also compare pixel-for-pixel to the
+baseline; this rendering proof is separate from PNG recompression equality.
+Desktop/phone UI equality uses a fixed imported paused replay. Two earlier timed
+live-UI captures advanced differently and are retained as excluded comparison
+inputs; seeded canvas frames and all native sprites matched directly.
+Detailed temporary results and matched captures remain under
+`.artifacts/scrapyard-optimization/`; these measurements do not reduce the size of
+already-published Git history. Further expensive compression passes were deferred
+because the present lossless reduction meets the stated scope.
