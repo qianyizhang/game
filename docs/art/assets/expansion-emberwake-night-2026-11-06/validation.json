@@ -1,5 +1,5 @@
 {
-  "scope": "Metadata normalization and linked review page; all 45 SVGs and seven PNGs preserved byte-for-byte. No paid call, runtime/default/registry/gameplay change.",
+  "scope": "Canonical source registration after metadata normalization; all 45 SVGs and seven PNGs preserved byte-for-byte. No paid call, runtime/default/gameplay change.",
   "preserved_art_files": 52,
   "preserved_source_revisions": 45,
   "judgments": {
@@ -34,10 +34,10 @@
     "failed_jobs": 0
   },
   "consumer_migration": {
-    "live_runtime_tests_gallery_infrastructure": "No references to this unregistered study bundle.",
+    "live_runtime_tests_gallery_infrastructure": "Shared gallery now registers this suite; no runtime integration.",
     "standalone_review": "index.html now links actual SVGs and canonical generation records; no embedded base64 copies.",
-    "staged_history": "Rebuilt on demand from study.json and generation.json; same 7 attempt/45 revision identities and parent graph.",
-    "continuation": "Original SVG parent paths remain. Prior ledger reference becomes an immutable Git-history reference; prerequisite import documentation points to the canonical recipe."
+    "staged_history": "Temporary recipe reconstructed existing 7 attempt/45 revision identities and parent graph, then retired; canonical library owns registered facts.",
+    "continuation": "Original parent paths, IDs and bytes remain. Historical ledger reference is immutable Git history; dependent PR149 still needs accepted first-suite registration, without copied unrelated ancestors."
   },
   "cleanup_checks": {
     "all_52_artwork_hashes": "unchanged",
@@ -72,5 +72,16 @@
       "after_first_suite_normalization": "passed; stable authored parent IDs and unchanged selections"
     },
     "format_inventory_history": "passed; format:maintenance and assets:history verify. Existing registry remains 709 assets/92 revisions/0 selections."
+  },
+  "registration": {
+    "handoff_head": "3a0ed52a90b07cdd5ea9723c883f2ce05381bde3",
+    "status": "Canonical: 7 attempts / 45 source revisions; 709 assets / 137 total revisions / zero selections.",
+    "reviews": "Exact per-cell findings remain once in generation.json; candidate/caveat/hold labels and concise coal-tongs hold note preserved in gallery.",
+    "checks": {
+      "maintenance": "passed: formatting/inventory/links, history verify (709 assets / 137 revisions / 709 source registrations / zero selections), lint/types, 19 Python, 202 tooling, 81 DCC contracts and build",
+      "browser": "All 3 affected history/selection/offline journeys passed at normal local limits. Actual live gallery: all45 source revisions, seven exact generation records, parents/statuses/held coal-tongs, native/compact/enlarged inspection, 1440/390/320px and 16/20px text fit; no page errors.",
+      "preservation": "All 52 art files and all canonical call/study/continuation paths unchanged; prior registry records and selected-art.json unchanged. Historical failures and separate reruns remain intact.",
+      "runtime": "Node24.21.0 / npm11.19.0 / Google Chrome157.0.8103.38. Final-head hosted CI reported on PR; no new application/simulation/geometry/native execution claimed."
+    }
   }
 }

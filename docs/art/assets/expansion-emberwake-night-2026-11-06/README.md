@@ -1,6 +1,6 @@
 # Equipment and quiet sanctums
 
-[Open the review index](index.html). **38 native SVG concepts**: 18 Emberwake equipment/skill studies and 20 Night Passage patron-sanctum props/plates. All seven packed originals, 38 extracted SVGs and seven contact PNGs are retained byte-for-byte from `a3351841a981c90bfa1ef4ac0ed34757d678f967`. No runtime/default, gameplay, shared-registry, owner-rule, merge or deployment change.
+[Open the review index](index.html). **38 native SVG concepts**: 18 Emberwake equipment/skill studies and 20 Night Passage patron-sanctum props/plates. All seven packed originals, 38 extracted SVGs and seven contact PNGs are retained byte-for-byte from `a3351841a981c90bfa1ef4ac0ed34757d678f967`. No runtime/default, gameplay, owner-rule, merge or deployment change. Shared history now registers these source studies.
 
 ## Review and provenance
 
@@ -30,37 +30,28 @@ Chromium 154.0.8037.57 Canvas2D used default sRGB and device scale 1 for review 
 
 The published baseline's hosted [run 42244231708](https://github.com/qianyizhang/game/actions/runs/42244231708) passed 15 jobs with six conditional skips. Cleanup separately verifies artwork hashes, canonical facts, linked desktop/phone HTML, temporary history import/gallery and affected checks. Actual gameplay adoption, native geometry and independent aesthetic acceptance are not claimed.
 
-## Temporary history import
+## Shared gallery registration
 
-This bundle remains **unregistered in the shared gallery**, pending central reconciliation. The following tested recipe reconstructs seven attempts and 45 source revisions in `/tmp/emberwake-night-history.json` without writing the shared registry. It preserves the existing `expansion-en-20261106/` attempt/revision IDs and parent graph; all `asset`/`runtimeFile` values remain null. Central registration applies the temporary document through the normal guarded import path. The newer local continuation depends only on these stable parent IDs and retained artwork; its historical ledger reference is pinned to the immutable original Git commit.
+The [canonical library](../../iterations/library.json) registers seven attempts
+and 45 source revisions, preserving the existing `expansion-en-20261106/` IDs
+and parent graph. Open `/__art/#asset=__unassigned` and find that prefix; original
+sheets, extractions, statuses, exact generation records and shared formats remain
+inspectable. Per-cell review prose stays once in `generation.json`; labels and
+the coal-tongs hold remain explicit in the gallery. No runtime adapters or
+selections are registered.
 
-Run from the repository root:
+The import was reconstructed in temporary staging from the canonical calls;
+the redundant recipe is retired after consumer tracing. Continuation parent
+paths, IDs and bytes remain unchanged; the historical ledger remains available
+at its immutable Git checkpoint. Other candidate PRs independently add history
+records and need later serial reconciliation, without copying unrelated art.
+This branch has 709 assets, 137 revisions and zero selections.
 
-```python
-from pathlib import Path
-import json
-root = Path.cwd()
-bundle = 'docs/art/assets/expansion-emberwake-night-2026-11-06'
-study = json.loads((root / bundle / 'study.json').read_text())
-history = {'schema': 1, 'assets': [], 'attempts': [], 'revisions': []}
-for family in study['calls']:
-    folder = f'{bundle}/{family}'
-    call = json.loads((root / folder / 'generation.json').read_text())
-    attempt = study['history_prefix'] + family
-    history['attempts'].append({'id': attempt, 'title': family + ' · future concepts',
-        'date': '2026-11-06', 'outcome': 'returned',
-        'notes': 'Source study; exact request, usage, lineage and unchanged judgments in generation.json.',
-        'files': [folder + '/generation.json', folder + '/contact.png']})
-    for index, output in enumerate([call['original'], *call['outputs']]):
-        original = index == 0
-        identity = 'sheet' if original else output['id']
-        history['revisions'].append({'id': attempt + '/' + identity, 'asset': None,
-            'attempt': attempt, 'label': family + ' · exact packed original' if original else identity + ' · ' + output['verdict'],
-            'file': folder + '/' + (output['file'] if original else identity + '.svg'),
-            'digest': output['sha256'], 'parents': [] if original else [attempt + '/sheet'],
-            'runtimeFile': None, 'runtimeDigest': None,
-            'notes': 'Exact decoded native original.' if original else
-                f'Ordered source cell {index}; copy named group and remove only grid translation. ' + output['note']})
-Path('/tmp/emberwake-night-history.json').write_text(json.dumps(history, indent=2) + '\n')
-print('Prepared 7 attempts / 45 source revisions; shared registry unchanged.')
-```
+Registration checks passed: maintenance/build (lint/types, 19 Python, 202 tooling
+and 81 DCC tests), history verification and all three affected Google Chrome
+history/selection/offline journeys at normal local limits. Every revision and
+exact generation record was inspected in the live gallery, including parents and
+held outcomes, at 1440/390/320px and 16/20px text without overflow or page errors.
+The existing validation record owns details; final-head hosted CI is tracked on
+the PR. Technical checks do not establish aesthetic, gameplay or native acceptance.
+Original failures/timeouts and their distinct rerun evidence above remain intact.
