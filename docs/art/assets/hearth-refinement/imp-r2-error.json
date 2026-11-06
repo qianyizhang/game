@@ -1,0 +1,11 @@
+{
+  "status": "HTTP 502",
+  "detail": "error code: 502\n",
+  "request_id": null,
+  "usage": null,
+  "billing": "unknown",
+  "started": {
+    "endpoint": "https://api.openai.com/v1/images/generations",
+    "unix_time": 1793965051.4553401
+  }
+}

@@ -106,7 +106,7 @@ function proposalCard(
         `<figure><figcaption>${escape(candidate.title)}</figcaption><img src="${imageSource(images, asset.file)}" alt="${escape(candidate.title)} current artwork" width="160" height="112"></figure>`,
     )
     .join('');
-  return `<article class="batch-proposal" id="batch-${proposal.id}"><span class="status">${escape(proposal.state ?? 'Proposed · awaiting agreement')}</span><h3>${escape(proposal.title)}</h3><p>${escape(proposal.reason)}</p><div class="batch-current">${previews}</div><p><strong>Deliverables:</strong> ${escape(proposal.deliverables)}</p><p><strong>Shared reference:</strong> ${escape(proposal.reference)}</p><p><strong>Initial round:</strong> ${proposal.requests.map((request) => request.format).join(' + ')} · ${proposal.requests.length} requests maximum.</p>${proposal.study ? studyCard(proposal, images) : ''}<details><summary>Request plan and acceptance checks</summary><div class="request-plan">${proposal.requests.map((request) => `<div><h4>One ${request.format} request</h4><p>${escape(request.plan)}</p></div>`).join('')}</div><p class="approval-note">${escape(proposal.stop)}</p><ul>${proposal.acceptance.map((check) => `<li>${escape(check)}</li>`).join('')}</ul><p><a href="${escape(records.get(proposal.record)!)}">Full proposal and preservation record</a></p></details><p class="retention-note">Intermediate artwork and prompts are preserved for future sessions. Accepted batches inform the art skill for later work.</p></article>`;
+  return `<article class="batch-proposal" id="batch-${proposal.id}"><span class="status">${escape(proposal.state ?? 'Proposed · awaiting agreement')}</span><h3>${escape(proposal.title)}</h3><p>${escape(proposal.reason)}</p><div class="batch-current">${previews}</div><p><strong>Deliverables:</strong> ${escape(proposal.deliverables)}</p><p><strong>Shared reference:</strong> ${escape(proposal.reference)}</p><p><strong>Request plan:</strong> ${proposal.requests.map((request) => request.format).join(' + ')}.</p>${proposal.study ? studyCard(proposal, images) : ''}<details><summary>Request plan and acceptance checks</summary><div class="request-plan">${proposal.requests.map((request) => `<div><h4>One ${request.format} request</h4><p>${escape(request.plan)}</p></div>`).join('')}</div><p class="approval-note">${escape(proposal.stop)}</p><ul>${proposal.acceptance.map((check) => `<li>${escape(check)}</li>`).join('')}</ul><p><a href="${escape(records.get(proposal.record)!)}">Full proposal and preservation record</a></p></details><p class="retention-note">Intermediate artwork and prompts are preserved for future sessions. Accepted batches inform the art skill for later work.</p></article>`;
 }
 
 function studyFile(proposal: BatchProposal, source: string) {
@@ -272,7 +272,16 @@ export async function writeGalleryPages(
     const otherCandidates = candidates.filter((candidate) => !proposedIds.has(candidate.id));
     const renderCandidate = (candidate: BatchCandidate) =>
       candidateCard(candidate, assets, records, images);
-    const wip = `${selectedProposals.map((proposal) => `${proposalCard(proposal, records, candidateById, assets, images)}<h3>Current artwork and earlier trials</h3><div class="batch">${proposal.candidates.map((id) => renderCandidate(candidateById.get(id)!)).join('')}</div>`).join('')}${otherCandidates.length ? `<details class="other-candidates"${selectedProposals.length ? '' : ' open'}><summary>Other candidates (${otherCandidates.length}) · review first</summary><div class="batch">${otherCandidates.map(renderCandidate).join('')}</div></details>` : ''}${candidates.length || selectedProposals.length ? '' : '<p class="empty">No WIP batch is proposed for this collection.</p>'}`;
+    const wip = `${selectedProposals
+      .map((proposal) => {
+        const content = `${proposalCard(proposal, records, candidateById, assets, images)}${proposal.candidates.length ? `<h3>Current artwork and earlier trials</h3><div class="batch">${proposal.candidates.map((id) => renderCandidate(candidateById.get(id)!)).join('')}</div>` : ''}`;
+        return proposal.archived
+          ? `<details class="batch-history"><summary>History · ${escape(proposal.title)}</summary>${content}</details>`
+          : content;
+      })
+      .join(
+        '',
+      )}${otherCandidates.length ? `<details class="other-candidates"${selectedProposals.length ? '' : ' open'}><summary>Other candidates (${otherCandidates.length}) · review first</summary><div class="batch">${otherCandidates.map(renderCandidate).join('')}</div></details>` : ''}${candidates.length || selectedProposals.length ? '' : '<p class="empty">No WIP batch is proposed for this collection.</p>'}`;
     const id = game?.id ?? 'all';
     const navigation = `<nav class="game-nav" aria-label="Game galleries"><a href="index.html"${id === 'all' ? ' aria-current="page"' : ''}>All SVGs</a>${[...GAME_COLLECTIONS, { id: 'shared', name: 'Shared artwork' }].map((item) => `<a href="${item.id}.html"${id === item.id ? ' aria-current="page"' : ''}>${item.name}</a>`).join('')}</nav>`;
     const upgradeView = upgrades.length

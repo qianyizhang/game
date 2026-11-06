@@ -12,18 +12,27 @@ function Ember({ x, y, mirror = false }: { x: number; y: number; mirror?: boolea
   );
 }
 
-function Imp({ juggler = false }: { juggler?: boolean }) {
+function Imp({ juggler = false, golden = false }: { juggler?: boolean; golden?: boolean }) {
   return (
     <g strokeLinecap="round" strokeLinejoin="round">
       {/* Low shoulders, bat ears and a projecting muzzle give the small fiends their own anatomy. */}
       {!juggler && (
         <g>
           <path
-            d="M52 93Q24 80 15 47Q29 55 39 41Q37 59 52 63L66 85ZM104 84Q122 48 143 31Q138 56 154 75Q138 71 133 91Q119 85 111 103Z"
+            d={
+              golden
+                ? 'M54 94Q24 76 9 26Q29 41 43 17Q42 47 61 64L68 85ZM104 84Q122 48 143 31Q138 56 154 75Q138 71 133 91Q119 85 111 103Z'
+                : 'M52 93Q24 80 15 47Q29 55 39 41Q37 59 52 63L66 85ZM104 84Q122 48 143 31Q138 56 154 75Q138 71 133 91Q119 85 111 103Z'
+            }
             fill="#493249"
           />
+          {golden && <path d="M17 35Q32 43 39 29Q42 56 59 70L54 83Q31 67 17 35Z" fill="#694958" />}
           <path
-            d="M23 54Q37 73 59 87M40 47Q37 65 49 75M143 39Q122 60 111 87M141 57Q123 67 119 86M146 74Q131 74 127 86"
+            d={
+              golden
+                ? 'M13 31Q32 64 59 87M41 24Q40 52 51 65M143 39Q122 60 111 87M141 57Q123 67 119 86M146 74Q131 74 127 86'
+                : 'M23 54Q37 73 59 87M40 47Q37 65 49 75M143 39Q122 60 111 87M141 57Q123 67 119 86M146 74Q131 74 127 86'
+            }
             fill="none"
             stroke="#9a6479"
             strokeWidth=".8"
@@ -80,6 +89,43 @@ function Imp({ juggler = false }: { juggler?: boolean }) {
         strokeWidth=".6"
         opacity=".7"
       />
+      {golden && !juggler && (
+        <g>
+          {/* The bent near arm carries the coal; the far hand steadies its outer edge. */}
+          <path
+            d="M42 97Q37 87 47 83Q55 80 61 91L69 100Q89 101 112 86L119 78Q122 74 125 77L124 83L135 81Q140 81 139 85Q134 92 121 94Q94 114 66 112Q51 112 42 97Z"
+            fill="#493249"
+          />
+          <path
+            d="M46 93Q43 87 49 86Q54 84 58 94L67 105Q88 107 116 89L120 82L123 84L134 84Q130 88 119 90Q93 109 67 109Q54 109 46 93Z"
+            fill="#a47d88"
+          />
+          <path
+            d="M47 88Q51 86 55 93L66 105Q86 108 111 93L114 95Q89 112 65 108L51 98Z"
+            fill="#c1989b"
+          />
+          <path
+            d="M116 99Q124 101 136 91L143 84Q148 80 146 74L144 68Q142 65 140 68L140 76L137 79L139 70Q139 66 136 69L133 80L125 86Z"
+            fill="#765366"
+          />
+          <path
+            d="M140 70L140 79L134 86L127 89M121 85Q125 88 132 84M63 103Q72 107 81 105"
+            fill="none"
+            stroke="#dfb4ab"
+            strokeWidth=".8"
+          />
+          <path d="M114 77L111 69L118 58L131 55L141 65L139 77L129 84L120 82Z" fill="#49352e" />
+          <path d="M114 69L120 61L130 59L137 66L133 75L122 78Z" fill="#c88050" />
+          <path d="M120 62L129 59L131 67L123 72L116 69Z" fill="#f0c38a" />
+          <path d="M131 67L137 66L134 75L125 79L123 72Z" fill="#95513e" />
+          <path
+            d="M125 61L124 68L130 72M117 75L121 74"
+            fill="none"
+            stroke="#ffdfa2"
+            strokeWidth=".8"
+          />
+        </g>
+      )}
       {juggler && (
         <g>
           <Ember x={26} y={53} />
@@ -275,8 +321,9 @@ function HornedPatron({ herald = false }: { herald?: boolean }) {
   );
 }
 
-export function DemonPortrait({ kind }: { kind: Fiend }) {
-  if (kind === 'imp' || kind === 'juggler') return <Imp juggler={kind === 'juggler'} />;
+export function DemonPortrait({ kind, golden = false }: { kind: Fiend; golden?: boolean }) {
+  if (kind === 'imp' || kind === 'juggler')
+    return <Imp juggler={kind === 'juggler'} golden={kind === 'imp' && golden} />;
   if (kind === 'matron') return <Matron />;
   if (kind === 'watcher') return <Watcher />;
   return <HornedPatron herald={kind === 'infernal'} />;

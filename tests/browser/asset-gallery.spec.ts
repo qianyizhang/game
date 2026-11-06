@@ -170,8 +170,21 @@ test('per-game galleries preserve navigation, show current renderers and compare
   await expect(page.getByText('Generated · awaiting review', { exact: true })).toHaveCount(1);
   await expect(page.locator('.batch-proposal').first()).toHaveAttribute(
     'id',
-    'batch-hearth-effort-03',
+    'batch-hearth-refinement-04',
   );
+  const selectedStudy = page.locator('#batch-hearth-refinement-04 .packed-study');
+  await expect(
+    page.getByText('Selected · installed after refinement', { exact: true }),
+  ).toBeVisible();
+  await expect(selectedStudy.locator('.packed-grid > article')).toHaveCount(6);
+  await expect(selectedStudy.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(12);
+  const histories = page.locator('details.batch-history');
+  await expect(histories).toHaveCount(2);
+  for (const history of await histories.all()) {
+    await expect(history).not.toHaveAttribute('open', '');
+    await history.locator(':scope > summary').click();
+    await expect(history).toHaveAttribute('open', '');
+  }
   await expect(
     page.getByRole('heading', {
       name: 'Batch 02 · Six small units, normal and Golden',
@@ -225,6 +238,7 @@ test('per-game galleries preserve navigation, show current renderers and compare
     );
   });
   await page.screenshot({ path: info.outputPath('wip-proposal-desktop.png'), fullPage: true });
+  await selectedStudy.screenshot({ path: info.outputPath('selected-desktop.png') });
   await spireStudy.screenshot({ path: info.outputPath('packed-desktop.png') });
   await hearthStudy.screenshot({ path: info.outputPath('hearth-packed-desktop.png') });
   await effortStudy.screenshot({ path: info.outputPath('effort-desktop.png') });
@@ -334,6 +348,8 @@ test('per-game galleries preserve navigation, show current renderers and compare
   });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: info.outputPath('wip-proposal-phone.png'), fullPage: true });
+  await selectedStudy.screenshot({ path: info.outputPath('selected-phone.png') });
+  for (const history of await histories.all()) await history.locator(':scope > summary').click();
   await spireStudy.screenshot({ path: info.outputPath('packed-phone.png') });
   await hearthStudy.screenshot({ path: info.outputPath('hearth-packed-phone.png') });
   await effortStudy.screenshot({ path: info.outputPath('effort-phone.png') });

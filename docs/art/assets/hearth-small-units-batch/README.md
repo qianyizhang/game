@@ -1,5 +1,11 @@
 # WIP · Hearth small units, normal and Golden
 
+**Later outcome, November 6:** the user authorized continued refinement to author
+satisfaction. The [refined selection](../hearth-refinement/README.md) now installs
+ten updated scenes and retains two stronger normals. This document preserves
+this earlier attempt and its review; its original request limits and below-bar
+findings remain historical evidence.
+
 Proposed, agreed and generated November 6, 2026. One request produced twelve
 normal/Golden candidate illustrations. Artwork acceptance and runtime promotion
 are pending. The live game art remains unchanged.

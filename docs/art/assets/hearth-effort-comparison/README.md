@@ -1,5 +1,11 @@
 # Hearth · single medium versus packed max
 
+**Later outcome, November 6:** the user authorized continued refinement to author
+satisfaction. The [refined selection](../hearth-refinement/README.md) now installs
+ten updated scenes and retains two stronger normals. This document preserves
+this earlier attempt and its review; its original request limits and below-bar
+findings remain historical evidence.
+
 Partial result, November 6, 2026: the single-medium Cub returned; the MAX batch
 connection closed without an SVG or usage response. The MAX-quality comparison
 remains unavailable and its billing is unknown.

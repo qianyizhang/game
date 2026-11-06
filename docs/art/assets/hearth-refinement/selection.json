@@ -1,0 +1,31 @@
+{
+  "source_checkpoint": "43586fd",
+  "changed_export_ids": [
+    "hearth/pup",
+    "hearth/pup-golden",
+    "hearth/imp-golden",
+    "hearth/spark-golden",
+    "hearth/squire",
+    "hearth/squire-golden",
+    "hearth/cub",
+    "hearth/cub-golden",
+    "hearth/wisp",
+    "hearth/wisp-golden"
+  ],
+  "retained_normal": ["hearth/imp", "hearth/spark"],
+  "selected_sha256": {
+    "selected-cub-golden.svg": "963dd065e93bad9da0f297fd626966a2d2ef67286931cf7f652f357f684a7737",
+    "selected-cub-normal.svg": "e46974ae0aead1b6db9d2df9837c8b50cdda3e245d7f0234a9fc52adc2dd7e9f",
+    "selected-imp-golden.svg": "9324123a1f2f289b677ba19d9ab450fa4ecbf4c1fd3e591b6eca69f31b2dd25f",
+    "selected-imp-normal.svg": "4082586feae57c4e97c2f0eaeb1bb41f0576e038a9dd04005fed1c13042bda7f",
+    "selected-pup-golden.svg": "984b97d10f2e4ef85ce878b55ba8376ae7054ab127bdb57a636bbc36103c2c6e",
+    "selected-pup-normal.svg": "b7f2de0be11d065d0f226e5a2e983aae1100401e8d87347972e78b5873abb3bf",
+    "selected-sheet.svg": "8c20c9592c3835e63b6aa74a1022ae097b6386dce56fbe5de12f51c15e44b5cc",
+    "selected-spark-golden.svg": "2ce5a2d047440c3a13bbb049e4ea9a30e64fbf3aa1fc7f0d22ca22fea056c2be",
+    "selected-spark-normal.svg": "e1d5cf11c7fce071d8bf1c25b76d5c33b69daa51ad06a4aedfdca63ac433abeb",
+    "selected-squire-golden.svg": "d15381ae6343ec830c507ce047dd70eb133ae563e78414a3e94834220215395a",
+    "selected-squire-normal.svg": "c36aa32cb0f64af6e1cd83a1457c96c30ce6be7ab3289d652ad04ede123a5227",
+    "selected-wisp-golden.svg": "b1ff6f80c64df0a6599018a47f396212316fe75cd54b906f321a326715fb9004",
+    "selected-wisp-normal.svg": "370cc778d673ea901b2f644e4ea3301e86db932ecb8950d60633fe90e502858f"
+  }
+}

@@ -28,6 +28,15 @@ gesture need more attention; expand only after a representative passes the
 [art rulebook](../../../docs/art/art-direction.md). This is an observed limit of
 that batch, not proof that every living subject must be generated alone.
 
+The [focused Hearth refinement](../../../docs/art/assets/hearth-refinement/README.md)
+found useful Squire/Cub normal–Golden pairs with larger subject canvases and
+medium author effort. A waist-up guard and a supported root step repaired
+composition before detail. Retain strong existing normals and hand-refine their
+upgrades when that wins. This changes several controls together; it does not
+isolate effort or establish a universal pair size. When continued refinement is
+authorized, scope each round to a concrete failing subject and stop once all
+chosen scenes pass compact and actual-UI review.
+
 Separate the tuning controls: image complexity plans the reference, image
 quality renders it, and SVG-author reasoning constructs the vector output.
 The Hearth trial already used high complexity but medium quality and low author
@@ -72,7 +81,10 @@ Inspect the full sheet before extracting: composition, cross-cell debris,
 consistent style, contour, vector structure and resource safety. Extract clean
 groups without their grid translation. Keep the source original intact and
 identify every derivative's source cell. Raster crops need exact rectangles;
-SVGs need self-contained resources. Inspect every candidate at native and compact
+SVGs need self-contained resources. Preserve local paint definitions in review;
+missing gradients can falsely make a good output look dark. For ID-free live
+art, adapt paint intentionally to explicit planes before removing definitions.
+Inspect every candidate at native and compact
 UI size; rejected cells still count toward the request cost. Judge GIF motion
 from decoded frames and playback, including the settled frame and transitions.
 A traveling glint does not demonstrate a requested physical transformation.
