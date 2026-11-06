@@ -106,6 +106,7 @@ test('gallery selections reach the real game, survive reload, and removal preser
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.locator('#browse')).not.toHaveAttribute('open', '');
     await page.screenshot({ path: info.outputPath('history-phone.png') });
+    await page.addStyleTag({ content: ':root { font-size: 20px; }' });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );

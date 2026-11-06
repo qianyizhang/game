@@ -3,8 +3,9 @@
   grid-template-columns: 270px minmax(0, 1fr);
   gap: 28px;
 }
-aside {
+.history-layout > * {
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 aside label {
   display: grid;
