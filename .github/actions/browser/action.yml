@@ -24,5 +24,8 @@ runs:
         Acquire::https::Timeout "30";
         EOF_CONFIG
         # Pin the maintained LTS image and use Ubuntu's signed primary archive.
-        sudo sed -i 's|http://azure.archive.ubuntu.com/ubuntu|http://archive.ubuntu.com/ubuntu|g' /etc/apt/sources.list.d/ubuntu.sources
+        sudo find /etc/apt -type f \( -name '*.list' -o -name '*.sources' \) -exec sed -i 's|http://azure\.archive\.ubuntu\.com/ubuntu|http://archive.ubuntu.com/ubuntu|g' {} +
+        if [ -f /etc/apt/apt-mirrors.txt ]; then
+          printf '%s\n' 'http://archive.ubuntu.com/ubuntu/' | sudo tee /etc/apt/apt-mirrors.txt > /dev/null
+        fi
         node packages/workshop-tools/ci/browser-host.ts
