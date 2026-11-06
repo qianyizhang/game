@@ -84,6 +84,11 @@ produced nine separable scenes for about $0.16 versus $0.25 for three earlier
 independent scenes, but used simpler drawing. Treat its 3 × 3, 480 × 336 cells
 as evidence, not a fixed batch size or quality guarantee.
 
+If a request loses its connection without returning usage or an image, keep the
+failed attempt and mark its cost unknown; no output does not establish no charge.
+The [Hearth effort comparison](../../../docs/art/assets/hearth-effort-comparison/README.md)
+retains one such partial result, without a MAX-quality verdict or an automatic retry.
+
 ## Promote selectively
 
 Choose the strongest useful cells rather than installing every output. Record

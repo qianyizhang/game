@@ -357,6 +357,12 @@ summary {
   max-width: 1000px;
   height: auto;
 }
+.unavailable-art {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px dashed #b6976d;
+  border-radius: 6px;
+}
 .play-effect {
   margin: 24px 0;
 }

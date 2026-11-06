@@ -1,0 +1,16 @@
+{
+  "outcome": "transport failure; no image or API response returned",
+  "error_type": "http.client.RemoteDisconnected",
+  "message": "Remote end closed connection without response",
+  "http_status": null,
+  "request_id": null,
+  "usage": null,
+  "estimated_cost_usd": null,
+  "client_timeout_seconds": 1800,
+  "last_confirmed_pending_elapsed_seconds": 573,
+  "failure_observed_elapsed_seconds": 649,
+  "exact_failure_duration_seconds": null,
+  "automatic_retries": 0,
+  "billing": "unknown; absence of response does not establish no charge",
+  "recorded_at_unix": 1793962706
+}

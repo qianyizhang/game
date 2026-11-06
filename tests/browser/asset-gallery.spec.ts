@@ -170,7 +170,7 @@ test('per-game galleries preserve navigation, show current renderers and compare
   await expect(page.getByText('Generated · awaiting review', { exact: true })).toHaveCount(1);
   await expect(page.locator('.batch-proposal').first()).toHaveAttribute(
     'id',
-    'batch-hearth-small-units-02',
+    'batch-hearth-effort-03',
   );
   await expect(
     page.getByRole('heading', {
@@ -180,6 +180,14 @@ test('per-game galleries preserve navigation, show current renderers and compare
   ).toBeVisible();
   const spireStudy = page.locator('#batch-spire-defense-01 .packed-study');
   const hearthStudy = page.locator('#batch-hearth-small-units-02 .packed-study');
+  const effortStudy = page.locator('#batch-hearth-effort-03 .packed-study');
+  await expect(
+    page.getByText('Partial result · MAX request failed', { exact: true }),
+  ).toBeVisible();
+  await expect(effortStudy.locator('.unavailable-art')).toHaveCount(4);
+  await expect(effortStudy.locator('.unavailable-art').first()).toContainText('No SVG returned');
+  await expect(effortStudy.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(9);
+
   await expect(spireStudy.locator('.packed-grid > article')).toHaveCount(3);
   await expect(spireStudy.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(9);
   await expect(hearthStudy.locator('.packed-grid > article')).toHaveCount(6);
@@ -219,6 +227,7 @@ test('per-game galleries preserve navigation, show current renderers and compare
   await page.screenshot({ path: info.outputPath('wip-proposal-desktop.png'), fullPage: true });
   await spireStudy.screenshot({ path: info.outputPath('packed-desktop.png') });
   await hearthStudy.screenshot({ path: info.outputPath('hearth-packed-desktop.png') });
+  await effortStudy.screenshot({ path: info.outputPath('effort-desktop.png') });
   await page.goto(`${base}/index.html`);
   for (const [id, name] of [
     ['blindside', 'Blindside'],
@@ -327,6 +336,7 @@ test('per-game galleries preserve navigation, show current renderers and compare
   await page.screenshot({ path: info.outputPath('wip-proposal-phone.png'), fullPage: true });
   await spireStudy.screenshot({ path: info.outputPath('packed-phone.png') });
   await hearthStudy.screenshot({ path: info.outputPath('hearth-packed-phone.png') });
+  await effortStudy.screenshot({ path: info.outputPath('effort-phone.png') });
   expect(errors).toEqual([]);
   expect(external).toEqual([]);
   await page.addInitScript(() => {

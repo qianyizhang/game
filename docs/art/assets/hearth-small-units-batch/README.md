@@ -116,7 +116,7 @@ judged against the existing boss/child identities and exact split cue, with a
 defined anticipation/action/hold and reduced-motion still. It is outside this
 one-request proposal and needs its own WIP brief and agreement.
 
-## Recommended next test, not yet authorized
+## Original follow-up proposal, later expanded
 
 One single-subject **Briar Cub normal** SVG request at 1280 × 896, high image
 quality and higher SVG-author reasoning than this batch's low setting (proposed
@@ -130,5 +130,7 @@ or moving on to Squire. This changes space, prompt and effort together to seek a
 better result; it would not isolate which setting caused any improvement.
 The [official generation reference](https://developers.openai.com/api/reference/resources/images/methods/generate)
 separates image complexity/quality from SVG-author reasoning; higher complexity
-alone is not a higher author-effort setting. No request has been made for this
-follow-up. The completed twelve-scene originals and exact prompts remain intact.
+alone is not a higher author-effort setting. The user later authorized this single plus a MAX-effort repeat of the original
+batch. The [comparison record](../hearth-effort-comparison/README.md) preserves
+the returned single Cub and the MAX transport failure. The twelve-scene
+originals and exact prompts remain intact.

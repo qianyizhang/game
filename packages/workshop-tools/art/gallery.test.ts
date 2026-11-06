@@ -6,6 +6,68 @@ import { resolve } from 'node:path';
 import { writeGalleryPages } from './gallery/pages.ts';
 import { WIP_BATCHES, type BatchCandidate } from './gallery/library.ts';
 
+await test('an unavailable comparison keeps its failure text and copies only existing artwork', async (t) => {
+  const root = await mkdtemp(resolve(tmpdir(), 'gallery-unavailable-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const record = resolve(root, 'record.md');
+  const svg = resolve(root, 'single.svg');
+  const bytes = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 7"/>';
+  await writeFile(record, 'One image returned; the other connection closed.');
+  await writeFile(svg, bytes);
+  const output = resolve(root, 'export');
+  await mkdir(output);
+  await writeGalleryPages(
+    output,
+    [],
+    [
+      {
+        id: 'cub',
+        game: 'hearth',
+        title: 'Cub',
+        reason: 'Compare effort.',
+        brief: 'Review anatomy.',
+        current: [],
+        status: 'SVG trial',
+      },
+    ],
+    [
+      {
+        ...WIP_BATCHES[0],
+        id: 'failed-comparison',
+        game: 'hearth',
+        candidates: ['cub'],
+        record,
+        study: {
+          summary: 'One partial result.',
+          sheet: svg,
+          sheetLabel: 'Preserved single SVG',
+          subjects: [
+            {
+              title: 'Cub',
+              tiers: [
+                { label: 'Single medium', file: svg },
+                { label: 'Batch MAX', unavailable: 'Connection closed <no response>' },
+              ],
+            },
+          ],
+          attachments: [],
+        },
+      },
+    ],
+  );
+  const html = await readFile(resolve(output, 'hearth.html'), 'utf8');
+  assert.match(html, /class="unavailable-art">Connection closed &lt;no response&gt;/);
+  assert.match(html, /<summary>Preserved single SVG<\/summary>/);
+  assert.equal(
+    await readFile(resolve(output, 'batches/failed-comparison/single.svg'), 'utf8'),
+    bytes,
+  );
+  assert.deepEqual((await readdir(resolve(output, 'batches/failed-comparison'))).sort(), [
+    'README.md',
+    'single.svg',
+  ]);
+});
+
 await test('generated candidates retain their own trial records and share one copy within a batch', async (t) => {
   const root = await mkdtemp(resolve(tmpdir(), 'gallery-trials-'));
   t.after(() => rm(root, { recursive: true, force: true }));

@@ -83,6 +83,8 @@ purposeful events such as boss transformations and VFX. The
 [Spire batch record](assets/spire-defense-batch/README.md) preserves the source
 trial and selected replacements. The generated [Hearth small-unit batch](assets/hearth-small-units-batch/README.md)
 now awaits artwork review and selection.
+A subsequent [effort comparison](assets/hearth-effort-comparison/README.md)
+preserves the returned medium-effort Cub and the MAX-sheet transport failure.
 
 **Preservation hold · user request, 2026-11-06:** retain intermediate artwork,
 reference boards, sheets, extracted variants, GIF originals and review frames,

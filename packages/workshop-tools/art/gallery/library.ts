@@ -235,11 +235,21 @@ export interface BatchProposal {
   stop: string;
   acceptance: string[];
   record: string;
-  state?: 'Generating' | 'Generated · awaiting review' | 'Accepted · selected art installed';
+  state?:
+    | 'Generating'
+    | 'Generated · awaiting review'
+    | 'Accepted · selected art installed'
+    | 'Partial result · MAX request failed';
   study?: {
     summary: string;
     sheet: string;
-    subjects: { title: string; tiers: { label: string; file: string }[] }[];
+    sheetLabel?: string;
+    subjects: {
+      title: string;
+      tiers: ({ label: string } & (
+        { file: string; unavailable?: never } | { file?: never; unavailable: string }
+      ))[];
+    }[];
     effect?: { title: string; file: string; still: string; durationMs: number };
     attachments: string[];
   };
@@ -320,6 +330,96 @@ export const WIP_BATCHES: BatchProposal[] = [
     },
   },
   {
+    id: 'hearth-effort-03',
+    state: 'Partial result · MAX request failed',
+    game: 'hearth',
+    title: 'Batch 03 · Single medium versus packed MAX',
+    reason:
+      'The original packed Squire and Cub were below the bar. Compare one dedicated Cub at medium effort with the attempted original sheet at MAX effort.',
+    candidates: ['hearth-cub-effort', 'hearth-squire-effort'],
+    reference:
+      'Same Hearth identity and palette. The repeat sheet kept its original prompt, size and medium image quality; the single Cub used a larger subject canvas and high image quality.',
+    deliverables:
+      'One returned Cub SVG. The MAX sheet connection closed without an SVG, request ID or usage response; its quality and billing remain unknown.',
+    requests: [
+      {
+        format: 'SVG',
+        plan: 'Single normal Cub: 1280 × 896, high image quality and medium SVG-author reasoning. Returned in 208.8 seconds for an estimated $0.145621.',
+      },
+      {
+        format: 'SVG',
+        plan: 'Original twelve-scene prompt and 1920 × 1008 layout, medium image quality, author reasoning max. Remote connection closed after roughly ten minutes; no response was returned.',
+      },
+    ],
+    stop: 'Two approved requests attempted, no retries. Keep live game art unchanged. The MAX failure does not establish its quality or a zero charge; another paid attempt needs agreement.',
+    acceptance: [
+      'Judge connected muzzle/neck/shoulder, planted paws, joints and weight at 160 × 112, 80 × 56 and 64 × 45.',
+      'Keep original failures and all new sources; a denser single SVG is still an unaccepted candidate.',
+      'Do not attribute every visual difference to reasoning: the internal reference is resampled and the single also changes prompt, canvas and image quality.',
+    ],
+    record: 'docs/art/assets/hearth-effort-comparison/README.md',
+    study: {
+      summary:
+        'The medium single has more continuous curves, but its far foreleg remains straight and it still needs review. The MAX request failed at the connection after roughly ten minutes; missing slots below are explicit failures. Known single cost: about $0.15. MAX cost: unknown.',
+      sheet: 'docs/art/assets/hearth-small-units-batch/sheet.svg',
+      sheetLabel: 'Original LOW batch · retained baseline',
+      subjects: [
+        {
+          title: 'Briar Cub · normal',
+          tiers: [
+            {
+              label: 'Current normal · framed',
+              file: 'docs/art/assets/hearth-small-units-batch/before-cub.svg',
+            },
+            {
+              label: 'Original batch · LOW · below bar',
+              file: 'docs/art/assets/hearth-small-units-batch/cub-normal.svg',
+            },
+            {
+              label: 'Repeat batch · MAX',
+              unavailable: 'No SVG returned: connection closed.',
+            },
+            {
+              label: 'Single Cub · MEDIUM · awaiting review',
+              file: 'docs/art/assets/hearth-effort-comparison/single-medium.svg',
+            },
+          ],
+        },
+        ...[
+          { title: 'Briar Cub · Golden', id: 'cub', tier: 'golden' },
+          { title: 'Hearth Squire · normal', id: 'squire', tier: 'normal' },
+          { title: 'Hearth Squire · Golden', id: 'squire', tier: 'golden' },
+        ].map(({ title, id, tier }) => ({
+          title,
+          tiers: [
+            {
+              label: `Current ${tier} · framed`,
+              file: `docs/art/assets/hearth-small-units-batch/before-${id}${tier === 'golden' ? '-golden' : ''}.svg`,
+            },
+            {
+              label: 'Original batch · LOW · below bar',
+              file: `docs/art/assets/hearth-small-units-batch/${id}-${tier}.svg`,
+            },
+            {
+              label: 'Repeat batch · MAX',
+              unavailable: 'No SVG returned: connection closed.',
+            },
+          ],
+        })),
+      ],
+      attachments: [
+        'docs/art/assets/hearth-effort-comparison/single-cub-prompt.md',
+        'docs/art/assets/hearth-effort-comparison/single-medium-request.json',
+        'docs/art/assets/hearth-effort-comparison/single-medium-response.json',
+        'docs/art/assets/hearth-effort-comparison/batch-max-prompt.md',
+        'docs/art/assets/hearth-effort-comparison/batch-max-request.json',
+        'docs/art/assets/hearth-effort-comparison/batch-max-error.json',
+        'docs/art/assets/hearth-effort-comparison/comparison.webp',
+        'docs/art/assets/hearth-effort-comparison/small-board.webp',
+      ],
+    },
+  },
+  {
     id: 'hearth-small-units-02',
     state: 'Generated · awaiting review',
     game: 'hearth',
@@ -353,7 +453,7 @@ export const WIP_BATCHES: BatchProposal[] = [
     record: 'docs/art/assets/hearth-small-units-batch/README.md',
     study: {
       summary:
-        'Mixed quality: Squire and Cub are below the bar in user review; keep their current art. One $0.16 request produced twelve separable scenes, but tier differences did not establish anatomy quality. Other candidates remain unaccepted. A single-subject Cub follow-up with more author effort is proposed in the record; no reroll has been sent.',
+        'Mixed quality: Squire and Cub are below the bar in user review; keep their current art. One $0.16 request produced twelve separable scenes, but tier differences did not establish anatomy quality. Other candidates remain unaccepted. A later medium single returned; the agreed MAX repeat lost its connection. See Batch 03 for the partial comparison; no unapproved reroll was sent.',
       sheet: 'docs/art/assets/hearth-small-units-batch/sheet.svg',
       subjects: [
         { id: 'squire', title: 'Hearth Squire · below bar' },
@@ -389,6 +489,28 @@ export const WIP_BATCHES: BatchProposal[] = [
 ];
 
 export const NEXT_BATCH: BatchCandidate[] = [
+  {
+    id: 'hearth-cub-effort',
+    game: 'hearth',
+    title: 'Briar Cub · effort comparison',
+    reason:
+      'The packed Cub was below the bar. A dedicated medium-effort Cub returned; the MAX batch attempt did not return an image.',
+    brief:
+      'Review organic transitions, joint placement and planted weight before selecting a replacement.',
+    current: ['hearth/cub', 'hearth/cub-golden'],
+    status: 'SVG trial',
+  },
+  {
+    id: 'hearth-squire-effort',
+    game: 'hearth',
+    title: 'Hearth Squire · MAX attempt',
+    reason:
+      'The original Squire was below the bar. The MAX comparison failed at the connection, so no new Squire can be judged.',
+    brief:
+      'Keep the current Squire; preserve the attempted request and failure for a later decision.',
+    current: ['hearth/squire', 'hearth/squire-golden'],
+    status: 'SVG trial',
+  },
   ...[
     {
       id: 'squire',
@@ -587,7 +709,9 @@ export const GALLERY_INPUTS: readonly string[] = [
     batch.study
       ? [
           batch.study.sheet,
-          ...batch.study.subjects.flatMap((subject) => subject.tiers.map((tier) => tier.file)),
+          ...batch.study.subjects.flatMap((subject) =>
+            subject.tiers.flatMap((tier) => (tier.file ? [tier.file] : [])),
+          ),
           ...(batch.study.effect ? [batch.study.effect.file, batch.study.effect.still] : []),
           ...batch.study.attachments,
         ]
