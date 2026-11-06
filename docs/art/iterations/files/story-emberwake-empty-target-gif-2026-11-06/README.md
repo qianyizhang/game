@@ -95,16 +95,16 @@ canon or a new gameplay rule. No third clip or paid repair is proposed here.
 
 ## Portable history handoff
 
-[Additive import](history-import.json) prepares four distinct attempts and three
+[Canonical history](../../library.json) preserves the historical base group of four attempts and three
 unassigned source revisions: unknown SVG with **no image**, manual composition,
 first native GIF, and held second native GIF. Actual sent PNGs remain linked
 attempt documents with their hashes/derivation in the exact call records. The
 old gallery's non-GIF revision preview assumes SVG, so PNG references are shown
 through its supported image-document path rather than invented SVG revisions.
-The import contains no game assets, runtime files, selections or assembly.
+Those base records introduce no game assets, runtime files, selections or assembly.
 
-Registration remains the serial coordinator's job after the remote source head
-is frozen. A private candidate snapshot applied this additive import and passed
+At the frozen source handoff, canonical registration was pending. A private
+candidate snapshot applied the original additive import and passed
 the store's `verifyHistory`: 709 assets, 95 revisions, zero selections. The
 unmodified offline gallery renderer was inspected there: three candidate source
 revisions, exact prompt/settings text for both GIFs, the actual input PNG,
@@ -117,11 +117,22 @@ This is private snapshot QA, not canonical registration or a full game suite.
 `format:maintenance`, static SVG safety, native GIF decoding/timing, exact input
 and original-byte checks passed separately. Canonical `assets:history verify`
 also passes for its unchanged 709 assets/92 revisions/zero selections; the three
-candidate revisions are still absent there pending the additive import. A pass
+candidate revisions were absent in that historical baseline. A pass
 for existing records does not establish registration of this held work.
 The known shared once-playing GIF
 final-frame Stop/Play limitation is inherited and not fixed or exercised by an
-assembly here; both raw clips loop. Canonical registration and that inherited
-delivery limitation remain review blockers in addition to the visual hold.
+assembly here; both raw clips loop. At that source handoff, registration and that inherited delivery limitation
+were review blockers in addition to the visual hold. Current status is below.
 No shared tooling, default, runtime, existing candidate, issue, deployment or PR
 is changed. The exact frozen remote revision is supplied in the delivery handoff.
+
+## Canonical source-study registration
+
+The temporary additive import is retired after canonical record comparison.
+[Combined held-study review](../held-story-studies-2026-11-06/README.md) owns the
+current registration/technical status; earlier budgets, local snapshots and
+source-owner publication statements above remain historical facts. Actual raw
+GIFs, sent inputs, exact requests/receipts and holds remain unchanged.
+The annotated layout guide is a distinct manual input derivative with its own
+real first-GIF parent; the two continuation results are siblings. No assembly,
+accepted story, unknown-SVG output or game selection is invented.

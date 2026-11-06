@@ -114,18 +114,18 @@ additional generation, runtime adoption or story PR is made.
 
 ## Portable delta and stop
 
-[This additive delta](history-import.json) adds one returned-but-held attempt and
-one unassigned native GIF revision, with no runtime adaptation or selection.
-Apply the [historical base import](../story-emberwake-empty-target-gif-2026-11-06/history-import.json)
-first, then this delta. The real endpoint is the image parent; the held original
-second clip remains a sibling comparison. The guide and its manual origin are
-explicit input documents, not generated frames or alternate Miras.
+[Canonical history](../../library.json) now preserves the returned-but-held
+revision and its actual manually authored guide, alongside the historical base
+records. Temporary import catalogues were retired after comparison. Both actual
+image inputs are preserved; the guide has its own first-GIF parent. The held
+original second clip remains a sibling comparison. The guide is an input source,
+not a generated frame, alternate Mira or guaranteed endpoint.
 
 The historical base plus this delta passed `verifyHistory` in a fresh private
 snapshot: 709 assets, 96 revisions, zero selections. No canonical registry was
 edited. Earlier gallery behavior checks remain valid for the unchanged tooling;
 the revised raw images and real join were inspected separately at both sizes.
-Canonical registration still requires serial application of those two imports.
+That source snapshot preceded the canonical registration described below.
 Repository `format:maintenance` passed. Canonical `assets:history verify` passed
 for the unchanged 709 assets/92 revisions/709 registered sources; it does not
 establish registration of the four candidate revisions in the private snapshot.
@@ -137,3 +137,14 @@ reconciliation. No active paid grant remains in this lane. Stop this generative
 continuation: this tested change did not resolve the named failure, and no further
 call is authorized. Canonical registration remains with the serial coordinator;
 shared registry, tooling, selections, game/default behavior and issues are unchanged.
+
+## Canonical source-study registration
+
+The temporary additive import is retired after canonical record comparison.
+[Combined held-study review](../held-story-studies-2026-11-06/README.md) owns the
+current registration/technical status; earlier budgets, local snapshots and
+source-owner publication statements above remain historical facts. Actual raw
+GIFs, sent inputs, exact requests/receipts and holds remain unchanged.
+The annotated layout guide is a distinct manual input derivative with its own
+real first-GIF parent; the two continuation results are siblings. No assembly,
+accepted story, unknown-SVG output or game selection is invented.

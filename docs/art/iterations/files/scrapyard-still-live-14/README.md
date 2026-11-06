@@ -103,7 +103,6 @@ publication workflow; this bundle is not gallery-ready. No PR, merge or deployme
 Browser `file://` navigation was unsupported (`ERR_BLOCKED_BY_ADMINISTRATOR`);
 local allowed file reads and in-memory browser document rendering completed review.
 
-
 ## No-spend diagnosis and local registration
 
 Independent checks of the frozen bytes confirm the exact sent PNG is480×336 and
