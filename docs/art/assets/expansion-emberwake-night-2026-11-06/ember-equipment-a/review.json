@@ -1,0 +1,40 @@
+{
+  "reviewer": "Primary author self-review",
+  "original_inspected": true,
+  "native_and_compact_inspected": true,
+  "actual_game_ui": "Unavailable for new concepts without supported runtime slots; no adoption review claimed.",
+  "cells": [
+    {
+      "subject": "briar-hook",
+      "outcome": "candidate",
+      "notes": "Strong recurved hook and diagonal shaft; quiet ground shadow. Counterweight becomes a small secondary droplet at compact size. Useful concept, no runtime acceptance."
+    },
+    {
+      "subject": "saltglass-glaive",
+      "outcome": "candidate-with-caveat",
+      "notes": "Broad crescent and fitted socket read clearly. Pale layered planes suggest smoky glass but retain an opaque illustrated quality; no physical glass-rendering claim."
+    },
+    {
+      "subject": "bellows-maul",
+      "outcome": "candidate",
+      "notes": "Heavy head, attached split handle and broad copper bellows cheek read at compact size; internal slats recede."
+    },
+    {
+      "subject": "ossuary-lantern-flail",
+      "outcome": "candidate-with-caveat",
+      "notes": "Hollow cage, short handle and chain remain identifiable. Small chain junctions are compressed at 80px; hold attachment detail for any future runtime adaptation."
+    },
+    {
+      "subject": "furnace-kite",
+      "outcome": "candidate",
+      "notes": "Asymmetric notch and folded copper side plane read immediately; lower rim and grounded thickness survive compact view."
+    },
+    {
+      "subject": "reed-quiver",
+      "outcome": "candidate",
+      "notes": "Reed body, strap and three bolt heads stay distinct. Fine lashings recede at compact size; silhouette remains useful."
+    }
+  ],
+  "pilot_decision": "Proceed with remaining nonliving families; six clearly separable strong silhouettes and connected broad material planes. No reroll justified.",
+  "aesthetic_acceptance": "User acceptance pending; technical success is separate."
+}

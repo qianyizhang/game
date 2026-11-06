@@ -1,0 +1,241 @@
+[
+  {
+    "batch": "ember-equipment-a",
+    "cell": [480, 336],
+    "sheet": [1440, 672],
+    "subjects": [
+      {
+        "id": "briar-hook",
+        "name": "Briar hook polearm",
+        "brief": "A long hooked bill forged around a single ash-wood shaft; broad hooked blade with deep inner negative space, leather counterweight, diagonal resting gesture. Briarfen salvage material language; no vines hiding the metal edge."
+      },
+      {
+        "id": "saltglass-glaive",
+        "name": "Saltglass glaive",
+        "brief": "A crescent of translucent smoky sea glass fitted into a forked bronze socket on a short sand-worn haft; exposed glass thickness and one pale transmission plane. Distinct from an axe or staff."
+      },
+      {
+        "id": "bellows-maul",
+        "name": "Bellows maul",
+        "brief": "A square blackened iron striking head with one recessed bellows chamber and broad copper cheek, attached securely to a thick split-grip handle; heavy grounded diagonal, no spikes."
+      },
+      {
+        "id": "ossuary-lantern-flail",
+        "name": "Ossuary lantern flail",
+        "brief": "A hollow ribbed iron weight on three large visibly connected chain links and a short ivory handle; the hollow aperture reads before detail; no skull face or flame."
+      },
+      {
+        "id": "furnace-kite",
+        "name": "Furnace kite shield",
+        "brief": "An asymmetrical tall black steel shield with a folded copper heat baffle down one side, deep offset notch and visibly thick lower rim; three planes, not a coat of arms."
+      },
+      {
+        "id": "reed-quiver",
+        "name": "Reed quiver",
+        "brief": "A bent reed-and-hide bolt case with a high angled lip, three broad square bolt heads and fitted shoulder strap; dry ochre reed and dark moss leather; no bow."
+      }
+    ]
+  },
+  {
+    "batch": "ember-equipment-b",
+    "cell": [480, 336],
+    "sheet": [1440, 672],
+    "subjects": [
+      {
+        "id": "cinder-mantle",
+        "name": "Cinder mantle",
+        "brief": "An empty heavy charcoal felt shoulder mantle hanging diagonally from one copper clasp, folded outward at one side, warm inner lining and a clear open neckline; no wearer."
+      },
+      {
+        "id": "glassworker-visor",
+        "name": "Glassworker visor",
+        "brief": "A lowered smoky glass face shield riveted to an asymmetrical copper brow frame, hinged at both visible fittings; glass edge and broad transparent plane, dark empty space behind it; no face."
+      },
+      {
+        "id": "rootstep-boots",
+        "name": "Rootstep boots",
+        "brief": "A mismatched-angle pair of tall moss leather boots, one planted and one tilted to reveal a segmented wood sole; ankle folds and actual thickness; avoid vines and generic metal greaves."
+      },
+      {
+        "id": "choir-bracers",
+        "name": "Choir bracers",
+        "brief": "A separated pair of short ivory-and-iron forearm guards with slotted open outer plates; one face-on, one side-on with thick leather lining, not gauntlets or arms."
+      },
+      {
+        "id": "slag-belt",
+        "name": "Slag belt",
+        "brief": "A broad worn leather tool belt curling into a supported C gesture, one blackened hinged buckle and two fitted flat metal pouches; no coins or category-symbol motif."
+      },
+      {
+        "id": "cistern-torc",
+        "name": "Cistern torc",
+        "brief": "An open horseshoe neck ring of patinated bronze, one widened shallow ceramic cup terminal and one tapered solid terminal; clear gap, distinct metal and pale salt glaze, not a closed medallion."
+      }
+    ]
+  },
+  {
+    "batch": "ember-skill-studies",
+    "cell": [480, 336],
+    "sheet": [1440, 672],
+    "subjects": [
+      {
+        "id": "root-snag",
+        "name": "Root snag study",
+        "brief": "One thick grounded root curls around an empty boot-shaped negative space, two thin root ends press into the floor; asymmetric inward pull and pale stress cuts; no humanoid."
+      },
+      {
+        "id": "glass-shear",
+        "name": "Glass shear study",
+        "brief": "Three unequal broad translucent glass blades sweep diagonally through one dusty ochre arc, clear leading edge and quiet trailing space; not a cloud of shards."
+      },
+      {
+        "id": "bell-repulse",
+        "name": "Bell repulse study",
+        "brief": "A tilted iron handbell at the moment of a single broad ivory pressure crescent pushing outward; clear bell lip, clapper and fitted handle; no concentric target rings."
+      },
+      {
+        "id": "furnace-draft",
+        "name": "Furnace draft study",
+        "brief": "A folded ribbon of deep red heat rising from a narrow black furnace vent and bending sharply sideways, pale orange inner plane and broad charcoal gap; no explosion or fireball."
+      },
+      {
+        "id": "ash-decoy",
+        "name": "Ash decoy study",
+        "brief": "An EMPTY half-cloak of compacted ash disintegrates along one trailing edge, broad folded planes and a clean hollow center; no face, skull, living anatomy or confetti."
+      },
+      {
+        "id": "rime-tether",
+        "name": "Rime tether study",
+        "brief": "A single hooked strip of pale ice stretching between two weathered stone anchors; taper, tension and one split near the leading anchor, blue-gray shadow; not a nova or teleport ring."
+      }
+    ]
+  },
+  {
+    "batch": "night-offering-instruments",
+    "cell": [480, 336],
+    "sheet": [1440, 672],
+    "subjects": [
+      {
+        "id": "aster-tuning-fork",
+        "name": "Aster tuning fork",
+        "brief": "A three-pronged bronze storm tuning fork standing in a small slate socket, unequal prong heights and one fitted wire bridge, pale gold contact tips; no lightning emblem."
+      },
+      {
+        "id": "neris-tide-balance",
+        "name": "Neris tide balance",
+        "brief": "A low ceramic balance with unequal shell-shaped bowls joined by a curved bronze beam; a shallow transparent water meniscus sits in the larger bowl; aqua and dark ink."
+      },
+      {
+        "id": "vesta-coal-tongs",
+        "name": "Vesta coal tongs",
+        "brief": "A pair of heavy open black iron tongs held above a shallow glazed ember dish; visible pivot and one restrained coral coal, no brazier tower or generic flame icon."
+      },
+      {
+        "id": "isen-stillness-chime",
+        "name": "Isen stillness chime",
+        "brief": "Two unequal suspended blue ceramic chime slabs fitted to a low dark wood stand, one broad pale frost plane and real suspension cords; not an ice crystal or bell."
+      },
+      {
+        "id": "nyra-witness-mirror",
+        "name": "Nyra witness mirror",
+        "brief": "An oval smoked silver mirror tilted in a low split basalt support, one lavender reflection plane crossing an otherwise dark mirror; beveled edge and open negative space beneath; no eye emblem."
+      }
+    ]
+  },
+  {
+    "batch": "night-reliquaries",
+    "cell": [480, 336],
+    "sheet": [1440, 672],
+    "subjects": [
+      {
+        "id": "aster-cloud-vessel",
+        "name": "Aster cloud vessel",
+        "brief": "A shallow lidded electrum vessel with an offset stepped lid and three broad slots, seated in a dark stone cradle; quiet warm yellow reflected planes, no lightning icon."
+      },
+      {
+        "id": "neris-current-coffer",
+        "name": "Neris current coffer",
+        "brief": "A sea-worn ceramic coffer with one rounded hinged lid lifted to show a pale inner cavity and aqua glass insert; broad wet rim highlights, not a book or scroll niche."
+      },
+      {
+        "id": "vesta-ember-press",
+        "name": "Vesta ember press",
+        "brief": "A compact soot-black iron screw press holding a single glowing coal behind a thick slotted copper plate; supported screw and deep recess, no ornamental flames."
+      },
+      {
+        "id": "isen-salt-casket",
+        "name": "Isen salt casket",
+        "brief": "A long pale ceramic cold casket whose thick lid slides partly aside, clear dark interior and thin blue frost lip; quiet faceted planes, not a crystal lamp."
+      },
+      {
+        "id": "nyra-folded-screen",
+        "name": "Nyra folded screen",
+        "brief": "Three unequal folded panels of dark plum cloth framed in blackened silver, one partly open revealing a pale inner surface; tangible hinges and cloth sag; no eye symbol."
+      }
+    ]
+  },
+  {
+    "batch": "night-sanctum-furnishings",
+    "cell": [480, 336],
+    "sheet": [1440, 672],
+    "subjects": [
+      {
+        "id": "aster-reading-desk",
+        "name": "Aster reading desk",
+        "brief": "An angled bronze observation desk with a single tilted slate and a fitted rotating pointer, one broad open triangular support, no readable writing and no generic pillar."
+      },
+      {
+        "id": "neris-footbath",
+        "name": "Neris footbath",
+        "brief": "A low crescent-shaped stone footbath with a shallow clear aqua water plane and one worn ceramic step attached to its outside edge; solid support and no fountain jet."
+      },
+      {
+        "id": "vesta-warming-bench",
+        "name": "Vesta warming bench",
+        "brief": "A broad low basalt bench with a copper heat plate inset in the back and one recessed coal drawer beneath the seat; connected heavy legs, quiet coral glow, no throne."
+      },
+      {
+        "id": "isen-resting-cradle",
+        "name": "Isen resting cradle",
+        "brief": "A low asymmetrical pale stone cradle supporting one folded blue wool blanket, deep shadow under its curved bridge and sparse frost at the far edge; no humanoid."
+      },
+      {
+        "id": "nyra-curtain-frame",
+        "name": "Nyra curtain frame",
+        "brief": "A low freestanding offset silver rail holding one heavy plum drape swept to one side, clear weighted hem and two unequal feet; intimate interior furnishing, not a gateway arch."
+      }
+    ]
+  },
+  {
+    "batch": "night-sanctum-plates",
+    "cell": [720, 384],
+    "sheet": [2160, 768],
+    "subjects": [
+      {
+        "id": "aster-listening-alcove",
+        "name": "Aster listening alcove",
+        "brief": "An intimate indoor listening recess: a stepped bronze acoustic hood bends over a single slate sitting ledge, one pale storm-gold slit light. Quiet open foreground and layered near/far planes; no combat arena or guardian."
+      },
+      {
+        "id": "neris-water-table",
+        "name": "Neris water table",
+        "brief": "A sunken circular ceramic table filled with shallow aqua water, one pale shell-backed seat and dark reed curtain at rear; reflection shapes describe calm water. No archive books, lamp or combat arena."
+      },
+      {
+        "id": "vesta-bread-stone",
+        "name": "Vesta bread stone",
+        "brief": "A low warm basalt kneading slab under a copper heat canopy, one loaf-shaped plain clay votive on folded linen, a restrained ember recess at side; home-scale sanctuary, no furnace monument."
+      },
+      {
+        "id": "isen-quiet-ledge",
+        "name": "Isen quiet ledge",
+        "brief": "A pale deep window ledge with folded blue cloth, one elongated ceramic vessel and cold light from a narrow off-center opening; broad quiet planes, no snowflake emblem or crystal lamp."
+      },
+      {
+        "id": "nyra-unseen-seat",
+        "name": "Nyra unseen seat",
+        "brief": "An empty low stone seat partly sheltered by a heavy plum curtain folding diagonally from one fitted silver rail, one pale reflected plane and a quiet black recess. No eye icon, humanoid, guardian or gateway."
+      }
+    ]
+  }
+]

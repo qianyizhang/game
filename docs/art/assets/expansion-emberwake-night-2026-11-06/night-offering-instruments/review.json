@@ -1,0 +1,34 @@
+{
+  "reviewer": "Primary author self-review",
+  "original_inspected": true,
+  "native_and_compact_inspected": true,
+  "actual_game_ui": "No supported patron-sanctum runtime content; these are 2D source concepts, not 3D prop deliveries.",
+  "cells": [
+    {
+      "subject": "aster-tuning-fork",
+      "outcome": "candidate",
+      "notes": "Unequal bronze prongs, wire bridge and connected slate foot give a clear instrument silhouette; the wire recedes at compact size."
+    },
+    {
+      "subject": "neris-tide-balance",
+      "outcome": "candidate",
+      "notes": "Unequal shell bowls, curved load-bearing beam and central pivot read as a balance rather than a wave symbol. Broad aqua meniscus keeps water distinct from the ceramic rim."
+    },
+    {
+      "subject": "vesta-coal-tongs",
+      "outcome": "hold",
+      "notes": "The pivot and tool contour are readable, but the coal appears supported by only the lower jaw while the other jaw misses it; suspended action is structurally ambiguous. Retain this concept on hold, no reroll or runtime suitability claimed."
+    },
+    {
+      "subject": "isen-stillness-chime",
+      "outcome": "candidate-with-caveat",
+      "notes": "Unequal ceramic slabs and suspended cords read clearly at native size. At 80px the thin cords recede, though the chime frame remains recognizable."
+    },
+    {
+      "subject": "nyra-witness-mirror",
+      "outcome": "candidate",
+      "notes": "Tilted oval, dark reflection bands, thin silver bevel and split stone support distinguish a physical mirror from the existing eye mark. Quiet plum planes remain legible."
+    }
+  ],
+  "aesthetic_acceptance": "Four optional candidates, one structural hold. User acceptance pending. No reroll."
+}

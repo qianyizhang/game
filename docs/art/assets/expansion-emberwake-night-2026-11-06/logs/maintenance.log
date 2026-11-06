@@ -1,0 +1,688 @@
+
+> card-workshop@0.1.0 check:maintenance
+> npm run format:maintenance && npm run assets:history -- verify && npm run lint:tools && npm run lint:app && npm run typecheck && npm run check:python && npm run test:tools && npm run test:dcc && npm run build
+
+
+> card-workshop@0.1.0 format:maintenance
+> npm run format:check && npm run maintenance -- check
+
+
+> card-workshop@0.1.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> card-workshop@0.1.0 maintenance
+> node packages/workshop-tools/cli.mjs check
+
+{
+  "managedSources": 901,
+  "errors": []
+}
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> card-workshop@0.1.0 assets:history
+> node packages/workshop-tools/art/history.ts verify
+
+{ assets: 709, revisions: 92, selections: 0, registeredSources: 709 }
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> card-workshop@0.1.0 lint:tools
+> eslint packages/workshop-tools packages/dcc-workbench/src packages/dcc-workbench/evaluation packages/dcc-workbench/subjects/canid/*.ts "packages/dcc-workbench/*.{ts,mjs}" eslint.config.mjs --max-warnings=0
+
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> card-workshop@0.1.0 lint:app
+> eslint src tests packages/diablo2 packages/shader-pipeline-lab *.config.ts --max-warnings=0
+
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> card-workshop@0.1.0 typecheck
+> tsc --noEmit && npm run typecheck --workspaces --if-present
+
+
+> @card-workshop/dcc-workbench@0.1.0 typecheck
+> tsc -p tsconfig.json && tsc -p tsconfig.tools.json
+
+
+> @card-workshop/tools@0.1.0 typecheck
+> tsc -p tsconfig.json
+
+
+> @card-workshop/diablo2@0.1.0 typecheck
+> tsc -p tsconfig.json
+
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> card-workshop@0.1.0 check:python
+> uv run --locked ruff check && uv run --locked ruff format --check && uv run --locked mypy && uv run --locked python -m unittest discover -s packages/dcc-workbench/blender -p "test_*.py"
+
+All checks passed!
+92 files already formatted
+Success: no issues found in 92 source files
+...................
+----------------------------------------------------------------------
+Ran 19 tests in 0.030s
+
+OK
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> card-workshop@0.1.0 test:tools
+> npm run test --workspace @card-workshop/tools
+
+
+> @card-workshop/tools@0.1.0 test
+> node --test *.test.mjs *.test.ts art/*.test.ts experiments/*.test.ts hearth/*.test.ts night-passage/*.test.ts policy/*.test.ts ci/*.test.ts
+
+✔ package export works outside cwd, writes a standalone catalogue and refuses overwrite (3894.2382ms)
+Created test-results/scaffold-test-9lQnb3/ProofArt.tsx. Draw the subject, wire the existing renderer, then export and review. No registry or rules were changed.
+✔ scaffold preserves existing art and refuses destination symlinks and root escapes (309.721014ms)
+Created test-results/study-scaffold-test-yeJ8B9/new/study. Fill brief.md, follow the native modeling playbook, then complete handoff.md. The adapter is a template; no assets or registration were changed.
+✔ native study scaffold creates an editable packet and protects existing work and boundaries (30.2653ms)
+✔ review rejects malformed dimensions and symlinked source escapes before rasterization (10.430286ms)
+✔ bake fingerprint ignores lint-only updates and npm placement flags, retaining exporter/compiler/platform changes (14.783386ms)
+✔ bake closure follows nested versions and peers; missing required packages cannot bless stale assets (1.001458ms)
+✔ source closure discovers new runtime dependencies while type-only test configuration stays outside the bake (28.285244ms)
+✔ root lineage, timestamp boundary and response identity give reproducible Standard credits without private content (33.599811ms)
+✔ model switches use their own rate; missing rates and invalid counters stay partial (10.61266ms)
+✔ conflicting duplicates, missing children, image charges and truncated tails block complete coverage (7.11483ms)
+✔ absent root and empty metering never become an invented zero-cost success (6.182417ms)
+✔ ledger refresh writes a pinned receipt, accumulates rather than adds snapshots, and refuses accounting-root changes (45.354494ms)
+✔ an unavailable comparison keeps its failure text and copies only existing artwork (458.617291ms)
+✔ generated candidates retain their own trial records and share one copy within a batch (310.132983ms)
+✔ a candidate and packed batch can share one record without dropping study files (242.527204ms)
+✔ Golden Claw opens as one offline HTML with no visible controls (70.316894ms)
+✔ Golden Claw embeds the delivered reference-derived front and back masters (21.83607ms)
+✔ Golden Claw GIF contains 900 timed frames, 30 seconds and a 16:9 canvas (536.244806ms)
+✔ game selections persist exact bytes, reject stale/changed/incompatible inputs, and protect used artwork (16.642848ms)
+✔ removal preserves shared and externally referenced bytes, and removes owned payloads with lineage notes (10.407902ms)
+✔ unsafe paths and malformed selections fail without writes, including a symlinked repository root (8.960146ms)
+✔ every catalogue asset has a registered identity and a real game rendering selection route (466.255014ms)
+✔ new attempts preserve exact settings and failures, and derivatives can reference existing parents (6.984226ms)
+✔ removing a source and its runtime adaptation from one folder completes successfully (2.893376ms)
+✔ unregistered managed outputs block verification until imported or deliberately retired (2.570419ms)
+✔ source verification detects an unregistered edit while an unchanged catalogue creates no files (1171.804713ms)
+✔ registering changed source requires its pre-edit checkpoint, which can be restored from the source reference (4.990914ms)
+✔ removal retains artwork referenced by tests or another managed document (3.820676ms)
+✔ binary reference inputs remain viewable in offline attempt records (1.09455ms)
+✔ retained movie decodes completely with its delivered timing: haunted-island/haunted-island.gif (599.500819ms)
+✔ retained movie decodes completely with its delivered timing: little-haunt/little-haunt.gif (1644.620374ms)
+✔ retained movie decodes completely with its delivered timing: lantern-keep/lantern-keep.gif (1134.085195ms)
+✔ retained movie decodes completely with its delivered timing: golden-claw/golden-claw.gif (3064.142214ms)
+✔ retained movie decodes completely with its delivered timing: golden-claw/golden-claw.mp4 (3799.694058ms)
+✔ standalone movie retains offline source: lantern-keep (17.407512ms)
+✔ standalone movie retains offline source: golden-claw (58.890393ms)
+✔ native packet renders the actual Markdown handoff with the requested identity (9.112944ms)
+✔ handoff substitution replaces repeated identities while preserving Markdown links and prose (42.018313ms)
+✔ formal opening rejections share the original clock and stop at two failures (8.939768ms)
+✔ rejections require review authority, current criteria and complete view pins (1.052202ms)
+✔ persisted rejection pins are checked before adding a failure receipt (57.415555ms)
+✔ every gallery study has a fingerprinted self-contained saved delivery (8036.301123ms)
+✔ saved delivery validation rejects truncated data, LFS pointers and broken chunk sizes (6.575088ms)
+✔ v3 author waits for native proof; structural rejection routes through art direction without resetting counters (5.676606ms)
+✔ v3 formal opening rejection retains direction ownership and shares the production cap (1.116736ms)
+✔ polish retains package clock and needs fresh clearance; takeover and acceptance stay distinct from orchestration (2.517421ms)
+✔ CLI handoffs recheck frozen proof and accepted review bytes; ledger root is the Sol orchestrator (137.608435ms)
+✔ handoffs share one audited spec and enforce independent ownership (4.009375ms)
+✔ audited author package clears into pinned verifier closeout without reopening authoring (2.382894ms)
+✔ closeout cannot reuse stale-spec clearance or fall back past a newer open or rejected package (1.370487ms)
+✔ verifier closeout may use reserve but retains stop, pause, time, credit and telemetry gates (2.119958ms)
+✔ caps are cumulative, inclusive, and cannot be reset by a later pass or takeover (0.984079ms)
+✔ only explicit user wait is excluded from elapsed time, including package overlap (1.095028ms)
+✔ unknown, stale, partial and decreasing telemetry cannot authorize another dispatch (0.573595ms)
+✔ director spec revisions require re-audit and retain active package clocks and failures (0.74345ms)
+✔ disk receipts refuse overwrite, changed pins, symlinks and rewritten history (96.337238ms)
+✔ v2 pins per-trial limits and reserve while historical v1 remains unchanged (1.275926ms)
+✔ v2 dispatch refuses a step that cannot leave final-review reserve; evidence stays recordable (88.96992ms)
+✔ reserve permits review only, while actual caps, failed revisions, pauses and telemetry still block it (1.552084ms)
+✔ allowance increases only the effective credit policy without rewriting history or counters (5.850239ms)
+✔ allowance rejects unapproved identities, missing evidence, repeated or decreasing caps and noncredit changes (1.178373ms)
+✔ recorded allowance is append-only, preserves cumulative usage and cannot revive a stopped trial (84.946996ms)
+✔ parent plan includes every browser shard once; fallback validation preserves that matrix and selection (119.704356ms)
+✔ standalone asset planning retains full browser and constructor selection without executing those tests (4421.056362ms)
+✔ empty and geometry-only direct calls still validate instead of silently bypassing the asset workflow (471.189639ms)
+✔ actual plan and module CLIs reject omitted, duplicate, malformed and stale matrices before any test command (7636.022502ms)
+✔ execution retains catalogue validation even when the supplied matrix is complete (462.070605ms)
+✔ workflow keeps validation for absent/empty inputs and cannot run asset work after failed planning or cancellation (3.646733ms)
+✔ hosted Chrome avoids a redundant browser download while retaining OS dependency installation (2.780196ms)
+✔ local Chrome path is explicit and retains the normal channel by default (1.721387ms)
+✔ a non-Chrome executable cannot replace the browser channel (11.708181ms)
+✔ Playwright Test workers receive the same selected Chrome binary (0.500561ms)
+✔ actual CLI keeps mixed review changes scoped and rejects docs-only, executable and symlink shortcuts (4509.572566ms)
+✔ actual docs CLI checks named prose, retained examples and the Markdown consumer; aggregate remains exact-head (1663.186314ms)
+✔ named handoff broken links and lost identity fail the selected documentation job (1837.606993ms)
+✔ file modes, changed examples, mixed code and unnamed inputs keep conservative normal selection (29806.505146ms)
+✔ new named documents, unavailable bases and explicit full selection cannot use the fast route (611.010232ms)
+✔ history prose runs without dependencies and broken ledger links still fail (582.175095ms)
+fatal: Invalid symmetric difference expression ffffffffffffffffffffffffffffffffffffffff...3a59621069dd1fe912a749d851d27e993507f5dd
+✔ only allowlisted prose and reviewed raster changes qualify, including deletions and rename pairs (1.892099ms)
+✔ audited history prose qualifies while protocols, evidence and unknown histories do not (0.32052ms)
+✔ only modifications of the three named inputs qualify; unchanged checks examples are opaque bytes (10.168303ms)
+✔ the named Markdown handoff receives the same executable content guard as documents (0.249989ms)
+✔ old and new document versions with executable blocks or unreadable blobs fail closed (0.261016ms)
+✔ changed inline examples and HTML fail closed (0.42035ms)
+✔ missing or unavailable diff bases never qualify (20.022438ms)
+✔ literal import, re-export and declared dynamic imports retain transitive dependants without executing modules (18.214436ms)
+✔ canonical and symlinked roots select the same affected tests without external files (9.517047ms)
+✔ unresolved application imports are reported instead of silently narrowing coverage (2.223375ms)
+✔ catalogue retains default application, all geometry and public browser files (0.34406ms)
+✔ an unresolved Emberwake package loader forces application fallback (1.240328ms)
+✔ issue 37 capture is manual, branch scoped and uploads only short-lived review output (1.669141ms)
+✔ capture contract rejects auto-run and broad artifact changes (4.740895ms)
+✔ desktop collection crop contains all six card rectangles (1.260181ms)
+✔ phone collection crop contains all six card rectangles (0.326732ms)
+✔ exact mixed #78/#79/#81 inputs retain safety, affected game, SVG and gallery coverage without unrelated deep work (38.377954ms)
+✔ mixed review classification cannot become a second docs-only fast path or ignore unsafe file modes (1.718602ms)
+✔ gallery inputs, unknown executable files and new manifests retain conservative application coverage (5.426244ms)
+✔ filesystem gallery inputs retain export and comparison journeys instead of review-only classification (5.422338ms)
+✔ legacy issue37 capture has exact Blindside ownership; new issue-named specs still fail closed (0.487997ms)
+✔ a changed cross-game spec runs its assertions without recursively selecting every suite it covers (0.517684ms)
+✔ offline movie specs are selected directly and absent from unrelated game scopes (6.62789ms)
+✔ known movie delivery uses focused coverage; deletion stays conservative (1.43607ms)
+✔ unknown and lookalike browser specs still force conservative selection (0.627746ms)
+✔ local changes include staged, unstaged, untracked, deleted, executable and symlink inputs (159.253566ms)
+✔ duration packing covers each file once and lowers a skewed file-count schedule (1.701859ms)
+✔ movie shortcuts fail closed for executable inputs, unknown files, shared consumers and uncertain graphs (3.281422ms)
+✔ reuse requires exact trusted successful evidence and the main integrity gate still must pass (3.843209ms)
+✔ actual reuse CLI falls back on direct pushes and missing evidence without skipping checks (259.310176ms)
+✔ hosted environment drift records ineligibility without failing normal validation (283.795813ms)
+✔ PR planning uses the tested merge base and stops stale snapshots before install (491.843101ms)
+✔ main scheduling confirms the integrity environment before skipping selected jobs (0.743403ms)
+✔ UI change runs safety regressions and affected browser family without deep policy matrices (4.255272ms)
+✔ policy, observation, adapter, rules, content and replay changes retain the affected full matrix (1.160292ms)
+✔ transitive imports select cross-game dependants and their browser coverage (0.239494ms)
+✔ Hearth experiment and bundle-entry changes retain their application and inspector journeys (0.635286ms)
+✔ shared evaluator, configuration, deleted and unknown paths retain all application coverage without exhaustive rendering (0.813589ms)
+✔ native producer/delivery changes retain both model and Night Passage journeys (0.341622ms)
+✔ new unclassified tests and unresolved imports expand application coverage (0.734157ms)
+✔ Scrapyard rules select their tests and browser journey without expanding unrelated changes (0.472827ms)
+✔ explicit full validation retains every application, geometry and public browser journey (6.764231ms)
+✔ eligible documentation changes select only the documentation module (1.305257ms)
+✔ CSS retains bounded game journeys while shared 3D dependencies retain geometry (0.36582ms)
+✔ baked assets and viewer edits skip constructors; generator dependencies select their tests (2.527964ms)
+✔ offline gallery generator retains its browser delivery check (0.349581ms)
+✔ missing diff base and unresolved constructor imports conservatively retain geometry (0.593011ms)
+✔ empty selection never runs a whole suite and shard indices are bounded (0.871108ms)
+✔ aggregate gate refuses skipped, failed or cancelled required modules (3.252079ms)
+✔ execution and aggregate gate reject stale or malformed plans before permitting skips (3.248465ms)
+✔ audits committed bytes despite staged edits, deletions, untracked files and hydrated LFS (139.998164ms)
+✔ separates bulk JSON from evidence/lockfile advice and handles streaming/minified outliers (494.407223ms)
+✔ rejects malformed CLI options without silently broadening the audit (0.573768ms)
+✔ empty commits produce an empty inventory (33.143486ms)
+✔ comparison pairs full runs by context and preserves baseline/candidate pins (3.36857ms)
+✔ challenge CLI works outside cwd and preserves an existing solution bundle (919.453849ms)
+✔ new source and scattered documentation cannot silently bypass governance (1.78964ms)
+✔ the maintained slice and canonical document homes are accepted (2.66569ms)
+✔ ignored local receipts cannot hide broken clean-checkout documentation links (1.627936ms)
+✔ the governance command checks root, research and package documentation links (12.185426ms)
+✔ only the named Markdown handoff extends document link coverage (0.299425ms)
+✔ unhydrated native binaries and pose arrays name recovery before delivery validation (1.718807ms)
+✔ receipt comparison validates consumed fields and exact frozen case/configuration (2545.085778ms)
+✔ worker rejection terminates the pool and leaves partial output inspectable (514.888882ms)
+✔ equal bytes retain occurrence identities, source status and reference provenance (55.093062ms)
+✔ root and nested symlinks are inventoried without following their targets (26.376484ms)
+✔ pending tracked deletions report incomplete references without aborting or authorizing cleanup (46.551284ms)
+✔ native local module records original inputs and reproduces only with its implementation (3921.035689ms)
+✔ bridge labels the native benchmark and rejects misleading shared options or built-in identity collisions (2659.096925ms)
+✔ JSONL agent process preserves its game after malformed input and exports accepted actions (543.839718ms)
+✔ constrained protocol uses redacted observations for every response and meters act (335.260812ms)
+✔ development and evaluation can reuse an identical immutable bundle but cannot replace corrupt bytes (512.83389ms)
+Native case 1/20: POLICY-ADOPTION-1-DEV-01/standard/bow/quick timeout
+Native case 2/20: POLICY-ADOPTION-1-DEV-01/standard/bow/example-balanced timeout
+Native case 3/20: POLICY-ADOPTION-1-DEV-02/standard/bow/quick timeout
+Native case 4/20: POLICY-ADOPTION-1-DEV-02/standard/bow/example-balanced timeout
+Native case 5/20: POLICY-ADOPTION-1-DEV-03/standard/bow/quick timeout
+Native case 6/20: POLICY-ADOPTION-1-DEV-03/standard/bow/example-balanced timeout
+Native case 7/20: POLICY-ADOPTION-1-DEV-04/standard/bow/quick timeout
+Native case 8/20: POLICY-ADOPTION-1-DEV-04/standard/bow/example-balanced timeout
+Native case 9/20: POLICY-ADOPTION-1-DEV-05/standard/bow/quick timeout
+Native case 10/20: POLICY-ADOPTION-1-DEV-05/standard/bow/example-balanced timeout
+Native case 11/20: POLICY-ADOPTION-1-DEV-06/standard/bow/quick timeout
+Native case 12/20: POLICY-ADOPTION-1-DEV-06/standard/bow/example-balanced timeout
+Native case 13/20: POLICY-ADOPTION-1-DEV-07/standard/bow/quick timeout
+Native case 14/20: POLICY-ADOPTION-1-DEV-07/standard/bow/example-balanced timeout
+Native case 15/20: POLICY-ADOPTION-1-DEV-08/standard/bow/quick timeout
+Native case 16/20: POLICY-ADOPTION-1-DEV-08/standard/bow/example-balanced timeout
+Native case 17/20: POLICY-ADOPTION-1-DEV-09/standard/bow/quick timeout
+Native case 18/20: POLICY-ADOPTION-1-DEV-09/standard/bow/example-balanced timeout
+Native case 19/20: POLICY-ADOPTION-1-DEV-10/standard/bow/quick timeout
+Native case 20/20: POLICY-ADOPTION-1-DEV-10/standard/bow/example-balanced timeout
+Native case 1/20: POLICY-ADOPTION-1-DEV-01/standard/bow/quick timeout
+Native case 2/20: POLICY-ADOPTION-1-DEV-01/standard/bow/example-balanced timeout
+Native case 3/20: POLICY-ADOPTION-1-DEV-02/standard/bow/quick timeout
+Native case 4/20: POLICY-ADOPTION-1-DEV-02/standard/bow/example-balanced timeout
+Native case 5/20: POLICY-ADOPTION-1-DEV-03/standard/bow/quick timeout
+Native case 6/20: POLICY-ADOPTION-1-DEV-03/standard/bow/example-balanced timeout
+Native case 7/20: POLICY-ADOPTION-1-DEV-04/standard/bow/quick timeout
+Native case 8/20: POLICY-ADOPTION-1-DEV-04/standard/bow/example-balanced timeout
+Native case 9/20: POLICY-ADOPTION-1-DEV-05/standard/bow/quick timeout
+Native case 10/20: POLICY-ADOPTION-1-DEV-05/standard/bow/example-balanced timeout
+Native case 11/20: POLICY-ADOPTION-1-DEV-06/standard/bow/quick timeout
+Native case 12/20: POLICY-ADOPTION-1-DEV-06/standard/bow/example-balanced timeout
+Native case 13/20: POLICY-ADOPTION-1-DEV-07/standard/bow/quick timeout
+Native case 14/20: POLICY-ADOPTION-1-DEV-07/standard/bow/example-balanced timeout
+Native case 15/20: POLICY-ADOPTION-1-DEV-08/standard/bow/quick timeout
+Native case 16/20: POLICY-ADOPTION-1-DEV-08/standard/bow/example-balanced timeout
+Native case 17/20: POLICY-ADOPTION-1-DEV-09/standard/bow/quick timeout
+Native case 18/20: POLICY-ADOPTION-1-DEV-09/standard/bow/example-balanced timeout
+Native case 19/20: POLICY-ADOPTION-1-DEV-10/standard/bow/quick timeout
+Native case 20/20: POLICY-ADOPTION-1-DEV-10/standard/bow/example-balanced timeout
+✔ native studies freeze first and retain every bounded built-in/custom attempt with per-weapon paired evidence (584.397849ms)
+✔ reserved blocks are fresh and summary refuses duplicate or missing paired cases (0.860274ms)
+✔ Cartographer confirmation validates the complete frozen 900-case contract and refuses misleading promotion (2252.249256ms)
+✔ complete synthetic1170 grid keeps hero denominators, nine contrasts and270 matched style cells (188.696845ms)
+✔ sample count is read from a frozen synthetic contract, including synthetic80 without pooled denominators (453.536787ms)
+✔ valid living timeout remains a nonwin, while execution errors and unavailable audits block promotion (262.517605ms)
+✔ a claim of native victory needs terminal outcome, HP and all native completion counters (255.572271ms)
+✔ missing, duplicate and mismatched hero/tier grids cannot silently shrink denominators (273.024544ms)
+✔ consistent but wrong budgets, streams, worker counts, seed population and policy versions are refused (175.553851ms)
+✔ native4 identity, missing provenance pins and changed source receipt claims cannot masquerade as current5 (84.207177ms)
+✔ gzip receipt syntax, bounded bytes, exact case filename and format metadata are mandatory (349.183524ms)
+✔ Severe existence failure is separate from statistically strong endpoints and remains observed only (326.541138ms)
+✔ sub5% analysis ties preserve official exact score2 and do not create primary material advantages (175.533905ms)
+✔ strict analysis5% boundary is directional, while sub5% is tied and first four score components dominate time (0.282548ms)
+✔ material sign bits retain all60 pairs, separate42 ties, and expose zero victory difference (196.00654ms)
+✔ source-pinned per-hero direction can differ; pure selection validates explicit per-hero direction and viability (232.7199ms)
+✔ each primary contrast retains all60 exact score pairs while a sub5% winning gap remains a practical tie (178.242521ms)
+✔ lossless containers preserve original JSON bytes, Unicode and exact encoded hashes (15.623084ms)
+✔ malformed containers, invalid UTF-8 and oversized encoded/decoded inputs fail closed (8.997024ms)
+✔ remote streams stop oversized input and retain exact bytes across chunk boundaries (1.529233ms)
+✔ stored artifact receipts pin exact bytes; decode follows magic rather than extension (20.385919ms)
+✔ HTTP content encoding cannot silently replace original gzip bytes (0.769237ms)
+✔ paired binary evidence retains uncertainty without discordance and exact tails with it (3.299206ms)
+✔ planned family adjustment preserves identities and step-down monotonicity (0.803825ms)
+✔ recorded Cartographer wire identity routes back through the public audit CLI (2007.864699ms)
+✔ fresh study subsets freeze the requested policy and independent seed population (3019.573895ms)
+✔ common CLI preserves native Night Passage schema, custom timing and unavailable unknown reproduction (1569.154218ms)
+✔ calibration cannot certify a plan with empty source provenance (173.520141ms)
+✔ default gzip records pin original bytes and audit without a format flag (1347.453108ms)
+✔ shared byte limits preserve oversized native Night Passage auto-schema audit (3999.673339ms)
+✔ ledger refuses duplicates, mismatched identities and reused output; crash tails never become cases (26.045885ms)
+Case 1/3: FAST-standard-test timeout
+Case 2/3: ERROR-standard-test error
+Case 1/3: FAST-standard-test timeout
+Case 2/3: SLOW-standard-test timeout
+✔ serial and parallel later failures retain completed summaries in grid order without rollout files (231.088031ms)
+✔ SIGKILL preserves an acknowledged case and recover needs neither runtime compilation nor a final report (520.152367ms)
+✔ full row population alone is interrupted; only a matching final report receipt establishes completion (6.023452ms)
+Case 1/2: POLICY-ADOPTION-1-DEV-02-standard-survival timeout
+Case 2/2: POLICY-ADOPTION-1-DEV-01-standard-immediate timeout
+✔ parallel episodes retain exact serial evidence and worker exits fail instead of hanging (961.844105ms)
+✔ unchanged selected runtime sources stay reproducible after temporary entry cleanup (473.975368ms)
+✔ development and reserved seed blocks stay disjoint and paired intervals preserve signed differences (1.961447ms)
+✔ character strata retain paired seed denominators and reject missing/duplicate cases (3.775101ms)
+✔ zero observed paired wins cannot claim zero-width population certainty (0.259396ms)
+✔ ordinal score reports paired tradeoffs without scalar means or ranking execution errors (3.028502ms)
+✔ default output classification rejects symlink containers and protected sources (19.371805ms)
+✔ dry-run preserves bytes and apply deletes only the eligible exact entry (16.846815ms)
+✔ open, pinned, fresh, unclassified and future-dated entries stay protected (13.684953ms)
+✔ post-plan edits, new files and stale receipts prevent deletion (19.376227ms)
+✔ symlinked containers and entries cannot escape deletion scope (12.229338ms)
+✔ tracked content and artist source are protected even with a receipt (12.930379ms)
+✔ sessions require a tracked promotion target and expire after 30 days (11.618601ms)
+✔ forged plans cannot delete unclassified directories outside the allowed roots (7.843565ms)
+✔ runtime pins cover bundled sources, exclude external modules and preserve caller files (281.764127ms)
+✗ Build failed in 9ms
+✔ ordinary bundles preserve plugins and clean their own output on callback or build failure (100.387037ms)
+✔ Night Passage retains an importable digest-named bundle and pins shared tooling (72.082883ms)
+✔ episode artifacts can load, hash and encode without initializing the build toolchain (142.349949ms)
+ℹ tests 202
+ℹ suites 0
+ℹ pass 202
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 48225.246477
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> card-workshop@0.1.0 test:dcc
+> node --test packages/dcc-workbench/*.test.mjs
+
+✔ an explicit Blender override is authoritative, including missing and empty values (4.196493ms)
+✔ automatic discovery skips only missing candidates and stops after startup failure (1.430533ms)
+✔ unsupported Blender versions fail before an authoring command or fallback (2.868262ms)
+✔ native invocation preserves saved-source ordering and script arguments, and reports failures (4.412255ms)
+✔ active CLI validates native overrides while offline commands retain their own contracts (2304.612899ms)
+✔ boar delivery retains saved source identity, five baked motions and valid cloven support (192.296875ms)
+✔ boar delivery refuses a planted digit that slides through its support interval (100.172959ms)
+✔ canid deliveries retain source identity, complete clips, contact, and valid skinning (339.37539ms)
+✔ the initial canid baseline remains valid alongside the refined delivery (85.168338ms)
+✔ delivery validation rejects accidentally committed pose fixtures (14.422729ms)
+✔ canid checks reject altered exporter identities and malformed models with character context (83.80367ms)
+✔ fox delivery keeps five saved clips, source identity and articulated support (146.088391ms)
+✔ motion measurements cannot approve an unreviewed rubric or hide missing evidence (6.207685ms)
+✔ the canid adapter evaluates every delivered motion and catches stretched attack timing (14.005314ms)
+✔ static delivery has real geometry without inventing bones or motion (3.127022ms)
+✔ rigid delivery carries a bounded loop without skin weights (1.772344ms)
+✔ a malformed triangle accessor cannot pass because its total count looks plausible (0.616778ms)
+✔ motion delivery rejects missing clips and incorrect or non-increasing sample times (242.732383ms)
+✔ loops must close while one-shot endpoints and opposite quaternion signs remain valid (193.26287ms)
+✔ motion delivery refuses missing skin, invalid weights or joints, normals and non-finite data (271.824345ms)
+✔ delivery budgets are inclusive and assets must embed their dependencies (455.168345ms)
+✔ exporter identity requires the exact declared file set and current file hashes (2.657318ms)
+✔ four enemy deliveries pin saved masters and preserve finite weighted surfaces and bounded looping motions (39.047468ms)
+✔ sepulcher pins its saved static kit and keeps its surfaces inside the rules footprint contract (65.404114ms)
+✔ archive pins its saved static kit and keeps its surfaces inside the rules footprint contract (19.810875ms)
+✔ cinder pins its saved static kit and keeps its surfaces inside the rules footprint contract (10.817864ms)
+✔ starless pins its saved static kit and keeps its surfaces inside the rules footprint contract (14.119863ms)
+✔ bellwarden pins its saved source and exports finite weighted surfaces with 6 bounded clips (50.533761ms)
+✔ undertow pins its saved source and exports finite weighted surfaces with 6 bounded clips (12.140694ms)
+✔ ashregent pins its saved source and exports finite weighted surfaces with 6 bounded clips (23.877364ms)
+✔ sovereign pins its saved source and exports finite weighted surfaces with 7 bounded clips (32.492663ms)
+✔ Night Passage hero pins its saved master and has finite weighted geometry, two sockets and sixteen bounded clips (45.405095ms)
+✔ Night Passage armory pins editable authority, six grips and a nontrivial bow morph (24.085255ms)
+✔ otter delivery retains saved source identity, five baked motions and valid five-toed paw support (179.621648ms)
+✔ otter delivery refuses a planted digit that slides through its support interval (111.07237ms)
+✔ every published subject retains its declared rig, motion and embedded materials (2064.602534ms)
+✔ delivery refuses geometry and transfer-size budget overruns (160.710525ms)
+✔ delivery refuses truncation and inconsistent animation duration (70.139645ms)
+✔ non-finite geometry and broken skin weights cannot be published (53.453158ms)
+✔ comparison baselines retain their pinned bytes and distinct identities (113.147517ms)
+✔ raven delivery retains saved source identity, five baked motions and valid avian support (131.811189ms)
+✔ raven delivery refuses a planted digit that slides through its support interval (90.39757ms)
+✔ Hydra preserves its study identity while the saved native source has complete declared inputs (12.197219ms)
+✔ a second synthetic asset stays isolated without changing Hydra receipt identity (37.332891ms)
+✔ unknown schemas, unknown fields, invalid ids and mismatched motion contracts fail closed (10.708256ms)
+✔ path escapes and output aliasing cannot redirect source or delivery writes (21.9256ms)
+✔ cross-asset identity and file ownership collisions are rejected while distinct nested outputs work (10.144608ms)
+✔ an omitted local Python import or missing adapter is caught before native execution (5.305922ms)
+✔ existing and future file paths cannot escape through symlinked output directories (0.947631ms)
+✔ promotion preserves source and brief coherently, exposes reviewed scope, and retains previous deliveries (54.576272ms)
+✔ sealing rejects omitted pins, unexpected pins, changed export inputs and changed definitions (3.044219ms)
+▶ promotion rejects changed model or native metadata, rejected review, and post-review source edits
+  ✔ model (29.872843ms)
+  ✔ audit (16.505611ms)
+  ✔ poses (9.986198ms)
+  ✔ rejected (11.991075ms)
+  ✔ source (11.958036ms)
+✔ promotion rejects changed model or native metadata, rejected review, and post-review source edits (82.274589ms)
+✔ a rehashed incomplete candidate still cannot bypass mandatory input membership (4.330546ms)
+✔ reviews bind candidate identity, exact digest, parent role and concrete observations (12.67498ms)
+✔ an export based on an older current pointer cannot replace a newer accepted release (23.502976ms)
+✔ interruption after copying a complete release leaves current and artist source intact and permits retry (24.873858ms)
+✔ input changes during staged validation cannot publish stale source bytes (14.635751ms)
+✔ candidate files cannot escape through relative paths or symlink aliases (2.753243ms)
+✔ two assets publish independently, and cross-asset candidates and pointers are rejected (22.054295ms)
+✔ legacy fallback requires source and every delivery pin, and never upgrades provenance by assumption (3.102275ms)
+▶ reader verification catches changed published output and copied source bytes
+  ✔ modelPath (27.388595ms)
+  ✔ sourcePath (9.930413ms)
+  ✔ briefPath (11.039546ms)
+  ✔ auditPath (9.082274ms)
+✔ reader verification catches changed published output and copied source bytes (58.129988ms)
+✔ an existing publisher lock prevents concurrent replacement and is retained for inspection (13.779044ms)
+✔ review evidence must exist inside its reserved candidate subtree (8.442354ms)
+▶ changed or deleted reviewed evidence cannot promote or remain a verified release
+  ✔ changed-before-promotion (13.505241ms)
+  ✔ deleted-before-promotion (34.090826ms)
+  ✔ changed-during-validation (18.456633ms)
+  ✔ changed-after-publication (16.099589ms)
+✔ changed or deleted reviewed evidence cannot promote or remain a verified release (82.970156ms)
+✔ registry relocation preserves prior release authority while freshness and next promotion use the new definition (21.186599ms)
+✔ reader uses the frozen motion contract and rejects tampered embedded definitions (13.262778ms)
+✔ changing a working gallery mapping cannot redirect a previously accepted release (35.612731ms)
+✔ draft registrations stay out of browser imports, first publications and review captures are watched, invalid receipts fail closed (118.413751ms)
+ℹ tests 81
+ℹ suites 0
+ℹ pass 81
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5150.059518
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> card-workshop@0.1.0 build
+> tsc -b && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 485 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                          0.44 kB │ gzip:     0.28 kB
+dist/assets/weapons-DQmiCMVC.glb                        81.39 kB
+dist/assets/enemy-witch-kMknJd9x.glb                    85.41 kB
+dist/assets/environment-starless-Chy0e4gp.glb           90.89 kB
+dist/assets/enemy-hunter-62bZVet8.glb                   98.28 kB
+dist/assets/enemy-archer-Bm8Xp7BT.glb                  104.82 kB
+dist/assets/motion-B50UWxYz.blend                      111.45 kB
+dist/assets/enemy-brute-BTnWpJJy.glb                   160.98 kB
+dist/assets/environment-cinder-B_0d-iMy.glb            170.18 kB
+dist/assets/environment-sepulcher-Dx-QukVm.glb         191.98 kB
+dist/assets/guardian-ashregent-DVxZBGI1.glb            248.28 kB
+dist/assets/environment-archive-DKl5NFjS.glb           279.02 kB
+dist/assets/motion-Dwpe79OM.blend                      284.75 kB
+dist/assets/hydra-before-fBeNbnQc.png                  288.80 kB
+dist/assets/guardian-bellwarden-CxWB0w1a.glb           296.22 kB
+dist/assets/guardian-undertow-DeW-Kjj7.glb             310.36 kB
+dist/assets/hero-Bf2Ecrrl.glb                          351.08 kB
+dist/assets/pose-samples-4NoYFKbt.json                 418.55 kB │ gzip:    76.57 kB
+dist/assets/pose-samples-DAmlSplh.json                 418.60 kB │ gzip:    76.69 kB
+dist/assets/pose-samples-CXYPgxty.json                 434.31 kB │ gzip:    73.13 kB
+dist/assets/motion-BnB9ZQAF.blend                      434.36 kB
+dist/assets/guardian-sovereign-MCs8RX7v.glb            458.24 kB
+dist/assets/pose-samples-xmIxuNmy.json                 462.76 kB │ gzip:    86.43 kB
+dist/assets/pose-samples-BL03zx7H.json                 474.44 kB │ gzip:    89.27 kB
+dist/assets/pose-samples-uppOo1nn.json                 488.40 kB │ gzip:    90.87 kB
+dist/assets/motion-DA4O6GuP.blend                      515.02 kB
+dist/assets/motion-BsELuBy0.blend                      621.42 kB
+dist/assets/source-f1qe0Jwz.blend                      863.65 kB
+dist/assets/source-3ywFtJM7.blend                      883.98 kB
+dist/assets/source-BqdWdJ_j.blend                      887.64 kB
+dist/assets/pose-samples-jH37quaH.json                 953.12 kB │ gzip:   202.63 kB
+dist/assets/moss-CDRCArcO.glb                        1,056.85 kB
+dist/assets/motion-DZgJxkYo.blend                    1,064.30 kB
+dist/assets/russet-DHUhWoGx.glb                      1,084.19 kB
+dist/assets/ash-DBVSQFyz.glb                         1,084.22 kB
+dist/assets/vajra-B7kgsmcI.glb                       1,604.33 kB
+dist/assets/pose-samples-Dn_0jHJp.json               1,812.31 kB │ gzip:   398.67 kB
+dist/assets/source-7N6UrsgN.blend                    2,137.37 kB
+dist/assets/source-CIB_23Wm.blend                    2,268.31 kB
+dist/assets/source-C82Rgxg-.blend                    2,433.19 kB
+dist/assets/boar-XBkeYS15.glb                        2,828.34 kB
+dist/assets/raven-C94SJMNc.glb                       2,930.94 kB
+dist/assets/source-CCq-bqeC.blend                    3,061.44 kB
+dist/assets/source-CE96kL48.blend                    3,066.56 kB
+dist/assets/source-DoH2Y6XX.blend                    3,076.83 kB
+dist/assets/source-ngwYzvcD.blend                    3,268.70 kB
+dist/assets/fox-B228-TAK.glb                         3,283.89 kB
+dist/assets/moss-C6FQphpb.glb                        3,801.05 kB
+dist/assets/ash-BLpifl5o.glb                         3,803.79 kB
+dist/assets/russet-DkdMUP3J.glb                      3,810.31 kB
+dist/assets/otter-UnzE6BtT.glb                       3,940.17 kB
+dist/assets/pose-samples-Db4Vk_z9.json               4,545.01 kB │ gzip:   977.34 kB
+dist/assets/spiral-BbM8JKvv.glb                      4,623.02 kB
+dist/assets/catalyst-_QcBoFTt.glb                    5,345.86 kB
+dist/assets/pose-samples-C4JkbC1-.json               5,406.72 kB │ gzip: 1,165.62 kB
+dist/assets/guardian-Bj1JLLiV.glb                    6,133.32 kB
+dist/assets/source-DPvS_Ccy.blend                    6,239.52 kB
+dist/assets/source-rmvyrIDE.blend                    6,266.70 kB
+dist/assets/model-BaqNgc-m.glb                       6,491.44 kB
+dist/assets/source-BPFa84qg.blend                    7,026.80 kB
+dist/assets/source-C-m6mdQ0.blend                    7,027.40 kB
+dist/assets/model-DjZgiyrC.glb                       7,033.98 kB
+dist/assets/source-BeqFKQ6o.blend                    7,042.28 kB
+dist/assets/model-C0d7X1Dy.glb                       7,142.48 kB
+dist/assets/model-d69qsjZs.glb                       7,143.15 kB
+dist/assets/source-0Hqo7PAp.blend                    7,213.30 kB
+dist/assets/thornstag-Bj2wFpL6.glb                   7,213.79 kB
+dist/assets/model-BYXySwWc.glb                       7,232.17 kB
+dist/assets/stray-DlH-3LTE.glb                       7,296.81 kB
+dist/assets/source-DtmCRGJZ.blend                    7,705.83 kB
+dist/assets/model-C8bB9lop.glb                       7,776.62 kB
+dist/assets/scavenger-7pqiNUuq.glb                   8,040.28 kB
+dist/assets/source-DczAipRa.blend                    8,490.94 kB
+dist/assets/cub-Biv33zYJ.glb                         8,865.93 kB
+dist/assets/moonmoth-Bcz6yHo1.glb                    9,058.76 kB
+dist/assets/bogtoad-B4qRWU9S.glb                     9,769.15 kB
+dist/assets/model-D69y35Pz.glb                      10,000.62 kB
+dist/assets/blender-before-C6ieOXEh.glb             10,165.27 kB
+dist/assets/blender-gesture-DLVh8-rU.glb            10,165.41 kB
+dist/assets/packcaller-TNDsqBZx.glb                 10,530.68 kB
+dist/assets/imp-DYe05M3y.glb                        10,864.30 kB
+dist/assets/tortoise-C3Wf3jLi.glb                   10,927.43 kB
+dist/assets/juggler-BorT9HZM.glb                    11,228.91 kB
+dist/assets/model--EpQOT6s.glb                      12,204.81 kB
+dist/assets/crocolisk-DotMylSt.glb                  12,926.10 kB
+dist/assets/amalgam-BONAamwh.glb                    13,772.13 kB
+dist/assets/source-CkliMk47.blend                   16,200.17 kB
+dist/assets/herald-Dz0MAfbK.glb                     16,257.30 kB
+dist/assets/model-B-LLPiCO.glb                      16,711.20 kB
+dist/assets/model-DUX4qTEu.glb                      17,612.72 kB
+dist/assets/source-CxPNREsK.blend                   18,205.97 kB
+dist/assets/patron-DMPVJO3O.glb                     20,009.66 kB
+dist/assets/matron-jGrKFlkv.glb                     20,344.34 kB
+dist/assets/accepted-hydra-CiVnLLg9.glb             20,734.66 kB
+dist/assets/squire-BqktAPQm.glb                     26,564.60 kB
+dist/assets/watcher-BLfAxsJs.glb                    26,883.66 kB
+dist/assets/bannerbearer-BUbfg5MY.glb               32,930.24 kB
+dist/assets/AbilityArt-JEyagk1I.css                      0.05 kB │ gzip:     0.07 kB
+dist/assets/CardArt-UOfMBC95.css                         0.17 kB │ gzip:     0.14 kB
+dist/assets/Review-DQCJoY7X.css                          0.27 kB │ gzip:     0.17 kB
+dist/assets/Review-C719borX.css                          0.28 kB │ gzip:     0.19 kB
+dist/assets/Resolution-gmJ3FfVe.css                      0.60 kB │ gzip:     0.34 kB
+dist/assets/CartographerApp-C9hB2Jj0.css                 0.65 kB │ gzip:     0.36 kB
+dist/assets/Review-B4Hm-d68.css                          0.66 kB │ gzip:     0.32 kB
+dist/assets/MinionCard-CgMYQjX-.css                      0.88 kB │ gzip:     0.45 kB
+dist/assets/CanidAttackStage-8GYgGhqR.css                0.95 kB │ gzip:     0.46 kB
+dist/assets/Review-BCcE3zfg.css                          0.99 kB │ gzip:     0.44 kB
+dist/assets/Artwork-DFj8VZ-A.css                         1.26 kB │ gzip:     0.55 kB
+dist/assets/arena-BlS1rn85.css                           1.28 kB │ gzip:     0.58 kB
+dist/assets/CanidComparison-aFTAlHnm.css                 2.04 kB │ gzip:     0.80 kB
+dist/assets/BlindsideApp-DITagJ1b.css                    2.48 kB │ gzip:     1.01 kB
+dist/assets/GameGuide-BMo83m2H.css                       3.16 kB │ gzip:     1.11 kB
+dist/assets/ScrapyardApp-CrVANz-r.css                    3.65 kB │ gzip:     1.26 kB
+dist/assets/GameGlossary-DneZpMdu.css                    4.46 kB │ gzip:     1.44 kB
+dist/assets/workshop-rMOslDfO.css                        5.60 kB │ gzip:     1.83 kB
+dist/assets/artifact-0GvWhWaW.css                        5.91 kB │ gzip:     1.83 kB
+dist/assets/Challenges-BFkyMx6x.css                      8.60 kB │ gzip:     2.28 kB
+dist/assets/NightPassageApp-D6EhOYXu.css                 8.73 kB │ gzip:     2.72 kB
+dist/assets/Studio-COnynMOh.css                          9.70 kB │ gzip:     2.63 kB
+dist/assets/styles-DMvUqyT9.css                         10.86 kB │ gzip:     3.30 kB
+dist/assets/Workbench-CSHgRy6n.css                      11.15 kB │ gzip:     2.96 kB
+dist/assets/DiabloApp-D_aTQFMt.css                      14.17 kB │ gzip:     3.89 kB
+dist/assets/index-D7gjaCJN.css                          65.67 kB │ gzip:    15.19 kB
+dist/assets/json-dzmhDLuq.js                             0.09 kB │ gzip:     0.09 kB
+dist/assets/download-BOR3yhXs.js                         0.20 kB │ gzip:     0.18 kB
+dist/assets/random-D5NGInjb.js                           0.40 kB │ gzip:     0.27 kB
+dist/assets/lifetime-Bwavox1Y.js                         0.70 kB │ gzip:     0.41 kB
+dist/assets/AssetSvg-BnSY7Wi8.js                         1.00 kB │ gzip:     0.59 kB
+dist/assets/workshop-CpkDPv3V.js                         1.35 kB │ gzip:     0.60 kB
+dist/assets/motion-contract-vK92O05R.js                  1.65 kB │ gzip:     0.81 kB
+dist/assets/Playback-A5O2kI9l.js                         2.04 kB │ gzip:     0.89 kB
+dist/assets/layout-LrkDoyQ_.js                           2.82 kB │ gzip:     1.41 kB
+dist/assets/scenario-CI_ud9OR.js                         3.16 kB │ gzip:     1.33 kB
+dist/assets/artifact-DNEoJb5o.js                         3.46 kB │ gzip:     1.44 kB
+dist/assets/GameGuide-Ds9i1i6l.js                        4.50 kB │ gzip:     2.09 kB
+dist/assets/CombatPlayer-Cc_PKpa4.js                     4.69 kB │ gzip:     1.88 kB
+dist/assets/CanidAttackStage-DU1Betx1.js                 5.15 kB │ gzip:     2.47 kB
+dist/assets/WorkshopArt-BziwsP4i.js                      7.19 kB │ gzip:     2.25 kB
+dist/assets/SpireApp-wPM4_Did.js                         8.36 kB │ gzip:     3.33 kB
+dist/assets/GameGuide-B6jlDneW.js                       10.85 kB │ gzip:     3.90 kB
+dist/assets/Review-B9ae4iTH.js                          12.29 kB │ gzip:     4.66 kB
+dist/assets/HydraComparison-B1apQawv.js                 12.56 kB │ gzip:     5.53 kB
+dist/assets/Review-ClKU_MXw.js                          13.58 kB │ gzip:     5.27 kB
+dist/assets/styles-B4Xmtc7s.js                          13.65 kB │ gzip:     5.24 kB
+dist/assets/Review-C0nPoFRr.js                          13.91 kB │ gzip:     5.50 kB
+dist/assets/CardArt-uX0l-F4G.js                         16.60 kB │ gzip:     5.68 kB
+dist/assets/WorldItemArt-Cd-WuAGy.js                    17.27 kB │ gzip:     5.51 kB
+dist/assets/Review-BG7WV22r.js                          17.92 kB │ gzip:     5.87 kB
+dist/assets/Rooms-CixtyKdS.js                           21.27 kB │ gzip:     7.22 kB
+dist/assets/CartographerApp-DNvy1Urq.js                 22.50 kB │ gzip:     7.77 kB
+dist/assets/BattlegroundsApp-f2sZ9q7_.js                24.62 kB │ gzip:     8.19 kB
+dist/assets/Challenges-CqevhKj1.js                      25.74 kB │ gzip:     8.80 kB
+dist/assets/WorkshopTools-C65cj7qE.js                   26.44 kB │ gzip:     8.14 kB
+dist/assets/arena-xoAu776D.js                           26.68 kB │ gzip:     9.51 kB
+dist/assets/Review-g5XjDru0.js                          27.55 kB │ gzip:    10.22 kB
+dist/assets/Review-CDj0XaNN.js                          29.20 kB │ gzip:    10.90 kB
+dist/assets/BlindsideApp-B5aCHZ9_.js                    33.58 kB │ gzip:    10.21 kB
+dist/assets/ash-BPaul3Pf.js                             34.49 kB │ gzip:     7.89 kB
+dist/assets/DiabloApp-BDcGZzie.js                       34.74 kB │ gzip:    11.02 kB
+dist/assets/Card-CeNqYScp.js                            36.69 kB │ gzip:    12.29 kB
+dist/assets/_virtual_card-workshop-dcc-CO8ToT_h.js      39.12 kB │ gzip:    10.19 kB
+dist/assets/ScrapyardApp-BRSFALgl.js                    39.98 kB │ gzip:    15.25 kB
+dist/assets/MinionCard-DPCfO1Y5.js                      40.66 kB │ gzip:    12.85 kB
+dist/assets/GameGlossary-B3jb--6S.js                    43.16 kB │ gzip:    16.02 kB
+dist/assets/Studio-C-blEVIx.js                          53.34 kB │ gzip:    20.98 kB
+dist/assets/Artwork-CoG2A_Fk.js                         67.41 kB │ gzip:    19.41 kB
+dist/assets/Workbench-YWRjpP2n.js                       70.21 kB │ gzip:    14.95 kB
+dist/assets/CanidComparison-Dmgwtmnk.js                 85.98 kB │ gzip:    22.75 kB
+dist/assets/session-CcOoHLFZ.js                         89.03 kB │ gzip:    30.56 kB
+dist/assets/Resolution-D3cBVjRe.js                     110.52 kB │ gzip:    36.07 kB
+dist/assets/AbilityArt-NM8kYNYW.js                     126.24 kB │ gzip:    35.47 kB
+dist/assets/NightPassageApp-QIH-LSJt.js                145.63 kB │ gzip:    50.72 kB
+dist/assets/MinionArt-DEKGamhJ.js                      146.32 kB │ gzip:    48.74 kB
+dist/assets/index-gH_hPNgP.js                          232.63 kB │ gzip:    73.09 kB
+dist/assets/resources-BzTie3C5.js                      651.81 kB │ gzip:   163.52 kB
+
+✓ built in 1.79s
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

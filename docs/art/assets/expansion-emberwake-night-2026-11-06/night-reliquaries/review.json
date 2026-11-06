@@ -1,0 +1,34 @@
+{
+  "reviewer": "Primary author self-review",
+  "original_inspected": true,
+  "native_and_compact_inspected": true,
+  "actual_game_ui": "Unsupported future sanctum props, no native 3D or runtime placement review.",
+  "cells": [
+    {
+      "subject": "aster-cloud-vessel",
+      "outcome": "candidate",
+      "notes": "Offset stepped lid, broad slots and stone cradle make a compact solid offering vessel. Warm broad planes stay readable without repeating the bolt mark."
+    },
+    {
+      "subject": "neris-current-coffer",
+      "outcome": "candidate-with-caveat",
+      "notes": "Supported hinged lid, hollow rim and aqua insert read at native/compact sizes. Exterior planes lean toward stone rather than glazed ceramic; material remains a proposal."
+    },
+    {
+      "subject": "vesta-ember-press",
+      "outcome": "candidate",
+      "notes": "Screw, connected frame, slotted copper cheek and recessed coal read clearly. Strong supported construction distinguishes it from an existing brazier or furnace monument."
+    },
+    {
+      "subject": "isen-salt-casket",
+      "outcome": "candidate",
+      "notes": "Sliding thick lid, open dark cavity and icy rim establish a distinct long casket. Broad pale surfaces stay legible; fine frost is intentionally subordinate."
+    },
+    {
+      "subject": "nyra-folded-screen",
+      "outcome": "candidate-with-caveat",
+      "notes": "Unequal panels, feet and actual hinge positions are clear at compact size. The returned panels are gray and rigid rather than the requested plum cloth; useful screen construction study, not a finished patron-material match."
+    }
+  ],
+  "aesthetic_acceptance": "Optional candidates with explicit material departures. No reroll; user acceptance pending."
+}

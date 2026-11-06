@@ -1,0 +1,56 @@
+[
+  {
+    "file": "sheet.svg",
+    "native": [2160, 768],
+    "compact": [1080, 384],
+    "bbox": [59, 31, 2037, 707.1481323242188],
+    "badRefs": [],
+    "tags": ["g", "defs", "linearGradient", "stop", "path", "circle", "ellipse"],
+    "backgroundsRemoved": 6
+  },
+  {
+    "file": "aster-listening-alcove.svg",
+    "native": [360, 192],
+    "compact": [180, 96],
+    "bbox": [63, 32, 592, 322],
+    "badRefs": [],
+    "tags": ["g", "defs", "linearGradient", "stop", "path", "circle"],
+    "backgroundsRemoved": 1
+  },
+  {
+    "file": "neris-water-table.svg",
+    "native": [360, 192],
+    "compact": [180, 96],
+    "bbox": [68, 39, 588, 312.48486328125],
+    "badRefs": [],
+    "tags": ["g", "defs", "linearGradient", "stop", "path"],
+    "backgroundsRemoved": 1
+  },
+  {
+    "file": "vesta-bread-stone.svg",
+    "native": [360, 192],
+    "compact": [180, 96],
+    "bbox": [64, 31, 592, 321.59259033203125],
+    "badRefs": [],
+    "tags": ["g", "defs", "linearGradient", "stop", "path", "circle"],
+    "backgroundsRemoved": 1
+  },
+  {
+    "file": "isen-quiet-ledge.svg",
+    "native": [360, 192],
+    "compact": [180, 96],
+    "bbox": [59, 33, 598, 319],
+    "badRefs": [],
+    "tags": ["g", "defs", "linearGradient", "stop", "path", "ellipse"],
+    "backgroundsRemoved": 1
+  },
+  {
+    "file": "nyra-unseen-seat.svg",
+    "native": [360, 192],
+    "compact": [180, 96],
+    "bbox": [76, 36, 575, 318.14813232421875],
+    "badRefs": [],
+    "tags": ["g", "defs", "linearGradient", "stop", "path", "circle"],
+    "backgroundsRemoved": 1
+  }
+]

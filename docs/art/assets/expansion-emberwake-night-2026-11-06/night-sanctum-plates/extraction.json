@@ -1,0 +1,67 @@
+[
+  {
+    "subject": "aster-listening-alcove",
+    "source": "night-sanctum-plates/sheet.svg",
+    "source_sha256": "7ea85997ad50a188c7008fc9292a87cb03e72d5c994b145a352162420bd74007",
+    "source_cell": 1,
+    "crop": [0, 0, 720, 384],
+    "group_id": "aster-listening-alcove",
+    "removed_transform": "translate(0 0)",
+    "expected_transform": "translate(0 0)",
+    "output": "night-sanctum-plates/aster-listening-alcove.svg",
+    "sha256": "49a5f76fd11ec0fab2560a05bfd2ef8e27cad31bf67996f0e6fe7ce24b08eb06",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "neris-water-table",
+    "source": "night-sanctum-plates/sheet.svg",
+    "source_sha256": "7ea85997ad50a188c7008fc9292a87cb03e72d5c994b145a352162420bd74007",
+    "source_cell": 2,
+    "crop": [720, 0, 720, 384],
+    "group_id": "neris-water-table",
+    "removed_transform": "translate(720 0)",
+    "expected_transform": "translate(720 0)",
+    "output": "night-sanctum-plates/neris-water-table.svg",
+    "sha256": "205c31cb47ea92bf9a3a2591f37a0dbc9afa361647f54532ed4bb1ee8d626cb9",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "vesta-bread-stone",
+    "source": "night-sanctum-plates/sheet.svg",
+    "source_sha256": "7ea85997ad50a188c7008fc9292a87cb03e72d5c994b145a352162420bd74007",
+    "source_cell": 3,
+    "crop": [1440, 0, 720, 384],
+    "group_id": "vesta-bread-stone",
+    "removed_transform": "translate(1440 0)",
+    "expected_transform": "translate(1440 0)",
+    "output": "night-sanctum-plates/vesta-bread-stone.svg",
+    "sha256": "378be5267e1af9888713aa5624d63b3374b3d73ebcfea252a734a30666a65ba7",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "isen-quiet-ledge",
+    "source": "night-sanctum-plates/sheet.svg",
+    "source_sha256": "7ea85997ad50a188c7008fc9292a87cb03e72d5c994b145a352162420bd74007",
+    "source_cell": 4,
+    "crop": [0, 384, 720, 384],
+    "group_id": "isen-quiet-ledge",
+    "removed_transform": "translate(0 384)",
+    "expected_transform": "translate(0 384)",
+    "output": "night-sanctum-plates/isen-quiet-ledge.svg",
+    "sha256": "350b092ecf43e0601da7273efa77df6c44277a7eeb5bedee0017722f568e22fa",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "nyra-unseen-seat",
+    "source": "night-sanctum-plates/sheet.svg",
+    "source_sha256": "7ea85997ad50a188c7008fc9292a87cb03e72d5c994b145a352162420bd74007",
+    "source_cell": 5,
+    "crop": [720, 384, 720, 384],
+    "group_id": "nyra-unseen-seat",
+    "removed_transform": "translate(720 384)",
+    "expected_transform": "translate(720 384)",
+    "output": "night-sanctum-plates/nyra-unseen-seat.svg",
+    "sha256": "f4bc446d9909030bd0a09ac85d1045fb5d12de44637bf966441ffee76a4ec260",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  }
+]

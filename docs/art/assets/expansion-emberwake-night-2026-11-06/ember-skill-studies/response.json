@@ -1,0 +1,32 @@
+{
+  "created": 1793976749,
+  "background": "transparent",
+  "output_format": "svg",
+  "quality": "high",
+  "safety_identifier": null,
+  "size": "1440x672",
+  "svg_usage": {
+    "input_tokens": 2340,
+    "model": "gpt-6.1-sol",
+    "output_tokens": 10426,
+    "reasoning_tokens": 87,
+    "total_tokens": 12766
+  },
+  "usage": {
+    "input_tokens": 964,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 964
+    },
+    "output_tokens": 784,
+    "output_tokens_details": {
+      "image_tokens": 784,
+      "text_tokens": 0
+    },
+    "total_tokens": 1748
+  },
+  "request_id": "req_e3c7a235123c40dda31acd7d9e2200c4",
+  "http_status": 200,
+  "elapsed_seconds": 235.01,
+  "data_metadata": [{}]
+}

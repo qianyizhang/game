@@ -1,0 +1,82 @@
+{
+  "base": "3a59621",
+  "inspected": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ce4e63339a2be9fbafa75354f771ef7ba731c3c635ff5c0519d3df31f6763adc"
+    },
+    {
+      "path": "skills/card-art/SKILL.md",
+      "sha256": "df2d3b41e68eeb93fd1c1e4b7b4dd616cb2c2369ca532b71e310ada9cfb1ed32"
+    },
+    {
+      "path": "skills/card-art/references/batch-assets.md",
+      "sha256": "f38de983bc7eac7fe8674dd1e393153767731a5660816447ea864704d0e9e6d0"
+    },
+    {
+      "path": "docs/art/art-direction.md",
+      "sha256": "f75e862713cb2935c2a86288cdabb2a6e9d396580a6dc89d48db18978075fbe3"
+    },
+    {
+      "path": "docs/art/iterations/README.md",
+      "sha256": "6f5fc81d99faad0239175ba862e3cae0f8ddff3fd8b20e1fdb211e6caf8285f5"
+    },
+    {
+      "path": "docs/art/README.md",
+      "sha256": "753540d4f81e627f82d5c9b3cb4555d5fcca747c2f481e6d730500cbfbde32c8"
+    },
+    {
+      "path": "docs/guide/emberwake.md",
+      "sha256": "1fb86cd653d51067b0cd41d80404642ecd3a13176b00bc919e3c91ea6de4a6ae"
+    },
+    {
+      "path": "docs/guide/night-passage.md",
+      "sha256": "4a558e6611677e0336fab631ba83aaa9ee988d4bf23a4bce7cd05de7eca2b498"
+    },
+    {
+      "path": "docs/engineering/night-passage.md",
+      "sha256": "ed763622d78492cf38b53640cda934d560e145197539d476ffbac77efe124c03"
+    },
+    {
+      "path": "docs/engineering/decisions/0006-emberwake-world-runtime.md",
+      "sha256": "71ba8cd3586aab96a2507c1f8dc621b790131759a80816254f1d7f13c72ddd5d"
+    },
+    {
+      "path": "packages/diablo2/src/domain/content.ts",
+      "sha256": "f93f70b03b4f688c042a3ea402bce7e5727c4bed04bae183352d40c5dc0ef7fe"
+    },
+    {
+      "path": "packages/diablo2/src/ui/CharacterPanels.tsx",
+      "sha256": "a7358541195074f619f5b2be19617d03697a2c7e4bbd84d9c6c7a4c896b24436"
+    },
+    {
+      "path": "src/games/night-passage/ui/Artwork.tsx",
+      "sha256": "374ed4c4e1a1e2467eda87ab1121bd255334ee1205c047515c8a6cffdf78da5f"
+    },
+    {
+      "path": "src/games/night-passage/domain/content.ts",
+      "sha256": "75d9e3db49bee99110d51f1cf047f3921abd714b85706767b45bf4258df76c49"
+    },
+    {
+      "path": "docs/art/assets/night-passage/symbols/contact-sheet.png",
+      "sha256": "a402077eacecb2103d98481594cab39605ff639e8b2bf558fe6f36f6f795f694"
+    },
+    {
+      "path": "docs/art/assets/emberwake-silhouettes/after-zoom.webp",
+      "sha256": "31bb6cd1211913b9774be75d46bc64c82ffed3e788938dbef583cb6ac7dfc0de"
+    }
+  ],
+  "open_prs": [
+    {
+      "number": 137,
+      "head": "art/refinement-candidates-2026-11-06",
+      "overlap_excluded": [
+        "Hearth wolves",
+        "Spire swords",
+        "Cartographer relics",
+        "Emberwake category symbols",
+        "Blindside material studies"
+      ]
+    }
+  ]
+}

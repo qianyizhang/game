@@ -1,0 +1,65 @@
+[
+  {
+    "file": "sheet.svg",
+    "native": [1440, 672],
+    "compact": [720, 336],
+    "bbox": [44, 31.421052932739258, 1345.017822265625, 606.0603637695312],
+    "badRefs": [],
+    "tags": ["g", "path", "circle", "defs", "linearGradient", "stop", "ellipse"],
+    "backgroundsRemoved": 6
+  },
+  {
+    "file": "cinder-mantle.svg",
+    "native": [160, 112],
+    "compact": [80, 56],
+    "bbox": [44, 33.6315803527832, 383.6666564941406, 276.368408203125],
+    "badRefs": [],
+    "tags": ["g", "path", "circle"],
+    "backgroundsRemoved": 1
+  },
+  {
+    "file": "glassworker-visor.svg",
+    "native": [160, 112],
+    "compact": [80, 56],
+    "bbox": [73.54756164550781, 33.900001525878906, 334.45245361328125, 271.77569580078125],
+    "badRefs": [],
+    "tags": ["g", "defs", "linearGradient", "stop", "path", "ellipse", "circle"],
+    "backgroundsRemoved": 1
+  },
+  {
+    "file": "rootstep-boots.svg",
+    "native": [160, 112],
+    "compact": [80, 56],
+    "bbox": [53, 31.421052932739258, 366, 273.8398132324219],
+    "badRefs": [],
+    "tags": ["g", "path"],
+    "backgroundsRemoved": 1
+  },
+  {
+    "file": "choir-bracers.svg",
+    "native": [160, 112],
+    "compact": [80, 56],
+    "bbox": [68, 35.434783935546875, 342, 266.04669189453125],
+    "badRefs": [],
+    "tags": ["g", "path", "circle", "ellipse"],
+    "backgroundsRemoved": 1
+  },
+  {
+    "file": "slag-belt.svg",
+    "native": [160, 112],
+    "compact": [80, 56],
+    "bbox": [50.33333206176758, 39.42856979370117, 380.6666564941406, 261.5714416503906],
+    "badRefs": [],
+    "tags": ["g", "path", "ellipse", "circle"],
+    "backgroundsRemoved": 1
+  },
+  {
+    "file": "cistern-torc.svg",
+    "native": [160, 112],
+    "compact": [80, 56],
+    "bbox": [46.345455169677734, 36.230770111083984, 382.6723937988281, 246.92916870117188],
+    "badRefs": [],
+    "tags": ["g", "path", "ellipse"],
+    "backgroundsRemoved": 1
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "renderer": "Chromium / Playwright canvas, sRGB default, deviceScaleFactor 1",
+  "cells": [
+    {
+      "max_channel_delta": 0,
+      "differing_pixels": 0,
+      "subject": "aster-listening-alcove",
+      "original_crop_equals_extraction_pixels": true,
+      "source_dimensions": [720, 384],
+      "native_dimensions": [360, 192],
+      "compact_dimensions": [180, 96]
+    },
+    {
+      "max_channel_delta": 3,
+      "differing_pixels": 19,
+      "subject": "neris-water-table",
+      "original_crop_equals_extraction_pixels": false,
+      "source_dimensions": [720, 384],
+      "native_dimensions": [360, 192],
+      "compact_dimensions": [180, 96]
+    },
+    {
+      "max_channel_delta": 3,
+      "differing_pixels": 35,
+      "subject": "vesta-bread-stone",
+      "original_crop_equals_extraction_pixels": false,
+      "source_dimensions": [720, 384],
+      "native_dimensions": [360, 192],
+      "compact_dimensions": [180, 96]
+    },
+    {
+      "max_channel_delta": 1,
+      "differing_pixels": 1,
+      "subject": "isen-quiet-ledge",
+      "original_crop_equals_extraction_pixels": false,
+      "source_dimensions": [720, 384],
+      "native_dimensions": [360, 192],
+      "compact_dimensions": [180, 96]
+    },
+    {
+      "max_channel_delta": 2,
+      "differing_pixels": 33,
+      "subject": "nyra-unseen-seat",
+      "original_crop_equals_extraction_pixels": false,
+      "source_dimensions": [720, 384],
+      "native_dimensions": [360, 192],
+      "compact_dimensions": [180, 96]
+    }
+  ],
+  "extraction_comparison_note": "Exact geometry and paint preserved; translating whole sheet versus rebased cell can change edge antialiasing in Chromium. Pixel crop differences are recorded, not assumed equal.",
+  "contact_optimization": {
+    "initial_bytes": 661461,
+    "optimized_bytes": 636080,
+    "retained_bytes": 636080,
+    "pixel_equal": true,
+    "dimensions_equal": true,
+    "alpha_equal": true,
+    "mode": "RGBA",
+    "color_metadata_equal": true,
+    "sha256": "97a79b49547bd6aa701b02741cbcb2ef9b6e34b758e778b2452a61a11d834347"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "reviewer": "Primary author self-review",
+  "original_inspected": true,
+  "native_and_compact_inspected": true,
+  "actual_game_ui": "Unsupported future skills; no mechanics, trigger, timing, animation or adoption review.",
+  "cells": [
+    {
+      "subject": "root-snag",
+      "outcome": "candidate-with-caveat",
+      "notes": "Strong inward root gesture and clean empty central pocket. The upper trunk terminates flat inside the composition; a purposeful continuation crop would need review before final art."
+    },
+    {
+      "subject": "glass-shear",
+      "outcome": "candidate",
+      "notes": "Three unequal broad blades form a clear rising sweep, with restrained dust arc and coherent glass-edge planes. Tiny striations recede at compact size."
+    },
+    {
+      "subject": "bell-repulse",
+      "outcome": "candidate",
+      "notes": "Tilted bell, clapper and large separated pressure crescent clearly indicate a directional burst without concentric target rings."
+    },
+    {
+      "subject": "furnace-draft",
+      "outcome": "candidate-with-caveat",
+      "notes": "The rising heat ribbon and small vent read at compact size. The upper-right ribbon finishes with a flat graphic cut; retain as a force/material concept, not finished VFX."
+    },
+    {
+      "subject": "ash-decoy",
+      "outcome": "candidate",
+      "notes": "Empty folded mantle has a clear hollow hood and trailing dissolution, broad ash planes and restrained fragments; no living body is implied."
+    },
+    {
+      "subject": "rime-tether",
+      "outcome": "candidate",
+      "notes": "Supported stone anchors, taut curved ice strip and distinct cold planes read as a connected bridge/tether at both study sizes."
+    }
+  ],
+  "aesthetic_acceptance": "Optional static concepts; user review pending. No reroll."
+}

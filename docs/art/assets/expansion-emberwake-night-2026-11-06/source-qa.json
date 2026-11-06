@@ -1,0 +1,377 @@
+{
+  "generated_concepts": 38,
+  "original_sheets": 7,
+  "paid_successes": 7,
+  "paid_failures": 0,
+  "estimated_spend_usd": 0.970265,
+  "outstanding_reservation_usd": 0,
+  "visual_self_review_counts": {
+    "candidate-with-caveat": 11,
+    "candidate": 26,
+    "hold": 1
+  },
+  "user_accepted": 0,
+  "batches": [
+    {
+      "batch": "ember-equipment-a",
+      "original_matches_decoded_api_output": true,
+      "prompt_and_sent_settings_exact": true,
+      "original_dimensions": [1440, 672],
+      "cells": [
+        {
+          "subject": "briar-hook",
+          "geometry_and_paint_exact": true,
+          "bounds": [34.749935150146484, 31, 393.25006103515625, 274],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 31,
+          "digest_verified": true
+        },
+        {
+          "subject": "saltglass-glaive",
+          "geometry_and_paint_exact": true,
+          "bounds": [50.70310592651367, 34, 366.2969055175781, 273],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 29,
+          "digest_verified": true
+        },
+        {
+          "subject": "bellows-maul",
+          "geometry_and_paint_exact": true,
+          "bounds": [40, 32, 389.2486572265625, 257],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 32,
+          "digest_verified": true
+        },
+        {
+          "subject": "ossuary-lantern-flail",
+          "geometry_and_paint_exact": true,
+          "bounds": [75, 42.70077896118164, 334.0156555175781, 266.2992248535156],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 27.0,
+          "digest_verified": true
+        },
+        {
+          "subject": "furnace-kite",
+          "geometry_and_paint_exact": true,
+          "bounds": [94, 32, 297, 280],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 24,
+          "digest_verified": true
+        },
+        {
+          "subject": "reed-quiver",
+          "geometry_and_paint_exact": true,
+          "bounds": [81, 30, 276, 281],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 25,
+          "digest_verified": true
+        }
+      ]
+    },
+    {
+      "batch": "ember-equipment-b",
+      "original_matches_decoded_api_output": true,
+      "prompt_and_sent_settings_exact": true,
+      "original_dimensions": [1440, 672],
+      "cells": [
+        {
+          "subject": "cinder-mantle",
+          "geometry_and_paint_exact": true,
+          "bounds": [44, 33.6315803527832, 383.6666564941406, 276.368408203125],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 26.0,
+          "digest_verified": true
+        },
+        {
+          "subject": "glassworker-visor",
+          "geometry_and_paint_exact": true,
+          "bounds": [73.54756164550781, 33.900001525878906, 334.45245361328125, 271.77569580078125],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 30.324,
+          "digest_verified": true
+        },
+        {
+          "subject": "rootstep-boots",
+          "geometry_and_paint_exact": true,
+          "bounds": [53, 31.421052932739258, 366, 273.8398132324219],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 30.739,
+          "digest_verified": true
+        },
+        {
+          "subject": "choir-bracers",
+          "geometry_and_paint_exact": true,
+          "bounds": [68, 35.434783935546875, 342, 266.04669189453125],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 34.519,
+          "digest_verified": true
+        },
+        {
+          "subject": "slag-belt",
+          "geometry_and_paint_exact": true,
+          "bounds": [50.33333206176758, 39.42856979370117, 380.6666564941406, 261.5714416503906],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 35.0,
+          "digest_verified": true
+        },
+        {
+          "subject": "cistern-torc",
+          "geometry_and_paint_exact": true,
+          "bounds": [46.345455169677734, 36.230770111083984, 382.6723937988281, 246.92916870117188],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 36.231,
+          "digest_verified": true
+        }
+      ]
+    },
+    {
+      "batch": "ember-skill-studies",
+      "original_matches_decoded_api_output": true,
+      "prompt_and_sent_settings_exact": true,
+      "original_dimensions": [1440, 672],
+      "cells": [
+        {
+          "subject": "root-snag",
+          "geometry_and_paint_exact": true,
+          "bounds": [34, 31, 406, 278],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 27,
+          "digest_verified": true
+        },
+        {
+          "subject": "glass-shear",
+          "geometry_and_paint_exact": true,
+          "bounds": [30.84798812866211, 31, 415.1520080566406, 275],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 30,
+          "digest_verified": true
+        },
+        {
+          "subject": "bell-repulse",
+          "geometry_and_paint_exact": true,
+          "bounds": [54.55894470214844, 2.248767852783203, 386.381103515625, 308.07391357421875],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 2.249,
+          "digest_verified": true
+        },
+        {
+          "subject": "furnace-draft",
+          "geometry_and_paint_exact": true,
+          "bounds": [31, 32, 409, 275],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 29,
+          "digest_verified": true
+        },
+        {
+          "subject": "ash-decoy",
+          "geometry_and_paint_exact": true,
+          "bounds": [35, 31.73403549194336, 408, 275.2659606933594],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 29.0,
+          "digest_verified": true
+        },
+        {
+          "subject": "rime-tether",
+          "geometry_and_paint_exact": true,
+          "bounds": [32, 32, 414, 274],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 30,
+          "digest_verified": true
+        }
+      ]
+    },
+    {
+      "batch": "night-offering-instruments",
+      "original_matches_decoded_api_output": true,
+      "prompt_and_sent_settings_exact": true,
+      "original_dimensions": [1440, 672],
+      "cells": [
+        {
+          "subject": "aster-tuning-fork",
+          "geometry_and_paint_exact": true,
+          "bounds": [150, 30, 192, 277],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 29,
+          "digest_verified": true
+        },
+        {
+          "subject": "neris-tide-balance",
+          "geometry_and_paint_exact": true,
+          "bounds": [48, 84.08934020996094, 384, 223.9463653564453],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 27.964,
+          "digest_verified": true
+        },
+        {
+          "subject": "vesta-coal-tongs",
+          "geometry_and_paint_exact": true,
+          "bounds": [54, 32, 351, 275],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 29,
+          "digest_verified": true
+        },
+        {
+          "subject": "isen-stillness-chime",
+          "geometry_and_paint_exact": true,
+          "bounds": [51, 31.48516273498535, 378, 279.51483154296875],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 25.0,
+          "digest_verified": true
+        },
+        {
+          "subject": "nyra-witness-mirror",
+          "geometry_and_paint_exact": true,
+          "bounds": [62, 23.998184204101562, 342, 286.0018310546875],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 23.998,
+          "digest_verified": true
+        }
+      ]
+    },
+    {
+      "batch": "night-reliquaries",
+      "original_matches_decoded_api_output": true,
+      "prompt_and_sent_settings_exact": true,
+      "original_dimensions": [1440, 672],
+      "cells": [
+        {
+          "subject": "aster-cloud-vessel",
+          "geometry_and_paint_exact": true,
+          "bounds": [48, 48.42856979370117, 381, 253.57142639160156],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 34.0,
+          "digest_verified": true
+        },
+        {
+          "subject": "neris-current-coffer",
+          "geometry_and_paint_exact": true,
+          "bounds": [74.94117736816406, 29.078947067260742, 331.22015380859375, 273.9210510253906],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 29.079,
+          "digest_verified": true
+        },
+        {
+          "subject": "vesta-ember-press",
+          "geometry_and_paint_exact": true,
+          "bounds": [94, 29.5, 306, 273.5],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 29.5,
+          "digest_verified": true
+        },
+        {
+          "subject": "isen-salt-casket",
+          "geometry_and_paint_exact": true,
+          "bounds": [40, 72, 400, 222],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 40,
+          "digest_verified": true
+        },
+        {
+          "subject": "nyra-folded-screen",
+          "geometry_and_paint_exact": true,
+          "bounds": [54, 34, 367, 271],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 31,
+          "digest_verified": true
+        }
+      ]
+    },
+    {
+      "batch": "night-sanctum-furnishings",
+      "original_matches_decoded_api_output": true,
+      "prompt_and_sent_settings_exact": true,
+      "original_dimensions": [1440, 672],
+      "cells": [
+        {
+          "subject": "aster-reading-desk",
+          "geometry_and_paint_exact": true,
+          "bounds": [49, 43, 383, 260],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 33,
+          "digest_verified": true
+        },
+        {
+          "subject": "neris-footbath",
+          "geometry_and_paint_exact": true,
+          "bounds": [45.904762268066406, 61.264705657958984, 388.0952453613281, 227.73529052734375],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 45.905,
+          "digest_verified": true
+        },
+        {
+          "subject": "vesta-warming-bench",
+          "geometry_and_paint_exact": true,
+          "bounds": [36, 54, 403, 242],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 36,
+          "digest_verified": true
+        },
+        {
+          "subject": "isen-resting-cradle",
+          "geometry_and_paint_exact": true,
+          "bounds": [48, 60.95833206176758, 386, 222.0416717529297],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 46,
+          "digest_verified": true
+        },
+        {
+          "subject": "nyra-curtain-frame",
+          "geometry_and_paint_exact": true,
+          "bounds": [48, 28, 389, 269],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 28,
+          "digest_verified": true
+        }
+      ]
+    },
+    {
+      "batch": "night-sanctum-plates",
+      "original_matches_decoded_api_output": true,
+      "prompt_and_sent_settings_exact": true,
+      "original_dimensions": [2160, 768],
+      "cells": [
+        {
+          "subject": "aster-listening-alcove",
+          "geometry_and_paint_exact": true,
+          "bounds": [63, 32, 592, 322],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 30,
+          "digest_verified": true
+        },
+        {
+          "subject": "neris-water-table",
+          "geometry_and_paint_exact": true,
+          "bounds": [68, 39, 588, 312.48486328125],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 32.515,
+          "digest_verified": true
+        },
+        {
+          "subject": "vesta-bread-stone",
+          "geometry_and_paint_exact": true,
+          "bounds": [64, 31, 592, 321.59259033203125],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 31,
+          "digest_verified": true
+        },
+        {
+          "subject": "isen-quiet-ledge",
+          "geometry_and_paint_exact": true,
+          "bounds": [59, 33, 598, 319],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 32,
+          "digest_verified": true
+        },
+        {
+          "subject": "nyra-unseen-seat",
+          "geometry_and_paint_exact": true,
+          "bounds": [76, 36, 575, 318.14813232421875],
+          "inside_viewbox": true,
+          "minimum_geometry_margin": 29.852,
+          "digest_verified": true
+        }
+      ]
+    }
+  ],
+  "limits": "Pixel crops can differ at antialiased edges despite exact geometry/paint. Review verdicts do not establish user acceptance or runtime fit. No current game source, registry or selection has been changed."
+}

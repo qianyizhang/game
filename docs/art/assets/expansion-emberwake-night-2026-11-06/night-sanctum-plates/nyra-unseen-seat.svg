@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="384" viewBox="0 0 720 384"><g id="nyra-unseen-seat">
+    <defs>
+      <linearGradient id="nyra-curtain" x1="0" y1="0" x2="0.9" y2="1">
+        <stop offset="0" stop-color="#74617d"/>
+        <stop offset="0.55" stop-color="#67536e"/>
+        <stop offset="1" stop-color="#3c384b"/>
+      </linearGradient>
+      <linearGradient id="nyra-silver" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c4c9c4"/>
+        <stop offset="0.4" stop-color="#95a6aa"/>
+        <stop offset="1" stop-color="#4b626a"/>
+      </linearGradient>
+    </defs>
+    <rect width="720" height="384" fill="#10232c"/>
+    <path d="M98 79L151 45 573 36 625 63 651 115 648 320 571 347 159 351 76 328Z" fill="#29363f"/>
+    <path d="M266 76L556 59 589 101 580 296 529 326 224 326 151 295Z" fill="#0c2028"/>
+    <path d="M562 67L590 56 607 82 612 262 585 320 563 315 578 209Z" fill="#273a40"/>
+    <path d="M599 57L619 60 643 107 649 319 602 331 572 321 585 260 594 207 590 143Z" fill="#697370"/>
+    <path d="M618 83L639 111 643 234 623 272 623 322 602 331 606 269 617 227Z" fill="#7f827a"/>
+    <path d="M608 151L615 136M597 237L604 221M634 278L639 268" fill="none" stroke="#34464b" stroke-width="2"/>
+    <path d="M582 43L608 39 612 117 590 120 580 99Z" fill="#4c5c61" stroke="#10232c" stroke-width="3"/>
+    <path d="M585 46L603 44 607 112 590 115Z" fill="#95a6aa"/>
+    <path d="M199 56Q336 60 455 51L532 49Q571 48 587 85L589 95 600 91Q593 39 548 37L447 40 199 45Z" fill="url(#nyra-silver)" stroke="#26373e" stroke-width="2"/>
+    <path d="M463 43L530 41Q571 40 587 70" fill="none" stroke="#d0d2ca" stroke-width="3" stroke-linecap="round"/>
+    <path d="M514 39L513 50M526 39L525 49" stroke="#34464b" stroke-width="1.5"/>
+    <circle cx="596" cy="57" r="4.5" fill="#d0d2ca" stroke="#4c5c61" stroke-width="2"/>
+    <circle cx="599" cy="104" r="5" fill="#c2c7c3" stroke="#4c5c61" stroke-width="2"/>
+    <path d="M113 323Q206 305 321 307L555 309 622 331Q519 356 363 354 204 355 113 337Z" fill="#4b5355"/>
+    <path d="M149 338L284 315 391 324 297 349 194 348Z" fill="#a49e99"/>
+    <path d="M310 346L410 322 526 328 466 349 361 352Z" fill="#807d7c"/>
+    <path d="M241 256Q278 233 386 231 496 226 543 250L548 277 528 316 254 318 232 284Z" fill="#59615f" stroke="#10232c" stroke-width="3"/>
+    <path d="M241 256Q293 232 388 232 487 229 543 250L514 267 390 278 290 273Z" fill="#8b8b83"/>
+    <path d="M315 257Q393 241 476 246L531 252 493 267 391 276 337 269Z" fill="#c3b8b0"/>
+    <path d="M241 256L290 273 310 316 254 318 232 284Z" fill="#34464b"/>
+    <path d="M337 269L391 276 428 275 449 291 435 319 308 316Z" fill="#7b7d76"/>
+    <path d="M514 267L543 250 548 277 528 316 487 319 500 291Z" fill="#30454a"/>
+    <path d="M514 278L504 294 502 311M264 281L255 292M371 295L382 301" fill="none" stroke="#263b40" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M117 59Q142 40 175 43L273 42 363 44 453 38 465 41Q444 87 408 112 378 136 332 159L267 185 246 236Q228 292 192 332L137 346 79 331 89 277 103 199Z" fill="url(#nyra-curtain)" stroke="#10232c" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M119 61Q142 45 173 46L146 96 133 152 115 212 88 278 99 201Z" fill="#806b88"/>
+    <path d="M177 44L202 44Q180 92 163 132L137 198 99 266Q147 174 154 118Z" fill="#323240"/>
+    <path d="M202 44L258 44Q228 89 213 132 189 182 152 221L111 267 83 324 91 277 137 211Q168 162 181 118Z" fill="#89718f"/>
+    <path d="M259 44L275 44Q256 80 244 108L220 161 185 199 215 141Z" fill="#353544"/>
+    <path d="M277 44L353 46Q318 78 297 112L260 158 210 191 170 216Q235 158 259 100Z" fill="#77627f"/>
+    <path d="M355 45L373 43Q331 93 305 117L268 148 310 92Z" fill="#353443"/>
+    <path d="M375 43L439 40Q410 75 369 100L316 132 254 163 200 199Q246 156 285 137L340 91Z" fill="#7f6888"/>
+    <path d="M442 40L464 41Q434 86 395 115 353 145 285 170L231 194 185 222 143 255 105 294 81 330 88 282Q137 229 199 196L279 152 342 124Q411 88 442 40Z" fill="#9a7e9f"/>
+    <path d="M400 93Q357 136 291 157L230 185 187 210Q248 163 294 144L350 117Z" fill="#806486"/>
+    <path d="M265 185L246 236Q225 291 192 332L155 341 161 289 177 248 189 219Z" fill="#50445a"/>
+    <path d="M209 207L232 198 215 251 194 296 177 331 153 340Q174 289 177 251Z" fill="#353543"/>
+    <path d="M184 220L165 270 156 320 144 345 111 340 125 304 143 270Z" fill="#846b8b"/>
+    <path d="M80 330L119 304Q137 306 144 345L121 350 103 342Z" fill="#69576f" stroke="#26313b" stroke-width="2"/>
+    <path d="M81 330L119 304 124 318 101 332Z" fill="#a18cb8" opacity="0.55"/>
+    <path d="M119 75L115 127M218 60L205 87M301 66L286 91M391 65L376 79M332 137L311 147M141 278L134 297" fill="none" stroke="#a18cb8" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  </svg>

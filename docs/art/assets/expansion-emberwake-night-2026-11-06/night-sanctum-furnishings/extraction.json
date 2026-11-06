@@ -1,0 +1,67 @@
+[
+  {
+    "subject": "aster-reading-desk",
+    "source": "night-sanctum-furnishings/sheet.svg",
+    "source_sha256": "cd114a625da239164b637dba6793d41d5618233195979b813c42270713fd198a",
+    "source_cell": 1,
+    "crop": [0, 0, 480, 336],
+    "group_id": "aster-reading-desk",
+    "removed_transform": "translate(0 0)",
+    "expected_transform": "translate(0 0)",
+    "output": "night-sanctum-furnishings/aster-reading-desk.svg",
+    "sha256": "b2e7ee5a7d291a8ae3e2ae28898f9d12dece715180cb605e568af3b6b4022556",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "neris-footbath",
+    "source": "night-sanctum-furnishings/sheet.svg",
+    "source_sha256": "cd114a625da239164b637dba6793d41d5618233195979b813c42270713fd198a",
+    "source_cell": 2,
+    "crop": [480, 0, 480, 336],
+    "group_id": "neris-footbath",
+    "removed_transform": "translate(480 0)",
+    "expected_transform": "translate(480 0)",
+    "output": "night-sanctum-furnishings/neris-footbath.svg",
+    "sha256": "83ac8c1d8960b957ed891ecea442a3cd5d657e649d7d79191ec5f27a79d9a590",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "vesta-warming-bench",
+    "source": "night-sanctum-furnishings/sheet.svg",
+    "source_sha256": "cd114a625da239164b637dba6793d41d5618233195979b813c42270713fd198a",
+    "source_cell": 3,
+    "crop": [960, 0, 480, 336],
+    "group_id": "vesta-warming-bench",
+    "removed_transform": "translate(960 0)",
+    "expected_transform": "translate(960 0)",
+    "output": "night-sanctum-furnishings/vesta-warming-bench.svg",
+    "sha256": "8d52b34e22252a6f7911e2a4875bd8b2e7de2af5cb62ebf141e4654a13ca4072",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "isen-resting-cradle",
+    "source": "night-sanctum-furnishings/sheet.svg",
+    "source_sha256": "cd114a625da239164b637dba6793d41d5618233195979b813c42270713fd198a",
+    "source_cell": 4,
+    "crop": [0, 336, 480, 336],
+    "group_id": "isen-resting-cradle",
+    "removed_transform": "translate(0 336)",
+    "expected_transform": "translate(0 336)",
+    "output": "night-sanctum-furnishings/isen-resting-cradle.svg",
+    "sha256": "768ead008a1b1de972d5900c5ca60f186a6cb397e2eb1caab861cc40897c4240",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "nyra-curtain-frame",
+    "source": "night-sanctum-furnishings/sheet.svg",
+    "source_sha256": "cd114a625da239164b637dba6793d41d5618233195979b813c42270713fd198a",
+    "source_cell": 5,
+    "crop": [480, 336, 480, 336],
+    "group_id": "nyra-curtain-frame",
+    "removed_transform": "translate(480 336)",
+    "expected_transform": "translate(480 336)",
+    "output": "night-sanctum-furnishings/nyra-curtain-frame.svg",
+    "sha256": "7bbf9b95d443ffa159fc082014a0d133289f61896589fa8de6d18a7146d3c925",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  }
+]

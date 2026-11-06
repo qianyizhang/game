@@ -1,0 +1,80 @@
+[
+  {
+    "subject": "briar-hook",
+    "source": "ember-equipment-a/sheet.svg",
+    "source_sha256": "3db87c0a88dbc804a0885adb519465ef30627b1053c911c0c091e5e00c94745d",
+    "source_cell": 1,
+    "crop": [0, 0, 480, 336],
+    "group_id": "briar-hook",
+    "removed_transform": "translate(0 0)",
+    "expected_transform": "translate(0 0)",
+    "output": "ember-equipment-a/briar-hook.svg",
+    "sha256": "d2006928619d45dde62f0ce30d1e99c9f3fd968298d18ec3b214de4f591b5268",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "saltglass-glaive",
+    "source": "ember-equipment-a/sheet.svg",
+    "source_sha256": "3db87c0a88dbc804a0885adb519465ef30627b1053c911c0c091e5e00c94745d",
+    "source_cell": 2,
+    "crop": [480, 0, 480, 336],
+    "group_id": "saltglass-glaive",
+    "removed_transform": "translate(480 0)",
+    "expected_transform": "translate(480 0)",
+    "output": "ember-equipment-a/saltglass-glaive.svg",
+    "sha256": "b6b4f53a85570d0d7b4128fae933d1cc46a47a1b461bed97b75fd4c8005300c3",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "bellows-maul",
+    "source": "ember-equipment-a/sheet.svg",
+    "source_sha256": "3db87c0a88dbc804a0885adb519465ef30627b1053c911c0c091e5e00c94745d",
+    "source_cell": 3,
+    "crop": [960, 0, 480, 336],
+    "group_id": "bellows-maul",
+    "removed_transform": "translate(960 0)",
+    "expected_transform": "translate(960 0)",
+    "output": "ember-equipment-a/bellows-maul.svg",
+    "sha256": "337b49892bffc749c9403cc4c92d3820157f1df73c83b5f08daeb0be5cff2640",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "ossuary-lantern-flail",
+    "source": "ember-equipment-a/sheet.svg",
+    "source_sha256": "3db87c0a88dbc804a0885adb519465ef30627b1053c911c0c091e5e00c94745d",
+    "source_cell": 4,
+    "crop": [0, 336, 480, 336],
+    "group_id": "ossuary-lantern-flail",
+    "removed_transform": "translate(0 336)",
+    "expected_transform": "translate(0 336)",
+    "output": "ember-equipment-a/ossuary-lantern-flail.svg",
+    "sha256": "403670b56d78a726d6f1cfb37ba8ce437d4936257a66d2fc8fbe22126093649b",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "furnace-kite",
+    "source": "ember-equipment-a/sheet.svg",
+    "source_sha256": "3db87c0a88dbc804a0885adb519465ef30627b1053c911c0c091e5e00c94745d",
+    "source_cell": 5,
+    "crop": [480, 336, 480, 336],
+    "group_id": "furnace-kite",
+    "removed_transform": "translate(480 336)",
+    "expected_transform": "translate(480 336)",
+    "output": "ember-equipment-a/furnace-kite.svg",
+    "sha256": "88f87dfb8d08505cd0356d9bcaaca6707a0c17a7777c8a55cd7f0de371997aad",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "reed-quiver",
+    "source": "ember-equipment-a/sheet.svg",
+    "source_sha256": "3db87c0a88dbc804a0885adb519465ef30627b1053c911c0c091e5e00c94745d",
+    "source_cell": 6,
+    "crop": [960, 336, 480, 336],
+    "group_id": "reed-quiver",
+    "removed_transform": "translate(960 336)",
+    "expected_transform": "translate(960 336)",
+    "output": "ember-equipment-a/reed-quiver.svg",
+    "sha256": "788197a0c00f52faf20195946f72e31fd3eacea827263c4a2a792742265099bf",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  }
+]

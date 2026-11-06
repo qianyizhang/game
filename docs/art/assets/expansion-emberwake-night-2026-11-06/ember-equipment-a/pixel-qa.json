@@ -1,0 +1,71 @@
+{
+  "renderer": "Chromium / Playwright canvas, sRGB default, deviceScaleFactor 1",
+  "cells": [
+    {
+      "subject": "briar-hook",
+      "original_crop_equals_extraction_pixels": true,
+      "source_dimensions": [480, 336],
+      "native_dimensions": [160, 112],
+      "compact_dimensions": [80, 56],
+      "max_channel_delta": 0,
+      "differing_pixels": 0
+    },
+    {
+      "subject": "saltglass-glaive",
+      "original_crop_equals_extraction_pixels": false,
+      "source_dimensions": [480, 336],
+      "native_dimensions": [160, 112],
+      "compact_dimensions": [80, 56],
+      "max_channel_delta": 1,
+      "differing_pixels": 1
+    },
+    {
+      "subject": "bellows-maul",
+      "original_crop_equals_extraction_pixels": false,
+      "source_dimensions": [480, 336],
+      "native_dimensions": [160, 112],
+      "compact_dimensions": [80, 56],
+      "max_channel_delta": 9,
+      "differing_pixels": 109
+    },
+    {
+      "subject": "ossuary-lantern-flail",
+      "original_crop_equals_extraction_pixels": false,
+      "source_dimensions": [480, 336],
+      "native_dimensions": [160, 112],
+      "compact_dimensions": [80, 56],
+      "max_channel_delta": 1,
+      "differing_pixels": 7
+    },
+    {
+      "subject": "furnace-kite",
+      "original_crop_equals_extraction_pixels": false,
+      "source_dimensions": [480, 336],
+      "native_dimensions": [160, 112],
+      "compact_dimensions": [80, 56],
+      "max_channel_delta": 1,
+      "differing_pixels": 61
+    },
+    {
+      "subject": "reed-quiver",
+      "original_crop_equals_extraction_pixels": false,
+      "source_dimensions": [480, 336],
+      "native_dimensions": [160, 112],
+      "compact_dimensions": [80, 56],
+      "max_channel_delta": 5,
+      "differing_pixels": 187
+    }
+  ],
+  "contact_optimization": {
+    "initial_bytes": 279019,
+    "optimized_bytes": 278126,
+    "retained_bytes": 278126,
+    "pixel_equal": true,
+    "dimensions_equal": true,
+    "alpha_equal": true,
+    "mode": "RGBA",
+    "color_metadata_equal": true,
+    "sha256": "961a5e2bbef4938bdc49b5de2d939ff69331630117374c68b1dfebb09933e75f"
+  },
+  "extraction_comparison_note": "Geometry and paint are unchanged; global sheet translation versus local extraction causes Chromium antialiasing differences on some edges. Exact crop equality is recorded, not assumed."
+}

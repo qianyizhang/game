@@ -1,0 +1,106 @@
+{
+  "base_revision": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "scope": "Only this additive artwork/evidence directory changes. No TS/TSX, gameplay, selectors, defaults, gallery infrastructure or shared registry changes.",
+  "completed_utc": "2026-11-06T15:17:00.830131+00:00",
+  "generation": {
+    "successes": 7,
+    "failures": 0,
+    "retries": 0,
+    "in_flight": 0,
+    "estimated_usd": 0.970265,
+    "reserved_usd": 0,
+    "models": ["gpt-image-2.6-sunburst", "gpt-6.1-sol"],
+    "binding": "Existing OPENAI_API_TOKEN, successful authorized proxy authentication; no key stored"
+  },
+  "source_art": {
+    "concepts": 38,
+    "packed_originals": 7,
+    "svg_revisions": 45,
+    "native_svg_safety_passed": 45,
+    "native_and_compact_author_reviews": 38,
+    "exact_originals_and_extraction_geometry_verified": true,
+    "user_accepted": 0,
+    "holds": ["vesta-coal-tongs"],
+    "caveats": 11,
+    "lossless_contact_sheets": 7
+  },
+  "registration": {
+    "delivery_branch": "Unregistered by instruction; shared registry unchanged",
+    "isolated_import": "Passed: 7 attempts, 45 revisions; existing assets 709, resulting revisions 137, selections unchanged at 0",
+    "isolated_gallery": "All 45 images, prompt/request/response/review files and parent links inspected with Google Chrome 157.0.8103.38; no errors; 390px width fits"
+  },
+  "read_only_index": {
+    "concepts": 38,
+    "native_compact_images_decoded": 76,
+    "links_checked": 93,
+    "missing_links": 0,
+    "page_errors": 0,
+    "viewports": [1440, 390],
+    "horizontal_overflow": false
+  },
+  "checks": {
+    "check_maintenance": {
+      "exit_code": 0,
+      "log": "logs/maintenance.log",
+      "scope": "Formatting/inventory/history integrity, lint, TypeScript, Python checks/19 Python unit tests, 202 tooling tests, 81 DCC tests, production build. Earlier runtime-source checks remain valid; later additions are static studies/evidence only."
+    },
+    "application": {
+      "exit_code": 0,
+      "passed": 589,
+      "files": 100,
+      "log": "logs/application.log"
+    },
+    "simulations": {
+      "exit_code": 0,
+      "passed": 37,
+      "files": 8,
+      "log": "logs/simulations.log"
+    },
+    "shader": {
+      "exit_code": 0,
+      "passed": 8,
+      "log": "logs/shader.log"
+    },
+    "browser_broad": {
+      "exit_code": 1,
+      "passed": 188,
+      "skipped": 4,
+      "timeouts": 3,
+      "minutes": 19.2,
+      "log": "logs/browser-selected.log",
+      "failure_names": [
+        "native-assets: review scope selects gallery defaults and native workbench downloads stay isolated",
+        "night-passage-agent: spectator plays, pauses and seeks a recorded run",
+        "night-passage: cast charges freeze, restore and replenish in scene (night-passage-4)"
+      ],
+      "note": "All three hit the unchanged local 30-second total test budget; original failures retained. This broad run is not relabeled green."
+    },
+    "browser_focused": {
+      "exit_code": 0,
+      "passed": 3,
+      "minutes": 2.3,
+      "log": "logs/browser-focused.log",
+      "command": "node node_modules/@playwright/test/cli.js test tests/browser/native-assets.spec.ts tests/browser/night-passage-agent.spec.ts tests/browser/night-passage.spec.ts --project=ci-games --grep <three failing journey names> --timeout=120000 --output=test-results/expansion-browser-focused",
+      "note": "Repository browserBudget uses 4\u00d7 total budget in CI; explicit 120-second total supplied to the focused local rerun. No assertion, source or repository timeout config changed. Durations 34.5s, about 60s and 37s."
+    },
+    "final_format_inventory": {
+      "exit_code": 0,
+      "log": "logs/format-maintenance-final.log"
+    },
+    "final_existing_history": {
+      "exit_code": 0,
+      "assets": 709,
+      "revisions": 92,
+      "selections": 0,
+      "registeredSources": 709,
+      "log": "logs/history-final.log"
+    }
+  },
+  "limits": [
+    "No supported runtime slot, actual gameplay adoption, native 3D or geometry delivery is claimed.",
+    "User aesthetic acceptance is pending; structural hold and material caveats are preserved.",
+    "Central shared registration and any publication need their separately authorized owner step.",
+    "Full broad browser run has three preserved local timeouts; focused counterparts pass under documented hosted total budget."
+  ],
+  "next_step": "Central worker imports prepared-history.json and reconciles other disjoint bundles, then user reviews optional candidates. No paid work remains. No push, PR, merge, deployment or adoption was attempted."
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "subject": "aster-cloud-vessel",
+    "source": "night-reliquaries/sheet.svg",
+    "source_sha256": "1b5ff469ae4066b9f6cfe2f464d343319c58a40544612fbb4acf0d9ce585d04d",
+    "source_cell": 1,
+    "crop": [0, 0, 480, 336],
+    "group_id": "aster-cloud-vessel",
+    "removed_transform": "translate(0 0)",
+    "expected_transform": "translate(0 0)",
+    "output": "night-reliquaries/aster-cloud-vessel.svg",
+    "sha256": "190ec90d78f76619db290c169ae470207e69c8dd7d95d89bc34b1ce8f2ce03dd",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "neris-current-coffer",
+    "source": "night-reliquaries/sheet.svg",
+    "source_sha256": "1b5ff469ae4066b9f6cfe2f464d343319c58a40544612fbb4acf0d9ce585d04d",
+    "source_cell": 2,
+    "crop": [480, 0, 480, 336],
+    "group_id": "neris-current-coffer",
+    "removed_transform": "translate(480 0)",
+    "expected_transform": "translate(480 0)",
+    "output": "night-reliquaries/neris-current-coffer.svg",
+    "sha256": "4d2ac3c07f7474a263cb7657c0620add1b9ac2969891bfff43a43eecce56e299",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "vesta-ember-press",
+    "source": "night-reliquaries/sheet.svg",
+    "source_sha256": "1b5ff469ae4066b9f6cfe2f464d343319c58a40544612fbb4acf0d9ce585d04d",
+    "source_cell": 3,
+    "crop": [960, 0, 480, 336],
+    "group_id": "vesta-ember-press",
+    "removed_transform": "translate(960 0)",
+    "expected_transform": "translate(960 0)",
+    "output": "night-reliquaries/vesta-ember-press.svg",
+    "sha256": "82792f4a5ecb73cbed999fbcc3aec14aaf25fae1375ba15b0b15956ad8e3d52b",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "isen-salt-casket",
+    "source": "night-reliquaries/sheet.svg",
+    "source_sha256": "1b5ff469ae4066b9f6cfe2f464d343319c58a40544612fbb4acf0d9ce585d04d",
+    "source_cell": 4,
+    "crop": [0, 336, 480, 336],
+    "group_id": "isen-salt-casket",
+    "removed_transform": "translate(0 336)",
+    "expected_transform": "translate(0 336)",
+    "output": "night-reliquaries/isen-salt-casket.svg",
+    "sha256": "d7cb385e8f433361e7e8b2de2ffe04af57432b2cd5bcc2a5287da3786fb5b3e6",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "nyra-folded-screen",
+    "source": "night-reliquaries/sheet.svg",
+    "source_sha256": "1b5ff469ae4066b9f6cfe2f464d343319c58a40544612fbb4acf0d9ce585d04d",
+    "source_cell": 5,
+    "crop": [480, 336, 480, 336],
+    "group_id": "nyra-folded-screen",
+    "removed_transform": "translate(480 336)",
+    "expected_transform": "translate(480 336)",
+    "output": "night-reliquaries/nyra-folded-screen.svg",
+    "sha256": "308540ee6db88e702111a947175476e50c889e6e77aa1452b4d183e0f3875071",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  }
+]

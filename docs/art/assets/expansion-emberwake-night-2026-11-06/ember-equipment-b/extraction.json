@@ -1,0 +1,80 @@
+[
+  {
+    "subject": "cinder-mantle",
+    "source": "ember-equipment-b/sheet.svg",
+    "source_sha256": "a1d09c1db4bfda1c60a6b2d9e4b849b8ea12e335f3c84ac9f3e4ffeee230547f",
+    "source_cell": 1,
+    "crop": [0, 0, 480, 336],
+    "group_id": "cinder-mantle",
+    "removed_transform": "translate(0 0)",
+    "expected_transform": "translate(0 0)",
+    "output": "ember-equipment-b/cinder-mantle.svg",
+    "sha256": "b950321ade53d5188049b4b7f452aa50cc024b62fbd4224fc740ca36f5a51bc7",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "glassworker-visor",
+    "source": "ember-equipment-b/sheet.svg",
+    "source_sha256": "a1d09c1db4bfda1c60a6b2d9e4b849b8ea12e335f3c84ac9f3e4ffeee230547f",
+    "source_cell": 2,
+    "crop": [480, 0, 480, 336],
+    "group_id": "glassworker-visor",
+    "removed_transform": "translate(480 0)",
+    "expected_transform": "translate(480 0)",
+    "output": "ember-equipment-b/glassworker-visor.svg",
+    "sha256": "fed0a863be240097eacf91736088bbe1d6730c0eb349bac4c38f27fb3b639ef1",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "rootstep-boots",
+    "source": "ember-equipment-b/sheet.svg",
+    "source_sha256": "a1d09c1db4bfda1c60a6b2d9e4b849b8ea12e335f3c84ac9f3e4ffeee230547f",
+    "source_cell": 3,
+    "crop": [960, 0, 480, 336],
+    "group_id": "rootstep-boots",
+    "removed_transform": "translate(960 0)",
+    "expected_transform": "translate(960 0)",
+    "output": "ember-equipment-b/rootstep-boots.svg",
+    "sha256": "692e23bc60ff3b67f728fe9c6855cbf4e5762ab5fa01fa1c1f05c289edc0d1b3",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "choir-bracers",
+    "source": "ember-equipment-b/sheet.svg",
+    "source_sha256": "a1d09c1db4bfda1c60a6b2d9e4b849b8ea12e335f3c84ac9f3e4ffeee230547f",
+    "source_cell": 4,
+    "crop": [0, 336, 480, 336],
+    "group_id": "choir-bracers",
+    "removed_transform": "translate(0 336)",
+    "expected_transform": "translate(0 336)",
+    "output": "ember-equipment-b/choir-bracers.svg",
+    "sha256": "63a0317acb1cbb4ad5523f093e9d9da502fcc989fa006d8aadd895c15f6824c6",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "slag-belt",
+    "source": "ember-equipment-b/sheet.svg",
+    "source_sha256": "a1d09c1db4bfda1c60a6b2d9e4b849b8ea12e335f3c84ac9f3e4ffeee230547f",
+    "source_cell": 5,
+    "crop": [480, 336, 480, 336],
+    "group_id": "slag-belt",
+    "removed_transform": "translate(480 336)",
+    "expected_transform": "translate(480 336)",
+    "output": "ember-equipment-b/slag-belt.svg",
+    "sha256": "40895e6a9235b39cfe27b59eca24b9e7d4c492be9a9d64a21394bd0bf7ff3f5a",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  },
+  {
+    "subject": "cistern-torc",
+    "source": "ember-equipment-b/sheet.svg",
+    "source_sha256": "a1d09c1db4bfda1c60a6b2d9e4b849b8ea12e335f3c84ac9f3e4ffeee230547f",
+    "source_cell": 6,
+    "crop": [960, 336, 480, 336],
+    "group_id": "cistern-torc",
+    "removed_transform": "translate(960 336)",
+    "expected_transform": "translate(960 336)",
+    "output": "ember-equipment-b/cistern-torc.svg",
+    "sha256": "bc7166eda3581946f2130fde2405fd1d25292fb7cac1fd847bacbf86f6fe25de",
+    "operation": "Copy named cell group, remove only its grid translation, retain root paint definitions and inherited presentation attributes. No geometry, paint or composition edits."
+  }
+]
