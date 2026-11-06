@@ -39,6 +39,7 @@ function transforms(root: T.Object3D) {
     scale: sprite.scale.toArray(),
     rotation: sprite.material.rotation,
     opacity: sprite.material.opacity,
+    color: sprite.material.color.toArray(),
     texture: sprite.material.map?.uuid,
   }));
 }
@@ -96,8 +97,32 @@ export function inspectPatronEffects() {
           visible(parent).every((sprite, index) => sprite.material.opacity < alpha[index]),
       });
     }
+    const cinder = cases.find((entry) => entry.id === 'cinder-call-release')!.state;
+    sync(cinder);
+    const cinderStart = JSON.stringify(transforms(parent));
+    const peak = visible(parent).map((sprite) => sprite.material.opacity);
+    sync(advance(cinder, 8));
+    const cinderCools =
+      visible(parent).length === peak.length &&
+      peak.length > 0 &&
+      visible(parent).every(
+        (sprite, index) =>
+          sprite.material.color.r > sprite.material.color.g &&
+          sprite.material.color.g > sprite.material.color.b &&
+          sprite.material.opacity < peak[index],
+      );
+    sync(cinder);
+    const cinderSeekRestores = cinderStart === JSON.stringify(transforms(parent));
+    sync(advance(cinder, 8), true);
+    const cinderReducedTintStable = visible(parent).every(
+      (sprite) => sprite.material.color.getHex() === 0xffffff,
+    );
+    sync(advance(cinder, 12));
     const release = cases.find((entry) => entry.id === 'storm-call-release')!.state;
     sync(release);
+    const cinderPoolTintCleared = visible(parent).every(
+      (sprite) => sprite.material.color.getHex() === 0xffffff,
+    );
     const original = JSON.stringify(transforms(parent));
     const empty = createGame('new-passage');
     empty.region = 3;
@@ -141,6 +166,10 @@ export function inspectPatronEffects() {
     return {
       checks,
       temporal,
+      cinderCools,
+      cinderSeekRestores,
+      cinderReducedTintStable,
+      cinderPoolTintCleared,
       pure,
       resetHidden,
       resetRestores,
@@ -267,6 +296,12 @@ export async function reviewPatronEffects() {
         );
         if (entry.id.endsWith('call-release'))
           pictures.push({ id: `${entry.id}-${width}-later`, png: draw(advance(entry.state, 8)) });
+        if (entry.id === 'cinder-call-release')
+          for (const ticks of [4, 12])
+            pictures.push({
+              id: `${entry.id}-${width}-tick-${ticks}`,
+              png: draw(advance(entry.state, ticks)),
+            });
         if (entry.id.endsWith('-projectile'))
           pictures.push({ id: `${entry.id}-${width}-flight`, png: draw(advance(entry.state, 6)) });
       }

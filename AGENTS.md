@@ -26,6 +26,7 @@ Build readable, playable studies of Balatro, Slay the Spire 1, and Hearthstone B
 - Build the core flow first; mark deferred branches with `TODO` or `NotImplemented`.
 - Structure files into cohesive modules with clear hierarchy; avoid flat directory dumping.
 - For maintenance, script changes, documentation placement, cleanup or check coverage, read [maintenance governance](docs/engineering/maintenance.md).
+- Before any asset expansion, apply the blocking [reuse-first admission gate](docs/art/README.md#asset-admission-reuse-improve-then-expand), including justified quality replacements and purpose-specific variants.
 - For policy experiments, keep summaries and lessons by default; follow the [iteration retention rule](docs/engineering/maintenance.md#policy-iteration-retention) when saving or closing runs.
 
 ## Checks

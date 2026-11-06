@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { silentInk, Cut, Cowl, Dagger, Drop, Flask, Smoke, Trails } from './SilentPrimitives';
+import { silentInk, Boot, Cut, Cowl, Dagger, Drop, Flask, Smoke, Trails } from './SilentPrimitives';
 const { ink, dark, green, leaf, gold, plum } = silentInk;
 
 /** New plates, rather than a tint: upgraded alchemy, blade work, and prepared powers. */
@@ -58,6 +58,17 @@ export const silentUpgradeScenes: Record<string, ReactNode> = {
       <Dagger x={27} y={39} size={62} angle={-42} />
       <Dagger x={99} y={37} size={62} angle={42} />
       <Cut d="M58 54 49 87m47-31 9 29M66 25l-8 12m45 8-4-12" />
+    </>
+  ),
+  backflip: (
+    <>
+      <Trails d="M134 82Q152 46 119 26 72-2 35 29 19 43 23 65m-7-12 7 12 13-8" />
+      <path d="M101 78q24 0 31-19l9-20q11 35-15 52l-26 8Z" fill={dark} />
+      <path d="M104 84q24-5 30-29 3 23-14 33l-14 6Z" fill={leaf} />
+      <path d="M101 85q22 3 32-17-3 20-18 30l-13-4Z" fill={plum} />
+      <Cut d="M110 90q13-7 18-18" color={green} />
+      <Boot x={55} y={0} angle={185} size={79} />
+      <Cut d="M28 102h105" />
     </>
   ),
   catalyst: (
