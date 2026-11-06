@@ -36,6 +36,9 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            .node-version
       - run: node packages/workshop-tools/ci/integrity.ts metadata && node packages/workshop-tools/ci/integrity.ts hydration
         if: inputs.plan == ''
       - run: npm ci
@@ -66,6 +69,9 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            .node-version
       - uses: ./.github/actions/environment
       - run: npm ci
       - run: npm run ci -- run geometry
@@ -95,6 +101,9 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            .node-version
       - uses: ./.github/actions/environment
       - run: npm ci
       - uses: ./.github/actions/browser
@@ -125,6 +134,9 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            .node-version
       - run: npm run maintenance -- check
       - run: npm ci
       - run: npx playwright install --with-deps chrome
