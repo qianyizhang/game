@@ -1,6 +1,6 @@
 {
   "baseline": "f8cef09fea55b1f7bf0e083a22bdb9bac33138ae",
-  "scope": "Source metadata cleanup; no generation, runtime change or aesthetic acceptance.",
+  "scope": "Compact source metadata and canonical registration; no generation, artwork change, runtime adoption or aesthetic acceptance.",
   "artwork": "All 6 SVGs and 4 PNGs byte-identical to baseline.",
   "svg": {
     "method": "Repository validateSvg + browser SVG getBBox on extracted cell contents, independent XML extraction parser; packed originals validated too",
@@ -70,7 +70,7 @@
     "actual_calls": 3,
     "exact_prompt_settings_failure_and_lineage": "verified",
     "adoption": "disabled",
-    "shared_registration": "pending"
+    "shared_registration": "registered in docs/art/iterations/library.json"
   },
   "isolated_import": {
     "assets": 0,
@@ -79,8 +79,22 @@
   },
   "shared_history": {
     "assets": 709,
-    "revisions": 92,
+    "revisions": 98,
     "registered_sources": 709,
     "selections": 0
+  },
+  "registration": {
+    "handoff_head": "5ca6ab20256c4dc955fe57366531e7c97969d32f",
+    "browser": "Google Chrome 157.0.8103.38",
+    "runtime": "Node 24.21.0 / npm 11.19.0",
+    "live_gallery": "6 source SVG revisions decoded at native/compact sizes and inspected enlarged; all 3 exact call records, failure and parents visible; no page errors",
+    "layout": "1440px, 390px and 320px at 16px/20px text: no horizontal overflow",
+    "selections": "zero; selected-art.json and all source registrations unchanged",
+    "artwork": "All 6 SVGs and 4 PNGs byte-identical to handoff; opening ledger and 3 prepared request bytes unchanged",
+    "checks": {
+      "maintenance": "passed: formatting/inventory/links, history verify, lint/types, 19 Python tests, 202 tooling tests, 81 DCC contracts and production build",
+      "browser": "Initial normal-limit run: 11 passed, 3 failed (2 total-test timeouts and 1 initialization timeout). Normal-limit targeted rerun: 2 passed; per-game galleries timed out again. Same per-game assertions passed in 39.7s using explicit --timeout=120000, no CI flags or repository configuration changes. The default 30s limit remains unresolved.",
+      "scope": "All 14 affected browser journeys passed across these runs; this is not a clean normal-limit broad run. No application/simulation/geometry/native authoring suite claimed. Hosted CI is reported separately on the PR."
+    }
   }
 }

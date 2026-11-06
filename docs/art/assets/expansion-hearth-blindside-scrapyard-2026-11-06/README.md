@@ -31,8 +31,9 @@ settings, sanitized response usage/request ID, review, or genuine failure:
 [ram](hearth-ram/call.json), [heron](hearth-heron/call.json),
 [tortoise](hearth-tortoise/call.json). Original vectors remain `original.svg`;
 normal/ascended SVGs are named group extractions. The single
-[gallery import index](prepared-history.json) owns their digests, parents and
-extraction recipes. No second inventory/extraction database repeats them.
+[prepared import](prepared-history.json) supplies the extraction recipes; the
+[shared history](../../iterations/library.json) now registers the three attempts
+and six outputs. Exact call records remain here once per request.
 
 Two `gpt-image-2.6-sunburst` calls with medium `gpt-6.1-sol` SVG authoring succeeded.
 Known estimated cost is **US$0.257728**. The tortoise connection closed after
@@ -63,8 +64,17 @@ channels by at most 5/255 with equal alpha. This is recorded as an antialias
 exception, not pixel equality. All six SVGs and four PNGs remain byte-for-byte
 identical to the original suite.
 
-The staged index has three actual attempts and six revisions. Its failed attempt
-has no invented image; all revisions remain unassigned, with adoption disabled.
-Central registration and user review are pending. Technical checks do not establish
-aesthetic acceptance. No runtime, shared registry, gallery infrastructure, owner
-document, default or selection changes are included.
+Open `/__art/#asset=__unassigned` on the local development server and find
+`expansion-hbs-20261106` among the source revisions. **Generation and authoring
+attempts** includes the ram, heron and failed tortoise records, with their exact
+settings and failure. This branch registers 709 assets, 98 revisions and zero
+selections. The failed attempt has no invented image; all six new revisions remain
+unassigned, with adoption disabled.
+
+Live gallery inspection covers every revision, its native/compact image, parent
+records and exact call text, plus desktop, 390px and 320px layouts at 16px/20px
+text. Technical checks do not establish aesthetic acceptance; user review and any
+future game-context verification remain pending. No artwork, runtime, gallery
+implementation, default or selection changes are included. Other unmerged art
+PRs have independent shared-history additions; later integration must reconcile
+those additions without replacing existing records.
