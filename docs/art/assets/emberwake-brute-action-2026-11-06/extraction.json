@@ -1,0 +1,20 @@
+{
+  "method": "Deep-copy named group; remove only outer translation; preserve geometry/paints and wrap384x416.",
+  "cells": [
+    {
+      "pose": "guard",
+      "cell": [64, 48, 384, 416],
+      "sha256": "41a9b5a772ae945d22587403bccdddbeefca11ba3a45c5500ae41404e624765d"
+    },
+    {
+      "pose": "contact",
+      "cell": [576, 48, 384, 416],
+      "sha256": "c050d3beb5d2688c87802f46e7b75cd17f8579f2e919d0efb219ee435ac9f7ad"
+    },
+    {
+      "pose": "recovery",
+      "cell": [1088, 48, 384, 416],
+      "sha256": "d69f654e2105af6f6c9477357cd5d3575f4c8015967c0614a6c00d6d26bfb115"
+    }
+  ]
+}
