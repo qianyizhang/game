@@ -1,15 +1,15 @@
 {
-  "state": "reserved-not-dispatched",
+  "state": "returned",
   "grant": {
     "id": "character-bat-family-18",
     "ceiling_usd": 4.2,
     "calls_authorized": 1,
-    "calls_dispatched": 0,
+    "calls_dispatched": 1,
     "note": "Fresh never-dispatched brief. Grant character-bat-family-17 was released without any dispatch; this is not its retry."
   },
   "request_file": "request.json",
   "request_sha256": "d2b5c049dd6925c789309e644185f5b75cb7a213f60cca7688762801e41dd3c1",
-  "client_request_id_sent": false,
+  "client_request_id_sent": true,
   "opening_lane": {
     "known_usage_estimate_usd": 0.964044,
     "unknown_tortoise_usd": 7.5,
@@ -40,5 +40,44 @@
     "client_request_id": "cw-umber-bat-20261106-8506485d943b45cf9f1a6c3c27677640"
   },
   "new_unknown_reservations_usd": 0,
-  "source_status": "Prepared future bat normal/ascended native SVG study, no output yet."
+  "source_status": "Returned packed native SVG with two raw, self-reviewed source candidates. No manual artwork edits.",
+  "started_utc": "2026-11-06T23:43:54Z",
+  "response": {
+    "created": 1794008652,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "medium",
+    "safety_identifier": null,
+    "size": "1440x512",
+    "svg_usage": {
+      "input_tokens": 1955,
+      "model": "gpt-6.1-terra",
+      "output_tokens": 9451,
+      "reasoning_tokens": 794,
+      "total_tokens": 11406
+    },
+    "usage": {
+      "input_tokens": 849,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 849
+      },
+      "output_tokens": 489,
+      "output_tokens_details": {
+        "image_tokens": 489,
+        "text_tokens": 0
+      },
+      "total_tokens": 1338
+    },
+    "request_id": "req_62839ca8cf6946918180345a8d886158"
+  },
+  "elapsed_seconds": 132.12,
+  "output": {
+    "file": "original.svg",
+    "sha256": "6eb8762b26588c4a5ddb3797ddea3530275b2847f5a13af222c1b39d2f97e7b0"
+  },
+  "estimated_usd": 0.068125,
+  "remaining_call_reservation_usd": 0,
+  "cumulative_known_usage_estimate_usd": 1.032169,
+  "review": "qa.json"
 }
