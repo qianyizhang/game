@@ -8,7 +8,7 @@ Open [the comparison](preview.html) for 38.4 px and 32 px samples on the game's 
 
 ## Admission and source behavior
 
-The existing directional suite (#146) supplies four static quarters but no cast/recovery states. The open hound motion study (#156) addresses a different monster. This independent branch from main adds only this acolyte bundle, rather than importing either earlier PR's full ancestry.
+The existing directional suite (#146) supplies four static quarters but no cast/recovery states. The open hound motion study (#156) addresses a different monster. This review-only branch stacks on #146 at `42b23ce774a17aa4025ddca170edc83ff109e4e1` to preserve the actual external design parent. #146 must land first; the PR diff against that parent contains only this action bundle and its registration. Parent artwork and records are unchanged. No PR is merged into main by this dependency.
 
 The exact monster is `cultist` / Cinder acolyte: fire ranged, range 6, speed 1.4, HP 46 and damage 10 at the inspected main `3a59621069dd1fe912a749d851d27e993507f5dd`. In `packages/diablo2/src/domain/combat.ts`, an eligible in-range attack immediately creates its projectile, then applies the ordinary 18-unit or elite 12-unit cooldown. Ordinary acolytes have no authored cast windup, facing or animation-phase contract. Preparation here adds no delay; projectile presentation remains separate. No shared `cultist` shape, Glass Regent boss, marker, shadow or runtime file changes.
 
@@ -24,6 +24,23 @@ One [request](request.json), grant `sprite-acolyte-motion-04`: `gpt-image-2.6-su
 
 [Validation](validation.json) records SVG safety, source/extraction comparison, actual alpha bounds, native-scale and phone review. Visible footprints are 26.8–31.1 × 32.3–32.9 px at 0.1 scale, with no edge clipping. Preparation/follow-through reproduce sheet pixels exactly; release/recovery each have seven channel differences of at most 1/255 from viewport antialiasing, with unchanged geometry. The single retained PNG is losslessly recompressed with identical decoded scanline data and unchanged non-IDAT chunks.
 
-The portable [history import](history-import.json) contains one attempt and five revisions: original plus four extracts. Every revision has null asset/runtime fields. Isolated import/gallery inspection uses the registered reference ancestry; shared registry and gallery implementation stay untouched. Serial canonical registration is still a draft blocker, and the import requires the #146 repaired SE revision above. The reference file itself is bundled, so no external image fetch is required to inspect this study.
+The [canonical shared history](../../iterations/library.json) owns one new attempt and five source revisions: original plus four extracts. Every new revision has null asset/runtime fields. The redundant import transport is retired after exact record comparison. Its genuine external parent requires the review-only #146 stack above; it is not flattened or invented. The reference file is bundled, so no external image fetch is needed to inspect this study. Shared gallery implementation and parent records are unchanged. Open `/__art/#asset=__unassigned` and find `Cinder acolyte SE action-pose concepts` for original, extracts, exact request/settings/receipt, design source and lineage.
 
 No timing, playback, interpolation or reduced-motion integration has been tested. The candidate has no game-facing or cast-state contract. Any future adoption must preserve immediate ranged attack behavior, target selection, HP/status markers and field-owned contact shadows.
+
+Registration review independently confirmed exact inner SVG geometry/colors and
+all five output hashes, plus the entire preserved SE SVG inside the request text.
+There is no image-conditioning claim. Chrome157 reproduced the original two
+seven-channel, max1/255 raster exceptions and the exact reported alpha bounds.
+A standalone preview check first found 322px content in a 320px viewport; below
+360px the cards now use one column while keeping the original sample dimensions.
+The failure capture is retained temporarily; corrected desktop/390/320px and
+enlarged-text preview checks passed. See [validation](validation.json) for actual
+shared-gallery and scoped-gate outcomes. No timing or gameplay claim follows.
+
+Registration passed scoped formatting/maintenance, history integrity
+(709 assets/115 revisions/zero selections) and all three asset-history browser
+journeys at normal limits (20.2s aggregate). The real parent’s removal plan
+recognizes the new sheet as a descendant. All prior parent records, original
+artwork/request/reference/receipt files and selected/default bytes are unchanged.
+This review-only stack still requires #146 to land first.

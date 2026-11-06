@@ -6697,6 +6697,25 @@
       "files": [
         "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/README.md"
       ]
+    },
+    {
+      "id": "emberwake-acolyte-action-2026-11-06",
+      "title": "Cinder acolyte SE action-pose concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One native SVG call; four static future presentation concepts, not combat phases. Prompt contains exact preserved SE SVG as text; no image conditioning. Model output unchanged. Reported usage estimateUSD0.114529; receipt carries trace and usage. Prior unknown outcomes not retried.",
+      "files": [
+        "docs/art/assets/emberwake-acolyte-action-2026-11-06/request.json",
+        "docs/art/assets/emberwake-acolyte-action-2026-11-06/budget.json",
+        "docs/art/assets/emberwake-acolyte-action-2026-11-06/receipt.json",
+        "docs/art/assets/emberwake-acolyte-action-2026-11-06/reference/acolyte-se.svg",
+        "docs/art/assets/emberwake-acolyte-action-2026-11-06/reference/source.json",
+        "docs/art/assets/emberwake-acolyte-action-2026-11-06/extraction.json",
+        "docs/art/assets/emberwake-acolyte-action-2026-11-06/validation.json",
+        "docs/art/assets/emberwake-acolyte-action-2026-11-06/README.md",
+        "docs/art/assets/emberwake-acolyte-action-2026-11-06/preview.html",
+        "docs/art/assets/emberwake-acolyte-action-2026-11-06/comparison.png"
+      ]
     }
   ],
   "revisions": [
@@ -8112,6 +8131,76 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Four hand-authored torso planes inserted after staff collar, behind all existing body/arm/mantle/belt geometry. No source path changed. Transparent waist gap repaired without rescaling, mirroring or changing gear. Candidate for review; canonical import and game adoption remain separate."
+    },
+    {
+      "id": "emberwake-acolyte-action-2026-11-06-original",
+      "asset": null,
+      "attempt": "emberwake-acolyte-action-2026-11-06",
+      "label": "Generated acolyte action sheet",
+      "file": "docs/art/assets/emberwake-acolyte-action-2026-11-06/original.svg",
+      "digest": "3b7c503d0c483d95f5ee6b738eb9d73c641b634a9c370ee71530fe3e26e2182a",
+      "parents": [
+        "emberwake-directional-2026-11-06-refinement-01-cultist-se-repaired"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned native SVG. Parent is text-grounded design lineage from registered PR146 repaired SE, not an image-conditioned edit. Four fixed-SE key poses; timing untested."
+    },
+    {
+      "id": "emberwake-acolyte-action-2026-11-06-preparation",
+      "asset": null,
+      "attempt": "emberwake-acolyte-action-2026-11-06",
+      "label": "Acolyte SE · preparation",
+      "file": "docs/art/assets/emberwake-acolyte-action-2026-11-06/cultist-se-preparation.svg",
+      "digest": "e0a0f5c4662123c63384f00a7594ade6f66de0fe66c8f4cc372b6b1a3672ca67",
+      "parents": [
+        "emberwake-acolyte-action-2026-11-06-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact named-group extraction from workspace [192, 0, 384, 384]; outer translation removed, all internal geometry/colors retained. Unassigned future presentation concept; no runtime timing or added cast delay."
+    },
+    {
+      "id": "emberwake-acolyte-action-2026-11-06-release",
+      "asset": null,
+      "attempt": "emberwake-acolyte-action-2026-11-06",
+      "label": "Acolyte SE · release",
+      "file": "docs/art/assets/emberwake-acolyte-action-2026-11-06/cultist-se-release.svg",
+      "digest": "3b17654ed5bcfc7ad5a16cead5b2bb75e22e4d0573a3a08580438dbf5e98e1a7",
+      "parents": [
+        "emberwake-acolyte-action-2026-11-06-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact named-group extraction from workspace [960, 0, 384, 384]; outer translation removed, all internal geometry/colors retained. Unassigned future presentation concept; no runtime timing or added cast delay."
+    },
+    {
+      "id": "emberwake-acolyte-action-2026-11-06-follow-through",
+      "asset": null,
+      "attempt": "emberwake-acolyte-action-2026-11-06",
+      "label": "Acolyte SE · follow-through",
+      "file": "docs/art/assets/emberwake-acolyte-action-2026-11-06/cultist-se-follow-through.svg",
+      "digest": "c8108bd930d375b195f9e10ad130d34b19d509aaee7cc50eefd452172cd07ca0",
+      "parents": [
+        "emberwake-acolyte-action-2026-11-06-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact named-group extraction from workspace [192, 384, 384, 384]; outer translation removed, all internal geometry/colors retained. Unassigned future presentation concept; no runtime timing or added cast delay."
+    },
+    {
+      "id": "emberwake-acolyte-action-2026-11-06-recovery",
+      "asset": null,
+      "attempt": "emberwake-acolyte-action-2026-11-06",
+      "label": "Acolyte SE · recovery",
+      "file": "docs/art/assets/emberwake-acolyte-action-2026-11-06/cultist-se-recovery.svg",
+      "digest": "115ee85ded112fb3571579643a40fc0e93ebb3ea946e9b208b3927e00462ed72",
+      "parents": [
+        "emberwake-acolyte-action-2026-11-06-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact named-group extraction from workspace [960, 384, 384, 384]; outer translation removed, all internal geometry/colors retained. Unassigned future presentation concept; no runtime timing or added cast delay."
     }
   ]
 }
