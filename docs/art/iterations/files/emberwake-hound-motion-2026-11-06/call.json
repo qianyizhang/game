@@ -1,0 +1,90 @@
+{
+  "grant": "hound-motion-pilot-01",
+  "endpoint": "https://api.openai.com/v1/images/generations",
+  "client_request_id": "hound-motion-pilot-01-3effe275d99d4886b7c49cd62598a315",
+  "recorded_utc": "2026-11-06T17:20:16.547802+00:00",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE finished native editable SVG character-motion source sheet for Emberwake, an original dark-fantasy square-tile action RPG. FOUR sequential poses of the SAME Ash hound, exact enemy ID hound. A focused living-anatomy and physical-melee motion concept, NOT implemented action states, not a GIF and not a turnaround. Sculptural painted/cut-paper fantasy, continuous curved anatomical planes and a few engraved cuts. Prioritize gesture, mass, joints, support and broad value groups over tiny details. No plastic gloss, outline-everything treatment or noisy hatching.\n\nEXACT CANVAS 1024x768, viewBox=\"0 0 1024 768\". FOUR cells in a 2x2 layout, EACH 512x384. Reading order: top-left anticipation, top-right launch, bottom-left contact, bottom-right recovery. Exactly four separable top-level groups, IDs hound-anticipation, hound-launch, hound-contact, hound-recovery. Local coordinates inside each cell; outer translations respectively (0,0), (512,0), (0,384), (512,384). Each complete animal stays inside LOCAL x=90..422 and y=65..350, with transparent air on every side. Aim visible bounds around 300x240 per animal, never larger than 320x250. All four animals share the SAME body, skull and limb sizes. Do not enlarge the contact pose or shrink anticipation. All paws use one virtual floor near local y=340 where planted; raised feet are intentional and articulate visibly. Same camera and apparent scale in every pose. These will be reviewed at EXACT 0.1 source scale (approximately 30x24 pixels) and on a tighter 32px canvas; do not solve details by enlarging the creature.\n\nCONTINUITY WITH EXISTING DIRECTION STUDY, described because this SVG-generation endpoint has NO image-reference input: a lean ash-russet canine with large narrow shoulder/chest, tucked abdomen, low compact haunch, forward-tracking tapered animal head and ragged charcoal nape mane. Its existing SE view has a russet arched trunk, strong shoulder plane, dark narrow shins, four weighted paws, pointed animal ears, small ivory lower jaw, charcoal tapered downward tail, recessed dark eye and a little pale cheek scar. Keep this individual, simplify its slightly high rump toward a high-withers/low-haunch gesture, do not redesign it as a wolf-bear or a monster cat. Long narrow skull, modest muzzle/jaw, not an oversized head. Four legs total, ONE head, two ears, ONE tail; anatomically connected elbows, wrists, knees and hocks. Near/far limb overlap must stay legible and preserve four limbs across all phases. Three to five large ragged charcoal mane tufts GROW from nape and shoulder, not a detached collar, wings or horns. No armor, harness, weapons, flame, glow, fire breath, spell or slash effects. Physical bite/reach only; small ivory jaw accent, no saber fangs. Palette ash russet #ab7860, warm highlight #d9a17f, mid #93624e, shadow #4b3936, charcoal #272a30, ivory #e5d5af. Use three large readable value groups, quiet torso, selective jaw/eye accents.\n\nCAMERA in ALL four cells: SAME SE/front-quarter, animal faces screen lower-right, face and near chest visible, far legs foreshortened. Fixed orthographic camera looking DOWN 27 degrees; mildly elevated game figure, not side-on clipart or diamond-isometric terrain. No camera turn between poses. Common SCREEN upper-left light, pale upper-left planes and dark lower-right planes. No lighting flips. No terrain, floor tile, pedestal, baked cast/contact shadow, scenery, borders, visible labels, arrows, grid, caption, watermark or VFX. Transparent isolated figures only. Use explicit solid fill colors, vector paths and simple shapes only; no gradients, filters, masks, clip paths, defs, use, embedded raster, external resources, scripts or animation. Group IDs are allowed for extraction, no other IDs needed.\n\nPOSE 1 / anticipation: compact loaded stance, chest drops slightly toward lower-right target, forelegs bend at elbows and wrists rather than collapse, hind hocks flex and haunch loads behind. Tracking head remains forward; ears attentive, small closed jaw. Spine compresses smoothly, not an accordion. Four paws grounded with believable separated weight, strongest weight over rear support and braced near forepaw. Negative space under abdomen and between forelegs. Shoulder stays higher than haunch even while loaded. Tail answers backward and down.\nPOSE 2 / low forward launch: powerful short ground-hugging step toward SE, hind support pushes, shoulder and head travel a SMALL amount forward/down within the same cell. Near foreleg reaches, far foreleg begins gathering under chest, hind legs show different joint phases. Keep at least one hind paw supporting/pushing and one forepaw nearing ground; this is not a levitating leap or stretched rubber torso. Continuous shoulder-neck-head action line, muzzle forward, restrained slightly parted jaw. Mane follows shoulder; tail delayed slightly.\nPOSE 3 / contact and reach: near forepaw visibly PLANTS and takes weight, bent supporting shoulder absorbs body; opposite foreleg offset behind/under chest. Head reaches a short extra distance on a CONNECTED neck, jaw modestly opens to suggest physical bite, same skull size, tiny ivory lower jaw. Hind paws arrive as stable counterweight. Chest leads and abdomen stays tucked; do not duplicate legs to show motion or extend the entire body into a horizontal noodle. No target, hit mark, gore or effect. Gesture is its own clear silhouette, not a duplicate launch.\nPOSE 4 / weight-restoring recovery: head and chest draw back over the planted forequarters, jaw closes, reaching paw retracts under shoulder, hind hocks settle and rebalance. Return toward alert forward stance with a slightly higher shoulder and quieter tail. Anatomical foot positions and flexion differ from anticipation; recovery should read as regaining support, not a fourth unrelated idle. Maintain same anatomy, camera, colors and apparent scale.\n\nDesign these as four useful motion KEY POSES for future evaluation, not a seamless loop or final production animation. No in-between frames, timing labels or alternate directions. Clean independently extractable cells, continuous living anatomy, broad painted planes and readable 30x24px gestures are the acceptance target.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1024x768",
+    "svg": {
+      "model": "gpt-6.1-terra",
+      "reasoning": {
+        "effort": "high"
+      }
+    }
+  },
+  "budget": {
+    "reservation_usd": 3,
+    "already_centrally_reserved": true,
+    "planning_bound_usd": 2.979445,
+    "author_max_input": 922000,
+    "author_input_long_context_usd_per_million": 2,
+    "author_max_output": 128000,
+    "author_output_long_context_usd_per_million": 7.5,
+    "reference_max_quality_token_allowance": 4815,
+    "reference_requested_quality": "high",
+    "image_output_usd_per_million": 30,
+    "prompt_utf8_byte_token_allowance": 6199,
+    "prompt_input_usd_per_million": 5,
+    "basis": [
+      "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+      "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+      "https://developers.openai.com/api/docs/guides/image-generation#calculating-costs",
+      "https://developers.openai.com/api/reference/resources/images/methods/generate"
+    ],
+    "calculator_sha256": "d9a39d8a517f554f18f7fe5635ee40b4e05780dec705fd0078363c9c7ca6b619",
+    "notes": "Full author token ceilings at long-context Standard rates, high reference reserved at max. No fast mode, regional endpoint or cache-write setting. UTF-8 bytes conservatively bound prompt tokens. Planning reservation is not account balance."
+  },
+  "transport": {
+    "automatic_retries": 0,
+    "timeout_seconds": 1200,
+    "streaming": false,
+    "partial_images": false,
+    "credential": "existing OPENAI_API_TOKEN network-secret binding through inherited HTTPS proxy; value not recorded"
+  },
+  "status": "returned",
+  "active_hold_usd": 0,
+  "started_utc": "2026-11-06T17:20:59.471238+00:00",
+  "http_status": 200,
+  "request_id": "req_8ac799526adb43f5aca448c9f76ef69d",
+  "response": {
+    "created": 1793985706,
+    "background": "transparent",
+    "data": [{}],
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1024x768",
+    "svg_usage": {
+      "input_tokens": 2568,
+      "model": "gpt-6.1-terra",
+      "output_tokens": 13578,
+      "reasoning_tokens": 3188,
+      "total_tokens": 16146
+    },
+    "usage": {
+      "input_tokens": 1405,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 1405
+      },
+      "output_tokens": 1204,
+      "output_tokens_details": {
+        "image_tokens": 1204,
+        "text_tokens": 0
+      },
+      "total_tokens": 2609
+    }
+  },
+  "original_sha256": "7cddaf0fe2e5502ffbe203c0bd3d025e64157010f207005ef1f462cac475de30",
+  "actual_usage_cost_usd": 0.113603,
+  "released_reservation_usd": 2.886397,
+  "usage_basis": "Standard uncached rates; author output includes reasoning, not charged twice. Usage-derived estimate, not invoice or account balance.",
+  "elapsed_seconds": 206.81,
+  "ended_utc": "2026-11-06T17:24:26.279678+00:00"
+}
