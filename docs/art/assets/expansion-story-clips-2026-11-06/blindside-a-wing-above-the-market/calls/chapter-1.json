@@ -1,0 +1,44 @@
+{
+  "status": "returned",
+  "kind": "gif-edit",
+  "prompt": "Animate this exact opening PNG into ONE short 16-frame GIF at480x336,300ms per frame. Original Blindside Nightjar candidate story,chapter1 WATCH. Preserve the wide fixed camera,cream sky,forest-ink bird,coral folded wing,ochre face/feet,pale eye,descending dark tail,curved wooden market rail,one face-down cream/coral card and upper-right crescent moon. Flat expressive cut-paper/engraved print style with broad connected contours. No text,new props,second bird,background pan,zoom,flash or fade.\n\nOnly a quiet preparatory action: the small perched Nightjar inclines its head a little toward the open sky to the upper-right,then makes a slight forward lean as its folded wing loosens subtly at the shoulder. Keep the entire bird at consistent scale and fully inside frame. Feet/claws remain naturally attached to two short legs and visibly gripping the SAME rail for ALL16frames. The body stays grounded: no lift,takeoff,stepping,sliding or floating yet. Folded wing remains one coherent CORAL plane attached at the shoulder,not an opening fan or detached limb. Head connects smoothly through neck to breast/back;eye/beak stay on the same head. Long tail stays attached and clear of rail. Small expressive movement with a readable still perched ending ready for the later departure. No full wing spreading in this chapter. Keep card,rail and moon perfectly stationary;no card manipulation or scoring effect. Preserve generous open sky for a later flight. Start as closely as possible to the actual reference pose,finish a tiny skyward look/lean with both feet still supported. Candidate fiction,not accepted game history. Do not add captions or storyboard panels.",
+  "inputs": ["opening"],
+  "client_request_id": "c6bfa76c-b149-4f61-83f8-461d8681b2f7",
+  "started_at": "2026-11-06T19:38:22Z",
+  "settings_sha256": "e67c076000649183dc4cae965e72d99e3ebdd3491fda2bf0d6067af62c7e5825",
+  "grant_id": "story-next-arc-10",
+  "reservation_usd": 1.5,
+  "block_call_index": 2,
+  "request_id": "req_28fd6b47ef684e1eaaa7c7dc585082cf",
+  "http_status": 200,
+  "output": "chapter-1.gif",
+  "sha256": "677806b1a8f728ee2c9ade87c09a30c5791bac39d16514cf9d320bf1a74a34fe",
+  "response": {
+    "created": 1793993943,
+    "background": "opaque",
+    "data": [
+      {
+        "generation_id": "c8699cfa-6685-4e7e-bead-d636e9368098"
+      }
+    ],
+    "output_format": "gif",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "480x336",
+    "usage": {
+      "input_tokens": 1020,
+      "input_tokens_details": {
+        "image_tokens": 630,
+        "text_tokens": 390
+      },
+      "output_tokens": 1869,
+      "output_tokens_details": {
+        "image_tokens": 1869,
+        "text_tokens": 0
+      },
+      "total_tokens": 2889
+    }
+  },
+  "cost_estimate_usd": 0.06306,
+  "elapsed_s": 40.649
+}

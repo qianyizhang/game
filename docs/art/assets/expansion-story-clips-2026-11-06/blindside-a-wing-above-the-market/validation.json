@@ -1,0 +1,77 @@
+{
+  "reference": {
+    "technical": "Production validateSvg passed;self-contained1280x896 native SVG,25leafshapes,7groups;Chromium154 renders at1280x896,480x336,160x112 without console errors.",
+    "visual": "Reviewed against live Nightjar native/compact source:forest-ink body,coral folded wing,ochre cheek/feet,pale eye,attached tapering tail retained. Two supported feet on rail;head/neck/breast connected. Small subject but silhouette and coral identity readable at160x112. Wide right/up flight room.",
+    "limits": [
+      "Moon fully visible:ochre crescent x408-450,y32-81 at480x336. Earlier visual top-edge concern was a misread and corrected before second GIF dispatch.",
+      "New rail/card/watch/departure are candidate fiction;face-down card has no scoring assertion."
+    ],
+    "renderer": "Chromium154.0.8037.57, whole SVG, DPR1, transparent480x336 PNG; no retouch."
+  },
+  "watch": {
+    "technical": "16 unique480x336 frames,300ms each;original hash and aggregate decodedRGBA recorded. TEMP PNGs independently decode byte-equal to composed source frames. Chromium native initial playback checked.",
+    "visual": "Author reviewed all16 at480x336 and160x112;independent preflight reviewed all16 contacts plus00/07/15native. Two supported feet/claws throughout,one attached folded coral wing,connected head/body/tail,no crop or extra bird,card/rail/moon remain visually fixed. Skyward attention readable.",
+    "limits": "Head rises about30px and neck/breast elongates;visible posture/proportion drift,not just a tiny rotation or perfect scale lock. API redraw changes placement/print texture from SVG. Away uses actual taller endpoint only."
+  },
+  "away": {
+    "technical": "16unique480x336 frames,300ms each;exact originalhash/aggregateRGBA in canonical records. Native Chromium playback checked. All32 temporaryPNGframes independently decode to composedGIFRGBA.",
+    "visual": "Author inspected every actual frame at480x336 and160x112. Feet supported at0-2,push/release at3,clear sky underfeet by4,connected near/far wings open then one downstroke/glide;one bird ends fully airborne to right/up,card untouched and vacated rail readable. No birdtip crop or disappearance. Broad coral near wing,ochre face and ink tail persist.",
+    "limits": [
+      "Wing shape/feather count and near/far overlap simplify through the beat;stylized motion,not a scientific locomotion simulation.",
+      "API redraw shifts bird/rail/card/moon at chapter cut;slightly altered silhouette and palette/texture. Background is visually steady within clips,not claimed pixel-identical.",
+      "Flight goes farther/higher than requested and broad wing envelope grows;actual whole bird remains in frame. Late beak approaches moon but does not overlap."
+    ],
+    "independent_review": "Second reader reviewed all16 frames/digests:coherent support/push/release/beat/glide,no stop-level story hold. Eye landmark travels about190px right/115px up,exceeding requested100/50;final bird top about27px and beak/moon gap about15px. Proposed stylized candidate only."
+  },
+  "preview": {
+    "recipe": "Local selected derivative:Watch0,Watch15,Away4,Away15,each160x112,8-bit sRGB,4x1;no frame catalogue retained.",
+    "lossless": "PNG compression9 retained only after RGBA8 byte equality,dimensions,channels and colorspace equality to unoptimized strip;no source artwork optimized.",
+    "bytes": 74245
+  },
+  "scope": "Source-only artwork/docs. No application/runtime/shared registry/selection/gallery code edits. Canonical registration remains pending serial coordinator. Local affected-history and browser checks supplement hosted CI;no claim of full game/geometry/native suite.",
+  "gallery": "Passed production isolated import/verify and four unassigned source-study cards with originals and local assembly;canonical calls/assembly inspected,native initial GIF playback,0selections,no runtime actions. Baseline library unchanged;publication390/320px enlarged-text gallery passed. Shared nonlooping replay is not claimed.",
+  "browser": "Passed loopback Chromium native once-through9.6s playback and actual ending review;390/320px enlarged text,reduced-motion SVG,local links,no page errors/external requests,no false pause/seek controls. Screenshots temporary;not frame-exact compositor equality or shared replay proof.",
+  "checks": {
+    "history_contracts": "Pinned Node24.21.0,node --test packages/workshop-tools/art/history.test.ts:11passed,0failed. Existing meaningful contracts reused;no implementation-mirroring tests added.",
+    "local": {
+      "runtime": "Node24.21.0,Python3.12.13,official GoogleChrome157.0.8103.38 via existing CARD_WORKSHOP_CHROME_EXECUTABLE. Default Chrome was initially absent; startup guards, modes, assertions and timeouts unchanged.",
+      "passed": "Formatting,metadata/hydration,lint,types,Python19,tools202,DCC81,build,37simulations,shaderCPU8,shaderBrowser5;90core+499application tests. Baseline history709assets/92revisions/0selections;new four revisions passed isolated import96revisions and source-only gallery.",
+      "original_smoke": "5passed/1failed:diablo2.spec.ts:248,lantern-1/Mira/standard/emberwake-7,fen-1,tick48,player(12.41,23.5),23rightwardticks. Nearest living archeruid2 distance7.04085088,clearLOS;strict<7 fails. Nominal900ms wait lasted~1105ms. Original log/trace preserved.",
+      "focused_smoke": "One rerun passed(10s test/15s run),same fixture/browser/test;only local port4183,absolute config anchors and temporary trace output differ. Tick44,player(11.73,23.5),19rightwardticks;uid2 distance6.84380991,clearLOS;wait901ms. Both traces retained. Supports timing sensitivity;no baseline browser failure established or conditional baseline rerun needed after pass.",
+      "selected_browser": "195planned:187passed,4failed,4skipped,17.5minutes. No additional scope or rerolls.",
+      "failures": [
+        "native-assets.spec.ts:101:final BriarHydra dcc-render data-ready=false at30000ms case timeout. Expected missing-nightjar-bake diagnostic is NOT the failure.",
+        "night-passage-agent.spec.ts:92:Pause replay click at30000ms case timeout.",
+        "night-passage.spec.ts:303:Cast charges empty instead of1/3 at30000ms case timeout.",
+        "art3d.spec.ts:88:Vajra gallery heading From ink to object absent at5000ms assertion timeout."
+      ],
+      "limits": "Full check:changed is NOT passed. Candidate branch changes19source-study/settings files only;game/test/native package blobs unchanged. No demonstrated causal link to candidate art;no baseline-failure assumption. Original failures retained;no gameplay,test,timeout,shared-gallery or registry edits. Geometry not selected;no full native-suite claim."
+    },
+    "hosted": {
+      "head": "65d65a1f5b899eb3b17317935ea9e6f444362574",
+      "run": 42282924717,
+      "result": "success",
+      "url": "https://github.com/qianyizhang/game/actions/runs/42282924717"
+    }
+  },
+  "compact_phone": "Actual native GIF playback additionally inspected at320px phone(nooverflow) and160x112 compact Away,without reduced-motion substitution;temporary screenshots. No pageerrors. Reduced-motion fallback is checked separately.",
+  "registration": {
+    "handoff_head": "65d65a1f5b899eb3b17317935ea9e6f444362574",
+    "source_diagnostics": "The supplied diagnostic-closeout amendment is inherited source-owner evidence, not a rerun in this registration executor. Original logs and all six failure/pass traces remain only in that owner executor ignored .artifacts/nightjar-closeout/. Historical source scope/gallery/check statements above describe the pre-registration source head. No baseline failure or candidate-art causation is established.",
+    "scope": "Canonical source registration only: four actual attempts/revisions, original SVG/GIFs and two exact sent PNG references preserved. No runtime mapping or selection/default changes. Canonical calls/settings/references/animation remain their existing owners; redundant import transport retired after exact comparison. Actual registration and disposable compatibility checks reported separately below.",
+    "media": "All32 joined RGBA frames/timings equal original chapters; both original loop extensions and once-playing assembly verified. Three canonical output hashes/shared-settings digests and both exact sent PNG hashes match; chapter1 last PNG equals original composed frame15. Shared settings byte-identical to prior story. No permanent frame catalogue.",
+    "gallery": "Four source revisions and17 exact desktop/mobile text/PNG views passed, including all three calls, common settings, references, animation and parent links. Use disabled for all; native/compact SVG and actual GIF playback inspected.1440/390/320px at16/20px text fit, no page errors. Actual320px/20px native story advanced; reduced motion interrupts and blocks playback.",
+    "source_controls": "Initial native story playback advanced. Existing independent branch still reproduces completed once-GIF Stop→Play terminal retention: compositor ending equals restart, while initial/middle differ. This is separate from visual acceptance and inherited source diagnostics; frozen shared fix requires disposable integration. Captured early pixels are not guaranteed original framezero.",
+    "checks": "Passed scoped format:maintenance, history verify709assets/96revisions/0selections, and all3existing asset-history browser journeys at normal limits. Artwork/inputs/calls/settings and previous asset/source/selection/default bytes unchanged. This does not supersede the inherited unpassed broad local check:changed.",
+    "shared_compatibility": {
+      "source_checkpoint": "36aac9cea2fc85f75a35c8766728752a35861511",
+      "governance_head": "99e499f8b30a39280c8ecef0045bb05b4afcced2",
+      "replay_head": "6fdc26d94ac5434446e35f23c44e249164312940",
+      "shared_tree": "af1272b1ccd3ebb18e7dc60a8c297b44635b62b4",
+      "combination_tree": "781977b901426ecef1c0e1857d233900e7742c86",
+      "checks": "Unpushed combination history verified709assets/163revisions/0selections. All4completed-story replay cases passed live/offline at1440px16text and320px20text: Stop→Play matching captured opening pixels then advancement, fresh URL, old URL revocation, exact playback/download SHA and reduced-motion interrupt/block. Actual scoped/offline UI passed48revision/layout cases and34exact document/input views, no overflow/page errors or offline replay network requests.",
+      "capture": "Wait image.complete/naturalWidth then compositor screenshot; click-to-capture148–166ms. Matching early captured pixels are not guaranteed original framezero or portable references. No animated-canvas inference or pause/seek claim.",
+      "limits": "Conditional compatibility only at exact recorded heads. Shared implementation is not landed or added to this candidate; its independent-code replay failure above remains historical evidence. Source visual caveats and inherited broad verification failures remain unresolved as stated. No game adoption or user aesthetic acceptance."
+    }
+  }
+}
