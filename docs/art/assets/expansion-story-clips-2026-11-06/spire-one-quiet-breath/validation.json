@@ -1,0 +1,12 @@
+{
+  "svg": "Passed production validateSvg;1280x896,98leaf shapes,13groups. Native/compact subject,hand/knee support and fire gap reviewed.",
+  "gif": "Two exact originals,16frames each,480x336,300ms each. All32 composed RGBA frames inspected temporarily;extracted PNGs match source GIF compositions.",
+  "assembly": "All32 source RGBA frames/timings exact in local9.6s once-through GIF;original looping/C2PA bytes unchanged. Compact panel append verified.",
+  "visual": "Coherent hand-release then raised-mask arc;pose/texture drift at cut. Ending horn tips clip top edge;presentation HOLD,no full-frame safety pass.",
+  "independent_review": "Read-only second worker verified originals,all32 RGBA frame digests,endpoint lineage and coherent gestures;confirmed horn clipping at chapter2frames5-6,9-15.",
+  "browser": "Passed loopback Chromium native once-through9.6s playback and actual ending review;390/320px enlarged text,reduced-motion SVG,local links,no page errors/external requests,no false pause/seek controls. Screenshots temporary;not frame-exact compositor equality or shared replay proof.",
+  "gallery": "Passed production isolated import/verify and four unassigned source-study cards;canonical calls/assembly inspected,native initial GIF playback,0selections,no runtime actions. Baseline library unchanged;publication390/320px enlarged-text gallery passed. Shared nonlooping replay is not claimed.",
+  "replay_limit": "Known shared gallery Stop/Play restart issue after nonlooping joined GIF ends;no shared fix or guaranteed replay claimed.",
+  "maintenance": "Passed full format:maintenance at publication tree,scoped format/diff and local links. No game/shared-gallery/runtime code changed;hosted CI reported separately.",
+  "boundary_check": "Native bone-pixel check in horn-only x140-299 confirms top intersection at frames5-6,9-15 and only1px threshold clearance at7-8;visual check confirms real late horn cropping,not proximity."
+}

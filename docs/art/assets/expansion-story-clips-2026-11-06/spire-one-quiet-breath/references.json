@@ -1,0 +1,22 @@
+{
+  "opening": {
+    "file": "reference.png",
+    "sha256": "e025e80a5ac7479f353416c5dee76e9d78ed659b757e7184a1b5da4e5b034745",
+    "source": {
+      "svg": "reference.svg",
+      "sha256": "b957b18f04903445bd95a786e5b1b25effebb8b3f9e3ed8a920ff4d42106c48a",
+      "render": [480, 336],
+      "renderer": "Chromium154.0.8037.57",
+      "recipe": "Unmodified whole SVG,Playwright viewport480x336,DPR1,PNG screenshot; no crop,recolor or optimization."
+    }
+  },
+  "chapter-1-last": {
+    "file": "references/chapter-1-last.png",
+    "sha256": "0bd260a3a96606929c50ba987fbbdf7d3eae8f7e2f500b8c77c191efe9fd6b5c",
+    "source": {
+      "gif": "chapter-1.gif",
+      "frame": 15,
+      "recipe": "ImageMagick7.1.1 coalesce original GIF;zero-based composed frame15,PNG compression9,no pixel edit. Exact RGBA matches source. Original GIF metadata retained; PNG writer may warn about GIF C2PA text profile."
+    }
+  }
+}

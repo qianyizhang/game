@@ -1,0 +1,44 @@
+{
+  "decoder": "Version: ImageMagick 7.1.1-43 Q16 x86_64 22550 https://imagemagick.org",
+  "digest_recipe": "ImageMagick coalesce; concatenate full composed RGBA8 frames in source order. Temporary extracted PNGs independently decode to those exact RGBA bytes.",
+  "default_size": [480, 336],
+  "default_frame_duration_ms": 300,
+  "clips": {
+    "chapter-1": {
+      "call": "calls/chapter-1.json",
+      "frames": 16,
+      "duration_ms": 4800,
+      "rgba_sha256": "7fcf93535d131d79cfaa0d1f294b79ca2ea93e5490918cf7ffbcfef2fc3da0ec"
+    },
+    "chapter-2": {
+      "call": "calls/chapter-2.json",
+      "frames": 16,
+      "duration_ms": 4800,
+      "rgba_sha256": "299494f0ee23d140a74abeeb7461b853d955ddb0d31622fd93954c6ab8b9e7d1"
+    }
+  },
+  "exceptions": [],
+  "joined": {
+    "file": "story.gif",
+    "source_order": ["chapter-1", "chapter-2"],
+    "recipe": "Individually coalesce each original GIF to temporary full-frame PNGs;concatenate all32 in order with30cs delay,Background disposal,loop1,strip copied metadata on local derivative only. No omission,interpolation,retouch or palette optimization.",
+    "frames": 32,
+    "duration_ms": 9600,
+    "sha256": "5fcdefdcbb26873b25d32b4f20d64c2ef846d56e71e5087c95f5810c913cf72c",
+    "rgba_sha256": "7c4a7dd9d6e5fab8aeda67cc32453b8cac644e5d6a44bada9c294ad3b2d22520",
+    "pixels_and_timing_exact": true,
+    "loop": "Once;original source GIF bytes/looping/C2PA remain intact.",
+    "metadata": "Local assembled derivative,not another API output or inherited source attestation."
+  },
+  "comparison": {
+    "file": "compact.png",
+    "panels": [
+      "reference.png",
+      "chapter-1.gif frame15",
+      "chapter-2.gif frame0",
+      "chapter-2.gif frame15"
+    ],
+    "recipe": "Nearest-neighbor sample each480x336 image to160x112;append four RGBA panels without further pixel changes;strip copied metadata on review derivative only. Shows actual ending framing hold.",
+    "sha256": "ec9e050a8a665df10cd903710f1894f1a8170c49ecbd427f84839f9302f829d3"
+  }
+}

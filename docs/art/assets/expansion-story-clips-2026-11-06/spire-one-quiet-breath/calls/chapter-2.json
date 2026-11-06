@@ -1,0 +1,44 @@
+{
+  "status": "returned",
+  "kind": "gif-edit",
+  "prompt": "Animate CHAPTER TWO,Again,of the candidate Spire story One Quiet Breath. The SINGLE supplied PNG is the actual endpoint of chapter one: Silent seated at rest,one relaxed open gloved hand supported on the raised knee,other hand inside the cloak,head slightly lowered,two horns and skull mask,small campfire and ascending path. It owns the starting pose,composition,texture,palette and identity;do not return to the earlier clenched hand or redraw another person.\n\nOne restrained event with a clear ending. Begin with this quiet relaxed posture. Over the middle eight frames a calm breath and slight straightening lift the mask a little toward the ascending stone path at the image right. This is a look of readiness,not a full stand or walk. Let the same supported forearm rise only with the small torso change;keep the loose open glove on the same knee,with natural wrist/elbow attachment and no hand swap. The seated weight stays on the rock,knee/body support unchanged. A small cloak-edge movement follows the breath and settles. Finish with the mask directed toward the path and shoulders a little more open than at the start. Hold this resolved seated pose through the final four frames;no fade,disappearance,reset or return to the bowed opening.\n\nThe bone skull mask is a STATIC WORN MASK: exactly two unchanged swept horns,static dark sockets and nasal opening,no living mouth/eyes or face transformation. Small gentle fire flicker only,with the same crossed logs,never touching cloth;path and stones remain still. Keep one visible hand and the other hidden,one figure,matte cut-plane material and stable camera. No blades,tools,new props,text,magic heal,sparks,flashes,cuts,zoom or camera pan. Avoid fluttering the whole figure or changing body scale.\n\nSixteen300ms frames,480x336,one continuous slow action. The story ends at a chosen pause and renewed attention to the climb,not a claimed HP change or specific run victory. Original candidate fiction,not accepted canon or a runtime game effect.",
+  "inputs": ["chapter-1-last"],
+  "client_request_id": "f87d8c86-3973-4bd3-b091-5b0412306d59",
+  "started_at": "2026-11-06T17:49:12Z",
+  "settings_sha256": "e67c076000649183dc4cae965e72d99e3ebdd3491fda2bf0d6067af62c7e5825",
+  "grant_id": "story-next-arc-block-08",
+  "reservation_usd": 1.5,
+  "block_call_index": 3,
+  "request_id": "req_f23111781a92426b9aea4de7db7a6760",
+  "http_status": 200,
+  "output": "chapter-2.gif",
+  "sha256": "9009d18fbbd4576e473a4de762509e6a7c8e6dc767d450bdc2eefbbd24e9b4c9",
+  "response": {
+    "created": 1793987394,
+    "background": "opaque",
+    "data": [
+      {
+        "generation_id": "f07d1ad2-4051-4dfc-9cfe-13eefbfaf798"
+      }
+    ],
+    "output_format": "gif",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "480x336",
+    "usage": {
+      "input_tokens": 1086,
+      "input_tokens_details": {
+        "image_tokens": 630,
+        "text_tokens": 456
+      },
+      "output_tokens": 1869,
+      "output_tokens_details": {
+        "image_tokens": 1869,
+        "text_tokens": 0
+      },
+      "total_tokens": 2955
+    }
+  },
+  "cost_estimate_usd": 0.06339,
+  "elapsed_s": 42.771
+}
