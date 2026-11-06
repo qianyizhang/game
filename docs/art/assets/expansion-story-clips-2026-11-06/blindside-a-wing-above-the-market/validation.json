@@ -62,6 +62,16 @@
     "media": "All32 joined RGBA frames/timings equal original chapters; both original loop extensions and once-playing assembly verified. Three canonical output hashes/shared-settings digests and both exact sent PNG hashes match; chapter1 last PNG equals original composed frame15. Shared settings byte-identical to prior story. No permanent frame catalogue.",
     "gallery": "Four source revisions and17 exact desktop/mobile text/PNG views passed, including all three calls, common settings, references, animation and parent links. Use disabled for all; native/compact SVG and actual GIF playback inspected.1440/390/320px at16/20px text fit, no page errors. Actual320px/20px native story advanced; reduced motion interrupts and blocks playback.",
     "source_controls": "Initial native story playback advanced. Existing independent branch still reproduces completed once-GIF Stop→Play terminal retention: compositor ending equals restart, while initial/middle differ. This is separate from visual acceptance and inherited source diagnostics; frozen shared fix requires disposable integration. Captured early pixels are not guaranteed original framezero.",
-    "checks": "Required scoped formatting/maintenance, history integrity and three affected asset-history browser journeys will be recorded after completion; inherited broad local check:changed remains unpassed."
+    "checks": "Passed scoped format:maintenance, history verify709assets/96revisions/0selections, and all3existing asset-history browser journeys at normal limits. Artwork/inputs/calls/settings and previous asset/source/selection/default bytes unchanged. This does not supersede the inherited unpassed broad local check:changed.",
+    "shared_compatibility": {
+      "source_checkpoint": "36aac9cea2fc85f75a35c8766728752a35861511",
+      "governance_head": "99e499f8b30a39280c8ecef0045bb05b4afcced2",
+      "replay_head": "6fdc26d94ac5434446e35f23c44e249164312940",
+      "shared_tree": "af1272b1ccd3ebb18e7dc60a8c297b44635b62b4",
+      "combination_tree": "781977b901426ecef1c0e1857d233900e7742c86",
+      "checks": "Unpushed combination history verified709assets/163revisions/0selections. All4completed-story replay cases passed live/offline at1440px16text and320px20text: Stop→Play matching captured opening pixels then advancement, fresh URL, old URL revocation, exact playback/download SHA and reduced-motion interrupt/block. Actual scoped/offline UI passed48revision/layout cases and34exact document/input views, no overflow/page errors or offline replay network requests.",
+      "capture": "Wait image.complete/naturalWidth then compositor screenshot; click-to-capture148–166ms. Matching early captured pixels are not guaranteed original framezero or portable references. No animated-canvas inference or pause/seek claim.",
+      "limits": "Conditional compatibility only at exact recorded heads. Shared implementation is not landed or added to this candidate; its independent-code replay failure above remains historical evidence. Source visual caveats and inherited broad verification failures remain unresolved as stated. No game adoption or user aesthetic acceptance."
+    }
   }
 }

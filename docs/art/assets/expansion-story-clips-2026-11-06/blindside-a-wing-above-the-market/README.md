@@ -41,3 +41,25 @@ owner’s executor and were not copied or claimed rerun here. Shared-runtime
 compatibility is tested only in an unpushed combination, with separate exact
 head/tree receipts. Independent library additions require serial reconciliation
 when landing. Art selection and game adoption remain separate decisions.
+
+Registration passed required scoped maintenance/history and three affected browser
+journeys at normal limits. The inherited broad local verification remains unpassed;
+no unrelated flaky suite was rerun or baseline failure assumed.
+
+Disposable compatibility used source checkpoint
+`36aac9cea2fc85f75a35c8766728752a35861511`, #137
+`99e499f8b30a39280c8ecef0045bb05b4afcced2` and #142
+`6fdc26d94ac5434446e35f23c44e249164312940`; combined tree
+`781977b901426ecef1c0e1857d233900e7742c86`. All four live/offline
+desktop/phone cases completed the once-playing GIF, then Stop → Play restored
+matching captured opening pixels and advanced. Playback/download bytes stayed
+exact; reduced motion interrupted and blocked playback. Actual shared UI settings,
+inputs, lineage, source-only guards and enlarged-text layouts also passed. These
+are early compositor samples, not guaranteed original frame zero.
+
+The shared implementation is unlanded and absent from this candidate branch;
+compatibility is conditional on those exact heads. The branch still reproduces
+the older completed-GIF replay limitation independently. Native originals and
+visual caveats remain intact; source registration does not establish user art
+acceptance or runtime adoption. [Validation](validation.json) separates each
+receipt and source-owner diagnostics.
