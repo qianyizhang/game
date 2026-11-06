@@ -1,7 +1,7 @@
 {
   "grant": "story-emberwake-gif-13",
   "reserved_usd": 0.25,
-  "status": "prepared-not-dispatched",
+  "status": "returned",
   "allowed_calls": 1,
   "automatic_retries": 0,
   "endpoint": "https://api.openai.com/v1/images/edits",
@@ -28,5 +28,43 @@
     "this_grant_usd": 0.25,
     "inclusive_usd": 35.08234,
     "uncommitted_usd": 4.91766
-  }
+  },
+  "dispatched_at": "2026-11-06T21:14:35.488666+00:00",
+  "multipart_body_sha256": "879e4298250b5b98fff1749bd7896d1ea3ffbb11daede2760ecce745f0420fd9",
+  "multipart_bytes": 55390,
+  "http_status": 200,
+  "request_id": "req_df0ad4e390bb49cca04695038c2ed5d2",
+  "response": {
+    "created": 1793999718,
+    "background": "transparent",
+    "output_format": "gif",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "480x336",
+    "usage": {
+      "input_tokens": 1282,
+      "input_tokens_details": {
+        "image_tokens": 630,
+        "text_tokens": 652
+      },
+      "output_tokens": 2126,
+      "output_tokens_details": {
+        "image_tokens": 2126,
+        "text_tokens": 0
+      },
+      "total_tokens": 3408
+    },
+    "data": [
+      {
+        "generation_id": "e9aa1bca-e88b-4bef-bd43-4acebd35a1e9"
+      }
+    ]
+  },
+  "original": "empty-target-original.gif",
+  "original_sha256": "982a183f3557e53afe3707c5c38a2e11c5f43878e4e669563dfd714a45d3cdf5",
+  "original_bytes": 380891,
+  "cost_estimate_usd": 0.07208,
+  "billing": "usage-derived-estimate-not-invoice",
+  "elapsed_seconds": 43.08,
+  "terminal_at": "2026-11-06T21:15:18.573290+00:00"
 }

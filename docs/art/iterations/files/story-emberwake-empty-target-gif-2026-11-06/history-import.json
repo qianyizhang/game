@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "assets": [],
+  "attempts": [
+    {
+      "id": "story-emberwake-empty-target-opening-2026-11-06",
+      "title": "An Empty Target: unknown SVG opening",
+      "date": "2026-11-06",
+      "outcome": "unknown",
+      "notes": "One HTTP 502; no image or usage, full USD3 hold, never retried. No image revision exists.",
+      "files": [
+        "docs/art/iterations/files/story-emberwake-empty-target-2026-11-06/README.md",
+        "docs/art/iterations/files/story-emberwake-empty-target-2026-11-06/request.json",
+        "docs/art/iterations/files/story-emberwake-empty-target-2026-11-06/outcome.json"
+      ]
+    },
+    {
+      "id": "story-emberwake-empty-target-composition-2026-11-06",
+      "title": "An Empty Target: manual accepted-Mira reference",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "No-spend composition. Exact accepted renderer 35 paths/colors/order, translated/scaled only; original geometry/source pinned in README. PNG is the SVG render, not generated SVG output.",
+      "files": [
+        "docs/art/iterations/files/story-emberwake-empty-target-composition-2026-11-06/README.md",
+        "docs/art/iterations/files/story-emberwake-empty-target-composition-2026-11-06/reference-manual.png"
+      ]
+    },
+    {
+      "id": "story-emberwake-too-close-2026-11-06",
+      "title": "Too Close: first native GIF",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One grant-12 call, USD0.072185 estimate. Actual PNG input is the manual SVG render. Native original loops and drifts; frame-11 PNG is exact decoded endpoint for clip 2, not a frame catalogue.",
+      "files": [
+        "docs/art/iterations/files/story-emberwake-too-close-2026-11-06/README.md",
+        "docs/art/iterations/files/story-emberwake-too-close-2026-11-06/call.json",
+        "docs/art/iterations/files/story-emberwake-empty-target-composition-2026-11-06/first-gif-draft.json",
+        "docs/art/iterations/files/story-emberwake-too-close-2026-11-06/too-close-end-reference.png"
+      ]
+    },
+    {
+      "id": "story-emberwake-empty-target-gif-2026-11-06",
+      "title": "Empty Target: held continuity result",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One grant-13 call, USD0.072080 estimate. Input is exact clip-1 frame-11 PNG. Ordering reads but opening grows Mira and shifts the shot/landing; held, no assembly or PR. Native original retains C2PA and loop metadata.",
+      "files": [
+        "docs/art/iterations/files/story-emberwake-empty-target-gif-2026-11-06/README.md",
+        "docs/art/iterations/files/story-emberwake-empty-target-gif-2026-11-06/call.json",
+        "docs/art/iterations/files/story-emberwake-too-close-2026-11-06/second-gif-draft.json",
+        "docs/art/iterations/files/story-emberwake-empty-target-gif-2026-11-06/continuity-review.png",
+        "docs/art/iterations/files/story-emberwake-empty-target-gif-2026-11-06/history-import.json"
+      ]
+    }
+  ],
+  "revisions": [
+    {
+      "id": "story-emberwake-empty-target-composition-2026-11-06:manual-svg",
+      "asset": null,
+      "attempt": "story-emberwake-empty-target-composition-2026-11-06",
+      "label": "Manual accepted-Mira composition",
+      "file": "docs/art/iterations/files/story-emberwake-empty-target-composition-2026-11-06/reference-manual.svg",
+      "digest": "654913e901abbadad0a303aa80caccddc4362dde37456d25fa2822170323c46f",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual composition of accepted drawHero at time 0; source SHA and original source commit in owning record. Rendered PNG is retained once as an attempt document; no generated SVG parent."
+    },
+    {
+      "id": "story-emberwake-too-close-2026-11-06:native-gif",
+      "asset": null,
+      "attempt": "story-emberwake-too-close-2026-11-06",
+      "label": "Too Close: approach source",
+      "file": "docs/art/iterations/files/story-emberwake-too-close-2026-11-06/too-close-original.gif",
+      "digest": "12fe7cf91b3a105c6ed201691c34b63d7ed9225fa867ff2cf0db534a896c0fe8",
+      "parents": ["story-emberwake-empty-target-composition-2026-11-06:manual-svg"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Reference-guided from the PNG render of the manual SVG. Exact raw 12x160ms native GIF; loop=0 retained; frame-11 input PNG is in the attempt documents. Candidate, not runtime selection."
+    },
+    {
+      "id": "story-emberwake-empty-target-gif-2026-11-06:native-gif",
+      "asset": null,
+      "attempt": "story-emberwake-empty-target-gif-2026-11-06",
+      "label": "Empty Target: held continuity",
+      "file": "docs/art/iterations/files/story-emberwake-empty-target-gif-2026-11-06/empty-target-original.gif",
+      "digest": "982a183f3557e53afe3707c5c38a2e11c5f43878e4e669563dfd714a45d3cdf5",
+      "parents": ["story-emberwake-too-close-2026-11-06:native-gif"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Reference-guided from exact composited frame 11 of Too Close, supplied as PNG. Raw 12x160ms native GIF; loop=0 and C2PA application retained. One visible Mira, but scale/baseline and shot-height continuity fail; no once-playing assembly produced."
+    }
+  ]
+}
