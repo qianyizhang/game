@@ -7,17 +7,9 @@
       "title": "archive packed native SVG source study",
       "date": "2026-11-06",
       "outcome": "returned",
-      "notes": "Review-only future expansion source concepts; no stable game slot or runtime adaptation. One shared paid request, no retries. Exact prompt/settings/usage and extraction lineage are linked. See per-subject review for holds; technical validity is separate from aesthetic and user acceptance.",
+      "notes": "One packed request; request/settings/usage/review in archive/call.json. Source concepts only; no aesthetic or runtime acceptance.",
       "files": [
-        "docs/art/assets/expansion-archive-spire-2026-11-06/archive/extraction.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/archive/png-optimization.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/archive/prompt.txt",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/archive/request.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/archive/response.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/archive/review.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/archive/subjects.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/budget.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/source-audit.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/archive/call.json",
         "docs/art/assets/expansion-archive-spire-2026-11-06/archive/review.png"
       ]
     },
@@ -26,17 +18,9 @@
       "title": "forge packed native SVG source study",
       "date": "2026-11-06",
       "outcome": "returned",
-      "notes": "Review-only future expansion source concepts; no stable game slot or runtime adaptation. One shared paid request, no retries. Exact prompt/settings/usage and extraction lineage are linked. See per-subject review for holds; technical validity is separate from aesthetic and user acceptance.",
+      "notes": "One packed request; request/settings/usage/review in forge/call.json. Source concepts only; no aesthetic or runtime acceptance.",
       "files": [
-        "docs/art/assets/expansion-archive-spire-2026-11-06/forge/extraction.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/forge/png-optimization.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/forge/prompt.txt",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/forge/request.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/forge/response.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/forge/review.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/forge/subjects.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/budget.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/source-audit.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/forge/call.json",
         "docs/art/assets/expansion-archive-spire-2026-11-06/forge/review.png"
       ]
     },
@@ -45,17 +29,9 @@
       "title": "garden packed native SVG source study",
       "date": "2026-11-06",
       "outcome": "returned",
-      "notes": "Review-only future expansion source concepts; no stable game slot or runtime adaptation. One shared paid request, no retries. Exact prompt/settings/usage and extraction lineage are linked. See per-subject review for holds; technical validity is separate from aesthetic and user acceptance.",
+      "notes": "One packed request; request/settings/usage/review in garden/call.json. Source concepts only; no aesthetic or runtime acceptance.",
       "files": [
-        "docs/art/assets/expansion-archive-spire-2026-11-06/garden/extraction.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/garden/png-optimization.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/garden/prompt.txt",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/garden/request.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/garden/response.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/garden/review.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/garden/subjects.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/budget.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/source-audit.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/garden/call.json",
         "docs/art/assets/expansion-archive-spire-2026-11-06/garden/review.png"
       ]
     },
@@ -64,17 +40,9 @@
       "title": "spire-beyond-thresholds packed native SVG source study",
       "date": "2026-11-06",
       "outcome": "returned",
-      "notes": "Review-only future expansion source concepts; no stable game slot or runtime adaptation. One shared paid request, no retries. Exact prompt/settings/usage and extraction lineage are linked. See per-subject review for holds; technical validity is separate from aesthetic and user acceptance.",
+      "notes": "One packed request; request/settings/usage/review in spire-beyond-thresholds/call.json. Source concepts only; no aesthetic or runtime acceptance.",
       "files": [
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/extraction.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/png-optimization.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/prompt.txt",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/request.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/response.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/review.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/subjects.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/budget.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/source-audit.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/call.json",
         "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/review.png"
       ]
     },
@@ -83,17 +51,9 @@
       "title": "spire-exordium-city packed native SVG source study",
       "date": "2026-11-06",
       "outcome": "returned",
-      "notes": "Review-only future expansion source concepts; no stable game slot or runtime adaptation. One shared paid request, no retries. Exact prompt/settings/usage and extraction lineage are linked. See per-subject review for holds; technical validity is separate from aesthetic and user acceptance.",
+      "notes": "One packed request; request/settings/usage/review in spire-exordium-city/call.json. Source concepts only; no aesthetic or runtime acceptance.",
       "files": [
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/extraction.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/png-optimization.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/prompt.txt",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/request.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/response.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/review.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/subjects.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/budget.json",
-        "docs/art/assets/expansion-archive-spire-2026-11-06/source-audit.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/call.json",
         "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/review.png"
       ]
     }
@@ -109,7 +69,7 @@
       "parents": [],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Exact original UTF-8 SVG bytes returned by the API. Source sheet, not a game slot. No prior artwork parent or reference input."
+      "notes": "Exact API original; source sheet."
     },
     {
       "id": "expansion-archive-spire-20261106:archive:index-shelf",
@@ -121,7 +81,7 @@
       "parents": ["expansion-archive-spire-20261106:archive:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group index-shelf; cell [x,y,width,height]=[0, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Stepped shelf, three folio stacks and open base remain distinct at 160x112, 80x56 and 64x45. Cream paper and green stone are separated. Larger foreground shelf reads well; no replacement for tactical tiles. No independent or user acceptance."
+      "notes": "Cell [0, 0, 480, 336]; removed only grid translation. Review: archive/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:archive:reading-lectern",
@@ -133,7 +93,7 @@
       "parents": ["expansion-archive-spire-20261106:archive:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group reading-lectern; cell [x,y,width,height]=[480, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Sloping blank folio leads; curved bracket and broad foot visibly support it. Clear silhouette at all reviewed sizes, with a useful open pocket under the stem. No independent or user acceptance."
+      "notes": "Cell [480, 0, 480, 336]; removed only grid translation. Review: archive/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:archive:scroll-cradle",
@@ -145,7 +105,7 @@
       "parents": ["expansion-archive-spire-20261106:archive:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group scroll-cradle; cell [x,y,width,height]=[960, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Unequal scroll ends, hanging sheet and crescent stone support stay readable at compact size. Sparse spiral cuts remain subordinate; paper does not become a weapon or relic. No independent or user acceptance."
+      "notes": "Cell [960, 0, 480, 336]; removed only grid translation. Review: archive/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:archive:floodgate-wheel",
@@ -157,7 +117,7 @@
       "parents": ["expansion-archive-spire-20261106:archive:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group floodgate-wheel; cell [x,y,width,height]=[1440, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Large open wheel against short masonry is distinct at compact size. Copper axle and attached support read; spokes become thin at 64x45, so keep as composition prop rather than tactical icon. No independent or user acceptance."
+      "notes": "Cell [1440, 0, 480, 336]; removed only grid translation. Review: archive/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:archive:broken-stair",
@@ -169,7 +129,7 @@
       "parents": ["expansion-archive-spire-20261106:archive:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group broken-stair; cell [x,y,width,height]=[0, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Broad risers, broken side face and one moss seam read at all reviewed sizes. Quiet plane construction; useful separable elevation prop. No independent or user acceptance."
+      "notes": "Cell [0, 336, 480, 336]; removed only grid translation. Review: archive/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:archive:hinged-screen",
@@ -181,7 +141,7 @@
       "parents": ["expansion-archive-spire-20261106:archive:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group hinged-screen; cell [x,y,width,height]=[480, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Unequal connected panels form an open V; hinge remains visible at native size. Compact reads as paired screens/windows rather than a doorway. Concept usage should preserve that reading. No independent or user acceptance."
+      "notes": "Cell [480, 336, 480, 336]; removed only grid translation. Review: archive/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:archive:inkstone-basin",
@@ -193,7 +153,7 @@
       "parents": ["expansion-archive-spire-20261106:archive:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group inkstone-basin; cell [x,y,width,height]=[960, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Clear oblong lip, dark reflective pool and fitted low plinth. Pool is nearly opaque, consistent with ink; do not reuse this as transparent water or glass. No independent or user acceptance."
+      "notes": "Cell [960, 336, 480, 336]; removed only grid translation. Review: archive/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:archive:survey-table",
@@ -205,7 +165,7 @@
       "parents": ["expansion-archive-spire-20261106:archive:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group survey-table; cell [x,y,width,height]=[1440, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Broad diagonal blank map and continuous heavy supports read clearly. Fine channel/weight details simplify at compact size, but map-table identity survives. No independent or user acceptance."
+      "notes": "Cell [1440, 336, 480, 336]; removed only grid translation. Review: archive/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:forge:original",
@@ -217,7 +177,7 @@
       "parents": [],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Exact original UTF-8 SVG bytes returned by the API. Source sheet, not a game slot. No prior artwork parent or reference input."
+      "notes": "Exact API original; source sheet."
     },
     {
       "id": "expansion-archive-spire-20261106:forge:bellows",
@@ -229,7 +189,7 @@
       "parents": ["expansion-archive-spire-20261106:forge:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group bellows; cell [x,y,width,height]=[0, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Connected boards, hinged handle, leather folds and tapered nozzle create a readable lateral gesture. Leather stays matte copper-brown against pale boards; identity holds at all three review sizes. No independent or user acceptance."
+      "notes": "Cell [0, 0, 480, 336]; removed only grid translation. Review: forge/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:forge:quench-trough",
@@ -241,7 +201,7 @@
       "parents": ["expansion-archive-spire-20261106:forge:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group quench-trough; cell [x,y,width,height]=[480, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Long trough and steel bar read clearly with continuous support. The narrow water slit and steam become subtle at 64x45, so retain for scene compositions rather than a small water-status icon. No independent or user acceptance."
+      "notes": "Cell [480, 0, 480, 336]; removed only grid translation. Review: forge/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:forge:anvil-block",
@@ -253,7 +213,7 @@
       "parents": ["expansion-archive-spire-20261106:forge:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group anvil-block; cell [x,y,width,height]=[960, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Long horn and broad heel sit on a fitted low masonry block. Cool iron and warm light planes are distinct; strongest single silhouette in this kit at compact size. No independent or user acceptance."
+      "notes": "Cell [960, 0, 480, 336]; removed only grid translation. Review: forge/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:forge:clamp-bench",
@@ -265,7 +225,7 @@
       "parents": ["expansion-archive-spire-20261106:forge:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group clamp-bench; cell [x,y,width,height]=[1440, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Open vise jaws attach to a braced wood bench. Main mechanism remains recognizable at 80x56; screw details simplify at 64x45. This is a visual prop concept, not a mechanically validated machine design. No independent or user acceptance."
+      "notes": "Cell [1440, 0, 480, 336]; removed only grid translation. Review: forge/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:forge:crucible-stand",
@@ -277,7 +237,7 @@
       "parents": ["expansion-archive-spire-20261106:forge:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group crucible-stand; cell [x,y,width,height]=[0, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Tilted ceramic bowl sits in a continuous two-sided iron support with a stable stone foot. Interior warm plane stays restrained; no unsupported molten splash or floating mount. No independent or user acceptance."
+      "notes": "Cell [0, 336, 480, 336]; removed only grid translation. Review: forge/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:forge:coal-hopper",
@@ -289,7 +249,7 @@
       "parents": ["expansion-archive-spire-20261106:forge:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group coal-hopper; cell [x,y,width,height]=[480, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Wedge body, coal mass and open feed door remain distinct at compact size. Fitted feet and hinge are clear; ember accent is subordinate to the structural silhouette. No independent or user acceptance."
+      "notes": "Cell [480, 336, 480, 336]; removed only grid translation. Review: forge/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:forge:cooling-rack",
@@ -301,7 +261,7 @@
       "parents": ["expansion-archive-spire-20261106:forge:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group cooling-rack; cell [x,y,width,height]=[960, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Open shelves, diagonal brace and two unequal ceramic molds remain clear at 160x112 and 80x56. Small slats simplify at 64x45; broad shelf gaps preserve identity. No independent or user acceptance."
+      "notes": "Cell [960, 336, 480, 336]; removed only grid translation. Review: forge/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:forge:vent-chimney",
@@ -313,7 +273,7 @@
       "parents": ["expansion-archive-spire-20261106:forge:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group vent-chimney; cell [x,y,width,height]=[1440, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Bent hood, continuous flue and warm recessed slit distinguish the vent from the other props. Quiet stone base supports the hood; no excessive smoke or ornament. No independent or user acceptance."
+      "notes": "Cell [1440, 336, 480, 336]; removed only grid translation. Review: forge/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:garden:original",
@@ -325,7 +285,7 @@
       "parents": [],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Exact original UTF-8 SVG bytes returned by the API. Source sheet, not a game slot. No prior artwork parent or reference input."
+      "notes": "Exact API original; source sheet."
     },
     {
       "id": "expansion-archive-spire-20261106:garden:reed-bed",
@@ -337,7 +297,7 @@
       "parents": ["expansion-archive-spire-20261106:garden:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group reed-bed; cell [x,y,width,height]=[0, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Unequal curving reeds and low trough keep a clear contour at 160x112, 80x56 and 64x45. Waterline is subtle at smallest size; silhouette remains useful as a composition prop. No independent or user acceptance."
+      "notes": "Cell [0, 0, 480, 336]; removed only grid translation. Review: garden/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:garden:root-arch",
@@ -349,7 +309,7 @@
       "parents": ["expansion-archive-spire-20261106:garden:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group root-arch; cell [x,y,width,height]=[480, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; One root grips the left jamb and curves across the crown; exposed right stone and broad opening read clearly. Copper-brown living root remains distinct from stone and moss. No independent or user acceptance."
+      "notes": "Cell [480, 0, 480, 336]; removed only grid translation. Review: garden/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:garden:water-spout",
@@ -361,7 +321,7 @@
       "parents": ["expansion-archive-spire-20261106:garden:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group water-spout; cell [x,y,width,height]=[960, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Connected ceramic pipe and continuous blue-green stream meet the basin. Thin water curve reads even compactly; water is a designed plane rather than transparent simulation. No independent or user acceptance."
+      "notes": "Cell [960, 0, 480, 336]; removed only grid translation. Review: garden/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:garden:moss-bench",
@@ -373,7 +333,7 @@
       "parents": ["expansion-archive-spire-20261106:garden:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group moss-bench; cell [x,y,width,height]=[1440, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Thick seat, unequal legs and left moss cap keep a grounded asymmetric silhouette. The quiet opening underneath remains clear at compact size. No independent or user acceptance."
+      "notes": "Cell [1440, 0, 480, 336]; removed only grid translation. Review: garden/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:garden:lily-cistern",
@@ -385,7 +345,7 @@
       "parents": ["expansion-archive-spire-20261106:garden:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group lily-cistern; cell [x,y,width,height]=[0, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Broad rim, broken right edge, blue-green water and two unequal pads read at compact size. Simplified reflections distinguish the water from solid stone; no tactical-occupancy claim. No independent or user acceptance."
+      "notes": "Cell [0, 336, 480, 336]; removed only grid translation. Review: garden/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:garden:vine-trellis",
@@ -397,7 +357,7 @@
       "parents": ["expansion-archive-spire-20261106:garden:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group vine-trellis; cell [x,y,width,height]=[480, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Tilted support and diagonal vine remain connected. Open lattice and leaf clusters are readable at 80x56; leaf detail simplifies at 64x45 without losing trellis identity. No independent or user acceptance."
+      "notes": "Cell [480, 336, 480, 336]; removed only grid translation. Review: garden/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:garden:seed-cabinet",
@@ -409,7 +369,7 @@
       "parents": ["expansion-archive-spire-20261106:garden:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group seed-cabinet; cell [x,y,width,height]=[960, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Unequal shelves, two terracotta trays and one climbing leaf read at 160x112 and 80x56. The cabinet is a scene prop, with no legible labels or invented contents. No independent or user acceptance."
+      "notes": "Cell [960, 336, 480, 336]; removed only grid translation. Review: garden/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:garden:stepping-culvert",
@@ -421,7 +381,7 @@
       "parents": ["expansion-archive-spire-20261106:garden:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group stepping-culvert; cell [x,y,width,height]=[1440, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Two uneven slabs sit visibly on stone banks above an open water channel. Broad span-and-void relationship survives at smallest study size; the precise traverse is not a gameplay assertion. No independent or user acceptance."
+      "notes": "Cell [1440, 336, 480, 336]; removed only grid translation. Review: garden/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:original",
@@ -433,7 +393,7 @@
       "parents": [],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Exact original UTF-8 SVG bytes returned by the API. Source sheet, not a game slot. No prior artwork parent or reference input."
+      "notes": "Exact API original; source sheet."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:beyond-tilted-observatory",
@@ -445,7 +405,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-beyond-thresholds:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group beyond-tilted-observatory; cell [x,y,width,height]=[0, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; One large hollow copper-toned forged ring anchors to an asymmetric stone platform. Cream route, dark support void and quiet plum backdrop remain distinct at 160x112 and 80x56; distant floating mass is only a setting motif. No independent or user acceptance."
+      "notes": "Cell [0, 0, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:beyond-silent-span",
@@ -457,7 +417,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-beyond-thresholds:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group beyond-silent-span; cell [x,y,width,height]=[480, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; A low S-shaped pale bridge joins unequal platforms, with visibly fitted end brackets. Route-versus-chasm remains clear compactly; the single sage cloth accent gives direction without obscuring the span. No independent or user acceptance."
+      "notes": "Cell [480, 0, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:beyond-sealed-reservoir",
@@ -469,7 +429,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-beyond-thresholds:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group beyond-sealed-reservoir; cell [x,y,width,height]=[960, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Broad opaque reservoir, narrow green inspection slit and short curved drain are distinct from a potion or relic. Blue-green water bowl reads at native size; the glass slit simplifies at compact size. No independent or user acceptance."
+      "notes": "Cell [960, 0, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:threshold-rusted-lift",
@@ -481,7 +441,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-beyond-thresholds:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group threshold-rusted-lift; cell [x,y,width,height]=[0, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Open empty cage, connected chain and adjacent landing read as a lift location. Thin chain links simplify at 64x45 but silhouette survives at 80x56. This is a source composition, with no validated lift mechanism or gameplay trigger. No independent or user acceptance."
+      "notes": "Cell [0, 336, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:threshold-curtain-vault",
@@ -493,7 +453,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-beyond-thresholds:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group threshold-curtain-vault; cell [x,y,width,height]=[480, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Three broad plum cloth folds hang from a fitted hook and partly reveal a dark opening. Thick stone jamb and cream floor wedge give clear depth; no visible inscription or invented vault contents. No independent or user acceptance."
+      "notes": "Cell [480, 336, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:threshold-abandoned-bell",
@@ -505,7 +465,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-beyond-thresholds:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group threshold-abandoned-bell; cell [x,y,width,height]=[960, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Cracked bell, hanging ring, attached clapper and stone arch read clearly at compact size. Warm copper/bronze appearance departs from the prompt iron interpretation; retain that material difference for user review instead of claiming exact prompt conformity. No independent or user acceptance."
+      "notes": "Cell [960, 336, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-exordium-city:original",
@@ -517,7 +477,7 @@
       "parents": [],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Exact original UTF-8 SVG bytes returned by the API. Source sheet, not a game slot. No prior artwork parent or reference input."
+      "notes": "Exact API original; source sheet."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-exordium-city:exordium-split-ascent",
@@ -529,7 +489,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-exordium-city:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group exordium-split-ascent; cell [x,y,width,height]=[0, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Pale rising stair leads around a dark outcrop to one warm opening. The incomplete right branch reads as broken traversal at 160x112 and 80x56. No route mechanics are implied; floating remnants are background composition. No independent or user acceptance."
+      "notes": "Cell [0, 0, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-exordium-city:exordium-rain-camp",
@@ -541,7 +501,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-exordium-city:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group exordium-rain-camp; cell [x,y,width,height]=[480, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Asymmetric copper cloth attaches to two supports below a broad overhang; runoff is separate from the small ember bed. Shelter silhouette remains readable compactly, with no character anatomy or clutter. No independent or user acceptance."
+      "notes": "Cell [480, 0, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-exordium-city:exordium-sealed-door",
@@ -553,7 +513,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-exordium-city:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group exordium-sealed-door; cell [x,y,width,height]=[960, 0, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Heavy tilted door and warm lower wedge are clear against split rock. Copper latch remains subordinate; broad material planes survive compact view. Door fit and traversability are only visual concepts. No independent or user acceptance."
+      "notes": "Cell [960, 0, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-exordium-city:city-suspended-market",
@@ -565,7 +525,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-exordium-city:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group city-suspended-market; cell [x,y,width,height]=[0, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: hold; Readable suspended covered balcony with attached canopy and continuous beams. Market-specific shutters/stall cues are weak, so the scene does not yet establish the named market function. Retain as a useful covered-balcony source; semantic role needs user decision or later selective adaptation, not automatic adoption. No independent or user acceptance."
+      "notes": "Cell [0, 336, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json. Hold: covered balcony reads; market function weak."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-exordium-city:city-aqueduct-crossing",
@@ -577,7 +537,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-exordium-city:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group city-aqueduct-crossing; cell [x,y,width,height]=[480, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; One pale diagonal route crosses a broad arch with visible stone thickness. Dark distant city masses stay quiet. Strong route-versus-void relationship survives at all reviewed sizes. No independent or user acceptance."
+      "notes": "Cell [480, 336, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json."
     },
     {
       "id": "expansion-archive-spire-20261106:spire-exordium-city:city-rooftop-refuge",
@@ -589,7 +549,7 @@
       "parents": ["expansion-archive-spire-20261106:spire-exordium-city:original"],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Source group city-rooftop-refuge; cell [x,y,width,height]=[960, 336, 480, 336]; removed only grid translation. Original crop pixels identical at 480x336. Source concept, no stable game identity. Author review: candidate; Three broad steps lead into a dark sheltered pocket beneath sage cloth. Curved parapet distinguishes it from the cave camp, and the small warm lantern remains a focused accent at compact size. No independent or user acceptance."
+      "notes": "Cell [960, 336, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json."
     }
   ]
 }

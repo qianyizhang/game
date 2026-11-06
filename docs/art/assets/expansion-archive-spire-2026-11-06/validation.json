@@ -1,7 +1,27 @@
 {
-  "date": "2026-11-06T15:09:22.465173+00:00",
-  "base_commit": "3a59621069dd1fe912a749d851d27e993507f5dd",
-  "scope": "Source-only static native SVG concepts and local review evidence; no runtime/game/shared registry changes.",
+  "original_checkpoint": "7ec2480ddf89599dff8d7f5d71ce900b728ac822",
+  "source_base": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "source_paths": [
+    "AGENTS.md",
+    "skills/card-art/SKILL.md",
+    "skills/card-art/references/batch-assets.md",
+    "docs/art/README.md",
+    "docs/art/art-direction.md",
+    "docs/art/iterations/README.md",
+    "docs/art/svg.md",
+    "docs/engineering/checks.md",
+    "docs/engineering/maintenance.md",
+    "docs/guide/cartographer.md",
+    "src/games/cartographer/domain/content.ts",
+    "src/games/cartographer/ui/styles.css",
+    "src/games/cartographer/ui/InhabitantArt.tsx",
+    "src/games/cartographer/ui/FrontierArt.tsx",
+    "src/games/spire/content/world.ts",
+    "src/games/spire/ui/SpireSceneArt.tsx",
+    "src/games/spire/ui/Rooms.tsx",
+    "docs/art/assets/spire-act-scenes/after-scene.webp",
+    "docs/art/assets/cartographer-room-materials/after-shrine-phone-context.webp"
+  ],
   "runtime": {
     "node": "24.21.0",
     "python": "3.12.13",
@@ -11,90 +31,92 @@
       "Pillow": "13.0.0"
     }
   },
-  "checks": {
-    "format_maintenance": {
-      "command": "npm run format:maintenance",
-      "status": "passed",
-      "scope": "Repository Prettier, tracked inventory and local links; 901 maintained sources, zero errors."
+  "network": {
+    "environment": "managed cloud game environment",
+    "policy": "unrestricted enforced",
+    "observations_current": true,
+    "credential_binding": "OPENAI_API_TOKEN",
+    "binding_state": "ready",
+    "allowed_credential_destination": "api.openai.com",
+    "proxy": "inherited HTTPS_PROXY retained",
+    "secrets_saved": false
+  },
+  "models_preflight": "Authenticated GET /v1/models returned both requested IDs; HTTP 200.",
+  "extraction": "Copy named source group, remove only grid translation, preserve local background and all vector content. Exact 480x336 raster crop equality and bounds verified for all 36.",
+  "png_proof": "Each retained encoding was compared for decoded pixels, dimensions, alpha, mode and color interpretation; no profile before/after. Cairo sheets RGBA; gallery capture RGB. SHA-256 rows retain the unique original optimization evidence.",
+  "png": [
+    {
+      "file": "archive/review.png",
+      "sha256": "a2fcfed5561dfa867d06c5e893367d623a5b5e728ebdaf5f8b3cc5a840ca1981",
+      "pixels_sha256": "4470ad33875b55642b29d28af53e225207454498dc778beb6725e4a35cc1fdaf",
+      "before_bytes": 160924,
+      "retained_bytes": 157459
     },
-    "live_history": {
-      "command": "npm run assets:history -- verify",
-      "status": "passed",
-      "assets": 709,
-      "revisions": 92,
-      "selections": 0,
-      "registeredSources": 709
+    {
+      "file": "forge/review.png",
+      "sha256": "b6c84a05fd5809221ee375f53a1a430435e863eaf804cae43b5669029fa378c7",
+      "pixels_sha256": "19da424594339cbe6f8da61aa64a88fe763f66d584a4ae7f0d4b57b018fc7d94",
+      "before_bytes": 159013,
+      "retained_bytes": 155638
     },
-    "isolated_import": {
-      "status": "passed",
-      "functions": ["importHistory", "verifyHistory", "validateSvg"],
-      "new_attempts": 5,
-      "new_revisions": 41,
-      "total_assets": 709,
-      "total_revisions": 133,
-      "selections": 0,
-      "new_game_slots": 0,
-      "runtime_adaptations": 0
+    {
+      "file": "garden/review.png",
+      "sha256": "a8e3728218728f53c6af5dfa57ab4831c702cb6388e5eae9e81ea4f9cabd3c7a",
+      "pixels_sha256": "460a2e25c8c7826cf3a00eb6dfb2f7529dfc042ad1a804d1a2cfc91eaaba5fba",
+      "before_bytes": 160920,
+      "retained_bytes": 157624
     },
-    "svg_and_lineage": {
-      "status": "passed",
-      "source_record": "source-qa.json",
-      "originals": 5,
-      "extractions": 36,
-      "original_bytes_preserved": true,
-      "exact_prompt_request_hashes_verified": true,
-      "each_crop_pixel_equal": true,
-      "all_foreground_inside_source_cell": true
+    {
+      "file": "spire-beyond-thresholds/review.png",
+      "sha256": "18e873ebd37f58e14b1a334e696ffe446b871f7e72709bd832ac38a890914b95",
+      "pixels_sha256": "7dd4a4a7a94ee570e90804d838104c117441c6293dd662ca3652e10e6d7e4a4b",
+      "before_bytes": 132651,
+      "retained_bytes": 130529
     },
-    "browser": {
-      "status": "passed",
-      "record": "browser-qa.json",
-      "preview_viewports": [1440, 390],
-      "preview_subjects": 36,
-      "preview_images_each": 72,
-      "gallery_revisions": 41,
-      "exact_prompt_settings_usage_attempts": 5,
-      "overflow": false,
-      "page_errors": 0
+    {
+      "file": "spire-exordium-city/review.png",
+      "sha256": "435450d0aca069dad5589588e3b0cbe5811c14d1dbb2301711af96c453f11aa2",
+      "pixels_sha256": "6f486430afeb41323f9df6d70b3831a978244b91fa78923f61f447a668878644",
+      "before_bytes": 131668,
+      "retained_bytes": 129068
     },
-    "png_evidence": {
-      "status": "passed",
-      "records": [
-        "overview-optimization.json",
-        "gallery-png-optimization.json",
-        "archive/png-optimization.json",
-        "garden/png-optimization.json",
-        "forge/png-optimization.json",
-        "spire-exordium-city/png-optimization.json",
-        "spire-beyond-thresholds/png-optimization.json"
-      ],
-      "decoded_pixels_dimensions_alpha_mode_color_verified": true
+    {
+      "file": "overview.png",
+      "sha256": "fab82082cb062fffc9627393a2d1a82d2fc52bc97c9dfe86312fa8d200aaf00e",
+      "pixels_sha256": "e2c8907b46ee46378924275e989eb246d5b3e2e6136e598e58079de882b150e8",
+      "before_bytes": 380048,
+      "retained_bytes": 373982
+    },
+    {
+      "file": "gallery-source-study.png",
+      "sha256": "87b19e5125c4ae7f87bfe261d6ddf4f20731fb69bb4878d1900d90c829527d10",
+      "pixels_sha256": "7031ebca7fdfe6dc38ed54d0cd3af5b1c1c61a37f321a90ed0ebb351c3ad2217",
+      "before_bytes": 94474,
+      "retained_bytes": 94474
     }
+  ],
+  "checks": {
+    "original": {
+      "maintenance": "format/inventory/links passed; 901 maintained sources",
+      "live_sources": "709 registered, 92 historical revisions, zero selections",
+      "isolated_import": "5 attempts + 41 source revisions; 709 slots/133 total revisions; zero selections",
+      "browser": "36 subjects/72 preview images each at 1440 and 390; all 41 gallery revisions and 5 prompts/settings/usage/lineage inspected; no overflow/page errors",
+      "svg": "41 safe SVGs, all 36 extraction crops pixel-equal and inside bounds",
+      "png": "7 evidence encodings losslessly verified"
+    },
+    "cleanup": "48 artwork/preview hashes unchanged; 5 exact request hashes reconstructed; 5 calls and 41 lineage records import in isolation; 36/72-image standalone HTTP view at 1440 and 390, all links, 41 gallery revisions, 5 shared call documents, lineage and disabled selection passed. Formatting/inventory/links and unchanged live-source history verification passed."
   },
   "not_run": {
     "application_simulations": "No runtime or rule source changes.",
     "native_geometry_delivery": "No native construction or delivery changes.",
     "guarded_repository_browser_suite": "No runtime consumer added; manual preview/gallery checks are reported separately."
   },
-  "review": {
-    "author_candidates": 35,
-    "semantic_hold": "city-suspended-market reads as covered balcony; market function weak.",
-    "material_deviation": "threshold-abandoned-bell reads warm copper/bronze rather than iron.",
-    "framing_deviations": "Some foreground/shadows use 16\u201323px inset rather than requested 24px; no outside-cell paint.",
-    "independent_visual_acceptance": false,
-    "user_acceptance": false,
-    "actual_game_consumer_review": "Pending any later authorized adoption."
-  },
-  "remaining": {
-    "shared_registration": "Pending central owner import of prepared-history.json; isolated copy validated.",
-    "publication": "No push or PR performed; separate authorization required.",
-    "access_or_approval_blockers": []
-  },
-  "artifacts": {
-    "prepared-history.json": "03c8ab134043195b87711378231396c37282fd19c9ad4b21296f61658d45fc73",
-    "overview.png": "fab82082cb062fffc9627393a2d1a82d2fc52bc97c9dfe86312fa8d200aaf00e",
-    "index.html": "3316381b1977edcc2f4c183ede3bea779d660993cf5f11938167a8eb96766163",
-    "inventory.json": "2d3520fe34089b1dedb41bd6e7c7786600fdb3723bf484ed5fc9d97ee6ac1771",
-    "budget.json": "06183d107ae8dd74881c1392b45224093e48a0e769c1bded6913023d737b503d"
-  }
+  "acceptance": "35 author candidates; city-suspended-market held. Independent/user acceptance and actual game consumer review pending. No runtime adaptation or selection.",
+  "registration": "Additive prepared-history.json validated only in an isolated copy; shared registry unchanged.",
+  "consumer_audit": "Standalone index and gallery attempt files migrated to call.json; public inventory link migrates to prepared-history.json. No source/runtime/test references found outside this bundle. Continuation links README and the historical budget path, both preserved.",
+  "source_gallery_audit": [
+    "Live /__art/#asset=spire/acts/2 inspected; no retained revisions; native 160x112 scene",
+    "Live /__art/#asset=cartographer/inhabitants/keeper inspected; quiet icon family remains independent of future composition props"
+  ],
+  "preview_limit": "Managed Chromium blocks file:// navigation (ERR_BLOCKED_BY_ADMINISTRATOR); no override/retry attempted. Local HTTP preview verified. HTML has no JavaScript, fetch or external resource dependency."
 }

@@ -6,7 +6,6 @@
     <title>Archive modules and Spire encounters · source concepts</title>
     <style>
       :root {
-        color-scheme: light;
         font:
           16px/1.5 system-ui,
           sans-serif;
@@ -25,7 +24,7 @@
         font:
           600 clamp(28px, 4vw, 44px)/1.15 Georgia,
           serif;
-        max-width: 24ch;
+        max-width: 25ch;
       }
       h2 {
         margin-top: 2em;
@@ -33,1045 +32,670 @@
           600 26px Georgia,
           serif;
       }
-      h3 {
-        font-size: 17px;
-        margin: 0.3em 0 0.8em;
-      }
       a {
         color: #2d5c58;
-        text-underline-offset: 3px;
       }
       a:focus-visible {
         outline: 3px solid #b97c5e;
-        outline-offset: 4px;
-      }
-      nav {
-        display: flex;
-        gap: 8px 20px;
-        flex-wrap: wrap;
-      }
-      header > p {
-        max-width: 78ch;
-      }
-      .notice {
-        padding: 14px 18px;
-        background: #dcd8c4;
-        border-left: 4px solid #9c684f;
+        outline-offset: 3px;
       }
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
         gap: 18px;
       }
-      article {
+      figure {
         min-width: 0;
+        margin: 0;
         padding: 18px;
         background: #f8f5e9;
         border: 1px solid #bcbdaa;
         border-radius: 8px;
       }
-      article p {
-        font-size: 14px;
-      }
-      .views {
+      figure > div {
         display: flex;
         gap: 14px;
         align-items: center;
         flex-wrap: wrap;
+      }
+      figcaption {
+        font-size: 14px;
+        margin-bottom: 12px;
       }
       img {
         display: block;
         max-width: 100%;
         height: auto;
       }
-      .compact {
-        width: 80px;
-        height: 56px;
+      header p {
+        max-width: 80ch;
       }
-      .scale {
-        font-size: 12px;
-        letter-spacing: 0.03em;
-        color: #58675d;
-      }
-      footer {
-        margin-top: 40px;
-        padding-top: 16px;
-        border-top: 1px solid #bcbdaa;
-      }
-      @media (prefers-reduced-motion: no-preference) {
-        html {
-          scroll-behavior: smooth;
-        }
+      .notice {
+        padding: 14px 18px;
+        background: #dcd8c4;
+        border-left: 4px solid #9c684f;
       }
     </style>
   </head>
   <body>
     <header>
-      <p class="scale">CARD WORKSHOP / FUTURE EXPANSION STUDIES / 2026-11-06</p>
+      <p>CARD WORKSHOP / FUTURE EXPANSION STUDIES / 2026-11-06</p>
       <h1>Archive modules and Spire encounter locations</h1>
       <p class="notice">
-        Review-only source concepts. No accepted canon, gameplay change or runtime replacement.
-        Prepared registration is additive and awaits central import; the live game defaults are
-        untouched.
+        36 source concepts: 35 author candidates and one market/balcony semantic hold. No accepted
+        canon, gameplay change or runtime replacement. Central registration and user selection
+        remain pending.
       </p>
       <p>
-        36 extracted native SVG concepts · five shared requests · measured API spend
-        <strong>$0.786142</strong> of this worker's $9 allocation. All candidates require user
-        selection; “candidate” records an author assessment.
+        160×112 and 80×56 below; each family contact sheet also shows 64×45. Review notes, exact
+        prompts/settings and usage appear once in each linked call record.
       </p>
-      <nav aria-label="Concept families">
-        <a href="#archive">archive</a><a href="#forge">forge</a><a href="#garden">garden</a
-        ><a href="#spire-beyond-thresholds">spire-beyond-thresholds</a
-        ><a href="#spire-exordium-city">spire-exordium-city</a>
-      </nav>
       <p>
-        <a href="README.md">Scope and audit</a> · <a href="overview.png">Contact overview</a> ·
-        <a href="inventory.json">Inventory</a> · <a href="budget.json">Spend and reservations</a> ·
-        <a href="prepared-history.json">Prepared history import</a>
+        <a href="README.md">Scope and source audit</a> ·
+        <a href="overview.png">Contact overview</a> ·
+        <a href="prepared-history.json">Lineage and staged import</a> ·
+        <a href="budget.json">Historical suite cost</a> ·
+        <a href="validation.json">Validation and limits</a>
       </p>
     </header>
     <section id="archive">
       <h2>archive</h2>
       <p>
-        <a href="archive/original.svg">Exact API sheet</a> ·
-        <a href="archive/prompt.txt">Exact prompt</a> ·
-        <a href="archive/request.json">Settings</a> ·
-        <a href="archive/response.json">Usage and request ID</a> ·
-        <a href="archive/extraction.json">Extraction lineage</a> ·
+        <a href="archive/call.json">Exact request, usage and review</a> ·
+        <a href="archive/original.svg">Original sheet</a> ·
         <a href="archive/review.png">Three-size contact sheet</a>
       </p>
       <div class="grid">
-        <article id="index-shelf">
-          <h3>index-shelf</h3>
-          <div class="views">
-            <a href="archive/index-shelf.svg" title="Open full native vector"
+        <figure>
+          <figcaption>index-shelf</figcaption>
+          <div>
+            <a href="archive/index-shelf.svg"
               ><img
                 src="archive/index-shelf.svg"
                 width="160"
                 height="112"
-                alt="A narrow stepped stone index shelf with three broad closed folio stacks, one diagonal empty bay and a split lower foot. Rightward rising silhouette. Worn cream paper, slate green stone, dark recesses. No legible writing." /></a
-            ><img
-              class="compact"
-              src="archive/index-shelf.svg"
-              width="80"
-              height="56"
-              alt="Compact index-shelf"
-            />
+                alt="index-shelf source concept" /></a
+            ><img src="archive/index-shelf.svg" width="80" height="56" alt="Compact index-shelf" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Stepped shelf, three folio stacks and open base remain
-            distinct at 160x112, 80x56 and 64x45. Cream paper and green stone are separated. Larger
-            foreground shelf reads well; no replacement for tactical tiles.
-          </p>
-        </article>
-        <article id="reading-lectern">
-          <h3>reading-lectern</h3>
-          <div class="views">
-            <a href="archive/reading-lectern.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>reading-lectern</figcaption>
+          <div>
+            <a href="archive/reading-lectern.svg"
               ><img
                 src="archive/reading-lectern.svg"
                 width="160"
                 height="112"
-                alt="An off-center sloping reading lectern on a curved load-bearing stone bracket; a single thick open blank folio supported by its lip. Clearly connected stem and broad heavy foot, shallow three-quarter view." /></a
+                alt="reading-lectern source concept" /></a
             ><img
-              class="compact"
               src="archive/reading-lectern.svg"
               width="80"
               height="56"
               alt="Compact reading-lectern"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Sloping blank folio leads; curved bracket and broad foot
-            visibly support it. Clear silhouette at all reviewed sizes, with a useful open pocket
-            under the stem.
-          </p>
-        </article>
-        <article id="scroll-cradle">
-          <h3>scroll-cradle</h3>
-          <div class="views">
-            <a href="archive/scroll-cradle.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>scroll-cradle</figcaption>
+          <div>
+            <a href="archive/scroll-cradle.svg"
               ><img
                 src="archive/scroll-cradle.svg"
                 width="160"
                 height="112"
-                alt="Low crescent-shaped stone cradle carrying three unequal rolled parchment cylinders. One unrolled edge falls across the front, exposing thickness; horizontal silhouette with quiet dark pockets." /></a
+                alt="scroll-cradle source concept" /></a
             ><img
-              class="compact"
               src="archive/scroll-cradle.svg"
               width="80"
               height="56"
               alt="Compact scroll-cradle"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Unequal scroll ends, hanging sheet and crescent stone
-            support stay readable at compact size. Sparse spiral cuts remain subordinate; paper does
-            not become a weapon or relic.
-          </p>
-        </article>
-        <article id="floodgate-wheel">
-          <h3>floodgate-wheel</h3>
-          <div class="views">
-            <a href="archive/floodgate-wheel.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>floodgate-wheel</figcaption>
+          <div>
+            <a href="archive/floodgate-wheel.svg"
               ><img
                 src="archive/floodgate-wheel.svg"
                 width="160"
                 height="112"
-                alt="An upright four-spoked iron floodgate wheel fixed to a short L-shaped masonry section with a broad copper axle collar. Strong circular opening against a low horizontal wall; nothing floating." /></a
+                alt="floodgate-wheel source concept" /></a
             ><img
-              class="compact"
               src="archive/floodgate-wheel.svg"
               width="80"
               height="56"
               alt="Compact floodgate-wheel"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Large open wheel against short masonry is distinct at
-            compact size. Copper axle and attached support read; spokes become thin at 64x45, so
-            keep as composition prop rather than tactical icon.
-          </p>
-        </article>
-        <article id="broken-stair">
-          <h3>broken-stair</h3>
-          <div class="views">
-            <a href="archive/broken-stair.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>broken-stair</figcaption>
+          <div>
+            <a href="archive/broken-stair.svg"
               ><img
                 src="archive/broken-stair.svg"
                 width="160"
                 height="112"
-                alt="A three-step broken archive stair module: broad warm-gray slabs rise left to right, outer corner split away, small moss patch tucked into one seam. Thick visible slab edges; no debris field." /></a
+                alt="broken-stair source concept" /></a
             ><img
-              class="compact"
               src="archive/broken-stair.svg"
               width="80"
               height="56"
               alt="Compact broken-stair"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Broad risers, broken side face and one moss seam read at
-            all reviewed sizes. Quiet plane construction; useful separable elevation prop.
-          </p>
-        </article>
-        <article id="hinged-screen">
-          <h3>hinged-screen</h3>
-          <div class="views">
-            <a href="archive/hinged-screen.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>hinged-screen</figcaption>
+          <div>
+            <a href="archive/hinged-screen.svg"
               ><img
                 src="archive/hinged-screen.svg"
                 width="160"
                 height="112"
-                alt="Two unequal stone-framed lattice panels joined by a visible aged bronze hinge, bent into an open V. One large open passage per panel, sparse crossing bars, asymmetrical silhouette." /></a
+                alt="hinged-screen source concept" /></a
             ><img
-              class="compact"
               src="archive/hinged-screen.svg"
               width="80"
               height="56"
               alt="Compact hinged-screen"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Unequal connected panels form an open V; hinge remains
-            visible at native size. Compact reads as paired screens/windows rather than a doorway.
-            Concept usage should preserve that reading.
-          </p>
-        </article>
-        <article id="inkstone-basin">
-          <h3>inkstone-basin</h3>
-          <div class="views">
-            <a href="archive/inkstone-basin.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>inkstone-basin</figcaption>
+          <div>
+            <a href="archive/inkstone-basin.svg"
               ><img
                 src="archive/inkstone-basin.svg"
                 width="160"
                 height="112"
-                alt="A shallow oblong inkstone washing basin with a thick beveled lip and one broad dark reflective ink pool; short pouring notch at one end, stable offset plinth below. Quiet material planes." /></a
+                alt="inkstone-basin source concept" /></a
             ><img
-              class="compact"
               src="archive/inkstone-basin.svg"
               width="80"
               height="56"
               alt="Compact inkstone-basin"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Clear oblong lip, dark reflective pool and fitted low
-            plinth. Pool is nearly opaque, consistent with ink; do not reuse this as transparent
-            water or glass.
-          </p>
-        </article>
-        <article id="survey-table">
-          <h3>survey-table</h3>
-          <div class="views">
-            <a href="archive/survey-table.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>survey-table</figcaption>
+          <div>
+            <a href="archive/survey-table.svg"
               ><img
                 src="archive/survey-table.svg"
                 width="160"
                 height="112"
-                alt="A squat three-quarter stone survey table with a curled blank map held under one rectangular weight; a broad carved channel across one corner. Diagonal tabletop and continuous fitted supports, no symbols or relics." /></a
+                alt="survey-table source concept" /></a
             ><img
-              class="compact"
               src="archive/survey-table.svg"
               width="80"
               height="56"
               alt="Compact survey-table"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Broad diagonal blank map and continuous heavy supports read
-            clearly. Fine channel/weight details simplify at compact size, but map-table identity
-            survives.
-          </p>
-        </article>
+        </figure>
       </div>
     </section>
     <section id="forge">
       <h2>forge</h2>
       <p>
-        <a href="forge/original.svg">Exact API sheet</a> ·
-        <a href="forge/prompt.txt">Exact prompt</a> · <a href="forge/request.json">Settings</a> ·
-        <a href="forge/response.json">Usage and request ID</a> ·
-        <a href="forge/extraction.json">Extraction lineage</a> ·
+        <a href="forge/call.json">Exact request, usage and review</a> ·
+        <a href="forge/original.svg">Original sheet</a> ·
         <a href="forge/review.png">Three-size contact sheet</a>
       </p>
       <div class="grid">
-        <article id="bellows">
-          <h3>bellows</h3>
-          <div class="views">
-            <a href="forge/bellows.svg" title="Open full native vector"
+        <figure>
+          <figcaption>bellows</figcaption>
+          <div>
+            <a href="forge/bellows.svg"
               ><img
                 src="forge/bellows.svg"
                 width="160"
                 height="112"
-                alt="A low leather concertina bellows compressed between two fitted wooden boards, angled brass nozzle pointing right into empty space. One large open handle and visible hinge, warm matte leather, selective copper." /></a
-            ><img
-              class="compact"
-              src="forge/bellows.svg"
-              width="80"
-              height="56"
-              alt="Compact bellows"
-            />
+                alt="bellows source concept" /></a
+            ><img src="forge/bellows.svg" width="80" height="56" alt="Compact bellows" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Connected boards, hinged handle, leather folds and tapered
-            nozzle create a readable lateral gesture. Leather stays matte copper-brown against pale
-            boards; identity holds at all three review sizes.
-          </p>
-        </article>
-        <article id="quench-trough">
-          <h3>quench-trough</h3>
-          <div class="views">
-            <a href="forge/quench-trough.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>quench-trough</figcaption>
+          <div>
+            <a href="forge/quench-trough.svg"
               ><img
                 src="forge/quench-trough.svg"
                 width="160"
                 height="112"
-                alt="A long thick stone quench trough with a dark steel bar resting across the rim, one broad cool reflective water plane and a restrained curl of steam. Horizontal silhouette, visibly supported weight." /></a
+                alt="quench-trough source concept" /></a
             ><img
-              class="compact"
               src="forge/quench-trough.svg"
               width="80"
               height="56"
               alt="Compact quench-trough"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Long trough and steel bar read clearly with continuous
-            support. The narrow water slit and steam become subtle at 64x45, so retain for scene
-            compositions rather than a small water-status icon.
-          </p>
-        </article>
-        <article id="anvil-block">
-          <h3>anvil-block</h3>
-          <div class="views">
-            <a href="forge/anvil-block.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>anvil-block</figcaption>
+          <div>
+            <a href="forge/anvil-block.svg"
               ><img
                 src="forge/anvil-block.svg"
                 width="160"
                 height="112"
-                alt="A single weathered iron anvil on a low square masonry block. One long tapered horn pointing left, heavy square heel right; broad steel planes with restrained copper reflected light, no weapon or sword." /></a
-            ><img
-              class="compact"
-              src="forge/anvil-block.svg"
-              width="80"
-              height="56"
-              alt="Compact anvil-block"
-            />
+                alt="anvil-block source concept" /></a
+            ><img src="forge/anvil-block.svg" width="80" height="56" alt="Compact anvil-block" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Long horn and broad heel sit on a fitted low masonry block.
-            Cool iron and warm light planes are distinct; strongest single silhouette in this kit at
-            compact size.
-          </p>
-        </article>
-        <article id="clamp-bench">
-          <h3>clamp-bench</h3>
-          <div class="views">
-            <a href="forge/clamp-bench.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>clamp-bench</figcaption>
+          <div>
+            <a href="forge/clamp-bench.svg"
               ><img
                 src="forge/clamp-bench.svg"
                 width="160"
                 height="112"
-                alt="A compact workbench with a broad iron vise attached visibly to one corner, open jaws facing left and a diagonal wooden brace under the slab. Three-quarter composition with no loose tool clutter." /></a
-            ><img
-              class="compact"
-              src="forge/clamp-bench.svg"
-              width="80"
-              height="56"
-              alt="Compact clamp-bench"
-            />
+                alt="clamp-bench source concept" /></a
+            ><img src="forge/clamp-bench.svg" width="80" height="56" alt="Compact clamp-bench" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Open vise jaws attach to a braced wood bench. Main
-            mechanism remains recognizable at 80x56; screw details simplify at 64x45. This is a
-            visual prop concept, not a mechanically validated machine design.
-          </p>
-        </article>
-        <article id="crucible-stand">
-          <h3>crucible-stand</h3>
-          <div class="views">
-            <a href="forge/crucible-stand.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>crucible-stand</figcaption>
+          <div>
+            <a href="forge/crucible-stand.svg"
               ><img
                 src="forge/crucible-stand.svg"
                 width="160"
                 height="112"
-                alt="A tilted thick ceramic crucible held in a fitted iron fork above a low stone stand. A small orange warm interior plane, no molten splash, support bars visibly meet the load." /></a
+                alt="crucible-stand source concept" /></a
             ><img
-              class="compact"
               src="forge/crucible-stand.svg"
               width="80"
               height="56"
               alt="Compact crucible-stand"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Tilted ceramic bowl sits in a continuous two-sided iron
-            support with a stable stone foot. Interior warm plane stays restrained; no unsupported
-            molten splash or floating mount.
-          </p>
-        </article>
-        <article id="coal-hopper">
-          <h3>coal-hopper</h3>
-          <div class="views">
-            <a href="forge/coal-hopper.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>coal-hopper</figcaption>
+          <div>
+            <a href="forge/coal-hopper.svg"
               ><img
                 src="forge/coal-hopper.svg"
                 width="160"
                 height="112"
-                alt="An asymmetrical wedge-shaped iron coal hopper on two short fitted feet, one hinged feed door open below. One connected dark coal mass in the upper mouth; selective warm ember accent in a quiet recess." /></a
-            ><img
-              class="compact"
-              src="forge/coal-hopper.svg"
-              width="80"
-              height="56"
-              alt="Compact coal-hopper"
-            />
+                alt="coal-hopper source concept" /></a
+            ><img src="forge/coal-hopper.svg" width="80" height="56" alt="Compact coal-hopper" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Wedge body, coal mass and open feed door remain distinct at
-            compact size. Fitted feet and hinge are clear; ember accent is subordinate to the
-            structural silhouette.
-          </p>
-        </article>
-        <article id="cooling-rack">
-          <h3>cooling-rack</h3>
-          <div class="views">
-            <a href="forge/cooling-rack.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>cooling-rack</figcaption>
+          <div>
+            <a href="forge/cooling-rack.svg"
               ><img
                 src="forge/cooling-rack.svg"
                 width="160"
                 height="112"
-                alt="A freestanding three-tier broad iron cooling rack bearing two uneven ceramic molds and one blank ingot. Open shelf gaps and diagonal rear brace, subdued metal planes, no weapons or relics." /></a
-            ><img
-              class="compact"
-              src="forge/cooling-rack.svg"
-              width="80"
-              height="56"
-              alt="Compact cooling-rack"
-            />
+                alt="cooling-rack source concept" /></a
+            ><img src="forge/cooling-rack.svg" width="80" height="56" alt="Compact cooling-rack" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Open shelves, diagonal brace and two unequal ceramic molds
-            remain clear at 160x112 and 80x56. Small slats simplify at 64x45; broad shelf gaps
-            preserve identity.
-          </p>
-        </article>
-        <article id="vent-chimney">
-          <h3>vent-chimney</h3>
-          <div class="views">
-            <a href="forge/vent-chimney.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>vent-chimney</figcaption>
+          <div>
+            <a href="forge/vent-chimney.svg"
               ><img
                 src="forge/vent-chimney.svg"
                 width="160"
                 height="112"
-                alt="A short masonry forge vent with a bent dark iron hood and an offset flue; a warm slit recessed below the hood. Strong elbow-shaped contour, a fitted lower foot, no giant smokestack or busy smoke." /></a
-            ><img
-              class="compact"
-              src="forge/vent-chimney.svg"
-              width="80"
-              height="56"
-              alt="Compact vent-chimney"
-            />
+                alt="vent-chimney source concept" /></a
+            ><img src="forge/vent-chimney.svg" width="80" height="56" alt="Compact vent-chimney" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Bent hood, continuous flue and warm recessed slit
-            distinguish the vent from the other props. Quiet stone base supports the hood; no
-            excessive smoke or ornament.
-          </p>
-        </article>
+        </figure>
       </div>
     </section>
     <section id="garden">
       <h2>garden</h2>
       <p>
-        <a href="garden/original.svg">Exact API sheet</a> ·
-        <a href="garden/prompt.txt">Exact prompt</a> · <a href="garden/request.json">Settings</a> ·
-        <a href="garden/response.json">Usage and request ID</a> ·
-        <a href="garden/extraction.json">Extraction lineage</a> ·
+        <a href="garden/call.json">Exact request, usage and review</a> ·
+        <a href="garden/original.svg">Original sheet</a> ·
         <a href="garden/review.png">Three-size contact sheet</a>
       </p>
       <div class="grid">
-        <article id="reed-bed">
-          <h3>reed-bed</h3>
-          <div class="views">
-            <a href="garden/reed-bed.svg" title="Open full native vector"
+        <figure>
+          <figcaption>reed-bed</figcaption>
+          <div>
+            <a href="garden/reed-bed.svg"
               ><img
                 src="garden/reed-bed.svg"
                 width="160"
                 height="112"
-                alt="An elongated raised stone planting trough with a handful of curved grouped reeds leaning to the right. A tall answering leaf left, dark open notch between leaf masses, visible waterline below; no repetitive grass spikes." /></a
-            ><img
-              class="compact"
-              src="garden/reed-bed.svg"
-              width="80"
-              height="56"
-              alt="Compact reed-bed"
-            />
+                alt="reed-bed source concept" /></a
+            ><img src="garden/reed-bed.svg" width="80" height="56" alt="Compact reed-bed" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Unequal curving reeds and low trough keep a clear contour
-            at 160x112, 80x56 and 64x45. Waterline is subtle at smallest size; silhouette remains
-            useful as a composition prop.
-          </p>
-        </article>
-        <article id="root-arch">
-          <h3>root-arch</h3>
-          <div class="views">
-            <a href="garden/root-arch.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>root-arch</figcaption>
+          <div>
+            <a href="garden/root-arch.svg"
               ><img
                 src="garden/root-arch.svg"
                 width="160"
                 height="112"
-                alt="A low broken stone doorway with one living root curving up its left jamb and across the crown; right jamb remains exposed. Root grips stone at both ends; a single clean dark opening." /></a
-            ><img
-              class="compact"
-              src="garden/root-arch.svg"
-              width="80"
-              height="56"
-              alt="Compact root-arch"
-            />
+                alt="root-arch source concept" /></a
+            ><img src="garden/root-arch.svg" width="80" height="56" alt="Compact root-arch" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · One root grips the left jamb and curves across the crown;
-            exposed right stone and broad opening read clearly. Copper-brown living root remains
-            distinct from stone and moss.
-          </p>
-        </article>
-        <article id="water-spout">
-          <h3>water-spout</h3>
-          <div class="views">
-            <a href="garden/water-spout.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>water-spout</figcaption>
+          <div>
+            <a href="garden/water-spout.svg"
               ><img
                 src="garden/water-spout.svg"
                 width="160"
                 height="112"
-                alt="A short broken ceramic channel supported by masonry, pouring one continuous curved ribbon into a shallow basin. Distinguish thin translucent blue-green water from warm stone, readable as one attached prop." /></a
-            ><img
-              class="compact"
-              src="garden/water-spout.svg"
-              width="80"
-              height="56"
-              alt="Compact water-spout"
-            />
+                alt="water-spout source concept" /></a
+            ><img src="garden/water-spout.svg" width="80" height="56" alt="Compact water-spout" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Connected ceramic pipe and continuous blue-green stream
-            meet the basin. Thin water curve reads even compactly; water is a designed plane rather
-            than transparent simulation.
-          </p>
-        </article>
-        <article id="moss-bench">
-          <h3>moss-bench</h3>
-          <div class="views">
-            <a href="garden/moss-bench.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>moss-bench</figcaption>
+          <div>
+            <a href="garden/moss-bench.svg"
               ><img
                 src="garden/moss-bench.svg"
                 width="160"
                 height="112"
-                alt="A low offset stone bench with thick curved seat, two weight-bearing legs and a quiet cushion of moss draped over the left edge. Asymmetrical broad silhouette with negative space under the seat." /></a
-            ><img
-              class="compact"
-              src="garden/moss-bench.svg"
-              width="80"
-              height="56"
-              alt="Compact moss-bench"
-            />
+                alt="moss-bench source concept" /></a
+            ><img src="garden/moss-bench.svg" width="80" height="56" alt="Compact moss-bench" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Thick seat, unequal legs and left moss cap keep a grounded
-            asymmetric silhouette. The quiet opening underneath remains clear at compact size.
-          </p>
-        </article>
-        <article id="lily-cistern">
-          <h3>lily-cistern</h3>
-          <div class="views">
-            <a href="garden/lily-cistern.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>lily-cistern</figcaption>
+          <div>
+            <a href="garden/lily-cistern.svg"
               ><img
                 src="garden/lily-cistern.svg"
                 width="160"
                 height="112"
-                alt="A round shallow cistern cut away in three-quarter perspective, broad water plane and two overlapping lily pads at unequal heights. Pale stone rim has one broken section; no floating jewelry." /></a
-            ><img
-              class="compact"
-              src="garden/lily-cistern.svg"
-              width="80"
-              height="56"
-              alt="Compact lily-cistern"
-            />
+                alt="lily-cistern source concept" /></a
+            ><img src="garden/lily-cistern.svg" width="80" height="56" alt="Compact lily-cistern" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Broad rim, broken right edge, blue-green water and two
-            unequal pads read at compact size. Simplified reflections distinguish the water from
-            solid stone; no tactical-occupancy claim.
-          </p>
-        </article>
-        <article id="vine-trellis">
-          <h3>vine-trellis</h3>
-          <div class="views">
-            <a href="garden/vine-trellis.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>vine-trellis</figcaption>
+          <div>
+            <a href="garden/vine-trellis.svg"
               ><img
                 src="garden/vine-trellis.svg"
                 width="160"
                 height="112"
-                alt="An angled freestanding stone trellis with two wide open diamonds and a single tapered vine climbing diagonally; three broad leaf clusters, restrained moss, fitted stable foot." /></a
-            ><img
-              class="compact"
-              src="garden/vine-trellis.svg"
-              width="80"
-              height="56"
-              alt="Compact vine-trellis"
-            />
+                alt="vine-trellis source concept" /></a
+            ><img src="garden/vine-trellis.svg" width="80" height="56" alt="Compact vine-trellis" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Tilted support and diagonal vine remain connected. Open
-            lattice and leaf clusters are readable at 80x56; leaf detail simplifies at 64x45 without
-            losing trellis identity.
-          </p>
-        </article>
-        <article id="seed-cabinet">
-          <h3>seed-cabinet</h3>
-          <div class="views">
-            <a href="garden/seed-cabinet.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>seed-cabinet</figcaption>
+          <div>
+            <a href="garden/seed-cabinet.svg"
               ><img
                 src="garden/seed-cabinet.svg"
                 width="160"
                 height="112"
-                alt="A squat weathered stone seed cabinet with three unequal open pigeonholes and two shallow ceramic seed trays. One broad climbing leaf hugs its right side. Paper and ceramic remain visually distinct." /></a
-            ><img
-              class="compact"
-              src="garden/seed-cabinet.svg"
-              width="80"
-              height="56"
-              alt="Compact seed-cabinet"
-            />
+                alt="seed-cabinet source concept" /></a
+            ><img src="garden/seed-cabinet.svg" width="80" height="56" alt="Compact seed-cabinet" />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Unequal shelves, two terracotta trays and one climbing leaf
-            read at 160x112 and 80x56. The cabinet is a scene prop, with no legible labels or
-            invented contents.
-          </p>
-        </article>
-        <article id="stepping-culvert">
-          <h3>stepping-culvert</h3>
-          <div class="views">
-            <a href="garden/stepping-culvert.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>stepping-culvert</figcaption>
+          <div>
+            <a href="garden/stepping-culvert.svg"
               ><img
                 src="garden/stepping-culvert.svg"
                 width="160"
                 height="112"
-                alt="Two broad stepping stones spanning a narrow U-shaped stone culvert. Dark channel below, one visible blue-green water surface, one mossy bank. The two slabs connect the banks; no impossible support." /></a
+                alt="stepping-culvert source concept" /></a
             ><img
-              class="compact"
               src="garden/stepping-culvert.svg"
               width="80"
               height="56"
               alt="Compact stepping-culvert"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Two uneven slabs sit visibly on stone banks above an open
-            water channel. Broad span-and-void relationship survives at smallest study size; the
-            precise traverse is not a gameplay assertion.
-          </p>
-        </article>
+        </figure>
       </div>
     </section>
     <section id="spire-beyond-thresholds">
       <h2>spire-beyond-thresholds</h2>
       <p>
-        <a href="spire-beyond-thresholds/original.svg">Exact API sheet</a> ·
-        <a href="spire-beyond-thresholds/prompt.txt">Exact prompt</a> ·
-        <a href="spire-beyond-thresholds/request.json">Settings</a> ·
-        <a href="spire-beyond-thresholds/response.json">Usage and request ID</a> ·
-        <a href="spire-beyond-thresholds/extraction.json">Extraction lineage</a> ·
+        <a href="spire-beyond-thresholds/call.json">Exact request, usage and review</a> ·
+        <a href="spire-beyond-thresholds/original.svg">Original sheet</a> ·
         <a href="spire-beyond-thresholds/review.png">Three-size contact sheet</a>
       </p>
       <div class="grid">
-        <article id="beyond-tilted-observatory">
-          <h3>beyond-tilted-observatory</h3>
-          <div class="views">
-            <a
-              href="spire-beyond-thresholds/beyond-tilted-observatory.svg"
-              title="Open full native vector"
+        <figure>
+          <figcaption>beyond-tilted-observatory</figcaption>
+          <div>
+            <a href="spire-beyond-thresholds/beyond-tilted-observatory.svg"
               ><img
                 src="spire-beyond-thresholds/beyond-tilted-observatory.svg"
                 width="160"
                 height="112"
-                alt="The Beyond: a tilted stone observation platform with one large hollow forged ring fixed into its rear edge. One suspended-looking distant mass in the backdrop only; visible platform supports, muted plum sky, no eye emblem." /></a
+                alt="beyond-tilted-observatory source concept" /></a
             ><img
-              class="compact"
               src="spire-beyond-thresholds/beyond-tilted-observatory.svg"
               width="80"
               height="56"
               alt="Compact beyond-tilted-observatory"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · One large hollow copper-toned forged ring anchors to an
-            asymmetric stone platform. Cream route, dark support void and quiet plum backdrop remain
-            distinct at 160x112 and 80x56; distant floating mass is only a setting motif.
-          </p>
-        </article>
-        <article id="beyond-silent-span">
-          <h3>beyond-silent-span</h3>
-          <div class="views">
-            <a href="spire-beyond-thresholds/beyond-silent-span.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>beyond-silent-span</figcaption>
+          <div>
+            <a href="spire-beyond-thresholds/beyond-silent-span.svg"
               ><img
                 src="spire-beyond-thresholds/beyond-silent-span.svg"
                 width="160"
                 height="112"
-                alt="The Beyond: two unequal pale stone platforms joined by a single narrow bent bridge over a dark chasm. The route forms a low S; sparse sage cloth tied to a fitted post, broad shadows, no figures." /></a
+                alt="beyond-silent-span source concept" /></a
             ><img
-              class="compact"
               src="spire-beyond-thresholds/beyond-silent-span.svg"
               width="80"
               height="56"
               alt="Compact beyond-silent-span"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · A low S-shaped pale bridge joins unequal platforms, with
-            visibly fitted end brackets. Route-versus-chasm remains clear compactly; the single sage
-            cloth accent gives direction without obscuring the span.
-          </p>
-        </article>
-        <article id="beyond-sealed-reservoir">
-          <h3>beyond-sealed-reservoir</h3>
-          <div class="views">
-            <a
-              href="spire-beyond-thresholds/beyond-sealed-reservoir.svg"
-              title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>beyond-sealed-reservoir</figcaption>
+          <div>
+            <a href="spire-beyond-thresholds/beyond-sealed-reservoir.svg"
               ><img
                 src="spire-beyond-thresholds/beyond-sealed-reservoir.svg"
                 width="160"
                 height="112"
-                alt="The Beyond: a tall opaque stone reservoir with a narrow green-glass inspection slit and one curved drain into a shallow bowl. Continuous forged brackets, three clear material groups; no potion bottle or relic." /></a
+                alt="beyond-sealed-reservoir source concept" /></a
             ><img
-              class="compact"
               src="spire-beyond-thresholds/beyond-sealed-reservoir.svg"
               width="80"
               height="56"
               alt="Compact beyond-sealed-reservoir"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Broad opaque reservoir, narrow green inspection slit and
-            short curved drain are distinct from a potion or relic. Blue-green water bowl reads at
-            native size; the glass slit simplifies at compact size.
-          </p>
-        </article>
-        <article id="threshold-rusted-lift">
-          <h3>threshold-rusted-lift</h3>
-          <div class="views">
-            <a
-              href="spire-beyond-thresholds/threshold-rusted-lift.svg"
-              title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>threshold-rusted-lift</figcaption>
+          <div>
+            <a href="spire-beyond-thresholds/threshold-rusted-lift.svg"
               ><img
                 src="spire-beyond-thresholds/threshold-rusted-lift.svg"
                 width="160"
                 height="112"
-                alt="Encounter location concept: an iron lift cage suspended on a visibly continuous thick chain beside a worn stone landing. Open empty cage, three-quarter low diagonal platform, muted copper fittings. No character or promise of mechanics." /></a
+                alt="threshold-rusted-lift source concept" /></a
             ><img
-              class="compact"
               src="spire-beyond-thresholds/threshold-rusted-lift.svg"
               width="80"
               height="56"
               alt="Compact threshold-rusted-lift"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Open empty cage, connected chain and adjacent landing read
-            as a lift location. Thin chain links simplify at 64x45 but silhouette survives at 80x56.
-            This is a source composition, with no validated lift mechanism or gameplay trigger.
-          </p>
-        </article>
-        <article id="threshold-curtain-vault">
-          <h3>threshold-curtain-vault</h3>
-          <div class="views">
-            <a
-              href="spire-beyond-thresholds/threshold-curtain-vault.svg"
-              title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>threshold-curtain-vault</figcaption>
+          <div>
+            <a href="spire-beyond-thresholds/threshold-curtain-vault.svg"
               ><img
                 src="spire-beyond-thresholds/threshold-curtain-vault.svg"
                 width="160"
                 height="112"
-                alt="Encounter location concept: a broad dark doorway partially revealed by a heavy asymmetric plum curtain held by a simple forged hook. Three large cloth folds, thick stone jamb and one cream floor wedge; no treasure or readable script." /></a
+                alt="threshold-curtain-vault source concept" /></a
             ><img
-              class="compact"
               src="spire-beyond-thresholds/threshold-curtain-vault.svg"
               width="80"
               height="56"
               alt="Compact threshold-curtain-vault"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Three broad plum cloth folds hang from a fitted hook and
-            partly reveal a dark opening. Thick stone jamb and cream floor wedge give clear depth;
-            no visible inscription or invented vault contents.
-          </p>
-        </article>
-        <article id="threshold-abandoned-bell">
-          <h3>threshold-abandoned-bell</h3>
-          <div class="views">
-            <a
-              href="spire-beyond-thresholds/threshold-abandoned-bell.svg"
-              title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>threshold-abandoned-bell</figcaption>
+          <div>
+            <a href="spire-beyond-thresholds/threshold-abandoned-bell.svg"
               ><img
                 src="spire-beyond-thresholds/threshold-abandoned-bell.svg"
                 width="160"
                 height="112"
-                alt="Encounter location concept: a cracked suspended iron bell fitted to an asymmetric stone support, clapper resting visibly inside the dark mouth. Unequal opening and thick edge; a single draped sage cloth on the stone base. No character." /></a
+                alt="threshold-abandoned-bell source concept" /></a
             ><img
-              class="compact"
               src="spire-beyond-thresholds/threshold-abandoned-bell.svg"
               width="80"
               height="56"
               alt="Compact threshold-abandoned-bell"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Cracked bell, hanging ring, attached clapper and stone arch
-            read clearly at compact size. Warm copper/bronze appearance departs from the prompt iron
-            interpretation; retain that material difference for user review instead of claiming
-            exact prompt conformity.
-          </p>
-        </article>
+        </figure>
       </div>
     </section>
     <section id="spire-exordium-city">
       <h2>spire-exordium-city</h2>
       <p>
-        <a href="spire-exordium-city/original.svg">Exact API sheet</a> ·
-        <a href="spire-exordium-city/prompt.txt">Exact prompt</a> ·
-        <a href="spire-exordium-city/request.json">Settings</a> ·
-        <a href="spire-exordium-city/response.json">Usage and request ID</a> ·
-        <a href="spire-exordium-city/extraction.json">Extraction lineage</a> ·
+        <a href="spire-exordium-city/call.json">Exact request, usage and review</a> ·
+        <a href="spire-exordium-city/original.svg">Original sheet</a> ·
         <a href="spire-exordium-city/review.png">Three-size contact sheet</a>
       </p>
       <div class="grid">
-        <article id="exordium-split-ascent">
-          <h3>exordium-split-ascent</h3>
-          <div class="views">
-            <a href="spire-exordium-city/exordium-split-ascent.svg" title="Open full native vector"
+        <figure>
+          <figcaption>exordium-split-ascent</figcaption>
+          <div>
+            <a href="spire-exordium-city/exordium-split-ascent.svg"
               ><img
                 src="spire-exordium-city/exordium-split-ascent.svg"
                 width="160"
                 height="112"
-                alt="The Exordium: a broken stair forks around a dark rock outcrop; left branch climbs to a narrow warm opening, right ends at a missing slab. One dominant upward diagonal and a clear void. No character." /></a
+                alt="exordium-split-ascent source concept" /></a
             ><img
-              class="compact"
               src="spire-exordium-city/exordium-split-ascent.svg"
               width="80"
               height="56"
               alt="Compact exordium-split-ascent"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Pale rising stair leads around a dark outcrop to one warm
-            opening. The incomplete right branch reads as broken traversal at 160x112 and 80x56. No
-            route mechanics are implied; floating remnants are background composition.
-          </p>
-        </article>
-        <article id="exordium-rain-camp">
-          <h3>exordium-rain-camp</h3>
-          <div class="views">
-            <a href="spire-exordium-city/exordium-rain-camp.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>exordium-rain-camp</figcaption>
+          <div>
+            <a href="spire-exordium-city/exordium-rain-camp.svg"
               ><img
                 src="spire-exordium-city/exordium-rain-camp.svg"
                 width="160"
                 height="112"
-                alt="The Exordium: a sheltered cold campsite below an overhanging rock; one small ember bed beneath a sloping cloth stretched between two fitted supports. A pale runoff line outside the shelter, quiet asymmetry." /></a
+                alt="exordium-rain-camp source concept" /></a
             ><img
-              class="compact"
               src="spire-exordium-city/exordium-rain-camp.svg"
               width="80"
               height="56"
               alt="Compact exordium-rain-camp"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Asymmetric copper cloth attaches to two supports below a
-            broad overhang; runoff is separate from the small ember bed. Shelter silhouette remains
-            readable compactly, with no character anatomy or clutter.
-          </p>
-        </article>
-        <article id="exordium-sealed-door">
-          <h3>exordium-sealed-door</h3>
-          <div class="views">
-            <a href="spire-exordium-city/exordium-sealed-door.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>exordium-sealed-door</figcaption>
+          <div>
+            <a href="spire-exordium-city/exordium-sealed-door.svg"
               ><img
                 src="spire-exordium-city/exordium-sealed-door.svg"
                 width="160"
                 height="112"
-                alt="The Exordium: a heavy tilted stone door caught half open in fractured rock, a muted copper latch and broad warm light wedge beneath it. Thick door edge and one clean triangular dark recess; no symbols." /></a
+                alt="exordium-sealed-door source concept" /></a
             ><img
-              class="compact"
               src="spire-exordium-city/exordium-sealed-door.svg"
               width="80"
               height="56"
               alt="Compact exordium-sealed-door"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Heavy tilted door and warm lower wedge are clear against
-            split rock. Copper latch remains subordinate; broad material planes survive compact
-            view. Door fit and traversability are only visual concepts.
-          </p>
-        </article>
-        <article id="city-suspended-market">
-          <h3>city-suspended-market</h3>
-          <div class="views">
-            <a href="spire-exordium-city/city-suspended-market.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>city-suspended-market · HOLD: market role unclear</figcaption>
+          <div>
+            <a href="spire-exordium-city/city-suspended-market.svg"
               ><img
                 src="spire-exordium-city/city-suspended-market.svg"
                 width="160"
                 height="112"
-                alt="The City: a small suspended shuttered market balcony fixed between two stone towers, one asymmetric muted copper cloth canopy and sagging but connected suspension beams. Dominant balcony plane; no merchant or text." /></a
+                alt="city-suspended-market source concept" /></a
             ><img
-              class="compact"
               src="spire-exordium-city/city-suspended-market.svg"
               width="80"
               height="56"
               alt="Compact city-suspended-market"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>hold</strong> · Readable suspended covered balcony with attached canopy and
-            continuous beams. Market-specific shutters/stall cues are weak, so the scene does not
-            yet establish the named market function. Retain as a useful covered-balcony source;
-            semantic role needs user decision or later selective adaptation, not automatic adoption.
-          </p>
-        </article>
-        <article id="city-aqueduct-crossing">
-          <h3>city-aqueduct-crossing</h3>
-          <div class="views">
-            <a href="spire-exordium-city/city-aqueduct-crossing.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>city-aqueduct-crossing</figcaption>
+          <div>
+            <a href="spire-exordium-city/city-aqueduct-crossing.svg"
               ><img
                 src="spire-exordium-city/city-aqueduct-crossing.svg"
                 width="160"
                 height="112"
-                alt="The City: a narrow dry walkway crosses a broad dark aqueduct arch, high buildings simplified into two quiet masses beyond. Stone thickness and continuous supports, one clean pale route cuts the scene diagonally." /></a
+                alt="city-aqueduct-crossing source concept" /></a
             ><img
-              class="compact"
               src="spire-exordium-city/city-aqueduct-crossing.svg"
               width="80"
               height="56"
               alt="Compact city-aqueduct-crossing"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · One pale diagonal route crosses a broad arch with visible
-            stone thickness. Dark distant city masses stay quiet. Strong route-versus-void
-            relationship survives at all reviewed sizes.
-          </p>
-        </article>
-        <article id="city-rooftop-refuge">
-          <h3>city-rooftop-refuge</h3>
-          <div class="views">
-            <a href="spire-exordium-city/city-rooftop-refuge.svg" title="Open full native vector"
+        </figure>
+        <figure>
+          <figcaption>city-rooftop-refuge</figcaption>
+          <div>
+            <a href="spire-exordium-city/city-rooftop-refuge.svg"
               ><img
                 src="spire-exordium-city/city-rooftop-refuge.svg"
                 width="160"
                 height="112"
-                alt="The City: a recessed rooftop shelter reached by three broad steps, an offset folded sage canopy and one warm lantern inside. Stable curved parapet, asymmetric copper cloth, quiet dark city backdrop." /></a
+                alt="city-rooftop-refuge source concept" /></a
             ><img
-              class="compact"
               src="spire-exordium-city/city-rooftop-refuge.svg"
               width="80"
               height="56"
               alt="Compact city-rooftop-refuge"
             />
           </div>
-          <p class="scale">160×112 · 80×56</p>
-          <p>
-            <strong>candidate</strong> · Three broad steps lead into a dark sheltered pocket beneath
-            sage cloth. Curved parapet distinguishes it from the cave camp, and the small warm
-            lantern remains a focused accent at compact size.
-          </p>
-        </article>
+        </figure>
       </div>
     </section>
     <footer>
-      Static review bundle. Open individual vectors at full size to inspect construction; contact
-      sheets include 160×112, 80×56 and 64×45. Cartographer pieces are composition props, not
-      supported 35px tactical sprites or seamless tiles. Spire locations have no associated event
-      mechanics. Independent visual and user acceptance remain pending.
+      <p>
+        Static review bundle; no network or JavaScript is needed to open this folder. Future
+        concepts need their own consumer and actual game review before adoption. Narrow details and
+        backgrounds need fitting to that consumer.
+      </p>
     </footer>
   </body>
 </html>
