@@ -1,0 +1,10 @@
+{
+  "started_utc": "2026-11-06T16:23:55.092915+00:00",
+  "endpoint": "https://api.openai.com/v1/images/generations",
+  "status": "unknown",
+  "attempts": 1,
+  "retry": false,
+  "error_type": "RemoteDisconnected",
+  "elapsed_seconds": 301.04,
+  "note": "No automatic retry; retain entire reservation pending reconciliation."
+}

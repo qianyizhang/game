@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Furnace brute · assistant-authored directional SVG study</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        background: #20252e;
+        color: #e9decb;
+        font:
+          16px/1.55 system-ui,
+          sans-serif;
+      }
+      body {
+        max-width: 1160px;
+        margin: auto;
+        padding: 32px;
+      }
+      h1 {
+        font-size: clamp(28px, 4vw, 44px);
+        line-height: 1.15;
+      }
+      h2 {
+        font-size: 23px;
+      }
+      p {
+        max-width: 82ch;
+        color: #cdbfae;
+      }
+      a {
+        color: #e4aa85;
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        color: #d78e6b;
+      }
+      .badges {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 24px 0;
+      }
+      .badge {
+        border: 1px solid #8f6650;
+        border-radius: 30px;
+        padding: 4px 12px;
+        font-size: 13px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      figure {
+        margin: 0;
+        background: #272d36;
+        border: 1px solid #50463f;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .large {
+        min-height: 195px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: repeating-linear-gradient(
+          135deg,
+          #2a303a,
+          #2a303a 16px,
+          #2e343e 16px,
+          #2e343e 32px
+        );
+      }
+      .large img {
+        width: 153.6px;
+        height: 166.4px;
+        object-fit: contain;
+      }
+      .native {
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 31px,
+            #7c645d38 31px,
+            #7c645d38 32px
+          ),
+          repeating-linear-gradient(90deg, #493432, #493432 31px, #7c645d38 31px, #7c645d38 32px);
+      }
+      .native > div {
+        font-size: 10px;
+        text-align: center;
+        color: #e3cdbc;
+      }
+      .native img {
+        display: block;
+        margin: auto;
+        object-fit: contain;
+      }
+      .field {
+        width: 38.4px;
+        height: 41.6px;
+      }
+      .compact {
+        width: 32px;
+        height: 34.6667px;
+      }
+      .native > div:last-child {
+        background: #343b48;
+        padding: 3px 6px;
+        border-radius: 4px;
+      }
+      figcaption {
+        font-size: 13px;
+        padding: 10px 12px;
+        background: #252127;
+      }
+      details {
+        margin: 24px 0;
+        padding: 14px;
+        border: 1px solid #50463f;
+        border-radius: 12px;
+      }
+      summary {
+        cursor: pointer;
+      }
+      .baseline {
+        width: 100%;
+        height: auto;
+        max-width: 1040px;
+      }
+      .study {
+        width: 230.4px;
+        height: 249.6px;
+        object-fit: contain;
+      }
+      footer {
+        border-top: 1px solid #50463f;
+        padding-top: 16px;
+        margin-top: 30px;
+        font-size: 13px;
+        color: #b6a593;
+      }
+      @media (max-width: 640px) {
+        body {
+          padding: 18px;
+        }
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .large {
+          min-height: 175px;
+        }
+        .large img {
+          width: 138px;
+          height: 149.5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="eyebrow">EMBERWAKE / HEAVY BIPED DIRECTION STUDY</div>
+    <h1>Weight, horn and forged steel</h1>
+    <p>
+      <strong>Four assistant-authored native SVG quarters.</strong> Rust-red physical melee, unequal
+      ivory horns and a plain right-hand cleaver. The requested image API call ended with an unknown
+      transport outcome; no model artwork was returned. These drawings were authored separately
+      after that interruption.
+    </p>
+    <div class="badges">
+      <span class="badge">Source study · no game adoption</span
+      ><span class="badge">API reservation US$3 still held</span><span>SE / SW front-quarter</span
+      ><span>NE / NW rear-quarter</span>
+    </div>
+    <h2>Four current direction candidates</h2>
+    <p>
+      Enlarged inspection above; below, the same 0.1 source scale on an inferno-colored 32px square
+      grid and a tighter 32px-wide canvas on crypt gray. Visible native bounds:
+      27.1–28.1×37.4–37.5px. No contact shadows or terrain are baked into the vectors.
+    </p>
+    <div class="grid">
+      <figure>
+        <div class="large">
+          <img src="demon-se.svg" alt="Assistant-authored Furnace brute facing SE" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="demon-se.svg" alt="" />1× target · inferno</div>
+          <div><img class="compact" src="demon-se.svg" alt="" />32px · crypt</div>
+        </div>
+        <figcaption><a href="demon-se.svg">SE</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="demon-sw.svg" alt="Assistant-authored Furnace brute facing SW" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="demon-sw.svg" alt="" />1× target · inferno</div>
+          <div><img class="compact" src="demon-sw.svg" alt="" />32px · crypt</div>
+        </div>
+        <figcaption><a href="demon-sw.svg">SW</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="demon-ne.svg" alt="Assistant-authored Furnace brute facing NE" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="demon-ne.svg" alt="" />1× target · inferno</div>
+          <div><img class="compact" src="demon-ne.svg" alt="" />32px · crypt</div>
+        </div>
+        <figcaption><a href="demon-ne.svg">NE</a> · rear-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="demon-nw.svg" alt="Assistant-authored Furnace brute facing NW" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="demon-nw.svg" alt="" />1× target · inferno</div>
+          <div><img class="compact" src="demon-nw.svg" alt="" />32px · crypt</div>
+        </div>
+        <figcaption><a href="demon-nw.svg">NW</a> · rear-quarter</figcaption>
+      </figure>
+    </div>
+    <details open>
+      <summary>Current main baseline · actual field renderer</summary>
+      <p>
+        The generic body has equal horn triangles and a long-haft weapon. This capture includes the
+        renderer-owned shadow; the new isolated SVGs do not supply shadows. No game renderer or
+        monster ID is changed by this study.
+      </p>
+      <img
+        class="baseline"
+        src="baseline.png"
+        alt="Current Furnace brute fallback at 4× and native scale"
+      />
+    </details>
+    <details>
+      <summary>Preserved construction and source sheet</summary>
+      <p>
+        The first SE construction remains exact. The current SE strengthens calf/ankle support
+        before the other quarters were authored. Other directions were independently redrawn with
+        consistent proportions, gear and screen-upper-left light, not mirrored.
+      </p>
+      <img
+        class="study"
+        src="studies/demon-se-construction-01.svg"
+        alt="Preserved first SE construction before lower-leg refinement"
+      />
+      <p>
+        <a href="manual-sheet.svg">Combined manual source sheet</a> ·
+        <a href="history-import.json">Staged lineage</a> ·
+        <a href="README.md">Review and origin</a> · <a href="validation.json">Validation</a>
+      </p>
+    </details>
+    <details>
+      <summary>Unknown API attempt · reservation retained</summary>
+      <p>
+        Grant sprite-brute-03 dispatched once at 2026-11-06T16:23:55 UTC. RemoteDisconnected after
+        301.04 seconds; no returned artwork, usage, HTTP response or request ID. Full US$3 retained,
+        zero released. No paid retry or new request. Manual drawing made no additional image API
+        call; it does not settle that request.
+      </p>
+      <p>
+        <a href="request.json">Exact sent prompt/settings</a> ·
+        <a href="receipt.json">Unknown outcome receipt</a> ·
+        <a href="budget.json">Bound and retained reservation</a>
+      </p>
+    </details>
+    <footer>
+      Author self-review candidates. Canonical gallery import remains staged for serial
+      coordination; draft status is not merge-ready. No runtime, boss/mod fallback, HP/status marker
+      or game selection changes.
+    </footer>
+  </body>
+</html>
