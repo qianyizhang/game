@@ -31,5 +31,16 @@
     "gallery": "Six source revisions and 18 unique supporting documents inspected (24 desktop/mobile views): five exact call records, shared settings, manifest, four exact PNG inputs, review images and existing evidence. Source-only controls/parents, 1440/390/320px and 16/20px text fit; no page errors.",
     "controls": "Initial native playback and Stop passed. Reduced motion interrupts active playback and blocks new playback. Compositor snapshots show motion. Restart FAILED for once-playing joined GIF: Stop then Play retained the final frame, pixel-identical to the ending screenshot. Shared gallery implementation dependency; draft remains blocked. No true pause/seek claimed.",
     "harness": "First custom document probe observed prior text before asynchronous response settled. Corrected only the ignored probe wait and retained exact text/byte comparisons; full probe then passed. Repository assertions/timeouts and gallery code unchanged."
+  },
+  "shared_replay_compatibility": {
+    "source_head": "989636d9184ac0d26752bd21cfa8c879307d86f3",
+    "governance_head": "d6cc4728c87b1c4d13489b5a91ce5e4cb73f3304",
+    "replay_head": "6fdc26d94ac5434446e35f23c44e249164312940",
+    "resolved_shared_tree": "f78b8a50c29a823df315cfcdb8c61fa774cd12af",
+    "disposable_combination_tree": "291bfa7ac7cfbf5f91e91decef84e73e0639865e",
+    "proof": "2 live/offline cases passed: completed once-playing story, Stop, fresh-URL Play, compositor opening pixel-identical to initial opening and different from ending, then visible advancement. Original playback/download SHA-256 exact; old object URL revoked; reduced motion interrupts and blocks playback; no page errors or offline network requests.",
+    "checks": "Resolved shared baseline passed full maintenance (208 tooling, 81 DCC, 19 Python tests) and 19 affected browser journeys at normal limits. This story combination passed history verification and actual native replay checks. No shared implementation, artwork, inputs, library records, defaults or selections changed in this evidence follow-up.",
+    "limits": "Compatibility tested at these exact heads only. Shared implementation is not landed or included in this candidate branch; its historical independent-code replay failure remains valid. Draft source study; independent library additions require serial landing reconciliation. No pause/seek, runtime adoption or art acceptance.",
+    "probe_corrections": "First ignored probe captured only after animated decoding/large per-byte protocol transfer and missed opening. A second oversized transfer was stopped. Final probe captures immediately and compares a browser-side digest; both earlier logs/captures remain temporary. No repository assertions or timeouts changed."
   }
 }

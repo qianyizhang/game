@@ -52,7 +52,19 @@ Registration media checks passed: every source/joined frame and timing matches,
 and all four actual PNG input hashes are exact. Original chapters encode looping;
 the joined story plays once. Desktop/phone/enlarged-text gallery inspection,
 settings/input views, initial playback, Stop and reduced-motion blocking passed.
-**Shared-gallery blocker:** after the joined GIF ends, Stop then Play retains its
-final frame rather than restarting. The existing validation record retains this
-actual failure; no shared implementation or artwork is changed here. Keep draft
-until that dependency and independent/user story review are satisfied.
+The original independent-code check found that Stop then Play retained the final
+frame after the joined GIF ended; that historical failure remains recorded.
+
+Shared replay compatibility was subsequently checked in a disposable, unpushed
+combination with #137 `d6cc4728c87b1c4d13489b5a91ce5e4cb73f3304` and #142
+`6fdc26d94ac5434446e35f23c44e249164312940`, using this story at
+`989636d9184ac0d26752bd21cfa8c879307d86f3`. The resolved shared tree is
+`f78b8a50c29a823df315cfcdb8c61fa774cd12af`; combination tree
+`291bfa7ac7cfbf5f91e91decef84e73e0639865e`. Both live and offline galleries completed the
+once-playing GIF, then Stop → Play restored the initial opening pixels and
+advanced again. Playback/download bytes matched the originals; reduced motion
+interrupted and blocked playback. See [validation](validation.json) for checks
+and historical probe outcomes. The shared implementation is not landed or
+included here, so this is conditional compatibility evidence. This PR remains a
+draft source study; game selections are unchanged and independent library
+additions still need serial reconciliation when landing.
