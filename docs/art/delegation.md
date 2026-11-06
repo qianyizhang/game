@@ -1,6 +1,6 @@
 # Asset delegation protocol
 
-Governs bounded native-asset delegation for 3D modeling experiments using **Sol 6.1 / high** for orchestration and the author–verifier loop, and **Astra / high** for art direction, initial prototyping, and final signoff. The [rulebook](art-direction.md) governs visual quality, and the [migration contract](migration.md) governs publication boundaries. Historical records in [batch retrospective](trials/native-batch-1.md), [Wolf forms](assets/creatures/wolf-evolutions.md), [Matriarch trial](trials/native-matriarch-trial.md), and [Matriarch refinement](trials/native-matriarch-refinement.md) retain their original ledgers and outcomes.
+Governs bounded native-asset delegation for 3D modeling experiments using **Sol 6.1 / high** for orchestration and the author–verifier loop, and **Astra / high** for art direction, initial prototyping, and final signoff. The [rulebook](art-direction.md) governs visual quality, and the [migration contract](migration.md) governs publication boundaries. Historical records in [batch retrospective](trials/README.md#phoenix-and-storm-roc--2026-10-08), [Wolf forms](assets/creatures/wolf-evolutions.md), [Matriarch trial](trials/README.md#matriarch-native-trial--2026-10-08-utc--2026-10-09-shanghai), and [Matriarch refinement](trials/native-matriarch-refinement.md) retain their original ledgers and outcomes.
 
 ## Roles and authority
 

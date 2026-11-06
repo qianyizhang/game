@@ -1,6 +1,6 @@
 # DCC workbench
 
-`@card-workshop/dcc-workbench` owns editable Blender subjects, validated GLB candidates and reviewed immutable publications. The registry currently names **Briar Hydra**, **Nightjar**, **Phoenix**, **Storm Roc**, **Alley Prowler**, **Greatwood Wolf** and **Briar Matriarch**, plus its three separately published evolved forms: **Bloom Warden**, **Elder Sentinel** and **Thorn Tyrant**. Their working masters live under `subjects/`; the earlier Hydra pilot and procedural gallery sources remain preserved. See the [native pilot record](../../docs/art/trials/native-pilots.md) and [batch record](../../docs/art/trials/native-batch-1.md) for the first batch, and the [Prowler trial](../../docs/art/trials/native-prowler-trial.md) for its later delegated native edit and limits. The [Wolf trial](../../docs/art/trials/native-wolf-trial.md) records the next bounded distal-tail refinement. The [evolved forms record](../../docs/art/assets/creatures/wolf-evolutions.md) separates a stopped delegated prototype from the user-authorized direct parent completion.
+`@card-workshop/dcc-workbench` owns editable Blender subjects, validated GLB candidates and reviewed immutable publications. The registry currently names **Briar Hydra**, **Nightjar**, **Phoenix**, **Storm Roc**, **Alley Prowler**, **Greatwood Wolf** and **Briar Matriarch**, plus its three separately published evolved forms: **Bloom Warden**, **Elder Sentinel** and **Thorn Tyrant**. Their working masters live under `subjects/`; the earlier Hydra pilot and procedural gallery sources remain preserved. See the [native pilot record](../../docs/art/trials/README.md#hydra-and-nightjar-pilots--2026-10-08) and [batch record](../../docs/art/trials/README.md#phoenix-and-storm-roc--2026-10-08) for the first batch, and the [Prowler trial](../../docs/art/trials/README.md#prowler-and-wolf-tail-trials--2026-10-08) for its later delegated native edit and limits. The [Wolf trial](../../docs/art/trials/README.md#prowler-and-wolf-tail-trials--2026-10-08) records the next bounded distal-tail refinement. The [evolved forms record](../../docs/art/assets/creatures/wolf-evolutions.md) separates a stopped delegated prototype from the user-authorized direct parent completion.
 
 Open **DCC workbench** from any game table, or visit `/?workbench=dcc&asset=briar-hydra`. **Choose native asset** lists published deliveries. Intent, Form, Surface, Motion and Delivery inspect the same selected release using its frozen brief; they are not historical build stages. Downloads return that release’s exact GLB and editable source. Registered drafts without a publication are absent from the selector and do not break the browser.
 
@@ -84,7 +84,7 @@ The registry/GLB interface distinguishes static, rigid and skinned profiles. The
 
 Only a release with an **accepted parent review scoped to `gallery`** changes its study’s gallery default. A `workbench` release remains inspectable without that cutover. Browser mapping uses the reviewed release’s frozen study identity, so an unreviewed registry edit cannot redirect existing art. There is no automatic review, promotion or fallback from a broken selected release to a different asset.
 
-For the separated-role trial, follow the [delegation protocol](../../docs/art/delegation.md) and [Matriarch outcome](../../docs/art/trials/native-matriarch-trial.md). The existing `trial.ts` CLI uses v3 receipts: `prototype` unlocks author work; `reopen` permits bounded director polish; fresh independent clearance and `acceptance` unlock a `publisher` handoff. Release reviews retain `reviewer.role: parent`, with `reviewer.name` set to the actual Astra director ID. Sol operations may serialize that decision but cannot supply its own art acceptance. No release schema or historical receipt migration is needed.
+For the separated-role trial, follow the [delegation protocol](../../docs/art/delegation.md) and [Matriarch outcome](../../docs/art/trials/README.md#matriarch-native-trial--2026-10-08-utc--2026-10-09-shanghai). The existing `trial.ts` CLI uses v3 receipts: `prototype` unlocks author work; `reopen` permits bounded director polish; fresh independent clearance and `acceptance` unlock a `publisher` handoff. Release reviews retain `reviewer.role: parent`, with `reviewer.name` set to the actual Astra director ID. Sol operations may serialize that decision but cannot supply its own art acceptance. No release schema or historical receipt migration is needed.
 
 A future recipe must explicitly describe which edits reconstruction replaces and produce a separate backed-up candidate. Neither the preserved legacy Hydra recipe nor an imported GLB is a recipe for the current native master. [Migration governance](../../docs/art/migration.md) owns delegation, batching and retention boundaries.
 
@@ -132,7 +132,7 @@ npm run test:browser -- tests/browser/dcc-workbench.spec.ts tests/browser/art3d.
 - **Browser behavior:** correct selected downloads, load errors, playback, reduced motion, phone layout, navigation/focus, save preservation and native/procedural gallery coexistence. Review the captured pixels separately for quality.
 - **Legacy native gate:** `npm run test:dcc:native` remains the earlier reconstructed Hydra pilot’s control/save/reload test. It does not substitute for `test:dcc:saved` on current `subjects/` masters. Candidate-dependent browser cases skip when their native input is absent; an ordinary CI/browser pass is not native execution.
 
-Run commands after freezing the owned source/config files; a Vite restart can reset UI selection during a browser test. Final run receipts and candidate decisions belong in the [native pilot record](../../docs/art/trials/native-pilots.md), not an undated passing-count claim here. Delivery budgets bound the selected artifact; neither they nor screenshot correctness establishes phone performance or aesthetic acceptance.
+Run commands after freezing the owned source/config files; a Vite restart can reset UI selection during a browser test. Final run receipts and candidate decisions belong with the subject's release/evidence records; promote completed outcomes to the [trial ledger](../../docs/art/trials/README.md). Delivery budgets bound the selected artifact; neither they nor screenshot correctness establishes phone performance or aesthetic acceptance.
 
 Evidence containing editable sources is protected under [maintenance retention](../../docs/engineering/maintenance.md#retention-and-deletion-authority). Disposable renders require their own retention classification. Publication and test consolidation do not authorize deletion of sources, accepted references or historical receipts.
 
@@ -191,7 +191,7 @@ from a hidden tab does not advance through the time spent away.
 The initial 20-joint, three-clip baseline keeps its original Blender masters. Its current
 deliveries and receipts are exported with Blender 5.2; pre-migration GLBs remain in Git
 history. Receipts retain provenance and contact summaries without pose arrays.
-Use `--baseline` to select its command adapter. The [trial record](../../docs/art/trials/canid-retargeting.md)
+Use `--baseline` to select its command adapter. The [trial record](../../docs/art/trials/README.md#canid-family--2026-10-10)
 records the accepted scope, evidence and limitations. Neither revision replaces the Wolf gallery.
 
 ### Source ownership and editing
@@ -298,11 +298,11 @@ export separate from candidate construction; keep motion timing, trajectories, s
 phases and markers together in the saved action contract.
 
 `motion-delivery.ts` shares GLB clip timing, loop closure, skin, normal and budget
-checks for boar, raven and otter, plus exact exporter-file digest checks. Each species
+checks for canid, fox, boar, raven and otter, plus exact exporter-file digest checks. Each species
 keeps its source identity, fitting and support requirements and declares its delivery
 budgets. The shared mutation suite uses a delivered boar GLB; each species also keeps
-its real-delivery and support-failure checks. Canid, fox and the general GLB inspector
-retain their separate contracts.
+its real-delivery and support-failure checks. Species-specific source, fitting and
+contact checks and the general GLB inspector retain their separate contracts.
 
 ## Bracken boar motion study
 

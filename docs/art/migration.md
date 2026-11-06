@@ -4,12 +4,12 @@ Governs migration of principal 3D gallery assets into editable Blender (`.blend`
 
 ## Implementation boundary
 
-The DCC registry ([`packages/dcc-workbench/registry.json`](../../packages/dcc-workbench/registry.json)) registers **nine native subjects**:
+The DCC registry ([`packages/dcc-workbench/registry.json`](../../packages/dcc-workbench/registry.json)) registers **ten native subjects**:
 
-- **Six base assets:** `briar-hydra` (maps to study `hydra`), `nightjar`, `phoenix`, `stormroc`, `prowler`, `wolf`.
+- **Seven base assets:** `briar-hydra` (maps to study `hydra`), `nightjar`, `phoenix`, `stormroc`, `prowler`, `wolf`, `matriarch`.
 - **Three Wolf variants:** `wolf-bloom`, `wolf-elder`, `wolf-thorn` (selectable within study `wolf`).
 
-The gallery maintains 29 total studies. Authoritative sources reside in DCC `subjects/<id>/`. Acceptance receipts are documented in [native pilots](trials/native-pilots.md), [batch 1 retrospective](trials/native-batch-1.md), [Prowler trial](trials/native-prowler-trial.md), [Wolf trial](trials/native-wolf-trial.md), and [Wolf evolved forms](assets/creatures/wolf-evolutions.md).
+The gallery maintains 29 total studies. Authoritative sources reside in DCC `subjects/<id>/`. Acceptance receipts are documented in [native pilots](trials/README.md#hydra-and-nightjar-pilots--2026-10-08), [batch 1 retrospective](trials/README.md#phoenix-and-storm-roc--2026-10-08), [Prowler trial](trials/README.md#prowler-and-wolf-tail-trials--2026-10-08), [Wolf trial](trials/README.md#prowler-and-wolf-tail-trials--2026-10-08), and [Wolf evolved forms](assets/creatures/wolf-evolutions.md).
 
 ## File responsibilities and layout
 
@@ -77,7 +77,7 @@ Inventory from [`STUDIES`](../../src/art3d/catalogue.ts) (26 creatures/humanoids
 | Plumage & fitted grips  | `stormroc`     | Storm Roc         | Native gallery default (direct parent finish)        |
 | Fur, paws, muzzles      | `prowler`      | Alley Prowler     | Native gallery default (delegated tail edit)         |
 | Fur, paws, muzzles      | `wolf`         | Greatwood Wolf    | Native gallery default (delegated + 3 evolved forms) |
-| Fur, paws, muzzles      | `matriarch`    | Briar Matriarch   | Queued                                               |
+| Fur, paws, muzzles      | `matriarch`    | Briar Matriarch   | Native gallery default; later refinement unfinished  |
 | Fur, paws, muzzles      | `thornstag`    | Thorn Stag        | Queued                                               |
 | Fur, paws, muzzles      | `scavenger`    | Briar Scavenger   | Queued                                               |
 | Fur, paws, muzzles      | `guardian`     | Nest Guardian     | Queued                                               |

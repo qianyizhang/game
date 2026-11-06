@@ -30,7 +30,7 @@ These are authoring stages, not four runtime LOD meshes. Review Ash in clay and 
 before propagating the recipe to Russet and the shorter, broader Moss. Shared motion must
 remain independently editable and reach every character without rebuilding its mesh.
 
-The [trial record](../../../../../docs/art/trials/canid-retargeting.md) owns the accepted
+The [trial record](../../../../../docs/art/trials/README.md#canid-family--2026-10-10) owns the accepted
 scope and review findings. Python recipes enter Ruff and strict mypy through the repository
 configuration; delivery and native/browser checks exercise their observable results.
 
@@ -109,7 +109,7 @@ generated on demand by `blender/sample_canid.py` into ignored test output, not c
 
 Review coordinates and travel speeds are in model units; there is no calibrated real-world
 metre scale. The stylized gait recipes use empirical canine studies as guidance, not imported
-motion capture or a physiological simulation. Read the trial record for sources and limits.
+motion capture or a physiological simulation. The [gait-transition study](https://journals.biologists.com/jeb/article/216/12/2257/11423/Gait-transitions-and-modular-organization-of) informs stance/swing ordering; the [pelvis/lumbar study](https://pubmed.ncbi.nlm.nih.gov/26831181/) informs restrained spinal response; the [hind-limb study](https://pmc.ncbi.nlm.nih.gov/articles/PMC6242825/) informs articulated hocks and proportion-aware fitting. Exact recipe values remain artistic choices. The [trial ledger](../../../../../docs/art/trials/README.md#canid-family--2026-10-10) records historical evidence and limits.
 
 ## Fox extension
 

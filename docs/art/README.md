@@ -53,13 +53,13 @@ decision nor passing CI establishes user approval or gameplay acceptance.
 
 ## Direction and guided trials
 
-[Bounded delegation](delegation.md) owns the active Sol orchestration / Astra art-direction experiment, shared-spec audit, construction prototype, author/verifier loop and exact-byte acceptance. The [Matriarch native trial](trials/native-matriarch-trial.md) completed; its [later refinement](trials/native-matriarch-refinement.md) stopped unfinished. Historical trials retain their own receipts and outcomes.
+[Bounded delegation](delegation.md) owns the active Sol orchestration / Astra art-direction experiment, shared-spec audit, construction prototype, author/verifier loop and exact-byte acceptance. The [Matriarch native trial](trials/README.md#matriarch-native-trial--2026-10-08-utc--2026-10-09-shanghai) completed; its [later refinement](trials/native-matriarch-refinement.md) stopped unfinished. Historical trials retain their own receipts and outcomes.
 
 [Creature history](creature-history.md) preserves the rejected earlier Hydra/Nightjar, the later positively received living Hydra and the mixed-authorship Nightjar/Phoenix trial. Living Hydra is an accepted direction, not blanket approval of every detail. Final bird user approval is unrecorded. Spiral and Vajra had reviewer acceptance; this does not establish user approval. Catalyst's implementation and export workflow are in the 3D source map.
 
-[Native migration pilots](trials/native-pilots.md) records the accepted Hydra and Nightjar gallery releases, native edit proofs and remaining limitations.
+[Native migration pilots](trials/README.md#hydra-and-nightjar-pilots--2026-10-08) records the accepted Hydra and Nightjar gallery releases, native edit proofs and remaining limitations.
 
-[Three-species saved-motion trial](trials/rig-strategy-three-rounds.md) records the sequential fox, boar and raven campaign, owner self-review boundary, and tested rig/workflow refinements.
+[Three-species saved-motion trial](trials/README.md#fox-boar-and-raven-rounds--2026-10-11) records the sequential fox, boar and raven campaign, owner self-review boundary, and tested rig/workflow refinements.
 
 ## Movie experiments
 
