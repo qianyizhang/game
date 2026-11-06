@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" width="384" height="384" role="img" aria-label="compass optional candidate"><g id="compass" stroke="#14262d" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M143 152 Q112 130 105 100 Q99 77 121 53 Q142 29 174 38 Q242 51 287 108 Q305 132 291 157 L276 179 Z" fill="#b99a64" />
+    <path d="M125 75 Q135 53 163 56 Q223 61 269 111 Q285 128 282 143 Q276 160 254 157 Q190 151 140 117 Q117 101 125 75 Z" fill="#eadfc4" />
+    <path d="M126 76 Q137 54 163 56 Q220 61 266 107 Q220 87 181 94 Q157 98 144 115 Q119 100 126 76 Z" fill="#9b8662" stroke="none" />
+    <path d="M200 151 L219 132 L254 144 L244 164 Z" fill="#b99a64" />
+    <path d="M54 240 Q50 214 68 191 Q102 151 174 148 Q252 145 293 187 Q313 207 309 241 L309 263 Q307 296 274 313 Q214 344 126 328 Q57 316 54 277 Z" fill="#8e744f" />
+    <ellipse cx="182" cy="226" rx="126" ry="78" fill="#b99a64" />
+    <ellipse cx="182" cy="222" rx="106" ry="59" fill="#24393b" />
+    <path d="M92 244 Q113 197 170 181 Q229 165 274 207 Q242 192 209 211 Q165 244 92 244 Z" fill="#31494a" stroke="none" />
+    <path d="M103 273 L174 213 L257 188 L201 241 Z" fill="#eadfc4" />
+    <path d="M181 215 L257 188 L204 238 Z" fill="#bd775b" />
+    <ellipse cx="183" cy="222" rx="19" ry="15" fill="#b99a64" />
+    <path d="M83 291 Q60 292 48 309 Q37 325 50 337 Q64 351 84 343 Q104 335 105 317 L95 311 Q89 330 75 331 Q62 331 61 322 Q62 311 82 306 Z" fill="#b99a64" />
+    <path d="M82 287 Q91 276 100 281 L119 290 L111 319 Q105 328 95 321 L76 312 Q72 302 82 287 Z" fill="#b99a64" />
+  </g>
+
+  </svg>
