@@ -4,16 +4,16 @@ Candidate-only Ash hound (`hound`) and Cinder acolyte (`cultist`) direction stud
 Base: `3a59621069dd1fe912a749d851d27e993507f5dd`, fetched current main on
 2026-11-06. Normal push and draft PR publication were authorized by the
 coordinating session after the initial local study. Runtime adoption and merge
-remain outside this lane. Canonical gallery registration is coordinated serially;
-the staged import is an explicit draft blocker.
+remain outside this lane. The shared gallery now registers this source history;
+art selection and runtime compatibility remain separate.
 
 The [focused acolyte refinement](refinement-01/README.md) and
 [latest comparison](refinement-01/preview.html) add four wider, distinct quarters
 with a separately documented native torso repair. Current useful candidates are
 four hounds plus four repaired acolytes; both exact generated sheets and all
 held cells remain preserved. Lane spend is US$0.238068 across two paid calls.
-No third call is authorized. Canonical import remains staged for the serial
-registration coordinator; this is draft candidate work, not merge-ready adoption.
+No third call is authorized by this historical lane grant. Canonical registration
+preserves these candidates and held states without adoption.
 
 ## Admission and source brief
 
@@ -84,10 +84,10 @@ Open [preview.html](preview.html) for a directional/native-size comparison and
 [overview.png](overview.png) for the selected review evidence. The exact generated
 [original.svg](original.svg) is preserved byte-for-byte. Eight standalone cell
 extracts remove only their outer sheet translations; the
-[staged history import](history-import.json) links each one to that original and
+[canonical history](../../iterations/library.json) links each one to that original and
 one shared request. These remain unassigned source studies with null runtime
-files. The shared gallery registry is unchanged; registration was validated and
-inspected in an isolated disposable gallery.
+files. The shared gallery now preserves this actual lineage. The redundant
+staged transport is retired after migrating its README/preview consumers.
 
 **Self-review: four useful hound candidates; four acolyte views held.** The hound
 has readable head/mane/jaw, distinct front/rear overlap and a coherent lean
@@ -139,10 +139,28 @@ application, native 3D, game-facing or runtime adoption check is claimed. The CI
 planner conservatively identifies unknown ownership for new art records; its
 broad application fallback was inspected but not run for this candidate-only
 bundle with no runtime consumer. Draft publication is now authorized, while
-canonical gallery import remains a merge-ready blocker. Hosted CI is reported
+canonical source registration is now complete; held artwork is retained for review. Hosted CI is reported
 against the exact PR head separately from these initial local results.
 
 The initial direct-SVG screenshot attempt timed out in Chromium. HTML image
 embedding decoded and captured the same SVG successfully; the original was not
 modified. A preview capture also encountered a Vite hot-reload navigation during
 metadata updates; it was rerun after writes settled. No paid request was repeated.
+
+## Canonical registration checks
+
+Three actual attempts and 18 source revisions retain the generated pilot, held
+acolyte headings, held waist-gap refinement and separate hand-authored torso
+derivatives. Baseline PNG is inspected context, never a sent image input;
+refinement parents are text design references. Open `/__art/#asset=__unassigned`
+and find `emberwake-directional-2026-11-06`. The branch has 709 assets, 110
+revisions and zero selections; no runtime adaptation or facing contract is assumed.
+
+Registration passed full `check:maintenance`, all 18 source revisions and three
+exact attempt records through the actual shared gallery, native/compact/enlarged
+views and parent links, desktop/390/320px layouts with 16/20px text. Three
+`asset-history.spec.ts` browser journeys passed at normal limits. Existing
+asset/source registrations and selected-art bytes are unchanged. Historical
+preview PNGs retain their original staged-status captions; this section owns
+the current registration status. Other candidate PRs independently add history
+records and need later serial reconciliation; no unrelated ancestor is included.

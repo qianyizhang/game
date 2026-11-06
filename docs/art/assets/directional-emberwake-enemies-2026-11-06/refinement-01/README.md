@@ -72,8 +72,7 @@ source geometry. Manual repaired views deliberately differ in approximately
 3,059–3,391 pixels; they are not mislabeled as exact generated extractions.
 
 All 18 revisions across the first pilot, this call and the manual repair remain
-unassigned with null runtime files. [The staged import](../history-import.json)
-was validated and inspected in isolation. Canonical gallery registration is
-coordinated serially and remains an explicit draft/merge-ready blocker. Runtime,
-shared registry/defaults, bosses, mod fallbacks, HP/status markers and contact
-shadows are unchanged. Draft publication is authorized; adoption and merge are not.
+unassigned with null runtime files. [The canonical history](../../../iterations/library.json)
+now registers the real source and manual lineage. The redundant transport is
+retired after consumer migration. Runtime/defaults, bosses, mod fallbacks,
+HP/status markers and contact shadows are unchanged. Draft publication is authorized; adoption and merge are not.

@@ -2,14 +2,38 @@
   "source_base": "3a59621069dd1fe912a749d851d27e993507f5dd",
   "review_mode": "author self-review; four useful hound candidates, four acolyte views held; findings in README.md",
   "native_visible_px": {
-    "hound-se": [29.4, 22.6],
-    "hound-sw": [30, 22.4],
-    "hound-ne": [26.9, 23.9],
-    "hound-nw": [27.1, 23.8],
-    "cultist-se": [20, 32.4],
-    "cultist-sw": [20.3, 32.2],
-    "cultist-ne": [20.1, 32.3],
-    "cultist-nw": [20.3, 32.3]
+    "hound-se": [
+      29.4,
+      22.6
+    ],
+    "hound-sw": [
+      30,
+      22.4
+    ],
+    "hound-ne": [
+      26.9,
+      23.9
+    ],
+    "hound-nw": [
+      27.1,
+      23.8
+    ],
+    "cultist-se": [
+      20,
+      32.4
+    ],
+    "cultist-sw": [
+      20.3,
+      32.2
+    ],
+    "cultist-ne": [
+      20.1,
+      32.3
+    ],
+    "cultist-nw": [
+      20.3,
+      32.3
+    ]
   },
   "svg_safety": {
     "documents_passed": 9,
@@ -45,7 +69,10 @@
   },
   "browser": {
     "engine": "Chromium 154.0.8037.57",
-    "preview_viewports_px": [1220, 390],
+    "preview_viewports_px": [
+      1220,
+      390
+    ],
     "phone_horizontal_overflow_px": 0,
     "preview_images_decode": true,
     "gallery_page_errors": [],
@@ -61,7 +88,18 @@
     "shared_game_and_selection_files": "git diff --exit-code passed for render/content/types, shared history and selections",
     "application_native_runtime": "not run; no executable source/runtime changes or consumer. CI planner conservatively selects application for unknown art-record ownership; no broad pass claimed."
   },
-  "holds": ["cultist-se", "cultist-sw", "cultist-ne", "cultist-nw"],
+  "holds": [
+    "cultist-se",
+    "cultist-sw",
+    "cultist-ne",
+    "cultist-nw"
+  ],
   "next_work": "Focused acolyte four-quarter refinement, proposed USD3 reservation requires coordinator allocation; Furnace brute and motion deferred. No second paid request.",
-  "publication": "not pushed; no PR, registry import, game adoption, merge, issue edit or deployment"
+  "publication": "Published draft146; canonical source registration retains generated/held/manual distinctions. No adoption, runtime compatibility or merge claimed.",
+  "registration": {
+    "handoff_head": "5642a745f69c54e2eeb8816fffdcc86d452d8946",
+    "source_count": "3 attempts / 18 revisions; all unassigned, runtime files null.",
+    "transport": "Retired history-import.json after exact canonical fact comparison and migration of four README/preview consumers. Unique request/receipt/budget/repair facts remain in existing owners.",
+    "checks": "Full check:maintenance passed (202 tooling, 81 DCC contracts, 19 Python tests, lint/types/build); all 18 actual gallery revisions and three exact records inspected native/compact/enlarged, parents, disabled selection, desktop1440/phone390/320 with16/20px text. Historical captured previews retain their original staged-status wording; current canonical status is here. Existing asset/selection/default bytes unchanged. Three asset-history browser journeys reported in README."
+  }
 }
