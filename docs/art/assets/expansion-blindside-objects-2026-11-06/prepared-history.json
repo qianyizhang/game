@@ -1,0 +1,200 @@
+{
+  "schema": 1,
+  "assets": [],
+  "attempts": [
+    {
+      "id": "hbs-cont-20261106-blindside-01",
+      "title": "blindside-01",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Expansion source study; author review and billing evidence in call.json. User acceptance and central registration pending.",
+      "files": [
+        "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-01/call.json",
+        "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-01/review.png",
+        "docs/art/assets/expansion-blindside-objects-2026-11-06/README.md",
+        "docs/art/assets/expansion-blindside-objects-2026-11-06/qa.json"
+      ]
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-02",
+      "title": "blindside-02",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Expansion source study; author review and billing evidence in call.json. User acceptance and central registration pending.",
+      "files": [
+        "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-02/call.json",
+        "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-02/review.png"
+      ]
+    }
+  ],
+  "revisions": [
+    {
+      "id": "hbs-cont-20261106-blindside-01:original",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-01",
+      "label": "blindside-01 / original",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-01/original.svg",
+      "digest": "80dac15153def0d6783e6aff825bd9a70044df657f1ac1adec93320e08aefd67",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned native SVG bytes."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-01:folding-fan",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-01",
+      "label": "blindside-01 / folding-fan",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-01/folding-fan.svg",
+      "digest": "bf5d560248487d6b76b7cf40fd9bb1d20e5d759084ecd1b99b3329f0bd0cd4ad",
+      "parents": ["hbs-cont-20261106-blindside-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 1: remove translate(0 0); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-01:ribbon-shears",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-01",
+      "label": "blindside-01 / ribbon-shears",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-01/ribbon-shears.svg",
+      "digest": "b0374cd13c9f097be41d9ec5dd3d76881d99da6027d25a2966569f2404934c9a",
+      "parents": ["hbs-cont-20261106-blindside-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 2: remove translate(480 0); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-01:abacus",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-01",
+      "label": "blindside-01 / abacus",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-01/abacus.svg",
+      "digest": "a7ba1b31ade410277ced44de83cd5cb02803441e46aed8b9237c36bf184bf0fe",
+      "parents": ["hbs-cont-20261106-blindside-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 3: remove translate(960 0); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-01:thimble",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-01",
+      "label": "blindside-01 / thimble",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-01/thimble.svg",
+      "digest": "7f7054f4d6531b4108eb71a0699ce6c3e4aefc250cd6e5406e0e7f91f0df624f",
+      "parents": ["hbs-cont-20261106-blindside-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 4: remove translate(0 336); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-01:domino-bridge",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-01",
+      "label": "blindside-01 / domino-bridge",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-01/domino-bridge.svg",
+      "digest": "bdf997c86ee0694f5b4b97189df3c6d00b41f977502c7145ca053658bd1dab5d",
+      "parents": ["hbs-cont-20261106-blindside-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 5: remove translate(480 336); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-01:tuning-fork",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-01",
+      "label": "blindside-01 / tuning-fork",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-01/tuning-fork.svg",
+      "digest": "47cc7e62f239638ce844d590786dbb2828b1e1f97d777852013674687a008f28",
+      "parents": ["hbs-cont-20261106-blindside-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 6: remove translate(960 336); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-02:original",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-02",
+      "label": "blindside-02 / original",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-02/original.svg",
+      "digest": "5035d62bb73b779b9ef89c7f2bd40e1b2aa2948b16357fa813f4fa0540a20e12",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned native SVG bytes."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-02:bellows",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-02",
+      "label": "blindside-02 / bellows",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-02/bellows.svg",
+      "digest": "d2a7391a32461a8f6baa546e52c0d88ee148268a3152529b44d671f3336ecb8c",
+      "parents": ["hbs-cont-20261106-blindside-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 1: remove translate(0 0); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-02:marionette-cross",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-02",
+      "label": "blindside-02 / marionette-cross",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-02/marionette-cross.svg",
+      "digest": "c13b847a2975baafdf9ecdf60cd6c66946d634a6fd33e5fc0bff7c26e15330a9",
+      "parents": ["hbs-cont-20261106-blindside-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 2: remove translate(480 0); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-02:matchbox",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-02",
+      "label": "blindside-02 / matchbox",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-02/matchbox.svg",
+      "digest": "81d515962f6a1cfe19a892301ca1cec87b64fc54de3cd69441aa7b8c2daf40b7",
+      "parents": ["hbs-cont-20261106-blindside-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 3: remove translate(960 0); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-02:nesting-cups",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-02",
+      "label": "blindside-02 / nesting-cups",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-02/nesting-cups.svg",
+      "digest": "5b652ae8196a65fd2c438dc25dbfd67523c63f9a6d10669f916ce5ef5e485374",
+      "parents": ["hbs-cont-20261106-blindside-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 4: remove translate(0 336); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-02:corkscrew",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-02",
+      "label": "blindside-02 / corkscrew",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-02/corkscrew.svg",
+      "digest": "d065e90896766d4ad3bc3b4d6986f41ab79a8e7c4b3d5732e8ee780018543b97",
+      "parents": ["hbs-cont-20261106-blindside-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 5: remove translate(480 336); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-blindside-02:pepper-mill",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-blindside-02",
+      "label": "blindside-02 / pepper-mill",
+      "file": "docs/art/assets/expansion-blindside-objects-2026-11-06/blindside-02/pepper-mill.svg",
+      "digest": "e762714a494ddd469ea44af3a4611b1c8ad4a35eb2b97b18a6d5b325c9baa339",
+      "parents": ["hbs-cont-20261106-blindside-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 6: remove translate(960 336); retain all geometry, paint and resources; 480\u00d7336 viewBox."
+    }
+  ]
+}

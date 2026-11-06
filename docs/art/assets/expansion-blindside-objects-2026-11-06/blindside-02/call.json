@@ -1,0 +1,86 @@
+{
+  "state": "returned",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE polished native editable static SVG sheet with SIX blindside future-expansion visual concepts. They are source ideas for review, no canon or established game rules. Exact canvas 1440x672, viewBox=\"0 0 1440 672\". THREE columns TWO rows, each cell 480x336, no gutters. Every object in a named top-level group with a single exact grid translate and LOCAL cell coordinates. No painted content outside these six groups. Every foreground silhouette inside x=12%..88%, y=12%..88% of its own cell. Separate subjects; never spill across cells. Each cell begins with a full local cream #f3e8c8 rectangle. Forest ink #183b32, ochre #c39a52, restrained coral #bd6552. Cut-paper overlap and engraved contours, three clear values, quiet negative space, no frame. Read at 160x112 / 80x56 / 64x45. Form, openings, hinges and physical contacts first; sparse engraving accents only.\nActual game's shared direction: expressive engraved fantasy and modeled cut planes, warm upper-left light, distinct material edges, three broad value groups. Keep quiet regions and useful openings. Clear intentional object tilt; not a generic symmetric badge. This is art only: no UI, borders, stats, text, letters, numbers, labels, logos or watermark. No lantern, mirror, anvil or existing runtime-role replacement.\n\nCell 1: group id=\"bellows\" transform=\"translate(0 0)\": leather concertina bellows compressed diagonally, two wooden boards join a clear narrow nozzle.\nCell 2: group id=\"marionette-cross\" transform=\"translate(480 0)\": asymmetric wooden control cross with two taut thick strings holding a single coral diamond pendant.\nCell 3: group id=\"matchbox\" transform=\"translate(960 0)\": part-open small ochre matchbox exposes three cream match heads, one unlit match crosses its lid.\nCell 4: group id=\"nesting-cups\" transform=\"translate(0 336)\": three nested copper cups, one tilted outward reveals wall thickness and dark open interior.\nCell 5: group id=\"corkscrew\" transform=\"translate(480 336)\": wooden T-handle corkscrew with short joined steel helix and thick cork, quiet negative space.\nCell 6: group id=\"pepper-mill\" transform=\"translate(960 336)\": turned wooden pepper mill tipped slightly, brass crank at top and a few coarse dark grains beneath.\nNative self-contained SVG paths and simple shapes with explicit flat colors only. No image or raster data, external resources, script, animation, use, gradients, filters, masks or defs. Every named group extracts as a complete independently legible cell. Spend geometry on silhouette, material thickness and physical continuity, not ornamental noise.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "grid": {
+    "columns": 3,
+    "cell": [480, 336],
+    "ids": ["bellows", "marionette-cross", "matchbox", "nesting-cups", "corkscrew", "pepper-mill"]
+  },
+  "sent_at": "2026-11-06T15:27:08Z",
+  "result": {
+    "request_id": "req_b412001cc2de4c24b2264404e72bb340",
+    "created": 1793978868,
+    "elapsed_seconds": 207.33,
+    "background": "transparent",
+    "usage": {
+      "input_tokens": 658,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 658
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1442
+    },
+    "svg_usage": {
+      "input_tokens": 2034,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 10454,
+      "reasoning_tokens": 773,
+      "total_tokens": 12488
+    },
+    "estimated_usd": 0.135418
+  },
+  "review": {
+    "cells": [
+      {
+        "id": "bellows",
+        "verdict": "candidate",
+        "finding": "Connected boards, accordion folds and fitted nozzle establish an asymmetric compressed object; the contour survives 64x45."
+      },
+      {
+        "id": "marionette-cross",
+        "verdict": "candidate-with-detail-hold",
+        "finding": "Tilted wooden cross and coral pendant remain clear. Suspension lines grow fine at 64x45; increase their visual weight only if later adopted."
+      },
+      {
+        "id": "matchbox",
+        "verdict": "candidate-with-detail-hold",
+        "finding": "Part-open drawer and three pale heads remain readable at compact size. Loose top match has an ambiguous curled tip and is secondary to the box; no strike/flame effect claimed."
+      },
+      {
+        "id": "nesting-cups",
+        "verdict": "candidate",
+        "finding": "Three overlapping rims and dark openings establish thin copper walls and a tilted inner cup; broad layers read at 64x45."
+      },
+      {
+        "id": "corkscrew",
+        "verdict": "candidate",
+        "finding": "One T-shaped wooden handle, joined steel helix and thick cork have distinct contours and believable contact. The helix remains separated at compact size."
+      },
+      {
+        "id": "pepper-mill",
+        "verdict": "candidate",
+        "finding": "Turned coral/wood body and offset fitted crank create a distinct vertical contour; scattered coarse grains are secondary, no game effect claimed."
+      }
+    ],
+    "raster_note": "The marionette extraction differs from the packed-cell render at 23 native pixels (39 color channels, peak 22/255), alpha equal. Difference visualization shows isolated boundary samples; recursive XML comparison confirms every copied vector geometry/paint attribute is exact after removing only the grid translate. Retain this rasterization discrepancy, not a claim of pixel equality."
+  }
+}
