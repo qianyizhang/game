@@ -1,5 +1,8 @@
 # Empty Target · measured-layout revision
 
+**Held: the visual guide did not resolve scale, baseline or projectile continuity.**
+Generation stops. No assembly or draft PR is produced; no further call is granted.
+
 Exactly one targeted new call, grant `story-emberwake-revision-15`, conservative
 planning reservation US$0.25, zero retries. Historical source checkpoint
 `0c2b7f2c30c8d28168e5547452f50d5f514a14e6` remains in branch ancestry. The unknown
@@ -58,4 +61,79 @@ assembly, draft PR and portable registration handoff are conditional on a useful
 coherent story. Originals and C2PA/looping metadata remain exact. No shared
 registry/tooling, runtime, defaults, selections, issue, merge or deployment change.
 
-Outcome pending. No further paid call is authorized after this revision.
+## Receipt and measured comparison
+
+HTTP 200, request `req_83afbb2c94c4481cbf55b505a6b8eb90`, 56.71 seconds.
+[Exact native revision](empty-target-revision-original.gif): 315,582 bytes,
+SHA-256 `6161cd010fb5d7e530c3b37d43d43902ec481c47a88a4d9e06750116b05973cd`.
+The receipt and original were saved and reported before extended QA. Usage was
+1,260 image input, 477 text input and 2,126 image output tokens, totaling
+**US$0.076245 estimated**, not an invoice. Two ordinary inputs were sent;
+this says nothing about keyframe control.
+
+| Matched measurement                        |        Real endpoint | Earlier held opening | Layout revision opening |
+| ------------------------------------------ | -------------------: | -------------------: | ----------------------: |
+| Cyan vertical span, same color/region mask |               117 px |               146 px |                  140 px |
+| Figure-height increase from endpoint       |                    — |                24.8% |                   19.7% |
+| Boot baseline, approximately               |                 y221 |                 y251 |                    y243 |
+| Warm projectile bounds                     | x191..226, y153..165 | x191..233, y165..179 |    x225..262, y164..178 |
+
+The measured guide slightly reduced the growth and baseline error, but did not
+repair them. The projectile also starts roughly 34 px farther right than the
+actual endpoint, as well as about 12–13 px lower, before moving left again.
+This creates an especially clear discontinuity at the real join. The source
+and destination envelopes are guidance, not enforced geometry constraints.
+
+## Every-frame and actual-join review
+
+All 12 native frames were decoded temporarily and inspected at 480 × 336 and
+320 × 224. Each is 160 ms, totaling 1.92 seconds; no frame was discarded or
+retimed. A real browser preview then displayed the two exact raw GIFs in
+sequence, switching at 1.92 seconds without a crossfade, exported assembly or
+compensating camera transform. Eleven samples across the join and revised clip
+were inspected at both rendered sizes in Google Chrome 157.0.8103.38. The growth,
+foot-baseline change, projectile jump and redrawn masonry remain visible.
+All decoded frames, join captures and diagnostic sheets stay temporary; the
+earlier single compact comparison remains the only retained review image.
+
+No boxes, arrows, baseline strokes, captions or guide legend were observed in
+the artwork. One Mira is present on the left in frames 0–4, absent in frames
+5–6, and fully present on the right in frames 7–11. No duplicate Mira, ghost,
+detached staff or cropped foot was observed; staff and boots appear supported.
+The projectile crosses the vacated location after departure. However, the blink
+arrives later and the absence lasts longer than requested, while the enlarged
+figure settles below the intended baseline. Broad identity and action survive;
+the two clips still do not form a consistent fixed-camera story.
+
+The exact raw GIF retains `loop=0` and a `C2PA_GIF` application extension with
+21,806 payload bytes. C2PA presence was inspected, not cryptographically verified.
+All previous native GIFs, their provenance/looping metadata, the unknown SVG
+attempt, manual composition and actual sent PNGs remain byte-for-byte unchanged.
+The revision is held separately. No once-playing derivative, fake completion,
+additional generation, runtime adoption or story PR is made.
+
+## Portable delta and stop
+
+[This additive delta](history-import.json) adds one returned-but-held attempt and
+one unassigned native GIF revision, with no runtime adaptation or selection.
+Apply the [historical base import](../story-emberwake-empty-target-gif-2026-11-06/history-import.json)
+first, then this delta. The real endpoint is the image parent; the held original
+second clip remains a sibling comparison. The guide and its manual origin are
+explicit input documents, not generated frames or alternate Miras.
+
+The historical base plus this delta passed `verifyHistory` in a fresh private
+snapshot: 709 assets, 96 revisions, zero selections. No canonical registry was
+edited. Earlier gallery behavior checks remain valid for the unchanged tooling;
+the revised raw images and real join were inspected separately at both sizes.
+Canonical registration still requires serial application of those two imports.
+Repository `format:maintenance` passed. Canonical `assets:history verify` passed
+for the unchanged 709 assets/92 revisions/709 registered sources; it does not
+establish registration of the four candidate revisions in the private snapshot.
+Exact request/input/output hashes, all 12 durations and historical bytes passed.
+
+Revision settlement would bring successful estimates to US$7.021685; the untouched
+US$28 unknown holds give **US$35.021685 inclusive**, subject to central ledger
+reconciliation. No active paid grant remains in this lane. Stop this generative
+continuation: this tested change did not resolve the named failure, and no further
+call is authorized. Canonical registration remains with the serial coordinator;
+shared registry, tooling, selections, game/default behavior and issues are unchanged.
