@@ -6657,6 +6657,18 @@
         "docs/art/assets/scrapyard-suite/visual-qa.json",
         "docs/art/assets/scrapyard-suite/technical-qa.json"
       ]
+    },
+    {
+      "id": "spire-aftermath-20261106",
+      "title": "Spire aftermath / one native SVG request",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Future source concepts; request, usage, lineage and review: call.json.",
+      "files": [
+        "docs/art/assets/spire-aftermath-source-studies-2026-11-06/call.json",
+        "docs/art/assets/spire-aftermath-source-studies-2026-11-06/README.md",
+        "docs/art/assets/spire-aftermath-source-studies-2026-11-06/contact.png"
+      ]
     }
   ],
   "revisions": [
@@ -7819,6 +7831,102 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "spire-aftermath-20261106:original",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / original",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/original.svg",
+      "digest": "e0261490f4ee1f54051301cb831fd290495102fafd70109dfbf3c1e35336820b",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original."
+    },
+    {
+      "id": "spire-aftermath-20261106:impact-scree",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / impact-scree",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/impact-scree.svg",
+      "digest": "3ef1650953adce8973a59e814b6d73300ead3e84b9d27ff011d292f40dccd52c",
+      "parents": [
+        "spire-aftermath-20261106:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "spire-aftermath-20261106:poison-residue",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / poison-residue",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/poison-residue.svg",
+      "digest": "98e4940677f2786bee9146cb9f8aa11d62f0ec3af2ce622932cf4732c48378f8",
+      "parents": [
+        "spire-aftermath-20261106:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "spire-aftermath-20261106:split-slime-membrane",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / split-slime-membrane",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/split-slime-membrane.svg",
+      "digest": "2f2c2c474132e3ddc785b449f0c556e670cf0c2cd93c33d1dabaee8c6be268ea",
+      "parents": [
+        "spire-aftermath-20261106:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [2, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "spire-aftermath-20261106:ruptured-web",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / ruptured-web",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/ruptured-web.svg",
+      "digest": "d73421b7fa82dc2c20ab876a352da681f25de25e113d001a8c99db1ebfff6b6c",
+      "parents": [
+        "spire-aftermath-20261106:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 1]; remove its grid translation only. Review: call.json. Hold: The broad opaque folds and scalloped hem read as torn cloth at 160x112 and 80x56; missing strand structure fails to distinguish spider silk from the ritual cloth."
+    },
+    {
+      "id": "spire-aftermath-20261106:ritual-cinder-sweep",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / ritual-cinder-sweep",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/ritual-cinder-sweep.svg",
+      "digest": "4d86831780cd5d5266e096d54baff18418a5da2ab2a6cfbe935f7fe70bdf07e6",
+      "parents": [
+        "spire-aftermath-20261106:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1, 1]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "spire-aftermath-20261106:explosive-scorch",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / explosive-scorch",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/explosive-scorch.svg",
+      "digest": "4774b7a0f08c6eb1f91c436661476959f1c0bb42cf7b1164f17596f51def46be",
+      "parents": [
+        "spire-aftermath-20261106:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [2, 1]; remove its grid translation only. Review: call.json."
     }
   ]
 }

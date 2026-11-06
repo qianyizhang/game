@@ -18,7 +18,7 @@ One canonical `call.json` holds the exact request/settings, single grant, client
 
 A unique ASCII `X-Client-Request-Id` is set before dispatch for support tracing only, not idempotency or retrieval. Native SVG uses the non-streaming Images generation endpoint; no `stream`, `partial_images`, Responses/background workaround or automatic retry is used. An uncertain outcome retains the full reservation and stops paid work.
 
-Temporary rasterizations are inspection aids; there is no permanent frame catalogue or player. The derived gallery import is rebuilt from the recipe below into ignored `test-results/spire-aftermath-history-import.json` and validated in isolation. Shared registry/defaults/selections remain unchanged. Central registration is a **draft blocker**, not a merge-ready claim. No local file dependency on frozen #140/#143/#151 exists.
+Temporary rasterizations are inspection aids; there is no permanent frame catalogue or player. The derived import was rebuilt from the original recipe and added to the [canonical shared history](../../iterations/library.json). Its redundant reconstruction recipe is retired. Game defaults and selections remain unchanged. No local file dependency on frozen #140/#143/#151 exists.
 
 Status: the single request returned successfully for **$0.108179** usage estimate; lane lifetime estimate **$1.201631**, active and uncertain reservations **$0**. No subsequent paid call is granted. The exact prompt is 4,056 ASCII bytes; `n=1`, fixed 1440×672, no reference inputs. The bound uses full published Terra token ceilings, not an exposed token/dollar cap.
 
@@ -26,38 +26,28 @@ Native and 160×112/80×56/64×45 self-review gives **five candidates and one ho
 
 Validation passed: repository SVG safety and exact request/artwork digests; six unchanged group extractions; isolated import/verify of seven revisions; actual gallery lineage, hold, prompt/settings and fourteen decoded previews, disabled adoption, phone fit and desktop inspection; `npm run format:maintenance` and live `npm run assets:history -- verify` (709 assets, 92 baseline revisions, zero selections). No current UI is changed, so actual gameplay adoption review remains future work.
 
-## Rebuild staged import
+## Canonical registration boundary
 
-Run at repository root after terminal review. This writes only ignored staging data, not the shared library or game selections.
+One actual attempt and seven source-only revisions are discoverable in
+`/__art/#asset=__unassigned` under `Spire aftermath source`. Original SVG/call/
+contact bytes and explicit extraction parents are preserved. The ruptured web
+stays held because it reads as torn cloth; static remains do not acquire timing,
+triggers or a runtime role through registration.
 
-```python
-import json
-from pathlib import Path
+Registration validation uses actual native/compact/enlarged previews, exact
+call/settings, parents, held visibility, disabled Use and desktop/390/320px
+enlarged-text layouts, followed by scoped maintenance/history and affected
+browser journeys. User art selection remains separate. No first-suite ancestor
+is needed; independent candidate library additions need serial reconciliation
+when landing.
 
-d = Path("docs/art/assets/spire-aftermath-source-studies-2026-11-06")
-c = json.loads((d / "call.json").read_text())
-a = c["id"]
-revisions = []
-for o in c["outputs"]:
-    original = "cell" not in o
-    note = "Exact API original." if original else f"Cell {o['cell']}; remove its grid translation only. Review: call.json."
-    review = c["review"]["exceptions"].get(o["file"], {})
-    if review.get("status") == "hold":
-        note += " Hold: " + review["reason"]
-    revisions.append(dict(
-        id=a + ":" + Path(o["file"]).stem, asset=None, attempt=a,
-        label="Spire aftermath source / " + Path(o["file"]).stem,
-        file=(d / o["file"]).as_posix(), digest=o["sha256"],
-        parents=[] if original else [a + ":original"],
-        runtimeFile=None, runtimeDigest=None, notes=note,
-    ))
-h = dict(schema=1, assets=[], attempts=[dict(
-    id=a, title="Spire aftermath / one native SVG request",
-    date=c["date"][:10], outcome="returned",
-    notes="Future source concepts; request, usage, lineage and review: call.json.",
-    files=[(d / f).as_posix() for f in ["call.json", "README.md", "contact.png"]],
-)], revisions=revisions)
-p = Path("test-results/spire-aftermath-history-import.json")
-p.parent.mkdir(parents=True, exist_ok=True)
-p.write_text(json.dumps(h, indent=2) + "\n")
-```
+Actual shared-gallery inspection passed all seven revisions, exact canonical
+call/settings and README, explicit parents and visible web hold, disabled Use,
+and six 1440/390/320px × 16/20px layouts with no page errors. Source/contact review
+retains the web-versus-cloth ambiguity. Scoped repository gate outcomes follow;
+unchanged application/native suites are not repeated for this metadata change.
+
+Registration passed `format:maintenance`, `assets:history -- verify`
+(709 assets/99 revisions/zero selections), and all three asset-history browser
+journeys at normal limits (29.0s aggregate). All nine other owned files and
+existing asset/source/selection records are unchanged.
