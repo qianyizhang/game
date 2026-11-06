@@ -1,7 +1,17 @@
 # Scrapyard initial SVG suite
 
-Local candidate study, 2026-11-06. Base: `09be75ec235501786e12773c03bc517705f926f1`.
-Branch: `codex/scrapyard-svg-suite`. No push, PR, merge or deployment is authorized.
+Initial study scope, 2026-11-06. Base: `09be75ec235501786e12773c03bc517705f926f1`.
+Initial branch: `codex/scrapyard-svg-suite`. The original study authorization did
+not include publication. Later authorization published and merged
+[PR #136](https://github.com/qianyizhang/game/pull/136) into main at `5e26f4a`.
+
+The gallery integration indexes all 20 current roles, four original packed sheets,
+20 extracted cells, the rejected size request and manual adaptation settings.
+Existing source files remain in this bundle. Current adapted vectors render live
+without another frozen baseline export. Future edits follow the
+[checkpoint and registration workflow](../../iterations/README.md). Selected
+static SVGs decode once into Canvas sprite caches; the game waits for readiness,
+reports decode errors and rebuilds its cached floor after selected tiles load.
 
 The user approved up to US$5 for the complete initial suite, including revisions,
 and requested applicable VFX. One spending worker, sequential requests only.

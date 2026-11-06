@@ -1,3 +1,4 @@
+import { AssetSvg } from '../../../../shared/art/AssetSvg';
 import type { Suit } from '../../domain/types';
 import { ink, paper, coral, gold, SuitPip } from './primitives';
 const pipLayouts: Record<number, [number, number][]> = {
@@ -140,7 +141,8 @@ function CourtHalf({ rank, suit }: { rank: number; suit: Suit }) {
 
 export function PokerArt({ rank, suit }: { rank: number; suit: Suit }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`blindside/playing/${suit}-${rank}`}
       className="blindside-poker-art"
       viewBox="0 0 72 96"
       aria-hidden="true"
@@ -173,6 +175,6 @@ export function PokerArt({ rank, suit }: { rank: number; suit: Suit }) {
           </g>
         ))
       )}
-    </svg>
+    </AssetSvg>
   );
 }

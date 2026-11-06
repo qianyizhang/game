@@ -1,6 +1,8 @@
 # SVG assets: source map and tools
 
 The [aesthetic rulebook](art-direction.md) defines composition, anatomy, materials, variants and visual acceptance across SVG and 3D. The [Card Workshop art skill](../../skills/card-art/SKILL.md) routes the workflow. This page covers source locations and tooling. Artwork is presentation only; definitions and game rules remain authoritative.
+The [asset history workflow](iterations/README.md) owns saved revisions, generation
+settings, repository-wide game selection and explicit guarded removal.
 
 ## Source map
 
@@ -107,8 +109,9 @@ or API request runs while browsing.
 Generated WIP batches can display a packed original, extracted regular/upgrade/
 future-tier scenes and a GIF play-effect study. Previews remain embedded in each
 HTML file. Effects start only from their play control, return to the retained
-still after one play, and use the still when reduced motion is enabled. These
-review controls do not install artwork or effects into any game. The batch
+still after one play, and use the still when reduced motion is enabled. These batch
+review controls remain read-only. The local asset history view separately saves
+static SVG selections for the game. The batch
 record retains exact requests, prompts, response usage and quality limitations.
 
 `packages/workshop-tools/art/gallery/library.ts` owns curated upgrade records,

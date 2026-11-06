@@ -1,9 +1,11 @@
+import { AssetSvg } from '../../shared/art/AssetSvg';
 import type { GameId } from '../GamePicker';
 
 /** Six engraved plates: the dominant silhouette describes each game's central action. */
 export function GameGuideArt({ game, className }: { game: GameId; className?: string }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`guide/${game}`}
       viewBox="0 0 360 192"
       fill="none"
       aria-hidden="true"
@@ -29,7 +31,7 @@ export function GameGuideArt({ game, className }: { game: GameId; className?: st
         <PassagePlate />
       )}
       <path d="M12 12H348V180H12Z" stroke="#d7bc7c" strokeOpacity=".35" />
-    </svg>
+    </AssetSvg>
   );
 }
 

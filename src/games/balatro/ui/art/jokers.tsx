@@ -748,6 +748,7 @@ const jokerPalettes: Record<
 export function JokerArt({ id, className = '' }: { id: string; className?: string }) {
   return (
     <ArtScene
+      assetId={`blindside/jokers/${id}`}
       className={`blindside-art ${className}`}
       palette={jokerPalettes[id] ?? 'moss'}
       variant={id === 'constellation' || id === 'spades' ? 'night' : 'rays'}

@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
+    "dev": "vite --config packages/workshop-tools/art/vite-gallery.config.ts --host 127.0.0.1",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run --project application --maxWorkers=1",
@@ -40,7 +40,7 @@
     "test:tools": "npm run test --workspace @card-workshop/tools",
     "check:python": "uv run --locked ruff check && uv run --locked ruff format --check && uv run --locked mypy && uv run --locked python -m unittest discover -s packages/dcc-workbench/blender -p \"test_*.py\"",
     "format:maintenance": "npm run format:check && npm run maintenance -- check",
-    "check:maintenance": "npm run format:maintenance && npm run lint:tools && npm run lint:app && npm run typecheck && npm run check:python && npm run test:tools && npm run test:dcc && npm run build",
+    "check:maintenance": "npm run format:maintenance && npm run assets:history -- verify && npm run lint:tools && npm run lint:app && npm run typecheck && npm run check:python && npm run test:tools && npm run test:dcc && npm run build",
     "lint:app": "eslint src tests packages/diablo2 packages/shader-pipeline-lab *.config.ts --max-warnings=0",
     "test:dcc:saved": "node packages/dcc-workbench/verify-saved.ts",
     "test:diablo2": "npm run test --workspace @card-workshop/diablo2",
@@ -54,7 +54,8 @@
     "dev:shader-lab": "node packages/shader-pipeline-lab/server.js",
     "test:shader-lab": "node --test packages/shader-pipeline-lab/tests/*.test.js",
     "test:browser:shader-lab": "playwright test --config packages/shader-pipeline-lab/playwright.config.js",
-    "check:changed": "node packages/workshop-tools/ci/cli.ts check"
+    "check:changed": "node packages/workshop-tools/ci/cli.ts check",
+    "assets:history": "node packages/workshop-tools/art/history.ts"
   },
   "dependencies": {
     "react": "19.3.1",

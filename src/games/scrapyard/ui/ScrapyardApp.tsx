@@ -58,7 +58,20 @@ export default function ScrapyardApp() {
       setError(String(cause));
       return;
     }
-    setReady(true);
+    let active = true;
+    let artworkReady = !presentation.ready;
+    setReady(artworkReady);
+    presentation.ready?.then(
+      () => {
+        if (active) {
+          artworkReady = true;
+          setReady(true);
+        }
+      },
+      (cause) => {
+        if (active) setError(String(cause));
+      },
+    );
     let request = 0,
       lastHud = 0;
     const clock = createClock();
@@ -89,7 +102,7 @@ export default function ScrapyardApp() {
     const frame = (now: number) => {
       const s = world.current.view,
         phase = s.phase;
-      const ticks = clock(now, !paused.current && phase === 'combat');
+      const ticks = clock(now, artworkReady && !paused.current && phase === 'combat');
       if (ticks) {
         const held = heldKeys;
         const failure = world.current.dispatch({
@@ -120,6 +133,7 @@ export default function ScrapyardApp() {
     window.addEventListener('blur', stop);
     document.addEventListener('visibilitychange', visibility);
     return () => {
+      active = false;
       cancelAnimationFrame(request);
       heldKeys.clear();
       imports.value++;

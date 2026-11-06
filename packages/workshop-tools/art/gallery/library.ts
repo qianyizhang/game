@@ -57,6 +57,17 @@ export interface Upgrade {
 /** Retained, dated comparisons; these are not fresh captures or blanket user approval. */
 export const RECENT_UPGRADES: Upgrade[] = [
   {
+    id: 'hearth-small-unit-refinement',
+    game: 'hearth',
+    date: '2026-11-06',
+    title: 'Six opening minions gain distinct Golden gestures',
+    summary:
+      'Refined Squire and Cub pairs, selected packed Pup and Wisp pairs, and hand-refined Golden Imp and Spark replace ten scenes. The stronger existing normal Imp and Spark remain. Author-reviewed under the user’s refinement instruction; earlier failures stay preserved.',
+    record: 'docs/art/assets/hearth-refinement/README.md',
+    image: 'docs/art/assets/hearth-refinement/comparison.webp',
+    revision: '2026-11-06 refinement',
+  },
+  {
     id: 'spire-defense-packed',
     game: 'spire',
     date: '2026-11-06',
@@ -236,11 +247,23 @@ export interface BatchProposal {
   stop: string;
   acceptance: string[];
   record: string;
-  state?: 'Generating' | 'Generated · awaiting review' | 'Accepted · selected art installed';
+  state?:
+    | 'Generating'
+    | 'Generated · awaiting review'
+    | 'Accepted · selected art installed'
+    | 'Partial result · MAX request failed'
+    | 'Selected · installed after refinement';
+  archived?: boolean;
   study?: {
     summary: string;
     sheet: string;
-    subjects: { title: string; tiers: { label: string; file: string }[] }[];
+    sheetLabel?: string;
+    subjects: {
+      title: string;
+      tiers: ({ label: string } & (
+        { file: string; unavailable?: never } | { file?: never; unavailable: string }
+      ))[];
+    }[];
     effect?: { title: string; file: string; still: string; durationMs: number };
     attachments: string[];
   };
@@ -338,6 +361,91 @@ export const WIP_BATCHES: BatchProposal[] = [
     };
   }),
   {
+    id: 'hearth-refinement-04',
+    game: 'hearth',
+    state: 'Selected · installed after refinement',
+    title: 'Batch 04 · Refined Hearth opening units',
+    reason:
+      'Squire and Cub needed connected anatomy; packed Imp lost its demon identity. Focused pairs and selective reuse now give all six units readable normal/Golden gestures.',
+    candidates: [],
+    reference:
+      'Current Hearth frames, natural creature materials, forest ink, cream and restrained copper. Keep the strong normal Imp and Spark; refine their Golden actions by hand.',
+    deliverables:
+      'Twelve selected normal/Golden views: ten updated scenes and two retained normals, all from the live game renderer.',
+    requests: [
+      {
+        format: 'SVG',
+        plan: 'One focused Squire pair at 1600 × 560, high image quality/complexity and medium SVG-author effort. Returned; adapted gradients to flat planes.',
+      },
+      {
+        format: 'SVG',
+        plan: 'One focused Cub pair with the same settings. Returned; Golden steps over a root rather than raising a stiff paw.',
+      },
+      {
+        format: 'SVG',
+        plan: 'One focused Imp pair returned HTTP 502 without art or usage; retain the failed attempt.',
+      },
+      {
+        format: 'SVG',
+        plan: 'One explicit Imp retry returned HTTP 502 again. Stop that route; reuse its existing face and hand-refine the Golden gesture.',
+      },
+    ],
+    stop: 'The user authorized refinement until author satisfaction. This set passed author review at card, board and phone sizes and is installed locally. Paid refinement has stopped; user acceptance is still distinct from this author selection. No GIF or new cohort was generated.',
+    acceptance: [
+      'Review every normal/Golden pair at 160 × 112, 80 × 56 and 64 × 45 in current frames.',
+      'Check connected support and readable silhouette before material detail; keep stronger current artwork where it wins.',
+      'Verify the actual card renderer, selection, labels, stats and compact phone layout; preserve every prompt, original, extraction and failure.',
+    ],
+    record: 'docs/art/assets/hearth-refinement/README.md',
+    study: {
+      summary:
+        'Author-selected set installed locally. Focused Squire and Cub pairs cost about $0.30 combined; the two Imp 502 attempts have unknown billing. Pup and Wisp come from the original packed sheet; normal Imp/Spark are retained and their Golden gestures are hand-refined. Prior trials are below under history.',
+      sheet: 'docs/art/assets/hearth-refinement/selected-sheet.svg',
+      sheetLabel: 'Selected set · live game frames',
+      subjects: [
+        { id: 'squire', title: 'Hearth Squire · guarded / braced' },
+        { id: 'cub', title: 'Briar Cub · crouch / root step' },
+        { id: 'pup', title: 'Clockwork Pup · sniff / raised forepaw' },
+        { id: 'imp', title: 'Coal Imp · portrait / coal offering' },
+        { id: 'spark', title: 'Kindle Spark · compact / sweeping flame' },
+        { id: 'wisp', title: 'Coal Wisp · curled / rising spirit' },
+      ].map(({ id, title }) => ({
+        title,
+        tiers: ['normal', 'golden'].map((tier) => ({
+          label: `${tier === 'golden' ? 'Golden' : 'Normal'} · selected live artwork`,
+          file: `docs/art/assets/hearth-refinement/selected-${id}-${tier}.svg`,
+        })),
+      })),
+      attachments: [
+        'selection.json',
+        'comparison.webp',
+        'compact-review.webp',
+        'review-desktop.webp',
+        'review-phone.webp',
+        'squire-r1-prompt.md',
+        'squire-r1-request.json',
+        'squire-r1-response.json',
+        'squire-r1-sheet.svg',
+        'squire-r1-normal.svg',
+        'squire-r1-golden.svg',
+        'squire-selected-normal.svg',
+        'squire-selected-golden.svg',
+        'cub-r1-prompt.md',
+        'cub-r1-request.json',
+        'cub-r1-response.json',
+        'cub-r1-sheet.svg',
+        'cub-r1-normal.svg',
+        'cub-r1-golden.svg',
+        'imp-r1-prompt.md',
+        'imp-r1-request.json',
+        'imp-r1-error.json',
+        'imp-r2-request.json',
+        'imp-r2-error.json',
+        'spark-golden-manual.svg',
+      ].map((file) => `docs/art/assets/hearth-refinement/${file}`),
+    },
+  },
+  {
     id: 'spire-defense-01',
     state: 'Accepted · selected art installed',
     game: 'spire',
@@ -410,7 +518,100 @@ export const WIP_BATCHES: BatchProposal[] = [
     },
   },
   {
+    id: 'hearth-effort-03',
+    archived: true,
+    state: 'Partial result · MAX request failed',
+    game: 'hearth',
+    title: 'Batch 03 · Single medium versus packed MAX',
+    reason:
+      'The original packed Squire and Cub were below the bar. Compare one dedicated Cub at medium effort with the attempted original sheet at MAX effort.',
+    candidates: ['hearth-cub-effort', 'hearth-squire-effort'],
+    reference:
+      'Same Hearth identity and palette. The repeat sheet kept its original prompt, size and medium image quality; the single Cub used a larger subject canvas and high image quality.',
+    deliverables:
+      'One returned Cub SVG. The MAX sheet connection closed without an SVG, request ID or usage response; its quality and billing remain unknown.',
+    requests: [
+      {
+        format: 'SVG',
+        plan: 'Single normal Cub: 1280 × 896, high image quality and medium SVG-author reasoning. Returned in 208.8 seconds for an estimated $0.145621.',
+      },
+      {
+        format: 'SVG',
+        plan: 'Original twelve-scene prompt and 1920 × 1008 layout, medium image quality, author reasoning max. Remote connection closed after roughly ten minutes; no response was returned.',
+      },
+    ],
+    stop: 'Two approved requests attempted, no retries. Keep live game art unchanged. The MAX failure does not establish its quality or a zero charge; another paid attempt needs agreement.',
+    acceptance: [
+      'Judge connected muzzle/neck/shoulder, planted paws, joints and weight at 160 × 112, 80 × 56 and 64 × 45.',
+      'Keep original failures and all new sources; a denser single SVG is still an unaccepted candidate.',
+      'Do not attribute every visual difference to reasoning: the internal reference is resampled and the single also changes prompt, canvas and image quality.',
+    ],
+    record: 'docs/art/assets/hearth-effort-comparison/README.md',
+    study: {
+      summary:
+        'The medium single has more continuous curves, but its far foreleg remains straight and it still needs review. The MAX request failed at the connection after roughly ten minutes; missing slots below are explicit failures. Known single cost: about $0.15. MAX cost: unknown.',
+      sheet: 'docs/art/assets/hearth-small-units-batch/sheet.svg',
+      sheetLabel: 'Original LOW batch · retained baseline',
+      subjects: [
+        {
+          title: 'Briar Cub · normal',
+          tiers: [
+            {
+              label: 'Current normal · framed',
+              file: 'docs/art/assets/hearth-small-units-batch/before-cub.svg',
+            },
+            {
+              label: 'Original batch · LOW · below bar',
+              file: 'docs/art/assets/hearth-small-units-batch/cub-normal.svg',
+            },
+            {
+              label: 'Repeat batch · MAX',
+              unavailable: 'No SVG returned: connection closed.',
+            },
+            {
+              label: 'Single Cub · MEDIUM · awaiting review',
+              file: 'docs/art/assets/hearth-effort-comparison/single-medium.svg',
+            },
+          ],
+        },
+        ...[
+          { title: 'Briar Cub · Golden', id: 'cub', tier: 'golden' },
+          { title: 'Hearth Squire · normal', id: 'squire', tier: 'normal' },
+          { title: 'Hearth Squire · Golden', id: 'squire', tier: 'golden' },
+        ].map(({ title, id, tier }) => ({
+          title,
+          tiers: [
+            {
+              label: `Current ${tier} · framed`,
+              file: `docs/art/assets/hearth-small-units-batch/before-${id}${tier === 'golden' ? '-golden' : ''}.svg`,
+            },
+            {
+              label: 'Original batch · LOW · below bar',
+              file: `docs/art/assets/hearth-small-units-batch/${id}-${tier}.svg`,
+            },
+            {
+              label: 'Repeat batch · MAX',
+              unavailable: 'No SVG returned: connection closed.',
+            },
+          ],
+        })),
+      ],
+      attachments: [
+        'docs/art/assets/hearth-effort-comparison/single-cub-prompt.md',
+        'docs/art/assets/hearth-effort-comparison/single-medium-request.json',
+        'docs/art/assets/hearth-effort-comparison/single-medium-response.json',
+        'docs/art/assets/hearth-effort-comparison/batch-max-prompt.md',
+        'docs/art/assets/hearth-effort-comparison/batch-max-request.json',
+        'docs/art/assets/hearth-effort-comparison/batch-max-error.json',
+        'docs/art/assets/hearth-effort-comparison/comparison.webp',
+        'docs/art/assets/hearth-effort-comparison/small-board.webp',
+      ],
+    },
+  },
+  {
     id: 'hearth-small-units-02',
+    archived: true,
+    state: 'Generated · awaiting review',
     game: 'hearth',
     title: 'Batch 02 · Six small units, normal and Golden',
     reason:
@@ -433,17 +634,73 @@ export const WIP_BATCHES: BatchProposal[] = [
         plan: 'One 1920 × 1008 sheet, 4 columns × 3 rows of 480 × 336 scenes. Two adjacent normal/Golden pairs per row; preserve separable groups and quiet margins.',
       },
     ],
-    stop: 'Await agreement. One SVG request maximum; no automatic retries or rerolls. Show weak cells before proposing repair. Boss transformation and VFX GIFs belong to a separate effect brief.',
+    stop: 'Generation agreed November 6. One SVG request completed, no retries or rerolls. Candidates await artwork acceptance and frame/board integration. Boss transformation and VFX GIFs belong to a separate effect brief.',
     acceptance: [
       'Distinct normal/Golden gestures survive at 160 × 112 and 80 × 56 without relying on color or border.',
       'Connected anatomy, clear material planes, consistent style and clean cell extraction; retain stronger existing normal art when appropriate.',
       'Judge recruitment/combat board and phone sizes before promotion; report cost per useful cell, including rejects.',
     ],
     record: 'docs/art/assets/hearth-small-units-batch/README.md',
+    study: {
+      summary:
+        'Mixed quality: Squire and Cub are below the bar in user review; keep their current art. One $0.16 request produced twelve separable scenes, but tier differences did not establish anatomy quality. Other candidates remain unaccepted. A later medium single returned; the agreed MAX repeat lost its connection. See Batch 03 for the partial comparison; no unapproved reroll was sent.',
+      sheet: 'docs/art/assets/hearth-small-units-batch/sheet.svg',
+      subjects: [
+        { id: 'squire', title: 'Hearth Squire · below bar' },
+        { id: 'pup', title: 'Clockwork Pup' },
+        { id: 'imp', title: 'Coal Imp' },
+        { id: 'spark', title: 'Kindle Spark' },
+        { id: 'cub', title: 'Briar Cub · below bar' },
+        { id: 'wisp', title: 'Coal Wisp' },
+      ].map(({ id, title }) => ({
+        title,
+        tiers: [
+          { suffix: `before-${id}`, label: 'Current normal · framed' },
+          { suffix: `${id}-normal`, label: 'Normal candidate · art only' },
+          { suffix: `before-${id}-golden`, label: 'Current Golden · framed' },
+          { suffix: `${id}-golden`, label: 'Golden candidate · art only' },
+        ].map(({ suffix, label }) => ({
+          label:
+            ['squire', 'cub'].includes(id) && !suffix.startsWith('before-')
+              ? `${label} · below bar`
+              : label,
+          file: `docs/art/assets/hearth-small-units-batch/${suffix}.svg`,
+        })),
+      })),
+      attachments: [
+        'docs/art/assets/hearth-small-units-batch/svg-prompt.md',
+        'docs/art/assets/hearth-small-units-batch/svg-request.json',
+        'docs/art/assets/hearth-small-units-batch/svg-response.json',
+        'docs/art/assets/hearth-small-units-batch/comparison.webp',
+        'docs/art/assets/hearth-small-units-batch/board-size-review.webp',
+      ],
+    },
   },
 ];
 
 export const NEXT_BATCH: BatchCandidate[] = [
+  {
+    id: 'hearth-cub-effort',
+    game: 'hearth',
+    title: 'Briar Cub · effort comparison',
+    reason:
+      'The packed Cub was below the bar. A dedicated medium-effort Cub returned; the MAX batch attempt did not return an image.',
+    brief:
+      'Review organic transitions, joint placement and planted weight before selecting a replacement.',
+    current: ['hearth/cub', 'hearth/cub-golden'],
+    status: 'SVG trial',
+  },
+  {
+    id: 'hearth-squire-effort',
+    game: 'hearth',
+    title: 'Hearth Squire · MAX attempt',
+    reason:
+      'The original Squire was below the bar. The MAX comparison failed at the connection, so no new Squire can be judged.',
+    brief:
+      'Keep the current Squire; preserve the attempted request and failure for a later decision.',
+    current: ['hearth/squire', 'hearth/squire-golden'],
+    status: 'SVG trial',
+  },
   ...[
     {
       id: 'squire',
@@ -481,10 +738,10 @@ export const NEXT_BATCH: BatchCandidate[] = [
     game: 'hearth',
     title,
     reason:
-      'Normal and Golden currently share the same subject pose; the Golden cue comes from the palette and frame.',
+      'The original baseline shared its pose. The later refined set now supplies distinct normal/Golden gestures; the first packed candidates remain preserved here.',
     brief,
     current: [`hearth/${id}`, `hearth/${id}-golden`],
-    status: 'Review first',
+    status: 'SVG trial',
   })),
   {
     id: 'metallicize',
@@ -642,7 +899,9 @@ export const GALLERY_INPUTS: readonly string[] = [
     batch.study
       ? [
           batch.study.sheet,
-          ...batch.study.subjects.flatMap((subject) => subject.tiers.map((tier) => tier.file)),
+          ...batch.study.subjects.flatMap((subject) =>
+            subject.tiers.flatMap((tier) => (tier.file ? [tier.file] : [])),
+          ),
           ...(batch.study.effect ? [batch.study.effect.file, batch.study.effect.still] : []),
           ...batch.study.attachments,
         ]

@@ -1,3 +1,4 @@
+import { AssetSvg, selectedArt, SelectedArtContent } from './AssetSvg';
 import type { CSSProperties, ReactNode } from 'react';
 import './CardArt.css';
 
@@ -66,11 +67,13 @@ export type ArtVariant = 'rays' | 'night' | 'runes' | 'hills';
 /** Presentation only: fixed geometry, no random numbers, IDs or external assets. */
 export function ArtScene({
   children,
+  assetId,
   palette = 'gold',
   variant = 'rays',
   className = '',
 }: {
   children: ReactNode;
+  assetId?: string;
   palette?: ArtPalette;
   variant?: ArtVariant;
   className?: string;
@@ -82,7 +85,8 @@ export function ArtScene({
     '--art-accent': colors.accent,
   } as CSSProperties;
   return (
-    <svg
+    <AssetSvg
+      assetId={assetId}
       className={`card-art ${className}`}
       viewBox="0 0 160 112"
       fill="none"
@@ -150,7 +154,7 @@ export function ArtScene({
         strokeWidth=".5"
         opacity=".13"
       />
-    </svg>
+    </AssetSvg>
   );
 }
 
@@ -520,7 +524,15 @@ export function ArtGlyph({
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      {objects[kind]()}
+      {selectedArt(`primitives/${kind}`) ? (
+        <SelectedArtContent
+          selection={selectedArt(`primitives/${kind}`)!}
+          width="100"
+          height="100"
+        />
+      ) : (
+        objects[kind]()
+      )}
     </g>
   );
 }

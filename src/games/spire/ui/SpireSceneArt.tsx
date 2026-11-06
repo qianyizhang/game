@@ -1,3 +1,4 @@
+import { AssetSvg } from '../../../shared/art/AssetSvg';
 import type { ReactNode } from 'react';
 import { ArtScene } from '../../../shared/art/CardArt';
 import type { NodeKind } from '../domain/types';
@@ -111,7 +112,8 @@ const rooms: Record<NodeKind, ReactNode> = {
 
 export function NodeArt({ kind }: { kind: NodeKind }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`spire/rooms/${kind}`}
       className="node-art"
       viewBox="0 0 64 64"
       aria-hidden="true"
@@ -119,7 +121,7 @@ export function NodeArt({ kind }: { kind: NodeKind }) {
       data-room-art={kind}
     >
       {rooms[kind]}
-    </svg>
+    </AssetSvg>
   );
 }
 
@@ -244,6 +246,7 @@ function BeyondScene() {
 export function ActArt({ act }: { act: number }) {
   return (
     <ArtScene
+      assetId={`spire/acts/${act}`}
       palette={act === 1 ? 'moss' : act === 2 ? 'gold' : 'violet'}
       variant="night"
       className="act-art"

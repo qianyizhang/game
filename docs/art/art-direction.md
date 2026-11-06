@@ -103,7 +103,20 @@ Reviews use the brief format: **subject / physical interpretation / gesture / id
 3. **Clarity & Restraint:** Check what reads first, what looks structurally weak, and what decorative noise can be removed.
 4. **Independent verification:** Report technical checks separately from visual assessments. Passing automated checks does not confer aesthetic approval.
 
-## Maintainable artist sources
+## Iteration registration
+
+A 2D artwork iteration is ready for review only when its preserved output and
+generation or authoring record are discoverable in the asset gallery. Register
+rejected variants and failed attempts as well as selected work; preserve exact
+inputs and known lineage so later sessions can compare the choices. Follow the
+[asset history workflow](iterations/README.md#register-new-work) for checkpoints,
+registration, gallery inspection and its enforced closeout gate. Unchanged assets
+use live renderers and source references; catalogue coverage does not justify
+freezing rendered copies. Selection and deliberate removal use the same workflow.
+Registration records an attempt, without accepting its quality or authorizing
+another generation. Native 3D retains its existing release and review records.
+
+## Maintainable native artist sources
 
 Authoring targets editable Blender (`.blend`) sources. Legacy procedural TypeScript builders remain comparison baselines under [testing policy](../engineering/testing.md#blender-authoring-and-legacy-compatibility).
 

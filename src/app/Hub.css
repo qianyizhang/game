@@ -69,3 +69,14 @@
     box-shadow: none;
   }
 }
+
+.art-history-entry {
+  display: inline-block;
+  margin: 12px;
+  padding: 10px 14px;
+  border: 1px solid #789083;
+  border-radius: 6px;
+  background: #21383a;
+  color: #e1dac2;
+  font-size: 12px;
+}

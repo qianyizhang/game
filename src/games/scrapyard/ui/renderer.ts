@@ -28,25 +28,31 @@ export function createRenderer(canvas: HTMLCanvasElement) {
   floor.width = ARENA.width * 2;
   floor.height = ARENA.height * 2;
   const floorContext = floor.getContext('2d')!;
-  floorContext.scale(2, 2);
-  floorContext.fillStyle = '#142622';
-  floorContext.fillRect(0, 0, ARENA.width, ARENA.height);
-  floorContext.globalAlpha = 0.35;
-  for (let y = 0; y < ARENA.height; y += 40)
-    for (let x = 0; x < ARENA.width; x += 40)
-      floorContext.drawImage(sprite('floor-tile'), x, y, 40, 40);
-  floorContext.globalAlpha = 1;
-  // All edge materials stay in the non-playfield margin; the inset cue is drawn separately.
-  for (let side = 0; side < 4; side++) {
-    floorContext.save();
-    floorContext.translate(side === 1 || side === 2 ? 960 : 0, side >= 2 ? 600 : 0);
-    floorContext.rotate((side * Math.PI) / 2);
-    const length = side % 2 ? 600 : 960;
-    floorContext.drawImage(sprite('corner-join'), 0, 0, 10, 10);
-    for (let x = 10; x < length - 10; x += 40)
-      floorContext.drawImage(sprite('boundary-strip'), x, 0, Math.min(40, length - 10 - x), 10);
-    floorContext.restore();
+  function paintFloor() {
+    floorContext.setTransform(2, 0, 0, 2, 0, 0);
+    floorContext.fillStyle = '#142622';
+    floorContext.fillRect(0, 0, ARENA.width, ARENA.height);
+    floorContext.globalAlpha = 0.35;
+    for (let y = 0; y < ARENA.height; y += 40)
+      for (let x = 0; x < ARENA.width; x += 40)
+        floorContext.drawImage(sprite('floor-tile'), x, y, 40, 40);
+    floorContext.globalAlpha = 1;
+    // All edge materials stay in the non-playfield margin; the inset cue is drawn separately.
+    for (let side = 0; side < 4; side++) {
+      floorContext.save();
+      floorContext.translate(side === 1 || side === 2 ? 960 : 0, side >= 2 ? 600 : 0);
+      floorContext.rotate((side * Math.PI) / 2);
+      const length = side % 2 ? 600 : 960;
+      floorContext.drawImage(sprite('corner-join'), 0, 0, 10, 10);
+      for (let x = 10; x < length - 10; x += 40)
+        floorContext.drawImage(sprite('boundary-strip'), x, 0, Math.min(40, length - 10 - x), 10);
+      floorContext.restore();
+    }
   }
+  paintFloor();
+  const ready = sprite.ready()?.then(() => {
+    if (!disposed) paintFloor();
+  });
   function resize() {
     const box = canvas.getBoundingClientRect(),
       ratio = Math.min(devicePixelRatio || 1, 2);
@@ -61,6 +67,7 @@ export function createRenderer(canvas: HTMLCanvasElement) {
   observer.observe(canvas);
   resize();
   return {
+    ready,
     draw(s: View) {
       if (disposed) return;
       context.setTransform(canvas.width / 960, 0, 0, canvas.height / 600, 0, 0);

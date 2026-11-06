@@ -10,3 +10,7 @@ packages/dcc-workbench/assets
 .mypy_cache
 .ruff_cache
 uv.lock
+
+# Machine-written asset history and selected runtime snapshots; assets:history verify owns integrity.
+docs/art/iterations/library.json
+src/shared/art/selected-art.json

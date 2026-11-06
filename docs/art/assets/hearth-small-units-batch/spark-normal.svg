@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336" role="img" aria-label="spark-normal"><g id="spark-normal">
+<rect width="480" height="336" fill="#172928" />
+<ellipse cx="241" cy="305" rx="144" ry="10" fill="#112120" />
+<g stroke="#172928" stroke-width="4" stroke-linejoin="round">
+<path d="M99 302 Q112 288 137 286 Q111 272 117 253 Q137 272 160 266 Q98 220 132 158 Q145 133 167 118 Q152 143 166 158 Q185 99 247 86 Q306 79 319 42 Q337 89 292 108 Q255 125 262 160 Q285 134 318 155 Q276 152 289 194 Q299 222 282 245 Q326 225 326 194 Q365 226 348 265 Q334 301 281 303Z" fill="#b97c5e" />
+<path d="M163 267 Q126 223 153 172 Q155 193 173 200 Q190 133 251 112 Q221 143 239 184 Q249 211 270 222 Q270 201 263 189 Q297 215 280 249 Q265 282 227 288 Q190 287 163 267Z" fill="#dfd4b4" stroke="none" />
+<path d="M175 215 Q192 244 210 250 Q217 221 245 204 Q270 245 245 272 Q231 283 212 286 Q174 274 175 215Z" fill="#172928" />
+<path d="M183 244 Q201 252 202 268 Q187 266 183 244Z M231 256 Q231 242 243 237 Q246 253 231 263Z" fill="#dfd4b4" stroke="none" />
+<path d="M127 294 Q173 281 196 296 L281 290 Q320 286 336 266 Q316 299 276 298Z" fill="#c5a76a" stroke="none" />
+</g>
+</g>
+</svg>

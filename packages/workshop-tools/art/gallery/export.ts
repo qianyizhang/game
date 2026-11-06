@@ -1,3 +1,5 @@
+import { exportHistoryPage } from '../history-page.ts';
+import { repositoryRoot } from '../../io.ts';
 import react from '@vitejs/plugin-react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -62,6 +64,7 @@ export async function exportGallery(outputDir = newOutput('asset-gallery')) {
         ) + '\n',
       );
       await writeGalleryPages(outputDir, manifest);
+      await exportHistoryPage(repositoryRoot, outputDir);
       await writeReviews(resolve(outputDir, 'reviews'));
       console.log(
         `Exported ${manifest.length} SVG assets to ${outputDir}\nGallery: ${resolve(outputDir, 'index.html')}`,

@@ -1,3 +1,4 @@
+import { AssetSvg } from '../../../shared/art/AssetSvg';
 import { CharacterArt } from './CharacterArt';
 import { ActOneEnemyArt, isActOneEnemy } from './ActOneEnemyArt';
 import { BeyondConstructArt } from './BeyondConstructArt';
@@ -310,10 +311,16 @@ export function Portrait({ id }: { id: string }) {
   if (id === 'ironclad' || id === 'silent') return <CharacterArt id={id} />;
   if (id === 'spiker' || id === 'repulsor' || id === 'exploder' || id === 'orbWalker')
     return (
-      <svg className="fighter-portrait" viewBox="0 0 180 180" aria-hidden="true" focusable="false">
+      <AssetSvg
+        assetId={`spire/enemies/${id}`}
+        className="fighter-portrait"
+        viewBox="0 0 180 180"
+        aria-hidden="true"
+        focusable="false"
+      >
         <ellipse cx="90" cy="162" rx="66" ry="10" fill="#000" opacity=".25" />
         <BeyondConstructArt id={id} />
-      </svg>
+      </AssetSvg>
     );
   if (
     id === 'bookOfStabbing' ||
@@ -325,22 +332,40 @@ export function Portrait({ id }: { id: string }) {
     id === 'taskmaster'
   )
     return (
-      <svg className="fighter-portrait" viewBox="0 0 180 180" aria-hidden="true" focusable="false">
+      <AssetSvg
+        assetId={`spire/enemies/${id}`}
+        className="fighter-portrait"
+        viewBox="0 0 180 180"
+        aria-hidden="true"
+        focusable="false"
+      >
         <ellipse cx="90" cy="162" rx="66" ry="10" fill="#000" opacity=".25" />
         <CityEnemyArt id={id} />
-      </svg>
+      </AssetSvg>
     );
   if (isActOneEnemy(id))
     return (
-      <svg className="fighter-portrait" viewBox="0 0 180 180" aria-hidden="true" focusable="false">
+      <AssetSvg
+        assetId={`spire/enemies/${id}`}
+        className="fighter-portrait"
+        viewBox="0 0 180 180"
+        aria-hidden="true"
+        focusable="false"
+      >
         <ellipse cx="90" cy="162" rx="66" ry="10" fill="#000" opacity=".25" />
         <ActOneEnemyArt id={id} />
-      </svg>
+      </AssetSvg>
     );
   const slime = /slime/i.test(id),
     machine = /sentr|sphere|donu|deca|orb|guardian/i.test(id);
   return (
-    <svg className="fighter-portrait" viewBox="0 0 180 180" aria-hidden="true" focusable="false">
+    <AssetSvg
+      assetId={`spire/enemies/${id}`}
+      className="fighter-portrait"
+      viewBox="0 0 180 180"
+      aria-hidden="true"
+      focusable="false"
+    >
       <ellipse cx="90" cy="162" rx="66" ry="10" fill="#000" opacity=".25" />
       {/louse|jawWorm|snakePlant|lagavulin/i.test(id) ? (
         <g stroke="#34342d" strokeWidth="3">
@@ -445,6 +470,6 @@ export function Portrait({ id }: { id: string }) {
           <path d="m70 37-17-22 26 15m25-5 28-15-16 30" fill="#c4aa7a" />
         </g>
       )}
-    </svg>
+    </AssetSvg>
   );
 }

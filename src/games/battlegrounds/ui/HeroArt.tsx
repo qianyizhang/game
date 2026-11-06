@@ -1,3 +1,4 @@
+import { AssetSvg } from '../../../shared/art/AssetSvg';
 import type { ReactNode } from 'react';
 import { ArtScene } from '../../../shared/art/CardArt';
 
@@ -209,6 +210,7 @@ const portraits: Record<string, ReactNode> = {
 export function HeroArt({ id }: { id: string }) {
   return (
     <ArtScene
+      assetId={`hearth/heroes/${id}`}
       palette={
         id === 'archivist'
           ? 'violet'
@@ -230,7 +232,8 @@ export function HeroArt({ id }: { id: string }) {
 
 export function HeroPowerArt({ id }: { id: string }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`hearth/powers/${id}`}
       className="hero-power-art"
       data-hero-power={id}
       viewBox="0 0 64 64"
@@ -302,6 +305,6 @@ export function HeroPowerArt({ id }: { id: string }) {
           <path d="M32 19V45M22 28L32 34 42 28" stroke={bone} strokeWidth="2.2" />
         </>
       )}
-    </svg>
+    </AssetSvg>
   );
 }

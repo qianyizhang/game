@@ -81,15 +81,19 @@ The user accepted the first Spire trial on November 6 and requested consolidatio
 pack simple related assets such as tiles and repeated minions; use GIF for
 purposeful events such as boss transformations and VFX. The
 [Spire batch record](assets/spire-defense-batch/README.md) preserves the source
-trial and selected replacements. The next [Hearth small-unit proposal](assets/hearth-small-units-batch/README.md)
-awaits agreement.
+trial and selected replacements. The generated [Hearth small-unit batch](assets/hearth-small-units-batch/README.md)
+is retained as historical source; the [refined selection](assets/hearth-refinement/README.md)
+is installed locally under the author-refinement instruction. User acceptance
+remains separate.
+A subsequent [effort comparison](assets/hearth-effort-comparison/README.md)
+preserves the returned medium-effort Cub and the MAX-sheet transport failure.
 
-**Preservation hold · user request, 2026-11-06:** retain intermediate artwork,
-reference boards, sheets, extracted variants, GIF originals and review frames,
-prompt drafts and exact sent prompts, settings, usage, failures and review notes
-for future-session reference. Do not retire that artwork/prompt lineage during
-routine acceptance, rejection or closeout until the user revisits this hold.
-This does not require keeping every routine tooling log.
+**Iteration history · user decision, 2026-11-06:** preserve artwork and prompt
+lineage by default. The [asset history workflow](iterations/README.md) indexes all
+current 2D SVG slots and retained SVG/GIF sources, saves game selections, and owns
+explicit guarded removal. That deliberate removal is the agreed exception to the
+earlier preservation hold. Routine closeout still does not delete artwork,
+prompts or rejected attempts automatically.
 
 Later batches should refine the consolidated method using their observed
 quality, cost and extraction limits.

@@ -1,3 +1,4 @@
+import { AssetSvg } from '../../../shared/art/AssetSvg';
 import { ART, type ArtId } from './art-data';
 
 /** The catalogue and HTML choices use the same editable vectors and fit as Canvas sprites. */
@@ -8,7 +9,12 @@ export function ScrapArt({ id }: { id: ArtId }) {
   const left = (art.width - width * scale) / 2;
   const top = (art.height - height * scale) / 2;
   return (
-    <svg viewBox={`0 0 ${art.width} ${art.height}`} aria-hidden="true" focusable="false">
+    <AssetSvg
+      assetId={`scrapyard/${id}`}
+      viewBox={`0 0 ${art.width} ${art.height}`}
+      aria-hidden="true"
+      focusable="false"
+    >
       <g transform={`translate(${left} ${top}) scale(${scale}) translate(${-x} ${-y})`}>
         {art.paths.map((path, index) => (
           <path
@@ -22,6 +28,6 @@ export function ScrapArt({ id }: { id: ArtId }) {
           />
         ))}
       </g>
-    </svg>
+    </AssetSvg>
   );
 }

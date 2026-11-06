@@ -166,8 +166,33 @@ test('per-game galleries preserve navigation, show current renderers and compare
   await expect(page.getByRole('heading', { name: 'WIP batches', exact: true })).toBeVisible();
   await expect(page.locator('#wip')).toBeVisible();
   await expect(page.locator('#current')).toBeHidden();
-  await expect(page.getByText('Accepted · selected art installed', { exact: true })).toHaveCount(1);
-  await expect(page.getByText('Proposed · awaiting agreement', { exact: true })).toHaveCount(1);
+  await expect(
+    page
+      .locator('#batch-spire-defense-01')
+      .getByText('Accepted · selected art installed', { exact: true }),
+  ).toHaveCount(1);
+  await expect(
+    page
+      .locator('#batch-hearth-small-units-02')
+      .getByText('Generated · awaiting review', { exact: true }),
+  ).toHaveCount(1);
+  await expect(page.locator('#batch-hearth-refinement-04')).toHaveAttribute(
+    'id',
+    'batch-hearth-refinement-04',
+  );
+  const selectedStudy = page.locator('#batch-hearth-refinement-04 .packed-study');
+  await expect(
+    page.getByText('Selected · installed after refinement', { exact: true }),
+  ).toBeVisible();
+  await expect(selectedStudy.locator('.packed-grid > article')).toHaveCount(6);
+  await expect(selectedStudy.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(12);
+  const histories = page.locator('details.batch-history');
+  await expect(histories).toHaveCount(2);
+  for (const history of await histories.all()) {
+    await expect(history).not.toHaveAttribute('open', '');
+    await history.locator(':scope > summary').click();
+    await expect(history).toHaveAttribute('open', '');
+  }
   await expect(
     page.getByRole('heading', {
       name: 'Batch 02 · Six small units, normal and Golden',
@@ -175,7 +200,20 @@ test('per-game galleries preserve navigation, show current renderers and compare
     }),
   ).toBeVisible();
   const spireBatch = page.locator('#batch-spire-defense-01');
-  await expect(spireBatch.locator('.packed-grid > article')).toHaveCount(3);
+  const spireStudy = page.locator('#batch-spire-defense-01 .packed-study');
+  const hearthStudy = page.locator('#batch-hearth-small-units-02 .packed-study');
+  const effortStudy = page.locator('#batch-hearth-effort-03 .packed-study');
+  await expect(
+    page.getByText('Partial result · MAX request failed', { exact: true }),
+  ).toBeVisible();
+  await expect(effortStudy.locator('.unavailable-art')).toHaveCount(4);
+  await expect(effortStudy.locator('.unavailable-art').first()).toContainText('No SVG returned');
+  await expect(effortStudy.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(9);
+
+  await expect(spireStudy.locator('.packed-grid > article')).toHaveCount(3);
+  await expect(spireStudy.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(9);
+  await expect(hearthStudy.locator('.packed-grid > article')).toHaveCount(6);
+  await expect(hearthStudy.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(24);
   await expect(spireBatch.locator('.packed-grid > article > h4')).toHaveText([
     'Metallicize',
     'Ghostly Armor',
@@ -217,9 +255,10 @@ test('per-game galleries preserve navigation, show current renderers and compare
     );
   });
   await page.screenshot({ path: info.outputPath('wip-proposal-desktop.png'), fullPage: true });
-  await spireBatch
-    .locator('.packed-study')
-    .screenshot({ path: info.outputPath('packed-desktop.png') });
+  await selectedStudy.screenshot({ path: info.outputPath('selected-desktop.png') });
+  await spireStudy.screenshot({ path: info.outputPath('packed-desktop.png') });
+  await hearthStudy.screenshot({ path: info.outputPath('hearth-packed-desktop.png') });
+  await effortStudy.screenshot({ path: info.outputPath('effort-desktop.png') });
   await page.goto(`${base}/index.html`);
   for (const [id, name] of [
     ['blindside', 'Blindside'],
@@ -326,9 +365,11 @@ test('per-game galleries preserve navigation, show current renderers and compare
   });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: info.outputPath('wip-proposal-phone.png'), fullPage: true });
-  await spireBatch
-    .locator('.packed-study')
-    .screenshot({ path: info.outputPath('packed-phone.png') });
+  await selectedStudy.screenshot({ path: info.outputPath('selected-phone.png') });
+  for (const history of await histories.all()) await history.locator(':scope > summary').click();
+  await spireStudy.screenshot({ path: info.outputPath('packed-phone.png') });
+  await hearthStudy.screenshot({ path: info.outputPath('hearth-packed-phone.png') });
+  await effortStudy.screenshot({ path: info.outputPath('effort-phone.png') });
   expect(errors).toEqual([]);
   expect(external).toEqual([]);
   await page.addInitScript(() => {

@@ -29,6 +29,7 @@ export function AbilityArt({
           : 'slate';
   return (
     <ArtScene
+      assetId={`spire/${definition.id}${upgraded ? '-upgraded' : ''}`}
       className={`ember-illustration ${className}`}
       palette={palette}
       variant={

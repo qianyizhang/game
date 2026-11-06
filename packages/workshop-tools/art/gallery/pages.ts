@@ -40,7 +40,7 @@ function imageSource(images: Images, file: string) {
 }
 
 function assetCard(asset: ExportedAsset, images: Images) {
-  return `<a class="asset" data-group="${escape(asset.group)}" data-name="${escape(asset.name.toLowerCase())}" href="${escape(asset.file)}" target="_blank" rel="noopener"><div class="picture"><img src="${imageSource(images, asset.file)}" alt="${escape(asset.name)}" loading="lazy" width="${asset.width}" height="${asset.height}"></div><span>${escape(asset.name)}</span><small>${escape(asset.group)}</small><small>${asset.width} × ${asset.height} · Open SVG</small></a>`;
+  return `<div class="asset-card"><a class="asset" data-group="${escape(asset.group)}" data-name="${escape(asset.name.toLowerCase())}" href="${escape(asset.file)}" target="_blank" rel="noopener"><div class="picture"><img src="${imageSource(images, asset.file)}" alt="${escape(asset.name)}" loading="lazy" width="${asset.width}" height="${asset.height}"></div><span>${escape(asset.name)}</span><small>${escape(asset.group)}</small><small>${asset.width} × ${asset.height} · Open SVG</small></a><a href="history.html#asset=${encodeURIComponent(asset.id)}">Iterations · choose for game</a></div>`;
 }
 
 function filters(assets: ExportedAsset[], images: Images) {
@@ -85,7 +85,7 @@ function candidateCard(
   const installed = candidate.status === 'Installed';
   const figure = (file: string, label: string) =>
     `<figure><figcaption>${escape(label)}</figcaption><div class="art-stage"><img src="${imageSource(images, file)}" alt="${escape(candidate.title)} · ${escape(label)}" loading="lazy" width="160" height="112"></div><div class="compact"><img src="${imageSource(images, file)}" alt="" loading="lazy" width="80" height="56"><small>Compact · 80 × 56</small></div></figure>`;
-  return `<article class="candidate" id="candidate-${candidate.id}"><span class="status">${installed ? 'Installed · earlier trial retained' : trial ? 'Earlier SVG trial · awaiting acceptance' : candidate.status}</span><h3>${escape(candidate.title)}</h3><p>${escape(candidate.reason)}</p><p><strong>${installed ? 'Selected direction' : 'Proposed direction'}:</strong> ${escape(candidate.brief)}</p>${current.length || trial ? `<div class="comparisons">${current.map((asset) => figure(asset.file, asset.id.endsWith('-golden') ? 'Current Golden' : asset.id.endsWith('-upgraded') ? 'Current upgrade' : 'Current base')).join('')}${trial ? figure(trial, installed ? 'Earlier individual trial' : 'Image 2.6 candidate') : ''}</div><details><summary>Enlarged comparison and SVG sources</summary><div class="enlarged">${current.map((asset) => `<figure><figcaption>${escape(asset.name)}</figcaption><a href="${asset.file}"><img src="${imageSource(images, asset.file)}" alt="${escape(asset.name)} enlarged" loading="lazy"></a></figure>`).join('')}${trial ? `<figure><figcaption>Earlier candidate · retained source</figcaption><a href="${trial}"><img src="${imageSource(images, trial)}" alt="${escape(candidate.title)} candidate enlarged" loading="lazy"></a></figure>` : ''}</div></details>` : ''}${trial ? `<p>${installed ? 'Selected packed scenes supply the current base and upgrade. This earlier individual trial remains preserved.' : 'This trial proposes one base illustration. A distinct upgrade still needs review.'} <a href="${escape(records.get(candidate.trial!.record)!)}">Prompt, usage and generation record</a>.</p>` : '<p>No generation dispatched for this proposal.</p>'}</article>`;
+  return `<article class="candidate" id="candidate-${candidate.id}"><span class="status">${installed ? 'Installed · earlier trial retained' : trial ? 'Earlier SVG trial · awaiting acceptance' : candidate.status}</span><h3>${escape(candidate.title)}</h3><p>${escape(candidate.reason)}</p><p><strong>${installed ? 'Selected direction' : 'Proposed direction'}:</strong> ${escape(candidate.brief)}</p>${current.length || trial ? `<div class="comparisons">${current.map((asset) => figure(asset.file, asset.id.endsWith('-golden') ? 'Current Golden' : asset.id.endsWith('-upgraded') ? 'Current upgrade' : 'Current base')).join('')}${trial ? figure(trial, installed ? 'Earlier individual trial' : 'Image 2.6 candidate') : ''}</div><details><summary>Enlarged comparison and SVG sources</summary><div class="enlarged">${current.map((asset) => `<figure><figcaption>${escape(asset.name)}</figcaption><a href="${asset.file}"><img src="${imageSource(images, asset.file)}" alt="${escape(asset.name)} enlarged" loading="lazy"></a></figure>`).join('')}${trial ? `<figure><figcaption>Earlier candidate · retained source</figcaption><a href="${trial}"><img src="${imageSource(images, trial)}" alt="${escape(candidate.title)} candidate enlarged" loading="lazy"></a></figure>` : ''}</div></details>` : ''}${trial ? `<p>${installed ? 'Selected packed scenes supply the current base and upgrade. This earlier individual trial remains preserved.' : 'This trial proposes one base illustration. A distinct upgrade still needs review.'} <a href="${escape(records.get(candidate.trial!.record)!)}">Prompt, usage and generation record</a>.</p>` : candidate.status === 'SVG trial' ? '<p>Generated candidates and any unavailable results are shown in this batch’s results above; acceptance is pending.</p>' : '<p>No generation dispatched for this proposal.</p>'}</article>`;
 }
 
 function proposalCard(
@@ -106,7 +106,7 @@ function proposalCard(
         `<figure><figcaption>${escape(candidate.title)}</figcaption><img src="${imageSource(images, asset.file)}" alt="${escape(candidate.title)} current artwork" width="160" height="112"></figure>`,
     )
     .join('');
-  return `<article class="batch-proposal" id="batch-${proposal.id}"><span class="status">${escape(proposal.state ?? 'Proposed · awaiting agreement')}</span><h3>${escape(proposal.title)}</h3><p>${escape(proposal.reason)}</p><div class="batch-current">${previews}</div><p><strong>Deliverables:</strong> ${escape(proposal.deliverables)}</p><p><strong>Shared reference:</strong> ${escape(proposal.reference)}</p><p><strong>Initial round:</strong> ${proposal.requests.map((request) => request.format).join(' + ')} · ${proposal.requests.length} requests maximum.</p>${proposal.study ? studyCard(proposal, images) : ''}<details><summary>Request plan and acceptance checks</summary><div class="request-plan">${proposal.requests.map((request) => `<div><h4>One ${request.format} request</h4><p>${escape(request.plan)}</p></div>`).join('')}</div><p class="approval-note">${escape(proposal.stop)}</p><ul>${proposal.acceptance.map((check) => `<li>${escape(check)}</li>`).join('')}</ul><p><a href="${escape(records.get(proposal.record)!)}">Full proposal and preservation record</a></p></details><p class="retention-note">Intermediate artwork and prompts are preserved for future sessions. Accepted batches inform the art skill for later work.</p></article>`;
+  return `<article class="batch-proposal" id="batch-${proposal.id}"><span class="status">${escape(proposal.state ?? 'Proposed · awaiting agreement')}</span><h3>${escape(proposal.title)}</h3><p>${escape(proposal.reason)}</p><div class="batch-current">${previews}</div><p><strong>Deliverables:</strong> ${escape(proposal.deliverables)}</p><p><strong>Shared reference:</strong> ${escape(proposal.reference)}</p><p><strong>Request plan:</strong> ${proposal.requests.map((request) => request.format).join(' + ')}.</p>${proposal.study ? studyCard(proposal, images) : ''}<details><summary>Request plan and acceptance checks</summary><div class="request-plan">${proposal.requests.map((request) => `<div><h4>One ${request.format} request</h4><p>${escape(request.plan)}</p></div>`).join('')}</div><p class="approval-note">${escape(proposal.stop)}</p><ul>${proposal.acceptance.map((check) => `<li>${escape(check)}</li>`).join('')}</ul><p><a href="${escape(records.get(proposal.record)!)}">Full proposal and preservation record</a></p></details><p class="retention-note">Intermediate artwork and prompts are preserved for future sessions. Accepted batches inform the art skill for later work.</p></article>`;
 }
 
 function studyFile(proposal: BatchProposal, source: string) {
@@ -117,7 +117,7 @@ function studyCard(proposal: BatchProposal, images: Images) {
   const study = proposal.study!;
   const source = (file: string) => imageSource(images, studyFile(proposal, file));
   const effect = study.effect;
-  return `<section class="packed-study" aria-label="Packed batch results"><h3>Packed batch results</h3><p>${escape(study.summary)}</p><div class="packed-grid">${study.subjects.map((subject) => `<article><h4>${escape(subject.title)}</h4>${subject.tiers.map((tier) => `<figure><figcaption>${escape(tier.label)}</figcaption><div class="art-stage"><a href="${escape(studyFile(proposal, tier.file))}"><img src="${source(tier.file)}" alt="${escape(subject.title)} · ${escape(tier.label)}" width="160" height="112" loading="lazy"></a></div><div class="compact"><img src="${source(tier.file)}" alt="" width="80" height="56" loading="lazy"><small>Compact · 80 × 56</small></div></figure>`).join('')}</article>`).join('')}</div><details><summary>Full packed sheet</summary><a href="${escape(studyFile(proposal, study.sheet))}"><img class="packed-sheet" src="${source(study.sheet)}" alt="Original packed artwork sheet" loading="lazy"></a></details>${effect ? `<figure class="play-effect" data-gif="${source(effect.file)}" data-still="${source(effect.still)}" data-duration="${effect.durationMs}"><figcaption>${escape(effect.title)}</figcaption><img src="${source(effect.still)}" alt="${escape(effect.title)}" width="320" height="224"><div><button type="button" data-play-effect>Play effect</button> <button type="button" data-stop-effect disabled>Show still</button></div><p role="status" data-effect-status>Still frame · play once to inspect the effect.</p></figure>` : ''}</section>`;
+  return `<section class="packed-study" aria-label="Packed batch results"><h3>Packed batch results</h3><p>${escape(study.summary)}</p><div class="packed-grid">${study.subjects.map((subject) => `<article><h4>${escape(subject.title)}</h4>${subject.tiers.map((tier) => (tier.unavailable !== undefined ? `<figure><figcaption>${escape(tier.label)}</figcaption><p class="unavailable-art">${escape(tier.unavailable)}</p></figure>` : `<figure><figcaption>${escape(tier.label)}</figcaption><div class="art-stage"><a href="${escape(studyFile(proposal, tier.file))}"><img src="${source(tier.file)}" alt="${escape(subject.title)} · ${escape(tier.label)}" width="160" height="112" loading="lazy"></a></div><div class="compact"><img src="${source(tier.file)}" alt="" width="80" height="56" loading="lazy"><small>Compact · 80 × 56</small></div></figure>`)).join('')}</article>`).join('')}</div><details><summary>${escape(study.sheetLabel ?? 'Full packed sheet')}</summary><a href="${escape(studyFile(proposal, study.sheet))}"><img class="packed-sheet" src="${source(study.sheet)}" alt="${escape(study.sheetLabel ?? 'Original packed artwork sheet')}" loading="lazy"></a></details>${effect ? `<figure class="play-effect" data-gif="${source(effect.file)}" data-still="${source(effect.still)}" data-duration="${effect.durationMs}"><figcaption>${escape(effect.title)}</figcaption><img src="${source(effect.still)}" alt="${escape(effect.title)}" width="320" height="224"><div><button type="button" data-play-effect>Play effect</button> <button type="button" data-stop-effect disabled>Show still</button></div><p role="status" data-effect-status>Still frame · play once to inspect the effect.</p></figure>` : ''}</section>`;
 }
 
 /** Derive per-game views from the same exported assets; never redraw SVGs here. */
@@ -194,7 +194,9 @@ export async function writeGalleryPages(
         const study = proposal.study;
         for (const source of new Set([
           study.sheet,
-          ...study.subjects.flatMap((subject) => subject.tiers.map((tier) => tier.file)),
+          ...study.subjects.flatMap((subject) =>
+            subject.tiers.flatMap((tier) => (tier.file ? [tier.file] : [])),
+          ),
           ...(study.effect ? [study.effect.file, study.effect.still] : []),
           ...study.attachments,
         ]))
@@ -211,7 +213,9 @@ export async function writeGalleryPages(
       proposal.study
         ? [
             proposal.study.sheet,
-            ...proposal.study.subjects.flatMap((subject) => subject.tiers.map((tier) => tier.file)),
+            ...proposal.study.subjects.flatMap((subject) =>
+              subject.tiers.flatMap((tier) => (tier.file ? [tier.file] : [])),
+            ),
             ...(proposal.study.effect
               ? [proposal.study.effect.file, proposal.study.effect.still]
               : []),
@@ -259,14 +263,27 @@ export async function writeGalleryPages(
     const candidates = game ? batch.filter((candidate) => candidate.game === game.id) : batch;
     const selectedProposals = (
       game ? proposals.filter((proposal) => proposal.game === game.id) : [...proposals]
-    ).toSorted((a, b) => Number(!!a.state) - Number(!!b.state));
+    ).toSorted(
+      (a, b) =>
+        Number(a.state === 'Accepted · selected art installed') -
+        Number(b.state === 'Accepted · selected art installed'),
+    );
     const proposedIds = new Set(selectedProposals.flatMap((proposal) => proposal.candidates));
     const otherCandidates = candidates.filter((candidate) => !proposedIds.has(candidate.id));
     const renderCandidate = (candidate: BatchCandidate) =>
       candidateCard(candidate, assets, records, images);
-    const wip = `${selectedProposals.map((proposal) => `${proposalCard(proposal, records, candidateById, assets, images)}<h3>Current artwork and earlier trials</h3><div class="batch">${proposal.candidates.map((id) => renderCandidate(candidateById.get(id)!)).join('')}</div>`).join('')}${otherCandidates.length ? `<details class="other-candidates"${selectedProposals.length ? '' : ' open'}><summary>Other candidates (${otherCandidates.length}) · review first</summary><div class="batch">${otherCandidates.map(renderCandidate).join('')}</div></details>` : ''}${candidates.length || selectedProposals.length ? '' : '<p class="empty">No WIP batch is proposed for this collection.</p>'}`;
+    const wip = `${selectedProposals
+      .map((proposal) => {
+        const content = `${proposalCard(proposal, records, candidateById, assets, images)}${proposal.candidates.length ? `<h3>Current artwork and earlier trials</h3><div class="batch">${proposal.candidates.map((id) => renderCandidate(candidateById.get(id)!)).join('')}</div>` : ''}`;
+        return proposal.archived
+          ? `<details class="batch-history"><summary>History · ${escape(proposal.title)}</summary>${content}</details>`
+          : content;
+      })
+      .join(
+        '',
+      )}${otherCandidates.length ? `<details class="other-candidates"${selectedProposals.length ? '' : ' open'}><summary>Other candidates (${otherCandidates.length}) · review first</summary><div class="batch">${otherCandidates.map(renderCandidate).join('')}</div></details>` : ''}${candidates.length || selectedProposals.length ? '' : '<p class="empty">No WIP batch is proposed for this collection.</p>'}`;
     const id = game?.id ?? 'all';
-    const navigation = `<nav class="game-nav" aria-label="Game galleries"><a href="index.html"${id === 'all' ? ' aria-current="page"' : ''}>All SVGs</a>${[...GAME_COLLECTIONS, { id: 'shared', name: 'Shared artwork' }].map((item) => `<a href="${item.id}.html"${id === item.id ? ' aria-current="page"' : ''}>${item.name}</a>`).join('')}</nav>`;
+    const navigation = `<nav class="game-nav" aria-label="Game galleries"><a href="history.html">Asset history</a><a href="index.html"${id === 'all' ? ' aria-current="page"' : ''}>All SVGs</a>${[...GAME_COLLECTIONS, { id: 'shared', name: 'Shared artwork' }].map((item) => `<a href="${item.id}.html"${id === item.id ? ' aria-current="page"' : ''}>${item.name}</a>`).join('')}</nav>`;
     const upgradeView = upgrades.length
       ? `<div class="reviews">${upgrades.map((upgrade) => `<article class="review"><div><time datetime="${upgrade.date}">${upgrade.date}</time><h3>${escape(upgrade.title)}</h3><p>${escape(upgrade.summary)}</p><p>Retained comparison · ${upgrade.revision}</p><a href="${escape(records.get(upgrade.record) ?? sourceLink(upgrade.record, upgrade.recordRevision ?? upgrade.revision))}">Original review record</a></div><a href="evidence/${upgrade.id}-${basename(upgrade.image)}"><img src="${imageSource(images, `evidence/${upgrade.id}-${basename(upgrade.image)}`)}" alt="Retained ${escape(upgrade.title)} review" loading="lazy"></a></article>`).join('')}</div>`
       : '<p class="empty">No dated 2D upgrade is curated here yet. This does not mean the game has no art changes.</p>';

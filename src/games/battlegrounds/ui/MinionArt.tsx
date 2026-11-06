@@ -5,6 +5,7 @@ import { Bear, Hydra, Panther, Phoenix, Wolf } from './CreatureIllustrations';
 import { DemonPortrait } from './FiendIllustrations';
 import { expansionMinionArt } from './ExpansionPortraits';
 import { nightMarketMinionArt } from './NightMarketPortraits';
+import { smallUnitArt, goldenSmallUnitArt } from './small-units';
 
 const palettes = {
   beast: 'moss',
@@ -764,6 +765,7 @@ export function MinionArt({
 }) {
   return (
     <ArtScene
+      assetId={`hearth/${definitionId}${golden ? '-golden' : ''}`}
       className="minion-portrait"
       palette={golden ? 'gold' : definitionId === 'phoenix' ? 'ember' : palettes[tribe]}
       variant={
@@ -780,6 +782,7 @@ export function MinionArt({
     >
       {nightMarketMinionArt[definitionId] ??
         expansionMinionArt[definitionId] ??
+        (golden ? goldenSmallUnitArt[definitionId] : smallUnitArt[definitionId]) ??
         portraits[definitionId] ?? <HumanPortrait kind="squire" />}
       {golden && <Cut d="M12 103V91m0 12h12m112 0h12V91" color="#d8bf7b" width={1} opacity={0.8} />}
     </ArtScene>

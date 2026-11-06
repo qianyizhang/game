@@ -68,7 +68,7 @@ import {
   CHALLENGE_SYMBOLS,
 } from '../../../../src/shared/art/ChallengeArt';
 
-type Asset = { id: string; group: string; name: string; node: ReactNode };
+type Asset = { id: string; group: string; name: string; node: ReactNode; runtimeNode?: ReactNode };
 
 function PlayingCardAsset({ rank, suit }: { rank: number; suit: Suit }) {
   const label =
@@ -320,6 +320,7 @@ export function cardArtCatalogue(): Asset[] {
           group: 'Blindside · Playing cards',
           name: `${({ 11: 'Jack', 12: 'Queen', 13: 'King', 14: 'Ace' } as Record<number, string>)[rank] ?? rank} of ${suit}`,
           node: <PlayingCardAsset rank={rank} suit={suit} />,
+          runtimeNode: <PokerArt rank={rank} suit={suit} />,
         };
       }),
     ),
@@ -343,6 +344,11 @@ export function cardArtCatalogue(): Asset[] {
       id: `primitives/${kind}`,
       group: 'Shared · Primitives',
       name: kind,
+      runtimeNode: (
+        <svg viewBox="0 0 100 100">
+          <ArtGlyph kind={kind} x={0} y={0} size={100} />
+        </svg>
+      ),
       node: (
         <ArtScene palette="gold">
           <ArtGlyph kind={kind} />
