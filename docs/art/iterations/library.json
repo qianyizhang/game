@@ -6682,6 +6682,24 @@
         "docs/art/assets/directional-emberwake-brute-2026-11-06/validation.json",
         "docs/art/assets/directional-emberwake-brute-2026-11-06/overview.png"
       ]
+    },
+    {
+      "id": "emberwake-brute-action-2026-11-06",
+      "title": "Furnace brute SE three-action-pose study",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Exactly one new action-sheet call under sprite-brute-action-16. Manual parent appears as text, not image conditioning. No manual correction; reported usage estimateUSD0.098461. Separate from historical unknown directional request, which remains held and was not retried.",
+      "files": [
+        "docs/art/assets/emberwake-brute-action-2026-11-06/request.json",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/budget.json",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/receipt.json",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/extraction.json",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/validation.json",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/README.md",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/preview.html",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/comparison.png",
+        "docs/art/assets/directional-emberwake-brute-2026-11-06/demon-se.svg"
+      ]
     }
   ],
   "revisions": [
@@ -7929,6 +7947,62 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Manual 1536×832 sheet combines four standalone sources at [192,0],[960,0],[192,416],[960,416] with only outer translations. It is not a returned image API original."
+    },
+    {
+      "id": "emberwake-brute-action-2026-11-06-original",
+      "asset": null,
+      "attempt": "emberwake-brute-action-2026-11-06",
+      "label": "Generated Furnace brute action sheet",
+      "file": "docs/art/assets/emberwake-brute-action-2026-11-06/original.svg",
+      "digest": "8cca06d0c06c6aa4a0e87afd6a5fa7d891dfda30c6fa37da0d150773eadd214a",
+      "parents": [
+        "emberwake-brute-2026-11-06-demon-se"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned native SVG; genuine manual SE design parent supplied as text. Not a retry or recovered output of earlier unknown direction request. Timing untested."
+    },
+    {
+      "id": "emberwake-brute-action-2026-11-06-guard",
+      "asset": null,
+      "attempt": "emberwake-brute-action-2026-11-06",
+      "label": "Furnace brute SE · guard",
+      "file": "docs/art/assets/emberwake-brute-action-2026-11-06/demon-se-guard.svg",
+      "digest": "41a9b5a772ae945d22587403bccdddbeefca11ba3a45c5500ae41404e624765d",
+      "parents": [
+        "emberwake-brute-action-2026-11-06-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Raw named-group extraction from[64,48,384,416]; only outer translation removed, inner geometry/paints unchanged. Future presentation concept, null runtime assignment."
+    },
+    {
+      "id": "emberwake-brute-action-2026-11-06-contact",
+      "asset": null,
+      "attempt": "emberwake-brute-action-2026-11-06",
+      "label": "Furnace brute SE · contact",
+      "file": "docs/art/assets/emberwake-brute-action-2026-11-06/demon-se-contact.svg",
+      "digest": "c050d3beb5d2688c87802f46e7b75cd17f8579f2e919d0efb219ee435ac9f7ad",
+      "parents": [
+        "emberwake-brute-action-2026-11-06-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Raw named-group extraction from[576,48,384,416]; only outer translation removed, inner geometry/paints unchanged. Future presentation concept, null runtime assignment."
+    },
+    {
+      "id": "emberwake-brute-action-2026-11-06-recovery",
+      "asset": null,
+      "attempt": "emberwake-brute-action-2026-11-06",
+      "label": "Furnace brute SE · recovery",
+      "file": "docs/art/assets/emberwake-brute-action-2026-11-06/demon-se-recovery.svg",
+      "digest": "d69f654e2105af6f6c9477357cd5d3575f4c8015967c0614a6c00d6d26bfb115",
+      "parents": [
+        "emberwake-brute-action-2026-11-06-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Raw named-group extraction from[1088,48,384,416]; only outer translation removed, inner geometry/paints unchanged. Future presentation concept, null runtime assignment."
     }
   ]
 }

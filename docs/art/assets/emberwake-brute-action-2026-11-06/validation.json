@@ -88,5 +88,22 @@
     "new_revisions": 4,
     "genuine_parent_revisions": 2,
     "selections": 0
+  },
+  "canonical_registration": {
+    "source_head": "dc7af88172cfc7c6d5d64de69c016e410137e938",
+    "review_base": "a4bfa14bc6319f2a5333b4d450dde630fc24ff02",
+    "requires": "#155 first; no parent/base changes",
+    "counts": {
+      "new_attempts": 1,
+      "new_source_revisions": 4,
+      "assets": 709,
+      "total_revisions": 102,
+      "selections": 0
+    },
+    "preservation": "Exact sheet/extract/reference/comparison/request/receipt bytes and all previous canonical records preserved. Text conditioning only; older unknown direction request remains separate. Temporary import retired after exact canonical comparison; original stays in source Git history.",
+    "independent_review": "Node24.21.0; official GoogleChrome157.0.8103.38. All three384x416 crops pixel-identical, zero edge pixels; every inner geometry/paint attribute unchanged. Six owning-preview layouts with12 decoded images each. Four shared-gallery source/compact/enlarged revisions; exact six JSON/Markdown records and two image attachments; six desktop1440/phone390/320 x16/20px layouts, no overflow/errors. Use disabled; removal preview cancelled, three descendants and shared original retention verified.",
+    "scope": "Source-history registration only. No animation, timing/interpolation, runtime adaptation, selection or art acceptance.",
+    "checks": "format:maintenance passed; assets:history verify709assets/102revisions/0selections; three existing selection/removal/offline browser journeys passed21.7s at normal limits;11history contracts passed. No application/native/full-suite claim.",
+    "source_hosted": "42301748334 passed at frozen source dc7af88172cfc7c6d5d64de69c016e410137e938 before registration."
   }
 }
