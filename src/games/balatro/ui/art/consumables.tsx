@@ -136,6 +136,7 @@ function ToolMotif({ id }: { id: string }): ReactNode {
 export function ConsumableArt({ id, className = '' }: { id: string; className?: string }) {
   return (
     <ArtScene
+      assetId={`blindside/consumables/${id}`}
       className={`blindside-art ${className}`}
       palette={id.startsWith('planet-') ? 'slate' : id === 'garden' ? 'moss' : 'violet'}
       variant={id.startsWith('planet-') ? 'night' : 'runes'}

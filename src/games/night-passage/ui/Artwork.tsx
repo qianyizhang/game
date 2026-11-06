@@ -1,5 +1,6 @@
+import { AssetSvg } from '../../../shared/art/AssetSvg';
 import type { ReactNode } from 'react';
-import { GODS } from '../domain/content';
+import { GODS, BOONS } from '../domain/content';
 import type { GodId, Reward, RuneId, WeaponId } from '../domain/types';
 
 const ink = '#10232c',
@@ -10,9 +11,20 @@ const edge = { stroke: ink, strokeWidth: 2, strokeLinejoin: 'round' as const };
 function Etch({ d }: { d: string }) {
   return <path d={d} fill="none" stroke={ivory} strokeWidth="1.5" strokeLinecap="round" />;
 }
-function Symbol({ id, children, partner }: { id: string; children: ReactNode; partner?: GodId }) {
+function Symbol({
+  id,
+  assetId,
+  children,
+  partner,
+}: {
+  id: string;
+  assetId: string;
+  children: ReactNode;
+  partner?: GodId;
+}) {
   return (
-    <svg
+    <AssetSvg
+      assetId={assetId}
       className="np-art"
       viewBox="0 0 64 64"
       aria-hidden="true"
@@ -23,7 +35,7 @@ function Symbol({ id, children, partner }: { id: string; children: ReactNode; pa
       <path d="M32 2 53 12 61 34 48 56 24 62 5 45 3 22 15 7Z" fill="#1a3039" />
       <path d="M9 22 18 11 31 7M53 39 45 52 31 56" stroke="#526d70" strokeWidth="1" fill="none" />
       {children}
-    </svg>
+    </AssetSvg>
   );
 }
 const patrons: Record<GodId, ReactNode> = {
@@ -82,7 +94,15 @@ const patrons: Record<GodId, ReactNode> = {
 export function PatronArt({ god, partner }: { god: GodId; partner?: GodId }) {
   const mark = (id: GodId) => <g color={GODS.find((g) => g.id === id)!.color}>{patrons[id]}</g>;
   return (
-    <Symbol id={`patron:${god}`} partner={partner}>
+    <Symbol
+      id={`patron:${god}`}
+      assetId={
+        partner
+          ? `night-passage/duos/${BOONS.find((boon) => boon.slot === 'duo' && boon.requires?.includes(god) && boon.requires.includes(partner))?.id}`
+          : `night-passage/patrons/${god}`
+      }
+      partner={partner}
+    >
       {partner ? (
         <>
           <g transform="translate(0 5) scale(.65)">{mark(god)}</g>
@@ -164,7 +184,11 @@ const runes: Record<RuneId, ReactNode> = {
   ),
 };
 export function RuneArt({ id }: { id: RuneId }) {
-  return <Symbol id={`rune:${id}`}>{runes[id]}</Symbol>;
+  return (
+    <Symbol id={`rune:${id}`} assetId={`night-passage/runes/${id}`}>
+      {runes[id]}
+    </Symbol>
+  );
 }
 const weapons: Record<WeaponId, ReactNode> = {
   sword: (
@@ -208,7 +232,11 @@ const weapons: Record<WeaponId, ReactNode> = {
   ),
 };
 export function WeaponArt({ id }: { id: WeaponId }) {
-  return <Symbol id={`weapon:${id}`}>{weapons[id]}</Symbol>;
+  return (
+    <Symbol id={`weapon:${id}`} assetId={`night-passage/weapons/${id}`}>
+      {weapons[id]}
+    </Symbol>
+  );
 }
 export const REWARD_ART_LABELS: Record<Reward, string> = {
   boon: 'Divine audience',
@@ -285,5 +313,9 @@ const rewards: Record<Reward, ReactNode> = {
   ),
 };
 export function RewardArt({ kind }: { kind: Reward }) {
-  return <Symbol id={`reward:${kind}`}>{rewards[kind]}</Symbol>;
+  return (
+    <Symbol id={`reward:${kind}`} assetId={`night-passage/rewards/${kind}`}>
+      {rewards[kind]}
+    </Symbol>
+  );
 }

@@ -765,6 +765,7 @@ export function MinionArt({
 }) {
   return (
     <ArtScene
+      assetId={`hearth/${definitionId}${golden ? '-golden' : ''}`}
       className="minion-portrait"
       palette={golden ? 'gold' : definitionId === 'phoenix' ? 'ember' : palettes[tribe]}
       variant={

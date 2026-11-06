@@ -1,3 +1,4 @@
+import { AssetSvg } from '../../../shared/art/AssetSvg';
 import type { ReactNode } from 'react';
 import { ChallengeSymbol } from '../../../shared/art/ChallengeArt';
 
@@ -524,7 +525,8 @@ function DamagePotion({ explosive }: { explosive: boolean }) {
 
 export function RelicArt({ id }: { id: string }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`spire/relics/${id}`}
       className="world-item-art relic-art"
       data-relic-art={id}
       data-art-fallback={!relics[id] || undefined}
@@ -534,12 +536,13 @@ export function RelicArt({ id }: { id: string }) {
       focusable="false"
     >
       {relics[id] ?? <path d="M32 8L54 31 32 56 10 31Z" fill={gold} {...edge} />}
-    </svg>
+    </AssetSvg>
   );
 }
 export function PotionArt({ id }: { id: string }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`spire/potions/${id}`}
       className="world-item-art potion-art"
       data-potion-art={id}
       data-art-fallback={!potionShapes[id] || undefined}
@@ -564,6 +567,6 @@ export function PotionArt({ id }: { id: string }) {
           {potionMarks[id]}
         </>
       )}
-    </svg>
+    </AssetSvg>
   );
 }

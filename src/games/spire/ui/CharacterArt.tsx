@@ -1,3 +1,4 @@
+import { AssetSvg } from '../../../shared/art/AssetSvg';
 import type { ReactNode } from 'react';
 
 const ink = '#25312e';
@@ -138,7 +139,8 @@ const figures: Record<'ironclad' | 'silent', ReactNode> = {
 
 export function CharacterArt({ id }: { id: 'ironclad' | 'silent' }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`spire/characters/${id}`}
       className={`fighter-portrait character-art ${id}`}
       viewBox="0 0 180 180"
       aria-hidden="true"
@@ -147,6 +149,6 @@ export function CharacterArt({ id }: { id: 'ironclad' | 'silent' }) {
     >
       <ellipse cx="90" cy="165" rx="73" ry="7" fill={ink} opacity=".25" />
       {figures[id]}
-    </svg>
+    </AssetSvg>
   );
 }

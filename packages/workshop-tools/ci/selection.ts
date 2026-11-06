@@ -111,6 +111,7 @@ const routineBrowser = (path: string) => !fullBrowserFiles.includes(path);
 export function sourceFamily(path: string): Family | 'core' | undefined {
   if (path.startsWith('packages/diablo2/')) return 'emberwake';
   if (path.startsWith('packages/dcc-workbench/')) return 'models';
+  if (path.startsWith('docs/art/iterations/')) return 'svg';
   if (path.startsWith('packages/workshop-tools/art/gallery/')) return 'gallery';
   if (path.startsWith('packages/workshop-tools/art/')) return 'svg';
   if (path.startsWith('src/art3d/')) return 'models';
@@ -153,6 +154,7 @@ export function browserFamilies(path: string): Family[] | undefined {
     return ['hearth'];
   if (name.startsWith('blindside') || ['workshop', 'issue37-context'].includes(name))
     return ['balatro'];
+  if (name === 'asset-history') return ['gallery', 'svg'];
   if (name === 'asset-gallery') return ['gallery'];
   if (name === 'art-export') return ['gallery', 'svg', 'balatro', 'spire', 'hearth'];
   if (modelBrowser.has(name)) return ['models'];

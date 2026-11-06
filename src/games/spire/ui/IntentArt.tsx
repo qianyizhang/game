@@ -1,3 +1,4 @@
+import { AssetSvg } from '../../../shared/art/AssetSvg';
 import { ArtGlyph, type ArtGlyphKind } from '../../../shared/art/CardArt';
 
 export const INTENT_ART = {
@@ -15,7 +16,8 @@ export type IntentArtKind = keyof typeof INTENT_ART;
 export function IntentArt({ kind }: { kind: IntentArtKind }) {
   const art = INTENT_ART[kind];
   return (
-    <svg
+    <AssetSvg
+      assetId={`spire/intents/${kind}`}
       className="sts-intent-art"
       viewBox="0 0 64 64"
       aria-hidden="true"
@@ -31,6 +33,6 @@ export function IntentArt({ kind }: { kind: IntentArtKind }) {
       >
         <ArtGlyph kind={art.glyph} x={9} y={8} size={46} color={art.ink} accent={art.accent} />
       </g>
-    </svg>
+    </AssetSvg>
   );
 }

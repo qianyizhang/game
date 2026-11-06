@@ -11,6 +11,14 @@ Make a distinct, readable subject and review it in its actual UI. Read the [aest
 
 Inspect the diff and requested content IDs; preserve concurrent work. For SVG, the [source map](../../docs/art/svg.md) locates renderers, primitives and export integration.
 
+For every **2D SVG or generated SVG/GIF iteration**, read the
+[asset history workflow](../../docs/art/iterations/README.md#register-new-work)
+before editing or dispatching a request. It owns the pre-edit checkpoint,
+registration of each terminal attempt and derivative, and the gallery inspection
+needed before review-ready status. Apply it to hand edits and individual requests
+as well as packed batches. Browse unchanged artwork live; save only explicit
+checkpoints and real iterations.
+
 Keep a brief in working notes:
 
 > **ID / subject / pose or action / identifying contour / material + light / approved sibling / variant difference / display size.**
@@ -23,7 +31,7 @@ When delegation is requested, use the user's selected ownership and budget. For 
 
 For SVG illustrations, follow the build and export workflow below. For 3D studies, use the [3D source map and verification](../../docs/art/3d.md); preserve exportable geometry, animation bindings, reduced motion and camera fit. Review still structure before animating. SVG export is necessary only when SVG sources change.
 
-For **API batches, packed sheets, or generated SVG/GIF sets**, read the [batch workflow](references/batch-assets.md). It covers WIP agreement, simple asset families and tile seams, shared references, extraction, cost review and selective promotion. Prefer GIF for purposeful events such as boss transformations and VFX. [Artifact preservation](../../docs/art/README.md#image-26-batch-workflow) owns the current artwork/prompt hold.
+For **API batches, packed sheets, or generated SVG/GIF sets**, read the [batch workflow](references/batch-assets.md). It covers WIP agreement, simple asset families and tile seams, shared references, extraction, cost review and selective promotion. Prefer GIF for purposeful events such as boss transformations and VFX. The asset history workflow owns preservation and explicit guarded removal.
 
 For **animated native modeling, rig fitting, or a new motion study**, read the [native modeling playbook](references/native-modeling.md). It owns the saved-source workflow, species-specific support checks, deformation/timing review and starter scaffold; trial history is optional evidence. It applies when refining an existing native study as well as building a new one.
 
@@ -43,9 +51,10 @@ Use explicit colors or established scene variables. Separate interpolated coordi
 
 ## Accept the result
 
-1. **Keep a baseline.** Export approved art before editing; use separate directories for concurrent reviews.
+1. **Keep a baseline.** Save an explicit checkpoint for the affected asset before its first edit or generation trial. Reuse an unchanged saved baseline. Keep disposable comparison views separate from preserved artwork.
 2. **Inspect pixels at two sizes.** The [review helper](../../docs/art/svg.md#repeatable-review) creates enlarged/native-size sheets and before/after comparisons. Check identity, anatomy, material, clutter and consistency. Reject an enlarged-image improvement that regresses at card size. Pixel equality and successful decoding do not establish quality.
 3. **Inspect the actual UI yourself.** Check the full card and smallest hand/board view, text/stats, selected/golden states and phone layout. Preserve accessible control names.
-4. **Verify scope.** Use the [gate selection](../../docs/engineering/checks.md#gate-selection): `npm run check` for SVG/UI code, `npm run check:full` for native construction, animation or delivery. Export all assets when SVG sources change and run affected browser/native checks separately. Follow `AGENTS.md` for browser execution; report blocked checks. Repeat checks after material fixes, not to accumulate passing runs.
+4. **Register and inspect.** Complete the history workflow's registration steps, including failures and rejected outputs. Open each affected asset in the gallery and inspect its revision and prompt/settings. Run `npm run assets:history -- verify`; resolve unregistered changes or managed files before marking review-ready. Report unavailable lineage honestly.
+5. **Verify scope.** Use the [gate selection](../../docs/engineering/checks.md#gate-selection): `npm run check` for SVG/UI code, `npm run check:full` for native construction, animation or delivery. Inspect the changed assets through the live gallery and run affected browser/native checks. Build a complete disposable offline export only when its delivery contract or a required gate needs it; do not keep an unchanged catalogue dump. Follow `AGENTS.md` for browser execution; report blocked checks. Repeat checks after material fixes, not to accumulate passing runs.
 
 Finish with a preview, the changes, verification and material limitations. Temporary reviews stay under ignored `test-results/`; retain selected decision evidence with the owning delivery and its hashes. Components, saved native masters and catalogue integration remain the durable sources.

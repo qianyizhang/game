@@ -1,3 +1,4 @@
+import { AssetSvg } from './AssetSvg';
 import type { ReactNode } from 'react';
 
 export const CHALLENGE_PLATES = [
@@ -51,7 +52,8 @@ function Lines({
 
 function Plate({ id, children, color }: { id: string; children: ReactNode; color: string }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`challenges/${id}`}
       className="challenge-art"
       data-challenge-art={id}
       viewBox="0 0 360 192"
@@ -79,7 +81,7 @@ function Plate({ id, children, color }: { id: string; children: ReactNode; color
       />
       <path d="M175 179L180 175 185 179 180 183Z" fill={gold} opacity=".7" />
       {children}
-    </svg>
+    </AssetSvg>
   );
 }
 
@@ -408,7 +410,8 @@ export function ChallengeArt({ id }: { id: string }) {
 /** Small engraved objects share the plates' inks; text always carries their meaning. */
 export function ChallengeSymbol({ kind }: { kind: ChallengeSymbolKind }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`challenges/symbols/${kind}`}
       className={`challenge-symbol challenge-symbol-${kind}`}
       data-challenge-symbol={kind}
       viewBox="0 0 64 64"
@@ -558,6 +561,6 @@ export function ChallengeSymbol({ kind }: { kind: ChallengeSymbolKind }) {
           />
         </>
       )}
-    </svg>
+    </AssetSvg>
   );
 }

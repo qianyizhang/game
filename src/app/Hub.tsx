@@ -248,6 +248,11 @@ function GameHub() {
         >
           ↗ 3D art gallery
         </button>
+        {import.meta.env.DEV && (
+          <a href="/__art/" className="art-history-entry">
+            ↗ 2D asset gallery
+          </a>
+        )}
       </div>
       {artOpen && !dccOpen && (
         <Suspense

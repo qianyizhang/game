@@ -11,6 +11,8 @@ function filter() {
       (group.value && group.value !== card.dataset.group) ||
       !card.dataset.name!.includes(search.value.trim().toLowerCase())
     );
+    const container = card.closest<HTMLElement>('.asset-card');
+    if (container) container.hidden = card.hidden;
     if (!card.hidden) visible++;
   }
   count.value = visible + ' illustrations';

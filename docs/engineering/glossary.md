@@ -82,6 +82,18 @@ _Avoid_: Combat board, when referring to the persistent warband.
 
 ## Art and evidence
 
+**Artwork revision**: One preserved version of an illustration, linked to its
+source attempt and any known parent artwork. A revision can remain a source study
+without being suitable for a game slot.
+
+**Art attempt**: One generation request or deliberate authoring pass, including its
+settings and outcome. A packed attempt can yield several artwork revisions; a
+failed attempt may yield none.
+
+**Game art selection**: The artwork revision chosen as a game slot's default.
+Selecting an older revision is a rollback, not a new generation or a rewrite of
+its historical acceptance.
+
 **Asset recipe**: Maintained procedural instructions and named parameters for constructing
 an editable asset candidate. A recipe is part of the asset's authored source material.
 

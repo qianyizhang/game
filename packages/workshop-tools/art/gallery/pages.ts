@@ -40,7 +40,7 @@ function imageSource(images: Images, file: string) {
 }
 
 function assetCard(asset: ExportedAsset, images: Images) {
-  return `<a class="asset" data-group="${escape(asset.group)}" data-name="${escape(asset.name.toLowerCase())}" href="${escape(asset.file)}" target="_blank" rel="noopener"><div class="picture"><img src="${imageSource(images, asset.file)}" alt="${escape(asset.name)}" loading="lazy" width="${asset.width}" height="${asset.height}"></div><span>${escape(asset.name)}</span><small>${escape(asset.group)}</small><small>${asset.width} × ${asset.height} · Open SVG</small></a>`;
+  return `<div class="asset-card"><a class="asset" data-group="${escape(asset.group)}" data-name="${escape(asset.name.toLowerCase())}" href="${escape(asset.file)}" target="_blank" rel="noopener"><div class="picture"><img src="${imageSource(images, asset.file)}" alt="${escape(asset.name)}" loading="lazy" width="${asset.width}" height="${asset.height}"></div><span>${escape(asset.name)}</span><small>${escape(asset.group)}</small><small>${asset.width} × ${asset.height} · Open SVG</small></a><a href="history.html#asset=${encodeURIComponent(asset.id)}">Iterations · choose for game</a></div>`;
 }
 
 function filters(assets: ExportedAsset[], images: Images) {
@@ -283,7 +283,7 @@ export async function writeGalleryPages(
         '',
       )}${otherCandidates.length ? `<details class="other-candidates"${selectedProposals.length ? '' : ' open'}><summary>Other candidates (${otherCandidates.length}) · review first</summary><div class="batch">${otherCandidates.map(renderCandidate).join('')}</div></details>` : ''}${candidates.length || selectedProposals.length ? '' : '<p class="empty">No WIP batch is proposed for this collection.</p>'}`;
     const id = game?.id ?? 'all';
-    const navigation = `<nav class="game-nav" aria-label="Game galleries"><a href="index.html"${id === 'all' ? ' aria-current="page"' : ''}>All SVGs</a>${[...GAME_COLLECTIONS, { id: 'shared', name: 'Shared artwork' }].map((item) => `<a href="${item.id}.html"${id === item.id ? ' aria-current="page"' : ''}>${item.name}</a>`).join('')}</nav>`;
+    const navigation = `<nav class="game-nav" aria-label="Game galleries"><a href="history.html">Asset history</a><a href="index.html"${id === 'all' ? ' aria-current="page"' : ''}>All SVGs</a>${[...GAME_COLLECTIONS, { id: 'shared', name: 'Shared artwork' }].map((item) => `<a href="${item.id}.html"${id === item.id ? ' aria-current="page"' : ''}>${item.name}</a>`).join('')}</nav>`;
     const upgradeView = upgrades.length
       ? `<div class="reviews">${upgrades.map((upgrade) => `<article class="review"><div><time datetime="${upgrade.date}">${upgrade.date}</time><h3>${escape(upgrade.title)}</h3><p>${escape(upgrade.summary)}</p><p>Retained comparison · ${upgrade.revision}</p><a href="${escape(records.get(upgrade.record) ?? sourceLink(upgrade.record, upgrade.recordRevision ?? upgrade.revision))}">Original review record</a></div><a href="evidence/${upgrade.id}-${basename(upgrade.image)}"><img src="${imageSource(images, `evidence/${upgrade.id}-${basename(upgrade.image)}`)}" alt="Retained ${escape(upgrade.title)} review" loading="lazy"></a></article>`).join('')}</div>`
       : '<p class="empty">No dated 2D upgrade is curated here yet. This does not mean the game has no art changes.</p>';

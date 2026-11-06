@@ -192,7 +192,12 @@ export function BossArt({ id, className = '' }: { id: string; className?: string
       );
   }
   return (
-    <ArtScene className={`blindside-art ${className}`} palette="slate" variant="runes">
+    <ArtScene
+      assetId={`blindside/bosses/${id}`}
+      className={`blindside-art ${className}`}
+      palette="slate"
+      variant="runes"
+    >
       <PrintGround />
       <g stroke={ink} strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round">
         {motif}

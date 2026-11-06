@@ -1,7 +1,15 @@
+import { AssetSvg } from '../../../shared/art/AssetSvg';
 /** A separated shield contour: HTML names the lost protection, never an amount of damage. */
 export function ShieldBreakArt({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false" className={className}>
+    <AssetSvg
+      assetId={'hearth/feedback/shield-break'}
+      viewBox="0 0 64 64"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
       <g stroke="#59442a" strokeWidth="3" strokeLinejoin="round">
         <path d="M10 12 29 6 25 23 31 28 22 35 26 51C15 43 10 31 10 12Z" fill="#bd914b" />
         <path d="M39 10 55 16C55 36 49 49 35 58L32 41 40 32 34 26Z" fill="#e2c17c" />
@@ -13,6 +21,6 @@ export function ShieldBreakArt({ className }: { className?: string }) {
         strokeLinecap="round"
       />
       <path d="m5 38-3 5 6-1M53 5l5-3 1 6" fill="#b87e42" />
-    </svg>
+    </AssetSvg>
   );
 }

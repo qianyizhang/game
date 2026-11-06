@@ -1,3 +1,4 @@
+import { AssetSvg } from '../../../shared/art/AssetSvg';
 import type { EnemyKind } from '../domain/content';
 
 export type InhabitantKind = 'hero' | EnemyKind;
@@ -5,7 +6,8 @@ export type InhabitantKind = 'hero' | EnemyKind;
 /** Shared board/inspector silhouettes; HTML owns names, life and announced attacks. */
 export function InhabitantArt({ kind, className }: { kind: InhabitantKind; className?: string }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`cartographer/inhabitants/${kind}`}
       viewBox="0 0 64 64"
       fill="none"
       aria-hidden="true"
@@ -100,6 +102,6 @@ export function InhabitantArt({ kind, className }: { kind: InhabitantKind; class
           <path d="m22 36 7 3-7 8" fill="#d9cbaa" />
         </>
       ) : null}
-    </svg>
+    </AssetSvg>
   );
 }

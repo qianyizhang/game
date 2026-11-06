@@ -257,7 +257,11 @@ function TagPaper() {
 export function ShopArt({ kind, id }: { kind: 'pack' | 'voucher' | 'tag'; id: string }) {
   const scene = (kind === 'pack' ? packScenes : kind === 'voucher' ? voucherScenes : tagScenes)[id];
   return (
-    <ArtScene className={`shop-art shop-art-${kind}`} palette="moss">
+    <ArtScene
+      assetId={`blindside/${kind === 'pack' ? 'packs' : kind === 'voucher' ? 'vouchers' : 'tags'}/${id}`}
+      className={`shop-art shop-art-${kind}`}
+      palette="moss"
+    >
       <rect x="5" y="5" width="150" height="102" rx="4" fill={paper} />
       <path d="M12 22V12h16m104 0h16v10M12 90v10h16m104 0h16V90" stroke={gold} strokeWidth=".7" />
       <g stroke={ink} strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round">

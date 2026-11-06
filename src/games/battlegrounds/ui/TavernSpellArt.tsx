@@ -166,7 +166,7 @@ const scenes: Record<string, ReactNode> = {
 };
 export function TavernSpellArt({ id, className }: { id: string; className?: string }) {
   return (
-    <ArtScene palette="moss" variant="runes" className={className}>
+    <ArtScene assetId={`hearth/spells/${id}`} palette="moss" variant="runes" className={className}>
       {scenes[id] ?? scenes['promissory-note']}
     </ArtScene>
   );

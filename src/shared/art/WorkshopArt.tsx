@@ -1,3 +1,4 @@
+import { AssetSvg } from './AssetSvg';
 import { ArtScene } from './CardArt';
 
 export const WORKSHOP_SCENES = ['practice', 'packs', 'evidence', 'arena'] as const;
@@ -38,6 +39,7 @@ function BrassDial({ x, y, r }: { x: number; y: number; r: number }) {
 export function WorkshopArt({ kind }: { kind: WorkshopSceneKind }) {
   return (
     <ArtScene
+      assetId={`workshop/${kind}`}
       palette={kind === 'arena' ? 'ember' : kind === 'practice' ? 'tide' : 'gold'}
       variant="night"
       className={`workshop-art workshop-art-${kind}`}
@@ -199,7 +201,8 @@ export function WorkshopArt({ kind }: { kind: WorkshopSceneKind }) {
 
 export function WorkshopSymbol({ kind }: { kind: WorkshopSymbolKind }) {
   return (
-    <svg
+    <AssetSvg
+      assetId={`workshop/symbols/${kind}`}
       className="workshop-symbol"
       data-workshop-symbol={kind}
       viewBox="0 0 64 64"
@@ -276,6 +279,6 @@ export function WorkshopSymbol({ kind }: { kind: WorkshopSymbolKind }) {
           <circle cx="14" cy="15" r="5" fill={gold} />
         </>
       )}
-    </svg>
+    </AssetSvg>
   );
 }
