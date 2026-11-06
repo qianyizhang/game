@@ -6657,6 +6657,66 @@
         "docs/art/assets/scrapyard-suite/visual-qa.json",
         "docs/art/assets/scrapyard-suite/technical-qa.json"
       ]
+    },
+    {
+      "id": "expansion-archive-spire-20261106:archive",
+      "title": "archive packed native SVG source study",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One packed request; request/settings/usage/review in archive/call.json. Source concepts only; no aesthetic or runtime acceptance.",
+      "files": [
+        "docs/art/assets/expansion-archive-spire-2026-11-06/archive/call.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/archive/review.png",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/overview.png",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/gallery-source-study.png",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/README.md",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/budget.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/validation.json"
+      ]
+    },
+    {
+      "id": "expansion-archive-spire-20261106:forge",
+      "title": "forge packed native SVG source study",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One packed request; request/settings/usage/review in forge/call.json. Source concepts only; no aesthetic or runtime acceptance.",
+      "files": [
+        "docs/art/assets/expansion-archive-spire-2026-11-06/forge/call.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/forge/review.png"
+      ]
+    },
+    {
+      "id": "expansion-archive-spire-20261106:garden",
+      "title": "garden packed native SVG source study",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One packed request; request/settings/usage/review in garden/call.json. Source concepts only; no aesthetic or runtime acceptance.",
+      "files": [
+        "docs/art/assets/expansion-archive-spire-2026-11-06/garden/call.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/garden/review.png"
+      ]
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-beyond-thresholds",
+      "title": "spire-beyond-thresholds packed native SVG source study",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One packed request; request/settings/usage/review in spire-beyond-thresholds/call.json. Source concepts only; no aesthetic or runtime acceptance.",
+      "files": [
+        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/call.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/review.png"
+      ]
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-exordium-city",
+      "title": "spire-exordium-city packed native SVG source study",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One packed request; request/settings/usage/review in spire-exordium-city/call.json. Source concepts only; no aesthetic or runtime acceptance.",
+      "files": [
+        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/call.json",
+        "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/review.png"
+      ]
     }
   ],
   "revisions": [
@@ -7819,6 +7879,570 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:archive:original",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:archive",
+      "label": "archive / exact API original",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/archive/original.svg",
+      "digest": "71232fe5185dc6dc480f48eb05a28a5da46ba20cac510cf01a55bd96b51c1f80",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original; source sheet."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:archive:index-shelf",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:archive",
+      "label": "archive / index-shelf",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/archive/index-shelf.svg",
+      "digest": "83b40f4efc4a946522a7b49caddef9babf9281bcf37afbafe76d62e8ec360471",
+      "parents": [
+        "expansion-archive-spire-20261106:archive:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 0, 480, 336]; removed only grid translation. Review: archive/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:archive:reading-lectern",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:archive",
+      "label": "archive / reading-lectern",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/archive/reading-lectern.svg",
+      "digest": "4e438682c4118bdb92fa6d7e944010798a30dc21f89606021c8daafd8f19745a",
+      "parents": [
+        "expansion-archive-spire-20261106:archive:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [480, 0, 480, 336]; removed only grid translation. Review: archive/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:archive:scroll-cradle",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:archive",
+      "label": "archive / scroll-cradle",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/archive/scroll-cradle.svg",
+      "digest": "5ac1a29c0713f51fa48f2f39088836b3365c14cbb90e42ca6dee19cff6c4eb00",
+      "parents": [
+        "expansion-archive-spire-20261106:archive:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [960, 0, 480, 336]; removed only grid translation. Review: archive/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:archive:floodgate-wheel",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:archive",
+      "label": "archive / floodgate-wheel",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/archive/floodgate-wheel.svg",
+      "digest": "10938e42a741ef68e157294e53f1f4ea0186118d5d02685ed566655cd71c4028",
+      "parents": [
+        "expansion-archive-spire-20261106:archive:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1440, 0, 480, 336]; removed only grid translation. Review: archive/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:archive:broken-stair",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:archive",
+      "label": "archive / broken-stair",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/archive/broken-stair.svg",
+      "digest": "9b421d42d5a1b62ebc7f50f196c4f8d8e232179a56c9723475f0332601a775eb",
+      "parents": [
+        "expansion-archive-spire-20261106:archive:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 336, 480, 336]; removed only grid translation. Review: archive/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:archive:hinged-screen",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:archive",
+      "label": "archive / hinged-screen",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/archive/hinged-screen.svg",
+      "digest": "76874d07f46cbadee9e612eb2abbf234ce7e39ad33138bb184324943439ee390",
+      "parents": [
+        "expansion-archive-spire-20261106:archive:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [480, 336, 480, 336]; removed only grid translation. Review: archive/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:archive:inkstone-basin",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:archive",
+      "label": "archive / inkstone-basin",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/archive/inkstone-basin.svg",
+      "digest": "468fe9cdcd9e415700fd1296e9c1722b742596577476318f236a77ca018004f3",
+      "parents": [
+        "expansion-archive-spire-20261106:archive:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [960, 336, 480, 336]; removed only grid translation. Review: archive/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:archive:survey-table",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:archive",
+      "label": "archive / survey-table",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/archive/survey-table.svg",
+      "digest": "8e1413f474fa70aac6427966b3822a260ba1d0a1e8ce5960d4af8752449ac1c9",
+      "parents": [
+        "expansion-archive-spire-20261106:archive:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1440, 336, 480, 336]; removed only grid translation. Review: archive/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:forge:original",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:forge",
+      "label": "forge / exact API original",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/forge/original.svg",
+      "digest": "1378979daa96ea987881e6613b3650b9376464396515b4549166e80c24e424e3",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original; source sheet."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:forge:bellows",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:forge",
+      "label": "forge / bellows",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/forge/bellows.svg",
+      "digest": "6c55ef65a40aec1aca356946ea5f4578c9c4f795209a6dccb4d7be66abd9f637",
+      "parents": [
+        "expansion-archive-spire-20261106:forge:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 0, 480, 336]; removed only grid translation. Review: forge/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:forge:quench-trough",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:forge",
+      "label": "forge / quench-trough",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/forge/quench-trough.svg",
+      "digest": "bbfb3e1717b3329f263725bd2ea0ef6cc03065baaf5cab1efcc12396030301ea",
+      "parents": [
+        "expansion-archive-spire-20261106:forge:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [480, 0, 480, 336]; removed only grid translation. Review: forge/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:forge:anvil-block",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:forge",
+      "label": "forge / anvil-block",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/forge/anvil-block.svg",
+      "digest": "84a2038030d7c84e808526e5ac1d7b03dfa3471172108091ef2fdef5852ea4e4",
+      "parents": [
+        "expansion-archive-spire-20261106:forge:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [960, 0, 480, 336]; removed only grid translation. Review: forge/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:forge:clamp-bench",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:forge",
+      "label": "forge / clamp-bench",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/forge/clamp-bench.svg",
+      "digest": "f8a4d00e501d60d7be9f20a2656b7ef73ea0a9fb99412f52430105dc2db6f3aa",
+      "parents": [
+        "expansion-archive-spire-20261106:forge:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1440, 0, 480, 336]; removed only grid translation. Review: forge/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:forge:crucible-stand",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:forge",
+      "label": "forge / crucible-stand",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/forge/crucible-stand.svg",
+      "digest": "3d8c9076b28e1a9742f371953884ac6114be0875c2008aae7db52505fc0d78ac",
+      "parents": [
+        "expansion-archive-spire-20261106:forge:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 336, 480, 336]; removed only grid translation. Review: forge/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:forge:coal-hopper",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:forge",
+      "label": "forge / coal-hopper",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/forge/coal-hopper.svg",
+      "digest": "5d9d0a5171f64d9c53aa9a638d6a0924ea981cc47d4ea3910f75d20db76e42c5",
+      "parents": [
+        "expansion-archive-spire-20261106:forge:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [480, 336, 480, 336]; removed only grid translation. Review: forge/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:forge:cooling-rack",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:forge",
+      "label": "forge / cooling-rack",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/forge/cooling-rack.svg",
+      "digest": "457e954167c7817c011d85938a765f081958d2baa6b5b7db157c60a8bad53122",
+      "parents": [
+        "expansion-archive-spire-20261106:forge:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [960, 336, 480, 336]; removed only grid translation. Review: forge/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:forge:vent-chimney",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:forge",
+      "label": "forge / vent-chimney",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/forge/vent-chimney.svg",
+      "digest": "e0aed01018a6cfceb2c963f8775c35269e36564c2f959a0dae857bfd8fdd6242",
+      "parents": [
+        "expansion-archive-spire-20261106:forge:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1440, 336, 480, 336]; removed only grid translation. Review: forge/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:garden:original",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:garden",
+      "label": "garden / exact API original",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/garden/original.svg",
+      "digest": "7259328bebea5b38af47ee91ccad4b65ffd250e5080211d82c833ab61a57765b",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original; source sheet."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:garden:reed-bed",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:garden",
+      "label": "garden / reed-bed",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/garden/reed-bed.svg",
+      "digest": "bc03c019e6a05bca40fd09daa5be2d1c6328522dd279fdff713b664dba028893",
+      "parents": [
+        "expansion-archive-spire-20261106:garden:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 0, 480, 336]; removed only grid translation. Review: garden/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:garden:root-arch",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:garden",
+      "label": "garden / root-arch",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/garden/root-arch.svg",
+      "digest": "f8fea4cd0ab58041ea3e48dc05ebb6acc9bc9fe550bf63c180ee8b2b5c130607",
+      "parents": [
+        "expansion-archive-spire-20261106:garden:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [480, 0, 480, 336]; removed only grid translation. Review: garden/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:garden:water-spout",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:garden",
+      "label": "garden / water-spout",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/garden/water-spout.svg",
+      "digest": "e9c86dec7fbc296077c68d6d29abf82e4842bcb696ef32ff44e38bb271a26fe7",
+      "parents": [
+        "expansion-archive-spire-20261106:garden:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [960, 0, 480, 336]; removed only grid translation. Review: garden/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:garden:moss-bench",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:garden",
+      "label": "garden / moss-bench",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/garden/moss-bench.svg",
+      "digest": "080791cdc8534e1c3907df251a673a79410464d95ee66c104ccf29a246485bd3",
+      "parents": [
+        "expansion-archive-spire-20261106:garden:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1440, 0, 480, 336]; removed only grid translation. Review: garden/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:garden:lily-cistern",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:garden",
+      "label": "garden / lily-cistern",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/garden/lily-cistern.svg",
+      "digest": "3e56162c9e0a6995979cc68d6d782ddf6009ebe99f5b5f2550e21349edc7946c",
+      "parents": [
+        "expansion-archive-spire-20261106:garden:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 336, 480, 336]; removed only grid translation. Review: garden/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:garden:vine-trellis",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:garden",
+      "label": "garden / vine-trellis",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/garden/vine-trellis.svg",
+      "digest": "15c23f4af0d87900e7553e1f884ceacc87a9108aeb80a2514c91ec6d86a5980d",
+      "parents": [
+        "expansion-archive-spire-20261106:garden:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [480, 336, 480, 336]; removed only grid translation. Review: garden/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:garden:seed-cabinet",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:garden",
+      "label": "garden / seed-cabinet",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/garden/seed-cabinet.svg",
+      "digest": "531a205ac778cd27d1c49fc53937959a95a206dc6d765a74924878d27a83e5fe",
+      "parents": [
+        "expansion-archive-spire-20261106:garden:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [960, 336, 480, 336]; removed only grid translation. Review: garden/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:garden:stepping-culvert",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:garden",
+      "label": "garden / stepping-culvert",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/garden/stepping-culvert.svg",
+      "digest": "12c3a7c12cbb6042bbc0d926762951179ef406e50a42ea997714b6144a1a79d7",
+      "parents": [
+        "expansion-archive-spire-20261106:garden:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1440, 336, 480, 336]; removed only grid translation. Review: garden/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:original",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-beyond-thresholds",
+      "label": "spire-beyond-thresholds / exact API original",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/original.svg",
+      "digest": "591d132a78428613be07a7fea131d8090fbdef1f518e380da5e0016e4cbad438",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original; source sheet."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:beyond-tilted-observatory",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-beyond-thresholds",
+      "label": "spire-beyond-thresholds / beyond-tilted-observatory",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/beyond-tilted-observatory.svg",
+      "digest": "b78fa53f94d6fb69880ba5e93607b919ab3663a6edd6ad31e5b8a3c6c4f5422e",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-beyond-thresholds:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 0, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:beyond-silent-span",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-beyond-thresholds",
+      "label": "spire-beyond-thresholds / beyond-silent-span",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/beyond-silent-span.svg",
+      "digest": "00c644c8b219cf642d06f71a3ad455963bdf4b5b8916214675bdf5b6f44c492d",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-beyond-thresholds:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [480, 0, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:beyond-sealed-reservoir",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-beyond-thresholds",
+      "label": "spire-beyond-thresholds / beyond-sealed-reservoir",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/beyond-sealed-reservoir.svg",
+      "digest": "55ae3868ff9d30d1823ab74d49dac2fbc897aa1ebf45b1aa2e2c797a5a97a2ba",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-beyond-thresholds:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [960, 0, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:threshold-rusted-lift",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-beyond-thresholds",
+      "label": "spire-beyond-thresholds / threshold-rusted-lift",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/threshold-rusted-lift.svg",
+      "digest": "b0d11713cd5aedde1c0e6e2bc4ec8d593e4d8228f5ab1a679f1cab50764e19e0",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-beyond-thresholds:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 336, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:threshold-curtain-vault",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-beyond-thresholds",
+      "label": "spire-beyond-thresholds / threshold-curtain-vault",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/threshold-curtain-vault.svg",
+      "digest": "e5c6e79bb3416856e11690734a6c2cd22f08898cdf5294643e565b592a6fe3cc",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-beyond-thresholds:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [480, 336, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:threshold-abandoned-bell",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-beyond-thresholds",
+      "label": "spire-beyond-thresholds / threshold-abandoned-bell",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-beyond-thresholds/threshold-abandoned-bell.svg",
+      "digest": "78a4670d778eaaa59bc022ad1578b945b7fc300e1b9138730cb48e80d5b9181f",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-beyond-thresholds:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [960, 336, 480, 336]; removed only grid translation. Review: spire-beyond-thresholds/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-exordium-city:original",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-exordium-city",
+      "label": "spire-exordium-city / exact API original",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/original.svg",
+      "digest": "69997602f16c4072c4970c614ffecd46d3993f3657146bd0e8b64a9838b15bed",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original; source sheet."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-exordium-city:exordium-split-ascent",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-exordium-city",
+      "label": "spire-exordium-city / exordium-split-ascent",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/exordium-split-ascent.svg",
+      "digest": "deb81e5a604395d01d63ee2cbd90068d640e1fcad8b4462b13f805bb19dcf9a6",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-exordium-city:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 0, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-exordium-city:exordium-rain-camp",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-exordium-city",
+      "label": "spire-exordium-city / exordium-rain-camp",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/exordium-rain-camp.svg",
+      "digest": "e0814d1fab6353cc4c822d49d7a570e6e61a1426f5d37509350fb780b1ba1715",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-exordium-city:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [480, 0, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-exordium-city:exordium-sealed-door",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-exordium-city",
+      "label": "spire-exordium-city / exordium-sealed-door",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/exordium-sealed-door.svg",
+      "digest": "5f171cc1e54830eca3bf455e7ed25a7379b9df8ad0900110119600849309920e",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-exordium-city:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [960, 0, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-exordium-city:city-suspended-market",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-exordium-city",
+      "label": "spire-exordium-city / city-suspended-market",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/city-suspended-market.svg",
+      "digest": "1ee1e9d49995b785178715e65dac195145cb77d02f84bc62aa7997f2b7254912",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-exordium-city:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 336, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json. Hold: covered balcony reads; market function weak."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-exordium-city:city-aqueduct-crossing",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-exordium-city",
+      "label": "spire-exordium-city / city-aqueduct-crossing",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/city-aqueduct-crossing.svg",
+      "digest": "a93ce4f2c18d4a9a0f73f007b2be88a1eb0984d95c96877ffee2d0aed1bbe32b",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-exordium-city:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [480, 336, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json."
+    },
+    {
+      "id": "expansion-archive-spire-20261106:spire-exordium-city:city-rooftop-refuge",
+      "asset": null,
+      "attempt": "expansion-archive-spire-20261106:spire-exordium-city",
+      "label": "spire-exordium-city / city-rooftop-refuge",
+      "file": "docs/art/assets/expansion-archive-spire-2026-11-06/spire-exordium-city/city-rooftop-refuge.svg",
+      "digest": "52198d9c39af546f03de7caeb1adfc386e194b31eeb4b17bb5d1f4dc84a8cef8",
+      "parents": [
+        "expansion-archive-spire-20261106:spire-exordium-city:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [960, 336, 480, 336]; removed only grid translation. Review: spire-exordium-city/call.json."
     }
   ]
 }

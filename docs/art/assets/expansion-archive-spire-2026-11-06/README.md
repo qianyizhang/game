@@ -1,8 +1,8 @@
 # Archive modules and Spire encounter concepts
 
-[Open the standalone review](index.html) · [36-concept overview](overview.png) · [Lineage/index and staged import](prepared-history.json)
+[Open the standalone review](index.html) · [36-concept overview](overview.png) · [Canonical lineage and records](../../iterations/library.json)
 
-This completed suite contains **24 Cartographer archive/garden/forge props and 12 Spire encounter locations**: 35 author candidates and one semantic hold, `city-suspended-market`, whose covered balcony reads clearly but whose market function is weak. The bell reads copper/bronze rather than iron. Independent/user acceptance and any actual game consumer review remain pending. No default, selected art, runtime slot, gameplay, shared registry or rule changed.
+This completed suite contains **24 Cartographer archive/garden/forge props and 12 Spire encounter locations**: 35 author candidates and one semantic hold, `city-suspended-market`, whose covered balcony reads clearly but whose market function is weak. The bell reads copper/bronze rather than iron. Independent/user acceptance and any actual game consumer review remain pending. No default, selected art, runtime slot, gameplay or rule changed. The shared history now registers this suite for review.
 
 ## Admission and source audit
 
@@ -18,7 +18,7 @@ The exception is the user's explicitly requested future-expansion purpose. Reuse
 
 Five successful sequential requests used `gpt-image-2.6-sunburst` and SVG author `gpt-6.1-sol`, high quality/complexity and medium author reasoning. No paid retry or failed/unknown attempt occurred. Usage-derived total is **US$0.786142**, with **US$0 outstanding reservations**. [Budget](budget.json) describes this completed suite's historical grant only; it is not current worker/shared-pool spending authority. Account balance/expiry and invoice were not independently verified.
 
-Each family's `call.json` stores its exact request/prompt/settings once, unique response usage/request ID/time, cost, foreground measurements and original per-subject review. The [prepared history](prepared-history.json) is the single artwork file/digest/parent/cell index and required additive gallery transport; it references those shared calls rather than copying their review prose. Request wire hashes remain reconstructible using the serialization recipe in `budget.json`. All art and necessary previews are byte-identical to the original checkpoint.
+Each family's `call.json` stores its exact request/prompt/settings once, unique response usage/request ID/time, cost, foreground measurements and original per-subject review. The [shared history](../../iterations/library.json) owns IDs, digests, parents and cell recipes, referencing the shared calls rather than copying their review prose. The redundant staged transport is retired after migrating its consumers; normal Git history retains it. Request wire hashes remain reconstructible using the serialization recipe in `budget.json`. All art and necessary previews are byte-identical to the original checkpoint.
 
 [Official guide](https://developers.openai.com/api/docs/guides/image-generation), [standard pricing](https://developers.openai.com/api/docs/pricing), and [SVG author limits](https://developers.openai.com/api/docs/models/gpt-6.1-sol) were verified before generation. The existing configured proxy and network-secret binding were used only with verified OpenAI API endpoints; no credentials were printed, saved or changed. The API's internal raster reference was not returned as a separate artifact.
 
@@ -32,6 +32,8 @@ Seven PNGs are useful contact/gallery evidence, not animation frames or another 
 
 ## Registration and handoff
 
-The import remains staged and **unregistered**. Central ownership must reconcile/import `prepared-history.json`, then run shared verification and review before it is gallery review-ready. The existing history remains 709 slots, 92 revisions and zero selections; the isolated copy adds 41 source revisions without new slots or runtime adaptations. No merge or adoption is implied by publishing this source review.
-
 Bookkeeping cleanup keeps one shared call per paid request, one meaningful lineage/index, and concise common validation. Removed files were redundant prompts, inventories and repeated proof/review structures, not artwork; normal Git history retains prior records. Standalone links, gallery attempt attachments, public description links and continuation consumers are checked before removal. The continuation links this README and the historical budget path, both preserved. No ongoing request/reservation is accounted to this cleanup.
+
+Open `/__art/#asset=__unassigned` and find `expansion-archive-spire-20261106`. Five attempts and 41 source revisions preserve the five exact originals and all 36 extractions, including the suspended-market hold. **Generation and authoring attempts** exposes each exact shared call; the archive attempt also links the overview and prior gallery evidence once. All new revisions remain unassigned, without runtime adapters or adoption. This branch has 709 assets, 133 revisions and zero selections.
+
+Registration verification and remaining limits are recorded in the existing [validation](validation.json). User aesthetic acceptance and game-context review remain pending. Other unmerged candidate PRs have independent shared-history additions requiring later serial reconciliation; this branch does not import their artwork or establish cross-PR integration.

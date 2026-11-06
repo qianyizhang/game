@@ -109,11 +109,22 @@
   "not_run": {
     "application_simulations": "No runtime or rule source changes.",
     "native_geometry_delivery": "No native construction or delivery changes.",
-    "guarded_repository_browser_suite": "No runtime consumer added; manual preview/gallery checks are reported separately."
+    "guarded_repository_browser_suite": "See canonical registration results below; original manual evidence remains historical."
   },
   "acceptance": "35 author candidates; city-suspended-market held. Independent/user acceptance and actual game consumer review pending. No runtime adaptation or selection.",
-  "registration": "Additive prepared-history.json validated only in an isolated copy; shared registry unchanged.",
-  "consumer_audit": "Standalone index and gallery attempt files migrated to call.json; public inventory link migrates to prepared-history.json. No source/runtime/test references found outside this bundle. Continuation links README and the historical budget path, both preserved.",
+  "registration": {
+    "handoff_head": "3e3c5c5497194ce32fcbb222743a4ba49ace546c",
+    "status": "Canonical registration; 5 attempts / 41 source revisions; no runtime adapters or selections.",
+    "checks": {
+      "maintenance": "passed: formatting/inventory/links, history verify (709 assets / 133 revisions / zero selections / 709 registered sources), lint/types, 19 Python, 202 tooling, 81 DCC contracts and production build",
+      "browser": "All 3 affected asset-history journeys passed at normal local limits; actual live gallery inspected separately for all 41 revisions and 5 call records. No application/simulation/geometry/native execution claimed.",
+      "hosted": "Exact final-head CI tracked on PR; user aesthetic acceptance and actual runtime context remain pending."
+    },
+    "gallery": "41 revisions decoded at native/compact sizes and inspected enlarged; 5 exact call documents and all parent records visible; source-only adoption disabled; no page errors. Desktop 1440px, phone 390/320px and 16/20px text fit.",
+    "preservation": "All 48 artwork/preview files, five call records and historical budget bytes match the handoff. Prior registry records and selected-art.json unchanged. Redundant prepared-history.json retired after exact ID/digest/parent/cell comparison with canonical records and consumer migration.",
+    "runtime": "Node 24.21.0 / npm 11.19.0 / official Google Chrome 157.0.8103.38"
+  },
+  "consumer_audit": "README and standalone index now link canonical library.json; no external references to the suite transport found in main or fetched PR refs. Continuation README/budget paths preserved.",
   "source_gallery_audit": [
     "Live /__art/#asset=spire/acts/2 inspected; no retained revisions; native 160x112 scene",
     "Live /__art/#asset=cartographer/inhabitants/keeper inspected; quiet icon family remains independent of future composition props"
