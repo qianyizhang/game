@@ -165,10 +165,25 @@ export function isNamedDocumentation(path: string): boolean {
   ].includes(path);
 }
 
+// Audited historical prose only; protocols, evidence and unknown histories stay conservative.
+const historyDocumentation = new Set([
+  'docs/research/experiments/blindside.md',
+  'docs/research/experiments/spire.md',
+  'docs/research/experiments/hearth.md',
+  'docs/research/experiments/emberwake.md',
+  'docs/research/experiments/cartographer.md',
+  'docs/research/experiments/night-passage.md',
+  'docs/research/experiments/workflows.md',
+  'docs/research/delivery-history.md',
+  'docs/engineering/scope-history.md',
+  'docs/engineering/history/cleanup-triage.md',
+]);
+
 export function isDocumentation(path: string): boolean {
   return (
     isNamedDocumentation(path) ||
     path === 'docs/engineering/maintenance.md' ||
+    historyDocumentation.has(path) ||
     /^docs\/guide\/(?:[^/]+\/)*[^/]+\.md$/.test(path) ||
     /^docs\/art\/assets\/(?:[^/]+\/)+README\.md$/.test(path) ||
     /^docs\/art\/assets\/(?:hearth-mech-roles|spire-act1-enemies)\/[^/]+\.(?:png|jpe?g|webp)$/.test(
