@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { isAbsolute, relative, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { build, type LogLevel, type PluginOption } from 'vite';
+import type { LogLevel, PluginOption } from 'vite';
 
 export const sha256 = (bytes: string | Uint8Array) =>
   createHash('sha256').update(bytes).digest('hex');
@@ -16,6 +16,7 @@ export async function buildRuntime(options: {
   plugins?: PluginOption[];
   logLevel?: LogLevel;
 }) {
+  const { build } = await import('vite');
   const sourcePaths = new Set<string>();
   await build({
     root: repositoryRoot,

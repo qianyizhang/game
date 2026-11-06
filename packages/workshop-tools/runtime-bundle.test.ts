@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { mkdir, mkdtemp, readFile, realpath, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -113,4 +114,25 @@ await test('Night Passage retains an importable digest-named bundle and pins sha
   agent.step({ type: 'start', weapon: 'bow', runes: [] });
   assert.equal(agent.observe().phase, 'combat');
   assert.equal((JSON.parse(agent.exportReplay()) as { seed: string }).seed, 'retained-runtime');
+});
+
+await test('episode artifacts can load, hash and encode without initializing the build toolchain', () => {
+  const text = '{"seed":"artifact-only","commands":[]}';
+  const script = `
+    import { registerHooks } from 'node:module';
+    import { gunzipSync } from 'node:zlib';
+    registerHooks({ resolve(specifier, context, nextResolve) {
+      if (specifier === 'vite') throw new Error('Artifact workers do not build runtimes.');
+      return nextResolve(specifier, context);
+    } });
+    await import(${JSON.stringify(new URL('./policy/study.ts', import.meta.url).href)});
+    const { encodeRolloutArtifact } = await import(${JSON.stringify(new URL('./policy/artifact.ts', import.meta.url).href)});
+    const { bytes, metadata } = encodeRolloutArtifact(${JSON.stringify(text)}, 'gzip');
+    process.stdout.write(JSON.stringify({ text: gunzipSync(bytes).toString(), digest: metadata.decodedSha256 }));
+  `;
+  const result = execFileSync(process.execPath, ['--input-type=module', '--eval', script], {
+    encoding: 'utf8',
+    stdio: 'pipe',
+  });
+  assert.deepEqual(JSON.parse(result), { text, digest: digest(text) });
 });
