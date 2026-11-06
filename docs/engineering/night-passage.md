@@ -269,7 +269,7 @@ RNG, damage geometry or replay version changes are part of this artwork slice.
 
 ### Rendering cost
 
-The [dated enemy draw-submission comparison](../research/experiments/2026-10-13-night-passage-rendering.md)
+The [dated enemy draw-submission comparison](../research/experiments/night-passage.md#2026-10-13-night-passage-rendering)
 uses the production renderer and unchanged assets at five-enemy campaign density
 and a synthetic 24-enemy expansion workload. At 960 × 600 and DPR 1 on the local
 M5 Pro, batching reduced total draw calls by 31% and 46%, respectively. CPU

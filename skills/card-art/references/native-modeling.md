@@ -3,7 +3,7 @@
 Start here for a new motion study or a native rig/motion refinement. The
 [art rulebook](../../../docs/art/art-direction.md) owns aesthetics; this playbook
 owns the reusable authoring procedure. Subject guides below locate working code.
-The [three-round trial](../../../docs/art/trials/rig-strategy-three-rounds.md)
+The [three-round trial](../../../docs/art/trials/README.md#fox-boar-and-raven-rounds--2026-10-11)
 is supporting evidence, not prerequisite reading.
 
 ## Start a subject

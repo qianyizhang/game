@@ -62,7 +62,7 @@ Cartographer's [inhabitants](assets/cartographer-inhabitants/README.md) share
 and enemy inspector. Six 64 × 64 subjects export as `cartographer/inhabitants/{kind}`;
 phone tiles display them around 35 px. HTML retains names, HP, intentions and selection.
 
-`ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](../research/content-expansions.md#card-suite-expansion), [Night Market](../research/content-expansions.md#night-market), and [feature artwork coverage](history/feature-coverage.md) document their sets.
+`ArtGlyph` uses a local 100 × 100 coordinate system; `x`, `y` and `size` position it. Reuse game primitives before adding another shared abstraction. Keep gameplay text in HTML. The [card expansion](../research/delivery-history.md#content-expansions), [Night Market](../research/delivery-history.md#content-expansions), and [feature artwork coverage](history/feature-coverage.md) document their sets.
 
 ## Integration boundaries
 

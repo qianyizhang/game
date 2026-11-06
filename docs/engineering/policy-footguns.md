@@ -79,8 +79,8 @@ Typed checks must pass before treating the old surface as unused.
 
 ## Evidence index
 
-- [Night Passage adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md): original knowledge, async navigation, damaged artifacts and incomplete audit verdicts.
-- [Spire findings](../research/experiments/2026-10-16-spire-strength.md): native combat projection, reference selection and failed confirmations.
-- [Cartographer development](../research/experiments/2026-10-16-cartographer-strength-3.md): saturation, score interpretation and versioned pressure.
+- [Night Passage adoption audit](../research/experiments/night-passage.md#2026-10-16-night-passage-rollout-review): original knowledge, async navigation, damaged artifacts and incomplete audit verdicts.
+- [Spire findings](../research/experiments/spire.md#2026-10-16-spire-strength): native combat projection, reference selection and failed confirmations.
+- [Cartographer development](../research/experiments/cartographer.md#2026-10-16-cartographer-strength-3): saturation, score interpretation and versioned pressure.
 - [Emberwake contract](emberwake-policy.md#evidence-and-current-status): linked campaign, recovery, pressure and rejected-policy records.
 - [Maintenance prevention rules](maintenance.md#prevent-repeated-trace-mistakes): path discovery, bounded reads, isolated candidates and generated-path provenance.

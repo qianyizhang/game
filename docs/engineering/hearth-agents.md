@@ -15,7 +15,7 @@ Recall transfers existing units without duplicating pool copies. Full hands reje
 
 ## Information boundary
 
-`src/games/battlegrounds/application/agent.ts` defines policy observations; `src/shared/agent.ts` provides transport contracts.
+`src/games/battlegrounds/application/agent.ts` defines Hearth policy observations and transport contracts shared by its Classic and arena modes.
 
 | Included in observation                                           | Excluded from observation                                |
 | ----------------------------------------------------------------- | -------------------------------------------------------- |
@@ -70,4 +70,4 @@ Outputs:
 - `replay.json` & `receipt.json`: Authoritative accepted commands and state reconstruction.
 - `comparison.json`: Matched pairs, mean placements, win/tie/loss counts, and compute totals.
 
-See [delivery history](../research/delivery-history.md) and [initial experiment](../research/experiments/2026-10-04-hearth-ai-v1.md) for results. [Mixed Rivals](../guide/hearth-arena.md) extends this with an 8-seat policy arena.
+See [delivery history](../research/delivery-history.md) and [initial experiment](../research/experiments/hearth.md#2026-10-04-hearth-ai-v1) for results. [Mixed Rivals](../guide/hearth-arena.md) extends this with an 8-seat policy arena.

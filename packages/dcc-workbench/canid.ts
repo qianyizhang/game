@@ -1,11 +1,10 @@
 /** Canid pilot commands and delivery validation; existing gallery releases remain independent. */
-import { createHash } from 'node:crypto';
 import { readFileSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { findBlender, runBlender } from './blender.ts';
-import { readGlb, accessorValues } from './glb.ts';
+import { hashFile, inspectMotionGlb, verifyFileDigests } from './motion-delivery.ts';
 import { record } from './contracts.ts';
 import { readMotions } from './motion-contract.ts';
 import { evaluateCanid } from './subjects/canid/evaluation.ts';
@@ -13,7 +12,6 @@ import { evaluateCanid } from './subjects/canid/evaluation.ts';
 const root = dirname(fileURLToPath(import.meta.url));
 const ids = ['ash', 'russet', 'moss'];
 const baselineDurations: Record<string, number> = { idle: 4, walk: 2, look: 4 };
-const hash = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
 
 export function verifyCanid({
   baseline = false,
@@ -56,87 +54,47 @@ export function verifyCanid({
     if (
       receipt.schemaVersion !== (baseline ? 2 : 4) ||
       receipt.character !== id ||
-      receipt.sourceSha256 !== hash(join(sources, id, 'source.blend')) ||
-      receipt.motionSha256 !== hash(join(sources, 'motion.blend')) ||
-      receipt.modelSha256 !== hash(join(directory, `${id}.glb`))
+      receipt.sourceSha256 !== hashFile(join(sources, id, 'source.blend')) ||
+      receipt.motionSha256 !== hashFile(join(sources, 'motion.blend')) ||
+      receipt.modelSha256 !== hashFile(join(directory, `${id}.glb`))
     )
       throw new Error(`Stale canid delivery: ${id}`);
     if (Object.values(record(receipt.clips)).some((clip) => 'samples' in record(clip)))
       throw new Error(`Canid delivery contains temporary pose fixtures: ${id}`);
-    if (
-      JSON.stringify(Object.keys(record(receipt.exportScripts)).sort()) !==
-      JSON.stringify([...exporterPaths].sort())
-    )
-      throw new Error('Incomplete canid exporter identity');
-    for (const [name, expected] of Object.entries(record(receipt.exportScripts))) {
+    let stats: ReturnType<typeof inspectMotionGlb>;
+    try {
+      verifyFileDigests(
+        join(root, baseline ? 'blender' : ''),
+        exporterPaths,
+        record(receipt.exportScripts),
+      );
+      const profile = record(receipt.profile);
       if (
-        !exporterPaths.includes(name) ||
-        hash(join(root, baseline ? 'blender' : '', name)) !== expected
+        profile.sourceSha256 !== receipt.motionSha256 ||
+        profile.meshSha256 !== receipt.meshSha256
       )
-        throw new Error(`Stale canid exporter: ${name}`);
+        throw new Error('Canid fitting changed mesh data');
+      stats = inspectMotionGlb(
+        bytes,
+        motions ??
+          Object.fromEntries(
+            Object.entries(baselineDurations).map(([name, seconds]) => [
+              name,
+              { seconds, playback: 'loop' as const },
+            ]),
+          ),
+        {
+          maxBytes: 4_000_000,
+          maxTriangles: baseline ? 50_000 : 100_000,
+          maxJoints: baseline ? 32 : 40,
+        },
+      );
+    } catch (error) {
+      throw new Error(
+        `Canid delivery ${id}: ${error instanceof Error ? error.message : String(error)}`,
+        { cause: error },
+      );
     }
-    const profile = record(receipt.profile);
-    if (profile.sourceSha256 !== receipt.motionSha256 || profile.meshSha256 !== receipt.meshSha256)
-      throw new Error('Canid fitting changed mesh data');
-    const gltf = readGlb(bytes);
-    const values = gltf.accessors.map((_, i) => accessorValues(bytes, gltf, i));
-    if (values.some((accessor) => accessor.some((value) => !Number.isFinite(value))))
-      throw new Error(`Non-finite delivery data: ${id}`);
-    const names = gltf.animations.map((a) => a.name).sort();
-    if (JSON.stringify(names) !== JSON.stringify(Object.keys(durations).sort()))
-      throw new Error('Incomplete named canid clips');
-    for (const animation of gltf.animations) {
-      const seconds = durations[animation.name ?? ''];
-      for (const sampler of animation.samplers) {
-        const times = values[sampler.input];
-        if (
-          times[0] !== 0 ||
-          Math.abs(times.at(-1)! - seconds) > 1e-5 ||
-          times.some((t, i) => i > 0 && t <= times[i - 1])
-        )
-          throw new Error(`Invalid clip timing: ${animation.name}`);
-        const output = values[sampler.output];
-        const n = gltf.accessors[sampler.output].type === 'VEC4' ? 4 : 3;
-        const start = output.slice(0, n),
-          end = output.slice(-n);
-        const error = Math.max(...start.map((x, i) => Math.abs(x - end[i])));
-        const opposite = n === 4 && Math.max(...start.map((x, i) => Math.abs(x + end[i]))) < 1e-5;
-        if ((!motions || motions[animation.name!].playback === 'loop') && error > 1e-5 && !opposite)
-          throw new Error(`Open animation loop: ${animation.name}`);
-      }
-    }
-    let triangles = 0;
-    for (const mesh of gltf.meshes)
-      for (const primitive of mesh.primitives) {
-        const count = gltf.accessors[primitive.attributes.POSITION].count;
-        triangles += gltf.accessors[primitive.indices ?? primitive.attributes.POSITION].count / 3;
-        const weights = values[primitive.attributes.WEIGHTS_0];
-        const joints = values[primitive.attributes.JOINTS_0];
-        if (weights?.length !== count * 4 || joints?.length !== count * 4)
-          throw new Error('Incomplete canid skin');
-        for (let i = 0; i < weights.length; i += 4)
-          if (
-            Math.abs(weights.slice(i, i + 4).reduce((a, b) => a + b, 0) - 1) > 1e-4 ||
-            weights.slice(i, i + 4).some((w) => w < 0)
-          )
-            throw new Error('Invalid canid skin weights');
-        if (
-          joints.some((j) => !Number.isSafeInteger(j) || j < 0 || j >= gltf.skins[0].joints.length)
-        )
-          throw new Error('Invalid canid joint binding');
-        const normals = values[primitive.attributes.NORMAL];
-        for (let i = 0; i < normals.length; i += 3)
-          if (Math.abs(Math.hypot(normals[i], normals[i + 1], normals[i + 2]) - 1) > 0.0005)
-            throw new Error('Invalid canid normal');
-      }
-    if (
-      bytes.length > 4_000_000 ||
-      triangles > (baseline ? 50_000 : 100_000) ||
-      gltf.skins.some((s) => s.joints.length > (baseline ? 32 : 40))
-    )
-      throw new Error('Canid exceeds pilot budget');
-    if (gltf.buffers.some((b) => b.uri) || gltf.images?.some((i) => i.uri))
-      throw new Error('Canid has remote dependencies');
     for (const [clip, contact] of Object.entries(record(receipt.contacts))) {
       const data = record(contact);
       for (const field of ['maxSoleHeight', 'maxSoleFrameSlip', 'ankleLoopError']) {
@@ -183,13 +141,7 @@ export function verifyCanid({
           throw new Error(`Invalid articulated gait: ${id}/${name}`);
       }
     }
-    return {
-      id,
-      bytes: bytes.length,
-      triangles,
-      joints: gltf.skins[0].joints.length,
-      clips: names,
-    };
+    return { id, ...stats };
   });
 }
 

@@ -64,7 +64,7 @@ Test the same two boards over many seeds before judging a position from one outc
 
 No network play, real-time recruiting timer, armor, opponent scouting before pairing, damage cap, seasonal spells, buddies, quests, anomalies, trinkets or current-season card pools. Poisonous is the simple reusable lethal keyword used by this study. Heroes, tribe pool, prices, stats and timing edge cases are original and documented above.
 
-[Development playtest](playtests/2026-10-02-last-hearth.md) records 12 seeded lobbies, both winning and losing, with per-action supply conservation and exact replay reconstruction. Unit tests cover combat interactions and recruitment accounting; browser tests exercise recruitment, playback, triples, Discover, save/import, victory and phone layout. Human fun and matchup balance remain open playtesting work.
+[Development playtest](delivery-history.md#2026-10-02-last-hearth) records 12 seeded lobbies, both winning and losing, with per-action supply conservation and exact replay reconstruction. Unit tests cover combat interactions and recruitment accounting; browser tests exercise recruitment, playback, triples, Discover, save/import, victory and phone layout. Human fun and matchup balance remain open playtesting work.
 
 ## Scouting and bot decisions (v3)
 
@@ -72,7 +72,7 @@ The next opponent is known during recruitment. Its preview is the last completed
 
 Bots use legal recruitment commands and their own offers. They prioritize completing triples, value tribe support and death-effect combinations, preserve money when a refresh cannot lead to a purchase, freeze unaffordable triples, and temper upgrades at low HP. Positioning moves cleave/Windfury attackers forward and support behind them, keeping Taunt at an edge. These are inspectable heuristics, not a claim of expert or stronger-than-baseline play.
 
-The [v3 cohort](playtests/2026-10-02-workshop-v3.md) checks complete lobbies and supply conservation. Human experiments should test whether scouting changes a purchase, target or formation, and whether bot pressure supports multiple builds.
+The [v3 cohort](delivery-history.md#2026-10-02-workshop-v3) checks complete lobbies and supply conservation. Human experiments should test whether scouting changes a purchase, target or formation, and whether bot pressure supports multiple builds.
 
 ## Strategic hero powers and AI experiments (v5)
 

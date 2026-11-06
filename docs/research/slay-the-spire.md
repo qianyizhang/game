@@ -56,4 +56,4 @@ There is no Defect, Watcher, A6–A20, keys, Act IV, unlock progression or origi
 
 ## Experiments and evidence
 
-Compare Strength scaling with Exhaust, Poison with Shiv volume, and card discards with ordinary end-turn cleanup. The practice lab can isolate Guardian, Artifact and Time Warp; normal runs remain committed. [Workshop v3 playtests](playtests/2026-10-02-workshop-v3.md) records current automated evidence. Earlier Ironclad v2 and Emberpath reports are historical snapshots.
+Compare Strength scaling with Exhaust, Poison with Shiv volume, and card discards with ordinary end-turn cleanup. The practice lab can isolate Guardian, Artifact and Time Warp; normal runs remain committed. [Workshop v3 playtests](delivery-history.md#2026-10-02-workshop-v3), Ironclad v2 and Emberpath results are dated lifecycle evidence, not measurements of the current game.

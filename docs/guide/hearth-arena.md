@@ -55,7 +55,7 @@ node packages/workshop-tools/hearth/arena-experiment.ts evaluation test-results/
 node packages/workshop-tools/hearth/arena-audit.ts test-results/ai/new-arena-evaluation
 ```
 
-Metrics track mean placement across seed blocks. See [recruitment study](../research/experiments/2026-10-04-hearth-recruitment-v2.md) and [v2 diagnostics](../research/hearth-recruitment-v2.md).
+Metrics track mean placement across seed blocks. See [recruitment study](../research/experiments/hearth.md#2026-10-04-hearth-recruitment-v2) and [v2 diagnostics](../research/hearth-recruitment-v2.md).
 
 ## Source map
 

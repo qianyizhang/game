@@ -50,7 +50,7 @@ No Arcana/Spectral packs, seals, editions, unlock progression, additional starti
 
 For each run, record seed, decisive purchases, intended build, loss/win point and a sentence about the least interesting decision. Compare identical seeds after a single balance change. Do not optimize only for bot win rate.
 
-Initial evidence: [2026-10-02 development playtest](playtests/2026-10-02-blindside.md).
+Initial evidence: [2026-10-02 development playtest](delivery-history.md#2026-10-02-blindside).
 
 ## Pack, voucher and tag strategy (v3)
 
@@ -60,4 +60,4 @@ A $10 voucher permanently changes a resource rule: hands, discards, hand size, i
 
 Small/Big Blinds display skip tags before entry. Skipping forfeits the blind payout, spare-hand income, interest and shop. Economy doubles cash up to a $40 gain; Orbital grants three levels to the shown hand; Buffoon opens a free Mega pack; Investment pays $25 after the next boss victory. Bosses cannot be skipped. [Tag reference](https://balatrogame.fandom.com/wiki/Tags).
 
-Experiment: is the displayed tag worth losing both a payout and a shop? Record the skip and the next boss result instead of comparing only immediate money. [Current v3 cohort](playtests/2026-10-02-workshop-v3.md).
+Experiment: is the displayed tag worth losing both a payout and a shop? Record the skip and the next boss result instead of comparing only immediate money. [Historical v3 cohort](delivery-history.md#2026-10-02-workshop-v3).

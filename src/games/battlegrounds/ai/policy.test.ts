@@ -3,11 +3,7 @@ import { bgSession } from '../application/session';
 import { observeHearth } from '../application/agent';
 import { makeUnit } from '../domain/units';
 import { createHearthPolicy, searchPosition, type HearthPolicyConfig } from './policy';
-import {
-  compareEpisodes,
-  runEpisode,
-  type EpisodeReport,
-} from '../../../engines/hearth/experiment';
+import { compareEpisodes, runEpisode, type EpisodeReport } from '../experiments/experiment';
 
 const config: HearthPolicyConfig = {
   kind: 'scout-search-v1',

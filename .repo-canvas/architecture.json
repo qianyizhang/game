@@ -348,8 +348,8 @@
       "summary": "Game-owned recruitment policies and existing headless runtime/inspectors remain supported. They are not automatically equivalent to the restricted adoption observation contract.",
       "sources": [
         "src/games/battlegrounds/ai/recruitment-policy.ts",
-        "src/engines/hearth/recruitment-runtime.ts",
-        "src/engines/hearth/recruitment-inspector.ts",
+        "packages/workshop-tools/hearth/recruitment-entry.ts",
+        "src/games/battlegrounds/experiments/recruitment-inspector.ts",
         "docs/engineering/hearth-agents.md"
       ],
       "x": 430,
@@ -363,8 +363,8 @@
       "summary": "Classic is the ordinary default. Legacy synchronous JSONL agent transports, experiment entry points and historical source hashes retain their recorded meanings; they are separate from the shared adoption recorder. Inspect the owning contract before consolidation.",
       "sources": [
         "src/games/battlegrounds/application/session.ts",
-        "src/engines/hearth/runtime.ts",
-        "src/engines/hearth/experiment.ts",
+        "packages/workshop-tools/hearth/runtime-entry.ts",
+        "src/games/battlegrounds/experiments/experiment.ts",
         "docs/engineering/hearth-agents.md"
       ],
       "x": 40,

@@ -64,11 +64,11 @@ Every episode checks supply conservation after accepted commands and reconstruct
 ## Source map
 
 - `src/games/battlegrounds/ai/recruitment-v2.ts`: versioned interventions and diagnostics.
-- `src/engines/hearth/recruitment-experiment.ts`: frozen grid, controller binding, complete-block comparison.
-- `src/engines/hearth/recruitment-inspector.ts`: replay reconstruction and same-input proposals.
+- `src/games/battlegrounds/experiments/recruitment-experiment.ts`: frozen grid, controller binding, complete-block comparison.
+- `src/games/battlegrounds/experiments/recruitment-inspector.ts`: replay reconstruction and same-input proposals.
 - `packages/workshop-tools/hearth/recruitment-*.ts`: checked run/audit harness and source pins. Historical reports retain their original source pins; reproduce those runs from their recorded revision.
 - `packages/workshop-tools/hearth/recruitment-inspect.ts`, `recruitment-viewer.ts` and `recruitment-viewer.html`: standalone interactive viewer behind the original inspect command.
 
 ## Verified result
 
-The [frozen development and reserved evaluation](experiments/2026-10-04-hearth-recruitment-v2.md) completed and audited **1,200/1,200 lobbies**. Earlier upgrades improved Tempo's reserved mean placement in both rival populations, but Classic retained the best mean. The narrowly enabled replacement-spending intervention added little. No policy was promoted or tuned after the outcomes; the report retains all denominators, block uncertainty, disclosure controls and diagnostic receipts.
+The [frozen development and reserved evaluation](experiments/hearth.md#2026-10-04-hearth-recruitment-v2) completed and audited **1,200/1,200 lobbies**. Earlier upgrades improved Tempo's reserved mean placement in both rival populations, but Classic retained the best mean. The narrowly enabled replacement-spending intervention added little. No policy was promoted or tuned after the outcomes; the report retains all denominators, block uncertainty, disclosure controls and diagnostic receipts.

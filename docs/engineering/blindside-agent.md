@@ -137,5 +137,5 @@ Full original rollouts require `--retain-rollouts all`; apply the
 [iteration retention rule](maintenance.md#policy-iteration-retention) when closing a study.
 Freeze policies after development; never tune on reserved results and rerun under the
 same claimed holdout. The study reports paired progress differences with uncertainty.
-The [dated adoption report](../research/experiments/2026-10-16-blindside-policy.md)
+The [dated adoption report](../research/experiments/blindside.md#2026-10-16-blindside-policy)
 owns measured results and limitations.

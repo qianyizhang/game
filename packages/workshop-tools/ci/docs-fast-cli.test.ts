@@ -299,3 +299,28 @@ void test('new named documents, unavailable bases and explicit full selection ca
     rmSync(f.root, { recursive: true, force: true });
   }
 });
+
+void test('history prose runs without dependencies and broken ledger links still fail', () => {
+  const f = fixture();
+  try {
+    const history = 'docs/research/experiments/hearth.md';
+    f.put(history, '# Hearth history\n\nOriginal result.\n');
+    const base = f.commit();
+    f.put(history, '# Hearth history\n\nClarified result.\n');
+    f.commit();
+    rmSync(f.path('node_modules'));
+    const plan = f.run('docs-fast', ['plan'], { CI_BASE: base });
+    assert.equal(plan.status, 0, plan.stderr);
+    const selected = JSON.parse(plan.stdout) as Plan;
+    assert.equal(selected.mode, 'documentation');
+    const check = f.run('docs-fast', ['check'], { CI_BASE: base });
+    assert.equal(check.status, 0, check.stdout + check.stderr);
+    f.put(history, '# Hearth history\n\n[Missing evidence](missing.md)\n');
+    f.commit();
+    const broken = f.run('docs-fast', ['check'], { CI_BASE: base });
+    assert.equal(broken.status, 1);
+    assert.match(broken.stdout + broken.stderr, /Broken local link.*hearth.md/);
+  } finally {
+    rmSync(f.root, { recursive: true, force: true });
+  }
+});

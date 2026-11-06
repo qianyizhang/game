@@ -43,4 +43,4 @@ The user described the published native result as somewhat cute but toyish and l
 
 ## Native trial — 2026-10-09 Shanghai
 
-The native Matriarch is now the independently verified, Astra-accepted gallery default; user art approval remains unrecorded. The selective throat/neck repair and editable Guard reach operation preserve the original procedural model and retained GLB. The [native trial retrospective](../../trials/native-matriarch-trial.md) records exact accepted bytes, work split, costs, checks and remaining limitations. The procedural record above remains the original baseline account.
+The native Matriarch is now the independently verified, Astra-accepted gallery default; user art approval remains unrecorded. The selective throat/neck repair and editable Guard reach operation preserve the original procedural model and retained GLB. The [native trial retrospective](../../trials/README.md#matriarch-native-trial--2026-10-08-utc--2026-10-09-shanghai) records exact accepted bytes, work split, costs, checks and remaining limitations. The procedural record above remains the original baseline account.

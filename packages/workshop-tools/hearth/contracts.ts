@@ -2,7 +2,7 @@ import { isList, objectValue } from '../../../src/shared/json.ts';
 import type {
   RecruitmentCase,
   RecruitmentReport,
-} from '../../../src/engines/hearth/recruitment-experiment';
+} from '../../../src/games/battlegrounds/experiments/recruitment-experiment';
 import type { Runtime } from './recruitment-runtime.ts';
 
 export { objectValue };

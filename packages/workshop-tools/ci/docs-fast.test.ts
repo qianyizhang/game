@@ -61,6 +61,38 @@ void test('only allowlisted prose and reviewed raster changes qualify, including
   }
 });
 
+void test('audited history prose qualifies while protocols, evidence and unknown histories do not', () => {
+  for (const path of [
+    'docs/research/experiments/blindside.md',
+    'docs/research/experiments/spire.md',
+    'docs/research/experiments/hearth.md',
+    'docs/research/experiments/emberwake.md',
+    'docs/research/experiments/cartographer.md',
+    'docs/research/experiments/night-passage.md',
+    'docs/research/experiments/workflows.md',
+    'docs/research/delivery-history.md',
+    'docs/engineering/scope-history.md',
+    'docs/engineering/history/cleanup-triage.md',
+  ]) {
+    for (const status of ['A', 'M', 'D'])
+      assert.equal(safeDocumentation([{ path, status }], prose), true, `${path} ${status}`);
+    assert.equal(
+      safeDocumentation([{ path, status: 'M' }], () => '# History\n\n```sh\nnpm test\n```\n'),
+      false,
+      path,
+    );
+  }
+  for (const path of [
+    'docs/research/experiments/2026-10-16-cartographer-strength-3-protocol.md',
+    'docs/research/experiments/2026-10-16-emberwake-strength-5-protocol.md',
+    'docs/research/experiments/2026-10-16-spire-strength-4-protocol.md',
+    'docs/research/experiments/hearth.json',
+    'docs/research/experiments/new-game.md',
+    'docs/engineering/history/new-history.md',
+  ])
+    assert.equal(safeDocumentation([{ path, status: 'M' }], prose), false, path);
+});
+
 void test('only modifications of the three named inputs qualify; unchanged checks examples are opaque bytes', () => {
   const examples = '\n```sh\nnpm run ci -- core\nplain example line\n```\n';
   for (const path of [

@@ -118,7 +118,13 @@ export function sourceFamily(path: string): Family | 'core' | undefined {
   if (game === 'battlegrounds') return 'hearth';
   if (game === 'diablo2') return 'emberwake';
   if (games.includes(game as Family)) return game as Family;
-  if (path.startsWith('src/engines/hearth/')) return 'hearth';
+  if (
+    [
+      'packages/workshop-tools/hearth/runtime-entry.ts',
+      'packages/workshop-tools/hearth/recruitment-entry.ts',
+    ].includes(path)
+  )
+    return 'hearth';
   if (path.startsWith('src/engines/playing.')) return 'balatro';
   if (/^src\/(app|shared|mods)\//.test(path) || path.startsWith('src/engines/challenges.'))
     return 'core';
@@ -163,11 +169,26 @@ export function isNamedDocumentation(path: string): boolean {
   ].includes(path);
 }
 
+// Audited historical prose only; protocols, evidence and unknown histories stay conservative.
+const historyDocumentation = new Set([
+  'docs/research/experiments/blindside.md',
+  'docs/research/experiments/spire.md',
+  'docs/research/experiments/hearth.md',
+  'docs/research/experiments/emberwake.md',
+  'docs/research/experiments/cartographer.md',
+  'docs/research/experiments/night-passage.md',
+  'docs/research/experiments/workflows.md',
+  'docs/research/delivery-history.md',
+  'docs/engineering/scope-history.md',
+  'docs/engineering/history/cleanup-triage.md',
+]);
+
 export function isDocumentation(path: string): boolean {
   if (galleryInputs.has(path)) return false;
   return (
     isNamedDocumentation(path) ||
     path === 'docs/engineering/maintenance.md' ||
+    historyDocumentation.has(path) ||
     /^docs\/guide\/(?:[^/]+\/)*[^/]+\.md$/.test(path) ||
     /^docs\/art\/assets\/(?:[^/]+\/)+README\.md$/.test(path) ||
     /^docs\/art\/assets\/(?:hearth-mech-roles|spire-act1-enemies)\/[^/]+\.(?:png|jpe?g|webp)$/.test(

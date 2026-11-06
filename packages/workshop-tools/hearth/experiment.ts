@@ -1,5 +1,5 @@
 import { sourceSnapshot } from './provenance.ts';
-import type { EpisodeReport } from '../../../src/engines/hearth/experiment';
+import type { EpisodeReport } from '../../../src/games/battlegrounds/experiments/experiment';
 import { fileURLToPath } from 'node:url';
 import { fromRoot, repositoryRoot, reportFailure } from '../io.ts';
 import { appendFileSync } from 'node:fs';
