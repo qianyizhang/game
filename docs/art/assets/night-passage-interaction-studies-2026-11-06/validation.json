@@ -1,0 +1,38 @@
+{
+  "scope": "Six decision-tool concepts; three optional authored derivatives; one retained failed authored construction. New scoped files only on current main.",
+  "checks": {
+    "svg_safety_bounds_digests": 11,
+    "native_compact_states_reviewed": 10,
+    "lossless_contacts_verified": 2,
+    "isolated_import": {
+      "attempts": 2,
+      "revisions": 11,
+      "first_suite_parent_dependency_verified": true,
+      "game_selections_unchanged": true
+    },
+    "linked_review_and_gallery": {
+      "index_images": 20,
+      "index_links": 18,
+      "gallery_revisions_and_call_records": 11,
+      "errors": 0,
+      "viewports": [1440, 390],
+      "horizontal_overflow": false
+    },
+    "format_inventory_history": "passed: format:maintenance and assets:history verify; shared registry unchanged at 709 assets/92 revisions/0 selections",
+    "reused_runtime_validation": {
+      "checkpoint": "a3351841a981c90bfa1ef4ac0ed34757d678f967",
+      "successful_ci": "https://github.com/qianyizhang/game/actions/runs/42244231708",
+      "reason": "No application/tooling/dependency changes; new source records and linked review only."
+    }
+  },
+  "limits": [
+    "Staged-only canonical registration and #141 authored parents block merge readiness.",
+    "User aesthetic selection and actual gameplay/3D placement remain unrecorded.",
+    "The failed coffer cutoff and all original holds/caveats remain preserved."
+  ],
+  "paid_requests": {
+    "successful": 1,
+    "estimated_usd": 0.148576,
+    "manual_derivatives_usd": 0
+  }
+}
