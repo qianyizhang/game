@@ -138,5 +138,5 @@ no game-facing compatibility or broad application/native execution is claimed.
 
 Registration passed `format:maintenance`, `assets:history -- verify`
 (709 assets/98 revisions/zero selections) and all three asset-history browser
-journeys at normal limits (27.9s aggregate). All twelve other owned files and
+journeys at normal limits (27.9s aggregate). All eleven other owned files and
 existing registered asset/source/selection bytes are unchanged.
