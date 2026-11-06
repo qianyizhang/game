@@ -95,6 +95,7 @@
       "maintenance": "passed: formatting/inventory/links, history verify, lint/types, 19 Python tests, 202 tooling tests, 81 DCC contracts and production build",
       "browser": "Initial normal-limit run: 11 passed, 3 failed (2 total-test timeouts and 1 initialization timeout). Normal-limit targeted rerun: 2 passed; per-game galleries timed out again. Same per-game assertions passed in 39.7s using explicit --timeout=120000, no CI flags or repository configuration changes. The default 30s limit remains unresolved.",
       "scope": "All 14 affected browser journeys passed across these runs; this is not a clean normal-limit broad run. No application/simulation/geometry/native authoring suite claimed. Hosted CI is reported separately on the PR."
-    }
+    },
+    "bookkeeping": "Redundant prepared-history.json retired after exact canonical-record comparison and sole README consumer migration; no external consumer found in main/fetched PR refs. Continuation-pinned request files, ledger and admission heading preserved."
   }
 }

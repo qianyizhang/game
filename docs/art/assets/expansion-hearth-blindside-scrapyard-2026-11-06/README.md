@@ -30,10 +30,11 @@ Each actual call has one `call.json` containing its exact sent prompt/request,
 settings, sanitized response usage/request ID, review, or genuine failure:
 [ram](hearth-ram/call.json), [heron](hearth-heron/call.json),
 [tortoise](hearth-tortoise/call.json). Original vectors remain `original.svg`;
-normal/ascended SVGs are named group extractions. The single
-[prepared import](prepared-history.json) supplies the extraction recipes; the
-[shared history](../../iterations/library.json) now registers the three attempts
-and six outputs. Exact call records remain here once per request.
+normal/ascended SVGs are named group extractions. The
+[shared history](../../iterations/library.json) owns the IDs, digests, parents and
+extraction recipes for three attempts and six outputs. The redundant import
+transport is retired after checking its canonical facts and migrating its sole
+README consumer. Exact call records remain here once per request.
 
 Two `gpt-image-2.6-sunburst` calls with medium `gpt-6.1-sol` SVG authoring succeeded.
 Known estimated cost is **US$0.257728**. The tortoise connection closed after
