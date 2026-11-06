@@ -269,7 +269,7 @@ export function historyState(
       ]),
     ),
     live,
-    current,
+    current: live ? {} : current,
     ...(!live
       ? {
           documents: Object.fromEntries(
@@ -280,13 +280,30 @@ export function historyState(
           ),
         }
       : {}),
-    previews: Object.fromEntries(
-      state.history.revisions.map((revision) => {
-        const bytes = checkedFile(root, revision.file, revision.digest);
-        const mime = revision.file.endsWith('.gif') ? 'image/gif' : 'image/svg+xml';
-        return [revision.id, `data:${mime};base64,${bytes.toString('base64')}`];
-      }),
-    ),
+    previews: live
+      ? {}
+      : Object.fromEntries(
+          state.history.revisions.map((revision) => {
+            const bytes = checkedFile(root, revision.file, revision.digest);
+            const mime = revision.file.endsWith('.gif') ? 'image/gif' : 'image/svg+xml';
+            return [revision.id, `data:${mime};base64,${bytes.toString('base64')}`];
+          }),
+        ),
+  };
+}
+
+/** Live previews read only the requested, registered revision and preserve digest checks. */
+export function historyPreview(root: string, version: string, revisionId: string): HistoryDocument {
+  const state = readHistory(root);
+  if (version !== state.version) throw new Error('History changed. Reload before viewing artwork.');
+  const revision = state.history.revisions.find((item) => item.id === revisionId);
+  if (!revision) throw new Error('Unknown revision');
+  const bytes = checkedFile(root, revision.file, revision.digest);
+  const animated = revision.file.endsWith('.gif');
+  return {
+    kind: 'image',
+    url: `data:${animated ? 'image/gif' : 'image/svg+xml'};base64,${bytes.toString('base64')}`,
+    animated,
   };
 }
 

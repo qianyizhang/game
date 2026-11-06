@@ -29,11 +29,14 @@ import {
   removeAttempt,
   importHistory,
   historyState,
+  historyPreview,
   validateSvg,
 } from './history-store.ts';
 import type { ArtHistory } from './history-types.ts';
 import { withBundle, repositoryRoot } from '../io.ts';
-import { verifySourceHistory, snapshotHistory } from './history.ts';
+import { verifySourceHistory, snapshotHistory, currentArtwork } from './history.ts';
+import { artHistoryPlugin } from './history-server.ts';
+import { createServer } from 'vite';
 
 function fixture() {
   const root = mkdtempSync(resolve(tmpdir(), 'art-history-'));
@@ -393,4 +396,75 @@ await test('binary reference inputs remain viewable in offline attempt records',
     url: 'data:image/png;base64,' + png.toString('base64'),
     animated: false,
   });
+});
+
+// Missing unrelated files distinguish metadata/scoped reads from eager preview loading.
+await test('large live history serves metadata and one checked preview without reading unrelated art', async (t) => {
+  const { root, file, svg, history } = fixture();
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const largeSvg = svg.replace('</svg>', `<!--${'x'.repeat(64 * 1024)}--></svg>`);
+  writeFileSync(resolve(root, file), largeSvg);
+  history.revisions[0].digest = history.revisions[0].runtimeDigest = digest(largeSvg);
+  for (let i = 0; i < 1000; i++)
+    history.revisions.push({
+      ...history.revisions[0],
+      id: `unrelated-${i}`,
+      asset: null,
+      file: `${MANAGED_PATH}/missing-${i}.svg`,
+      runtimeFile: null,
+      runtimeDigest: null,
+    });
+  writeFileSync(resolve(root, HISTORY_PATH), JSON.stringify(history));
+  const server = await createServer({
+    configFile: false,
+    root,
+    plugins: [artHistoryPlugin(root)],
+    server: { host: '127.0.0.1', port: 0, watch: null },
+  });
+  await server.listen();
+  t.after(() => server.close());
+  const address = server.httpServer!.address();
+  assert.ok(address && typeof address === 'object');
+  const base = `http://127.0.0.1:${address.port}/__art/api/`;
+  const response = await fetch(base + 'state');
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get('cache-control'), 'no-store');
+  const text = await response.text();
+  const state = historyState(root);
+  assert.deepEqual(JSON.parse(text), state);
+  assert.deepEqual(state.current, {});
+  assert.deepEqual(state.previews, {});
+  assert.doesNotMatch(text, /data:image/);
+  assert.ok(Buffer.byteLength(text) < 500_000);
+  const eagerPreviewBytes = Math.ceil(Buffer.byteLength(largeSvg) / 3) * 4 * 1001;
+  assert.ok(eagerPreviewBytes > Buffer.byteLength(text) * 200);
+  t.diagnostic(
+    `${history.revisions.length} revisions: metadata ${Buffer.byteLength(text)} bytes; equivalent embedded previews alone ${eagerPreviewBytes} bytes`,
+  );
+  const previewUrl = base + `artwork?revision=first&version=${state.version}`;
+  const preview = await fetch(previewUrl);
+  assert.equal(preview.status, 200);
+  const document = (await preview.json()) as { url: string };
+  assert.equal(Buffer.from(document.url.split(',')[1], 'base64').toString(), largeSvg);
+  assert.throws(() => historyPreview(root, state.version, 'unrelated-0'), /ENOENT/);
+  assert.throws(() => historyPreview(root, state.version, '../outside'), /Unknown revision/);
+  assert.equal((await fetch(base + 'artwork?revision=first&version=stale')).status, 409);
+  assert.equal((await fetch(base + `artwork?asset=unknown&version=${state.version}`)).status, 409);
+  writeFileSync(resolve(root, file), svg);
+  const changed = await fetch(previewUrl);
+  assert.equal(changed.status, 409);
+  assert.match(await changed.text(), /changed since registration/);
+  assert.equal((await fetch(base + 'state')).status, 200);
+  assert.throws(() => historyState(root, false), /changed since registration/);
+});
+
+await test('scoped editable-source reads return only the requested slot, with registered source bytes', async () => {
+  const current = await currentArtwork('hearth/cub');
+  assert.deepEqual(Object.keys(current), ['hearth/cub']);
+  const bytes = Buffer.from(current['hearth/cub'].split(',')[1], 'base64');
+  const asset = readHistory(repositoryRoot).history.assets.find(
+    (asset) => asset.id === 'hearth/cub',
+  )!;
+  assert.equal(digest(bytes), asset.sourceDigest);
+  await assert.rejects(currentArtwork('missing/source'), /source is unavailable/);
 });

@@ -149,6 +149,11 @@ test('offline gallery history embeds artwork and settings without offering write
   const output = info.outputPath('export');
   execFileSync(process.execPath, ['packages/workshop-tools/art/gallery/export.ts', output]);
   const html = readFileSync(resolve(output, 'history.html'), 'utf8');
+  const liveRequests: string[] = [];
+  await page.route('**/__art/api/**', (route) => {
+    liveRequests.push(route.request().url());
+    return route.abort();
+  });
   await page.route('**/offline-history.html', (route) =>
     route.fulfill({ contentType: 'text/html', body: html }),
   );
@@ -194,6 +199,7 @@ test('offline gallery history embeds artwork and settings without offering write
   // The export is also directly openable from disk; it is not tied to the preview route.
   await page.goto(pathToFileURL(resolve(output, 'history.html')).href + '#asset=hearth%2Fcub');
   await expect(page.getByRole('heading', { name: 'Briar Cub', exact: true })).toBeVisible();
+  expect(liveRequests).toEqual([]);
 });
 
 test('Scrapyard uses selected vectors in cached Canvas sprites and reports decode failures', async ({
@@ -282,4 +288,194 @@ test('Scrapyard uses selected vectors in cached Canvas sprites and reports decod
     for (const revision of revisions) removeRevision(root, readHistory(root).version, revision.id);
     removeAttempt(root, readHistory(root).version, attempt);
   }
+});
+
+test('live browsing transfers metadata first and requests only the viewed asset artwork', async ({
+  page,
+}) => {
+  const metadata = readHistory(process.cwd()).history;
+  const requests: URL[] = [];
+  page.on('request', (request) => {
+    const url = new URL(request.url());
+    if (url.pathname === '/__art/api/artwork') requests.push(url);
+  });
+  const loaded = page.waitForResponse('**/__art/api/state');
+  await page.goto('/__art/');
+  const state = (await (await loaded).json()) as HistoryState;
+  expect(state.current).toEqual({});
+  expect(state.previews).toEqual({});
+  await expect(page.locator('#asset-count')).toHaveText(`${metadata.assets.length} assets`);
+  expect(requests).toHaveLength(0);
+  await page.locator('a[href="#asset=hearth%2Fcub"]').click();
+  await expect(page.locator('.live-source img')).toBeVisible();
+  const revisions = metadata.revisions.filter(
+    (revision) => revision.asset === 'hearth/cub' && !revision.file.endsWith('.gif'),
+  );
+  await expect(page.locator('[data-revision] .revision-preview img')).toHaveCount(
+    revisions.length * 2,
+  );
+  expect(
+    requests
+      .filter((url) => url.searchParams.has('asset'))
+      .map((url) => url.searchParams.get('asset')),
+  ).toEqual(['hearth/cub']);
+  expect(
+    requests
+      .filter((url) => url.searchParams.has('revision'))
+      .map((url) => url.searchParams.get('revision'))
+      .sort(),
+  ).toEqual(revisions.map((revision) => revision.id).sort());
+  expect(
+    await page.locator('.revision img').evaluateAll(async (nodes) => {
+      await Promise.all(nodes.map((node) => (node as HTMLImageElement).decode()));
+      return nodes.every((node) => (node as HTMLImageElement).naturalWidth > 0);
+    }),
+  ).toBe(true);
+  const oldCount = requests.length;
+  await page.getByRole('button', { name: 'Reload history', exact: true }).click();
+  await expect(page.getByRole('status')).toHaveText('History reloaded.');
+  await expect(page.locator('.live-source img')).toBeVisible();
+  expect(requests.length).toBeGreaterThan(oldCount);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.addStyleTag({ content: ':root { font-size: 20px; }' });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+// Delayed responses stand in for source rendering overlapping navigation and reload.
+test('navigation and reload discard old artwork and fetch changed source without a registry change', async ({
+  page,
+}) => {
+  const metadata = readHistory(process.cwd()).history;
+  const a = 'hearth/cub',
+    b = 'spire/metallicize';
+  await page.route('**/__art/api/state', (route) =>
+    route.fulfill({
+      json: {
+        version: 'unchanged-registry',
+        live: true,
+        selections: {},
+        current: {},
+        previews: {},
+        history: {
+          ...metadata,
+          assets: metadata.assets.filter((asset) => [a, b].includes(asset.id)),
+          revisions: [],
+        },
+      },
+    }),
+  );
+  const image = (color: string) =>
+    'data:image/svg+xml;base64,' +
+    Buffer.from(
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 112"><path fill="${color}" d="M0 0h160v112H0Z"/></svg>`,
+    ).toString('base64');
+  let releaseA!: () => void, releaseB!: () => void;
+  const heldA = new Promise<void>((resolve) => {
+    releaseA = resolve;
+  });
+  const heldB = new Promise<void>((resolve) => {
+    releaseB = resolve;
+  });
+  let readsB = 0;
+  const finished: Promise<unknown>[] = [];
+  await page.route('**/__art/api/artwork?*', async (route) => {
+    const asset = new URL(route.request().url()).searchParams.get('asset');
+    const currentB = asset === b ? ++readsB : 0;
+    if (asset === a) await heldA;
+    if (asset === b && currentB === 1) await heldB;
+    const result = route
+      .fulfill({
+        json: { kind: 'image', animated: false, url: image(currentB > 1 ? '#00ff00' : '#ff0000') },
+      })
+      .catch(() => {});
+    finished.push(result);
+    await result;
+  });
+  await page.goto('/__art/#asset=hearth%2Fcub');
+  await expect(page.locator('.live-source')).toContainText('Loading artwork');
+  const requestedB = page.waitForRequest(
+    (request) => new URL(request.url()).searchParams.get('asset') === b,
+  );
+  await page.locator('a[href="#asset=spire%2Fmetallicize"]').click();
+  await requestedB;
+  await page.getByRole('button', { name: 'Reload history', exact: true }).click();
+  const current = page.locator('.live-source img');
+  await expect(current).toHaveAttribute('src', image('#00ff00'));
+  releaseA();
+  releaseB();
+  await expect.poll(() => finished.length).toBe(3);
+  await Promise.all(finished);
+  await expect(current).toHaveAttribute('src', image('#00ff00'));
+  await expect(page.getByRole('heading', { name: 'Metallicize', exact: true })).toBeVisible();
+  await expect(page.getByRole('status')).toHaveText('History reloaded.');
+});
+
+test('GIF previews fetch only on explicit play or download and respect reduced motion', async ({
+  page,
+}) => {
+  const metadata = readHistory(process.cwd()).history;
+  const gif = metadata.revisions.find((revision) => revision.file.endsWith('.gif'))!;
+  expect(gif).toBeTruthy();
+  await page.route('**/__art/api/state', async (route) => {
+    const response = await route.fetch();
+    const state = (await response.json()) as HistoryState;
+    state.history.revisions = [gif];
+    await route.fulfill({ json: state });
+  });
+  const requests: string[] = [];
+  page.on('request', (request) => {
+    if (new URL(request.url()).searchParams.get('revision') === gif.id)
+      requests.push(request.url());
+  });
+  await page.goto('/__art/#asset=' + encodeURIComponent(gif.asset ?? '__unassigned'));
+  const card = page.locator('[data-revision]');
+  await expect(card.getByRole('button', { name: 'Play GIF', exact: true })).toBeVisible();
+  expect(requests).toHaveLength(0);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await card.getByRole('button', { name: 'Play GIF', exact: true }).click();
+  await expect(page.getByRole('status')).toContainText('disabled by reduced motion');
+  expect(requests).toHaveLength(0);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await card.getByRole('button', { name: 'Play GIF', exact: true }).click();
+  await expect(card.locator('img')).toBeVisible();
+  expect(requests).toHaveLength(1);
+  await card.getByRole('button', { name: 'Stop GIF', exact: true }).click();
+  await expect(card.locator('img')).toHaveCount(0);
+  const download = page.waitForEvent('download');
+  await card.getByRole('button', { name: 'Download GIF', exact: true }).click();
+  expect((await download).suggestedFilename()).toBe(gif.file.split('/').at(-1));
+  expect(requests).toHaveLength(2);
+  await expect(card.locator('img')).toHaveCount(0);
+});
+
+test('failed revision previews leave source and other revisions usable', async ({ page }) => {
+  const history = readHistory(process.cwd()).history;
+  const revisions = history.revisions.filter((revision) => revision.asset === 'hearth/cub');
+  expect(revisions.length).toBeGreaterThan(2);
+  const failed = revisions.slice(0, 2);
+  await page.route('**/__art/api/artwork?*', async (route) => {
+    const id = new URL(route.request().url()).searchParams.get('revision');
+    const index = failed.findIndex((revision) => revision.id === id);
+    if (index >= 0)
+      await route.fulfill({
+        status: 409,
+        json: {
+          error:
+            index === 0
+              ? 'Artwork changed since registration: fixture.svg'
+              : 'Artwork is missing: fixture.svg',
+        },
+      });
+    else await route.continue();
+  });
+  await page.goto('/__art/#asset=hearth%2Fcub');
+  await expect(page.locator('.live-source img')).toBeVisible();
+  const card = (id: string) =>
+    page.locator('[data-revision]').filter({ has: page.locator('.source-note', { hasText: id }) });
+  await expect(card(failed[0].id).locator('.revision-preview')).toContainText(
+    'changed since registration',
+  );
+  await expect(card(failed[1].id).locator('.revision-preview')).toContainText('Artwork is missing');
+  await expect(card(revisions[2].id).locator('img')).toHaveCount(2);
+  await expect(page.locator('#assets a').first()).toBeEnabled();
 });

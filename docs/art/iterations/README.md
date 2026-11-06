@@ -4,7 +4,14 @@ The 2D gallery keeps artwork revisions beside their generation or authoring
 attempts. Open `/__art/` on the local development server, or follow **2D asset
 gallery** in the game. Current SVG exports link each asset to the offline
 `history.html` view. Offline exports embed artwork and available prompt/settings
-text; writes require the local gallery.
+text; writes require the local gallery. The live browser loads metadata first, then
+requests only the viewed asset's editable source and retained revisions. GIF bytes
+are requested on explicit play or download. Reloading or navigating discards pending
+previews; reload after an external history change. Missing or changed revision files
+show an error on that preview without preventing other assets from being browsed.
+Editable-source reads render the requested slot afresh, excluding game selections;
+they still bundle the shared source catalogue. Complete offline exports deliberately
+render and embed every source, revision and available attachment.
 
 ## Save, compare and use
 

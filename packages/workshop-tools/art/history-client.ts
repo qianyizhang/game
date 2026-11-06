@@ -13,14 +13,16 @@ const escape = (value: string) =>
   );
 let state: HistoryState;
 let busy = false;
+let artwork = new AbortController();
+let artworkRequests = new Map<string, Promise<string>>();
 let removeId: string | undefined;
 let removeKind: 'revision' | 'attempt' = 'revision';
 
-async function request<T>(path: string, body?: unknown): Promise<T> {
+async function request<T>(path: string, body?: unknown, signal?: AbortSignal): Promise<T> {
   const response = await fetch(
     '/__art/' + path,
     body === undefined
-      ? undefined
+      ? { signal }
       : {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
@@ -37,6 +39,7 @@ function report(error: unknown) {
 async function act(action: () => Promise<unknown>, message: string) {
   if (busy) return;
   busy = true;
+  artwork.abort();
   for (const button of detail.querySelectorAll('button')) button.disabled = true;
   try {
     await action();
@@ -51,6 +54,45 @@ async function act(action: () => Promise<unknown>, message: string) {
     busy = false;
   }
 }
+/** A view owns its requests; changing assets or reloading discards every old result. */
+function artworkUrl(kind: 'asset' | 'revision', id: string): Promise<string> {
+  if (!state.live) return Promise.resolve((kind === 'asset' ? state.current : state.previews)[id]);
+  const key = kind + ':' + id;
+  let pending = artworkRequests.get(key);
+  if (!pending) {
+    pending = request<HistoryDocument>(
+      `api/artwork?${kind}=${encodeURIComponent(id)}&version=${encodeURIComponent(state.version)}`,
+      undefined,
+      artwork.signal,
+    ).then((document) => {
+      if (document.kind !== 'image') throw new Error('Artwork preview is unavailable.');
+      return document.url;
+    });
+    artworkRequests.set(key, pending);
+  }
+  return pending;
+}
+function showArtwork(
+  container: Element,
+  kind: 'asset' | 'revision',
+  id: string,
+  show: (url: string) => void,
+) {
+  const signal = artwork.signal;
+  void artworkUrl(kind, id)
+    .then((url) => {
+      if (!signal.aborted && container.isConnected) show(url);
+    })
+    .catch((error: unknown) => {
+      if (!signal.aborted && container.isConnected)
+        container.textContent =
+          error instanceof Error ? error.message : 'Artwork preview is unavailable.';
+    });
+}
+function revisionFigures(revision: ArtRevision, url: string) {
+  const asset = state.history.assets.find((asset) => asset.id === revision.asset);
+  return `<figure><img src="${escape(url)}" alt="${escape(revision.label)}" width="${Math.min(asset?.width ?? 320, 480)}" height="${Math.min(asset?.width ?? 320, 480) * (asset ? asset.height / asset.width : 0.7)}"><figcaption>Slot size</figcaption></figure><figure><img src="${escape(url)}" alt="" width="80" height="56"><figcaption>Compact</figcaption></figure>`;
+}
 function attemptDetails(attempt: ArtAttempt, standalone = false) {
   return `<details><summary>${standalone ? `${escape(attempt.title)} · ${escape(attempt.outcome)}` : 'Prompt, settings and outcome'}</summary><p>${escape(attempt.title)} · ${escape(attempt.date)} · ${escape(attempt.outcome)}</p><p>${escape(attempt.notes)}</p>${attempt.files.map((file) => `<p><button data-file="${escape(file)}">${escape(file.split('/').at(-1)!)}</button></p>`).join('')}<pre hidden></pre>${state.live ? `<button data-remove-attempt="${escape(attempt.id)}">Remove attempt</button>` : ''}</details>`;
 }
@@ -59,9 +101,12 @@ function revisionCard(revision: ArtRevision) {
   const selected = asset && state.selections[asset.id]?.revision === revision.id;
   const attempt = state.history.attempts.find((attempt) => attempt.id === revision.attempt)!;
   const animated = revision.file.endsWith('.gif');
-  return `<article class="revision" data-revision="${escape(revision.id)}"><div class="revision-head"><h3>${escape(revision.label)}</h3>${selected ? '<span class="badge">In game · canonical</span>' : ''}${!revision.runtimeFile ? '<span class="badge">Source study</span>' : ''}</div><p>${escape(revision.notes)}</p><div class="revision-preview">${animated ? '<button data-play>Play GIF</button>' : `<figure><img src="${state.previews[revision.id]}" alt="${escape(revision.label)}" width="${Math.min(asset?.width ?? 320, 480)}" height="${Math.min(asset?.width ?? 320, 480) * (asset ? asset.height / asset.width : 0.7)}"><figcaption>Slot size</figcaption></figure><figure><img src="${state.previews[revision.id]}" alt="" width="80" height="56"><figcaption>Compact</figcaption></figure>`}</div><p class="source-note">${escape(revision.id)}</p><div class="actions"><button data-use${!state.live || !revision.runtimeFile || !asset || selected ? ' disabled' : ''}>${selected ? 'Used in game' : 'Use in game'}</button><button data-enlarge>${animated ? 'Download GIF' : 'Inspect source'}</button><button data-remove${!state.live || selected ? ' disabled' : ''}>Remove</button></div>${!state.live ? '<p>Offline snapshot · open the local gallery to change selections or remove records.</p>' : !revision.runtimeFile ? '<p>No game-compatible adaptation is registered for this source.</p>' : ''}${attemptDetails(attempt)}<details><summary>Lineage and files</summary><p>${escape(revision.file)}</p><p>${revision.parents.length ? 'Parents: ' + revision.parents.map(escape).join(', ') : 'Earlier parentage is unknown or this is a source checkpoint.'}</p></details></article>`;
+  return `<article class="revision" data-revision="${escape(revision.id)}"><div class="revision-head"><h3>${escape(revision.label)}</h3>${selected ? '<span class="badge">In game · canonical</span>' : ''}${!revision.runtimeFile ? '<span class="badge">Source study</span>' : ''}</div><p>${escape(revision.notes)}</p><div class="revision-preview">${animated ? '<button data-play>Play GIF</button>' : '<p>Loading artwork…</p>'}</div><p class="source-note">${escape(revision.id)}</p><div class="actions"><button data-use${!state.live || !revision.runtimeFile || !asset || selected ? ' disabled' : ''}>${selected ? 'Used in game' : 'Use in game'}</button><button data-enlarge>${animated ? 'Download GIF' : 'Inspect source'}</button><button data-remove${!state.live || selected ? ' disabled' : ''}>Remove</button></div>${!state.live ? '<p>Offline snapshot · open the local gallery to change selections or remove records.</p>' : !revision.runtimeFile ? '<p>No game-compatible adaptation is registered for this source.</p>' : ''}${attemptDetails(attempt)}<details><summary>Lineage and files</summary><p>${escape(revision.file)}</p><p>${revision.parents.length ? 'Parents: ' + revision.parents.map(escape).join(', ') : 'Earlier parentage is unknown or this is a source checkpoint.'}</p></details></article>`;
 }
 function renderDetail() {
+  artwork.abort();
+  artwork = new AbortController();
+  artworkRequests = new Map();
   const id = new URLSearchParams(location.hash.slice(1)).get('asset');
   const asset = state.history.assets.find((asset) => asset.id === id);
   const unassigned = id === '__unassigned';
@@ -73,7 +118,7 @@ function renderDetail() {
       '<h2>Choose an asset</h2><p>Open its revisions to compare art, reuse settings, or change the game’s default.</p>';
     return;
   }
-  detail.innerHTML = `<h2>${escape(asset?.name ?? 'Unassigned source artwork')}</h2><p>${escape(asset?.id ?? 'Retained drawings without a known game slot')}</p>${asset && !state.selections[asset.id] ? '<p>In game: editable source. Its live renderer is shown below; save a checkpoint before editing.</p>' : ''}${asset && state.selections[asset.id] ? '<button id="use-source">Use editable source</button>' : ''}${asset && state.live ? '<button id="snapshot">Save source revision</button>' : ''}${canonical ? revisionCard(canonical) : ''}${asset ? `<article class="revision live-source"><h3>Editable source</h3><p>Source reference: ${escape(asset.sourceRevision ?? 'unknown')}</p><div class="revision-preview"><img src="${state.current[asset.id]}" alt="${escape(asset.name)} · editable source" width="${Math.min(asset.width, 480)}" height="${(Math.min(asset.width, 480) * asset.height) / asset.width}"></div><p>Live renderer preview. Freeze only for an explicit checkpoint or a real iteration.</p></article>` : ''}${
+  detail.innerHTML = `<h2>${escape(asset?.name ?? 'Unassigned source artwork')}</h2><p>${escape(asset?.id ?? 'Retained drawings without a known game slot')}</p>${asset && !state.selections[asset.id] ? '<p>In game: editable source. Its live renderer is shown below; save a checkpoint before editing.</p>' : ''}${asset && state.selections[asset.id] ? '<button id="use-source">Use editable source</button>' : ''}${asset && state.live ? '<button id="snapshot">Save source revision</button>' : ''}${canonical ? revisionCard(canonical) : ''}${asset ? `<article class="revision live-source"><h3>Editable source</h3><p>Source reference: ${escape(asset.sourceRevision ?? 'unknown')}</p><div class="revision-preview" data-source-preview><p>Loading artwork…</p></div><p>Live renderer preview. Freeze only for an explicit checkpoint or a real iteration.</p></article>` : ''}${
     state.history.revisions
       .filter(
         (revision) => revision.asset === (unassigned ? null : id) && revision.id !== canonical?.id,
@@ -90,6 +135,12 @@ function renderDetail() {
       .map(revisionCard)
       .join('') || '<p>No retained revisions.</p>'
   }`;
+  if (asset) {
+    const preview = detail.querySelector('[data-source-preview]')!;
+    showArtwork(preview, 'asset', asset.id, (url) => {
+      preview.innerHTML = `<img src="${escape(url)}" alt="${escape(asset.name)} · editable source" width="${Math.min(asset.width, 480)}" height="${(Math.min(asset.width, 480) * asset.height) / asset.width}">`;
+    });
+  }
   if (!state.live && element<HTMLButtonElement>('use-source'))
     element<HTMLButtonElement>('use-source').disabled = true;
   element('snapshot')?.addEventListener('click', () => {
@@ -107,6 +158,11 @@ function renderDetail() {
   });
   for (const article of detail.querySelectorAll<HTMLElement>('[data-revision]')) {
     const revision = state.history.revisions.find((item) => item.id === article.dataset.revision)!;
+    const preview = article.querySelector('.revision-preview')!;
+    if (!revision.file.endsWith('.gif'))
+      showArtwork(preview, 'revision', revision.id, (url) => {
+        preview.innerHTML = revisionFigures(revision, url);
+      });
     article.querySelector('[data-use]')!.addEventListener('click', () => {
       void act(
         () =>
@@ -122,31 +178,35 @@ function renderDetail() {
       void previewRemoval(revision.id).catch(report);
     });
     article.querySelector('[data-enlarge]')!.addEventListener('click', () => {
-      if (revision.file.endsWith('.gif')) {
-        const download = document.createElement('a');
-        download.href = state.previews[revision.id];
-        download.download = revision.file.split('/').at(-1)!;
-        download.click();
-        return;
-      }
-      const image = document.createElement('img');
-      image.src = state.previews[revision.id];
-      image.alt = revision.label;
-      image.style.width = '100%';
-      article.querySelector('.revision-preview')!.replaceChildren(image);
+      showArtwork(preview, 'revision', revision.id, (url) => {
+        if (revision.file.endsWith('.gif')) {
+          const download = document.createElement('a');
+          download.href = url;
+          download.download = revision.file.split('/').at(-1)!;
+          download.click();
+          return;
+        }
+        const image = document.createElement('img');
+        image.src = url;
+        image.alt = revision.label;
+        image.style.width = '100%';
+        preview.replaceChildren(image);
+      });
     });
     article.querySelector('[data-play]')?.addEventListener('click', () => {
-      const image = document.createElement('img');
-      image.src = state.previews[revision.id];
-      image.alt = revision.label;
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
         status.textContent = 'GIF playback is disabled by reduced motion.';
         return;
       }
-      const stop = document.createElement('button');
-      stop.textContent = 'Stop GIF';
-      stop.addEventListener('click', renderDetail);
-      article.querySelector('.revision-preview')!.replaceChildren(image, stop);
+      showArtwork(preview, 'revision', revision.id, (url) => {
+        const image = document.createElement('img');
+        image.src = url;
+        image.alt = revision.label;
+        const stop = document.createElement('button');
+        stop.textContent = 'Stop GIF';
+        stop.addEventListener('click', renderDetail);
+        preview.replaceChildren(image, stop);
+      });
     });
   }
   bindFiles(detail);
