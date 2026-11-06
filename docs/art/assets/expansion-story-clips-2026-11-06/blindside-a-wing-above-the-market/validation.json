@@ -6,7 +6,7 @@
       "Moon fully visible:ochre crescent x408-450,y32-81 at480x336. Earlier visual top-edge concern was a misread and corrected before second GIF dispatch.",
       "New rail/card/watch/departure are candidate fiction;face-down card has no scoring assertion."
     ],
-    "renderer": "Chromium154.0.8036.0,wholeSVG,DPR1,transparent PNG screenshot480x336;no retouch."
+    "renderer": "Chromium154.0.8037.57, whole SVG, DPR1, transparent480x336 PNG; no retouch."
   },
   "watch": {
     "technical": "16 unique480x336 frames,300ms each;original hash and aggregate decodedRGBA recorded. TEMP PNGs independently decode byte-equal to composed source frames. Chromium native initial playback checked.",
@@ -32,7 +32,36 @@
   "gallery": "Passed production isolated import/verify and four unassigned source-study cards with originals and local assembly;canonical calls/assembly inspected,native initial GIF playback,0selections,no runtime actions. Baseline library unchanged;publication390/320px enlarged-text gallery passed. Shared nonlooping replay is not claimed.",
   "browser": "Passed loopback Chromium native once-through9.6s playback and actual ending review;390/320px enlarged text,reduced-motion SVG,local links,no page errors/external requests,no false pause/seek controls. Screenshots temporary;not frame-exact compositor equality or shared replay proof.",
   "checks": {
-    "history_contracts": "Pinned Node24.21.0,node --test packages/workshop-tools/art/history.test.ts:11passed,0failed. Existing meaningful contracts reused;no implementation-mirroring tests added."
+    "history_contracts": "Pinned Node24.21.0,node --test packages/workshop-tools/art/history.test.ts:11passed,0failed. Existing meaningful contracts reused;no implementation-mirroring tests added.",
+    "local": {
+      "runtime": "Node24.21.0,Python3.12.13,official GoogleChrome157.0.8103.38 via existing CARD_WORKSHOP_CHROME_EXECUTABLE. Default Chrome was initially absent; startup guards, modes, assertions and timeouts unchanged.",
+      "passed": "Formatting,metadata/hydration,lint,types,Python19,tools202,DCC81,build,37simulations,shaderCPU8,shaderBrowser5;90core+499application tests. Baseline history709assets/92revisions/0selections;new four revisions passed isolated import96revisions and source-only gallery.",
+      "original_smoke": "5passed/1failed:diablo2.spec.ts:248,lantern-1/Mira/standard/emberwake-7,fen-1,tick48,player(12.41,23.5),23rightwardticks. Nearest living archeruid2 distance7.04085088,clearLOS;strict<7 fails. Nominal900ms wait lasted~1105ms. Original log/trace preserved.",
+      "focused_smoke": "One rerun passed(10s test/15s run),same fixture/browser/test;only local port4183,absolute config anchors and temporary trace output differ. Tick44,player(11.73,23.5),19rightwardticks;uid2 distance6.84380991,clearLOS;wait901ms. Both traces retained. Supports timing sensitivity;no baseline browser failure established or conditional baseline rerun needed after pass.",
+      "selected_browser": "195planned:187passed,4failed,4skipped,17.5minutes. No additional scope or rerolls.",
+      "failures": [
+        "native-assets.spec.ts:101:final BriarHydra dcc-render data-ready=false at30000ms case timeout. Expected missing-nightjar-bake diagnostic is NOT the failure.",
+        "night-passage-agent.spec.ts:92:Pause replay click at30000ms case timeout.",
+        "night-passage.spec.ts:303:Cast charges empty instead of1/3 at30000ms case timeout.",
+        "art3d.spec.ts:88:Vajra gallery heading From ink to object absent at5000ms assertion timeout."
+      ],
+      "limits": "Full check:changed is NOT passed. Candidate branch changes19source-study/settings files only;game/test/native package blobs unchanged. No demonstrated causal link to candidate art;no baseline-failure assumption. Original failures retained;no gameplay,test,timeout,shared-gallery or registry edits. Geometry not selected;no full native-suite claim."
+    },
+    "hosted": {
+      "head": "65d65a1f5b899eb3b17317935ea9e6f444362574",
+      "run": 42282924717,
+      "result": "success",
+      "url": "https://github.com/qianyizhang/game/actions/runs/42282924717"
+    }
   },
-  "compact_phone": "Actual native GIF playback additionally inspected at320px phone(nooverflow) and160x112 compact Away,without reduced-motion substitution;temporary screenshots. No pageerrors. Reduced-motion fallback is checked separately."
+  "compact_phone": "Actual native GIF playback additionally inspected at320px phone(nooverflow) and160x112 compact Away,without reduced-motion substitution;temporary screenshots. No pageerrors. Reduced-motion fallback is checked separately.",
+  "registration": {
+    "handoff_head": "65d65a1f5b899eb3b17317935ea9e6f444362574",
+    "source_diagnostics": "The supplied diagnostic-closeout amendment is inherited source-owner evidence, not a rerun in this registration executor. Original logs and all six failure/pass traces remain only in that owner executor ignored .artifacts/nightjar-closeout/. Historical source scope/gallery/check statements above describe the pre-registration source head. No baseline failure or candidate-art causation is established.",
+    "scope": "Canonical source registration only: four actual attempts/revisions, original SVG/GIFs and two exact sent PNG references preserved. No runtime mapping or selection/default changes. Canonical calls/settings/references/animation remain their existing owners; redundant import transport retired after exact comparison. Actual registration and disposable compatibility checks reported separately below.",
+    "media": "All32 joined RGBA frames/timings equal original chapters; both original loop extensions and once-playing assembly verified. Three canonical output hashes/shared-settings digests and both exact sent PNG hashes match; chapter1 last PNG equals original composed frame15. Shared settings byte-identical to prior story. No permanent frame catalogue.",
+    "gallery": "Four source revisions and17 exact desktop/mobile text/PNG views passed, including all three calls, common settings, references, animation and parent links. Use disabled for all; native/compact SVG and actual GIF playback inspected.1440/390/320px at16/20px text fit, no page errors. Actual320px/20px native story advanced; reduced motion interrupts and blocks playback.",
+    "source_controls": "Initial native story playback advanced. Existing independent branch still reproduces completed once-GIF Stop→Play terminal retention: compositor ending equals restart, while initial/middle differ. This is separate from visual acceptance and inherited source diagnostics; frozen shared fix requires disposable integration. Captured early pixels are not guaranteed original framezero.",
+    "checks": "Required scoped formatting/maintenance, history integrity and three affected asset-history browser journeys will be recorded after completion; inherited broad local check:changed remains unpassed."
+  }
 }

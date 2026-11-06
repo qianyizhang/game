@@ -26,6 +26,18 @@ Three successful calls cost an estimated **$0.197560** from returned usage and
 published rates. No active/unknown local request or unused block reservation.
 
 [Validation](validation.json) distinguishes technical and visual findings.
-[Staged import](history-import.json) has four unassigned source-study revisions;
-canonical registration is pending the serial coordinator. No runtime consumer,
+[Canonical shared history](../../../iterations/library.json) owns four attempts
+and four unassigned source-study revisions. The redundant import transport was
+retired after exact comparison with those canonical records. No runtime consumer,
 selection or user aesthetic acceptance is claimed. No shared infrastructure changed.
+
+Open `/__art/#asset=__unassigned` and find `A Wing Above the Market` to inspect
+the originals, local assembly, exact call/settings records, actual sent inputs
+and parent links. Technical reference PNG copies remain call attachments, not
+additional invented artwork states. Source-owner local failures and its one
+focused smoke pass remain separately recorded in [validation](validation.json)
+and [review](review.md); their original trace files are held in the source
+owner’s executor and were not copied or claimed rerun here. Shared-runtime
+compatibility is tested only in an unpushed combination, with separate exact
+head/tree receipts. Independent library additions require serial reconciliation
+when landing. Art selection and game adoption remain separate decisions.

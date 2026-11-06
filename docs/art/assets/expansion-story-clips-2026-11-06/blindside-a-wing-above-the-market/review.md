@@ -43,3 +43,13 @@ The rail, decorative face-down card, watch and departure are proposed fiction.
 No rank/suit/face value is established, so this story does not depict or change
 the actual Nightjar held-face-card multiplier. No runtime trigger, effect or
 timing consumer is invented. Canonical registration is still a draft blocker.
+
+Local broad verification remains unpassed: the original Emberwake smoke failed
+the strict nearby-foe range check; one same-seed focused rerun passed. The traces
+show 23 versus 19 movement ticks and foe distances 7.04085 versus 6.84381. The
+remaining local browser matrix finished 187 passed, 4 failed, 4 skipped: Hydra
+readiness, Night Passage replay pause/cast charges, and a Vajra gallery heading.
+These findings are preserved without changing game code, assertions or timeouts
+or assuming a baseline failure. The expected missing-bake diagnostic was not
+the Hydra failure. Hosted run 42282924717 passed at the frozen source head.
+See validation.json for exact fixture, coverage and attribution limits.
