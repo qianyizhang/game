@@ -1,11 +1,12 @@
 {
   "checkpoint": "9973d6ff3e4c50114ae0d0cad776eb37f03d327f",
-  "artwork_hash_owner": "history-import.json revisions[].digest; original SVG/GIF hashes unchanged from checkpoint",
+  "artwork_hash_owner": "../../iterations/library.json revisions for story-clips-20261106; original SVG/GIF hashes unchanged from checkpoint",
   "source_clips": ["chapter-1.gif", "chapter-2.gif", "chapter-3.gif", "chapter-4.gif"],
   "gif_spec": {
     "size": [480, 336],
     "frames_per_source": 16,
-    "frame_duration_ms": 300
+    "frame_duration_ms": 300,
+    "loop_behavior": "Original chapter GIFs encode loop=0 (repeat indefinitely); joined story has no loop extension (plays once). Preserved unchanged; gallery provides explicit stop/replay."
   },
   "assembly": {
     "file": "story.gif",

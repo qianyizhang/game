@@ -6657,6 +6657,87 @@
         "docs/art/assets/scrapyard-suite/visual-qa.json",
         "docs/art/assets/scrapyard-suite/technical-qa.json"
       ]
+    },
+    {
+      "id": "story-clips-20261106-reference",
+      "title": "Native SVG keyframe",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Candidate fiction/source study only. Exact API originals and actual sent PNG inputs retained; canonical call facts, shared settings and compact manifest replace redundant frame/contact records. No runtime consumer or acceptance.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/calls/reference.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/settings.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/manifest.json"
+      ]
+    },
+    {
+      "id": "story-clips-20261106-chapter-1",
+      "title": "chapter-1 reference-guided GIF",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Candidate fiction/source study only. Exact API originals and actual sent PNG inputs retained; canonical call facts, shared settings and compact manifest replace redundant frame/contact records. No runtime consumer or acceptance.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/calls/chapter-1.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/settings.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/manifest.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/reference.png"
+      ]
+    },
+    {
+      "id": "story-clips-20261106-chapter-2",
+      "title": "chapter-2 reference-guided GIF",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Candidate fiction/source study only. Exact API originals and actual sent PNG inputs retained; canonical call facts, shared settings and compact manifest replace redundant frame/contact records. No runtime consumer or acceptance.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/calls/chapter-2.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/settings.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/manifest.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/chapter-1-frames/frame-15.png"
+      ]
+    },
+    {
+      "id": "story-clips-20261106-chapter-3",
+      "title": "chapter-3 reference-guided GIF",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Candidate fiction/source study only. Exact API originals and actual sent PNG inputs retained; canonical call facts, shared settings and compact manifest replace redundant frame/contact records. No runtime consumer or acceptance.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/calls/chapter-3.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/settings.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/manifest.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/chapter-2-frames/frame-15.png"
+      ]
+    },
+    {
+      "id": "story-clips-20261106-chapter-4",
+      "title": "chapter-4 reference-guided GIF",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Candidate fiction/source study only. Exact API originals and actual sent PNG inputs retained; canonical call facts, shared settings and compact manifest replace redundant frame/contact records. No runtime consumer or acceptance.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/calls/chapter-4.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/settings.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/manifest.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/chapter-3-frames/frame-15.png"
+      ]
+    },
+    {
+      "id": "story-clips-20261106-assembly",
+      "title": "Lossless local assembly and review evidence",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "Every original frame/timing retained in native GIF assembly; no retouch or omission. Historical diagnostic failures and recovery pointer are in review.md/manifest.json. No runtime adaptation.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/manifest.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/review.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/validation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/README.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/compact.png",
+        "docs/art/assets/expansion-story-clips-2026-11-06/joins.png",
+        "docs/art/assets/expansion-story-clips-2026-11-06/budget.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/cleanup.json"
+      ]
     }
   ],
   "revisions": [
@@ -7819,6 +7900,91 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "story-clips-20261106-reference",
+      "asset": null,
+      "attempt": "story-clips-20261106-reference",
+      "label": "Original native SVG opening keyframe",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/reference.svg",
+      "digest": "4c5794b03de91c09014f9b26e958b153585804bf7df0d534d89fbfe05b8a2d43",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded API bytes. PNG reference is a local rasterization, not an SVG-edit input."
+    },
+    {
+      "id": "story-clips-20261106-chapter-1",
+      "asset": null,
+      "attempt": "story-clips-20261106-chapter-1",
+      "label": "chapter-1 · original GIF source study",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/chapter-1.gif",
+      "digest": "41a72bacb5a2a896b1d5e6460a8b41d40f96799a8aa3c6be43a93451029dadbd",
+      "parents": [
+        "story-clips-20261106-reference"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded API GIF bytes. Actual input reference.png is the local 480x336 raster of the parent SVG; settings/manifest preserve its exact bytes, digest and source. No SVG-edit input or seamless-continuation claim."
+    },
+    {
+      "id": "story-clips-20261106-chapter-2",
+      "asset": null,
+      "attempt": "story-clips-20261106-chapter-2",
+      "label": "chapter-2 · original GIF source study",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/chapter-2.gif",
+      "digest": "e6ffa259f889b02dbe3506524bddd065c8df64fa12ebe139ce41dfff35fb81fb",
+      "parents": [
+        "story-clips-20261106-chapter-1"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded API bytes. Parent supplies its last composed PNG frame; fresh generation is not guaranteed seamless continuation. All original frames retained."
+    },
+    {
+      "id": "story-clips-20261106-chapter-3",
+      "asset": null,
+      "attempt": "story-clips-20261106-chapter-3",
+      "label": "chapter-3 · original GIF source study",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/chapter-3.gif",
+      "digest": "037780ddb071f127038381b65b34a80f06c6771f11d0423971f2ef473b8000df",
+      "parents": [
+        "story-clips-20261106-chapter-2"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded API bytes. Parent supplies its last composed PNG frame; fresh generation is not guaranteed seamless continuation. All original frames retained."
+    },
+    {
+      "id": "story-clips-20261106-chapter-4",
+      "asset": null,
+      "attempt": "story-clips-20261106-chapter-4",
+      "label": "chapter-4 · original GIF source study",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/chapter-4.gif",
+      "digest": "fd1af514fddd8c52a4313c1f6fd36910ceead3718e9f3434fbd62c176ab5cd48",
+      "parents": [
+        "story-clips-20261106-chapter-3"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact decoded API bytes. Parent supplies its last composed PNG frame; fresh generation is not guaranteed seamless continuation. All original frames retained."
+    },
+    {
+      "id": "story-clips-20261106-assembly",
+      "asset": null,
+      "attempt": "story-clips-20261106-assembly",
+      "label": "One Light Left Behind · joined 19.2-second review story",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/story.gif",
+      "digest": "cae9261ad197ab316980a4221a7e15f0d9707c4a4431e953c5554bd384099aed",
+      "parents": [
+        "story-clips-20261106-chapter-1",
+        "story-clips-20261106-chapter-2",
+        "story-clips-20261106-chapter-3",
+        "story-clips-20261106-chapter-4"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Local derivative of all 64 original frames, 480x336, 19.2s. Direct chapter cuts expose rendering drift. Source study only: no game effect, trigger, timing consumer or selection."
     }
   ]
 }

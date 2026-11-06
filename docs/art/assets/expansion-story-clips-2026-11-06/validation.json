@@ -16,5 +16,20 @@
   "browser_probe_exception": "Canvas drawImage did not expose current animated GIF frame. Replaced that probe with compositor screenshot; one extra screenshot rounding row excluded from480x336 content comparison. No image timing/pixel change.",
   "maintenance": "Passed npm run format:maintenance (format/inventory/links/hydration), baseline assets:history verify709 registered sources, and diff whitespace.",
   "scope": "Data/review-page cleanup only; no application,gameplay,native geometry or selection change. Repository Google Chrome E2E is separate from the Chromium probe.",
-  "paid_calls_for_cleanup": 0
+  "paid_calls_for_cleanup": 0,
+  "registration": {
+    "handoff_head": "443f8bb80d3a0f304be30d980927e1c775219160",
+    "references": "All four exact sent PNG inputs remain call attachments. Manifest owns source/frame/SHA facts; six actual output revision IDs/parents are preserved. No permanent frame catalogue or duplicate artwork bytes.",
+    "request_reconstruction": "All five canonical prompt/common/kind parameter sets and input selectors match immutable checkpoint sent-request records; endpoint kept outside body.",
+    "checks": {
+      "maintenance": "Passed: formatting/inventory/links, history verify, lint/types, 19 Python, 202 tooling, 81 DCC contracts and production build.",
+      "browser": "Three existing asset-history journeys passed at normal local limits. Custom native playback/document/layout checks passed after correcting an asynchronous harness wait; joined-GIF restart failure remains separate and unresolved.",
+      "history": "709 assets / 98 revisions / 709 source registrations / zero selections. All previous records, native originals, exact inputs, call records, shared settings and game defaults unchanged.",
+      "acceptance": "Draft blocked by shared gallery restart and independent/user story/art review; no new application/simulation/geometry/native execution claimed. Hosted final-head checks reported on PR."
+    },
+    "media": "All 64 source/joined frames and timings match exactly; joined RGBA hash matches manifest. Four exact PNG input hashes verified; three frame15 inputs equal their parent GIF composed pixels. Native loops recorded in manifest.",
+    "gallery": "Six source revisions and 18 unique supporting documents inspected (24 desktop/mobile views): five exact call records, shared settings, manifest, four exact PNG inputs, review images and existing evidence. Source-only controls/parents, 1440/390/320px and 16/20px text fit; no page errors.",
+    "controls": "Initial native playback and Stop passed. Reduced motion interrupts active playback and blocks new playback. Compositor snapshots show motion. Restart FAILED for once-playing joined GIF: Stop then Play retained the final frame, pixel-identical to the ending screenshot. Shared gallery implementation dependency; draft remains blocked. No true pause/seek claimed.",
+    "harness": "First custom document probe observed prior text before asynchronous response settled. Corrected only the ignored probe wait and retained exact text/byte comparisons; full probe then passed. Repository assertions/timeouts and gallery code unchanged."
+  }
 }
