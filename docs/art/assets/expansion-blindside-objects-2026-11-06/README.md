@@ -27,12 +27,19 @@ not an invoice. Each `call.json` retains the exact request/prompt, usage, reques
 ID, grid and review once. Global pool accounting remains with the coordinator.
 
 `original.svg` is the exact return; named child SVGs remove only their cell's
-grid translation. The [single staged index](prepared-history.json) owns paths,
-digests and lineage. Review PNGs were copied unchanged; full-sheet inspection
+grid translation. The [shared history](../../iterations/library.json) owns paths,
+digests and lineage. Its redundant staged transport is retired after consumer
+tracing; unique call/artwork facts remain intact. Review PNGs were copied unchanged; full-sheet inspection
 renders stay temporary. No duplicate inventory, encoded art JSON or player.
 
 [QA](qa.json) distinguishes vector identity/safety, explicit rasterization edge
-differences, isolated registration and review. **Draft blocker: central canonical
-registration is pending.** These staged-only records are not merge-ready and do
-not establish user aesthetic acceptance or actual game/phone behavior. No merge
+differences, isolated registration and review. The canonical gallery now registers two actual attempts and 14 source revisions.
+Open `/__art/#asset=__unassigned` and find `hbs-cont-20261106-blindside`.
+User aesthetic acceptance and actual game-context behavior remain pending;
+registration is independent of acceptance or adoption. No merge
 or automatic adoption is part of this proposal.
+
+This branch has 709 assets, 106 revisions and zero selections. Exact call text,
+originals, extractions, parent records and review caveats remain discoverable.
+Other unmerged PRs have independent history additions requiring later serial
+reconciliation; no unrelated ancestor or artwork is included.

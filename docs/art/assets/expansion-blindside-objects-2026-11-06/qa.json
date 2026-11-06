@@ -24,7 +24,7 @@
     "compared": 12,
     "identical": 4
   },
-  "limits": "Source candidates and author self-review only. No game frame/phone/crowd acceptance, runtime slot or adoption. Central registration pending: staged-only draft blocker.",
+  "limits": "Source candidates and author self-review only. No game-frame/crowd acceptance, runtime slot or adoption. User aesthetic acceptance remains pending.",
   "isolated_import": {
     "assets": 0,
     "revisions": 14,
@@ -37,6 +37,18 @@
     "call_records_inspected": 2,
     "prompts_settings_usage_lineage": "verified",
     "adoption": "disabled",
-    "shared_registration": "pending"
+    "shared_registration": "canonical: 2 attempts / 14 source revisions"
+  },
+  "registration": {
+    "handoff_head": "1c11f5cebff653bf71106c149ef4ad58febf9a2a",
+    "checks": {
+      "maintenance": "passed: formatting/inventory/links, history verify (709 assets / 106 revisions / zero selections / 709 sources), lint/types, 19 Python, 202 tooling, 81 DCC contracts and production build",
+      "browser": "All 3 affected asset-history journeys passed at normal local limits, plus live inspection of all 14 source revisions and 2 exact call records. No application/simulation/geometry/native execution claimed.",
+      "hosted": "Exact final-head CI reported on PR; independent/user aesthetic and game-context acceptance remain pending."
+    },
+    "transport": "Retired redundant prepared-history.json after consumer tracing; library owns IDs/digests/parents/cell recipes, calls retain exact generation and review facts.",
+    "gallery": "All 14 source revisions decoded at native/compact sizes and inspected enlarged, 2 exact call documents and parent records visible, adoption disabled; no page errors. Layout 1440/390/320px and 16/20px text fits.",
+    "preservation": "All 14 SVGs, 2 review PNGs and 2 call records unchanged from handoff; 709 source registrations and selected-art.json unchanged.",
+    "runtime": "Node 24.21.0 / npm 11.19.0 / Google Chrome 157.0.8103.38"
   }
 }
