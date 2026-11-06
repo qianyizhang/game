@@ -54,7 +54,10 @@ test('retained refinement attempts expose originals, cells, held outcomes and li
     await expect(original).toBeInViewport();
     await page.locator('#browse').evaluate((node) => ((node as HTMLDetailsElement).open = true));
   }
-  const held = history.revisions.filter((revision) => revision.label.endsWith(' · HELD'));
+  const attemptIds = new Set(attempts.map((attempt) => attempt.id));
+  const held = history.revisions.filter(
+    (revision) => attemptIds.has(revision.attempt) && revision.label.endsWith(' · HELD'),
+  );
   expect(held).toHaveLength(4);
   for (const revision of held) {
     await page.goto('/__art/#revision=' + encodeURIComponent(revision.id));
