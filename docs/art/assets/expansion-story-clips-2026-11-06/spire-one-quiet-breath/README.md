@@ -48,8 +48,8 @@ revised bytes. The original `joined` record and `story.gif` stay unchanged.
 
 Open `/__art/#asset=__unassigned` and find `One Quiet Breath`. Native/compact,
 exact records/lineage, held originals and desktop/phone enlarged-text inspection
-are checked separately from aesthetics. Current main still has the known native
-replay limitation; compatibility with the frozen shared fix will be tested in an
+are checked separately from aesthetics. This candidate branch retains the known native
+replay limitation; compatibility with the frozen shared fix is checked below in an
 unpushed disposable combination. No implementation is added to this candidate.
 
 Actual registration inspection passed six revisions, 21 exact desktop/mobile
@@ -62,3 +62,17 @@ Registration passed `format:maintenance`, `assets:history -- verify`
 (709 assets/98 revisions/zero selections), and all three asset-history browser
 journeys at normal limits (21.8s aggregate). Exact original art/input/call bytes
 and existing asset/source/selection records remain unchanged.
+
+Shared replay compatibility was subsequently checked in a disposable, unpushed
+combination with #137 `d6cc4728c87b1c4d13489b5a91ce5e4cb73f3304` and #142
+`6fdc26d94ac5434446e35f23c44e249164312940`, using this story at
+`107f65cb25c9158ac020372f9b2810dbb89a51e7`. The resolved shared tree is
+`f78b8a50c29a823df315cfcdb8c61fa774cd12af`; combination tree
+`d1114533ff60bd0c3527989305980eccb16c741f`. Both live and offline galleries completed the
+once-playing GIF, then Stop → Play restored the initial opening pixels and
+advanced again. Playback/download bytes matched the originals; reduced motion
+interrupted and blocked playback. Both original and revised assemblies passed. See [validation](validation.json) for checks
+and historical probe outcomes. The shared implementation is not landed or
+included here, so this is conditional compatibility evidence. This PR remains a
+draft source study; game selections are unchanged and independent library
+additions still need serial reconciliation when landing.

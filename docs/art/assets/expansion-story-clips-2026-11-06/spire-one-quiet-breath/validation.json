@@ -18,5 +18,15 @@
     "replay": "Known shared replay limitation on source branch; disposable exact-head shared-fix integration pending, no implementation landed.",
     "gallery": "Actual six revisions,21 exact desktop/mobile text/input views, native play/Stop/reduced-motion blocking, parents and six1440/390/320px×16/20px layouts passed without page errors. Source branch still reproduces once-playing replay defect; disposable shared-fix integration pending.",
     "inspection_exception": "First scratch mobile chooser omitted animation.json as assembly record; corrected exact-record chooser and reran without changing product/assertions/timeouts. First failure log retained."
+  },
+  "shared_replay_compatibility": {
+    "source_head": "107f65cb25c9158ac020372f9b2810dbb89a51e7",
+    "governance_head": "d6cc4728c87b1c4d13489b5a91ce5e4cb73f3304",
+    "replay_head": "6fdc26d94ac5434446e35f23c44e249164312940",
+    "resolved_shared_tree": "f78b8a50c29a823df315cfcdb8c61fa774cd12af",
+    "disposable_combination_tree": "d1114533ff60bd0c3527989305980eccb16c741f",
+    "proof": "4 live/offline cases passed: completed once-playing story, Stop, fresh-URL Play, compositor opening pixel-identical to initial opening and different from ending, then visible advancement. Original playback/download SHA-256 exact; old object URL revoked; reduced motion interrupts and blocks playback; no page errors or offline network requests.",
+    "checks": "Resolved shared baseline passed full maintenance (208 tooling, 81 DCC, 19 Python tests) and 19 affected browser journeys at normal limits. This story combination passed history verification and actual native replay checks. No shared implementation, artwork, inputs, library records, defaults or selections changed in this evidence follow-up.",
+    "limits": "Compatibility tested at these exact heads only. Shared implementation is not landed or included in this candidate branch; its historical independent-code replay failure remains valid. Draft source study; independent library additions require serial landing reconciliation. No pause/seek, runtime adoption or art acceptance."
   }
 }
