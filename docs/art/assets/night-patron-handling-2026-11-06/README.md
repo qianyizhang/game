@@ -20,25 +20,32 @@ All seven SVGs and the retained contact are copied byte-for-byte from completed 
 
 Four outputs remain candidates and two candidates with caveats. Neris's aqua ribbon is a symbolic current rather than convincing continuous fluid through a full weir. Isen's broad cyan highlight makes the intended ceramic insert resemble a glass lens. These observations remain in the canonical reviews; technical validity is not aesthetic acceptance or a physical behavior claim.
 
-## Validation and draft blocker
+## Validation and canonical registration
 
 [validation.json](validation.json) records scoped checks. Seven SVGs passed resource safety, self-contained references, decoding and background-excluded bounds; six extraction trees match their source groups exactly. Translating a full sheet versus rebasing a child changes some antialiased edge pixels only (at most 7 channel levels over 39 pixels per cell), without geometry or paint changes. Official Google Chrome 157.0.8103.38 inspected the linked index at 1440px/390px and all seven imported revisions' canonical settings/lineage in the actual repository history gallery. Native and compact self-review remains separate from user acceptance.
 
 Formatting/inventory and current `assets:history -- verify` cover this delivery. No runtime code, tests, dependencies, defaults, owner rules or shared registry are changed; unrelated broad local suites were not repeated. Hosted results belong to the PR's exact tested head and do not establish aesthetic approval.
 
-**Draft blocker: shared canonical registration is pending serial coordination.** A fresh-main isolated import of this bundle alone passed: one attempt, seven unassigned source revisions and unchanged selections. This is not a merge-ready claim. Actual game placement or new interactions need their own runtime contract and later approval.
+The [canonical shared history](../../iterations/library.json) now owns one actual
+attempt and seven unassigned source revisions. Open `/__art/#asset=__unassigned`
+and find `expansion-en-cont-20261106/night-patron-handling`. The temporary import
+recipe is retired; exact call facts and per-output reviews stay in generation.json
+once. All artwork/input/call bytes and game selections remain unchanged.
 
-## Reconstruct the temporary history import
+Source technical review remains independent of user art selection and any future
+runtime contract. There is no dependency on #141, #147 or #149. Other independent
+library additions require serial reconciliation when landing. Scoped registration
+validation uses actual native/compact/enlarged previews, exact text records and
+parents, disabled Use and desktop/phone/enlarged-text layouts, followed by
+formatting/inventory/links, history integrity and affected browser journeys.
 
-Run this tested recipe from the repository root to write `/tmp/night-patron-prepared-history.json`. It derives registration from the canonical record and makes no shared-history write. No first-suite import is needed. The serial coordinator can review/import it through the normal guarded workflow; IDs preserve `expansion-en-cont-20261106/night-patron-handling/{sheet,subject-id}`. No bulky duplicate import is committed.
+Actual shared-gallery inspection passed all seven native/compact/enlarged
+revisions, exact canonical/auxiliary text, parent links, disabled Use and six
+1440/390/320px ×16/20px combinations, with no page errors. The water-flow and
+ceramic/glass caveats remain. Scoped repository gate outcomes follow in this PR;
+unrelated unchanged application/geometry suites are not repeated.
 
-```python
-from pathlib import Path
-import json
-root=Path.cwd();b=root/'docs/art/assets/night-patron-handling-2026-11-06';prefix=b.relative_to(root).as_posix();a='expansion-en-cont-20261106/night-patron-handling';j=json.loads((b/'generation.json').read_text())
-h={'schema':1,'assets':[],'attempts':[{'id':a,'title':'Night Passage patron handling · optional future source concepts','date':'2026-11-06','outcome':'returned','notes':'Exact request/settings, returned usage, cost and reviews recorded once in generation.json. Unassigned source concepts; user acceptance pending.','files':[prefix+'/generation.json',prefix+'/contact.png']}],'revisions':[]}
-h['revisions'].append({'id':a+'/sheet','asset':None,'attempt':a,'label':'Patron handling · exact packed original','file':prefix+'/'+j['original']['file'],'digest':j['original']['sha256'],'parents':[],'runtimeFile':None,'runtimeDigest':None,'notes':'Exact native vector original; 3×2 cells of 480×336. No accepted ritual or runtime identity.'})
-for i,o in enumerate(j['outputs']):
- h['revisions'].append({'id':a+'/'+o['id'],'asset':None,'attempt':a,'label':o['id']+' · '+o['verdict'],'file':prefix+'/'+o['id']+'.svg','digest':o['sha256'],'parents':[a+'/sheet'],'runtimeFile':None,'runtimeDigest':None,'notes':f'Exact group extraction, zero-based cell {i}, origin ({i%3*480},{i//3*336}); remove only grid translation, preserve paint. '+o['note']})
-Path('/tmp/night-patron-prepared-history.json').write_text(json.dumps(h,indent=2)+'\n');print('Prepared one attempt/seven revisions without shared writes')
-```
+Registration passed `format:maintenance`, `assets:history -- verify`
+(709 assets/99 revisions/zero selections) and all three asset-history browser
+journeys at normal limits (34.3s aggregate). Existing asset/source/selection
+records and all eleven other owned files are unchanged.

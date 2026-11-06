@@ -53,6 +53,6 @@
   "visual_review": "Self-review at160x112/80x56: four candidates, two caveated. Symbolic current and glass-like ceramic insert retained. No user acceptance or runtime placement.",
   "checks": ["npm run format:maintenance", "npm run assets:history -- verify"],
   "runtime": "Unchanged source/tests/dependencies; unrelated broad local suites not repeated. Hosted checks attach to exact PR head.",
-  "registration": "Isolated import passed; shared canonical registration pending serial coordinator; draft blocker",
-  "temporary_evidence": "/tmp/night-patron-review; /tmp/night-patron-history-sandbox; README reconstructs /tmp/night-patron-prepared-history.json"
+  "registration": "Canonical one attempt/seven source-only revisions; no runtime mapping, user acceptance or selections. Actual gallery/scoped gate results in README.",
+  "temporary_evidence": "Historical isolated paths remain historical; current ignored test-results/registration holds reconstructed import and check/inspection logs. No duplicate import retained."
 }
