@@ -1,0 +1,30 @@
+{
+  "state": "proposal-not-dispatched-no-grant",
+  "endpoint": "https://api.openai.com/v1/images/edits",
+  "method": "POST multipart/form-data",
+  "automatic_retries": 0,
+  "image_form_field": "image[]",
+  "image_file": "too-close-end-reference.png",
+  "image_sha256": "9c41ea5a15ed9814a0395604c68298c0eeb41e3d76d5ebb90f558c30f45f0fa4",
+  "reference_parent": {
+    "file": "too-close-original.gif",
+    "sha256": "12fe7cf91b3a105c6ed201691c34b63d7ed9225fa867ff2cf0db534a896c0fe8",
+    "zero_based_frame": 11,
+    "frame_start_ms": 1760,
+    "duration_ms": 160,
+    "transform": "composited decoded RGBA frame, PNG encode only; no pixel edits"
+  },
+  "fields": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create the SECOND clip, Empty Target, of the proposed Emberwake story An Empty Target. Use the supplied actual last frame of Too Close as the opening reference. This is candidate fiction assuming Mira has learned Teleport, not accepted campaign history or a new gameplay rule. Begin from this exact endpoint composition rather than reverting to the earlier manual reference. One frontal blue-hooded Mira stands at the left with both feet planted, cyan swept cape, fitted split coat, brass belt and full upright bronze crescent staff. One left-moving warm projectile has its head near x=196,y=159, with its short trail to the right. A tiny cold glimmer is already near the free hand. Slate floor and masonry remain quiet.\n\nMake twelve 160ms frames at 480x336 with one locked camera. The single projectile continues LEFT at the same y, approximately at x=196,179,162,145,128,111,94,77,60,43,26,9. Preserve its size and right-pointing trail, with no acceleration, curve, splitting, collision, impact or new shot. It must continue through Mira's OLD position only AFTER she has vacated it. No shield, deflection, stopped missile, invulnerability display or damage effect.\n\nDuring frame 1 let the existing cold glimmer briefly brighten, tightly around her free hand. Between frames 1 and 2, remove the whole original Mira including staff, cape and both feet together. Frame 2 may have no visible Mira for this single instantaneous blink. By frame 3 show exactly one complete Mira at the clear landing on the RIGHT, using approximately a +253px horizontal translation of the original figure. Her new center is around x=355; the planted boot baseline stays near y=221. Keep the same body scale and design, full crescent staff, two supported feet and contact shadows. The destination footprint approximately x=302..415 was already cleared by the projectile in the prior clip. Do not place her over the projectile or its trailing light. She remains fully visible and planted there from frame 3 through the final frame as the projectile passes through the empty original position and exits left. Never show an opaque or ghost Mira in both positions at once.\n\nDo not depict walking, sliding across the floor, a jump or a teleport portal. Preserve the figure's identity as closely as possible: no head turn, redesigned face, new eyes, changed hood, extra limbs, missing boots, extended robe, bent staff, enlarged crescent, duplicate staff or detached cape. Keep the brief cold cue restrained and let it fade after the blink. Preserve every slab seam, rear wall, texture, scale and light from the supplied endpoint; do not pan, zoom, cut, redraw the location or invent scenery. No caster, captions, arrows, rings, reticles, destination markers, new props or reset to the opening. End with one whole Mira at rest on the right. Return one native GIF. Keep the final settled state; no internal loop-reset action is wanted.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "gif",
+    "size": "480x336",
+    "frame_count": 12,
+    "frame_duration_ms": 160
+  },
+  "planning_reservation_usd": 0.25,
+  "endpoint_enforced_cost_cap": false
+}
