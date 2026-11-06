@@ -35,12 +35,55 @@
     "alpha_color_metadata_equal": true,
     "sha256": "31aa4bbaf9f4acf430d815a90ac499ad8e18c5ff4f266b1643bd0e67dbba6165"
   },
-  "limits": "Staged import only until serial central registration; ascended ungenerated. Latency is one confounded result, not a guaranteed model advantage.",
+  "limits": "Four source revisions staged: exact normal/ascended originals held, two distinct manual anatomy derivatives self-reviewed. Central registration/user review remain pending. No runtime or default change.",
   "verification": {
     "format_maintenance": "Passed; pinned Node 24.21.0/npm 11.19.0; 901 managed sources, no errors.",
-    "isolated_history": "Import and verify passed in a disposable Git clone: 709 assets, 94 revisions, zero selections, 709 source registrations. Original branch registry untouched.",
-    "isolated_gallery": "Existing history UI, focused on the two imported source revisions: previews decoded; exact prompt/settings and usage attachments and parent link verified at 1440px/390px; zero page errors. Source/compact art visually inspected.",
+    "isolated_history": "Final family import and verify passed in disposable Git clone: 709 assets, 96 revisions, zero selections, 709 source registrations. Four staged family revisions validated; source branch registry unchanged.",
+    "isolated_gallery": "Final four-revision family: all previews decoded; exact normal payload, both usage records, client trace, both parent links and disabled source mutation controls verified in existing history UI at 1440/390px; zero page errors. Art visually inspected at native/compact sizes.",
     "preview_transport": "Chromium blocked file:// navigation with ERR_BLOCKED_BY_ADMINISTRATOR; normal supported localhost HTTP preview succeeded. No browser policy/TLS flags changed.",
-    "scope": "No runtime/game source, shared registry, defaults, frozen branch or hosted CI changes; local pilot only."
+    "scope": "No runtime/game source, shared registry, defaults or frozen branch change. Hosted CI is reported in the draft PR.",
+    "preservation_exception": "git diff --check reports inherited whitespace-only lines in the exact returned SVG and its derivative. Preserve original API bytes rather than normalize artwork solely for that diagnostic; formatter/maintenance gates pass."
+  },
+  "ascended": {
+    "technical": {
+      "svg_safety": "Both original and authored derivative pass repository validator; native static paths, no forbidden resources.",
+      "viewBox": "0 0 1024 720",
+      "paths": {
+        "original": 113,
+        "derivative": 111
+      },
+      "geometry_bounds": {
+        "minX": 64,
+        "minY": 54.56541061401367,
+        "maxX": 958,
+        "maxY": 666
+      },
+      "viewport_and_requested_safe_margins": "passed",
+      "soft_path_target_exception": "113 original/111 derivative paths exceed the suggested 55-85 soft target; not a hard API/QA limit."
+    },
+    "repair": {
+      "only_changes": "Remove five paths of the extra fifth walking-leg chain, add one three-path cervical group. Every remaining original node/attribute unchanged.",
+      "removed_path_starts": ["M413 352", "M280 461", "M278 478", "M239 571", "M245 576"],
+      "pixel_change_bbox": [223, 163, 680, 588],
+      "changed_pixels_outside_neck_and_removed_leg_regions": 0,
+      "original_head_connected": false,
+      "derivative_head_connected": true,
+      "connectivity_method": "4-neighbor non-background RGB pixels, threshold >3, seeds (640,205)/(680,150) on 1024x720 Chromium captures"
+    },
+    "visual_self_review": {
+      "original": "HOLD: neck gap and an extra fifth walking-leg chain, despite a useful changed gesture.",
+      "derivative": "Useful ascended source candidate after cervical bridge and extra-chain removal. Four walking feet grip the two branch levels, two unequal raptorial forelegs and two head-rooted antennae; head/body connected.",
+      "family": "Consistent sage/leaf chitin, ivory upper-left planes, restrained ochre joints and triangular head. Ascended changes body lean, raised claw, forked support and asymmetric opened leaf planes. Continuity is textual, not image-referenced.",
+      "limits": "Broad ascended wing-cover stylization and finer details at 64x45 remain author-review limits; no user or runtime acceptance."
+    }
+  },
+  "retained_family_review": {
+    "file": "family-review.png",
+    "unoptimized_bytes": 223964,
+    "retained_bytes": 221680,
+    "dimensions": [1170, 950],
+    "mode": "RGB",
+    "decoded_pixels_alpha_and_color_metadata_equal": true,
+    "sha256": "45aec80ebb634d80c43f12351dc7feedbefaa724c4a29ef84e4fc49ce6d98fe6"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "state": "reserved-not-dispatched",
+  "state": "returned",
   "grant": {
     "id": "character-mantis-ascended-03",
     "maximum_planning_reservation_usd": 4.2,
@@ -23,5 +23,43 @@
     "client_request_id": "cw-mantis-ascended-20261106-8fbb55f7bc014a978f0481ee321d41e1"
   },
   "continuity": "Shared textual anatomy/palette plus reviewed normal; no image/reference input available for this native SVG generation route.",
-  "review": "pending; no aesthetic acceptance"
+  "review": "../qa.json",
+  "started_utc": "2026-11-06T16:53:49Z",
+  "response": {
+    "created": 1793984047,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "medium",
+    "safety_identifier": null,
+    "size": "1024x720",
+    "svg_usage": {
+      "input_tokens": 1855,
+      "model": "gpt-6.1-terra",
+      "output_tokens": 8687,
+      "reasoning_tokens": 571,
+      "total_tokens": 10542
+    },
+    "usage": {
+      "input_tokens": 730,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 730
+      },
+      "output_tokens": 924,
+      "output_tokens_details": {
+        "image_tokens": 924,
+        "text_tokens": 0
+      },
+      "total_tokens": 1654
+    },
+    "request_id": "req_b0f936ade90e48a9b08af30f59f408a3"
+  },
+  "elapsed_seconds": 142.58,
+  "output": {
+    "file": "original.svg",
+    "sha256": "5261efeb7369adb27dce21fbceb60ad91adf7348fa3ae873a1b059a014afa4a7"
+  },
+  "estimated_usd": 0.07666,
+  "remaining_active_reservation_usd": 0,
+  "cumulative_known_usage_estimate_usd": 0.894933
 }
