@@ -1,0 +1,50 @@
+[
+  {
+    "id": "exordium-split-ascent",
+    "brief": "The Exordium: a broken stair forks around a dark rock outcrop; left branch climbs to a narrow warm opening, right ends at a missing slab. One dominant upward diagonal and a clear void. No character.",
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "exordium-rain-camp",
+    "brief": "The Exordium: a sheltered cold campsite below an overhanging rock; one small ember bed beneath a sloping cloth stretched between two fitted supports. A pale runoff line outside the shelter, quiet asymmetry.",
+    "x": 480,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "exordium-sealed-door",
+    "brief": "The Exordium: a heavy tilted stone door caught half open in fractured rock, a muted copper latch and broad warm light wedge beneath it. Thick door edge and one clean triangular dark recess; no symbols.",
+    "x": 960,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "city-suspended-market",
+    "brief": "The City: a small suspended shuttered market balcony fixed between two stone towers, one asymmetric muted copper cloth canopy and sagging but connected suspension beams. Dominant balcony plane; no merchant or text.",
+    "x": 0,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "city-aqueduct-crossing",
+    "brief": "The City: a narrow dry walkway crosses a broad dark aqueduct arch, high buildings simplified into two quiet masses beyond. Stone thickness and continuous supports, one clean pale route cuts the scene diagonally.",
+    "x": 480,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "city-rooftop-refuge",
+    "brief": "The City: a recessed rooftop shelter reached by three broad steps, an offset folded sage canopy and one warm lantern inside. Stable curved parapet, asymmetric copper cloth, quiet dark city backdrop.",
+    "x": 960,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  }
+]

@@ -1,0 +1,542 @@
+[
+  {
+    "family": "archive",
+    "subject": "index-shelf",
+    "file": "archive/index-shelf.svg",
+    "sha256": "83b40f4efc4a946522a7b49caddef9babf9281bcf37afbafe76d62e8ec360471",
+    "status": "candidate",
+    "notes": "Stepped shelf, three folio stacks and open base remain distinct at 160x112, 80x56 and 64x45. Cream paper and green stone are separated. Larger foreground shelf reads well; no replacement for tactical tiles.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "archive",
+    "subject": "reading-lectern",
+    "file": "archive/reading-lectern.svg",
+    "sha256": "4e438682c4118bdb92fa6d7e944010798a30dc21f89606021c8daafd8f19745a",
+    "status": "candidate",
+    "notes": "Sloping blank folio leads; curved bracket and broad foot visibly support it. Clear silhouette at all reviewed sizes, with a useful open pocket under the stem.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "archive",
+    "subject": "scroll-cradle",
+    "file": "archive/scroll-cradle.svg",
+    "sha256": "5ac1a29c0713f51fa48f2f39088836b3365c14cbb90e42ca6dee19cff6c4eb00",
+    "status": "candidate",
+    "notes": "Unequal scroll ends, hanging sheet and crescent stone support stay readable at compact size. Sparse spiral cuts remain subordinate; paper does not become a weapon or relic.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "archive",
+    "subject": "floodgate-wheel",
+    "file": "archive/floodgate-wheel.svg",
+    "sha256": "10938e42a741ef68e157294e53f1f4ea0186118d5d02685ed566655cd71c4028",
+    "status": "candidate",
+    "notes": "Large open wheel against short masonry is distinct at compact size. Copper axle and attached support read; spokes become thin at 64x45, so keep as composition prop rather than tactical icon.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "archive",
+    "subject": "broken-stair",
+    "file": "archive/broken-stair.svg",
+    "sha256": "9b421d42d5a1b62ebc7f50f196c4f8d8e232179a56c9723475f0332601a775eb",
+    "status": "candidate",
+    "notes": "Broad risers, broken side face and one moss seam read at all reviewed sizes. Quiet plane construction; useful separable elevation prop.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "archive",
+    "subject": "hinged-screen",
+    "file": "archive/hinged-screen.svg",
+    "sha256": "76874d07f46cbadee9e612eb2abbf234ce7e39ad33138bb184324943439ee390",
+    "status": "candidate",
+    "notes": "Unequal connected panels form an open V; hinge remains visible at native size. Compact reads as paired screens/windows rather than a doorway. Concept usage should preserve that reading.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "archive",
+    "subject": "inkstone-basin",
+    "file": "archive/inkstone-basin.svg",
+    "sha256": "468fe9cdcd9e415700fd1296e9c1722b742596577476318f236a77ca018004f3",
+    "status": "candidate",
+    "notes": "Clear oblong lip, dark reflective pool and fitted low plinth. Pool is nearly opaque, consistent with ink; do not reuse this as transparent water or glass.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "archive",
+    "subject": "survey-table",
+    "file": "archive/survey-table.svg",
+    "sha256": "8e1413f474fa70aac6427966b3822a260ba1d0a1e8ce5960d4af8752449ac1c9",
+    "status": "candidate",
+    "notes": "Broad diagonal blank map and continuous heavy supports read clearly. Fine channel/weight details simplify at compact size, but map-table identity survives.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "forge",
+    "subject": "bellows",
+    "file": "forge/bellows.svg",
+    "sha256": "6c55ef65a40aec1aca356946ea5f4578c9c4f795209a6dccb4d7be66abd9f637",
+    "status": "candidate",
+    "notes": "Connected boards, hinged handle, leather folds and tapered nozzle create a readable lateral gesture. Leather stays matte copper-brown against pale boards; identity holds at all three review sizes.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "forge",
+    "subject": "quench-trough",
+    "file": "forge/quench-trough.svg",
+    "sha256": "bbfb3e1717b3329f263725bd2ea0ef6cc03065baaf5cab1efcc12396030301ea",
+    "status": "candidate",
+    "notes": "Long trough and steel bar read clearly with continuous support. The narrow water slit and steam become subtle at 64x45, so retain for scene compositions rather than a small water-status icon.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "forge",
+    "subject": "anvil-block",
+    "file": "forge/anvil-block.svg",
+    "sha256": "84a2038030d7c84e808526e5ac1d7b03dfa3471172108091ef2fdef5852ea4e4",
+    "status": "candidate",
+    "notes": "Long horn and broad heel sit on a fitted low masonry block. Cool iron and warm light planes are distinct; strongest single silhouette in this kit at compact size.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "forge",
+    "subject": "clamp-bench",
+    "file": "forge/clamp-bench.svg",
+    "sha256": "f8a4d00e501d60d7be9f20a2656b7ef73ea0a9fb99412f52430105dc2db6f3aa",
+    "status": "candidate",
+    "notes": "Open vise jaws attach to a braced wood bench. Main mechanism remains recognizable at 80x56; screw details simplify at 64x45. This is a visual prop concept, not a mechanically validated machine design.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "forge",
+    "subject": "crucible-stand",
+    "file": "forge/crucible-stand.svg",
+    "sha256": "3d8c9076b28e1a9742f371953884ac6114be0875c2008aae7db52505fc0d78ac",
+    "status": "candidate",
+    "notes": "Tilted ceramic bowl sits in a continuous two-sided iron support with a stable stone foot. Interior warm plane stays restrained; no unsupported molten splash or floating mount.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "forge",
+    "subject": "coal-hopper",
+    "file": "forge/coal-hopper.svg",
+    "sha256": "5d9d0a5171f64d9c53aa9a638d6a0924ea981cc47d4ea3910f75d20db76e42c5",
+    "status": "candidate",
+    "notes": "Wedge body, coal mass and open feed door remain distinct at compact size. Fitted feet and hinge are clear; ember accent is subordinate to the structural silhouette.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "forge",
+    "subject": "cooling-rack",
+    "file": "forge/cooling-rack.svg",
+    "sha256": "457e954167c7817c011d85938a765f081958d2baa6b5b7db157c60a8bad53122",
+    "status": "candidate",
+    "notes": "Open shelves, diagonal brace and two unequal ceramic molds remain clear at 160x112 and 80x56. Small slats simplify at 64x45; broad shelf gaps preserve identity.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "forge",
+    "subject": "vent-chimney",
+    "file": "forge/vent-chimney.svg",
+    "sha256": "e0aed01018a6cfceb2c963f8775c35269e36564c2f959a0dae857bfd8fdd6242",
+    "status": "candidate",
+    "notes": "Bent hood, continuous flue and warm recessed slit distinguish the vent from the other props. Quiet stone base supports the hood; no excessive smoke or ornament.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "garden",
+    "subject": "reed-bed",
+    "file": "garden/reed-bed.svg",
+    "sha256": "bc03c019e6a05bca40fd09daa5be2d1c6328522dd279fdff713b664dba028893",
+    "status": "candidate",
+    "notes": "Unequal curving reeds and low trough keep a clear contour at 160x112, 80x56 and 64x45. Waterline is subtle at smallest size; silhouette remains useful as a composition prop.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "garden",
+    "subject": "root-arch",
+    "file": "garden/root-arch.svg",
+    "sha256": "f8fea4cd0ab58041ea3e48dc05ebb6acc9bc9fe550bf63c180ee8b2b5c130607",
+    "status": "candidate",
+    "notes": "One root grips the left jamb and curves across the crown; exposed right stone and broad opening read clearly. Copper-brown living root remains distinct from stone and moss.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "garden",
+    "subject": "water-spout",
+    "file": "garden/water-spout.svg",
+    "sha256": "e9c86dec7fbc296077c68d6d29abf82e4842bcb696ef32ff44e38bb271a26fe7",
+    "status": "candidate",
+    "notes": "Connected ceramic pipe and continuous blue-green stream meet the basin. Thin water curve reads even compactly; water is a designed plane rather than transparent simulation.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "garden",
+    "subject": "moss-bench",
+    "file": "garden/moss-bench.svg",
+    "sha256": "080791cdc8534e1c3907df251a673a79410464d95ee66c104ccf29a246485bd3",
+    "status": "candidate",
+    "notes": "Thick seat, unequal legs and left moss cap keep a grounded asymmetric silhouette. The quiet opening underneath remains clear at compact size.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "garden",
+    "subject": "lily-cistern",
+    "file": "garden/lily-cistern.svg",
+    "sha256": "3e56162c9e0a6995979cc68d6d782ddf6009ebe99f5b5f2550e21349edc7946c",
+    "status": "candidate",
+    "notes": "Broad rim, broken right edge, blue-green water and two unequal pads read at compact size. Simplified reflections distinguish the water from solid stone; no tactical-occupancy claim.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "garden",
+    "subject": "vine-trellis",
+    "file": "garden/vine-trellis.svg",
+    "sha256": "15c23f4af0d87900e7553e1f884ceacc87a9108aeb80a2514c91ec6d86a5980d",
+    "status": "candidate",
+    "notes": "Tilted support and diagonal vine remain connected. Open lattice and leaf clusters are readable at 80x56; leaf detail simplifies at 64x45 without losing trellis identity.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "garden",
+    "subject": "seed-cabinet",
+    "file": "garden/seed-cabinet.svg",
+    "sha256": "531a205ac778cd27d1c49fc53937959a95a206dc6d765a74924878d27a83e5fe",
+    "status": "candidate",
+    "notes": "Unequal shelves, two terracotta trays and one climbing leaf read at 160x112 and 80x56. The cabinet is a scene prop, with no legible labels or invented contents.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "garden",
+    "subject": "stepping-culvert",
+    "file": "garden/stepping-culvert.svg",
+    "sha256": "12c3a7c12cbb6042bbc0d926762951179ef406e50a42ea997714b6144a1a79d7",
+    "status": "candidate",
+    "notes": "Two uneven slabs sit visibly on stone banks above an open water channel. Broad span-and-void relationship survives at smallest study size; the precise traverse is not a gameplay assertion.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-beyond-thresholds",
+    "subject": "beyond-tilted-observatory",
+    "file": "spire-beyond-thresholds/beyond-tilted-observatory.svg",
+    "sha256": "b78fa53f94d6fb69880ba5e93607b919ab3663a6edd6ad31e5b8a3c6c4f5422e",
+    "status": "candidate",
+    "notes": "One large hollow copper-toned forged ring anchors to an asymmetric stone platform. Cream route, dark support void and quiet plum backdrop remain distinct at 160x112 and 80x56; distant floating mass is only a setting motif.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-beyond-thresholds",
+    "subject": "beyond-silent-span",
+    "file": "spire-beyond-thresholds/beyond-silent-span.svg",
+    "sha256": "00c644c8b219cf642d06f71a3ad455963bdf4b5b8916214675bdf5b6f44c492d",
+    "status": "candidate",
+    "notes": "A low S-shaped pale bridge joins unequal platforms, with visibly fitted end brackets. Route-versus-chasm remains clear compactly; the single sage cloth accent gives direction without obscuring the span.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-beyond-thresholds",
+    "subject": "beyond-sealed-reservoir",
+    "file": "spire-beyond-thresholds/beyond-sealed-reservoir.svg",
+    "sha256": "55ae3868ff9d30d1823ab74d49dac2fbc897aa1ebf45b1aa2e2c797a5a97a2ba",
+    "status": "candidate",
+    "notes": "Broad opaque reservoir, narrow green inspection slit and short curved drain are distinct from a potion or relic. Blue-green water bowl reads at native size; the glass slit simplifies at compact size.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-beyond-thresholds",
+    "subject": "threshold-rusted-lift",
+    "file": "spire-beyond-thresholds/threshold-rusted-lift.svg",
+    "sha256": "b0d11713cd5aedde1c0e6e2bc4ec8d593e4d8228f5ab1a679f1cab50764e19e0",
+    "status": "candidate",
+    "notes": "Open empty cage, connected chain and adjacent landing read as a lift location. Thin chain links simplify at 64x45 but silhouette survives at 80x56. This is a source composition, with no validated lift mechanism or gameplay trigger.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-beyond-thresholds",
+    "subject": "threshold-curtain-vault",
+    "file": "spire-beyond-thresholds/threshold-curtain-vault.svg",
+    "sha256": "e5c6e79bb3416856e11690734a6c2cd22f08898cdf5294643e565b592a6fe3cc",
+    "status": "candidate",
+    "notes": "Three broad plum cloth folds hang from a fitted hook and partly reveal a dark opening. Thick stone jamb and cream floor wedge give clear depth; no visible inscription or invented vault contents.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-beyond-thresholds",
+    "subject": "threshold-abandoned-bell",
+    "file": "spire-beyond-thresholds/threshold-abandoned-bell.svg",
+    "sha256": "78a4670d778eaaa59bc022ad1578b945b7fc300e1b9138730cb48e80d5b9181f",
+    "status": "candidate",
+    "notes": "Cracked bell, hanging ring, attached clapper and stone arch read clearly at compact size. Warm copper/bronze appearance departs from the prompt iron interpretation; retain that material difference for user review instead of claiming exact prompt conformity.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-exordium-city",
+    "subject": "exordium-split-ascent",
+    "file": "spire-exordium-city/exordium-split-ascent.svg",
+    "sha256": "deb81e5a604395d01d63ee2cbd90068d640e1fcad8b4462b13f805bb19dcf9a6",
+    "status": "candidate",
+    "notes": "Pale rising stair leads around a dark outcrop to one warm opening. The incomplete right branch reads as broken traversal at 160x112 and 80x56. No route mechanics are implied; floating remnants are background composition.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-exordium-city",
+    "subject": "exordium-rain-camp",
+    "file": "spire-exordium-city/exordium-rain-camp.svg",
+    "sha256": "e0814d1fab6353cc4c822d49d7a570e6e61a1426f5d37509350fb780b1ba1715",
+    "status": "candidate",
+    "notes": "Asymmetric copper cloth attaches to two supports below a broad overhang; runoff is separate from the small ember bed. Shelter silhouette remains readable compactly, with no character anatomy or clutter.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-exordium-city",
+    "subject": "exordium-sealed-door",
+    "file": "spire-exordium-city/exordium-sealed-door.svg",
+    "sha256": "5f171cc1e54830eca3bf455e7ed25a7379b9df8ad0900110119600849309920e",
+    "status": "candidate",
+    "notes": "Heavy tilted door and warm lower wedge are clear against split rock. Copper latch remains subordinate; broad material planes survive compact view. Door fit and traversability are only visual concepts.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-exordium-city",
+    "subject": "city-suspended-market",
+    "file": "spire-exordium-city/city-suspended-market.svg",
+    "sha256": "1ee1e9d49995b785178715e65dac195145cb77d02f84bc62aa7997f2b7254912",
+    "status": "hold",
+    "notes": "Readable suspended covered balcony with attached canopy and continuous beams. Market-specific shutters/stall cues are weak, so the scene does not yet establish the named market function. Retain as a useful covered-balcony source; semantic role needs user decision or later selective adaptation, not automatic adoption.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-exordium-city",
+    "subject": "city-aqueduct-crossing",
+    "file": "spire-exordium-city/city-aqueduct-crossing.svg",
+    "sha256": "a93ce4f2c18d4a9a0f73f007b2be88a1eb0984d95c96877ffee2d0aed1bbe32b",
+    "status": "candidate",
+    "notes": "One pale diagonal route crosses a broad arch with visible stone thickness. Dark distant city masses stay quiet. Strong route-versus-void relationship survives at all reviewed sizes.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  },
+  {
+    "family": "spire-exordium-city",
+    "subject": "city-rooftop-refuge",
+    "file": "spire-exordium-city/city-rooftop-refuge.svg",
+    "sha256": "52198d9c39af546f03de7caeb1adfc386e194b31eeb4b17bb5d1f4dc84a8cef8",
+    "status": "candidate",
+    "notes": "Three broad steps lead into a dark sheltered pocket beneath sage cloth. Curved parapet distinguishes it from the cave camp, and the small warm lantern remains a focused accent at compact size.",
+    "display_sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "game_slot": null,
+    "runtime_adaptation": null
+  }
+]

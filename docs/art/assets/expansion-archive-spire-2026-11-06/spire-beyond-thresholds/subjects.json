@@ -1,0 +1,50 @@
+[
+  {
+    "id": "beyond-tilted-observatory",
+    "brief": "The Beyond: a tilted stone observation platform with one large hollow forged ring fixed into its rear edge. One suspended-looking distant mass in the backdrop only; visible platform supports, muted plum sky, no eye emblem.",
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "beyond-silent-span",
+    "brief": "The Beyond: two unequal pale stone platforms joined by a single narrow bent bridge over a dark chasm. The route forms a low S; sparse sage cloth tied to a fitted post, broad shadows, no figures.",
+    "x": 480,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "beyond-sealed-reservoir",
+    "brief": "The Beyond: a tall opaque stone reservoir with a narrow green-glass inspection slit and one curved drain into a shallow bowl. Continuous forged brackets, three clear material groups; no potion bottle or relic.",
+    "x": 960,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "threshold-rusted-lift",
+    "brief": "Encounter location concept: an iron lift cage suspended on a visibly continuous thick chain beside a worn stone landing. Open empty cage, three-quarter low diagonal platform, muted copper fittings. No character or promise of mechanics.",
+    "x": 0,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "threshold-curtain-vault",
+    "brief": "Encounter location concept: a broad dark doorway partially revealed by a heavy asymmetric plum curtain held by a simple forged hook. Three large cloth folds, thick stone jamb and one cream floor wedge; no treasure or readable script.",
+    "x": 480,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "threshold-abandoned-bell",
+    "brief": "Encounter location concept: a cracked suspended iron bell fitted to an asymmetric stone support, clapper resting visibly inside the dark mouth. Unequal opening and thick edge; a single draped sage cloth on the stone base. No character.",
+    "x": 960,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  }
+]

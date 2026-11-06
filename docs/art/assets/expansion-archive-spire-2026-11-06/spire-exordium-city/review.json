@@ -1,0 +1,26 @@
+{
+  "exordium-split-ascent": {
+    "status": "candidate",
+    "notes": "Pale rising stair leads around a dark outcrop to one warm opening. The incomplete right branch reads as broken traversal at 160x112 and 80x56. No route mechanics are implied; floating remnants are background composition."
+  },
+  "exordium-rain-camp": {
+    "status": "candidate",
+    "notes": "Asymmetric copper cloth attaches to two supports below a broad overhang; runoff is separate from the small ember bed. Shelter silhouette remains readable compactly, with no character anatomy or clutter."
+  },
+  "exordium-sealed-door": {
+    "status": "candidate",
+    "notes": "Heavy tilted door and warm lower wedge are clear against split rock. Copper latch remains subordinate; broad material planes survive compact view. Door fit and traversability are only visual concepts."
+  },
+  "city-suspended-market": {
+    "status": "hold",
+    "notes": "Readable suspended covered balcony with attached canopy and continuous beams. Market-specific shutters/stall cues are weak, so the scene does not yet establish the named market function. Retain as a useful covered-balcony source; semantic role needs user decision or later selective adaptation, not automatic adoption."
+  },
+  "city-aqueduct-crossing": {
+    "status": "candidate",
+    "notes": "One pale diagonal route crosses a broad arch with visible stone thickness. Dark distant city masses stay quiet. Strong route-versus-void relationship survives at all reviewed sizes."
+  },
+  "city-rooftop-refuge": {
+    "status": "candidate",
+    "notes": "Three broad steps lead into a dark sheltered pocket beneath sage cloth. Curved parapet distinguishes it from the cave camp, and the small warm lantern remains a focused accent at compact size."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "beyond-tilted-observatory": {
+    "status": "candidate",
+    "notes": "One large hollow copper-toned forged ring anchors to an asymmetric stone platform. Cream route, dark support void and quiet plum backdrop remain distinct at 160x112 and 80x56; distant floating mass is only a setting motif."
+  },
+  "beyond-silent-span": {
+    "status": "candidate",
+    "notes": "A low S-shaped pale bridge joins unequal platforms, with visibly fitted end brackets. Route-versus-chasm remains clear compactly; the single sage cloth accent gives direction without obscuring the span."
+  },
+  "beyond-sealed-reservoir": {
+    "status": "candidate",
+    "notes": "Broad opaque reservoir, narrow green inspection slit and short curved drain are distinct from a potion or relic. Blue-green water bowl reads at native size; the glass slit simplifies at compact size."
+  },
+  "threshold-rusted-lift": {
+    "status": "candidate",
+    "notes": "Open empty cage, connected chain and adjacent landing read as a lift location. Thin chain links simplify at 64x45 but silhouette survives at 80x56. This is a source composition, with no validated lift mechanism or gameplay trigger."
+  },
+  "threshold-curtain-vault": {
+    "status": "candidate",
+    "notes": "Three broad plum cloth folds hang from a fitted hook and partly reveal a dark opening. Thick stone jamb and cream floor wedge give clear depth; no visible inscription or invented vault contents."
+  },
+  "threshold-abandoned-bell": {
+    "status": "candidate",
+    "notes": "Cracked bell, hanging ring, attached clapper and stone arch read clearly at compact size. Warm copper/bronze appearance departs from the prompt iron interpretation; retain that material difference for user review instead of claiming exact prompt conformity."
+  }
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "path": "forge/review.png",
+    "sha256": "b6c84a05fd5809221ee375f53a1a430435e863eaf804cae43b5669029fa378c7",
+    "unoptimized_bytes": 159013,
+    "retained_bytes": 155638,
+    "dimensions": [960, 1008],
+    "mode": "RGBA",
+    "decoded_pixel_sha256": "19da424594339cbe6f8da61aa64a88fe763f66d584a4ae7f0d4b57b018fc7d94",
+    "pixel_dimension_alpha_color_equal": true,
+    "icc_profile": "none; renderer sRGB colors"
+  }
+]

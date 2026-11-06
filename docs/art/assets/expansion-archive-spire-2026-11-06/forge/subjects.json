@@ -1,0 +1,66 @@
+[
+  {
+    "id": "bellows",
+    "brief": "A low leather concertina bellows compressed between two fitted wooden boards, angled brass nozzle pointing right into empty space. One large open handle and visible hinge, warm matte leather, selective copper.",
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "quench-trough",
+    "brief": "A long thick stone quench trough with a dark steel bar resting across the rim, one broad cool reflective water plane and a restrained curl of steam. Horizontal silhouette, visibly supported weight.",
+    "x": 480,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "anvil-block",
+    "brief": "A single weathered iron anvil on a low square masonry block. One long tapered horn pointing left, heavy square heel right; broad steel planes with restrained copper reflected light, no weapon or sword.",
+    "x": 960,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "clamp-bench",
+    "brief": "A compact workbench with a broad iron vise attached visibly to one corner, open jaws facing left and a diagonal wooden brace under the slab. Three-quarter composition with no loose tool clutter.",
+    "x": 1440,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "crucible-stand",
+    "brief": "A tilted thick ceramic crucible held in a fitted iron fork above a low stone stand. A small orange warm interior plane, no molten splash, support bars visibly meet the load.",
+    "x": 0,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "coal-hopper",
+    "brief": "An asymmetrical wedge-shaped iron coal hopper on two short fitted feet, one hinged feed door open below. One connected dark coal mass in the upper mouth; selective warm ember accent in a quiet recess.",
+    "x": 480,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "cooling-rack",
+    "brief": "A freestanding three-tier broad iron cooling rack bearing two uneven ceramic molds and one blank ingot. Open shelf gaps and diagonal rear brace, subdued metal planes, no weapons or relics.",
+    "x": 960,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "vent-chimney",
+    "brief": "A short masonry forge vent with a bent dark iron hood and an offset flue; a warm slit recessed below the hood. Strong elbow-shaped contour, a fitted lower foot, no giant smokestack or busy smoke.",
+    "x": 1440,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  }
+]

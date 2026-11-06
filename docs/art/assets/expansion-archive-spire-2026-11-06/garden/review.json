@@ -1,0 +1,34 @@
+{
+  "reed-bed": {
+    "status": "candidate",
+    "notes": "Unequal curving reeds and low trough keep a clear contour at 160x112, 80x56 and 64x45. Waterline is subtle at smallest size; silhouette remains useful as a composition prop."
+  },
+  "root-arch": {
+    "status": "candidate",
+    "notes": "One root grips the left jamb and curves across the crown; exposed right stone and broad opening read clearly. Copper-brown living root remains distinct from stone and moss."
+  },
+  "water-spout": {
+    "status": "candidate",
+    "notes": "Connected ceramic pipe and continuous blue-green stream meet the basin. Thin water curve reads even compactly; water is a designed plane rather than transparent simulation."
+  },
+  "moss-bench": {
+    "status": "candidate",
+    "notes": "Thick seat, unequal legs and left moss cap keep a grounded asymmetric silhouette. The quiet opening underneath remains clear at compact size."
+  },
+  "lily-cistern": {
+    "status": "candidate",
+    "notes": "Broad rim, broken right edge, blue-green water and two unequal pads read at compact size. Simplified reflections distinguish the water from solid stone; no tactical-occupancy claim."
+  },
+  "vine-trellis": {
+    "status": "candidate",
+    "notes": "Tilted support and diagonal vine remain connected. Open lattice and leaf clusters are readable at 80x56; leaf detail simplifies at 64x45 without losing trellis identity."
+  },
+  "seed-cabinet": {
+    "status": "candidate",
+    "notes": "Unequal shelves, two terracotta trays and one climbing leaf read at 160x112 and 80x56. The cabinet is a scene prop, with no legible labels or invented contents."
+  },
+  "stepping-culvert": {
+    "status": "candidate",
+    "notes": "Two uneven slabs sit visibly on stone banks above an open water channel. Broad span-and-void relationship survives at smallest study size; the precise traverse is not a gameplay assertion."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "path": "gallery-source-study.png",
+  "original_bytes": 94474,
+  "retained_bytes": 94474,
+  "sha256": "87b19e5125c4ae7f87bfe261d6ddf4f20731fb69bb4878d1900d90c829527d10",
+  "decoded_pixel_sha256": "7031ebca7fdfe6dc38ed54d0cd3af5b1c1c61a37f321a90ed0ebb351c3ad2217",
+  "dimensions": [354, 1142],
+  "mode": "RGB",
+  "pixel_dimension_alpha_color_equal": true,
+  "color_profile": "none before and after; Chromium screenshot colors"
+}

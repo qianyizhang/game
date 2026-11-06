@@ -1,0 +1,13 @@
+[
+  {
+    "path": "spire-beyond-thresholds/review.png",
+    "sha256": "18e873ebd37f58e14b1a334e696ffe446b871f7e72709bd832ac38a890914b95",
+    "unoptimized_bytes": 132651,
+    "retained_bytes": 130529,
+    "dimensions": [960, 756],
+    "mode": "RGBA",
+    "decoded_pixel_sha256": "7dd4a4a7a94ee570e90804d838104c117441c6293dd662ca3652e10e6d7e4a4b",
+    "pixel_dimension_alpha_color_equal": true,
+    "icc_profile": "none; renderer sRGB colors"
+  }
+]

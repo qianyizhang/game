@@ -1,0 +1,11 @@
+{
+  "path": "overview.png",
+  "sha256": "fab82082cb062fffc9627393a2d1a82d2fc52bc97c9dfe86312fa8d200aaf00e",
+  "unoptimized_bytes": 380048,
+  "retained_bytes": 373982,
+  "dimensions": [1140, 990],
+  "mode": "RGBA",
+  "decoded_pixel_sha256": "e2c8907b46ee46378924275e989eb246d5b3e2e6136e598e58079de882b150e8",
+  "pixel_dimension_alpha_color_equal": true,
+  "icc_profile": "none; renderer sRGB colors"
+}

@@ -1,0 +1,349 @@
+{
+  "date": "2026-11-06T15:07:20.345Z",
+  "browser": "154.0.8037.57",
+  "mode": "Manual-delivery browser verification with Playwright and system Chromium; not a repository browser-suite pass.",
+  "preview": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "subjects": 36,
+      "images": 72,
+      "overflow": false,
+      "allDecoded": true,
+      "displaySizesPreserved": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "subjects": 36,
+      "images": 72,
+      "overflow": false,
+      "allDecoded": true,
+      "displaySizesPreserved": true
+    }
+  ],
+  "gallery": {
+    "isolatedImport": true,
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "overflow": false,
+    "revisions": [
+      {
+        "id": "expansion-archive-spire-20261106:archive:original",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:archive:index-shelf",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:archive:reading-lectern",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:archive:scroll-cradle",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:archive:floodgate-wheel",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:archive:broken-stair",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:archive:hinged-screen",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:archive:inkstone-basin",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:archive:survey-table",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:forge:original",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:forge:bellows",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:forge:quench-trough",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:forge:anvil-block",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:forge:clamp-bench",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:forge:crucible-stand",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:forge:coal-hopper",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:forge:cooling-rack",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:forge:vent-chimney",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:garden:original",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:garden:reed-bed",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:garden:root-arch",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:garden:water-spout",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:garden:moss-bench",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:garden:lily-cistern",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:garden:vine-trellis",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:garden:seed-cabinet",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:garden:stepping-culvert",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:original",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:beyond-tilted-observatory",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:beyond-silent-span",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:beyond-sealed-reservoir",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:threshold-rusted-lift",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:threshold-curtain-vault",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-beyond-thresholds:threshold-abandoned-bell",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-exordium-city:original",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-exordium-city:exordium-split-ascent",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-exordium-city:exordium-rain-camp",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-exordium-city:exordium-sealed-door",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-exordium-city:city-suspended-market",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-exordium-city:city-aqueduct-crossing",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-exordium-city:city-rooftop-refuge",
+        "decoded": true,
+        "images": 2,
+        "useDisabled": true,
+        "lineageVisible": true
+      }
+    ],
+    "attempts": [
+      {
+        "id": "expansion-archive-spire-20261106:archive",
+        "exactPromptSettingsUsageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:forge",
+        "exactPromptSettingsUsageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:garden",
+        "exactPromptSettingsUsageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-beyond-thresholds",
+        "exactPromptSettingsUsageVisible": true
+      },
+      {
+        "id": "expansion-archive-spire-20261106:spire-exordium-city",
+        "exactPromptSettingsUsageVisible": true
+      }
+    ]
+  },
+  "errors": []
+}

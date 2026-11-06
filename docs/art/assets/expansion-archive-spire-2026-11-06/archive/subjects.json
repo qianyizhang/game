@@ -1,0 +1,66 @@
+[
+  {
+    "id": "index-shelf",
+    "brief": "A narrow stepped stone index shelf with three broad closed folio stacks, one diagonal empty bay and a split lower foot. Rightward rising silhouette. Worn cream paper, slate green stone, dark recesses. No legible writing.",
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "reading-lectern",
+    "brief": "An off-center sloping reading lectern on a curved load-bearing stone bracket; a single thick open blank folio supported by its lip. Clearly connected stem and broad heavy foot, shallow three-quarter view.",
+    "x": 480,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "scroll-cradle",
+    "brief": "Low crescent-shaped stone cradle carrying three unequal rolled parchment cylinders. One unrolled edge falls across the front, exposing thickness; horizontal silhouette with quiet dark pockets.",
+    "x": 960,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "floodgate-wheel",
+    "brief": "An upright four-spoked iron floodgate wheel fixed to a short L-shaped masonry section with a broad copper axle collar. Strong circular opening against a low horizontal wall; nothing floating.",
+    "x": 1440,
+    "y": 0,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "broken-stair",
+    "brief": "A three-step broken archive stair module: broad warm-gray slabs rise left to right, outer corner split away, small moss patch tucked into one seam. Thick visible slab edges; no debris field.",
+    "x": 0,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "hinged-screen",
+    "brief": "Two unequal stone-framed lattice panels joined by a visible aged bronze hinge, bent into an open V. One large open passage per panel, sparse crossing bars, asymmetrical silhouette.",
+    "x": 480,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "inkstone-basin",
+    "brief": "A shallow oblong inkstone washing basin with a thick beveled lip and one broad dark reflective ink pool; short pouring notch at one end, stable offset plinth below. Quiet material planes.",
+    "x": 960,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  },
+  {
+    "id": "survey-table",
+    "brief": "A squat three-quarter stone survey table with a curled blank map held under one rectangular weight; a broad carved channel across one corner. Diagonal tabletop and continuous fitted supports, no symbols or relics.",
+    "x": 1440,
+    "y": 336,
+    "width": 480,
+    "height": 336
+  }
+]

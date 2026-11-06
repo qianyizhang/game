@@ -1,0 +1,100 @@
+{
+  "date": "2026-11-06T15:09:22.465173+00:00",
+  "base_commit": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "scope": "Source-only static native SVG concepts and local review evidence; no runtime/game/shared registry changes.",
+  "runtime": {
+    "node": "24.21.0",
+    "python": "3.12.13",
+    "browser": "system Chromium; manual delivery checks, not guarded repository browser suite",
+    "svg_review_tools": {
+      "CairoSVG": "2.9.1",
+      "Pillow": "13.0.0"
+    }
+  },
+  "checks": {
+    "format_maintenance": {
+      "command": "npm run format:maintenance",
+      "status": "passed",
+      "scope": "Repository Prettier, tracked inventory and local links; 901 maintained sources, zero errors."
+    },
+    "live_history": {
+      "command": "npm run assets:history -- verify",
+      "status": "passed",
+      "assets": 709,
+      "revisions": 92,
+      "selections": 0,
+      "registeredSources": 709
+    },
+    "isolated_import": {
+      "status": "passed",
+      "functions": ["importHistory", "verifyHistory", "validateSvg"],
+      "new_attempts": 5,
+      "new_revisions": 41,
+      "total_assets": 709,
+      "total_revisions": 133,
+      "selections": 0,
+      "new_game_slots": 0,
+      "runtime_adaptations": 0
+    },
+    "svg_and_lineage": {
+      "status": "passed",
+      "source_record": "source-qa.json",
+      "originals": 5,
+      "extractions": 36,
+      "original_bytes_preserved": true,
+      "exact_prompt_request_hashes_verified": true,
+      "each_crop_pixel_equal": true,
+      "all_foreground_inside_source_cell": true
+    },
+    "browser": {
+      "status": "passed",
+      "record": "browser-qa.json",
+      "preview_viewports": [1440, 390],
+      "preview_subjects": 36,
+      "preview_images_each": 72,
+      "gallery_revisions": 41,
+      "exact_prompt_settings_usage_attempts": 5,
+      "overflow": false,
+      "page_errors": 0
+    },
+    "png_evidence": {
+      "status": "passed",
+      "records": [
+        "overview-optimization.json",
+        "gallery-png-optimization.json",
+        "archive/png-optimization.json",
+        "garden/png-optimization.json",
+        "forge/png-optimization.json",
+        "spire-exordium-city/png-optimization.json",
+        "spire-beyond-thresholds/png-optimization.json"
+      ],
+      "decoded_pixels_dimensions_alpha_mode_color_verified": true
+    }
+  },
+  "not_run": {
+    "application_simulations": "No runtime or rule source changes.",
+    "native_geometry_delivery": "No native construction or delivery changes.",
+    "guarded_repository_browser_suite": "No runtime consumer added; manual preview/gallery checks are reported separately."
+  },
+  "review": {
+    "author_candidates": 35,
+    "semantic_hold": "city-suspended-market reads as covered balcony; market function weak.",
+    "material_deviation": "threshold-abandoned-bell reads warm copper/bronze rather than iron.",
+    "framing_deviations": "Some foreground/shadows use 16\u201323px inset rather than requested 24px; no outside-cell paint.",
+    "independent_visual_acceptance": false,
+    "user_acceptance": false,
+    "actual_game_consumer_review": "Pending any later authorized adoption."
+  },
+  "remaining": {
+    "shared_registration": "Pending central owner import of prepared-history.json; isolated copy validated.",
+    "publication": "No push or PR performed; separate authorization required.",
+    "access_or_approval_blockers": []
+  },
+  "artifacts": {
+    "prepared-history.json": "03c8ab134043195b87711378231396c37282fd19c9ad4b21296f61658d45fc73",
+    "overview.png": "fab82082cb062fffc9627393a2d1a82d2fc52bc97c9dfe86312fa8d200aaf00e",
+    "index.html": "3316381b1977edcc2f4c183ede3bea779d660993cf5f11938167a8eb96766163",
+    "inventory.json": "2d3520fe34089b1dedb41bd6e7c7786600fdb3723bf484ed5fc9d97ee6ac1771",
+    "budget.json": "06183d107ae8dd74881c1392b45224093e48a0e769c1bded6913023d737b503d"
+  }
+}

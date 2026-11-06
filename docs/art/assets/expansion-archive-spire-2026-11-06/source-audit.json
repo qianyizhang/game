@@ -1,0 +1,110 @@
+{
+  "base_commit": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "date": "2026-11-06",
+  "initial_worktree": "clean",
+  "open_prs": [
+    {
+      "number": 137,
+      "branch": "art/refinement-candidates-2026-11-06",
+      "action": "Read file inventory; do not edit or duplicate subjects"
+    }
+  ],
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ce4e63339a2be9fbafa75354f771ef7ba731c3c635ff5c0519d3df31f6763adc"
+    },
+    {
+      "path": "skills/card-art/SKILL.md",
+      "sha256": "df2d3b41e68eeb93fd1c1e4b7b4dd616cb2c2369ca532b71e310ada9cfb1ed32"
+    },
+    {
+      "path": "skills/card-art/references/batch-assets.md",
+      "sha256": "f38de983bc7eac7fe8674dd1e393153767731a5660816447ea864704d0e9e6d0"
+    },
+    {
+      "path": "docs/art/README.md",
+      "sha256": "753540d4f81e627f82d5c9b3cb4555d5fcca747c2f481e6d730500cbfbde32c8"
+    },
+    {
+      "path": "docs/art/art-direction.md",
+      "sha256": "f75e862713cb2935c2a86288cdabb2a6e9d396580a6dc89d48db18978075fbe3"
+    },
+    {
+      "path": "docs/art/iterations/README.md",
+      "sha256": "6f5fc81d99faad0239175ba862e3cae0f8ddff3fd8b20e1fdb211e6caf8285f5"
+    },
+    {
+      "path": "docs/art/svg.md",
+      "sha256": "4eb960cf327a6530cbd70e17c7689b6db181f292e5411ef7df693341870eab94"
+    },
+    {
+      "path": "docs/engineering/checks.md",
+      "sha256": "0b0c09ae3378de8de3cab3e4aec31d47cf39ea48cb1448d62a4e45541ca35d9a"
+    },
+    {
+      "path": "docs/engineering/maintenance.md",
+      "sha256": "6f8ad767ace6358ff4900d6c1db164b88c4f3c46761c6de11c39e7b39ca5b3a6"
+    },
+    {
+      "path": "docs/guide/cartographer.md",
+      "sha256": "3b2815378cf0dce447706df6e338dff76aa4f82ae6a3a1d1d3a92124b2bd0761"
+    },
+    {
+      "path": "src/games/cartographer/domain/content.ts",
+      "sha256": "ae296e58c3c035a0dbce91b3fd747aae65423780b6efc8d0c006baf8ade8ea36"
+    },
+    {
+      "path": "src/games/cartographer/ui/styles.css",
+      "sha256": "a8b7e242fe9636fb0dd7797c19202b169e4a31bac6b677702d65103a1c837422"
+    },
+    {
+      "path": "src/games/cartographer/ui/InhabitantArt.tsx",
+      "sha256": "4bfaa57843a78681ae7b1be8609f748820b11947e58a6a640cd196f5bb74e965"
+    },
+    {
+      "path": "src/games/cartographer/ui/FrontierArt.tsx",
+      "sha256": "1925612b3f159a27f503810239018ee900b38127ea8d3970b3dc20b3a0ee4365"
+    },
+    {
+      "path": "src/games/spire/content/world.ts",
+      "sha256": "9837867ecc8f19b04909f73b806256e83caf872882414f13f40745339d2c1a61"
+    },
+    {
+      "path": "src/games/spire/ui/SpireSceneArt.tsx",
+      "sha256": "cb6a4905fc441b6d0abab2f960f57900e6b4a94fed927cfa5e81705ada947ec5"
+    },
+    {
+      "path": "src/games/spire/ui/Rooms.tsx",
+      "sha256": "995acc713d7e4cda452c140a6417cf0036a668eca7fdef2089f6f92f3841ccd5"
+    },
+    {
+      "path": "docs/art/assets/spire-act-scenes/after-scene.webp",
+      "sha256": "7f5dcc118cf55a10e4a60b9e7e39c3750cc53da6b9ec67ceb667b6e3e72e2eab"
+    },
+    {
+      "path": "docs/art/assets/cartographer-room-materials/after-shrine-phone-context.webp",
+      "sha256": "5d3c7c080fc1a8bfcd531d929b59373ae5a75fce21bbc603b9dc2f88d9e366cd"
+    }
+  ],
+  "network": {
+    "environment": "managed cloud game environment",
+    "policy": "unrestricted enforced",
+    "observations_current": true,
+    "credential_binding": "OPENAI_API_TOKEN",
+    "binding_state": "ready",
+    "allowed_credential_destination": "api.openai.com",
+    "proxy": "inherited HTTPS_PROXY retained",
+    "secrets_saved": false
+  },
+  "model_preflight": {
+    "endpoint": "https://api.openai.com/v1/models",
+    "http_status": 200,
+    "available": ["gpt-image-2.6-sunburst", "gpt-6.1-sol"],
+    "billed_generation": false
+  },
+  "gallery_audit": [
+    "Live /__art/#asset=spire/acts/2 inspected; no retained revisions; native 160x112 scene",
+    "Live /__art/#asset=cartographer/inhabitants/keeper inspected; quiet icon family remains independent of future composition props"
+  ]
+}
