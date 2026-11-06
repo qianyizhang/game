@@ -1,7 +1,7 @@
 # Furnace brute · assistant-authored directional SVG study
 
 [Preview](preview.html) · [Selected overview](overview.png) ·
-[Manual sheet](manual-sheet.svg) · [Staged history](history-import.json)
+[Manual sheet](manual-sheet.svg) · [Canonical shared history](../../iterations/library.json)
 
 Four **assistant-authored native SVG** quarters for Furnace brute, exact monster
 ID `demon`. These are independent vector drawings, not recovered/generated image
@@ -105,11 +105,38 @@ should record a unique client request ID for tracing, not idempotency/retrieval.
 bounds, manual-sheet pixel agreement and isolated gallery inspection. All source
 revisions are unassigned with null runtime files. The unknown API attempt and
 manual authoring attempt are distinct; every real construction/current/composite
-state has its own digest and known lineage. Canonical import is coordinated
-serially and remains an explicit draft/merge-ready blocker.
+state has its own digest and known lineage. Canonical source registration is complete; technical provenance review and
+user art selection remain independent.
 
-No runtime, shared registry/default, monster definition, boss/mod fallback,
+No runtime, game default, monster definition, boss/mod fallback,
 HP/status marker, contact shadow, issue, merge or deployment change is included.
 Local candidate evidence and repository checks are separate from hosted CI,
 user acceptance and future game adoption. Normal push and source-only draft PR
 publication are authorized after coherent native-size and technical review.
+
+## Canonical registration boundary
+
+Open `/__art/#asset=__unassigned` and find `emberwake-brute-2026-11-06`. Two
+attempts and six source revisions retain the unknown paid request with no
+artwork and the separate manual construction/current/comparison states. None
+of the manual SVGs is a recovered model output. The request's actual billing
+remains unknown; manual authoring does not settle it.
+
+The redundant import was retired after exact canonical comparison and migration
+of its README/preview consumers. All source/request/receipt/budget/PNG bytes
+remain unchanged. Native/compact/enlarged views, exact text records and lineage,
+disabled Use and desktop/phone enlarged-text layouts receive actual gallery
+inspection, followed by scoped maintenance/history and affected browser gates.
+Independent library additions require serial reconciliation when landing.
+
+Actual gallery inspection passed six native/compact/enlarged revisions, both
+attempts and all exact request/receipt/budget/authoring text, explicit parents,
+disabled Use and six desktop/phone/font combinations, with no page errors.
+The overview PNG retains its original staged-status caption; current status is
+in this README and the live linked preview. Scoped repository gates follow;
+no game-facing compatibility or broad application/native execution is claimed.
+
+Registration passed `format:maintenance`, `assets:history -- verify`
+(709 assets/98 revisions/zero selections) and all three asset-history browser
+journeys at normal limits (27.9s aggregate). All twelve other owned files and
+existing registered asset/source/selection bytes are unchanged.

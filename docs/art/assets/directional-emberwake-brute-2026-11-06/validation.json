@@ -62,5 +62,11 @@
       "applied": true
     }
   },
-  "publication": "Source-only draft authorized; canonical import staged for serial coordinator. Independent current-main branch, no first-suite file dependencies."
+  "publication": "Source-only draft with canonical registration; no first-suite dependency, runtime mapping or game adoption.",
+  "registration": {
+    "handoff_head": "3db093b8405c71ed63e7def1832b9ece82ca5433",
+    "sources": "2 attempts/6 revisions; unknown paid call has no output, six SVGs belong to independent manual authoring. No runtime mapping or selections.",
+    "transport": "Retired duplicate history-import after exact canonical comparison and two consumer migrations; exact art/request/receipt/budget bytes preserved.",
+    "gallery": "Actual six revisions and two attempts, exact request/receipt/budget/authoring text and parents; native/compact/enlarged, disabled Use and six 1440/390/320px ×16/20px layouts passed without page errors. Historical overview caption unchanged; current README/HTML own registration status."
+  }
 }
