@@ -25,7 +25,22 @@ targeted revision. Exact prompts, usage/request IDs and cost occur once per call
 in `calls/`; common [settings](../continuation-generation.json) reconstruct the
 sent parameters. No account-balance or identical stochastic rerender promise.
 
-[Validation](validation.json) separates original/pixel checks, native-GIF viewing,
-mobile layout and staged history. Central registration and user review remain
-pending; the staged import has no runtime adaptation or selection. No game,
-shared registry/default, issue, merge or deployment changes.
+[Validation](validation.json) separates original/pixel checks, native viewing,
+shared registration and scoped maintenance/browser evidence. The canonical
+[shared history](../../../iterations/library.json) owns seven attempts and seven
+source revisions. Open `/__art/#asset=__unassigned` and find `hearth-one-seat-more`.
+Originals, exact sent PNG inputs, one byte-identical shared settings record and
+held cup-loss trial remain unchanged. Redundant import transport was retired
+after exact canonical comparison; reference raster copies do not invent extra
+artwork states. Assembly chapter choice is provenance, not game selection.
+
+Draft blocker: after the once-playing joined GIF ends, actual shared-gallery
+Stop then Play retains its final frame. Initial playback advances; end/restart
+compositor captures are identical. #142 owns the implementation fix and needs a
+fresh integration check. No pause/seek is promised. Source continuity caveats
+remain independent of this technical blocker and user acceptance.
+
+Scoped formatting/inventory/links, history integrity and affected browser checks
+are required for this metadata-only registration. Existing game/default/selection
+bytes remain unchanged; independent candidate history changes require later
+serial reconciliation. No merge, adoption or deployment is included.
