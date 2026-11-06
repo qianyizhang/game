@@ -11,5 +11,13 @@
   "rigidity_method": "Manual approximate2D ring/jaw landmarks: r1about178->133px; final repair sampled about160-175px. Several-pixel uncertainty and possible foreshortening; neither calibrated3D rigidity nor proof of deformation claimed.",
   "stop": "Finite block stopped after1of3calls under visual stop rule;2unusedcalls/USD3returned. No paid activity or unknown billing remains locally.",
   "independent_audit": "Read-only second worker at source0f980266 verified five outputs,settings,input hashes,all64 decoded frames/digests,cost0.370241 and visual samples; no preservation blocker. Current publication gallery/mobile checks rerun separately.",
-  "playback_limit": "All four source GIFs have infinite-loop metadata; there is no joined GIF here. Native looping playback reviewed. Shared gallery Stop/Play after a nonlooping joined GIF ends is a known unresolved limitation; no restart fix or claim is made in this package."
+  "playback_limit": "All four source GIFs have infinite-loop metadata; there is no joined GIF here. Native looping playback reviewed. Shared gallery Stop/Play after a nonlooping joined GIF ends is a known unresolved limitation; no restart fix or claim is made in this package.",
+  "registration": {
+    "handoff_head": "346637d31f87a0e9861d9914b502bc010ac2a43c",
+    "source_records": "5 actual attempts/5 unassigned source revisions; three held Engage alternatives, no invented chapters/assembly, runtime null and no selections",
+    "transport": "Retired duplicate import after exact canonical comparison and README consumer migration; original artworks, exact sent inputs and canonical call/settings/animation/review bytes unchanged.",
+    "dependencies": "Only common continuation-generation.json shared with148/150; bytes independently verified identical, no artwork/ancestor dependency.",
+    "media": "All4nativeGIFs retain16frames×300ms,480×336 and infinite loop; all64 composed RGBA/timing digests match animation.json. Two exact sentPNG hashes and frame15 input pixels verify; openingSVGdigest verifies. No assembly or permanent decoded-frame catalogue.",
+    "gallery": "Actual5source revisions,19exact desktop/mobile text/input document views, real native full-cycle playback, Stop/image recreation and reduced-motion blocking, held lineage, disabled Use, six1440/390/320px×16/20px layouts passed without page errors. Frame-accurate restart is not asserted; this package does not fix once-playing shared replay."
+  }
 }

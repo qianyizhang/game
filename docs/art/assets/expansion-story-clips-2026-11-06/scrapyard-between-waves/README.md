@@ -24,11 +24,42 @@ verified billing statement or artwork acceptance.
 
 [Review and stop reasons](review.md) · [Original storyboard proposal](brief.md) ·
 [Compact frame/timing evidence](animation.json) · [Actual PNG lineage](references.json) ·
-[Staged source-only import](history-import.json) · [Checks and limits](validation.json)
+[Canonical source history](../../../iterations/library.json) · [Checks and limits](validation.json)
 
-Central registration is pending. The shared settings file is
+Canonical registration contains five actual attempts and five source revisions. The shared settings file is
 [stored once](../continuation-generation.json); exact prompts,responses and
 usage live once per request under `calls/`. Existing game defaults stay unchanged.
 
 All four originals loop natively. This study has no joined GIF; it makes no
 claim to fix shared gallery Stop/Play after a nonlooping joined GIF ends.
+
+## Canonical registration boundary
+
+Open `/__art/#asset=__unassigned` and find `Between Waves`. All five original
+outputs and both exact sent PNG inputs remain unchanged, with explicit original/
+input/attempt lineage and source failure judgments. The three held Engage trials
+remain visible, rather than becoming a finished or accepted story. No Tighten/
+Test output, assembly or runtime identity is invented.
+
+The redundant import transport was retired after exact canonical comparison and
+README consumer migration. Shared settings are byte-identical to the independent
+Cartographer/Hearth story branches, without an unmerged ancestor dependency.
+Native playback, Stop, reduced-motion blocking, exact prompt/settings/input
+inspection, lineage and desktop/phone enlarged-text layouts receive actual
+gallery review, followed by scoped maintenance/history and affected browser
+journeys. Independent library additions require serial reconciliation.
+
+Actual shared-gallery inspection passed five source revisions, 19 exact
+desktop/mobile text/input views, full native playback, Stop/image recreation,
+reduced-motion blocking, lineage, disabled Use and six viewport/font combinations
+without page errors. All four GIF/timing digests match animation.json; both
+exact input PNGs and recorded frame lineage verify. Frame-accurate restart is
+not asserted here, and there is no once-playing assembled GIF in this study.
+Scoped repository gate outcomes follow; no artwork acceptance is implied.
+
+Registration passed `format:maintenance`, `assets:history -- verify`
+(709 assets/97 revisions/zero selections) and all three asset-history browser
+journeys at normal limits (33.3s aggregate). Existing registered assets/sources/
+selection bytes and every other owned artwork/input/call/review file remain
+unchanged. This is technically reviewable provenance for an incomplete held
+study, not a finished story or artwork acceptance.
