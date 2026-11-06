@@ -35,7 +35,7 @@
     "alpha_color_metadata_equal": true,
     "sha256": "31aa4bbaf9f4acf430d815a90ac499ad8e18c5ff4f266b1643bd0e67dbba6165"
   },
-  "limits": "Four source revisions staged: exact normal/ascended originals held, two distinct manual anatomy derivatives self-reviewed. Central registration/user review remain pending. No runtime or default change.",
+  "limits": "Four canonical source revisions: exact normal/ascended originals held, two distinct manual anatomy derivatives self-reviewed. User acceptance/runtime compatibility remain independent, no default change.",
   "verification": {
     "format_maintenance": "Passed; pinned Node 24.21.0/npm 11.19.0; 901 managed sources, no errors.",
     "isolated_history": "Final family import and verify passed in disposable Git clone: 709 assets, 96 revisions, zero selections, 709 source registrations. Four staged family revisions validated; source branch registry unchanged.",
@@ -85,5 +85,12 @@
     "mode": "RGB",
     "decoded_pixels_alpha_and_color_metadata_equal": true,
     "sha256": "45aec80ebb634d80c43f12351dc7feedbefaa724c4a29ef84e4fc49ce6d98fe6"
+  },
+  "registration": {
+    "handoff_head": "d397234dc052d65395b192520ce9eb27ff4458f8",
+    "source_records": "4 attempts/4 revisions, originals held and two explicit manual parents, no runtime mapping or selections",
+    "transport": "Retired duplicate prepared-history after canonical comparison; README consumer migrated, unique request/call/repair/review facts unchanged.",
+    "gallery": "Actual 4 revisions native/compact/enlarged, all 4 attempts exact payload/call/QA text, held originals and repair parents, disabled Use and six 1440/390/320px × 16/20px layouts passed; no page errors. Historical retained PNG pending-caption remains unchanged; current status in README.",
+    "checks": "format:maintenance and history verify passed. First browser run:2pass, third failed ENOSPC creating temporary fixture; no assertion failure. Freed about5GB by removing9ignored/untracked dist builds, no retained artwork. Failed Scrapyard journey rerun alone passed17.4s at normal limits; initial25.0s run/failure log retained. No assertion or timeout change."
   }
 }

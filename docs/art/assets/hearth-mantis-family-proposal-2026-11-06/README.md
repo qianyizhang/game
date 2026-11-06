@@ -3,7 +3,7 @@
 **Candidate-only family; both reviewed choices are authored derivatives.** Two
 paid calls returned. Their exact originals are preserved with anatomy holds;
 separate native SVG repairs produce the useful normal/ascended pair below.
-Central registration and user review remain pending. No runtime slot, game rule,
+Canonical source registration is complete; user art review remains separate. No runtime slot, game rule,
 canonical history, adoption or default change is implied.
 
 ![Reviewed normal and ascended derivatives at native art-window and compact sizes](family-review.png)
@@ -128,9 +128,33 @@ The [official guide](https://developers.openai.com/api/docs/guides/image-generat
 separates image complexity from author effort and does not support SVG streaming,
 partials or SVG image edits. No unverified background/reference-edit workaround.
 
-[Staged history](prepared-history.json) records two paid attempts, two manual
-attempts and four exact original/derivative revisions, with no invented runtime
-slots. Final isolated history/gallery and maintenance results are in QA. Central
-registration remains a draft blocker; the serial coordinator owns that mutation.
-No original selection, shared registry, frozen published branch or game source is
-changed. Any later uncertain request must keep its full reservation and stop.
+[Canonical shared history](../../iterations/library.json) records two paid
+attempts and two distinct manual attempts, with four exact original/derivative
+revisions and no invented runtime slots. Open `/__art/#asset=__unassigned` and
+find `Briar Mantis`. Both exact API originals remain held; the two anatomy
+repairs have explicit original parents and separate authoring facts. Text-only
+family continuity is not an image input or a pixel derivation between calls.
+
+The redundant staged import was retired after exact canonical comparison and
+migration of its sole README consumer. All four SVGs, both exact payloads, call
+records and retained review images stay unchanged. No game selection/default,
+frozen published branch or game source is changed. Other independent library
+additions need serial reconciliation when landing. Any uncertain request keeps
+its full reservation; this registration makes no request.
+
+Actual gallery and scoped validation results follow at this boundary. Technical
+source readiness is distinct from user art selection or runtime compatibility.
+
+Actual shared-gallery inspection passed all four revisions and four attempts,
+including exact payloads/calls/QA, held originals and repair parents, disabled
+Use and six viewport/font combinations with no page errors. Historical retained
+review PNGs keep their original pending-registration caption; this README owns
+the current status. Scoped repository gates follow; no broad application or
+geometry/native execution is claimed for this metadata-only change.
+
+Registration gates: formatting/inventory/links and history integrity passed.
+Browser coverage is two initial passes plus one focused normal-limit pass
+(17.4s). The third initial journey failed `ENOSPC` creating its temporary
+fixture; nine ignored/untracked production builds were removed to free about
+5 GB, preserving retained artwork/provenance. The original failure log remains;
+this is not a clean first-pass suite. No assertion or timeout changed.

@@ -6657,6 +6657,52 @@
         "docs/art/assets/scrapyard-suite/visual-qa.json",
         "docs/art/assets/scrapyard-suite/technical-qa.json"
       ]
+    },
+    {
+      "id": "hearth-mantis-pilot-20261106",
+      "title": "Briar Mantis normal pilot",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One granted paid call; exact original held for head detachment. Usage/grant in call.json.",
+      "files": [
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/pilot-request.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/call.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/README.md",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/qa.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/review.png"
+      ]
+    },
+    {
+      "id": "hearth-mantis-neck-repair-20261106",
+      "title": "Briar Mantis manual cervical repair",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "No paid request. One three-path group connects head and prothorax; all existing nodes/attributes unchanged.",
+      "files": [
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/qa.json"
+      ]
+    },
+    {
+      "id": "hearth-mantis-ascended-20261106",
+      "title": "Briar Mantis ascended companion",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One granted paid call; exact original held for head detachment and extra walking leg. Textual family continuity only.",
+      "files": [
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/ascended/request.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/ascended/call.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/family-review.png"
+      ]
+    },
+    {
+      "id": "hearth-mantis-ascended-repair-20261106",
+      "title": "Briar Mantis ascended manual anatomy repair",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "No paid call. Removed five extra-leg paths and added three cervical paths; other nodes/attributes unchanged.",
+      "files": [
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/qa.json"
+      ]
     }
   ],
   "revisions": [
@@ -7819,6 +7865,58 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "hearth-mantis-pilot-20261106:original",
+      "asset": null,
+      "attempt": "hearth-mantis-pilot-20261106",
+      "label": "Briar Mantis / exact original / anatomy hold",
+      "file": "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/original.svg",
+      "digest": "88b27625c91fb66f58b6c03a2a1fe308ec9e3eb6d367f51e94cc817975de8ae2",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API bytes retained; head/prothorax gap documented."
+    },
+    {
+      "id": "hearth-mantis-neck-repair-20261106:connected",
+      "asset": null,
+      "attempt": "hearth-mantis-neck-repair-20261106",
+      "label": "Briar Mantis / connected normal source candidate",
+      "file": "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/mantis-normal-connected.svg",
+      "digest": "1fcdd4209973e93c186cf85da05565046acd9fd1db2ac8a7d76df1e0adcf2dd8",
+      "parents": [
+        "hearth-mantis-pilot-20261106:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Added cervical-connection group with three paths before prothorax. No other original nodes or attributes changed."
+    },
+    {
+      "id": "hearth-mantis-ascended-20261106:original",
+      "asset": null,
+      "attempt": "hearth-mantis-ascended-20261106",
+      "label": "Briar Mantis / exact ascended original / anatomy hold",
+      "file": "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/ascended/original.svg",
+      "digest": "5261efeb7369adb27dce21fbceb60ad91adf7348fa3ae873a1b059a014afa4a7",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API bytes retained; neck gap and five walking legs documented."
+    },
+    {
+      "id": "hearth-mantis-ascended-repair-20261106:anatomy",
+      "asset": null,
+      "attempt": "hearth-mantis-ascended-repair-20261106",
+      "label": "Briar Mantis / six-leg connected ascended source candidate",
+      "file": "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/ascended/mantis-ascended-anatomy.svg",
+      "digest": "d4bd125907e98376dd336c1cda6d693fbc256ab6a83e3c0a27f63ab624b92825",
+      "parents": [
+        "hearth-mantis-ascended-20261106:original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Removed only five extra-leg paths and added cervical-connection with three paths. Other original nodes/attributes retained."
     }
   ]
 }
