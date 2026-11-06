@@ -10,5 +10,6 @@
   "reference_input": "Exact480x336 PNG,RGB8,opaque sRGB backdrop; bytes match actual sent input catalog and original rasterization. No optimization or recoloring.",
   "rigidity_method": "Manual approximate2D ring/jaw landmarks: r1about178->133px; final repair sampled about160-175px. Several-pixel uncertainty and possible foreshortening; neither calibrated3D rigidity nor proof of deformation claimed.",
   "stop": "Finite block stopped after1of3calls under visual stop rule;2unusedcalls/USD3returned. No paid activity or unknown billing remains locally.",
-  "independent_audit": "Read-only second worker at source0f980266 verified five outputs,settings,input hashes,all64 decoded frames/digests,cost0.370241 and visual samples; no preservation blocker. Current publication gallery/mobile checks rerun separately."
+  "independent_audit": "Read-only second worker at source0f980266 verified five outputs,settings,input hashes,all64 decoded frames/digests,cost0.370241 and visual samples; no preservation blocker. Current publication gallery/mobile checks rerun separately.",
+  "playback_limit": "All four source GIFs have infinite-loop metadata; there is no joined GIF here. Native looping playback reviewed. Shared gallery Stop/Play after a nonlooping joined GIF ends is a known unresolved limitation; no restart fix or claim is made in this package."
 }

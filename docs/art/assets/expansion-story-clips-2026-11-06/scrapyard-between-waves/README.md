@@ -29,3 +29,6 @@ verified billing statement or artwork acceptance.
 Central registration is pending. The shared settings file is
 [stored once](../continuation-generation.json); exact prompts,responses and
 usage live once per request under `calls/`. Existing game defaults stay unchanged.
+
+All four originals loop natively. This study has no joined GIF; it makes no
+claim to fix shared gallery Stop/Play after a nonlooping joined GIF ends.
