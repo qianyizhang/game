@@ -1,31 +1,20 @@
 {
-  "base_main": "3a59621",
-  "runtime": {
-    "node": "24.21.0",
-    "npm": "11.19.0",
-    "python": "3.12.13"
+  "original_bytes": "All5 GIFs,reference.svg and4 actual PNG inputs match checkpoint9973d6f SHA256 values.",
+  "gifs": {
+    "source_clips": 4,
+    "frames_each": 16,
+    "joined_frames": 64,
+    "size": [480, 336],
+    "frame_ms": 300,
+    "duration_ms": 19200,
+    "decoded_content_and_timings_exact": true
   },
-  "passed": [
-    "npm run format:maintenance (repository formatting/inventory/links/hydration)",
-    "Baseline production assets:history verify:709 assets,92 revisions,0 selections,709 registeredSources",
-    "Production SVG safety validation:1280x896 native vector",
-    "All 64 source frames composed/decode and pixel-equivalent extraction",
-    "Joined GIF:480x336,64 frames,19200ms; every frame pixel-equivalent",
-    "All 87 visual artifact SHA-256 and parent paths",
-    "Exact plain prompt bytes match request and sanitized sent prompt strings",
-    "Five paid request receipts; total estimate0.429500USD,0 unresolved reservation",
-    "Isolated merged-registry import/verify:709 assets,98 revisions,0 selections",
-    "Production gallery UI source-study labels, native/compact SVG, GIF decode/play and request/settings inspection",
-    "Loopback Chromium review playback/pause/restart/reduced-motion still defaults,390/320px and enlarged text,local links,no external dependencies"
-  ],
-  "not_run": {
-    "application_geometry_native_suites": "No rules, runtime renderer or native construction changed; this is a documentation/source-study delivery.",
-    "repository_Google_Chrome_E2E": "Separate from disposable Chromium review probe; not claimed."
-  },
-  "limitations": [
-    "Source-only candidates, central registration pending",
-    "Visible chapter-cut rendering drift, sconce geometry drift, shortened final hold and silhouette fade",
-    "file URL preview administratively blocked; no retry; normal loopback HTTP preview worked",
-    "No user aesthetic/canon acceptance, game adoption or runtime compatibility"
-  ]
+  "requests": "All5 canonical prompts/settings and ordered exact reference bytes reconstruct the original sent requests; usage/request IDs preserved.",
+  "previews": "Native join-preview panels are pixel-identical to source GIF frames. Compact preview is explicit nearest-neighbor sampling, not a claimed identical16-bit recompression.",
+  "gallery": "Production isolated import/verify98 revisions,0 selections; six original source revision IDs/hashes/parents,canonical documents and nativeGIF controls inspected; all runtime selection buttons disabled.",
+  "browser": "Loopback Chromium154 nativeGIF default; real-time ending visually inspected and compositor image content compares0 changed pixels; reduced-motion SVG;390/320px with enlarged text; all links,no external requests/page errors.",
+  "browser_probe_exception": "Canvas drawImage did not expose current animated GIF frame. Replaced that probe with compositor screenshot; one extra screenshot rounding row excluded from480x336 content comparison. No image timing/pixel change.",
+  "maintenance": "Passed npm run format:maintenance (format/inventory/links/hydration), baseline assets:history verify709 registered sources, and diff whitespace.",
+  "scope": "Data/review-page cleanup only; no application,gameplay,native geometry or selection change. Repository Google Chrome E2E is separate from the Chromium probe.",
+  "paid_calls_for_cleanup": 0
 }

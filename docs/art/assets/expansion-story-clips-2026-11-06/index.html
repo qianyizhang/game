@@ -1,428 +1,65 @@
 <!doctype html>
 <html lang="en">
-  <meta charset="utf-8" /><meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
-  /><title>One Light Left Behind · Story study</title
-  ><style>
-    * {
-      box-sizing: border-box;
-    }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>One Light Left Behind · native GIF study</title>
+  <style>
     body {
-      margin: 0;
-      background: #101d1b;
-      color: #e2dcc6;
-      font:
-        17px/1.6 system-ui,
-        sans-serif;
-    }
-    main {
-      max-width: 1120px;
-      margin: auto;
-      padding: 40px 24px 80px;
-    }
-    header {
       max-width: 800px;
-      margin-bottom: 30px;
-    }
-    .eyebrow {
-      color: #bd9b68;
-      font-size: 12px;
-      letter-spacing: 0.13em;
+      margin: 32px auto;
+      padding: 0 20px;
+      background: #172928;
+      color: #dfd4b4;
+      font: 18px/1.6 system-ui;
+      overflow-wrap: anywhere;
     }
     h1 {
       font:
-        clamp(36px, 6vw, 68px)/1.08 Georgia,
+        42px/1.1 Georgia,
         serif;
-      margin: 16px 0;
     }
-    h2 {
-      font:
-        30px/1.2 Georgia,
-        serif;
-      margin: 4px 0 14px;
-    }
-    p {
-      color: #c7cbbb;
-    }
-    .lede {
-      font-size: 21px;
-    }
-    .notice {
-      border-left: 3px solid #a77a51;
-      padding-left: 16px;
-    }
-    a {
-      color: #e8bf86;
-      text-underline-offset: 4px;
-    }
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible {
-      outline: 3px solid #f6d795;
-      outline-offset: 4px;
-    }
-    figure {
-      margin: 0;
-      padding: 20px;
-      background: #1a2b27;
-      border: 1px solid #3b4e42;
-      border-radius: 12px;
-    }
-    #screen {
-      width: 100%;
-      max-width: 720px;
-      height: auto;
+    img {
       display: block;
-      margin: auto;
-      image-rendering: auto;
-    }
-    .controls {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin: 18px auto 4px;
-      max-width: 720px;
-    }
-    button {
-      font: inherit;
-      cursor: pointer;
-      border: 1px solid #ac845b;
-      border-radius: 6px;
-      background: #d6be90;
-      color: #172928;
-      padding: 6px 18px;
-    }
-    input {
-      flex: 1;
-      min-width: 140px;
-      accent-color: #d6be90;
-    }
-    output {
-      font-size: 14px;
-      min-width: 185px;
-    }
-    figcaption {
-      max-width: 720px;
-      margin: 12px auto;
-      font-size: 14px;
-      color: #b9c3b0;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-      margin: 36px 0;
-    }
-    article {
-      background: #1a2b27;
-      border: 1px solid #3b4e42;
-      border-radius: 10px;
-      padding: 20px;
-      min-width: 0;
-    }
-    article img {
-      width: 100%;
-      height: auto;
-    }
-    .links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      margin-top: 12px;
-    }
-    .evidence {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .evidence img {
+      width: 480px;
       max-width: 100%;
       height: auto;
     }
-    footer {
-      margin-top: 30px;
-      border-top: 1px solid #3b4e42;
-      padding-top: 20px;
-      font-size: 14px;
+    a {
+      color: #e8b367;
     }
-    @media (max-width: 680px) {
-      main {
-        padding: 24px 14px 48px;
-      }
-      .grid,
-      .evidence {
-        grid-template-columns: 1fr;
-      }
-      figure,
-      article {
-        padding: 12px;
-      }
-      output {
-        width: 100%;
-      }
+    a:focus-visible {
+      outline: 3px solid #fff1b5;
     }
   </style>
-  <main>
-    <header>
-      <p class="eyebrow">NIGHT PASSAGE · CANDIDATE FICTION · NOVEMBER 2026</p>
-      <h1>One Light<br />Left Behind</h1>
-      <p class="lede">
-        A traveler gives up their lantern. A path opens. The light stays for whoever follows.
-      </p>
-      <p class="notice">
-        An illustrated story proposal grounded in Root Sepulcher materials. The traveler and event
-        are new fiction for review. This study changes no game content or default artwork.
-      </p>
-    </header>
-    <figure>
-      <img
-        id="screen"
-        src="chapter-1-frames/frame-00.png"
-        width="480"
-        height="336"
-        alt="A hooded traveler holds a lantern beside a root-sealed doorway"
-      />
-      <div class="controls">
-        <button id="play" type="button">Play story</button
-        ><button id="restart" type="button">Restart</button
-        ><input id="seek" type="range" min="0" max="63" value="0" aria-label="Story frame" /><output
-          id="position"
-          aria-live="off"
-        ></output>
-      </div>
-      <figcaption>
-        Original decoded frames, in chapter order. Starts still; play is explicit. Pause or scrub at
-        any time. Chapter boundaries are visible cuts, with no invented in-between frames.
-      </figcaption>
-      <div class="links">
-        <a href="story.gif">Joined GIF · 19.2s</a><a href="storyboard.png">Story contact sheet</a
-        ><a href="joins.png">Compare chapter joins</a
-        ><a href="review.json">Author review and holds</a>
-      </div>
-    </figure>
-    <section class="grid">
-      <article>
-        <p class="eyebrow">CHAPTER 1 · 16 FRAMES · 4.8s</p>
-        <h2>Notice</h2>
-        <p>A light raised toward an empty sconce.</p>
-        <img
-          src="chapter-1-frames/frame-00.png"
-          alt="Chapter 1 opening: A light raised toward an empty sconce."
-          width="480"
-          height="336"
-        />
-        <div class="links">
-          <a href="chapter-1.gif">Original GIF</a><a href="chapter-1-contact.png">All frames</a
-          ><a href="chapter-1-prompt.md">Prompt</a><a href="chapter-1-response.json">Usage</a>
-        </div>
-      </article>
-      <article>
-        <p class="eyebrow">CHAPTER 2 · 16 FRAMES · 4.8s</p>
-        <h2>Offer</h2>
-        <p>A hand lets go. The light stays.</p>
-        <img
-          src="chapter-2-frames/frame-00.png"
-          alt="Chapter 2 opening: A hand lets go. The light stays."
-          width="480"
-          height="336"
-        />
-        <div class="links">
-          <a href="chapter-2.gif">Original GIF</a><a href="chapter-2-contact.png">All frames</a
-          ><a href="chapter-2-prompt.md">Prompt</a><a href="chapter-2-response.json">Usage</a>
-        </div>
-      </article>
-      <article>
-        <p class="eyebrow">CHAPTER 3 · 16 FRAMES · 4.8s</p>
-        <h2>Answer</h2>
-        <p>The roots make a way.</p>
-        <img
-          src="chapter-3-frames/frame-00.png"
-          alt="Chapter 3 opening: The roots make a way."
-          width="480"
-          height="336"
-        />
-        <div class="links">
-          <a href="chapter-3.gif">Original GIF</a><a href="chapter-3-contact.png">All frames</a
-          ><a href="chapter-3-prompt.md">Prompt</a><a href="chapter-3-response.json">Usage</a>
-        </div>
-      </article>
-      <article>
-        <p class="eyebrow">CHAPTER 4 · 16 FRAMES · 4.8s</p>
-        <h2>Pass</h2>
-        <p>The traveler goes on; the light remains.</p>
-        <img
-          src="chapter-4-frames/frame-00.png"
-          alt="Chapter 4 opening: The traveler goes on; the light remains."
-          width="480"
-          height="336"
-        />
-        <div class="links">
-          <a href="chapter-4.gif">Original GIF</a><a href="chapter-4-contact.png">All frames</a
-          ><a href="chapter-4-prompt.md">Prompt</a><a href="chapter-4-response.json">Usage</a>
-        </div>
-      </article>
-    </section>
-    <section class="evidence">
-      <div>
-        <h2>The shared reference</h2>
-        <img
-          src="reference.png"
-          width="480"
-          height="336"
-          alt="Native SVG opening keyframe rendered as a still"
-        />
-        <p>
-          One native SVG establishes material, silhouette and composition. Each GIF then uses the
-          previous chapter's last PNG still.
-        </p>
-        <a href="reference.svg">Editable SVG original</a>
-      </div>
-      <div>
-        <h2>What to judge</h2>
-        <p>
-          Does the offering read without captions? Does the light remain a single object? Do the
-          roots visibly clear the threshold? Does the traveler leave with grounded steps?
-        </p>
-        <p>
-          Continuity and motion findings are recorded separately from file validity. These clips are
-          source studies, with no runtime effect, trigger or timing consumer.
-        </p>
-        <div class="links">
-          <a href="README.md">Story brief and limits</a><a href="assembly.json">Assembly lineage</a
-          ><a href="budget.json">Spend ledger</a
-          ><a href="history-import.json">Additive history bundle</a>
-        </div>
-      </div>
-    </section>
-    <footer>
-      Author self-review; acceptance remains pending. All prompts, original clips, frame timings and
-      extracted frames are retained. No automatic adoption, publication or canon acceptance.
-    </footer>
-  </main>
-  <script>
-    const frames = [
-      { src: 'chapter-1-frames/frame-00.png', chapter: 1, frame: 0, ms: 300 },
-      { src: 'chapter-1-frames/frame-01.png', chapter: 1, frame: 1, ms: 300 },
-      { src: 'chapter-1-frames/frame-02.png', chapter: 1, frame: 2, ms: 300 },
-      { src: 'chapter-1-frames/frame-03.png', chapter: 1, frame: 3, ms: 300 },
-      { src: 'chapter-1-frames/frame-04.png', chapter: 1, frame: 4, ms: 300 },
-      { src: 'chapter-1-frames/frame-05.png', chapter: 1, frame: 5, ms: 300 },
-      { src: 'chapter-1-frames/frame-06.png', chapter: 1, frame: 6, ms: 300 },
-      { src: 'chapter-1-frames/frame-07.png', chapter: 1, frame: 7, ms: 300 },
-      { src: 'chapter-1-frames/frame-08.png', chapter: 1, frame: 8, ms: 300 },
-      { src: 'chapter-1-frames/frame-09.png', chapter: 1, frame: 9, ms: 300 },
-      { src: 'chapter-1-frames/frame-10.png', chapter: 1, frame: 10, ms: 300 },
-      { src: 'chapter-1-frames/frame-11.png', chapter: 1, frame: 11, ms: 300 },
-      { src: 'chapter-1-frames/frame-12.png', chapter: 1, frame: 12, ms: 300 },
-      { src: 'chapter-1-frames/frame-13.png', chapter: 1, frame: 13, ms: 300 },
-      { src: 'chapter-1-frames/frame-14.png', chapter: 1, frame: 14, ms: 300 },
-      { src: 'chapter-1-frames/frame-15.png', chapter: 1, frame: 15, ms: 300 },
-      { src: 'chapter-2-frames/frame-00.png', chapter: 2, frame: 0, ms: 300 },
-      { src: 'chapter-2-frames/frame-01.png', chapter: 2, frame: 1, ms: 300 },
-      { src: 'chapter-2-frames/frame-02.png', chapter: 2, frame: 2, ms: 300 },
-      { src: 'chapter-2-frames/frame-03.png', chapter: 2, frame: 3, ms: 300 },
-      { src: 'chapter-2-frames/frame-04.png', chapter: 2, frame: 4, ms: 300 },
-      { src: 'chapter-2-frames/frame-05.png', chapter: 2, frame: 5, ms: 300 },
-      { src: 'chapter-2-frames/frame-06.png', chapter: 2, frame: 6, ms: 300 },
-      { src: 'chapter-2-frames/frame-07.png', chapter: 2, frame: 7, ms: 300 },
-      { src: 'chapter-2-frames/frame-08.png', chapter: 2, frame: 8, ms: 300 },
-      { src: 'chapter-2-frames/frame-09.png', chapter: 2, frame: 9, ms: 300 },
-      { src: 'chapter-2-frames/frame-10.png', chapter: 2, frame: 10, ms: 300 },
-      { src: 'chapter-2-frames/frame-11.png', chapter: 2, frame: 11, ms: 300 },
-      { src: 'chapter-2-frames/frame-12.png', chapter: 2, frame: 12, ms: 300 },
-      { src: 'chapter-2-frames/frame-13.png', chapter: 2, frame: 13, ms: 300 },
-      { src: 'chapter-2-frames/frame-14.png', chapter: 2, frame: 14, ms: 300 },
-      { src: 'chapter-2-frames/frame-15.png', chapter: 2, frame: 15, ms: 300 },
-      { src: 'chapter-3-frames/frame-00.png', chapter: 3, frame: 0, ms: 300 },
-      { src: 'chapter-3-frames/frame-01.png', chapter: 3, frame: 1, ms: 300 },
-      { src: 'chapter-3-frames/frame-02.png', chapter: 3, frame: 2, ms: 300 },
-      { src: 'chapter-3-frames/frame-03.png', chapter: 3, frame: 3, ms: 300 },
-      { src: 'chapter-3-frames/frame-04.png', chapter: 3, frame: 4, ms: 300 },
-      { src: 'chapter-3-frames/frame-05.png', chapter: 3, frame: 5, ms: 300 },
-      { src: 'chapter-3-frames/frame-06.png', chapter: 3, frame: 6, ms: 300 },
-      { src: 'chapter-3-frames/frame-07.png', chapter: 3, frame: 7, ms: 300 },
-      { src: 'chapter-3-frames/frame-08.png', chapter: 3, frame: 8, ms: 300 },
-      { src: 'chapter-3-frames/frame-09.png', chapter: 3, frame: 9, ms: 300 },
-      { src: 'chapter-3-frames/frame-10.png', chapter: 3, frame: 10, ms: 300 },
-      { src: 'chapter-3-frames/frame-11.png', chapter: 3, frame: 11, ms: 300 },
-      { src: 'chapter-3-frames/frame-12.png', chapter: 3, frame: 12, ms: 300 },
-      { src: 'chapter-3-frames/frame-13.png', chapter: 3, frame: 13, ms: 300 },
-      { src: 'chapter-3-frames/frame-14.png', chapter: 3, frame: 14, ms: 300 },
-      { src: 'chapter-3-frames/frame-15.png', chapter: 3, frame: 15, ms: 300 },
-      { src: 'chapter-4-frames/frame-00.png', chapter: 4, frame: 0, ms: 300 },
-      { src: 'chapter-4-frames/frame-01.png', chapter: 4, frame: 1, ms: 300 },
-      { src: 'chapter-4-frames/frame-02.png', chapter: 4, frame: 2, ms: 300 },
-      { src: 'chapter-4-frames/frame-03.png', chapter: 4, frame: 3, ms: 300 },
-      { src: 'chapter-4-frames/frame-04.png', chapter: 4, frame: 4, ms: 300 },
-      { src: 'chapter-4-frames/frame-05.png', chapter: 4, frame: 5, ms: 300 },
-      { src: 'chapter-4-frames/frame-06.png', chapter: 4, frame: 6, ms: 300 },
-      { src: 'chapter-4-frames/frame-07.png', chapter: 4, frame: 7, ms: 300 },
-      { src: 'chapter-4-frames/frame-08.png', chapter: 4, frame: 8, ms: 300 },
-      { src: 'chapter-4-frames/frame-09.png', chapter: 4, frame: 9, ms: 300 },
-      { src: 'chapter-4-frames/frame-10.png', chapter: 4, frame: 10, ms: 300 },
-      { src: 'chapter-4-frames/frame-11.png', chapter: 4, frame: 11, ms: 300 },
-      { src: 'chapter-4-frames/frame-12.png', chapter: 4, frame: 12, ms: 300 },
-      { src: 'chapter-4-frames/frame-13.png', chapter: 4, frame: 13, ms: 300 },
-      { src: 'chapter-4-frames/frame-14.png', chapter: 4, frame: 14, ms: 300 },
-      { src: 'chapter-4-frames/frame-15.png', chapter: 4, frame: 15, ms: 300 },
-    ];
-    const screen = document.querySelector('#screen'),
-      seek = document.querySelector('#seek'),
-      position = document.querySelector('#position'),
-      play = document.querySelector('#play');
-    let index = 0,
-      running = false,
-      timer;
-    function show() {
-      const f = frames[index];
-      screen.src = f.src;
-      screen.alt = `Chapter ${f.chapter}, original frame ${f.frame + 1}`;
-      seek.value = index;
-      position.value = `Chapter ${f.chapter} · frame ${f.frame + 1} / 16 · ${(index * 0.3).toFixed(1)}s`;
-    }
-    function pause() {
-      running = false;
-      clearTimeout(timer);
-      play.textContent = 'Play story';
-    }
-    function tick() {
-      if (!running) return;
-      show();
-      timer = setTimeout(() => {
-        if (index === frames.length - 1) {
-          pause();
-          return;
-        }
-        index++;
-        tick();
-      }, frames[index].ms);
-    }
-    play.onclick = () => {
-      if (running) {
-        pause();
-        return;
-      }
-      if (index === frames.length - 1) index = 0;
-      running = true;
-      play.textContent = 'Pause';
-      tick();
-    };
-    seek.oninput = () => {
-      pause();
-      index = Number(seek.value);
-      show();
-    };
-    document.querySelector('#restart').onclick = () => {
-      pause();
-      index = 0;
-      show();
-    };
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) pause();
-    });
-    show();
-  </script>
+  <h1>One Light Left Behind</h1>
+  <p>
+    Night Passage candidate fiction. A traveler gives up a lantern; a path opens; the light stays.
+  </p>
+  <picture>
+    <source media="(prefers-reduced-motion:reduce)" srcset="reference.svg" />
+    <img
+      id="story"
+      src="story.gif"
+      width="480"
+      height="336"
+      alt="A traveler leaves a lantern, roots withdraw, and the traveler passes through"
+    />
+  </picture>
+  <p>
+    Native GIF · four chapters ·64 frames ·19.2seconds. Palette and fixture changes remain visible
+    at cuts. This is a review proposal, not accepted canon or runtime artwork.
+  </p>
+  <p>
+    <a href="story.gif">Open/restart joined GIF</a> · <a href="reference.svg">Reference still</a> ·
+    <a href="compact.png">Story beats</a> · <a href="joins.png">Compare joins</a>
+  </p>
+  <p>
+    Original chapters: <a href="chapter-1.gif">Raise</a> · <a href="chapter-2.gif">Offer</a> ·
+    <a href="chapter-3.gif">Answer</a> · <a href="chapter-4.gif">Pass</a>
+  </p>
+  <p>
+    <a href="README.md">Brief and validation</a>. Native GIF viewing has no true pause or frame
+    seek; use the still link for a motionless view. The existing asset gallery retains its GIF
+    play/source-study controls after import.
+  </p>
 </html>

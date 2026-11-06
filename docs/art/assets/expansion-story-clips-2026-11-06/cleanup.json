@@ -1,0 +1,30 @@
+{
+  "before": {
+    "files": 135,
+    "bytes": 40349848,
+    "json_files": 31,
+    "json_lines": 4569,
+    "json_bytes": 167874
+  },
+  "after": {
+    "files": 26,
+    "bytes": 12427268,
+    "json_files": 11,
+    "json_lines": 503,
+    "json_bytes": 30369
+  },
+  "scope": "Current tree only; Git history/objects retained.",
+  "retained": {
+    "original_GIFs": 4,
+    "assembled_GIFs": 1,
+    "native_SVGs": 1,
+    "exact_sent_PNG_inputs": 4,
+    "review_PNGs": 2,
+    "source_revision_IDs": 6
+  },
+  "reduction_percent": {
+    "bytes": 69.2,
+    "files": 80.74,
+    "json_lines": 88.99
+  }
+}
