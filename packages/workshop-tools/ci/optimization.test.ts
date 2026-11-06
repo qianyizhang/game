@@ -122,6 +122,7 @@ void test('reuse requires exact trusted successful evidence and the main integri
   };
   const context = { repository: 'owner/repo', tree: receipt.tree, pullHead: head, plan, now };
   assert.equal(reusable(receipt, run, context), true);
+  assert.equal(reusable({ ...receipt, attempt: 2 }, { ...run, run_attempt: 2 }, context), false);
   for (const patch of [
     { conclusion: 'failure' },
     { event: 'push' },

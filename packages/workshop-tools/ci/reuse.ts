@@ -39,6 +39,8 @@ export function reusable(
     return (
       receipt.version === 1 &&
       run.event === 'pull_request' &&
+      // Partial reruns can mix successful jobs from different hosted environments.
+      run.run_attempt === 1 &&
       run.status === 'completed' &&
       run.conclusion === 'success' &&
       run.path === '.github/workflows/maintenance.yml' &&
