@@ -1,17 +1,16 @@
 {
-  "state": "reserved-not-dispatched",
+  "state": "returned",
   "grant": {
     "id": "character-new-family-04",
     "ceiling_usd": 4.2,
     "calls_authorized": 1,
-    "calls_dispatched": 0,
-    "capacity_consumed_by_execution_usd": 0,
+    "calls_dispatched": 1,
     "superseded_ceiling_usd": 3.0,
     "amendment": "Same character-new-family-04 grant increased by 1.20; no earlier request executed. No duplicate reservation."
   },
   "request_file": "request.json",
   "request_sha256": "3d1064b1b30d06bf19d0496b0808463e5da85737203a6bf4ed8d3bc5bfa3fccf",
-  "client_request_id_sent": false,
+  "client_request_id_sent": true,
   "opening_lane": {
     "known_usage_estimate_usd": 0.894933,
     "unknown_tortoise_usd": 7.5,
@@ -36,9 +35,8 @@
     "earlier_preflight_commit": "80a32bc54f3966e50247d4c45cea7ce133364eec",
     "decision": "Revised coordinator authorization explicitly accepts established conservative 4.20 planning reservation and Terra route. Proceed once; no Luna substitution."
   },
-  "new_usage_estimate_usd": 0,
   "new_unknown_reservations_usd": 0,
-  "source_status": "Prepared normal/ascended pair. No output yet.",
+  "source_status": "Returned packed native SVG. Normal extraction self-reviewed as useful; original ascended extraction held for detached root sliver, with a separate manual derivative.",
   "transport": {
     "endpoint": "https://api.openai.com/v1/images/generations",
     "client_timeout_seconds": 1800,
@@ -46,5 +44,44 @@
     "redirects": false,
     "tls_verification": true,
     "client_request_id": "cw-glasspool-newt-20261106-eabd2067730f49a6834ba31b4a97c5ff"
-  }
+  },
+  "started_utc": "2026-11-06T18:05:34Z",
+  "response": {
+    "created": 1793988353,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "medium",
+    "safety_identifier": null,
+    "size": "1440x512",
+    "svg_usage": {
+      "input_tokens": 1861,
+      "model": "gpt-6.1-terra",
+      "output_tokens": 9761,
+      "reasoning_tokens": 471,
+      "total_tokens": 11622
+    },
+    "usage": {
+      "input_tokens": 755,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 755
+      },
+      "output_tokens": 489,
+      "output_tokens_details": {
+        "image_tokens": 489,
+        "text_tokens": 0
+      },
+      "total_tokens": 1244
+    },
+    "request_id": "req_0e5a0f1fbb8e459d8ec51f6ce415d9f0"
+  },
+  "elapsed_seconds": 162.88,
+  "output": {
+    "file": "original.svg",
+    "sha256": "d46f29f7ff8444714a5d7832490efb4ba145b669eb3840a3d4091dcfe3800e7e"
+  },
+  "estimated_usd": 0.069111,
+  "remaining_call_reservation_usd": 0,
+  "cumulative_known_usage_estimate_usd": 0.964044,
+  "review": "qa.json"
 }

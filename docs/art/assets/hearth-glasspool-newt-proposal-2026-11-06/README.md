@@ -1,73 +1,111 @@
-# Glasspool Newt family preflight
+# Glasspool Newt normal and ascended candidates
 
-**Useful proposal, blocked before dispatch.** Grant `character-new-family-04`
-authorizes one request only, with a verified maximum no greater than $3.00.
-No generation executed, no new usage/unknown outcome, no artwork or draft PR.
-The [prepared payload](request.json) and [grant/pool receipt](receipt.json) are the
-only machine records; this is not a terminal history attempt.
+**One returned native SVG pair, candidate-only.** Normal is an exact extraction;
+the reviewed ascended choice is a separate manual support cleanup. The packed
+original and held ascended extraction remain intact. User review and central
+registration are pending; no runtime slot, accepted canon or mechanics are added.
+
+![Normal and refined ascended at portrait and compact sizes](review.png)
 
 ## Brief and reuse decision
 
-A newt offers a low curved full-body silhouette with a long flattened C/S tail,
-short blunt head, four short rounded-toe limbs and continuous smooth living skin.
-Normal rests low on wet stone with unequal forefeet and an open C tail. Ascended
-leans outward across two root levels with a higher S tail and modest soft crest.
-Same anatomy and teal/sage/ivory palette, changed gesture/support/silhouette.
-This proposes no accepted history, content ID, mechanics or runtime replacement.
+A small smooth-skinned newt supplies a low curved body, short blunt head, four
+short rounded-toe limbs and one long flattened tail. Normal rests on wet stone
+with an open C tail; ascended climbs a forked root with a higher lifted tail/crest.
+Shared teal/sage/ivory skin and quiet ochre marks connect the identity. Body angle,
+support, tail gesture and silhouette change together, rather than just color.
 
-At current main `3a59621069dd1fe912a749d851d27e993507f5dd`, inspected the roster,
-all retained request/call briefs and recent PR titles. No newt/salamander brief
-was found. Existing [Bog Toad](../creatures/bogtoad.md) is a compact, tail-less
-crouch with broad pale jaw and raised eyes;
-[Ancient Crocolisk](../creatures/crocolisk.md) emphasizes long toothed jaw and
-armored neck. Their actual SVG renderers were inspected temporarily at 320x224,
-160x112 and 64x45; neither offers this smooth-skinned long-tail gesture.
-Ram, heron and mantis studies also differ. Unknown tortoise/badger briefs remain
-excluded, unchanged and untried. Preserve every existing asset and use.
+At main `3a59621069dd1fe912a749d851d27e993507f5dd`, inspected the roster, retained
+request/call briefs and recent PRs; no newt/salamander brief was found.
+[Bog Toad](../creatures/bogtoad.md) is a compact tail-less crouch with broad jaw;
+[Ancient Crocolisk](../creatures/crocolisk.md) emphasizes its toothed jaw/armored
+neck. Their actual SVG renderers were viewed temporarily at 320x224, 160x112 and
+64x45. Neither supplies the newt's continuous full-body tail gesture. Ram, heron
+and mantis source studies also differ. Existing art remains untouched; unknown
+tortoise/badger requests are excluded and were not retried.
 
-Preliminary source admission supports one family study, not adoption. It would
-retain one packed original, two actual extractions, one canonical call record and
-one useful review sheet. Anatomy, connected head/limbs/tail, four feet, support,
-matched family identity and compact readability must pass after an actual output.
-No unchanged reference render is committed.
+## Inventory and visual outcome
 
-## Request and budget boundary
+[Exact sheet](original.svg) · [normal extraction](newt-normal.svg) ·
+[held ascended extraction](newt-ascended.svg) ·
+[refined ascended](newt-ascended-refined.svg).
 
-Prepared known-route settings: `gpt-image-2.6-sunburst`, one native SVG,
-`1440x512`, two 720x512 cells, medium quality/complexity, `gpt-6.1-terra`
-author with medium effort. 737,280 total pixels and 16-divisible dimensions.
-The fresh client trace ID in the receipt is **prepared, never sent**. No dispatch
-helper, token value, duplicate prompt copy or fabricated output/history record.
+Both extractions preserve source geometry/paint/root attributes and remove only
+their grid translation while setting a 720x512 viewBox. Normal has 46 paths;
+ascended 41. The ascended original includes an unnecessary detached root sliver.
+The manual derivative removes only its two paths, leaving 39; every remaining
+node/attribute is identical. This is an authored edit, not a second API output.
 
-[Official SVG schema](https://developers.openai.com/api/reference/resources/images/methods/generate)
-exposes author model and effort, but no author output-token cap or streaming.
-The established conservative Terra policy is $4.20: $3.06 for a deliberately
-overcounted full context/output at long-context rates, plus $1.14 reference/prompt
-allowance. This exceeds the finite grant by $1.20. Even using joint context limits
-to tighten the author calculation leaves the reference-stage bound to verify.
-Smaller artwork and lower effort do not prove a hard total charge cap.
+Native/card/compact self-review finds the normal and refined ascended useful:
+connected head/neck/torso/tail, four leg chains, planted supports, different action
+and a clear long-tail silhouette. The ascending tail is a lifted open curl rather
+than the exact requested S. Digit separation is stylized; tiny toe counts are not
+proven by a readable silhouette. Normal retains more headroom. Both remain distinct
+at 64x45 while fine toe/ripple details diminish. This is source review, not an
+installed-game frame adaptation, independent review or user acceptance.
 
-Investigated [GPT-6 Luna](https://developers.openai.com/api/docs/models/gpt-6-luna):
-1.05M context, 128K output, standard $0.10/M input and $0.50/M output; long context
-2x input/1.5x output. Its overcounted author bound is $0.306, or $1.446 with the
-prior image allowance. Those arithmetic estimates are below $3, but the general
-model page does not prove access/support as this SVG route's author. The prior
-32,768 image-output-token allowance also remains a planning assumption, not a
-verified API maximum. No paid compatibility test or speculative downgrade was run.
+[QA](qa.json) records safety, bounds, extraction signatures, rendering limits and
+lossless evidence. Both cells stay within the viewport but exceed the requested
+safe inset slightly: normal minX30.923/maxX683; ascended minX23.865/maxY481 versus
+x40..680/y36..476. No crop occurs. API metadata reports transparent; actual cell
+background rectangles are opaque #172928.
 
-Dispatch therefore remains blocked under the grant's **verified maximum**
-condition. Current lane lifetime estimate is unchanged at **$0.894933**, with
-separate historical **$7.50 tortoise + $7.50 badger unknown holds** and zero active
-calls. Parent pool exposure was $31.315390 before the grant and $34.315390 with its
-unused $3 capacity included; do not add it twice or add our holds again to the
-parent's $25 unresolved total. The coordinator can release the entire unused grant.
+Normal's matched screenshot crop is pixel-identical. Ascended local-coordinate
+rasterization differs on 7,828 pixels (maximum channel difference44, alpha equal);
+restoring translate(720 0) reproduces the original right crop exactly. Thus paint
+and geometry are exact, while placement-related antialiasing is not claimed equal.
+The only manual-change pixel region is x579..682/y308..422, the detached sliver.
 
-No frozen branch, shared registry, game default, credential or account changed.
-This independent local preparation can resume only when a compatible verified
-bound or revised planning authorization addresses the blocker. No second call or
-blind retry follows from this proposal.
+One retained review PNG was losslessly optimized from 199,982 to 199,131 bytes;
+decoded RGB pixels, 1160x950 dimensions and alpha/color metadata match. Reference
+renders, native captures, controls and intermediate layouts remain temporary.
+No redundant prompt copies, per-path inventories or unchanged catalogue snapshots.
 
-Validation: pinned Node 24.21.0/npm 11.19.0 `format:maintenance` passed (901 managed
-sources, no errors). Prepared JSON/hash, cell/canvas dimensions, prompt byte size,
-local links and inclusive-pool arithmetic passed. No output or visual acceptance
-is claimed before generation.
+## Actual request, grant and accounting
+
+[Exact sent payload](request.json) · [canonical grant/call receipt](receipt.json).
+
+`character-new-family-04` was initially $3, then amended **in place** to **$4.20**
+before dispatch. Earlier preflight spent nothing. One request used the verified
+`gpt-image-2.6-sunburst` SVG route, `n=1`, `1440x512`, medium quality/complexity,
+and `gpt-6.1-terra` medium reasoning. No Luna experiment or model substitution.
+Existing `OPENAI_API_TOKEN` binding, configured HTTPS proxy, verified TLS,
+1800-second timeout, unique ASCII client trace, no redirects and zero retries.
+Both forms share one generated reference/layout; no separate SVG image input.
+
+Returned in **162.88s**, request `req_0e5a0f1fbb8e459d8ec51f6ce415d9f0`.
+Usage: image text755/output489; Terra input1,861/output9,761, including reported
+reasoning471. Standard estimated cost:
+`(755*5 + 489*30 + 1861*1 + 9761*5)/1e6 = $0.069111`.
+Reasoning is not counted twice. This is usage-derived estimation, not an invoice.
+The unused **$4.130889** planning reservation can be released.
+
+Lane lifetime is **$0.964044 estimated**, **zero active calls/new unknowns**, with
+separate historical **$7.50 tortoise + $7.50 badger unknown holds unchanged**.
+The coordinator's opening pool facts were $6.315390 successful estimates + $25
+unresolved reservations. Adding the revised grant once gives $35.515390 inclusive
+exposure, only $1.20 above the earlier $34.315390; our historical holds are already
+included in that $25. Current shared availability belongs to the coordinator.
+**No second paid call is authorized or planned.**
+
+The accepted planning policy is $3.06 for deliberately overcounted Terra context/
+output at long-context rates plus $1.14 image/prompt allowance. The latter covers
+32,768 image-output tokens, <=8,000 prompt bytes and contingency; it is a
+conservative planning assumption, not an API-enforced cap. See
+[Terra limits/rates](https://developers.openai.com/api/docs/models/gpt-6.1-terra),
+[image rates](https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst)
+and [SVG schema](https://developers.openai.com/api/reference/resources/images/methods/generate).
+The stricter $3 preflight stop and revised authorization remain in Git history.
+
+## Registration and checks
+
+[Temporary additive import](prepared-history.json) stages one paid attempt, one
+manual attempt and four exact sheet/cell/derivative revisions. No invented runtime
+slot. Serial central registration is a draft blocker; shared registry mutation
+remains with its coordinator. Source originals, grant amendment, exact settings,
+usage, trace ID, hold and authored derivative are all retained.
+
+Final maintenance and isolated history/gallery results are in QA. No frozen PR
+branch, game source/default, dependency, account or credential change. No merge,
+deployment or issue edit. A future unknown request must retain its full bound and
+stop; no retry follows from this study.
