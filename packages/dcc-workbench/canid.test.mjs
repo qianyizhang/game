@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { verifyCanid } from './canid.ts';
 import { record } from './contracts.ts';
+import { hashFile } from './motion-delivery.ts';
 
 await test('canid deliveries retain source identity, complete clips, contact, and valid skinning', () => {
   const result = verifyCanid();
@@ -49,6 +50,35 @@ await test('delivery validation rejects accidentally committed pose fixtures', (
   } finally {
     rmSync(directory, { recursive: true });
   }
+});
+
+await test('canid checks reject altered exporter identities and malformed models with character context', (t) => {
+  const directory = mkdtempSync(join(tmpdir(), 'canid-delivery-failures-'));
+  t.after(() => rmSync(directory, { recursive: true }));
+  for (const name of ['ash.glb', 'ash.json', 'ash.motions.json'])
+    copyFileSync(new URL(`./assets/canid/refined/${name}`, import.meta.url), join(directory, name));
+  const path = join(directory, 'ash.json');
+  const original = record(JSON.parse(readFileSync(path, 'utf8')));
+  const check = () => verifyCanid({ directory, characters: ['ash'] });
+  for (const change of ['missing', 'extra', 'stale']) {
+    const receipt = structuredClone(original);
+    const exporters = record(receipt.exportScripts);
+    const first = Object.keys(exporters)[0];
+    if (change === 'missing') delete exporters[first];
+    else if (change === 'extra') exporters['unexpected.py'] = '0'.repeat(64);
+    else exporters[first] = '0'.repeat(64);
+    writeFileSync(path, JSON.stringify(receipt));
+    assert.throws(
+      check,
+      change === 'stale'
+        ? /Canid delivery ash: Stale exporter:/
+        : /Canid delivery ash: Incomplete exporter identity/,
+    );
+  }
+  writeFileSync(join(directory, 'ash.glb'), 'Malformed model');
+  original.modelSha256 = hashFile(join(directory, 'ash.glb'));
+  writeFileSync(path, JSON.stringify(original));
+  assert.throws(check, /Canid delivery ash: Invalid or truncated GLB/);
 });
 
 await test('fox delivery keeps five saved clips, source identity and articulated support', () => {

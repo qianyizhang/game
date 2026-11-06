@@ -22,7 +22,7 @@ export function verifyFileDigests(
 
 export function inspectMotionGlb(
   bytes: Buffer,
-  motions: Record<string, Motion>,
+  motions: Record<string, Pick<Motion, 'seconds' | 'playback'>>,
   limits: { maxBytes: number; maxTriangles: number; maxJoints: number },
 ) {
   const gltf = readGlb(bytes);
