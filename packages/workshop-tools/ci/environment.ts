@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { appendFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 /** A hosted run may be reused only with the same configured and observed runtime. */
@@ -14,16 +14,21 @@ export function environmentStamp(): string {
       : '',
   });
 }
-export function verifyEnvironment(expected: string | undefined) {
-  if (process.env.GITHUB_ACTIONS !== 'true') return;
-  const actual = JSON.parse(environmentStamp()) as Record<string, string>;
-  const wanted = JSON.parse(expected ?? '{}') as Record<string, string>;
-  // Missing hosted Chrome is provisioned later; this run remains ineligible for reuse.
-  if (wanted.chrome === '') actual.chrome = '';
-  if (!expected || JSON.stringify(actual) !== JSON.stringify(wanted))
-    throw new Error('Validation environment changed between jobs; rerun on one hosted image');
+export function verifyEnvironment(expected: string | undefined): boolean {
+  return process.env.GITHUB_ACTIONS !== 'true' || expected === environmentStamp();
 }
-if (process.argv[1] && resolve(process.argv[1]) === import.meta.filename)
-  verifyEnvironment(
-    (JSON.parse(process.env.CI_PLAN ?? '{}') as { environment?: string }).environment,
-  );
+if (process.argv[1] && resolve(process.argv[1]) === import.meta.filename) {
+  const expected = (JSON.parse(process.env.CI_PLAN ?? '{}') as { environment?: string })
+    .environment;
+  const matching = verifyEnvironment(expected);
+  appendFileSync(process.env.GITHUB_OUTPUT!, `matching=${matching}\n`);
+  if (!matching) {
+    writeFileSync(
+      resolve(process.env.RUNNER_TEMP!, 'environment-mismatch.json'),
+      JSON.stringify({ expected, actual: environmentStamp() }),
+    );
+    console.log(
+      'Hosted runtime differs from planning: checks continue; cross-run reuse is disabled.',
+    );
+  }
+}

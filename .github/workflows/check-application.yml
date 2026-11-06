@@ -31,6 +31,6 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
-      - run: node packages/workshop-tools/ci/environment.ts
+      - uses: ./.github/actions/environment
       - run: npm ci
       - run: npm run ci -- run unit

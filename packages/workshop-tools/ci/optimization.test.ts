@@ -4,6 +4,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { readFileSync, chmodSync, mkdtempSync, writeFileSync, rmSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { environmentStamp } from './environment.ts';
 import { changedInputs } from './changes.ts';
 import { browserGroups, browserSeconds } from './sharding.ts';
 import { selectPlan } from './selection.ts';
@@ -195,5 +196,94 @@ void test('actual reuse CLI falls back on direct pushes and missing evidence wit
     assert.match(readFileSync(output, 'utf8'), /reused=false/);
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+void test('hosted environment drift records ineligibility without failing normal validation', () => {
+  const directory = mkdtempSync(join(tmpdir(), 'environment-drift-'));
+  try {
+    for (const environment of [environmentStamp(), JSON.stringify({ image: 'different' })]) {
+      const output = join(directory, 'output');
+      writeFileSync(output, '');
+      const result = spawnSync(process.execPath, [join(import.meta.dirname, 'environment.ts')], {
+        encoding: 'utf8',
+        env: {
+          ...process.env,
+          GITHUB_ACTIONS: 'true',
+          CI_PLAN: JSON.stringify({ environment }),
+          GITHUB_OUTPUT: output,
+          RUNNER_TEMP: directory,
+        },
+      });
+      assert.equal(result.status, 0, result.stderr);
+      const matching = environment === environmentStamp();
+      assert.match(readFileSync(output, 'utf8'), new RegExp(`matching=${matching}`));
+      if (!matching)
+        assert.ok(
+          readFileSync(join(directory, 'environment-mismatch.json'), 'utf8').includes('different'),
+        );
+    }
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+void test('PR planning uses the tested merge base and stops stale snapshots before install', () => {
+  const directory = mkdtempSync(join(tmpdir(), 'current-base-'));
+  const git = (...args: string[]) =>
+    execFileSync('git', args, {
+      cwd: directory,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+    }).trim();
+  try {
+    git('init', '--quiet');
+    git('config', 'user.name', 'fixture');
+    git('config', 'user.email', 'fixture@example.invalid');
+    git('checkout', '-b', 'main');
+    writeFileSync(join(directory, 'base'), 'one');
+    git('add', '.');
+    git('commit', '--quiet', '-m', 'baseline');
+    const stale = git('rev-parse', 'HEAD');
+    git('checkout', '-b', 'feature');
+    writeFileSync(join(directory, 'feature'), 'new');
+    git('add', '.');
+    git('commit', '--quiet', '-m', 'feature');
+    const pullHead = git('rev-parse', 'HEAD');
+    git('checkout', 'main');
+    writeFileSync(join(directory, 'base'), 'two');
+    git('add', '.');
+    git('commit', '--quiet', '-m', 'new base');
+    const current = git('rev-parse', 'HEAD');
+    git('update-ref', 'refs/remotes/origin/main', current);
+    git('merge', '--no-ff', 'feature', '-m', 'tested merge');
+    const event = join(directory, 'event.json'),
+      output = join(directory, 'output');
+    writeFileSync(
+      event,
+      JSON.stringify({ pull_request: { head: { sha: pullHead }, base: { sha: stale } } }),
+    );
+    const run = () =>
+      spawnSync(process.execPath, [join(import.meta.dirname, 'base.ts')], {
+        cwd: directory,
+        encoding: 'utf8',
+        env: {
+          ...process.env,
+          GITHUB_EVENT_NAME: 'pull_request',
+          GITHUB_BASE_REF: 'main',
+          GITHUB_EVENT_PATH: event,
+          GITHUB_OUTPUT: output,
+          CI_FULL: '0',
+        },
+      });
+    let result = run();
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(readFileSync(output, 'utf8'), new RegExp(`base=${current}\\ncold=false`));
+    git('update-ref', 'refs/remotes/origin/main', git('rev-parse', 'HEAD'));
+    result = run();
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /PR merge base is stale/);
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
   }
 });

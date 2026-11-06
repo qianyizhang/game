@@ -1,3 +1,4 @@
+import { verifyEnvironment } from './environment.ts';
 import { execFileSync } from 'node:child_process';
 import { appendFileSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -162,7 +163,35 @@ if (process.argv[1] && resolve(process.argv[1]) === import.meta.filename) {
       environment: plan.environment!,
       plan,
     };
-    writeFileSync('receipt.json', JSON.stringify(receipt) + '\n');
+    let eligible = verifyEnvironment(plan.environment);
+    try {
+      const response = await fetch(
+        `https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}/artifacts?per_page=100`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+            Accept: 'application/vnd.github+json',
+          },
+          signal: AbortSignal.timeout(15_000),
+        },
+      );
+      if (!response.ok) eligible = false;
+      else {
+        const { artifacts } = (await response.json()) as { artifacts: { name: string }[] };
+        eligible &&= !artifacts.some((artifact) =>
+          artifact.name.startsWith(
+            `environment-mismatch-${process.env.GITHUB_RUN_ID}-${process.env.GITHUB_RUN_ATTEMPT}-`,
+          ),
+        );
+      }
+    } catch {
+      eligible = false;
+    }
+    if (eligible) writeFileSync('receipt.json', JSON.stringify(receipt) + '\n');
+    else
+      console.log(
+        'Checks passed; environment evidence is incomplete, so main will run normal coverage.',
+      );
   } else if (process.argv[2] === 'check') {
     let source: string | undefined;
     if (process.env.GITHUB_EVENT_NAME === 'push') {
