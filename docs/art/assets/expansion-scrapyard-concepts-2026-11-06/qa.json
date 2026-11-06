@@ -23,7 +23,7 @@
     "compared": 12,
     "identical": 5
   },
-  "limits": "Source candidates and author self-review only. No game frame/phone/crowd acceptance, runtime slot or adoption. Central registration pending: staged-only draft blocker.",
+  "limits": "Source candidates and author self-review only. No game-frame/crowd acceptance, runtime slot or adoption. Coil Stalker remains held; user aesthetic acceptance is pending.",
   "isolated_import": {
     "assets": 0,
     "revisions": 14,
@@ -36,6 +36,18 @@
     "call_records_inspected": 2,
     "prompts_settings_usage_lineage": "verified",
     "adoption": "disabled",
-    "shared_registration": "pending"
+    "shared_registration": "canonical: 2 attempts / 14 source revisions"
+  },
+  "registration": {
+    "handoff_head": "4f41476fc6c84d025ed20c423b46909a57a3fd18",
+    "transport": "Retired duplicate prepared-history.json after consumer tracing; IDs/digests/parents and cell recipes preserved in library.json. Call records unchanged.",
+    "checks": {
+      "maintenance": "passed: formatting/inventory/links, history verify (709 assets / 106 revisions / zero selections / 709 registered sources), lint/types, 19 Python, 202 tooling, 81 DCC contracts and production build",
+      "browser": "All 3 affected asset-history journeys passed at normal local limits; live inspection covered all 14 revisions and both exact calls. No application/simulation/geometry/native execution claimed.",
+      "hosted": "Final-head CI reported on PR. Source concepts/holds remain independent of user aesthetic acceptance or runtime/game-context approval."
+    },
+    "gallery": "14 revisions decoded at native/compact sizes and inspected enlarged; exact 2 call records and all parents visible. Author cell outcomes and Coil Stalker hold surfaced, adoption disabled. No page errors; 1440/390/320px and 16/20px text fit.",
+    "preservation": "All 14 SVGs, 2 review PNGs and 2 call records exact to handoff; existing history/source registrations and selected-art.json unchanged.",
+    "runtime": "Node 24.21.0 / npm 11.19.0 / Google Chrome 157.0.8103.38"
   }
 }
