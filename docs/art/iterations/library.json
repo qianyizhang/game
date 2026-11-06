@@ -6657,6 +6657,114 @@
         "docs/art/assets/scrapyard-suite/visual-qa.json",
         "docs/art/assets/scrapyard-suite/technical-qa.json"
       ]
+    },
+    {
+      "id": "refinement-2026-11-06:baseline-and-evidence",
+      "title": "Refinement 2026-11-06 · Historical baselines and shared evidence",
+      "date": "2026-11-06 (exact export/capture times unknown)",
+      "outcome": "manual",
+      "notes": "Administrative registration of existing historical exports and review captures, not a seventh generation attempt. Source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Reuses all prior files, including duplicate baseline aliases. No unchanged live catalogue export created. Shared provenance, usage ledger, review manifest and verification evidence attached. Prior pre-edit checkpoint timing unknown. Eight byte-distinct extraction intermediates recovered from retained local sources; others identical. PNG IDAT recompression states have identical decoded pixels and are packaging states, not new artistic iterations. No new generation, selection or deletion.",
+      "files": [
+        "docs/art/assets/refinement-candidates-2026-11-06/context-qa.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/png-optimization.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/provenance.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/review-browser-qa.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/review-manifest.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/source-qa.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/spend-ledger.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/svg-whitespace-qa.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/technical-qa.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/ui-sizes.json",
+        "docs/art/iterations/refinement-candidates-2026-11-06.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/heavyBlade-base.svg",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/heavyBlade-upgraded.svg"
+      ]
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves",
+      "title": "Refinement 2026-11-06 · hearth-wolves",
+      "date": "2026-11-06T12:51:46.325610+00:00",
+      "outcome": "returned",
+      "notes": "One successful native SVG generation request; 3 cells, 0 held by author review. Request req_81077242035747a086caf0a5f5fa1673; usage-derived estimate $0.068145, not account billing. Exact sent settings/prompt and returned usage attached. User acceptance: unknown / not recorded. No selection made. Earlier extraction state 'unreviewed_candidate' is historical; final author outcomes are in review-manifest.json. ",
+      "files": [
+        "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/cells.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/extraction.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/prompt.md",
+        "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/request.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/response.json"
+      ]
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords",
+      "title": "Refinement 2026-11-06 · spire-swords",
+      "date": "2026-11-06T12:54:39.475947+00:00",
+      "outcome": "returned",
+      "notes": "One successful native SVG generation request; 6 cells, 2 held by author review. Request req_49868a7f1c8b414aa6a19bb0f458ac9f; usage-derived estimate $0.066912, not account billing. Exact sent settings/prompt and returned usage attached. User acceptance: unknown / not recorded. No selection made. Earlier extraction state 'unreviewed_candidate' is historical; final author outcomes are in review-manifest.json. ",
+      "files": [
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/cells.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/extraction.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/prompt-draft-strike-pommel.md",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/prompt.md",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/request.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/response.json"
+      ]
+    },
+    {
+      "id": "refinement-2026-11-06:cartographer-relics",
+      "title": "Refinement 2026-11-06 · cartographer-relics",
+      "date": "2026-11-06T12:57:13.546789+00:00",
+      "outcome": "returned",
+      "notes": "One successful native SVG generation request; 6 cells, 0 held by author review. Request req_481ce041a9a04c9dbb01f862e9b0a1f1; usage-derived estimate $0.054224, not account billing. Exact sent settings/prompt and returned usage attached. User acceptance: unknown / not recorded. No selection made. Earlier extraction state 'unreviewed_candidate' is historical; final author outcomes are in review-manifest.json. ",
+      "files": [
+        "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/cells.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/extraction.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/prompt.md",
+        "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/request.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/response.json"
+      ]
+    },
+    {
+      "id": "refinement-2026-11-06:emberwake-backpack",
+      "title": "Refinement 2026-11-06 · emberwake-backpack",
+      "date": "2026-11-06T13:00:13.557562+00:00",
+      "outcome": "returned",
+      "notes": "One successful native SVG generation request; 3 cells, 0 held by author review. Request req_b71d3bd58ce84ca692c84000ce62107b; usage-derived estimate $0.053753, not account billing. Exact sent settings/prompt and returned usage attached. User acceptance: unknown / not recorded. No selection made. Earlier extraction state 'unreviewed_candidate' is historical; final author outcomes are in review-manifest.json. ",
+      "files": [
+        "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/cells.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/extraction.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/prompt.md",
+        "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/request.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/response.json"
+      ]
+    },
+    {
+      "id": "refinement-2026-11-06:spire-heavyblade-revision",
+      "title": "Refinement 2026-11-06 · spire-heavyblade-revision",
+      "date": "2026-11-06T13:02:06.590488+00:00",
+      "outcome": "returned",
+      "notes": "One successful native SVG generation request; 2 cells, 2 held by author review. Request req_d02a1af4075d456b9cd33e56e842fa24; usage-derived estimate $0.039643, not account billing. Exact sent settings/prompt and returned usage attached. User acceptance: unknown / not recorded. No selection made. Earlier extraction state 'unreviewed_candidate' is historical; final author outcomes are in review-manifest.json. Targeted textual direction after the original Heavy Blade anatomy hold; no image reference was sent. Both results remain held for identity.",
+      "files": [
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/cells.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/extraction.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/prompt.md",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/request.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/response.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/revision-reason.md"
+      ]
+    },
+    {
+      "id": "refinement-2026-11-06:blindside-materials",
+      "title": "Refinement 2026-11-06 · blindside-materials",
+      "date": "2026-11-06T13:04:03.851253+00:00",
+      "outcome": "returned",
+      "notes": "One successful native SVG generation request; 3 cells, 0 held by author review. Request req_5ebe394e94ca4ab2b29b2f45cc4db180; usage-derived estimate $0.048370, not account billing. Exact sent settings/prompt and returned usage attached. User acceptance: unknown / not recorded. No selection made. Earlier extraction state 'unreviewed_candidate' is historical; final author outcomes are in review-manifest.json. ",
+      "files": [
+        "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/cells.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/extraction.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/prompt.md",
+        "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/request.json",
+        "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/response.json"
+      ]
     }
   ],
   "revisions": [
@@ -7819,6 +7927,963 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:blindside/consumables/glass",
+      "asset": "blindside/consumables/glass",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · blindside/consumables/glass",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/current/mirror.svg",
+      "digest": "7f1fdb81a08d6fe819e0ac580f8501347a92b06c441b46352ef018fa40410351",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/current/mirror.svg",
+      "runtimeDigest": "7f1fdb81a08d6fe819e0ac580f8501347a92b06c441b46352ef018fa40410351",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:blindside/consumables/steel",
+      "asset": "blindside/consumables/steel",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · blindside/consumables/steel",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/current/anvil.svg",
+      "digest": "365ef9d5ede02cde2647c3f045136eb3261730993121d6fbc698a32925c656ef",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/current/anvil.svg",
+      "runtimeDigest": "365ef9d5ede02cde2647c3f045136eb3261730993121d6fbc698a32925c656ef",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:blindside/consumables/mult",
+      "asset": "blindside/consumables/mult",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · blindside/consumables/mult",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/current/lantern.svg",
+      "digest": "bdf8d1a4c7970140e23921b6447c6ea773d5548600139d6b1539f810c8ff0a46",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/current/lantern.svg",
+      "runtimeDigest": "bdf8d1a4c7970140e23921b6447c6ea773d5548600139d6b1539f810c8ff0a46",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:hearth/stray",
+      "asset": "hearth/stray",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · hearth/stray",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/current/stray-alert.svg",
+      "digest": "a6ef155ae06f191bb357058d4fea1c37f87eed8cce8b62d1a57ff0d3b1912953",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/current/stray-alert.svg",
+      "runtimeDigest": "a6ef155ae06f191bb357058d4fea1c37f87eed8cce8b62d1a57ff0d3b1912953",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:hearth/wolf",
+      "asset": "hearth/wolf",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · hearth/wolf",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/current/wolf-guardian.svg",
+      "digest": "8c49888dded632dd21731d12297d15b1eae50a96e9fc16fd56eae035453ec2e1",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/current/wolf-guardian.svg",
+      "runtimeDigest": "8c49888dded632dd21731d12297d15b1eae50a96e9fc16fd56eae035453ec2e1",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:hearth/leader",
+      "asset": "hearth/leader",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · hearth/leader",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/current/leader-calling.svg",
+      "digest": "ec37527411c49808a8f116e088b1e9431320978d2e531a61c07d8c0cae35a09e",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/current/leader-calling.svg",
+      "runtimeDigest": "ec37527411c49808a8f116e088b1e9431320978d2e531a61c07d8c0cae35a09e",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:spire/heavyBlade",
+      "asset": "spire/heavyBlade",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · spire/heavyBlade",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/current/heavyBlade-base-refined.svg",
+      "digest": "5ef4df81651abbfbb49a56536a75dc76e00cdeb5c0e0834e556a9b5d8df2f43f",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/current/heavyBlade-base-refined.svg",
+      "runtimeDigest": "5ef4df81651abbfbb49a56536a75dc76e00cdeb5c0e0834e556a9b5d8df2f43f",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:spire/heavyBlade-upgraded",
+      "asset": "spire/heavyBlade-upgraded",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · spire/heavyBlade-upgraded",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/current/heavyBlade-upgraded-refined.svg",
+      "digest": "a211d8a30835556115b89c27f7d8a1dcd6a5c73ee8082acf65eac8e1f7d61a64",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/current/heavyBlade-upgraded-refined.svg",
+      "runtimeDigest": "a211d8a30835556115b89c27f7d8a1dcd6a5c73ee8082acf65eac8e1f7d61a64",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:spire/ironWave",
+      "asset": "spire/ironWave",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · spire/ironWave",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/ironWave-base.svg",
+      "digest": "534197207431e8858bcac825e1d440c49fd3f85edd71364938d822e0095330ce",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/ironWave-base.svg",
+      "runtimeDigest": "534197207431e8858bcac825e1d440c49fd3f85edd71364938d822e0095330ce",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:spire/ironWave-upgraded",
+      "asset": "spire/ironWave-upgraded",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · spire/ironWave-upgraded",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/ironWave-upgraded.svg",
+      "digest": "92be7be6ef61d27222aa6819816b5f25f65a46099dcb7d7615eece75bd3070ea",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/ironWave-upgraded.svg",
+      "runtimeDigest": "92be7be6ef61d27222aa6819816b5f25f65a46099dcb7d7615eece75bd3070ea",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:spire/cleave",
+      "asset": "spire/cleave",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · spire/cleave",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/cleave-base.svg",
+      "digest": "7099235006face3f0b270b7e8c199df43d2a00fdada8c7fcbfee7c69c45676cb",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/cleave-base.svg",
+      "runtimeDigest": "7099235006face3f0b270b7e8c199df43d2a00fdada8c7fcbfee7c69c45676cb",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:baseline:spire/cleave-upgraded",
+      "asset": "spire/cleave-upgraded",
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Historical comparison · spire/cleave-upgraded",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/cleave-upgraded.svg",
+      "digest": "51e818adb0046c26df67dd989cecbd55e9d54398e6d32f113878b929f79cba20",
+      "parents": [],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/cleave-upgraded.svg",
+      "runtimeDigest": "51e818adb0046c26df67dd989cecbd55e9d54398e6d32f113878b929f79cba20",
+      "notes": "Exact existing export from source base 5e26f4aace8c151a15122f6a62195b81b9a39c7e. Historical comparison, not current live source. Export timestamp and pre-generation checkpoint timing are unknown. No game adoption or aesthetic acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:api-original",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · Exact API original",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/api-original.svg.gz",
+      "digest": "09c66e7dff4c2b849e217f54865de3fbd304f29644d794eb20d1304460d68f15",
+      "parents": [
+        "refinement-2026-11-06:baseline:hearth/stray",
+        "refinement-2026-11-06:baseline:hearth/leader",
+        "refinement-2026-11-06:baseline:hearth/wolf"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact compressed API-returned SVG. Preview is bounded lossless gzip decoding; decoded SHA-256 7ae3c0f87b56ae9c07f34eb0a49df75307522d2dd49145cc53f882f758d7c5c7. Original bytes retained. Packed source study; not a game slot. Author review does not establish user acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:sheet",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · Review sheet",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/sheet.svg",
+      "digest": "28e0aa054189dfbadf945e78eb8351d3c45c95cd7d741ff7903d53954320ab89",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Review derivative: end-of-line whitespace removed where present; geometry unchanged. Exact original retained separately. Packed source study; not selected."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:stray-alert:before-cleanup",
+      "asset": "hearth/stray",
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · stray-alert · Before whitespace cleanup",
+      "file": "docs/art/iterations/files/refinement-candidates-2026-11-06/hearth-wolves/stray-alert-before-cleanup.svg.gz",
+      "digest": "c9e448cecb887de1204c12e5726a06217c42d0c3de1a321434c5ea7deefb4fea",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original extraction before end-of-line whitespace cleanup. Group stray-alert; removed translate(0 0). Final review status: reviewable_alternative. Reviewable alternate: backward glance and narrow shoulder replace the shared profile. At 48px the small muzzle reads more fox-like; keep that identity question open. No runtime adaptation registered for this intermediate."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:stray-alert",
+      "asset": "hearth/stray",
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · stray-alert · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/stray-alert.svg",
+      "digest": "382e29329dc8ce5f80c629780c6264f6d0e0643465010e599ac98a6823d75a3e",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:stray-alert:before-cleanup",
+        "refinement-2026-11-06:hearth-wolves:sheet"
+      ],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/stray-alert.svg",
+      "runtimeDigest": "382e29329dc8ce5f80c629780c6264f6d0e0643465010e599ac98a6823d75a3e",
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: backward glance and narrow shoulder replace the shared profile. At 48px the small muzzle reads more fox-like; keep that identity question open. Extraction: group stray-alert; removed translate(0 0); viewBox 560 × 392. Known game identity; static SVG and slot aspect checks required before runtime registration. No aesthetic approval or default selection."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:leader-calling:before-cleanup",
+      "asset": "hearth/leader",
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · leader-calling · Before whitespace cleanup",
+      "file": "docs/art/iterations/files/refinement-candidates-2026-11-06/hearth-wolves/leader-calling-before-cleanup.svg.gz",
+      "digest": "395b65409d7d67ccef6866d458372ec36049bcbfa2b6d0d96e6b49931cd863e6",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original extraction before end-of-line whitespace cleanup. Group leader-calling; removed translate(560 0). Final review status: reviewable_alternative. Reviewable alternate: upward call is distinct without its collar. Tight top margin (about 14/392 units); later in-frame fit needed. Collar engraving disappears at compact scale. No runtime adaptation registered for this intermediate."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:leader-calling",
+      "asset": "hearth/leader",
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · leader-calling · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/leader-calling.svg",
+      "digest": "a5df7976273f1305bdbe5e1658c8860abaa341041660eaba6827a7c57073662b",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:leader-calling:before-cleanup",
+        "refinement-2026-11-06:hearth-wolves:sheet"
+      ],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/leader-calling.svg",
+      "runtimeDigest": "a5df7976273f1305bdbe5e1658c8860abaa341041660eaba6827a7c57073662b",
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: upward call is distinct without its collar. Tight top margin (about 14/392 units); later in-frame fit needed. Collar engraving disappears at compact scale. Extraction: group leader-calling; removed translate(560 0); viewBox 560 × 392. Known game identity; static SVG and slot aspect checks required before runtime registration. No aesthetic approval or default selection."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:wolf-guardian:before-cleanup",
+      "asset": "hearth/wolf",
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · wolf-guardian · Before whitespace cleanup",
+      "file": "docs/art/iterations/files/refinement-candidates-2026-11-06/hearth-wolves/wolf-guardian-before-cleanup.svg.gz",
+      "digest": "99ef44dfa5bf38d51e098c308bd2a69e948d7b3cb73b021703475bd4877080e5",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original extraction before end-of-line whitespace cleanup. Group wolf-guardian; removed translate(0 392). Final review status: reviewable_alternative. Reviewable alternate: wider ruff and lowered watch differ from Stray/Caller. Less specific woodland cue than current; user choice remains open. No runtime adaptation registered for this intermediate."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:wolf-guardian",
+      "asset": "hearth/wolf",
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · wolf-guardian · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/wolf-guardian.svg",
+      "digest": "4adb1506f7fbde074930fd10ecc96f81f1528ee89caf1efa6319add6b5e96ce6",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:wolf-guardian:before-cleanup",
+        "refinement-2026-11-06:hearth-wolves:sheet"
+      ],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/wolf-guardian.svg",
+      "runtimeDigest": "4adb1506f7fbde074930fd10ecc96f81f1528ee89caf1efa6319add6b5e96ce6",
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: wider ruff and lowered watch differ from Stray/Caller. Less specific woodland cue than current; user choice remains open. Extraction: group wolf-guardian; removed translate(0 392); viewBox 560 × 392. Known game identity; static SVG and slot aspect checks required before runtime registration. No aesthetic approval or default selection."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:card-phone-candidate-mockup",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · card-phone-candidate-mockup.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/card-phone-candidate-mockup.png",
+      "digest": "8f96c7266499fc26dc7298b32d498dc52a58349873116e4ea5edebe1b786652f",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:leader-calling"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Existing author review evidence; PNG losslessly optimized with decoded pixel/color checks in png-optimization.json. Ephemeral DOM-only phone mockup, not runtime integration or acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:card-phone-current",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · card-phone-current.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/card-phone-current.png",
+      "digest": "be4d9be098b29c9cc582d9c2049756215f8c78a270ee9ded7147572106c3583d",
+      "parents": [
+        "refinement-2026-11-06:baseline:hearth/leader"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Existing author review evidence; PNG losslessly optimized with decoded pixel/color checks in png-optimization.json. Historical phone UI comparison."
+    },
+    {
+      "id": "refinement-2026-11-06:hearth-wolves:review",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:hearth-wolves",
+      "label": "hearth-wolves · review.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/review.png",
+      "digest": "8b5b6942fda6f4d4b254f9c57aabde57679b126c8ee77d8714cd61525ea6695b",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:stray-alert",
+        "refinement-2026-11-06:hearth-wolves:leader-calling",
+        "refinement-2026-11-06:hearth-wolves:wolf-guardian"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Existing author review evidence; PNG losslessly optimized with decoded pixel/color checks in png-optimization.json. Native/compact contact sheet, not an additional generation or artwork decision."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:api-original",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · Exact API original",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/api-original.svg.gz",
+      "digest": "6b9fb8a4e0363573568a35d0492edebba2ef16b0387c2dab5a09df38b7e9edee",
+      "parents": [
+        "refinement-2026-11-06:baseline:spire/cleave",
+        "refinement-2026-11-06:baseline:spire/heavyBlade",
+        "refinement-2026-11-06:baseline:spire/ironWave",
+        "refinement-2026-11-06:baseline:spire/cleave-upgraded",
+        "refinement-2026-11-06:baseline:spire/heavyBlade-upgraded",
+        "refinement-2026-11-06:baseline:spire/ironWave-upgraded"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact compressed API-returned SVG. Preview is bounded lossless gzip decoding; decoded SHA-256 db462bb8136e55bea40bd93f45e467e93d5d377a9bb4cd296f9463e9617f30bc. Original bytes retained. Packed source study; not a game slot. Contains held Heavy Blade anatomy attempts."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:sheet",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · Review sheet",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/sheet.svg",
+      "digest": "db462bb8136e55bea40bd93f45e467e93d5d377a9bb4cd296f9463e9617f30bc",
+      "parents": [
+        "refinement-2026-11-06:spire-swords:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Review derivative: end-of-line whitespace removed where present; geometry unchanged. Bytes already identical to the decoded API original. Packed source study; not selected."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:cleave-base",
+      "asset": "spire/cleave",
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · cleave-base · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/cleave-base.svg",
+      "digest": "6d19ff2504de1f12905e293d9f18eadbe3e2849774e1affb05470fb03295900a",
+      "parents": [
+        "refinement-2026-11-06:spire-swords:sheet"
+      ],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/cleave-base.svg",
+      "runtimeDigest": "6d19ff2504de1f12905e293d9f18eadbe3e2849774e1affb05470fb03295900a",
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: gripping arm and broad crescent make a physical sweep; sword stays readable at 48px. Extraction: group cleave-base; removed translate(0 0); viewBox 480 × 336. Known game identity; static SVG and slot aspect checks required before runtime registration. No aesthetic approval or default selection."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:heavyBlade-base",
+      "asset": "spire/heavyBlade",
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · heavyBlade-base · HELD",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/heavyBlade-base.svg",
+      "digest": "294b6212d1229c17eb401e6f3e2765d56046f960d8e3ce3509ba49bbc92ca521",
+      "parents": [
+        "refinement-2026-11-06:spire-swords:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: hold_anatomy. Hold for anatomy refinement: two hands grip the long hilt, but the lower gauntlet has no supporting forearm. Preserve as a rejected construction attempt; do not imply production readiness. Extraction: group heavyBlade-base; removed translate(480 0); viewBox 480 × 336. Held variants have no selectable runtime adaptation."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:ironWave-base",
+      "asset": "spire/ironWave",
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · ironWave-base · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/ironWave-base.svg",
+      "digest": "fe86a82fe55e6c88d972b26f25aec490ca559695aeef3697fb891a5a1c292e27",
+      "parents": [
+        "refinement-2026-11-06:spire-swords:sheet"
+      ],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/ironWave-base.svg",
+      "runtimeDigest": "fe86a82fe55e6c88d972b26f25aec490ca559695aeef3697fb891a5a1c292e27",
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: fitted guard plate and sword create connected protection/attack; wave is secondary. Extraction: group ironWave-base; removed translate(960 0); viewBox 480 × 336. Known game identity; static SVG and slot aspect checks required before runtime registration. No aesthetic approval or default selection."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:cleave-upgraded",
+      "asset": "spire/cleave-upgraded",
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · cleave-upgraded · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/cleave-upgraded.svg",
+      "digest": "8dbccfde145e309dc5acb53656d8314d4ef8fa722704f703f426ce1aa258151c",
+      "parents": [
+        "refinement-2026-11-06:spire-swords:sheet"
+      ],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/cleave-upgraded.svg",
+      "runtimeDigest": "8dbccfde145e309dc5acb53656d8314d4ef8fa722704f703f426ce1aa258151c",
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate with larger follow-through; contour difference from base is modest. Larger crescent and stronger bend carry most change. Extraction: group cleave-upgraded; removed translate(0 336); viewBox 480 × 336. Known game identity; static SVG and slot aspect checks required before runtime registration. No aesthetic approval or default selection."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:heavyBlade-upgraded",
+      "asset": "spire/heavyBlade-upgraded",
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · heavyBlade-upgraded · HELD",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/heavyBlade-upgraded.svg",
+      "digest": "89b9bafe2ce5a0bd9dc3cb8ed3e052cc906c40d76a7ec5bfada8903b433e834e",
+      "parents": [
+        "refinement-2026-11-06:spire-swords:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: hold_anatomy. Hold for anatomy refinement: downward action differs clearly, but the two wrists are crowded and lower support is unclear. Do not promote before correction. Extraction: group heavyBlade-upgraded; removed translate(480 336); viewBox 480 × 336. Held variants have no selectable runtime adaptation."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:ironWave-upgraded",
+      "asset": "spire/ironWave-upgraded",
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · ironWave-upgraded · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/ironWave-upgraded.svg",
+      "digest": "f28b15846be3f489e6f05359ce26a9b85ab58c6c89f33c59054917cf65e86d8f",
+      "parents": [
+        "refinement-2026-11-06:spire-swords:sheet"
+      ],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/ironWave-upgraded.svg",
+      "runtimeDigest": "f28b15846be3f489e6f05359ce26a9b85ab58c6c89f33c59054917cf65e86d8f",
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: horizontal sweep and wider guard differ strongly from base, including at 48px. Extraction: group ironWave-upgraded; removed translate(960 336); viewBox 480 × 336. Known game identity; static SVG and slot aspect checks required before runtime registration. No aesthetic approval or default selection."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:card-phone-candidate-mockup",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · card-phone-candidate-mockup.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/card-phone-candidate-mockup.png",
+      "digest": "cf39ed3b1e3fec744b74649bf07dca0bf828face4b1a7cbbbe90df336cd8088b",
+      "parents": [
+        "refinement-2026-11-06:spire-swords:ironWave-base"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Existing author review evidence; PNG losslessly optimized with decoded pixel/color checks in png-optimization.json. Ephemeral DOM-only phone mockup, not runtime integration or acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:card-phone-current",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · card-phone-current.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/card-phone-current.png",
+      "digest": "174b5e73c25d6fc5486aa132a106a61a230907492a9872457d8995cb97bf4e29",
+      "parents": [
+        "refinement-2026-11-06:baseline:spire/ironWave"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Existing author review evidence; PNG losslessly optimized with decoded pixel/color checks in png-optimization.json. Historical phone UI comparison."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-swords:review",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:spire-swords",
+      "label": "spire-swords · review.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/review.png",
+      "digest": "cfc2221480d4e41fcdffdb9daa09fc549947357b70e7cf41e516797d72f7c3eb",
+      "parents": [
+        "refinement-2026-11-06:spire-swords:cleave-base",
+        "refinement-2026-11-06:spire-swords:heavyBlade-base",
+        "refinement-2026-11-06:spire-swords:ironWave-base",
+        "refinement-2026-11-06:spire-swords:cleave-upgraded",
+        "refinement-2026-11-06:spire-swords:heavyBlade-upgraded",
+        "refinement-2026-11-06:spire-swords:ironWave-upgraded"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Existing author review evidence; PNG losslessly optimized with decoded pixel/color checks in png-optimization.json. Native/compact contact sheet, not an additional generation or artwork decision."
+    },
+    {
+      "id": "refinement-2026-11-06:cartographer-relics:api-original",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:cartographer-relics",
+      "label": "cartographer-relics · Exact API original",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/api-original.svg.gz",
+      "digest": "4ffcd8f704c4c4bb59b7054f600719dde101c8321b5dd08e2861ca0e552067db",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact compressed API-returned SVG. Preview is bounded lossless gzip decoding; decoded SHA-256 eb0a657fee2bf5887d19d30da90bdc5ae7f1aa87c5fab8d111da480457151d59. Original bytes retained. Packed source study; not a game slot. Author review does not establish user acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:cartographer-relics:sheet",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:cartographer-relics",
+      "label": "cartographer-relics · Review sheet",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/sheet.svg",
+      "digest": "eb0a657fee2bf5887d19d30da90bdc5ae7f1aa87c5fab8d111da480457151d59",
+      "parents": [
+        "refinement-2026-11-06:cartographer-relics:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Review derivative: end-of-line whitespace removed where present; geometry unchanged. Bytes already identical to the decoded API original. Packed source study; not selected."
+    },
+    {
+      "id": "refinement-2026-11-06:cartographer-relics:chisel",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:cartographer-relics",
+      "label": "cartographer-relics · chisel · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/chisel.svg",
+      "digest": "9cfbe95cd83786fb250fa0443fb01e77d3974188eb03dd680d34842de87c7f9b",
+      "parents": [
+        "refinement-2026-11-06:cartographer-relics:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: distinct physical object at 64/32/24px; proposed artwork beside current text, no runtime slot added. Extraction: group chisel; removed translate(0 0); viewBox 384 × 384. Content/category name only; no established SVG game slot. Native proposals 64/32/24px (relics), 23px (category symbols); source study only."
+    },
+    {
+      "id": "refinement-2026-11-06:cartographer-relics:compass",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:cartographer-relics",
+      "label": "cartographer-relics · compass · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/compass.svg",
+      "digest": "e12c3852e09daafc954a710f653126f333aee6400a71393a945424950ed86d9d",
+      "parents": [
+        "refinement-2026-11-06:cartographer-relics:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: distinct physical object at 64/32/24px; proposed artwork beside current text, no runtime slot added. Extraction: group compass; removed translate(384 0); viewBox 384 × 384. Content/category name only; no established SVG game slot. Native proposals 64/32/24px (relics), 23px (category symbols); source study only."
+    },
+    {
+      "id": "refinement-2026-11-06:cartographer-relics:moss",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:cartographer-relics",
+      "label": "cartographer-relics · moss · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/moss.svg",
+      "digest": "a6f6d7d480480508c3103372d79feae93e830003215d67b47b0414de78df3b6a",
+      "parents": [
+        "refinement-2026-11-06:cartographer-relics:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: distinct physical object at 64/32/24px; proposed artwork beside current text, no runtime slot added. Extraction: group moss; removed translate(768 0); viewBox 384 × 384. Content/category name only; no established SVG game slot. Native proposals 64/32/24px (relics), 23px (category symbols); source study only."
+    },
+    {
+      "id": "refinement-2026-11-06:cartographer-relics:boots",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:cartographer-relics",
+      "label": "cartographer-relics · boots · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/boots.svg",
+      "digest": "92eff1014355c09d9590eae87415ed32808472a5eb50ea160b7ec29b877d9ce3",
+      "parents": [
+        "refinement-2026-11-06:cartographer-relics:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: distinct physical object at 64/32/24px; proposed artwork beside current text, no runtime slot added. Extraction: group boots; removed translate(0 384); viewBox 384 × 384. Content/category name only; no established SVG game slot. Native proposals 64/32/24px (relics), 23px (category symbols); source study only."
+    },
+    {
+      "id": "refinement-2026-11-06:cartographer-relics:shell",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:cartographer-relics",
+      "label": "cartographer-relics · shell · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/shell.svg",
+      "digest": "2347d6c7b9f784e895e1cb07efef9878cf467636797bb6bec20504540cf8cd84",
+      "parents": [
+        "refinement-2026-11-06:cartographer-relics:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: distinct physical object at 64/32/24px; proposed artwork beside current text, no runtime slot added. Extraction: group shell; removed translate(384 384); viewBox 384 × 384. Content/category name only; no established SVG game slot. Native proposals 64/32/24px (relics), 23px (category symbols); source study only."
+    },
+    {
+      "id": "refinement-2026-11-06:cartographer-relics:lens",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:cartographer-relics",
+      "label": "cartographer-relics · lens · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/lens.svg",
+      "digest": "9bf83a36813133871aae96be80821c8f546e45f2f890362603a60998e6111172",
+      "parents": [
+        "refinement-2026-11-06:cartographer-relics:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: lens differs from compass through its long handle. Ferrule is low-contrast under the rim at compact size; check connection and glass treatment before adoption. Extraction: group lens; removed translate(768 384); viewBox 384 × 384. Content/category name only; no established SVG game slot. Native proposals 64/32/24px (relics), 23px (category symbols); source study only."
+    },
+    {
+      "id": "refinement-2026-11-06:cartographer-relics:review",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:cartographer-relics",
+      "label": "cartographer-relics · review.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/review.png",
+      "digest": "612ea1b4c8c18dc51b82a398a06c3c64d803e9b81c70c44d54c8d6cac89d5390",
+      "parents": [
+        "refinement-2026-11-06:cartographer-relics:chisel",
+        "refinement-2026-11-06:cartographer-relics:compass",
+        "refinement-2026-11-06:cartographer-relics:moss",
+        "refinement-2026-11-06:cartographer-relics:boots",
+        "refinement-2026-11-06:cartographer-relics:shell",
+        "refinement-2026-11-06:cartographer-relics:lens"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Existing author review evidence; PNG losslessly optimized with decoded pixel/color checks in png-optimization.json. Native/compact contact sheet, not an additional generation or artwork decision."
+    },
+    {
+      "id": "refinement-2026-11-06:emberwake-backpack:api-original",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:emberwake-backpack",
+      "label": "emberwake-backpack · Exact API original",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/api-original.svg.gz",
+      "digest": "4e99412e720dd64c970f4086e9b1c2b1adb434f2cd8e517cd1284211334e8731",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact compressed API-returned SVG. Preview is bounded lossless gzip decoding; decoded SHA-256 a9cd8979afd9d956686d9afebad6b7d9dfbc6303a123c34a6914832277b55d65. Original bytes retained. Packed source study; not a game slot. Author review does not establish user acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:emberwake-backpack:sheet",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:emberwake-backpack",
+      "label": "emberwake-backpack · Review sheet",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/sheet.svg",
+      "digest": "a9cd8979afd9d956686d9afebad6b7d9dfbc6303a123c34a6914832277b55d65",
+      "parents": [
+        "refinement-2026-11-06:emberwake-backpack:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Review derivative: end-of-line whitespace removed where present; geometry unchanged. Bytes already identical to the decoded API original. Packed source study; not selected."
+    },
+    {
+      "id": "refinement-2026-11-06:emberwake-backpack:weapon",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:emberwake-backpack",
+      "label": "emberwake-backpack · weapon · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/weapon.svg",
+      "digest": "8339895407cc40805c150bac05bf28e830cc739927c3e6b43b25b1726cef738c",
+      "parents": [
+        "refinement-2026-11-06:emberwake-backpack:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: distinct category silhouette at 23px. Broad planes survive phone-scale review; no rarity or item-specific meaning is added. Extraction: group weapon; removed translate(0 0); viewBox 448 × 448. Content/category name only; no established SVG game slot. Native proposals 64/32/24px (relics), 23px (category symbols); source study only."
+    },
+    {
+      "id": "refinement-2026-11-06:emberwake-backpack:armor",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:emberwake-backpack",
+      "label": "emberwake-backpack · armor · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/armor.svg",
+      "digest": "cc58cdff175750f732cd562a1f20995d4185b2f5d5e12718f85f086bd6a350cf",
+      "parents": [
+        "refinement-2026-11-06:emberwake-backpack:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: distinct category silhouette at 23px. Broad planes survive phone-scale review; no rarity or item-specific meaning is added. Extraction: group armor; removed translate(448 0); viewBox 448 × 448. Content/category name only; no established SVG game slot. Native proposals 64/32/24px (relics), 23px (category symbols); source study only."
+    },
+    {
+      "id": "refinement-2026-11-06:emberwake-backpack:charm",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:emberwake-backpack",
+      "label": "emberwake-backpack · charm · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/charm.svg",
+      "digest": "b0078fba8e35b3b10f8c5d8a8977a2045b3c4e9d02e6ad3652e31ae49fe4ca30",
+      "parents": [
+        "refinement-2026-11-06:emberwake-backpack:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: distinct category silhouette at 23px. Broad planes survive phone-scale review; no rarity or item-specific meaning is added. Extraction: group charm; removed translate(0 448); viewBox 448 × 448. Content/category name only; no established SVG game slot. Native proposals 64/32/24px (relics), 23px (category symbols); source study only."
+    },
+    {
+      "id": "refinement-2026-11-06:emberwake-backpack:review",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:emberwake-backpack",
+      "label": "emberwake-backpack · review.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/review.png",
+      "digest": "e6ceb11087ac25e7bc1922cdf2f284828c70b643278554c436d7d72062c5bf1a",
+      "parents": [
+        "refinement-2026-11-06:emberwake-backpack:weapon",
+        "refinement-2026-11-06:emberwake-backpack:armor",
+        "refinement-2026-11-06:emberwake-backpack:charm"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Existing author review evidence; PNG losslessly optimized with decoded pixel/color checks in png-optimization.json. Native/compact contact sheet, not an additional generation or artwork decision."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-heavyblade-revision:api-original",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:spire-heavyblade-revision",
+      "label": "spire-heavyblade-revision · Exact API original",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/api-original.svg.gz",
+      "digest": "c8ce3e4d196bf534d52d64972889afd0f1f5a933d30b7e64fceab0f5f7a16e0a",
+      "parents": [
+        "refinement-2026-11-06:baseline:spire/heavyBlade",
+        "refinement-2026-11-06:baseline:spire/heavyBlade-upgraded",
+        "refinement-2026-11-06:spire-swords:heavyBlade-base",
+        "refinement-2026-11-06:spire-swords:heavyBlade-upgraded"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact compressed API-returned SVG. Preview is bounded lossless gzip decoding; decoded SHA-256 e761e5011f3c384144601fcd0a898bf0d3f6ee7f552e1d6c04a9e16d0a5a7f4e. Original bytes retained. Packed source study; not a game slot. Both cells held for Heavy Blade identity."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-heavyblade-revision:sheet",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:spire-heavyblade-revision",
+      "label": "spire-heavyblade-revision · Review sheet",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/sheet.svg",
+      "digest": "86722b99a1bf55830a3aa3bfad6b3e9782fb010b31d4109443cd85731703cca3",
+      "parents": [
+        "refinement-2026-11-06:spire-heavyblade-revision:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Review derivative: end-of-line whitespace removed where present; geometry unchanged. Exact original retained separately. Packed source study; not selected."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-base-refined:before-cleanup",
+      "asset": "spire/heavyBlade",
+      "attempt": "refinement-2026-11-06:spire-heavyblade-revision",
+      "label": "spire-heavyblade-revision · heavyBlade-base-refined · Before whitespace cleanup",
+      "file": "docs/art/iterations/files/refinement-candidates-2026-11-06/spire-heavyblade-revision/heavyBlade-base-refined-before-cleanup.svg.gz",
+      "digest": "84f143735f5af3bea3d577df9ffd88136c382c39ae74f553e2fb6a139471eb73",
+      "parents": [
+        "refinement-2026-11-06:spire-heavyblade-revision:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original extraction before end-of-line whitespace cleanup. Group heavyBlade-base-refined; removed translate(0 0). Final review status: hold_identity. Hold for weapon identity: single arm is now continuous and the action changes, but the narrower blade loses Heavy Blade mass. Retain as a construction lesson, not a preferred Heavy Blade candidate. No further paid reroll. No runtime adaptation registered for this intermediate."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-base-refined",
+      "asset": "spire/heavyBlade",
+      "attempt": "refinement-2026-11-06:spire-heavyblade-revision",
+      "label": "spire-heavyblade-revision · heavyBlade-base-refined · HELD",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/heavyBlade-base-refined.svg",
+      "digest": "0639c33d00a9b1bf420b139346908cccc1578bb48e21924041f0c2410174fcc8",
+      "parents": [
+        "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-base-refined:before-cleanup",
+        "refinement-2026-11-06:spire-heavyblade-revision:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: hold_identity. Hold for weapon identity: single arm is now continuous and the action changes, but the narrower blade loses Heavy Blade mass. Retain as a construction lesson, not a preferred Heavy Blade candidate. No further paid reroll. Extraction: group heavyBlade-base-refined; removed translate(0 0); viewBox 800 × 560. Held variants have no selectable runtime adaptation."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-upgraded-refined:before-cleanup",
+      "asset": "spire/heavyBlade-upgraded",
+      "attempt": "refinement-2026-11-06:spire-heavyblade-revision",
+      "label": "spire-heavyblade-revision · heavyBlade-upgraded-refined · Before whitespace cleanup",
+      "file": "docs/art/iterations/files/refinement-candidates-2026-11-06/spire-heavyblade-revision/heavyBlade-upgraded-refined-before-cleanup.svg.gz",
+      "digest": "ba621201cdbb65e539eecf743307e9039a9c6a6dd689391b2d832738b86422fb",
+      "parents": [
+        "refinement-2026-11-06:spire-heavyblade-revision:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original extraction before end-of-line whitespace cleanup. Group heavyBlade-upgraded-refined; removed translate(800 0). Final review status: hold_identity. Hold for weapon identity: single arm is now continuous and the action changes, but the narrower blade loses Heavy Blade mass. Retain as a construction lesson, not a preferred Heavy Blade candidate. No further paid reroll. No runtime adaptation registered for this intermediate."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-upgraded-refined",
+      "asset": "spire/heavyBlade-upgraded",
+      "attempt": "refinement-2026-11-06:spire-heavyblade-revision",
+      "label": "spire-heavyblade-revision · heavyBlade-upgraded-refined · HELD",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/heavyBlade-upgraded-refined.svg",
+      "digest": "d7b101b5235994be4187291313b7e312ebe42bbfdaaec76696726553d6fa6b70",
+      "parents": [
+        "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-upgraded-refined:before-cleanup",
+        "refinement-2026-11-06:spire-heavyblade-revision:sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Author outcome: hold_identity. Hold for weapon identity: single arm is now continuous and the action changes, but the narrower blade loses Heavy Blade mass. Retain as a construction lesson, not a preferred Heavy Blade candidate. No further paid reroll. Extraction: group heavyBlade-upgraded-refined; removed translate(800 0); viewBox 800 × 560. Held variants have no selectable runtime adaptation."
+    },
+    {
+      "id": "refinement-2026-11-06:spire-heavyblade-revision:review",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:spire-heavyblade-revision",
+      "label": "spire-heavyblade-revision · review.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/review.png",
+      "digest": "c61870cc88baf8c1f0f5314c290420360a1f1cbb71f2cf3e9cd1edb304865907",
+      "parents": [
+        "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-base-refined",
+        "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-upgraded-refined"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Existing author review evidence; PNG losslessly optimized with decoded pixel/color checks in png-optimization.json. Native/compact contact sheet, not an additional generation or artwork decision."
+    },
+    {
+      "id": "refinement-2026-11-06:blindside-materials:api-original",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:blindside-materials",
+      "label": "blindside-materials · Exact API original",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/api-original.svg.gz",
+      "digest": "1dae69a24b8178561a71565f87d051f0277af6bb6204a759bc3b8b41c5ed6ff6",
+      "parents": [
+        "refinement-2026-11-06:baseline:blindside/consumables/mult",
+        "refinement-2026-11-06:baseline:blindside/consumables/glass",
+        "refinement-2026-11-06:baseline:blindside/consumables/steel"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact compressed API-returned SVG. Preview is bounded lossless gzip decoding; decoded SHA-256 c12541cc16e5d34751bbd6927f8617e038b6d09bbd878ce510bcd1b88411dd10. Original bytes retained. Packed source study; not a game slot. Author review does not establish user acceptance."
+    },
+    {
+      "id": "refinement-2026-11-06:blindside-materials:sheet",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:blindside-materials",
+      "label": "blindside-materials · Review sheet",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/sheet.svg",
+      "digest": "54d04aa757410804ea9cfa67fa3fd6ee9744fe05b9c4bc115c3364ec00cf1617",
+      "parents": [
+        "refinement-2026-11-06:blindside-materials:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Review derivative: end-of-line whitespace removed where present; geometry unchanged. Exact original retained separately. Packed source study; not selected."
+    },
+    {
+      "id": "refinement-2026-11-06:blindside-materials:lantern:before-cleanup",
+      "asset": "blindside/consumables/mult",
+      "attempt": "refinement-2026-11-06:blindside-materials",
+      "label": "blindside-materials · lantern · Before whitespace cleanup",
+      "file": "docs/art/iterations/files/refinement-candidates-2026-11-06/blindside-materials/lantern-before-cleanup.svg.gz",
+      "digest": "8bf3e4d6d018448b8a1f5c997f44f17fd800191ca7598eb463345d6d14e43a55",
+      "parents": [
+        "refinement-2026-11-06:blindside-materials:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original extraction before end-of-line whitespace cleanup. Group lantern; removed translate(0 0). Final review status: reviewable_alternative. Reviewable alternate: fitted roof/base thickness and two glass planes improve material separation. Flame remains visible at pocket size. Frame is excluded from the candidate source. No runtime adaptation registered for this intermediate."
+    },
+    {
+      "id": "refinement-2026-11-06:blindside-materials:lantern",
+      "asset": "blindside/consumables/mult",
+      "attempt": "refinement-2026-11-06:blindside-materials",
+      "label": "blindside-materials · lantern · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/lantern.svg",
+      "digest": "772c31acc8084b5158d0973b5650a026daa3e722b913ad101a83de9225928d22",
+      "parents": [
+        "refinement-2026-11-06:blindside-materials:lantern:before-cleanup",
+        "refinement-2026-11-06:blindside-materials:sheet"
+      ],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/lantern.svg",
+      "runtimeDigest": "772c31acc8084b5158d0973b5650a026daa3e722b913ad101a83de9225928d22",
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: fitted roof/base thickness and two glass planes improve material separation. Flame remains visible at pocket size. Frame is excluded from the candidate source. Extraction: group lantern; removed translate(0 0); viewBox 560 × 392. Known game identity; static SVG and slot aspect checks required before runtime registration. No aesthetic approval or default selection."
+    },
+    {
+      "id": "refinement-2026-11-06:blindside-materials:mirror:before-cleanup",
+      "asset": "blindside/consumables/glass",
+      "attempt": "refinement-2026-11-06:blindside-materials",
+      "label": "blindside-materials · mirror · Before whitespace cleanup",
+      "file": "docs/art/iterations/files/refinement-candidates-2026-11-06/blindside-materials/mirror-before-cleanup.svg.gz",
+      "digest": "dfddd328e59193e5b6fb7855594be394ea164137256ed08102d57800ebe7f711",
+      "parents": [
+        "refinement-2026-11-06:blindside-materials:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original extraction before end-of-line whitespace cleanup. Group mirror; removed translate(560 0). Final review status: reviewable_alternative. Reviewable alternate: tilted thick rim and broad sage reflections clarify glass. Crack is subordinate at 48px; current remains a valid simpler treatment. No runtime adaptation registered for this intermediate."
+    },
+    {
+      "id": "refinement-2026-11-06:blindside-materials:mirror",
+      "asset": "blindside/consumables/glass",
+      "attempt": "refinement-2026-11-06:blindside-materials",
+      "label": "blindside-materials · mirror · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/mirror.svg",
+      "digest": "79b7188159f646e206dd0bdf6e3db5e7f82fc933ab41ded10ecd9d2203d6c9ad",
+      "parents": [
+        "refinement-2026-11-06:blindside-materials:mirror:before-cleanup",
+        "refinement-2026-11-06:blindside-materials:sheet"
+      ],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/mirror.svg",
+      "runtimeDigest": "79b7188159f646e206dd0bdf6e3db5e7f82fc933ab41ded10ecd9d2203d6c9ad",
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: tilted thick rim and broad sage reflections clarify glass. Crack is subordinate at 48px; current remains a valid simpler treatment. Extraction: group mirror; removed translate(560 0); viewBox 560 × 392. Known game identity; static SVG and slot aspect checks required before runtime registration. No aesthetic approval or default selection."
+    },
+    {
+      "id": "refinement-2026-11-06:blindside-materials:anvil:before-cleanup",
+      "asset": "blindside/consumables/steel",
+      "attempt": "refinement-2026-11-06:blindside-materials",
+      "label": "blindside-materials · anvil · Before whitespace cleanup",
+      "file": "docs/art/iterations/files/refinement-candidates-2026-11-06/blindside-materials/anvil-before-cleanup.svg.gz",
+      "digest": "f27c4acea90dd51b6a9f4e05a13d7c8c71f3a44eb3b5c917e7be40c68279e496",
+      "parents": [
+        "refinement-2026-11-06:blindside-materials:api-original"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original extraction before end-of-line whitespace cleanup. Group anvil; removed translate(0 392). Final review status: reviewable_alternative. Reviewable alternate: top, side and planted base planes give more weight. Resting hammer differs from current poised strike; user may prefer the current action. No runtime adaptation registered for this intermediate."
+    },
+    {
+      "id": "refinement-2026-11-06:blindside-materials:anvil",
+      "asset": "blindside/consumables/steel",
+      "attempt": "refinement-2026-11-06:blindside-materials",
+      "label": "blindside-materials · anvil · Alternative",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/anvil.svg",
+      "digest": "088db94a3c2eef796662933d8097099a57b4e5307b0b5f7fcab4d078ec476981",
+      "parents": [
+        "refinement-2026-11-06:blindside-materials:anvil:before-cleanup",
+        "refinement-2026-11-06:blindside-materials:sheet"
+      ],
+      "runtimeFile": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/anvil.svg",
+      "runtimeDigest": "088db94a3c2eef796662933d8097099a57b4e5307b0b5f7fcab4d078ec476981",
+      "notes": "Author outcome: reviewable_alternative. Reviewable alternate: top, side and planted base planes give more weight. Resting hammer differs from current poised strike; user may prefer the current action. Extraction: group anvil; removed translate(0 392); viewBox 560 × 392. Known game identity; static SVG and slot aspect checks required before runtime registration. No aesthetic approval or default selection."
+    },
+    {
+      "id": "refinement-2026-11-06:blindside-materials:review",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:blindside-materials",
+      "label": "blindside-materials · review.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/review.png",
+      "digest": "6fe5823f248cf560f0ddbd5ba5f98acbf1c38e533f0ba768fd2c7a4ac077c335",
+      "parents": [
+        "refinement-2026-11-06:blindside-materials:lantern",
+        "refinement-2026-11-06:blindside-materials:mirror",
+        "refinement-2026-11-06:blindside-materials:anvil"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Existing author review evidence; PNG losslessly optimized with decoded pixel/color checks in png-optimization.json. Native/compact contact sheet, not an additional generation or artwork decision."
+    },
+    {
+      "id": "refinement-2026-11-06:evidence:index-desktop",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Study overview · index-desktop.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/index-desktop.png",
+      "digest": "fe5e89df3416c035860546fec2d6f762a883d6ffcdfdaeae7984a18808fd6194",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:review",
+        "refinement-2026-11-06:spire-swords:review",
+        "refinement-2026-11-06:cartographer-relics:review",
+        "refinement-2026-11-06:emberwake-backpack:review",
+        "refinement-2026-11-06:spire-heavyblade-revision:review",
+        "refinement-2026-11-06:blindside-materials:review"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Historical standalone review overview. Losslessly optimized review evidence; separate from native artwork and user acceptance. Layout predates shared-gallery registration."
+    },
+    {
+      "id": "refinement-2026-11-06:evidence:index-phone",
+      "asset": null,
+      "attempt": "refinement-2026-11-06:baseline-and-evidence",
+      "label": "Study overview · index-phone.png",
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/index-phone.png",
+      "digest": "916761187b647dc3031006984f97ed51dbecaa18bddb339d02971e4f87c7903e",
+      "parents": [
+        "refinement-2026-11-06:hearth-wolves:review",
+        "refinement-2026-11-06:spire-swords:review",
+        "refinement-2026-11-06:cartographer-relics:review",
+        "refinement-2026-11-06:emberwake-backpack:review",
+        "refinement-2026-11-06:spire-heavyblade-revision:review",
+        "refinement-2026-11-06:blindside-materials:review"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Historical standalone review overview. Losslessly optimized review evidence; separate from native artwork and user acceptance. Layout predates shared-gallery registration."
     }
   ]
 }

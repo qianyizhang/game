@@ -4,12 +4,28 @@ Candidate-only study against main `5e26f4aace8c151a15122f6a62195b81b9a39c7e`.
 No runtime artwork, rules, catalogue, save or replay behavior changes. The user
 chooses what to use later; author review is not user acceptance.
 
+The shared entry point is `/__art/`. Search **Refinement 2026-11-06** in
+**Studies and attempts**, then open one of the six families to inspect originals,
+extractions, held outputs, exact settings and linked parents. Established game
+slots also show their current live source. The [registration inventory](../../iterations/refinement-candidates-2026-11-06.json)
+accounts for six requests and 67 revisions: six compressed API originals, six
+review sheets, 23 final cells, eight distinct pre-cleanup cells, 12 unique
+historical comparisons and 12 review images. The extra administrative record is
+not a generation request. Repeated baseline files are aliases, not new iterations.
+
+Fourteen final cells map to 12 established game IDs; ten reviewable cells have
+static SVG/slot-aspect compatibility, while the four held Heavy Blade cells have
+no selectable runtime adaptation. Nine relic/category cells and all sheets remain
+source studies. Compatibility is not aesthetic acceptance. Defaults remain
+unchanged; use the shared workflow for future explicit selection or guarded
+removal. Historical pre-edit checkpoint timing and capture times are unknown.
+
 The [offline review](index.html) compares current exports or text-only baselines
 with alternatives at enlarged and compact sizes. Each family retains its exact
 prompt, request settings, exact native SVG original as `api-original.svg.gz` plus a whitespace-clean review sheet, response usage, extracted
 cells and lineage. The study follows the [card-art batch workflow](../../../../skills/card-art/references/batch-assets.md),
 [reuse-first gate](../../README.md#asset-admission-reuse-improve-then-expand) and
-existing artwork/prompt preservation hold. Nothing supersedes the user's prior
+[asset history workflow](../../iterations/README.md). Nothing supersedes the user's prior
 Spire defense selection or the merged Scrapyard suite.
 
 ## Admission and ownership
