@@ -62,6 +62,36 @@
         "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/validation.json",
         "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/index.html"
       ]
+    },
+    {
+      "id": "story-clips-20261106-spire-one-quiet-breath-chapter-2-r1",
+      "title": "One Quiet Breath \u00b7 scoped framing correction",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One new scoped call after known successful clipped chapter;same actual Let Go endpoint PNG. Full horn contours15-19px;quieter mask turn,not torso rise. Author candidate assessment,no user acceptance.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/calls/chapter-2-r1.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/continuation-generation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/references.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/references/chapter-1-last.png",
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/review.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/validation.json"
+      ]
+    },
+    {
+      "id": "story-clips-20261106-spire-one-quiet-breath-assembly-r1",
+      "title": "One Quiet Breath \u00b7 distinct revised native GIF assembly",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "All32 frames from Let Go+framing correction preserved at300ms. First assembly unchanged,not overwritten.",
+      "files": [
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/animation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/compact-r1.png",
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/review.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/README.md",
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/validation.json",
+        "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/index.html"
+      ]
     }
   ],
   "revisions": [
@@ -115,6 +145,36 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Local9.6s/32-frame derivative,not another API output. No frame omissions or interpolation. Horn crop and cut drift remain documented;shared gallery replay limitation unresolved."
+    },
+    {
+      "id": "story-clips-20261106-spire-one-quiet-breath-chapter-2-r1",
+      "asset": null,
+      "attempt": "story-clips-20261106-spire-one-quiet-breath-chapter-2-r1",
+      "label": "One Quiet Breath \u00b7 Again framing correction original",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/chapter-2-r1.gif",
+      "digest": "aa2eae3e2952e56674c45cd4a808bc394910c7a1c7524391e2e763d8525effa9",
+      "parents": [
+        "story-clips-20261106-spire-one-quiet-breath-chapter-2",
+        "story-clips-20261106-spire-one-quiet-breath-chapter-1"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original. First parent is revision history;sole actual input is prior Let Go endpoint PNG. Original clipped chapter remains. Full horns/connected support reviewed;render drift and shared replay limit remain."
+    },
+    {
+      "id": "story-clips-20261106-spire-one-quiet-breath-assembly-r1",
+      "asset": null,
+      "attempt": "story-clips-20261106-spire-one-quiet-breath-assembly-r1",
+      "label": "One Quiet Breath \u00b7 revised joined candidate",
+      "file": "docs/art/assets/expansion-story-clips-2026-11-06/spire-one-quiet-breath/story-r1.gif",
+      "digest": "5bca8ae9dd8ea1bacc8a1806884e4f143da3c7ea58d3ad0c5b1b79dacaa21f5d",
+      "parents": [
+        "story-clips-20261106-spire-one-quiet-breath-chapter-1",
+        "story-clips-20261106-spire-one-quiet-breath-chapter-2-r1"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Distinct local9.6s/32-frame derivative;exact respective source pixels/timing. Preferred review delivery only,no game selection. Old assembly/crop evidence retained;shared nonlooping replay still unresolved."
     }
   ]
 }

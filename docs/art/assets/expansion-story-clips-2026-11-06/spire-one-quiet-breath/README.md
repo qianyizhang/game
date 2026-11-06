@@ -1,32 +1,40 @@
 # One Quiet Breath — Spire story candidate
 
-**Coherent two-chapter vignette,with an ending-framing hold.** The Silent lets a
-guarded hand relax at a campfire,then lifts her mask toward the climb. This is
-candidate fiction,not accepted history,an HP effect or a runtime replacement.
+**Revised ending keeps both horns in frame;the original clipped ending remains
+inspectable.** The Silent lets a guarded hand relax at a campfire,then makes a
+small look toward the climb. Candidate fiction,not accepted history,an HP effect
+or a runtime replacement.
 
-<img src="story.gif" width="480" alt="The Silent rests by a campfire,relaxes her hand,and looks toward an ascending stone path" />
+<img src="story-r1.gif" width="480" alt="The Silent relaxes her supported hand and makes a small look toward the path,with both horn contours inside the frame" />
 
-[Open the responsive review](index.html) · [Assembled native GIF](story.gif) ·
-[Let Go original](chapter-1.gif) · [Again original](chapter-2.gif) ·
+[Responsive review](index.html) · [Revised assembled GIF](story-r1.gif) ·
+[Let Go original](chapter-1.gif) · [Again framing correction](chapter-2-r1.gif) ·
+[Clipped Again original](chapter-2.gif) · [First assembly with hold](story.gif) ·
 [Original SVG](reference.svg)
 
-The joined GIF has32 original300ms frames,9.6s,assembled locally from two16-frame
-API outputs. Source pixels/timing are preserved exactly;the cut still has pose
-and texture drift. Late chapter-two horn tips clip the top edge. No frames were
-removed or hidden,and no seamless or fully-in-frame claim is made.
+Both assemblies contain32 original300ms frames,9.6s each,with exact respective
+source pixels/timing. The revised ending has approximately15–19px horn clearance
+in all16 frames. It keeps seated body scale and hand/knee support;the gesture
+is quieter than the original rise. Pose/texture drift at the cut remains.No
+seamless,fixed-geometry or user-acceptance claim.
 
-<img src="compact.png" width="640" alt="Opening,relaxed endpoint,second chapter start,and ending with its actual horn-framing limitation" />
+<img src="compact-r1.png" width="320" alt="Original clipped ending on the left and revised full-horn ending on the right" />
 
-Three calls cost an estimated**$0.234239**. Native SVG/GIF originals,two exact
-sent PNG inputs and one compact comparison remain;all other frame inspections
-are temporary. Exact prompts/settings/responses/usage and lineage are normalized
-in `calls/`,`references.json` and `animation.json`,not a permanent PNG catalogue.
+The original chapter crops horn tips at frames5–6 and9–15. Its GIF,first joined
+assembly and [original comparison](compact.png) remain unchanged;no failed
+frames are removed or hidden. [Review](review.md) records the before/after and
+independent assessment.
 
-[Story grounding and proposal](brief.md) · [Observed review and holds](review.md) ·
-[Checks](validation.json) · [Staged source-only import](history-import.json)
+Four calls cost an estimated**$0.297804**. Native SVG/GIF originals,two exact
+sent PNG inputs and two selected compact comparisons remain;other frame review
+outputs are temporary. Exact prompts/settings/responses/usage and lineage live
+once per call/shared record,not a permanent PNG catalogue.
+
+[Grounding and original proposal](brief.md) · [Checks](validation.json) ·
+[Staged source-only import](history-import.json)
 
 The HTML uses native GIF playback once and an SVG for reduced motion. Shared
-gallery Stop/Play after the nonlooping ending has a known restart limitation;
-this package does not fix it or claim true pause/seek. Central registration and
-visual framing correction remain draft blockers. Existing game defaults stay
-unchanged;technical checks do not establish acceptance.
+gallery Stop/Play after a nonlooping ending has a known restart limitation;this
+package does not fix it or claim true pause/seek. Central registration remains
+pending. Existing game defaults stay unchanged;technical/author checks do not
+establish user acceptance.

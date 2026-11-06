@@ -30,7 +30,7 @@ for overlap. This is a Silent campfire rest vignette,not their material suite,
 the Night Passage lantern sacrifice,Cartographer tile rotation,Hearth hospitality
 or held Scrapyard repair. No new named character or canonical history.
 
-## Storyboard and continuity
+## Original storyboard and continuity
 
 Locked landscape waist-up three-quarter view. Silent sits supported on a broad
 stone at the left; one bent knee supports one gloved hand,curled at the opening.
@@ -78,3 +78,8 @@ mobile/enlarged text,reduced-motion still and isolated source gallery/import.
 Temporary frame/contact-sheet inspection is not committed. A joined GIF is a
 clearly labelled local derivative,not generated seamless continuity. No runtime
 consumer,selection,canon acceptance or shared registry writes by this worker.
+
+The initial second chapter clipped horn tips during its larger rise. A separate
+scoped grant09 produced one smaller mask-turn correction with steady torso
+height/scale. Both originals and distinct assemblies remain;see review.md for
+observed15–19px revised clearance and the unchanged shared replay limitation.

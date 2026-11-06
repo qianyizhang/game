@@ -1,12 +1,13 @@
 {
   "svg": "Passed production validateSvg;1280x896,98leaf shapes,13groups. Native/compact subject,hand/knee support and fire gap reviewed.",
-  "gif": "Two exact originals,16frames each,480x336,300ms each. All32 composed RGBA frames inspected temporarily;extracted PNGs match source GIF compositions.",
-  "assembly": "All32 source RGBA frames/timings exact in local9.6s once-through GIF;original looping/C2PA bytes unchanged. Compact panel append verified.",
-  "visual": "Coherent hand-release then raised-mask arc;pose/texture drift at cut. Ending horn tips clip top edge;presentation HOLD,no full-frame safety pass.",
-  "independent_review": "Read-only second worker verified originals,all32 RGBA frame digests,endpoint lineage and coherent gestures;confirmed horn clipping at chapter2frames5-6,9-15.",
+  "gif": "Three exact API GIF originals,16frames each,480x336,300ms each. All48 composed RGBA frames inspected temporarily and matching temporary PNGs;no committed frame catalogue.",
+  "assembly": "Original and revised32-frame9.6s local GIFs separately preserve their respective source RGBA/timing exactly. Original sources,C2PA and first assembly unchanged. Both compact append pixel checks passed.",
+  "visual": "Original ending framing HOLD remains documented. Revised ending keeps both full horns in frame,approximately15-19px clearance;stable seated scale/hand-knee support,smaller look toward path. Cut/render drift remains;not user acceptance.",
+  "independent_review": "Read-only second worker verified correction hash,all16 frame digests/timing and unchanged old GIF/assembly;confirmed full contours15-19px,stable anatomy/support and no new material defect. Gesture is subtle,not a raised posture or proved breath.",
   "browser": "Passed loopback Chromium native once-through9.6s playback and actual ending review;390/320px enlarged text,reduced-motion SVG,local links,no page errors/external requests,no false pause/seek controls. Screenshots temporary;not frame-exact compositor equality or shared replay proof.",
-  "gallery": "Passed production isolated import/verify and four unassigned source-study cards;canonical calls/assembly inspected,native initial GIF playback,0selections,no runtime actions. Baseline library unchanged;publication390/320px enlarged-text gallery passed. Shared nonlooping replay is not claimed.",
+  "gallery": "Passed production isolated import/verify and six unassigned source-study cards with original hold and distinct correction/assembly;canonical calls/assembly inspected,native initial GIF playback,0selections,no runtime actions. Baseline library unchanged;revised publication390/320px enlarged-text gallery passed. Shared nonlooping replay is not claimed.",
   "replay_limit": "Known shared gallery Stop/Play restart issue after nonlooping joined GIF ends;no shared fix or guaranteed replay claimed.",
-  "maintenance": "Passed full format:maintenance at publication tree,scoped format/diff and local links. No game/shared-gallery/runtime code changed;hosted CI reported separately.",
-  "boundary_check": "Native bone-pixel check in horn-only x140-299 confirms top intersection at frames5-6,9-15 and only1px threshold clearance at7-8;visual check confirms real late horn cropping,not proximity."
+  "maintenance": "Passed full format:maintenance and focused format/diff/link checks at revised publication tree. Source/runtime/shared-gallery code unchanged;hosted exact-head CI reported separately.",
+  "boundary_check": "Original top intersection frames5-6,9-15 retained. Revised bright-horn region x140-299 gives minimum15px in all16;native full-contour visual review independently agrees. Temporary per-frame measurement only.",
+  "browser_r1": "Passed loopback Chromium native once-through9.6s playback and actual ending review;390/320px enlarged text,reduced-motion SVG,local links,no page errors/external requests,no false pause/seek controls. Screenshots temporary;not frame-exact compositor equality or shared replay proof."
 }
