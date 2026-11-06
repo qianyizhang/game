@@ -1,0 +1,23 @@
+[
+  {
+    "id": "floor-tile",
+    "width": 40,
+    "height": 40,
+    "index": 0,
+    "cell": 384
+  },
+  {
+    "id": "boundary-strip",
+    "width": 40,
+    "height": 10,
+    "index": 1,
+    "cell": 384
+  },
+  {
+    "id": "corner-join",
+    "width": 10,
+    "height": 10,
+    "index": 2,
+    "cell": 384
+  }
+]

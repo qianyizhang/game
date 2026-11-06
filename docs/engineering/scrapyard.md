@@ -49,7 +49,12 @@ Coincident positions use deterministic ID-based directions without consuming
 RNG. The final grid serves targeting and friendly swept collision. Hostile
 bullets use swept collision against the player. Friendly and hostile limits are
 separate, so enemy fire cannot starve player weapons. Content owns the numeric
-parameters. No 3D animation or elaborate effects are implemented.
+parameters. The initial [SVG suite](../art/assets/scrapyard-suite/README.md) supplies cached
+actor/mark sprites, equipment/shop symbols and quiet arena materials. Presentation
+adds at most one confirmed-hit cue and one combat-collection cue, coalesced and
+expired by ticks; import/reset, wave changes and shop transitions clear them.
+Reduced motion retains the existing invulnerability flash. No 3D animation,
+particle simulation or runtime API is involved.
 
 ## Verification
 

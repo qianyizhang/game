@@ -4,6 +4,7 @@ import { World, restore, type View } from '../domain/world';
 import { createRenderer } from './renderer';
 import { createClock } from './clock';
 import './scrapyard.css';
+import { ScrapArt } from './Artwork';
 
 /** Copy only display values; the renderer borrows the world's full view. */
 function display(state: View) {
@@ -57,7 +58,20 @@ export default function ScrapyardApp() {
       setError(String(cause));
       return;
     }
-    setReady(true);
+    let active = true;
+    let artworkReady = !presentation.ready;
+    setReady(artworkReady);
+    presentation.ready?.then(
+      () => {
+        if (active) {
+          artworkReady = true;
+          setReady(true);
+        }
+      },
+      (cause) => {
+        if (active) setError(String(cause));
+      },
+    );
     let request = 0,
       lastHud = 0;
     const clock = createClock();
@@ -88,7 +102,7 @@ export default function ScrapyardApp() {
     const frame = (now: number) => {
       const s = world.current.view,
         phase = s.phase;
-      const ticks = clock(now, !paused.current && phase === 'combat');
+      const ticks = clock(now, artworkReady && !paused.current && phase === 'combat');
       if (ticks) {
         const held = heldKeys;
         const failure = world.current.dispatch({
@@ -119,6 +133,7 @@ export default function ScrapyardApp() {
     window.addEventListener('blur', stop);
     document.addEventListener('visibilitychange', visibility);
     return () => {
+      active = false;
       cancelAnimationFrame(request);
       heldKeys.clear();
       imports.value++;
@@ -250,6 +265,15 @@ export default function ScrapyardApp() {
                           }
                           onClick={() => act({ type: 'buy', item: id })}
                         >
+                          <ScrapArt
+                            id={
+                              id === 'damage'
+                                ? 'hotter-rounds'
+                                : id === 'speed'
+                                  ? 'better-boots'
+                                  : 'field-repair'
+                            }
+                          />
                           <strong>{SHOP[id].name}</strong>
                           <span>{SHOP[id].detail}</span>
                           <b>{view.purchased.includes(id) ? 'Bought' : `${SHOP[id].cost} scrap`}</b>
@@ -303,21 +327,27 @@ export default function ScrapyardApp() {
             <p className="scrap-eyebrow">YOUR LOADOUT</p>
             <h2>Scrap-built firepower</h2>
             <div className="scrap-loadout">
-              <span>|||</span>
+              <span>
+                <ScrapArt id="rivet-gun" />
+              </span>
               <div>
                 <strong>3 × Rivet gun</strong>
                 <p>Fast, focused fire</p>
               </div>
             </div>
             <div className="scrap-loadout">
-              <span>⋔</span>
+              <span>
+                <ScrapArt id="scattergun" />
+              </span>
               <div>
                 <strong>2 × Scattergun</strong>
                 <p>Three-round spread</p>
               </div>
             </div>
             <div className="scrap-loadout">
-              <span>●</span>
+              <span>
+                <ScrapArt id="scrap-cannon" />
+              </span>
               <div>
                 <strong>1 × Scrap cannon</strong>
                 <p>Slow, heavy rounds</p>

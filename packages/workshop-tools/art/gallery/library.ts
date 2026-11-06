@@ -31,7 +31,8 @@ export const GAME_COLLECTIONS = [
   {
     id: 'scrapyard',
     name: 'Scrapyard',
-    scope: 'A fixed scene from the separate Canvas prototype. No standalone SVG collection.',
+    scope:
+      'Twenty native SVG sources, cached Canvas sprites and bounded hit/pickup cues; generated source sheets remain in WIP.',
   },
 ] as const;
 
@@ -268,8 +269,97 @@ export interface BatchProposal {
   };
 }
 
+const SCRAPYARD_BATCHES = [
+  {
+    family: 'actors',
+    title: 'Five actor silhouettes',
+    reason:
+      'Replaces shared circular bodies with five distinct contours, preserving aimed state overlays.',
+    subjects: ['survivor', 'drifter', 'runner', 'brute', 'spitter'],
+  },
+  {
+    family: 'equipment',
+    title: 'Equipment and shop tools',
+    reason: 'Replaces text glyphs with named salvage tools while HTML retains controls and prices.',
+    subjects: [
+      'rivet-gun',
+      'scattergun',
+      'scrap-cannon',
+      'hotter-rounds',
+      'better-boots',
+      'field-repair',
+    ],
+  },
+  {
+    family: 'combat',
+    title: 'Combat marks and bounded VFX',
+    reason:
+      'Keeps tiny mark footprints and adds confirmed hit/collection cues with bounded lifetimes.',
+    subjects: [
+      'light-round',
+      'heavy-round',
+      'hostile-diamond',
+      'scrap-pickup',
+      'player-hit',
+      'scrap-sparkle',
+    ],
+  },
+  {
+    family: 'arena',
+    title: 'Quiet arena materials',
+    reason:
+      'Composes a 35% material layer over the original dark floor and keeps the inset boundary cue.',
+    subjects: ['floor-tile', 'boundary-strip', 'corner-join'],
+  },
+];
+
 /** Proposed and retained batches. Generation agreement and artwork acceptance are separate. */
 export const WIP_BATCHES: BatchProposal[] = [
+  ...SCRAPYARD_BATCHES.map(({ family, title, reason, subjects }): BatchProposal => {
+    const folder = `docs/art/assets/scrapyard-suite/${family}`;
+    return {
+      id: `scrapyard-${family}`,
+      state: 'Generated · awaiting review',
+      game: 'scrapyard',
+      title,
+      reason,
+      candidates: [],
+      reference:
+        'Worn steel, cloth and forest ink; three values, cream upper-left light and existing role accents.',
+      deliverables: `${subjects.length} extracted native SVG sources; editable local adaptation and matched native/phone review.`,
+      requests: [
+        {
+          format: 'SVG',
+          plan: `One Image 2.6 Sunburst native SVG sheet, 1152×768, named 384px cells for ${family}. Terra SVG author, low reasoning.`,
+        },
+      ],
+      stop: 'Generation complete. No artwork rerolls or revisions used. The shared US$5 cap includes all four families; publication and user acceptance remain pending.',
+      acceptance: [
+        'Technical XML/resource validation and standalone decoding.',
+        'Review every source at actual logical and 390px phone scale.',
+        'Matched sparse and 100/300/500-enemy comparisons; preserve collision geometry and state-driven overlays.',
+        'Separate application/browser/performance evidence from author visual review.',
+      ],
+      record: 'docs/art/assets/scrapyard-suite/README.md',
+      study: {
+        summary:
+          'Locally integrated for review. Native source originals, prompts and usage are preserved; no published runtime change or user visual acceptance is implied.',
+        sheet: `${folder}/sheet.svg`,
+        subjects: subjects.map((id) => ({
+          title: id.replaceAll('-', ' '),
+          tiers: [{ label: 'Source candidate · local adaptation', file: `${folder}/${id}.svg` }],
+        })),
+        attachments: [
+          'prompt.md',
+          'request.json',
+          'response.json',
+          'cells.json',
+          'extraction.json',
+          'review.png',
+        ].map((name) => `${folder}/${name}`),
+      },
+    };
+  }),
   {
     id: 'hearth-refinement-04',
     game: 'hearth',

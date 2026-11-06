@@ -19,6 +19,9 @@ test('gallery selections reach the real game, survive reload, and removal preser
 }, info) => {
   const root = process.cwd();
   const previous = readHistory(root).selections['hearth/cub']?.revision ?? null;
+  const previousAsset = readHistory(root).history.assets.find(
+    (asset) => asset.id === 'hearth/cub',
+  )!;
   const id = 'browser-removal-fixture';
   let checkpoint: { revisions: string[]; attempt?: string } = { revisions: [] };
   const file = `${MANAGED_PATH}/browser-removal-fixture/unused.svg`;
@@ -130,6 +133,12 @@ test('gallery selections reach the real game, survive reload, and removal preser
       removeRevision(root, readHistory(root).version, id);
     if (readHistory(root).history.attempts.some((attempt) => attempt.id === id))
       removeAttempt(root, readHistory(root).version, id);
+    importHistory(root, readHistory(root).version, {
+      schema: 1,
+      assets: [previousAsset],
+      attempts: [],
+      revisions: [],
+    });
   }
 });
 
@@ -184,4 +193,92 @@ test('offline gallery history embeds artwork and settings without offering write
   // The export is also directly openable from disk; it is not tied to the preview route.
   await page.goto(pathToFileURL(resolve(output, 'history.html')).href + '#asset=hearth%2Fcub');
   await expect(page.getByRole('heading', { name: 'Briar Cub', exact: true })).toBeVisible();
+});
+
+test('Scrapyard uses selected vectors in cached Canvas sprites and reports decode failures', async ({
+  page,
+}) => {
+  const root = process.cwd();
+  const assets = ['survivor', 'floor-tile'] as const;
+  const previous = Object.fromEntries(
+    assets.map((id) => [id, readHistory(root).selections[`scrapyard/${id}`]?.revision ?? null]),
+  );
+  const attempt = 'browser-scrapyard-selection';
+  const revisions = assets.map((id) => {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${id === 'survivor' ? '26 32' : '40 40'}"><path fill="${id === 'survivor' ? '#ff00ff' : '#00ffff'}" d="M0 0h40v40H0Z"/></svg>`;
+    const file = `${MANAGED_PATH}/${attempt}/${id}.svg`;
+    mkdirSync(resolve(root, MANAGED_PATH, attempt), { recursive: true });
+    writeFileSync(resolve(root, file), svg);
+    return {
+      id: `${attempt}/${id}`,
+      asset: `scrapyard/${id}`,
+      attempt,
+      label: `Canvas fixture ${id}`,
+      file,
+      digest: digest(svg),
+      runtimeFile: file,
+      runtimeDigest: digest(svg),
+      parents: [],
+      notes: 'Temporary Canvas selection fixture.',
+    };
+  });
+  importHistory(root, readHistory(root).version, {
+    schema: 1,
+    assets: [],
+    attempts: [
+      {
+        id: attempt,
+        title: 'Canvas selection fixture',
+        date: 'unknown',
+        outcome: 'manual',
+        files: [],
+        notes: 'Temporary browser fixture.',
+      },
+    ],
+    revisions,
+  });
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  try {
+    useRevision(root, readHistory(root).version, 'scrapyard/floor-tile', revisions[1].id);
+    await page.goto('/__art/#asset=scrapyard%2Fsurvivor');
+    const candidate = page
+      .locator('.revision')
+      .filter({ has: page.getByRole('heading', { name: 'Canvas fixture survivor', exact: true }) });
+    await candidate.getByRole('button', { name: 'Use in game', exact: true }).click();
+    await expect(candidate.getByText('In game · canonical')).toBeVisible();
+    await page.goto('/?prototype=scrapyard');
+    await expect(page.getByRole('button', { name: 'Start run', exact: true })).toBeEnabled();
+    await page.getByRole('button', { name: 'Start run', exact: true }).click();
+    const pixels = () =>
+      page.locator('canvas').evaluate((node) => {
+        const canvas = node as HTMLCanvasElement;
+        const bytes = canvas.getContext('2d')!.getImageData(0, 0, canvas.width, canvas.height).data;
+        let actor = 0,
+          floor = 0;
+        for (let i = 0; i < bytes.length; i += 4) {
+          if (bytes[i] > 240 && bytes[i + 1] < 10 && bytes[i + 2] > 240) actor++;
+          if (bytes[i] < 40 && bytes[i + 1] > 90 && bytes[i + 2] > 90) floor++;
+        }
+        return { actor, floor };
+      });
+    await expect.poll(async () => (await pixels()).actor).toBeGreaterThan(10);
+    await expect.poll(async () => (await pixels()).floor).toBeGreaterThan(1000);
+    await page.reload();
+    await page.getByRole('button', { name: 'Start run', exact: true }).click();
+    await expect.poll(async () => (await pixels()).actor).toBeGreaterThan(10);
+    await page.addInitScript(() => {
+      HTMLImageElement.prototype.decode = () => Promise.reject(new Error('Fixture decode failure'));
+    });
+    await page.reload();
+    await expect(page.getByRole('alert')).toContainText('Selected artwork could not be decoded');
+    await expect(page.getByRole('button', { name: 'Start run', exact: true })).toBeDisabled();
+    await expect(page.locator('canvas')).toHaveAttribute('data-tick', '0');
+    expect(errors).toEqual([]);
+  } finally {
+    for (const id of assets)
+      useRevision(root, readHistory(root).version, `scrapyard/${id}`, previous[id]);
+    for (const revision of revisions) removeRevision(root, readHistory(root).version, revision.id);
+    removeAttempt(root, readHistory(root).version, attempt);
+  }
 });

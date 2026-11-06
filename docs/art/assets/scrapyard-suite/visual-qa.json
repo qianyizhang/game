@@ -1,0 +1,57 @@
+{
+  "figures": [
+    {
+      "density": 100,
+      "name": "before",
+      "enemyCount": 100,
+      "hostileShots": 558,
+      "pickups": 3,
+      "hp": 88
+    },
+    {
+      "density": 100,
+      "name": "after",
+      "enemyCount": 100,
+      "hostileShots": 558,
+      "pickups": 3,
+      "hp": 88
+    },
+    {
+      "density": 300,
+      "name": "before",
+      "enemyCount": 300,
+      "hostileShots": 1453,
+      "pickups": 4,
+      "hp": 84
+    },
+    {
+      "density": 300,
+      "name": "after",
+      "enemyCount": 300,
+      "hostileShots": 1453,
+      "pickups": 4,
+      "hp": 84
+    },
+    {
+      "density": 500,
+      "name": "before",
+      "enemyCount": 500,
+      "hostileShots": 2469,
+      "pickups": 3,
+      "hp": 84
+    },
+    {
+      "density": 500,
+      "name": "after",
+      "enemyCount": 500,
+      "hostileShots": 2469,
+      "pickups": 3,
+      "hp": 84
+    }
+  ],
+  "adaptedCount": 20,
+  "errors": [],
+  "browser": "157.0.8103.38",
+  "viewportPhone": 390,
+  "dpr": 1
+}

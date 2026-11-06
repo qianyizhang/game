@@ -24,7 +24,9 @@ text; writes require the local gallery.
   default for that slot. Refresh the game or rebuild production to see it.
   Select an older revision to roll back. **Use editable source** removes the pin.
   The renderer retains sizing, HTML labels, stats and gameplay state; the selected
-  SVG supplies only artwork. Shared primitives and playing-card interiors use
+  SVG supplies only artwork. Canvas SVG consumers decode a selection once into
+  their sprite cache before play; failures keep the game unready with an error.
+  Shared primitives and playing-card interiors use
   their actual runtime dimensions rather than their framed cabinet specimens.
 - Generation agreement, an author's review and user acceptance remain historical
   facts. A selection records what the game uses, without rewriting those facts.

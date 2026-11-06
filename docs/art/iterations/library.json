@@ -6201,6 +6201,186 @@
       "height": 100,
       "sourceDigest": "bc014219d069b46a34c4b73a69556b3bb43bc18e5b7409ba8b62fd8dee1c10cd",
       "sourceRevision": "95c35f6176bff4436cf1add16dcb1e8ebda36d4d"
+    },
+    {
+      "id": "scrapyard/survivor",
+      "name": "survivor",
+      "group": "Scrapyard · actors",
+      "width": 26,
+      "height": 32,
+      "sourceDigest": "4a449308a50822ffb060619784175ef755c6267038bd0b7ad647dd39752ddf35",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/drifter",
+      "name": "drifter",
+      "group": "Scrapyard · actors",
+      "width": 20,
+      "height": 20,
+      "sourceDigest": "ae073f416c355c9af7ac17ede4ce223f17ef69cbb2051efd963030b7c42cc07e",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/runner",
+      "name": "runner",
+      "group": "Scrapyard · actors",
+      "width": 20,
+      "height": 20,
+      "sourceDigest": "6fbd3c86611c3a40dde4100188f36053d10042291718269eadc33d824bf3de47",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/brute",
+      "name": "brute",
+      "group": "Scrapyard · actors",
+      "width": 30,
+      "height": 30,
+      "sourceDigest": "ef5b5d34e8ff6f80363f5f81f507e704a21f1483b9754352c224b001da717388",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/spitter",
+      "name": "spitter",
+      "group": "Scrapyard · actors",
+      "width": 24,
+      "height": 24,
+      "sourceDigest": "8cf43a0e72860a8aba95279ebec13fc926e16412c3b1a4d718db875607eb88f1",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/rivet-gun",
+      "name": "rivet gun",
+      "group": "Scrapyard · equipment",
+      "width": 38,
+      "height": 38,
+      "sourceDigest": "7d0885bce37c0ffa7ed3de3a14cb9e7f09b895373d4b49a285a239c7f47dd6a1",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/scattergun",
+      "name": "scattergun",
+      "group": "Scrapyard · equipment",
+      "width": 38,
+      "height": 38,
+      "sourceDigest": "9bcf70d4866a95e97ca10941eceaf91cda3ac817c51693628bfdbc10264470dd",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/scrap-cannon",
+      "name": "scrap cannon",
+      "group": "Scrapyard · equipment",
+      "width": 38,
+      "height": 38,
+      "sourceDigest": "565c5116a5a0cfcf802527d62c45641dbc25816e015b1d31f9b8aa1fc2ba91fe",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/hotter-rounds",
+      "name": "hotter rounds",
+      "group": "Scrapyard · equipment",
+      "width": 24,
+      "height": 24,
+      "sourceDigest": "2f6fa28bdf434b8a1770147b2bf93fb037c7ba1d97726a8cb6de18a16b0f3eda",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/better-boots",
+      "name": "better boots",
+      "group": "Scrapyard · equipment",
+      "width": 24,
+      "height": 24,
+      "sourceDigest": "1402ba9f158d1f4272f04d5b856b9e74c250345fa7043e624bd5e3beea73888b",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/field-repair",
+      "name": "field repair",
+      "group": "Scrapyard · equipment",
+      "width": 24,
+      "height": 24,
+      "sourceDigest": "7f63356e504463b7d7e9714b46b703116c408455fa91240ed3453fe690008db2",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/light-round",
+      "name": "light round",
+      "group": "Scrapyard · combat",
+      "width": 6,
+      "height": 6,
+      "sourceDigest": "93acd2c8cf5ca4a0136083cc75bb65b4fcd77e6b647f91a32c7049392e741d9b",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/heavy-round",
+      "name": "heavy round",
+      "group": "Scrapyard · combat",
+      "width": 14,
+      "height": 14,
+      "sourceDigest": "328ce49d40df54c20c4cc754e1770666f0dc491042a0464992d8fec6232038d2",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/hostile-diamond",
+      "name": "hostile diamond",
+      "group": "Scrapyard · combat",
+      "width": 8,
+      "height": 8,
+      "sourceDigest": "ff4025867915a6781f106e1622cb0982de93a71cedf8e647ae74a4643f6cc120",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/scrap-pickup",
+      "name": "scrap pickup",
+      "group": "Scrapyard · combat",
+      "width": 8,
+      "height": 8,
+      "sourceDigest": "3a20eb6d7849a6e531adc7a4b653d2014e87d1f1605d6b31377afc74bde86b88",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/player-hit",
+      "name": "player hit",
+      "group": "Scrapyard · combat",
+      "width": 48,
+      "height": 48,
+      "sourceDigest": "a8f666d7d5787ba47202f73c96e98cfb2fd5b30d1ba29a062cbb49ba37f356b2",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/scrap-sparkle",
+      "name": "scrap sparkle",
+      "group": "Scrapyard · combat",
+      "width": 20,
+      "height": 20,
+      "sourceDigest": "2f7ea906db4b9cf147db13f08e9f10c604facdb4a9ac7eef2917d1618049b000",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/floor-tile",
+      "name": "floor tile",
+      "group": "Scrapyard · arena",
+      "width": 40,
+      "height": 40,
+      "sourceDigest": "cb2987a319fce593c82533e6933bcb31198e4c0e408beab5dbced3db98881cf1",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/boundary-strip",
+      "name": "boundary strip",
+      "group": "Scrapyard · arena",
+      "width": 40,
+      "height": 10,
+      "sourceDigest": "e193d048c352c8251cb721c6e9a7aabfff349a0dee0bd719819475a4d4086889",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
+    },
+    {
+      "id": "scrapyard/corner-join",
+      "name": "corner join",
+      "group": "Scrapyard · arena",
+      "width": 10,
+      "height": 10,
+      "sourceDigest": "1392f9716755522ca5148601fb5928886d55662dfa6245dbc5bde097809d0a56",
+      "sourceRevision": "5e26f4aace8c151a15122f6a62195b81b9a39c7e"
     }
   ],
   "attempts": [
@@ -6388,6 +6568,94 @@
       "files": [
         "docs/art/assets/hearth-refinement/imp-r2-request.json",
         "docs/art/assets/hearth-refinement/imp-r2-error.json"
+      ]
+    },
+    {
+      "id": "scrapyard-suite/actors",
+      "title": "Scrapyard actors packed source",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Exact original request, result, usage and extraction retained from PR #136. Usage-derived costs are estimates, not verified billing. No new generation during gallery migration.",
+      "files": [
+        "docs/art/assets/scrapyard-suite/actors/prompt.md",
+        "docs/art/assets/scrapyard-suite/actors/request.json",
+        "docs/art/assets/scrapyard-suite/actors/response.json",
+        "docs/art/assets/scrapyard-suite/actors/cells.json",
+        "docs/art/assets/scrapyard-suite/actors/extraction.json",
+        "docs/art/assets/scrapyard-suite/actors/review.png",
+        "docs/art/assets/scrapyard-suite/spend-ledger.json"
+      ]
+    },
+    {
+      "id": "scrapyard-suite/equipment",
+      "title": "Scrapyard equipment packed source",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Exact original request, result, usage and extraction retained from PR #136. Usage-derived costs are estimates, not verified billing. No new generation during gallery migration.",
+      "files": [
+        "docs/art/assets/scrapyard-suite/equipment/prompt.md",
+        "docs/art/assets/scrapyard-suite/equipment/request.json",
+        "docs/art/assets/scrapyard-suite/equipment/response.json",
+        "docs/art/assets/scrapyard-suite/equipment/cells.json",
+        "docs/art/assets/scrapyard-suite/equipment/extraction.json",
+        "docs/art/assets/scrapyard-suite/equipment/review.png",
+        "docs/art/assets/scrapyard-suite/spend-ledger.json"
+      ]
+    },
+    {
+      "id": "scrapyard-suite/combat",
+      "title": "Scrapyard combat packed source",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Exact original request, result, usage and extraction retained from PR #136. Usage-derived costs are estimates, not verified billing. No new generation during gallery migration.",
+      "files": [
+        "docs/art/assets/scrapyard-suite/combat/prompt.md",
+        "docs/art/assets/scrapyard-suite/combat/request.json",
+        "docs/art/assets/scrapyard-suite/combat/response.json",
+        "docs/art/assets/scrapyard-suite/combat/cells.json",
+        "docs/art/assets/scrapyard-suite/combat/extraction.json",
+        "docs/art/assets/scrapyard-suite/combat/review.png",
+        "docs/art/assets/scrapyard-suite/spend-ledger.json"
+      ]
+    },
+    {
+      "id": "scrapyard-suite/arena",
+      "title": "Scrapyard arena packed source",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Exact original request, result, usage and extraction retained from PR #136. Usage-derived costs are estimates, not verified billing. No new generation during gallery migration.",
+      "files": [
+        "docs/art/assets/scrapyard-suite/arena/prompt.md",
+        "docs/art/assets/scrapyard-suite/arena/request.json",
+        "docs/art/assets/scrapyard-suite/arena/response.json",
+        "docs/art/assets/scrapyard-suite/arena/cells.json",
+        "docs/art/assets/scrapyard-suite/arena/extraction.json",
+        "docs/art/assets/scrapyard-suite/arena/review.png",
+        "docs/art/assets/scrapyard-suite/spend-ledger.json"
+      ]
+    },
+    {
+      "id": "scrapyard-suite/invalid-size",
+      "title": "Scrapyard actors rejected size request",
+      "date": "2026-11-06",
+      "outcome": "failed",
+      "notes": "HTTP 400 validation rejection. No artwork or usage returned; request ID and raw error body were not retained. See original ledger for estimate and billing limitations.",
+      "files": [
+        "docs/art/assets/scrapyard-suite/actors/invalid-size-request.json",
+        "docs/art/assets/scrapyard-suite/spend-ledger.json"
+      ]
+    },
+    {
+      "id": "scrapyard-suite/adaptation",
+      "title": "Scrapyard native-size manual adaptation",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "Existing reviewed native-size path geometry, paint normalization and tight fit from PR #136, source 5e26f4a. Current slots render this canonical source live; each source cell links to its packed sheet. Pre-edit checkpoints are required for future changes. No unchanged catalogue export was created. Registration includes the current selection wrapper attributes; geometry is unchanged from that source base.",
+      "files": [
+        "docs/art/assets/scrapyard-suite/adaptation.json",
+        "src/games/scrapyard/ui/art-data.ts",
+        "docs/art/assets/scrapyard-suite/visual-qa.json",
+        "docs/art/assets/scrapyard-suite/technical-qa.json"
       ]
     }
   ],
@@ -7223,6 +7491,334 @@
       "runtimeFile": "docs/art/assets/spire-image-2.6/sentinel.svg",
       "runtimeDigest": "2f446466f23e07c5ed3972df3b5974df38c2bc5887abcf92d2a7f99742cae182",
       "notes": "Retained original or derivative; its historical record owns review and generation facts."
+    },
+    {
+      "id": "scrapyard-suite/actors/sheet",
+      "asset": null,
+      "attempt": "scrapyard-suite/actors",
+      "label": "sheet",
+      "file": "docs/art/assets/scrapyard-suite/actors/sheet.svg",
+      "digest": "d22a25310d840e17c825242325d80596939310f0bca9c2cd26c9bb24ee3aa3e7",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original packed sheet; source study rather than a game delivery."
+    },
+    {
+      "id": "scrapyard-suite/actors/survivor",
+      "asset": "scrapyard/survivor",
+      "attempt": "scrapyard-suite/actors",
+      "label": "survivor",
+      "file": "docs/art/assets/scrapyard-suite/actors/survivor.svg",
+      "digest": "bc9f7d440a8ae1ebd468a5329ee4a5f772a14a211f30fb526b0ce8e3b811056c",
+      "parents": [
+        "scrapyard-suite/actors/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 0; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/actors/drifter",
+      "asset": "scrapyard/drifter",
+      "attempt": "scrapyard-suite/actors",
+      "label": "drifter",
+      "file": "docs/art/assets/scrapyard-suite/actors/drifter.svg",
+      "digest": "d7ebc75c92535416987238b7f1c63b3d5ad696de2f1cfee94ff98b9718a4bee3",
+      "parents": [
+        "scrapyard-suite/actors/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 1; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/actors/runner",
+      "asset": "scrapyard/runner",
+      "attempt": "scrapyard-suite/actors",
+      "label": "runner",
+      "file": "docs/art/assets/scrapyard-suite/actors/runner.svg",
+      "digest": "42b4068ed347bca9ddf5d0b221f64b479799f7903ea8a0b0f348b240563e5369",
+      "parents": [
+        "scrapyard-suite/actors/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/actors/brute",
+      "asset": "scrapyard/brute",
+      "attempt": "scrapyard-suite/actors",
+      "label": "brute",
+      "file": "docs/art/assets/scrapyard-suite/actors/brute.svg",
+      "digest": "45c0b362b3567e358ef0350ea136a9f14fedcf9ba767cefd725583cdba46a8cc",
+      "parents": [
+        "scrapyard-suite/actors/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 3; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/actors/spitter",
+      "asset": "scrapyard/spitter",
+      "attempt": "scrapyard-suite/actors",
+      "label": "spitter",
+      "file": "docs/art/assets/scrapyard-suite/actors/spitter.svg",
+      "digest": "b75a5395f2c96a1193ad84abe5399c0ef79fbf40fac73d8f532e6e07e90fca77",
+      "parents": [
+        "scrapyard-suite/actors/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 4; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/equipment/sheet",
+      "asset": null,
+      "attempt": "scrapyard-suite/equipment",
+      "label": "sheet",
+      "file": "docs/art/assets/scrapyard-suite/equipment/sheet.svg",
+      "digest": "5f0932da33b9b5d3ee2635bcf94d0b21f42403772554cbc493a1dd1fd605e899",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original packed sheet; source study rather than a game delivery."
+    },
+    {
+      "id": "scrapyard-suite/equipment/rivet-gun",
+      "asset": "scrapyard/rivet-gun",
+      "attempt": "scrapyard-suite/equipment",
+      "label": "rivet-gun",
+      "file": "docs/art/assets/scrapyard-suite/equipment/rivet-gun.svg",
+      "digest": "07aa4a92268327e95693ced3b6303868be8b363783150e25c03bcba610317622",
+      "parents": [
+        "scrapyard-suite/equipment/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 0; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/equipment/scattergun",
+      "asset": "scrapyard/scattergun",
+      "attempt": "scrapyard-suite/equipment",
+      "label": "scattergun",
+      "file": "docs/art/assets/scrapyard-suite/equipment/scattergun.svg",
+      "digest": "ec041a5d331ae8e36eb988283217fcea2059fc7d8bb072eb926ff0bdff10ba09",
+      "parents": [
+        "scrapyard-suite/equipment/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 1; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/equipment/scrap-cannon",
+      "asset": "scrapyard/scrap-cannon",
+      "attempt": "scrapyard-suite/equipment",
+      "label": "scrap-cannon",
+      "file": "docs/art/assets/scrapyard-suite/equipment/scrap-cannon.svg",
+      "digest": "4c2e3f09a4be3b45402f820949641285d514a7ec5ebddd8851920ac22f01c33b",
+      "parents": [
+        "scrapyard-suite/equipment/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/equipment/hotter-rounds",
+      "asset": "scrapyard/hotter-rounds",
+      "attempt": "scrapyard-suite/equipment",
+      "label": "hotter-rounds",
+      "file": "docs/art/assets/scrapyard-suite/equipment/hotter-rounds.svg",
+      "digest": "d91dbe155643eec2777ac4d1d6f9b0ace931c96bea80aa21729e46d023fb36fd",
+      "parents": [
+        "scrapyard-suite/equipment/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 3; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/equipment/better-boots",
+      "asset": "scrapyard/better-boots",
+      "attempt": "scrapyard-suite/equipment",
+      "label": "better-boots",
+      "file": "docs/art/assets/scrapyard-suite/equipment/better-boots.svg",
+      "digest": "25c6545262406d4f4c06d696a3028efcf30368988c9939c765d0248e10e617f8",
+      "parents": [
+        "scrapyard-suite/equipment/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 4; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/equipment/field-repair",
+      "asset": "scrapyard/field-repair",
+      "attempt": "scrapyard-suite/equipment",
+      "label": "field-repair",
+      "file": "docs/art/assets/scrapyard-suite/equipment/field-repair.svg",
+      "digest": "4bce12771dcf7985aedc3e261db2d8cbd9ed2f924a3f09656a8ba9f9247ccaa2",
+      "parents": [
+        "scrapyard-suite/equipment/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 5; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/combat/sheet",
+      "asset": null,
+      "attempt": "scrapyard-suite/combat",
+      "label": "sheet",
+      "file": "docs/art/assets/scrapyard-suite/combat/sheet.svg",
+      "digest": "2a28c8f11c6b99c753791f14bbc64c4d05153fb1bd8c171f567fa7b556959ad0",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original packed sheet; source study rather than a game delivery."
+    },
+    {
+      "id": "scrapyard-suite/combat/light-round",
+      "asset": "scrapyard/light-round",
+      "attempt": "scrapyard-suite/combat",
+      "label": "light-round",
+      "file": "docs/art/assets/scrapyard-suite/combat/light-round.svg",
+      "digest": "7b2866bf19114164c20a1417b24bce5d8b5ec1f81cc3a73d532d691b5100015c",
+      "parents": [
+        "scrapyard-suite/combat/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 0; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/combat/heavy-round",
+      "asset": "scrapyard/heavy-round",
+      "attempt": "scrapyard-suite/combat",
+      "label": "heavy-round",
+      "file": "docs/art/assets/scrapyard-suite/combat/heavy-round.svg",
+      "digest": "51ee275b9daf112ff970227bb862fed4b70e562965da94dde4795a21c2b1c173",
+      "parents": [
+        "scrapyard-suite/combat/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 1; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/combat/hostile-diamond",
+      "asset": "scrapyard/hostile-diamond",
+      "attempt": "scrapyard-suite/combat",
+      "label": "hostile-diamond",
+      "file": "docs/art/assets/scrapyard-suite/combat/hostile-diamond.svg",
+      "digest": "472331d453dac2c4e3f2af97afc51ee0e5d5bfabfd64adc8b06a0ba136e649ad",
+      "parents": [
+        "scrapyard-suite/combat/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/combat/scrap-pickup",
+      "asset": "scrapyard/scrap-pickup",
+      "attempt": "scrapyard-suite/combat",
+      "label": "scrap-pickup",
+      "file": "docs/art/assets/scrapyard-suite/combat/scrap-pickup.svg",
+      "digest": "fa5bb0eaeba899599e06fae099c78dcda0c0d938f303d9c5100234a558cd8f24",
+      "parents": [
+        "scrapyard-suite/combat/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 3; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/combat/player-hit",
+      "asset": "scrapyard/player-hit",
+      "attempt": "scrapyard-suite/combat",
+      "label": "player-hit",
+      "file": "docs/art/assets/scrapyard-suite/combat/player-hit.svg",
+      "digest": "e7beeb5f0f27f05a5439454076949bdacc6b361cb97bf261e276902a2f19f30b",
+      "parents": [
+        "scrapyard-suite/combat/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 4; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/combat/scrap-sparkle",
+      "asset": "scrapyard/scrap-sparkle",
+      "attempt": "scrapyard-suite/combat",
+      "label": "scrap-sparkle",
+      "file": "docs/art/assets/scrapyard-suite/combat/scrap-sparkle.svg",
+      "digest": "34126d69f9ad2b5f54ad6dd74d22c760876b40c68944067c9a895215b016e36b",
+      "parents": [
+        "scrapyard-suite/combat/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 5; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/arena/sheet",
+      "asset": null,
+      "attempt": "scrapyard-suite/arena",
+      "label": "sheet",
+      "file": "docs/art/assets/scrapyard-suite/arena/sheet.svg",
+      "digest": "aca67e62eb49c8103bcf33eea92c96aa654b688f2157e1315c2d336b5c61d857",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original packed sheet; source study rather than a game delivery."
+    },
+    {
+      "id": "scrapyard-suite/arena/floor-tile",
+      "asset": "scrapyard/floor-tile",
+      "attempt": "scrapyard-suite/arena",
+      "label": "floor-tile",
+      "file": "docs/art/assets/scrapyard-suite/arena/floor-tile.svg",
+      "digest": "2f9d1ebab4aafb50ed9d38ad870c9075b54fdd079f913708011cda2a8aedc277",
+      "parents": [
+        "scrapyard-suite/arena/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 0; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/arena/boundary-strip",
+      "asset": "scrapyard/boundary-strip",
+      "attempt": "scrapyard-suite/arena",
+      "label": "boundary-strip",
+      "file": "docs/art/assets/scrapyard-suite/arena/boundary-strip.svg",
+      "digest": "6ad690bcea5c05bf7bb4de21d6d3819e5af3d26ce0213209bc044b94302a4e82",
+      "parents": [
+        "scrapyard-suite/arena/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 1; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "scrapyard-suite/arena/corner-join",
+      "asset": "scrapyard/corner-join",
+      "attempt": "scrapyard-suite/arena",
+      "label": "corner-join",
+      "file": "docs/art/assets/scrapyard-suite/arena/corner-join.svg",
+      "digest": "2c44b9de0044b32e08209fd19734a922ff5564f94355f621ae401632de27b983",
+      "parents": [
+        "scrapyard-suite/arena/sheet"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
     }
   ]
 }

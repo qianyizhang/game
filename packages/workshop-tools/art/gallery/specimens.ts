@@ -4,16 +4,17 @@ import { createGame } from '../../../../src/games/night-passage/domain/game';
 import { ARENA as NIGHT_ARENA } from '../../../../src/games/night-passage/domain/content';
 import { drawArena } from '../../../../src/games/night-passage/ui/presentation/draw';
 import { World } from '../../../../src/games/scrapyard/domain/world';
+import { ENEMIES as SCRAP_ENEMIES } from '../../../../src/games/scrapyard/domain/content';
 import { createRenderer } from '../../../../src/games/scrapyard/ui/renderer';
 
 /** Fixed presentation specimens. No sessions, saves, clocks or animation loops. */
-for (const canvas of document.querySelectorAll<HTMLCanvasElement>('canvas[data-specimen]')) {
+async function renderSpecimen(canvas: HTMLCanvasElement) {
   const context = canvas.getContext('2d');
   if (!context) {
     canvas.replaceWith(
       Object.assign(document.createElement('p'), { textContent: 'Canvas 2D is unavailable.' }),
     );
-    continue;
+    return;
   }
   try {
     const kind = canvas.dataset.specimen!;
@@ -30,18 +31,24 @@ for (const canvas of document.querySelectorAll<HTMLCanvasElement>('canvas[data-s
         x: 250 + enemyKind * 140,
         y: 250,
         hp: 10,
-        radius: 14,
+        radius: SCRAP_ENEMIES[enemyKind].radius,
         aim: -Math.PI / 2,
         cooldown: 0,
       }));
       const renderer = createRenderer(canvas);
-      renderer.draw(state);
-      const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
-      // Dispose clears its canvas; restore only the fixed specimen pixels.
-      renderer.dispose();
-      canvas.width = pixels.width;
-      canvas.height = pixels.height;
-      context.putImageData(pixels, 0, 0);
+      try {
+        if (renderer.ready) await renderer.ready;
+        renderer.draw(state);
+        const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
+        // Dispose clears its canvas; restore only the fixed specimen pixels.
+        renderer.dispose();
+        canvas.width = pixels.width;
+        canvas.height = pixels.height;
+        context.putImageData(pixels, 0, 0);
+      } catch (cause) {
+        renderer.dispose();
+        throw cause;
+      }
     } else {
       context.fillStyle = '#182b2d';
       context.fillRect(0, 0, canvas.width, canvas.height);
@@ -60,3 +67,6 @@ for (const canvas of document.querySelectorAll<HTMLCanvasElement>('canvas[data-s
     );
   }
 }
+
+for (const canvas of document.querySelectorAll<HTMLCanvasElement>('canvas[data-specimen]'))
+  void renderSpecimen(canvas);

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" width="384" height="384"><g id="better-boots" stroke="#142622" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M73 72 Q111 55 156 57 L186 64 L180 132 L174 176 Q183 199 216 209 Q239 198 262 210 Q287 224 294 265 L289 285 L84 285 Q65 278 67 257 L76 210 L74 145 L65 132 Z" fill="#30483e" />
+    <path d="M81 69 L151 66 L174 75 L169 118 L144 117 L128 130 L119 157 L77 160 L75 133 Z" fill="#a5b4a2" />
+    <path d="M82 69 L151 69 L159 77 L136 80 L119 100 L111 94 L82 118 Z" fill="#e9dbb7" stroke="none" />
+    <path d="M119 115 L181 108 L180 136 L120 146 Z" fill="#b97c5e" />
+    <path d="M122 167 L178 157 L182 184 L127 198 Z" fill="#b97c5e" />
+    <circle cx="138" cy="129" r="6" fill="#142622" />
+    <circle cx="140" cy="180" r="6" fill="#142622" />
+    <path d="M79 211 Q114 216 139 244 L126 259 Q99 239 69 237 Z" fill="#a5b4a2" />
+    <path d="M217 212 Q244 200 267 217 Q286 230 291 266 L207 276 Q203 240 217 212 Z" fill="#a5b4a2" />
+    <path d="M213 244 Q225 211 249 213 Q269 214 280 235 Q261 232 243 249 L234 243 L213 261 Z" fill="#e9dbb7" stroke="none" />
+    <path d="M69 268 Q91 279 126 274 Q155 270 187 282 Q237 294 290 278 L302 285 L309 312 L291 320 L281 313 L271 320 L244 322 L239 315 L228 323 L204 322 L198 315 L185 319 L163 314 L160 306 L139 301 L132 319 L105 317 L101 310 L92 316 L68 309 L65 300 Z" fill="#e9dbb7" />
+  </g>
+  </svg>

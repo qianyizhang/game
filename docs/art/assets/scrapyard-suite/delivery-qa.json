@@ -1,0 +1,167 @@
+{
+  "gallery": {
+    "brokenImages": 0,
+    "artCount": 20,
+    "specimen": "true"
+  },
+  "cues": {
+    "scrap-sparkle": {
+      "tick": 66,
+      "hp": 100,
+      "scrap": 1,
+      "x": 643.3416664540907,
+      "y": 136.6583335459076
+    },
+    "player-hit": {
+      "tick": 184,
+      "hp": 94,
+      "scrap": 11,
+      "x": 778.6406563273138,
+      "y": 396.25883860929594
+    }
+  },
+  "exports": [
+    {
+      "id": "scrapyard/survivor",
+      "box": "0 0 26 32",
+      "width": 26,
+      "height": 32,
+      "paths": 13
+    },
+    {
+      "id": "scrapyard/drifter",
+      "box": "0 0 20 20",
+      "width": 20,
+      "height": 20,
+      "paths": 13
+    },
+    {
+      "id": "scrapyard/runner",
+      "box": "0 0 20 20",
+      "width": 20,
+      "height": 20,
+      "paths": 12
+    },
+    {
+      "id": "scrapyard/brute",
+      "box": "0 0 30 30",
+      "width": 30,
+      "height": 30,
+      "paths": 13
+    },
+    {
+      "id": "scrapyard/spitter",
+      "box": "0 0 24 24",
+      "width": 24,
+      "height": 24,
+      "paths": 13
+    },
+    {
+      "id": "scrapyard/rivet-gun",
+      "box": "0 0 38 38",
+      "width": 38,
+      "height": 38,
+      "paths": 9
+    },
+    {
+      "id": "scrapyard/scattergun",
+      "box": "0 0 38 38",
+      "width": 38,
+      "height": 38,
+      "paths": 11
+    },
+    {
+      "id": "scrapyard/scrap-cannon",
+      "box": "0 0 38 38",
+      "width": 38,
+      "height": 38,
+      "paths": 12
+    },
+    {
+      "id": "scrapyard/hotter-rounds",
+      "box": "0 0 24 24",
+      "width": 24,
+      "height": 24,
+      "paths": 8
+    },
+    {
+      "id": "scrapyard/better-boots",
+      "box": "0 0 24 24",
+      "width": 24,
+      "height": 24,
+      "paths": 11
+    },
+    {
+      "id": "scrapyard/field-repair",
+      "box": "0 0 24 24",
+      "width": 24,
+      "height": 24,
+      "paths": 10
+    },
+    {
+      "id": "scrapyard/light-round",
+      "box": "0 0 6 6",
+      "width": 6,
+      "height": 6,
+      "paths": 2
+    },
+    {
+      "id": "scrapyard/heavy-round",
+      "box": "0 0 14 14",
+      "width": 14,
+      "height": 14,
+      "paths": 2
+    },
+    {
+      "id": "scrapyard/hostile-diamond",
+      "box": "0 0 8 8",
+      "width": 8,
+      "height": 8,
+      "paths": 2
+    },
+    {
+      "id": "scrapyard/scrap-pickup",
+      "box": "0 0 8 8",
+      "width": 8,
+      "height": 8,
+      "paths": 2
+    },
+    {
+      "id": "scrapyard/player-hit",
+      "box": "0 0 48 48",
+      "width": 48,
+      "height": 48,
+      "paths": 4
+    },
+    {
+      "id": "scrapyard/scrap-sparkle",
+      "box": "0 0 20 20",
+      "width": 20,
+      "height": 20,
+      "paths": 3
+    },
+    {
+      "id": "scrapyard/floor-tile",
+      "box": "0 0 40 40",
+      "width": 40,
+      "height": 40,
+      "paths": 3
+    },
+    {
+      "id": "scrapyard/boundary-strip",
+      "box": "0 0 40 10",
+      "width": 40,
+      "height": 10,
+      "paths": 2
+    },
+    {
+      "id": "scrapyard/corner-join",
+      "box": "0 0 10 10",
+      "width": 10,
+      "height": 10,
+      "paths": 2
+    }
+  ],
+  "browser": "157.0.8103.38",
+  "exportCount": 20
+}

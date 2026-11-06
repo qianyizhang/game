@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" width="384" height="384"><g id="hotter-rounds" stroke="#142622" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M68 263 L164 146 L206 171 L215 190 L126 299 Q114 311 100 302 L72 284 Q62 278 68 263 Z" fill="#b97c5e" />
+    <path d="M164 146 L180 128 L224 160 L211 181 Z" fill="#30483e" />
+    <path d="M180 128 Q211 76 273 66 Q271 119 224 160 Z" fill="#a5b4a2" />
+    <path d="M184 127 Q214 82 273 66 L223 137 L211 147 Z" fill="#e9dbb7" stroke="none" />
+    <path d="M94 247 L165 158 L186 169 L171 175 L155 194 L145 190 L111 233 Z" fill="#e9dbb7" stroke="none" />
+    <path d="M69 257 Q83 254 103 269 Q122 284 127 299 L116 311 Q105 319 85 306 L64 288 Q55 278 60 269 Z" fill="#a5b4a2" />
+    <path d="M60 273 Q68 266 88 280 Q107 294 112 309 Q105 319 91 312 L66 294 Q57 286 60 273 Z" fill="#30483e" />
+    <path d="M291 163 L251 192 L267 207 L232 227 L247 243 L214 268 L265 250 L251 234 L282 216 L267 200 Z" fill="#b97c5e" stroke="#b97c5e" />
+  </g>
+  </svg>

@@ -57,6 +57,8 @@ import { CARDS } from '../../../../src/games/spire/content/cards';
 import { HEROES, MINIONS } from '../../../../src/games/battlegrounds/content/minions';
 import { HeroArt, HeroPowerArt } from '../../../../src/games/battlegrounds/ui/HeroArt';
 import type { ReactNode } from 'react';
+import { ScrapArt } from '../../../../src/games/scrapyard/ui/Artwork';
+import { ART, type ArtId } from '../../../../src/games/scrapyard/ui/art-data';
 import { GAME_GUIDES } from '../../../../src/app/guide/games';
 import { GameGuideArt } from '../../../../src/app/guide/GameGuideArt';
 import {
@@ -128,6 +130,12 @@ export function cardArtCatalogue(): Asset[] {
     'seed',
   ];
   return [
+    ...Object.keys(ART).map((key) => ({
+      id: `scrapyard/${key}`,
+      group: `Scrapyard · ${ART[key as ArtId].family}`,
+      name: key.replaceAll('-', ' '),
+      node: <ScrapArt id={key as ArtId} />,
+    })),
     ...SPIRE_ENEMIES.map((enemy) => ({
       id: `spire/enemies/${enemy.id}`,
       group: 'Slay the Spire · Enemies',

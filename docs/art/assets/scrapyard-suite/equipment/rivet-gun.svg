@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" width="384" height="384"><g id="rivet-gun" stroke="#142622" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M83 197 L103 167 L154 151 L180 159 L207 146 L222 166 L204 192 L174 204 L169 238 L150 250 L126 247 L113 280 L74 272 L83 236 L65 224 L66 207 Z" fill="#30483e" />
+    <path d="M98 231 L130 239 L119 286 L111 307 L84 310 L67 297 L75 270 Z" fill="#b97c5e" />
+    <path d="M75 263 L117 276 M69 285 L111 297" fill="none" />
+    <path d="M176 149 L291 79 L310 83 L321 104 L312 117 L203 180 L188 177 Z" fill="#a5b4a2" />
+    <path d="M290 79 Q302 68 311 77 Q323 89 321 104 Q317 114 308 109 Q294 100 290 79 Z" fill="#30483e" />
+    <path d="M98 172 L159 147 L179 157 L169 178 L106 202 L90 194 Z" fill="#e9dbb7" />
+    <path d="M96 199 L165 170 L181 181 L179 195 L108 223 L94 218 Z" fill="#a5b4a2" />
+    <circle cx="110" cy="208" r="5" fill="#142622" />
+    <circle cx="162" cy="187" r="5" fill="#142622" />
+  </g>
+  </svg>

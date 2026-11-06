@@ -1,0 +1,62 @@
+[
+  {
+    "id": "survivor",
+    "width": 26,
+    "height": 32,
+    "index": 0,
+    "cell": 384,
+    "source": "sheet.svg",
+    "removed_grid_transform": "translate(0 0)",
+    "bytes": 1735,
+    "paths": 13,
+    "sha256": "bc9f7d440a8ae1ebd468a5329ee4a5f772a14a211f30fb526b0ce8e3b811056c"
+  },
+  {
+    "id": "drifter",
+    "width": 20,
+    "height": 20,
+    "index": 1,
+    "cell": 384,
+    "source": "sheet.svg",
+    "removed_grid_transform": "translate(384 0)",
+    "bytes": 1934,
+    "paths": 13,
+    "sha256": "d7ebc75c92535416987238b7f1c63b3d5ad696de2f1cfee94ff98b9718a4bee3"
+  },
+  {
+    "id": "runner",
+    "width": 20,
+    "height": 20,
+    "index": 2,
+    "cell": 384,
+    "source": "sheet.svg",
+    "removed_grid_transform": "translate(768 0)",
+    "bytes": 1629,
+    "paths": 12,
+    "sha256": "42b4068ed347bca9ddf5d0b221f64b479799f7903ea8a0b0f348b240563e5369"
+  },
+  {
+    "id": "brute",
+    "width": 30,
+    "height": 30,
+    "index": 3,
+    "cell": 384,
+    "source": "sheet.svg",
+    "removed_grid_transform": "translate(0 384)",
+    "bytes": 1771,
+    "paths": 13,
+    "sha256": "45c0b362b3567e358ef0350ea136a9f14fedcf9ba767cefd725583cdba46a8cc"
+  },
+  {
+    "id": "spitter",
+    "width": 24,
+    "height": 24,
+    "index": 4,
+    "cell": 384,
+    "source": "sheet.svg",
+    "removed_grid_transform": "translate(384 384)",
+    "bytes": 1798,
+    "paths": 13,
+    "sha256": "b75a5395f2c96a1193ad84abe5399c0ef79fbf40fac73d8f532e6e07e90fca77"
+  }
+]

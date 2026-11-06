@@ -1,0 +1,37 @@
+[
+  {
+    "id": "survivor",
+    "width": 26,
+    "height": 32,
+    "index": 0,
+    "cell": 384
+  },
+  {
+    "id": "drifter",
+    "width": 20,
+    "height": 20,
+    "index": 1,
+    "cell": 384
+  },
+  {
+    "id": "runner",
+    "width": 20,
+    "height": 20,
+    "index": 2,
+    "cell": 384
+  },
+  {
+    "id": "brute",
+    "width": 30,
+    "height": 30,
+    "index": 3,
+    "cell": 384
+  },
+  {
+    "id": "spitter",
+    "width": 24,
+    "height": 24,
+    "index": 4,
+    "cell": 384
+  }
+]

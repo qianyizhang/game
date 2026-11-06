@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 2,
+  "canonicalSource": "src/games/scrapyard/ui/art-data.ts",
+  "description": "Derived geometry is maintained once in the canonical typed source. The original generated SVGs, prompts and usage records remain unchanged.",
+  "previousExpandedSnapshot": {
+    "revision": "ddafc4ffd48c32606d5435a09c7c28e9a58e0a7c",
+    "path": "docs/art/assets/scrapyard-suite/adaptation.json",
+    "sha256": "63ef6964329fff9fc15595d39067af67d7e963842b5c24b8833e8fb5b645b433"
+  },
+  "extractionMaps": [
+    "docs/art/assets/scrapyard-suite/actors/extraction.json",
+    "docs/art/assets/scrapyard-suite/equipment/extraction.json",
+    "docs/art/assets/scrapyard-suite/combat/extraction.json",
+    "docs/art/assets/scrapyard-suite/arena/extraction.json"
+  ]
+}

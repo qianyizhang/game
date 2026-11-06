@@ -1,17 +1,6 @@
 import { useId, type SVGProps } from 'react';
-import selected from './selected-art.json';
-
-/** Build-time presentation snapshots. History and mutation validation belong to workshop-tools. */
-export interface ArtSelection {
-  revision: string;
-  digest: string;
-  svg: string;
-}
-const selections: Readonly<Record<string, ArtSelection>> = selected;
-
-export function selectedArt(id: string | undefined) {
-  return id ? selections[id] : undefined;
-}
+import { selectedArt, type ArtSelection } from './selection';
+export { selectedArt } from './selection';
 
 /** Keep inherited inks and native vector paths, while making paint IDs unique per instance. */
 export function SelectedArtContent({
