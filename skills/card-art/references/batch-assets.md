@@ -20,6 +20,21 @@ and [preservation hold](../../../docs/art/README.md#image-26-batch-workflow) app
 
 ## Prepare the batch
 
+Living or humanoid subjects need a stricter pilot before packing. The twelve-cell
+Hearth trial produced readable tier differences, but the user found its Squire
+and Cub below the quality bar: blocky anatomy and stiff joints survived the
+thumbnail check. Use one subject, or a small coherent pair, when anatomy and
+gesture need more attention; expand only after a representative passes the
+[art rulebook](../../../docs/art/art-direction.md). This is an observed limit of
+that batch, not proof that every living subject must be generated alone.
+
+Separate the tuning controls: image complexity plans the reference, image
+quality renders it, and SVG-author reasoning constructs the vector output.
+The Hearth trial already used high complexity but medium quality and low author
+reasoning. More author effort or canvas per subject is a useful next test, not
+a guaranteed repair. Avoid judging quality from cell count, technical validity
+or visible normal/Golden differences alone.
+
 Use this brief as the scaffold; fill only applicable fields:
 
 > **Purpose / current IDs and evidence / reuse or replacement / shared approved

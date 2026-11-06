@@ -167,15 +167,23 @@ test('per-game galleries preserve navigation, show current renderers and compare
   await expect(page.locator('#wip')).toBeVisible();
   await expect(page.locator('#current')).toBeHidden();
   await expect(page.getByText('Accepted · selected art installed', { exact: true })).toHaveCount(1);
-  await expect(page.getByText('Proposed · awaiting agreement', { exact: true })).toHaveCount(1);
+  await expect(page.getByText('Generated · awaiting review', { exact: true })).toHaveCount(1);
+  await expect(page.locator('.batch-proposal').first()).toHaveAttribute(
+    'id',
+    'batch-hearth-small-units-02',
+  );
   await expect(
     page.getByRole('heading', {
       name: 'Batch 02 · Six small units, normal and Golden',
       exact: true,
     }),
   ).toBeVisible();
-  await expect(page.locator('.packed-grid > article')).toHaveCount(3);
-  await expect(page.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(9);
+  const spireStudy = page.locator('#batch-spire-defense-01 .packed-study');
+  const hearthStudy = page.locator('#batch-hearth-small-units-02 .packed-study');
+  await expect(spireStudy.locator('.packed-grid > article')).toHaveCount(3);
+  await expect(spireStudy.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(9);
+  await expect(hearthStudy.locator('.packed-grid > article')).toHaveCount(6);
+  await expect(hearthStudy.locator('.packed-grid img[alt]:not([alt=""])')).toHaveCount(24);
   const effect = page.locator('.play-effect');
   await expect(effect.locator('img')).toHaveAttribute('src', /^data:image\/png;/);
   await effect.getByRole('button', { name: 'Play effect', exact: true }).click();
@@ -209,7 +217,8 @@ test('per-game galleries preserve navigation, show current renderers and compare
     );
   });
   await page.screenshot({ path: info.outputPath('wip-proposal-desktop.png'), fullPage: true });
-  await page.locator('.packed-study').screenshot({ path: info.outputPath('packed-desktop.png') });
+  await spireStudy.screenshot({ path: info.outputPath('packed-desktop.png') });
+  await hearthStudy.screenshot({ path: info.outputPath('hearth-packed-desktop.png') });
   await page.goto(`${base}/index.html`);
   for (const [id, name] of [
     ['blindside', 'Blindside'],
@@ -316,7 +325,8 @@ test('per-game galleries preserve navigation, show current renderers and compare
   });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: info.outputPath('wip-proposal-phone.png'), fullPage: true });
-  await page.locator('.packed-study').screenshot({ path: info.outputPath('packed-phone.png') });
+  await spireStudy.screenshot({ path: info.outputPath('packed-phone.png') });
+  await hearthStudy.screenshot({ path: info.outputPath('hearth-packed-phone.png') });
   expect(errors).toEqual([]);
   expect(external).toEqual([]);
   await page.addInitScript(() => {

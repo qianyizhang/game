@@ -321,6 +321,7 @@ export const WIP_BATCHES: BatchProposal[] = [
   },
   {
     id: 'hearth-small-units-02',
+    state: 'Generated · awaiting review',
     game: 'hearth',
     title: 'Batch 02 · Six small units, normal and Golden',
     reason:
@@ -343,13 +344,47 @@ export const WIP_BATCHES: BatchProposal[] = [
         plan: 'One 1920 × 1008 sheet, 4 columns × 3 rows of 480 × 336 scenes. Two adjacent normal/Golden pairs per row; preserve separable groups and quiet margins.',
       },
     ],
-    stop: 'Await agreement. One SVG request maximum; no automatic retries or rerolls. Show weak cells before proposing repair. Boss transformation and VFX GIFs belong to a separate effect brief.',
+    stop: 'Generation agreed November 6. One SVG request completed, no retries or rerolls. Candidates await artwork acceptance and frame/board integration. Boss transformation and VFX GIFs belong to a separate effect brief.',
     acceptance: [
       'Distinct normal/Golden gestures survive at 160 × 112 and 80 × 56 without relying on color or border.',
       'Connected anatomy, clear material planes, consistent style and clean cell extraction; retain stronger existing normal art when appropriate.',
       'Judge recruitment/combat board and phone sizes before promotion; report cost per useful cell, including rejects.',
     ],
     record: 'docs/art/assets/hearth-small-units-batch/README.md',
+    study: {
+      summary:
+        'Mixed quality: Squire and Cub are below the bar in user review; keep their current art. One $0.16 request produced twelve separable scenes, but tier differences did not establish anatomy quality. Other candidates remain unaccepted. A single-subject Cub follow-up with more author effort is proposed in the record; no reroll has been sent.',
+      sheet: 'docs/art/assets/hearth-small-units-batch/sheet.svg',
+      subjects: [
+        { id: 'squire', title: 'Hearth Squire · below bar' },
+        { id: 'pup', title: 'Clockwork Pup' },
+        { id: 'imp', title: 'Coal Imp' },
+        { id: 'spark', title: 'Kindle Spark' },
+        { id: 'cub', title: 'Briar Cub · below bar' },
+        { id: 'wisp', title: 'Coal Wisp' },
+      ].map(({ id, title }) => ({
+        title,
+        tiers: [
+          { suffix: `before-${id}`, label: 'Current normal · framed' },
+          { suffix: `${id}-normal`, label: 'Normal candidate · art only' },
+          { suffix: `before-${id}-golden`, label: 'Current Golden · framed' },
+          { suffix: `${id}-golden`, label: 'Golden candidate · art only' },
+        ].map(({ suffix, label }) => ({
+          label:
+            ['squire', 'cub'].includes(id) && !suffix.startsWith('before-')
+              ? `${label} · below bar`
+              : label,
+          file: `docs/art/assets/hearth-small-units-batch/${suffix}.svg`,
+        })),
+      })),
+      attachments: [
+        'docs/art/assets/hearth-small-units-batch/svg-prompt.md',
+        'docs/art/assets/hearth-small-units-batch/svg-request.json',
+        'docs/art/assets/hearth-small-units-batch/svg-response.json',
+        'docs/art/assets/hearth-small-units-batch/comparison.webp',
+        'docs/art/assets/hearth-small-units-batch/board-size-review.webp',
+      ],
+    },
   },
 ];
 
@@ -394,7 +429,7 @@ export const NEXT_BATCH: BatchCandidate[] = [
       'Normal and Golden currently share the same subject pose; the Golden cue comes from the palette and frame.',
     brief,
     current: [`hearth/${id}`, `hearth/${id}-golden`],
-    status: 'Review first',
+    status: 'SVG trial',
   })),
   {
     id: 'metallicize',
