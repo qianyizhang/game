@@ -10,7 +10,7 @@ export function trackedFiles(root: string): string[] {
     encoding: 'utf8',
   })
     .split('\0')
-    .filter(Boolean);
+    .filter((path) => Boolean(path) && existsSync(resolve(root, path)));
 }
 
 /** Same application roots as the Vitest application project, excluding geometry. */

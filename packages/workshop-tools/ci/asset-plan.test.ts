@@ -46,7 +46,7 @@ function assetOutput(value?: unknown) {
 }
 
 void test('parent plan includes every browser shard once; fallback validation preserves that matrix and selection', () => {
-  assert.equal(plan.version, 4);
+  assert.equal(plan.version, 5);
   assert.equal(plan.browserShards, 3);
   assert.deepEqual(plan.browserMatrix, [1, 2, 3]);
   const result = assetOutput(plan);
@@ -123,6 +123,7 @@ void test('execution retains catalogue validation even when the supplied matrix 
   const invalid = {
     ...plan,
     browserFiles: ['tests/browser/not-a-maintained-journey.spec.ts'],
+    browserGroups: [['tests/browser/not-a-maintained-journey.spec.ts']],
     browserShards: 1,
     browserMatrix: [1],
   };

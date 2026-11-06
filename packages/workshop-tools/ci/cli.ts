@@ -1,9 +1,11 @@
+import { environmentStamp, verifyEnvironment } from './environment.ts';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { appendFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { changedInputs } from './changes.ts';
 import { catalogueFrom, dependencyGraph, trackedFiles } from './graph.ts';
 import { commandFor, readPlan, requiredModules, type Module } from './commands.ts';
-import { normalApplicationFallback, selectPlan, type Change, type Plan } from './selection.ts';
+import { normalApplicationFallback, selectPlan, type Plan } from './selection.ts';
 
 const root = resolve(import.meta.dirname, '../../..');
 const git = (...args: string[]) =>
@@ -20,48 +22,27 @@ function planFromEnvironment(): Plan {
     plan.geometryFiles.some((p) => !catalogue.geometry.includes(p))
   )
     throw new Error('Invalid CI plan');
+  verifyEnvironment(plan.environment);
   return plan;
 }
 
 const operation = process.argv[2];
 if (operation === 'plan') {
   const base = /^0{40}$/.test(process.env.CI_BASE ?? '') ? undefined : process.env.CI_BASE;
-  const changes: Change[] = [];
-  if (base) {
-    if (!/^[a-f0-9]{40}$/.test(base)) throw new Error('CI_BASE must be an exact commit SHA');
-    const fields = execFileSync(
-      'git',
-      ['diff', '--name-status', '--no-renames', '-z', `${base}...${head}`],
-      { cwd: root, encoding: 'utf8' },
-    )
-      .split('\0')
-      .filter(Boolean);
-    for (let index = 0; index < fields.length; index += 2)
-      changes.push({ status: fields[index], path: fields[index + 1] });
-  }
+  const { changes, regular, unsafePaths } = changedInputs(root, base);
   const files = trackedFiles(root);
   const graph = dependencyGraph(root, files);
-  const ancestor = base ? git('merge-base', base, head) : undefined;
   const plan = readPlan(
     selectPlan(changes, catalogueFrom(files), graph.dependants, {
       head,
       full: process.env.CI_FULL === '1',
-      allApplications: normalApplicationFallback(changes, Boolean(base), ({ path, status }) => {
-        const refs = status === 'A' ? [head] : status === 'D' ? [ancestor!] : [ancestor!, head];
-        try {
-          return refs.every(
-            (ref) =>
-              git('ls-tree', '-z', ref, '--', path) ===
-              `100644 blob ${git('rev-parse', `${ref}:${path}`)}\t${path}\0`,
-          );
-        } catch {
-          return false;
-        }
-      }),
+      allApplications: normalApplicationFallback(changes, Boolean(base), regular),
+      unsafePaths,
       uncertain: graph.uncertain,
     }),
     head,
   );
+  if (process.env.GITHUB_ACTIONS === 'true') plan.environment = environmentStamp();
   const json = JSON.stringify(plan);
   const output = process.argv[3];
   if (output) writeFileSync(output, json + '\n');
@@ -87,6 +68,8 @@ if (operation === 'plan') {
       browserShards: plan.browserShards,
     }),
   );
+} else if (operation === 'check') {
+  await import('./local.ts');
 } else if (operation === 'run' || operation === 'core') {
   const module = operation === 'core' ? 'core' : (process.argv[3] as Module);
   if (!['core', 'unit', 'browser', 'geometry'].includes(module))
@@ -107,4 +90,6 @@ if (operation === 'plan') {
     process.exitCode = result.status ?? 1;
   }
 } else
-  throw new Error('Usage: ci/cli.ts core | plan [output.json] | run core|unit|browser|geometry');
+  throw new Error(
+    'Usage: ci/cli.ts check [--base ref] [--plan] [--full] | core | plan [output.json] | run core|unit|browser|geometry',
+  );

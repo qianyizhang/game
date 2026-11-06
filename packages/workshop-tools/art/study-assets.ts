@@ -1,3 +1,4 @@
+import { bakeDependencies, bakePackageNames, type NpmLock } from './bake-dependencies.ts';
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, realpathSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -10,7 +11,9 @@ export const bakeDirectory = 'src/art3d/baked';
 export const sha256 = (bytes: Uint8Array | string) =>
   createHash('sha256').update(bytes).digest('hex');
 export type StudyManifest = {
-  schemaVersion: 1;
+  schemaVersion: 2;
+  dependencies: Record<string, string>;
+  provenance?: { legacyLockSha256: string };
   inputs: Record<string, string>;
   assets: Record<string, { sha256: string; bytes: number; seconds: number; tracks: number }>;
 };
@@ -31,7 +34,7 @@ export function nativeStudyIds(root: string): Set<string> {
 export function studyInputs(root: string): Record<string, string> {
   root = realpathSync(root);
   const { dependants, uncertain } = dependencyGraph(root, trackedFiles(root));
-  const inputs = new Set(['packages/workshop-tools/art/bake-client.ts']);
+  const inputs = new Set(['packages/workshop-tools/art/bake-client.ts', 'vite.config.ts']);
   const pending = [...inputs];
   while (pending.length) {
     const importer = pending.pop()!;
@@ -43,9 +46,19 @@ export function studyInputs(root: string): Record<string, string> {
         pending.push(dependency);
       }
   }
-  inputs.add('package-lock.json');
+  inputs.add('packages/workshop-tools/art/bake-studies.ts');
   return Object.fromEntries(
     [...inputs].sort().map((path) => [path, sha256(readFileSync(resolve(root, path)))]),
+  );
+}
+
+/** Exporter, Vite configuration and compiler runtime; not lint/test runner-only packages. */
+export function studyDependencies(root: string): Record<string, string> {
+  return bakeDependencies(
+    JSON.parse(readFileSync(resolve(root, 'package-lock.json'), 'utf8')) as NpmLock,
+    bakePackageNames(
+      Object.keys(studyInputs(root)).map((path) => readFileSync(resolve(root, path), 'utf8')),
+    ),
   );
 }
 
@@ -89,9 +102,17 @@ export function verifyStudyAssets(root: string) {
   const manifest = JSON.parse(
     readFileSync(resolve(root, bakeDirectory, 'manifest.json'), 'utf8'),
   ) as StudyManifest;
-  if (manifest.schemaVersion !== 1 || !manifest.assets || !manifest.inputs)
+  if (
+    manifest.schemaVersion !== 2 ||
+    !manifest.assets ||
+    !manifest.inputs ||
+    !manifest.dependencies
+  )
     throw new Error('Invalid study manifest');
-  if (JSON.stringify(manifest.inputs) !== JSON.stringify(studyInputs(root)))
+  if (
+    JSON.stringify(manifest.inputs) !== JSON.stringify(studyInputs(root)) ||
+    JSON.stringify(manifest.dependencies) !== JSON.stringify(studyDependencies(root))
+  )
     throw new Error('Baked study sources changed. Run npm run assets:bake and review the output.');
   const native = nativeStudyIds(root);
   for (const { id } of STUDIES)

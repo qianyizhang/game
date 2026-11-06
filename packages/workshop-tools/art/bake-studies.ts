@@ -10,6 +10,7 @@ import {
   bakeDirectory,
   nativeStudyIds,
   studyInputs,
+  studyDependencies,
   sha256,
   inspectStudyGLB,
   verifyStudyAssets,
@@ -20,6 +21,7 @@ export async function bakeStudies(root = repositoryRoot) {
   const native = nativeStudyIds(root);
   const ids = STUDIES.filter(({ id }) => !native.has(id)).map(({ id }) => id);
   const inputs = studyInputs(root);
+  const dependencies = studyDependencies(root);
   const directory = resolve(root, bakeDirectory);
   mkdirSync(directory, { recursive: true });
   const pending = new Map<string, Buffer>();
@@ -55,7 +57,7 @@ export async function bakeStudies(root = repositoryRoot) {
     try {
       const page = await browser.newPage();
       await page.goto('http://127.0.0.1:4175');
-      const manifest: StudyManifest = { schemaVersion: 1, inputs, assets: {} };
+      const manifest: StudyManifest = { schemaVersion: 2, inputs, dependencies, assets: {} };
       for (const id of ids) {
         const motion = await page.evaluate(async (id) => {
           const path = '/packages/workshop-tools/art/bake-client.ts';
@@ -68,7 +70,10 @@ export async function bakeStudies(root = repositoryRoot) {
         manifest.assets[id] = { sha256: sha256(bytes), bytes: bytes.length, ...motion };
         console.log(`Baked ${id}: ${(bytes.length / 1024 / 1024).toFixed(1)} MiB`);
       }
-      if (JSON.stringify(inputs) !== JSON.stringify(studyInputs(root)))
+      if (
+        JSON.stringify(inputs) !== JSON.stringify(studyInputs(root)) ||
+        JSON.stringify(dependencies) !== JSON.stringify(studyDependencies(root))
+      )
         throw new Error('Bake inputs changed during export');
       for (const [id, bytes] of pending) writeFileSync(resolve(directory, `${id}.glb`), bytes);
       writeFileSync(resolve(directory, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');

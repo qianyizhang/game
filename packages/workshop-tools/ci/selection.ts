@@ -1,3 +1,6 @@
+import { movieOwner, movies, movieConsumers } from './movies.ts';
+import { browserGroups } from './sharding.ts';
+
 export const families = [
   'balatro',
   'spire',
@@ -15,9 +18,10 @@ export type Change = { path: string; status: string };
 export type Catalogue = { application: string[]; browser: string[]; geometry: string[] };
 export type DependencyGraph = Map<string, Set<string>>;
 export type Plan = {
-  version: 4;
+  version: 5;
+  environment?: string;
   head: string;
-  mode: 'documentation' | 'scoped' | 'application' | 'full';
+  mode: 'documentation' | 'movies' | 'scoped' | 'application' | 'full';
   reasons: string[];
   families: Family[];
   coreFiles: string[];
@@ -28,6 +32,7 @@ export type Plan = {
   unitShards: number;
   browserShards: number;
   browserMatrix: number[];
+  browserGroups: string[][];
 };
 
 const games: Family[] = [
@@ -250,7 +255,13 @@ export function selectPlan(
   changes: Change[],
   catalogue: Catalogue,
   dependants: DependencyGraph,
-  options: { head: string; full?: boolean; allApplications?: boolean; uncertain?: string[] },
+  options: {
+    head: string;
+    full?: boolean;
+    allApplications?: boolean;
+    uncertain?: string[];
+    unsafePaths?: string[];
+  },
 ): Plan {
   const reviewEvidence = (path: string) => isReviewEvidence(path) && !dependants.get(path)?.size;
   const documentation =
@@ -264,10 +275,52 @@ export function selectPlan(
         (!isNamedDocumentation(change.path) || change.status === 'M') &&
         !dependants.get(change.path)?.size,
     );
+  const movieOnly =
+    !options.full &&
+    !options.allApplications &&
+    !options.uncertain?.length &&
+    !options.unsafePaths?.length &&
+    catalogue.browser.every((path) => browserFamilies(path) !== undefined) &&
+    catalogue.application.every((path) => sourceFamily(path) !== undefined) &&
+    changes.length > 0 &&
+    changes.every(
+      ({ path, status }) =>
+        ['A', 'M'].includes(status) &&
+        movieOwner(path) !== undefined &&
+        [...reverseClosure([path], dependants)].every(
+          (consumer) => consumer === path || movieConsumers.has(consumer),
+        ),
+    );
+  if (movieOnly) {
+    const owners = new Set(changes.map(({ path }) => movieOwner(path)));
+    const browserFiles = Object.entries(movies)
+      .filter(([id]) => owners.has(id))
+      .flatMap(([, movie]) => movie.browser)
+      .sort();
+    // A missing registered journey is uncertainty, not permission to omit it.
+    if (browserFiles.every((file) => catalogue.browser.includes(file)))
+      return {
+        version: 5,
+        head: options.head,
+        mode: 'movies',
+        reasons: ['audited standalone movies'],
+        families: [],
+        coreFiles: [],
+        unitFiles: [],
+        browserFiles,
+        geometry: false,
+        geometryFiles: [],
+        unitShards: 1,
+        browserShards: 1,
+        browserMatrix: [1],
+        browserGroups: [browserFiles],
+      };
+  }
   const stylesOnly =
     changes.length > 0 &&
     changes.every(({ path }) => reviewEvidence(path) || path.endsWith('.css'));
   const reasons: string[] = [];
+  if (options.unsafePaths?.length) reasons.push('non-regular or executable input');
   if (options.full) reasons.push('comprehensive event');
   if (options.allApplications) reasons.push('complete application selection');
   if (options.uncertain?.length) reasons.push('dependency graph could not be resolved completely');
@@ -365,7 +418,7 @@ export function selectPlan(
     .sort();
   const browserShards = Math.max(1, Math.min(4, Math.ceil(browserFiles.length / 8)));
   return {
-    version: 4,
+    version: 5,
     head: options.head,
     mode: full
       ? 'full'
@@ -396,5 +449,6 @@ export function selectPlan(
     unitShards: Math.max(1, Math.min(4, Math.ceil(unitFiles.length / 24))),
     browserShards,
     browserMatrix: Array.from({ length: browserShards }, (_, i) => i + 1),
+    browserGroups: browserGroups(browserFiles, browserShards),
   };
 }

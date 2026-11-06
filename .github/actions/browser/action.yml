@@ -1,0 +1,28 @@
+name: Hosted Google Chrome
+description: Provision OS libraries and fonts; retain hosted Chrome and existing startup guards
+runs:
+  using: composite
+  steps:
+    - id: image
+      shell: bash
+      run: echo "version=$ImageVersion" >> "$GITHUB_OUTPUT"
+    # Cache signed package payloads, not installed OS state or browser profiles.
+    - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+      with:
+        path: ${{ runner.temp }}/browser-apt
+        key: browser-apt-${{ runner.os }}-${{ runner.arch }}-${{ steps.image.outputs.version }}-${{ hashFiles('package-lock.json', '.github/actions/browser/action.yml', 'packages/workshop-tools/ci/browser-host.ts') }}
+    - shell: bash
+      run: |
+        mkdir -p "$RUNNER_TEMP/browser-apt/partial"
+        sudo chmod -R a+rX "$RUNNER_TEMP/browser-apt"
+        sudo tee /etc/apt/apt.conf.d/99-workshop-browser > /dev/null <<EOF_CONFIG
+        Dir::Cache::archives "$RUNNER_TEMP/browser-apt/";
+        Binary::apt::APT::Keep-Downloaded-Packages "true";
+        APT::Keep-Downloaded-Packages "true";
+        Acquire::Retries "3";
+        Acquire::http::Timeout "30";
+        Acquire::https::Timeout "30";
+        EOF_CONFIG
+        # Pin the maintained LTS image and use Ubuntu's signed primary archive.
+        sudo sed -i 's|http://azure.archive.ubuntu.com/ubuntu|http://archive.ubuntu.com/ubuntu|g' /etc/apt/sources.list.d/ubuntu.sources
+        node packages/workshop-tools/ci/browser-host.ts
