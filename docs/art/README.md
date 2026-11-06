@@ -61,6 +61,11 @@ decision nor passing CI establishes user approval or gameplay acceptance.
 
 [Three-species saved-motion trial](trials/rig-strategy-three-rounds.md) records the sequential fox, boar and raven campaign, owner self-review boundary, and tested rig/workflow refinements.
 
+## Movie experiments
+
+[Movie experiments](movie-experiments/README.md) retains the four standalone movie
+trials, their sources and rendered exports, comparison outcomes, and known limitations.
+
 ## Asset records
 
 [Game asset enrichment](asset-enrichment.md) inventories the six games, prioritizes
