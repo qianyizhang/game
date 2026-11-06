@@ -1,0 +1,58 @@
+{
+  "scope": "Six optional Night Passage source concepts only; no runtime/shared registry/default changes",
+  "base": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "artwork": {
+    "byte_identical_svg_and_contact_files": 8,
+    "canonical_call_semantically_equal": true,
+    "safe_bounded_self_contained_svgs": 7,
+    "exact_source_group_extractions": 6,
+    "crop_antialias_max_channel_delta": 7,
+    "crop_antialias_max_differing_pixels_per_cell": 39,
+    "contact": "Original losslessly optimized RGBA 1068x860; copied without re-encoding"
+  },
+  "isolated_history": {
+    "source": "fresh main + this bundle only",
+    "attempts": 1,
+    "revisions": 7,
+    "external_parent_dependency": false,
+    "selection_changes": 0,
+    "verify": {
+      "assets": 709,
+      "revisions": 99,
+      "selections": 0
+    }
+  },
+  "browser": {
+    "version": "157.0.8103.38",
+    "index_viewports": [
+      {
+        "width": 1440,
+        "images": 18,
+        "scrollWidth": 1440
+      },
+      {
+        "width": 390,
+        "images": 18,
+        "scrollWidth": 390
+      }
+    ],
+    "index_links": 10,
+    "gallery_viewports": [
+      {
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    ],
+    "revision_images_canonical_settings_and_lineage_opened": 7,
+    "page_errors": 0
+  },
+  "visual_review": "Self-review at160x112/80x56: four candidates, two caveated. Symbolic current and glass-like ceramic insert retained. No user acceptance or runtime placement.",
+  "checks": ["npm run format:maintenance", "npm run assets:history -- verify"],
+  "runtime": "Unchanged source/tests/dependencies; unrelated broad local suites not repeated. Hosted checks attach to exact PR head.",
+  "registration": "Isolated import passed; shared canonical registration pending serial coordinator; draft blocker",
+  "temporary_evidence": "/tmp/night-patron-review; /tmp/night-patron-history-sandbox; README reconstructs /tmp/night-patron-prepared-history.json"
+}
