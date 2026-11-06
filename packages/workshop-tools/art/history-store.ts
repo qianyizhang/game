@@ -13,6 +13,7 @@ import {
 } from 'node:fs';
 import { resolve, relative, dirname, sep } from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
+import { gunzipSync } from 'node:zlib';
 import type { ArtHistory, HistoryState, HistoryDocument } from './history-types.ts';
 
 export const HISTORY_PATH = 'docs/art/iterations/library.json';
@@ -285,8 +286,9 @@ export function historyState(
       : Object.fromEntries(
           state.history.revisions.map((revision) => {
             const bytes = checkedFile(root, revision.file, revision.digest);
-            const mime = revision.file.endsWith('.gif') ? 'image/gif' : 'image/svg+xml';
-            return [revision.id, `data:${mime};base64,${bytes.toString('base64')}`];
+            const preview = imageDocument(revision.file, bytes);
+            if (!preview) throw new Error(`Unsupported artwork preview format: ${revision.file}`);
+            return [revision.id, preview.url];
           }),
         ),
   };
@@ -299,17 +301,31 @@ export function historyPreview(root: string, version: string, revisionId: string
   const revision = state.history.revisions.find((item) => item.id === revisionId);
   if (!revision) throw new Error('Unknown revision');
   const bytes = checkedFile(root, revision.file, revision.digest);
-  const animated = revision.file.endsWith('.gif');
-  return {
-    kind: 'image',
-    url: `data:${animated ? 'image/gif' : 'image/svg+xml'};base64,${bytes.toString('base64')}`,
-    animated,
-  };
+  const preview = imageDocument(revision.file, bytes);
+  if (!preview) throw new Error(`Unsupported artwork preview format: ${revision.file}`);
+  return preview;
 }
 
 /** Preserve binary reference inputs as images rather than decoding them as UTF-8 text. */
 export function historyDocument(root: string, file: string): HistoryDocument {
   const bytes = readFileSync(historyPath(root, file));
+  return imageDocument(file, bytes) ?? { kind: 'text', text: bytes.toString('utf8') };
+}
+
+/** Decode archived SVG originals for inspection without replacing their exact compressed bytes. */
+function imageDocument(
+  file: string,
+  bytes: Buffer,
+): Extract<HistoryDocument, { kind: 'image' }> | null {
+  if (file.endsWith('.svg.gz')) {
+    bytes = gunzipSync(bytes, { maxOutputLength: 16 * 1024 * 1024 });
+    validateSvg(bytes.toString('utf8'));
+    return {
+      kind: 'image',
+      url: `data:image/svg+xml;base64,${bytes.toString('base64')}`,
+      animated: false,
+    };
+  }
   const types: Record<string, string> = {
     svg: 'image/svg+xml',
     png: 'image/png',
@@ -325,7 +341,7 @@ export function historyDocument(root: string, file: string): HistoryDocument {
         url: `data:${mime};base64,${bytes.toString('base64')}`,
         animated: mime === 'image/gif',
       }
-    : { kind: 'text', text: bytes.toString('utf8') };
+    : null;
 }
 
 function atomicJson(path: string, value: unknown) {
@@ -529,7 +545,8 @@ export function removeAttempt(root: string, version: string, attemptId: string) 
 export function verifyHistory(root: string) {
   const { history, selections } = readHistory(root);
   for (const revision of history.revisions) {
-    checkedFile(root, revision.file, revision.digest);
+    if (!imageDocument(revision.file, checkedFile(root, revision.file, revision.digest)))
+      throw new Error(`Unsupported artwork preview format: ${revision.file}`);
     if (revision.runtimeFile)
       validateSvg(
         checkedFile(root, revision.runtimeFile, revision.runtimeDigest!).toString('utf8'),
@@ -610,7 +627,8 @@ export function importHistory(root: string, version: string, input: unknown) {
     for (const revision of incoming.revisions) {
       if (history.revisions.some((item) => item.id === revision.id))
         throw new Error('Revision already exists');
-      checkedFile(root, revision.file, revision.digest);
+      if (!imageDocument(revision.file, checkedFile(root, revision.file, revision.digest)))
+        throw new Error(`Unsupported artwork preview format: ${revision.file}`);
       if (revision.runtimeFile)
         validateSvg(
           checkedFile(root, revision.runtimeFile, revision.runtimeDigest!).toString('utf8'),

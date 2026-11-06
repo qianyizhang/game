@@ -12,6 +12,11 @@ show an error on that preview without preventing other assets from being browsed
 Editable-source reads render the requested slot afresh, excluding game selections;
 they still bundle the shared source catalogue. Complete offline exports deliberately
 render and embed every source, revision and available attachment.
+Live, attachment and offline previews share the same format decoder: SVG, PNG,
+JPEG, WebP and GIF use their actual MIME type; `.svg.gz` originals are decoded
+within a 16 MiB bound and checked as static SVG without changing archive bytes.
+Source evidence retains its natural aspect ratio. Preview support does not make
+an archive or raster image a game-compatible SVG adaptation.
 
 ## Save, compare and use
 

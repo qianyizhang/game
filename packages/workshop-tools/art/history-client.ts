@@ -91,7 +91,7 @@ function showArtwork(
 }
 function revisionFigures(revision: ArtRevision, url: string) {
   const asset = state.history.assets.find((asset) => asset.id === revision.asset);
-  return `<figure><img src="${escape(url)}" alt="${escape(revision.label)}" width="${Math.min(asset?.width ?? 320, 480)}" height="${Math.min(asset?.width ?? 320, 480) * (asset ? asset.height / asset.width : 0.7)}"><figcaption>Slot size</figcaption></figure><figure><img src="${escape(url)}" alt="" width="80" height="56"><figcaption>Compact</figcaption></figure>`;
+  return `<figure><img src="${escape(url)}" alt="${escape(revision.label)}" width="${Math.min(asset?.width ?? 320, 480)}" ${asset ? `height="${(Math.min(asset.width, 480) * asset.height) / asset.width}"` : ''}><figcaption>${asset ? 'Slot size' : 'Source preview'}</figcaption></figure><figure><img src="${escape(url)}" alt="" width="80"${asset ? ` height="${(80 * asset.height) / asset.width}"` : ''}><figcaption>Compact</figcaption></figure>`;
 }
 function attemptDetails(attempt: ArtAttempt, standalone = false) {
   return `<details><summary>${standalone ? `${escape(attempt.title)} · ${escape(attempt.outcome)}` : 'Prompt, settings and outcome'}</summary><p>${escape(attempt.title)} · ${escape(attempt.date)} · ${escape(attempt.outcome)}</p><p>${escape(attempt.notes)}</p>${attempt.files.map((file) => `<p><button data-file="${escape(file)}">${escape(file.split('/').at(-1)!)}</button></p>`).join('')}<pre hidden></pre>${state.live ? `<button data-remove-attempt="${escape(attempt.id)}">Remove attempt</button>` : ''}</details>`;
@@ -100,7 +100,7 @@ function revisionCard(revision: ArtRevision) {
   const asset = state.history.assets.find((asset) => asset.id === revision.asset);
   const selected = asset && state.selections[asset.id]?.revision === revision.id;
   const attempt = state.history.attempts.find((attempt) => attempt.id === revision.attempt)!;
-  const animated = revision.file.endsWith('.gif');
+  const animated = revision.file.toLowerCase().endsWith('.gif');
   return `<article class="revision" data-revision="${escape(revision.id)}"><div class="revision-head"><h3>${escape(revision.label)}</h3>${selected ? '<span class="badge">In game · canonical</span>' : ''}${!revision.runtimeFile ? '<span class="badge">Source study</span>' : ''}</div><p>${escape(revision.notes)}</p><div class="revision-preview">${animated ? '<button data-play>Play GIF</button>' : '<p>Loading artwork…</p>'}</div><p class="source-note">${escape(revision.id)}</p><div class="actions"><button data-use${!state.live || !revision.runtimeFile || !asset || selected ? ' disabled' : ''}>${selected ? 'Used in game' : 'Use in game'}</button><button data-enlarge>${animated ? 'Download GIF' : 'Inspect source'}</button><button data-remove${!state.live || selected ? ' disabled' : ''}>Remove</button></div>${!state.live ? '<p>Offline snapshot · open the local gallery to change selections or remove records.</p>' : !revision.runtimeFile ? '<p>No game-compatible adaptation is registered for this source.</p>' : ''}${attemptDetails(attempt)}<details><summary>Lineage and files</summary><p>${escape(revision.file)}</p><p>${revision.parents.length ? 'Parents: ' + revision.parents.map(escape).join(', ') : 'Earlier parentage is unknown or this is a source checkpoint.'}</p></details></article>`;
 }
 function renderDetail() {
@@ -159,7 +159,7 @@ function renderDetail() {
   for (const article of detail.querySelectorAll<HTMLElement>('[data-revision]')) {
     const revision = state.history.revisions.find((item) => item.id === article.dataset.revision)!;
     const preview = article.querySelector('.revision-preview')!;
-    if (!revision.file.endsWith('.gif'))
+    if (!revision.file.toLowerCase().endsWith('.gif'))
       showArtwork(preview, 'revision', revision.id, (url) => {
         preview.innerHTML = revisionFigures(revision, url);
       });
@@ -179,7 +179,7 @@ function renderDetail() {
     });
     article.querySelector('[data-enlarge]')!.addEventListener('click', () => {
       showArtwork(preview, 'revision', revision.id, (url) => {
-        if (revision.file.endsWith('.gif')) {
+        if (revision.file.toLowerCase().endsWith('.gif')) {
           const download = document.createElement('a');
           download.href = url;
           download.download = revision.file.split('/').at(-1)!;

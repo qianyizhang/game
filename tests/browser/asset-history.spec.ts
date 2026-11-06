@@ -1,5 +1,10 @@
 import { expect, test } from '@playwright/test';
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { gzipSync } from 'node:zlib';
+import { createServer } from 'vite';
+import { artHistoryPlugin } from '../../packages/workshop-tools/art/history-server';
+import { exportHistoryPage } from '../../packages/workshop-tools/art/history-page';
 import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -10,9 +15,11 @@ import {
   removeRevision,
   removeAttempt,
   MANAGED_PATH,
+  HISTORY_PATH,
+  SELECTION_PATH,
   digest,
 } from '../../packages/workshop-tools/art/history-store';
-import type { HistoryState } from '../../packages/workshop-tools/art/history-types';
+import type { ArtHistory, HistoryState } from '../../packages/workshop-tools/art/history-types';
 
 test('gallery selections reach the real game, survive reload, and removal preserves the active choice', async ({
   page,
@@ -414,7 +421,8 @@ test('GIF previews fetch only on explicit play or download and respect reduced m
   page,
 }) => {
   const metadata = readHistory(process.cwd()).history;
-  const gif = metadata.revisions.find((revision) => revision.file.endsWith('.gif'))!;
+  const original = metadata.revisions.find((revision) => revision.file.endsWith('.gif'))!;
+  const gif = { ...original, file: original.file.toUpperCase() };
   expect(gif).toBeTruthy();
   await page.route('**/__art/api/state', async (route) => {
     const response = await route.fetch();
@@ -478,4 +486,150 @@ test('failed revision previews leave source and other revisions usable', async (
   await expect(card(failed[1].id).locator('.revision-preview')).toContainText('Artwork is missing');
   await expect(card(revisions[2].id).locator('img')).toHaveCount(2);
   await expect(page.locator('#assets a').first()).toBeEnabled();
+});
+
+// Real registered raster bytes and a gzip SVG exercise the delivered API/export,
+// while a disposable registry keeps production artwork and selections untouched.
+test('scoped and self-contained offline previews decode archived SVG and raster bytes at their natural aspect', async ({
+  page,
+}, info) => {
+  const root = mkdtempSync(resolve(tmpdir(), 'art-preview-formats-'));
+  const svg =
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 90"><rect width="30" height="90" fill="#abc"/></svg>   \n';
+  const jpeg = readFileSync('docs/art/assets/creatures/wolf-evolutions-preview.jpg');
+  const formats = [
+    { extension: 'svg.gz', mime: 'image/svg+xml', bytes: gzipSync(svg), decoded: Buffer.from(svg) },
+    {
+      extension: 'png',
+      mime: 'image/png',
+      bytes: readFileSync(
+        'docs/art/assets/blindside-opening-jokers/context/baseline-shop-phone.png',
+      ),
+    },
+    { extension: 'jpg', mime: 'image/jpeg', bytes: jpeg },
+    { extension: 'jpeg', mime: 'image/jpeg', bytes: jpeg },
+    {
+      extension: 'webp',
+      mime: 'image/webp',
+      bytes: readFileSync('docs/art/assets/cartographer-map/before-threat.webp'),
+    },
+  ];
+  mkdirSync(resolve(root, MANAGED_PATH), { recursive: true });
+  mkdirSync(resolve(root, 'src/shared/art'), { recursive: true });
+  const history: ArtHistory = {
+    schema: 1,
+    assets: [],
+    attempts: [
+      {
+        id: 'formats',
+        title: 'Format fixtures',
+        date: 'unknown',
+        outcome: 'manual',
+        notes: 'Disposable format compatibility fixture.',
+        files: formats.map((format) => `${MANAGED_PATH}/fixture.${format.extension}`),
+      },
+    ],
+    revisions: formats.map((format) => ({
+      id: format.extension,
+      asset: null,
+      attempt: 'formats',
+      label: format.extension,
+      file: `${MANAGED_PATH}/fixture.${format.extension}`,
+      digest: digest(format.bytes),
+      parents: [],
+      runtimeFile: null,
+      runtimeDigest: null,
+      notes: 'Unassigned source evidence.',
+    })),
+  };
+  for (const [index, format] of formats.entries())
+    writeFileSync(resolve(root, history.revisions[index].file), format.bytes);
+  writeFileSync(resolve(root, HISTORY_PATH), JSON.stringify(history));
+  writeFileSync(resolve(root, SELECTION_PATH), '{}');
+  const server = await createServer({
+    configFile: false,
+    root,
+    plugins: [artHistoryPlugin(root)],
+    server: { host: '127.0.0.1', port: 0, watch: null },
+  });
+  try {
+    await server.listen();
+    const address = server.httpServer!.address();
+    if (!address || typeof address !== 'object') throw new Error('Missing fixture server port');
+    const base = `http://127.0.0.1:${address.port}/__art/`;
+    const response = await page.request.get(base + 'api/state');
+    const metadata = (await response.json()) as HistoryState;
+    expect(metadata.previews).toEqual({});
+    expect(metadata.current).toEqual({});
+    for (const format of formats) {
+      const preview = await page.request.get(
+        base + `api/artwork?revision=${format.extension}&version=${metadata.version}`,
+      );
+      expect(preview.status()).toBe(200);
+      const document = (await preview.json()) as { url: string };
+      expect(document.url).toBe(
+        `data:${format.mime};base64,` + (format.decoded ?? format.bytes).toString('base64'),
+      );
+    }
+    const checkImages = async () => {
+      await expect(page.locator('[data-revision] img')).toHaveCount(formats.length * 2);
+      const results = await page.locator('[data-revision] img').evaluateAll(async (nodes) => {
+        await Promise.all(nodes.map((node) => (node as HTMLImageElement).decode()));
+        return nodes.map((node) => {
+          const image = node as HTMLImageElement;
+          const box = image.getBoundingClientRect();
+          return {
+            decoded: image.naturalWidth > 0,
+            ratio: box.width / box.height,
+            natural: image.naturalWidth / image.naturalHeight,
+          };
+        });
+      });
+      for (const result of results) {
+        expect(result.decoded).toBe(true);
+        expect(Math.abs(result.ratio - result.natural)).toBeLessThan(0.01);
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    };
+    await page.goto(base + '#asset=__unassigned');
+    await checkImages();
+    await expect(
+      page.getByRole('button', { name: 'Use in game', exact: true }).first(),
+    ).toBeDisabled();
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.addStyleTag({ content: ':root { font-size: 20px; }' });
+    await checkImages();
+    const output = info.outputPath('formats-offline');
+    mkdirSync(output, { recursive: true });
+    await exportHistoryPage(root, output);
+    const requests: string[] = [];
+    page.on('request', (request) => {
+      if (/^https?:/.test(request.url())) requests.push(request.url());
+    });
+    await page.goto(pathToFileURL(resolve(output, 'history.html')).href + '#asset=__unassigned');
+    await checkImages();
+    const offline = JSON.parse(
+      (await page.locator('#history-state').textContent())!,
+    ) as HistoryState;
+    for (const [index, format] of formats.entries()) {
+      const expected =
+        `data:${format.mime};base64,` + (format.decoded ?? format.bytes).toString('base64');
+      expect(offline.previews[format.extension]).toBe(expected);
+      expect(offline.documents?.[history.revisions[index].file]).toEqual({
+        kind: 'image',
+        url: expected,
+        animated: false,
+      });
+      expect(readFileSync(resolve(root, history.revisions[index].file)).equals(format.bytes)).toBe(
+        true,
+      );
+    }
+    expect(requests).toEqual([]);
+    expect(readFileSync(resolve(root, SELECTION_PATH), 'utf8')).toBe('{}');
+  } finally {
+    await server.close();
+    rmSync(root, { recursive: true, force: true });
+  }
 });
