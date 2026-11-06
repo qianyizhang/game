@@ -1,0 +1,13 @@
+{
+  "sources": ["chapter-1.gif", "chapter-2.gif", "chapter-3.gif", "chapter-4.gif"],
+  "output": "story.gif",
+  "frames_per_clip": 16,
+  "frame_duration_ms": 300,
+  "transform": "Concatenate every coalesced original frame in source order/timing; no dropped frames, retouch, interpolation, crossfade or extra hold; play once.",
+  "pixel_equivalence_rgba_sha256": "072a131baef3841de998a1857c66c883022a5a62e7b3516f79a1ae0056ab48be",
+  "preview": {
+    "file": "compact.png",
+    "sha256": "8a08996837ffa89d08c20292242940f059bf5d408eab8f015db609c57ebf7460",
+    "recipe": "Selected GIF frames0/15 in chapter order; nearest-neighbor160x112,4columns\u00d72rows."
+  }
+}
