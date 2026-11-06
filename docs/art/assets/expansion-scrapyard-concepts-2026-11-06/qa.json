@@ -1,0 +1,41 @@
+{
+  "source_commit": "3a9272a151c32735cfe9f35bb547ebbcf174a2e0",
+  "delivery": "All 14 SVGs and 2 review PNGs copied byte-for-byte from the isolated continuation source. Current-main branch; no first-suite ancestor or files.",
+  "static_svg": {
+    "originals": 2,
+    "cells": 12,
+    "safety": "passed",
+    "cell_bounds": "passed",
+    "copied_geometry_and_paint": "exact; only grid translation removed"
+  },
+  "raster": {
+    "columns": ["cell", "changed_pixels", "peak_channel_delta_255", "alpha_equal"],
+    "differences": [
+      ["scrapyard-01/condenser-tower", 4, 16, false],
+      ["scrapyard-01/treadle-shear", 24, 4, true],
+      ["scrapyard-01/battery-cradle", 50, 2, true],
+      ["scrapyard-02/bellows-leaper", 16, 2, true],
+      ["scrapyard-02/coil-stalker", 36, 4, true],
+      ["scrapyard-02/wheel-impeller", 33, 6, false],
+      ["scrapyard-02/clamp-crab", 23, 2, false]
+    ],
+    "meaning": "Differences remain explicit; strict source geometry/paint identity is separately required. Inspect edge differences without claiming pixel equality.",
+    "compared": 12,
+    "identical": 5
+  },
+  "limits": "Source candidates and author self-review only. No game frame/phone/crowd acceptance, runtime slot or adoption. Central registration pending: staged-only draft blocker.",
+  "isolated_import": {
+    "assets": 0,
+    "revisions": 14,
+    "selections": 0,
+    "actual_calls": 2
+  },
+  "gallery": {
+    "browser": "154.0.8037.57",
+    "revisions_inspected": 14,
+    "call_records_inspected": 2,
+    "prompts_settings_usage_lineage": "verified",
+    "adoption": "disabled",
+    "shared_registration": "pending"
+  }
+}

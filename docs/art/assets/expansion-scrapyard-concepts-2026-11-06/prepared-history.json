@@ -1,0 +1,200 @@
+{
+  "schema": 1,
+  "assets": [],
+  "attempts": [
+    {
+      "id": "hbs-cont-20261106-scrapyard-01",
+      "title": "scrapyard-01",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Expansion source study; author review and billing evidence in call.json. User acceptance and central registration pending.",
+      "files": [
+        "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-01/call.json",
+        "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-01/review.png",
+        "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/README.md",
+        "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/qa.json"
+      ]
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-02",
+      "title": "scrapyard-02",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Expansion source study; author review and billing evidence in call.json. User acceptance and central registration pending.",
+      "files": [
+        "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/call.json",
+        "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/review.png"
+      ]
+    }
+  ],
+  "revisions": [
+    {
+      "id": "hbs-cont-20261106-scrapyard-01:original",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-01",
+      "label": "scrapyard-01 / original",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-01/original.svg",
+      "digest": "aa3c46b2c0221993ca610d1c3b32612e0badf699927864729bb9e112120e3ed0",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned native SVG bytes."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-01:cable-winch",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-01",
+      "label": "scrapyard-01 / cable-winch",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-01/cable-winch.svg",
+      "digest": "6569d56bed3fea024a629f9e3fac4b9ec2cef06341413a3f075da01108495781",
+      "parents": ["hbs-cont-20261106-scrapyard-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 1: remove translate(0 0); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-01:flywheel-press",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-01",
+      "label": "scrapyard-01 / flywheel-press",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-01/flywheel-press.svg",
+      "digest": "7fb5665e206816988fa6f76dc38c3f2a6fcea2c27e86955ab356991614f2a04f",
+      "parents": ["hbs-cont-20261106-scrapyard-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 2: remove translate(384 0); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-01:condenser-tower",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-01",
+      "label": "scrapyard-01 / condenser-tower",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-01/condenser-tower.svg",
+      "digest": "505ea18dc779ee3934463296597bead060a07c8ec76e850dca565a7287e56aa6",
+      "parents": ["hbs-cont-20261106-scrapyard-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 3: remove translate(768 0); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-01:sorting-magnet",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-01",
+      "label": "scrapyard-01 / sorting-magnet",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-01/sorting-magnet.svg",
+      "digest": "279205897be4a8396d8126fea2dbbdbc910e9f98c4c90cf61a36b4c191719845",
+      "parents": ["hbs-cont-20261106-scrapyard-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 4: remove translate(0 384); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-01:treadle-shear",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-01",
+      "label": "scrapyard-01 / treadle-shear",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-01/treadle-shear.svg",
+      "digest": "dc195cfdf17f7f96752895a66d53893417ed677bfb00ea5119536801285b9368",
+      "parents": ["hbs-cont-20261106-scrapyard-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 5: remove translate(384 384); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-01:battery-cradle",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-01",
+      "label": "scrapyard-01 / battery-cradle",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-01/battery-cradle.svg",
+      "digest": "a34272bedba4b22a4e4d1a2de3f5217131b6757fa8a0e3dcb145693fb3531bab",
+      "parents": ["hbs-cont-20261106-scrapyard-01:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 6: remove translate(768 384); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-02:original",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-02",
+      "label": "scrapyard-02 / original",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/original.svg",
+      "digest": "4efcd4c0bc097276904afa0a62012c21e65f8453231e6e7216a45f0a366974bc",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned native SVG bytes."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-02:sawback-crawler",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-02",
+      "label": "scrapyard-02 / sawback-crawler",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/sawback-crawler.svg",
+      "digest": "596778374940a0203e1462c00d0a75e11cd92992a2df7f5dde9fd7e80cf77e45",
+      "parents": ["hbs-cont-20261106-scrapyard-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 1: remove translate(0 0); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-02:bellows-leaper",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-02",
+      "label": "scrapyard-02 / bellows-leaper",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/bellows-leaper.svg",
+      "digest": "12bbc2fe545a5cf061fce1ebbeff4df190e48f2f34ae51c10a264506a22fd4f2",
+      "parents": ["hbs-cont-20261106-scrapyard-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 2: remove translate(384 0); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-02:coil-stalker",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-02",
+      "label": "scrapyard-02 / coil-stalker",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/coil-stalker.svg",
+      "digest": "3a8b8ec31f63d125f8ed14bc7fa1658553ed347617e58112b778e7ac18c9b000",
+      "parents": ["hbs-cont-20261106-scrapyard-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 3: remove translate(768 0); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-02:bucket-shield",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-02",
+      "label": "scrapyard-02 / bucket-shield",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/bucket-shield.svg",
+      "digest": "d50e8c90e83165632901d09b4c9eb97f159ed92ef99dd3954a63cff89dda2c17",
+      "parents": ["hbs-cont-20261106-scrapyard-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 4: remove translate(0 384); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-02:wheel-impeller",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-02",
+      "label": "scrapyard-02 / wheel-impeller",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/wheel-impeller.svg",
+      "digest": "5098f003ce1a75a81733bfe34384a6d18481705c5574e2b7a66d726062699699",
+      "parents": ["hbs-cont-20261106-scrapyard-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 5: remove translate(384 384); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    },
+    {
+      "id": "hbs-cont-20261106-scrapyard-02:clamp-crab",
+      "asset": null,
+      "attempt": "hbs-cont-20261106-scrapyard-02",
+      "label": "scrapyard-02 / clamp-crab",
+      "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/clamp-crab.svg",
+      "digest": "25ecd589e07afb77468de7c10c7bc610682451045b794db36cc972da8985cc5b",
+      "parents": ["hbs-cont-20261106-scrapyard-02:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 6: remove translate(768 384); retain all geometry, paint and resources; 384\u00d7384 viewBox."
+    }
+  ]
+}
