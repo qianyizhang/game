@@ -181,12 +181,12 @@ repetitions. Any adjusted significance claim requires a preregistered contrast f
 and an explicit inferential addendum, separate from descriptive study summaries. Publish
 negative results and uncertainty; future tuning needs a new version/protocol/fresh cases.
 
-The [dated adoption report](../research/experiments/2026-10-16-spire-policy.md) owns measured
+The [dated adoption report](../research/experiments/spire.md#2026-10-16-spire-policy) owns measured
 results, sparse-win limits and the source-pinned correction to original paired-win analysis.
 
 ## Current strength and historical evidence
 
-The [strength-4 confirmation](../research/experiments/2026-10-16-spire-strength-confirmation-4.md)
+The [strength-4 confirmation](../research/experiments/spire.md#2026-10-16-spire-strength-confirmation-4)
 passed every declared criterion for both characters. Its [prospective protocol](../research/experiments/2026-10-16-spire-strength-4-protocol.md)
 fixed Survival v4, exact historical Survival v1, 400 fresh primary blocks per character
 and twenty matched companion blocks. Victory within 2,000 decisions was the endpoint;
@@ -205,9 +205,9 @@ Shared benchmarks accept `--cohort NEW-NAMESPACE`,
 reuses the same prefix. Original adoption seeds and historical factories/bundles retain
 their identities; different current sources cannot certify historical reproduction.
 
-The [earlier strength report](../research/experiments/2026-10-16-spire-strength.md)
-retains both failed confirmations. Their [strength-2](../research/experiments/2026-10-16-spire-strength-protocol.md)
-and [strength-3](../research/experiments/2026-10-16-spire-strength-3-protocol.md) protocols
-remain unchanged. Those failures were not retrospectively repaired by the later
+The [earlier strength report](../research/experiments/spire.md#2026-10-16-spire-strength)
+retains both failed confirmations. Their [strength-2](../research/experiments/spire.md#2026-10-16-spire-strength-protocol)
+and [strength-3](../research/experiments/spire.md#2026-10-16-spire-strength-3-protocol) protocol
+summaries link to the unchanged originals at exact source revisions. Those failures were not retrospectively repaired by the later
 budget endpoint or successful confirmation. Dated reports own full counts, audit
 coverage and inferential limits; this page owns the current developer contract.

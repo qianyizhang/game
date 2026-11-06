@@ -8,7 +8,7 @@ into the game or watched in the replay viewer.
 The [policy development guide](policy-development.md) owns the cross-game standard.
 This page owns Night Passage's concrete API and existing evidence. Its controls,
 benchmarks and spectator are reference implementations. The completed
-[adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md)
+[adoption audit](../research/experiments/night-passage.md#2026-10-16-night-passage-rollout-review)
 adds original decision-input recording, rollout navigation and knowledge review,
 with historical/runtime limits stated explicitly.
 
@@ -136,7 +136,7 @@ only detached `Sight`; the evaluator owns exact results and replay export.
 - **Transitions:** bootstrap is marked; menus/terminal states are current. Chamber
   transitions reset history/held input. Rejected commands receive the same restricted
   view. At most `observationTicks + 3` immutable chronicles are retained; the
-  [observation comparison](../research/experiments/2026-10-15-night-passage-observation.md)
+  [observation comparison](../research/experiments/night-passage.md#2026-10-15-night-passage-observation)
   records allocation changes without changing inputs, work or replay meaning.
 - **Compute delay:** `reactionTicks + ceil(workUnits / workPerTick)`. Work meters
   marked entity scans, escape candidates and distance/threat/cover helpers; general
@@ -149,7 +149,7 @@ only detached `Sight`; the evaluator owns exact results and replay export.
   intermediate path points. Observations, ability windows and controls are shared;
   additional work can improve a choice or lose time. No ranking is forced.
 - **Axes:** Light/Standard/Heavy control presets differ from Standard/Veteran/Ordeal
-  gameplay tiers. [Calibration](../research/experiments/2026-10-14-night-passage-control.md)
+  gameplay tiers. [Calibration](../research/experiments/night-passage.md#2026-10-14-night-passage-control)
   met selected Deliberate targets at 49/50, 38/50, 16/50 escapes under Standard controls.
   Heavy is a stress preset; the mechanism is not a human latency model.
 
@@ -311,6 +311,6 @@ supply missing original knowledge for later inspection. They remain the default 
 routine iteration; opt into detailed capture only when that inspection is needed.
 
 Content-addressed bundles may be reused only when bytes match; preserve/reject a
-conflict. Report/receipt paths remain exclusive. The [workflow evidence](../research/experiments/2026-10-16-policy-workflow.md)
-verifies dispatch and inspection; the [adoption audit](../research/experiments/2026-10-16-night-passage-rollout-review.md)
+conflict. Report/receipt paths remain exclusive. The [workflow evidence](../research/experiments/workflows.md#2026-10-16-policy-workflow)
+verifies dispatch and inspection; the [adoption audit](../research/experiments/night-passage.md#2026-10-16-night-passage-rollout-review)
 records concrete review failures and fixes. Neither is a new strength comparison.

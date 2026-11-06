@@ -79,7 +79,7 @@ then fewer actions among otherwise equal victories. Report attack, threat, relic
 and native turns separately; none earns extra score by repeated acquisition/damage.
 
 This is a declared health-first objective. A speed-first objective can rank different
-policies higher. The [post hoc score assessment](../research/experiments/2026-10-16-cartographer-performance-2.md)
+policies higher. The [post hoc score assessment](../research/experiments/cartographer.md#2026-10-16-cartographer-performance-2)
 keeps those tradeoffs explicit. Original `cartographer-progress-1` studies and native
 replays remain unchanged; rescored sidecars are not fresh policy execution or reserved
 confirmation. Work counts menu,
@@ -119,17 +119,17 @@ seeds. Preserve timeouts/errors and uncertainty. Wilson intervals retain uncerta
 at all/zero wins; constant-sample and paired-binomial intervals are unavailable where
 the analyzer cannot justify them. Do not tune on reserved outcomes.
 
-The [strength development report](../research/experiments/2026-10-16-cartographer-strength-3.md)
+The [strength development report](../research/experiments/cartographer.md#2026-10-16-cartographer-strength-3)
 retains the balance and cycle investigations and candidate selection. Its reused
 development cohorts remain separate from the fresh confirmation below.
 
-The [initial adoption study](../research/experiments/2026-10-16-cartographer-policy.md)
+The [initial adoption study](../research/experiments/cartographer.md#2026-10-16-cartographer-policy)
 has saturated wins/progress. It demonstrates playable policies with distinct resource
 and turn behavior, not a total strength ordering or a calibrated win-rate difficulty
 ladder. Structured exact intentions and public arithmetic do not establish human
 equivalent perception or enjoyment.
 
-The [fresh 900-case confirmation](../research/experiments/2026-10-16-cartographer-strength-confirmation-3.md)
+The [fresh 900-case confirmation](../research/experiments/cartographer.md#2026-10-16-cartographer-strength-confirmation-3)
 passed the five predeclared statistical/playability criteria: Survival wins are
 100/100 Relaxed, 83/100 Standard and 30/100 Severe. Fifty-one living budget stops
 remain nonwins across all policies. Independent raw/native/statistical review passed. The

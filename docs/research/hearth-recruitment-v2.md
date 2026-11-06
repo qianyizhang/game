@@ -71,4 +71,4 @@ Every episode checks supply conservation after accepted commands and reconstruct
 
 ## Verified result
 
-The [frozen development and reserved evaluation](experiments/2026-10-04-hearth-recruitment-v2.md) completed and audited **1,200/1,200 lobbies**. Earlier upgrades improved Tempo's reserved mean placement in both rival populations, but Classic retained the best mean. The narrowly enabled replacement-spending intervention added little. No policy was promoted or tuned after the outcomes; the report retains all denominators, block uncertainty, disclosure controls and diagnostic receipts.
+The [frozen development and reserved evaluation](experiments/hearth.md#2026-10-04-hearth-recruitment-v2) completed and audited **1,200/1,200 lobbies**. Earlier upgrades improved Tempo's reserved mean placement in both rival populations, but Classic retained the best mean. The narrowly enabled replacement-spending intervention added little. No policy was promoted or tuned after the outcomes; the report retains all denominators, block uncertainty, disclosure controls and diagnostic receipts.
