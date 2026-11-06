@@ -1,0 +1,44 @@
+{
+  "state": "reserved-not-dispatched",
+  "grant": {
+    "id": "character-bat-family-18",
+    "ceiling_usd": 4.2,
+    "calls_authorized": 1,
+    "calls_dispatched": 0,
+    "note": "Fresh never-dispatched brief. Grant character-bat-family-17 was released without any dispatch; this is not its retry."
+  },
+  "request_file": "request.json",
+  "request_sha256": "d2b5c049dd6925c789309e644185f5b75cb7a213f60cca7688762801e41dd3c1",
+  "client_request_id_sent": false,
+  "opening_lane": {
+    "known_usage_estimate_usd": 0.964044,
+    "unknown_tortoise_usd": 7.5,
+    "unknown_badger_usd": 7.5,
+    "active_paid_calls": 0
+  },
+  "coordinator_pool_receipt": {
+    "successful_usage_estimates_usd": 7.120146,
+    "unresolved_reservations_usd": 28.0,
+    "inclusive_exposure_with_this_grant_usd": 39.320146,
+    "room_after_grant_usd": 0.679854,
+    "note": "Own 15.00 unknown holds are part of the pool 28.00; this one 4.20 grant is included once."
+  },
+  "preflight": {
+    "verified_route_author": "gpt-6.1-terra",
+    "standard_only_planning_reservation_usd": 4.2,
+    "terra_author_overcounted_bound_usd": 3.06,
+    "image_prompt_allowance_usd": 1.14,
+    "assumptions": "1.05M input at long-context 2/M plus 128K output at 7.5/M =3.06, deliberately overcounting context overlap. Image/prompt allowance covers 32768 reference-output tokens at30/M plus <=8000 UTF-8 prompt bytes at5/M and 10% contingency (1.125344<1.14). No Fast/regional processing; image allowance is a planning assumption, not an API-enforced ceiling.",
+    "decision": "Exact supported settings and 737280-pixel two-cell request fit established 4.20 planning reservation. One call, no retries or rerolls."
+  },
+  "transport": {
+    "endpoint": "https://api.openai.com/v1/images/generations",
+    "client_timeout_seconds": 1800,
+    "automatic_retries": 0,
+    "redirects": false,
+    "tls_verification": true,
+    "client_request_id": "cw-umber-bat-20261106-8506485d943b45cf9f1a6c3c27677640"
+  },
+  "new_unknown_reservations_usd": 0,
+  "source_status": "Prepared future bat normal/ascended native SVG study, no output yet."
+}
