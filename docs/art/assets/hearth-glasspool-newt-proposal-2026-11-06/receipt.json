@@ -1,0 +1,48 @@
+{
+  "state": "blocked-before-dispatch",
+  "grant": {
+    "id": "character-new-family-04",
+    "ceiling_usd": 3.0,
+    "calls_authorized": 1,
+    "calls_dispatched": 0,
+    "capacity_consumed_by_execution_usd": 0
+  },
+  "request_file": "request.json",
+  "request_sha256": "3d1064b1b30d06bf19d0496b0808463e5da85737203a6bf4ed8d3bc5bfa3fccf",
+  "prepared_client_request_id": "cw-glasspool-newt-20261106-f5e441b92fb247018f312fcad4b44066",
+  "client_request_id_sent": false,
+  "endpoint": "https://api.openai.com/v1/images/generations",
+  "automatic_retries": 0,
+  "opening_lane": {
+    "known_usage_estimate_usd": 0.894933,
+    "unknown_tortoise_usd": 7.5,
+    "unknown_badger_usd": 7.5,
+    "active_paid_calls": 0
+  },
+  "coordinator_pool_receipt": {
+    "successful_usage_estimates_usd": 6.31539,
+    "unresolved_reservations_usd": 25.0,
+    "inclusive_exposure_before_grant_usd": 31.31539,
+    "inclusive_exposure_with_this_grant_usd": 34.31539,
+    "note": "Own 15.00 historical holds are a subset of the pool 25.00, not added again. Grant capacity remains unused; coordinator can release it."
+  },
+  "preflight": {
+    "verified_route_author": "gpt-6.1-terra",
+    "existing_route_planning_reservation_usd": 4.2,
+    "grant_shortfall_usd": 1.2,
+    "terra_author_overcounted_bound_usd": 3.06,
+    "image_prompt_planning_allowance_usd": 1.14,
+    "cheaper_author_investigated": "gpt-6-luna",
+    "luna_author_overcounted_bound_usd": 0.306,
+    "luna_plus_prior_image_allowance_estimate_usd": 1.446,
+    "unverified": [
+      "A cheaper model appearing in the general API catalog does not verify its author selection/access in this SVG route.",
+      "The prior 32768 image-output-token allowance is a conservative planning assumption, not a documented/enforceable reference-output cap.",
+      "Lower complexity, canvas size or reasoning effort does not impose a hard token cap on the SVG author."
+    ],
+    "decision": "Do not dispatch under a requirement for a conservatively verified total maximum <=3.00. No supported change establishing that bound was found."
+  },
+  "new_usage_estimate_usd": 0,
+  "new_unknown_reservations_usd": 0,
+  "source_status": "Useful never-dispatched proposed family; no generated or authored artwork, no terminal attempt to register."
+}
