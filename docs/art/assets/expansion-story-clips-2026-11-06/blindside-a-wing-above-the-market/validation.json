@@ -12,5 +12,27 @@
     "technical": "16 unique480x336 frames,300ms each;original hash and aggregate decodedRGBA recorded. TEMP PNGs independently decode byte-equal to composed source frames. Chromium native initial playback checked.",
     "visual": "Author reviewed all16 at480x336 and160x112;independent preflight reviewed all16 contacts plus00/07/15native. Two supported feet/claws throughout,one attached folded coral wing,connected head/body/tail,no crop or extra bird,card/rail/moon remain visually fixed. Skyward attention readable.",
     "limits": "Head rises about30px and neck/breast elongates;visible posture/proportion drift,not just a tiny rotation or perfect scale lock. API redraw changes placement/print texture from SVG. Away uses actual taller endpoint only."
-  }
+  },
+  "away": {
+    "technical": "16unique480x336 frames,300ms each;exact originalhash/aggregateRGBA in canonical records. Native Chromium playback checked. All32 temporaryPNGframes independently decode to composedGIFRGBA.",
+    "visual": "Author inspected every actual frame at480x336 and160x112. Feet supported at0-2,push/release at3,clear sky underfeet by4,connected near/far wings open then one downstroke/glide;one bird ends fully airborne to right/up,card untouched and vacated rail readable. No birdtip crop or disappearance. Broad coral near wing,ochre face and ink tail persist.",
+    "limits": [
+      "Wing shape/feather count and near/far overlap simplify through the beat;stylized motion,not a scientific locomotion simulation.",
+      "API redraw shifts bird/rail/card/moon at chapter cut;slightly altered silhouette and palette/texture. Background is visually steady within clips,not claimed pixel-identical.",
+      "Flight goes farther/higher than requested and broad wing envelope grows;actual whole bird remains in frame. Late beak approaches moon but does not overlap."
+    ],
+    "independent_review": "Second reader reviewed all16 frames/digests:coherent support/push/release/beat/glide,no stop-level story hold. Eye landmark travels about190px right/115px up,exceeding requested100/50;final bird top about27px and beak/moon gap about15px. Proposed stylized candidate only."
+  },
+  "preview": {
+    "recipe": "Local selected derivative:Watch0,Watch15,Away4,Away15,each160x112,8-bit sRGB,4x1;no frame catalogue retained.",
+    "lossless": "PNG compression9 retained only after RGBA8 byte equality,dimensions,channels and colorspace equality to unoptimized strip;no source artwork optimized.",
+    "bytes": 74245
+  },
+  "scope": "Source-only artwork/docs. No application/runtime/shared registry/selection/gallery code edits. Canonical registration remains pending serial coordinator. Local affected-history and browser checks supplement hosted CI;no claim of full game/geometry/native suite.",
+  "gallery": "Passed production isolated import/verify and four unassigned source-study cards with originals and local assembly;canonical calls/assembly inspected,native initial GIF playback,0selections,no runtime actions. Baseline library unchanged;publication390/320px enlarged-text gallery passed. Shared nonlooping replay is not claimed.",
+  "browser": "Passed loopback Chromium native once-through9.6s playback and actual ending review;390/320px enlarged text,reduced-motion SVG,local links,no page errors/external requests,no false pause/seek controls. Screenshots temporary;not frame-exact compositor equality or shared replay proof.",
+  "checks": {
+    "history_contracts": "Pinned Node24.21.0,node --test packages/workshop-tools/art/history.test.ts:11passed,0failed. Existing meaningful contracts reused;no implementation-mirroring tests added."
+  },
+  "compact_phone": "Actual native GIF playback additionally inspected at320px phone(nooverflow) and160x112 compact Away,without reduced-motion substitution;temporary screenshots. No pageerrors. Reduced-motion fallback is checked separately."
 }

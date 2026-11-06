@@ -1,9 +1,44 @@
 {
-  "status": "prepared",
+  "status": "returned",
   "kind": "gif-edit",
   "prompt": "ONE short16-frame native GIF at480x336,300ms per frame. Original Blindside Nightjar candidate story,chapter2 AWAY. The PNG is the ACTUAL endpoint of chapter1. Begin from this exact taller skyward-looking perched bird,not an earlier pose. Preserve one forest-ink bird,coral wing planes,ochre face/feet,pale eye,long connected dark tail,the stationary curved market rail,one face-down cream/coral card on its left,and upper-right crescent. Keep the wide fixed camera,composition,cream print sky and restrained cut-paper style. No text,new objects,second bird,zoom,pan,fade,flash,teleport or scoring effect.\n\nA single short readable launch: start with both attached feet gripping the same rail. The body makes a small supported push;claws visibly release the rail as the legs extend then tuck under the SAME body. Wings unfold from TWO connected shoulders as broad overlapping feather planes,one near and one partly occluded far wing;do not create extra limbs,detached feather fans or duplicate bodies. One gentle broad downstroke produces a modest right/up movement,then the wings settle partly open in a short airborne glide. Keep feather groups economical,outer primary tips attached to the broad wing,not separate fingers or detached fans. Head/neck/breast/back/tail remain connected. The coral near wing and ochre face keep the Nightjar identity throughout;do not inflate or shrink its body between frames.\n\nThe observed change must be clear: the final bird is AIRBORNE to the right of its old perch with visible sky between its tucked feet and rail;the vacated rail and single card remain in place. Travel only about100px right and50px up from this starting endpoint,not across the whole frame. Limit wingspan to about180px. Keep EVERY head,tail,foot and wingtip well inside the frame,preferably x90-405,y65-250 in the flight part;keep at least20px top/side clearance and no moon overlap. Allow downstroke clearance by rising slightly as support releases. Do not draw wings through the rail,leave attached feet behind,land again,exit the frame or finish as a perched gaze. Calm deliberate16-frame story motion,not frantic flapping or a repeated loop. Camera,rail,card and moon stay still. End with the entire one bird visible in a readable connected airborne pose. Proposed fiction,not accepted game history.",
-  "inputs": [
-    "watch-end"
-  ],
-  "client_request_id": "78e7c67e-42f5-4f3a-96d9-b407e769aa66"
+  "inputs": ["watch-end"],
+  "client_request_id": "78e7c67e-42f5-4f3a-96d9-b407e769aa66",
+  "started_at": "2026-11-06T19:40:32Z",
+  "settings_sha256": "e67c076000649183dc4cae965e72d99e3ebdd3491fda2bf0d6067af62c7e5825",
+  "grant_id": "story-next-arc-10",
+  "reservation_usd": 1.5,
+  "block_call_index": 3,
+  "request_id": "req_c3924214ac544cfb8bfe9988e6c91b02",
+  "http_status": 200,
+  "output": "chapter-2.gif",
+  "sha256": "57dee6fb4f066b04362b9e51c8df668b59e3bd4604661fa68f92a4d26707dfb7",
+  "response": {
+    "created": 1793994081,
+    "background": "opaque",
+    "data": [
+      {
+        "generation_id": "cee2c48d-3d2c-49eb-8e3e-f6ebdfdfbdea"
+      }
+    ],
+    "output_format": "gif",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "480x336",
+    "usage": {
+      "input_tokens": 1168,
+      "input_tokens_details": {
+        "image_tokens": 630,
+        "text_tokens": 538
+      },
+      "output_tokens": 1869,
+      "output_tokens_details": {
+        "image_tokens": 1869,
+        "text_tokens": 0
+      },
+      "total_tokens": 3037
+    }
+  },
+  "cost_estimate_usd": 0.0638,
+  "elapsed_s": 49.111
 }

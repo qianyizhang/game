@@ -16,9 +16,7 @@
   "response": {
     "created": 1793993669,
     "background": "transparent",
-    "data": [
-      {}
-    ],
+    "data": [{}],
     "output_format": "svg",
     "quality": "high",
     "safety_identifier": null,
