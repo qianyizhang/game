@@ -8,10 +8,10 @@
   },
   "after": {
     "files": 26,
-    "bytes": 12427268,
+    "bytes": 12427094,
     "json_files": 11,
     "json_lines": 503,
-    "json_bytes": 30369
+    "json_bytes": 30195
   },
   "scope": "Current tree only; Git history/objects retained.",
   "retained": {

@@ -7,7 +7,7 @@
       "title": "Native SVG keyframe",
       "date": "2026-11-06",
       "outcome": "returned",
-      "notes": "Candidate fiction; source study only, no accepted canon/runtime consumer. Original output retained. PNG reference/frame/contact derivatives and exact transform lineage are supporting inputs; inspect via attempt files and frames manifest.",
+      "notes": "Candidate fiction/source study only. Exact API originals and actual sent PNG inputs retained; canonical call facts, shared settings and compact manifest replace redundant frame/contact records. No runtime consumer or acceptance.",
       "files": [
         "docs/art/assets/expansion-story-clips-2026-11-06/calls/reference.json",
         "docs/art/assets/expansion-story-clips-2026-11-06/settings.json",
@@ -19,7 +19,7 @@
       "title": "chapter-1 reference-guided GIF",
       "date": "2026-11-06",
       "outcome": "returned",
-      "notes": "Candidate fiction; source study only, no accepted canon/runtime consumer. Original output retained. PNG reference/frame/contact derivatives and exact transform lineage are supporting inputs; inspect via attempt files and frames manifest.",
+      "notes": "Candidate fiction/source study only. Exact API originals and actual sent PNG inputs retained; canonical call facts, shared settings and compact manifest replace redundant frame/contact records. No runtime consumer or acceptance.",
       "files": [
         "docs/art/assets/expansion-story-clips-2026-11-06/calls/chapter-1.json",
         "docs/art/assets/expansion-story-clips-2026-11-06/settings.json",
@@ -32,7 +32,7 @@
       "title": "chapter-2 reference-guided GIF",
       "date": "2026-11-06",
       "outcome": "returned",
-      "notes": "Candidate fiction; source study only, no accepted canon/runtime consumer. Original output retained. PNG reference/frame/contact derivatives and exact transform lineage are supporting inputs; inspect via attempt files and frames manifest.",
+      "notes": "Candidate fiction/source study only. Exact API originals and actual sent PNG inputs retained; canonical call facts, shared settings and compact manifest replace redundant frame/contact records. No runtime consumer or acceptance.",
       "files": [
         "docs/art/assets/expansion-story-clips-2026-11-06/calls/chapter-2.json",
         "docs/art/assets/expansion-story-clips-2026-11-06/settings.json",
@@ -45,7 +45,7 @@
       "title": "chapter-3 reference-guided GIF",
       "date": "2026-11-06",
       "outcome": "returned",
-      "notes": "Candidate fiction; source study only, no accepted canon/runtime consumer. Original output retained. PNG reference/frame/contact derivatives and exact transform lineage are supporting inputs; inspect via attempt files and frames manifest.",
+      "notes": "Candidate fiction/source study only. Exact API originals and actual sent PNG inputs retained; canonical call facts, shared settings and compact manifest replace redundant frame/contact records. No runtime consumer or acceptance.",
       "files": [
         "docs/art/assets/expansion-story-clips-2026-11-06/calls/chapter-3.json",
         "docs/art/assets/expansion-story-clips-2026-11-06/settings.json",
@@ -58,7 +58,7 @@
       "title": "chapter-4 reference-guided GIF",
       "date": "2026-11-06",
       "outcome": "returned",
-      "notes": "Candidate fiction; source study only, no accepted canon/runtime consumer. Original output retained. PNG reference/frame/contact derivatives and exact transform lineage are supporting inputs; inspect via attempt files and frames manifest.",
+      "notes": "Candidate fiction/source study only. Exact API originals and actual sent PNG inputs retained; canonical call facts, shared settings and compact manifest replace redundant frame/contact records. No runtime consumer or acceptance.",
       "files": [
         "docs/art/assets/expansion-story-clips-2026-11-06/calls/chapter-4.json",
         "docs/art/assets/expansion-story-clips-2026-11-06/settings.json",
@@ -71,7 +71,7 @@
       "title": "Lossless local assembly and review evidence",
       "date": "2026-11-06",
       "outcome": "manual",
-      "notes": "All original composed frames retained in order, with original 300ms delays. No interpolation, dropped frames or retouch. Evidence includes a rejected 8-bit optimization and an equivalent 16-bit candidate; neither replaces original artwork. PNGs are supporting reference/evidence documents, not game-compatible revisions.",
+      "notes": "Every original frame/timing retained in native GIF assembly; no retouch or omission. Historical diagnostic failures and recovery pointer are in review.md/manifest.json. No runtime adaptation.",
       "files": [
         "docs/art/assets/expansion-story-clips-2026-11-06/manifest.json",
         "docs/art/assets/expansion-story-clips-2026-11-06/review.md",
