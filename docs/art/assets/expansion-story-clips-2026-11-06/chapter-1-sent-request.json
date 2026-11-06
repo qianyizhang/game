@@ -1,0 +1,23 @@
+{
+  "method": "POST",
+  "url": "https://api.openai.com/v1/images/edits",
+  "authorization_binding": "OPENAI_API_TOKEN (value omitted)",
+  "https_proxy": "inherited; TLS verification enabled",
+  "automatic_retries": 0,
+  "body": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Generate one finished animated GIF chapter of an original fantasy story, not a sprite sheet or montage. Use the supplied PNG still as the STARTING composition and identity. Fixed 480x336 landscape camera, engraved fantasy illustration, forest ink, broad slate/ivory planes, muted sage cloak, ash hood hiding face, rust-red diagonal satchel strap, dark trousers, two grounded boots, bronze lantern with amber glass. Match the existing doorway, sconce, proportions, objects, palette and upper-left lighting. This is candidate fiction near Night Passage's Root Sepulcher, not established canon.\n\nOpening chapter: start in the exact supplied still. The solitary traveler notices the blocked doorway. Slowly bend the near elbow and lift the single lantern from waist level to chest/shoulder level, toward the existing empty bronze wall-sconce. Feet remain planted and the shoulder stays connected to the arm. The hood turns a few degrees to watch the lantern. Keep the two roots across the doorway unchanged. End holding the lantern close to, but NOT yet hanging in, the sconce. Final four frames hold the raised-lantern pose. This is anticipation and a choice, no portal opening yet.\n\nSixteen sequential frames, 300 milliseconds each; one deliberate action with readable anticipation and settling. This clip will be joined to other chapters; it must NOT loop back to its start. Stable camera and ground, restrained steady light, no flashing, explosions, sparkle storm, zoom or whole-image panning. No extra hands, feet, lanterns, people, masks or weapons. Keep the face hidden, anatomy continuous and scene inside the frame. Strong negative spaces and silhouettes at native 480x336 and compact 160x112. No captions, numbers, border, UI or logos. Preserve a useful still final frame. Follow the supplied current scene state instead of resetting it to an earlier chapter.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "gif",
+    "size": "480x336",
+    "frame_count": 16,
+    "frame_duration_ms": 300,
+    "images": [
+      {
+        "image_url": "[PNG data URL from reference.png; sha256=f780623d5f6be4309dd4233fc2e7bc0a6a855e18418a67c067c5300cfbed7a46]"
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "allocation_usd": 9,
+  "spent_estimate_usd": 0.4295,
+  "unresolved_reserved_usd": 0,
+  "policy": "Single sequential request stream; no automatic retries. SVG reservation $3; each small GIF $1.50. Reservation is operational headroom, not API spend-limit enforcement. Stop on unknown billing/outcome, missing usage, or cost above reservation. Do not borrow other allocations. Rates: image input 8, text input 5, image output 30 USD/M; SVG sol input 2/output10 USD/M, per published standard pricing. No charge-free assumption for failures.",
+  "calls": [
+    {
+      "name": "reference",
+      "reservation_usd": 3,
+      "state": "returned",
+      "endpoint": "https://api.openai.com/v1/images/generations",
+      "start_utc": "2026-11-06T14:42:46Z",
+      "request_id": "req_a4d63a931d364a7d971f20c259f794f1",
+      "cost_estimate_usd": 0.176445,
+      "elapsed_seconds": 283.004
+    },
+    {
+      "name": "chapter-1",
+      "reservation_usd": 1.5,
+      "state": "returned",
+      "endpoint": "https://api.openai.com/v1/images/edits",
+      "start_utc": "2026-11-06T14:48:25Z",
+      "request_id": "req_03fca4bda45c47e6b130813d6453f3bb",
+      "cost_estimate_usd": 0.063185,
+      "elapsed_seconds": 42.574
+    },
+    {
+      "name": "chapter-2",
+      "reservation_usd": 1.5,
+      "state": "returned",
+      "endpoint": "https://api.openai.com/v1/images/edits",
+      "start_utc": "2026-11-06T14:50:03Z",
+      "request_id": "req_44c4a8b3c0c7492c806d074c08f310a0",
+      "cost_estimate_usd": 0.063305,
+      "elapsed_seconds": 46.964
+    },
+    {
+      "name": "chapter-3",
+      "reservation_usd": 1.5,
+      "state": "returned",
+      "endpoint": "https://api.openai.com/v1/images/edits",
+      "start_utc": "2026-11-06T14:51:27Z",
+      "request_id": "req_42ab3358d7a64b25ab6ffe8aa659c5e9",
+      "cost_estimate_usd": 0.063245,
+      "elapsed_seconds": 39.956
+    },
+    {
+      "name": "chapter-4",
+      "reservation_usd": 1.5,
+      "state": "returned",
+      "endpoint": "https://api.openai.com/v1/images/edits",
+      "start_utc": "2026-11-06T14:52:51Z",
+      "request_id": "req_7fc1b2bc7c2c4df890579833f2b7c0ac",
+      "cost_estimate_usd": 0.06332,
+      "elapsed_seconds": 41.641
+    }
+  ]
+}

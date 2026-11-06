@@ -1,0 +1,22 @@
+{
+  "method": "POST",
+  "url": "https://api.openai.com/v1/images/generations",
+  "authorization_binding": "OPENAI_API_TOKEN (value omitted)",
+  "https_proxy": "inherited; TLS verification enabled",
+  "automatic_retries": 0,
+  "body": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create one native editable SVG keyframe for an original fantasy animated storyboard, landscape 1280 by 896, viewBox=\"0 0 1280 896\". This is the opening frame of a short candidate story called One Light Left Behind, set near the Root Sepulcher of Night Passage. No established lore is being illustrated: this traveler and event are proposals.\n\nCOMPOSITION: locked wide three-quarter stage view, broad quiet slate paving below, massive pale weathered stone doorway occupying the right half, two thick dark living roots crossing its black opening. To the LEFT of the doorway a small EMPTY bronze wall-sconce at the traveler's shoulder height. At the left third stands ONE solitary adult traveler facing right toward the doorway. Full body inside the frame: ash-gray hood hides the face, asymmetric desaturated sage cloak over a cream tunic, rust-red diagonal satchel strap, dark fitted trousers, two grounded boots. Traveler holds ONE small rectangular bronze lantern by its loop handle in the near right hand at waist height. Warm ivory flame behind amber glass, visible rim, thickness and fitted handle. The far arm hangs quietly. Slightly bent knees and a forward-leaning attentive gesture, continuous shoulder-elbow-wrist and pelvis-knee-ankle anatomy, useful negative space between legs and arm. Keep the lantern separate and readable. No weapons, other characters, extra hands or duplicating lanterns.\n\nMATERIAL AND STYLE: cohesive expressive fantasy engraving with broad sculptural planes, restrained form-following cuts and three broad value groups. Root Sepulcher vocabulary: broad slate slabs, pale coping stone, moss, roots and bronze lanterns. Forest-black ink #172928, cool slate #566861, warm ivory stone #d8d1b1, restrained sage #789579, dark root brown #594c37, bronze #ac7952, small amber light #e8b367. Upper-left diffuse light, no photorealism or plastic. Keep the doorway and traveler contours clear at 480x336 and 160x112. Ground contacts are obvious. Background subdued, no distant clutter. Door top has a flat broken arch, not a cathedral or a portal of flames. All objects stay inside a 40px safe margin.\n\nOUTPUT: static paths and simple shapes, self-contained native SVG, editable geometry. No raster images, scripts, external resources, fonts, text, numbers, UI, labels, panel borders, speech bubbles, gradients or animation. Main groups traveler, lantern, sconce, roots, doorway, ground are separable for review. This keyframe will guide a reference-image GIF workflow; design simple stable forms suitable for a traveler lifting and hanging the lantern, roots withdrawing, then walking through. Do not illustrate later actions or a sequence in this single keyframe.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1280x896",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  }
+}

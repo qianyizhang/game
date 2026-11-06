@@ -1,0 +1,14 @@
+{
+  "isolatedRoot": "/tmp/story-history-b6n3aB",
+  "command": "importHistory + verifyHistory using production store in isolated disposable copy; registry writes are atomic replacement",
+  "incomingAttempts": 6,
+  "incomingRevisions": 6,
+  "result": {
+    "assets": 709,
+    "revisions": 98,
+    "selections": 0
+  },
+  "noGameSlots": true,
+  "noRuntimeCandidates": true,
+  "selectionsUnchanged": true
+}

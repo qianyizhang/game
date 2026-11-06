@@ -1,0 +1,170 @@
+{
+  "source": "chapter-1.gif",
+  "source_sha256": "41a72bacb5a2a896b1d5e6460a8b41d40f96799a8aa3c6be43a93451029dadbd",
+  "count": 16,
+  "duration_ms": 4800,
+  "pixel_equivalence": true,
+  "raw_rgba_sha256": "9deb0d0728e7ee8c53c637f2223e7600eae9b9696c8d4ca33d79c5ce710f5652",
+  "frames": [
+    {
+      "frame": 0,
+      "file": "chapter-1-frames/frame-00.png",
+      "sha256": "1bf91018cc131008b3371e6c2c4d8c17fea710452172fdf3e14ffdc6d2e0f975",
+      "rgba_sha256": "9ba1cd7febdfb8555df664e46ff7726f119a1fba3ad35446008ef1a3d65703e8",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "0 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 0, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 1,
+      "file": "chapter-1-frames/frame-01.png",
+      "sha256": "5f40db746cba1a71b572eb5d8a59cf8b5a82464e9068d4fd92d321c2800a6879",
+      "rgba_sha256": "232aa7f582e0dcdc6fb3e0139b76908dd7e8bf7f29b7ac1e6c16c18608c4c019",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "1 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 1, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 2,
+      "file": "chapter-1-frames/frame-02.png",
+      "sha256": "c87e698af68812642e4edeb5d7696439959d803b1379fab4f97c40578f4337f8",
+      "rgba_sha256": "a8464af4851326d6ebc688eebcfc15b6c28a349467bd85bc488c89675e32d83a",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "2 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 2, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 3,
+      "file": "chapter-1-frames/frame-03.png",
+      "sha256": "d9583fd351a3889d9cf053985a8f4e1274f8e832df8b7aad0605c667408d8ddb",
+      "rgba_sha256": "7ff3e80b69ef2a2aed785785ea599481fd8647c34ac871ad019b013edcbb2437",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "3 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 3, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 4,
+      "file": "chapter-1-frames/frame-04.png",
+      "sha256": "28c707fb9781312d2edb9d9a3e1d0a8bcfe684064b740e165846f969f31e7543",
+      "rgba_sha256": "778cc7aa4c16fb0967afa20f059f9183a8563c333bf52acac30df0ce5e935c09",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "4 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 4, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 5,
+      "file": "chapter-1-frames/frame-05.png",
+      "sha256": "039a2e66bbfa120d13d1db3f354140f3b51d86edbdc4dec2ad88ed742432ffd4",
+      "rgba_sha256": "7e02ba7376d268f10a7b4e43f4a448585cd14a4720d9ea0a6570722f6f83875c",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "5 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 5, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 6,
+      "file": "chapter-1-frames/frame-06.png",
+      "sha256": "6e5ec32e3ba17eced4ffb755887669bfd961d24f23ce7fadad239daf03f5ccef",
+      "rgba_sha256": "e8c918c07602a56b1e8658877ea3a48f3301716075c583c8f4c701ae7a7f0e7b",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "6 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 6, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 7,
+      "file": "chapter-1-frames/frame-07.png",
+      "sha256": "22659d31971a94ff5767e733a190a96e198b848a0725a8da72cad74168f4721f",
+      "rgba_sha256": "ea4f2299c07ad638ca64ef5a82df1be6497d715dcecebba18b7622dea6bc9692",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "7 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 7, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 8,
+      "file": "chapter-1-frames/frame-08.png",
+      "sha256": "b4df072a2e74da8ad1c0122a1974956dea495c73db50426d93ad439fe9a9ec37",
+      "rgba_sha256": "99a034de933d15953ba0664ba99454a952a26ba9c7b168e51ea1dc7e9837a92e",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "8 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 8, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 9,
+      "file": "chapter-1-frames/frame-09.png",
+      "sha256": "c39f9625a53e812691cfa580a5d897c8b15e5876a8322a52493be74a7efdef44",
+      "rgba_sha256": "309de5cb0d825ce0e403a5e54f8f07e125b815174352ec02fb5c71232ecd210e",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "9 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 9, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 10,
+      "file": "chapter-1-frames/frame-10.png",
+      "sha256": "5e64924fab723debcc7ac1fa02979772f57cc988aeb9db822462933b996455d3",
+      "rgba_sha256": "fa7eb19930b018123ecc09919c819551f620099baef3b9709f29ce070149ff27",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "10 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 10, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 11,
+      "file": "chapter-1-frames/frame-11.png",
+      "sha256": "1c92e66c1abd9c7a456ded7127b74b3c862939bf39c22f1698d2ea5851a2b660",
+      "rgba_sha256": "3f2999c6320f025dd03ca53f1107b0efee5df9ed5d656491d431f55823017af4",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "11 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 11, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 12,
+      "file": "chapter-1-frames/frame-12.png",
+      "sha256": "a18a2ed04e27db6f982b6bb56b48afbcc2c0d1610d5d474a06ec8df86e1c4d5f",
+      "rgba_sha256": "7f6cb016ae1054bd1d9a39f6ba0dda65ac9acdfd770a1d4030befacfb66cd856",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "12 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 12, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 13,
+      "file": "chapter-1-frames/frame-13.png",
+      "sha256": "8e2ceb14b2e7ecbb30b88181489c15a6649036565362cb58caf1ca049a6214c5",
+      "rgba_sha256": "03cbb6ede6a9d10e053be210ab0c974f06db709633407e8a8f7d6b473f398dcd",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "13 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 13, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 14,
+      "file": "chapter-1-frames/frame-14.png",
+      "sha256": "015f27cdb6e938e293b79863976ced653310ca369aae43c1d3f91806c7d9c47d",
+      "rgba_sha256": "263cc293ca9d5fbd253ef30d18c6fa0d8986cdc3cedb2a6d9ce9e006a39ddc57",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "14 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 14, PNG compression level 9; no pixel edit"
+    },
+    {
+      "frame": 15,
+      "file": "chapter-1-frames/frame-15.png",
+      "sha256": "faee93e5f6c5440c6575c4517d73aae636fcdc6015de402019212b0299ca1655",
+      "rgba_sha256": "df54b7c4b9600d723bf954808d1534b350809827518070aeb325a94f226972e9",
+      "decoded": "480 336 srgb  4.0 sRGB",
+      "source_timing": "15 480 336 30 Background",
+      "parent": "chapter-1.gif",
+      "operation": "ImageMagick coalesce, composed frame 15, PNG compression level 9; no pixel edit"
+    }
+  ]
+}

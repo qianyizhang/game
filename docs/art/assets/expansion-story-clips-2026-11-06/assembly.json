@@ -1,0 +1,491 @@
+{
+  "output": "story.gif",
+  "sha256": "cae9261ad197ab316980a4221a7e15f0d9707c4a4431e953c5554bd384099aed",
+  "source_clips": ["chapter-1.gif", "chapter-2.gif", "chapter-3.gif", "chapter-4.gif"],
+  "operation": "Concatenate every original composed frame, original order and timing. No frames removed, interpolation, crossfade, crop or retouch. Per-frame local GIF palettes retained. Play once.",
+  "dimensions": [480, 336],
+  "frame_count": 64,
+  "duration_ms": 19200,
+  "transition": "Direct chapter cuts; no added holds.",
+  "pixel_equivalence_all_frames": true,
+  "rgba_sha256": "6ea18739c66363bdc1034ea618e0b859ba35ba4eb333ab55bb0e5ef49290d55d",
+  "frame_map": [
+    {
+      "chapter": 1,
+      "frame": 0,
+      "file": "chapter-1-frames/frame-00.png",
+      "duration_ms": 300,
+      "sha256": "1bf91018cc131008b3371e6c2c4d8c17fea710452172fdf3e14ffdc6d2e0f975"
+    },
+    {
+      "chapter": 1,
+      "frame": 1,
+      "file": "chapter-1-frames/frame-01.png",
+      "duration_ms": 300,
+      "sha256": "5f40db746cba1a71b572eb5d8a59cf8b5a82464e9068d4fd92d321c2800a6879"
+    },
+    {
+      "chapter": 1,
+      "frame": 2,
+      "file": "chapter-1-frames/frame-02.png",
+      "duration_ms": 300,
+      "sha256": "c87e698af68812642e4edeb5d7696439959d803b1379fab4f97c40578f4337f8"
+    },
+    {
+      "chapter": 1,
+      "frame": 3,
+      "file": "chapter-1-frames/frame-03.png",
+      "duration_ms": 300,
+      "sha256": "d9583fd351a3889d9cf053985a8f4e1274f8e832df8b7aad0605c667408d8ddb"
+    },
+    {
+      "chapter": 1,
+      "frame": 4,
+      "file": "chapter-1-frames/frame-04.png",
+      "duration_ms": 300,
+      "sha256": "28c707fb9781312d2edb9d9a3e1d0a8bcfe684064b740e165846f969f31e7543"
+    },
+    {
+      "chapter": 1,
+      "frame": 5,
+      "file": "chapter-1-frames/frame-05.png",
+      "duration_ms": 300,
+      "sha256": "039a2e66bbfa120d13d1db3f354140f3b51d86edbdc4dec2ad88ed742432ffd4"
+    },
+    {
+      "chapter": 1,
+      "frame": 6,
+      "file": "chapter-1-frames/frame-06.png",
+      "duration_ms": 300,
+      "sha256": "6e5ec32e3ba17eced4ffb755887669bfd961d24f23ce7fadad239daf03f5ccef"
+    },
+    {
+      "chapter": 1,
+      "frame": 7,
+      "file": "chapter-1-frames/frame-07.png",
+      "duration_ms": 300,
+      "sha256": "22659d31971a94ff5767e733a190a96e198b848a0725a8da72cad74168f4721f"
+    },
+    {
+      "chapter": 1,
+      "frame": 8,
+      "file": "chapter-1-frames/frame-08.png",
+      "duration_ms": 300,
+      "sha256": "b4df072a2e74da8ad1c0122a1974956dea495c73db50426d93ad439fe9a9ec37"
+    },
+    {
+      "chapter": 1,
+      "frame": 9,
+      "file": "chapter-1-frames/frame-09.png",
+      "duration_ms": 300,
+      "sha256": "c39f9625a53e812691cfa580a5d897c8b15e5876a8322a52493be74a7efdef44"
+    },
+    {
+      "chapter": 1,
+      "frame": 10,
+      "file": "chapter-1-frames/frame-10.png",
+      "duration_ms": 300,
+      "sha256": "5e64924fab723debcc7ac1fa02979772f57cc988aeb9db822462933b996455d3"
+    },
+    {
+      "chapter": 1,
+      "frame": 11,
+      "file": "chapter-1-frames/frame-11.png",
+      "duration_ms": 300,
+      "sha256": "1c92e66c1abd9c7a456ded7127b74b3c862939bf39c22f1698d2ea5851a2b660"
+    },
+    {
+      "chapter": 1,
+      "frame": 12,
+      "file": "chapter-1-frames/frame-12.png",
+      "duration_ms": 300,
+      "sha256": "a18a2ed04e27db6f982b6bb56b48afbcc2c0d1610d5d474a06ec8df86e1c4d5f"
+    },
+    {
+      "chapter": 1,
+      "frame": 13,
+      "file": "chapter-1-frames/frame-13.png",
+      "duration_ms": 300,
+      "sha256": "8e2ceb14b2e7ecbb30b88181489c15a6649036565362cb58caf1ca049a6214c5"
+    },
+    {
+      "chapter": 1,
+      "frame": 14,
+      "file": "chapter-1-frames/frame-14.png",
+      "duration_ms": 300,
+      "sha256": "015f27cdb6e938e293b79863976ced653310ca369aae43c1d3f91806c7d9c47d"
+    },
+    {
+      "chapter": 1,
+      "frame": 15,
+      "file": "chapter-1-frames/frame-15.png",
+      "duration_ms": 300,
+      "sha256": "faee93e5f6c5440c6575c4517d73aae636fcdc6015de402019212b0299ca1655"
+    },
+    {
+      "chapter": 2,
+      "frame": 0,
+      "file": "chapter-2-frames/frame-00.png",
+      "duration_ms": 300,
+      "sha256": "8723a2a23a403a2051b50b35417478bf1fdaace9a0e8db8337c54a185589cbdf"
+    },
+    {
+      "chapter": 2,
+      "frame": 1,
+      "file": "chapter-2-frames/frame-01.png",
+      "duration_ms": 300,
+      "sha256": "92f644d158759fd3b404d73fdf90c88f992422c60abc9308bb934d98db215515"
+    },
+    {
+      "chapter": 2,
+      "frame": 2,
+      "file": "chapter-2-frames/frame-02.png",
+      "duration_ms": 300,
+      "sha256": "e36ea07d85b6882166b395647818eb97ce714cc802c23fe66fb2ad061daea224"
+    },
+    {
+      "chapter": 2,
+      "frame": 3,
+      "file": "chapter-2-frames/frame-03.png",
+      "duration_ms": 300,
+      "sha256": "43bb4fd2612c49444d4c824335502b1a2e63ae304ca8815c1a8bddacaabb4c25"
+    },
+    {
+      "chapter": 2,
+      "frame": 4,
+      "file": "chapter-2-frames/frame-04.png",
+      "duration_ms": 300,
+      "sha256": "da42e99a5b6aeb6a1f8e0f5d253de2e6abcf4e9f285956eced46f7470b35cb55"
+    },
+    {
+      "chapter": 2,
+      "frame": 5,
+      "file": "chapter-2-frames/frame-05.png",
+      "duration_ms": 300,
+      "sha256": "0e993efe2080f34ab02b94bd784eadeaa3ca5c4585db3412e6d94ce78e65a5f4"
+    },
+    {
+      "chapter": 2,
+      "frame": 6,
+      "file": "chapter-2-frames/frame-06.png",
+      "duration_ms": 300,
+      "sha256": "955ccd1b8f115aacf15b96262428b742551ed92851ec063db42922857fc15470"
+    },
+    {
+      "chapter": 2,
+      "frame": 7,
+      "file": "chapter-2-frames/frame-07.png",
+      "duration_ms": 300,
+      "sha256": "336a0909caa62243f8368cb3ae805bf49adfd72d209808523860e24b3575d576"
+    },
+    {
+      "chapter": 2,
+      "frame": 8,
+      "file": "chapter-2-frames/frame-08.png",
+      "duration_ms": 300,
+      "sha256": "228d1c11ae6cf2e7b3088ad5c9357f63d6cf22410fd7b8fc9c0f9b8976db2712"
+    },
+    {
+      "chapter": 2,
+      "frame": 9,
+      "file": "chapter-2-frames/frame-09.png",
+      "duration_ms": 300,
+      "sha256": "154602266f1388718afe16ee3de8f7f77c2f91777bfe0061fcf3ec1b59449452"
+    },
+    {
+      "chapter": 2,
+      "frame": 10,
+      "file": "chapter-2-frames/frame-10.png",
+      "duration_ms": 300,
+      "sha256": "e39a825e223d85a38b8efd8e0f17722bbf2b1df01fa0f28621dcd22ab393f6ce"
+    },
+    {
+      "chapter": 2,
+      "frame": 11,
+      "file": "chapter-2-frames/frame-11.png",
+      "duration_ms": 300,
+      "sha256": "d71d74c8b29d954b302252455d3f99e9a5fc9b9375f1ebb73772eaa0f5d4209d"
+    },
+    {
+      "chapter": 2,
+      "frame": 12,
+      "file": "chapter-2-frames/frame-12.png",
+      "duration_ms": 300,
+      "sha256": "b67082b8961d391b9822ea91f8acffc6a3e205a6e47e37c0f0d9f118771a397e"
+    },
+    {
+      "chapter": 2,
+      "frame": 13,
+      "file": "chapter-2-frames/frame-13.png",
+      "duration_ms": 300,
+      "sha256": "d796be8df5e0438dcf680a8ed72c53faabb36592e952945d49711f4803204ea6"
+    },
+    {
+      "chapter": 2,
+      "frame": 14,
+      "file": "chapter-2-frames/frame-14.png",
+      "duration_ms": 300,
+      "sha256": "2298fea3769cbcbb130207deddfca49de5264bc78edec59cd2486a414b502eef"
+    },
+    {
+      "chapter": 2,
+      "frame": 15,
+      "file": "chapter-2-frames/frame-15.png",
+      "duration_ms": 300,
+      "sha256": "935991a7bc9888c345ecb2cf3144b02c935510d612ef2583a17680358d114b24"
+    },
+    {
+      "chapter": 3,
+      "frame": 0,
+      "file": "chapter-3-frames/frame-00.png",
+      "duration_ms": 300,
+      "sha256": "d4b01ed618bcebbe738b97a1c9981e9fa3d859e5488eb5208fb4a59a58dba7ff"
+    },
+    {
+      "chapter": 3,
+      "frame": 1,
+      "file": "chapter-3-frames/frame-01.png",
+      "duration_ms": 300,
+      "sha256": "95be8639046652df47d9c78bfe7f9fcdab6438058d94e7107be84ac3c08a3690"
+    },
+    {
+      "chapter": 3,
+      "frame": 2,
+      "file": "chapter-3-frames/frame-02.png",
+      "duration_ms": 300,
+      "sha256": "2ea93e81df5f6eefed2d68549cf0ba1c8b1412f5ea9bc6aced97b8242053af71"
+    },
+    {
+      "chapter": 3,
+      "frame": 3,
+      "file": "chapter-3-frames/frame-03.png",
+      "duration_ms": 300,
+      "sha256": "9b0ac2b1a992a63d1ae02d77dc0b19bd02d6d0a90f7542de77f3c6ed12a92ccf"
+    },
+    {
+      "chapter": 3,
+      "frame": 4,
+      "file": "chapter-3-frames/frame-04.png",
+      "duration_ms": 300,
+      "sha256": "0441244f5d265be315c8b36394e35327ef31efc9ce07259c92321ce3226c680c"
+    },
+    {
+      "chapter": 3,
+      "frame": 5,
+      "file": "chapter-3-frames/frame-05.png",
+      "duration_ms": 300,
+      "sha256": "e139ff0078c9db7eab484598757496ce42de40f59a6bb6cc08f2df6801569c44"
+    },
+    {
+      "chapter": 3,
+      "frame": 6,
+      "file": "chapter-3-frames/frame-06.png",
+      "duration_ms": 300,
+      "sha256": "bdc15ada9a46bc4671bf33eacc6c818d13ce8dffe035e776fdfba72fac53f2bb"
+    },
+    {
+      "chapter": 3,
+      "frame": 7,
+      "file": "chapter-3-frames/frame-07.png",
+      "duration_ms": 300,
+      "sha256": "b77496082d3b1d52b976fc9569e5e0d0eb8f5339e9b4fb94dd3b698d17382802"
+    },
+    {
+      "chapter": 3,
+      "frame": 8,
+      "file": "chapter-3-frames/frame-08.png",
+      "duration_ms": 300,
+      "sha256": "e6a8b48767b763f89d49c8ceec89e184e939edb2114ac337f687667925264888"
+    },
+    {
+      "chapter": 3,
+      "frame": 9,
+      "file": "chapter-3-frames/frame-09.png",
+      "duration_ms": 300,
+      "sha256": "d26eed636c8763fcdc849566ae4befe2c7b69574281c17579881db4a06ad5f20"
+    },
+    {
+      "chapter": 3,
+      "frame": 10,
+      "file": "chapter-3-frames/frame-10.png",
+      "duration_ms": 300,
+      "sha256": "3d1c1b114f5d75eb07e967ee84d8eb4b259b5370ed03280ba6aacf3b43913fc3"
+    },
+    {
+      "chapter": 3,
+      "frame": 11,
+      "file": "chapter-3-frames/frame-11.png",
+      "duration_ms": 300,
+      "sha256": "a8c2f613e8a1d92edc63c85008e47dbd290abe1da3e875b21e440df0c4ea2d2b"
+    },
+    {
+      "chapter": 3,
+      "frame": 12,
+      "file": "chapter-3-frames/frame-12.png",
+      "duration_ms": 300,
+      "sha256": "afb2208b10c4df418089afdf80d3803838ffec77a89f5c86b101c035ff3acb50"
+    },
+    {
+      "chapter": 3,
+      "frame": 13,
+      "file": "chapter-3-frames/frame-13.png",
+      "duration_ms": 300,
+      "sha256": "7bf52d857a4f9f4541b1c39ea281f1276ff08192a21fa97a091582dc6fd2c34a"
+    },
+    {
+      "chapter": 3,
+      "frame": 14,
+      "file": "chapter-3-frames/frame-14.png",
+      "duration_ms": 300,
+      "sha256": "3241f672904658097a7ce98cb49e6761ca549a12a5f67bb861faf21b319117fb"
+    },
+    {
+      "chapter": 3,
+      "frame": 15,
+      "file": "chapter-3-frames/frame-15.png",
+      "duration_ms": 300,
+      "sha256": "4c57405d103d7aed73d00f0d091fb5c154377ef4f31a2cf108cb458e62a37645"
+    },
+    {
+      "chapter": 4,
+      "frame": 0,
+      "file": "chapter-4-frames/frame-00.png",
+      "duration_ms": 300,
+      "sha256": "5076eb082cf5bc658ddcf3e29e78af599007e086c7f35daae6da49b99cdd2f22"
+    },
+    {
+      "chapter": 4,
+      "frame": 1,
+      "file": "chapter-4-frames/frame-01.png",
+      "duration_ms": 300,
+      "sha256": "dcd3e481ab2fa7b712572ae407fed47b1daaca55c63dd57136e7ed5c6344bf2e"
+    },
+    {
+      "chapter": 4,
+      "frame": 2,
+      "file": "chapter-4-frames/frame-02.png",
+      "duration_ms": 300,
+      "sha256": "ec06bed551f8d0db12305013df07b93a11d4144b920029b9c15e09c55004bfa1"
+    },
+    {
+      "chapter": 4,
+      "frame": 3,
+      "file": "chapter-4-frames/frame-03.png",
+      "duration_ms": 300,
+      "sha256": "448672e1e837210587a66fc4cde9827f850a23cf9e5a1b013164622a318668a3"
+    },
+    {
+      "chapter": 4,
+      "frame": 4,
+      "file": "chapter-4-frames/frame-04.png",
+      "duration_ms": 300,
+      "sha256": "87be097de2845be02084eaf0b436545b1fd81abc8d60bef5fc91ffb362d2f536"
+    },
+    {
+      "chapter": 4,
+      "frame": 5,
+      "file": "chapter-4-frames/frame-05.png",
+      "duration_ms": 300,
+      "sha256": "610b470c698105add342d57d794229e629719c13696354d6cd162f419bffd55c"
+    },
+    {
+      "chapter": 4,
+      "frame": 6,
+      "file": "chapter-4-frames/frame-06.png",
+      "duration_ms": 300,
+      "sha256": "093f3d10a8d54b311f966355911e6d7ba0b96f8a0b30b1fde2f14136e3fd5344"
+    },
+    {
+      "chapter": 4,
+      "frame": 7,
+      "file": "chapter-4-frames/frame-07.png",
+      "duration_ms": 300,
+      "sha256": "28aa294469dbf903d435506d84fec7bf6e5afcbc1c7e4578b92453f7fd790592"
+    },
+    {
+      "chapter": 4,
+      "frame": 8,
+      "file": "chapter-4-frames/frame-08.png",
+      "duration_ms": 300,
+      "sha256": "073d2f5c32932525f589589ff8417347d5595d14445a912b0830cd9baeefb7f8"
+    },
+    {
+      "chapter": 4,
+      "frame": 9,
+      "file": "chapter-4-frames/frame-09.png",
+      "duration_ms": 300,
+      "sha256": "183a9811469e2ac19915af680bb085f4cc6a10154861631b420dfd21bf807ec7"
+    },
+    {
+      "chapter": 4,
+      "frame": 10,
+      "file": "chapter-4-frames/frame-10.png",
+      "duration_ms": 300,
+      "sha256": "e8355235805b417a023bd64af0db71de10608648f3fa6db81ae02c83ef53cec7"
+    },
+    {
+      "chapter": 4,
+      "frame": 11,
+      "file": "chapter-4-frames/frame-11.png",
+      "duration_ms": 300,
+      "sha256": "d6602d3130f9ac129bab7d1c7602defc43a770d9d4410a05948e1a4e5721edca"
+    },
+    {
+      "chapter": 4,
+      "frame": 12,
+      "file": "chapter-4-frames/frame-12.png",
+      "duration_ms": 300,
+      "sha256": "766f36e63df549c14f3e13c55a120dace37c0b9d7f3852786bec14af10b4d348"
+    },
+    {
+      "chapter": 4,
+      "frame": 13,
+      "file": "chapter-4-frames/frame-13.png",
+      "duration_ms": 300,
+      "sha256": "0ad1fb7a2466570ca042a58d582c4f1ef940078f0a8057586f61cc1875df77de"
+    },
+    {
+      "chapter": 4,
+      "frame": 14,
+      "file": "chapter-4-frames/frame-14.png",
+      "duration_ms": 300,
+      "sha256": "967863b1db82e973c72ca0708e327f8f0b3fd5ca3df1c8556c3eeadee945f6b9"
+    },
+    {
+      "chapter": 4,
+      "frame": 15,
+      "file": "chapter-4-frames/frame-15.png",
+      "duration_ms": 300,
+      "sha256": "b9efff17d1fe5164e5cc408817c8b7c01ca656382a1fe3deb0fc3fa64eb75ec2"
+    }
+  ],
+  "joins": [
+    {
+      "from": 1,
+      "to": 2,
+      "changed_pixel_fraction": 1.0,
+      "rgba_mean_absolute_difference_0_255": 21.27290736607143,
+      "note": "Fresh generation from a still, not pixel-matched continuation; see joins.png."
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "changed_pixel_fraction": 1.0,
+      "rgba_mean_absolute_difference_0_255": 22.55901382688492,
+      "note": "Fresh generation from a still, not pixel-matched continuation; see joins.png."
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "changed_pixel_fraction": 1.0,
+      "rgba_mean_absolute_difference_0_255": 14.662202380952381,
+      "note": "Fresh generation from a still, not pixel-matched continuation; see joins.png."
+    }
+  ],
+  "contact_sheets": {
+    "storyboard.png": "4 columns by 2 rows, chapter order left-right; opening row then ending row; thumbnails 320x224",
+    "joins.png": "3 rows, each previous last frame left and next first frame right, native 480x336",
+    "compact.png": "Same opening/ending layout at 160x112",
+    "chapter-N-contact.png": "4 columns by 4 rows, all sixteen frames chronological left-right, top-bottom, thumbnails 240x168"
+  }
+}

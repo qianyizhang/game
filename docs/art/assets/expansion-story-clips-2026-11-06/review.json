@@ -1,0 +1,57 @@
+{
+  "status": "Delivered author self-review; user aesthetic/canon acceptance unrecorded",
+  "reference": {
+    "verdict": "useful reference",
+    "review_sizes": [
+      [1280, 896],
+      [480, 336],
+      [160, 112]
+    ],
+    "findings": "Connected hooded traveler, leg support and hand/lantern contour read clearly. Strong doorway and two root diagonals. Sconce is a cup, not a hook; next prompt places lantern base on cup. Quiet slate/ivory/bronze palette grounded in Root Sepulcher. Background fills canvas; subject margins inspected visually. No source runtime slot."
+  },
+  "chapter-1": {
+    "verdict": "useful raise-lantern study",
+    "frames_inspected": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    "findings": "All 16 contact frames inspected: deliberate incremental lift, stable doorway and root identity, no duplicate lantern. Body remains supported; elbow/hand appear connected. Last frames retain small changes rather than a perfect four-frame hold. Face remains hidden. Fresh rendering softens the SVG edges slightly. End state usable as chapter-2 reference.",
+    "motion_limitations": "Contact sheet establishes gesture progression; browser playback still pending."
+  },
+  "extraction_warning": "ImageMagick warned about a nonstandard C2PA GIF profile keyword in PNG metadata. Originals retained byte-for-byte; composed RGBA equality verified for every extracted frame. No frame removed or repainted.",
+  "chapter-2": {
+    "verdict": "useful offering/action study; minor sconce geometry drift",
+    "frames_inspected": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    "findings": "Traveler steps forward, places the single lantern against the wall fixture, visibly releases it and lowers the empty hand. One lantern remains and the roots stay sealed. Hood/cloak/satchel identity remains clear. The wall fixture evolves from its cup shape toward a support/bracket; exact sconce geometry is not preserved. Hand is simplified but does not visibly duplicate; alternating leg support is brief. Final pose settles well.",
+    "motion_limitations": "Contact-sheet review complete; browser sequence playback pending."
+  },
+  "chapter-3": {
+    "verdict": "useful root-withdrawal consequence",
+    "frames_inspected": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    "findings": "Two thick blocking diagonals bend away from the center toward the right jamb. Opening becomes visibly traversable. Traveler remains still with empty hands, lantern stays on fixture. Large contour change survives compact scale. Root bends are stylized rather than physically simulated and final roots remain visible at right edge; they do not vanish. Some quiet background repainting and stone-edge drift remain.",
+    "motion_limitations": "All frames retained; browser sequence playback pending."
+  },
+  "chapter-4": {
+    "verdict": "useful ending study; walk has stylized support and a short fade",
+    "frames_inspected": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    "findings": "Traveler takes alternating visible steps toward and into opening. Hood, cloak and red strap persist; both hands stay empty. Cloak has secondary motion and moves behind the doorway. Late frames fade the remaining silhouette into darkness rather than using occlusion alone. Only final two frames are fully empty/still, less than requested five. Lantern stays outside, completing the story. No dropped frames or retouch."
+  },
+  "assembly": {
+    "verdict": "connected narrative with visible chapter cuts, not a seamless continuous shot",
+    "findings": "All 64 original frames concatenated at original timing, 19.2s. Decoded RGBA bytes match every source frame. Fresh generations repaint almost every pixel at joins and have visible palette/edge changes; scene identity remains recognizable. Exact original clips remain separate.",
+    "review_pending": [],
+    "completed_review": [
+      "All 64 frames through chronological contact sheets",
+      "Native final and walking frames",
+      "160x112 opening/ending compact sheet",
+      "Native-size chapter joins",
+      "Full real-time 19.2s player playback",
+      "Mobile layout and enlarged body text",
+      "Every source revision and request in isolated production gallery"
+    ]
+  },
+  "holds": [
+    "Visible palette/stone/sconce drift at chapter cuts; not seamless continuity",
+    "Shortened final hold and late silhouette fade",
+    "Source studies lack an owning runtime consumer; no adoption or compatibility claim",
+    "Central registration pending; additive bundle validated only in isolation",
+    "Repository Google Chrome E2E suite not run; disposable Chromium review probe reported separately"
+  ]
+}
