@@ -14,6 +14,26 @@
         "docs/art/assets/directional-emberwake-enemies-2026-11-06/budget.json",
         "docs/art/assets/directional-emberwake-enemies-2026-11-06/baseline.png"
       ]
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01",
+      "title": "Focused acolyte four-quarter SVG refinement",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One separately reserved USD3 request; actual USD0.095271. New head/boot angles and 27.7\u201328.7\u00d732.6\u201332.9px footprint, but missing torso panels make raw sheet/extracts held. Text design continuity only; no image input. Exact original preserved.",
+      "files": [
+        "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/request.json",
+        "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/budget.json",
+        "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/receipt.json"
+      ]
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01-torso-repair",
+      "title": "Repair transparent acolyte waist panels in native SVG",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "Added four explicit torso value-plane paths per view behind the existing arms/mantle/belt. All original vector elements retained unchanged. Separate derivatives; no API request or extra cost. Self-reviewed candidates, not runtime adoption.",
+      "files": ["docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/README.md"]
     }
   ],
   "revisions": [
@@ -124,6 +144,119 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted named group cultist-nw, cell [1152,384,384,384]. Only outer sheet translation removed; local paths/colors unchanged; standalone 384\u00d7384. Actual visible bounds about 20\u00d732px at 0.1 scale; width under target. Front pair and rear pair are too similar for a four-heading set. Retained, not selected."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01-original",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-refinement-01",
+      "label": "Exact acolyte refinement sheet \u00b7 held waist gaps",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/original.svg",
+      "digest": "898790d34bd2ce50d1afab253afcfab6784d444b13181fa63cff07db44b92262",
+      "parents": [
+        "emberwake-directional-2026-11-06-cultist-se",
+        "emberwake-directional-2026-11-06-cultist-sw",
+        "emberwake-directional-2026-11-06-cultist-ne",
+        "emberwake-directional-2026-11-06-cultist-nw"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "1536\u00d7768 original API bytes, 2\u00d72 arrangement of four centered 384px square workspaces. Parents are inspected design references described in text, not image inputs or pixel transformations. Improved opposing face/foot angles and width; transparent waist gaps remain held."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01-cultist-se",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-refinement-01",
+      "label": "Held generated acolyte \u00b7 SE",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/cultist-se.svg",
+      "digest": "0c28cf8971412a413080b39762bd9f453491931e366d8a8fc67ed44b4c04e1f9",
+      "parents": ["emberwake-directional-2026-11-06-refinement-01-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact cell workspace [192,0,384,384]; only outer translation removed. Missing torso below mantle/above belt remains visible; retained as generated source."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01-cultist-se-repaired",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-refinement-01-torso-repair",
+      "label": "Repaired acolyte quarter candidate \u00b7 SE",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/cultist-se-repaired.svg",
+      "digest": "4311467731974f023fa0402f23b30bd33b4cf94bd2f6f7a87cee54186f1d7435",
+      "parents": ["emberwake-directional-2026-11-06-refinement-01-cultist-se"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Four hand-authored torso planes inserted after staff collar, behind all existing body/arm/mantle/belt geometry. No source path changed. Transparent waist gap repaired without rescaling, mirroring or changing gear. Candidate for review; canonical import and game adoption remain separate."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01-cultist-sw",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-refinement-01",
+      "label": "Held generated acolyte \u00b7 SW",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/cultist-sw.svg",
+      "digest": "a814630ce688ea0ae692281d30d1b91cf2d2862aad801af2e9a2a83fb24f5fcd",
+      "parents": ["emberwake-directional-2026-11-06-refinement-01-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact cell workspace [960,0,384,384]; only outer translation removed. Missing torso below mantle/above belt remains visible; retained as generated source."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01-cultist-sw-repaired",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-refinement-01-torso-repair",
+      "label": "Repaired acolyte quarter candidate \u00b7 SW",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/cultist-sw-repaired.svg",
+      "digest": "e2676d0357f604e28576248eace819dcf1e13db5f71d0b381a8bfdb6ac626057",
+      "parents": ["emberwake-directional-2026-11-06-refinement-01-cultist-sw"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Four hand-authored torso planes inserted after staff collar, behind all existing body/arm/mantle/belt geometry. No source path changed. Transparent waist gap repaired without rescaling, mirroring or changing gear. Candidate for review; canonical import and game adoption remain separate."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01-cultist-ne",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-refinement-01",
+      "label": "Held generated acolyte \u00b7 NE",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/cultist-ne.svg",
+      "digest": "5631326e187c7ab69466d47b9d21c7e44f7554c9ca7a2aa242df55dbe88d926d",
+      "parents": ["emberwake-directional-2026-11-06-refinement-01-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact cell workspace [192,384,384,384]; only outer translation removed. Missing torso below mantle/above belt remains visible; retained as generated source."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01-cultist-ne-repaired",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-refinement-01-torso-repair",
+      "label": "Repaired acolyte quarter candidate \u00b7 NE",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/cultist-ne-repaired.svg",
+      "digest": "26838548b1c6805219ca1e7f8fdd9f360476a648886d8dfbba656eecfb15365c",
+      "parents": ["emberwake-directional-2026-11-06-refinement-01-cultist-ne"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Four hand-authored torso planes inserted after staff collar, behind all existing body/arm/mantle/belt geometry. No source path changed. Transparent waist gap repaired without rescaling, mirroring or changing gear. Candidate for review; canonical import and game adoption remain separate."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01-cultist-nw",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-refinement-01",
+      "label": "Held generated acolyte \u00b7 NW",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/cultist-nw.svg",
+      "digest": "cfc913bdd25fc864ac678253fd228b5baeeef1a32fc00253b13e2bd779401a28",
+      "parents": ["emberwake-directional-2026-11-06-refinement-01-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact cell workspace [960,384,384,384]; only outer translation removed. Missing torso below mantle/above belt remains visible; retained as generated source."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-refinement-01-cultist-nw-repaired",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-refinement-01-torso-repair",
+      "label": "Repaired acolyte quarter candidate \u00b7 NW",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/refinement-01/cultist-nw-repaired.svg",
+      "digest": "fe50006e417475f4baa94dfea23645f80221076e63d4ae80f9c65a9c2fc545e3",
+      "parents": ["emberwake-directional-2026-11-06-refinement-01-cultist-nw"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Four hand-authored torso planes inserted after staff collar, behind all existing body/arm/mantle/belt geometry. No source path changed. Transparent waist gap repaired without rescaling, mirroring or changing gear. Candidate for review; canonical import and game adoption remain separate."
     }
   ]
 }

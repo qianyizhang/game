@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cinder acolyte · focused directional refinement</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        background: #1d222b;
+        color: #e7ddcc;
+        font:
+          16px/1.5 system-ui,
+          sans-serif;
+      }
+      body {
+        max-width: 1150px;
+        margin: auto;
+        padding: 32px;
+      }
+      h1 {
+        font-size: clamp(25px, 4vw, 42px);
+        line-height: 1.2;
+      }
+      h2 {
+        font-size: 22px;
+      }
+      p {
+        max-width: 80ch;
+        color: #c7bcae;
+      }
+      a {
+        color: #edb58c;
+      }
+      .eyebrow {
+        letter-spacing: 0.18em;
+        color: #df9c7c;
+        font-size: 12px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      figure {
+        margin: 0;
+        border: 1px solid #4e4946;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #272e37;
+      }
+      figcaption {
+        padding: 10px 14px;
+        font-size: 13px;
+        background: #211f26;
+      }
+      .large {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 176px;
+        background-color: #2e343f;
+        background-image:
+          linear-gradient(45deg, #393e480e 25%, transparent 25%),
+          linear-gradient(-45deg, #666d7510 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #393e4810 75%),
+          linear-gradient(-45deg, transparent 75%, #666d7510 75%);
+        background-size: 32px 32px;
+      }
+      .large img {
+        width: 153.6px;
+        height: 153.6px;
+        object-fit: contain;
+      }
+      .native {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 8px;
+        background:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 31px,
+            #686f7b25 31px,
+            #686f7b25 32px
+          ),
+          repeating-linear-gradient(90deg, #293b34, #293b34 31px, #686f7b25 31px, #686f7b25 32px);
+        height: 62px;
+      }
+      .native div {
+        text-align: center;
+        font-size: 10px;
+        color: #d9d0be;
+      }
+      .native img {
+        display: block;
+        margin: auto;
+        object-fit: contain;
+      }
+      .field {
+        width: 38.4px;
+        height: 38.4px;
+      }
+      .compact {
+        width: 32px;
+        height: 32px;
+      }
+      .legend {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        font-size: 13px;
+      }
+      .badge {
+        display: inline-block;
+        border: 1px solid #976e52;
+        border-radius: 30px;
+        padding: 4px 12px;
+        color: #edc6a5;
+      }
+      .baseline {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+      }
+      .sheet {
+        max-width: 100%;
+        height: auto;
+        background: #272e37;
+      }
+      details {
+        margin: 24px 0;
+        padding: 14px;
+        border: 1px solid #4e4946;
+        border-radius: 12px;
+      }
+      summary {
+        cursor: pointer;
+      }
+      footer {
+        border-top: 1px solid #4e4946;
+        margin-top: 32px;
+        padding-top: 12px;
+        font-size: 13px;
+        color: #b8a99b;
+      }
+      @media (max-width: 640px) {
+        body {
+          padding: 18px;
+        }
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .large {
+          min-height: 158px;
+        }
+        .large img {
+          width: 138px;
+          height: 138px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="eyebrow">EMBERWAKE / ACOLYTE QUARTERS 02</div>
+    <h1>Turn the cloth, keep the character</h1>
+    <p>
+      <strong>Four repaired SVG candidates.</strong> Opposing face/boot angles and
+      27.7–28.7×32.6–32.9px visible footprints improve on the narrow pilot. Exact generated outputs
+      remain below: the refinement introduced transparent waist gaps, repaired separately with four
+      native torso planes per view.
+    </p>
+    <div class="legend">
+      <span class="badge">Draft source study · no game adoption</span
+      ><span>One focused call · US$0.095271</span><span>No hound reroll</span>
+    </div>
+    <h2>Repaired candidate quarters</h2>
+    <p>
+      Native torso joins restore mantle-to-belt support. Painted cloth and equipment stay attached;
+      both front and rear quarters remain candidates for review. Upper: 4× inspection. Lower: 1×
+      target scale and tighter 32px canvas.
+    </p>
+    <div class="grid">
+      <figure>
+        <div class="large">
+          <img src="cultist-se-repaired.svg" alt="Repaired candidate quarters, SE" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="cultist-se-repaired.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-se-repaired.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-se-repaired.svg">SE</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="cultist-sw-repaired.svg" alt="Repaired candidate quarters, SW" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="cultist-sw-repaired.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-sw-repaired.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-sw-repaired.svg">SW</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="cultist-ne-repaired.svg" alt="Repaired candidate quarters, NE" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="cultist-ne-repaired.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-ne-repaired.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-ne-repaired.svg">NE</a> · rear-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="cultist-nw-repaired.svg" alt="Repaired candidate quarters, NW" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="cultist-nw-repaired.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-nw-repaired.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-nw-repaired.svg">NW</a> · rear-quarter</figcaption>
+      </figure>
+    </div>
+    <h2>Exact generated refinement · held waist gaps</h2>
+    <p>
+      These untouched extracts show the missing body panels. Retained as the generated parent; do
+      not select these as finished figures. Upper: 4× inspection. Lower: 1× target scale and tighter
+      32px canvas.
+    </p>
+    <div class="grid">
+      <figure>
+        <div class="large">
+          <img src="cultist-se.svg" alt="Exact generated refinement · held waist gaps, SE" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="cultist-se.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-se.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-se.svg">SE</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="cultist-sw.svg" alt="Exact generated refinement · held waist gaps, SW" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="cultist-sw.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-sw.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-sw.svg">SW</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="cultist-ne.svg" alt="Exact generated refinement · held waist gaps, NE" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="cultist-ne.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-ne.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-ne.svg">NE</a> · rear-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="cultist-nw.svg" alt="Exact generated refinement · held waist gaps, NW" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="cultist-nw.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-nw.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-nw.svg">NW</a> · rear-quarter</figcaption>
+      </figure>
+    </div>
+    <h2>Initial pilot · held duplicate headings</h2>
+    <p>
+      The first source remains unchanged. It is narrower at approximately 20×32px, and the paired
+      headings repeat. All three rows use the same 38.4px native canvas, not fitted-to-bounds
+      enlargement. Upper: 4× inspection. Lower: 1× target scale and tighter 32px canvas.
+    </p>
+    <div class="grid">
+      <figure>
+        <div class="large">
+          <img src="../cultist-se.svg" alt="Initial pilot · held duplicate headings, SE" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="../cultist-se.svg" alt="" />1× target</div>
+          <div><img class="compact" src="../cultist-se.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="../cultist-se.svg">SE</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="../cultist-sw.svg" alt="Initial pilot · held duplicate headings, SW" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="../cultist-sw.svg" alt="" />1× target</div>
+          <div><img class="compact" src="../cultist-sw.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="../cultist-sw.svg">SW</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="../cultist-ne.svg" alt="Initial pilot · held duplicate headings, NE" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="../cultist-ne.svg" alt="" />1× target</div>
+          <div><img class="compact" src="../cultist-ne.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="../cultist-ne.svg">NE</a> · rear-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large">
+          <img src="../cultist-nw.svg" alt="Initial pilot · held duplicate headings, NW" />
+        </div>
+        <div class="native">
+          <div><img class="field" src="../cultist-nw.svg" alt="" />1× target</div>
+          <div><img class="compact" src="../cultist-nw.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="../cultist-nw.svg">NW</a> · rear-quarter</figcaption>
+      </figure>
+    </div>
+    <details>
+      <summary>Preserved exact sheet, references and provenance</summary>
+      <p>
+        <a href="original.svg">Exact generated refinement sheet</a> ·
+        <a href="../original.svg">Exact initial eight-view sheet</a> ·
+        <a href="../preview.html">Initial hound/acolyte preview</a>
+      </p>
+      <p>
+        <a href="README.md">Review and manual repair</a> ·
+        <a href="request.json">Exact shared request</a> · <a href="receipt.json">Usage</a> ·
+        <a href="budget.json">Reservation</a> · <a href="validation.json">Validation</a> ·
+        <a href="../history-import.json">Staged lineage import</a>
+      </p>
+      <p>
+        Palette, hood, ivory left-shoulder stitches, right-hand bent staff and left-hand ember
+        carried forward by text specification. Native SVG generation has no image-input reference;
+        image-conditioned consistency is not claimed. Twelve generated views across two calls; four
+        separately repaired derivatives. Zero animation frames.
+      </p>
+    </details>
+    <footer>
+      Self-review candidates. Canonical gallery registration remains staged and blocks merge-ready
+      status. No runtime or shared selections changed.
+    </footer>
+  </body>
+</html>

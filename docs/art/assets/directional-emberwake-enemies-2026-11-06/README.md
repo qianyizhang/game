@@ -2,7 +2,18 @@
 
 Candidate-only Ash hound (`hound`) and Cinder acolyte (`cultist`) direction study.
 Base: `3a59621069dd1fe912a749d851d27e993507f5dd`, fetched current main on
-2026-11-06. No runtime adoption or publication is authorized in this lane.
+2026-11-06. Normal push and draft PR publication were authorized by the
+coordinating session after the initial local study. Runtime adoption and merge
+remain outside this lane. Canonical gallery registration is coordinated serially;
+the staged import is an explicit draft blocker.
+
+The [focused acolyte refinement](refinement-01/README.md) and
+[latest comparison](refinement-01/preview.html) add four wider, distinct quarters
+with a separately documented native torso repair. Current useful candidates are
+four hounds plus four repaired acolytes; both exact generated sheets and all
+held cells remain preserved. Lane spend is US$0.238068 across two paid calls.
+No third call is authorized. Canonical import remains staged for the serial
+registration coordinator; this is draft candidate work, not merge-ready adoption.
 
 ## Admission and source brief
 
@@ -10,7 +21,7 @@ The inspected [baseline](baseline.png) shows the actual current `figure` rendere
 at 4× and native scale beside authored Rook and Hollow archer. `hound` uses the
 shared `beast` polygon, while `cultist` uses the generic robed figure. Reusing
 these silhouettes cannot supply genuine front/rear diagonal views or the authored
-anatomy, cloth and gear detail present in the siblings. A candidate replacement
+anatomy, cloth and gear detail present in the siblings. An optional candidate refinement
 study is justified for that specific gap. Generic shapes remain required for
 mods and bosses, so replacing a shared shape would break other named uses.
 
@@ -38,7 +49,7 @@ readability before further expansion. The art lane owns its original sheet,
 extracts and compact provenance; temporary PNG measurements and gallery exports
 stay under ignored `test-results/`. It does not create a second runtime package.
 
-## Request and spending
+## Initial pilot request and spending
 
 [request.json](request.json) is the exact single sent request and prompt.
 [budget.json](budget.json) records the pre-send bound and pricing sources.
@@ -63,9 +74,11 @@ image priced at **max** quality despite the explicit **high** request, and promp
 text conservatively priced using its UTF-8 byte count. No local estimate is an
 account-balance verification. The disconnected historical US$7.50 reservation
 belongs to another lane and is neither retried nor released here. Any uncertain
-outcome holds the entire US$3; no automatic retries or second paid request.
+outcome holds the entire US$3. The initial grant covered one call with no
+automatic retries; the separately reserved continuation below owns the focused
+refinement call.
 
-## Outputs and visual review
+## Initial pilot outputs and visual review
 
 Open [preview.html](preview.html) for a directional/native-size comparison and
 [overview.png](overview.png) for the selected review evidence. The exact generated
@@ -91,11 +104,10 @@ four convincing diagonal views. Actual width is 20–20.3px at 32.2–32.4px hei
 below the approximately 30×33px intended footprint. All four are retained and
 held. Do not relabel duplicate headings as a successful directional set.
 
-The next useful paid request would focus only on the acolyte's shoulder/hip
-depth, hood turn and broader asymmetric silhouette; proposed reservation US$3,
-subject to coordinator allocation. No second request was made. Furnace brute and
-walk/motion work remain deferred. There are eight static views and zero animation
-frames, no GIF or per-frame PNG catalogue.
+The coordinator subsequently granted a separate US$3 reservation for one focused
+acolyte refinement of shoulder/hip depth, hood turn and native width. The first
+eight-view original and all held extracts remain unchanged. Furnace brute and
+walk/motion work remain deferred. No hound reroll is included.
 
 Returned usage: 1,348 image-model text inputs, 916 image outputs; 2,972 Terra inputs
 and 21,121 outputs (including 1,238 reasoning tokens). Standard token pricing gives
@@ -106,7 +118,7 @@ This is a usage-derived receipt, not an independently verified account balance o
 billing invoice. Request `req_201e6228029e411fac9e959cfebc9617` completed with HTTP
 200 in 286.74 seconds.
 
-## Verification and limits
+## Initial pilot verification and limits
 
 [validation.json](validation.json) contains measured bounds, alpha margins, the
 source review and check results. Nine SVG documents passed the repository's
@@ -126,8 +138,9 @@ exact pixel equivalence for all eight. No
 application, native 3D, game-facing or runtime adoption check is claimed. The CI
 planner conservatively identifies unknown ownership for new art records; its
 broad application fallback was inspected but not run for this candidate-only
-bundle with no runtime consumer. Source art remains held from publication until
-normal shared gallery import and any required integration gates are completed.
+bundle with no runtime consumer. Draft publication is now authorized, while
+canonical gallery import remains a merge-ready blocker. Hosted CI is reported
+against the exact PR head separately from these initial local results.
 
 The initial direct-SVG screenshot attempt timed out in Chromium. HTML image
 embedding decoded and captured the same SVG successfully; the original was not
