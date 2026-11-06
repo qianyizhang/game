@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "assets": [],
+  "attempts": [
+    {
+      "id": "emberwake-directional-2026-11-06-pilot-01",
+      "title": "Ash hound and Cinder acolyte directional SVG pilot",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One paid request. Hound four views are useful candidates; acolyte paired headings repeat and remain held. No game-facing contract, selection, animation or user acceptance. Shared cost USD 0.142797 from returned usage. See README for full review.",
+      "files": [
+        "docs/art/assets/directional-emberwake-enemies-2026-11-06/request.json",
+        "docs/art/assets/directional-emberwake-enemies-2026-11-06/receipt.json",
+        "docs/art/assets/directional-emberwake-enemies-2026-11-06/budget.json",
+        "docs/art/assets/directional-emberwake-enemies-2026-11-06/baseline.png"
+      ]
+    }
+  ],
+  "revisions": [
+    {
+      "id": "emberwake-directional-2026-11-06-original",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-pilot-01",
+      "label": "Original eight-cell SVG \u00b7 exact API output",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/original.svg",
+      "digest": "fdbe2cfa2c0b8feac592d87140c34195b291129fff523075100a86c6d8c9c09f",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned UTF-8 SVG bytes, 1536\u00d7768. Original output has no image-input reference. Baseline PNG is inspected source context, not sent to the API. Hound row SE/SW/NE/NW; acolyte row SE/SW/NE/NW. Four acolyte cells are held for missing diagonal separation."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-hound-se",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-pilot-01",
+      "label": "Promising hound source candidate \u00b7 SE",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/hound-se.svg",
+      "digest": "c6af0014cfc2774c76e0c78c3f2614a392699a11152d4557f13342dbb90afaaa",
+      "parents": ["emberwake-directional-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted named group hound-se, cell [0,0,384,384]. Only outer sheet translation removed; local paths/colors unchanged; standalone 384\u00d7384. Actual visible bounds about 27\u201330\u00d722\u201324px at 0.1 scale; coherent front/back reading, anatomical refinement still useful."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-hound-sw",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-pilot-01",
+      "label": "Promising hound source candidate \u00b7 SW",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/hound-sw.svg",
+      "digest": "8b848d1265eabb5cc29b75ac659dac8a8318f2c472e4b3ebf8f2d58c6fb95219",
+      "parents": ["emberwake-directional-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted named group hound-sw, cell [384,0,384,384]. Only outer sheet translation removed; local paths/colors unchanged; standalone 384\u00d7384. Actual visible bounds about 27\u201330\u00d722\u201324px at 0.1 scale; coherent front/back reading, anatomical refinement still useful."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-hound-ne",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-pilot-01",
+      "label": "Promising hound source candidate \u00b7 NE",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/hound-ne.svg",
+      "digest": "9cca1319e542b942a19c0d244a77f3b125800746d52cfbfadc710cd6ef85772e",
+      "parents": ["emberwake-directional-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted named group hound-ne, cell [768,0,384,384]. Only outer sheet translation removed; local paths/colors unchanged; standalone 384\u00d7384. Actual visible bounds about 27\u201330\u00d722\u201324px at 0.1 scale; coherent front/back reading, anatomical refinement still useful."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-hound-nw",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-pilot-01",
+      "label": "Promising hound source candidate \u00b7 NW",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/hound-nw.svg",
+      "digest": "348d7f9039b86d4eb584b42c5ce65494b35476fe7079a61f66df0bf08fe12c67",
+      "parents": ["emberwake-directional-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted named group hound-nw, cell [1152,0,384,384]. Only outer sheet translation removed; local paths/colors unchanged; standalone 384\u00d7384. Actual visible bounds about 27\u201330\u00d722\u201324px at 0.1 scale; coherent front/back reading, anatomical refinement still useful."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-cultist-se",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-pilot-01",
+      "label": "Held acolyte \u00b7 paired heading repeats \u00b7 SE",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/cultist-se.svg",
+      "digest": "bef3d415c7f23af352e3a43e438d5f3ee8eff988e7967be9ba3833418d9ccacd",
+      "parents": ["emberwake-directional-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted named group cultist-se, cell [0,384,384,384]. Only outer sheet translation removed; local paths/colors unchanged; standalone 384\u00d7384. Actual visible bounds about 20\u00d732px at 0.1 scale; width under target. Front pair and rear pair are too similar for a four-heading set. Retained, not selected."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-cultist-sw",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-pilot-01",
+      "label": "Held acolyte \u00b7 paired heading repeats \u00b7 SW",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/cultist-sw.svg",
+      "digest": "5672ece4bd81774cad18d561540e9ec13645a9551285000f476fa00c0cbb9a64",
+      "parents": ["emberwake-directional-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted named group cultist-sw, cell [384,384,384,384]. Only outer sheet translation removed; local paths/colors unchanged; standalone 384\u00d7384. Actual visible bounds about 20\u00d732px at 0.1 scale; width under target. Front pair and rear pair are too similar for a four-heading set. Retained, not selected."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-cultist-ne",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-pilot-01",
+      "label": "Held acolyte \u00b7 paired heading repeats \u00b7 NE",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/cultist-ne.svg",
+      "digest": "2a1842437a417e8d7fbe0914ad61f89148135b082a97cec6d01441917e188fdb",
+      "parents": ["emberwake-directional-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted named group cultist-ne, cell [768,384,384,384]. Only outer sheet translation removed; local paths/colors unchanged; standalone 384\u00d7384. Actual visible bounds about 20\u00d732px at 0.1 scale; width under target. Front pair and rear pair are too similar for a four-heading set. Retained, not selected."
+    },
+    {
+      "id": "emberwake-directional-2026-11-06-cultist-nw",
+      "asset": null,
+      "attempt": "emberwake-directional-2026-11-06-pilot-01",
+      "label": "Held acolyte \u00b7 paired heading repeats \u00b7 NW",
+      "file": "docs/art/assets/directional-emberwake-enemies-2026-11-06/cultist-nw.svg",
+      "digest": "f4c7de65ee666843a40cc34b3935f3b5f09583d5066e2ad472f522ed5dadc8f7",
+      "parents": ["emberwake-directional-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Extracted named group cultist-nw, cell [1152,384,384,384]. Only outer sheet translation removed; local paths/colors unchanged; standalone 384\u00d7384. Actual visible bounds about 20\u00d732px at 0.1 scale; width under target. Front pair and rear pair are too similar for a four-heading set. Retained, not selected."
+    }
+  ]
+}

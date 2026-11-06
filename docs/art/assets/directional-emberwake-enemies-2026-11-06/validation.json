@@ -1,0 +1,67 @@
+{
+  "source_base": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "review_mode": "author self-review; four useful hound candidates, four acolyte views held; findings in README.md",
+  "native_visible_px": {
+    "hound-se": [29.4, 22.6],
+    "hound-sw": [30, 22.4],
+    "hound-ne": [26.9, 23.9],
+    "hound-nw": [27.1, 23.8],
+    "cultist-se": [20, 32.4],
+    "cultist-sw": [20.3, 32.2],
+    "cultist-ne": [20.1, 32.3],
+    "cultist-nw": [20.3, 32.3]
+  },
+  "svg_safety": {
+    "documents_passed": 9,
+    "paths_in_original": 284,
+    "embedded_raster": false,
+    "visible_text": false,
+    "scripts_or_external_resources": false
+  },
+  "alpha": {
+    "original_fully_transparent_pixels": 905919,
+    "cells_with_no_paint_in_outer_10px": 8
+  },
+  "extraction": {
+    "unchanged_group_geometry": 8,
+    "pixel_identical_cells": 7,
+    "exception": {
+      "view": "cultist-sw",
+      "different_channel_values": 11,
+      "affected_pixels": 5,
+      "maximum_difference_255": 2,
+      "notes": "Exact geometry/paint attributes match after sheet translation removal; Chromium rasterization exception. Original retained unchanged."
+    }
+  },
+  "isolated_gallery": {
+    "import": "pass",
+    "revision_cards_inspected": 9,
+    "assets_assigned": 0,
+    "runtime_files": 0,
+    "selections": 0,
+    "prompt_settings_and_lineage": "shared request and known parent inspected for every revision",
+    "source_decode": "9/9 pass",
+    "shared_registry_mutated": false
+  },
+  "browser": {
+    "engine": "Chromium 154.0.8037.57",
+    "preview_viewports_px": [1220, 390],
+    "phone_horizontal_overflow_px": 0,
+    "preview_images_decode": true,
+    "gallery_page_errors": [],
+    "exceptions": [
+      "Direct SVG-document screenshot timed out; same unchanged SVG succeeded through HTML image embedding.",
+      "Preview capture met Vite hot-reload navigation during metadata edits; succeeded after writes settled."
+    ],
+    "scope": "Custom candidate inspection in managed cloud; not the Chrome-guarded repository game suite or the user Mac."
+  },
+  "checks": {
+    "format_maintenance": "pass; final JSON compaction checked separately with Prettier and maintenance inventory/links",
+    "shared_assets_history_verify": "pass: 709 assets, 92 revisions, 0 selections, 709 registered sources",
+    "shared_game_and_selection_files": "git diff --exit-code passed for render/content/types, shared history and selections",
+    "application_native_runtime": "not run; no executable source/runtime changes or consumer. CI planner conservatively selects application for unknown art-record ownership; no broad pass claimed."
+  },
+  "holds": ["cultist-se", "cultist-sw", "cultist-ne", "cultist-nw"],
+  "next_work": "Focused acolyte four-quarter refinement, proposed USD3 reservation requires coordinator allocation; Furnace brute and motion deferred. No second paid request.",
+  "publication": "not pushed; no PR, registry import, game adoption, merge, issue edit or deployment"
+}

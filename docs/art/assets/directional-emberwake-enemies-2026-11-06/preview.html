@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Emberwake · eight directional source candidates</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        background: #1d222b;
+        color: #e7ddcc;
+        font:
+          16px/1.5 system-ui,
+          sans-serif;
+      }
+      body {
+        max-width: 1150px;
+        margin: auto;
+        padding: 32px;
+      }
+      h1 {
+        font-size: clamp(25px, 4vw, 42px);
+        line-height: 1.2;
+      }
+      h2 {
+        font-size: 22px;
+      }
+      p {
+        max-width: 80ch;
+        color: #c7bcae;
+      }
+      a {
+        color: #edb58c;
+      }
+      .eyebrow {
+        letter-spacing: 0.18em;
+        color: #df9c7c;
+        font-size: 12px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      figure {
+        margin: 0;
+        border: 1px solid #4e4946;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #272e37;
+      }
+      figcaption {
+        padding: 10px 14px;
+        font-size: 13px;
+        background: #211f26;
+      }
+      .large {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 176px;
+        background-color: #2e343f;
+        background-image:
+          linear-gradient(45deg, #393e480e 25%, transparent 25%),
+          linear-gradient(-45deg, #666d7510 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #393e4810 75%),
+          linear-gradient(-45deg, transparent 75%, #666d7510 75%);
+        background-size: 32px 32px;
+      }
+      .large img {
+        width: 153.6px;
+        height: 153.6px;
+        object-fit: contain;
+      }
+      .native {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 8px;
+        background:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 31px,
+            #686f7b25 31px,
+            #686f7b25 32px
+          ),
+          repeating-linear-gradient(90deg, #293b34, #293b34 31px, #686f7b25 31px, #686f7b25 32px);
+        height: 62px;
+      }
+      .native div {
+        text-align: center;
+        font-size: 10px;
+        color: #d9d0be;
+      }
+      .native img {
+        display: block;
+        margin: auto;
+        object-fit: contain;
+      }
+      .field {
+        width: 38.4px;
+        height: 38.4px;
+      }
+      .compact {
+        width: 32px;
+        height: 32px;
+      }
+      .legend {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        font-size: 13px;
+      }
+      .badge {
+        display: inline-block;
+        border: 1px solid #976e52;
+        border-radius: 30px;
+        padding: 4px 12px;
+        color: #edc6a5;
+      }
+      .baseline {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+      }
+      .sheet {
+        max-width: 100%;
+        height: auto;
+        background: #272e37;
+      }
+      details {
+        margin: 24px 0;
+        padding: 14px;
+        border: 1px solid #4e4946;
+        border-radius: 12px;
+      }
+      summary {
+        cursor: pointer;
+      }
+      footer {
+        border-top: 1px solid #4e4946;
+        margin-top: 32px;
+        padding-top: 12px;
+        font-size: 13px;
+        color: #b8a99b;
+      }
+      @media (max-width: 640px) {
+        body {
+          padding: 18px;
+        }
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .large {
+          min-height: 158px;
+        }
+        .large img {
+          width: 138px;
+          height: 138px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="eyebrow">EMBERWAKE / DIRECTION STUDY 01</div>
+    <h1>Ash and Cinder</h1>
+    <p>
+      <strong>Self-review: four promising hound candidates; four acolyte views held.</strong> The
+      acolyte front pair and rear pair repeat too closely for a true four-heading set. These are
+      retained source studies, not accepted game sprites.
+    </p>
+    <p>
+      Two enemies, four diagonal headings each. New transparent native SVG candidates: alert russet
+      anatomy and weighted wine cloth, seen from a fixed elevated camera.
+    </p>
+    <div class="legend">
+      <span class="badge">Source study · unassigned</span><span>SE / SW front-quarter</span
+      ><span>NE / NW rear-quarter</span><span>Eight static views · zero animation frames</span>
+    </div>
+    <h2>Ash hound · physical melee</h2>
+    <p>
+      30×24px target. Above: 4× inspection. Below: 1× target scale and the tighter 32px canvas. The
+      green square grid uses 32px tiles; no contact shadow is baked into the drawings.
+    </p>
+    <div class="grid">
+      <figure>
+        <div class="large"><img src="hound-se.svg" alt="Ash hound facing SE" /></div>
+        <div class="native">
+          <div><img class="field" src="hound-se.svg" alt="" />1× target</div>
+          <div><img class="compact" src="hound-se.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="hound-se.svg">SE</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large"><img src="hound-sw.svg" alt="Ash hound facing SW" /></div>
+        <div class="native">
+          <div><img class="field" src="hound-sw.svg" alt="" />1× target</div>
+          <div><img class="compact" src="hound-sw.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="hound-sw.svg">SW</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large"><img src="hound-ne.svg" alt="Ash hound facing NE" /></div>
+        <div class="native">
+          <div><img class="field" src="hound-ne.svg" alt="" />1× target</div>
+          <div><img class="compact" src="hound-ne.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="hound-ne.svg">NE</a> · rear-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large"><img src="hound-nw.svg" alt="Ash hound facing NW" /></div>
+        <div class="native">
+          <div><img class="field" src="hound-nw.svg" alt="" />1× target</div>
+          <div><img class="compact" src="hound-nw.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="hound-nw.svg">NW</a> · rear-quarter</figcaption>
+      </figure>
+    </div>
+    <h2>Cinder acolyte · fire ranged</h2>
+    <p>
+      30×33px target; actual returned width is about 20px.
+      <strong>Held: diagonal separation is insufficient.</strong> Above: 4× inspection. Below: 1×
+      target scale and the tighter 32px canvas. The green square grid uses 32px tiles; no contact
+      shadow is baked into the drawings.
+    </p>
+    <div class="grid">
+      <figure>
+        <div class="large"><img src="cultist-se.svg" alt="Cinder acolyte facing SE" /></div>
+        <div class="native">
+          <div><img class="field" src="cultist-se.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-se.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-se.svg">SE</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large"><img src="cultist-sw.svg" alt="Cinder acolyte facing SW" /></div>
+        <div class="native">
+          <div><img class="field" src="cultist-sw.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-sw.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-sw.svg">SW</a> · front-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large"><img src="cultist-ne.svg" alt="Cinder acolyte facing NE" /></div>
+        <div class="native">
+          <div><img class="field" src="cultist-ne.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-ne.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-ne.svg">NE</a> · rear-quarter</figcaption>
+      </figure>
+      <figure>
+        <div class="large"><img src="cultist-nw.svg" alt="Cinder acolyte facing NW" /></div>
+        <div class="native">
+          <div><img class="field" src="cultist-nw.svg" alt="" />1× target</div>
+          <div><img class="compact" src="cultist-nw.svg" alt="" />32px canvas</div>
+        </div>
+        <figcaption><a href="cultist-nw.svg">NW</a> · rear-quarter</figcaption>
+      </figure>
+    </div>
+    <details>
+      <summary>Exact generated original and current baseline</summary>
+      <p>
+        Generated original is preserved byte-for-byte. Each figure is an extraction of its named
+        cell, with only the outer sheet translation removed.
+      </p>
+      <a href="original.svg"
+        ><img class="sheet" src="original.svg" alt="Exact generated eight-view SVG sheet"
+      /></a>
+      <p>
+        Current main, actual renderer: 4× and native scale. Hound and acolyte compared with authored
+        Rook and Hollow archer.
+      </p>
+      <img
+        class="baseline"
+        src="baseline.png"
+        alt="Existing hound and cultist fallback beside authored hero and archer"
+      />
+    </details>
+    <details>
+      <summary>Review, request, spending and provenance</summary>
+      <p>
+        <a href="README.md">Design record and findings</a> ·
+        <a href="request.json">Exact shared request</a> ·
+        <a href="receipt.json">Returned usage</a> ·
+        <a href="budget.json">Reservation and bound</a> ·
+        <a href="history-import.json">Staged source lineage</a> ·
+        <a href="validation.json">Validation</a>
+      </p>
+      <p>
+        GPT Image 2.6 Sunburst; GPT-6.1 Terra SVG author, high effort. One shared request; no
+        duplicate per-cell settings. Candidate-only source study. Enemy state currently has no
+        facing field; game integration and acceptance require separate work.
+      </p>
+    </details>
+    <footer>
+      Local review only. No game selections, runtime code, publication or deployment are changed by
+      this page.
+    </footer>
+  </body>
+</html>

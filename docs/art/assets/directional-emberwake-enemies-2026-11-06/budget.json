@@ -1,0 +1,28 @@
+{
+  "reservation_usd": 3,
+  "calculated_bound_usd": 2.942095,
+  "status": "returned-reconciled",
+  "pool": "shared-user-reported-40-usd",
+  "historical_hold_usd": 7.5,
+  "historical_hold": "external disconnected request; unchanged, not retried",
+  "components": {
+    "author_input_922000_at_2_per_million": 1.844,
+    "author_output_128000_at_7_5_per_million": 0.96,
+    "reference_max_quality_tokens": 3663,
+    "reference_output_at_30_per_million": 0.10989,
+    "prompt_byte_token_upper_at_5_per_million": 0.028205
+  },
+  "basis": [
+    "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+    "https://developers.openai.com/api/docs/guides/image-generation",
+    "https://developers.openai.com/api/reference/resources/images/methods/generate"
+  ],
+  "notes": "Standard endpoint; no fast/regional/cache-write options. Full author input/output ceilings include reference and reasoning. Image calculator MAX reference allowance exceeds explicit HIGH. UTF-8 byte count conservatively bounds prompt text tokens. No automatic retry. Unknown outcome retains full reservation.",
+  "actual_usage_cost_usd": 0.142797,
+  "active_reservation_usd": 0,
+  "recyclable_reservation_usd": 2.857203,
+  "actual_usage_basis": "1348 image-model text input @5/M +916 image output @30/M +2972 author input @1/M +21121 author output @5/M; output includes reasoning, not charged twice. API usage estimate, not billing invoice.",
+  "proposed_next_reservation_usd": 3,
+  "next_call": "not authorized in this lane; coordinator allocation required"
+}
