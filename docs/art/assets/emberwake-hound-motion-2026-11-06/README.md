@@ -1,8 +1,7 @@
 # Ash hound · physical melee motion source study
 
 Candidate-only four-pose study for exact enemy ID `hound`, based on current main
-`3a59621069dd1fe912a749d851d27e993507f5dd`. Canonical registration is assigned to
-the serial gallery coordinator. No runtime mapping, facing state, gameplay,
+`3a59621069dd1fe912a749d851d27e993507f5dd`. Canonical source registration is complete; user art selection remains separate. No runtime mapping, facing state, gameplay,
 selection, merge or deployment belongs to this lane.
 
 ## Admission and pre-generation checkpoint
@@ -106,14 +105,18 @@ Standard uncached usage-derived cost: **US$0.113603**, active hold **US$0**,
 releasable central reservation **US$2.886397**. This is not an invoice or account
 balance verification. No unused allowance is reused in this lane.
 
-The additive [history import](history-import.json) contains two attempts and nine
-revisions: one exact original, four raw extracts and four manual derivatives.
-All are unassigned source studies with null runtime files. It was imported into
-an isolated real `/__art/` gallery and each revision's decoded artwork, parent,
-source record and disabled game-use action was inspected. That is **not canonical
-registration**. The single serial coordinator should import this file from the
-frozen PR head after integrating this family. Do not copy this branch's isolated
-test registry; the shared registry and selections are unchanged.
+The [canonical shared history](../../iterations/library.json) contains two
+attempts and nine source revisions: the exact generated sheet, four held raw
+extracts and four explicitly manual fitted derivatives. All are unassigned with
+null runtime files. Open `/__art/#asset=__unassigned` and find
+`emberwake-hound-motion-2026-11-06`. The manual poses all derive from the same
+returned anticipation master; their parent is not a different generated pose.
+Textual design comparison to #146 is not a sent image input or local dependency.
+
+Redundant import transport was retired after exact canonical comparison and
+migration of this README consumer. Exact managed SVG/call/authoring files remain
+in their existing home. Game defaults and selections are unchanged; independent
+library additions require serial reconciliation when landing.
 
 [Validation](validation.json) separates static safety, exact raw extraction,
 footprint measurements, isolated gallery checks, visual findings and coverage.
@@ -133,5 +136,18 @@ disabled game-use controls, and fit a 390px viewport without horizontal overflow
 or browser errors. This custom Chromium review is not the repository Google
 Chrome E2E suite. Full application/geometry/native suites and runtime adoption
 were not exercised because this family has no executable or runtime consumer.
-Hosted CI is reported against the frozen PR head separately. Canonical import,
-continuous-motion review and user selection remain open.
+Hosted CI is reported against the frozen PR head separately. Canonical registration is complete; continuous-motion review and user selection
+remain open.
+
+Actual shared-gallery inspection passed all nine native/compact/enlarged
+revisions, exact call/authoring records, explicit held/raw and manual parent
+relationships, disabled Use and six desktop/phone/font combinations without
+page errors. All eleven managed SVG/call/authoring files are byte-identical to
+the handoff. Launch/contact separation remains subtle at native size; no
+continuous timing or production-motion acceptance follows from registration.
+Scoped repository gates follow, with no broad native/application execution.
+
+Registration passed `format:maintenance`, `assets:history -- verify`
+(709 assets/101 revisions/zero selections) and all three asset-history browser
+journeys at normal limits (32.2s aggregate). Existing registered assets/sources/
+selection bytes and all managed artwork/call/authoring files remain unchanged.

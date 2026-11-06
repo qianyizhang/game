@@ -298,5 +298,11 @@
     "runtime": "Node 24.21.0 / npm 11.19.0 pinned binaries; nvm unavailable in cloud image",
     "hosted_ci": "pending publication; inspect exact frozen PR head separately"
   },
-  "registration": "Staged additive import only. Isolated import is not canonical registration. Shared registry and selections remain unchanged."
+  "registration": {
+    "handoff_head": "713934f7df03f3c6c682674df8c5321a173bdd46",
+    "sources": "2 attempts/9 revisions: exact sheet,4 held raw extracts,4 manual fitted poses with explicit anticipation parents; all runtime null and no selections",
+    "transport": "Retired redundant import after exact comparison and README migration; exact managed artwork/call/authoring bytes unchanged. No file-page navigation retried.",
+    "gallery": "Actual nine revisions and both exact call/authoring records, held raw outputs and explicit anticipation parents, native/compact/enlarged, disabled Use and six 1440/390/320px ×16/20px layouts passed, no page errors.",
+    "managed_file_preservation": "All 11 managed artwork/call/authoring files byte-identical to frozen handoff; no sent image reference or146localdependency invented."
+  }
 }
