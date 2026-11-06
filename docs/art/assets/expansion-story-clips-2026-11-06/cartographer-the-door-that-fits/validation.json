@@ -21,5 +21,15 @@
     "blocker": "Once-playing assembled GIF Stop then Play retains final frame; actual compositorend == restart, first frame distinct. #142 shared fix pending; no pause/seek promised.",
     "checks": "Full check:maintenance passed,202 tooling/81 DCC/19 Python plus lint/types/build. Three asset-history browser journeys passed at normal limits30.6s aggregate. Existing asset/source records and selected-art bytes unchanged; 20 other owned files exact. No game adoption, native geometry execution or aesthetic acceptance inferred.",
     "transport": "Redundant history-import retired after canonical comparison and README consumer migration; originals/calls/inputs/assembly/review unchanged."
+  },
+  "shared_replay_compatibility": {
+    "source_head": "830a2e6e069cabea930edd09fd2cc1a85962d858",
+    "governance_head": "d6cc4728c87b1c4d13489b5a91ce5e4cb73f3304",
+    "replay_head": "6fdc26d94ac5434446e35f23c44e249164312940",
+    "resolved_shared_tree": "f78b8a50c29a823df315cfcdb8c61fa774cd12af",
+    "disposable_combination_tree": "47dca11a8c01aea153d8675b11005950cc8b4e72",
+    "proof": "2 live/offline cases passed: completed once-playing story, Stop, fresh-URL Play, compositor opening pixel-identical to initial opening and different from ending, then visible advancement. Original playback/download SHA-256 exact; old object URL revoked; reduced motion interrupts and blocks playback; no page errors or offline network requests.",
+    "checks": "Resolved shared baseline passed full maintenance (208 tooling, 81 DCC, 19 Python tests) and 19 affected browser journeys at normal limits. This story combination passed history verification and actual native replay checks. No shared implementation, artwork, inputs, library records, defaults or selections changed in this evidence follow-up.",
+    "limits": "Compatibility tested at these exact heads only. Shared implementation is not landed or included in this candidate branch; its historical independent-code replay failure remains valid. Draft source study; independent library additions require serial landing reconciliation. No pause/seek, runtime adoption or art acceptance."
   }
 }

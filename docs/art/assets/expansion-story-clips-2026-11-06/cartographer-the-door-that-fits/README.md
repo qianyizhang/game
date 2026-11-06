@@ -39,10 +39,24 @@ Actual shared-gallery inspection passed six revisions, exact text/PNG records,
 lineage, disabled Use, and desktop/390/320px layouts with enlarged text. All
 64 assembled frames/timings match source clips; four sent PNG hashes and
 three parent-frame pixels match. Source clips loop; the assembled story plays
-once. Draft blocker: the actual shared-gallery once-playing GIF remains at its final
+once. The historical independent-code check found the once-playing GIF at its final
 frame after Stop then Play. Fresh compositor end/restart images are identical,
-while initial playback advances. #142 owns the shared implementation fix; no
+while initial playback advances. The shared fix is checked separately below; no
 artwork bytes are changed here. Stop and reduced-motion blocking passed; these
 controls do not provide pause/seek. Full maintenance and affected repository
 browser results are recorded in validation.json. Other candidate library additions require later serial
 reconciliation. Artwork quality and game selection remain independent decisions.
+
+Shared replay compatibility was subsequently checked in a disposable, unpushed
+combination with #137 `d6cc4728c87b1c4d13489b5a91ce5e4cb73f3304` and #142
+`6fdc26d94ac5434446e35f23c44e249164312940`, using this story at
+`830a2e6e069cabea930edd09fd2cc1a85962d858`. The resolved shared tree is
+`f78b8a50c29a823df315cfcdb8c61fa774cd12af`; combination tree
+`47dca11a8c01aea153d8675b11005950cc8b4e72`. Both live and offline galleries completed the
+once-playing GIF, then Stop → Play restored the initial opening pixels and
+advanced again. Playback/download bytes matched the originals; reduced motion
+interrupted and blocked playback. See [validation](validation.json) for checks
+and historical probe outcomes. The shared implementation is not landed or
+included here, so this is conditional compatibility evidence. This PR remains a
+draft source study; game selections are unchanged and independent library
+additions still need serial reconciliation when landing.
