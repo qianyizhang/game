@@ -1,0 +1,61 @@
+{
+  "scope": "Self-contained unassigned source study; no runtime/source/default changes",
+  "base": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "artwork": {
+    "svg_safety_bounds_self_contained_references": 7,
+    "preserved_svg_and_contact_hashes": 8,
+    "structurally_exact_group_extractions": 6,
+    "crop_antialias_max_channel_delta": 3,
+    "crop_antialias_max_differing_pixels_per_cell": 170,
+    "contact": "Original losslessly optimized RGBA 1068x860; copied without re-encoding",
+    "source_artwork_byte_equal": 8,
+    "canonical_call_records_semantically_equal": 2
+  },
+  "isolated_history": {
+    "source": "fresh main + this bundle only",
+    "attempts": 2,
+    "revisions": 7,
+    "first_suite_dependency": false,
+    "selection_changes": 0,
+    "verify": {
+      "assets": 709,
+      "revisions": 99,
+      "selections": 0
+    }
+  },
+  "browser": {
+    "version": "157.0.8103.38",
+    "index_viewports": [
+      {
+        "width": 1440,
+        "images": 18,
+        "scrollWidth": 1440
+      },
+      {
+        "width": 390,
+        "images": 18,
+        "scrollWidth": 390
+      }
+    ],
+    "index_links": 11,
+    "gallery_viewports": [
+      {
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    ],
+    "revision_images_settings_and_lineage_opened": 7,
+    "canonical_success_record_exact_match": true,
+    "unknown_record_opened_without_output": true,
+    "page_errors": 0
+  },
+  "visual_review": "Source/contact and native/compact self-review: four candidates and two candidates with caveats. No user acceptance or runtime placement claim.",
+  "checks": ["npm run format:maintenance", "npm run assets:history -- verify"],
+  "runtime_evidence": "Unchanged runtime; historical a335184 validation and hosted run 42244231708 linked in README; not rerun here.",
+  "registration": "Isolated import passed; shared canonical registration pending serial coordinator; draft blocker",
+  "temporary_evidence": "/tmp/ember-quest-review; /tmp/ember-quest-history-sandbox; README reconstructs /tmp/ember-quest-prepared-history.json"
+}
