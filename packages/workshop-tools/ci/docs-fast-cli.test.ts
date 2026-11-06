@@ -57,6 +57,7 @@ function fixture() {
       'environment',
     ].map((name) => `packages/workshop-tools/ci/${name}.ts`),
     'packages/workshop-tools/governance.mjs',
+    'packages/workshop-tools/art/gallery/library.ts',
     'packages/workshop-tools/art/native-packet.ts',
     'packages/workshop-tools/art/native-packet.test.ts',
     ...['native-brief.md.template', 'native-handoff.md.template', 'motion-study.ts.template'].map(

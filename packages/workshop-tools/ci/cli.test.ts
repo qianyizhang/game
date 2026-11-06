@@ -47,6 +47,9 @@ void test('actual CLI keeps mixed review changes scoped and rejects docs-only, e
         put(path, '');
         copyFileSync(new URL(`./${name}.ts`, import.meta.url), join(root, path));
       }
+      const library = 'packages/workshop-tools/art/gallery/library.ts';
+      put(library, '');
+      copyFileSync(new URL('../art/gallery/library.ts', import.meta.url), join(root, library));
       put('package.json', '{"type":"module"}');
       put('tsconfig.json', '{"compilerOptions":{"moduleResolution":"Bundler"}}');
       put('src/shared/replay.test.ts', 'export {};');

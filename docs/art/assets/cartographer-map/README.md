@@ -73,12 +73,12 @@ records hosted CI on its exact head. Human recognition and enjoyment remain unte
 
 ## Gallery handoff
 
-[CartographerReview.tsx](../../../../src/asset-gallery/CartographerReview.tsx) owns
+[CartographerReview.tsx](../../../../packages/workshop-tools/art/gallery/reviews/CartographerReview.tsx) owns
 an independent comparison with IDs `review-cartographer` and `asset-cartographer-map`.
 The four WebPs and the cue CSS enter the existing static exporter; no framework was
-added. [CHANGELOG.json](../../../../src/asset-gallery/CHANGELOG.json) preserves the initial
+added. [CHANGELOG.json](../../../../packages/workshop-tools/art/gallery/reviews/CHANGELOG.json) preserves the initial
 local review and every older study. `npm run assets:gallery -- <fresh-directory>`
-builds the portable review.
+builds the asset gallery with this portable comparison at `reviews/index.html`.
 
 The repository review and independent private gallery deployment are separate steps.
 Parent coordinates the Site update; this change does not alter gallery access.

@@ -39,6 +39,8 @@ void test('only allowlisted prose and reviewed raster changes qualify, including
     'docs/art/assets/review/manifest.json',
     'docs/art/assets/review/scene.svg',
     'docs/art/assets/cartographer-map/before-board.webp',
+    'docs/art/assets/hearth-mech-roles/normal-1.webp',
+    'docs/art/assets/spire-image-2.6/README.md',
     'docs/guide/../unsafe.md',
     '.github/workflows/maintenance.yml',
     'src/game.ts',

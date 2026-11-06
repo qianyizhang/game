@@ -6,6 +6,7 @@ import { catalogueFrom, dependencyGraph, trackedFiles } from './graph.ts';
 import { safeDocumentation } from './docs-fast.ts';
 import {
   browserFamilies,
+  isDocumentation,
   isReviewEvidence,
   normalApplicationFallback,
   selectPlan,
@@ -93,8 +94,6 @@ void test('mixed review classification cannot become a second docs-only fast pat
 
 void test('gallery inputs, unknown executable files and new manifests retain conservative application coverage', () => {
   for (const path of [
-    'docs/art/assets/cartographer-map/before-board.webp',
-    'docs/art/assets/spire-intent/before-battlefield.webp',
     'docs/art/assets/spire-damage-potions/manifest.json',
     'docs/art/assets/spire-damage-potions/scene.svg',
     'docs/art/assets/spire-damage-potions/check.ts',
@@ -121,11 +120,43 @@ void test('gallery inputs, unknown executable files and new manifests retain con
   const consumed = selectPlan(
     [art, review],
     catalogue,
-    new Map([[review.path, new Set(['packages/workshop-tools/art/gallery.ts'])]]),
+    new Map([[review.path, new Set(['packages/workshop-tools/art/gallery/export.ts'])]]),
     { head },
   );
   assert.equal(consumed.mode, 'application');
   assert.ok(consumed.browserFiles.includes('tests/browser/asset-gallery.spec.ts'));
+});
+
+void test('filesystem gallery inputs retain export and comparison journeys instead of review-only classification', () => {
+  for (const path of [
+    'docs/art/assets/cartographer-map/before-board.webp',
+    'docs/art/assets/spire-intent/before-battlefield.webp',
+    'docs/art/assets/hearth-iron-drake/comparison.webp',
+    'docs/art/assets/spire-beyond-constructs/overview.webp',
+    'docs/art/assets/spire-damage-potions/overview.png',
+    'docs/art/assets/hearth-mech-roles/normal-1.webp',
+    'docs/art/assets/spire-image-2.6/README.md',
+  ]) {
+    assert.equal(isDocumentation(path), false, path);
+    assert.equal(isReviewEvidence(path), false, path);
+    assert.equal(
+      safeDocumentation([{ path, status: 'M' }], () => '# Record'),
+      false,
+      path,
+    );
+    for (const changes of [[{ path, status: 'M' }], [art, { path, status: 'M' }]]) {
+      const plan = selectPlan(changes, catalogue, graph.dependants, {
+        head,
+        allApplications: normalApplicationFallback(changes, true, () => true),
+      });
+      assert.equal(plan.mode, 'scoped', path);
+      assert.ok(plan.browserFiles.includes('tests/browser/asset-gallery.spec.ts'), path);
+      assert.ok(plan.browserFiles.includes('tests/browser/art-export.spec.ts'), path);
+      assert.deepEqual(plan.geometryFiles, [], path);
+    }
+  }
+  // A nearby, unconsumed screenshot remains eligible for the cheap review path.
+  assert.equal(isDocumentation('docs/art/assets/hearth-mech-roles/before.webp'), true);
 });
 
 void test('legacy issue37 capture has exact Blindside ownership; new issue-named specs still fail closed', () => {

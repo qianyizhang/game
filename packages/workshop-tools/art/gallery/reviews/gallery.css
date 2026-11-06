@@ -192,7 +192,6 @@ h3 {
 .validation p,
 .comparison p,
 .asset-card p,
-.next-studies p,
 .provenance p,
 dd {
   font-size: 13px;
@@ -409,21 +408,6 @@ figcaption {
 }
 .sample-note {
   line-height: 1.7;
-}
-.next-studies {
-  margin-top: 48px;
-}
-.next-studies ol {
-  list-style-position: inside;
-  padding: 0;
-}
-.next-studies li {
-  padding: 15px 0;
-  border-bottom: 1px solid #d5d7c9;
-  font-size: 13px;
-}
-.next-studies p {
-  margin: 7px 0 0;
 }
 .provenance {
   padding-top: 12px;

@@ -1,16 +1,14 @@
 import react from '@vitejs/plugin-react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { createElement } from 'react';
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { freshDirectory, fromRoot, newOutput, withBundle, reportFailure } from '../io.ts';
+import { fromRoot, withBundle } from '../../../io.ts';
+import { FEEDBACK_CAPTURES, FEEDBACK_STYLES } from '../library.ts';
 
 /** A deliberately small, offline review surface. Only the named public-safe captures enter it. */
-export async function exportGallery(output = newOutput('asset-gallery')) {
-  output = fromRoot(output);
-  await freshDirectory(output);
-  const capture = fromRoot('docs/art/assets/spire-intent');
+export async function writeReviews(output: string) {
+  await mkdir(output);
   const [
     before,
     after,
@@ -29,25 +27,25 @@ export async function exportGallery(output = newOutput('asset-gallery')) {
     mapCss,
     changelog,
   ] = await Promise.all([
-    readFile(resolve(capture, 'before-battlefield.webp')),
-    readFile(resolve(capture, 'after-battlefield.webp')),
-    readFile(fromRoot('docs/art/assets/blindside-score/before-score.webp')),
-    readFile(fromRoot('docs/art/assets/blindside-score/after-score.webp')),
-    readFile(fromRoot('docs/art/assets/hearth-shield/before-unit.webp')),
-    readFile(fromRoot('docs/art/assets/hearth-shield/after-unit.webp')),
-    readFile(fromRoot('docs/art/assets/cartographer-map/before-board.webp')),
-    readFile(fromRoot('docs/art/assets/cartographer-map/after-board.webp')),
-    readFile(fromRoot('docs/art/assets/cartographer-map/before-threat.webp')),
-    readFile(fromRoot('docs/art/assets/cartographer-map/after-threat.webp')),
-    readFile(fromRoot('src/asset-gallery/gallery.css'), 'utf8'),
-    readFile(fromRoot('src/games/spire/ui/IntentCue.css'), 'utf8'),
-    readFile(fromRoot('src/games/balatro/ui/ScoreFeedback.css'), 'utf8'),
-    readFile(fromRoot('src/games/battlegrounds/ui/ShieldFeedback.css'), 'utf8'),
-    readFile(fromRoot('src/games/cartographer/ui/MapCues.css'), 'utf8'),
-    readFile(fromRoot('src/asset-gallery/CHANGELOG.json'), 'utf8'),
+    readFile(fromRoot(FEEDBACK_CAPTURES.combat.before)),
+    readFile(fromRoot(FEEDBACK_CAPTURES.combat.after)),
+    readFile(fromRoot(FEEDBACK_CAPTURES.score.before)),
+    readFile(fromRoot(FEEDBACK_CAPTURES.score.after)),
+    readFile(fromRoot(FEEDBACK_CAPTURES.shield.before)),
+    readFile(fromRoot(FEEDBACK_CAPTURES.shield.after)),
+    readFile(fromRoot(FEEDBACK_CAPTURES.cartographer.before)),
+    readFile(fromRoot(FEEDBACK_CAPTURES.cartographer.after)),
+    readFile(fromRoot(FEEDBACK_CAPTURES.cartographer.threatBefore)),
+    readFile(fromRoot(FEEDBACK_CAPTURES.cartographer.threatAfter)),
+    readFile(fromRoot(FEEDBACK_STYLES[0]), 'utf8'),
+    readFile(fromRoot(FEEDBACK_STYLES[1]), 'utf8'),
+    readFile(fromRoot(FEEDBACK_STYLES[2]), 'utf8'),
+    readFile(fromRoot(FEEDBACK_STYLES[3]), 'utf8'),
+    readFile(fromRoot(FEEDBACK_STYLES[4]), 'utf8'),
+    readFile(fromRoot('packages/workshop-tools/art/gallery/reviews/CHANGELOG.json'), 'utf8'),
   ]);
-  await withBundle<typeof import('../../../src/asset-gallery/ReviewGallery'), void>(
-    'src/asset-gallery/ReviewGallery.tsx',
+  await withBundle<typeof import('./ReviewGallery'), void>(
+    'packages/workshop-tools/art/gallery/reviews/ReviewGallery.tsx',
     async ({ ReviewGallery }) => {
       const body = renderToStaticMarkup(
         createElement(ReviewGallery, {
@@ -88,12 +86,10 @@ export async function exportGallery(output = newOutput('asset-gallery')) {
     [react()],
   );
   const [beforeScene, afterScene, beforeZoom, afterZoom] = await Promise.all(
-    ['before-scene', 'after-scene', 'before-zoom', 'after-zoom'].map((name) =>
-      readFile(fromRoot(`docs/art/assets/emberwake-silhouettes/${name}.webp`)),
-    ),
+    Object.values(FEEDBACK_CAPTURES.emberwake).map((path) => readFile(fromRoot(path))),
   );
-  await withBundle<typeof import('../../../src/asset-gallery/EmberwakeReview'), void>(
-    'src/asset-gallery/EmberwakeReview.tsx',
+  await withBundle<typeof import('./EmberwakeReview'), void>(
+    'packages/workshop-tools/art/gallery/reviews/EmberwakeReview.tsx',
     async ({ EmberwakeReview }) => {
       const data = (image: Buffer) => `data:image/webp;base64,${image.toString('base64')}`;
       const body = renderToStaticMarkup(
@@ -113,13 +109,4 @@ export async function exportGallery(output = newOutput('asset-gallery')) {
     },
     [react()],
   );
-}
-
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const args = process.argv.slice(2);
-  if (args[0] === '--help') console.log('Usage: npm run assets:gallery -- [new-output-directory]');
-  else if (args.length > 1) {
-    console.error('Expected at most one fresh output directory');
-    process.exitCode = 1;
-  } else await exportGallery(args[0]).catch(reportFailure);
 }

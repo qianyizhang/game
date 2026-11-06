@@ -1,6 +1,6 @@
 # Emberwake silhouette comparison
 
-The hero and crypt artwork was accepted and merged in [PR 24](https://github.com/qianyizhang/game/pull/24). This is a new gallery presentation of existing artwork, not a new art delivery or Site publication. The standalone offline gallery is built with `npm run assets:gallery -- <fresh-directory>`; its index links to the self-contained `emberwake.html` comparison.
+The hero and crypt artwork was accepted and merged in [PR 24](https://github.com/qianyizhang/game/pull/24). This is a new gallery presentation of existing artwork, not a new art delivery or Site publication. Build the offline gallery with `npm run assets:gallery -- <fresh-directory>`. Recent upgrades links to Historical feedback comparisons; the self-contained Emberwake comparison is at `reviews/emberwake.html`.
 
 The new screenshots use the production scene renderer with a frozen sandbox fixture: seed `gallery-29-matched`, Silent Courtyard (`bells-1`), time zero, 960 × 576 backing pixels and the same camera and actor positions. Each row shows Rook, Mira or Silas with a staged hollow archer, salt wraith and Bellkeeper; synthetic enemy positions and health are presentation fixtures rather than campaign witnesses. The zooms are identical 280 × 125 crops enlarged 2× with nearest-neighbor sampling. The scene sheets stack the three original 960 × 576 captures. Images are WebP for the offline size budget.
 

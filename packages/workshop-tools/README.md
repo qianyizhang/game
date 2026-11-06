@@ -9,20 +9,22 @@ of concurrent edits. Night Passage and Hearth recruitment pins include this shar
 
 Use `nvm use`, then run root npm commands. `npm run maintenance -- help` lists governance commands:
 
-| Command                                  | Contract                                                                                                                                                                                                                       |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `npm run maintenance -- check`           | Reject uncovered source, misplaced documents, broken local documentation links, changed pinned skills and unhydrated native binaries. Includes tracked and non-ignored untracked files; reports `managedSources` and `errors`. |
-| `npm run maintenance -- inventory`       | Read-only streamed hashes, occurrence groups and tracked-text references for artifact roots. See [inventory limits](../../docs/engineering/checks.md#retention-and-inventory).                                                 |
-| `npm run maintenance -- files`           | Rank committed Git blobs by bytes and physical lines, identify LFS payloads and large duplicate blobs, and suggest purpose-aware reviews. See the audit contract below.                                                        |
-| `npm run maintenance -- prune [--apply]` | Dry run by default; apply rechecks exact files in receipt-qualified session/disposable roots. See [retention authority](../../docs/engineering/maintenance.md#retention-and-deletion-authority).                               |
+| Command                                  | Contract                                                                                                                                                                                                                     |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run maintenance -- check`           | Reject uncovered source, misplaced documents, broken local documentation links, incorrect Node pins and unhydrated native binaries. Includes tracked and non-ignored untracked files; reports `managedSources` and `errors`. |
+| `npm run maintenance -- inventory`       | Read-only streamed hashes, occurrence groups and tracked-text references for artifact roots. See [inventory limits](../../docs/engineering/checks.md#retention-and-inventory).                                               |
+| `npm run maintenance -- files`           | Rank committed Git blobs by bytes and physical lines, identify LFS payloads and large duplicate blobs, and suggest purpose-aware reviews. See the audit contract below.                                                      |
+| `npm run maintenance -- prune [--apply]` | Dry run by default; apply rechecks exact files in receipt-qualified session/disposable roots. See [retention authority](../../docs/engineering/maintenance.md#retention-and-deletion-authority).                             |
 
 Retain audit JSON in ignored session directories. The root lockfile supplies runtime dependencies; [verification contracts](../../docs/engineering/checks.md) own lint, types, tests and gate coverage. Root npm scripts are the public command entry points.
 
-`npm run assets:gallery -- <fresh-output-directory>` generates the independent
-[game asset review gallery](../../docs/art/asset-enrichment.md). The single offline HTML
-contains only named asset captures, inline SVG/CSS and independently expandable reviews;
-it ships no JavaScript. Its visible Latest changes section and companion `CHANGELOG.json`
-come from the preserved dated source history. This command never publishes the gallery.
+`npm run assets:gallery -- <fresh-output-directory>` exports the offline
+[game asset gallery](../../docs/art/svg.md#scaffold-and-export): standalone SVGs and
+manifest, per-game **Current assets**, **Recent upgrades** and **Next batch** views,
+and historical comparison reports under `reviews/`. The current views use local
+scripts for navigation, filtering and renderer specimens. Historical reports retain
+their individual 600 KiB HTML limit, zero JavaScript and dated `CHANGELOG.json`.
+The exporter never publishes, changes game art, or makes generation requests.
 
 `npm run ci -- core` runs the safety regressions without waiting for selection.
 `npm run ci -- plan <output.json>` selects MR modules from an exact `CI_BASE` SHA;
@@ -53,7 +55,10 @@ The optional [Repo Workbench plugin](../../docs/engineering/repo-workbench.md) o
 
 ## Art scaffolding and SVG tools
 
-`npm run assets:export -- [new-output]` creates a fresh cabinet (default: `test-results/card-art-<UUID>`). It bundles the maintained React catalogue, emits self-contained SVGs and a manifest, and embeds the separately checked cabinet runtime. `npm run assets:review -- id ... --from export --out new-review [--before baseline] [--sharp-module absolute-path]` decodes the inputs with an existing Sharp installation. `--from` and `--out` are required; no renderer is installed automatically. Input asset symlinks may not escape the export directory. The review's pixel comparison is not aesthetic approval.
+`npm run assets:gallery -- [new-output]` creates a fresh gallery (default:
+`test-results/asset-gallery-<UUID>`). Its implementation
+and browser code live together in `art/gallery/`; game renderers remain with their
+owners. `npm run assets:review -- id ... --from export --out new-review [--before baseline] [--sharp-module absolute-path]` decodes exported SVGs with an existing Sharp installation. `--from` and `--out` are required; no renderer is installed automatically. Input asset symlinks may not escape the export directory. The review's pixel comparison is not aesthetic approval.
 
 `npm run assets:scaffold -- NameArt path/NameArt.tsx [card|plate|symbol]` creates a formatted empty drawing scaffold. It refuses an existing file, a path outside the repository, or a symlinked destination parent. Registration remains explicit.
 

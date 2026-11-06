@@ -271,12 +271,18 @@ void test('baked assets and viewer edits skip constructors; generator dependenci
 
 void test('offline gallery generator retains its browser delivery check', () => {
   const plan = selectPlan(
-    [{ path: 'packages/workshop-tools/art/gallery.ts', status: 'M' }],
-    { ...catalogue, browser: ['tests/browser/asset-gallery.spec.ts'] },
+    [{ path: 'packages/workshop-tools/art/gallery/export.ts', status: 'M' }],
+    {
+      ...catalogue,
+      browser: ['tests/browser/art-export.spec.ts', 'tests/browser/asset-gallery.spec.ts'],
+    },
     new Map(),
     { head: 'a'.repeat(40) },
   );
-  assert.deepEqual(plan.browserFiles, ['tests/browser/asset-gallery.spec.ts']);
+  assert.deepEqual(plan.browserFiles, [
+    'tests/browser/art-export.spec.ts',
+    'tests/browser/asset-gallery.spec.ts',
+  ]);
 });
 
 void test('missing diff base and unresolved constructor imports conservatively retain geometry', () => {

@@ -57,6 +57,6 @@ _(Relative to `src/games/battlegrounds/` except where specified)_
 ```sh
 npm run check
 npx vitest run --config vitest.playtest.config.ts tests/simulation/battlegrounds.test.ts tests/simulation/hearth-spells-arena.test.ts
-npm run assets:export -- test-results/new-spell-art
+npm run assets:gallery -- test-results/new-spell-art
 npm run test:browser
 ```

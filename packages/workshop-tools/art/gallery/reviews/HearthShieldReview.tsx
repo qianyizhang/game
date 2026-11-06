@@ -1,5 +1,5 @@
-import { ShieldBreakArt } from '../games/battlegrounds/ui/ShieldBreakArt';
-import { ShieldBreakCue } from '../games/battlegrounds/ui/ShieldBreakCue';
+import { ShieldBreakArt } from '../../../../../src/games/battlegrounds/ui/ShieldBreakArt';
+import { ShieldBreakCue } from '../../../../../src/games/battlegrounds/ui/ShieldBreakCue';
 
 export interface HearthShieldEvidence {
   before: string;

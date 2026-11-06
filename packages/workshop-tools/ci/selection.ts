@@ -1,5 +1,8 @@
 import { movieOwner, movies, movieConsumers } from './movies.ts';
 import { browserGroups } from './sharding.ts';
+import { GALLERY_INPUTS } from '../art/gallery/library.ts';
+
+const galleryInputs = new Set<string>(GALLERY_INPUTS);
 
 export const families = [
   'balatro',
@@ -108,11 +111,9 @@ const routineBrowser = (path: string) => !fullBrowserFiles.includes(path);
 export function sourceFamily(path: string): Family | 'core' | undefined {
   if (path.startsWith('packages/diablo2/')) return 'emberwake';
   if (path.startsWith('packages/dcc-workbench/')) return 'models';
-  if (path === 'packages/workshop-tools/art/gallery.ts') return 'gallery';
+  if (path.startsWith('packages/workshop-tools/art/gallery/')) return 'gallery';
   if (path.startsWith('packages/workshop-tools/art/')) return 'svg';
   if (path.startsWith('src/art3d/')) return 'models';
-  if (path.startsWith('src/asset-gallery/') || path.startsWith('public/game-asset-review/'))
-    return 'gallery';
   const game = path.match(/^src\/games\/([^/]+)\//)?.[1];
   if (game === 'battlegrounds') return 'hearth';
   if (game === 'diablo2') return 'emberwake';
@@ -121,6 +122,9 @@ export function sourceFamily(path: string): Family | 'core' | undefined {
   if (path.startsWith('src/engines/playing.')) return 'balatro';
   if (/^src\/(app|shared|mods)\//.test(path) || path.startsWith('src/engines/challenges.'))
     return 'core';
+  // Files read/copied by the exporter are not literal imports. Preserve source
+  // ownership above (notably game CSS) while selecting gallery evidence inputs.
+  if (galleryInputs.has(path)) return 'gallery';
   return undefined;
 }
 
@@ -144,7 +148,7 @@ export function browserFamilies(path: string): Family[] | undefined {
   if (name.startsWith('blindside') || ['workshop', 'issue37-context'].includes(name))
     return ['balatro'];
   if (name === 'asset-gallery') return ['gallery'];
-  if (name === 'art-export') return ['svg', 'balatro', 'spire', 'hearth'];
+  if (name === 'art-export') return ['gallery', 'svg', 'balatro', 'spire', 'hearth'];
   if (modelBrowser.has(name)) return ['models'];
   if (crossGameBrowser.has(name)) return [...games];
   return undefined;
@@ -160,6 +164,7 @@ export function isNamedDocumentation(path: string): boolean {
 }
 
 export function isDocumentation(path: string): boolean {
+  if (galleryInputs.has(path)) return false;
   return (
     isNamedDocumentation(path) ||
     path === 'docs/engineering/maintenance.md' ||
@@ -172,10 +177,11 @@ export function isDocumentation(path: string): boolean {
 }
 
 /** Audited non-runtime review files. Keep the dependency-free prose allowlist narrower.
- * These three bundles have no app/gallery consumers; gallery input images and unknown
- * manifests deliberately remain outside this list. Audit consumers before extending it.
+ * Consumed gallery inputs are excluded even when their surrounding review bundle
+ * otherwise qualifies. Audit consumers before extending the allowlist.
  */
 export function isReviewEvidence(path: string): boolean {
+  if (galleryInputs.has(path)) return false;
   if (isNamedDocumentation(path)) return false;
   if (isDocumentation(path)) return true;
   if (['docs/art/assets/README.md', 'docs/art/svg.md'].includes(path)) return true;

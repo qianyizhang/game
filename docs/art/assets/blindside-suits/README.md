@@ -30,7 +30,7 @@ clear of the paper boundary before the final set export.
 ## Reproduce
 
 Export baseline and candidate to separate new directories with
-`npm run assets:export -- <directory>`, then:
+`npm run assets:gallery -- <directory>`, then:
 
 ```sh
 npm run assets:review -- blindside/jokers/hearts blindside/jokers/diamonds \

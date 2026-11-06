@@ -1,5 +1,8 @@
 # Game asset enrichment · 2026-10-26 pilot
 
+This record preserves the dated feedback studies and their original limits. The
+current unified gallery is described in the [SVG source map](svg.md#scaffold-and-export).
+
 **Studies 02 and 03:** [Blindside score feedback](assets/blindside-score/README.md) reuses
 existing card/Joker illustrations and names changed running values.
 [Last Hearth shield feedback](assets/hearth-shield/README.md) marks lost protection on the
@@ -153,13 +156,18 @@ or automated runs.
 npm run assets:gallery -- test-results/my-asset-review
 ```
 
-The output directory must be fresh. `index.html` is self-contained and opens offline.
-`CHANGELOG.json` accompanies it. The canonical
-[dated changelog](../../src/asset-gallery/CHANGELOG.json) renders in the visible
+The output directory must be fresh. Open `index.html` for the per-game asset gallery;
+**Recent upgrades** links its historical feedback comparisons under `reviews/`.
+Those reports are self-contained and open offline. `reviews/CHANGELOG.json` accompanies
+them. The canonical
+[dated changelog](../../packages/workshop-tools/art/gallery/reviews/CHANGELOG.json) renders in the visible
 **Latest changes** section, newest first, with asset, before/after and PR links. Add new
 entries rather than replacing older conclusions. Proposed, technically verified,
 visually reviewed and gameplay-tested are separate claims; explicitly state the scope.
 
-The source lives in `src/asset-gallery/` and the generator in
-`packages/workshop-tools/art/gallery.ts`. Existing lint/types/inventory/tool check scopes
-cover both. Parent publication/review is separate; this task changes no site or access.
+The gallery source, catalogue, client and generator live together in
+`packages/workshop-tools/art/gallery/`; historical report components live in its
+`reviews/` directory. Existing lint/types/inventory/tool check scopes cover this owner.
+The reports retain the 600 KiB/zero-JavaScript contract described above. Current
+asset pages use local scripts for filters, navigation and fixed renderer specimens.
+Publication/review is separate; exporting changes no site or access.

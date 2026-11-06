@@ -15,6 +15,7 @@ export function EmberwakeReview({ evidence }: { evidence: EmberwakeEvidence }) {
         </a>
         <nav aria-label="Gallery navigation">
           <a href="index.html#latest">Latest changes</a>
+          <a href="../index.html#upgrades">Return to asset gallery</a>
         </nav>
       </header>
       <main>

@@ -15,7 +15,7 @@ Paths below are relative to the repository root. Extend the existing renderer fo
 | Hearth creatures                       | `src/games/battlegrounds/ui/MinionArt.tsx` · `CreatureIllustrations.tsx`, `FiendIllustrations.tsx`, `ExpansionPortraits.tsx`, `NightMarketPortraits.tsx`   | `Phoenix`: curved pinions, chest and trailing plumage; `Hydra`: separate neck gestures |
 | Challenges                             | `src/shared/art/ChallengeArt.tsx` · `src/app/ChallengeArtwork.tsx`, `src/app/challenge-art.css`                                                            | Three 360 × 192 plates and 64 × 64 symbols; illustrated status keeps its HTML label    |
 | Game introductions                     | `src/app/guide/GameGuideArt.tsx`                                                                                                                           | Six 360 × 192 engraved plates; explanatory text and Play links remain HTML             |
-| Standalone export                      | `packages/workshop-tools/art/catalogue.tsx` · `export.ts`                                                                                                  | Content registry → live renderer → self-contained SVG + manifest                       |
+| Standalone export                      | `packages/workshop-tools/art/gallery/catalogue.tsx` · `export.ts`                                                                                          | Content registry → live renderer → self-contained SVG + manifest                       |
 
 Feature artwork extends the source map:
 
@@ -33,7 +33,7 @@ Feature artwork extends the source map:
 Spire's six [intent cues](asset-enrichment.md) live in
 `src/games/spire/ui/IntentArt.tsx` and `IntentCue.tsx`. They retain exact rule-owned
 action text and export under `spire/intents/`. `npm run assets:gallery -- <fresh-directory>`
-builds the independent offline before/after gallery with a visible dated changelog.
+builds the unified offline asset gallery, including the dated before/after reports.
 
 Last Hearth’s [Iron Drake portrait](assets/hearth-iron-drake/README.md) uses the existing
 `MetalPortrait` renderer in `src/games/battlegrounds/ui/MinionArt.tsx`. Normal/golden
@@ -68,12 +68,12 @@ phone tiles display them around 35 px. HTML retains names, HP, intentions and se
 
 ```sh
 npm run assets:scaffold -- CopperKestrelArt src/games/battlegrounds/ui/CopperKestrelArt.tsx card
-npm run assets:export -- test-results/art-current
+npm run assets:gallery -- test-results/art-current
 ```
 
 The scaffold accepts `card`, `plate` or `symbol`. It creates a formatted TSX component with backdrop, silhouette, depth and accent groups, calculates its shared-scene import, and refuses to overwrite a file. Draw the empty layers before integrating it. It changes no renderer, registry, stylesheet or rules automatically.
 
-All three commands resolve relative paths from the repository, even when called from another working directory. Export output must be a new directory; the default is `test-results/card-art-<UUID>/`. The old script paths remain checked compatibility entry points.
+The commands resolve relative paths from the repository, even when called from another working directory. Export output must be a new directory; the default is `test-results/asset-gallery-<UUID>/`. Root npm commands invoke the owning implementations directly.
 
 The exporter produces `manifest.json`, an offline `index.html` cabinet, and one `.svg` per entry. The manifest is the current count and ID authority; tokens, statuses and curses have no upgrade export. SVGs contain intrinsic dimensions, accessible labels and resolved palette colors. Export to separate directories for before/after review. Generated exports and reviews normally belong under ignored `test-results/`.
 
@@ -86,11 +86,13 @@ renderers; Cartographer room samples reuse its current CSS. The scope statement
 on each page names coverage limits. No session, save, background clock, polling,
 or API request runs while browsing.
 
-`src/asset-gallery/library.ts` owns curated upgrade records and batch proposals;
+`packages/workshop-tools/art/gallery/library.ts` owns curated upgrade records and batch proposals;
 the renderer/content catalogue still owns current SVG identity and artwork.
-The old `assets:gallery` output remains the retained feedback-study comparison,
-with its own dated history. Its October entries are not the current game's full
-upgrade inventory.
+The same export writes retained feedback-study comparisons under `reviews/`, linked
+from **Recent upgrades**. Their dated history records review transitions rather than
+the current game's full upgrade inventory. Each historical report remains at most
+600 KiB with zero JavaScript; current gallery pages use scripts for navigation,
+filtering and fixed renderer specimens. Opening any page makes no generation request.
 
 The [Image 2.6 Spire trial](assets/spire-image-2.6/README.md) stages three SVG
 replacement candidates next to current base and upgrade art. These files are
@@ -99,6 +101,12 @@ admission decision, actual-size and in-game review, and a decision about upgrade
 art. The gallery is rebuilt after changes; generated SVGs are not automatically
 installed into a game.
 
+For a generated proposal, set its `trial: { file, record }` in `library.ts` to the
+candidate SVG and its owning Markdown review record. The exporter copies and links
+that record with the candidate; proposals from the same batch share one copied record.
+Keep generation inputs, usage and review limits in that owning record rather than
+adding another gallery receipt. Proposals without a trial do not imply generation.
+
 ## Repeatable review
 
 Before changing approved assets, export a baseline. After editing, export the current version and select IDs to inspect:
@@ -106,9 +114,9 @@ Before changing approved assets, export a baseline. After editing, export the cu
 The helper needs an **existing Sharp module**. It looks in local Node dependencies; otherwise add `--sharp-module /absolute/path/to/sharp` to the review command below. In Codex desktop, locate the bundled package through `load_workspace_dependencies`. It installs nothing, launches no browser and fetches no assets. If no rasterizer is available, report that limitation and use an already permitted visual-review surface.
 
 ```sh
-npm run assets:export -- test-results/art-before
+npm run assets:gallery -- test-results/art-before
 # Edit the source artwork, then:
-npm run assets:export -- test-results/art-current
+npm run assets:gallery -- test-results/art-current
 npm run assets:review -- hearth/phoenix hearth/phoenix-golden \
   --from test-results/art-current --before test-results/art-before \
   --out test-results/phoenix-review

@@ -29,7 +29,7 @@ screens. The build sidebar repeats patrons at 36 px and equipped runes at 24 px.
 A duo shows both patrons. These images do not encode blessing slot or rank;
 those remain explicit text. Disabled choices retain the existing disabled style.
 
-The [export catalogue](../../../../packages/workshop-tools/art/catalogue.tsx)
+The [export catalogue](../../../../packages/workshop-tools/art/gallery/catalogue.tsx)
 uses the same components under `night-passage/`. Standalone exports get intrinsic
 sizes and accessible labels from the exporter; inline SVGs are hidden from the
 accessibility tree and cannot take keyboard focus. No remote assets or SVG IDs

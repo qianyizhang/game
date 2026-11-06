@@ -1,10 +1,10 @@
-import { drawHero } from '../../packages/diablo2/src/ui/hero-art';
-import { drawCryptMonster } from '../../packages/diablo2/src/ui/crypt-art';
-import { createGame } from '../games/night-passage/domain/game';
-import { ARENA as NIGHT_ARENA } from '../games/night-passage/domain/content';
-import { drawArena } from '../games/night-passage/ui/presentation/draw';
-import { World } from '../games/scrapyard/domain/world';
-import { createRenderer } from '../games/scrapyard/ui/renderer';
+import { drawHero } from '../../../../packages/diablo2/src/ui/hero-art';
+import { drawCryptMonster } from '../../../../packages/diablo2/src/ui/crypt-art';
+import { createGame } from '../../../../src/games/night-passage/domain/game';
+import { ARENA as NIGHT_ARENA } from '../../../../src/games/night-passage/domain/content';
+import { drawArena } from '../../../../src/games/night-passage/ui/presentation/draw';
+import { World } from '../../../../src/games/scrapyard/domain/world';
+import { createRenderer } from '../../../../src/games/scrapyard/ui/renderer';
 
 /** Fixed presentation specimens. No sessions, saves, clocks or animation loops. */
 for (const canvas of document.querySelectorAll<HTMLCanvasElement>('canvas[data-specimen]')) {

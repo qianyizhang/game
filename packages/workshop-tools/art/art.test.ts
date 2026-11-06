@@ -13,7 +13,7 @@ await test('package export works outside cwd, writes a standalone catalogue and 
   const root = await mkdtemp(resolve(tmpdir(), 'art-export-test-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   const output = resolve(root, 'export');
-  const command = fromRoot('packages/workshop-tools/art/export.ts');
+  const command = fromRoot('packages/workshop-tools/art/gallery/export.ts');
   const args = [command, output];
   execFileSync(process.execPath, args, { cwd: tmpdir(), stdio: 'pipe' });
   const manifest = await readFile(resolve(output, 'manifest.json'));

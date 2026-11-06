@@ -1,5 +1,5 @@
-import { FrontierArt } from '../games/cartographer/ui/FrontierArt';
-import { ThreatCue } from '../games/cartographer/ui/MapCues';
+import { FrontierArt } from '../../../../../src/games/cartographer/ui/FrontierArt';
+import { ThreatCue } from '../../../../../src/games/cartographer/ui/MapCues';
 
 export interface CartographerEvidence {
   before: string;

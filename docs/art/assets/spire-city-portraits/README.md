@@ -67,7 +67,7 @@ npx eslint src/games/spire/ui/Portrait.tsx tests/browser/spire-city-art.spec.ts 
 npx tsc --noEmit
 npm run test -- src/games/spire/domain/game.test.ts src/games/spire/domain/expansion.test.ts
 npx playwright test tests/browser/spire.spec.ts tests/browser/spire-city-art.spec.ts --project=functional
-npm run assets:export -- test-results/city-cabinet-current
+npm run assets:gallery -- test-results/city-cabinet-current
 ```
 
 The saved cloud environment uses the repo's supported `CARD_WORKSHOP_CHROME_EXECUTABLE` option with an extracted official Google Chrome binary. The normal startup guard remains in effect; profiles are disposable. No user Mac, native modeling, gameplay/content/save changes or full cross-game campaign is involved. Scoped lint/types, formatting/inventory and production build complete the local checks; required hosted checks are tracked on the exact PR head.

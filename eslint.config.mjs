@@ -55,6 +55,7 @@ export default [
       'src/**/*.{ts,tsx}',
       'packages/dcc-workbench/src/**/*.{ts,tsx}',
       'packages/diablo2/src/ui/**/*.{ts,tsx}',
+      'packages/workshop-tools/art/gallery/**/*.tsx',
     ],
     plugins: { 'react-hooks': reactHooks },
     rules: {

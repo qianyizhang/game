@@ -76,15 +76,16 @@ The original PR20 review was isolated from PR19. The reconciled source now conta
 Blindside and Hearth with all prior changelog entries retained. For a gallery already
 containing Blindside, add these Hearth inputs without replacing the other comparisons:
 
-1. [HearthShieldReview.tsx](../../../../src/asset-gallery/HearthShieldReview.tsx), the cue/art
+1. [HearthShieldReview.tsx](../../../../packages/workshop-tools/art/gallery/reviews/HearthShieldReview.tsx), the cue/art
    components above, `ShieldFeedback.css`, and the `.shield-*` gallery CSS rules.
 2. The two unit WebPs, supplied through its `evidence` prop; insert this independent section
    alongside existing comparisons. Its IDs are `review-hearth-shield` and `asset-hearth-shield`.
 3. Prepend the `2026-10-26-hearth-shield` entry from
-   [CHANGELOG.json](../../../../src/asset-gallery/CHANGELOG.json), preserving all prior entries.
+   [CHANGELOG.json](../../../../packages/workshop-tools/art/gallery/reviews/CHANGELOG.json), preserving all prior entries.
 4. Keep the 600 KiB budget, image decoding, independent expansion, phone and no-script checks.
 
-Build this branch's review with `npm run assets:gallery -- <fresh-directory>`. Parent owns
+Build the retained review with `npm run assets:gallery -- <fresh-directory>` and open
+`reviews/index.html` in that output. Parent owns
 private publication. No Site or access setting changed here.
 
 Raw captures, the baseline export, failed browser trace and synthetic practice save remain

@@ -60,7 +60,7 @@ npm run typecheck
 npm run test -- src/games/spire/domain/game.test.ts src/games/spire/domain/expansion.test.ts
 npm run test:browser -- --project=functional tests/browser/spire.spec.ts tests/browser/spire-city-art.spec.ts tests/browser/spire-constructs.spec.ts
 npm run build
-npm run assets:export -- test-results/FRESH
+npm run assets:gallery -- test-results/FRESH
 npm run format:maintenance
 ```
 

@@ -1,7 +1,11 @@
-import { IntentArt, INTENT_ART, type IntentArtKind } from '../games/spire/ui/IntentArt';
-import { IntentCue } from '../games/spire/ui/IntentCue';
+import {
+  IntentArt,
+  INTENT_ART,
+  type IntentArtKind,
+} from '../../../../../src/games/spire/ui/IntentArt';
+import { IntentCue } from '../../../../../src/games/spire/ui/IntentCue';
 import changes from './CHANGELOG.json';
-import { ScoreFeedback } from '../games/balatro/ui/ScoreFeedback';
+import { ScoreFeedback } from '../../../../../src/games/balatro/ui/ScoreFeedback';
 import { HearthShieldReview, type HearthShieldEvidence } from './HearthShieldReview';
 import { CartographerReview, type CartographerEvidence } from './CartographerReview';
 
@@ -56,7 +60,8 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
         <nav aria-label="Gallery navigation">
           <a href="#latest">Latest changes</a>
           <a href="#reviews">Comparisons</a>
-          <a href="#next">Next studies</a>
+          <a href="../index.html#candidates">Next batch</a>
+          <a href="../index.html#upgrades">Return to asset gallery</a>
         </nav>
       </header>
       <main id="top">
@@ -328,53 +333,6 @@ export function ReviewGallery({ evidence }: { evidence: GalleryEvidence }) {
             Cue specimens are illustrative presentation samples. The combat capture is rendered in
             the actual game. During play, all values come from the existing intent formatter.
           </p>
-        </section>
-        <section id="next" className="next-studies" aria-labelledby="next-title">
-          <div className="section-title">
-            <h2 id="next-title">Next studies</h2>
-            <span>Proposed · not implemented</span>
-          </div>
-          <ol>
-            <li>
-              <strong>Blindside · player review, then instance-level cues</strong>
-              <p>
-                Compare the two scoring views with players: ask which source fired and what changed.
-                Exact owned-card or duplicate-Joker highlighting needs stable source identity in the
-                trace; it remains proposed.
-              </p>
-            </li>
-            <li>
-              <strong>Last Hearth · shield review, then contact cues</strong>
-              <p>
-                Review shield recognition and the added height first. Rebirth and finishing-hit cues
-                remain proposed; any later 3D contact study must preserve existing combat frames.
-              </p>
-            </li>
-            <li>
-              <strong>Cartographer · player recognition review</strong>
-              <p>
-                Ask players to identify an occupied doorway and the next threatened cell at phone
-                size. Review the local candidate before extending the visual language to other
-                terrain.
-              </p>
-            </li>
-            <li>
-              <strong>Night Passage · 3D windup silhouettes</strong>
-              <p>
-                Review the existing brute and guardian poses from the gameplay camera. Refine one
-                anticipation pose in its saved Blender source, with contact timing and
-                reduced-motion stills preserved. No new timing or damage geometry.
-              </p>
-            </li>
-            <li>
-              <strong>Emberwake · elemental impact effects</strong>
-              <p>
-                Give physical, fire, cold, and poison impacts distinct 2D shapes using the existing
-                bounded effect pool. Test whether players recognize a hit while terrain and threats
-                remain readable.
-              </p>
-            </li>
-          </ol>
         </section>
         <section className="provenance" aria-labelledby="provenance-title">
           <h2 id="provenance-title">Materials & review notes</h2>

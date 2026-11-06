@@ -8,14 +8,14 @@ test('independent asset comparisons, changelog links, offline delivery and phone
   page,
 }, info) => {
   const output = info.outputPath('gallery');
-  execFileSync(process.execPath, ['packages/workshop-tools/art/gallery.ts', output]);
-  const html = readFileSync(`${output}/index.html`);
+  execFileSync(process.execPath, ['packages/workshop-tools/art/gallery/export.ts', output]);
+  const html = readFileSync(`${output}/reviews/index.html`);
   expect(html.length).toBeLessThanOrEqual(600 * 1024);
   // Serve the generated file unchanged: Vite's dev client would add a script to static HTML.
   await page.route('**/asset-review.html', (route) =>
     route.fulfill({ contentType: 'text/html', body: html }),
   );
-  const emberwakeHtml = readFileSync(`${output}/emberwake.html`);
+  const emberwakeHtml = readFileSync(`${output}/reviews/emberwake.html`);
   expect(emberwakeHtml.length).toBeLessThanOrEqual(600 * 1024);
   await page.route('**/emberwake.html', (route) =>
     route.fulfill({ contentType: 'text/html', body: emberwakeHtml }),
@@ -115,8 +115,8 @@ test('independent asset comparisons, changelog links, offline delivery and phone
   expect(external).toEqual([]);
   expect(errors).toEqual([]);
   // The portable delivery contains the same preserved, dated source history.
-  expect(readFileSync(`${output}/CHANGELOG.json`, 'utf8')).toBe(
-    readFileSync('src/asset-gallery/CHANGELOG.json', 'utf8'),
+  expect(readFileSync(`${output}/reviews/CHANGELOG.json`, 'utf8')).toBe(
+    readFileSync('packages/workshop-tools/art/gallery/reviews/CHANGELOG.json', 'utf8'),
   );
   expect(relative(process.cwd(), output)).not.toContain('..');
   await page
@@ -153,7 +153,7 @@ test('per-game galleries preserve navigation, show current renderers and compare
   page,
 }, info) => {
   const output = info.outputPath('per-game');
-  execFileSync(process.execPath, ['packages/workshop-tools/art/export.ts', output]);
+  execFileSync(process.execPath, ['packages/workshop-tools/art/gallery/export.ts', output]);
   const base = pathToFileURL(output + '/').href.replace(/\/$/, '');
   const errors: string[] = [];
   const external: string[] = [];
@@ -238,6 +238,11 @@ test('per-game galleries preserve navigation, show current renderers and compare
   await expect(page.locator('.asset:visible')).toHaveCount(2);
   await page.goBack();
   await expect(page.locator('#upgrades')).toBeVisible();
+  await page.getByRole('link', { name: 'Historical feedback comparisons', exact: true }).click();
+  await expect(page).toHaveURL(`${base}/reviews/index.html`);
+  await expect(page.getByRole('heading', { name: 'Latest changes', exact: true })).toBeVisible();
+  await page.getByRole('link', { name: 'Return to asset gallery', exact: true }).click();
+  await expect(page).toHaveURL(`${base}/index.html#upgrades`);
   await page.goto(`${base}/spire.html#unknown`);
   await expect(page.locator('#current')).toBeVisible();
   for (const id of ['spire', 'cartographer', 'emberwake', 'scrapyard']) {

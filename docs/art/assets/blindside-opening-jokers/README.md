@@ -81,7 +81,7 @@ npm run assets:review -- blindside/jokers/spark blindside/jokers/granite \
   --before test-results/issue37-before --out test-results/issue37-final-review
 ```
 
-The two inputs come from `npm run assets:export -- <directory>` at the baseline
+The two inputs come from `npm run assets:gallery -- <directory>` at the baseline
 and PR revisions respectively. The retained files here are the three selected
 comparison sheets and manifest. The full 644-SVG exports remain local under
 ignored `test-results/`; incomplete trial captures are quarantined there and

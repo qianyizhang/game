@@ -24,4 +24,4 @@ The baseline formerly at `test-results/feature-art-before` contained 523 exports
 
 The art was inspected enlarged and at small sizes, then in the actual desktop and phone UI. Review sheets and screenshots were recorded under ignored `test-results/feature-art-*` and `test-results/feature-art/browser/`. Browser coverage uses the repository's disposable-profile harness; the export cabinet was not browser-tested in this session.
 
-Run `npm run check`, export with `npm run assets:export -- test-results/art-current`, and use the relevant browser files listed in the source map. The manifest remains the authority for current counts as content grows.
+Run `npm run check`, export with `npm run assets:gallery -- test-results/art-current`, and use the relevant browser files listed in the source map. The manifest remains the authority for current counts as content grows.

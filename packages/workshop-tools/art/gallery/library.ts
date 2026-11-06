@@ -209,13 +209,16 @@ export interface BatchCandidate {
   brief: string;
   current: string[];
   status: 'Review first' | 'SVG trial';
-  file?: string;
+  trial?: { file: string; record: string };
 }
 
 export const NEXT_BATCH: BatchCandidate[] = [
   {
     id: 'metallicize',
-    file: 'docs/art/assets/spire-image-2.6/metallicize.svg',
+    trial: {
+      file: 'docs/art/assets/spire-image-2.6/metallicize.svg',
+      record: 'docs/art/assets/spire-image-2.6/README.md',
+    },
     game: 'spire',
     title: 'Metallicize',
     reason:
@@ -227,7 +230,10 @@ export const NEXT_BATCH: BatchCandidate[] = [
   },
   {
     id: 'ghostlyArmor',
-    file: 'docs/art/assets/spire-image-2.6/ghostlyArmor.svg',
+    trial: {
+      file: 'docs/art/assets/spire-image-2.6/ghostlyArmor.svg',
+      record: 'docs/art/assets/spire-image-2.6/README.md',
+    },
     game: 'spire',
     title: 'Ghostly Armor',
     reason:
@@ -239,7 +245,10 @@ export const NEXT_BATCH: BatchCandidate[] = [
   },
   {
     id: 'sentinel',
-    file: 'docs/art/assets/spire-image-2.6/sentinel.svg',
+    trial: {
+      file: 'docs/art/assets/spire-image-2.6/sentinel.svg',
+      record: 'docs/art/assets/spire-image-2.6/README.md',
+    },
     game: 'spire',
     title: 'Sentinel',
     reason: 'The helmet repeats Metallicize; the wall and energy mark remain small secondary cues.',
@@ -313,4 +322,53 @@ export const NEXT_BATCH: BatchCandidate[] = [
     current: [],
     status: 'Review first',
   },
+];
+
+/** Files copied into the historical comparison reports; paths are also CI inputs. */
+export const FEEDBACK_CAPTURES = {
+  combat: {
+    before: 'docs/art/assets/spire-intent/before-battlefield.webp',
+    after: 'docs/art/assets/spire-intent/after-battlefield.webp',
+  },
+  score: {
+    before: 'docs/art/assets/blindside-score/before-score.webp',
+    after: 'docs/art/assets/blindside-score/after-score.webp',
+  },
+  shield: {
+    before: 'docs/art/assets/hearth-shield/before-unit.webp',
+    after: 'docs/art/assets/hearth-shield/after-unit.webp',
+  },
+  cartographer: {
+    before: 'docs/art/assets/cartographer-map/before-board.webp',
+    after: 'docs/art/assets/cartographer-map/after-board.webp',
+    threatBefore: 'docs/art/assets/cartographer-map/before-threat.webp',
+    threatAfter: 'docs/art/assets/cartographer-map/after-threat.webp',
+  },
+  emberwake: {
+    beforeScene: 'docs/art/assets/emberwake-silhouettes/before-scene.webp',
+    afterScene: 'docs/art/assets/emberwake-silhouettes/after-scene.webp',
+    beforeZoom: 'docs/art/assets/emberwake-silhouettes/before-zoom.webp',
+    afterZoom: 'docs/art/assets/emberwake-silhouettes/after-zoom.webp',
+  },
+} as const;
+
+export const FEEDBACK_STYLES = [
+  'packages/workshop-tools/art/gallery/reviews/gallery.css',
+  'src/games/spire/ui/IntentCue.css',
+  'src/games/balatro/ui/ScoreFeedback.css',
+  'src/games/battlegrounds/ui/ShieldFeedback.css',
+  'src/games/cartographer/ui/MapCues.css',
+] as const;
+
+/** Explicit filesystem inputs supplement the import graph without loading renderers. */
+export const GALLERY_INPUTS: readonly string[] = [
+  ...RECENT_UPGRADES.map((upgrade) => upgrade.image),
+  ...NEXT_BATCH.flatMap((candidate) =>
+    candidate.trial ? [candidate.trial.file, candidate.trial.record] : [],
+  ),
+  ...Object.values(FEEDBACK_CAPTURES).flatMap((captures) => Object.values(captures)),
+  ...FEEDBACK_STYLES,
+  'packages/workshop-tools/art/gallery/cabinet.css',
+  'packages/workshop-tools/art/gallery/reviews/CHANGELOG.json',
+  'src/games/cartographer/ui/styles.css',
 ];

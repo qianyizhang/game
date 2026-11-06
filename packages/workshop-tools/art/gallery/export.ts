@@ -3,15 +3,16 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { writeCabinet, type ExportedAsset } from './cabinet-pages.ts';
-import { assetCollection } from '../../../src/asset-gallery/library.ts';
-import { freshDirectory, fromRoot, newOutput, withBundle, reportFailure } from '../io.ts';
+import { writeGalleryPages, type ExportedAsset } from './pages.ts';
+import { assetCollection } from './library.ts';
+import { writeReviews } from './reviews/export.ts';
+import { freshDirectory, fromRoot, newOutput, withBundle, reportFailure } from '../../io.ts';
 
-export async function exportArt(outputDir = newOutput('card-art')) {
+export async function exportGallery(outputDir = newOutput('asset-gallery')) {
   outputDir = fromRoot(outputDir);
   await freshDirectory(outputDir);
   return withBundle<typeof import('./catalogue'), void>(
-    'packages/workshop-tools/art/catalogue.tsx',
+    'packages/workshop-tools/art/gallery/catalogue.tsx',
     async ({ cardArtCatalogue }) => {
       const assets = cardArtCatalogue();
       const escape = (value: string) =>
@@ -60,7 +61,8 @@ export async function exportArt(outputDir = newOutput('card-art')) {
           2,
         ) + '\n',
       );
-      await writeCabinet(outputDir, manifest);
+      await writeGalleryPages(outputDir, manifest);
+      await writeReviews(resolve(outputDir, 'reviews'));
       console.log(
         `Exported ${manifest.length} SVG assets to ${outputDir}\nGallery: ${resolve(outputDir, 'index.html')}`,
       );
@@ -71,12 +73,12 @@ export async function exportArt(outputDir = newOutput('card-art')) {
 export async function runCli(args: string[]) {
   if (args[0] === '--help') {
     console.log(
-      'Usage: npm run assets:export -- [new-output-directory]. Relative paths resolve from the repository; default is a fresh card-art run.',
+      'Usage: npm run assets:gallery -- [new-output-directory]. Relative paths resolve from the repository; default is a fresh asset-gallery run.',
     );
     return;
   }
   if (args.length > 1) throw new Error('Expected at most one fresh output directory');
-  await exportArt(args[0] ? fromRoot(args[0]) : undefined);
+  await exportGallery(args[0] ? fromRoot(args[0]) : undefined);
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url))
   await runCli(process.argv.slice(2)).catch(reportFailure);
