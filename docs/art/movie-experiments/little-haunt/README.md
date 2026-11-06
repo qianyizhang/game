@@ -1,5 +1,7 @@
 # Little Haunt · pixel diorama
 
+Part of the [movie experiment collection](../README.md).
+
 A fifteen-second isometric haunted-island study: three chibi hunters capture
 11 ghosts, confront a giant crypt ghost with crossed lantern beams, then settle
 into a calm wide orbit. The island includes a haunted manor, graveyard, crypt,

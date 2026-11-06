@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
 test('Lantern Keep plays offline and preserves deterministic pixel scaling', async ({ page }) => {
-  const html = readFileSync('docs/art/studies/lantern-keep/lantern-keep.html');
+  const html = readFileSync('docs/art/movie-experiments/lantern-keep/lantern-keep.html');
   const errors: string[] = [];
   const dependencies: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));

@@ -13,7 +13,7 @@ type FilmWindow = Window & {
 };
 
 test('Golden Claw plays offline, seeks deterministically and ends in black', async ({ page }) => {
-  const html = await readFile('docs/art/assets/golden-claw/film.html', 'utf8');
+  const html = await readFile('docs/art/movie-experiments/golden-claw/film.html', 'utf8');
   const errors: string[] = [];
   const dependencies: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));

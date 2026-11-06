@@ -122,8 +122,8 @@ export function sourceFamily(path: string): Family | 'core' | undefined {
 export function browserFamilies(path: string): Family[] | undefined {
   const name = path.match(/^tests\/browser\/(.+)\.spec\.ts$/)?.[1];
   if (!name || name === 'art3d-review' || name === 'trace-private') return undefined;
-  // Standalone film: direct spec changes and conservative delivery fallback select it.
-  if (name === 'golden-claw') return [];
+  // Standalone movies: direct spec changes and conservative delivery fallback select them.
+  if (['golden-claw', 'lantern-keep'].includes(name)) return [];
   if (name.startsWith('night-passage')) return ['night-passage'];
   if (name === 'scrapyard') return ['scrapyard'];
   if (name.startsWith('emberwake') || name === 'diablo2') return ['emberwake'];

@@ -1,5 +1,7 @@
 # Lantern Keep
 
+Part of the [movie experiment collection](../README.md).
+
 A standalone, 15-second pixel-art ghost hunt on a floating graveyard island.
 Three chibi hunters capture eleven ghosts, confront a giant ghost, and finish
 with a calm wide orbit. The scene has no UI.

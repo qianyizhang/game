@@ -1,8 +1,5 @@
 # Art
 
-[金弧裂爪 · 黑甲雷袭](assets/golden-claw/README.md) is a standalone 30-second
-black-and-gold feline action animatic, with offline HTML, GIF and Foley MP4 delivery.
-
 The [aesthetic rulebook](art-direction.md) is the single visual standard. Use the [art skill](../../skills/card-art/SKILL.md), [SVG source map](svg.md), [3D source map](3d.md) and [DCC package](../../packages/dcc-workbench/README.md) for implementation and review. [SVG integration rules](svg.md#integration-boundaries) govern current behavior; [feature coverage history](history/feature-coverage.md) retains the dated regression evidence.
 
 [Native 3D migration](migration.md) owns the settled authoring/delivery boundaries, parent acceptance and promotion rules, pilot gate and planned 29-study cohort. Its stages do not establish visual approval or batch completion.
@@ -64,10 +61,12 @@ decision nor passing CI establishes user approval or gameplay acceptance.
 
 [Three-species saved-motion trial](trials/rig-strategy-three-rounds.md) records the sequential fox, boar and raven campaign, owner self-review boundary, and tested rig/workflow refinements.
 
-## Asset records
+## Movie experiments
 
-[Lantern Keep](studies/lantern-keep/README.md) is a standalone 15-second pixel-art
-ghost-hunt diorama, delivered as a self-contained Three.js HTML file and animated GIF.
+[Movie experiments](movie-experiments/README.md) retains the four standalone movie
+trials, their sources and rendered exports, comparison outcomes, and known limitations.
+
+## Asset records
 
 [Game asset enrichment](asset-enrichment.md) inventories the six games, prioritizes
 readability and feedback studies, and records the Spire intent pilot with its independent

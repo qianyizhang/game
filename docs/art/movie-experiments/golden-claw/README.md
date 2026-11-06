@@ -1,5 +1,7 @@
 # 金弧裂爪 · 黑甲雷袭
 
+Part of the [movie experiment collection](../README.md).
+
 30 秒黑金猫科英雄动作短片。单文件 HTML 无按钮、文字叠层或播放控件；
 人物、场景、动作、金白电弧、火花、残影和声音均随文件交付，无运行时网络依赖。
 

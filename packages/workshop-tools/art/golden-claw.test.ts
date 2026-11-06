@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 import { Script } from 'node:vm';
 
-const delivery = new URL('../../../docs/art/assets/golden-claw/', import.meta.url);
+const delivery = new URL('../../../docs/art/movie-experiments/golden-claw/', import.meta.url);
 
 await test('Golden Claw opens as one offline HTML with no visible controls', async () => {
   const html = await readFile(new URL('film.html', delivery), 'utf8');
