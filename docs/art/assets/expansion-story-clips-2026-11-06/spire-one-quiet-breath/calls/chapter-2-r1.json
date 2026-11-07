@@ -1,0 +1,44 @@
+{
+  "status": "returned",
+  "kind": "gif-edit",
+  "prompt": "Create ONE targeted FRAMING correction of chapter two,Again,for the candidate Spire vignette One Quiet Breath. The supplied PNG is the actual Let Go endpoint and owns the starting pose/identity: Silent seated,relaxed glove supported on raised knee,other hand hidden,mask lowered,two swept bone horns,small fire and ascending path. Preserve this body scale,placement,cloth,painted texture and lighting. The previous version raised the whole torso and clipped horn tips;correct that specific problem without introducing a new action.\n\nDO NOT STRAIGHTEN OR RAISE THE TORSO,BACK,SHOULDERS OR WHOLE HEAD POSITION. Keep the seated body and knee at their original height/scale. Make only a SMALL slow mask/head turn of about5degrees toward the ascending path on the right,with no upward translation. It expresses renewed attention,not standing up or lifting the chest. Keep every part of BOTH horns fully inside the picture at every frame: target at least12pixels of top clearance,never less than8pixels,at480x336. More clearance is fine. Do not zoom,reframe,pad the canvas,shrink the whole figure or move the camera to meet this requirement.\n\nFirst four frames settle the actual supplied endpoint;middle eight make the small rightward mask turn and a barely perceptible cloak-edge settling;final four hold that calm ready gaze. Keep the SAME relaxed open hand on the SAME knee,wrist/forearm/elbow connected,other hand fully hidden. No clenched-hand reset,extra fingers,unsupported stand or large body sway. The bone skull mask remains a fixed worn mask with exactly two swept horns and unchanged dark eye/nose openings,no living mouth/eyes. Small gentle flame flicker only;same crossed logs,path and stones,fire separated from cloth. No tools,new props,magic heal,sparks,flashes,text,cuts or reset within the clip.\n\nSixteen300ms frames,480x336,locked three-quarter camera. The small change should read as a quiet look toward the path while the rested posture stays stable. Keep the full horn contours and generous top margin through the ENDING. Candidate fiction only,not accepted canon,a run outcome or a runtime effect.",
+  "inputs": ["chapter-1-last"],
+  "client_request_id": "932f1972-b061-43b1-87ae-c9ea6e1f879b",
+  "started_at": "2026-11-06T18:14:56Z",
+  "settings_sha256": "e67c076000649183dc4cae965e72d99e3ebdd3491fda2bf0d6067af62c7e5825",
+  "grant_id": "story-silent-framing-09",
+  "reservation_usd": 1.5,
+  "block_call_index": 1,
+  "request_id": "req_081334dbc82d4f4685e7112388fcde5b",
+  "http_status": 200,
+  "output": "chapter-2-r1.gif",
+  "sha256": "aa2eae3e2952e56674c45cd4a808bc394910c7a1c7524391e2e763d8525effa9",
+  "response": {
+    "created": 1793988932,
+    "background": "opaque",
+    "data": [
+      {
+        "generation_id": "dd2fc95b-439b-416d-8010-5b1ec6fb625a"
+      }
+    ],
+    "output_format": "gif",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "480x336",
+    "usage": {
+      "input_tokens": 1121,
+      "input_tokens_details": {
+        "image_tokens": 630,
+        "text_tokens": 491
+      },
+      "output_tokens": 1869,
+      "output_tokens_details": {
+        "image_tokens": 1869,
+        "text_tokens": 0
+      },
+      "total_tokens": 2990
+    }
+  },
+  "cost_estimate_usd": 0.063565,
+  "elapsed_s": 35.853
+}

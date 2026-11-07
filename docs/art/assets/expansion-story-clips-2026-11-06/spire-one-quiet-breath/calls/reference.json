@@ -1,0 +1,47 @@
+{
+  "status": "returned",
+  "kind": "svg",
+  "prompt": "Create ONE native editable SVG opening keyframe for the candidate Spire story One Quiet Breath. Landscape1280x896,viewBox=\"0 0 1280 896\",one opening scene only. A restful composition for later small meaningful motion,not a contact sheet,combat portrait or montage.\n\nThe Silent is recognizable by a muted green cowl,layered sage/forest cloth,a pale bone skull mask with exactly TWO unbranched swept-up/outward horns,two dark angular eye sockets and a small triangular nasal opening. This is a worn STATIC MASK,not an animal face; no expressive mouth,glowing eyes or extra antlers. Seated supported on a broad low stone at the LEFT two-thirds,waist-up three-quarter view with one near knee raised enough to support a visible forearm and loosely CLENCHED gloved hand. The wrist,forearm and elbow are clearly attached; glove rests naturally on that knee. The other hand is fully at rest inside the cloak,not another visible floating hand. The mask tilts slightly down and shoulders are guarded/tired at the opening. Later the supported glove will relax and the hood lift; do not show those later poses now.\n\nAt LOWER RIGHT,one small quiet campfire: two crossed dark logs,a broad restrained copper flame and cream center,well separated from every cloth edge. No sparks,magic heal or new prop. A quiet stone path curves gently upward into empty upper-right space,providing a destination for the later gaze. Neither body nor hand needs to touch the fire. Weapons are outside this restful composition; do not invent or manipulate new blades. No wounds,gore,statistics,UI,words or implied specific run outcome. New scene is candidate fiction inspired by the existing Silent/rest identities,not accepted history or a new game rule.\n\nSTYLE: expressive engraved/cut-plane fantasy,connected broad curved/sculptural shapes,three clear values,quiet negative space,soft upper-left cream light plus restrained low fire warmth. Materials matte cloth,bone,worn stone and charcoal. Palette ink#25312e,deepforest#172928,cowl#405b49,sage#6f8660,lightcloth#8d9b76,bone#e6d8b8,copper#b5674e,gold#bb965c. Avoid plastic gloss,dense hatching,tiny clutter and gradients. Keep identity,hand support and cloth/fire separation clear at480x336 and160x112. Generous margins around horn tips and fire. No camera effects.\n\nSelf-contained static editable SVG paths/simple shapes only,no embedded raster,scripts,external resources,fonts,text,numbers,logos,animation or gradients. Coherent groups for mask/cowl,body/supported arm and knee,stone,campfire and quiet background. No duplicate living figures or disconnected anatomy.",
+  "inputs": [],
+  "client_request_id": "9a384b44-51d3-4b52-ba66-aea624fdf0c8",
+  "started_at": "2026-11-06T17:40:49Z",
+  "settings_sha256": "e67c076000649183dc4cae965e72d99e3ebdd3491fda2bf0d6067af62c7e5825",
+  "grant_id": "story-next-arc-block-08",
+  "reservation_usd": 3,
+  "block_call_index": 1,
+  "request_id": "req_d6c346bf67e844e6986c3ce9ea1f7abf",
+  "http_status": 200,
+  "output": "reference.svg",
+  "sha256": "b957b18f04903445bd95a786e5b1b25effebb8b3f9e3ed8a920ff4d42106c48a",
+  "response": {
+    "created": 1793986895,
+    "background": "transparent",
+    "data": [{}],
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1280x896",
+    "svg_usage": {
+      "input_tokens": 2232,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 6144,
+      "reasoning_tokens": 407,
+      "total_tokens": 8376
+    },
+    "usage": {
+      "input_tokens": 646,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 646
+      },
+      "output_tokens": 1284,
+      "output_tokens_details": {
+        "image_tokens": 1284,
+        "text_tokens": 0
+      },
+      "total_tokens": 1930
+    }
+  },
+  "cost_estimate_usd": 0.107654,
+  "elapsed_s": 167.142
+}

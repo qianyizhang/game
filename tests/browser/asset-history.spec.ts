@@ -1,5 +1,14 @@
 import { expect, test } from '@playwright/test';
-import { readFileSync, writeFileSync, mkdirSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
+import {
+  readFileSync,
+  writeFileSync,
+  mkdirSync,
+  existsSync,
+  mkdtempSync,
+  rmSync,
+  createReadStream,
+} from 'node:fs';
+import { createServer as createHttpServer } from 'node:http';
 import { tmpdir } from 'node:os';
 import { gzipSync } from 'node:zlib';
 import { createServer } from 'vite';
@@ -227,58 +236,78 @@ test('offline gallery history embeds artwork and settings without offering write
 }, info) => {
   const output = info.outputPath('export');
   execFileSync(process.execPath, ['packages/workshop-tools/art/gallery/export.ts', output]);
-  const html = readFileSync(resolve(output, 'history.html'), 'utf8');
   const liveRequests: string[] = [];
   await page.route('**/__art/api/**', (route) => {
     liveRequests.push(route.request().url());
     return route.abort();
   });
-  await page.route('**/offline-history.html', (route) =>
-    route.fulfill({ contentType: 'text/html', body: html }),
-  );
-  await page.goto('/offline-history.html#asset=spire%2Fmetallicize');
-  await expect(page.getByRole('heading', { name: 'Metallicize', exact: true })).toBeVisible();
-  expect(
-    await page
-      .locator('.revision img')
-      .first()
-      .evaluate(async (node) => {
-        const image = node as HTMLImageElement;
-        await image.decode();
-        return image.naturalWidth;
-      }),
-  ).toBeGreaterThan(0);
-  const candidate = page
-    .locator('.revision')
-    .filter({ has: page.getByRole('heading', { name: 'metallicize-base', exact: true }) });
-  await candidate.getByText('Prompt, settings and outcome', { exact: true }).click();
-  await candidate.getByRole('button', { name: 'svg-request.json', exact: true }).click();
-  await expect(candidate.locator('pre')).toContainText('gpt-image');
-  await page.getByText('Generation and authoring attempts', { exact: true }).click();
-  const gifAttempt = page
-    .locator('#failures > details')
-    .filter({ hasText: 'spire-defense-batch/gif · returned' });
-  await gifAttempt.locator('summary').click();
-  await gifAttempt.getByRole('button', { name: 'reference.png', exact: true }).click();
-  await expect(gifAttempt.getByRole('img', { name: 'reference.png', exact: true })).toBeVisible();
-  expect(
-    await gifAttempt
-      .getByRole('img', { name: 'reference.png', exact: true })
-      .evaluate(async (node) => {
-        const image = node as HTMLImageElement;
-        await image.decode();
-        return image.naturalWidth;
-      }),
-  ).toBeGreaterThan(0);
+  // Large catalogues exceed Chromium's DevTools-pipe limit when fulfilled as one
+  // base64 protocol message. Serve the unchanged full export over loopback HTTP.
+  const server = createHttpServer((request, response) => {
+    if (request.url !== '/history.html') {
+      response.writeHead(404).end();
+      return;
+    }
+    response.setHeader('Content-Type', 'text/html; charset=utf-8');
+    createReadStream(resolve(output, 'history.html')).pipe(response);
+  });
+  try {
+    await new Promise<void>((resolve, reject) => {
+      server.once('error', reject);
+      server.listen(0, '127.0.0.1', resolve);
+    });
+    const address = server.address();
+    if (!address || typeof address !== 'object') throw new Error('Missing export server port');
+    await page.goto(`http://127.0.0.1:${address.port}/history.html#asset=spire%2Fmetallicize`);
+    await expect(page.getByRole('heading', { name: 'Metallicize', exact: true })).toBeVisible();
+    expect(
+      await page
+        .locator('.revision img')
+        .first()
+        .evaluate(async (node) => {
+          const image = node as HTMLImageElement;
+          await image.decode();
+          return image.naturalWidth;
+        }),
+    ).toBeGreaterThan(0);
+    const candidate = page
+      .locator('.revision')
+      .filter({ has: page.getByRole('heading', { name: 'metallicize-base', exact: true }) });
+    await candidate.getByText('Prompt, settings and outcome', { exact: true }).click();
+    await candidate.getByRole('button', { name: 'svg-request.json', exact: true }).click();
+    await expect(candidate.locator('pre')).toContainText('gpt-image');
+    await page.getByText('Generation and authoring attempts', { exact: true }).click();
+    const gifAttempt = page
+      .locator('#failures > details')
+      .filter({ hasText: 'spire-defense-batch/gif · returned' });
+    await gifAttempt.locator('summary').click();
+    await gifAttempt.getByRole('button', { name: 'reference.png', exact: true }).click();
+    await expect(gifAttempt.getByRole('img', { name: 'reference.png', exact: true })).toBeVisible();
+    expect(
+      await gifAttempt
+        .getByRole('img', { name: 'reference.png', exact: true })
+        .evaluate(async (node) => {
+          const image = node as HTMLImageElement;
+          await image.decode();
+          return image.naturalWidth;
+        }),
+    ).toBeGreaterThan(0);
 
-  await expect(candidate.getByRole('button', { name: 'Use in game', exact: true })).toBeDisabled();
-  await expect(candidate.getByRole('button', { name: 'Remove', exact: true })).toBeDisabled();
-  const state = await page.locator('#history-state').textContent();
-  expect((JSON.parse(state!) as HistoryState).live).toBe(false);
-  // The export is also directly openable from disk; it is not tied to the preview route.
-  await page.goto(pathToFileURL(resolve(output, 'history.html')).href + '#asset=hearth%2Fcub');
-  await expect(page.getByRole('heading', { name: 'Briar Cub', exact: true })).toBeVisible();
-  expect(liveRequests).toEqual([]);
+    await expect(
+      candidate.getByRole('button', { name: 'Use in game', exact: true }),
+    ).toBeDisabled();
+    await expect(candidate.getByRole('button', { name: 'Remove', exact: true })).toBeDisabled();
+    const state = await page.locator('#history-state').textContent();
+    expect((JSON.parse(state!) as HistoryState).live).toBe(false);
+    // The export is also directly openable from disk; it is not tied to the preview route.
+    await page.goto(pathToFileURL(resolve(output, 'history.html')).href + '#asset=hearth%2Fcub');
+    await expect(page.getByRole('heading', { name: 'Briar Cub', exact: true })).toBeVisible();
+    expect(liveRequests).toEqual([]);
+  } finally {
+    await new Promise<void>((resolve, reject) =>
+      server.close((error) => (error ? reject(error) : resolve())),
+    );
+  }
 });
 
 test('Scrapyard uses selected vectors in cached Canvas sprites and reports decode failures', async ({
