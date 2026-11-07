@@ -7300,6 +7300,19 @@
       "outcome": "manual",
       "notes": "Zero API calls. Seven path geometries changed per inherited connected-arm cell; all other paths unchanged. Useful source candidates; no selection, runtime adaptation or aesthetic acceptance. See README for review and checks.",
       "files": ["docs/art/assets/spire-heavy-blade-manual-2026-11-07/README.md"]
+    },
+    {
+      "id": "manual-semantic-repairs-20261107",
+      "title": "Manual semantic repairs / reflector and torn silk",
+      "date": "2026-11-07",
+      "outcome": "manual",
+      "notes": "Hand-authored source derivatives; original holds unchanged. Briefs, parent digests and review: record.json.",
+      "files": [
+        "docs/art/assets/semantic-hold-repairs-2026-11-07/record.json",
+        "docs/art/assets/semantic-hold-repairs-2026-11-07/README.md",
+        "docs/art/assets/semantic-hold-repairs-2026-11-07/reflector-comparison.png",
+        "docs/art/assets/semantic-hold-repairs-2026-11-07/web-comparison.png"
+      ]
     }
   ],
   "revisions": [
@@ -12028,6 +12041,30 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "One lossless matched comparison. 320,160,80,48 px widths; 390 px phone collection card DOM-only illustration mockups. Neither a runtime integration nor an adoption."
+    },
+    {
+      "id": "manual-semantic-repairs-20261107:corner-reflector-manual",
+      "asset": null,
+      "attempt": "manual-semantic-repairs-20261107",
+      "label": "Manual source repair / corner-reflector-manual",
+      "file": "docs/art/assets/semantic-hold-repairs-2026-11-07/corner-reflector-manual.svg",
+      "digest": "cc874c03d0e2e26826c0551d501298e1f253d88161b6bf1921433d0b6bc1e2a5",
+      "parents": ["cartographer-wayfinding-20261106:corner-light-reflector"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual derivative. Reuse wall, ground, moss and bolted load-bearing bracket. Replace the sloping mottled canopy face with upright thick-rimmed folded metal planes; replace fragmented warm wall tiles with one bounded light patch. Review: Improved author candidate: upright reflective faces and adjacent light patch read at 160x112/80x56; at 64x45 it reads as a mounted reflective fixture but the folded-plane/material distinction softens. Physical light path and engineering are illustrative, not simulated or certified."
+    },
+    {
+      "id": "manual-semantic-repairs-20261107:ruptured-web-manual",
+      "asset": null,
+      "attempt": "manual-semantic-repairs-20261107",
+      "label": "Manual source repair / ruptured-web-manual",
+      "file": "docs/art/assets/semantic-hold-repairs-2026-11-07/ruptured-web-manual.svg",
+      "digest": "0f00d08724212bbf24f58cd0ac2508728c05f0d4a21bfd388e39d2f64eac3878",
+      "parents": ["spire-aftermath-20261106:ruptured-web"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual derivative. Keep exact original stone anchors and ground. Remove the opaque folded cloth body, hem and highlight bands. Draw connected unequal tension lines/cross strands, sparse translucent attachment fans and a large open displaced tear. Review: Improved author candidate: open fibrous network replaces cloth reading at 160x112/80x56; 64x45 keeps net-like negative space but individual silk strands and frays partly merge. A static torn web source, without creature, active VFX, timing or gameplay/persistence claims."
     }
   ]
 }

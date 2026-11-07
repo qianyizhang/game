@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "id": "manual-semantic-repairs-20261107",
+  "kind": "manual",
+  "base": "29dae62ccb46321160c455909d0061cbe0133e9c",
+  "date": "2026-11-07",
+  "api": {
+    "calls": 0,
+    "spent_usd": 0,
+    "reserved_usd": 0,
+    "grant": null
+  },
+  "scope": "Unassigned source derivatives only; no runtime adapter, slot or selection; originals and their holds unchanged.",
+  "outputs": [
+    {
+      "file": "corner-reflector-manual.svg",
+      "sha256": "cc874c03d0e2e26826c0551d501298e1f253d88161b6bf1921433d0b6bc1e2a5",
+      "parent": {
+        "commit": "bbabec4f451850b1a7b41a275467e68d619f19f7",
+        "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/corner-light-reflector.svg",
+        "sha256": "e3a845377ff4041e7b1071c7306f344f98f957a7c06aa4bd36f2220371ebdf92",
+        "revision": "cartographer-wayfinding-20261106:corner-light-reflector",
+        "original_status": "hold; unchanged"
+      },
+      "brief": "Wall-fixed folded aged-metal reflector / upright unequal facets, hard reflection bands and broad adjacent wall-light patch / upper-left light / 480x336 source, 160x112 and compact.",
+      "changes": "Reuse wall, ground, moss and bolted load-bearing bracket. Replace the sloping mottled canopy face with upright thick-rimmed folded metal planes; replace fragmented warm wall tiles with one bounded light patch.",
+      "review": "Improved author candidate: upright reflective faces and adjacent light patch read at 160x112/80x56; at 64x45 it reads as a mounted reflective fixture but the folded-plane/material distinction softens. Physical light path and engineering are illustrative, not simulated or certified.",
+      "comparison": {
+        "file": "reflector-comparison.png",
+        "sha256": "dfbddc94da484220a8743456d48308bdc51b0d58b020d33fc717b7c2b2d21639"
+      },
+      "bounds": {
+        "minimum_foreground_inset_px": 30,
+        "no_clipping": true
+      },
+      "unchanged_parent_elements": 32
+    },
+    {
+      "file": "ruptured-web-manual.svg",
+      "sha256": "0f00d08724212bbf24f58cd0ac2508728c05f0d4a21bfd388e39d2f64eac3878",
+      "parent": {
+        "commit": "ba349aa26bf46474585d556eb070148d3a1d95ca",
+        "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/ruptured-web.svg",
+        "sha256": "d73421b7fa82dc2c20ab876a352da681f25de25e113d001a8c99db1ebfff6b6c",
+        "revision": "spire-aftermath-20261106:ruptured-web",
+        "original_status": "hold; unchanged"
+      },
+      "brief": "Settled torn silk between unequal stone anchors / off-center open tear, sparse radial/cross connections and attached frays / pale matte strands, three dark stone values / 480x336, 160x112 and compact.",
+      "changes": "Keep exact original stone anchors and ground. Remove the opaque folded cloth body, hem and highlight bands. Draw connected unequal tension lines/cross strands, sparse translucent attachment fans and a large open displaced tear.",
+      "review": "Improved author candidate: open fibrous network replaces cloth reading at 160x112/80x56; 64x45 keeps net-like negative space but individual silk strands and frays partly merge. A static torn web source, without creature, active VFX, timing or gameplay/persistence claims.",
+      "comparison": {
+        "file": "web-comparison.png",
+        "sha256": "23a6b4157c9b6c73823a304fe5f79f8e4846b18e1934092138898592ea3a9abf"
+      },
+      "bounds": {
+        "minimum_foreground_inset_px": 33,
+        "no_clipping": true
+      },
+      "unchanged_parent_elements": 22
+    }
+  ],
+  "verification": {
+    "preservation": "Parent bytes match exact supplied Git commits; unchanged wall/bracket and anchor/ground elements verified structurally. No original or parent record edited/copied into this bundle.",
+    "renders": "CairoSVG 2.9.1 / Pillow 13.0.0; comparison shows 480x336 source and separately rasterized 160x112, 80x56, 64x45. PNG optimization retained only after exact decoded pixels, dimensions, alpha, mode and color-metadata equality.",
+    "remaining": "Canonical registration and parent PR integration are draft blockers; source-only self-review does not establish independent/user acceptance or game compatibility.",
+    "technical": "Repository SVG safety passed for both children. Expanded transparent bounds contained with 30px/33px insets. Isolated import/verify passed with exact parent closure, 2 manual children and no runtime adapters/selections.",
+    "browser": "Actual current gallery renderer via isolated GET-only loopback: 2 manual children, both original holds, exact parent generation records and manual record, explicit parent links, disabled Use; 1440/390/320px x 16/20px layouts without horizontal overflow or page errors. System Chromium automated preview checks; not the guarded application browser suite.",
+    "maintenance": "format:maintenance passed on delivery base; live assets:history verify passed: 709 assets, 323 baseline revisions, 0 selections. No application, registry or game code changed; broad application/native suites not repeated."
+  }
+}
