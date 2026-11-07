@@ -17,7 +17,7 @@ name/effect, rather than claiming the collection normally displays upgraded card
 ## Reuse decision and exact parents
 
 The stable slots are `spire/heavyBlade` and `spire/heavyBlade-upgraded`, both
-160×112. Live source at `cfa7bd69722c3983781eaa2f87752d06697ccab2` uses the broad
+160×112. The comparison captures live source at `cfa7bd69722c3983781eaa2f87752d06697ccab2`, using the broad
 `Blade heavy` primitive. Its base and upgrade share a weapon pose. The original
 [held pair](../refinement-candidates-2026-11-06/spire-swords/) establishes mass but
 has unsupported/crowded wrists. The later
@@ -35,7 +35,7 @@ No replacement of the live source is proposed here.
 The [additive handoff](registration-handoff.json) records the exact parent revision
 IDs and new output digests. Its parents already exist in the canonical library;
 no old request, prompt or image is copied. Existing originals, requests, reviews,
-registrations and selections are byte-identical across 107 protected files.
+registrations and selections match the rebased main across 107 protected files.
 The existing Spire art/history workflow owns any later integration. This bounded
 repair needs no separate issue or new maintenance tooling.
 
@@ -61,14 +61,19 @@ repair needs no separate issue or new maintenance tooling.
 Canonical registration is deliberately staged for the serial coordinator. The
 production library is untouched; neither candidate has a selectable runtime file.
 Local checks passed with Node 24.21.0 / npm 11.19.0: formatting/inventory/links,
-16 owning history tests, production history verification (709 assets, 162
+16 owning history tests, production history verification (709 assets, 168
 revisions, 709 registered sources, zero selections) and production build. The
 build retains its existing chunk-size warning. No runtime code changed, so no
 application simulations or native geometry suites were claimed.
 
-An isolated copy imported the handoff successfully (709 assets, 165 revisions,
+An isolated copy imported the handoff successfully (709 assets, 171 revisions,
 zero selections). The real gallery served that isolated history: both slot and
 compact previews decoded, exact parent links opened the held revisions, the
 manual notes and comparison loaded, and **Use in game** stayed disabled. There
 were no page errors. The canonical library, selected-art file and existing
 source evidence were rechecked unchanged afterward.
+
+Delivery reconciled onto main `c66138f2fa320ac919266b310cab5da0d2db76ef` after
+#138 merged. Heavy Blade renderers, held parents and selections did not change,
+so the matched visual evidence remains valid. History/import/gallery and
+inventory checks passed again against that updated base.
