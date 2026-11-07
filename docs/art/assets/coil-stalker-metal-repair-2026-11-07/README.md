@@ -18,31 +18,6 @@ One losslessly optimized comparison retains decoded pixels, RGBA mode, dimension
 
 SVG safety, bounds and parent/output digests; exact retained 13 paths; isolated additive history import and unchanged selections; actual gallery parent/call/authoring views and desktop/390px source review are checked separately from the material judgment. Formatting/inventory/history and affected browser results are reported on the draft PR. No application, simulation, geometry or runtime-camera acceptance is claimed for this source-only edit.
 
-Shared canonical registration is deliberately deferred to the serial coordinator. The temporary import below adds one manual attempt and one source revision with the real held parent. It has no runtime adaptation or selection. After integration, inspect it in `/__art/` before calling registration complete.
-
-From the repository root:
-
-```python
-from pathlib import Path
-import json
-b = Path('docs/art/assets/coil-stalker-metal-repair-2026-11-07')
-j = json.loads((b/'repair.json').read_text())
-a = 'manual-coil-stalker-20261107'
-p = b.as_posix()
-h = {'schema': 1, 'assets': [], 'attempts': [{
-    'id': a, 'title': 'Coil Stalker manual metal-spring repair',
-    'date': '2026-11-07', 'outcome': 'manual',
-    'notes': 'Source-only material improvement; original and camera/crowd holds retained. Zero API calls/spend. Original prompt/settings via parent attempt.',
-    'files': [p+'/repair.json', p+'/comparison.png']
-}], 'revisions': [{
-    'id': a+':metal-spring', 'asset': None, 'attempt': a,
-    'label': 'Coil Stalker · manual metal spring · context hold',
-    'file': p+'/'+j['output']['file'], 'digest': j['output']['sha256'],
-    'parents': [j['parent']['revision']],
-    'runtimeFile': None, 'runtimeDigest': None,
-    'notes': 'Three curl paths replaced; retained body/head/leg paths exact. Isolated 30/20px material candidate; camera/crowd/user acceptance unclaimed.'
-}]}
-Path('/tmp/coil-stalker-metal-history.json').write_text(json.dumps(h, indent=2)+'\n')
-```
+Canonical registration records the manual attempt `manual-coil-stalker-20261107` and child revision `manual-coil-stalker-20261107:metal-spring` in [the shared library](../../iterations/library.json). The exact held parent remains registered with its original material judgment. [repair.json](repair.json) owns the manual proof and inherited camera/crowd limitation; its original isolated counts are historical. The shared gallery exposes the real parent, original call and manual record without a second committed import catalogue. Registration establishes source discoverability, not game-camera or user acceptance.
 
 **API calls: 0. API spend: US$0.** No paid grant used; historical unknown requests and their reservations remain untouched.
