@@ -1,0 +1,39 @@
+[1106/151056.552714:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/expansion-chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+[WebServer] (node:19070) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:19083) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[1106/151057.615813:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/expansion-chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+
+Running 3 tests using 1 worker
+
+(node:19187) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1106/151059.511791:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/expansion-chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+[WebServer] 3:11:08 PM [vite] (client) [console.error] Study loading failed TypeError: Failed to fetch
+[WebServer]     at loadStudy (http://127.0.0.1:4173/src/art3d/delivery.ts:16:26)
+[WebServer]     at http://127.0.0.1:4173/src/art3d/gallery/Viewer.tsx:37:8
+[WebServer]     at Object.react_stack_bottom_frame (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:14175:13)
+[WebServer]     at runWithFiberInDEV (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:941:66)
+[WebServer]     at commitHookEffectListMount (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:6898:153)
+[WebServer]     at commitHookPassiveMountEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:6933:55)
+[WebServer]     at reconnectPassiveEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8398:6)
+[WebServer]     at recursivelyTraverseReconnectPassiveEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8385:5)
+[WebServer]     at reconnectPassiveEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8410:14)
+[WebServer]     at recursivelyTraverseReconnectPassiveEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8385:5)
+[WebServer] 3:11:19 PM [vite] (client) [console.error] Study loading failed Error: Baked study nightjar is unavailable. Run assets:bake.
+[WebServer]     at bakedStudy (http://127.0.0.1:4173/src/art3d/baked.ts:11:28)
+[WebServer]     at loadStudy (http://127.0.0.1:4173/src/art3d/delivery.ts:36:16)
+[WebServer]     at http://127.0.0.1:4173/src/art3d/gallery/Viewer.tsx:37:8
+[WebServer]     at Object.react_stack_bottom_frame (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:14175:13)
+[WebServer]     at runWithFiberInDEV (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:941:66)
+[WebServer]     at commitHookEffectListMount (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:6898:153)
+[WebServer]     at commitHookPassiveMountEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:6933:55)
+[WebServer]     at commitPassiveMountOnFiber (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8310:22)
+[WebServer]     at recursivelyTraversePassiveMountEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8297:313)
+[WebServer]     at commitPassiveMountOnFiber (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8369:14)
+  ✓  1 [ci-games] › tests/browser/native-assets.spec.ts:10:1 › review scope selects gallery defaults and native workbench downloads stay isolated (34.5s)
+  ✓  2 [ci-games] › tests/browser/night-passage-agent.spec.ts:50:1 › spectator plays, pauses and seeks a recorded run without replacing the player save (1.0m)
+  ✓  3 [ci-games] › tests/browser/night-passage.spec.ts:236:3 › cast charges freeze, restore and replenish in scene (night-passage-4) (37.0s)
+
+  3 passed (2.3m)
