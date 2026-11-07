@@ -1,0 +1,365 @@
+{
+  "method": "Recompress existing PNG IDAT filtered scanlines with zlib level 9; retain smaller bytes only. All non-IDAT chunks preserved byte-for-byte, no alpha optimization or metadata stripping. Sharp raw RGBA and independent Chromium sRGB canvas decoding checked before/after.",
+  "node": "v24.21.0",
+  "zlib": "1.3.2.1-motley-8002e91",
+  "sharp": {
+    "aom": "3.15.1",
+    "archive": "3.8.9",
+    "cairo": "1.18.6",
+    "cgif": "0.5.4",
+    "exif": "0.6.26",
+    "expat": "2.8.5",
+    "ffi": "3.8.0",
+    "fontconfig": "2.18.3",
+    "freetype": "2.14.3",
+    "fribidi": "1.0.17",
+    "glib": "2.90.0",
+    "harfbuzz": "14.5.0",
+    "heif": "1.23.5",
+    "highway": "1.4.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.19.1",
+    "mozjpeg": "0826579",
+    "pango": "1.58.2",
+    "pixman": "0.46.4",
+    "png": "1.6.58",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.63.2",
+    "tiff": "4.7.2",
+    "uhdr": "2.0.2",
+    "vips": "8.18.7",
+    "webp": "1.6.0",
+    "xml2": "2.15.4",
+    "zlib-ng": "2.3.3",
+    "sharp": "0.35.5"
+  },
+  "files": 12,
+  "before_bytes": 1451566,
+  "after_bytes": 1351279,
+  "rows": [
+    {
+      "file": "blindside-materials/review.png",
+      "before_bytes": 159993,
+      "after_bytes": 142293,
+      "before_sha256": "25bd580635041e9dd40f2bc37082b71bee767a84572e22f6fadb768133a524ef",
+      "after_sha256": "6fe5823f248cf560f0ddbd5ba5f98acbf1c38e533f0ba768fd2c7a4ac077c335",
+      "width": 720,
+      "height": 1350,
+      "rgba_sha256": "af56d0c6f9bd3211ad1f63ed306403105455df120889db1b9422ce729922f75c",
+      "alpha_sha256": "3c5e444fd48a5154a5094ca3393c470dc1e6fb99761d5677bf6370467353314f",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 720,
+        "height": 1350,
+        "colorSpace": "srgb",
+        "rgba": "af56d0c6f9bd3211ad1f63ed306403105455df120889db1b9422ce729922f75c"
+      },
+      "browser_after": {
+        "width": 720,
+        "height": 1350,
+        "colorSpace": "srgb",
+        "rgba": "af56d0c6f9bd3211ad1f63ed306403105455df120889db1b9422ce729922f75c"
+      }
+    },
+    {
+      "file": "cartographer-relics/review.png",
+      "before_bytes": 118525,
+      "after_bytes": 106906,
+      "before_sha256": "2191c51bf5a5f7e627a0bc5fa8cbabf4171fc052216f46d209706fe171fa9386",
+      "after_sha256": "612ea1b4c8c18dc51b82a398a06c3c64d803e9b81c70c44d54c8d6cac89d5390",
+      "width": 900,
+      "height": 760,
+      "rgba_sha256": "8b8ba2c5f024403b73918ad3ff264c5e8d83df10ca8a91300419e7280f7dfc55",
+      "alpha_sha256": "20f5120a127d6d30179cc198792c23637a70c1123ab78d7d1fad04372d2c777b",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 900,
+        "height": 760,
+        "colorSpace": "srgb",
+        "rgba": "8b8ba2c5f024403b73918ad3ff264c5e8d83df10ca8a91300419e7280f7dfc55"
+      },
+      "browser_after": {
+        "width": 900,
+        "height": 760,
+        "colorSpace": "srgb",
+        "rgba": "8b8ba2c5f024403b73918ad3ff264c5e8d83df10ca8a91300419e7280f7dfc55"
+      }
+    },
+    {
+      "file": "emberwake-backpack/review.png",
+      "before_bytes": 60023,
+      "after_bytes": 54202,
+      "before_sha256": "41195cd6783d15d8c763db2f4e3180fe8da0b6d29e1f49f6cf889106c88bb982",
+      "after_sha256": "e6ceb11087ac25e7bc1922cdf2f284828c70b643278554c436d7d72062c5bf1a",
+      "width": 900,
+      "height": 380,
+      "rgba_sha256": "7e643dfad91c57561124f6f2df045db6bd28fc41980dedbc2cb470670864f216",
+      "alpha_sha256": "42a7f6f819e681f4f643b46e65e8983363ede299bae63b3ead7da32e7f98c720",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 900,
+        "height": 380,
+        "colorSpace": "srgb",
+        "rgba": "7e643dfad91c57561124f6f2df045db6bd28fc41980dedbc2cb470670864f216"
+      },
+      "browser_after": {
+        "width": 900,
+        "height": 380,
+        "colorSpace": "srgb",
+        "rgba": "7e643dfad91c57561124f6f2df045db6bd28fc41980dedbc2cb470670864f216"
+      }
+    },
+    {
+      "file": "hearth-wolves/card-phone-candidate-mockup.png",
+      "before_bytes": 17483,
+      "after_bytes": 17233,
+      "before_sha256": "74912564e5d505ad41886652198c6a62dfa592ba880be96984a1f33217590f2b",
+      "after_sha256": "8f96c7266499fc26dc7298b32d498dc52a58349873116e4ea5edebe1b786652f",
+      "width": 171,
+      "height": 340,
+      "rgba_sha256": "29533e4fa32eaf62aec751379bdb2a8f9b5d1ca7f45f42055bc28decf2eb4b4c",
+      "alpha_sha256": "e8fa776529ab418c21db4ca5d57b9d5f85e2924b42c845d8642fa2cb54726453",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 171,
+        "height": 340,
+        "colorSpace": "srgb",
+        "rgba": "29533e4fa32eaf62aec751379bdb2a8f9b5d1ca7f45f42055bc28decf2eb4b4c"
+      },
+      "browser_after": {
+        "width": 171,
+        "height": 340,
+        "colorSpace": "srgb",
+        "rgba": "29533e4fa32eaf62aec751379bdb2a8f9b5d1ca7f45f42055bc28decf2eb4b4c"
+      }
+    },
+    {
+      "file": "hearth-wolves/card-phone-current.png",
+      "before_bytes": 18331,
+      "after_bytes": 18020,
+      "before_sha256": "3a5181bd0a78e03dd1ad2e856c8b4b2211805434e687ceec33e1e43c05194a2c",
+      "after_sha256": "be4d9be098b29c9cc582d9c2049756215f8c78a270ee9ded7147572106c3583d",
+      "width": 171,
+      "height": 340,
+      "rgba_sha256": "e1cc35af5b28660fe4f490e1842e86fb328738048d51088f7689ea149b605606",
+      "alpha_sha256": "e8fa776529ab418c21db4ca5d57b9d5f85e2924b42c845d8642fa2cb54726453",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 171,
+        "height": 340,
+        "colorSpace": "srgb",
+        "rgba": "e1cc35af5b28660fe4f490e1842e86fb328738048d51088f7689ea149b605606"
+      },
+      "browser_after": {
+        "width": 171,
+        "height": 340,
+        "colorSpace": "srgb",
+        "rgba": "e1cc35af5b28660fe4f490e1842e86fb328738048d51088f7689ea149b605606"
+      }
+    },
+    {
+      "file": "hearth-wolves/review.png",
+      "before_bytes": 220596,
+      "after_bytes": 204834,
+      "before_sha256": "12025a4b2c1d21306c8004edba0be5c23d447cc639deb9ee757f113246251867",
+      "after_sha256": "8b5b6942fda6f4d4b254f9c57aabde57679b126c8ee77d8714cd61525ea6695b",
+      "width": 720,
+      "height": 1350,
+      "rgba_sha256": "cf55ee80c37633156bbb147bf3b7bbe124916cb1d4c5169042aeb7b6a7a87049",
+      "alpha_sha256": "3c5e444fd48a5154a5094ca3393c470dc1e6fb99761d5677bf6370467353314f",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 720,
+        "height": 1350,
+        "colorSpace": "srgb",
+        "rgba": "cf55ee80c37633156bbb147bf3b7bbe124916cb1d4c5169042aeb7b6a7a87049"
+      },
+      "browser_after": {
+        "width": 720,
+        "height": 1350,
+        "colorSpace": "srgb",
+        "rgba": "cf55ee80c37633156bbb147bf3b7bbe124916cb1d4c5169042aeb7b6a7a87049"
+      }
+    },
+    {
+      "file": "spire-heavyblade-revision/review.png",
+      "before_bytes": 130369,
+      "after_bytes": 119385,
+      "before_sha256": "e30974454195b72a7d5a52567cfcbd551accd4a2108b0466056c1d8edbd3e458",
+      "after_sha256": "c61870cc88baf8c1f0f5314c290420360a1f1cbb71f2cf3e9cd1edb304865907",
+      "width": 720,
+      "height": 900,
+      "rgba_sha256": "3e1009c99d9893b0ec98ad378beaab0d049313f4f9c0854c95503c95b84d0bae",
+      "alpha_sha256": "e82d93c18e8e4f14fb1b9284357483c3654bc920a37034cd3be80a6eb10ab049",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 720,
+        "height": 900,
+        "colorSpace": "srgb",
+        "rgba": "3e1009c99d9893b0ec98ad378beaab0d049313f4f9c0854c95503c95b84d0bae"
+      },
+      "browser_after": {
+        "width": 720,
+        "height": 900,
+        "colorSpace": "srgb",
+        "rgba": "3e1009c99d9893b0ec98ad378beaab0d049313f4f9c0854c95503c95b84d0bae"
+      }
+    },
+    {
+      "file": "spire-swords/card-phone-candidate-mockup.png",
+      "before_bytes": 33048,
+      "after_bytes": 29825,
+      "before_sha256": "294455c78df73b39903bc4d4f7f96c3e909e8a6122f8b50aed2bc7a25d77f7ef",
+      "after_sha256": "cf39ed3b1e3fec744b74649bf07dca0bf828face4b1a7cbbbe90df336cd8088b",
+      "width": 169,
+      "height": 322,
+      "rgba_sha256": "c84d5be79b4e48b7bca2f6644b5774fe389c8c768d5ca291971b0e3f8fd14eb2",
+      "alpha_sha256": "2e848785a8a91cda2239fc7f2694dc0f18b3fdaff5433badad18845c3fa8bbb2",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 169,
+        "height": 322,
+        "colorSpace": "srgb",
+        "rgba": "c84d5be79b4e48b7bca2f6644b5774fe389c8c768d5ca291971b0e3f8fd14eb2"
+      },
+      "browser_after": {
+        "width": 169,
+        "height": 322,
+        "colorSpace": "srgb",
+        "rgba": "c84d5be79b4e48b7bca2f6644b5774fe389c8c768d5ca291971b0e3f8fd14eb2"
+      }
+    },
+    {
+      "file": "spire-swords/card-phone-current.png",
+      "before_bytes": 33430,
+      "after_bytes": 29916,
+      "before_sha256": "0bf6e7b94d3dc3c98fbe2381d700712910435f941c93327c7ef372fd4f5b8ef9",
+      "after_sha256": "174b5e73c25d6fc5486aa132a106a61a230907492a9872457d8995cb97bf4e29",
+      "width": 169,
+      "height": 322,
+      "rgba_sha256": "c2947aabf9a8eddb37df2ea1b7a50060d575f982178643ca0902836d3c5f409b",
+      "alpha_sha256": "2e848785a8a91cda2239fc7f2694dc0f18b3fdaff5433badad18845c3fa8bbb2",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 169,
+        "height": 322,
+        "colorSpace": "srgb",
+        "rgba": "c2947aabf9a8eddb37df2ea1b7a50060d575f982178643ca0902836d3c5f409b"
+      },
+      "browser_after": {
+        "width": 169,
+        "height": 322,
+        "colorSpace": "srgb",
+        "rgba": "c2947aabf9a8eddb37df2ea1b7a50060d575f982178643ca0902836d3c5f409b"
+      }
+    },
+    {
+      "file": "spire-swords/review.png",
+      "before_bytes": 425854,
+      "after_bytes": 394751,
+      "before_sha256": "00952d8cf7f7cc5c3c97cebced49e095473e223ec1184e23f7e1ee7de718c0d1",
+      "after_sha256": "cfc2221480d4e41fcdffdb9daa09fc549947357b70e7cf41e516797d72f7c3eb",
+      "width": 720,
+      "height": 2700,
+      "rgba_sha256": "1361d78d3956cacd917219e8913168bec8e787aada3fb2869ba65a336a5c228f",
+      "alpha_sha256": "0604c26e404964ccd6d1e0555e4ed4a18b28d7a640d5da58f983eeb4ed9cb124",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 720,
+        "height": 2700,
+        "colorSpace": "srgb",
+        "rgba": "1361d78d3956cacd917219e8913168bec8e787aada3fb2869ba65a336a5c228f"
+      },
+      "browser_after": {
+        "width": 720,
+        "height": 2700,
+        "colorSpace": "srgb",
+        "rgba": "1361d78d3956cacd917219e8913168bec8e787aada3fb2869ba65a336a5c228f"
+      }
+    },
+    {
+      "file": "index-desktop.png",
+      "before_bytes": 143336,
+      "after_bytes": 143336,
+      "before_sha256": "fe5e89df3416c035860546fec2d6f762a883d6ffcdfdaeae7984a18808fd6194",
+      "after_sha256": "fe5e89df3416c035860546fec2d6f762a883d6ffcdfdaeae7984a18808fd6194",
+      "width": 1360,
+      "height": 960,
+      "rgba_sha256": "37721d99e2b5ec8dbf7bf6c2bc6fbc55f30a36bd8649e32e461f3ecc3122dad1",
+      "alpha_sha256": "675b13b1d8d29743a10b76c5817750f53aa8b8bb32a6649969d02d18cbb6bd1c",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 1360,
+        "height": 960,
+        "colorSpace": "srgb",
+        "rgba": "37721d99e2b5ec8dbf7bf6c2bc6fbc55f30a36bd8649e32e461f3ecc3122dad1"
+      },
+      "browser_after": {
+        "width": 1360,
+        "height": 960,
+        "colorSpace": "srgb",
+        "rgba": "37721d99e2b5ec8dbf7bf6c2bc6fbc55f30a36bd8649e32e461f3ecc3122dad1"
+      }
+    },
+    {
+      "file": "index-phone.png",
+      "before_bytes": 90578,
+      "after_bytes": 90578,
+      "before_sha256": "916761187b647dc3031006984f97ed51dbecaa18bddb339d02971e4f87c7903e",
+      "after_sha256": "916761187b647dc3031006984f97ed51dbecaa18bddb339d02971e4f87c7903e",
+      "width": 390,
+      "height": 844,
+      "rgba_sha256": "99841ec90b7797f38b5a94a34f6f9aab05cfc2cc74bc3c35d808c0f69d6111ff",
+      "alpha_sha256": "f0abfdc3e2606220c4ffdca458842bf75322ace2656a64214e98be503fc1479b",
+      "decoded_pixels_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "color_chunks_unchanged": [],
+      "browser_before": {
+        "width": 390,
+        "height": 844,
+        "colorSpace": "srgb",
+        "rgba": "99841ec90b7797f38b5a94a34f6f9aab05cfc2cc74bc3c35d808c0f69d6111ff"
+      },
+      "browser_after": {
+        "width": 390,
+        "height": 844,
+        "colorSpace": "srgb",
+        "rgba": "99841ec90b7797f38b5a94a34f6f9aab05cfc2cc74bc3c35d808c0f69d6111ff"
+      }
+    }
+  ]
+}
