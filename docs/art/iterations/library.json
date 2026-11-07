@@ -6653,6 +6653,18 @@
       ]
     },
     {
+      "id": "cartographer-wayfinding-20261106",
+      "title": "Wayfinding fixtures / one native SVG request",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Future source concepts; request, usage, lineage and review: call.json.",
+      "files": [
+        "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/call.json",
+        "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/README.md",
+        "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/contact.png"
+      ]
+    },
+    {
       "id": "expansion-en-cont-20261106/ember-fen-salt-quest",
       "title": "ember-fen-salt-quest · optional future source concepts",
       "date": "2026-11-06",
@@ -8224,6 +8236,90 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:original",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / original",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/original.svg",
+      "digest": "15806e150f87fa8f7fc6046736206624bfe3283dfb53d240c8d184f6129f7d32",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:shuttered-lantern-waypost",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / shuttered-lantern-waypost",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/shuttered-lantern-waypost.svg",
+      "digest": "0f2bdfaa6080e271aaf89fcfc93700e78a8b558dbfb3ad85cfa620fab87aaca5",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:forked-route-stela",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / forked-route-stela",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/forked-route-stela.svg",
+      "digest": "9481045ff0cefcedc59753cc79d77867b69253debb2befd0505d039982fda506",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:tether-anchor-station",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / tether-anchor-station",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/tether-anchor-station.svg",
+      "digest": "5e4c900ff347f64b1eb1de6349c70751f1e9721d96755aa5107cb10f9b3ff3e2",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [2, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:flood-level-marker",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / flood-level-marker",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/flood-level-marker.svg",
+      "digest": "8fa553f8c81d72d0ccacaed6fe23f2ecf472c6b2b692f08dbadc80925c2970b5",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 1]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:corner-light-reflector",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / corner-light-reflector",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/corner-light-reflector.svg",
+      "digest": "e3a845377ff4041e7b1071c7306f344f98f957a7c06aa4bd36f2220371ebdf92",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1, 1]; remove its grid translation only. Review: call.json. Hold: The folded copper panel and bracket read clearly, but can read as an awning; the reflected-light function is not explicit enough at compact size. Retain as a folded-panel source until its role is chosen."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:boundary-chain-posts",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / boundary-chain-posts",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/boundary-chain-posts.svg",
+      "digest": "8a5db8d81bafd5e93902680c8373f7028dc56dbd1cec5748530e16e427c721aa",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [2, 1]; remove its grid translation only. Review: call.json."
     },
     {
       "id": "expansion-en-cont-20261106/ember-fen-salt-quest/sheet",
