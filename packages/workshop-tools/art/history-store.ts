@@ -270,7 +270,7 @@ export function historyState(
       ]),
     ),
     live,
-    current,
+    current: live ? {} : current,
     ...(!live
       ? {
           documents: Object.fromEntries(
@@ -281,15 +281,29 @@ export function historyState(
           ),
         }
       : {}),
-    previews: Object.fromEntries(
-      state.history.revisions.map((revision) => {
-        const bytes = checkedFile(root, revision.file, revision.digest);
-        const preview = imageDocument(revision.file, bytes);
-        if (!preview) throw new Error(`Unsupported artwork preview format: ${revision.file}`);
-        return [revision.id, preview.url];
-      }),
-    ),
+    previews: live
+      ? {}
+      : Object.fromEntries(
+          state.history.revisions.map((revision) => {
+            const bytes = checkedFile(root, revision.file, revision.digest);
+            const preview = imageDocument(revision.file, bytes);
+            if (!preview) throw new Error(`Unsupported artwork preview format: ${revision.file}`);
+            return [revision.id, preview.url];
+          }),
+        ),
   };
+}
+
+/** Live previews read only the requested, registered revision and preserve digest checks. */
+export function historyPreview(root: string, version: string, revisionId: string): HistoryDocument {
+  const state = readHistory(root);
+  if (version !== state.version) throw new Error('History changed. Reload before viewing artwork.');
+  const revision = state.history.revisions.find((item) => item.id === revisionId);
+  if (!revision) throw new Error('Unknown revision');
+  const bytes = checkedFile(root, revision.file, revision.digest);
+  const preview = imageDocument(revision.file, bytes);
+  if (!preview) throw new Error(`Unsupported artwork preview format: ${revision.file}`);
+  return preview;
 }
 
 /** Preserve binary reference inputs as images rather than decoding them as UTF-8 text. */
