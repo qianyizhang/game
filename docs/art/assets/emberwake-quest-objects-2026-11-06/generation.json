@@ -1,0 +1,102 @@
+{
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed contact sheet, exactly 1440 by 672, viewBox=\"0 0 1440 672\". Exactly 3 columns by 2 rows, each cell 480 by 336, no gutters or labels. Each of six subjects is a separate top-level <g id=\"SUBJECT-ID\" transform=\"translate(CELL-X CELL-Y)\"> with LOCAL coordinates and its own full-cell background rectangle. Every painted shape of a subject stays at least 30 pixels inside its own cell; no cross-cell content. All paint definitions must belong to that cell or use flat explicit fills. Do not create a sheet-wide background or a later opaque frame path that covers the actual subject. Keep the subject at roughly 70-78% cell width/height, with quiet corners. These are NEW FUTURE SOURCE CONCEPTS, not supported runtime content or accepted history.\n\nNative editable static vector illustration only: no raster/image embedding, text, digits, fonts, symbols requiring labels, scripts, use, CSS stylesheets, filters, external resources or animation. Restrained engraved fantasy print with connected broad material planes, three value groups, asymmetric purposeful contour, quiet negative space, upper-left light. Background #10232c, shadow #34464b, worn ivory #ead7b5, muted bronze #b68d62, smoky steel #95a6aa; Emberwake moss #7c987a, saltglass #75a99f, cinder #ca7658. Night Passage accents: Aster pale gold #dfc777, Neris aqua #6dbfb0, Vesta coral #d78568, Isen ice blue #a5cbda, Nyra plum #a18cb8. Wood grain follows form, leather folds, metal has restrained highlights, ceramic has a continuous thick rim and broad glaze highlights rather than chipped polygon facets. Distinct materials, no plastic gloss or golden trim everywhere. Detail is subordinate to connected structure and broad planes. No living subjects, hands, characters, portraits, story scenes, frames, borders, captions, logo or watermark. Every support, hinge, cord or handle visibly meets its load. Everything reads at 160x112 and 80x56; one strong subject per cell.\n\nSUBJECTS in exact row-major order:\nCell 1, id=\"fen-root-core\", origin (0,0): Root core specimen. A broad irregular cross-section of a wet woody root, one wedge removed to expose warm resin rings, retained by a single fitted linen sampling band; moss shadow and amber resin, portable evidence object, no whole tree or branching root arch.\nCell 2, id=\"fen-water-gauge\", origin (480,0): Fen water gauge. A compact folding reed water-depth gauge, two unequal hinged wood slats with a broad bone slider and a securely tied weighted cord; no lettering or tick marks, no spear/staff silhouette.\nCell 3, id=\"fen-mire-dispatch\", origin (960,0): Mire dispatch. A folded waxed-cloth message packet rolled only at one corner, tied by two flat split-reed bands with an unmarked broad wax closure; asymmetric bent envelope contour, no readable writing, no crest or lantern.\nCell 4, id=\"salt-proof-tile\", origin (0,336): Annealing proof tile. One thick square layered smoky-glass test tile in a shallow fired-clay holder, an offset missing corner exposes two bonded glass layers; clean translucent edge and broad pale transmission plane, no decorative rune.\nCell 5, id=\"salt-depth-spool\", origin (480,336): Cistern depth spool. A low oblong wooden winding spool with one broad ochre rope loop and an attached flat dark plumb weight, fitted axle and restrained salt deposits; the weight rests beside the spool with continuous cord.\nCell 6, id=\"salt-bead-mold\", origin (960,336): Glass bead mold. An opened two-part stone casting mold joined by a strong side hinge; three unequal broad shallow bead cavities, one pale aqua solid glass bead resting in a fitted cavity; angled asymmetrical book-open silhouette, no written inscriptions.\n\nKeep all six distinct and useful when extracted. Never make them six color swaps or six generic emblems. No narrative sequence, before/after states, implied game rewards or canonical inscriptions.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "response": {
+    "created": 1793979187,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1440x672",
+    "svg_usage": {
+      "input_tokens": 2335,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 14176,
+      "reasoning_tokens": 1034,
+      "total_tokens": 16511
+    },
+    "usage": {
+      "input_tokens": 959,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 959
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1743
+    },
+    "request_id": "req_c29173740f464172890cc98d4b269177",
+    "http_status": 200,
+    "elapsed_seconds": 278.548,
+    "data_metadata": [{}]
+  },
+  "original": {
+    "file": "sheet.svg",
+    "sha256": "16c7c475f579a2b5e7f434d54fda7ba6178c709a67bc6a9d59244fdd68baeb99"
+  },
+  "outputs": [
+    {
+      "id": "fen-root-core",
+      "sha256": "2320e8a397efdd8bbacbbe14b400bf1fbdb86534160e46ff4c47d7a67025f30f",
+      "verdict": "candidate-with-caveat",
+      "note": "Wood rings, cut wedge and fitted sample band read clearly. Resin is illustrated as an amber solid/viscous plane, without a physical-liquid claim."
+    },
+    {
+      "id": "fen-water-gauge",
+      "sha256": "9f5f0befbfb2eaf2c961070bbc65565c447775aafb339e40ffe52a3eca980df6",
+      "verdict": "candidate",
+      "note": "Folded two-slat gauge, actual hinge/slider and connected cord/weight are distinct at both study sizes."
+    },
+    {
+      "id": "fen-mire-dispatch",
+      "sha256": "afdb9d0a9c4d8e2e5f055c5f4ef7a0671c3a43eb43854585dd03444894f3f181",
+      "verdict": "candidate",
+      "note": "Waxed-cloth packet, uneven rolled corner and fitted reed bands distinguish an evidence carrier from a charm or equipment category mark."
+    },
+    {
+      "id": "salt-proof-tile",
+      "sha256": "d677cefa6c5cf0262982f75bbb0aca8b87bec67f462af341b8611117b2c98912",
+      "verdict": "candidate-with-caveat",
+      "note": "Thick layered glass edge and notched sample read clearly. Broad square composition can resemble a tray; keep as a Glassworks material-test concept, not a finished quest icon."
+    },
+    {
+      "id": "salt-depth-spool",
+      "sha256": "4629c2e8a0c59c886ef6e8cdd78bdd7e8054b86a3df52e0e2192ed1858553858",
+      "verdict": "candidate",
+      "note": "Oblong winding spool, continuous rope and broad resting plumb weight read as a survey tool. Fine winding ridges recede at 80px."
+    },
+    {
+      "id": "salt-bead-mold",
+      "sha256": "9ff1c2d5893ed509ac513d0034a1c011abbc143ef2477265c8bbddfdc63bdd76",
+      "verdict": "candidate",
+      "note": "Opened mold, three unequal cavities, fitted hinge and one aqua bead remain clear at compact size; no unsupported casting recipe is implied."
+    }
+  ],
+  "estimated_usd": 0.174745,
+  "qa": {
+    "svg_safety_and_bounds": 7,
+    "extraction_geometry": "exact group minus grid translation; paint unchanged",
+    "contact": {
+      "file": "contact.png",
+      "sha256": "927b72d8849b8102a005db90550b1ca8d19548745bc372a33b3c0e678b618fc2",
+      "lossless_rgba_dimensions_alpha_color_verified": true
+    },
+    "native_compact_author_review": 6
+  }
+}

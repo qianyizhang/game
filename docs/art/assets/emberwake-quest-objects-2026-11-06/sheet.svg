@@ -1,0 +1,294 @@
+<svg width="1440" height="672" viewBox="0 0 1440 672" xmlns="http://www.w3.org/2000/svg">
+  <g id="fen-root-core" transform="translate(0 0)">
+    <defs>
+      <linearGradient id="root-wood" x1="0" y1="0" x2="0.8" y2="1">
+        <stop offset="0" stop-color="#b68d62" />
+        <stop offset="0.48" stop-color="#79634d" />
+        <stop offset="1" stop-color="#34464b" />
+      </linearGradient>
+      <linearGradient id="root-resin" x1="0" y1="0" x2="0.8" y2="1">
+        <stop offset="0" stop-color="#dfc777" />
+        <stop offset="0.55" stop-color="#b68d62" />
+        <stop offset="1" stop-color="#ca7658" />
+      </linearGradient>
+      <linearGradient id="root-linen" x1="0" y1="0" x2="1" y2="0.3">
+        <stop offset="0" stop-color="#b68d62" />
+        <stop offset="0.45" stop-color="#ead7b5" />
+        <stop offset="1" stop-color="#c6b89b" />
+      </linearGradient>
+      <clipPath id="root-face-clip">
+        <path d="M238 78C295 70 363 91 402 130L327 164 361 251C315 281 252 265 211 231 171 198 170 145 197 112 208 98 221 86 238 78Z" />
+      </clipPath>
+    </defs>
+    <rect width="480" height="336" fill="#10232c" />
+    <path d="M78 260C122 236 296 232 373 248 403 256 393 280 349 292 267 314 103 297 78 278Z" fill="#182e35" />
+    <path d="M60 167 76 113 116 72 170 51 216 43 246 53 278 48 320 67 359 91 400 124 409 144 382 175 344 192 368 250 349 283 316 297 237 287 176 286 123 270 82 244 67 213Z" fill="url(#root-wood)" stroke="#34464b" stroke-width="3" stroke-linejoin="round" />
+    <path d="M76 120 117 86 143 92 131 135 109 156 104 193 83 203 70 181Z" fill="#574f40" />
+    <path d="M117 72 152 57 193 65 222 53 250 60 270 55 294 68 245 81 206 89 158 78Z" fill="#7c7850" />
+    <path d="M70 150 79 119 101 103 128 100 145 86 178 88 195 80 209 89 191 103 164 111 150 134 129 136 116 163 99 160 91 177 81 171 85 151Z" fill="#7c987a" />
+    <path d="M78 126 101 115 127 114 143 104 168 102M95 147 113 133 128 134" fill="none" stroke="#a2a46c" stroke-width="5" stroke-linecap="round" />
+    <path d="M84 209 102 195 119 205 127 233 150 245 144 266 116 253 99 241Z" fill="#423e35" />
+    <path d="M107 183 123 164 134 172 136 199 157 215M120 83 145 74 170 82M85 223 97 235M154 255 166 280" fill="none" stroke="#c0996d" stroke-width="3" stroke-linecap="round" />
+    <path d="M191 214 227 222 244 251 271 264 270 283 232 278 208 261Z" fill="#4f513e" />
+    <path d="M176 226 194 222 211 232 223 230 235 241 229 252 213 249 207 262 190 254 185 240 174 241Z" fill="#7c987a" />
+    <path d="M238 78C295 70 363 91 402 130L327 164 361 251C315 281 252 265 211 231 171 198 170 145 197 112 208 98 221 86 238 78Z" fill="#6d533d" stroke="#b68d62" stroke-width="3" />
+    <path d="M244 85C295 79 356 97 393 129L320 162 352 247C306 270 253 254 218 225 183 195 182 151 207 120 216 107 229 94 244 85Z" fill="url(#root-resin)" />
+    <g clip-path="url(#root-face-clip)" fill="none" stroke-linecap="round">
+      <path d="M378 111C323 71 246 73 209 117 163 171 205 236 268 252 301 261 330 259 357 245" stroke="#ead7b5" stroke-width="6" />
+      <path d="M385 129C340 92 274 90 236 117 204 138 199 176 220 202 241 230 285 249 341 237" stroke="#815537" stroke-width="9" />
+      <path d="M366 133C326 108 280 104 249 125 219 145 218 175 239 198 259 219 293 229 335 224" stroke="#dfc777" stroke-width="5" />
+      <path d="M351 145C314 119 278 124 256 143 234 162 245 188 269 200 290 212 309 212 330 209" stroke="#976037" stroke-width="8" />
+      <path d="M336 155C308 138 284 141 272 155 260 172 274 188 294 191 307 194 315 191 324 187" stroke="#dfc777" stroke-width="4" />
+      <path d="M321 164C307 152 292 155 290 166 289 175 301 180 313 178" stroke="#8d542f" stroke-width="6" />
+      <path d="M215 121 237 134M221 208 245 198M258 247 268 229M348 108 339 120" stroke="#b68d62" stroke-width="2" />
+    </g>
+    <path d="M327 164 402 130 389 157 348 183 361 251Z" fill="#674b32" />
+    <path d="M327 164 382 145 355 173 343 199Z" fill="#ad7139" />
+    <path d="M379 143C375 154 371 167 374 185 376 197 371 208 365 207 356 205 363 193 362 185L360 156Z" fill="#b77b37" />
+    <path d="M374 154C369 171 372 186 367 199" fill="none" stroke="#dfc777" stroke-width="3" stroke-linecap="round" />
+    <path d="M130 266C119 241 115 210 118 179 123 134 155 98 190 74 227 48 269 46 303 58 322 64 338 73 346 86 326 75 305 72 286 76 238 84 196 117 176 151 156 187 156 232 169 282Z" fill="#534f42" />
+    <path d="M134 268C123 242 122 211 125 181 129 139 161 102 196 79 229 57 269 50 302 61 320 67 333 74 342 83 312 74 282 78 260 89 220 106 191 133 178 163 164 197 164 239 176 282Z" fill="url(#root-linen)" stroke="#b6a487" stroke-width="2" />
+    <path d="M143 268C134 235 133 210 138 180 144 142 176 106 210 86 245 66 282 60 309 68M163 278C152 240 151 209 159 181 169 142 202 112 235 94" fill="none" stroke="#a99a80" stroke-width="1.5" />
+    <path d="M135 189 167 199M137 213 165 223M140 239 167 248M153 143 179 159M173 116 197 131M198 94 218 111M224 78 240 97" fill="none" stroke="#c9b99a" stroke-width="2" />
+  </g>
+
+  <g id="fen-water-gauge" transform="translate(480 0)">
+    <defs>
+      <linearGradient id="gauge-wood" x1="0" y1="0" x2="0.2" y2="1">
+        <stop offset="0" stop-color="#b68d62" />
+        <stop offset="0.65" stop-color="#92704f" />
+        <stop offset="1" stop-color="#66533e" />
+      </linearGradient>
+      <linearGradient id="gauge-bone" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#a99b7f" />
+        <stop offset="0.4" stop-color="#ead7b5" />
+        <stop offset="1" stop-color="#cfb997" />
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c" />
+    <path d="M77 248C139 225 337 222 412 242L418 258C360 274 150 277 80 262Z" fill="#182e35" />
+    <ellipse cx="323" cy="291" rx="66" ry="15" fill="#182e35" />
+    <path d="M94 132 326 47 338 51 356 83 352 94 117 178 94 163Z" fill="#544b3c" />
+    <path d="M95 125 325 42 335 46 352 77 114 165 94 155Z" fill="url(#gauge-wood)" stroke="#b68d62" stroke-width="2" stroke-linejoin="round" />
+    <path d="M115 133C153 126 159 111 193 109S242 89 267 79 305 74 336 55L341 65C318 84 291 83 270 91S220 120 195 121 151 140 122 145Z" fill="#765c43" />
+    <path d="M133 122C170 120 173 103 204 100S249 83 272 73 304 68 327 53M164 137C191 132 209 132 234 119S278 102 302 95" fill="none" stroke="#d0a578" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M103 166 385 151 394 157 415 211 406 224 111 243 93 225Z" fill="#584a39" />
+    <path d="M107 158 385 145 406 205 111 229 99 215Z" fill="url(#gauge-wood)" stroke="#b68d62" stroke-width="2" stroke-linejoin="round" />
+    <path d="M123 175C165 166 192 181 226 169 252 160 274 167 303 160L385 155 389 166C357 174 334 170 311 178 283 187 262 177 234 185 198 196 169 184 127 196Z" fill="#7b6044" />
+    <path d="M122 210C161 207 182 194 214 201S271 200 297 191 354 190 394 179M145 170C175 171 195 175 217 168M210 217C247 218 265 206 292 207L397 195" fill="none" stroke="#d0a578" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M278 147C278 138 284 133 294 133L313 134C323 135 325 142 327 151L343 213C344 225 338 232 327 232L304 233 293 224 285 163Z" fill="#594f3f" />
+    <path d="M279 148C277 139 282 135 292 135L309 136C318 137 320 142 322 152L337 214C339 223 333 227 324 228L306 229C311 225 312 219 310 211L295 150C293 142 288 141 279 148Z" fill="url(#gauge-bone)" stroke="#ead7b5" stroke-width="1.5" />
+    <path d="M301 145 318 216C319 221 318 224 316 227" fill="none" stroke="#b7a483" stroke-width="2" />
+    <path d="M95 133C98 121 119 118 127 132L132 215C132 230 125 240 111 241 96 242 85 232 86 218L87 150Z" fill="#493f33" />
+    <path d="M96 130C105 124 119 128 120 140L123 213C123 225 120 232 108 233 98 234 94 227 94 218L91 148Z" fill="#a27d55" stroke="#b68d62" stroke-width="3" />
+    <path d="M103 160 106 211C106 221 109 226 115 227" fill="none" stroke="#755a41" stroke-width="3" />
+    <circle cx="109" cy="143" r="14" fill="#34464b" />
+    <circle cx="108" cy="141" r="11" fill="#95a6aa" stroke="#c1c6b7" stroke-width="2" />
+    <path d="M103 135C99 139 101 145 104 147" fill="none" stroke="#ead7b5" stroke-width="2" stroke-linecap="round" />
+    <path d="M91 132C76 127 72 148 71 161 71 178 84 185 89 173 92 164 80 165 74 174 60 195 51 224 57 247 63 272 91 286 126 283 173 281 187 260 224 262 248 264 266 279 285 276" fill="none" stroke="#66583e" stroke-width="13" stroke-linecap="round" />
+    <path d="M91 130C77 125 74 146 73 159 72 174 83 181 87 172 90 165 81 163 75 174 61 195 54 225 60 246 67 269 93 282 126 279 172 276 187 256 224 258 248 259 266 274 286 272" fill="none" stroke="#b68d62" stroke-width="9" stroke-linecap="round" />
+    <path d="M86 131C77 131 78 145 77 153M69 188C61 210 59 231 65 245 72 262 91 272 113 274M137 274C169 269 191 253 216 255" fill="none" stroke="#dfc777" stroke-width="3" stroke-linecap="round" />
+    <path d="M69 166C67 172 72 180 83 182M68 174C65 181 75 188 84 186" fill="none" stroke="#b68d62" stroke-width="7" stroke-linecap="round" />
+    <path d="M62 212 68 219M60 230 66 237M75 259 75 268M95 272 97 280M119 274 122 282M146 267 151 275M171 256 177 264M198 253 199 261M223 255 224 263" fill="none" stroke="#8a6e48" stroke-width="2" />
+    <path d="M294 250C312 244 342 249 361 266 378 281 367 296 344 301 323 306 287 294 278 280 273 269 280 257 294 250Z" fill="#34464b" stroke="#526064" stroke-width="2" />
+    <path d="M298 252C321 248 345 257 354 270L339 278 316 272 295 277 284 268Z" fill="#68736f" />
+    <path d="M310 255 324 257 330 266 344 268" fill="none" stroke="#95a6aa" stroke-width="3" stroke-linecap="round" />
+    <path d="M296 250C280 252 270 264 279 281M305 251C286 254 281 270 289 288M312 253C295 259 290 276 298 291" fill="none" stroke="#b68d62" stroke-width="7" stroke-linecap="round" />
+    <path d="M296 251C284 255 279 262 279 270M306 253C293 258 289 265 290 273" fill="none" stroke="#dfc777" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+
+  <g id="fen-mire-dispatch" transform="translate(960 0)">
+    <defs>
+      <linearGradient id="dispatch-cloth" x1="0" y1="0" x2="0.8" y2="1">
+        <stop offset="0" stop-color="#92977b" />
+        <stop offset="0.5" stop-color="#747e6c" />
+        <stop offset="1" stop-color="#34464b" />
+      </linearGradient>
+      <linearGradient id="dispatch-reed" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#92754c" />
+        <stop offset="0.4" stop-color="#dfc777" />
+        <stop offset="1" stop-color="#b68d62" />
+      </linearGradient>
+      <linearGradient id="dispatch-wax" x1="0" y1="0" x2="0.6" y2="1">
+        <stop offset="0" stop-color="#d78568" />
+        <stop offset="0.6" stop-color="#b36b50" />
+        <stop offset="1" stop-color="#84543f" />
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c" />
+    <path d="M58 265C137 243 334 247 405 274 431 287 383 305 318 306L90 290Z" fill="#182e35" />
+    <path d="M65 159 91 112 201 84 304 65 400 48C415 54 423 73 425 95L406 132 398 202 393 282C392 294 382 298 369 293L194 280 64 267C49 265 52 250 55 237Z" fill="#394a46" stroke="#727b68" stroke-width="3" stroke-linejoin="round" />
+    <path d="M63 244 158 176 275 160 390 144 381 284 200 269 63 260Z" fill="url(#dispatch-cloth)" />
+    <path d="M67 249 163 185 241 192 368 280 195 264Z" fill="#87907b" />
+    <path d="M77 250 161 197 206 206 184 216 232 226 329 273 191 260Z" fill="#737c69" />
+    <path d="M91 114 200 87 305 69 399 51C383 79 388 102 374 127 363 147 341 150 319 157L112 213 65 242 75 196 62 157Z" fill="url(#dispatch-cloth)" stroke="#a0a58a" stroke-width="3" stroke-linejoin="round" />
+    <path d="M94 120 111 133 83 171 105 204 66 231 78 192 67 157Z" fill="#556453" />
+    <path d="M107 126 206 100 270 90 206 111 162 123 141 150 124 160 129 137Z" fill="#a8ae91" />
+    <path d="M267 90 368 66 383 59 368 89 353 111 326 124 288 134 307 115 342 101 354 80Z" fill="#9ba18a" />
+    <path d="M112 210 165 195 145 186 131 164 120 173Z" fill="#34464b" />
+    <path d="M82 243 132 224 165 225 132 233 121 244M232 229 280 247 294 249M364 199 373 165 376 263" fill="none" stroke="#a3a58b" stroke-width="2" stroke-linecap="round" />
+    <path d="M399 51C415 54 423 78 422 97 422 117 413 133 403 133L385 128C400 105 395 76 386 67Z" fill="#45534a" stroke="#a0a58a" stroke-width="3" />
+    <path d="M407 68C417 79 418 105 409 119 398 112 401 90 397 82Z" fill="#263c3b" />
+    <path d="M407 79C414 91 412 108 407 109L405 94 402 87" fill="none" stroke="#7f8972" stroke-width="3" stroke-linecap="round" />
+    <path d="M216 86C207 99 205 120 201 141L181 241C177 257 180 274 190 280L211 282C200 270 199 261 203 243L224 140C228 116 230 97 242 80Z" fill="#4c5140" />
+    <path d="M220 83C209 95 208 117 204 139L185 240C181 257 183 274 193 279L211 280C202 272 202 260 205 245L226 140C230 115 232 96 244 79Z" fill="url(#dispatch-reed)" stroke="#c1a36a" stroke-width="1.5" />
+    <path d="M226 84C218 101 217 121 213 141L193 244C190 257 191 269 196 275M234 82C225 102 224 122 220 140L200 243" fill="none" stroke="#aa8959" stroke-width="2" />
+    <path d="M267 76C256 91 254 113 250 137L231 246C227 264 229 280 240 285L258 287C250 278 250 266 253 249L274 137C278 110 279 90 290 72Z" fill="#4c5140" />
+    <path d="M271 74C259 90 258 113 254 136L235 246C231 264 233 279 242 284L259 285C251 277 253 264 256 248L277 137C281 109 282 88 293 71Z" fill="url(#dispatch-reed)" stroke="#c1a36a" stroke-width="1.5" />
+    <path d="M277 76C267 96 267 115 263 137L243 247C240 261 240 273 246 281M285 75C276 93 275 117 271 138L252 244" fill="none" stroke="#aa8959" stroke-width="2" />
+    <path d="M197 151C209 137 225 132 241 139 254 141 274 145 282 158 291 173 283 190 275 201 265 218 244 221 228 215 211 220 193 210 187 195 176 181 180 166 191 158Z" fill="#664b3d" />
+    <path d="M197 147C209 134 225 131 241 137 257 138 274 145 279 158 286 171 279 188 270 198 261 212 244 215 229 211 214 216 198 207 193 194 183 183 184 168 195 158Z" fill="url(#dispatch-wax)" stroke="#d78568" stroke-width="3" stroke-linejoin="round" />
+    <path d="M202 155C212 143 225 141 237 145M194 172C191 181 195 190 201 195M217 206C231 209 239 204 250 206 260 202 266 197 271 187" fill="none" stroke="#e2a07a" stroke-width="3" stroke-linecap="round" />
+    <path d="M204 162C216 148 236 148 253 155 267 161 270 177 260 190 250 202 226 201 214 195 203 188 198 175 204 162Z" fill="#bc7556" />
+  </g>
+
+  <g id="salt-proof-tile" transform="translate(0 336)">
+    <defs>
+      <linearGradient id="tile-clay" x1="0" y1="0" x2="0.6" y2="1">
+        <stop offset="0" stop-color="#d78568" />
+        <stop offset="0.5" stop-color="#b68d62" />
+        <stop offset="1" stop-color="#8f624b" />
+      </linearGradient>
+      <linearGradient id="tile-glass" x1="0" y1="0" x2="0.8" y2="1">
+        <stop offset="0" stop-color="#c5d5bd" />
+        <stop offset="0.38" stop-color="#95b9ab" />
+        <stop offset="1" stop-color="#75a99f" />
+      </linearGradient>
+      <linearGradient id="tile-edge" x1="0" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="#75a99f" />
+        <stop offset="1" stop-color="#34464b" />
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c" />
+    <path d="M79 259 351 281 411 214C443 230 413 282 377 300 323 322 149 301 79 278Z" fill="#182e35" />
+    <path d="M51 188 161 55C170 43 185 40 204 45L391 83C411 87 424 98 425 116L388 265C385 281 375 299 359 301L83 269C66 267 57 257 55 245L47 211C45 202 47 194 51 188Z" fill="url(#tile-clay)" stroke="#855f48" stroke-width="3" stroke-linejoin="round" />
+    <path d="M49 205C53 216 62 221 77 224L346 270C363 274 377 267 388 251L379 282C375 294 365 299 354 297L85 265C69 263 62 254 60 241Z" fill="#9c6b4c" />
+    <path d="M62 218 78 223 84 264 74 260 67 251ZM103 229 118 233 137 270 118 268ZM330 271 346 274 344 296 328 294Z" fill="#af8060" />
+    <path d="M56 190 166 58C175 46 188 45 203 49L391 88C409 92 417 101 415 115L376 253C372 267 362 274 347 270L74 222C54 219 48 204 56 190Z" fill="#c28d65" stroke="#d8ab80" stroke-width="3" />
+    <path d="M68 192 174 66C181 58 189 56 202 59L386 98C397 100 401 107 398 118L363 246C360 255 353 258 344 256L81 212C68 210 61 203 68 192Z" fill="#34464b" stroke="#8b6248" stroke-width="4" stroke-linejoin="round" />
+    <path d="M92 190 181 80 375 115 351 183 305 194 277 235 98 210Z" fill="#34464b" />
+    <path d="M83 182 179 66C184 61 190 60 198 62L387 101C393 103 395 106 392 114L354 188 305 199 277 239 89 205C79 203 76 195 83 182Z" fill="url(#tile-edge)" stroke="#95a6aa" stroke-width="2" />
+    <path d="M82 181 178 65C183 60 190 59 198 61L385 100C393 101 396 106 392 114L354 180 303 191 277 227 89 196C80 194 78 189 82 181Z" fill="url(#tile-glass)" stroke="#b7d1bd" stroke-width="3" stroke-linejoin="round" />
+    <path d="M90 181 183 70C187 66 193 66 201 68L370 103 285 120 164 159 98 186Z" fill="#c4d7c3" />
+    <path d="M106 173 185 78 206 78 176 111 153 145Z" fill="#ead7b5" />
+    <path d="M164 159 285 120 381 108 348 173 301 185 272 218 98 189Z" fill="#8cb1a5" />
+    <path d="M98 189 271 219 301 185 348 173 377 117" fill="none" stroke="#bcd4c1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M277 227 303 191 354 180 354 188 305 199 277 239Z" fill="#75a99f" stroke="#b7d1bd" stroke-width="1.5" stroke-linejoin="round" />
+    <path d="M305 199 351 189 339 217 299 227 285 245 277 239Z" fill="#405e60" />
+    <path d="M305 202 339 195 331 210 301 218 288 236" fill="#587f7c" />
+    <path d="M90 201 272 234" fill="none" stroke="#75a99f" stroke-width="2" />
+    <path d="M61 192 170 61C178 52 185 51 199 54L387 94M63 215C66 219 70 221 78 222L344 267" fill="none" stroke="#ead7b5" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <g id="salt-depth-spool" transform="translate(480 336)">
+    <defs>
+      <linearGradient id="spool-wood" x1="0" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="#b68d62" />
+        <stop offset="0.55" stop-color="#8d6c4c" />
+        <stop offset="1" stop-color="#574b3c" />
+      </linearGradient>
+      <linearGradient id="spool-rope" x1="0" y1="0" x2="1" y2="0.4">
+        <stop offset="0" stop-color="#ead7b5" />
+        <stop offset="0.5" stop-color="#c6a16a" />
+        <stop offset="1" stop-color="#94754c" />
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c" />
+    <path d="M52 238C106 208 284 195 398 215 427 222 430 238 405 249L199 284 75 263Z" fill="#182e35" />
+    <ellipse cx="315" cy="294" rx="104" ry="14" fill="#182e35" />
+    <path d="M56 190C54 140 82 102 121 86L280 40C312 31 335 38 338 59L332 89C317 114 277 132 241 151L101 232C77 245 57 232 56 209Z" fill="#544738" stroke="#9d7954" stroke-width="3" />
+    <path d="M58 187C58 141 86 108 123 92L280 45C308 37 329 42 332 58L326 76 118 176 92 226C72 235 58 220 58 203Z" fill="url(#spool-wood)" />
+    <path d="M65 175C77 131 97 116 129 104L272 60C295 53 312 50 325 54M64 199C72 175 88 151 113 140L266 78" fill="none" stroke="#d0a17a" stroke-width="3" stroke-linecap="round" />
+    <path d="M102 142 271 70C288 63 310 80 320 105 332 135 321 158 305 166L147 229Z" fill="#695438" />
+    <path d="M108 136 270 69C290 60 309 82 317 107 323 128 319 151 303 161L147 222Z" fill="#a78a59" />
+    <g fill="none" stroke-linecap="round">
+      <path d="M117 133C137 128 158 151 166 176 172 194 169 211 159 217M133 126C154 121 173 145 181 170 187 188 184 205 174 211M150 119C170 114 190 138 197 163 203 181 200 199 191 204M167 112C187 107 206 130 214 155 220 174 217 192 207 198M183 105C204 101 223 125 230 149 236 167 233 185 224 191M200 98C221 94 239 117 247 142 253 160 250 178 240 184M217 91C237 87 257 111 264 135 270 153 267 171 257 177M233 84C254 80 273 103 281 128 287 147 284 164 274 170M250 77C271 73 290 97 297 121 303 139 300 157 291 163M267 71C286 66 306 89 313 114 319 133 316 150 307 157" stroke="#755e3e" stroke-width="14" />
+      <path d="M116 130C137 126 155 149 162 174 168 191 165 208 157 213M133 123C153 119 172 142 179 167 185 185 182 201 174 206M150 116C171 112 189 135 196 160 202 178 199 194 191 199M167 109C187 105 206 128 213 153 219 171 216 187 208 192M184 102C204 98 223 121 230 146 236 164 233 180 225 185M201 95C221 91 240 114 247 139 253 157 250 173 242 178M218 88C238 84 257 107 264 132 270 150 267 166 259 171M235 81C255 77 274 100 281 125 287 143 284 159 276 164M252 74C272 70 291 93 298 118 304 136 301 152 293 157M269 68C289 64 308 87 315 111 321 129 318 145 310 150" stroke="url(#spool-rope)" stroke-width="11" />
+      <path d="M117 129C132 128 146 144 153 164M135 122C150 121 163 137 170 157M152 115C167 114 180 130 187 150M169 108C184 107 197 123 204 143M186 101C201 100 214 116 221 136M203 94C218 93 231 109 238 129M220 87C235 86 248 102 255 122M237 80C252 79 265 95 272 115M254 73C269 72 282 88 289 108M271 67C286 66 299 82 306 101" stroke="#dfc777" stroke-width="2.5" />
+    </g>
+    <path d="M103 130C126 124 150 143 159 172 169 201 161 225 143 232 121 241 97 220 88 194 77 164 83 139 103 130Z" fill="#665039" stroke="#b68d62" stroke-width="3" />
+    <ellipse cx="113" cy="183" rx="25" ry="40" transform="rotate(-18 113 183)" fill="#34464b" stroke="#95a6aa" stroke-width="3" />
+    <path d="M103 151C115 146 130 164 134 185 138 203 132 216 124 219" fill="none" stroke="#68797a" stroke-width="7" />
+    <path d="M74 171 108 162C116 160 122 180 114 184L79 196C70 199 66 177 74 171Z" fill="#95a6aa" stroke="#b8b9a2" stroke-width="2" />
+    <path d="M76 177 109 169" fill="none" stroke="#ead7b5" stroke-width="3" stroke-linecap="round" />
+    <path d="M116 242C125 208 143 190 175 170L335 88C365 73 389 78 405 98 418 113 418 143 407 164 394 189 365 200 338 211L156 267C132 274 110 265 116 242Z" fill="#5d4d3a" stroke="#a17c55" stroke-width="3" />
+    <path d="M117 239C129 211 147 192 178 174L337 94C364 80 387 85 400 103 409 117 409 136 401 153 387 176 361 188 335 198L153 258C135 264 119 257 117 251Z" fill="url(#spool-wood)" />
+    <path d="M130 229C161 199 181 198 209 185L352 114C369 105 385 100 399 103L404 118C382 117 360 132 339 141L202 205C180 216 156 218 137 239Z" fill="#72563d" />
+    <path d="M150 248C176 233 206 232 237 220L350 174C374 163 394 148 405 136M142 219C172 193 197 194 227 179L341 121M190 243C214 230 248 226 270 217" fill="none" stroke="#c19a6f" stroke-width="3" stroke-linecap="round" />
+    <path d="M117 247 127 237 134 242 137 253 147 249 153 255 167 250 171 258 151 266 134 266 120 259Z" fill="#95a6aa" />
+    <path d="M349 195 353 185 362 185 363 174 371 178 377 168 384 171 387 156 394 158 395 147 403 144 401 161 389 176 374 188Z" fill="#95a6aa" />
+    <path d="M121 249 127 248M144 258 151 256M362 185 367 181M386 169 390 164" fill="none" stroke="#ead7b5" stroke-width="3" stroke-linecap="round" />
+    <path d="M287 67C313 54 331 75 336 103 345 151 335 190 309 217 285 242 245 242 219 262 198 279 207 295 228 295 255 296 288 277 313 261" fill="none" stroke="#695638" stroke-width="15" stroke-linecap="round" />
+    <path d="M287 64C311 53 329 74 333 102 341 149 332 187 306 214 282 238 242 239 216 259 195 276 205 292 227 292 255 293 286 274 312 258" fill="none" stroke="#c5a06a" stroke-width="11" stroke-linecap="round" />
+    <path d="M288 61C307 55 322 73 326 99 335 145 326 181 301 207M286 230C260 241 236 243 216 261 201 274 208 285 222 287M239 287C259 283 280 273 296 263" fill="none" stroke="#dfc777" stroke-width="3" stroke-linecap="round" />
+    <path d="M332 119 337 126M331 142 337 149M326 165 331 173M314 190 319 197M294 214 299 221M267 232 271 239M240 243 245 250M215 263 221 269M208 280 214 281M250 283 254 290M275 273 279 280" fill="none" stroke="#9d7b4d" stroke-width="2" />
+    <path d="M307 248 335 235 388 245 414 276 413 291 350 302 303 280 298 264Z" fill="#34464b" stroke="#596465" stroke-width="2" stroke-linejoin="round" />
+    <path d="M309 247 335 237 386 247 410 274 350 282 302 262Z" fill="#596765" />
+    <path d="M335 241 349 245 343 253 355 266 346 270 320 259Z" fill="#75807a" />
+    <path d="M302 262 350 282 410 274M350 282 350 299" fill="none" stroke="#7b8580" stroke-width="2" />
+    <path d="M316 251C307 244 298 243 292 251 285 260 290 268 300 269L310 264" fill="none" stroke="#c5a06a" stroke-width="9" stroke-linecap="round" />
+    <path d="M314 249C305 244 298 247 296 252" fill="none" stroke="#dfc777" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+
+  <g id="salt-bead-mold" transform="translate(960 336)">
+    <defs>
+      <linearGradient id="mold-stone" x1="0" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="#c5bca5" />
+        <stop offset="0.5" stop-color="#a59f8e" />
+        <stop offset="1" stop-color="#777d73" />
+      </linearGradient>
+      <linearGradient id="mold-hollow" x1="0" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="#4f5c56" />
+        <stop offset="0.6" stop-color="#8e9181" />
+        <stop offset="1" stop-color="#c6bea5" />
+      </linearGradient>
+      <radialGradient id="mold-bead" cx="0.32" cy="0.25" r="0.8">
+        <stop offset="0" stop-color="#c4e0cd" />
+        <stop offset="0.5" stop-color="#9dc8bb" />
+        <stop offset="1" stop-color="#75a99f" />
+      </radialGradient>
+      <linearGradient id="mold-hinge" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#34464b" />
+        <stop offset="0.45" stop-color="#95a6aa" />
+        <stop offset="0.65" stop-color="#b3b6a3" />
+        <stop offset="1" stop-color="#455651" />
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c" />
+    <path d="M51 263C114 245 347 247 413 264L417 284C365 310 114 310 54 283Z" fill="#182e35" />
+    <path d="M57 101C59 86 70 79 84 82L210 107C219 109 224 115 224 128L231 271C233 284 225 297 212 300L59 273C45 271 39 264 41 250Z" fill="#61695e" stroke="#727b6e" stroke-width="3" stroke-linejoin="round" />
+    <path d="M54 100C57 87 66 80 79 83L207 108C218 110 221 116 221 128L224 262C224 274 216 280 206 278L55 252C45 250 43 245 45 234Z" fill="url(#mold-stone)" stroke="#c8c0a9" stroke-width="3" stroke-linejoin="round" />
+    <path d="M60 96 76 88 83 92 70 107 60 149 56 213 49 235 47 229Z" fill="#ead7b5" />
+    <path d="M55 252 206 278 215 276 211 297 61 271 46 260Z" fill="#777b6d" />
+    <path d="M57 239 87 242 101 251 151 259 180 266 211 268" fill="none" stroke="#c3b99f" stroke-width="2" />
+    <path d="M105 130C131 118 164 131 182 155 201 182 194 213 169 224 143 235 108 218 94 194 79 170 84 143 105 130Z" fill="#626b5f" stroke="#c7bea5" stroke-width="3" />
+    <path d="M106 137C130 125 160 138 176 159 194 182 187 209 165 219 141 229 112 213 99 191 86 169 88 148 106 137Z" fill="url(#mold-hollow)" />
+    <path d="M123 184C135 166 160 163 177 175 183 194 176 211 162 217 146 223 129 214 119 203Z" fill="#b6b19a" />
+    <path d="M248 110 381 48C393 42 405 46 410 59L420 232C421 245 414 255 403 260L264 299C250 302 239 295 238 282L237 132C237 120 241 115 248 110Z" fill="#646e65" stroke="#81877a" stroke-width="3" stroke-linejoin="round" />
+    <path d="M248 106 380 46C392 41 402 45 404 57L410 218C410 230 403 239 391 242L259 277C247 280 239 272 240 260L239 127C239 116 242 111 248 106Z" fill="url(#mold-stone)" stroke="#d0c6ad" stroke-width="3" stroke-linejoin="round" />
+    <path d="M261 277 391 242C403 239 410 230 410 218L419 235C419 246 413 253 402 258L264 296C253 299 244 293 243 282L242 269C245 277 251 280 261 277Z" fill="#777e71" />
+    <path d="M251 111 380 50C389 46 395 48 398 56L400 102 391 78 390 56 365 63 323 86 279 103 250 122Z" fill="#d1c7af" />
+    <path d="M400 164 396 186 400 211 391 232 364 246" fill="none" stroke="#c1b9a2" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M302 87C331 70 365 77 380 99 395 121 383 151 357 167 331 181 299 173 286 152 272 129 279 103 302 87Z" fill="#3c5552" stroke="#bfc4ac" stroke-width="3" />
+    <path d="M304 96C329 79 359 85 371 104 384 124 373 148 351 161 328 174 302 166 291 148 280 129 285 109 304 96Z" fill="#75a99f" />
+    <path d="M302 96C323 82 350 83 365 97 380 112 375 134 360 148 344 164 317 167 300 152 282 138 284 111 302 96Z" fill="url(#mold-bead)" stroke="#a8d2bf" stroke-width="2" />
+    <path d="M303 101C310 91 326 86 339 88 352 89 359 96 355 104 351 113 334 121 321 120 307 120 298 111 303 101Z" fill="#c1dfca" />
+    <ellipse cx="329" cy="102" rx="19" ry="10" transform="rotate(-19 329 102)" fill="#405f5b" />
+    <path d="M312 99C317 94 326 92 334 92" fill="none" stroke="#ead7b5" stroke-width="3" stroke-linecap="round" />
+    <path d="M293 119C289 131 295 140 302 144M314 157C332 162 348 155 359 146" fill="none" stroke="#c3dfce" stroke-width="4" stroke-linecap="round" />
+    <path d="M322 191C339 180 363 181 377 194 391 208 384 229 365 240 347 249 325 244 315 230 305 216 308 202 322 191Z" fill="#5a675e" stroke="#c7bda4" stroke-width="3" />
+    <path d="M324 197C339 188 360 189 371 200 382 212 376 228 361 237 345 245 327 239 319 228 311 216 313 205 324 197Z" fill="url(#mold-hollow)" />
+    <path d="M345 220C355 212 366 213 373 218 370 229 357 237 344 236L335 230Z" fill="#c6bca3" />
+    <path d="M210 126C213 121 221 120 226 124L238 132 248 121C252 117 258 119 260 124L262 256C262 262 255 266 250 262L237 254 226 266C220 270 211 266 210 260Z" fill="#34464b" stroke="#9aa293" stroke-width="2" stroke-linejoin="round" />
+    <path d="M213 130C214 125 219 125 222 128L228 133 228 254 220 262C217 264 213 261 213 257Z" fill="#78857b" />
+    <path d="M248 130 255 125C257 124 259 127 259 132L258 254C257 258 254 260 251 257L246 253Z" fill="#78857b" />
+    <path d="M228 131C229 123 243 122 246 130L244 253C243 263 228 264 227 254Z" fill="url(#mold-hinge)" stroke="#525f56" stroke-width="2" />
+    <path d="M228 158C233 154 240 154 245 158M228 204C233 201 240 201 245 205M228 243C232 240 240 240 244 244" fill="none" stroke="#34464b" stroke-width="3" />
+    <path d="M233 131 232 151M233 163 232 197M232 210 231 235" fill="none" stroke="#c6c4ab" stroke-width="2" stroke-linecap="round" />
+    <ellipse cx="220" cy="139" rx="3.5" ry="5" fill="#34464b" stroke="#b3b5a1" stroke-width="1" />
+    <ellipse cx="219" cy="249" rx="3.5" ry="5" fill="#34464b" stroke="#b3b5a1" stroke-width="1" />
+    <ellipse cx="253" cy="139" rx="3" ry="4.5" fill="#34464b" stroke="#b3b5a1" stroke-width="1" />
+    <ellipse cx="252" cy="247" rx="3" ry="4.5" fill="#34464b" stroke="#b3b5a1" stroke-width="1" />
+    <path d="M229 258C231 253 239 252 242 257L242 265C240 271 231 273 228 266Z" fill="#34464b" stroke="#6e7b70" stroke-width="2" />
+  </g>
+</svg>
