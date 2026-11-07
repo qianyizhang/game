@@ -1,0 +1,53 @@
+{
+  "history_prefix": "expansion-en-cont-20261106/",
+  "sizes": {
+    "cell": [480, 336],
+    "sheet": [1440, 672],
+    "native": [160, 112],
+    "compact": [80, 56]
+  },
+  "families": [
+    {
+      "id": "night-passage-decision-tools",
+      "subjects": [
+        {
+          "id": "quay-mooring-cleat",
+          "name": "Quay mooring cleat",
+          "purpose": "Lantern Quay interaction-prop reference; no story beat, sailing action or runtime command."
+        },
+        {
+          "id": "memory-rubbing-frame",
+          "name": "Memory rubbing frame",
+          "purpose": "Possible memory-shrine interaction reference, distinct from the existing temple symbol and the previous ember screw press."
+        },
+        {
+          "id": "ash-sifting-tray",
+          "name": "Ash sifting tray",
+          "purpose": "Possible material handling for the existing banked-ash theme; no new progression rule."
+        },
+        {
+          "id": "market-exchange-chute",
+          "name": "Market exchange chute",
+          "purpose": "Wandering-market exchange-object concept, not a replacement for current purchase controls or pricing."
+        },
+        {
+          "id": "trial-oath-knot",
+          "name": "Trial oath knot",
+          "purpose": "Possible tangible trial-commitment reference alongside the existing Oath of danger choice; no new trial rule or accepted ritual."
+        },
+        {
+          "id": "spring-flow-diverter",
+          "name": "Spring flow diverter",
+          "purpose": "Possible safe-spring handling concept; not the earlier footbath, Neris water table or current healing behavior."
+        }
+      ]
+    }
+  ],
+  "authored": "targeted-derivatives/authoring.json",
+  "dependency": {
+    "pr": 141,
+    "original_checkpoint": "a3351841a981c90bfa1ef4ac0ed34757d678f967",
+    "required_for_authored_parent_ids": true,
+    "artwork_paths_unchanged_by_cleanup": true
+  }
+}

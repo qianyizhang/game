@@ -1,0 +1,54 @@
+{
+  "source_commit": "3a9272a151c32735cfe9f35bb547ebbcf174a2e0",
+  "delivery": "All 14 SVGs and 2 review PNGs copied byte-for-byte from the isolated continuation source. Current-main branch; no first-suite ancestor or files.",
+  "static_svg": {
+    "originals": 2,
+    "cells": 12,
+    "safety": "passed",
+    "cell_bounds": "passed",
+    "copied_geometry_and_paint": "exact; only grid translation removed"
+  },
+  "raster": {
+    "columns": ["cell", "changed_pixels", "peak_channel_delta_255", "alpha_equal"],
+    "differences": [
+      ["blindside-01/ribbon-shears", 30, 5, true],
+      ["blindside-01/abacus", 8, 2, true],
+      ["blindside-01/domino-bridge", 4, 3, true],
+      ["blindside-01/tuning-fork", 29, 7, true],
+      ["blindside-02/marionette-cross", 23, 22, true],
+      ["blindside-02/matchbox", 2, 1, true],
+      ["blindside-02/corkscrew", 17, 5, true],
+      ["blindside-02/pepper-mill", 20, 2, true]
+    ],
+    "meaning": "Differences remain explicit; strict source geometry/paint identity is separately required. Inspect edge differences without claiming pixel equality.",
+    "compared": 12,
+    "identical": 4
+  },
+  "limits": "Source candidates and author self-review only. No game-frame/crowd acceptance, runtime slot or adoption. User aesthetic acceptance remains pending.",
+  "isolated_import": {
+    "assets": 0,
+    "revisions": 14,
+    "selections": 0,
+    "actual_calls": 2
+  },
+  "gallery": {
+    "browser": "154.0.8037.57",
+    "revisions_inspected": 14,
+    "call_records_inspected": 2,
+    "prompts_settings_usage_lineage": "verified",
+    "adoption": "disabled",
+    "shared_registration": "canonical: 2 attempts / 14 source revisions"
+  },
+  "registration": {
+    "handoff_head": "1c11f5cebff653bf71106c149ef4ad58febf9a2a",
+    "checks": {
+      "maintenance": "passed: formatting/inventory/links, history verify (709 assets / 106 revisions / zero selections / 709 sources), lint/types, 19 Python, 202 tooling, 81 DCC contracts and production build",
+      "browser": "All 3 affected asset-history journeys passed at normal local limits, plus live inspection of all 14 source revisions and 2 exact call records. No application/simulation/geometry/native execution claimed.",
+      "hosted": "Exact final-head CI reported on PR; independent/user aesthetic and game-context acceptance remain pending."
+    },
+    "transport": "Retired redundant prepared-history.json after consumer tracing; library owns IDs/digests/parents/cell recipes, calls retain exact generation and review facts.",
+    "gallery": "All 14 source revisions decoded at native/compact sizes and inspected enlarged, 2 exact call documents and parent records visible, adoption disabled; no page errors. Layout 1440/390/320px and 16/20px text fits.",
+    "preservation": "All 14 SVGs, 2 review PNGs and 2 call records unchanged from handoff; 709 source registrations and selected-art.json unchanged.",
+    "runtime": "Node 24.21.0 / npm 11.19.0 / Google Chrome 157.0.8103.38"
+  }
+}

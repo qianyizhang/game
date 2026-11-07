@@ -1,0 +1,93 @@
+{
+  "source_base": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "review_mode": "author self-review; repaired candidates improve width, opposing head/boot angles and torso continuity; not user acceptance",
+  "native_visible_px": {
+    "cultist-se": [27.7, 32.9],
+    "cultist-sw": [27.8, 32.6],
+    "cultist-ne": [28.7, 32.7],
+    "cultist-nw": [28.5, 32.7]
+  },
+  "generated_output": "original.svg and four untouched extracts held for transparent torso gaps",
+  "manual_repair": "Four torso planes per view; all pre-existing paths/colors retained byte-for-byte at XML attribute level; added planes behind arms, mantle, belt. Zero API cost.",
+  "extraction": {
+    "pixel_identical": 3,
+    "exception": {
+      "view": "cultist-sw",
+      "channels": 8,
+      "pixels": 4,
+      "max_delta_255": 1,
+      "reason": "Browser rasterization difference; exact source geometry retained."
+    }
+  },
+  "repaired_changes_pixels": {
+    "cultist-se": 3059,
+    "cultist-sw": 3215,
+    "cultist-ne": 3391,
+    "cultist-nw": 3159
+  },
+  "margin_cells_passed": 4,
+  "review_findings": [
+    "Opposing face/nose directions, hood-back overlaps and reversed near/far boot placement now distinguish each quarter.",
+    "Width increased from approximately20px to27.7\u201328.7px at comparable32.6\u201332.9px height, through authored mantle/elbow contour rather than canvas enlargement.",
+    "Staff/collar, hood, wine/salmon palette and anatomical-left ivory stitch panel remain the design anchors. New broad mantle is a refinement, not exact image-conditioned reproduction.",
+    "Shoulder yaw is conservative and needs user review before a final runtime directional contract. No walk/timing/facing support established."
+  ],
+  "checks": {
+    "svg_safety": "18/18 documents pass repository validateSvg; native vector paths, no raster/script/external resources.",
+    "gallery": {
+      "isolated_import": {
+        "assets": 0,
+        "revisions": 18,
+        "selections": 0
+      },
+      "attempts_inspected": 3,
+      "revision_cards_inspected": 18,
+      "all_nonselectable": true,
+      "all_parent_and_request_or_manual_records_inspected": true,
+      "all_sources_decoded": true,
+      "page_errors": []
+    },
+    "preview": "desktop1220px and phone390px render; all36 comparison images decode, phone overflow0px",
+    "runtime": "unchanged; shared registry/selections untouched; staged import remains a draft blocker",
+    "torso_repair": {
+      "original_paths_retained": "4/4 group structures unchanged after removing the four added torso paths",
+      "waist_pixel_probe": [
+        {
+          "view": "se",
+          "rawAlpha": 0,
+          "repairedAlpha": 255
+        },
+        {
+          "view": "sw",
+          "rawAlpha": 0,
+          "repairedAlpha": 255
+        },
+        {
+          "view": "ne",
+          "rawAlpha": 0,
+          "repairedAlpha": 255
+        },
+        {
+          "view": "nw",
+          "rawAlpha": 0,
+          "repairedAlpha": 255
+        }
+      ]
+    },
+    "maintenance": "Final format:maintenance, assets:history verify and git diff --check recorded in PR/handoff. Custom art evidence is distinct from application/browser game suites.",
+    "review_png_lossless_optimization": {
+      "original_bytes": 363708,
+      "optimized_bytes": 349156,
+      "uncompressed_pixel_stream_and_all_non_IDAT_chunks": "identical",
+      "applied": true
+    }
+  },
+  "cost_usd": {
+    "this_call": 0.095271,
+    "lifetime_lane": 0.238068,
+    "per_new_repaired_candidate_including_generated_holds": 0.02381775,
+    "per_eight_promising_lane_candidates_including_all_holds": 0.0297585
+  },
+  "frame_counts": "12 generated static views across 2 sheets, plus4 separate manual derivatives;8 promising current quarters across2 species;0 animation frames",
+  "publication": "Published draft146; canonical source registration retains generated/held/manual distinctions. No adoption, runtime compatibility or merge claimed."
+}

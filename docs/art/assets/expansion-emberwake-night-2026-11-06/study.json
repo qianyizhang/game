@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "source_base": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "original_suite_commit": "a3351841a981c90bfa1ef4ac0ed34757d678f967",
+  "history_prefix": "expansion-en-20261106/",
+  "calls": [
+    "ember-equipment-a",
+    "ember-equipment-b",
+    "ember-skill-studies",
+    "night-offering-instruments",
+    "night-reliquaries",
+    "night-sanctum-furnishings",
+    "night-sanctum-plates"
+  ],
+  "formats": {
+    "card": {
+      "cell": [480, 336],
+      "native": [160, 112],
+      "compact": [80, 56]
+    },
+    "plate": {
+      "cell": [720, 384],
+      "native": [360, 192],
+      "compact": [180, 96]
+    }
+  },
+  "estimated_total_usd": 0.970265,
+  "historical_generation_policy": {
+    "allocation_usd": 9,
+    "reservation_per_call_usd": 7,
+    "successes": 7,
+    "failures": 0,
+    "retries": 0,
+    "unresolved_reservations_usd": 0
+  },
+  "rates_per_million": {
+    "image_text_input": 5,
+    "image_input": 8,
+    "image_output": 30,
+    "svg_input": 2,
+    "svg_output": 10
+  },
+  "source_audit": {
+    "inspected": [
+      "AGENTS.md",
+      "skills/card-art/SKILL.md",
+      "skills/card-art/references/batch-assets.md",
+      "docs/art/art-direction.md",
+      "docs/art/iterations/README.md",
+      "docs/art/README.md",
+      "docs/guide/emberwake.md",
+      "docs/guide/night-passage.md",
+      "docs/engineering/night-passage.md",
+      "docs/engineering/decisions/0006-emberwake-world-runtime.md",
+      "packages/diablo2/src/domain/content.ts",
+      "packages/diablo2/src/ui/CharacterPanels.tsx",
+      "src/games/night-passage/ui/Artwork.tsx",
+      "src/games/night-passage/domain/content.ts",
+      "docs/art/assets/night-passage/symbols/contact-sheet.png",
+      "docs/art/assets/emberwake-silhouettes/after-zoom.webp"
+    ],
+    "open_prs": [
+      {
+        "number": 137,
+        "head": "art/refinement-candidates-2026-11-06",
+        "overlap_excluded": [
+          "Hearth wolves",
+          "Spire swords",
+          "Cartographer relics",
+          "Emberwake category symbols",
+          "Blindside material studies"
+        ]
+      }
+    ]
+  },
+  "pipeline": {
+    "extraction": "Ordered row-major 3\u00d72 cells: copy named group, remove only grid translation, retain root paint definitions/inherited presentation attributes. Parent is this call's original sheet; each child has its exact preserved SVG and digest.",
+    "rasterizer": "Chromium 154.0.8037.57, Canvas2D default sRGB, device scale 1.",
+    "crop_note": "Rebasing exact geometry can alter antialiasing at translated edges. Pixel comparison is recorded rather than assumed equal.",
+    "evidence": "PNG optimization verified decoded RGBA pixels, dimensions, alpha and color metadata. Contact files are retained byte-for-byte.",
+    "review": "Primary-author native/compact self-review; original outputs inspected. User acceptance and runtime adoption remain unrecorded."
+  }
+}
