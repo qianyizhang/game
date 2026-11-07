@@ -1,0 +1,64 @@
+{
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create one native editable SVG packed artwork sheet. Exact canvas 1440 by 672, viewBox=\"0 0 1440 672\". Exactly 3 columns by two rows, each cell 480 by 336 (10:7), no gutters, labels or panel borders. Spire encounter LOCATION vignettes, proposed event/rest/travel composition art, not card-action replacements, not existing gameplay rooms or accepted lore. Established acts are The Exordium, The City, The Beyond. Forged metal, asymmetric cloth and muted copper; cool sage and muted plum in The Beyond.\n\nSTRUCTURE: Put each complete local scene in its own TOP-LEVEL <g id=\"SUBJECT-ID\" transform=\"translate(X Y)\"> with local coordinates 0..480,0..336. Row-major ordering below. Each group MUST begin with its own <rect x=\"0\" y=\"0\" width=\"480\" height=\"336\" fill=\"#172928\"/>. No shared overall background. All drawing belongs within its named group. No scene crossing a cell boundary. Use explicit colors and ordinary static vector paths/shapes only. No image, embedded raster, scripts, animation, external links, CSS, text, fonts, logos, card frame, statistics, visible symbols, filters, masks, gradients, defs or use references. Do not construct a grid UI. Economical editable planes, around 30-55 purposeful shapes per cell rather than texture fragments.\n\nSHARED DIRECTION: cohesive engraved fantasy illustration with sculptural overlapping planes and expressive asymmetric silhouette. Three clear value groups: dark forest ink #172928, middle cool stone #63746d / sage #82937d, pale warm stone #d6cfb6. Selective muted copper #b97c5e and very sparing warm ember #d39b65, water #659a9a, deep plum #665361 only where appropriate. Broad planes before sparse form-following cuts; hard material thickness, visibly fitted supporting structure. Upper-left light. Quiet negative space, no noisy hatching or toy gloss. Each subject fills 70-80 percent of the cell, at least 24px safe inset around all subject edges; one grounded support/shadow at the bottom. Keep each subject distinct at 160x112 and 80x56. Cartographer composition props should also keep their major silhouette at 64x45, but these are not 35px tactical tile sprites. Spire scenes must have one dominant foreground structure, a traversable negative-space route or opening, and at most two quiet distant masses. No human or living creature anatomy in this batch.\n\nSUBJECTS IN ROW-MAJOR ORDER:\n1. id=\"beyond-tilted-observatory\" translate(0 0): The Beyond: a tilted stone observation platform with one large hollow forged ring fixed into its rear edge. One suspended-looking distant mass in the backdrop only; visible platform supports, muted plum sky, no eye emblem.\n2. id=\"beyond-silent-span\" translate(480 0): The Beyond: two unequal pale stone platforms joined by a single narrow bent bridge over a dark chasm. The route forms a low S; sparse sage cloth tied to a fitted post, broad shadows, no figures.\n3. id=\"beyond-sealed-reservoir\" translate(960 0): The Beyond: a tall opaque stone reservoir with a narrow green-glass inspection slit and one curved drain into a shallow bowl. Continuous forged brackets, three clear material groups; no potion bottle or relic.\n4. id=\"threshold-rusted-lift\" translate(0 336): Encounter location concept: an iron lift cage suspended on a visibly continuous thick chain beside a worn stone landing. Open empty cage, three-quarter low diagonal platform, muted copper fittings. No character or promise of mechanics.\n5. id=\"threshold-curtain-vault\" translate(480 336): Encounter location concept: a broad dark doorway partially revealed by a heavy asymmetric plum curtain held by a simple forged hook. Three large cloth folds, thick stone jamb and one cream floor wedge; no treasure or readable script.\n6. id=\"threshold-abandoned-bell\" translate(960 336): Encounter location concept: a cracked suspended iron bell fitted to an asymmetric stone support, clapper resting visibly inside the dark mouth. Unequal opening and thick edge; a single draped sage cloth on the stone base. No character.\n\nDeliver this one coherent sheet with each scene cleanly separable. These are review-only future concepts, no invented inscriptions, names in art or canonical history. Prioritize contour, structure and material over detail.\n",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "request_sha256": "2cf8826c82130f9ed47d5b4ddc1d70fbb45a519fe39218dbb261dea2f7c2d9cf",
+  "started_at": "2026-11-06T15:00:45.336527+00:00",
+  "response": {
+    "created": 1793977290,
+    "background": "transparent",
+    "request_id": "req_6cabac102e9641f2bcf826e14b5e98c4",
+    "elapsed_seconds": 257.419,
+    "http_status": 200,
+    "usage": {
+      "input_tokens": 1012,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 1012
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1796
+    },
+    "svg_usage": {
+      "input_tokens": 2389,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 11816,
+      "reasoning_tokens": 510,
+      "total_tokens": 14205
+    }
+  },
+  "usage_estimate_usd": 0.151518,
+  "review_default": "candidate",
+  "reviews": {
+    "beyond-tilted-observatory": "One large hollow copper-toned forged ring anchors to an asymmetric stone platform. Cream route, dark support void and quiet plum backdrop remain distinct at 160x112 and 80x56; distant floating mass is only a setting motif.",
+    "beyond-silent-span": "A low S-shaped pale bridge joins unequal platforms, with visibly fitted end brackets. Route-versus-chasm remains clear compactly; the single sage cloth accent gives direction without obscuring the span.",
+    "beyond-sealed-reservoir": "Broad opaque reservoir, narrow green inspection slit and short curved drain are distinct from a potion or relic. Blue-green water bowl reads at native size; the glass slit simplifies at compact size.",
+    "threshold-rusted-lift": "Open empty cage, connected chain and adjacent landing read as a lift location. Thin chain links simplify at 64x45 but silhouette survives at 80x56. This is a source composition, with no validated lift mechanism or gameplay trigger.",
+    "threshold-curtain-vault": "Three broad plum cloth folds hang from a fitted hook and partly reveal a dark opening. Thick stone jamb and cream floor wedge give clear depth; no visible inscription or invented vault contents.",
+    "threshold-abandoned-bell": "Cracked bell, hanging ring, attached clapper and stone arch read clearly at compact size. Warm copper/bronze appearance departs from the prompt iron interpretation; retain that material difference for user review instead of claiming exact prompt conformity."
+  },
+  "foreground_bounds": {
+    "beyond-tilted-observatory": [25, 24, 455, 313],
+    "beyond-silent-span": [25, 24, 455, 312],
+    "beyond-sealed-reservoir": [25, 24, 455, 313],
+    "threshold-rusted-lift": [25, 25, 454, 313],
+    "threshold-curtain-vault": [26, 26, 453, 313],
+    "threshold-abandoned-bell": [26, 28, 455, 313]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "method": "Deep-copy each named group; remove only its outer sheet translation, preserve internal geometry and explicit colors; wrap in384square SVG.",
+  "cells": [
+    {
+      "pose": "preparation",
+      "cell": [192, 0, 384, 384],
+      "file": "cultist-se-preparation.svg",
+      "sha256": "e0a0f5c4662123c63384f00a7594ade6f66de0fe66c8f4cc372b6b1a3672ca67"
+    },
+    {
+      "pose": "release",
+      "cell": [960, 0, 384, 384],
+      "file": "cultist-se-release.svg",
+      "sha256": "3b17654ed5bcfc7ad5a16cead5b2bb75e22e4d0573a3a08580438dbf5e98e1a7"
+    },
+    {
+      "pose": "follow-through",
+      "cell": [192, 384, 384, 384],
+      "file": "cultist-se-follow-through.svg",
+      "sha256": "c8108bd930d375b195f9e10ad130d34b19d509aaee7cc50eefd452172cd07ca0"
+    },
+    {
+      "pose": "recovery",
+      "cell": [960, 384, 384, 384],
+      "file": "cultist-se-recovery.svg",
+      "sha256": "115ee85ded112fb3571579643a40fc0e93ebb3ea946e9b208b3927e00462ed72"
+    }
+  ]
+}

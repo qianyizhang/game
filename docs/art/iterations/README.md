@@ -4,7 +4,23 @@ The 2D gallery keeps artwork revisions beside their generation or authoring
 attempts. Open `/__art/` on the local development server, or follow **2D asset
 gallery** in the game. Current SVG exports link each asset to the offline
 `history.html` view. Offline exports embed artwork and available prompt/settings
-text; writes require the local gallery.
+text; writes require the local gallery. The live browser loads metadata first, then
+requests only the viewed asset's editable source and retained revisions. GIF bytes
+are requested on explicit play or download. Reloading or navigating discards pending
+previews; reload after an external history change. Missing or changed revision files
+show an error on that preview without preventing other assets from being browsed.
+Editable-source reads render the requested slot afresh, excluding game selections;
+they still bundle the shared source catalogue. Complete offline exports deliberately
+render and embed every source, revision and available attachment.
+Live, attachment and offline previews share the same format decoder: SVG, PNG,
+JPEG, WebP and GIF use their actual MIME type; `.svg.gz` originals are decoded
+within a 16 MiB bound and checked as static SVG without changing archive bytes.
+Source evidence retains its natural aspect ratio. Preview support does not make
+an archive or raster image a game-compatible SVG adaptation.
+Each explicit GIF play starts at the beginning, including completed one-shot
+clips. Stop, attachment/disclosure dismissal, navigation, reload and reduced
+motion cancel pending playback and release temporary player resources. Downloads
+preserve the original GIF bytes; no stored frame catalog is created.
 
 ## Save, compare and use
 
@@ -13,6 +29,10 @@ text; writes require the local gallery.
   request/settings, response or failure record. Missing historical facts remain
   unknown. Shared packed requests are stored once. Unassigned source studies
   remain browsable without an invented game identity.
+  **Studies and attempts** also searches attempt titles and notes. Open an attempt
+  to browse its original sheets, extractions and review evidence together; parent
+  links open the actual revision. Links use `#attempt=<attempt-id>` or
+  `#revision=<revision-id>` on the same `/__art/` entry point.
 - Unchanged assets are discovered through their live renderer, stable ID and
   source revision. Initial catalogue coverage creates no frozen artwork files.
   **Save source revision**, or `assets:history snapshot <asset-id>`, explicitly
@@ -72,6 +92,13 @@ revisions. `file` and `digest` identify the review source; `runtimeFile` and
 `runtimeDigest` identify a compatible static SVG adaptation, or are both null.
 The SHA-256 fields are consumed by import, selection and verification; changed
 bytes need a new revision.
+
+Exact `.svg.gz` originals remain compressed in storage. The gallery decodes them
+losslessly for inspection, with the static SVG safety checks and a 16 MiB decoded
+limit. PNG/JPEG/WebP review evidence uses its image MIME type and natural aspect
+ratio; these source records do not imply a compatible game adaptation. Lossless
+packaging changes with identical decoded pixels are recorded in provenance rather
+than presented as new artistic decisions.
 
 The frontend selection file contains only pinned SVG delivery snapshots and their
 revision/digest. Full history stays out of game bundles. Each asset's

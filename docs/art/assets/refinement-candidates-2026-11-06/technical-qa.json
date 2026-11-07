@@ -1,0 +1,263 @@
+{
+  "review": "Source syntax/safety checked separately by XML extraction; Chromium content bounds exclude cell background.",
+  "rows": [
+    {
+      "family": "blindside-materials",
+      "id": "lantern",
+      "viewBox": [0, 0, 560, 392],
+      "bounds": [130, 31.98166847229004, 293, 355.0183410644531],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 24
+      }
+    },
+    {
+      "family": "blindside-materials",
+      "id": "mirror",
+      "viewBox": [0, 0, 560, 392],
+      "bounds": [102.17182922363281, -20.76995086669922, 361.84246826171875, 399.42584228515625],
+      "inBounds": false,
+      "tagCounts": {
+        "g": 2,
+        "path": 6,
+        "ellipse": 4
+      }
+    },
+    {
+      "family": "blindside-materials",
+      "id": "anvil",
+      "viewBox": [0, 0, 560, 392],
+      "bounds": [34, 43.20000076293945, 483, 330.79998779296875],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 14
+      }
+    },
+    {
+      "family": "cartographer-relics",
+      "id": "chisel",
+      "viewBox": [0, 0, 384, 384],
+      "bounds": [42, 39.625, 289.5, 288.375],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 8
+      }
+    },
+    {
+      "family": "cartographer-relics",
+      "id": "compass",
+      "viewBox": [0, 0, 384, 384],
+      "bounds": [42.95833206176758, 35.54545593261719, 266.70831298828125, 310.3636474609375],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 10,
+        "ellipse": 3
+      }
+    },
+    {
+      "family": "cartographer-relics",
+      "id": "moss",
+      "viewBox": [0, 0, 384, 384],
+      "bounds": [99, 42, 187, 293],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 10
+      }
+    },
+    {
+      "family": "cartographer-relics",
+      "id": "boots",
+      "viewBox": [0, 0, 384, 384],
+      "bounds": [49.88888931274414, 42, 288.6666564941406, 300.6666564941406],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 13
+      }
+    },
+    {
+      "family": "cartographer-relics",
+      "id": "shell",
+      "viewBox": [0, 0, 384, 384],
+      "bounds": [50, 59.18333435058594, 289.9090881347656, 265.816650390625],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 12
+      }
+    },
+    {
+      "family": "cartographer-relics",
+      "id": "lens",
+      "viewBox": [0, 0, 384, 384],
+      "bounds": [46.44444274902344, 42.52941131591797, 283.079345703125, 294.9705810546875],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 10
+      }
+    },
+    {
+      "family": "emberwake-backpack",
+      "id": "weapon",
+      "viewBox": [0, 0, 448, 448],
+      "bounds": [65.91304016113281, 46, 333.08697509765625, 372],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 8
+      }
+    },
+    {
+      "family": "emberwake-backpack",
+      "id": "armor",
+      "viewBox": [0, 0, 448, 448],
+      "bounds": [22, 59, 387, 357.76922607421875],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 9
+      }
+    },
+    {
+      "family": "emberwake-backpack",
+      "id": "charm",
+      "viewBox": [0, 0, 448, 448],
+      "bounds": [117, 43.42856979370117, 220, 366.5714416503906],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 5,
+        "ellipse": 1
+      }
+    },
+    {
+      "family": "hearth-wolves",
+      "id": "stray-alert",
+      "viewBox": [0, 0, 560, 392],
+      "bounds": [79, 33, 359, 333],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 26,
+        "circle": 1
+      }
+    },
+    {
+      "family": "hearth-wolves",
+      "id": "leader-calling",
+      "viewBox": [0, 0, 560, 392],
+      "bounds": [44, 12.600000381469727, 405.23077392578125, 353.3999938964844],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 25
+      }
+    },
+    {
+      "family": "hearth-wolves",
+      "id": "wolf-guardian",
+      "viewBox": [0, 0, 560, 392],
+      "bounds": [33, 62.5, 470, 303.5],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 26,
+        "circle": 1
+      }
+    },
+    {
+      "family": "spire-heavyblade-revision",
+      "id": "heavyBlade-base-refined",
+      "viewBox": [0, 0, 800, 560],
+      "bounds": [55, 48, 659, 454.4814758300781],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 32
+      }
+    },
+    {
+      "family": "spire-heavyblade-revision",
+      "id": "heavyBlade-upgraded-refined",
+      "viewBox": [0, 0, 800, 560],
+      "bounds": [55, 37.92856979370117, 672, 474.0714416503906],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 33
+      }
+    },
+    {
+      "family": "spire-swords",
+      "id": "cleave-base",
+      "viewBox": [0, 0, 480, 336],
+      "bounds": [29, 29.392810821533203, 425, 280.607177734375],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 22
+      }
+    },
+    {
+      "family": "spire-swords",
+      "id": "heavyBlade-base",
+      "viewBox": [0, 0, 480, 336],
+      "bounds": [35, 26, 424, 281],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 25
+      }
+    },
+    {
+      "family": "spire-swords",
+      "id": "ironWave-base",
+      "viewBox": [0, 0, 480, 336],
+      "bounds": [21, 38, 431, 273],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 18
+      }
+    },
+    {
+      "family": "spire-swords",
+      "id": "cleave-upgraded",
+      "viewBox": [0, 0, 480, 336],
+      "bounds": [19.20403289794922, 24.125, 438.79595947265625, 287.2210388183594],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 20
+      }
+    },
+    {
+      "family": "spire-swords",
+      "id": "heavyBlade-upgraded",
+      "viewBox": [0, 0, 480, 336],
+      "bounds": [20.03604507446289, 20, 429.9639587402344, 292],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 22
+      }
+    },
+    {
+      "family": "spire-swords",
+      "id": "ironWave-upgraded",
+      "viewBox": [0, 0, 480, 336],
+      "bounds": [21, 36.2605094909668, 439, 268.739501953125],
+      "inBounds": true,
+      "tagCounts": {
+        "g": 1,
+        "path": 18
+      }
+    }
+  ]
+}

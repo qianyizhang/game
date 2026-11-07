@@ -1,0 +1,85 @@
+{
+  "technical": {
+    "svg_safety": "passed",
+    "cells": [
+      {
+        "id": "bat-normal",
+        "geometry_and_paint_equal_except_grid_translation": true,
+        "paths": 63,
+        "viewport_bounds": true,
+        "requested_safe_margins": false,
+        "extent": {
+          "minX": 39.235294342041016,
+          "minY": 36,
+          "maxX": 599.2857055664062,
+          "maxY": 467.99998474121094
+        }
+      },
+      {
+        "id": "bat-ascended",
+        "geometry_and_paint_equal_except_grid_translation": true,
+        "paths": 58,
+        "viewport_bounds": true,
+        "requested_safe_margins": false,
+        "extent": {
+          "minX": 40,
+          "minY": 30.933334350585938,
+          "maxX": 677,
+          "maxY": 476
+        }
+      }
+    ]
+  },
+  "visual_self_review": {
+    "normal": "Useful source candidate with diagonal hanging weight, two hindleg chains to rock grips, unequal partially folded wings, connected head/body and fitted eyes. Traced far membrane to its ankle attachment rather than treating it as an extra arm.",
+    "ascended": "Useful source candidate with asymmetric opened wing-bearing forelimbs, connected shoulder/elbow/wrist/membrane planes, one pushing hindfoot on rock and one released foot.",
+    "family": "Consistent long ears, umber fur, warm brown membranes, ivory chest planes and small eyes. Rest versus launch changes support, body action and wing silhouette; no horns, feathers or extra arms.",
+    "review_sizes": ["720x512", "160x112", "80x56", "64x45"],
+    "limits": "Normal grips overlap the rock face; contact depth is stylized, not a biomechanics proof. Folded wings are more open than a fully wrapped roost. Ears are exaggerated and fine finger/toe detail reduces at64x45. Source-only self-review, no installed-game framing/user acceptance."
+  },
+  "verification": {
+    "maintenance": "Passed format:maintenance with pinned Node24.21.0/npm11.19.0; 901 managed sources, no errors.",
+    "isolated_history_gallery": "Disposable Git clone import/verify passed:709 assets,95 revisions,zero selections,709 registered sources. Existing focused gallery decoded all3 revisions; exact settings, receipt/trace and parent links checked at1440/390px; zero page errors and disabled mutation controls.",
+    "preservation": "Exact API original hash checked; inherited SVG whitespace remains rather than normalize original bytes. Non-SVG diff whitespace and formatting checked separately.",
+    "scope": "Source-history registration only; additive canonical library records, no shared implementation/runtime/default/gameplay changes. Hosted CI is reported separately in PR."
+  },
+  "limits": "Canonical source registration complete; user review unrecorded. All original visual, safe-inset, opaque-background and placement-antialias exceptions remain. No manual artwork repair, installed-game framing or runtime compatibility established.",
+  "pixels": {
+    "matched_raster_crop_comparison": [
+      {
+        "id": "bat-normal",
+        "changed_pixels": 0,
+        "max_channel_difference": 0,
+        "alpha_equal": true
+      },
+      {
+        "id": "bat-ascended",
+        "changed_pixels": 6252,
+        "max_channel_difference": 31,
+        "alpha_equal": true
+      }
+    ],
+    "restored_translation_control": "Ascended extraction reinserted at original translate(720 0) is pixel-identical to original right cell; geometry/paint preserved. Moving to local origin can change antialiasing, not claimed pixel-equal across placements.",
+    "review": {
+      "file": "review.png",
+      "unoptimized_bytes": 206320,
+      "retained_bytes": 204525,
+      "dimensions": [1160, 950],
+      "mode": "RGB",
+      "decoded_pixels_alpha_and_color_metadata_equal": true,
+      "sha256": "8049014570e6020f09950afee7c2d22279d580a66c1f13ac9c575fa6f39cd7e7"
+    }
+  },
+  "exceptions": {
+    "safe_inset": "All paint remains in the viewport. Normal minX39.235 is0.765px outside requestedx40; ascended minY30.933 is5.067px above requestedy36. No crop.",
+    "background": "API metadata reports transparent; actual cell backgrounds are opaque #172928."
+  },
+  "canonical_registration": {
+    "source_head": "cc52101f8b00f2ac2d5317434a6442d34c92887b",
+    "counts": "1attempt/3source revisions;709assets/95revisions/0selections",
+    "preservation": "All6payload/request/receipt/review files and previous canonical records exact; staged facts migrated without changes and duplicate transport retired. No cross-branch parent or runtime mapping invented.",
+    "independent_review": "Node24.21.0,officialChrome157.0.8103.38. Exact inner geometry/paints and request hash; independently reproduced normal pixel equality, ascended6252/max31 exception, exact restored-translation control, both opaque backgrounds and recorded safe-inset deviations.",
+    "gallery": "All3source/compact/enlarged revisions,4exact settings/receipt/README/QA documents, exact reviewPNG;6desktop1440/phone390/320x16/20px layouts,no overflow/errors. Use disabled; cancelled removal preview retains original with2descendants.",
+    "checks": "Existing selection/reload/active-removal browser journey passed9.5s(12.5srun),normal limits;11history contracts passed. No new full/native/runtime-suite claim or duplicate catalogue export."
+  }
+}
