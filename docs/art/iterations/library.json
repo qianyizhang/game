@@ -7313,6 +7313,17 @@
         "docs/art/assets/semantic-hold-repairs-2026-11-07/reflector-comparison.png",
         "docs/art/assets/semantic-hold-repairs-2026-11-07/web-comparison.png"
       ]
+    },
+    {
+      "id": "manual-coil-stalker-20261107",
+      "title": "Coil Stalker manual metal-spring repair",
+      "date": "2026-11-07",
+      "outcome": "manual",
+      "notes": "Source-only material improvement; original and camera/crowd holds retained. Zero API calls/spend. Original prompt/settings via parent attempt.",
+      "files": [
+        "docs/art/assets/coil-stalker-metal-repair-2026-11-07/repair.json",
+        "docs/art/assets/coil-stalker-metal-repair-2026-11-07/comparison.png"
+      ]
     }
   ],
   "revisions": [
@@ -12065,6 +12076,18 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Manual derivative. Keep exact original stone anchors and ground. Remove the opaque folded cloth body, hem and highlight bands. Draw connected unequal tension lines/cross strands, sparse translucent attachment fans and a large open displaced tear. Review: Improved author candidate: open fibrous network replaces cloth reading at 160x112/80x56; 64x45 keeps net-like negative space but individual silk strands and frays partly merge. A static torn web source, without creature, active VFX, timing or gameplay/persistence claims."
+    },
+    {
+      "id": "manual-coil-stalker-20261107:metal-spring",
+      "asset": null,
+      "attempt": "manual-coil-stalker-20261107",
+      "label": "Coil Stalker · manual metal spring · context hold",
+      "file": "docs/art/assets/coil-stalker-metal-repair-2026-11-07/coil-stalker.svg",
+      "digest": "940966b62ac50dcffb4a930d94b8c6239bd20e536ccb60363d331056e0f3916b",
+      "parents": ["hbs-cont-20261106-scrapyard-02:coil-stalker"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Three curl paths replaced; retained body/head/leg paths exact. Isolated 30/20px material candidate; camera/crowd/user acceptance unclaimed."
     }
   ]
 }
