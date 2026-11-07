@@ -1,0 +1,540 @@
+{
+  "study": "refinement-candidates-2026-11-06",
+  "source_commit": "3eb4514a8d6df9fad89049a76a36b9cec5441402",
+  "baseline_commit": "5e26f4aace8c151a15122f6a62195b81b9a39c7e",
+  "generation_attempts": 6,
+  "returned": 6,
+  "generation_failures": 0,
+  "extracted_candidates": 23,
+  "reviewable": 19,
+  "held": 4,
+  "estimated_usd": 0.331047,
+  "requests": "Existing shared spend-ledger.json and six request/response records; no new API calls.",
+  "inventory": [
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/current/mirror.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:blindside/consumables/glass"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/current/anvil.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:blindside/consumables/steel"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/current/lantern.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:blindside/consumables/mult"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/current/stray-alert.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:hearth/stray"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/current/wolf-guardian.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:hearth/wolf"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/current/leader-calling.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:hearth/leader"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/current/heavyBlade-base-refined.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:spire/heavyBlade"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/current/heavyBlade-upgraded-refined.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:spire/heavyBlade-upgraded"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/heavyBlade-upgraded.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:spire/heavyBlade-upgraded"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/ironWave-base.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:spire/ironWave"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/ironWave-upgraded.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:spire/ironWave-upgraded"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/heavyBlade-base.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:spire/heavyBlade"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/cleave-base.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:spire/cleave"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/current/cleave-upgraded.svg",
+      "role": "historical comparison",
+      "revision": "refinement-2026-11-06:baseline:spire/cleave-upgraded"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/stray-alert.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:hearth-wolves:stray-alert",
+      "review": "reviewable_alternative",
+      "asset": "hearth/stray",
+      "pre_cleanup": "distinct pre-cleanup extraction preserved",
+      "pre_cleanup_sha256": "3253c37437af2d6e97c8b41dba165d56e0a59dbda2dc2d377b630d26ee36c5cf"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/leader-calling.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:hearth-wolves:leader-calling",
+      "review": "reviewable_alternative",
+      "asset": "hearth/leader",
+      "pre_cleanup": "distinct pre-cleanup extraction preserved",
+      "pre_cleanup_sha256": "b4b70ad6715d4c9cef9cd813fb2b8a974a1622b4cba194211fe23340b60ef45f"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/wolf-guardian.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:hearth-wolves:wolf-guardian",
+      "review": "reviewable_alternative",
+      "asset": "hearth/wolf",
+      "pre_cleanup": "distinct pre-cleanup extraction preserved",
+      "pre_cleanup_sha256": "a91ee9a9734fb43e8a2a2d7ec2b531b74ca9dcc1b22518f9fa52b5f62c8d1218"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/card-phone-candidate-mockup.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:hearth-wolves:card-phone-candidate-mockup"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/card-phone-current.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:hearth-wolves:card-phone-current"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/hearth-wolves/review.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:hearth-wolves:review"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/cleave-base.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:spire-swords:cleave-base",
+      "review": "reviewable_alternative",
+      "asset": "spire/cleave",
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "6d19ff2504de1f12905e293d9f18eadbe3e2849774e1affb05470fb03295900a"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/heavyBlade-base.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:spire-swords:heavyBlade-base",
+      "review": "hold_anatomy",
+      "asset": "spire/heavyBlade",
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "294b6212d1229c17eb401e6f3e2765d56046f960d8e3ce3509ba49bbc92ca521"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/ironWave-base.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:spire-swords:ironWave-base",
+      "review": "reviewable_alternative",
+      "asset": "spire/ironWave",
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "fe86a82fe55e6c88d972b26f25aec490ca559695aeef3697fb891a5a1c292e27"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/cleave-upgraded.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:spire-swords:cleave-upgraded",
+      "review": "reviewable_alternative",
+      "asset": "spire/cleave-upgraded",
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "8dbccfde145e309dc5acb53656d8314d4ef8fa722704f703f426ce1aa258151c"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/heavyBlade-upgraded.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:spire-swords:heavyBlade-upgraded",
+      "review": "hold_anatomy",
+      "asset": "spire/heavyBlade-upgraded",
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "89b9bafe2ce5a0bd9dc3cb8ed3e052cc906c40d76a7ec5bfada8903b433e834e"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/ironWave-upgraded.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:spire-swords:ironWave-upgraded",
+      "review": "reviewable_alternative",
+      "asset": "spire/ironWave-upgraded",
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "f28b15846be3f489e6f05359ce26a9b85ab58c6c89f33c59054917cf65e86d8f"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/card-phone-candidate-mockup.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:spire-swords:card-phone-candidate-mockup"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/card-phone-current.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:spire-swords:card-phone-current"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-swords/review.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:spire-swords:review"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/chisel.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:cartographer-relics:chisel",
+      "review": "reviewable_alternative",
+      "asset": null,
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "9cfbe95cd83786fb250fa0443fb01e77d3974188eb03dd680d34842de87c7f9b"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/compass.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:cartographer-relics:compass",
+      "review": "reviewable_alternative",
+      "asset": null,
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "e12c3852e09daafc954a710f653126f333aee6400a71393a945424950ed86d9d"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/moss.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:cartographer-relics:moss",
+      "review": "reviewable_alternative",
+      "asset": null,
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "a6f6d7d480480508c3103372d79feae93e830003215d67b47b0414de78df3b6a"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/boots.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:cartographer-relics:boots",
+      "review": "reviewable_alternative",
+      "asset": null,
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "92eff1014355c09d9590eae87415ed32808472a5eb50ea160b7ec29b877d9ce3"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/shell.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:cartographer-relics:shell",
+      "review": "reviewable_alternative",
+      "asset": null,
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "2347d6c7b9f784e895e1cb07efef9878cf467636797bb6bec20504540cf8cd84"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/lens.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:cartographer-relics:lens",
+      "review": "reviewable_alternative",
+      "asset": null,
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "9bf83a36813133871aae96be80821c8f546e45f2f890362603a60998e6111172"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/cartographer-relics/review.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:cartographer-relics:review"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/weapon.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:emberwake-backpack:weapon",
+      "review": "reviewable_alternative",
+      "asset": null,
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "8339895407cc40805c150bac05bf28e830cc739927c3e6b43b25b1726cef738c"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/armor.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:emberwake-backpack:armor",
+      "review": "reviewable_alternative",
+      "asset": null,
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "cc58cdff175750f732cd562a1f20995d4185b2f5d5e12718f85f086bd6a350cf"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/charm.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:emberwake-backpack:charm",
+      "review": "reviewable_alternative",
+      "asset": null,
+      "pre_cleanup": "identical to final extracted SVG",
+      "pre_cleanup_sha256": "b0078fba8e35b3b10f8c5d8a8977a2045b3c4e9d02e6ad3652e31ae49fe4ca30"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/emberwake-backpack/review.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:emberwake-backpack:review"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/heavyBlade-base-refined.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-base-refined",
+      "review": "hold_identity",
+      "asset": "spire/heavyBlade",
+      "pre_cleanup": "distinct pre-cleanup extraction preserved",
+      "pre_cleanup_sha256": "8886f2c190e1c435db88d9b02490b804ac56b8b5c301dde25ca5b1bb5d0b3a75"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/heavyBlade-upgraded-refined.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-upgraded-refined",
+      "review": "hold_identity",
+      "asset": "spire/heavyBlade-upgraded",
+      "pre_cleanup": "distinct pre-cleanup extraction preserved",
+      "pre_cleanup_sha256": "b78f15a62d08479f2f353042372dfe5c5b94697112ba8afa69070c94be9810de"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/spire-heavyblade-revision/review.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:spire-heavyblade-revision:review"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/lantern.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:blindside-materials:lantern",
+      "review": "reviewable_alternative",
+      "asset": "blindside/consumables/mult",
+      "pre_cleanup": "distinct pre-cleanup extraction preserved",
+      "pre_cleanup_sha256": "71c73770de34c7efccb94b9aabadf2a63ee74e15a7c9f1c5407cc75891551f6e"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/mirror.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:blindside-materials:mirror",
+      "review": "reviewable_alternative",
+      "asset": "blindside/consumables/glass",
+      "pre_cleanup": "distinct pre-cleanup extraction preserved",
+      "pre_cleanup_sha256": "9a0e9e5f15a6fc08dc3d3f8dd630f49c448e9a4300c0859316f805f113e3bc14"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/anvil.svg",
+      "role": "extracted candidate",
+      "revision": "refinement-2026-11-06:blindside-materials:anvil",
+      "review": "reviewable_alternative",
+      "asset": "blindside/consumables/steel",
+      "pre_cleanup": "distinct pre-cleanup extraction preserved",
+      "pre_cleanup_sha256": "135008108b2e60a89784e7c22a313b572f0a1e5b309b462aec4423b8622021b9"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/blindside-materials/review.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:blindside-materials:review"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/index-desktop.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:evidence:index-desktop"
+    },
+    {
+      "file": "docs/art/assets/refinement-candidates-2026-11-06/index-phone.png",
+      "role": "review evidence",
+      "revision": "refinement-2026-11-06:evidence:index-phone"
+    }
+  ],
+  "compressed_intermediates": [
+    "docs/art/iterations/files/refinement-candidates-2026-11-06/hearth-wolves/stray-alert-before-cleanup.svg.gz",
+    "docs/art/iterations/files/refinement-candidates-2026-11-06/hearth-wolves/leader-calling-before-cleanup.svg.gz",
+    "docs/art/iterations/files/refinement-candidates-2026-11-06/hearth-wolves/wolf-guardian-before-cleanup.svg.gz",
+    "docs/art/iterations/files/refinement-candidates-2026-11-06/spire-heavyblade-revision/heavyBlade-base-refined-before-cleanup.svg.gz",
+    "docs/art/iterations/files/refinement-candidates-2026-11-06/spire-heavyblade-revision/heavyBlade-upgraded-refined-before-cleanup.svg.gz",
+    "docs/art/iterations/files/refinement-candidates-2026-11-06/blindside-materials/lantern-before-cleanup.svg.gz",
+    "docs/art/iterations/files/refinement-candidates-2026-11-06/blindside-materials/mirror-before-cleanup.svg.gz",
+    "docs/art/iterations/files/refinement-candidates-2026-11-06/blindside-materials/anvil-before-cleanup.svg.gz"
+  ],
+  "unknown": [
+    "Historical pre-edit checkpoint timing",
+    "Baseline export and evidence capture timestamps",
+    "User acceptance / aesthetic approval (none recorded)",
+    "Cartographer relic and Emberwake category SVG runtime slots (not established)"
+  ],
+  "preservation": "All pre-existing artwork bytes preserved. Six exact API originals remain compressed; three cleaned sheets are byte-identical to their decoded originals. Eight distinct pre-cleanup cells are retained compressed; fifteen pre-cleanup cells are already byte-identical to final cells. Lossless PNG recompression states are documented by existing png-optimization.json and retain identical decoded pixels, dimensions, alpha and color interpretation. No frozen copy of the unchanged catalogue was created.",
+  "runtime_checks": [
+    {
+      "revision": "refinement-2026-11-06:baseline:blindside/consumables/glass",
+      "asset": "blindside/consumables/glass",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:blindside/consumables/steel",
+      "asset": "blindside/consumables/steel",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:blindside/consumables/mult",
+      "asset": "blindside/consumables/mult",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:hearth/stray",
+      "asset": "hearth/stray",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:hearth/wolf",
+      "asset": "hearth/wolf",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:hearth/leader",
+      "asset": "hearth/leader",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:spire/heavyBlade",
+      "asset": "spire/heavyBlade",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:spire/heavyBlade-upgraded",
+      "asset": "spire/heavyBlade-upgraded",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:spire/ironWave",
+      "asset": "spire/ironWave",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:spire/ironWave-upgraded",
+      "asset": "spire/ironWave-upgraded",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:spire/cleave",
+      "asset": "spire/cleave",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:baseline:spire/cleave-upgraded",
+      "asset": "spire/cleave-upgraded",
+      "width": 160,
+      "height": 112,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:hearth-wolves:stray-alert",
+      "asset": "hearth/stray",
+      "width": 560,
+      "height": 392,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:hearth-wolves:leader-calling",
+      "asset": "hearth/leader",
+      "width": 560,
+      "height": 392,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:hearth-wolves:wolf-guardian",
+      "asset": "hearth/wolf",
+      "width": 560,
+      "height": 392,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:spire-swords:cleave-base",
+      "asset": "spire/cleave",
+      "width": 480,
+      "height": 336,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:spire-swords:ironWave-base",
+      "asset": "spire/ironWave",
+      "width": 480,
+      "height": 336,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:spire-swords:cleave-upgraded",
+      "asset": "spire/cleave-upgraded",
+      "width": 480,
+      "height": 336,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:spire-swords:ironWave-upgraded",
+      "asset": "spire/ironWave-upgraded",
+      "width": 480,
+      "height": 336,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:blindside-materials:lantern",
+      "asset": "blindside/consumables/mult",
+      "width": 560,
+      "height": 392,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:blindside-materials:mirror",
+      "asset": "blindside/consumables/glass",
+      "width": 560,
+      "height": 392,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    },
+    {
+      "revision": "refinement-2026-11-06:blindside-materials:anvil",
+      "asset": "blindside/consumables/steel",
+      "width": 560,
+      "height": 392,
+      "result": "static SVG and slot aspect pass; not aesthetic approval"
+    }
+  ],
+  "accounting": {
+    "retained_study_files": 105,
+    "registered_artwork_paths": 61,
+    "additional_distinct_intermediates": 8,
+    "shared_settings_provenance_and_evidence_files": 42,
+    "navigation_documents": [
+      "docs/art/assets/refinement-candidates-2026-11-06/README.md",
+      "docs/art/assets/refinement-candidates-2026-11-06/index.html"
+    ],
+    "baseline_aliases": "Fourteen existing comparison SVG files share twelve unique baseline revisions; two exact Heavy Blade aliases are attached to the shared administrative record.",
+    "generation_inputs": "All six requests were text-only (zero image input tokens); baseline parents record comparison context, not image references sent to the API.",
+    "unsent_draft": "spire-swords/prompt-draft-strike-pommel.md was never dispatched. Not a seventh generation attempt.",
+    "visual_review": "All six families inspected in the shared live gallery at desktop and390px phone,16px/20px text; all35 native/compact/layout observations passed decode/overflow checks. Card native160x112 and80x56; source-only relic proposals64/32 and category symbols23px inspected without adoption. Original wrist support and revised blade-mass holds remain. Caller top margin, Stray muzzle identity, modest Cleave upgrade contour and lens contrast remain review limits.",
+    "navigation_repair": "Reopen the asset browser when resizing from phone to desktop; otherwise its closed details toggle is hidden by desktop styling. Covered by the shared-gallery browser journey."
+  }
+}

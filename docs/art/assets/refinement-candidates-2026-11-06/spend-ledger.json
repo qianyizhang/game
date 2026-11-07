@@ -1,0 +1,200 @@
+{
+  "cap_usd": 39,
+  "estimated_usd": 0.331047,
+  "reserved_usd": 0,
+  "unresolved": false,
+  "calls": [
+    {
+      "family": "hearth-wolves",
+      "status": "completed",
+      "reservation_usd": 4.25,
+      "started_utc": "2026-11-06T12:51:46.325610+00:00",
+      "settings_file": "hearth-wolves/request.json",
+      "http_status": 200,
+      "request_id": "req_81077242035747a086caf0a5f5fa1673",
+      "usage": {
+        "input_tokens": 698,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 698
+        },
+        "output_tokens": 971,
+        "output_tokens_details": {
+          "image_tokens": 971,
+          "text_tokens": 0
+        },
+        "total_tokens": 1669
+      },
+      "svg_usage": {
+        "input_tokens": 1990,
+        "model": "gpt-6.1-terra",
+        "output_tokens": 6707,
+        "reasoning_tokens": 21,
+        "total_tokens": 8697
+      },
+      "estimated_usd": 0.068145,
+      "elapsed_seconds": 112.987
+    },
+    {
+      "family": "spire-swords",
+      "status": "completed",
+      "reservation_usd": 4.25,
+      "started_utc": "2026-11-06T12:54:39.475947+00:00",
+      "settings_file": "spire-swords/request.json",
+      "http_status": 200,
+      "request_id": "req_49868a7f1c8b414aa6a19bb0f458ac9f",
+      "usage": {
+        "input_tokens": 926,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 926
+        },
+        "output_tokens": 647,
+        "output_tokens_details": {
+          "image_tokens": 647,
+          "text_tokens": 0
+        },
+        "total_tokens": 1573
+      },
+      "svg_usage": {
+        "input_tokens": 2302,
+        "model": "gpt-6.1-terra",
+        "output_tokens": 8114,
+        "reasoning_tokens": 23,
+        "total_tokens": 10416
+      },
+      "estimated_usd": 0.066912,
+      "elapsed_seconds": 126.968
+    },
+    {
+      "family": "cartographer-relics",
+      "status": "completed",
+      "reservation_usd": 4.25,
+      "started_utc": "2026-11-06T12:57:13.546789+00:00",
+      "settings_file": "cartographer-relics/request.json",
+      "http_status": 200,
+      "request_id": "req_481ce041a9a04c9dbb01f862e9b0a1f1",
+      "usage": {
+        "input_tokens": 636,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 636
+        },
+        "output_tokens": 915,
+        "output_tokens_details": {
+          "image_tokens": 915,
+          "text_tokens": 0
+        },
+        "total_tokens": 1551
+      },
+      "svg_usage": {
+        "input_tokens": 1914,
+        "model": "gpt-6.1-terra",
+        "output_tokens": 4336,
+        "reasoning_tokens": 27,
+        "total_tokens": 6250
+      },
+      "estimated_usd": 0.054224,
+      "elapsed_seconds": 87.44
+    },
+    {
+      "family": "emberwake-backpack",
+      "status": "completed",
+      "reservation_usd": 4.25,
+      "started_utc": "2026-11-06T13:00:13.557562+00:00",
+      "settings_file": "emberwake-backpack/request.json",
+      "http_status": 200,
+      "request_id": "req_b71d3bd58ce84ca692c84000ce62107b",
+      "usage": {
+        "input_tokens": 538,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 538
+        },
+        "output_tokens": 1334,
+        "output_tokens_details": {
+          "image_tokens": 1334,
+          "text_tokens": 0
+        },
+        "total_tokens": 1872
+      },
+      "svg_usage": {
+        "input_tokens": 1718,
+        "model": "gpt-6.1-terra",
+        "output_tokens": 1865,
+        "reasoning_tokens": 122,
+        "total_tokens": 3583
+      },
+      "estimated_usd": 0.053753,
+      "elapsed_seconds": 56.824
+    },
+    {
+      "family": "spire-heavyblade-revision",
+      "status": "completed",
+      "reservation_usd": 4.25,
+      "started_utc": "2026-11-06T13:02:06.590488+00:00",
+      "settings_file": "spire-heavyblade-revision/request.json",
+      "http_status": 200,
+      "request_id": "req_d02a1af4075d456b9cd33e56e842fa24",
+      "usage": {
+        "input_tokens": 646,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 646
+        },
+        "output_tokens": 462,
+        "output_tokens_details": {
+          "image_tokens": 462,
+          "text_tokens": 0
+        },
+        "total_tokens": 1108
+      },
+      "svg_usage": {
+        "input_tokens": 1968,
+        "model": "gpt-6.1-terra",
+        "output_tokens": 4117,
+        "reasoning_tokens": 59,
+        "total_tokens": 6085
+      },
+      "estimated_usd": 0.039643,
+      "elapsed_seconds": 84.55
+    },
+    {
+      "family": "blindside-materials",
+      "status": "completed",
+      "reservation_usd": 4.25,
+      "started_utc": "2026-11-06T13:04:03.851253+00:00",
+      "settings_file": "blindside-materials/request.json",
+      "http_status": 200,
+      "request_id": "req_5ebe394e94ca4ab2b29b2f45cc4db180",
+      "usage": {
+        "input_tokens": 628,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 628
+        },
+        "output_tokens": 971,
+        "output_tokens_details": {
+          "image_tokens": 971,
+          "text_tokens": 0
+        },
+        "total_tokens": 1599
+      },
+      "svg_usage": {
+        "input_tokens": 1920,
+        "model": "gpt-6.1-terra",
+        "output_tokens": 2836,
+        "reasoning_tokens": 70,
+        "total_tokens": 4756
+      },
+      "estimated_usd": 0.04837,
+      "elapsed_seconds": 68.654
+    }
+  ],
+  "pricing_date": "2026-11-06",
+  "pricing_url": "https://developers.openai.com/api/docs/pricing",
+  "reservation_usd_per_call": 4.25,
+  "bound_basis": "One medium reference below one megapixel, n=1, no image input, no Fast mode or caching. Reserve image 32768 output tokens at $30/M and <=8000 prompt bytes at $5/M, each with 10% contingency. Author context 1050000, max output 128000; reserve 922000 input at long-context $2/M plus 128000 output at $7.5/M = $2.804, plus 10%. Combined $4.209744 rounded UP to $4.25 for this task. Model maxima are conservative author bounds; image reserve is deliberately far above the previous matched settings, not an endpoint-enforced dollar limit. Missing/uncertain execution or usage keeps entire reservation and stops all further spending.",
+  "account_billing": false,
+  "previous_scrapyard_estimate_usd_excluded": 0.174851
+}

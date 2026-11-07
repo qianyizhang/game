@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="neris-weir-panel">
+    <defs>
+      <linearGradient id="neris-ceramic" x1="0.15" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="#f2e3c9"/>
+        <stop offset="0.5" stop-color="#d8c8a9"/>
+        <stop offset="1" stop-color="#9da99b"/>
+      </linearGradient>
+      <linearGradient id="neris-water" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#477d79"/>
+        <stop offset="0.5" stop-color="#6dbfb0"/>
+        <stop offset="1" stop-color="#a2d1c4"/>
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c"/>
+    <path d="M51 290 Q223 273 430 290 L420 301 L72 301Z" fill="#14292f"/>
+    <path d="M70 242 L89 112 Q100 52 152 44 Q200 36 249 61 Q307 88 359 91 Q402 93 407 119 L415 250 Q413 276 391 279 L82 277Z" fill="#6c756b"/>
+    <path d="M56 239 L74 111 Q85 51 137 43 Q185 35 234 60 Q292 87 344 90 Q387 92 392 118 L400 248 Q398 269 379 270 L80 269 Q50 270 56 239Z M133 102 L130 221 Q129 235 142 236 L155 234 Q165 231 165 218 L170 100 Q170 84 156 84 L148 84 Q134 85 133 102Z M205 131 L204 230 L269 235 L273 128 Q274 116 260 115 L225 116 Q207 117 205 131Z M310 162 L307 231 Q307 243 321 243 L333 240 Q343 239 344 226 L348 157 Q348 144 335 145 L324 146 Q311 148 310 162Z" fill="url(#neris-ceramic)" fill-rule="evenodd"/>
+    <path d="M133 102 Q134 85 148 84 L156 84 Q170 84 170 100 L165 218 Q165 231 155 234 L142 236 L149 223 L151 111 Q151 94 139 99Z M205 131 Q207 117 225 116 L260 115 Q274 116 273 128 L269 235 L253 230 L257 139 Q257 126 241 125 L222 126 L219 218 L204 230Z M310 162 Q311 148 324 146 L335 145 Q348 144 348 157 L344 226 Q343 239 333 240 L321 243 L328 228 L332 167 Q333 154 321 159Z" fill="#74796b"/>
+    <path d="M132 105 L131 221 Q129 236 142 236 L155 234 M204 136 L204 229 M308 168 L307 231 Q307 244 321 243" fill="none" stroke="#f0dfbf" stroke-width="3"/>
+    <path d="M56 239 L66 178 Q77 159 85 170 L120 192 L118 230 Q119 248 140 249 L158 247 Q178 245 178 225 L179 213 L195 220 L194 247 L279 253 L282 221 L297 221 L296 235 Q297 253 319 254 L336 252 Q357 249 357 231 L357 220 L397 220 L400 248 Q398 269 379 270 L80 269 Q50 270 56 239Z" fill="#75a99f" opacity="0.35"/>
+    <path d="M84 93 Q104 56 143 53 Q161 51 163 56 Q126 68 107 92 Q96 109 90 110 Q81 111 84 93Z M177 51 Q208 56 238 70 Q292 94 344 98 Q373 99 383 112 Q337 103 306 104 Q272 98 234 80 Q197 61 177 59Z" fill="#fff0d8" opacity="0.8"/>
+    <path d="M79 184 L72 240 Q71 251 77 253" fill="none" stroke="#e0d6b6" stroke-width="4" stroke-linecap="round"/>
+    <path d="M204 197 Q222 181 245 194 Q270 205 283 242 Q292 269 319 290 L246 290 Q234 276 228 253 Q217 221 204 209Z" fill="#477d79"/>
+    <path d="M207 195 Q228 185 246 199 Q267 214 278 244 Q290 277 309 288 Q276 296 249 286 Q239 271 233 247 Q225 216 207 207Z" fill="url(#neris-water)"/>
+    <path d="M209 201 Q231 201 250 218 Q263 235 270 255 Q278 278 293 286 Q268 282 256 265 L239 226Z" fill="#a5d6cb" opacity="0.55"/>
+    <path d="M208 207 Q235 222 259 218 M238 244 Q246 273 260 284 M274 254 Q283 278 300 286" fill="none" stroke="#c1e3d5" stroke-width="2.5"/>
+    <path d="M220 196 Q230 193 239 199" fill="none" stroke="#6dbfb0" stroke-width="3"/>
+    <g id="neris-feet">
+      <path d="M61 257 L76 245 L120 245 L135 290 L127 297 L47 295Z" fill="#34464b"/>
+      <path d="M61 257 L76 245 L120 245 L113 253 L83 254 L66 292 L47 295Z" fill="#697675"/>
+      <path d="M83 254 L113 253 L127 291 L70 291Z" fill="#455456"/>
+      <ellipse cx="99" cy="264" rx="10" ry="11" fill="#263b40"/>
+      <ellipse cx="97" cy="261" rx="8" ry="9" fill="#b7b5a0"/>
+      <path d="M352 251 L365 244 L392 245 L411 292 L402 296 L335 294Z" fill="#34464b"/>
+      <path d="M352 251 L365 244 L392 245 L385 252 L365 254 L352 291 L335 294Z" fill="#697675"/>
+      <path d="M365 254 L385 252 L402 290 L357 291Z" fill="#455456"/>
+      <ellipse cx="376" cy="263" rx="9" ry="10" fill="#263b40"/>
+      <ellipse cx="374" cy="260" rx="7" ry="8" fill="#b7b5a0"/>
+    </g>
+  </g>
+
+  </svg>

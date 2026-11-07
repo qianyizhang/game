@@ -1,0 +1,192 @@
+{
+  "base_commit": "5e26f4aace8c151a15122f6a62195b81b9a39c7e",
+  "branch": "art/refinement-candidates-2026-11-06",
+  "raw_api_originals": [
+    {
+      "path": "blindside-materials/api-original.svg.gz",
+      "compressed_sha256": "1dae69a24b8178561a71565f87d051f0277af6bb6204a759bc3b8b41c5ed6ff6",
+      "decoded_sha256": "c12541cc16e5d34751bbd6927f8617e038b6d09bbd878ce510bcd1b88411dd10"
+    },
+    {
+      "path": "hearth-wolves/api-original.svg.gz",
+      "compressed_sha256": "09c66e7dff4c2b849e217f54865de3fbd304f29644d794eb20d1304460d68f15",
+      "decoded_sha256": "7ae3c0f87b56ae9c07f34eb0a49df75307522d2dd49145cc53f882f758d7c5c7"
+    },
+    {
+      "path": "cartographer-relics/api-original.svg.gz",
+      "compressed_sha256": "4ffcd8f704c4c4bb59b7054f600719dde101c8321b5dd08e2861ca0e552067db",
+      "decoded_sha256": "eb0a657fee2bf5887d19d30da90bdc5ae7f1aa87c5fab8d111da480457151d59"
+    },
+    {
+      "path": "spire-heavyblade-revision/api-original.svg.gz",
+      "compressed_sha256": "c8ce3e4d196bf534d52d64972889afd0f1f5a933d30b7e64fceab0f5f7a16e0a",
+      "decoded_sha256": "e761e5011f3c384144601fcd0a898bf0d3f6ee7f552e1d6c04a9e16d0a5a7f4e"
+    },
+    {
+      "path": "spire-swords/api-original.svg.gz",
+      "compressed_sha256": "6b9fb8a4e0363573568a35d0492edebba2ef16b0387c2dab5a09df38b7e9edee",
+      "decoded_sha256": "db462bb8136e55bea40bd93f45e467e93d5d377a9bb4cd296f9463e9617f30bc"
+    },
+    {
+      "path": "emberwake-backpack/api-original.svg.gz",
+      "compressed_sha256": "4e99412e720dd64c970f4086e9b1c2b1adb434f2cd8e517cd1284211334e8731",
+      "decoded_sha256": "a9cd8979afd9d956686d9afebad6b7d9dfbc6303a123c34a6914832277b55d65"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "src/games/battlegrounds/ui/CreatureIllustrations.tsx",
+      "sha256": "4bb6e01c76328d7a19eeed4e651a20163fcd9deb9c7ef127ef5e71facaef108e"
+    },
+    {
+      "path": "src/games/battlegrounds/ui/MinionArt.tsx",
+      "sha256": "b6588728ae62f7147b72eae02c98370e01413e7f9fb6284faa1b68a08c286ea7"
+    },
+    {
+      "path": "src/games/battlegrounds/content/minions.ts",
+      "sha256": "f9f1a3481b0aef24ce83f02578c71bff7412e5bf28f56aa1c22cbc2468ac5ac5"
+    },
+    {
+      "path": "src/games/spire/ui/art/ironclad.tsx",
+      "sha256": "bf98619eb32bcac0377964db90b11a15ea6b696ec4c1ef9301f313155b6e611d"
+    },
+    {
+      "path": "src/games/spire/ui/art/primitives.tsx",
+      "sha256": "da6722f045ed76beaa60e729fa82a9245b0c421b6892974c04f0868f2065f1f2"
+    },
+    {
+      "path": "src/games/spire/ui/AbilityArt.tsx",
+      "sha256": "1422540053d41179be367a2a8d34013e9d95e965597f48e4a5462cc0b97f2eb3"
+    },
+    {
+      "path": "src/games/spire/content/cards.ts",
+      "sha256": "832bc5b3296ac0850de63e49311e6e1410cc41179f75fb5677084df5c8e24752"
+    },
+    {
+      "path": "src/games/cartographer/domain/content.ts",
+      "sha256": "ae296e58c3c035a0dbce91b3fd747aae65423780b6efc8d0c006baf8ade8ea36"
+    },
+    {
+      "path": "src/games/cartographer/ui/ExpeditionChoice.tsx",
+      "sha256": "6056900d9a228f8a77afb6baf7bf1a1c05d87c8f9345b4ae77a8faaeae157c09"
+    },
+    {
+      "path": "src/games/cartographer/ui/CartographerApp.tsx",
+      "sha256": "a0cee20c5f72fee4fe274baa08c6f8150f381e02168ff708fbe3a8166edb3d47"
+    },
+    {
+      "path": "packages/diablo2/src/ui/CharacterPanels.tsx",
+      "sha256": "a7358541195074f619f5b2be19617d03697a2c7e4bbd84d9c6c7a4c896b24436"
+    },
+    {
+      "path": "packages/diablo2/src/ui/styles.css",
+      "sha256": "41e5e8359ff2e1eb890bce5de9ecf4d3a677e4979f9b87fef6296312f5cc8da1"
+    },
+    {
+      "path": "src/games/balatro/ui/art/consumables.tsx",
+      "sha256": "ea37547eddb61e7291b87ab5dcb9a6c1871d3c411498aaa4bf87cfb3dfa69450"
+    },
+    {
+      "path": "src/games/balatro/content/consumables.ts",
+      "sha256": "e44cc635fbc82d2404b620d950e1c847622324f009e4dfdcd43bcebc1a9d035f"
+    }
+  ],
+  "review_sheets": [
+    {
+      "path": "blindside-materials/sheet.svg",
+      "bytes": 6202,
+      "sha256": "54d04aa757410804ea9cfa67fa3fd6ee9744fe05b9c4bc115c3364ec00cf1617"
+    },
+    {
+      "path": "hearth-wolves/sheet.svg",
+      "bytes": 14299,
+      "sha256": "28e0aa054189dfbadf945e78eb8351d3c45c95cd7d741ff7903d53954320ab89"
+    },
+    {
+      "path": "cartographer-relics/sheet.svg",
+      "bytes": 9785,
+      "sha256": "eb0a657fee2bf5887d19d30da90bdc5ae7f1aa87c5fab8d111da480457151d59"
+    },
+    {
+      "path": "spire-heavyblade-revision/sheet.svg",
+      "bytes": 8929,
+      "sha256": "86722b99a1bf55830a3aa3bfad6b3e9782fb010b31d4109443cd85731703cca3"
+    },
+    {
+      "path": "spire-swords/sheet.svg",
+      "bytes": 17882,
+      "sha256": "db462bb8136e55bea40bd93f45e467e93d5d377a9bb4cd296f9463e9617f30bc"
+    },
+    {
+      "path": "emberwake-backpack/sheet.svg",
+      "bytes": 4039,
+      "sha256": "a9cd8979afd9d956686d9afebad6b7d9dfbc6303a123c34a6914832277b55d65"
+    }
+  ],
+  "current_exports": [
+    {
+      "path": "blindside-materials/current/mirror.svg",
+      "sha256": "7f1fdb81a08d6fe819e0ac580f8501347a92b06c441b46352ef018fa40410351"
+    },
+    {
+      "path": "blindside-materials/current/anvil.svg",
+      "sha256": "365ef9d5ede02cde2647c3f045136eb3261730993121d6fbc698a32925c656ef"
+    },
+    {
+      "path": "blindside-materials/current/lantern.svg",
+      "sha256": "bdf8d1a4c7970140e23921b6447c6ea773d5548600139d6b1539f810c8ff0a46"
+    },
+    {
+      "path": "hearth-wolves/current/stray-alert.svg",
+      "sha256": "a6ef155ae06f191bb357058d4fea1c37f87eed8cce8b62d1a57ff0d3b1912953"
+    },
+    {
+      "path": "hearth-wolves/current/wolf-guardian.svg",
+      "sha256": "8c49888dded632dd21731d12297d15b1eae50a96e9fc16fd56eae035453ec2e1"
+    },
+    {
+      "path": "hearth-wolves/current/leader-calling.svg",
+      "sha256": "ec37527411c49808a8f116e088b1e9431320978d2e531a61c07d8c0cae35a09e"
+    },
+    {
+      "path": "spire-heavyblade-revision/current/heavyBlade-base-refined.svg",
+      "sha256": "5ef4df81651abbfbb49a56536a75dc76e00cdeb5c0e0834e556a9b5d8df2f43f"
+    },
+    {
+      "path": "spire-heavyblade-revision/current/heavyBlade-upgraded-refined.svg",
+      "sha256": "a211d8a30835556115b89c27f7d8a1dcd6a5c73ee8082acf65eac8e1f7d61a64"
+    },
+    {
+      "path": "spire-swords/current/heavyBlade-upgraded.svg",
+      "sha256": "a211d8a30835556115b89c27f7d8a1dcd6a5c73ee8082acf65eac8e1f7d61a64"
+    },
+    {
+      "path": "spire-swords/current/ironWave-base.svg",
+      "sha256": "534197207431e8858bcac825e1d440c49fd3f85edd71364938d822e0095330ce"
+    },
+    {
+      "path": "spire-swords/current/ironWave-upgraded.svg",
+      "sha256": "92be7be6ef61d27222aa6819816b5f25f65a46099dcb7d7615eece75bd3070ea"
+    },
+    {
+      "path": "spire-swords/current/heavyBlade-base.svg",
+      "sha256": "5ef4df81651abbfbb49a56536a75dc76e00cdeb5c0e0834e556a9b5d8df2f43f"
+    },
+    {
+      "path": "spire-swords/current/cleave-base.svg",
+      "sha256": "7099235006face3f0b270b7e8c199df43d2a00fdada8c7fcbfee7c69c45676cb"
+    },
+    {
+      "path": "spire-swords/current/cleave-upgraded.svg",
+      "sha256": "51e818adb0046c26df67dd989cecbd55e9d54398e6d32f113878b929f79cba20"
+    }
+  ],
+  "scope_reconciliation": "Spire Strike/Cleave/Pommel Strike prompt was an unsent draft. Follow-up Cleave/Heavy Blade/Iron Wave scope arrived before any Spire call and is the exact sent request. No duplicate or cancelled paid Spire request.",
+  "issue_review": "Read open repository issues and targeted searches before spending. No issue specifically owns wolf-pose, sword-trio, relic, backpack-category or these consumable material candidates. #57 concerns a different six-action family; #115 is Backflip; #123 scissors; prior Scrapyard scopes and accepted art stay unchanged. No issue created, rewritten or closed.",
+  "runtime_changes": false,
+  "published": false,
+  "reviewer": "author self-review",
+  "credential": "Existing authorized environment network binding, sent only to verified https://api.openai.com/v1/images/generations through inherited HTTPS proxy and TLS verification. No secret values retained.",
+  "rejected_attempts": "Original Heavy Blade cells held for unsupported/crowded arm connections. All remain in original sheet/extracted cells and review index. Their usage is counted. Targeted revision is separate, no automatic retry.",
+  "preservation": "All original sheets, exact sent prompts, unsent prompt draft, settings, usage, candidates and unique review states retained. Existing task script helpers remain in the durable ignored .artifacts/refinement-2026-11-06 bundle."
+}

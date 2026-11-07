@@ -1,0 +1,53 @@
+[
+  {
+    "id": "lantern",
+    "file": "lantern.svg",
+    "source": "sheet.svg",
+    "source_sha256": "54d04aa757410804ea9cfa67fa3fd6ee9744fe05b9c4bc115c3364ec00cf1617",
+    "source_group": "lantern",
+    "removed_transform": "translate(0 0)",
+    "width": 560,
+    "height": 392,
+    "sha256": "772c31acc8084b5158d0973b5650a026daa3e722b913ad101a83de9225928d22",
+    "bytes": 2812,
+    "paths": 24,
+    "state": "unreviewed_candidate",
+    "api_original": "api-original.svg.gz",
+    "api_original_decoded_sha256": "c12541cc16e5d34751bbd6927f8617e038b6d09bbd878ce510bcd1b88411dd10",
+    "source_note": "Review source differs from API original only by removal of end-of-line whitespace. All vectors and decoded pixels unchanged."
+  },
+  {
+    "id": "mirror",
+    "file": "mirror.svg",
+    "source": "sheet.svg",
+    "source_sha256": "54d04aa757410804ea9cfa67fa3fd6ee9744fe05b9c4bc115c3364ec00cf1617",
+    "source_group": "mirror",
+    "removed_transform": "translate(560 0)",
+    "width": 560,
+    "height": 392,
+    "sha256": "79b7188159f646e206dd0bdf6e3db5e7f82fc933ab41ded10ecd9d2203d6c9ad",
+    "bytes": 1252,
+    "paths": 6,
+    "state": "unreviewed_candidate",
+    "api_original": "api-original.svg.gz",
+    "api_original_decoded_sha256": "c12541cc16e5d34751bbd6927f8617e038b6d09bbd878ce510bcd1b88411dd10",
+    "source_note": "Review source differs from API original only by removal of end-of-line whitespace. All vectors and decoded pixels unchanged."
+  },
+  {
+    "id": "anvil",
+    "file": "anvil.svg",
+    "source": "sheet.svg",
+    "source_sha256": "54d04aa757410804ea9cfa67fa3fd6ee9744fe05b9c4bc115c3364ec00cf1617",
+    "source_group": "anvil",
+    "removed_transform": "translate(0 392)",
+    "width": 560,
+    "height": 392,
+    "sha256": "088db94a3c2eef796662933d8097099a57b4e5307b0b5f7fcab4d078ec476981",
+    "bytes": 2387,
+    "paths": 14,
+    "state": "unreviewed_candidate",
+    "api_original": "api-original.svg.gz",
+    "api_original_decoded_sha256": "c12541cc16e5d34751bbd6927f8617e038b6d09bbd878ce510bcd1b88411dd10",
+    "source_note": "Review source differs from API original only by removal of end-of-line whitespace. All vectors and decoded pixels unchanged."
+  }
+]

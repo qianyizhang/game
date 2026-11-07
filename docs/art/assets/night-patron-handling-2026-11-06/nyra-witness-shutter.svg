@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="nyra-witness-shutter">
+    <defs>
+      <linearGradient id="nyra-metal" x1="0" y1="0" x2="0.8" y2="1">
+        <stop offset="0" stop-color="#a18cb8"/>
+        <stop offset="0.45" stop-color="#88788b"/>
+        <stop offset="1" stop-color="#5f5866"/>
+      </linearGradient>
+      <linearGradient id="nyra-track" x1="0" y1="0" x2="0.65" y2="1">
+        <stop offset="0" stop-color="#95a6aa"/>
+        <stop offset="0.3" stop-color="#566366"/>
+        <stop offset="1" stop-color="#293b40"/>
+      </linearGradient>
+      <linearGradient id="nyra-wafer" x1="0" y1="0" x2="1" y2="0.6">
+        <stop offset="0" stop-color="#ead7b5"/>
+        <stop offset="0.6" stop-color="#d9c7a7"/>
+        <stop offset="1" stop-color="#abac9c"/>
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c"/>
+    <path d="M41 285 Q241 272 439 284 L437 298 L47 299Z" fill="#14292f"/>
+    <g id="nyra-track-structure">
+      <path d="M57 81 L79 77 L79 263 L58 271Z M398 79 L420 84 L421 268 L397 263Z" fill="#293b40"/>
+      <path d="M57 81 L65 83 L65 261 L58 271Z M398 79 L406 83 L407 263 L397 263Z" fill="#667779"/>
+      <path d="M54 68 L421 68 L431 79 L421 98 L58 98 L48 86Z" fill="#293b40"/>
+      <path d="M54 63 L419 63 L430 73 L420 91 L58 91 L48 79Z" fill="url(#nyra-track)"/>
+      <path d="M75 66 L401 66" fill="none" stroke="#b5bbb0" stroke-width="3"/>
+      <path d="M73 82 L398 82" fill="none" stroke="#182c32" stroke-width="9"/>
+      <path d="M63 254 L414 254 L425 266 L419 281 L55 281 L48 270Z" fill="#293b40"/>
+      <path d="M61 250 L412 250 L422 261 L414 274 L56 274 L48 264Z" fill="url(#nyra-track)"/>
+      <path d="M71 255 L402 255" fill="none" stroke="#152c33" stroke-width="7"/>
+      <path d="M66 269 L406 269" fill="none" stroke="#95a6aa" stroke-width="2"/>
+    </g>
+    <path d="M302 121 Q340 105 370 129 Q391 146 389 182 Q388 218 369 234 Q345 248 315 237Z" fill="#5e625b"/>
+    <path d="M299 116 Q337 100 367 124 Q388 141 386 177 Q385 213 366 229 Q342 243 312 232Z" fill="url(#nyra-wafer)" stroke="#a9a78f" stroke-width="3"/>
+    <path d="M322 121 Q345 117 363 132 Q377 145 377 164 Q357 183 340 217 Q328 230 317 229Z" fill="#f5e7cc"/>
+    <path d="M366 132 Q377 143 378 157" fill="none" stroke="#fff0d7" stroke-width="3"/>
+    <g id="nyra-sliding-panels">
+      <path d="M82 103 Q72 103 68 115 Q53 164 48 245 L181 245 Q185 165 208 107 L202 101Z" fill="#323b43"/>
+      <path d="M84 98 Q74 98 70 110 Q55 159 50 240 L176 240 Q180 160 203 102 L197 97Z" fill="url(#nyra-metal)" stroke="#625a68" stroke-width="2"/>
+      <path d="M84 101 L193 100 Q183 118 178 137 Q119 139 68 174 Q72 131 84 101Z" fill="#b19eaf" opacity="0.4"/>
+      <path d="M70 113 Q56 169 53 235 M86 99 L195 99" fill="none" stroke="#bba9b8" stroke-width="2"/>
+      <path d="M195 103 L292 102 Q278 161 276 245 L168 245 Q173 166 191 111Z" fill="#323b43"/>
+      <path d="M192 98 L288 97 Q274 156 272 240 L166 240 Q171 161 189 106Z" fill="url(#nyra-metal)" stroke="#625a68" stroke-width="2"/>
+      <path d="M194 101 L284 100 L273 135 Q215 145 180 174 Q184 125 194 101Z" fill="#b19eaf" opacity="0.4"/>
+      <path d="M191 108 Q174 168 169 236 M195 99 L282 99" fill="none" stroke="#bba9b8" stroke-width="2"/>
+      <path d="M281 103 L345 103 Q322 167 326 245 L264 245 Q266 167 281 103Z" fill="#323b43"/>
+      <path d="M277 98 L340 98 Q317 162 321 240 L259 240 Q261 162 277 98Z" fill="url(#nyra-metal)" stroke="#625a68" stroke-width="2"/>
+      <path d="M280 101 L336 101 L324 137 Q289 149 269 169 Q273 123 280 101Z" fill="#b19eaf" opacity="0.4"/>
+      <path d="M279 104 Q265 169 262 236 M282 99 L334 99" fill="none" stroke="#bba9b8" stroke-width="2"/>
+    </g>
+    <path d="M322 98 L355 98 Q360 98 360 104 L359 110 L334 110Z" fill="#566366" stroke="#788184" stroke-width="2"/>
+    <g id="nyra-carriages">
+      <path d="M158 77 Q162 73 174 73 L190 73 L196 82 L186 108 L151 108 L150 99Z" fill="#293b40"/>
+      <path d="M154 73 Q158 69 170 69 L186 69 L191 78 L182 103 L147 103 L146 94Z" fill="url(#nyra-track)" stroke="#929799" stroke-width="1.5"/>
+      <path d="M153 75 L183 75 L178 84 L150 84Z" fill="#a69c9c"/>
+      <ellipse cx="163" cy="91" rx="9" ry="8" fill="#293b40"/>
+      <ellipse cx="162" cy="88" rx="7" ry="7" fill="#b5b5a2"/>
+      <path d="M271 77 Q275 73 287 73 L303 73 L309 82 L299 108 L264 108 L263 99Z" fill="#293b40"/>
+      <path d="M267 73 Q271 69 283 69 L299 69 L304 78 L295 103 L260 103 L259 94Z" fill="url(#nyra-track)" stroke="#929799" stroke-width="1.5"/>
+      <path d="M266 75 L296 75 L291 84 L263 84Z" fill="#a69c9c"/>
+      <ellipse cx="276" cy="91" rx="9" ry="8" fill="#293b40"/>
+      <ellipse cx="275" cy="88" rx="7" ry="7" fill="#b5b5a2"/>
+    </g>
+    <g id="nyra-stops">
+      <path d="M48 65 Q48 57 57 57 L78 57 L83 62 L83 88 L77 93 L47 93Z M404 58 L424 58 Q434 58 434 68 L434 88 L428 94 L403 92 L398 86 L398 65Z" fill="url(#nyra-track)" stroke="#7e8988" stroke-width="2"/>
+      <circle cx="65" cy="74" r="9" fill="#293b40"/>
+      <circle cx="64" cy="71" r="7" fill="#b5b5a2"/>
+      <circle cx="418" cy="74" r="9" fill="#293b40"/>
+      <circle cx="417" cy="71" r="7" fill="#b5b5a2"/>
+      <path d="M43 237 L72 237 L78 244 L77 273 L43 273Z M398 238 L428 238 L435 244 L434 273 L398 273Z" fill="url(#nyra-track)" stroke="#7e8988" stroke-width="2"/>
+      <circle cx="59" cy="252" r="8" fill="#293b40"/>
+      <circle cx="58" cy="249" r="6" fill="#b5b5a2"/>
+      <circle cx="417" cy="252" r="8" fill="#293b40"/>
+      <circle cx="416" cy="249" r="6" fill="#b5b5a2"/>
+      <path d="M40 271 L72 271 L80 279 L82 290 L33 290 L34 280Z M395 271 L431 271 L439 281 L440 291 L387 291 L389 280Z" fill="#566366"/>
+      <path d="M40 271 L72 271 L80 279 L35 279Z M395 271 L431 271 L439 281 L389 281Z" fill="#7e8988"/>
+      <path d="M139 235 L158 235 L162 239 L161 262 L137 262 L135 258 L135 239Z" fill="#566366" stroke="#9aa3a0" stroke-width="2"/>
+    </g>
+  </g>
+
+  </svg>
