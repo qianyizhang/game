@@ -1,0 +1,96 @@
+{
+  "technical": {
+    "svg_safety": "Both SVGs pass repository validation; no forbidden resources or parse errors.",
+    "viewBox": "0 0 1024 720",
+    "paths": {
+      "original": 82,
+      "connected_derivative": 85
+    },
+    "geometry_bounds": [64, 53.714714, 960, 666],
+    "safe_margin_exception": "Antenna reaches y=53.714714, 0.285286px above requested y=54; all paint remains inside canvas. No crop or source rewrite.",
+    "soft_path_target_exception": "82 original paths exceed the suggested 40-65 soft target; retained as useful drawing, not a hard API/test limit.",
+    "background": "API metadata says transparent; actual original has a full opaque #172928 rectangle."
+  },
+  "repair": {
+    "only_change": "one group with three cervical paths added; all original nodes/attributes unchanged",
+    "pixel_change_bbox": [695, 147, 731, 182],
+    "original_head_connected": false,
+    "derivative_head_connected": true,
+    "connectivity_method": "4-neighbor non-background pixel components in 1024x720 Chromium render, threshold max RGB distance >3; seeds (690,168), (730,143)"
+  },
+  "visual_self_review": {
+    "original": "HOLD: visible head/prothorax gap; useful elongated silhouette but not accepted unchanged.",
+    "connected_derivative": "Useful normal source candidate after adding the cervical connection. Six leg roots/segments, unequal forelegs, triangular head, two antennae and twig support reviewed at 1024x720, 160x112, 80x56 and 64x45.",
+    "compact_limits": "Fine tarsal and antenna detail reduces at 64x45; the long body, triangular head and unequal forelegs remain recognizable.",
+    "reuse_comparison": "Matched actual-renderer Copper Beetle/Moon Moth comparison supports distinct long narrow diagonal contour; original assets remain untouched.",
+    "acceptance": "Author self-review only; no user adoption, runtime fit or complete family acceptance."
+  },
+  "retained_review": {
+    "file": "review.png",
+    "unoptimized_bytes": 161039,
+    "retained_bytes": 158962,
+    "dimensions": [1170, 950],
+    "mode": "RGB",
+    "decoded_pixels_equal": true,
+    "alpha_color_metadata_equal": true,
+    "sha256": "31aa4bbaf9f4acf430d815a90ac499ad8e18c5ff4f266b1643bd0e67dbba6165"
+  },
+  "limits": "Four canonical source revisions: exact normal/ascended originals held, two distinct manual anatomy derivatives self-reviewed. User acceptance/runtime compatibility remain independent, no default change.",
+  "verification": {
+    "format_maintenance": "Passed; pinned Node 24.21.0/npm 11.19.0; 901 managed sources, no errors.",
+    "isolated_history": "Final family import and verify passed in disposable Git clone: 709 assets, 96 revisions, zero selections, 709 source registrations. Four staged family revisions validated; source branch registry unchanged.",
+    "isolated_gallery": "Final four-revision family: all previews decoded; exact normal payload, both usage records, client trace, both parent links and disabled source mutation controls verified in existing history UI at 1440/390px; zero page errors. Art visually inspected at native/compact sizes.",
+    "preview_transport": "Chromium blocked file:// navigation with ERR_BLOCKED_BY_ADMINISTRATOR; normal supported localhost HTTP preview succeeded. No browser policy/TLS flags changed.",
+    "scope": "No runtime/game source, shared registry, defaults or frozen branch change. Hosted CI is reported in the draft PR.",
+    "preservation_exception": "git diff --check reports inherited whitespace-only lines in the exact returned SVG and its derivative. Preserve original API bytes rather than normalize artwork solely for that diagnostic; formatter/maintenance gates pass."
+  },
+  "ascended": {
+    "technical": {
+      "svg_safety": "Both original and authored derivative pass repository validator; native static paths, no forbidden resources.",
+      "viewBox": "0 0 1024 720",
+      "paths": {
+        "original": 113,
+        "derivative": 111
+      },
+      "geometry_bounds": {
+        "minX": 64,
+        "minY": 54.56541061401367,
+        "maxX": 958,
+        "maxY": 666
+      },
+      "viewport_and_requested_safe_margins": "passed",
+      "soft_path_target_exception": "113 original/111 derivative paths exceed the suggested 55-85 soft target; not a hard API/QA limit."
+    },
+    "repair": {
+      "only_changes": "Remove five paths of the extra fifth walking-leg chain, add one three-path cervical group. Every remaining original node/attribute unchanged.",
+      "removed_path_starts": ["M413 352", "M280 461", "M278 478", "M239 571", "M245 576"],
+      "pixel_change_bbox": [223, 163, 680, 588],
+      "changed_pixels_outside_neck_and_removed_leg_regions": 0,
+      "original_head_connected": false,
+      "derivative_head_connected": true,
+      "connectivity_method": "4-neighbor non-background RGB pixels, threshold >3, seeds (640,205)/(680,150) on 1024x720 Chromium captures"
+    },
+    "visual_self_review": {
+      "original": "HOLD: neck gap and an extra fifth walking-leg chain, despite a useful changed gesture.",
+      "derivative": "Useful ascended source candidate after cervical bridge and extra-chain removal. Four walking feet grip the two branch levels, two unequal raptorial forelegs and two head-rooted antennae; head/body connected.",
+      "family": "Consistent sage/leaf chitin, ivory upper-left planes, restrained ochre joints and triangular head. Ascended changes body lean, raised claw, forked support and asymmetric opened leaf planes. Continuity is textual, not image-referenced.",
+      "limits": "Broad ascended wing-cover stylization and finer details at 64x45 remain author-review limits; no user or runtime acceptance."
+    }
+  },
+  "retained_family_review": {
+    "file": "family-review.png",
+    "unoptimized_bytes": 223964,
+    "retained_bytes": 221680,
+    "dimensions": [1170, 950],
+    "mode": "RGB",
+    "decoded_pixels_alpha_and_color_metadata_equal": true,
+    "sha256": "45aec80ebb634d80c43f12351dc7feedbefaa724c4a29ef84e4fc49ce6d98fe6"
+  },
+  "registration": {
+    "handoff_head": "d397234dc052d65395b192520ce9eb27ff4458f8",
+    "source_records": "4 attempts/4 revisions, originals held and two explicit manual parents, no runtime mapping or selections",
+    "transport": "Retired duplicate prepared-history after canonical comparison; README consumer migrated, unique request/call/repair/review facts unchanged.",
+    "gallery": "Actual 4 revisions native/compact/enlarged, all 4 attempts exact payload/call/QA text, held originals and repair parents, disabled Use and six 1440/390/320px × 16/20px layouts passed; no page errors. Historical retained PNG pending-caption remains unchanged; current status in README.",
+    "checks": "format:maintenance and history verify passed. First browser run:2pass, third failed ENOSPC creating temporary fixture; no assertion failure. Freed about5GB by removing9ignored/untracked dist builds, no retained artwork. Failed Scrapyard journey rerun alone passed17.4s at normal limits; initial25.0s run/failure log retained. No assertion or timeout change."
+  }
+}

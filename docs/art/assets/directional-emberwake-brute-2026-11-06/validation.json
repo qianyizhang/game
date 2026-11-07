@@ -1,0 +1,72 @@
+{
+  "source_base": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "authorship": "Assistant-authored native SVG; no returned image API artwork",
+  "api_outcome": {
+    "status": "unknown",
+    "grant": "sprite-brute-03",
+    "elapsed_seconds": 301.04,
+    "error_type": "RemoteDisconnected",
+    "returned_artwork": false,
+    "returned_usage": false,
+    "request_id": null,
+    "reservation_retained_usd": 3,
+    "released_usd": 0,
+    "retry": false
+  },
+  "native_visible_px": {
+    "demon-se": [28.1, 37.5],
+    "demon-sw": [27.1, 37.4],
+    "demon-ne": [28.1, 37.5],
+    "demon-nw": [28.1, 37.5]
+  },
+  "source_document_count": 6,
+  "sheet_paths": 225,
+  "manual_sheet_agreement": {
+    "pixel_identical_views": 4,
+    "total": 4,
+    "path_geometry": "Standalone groups and combined sheet retain the same paths/paints; only outer translations differ"
+  },
+  "transparent_margin": "4/4 cells have no paint in outer 10px boundary",
+  "review": "Author self-review: coherent physical melee quarters, consistent long-left/short-right horns and right-hand cleaver, distinct front face/chest vs rear skull/back. Shoulder yaw/cleaver foreshortening remain stylized; user approval unrecorded.",
+  "frames": "4 current static quarters, 1 preserved construction state, 1 combined sheet derivative;0 animation frames",
+  "checks": {
+    "svg_safety": "6/6 documents validate as sized static vectors; no embedded raster, visible text, scripts or external resources.",
+    "gallery": {
+      "isolated_import": {
+        "assets": 0,
+        "revisions": 6,
+        "selections": 0
+      },
+      "revision_cards": 6,
+      "attempts": 2,
+      "all_nonselectable": true,
+      "manual_records_and_parents_inspected": true,
+      "unknown_request_and_receipt_inspected_without_image_revision": true,
+      "all_sources_decoded": true,
+      "page_errors": []
+    },
+    "preview": "Desktop1220px and phone390px; all12 current-view images decode, phone overflow0px. Inferno/crypt backgrounds for native readability.",
+    "maintenance": "Final format:maintenance and shared assets:history verify results reported in PR/handoff; current-main game/registry/selection files stay unchanged.",
+    "runtime": "unchanged; no enemy facing field, shared selection, exact-ID adoption, boss/mod fallback or compatibility change",
+    "body_continuity_alpha_at_190_200": {
+      "se": 255,
+      "sw": 255,
+      "ne": 255,
+      "nw": 255
+    },
+    "browser_engine": "Chromium 154.0.8037.57",
+    "review_png_lossless_optimization": {
+      "original_bytes": 232457,
+      "optimized_bytes": 224201,
+      "uncompressed_pixel_stream_and_non_IDAT_chunks": "identical",
+      "applied": true
+    }
+  },
+  "publication": "Source-only draft with canonical registration; no first-suite dependency, runtime mapping or game adoption.",
+  "registration": {
+    "handoff_head": "3db093b8405c71ed63e7def1832b9ece82ca5433",
+    "sources": "2 attempts/6 revisions; unknown paid call has no output, six SVGs belong to independent manual authoring. No runtime mapping or selections.",
+    "transport": "Retired duplicate history-import after exact canonical comparison and two consumer migrations; exact art/request/receipt/budget bytes preserved.",
+    "gallery": "Actual six revisions and two attempts, exact request/receipt/budget/authoring text and parents; native/compact/enlarged, disabled Use and six 1440/390/320px ×16/20px layouts passed without page errors. Historical overview caption unchanged; current README/HTML own registration status."
+  }
+}

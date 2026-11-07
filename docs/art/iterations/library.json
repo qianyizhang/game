@@ -6653,6 +6653,204 @@
       ]
     },
     {
+      "id": "hearth-newt-pair-20261106",
+      "title": "Glasspool Newt normal/ascended pair",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One amended grant, one paid request. Normal useful; exact ascended source held for detached root sliver.",
+      "files": [
+        "docs/art/assets/hearth-glasspool-newt-proposal-2026-11-06/request.json",
+        "docs/art/assets/hearth-glasspool-newt-proposal-2026-11-06/receipt.json",
+        "docs/art/assets/hearth-glasspool-newt-proposal-2026-11-06/README.md",
+        "docs/art/assets/hearth-glasspool-newt-proposal-2026-11-06/qa.json",
+        "docs/art/assets/hearth-glasspool-newt-proposal-2026-11-06/review.png"
+      ]
+    },
+    {
+      "id": "hearth-newt-root-cleanup-20261106",
+      "title": "Glasspool Newt ascended manual support cleanup",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "No paid call; remove only two paths of a detached root sliver. All other nodes/attributes unchanged.",
+      "files": [
+        "docs/art/assets/hearth-glasspool-newt-proposal-2026-11-06/qa.json"
+      ]
+    },
+    {
+      "id": "emberwake-hound-motion-2026-11-06",
+      "title": "Ash hound · four physical-melee key poses",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One native SVG generation call. Usage-derived cost USD 0.113603; active hold USD 0. Four unassigned future motion source concepts, not game-selected; canonically registered as source studies.",
+      "files": [
+        "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/call.json",
+        "docs/art/assets/emberwake-hound-motion-2026-11-06/README.md",
+        "docs/art/assets/emberwake-hound-motion-2026-11-06/validation.json",
+        "docs/art/assets/emberwake-hound-motion-2026-11-06/overview.png"
+      ]
+    },
+    {
+      "id": "emberwake-hound-motion-manual-2026-11-06",
+      "title": "Ash hound · manually fitted motion key poses",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "All four derive from the same returned anticipation master to keep identical skull and body anatomy. Authored separate limb root/knee-elbow/hock-wrist/paw constraints, body/head placement and a continuous neck bridge; removed toe cuts tied to old joints. No paid request. Future motion concepts; visual self-review complete; optional candidates with subtle native launch/contact separation.",
+      "files": [
+        "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/manual-authoring.json"
+      ]
+    },
+    {
+      "id": "emberwake-brute-2026-11-06-image-request-03",
+      "title": "Requested Furnace brute SVG · unknown transport outcome",
+      "date": "2026-11-06",
+      "outcome": "unknown",
+      "notes": "Grant sprite-brute-03: one request, RemoteDisconnected after 301.04 seconds, no artwork/usage/HTTP response/request ID. Full US$3 retained, no retry or release. Requested Sunburst/Terra xhigh; no returned model/output claim. Manual artwork belongs to a separate attempt.",
+      "files": [
+        "docs/art/assets/directional-emberwake-brute-2026-11-06/request.json",
+        "docs/art/assets/directional-emberwake-brute-2026-11-06/budget.json",
+        "docs/art/assets/directional-emberwake-brute-2026-11-06/receipt.json"
+      ]
+    },
+    {
+      "id": "emberwake-brute-2026-11-06-assistant-authoring-01",
+      "title": "Assistant-authored Furnace brute four-quarter native SVG",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "Independent curved vector drawings after the interrupted request. One SE construction preserved, lower-leg support refined, opposite front/rear quarters independently authored with the same anatomy/palette/gear and screen-upper-left light. No further image API call. Self-review candidates; unassigned/nonselectable.",
+      "files": [
+        "docs/art/assets/directional-emberwake-brute-2026-11-06/README.md",
+        "docs/art/assets/directional-emberwake-brute-2026-11-06/baseline.png",
+        "docs/art/assets/directional-emberwake-brute-2026-11-06/validation.json",
+        "docs/art/assets/directional-emberwake-brute-2026-11-06/overview.png"
+      ]
+    },
+    {
+      "id": "emberwake-brute-action-2026-11-06",
+      "title": "Furnace brute SE three-action-pose study",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Exactly one new action-sheet call under sprite-brute-action-16. Manual parent appears as text, not image conditioning. No manual correction; reported usage estimateUSD0.098461. Separate from historical unknown directional request, which remains held and was not retried.",
+      "files": [
+        "docs/art/assets/emberwake-brute-action-2026-11-06/request.json",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/budget.json",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/receipt.json",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/extraction.json",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/validation.json",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/README.md",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/preview.html",
+        "docs/art/assets/emberwake-brute-action-2026-11-06/comparison.png",
+        "docs/art/assets/directional-emberwake-brute-2026-11-06/demon-se.svg"
+      ]
+    },
+    {
+      "id": "hearth-mantis-pilot-20261106",
+      "title": "Briar Mantis normal pilot",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One granted paid call; exact original held for head detachment. Usage/grant in call.json.",
+      "files": [
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/pilot-request.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/call.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/README.md",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/qa.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/review.png"
+      ]
+    },
+    {
+      "id": "hearth-mantis-neck-repair-20261106",
+      "title": "Briar Mantis manual cervical repair",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "No paid request. One three-path group connects head and prothorax; all existing nodes/attributes unchanged.",
+      "files": [
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/qa.json"
+      ]
+    },
+    {
+      "id": "hearth-mantis-ascended-20261106",
+      "title": "Briar Mantis ascended companion",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "One granted paid call; exact original held for head detachment and extra walking leg. Textual family continuity only.",
+      "files": [
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/ascended/request.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/ascended/call.json",
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/family-review.png"
+      ]
+    },
+    {
+      "id": "hearth-mantis-ascended-repair-20261106",
+      "title": "Briar Mantis ascended manual anatomy repair",
+      "date": "2026-11-06",
+      "outcome": "manual",
+      "notes": "No paid call. Removed five extra-leg paths and added three cervical paths; other nodes/attributes unchanged.",
+      "files": [
+        "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/qa.json"
+      ]
+    },
+    {
+      "id": "spire-aftermath-20261106",
+      "title": "Spire aftermath / one native SVG request",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Future source concepts; request, usage, lineage and review: call.json.",
+      "files": [
+        "docs/art/assets/spire-aftermath-source-studies-2026-11-06/call.json",
+        "docs/art/assets/spire-aftermath-source-studies-2026-11-06/README.md",
+        "docs/art/assets/spire-aftermath-source-studies-2026-11-06/contact.png"
+      ]
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling",
+      "title": "Night Passage patron handling · optional future source concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Exact request/settings, returned usage, cost and reviews recorded once in generation.json. Unassigned source concepts; user acceptance pending.",
+      "files": [
+        "docs/art/assets/night-patron-handling-2026-11-06/generation.json",
+        "docs/art/assets/night-patron-handling-2026-11-06/contact.png",
+        "docs/art/assets/night-patron-handling-2026-11-06/README.md",
+        "docs/art/assets/night-patron-handling-2026-11-06/validation.json",
+        "docs/art/assets/night-patron-handling-2026-11-06/concepts.json"
+      ]
+    },
+    {
+      "id": "cartographer-wayfinding-20261106",
+      "title": "Wayfinding fixtures / one native SVG request",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Future source concepts; request, usage, lineage and review: call.json.",
+      "files": [
+        "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/call.json",
+        "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/README.md",
+        "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/contact.png"
+      ]
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "title": "ember-fen-salt-quest · optional future source concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Canonical request, response and outcome in generation.json. No runtime identity or user acceptance.",
+      "files": [
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/generation.json",
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/contact.png",
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/README.md",
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/validation.json",
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/concepts.json"
+      ]
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-bells-furnace-quest",
+      "title": "ember-bells-furnace-quest · optional future source concepts",
+      "date": "2026-11-06",
+      "outcome": "unknown",
+      "notes": "RemoteDisconnected; no output, usage or request ID. US$7 uncertainty retained once; not retried.",
+      "files": [
+        "docs/art/assets/emberwake-quest-objects-2026-11-06/uncertain-bells-furnace/generation.json"
+      ]
+    },
+    {
       "id": "emberwake-directional-2026-11-06-pilot-01",
       "title": "Ash hound and Cinder acolyte directional SVG pilot",
       "date": "2026-11-06",
@@ -7093,6 +7291,27 @@
         "docs/art/assets/hearth-umber-bat-family-2026-11-06/README.md",
         "docs/art/assets/hearth-umber-bat-family-2026-11-06/qa.json",
         "docs/art/assets/hearth-umber-bat-family-2026-11-06/review.png"
+      ]
+    },
+    {
+      "id": "spire-heavy-blade-manual-2026-11-07",
+      "title": "Heavy Blade: hand-authored mass and fitted guards",
+      "date": "2026-11-07",
+      "outcome": "manual",
+      "notes": "Zero API calls. Seven path geometries changed per inherited connected-arm cell; all other paths unchanged. Useful source candidates; no selection, runtime adaptation or aesthetic acceptance. See README for review and checks.",
+      "files": ["docs/art/assets/spire-heavy-blade-manual-2026-11-07/README.md"]
+    },
+    {
+      "id": "manual-semantic-repairs-20261107",
+      "title": "Manual semantic repairs / reflector and torn silk",
+      "date": "2026-11-07",
+      "outcome": "manual",
+      "notes": "Hand-authored source derivatives; original holds unchanged. Briefs, parent digests and review: record.json.",
+      "files": [
+        "docs/art/assets/semantic-hold-repairs-2026-11-07/record.json",
+        "docs/art/assets/semantic-hold-repairs-2026-11-07/README.md",
+        "docs/art/assets/semantic-hold-repairs-2026-11-07/reflector-comparison.png",
+        "docs/art/assets/semantic-hold-repairs-2026-11-07/web-comparison.png"
       ]
     }
   ],
@@ -8200,6 +8419,671 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "hearth-newt-pair-20261106:original",
+      "asset": null,
+      "attempt": "hearth-newt-pair-20261106",
+      "label": "Exact packed API original",
+      "file": "docs/art/assets/hearth-glasspool-newt-proposal-2026-11-06/original.svg",
+      "digest": "d46f29f7ff8444714a5d7832490efb4ba145b669eb3840a3d4091dcfe3800e7e",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Original bytes retained; two 720x512 cells on 1440x512 canvas."
+    },
+    {
+      "id": "hearth-newt-pair-20261106:normal",
+      "asset": null,
+      "attempt": "hearth-newt-pair-20261106",
+      "label": "Glasspool Newt / normal source candidate",
+      "file": "docs/art/assets/hearth-glasspool-newt-proposal-2026-11-06/newt-normal.svg",
+      "digest": "e27f47c8d6023e0e28977a757f14c64529935508c32cabc698ea6722b5520a98",
+      "parents": ["hearth-newt-pair-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 1: remove translate(0 0); preserve geometry, paint and root attributes, set 720x512 viewBox."
+    },
+    {
+      "id": "hearth-newt-pair-20261106:ascended",
+      "asset": null,
+      "attempt": "hearth-newt-pair-20261106",
+      "label": "Glasspool Newt / exact ascended extraction / support hold",
+      "file": "docs/art/assets/hearth-glasspool-newt-proposal-2026-11-06/newt-ascended.svg",
+      "digest": "1f23ec1b078293da51403b1e70ce9a9309231a2223b876a408bbbb007e97014b",
+      "parents": ["hearth-newt-pair-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell 2: remove translate(720 0); preserve geometry/paint/root attributes. Translation-related antialias difference documented."
+    },
+    {
+      "id": "hearth-newt-root-cleanup-20261106:refined",
+      "asset": null,
+      "attempt": "hearth-newt-root-cleanup-20261106",
+      "label": "Glasspool Newt / ascended refined source candidate",
+      "file": "docs/art/assets/hearth-glasspool-newt-proposal-2026-11-06/newt-ascended-refined.svg",
+      "digest": "8c292c8f60027fec00240ec066818ee6696c08ab0f6a8b34b1e986c1da9e559e",
+      "parents": ["hearth-newt-pair-20261106:ascended"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Remove only detached root paths beginning M581 401 and M604 398; every remaining node/attribute unchanged."
+    },
+    {
+      "id": "emberwake-hound-motion-2026-11-06:original",
+      "asset": null,
+      "attempt": "emberwake-hound-motion-2026-11-06",
+      "label": "Ash hound motion · exact generated original",
+      "file": "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/original.svg",
+      "digest": "7cddaf0fe2e5502ffbe203c0bd3d025e64157010f207005ef1f462cac475de30",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Future physical-melee motion concept for exact enemy ID hound. SE/front-quarter, target about 30x24px; no implemented action phase or runtime mapping. Exact original returned SVG, preserved byte-for-byte. Raw sequence held; review: call.json."
+    },
+    {
+      "id": "emberwake-hound-motion-2026-11-06:hound-anticipation",
+      "asset": null,
+      "attempt": "emberwake-hound-motion-2026-11-06",
+      "label": "Ash hound · anticipation · future motion concept · HELD raw",
+      "file": "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/hound-anticipation.svg",
+      "digest": "738412728809e26793ce65abcb7bf9d07f0184eab28bffbf70a5e384256b8c9a",
+      "parents": ["emberwake-hound-motion-2026-11-06:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Future physical-melee motion concept for exact enemy ID hound. SE/front-quarter, target about 30x24px; no implemented action phase or runtime mapping. Extracted from hound-anticipation; only outer sheet translation removed. Held as a motion sequence: launch/contact near-duplicate and weak anticipation loading. Preserved raw output, not promoted."
+    },
+    {
+      "id": "emberwake-hound-motion-2026-11-06:hound-launch",
+      "asset": null,
+      "attempt": "emberwake-hound-motion-2026-11-06",
+      "label": "Ash hound · launch · future motion concept · HELD raw",
+      "file": "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/hound-launch.svg",
+      "digest": "35a100c022636413d17438609c514554a5b68e9c25f708a9f782248c10428840",
+      "parents": ["emberwake-hound-motion-2026-11-06:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Future physical-melee motion concept for exact enemy ID hound. SE/front-quarter, target about 30x24px; no implemented action phase or runtime mapping. Extracted from hound-launch; only outer sheet translation removed. Held as a motion sequence: launch/contact near-duplicate and weak anticipation loading. Preserved raw output, not promoted."
+    },
+    {
+      "id": "emberwake-hound-motion-2026-11-06:hound-contact",
+      "asset": null,
+      "attempt": "emberwake-hound-motion-2026-11-06",
+      "label": "Ash hound · contact · future motion concept · HELD raw",
+      "file": "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/hound-contact.svg",
+      "digest": "01e247f736f956a5546b3a4dd654bea9bdf1e617c6cb84f2eb4c81c51643bf65",
+      "parents": ["emberwake-hound-motion-2026-11-06:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Future physical-melee motion concept for exact enemy ID hound. SE/front-quarter, target about 30x24px; no implemented action phase or runtime mapping. Extracted from hound-contact; only outer sheet translation removed. Held as a motion sequence: launch/contact near-duplicate and weak anticipation loading. Preserved raw output, not promoted."
+    },
+    {
+      "id": "emberwake-hound-motion-2026-11-06:hound-recovery",
+      "asset": null,
+      "attempt": "emberwake-hound-motion-2026-11-06",
+      "label": "Ash hound · recovery · future motion concept · HELD raw",
+      "file": "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/hound-recovery.svg",
+      "digest": "2d491f5dec2eedddd1f3d593e1322e0fff96b593694ea5cdba8fb22ef02ea8a4",
+      "parents": ["emberwake-hound-motion-2026-11-06:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Future physical-melee motion concept for exact enemy ID hound. SE/front-quarter, target about 30x24px; no implemented action phase or runtime mapping. Extracted from hound-recovery; only outer sheet translation removed. Held as a motion sequence: launch/contact near-duplicate and weak anticipation loading. Preserved raw output, not promoted."
+    },
+    {
+      "id": "emberwake-hound-motion-manual-2026-11-06:anticipation",
+      "asset": null,
+      "attempt": "emberwake-hound-motion-manual-2026-11-06",
+      "label": "Ash hound · authored anticipation · future motion concept",
+      "file": "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/hound-anticipation-authored.svg",
+      "digest": "7b211641c29e09b720f92e46ef72678bd5eccc1e65d47e83ce287804ae0ac56d",
+      "parents": ["emberwake-hound-motion-2026-11-06:hound-anticipation"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual derivative of generated anticipation. Explicitly fitted limb joints and support, shared anatomy and SE camera. Self-reviewed optional candidate; launch/contact distinction remains subtle at native size. No timing, transition or runtime acceptance."
+    },
+    {
+      "id": "emberwake-hound-motion-manual-2026-11-06:launch",
+      "asset": null,
+      "attempt": "emberwake-hound-motion-manual-2026-11-06",
+      "label": "Ash hound · authored launch · future motion concept",
+      "file": "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/hound-launch-authored.svg",
+      "digest": "b73ecae629f63b09763f65a619fb2ba260ca8116ed1e73fac2c42eca5ba2396f",
+      "parents": ["emberwake-hound-motion-2026-11-06:hound-anticipation"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual derivative of generated anticipation. Explicitly fitted limb joints and support, shared anatomy and SE camera. Self-reviewed optional candidate; launch/contact distinction remains subtle at native size. No timing, transition or runtime acceptance."
+    },
+    {
+      "id": "emberwake-hound-motion-manual-2026-11-06:contact",
+      "asset": null,
+      "attempt": "emberwake-hound-motion-manual-2026-11-06",
+      "label": "Ash hound · authored contact · future motion concept",
+      "file": "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/hound-contact-authored.svg",
+      "digest": "06b13418729b01625f43ecb13e6d33eb9cbd77803a09d2a56fab53e6428a6f45",
+      "parents": ["emberwake-hound-motion-2026-11-06:hound-anticipation"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual derivative of generated anticipation. Explicitly fitted limb joints and support, shared anatomy and SE camera. Self-reviewed optional candidate; launch/contact distinction remains subtle at native size. No timing, transition or runtime acceptance."
+    },
+    {
+      "id": "emberwake-hound-motion-manual-2026-11-06:recovery",
+      "asset": null,
+      "attempt": "emberwake-hound-motion-manual-2026-11-06",
+      "label": "Ash hound · authored recovery · future motion concept",
+      "file": "docs/art/iterations/files/emberwake-hound-motion-2026-11-06/hound-recovery-authored.svg",
+      "digest": "6ec90f421593431ea963afa3eb2259212e1b38e7e33100bea7b0a2b5eeaa4b9a",
+      "parents": ["emberwake-hound-motion-2026-11-06:hound-anticipation"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual derivative of generated anticipation. Explicitly fitted limb joints and support, shared anatomy and SE camera. Self-reviewed optional candidate; launch/contact distinction remains subtle at native size. No timing, transition or runtime acceptance."
+    },
+    {
+      "id": "emberwake-brute-2026-11-06-se-construction",
+      "asset": null,
+      "attempt": "emberwake-brute-2026-11-06-assistant-authoring-01",
+      "label": "Assistant-authored SE construction · earlier leg support",
+      "file": "docs/art/assets/directional-emberwake-brute-2026-11-06/studies/demon-se-construction-01.svg",
+      "digest": "c285f15746f1f21fce8068191e5e8726031fc5b1acf95d38e53753aa4a0149eb",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact first manual SE construction, inspected at 10×, 4× and native scale. Thin calf/ankle read led to current SE support refinement. This is not an API image."
+    },
+    {
+      "id": "emberwake-brute-2026-11-06-demon-se",
+      "asset": null,
+      "attempt": "emberwake-brute-2026-11-06-assistant-authoring-01",
+      "label": "Assistant-authored Furnace brute · SE",
+      "file": "docs/art/assets/directional-emberwake-brute-2026-11-06/demon-se.svg",
+      "digest": "e121f28ff55a85201fe494ee98f5f4636225b4fb4da01c3fde90693e2ab9bcf6",
+      "parents": ["emberwake-brute-2026-11-06-se-construction"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Native 384×416 SVG, explicit painted paths, no raster. Current lower-leg support refinement of the preserved construction. Long anatomical-left horn, short broken right horn and right-hand forged cleaver retain identity; no runtime assignment."
+    },
+    {
+      "id": "emberwake-brute-2026-11-06-demon-sw",
+      "asset": null,
+      "attempt": "emberwake-brute-2026-11-06-assistant-authoring-01",
+      "label": "Assistant-authored Furnace brute · SW",
+      "file": "docs/art/assets/directional-emberwake-brute-2026-11-06/demon-sw.svg",
+      "digest": "e50263e7eb6e09fe3e483af2c87d1a57c0f4fd4b3c334a7b7c5e07a7403d2c52",
+      "parents": ["emberwake-brute-2026-11-06-demon-se"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Native 384×416 SVG, explicit painted paths, no raster. Independent quarter redraw; SE parent denotes design/proportion reference, not mirroring or an image input. Long anatomical-left horn, short broken right horn and right-hand forged cleaver retain identity; no runtime assignment."
+    },
+    {
+      "id": "emberwake-brute-2026-11-06-demon-ne",
+      "asset": null,
+      "attempt": "emberwake-brute-2026-11-06-assistant-authoring-01",
+      "label": "Assistant-authored Furnace brute · NE",
+      "file": "docs/art/assets/directional-emberwake-brute-2026-11-06/demon-ne.svg",
+      "digest": "40d6f341067e67c288754d9d2050093dfac69125656f258f39ac1899b1d911a9",
+      "parents": ["emberwake-brute-2026-11-06-demon-se"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Native 384×416 SVG, explicit painted paths, no raster. Independent quarter redraw; SE parent denotes design/proportion reference, not mirroring or an image input. Long anatomical-left horn, short broken right horn and right-hand forged cleaver retain identity; no runtime assignment."
+    },
+    {
+      "id": "emberwake-brute-2026-11-06-demon-nw",
+      "asset": null,
+      "attempt": "emberwake-brute-2026-11-06-assistant-authoring-01",
+      "label": "Assistant-authored Furnace brute · NW",
+      "file": "docs/art/assets/directional-emberwake-brute-2026-11-06/demon-nw.svg",
+      "digest": "1d4cbae0fb2dad33c44a8ce6d25ea656788d271d5d9cf7c9a7ef209f5efb3071",
+      "parents": ["emberwake-brute-2026-11-06-demon-se"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Native 384×416 SVG, explicit painted paths, no raster. Independent quarter redraw; SE parent denotes design/proportion reference, not mirroring or an image input. Long anatomical-left horn, short broken right horn and right-hand forged cleaver retain identity; no runtime assignment."
+    },
+    {
+      "id": "emberwake-brute-2026-11-06-manual-sheet",
+      "asset": null,
+      "attempt": "emberwake-brute-2026-11-06-assistant-authoring-01",
+      "label": "Assistant-authored four-quarter comparison sheet",
+      "file": "docs/art/assets/directional-emberwake-brute-2026-11-06/manual-sheet.svg",
+      "digest": "12e71a9519fd727160cf5352531658184fbc42eed1e73950a2265cd2fc9d6a0f",
+      "parents": [
+        "emberwake-brute-2026-11-06-demon-se",
+        "emberwake-brute-2026-11-06-demon-sw",
+        "emberwake-brute-2026-11-06-demon-ne",
+        "emberwake-brute-2026-11-06-demon-nw"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual 1536×832 sheet combines four standalone sources at [192,0],[960,0],[192,416],[960,416] with only outer translations. It is not a returned image API original."
+    },
+    {
+      "id": "emberwake-brute-action-2026-11-06-original",
+      "asset": null,
+      "attempt": "emberwake-brute-action-2026-11-06",
+      "label": "Generated Furnace brute action sheet",
+      "file": "docs/art/assets/emberwake-brute-action-2026-11-06/original.svg",
+      "digest": "8cca06d0c06c6aa4a0e87afd6a5fa7d891dfda30c6fa37da0d150773eadd214a",
+      "parents": ["emberwake-brute-2026-11-06-demon-se"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact returned native SVG; genuine manual SE design parent supplied as text. Not a retry or recovered output of earlier unknown direction request. Timing untested."
+    },
+    {
+      "id": "emberwake-brute-action-2026-11-06-guard",
+      "asset": null,
+      "attempt": "emberwake-brute-action-2026-11-06",
+      "label": "Furnace brute SE · guard",
+      "file": "docs/art/assets/emberwake-brute-action-2026-11-06/demon-se-guard.svg",
+      "digest": "41a9b5a772ae945d22587403bccdddbeefca11ba3a45c5500ae41404e624765d",
+      "parents": ["emberwake-brute-action-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Raw named-group extraction from[64,48,384,416]; only outer translation removed, inner geometry/paints unchanged. Future presentation concept, null runtime assignment."
+    },
+    {
+      "id": "emberwake-brute-action-2026-11-06-contact",
+      "asset": null,
+      "attempt": "emberwake-brute-action-2026-11-06",
+      "label": "Furnace brute SE · contact",
+      "file": "docs/art/assets/emberwake-brute-action-2026-11-06/demon-se-contact.svg",
+      "digest": "c050d3beb5d2688c87802f46e7b75cd17f8579f2e919d0efb219ee435ac9f7ad",
+      "parents": ["emberwake-brute-action-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Raw named-group extraction from[576,48,384,416]; only outer translation removed, inner geometry/paints unchanged. Future presentation concept, null runtime assignment."
+    },
+    {
+      "id": "emberwake-brute-action-2026-11-06-recovery",
+      "asset": null,
+      "attempt": "emberwake-brute-action-2026-11-06",
+      "label": "Furnace brute SE · recovery",
+      "file": "docs/art/assets/emberwake-brute-action-2026-11-06/demon-se-recovery.svg",
+      "digest": "d69f654e2105af6f6c9477357cd5d3575f4c8015967c0614a6c00d6d26bfb115",
+      "parents": ["emberwake-brute-action-2026-11-06-original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Raw named-group extraction from[1088,48,384,416]; only outer translation removed, inner geometry/paints unchanged. Future presentation concept, null runtime assignment."
+    },
+    {
+      "id": "hearth-mantis-pilot-20261106:original",
+      "asset": null,
+      "attempt": "hearth-mantis-pilot-20261106",
+      "label": "Briar Mantis / exact original / anatomy hold",
+      "file": "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/original.svg",
+      "digest": "88b27625c91fb66f58b6c03a2a1fe308ec9e3eb6d367f51e94cc817975de8ae2",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API bytes retained; head/prothorax gap documented."
+    },
+    {
+      "id": "hearth-mantis-neck-repair-20261106:connected",
+      "asset": null,
+      "attempt": "hearth-mantis-neck-repair-20261106",
+      "label": "Briar Mantis / connected normal source candidate",
+      "file": "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/mantis-normal-connected.svg",
+      "digest": "1fcdd4209973e93c186cf85da05565046acd9fd1db2ac8a7d76df1e0adcf2dd8",
+      "parents": ["hearth-mantis-pilot-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Added cervical-connection group with three paths before prothorax. No other original nodes or attributes changed."
+    },
+    {
+      "id": "hearth-mantis-ascended-20261106:original",
+      "asset": null,
+      "attempt": "hearth-mantis-ascended-20261106",
+      "label": "Briar Mantis / exact ascended original / anatomy hold",
+      "file": "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/ascended/original.svg",
+      "digest": "5261efeb7369adb27dce21fbceb60ad91adf7348fa3ae873a1b059a014afa4a7",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API bytes retained; neck gap and five walking legs documented."
+    },
+    {
+      "id": "hearth-mantis-ascended-repair-20261106:anatomy",
+      "asset": null,
+      "attempt": "hearth-mantis-ascended-repair-20261106",
+      "label": "Briar Mantis / six-leg connected ascended source candidate",
+      "file": "docs/art/assets/hearth-mantis-family-proposal-2026-11-06/ascended/mantis-ascended-anatomy.svg",
+      "digest": "d4bd125907e98376dd336c1cda6d693fbc256ab6a83e3c0a27f63ab624b92825",
+      "parents": ["hearth-mantis-ascended-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Removed only five extra-leg paths and added cervical-connection with three paths. Other original nodes/attributes retained."
+    },
+    {
+      "id": "spire-aftermath-20261106:original",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / original",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/original.svg",
+      "digest": "e0261490f4ee1f54051301cb831fd290495102fafd70109dfbf3c1e35336820b",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original."
+    },
+    {
+      "id": "spire-aftermath-20261106:impact-scree",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / impact-scree",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/impact-scree.svg",
+      "digest": "3ef1650953adce8973a59e814b6d73300ead3e84b9d27ff011d292f40dccd52c",
+      "parents": ["spire-aftermath-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "spire-aftermath-20261106:poison-residue",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / poison-residue",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/poison-residue.svg",
+      "digest": "98e4940677f2786bee9146cb9f8aa11d62f0ec3af2ce622932cf4732c48378f8",
+      "parents": ["spire-aftermath-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "spire-aftermath-20261106:split-slime-membrane",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / split-slime-membrane",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/split-slime-membrane.svg",
+      "digest": "2f2c2c474132e3ddc785b449f0c556e670cf0c2cd93c33d1dabaee8c6be268ea",
+      "parents": ["spire-aftermath-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [2, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "spire-aftermath-20261106:ruptured-web",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / ruptured-web",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/ruptured-web.svg",
+      "digest": "d73421b7fa82dc2c20ab876a352da681f25de25e113d001a8c99db1ebfff6b6c",
+      "parents": ["spire-aftermath-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 1]; remove its grid translation only. Review: call.json. Hold: The broad opaque folds and scalloped hem read as torn cloth at 160x112 and 80x56; missing strand structure fails to distinguish spider silk from the ritual cloth."
+    },
+    {
+      "id": "spire-aftermath-20261106:ritual-cinder-sweep",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / ritual-cinder-sweep",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/ritual-cinder-sweep.svg",
+      "digest": "4d86831780cd5d5266e096d54baff18418a5da2ab2a6cfbe935f7fe70bdf07e6",
+      "parents": ["spire-aftermath-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1, 1]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "spire-aftermath-20261106:explosive-scorch",
+      "asset": null,
+      "attempt": "spire-aftermath-20261106",
+      "label": "Spire aftermath source / explosive-scorch",
+      "file": "docs/art/assets/spire-aftermath-source-studies-2026-11-06/explosive-scorch.svg",
+      "digest": "4774b7a0f08c6eb1f91c436661476959f1c0bb42cf7b1164f17596f51def46be",
+      "parents": ["spire-aftermath-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [2, 1]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/sheet",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "Patron handling · exact packed original",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/sheet.svg",
+      "digest": "5df6cd2ccaadefa99841225fe3170b4bbc955b441a971c464267637bf43c2f0d",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact native vector original; 3×2 cells of 480×336. No accepted ritual or runtime identity."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/aster-grounding-plate",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "aster-grounding-plate · candidate",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/aster-grounding-plate.svg",
+      "digest": "cfb0122038da8691d4ce1726150d31589b640959cdcceb084aded0729caee570",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 0, origin (0,0); remove only grid translation, preserve paint. Review: generation.json output aster-grounding-plate."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/neris-weir-panel",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "neris-weir-panel · candidate-with-caveat",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/neris-weir-panel.svg",
+      "digest": "652e6a1417a9cbbe04db2305c616736dd3751f5f30bf6f94ae98b6197d5125d3",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 1, origin (480,0); remove only grid translation, preserve paint. Review: generation.json output neris-weir-panel."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/vesta-ritual-bellows",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "vesta-ritual-bellows · candidate",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/vesta-ritual-bellows.svg",
+      "digest": "1dd6da10543ec217ab38842b2426d0d34b914c6da1a4c84cfb91bbd005e9d074",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 2, origin (960,0); remove only grid translation, preserve paint. Review: generation.json output vesta-ritual-bellows."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/isen-cooling-wrap",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "isen-cooling-wrap · candidate-with-caveat",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/isen-cooling-wrap.svg",
+      "digest": "88be5c08c47e51053ea50e7b5a0f0fd1a05d1a5a53136090919939a2a7caf6c0",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 3, origin (0,336); remove only grid translation, preserve paint. Review: generation.json output isen-cooling-wrap."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/nyra-witness-shutter",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "nyra-witness-shutter · candidate",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/nyra-witness-shutter.svg",
+      "digest": "05414db777e7c6e073e09b5de44e95c38cc93237163db6fdc57933156df2f2d7",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 4, origin (480,336); remove only grid translation, preserve paint. Review: generation.json output nyra-witness-shutter."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/audience-choice-rack",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "audience-choice-rack · candidate",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/audience-choice-rack.svg",
+      "digest": "0f0c7ff509267bb117d96c35c89a650960bef701706bf0cfcf788fca4c8f104e",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 5, origin (960,336); remove only grid translation, preserve paint. Review: generation.json output audience-choice-rack."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:original",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / original",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/original.svg",
+      "digest": "15806e150f87fa8f7fc6046736206624bfe3283dfb53d240c8d184f6129f7d32",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:shuttered-lantern-waypost",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / shuttered-lantern-waypost",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/shuttered-lantern-waypost.svg",
+      "digest": "0f2bdfaa6080e271aaf89fcfc93700e78a8b558dbfb3ad85cfa620fab87aaca5",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:forked-route-stela",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / forked-route-stela",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/forked-route-stela.svg",
+      "digest": "9481045ff0cefcedc59753cc79d77867b69253debb2befd0505d039982fda506",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:tether-anchor-station",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / tether-anchor-station",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/tether-anchor-station.svg",
+      "digest": "5e4c900ff347f64b1eb1de6349c70751f1e9721d96755aa5107cb10f9b3ff3e2",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [2, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:flood-level-marker",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / flood-level-marker",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/flood-level-marker.svg",
+      "digest": "8fa553f8c81d72d0ccacaed6fe23f2ecf472c6b2b692f08dbadc80925c2970b5",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 1]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:corner-light-reflector",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / corner-light-reflector",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/corner-light-reflector.svg",
+      "digest": "e3a845377ff4041e7b1071c7306f344f98f957a7c06aa4bd36f2220371ebdf92",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1, 1]; remove its grid translation only. Review: call.json. Hold: The folded copper panel and bracket read clearly, but can read as an awning; the reflected-light function is not explicit enough at compact size. Retain as a folded-panel source until its role is chosen."
+    },
+    {
+      "id": "cartographer-wayfinding-20261106:boundary-chain-posts",
+      "asset": null,
+      "attempt": "cartographer-wayfinding-20261106",
+      "label": "Wayfinding source / boundary-chain-posts",
+      "file": "docs/art/assets/cartographer-wayfinding-fixtures-2026-11-06/boundary-chain-posts.svg",
+      "digest": "8a5db8d81bafd5e93902680c8373f7028dc56dbd1cec5748530e16e427c721aa",
+      "parents": ["cartographer-wayfinding-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [2, 1]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/sheet",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "Fen/Salt · exact packed original",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/sheet.svg",
+      "digest": "16c7c475f579a2b5e7f434d54fda7ba6178c709a67bc6a9d59244fdd68baeb99",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact native vector output; 3×2 cells of 480×336. Source study only."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/fen-root-core",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "fen-root-core · candidate-with-caveat",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/fen-root-core.svg",
+      "digest": "2320e8a397efdd8bbacbbe14b400bf1fbdb86534160e46ff4c47d7a67025f30f",
+      "parents": ["expansion-en-cont-20261106/ember-fen-salt-quest/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 0, origin (0,0); remove only grid translation, preserve paint. Review: generation.json output fen-root-core."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/fen-water-gauge",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "fen-water-gauge · candidate",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/fen-water-gauge.svg",
+      "digest": "9f5f0befbfb2eaf2c961070bbc65565c447775aafb339e40ffe52a3eca980df6",
+      "parents": ["expansion-en-cont-20261106/ember-fen-salt-quest/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 1, origin (480,0); remove only grid translation, preserve paint. Review: generation.json output fen-water-gauge."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/fen-mire-dispatch",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "fen-mire-dispatch · candidate",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/fen-mire-dispatch.svg",
+      "digest": "afdb9d0a9c4d8e2e5f055c5f4ef7a0671c3a43eb43854585dd03444894f3f181",
+      "parents": ["expansion-en-cont-20261106/ember-fen-salt-quest/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 2, origin (960,0); remove only grid translation, preserve paint. Review: generation.json output fen-mire-dispatch."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/salt-proof-tile",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "salt-proof-tile · candidate-with-caveat",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/salt-proof-tile.svg",
+      "digest": "d677cefa6c5cf0262982f75bbb0aca8b87bec67f462af341b8611117b2c98912",
+      "parents": ["expansion-en-cont-20261106/ember-fen-salt-quest/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 3, origin (0,336); remove only grid translation, preserve paint. Review: generation.json output salt-proof-tile."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/salt-depth-spool",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "salt-depth-spool · candidate",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/salt-depth-spool.svg",
+      "digest": "4629c2e8a0c59c886ef6e8cdd78bdd7e8054b86a3df52e0e2192ed1858553858",
+      "parents": ["expansion-en-cont-20261106/ember-fen-salt-quest/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 4, origin (480,336); remove only grid translation, preserve paint. Review: generation.json output salt-depth-spool."
+    },
+    {
+      "id": "expansion-en-cont-20261106/ember-fen-salt-quest/salt-bead-mold",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/ember-fen-salt-quest",
+      "label": "salt-bead-mold · candidate",
+      "file": "docs/art/assets/emberwake-quest-objects-2026-11-06/salt-bead-mold.svg",
+      "digest": "9ff1c2d5893ed509ac513d0034a1c011abbc143ef2477265c8bbddfdc63bdd76",
+      "parents": ["expansion-en-cont-20261106/ember-fen-salt-quest/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 5, origin (960,336); remove only grid translation, preserve paint. Review: generation.json output salt-bead-mold."
     },
     {
       "id": "emberwake-directional-2026-11-06-original",
@@ -11114,6 +11998,73 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Cell2: remove translate(720 0), preserve geometry/paint/root attributes; set 720x512 viewport."
+    },
+    {
+      "id": "spire-heavy-blade-manual-2026-11-07:base",
+      "asset": "spire/heavyBlade",
+      "attempt": "spire-heavy-blade-manual-2026-11-07",
+      "label": "Heavy Blade base: manual broad-blade candidate",
+      "file": "docs/art/assets/spire-heavy-blade-manual-2026-11-07/heavyBlade-base-manual.svg",
+      "digest": "561d8cb271381d8e5152630743b0c0bed3bb7f3a9673f3aafa5958d2d0eaa22c",
+      "parents": [
+        "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-base-refined"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual derivative: four blade-plane and three guard d attributes changed. Inherited arm, wrist, fingers, handle and cloth retained. Review pending; exact parent remains held."
+    },
+    {
+      "id": "spire-heavy-blade-manual-2026-11-07:upgraded",
+      "asset": "spire/heavyBlade-upgraded",
+      "attempt": "spire-heavy-blade-manual-2026-11-07",
+      "label": "Heavy Blade upgraded: manual broad-blade candidate",
+      "file": "docs/art/assets/spire-heavy-blade-manual-2026-11-07/heavyBlade-upgraded-manual.svg",
+      "digest": "7791b617ec646a4f96d2b8b6cb44ccbfb0c9877cafd4f1019719b95c536dad1b",
+      "parents": [
+        "refinement-2026-11-06:spire-heavyblade-revision:heavyBlade-upgraded-refined"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual derivative: four blade-plane and three guard d attributes changed. Inherited arm, wrist, fingers, handle and cloth retained. Review pending; exact parent remains held."
+    },
+    {
+      "id": "spire-heavy-blade-manual-2026-11-07:comparison",
+      "asset": null,
+      "attempt": "spire-heavy-blade-manual-2026-11-07",
+      "label": "Live, both held pairs and manual candidates at card/compact/phone sizes",
+      "file": "docs/art/assets/spire-heavy-blade-manual-2026-11-07/comparison.png",
+      "digest": "dbb80db97b737fb5ddd7b7d215320c320c32bd23f1b5d3e88958f1b557bec951",
+      "parents": [
+        "spire-heavy-blade-manual-2026-11-07:base",
+        "spire-heavy-blade-manual-2026-11-07:upgraded"
+      ],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "One lossless matched comparison. 320,160,80,48 px widths; 390 px phone collection card DOM-only illustration mockups. Neither a runtime integration nor an adoption."
+    },
+    {
+      "id": "manual-semantic-repairs-20261107:corner-reflector-manual",
+      "asset": null,
+      "attempt": "manual-semantic-repairs-20261107",
+      "label": "Manual source repair / corner-reflector-manual",
+      "file": "docs/art/assets/semantic-hold-repairs-2026-11-07/corner-reflector-manual.svg",
+      "digest": "cc874c03d0e2e26826c0551d501298e1f253d88161b6bf1921433d0b6bc1e2a5",
+      "parents": ["cartographer-wayfinding-20261106:corner-light-reflector"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual derivative. Reuse wall, ground, moss and bolted load-bearing bracket. Replace the sloping mottled canopy face with upright thick-rimmed folded metal planes; replace fragmented warm wall tiles with one bounded light patch. Review: Improved author candidate: upright reflective faces and adjacent light patch read at 160x112/80x56; at 64x45 it reads as a mounted reflective fixture but the folded-plane/material distinction softens. Physical light path and engineering are illustrative, not simulated or certified."
+    },
+    {
+      "id": "manual-semantic-repairs-20261107:ruptured-web-manual",
+      "asset": null,
+      "attempt": "manual-semantic-repairs-20261107",
+      "label": "Manual source repair / ruptured-web-manual",
+      "file": "docs/art/assets/semantic-hold-repairs-2026-11-07/ruptured-web-manual.svg",
+      "digest": "0f00d08724212bbf24f58cd0ac2508728c05f0d4a21bfd388e39d2f64eac3878",
+      "parents": ["spire-aftermath-20261106:ruptured-web"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Manual derivative. Keep exact original stone anchors and ground. Remove the opaque folded cloth body, hem and highlight bands. Draw connected unequal tension lines/cross strands, sparse translucent attachment fans and a large open displaced tear. Review: Improved author candidate: open fibrous network replaces cloth reading at 160x112/80x56; 64x45 keeps net-like negative space but individual silk strands and frays partly merge. A static torn web source, without creature, active VFX, timing or gameplay/persistence claims."
     }
   ]
 }

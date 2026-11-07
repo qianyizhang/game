@@ -34,33 +34,4 @@ Passed: repository SVG safety; isolated import/verify of both children with exac
 
 At creation, delivery base is `29dae62ccb46321160c455909d0061cbe0133e9c`; #151/#153 are open. **Parent registration dependencies and this bundle's canonical registration remain draft blockers.** Parent files can be inspected at the exact Git references above without bringing unrelated unmerged artwork into this diff. The isolated validation imports their actual parent closure temporarily, with no production registry edit. The merger must reconcile against the current canonical parents, preserve their holds and register these manual children before marking ready. No game/default or other candidate branch is changed.
 
-Rebuild the additive two-child transport from the canonical record at repository root. This writes only ignored `test-results/semantic-repairs-history-import.json`; it does not register anything. Parent revisions must already exist when the merger imports it.
-
-```python
-import json
-from pathlib import Path
-
-d = Path("docs/art/assets/semantic-hold-repairs-2026-11-07")
-c = json.loads((d / "record.json").read_text())
-a = c["id"]
-h = dict(
-    schema=1,
-    assets=[],
-    attempts=[dict(
-        id=a, title="Manual semantic repairs / reflector and torn silk",
-        date=c["date"], outcome="manual",
-        notes="Hand-authored source derivatives; original holds unchanged. Briefs, parent digests and review: record.json.",
-        files=[(d / f).as_posix() for f in ["record.json", "README.md"] + [o["comparison"]["file"] for o in c["outputs"]]],
-    )],
-    revisions=[dict(
-        id=a + ":" + Path(o["file"]).stem, asset=None, attempt=a,
-        label="Manual source repair / " + Path(o["file"]).stem,
-        file=(d / o["file"]).as_posix(), digest=o["sha256"],
-        parents=[o["parent"]["revision"]], runtimeFile=None, runtimeDigest=None,
-        notes="Manual derivative. " + o["changes"] + " Review: " + o["review"],
-    ) for o in c["outputs"]],
-)
-p = Path("test-results/semantic-repairs-history-import.json")
-p.parent.mkdir(parents=True, exist_ok=True)
-p.write_text(json.dumps(h, indent=2) + "\n")
-```
+Canonical registration records the manual attempt `manual-semantic-repairs-20261107` and both explicit child revisions in [the shared library](../../iterations/library.json). [record.json](record.json) remains the single manual brief/settings/parent-digest owner; retained comparison files belong to the attempt. No staged import catalogue is committed. The creation-time dependency and registration statements above and in the immutable record describe the original handoff; integration must retain the real #151/#153 parents and all original holds before landing. Registration does not validate optics, active VFX, runtime use or artwork selection.

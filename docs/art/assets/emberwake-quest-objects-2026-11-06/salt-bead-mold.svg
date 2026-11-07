@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="salt-bead-mold">
+    <defs>
+      <linearGradient id="mold-stone" x1="0" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="#c5bca5"/>
+        <stop offset="0.5" stop-color="#a59f8e"/>
+        <stop offset="1" stop-color="#777d73"/>
+      </linearGradient>
+      <linearGradient id="mold-hollow" x1="0" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="#4f5c56"/>
+        <stop offset="0.6" stop-color="#8e9181"/>
+        <stop offset="1" stop-color="#c6bea5"/>
+      </linearGradient>
+      <radialGradient id="mold-bead" cx="0.32" cy="0.25" r="0.8">
+        <stop offset="0" stop-color="#c4e0cd"/>
+        <stop offset="0.5" stop-color="#9dc8bb"/>
+        <stop offset="1" stop-color="#75a99f"/>
+      </radialGradient>
+      <linearGradient id="mold-hinge" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#34464b"/>
+        <stop offset="0.45" stop-color="#95a6aa"/>
+        <stop offset="0.65" stop-color="#b3b6a3"/>
+        <stop offset="1" stop-color="#455651"/>
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c"/>
+    <path d="M51 263C114 245 347 247 413 264L417 284C365 310 114 310 54 283Z" fill="#182e35"/>
+    <path d="M57 101C59 86 70 79 84 82L210 107C219 109 224 115 224 128L231 271C233 284 225 297 212 300L59 273C45 271 39 264 41 250Z" fill="#61695e" stroke="#727b6e" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M54 100C57 87 66 80 79 83L207 108C218 110 221 116 221 128L224 262C224 274 216 280 206 278L55 252C45 250 43 245 45 234Z" fill="url(#mold-stone)" stroke="#c8c0a9" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M60 96 76 88 83 92 70 107 60 149 56 213 49 235 47 229Z" fill="#ead7b5"/>
+    <path d="M55 252 206 278 215 276 211 297 61 271 46 260Z" fill="#777b6d"/>
+    <path d="M57 239 87 242 101 251 151 259 180 266 211 268" fill="none" stroke="#c3b99f" stroke-width="2"/>
+    <path d="M105 130C131 118 164 131 182 155 201 182 194 213 169 224 143 235 108 218 94 194 79 170 84 143 105 130Z" fill="#626b5f" stroke="#c7bea5" stroke-width="3"/>
+    <path d="M106 137C130 125 160 138 176 159 194 182 187 209 165 219 141 229 112 213 99 191 86 169 88 148 106 137Z" fill="url(#mold-hollow)"/>
+    <path d="M123 184C135 166 160 163 177 175 183 194 176 211 162 217 146 223 129 214 119 203Z" fill="#b6b19a"/>
+    <path d="M248 110 381 48C393 42 405 46 410 59L420 232C421 245 414 255 403 260L264 299C250 302 239 295 238 282L237 132C237 120 241 115 248 110Z" fill="#646e65" stroke="#81877a" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M248 106 380 46C392 41 402 45 404 57L410 218C410 230 403 239 391 242L259 277C247 280 239 272 240 260L239 127C239 116 242 111 248 106Z" fill="url(#mold-stone)" stroke="#d0c6ad" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M261 277 391 242C403 239 410 230 410 218L419 235C419 246 413 253 402 258L264 296C253 299 244 293 243 282L242 269C245 277 251 280 261 277Z" fill="#777e71"/>
+    <path d="M251 111 380 50C389 46 395 48 398 56L400 102 391 78 390 56 365 63 323 86 279 103 250 122Z" fill="#d1c7af"/>
+    <path d="M400 164 396 186 400 211 391 232 364 246" fill="none" stroke="#c1b9a2" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M302 87C331 70 365 77 380 99 395 121 383 151 357 167 331 181 299 173 286 152 272 129 279 103 302 87Z" fill="#3c5552" stroke="#bfc4ac" stroke-width="3"/>
+    <path d="M304 96C329 79 359 85 371 104 384 124 373 148 351 161 328 174 302 166 291 148 280 129 285 109 304 96Z" fill="#75a99f"/>
+    <path d="M302 96C323 82 350 83 365 97 380 112 375 134 360 148 344 164 317 167 300 152 282 138 284 111 302 96Z" fill="url(#mold-bead)" stroke="#a8d2bf" stroke-width="2"/>
+    <path d="M303 101C310 91 326 86 339 88 352 89 359 96 355 104 351 113 334 121 321 120 307 120 298 111 303 101Z" fill="#c1dfca"/>
+    <ellipse cx="329" cy="102" rx="19" ry="10" transform="rotate(-19 329 102)" fill="#405f5b"/>
+    <path d="M312 99C317 94 326 92 334 92" fill="none" stroke="#ead7b5" stroke-width="3" stroke-linecap="round"/>
+    <path d="M293 119C289 131 295 140 302 144M314 157C332 162 348 155 359 146" fill="none" stroke="#c3dfce" stroke-width="4" stroke-linecap="round"/>
+    <path d="M322 191C339 180 363 181 377 194 391 208 384 229 365 240 347 249 325 244 315 230 305 216 308 202 322 191Z" fill="#5a675e" stroke="#c7bda4" stroke-width="3"/>
+    <path d="M324 197C339 188 360 189 371 200 382 212 376 228 361 237 345 245 327 239 319 228 311 216 313 205 324 197Z" fill="url(#mold-hollow)"/>
+    <path d="M345 220C355 212 366 213 373 218 370 229 357 237 344 236L335 230Z" fill="#c6bca3"/>
+    <path d="M210 126C213 121 221 120 226 124L238 132 248 121C252 117 258 119 260 124L262 256C262 262 255 266 250 262L237 254 226 266C220 270 211 266 210 260Z" fill="#34464b" stroke="#9aa293" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M213 130C214 125 219 125 222 128L228 133 228 254 220 262C217 264 213 261 213 257Z" fill="#78857b"/>
+    <path d="M248 130 255 125C257 124 259 127 259 132L258 254C257 258 254 260 251 257L246 253Z" fill="#78857b"/>
+    <path d="M228 131C229 123 243 122 246 130L244 253C243 263 228 264 227 254Z" fill="url(#mold-hinge)" stroke="#525f56" stroke-width="2"/>
+    <path d="M228 158C233 154 240 154 245 158M228 204C233 201 240 201 245 205M228 243C232 240 240 240 244 244" fill="none" stroke="#34464b" stroke-width="3"/>
+    <path d="M233 131 232 151M233 163 232 197M232 210 231 235" fill="none" stroke="#c6c4ab" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="220" cy="139" rx="3.5" ry="5" fill="#34464b" stroke="#b3b5a1" stroke-width="1"/>
+    <ellipse cx="219" cy="249" rx="3.5" ry="5" fill="#34464b" stroke="#b3b5a1" stroke-width="1"/>
+    <ellipse cx="253" cy="139" rx="3" ry="4.5" fill="#34464b" stroke="#b3b5a1" stroke-width="1"/>
+    <ellipse cx="252" cy="247" rx="3" ry="4.5" fill="#34464b" stroke="#b3b5a1" stroke-width="1"/>
+    <path d="M229 258C231 253 239 252 242 257L242 265C240 271 231 273 228 266Z" fill="#34464b" stroke="#6e7b70" stroke-width="2"/>
+  </g>
+</svg>
