@@ -1,0 +1,80 @@
+{
+  "method": "Authored SVG derivatives; API spend $0. Original checkpoint and judgments unchanged.",
+  "checkpoint": "a3351841a981c90bfa1ef4ac0ed34757d678f967",
+  "outputs": [
+    {
+      "id": "vesta-coal-resting",
+      "file": "vesta-coal-resting.svg",
+      "sha256": "4906f267dc0cabde4b893f4216eca53ba2a1affb685ddd14f055da2a0f5c99ac",
+      "parent": "tongs",
+      "change": [
+        "Group exactly five existing coal paths; translate by (100,16) so the coal bottom rests on the dish interior instead of implying an unsupported two-jaw lift.",
+        "All tongs/dish geometry and paint remain unchanged. Original suspended-coal hold remains unchanged."
+      ],
+      "verdict": "candidate-with-caveat",
+      "note": "Coal now meets the dish surface at rest, avoiding a claimed two-jaw lift. The open tool remains an illustration pose rather than a physically simulated placement. Original suspended-coal study remains on hold."
+    },
+    {
+      "id": "nyra-cloth-screen",
+      "file": "nyra-cloth-screen.svg",
+      "sha256": "236b63aff6925e622281a22660845a107fd2abfcb4e069a2ea2f09548ca028fc",
+      "parent": "screen",
+      "change": [
+        "Set fill=\"none\" on the single large frame-outline path beginning M65 35 L78 34; preserve its dark stroke.",
+        "This removes the accidental opaque gray overlay over the already-authored plum cloth and its folds. Existing fitted posts, frame highlights, hinge plates and rear pale panel remain unchanged."
+      ],
+      "verdict": "candidate",
+      "note": "Existing plum folds and pale rear panel are now visible; posts and hinges retain their supported contour. At 80px, broad cloth planes remain distinct. This derivative addresses the earlier rigid-gray material caveat without inventing new geometry."
+    },
+    {
+      "id": "neris-glazed-coffer",
+      "file": "neris-glazed-coffer.svg",
+      "sha256": "7a4975bcf262978e7e3f2237780ab48ac388189896fe95635f7ff72f6e760faf",
+      "parent": "coffer",
+      "change": [
+        "Replace the chipped exterior body paths before the first rim path beginning M95 157 with six connected smooth curved ceramic planes and two broad glaze highlight bands.",
+        "Preserve the original outline envelope, open lid, hinge, rim and aqua insert. No new reflection simulation or transparent-glass behavior is claimed."
+      ],
+      "verdict": "candidate-with-caveat",
+      "note": "Continuous curved body and broad glaze highlights read more like ceramic at both sizes. Original lid still has faceted engraved planes; no physical glass/transparency claim. Original stone-like candidate remains unchanged."
+    },
+    {
+      "id": "neris-coffer-cutoff-failed",
+      "file": "neris-coffer-cutoff-failed.svg",
+      "sha256": "3be68393797eabc08caa0d42d5dc4032b1583cee21e240722d67fb8f4ffba68e",
+      "parent": "coffer",
+      "change": "Initial selection incorrectly used the first ellipse as exterior cutoff, removing lid/rim and leaving an orphan hinge ring. Exact failed output, first recipe and first authoring record retained. The corrected sibling re-derives from the preserved original using its explicit rim path as boundary.",
+      "verdict": "hold",
+      "note": "Rejected authored construction: an incorrect path selection removed lid/rim and left a floating hinge ring. Retained as an explicit failed sibling; technical SVG validity is not visual acceptance."
+    }
+  ],
+  "evidence": {
+    "file": "comparison.png",
+    "sha256": "199b4915a4086a0ce87fafc25103fc8588524bc3fb90805fc3ead2f5a17e8a29",
+    "lossless_rgba_dimensions_alpha_color_verified": true
+  },
+  "qa": {
+    "svg_states": 4,
+    "native": [160, 112],
+    "compact": [80, 56],
+    "geometry_inside_viewbox": true,
+    "aesthetic_acceptance": "User review pending; one failed authored state and original tongs hold retained."
+  },
+  "parents": {
+    "tongs": {
+      "revision": "expansion-en-20261106/night-offering-instruments/vesta-coal-tongs",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-offering-instruments/vesta-coal-tongs.svg",
+      "sha256": "80f77ec198c5c38710deb8257db3aebb1635253a025087bccaa76a5ffd0e63a2"
+    },
+    "screen": {
+      "revision": "expansion-en-20261106/night-reliquaries/nyra-folded-screen",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-reliquaries/nyra-folded-screen.svg",
+      "sha256": "308540ee6db88e702111a947175476e50c889e6e77aa1452b4d183e0f3875071"
+    },
+    "coffer": {
+      "revision": "expansion-en-20261106/night-reliquaries/neris-current-coffer",
+      "file": "docs/art/assets/expansion-emberwake-night-2026-11-06/night-reliquaries/neris-current-coffer.svg",
+      "sha256": "4d2ac3c07f7474a263cb7657c0620add1b9ac2969891bfff43a43eecce56e299"
+    }
+  }
+}

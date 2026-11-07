@@ -1,0 +1,28 @@
+{
+  "kind": "gif-edit",
+  "prompt": "Generate one native animated GIF chapter of the Last Hearth story proposal One Seat More: chapter 1, Wait. This is candidate fiction, not accepted history or a new game rule. One shot, not a comic sheet or montage.\n\nREFERENCE ORDER: image 1 is the exact CURRENT scene state and starting composition. Follow its existing object count, positions, body pose, tile/cup/fixture state and camera. If image 2 exists it is ONLY the original visual identity/palette anchor; never reset action state or object placement to it. Preserve camera, crop, scale, all background edges and the same explicit palette throughout. Do not apply new color grading, repaint quiet surfaces or add engraving. Palette: forest ink #172928, warm gray steel #929f95, cream #dfd4b4, muted sage cloth #789579 and selective copper #a77655, sage Wisp #789579 with ivory inner plane and dark face, quiet brown wood #675340; three value groups, no gold upgrade effect.\n\nCURRENT ACTION: Begin with the exact supplied tavern arrangement. The small Coal Wisp slowly rises toward the table edge, pauses and droops back slightly, its eyes still looking at the empty place. The Squire turns their helmet a few degrees toward it and opens the near hand gently in an invitation. Keep both wooden cups, stool and table fixed. No humanoid arms or feet on the Wisp. Last three frames hold the acknowledgement.\n\nSixteen sequential frames, 300 ms each. Readable anticipation, one physical action and settling. Do not loop back to start. Fixed 480x336 view, restrained upper-left diffuse light, no flashing, magic spark storms, camera movement, zoom or full-image sliding. Preserve connected joints, weight/contact, rigid-object geometry, negative spaces and material planes. No new objects, duplicate bodies/props, extra hands/fingers, labels, text, numbers, logos or UI. End at the requested state so a later chapter can start from it. Last still must be useful for review at 480x336 and 160x112. Never invent intermediate history or claim an established world event.",
+  "inputs": ["opening"],
+  "output": "chapter-1.gif",
+  "request_id": "req_d6d266cdc3114c49b66c4feddcbb468e",
+  "started_at": "2026-11-06T15:24:51Z",
+  "created": 1793978731,
+  "elapsed_s": 39.952,
+  "usage": {
+    "input_tokens": 1104,
+    "input_tokens_details": {
+      "image_tokens": 630,
+      "text_tokens": 474
+    },
+    "output_tokens": 1869,
+    "output_tokens_details": {
+      "image_tokens": 1869,
+      "text_tokens": 0
+    },
+    "total_tokens": 2973
+  },
+  "output_metadata": {
+    "generation_id": "44a59a3b-09a7-41c3-8bff-a633ce5097e7"
+  },
+  "background": "opaque",
+  "cost_estimate_usd": 0.06348
+}

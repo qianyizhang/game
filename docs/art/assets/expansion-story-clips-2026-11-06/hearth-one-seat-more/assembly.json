@@ -1,0 +1,19 @@
+{
+  "sources": ["chapter-1.gif", "chapter-2-r1.gif", "chapter-3.gif", "chapter-4.gif"],
+  "held_source": "chapter-2.gif",
+  "output": "story.gif",
+  "frames_per_clip": 16,
+  "frame_duration_ms": 300,
+  "transform": "Coalesce each source separately in temporary output, then concatenate every full composed frame at original timing. No retouch/interpolation/omission. Held model trial remains separate.",
+  "pixel_equivalence_rgba_sha256": "168d346b46cf77deaf7f917e5e54f39596f478055863a3bdbf5e15cec8ac8767",
+  "processing_exception": {
+    "operation": "Concatenate source GIFs then coalesce globally",
+    "decoded_rgba_sha256": "52935a26dc81fac1427f1a57172a59e5cb755ec9865a26e20e115655fecc339b",
+    "result": "Pixel-equivalence check failed; not selected. Processing trial remains in temporary inspection output; original API GIFs unaffected."
+  },
+  "preview": {
+    "file": "cup-repair.png",
+    "sha256": "322ae38dd943496014b79251cbbbcc502145995d15f23af4d6918894a0be44d0",
+    "recipe": "Held chapter2 final frame left; selected chapter2-r1 final frame right, each native480x336; PNG8, no retouch."
+  }
+}

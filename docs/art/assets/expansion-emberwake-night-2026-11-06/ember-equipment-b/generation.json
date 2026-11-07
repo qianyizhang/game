@@ -1,0 +1,125 @@
+{
+  "format": "card",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed study sheet, exactly 1440 by 672, viewBox=\"0 0 1440 672\". 3 columns by 2 rows, cells exactly 480 by 336, no gutters. Row-major order of named subjects below. Each subject MUST be an individual top-level <g id=\"SUBJECT-ID\" transform=\"translate(CELL-X CELL-Y)\"> using LOCAL coordinates; every group owns its own full-cell dark background rectangle. NO cross-cell content. If there are five subjects, sixth bottom-right cell stays empty dark background in a group id=\"unused\". Keep all subject geometry at least 30 units from cell edges, major silhouette occupies 65-80% of cell. All paint definitions must be local to the group or explicit flat fills. Do not use a shared sheet-wide backdrop.\n\nThese are FUTURE EXPANSION ART CONCEPTS for later review, not canonical history or active content. This is an engraved fantasy illustration set: confident irregular contours, expressive asymmetric gestures, three broad value groups, broad sculptural material planes before detail, sparse form-following engraving, no repeated tiny decoration. Connected joinery and credible support. Upper-left light, quiet background #10232c. Ink #10232c, shadow #34464b, worn ivory #ead7b5, muted bronze #b68d62, smoky steel #95a6aa. Emberwake adds moss #7c987a, saltglass #75a99f, restrained cinder #ca7658. Night Passage patron accents: Aster warm yellow #dfc777; Neris aqua #6dbfb0; Vesta coral #d78568; Isen pale ice blue #a5cbda; Nyra restrained lavender #a18cb8. Materials must look different: wood grain follows stress, leather folds, stone thickness, translucent glass has a clear rim and broad transmission planes, metal has restrained flat highlights. No plastic gloss, no golden edge on everything. Do not turn every object into a symmetrical emblem.\n\nEach scene reads as one distinct designed subject at 160x112 and 80x56, and should survive a 64px silhouette glance for props. This is illustration art only: no frame, captions, labels, text, digits, watermark, logo or UI. Static SVG paths and simple shapes only; no raster embedding, image, text, use, CSS stylesheets, scripts, animation, external resources or filters. No inaccessible gradient references. Economical construction with large quiet areas.\n\nSUBJECTS in exact row-major cell order:\nCell 1: id=\"cinder-mantle\"; origin (0,0); Cinder mantle. An empty heavy charcoal felt shoulder mantle hanging diagonally from one copper clasp, folded outward at one side, warm inner lining and a clear open neckline; no wearer.\nCell 2: id=\"glassworker-visor\"; origin (480,0); Glassworker visor. A lowered smoky glass face shield riveted to an asymmetrical copper brow frame, hinged at both visible fittings; glass edge and broad transparent plane, dark empty space behind it; no face.\nCell 3: id=\"rootstep-boots\"; origin (960,0); Rootstep boots. A mismatched-angle pair of tall moss leather boots, one planted and one tilted to reveal a segmented wood sole; ankle folds and actual thickness; avoid vines and generic metal greaves.\nCell 4: id=\"choir-bracers\"; origin (0,336); Choir bracers. A separated pair of short ivory-and-iron forearm guards with slotted open outer plates; one face-on, one side-on with thick leather lining, not gauntlets or arms.\nCell 5: id=\"slag-belt\"; origin (480,336); Slag belt. A broad worn leather tool belt curling into a supported C gesture, one blackened hinged buckle and two fitted flat metal pouches; no coins or category-symbol motif.\nCell 6: id=\"cistern-torc\"; origin (960,336); Cistern torc. An open horseshoe neck ring of patinated bronze, one widened shallow ceramic cup terminal and one tapered solid terminal; clear gap, distinct metal and pale salt glaze, not a closed medallion.\n\nKeep each object composition distinct, readable and structurally grounded; the five Night Passage patrons have elemental/material affinities but these objects do not claim established lore or gameplay effects.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "response": {
+    "created": 1793976434,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1440x672",
+    "svg_usage": {
+      "input_tokens": 2355,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 12479,
+      "reasoning_tokens": 265,
+      "total_tokens": 14834
+    },
+    "usage": {
+      "input_tokens": 979,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 979
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1763
+    },
+    "request_id": "req_8ea5260be10d4aeebcc5913af57654c7",
+    "http_status": 200,
+    "elapsed_seconds": 262.341,
+    "started_utc": "2026-11-06T14:46:30.039610+00:00"
+  },
+  "estimated_usd": 0.157915,
+  "original": {
+    "file": "sheet.svg",
+    "sha256": "a1d09c1db4bfda1c60a6b2d9e4b849b8ea12e335f3c84ac9f3e4ffeee230547f"
+  },
+  "outputs": [
+    {
+      "id": "cinder-mantle",
+      "name": "Cinder mantle",
+      "sha256": "b950321ade53d5188049b4b7f452aa50cc024b62fbd4224fc740ca36f5a51bc7",
+      "verdict": "candidate",
+      "note": "Open neckline, swept folds and warm lining read well at 80px. Clasp remains a supported closure; quiet broad fabric planes."
+    },
+    {
+      "id": "glassworker-visor",
+      "name": "Glassworker visor",
+      "sha256": "fed0a863be240097eacf91736088bbe1d6730c0eb349bac4c38f27fb3b639ef1",
+      "verdict": "candidate-with-caveat",
+      "note": "Glazed pane and two fitted hinge supports read clearly. Glass is conveyed by broad reflection/transmission shapes, not physically transparent rendering."
+    },
+    {
+      "id": "rootstep-boots",
+      "name": "Rootstep boots",
+      "sha256": "692e23bc60ff3b67f728fe9c6855cbf4e5762ab5fa01fa1c1f05c289edc0d1b3",
+      "verdict": "candidate",
+      "note": "Distinct planted/tilted boots with sole exposure and moss leather folds. Measured top bound is 31.42px within the requested 30px margin; visual concern about tight padding was resolved by source-size bounds check. No fit adaptation needed."
+    },
+    {
+      "id": "choir-bracers",
+      "name": "Choir bracers",
+      "sha256": "63a0317acb1cbb4ad5523f093e9d9da502fcc989fa006d8aadd895c15f6824c6",
+      "verdict": "candidate",
+      "note": "The paired front/side views have real open lining and clear slotted plates; distinct from full arms or gloves."
+    },
+    {
+      "id": "slag-belt",
+      "name": "Slag belt",
+      "sha256": "40895e6a9235b39cfe27b59eca24b9e7d4c492be9a9d64a21394bd0bf7ff3f5a",
+      "verdict": "candidate",
+      "note": "Large buckle, C-curved strap and two fitted pouches read at native and compact sizes; strap notches are secondary."
+    },
+    {
+      "id": "cistern-torc",
+      "name": "Cistern torc",
+      "sha256": "bc7166eda3581946f2130fde2405fd1d25292fb7cac1fd847bacbf86f6fe25de",
+      "verdict": "candidate-with-caveat",
+      "note": "Open ring and asymmetrical ceramic cup terminal are distinct. Fine edge chips recede; still reads as a thick torc rather than a medallion."
+    }
+  ],
+  "review_context": {
+    "actual_game_ui": "No supported runtime slots; not an adoption review.",
+    "aesthetic_acceptance": "User acceptance pending; no reroll. All six remain optional concepts."
+  },
+  "qa": {
+    "svg_checked": 7,
+    "source_original_and_extraction_hashes_verified": true,
+    "contact": {
+      "initial_bytes": 368323,
+      "optimized_bytes": 363999,
+      "retained_bytes": 363999,
+      "pixel_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "mode": "RGBA",
+      "color_metadata_equal": true,
+      "sha256": "0ba2dfdfe7abe2c34723032df23efef00e2f8307088968013d00def26696c469",
+      "file": "contact.png"
+    },
+    "crop_pixel_comparison": {
+      "exact_cells": 2,
+      "total_cells": 6,
+      "max_channel_delta": 7
+    },
+    "native_compact_author_review": 6
+  }
+}

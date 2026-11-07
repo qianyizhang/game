@@ -1,0 +1,31 @@
+{
+  "kind": "svg",
+  "prompt": "Create ONE native editable SVG opening keyframe for an original fantasy story proposal titled The Door That Fits, grounded in Dungeon Cartographer. Landscape exactly 1280x896, viewBox=\"0 0 1280 896\". One opening scene, no comic panels or later actions.\n\nA quiet cartographer's drafting table seen from a LOCKED high three-quarter view. An adult Lantern Keeper's TWO hands in muted teal sleeves enter from the bottom edge, no face or other person visible. Broad dark wood tabletop, cream parchment room tiles, restrained ink-blue water in one existing room, brass straightedge lying quiet at far right. Center is a LARGE empty square gap in a simple three-room L arrangement. An existing room tile sits immediately LEFT of the empty square, with a single broad ink corridor ending in a clear doorway centered on its RIGHT edge. A second existing room tile sits immediately ABOVE the empty square, its corridor ending at a doorway centered on its BOTTOM edge. Below and left of the gap lies ONE loose cream square room tile, clearly separate from those two placed tiles. This loose tile has an L-shaped ink corridor from its TOP edge center to its RIGHT edge center: currently the wrong orientation for the gap. The left hand steadies its lower-left corner and right fingertips rest at its lower-right corner. The intended later quarter turn COUNTERCLOCKWISE will put its doors on LEFT and TOP, joining the two waiting corridors. All three tiles are the same size and thickness, simple square silhouettes. Make the gap and the loose tile large and readable. No other spare tiles, tokens, miniatures, glyphs or printed words. Hands have connected wrists, naturally bent fingers, and visible contact with tile; no severed fingers or additional limbs.\n\nSTYLE: cohesive expressive engraved fantasy illustration; connected broad sculptural planes, economical curved contours, upper-left diffuse light, three clear value groups, quiet negative spaces. Material and palette: deep ink-blue #20343f, muted teal sleeves #356b66, sage #7b9c81, warm parchment #e8d6a5, ochre brass #b59059, pale blue water #6b959d; quiet warm wood #514a3b. Keep the crucial objects legible at 480x336 and 160x112, generous margins around hands, figures and props. Design stable contours for later reference-guided animation. No plastic gloss, dense repetitive hatching, tiny clutter or photorealism.\n\nStatic self-contained editable SVG paths and simple shapes ONLY. No embedded raster, scripts, external references, fonts, text, numbers, UI, panels, logos, gradients or animation. Separate coherent groups for the key props/subjects. New events are candidate fiction, not a depiction of accepted game history. Do not draw a contact sheet or new asset family.",
+  "output": "reference.svg",
+  "request_id": "req_5c4fec26f0d3462fbe9c0c97cd0c9348",
+  "started_at": "2026-11-06T15:07:48Z",
+  "created": 1793977723,
+  "elapsed_s": 190.05,
+  "usage": {
+    "input_tokens": 644,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 644
+    },
+    "output_tokens": 1284,
+    "output_tokens_details": {
+      "image_tokens": 1284,
+      "text_tokens": 0
+    },
+    "total_tokens": 1928
+  },
+  "svg_usage": {
+    "input_tokens": 2230,
+    "model": "gpt-6.1-sol",
+    "output_tokens": 7607,
+    "reasoning_tokens": 447,
+    "total_tokens": 9837
+  },
+  "background": "transparent",
+  "cost_estimate_usd": 0.12227
+}

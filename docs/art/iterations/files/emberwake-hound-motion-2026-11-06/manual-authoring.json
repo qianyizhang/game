@@ -1,0 +1,156 @@
+{
+  "author": "manual SVG refinement in this art lane; no model call",
+  "source": "hound-anticipation.svg",
+  "source_sha256": "738412728809e26793ce65abcb7bf9d07f0184eab28bffbf70a5e384256b8c9a",
+  "purpose": "Future key poses only. Ordinary hound damage resolves immediately in range; no new simulation delay, facing or attack phase. Not a validated animation loop.",
+  "constraints": {
+    "anticipation": {
+      "body": [-4, 18],
+      "head": [-9, 17],
+      "limbs": {
+        "rear-far": [
+          [186, 213],
+          [213, 255],
+          [203, 284],
+          [226, 326]
+        ],
+        "front-far": [
+          [290, 213],
+          [329, 263],
+          [316, 301],
+          [338, 328]
+        ],
+        "rear-near": [
+          [151, 208],
+          [178, 254],
+          [150, 286],
+          [143, 336]
+        ],
+        "front-near": [
+          [274, 212],
+          [289, 269],
+          [268, 309],
+          [285, 338]
+        ]
+      }
+    },
+    "launch": {
+      "body": [4, 7],
+      "head": [5, 16],
+      "limbs": {
+        "rear-far": [
+          [194, 202],
+          [220, 242],
+          [230, 276],
+          [248, 320]
+        ],
+        "front-far": [
+          [298, 202],
+          [302, 253],
+          [290, 282],
+          [317, 305]
+        ],
+        "rear-near": [
+          [159, 197],
+          [146, 241],
+          [115, 281],
+          [116, 336]
+        ],
+        "front-near": [
+          [282, 201],
+          [302, 253],
+          [333, 297],
+          [357, 336]
+        ]
+      }
+    },
+    "contact": {
+      "body": [6, 12],
+      "head": [9, 22],
+      "limbs": {
+        "rear-far": [
+          [196, 207],
+          [217, 250],
+          [210, 283],
+          [232, 327]
+        ],
+        "front-far": [
+          [300, 207],
+          [313, 261],
+          [304, 299],
+          [319, 329]
+        ],
+        "rear-near": [
+          [161, 202],
+          [185, 247],
+          [171, 288],
+          [176, 337]
+        ],
+        "front-near": [
+          [284, 206],
+          [288, 263],
+          [320, 306],
+          [337, 340]
+        ]
+      }
+    },
+    "recovery": {
+      "body": [-2, -3],
+      "head": [-5, -8],
+      "limbs": {
+        "rear-far": [
+          [188, 192],
+          [199, 234],
+          [194, 273],
+          [218, 325]
+        ],
+        "front-far": [
+          [292, 192],
+          [314, 249],
+          [329, 291],
+          [347, 327]
+        ],
+        "rear-near": [
+          [153, 187],
+          [161, 234],
+          [148, 279],
+          [150, 337]
+        ],
+        "front-near": [
+          [276, 191],
+          [268, 247],
+          [279, 307],
+          [297, 339]
+        ]
+      }
+    }
+  },
+  "source_limb_landmarks": {
+    "rear-far": [
+      [190, 195],
+      [204, 235],
+      [200, 270],
+      [225, 325]
+    ],
+    "front-far": [
+      [294, 195],
+      [316, 255],
+      [350, 306],
+      [365, 326]
+    ],
+    "rear-near": [
+      [155, 190],
+      [156, 233],
+      [140, 270],
+      [147, 334]
+    ],
+    "front-near": [
+      [278, 194],
+      [264, 251],
+      [272, 307],
+      [287, 337]
+    ]
+  },
+  "method": "All absolute path coordinate pairs are mapped with hand-chosen landmark deltas. For limb points, locate source y between successive landmarks and interpolate delta with t*t*(3-2*t); clamp outside the limb range. Translate body/mane and skull as intact masses. Tail delta fades toward its tip. Region indices: tail 0-1, rear-far 2-3, front-far 4-5, body 6-9, rear-near 10-12, mane 13-15, front-near 16-19, head 20-30. Remove source toe-cut path 31 because its coordinates belong to old feet. Author a broad two-plane neck bridge between body/head masses after path 19; contact gets a modest separate lower jaw. Exact final SVG files are the durable authored sources, not a claim of rigged motion.",
+  "limitations": "2D point fitting, not skeletal IK or a 3D rig. Paw support and negative space need visual review; no timing, transition interpolation or continuous velocity is established."
+}

@@ -83,12 +83,14 @@ button:disabled {
 .revision-preview img {
   display: block;
   max-width: 100%;
+  height: auto;
   object-fit: contain;
   background: #0c211c;
   border-radius: 5px;
 }
 .revision-preview figure {
   margin: 0;
+  max-width: 100%;
 }
 .revision-preview figcaption {
   font-size: 13px;

@@ -1,0 +1,38 @@
+{
+  "opening": {
+    "file": "reference.png",
+    "sha256": "52d2317c33536b98c2bbd2dd050c5e98bd420882073532e6e0bbdec215d30e54",
+    "source": {
+      "svg": "reference.svg",
+      "render": [480, 336],
+      "renderer": "Chromium154.0.8037.57"
+    }
+  },
+  "chapter-1-last": {
+    "file": "references/chapter-1-last.png",
+    "sha256": "00dc06ae330136a4de3a1e594c9b7464f9ea421ff41acf487c226eb0323b02b7",
+    "source": {
+      "gif": "chapter-1.gif",
+      "frame": 15,
+      "recipe": "ImageMagick coalesce original GIF; extract zero-based frame to PNG, compression9, no pixel edit."
+    }
+  },
+  "chapter-2-last": {
+    "file": "references/chapter-2-last.png",
+    "sha256": "5dec1f255c034a85a0042254017eaf80681f53a87054478e82e89c4a165ae9a2",
+    "source": {
+      "gif": "chapter-2.gif",
+      "frame": 15,
+      "recipe": "ImageMagick coalesce original GIF; extract zero-based frame to PNG, compression9, no pixel edit."
+    }
+  },
+  "chapter-3-last": {
+    "file": "references/chapter-3-last.png",
+    "sha256": "13a2babbf90705d1bb2fac497c4af73002385f39df1459537be41afa18ef7395",
+    "source": {
+      "gif": "chapter-3.gif",
+      "frame": 15,
+      "recipe": "ImageMagick coalesce original GIF; extract zero-based frame to PNG, compression9, no pixel edit."
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "historical_allocation_usd": 9,
+  "usage_estimate_usd": 0.4295,
+  "outstanding_reserved_usd": 0,
+  "successful_calls": 5,
+  "basis": "Token-derived estimate, not invoice. Per-call costs/usage occur once in calls/*.json; rates/reservations in settings.json. Account balance/expiry user-reported, not verified."
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "svg",
+  "prompt": "Create ONE native editable SVG opening keyframe for an original fantasy story proposal titled One Seat More, grounded in Last Hearth. Landscape exactly 1280x896, viewBox=\"0 0 1280 896\". One opening scene, no comic panels or later actions.\n\nInside a quiet Last Hearth tavern, fixed eye-level three-quarter medium-wide view of ONE broad wooden table. A seated adult Hearth Squire occupies the RIGHT third: one connected waist-up body in worn steel armor, cream linen at the joints, muted sage asymmetric shoulder cloth; a steel cap helmet leaves a plain warm-cream face visible, short brown hair at its edge, connected nose and cheek planes, one simple eye. Helmet, shoulders, elbows and hands have broad readable planes. The Squire's left forearm rests on the tabletop, right hand relaxed near the table edge, looking toward the LEFT. Leaned against their chair at far right is a single worn steel shield; it stays background. At the LEFT of the table hovers ONE small Coal Wisp: cool muted sage spirit shaped like a single flowing C curl, shadowed face with two ivory eyes, one tapering tail, no hands or feet, no wings, no warm flame. It looks toward the table but hovers lower than its top. The gap between the Squire and the Wisp is clear. ONE low three-legged wooden stool sits below the CENTER of the table, visible in front, a little too far to the right to be under the Wisp yet. On the tabletop near the Squire sit two simple small wooden cups; one is near the Squire and one nearer the center. At far back, a quiet uncut bread loaf on an oval wooden board, no busy feast. Background broad dark timber planes, warm ivory plaster patch, diffuse upper-left light. No other people, extra spirits, extra stools, candles or lanterns. Clear ground contact for the stool and Squire chair; stable table edges. The visual story will be invitation, making room, settling, and sharing a cup, not combat.\n\nSTYLE: cohesive expressive engraved fantasy illustration; connected broad sculptural planes, economical curved contours, upper-left diffuse light, three clear value groups, quiet negative spaces. Material and palette: forest ink #172928, warm gray steel #929f95, cream #dfd4b4, muted sage cloth #789579 and selective copper #a77655, sage Wisp #789579 with ivory inner plane and dark face, quiet brown wood #675340; three value groups, no gold upgrade effect. Keep the crucial objects legible at 480x336 and 160x112, generous margins around hands, figures and props. Design stable contours for later reference-guided animation. No plastic gloss, dense repetitive hatching, tiny clutter or photorealism.\n\nStatic self-contained editable SVG paths and simple shapes ONLY. No embedded raster, scripts, external references, fonts, text, numbers, UI, panels, logos, gradients or animation. Separate coherent groups for the key props/subjects. New events are candidate fiction, not a depiction of accepted game history. Do not draw a contact sheet or new asset family.",
+  "output": "reference.svg",
+  "request_id": "req_0bfd473ad73d48a8a38bfa190b633c80",
+  "started_at": "2026-11-06T15:18:41Z",
+  "created": 1793978375,
+  "elapsed_s": 225.041,
+  "usage": {
+    "input_tokens": 716,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 716
+    },
+    "output_tokens": 1284,
+    "output_tokens_details": {
+      "image_tokens": 1284,
+      "text_tokens": 0
+    },
+    "total_tokens": 2000
+  },
+  "svg_usage": {
+    "input_tokens": 2302,
+    "model": "gpt-6.1-sol",
+    "output_tokens": 9136,
+    "reasoning_tokens": 389,
+    "total_tokens": 11438
+  },
+  "background": "transparent",
+  "cost_estimate_usd": 0.138064
+}

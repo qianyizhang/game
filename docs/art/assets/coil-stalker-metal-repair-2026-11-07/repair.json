@@ -1,0 +1,48 @@
+{
+  "method": "Manual SVG geometry derivative; no API request or runtime adaptation.",
+  "base_commit": "d33bb901a7bd2336f4243882990c35bf3ad308e0",
+  "parent": {
+    "revision": "hbs-cont-20261106-scrapyard-02:coil-stalker",
+    "file": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/coil-stalker.svg",
+    "sha256": "3a8b8ec31f63d125f8ed14bc7fa1658553ed347617e58112b778e7ac18c9b000"
+  },
+  "original_call": "docs/art/assets/expansion-scrapyard-concepts-2026-11-06/scrapyard-02/call.json",
+  "output": {
+    "file": "coil-stalker.svg",
+    "sha256": "940966b62ac50dcffb4a930d94b8c6239bd20e536ccb60363d331056e0f3916b"
+  },
+  "change": [
+    "Replace only the first three soft-curl paths with one two-turn, constant 14-unit rectangular-section helix, radius36, pitch56, and 12 flat facets per turn.",
+    "Two fitted end arms and socket collars connect behind the retained head and forearm/body planes; broad face/top/shadow colors describe steel, with no gradients or decorative stripes.",
+    "All original 13 body/head/leg paths, root framing and 384x384 viewBox remain exact. No sprite enlargement."
+  ],
+  "review": {
+    "verdict": "material-improvement-candidate; camera/crowd hold retained",
+    "sizes_px": [384, 160, 80, 30, 20],
+    "finding": "Continuous narrow band, two broad openings and light/dark metal faces replace the stacked soft curls. Turn gaps remain distinguishable in isolated30/20px views; the 20px overlap fixture loses individual attachments.",
+    "limits": "Source-only sideward pose retained. Actual high-oblique camera, game horde behavior, runtime slot and user aesthetic acceptance remain unreviewed."
+  },
+  "comparison": {
+    "file": "comparison.png",
+    "sha256": "a9ccc646106b11df1b16e4d6e9cdf81ae98f79338b61ba10b53c56529b7f0887",
+    "lossless_rgba_dimensions_alpha_color_verified": true,
+    "size": [820, 790]
+  },
+  "api_calls": 0,
+  "api_spend_usd": 0,
+  "qa": {
+    "svg_safety_bounds_digests": "passed; foreground inside384x384; original/output and comparison hashes verified",
+    "retained_body_head_leg_paths": 13,
+    "isolated_import": {
+      "attempts_added": 1,
+      "revisions_added": 1,
+      "assets": 709,
+      "revisions": 319,
+      "selections_unchanged": true
+    },
+    "actual_gallery": "Candidate authoring record, held parent and original call opened. No writes or page errors.",
+    "source_review": "1440/390/320px browser framing passed; 30/20px images retain exact CSS dimensions; no overflow or decode error. Density fixture is synthetic.",
+    "affected_browser_journeys": "3 asset-history journeys passed16.5s at unchanged normal local limits.",
+    "maintenance": "format:maintenance and assets:history verify passed; shared registry remains709assets/318revisions/0selections."
+  }
+}

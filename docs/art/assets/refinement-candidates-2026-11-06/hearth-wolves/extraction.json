@@ -1,0 +1,53 @@
+[
+  {
+    "id": "stray-alert",
+    "file": "stray-alert.svg",
+    "source": "sheet.svg",
+    "source_sha256": "28e0aa054189dfbadf945e78eb8351d3c45c95cd7d741ff7903d53954320ab89",
+    "source_group": "stray-alert",
+    "removed_transform": "translate(0 0)",
+    "width": 560,
+    "height": 392,
+    "sha256": "382e29329dc8ce5f80c629780c6264f6d0e0643465010e599ac98a6823d75a3e",
+    "bytes": 4226,
+    "paths": 26,
+    "state": "unreviewed_candidate",
+    "api_original": "api-original.svg.gz",
+    "api_original_decoded_sha256": "7ae3c0f87b56ae9c07f34eb0a49df75307522d2dd49145cc53f882f758d7c5c7",
+    "source_note": "Review source differs from API original only by removal of end-of-line whitespace. All vectors and decoded pixels unchanged."
+  },
+  {
+    "id": "leader-calling",
+    "file": "leader-calling.svg",
+    "source": "sheet.svg",
+    "source_sha256": "28e0aa054189dfbadf945e78eb8351d3c45c95cd7d741ff7903d53954320ab89",
+    "source_group": "leader-calling",
+    "removed_transform": "translate(560 0)",
+    "width": 560,
+    "height": 392,
+    "sha256": "a5df7976273f1305bdbe5e1658c8860abaa341041660eaba6827a7c57073662b",
+    "bytes": 4850,
+    "paths": 25,
+    "state": "unreviewed_candidate",
+    "api_original": "api-original.svg.gz",
+    "api_original_decoded_sha256": "7ae3c0f87b56ae9c07f34eb0a49df75307522d2dd49145cc53f882f758d7c5c7",
+    "source_note": "Review source differs from API original only by removal of end-of-line whitespace. All vectors and decoded pixels unchanged."
+  },
+  {
+    "id": "wolf-guardian",
+    "file": "wolf-guardian.svg",
+    "source": "sheet.svg",
+    "source_sha256": "28e0aa054189dfbadf945e78eb8351d3c45c95cd7d741ff7903d53954320ab89",
+    "source_group": "wolf-guardian",
+    "removed_transform": "translate(0 392)",
+    "width": 560,
+    "height": 392,
+    "sha256": "4adb1506f7fbde074930fd10ecc96f81f1528ee89caf1efa6319add6b5e96ce6",
+    "bytes": 5446,
+    "paths": 26,
+    "state": "unreviewed_candidate",
+    "api_original": "api-original.svg.gz",
+    "api_original_decoded_sha256": "7ae3c0f87b56ae9c07f34eb0a49df75307522d2dd49145cc53f882f758d7c5c7",
+    "source_note": "Review source differs from API original only by removal of end-of-line whitespace. All vectors and decoded pixels unchanged."
+  }
+]

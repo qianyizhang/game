@@ -1,0 +1,46 @@
+{
+  "original_bytes": "All5 GIFs,reference.svg and4 actual PNG inputs match checkpoint9973d6f SHA256 values.",
+  "gifs": {
+    "source_clips": 4,
+    "frames_each": 16,
+    "joined_frames": 64,
+    "size": [480, 336],
+    "frame_ms": 300,
+    "duration_ms": 19200,
+    "decoded_content_and_timings_exact": true
+  },
+  "requests": "All5 canonical prompts/settings and ordered exact reference bytes reconstruct the original sent requests; usage/request IDs preserved.",
+  "previews": "Native join-preview panels are pixel-identical to source GIF frames. Compact preview is explicit nearest-neighbor sampling, not a claimed identical16-bit recompression.",
+  "gallery": "Production isolated import/verify98 revisions,0 selections; six original source revision IDs/hashes/parents,canonical documents and nativeGIF controls inspected; all runtime selection buttons disabled.",
+  "browser": "Loopback Chromium154 nativeGIF default; real-time ending visually inspected and compositor image content compares0 changed pixels; reduced-motion SVG;390/320px with enlarged text; all links,no external requests/page errors.",
+  "browser_probe_exception": "Canvas drawImage did not expose current animated GIF frame. Replaced that probe with compositor screenshot; one extra screenshot rounding row excluded from480x336 content comparison. No image timing/pixel change.",
+  "maintenance": "Passed npm run format:maintenance (format/inventory/links/hydration), baseline assets:history verify709 registered sources, and diff whitespace.",
+  "scope": "Data/review-page cleanup only; no application,gameplay,native geometry or selection change. Repository Google Chrome E2E is separate from the Chromium probe.",
+  "paid_calls_for_cleanup": 0,
+  "registration": {
+    "handoff_head": "443f8bb80d3a0f304be30d980927e1c775219160",
+    "references": "All four exact sent PNG inputs remain call attachments. Manifest owns source/frame/SHA facts; six actual output revision IDs/parents are preserved. No permanent frame catalogue or duplicate artwork bytes.",
+    "request_reconstruction": "All five canonical prompt/common/kind parameter sets and input selectors match immutable checkpoint sent-request records; endpoint kept outside body.",
+    "checks": {
+      "maintenance": "Passed: formatting/inventory/links, history verify, lint/types, 19 Python, 202 tooling, 81 DCC contracts and production build.",
+      "browser": "Three existing asset-history journeys passed at normal local limits. Custom native playback/document/layout checks passed after correcting an asynchronous harness wait; joined-GIF restart failure remains separate and unresolved.",
+      "history": "709 assets / 98 revisions / 709 source registrations / zero selections. All previous records, native originals, exact inputs, call records, shared settings and game defaults unchanged.",
+      "acceptance": "Draft blocked by shared gallery restart and independent/user story/art review; no new application/simulation/geometry/native execution claimed. Hosted final-head checks reported on PR."
+    },
+    "media": "All 64 source/joined frames and timings match exactly; joined RGBA hash matches manifest. Four exact PNG input hashes verified; three frame15 inputs equal their parent GIF composed pixels. Native loops recorded in manifest.",
+    "gallery": "Six source revisions and 18 unique supporting documents inspected (24 desktop/mobile views): five exact call records, shared settings, manifest, four exact PNG inputs, review images and existing evidence. Source-only controls/parents, 1440/390/320px and 16/20px text fit; no page errors.",
+    "controls": "Initial native playback and Stop passed. Reduced motion interrupts active playback and blocks new playback. Compositor snapshots show motion. Restart FAILED for once-playing joined GIF: Stop then Play retained the final frame, pixel-identical to the ending screenshot. Shared gallery implementation dependency; draft remains blocked. No true pause/seek claimed.",
+    "harness": "First custom document probe observed prior text before asynchronous response settled. Corrected only the ignored probe wait and retained exact text/byte comparisons; full probe then passed. Repository assertions/timeouts and gallery code unchanged."
+  },
+  "shared_replay_compatibility": {
+    "source_head": "989636d9184ac0d26752bd21cfa8c879307d86f3",
+    "governance_head": "d6cc4728c87b1c4d13489b5a91ce5e4cb73f3304",
+    "replay_head": "6fdc26d94ac5434446e35f23c44e249164312940",
+    "resolved_shared_tree": "f78b8a50c29a823df315cfcdb8c61fa774cd12af",
+    "disposable_combination_tree": "291bfa7ac7cfbf5f91e91decef84e73e0639865e",
+    "proof": "2 live/offline cases passed: completed once-playing story, Stop, fresh-URL Play, compositor opening pixel-identical to initial opening and different from ending, then visible advancement. Original playback/download SHA-256 exact; old object URL revoked; reduced motion interrupts and blocks playback; no page errors or offline network requests.",
+    "checks": "Resolved shared baseline passed full maintenance (208 tooling, 81 DCC, 19 Python tests) and 19 affected browser journeys at normal limits. This story combination passed history verification and actual native replay checks. No shared implementation, artwork, inputs, library records, defaults or selections changed in this evidence follow-up.",
+    "limits": "Compatibility tested at these exact heads only. Shared implementation is not landed or included in this candidate branch; its historical independent-code replay failure remains valid. Draft source study; independent library additions require serial landing reconciliation. No pause/seek, runtime adoption or art acceptance.",
+    "probe_corrections": "First ignored probe captured only after animated decoding/large per-byte protocol transfer and missed opening. A second oversized transfer was stopped. Final probe captures immediately and compares a browser-side digest; both earlier logs/captures remain temporary. No repository assertions or timeouts changed."
+  }
+}
