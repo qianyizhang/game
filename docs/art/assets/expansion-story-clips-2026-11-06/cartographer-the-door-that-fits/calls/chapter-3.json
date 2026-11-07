@@ -1,0 +1,28 @@
+{
+  "kind": "gif-edit",
+  "prompt": "Generate one native animated GIF chapter of the Dungeon Cartographer story proposal The Door That Fits: chapter 3, Connect. This is candidate fiction, not accepted history or a new game rule. One shot, not a comic sheet or montage.\n\nREFERENCE ORDER: image 1 is the exact CURRENT scene state and starting composition. Follow its existing object count, positions, body pose, tile/cup/fixture state and camera. If image 2 exists it is ONLY the original visual identity/palette anchor; never reset action state or object placement to it. Preserve camera, crop, scale, all background edges and the same explicit palette throughout. Do not apply new color grading, repaint quiet surfaces or add engraving. Palette: deep ink-blue #20343f, muted teal sleeves #356b66, sage #7b9c81, warm parchment #e8d6a5, ochre brass #b59059, pale blue water #6b959d; quiet warm wood #514a3b.\n\nCURRENT ACTION: Begin with the correctly turned loose room tile. Both hands slide and lower the rigid square tile into the central empty square. Its LEFT doorway meets the existing left room RIGHT doorway; its TOP doorway meets the upper room BOTTOM doorway. The three L-connected rooms now form one continuous broad ink corridor. End with tile resting flat, no floating edge and no duplicate tile. No new ink animation, magical growth or altered water. Last three frames hold connected rooms with fingers at the edges.\n\nSixteen sequential frames, 300 ms each. Readable anticipation, one physical action and settling. Do not loop back to start. Fixed 480x336 view, restrained upper-left diffuse light, no flashing, magic spark storms, camera movement, zoom or full-image sliding. Preserve connected joints, weight/contact, rigid-object geometry, negative spaces and material planes. No new objects, duplicate bodies/props, extra hands/fingers, labels, text, numbers, logos or UI. End at the requested state so a later chapter can start from it. Last still must be useful for review at 480x336 and 160x112. Never invent intermediate history or claim an established world event.",
+  "inputs": ["chapter-2-last", "opening"],
+  "output": "chapter-3.gif",
+  "request_id": "req_48e8f13262d4411fafa158f162bd087f",
+  "started_at": "2026-11-06T15:15:09Z",
+  "created": 1793978152,
+  "elapsed_s": 42.682,
+  "usage": {
+    "input_tokens": 1750,
+    "input_tokens_details": {
+      "image_tokens": 1260,
+      "text_tokens": 490
+    },
+    "output_tokens": 1869,
+    "output_tokens_details": {
+      "image_tokens": 1869,
+      "text_tokens": 0
+    },
+    "total_tokens": 3619
+  },
+  "output_metadata": {
+    "generation_id": "201e4f02-c09e-4e02-a595-51c6b8e1d8e0"
+  },
+  "background": "opaque",
+  "cost_estimate_usd": 0.0686
+}
