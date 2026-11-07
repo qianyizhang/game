@@ -1,0 +1,36 @@
+[
+  {
+    "id": "heavyBlade-base-refined",
+    "file": "heavyBlade-base-refined.svg",
+    "source": "sheet.svg",
+    "source_sha256": "86722b99a1bf55830a3aa3bfad6b3e9782fb010b31d4109443cd85731703cca3",
+    "source_group": "heavyBlade-base-refined",
+    "removed_transform": "translate(0 0)",
+    "width": 800,
+    "height": 560,
+    "sha256": "0639c33d00a9b1bf420b139346908cccc1578bb48e21924041f0c2410174fcc8",
+    "bytes": 4348,
+    "paths": 32,
+    "state": "unreviewed_candidate",
+    "api_original": "api-original.svg.gz",
+    "api_original_decoded_sha256": "e761e5011f3c384144601fcd0a898bf0d3f6ee7f552e1d6c04a9e16d0a5a7f4e",
+    "source_note": "Review source differs from API original only by removal of end-of-line whitespace. All vectors and decoded pixels unchanged."
+  },
+  {
+    "id": "heavyBlade-upgraded-refined",
+    "file": "heavyBlade-upgraded-refined.svg",
+    "source": "sheet.svg",
+    "source_sha256": "86722b99a1bf55830a3aa3bfad6b3e9782fb010b31d4109443cd85731703cca3",
+    "source_group": "heavyBlade-upgraded-refined",
+    "removed_transform": "translate(800 0)",
+    "width": 800,
+    "height": 560,
+    "sha256": "d7b101b5235994be4187291313b7e312ebe42bbfdaaec76696726553d6fa6b70",
+    "bytes": 4702,
+    "paths": 33,
+    "state": "unreviewed_candidate",
+    "api_original": "api-original.svg.gz",
+    "api_original_decoded_sha256": "e761e5011f3c384144601fcd0a898bf0d3f6ee7f552e1d6c04a9e16d0a5a7f4e",
+    "source_note": "Review source differs from API original only by removal of end-of-line whitespace. All vectors and decoded pixels unchanged."
+  }
+]
