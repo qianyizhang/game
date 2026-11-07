@@ -1,0 +1,48 @@
+{
+  "allocation_usd": 9,
+  "prior_study_usd_not_charged_to_this_allocation": 0.331047,
+  "spent_estimate_usd": 0.257728,
+  "outstanding_reserved_usd": 7.5,
+  "calls": [
+    {
+      "name": "hearth-ram",
+      "reserved_usd": 7.5,
+      "state": "returned",
+      "started_utc": "2026-11-06T14:40:41Z",
+      "request_id": "req_c0fd278a9c9345b3a5a1270eb4bee746",
+      "estimated_usd": 0.128975,
+      "elapsed_seconds": 225.44
+    },
+    {
+      "name": "hearth-heron",
+      "reserved_usd": 7.5,
+      "state": "returned",
+      "started_utc": "2026-11-06T14:44:52Z",
+      "request_id": "req_c0d824ddb79d43d1a4ef937fb6bebe95",
+      "estimated_usd": 0.128753,
+      "elapsed_seconds": 229.84
+    },
+    {
+      "name": "hearth-tortoise",
+      "reserved_usd": 7.5,
+      "state": "unknown",
+      "started_utc": "2026-11-06T14:48:57Z"
+    }
+  ],
+  "pricing_checked": "2026-11-06",
+  "rates_per_million": {
+    "image_text_input": 5,
+    "image_input": 8,
+    "image_output": 30,
+    "svg_input": 2,
+    "svg_output": 10
+  },
+  "reservation_usd_per_call": 7.5,
+  "reservation_basis": "Full 1.05M author context at long-input $4/M plus 128K output at long $15/M = $6.12, plus $1.38 allowance for image stage and request text. No endpoint output-token limit exists; no fast tier requested. Conservative accounting reservation, not verified invoice. Unknown outcome stops paid stream.",
+  "references": [
+    "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/reference/resources/images/methods/generate"
+  ]
+}

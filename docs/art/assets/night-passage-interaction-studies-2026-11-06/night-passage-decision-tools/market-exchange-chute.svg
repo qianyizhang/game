@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="market-exchange-chute">
+    <rect width="480" height="336" fill="#10232c"/>
+    <ellipse cx="237" cy="285" rx="186" ry="14" fill="#142a32"/>
+    <g id="market-wood-structure">
+      <path d="M62 240 L154 83 L192 45 L419 57 L424 227 L394 253 L382 293 L342 295 L329 281 L105 279 L96 291 L59 286Z" fill="#493e34"/>
+      <path d="M62 240 L158 89 L193 46 L419 57 L384 119 L342 269Z" fill="#846044"/>
+      <path d="M177 65 L399 75 L374 110 L182 99Z" fill="#604a39"/>
+      <path d="M192 46 L419 57 L400 70 L182 61Z" fill="#b68d62"/>
+      <path d="M182 61 L180 99 L160 113 L158 89Z" fill="#76563e"/>
+      <path d="M180 99 L374 110 L344 140 L160 129Z" fill="#493e34"/>
+      <path d="M163 126 L274 132 L213 247 L84 245Z" fill="#9a7451"/>
+      <path d="M289 136 L371 140 L331 253 L239 250Z" fill="#846044"/>
+      <path d="M163 126 L274 132 L265 149 L151 147Z" fill="#604a39"/>
+      <path d="M289 136 L371 140 L364 159 L278 157Z" fill="#604a39"/>
+      <path d="M168 156 Q140 186 113 228 M195 155 Q174 189 147 228 M218 157 Q200 185 184 208 M252 154 L218 222 M298 169 Q285 206 266 237 M332 169 L306 235" fill="none" stroke="#76563e" stroke-width="3" stroke-linecap="round"/>
+      <path d="M62 240 L146 120 L157 88 L178 68 L180 99 L165 137 L81 246 L81 267 L216 271 L214 248 L273 129 L293 133 L239 253 L239 273 L331 278 L332 253 L373 135 L380 100 L400 70 L419 57 L412 111 L394 153 L355 262 L354 293 L332 295 L329 281 L105 279 L96 291 L59 286Z" fill="#9a7451"/>
+      <path d="M62 240 L78 243 L78 269 L216 273 L215 285 L103 279 L96 291 L59 286Z" fill="#846044"/>
+      <path d="M239 273 L331 278 L332 294 L329 281 L239 284Z" fill="#76563e"/>
+      <path d="M355 262 L394 153 L412 111 L419 57 L424 227 L394 253 L382 293 L354 293Z" fill="#604a39"/>
+      <path d="M65 239 L80 242 L165 133 L178 93 M218 250 L276 133 L289 134 M335 252 L378 135 L385 102 L400 77" fill="none" stroke="#c29b70" stroke-width="3" stroke-linecap="round"/>
+      <path d="M72 276 L198 280 M248 278 L318 283 M367 270 L388 209 M392 184 L408 141 M197 54 L278 59 M310 61 L389 65" fill="none" stroke="#493e34" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <g id="market-sliding-stop">
+      <path d="M158 105 L178 100 L183 158 L164 162 L154 151Z" fill="#34464b"/>
+      <path d="M160 107 L169 105 L173 155 L164 158Z" fill="#95a6aa"/>
+      <path d="M176 109 L373 119 L369 165 L174 154Z" fill="#34464b"/>
+      <path d="M176 109 L373 119 L365 126 L177 117Z" fill="#95a6aa"/>
+      <path d="M177 117 L365 126 L364 157 L177 147Z" fill="#657778"/>
+      <path d="M366 119 L379 114 L376 163 L365 168Z" fill="#293c42"/>
+      <path d="M369 122 L376 119 L372 159" fill="none" stroke="#95a6aa" stroke-width="2"/>
+      <path d="M251 105 L279 107 L280 133 L251 131Z" fill="#34464b"/>
+      <path d="M242 88 Q242 83 249 82 L283 84 Q292 85 292 91 L290 104 L282 110 L245 107 L240 101Z" fill="#34464b"/>
+      <path d="M242 88 Q242 83 249 82 L283 84 Q292 85 292 91 L284 97 L242 95Z" fill="#95a6aa"/>
+      <path d="M243 95 L284 97 L282 110 L245 107Z" fill="#657778"/>
+      <path d="M249 86 L280 88" stroke="#ead7b5" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <g id="market-ceramic-counters">
+      <ellipse cx="146" cy="247" rx="50" ry="13" fill="#493e34"/>
+      <path d="M98 223 C98 208 190 205 193 224 L193 242 C190 262 101 258 98 241Z" fill="#bca98a"/>
+      <ellipse cx="145" cy="224" rx="47" ry="18" fill="#ead7b5"/>
+      <ellipse cx="145" cy="223" rx="37" ry="11" fill="#dfcba4"/>
+      <path d="M105 222 Q118 209 158 212" fill="none" stroke="#f2e3c8" stroke-width="4" stroke-linecap="round"/>
+      <path d="M103 236 L104 245 Q119 253 139 252" fill="none" stroke="#d6bf99" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="286" cy="255" rx="37" ry="10" fill="#493e34"/>
+      <path d="M252 232 Q254 218 287 219 Q320 220 321 234 L320 249 Q314 263 282 261 Q253 259 252 247Z" fill="#9c604c"/>
+      <ellipse cx="287" cy="233" rx="35" ry="14" fill="#d78568"/>
+      <ellipse cx="287" cy="232" rx="26" ry="8" fill="#ca7658"/>
+      <path d="M259 231 Q271 221 297 225" fill="none" stroke="#e5ac86" stroke-width="3" stroke-linecap="round"/>
+      <path d="M257 242 L258 249 Q269 256 282 256" fill="none" stroke="#ba775b" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  </svg>
