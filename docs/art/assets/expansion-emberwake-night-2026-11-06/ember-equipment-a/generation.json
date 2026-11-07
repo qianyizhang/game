@@ -1,0 +1,126 @@
+{
+  "format": "card",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed study sheet, exactly 1440 by 672, viewBox=\"0 0 1440 672\". 3 columns by 2 rows, cells exactly 480 by 336, no gutters. Row-major order of named subjects below. Each subject MUST be an individual top-level <g id=\"SUBJECT-ID\" transform=\"translate(CELL-X CELL-Y)\"> using LOCAL coordinates; every group owns its own full-cell dark background rectangle. NO cross-cell content. If there are five subjects, sixth bottom-right cell stays empty dark background in a group id=\"unused\". Keep all subject geometry at least 30 units from cell edges, major silhouette occupies 65-80% of cell. All paint definitions must be local to the group or explicit flat fills. Do not use a shared sheet-wide backdrop.\n\nThese are FUTURE EXPANSION ART CONCEPTS for later review, not canonical history or active content. This is an engraved fantasy illustration set: confident irregular contours, expressive asymmetric gestures, three broad value groups, broad sculptural material planes before detail, sparse form-following engraving, no repeated tiny decoration. Connected joinery and credible support. Upper-left light, quiet background #10232c. Ink #10232c, shadow #34464b, worn ivory #ead7b5, muted bronze #b68d62, smoky steel #95a6aa. Emberwake adds moss #7c987a, saltglass #75a99f, restrained cinder #ca7658. Night Passage patron accents: Aster warm yellow #dfc777; Neris aqua #6dbfb0; Vesta coral #d78568; Isen pale ice blue #a5cbda; Nyra restrained lavender #a18cb8. Materials must look different: wood grain follows stress, leather folds, stone thickness, translucent glass has a clear rim and broad transmission planes, metal has restrained flat highlights. No plastic gloss, no golden edge on everything. Do not turn every object into a symmetrical emblem.\n\nEach scene reads as one distinct designed subject at 160x112 and 80x56, and should survive a 64px silhouette glance for props. This is illustration art only: no frame, captions, labels, text, digits, watermark, logo or UI. Static SVG paths and simple shapes only; no raster embedding, image, text, use, CSS stylesheets, scripts, animation, external resources or filters. No inaccessible gradient references. Economical construction with large quiet areas.\n\nSUBJECTS in exact row-major cell order:\nCell 1: id=\"briar-hook\"; origin (0,0); Briar hook polearm. A long hooked bill forged around a single ash-wood shaft; broad hooked blade with deep inner negative space, leather counterweight, diagonal resting gesture. Briarfen salvage material language; no vines hiding the metal edge.\nCell 2: id=\"saltglass-glaive\"; origin (480,0); Saltglass glaive. A crescent of translucent smoky sea glass fitted into a forked bronze socket on a short sand-worn haft; exposed glass thickness and one pale transmission plane. Distinct from an axe or staff.\nCell 3: id=\"bellows-maul\"; origin (960,0); Bellows maul. A square blackened iron striking head with one recessed bellows chamber and broad copper cheek, attached securely to a thick split-grip handle; heavy grounded diagonal, no spikes.\nCell 4: id=\"ossuary-lantern-flail\"; origin (0,336); Ossuary lantern flail. A hollow ribbed iron weight on three large visibly connected chain links and a short ivory handle; the hollow aperture reads before detail; no skull face or flame.\nCell 5: id=\"furnace-kite\"; origin (480,336); Furnace kite shield. An asymmetrical tall black steel shield with a folded copper heat baffle down one side, deep offset notch and visibly thick lower rim; three planes, not a coat of arms.\nCell 6: id=\"reed-quiver\"; origin (960,336); Reed quiver. A bent reed-and-hide bolt case with a high angled lip, three broad square bolt heads and fitted shoulder strap; dry ochre reed and dark moss leather; no bow.\n\nKeep each object composition distinct, readable and structurally grounded; the five Night Passage patrons have elemental/material affinities but these objects do not claim established lore or gameplay effects.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "response": {
+    "created": 1793976192,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1440x672",
+    "svg_usage": {
+      "input_tokens": 2364,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 9683,
+      "reasoning_tokens": 180,
+      "total_tokens": 12047
+    },
+    "usage": {
+      "input_tokens": 988,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 988
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1772
+    },
+    "request_id": "req_aa5283c483064d03afa2b48e61114d2c",
+    "http_status": 200,
+    "elapsed_seconds": 210.456,
+    "started_utc": "2026-11-06T14:42:21.049261+00:00"
+  },
+  "estimated_usd": 0.130018,
+  "original": {
+    "file": "sheet.svg",
+    "sha256": "3db87c0a88dbc804a0885adb519465ef30627b1053c911c0c091e5e00c94745d"
+  },
+  "outputs": [
+    {
+      "id": "briar-hook",
+      "name": "Briar hook polearm",
+      "sha256": "d2006928619d45dde62f0ce30d1e99c9f3fd968298d18ec3b214de4f591b5268",
+      "verdict": "candidate",
+      "note": "Strong recurved hook and diagonal shaft; quiet ground shadow. Counterweight becomes a small secondary droplet at compact size. Useful concept, no runtime acceptance."
+    },
+    {
+      "id": "saltglass-glaive",
+      "name": "Saltglass glaive",
+      "sha256": "b6b4f53a85570d0d7b4128fae933d1cc46a47a1b461bed97b75fd4c8005300c3",
+      "verdict": "candidate-with-caveat",
+      "note": "Broad crescent and fitted socket read clearly. Pale layered planes suggest smoky glass but retain an opaque illustrated quality; no physical glass-rendering claim."
+    },
+    {
+      "id": "bellows-maul",
+      "name": "Bellows maul",
+      "sha256": "337b49892bffc749c9403cc4c92d3820157f1df73c83b5f08daeb0be5cff2640",
+      "verdict": "candidate",
+      "note": "Heavy head, attached split handle and broad copper bellows cheek read at compact size; internal slats recede."
+    },
+    {
+      "id": "ossuary-lantern-flail",
+      "name": "Ossuary lantern flail",
+      "sha256": "403670b56d78a726d6f1cfb37ba8ce437d4936257a66d2fc8fbe22126093649b",
+      "verdict": "candidate-with-caveat",
+      "note": "Hollow cage, short handle and chain remain identifiable. Small chain junctions are compressed at 80px; hold attachment detail for any future runtime adaptation."
+    },
+    {
+      "id": "furnace-kite",
+      "name": "Furnace kite shield",
+      "sha256": "88f87dfb8d08505cd0356d9bcaaca6707a0c17a7777c8a55cd7f0de371997aad",
+      "verdict": "candidate",
+      "note": "Asymmetric notch and folded copper side plane read immediately; lower rim and grounded thickness survive compact view."
+    },
+    {
+      "id": "reed-quiver",
+      "name": "Reed quiver",
+      "sha256": "788197a0c00f52faf20195946f72e31fd3eacea827263c4a2a792742265099bf",
+      "verdict": "candidate",
+      "note": "Reed body, strap and three bolt heads stay distinct. Fine lashings recede at compact size; silhouette remains useful."
+    }
+  ],
+  "review_context": {
+    "actual_game_ui": "Unavailable for new concepts without supported runtime slots; no adoption review claimed.",
+    "pilot_decision": "Proceed with remaining nonliving families; six clearly separable strong silhouettes and connected broad material planes. No reroll justified.",
+    "aesthetic_acceptance": "User acceptance pending; technical success is separate."
+  },
+  "qa": {
+    "svg_checked": 7,
+    "source_original_and_extraction_hashes_verified": true,
+    "contact": {
+      "initial_bytes": 279019,
+      "optimized_bytes": 278126,
+      "retained_bytes": 278126,
+      "pixel_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "mode": "RGBA",
+      "color_metadata_equal": true,
+      "sha256": "961a5e2bbef4938bdc49b5de2d939ff69331630117374c68b1dfebb09933e75f",
+      "file": "contact.png"
+    },
+    "crop_pixel_comparison": {
+      "exact_cells": 1,
+      "total_cells": 6,
+      "max_channel_delta": 9
+    },
+    "native_compact_author_review": 6
+  }
+}

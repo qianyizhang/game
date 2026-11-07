@@ -1,0 +1,40 @@
+{
+  "sizes": {
+    "cell": [480, 336],
+    "sheet": [1440, 672],
+    "native": [160, 112],
+    "compact": [80, 56]
+  },
+  "subjects": [
+    {
+      "id": "fen-root-core",
+      "name": "Root core specimen",
+      "purpose": "Briarfen marsh/root material study for a possible inspection or recovery quest object."
+    },
+    {
+      "id": "fen-water-gauge",
+      "name": "Fen water gauge",
+      "purpose": "Marsh/cistern measurement tool concept, not a supported skill or map objective."
+    },
+    {
+      "id": "fen-mire-dispatch",
+      "name": "Mire dispatch",
+      "purpose": "Possible portable message/evidence carrier; its author, message and history remain unspecified."
+    },
+    {
+      "id": "salt-proof-tile",
+      "name": "Annealing proof tile",
+      "purpose": "Saltreach Glassworks material evidence concept, not a relic lens, weapon blade or current quest requirement."
+    },
+    {
+      "id": "salt-depth-spool",
+      "name": "Cistern depth spool",
+      "purpose": "Portable cistern survey tool; distinct from the existing flail, shield, staff or rune category marks."
+    },
+    {
+      "id": "salt-bead-mold",
+      "name": "Glass bead mold",
+      "purpose": "Possible Glassworks recovery/crafting evidence, not a declared recipe or inventory slot."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "schema": 1,
+  "id": "archive-thresholds-20261106",
+  "date": "2026-11-06T15:47:20.821355+00:00",
+  "status": "returned",
+  "grant": {
+    "source": "Coordinator single rolling shared-pool grant",
+    "pool_usd": 40,
+    "reservation_usd": 6.5,
+    "scope": "One six-threshold request only",
+    "worker_opening_usage_estimate_usd": 0.786142,
+    "other_lane_uncertainty": "Historical tortoise US$7.50 hold belongs to coordinator; not released or spent here."
+  },
+  "endpoint": "https://api.openai.com/v1/images/generations",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed source-art sheet. Exact canvas 1440 by 672, viewBox=\"0 0 1440 672\". Exactly THREE columns by TWO rows. Six scenes, each 480 by 336, row-major, no gutters, visible labels, panel frames or UI. These are FUTURE Cartographer Sunken Archive threshold-mechanism concepts, not existing canon, accepted game slots, animated states, seamless tiles or current tactical-board sprites. The established world has shifting stone rooms, open connecting thresholds, water, moss and lantern warmth. Show plausible attached mechanisms with clearly different contours and purposes. Do not depict existing relics or repeat ordinary furniture, garden props, forge equipment, the prior circular floodgate wheel, ordinary broken stairs or encounter-location panoramas.\n\nSTRUCTURE: six separate TOP-LEVEL <g id=\"SUBJECT-ID\" transform=\"translate(X Y)\"> groups exactly as ordered below. Each uses local coordinates 0..480,0..336 and begins with its own <rect x=\"0\" y=\"0\" width=\"480\" height=\"336\" fill=\"#172928\"/>. No shared overall backdrop. All marks for each scene stay in its group and inside its cell. Preserve at least 28px clear inset for ALL foreground, including grounding shadows. Use no root-level drawing outside these six groups. Each scene must extract independently by removing only its grid translation.\n\nMEDIUM: ordinary native SVG paths and simple shapes, explicit colors only. No raster, image, scripts, external links, text, fonts, animation, stylesheets, gradients, defs, masks, filters, use references, symbols, numbers or watermark. Around 35-60 purposeful vector shapes per scene; geometry and broad planes establish structure before restrained form-following cuts. No thousands of tiny fragments or decorative hatching.\n\nART DIRECTION: restrained engraved fantasy illustration, expressive asymmetric silhouettes and quiet negative space. Three value groups: ink #172928 and #2d403a, middle stone #63746d and sage #82937d, pale worn stone #d6cfb6. Selective muted copper #b97c5e, dark forged steel #485453, matte rope/leather #9b8062, water #659a9a. Broad upper-left light planes; make weight, thickness and support visible. Avoid glossy plastic, glowing portals, spikes and identical gold outlines. Each mechanism fills roughly 70-78 percent of its scene, with one stable grounding contact. It must remain distinct at 160x112 and 80x56; also check its major contour at 64x45. Attach every bearing, rope, rail and moving element visibly to its load/support. Prefer fewer large pieces with clear load paths over complex machine diagrams.\n\nSUBJECTS:\n1. id=\"pivot-slab-gate\" translate(0 0): A thick asymmetrical stone pivot door stands half-open on a central vertical bronze spindle. Show the spindle seated visibly in BOTH its lower stone socket and a short overhead lintel fitting. One broad pale slab turns diagonally, exposing a clean passage behind it. Heavy stone, muted copper axis, visible slab thickness; no floating hinge.\n2. id=\"counterweight-gate\" translate(480 0): A broad rectangular stone gate is raised partway inside two short masonry jambs. A single thick rope visibly runs from the gate over an attached upper sheave to a heavy offset stone counterweight on the right. The hanging weight, rope and rail must visibly connect; keep the clear dark gap below the gate dominant. No unconnected suspended parts.\n3. id=\"retracting-plank-crossing\" translate(960 0): A compact three-quarter mechanism for a short retracting crossing: three broad overlapping wooden planks extend diagonally right from a low masonry sleeve, guided and visibly supported by two thick iron rails underneath. One attached handle and a dark channel in the sleeve communicate extension. A functional prop fragment, not an entire bridge location or a staircase.\n4. id=\"sliding-grille\" translate(0 336): A short stone doorway with a heavy iron grille slid horizontally into a thick left-hand wall pocket. Four broad vertical bars, fitted top and bottom rails, and one large open passage on the right. The sliding grille is supported continuously by its rail and lower threshold. Pale worn stone, dark forged metal, one restrained copper latch; no wheel or portcullis lift rope.\n5. id=\"spillway-shutter\" translate(480 336): A low wet-stone spillway with one thick iron shutter partially lifted by a visibly attached short bent lever. A small continuous blue-green water ribbon flows under the shutter into a shallow channel. Show fitted guide rails, shutter thickness and the lever pivot; the silhouette is horizontal and low. No circular floodgate wheel or ornamental basin.\n6. id=\"rotating-junction\" translate(960 336): A low circular stone turning platform inset into a square masonry cradle, seen three-quarter from above. One pale L-shaped walkway plane on the disk is aligned halfway between two short unequal exit stubs. An exposed curved track and single attached stop pin explain rotation. Keep the supporting cradle continuous with the platform, one strong route shape and broad dark recess; no compass, map, runes or magical ring.\n\nDeliver six coherent but unmistakably different finished mechanical prop illustrations. These depict plausible future composition ideas, not engineering certification or implemented route mechanics. No people, living creatures, faces, names or inscriptions.\n",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "request_wire_encoding": "UTF-8 JSON, sorted keys, comma/colon separators, ensure_ascii=false; no extra whitespace",
+  "automatic_retries": 0,
+  "billing": {
+    "reserved_usd": 0,
+    "uncertain_reserved_usd": 0,
+    "call_usage_estimate_usd": 0.141775,
+    "worker_lifetime_usage_estimate_usd": 0.927917,
+    "rates_per_million": {
+      "image_text_input": 5,
+      "image_input": 8,
+      "image_output": 30,
+      "author_short_input": 2,
+      "author_short_output": 10,
+      "author_long_input": 4,
+      "author_long_output": 15
+    },
+    "pricing": "https://developers.openai.com/api/docs/pricing",
+    "bound": "Published 922k author input at $4/M plus 128k output at $15/M = $5.608, plus $0.892 allowance for the fixed single reference image and short prompt. Reservation, not an endpoint dollar cap."
+  },
+  "outputs": [
+    {
+      "file": "original.svg",
+      "sha256": "bdb71faa16690b20df19b238a1ce9e8c0fc5bdaf481add9f09c8dfdc63fdb839",
+      "kind": "exact-api-original"
+    },
+    {
+      "file": "pivot-slab-gate.svg",
+      "sha256": "4b8bfc99eddf7c16a30c75ae2a92583b8bc2254b1a1498ea496c23d9615c4360",
+      "cell": [0, 0]
+    },
+    {
+      "file": "counterweight-gate.svg",
+      "sha256": "36a2b4ce9ba855078a173cf2da1a3761c1d2997ff1a4f4d8b8a7027a5f5dfc1b",
+      "cell": [1, 0]
+    },
+    {
+      "file": "retracting-plank-crossing.svg",
+      "sha256": "5f3db20e286f3d4a61c09a247b9334818f8ad1d11160ae4ff8ced778abb74d3f",
+      "cell": [2, 0]
+    },
+    {
+      "file": "sliding-grille.svg",
+      "sha256": "ca8e7811abc8afc35d67911fcbebe63795dbdb265df16f9bdf1fa0aea3c2ba5b",
+      "cell": [0, 1]
+    },
+    {
+      "file": "spillway-shutter.svg",
+      "sha256": "c0822d9d489ab99a27f2562e053aec8dcd56469165be33e09ac6ffe4418d40db",
+      "cell": [1, 1]
+    },
+    {
+      "file": "rotating-junction.svg",
+      "sha256": "766d25e700b8d530e7418ff6f52a21f0f71da5c8c0c7f3b99ce486b7687dbba1",
+      "cell": [2, 1]
+    }
+  ],
+  "started_at": "2026-11-06T15:47:20.872972+00:00",
+  "request_sha256": "ab27663548870d34f2be6fa939ec9ffce7a410aa73e56e0f43cce70246065464",
+  "response": {
+    "request_id": "req_208edb9adc7447d68a6efdb1fc0004f2",
+    "http_status": 200,
+    "created": 1793980087,
+    "elapsed_seconds": 202.294,
+    "usage": {
+      "input_tokens": 1193,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 1193
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1977
+    },
+    "svg_usage": {
+      "input_tokens": 2570,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 10715,
+      "reasoning_tokens": 516,
+      "total_tokens": 13285
+    }
+  },
+  "extraction": {
+    "source": "original.svg",
+    "grid": [3, 2],
+    "cell_size": [480, 336],
+    "recipe": "Copy each top-level group by filename stem; remove only its grid translate; keep local background and vector contents.",
+    "verified": {
+      "cairo_crop_pixel_equal": 5,
+      "inside_cell": 6,
+      "minimum_foreground_inset_px": 24,
+      "chromium_crop_pixel_equal": 3,
+      "vector_contents_unchanged": 6
+    },
+    "exceptions": {
+      "inset": {
+        "counterweight-gate": 24
+      },
+      "cairo_raster_differences": {
+        "spillway-shutter": {
+          "pixels": 6,
+          "max_channel_delta": 5
+        }
+      },
+      "chromium_raster_differences": [
+        {
+          "file": "retracting-plank-crossing.svg",
+          "pixels": 2,
+          "max": 2
+        },
+        {
+          "file": "spillway-shutter.svg",
+          "pixels": 3,
+          "max": 1
+        },
+        {
+          "file": "rotating-junction.svg",
+          "pixels": 15,
+          "max": 3
+        }
+      ],
+      "rasterizer_rounding": "Cairo differs on 6 spillway edge pixels (max channel delta 5/255); Chromium differs on 2 plank, 3 spillway and 15 junction pixels (max deltas 2, 1 and 3/255). Path geometry/paint is unchanged; native/compact visual inspection found no meaningful difference. Do not claim universal pixel-identical extraction."
+    }
+  },
+  "review": {
+    "contact": "contact.png",
+    "sha256": "50434a03a6c70b18677e1df07f7c5e535353050b2b25ac41ae4f731ba5b8ef24",
+    "dimensions": [960, 756],
+    "sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "png": "RGBA, no color profile; smaller of original/optimized encoding retained after exact decoded-pixel/dimension/alpha/mode/color-metadata equality.",
+    "png_original_bytes": 110941,
+    "png_retained_bytes": 108512,
+    "verdict": "six author candidates; independent and user acceptance pending",
+    "exceptions": {
+      "counterweight-gate.svg": "Counterweight rope and sheave read as connected; this is a visual load-path concept, not engineering certification.",
+      "retracting-plank-crossing.svg": "The plank deck reads clearly; the nested/retracting action is less explicit at 80x56. Retain as a guided-plank source, not an implemented moving bridge.",
+      "rotating-junction.svg": "Turning disk, curved track and stop pin read; current reserved-cross layout rules are not changed."
+    }
+  },
+  "verification": {
+    "svg_safety": 7,
+    "isolated_import_revisions": 7,
+    "new_slots": 0,
+    "selections": 0,
+    "gallery": {
+      "decoded_revisions": 7,
+      "phone_width": 390,
+      "overflow": false,
+      "source_only": true,
+      "call_settings_usage_and_lineage_visible": true,
+      "browser": "154.0.8037.57"
+    },
+    "maintenance": "format, inventory and local links passed"
+  }
+}

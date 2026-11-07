@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed contact sheet, exactly 1440 by 672, viewBox=\"0 0 1440 672\". Exactly 3 columns by 2 rows, each cell 480 by 336, no gutters or labels. Each of six subjects is a separate top-level <g id=\"SUBJECT-ID\" transform=\"translate(CELL-X CELL-Y)\"> with LOCAL coordinates and its own full-cell background rectangle. Every painted shape of a subject stays at least 30 pixels inside its own cell; no cross-cell content. All paint definitions must belong to that cell or use flat explicit fills. Do not create a sheet-wide background or a later opaque frame path that covers the actual subject. Keep the subject at roughly 70-78% cell width/height, with quiet corners. These are NEW FUTURE SOURCE CONCEPTS, not supported runtime content or accepted history.\n\nNative editable static vector illustration only: no raster/image embedding, text, digits, fonts, symbols requiring labels, scripts, use, CSS stylesheets, filters, external resources or animation. Restrained engraved fantasy print with connected broad material planes, three value groups, asymmetric purposeful contour, quiet negative space, upper-left light. Background #10232c, shadow #34464b, worn ivory #ead7b5, muted bronze #b68d62, smoky steel #95a6aa; Emberwake moss #7c987a, saltglass #75a99f, cinder #ca7658. Night Passage accents: Aster pale gold #dfc777, Neris aqua #6dbfb0, Vesta coral #d78568, Isen ice blue #a5cbda, Nyra plum #a18cb8. Wood grain follows form, leather folds, metal has restrained highlights, ceramic has a continuous thick rim and broad glaze highlights rather than chipped polygon facets. Distinct materials, no plastic gloss or golden trim everywhere. Detail is subordinate to connected structure and broad planes. No living subjects, hands, characters, portraits, story scenes, frames, borders, captions, logo or watermark. Every support, hinge, cord or handle visibly meets its load. Everything reads at 160x112 and 80x56; one strong subject per cell.\n\nSUBJECTS in exact row-major order:\nCell 1, id=\"bells-clapper\", origin (0,0): Detached clapper. A short heavy bronze bell clapper with a visibly thick pear-shaped striking end, fitted worn leather suspension collar and a broken braided attachment end; diagonal resting pose, no whole bell or pressure crescent.\nCell 2, id=\"bells-choir-roll\", origin (480,0): Choir binding roll. A short partly unfurled roll of dark waxed linen secured by three unequal flat sewn bronze weights; one broad fold exposes pale inner cloth, no musical notes, writing, faces or invented symbols.\nCell 3, id=\"bells-burial-tally\", origin (960,0): Burial tally splints. Three unequal thick ivory tally splints laced securely by a single dark cord, one splint broken at a slanted end; broad joined bundle silhouette and natural bone planes, no digits, writing or skull motif.\nCell 4, id=\"furnace-assay-puck\", origin (0,336): Slag assay puck. An asymmetrical dark vitrified slag puck with one exposed copper inclusion and a single drilled sampling hole, resting in a fitted thin iron handling cradle; not a gem medallion or glowing fireball.\nCell 5, id=\"furnace-anchor-cotter\", origin (480,336): Anchor cotter. A short broad split iron retaining pin with an offset wedge head, a thick open fork gap and a fitted copper locking collar; visibly chunky machine hardware, no blade, sword hilt or whole anchor.\nCell 6, id=\"furnace-firebrick\", origin (960,336): Refractory sample. A broken cream-and-charcoal refractory brick sample held by one fitted copper carrying clip, visible layered heat-darkened core and continuous thick ceramic exterior; quiet angular mass, no spikes or glow.\n\nKeep all six distinct and useful when extracted. Never make them six color swaps or six generic emblems. No narrative sequence, before/after states, implied game rewards or canonical inscriptions.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "response": {
+    "outcome": "unknown",
+    "error_type": "RemoteDisconnected",
+    "elapsed_seconds": 301.039,
+    "request_id": null,
+    "usage": null,
+    "observed_utc": "2026-11-06T15:46:30.791894+00:00"
+  },
+  "original": null,
+  "outputs": []
+}

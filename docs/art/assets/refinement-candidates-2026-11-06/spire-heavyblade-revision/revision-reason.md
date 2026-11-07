@@ -1,0 +1,1 @@
+Two original Heavy Blade cells show unsupported/crowded secondary gauntlets at native and enlarged size. Retain them on hold. One targeted two-cell revision simplifies each pose to a single connected arm and hand; it keeps the actual base/upgraded roles and the same aggregate budget. No automatic retry.

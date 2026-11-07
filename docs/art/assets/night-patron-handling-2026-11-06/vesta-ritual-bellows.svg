@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="vesta-ritual-bellows">
+    <defs>
+      <linearGradient id="vesta-leather" x1="0.1" y1="0" x2="0.8" y2="1">
+        <stop offset="0" stop-color="#d78568"/>
+        <stop offset="0.55" stop-color="#a55f47"/>
+        <stop offset="1" stop-color="#754431"/>
+      </linearGradient>
+      <linearGradient id="vesta-brass" x1="0" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="#ead7b5"/>
+        <stop offset="0.45" stop-color="#b68d62"/>
+        <stop offset="1" stop-color="#735637"/>
+      </linearGradient>
+      <linearGradient id="vesta-wood" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#936d51"/>
+        <stop offset="0.5" stop-color="#634733"/>
+        <stop offset="1" stop-color="#392f28"/>
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c"/>
+    <path d="M57 288 Q210 274 405 286 L410 298 L90 299Z" fill="#14292f"/>
+    <path d="M118 263 L184 257 L224 272 L234 292 L99 294 L91 286Z" fill="#34464b"/>
+    <path d="M118 263 L184 257 L224 272 L191 279 L100 282Z" fill="#6b7b7d"/>
+    <path d="M131 282 L160 270 L183 272 L174 293 L99 294 L91 286Z" fill="#4c5d60"/>
+    <g id="vesta-handles">
+      <path d="M305 103 L347 61 Q372 35 401 35 Q424 34 430 53 Q439 77 416 85 L365 101 L330 127Z" fill="#392f28"/>
+      <path d="M302 94 L344 52 Q369 29 397 31 Q420 32 424 47 Q431 65 410 74 L359 92 L325 117Z" fill="url(#vesta-wood)"/>
+      <path d="M334 91 Q361 57 398 42 Q411 39 416 44 M348 84 Q374 66 411 53 M357 64 Q377 44 397 36 M373 76 L399 65" fill="none" stroke="#b68d62" stroke-width="2" opacity="0.45"/>
+      <path d="M348 226 L398 209 Q427 201 436 219 Q446 242 426 250 L371 255 L345 254Z" fill="#392f28"/>
+      <path d="M347 219 L398 203 Q424 198 433 213 Q441 232 421 239 L369 247 L345 245Z" fill="url(#vesta-wood)"/>
+      <path d="M369 226 Q399 209 423 214 M371 234 Q402 221 426 222 M386 238 L413 232" fill="none" stroke="#b68d62" stroke-width="2" opacity="0.4"/>
+    </g>
+    <path d="M131 180 Q162 153 185 113 Q211 69 245 67 Q278 65 310 98 Q337 129 346 163 L358 228 Q358 258 335 273 Q317 285 285 274 L138 242Z" fill="#58392d" stroke="#8d5a40" stroke-width="5"/>
+    <path d="M132 174 Q163 149 186 108 Q212 64 246 62 Q280 61 312 94 Q337 126 342 159 L353 221 Q356 251 332 266 Q314 278 284 267 L139 235Z" fill="url(#vesta-leather)" stroke="#b27753" stroke-width="3"/>
+    <path d="M143 183 Q182 159 217 118 Q239 92 266 84 Q242 75 224 87 Q208 98 190 124 Q170 156 143 175Z" fill="#df9576" opacity="0.65"/>
+    <path d="M149 189 Q199 177 238 145 Q269 119 294 111 L307 127 Q276 134 250 156 L153 206Z" fill="#6d3d2b"/>
+    <path d="M153 206 Q214 189 251 165 Q279 147 317 144 L323 163 Q274 164 243 184 L157 217Z" fill="#cc7e5e"/>
+    <path d="M156 218 Q209 213 252 197 Q290 182 331 186 L335 204 Q295 199 255 213 L159 229Z" fill="#6e3c2a"/>
+    <path d="M160 229 Q219 228 260 229 Q303 223 340 229 Q344 249 324 258 Q312 264 286 256 L162 239Z" fill="#ba6d50"/>
+    <path d="M168 239 Q225 245 269 251 L307 266 L286 262Z" fill="#e09a76" opacity="0.5"/>
+    <path d="M139 178 Q165 155 188 115 Q215 70 246 69 Q279 68 309 102 Q332 130 337 161 L349 225 Q350 250 328 263 Q314 271 284 261 L146 232" fill="none" stroke="#623c2c" stroke-width="10"/>
+    <path d="M139 177 Q167 152 189 113 Q215 70 246 69 Q279 68 309 102 Q332 130 337 161 L349 225 Q350 250 328 263 Q314 271 284 261 L146 232" fill="none" stroke="#d4ad7d" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round"/>
+    <path d="M133 177 Q150 190 154 211 Q158 227 150 241" fill="none" stroke="#593c2c" stroke-width="16"/>
+    <path d="M132 177 Q151 192 154 214 Q157 228 150 241" fill="none" stroke="#b68d62" stroke-width="3"/>
+    <path d="M290 95 L312 81 Q323 77 331 87 L338 99 L332 132 L319 143 L314 115Z" fill="#735637"/>
+    <path d="M287 90 L309 76 Q320 72 328 82 L335 94 L327 125 L315 133 L310 107Z" fill="url(#vesta-brass)"/>
+    <path d="M287 90 L310 107 L315 133" fill="none" stroke="#e2c58e" stroke-width="2"/>
+    <ellipse cx="311" cy="89" rx="10" ry="8" fill="#735637"/>
+    <ellipse cx="310" cy="86" rx="8" ry="6" fill="#dfc18c"/>
+    <path d="M344 220 L367 213 L379 221 L375 247 L350 257 L344 249Z" fill="#735637"/>
+    <path d="M341 217 L364 210 L376 218 L372 243 L347 253 L341 245Z" fill="url(#vesta-brass)"/>
+    <ellipse cx="360" cy="229" rx="7" ry="9" fill="#735637"/>
+    <ellipse cx="359" cy="226" rx="6" ry="7" fill="#dfc18c"/>
+    <g id="vesta-nozzle">
+      <path d="M142 183 Q157 207 151 236 L138 247 L112 244 L95 231 L39 244 Q27 236 32 222 L92 198 L113 181Z" fill="#644c33"/>
+      <path d="M136 179 Q152 199 148 228 L136 240 L110 237 L95 223 L39 237 Q29 229 34 217 L92 193 L111 176Z" fill="url(#vesta-brass)"/>
+      <path d="M38 217 L95 198 L99 208 L38 231Z" fill="#e2c593"/>
+      <path d="M92 193 Q110 209 104 231 M108 182 Q129 206 121 237 M129 179 Q149 201 140 233" fill="none" stroke="#6e5234" stroke-width="5"/>
+      <path d="M90 192 Q109 207 103 228 M107 180 Q127 203 120 234" fill="none" stroke="#d9b87d" stroke-width="3"/>
+      <ellipse cx="37" cy="226" rx="8" ry="13" transform="rotate(-14 37 226)" fill="#b68d62"/>
+      <ellipse cx="37" cy="226" rx="5" ry="9" transform="rotate(-14 37 226)" fill="#26383a"/>
+      <ellipse cx="128" cy="194" rx="7" ry="6" fill="#ead7b5"/>
+      <ellipse cx="137" cy="224" rx="6" ry="7" fill="#b68d62"/>
+    </g>
+  </g>
+
+  </svg>

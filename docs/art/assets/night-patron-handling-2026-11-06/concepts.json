@@ -1,0 +1,40 @@
+{
+  "sizes": {
+    "cell": [480, 336],
+    "sheet": [1440, 672],
+    "native": [160, 112],
+    "compact": [80, 56]
+  },
+  "subjects": [
+    {
+      "id": "aster-grounding-plate",
+      "name": "Aster grounding plate",
+      "purpose": "Physical storm-affinity interaction study; no accepted patron ritual, weapon, boon or effect timing."
+    },
+    {
+      "id": "neris-weir-panel",
+      "name": "Neris weir panel",
+      "purpose": "Tide-affinity water-handling source concept distinct from existing wave marks and earlier bowls/coffers."
+    },
+    {
+      "id": "vesta-ritual-bellows",
+      "name": "Vesta ritual bellows",
+      "purpose": "Portable cinder-affinity handling tool, not the earlier bellows-maul weapon or a new gameplay interaction."
+    },
+    {
+      "id": "isen-cooling-wrap",
+      "name": "Isen cooling wrap",
+      "purpose": "Winter-affinity handling concept; distinct from resting cradle/blanket furniture and current rune marks."
+    },
+    {
+      "id": "nyra-witness-shutter",
+      "name": "Nyra witness shutter",
+      "purpose": "Veil-affinity reveal/inspection device concept, not an established story scene or new reveal mechanic."
+    },
+    {
+      "id": "audience-choice-rack",
+      "name": "Audience choice rack",
+      "purpose": "Physical composition reference for three-way audience choice; no replacement for existing choice UI, selection rules or new lore."
+    }
+  ]
+}

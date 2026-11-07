@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="salt-proof-tile">
+    <defs>
+      <linearGradient id="tile-clay" x1="0" y1="0" x2="0.6" y2="1">
+        <stop offset="0" stop-color="#d78568"/>
+        <stop offset="0.5" stop-color="#b68d62"/>
+        <stop offset="1" stop-color="#8f624b"/>
+      </linearGradient>
+      <linearGradient id="tile-glass" x1="0" y1="0" x2="0.8" y2="1">
+        <stop offset="0" stop-color="#c5d5bd"/>
+        <stop offset="0.38" stop-color="#95b9ab"/>
+        <stop offset="1" stop-color="#75a99f"/>
+      </linearGradient>
+      <linearGradient id="tile-edge" x1="0" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="#75a99f"/>
+        <stop offset="1" stop-color="#34464b"/>
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c"/>
+    <path d="M79 259 351 281 411 214C443 230 413 282 377 300 323 322 149 301 79 278Z" fill="#182e35"/>
+    <path d="M51 188 161 55C170 43 185 40 204 45L391 83C411 87 424 98 425 116L388 265C385 281 375 299 359 301L83 269C66 267 57 257 55 245L47 211C45 202 47 194 51 188Z" fill="url(#tile-clay)" stroke="#855f48" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M49 205C53 216 62 221 77 224L346 270C363 274 377 267 388 251L379 282C375 294 365 299 354 297L85 265C69 263 62 254 60 241Z" fill="#9c6b4c"/>
+    <path d="M62 218 78 223 84 264 74 260 67 251ZM103 229 118 233 137 270 118 268ZM330 271 346 274 344 296 328 294Z" fill="#af8060"/>
+    <path d="M56 190 166 58C175 46 188 45 203 49L391 88C409 92 417 101 415 115L376 253C372 267 362 274 347 270L74 222C54 219 48 204 56 190Z" fill="#c28d65" stroke="#d8ab80" stroke-width="3"/>
+    <path d="M68 192 174 66C181 58 189 56 202 59L386 98C397 100 401 107 398 118L363 246C360 255 353 258 344 256L81 212C68 210 61 203 68 192Z" fill="#34464b" stroke="#8b6248" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M92 190 181 80 375 115 351 183 305 194 277 235 98 210Z" fill="#34464b"/>
+    <path d="M83 182 179 66C184 61 190 60 198 62L387 101C393 103 395 106 392 114L354 188 305 199 277 239 89 205C79 203 76 195 83 182Z" fill="url(#tile-edge)" stroke="#95a6aa" stroke-width="2"/>
+    <path d="M82 181 178 65C183 60 190 59 198 61L385 100C393 101 396 106 392 114L354 180 303 191 277 227 89 196C80 194 78 189 82 181Z" fill="url(#tile-glass)" stroke="#b7d1bd" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M90 181 183 70C187 66 193 66 201 68L370 103 285 120 164 159 98 186Z" fill="#c4d7c3"/>
+    <path d="M106 173 185 78 206 78 176 111 153 145Z" fill="#ead7b5"/>
+    <path d="M164 159 285 120 381 108 348 173 301 185 272 218 98 189Z" fill="#8cb1a5"/>
+    <path d="M98 189 271 219 301 185 348 173 377 117" fill="none" stroke="#bcd4c1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M277 227 303 191 354 180 354 188 305 199 277 239Z" fill="#75a99f" stroke="#b7d1bd" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M305 199 351 189 339 217 299 227 285 245 277 239Z" fill="#405e60"/>
+    <path d="M305 202 339 195 331 210 301 218 288 236" fill="#587f7c"/>
+    <path d="M90 201 272 234" fill="none" stroke="#75a99f" stroke-width="2"/>
+    <path d="M61 192 170 61C178 52 185 51 199 54L387 94M63 215C66 219 70 221 78 222L344 267" fill="none" stroke="#ead7b5" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  </svg>

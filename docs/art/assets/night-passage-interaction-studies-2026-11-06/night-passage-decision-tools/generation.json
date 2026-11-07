@@ -1,0 +1,107 @@
+{
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed contact sheet, exactly 1440 by 672, viewBox=\"0 0 1440 672\". Exactly 3 columns by 2 rows, each cell 480 by 336, no gutters or labels. Each of six subjects is a separate top-level <g id=\"SUBJECT-ID\" transform=\"translate(CELL-X CELL-Y)\"> with LOCAL coordinates and its own full-cell background rectangle. Every painted shape of a subject stays at least 30 pixels inside its own cell; no cross-cell content. All paint definitions must belong to that cell or use flat explicit fills. Do not create a sheet-wide background or a later opaque frame path that covers the actual subject. Keep the subject at roughly 70-78% cell width/height, with quiet corners. These are NEW FUTURE SOURCE CONCEPTS, not supported runtime content or accepted history.\n\nNative editable static vector illustration only: no raster/image embedding, text, digits, fonts, symbols requiring labels, scripts, use, CSS stylesheets, filters, external resources or animation. Restrained engraved fantasy print with connected broad material planes, three value groups, asymmetric purposeful contour, quiet negative space, upper-left light. Background #10232c, shadow #34464b, worn ivory #ead7b5, muted bronze #b68d62, smoky steel #95a6aa; Emberwake moss #7c987a, saltglass #75a99f, cinder #ca7658. Night Passage accents: Aster pale gold #dfc777, Neris aqua #6dbfb0, Vesta coral #d78568, Isen ice blue #a5cbda, Nyra plum #a18cb8. Wood grain follows form, leather folds, metal has restrained highlights, ceramic has a continuous thick rim and broad glaze highlights rather than chipped polygon facets. Distinct materials, no plastic gloss or golden trim everywhere. Detail is subordinate to connected structure and broad planes. No living subjects, hands, characters, portraits, story scenes, frames, borders, captions, logo or watermark. Every support, hinge, cord or handle visibly meets its load. Everything reads at 160x112 and 80x56; one strong subject per cell.\n\nSUBJECTS in exact row-major order:\nCell 1, id=\"quay-mooring-cleat\", origin (0,0): Quay mooring cleat. A low two-horn dark stone mooring cleat with a single heavy braided rope loop fastened around its waist, weighted base and visible support contact; no boat, lantern, character or scene.\nCell 2, id=\"memory-rubbing-frame\", origin (480,0): Memory rubbing frame. An opened hinged dark wooden rubbing frame holding one blank wax tablet, with a fitted broad brass rolling bar resting across it; one joint visible, no writing or symbols, no screw press.\nCell 3, id=\"ash-sifting-tray\", origin (960,0): Ash sifting tray. A broad tilted shallow bronze-mesh sifting tray in a low wooden stand, one compact mound of coarse matte gray ash and a clean empty corner; no flame, smoke, pile of coins or repeated tiny holes.\nCell 4, id=\"market-exchange-chute\", origin (0,336): Market exchange chute. A small stepped wooden sorting chute with two broad unequal channels, a fitted dark metal sliding stop and two plain thick ceramic payment counters in separate recesses; no scale, balance beam, text or tiny coin pile.\nCell 5, id=\"trial-oath-knot\", origin (480,336): Trial oath knot. A thick asymmetric braided cord knot threaded securely through a low slotted stone cleat, one taut side and one short loose end, broad warm rope planes; no blade, skull, rune or mirrored emblem.\nCell 6, id=\"spring-flow-diverter\", origin (960,336): Spring flow diverter. A low curved ceramic water channel with a supported pivoting lip, two fitted stone saddles and one shallow aqua water ribbon routed sideways; distinct material rims and thickness, no basin, bowl, fountain jet or arch.\n\nKeep all six distinct and useful when extracted. Never make them six color swaps or six generic emblems. No narrative sequence, before/after states, implied game rewards or canonical inscriptions.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "response": {
+    "created": 1793981194,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1440x672",
+    "svg_usage": {
+      "input_tokens": 2338,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 11557,
+      "reasoning_tokens": 366,
+      "total_tokens": 13895
+    },
+    "usage": {
+      "input_tokens": 962,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 962
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1746
+    },
+    "request_id": "req_854961f5100b4b72aeeb819e35e3f880",
+    "http_status": 200,
+    "elapsed_seconds": 234.395
+  },
+  "original": {
+    "file": "sheet.svg",
+    "sha256": "e83795db97919c06de360a6be4f3169c6d7ecf453e2c9dd8bd9af112cd3e2d4e"
+  },
+  "outputs": [
+    {
+      "id": "quay-mooring-cleat",
+      "sha256": "eb61d3a7446a69df02ec8555ac46d2c1fb5b97242c92de6e2acc8fc23f4535cb",
+      "verdict": "candidate",
+      "note": "Connected broad stone horns and one wrapped rope make a clear quay mooring object. The rope contour stays visible at 80px; no boat or story action is implied."
+    },
+    {
+      "id": "memory-rubbing-frame",
+      "sha256": "bc7635dfa1e4f377466319ff6382ed04f1d8ff6feeec1130e810607ec3f8c304",
+      "verdict": "candidate",
+      "note": "Hinged frame, blank wax tablet and fitted rolling bar remain distinct at compact size, without duplicating the earlier screw press."
+    },
+    {
+      "id": "ash-sifting-tray",
+      "sha256": "9ce3d21e03dad78b447976d43d53d919bf8e94c04a09ac55e2a1ced761293ba5",
+      "verdict": "candidate-with-caveat",
+      "note": "Stand, tilted rim and coarse ash mass read well. Fine bronze mesh becomes a textured field at 80px; retain the broad mass rather than relying on individual apertures."
+    },
+    {
+      "id": "market-exchange-chute",
+      "sha256": "527b22d98a86290d180dbf3b840e5af1abb6f1d201001f92d82e369e726c5043",
+      "verdict": "candidate-with-caveat",
+      "note": "Supported sliding stop and two payment counters read clearly. The two floor channels are subtler at compact size; source study, not a finished interaction affordance."
+    },
+    {
+      "id": "trial-oath-knot",
+      "sha256": "e166cfd09b505bba79f21bf2a95fd5443dafe0dc92c5afd7c3ef6d7283ef40e6",
+      "verdict": "candidate-with-caveat",
+      "note": "Heavy cord and slotted stone support have a strong silhouette; intertwined strand continuity remains stylized and would need close review for a final mechanical knot."
+    },
+    {
+      "id": "spring-flow-diverter",
+      "sha256": "f0ead46dbbd5b9b20b61beb7af35db47e3a12cd2862d00e87f3543fabf4524d6",
+      "verdict": "candidate",
+      "note": "Fitted pivot, two support saddles, thick ceramic channel and aqua water strip read clearly. Flat end cuts describe a channel section, not a complete spring or fluid simulation."
+    }
+  ],
+  "authorization": {
+    "pool": "coordinated shared USD40",
+    "maximum_usd": 7,
+    "grant_observed_utc": "2026-11-06T16:05:47.992128+00:00",
+    "scope": "One never-dispatched six-subject Night Passage decision-tools call; no retries or further calls."
+  },
+  "estimated_usd": 0.148576,
+  "qa": {
+    "svg_safety_and_bounds": 7,
+    "extraction_geometry": "exact group minus grid translation; paint unchanged",
+    "contact": {
+      "file": "contact.png",
+      "sha256": "00761dfd15bcc7e4441afb6b8a359dccefd9aecd0914712ffe509725f3f58b10",
+      "lossless_rgba_dimensions_alpha_color_verified": true
+    },
+    "native_compact_author_review": 6
+  }
+}

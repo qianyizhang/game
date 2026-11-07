@@ -1,0 +1,85 @@
+{
+  "state": "returned",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE polished native editable static SVG sheet with SIX blindside future-expansion visual concepts. They are source ideas for review, no canon or established game rules. Exact canvas 1440x672, viewBox=\"0 0 1440 672\". THREE columns TWO rows, each cell 480x336, no gutters. Every object in a named top-level group with a single exact grid translate and LOCAL cell coordinates. No painted content outside these six groups. Every foreground silhouette inside x=12%..88%, y=12%..88% of its own cell. Separate subjects; never spill across cells. Each cell begins with a full local cream #f3e8c8 rectangle. Forest ink #183b32, ochre #c39a52, restrained coral #bd6552. Cut-paper overlap and engraved contours, three clear values, quiet negative space, no frame. Read at 160x112 / 80x56 / 64x45. Form, openings, hinges and physical contacts first; sparse engraving accents only.\nActual game's shared direction: expressive engraved fantasy and modeled cut planes, warm upper-left light, distinct material edges, three broad value groups. Keep quiet regions and useful openings. Clear intentional object tilt; not a generic symmetric badge. This is art only: no UI, borders, stats, text, letters, numbers, labels, logos or watermark. No lantern, mirror, anvil or existing runtime-role replacement.\n\nCell 1: group id=\"folding-fan\" transform=\"translate(0 0)\": half-open paper fan angled left, ochre guard ribs connected to one thick pivot, coral edge; broad pleats.\nCell 2: group id=\"ribbon-shears\" transform=\"translate(480 0)\": open steel tailor shears cutting a folded coral ribbon, clear two handles and single fitted pivot.\nCell 3: group id=\"abacus\" transform=\"translate(960 0)\": tilted wooden abacus with three thick rails and uneven groups of broad beads, no numbers.\nCell 4: group id=\"thimble\" transform=\"translate(0 336)\": large ivory metal thimble on its open rim beside one bent needle, restrained dotted surface, no spool.\nCell 5: group id=\"domino-bridge\" transform=\"translate(480 336)\": three cream domino slabs leaning into a small arch on an ochre base, spare forest pips.\nCell 6: group id=\"tuning-fork\" transform=\"translate(960 336)\": long steel tuning fork at a diagonal with two separated thick prongs over coral felt, no sound-wave glyphs.\nNative self-contained SVG paths and simple shapes with explicit flat colors only. No image or raster data, external resources, script, animation, use, gradients, filters, masks or defs. Every named group extracts as a complete independently legible cell. Spend geometry on silhouette, material thickness and physical continuity, not ornamental noise.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "grid": {
+    "columns": 3,
+    "cell": [480, 336],
+    "ids": ["folding-fan", "ribbon-shears", "abacus", "thimble", "domino-bridge", "tuning-fork"]
+  },
+  "sent_at": "2026-11-06T15:23:28Z",
+  "result": {
+    "request_id": "req_afdbe9c5e6ab46eabe6eab8d2b621e91",
+    "created": 1793978650,
+    "elapsed_seconds": 180.96,
+    "background": "transparent",
+    "usage": {
+      "input_tokens": 676,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 676
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1460
+    },
+    "svg_usage": {
+      "input_tokens": 2052,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 8693,
+      "reasoning_tokens": 314,
+      "total_tokens": 10745
+    },
+    "estimated_usd": 0.117934
+  },
+  "review": {
+    "cells": [
+      {
+        "id": "folding-fan",
+        "verdict": "candidate",
+        "finding": "Broad pleated fan, single pivot and alternating ink/cream spaces survive 64x45. Quiet material cuts retain a clear object tilt."
+      },
+      {
+        "id": "ribbon-shears",
+        "verdict": "candidate",
+        "finding": "Two large handles and crossed blades meet at one pivot; ribbon passes through blade gap. Openings remain clear at 64x45."
+      },
+      {
+        "id": "abacus",
+        "verdict": "candidate",
+        "finding": "Three thick rails and unequal coral bead groups remain distinct at compact size. Bead count is an illustration, no game meaning."
+      },
+      {
+        "id": "thimble",
+        "verdict": "candidate-with-detail-hold",
+        "finding": "Thimble rim thickness and dark open interior read; needle is secondary and its fine tip largely disappears at 64x45. No identity depends on the needle."
+      },
+      {
+        "id": "domino-bridge",
+        "verdict": "candidate",
+        "finding": "Broad leaning slabs carry an upper slab, leaving one large arch opening. Sparse pips are readable without becoming labels or game numbers."
+      },
+      {
+        "id": "tuning-fork",
+        "verdict": "candidate",
+        "finding": "Continuous handle joins curved fork root and two separated prongs; coral felt supports the long diagonal without closing its opening."
+      }
+    ]
+  }
+}
