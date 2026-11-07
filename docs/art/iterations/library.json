@@ -6653,6 +6653,18 @@
       ]
     },
     {
+      "id": "archive-thresholds-20261106",
+      "title": "Threshold mechanisms / one native SVG request",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Future source concepts; exact request, usage, lineage and review: call.json.",
+      "files": [
+        "docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds/call.json",
+        "docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds/README.md",
+        "docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds/contact.png"
+      ]
+    },
+    {
       "id": "expansion-en-20261106/ember-equipment-a",
       "title": "ember-equipment-a · future concepts",
       "date": "2026-11-06",
@@ -8081,6 +8093,90 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "archive-thresholds-20261106:original",
+      "asset": null,
+      "attempt": "archive-thresholds-20261106",
+      "label": "Threshold source / original",
+      "file": "docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds/original.svg",
+      "digest": "bdb71faa16690b20df19b238a1ce9e8c0fc5bdaf481add9f09c8dfdc63fdb839",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact API original."
+    },
+    {
+      "id": "archive-thresholds-20261106:pivot-slab-gate",
+      "asset": null,
+      "attempt": "archive-thresholds-20261106",
+      "label": "Threshold source / pivot-slab-gate",
+      "file": "docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds/pivot-slab-gate.svg",
+      "digest": "4b8bfc99eddf7c16a30c75ae2a92583b8bc2254b1a1498ea496c23d9615c4360",
+      "parents": ["archive-thresholds-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "archive-thresholds-20261106:counterweight-gate",
+      "asset": null,
+      "attempt": "archive-thresholds-20261106",
+      "label": "Threshold source / counterweight-gate",
+      "file": "docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds/counterweight-gate.svg",
+      "digest": "36a2b4ce9ba855078a173cf2da1a3761c1d2997ff1a4f4d8b8a7027a5f5dfc1b",
+      "parents": ["archive-thresholds-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "archive-thresholds-20261106:retracting-plank-crossing",
+      "asset": null,
+      "attempt": "archive-thresholds-20261106",
+      "label": "Threshold source / retracting-plank-crossing",
+      "file": "docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds/retracting-plank-crossing.svg",
+      "digest": "5f3db20e286f3d4a61c09a247b9334818f8ad1d11160ae4ff8ced778abb74d3f",
+      "parents": ["archive-thresholds-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [2, 0]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "archive-thresholds-20261106:sliding-grille",
+      "asset": null,
+      "attempt": "archive-thresholds-20261106",
+      "label": "Threshold source / sliding-grille",
+      "file": "docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds/sliding-grille.svg",
+      "digest": "ca8e7811abc8afc35d67911fcbebe63795dbdb265df16f9bdf1fa0aea3c2ba5b",
+      "parents": ["archive-thresholds-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [0, 1]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "archive-thresholds-20261106:spillway-shutter",
+      "asset": null,
+      "attempt": "archive-thresholds-20261106",
+      "label": "Threshold source / spillway-shutter",
+      "file": "docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds/spillway-shutter.svg",
+      "digest": "c0822d9d489ab99a27f2562e053aec8dcd56469165be33e09ac6ffe4418d40db",
+      "parents": ["archive-thresholds-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [1, 1]; remove its grid translation only. Review: call.json."
+    },
+    {
+      "id": "archive-thresholds-20261106:rotating-junction",
+      "asset": null,
+      "attempt": "archive-thresholds-20261106",
+      "label": "Threshold source / rotating-junction",
+      "file": "docs/art/assets/expansion-archive-spire-continuation-2026-11-06/thresholds/rotating-junction.svg",
+      "digest": "766d25e700b8d530e7418ff6f52a21f0f71da5c8c0c7f3b99ce486b7687dbba1",
+      "parents": ["archive-thresholds-20261106:original"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Cell [2, 1]; remove its grid translation only. Review: call.json."
     },
     {
       "id": "expansion-en-20261106/ember-equipment-a/sheet",
