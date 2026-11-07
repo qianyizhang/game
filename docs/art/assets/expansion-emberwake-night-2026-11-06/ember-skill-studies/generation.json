@@ -1,0 +1,125 @@
+{
+  "format": "card",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed study sheet, exactly 1440 by 672, viewBox=\"0 0 1440 672\". 3 columns by 2 rows, cells exactly 480 by 336, no gutters. Row-major order of named subjects below. Each subject MUST be an individual top-level <g id=\"SUBJECT-ID\" transform=\"translate(CELL-X CELL-Y)\"> using LOCAL coordinates; every group owns its own full-cell dark background rectangle. NO cross-cell content. If there are five subjects, sixth bottom-right cell stays empty dark background in a group id=\"unused\". Keep all subject geometry at least 30 units from cell edges, major silhouette occupies 65-80% of cell. All paint definitions must be local to the group or explicit flat fills. Do not use a shared sheet-wide backdrop.\n\nThese are FUTURE EXPANSION ART CONCEPTS for later review, not canonical history or active content. This is an engraved fantasy illustration set: confident irregular contours, expressive asymmetric gestures, three broad value groups, broad sculptural material planes before detail, sparse form-following engraving, no repeated tiny decoration. Connected joinery and credible support. Upper-left light, quiet background #10232c. Ink #10232c, shadow #34464b, worn ivory #ead7b5, muted bronze #b68d62, smoky steel #95a6aa. Emberwake adds moss #7c987a, saltglass #75a99f, restrained cinder #ca7658. Night Passage patron accents: Aster warm yellow #dfc777; Neris aqua #6dbfb0; Vesta coral #d78568; Isen pale ice blue #a5cbda; Nyra restrained lavender #a18cb8. Materials must look different: wood grain follows stress, leather folds, stone thickness, translucent glass has a clear rim and broad transmission planes, metal has restrained flat highlights. No plastic gloss, no golden edge on everything. Do not turn every object into a symmetrical emblem.\n\nEach scene reads as one distinct designed subject at 160x112 and 80x56, and should survive a 64px silhouette glance for props. This is illustration art only: no frame, captions, labels, text, digits, watermark, logo or UI. Static SVG paths and simple shapes only; no raster embedding, image, text, use, CSS stylesheets, scripts, animation, external resources or filters. No inaccessible gradient references. Economical construction with large quiet areas.\n\nSUBJECTS in exact row-major cell order:\nCell 1: id=\"root-snag\"; origin (0,0); Root snag study. One thick grounded root curls around an empty boot-shaped negative space, two thin root ends press into the floor; asymmetric inward pull and pale stress cuts; no humanoid.\nCell 2: id=\"glass-shear\"; origin (480,0); Glass shear study. Three unequal broad translucent glass blades sweep diagonally through one dusty ochre arc, clear leading edge and quiet trailing space; not a cloud of shards.\nCell 3: id=\"bell-repulse\"; origin (960,0); Bell repulse study. A tilted iron handbell at the moment of a single broad ivory pressure crescent pushing outward; clear bell lip, clapper and fitted handle; no concentric target rings.\nCell 4: id=\"furnace-draft\"; origin (0,336); Furnace draft study. A folded ribbon of deep red heat rising from a narrow black furnace vent and bending sharply sideways, pale orange inner plane and broad charcoal gap; no explosion or fireball.\nCell 5: id=\"ash-decoy\"; origin (480,336); Ash decoy study. An EMPTY half-cloak of compacted ash disintegrates along one trailing edge, broad folded planes and a clean hollow center; no face, skull, living anatomy or confetti.\nCell 6: id=\"rime-tether\"; origin (960,336); Rime tether study. A single hooked strip of pale ice stretching between two weathered stone anchors; taper, tension and one split near the leading anchor, blue-gray shadow; not a nova or teleport ring.\n\nKeep each object composition distinct, readable and structurally grounded; the five Night Passage patrons have elemental/material affinities but these objects do not claim established lore or gameplay effects.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "response": {
+    "created": 1793976749,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1440x672",
+    "svg_usage": {
+      "input_tokens": 2340,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 10426,
+      "reasoning_tokens": 87,
+      "total_tokens": 12766
+    },
+    "usage": {
+      "input_tokens": 964,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 964
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1748
+    },
+    "request_id": "req_e3c7a235123c40dda31acd7d9e2200c4",
+    "http_status": 200,
+    "elapsed_seconds": 235.01,
+    "started_utc": "2026-11-06T14:51:41.903131+00:00"
+  },
+  "estimated_usd": 0.13728,
+  "original": {
+    "file": "sheet.svg",
+    "sha256": "f0e224fbd30557a411d897eb844120dd580197bfc665d664e42d569affafa29f"
+  },
+  "outputs": [
+    {
+      "id": "root-snag",
+      "name": "Root snag study",
+      "sha256": "56e2b6ebf7155061e7393e628ef05b687a403cbf0d959d69b14a08b2d22f5719",
+      "verdict": "candidate-with-caveat",
+      "note": "Strong inward root gesture and clean empty central pocket. The upper trunk terminates flat inside the composition; a purposeful continuation crop would need review before final art."
+    },
+    {
+      "id": "glass-shear",
+      "name": "Glass shear study",
+      "sha256": "65ab29804f296ee9ab0e25f81afea1b9f702e8ac02432c06c543f3f678bb2afd",
+      "verdict": "candidate",
+      "note": "Three unequal broad blades form a clear rising sweep, with restrained dust arc and coherent glass-edge planes. Tiny striations recede at compact size."
+    },
+    {
+      "id": "bell-repulse",
+      "name": "Bell repulse study",
+      "sha256": "e8eeda1aeb4b08e1c655edf305d972cd1b95983be6bd923b76e001b6c67cd2b8",
+      "verdict": "candidate",
+      "note": "Tilted bell, clapper and large separated pressure crescent clearly indicate a directional burst without concentric target rings."
+    },
+    {
+      "id": "furnace-draft",
+      "name": "Furnace draft study",
+      "sha256": "46efc27066e0b254a5488d02805fef72ca3fe124c44eff383aaae8f81acdfb04",
+      "verdict": "candidate-with-caveat",
+      "note": "The rising heat ribbon and small vent read at compact size. The upper-right ribbon finishes with a flat graphic cut; retain as a force/material concept, not finished VFX."
+    },
+    {
+      "id": "ash-decoy",
+      "name": "Ash decoy study",
+      "sha256": "3523ae4f296c8a77413b3caec43f82272423d6d613fb7627d108886ccff6141d",
+      "verdict": "candidate",
+      "note": "Empty folded mantle has a clear hollow hood and trailing dissolution, broad ash planes and restrained fragments; no living body is implied."
+    },
+    {
+      "id": "rime-tether",
+      "name": "Rime tether study",
+      "sha256": "de367a39d4f65fb88b27964cbd9eae31c0294101606451625ad5d85dc4a68763",
+      "verdict": "candidate",
+      "note": "Supported stone anchors, taut curved ice strip and distinct cold planes read as a connected bridge/tether at both study sizes."
+    }
+  ],
+  "review_context": {
+    "actual_game_ui": "Unsupported future skills; no mechanics, trigger, timing, animation or adoption review.",
+    "aesthetic_acceptance": "Optional static concepts; user review pending. No reroll."
+  },
+  "qa": {
+    "svg_checked": 7,
+    "source_original_and_extraction_hashes_verified": true,
+    "contact": {
+      "initial_bytes": 347564,
+      "optimized_bytes": 345056,
+      "retained_bytes": 345056,
+      "pixel_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "mode": "RGBA",
+      "color_metadata_equal": true,
+      "sha256": "ef19e3ee598807e8e34ab510818f52ee947b03935c6245ea2fe514ff2186a9f6",
+      "file": "contact.png"
+    },
+    "crop_pixel_comparison": {
+      "exact_cells": 2,
+      "total_cells": 6,
+      "max_channel_delta": 3
+    },
+    "native_compact_author_review": 6
+  }
+}
