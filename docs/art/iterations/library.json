@@ -6653,6 +6653,20 @@
       ]
     },
     {
+      "id": "expansion-en-cont-20261106/night-patron-handling",
+      "title": "Night Passage patron handling · optional future source concepts",
+      "date": "2026-11-06",
+      "outcome": "returned",
+      "notes": "Exact request/settings, returned usage, cost and reviews recorded once in generation.json. Unassigned source concepts; user acceptance pending.",
+      "files": [
+        "docs/art/assets/night-patron-handling-2026-11-06/generation.json",
+        "docs/art/assets/night-patron-handling-2026-11-06/contact.png",
+        "docs/art/assets/night-patron-handling-2026-11-06/README.md",
+        "docs/art/assets/night-patron-handling-2026-11-06/validation.json",
+        "docs/art/assets/night-patron-handling-2026-11-06/concepts.json"
+      ]
+    },
+    {
       "id": "cartographer-wayfinding-20261106",
       "title": "Wayfinding fixtures / one native SVG request",
       "date": "2026-11-06",
@@ -8236,6 +8250,90 @@
       "runtimeFile": null,
       "runtimeDigest": null,
       "notes": "Extracted 384px cell 2; exact transform and hash in extraction.json. Native tight-fit editable adaptation lives in art-data.ts at 5e26f4a; this original cell is a source study. Initial live-source registration creates no redundant frozen copy."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/sheet",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "Patron handling · exact packed original",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/sheet.svg",
+      "digest": "5df6cd2ccaadefa99841225fe3170b4bbc955b441a971c464267637bf43c2f0d",
+      "parents": [],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact native vector original; 3×2 cells of 480×336. No accepted ritual or runtime identity."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/aster-grounding-plate",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "aster-grounding-plate · candidate",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/aster-grounding-plate.svg",
+      "digest": "cfb0122038da8691d4ce1726150d31589b640959cdcceb084aded0729caee570",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 0, origin (0,0); remove only grid translation, preserve paint. Review: generation.json output aster-grounding-plate."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/neris-weir-panel",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "neris-weir-panel · candidate-with-caveat",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/neris-weir-panel.svg",
+      "digest": "652e6a1417a9cbbe04db2305c616736dd3751f5f30bf6f94ae98b6197d5125d3",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 1, origin (480,0); remove only grid translation, preserve paint. Review: generation.json output neris-weir-panel."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/vesta-ritual-bellows",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "vesta-ritual-bellows · candidate",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/vesta-ritual-bellows.svg",
+      "digest": "1dd6da10543ec217ab38842b2426d0d34b914c6da1a4c84cfb91bbd005e9d074",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 2, origin (960,0); remove only grid translation, preserve paint. Review: generation.json output vesta-ritual-bellows."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/isen-cooling-wrap",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "isen-cooling-wrap · candidate-with-caveat",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/isen-cooling-wrap.svg",
+      "digest": "88be5c08c47e51053ea50e7b5a0f0fd1a05d1a5a53136090919939a2a7caf6c0",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 3, origin (0,336); remove only grid translation, preserve paint. Review: generation.json output isen-cooling-wrap."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/nyra-witness-shutter",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "nyra-witness-shutter · candidate",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/nyra-witness-shutter.svg",
+      "digest": "05414db777e7c6e073e09b5de44e95c38cc93237163db6fdc57933156df2f2d7",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 4, origin (480,336); remove only grid translation, preserve paint. Review: generation.json output nyra-witness-shutter."
+    },
+    {
+      "id": "expansion-en-cont-20261106/night-patron-handling/audience-choice-rack",
+      "asset": null,
+      "attempt": "expansion-en-cont-20261106/night-patron-handling",
+      "label": "audience-choice-rack · candidate",
+      "file": "docs/art/assets/night-patron-handling-2026-11-06/audience-choice-rack.svg",
+      "digest": "0f0c7ff509267bb117d96c35c89a650960bef701706bf0cfcf788fca4c8f104e",
+      "parents": ["expansion-en-cont-20261106/night-patron-handling/sheet"],
+      "runtimeFile": null,
+      "runtimeDigest": null,
+      "notes": "Exact group extraction, zero-based cell 5, origin (960,336); remove only grid translation, preserve paint. Review: generation.json output audience-choice-rack."
     },
     {
       "id": "cartographer-wayfinding-20261106:original",
