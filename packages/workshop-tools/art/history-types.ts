@@ -42,6 +42,7 @@ export interface HistoryState {
   version: string;
   history: ArtHistory;
   selections: Record<string, { revision: string; digest: string }>;
+  /** Embedded only in self-contained exports; live views request scoped artwork. */
   previews: Record<string, string>;
   documents?: Record<string, HistoryDocument>;
   live: boolean;
