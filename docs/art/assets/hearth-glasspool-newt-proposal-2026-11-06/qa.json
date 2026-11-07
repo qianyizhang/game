@@ -1,0 +1,88 @@
+{
+  "technical": {
+    "svg_safety": "passed",
+    "cells": [
+      {
+        "id": "newt-normal",
+        "geometry_and_paint_equal_except_grid_translation": true,
+        "paths": 46,
+        "viewport_bounds": true,
+        "requested_safe_margins": false,
+        "extent": {
+          "minX": 30.923137664794922,
+          "minY": 173.4092559814453,
+          "maxX": 683.0000305175781,
+          "maxY": 472
+        }
+      },
+      {
+        "id": "newt-ascended",
+        "geometry_and_paint_equal_except_grid_translation": true,
+        "paths": 41,
+        "viewport_bounds": true,
+        "requested_safe_margins": false,
+        "extent": {
+          "minX": 23.864532470703125,
+          "minY": 88.07626342773438,
+          "maxX": 680,
+          "maxY": 481
+        }
+      }
+    ]
+  },
+  "pixels_and_refinement": {
+    "matched_image_render_crops": [
+      {
+        "id": "newt-normal",
+        "changed_pixels": 0,
+        "max_channel_difference": 0,
+        "alpha_equal": true
+      },
+      {
+        "id": "newt-ascended",
+        "changed_pixels": 7828,
+        "max_channel_difference": 44,
+        "alpha_equal": true
+      }
+    ],
+    "restored_translation_control": "Ascended extraction reinserted at translate(720 0) in a 1440x512 canvas is pixel-identical to the original right cell. Geometry/paint exact; do not claim identical antialiasing after moving to local coordinates.",
+    "cross_method_exception": "Screenshot vs drawImage canvas comparison initially differed on 5205/7656 pixels (max RGB differences 28/44), equal alpha; normal matched image renders agree.",
+    "refinement": "Only two detached root-sliver paths removed; every other original node/attribute unchanged.",
+    "removed_path_starts": ["M581 401", "M604 398"],
+    "refinement_pixel_bbox": [579, 308, 682, 422],
+    "review": {
+      "file": "review.png",
+      "unoptimized_bytes": 199982,
+      "retained_bytes": 199131,
+      "dimensions": [1160, 950],
+      "mode": "RGB",
+      "decoded_pixels_alpha_and_color_metadata_equal": true,
+      "sha256": "a7b4170350280afa998036ae84e907cc5969596e198c16ca25e8a4157d062c97"
+    }
+  },
+  "visual_self_review": {
+    "normal": "Useful source candidate: short blunt integrated head, low continuous torso, four supported leg chains and one connected open-C tail. Reviewed 720x512, 160x112, 80x56 and 64x45.",
+    "ascended_original": "Hold for detached root sliver. Creature anatomy is connected; support needs cleanup before author acceptance.",
+    "ascended_refined": "Useful source candidate: only detached root sliver removed. Four feet, connected head/neck/tail, planted stepped support and upright reaching gesture reviewed at native/card/compact sizes.",
+    "family": "Same teal/sage/ivory skin, restrained ochre marks, small fitted eyes and long flattened tail. Normal low stone watch differs from ascended root climb and lifted tail crest.",
+    "limits": "Stylized digit separation is not anatomical proof of every requested toe count. Normal has more headroom; ascended tail is a higher open curl rather than the exact requested S. Both remain readable at 64x45; fine digits/ripples diminish.",
+    "reuse": "Matched live Bog Toad/Crocolisk renderers confirm distinct full-body long-tail reading without replacing either existing portrait.",
+    "acceptance": "Author self-review only. No installed-game frame fit, stable runtime slot or user acceptance."
+  },
+  "exceptions": {
+    "safe_margin": "Both cells stay inside their viewports; normal minX30.923/maxX683, ascended minX23.865/maxY481 exceed the requested x40..680/y36..476 safe inset. No actual crop.",
+    "metadata_background": "API response reports transparent; actual cell rectangles are opaque #172928."
+  },
+  "verification": {
+    "format_maintenance": "Passed with pinned Node 24.21.0/npm 11.19.0: 901 managed sources, no errors.",
+    "isolated_history_gallery": "Disposable Git clone import/verify passed (709 assets, 96 revisions, zero selections, 709 registered sources). Existing focused history UI decoded all four revisions and exposed exact request/receipt/trace and parent linkage at 1440/390px with zero page errors; mutation controls disabled.",
+    "scope": "Source candidates only; no shared registry, runtime/default, frozen branch or dependency changes.",
+    "preservation_exception": "Whitespace-only lines inherited in exact generated SVG bytes are preserved; git diff --check may report those lines, not artwork corruption."
+  },
+  "registration": {
+    "handoff_head": "1ac74c40ee84fab1e2d09f133dace58014001fe3",
+    "records": "2 attempts/4 source revisions, exact original/normal/held ascended/manual two-path cleanup with explicit parents; runtime null and no selections",
+    "transport": "Retired duplicate prepared-history after exact comparison and README consumer migration; all art/request/receipt/review bytes unchanged.",
+    "gallery": "Actual4 revisions/2attempts, exact request/receipt/QA text and lineage, held ascended, disabled Use, six1440/390/320px×16/20px layouts passed without page errors. Historical PNG caption unchanged; current README owns status."
+  }
+}
