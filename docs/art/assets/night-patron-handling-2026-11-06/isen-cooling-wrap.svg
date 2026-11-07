@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="isen-cooling-wrap">
+    <defs>
+      <linearGradient id="isen-wool" x1="0" y1="0" x2="0.8" y2="1">
+        <stop offset="0" stop-color="#7694a4"/>
+        <stop offset="0.55" stop-color="#486676"/>
+        <stop offset="1" stop-color="#344c5b"/>
+      </linearGradient>
+      <linearGradient id="isen-tile" x1="0" y1="0" x2="0.8" y2="1">
+        <stop offset="0" stop-color="#d8e6db"/>
+        <stop offset="0.45" stop-color="#a5cbda"/>
+        <stop offset="1" stop-color="#75a99f"/>
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c"/>
+    <path d="M56 285 Q209 273 407 284 L421 298 L87 303Z" fill="#14292f"/>
+    <path d="M53 154 Q57 103 87 85 Q116 72 168 76 L302 48 Q334 40 344 68 L359 104 L400 111 Q425 114 426 146 L413 268 Q410 290 385 293 L95 294 Q66 296 57 281 L63 225 Q37 206 42 181Z" fill="#263e4a"/>
+    <path d="M52 151 Q59 100 87 82 Q114 70 168 74 L302 45 Q333 38 344 65 L358 101 L397 108 Q422 111 422 143 L408 263 Q406 287 382 288 L94 290 Q67 291 59 277 L67 219 Q40 202 45 179Z" fill="url(#isen-wool)"/>
+    <path d="M90 91 Q129 79 163 84 L279 60 L253 99 L91 151 L61 173 Q65 118 90 91Z" fill="#87a2ae" opacity="0.35"/>
+    <path d="M82 197 Q165 151 254 125 Q315 104 390 122 Q409 125 406 148 L394 257 Q393 272 375 274 L96 278 Q81 279 78 267Z" fill="#233e49"/>
+    <path d="M90 200 Q168 154 257 131 Q315 111 385 127 Q398 130 396 148 L383 250 Q382 261 371 263 L100 268 Q90 269 88 259Z" fill="#436371"/>
+    <g id="isen-cooling-tile">
+      <path d="M149 200 Q156 151 217 134 Q275 118 331 136 Q368 151 366 191 Q363 234 315 252 Q254 275 191 250 Q150 235 149 200Z" fill="#657f80"/>
+      <path d="M146 192 Q153 145 214 129 Q273 112 329 130 Q367 145 364 184 Q362 227 313 245 Q253 267 189 242 Q147 226 146 192Z" fill="#ead7b5"/>
+      <path d="M154 192 Q161 151 216 137 Q273 122 325 138 Q357 151 356 184 Q352 220 309 237 Q252 257 193 234 Q157 220 154 192Z" fill="url(#isen-tile)"/>
+      <path d="M164 185 Q176 153 218 143 Q250 135 283 138 Q236 153 201 172 L169 192 Q160 198 164 185Z" fill="#e5f0e7"/>
+      <path d="M198 228 Q263 231 304 200 Q334 180 336 149 Q361 172 343 201 Q327 229 290 238 Q239 250 198 228Z" fill="#75a99f" opacity="0.55"/>
+      <path d="M157 198 Q151 172 184 151 Q223 126 276 129" fill="none" stroke="#fff0d6" stroke-width="4" stroke-linecap="round"/>
+      <path d="M284 132 Q325 131 345 155" fill="none" stroke="#cce0dd" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <path d="M87 207 Q109 204 134 210 Q199 237 274 233 Q336 234 390 207 L381 267 Q376 280 359 281 L97 283 Q78 283 76 270Z" fill="#344c5b"/>
+    <path d="M87 201 Q112 198 137 205 Q200 231 274 227 Q336 228 392 201 L383 258 Q379 274 360 275 L98 277 Q80 278 78 264Z" fill="url(#isen-wool)"/>
+    <path d="M91 207 Q145 213 177 226 Q268 249 383 215" fill="none" stroke="#96a9ae" stroke-width="4"/>
+    <path d="M88 218 Q144 225 176 236 Q272 258 382 226 M91 261 Q153 252 206 267 Q267 281 369 264 L397 145 Q399 128 381 125 L337 123" fill="none" stroke="#c8bda0" stroke-width="2.5" stroke-dasharray="8 7" stroke-linecap="round"/>
+    <path d="M51 175 Q76 145 122 135 Q192 118 239 87 L300 49 Q326 37 338 63 Q321 48 309 68 Q284 110 249 126 Q215 146 179 151 Q150 157 132 184 Q110 204 74 201 L65 235 Q46 222 44 200 Q42 185 51 175Z" fill="#233e4a"/>
+    <path d="M48 167 Q73 137 119 127 Q189 110 237 79 L299 43 Q326 32 338 58 Q324 45 310 64 Q282 106 247 121 Q213 140 177 145 Q147 151 129 178 Q107 198 71 195 L61 228 Q44 215 41 193 Q39 177 48 167Z" fill="url(#isen-wool)"/>
+    <path d="M49 166 Q75 141 120 131 Q190 114 238 83 L298 47 Q316 39 326 44 Q307 51 296 70 Q273 105 243 116 Q198 135 173 138 Q143 145 125 170 Q111 189 73 190 L48 201Z" fill="#7694a4" opacity="0.45"/>
+    <path d="M49 180 Q80 169 105 172 Q132 174 150 150 Q163 136 189 132 Q247 122 275 94 L306 55" fill="none" stroke="#d7c8a7" stroke-width="2.5" stroke-dasharray="9 7" stroke-linecap="round"/>
+    <path d="M67 106 L82 96 M91 95 L112 89 M132 91 L151 87 M91 143 L107 137 M145 123 L160 117 M195 107 L207 101 M202 154 L215 150 M105 250 L120 251 M221 263 L241 265 M359 185 L364 167" fill="none" stroke="#a5cbda" stroke-width="1.5" opacity="0.3"/>
+    <path d="M67 247 L120 233 L127 260 L77 274 L59 269Z" fill="#624b38"/>
+    <path d="M67 242 L120 229 L124 253 L74 267 L61 263Z" fill="#b68d62"/>
+    <path d="M69 245 L115 234 L117 249 L71 261Z" fill="#936b48"/>
+    <ellipse cx="91" cy="248" rx="10" ry="8" fill="#654f35"/>
+    <ellipse cx="90" cy="245" rx="9" ry="7" fill="#ead7b5"/>
+    <path d="M387 226 Q415 219 432 235 Q442 248 428 269 L400 277 L394 264 Q419 261 419 247 Q411 239 385 247Z" fill="#644c36"/>
+    <path d="M386 221 Q416 215 433 232 Q440 242 434 257 Q430 242 417 240 L383 243Z" fill="#b68d62"/>
+    <path d="M389 225 Q414 220 429 232" fill="none" stroke="#d2aa78" stroke-width="2"/>
+    <g id="isen-rim-frost" fill="none" stroke="#d8eef0" stroke-linecap="round">
+      <path d="M280 131 L290 128 L299 134 L307 131 L315 139 L325 138 L330 145 L341 148" stroke-width="2"/>
+      <path d="M289 130 L285 124 M291 132 L293 138 M304 133 L307 125 M313 137 L315 129 M322 139 L327 133 M330 145 L337 140 M335 147 L334 154" stroke-width="2"/>
+      <path d="M285 124 L281 125 M307 125 L312 126 M315 129 L319 130 M337 140 L341 141" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  </svg>

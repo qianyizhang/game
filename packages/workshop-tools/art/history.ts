@@ -67,8 +67,7 @@ export async function snapshotHistory(root: string, version: string, assetId?: s
   const incoming: ArtHistory = { schema: 1, assets: [], attempts: [], revisions: [] };
   const created: string[] = [];
   try {
-    for (const { asset, svg } of await sourceArtwork()) {
-      if (assetId && asset.id !== assetId) continue;
+    for (const { asset, svg } of await sourceArtwork(assetId)) {
       const parent = previous.history.revisions
         .slice()
         .reverse()
@@ -120,25 +119,27 @@ export async function snapshotHistory(root: string, version: string, assetId?: s
 }
 
 /** Snapshot and closeout use the same editable-source renderer, excluding game pins. */
-function sourceArtwork(): Promise<{ asset: HistoryAsset; svg: string }[]> {
+function sourceArtwork(assetId?: string): Promise<{ asset: HistoryAsset; svg: string }[]> {
   return withBundle<typeof import('./gallery/catalogue'), { asset: HistoryAsset; svg: string }[]>(
     'packages/workshop-tools/art/gallery/catalogue.tsx',
     ({ cardArtCatalogue }) =>
       Promise.resolve(
-        cardArtCatalogue().map((entry) => {
-          const svg = standaloneSvg(renderToStaticMarkup(entry.runtimeNode ?? entry.node));
-          const size = validateSvg(svg);
-          return {
-            asset: {
-              id: entry.id,
-              name: entry.name,
-              group: entry.group,
-              ...size,
-              sourceDigest: digest(svg),
-            },
-            svg,
-          };
-        }),
+        cardArtCatalogue()
+          .filter((entry) => !assetId || entry.id === assetId)
+          .map((entry) => {
+            const svg = standaloneSvg(renderToStaticMarkup(entry.runtimeNode ?? entry.node));
+            const size = validateSvg(svg);
+            return {
+              asset: {
+                id: entry.id,
+                name: entry.name,
+                group: entry.group,
+                ...size,
+                sourceDigest: digest(svg),
+              },
+              svg,
+            };
+          }),
       ),
     [
       react(),
@@ -171,9 +172,11 @@ export async function verifySourceHistory(root = repositoryRoot) {
 }
 
 /** Current SVGs are rendered on demand, not persisted as iteration files. */
-export async function currentArtwork() {
+export async function currentArtwork(assetId?: string) {
+  const sources = await sourceArtwork(assetId);
+  if (assetId && !sources.length) throw new Error('Editable source is unavailable for this asset');
   return Object.fromEntries(
-    (await sourceArtwork()).map(({ asset, svg }) => [
+    sources.map(({ asset, svg }) => [
       asset.id,
       `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`,
     ]),

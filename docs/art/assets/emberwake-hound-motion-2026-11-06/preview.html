@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ash hound · motion source study</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: system-ui, sans-serif;
+        color: #e7dfcf;
+        background: #1e242d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        max-width: 1240px;
+        margin: auto;
+        padding: 32px;
+      }
+      h1 {
+        font-size: clamp(30px, 5vw, 48px);
+        line-height: 1.1;
+        margin: 18px 0;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      p {
+        max-width: 900px;
+        line-height: 1.6;
+        color: #c5bdb2;
+      }
+      a {
+        color: #efba8e;
+      }
+      small,
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 0.1em;
+      }
+      .eyebrow {
+        color: #dc9e73;
+      }
+      .tag {
+        border: 1px solid #795b43;
+        padding: 6px 12px;
+        border-radius: 20px;
+        display: inline-block;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin: 28px 0;
+      }
+      .frame {
+        border: 1px solid #514e49;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #252a32;
+      }
+      .stage {
+        height: 184px;
+        display: grid;
+        place-items: center;
+        background: repeating-conic-gradient(#303741 0% 25%, #2b323b 0% 50%) 50% /32px 32px;
+      }
+      .stage img {
+        width: 204.8px;
+        height: 153.6px;
+      }
+      .native {
+        display: flex;
+        justify-content: space-around;
+        align-items: end;
+        padding: 16px 6px 12px;
+        background-color: #28392f;
+        background-image:
+          linear-gradient(#ffffff06 1px, transparent 1px),
+          linear-gradient(90deg, #ffffff06 1px, transparent 1px);
+        background-size: 32px 32px;
+        min-height: 91px;
+      }
+      .native figure {
+        margin: 0;
+        display: grid;
+        justify-items: center;
+        gap: 7px;
+      }
+      .native img {
+        width: 51.2px;
+        height: 38.4px;
+      }
+      .native .tight {
+        width: 32px;
+        height: 24px;
+      }
+      figcaption {
+        font-size: 11px;
+        color: #d0c8b7;
+      }
+      .label {
+        padding: 12px;
+      }
+      .label h2 {
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+      .label p {
+        font-size: 13px;
+        margin: 0;
+      }
+      .sheet {
+        max-width: 768px;
+        width: 100%;
+        height: auto;
+        background: #2a3039;
+      }
+      details {
+        margin: 16px 0;
+        border: 1px solid #514e49;
+        border-radius: 10px;
+        padding: 14px;
+      }
+      footer {
+        margin-top: 26px;
+        border-top: 1px solid #514e49;
+        padding-top: 16px;
+        color: #b6ad9e;
+        font-size: 13px;
+      }
+      @media (max-width: 850px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        body {
+          padding: 20px;
+        }
+      }
+      @media (max-width: 480px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <span class="eyebrow">EMBERWAKE / ASH HOUND / SOURCE STUDY</span>
+    <h1>Load. Reach. Recover.</h1>
+    <p>
+      Four SE/front-quarter key poses for the same lean ash-russet quadruped. These are future
+      physical-melee motion concepts; the game does not implement these four action phases.
+    </p>
+    <span class="tag">Candidate-only · unassigned · no runtime selection</span>
+    <p>
+      Upper views use a common 4× target scale. Below: exact 0.1 source scale, aiming for roughly
+      30×24px visible bounds, and a tighter 32px-wide canvas. The square grid provides a size
+      reference; it is outside the SVG.
+    </p>
+    <div class="grid">
+      <article class="frame">
+        <div class="stage">
+          <img
+            src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-anticipation-authored.svg"
+            alt="Ash hound, compact anticipation, enlarged"
+          />
+        </div>
+        <div class="native">
+          <figure>
+            <img
+              src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-anticipation-authored.svg"
+              alt="Ash hound anticipation at target scale"
+            />
+            <figcaption>1× target</figcaption>
+          </figure>
+          <figure>
+            <img
+              class="tight"
+              src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-anticipation-authored.svg"
+              alt="Ash hound anticipation in 32px canvas"
+            />
+            <figcaption>32px canvas</figcaption>
+          </figure>
+        </div>
+        <div class="label">
+          <h2>01 · Anticipation</h2>
+          <p>Compress over support; track the target.</p>
+        </div>
+      </article>
+      <article class="frame">
+        <div class="stage">
+          <img
+            src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-launch-authored.svg"
+            alt="Ash hound, low forward launch, enlarged"
+          />
+        </div>
+        <div class="native">
+          <figure>
+            <img
+              src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-launch-authored.svg"
+              alt="Ash hound launch at target scale"
+            />
+            <figcaption>1× target</figcaption>
+          </figure>
+          <figure>
+            <img
+              class="tight"
+              src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-launch-authored.svg"
+              alt="Ash hound launch in 32px canvas"
+            />
+            <figcaption>32px canvas</figcaption>
+          </figure>
+        </div>
+        <div class="label">
+          <h2>02 · Launch</h2>
+          <p>Push from the hindquarters; reach low.</p>
+        </div>
+      </article>
+      <article class="frame">
+        <div class="stage">
+          <img
+            src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-contact-authored.svg"
+            alt="Ash hound, contact and reach, enlarged"
+          />
+        </div>
+        <div class="native">
+          <figure>
+            <img
+              src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-contact-authored.svg"
+              alt="Ash hound contact at target scale"
+            />
+            <figcaption>1× target</figcaption>
+          </figure>
+          <figure>
+            <img
+              class="tight"
+              src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-contact-authored.svg"
+              alt="Ash hound contact in 32px canvas"
+            />
+            <figcaption>32px canvas</figcaption>
+          </figure>
+        </div>
+        <div class="label">
+          <h2>03 · Contact</h2>
+          <p>Plant the forepaw; absorb the reach.</p>
+        </div>
+      </article>
+      <article class="frame">
+        <div class="stage">
+          <img
+            src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-recovery-authored.svg"
+            alt="Ash hound, weight-restoring recovery, enlarged"
+          />
+        </div>
+        <div class="native">
+          <figure>
+            <img
+              src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-recovery-authored.svg"
+              alt="Ash hound recovery at target scale"
+            />
+            <figcaption>1× target</figcaption>
+          </figure>
+          <figure>
+            <img
+              class="tight"
+              src="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-recovery-authored.svg"
+              alt="Ash hound recovery in 32px canvas"
+            />
+            <figcaption>32px canvas</figcaption>
+          </figure>
+        </div>
+        <div class="label">
+          <h2>04 · Recovery</h2>
+          <p>Draw weight back toward the forequarters.</p>
+        </div>
+      </article>
+    </div>
+    <p id="review">
+      Self-review: manually fitted key poses are useful candidates. Raw generated launch/contact
+      were too similar and remain held. Foot positions and compression now differ, but
+      launch/contact separation is still subtle at native size. Timing, in-between transitions,
+      continuous contact and final anatomy acceptance remain open.
+    </p>
+    <details>
+      <summary>Held raw sequence · exact returned sheet</summary>
+      <p>
+        The four raw extracts remain preserved:
+        <a href="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-anticipation.svg"
+          >anticipation</a
+        >
+        ·
+        <a href="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-launch.svg"
+          >launch</a
+        >
+        ·
+        <a href="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-contact.svg"
+          >contact</a
+        >
+        ·
+        <a href="../../iterations/files/emberwake-hound-motion-2026-11-06/hound-recovery.svg"
+          >recovery</a
+        >
+      </p>
+      <img
+        class="sheet"
+        src="../../iterations/files/emberwake-hound-motion-2026-11-06/original.svg"
+        alt="Exact generated four-pose Ash hound sheet"
+      />
+    </details>
+    <details>
+      <summary>Source, provenance and checks</summary>
+      <p>
+        <a
+          href="https://github.com/qianyizhang/game/blob/5642a745f69c54e2eeb8816fffdcc86d452d8946/docs/art/assets/directional-emberwake-enemies-2026-11-06/hound-se.svg"
+          >Frozen SE reference · PR #146</a
+        >
+        · <a href="README.md">Admission and review</a> ·
+        <a href="../../iterations/files/emberwake-hound-motion-2026-11-06/call.json"
+          >Exact prompt, settings and receipt</a
+        >
+        · <a href="validation.json">Validation</a>
+      </p>
+      <p>
+        Sunburst native SVG with Terra author, high reference quality/complexity and high author
+        effort. Continuity with the previous study is prompt-based; its artwork was not passed as an
+        image reference. Raw extractions remove only their outer sheet translation. The displayed
+        manual derivatives instead share one returned anticipation master; their separate limb
+        fitting and neck/jaw edits are recorded in manual-authoring.json.
+      </p>
+    </details>
+    <footer>
+      Local source comparison. No runtime mapping, facing-state change, gameplay adoption, merge or
+      deployment. Canonical source history is registered for review; user selection remains
+      separate.
+    </footer>
+  </body>
+</html>

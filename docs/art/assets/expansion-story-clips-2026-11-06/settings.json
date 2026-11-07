@@ -1,0 +1,46 @@
+{
+  "common": {
+    "model": "gpt-image-2.6-sunburst",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high"
+  },
+  "kinds": {
+    "svg": {
+      "endpoint": "https://api.openai.com/v1/images/generations",
+      "output_format": "svg",
+      "size": "1280x896",
+      "svg": {
+        "model": "gpt-6.1-sol",
+        "reasoning": {
+          "effort": "medium"
+        }
+      }
+    },
+    "gif-edit": {
+      "endpoint": "https://api.openai.com/v1/images/edits",
+      "output_format": "gif",
+      "size": "480x336",
+      "frame_count": 16,
+      "frame_duration_ms": 300
+    }
+  },
+  "transport": {
+    "method": "POST",
+    "authorization_binding": "OPENAI_API_TOKEN; value omitted",
+    "proxy": "Inherited HTTPS proxy; TLS verified",
+    "automatic_retries": 0
+  },
+  "rates_usd_per_million": {
+    "image_text_input": 5,
+    "image_input": 8,
+    "image_output": 30,
+    "svg_sol_input": 2,
+    "svg_sol_output": 10
+  },
+  "historical_reservations_usd": {
+    "svg": 3,
+    "gif-edit": 1.5
+  },
+  "reconstruction": "Merge common and kind fields, add call.prompt, resolve ordered input IDs in manifest.json to exact PNG bytes as images[].image_url data URLs. Echoed response format/size/quality matched request. Original checkpoint9973d6f recovers removed redundant records."
+}

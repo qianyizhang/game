@@ -1,0 +1,28 @@
+{
+  "kind": "gif-edit",
+  "prompt": "Generate one finished animated GIF chapter of an original fantasy story, not a sprite sheet or montage. Use the supplied PNG still as the STARTING composition and identity. Fixed 480x336 landscape camera, engraved fantasy illustration, forest ink, broad slate/ivory planes, muted sage cloak, ash hood hiding face, rust-red diagonal satchel strap, dark trousers, two grounded boots, bronze lantern with amber glass. Match the existing doorway, sconce, proportions, objects, palette and upper-left lighting. This is candidate fiction near Night Passage's Root Sepulcher, not established canon.\n\nOpening chapter: start in the exact supplied still. The solitary traveler notices the blocked doorway. Slowly bend the near elbow and lift the single lantern from waist level to chest/shoulder level, toward the existing empty bronze wall-sconce. Feet remain planted and the shoulder stays connected to the arm. The hood turns a few degrees to watch the lantern. Keep the two roots across the doorway unchanged. End holding the lantern close to, but NOT yet hanging in, the sconce. Final four frames hold the raised-lantern pose. This is anticipation and a choice, no portal opening yet.\n\nSixteen sequential frames, 300 milliseconds each; one deliberate action with readable anticipation and settling. This clip will be joined to other chapters; it must NOT loop back to its start. Stable camera and ground, restrained steady light, no flashing, explosions, sparkle storm, zoom or whole-image panning. No extra hands, feet, lanterns, people, masks or weapons. Keep the face hidden, anatomy continuous and scene inside the frame. Strong negative spaces and silhouettes at native 480x336 and compact 160x112. No captions, numbers, border, UI or logos. Preserve a useful still final frame. Follow the supplied current scene state instead of resetting it to an earlier chapter.",
+  "inputs": ["opening"],
+  "output": "chapter-1.gif",
+  "request_id": "req_03fca4bda45c47e6b130813d6453f3bb",
+  "started_at": "2026-11-06T14:48:25Z",
+  "created": 1793976547,
+  "elapsed_s": 42.574,
+  "cost_estimate_usd": 0.063185,
+  "usage": {
+    "input_tokens": 1045,
+    "input_tokens_details": {
+      "image_tokens": 630,
+      "text_tokens": 415
+    },
+    "output_tokens": 1869,
+    "output_tokens_details": {
+      "image_tokens": 1869,
+      "text_tokens": 0
+    },
+    "total_tokens": 2914
+  },
+  "background": "opaque",
+  "output_metadata": {
+    "generation_id": "10b7082b-a3e3-4bde-a480-fe11bc5d4508"
+  }
+}

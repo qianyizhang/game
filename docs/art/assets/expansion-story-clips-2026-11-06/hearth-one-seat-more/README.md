@@ -58,9 +58,13 @@ included here, so this is conditional compatibility evidence. This PR remains a
 draft source study; game selections are unchanged and independent library
 additions still need serial reconciliation when landing.
 
-The combined retained-refinement browser test failed at
-`tests/browser/asset-history.spec.ts:65`: its global HELD count expects four but
-includes this story’s correctly retained fifth held cup-loss trial. The shared
-test owner must scope that check to its refinement attempts. Actual native replay
-passed; this separate integration-test blocker remains. Assertions, timeouts and
-shared source files are unchanged here.
+Historical integration failure: the retained-refinement browser test failed at
+`tests/browser/asset-history.spec.ts:65`, expecting four globally HELD revisions
+and receiving five, including this story’s correctly retained cup-loss trial.
+Actual native replay passed separately. The test blocker was later resolved by
+scoping the predicate to its owning refinement attempts, retaining all four
+refinement holds and this distinct cup-loss record. Disposable tree
+`a28854958132aa45ad5618b5d4fb37f989c03428` passed 33 history/CI-selection tests
+and 14 affected browser guards. Those results belong to that historical tree;
+they do not prove a later integrated tree. The original failure evidence remains
+valid, and its assertions and timeouts were not weakened.

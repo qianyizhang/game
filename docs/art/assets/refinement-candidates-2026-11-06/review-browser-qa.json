@@ -1,0 +1,24 @@
+[
+  {
+    "viewport": {
+      "width": 1360,
+      "height": 960
+    },
+    "images": 161,
+    "broken": [],
+    "horizontalOverflow": false,
+    "scripts": 0,
+    "candidateArticles": 23
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "images": 161,
+    "broken": [],
+    "horizontalOverflow": false,
+    "scripts": 0,
+    "candidateArticles": 23
+  }
+]

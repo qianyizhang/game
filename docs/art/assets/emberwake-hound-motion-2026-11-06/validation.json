@@ -1,0 +1,308 @@
+{
+  "base_main": "3a59621069dd1fe912a749d851d27e993507f5dd",
+  "reference_pr": 146,
+  "reference_head": "5642a745f69c54e2eeb8816fffdcc86d452d8946",
+  "original_sha256": "7cddaf0fe2e5502ffbe203c0bd3d025e64157010f207005ef1f462cac475de30",
+  "original_matches_terminal_receipt": true,
+  "technical": {
+    "technical": [
+      {
+        "file": "hound-anticipation.svg",
+        "width": 512,
+        "height": 384,
+        "safe": true
+      },
+      {
+        "file": "hound-contact.svg",
+        "width": 512,
+        "height": 384,
+        "safe": true
+      },
+      {
+        "file": "hound-launch.svg",
+        "width": 512,
+        "height": 384,
+        "safe": true
+      },
+      {
+        "file": "hound-recovery.svg",
+        "width": 512,
+        "height": 384,
+        "safe": true
+      },
+      {
+        "file": "original.svg",
+        "width": 1024,
+        "height": 768,
+        "safe": true
+      }
+    ],
+    "pixels": [
+      {
+        "file": "hound-anticipation.svg",
+        "changedChannels": 0,
+        "maxChannelDelta": 0,
+        "bounds": {
+          "x": 99,
+          "y": 121,
+          "width": 313,
+          "height": 221
+        },
+        "edgePixels": 0,
+        "nativeBounds": {
+          "width": 31.3,
+          "height": 22.1
+        }
+      },
+      {
+        "file": "hound-launch.svg",
+        "changedChannels": 0,
+        "maxChannelDelta": 0,
+        "bounds": {
+          "x": 98,
+          "y": 125,
+          "width": 317,
+          "height": 215
+        },
+        "edgePixels": 0,
+        "nativeBounds": {
+          "width": 31.700000000000003,
+          "height": 21.5
+        }
+      },
+      {
+        "file": "hound-contact.svg",
+        "changedChannels": 0,
+        "maxChannelDelta": 0,
+        "bounds": {
+          "x": 98,
+          "y": 125,
+          "width": 317,
+          "height": 219
+        },
+        "edgePixels": 0,
+        "nativeBounds": {
+          "width": 31.700000000000003,
+          "height": 21.900000000000002
+        }
+      },
+      {
+        "file": "hound-recovery.svg",
+        "changedChannels": 0,
+        "maxChannelDelta": 0,
+        "bounds": {
+          "x": 102,
+          "y": 117,
+          "width": 305,
+          "height": 225
+        },
+        "edgePixels": 0,
+        "nativeBounds": {
+          "width": 30.5,
+          "height": 22.5
+        }
+      }
+    ],
+    "authored": [
+      {
+        "file": "hound-anticipation-authored.svg",
+        "width": 512,
+        "height": 384,
+        "safe": true,
+        "bounds": {
+          "x": 95,
+          "y": 139,
+          "width": 308,
+          "height": 204
+        },
+        "nativeBounds": {
+          "width": 30.8,
+          "height": 20.4
+        },
+        "edgePixels": 0
+      },
+      {
+        "file": "hound-contact-authored.svg",
+        "width": 512,
+        "height": 384,
+        "safe": true,
+        "bounds": {
+          "x": 105,
+          "y": 133,
+          "width": 316,
+          "height": 212
+        },
+        "nativeBounds": {
+          "width": 31.6,
+          "height": 21.2
+        },
+        "edgePixels": 0
+      },
+      {
+        "file": "hound-launch-authored.svg",
+        "width": 512,
+        "height": 384,
+        "safe": true,
+        "bounds": {
+          "x": 93,
+          "y": 128,
+          "width": 324,
+          "height": 213
+        },
+        "nativeBounds": {
+          "width": 32.4,
+          "height": 21.3
+        },
+        "edgePixels": 0
+      },
+      {
+        "file": "hound-recovery-authored.svg",
+        "width": 512,
+        "height": 384,
+        "safe": true,
+        "bounds": {
+          "x": 97,
+          "y": 118,
+          "width": 310,
+          "height": 226
+        },
+        "nativeBounds": {
+          "width": 31,
+          "height": 22.6
+        },
+        "edgePixels": 0
+      }
+    ]
+  },
+  "gallery": {
+    "url": "http://127.0.0.1:4193/__art/",
+    "isolated": true,
+    "canonicalRegistration": false,
+    "selections": [],
+    "checked": [
+      {
+        "revision": "emberwake-hound-motion-2026-11-06:original",
+        "imagesDecoded": true,
+        "settingsInspected": true,
+        "parentInspected": true,
+        "runtimeFile": null,
+        "useDisabled": true
+      },
+      {
+        "revision": "emberwake-hound-motion-2026-11-06:hound-anticipation",
+        "imagesDecoded": true,
+        "settingsInspected": true,
+        "parentInspected": true,
+        "runtimeFile": null,
+        "useDisabled": true
+      },
+      {
+        "revision": "emberwake-hound-motion-2026-11-06:hound-launch",
+        "imagesDecoded": true,
+        "settingsInspected": true,
+        "parentInspected": true,
+        "runtimeFile": null,
+        "useDisabled": true
+      },
+      {
+        "revision": "emberwake-hound-motion-2026-11-06:hound-contact",
+        "imagesDecoded": true,
+        "settingsInspected": true,
+        "parentInspected": true,
+        "runtimeFile": null,
+        "useDisabled": true
+      },
+      {
+        "revision": "emberwake-hound-motion-2026-11-06:hound-recovery",
+        "imagesDecoded": true,
+        "settingsInspected": true,
+        "parentInspected": true,
+        "runtimeFile": null,
+        "useDisabled": true
+      },
+      {
+        "revision": "emberwake-hound-motion-manual-2026-11-06:anticipation",
+        "imagesDecoded": true,
+        "settingsInspected": true,
+        "parentInspected": true,
+        "runtimeFile": null,
+        "useDisabled": true
+      },
+      {
+        "revision": "emberwake-hound-motion-manual-2026-11-06:launch",
+        "imagesDecoded": true,
+        "settingsInspected": true,
+        "parentInspected": true,
+        "runtimeFile": null,
+        "useDisabled": true
+      },
+      {
+        "revision": "emberwake-hound-motion-manual-2026-11-06:contact",
+        "imagesDecoded": true,
+        "settingsInspected": true,
+        "parentInspected": true,
+        "runtimeFile": null,
+        "useDisabled": true
+      },
+      {
+        "revision": "emberwake-hound-motion-manual-2026-11-06:recovery",
+        "imagesDecoded": true,
+        "settingsInspected": true,
+        "parentInspected": true,
+        "runtimeFile": null,
+        "useDisabled": true
+      }
+    ],
+    "phone": {
+      "scrollWidth": 390,
+      "viewport": 390
+    },
+    "errors": [],
+    "browser": "installed Chromium /usr/bin/chromium; custom source review, not repository Google Chrome suite"
+  },
+  "visual_self_review": {
+    "raw": "Held as a motion sequence. Same identity and palette are readable, but anticipation does not load strongly and launch/contact repeat too closely. All four raw extracts preserved.",
+    "manual": "Useful optional future key-pose candidates. Explicit joint fitting gives loaded anticipation, a pushing rear support and reaching foreleg, a shorter planted contact, and taller recovery. Same mass/skull master and fixed scale. No user acceptance.",
+    "limits": [
+      "Launch/contact separation remains subtle at target size.",
+      "Front-quarter depth is shallower than the frozen standing reference; this is not exact visual continuity.",
+      "Cheek scar and tiny facial details cannot be credited at native size.",
+      "Static support self-review does not establish continuous contact, interpolation, timing or a seamless animation.",
+      "2D coordinate fitting is not a skeletal rig or 3D anatomy proof.",
+      "No game-compatible adaptation or facing/action contract is registered."
+    ]
+  },
+  "evidence": {
+    "file": "overview.png",
+    "sha256": "c129043675999abee01f11327d99429ccfbe3847aad72eaf15f5fb977740bd5d",
+    "dimensions": [1360, 1122],
+    "lossless_optimization": true,
+    "decoded_pixels_unchanged": true,
+    "notes": "Read-only comparison composed in the isolated real gallery using its exact preview images and frozen source SE reference. Fixed source scales. Not a runtime screenshot."
+  },
+  "blocked_actions": [
+    {
+      "action": "Chromium file URL navigation",
+      "target": "file:///workspace/game/docs/art/assets/emberwake-hound-motion-2026-11-06/preview.html",
+      "reason": "ERR_BLOCKED_BY_ADMINISTRATOR",
+      "status": "denied, stopped, not retried",
+      "outcome": "No file-page rendering claimed. Independent required loopback gallery inspection completed."
+    }
+  ],
+  "checks": {
+    "format_maintenance": "passed: repository Prettier, inventory and local links; 901 managed sources, zero errors",
+    "history_source_branch": "passed: 709 assets, 92 revisions, zero selections, 709 registered sources. This branch does not add canonical records.",
+    "history_isolated_import": "passed: 709 assets, 101 revisions, zero selections, 709 registered sources",
+    "focused_history_contracts": "passed: node --test packages/workshop-tools/art/history.test.ts; 11 tests, zero failed/skipped",
+    "full_application_geometry_native_and_runtime": "not run; no runtime consumer or executable source change. Candidate-only art, not gameplay adoption.",
+    "runtime": "Node 24.21.0 / npm 11.19.0 pinned binaries; nvm unavailable in cloud image",
+    "hosted_ci": "pending publication; inspect exact frozen PR head separately"
+  },
+  "registration": {
+    "handoff_head": "713934f7df03f3c6c682674df8c5321a173bdd46",
+    "sources": "2 attempts/9 revisions: exact sheet,4 held raw extracts,4 manual fitted poses with explicit anticipation parents; all runtime null and no selections",
+    "transport": "Retired redundant import after exact comparison and README migration; exact managed artwork/call/authoring bytes unchanged. No file-page navigation retried.",
+    "gallery": "Actual nine revisions and both exact call/authoring records, held raw outputs and explicit anticipation parents, native/compact/enlarged, disabled Use and six 1440/390/320px ×16/20px layouts passed, no page errors.",
+    "managed_file_preservation": "All 11 managed artwork/call/authoring files byte-identical to frozen handoff; no sent image reference or146localdependency invented."
+  }
+}

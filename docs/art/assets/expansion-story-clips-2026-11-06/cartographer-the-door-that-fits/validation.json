@@ -1,0 +1,35 @@
+{
+  "gif": {
+    "clips": 4,
+    "frames_per_clip": 16,
+    "duration_ms": 19200,
+    "size": [480, 336],
+    "assembled_pixels_and_timing_exact": true
+  },
+  "svg_safety": true,
+  "review": "All actual frames inspected temporarily; native/compact joins reviewed.",
+  "browser": "Passed loopback Chromium native GIF default and real-time ending review;390/320px enlarged text,reduced-motion SVG,links,no false pause/seek or external requests. Separate from repository Google Chrome suite.",
+  "history": "Passed production isolated import/verify,6 source-study revisions,0 selections; canonical requests/settings,actual references and nativeGIF controls inspected.",
+  "exception": "Enlarged-text path overflow corrected; original failure logged in local inspection scratch.",
+  "maintenance": "Passed repository format/inventory/links; original GIF/reference hashes and isolated imports verified. Source-only delivery, no game code or geometry changed.",
+  "browser_note": "Native ending was inspected visually after real-time playback. Byte preservation is established by decoded-GIF equality, not CSS screenshot equality.",
+  "registration": {
+    "handoff_head": "a724112f0f3a0eaf437198946b3e151df447f642",
+    "source_records": "6 attempts/6 unassigned revisions; zero selections; no runtime mapping",
+    "preservation": "64 exact assembled RGBA frames/timings; aggregate072a131baef3841de998a1857c66c883022a5a62e7b3516f79a1ae0056ab48be. Four exact sent PNG hashes and three frame15 RGBA parents match. One shared continuation-generation.json unchanged.",
+    "gallery": "6 actual revisions, 20 exact desktop/mobile document views; play/stop/reduced-motion blocking, lineage, disabled Use,1440/390/320px at16/20px passed; no page errors.",
+    "blocker": "Once-playing assembled GIF Stop then Play retains final frame; actual compositorend == restart, first frame distinct. #142 shared fix pending; no pause/seek promised.",
+    "checks": "Full check:maintenance passed,202 tooling/81 DCC/19 Python plus lint/types/build. Three asset-history browser journeys passed at normal limits30.6s aggregate. Existing asset/source records and selected-art bytes unchanged; 20 other owned files exact. No game adoption, native geometry execution or aesthetic acceptance inferred.",
+    "transport": "Redundant history-import retired after canonical comparison and README consumer migration; originals/calls/inputs/assembly/review unchanged."
+  },
+  "shared_replay_compatibility": {
+    "source_head": "830a2e6e069cabea930edd09fd2cc1a85962d858",
+    "governance_head": "d6cc4728c87b1c4d13489b5a91ce5e4cb73f3304",
+    "replay_head": "6fdc26d94ac5434446e35f23c44e249164312940",
+    "resolved_shared_tree": "f78b8a50c29a823df315cfcdb8c61fa774cd12af",
+    "disposable_combination_tree": "47dca11a8c01aea153d8675b11005950cc8b4e72",
+    "proof": "2 live/offline cases passed: completed once-playing story, Stop, fresh-URL Play, compositor opening pixel-identical to initial opening and different from ending, then visible advancement. Original playback/download SHA-256 exact; old object URL revoked; reduced motion interrupts and blocks playback; no page errors or offline network requests.",
+    "checks": "Resolved shared baseline passed full maintenance (208 tooling, 81 DCC, 19 Python tests) and 19 affected browser journeys at normal limits. This story combination passed history verification and actual native replay checks. No shared implementation, artwork, inputs, library records, defaults or selections changed in this evidence follow-up.",
+    "limits": "Compatibility tested at these exact heads only. Shared implementation is not landed or included in this candidate branch; its historical independent-code replay failure remains valid. Draft source study; independent library additions require serial landing reconciliation. No pause/seek, runtime adoption or art acceptance."
+  }
+}
