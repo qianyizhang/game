@@ -1,0 +1,28 @@
+{
+  "kind": "gif-edit",
+  "prompt": "Generate one animated GIF chapter for Last Hearth candidate fiction One Seat More. Use image1 as EXACT current scene state and composition; image2 only as original identity/palette. This is a targeted revision of the stool invitation: preserve TWO cups and keep the stool movement short. Not a sprite sheet, montage or game rule.\n\nLOCK THE STILL PROPS: both small wooden cups must remain visible and unchanged on the tabletop in EVERY frame. One is near center-left and one is near the Squire's resting hand. Do not delete, merge, hide, move or add either cup. Same bread loaf/board at back, same shield beside chair, same wall timbers, table edges, warm cream/steel/sage/wood palette, exact camera/crop. The hovering cool green C-curled Coal Wisp waits at left, no hands/legs and no second spirit. The spare cup is NOT involved in this chapter.\n\nONLY ACTION: the Squire leans forward a LITTLE, uses the arm nearest the low stool to reach DOWN around the near table edge, gently contacts the SINGLE stool seat, and slides it LEFT by about HALF A STOOL-SEAT WIDTH, no farther. This is a small invitation gesture, not dragging furniture across the room. Keep shoulder, elbow, wrist and glove connected; no long elastic arm. Keep the other hand resting at the table edge away from both cup silhouettes. All three stool legs stay on the floor. Release the stool, straighten and settle. The Wisp will approach the seat in the NEXT chapter, so do NOT move the stool all the way beneath it now. Final four frames hold the short-shifted stool and TWO clearly visible unchanged cups.\n\nSixteen frames,300ms/frame,480x336. Broad engraved fantasy planes with upper-left diffuse light, no flashing or new color grading. One physical gesture only. No extra limbs/fingers, floating seat, arm through wood, cup disappearance, new people/props, text, numbers, logos or reset loop. No camera moves or background repainting. Deliver a useful still final state, ready for a reference-guided continuation. New encounter is candidate fiction, not accepted lore.",
+  "inputs": ["chapter-1-last", "opening"],
+  "output": "chapter-2-r1.gif",
+  "request_id": "req_3cbcf72605c34048864dbe3ca6a9a7b2",
+  "started_at": "2026-11-06T15:30:32Z",
+  "created": 1793979078,
+  "elapsed_s": 46.712,
+  "usage": {
+    "input_tokens": 1745,
+    "input_tokens_details": {
+      "image_tokens": 1260,
+      "text_tokens": 485
+    },
+    "output_tokens": 1869,
+    "output_tokens_details": {
+      "image_tokens": 1869,
+      "text_tokens": 0
+    },
+    "total_tokens": 3614
+  },
+  "output_metadata": {
+    "generation_id": "c727f0ad-2710-4a8d-8fcd-f1ac7a5b2a8a"
+  },
+  "background": "opaque",
+  "cost_estimate_usd": 0.068575
+}

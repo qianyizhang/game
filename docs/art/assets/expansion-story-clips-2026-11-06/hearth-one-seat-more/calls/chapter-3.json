@@ -1,0 +1,29 @@
+{
+  "kind": "gif-edit",
+  "prompt": "Generate one native GIF chapter for Last Hearth candidate fiction One Seat More. Image1 is the exact current scene state from the repaired stool chapter. Image2 is only the original identity/palette anchor, never reset the current layout to it. Fixed480x336 camera;16 frames,300ms each, one deliberate non-looping action.\n\nONLY THE WISP MOVES. The single cool sage Coal Wisp at left glides a SHORT distance right/up until centered over the existing low stool, then lowers and curls its tapering tail just ABOVE the stool seat in a compact C-shaped hover. It is accepting an invitation. It keeps the same shadow face, TWO pale eyes and connected tail. No hands, feet, wings, orange flame, extra spirit or transformation into wood. Last four frames settle over the seat, eyes looking toward the Squire.\n\nFREEZE ALL OTHER OBJECTS: the Squire is ALREADY upright and settled in image1; do not move their body, helmet, armor or either gloved hand. Both small wooden cups must remain plainly visible and fixed on the tabletop in every frame. Same loaf/board, shield, chair, low stool with3 grounded legs, table edges and timber background. No stool sliding, new props, cup disappearance, stretching arm, camera shift, new color grading or background repainting. Three broad engraved planes, muted steel/sage/cream/wood with upper-left light. Preserve scale and negative space. No flashing, text, numbers, UI, logos or resetting the story. This quiet event is proposed fiction, not accepted history or a new token ability.",
+  "inputs": ["chapter-2-r1-last", "opening"],
+  "status": "returned",
+  "started_at": "2026-11-06T15:47:05Z",
+  "output": "chapter-3.gif",
+  "request_id": "req_814566059a5e41679e1a4b650408fe7c",
+  "created": 1793980068,
+  "elapsed_s": 42.831,
+  "usage": {
+    "input_tokens": 1631,
+    "input_tokens_details": {
+      "image_tokens": 1260,
+      "text_tokens": 371
+    },
+    "output_tokens": 1869,
+    "output_tokens_details": {
+      "image_tokens": 1869,
+      "text_tokens": 0
+    },
+    "total_tokens": 3500
+  },
+  "output_metadata": {
+    "generation_id": "ed40e94c-ed5e-41ca-8439-f77e6bba77f8"
+  },
+  "background": "opaque",
+  "cost_estimate_usd": 0.068005
+}
