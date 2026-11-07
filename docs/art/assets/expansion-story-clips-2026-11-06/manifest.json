@@ -1,0 +1,97 @@
+{
+  "checkpoint": "9973d6ff3e4c50114ae0d0cad776eb37f03d327f",
+  "artwork_hash_owner": "../../iterations/library.json revisions for story-clips-20261106; original SVG/GIF hashes unchanged from checkpoint",
+  "source_clips": ["chapter-1.gif", "chapter-2.gif", "chapter-3.gif", "chapter-4.gif"],
+  "gif_spec": {
+    "size": [480, 336],
+    "frames_per_source": 16,
+    "frame_duration_ms": 300,
+    "loop_behavior": "Original chapter GIFs encode loop=0 (repeat indefinitely); joined story has no loop extension (plays once). Preserved unchanged; gallery provides explicit stop/replay."
+  },
+  "assembly": {
+    "file": "story.gif",
+    "source_order": [1, 2, 3, 4],
+    "frames": 64,
+    "duration_ms": 19200,
+    "transform": "Every original coalesced frame, unchanged order/timing/pixels; no retouch, interpolation, crossfade, omissions or extra hold.",
+    "decoded_rgba_sha256": "6ea18739c66363bdc1034ea618e0b859ba35ba4eb333ab55bb0e5ef49290d55d"
+  },
+  "references": {
+    "opening": {
+      "file": "reference.png",
+      "sha256": "f780623d5f6be4309dd4233fc2e7bc0a6a855e18418a67c067c5300cfbed7a46",
+      "source": {
+        "svg": "reference.svg",
+        "render": [480, 336]
+      }
+    },
+    "chapter-1-last": {
+      "file": "chapter-1-frames/frame-15.png",
+      "sha256": "faee93e5f6c5440c6575c4517d73aae636fcdc6015de402019212b0299ca1655",
+      "source": {
+        "gif": "chapter-1.gif",
+        "frame": 15
+      }
+    },
+    "chapter-2-last": {
+      "file": "chapter-2-frames/frame-15.png",
+      "sha256": "935991a7bc9888c345ecb2cf3144b02c935510d612ef2583a17680358d114b24",
+      "source": {
+        "gif": "chapter-2.gif",
+        "frame": 15
+      }
+    },
+    "chapter-3-last": {
+      "file": "chapter-3-frames/frame-15.png",
+      "sha256": "4c57405d103d7aed73d00f0d091fb5c154377ef4f31a2cf108cb458e62a37645",
+      "source": {
+        "gif": "chapter-3.gif",
+        "frame": 15
+      }
+    }
+  },
+  "reference_render": {
+    "renderer": "Chromium 154.0.8037.57",
+    "svg_viewbox": [1280, 896],
+    "retained_output": "reference.png480x336",
+    "limits": "Local leaf getBBox did not establish stroke-complete global bounds; visual margins inspected. Omit the236-leaf diagnostic dump."
+  },
+  "previews": {
+    "compact.png": {
+      "sha256": "79738ae5921bec35c9a40fd374cff8f13fe0e48b7ebfa394e48374b8ba13b355",
+      "recipe": "Original GIF frames0/15, chapter order left-right; nearest-neighbor160x112,4columns\u00d72rows. Intentional thumbnail sampling, then lossless PNG8 compression9."
+    },
+    "joins.png": {
+      "sha256": "648d7acc9e62fdb8d247fc142912d1dd5b65b21b7e8f79f413eefd63d8384b23",
+      "recipe": "Adjacent chapter last/first frames at native480x336,2columns\u00d73rows; PNG8 compression9. Original old preview remains in checkpoint."
+    }
+  },
+  "inspection_recipe": "Decode/coalesce native GIFs into ignored temporary output when needed. Frame timing and all intermediate states live in the original GIFs; do not retain a permanent frame catalogue.",
+  "diagnostic_recovery": "Removed frame PNGs, contact sheets, screenshots, optimization candidates and duplicate records remain in checkpoint9973d6f; no history rewrite or Git-object purge.",
+  "historical_optimization_diagnostics": {
+    "source": "chapter-1-contact.png",
+    "source_sha256": "07e02d0583afb226967a55ee2f81b2164c29604164f2cfcce6ed6d101c39329a",
+    "attempts": [
+      {
+        "file": "contact-optimization-lossy-rejected.png",
+        "operation": "ImageMagick strip metadata, depth 8, compression level 9",
+        "verdict": "rejected",
+        "reason": "Thumbnail resampling created 16-bit samples; reducing to 8-bit changed 604526 pixels. Original evidence retained."
+      },
+      {
+        "file": "contact-optimization-exact.png",
+        "operation": "PNG compression level 9, filter 5; retain 16-bit samples and color interpretation",
+        "verdict": "pixel-equivalent but not adopted; original kept",
+        "absolute_error_pixels": 0,
+        "dimensions": [976, 688],
+        "channels": "srgb",
+        "colorspace": "sRGB",
+        "depth": 16,
+        "source_bytes": 3110831,
+        "output_bytes": 3108220
+      }
+    ],
+    "api_originals_unchanged": true,
+    "recovery": "Diagnostic files remain in checkpoint9973d6f; no active consumer depends on them."
+  }
+}
