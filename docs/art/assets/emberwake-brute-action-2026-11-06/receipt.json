@@ -1,0 +1,59 @@
+{
+  "grant": "sprite-brute-action-16",
+  "started_utc": "2026-11-06T21:57:48.280584+00:00",
+  "endpoint": "https://api.openai.com/v1/images/generations",
+  "status": "returned",
+  "attempts": 1,
+  "automatic_retry": false,
+  "client_request_id": "brute-action-16-ff4db21401cb4ee8b47166cf66b95469",
+  "request_sha256": "113c362d604a41ef8242f14577bdddf1c722d42d86c73c593f6d17eebe2f9707",
+  "reservation_usd": 3.0,
+  "http_status": 200,
+  "request_id": "req_bcba960636e64719b75e63bc6257559a",
+  "elapsed_seconds": 164.63,
+  "response": {
+    "created": 1794002304,
+    "background": "transparent",
+    "data": [{}],
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1536x512",
+    "svg_usage": {
+      "input_tokens": 5406,
+      "model": "gpt-6.1-terra",
+      "output_tokens": 11159,
+      "reasoning_tokens": 1773,
+      "total_tokens": 16565
+    },
+    "usage": {
+      "input_tokens": 4242,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 4242
+      },
+      "output_tokens": 535,
+      "output_tokens_details": {
+        "image_tokens": 535,
+        "text_tokens": 0
+      },
+      "total_tokens": 4777
+    }
+  },
+  "finished_utc": "2026-11-06T22:00:32.910330+00:00",
+  "cost_estimate": {
+    "usd": 0.098461,
+    "image_text_input_usd": 0.02121,
+    "image_output_usd": 0.01605,
+    "svg_author_input_usd": 0.005406,
+    "svg_author_output_usd": 0.055795,
+    "reasoning_in_output": true,
+    "released_reservation_usd": 2.901539,
+    "remaining_reservation_usd": 0,
+    "pool_success_estimates_usd": 7.120146,
+    "pool_unchanged_unknown_holds_usd": 28,
+    "pool_inclusive_usd": 35.120146,
+    "basis": "Returned usage at current documented standard rates, not independently verified billing."
+  },
+  "original_sha256": "8cca06d0c06c6aa4a0e87afd6a5fa7d891dfda30c6fa37da0d150773eadd214a"
+}
