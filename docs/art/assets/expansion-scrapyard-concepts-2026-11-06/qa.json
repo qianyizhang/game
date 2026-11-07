@@ -1,0 +1,53 @@
+{
+  "source_commit": "3a9272a151c32735cfe9f35bb547ebbcf174a2e0",
+  "delivery": "All 14 SVGs and 2 review PNGs copied byte-for-byte from the isolated continuation source. Current-main branch; no first-suite ancestor or files.",
+  "static_svg": {
+    "originals": 2,
+    "cells": 12,
+    "safety": "passed",
+    "cell_bounds": "passed",
+    "copied_geometry_and_paint": "exact; only grid translation removed"
+  },
+  "raster": {
+    "columns": ["cell", "changed_pixels", "peak_channel_delta_255", "alpha_equal"],
+    "differences": [
+      ["scrapyard-01/condenser-tower", 4, 16, false],
+      ["scrapyard-01/treadle-shear", 24, 4, true],
+      ["scrapyard-01/battery-cradle", 50, 2, true],
+      ["scrapyard-02/bellows-leaper", 16, 2, true],
+      ["scrapyard-02/coil-stalker", 36, 4, true],
+      ["scrapyard-02/wheel-impeller", 33, 6, false],
+      ["scrapyard-02/clamp-crab", 23, 2, false]
+    ],
+    "meaning": "Differences remain explicit; strict source geometry/paint identity is separately required. Inspect edge differences without claiming pixel equality.",
+    "compared": 12,
+    "identical": 5
+  },
+  "limits": "Source candidates and author self-review only. No game-frame/crowd acceptance, runtime slot or adoption. Coil Stalker remains held; user aesthetic acceptance is pending.",
+  "isolated_import": {
+    "assets": 0,
+    "revisions": 14,
+    "selections": 0,
+    "actual_calls": 2
+  },
+  "gallery": {
+    "browser": "154.0.8037.57",
+    "revisions_inspected": 14,
+    "call_records_inspected": 2,
+    "prompts_settings_usage_lineage": "verified",
+    "adoption": "disabled",
+    "shared_registration": "canonical: 2 attempts / 14 source revisions"
+  },
+  "registration": {
+    "handoff_head": "4f41476fc6c84d025ed20c423b46909a57a3fd18",
+    "transport": "Retired duplicate prepared-history.json after consumer tracing; IDs/digests/parents and cell recipes preserved in library.json. Call records unchanged.",
+    "checks": {
+      "maintenance": "passed: formatting/inventory/links, history verify (709 assets / 106 revisions / zero selections / 709 registered sources), lint/types, 19 Python, 202 tooling, 81 DCC contracts and production build",
+      "browser": "All 3 affected asset-history journeys passed at normal local limits; live inspection covered all 14 revisions and both exact calls. No application/simulation/geometry/native execution claimed.",
+      "hosted": "Final-head CI reported on PR. Source concepts/holds remain independent of user aesthetic acceptance or runtime/game-context approval."
+    },
+    "gallery": "14 revisions decoded at native/compact sizes and inspected enlarged; exact 2 call records and all parents visible. Author cell outcomes and Coil Stalker hold surfaced, adoption disabled. No page errors; 1440/390/320px and 16/20px text fit.",
+    "preservation": "All 14 SVGs, 2 review PNGs and 2 call records exact to handoff; existing history/source registrations and selected-art.json unchanged.",
+    "runtime": "Node 24.21.0 / npm 11.19.0 / Google Chrome 157.0.8103.38"
+  }
+}

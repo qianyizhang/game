@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="trial-oath-knot">
+    <rect width="480" height="336" fill="#10232c"/>
+    <ellipse cx="246" cy="284" rx="184" ry="14" fill="#142a32"/>
+    <g id="oath-slotted-stone">
+      <path d="M84 215 Q96 174 121 168 Q162 156 217 162 L334 161 Q365 165 380 197 L409 266 Q413 278 394 281 L319 283 L104 283 Q66 281 62 270Z" fill="#34464b"/>
+      <path d="M84 215 Q96 174 121 168 Q162 156 217 162 L334 161 Q355 164 371 185 L342 202 L313 220 L125 224 L65 266Z" fill="#95a6aa"/>
+      <path d="M123 175 L159 167 L205 171 L225 165 L330 168 L351 181 L323 193 L311 213 L126 217 L96 233 L77 253 L93 209Z" fill="#657778"/>
+      <path d="M124 222 L315 218 L343 265 L321 280 L104 277 L68 270 L91 245Z" fill="#43565a"/>
+      <path d="M343 201 L371 185 L407 266 L395 275 L354 272 L326 223Z" fill="#293c42"/>
+      <path d="M152 190 Q145 190 139 202 Q133 219 149 224 L315 223 Q331 218 329 203 Q328 190 315 190Z" fill="#34464b"/>
+      <path d="M157 197 L309 196 Q321 198 319 207 Q319 215 308 215 L153 217 Q144 215 147 206 Q148 199 157 197Z" fill="#172e36"/>
+      <path d="M148 222 L313 221 Q326 218 328 207" fill="none" stroke="#7e8c8b" stroke-width="3" stroke-linecap="round"/>
+      <path d="M108 239 L125 231 L137 237 L126 248 L121 264 M175 260 L202 253 L217 257 M288 237 L298 248 L294 264 M341 182 L331 188" fill="none" stroke="#34464b" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="oath-knot-back">
+      <path d="M295 173 Q334 150 350 162 L356 179 L323 185Z" fill="#826444"/>
+      <path d="M292 166 Q330 146 345 159 L352 169 Q328 161 309 180Z" fill="#b68d62"/>
+      <path d="M196 111 Q207 72 246 78 Q288 83 306 117 Q325 151 299 176 Q280 198 245 186 L226 161" fill="none" stroke="#604d38" stroke-width="40" stroke-linecap="round"/>
+      <path d="M195 107 Q212 75 244 82 Q282 89 297 119 Q312 149 290 168 Q271 184 247 174" fill="none" stroke="#b68d62" stroke-width="33" stroke-linecap="round"/>
+      <path d="M204 85 Q223 74 239 84 Q226 96 211 117 L192 113Z M237 81 Q261 82 272 98 Q255 99 239 116 L225 101Z M270 96 Q291 105 296 124 Q281 121 263 135 L256 119Z M297 125 Q305 144 294 158 L272 163 Q283 147 279 135Z M290 160 Q275 180 251 177 L243 162 Q264 159 277 153Z" fill="#d2ab75"/>
+      <path d="M218 87 Q218 99 204 114 M248 88 Q243 102 233 111 M277 105 Q270 117 263 122 M297 132 Q285 135 279 146 M281 169 L264 159" fill="none" stroke="#826444" stroke-width="2.6" stroke-linecap="round"/>
+    </g>
+    <g id="oath-taut-cord">
+      <path d="M43 104 Q99 109 148 125 Q182 135 218 133" fill="none" stroke="#604d38" stroke-width="35"/>
+      <path d="M43 99 Q101 105 150 120 Q183 130 219 128" fill="none" stroke="#b68d62" stroke-width="30"/>
+      <path d="M43 84 Q61 88 71 117 L56 117 L43 101Z M65 88 Q85 89 99 122 L82 120Z M94 93 Q115 96 127 130 L111 127Z M123 100 Q145 105 155 138 L140 134Z M153 109 Q177 113 185 143 L170 141Z M183 115 Q202 116 215 141 L199 145Z" fill="#d2ab75"/>
+      <path d="M60 91 Q58 106 72 119 M89 96 Q86 113 101 126 M118 103 Q116 120 131 133 M147 111 Q146 130 160 139 M176 118 Q177 134 190 143 M205 119 L218 137" fill="none" stroke="#826444" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <g id="oath-knot-front">
+      <path d="M213 195 Q189 176 202 143 Q216 105 258 110 Q298 115 291 142 Q283 166 245 181" fill="none" stroke="#604d38" stroke-width="39" stroke-linecap="round"/>
+      <path d="M210 189 Q192 173 207 142 Q221 111 255 116 Q286 119 279 139 Q271 158 239 165" fill="none" stroke="#b68d62" stroke-width="33" stroke-linecap="round"/>
+      <path d="M202 145 Q209 128 224 121 Q234 129 229 142 L209 164Z M226 119 Q246 111 265 119 Q261 136 246 139 L229 135Z M268 120 Q285 127 277 143 Q263 151 252 147 L256 133Z M245 148 Q261 148 269 155 L244 178 L226 170Z M211 162 Q226 166 225 183 L218 203 L201 194 Q196 184 198 175Z" fill="#d2ab75"/>
+      <path d="M211 139 Q223 138 229 149 M239 118 Q244 129 240 139 M276 131 Q263 134 258 145 M245 156 Q247 169 236 177 M202 171 Q212 182 210 196" fill="none" stroke="#826444" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M279 83 Q314 68 320 101 Q325 129 299 143 Q273 157 247 189 L233 208" fill="none" stroke="#604d38" stroke-width="38" stroke-linecap="round"/>
+      <path d="M279 78 Q307 67 311 99 Q315 123 291 137 Q266 153 242 184 L231 203" fill="none" stroke="#b68d62" stroke-width="31" stroke-linecap="round"/>
+      <path d="M275 66 Q296 57 310 80 L296 93 Q292 75 275 80Z M302 81 Q321 94 310 114 L292 120 Q302 103 291 94Z M294 117 L309 119 Q301 140 279 148 L270 132Z M267 137 Q286 140 282 154 L264 174 L250 159Z M246 164 Q263 166 257 187 L242 207 L220 212 Q230 185 246 164Z" fill="#d2ab75"/>
+      <path d="M291 72 Q291 84 301 92 M310 102 Q297 101 291 113 M289 131 Q284 141 287 145 M266 148 Q260 153 264 166 M245 177 Q241 191 245 197 M229 199 L235 210" fill="none" stroke="#826444" stroke-width="2.7" stroke-linecap="round"/>
+    </g>
+    <g id="oath-loose-end">
+      <path d="M249 199 Q268 184 292 200 Q314 213 322 239 Q327 259 344 270" fill="none" stroke="#604d38" stroke-width="35" stroke-linecap="round"/>
+      <path d="M249 194 Q270 182 289 197 Q309 211 316 235 Q321 256 340 266" fill="none" stroke="#b68d62" stroke-width="31" stroke-linecap="round"/>
+      <path d="M244 182 Q262 177 278 187 L269 205 Q253 202 244 194Z M279 189 Q301 193 308 215 L291 221 Q288 204 273 204Z M306 214 Q321 222 321 241 L309 254 Q301 236 296 229Z M320 239 Q325 256 344 254 L355 269 L339 283 Q318 277 313 261Z" fill="#d2ab75"/>
+      <path d="M261 185 Q260 197 271 203 M288 196 Q283 209 297 216 M310 222 Q302 233 311 245 M325 252 Q315 260 330 272" fill="none" stroke="#826444" stroke-width="2.7" stroke-linecap="round"/>
+      <path d="M343 255 Q359 255 360 267 Q356 277 339 283 Q329 278 334 267Z" fill="#826444"/>
+      <path d="M344 262 L350 265 M340 269 L348 270 M339 276 L350 272" fill="none" stroke="#b68d62" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  </svg>

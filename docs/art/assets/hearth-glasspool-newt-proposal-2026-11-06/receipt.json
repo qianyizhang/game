@@ -1,0 +1,87 @@
+{
+  "state": "returned",
+  "grant": {
+    "id": "character-new-family-04",
+    "ceiling_usd": 4.2,
+    "calls_authorized": 1,
+    "calls_dispatched": 1,
+    "superseded_ceiling_usd": 3.0,
+    "amendment": "Same character-new-family-04 grant increased by 1.20; no earlier request executed. No duplicate reservation."
+  },
+  "request_file": "request.json",
+  "request_sha256": "3d1064b1b30d06bf19d0496b0808463e5da85737203a6bf4ed8d3bc5bfa3fccf",
+  "client_request_id_sent": true,
+  "opening_lane": {
+    "known_usage_estimate_usd": 0.894933,
+    "unknown_tortoise_usd": 7.5,
+    "unknown_badger_usd": 7.5,
+    "active_paid_calls": 0
+  },
+  "coordinator_pool_receipt": {
+    "successful_usage_estimates_usd": 6.31539,
+    "unresolved_reservations_usd": 25.0,
+    "inclusive_exposure_before_grant_usd": 31.31539,
+    "inclusive_exposure_with_this_grant_usd": 35.51539,
+    "note": "Own 15.00 historical holds are part of pool 25.00. Revised grant is included once in 35.515390; only 1.20 increase over previous 34.315390.",
+    "previous_inclusive_exposure_usd": 34.31539,
+    "amendment_increase_usd": 1.2
+  },
+  "preflight": {
+    "verified_route_author": "gpt-6.1-terra",
+    "standard_only_planning_reservation_usd": 4.2,
+    "terra_author_overcounted_bound_usd": 3.06,
+    "image_prompt_allowance_usd": 1.14,
+    "assumptions": "Same established planning policy as granted mantis calls: 1.05M input at 2/M plus 128K output at 7.5/M, deliberately overcounting context overlap; image/prompt allowance covers 32768 image-output tokens at 30/M and <=8000 UTF-8 prompt bytes at 5/M plus 10%. Image allowance is a planning assumption, not an API-enforced output cap. No Fast/regional processing.",
+    "earlier_preflight_commit": "80a32bc54f3966e50247d4c45cea7ce133364eec",
+    "decision": "Revised coordinator authorization explicitly accepts established conservative 4.20 planning reservation and Terra route. Proceed once; no Luna substitution."
+  },
+  "new_unknown_reservations_usd": 0,
+  "source_status": "Returned packed native SVG. Normal extraction self-reviewed as useful; original ascended extraction held for detached root sliver, with a separate manual derivative.",
+  "transport": {
+    "endpoint": "https://api.openai.com/v1/images/generations",
+    "client_timeout_seconds": 1800,
+    "automatic_retries": 0,
+    "redirects": false,
+    "tls_verification": true,
+    "client_request_id": "cw-glasspool-newt-20261106-eabd2067730f49a6834ba31b4a97c5ff"
+  },
+  "started_utc": "2026-11-06T18:05:34Z",
+  "response": {
+    "created": 1793988353,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "medium",
+    "safety_identifier": null,
+    "size": "1440x512",
+    "svg_usage": {
+      "input_tokens": 1861,
+      "model": "gpt-6.1-terra",
+      "output_tokens": 9761,
+      "reasoning_tokens": 471,
+      "total_tokens": 11622
+    },
+    "usage": {
+      "input_tokens": 755,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 755
+      },
+      "output_tokens": 489,
+      "output_tokens_details": {
+        "image_tokens": 489,
+        "text_tokens": 0
+      },
+      "total_tokens": 1244
+    },
+    "request_id": "req_0e5a0f1fbb8e459d8ec51f6ce415d9f0"
+  },
+  "elapsed_seconds": 162.88,
+  "output": {
+    "file": "original.svg",
+    "sha256": "d46f29f7ff8444714a5d7832490efb4ba145b669eb3840a3d4091dcfe3800e7e"
+  },
+  "estimated_usd": 0.069111,
+  "remaining_call_reservation_usd": 0,
+  "cumulative_known_usage_estimate_usd": 0.964044,
+  "review": "qa.json"
+}

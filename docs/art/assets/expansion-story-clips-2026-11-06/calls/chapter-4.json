@@ -1,0 +1,28 @@
+{
+  "kind": "gif-edit",
+  "prompt": "Generate one finished animated GIF chapter of an original fantasy story, not a sprite sheet or montage. Use the supplied PNG still as the STARTING composition and identity. Fixed 480x336 landscape camera, engraved fantasy illustration, forest ink, broad slate/ivory planes, muted sage cloak, ash hood hiding face, rust-red diagonal satchel strap, dark trousers, two grounded boots, bronze lantern with amber glass. Match the existing doorway, sconce, proportions, objects, palette and upper-left lighting. This is candidate fiction near Night Passage's Root Sepulcher, not established canon.\n\nEnding chapter: begin from the exact supplied open-doorway still. Keep the SINGLE lantern attached beside the doorway, warm and motionless. The traveler takes three or four small grounded steps through the newly opened dark threshold, moving from left toward the opening and becoming occluded by its stone jamb, then fully disappearing into darkness. Show alternating leg support, connected knees/ankles, slight delayed cloak motion. Do not slide the entire character like a paper token. Leave the sconce lantern behind; no lantern in either hand. End on the EMPTY open doorway and the lantern shining beside it; final five frames completely still. No second traveler, root reclosure, return walk, camera change or reset. The lasting light is the ending.\n\nSixteen sequential frames, 300 milliseconds each; one deliberate action with readable anticipation and settling. This clip will be joined to other chapters; it must NOT loop back to its start. Stable camera and ground, restrained steady light, no flashing, explosions, sparkle storm, zoom or whole-image panning. No extra hands, feet, lanterns, people, masks or weapons. Keep the face hidden, anatomy continuous and scene inside the frame. Strong negative spaces and silhouettes at native 480x336 and compact 160x112. No captions, numbers, border, UI or logos. Preserve a useful still final frame. Follow the supplied current scene state instead of resetting it to an earlier chapter.",
+  "inputs": ["chapter-3-last"],
+  "output": "chapter-4.gif",
+  "request_id": "req_7fc1b2bc7c2c4df890579833f2b7c0ac",
+  "started_at": "2026-11-06T14:52:51Z",
+  "created": 1793976812,
+  "elapsed_s": 41.641,
+  "cost_estimate_usd": 0.06332,
+  "usage": {
+    "input_tokens": 1072,
+    "input_tokens_details": {
+      "image_tokens": 630,
+      "text_tokens": 442
+    },
+    "output_tokens": 1869,
+    "output_tokens_details": {
+      "image_tokens": 1869,
+      "text_tokens": 0
+    },
+    "total_tokens": 2941
+  },
+  "background": "opaque",
+  "output_metadata": {
+    "generation_id": "d9a54cb7-c9ae-4308-99f9-7852d73349c8"
+  }
+}

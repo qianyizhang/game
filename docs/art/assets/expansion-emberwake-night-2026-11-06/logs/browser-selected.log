@@ -1,0 +1,404 @@
+[1106/145107.270593:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/expansion-chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+[WebServer] (node:3065) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:3078) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[1106/145108.337570:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/expansion-chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+
+Running 195 tests using 1 worker
+
+(node:3180) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1106/145111.867150:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/expansion-chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+(node:3306) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓    1 [ci-games] › tests/browser/art-export.spec.ts:7:1 › standalone SVG assets load without app CSS and the cabinet filters by collection (11.2s)
+  ✓    2 [ci-games] › tests/browser/artwork.spec.ts:52:3 › balatro illustrations preserve collection labels and phone layout (1.7s)
+  ✓    3 [ci-games] › tests/browser/artwork.spec.ts:52:3 › spire illustrations preserve collection labels and phone layout (1.7s)
+  ✓    4 [ci-games] › tests/browser/artwork.spec.ts:52:3 › battlegrounds illustrations preserve collection labels and phone layout (1.7s)
+  ✓    5 [ci-games] › tests/browser/artwork.spec.ts:96:1 › illustrated playing cards retain keyboard selection and readable ranks (1.4s)
+  ✓    6 [ci-games] › tests/browser/artwork.spec.ts:119:1 › planet identities survive collection, pocket use, levels and replay reload (5.0s)
+  ✓    7 [ci-games] › tests/browser/artwork.spec.ts:206:1 › planet booster choices apply immediately and preserve pocket use rules (2.7s)
+(node:3756) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓    8 [ci-games] › tests/browser/asset-gallery.spec.ts:7:1 › independent asset comparisons, changelog links, offline delivery and phone layout (5.8s)
+(node:3831) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓    9 [ci-games] › tests/browser/asset-gallery.spec.ts:152:1 › per-game galleries preserve navigation, show current renderers and compare staged SVG candidates (25.7s)
+(node:4026) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   10 [ci-games] › tests/browser/asset-gallery.spec.ts:382:1 › Scrapyard gallery isolates its four source families and filters the live suite (6.5s)
+(node:4309) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   11 [ci-games] › tests/browser/asset-gallery.spec.ts:501:1 › gallery image previews work inside an isolated document without sibling files (18.8s)
+  ✓   12 [ci-games] › tests/browser/asset-history.spec.ts:17:1 › gallery selections reach the real game, survive reload, and removal preserves the active choice (16.9s)
+(node:4687) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   13 [ci-games] › tests/browser/asset-history.spec.ts:146:1 › offline gallery history embeds artwork and settings without offering writes (7.2s)
+  ✓   14 [ci-games] › tests/browser/asset-history.spec.ts:199:1 › Scrapyard uses selected vectors in cached Canvas sprites and reports decode failures (7.0s)
+  ✓   15 [ci-games] › tests/browser/battlegrounds.spec.ts:70:1 › reordering the warband preserves the displayed buff target (1.9s)
+  ✓   16 [ci-games] › tests/browser/battlegrounds.spec.ts:131:1 › Battlegrounds triples, Discover, legal victory, invalid import and phone controls (4.1s)
+  ✓   17 [ci-games] › tests/browser/battlegrounds.spec.ts:168:3 › archivist power is playable, persisted and isolated from v4 saves (2.8s)
+  ✓   18 [ci-games] › tests/browser/battlegrounds.spec.ts:168:3 › oathkeeper power is playable, persisted and isolated from v4 saves (2.8s)
+  ✓   19 [ci-games] › tests/browser/blindside-consumables.spec.ts:43:1 › Eraser selection respects the five-card deck floor and keeps valid play available (2.2s)
+  ✓   20 [ci-games] › tests/browser/blindside-feedback.spec.ts:7:1 › illustrated scoring follows recorded card, chip, multiplier and cash effects without changing the replay (5.9s)
+  ✓   21 [ci-games] › tests/browser/blindside-policy.spec.ts:17:1 › Blindside review navigates original knowledge and consequences without reading or writing live saves (4.5s)
+  ✓   22 [ci-games] › tests/browser/blindside-policy.spec.ts:130:1 › damaged Blindside evidence stays inspectable and newer selection supersedes delayed import (1.8s)
+  ✓   23 [ci-games] › tests/browser/blindside-policy.spec.ts:216:1 › Blindside difficulty selection persists and restores a historical Standard run without changing its v4 slot (1.7s)
+  ✓   24 [ci-games] › tests/browser/cartographer-inhabitants.spec.ts:27:1 › board and inspector share all four guardian identities through pointer/keyboard selection and phone reload (2.6s)
+  ✓   25 [ci-games] › tests/browser/cartographer-inhabitants.spec.ts:87:1 › the crowned king shares his inspector identity and an imported historical combat ends and reloads normally (3.0s)
+  ✓   26 [ci-games] › tests/browser/cartographer-inhabitants.spec.ts:143:1 › life fraction stays on one line at 320/390px and keeps the desktop portrait (1.3s)
+  ✓   27 [ci-games] › tests/browser/cartographer-policy.spec.ts:23:1 › Cartographer policy review navigates original knowledge across a seeded draft without touching live storage (4.1s)
+  ✓   28 [ci-games] › tests/browser/cartographer-policy.spec.ts:125:1 › Cartographer difficulty applies only on a new expedition and historical restoration preserves its own slot (2.3s)
+  ✓   29 [ci-games] › tests/browser/cartographer-policy.spec.ts:164:1 › Cartographer v2 restore, continuation and export preserve its slot beside a new v3 expedition (2.0s)
+  ✓   30 [ci-games] › tests/browser/cartographer.spec.ts:62:1 › Field guide keyboard activation does not consume a combat turn (1.3s)
+  ✓   31 [ci-games] › tests/browser/cartographer.spec.ts:164:1 › wins a complete Relaxed expedition through the public Survival policy using visible controls and reloads the ending (16.3s)
+  ✓   32 [ci-games] › tests/browser/cartographer.spec.ts:198:1 › preserves an unreadable save and reports unavailable storage without preventing play (1.2s)
+  ✓   33 [ci-games] › tests/browser/challenge-art.spec.ts:10:3 › challenge illustrations preserve readable controls at 320px (2.9s)
+  ✓   34 [ci-games] › tests/browser/challenge-art.spec.ts:10:3 › challenge illustrations preserve readable controls at 768px (3.6s)
+  ✓   35 [ci-games] › tests/browser/challenge-art.spec.ts:10:3 › challenge illustrations preserve readable controls at 1440px (4.2s)
+  ✓   36 [ci-games] › tests/browser/challenges.spec.ts:22:1 › blocked storage reads show attention instead of treating saves as new puzzles (1.5s)
+  ✓   37 [ci-games] › tests/browser/challenges.spec.ts:46:1 › Joker puzzle preserves every normal/practice save, compares attempts and resumes its review (3.6s)
+  ✓   38 [ci-games] › tests/browser/challenges.spec.ts:101:1 › Silent puzzle resolves actual card controls, optional hints, and the Sentry response (3.4s)
+  ✓   39 [ci-games] › tests/browser/challenges.spec.ts:127:1 › warband challenge goes from tie to win with movable real minions and combat replay (8.1s)
+  ✓   40 [ci-games] › tests/browser/challenges.spec.ts:153:1 › attempt export/import validates the puzzle and preserves progress on invalid input (2.0s)
+  ✓   41 [ci-games] › tests/browser/challenges.spec.ts:197:1 › storage failure leaves a working, exportable attempt and phone library navigation (2.1s)
+  ✓   42 [ci-games] › tests/browser/challenges.spec.ts:239:1 › a delayed import cannot overwrite a newer move (2.0s)
+  ✓   43 [ci-games] › tests/browser/challenges.spec.ts:271:1 › corrupt challenge progress is preserved and archived before a new attempt is saved (1.6s)
+  ✓   44 [ci-games] › tests/browser/diablo2.spec.ts:27:3 › keyboard casts follow a stationary cursor after camera movement (2.2s)
+  ✓   45 [ci-games] › tests/browser/diablo2.spec.ts:27:3 › hotbar casts follow a stationary cursor after camera movement (2.1s)
+  ✓   46 [ci-games] › tests/browser/diablo2.spec.ts:74:1 › self-centered skills and region arrival ignore an old field cursor (1.7s)
+  ✓   47 [ci-games] › tests/browser/diablo2.spec.ts:112:1 › modal panels pause play, contain focus, switch with shortcuts and restore their opener (2.7s)
+  ✓   48 [ci-games] › tests/browser/diablo2.spec.ts:284:1 › historical v3 campaign replay reaches the ending; mod import preserves invalid-save recovery (4.3s)
+  ✓   49 [ci-games] › tests/browser/diablo2.spec.ts:335:1 › real stairs traverse persistent dungeon floors; legacy demo storage stays recoverable (5.7s)
+  ✓   50 [ci-games] › tests/browser/diablo2.spec.ts:406:1 › developer atlas reaches every region and floor, reloads separately, and preserves the campaign (10.9s)
+  ✓   51 [ci-games] › tests/browser/diablo2.spec.ts:461:3 › visible accepted skill effects for Barbarian, pause controls, and summoning (7.2s)
+  ✓   52 [ci-games] › tests/browser/diablo2.spec.ts:461:3 › visible accepted skill effects for Sorceress, pause controls, and summoning (5.4s)
+  ✓   53 [ci-games] › tests/browser/diablo2.spec.ts:461:3 › visible accepted skill effects for Necromancer, pause controls, and summoning (6.1s)
+  ✓   54 [ci-games] › tests/browser/emberwake-crypt.spec.ts:13:1 › Sepulcher return and descent arrows agree with their destination floors (1.0s)
+  ✓   55 [ci-games] › tests/browser/emberwake-crypt.spec.ts:76:1 › crypt stairs preserve explored terrain and encounters on return and reload (2.2s)
+  ✓   56 [ci-games] › tests/browser/emberwake-crypt.spec.ts:131:1 › crypt warm frames reuse terrain, floor changes refresh it, and fog conceals unknown cells (645ms)
+  ✓   57 [ci-games] › tests/browser/emberwake-frost.spec.ts:13:1 › cold hit silhouettes remain distinct from physical hits without their colors (944ms)
+  ✓   58 [ci-games] › tests/browser/emberwake-frost.spec.ts:49:1 › an accepted Frost nova hit survives pause and replay reload under reduced motion (3.7s)
+  ✓   59 [ci-games] › tests/browser/emberwake-frost.spec.ts:133:1 › overlapping cold hits preserve the opaque player and living target silhouettes (1.2s)
+  ✓   60 [ci-games] › tests/browser/emberwake-policy.spec.ts:31:1 › Emberwake policy review retains original decisions and seeks requested ticks without touching live saves (4.7s)
+  ✓   61 [ci-games] › tests/browser/emberwake-policy.spec.ts:129:1 › Emberwake selects Severe, reloads it, and restores the untouched historical Standard campaign (2.5s)
+  ✓   62 [ci-games] › tests/browser/emberwake-policy.spec.ts:166:1 › Emberwake first upgrade resumes v3 exactly and keeps v2/v3 saves when starting and restoring v7 (2.6s)
+  ✓   63 [ci-games] › tests/browser/emberwake-policy.spec.ts:237:3 › Emberwake first upgrade resumes v4 without rewriting it and isolates new v7 journeys (4.0s)
+  ✓   64 [ci-games] › tests/browser/emberwake-policy.spec.ts:237:3 › Emberwake first upgrade resumes v5 without rewriting it and isolates new v7 journeys (3.8s)
+  ✓   65 [ci-games] › tests/browser/emberwake-policy.spec.ts:237:3 › Emberwake first upgrade resumes v6 without rewriting it and isolates new v7 journeys (3.7s)
+  ✓   66 [ci-games] › tests/browser/emberwake-policy.spec.ts:357:3 › Emberwake preserves unreadable v4 bytes through recovery and a new v7 journey (2.6s)
+  ✓   67 [ci-games] › tests/browser/emberwake-policy.spec.ts:357:3 › Emberwake preserves unreadable v5 bytes through recovery and a new v7 journey (2.5s)
+  ✓   68 [ci-games] › tests/browser/emberwake-policy.spec.ts:357:3 › Emberwake preserves unreadable v6 bytes through recovery and a new v7 journey (2.4s)
+  ✓   69 [ci-games] › tests/browser/emberwake-policy.spec.ts:398:1 › Emberwake displays and enforces native life-potion recovery after a recorded legal drink (1.6s)
+  ✓   70 [ci-games] › tests/browser/emberwake-policy.spec.ts:449:1 › lossless rollout containers keep distinct originals selectable and reject damaged transfers (6.1s)
+  -   71 [ci-games] › tests/browser/emberwake-policy.spec.ts:625:1 › large retained campaign container decodes exact original bytes in actual Chrome
+  -   72 [ci-games] › tests/browser/emberwake-policy.spec.ts:691:1 › large retained campaign review preserves knowledge, native boundaries and exact compressed download
+  ✓   73 [ci-games] › tests/browser/engine.spec.ts:5:1 › engine-generated attempts clear all live puzzles through the existing import and review UI (5.2s)
+  ✓   74 [ci-games] › tests/browser/expansion.spec.ts:9:1 › Blindside resets an imported timeline but keeps completed scoring after a discard (1.3s)
+  ✓   75 [ci-games] › tests/browser/expansion.spec.ts:50:1 › Silent setup, paced events, safe practice branches, mod previews and local evidence (2.3s)
+  ✓   76 [ci-games] › tests/browser/expansion.spec.ts:121:1 › checkpoint recovery preserves unreadable data and restores a named branch (1.4s)
+  ✓   77 [ci-games] › tests/browser/expansion.spec.ts:164:1 › Blindside booster choices and vouchers remain playable on a phone (1.4s)
+  ✓   78 [ci-games] › tests/browser/expansion.spec.ts:212:1 › storage failure keeps accepted play exportable and never claims it was saved (1.1s)
+  ✓   79 [ci-games] › tests/browser/feature-art.spec.ts:11:1 › hero selection, powers, and rival inspection retain their accessible controls (1.5s)
+  ✓   80 [ci-games] › tests/browser/feature-art.spec.ts:42:1 › Spire collections cover every registered item and character changes remain playable (1.9s)
+  ✓   81 [ci-games] › tests/browser/feature-art.spec.ts:91:1 › Spire damage potions retain single-target and area effects through belt use and reload (6.8s)
+  ✓   82 [ci-games] › tests/browser/feature-art.spec.ts:170:1 › workshop illustrations fit beside the tools on desktop and phone (2.5s)
+  ✓   83 [ci-games] › tests/browser/game-guide.spec.ts:4:1 › illustrated guide explains all games and returns to the saved run (5.2s)
+  ✓   84 [ci-games] › tests/browser/game-guide.spec.ts:56:1 › glossary translates chat terms, finds abbreviations and teaches Block on phone (7.3s)
+  ✓   85 [ci-games] › tests/browser/game-guide.spec.ts:131:1 › game aliases agree across play, policy review, guides and saved navigation (13.6s)
+  ✓   86 [ci-games] › tests/browser/game-guide.spec.ts:172:1 › an explicit game alias works when local storage is unavailable (1.7s)
+  ✓   87 [ci-games] › tests/browser/generated-dungeon.spec.ts:10:1 › opts into a generated campaign dungeon and visits its reciprocal portals in the sandbox (6.2s)
+  ✓   88 [ci-games] › tests/browser/golden-claw.spec.ts:15:1 › Golden Claw plays offline, seeks deterministically and ends in black (2.9s)
+  ✓   89 [ci-games] › tests/browser/hearth-arena.spec.ts:9:3 › classic hydrates only on first selection and preserves unsaved modes and practice (3.2s)
+  ✓   90 [ci-games] › tests/browser/hearth-arena.spec.ts:9:3 › mixed hydrates only on first selection and preserves unsaved modes and practice (2.7s)
+  ✓   91 [ci-games] › tests/browser/hearth-arena.spec.ts:79:1 › Mixed Rivals journals every seat, rotates priority, reloads, and preserves Classic (3.4s)
+  ✓   92 [ci-games] › tests/browser/hearth-arena.spec.ts:136:1 › an imported arena prefix resumes rivals and exports their accepted commands (1.7s)
+  ✓   93 [ci-games] › tests/browser/hearth-drake.spec.ts:8:3 › normal Iron Drake retains its identity through Egg summon, inspection, playback and reload (2.5s)
+  ✓   94 [ci-games] › tests/browser/hearth-drake.spec.ts:8:3 › golden Iron Drake retains its identity through Egg summon, inspection, playback and reload (3.0s)
+  ✓   95 [ci-games] › tests/browser/hearth-elementals.spec.ts:33:1 › six core elementals retain recruitment, selected board, combat and practice reload (5.3s)
+  ✓   96 [ci-games] › tests/browser/hearth-elementals.spec.ts:123:1 › Glass Cyclone forms a Golden triple, discovers, fights and reloads without losing its identity (3.2s)
+  ✓   97 [ci-games] › tests/browser/hearth-policy.spec.ts:14:1 › Hearth policy review navigates original all-actor spans through a passive public board without storage access (4.3s)
+  ✓   98 [ci-games] › tests/browser/hearth-policy.spec.ts:148:1 › Mixed Rivals applies selectable Severe health before hero choice and retains Classic (2.2s)
+  ✓   99 [ci-games] › tests/browser/hearth-policy.spec.ts:200:1 › explicit previous-save restore continues a v2 rival prefix and preserves its original slot (1.6s)
+  ✓  100 [ci-games] › tests/browser/hearth-shield.spec.ts:7:1 › shield loss stays distinct from health damage while combat can be inspected and replayed (4.4s)
+  -  101 [ci-games] › tests/browser/issue37-context.spec.ts:92:1 › capture matched opening Joker collection, held rack and shop at desktop and phone sizes
+  ✓  102 [ci-games] › tests/browser/lantern-keep.spec.ts:4:1 › Lantern Keep plays offline and preserves deterministic pixel scaling (6.1s)
+  ✓  103 [ci-games] › tests/browser/lifecycle.spec.ts:9:1 › all three legal losses render and restarting one game preserves the others (4.8s)
+  ✓  104 [ci-games] › tests/browser/lifecycle.spec.ts:43:1 › a corrupt stored run is archived before replacement, and valid Spire import is portable (1.7s)
+[WebServer] 2:58:25 PM [vite] (client) [console.error] Study loading failed TypeError: Failed to fetch
+[WebServer]     at loadStudy (http://127.0.0.1:4173/src/art3d/delivery.ts:16:26)
+[WebServer]     at http://127.0.0.1:4173/src/art3d/gallery/Viewer.tsx:37:8
+[WebServer]     at Object.react_stack_bottom_frame (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:14175:13)
+[WebServer]     at runWithFiberInDEV (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:941:66)
+[WebServer]     at commitHookEffectListMount (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:6898:153)
+[WebServer]     at commitHookPassiveMountEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:6933:55)
+[WebServer]     at reconnectPassiveEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8398:6)
+[WebServer]     at recursivelyTraverseReconnectPassiveEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8385:5)
+[WebServer]     at reconnectPassiveEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8410:14)
+[WebServer]     at recursivelyTraverseReconnectPassiveEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8385:5)
+[WebServer] 2:58:39 PM [vite] (client) [console.error] Study loading failed Error: Baked study nightjar is unavailable. Run assets:bake.
+[WebServer]     at bakedStudy (http://127.0.0.1:4173/src/art3d/baked.ts:11:28)
+[WebServer]     at loadStudy (http://127.0.0.1:4173/src/art3d/delivery.ts:36:16)
+[WebServer]     at http://127.0.0.1:4173/src/art3d/gallery/Viewer.tsx:37:8
+[WebServer]     at Object.react_stack_bottom_frame (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:14175:13)
+[WebServer]     at runWithFiberInDEV (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:941:66)
+[WebServer]     at commitHookEffectListMount (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:6898:153)
+[WebServer]     at commitHookPassiveMountEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:6933:55)
+[WebServer]     at commitPassiveMountOnFiber (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8310:22)
+[WebServer]     at recursivelyTraversePassiveMountEffects (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8297:313)
+[WebServer]     at commitPassiveMountOnFiber (http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=e609668c:8369:14)
+  ✘  105 [ci-games] › tests/browser/native-assets.spec.ts:10:1 › review scope selects gallery defaults and native workbench downloads stay isolated (41.0s)
+(node:9647) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1106/145855.094443:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/expansion-chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+  ✓  106 [ci-games] › tests/browser/night-market.spec.ts:11:3 › balatro Night Market cards are searchable, illustrated and readable on phones (2.3s)
+  ✓  107 [ci-games] › tests/browser/night-market.spec.ts:11:3 › battlegrounds Night Market cards are searchable, illustrated and readable on phones (2.1s)
+  ✓  108 [ci-games] › tests/browser/night-market.spec.ts:37:1 › market shop illustrations preserve purchases, tag labels and older saved runs (5.4s)
+  ✓  109 [ci-games] › tests/browser/night-market.spec.ts:101:1 › Silent upgrade plates render in a playable hand at desktop and phone sizes (1.9s)
+  ✓  110 [ci-games] › tests/browser/night-passage-agent.spec.ts:11:1 › agent victory replay imports into the game with the same score and survives reload (7.0s)
+  ✘  111 [ci-games] › tests/browser/night-passage-agent.spec.ts:50:1 › spectator plays, pauses and seeks a recorded run without replacing the player save (31.3s)
+(node:10091) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1106/145947.351617:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/expansion-chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+  ✓  112 [ci-games] › tests/browser/night-passage-agent.spec.ts:106:1 › difficulty selection survives reload and a legacy chronicle keeps its original rules (4.6s)
+  ✓  113 [ci-games] › tests/browser/night-passage-agent.spec.ts:138:1 › constrained engine replay imports with its speed score and controller identity (9.9s)
+  ✓  114 [ci-games] › tests/browser/night-passage-audio.spec.ts:7:1 › real offline audio renders distinct finite envelopes with silent tails and bounded overlap (4.7s)
+  ✓  115 [ci-games] › tests/browser/night-passage-audio.spec.ts:56:1 › live dodge sounds mute immediately, resume through the toggle, and close on exit (3.6s)
+  ✓  116 [ci-games] › tests/browser/night-passage-rollout.spec.ts:21:1 › damaged artifacts retain their audit and original knowledge, clear unrelated playback and recover valid boundaries (10.3s)
+  ✓  117 [ci-games] › tests/browser/night-passage-rollout.spec.ts:72:1 › new selections supersede delayed URL and file imports (9.6s)
+  ✓  118 [ci-games] › tests/browser/night-passage-rollout.spec.ts:153:1 › rollout review navigates original knowledge, consequences, multiple runs and exports without touching the save (10.7s)
+  ✓  119 [ci-games] › tests/browser/night-passage-rollout.spec.ts:240:1 › a same-origin decision link reloads the selected knowledge and flags a rehashed leak at its exact decision (10.8s)
+  ✓  120 [ci-games] › tests/browser/night-passage-rollout.spec.ts:276:1 › a complete recorded victory stays navigable through menu boundaries and terminal replay (30.3s)
+  ✓  121 [ci-games] › tests/browser/night-passage-rollout.spec.ts:310:1 › rollout imports bound input and retain original BOM and gzip bytes (5.0s)
+  ✓  122 [ci-games] › tests/browser/night-passage-rollout.spec.ts:366:1 › oversized remote rollout stops its stream before parsing or selecting it (950ms)
+  ✓  123 [ci-games] › tests/browser/night-passage-scene.spec.ts:34:1 › 2.5D live movement, aim, dodge, casts and a complete ranged chamber (30.9s)
+  ✓  124 [ci-games] › tests/browser/night-passage-scene.spec.ts:113:1 › guardian warning slice, live melee and context loss retain the chronicle (8.6s)
+  ✓  125 [ci-games] › tests/browser/night-passage-threats.spec.ts:3:1 › warning rims preserve safe space and restore canvas state at both consumer resolutions (3.4s)
+  ✓  126 [ci-games] › tests/browser/night-passage.spec.ts:24:3 › held Escape toggles pause once per press in canvas (1.6s)
+  ✓  127 [ci-games] › tests/browser/night-passage.spec.ts:24:3 › held Escape toggles pause once per press in scene (6.3s)
+  ✓  128 [ci-games] › tests/browser/night-passage.spec.ts:78:3 › presentation lifecycle › resizing reprojects a stationary cursor and remounting releases the old surface (12.1s)
+  ✓  129 [ci-games] › tests/browser/night-passage.spec.ts:141:1 › dodge readiness follows combat time and restores without changing the chronicle (6.9s)
+  ✓  130 [ci-games] › tests/browser/night-passage.spec.ts:236:3 › cast charges freeze, restore and replenish in canvas (night-passage-5) (3.2s)
+  ✘  131 [ci-games] › tests/browser/night-passage.spec.ts:236:3 › cast charges freeze, restore and replenish in scene (night-passage-4) (31.8s)
+(node:15368) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1106/150315.463330:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/expansion-chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+  ✓  132 [ci-games] › tests/browser/night-passage.spec.ts:317:1 › call availability requires a boon even at full charge and resets after use (6.7s)
+  ✓  133 [ci-games] › tests/browser/night-passage.spec.ts:397:1 › live aiming, combat, reward selection, pause/reload and portable chronicle (10.1s)
+  ✓  134 [ci-games] › tests/browser/night-passage.spec.ts:476:1 › legal first-room blessing draft offers distinct slots and survives choice, reload and replay (2.0s)
+  ✓  135 [ci-games] › tests/browser/night-passage.spec.ts:549:1 › reconstructed victory banks progression, unlocks runes and starts a distinct second run (2.4s)
+  ✓  136 [ci-games] › tests/browser/night-passage.spec.ts:581:1 › unreadable saves survive play until explicit replacement; storage failure remains visible (2.2s)
+  ✓  137 [ci-games] › tests/browser/night-passage.spec.ts:626:1 › new chronicle exports the current history before resetting progression and seed (1.3s)
+  ✓  138 [ci-games] › tests/browser/night-passage.spec.ts:646:1 › a failed replacement write retains the original download and playable import until retry (2.1s)
+  ✓  139 [ci-games] › tests/browser/night-passage.spec.ts:700:1 › reconstructed guardian approaches render their distinct warnings and remain pausable (3.6s)
+  ✓  140 [ci-games] › tests/browser/policy-layout.spec.ts:19:3 › autoplay keeps the scene and document stable across a shop boundary at 1440px (3.8s)
+  ✓  141 [ci-games] › tests/browser/policy-layout.spec.ts:19:3 › autoplay keeps the scene and document stable across a shop boundary at 390px (3.7s)
+  ✓  142 [ci-games] › tests/browser/policy-layout.spec.ts:63:1 › a full Hearth warband remains one readable row and can be scrolled by keyboard on a phone (4.4s)
+  ✓  143 [ci-games] › tests/browser/policy-layout.spec.ts:106:1 › a rejected decision stays legible beside a shortened location on a phone (835ms)
+(node:16003) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16038) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  144 [ci-games] › tests/browser/recruitment-inspector.spec.ts:27:1 › explores recorded decisions, policy alternatives and downloadable exact replay prefixes (2.7s)
+  ✓  145 [ci-games] › tests/browser/recruitment-inspector.spec.ts:56:1 › remains usable on a narrow screen (1.3s)
+  ✓  146 [ci-games] › tests/browser/replay-import.spec.ts:47:3 › balatro handles failed and oversized reads and preserves a newer move (1.7s)
+  ✓  147 [ci-games] › tests/browser/replay-import.spec.ts:47:3 › spire handles failed and oversized reads and preserves a newer move (1.8s)
+  ✓  148 [ci-games] › tests/browser/replay-import.spec.ts:47:3 › battlegrounds handles failed and oversized reads and preserves a newer move (1.6s)
+  ✓  149 [ci-games] › tests/browser/replay-import.spec.ts:94:1 › a later replay import supersedes a pending read (1.0s)
+  ✓  150 [ci-games] › tests/browser/replay-import.spec.ts:119:1 › leaving a game cancels its pending replay import (1.4s)
+  ✓  151 [ci-games] › tests/browser/scrapyard.spec.ts:5:1 › movement, auto-fire, pause, shop and replay recovery use the real prototype (22.2s)
+  ✓  152 [ci-games] › tests/browser/scrapyard.spec.ts:77:1 › all population settings, failure recovery and narrow layout remain usable (28.0s)
+  -  153 [ci-games] › tests/browser/scrapyard.spec.ts:128:1 › bounded 100 / 300 / 500 enemy performance experiment
+  ✓  154 [ci-games] › tests/browser/shell.spec.ts:4:1 › a loading game keeps navigation available without replacing another game save (1.4s)
+[WebServer] 3:05:13 PM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/src/games/battlegrounds/ui/BattlegroundsApp.tsx?t=1793976785057
+[WebServer]
+[WebServer] The above error occurred in one of your React components.
+[WebServer]
+[WebServer] React will try to recreate this component tree from scratch using the error boundary you provided, ContentBoundary.
+[WebServer]
+[WebServer] 3:05:13 PM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/src/games/battlegrounds/ui/BattlegroundsApp.tsx?t=1793976785057
+[WebServer]
+[WebServer] The above error occurred in one of your React components.
+[WebServer]
+[WebServer] React will try to recreate this component tree from scratch using the error boundary you provided, ContentBoundary.
+[WebServer]
+  ✓  155 [ci-games] › tests/browser/shell.spec.ts:28:1 › a failed game module keeps keyboard navigation to the saved run and can recover on reload (1.8s)
+[WebServer] 3:05:15 PM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/src/app/Challenges.tsx
+[WebServer]
+[WebServer] The above error occurred in one of your React components.
+[WebServer]
+[WebServer] React will try to recreate this component tree from scratch using the error boundary you provided, ContentBoundary.
+[WebServer]
+  ✓  156 [ci-games] › tests/browser/shell.spec.ts:79:3 › navigation leaves a failed Challenges screen and stays in the chosen game after reload (2.2s)
+[WebServer] 3:05:17 PM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/src/art3d/gallery/Studio.tsx
+[WebServer]
+[WebServer] The above error occurred in one of your React components.
+[WebServer]
+[WebServer] React will try to recreate this component tree from scratch using the error boundary you provided, ContentBoundary.
+[WebServer]
+  ✓  157 [ci-games] › tests/browser/shell.spec.ts:79:3 › navigation leaves a failed gallery screen and stays in the chosen game after reload (2.2s)
+[WebServer] 3:05:19 PM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4173/packages/dcc-workbench/src/Workbench.tsx
+[WebServer]
+[WebServer] The above error occurred in one of your React components.
+[WebServer]
+[WebServer] React will try to recreate this component tree from scratch using the error boundary you provided, ContentBoundary.
+[WebServer]
+  ✓  158 [ci-games] › tests/browser/shell.spec.ts:79:3 › navigation leaves a failed workbench screen and stays in the chosen game after reload (2.2s)
+  ✓  159 [ci-games] › tests/browser/shell.spec.ts:99:1 › a loading challenge can return to the same table with keyboard focus restored (1.7s)
+  ✓  160 [ci-games] › tests/browser/shell.spec.ts:126:1 › all game navigation identifies the current view and new-run dialogs have names (3.2s)
+  ✓  161 [ci-games] › tests/browser/shell.spec.ts:147:1 › Blindside opens a fresh run from a loss and generates new blank seeds (4.3s)
+  ✓  162 [ci-games] › tests/browser/spire-city-art.spec.ts:37:1 › City portraits preserve combat cues, keyboard targeting and practice replay on desktop and phone (10.6s)
+  ✓  163 [ci-games] › tests/browser/spire-constructs.spec.ts:18:3 › Beyond constructs: Spiker, Repulsor, Exploder keep target, cues and replay on phone (3.4s)
+  ✓  164 [ci-games] › tests/browser/spire-constructs.spec.ts:18:3 › Beyond constructs: Orb Walker keep target, cues and replay on phone (2.7s)
+  ✓  165 [ci-games] › tests/browser/spire-defense-art.spec.ts:12:1 › selected defensive art fits real base/upgrade hands and preserves card play and replay (5.0s)
+  ✓  166 [ci-games] › tests/browser/spire-policy.spec.ts:13:1 › Spire policy review connects original knowledge to a passive map and combat without touching live saves (3.4s)
+  ✓  167 [ci-games] › tests/browser/spire.spec.ts:12:1 › intent symbols preserve mixed actions, accessible planned text and replay bytes (5.0s)
+  ✓  168 [ci-games] › tests/browser/spire.spec.ts:79:3 › keyboard card choices stay visible at 320px (2.0s)
+  ✓  169 [ci-games] › tests/browser/spire.spec.ts:79:3 › keyboard card choices stay visible at 390px (2.0s)
+  ✓  170 [ci-games] › tests/browser/spire.spec.ts:79:3 › keyboard card choices stay visible at 1440px (2.3s)
+  ✓  171 [ci-games] › tests/browser/spire.spec.ts:216:1 › Spire shop, campfire upgrades, legal victory replay and phone layout (3.2s)
+  ✓  172 [ci-games] › tests/browser/spire.spec.ts:237:1 › Spire boss relic tradeoffs, suspended card choice, and legacy save isolation (2.9s)
+  ✓  173 [ci-games] › tests/browser/spire.spec.ts:279:1 › phone map edges reach their rooms and the combat hand scrolls within the viewport (2.1s)
+  ✓  174 [ci-games] › tests/browser/spire.spec.ts:317:3 › narrow phone route choices › room edges select the intended route and all paths remain accessible (1.5s)
+[WebServer] 3:06:25 PM [vite] (client) [console.warn] THREE.WebGLRenderer: WEBGL_lose_context extension not supported.
+  ✓  175 [ci-games] › tests/browser/study-capture-failure.spec.ts:5:1 › failed Studio capture preserves the model download and a replacement study recovers (14.5s)
+[WebServer] 3:06:33 PM [vite] (client) [console.warn] THREE.WebGLRenderer: WEBGL_lose_context extension not supported.
+  ✓  176 [ci-games] › tests/browser/study-capture-failure.spec.ts:101:1 › context loss cancels recording and rejects retained capture calls (3.5s)
+  ✓  177 [ci-games] › tests/browser/study-delivery.spec.ts:6:1 › every baked study loads its saved mesh and motion without constructing or rendering (7.3s)
+  ✓  178 [ci-games] › tests/browser/study-loading.spec.ts:8:1 › ordinary game routes leave 3D modules unloaded (1.0s)
+  ✓  179 [ci-games] › tests/browser/study-loading.spec.ts:23:1 › native and baked delivery never request procedural constructors (24.7s)
+  ✓  180 [ci-games] › tests/browser/study-loading.spec.ts:40:1 › switching studies during a delayed baked fetch keeps the current native scene (11.8s)
+[WebServer] 3:07:20 PM [vite] (client) [console.error] Study loading failed Error: Baked model download failed (404)
+[WebServer]     at loadStudy (http://127.0.0.1:4173/src/art3d/delivery.ts:38:26)
+  ✓  181 [ci-games] › tests/browser/study-loading.spec.ts:93:3 › a missing baked file fails visibly without regeneration and another study recovers (10.3s)
+[WebServer] 3:07:30 PM [vite] (client) [console.error] Study loading failed Error: Baked model fingerprint mismatch
+[WebServer]     at loadStudy (http://127.0.0.1:4173/src/art3d/delivery.ts:42:73)
+  ✓  182 [ci-games] › tests/browser/study-loading.spec.ts:93:3 › a corrupt baked file fails visibly without regeneration and another study recovers (10.2s)
+[WebServer] 3:07:40 PM [vite] (client) [console.error] Study loading failed Error: Canvas backdrop context is unavailable
+[WebServer]     at mount (http://127.0.0.1:4173/src/art3d/gallery/controller.ts:70:31)
+[WebServer]     at http://127.0.0.1:4173/src/art3d/gallery/Viewer.tsx:42:23
+  ✓  183 [ci-games] › tests/browser/study-mount-failure.spec.ts:4:1 › gallery releases a partially mounted scene and can load another study (8.2s)
+  ✓  184 [ci-games] › tests/browser/study-recording-resize.spec.ts:39:1 › a resized recording keeps its video dimensions and then fits the latest viewport (19.1s)
+  ✓  185 [ci-games] › tests/browser/study-recording-resize.spec.ts:133:1 › cancelling a resized recording applies the latest viewport and restores capture (10.7s)
+  ✓  186 [ci-games] › tests/browser/tavern-spells.spec.ts:45:1 › buys and keyboard-casts a targeted spell, reloads exactly, and preserves legacy saves (2.1s)
+  ✓  187 [ci-games] › tests/browser/tavern-spells.spec.ts:91:1 › holds a note across rounds, then shows and receives its next-round income once (2.3s)
+  ✓  188 [ci-games] › tests/browser/tavern-spells.spec.ts:112:1 › coupon updates minion prices and is consumed by exactly one purchase (2.4s)
+  ✓  189 [ci-games] › tests/browser/tavern-spells.spec.ts:128:1 › collection displays all eight spell effects and decorative art without phone overflow (2.5s)
+  ✓  190 [ci-games] › tests/browser/workshop.spec.ts:88:1 › collection, mod guide, export/import and new seed (2.5s)
+  ✓  191 [ci-games] › tests/browser/workshop.spec.ts:130:1 › phone layout stays within viewport and actions are reachable (1.1s)
+  ✓  192 [ci-games] › tests/browser/workshop.spec.ts:144:1 › a complete legal eight-ante replay restores its victory screen (3.1s)
+(node:18487) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1106/150834.811842:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /workspace/.cloud-tools/expansion-chrome/opt/google/chrome/CHROME_VERSION_EXTRA
+  ✓  193 [ci-assets] › tests/browser/art3d.spec.ts:58:3 › Catalyst renders, exports real meshes, and works on phone without changing saves @asset-delivery @asset-smoke (43.9s)
+  ✓  194 [ci-assets] › tests/browser/art3d.spec.ts:58:3 › Hydra renders, exports real meshes, and works on phone without changing saves @asset-delivery @asset-smoke (37.1s)
+  ✓  195 [ci-assets] › tests/browser/art3d.spec.ts:58:3 › Vajra renders, exports real meshes, and works on phone without changing saves @asset-delivery @asset-smoke (21.2s)
+
+
+  1) [ci-games] › tests/browser/native-assets.spec.ts:10:1 › review scope selects gallery defaults and native workbench downloads stay isolated
+
+    Test timeout of 30000ms exceeded.
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected pattern: /asset=nightjar/
+    Error: Test timeout of 30000ms exceeded.
+
+    Call log:
+      - Expect "toHaveURL" with timeout 5000ms
+
+
+      85 |   await page.goto('/?workbench=dcc');
+      86 |   await page.getByLabel('Choose native asset').selectOption('nightjar');
+    > 87 |   await expect(page).toHaveURL(/asset=nightjar/);
+         |                      ^
+      88 |   await expect(page.getByRole('heading', { name: 'Nightjar.' })).toBeVisible();
+      89 |   await expect(page.locator('.dcc-render')).toHaveAttribute('data-ready', 'true', {
+      90 |     timeout: sceneReadyTimeout,
+        at /workspace/game/tests/browser/native-assets.spec.ts:87:22
+
+    Error Context: test-results/browser/native-assets-review-scope-97221-nch-downloads-stay-isolated-ci-games/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser/native-assets-review-scope-97221-nch-downloads-stay-isolated-ci-games/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser/native-assets-review-scope-97221-nch-downloads-stay-isolated-ci-games/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [ci-games] › tests/browser/night-passage-agent.spec.ts:50:1 › spectator plays, pauses and seeks a recorded run without replacing the player save
+
+    Test timeout of 30000ms exceeded.
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByRole('slider', { name: 'Replay position' })
+    Expected: "182"
+    Received: ""
+
+
+      81 |   const paused = await position.inputValue();
+      82 |   await page.clock.runFor(1000);
+    > 83 |   await expect(position).toHaveValue(paused);
+         |                          ^
+      84 |   await page.getByRole('button', { name: 'Show result', exact: true }).click();
+      85 |   await expect(page.getByText(`Replay complete · Escaped · ${result.score} points`)).toBeVisible();
+      86 |   await expect(page.getByTestId('np-replay-score')).toHaveText(`${result.score} points`);
+        at /workspace/game/tests/browser/night-passage-agent.spec.ts:83:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/browser/night-passage-agent-specta-df81e-t-replacing-the-player-save-ci-games/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/browser/night-passage-agent-specta-df81e-t-replacing-the-player-save-ci-games/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser/night-passage-agent-specta-df81e-t-replacing-the-player-save-ci-games/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser/night-passage-agent-specta-df81e-t-replacing-the-player-save-ci-games/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [ci-games] › tests/browser/night-passage.spec.ts:236:3 › cast charges freeze, restore and replenish in scene (night-passage-4)
+
+    Test timeout of 30000ms exceeded.
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('group', { name: 'Cast charges', exact: true })
+    Expected substring: "1 / 3 charges"
+    Received string:    ""
+
+
+      301 |     await page.getByRole('button', { name: 'Resume passage', exact: true }).last().click();
+      302 |     await page.clock.runFor(2500);
+    > 303 |     await expect(casts).toContainText('1 / 3 charges');
+          |                         ^
+      304 |     await expect(casts).toContainText('Next charge in');
+      305 |     await page.getByRole('button', { name: 'Pause', exact: true }).click();
+      306 |     await page.setViewportSize({ width: 390, height: 844 });
+        at /workspace/game/tests/browser/night-passage.spec.ts:303:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/browser/night-passage-cast-charges-a6d62-h-in-scene-night-passage-4--ci-games/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/browser/night-passage-cast-charges-a6d62-h-in-scene-night-passage-4--ci-games/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser/night-passage-cast-charges-a6d62-h-in-scene-night-passage-4--ci-games/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser/night-passage-cast-charges-a6d62-h-in-scene-night-passage-4--ci-games/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [ci-games] › tests/browser/native-assets.spec.ts:10:1 › review scope selects gallery defaults and native workbench downloads stay isolated
+    [ci-games] › tests/browser/night-passage-agent.spec.ts:50:1 › spectator plays, pauses and seeks a recorded run without replacing the player save
+    [ci-games] › tests/browser/night-passage.spec.ts:236:3 › cast charges freeze, restore and replenish in scene (night-passage-4)
+  4 skipped
+  188 passed (19.2m)

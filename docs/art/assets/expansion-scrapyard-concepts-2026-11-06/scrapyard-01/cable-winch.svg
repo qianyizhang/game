@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" width="384" height="384"><g id="cable-winch">
+    <path d="M88 228L117 217L286 241L314 304L292 316L81 300L56 309L65 271Z" fill="#30483e" stroke="#142622" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M111 260L278 271L286 288L100 279Z" fill="#b97c5e" stroke="#142622" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M88 135L111 126L133 143L119 259L98 282L72 277L83 235Z" fill="#a5b4a2" stroke="#142622" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M137 99C108 88 80 115 77 174C74 220 88 249 108 254L129 246C105 228 101 204 106 166C110 133 121 111 137 99Z" fill="#b97c5e" stroke="#142622" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M124 119C109 139 104 187 115 217L213 235L229 137Z" fill="#30483e" stroke="#142622" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M132 124C117 145 112 185 120 216M148 126C133 150 129 191 137 219M165 129C149 154 146 194 153 222M182 132C167 157 162 197 170 225M199 135C183 161 179 200 186 228M214 138C201 164 195 203 201 230" fill="none" stroke="#a5b4a2" stroke-width="13" stroke-linecap="round"/>
+    <path d="M129 128C119 147 117 162 117 176M146 131C136 150 133 165 133 180M163 134C153 152 150 169 150 183M180 137C169 156 167 171 167 187M197 140C187 159 183 175 183 190" fill="none" stroke="#e9dbb7" stroke-width="4" stroke-linecap="round"/>
+    <path d="M229 111C203 103 181 139 179 187C177 230 188 254 209 258L229 248C210 234 206 208 211 177C215 145 226 128 244 127Z" fill="#b97c5e" stroke="#142622" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M223 145L248 149L266 174L262 211L239 232L216 224L213 203L221 180Z" fill="#a5b4a2" stroke="#142622" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M250 184L274 186L286 203L280 226L260 234L243 220L241 200Z" fill="#30483e" stroke="#142622" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M259 189L280 193L288 207L281 223L265 222L259 211Z" fill="#b97c5e" stroke="#142622" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M261 185L265 140L290 128L299 72L313 68L322 79L309 142L286 155L282 190Z" fill="#a5b4a2" stroke="#142622" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M299 66L258 62Q249 62 247 72Q246 82 255 85L298 91L305 80L306 70Z" fill="#b97c5e" stroke="#142622" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M68 244L88 235L179 245L194 262L186 284L79 274L66 263ZM80 248L173 258M79 269L172 279" fill="#a5b4a2" stroke="#142622" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M62 269L77 270L76 300L95 301L93 319L55 315ZM176 249Q177 239 188 238L201 243L201 302L218 306L214 327L173 322L175 286ZM240 231L259 236L245 290L264 300L264 326L222 325L216 305Z" fill="#a5b4a2" stroke="#142622" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M159 274C136 285 132 310 111 326L94 324C119 302 120 281 151 267Z" fill="#a5b4a2" stroke="#142622" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M151 275C131 287 126 310 107 322M91 114Q107 100 121 103M191 132Q206 112 224 117M255 69L294 73" fill="none" stroke="#e9dbb7" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  </svg>
