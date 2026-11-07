@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="vesta-warming-bench">
+    <rect width="480" height="336" fill="#10232c"/>
+    <ellipse cx="249" cy="269" rx="190" ry="25" fill="#0c1e25"/>
+    <g id="vesta-basalt-back" stroke="#10232c" stroke-linejoin="round">
+      <path d="M81 159 Q111 133 118 91 L124 71 L145 56 L174 54 L194 64 L365 70 L388 63 L411 71 L417 122 L438 195 L425 250 L397 267 L354 256 L340 185 L133 182 L108 218 L68 203 Z" fill="#667276" stroke-width="3"/>
+      <path d="M124 74 L144 65 L163 67 L150 112 L137 143 L111 154 L93 157 Q115 127 119 95 Z" fill="#929b98" stroke="none"/>
+      <path d="M144 65 L164 56 L178 60 L168 78 L156 119 L147 151 L124 157 L140 118 Z M389 71 L408 77 L411 133 L428 185 L412 199 L398 181 L389 135 Z" fill="#4a5a60" stroke="none"/>
+      <path d="M173 67 L354 77 L371 72 L365 88 L165 82 Z" fill="#a2a8a1" stroke="none"/>
+      <path d="M157 79 L369 85 L382 166 L142 159 Z" fill="#34464b" stroke-width="3"/>
+      <path d="M174 80 L358 87 Q369 88 369 101 L361 150 Q360 161 346 161 L163 151 Q154 150 158 137 L165 89 Q166 80 174 80 Z" fill="#9d624a" stroke-width="3"/>
+      <path d="M173 85 L354 91 L358 104 L350 151 L165 144 Z" fill="#b67653" stroke-width="1.5"/>
+      <path d="M174 87 L198 91 L189 109 L202 127 L190 146 L166 143 Z M319 93 L350 93 L355 105 L346 149 L321 147 L330 129 L314 114 Z" fill="#a3654b" stroke="none"/>
+      <path d="M229 94 L256 92 L273 109 L264 119 L284 137 L274 148 L211 145 L225 130 L217 116 Z" fill="#d78568" stroke="none"/>
+      <path d="M245 99 L258 108 L251 124 L265 140 L243 143 L235 128 L239 116 Z" fill="#db936a" stroke="none"/>
+      <path d="M176 85 L352 91 M162 143 L346 154" fill="none" stroke="#ce9670" stroke-width="2"/>
+      <circle cx="181" cy="91" r="6" fill="#7b503e" stroke-width="1.5"/>
+      <path d="M178 88 L182 87 L185 91" fill="none" stroke="#d3a27b" stroke-width="2"/>
+      <circle cx="354" cy="101" r="6" fill="#7b503e" stroke-width="1.5"/>
+      <path d="M351 98 L355 97 L357 100" fill="none" stroke="#ce9670" stroke-width="2"/>
+      <circle cx="170" cy="136" r="6" fill="#80533f" stroke-width="1.5"/>
+      <circle cx="347" cy="147" r="6" fill="#80533f" stroke-width="1.5"/>
+      <path d="M167 133 L172 132 M344 144 L348 143" fill="none" stroke="#ce9670" stroke-width="2"/>
+      <path d="M375 81 L379 118 L388 141 M134 83 L130 104 M414 182 L422 211 L413 239" fill="none" stroke="#89928e" stroke-width="2"/>
+    </g>
+    <g id="vesta-seat-and-legs" stroke="#10232c" stroke-linejoin="round">
+      <path d="M69 179 L139 165 L361 181 L407 197 L399 238 L405 282 L383 293 L341 296 L316 274 L308 226 Q270 213 239 212 L167 211 Q123 221 109 247 L103 278 L77 283 L36 274 L39 250 L49 210 Z" fill="#667276" stroke-width="3"/>
+      <path d="M143 205 Q185 199 230 207 L286 212 Q322 218 332 245 L336 278 L316 278 L309 242 Q296 222 274 221 L168 220 Q128 230 110 257 L104 278 L87 280 L92 239 L113 212 Z" fill="#34464b" stroke="none"/>
+      <path d="M50 204 L81 207 L88 225 L76 244 L81 260 L71 279 L39 273 L42 252 Z M342 215 L375 217 L383 238 L371 254 L384 277 L379 292 L342 294 L332 273 L338 250 L329 233 Z" fill="#8a9390" stroke="none"/>
+      <path d="M80 208 L104 208 L114 223 L97 245 L103 260 L96 280 L78 282 L76 261 L83 241 L76 225 Z M376 217 L399 213 L396 240 L404 281 L383 292 L381 270 L370 251 L382 235 Z" fill="#56676c" stroke="none"/>
+      <path d="M40 252 L54 250 L63 258 L78 263 M341 278 L355 273 L367 280 M91 219 L95 232 M390 261 L396 273" fill="none" stroke="#a1a69b" stroke-width="2"/>
+      <path d="M40 179 Q46 164 76 158 L119 150 L347 161 Q376 162 396 173 L407 193 L390 212 L347 217 L301 208 L93 201 L49 201 L36 190 Z" fill="#7d8888" stroke-width="3"/>
+      <path d="M48 177 L81 163 L120 157 L344 167 L389 179 L372 192 L313 195 L94 185 L65 191 Z" fill="#929b97" stroke="none"/>
+      <path d="M95 185 L138 174 L206 176 L241 184 L283 179 L347 184 L373 192 L345 207 L306 201 L200 199 L155 191 L112 195 Z" fill="#727f80" stroke="none"/>
+      <path d="M38 181 L61 174 L69 182 L65 198 L49 201 L36 190 Z M94 187 L114 194 L111 204 L84 201 L73 195 Z M349 196 L375 187 L396 184 L404 194 L391 211 L367 214 Z" fill="#596c71" stroke="none"/>
+      <path d="M44 174 L74 162 L120 153 L345 163 L386 176 M116 189 L139 193 L155 192 M304 201 L325 204 L338 200" fill="none" stroke="#b0b3a7" stroke-width="2.5"/>
+      <path d="M139 157 L145 166 L138 174 M278 169 L264 176 M352 183 L344 191 L347 200" fill="none" stroke="#56686c" stroke-width="2"/>
+    </g>
+    <g id="vesta-recessed-coal-drawer" stroke="#10232c" stroke-linejoin="round">
+      <path d="M133 233 L167 218 L259 221 L285 238 L284 280 L136 269 Z" fill="#1e2e31" stroke-width="3"/>
+      <path d="M145 233 L170 224 L248 226 L273 239 L233 250 L146 244 Z" fill="#674c41" stroke-width="2"/>
+      <path d="M153 236 L160 227 L172 228 L178 237 L169 243 Z M183 237 L188 226 L200 224 L209 234 L201 246 Z M218 232 L231 226 L241 232 L238 245 L225 246 Z M250 238 L257 231 L268 236 L269 245 L256 248 Z" fill="#a45f49" stroke-width="2"/>
+      <path d="M174 238 L180 229 L188 234 L190 243 L181 247 Z M205 239 L215 232 L222 238 L220 248 L210 250 Z M235 244 L242 238 L251 244 L247 250 Z" fill="#d78568" stroke="none"/>
+      <path d="M193 237 L199 231 L202 239 L197 245 Z M221 241 L226 238 L230 244 L225 247 Z" fill="#dfad7a" stroke="none"/>
+      <path d="M137 236 L278 247 L278 281 L137 270 Z" fill="#6d6c60" stroke-width="2"/>
+      <path d="M146 240 L269 250 L269 276 L146 267 Z" fill="#7d7867" stroke="none"/>
+      <path d="M137 236 L278 247 M154 244 L258 253" fill="none" stroke="#a19b83" stroke-width="2"/>
+      <path d="M179 252 L184 253 L185 260 L217 263 L225 256 L231 257 L228 267 L218 271 L180 266 L177 260 Z" fill="#b68d62" stroke-width="2"/>
+      <path d="M183 256 L185 261 L218 265 L225 259" fill="none" stroke="#d3bb96" stroke-width="2"/>
+    </g>
+  </g>
+
+  </svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 336" width="480" height="336" role="img" aria-label="ironWave-base optional candidate"><g id="ironWave-base">
+    <rect width="480" height="336" fill="#35282c" />
+    <path d="M31 61 C55 67 72 83 92 87 C128 91 148 111 147 145 C131 124 116 117 98 122 C73 128 61 107 31 97Z" fill="#703d3b" />
+    <path d="M149 276 C257 271 390 250 450 170 C427 251 332 296 149 276Z" fill="#71988c" />
+    <path d="M33 276 L44 228 L90 203 L127 212 L111 267 L73 300 L38 311Z" fill="#4c5b55" stroke="#172928" stroke-width="5" />
+    <path d="M42 270 L49 241 L77 229 L92 240 L72 277 L38 307Z" fill="#a9b4aa" />
+    <path d="M38 155 C65 141 95 141 125 153 L185 178 L202 195 L187 219 C150 227 117 244 94 272 C73 254 53 248 21 247Z" fill="#4c5b55" stroke="#172928" stroke-width="5" stroke-linejoin="round" />
+    <path d="M41 157 C67 146 92 147 119 157 L179 181 L189 195 C142 199 98 216 68 246 C52 239 39 239 25 242Z" fill="#71988c" />
+    <path d="M39 157 C65 143 93 144 119 155 L137 165 C99 161 63 183 30 237 C37 203 52 175 75 160 C62 157 51 157 39 157Z" fill="#dfd0b0" />
+    <path d="M31 240 C69 196 106 174 150 173 L179 182 L184 191 C126 187 82 208 46 244Z" fill="#a9b4aa" />
+    <path d="M179 177 C188 172 199 173 206 180 L211 195 L202 211 L191 216 L183 206Z" fill="#a9b4aa" stroke="#172928" stroke-width="4" />
+    <path d="M187 214 L267 155 L276 169 L198 229Z" fill="#703d3b" stroke="#172928" stroke-width="5" />
+    <path d="M199 205 L207 216 M211 196 L219 207 M223 187 L231 198" fill="none" stroke="#b97c5e" stroke-width="4" />
+    <path d="M196 180 C203 172 215 167 225 168 L241 174 L252 185 L252 199 L245 208 L237 208 L231 215 L223 214 L217 221 L208 217 L199 210 L192 198Z" fill="#a9b4aa" stroke="#172928" stroke-width="5" />
+    <path d="M199 183 L208 176 L216 175 L216 188 L225 198 L220 205 L211 200 L201 193Z M219 172 L227 173 L234 180 L235 191 L228 192 L220 184Z M236 177 L244 183 L248 192 L244 201 L237 197 L233 188Z" fill="#dfd0b0" />
+    <path d="M252 138 C308 105 367 62 452 38 C407 87 357 130 286 179Z" fill="#4c5b55" stroke="#172928" stroke-width="4" stroke-linejoin="round" />
+    <path d="M252 138 C313 101 375 59 452 38 C400 72 341 113 267 151Z" fill="#a9b4aa" />
+    <path d="M252 138 C320 96 380 59 452 38 C396 61 340 99 261 146Z" fill="#dfd0b0" />
+    <path d="M235 127 L307 175 L299 185 L222 140Z" fill="#4c5b55" stroke="#172928" stroke-width="4" />
+    <path d="M235 128 L302 174 L297 177 L224 136Z" fill="#dfd0b0" />
+  </g>
+  </svg>
