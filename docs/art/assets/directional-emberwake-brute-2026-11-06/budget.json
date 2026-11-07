@@ -1,0 +1,30 @@
+{
+  "reservation_usd": 3,
+  "calculated_bound_usd": 2.960945,
+  "status": "unknown-transport-full-reservation-held",
+  "authority": "Coordinator granted ONE never-generated Furnace brute four-direction sheet, USD3 maximum; separate continuation because PR146 branch was published and handed off. No automatic retry.",
+  "components_usd": {
+    "author_full_922000_input_long_context_at_2": 1.844,
+    "author_full_128000_output_long_context_at_7_5": 0.96,
+    "reference_max_quality_4091_tokens_at_30": 0.12273,
+    "prompt_utf8_byte_token_bound_at_5": 0.034215
+  },
+  "sources": [
+    "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+    "https://developers.openai.com/api/reference/resources/images/methods/generate",
+    "https://developers.openai.com/api/docs/guides/image-generation"
+  ],
+  "notes": "Verified Terra xhigh effort supported; full output ceiling includes reasoning. Native SVG from generation endpoint; no image edit/reference input. Explicit HIGH rendering priced at MAX for reservation. Existing OpenAI network-secret binding through HTTPS proxy only.",
+  "prior_directional_spend_usd": 0.238068,
+  "historical_external_hold_usd": 7.5,
+  "unknown_outcome": "Retain entire USD3, stop new paid calls and reconcile; no automatic retry or further call granted.",
+  "grant_id": "sprite-brute-03",
+  "actual_usage_cost_usd": null,
+  "reserved_usd_retained": 3,
+  "released_usd": 0,
+  "request_id": null,
+  "returned_artwork": false,
+  "local_request_running": false,
+  "execution_outcome": "Unknown after RemoteDisconnected at301.04 seconds. No response/usage. Request may have executed remotely; no new paid calls or retries pending reconciliation."
+}

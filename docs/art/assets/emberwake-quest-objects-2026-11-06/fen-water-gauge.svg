@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="fen-water-gauge">
+    <defs>
+      <linearGradient id="gauge-wood" x1="0" y1="0" x2="0.2" y2="1">
+        <stop offset="0" stop-color="#b68d62"/>
+        <stop offset="0.65" stop-color="#92704f"/>
+        <stop offset="1" stop-color="#66533e"/>
+      </linearGradient>
+      <linearGradient id="gauge-bone" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#a99b7f"/>
+        <stop offset="0.4" stop-color="#ead7b5"/>
+        <stop offset="1" stop-color="#cfb997"/>
+      </linearGradient>
+    </defs>
+    <rect width="480" height="336" fill="#10232c"/>
+    <path d="M77 248C139 225 337 222 412 242L418 258C360 274 150 277 80 262Z" fill="#182e35"/>
+    <ellipse cx="323" cy="291" rx="66" ry="15" fill="#182e35"/>
+    <path d="M94 132 326 47 338 51 356 83 352 94 117 178 94 163Z" fill="#544b3c"/>
+    <path d="M95 125 325 42 335 46 352 77 114 165 94 155Z" fill="url(#gauge-wood)" stroke="#b68d62" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M115 133C153 126 159 111 193 109S242 89 267 79 305 74 336 55L341 65C318 84 291 83 270 91S220 120 195 121 151 140 122 145Z" fill="#765c43"/>
+    <path d="M133 122C170 120 173 103 204 100S249 83 272 73 304 68 327 53M164 137C191 132 209 132 234 119S278 102 302 95" fill="none" stroke="#d0a578" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M103 166 385 151 394 157 415 211 406 224 111 243 93 225Z" fill="#584a39"/>
+    <path d="M107 158 385 145 406 205 111 229 99 215Z" fill="url(#gauge-wood)" stroke="#b68d62" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M123 175C165 166 192 181 226 169 252 160 274 167 303 160L385 155 389 166C357 174 334 170 311 178 283 187 262 177 234 185 198 196 169 184 127 196Z" fill="#7b6044"/>
+    <path d="M122 210C161 207 182 194 214 201S271 200 297 191 354 190 394 179M145 170C175 171 195 175 217 168M210 217C247 218 265 206 292 207L397 195" fill="none" stroke="#d0a578" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M278 147C278 138 284 133 294 133L313 134C323 135 325 142 327 151L343 213C344 225 338 232 327 232L304 233 293 224 285 163Z" fill="#594f3f"/>
+    <path d="M279 148C277 139 282 135 292 135L309 136C318 137 320 142 322 152L337 214C339 223 333 227 324 228L306 229C311 225 312 219 310 211L295 150C293 142 288 141 279 148Z" fill="url(#gauge-bone)" stroke="#ead7b5" stroke-width="1.5"/>
+    <path d="M301 145 318 216C319 221 318 224 316 227" fill="none" stroke="#b7a483" stroke-width="2"/>
+    <path d="M95 133C98 121 119 118 127 132L132 215C132 230 125 240 111 241 96 242 85 232 86 218L87 150Z" fill="#493f33"/>
+    <path d="M96 130C105 124 119 128 120 140L123 213C123 225 120 232 108 233 98 234 94 227 94 218L91 148Z" fill="#a27d55" stroke="#b68d62" stroke-width="3"/>
+    <path d="M103 160 106 211C106 221 109 226 115 227" fill="none" stroke="#755a41" stroke-width="3"/>
+    <circle cx="109" cy="143" r="14" fill="#34464b"/>
+    <circle cx="108" cy="141" r="11" fill="#95a6aa" stroke="#c1c6b7" stroke-width="2"/>
+    <path d="M103 135C99 139 101 145 104 147" fill="none" stroke="#ead7b5" stroke-width="2" stroke-linecap="round"/>
+    <path d="M91 132C76 127 72 148 71 161 71 178 84 185 89 173 92 164 80 165 74 174 60 195 51 224 57 247 63 272 91 286 126 283 173 281 187 260 224 262 248 264 266 279 285 276" fill="none" stroke="#66583e" stroke-width="13" stroke-linecap="round"/>
+    <path d="M91 130C77 125 74 146 73 159 72 174 83 181 87 172 90 165 81 163 75 174 61 195 54 225 60 246 67 269 93 282 126 279 172 276 187 256 224 258 248 259 266 274 286 272" fill="none" stroke="#b68d62" stroke-width="9" stroke-linecap="round"/>
+    <path d="M86 131C77 131 78 145 77 153M69 188C61 210 59 231 65 245 72 262 91 272 113 274M137 274C169 269 191 253 216 255" fill="none" stroke="#dfc777" stroke-width="3" stroke-linecap="round"/>
+    <path d="M69 166C67 172 72 180 83 182M68 174C65 181 75 188 84 186" fill="none" stroke="#b68d62" stroke-width="7" stroke-linecap="round"/>
+    <path d="M62 212 68 219M60 230 66 237M75 259 75 268M95 272 97 280M119 274 122 282M146 267 151 275M171 256 177 264M198 253 199 261M223 255 224 263" fill="none" stroke="#8a6e48" stroke-width="2"/>
+    <path d="M294 250C312 244 342 249 361 266 378 281 367 296 344 301 323 306 287 294 278 280 273 269 280 257 294 250Z" fill="#34464b" stroke="#526064" stroke-width="2"/>
+    <path d="M298 252C321 248 345 257 354 270L339 278 316 272 295 277 284 268Z" fill="#68736f"/>
+    <path d="M310 255 324 257 330 266 344 268" fill="none" stroke="#95a6aa" stroke-width="3" stroke-linecap="round"/>
+    <path d="M296 250C280 252 270 264 279 281M305 251C286 254 281 270 289 288M312 253C295 259 290 276 298 291" fill="none" stroke="#b68d62" stroke-width="7" stroke-linecap="round"/>
+    <path d="M296 251C284 255 279 262 279 270M306 253C293 258 289 265 290 273" fill="none" stroke="#dfc777" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  </svg>
