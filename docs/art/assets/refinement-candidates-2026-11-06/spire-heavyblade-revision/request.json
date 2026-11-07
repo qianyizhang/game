@@ -1,0 +1,15 @@
+{
+  "model": "gpt-image-2.6-sunburst",
+  "prompt": "Create ONE native editable SVG sheet of TWO Heavy Blade card-art refinement candidates for Spire. These are a targeted construction repair of a prior two-handed drawing whose second glove floated without a supporting forearm. Simplify to ONE HAND and ONE continuous connected armored arm per scene. Both scenes show physical weight and greatsword scale, not invented game content. No second glove, no disconnected cuff, no armor fragments posing as limbs. Canvas/viewBox exactly0 0 1600 560,two columns one row,each800x560. Top-level groups heavyBlade-base-refined translate(0 0),heavyBlade-upgraded-refined translate(800 0). Each group local background rectangle #35282c. Every cell path belongs to its own group with local coordinates,all geometry within x=55..745 y=45..515. NO cross-cell marks. Native editable static paths/simple shapes only,no raster,script,text,fonts,external resources,defs,use,filter,gradient,animation or border. Restrained engraved print with broad connected forged-steel planes,three values,upper-left light. Palette steel #a9b4aa,ivory #dfd0b0,shadow #4c5b55,ink #172928,copper #b97c5e,small oxblood cloth #703d3b. No plastic gloss,spikes,scattered debris,glowing effects or excessive cuts. The same massive thick two-edged greatsword family in both: wide tapered blade,thick copper/steel crossguard,ONE short dark wrapped grip,fitted pommel. ONE compact gauntleted hand wraps that actual grip with clear thumb/finger plane,ONE anatomically continuous forearm reaches that wrist from elbow,ONE upper-arm plane reaches that elbow from upper-left. Do not leave an open gap anywhere in the shoulder-to-hand chain. About18-24filled shapes per scene. Base: substantial bent armored arm enters from left upper quadrant,elbow low-left and forearm rising toward middle; fist near lower-middle grips hilt,sword's broad blade rises diagonally toward upper-right. Clear negative space between arm and blade. Cloth limited to a small tail behind elbow. Upgraded: strong descending chop,upper arm enters from left,elbow bends high-left,forearm extends toward raised fist near center-top; broad blade falls steeply toward lower-right. The upgraded shoulder/elbow/wrist line and blade orientation differ strongly from base. Both heavy weapons are held in one hand deliberately to keep anatomy clean; no extra hidden hand implied. No detached finger,free-floating gauntlet,blade through palm or abstract triangle pile. Subject/action readable at160x112,80x56 and48x34. This is repair of arm support and gesture,not a request to decorate the rejected drawings.",
+  "n": 1,
+  "quality": "medium",
+  "complexity": "high",
+  "output_format": "svg",
+  "size": "1600x560",
+  "svg": {
+    "model": "gpt-6.1-terra",
+    "reasoning": {
+      "effort": "low"
+    }
+  }
+}
