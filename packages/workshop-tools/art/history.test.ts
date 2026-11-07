@@ -11,6 +11,7 @@ import {
   realpathSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
+import { gzipSync } from 'node:zlib';
 import { resolve, dirname } from 'node:path';
 import react from '@vitejs/plugin-react';
 import { createElement } from 'react';
@@ -30,6 +31,7 @@ import {
   importHistory,
   historyState,
   validateSvg,
+  historyDocument,
 } from './history-store.ts';
 import type { ArtHistory } from './history-types.ts';
 import { withBundle, repositoryRoot } from '../io.ts';
@@ -393,4 +395,56 @@ await test('binary reference inputs remain viewable in offline attempt records',
     url: 'data:image/png;base64,' + png.toString('base64'),
     animated: false,
   });
+});
+
+await test('archived SVG originals and raster revisions preview losslessly without changing stored bytes', (t) => {
+  const { root, history, svg, file: checkpoint } = fixture();
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const file = `${MANAGED_PATH}/original.svg.gz`;
+  const original = svg + '   \n';
+  const compressed = gzipSync(original);
+  writeFileSync(resolve(root, file), compressed);
+  history.revisions[0] = {
+    ...history.revisions[0],
+    file,
+    digest: digest(compressed),
+    runtimeFile: null,
+    runtimeDigest: null,
+  };
+  history.attempts[0].files.push(file, checkpoint);
+  writeFileSync(resolve(root, HISTORY_PATH), JSON.stringify(history));
+  const expected = 'data:image/svg+xml;base64,' + Buffer.from(original).toString('base64');
+  assert.equal(historyState(root).previews.first, expected);
+  assert.deepEqual(historyState(root, false).documents?.[file], {
+    kind: 'image',
+    url: expected,
+    animated: false,
+  });
+  assert.deepEqual(readFileSync(resolve(root, file)), compressed);
+  assert.equal(verifyHistory(root).revisions, 1);
+  assert.throws(
+    () => useRevision(root, readHistory(root).version, 'hearth/cub', 'first'),
+    /no game-compatible/,
+  );
+  for (const bytes of [
+    Buffer.from('invalid gzip'),
+    gzipSync('<svg viewBox="0 0 1 1"><script/></svg>'),
+    gzipSync(' '.repeat(16 * 1024 * 1024 + 1)),
+  ]) {
+    writeFileSync(resolve(root, file), bytes);
+    assert.throws(() => historyDocument(root, file));
+  }
+  const pngFile = `${MANAGED_PATH}/evidence.png`;
+  const png = Buffer.from(
+    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLbtAAAAABJRU5ErkJggg==',
+    'base64',
+  );
+  writeFileSync(resolve(root, pngFile), png);
+  history.revisions[0] = { ...history.revisions[0], file: pngFile, digest: digest(png) };
+  history.attempts[0].files = [pngFile];
+  writeFileSync(resolve(root, HISTORY_PATH), JSON.stringify(history));
+  assert.equal(
+    historyState(root).previews.first,
+    'data:image/png;base64,' + png.toString('base64'),
+  );
 });
