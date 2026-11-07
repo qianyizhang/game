@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "id": "spire-aftermath-20261106",
+  "date": "2026-11-06T16:52:45.458216+00:00",
+  "status": "returned",
+  "grant": {
+    "id": "archive-spire-aftermath-03",
+    "source": "Coordinator single rolling shared-pool grant after story receipt",
+    "pool_usd": 40,
+    "reservation_usd": 3.7,
+    "scope": "One six-cell source sheet only",
+    "worker_opening_usage_estimate_usd": 1.093452
+  },
+  "endpoint": "https://api.openai.com/v1/images/generations",
+  "client_request_id": "archive-spire-aftermath-03-bf976cb73b7c46d1b1e6248b120dfb30",
+  "client_request_id_purpose": "ASCII support trace only; not an idempotency key or retrieval handle.",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG sheet, exact canvas 1440x672 and viewBox=\"0 0 1440 672\". Three columns by two rows, six local scenes of 480x336 in row-major order. These are FUTURE SPIRE AFTERMATH MATERIAL ILLUSTRATIONS: settled environmental remnants, not current runtime cues, timed VFX, animation frames, card replacements or new rules. Use no people, living creatures, faces, eyes, names, inscriptions or stat symbols.\n\nSix separate TOP-LEVEL <g id=\"SUBJECT-ID\" transform=\"translate(X Y)\"> groups as ordered below. Each begins with its own <rect x=\"0\" y=\"0\" width=\"480\" height=\"336\" fill=\"#172928\"/>. No other root drawing or shared background. Keep every mark inside its group/cell, with at least 28px clear inset INCLUDING shadows. Extract each scene by removing only its grid translation. No labels, visible grid, gutters, border or card frame.\n\nNative static paths/simple shapes and explicit colors only: no raster/image, scripts, external links, text/fonts, animation, CSS, defs, gradients, masks, filters or use references. About 35-60 purposeful vector shapes per scene; broad contour, structural overlaps and three value groups before sparse form-following cuts. Avoid tiny texture, glossy plastic, saturated glow and decorative symmetry.\n\nShared engraved fantasy direction: dark ink #172928/#2d403a, middle stone #63746d, pale fractured stone/silk #d6cfb6; muted copper #b97c5e, sage/olive poison #82937d/#789460, gel teal #659a9a, quiet plum #665361, restrained heat #b87952. Upper-left light. Differentiate brittle stone, viscous residue, thin translucent gel, fibrous silk, charred cloth and scorched rock. Gel may use a few simple opacity planes so its empty membrane stays distinct from opaque poison. One dominant asymmetric gesture and useful negative space per scene. Fill roughly 70-78% of the scene with stable settled forms; clear identity at 160x112 and 80x56, major contour also at 64x45. Do not make six identical puddles, badges, halos or explosive icons.\n\nROW-MAJOR SUBJECTS:\n1. id=\"impact-scree\" translate(0 0): A freshly broken stone step edge with three main unequal angular chunks, one deep diagonal compression crack, a large clear punched-out gap and a few small grounded chips. Pale fresh fracture against dark old stone. Settled impact residue, no airborne explosion.\n2. id=\"poison-residue\" translate(480 0): One viscous sage/olive chemical seep curling across a chipped dark stone tile. A broad leading tongue, one thick pooled lobe and two subordinate traces; distinguish the wet layer from exposed dry stone through edge thickness and restrained reflection. No vessel, skull or green aura.\n3. id=\"split-slime-membrane\" translate(960 0): Two EMPTY translucent blue-green gel husk flaps separated by a large central tear, with one continuous thick rolled rim and a thin wet inner plane. One flap leads diagonally; the answering flap droops low. Material remnants, no living slime, eyes, face or creature anatomy.\n4. id=\"ruptured-web\" translate(0 336): An asymmetric torn silk web sheet sagging between two unequal broken stone anchors. One large offset hole, three broad surviving strand bundles and a few irregular connected folds; silk stays pale and matte. No spider, radial emblem, regular lattice or many tiny threads.\n5. id=\"ritual-cinder-sweep\" translate(480 336): One bent plum/charcoal cloth remnant, charred along a curled edge, resting in a low asymmetric sweep of ash. One restrained copper ember under the fold and one large quiet opening. A proposed material aftermath of ritual power, not a rune, magical ring or established lore.\n6. id=\"explosive-scorch\" translate(960 336): A shallow blackened crater in a broad hard-stone fragment, three muted rust/orange heat seams and one tapering charcoal trail to the right. Scorched surface and recessed bowl dominate; at most two small settled chips. No fireball, active explosion, weapon or symmetrical burst.\n\nDeliver six separable material studies. Prioritize physical interpretation, contour and broad planes. Review-only future concepts, not canon.\n",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-terra",
+      "reasoning": {
+        "effort": "high"
+      }
+    }
+  },
+  "request_wire_encoding": "UTF-8 JSON, sorted keys, comma/colon separators, ensure_ascii=false; no extra whitespace",
+  "automatic_retries": 0,
+  "billing": {
+    "reserved_usd": 0,
+    "uncertain_reserved_usd": 0,
+    "call_usage_estimate_usd": 0.108179,
+    "worker_lifetime_usage_estimate_usd": 1.201631,
+    "rates_per_million": {
+      "image_text_input": 5,
+      "image_input": 8,
+      "image_output": 30,
+      "author_short_input": 1,
+      "author_short_output": 5,
+      "author_long_input": 2,
+      "author_long_output": 7.5
+    },
+    "pricing": "https://developers.openai.com/api/docs/pricing",
+    "bound": "Terra full published maxima: 922k input at $2/M + 128k output at $7.50/M = $2.804; plus unchanged $0.892 fixed-reference/prompt allowance = $3.696, rounded to $3.70. Planning reservation, not API dollar cap."
+  },
+  "outputs": [
+    {
+      "file": "original.svg",
+      "sha256": "e0261490f4ee1f54051301cb831fd290495102fafd70109dfbf3c1e35336820b",
+      "kind": "exact-api-original"
+    },
+    {
+      "file": "impact-scree.svg",
+      "sha256": "3ef1650953adce8973a59e814b6d73300ead3e84b9d27ff011d292f40dccd52c",
+      "cell": [0, 0]
+    },
+    {
+      "file": "poison-residue.svg",
+      "sha256": "98e4940677f2786bee9146cb9f8aa11d62f0ec3af2ce622932cf4732c48378f8",
+      "cell": [1, 0]
+    },
+    {
+      "file": "split-slime-membrane.svg",
+      "sha256": "2f2c2c474132e3ddc785b449f0c556e670cf0c2cd93c33d1dabaee8c6be268ea",
+      "cell": [2, 0]
+    },
+    {
+      "file": "ruptured-web.svg",
+      "sha256": "d73421b7fa82dc2c20ab876a352da681f25de25e113d001a8c99db1ebfff6b6c",
+      "cell": [0, 1]
+    },
+    {
+      "file": "ritual-cinder-sweep.svg",
+      "sha256": "4d86831780cd5d5266e096d54baff18418a5da2ab2a6cfbe935f7fe70bdf07e6",
+      "cell": [1, 1]
+    },
+    {
+      "file": "explosive-scorch.svg",
+      "sha256": "4774b7a0f08c6eb1f91c436661476959f1c0bb42cf7b1164f17596f51def46be",
+      "cell": [2, 1]
+    }
+  ],
+  "started_at": "2026-11-06T16:52:45.503165+00:00",
+  "request_sha256": "5a11f7742197bc63f89b0c85f0caf1cee97e035ba7f66fe226f41ed48a51a9a3",
+  "response": {
+    "request_id": "req_c95c468e8b9f4132acb2515e68c168e9",
+    "http_status": 200,
+    "created": 1793984013,
+    "elapsed_seconds": 248.067,
+    "usage": {
+      "input_tokens": 992,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 992
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1776
+    },
+    "svg_usage": {
+      "input_tokens": 2369,
+      "model": "gpt-6.1-terra",
+      "output_tokens": 15466,
+      "reasoning_tokens": 2096,
+      "total_tokens": 17835
+    }
+  },
+  "extraction": {
+    "source": "original.svg",
+    "grid": [3, 2],
+    "cell_size": [480, 336],
+    "recipe": "Copy each top-level group by filename stem; remove only its grid translate; keep local background and vector contents.",
+    "verified": {
+      "cairo_crop_pixel_equal": 6,
+      "inside_cell": 6,
+      "minimum_foreground_inset_px": 27,
+      "vector_contents_unchanged": 6
+    },
+    "exceptions": {
+      "inset": {
+        "split-slime-membrane": 27
+      },
+      "cairo_raster_differences": {}
+    }
+  },
+  "review": {
+    "contact": "contact.png",
+    "sha256": "a0627616fea24e6d263bd02c9cf7d16937607f080c0d6893b6d683a848d5d9ad",
+    "dimensions": [960, 756],
+    "sizes": [
+      [160, 112],
+      [80, 56],
+      [64, 45]
+    ],
+    "png": "RGBA, no color profile; smaller of original/optimized encoding retained after exact decoded-pixel/dimension/alpha/mode/color-metadata equality.",
+    "png_original_bytes": 121752,
+    "png_retained_bytes": 119559,
+    "verdict": "5 author candidates; ruptured-web held for silk/cloth semantic ambiguity. Self-review, not independent or user acceptance.",
+    "exceptions": {
+      "ruptured-web.svg": {
+        "status": "hold",
+        "reason": "The broad opaque folds and scalloped hem read as torn cloth at 160x112 and 80x56; missing strand structure fails to distinguish spider silk from the ritual cloth."
+      },
+      "split-slime-membrane.svg": {
+        "note": "Empty blue-green rim and parted flaps read at compact size; faceted planes also suggest folded fabric. Minimum foreground inset 27px versus requested 28px, without clipping."
+      },
+      "ritual-cinder-sweep.svg": {
+        "note": "Charred cloth/fold and ember read; ritual cause is a proposed interpretation, not an independently legible semantic cue or established lore."
+      },
+      "explosive-scorch.svg": {
+        "note": "Crater and seams remain distinct at 80x56; small heat seams soften at 64x45. Source illustration, not an active explosion cue."
+      }
+    }
+  },
+  "verification": {
+    "svg_safety": "7/7 passed repository validator; no embedded raster or external resources.",
+    "lineage": "7 artwork digests and exact request digest verified; 6 vector groups unchanged except grid translation.",
+    "isolated_history": "7 source revisions imported and verified; no assets, runtime files or selections.",
+    "gallery": "Actual renderer via GET-only loopback: 7 revisions/14 decoded images, lineage, visible hold, canonical prompt/settings, disabled adoption; 390px phone has no overflow or page errors; desktop visual inspection.",
+    "repository": "format:maintenance and live assets:history verify passed; 709 assets, 92 baseline revisions, 0 selections.",
+    "registration": "Staged-only; central canonical registration remains a draft blocker."
+  }
+}
