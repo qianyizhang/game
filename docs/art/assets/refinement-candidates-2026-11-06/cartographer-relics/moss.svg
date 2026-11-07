@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" width="384" height="384" role="img" aria-label="moss optional candidate"><g id="moss" stroke="#14262d" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M133 60 Q135 44 192 42 Q249 42 253 59 L243 105 L142 105 Z" fill="#b99a64" />
+    <path d="M135 62 Q153 72 192 73 Q229 73 252 62 L247 81 Q198 92 139 79 Z" fill="#caac78" stroke="none" />
+    <path d="M140 94 Q119 96 119 110 L119 121 Q120 132 139 136 L139 151 Q104 165 99 185 L99 300 Q100 331 191 335 Q282 335 286 303 L286 185 Q281 163 247 151 L247 136 Q266 132 266 121 L266 110 Q264 96 244 94 L242 111 Q194 122 143 110 Z" fill="#b5c5b4" />
+    <path d="M112 196 Q130 179 192 180 Q253 179 272 196 L272 299 Q271 321 192 322 Q114 322 112 299 Z" fill="#365348" />
+    <path d="M112 196 Q132 180 192 180 Q251 180 272 196 Q253 211 192 211 Q133 211 112 196 Z" fill="#718d6d" />
+    <path d="M113 300 Q133 282 192 282 Q251 282 271 300 Q263 320 192 322 Q122 321 113 300 Z" fill="#466456" stroke="none" />
+    <path d="M121 108 Q135 119 192 120 Q247 120 264 108 L265 121 Q249 136 192 136 Q136 135 120 121 Z" fill="#eadfc4" />
+    <path d="M150 144 Q120 158 119 186 L119 258 Q127 246 130 219 Q133 178 158 157 Z" fill="#eadfc4" stroke="none" />
+    <path d="M160 300 Q185 278 190 255 Q196 231 211 216 M190 269 Q178 257 177 246 M193 256 Q207 247 219 247 M200 241 Q199 230 198 224 M207 233 Q217 222 226 221" fill="none" stroke="#718d6d" stroke-width="9" />
+    <path d="M177 246 L172 237 M219 247 L226 244 M198 224 L195 216 M226 221 L231 212" fill="none" stroke="#718d6d" stroke-width="9" />
+  </g>
+
+  </svg>

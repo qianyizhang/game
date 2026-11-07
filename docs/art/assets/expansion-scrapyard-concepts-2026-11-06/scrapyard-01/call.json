@@ -1,0 +1,92 @@
+{
+  "state": "returned",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE polished native editable static SVG sheet with SIX scrapyard future-expansion visual concepts. They are source ideas for review, no canon or established game rules. Exact canvas 1152x768, viewBox=\"0 0 1152 768\". THREE columns TWO rows, each cell 384x384, no gutters. Every object in a named top-level group with a single exact grid translate and LOCAL cell coordinates. No painted content outside these six groups. Every foreground silhouette inside x=12%..88%, y=12%..88% of its own cell. Separate subjects; never spill across cells. Transparent outside every silhouette. NO background rectangles, cast shadows or scattered debris. Compact high-oblique mechanical shapes for enemies, compact object view for workshop machinery. Forest ink #142622, shadow #30483e, steel #a5b4a2, cream #e9dbb7, copper #b97c5e; restrained stated role accents. Big asymmetric silhouettes and thick connected support. Enemies read at 30px and 20px, workshop objects at 38px and 24px. Fewer than 16 broad shapes per object; no tiny isolated lines or needless rivets.\nActual game's shared direction: expressive engraved fantasy and modeled cut planes, warm upper-left light, distinct material edges, three broad value groups. Keep quiet regions and useful openings. Clear intentional object tilt; not a generic symmetric badge. This is art only: no UI, borders, stats, text, letters, numbers, labels, logos or watermark. No lantern, mirror, anvil or existing runtime-role replacement.\n\nCell 1: group id=\"cable-winch\" transform=\"translate(0 0)\": WORKSHOP: squat drum winch with a thick wound cable passing through fitted guide rollers, asymmetrical crank; copper steel.\nCell 2: group id=\"flywheel-press\" transform=\"translate(384 0)\": WORKSHOP: broad flywheel side silhouette drives a closed press head over thick platen, visible joined arm, no anvil.\nCell 3: group id=\"condenser-tower\" transform=\"translate(768 0)\": WORKSHOP: squat twin unequal pressure tanks joined by thick curved pipe and fin cap; pale teal accent.\nCell 4: group id=\"sorting-magnet\" transform=\"translate(0 384)\": WORKSHOP: suspended horseshoe electromagnet in a low A-frame, three broad attached metal chunks; no particles.\nCell 5: group id=\"treadle-shear\" transform=\"translate(384 384)\": WORKSHOP: wide open steel cutting jaws above a low foot lever, hinged into one strong bracket; ochre accent.\nCell 6: group id=\"battery-cradle\" transform=\"translate(768 384)\": WORKSHOP: two unequal rectangular battery blocks seated in a braced charging cradle, thick cable loop; muted acid-green strip.\nNative self-contained SVG paths and simple shapes with explicit flat colors only. No image or raster data, external resources, script, animation, use, gradients, filters, masks or defs. Every named group extracts as a complete independently legible cell. Spend geometry on silhouette, material thickness and physical continuity, not ornamental noise.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1152x768",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "grid": {
+    "columns": 3,
+    "cell": [384, 384],
+    "ids": [
+      "cable-winch",
+      "flywheel-press",
+      "condenser-tower",
+      "sorting-magnet",
+      "treadle-shear",
+      "battery-cradle"
+    ]
+  },
+  "sent_at": "2026-11-06T15:31:04Z",
+  "result": {
+    "request_id": "req_49f4d4c006164be59f457daf517a3810",
+    "created": 1793979118,
+    "elapsed_seconds": 184.5,
+    "background": "transparent",
+    "usage": {
+      "input_tokens": 729,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 729
+      },
+      "output_tokens": 1108,
+      "output_tokens_details": {
+        "image_tokens": 1108,
+        "text_tokens": 0
+      },
+      "total_tokens": 1837
+    },
+    "svg_usage": {
+      "input_tokens": 2007,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 7478,
+      "reasoning_tokens": 414,
+      "total_tokens": 9485
+    },
+    "estimated_usd": 0.115679
+  },
+  "review": {
+    "cells": [
+      {
+        "id": "cable-winch",
+        "verdict": "candidate-with-detail-hold",
+        "finding": "Spool, crank and low support remain distinct at 38/24px. Fine cable grooves merge at 20px; the drum contour carries identity."
+      },
+      {
+        "id": "flywheel-press",
+        "verdict": "candidate",
+        "finding": "Open flywheel, angled joined arm and platen opening remain distinct at 38/24px; a workshop machine concept, no gameplay function."
+      },
+      {
+        "id": "condenser-tower",
+        "verdict": "candidate",
+        "finding": "Unequal vessels joined by broad pipe and low cradle have a clear two-height silhouette at 24px."
+      },
+      {
+        "id": "sorting-magnet",
+        "verdict": "candidate-with-contact-hold",
+        "finding": "Low frame and suspended horseshoe remain clear. Chunks beneath imply magnetic suspension; literal contact/physics is unreviewed, no game behavior claimed."
+      },
+      {
+        "id": "treadle-shear",
+        "verdict": "candidate",
+        "finding": "Wide jaw opening, common hinge and connected low pedal keep an asymmetric readable outline at 24px."
+      },
+      {
+        "id": "battery-cradle",
+        "verdict": "candidate-with-detail-hold",
+        "finding": "Two unequal blocks and low brace read at 24px. Cable arch thins at 20px; simplify if later adopted."
+      }
+    ]
+  }
+}

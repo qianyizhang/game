@@ -1,0 +1,118 @@
+{
+  "format": "card",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed study sheet, exactly 1440 by 672, viewBox=\"0 0 1440 672\". 3 columns by 2 rows, cells exactly 480 by 336, no gutters. Row-major order of named subjects below. Each subject MUST be an individual top-level <g id=\"SUBJECT-ID\" transform=\"translate(CELL-X CELL-Y)\"> using LOCAL coordinates; every group owns its own full-cell dark background rectangle. NO cross-cell content. If there are five subjects, sixth bottom-right cell stays empty dark background in a group id=\"unused\". Keep all subject geometry at least 30 units from cell edges, major silhouette occupies 65-80% of cell. All paint definitions must be local to the group or explicit flat fills. Do not use a shared sheet-wide backdrop.\n\nThese are FUTURE EXPANSION ART CONCEPTS for later review, not canonical history or active content. This is an engraved fantasy illustration set: confident irregular contours, expressive asymmetric gestures, three broad value groups, broad sculptural material planes before detail, sparse form-following engraving, no repeated tiny decoration. Connected joinery and credible support. Upper-left light, quiet background #10232c. Ink #10232c, shadow #34464b, worn ivory #ead7b5, muted bronze #b68d62, smoky steel #95a6aa. Emberwake adds moss #7c987a, saltglass #75a99f, restrained cinder #ca7658. Night Passage patron accents: Aster warm yellow #dfc777; Neris aqua #6dbfb0; Vesta coral #d78568; Isen pale ice blue #a5cbda; Nyra restrained lavender #a18cb8. Materials must look different: wood grain follows stress, leather folds, stone thickness, translucent glass has a clear rim and broad transmission planes, metal has restrained flat highlights. No plastic gloss, no golden edge on everything. Do not turn every object into a symmetrical emblem.\n\nEach scene reads as one distinct designed subject at 160x112 and 80x56, and should survive a 64px silhouette glance for props. This is illustration art only: no frame, captions, labels, text, digits, watermark, logo or UI. Static SVG paths and simple shapes only; no raster embedding, image, text, use, CSS stylesheets, scripts, animation, external resources or filters. No inaccessible gradient references. Economical construction with large quiet areas.\n\nSUBJECTS in exact row-major cell order:\nCell 1: id=\"aster-reading-desk\"; origin (0,0); Aster reading desk. An angled bronze observation desk with a single tilted slate and a fitted rotating pointer, one broad open triangular support, no readable writing and no generic pillar.\nCell 2: id=\"neris-footbath\"; origin (480,0); Neris footbath. A low crescent-shaped stone footbath with a shallow clear aqua water plane and one worn ceramic step attached to its outside edge; solid support and no fountain jet.\nCell 3: id=\"vesta-warming-bench\"; origin (960,0); Vesta warming bench. A broad low basalt bench with a copper heat plate inset in the back and one recessed coal drawer beneath the seat; connected heavy legs, quiet coral glow, no throne.\nCell 4: id=\"isen-resting-cradle\"; origin (0,336); Isen resting cradle. A low asymmetrical pale stone cradle supporting one folded blue wool blanket, deep shadow under its curved bridge and sparse frost at the far edge; no humanoid.\nCell 5: id=\"nyra-curtain-frame\"; origin (480,336); Nyra curtain frame. A low freestanding offset silver rail holding one heavy plum drape swept to one side, clear weighted hem and two unequal feet; intimate interior furnishing, not a gateway arch.\n\nKeep each object composition distinct, readable and structurally grounded; the five Night Passage patrons have elemental/material affinities but these objects do not claim established lore or gameplay effects.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "response": {
+    "created": 1793977539,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1440x672",
+    "svg_usage": {
+      "input_tokens": 2285,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 10898,
+      "reasoning_tokens": 290,
+      "total_tokens": 13183
+    },
+    "usage": {
+      "input_tokens": 909,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 909
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1693
+    },
+    "request_id": "req_2bae76ee5ff547a2b52e02152d42a753",
+    "http_status": 200,
+    "elapsed_seconds": 247.898,
+    "started_utc": "2026-11-06T15:04:55.015204+00:00"
+  },
+  "estimated_usd": 0.141615,
+  "original": {
+    "file": "sheet.svg",
+    "sha256": "cd114a625da239164b637dba6793d41d5618233195979b813c42270713fd198a"
+  },
+  "outputs": [
+    {
+      "id": "aster-reading-desk",
+      "name": "Aster reading desk",
+      "sha256": "b2e7ee5a7d291a8ae3e2ae28898f9d12dece715180cb605e568af3b6b4022556",
+      "verdict": "candidate",
+      "note": "Angled slate, fitted rotating pointer and open triangular support read as a working desk; connected bronze base and restrained light separate large planes."
+    },
+    {
+      "id": "neris-footbath",
+      "name": "Neris footbath",
+      "sha256": "83ac8c1d8960b957ed891ecea442a3cd5d657e649d7d79191ec5f27a79d9a590",
+      "verdict": "candidate-with-caveat",
+      "note": "Crescent basin, attached step and shallow aqua surface are clear. The stone-like mosaic exterior is stronger than the requested glazed ceramic material; no fluid simulation is implied."
+    },
+    {
+      "id": "vesta-warming-bench",
+      "name": "Vesta warming bench",
+      "sha256": "8d52b34e22252a6f7911e2a4875bd8b2e7de2af5cb62ebf141e4654a13ca4072",
+      "verdict": "candidate",
+      "note": "Heavy seat, supported legs, copper back plate and recessed coal drawer create a readable low warming bench, distinct from arena furnace monuments."
+    },
+    {
+      "id": "isen-resting-cradle",
+      "name": "Isen resting cradle",
+      "sha256": "768ead008a1b1de972d5900c5ca60f186a6cb397e2eb1caab861cc40897c4240",
+      "verdict": "candidate",
+      "note": "Curved stone support, open arch beneath and folded blue wool give a calm intimate prop. Small frost and fringe recede naturally at compact size."
+    },
+    {
+      "id": "nyra-curtain-frame",
+      "name": "Nyra curtain frame",
+      "sha256": "7bbf9b95d443ffa159fc082014a0d133289f61896589fa8de6d18a7146d3c925",
+      "verdict": "candidate",
+      "note": "Offset rail, weighted plum drape, supported feet and visible folds read as cloth furniture. This resolves plum/cloth identity more clearly than the earlier rigid screen study; both originals remain retained."
+    }
+  ],
+  "review_context": {
+    "actual_game_ui": "Future source props without stable runtime placement or collision contract.",
+    "aesthetic_acceptance": "Optional candidates, one material caveat; user acceptance pending. No reroll."
+  },
+  "qa": {
+    "svg_checked": 6,
+    "source_original_and_extraction_hashes_verified": true,
+    "contact": {
+      "initial_bytes": 305783,
+      "optimized_bytes": 302444,
+      "retained_bytes": 302444,
+      "pixel_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "mode": "RGBA",
+      "color_metadata_equal": true,
+      "sha256": "e0cf350baf4bd41c6247241152ac4937fc44d16137e02aa55a6f819348e2720c",
+      "file": "contact.png"
+    },
+    "crop_pixel_comparison": {
+      "exact_cells": 1,
+      "total_cells": 5,
+      "max_channel_delta": 4
+    },
+    "native_compact_author_review": 5
+  }
+}

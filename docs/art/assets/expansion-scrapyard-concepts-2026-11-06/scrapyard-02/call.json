@@ -1,0 +1,93 @@
+{
+  "state": "returned",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE polished native editable static SVG sheet with SIX scrapyard future-expansion visual concepts. They are source ideas for review, no canon or established game rules. Exact canvas 1152x768, viewBox=\"0 0 1152 768\". THREE columns TWO rows, each cell 384x384, no gutters. Every object in a named top-level group with a single exact grid translate and LOCAL cell coordinates. No painted content outside these six groups. Every foreground silhouette inside x=12%..88%, y=12%..88% of its own cell. Separate subjects; never spill across cells. Transparent outside every silhouette. NO background rectangles, cast shadows or scattered debris. Compact high-oblique mechanical shapes for enemies, compact object view for workshop machinery. Forest ink #142622, shadow #30483e, steel #a5b4a2, cream #e9dbb7, copper #b97c5e; restrained stated role accents. Big asymmetric silhouettes and thick connected support. Enemies read at 30px and 20px, workshop objects at 38px and 24px. Fewer than 16 broad shapes per object; no tiny isolated lines or needless rivets.\nActual game's shared direction: expressive engraved fantasy and modeled cut planes, warm upper-left light, distinct material edges, three broad value groups. Keep quiet regions and useful openings. Clear intentional object tilt; not a generic symmetric badge. This is art only: no UI, borders, stats, text, letters, numbers, labels, logos or watermark. No lantern, mirror, anvil or existing runtime-role replacement.\n\nCell 1: group id=\"sawback-crawler\" transform=\"translate(0 0)\": ENEMY: broad low beetle-like tracked machine, one thick serrated steel back arch, two visible short tread feet; rust dominant, no human hood.\nCell 2: group id=\"bellows-leaper\" transform=\"translate(384 0)\": ENEMY: compact bent mechanical spring legs carry a wedge leather bellows body, large negative space beneath lifted front, coral dominant.\nCell 3: group id=\"coil-stalker\" transform=\"translate(768 0)\": ENEMY: narrow leaning steel torso with a single heavy bent coil at its back, two stout unequal connected legs, pale teal dominant.\nCell 4: group id=\"bucket-shield\" transform=\"translate(0 384)\": ENEMY: heavy inverted bucket helmet integrated into broad asymmetrical shield torso and two squat feet, ivory/ochre dominant, no brute shoulder copy.\nCell 5: group id=\"wheel-impeller\" transform=\"translate(384 384)\": ENEMY: a single thick tilted wheel with two fitted stabilizer feet and crescent guard, plum body, pale steel rim, no detached spikes.\nCell 6: group id=\"clamp-crab\" transform=\"translate(768 384)\": ENEMY: squat crab-shaped salvage machine, two unequal joined clamp forearms and four short load-bearing feet, sage/copper planes.\nNative self-contained SVG paths and simple shapes with explicit flat colors only. No image or raster data, external resources, script, animation, use, gradients, filters, masks or defs. Every named group extracts as a complete independently legible cell. Spend geometry on silhouette, material thickness and physical continuity, not ornamental noise.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1152x768",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "grid": {
+    "columns": 3,
+    "cell": [384, 384],
+    "ids": [
+      "sawback-crawler",
+      "bellows-leaper",
+      "coil-stalker",
+      "bucket-shield",
+      "wheel-impeller",
+      "clamp-crab"
+    ]
+  },
+  "sent_at": "2026-11-06T15:38:35Z",
+  "result": {
+    "created": 1793979569,
+    "background": "transparent",
+    "usage": {
+      "input_tokens": 757,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 757
+      },
+      "output_tokens": 1108,
+      "output_tokens_details": {
+        "image_tokens": 1108,
+        "text_tokens": 0
+      },
+      "total_tokens": 1865
+    },
+    "svg_usage": {
+      "input_tokens": 2035,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 8284,
+      "reasoning_tokens": 447,
+      "total_tokens": 10319
+    },
+    "request_id": "req_36e22d7913d24d16882dbdc210862ba3",
+    "elapsed_seconds": 202.91,
+    "estimated_usd": 0.123935
+  },
+  "review": {
+    "family_hold": "These enemy studies skew toward side/three-quarter profiles rather than the current high-oblique horde view. They are silhouette proposals only; camera/fit and actual 20px crowd reading need future game-owned review.",
+    "cells": [
+      {
+        "id": "sawback-crawler",
+        "verdict": "candidate",
+        "finding": "Serrated back arch, low rust body and short treads retain a distinct horizontal contour at 30/20px."
+      },
+      {
+        "id": "bellows-leaper",
+        "verdict": "candidate-with-detail-hold",
+        "finding": "Coral diagonal body and two separated spring feet read as a lean. Fine spring gaps weaken at 20px; keep the broad body gesture as the useful direction."
+      },
+      {
+        "id": "coil-stalker",
+        "verdict": "hold-material",
+        "finding": "Narrow lean and rear copper mass distinguish the silhouette. The thick coil reads as stacked soft curls rather than a continuous steel helix; repair material/continuity before adoption."
+      },
+      {
+        "id": "bucket-shield",
+        "verdict": "candidate",
+        "finding": "Tall pale helmet, broad angular shield and unequal short feet are distinct at 30/20px. Shield is a visual idea, no blocking rule."
+      },
+      {
+        "id": "wheel-impeller",
+        "verdict": "candidate",
+        "finding": "Open tall rim, crescent guard and low support feet separate the wheel from other bodies at 30/20px. Broad blade openings survive reduction."
+      },
+      {
+        "id": "clamp-crab",
+        "verdict": "candidate",
+        "finding": "Unequal raised pincers join a squat body with four connected feet. Large clamp openings and wide contour remain clear at 20px."
+      }
+    ]
+  }
+}

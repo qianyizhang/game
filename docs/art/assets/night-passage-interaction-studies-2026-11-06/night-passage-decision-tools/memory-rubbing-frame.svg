@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="memory-rubbing-frame">
+    <rect width="480" height="336" fill="#10232c"/>
+    <ellipse cx="249" cy="281" rx="181" ry="16" fill="#142a32"/>
+    <g id="memory-open-lid">
+      <path d="M68 191 L48 74 Q44 59 64 54 L314 35 Q337 33 341 52 L358 168 L330 194Z" fill="#493e34"/>
+      <path d="M48 74 Q45 59 64 54 L314 35 Q328 33 336 42 L80 67 L73 83 L91 195 L68 191Z" fill="#b68d62"/>
+      <path d="M60 74 L78 66 L99 181 L79 188Z" fill="#846044"/>
+      <path d="M78 67 L323 44 L341 165 L99 190Z" fill="#76563e"/>
+      <path d="M96 80 L308 59 L322 150 L113 174Z" fill="#493e34"/>
+      <path d="M99 81 L308 59 L311 76 L105 100Z" fill="#3c3731"/>
+      <path d="M105 100 L311 76 L322 150 L113 174Z" fill="#604a39"/>
+      <path d="M112 116 Q160 116 191 92 Q215 75 259 76 M115 142 Q167 134 192 113 Q221 90 310 91 M121 160 Q173 151 209 127 Q249 105 312 110 M158 163 Q199 148 223 134 Q264 118 315 126 M123 104 Q156 104 178 90" fill="none" stroke="#493e34" stroke-width="4" stroke-linecap="round"/>
+      <path d="M82 71 L319 48 M100 182 L330 157" fill="none" stroke="#bc9369" stroke-width="2"/>
+      <path d="M322 48 L337 46 L354 168 L340 172Z" fill="#604a39"/>
+    </g>
+    <g id="memory-tablet-bed">
+      <path d="M81 189 L329 157 L428 210 L428 240 Q420 253 399 259 L217 297 Q204 299 192 292 L79 235Z" fill="#493e34"/>
+      <path d="M81 189 L329 157 L428 210 L211 267Z" fill="#846044"/>
+      <path d="M107 192 L326 169 L398 208 L212 248Z" fill="#302f2b"/>
+      <path d="M211 267 L428 210 L428 240 Q420 253 399 259 L217 297 L207 292Z" fill="#604a39"/>
+      <path d="M81 189 L211 267 L207 292 L79 235Z" fill="#76563e"/>
+      <path d="M96 205 L199 266 M224 275 Q306 259 403 230 M221 288 Q300 272 361 257 M103 230 L184 275" fill="none" stroke="#493e34" stroke-width="3" stroke-linecap="round"/>
+      <path d="M92 190 L211 258 L415 208" fill="none" stroke="#b68d62" stroke-width="3" stroke-linecap="round"/>
+      <path d="M133 195 L322 173 Q333 171 343 179 L391 207 L389 218 L224 254 Q216 256 209 252 L133 208Z" fill="#bca47d"/>
+      <path d="M133 195 L322 173 Q333 171 343 179 L391 207 Q394 210 385 213 L223 245 Q217 247 210 243 L136 203Z" fill="#ead7b5"/>
+      <path d="M149 198 L322 180 L369 204 L222 236Z" fill="#dfcba4"/>
+      <path d="M141 202 L214 244 Q219 248 227 245 L382 215" fill="none" stroke="#f2e3c8" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="memory-hinge-and-roller">
+      <path d="M72 176 L91 173 L101 230 L84 234 L71 221Z" fill="#876d48"/>
+      <path d="M73 176 L90 174 L94 192 L76 196Z" fill="#dfc18a"/>
+      <ellipse cx="79" cy="201" rx="10" ry="14" fill="#604d38"/>
+      <ellipse cx="77" cy="199" rx="7" ry="11" fill="#b68d62"/>
+      <path d="M137 210 L346 163 Q362 161 367 174 Q372 189 355 196 L153 244Z" fill="#876d48"/>
+      <path d="M137 210 L346 163 Q356 161 362 170 L150 222Z" fill="#dfc18a"/>
+      <path d="M150 222 L362 170 L365 181 L156 234Z" fill="#b68d62"/>
+      <path d="M161 229 L353 183" fill="none" stroke="#caa574" stroke-width="3" stroke-linecap="round"/>
+      <path d="M123 234 L123 219 Q124 202 137 198 Q152 196 161 214 L168 244 L148 250 L143 225 Q142 218 136 222 L136 245Z" fill="#876d48"/>
+      <path d="M123 218 Q122 204 137 198 Q151 196 158 209 L143 214 Q132 208 132 223 L135 243 L124 239Z" fill="#dfc18a"/>
+      <path d="M354 194 L350 167 Q347 151 359 148 Q375 146 382 162 L387 189 L373 195 L369 170 Q367 160 360 161 L366 191Z" fill="#b68d62"/>
+      <path d="M350 163 Q346 150 359 148 Q375 146 382 162 L372 165 Q366 155 359 159Z" fill="#dfc18a"/>
+    </g>
+  </g>
+
+  </svg>

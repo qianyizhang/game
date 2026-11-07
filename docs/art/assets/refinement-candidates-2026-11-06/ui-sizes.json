@@ -1,0 +1,170 @@
+[
+  {
+    "game": "battlegrounds",
+    "name": "Briar Stray",
+    "viewport": {
+      "width": 1360,
+      "height": 960
+    },
+    "rect": {
+      "x": 252,
+      "y": 1056.171875,
+      "width": 184.1875,
+      "height": 128.921875
+    }
+  },
+  {
+    "game": "battlegrounds",
+    "name": "Pack Caller",
+    "viewport": {
+      "width": 1360,
+      "height": 960
+    },
+    "rect": {
+      "x": 471.1875,
+      "y": 1417.171875,
+      "width": 184.203125,
+      "height": 128.9375
+    }
+  },
+  {
+    "game": "battlegrounds",
+    "name": "Greatwood Wolf",
+    "viewport": {
+      "width": 1360,
+      "height": 960
+    },
+    "rect": {
+      "x": 252,
+      "y": 3265.15625,
+      "width": 184.1875,
+      "height": 128.921875
+    }
+  },
+  {
+    "game": "spire",
+    "name": "Cleave",
+    "viewport": {
+      "width": 1360,
+      "height": 960
+    },
+    "rect": {
+      "x": 257,
+      "y": 738.78125,
+      "width": 138.5,
+      "height": 96.9375
+    }
+  },
+  {
+    "game": "spire",
+    "name": "Heavy Blade",
+    "viewport": {
+      "width": 1360,
+      "height": 960
+    },
+    "rect": {
+      "x": 987,
+      "y": 738.78125,
+      "width": 138.5,
+      "height": 96.9375
+    }
+  },
+  {
+    "game": "spire",
+    "name": "Iron Wave",
+    "viewport": {
+      "width": 1360,
+      "height": 960
+    },
+    "rect": {
+      "x": 1169.5,
+      "y": 738.78125,
+      "width": 138.5,
+      "height": 96.9375
+    }
+  },
+  {
+    "game": "battlegrounds",
+    "name": "Briar Stray",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "rect": {
+      "x": 29,
+      "y": 2854.515625,
+      "width": 149,
+      "height": 104.296875
+    }
+  },
+  {
+    "game": "battlegrounds",
+    "name": "Pack Caller",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "rect": {
+      "x": 29,
+      "y": 3845.484375,
+      "width": 149,
+      "height": 104.296875
+    }
+  },
+  {
+    "game": "battlegrounds",
+    "name": "Greatwood Wolf",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "rect": {
+      "x": 29,
+      "y": 8008.484375,
+      "width": 149,
+      "height": 104.296875
+    }
+  },
+  {
+    "game": "spire",
+    "name": "Cleave",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "rect": {
+      "x": 32,
+      "y": 1601.5625,
+      "width": 141,
+      "height": 98.6875
+    }
+  },
+  {
+    "game": "spire",
+    "name": "Heavy Blade",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "rect": {
+      "x": 32,
+      "y": 2309.15625,
+      "width": 141,
+      "height": 98.6875
+    }
+  },
+  {
+    "game": "spire",
+    "name": "Iron Wave",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "rect": {
+      "x": 217,
+      "y": 2309.15625,
+      "width": 141,
+      "height": 98.6875
+    }
+  }
+]

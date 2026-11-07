@@ -1,0 +1,15 @@
+{
+  "model": "gpt-image-2.6-sunburst",
+  "prompt": "Create ONE native editable SVG contact sheet. Static vector paths/simple shapes only. No raster, text, numbers, scripts, fonts, external references, defs, use elements, gradients, filters or animation. Each subject is a named top-level group with local coordinates and exactly one grid translate. No background rectangle: transparent outside subject, no labels or borders. Three broad value groups, upper-left light, connected contour, restrained engraved fantasy planes, few subordinate cuts. Each subject fills 75 percent of its cell with safe margins, no cross-cell debris. Readable at64,32,24px; avoid hairlines, use at least6-unit wide strokes. No tiny runes, spikes, glow or gratuitous ornament. Intended as optional review candidates, no invented game mechanics. SIX Cartographer relics in three columns,two rows,384x384 cells,canvas/viewBox0 0 1152 768. Groups row-major chisel translate(0 0),compass translate(384 0),moss translate(768 0),boots translate(0 384),shell translate(384 384),lens translate(768 384). Match Sunken Archive's quiet ink, old brass, moss and warm paper palette: ink #14262d, steel #889b91, cream #eadfc4, brass #b99a64, moss #718d6d, muted ember #bd775b, glass #83a89b. Natural tool identities, not game badges. Iron chisel: solid short iron shaft and broad flattened beveled cutting edge, wrapped dark grip, shown diagonally; no hammer. Ember compass: aged brass field compass in tilted three-quarter open case, one large readable needle with muted ember tip and dark face, no letters or ticks smaller than8 units. Moss vial: short clear glass vial with fitted cork, visibly separate thin glass wall, dark green liquid below shoulder and tiny single moss sprig suspended; do not look like opaque glowing potion. Reed boots: ONE dominant worn boot with fitted woven reed cuff and clear upturned toe, grounded sole, a second boot only if contour stays readable; never a leaf badge. Keeper shell: one thick curved protective segmented shell with asymmetrical edge, clear overhanging lip and dark underside, broad overlapping planes not a spiral snail or shield emblem. Surveyor lens: thick oval handheld lens in fitted brass rim and short diagonal wooden grip, one broad reflection opening showing transparent glass, distinct handle shape from chisel and silhouette from compass; no eyeball. Fewer than20 filled shapes each. Keep all subject geometry inside x=36..348 y=36..348. No shared footprints, cast shadows or decorative ground. These six existing relics currently have names/effects only; preserve differentiated actual objects.",
+  "n": 1,
+  "quality": "medium",
+  "complexity": "high",
+  "output_format": "svg",
+  "size": "1152x768",
+  "svg": {
+    "model": "gpt-6.1-terra",
+    "reasoning": {
+      "effort": "low"
+    }
+  }
+}
