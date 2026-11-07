@@ -1,5 +1,23 @@
 # One Quiet Breath — Spire story candidate
 
+## Status — 2026-11-07 integration review
+
+Canonical registration is complete; shared governance #137 and replay #142 are
+landed on main at integrated baseline `612a23431c9619749cb7a1d1ed9a44a5ee479923`.
+Both assemblies passed live/offline restart, advancement, exact downloaded-byte
+and reduced-motion checks on tree `a016f3e1639e0b1abf7b64ad00c03eb7faccef11`:
+12 replay cases and two functional guards. Captured openings do not guarantee
+exact original frame zero. Earlier pending/unresolved statements below describe
+historical source-branch states; original framing holds and cut/texture drift
+remain. No user acceptance, runtime adoption or changed game selection.
+
+The failed hosted gate `42347847647` remains preserved. A local Chrome 157 probe
+isolated a DevTools-pipe capacity failure while fulfilling the full export;
+identical bytes loaded over HTTP with tracing enabled. The narrow test repair
+streams the complete export over loopback HTTP with all assertions and guards
+intact. [Validation](validation.json) separates the original hosted Chrome 156
+failure, local diagnosis and fresh final-revision verification.
+
 **Revised ending keeps both horns in frame;the original clipped ending remains
 inspectable.** The Silent lets a guarded hand relax at a campfire,then makes a
 small look toward the climb. Candidate fiction,not accepted history,an HP effect

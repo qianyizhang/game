@@ -8839,7 +8839,7 @@
       ],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Local9.6s/32-frame derivative,not another API output. No frame omissions or interpolation. Horn crop and cut drift remain documented;shared gallery replay limitation unresolved."
+      "notes": "Local9.6s/32-frame derivative,not another API output. No frame omissions or interpolation. Horn crop and cut drift remain documented;shared gallery replay limitation unresolved. Source-era replay limit resolved by landed #142; both assemblies passed live/offline restart checks on 2026-11-07. Visual holds and source-only status remain."
     },
     {
       "id": "story-clips-20261106-spire-one-quiet-breath-chapter-2-r1",
@@ -8854,7 +8854,7 @@
       ],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Exact API original. First parent is revision history;sole actual input is prior Let Go endpoint PNG. Original clipped chapter remains. Full horns/connected support reviewed;render drift and shared replay limit remain."
+      "notes": "Exact API original. First parent is revision history;sole actual input is prior Let Go endpoint PNG. Original clipped chapter remains. Full horns/connected support reviewed;render drift and shared replay limit remain. Source-era replay limit resolved by landed #142; both assemblies passed live/offline restart checks on 2026-11-07. Visual holds and source-only status remain."
     },
     {
       "id": "story-clips-20261106-spire-one-quiet-breath-assembly-r1",
@@ -8869,7 +8869,7 @@
       ],
       "runtimeFile": null,
       "runtimeDigest": null,
-      "notes": "Distinct local9.6s/32-frame derivative;exact respective source pixels/timing. Preferred review delivery only,no game selection. Old assembly/crop evidence retained;shared nonlooping replay still unresolved."
+      "notes": "Distinct local9.6s/32-frame derivative;exact respective source pixels/timing. Preferred review delivery only,no game selection. Old assembly/crop evidence retained;shared nonlooping replay still unresolved. Source-era replay limit resolved by landed #142; both assemblies passed live/offline restart checks on 2026-11-07. Visual holds and source-only status remain."
     },
     {
       "id": "story-clips-20261106-hearth-one-seat-more-chapter-1",

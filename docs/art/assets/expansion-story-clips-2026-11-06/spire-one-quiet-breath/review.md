@@ -1,5 +1,14 @@
 # One Quiet Breath — revised candidate arc
 
+## Status — 2026-11-07 integration review
+
+Registration is complete and shared replay #142 is landed. Both retained
+assemblies passed live/offline restart checks. Pending/unresolved statements
+below are historical source-branch observations. See the [current integration
+status](README.md#status--2026-11-07-integration-review) and [validation](validation.json)
+for exact trees and the preserved transport failure. Visual holds remain;
+no user acceptance, runtime adoption or changed game selection.
+
 Two native GIF chapters form a coherent small vignette: a supported hand opens
 and posture settles,then the mask makes a small turn toward the climbing path.
 The character remains seated. Breath is a narrative interpretation of posture

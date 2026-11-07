@@ -28,5 +28,14 @@
     "proof": "4 live/offline cases passed: completed once-playing story, Stop, fresh-URL Play, compositor opening pixel-identical to initial opening and different from ending, then visible advancement. Original playback/download SHA-256 exact; old object URL revoked; reduced motion interrupts and blocks playback; no page errors or offline network requests.",
     "checks": "Resolved shared baseline passed full maintenance (208 tooling, 81 DCC, 19 Python tests) and 19 affected browser journeys at normal limits. This story combination passed history verification and actual native replay checks. No shared implementation, artwork, inputs, library records, defaults or selections changed in this evidence follow-up.",
     "limits": "Compatibility tested at these exact heads only. Shared implementation is not landed or included in this candidate branch; its historical independent-code replay failure remains valid. Draft source study; independent library additions require serial landing reconciliation. No pause/seek, runtime adoption or art acceptance."
+  },
+  "integration_status_2026_11_07": {
+    "baseline": "612a23431c9619749cb7a1d1ed9a44a5ee479923",
+    "state": "Canonical registration is complete; shared governance #137 and native replay #142 are landed. Earlier pending/unresolved statements are retained source-era observations. No user acceptance, runtime adoption or selection.",
+    "verified_story_tree": "a016f3e1639e0b1abf7b64ad00c03eb7faccef11",
+    "replay": "12 live/offline cases and two functional guards passed, including both retained assemblies. Completed once-playing playback, fresh-URL restart, visible advancement, exact download bytes and reduced motion. Captured opening pixels are not guaranteed original frame zero.",
+    "original_failed_gate": 42347847647,
+    "diagnosis": "Original hosted Chrome 156 failed during full-export route fulfillment. Local Chrome 157 reproduced DevTools-pipe capacity 104857600 bytes; unchanged HTML is 78938761 bytes and base64 body is 105251684 bytes. Identical bytes loaded over HTTP with tracing enabled. Hosted diagnostics did not expose that error.",
+    "repair": "Stream the full unchanged export over loopback HTTP instead of one base64 protocol message. Preserve every existing assertion, direct-file coverage, tracing and normal execution guards. Fresh final-head results remain separate from the original failure."
   }
 }
