@@ -5,6 +5,7 @@ import { historyHtml } from './history-page.ts';
 import {
   historyDocument,
   historyState,
+  historyPreview,
   readHistory,
   removalPlan,
   useRevision,
@@ -37,9 +38,25 @@ export function artHistoryPlugin(root = repositoryRoot): Plugin {
             if (url.pathname === '/__art/') {
               response.setHeader('content-type', 'text/html');
               response.end(historyHtml());
-            } else if (url.pathname === '/__art/api/state')
-              json(historyState(root, true, await currentArtwork()));
-            else if (url.pathname === '/__art/api/removal')
+            } else if (url.pathname === '/__art/api/state') json(historyState(root));
+            else if (url.pathname === '/__art/api/artwork') {
+              const version = url.searchParams.get('version') ?? '';
+              const revision = url.searchParams.get('revision');
+              const asset = url.searchParams.get('asset');
+              if (revision !== null && asset === null)
+                json(historyPreview(root, version, revision));
+              else if (asset !== null && revision === null) {
+                const state = readHistory(root);
+                if (state.version !== version)
+                  throw new Error('History changed. Reload before viewing artwork.');
+                if (!state.history.assets.some((item) => item.id === asset))
+                  throw new Error('Unknown asset');
+                const current = await currentArtwork(asset);
+                if (readHistory(root).version !== version)
+                  throw new Error('History changed. Reload before viewing artwork.');
+                json({ kind: 'image', url: current[asset], animated: false });
+              } else throw new Error('Choose one asset or revision');
+            } else if (url.pathname === '/__art/api/removal')
               json(
                 url.searchParams.get('kind') === 'attempt'
                   ? attemptRemovalPlan(root, url.searchParams.get('revision') ?? '')

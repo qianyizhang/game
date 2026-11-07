@@ -1,0 +1,266 @@
+{
+  "method": "Retain exact API SVG bytes as deterministic gzip; trim only trailing line whitespace in review sheets and extracted cells. No geometry, paint or title changes. Sharp decoded RGBA equality checked for all 29 SVGs.",
+  "rows": [
+    {
+      "family": "blindside-materials",
+      "file": "sheet.svg",
+      "before_sha256": "c12541cc16e5d34751bbd6927f8617e038b6d09bbd878ce510bcd1b88411dd10",
+      "after_sha256": "54d04aa757410804ea9cfa67fa3fd6ee9744fe05b9c4bc115c3364ec00cf1617",
+      "before_bytes": 6238,
+      "after_bytes": 6202,
+      "pixels_equal": true
+    },
+    {
+      "family": "blindside-materials",
+      "file": "lantern.svg",
+      "before_sha256": "71c73770de34c7efccb94b9aabadf2a63ee74e15a7c9f1c5407cc75891551f6e",
+      "after_sha256": "772c31acc8084b5158d0973b5650a026daa3e722b913ad101a83de9225928d22",
+      "before_bytes": 2832,
+      "after_bytes": 2812,
+      "pixels_equal": true
+    },
+    {
+      "family": "blindside-materials",
+      "file": "mirror.svg",
+      "before_sha256": "9a0e9e5f15a6fc08dc3d3f8dd630f49c448e9a4300c0859316f805f113e3bc14",
+      "after_sha256": "79b7188159f646e206dd0bdf6e3db5e7f82fc933ab41ded10ecd9d2203d6c9ad",
+      "before_bytes": 1260,
+      "after_bytes": 1252,
+      "pixels_equal": true
+    },
+    {
+      "family": "blindside-materials",
+      "file": "anvil.svg",
+      "before_sha256": "135008108b2e60a89784e7c22a313b572f0a1e5b309b462aec4423b8622021b9",
+      "after_sha256": "088db94a3c2eef796662933d8097099a57b4e5307b0b5f7fcab4d078ec476981",
+      "before_bytes": 2395,
+      "after_bytes": 2387,
+      "pixels_equal": true
+    },
+    {
+      "family": "cartographer-relics",
+      "file": "sheet.svg",
+      "before_sha256": "eb0a657fee2bf5887d19d30da90bdc5ae7f1aa87c5fab8d111da480457151d59",
+      "after_sha256": "eb0a657fee2bf5887d19d30da90bdc5ae7f1aa87c5fab8d111da480457151d59",
+      "before_bytes": 9785,
+      "after_bytes": 9785,
+      "pixels_equal": true
+    },
+    {
+      "family": "cartographer-relics",
+      "file": "chisel.svg",
+      "before_sha256": "9cfbe95cd83786fb250fa0443fb01e77d3974188eb03dd680d34842de87c7f9b",
+      "after_sha256": "9cfbe95cd83786fb250fa0443fb01e77d3974188eb03dd680d34842de87c7f9b",
+      "before_bytes": 1148,
+      "after_bytes": 1148,
+      "pixels_equal": true
+    },
+    {
+      "family": "cartographer-relics",
+      "file": "compass.svg",
+      "before_sha256": "e12c3852e09daafc954a710f653126f333aee6400a71393a945424950ed86d9d",
+      "after_sha256": "e12c3852e09daafc954a710f653126f333aee6400a71393a945424950ed86d9d",
+      "before_bytes": 1617,
+      "after_bytes": 1617,
+      "pixels_equal": true
+    },
+    {
+      "family": "cartographer-relics",
+      "file": "moss.svg",
+      "before_sha256": "a6f6d7d480480508c3103372d79feae93e830003215d67b47b0414de78df3b6a",
+      "after_sha256": "a6f6d7d480480508c3103372d79feae93e830003215d67b47b0414de78df3b6a",
+      "before_bytes": 1637,
+      "after_bytes": 1637,
+      "pixels_equal": true
+    },
+    {
+      "family": "cartographer-relics",
+      "file": "boots.svg",
+      "before_sha256": "92eff1014355c09d9590eae87415ed32808472a5eb50ea160b7ec29b877d9ce3",
+      "after_sha256": "92eff1014355c09d9590eae87415ed32808472a5eb50ea160b7ec29b877d9ce3",
+      "before_bytes": 2147,
+      "after_bytes": 2147,
+      "pixels_equal": true
+    },
+    {
+      "family": "cartographer-relics",
+      "file": "shell.svg",
+      "before_sha256": "2347d6c7b9f784e895e1cb07efef9878cf467636797bb6bec20504540cf8cd84",
+      "after_sha256": "2347d6c7b9f784e895e1cb07efef9878cf467636797bb6bec20504540cf8cd84",
+      "before_bytes": 2188,
+      "after_bytes": 2188,
+      "pixels_equal": true
+    },
+    {
+      "family": "cartographer-relics",
+      "file": "lens.svg",
+      "before_sha256": "9bf83a36813133871aae96be80821c8f546e45f2f890362603a60998e6111172",
+      "after_sha256": "9bf83a36813133871aae96be80821c8f546e45f2f890362603a60998e6111172",
+      "before_bytes": 1633,
+      "after_bytes": 1633,
+      "pixels_equal": true
+    },
+    {
+      "family": "emberwake-backpack",
+      "file": "sheet.svg",
+      "before_sha256": "a9cd8979afd9d956686d9afebad6b7d9dfbc6303a123c34a6914832277b55d65",
+      "after_sha256": "a9cd8979afd9d956686d9afebad6b7d9dfbc6303a123c34a6914832277b55d65",
+      "before_bytes": 4039,
+      "after_bytes": 4039,
+      "pixels_equal": true
+    },
+    {
+      "family": "emberwake-backpack",
+      "file": "weapon.svg",
+      "before_sha256": "8339895407cc40805c150bac05bf28e830cc739927c3e6b43b25b1726cef738c",
+      "after_sha256": "8339895407cc40805c150bac05bf28e830cc739927c3e6b43b25b1726cef738c",
+      "before_bytes": 1130,
+      "after_bytes": 1130,
+      "pixels_equal": true
+    },
+    {
+      "family": "emberwake-backpack",
+      "file": "armor.svg",
+      "before_sha256": "cc58cdff175750f732cd562a1f20995d4185b2f5d5e12718f85f086bd6a350cf",
+      "after_sha256": "cc58cdff175750f732cd562a1f20995d4185b2f5d5e12718f85f086bd6a350cf",
+      "before_bytes": 1865,
+      "after_bytes": 1865,
+      "pixels_equal": true
+    },
+    {
+      "family": "emberwake-backpack",
+      "file": "charm.svg",
+      "before_sha256": "b0078fba8e35b3b10f8c5d8a8977a2045b3c4e9d02e6ad3652e31ae49fe4ca30",
+      "after_sha256": "b0078fba8e35b3b10f8c5d8a8977a2045b3c4e9d02e6ad3652e31ae49fe4ca30",
+      "before_bytes": 1245,
+      "after_bytes": 1245,
+      "pixels_equal": true
+    },
+    {
+      "family": "hearth-wolves",
+      "file": "sheet.svg",
+      "before_sha256": "7ae3c0f87b56ae9c07f34eb0a49df75307522d2dd49145cc53f882f758d7c5c7",
+      "after_sha256": "28e0aa054189dfbadf945e78eb8351d3c45c95cd7d741ff7903d53954320ab89",
+      "before_bytes": 14375,
+      "after_bytes": 14299,
+      "pixels_equal": true
+    },
+    {
+      "family": "hearth-wolves",
+      "file": "stray-alert.svg",
+      "before_sha256": "3253c37437af2d6e97c8b41dba165d56e0a59dbda2dc2d377b630d26ee36c5cf",
+      "after_sha256": "382e29329dc8ce5f80c629780c6264f6d0e0643465010e599ac98a6823d75a3e",
+      "before_bytes": 4246,
+      "after_bytes": 4226,
+      "pixels_equal": true
+    },
+    {
+      "family": "hearth-wolves",
+      "file": "leader-calling.svg",
+      "before_sha256": "b4b70ad6715d4c9cef9cd813fb2b8a974a1622b4cba194211fe23340b60ef45f",
+      "after_sha256": "a5df7976273f1305bdbe5e1658c8860abaa341041660eaba6827a7c57073662b",
+      "before_bytes": 4882,
+      "after_bytes": 4850,
+      "pixels_equal": true
+    },
+    {
+      "family": "hearth-wolves",
+      "file": "wolf-guardian.svg",
+      "before_sha256": "a91ee9a9734fb43e8a2a2d7ec2b531b74ca9dcc1b22518f9fa52b5f62c8d1218",
+      "after_sha256": "4adb1506f7fbde074930fd10ecc96f81f1528ee89caf1efa6319add6b5e96ce6",
+      "before_bytes": 5470,
+      "after_bytes": 5446,
+      "pixels_equal": true
+    },
+    {
+      "family": "spire-heavyblade-revision",
+      "file": "sheet.svg",
+      "before_sha256": "e761e5011f3c384144601fcd0a898bf0d3f6ee7f552e1d6c04a9e16d0a5a7f4e",
+      "after_sha256": "86722b99a1bf55830a3aa3bfad6b3e9782fb010b31d4109443cd85731703cca3",
+      "before_bytes": 8981,
+      "after_bytes": 8929,
+      "pixels_equal": true
+    },
+    {
+      "family": "spire-heavyblade-revision",
+      "file": "heavyBlade-base-refined.svg",
+      "before_sha256": "8886f2c190e1c435db88d9b02490b804ac56b8b5c301dde25ca5b1bb5d0b3a75",
+      "after_sha256": "0639c33d00a9b1bf420b139346908cccc1578bb48e21924041f0c2410174fcc8",
+      "before_bytes": 4372,
+      "after_bytes": 4348,
+      "pixels_equal": true
+    },
+    {
+      "family": "spire-heavyblade-revision",
+      "file": "heavyBlade-upgraded-refined.svg",
+      "before_sha256": "b78f15a62d08479f2f353042372dfe5c5b94697112ba8afa69070c94be9810de",
+      "after_sha256": "d7b101b5235994be4187291313b7e312ebe42bbfdaaec76696726553d6fa6b70",
+      "before_bytes": 4730,
+      "after_bytes": 4702,
+      "pixels_equal": true
+    },
+    {
+      "family": "spire-swords",
+      "file": "sheet.svg",
+      "before_sha256": "db462bb8136e55bea40bd93f45e467e93d5d377a9bb4cd296f9463e9617f30bc",
+      "after_sha256": "db462bb8136e55bea40bd93f45e467e93d5d377a9bb4cd296f9463e9617f30bc",
+      "before_bytes": 17882,
+      "after_bytes": 17882,
+      "pixels_equal": true
+    },
+    {
+      "family": "spire-swords",
+      "file": "cleave-base.svg",
+      "before_sha256": "6d19ff2504de1f12905e293d9f18eadbe3e2849774e1affb05470fb03295900a",
+      "after_sha256": "6d19ff2504de1f12905e293d9f18eadbe3e2849774e1affb05470fb03295900a",
+      "before_bytes": 3222,
+      "after_bytes": 3222,
+      "pixels_equal": true
+    },
+    {
+      "family": "spire-swords",
+      "file": "heavyBlade-base.svg",
+      "before_sha256": "294b6212d1229c17eb401e6f3e2765d56046f960d8e3ce3509ba49bbc92ca521",
+      "after_sha256": "294b6212d1229c17eb401e6f3e2765d56046f960d8e3ce3509ba49bbc92ca521",
+      "before_bytes": 3598,
+      "after_bytes": 3598,
+      "pixels_equal": true
+    },
+    {
+      "family": "spire-swords",
+      "file": "ironWave-base.svg",
+      "before_sha256": "fe86a82fe55e6c88d972b26f25aec490ca559695aeef3697fb891a5a1c292e27",
+      "after_sha256": "fe86a82fe55e6c88d972b26f25aec490ca559695aeef3697fb891a5a1c292e27",
+      "before_bytes": 2496,
+      "after_bytes": 2496,
+      "pixels_equal": true
+    },
+    {
+      "family": "spire-swords",
+      "file": "cleave-upgraded.svg",
+      "before_sha256": "8dbccfde145e309dc5acb53656d8314d4ef8fa722704f703f426ce1aa258151c",
+      "after_sha256": "8dbccfde145e309dc5acb53656d8314d4ef8fa722704f703f426ce1aa258151c",
+      "before_bytes": 3084,
+      "after_bytes": 3084,
+      "pixels_equal": true
+    },
+    {
+      "family": "spire-swords",
+      "file": "heavyBlade-upgraded.svg",
+      "before_sha256": "89b9bafe2ce5a0bd9dc3cb8ed3e052cc906c40d76a7ec5bfada8903b433e834e",
+      "after_sha256": "89b9bafe2ce5a0bd9dc3cb8ed3e052cc906c40d76a7ec5bfada8903b433e834e",
+      "before_bytes": 3257,
+      "after_bytes": 3257,
+      "pixels_equal": true
+    },
+    {
+      "family": "spire-swords",
+      "file": "ironWave-upgraded.svg",
+      "before_sha256": "f28b15846be3f489e6f05359ce26a9b85ab58c6c89f33c59054917cf65e86d8f",
+      "after_sha256": "f28b15846be3f489e6f05359ce26a9b85ab58c6c89f33c59054917cf65e86d8f",
+      "before_bytes": 2827,
+      "after_bytes": 2827,
+      "pixels_equal": true
+    }
+  ]
+}

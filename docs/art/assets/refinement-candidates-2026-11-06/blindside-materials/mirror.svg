@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 392" width="560" height="392" role="img" aria-label="mirror optional candidate"><g id="mirror">
+    <rect width="560" height="392" fill="#f6e8c7" />
+
+    <path d="M232 311 L307 306 L303 326 Q303 340 324 348 L335 359 L327 371 Q270 384 195 371 L188 362 L194 351 Q223 345 231 334 Z" fill="#28493d" />
+    <path d="M232 314 L299 311 Q293 337 315 349 L305 358 Q277 363 247 355 L221 351 Q238 337 232 314 Z" fill="#c69b57" />
+    <path d="M195 352 Q225 342 246 347 Q234 355 223 357 Q269 368 318 356 L306 350 Q324 350 335 358 Q331 370 267 373 Q213 374 194 364 Z" fill="#c69b57" />
+
+    <g transform="rotate(27 280 174)">
+      <ellipse cx="290" cy="181" rx="115" ry="159" fill="#28493d" />
+      <ellipse cx="280" cy="173" rx="115" ry="159" fill="#c69b57" />
+      <ellipse cx="280" cy="173" rx="98" ry="142" fill="#28493d" />
+      <ellipse cx="280" cy="173" rx="91" ry="135" fill="#91aaa0" />
+      <path d="M213 161 Q216 79 270 43 L265 143 L231 195 Z" fill="#f6e8c7" />
+      <path d="M321 202 L343 132 L337 194 L304 254 Z" fill="#f6e8c7" />
+      <path d="M341 75 L329 112 L326 132 L307 162 L306 190 L297 230 L300 190 L300 159 L319 129 L321 109 L338 74 Z" fill="#28493d" />
+    </g>
+  </g>
+  </svg>
