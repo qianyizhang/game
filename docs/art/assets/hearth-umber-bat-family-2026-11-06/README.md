@@ -101,11 +101,14 @@ A lost connection would have retained the full grant with no blind retry.
 
 ## Registration and verification
 
-[Additive import](prepared-history.json) stages one actual paid attempt and three
-original/extracted revisions with exact parents and digests, no invented slot.
-Serial canonical registration remains a draft blocker; this production branch
-never modifies the shared library. Final maintenance and isolated history/gallery
-results are recorded in QA, with source-only validation limits.
+The [canonical library](../../iterations/library.json) registers one actual attempt
+and three source revisions with exact parents/digests and null asset/runtime fields.
+The redundant import was retired after exact fact comparison and consumer tracing;
+its original remains at source commit `cc52101f8b00f2ac2d5317434a6442d34c92887b`.
+Originals, requests/receipt, review PNG, previous records and selections are unchanged.
+The review PNG retains its production-time registration caption; current status is here.
+[QA](qa.json) records independent gallery/geometry/pixel checks and their limits.
+Later canonical-library additions require serial landing reconciliation.
 
 Only useful evidence is retained: one original, two actual cells, one contact
 sheet and concise shared call/QA/index records. No duplicated prompt, per-leaf
