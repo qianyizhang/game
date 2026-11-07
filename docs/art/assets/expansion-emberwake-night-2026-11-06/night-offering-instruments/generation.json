@@ -1,0 +1,118 @@
+{
+  "format": "card",
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed study sheet, exactly 1440 by 672, viewBox=\"0 0 1440 672\". 3 columns by 2 rows, cells exactly 480 by 336, no gutters. Row-major order of named subjects below. Each subject MUST be an individual top-level <g id=\"SUBJECT-ID\" transform=\"translate(CELL-X CELL-Y)\"> using LOCAL coordinates; every group owns its own full-cell dark background rectangle. NO cross-cell content. If there are five subjects, sixth bottom-right cell stays empty dark background in a group id=\"unused\". Keep all subject geometry at least 30 units from cell edges, major silhouette occupies 65-80% of cell. All paint definitions must be local to the group or explicit flat fills. Do not use a shared sheet-wide backdrop.\n\nThese are FUTURE EXPANSION ART CONCEPTS for later review, not canonical history or active content. This is an engraved fantasy illustration set: confident irregular contours, expressive asymmetric gestures, three broad value groups, broad sculptural material planes before detail, sparse form-following engraving, no repeated tiny decoration. Connected joinery and credible support. Upper-left light, quiet background #10232c. Ink #10232c, shadow #34464b, worn ivory #ead7b5, muted bronze #b68d62, smoky steel #95a6aa. Emberwake adds moss #7c987a, saltglass #75a99f, restrained cinder #ca7658. Night Passage patron accents: Aster warm yellow #dfc777; Neris aqua #6dbfb0; Vesta coral #d78568; Isen pale ice blue #a5cbda; Nyra restrained lavender #a18cb8. Materials must look different: wood grain follows stress, leather folds, stone thickness, translucent glass has a clear rim and broad transmission planes, metal has restrained flat highlights. No plastic gloss, no golden edge on everything. Do not turn every object into a symmetrical emblem.\n\nEach scene reads as one distinct designed subject at 160x112 and 80x56, and should survive a 64px silhouette glance for props. This is illustration art only: no frame, captions, labels, text, digits, watermark, logo or UI. Static SVG paths and simple shapes only; no raster embedding, image, text, use, CSS stylesheets, scripts, animation, external resources or filters. No inaccessible gradient references. Economical construction with large quiet areas.\n\nSUBJECTS in exact row-major cell order:\nCell 1: id=\"aster-tuning-fork\"; origin (0,0); Aster tuning fork. A three-pronged bronze storm tuning fork standing in a small slate socket, unequal prong heights and one fitted wire bridge, pale gold contact tips; no lightning emblem.\nCell 2: id=\"neris-tide-balance\"; origin (480,0); Neris tide balance. A low ceramic balance with unequal shell-shaped bowls joined by a curved bronze beam; a shallow transparent water meniscus sits in the larger bowl; aqua and dark ink.\nCell 3: id=\"vesta-coal-tongs\"; origin (960,0); Vesta coal tongs. A pair of heavy open black iron tongs held above a shallow glazed ember dish; visible pivot and one restrained coral coal, no brazier tower or generic flame icon.\nCell 4: id=\"isen-stillness-chime\"; origin (0,336); Isen stillness chime. Two unequal suspended blue ceramic chime slabs fitted to a low dark wood stand, one broad pale frost plane and real suspension cords; not an ice crystal or bell.\nCell 5: id=\"nyra-witness-mirror\"; origin (480,336); Nyra witness mirror. An oval smoked silver mirror tilted in a low split basalt support, one lavender reflection plane crossing an otherwise dark mirror; beveled edge and open negative space beneath; no eye emblem.\n\nKeep each object composition distinct, readable and structurally grounded; the five Night Passage patrons have elemental/material affinities but these objects do not claim established lore or gameplay effects.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "response": {
+    "created": 1793977017,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1440x672",
+    "svg_usage": {
+      "input_tokens": 2299,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 10918,
+      "reasoning_tokens": 327,
+      "total_tokens": 13217
+    },
+    "usage": {
+      "input_tokens": 923,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 923
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1707
+    },
+    "request_id": "req_516ba77763cc4ee1b760d315361c1f4a",
+    "http_status": 200,
+    "elapsed_seconds": 230.963,
+    "started_utc": "2026-11-06T14:56:12.091267+00:00"
+  },
+  "estimated_usd": 0.141913,
+  "original": {
+    "file": "sheet.svg",
+    "sha256": "c2ec2145c612ad7b391466e99c9ed0785f8e0a4bd03586e4052946182031fdca"
+  },
+  "outputs": [
+    {
+      "id": "aster-tuning-fork",
+      "name": "Aster tuning fork",
+      "sha256": "0f746302f48da94ec189459aea072a96d7af5dec6b4483e5bd050ea73bf6cfbe",
+      "verdict": "candidate",
+      "note": "Unequal bronze prongs, wire bridge and connected slate foot give a clear instrument silhouette; the wire recedes at compact size."
+    },
+    {
+      "id": "neris-tide-balance",
+      "name": "Neris tide balance",
+      "sha256": "e788da890896ad4445c5e3a3af667d73b4e2cd15f6292ba2b8c4b9a955d550cc",
+      "verdict": "candidate",
+      "note": "Unequal shell bowls, curved load-bearing beam and central pivot read as a balance rather than a wave symbol. Broad aqua meniscus keeps water distinct from the ceramic rim."
+    },
+    {
+      "id": "vesta-coal-tongs",
+      "name": "Vesta coal tongs",
+      "sha256": "80f77ec198c5c38710deb8257db3aebb1635253a025087bccaa76a5ffd0e63a2",
+      "verdict": "hold",
+      "note": "The pivot and tool contour are readable, but the coal appears supported by only the lower jaw while the other jaw misses it; suspended action is structurally ambiguous. Retain this concept on hold, no reroll or runtime suitability claimed."
+    },
+    {
+      "id": "isen-stillness-chime",
+      "name": "Isen stillness chime",
+      "sha256": "17906fa4499331afd63720117920a064cc3375ad03a7a34b11d6850078bc234d",
+      "verdict": "candidate-with-caveat",
+      "note": "Unequal ceramic slabs and suspended cords read clearly at native size. At 80px the thin cords recede, though the chime frame remains recognizable."
+    },
+    {
+      "id": "nyra-witness-mirror",
+      "name": "Nyra witness mirror",
+      "sha256": "86f34b0ac9b5513670db0515f2ec5508608481ad366aebc7f2bdea2efcacf69e",
+      "verdict": "candidate",
+      "note": "Tilted oval, dark reflection bands, thin silver bevel and split stone support distinguish a physical mirror from the existing eye mark. Quiet plum planes remain legible."
+    }
+  ],
+  "review_context": {
+    "actual_game_ui": "No supported patron-sanctum runtime content; these are 2D source concepts, not 3D prop deliveries.",
+    "aesthetic_acceptance": "Four optional candidates, one structural hold. User acceptance pending. No reroll."
+  },
+  "qa": {
+    "svg_checked": 6,
+    "source_original_and_extraction_hashes_verified": true,
+    "contact": {
+      "initial_bytes": 249369,
+      "optimized_bytes": 247124,
+      "retained_bytes": 247124,
+      "pixel_equal": true,
+      "dimensions_equal": true,
+      "alpha_equal": true,
+      "mode": "RGBA",
+      "color_metadata_equal": true,
+      "sha256": "6ab512fd68f6c4ebc351e90ec38bb2676e6159850be01ca204d383a0890186db",
+      "file": "contact.png"
+    },
+    "crop_pixel_comparison": {
+      "exact_cells": 2,
+      "total_cells": 5,
+      "max_channel_delta": 5
+    },
+    "native_compact_author_review": 5
+  }
+}
