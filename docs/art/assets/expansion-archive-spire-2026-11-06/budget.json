@@ -1,0 +1,33 @@
+{
+  "scope": "Completed first suite only; historical authorization, not a current worker or shared-pool spending grant.",
+  "historical_allocation_usd": 9,
+  "per_call_reservation_usd": 6.5,
+  "usage_estimate_usd": 0.786142,
+  "outstanding_reservations_usd": 0,
+  "outcomes": {
+    "returned": 5,
+    "failed": 0,
+    "retries": 0,
+    "unknown": 0
+  },
+  "calls": [
+    "archive/call.json",
+    "garden/call.json",
+    "forge/call.json",
+    "spire-exordium-city/call.json",
+    "spire-beyond-thresholds/call.json"
+  ],
+  "rates_per_million": {
+    "image_text_input": 5,
+    "image_input": 8,
+    "image_output": 30,
+    "author_short_input": 2,
+    "author_short_output": 10,
+    "author_long_input": 4,
+    "author_long_output": 15
+  },
+  "pricing": "https://developers.openai.com/api/docs/pricing",
+  "pricing_verified": "2026-11-06",
+  "request_wire_recipe": "UTF-8 json.dumps(request, indent=2, ensure_ascii=True), stored key order, plus final newline; each call retains the exact wire SHA-256.",
+  "cost_basis": "Calculated from returned usage at verified published standard rates; account balance/expiry and invoice unverified."
+}

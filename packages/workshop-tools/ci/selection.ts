@@ -154,7 +154,7 @@ export function browserFamilies(path: string): Family[] | undefined {
     return ['hearth'];
   if (name.startsWith('blindside') || ['workshop', 'issue37-context'].includes(name))
     return ['balatro'];
-  if (name === 'asset-history') return ['gallery', 'svg'];
+  if (['asset-history', 'asset-history-gif'].includes(name)) return ['gallery', 'svg'];
   if (name === 'asset-gallery') return ['gallery'];
   if (name === 'art-export') return ['gallery', 'svg', 'balatro', 'spire', 'hearth'];
   if (modelBrowser.has(name)) return ['models'];

@@ -1,0 +1,26 @@
+{
+  "reservation_usd": 3,
+  "calculated_bound_usd": 2.946845,
+  "status": "returned-usage-reconciled",
+  "authority": "One focused acolyte refinement call granted USD3 by coordinator; first USD3 hold already closed at USD0.142797. No automatic retries or further paid call.",
+  "components_usd": {
+    "author_full_922000_input_at_long_context_rate_2": 1.844,
+    "author_full_128000_output_at_long_context_rate_7_5": 0.96,
+    "reference_max_quality_3663_tokens_at_30": 0.10989,
+    "prompt_utf8_byte_token_bound_at_5": 0.032955
+  },
+  "sources": [
+    "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+    "https://developers.openai.com/api/reference/resources/images/methods/generate",
+    "https://developers.openai.com/api/docs/guides/image-generation"
+  ],
+  "reference": "../original.svg and ../cultist-{se,sw,ne,nw}.svg are preserved design/lineage references; text descriptions only sent. SVG generation has no raster reference input; image edits cannot output SVG. No image-conditioned continuity claimed.",
+  "external_historical_hold_usd": 7.5,
+  "unknown_outcome": "Retain full USD3, stop new paid calls and report; no automatic retries.",
+  "actual_usage_cost_usd": 0.095271,
+  "lifetime_lane_cost_usd": 0.238068,
+  "remaining_reservation_usd": 2.904729,
+  "request_in_flight": false,
+  "next_paid_call": "No further grant; proposed reservation USD3 requires coordinator allocation. Unknowns: none for this returned request. Billing/account balance not independently verified."
+}

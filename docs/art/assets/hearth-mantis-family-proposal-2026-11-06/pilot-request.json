@@ -1,0 +1,15 @@
+{
+  "model": "gpt-image-2.6-sunburst",
+  "prompt": "Create ONE native editable static SVG illustration of a Briar Mantis, a proposed Last Hearth expansion creature. One subject, NORMAL form only. This is a visual-development candidate with no canonical history or gameplay rules. Canvas and viewBox 1024x720. One top-level group id=mantis-normal, beginning with a full-canvas #172928 background rectangle. Keep the complete subject and its support inside x=64..960, y=54..666. No panels, labels, text, card borders, stats, logos, watermark or UI.\nGESTURE: a leaf-green praying mantis poised on a low broad twig rising gently from lower-left to lower-right. The elongated prothorax leans diagonally forward; the triangular head turns slightly toward the viewer. Two bent raptorial forelegs are held at unequal heights, one reaching forward and the other tucked nearer the head. Four middle/hind walking legs visibly grip the twig at separated points. Six legs total, each joined to the correct thoracic region; two antennae emerge from the head and are not extra legs. The long tapered abdomen curves behind the thorax, with narrow closed leaf-like wing covers. Keep large clear gaps between head, forelegs, body, supporting legs and twig. Let the joints overlap naturally; avoid detached caps, human shoulders, mammal necks, stiff tubes and stacked blobs. Small fitted compound eyes sit in the triangular head, not protruding mascot beads.\nSTYLE: expressive engraved fantasy illustration consistent with Hearth's natural creature palette and selective brass. Draw continuous organic chitin planes, tapered articulated limbs and a clear weight-bearing structure. Sage #789579 with deeper leaf greens, ivory #dfd4b4 upper-left light and tiny selective ochre-brass #c5a76a accents. Three broad readable value groups on the quiet dark forest field. No metallic assembly, plastic gloss, gold edging everywhere or dense forest scenery. Broad curved planes establish volume before sparse engraving. Aim for roughly 40-65 economical filled paths without sacrificing connected anatomy; this is a design target, not a hard path limit. No repeated hatching or tiny detail essential for recognition. Compose to read in a 160x112 art window and at 64x45, with restrained framing and no elements crowding the margins.\nOUTPUT: static native vector paths and simple shapes with explicit flat paints. No embedded raster, image elements, external resources, scripts, animation, use references, defs, gradients or filters. Preserve editable organic curves. This is one finished creature scene, not an icon, emblem, specimen chart or mirrored trophy.",
+  "n": 1,
+  "quality": "medium",
+  "complexity": "medium",
+  "output_format": "svg",
+  "size": "1024x720",
+  "svg": {
+    "model": "gpt-6.1-terra",
+    "reasoning": {
+      "effort": "medium"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "grant": "sprite-brute-action-16",
+  "recorded_before_dispatch_utc": "2026-11-06T21:57:40.866519+00:00",
+  "reservation_usd": 3,
+  "calculated_bound_usd": 2.925795,
+  "components_usd": {
+    "author_max_922000_input_long_context_at_2_per_million": 1.844,
+    "author_max_128000_output_long_context_at_7_5_per_million": 0.96,
+    "reference_max_quality_2140_tokens_at_30_per_million": 0.0642,
+    "image_prompt_utf8_byte_token_upper_bound_at_5_per_million": 0.057595
+  },
+  "request_sha256": "113c362d604a41ef8242f14577bdddf1c722d42d86c73c593f6d17eebe2f9707",
+  "client_request_id": "brute-action-16-ff4db21401cb4ee8b47166cf66b95469",
+  "trace_semantics": "Trace only, not idempotency or retrieval.",
+  "authority": "Exactly one NEW three-action-pose native SVG sheet. Not a retry of the unknown directional request. No second call. Existing inclusive grant, never double counted.",
+  "pool_inclusive_before_dispatch_usd": 38.021685,
+  "pool_success_estimates_before_usd": 7.021685,
+  "pool_historical_unknown_holds_usd": 28,
+  "prior_brute_direction_unknown_hold_usd": 3,
+  "prior_brute_included_in_historical_holds": true,
+  "on_unknown": "Keep entire USD3 reservation, report uncertainty, stop paid actions; no retry or alternate route.",
+  "bound_basis": "Full author caps at long-context rates; reference charged at max quality despite high requested, official calculator96x32grid; prompt UTF-8 bytes upper-bound tokens. No image input, fast mode or regional routing requested.",
+  "design_parent": {
+    "commit": "a4bfa14bc6319f2a5333b4d450dde630fc24ff02",
+    "branch": "art/directional-emberwake-brute-2026-11-06",
+    "revision": "emberwake-brute-2026-11-06-demon-se",
+    "file": "docs/art/assets/directional-emberwake-brute-2026-11-06/demon-se.svg",
+    "sha256": "e121f28ff55a85201fe494ee98f5f4636225b4fb4da01c3fde90693e2ab9bcf6",
+    "authorship": "Assistant-authored manual SVG, no recovered API artwork; supplied as text only."
+  },
+  "sources": [
+    "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+    "https://developers.openai.com/api/reference/resources/images/methods/generate",
+    "https://developers.openai.com/api/docs/guides/image-generation#calculating-costs"
+  ]
+}

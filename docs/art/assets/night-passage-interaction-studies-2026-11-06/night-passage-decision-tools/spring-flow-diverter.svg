@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="336" viewBox="0 0 480 336"><g id="spring-flow-diverter">
+    <rect width="480" height="336" fill="#10232c"/>
+    <ellipse cx="249" cy="277" rx="184" ry="15" fill="#142a32"/>
+    <g id="spring-rear-saddle">
+      <path d="M107 146 L145 143 L161 217 L148 231 L98 226 L91 213Z" fill="#34464b"/>
+      <path d="M107 146 L137 141 L145 155 L132 170 L99 169Z" fill="#95a6aa"/>
+      <path d="M99 169 L132 170 L148 231 L98 226 L91 213Z" fill="#657778"/>
+    </g>
+    <g id="spring-ceramic-channel">
+      <path d="M46 61 Q132 62 196 103 Q260 143 292 146 Q344 161 432 157 L432 195 Q344 204 285 188 Q235 176 178 142 Q112 101 46 99Z" fill="#bca98a"/>
+      <path d="M46 61 Q132 62 196 103 Q260 143 292 146 Q344 161 432 157 L432 167 Q345 173 289 157 Q248 151 188 113 Q124 74 46 72Z" fill="#ead7b5"/>
+      <path d="M47 75 Q124 78 188 118 Q245 155 291 163 Q354 180 432 174 L432 219 Q342 226 281 211 Q228 197 168 164 Q105 131 46 124Z" fill="#657e74"/>
+      <path d="M47 92 Q114 96 174 133 Q233 168 285 179 Q351 195 432 189 L432 222 Q347 231 279 212 Q218 196 162 166 Q104 135 47 128Z" fill="#75a99f"/>
+      <path d="M47 99 Q104 102 167 141 Q224 176 285 187 Q349 203 431 199 L431 212 Q349 218 282 199 Q218 184 158 153 Q101 122 47 118Z" fill="#6dbfb0"/>
+      <path d="M55 105 Q96 111 128 129 M154 140 Q211 173 246 179 M267 186 Q306 200 342 200 M369 205 L417 206" fill="none" stroke="#a3c9b8" stroke-width="4" stroke-linecap="round"/>
+      <path d="M86 117 L112 124 M197 167 L222 179 M306 205 L331 210 M390 193 L419 194" fill="none" stroke="#4b817b" stroke-width="3" stroke-linecap="round"/>
+      <path d="M46 119 Q110 128 169 163 Q232 198 284 209 Q343 225 432 216 L432 256 Q353 267 280 250 Q215 238 155 203 Q97 171 46 161Z" fill="#bca98a"/>
+      <path d="M46 119 Q110 128 169 163 Q232 198 284 209 Q343 225 432 216 L432 228 Q344 236 281 220 Q228 210 162 174 Q103 140 46 132Z" fill="#ead7b5"/>
+      <path d="M47 137 Q101 147 153 177 Q214 213 276 228 Q345 245 431 236 L432 256 Q353 267 280 250 Q215 238 155 203 Q97 171 46 161Z" fill="#cbb895"/>
+      <path d="M52 140 Q81 146 107 158 M189 203 Q228 225 265 234 M296 242 Q326 248 354 246" fill="none" stroke="#dfcba4" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <g id="spring-pivoting-lip">
+      <path d="M151 117 Q181 90 229 77 Q259 68 272 78 L274 93 Q257 123 194 151 L159 145Z" fill="#9c604c"/>
+      <path d="M150 107 Q191 80 236 68 Q261 62 271 74 Q275 80 266 87 L194 127 L166 139Z" fill="#d78568"/>
+      <path d="M150 107 Q191 80 236 68 Q261 62 271 74 Q240 74 213 89 L168 116Z" fill="#e5ac86"/>
+      <path d="M168 116 L194 127 L194 151 L164 145Z" fill="#b66f53"/>
+      <path d="M194 127 L266 87 Q262 114 194 151Z" fill="#ba775b"/>
+      <path d="M177 110 Q208 90 242 81" fill="none" stroke="#e9b48c" stroke-width="3" stroke-linecap="round"/>
+      <path d="M127 125 L156 121 L179 137 L179 155 L143 156Z" fill="#34464b"/>
+      <path d="M129 125 L155 121 L175 135 L155 141 L132 138Z" fill="#95a6aa"/>
+    </g>
+    <g id="spring-front-pivot-saddle">
+      <path d="M118 130 Q125 115 142 116 Q161 117 164 134 L174 212 L189 256 L156 267 L101 256 L106 231 L116 220Z" fill="#34464b"/>
+      <path d="M118 130 Q124 117 140 118 Q153 119 155 135 L157 209 L146 222 L116 216Z" fill="#657778"/>
+      <path d="M118 130 Q123 117 140 118 Q148 118 153 126 L131 127 L122 144 L118 210 L116 216Z" fill="#95a6aa"/>
+      <path d="M116 216 L146 222 L156 267 L101 256 L106 231Z" fill="#657778"/>
+      <path d="M116 216 L146 222 L140 231 L106 231Z" fill="#95a6aa"/>
+      <path d="M146 222 L157 209 L174 212 L189 256 L156 267Z" fill="#43565a"/>
+      <ellipse cx="139" cy="141" rx="12" ry="14" fill="#293c42"/>
+      <ellipse cx="137" cy="139" rx="9" ry="11" fill="#b68d62"/>
+      <path d="M133 132 Q140 129 142 138" fill="none" stroke="#dfc18a" stroke-width="2" stroke-linecap="round"/>
+      <path d="M114 236 L110 248 M164 231 L170 250" fill="none" stroke="#34464b" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <g id="spring-outlet-saddle">
+      <path d="M339 233 Q343 219 359 218 L384 222 Q393 224 395 237 L407 278 L376 290 L320 280Z" fill="#34464b"/>
+      <path d="M339 233 Q343 219 359 218 L384 222 Q393 224 395 234 L374 242 L346 240Z" fill="#95a6aa"/>
+      <path d="M339 233 L346 240 L374 242 L376 290 L320 280Z" fill="#657778"/>
+      <path d="M374 242 L395 234 L407 278 L376 290Z" fill="#43565a"/>
+      <path d="M347 225 L362 222 L382 227 L370 234 L353 232Z" fill="#a8b2ab"/>
+      <path d="M338 249 L331 272 M355 246 L353 259 L357 270 M385 254 L391 275" fill="none" stroke="#53676b" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

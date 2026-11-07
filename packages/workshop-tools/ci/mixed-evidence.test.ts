@@ -25,6 +25,19 @@ const head = 'a'.repeat(40);
 const art = { path: 'src/games/spire/ui/WorldItemArt.tsx', status: 'M' };
 const review = { path: 'docs/art/assets/spire-damage-potions/provenance.json', status: 'A' };
 
+void test('shared history changes retain native GIF replay and gallery browser coverage', () => {
+  const plan = selectPlan(
+    [{ path: 'packages/workshop-tools/art/history-client.ts', status: 'M' }],
+    catalogue,
+    graph.dependants,
+    { head },
+  );
+  assert.equal(plan.mode, 'scoped');
+  assert.ok(plan.browserFiles.includes('tests/browser/asset-history-gif.spec.ts'));
+  assert.ok(plan.browserFiles.includes('tests/browser/asset-history.spec.ts'));
+  assert.deepEqual(plan.geometryFiles, []);
+});
+
 void test('exact mixed #78/#79/#81 inputs retain safety, affected game, SVG and gallery coverage without unrelated deep work', () => {
   assert.deepEqual(graph.uncertain, []);
   for (const fixture of fixtures) {

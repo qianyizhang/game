@@ -1,0 +1,109 @@
+{
+  "source": {
+    "cells": [
+      {
+        "pose": "guard",
+        "bounds": [44, 21, 282, 375],
+        "nativeVisible": [28.2, 37.5],
+        "edgePixels": 0,
+        "extractionChannelDifferences": 0,
+        "maxDelta": 0
+      },
+      {
+        "pose": "contact",
+        "bounds": [99, 31, 244, 365],
+        "nativeVisible": [24.4, 36.5],
+        "edgePixels": 0,
+        "extractionChannelDifferences": 0,
+        "maxDelta": 0
+      },
+      {
+        "pose": "recovery",
+        "bounds": [40, 21, 286, 375],
+        "nativeVisible": [28.6, 37.5],
+        "edgePixels": 0,
+        "extractionChannelDifferences": 0,
+        "maxDelta": 0
+      }
+    ],
+    "pairs": [
+      {
+        "poses": ["guard", "contact"],
+        "silhouetteIoU": 0.7037175695406387
+      },
+      {
+        "poses": ["guard", "recovery"],
+        "silhouetteIoU": 0.786810551558753
+      },
+      {
+        "poses": ["contact", "recovery"],
+        "silhouetteIoU": 0.6897325500784471
+      }
+    ]
+  },
+  "phones": [
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true
+    },
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "images": true
+    }
+  ],
+  "pageErrors": [],
+  "browser": "154.0.8037.57",
+  "source_safety": {
+    "svg_documents_validated": 4,
+    "embedded_raster_scripts_external_resources": false,
+    "raw_extracts_pixel_identical": 3,
+    "manual_artwork_correction": false
+  },
+  "visual_review": {
+    "verdict": "Useful three-pose future presentation study; no runtime acceptance.",
+    "continuity": "Manual parent supplied as exact text. Rust-red mass, unequal horns, right-hand cleaver and planted feet retained; wrist/handle/blade joins and horn clearance inspected.",
+    "native": "High-left guard, low-right contact and low-left recovery distinguish at0.1 and32px-wide samples. Guard/recovery body largely unchanged; weapon and arm carry most distinction.",
+    "limits": "Contact visible width24.4px is narrower than approximately30px target due arm/weapon projection, without changing canvas scale. Torso weight shift is modest. Static poses only: no timing, interpolation or combat delay contract."
+  },
+  "comparison_png": {
+    "before_bytes": 76851,
+    "retained_bytes": 74097,
+    "decoded_scanline_bytes_identical": true,
+    "non_IDAT_chunks_unchanged": true,
+    "sha256": "6cc1f8f72338ff4295f01cdc8f924bc4ddc2d076ba6e8e5dac5d7a991ca94b6b"
+  },
+  "gallery": {
+    "incomingRevisions": 4,
+    "allSourcesDecoded": true,
+    "allRequestAndParentLinksInspected": true,
+    "allNonselectable": true,
+    "pageErrors": [],
+    "browser": "154.0.8037.57"
+  },
+  "isolated_history": {
+    "assets": 0,
+    "revisions": 6,
+    "new_revisions": 4,
+    "genuine_parent_revisions": 2,
+    "selections": 0
+  },
+  "canonical_registration": {
+    "source_head": "dc7af88172cfc7c6d5d64de69c016e410137e938",
+    "review_base": "a4bfa14bc6319f2a5333b4d450dde630fc24ff02",
+    "requires": "#155 first; no parent/base changes",
+    "counts": {
+      "new_attempts": 1,
+      "new_source_revisions": 4,
+      "assets": 709,
+      "total_revisions": 102,
+      "selections": 0
+    },
+    "preservation": "Exact sheet/extract/reference/comparison/request/receipt bytes and all previous canonical records preserved. Text conditioning only; older unknown direction request remains separate. Temporary import retired after exact canonical comparison; original stays in source Git history.",
+    "independent_review": "Node24.21.0; official GoogleChrome157.0.8103.38. All three384x416 crops pixel-identical, zero edge pixels; every inner geometry/paint attribute unchanged. Six owning-preview layouts with12 decoded images each. Four shared-gallery source/compact/enlarged revisions; exact six JSON/Markdown records and two image attachments; six desktop1440/phone390/320 x16/20px layouts, no overflow/errors. Use disabled; removal preview cancelled, three descendants and shared original retention verified.",
+    "scope": "Source-history registration only. No animation, timing/interpolation, runtime adaptation, selection or art acceptance.",
+    "checks": "format:maintenance passed; assets:history verify709assets/102revisions/0selections; three existing selection/removal/offline browser journeys passed21.7s at normal limits;11history contracts passed. No application/native/full-suite claim.",
+    "source_hosted": "42301748334 passed at frozen source dc7af88172cfc7c6d5d64de69c016e410137e938 before registration."
+  }
+}

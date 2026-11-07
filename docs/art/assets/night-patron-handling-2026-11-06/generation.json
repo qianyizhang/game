@@ -1,0 +1,107 @@
+{
+  "request": {
+    "model": "gpt-image-2.6-sunburst",
+    "prompt": "Create ONE native editable static SVG packed contact sheet, exactly 1440 by 672, viewBox=\"0 0 1440 672\". Exactly 3 columns by 2 rows, each cell 480 by 336, no gutters or labels. Each of six subjects is a separate top-level <g id=\"SUBJECT-ID\" transform=\"translate(CELL-X CELL-Y)\"> with LOCAL coordinates and its own full-cell background rectangle. Every painted shape of a subject stays at least 30 pixels inside its own cell; no cross-cell content. All paint definitions must belong to that cell or use flat explicit fills. Do not create a sheet-wide background or a later opaque frame path that covers the actual subject. Keep the subject at roughly 70-78% cell width/height, with quiet corners. These are NEW FUTURE SOURCE CONCEPTS, not supported runtime content or accepted history.\n\nNative editable static vector illustration only: no raster/image embedding, text, digits, fonts, symbols requiring labels, scripts, use, CSS stylesheets, filters, external resources or animation. Restrained engraved fantasy print with connected broad material planes, three value groups, asymmetric purposeful contour, quiet negative space, upper-left light. Background #10232c, shadow #34464b, worn ivory #ead7b5, muted bronze #b68d62, smoky steel #95a6aa; Emberwake moss #7c987a, saltglass #75a99f, cinder #ca7658. Night Passage accents: Aster pale gold #dfc777, Neris aqua #6dbfb0, Vesta coral #d78568, Isen ice blue #a5cbda, Nyra plum #a18cb8. Wood grain follows form, leather folds, metal has restrained highlights, ceramic has a continuous thick rim and broad glaze highlights rather than chipped polygon facets. Distinct materials, no plastic gloss or golden trim everywhere. Detail is subordinate to connected structure and broad planes. No living subjects, hands, characters, portraits, story scenes, frames, borders, captions, logo or watermark. Every support, hinge, cord or handle visibly meets its load. Everything reads at 160x112 and 80x56; one strong subject per cell.\n\nSUBJECTS in exact row-major order:\nCell 1, id=\"aster-grounding-plate\", origin (0,0): Aster grounding plate. A broad asymmetrical slotted bronze grounding plate on three low slate pads, one short thick braided conductor visibly connected to a flat stone ground slug; restrained warm yellow contact planes, no forked tuning instrument or lightning icon.\nCell 2, id=\"neris-weir-panel\", origin (480,0): Neris weir panel. A short thick pale ceramic weir panel with three unequal broad vertical water slots, supported on two low dark feet; a shallow aqua current passes through one slot, no basin, scale, water table, valve or fountain.\nCell 3, id=\"vesta-ritual-bellows\", origin (960,0): Vesta ritual bellows. A compact broad leather accordion bellows, one fitted brass nozzle and two unequal dark wood handles, resting on a small slate support; strong compressed/expanded fold hierarchy, no fireball, coal tongs, furnace monument or mallet.\nCell 4, id=\"isen-cooling-wrap\", origin (0,336): Isen cooling wrap. An opened blue wool insulation wrap with one thick pale oval cooling tile fitted inside a sewn pocket; clear folded flap, contrasting soft wool and glazed ceramic, small restrained frost on one rim; no box, casket, ice crystal or armor.\nCell 5, id=\"nyra-witness-shutter\", origin (480,336): Nyra witness shutter. A low blackened-silver track holding three broad overlapping sliding plum metal shutters, one panel offset to expose a pale inner ceramic wafer; fitted stops and visible contact joints, no eye symbol, curtain, cloth screen or character.\nCell 6, id=\"audience-choice-rack\", origin (960,336): Audience choice rack. A low asymmetrical slotted dark stone rack holding three unequal broad unmarked ceramic strips, one strip angled forward in its secure slot; restrained ivory, slate and bronze planes, no writing, patron icons, temple roof or tall shrine.\n\nKeep all six distinct and useful when extracted. Never make them six color swaps or six generic emblems. No narrative sequence, before/after states, implied game rewards or canonical inscriptions.",
+    "n": 1,
+    "quality": "high",
+    "complexity": "high",
+    "output_format": "svg",
+    "size": "1440x672",
+    "svg": {
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  },
+  "response": {
+    "created": 1793982739,
+    "background": "transparent",
+    "output_format": "svg",
+    "quality": "high",
+    "safety_identifier": null,
+    "size": "1440x672",
+    "svg_usage": {
+      "input_tokens": 2371,
+      "model": "gpt-6.1-sol",
+      "output_tokens": 13358,
+      "reasoning_tokens": 298,
+      "total_tokens": 15729
+    },
+    "usage": {
+      "input_tokens": 995,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 995
+      },
+      "output_tokens": 784,
+      "output_tokens_details": {
+        "image_tokens": 784,
+        "text_tokens": 0
+      },
+      "total_tokens": 1779
+    },
+    "request_id": "req_94d6e652377540718f87c6b56f6607a9",
+    "http_status": 200,
+    "elapsed_seconds": 252.126
+  },
+  "original": {
+    "file": "sheet.svg",
+    "sha256": "5df6cd2ccaadefa99841225fe3170b4bbc955b441a971c464267637bf43c2f0d"
+  },
+  "outputs": [
+    {
+      "id": "aster-grounding-plate",
+      "sha256": "cfb0122038da8691d4ce1726150d31589b640959cdcceb084aded0729caee570",
+      "verdict": "candidate",
+      "note": "Slotted bronze plate, low slate supports and a connected braided conductor read as distinct load-bearing pieces at 80px; no electrical behavior is asserted."
+    },
+    {
+      "id": "neris-weir-panel",
+      "sha256": "652e6a1417a9cbbe04db2305c616736dd3751f5f30bf6f94ae98b6197d5125d3",
+      "verdict": "candidate-with-caveat",
+      "note": "Thick ceramic panel and unequal slots remain legible at compact size. The aqua ribbon is a symbolic cutaway current, not convincing continuous fluid flow through a complete weir."
+    },
+    {
+      "id": "vesta-ritual-bellows",
+      "sha256": "1dd6da10543ec217ab38842b2426d0d34b914c6da1a4c84cfb91bbd005e9d074",
+      "verdict": "candidate",
+      "note": "Leather fold hierarchy, fitted nozzle, wood handles and lower support remain distinct at 80px; useful portable handling silhouette."
+    },
+    {
+      "id": "isen-cooling-wrap",
+      "sha256": "88be5c08c47e51053ea50e7b5a0f0fd1a05d1a5a53136090919939a2a7caf6c0",
+      "verdict": "candidate-with-caveat",
+      "note": "Folded fabric, sewn pocket and fitted oval insert read clearly. The broad cyan highlight makes the ceramic insert resemble a glass lens; final material selection needs review."
+    },
+    {
+      "id": "nyra-witness-shutter",
+      "sha256": "05414db777e7c6e073e09b5de44e95c38cc93237163db6fdc57933156df2f2d7",
+      "verdict": "candidate",
+      "note": "Overlapping plum panels, rail stops and pale inner wafer remain clear at compact size; the frame presents a coherent sliding inspection device."
+    },
+    {
+      "id": "audience-choice-rack",
+      "sha256": "0f0c7ff509267bb117d96c35c89a650960bef701706bf0cfcf788fca4c8f104e",
+      "verdict": "candidate",
+      "note": "Three unequal thick unmarked strips sit visibly in a low slotted stone support; their compact silhouettes stay distinct without adding inscriptions or accepted selection rules."
+    }
+  ],
+  "authorization": {
+    "grant": "equipment-patron-handling-03",
+    "maximum_usd": 7,
+    "source": "Coordinator explicit one-call shared-pool grant, 2026-11-06",
+    "scope": "One distinct six-concept Night Passage patron-handling request; no retry."
+  },
+  "estimated_usd": 0.166817,
+  "qa": {
+    "svg_safety_and_bounds": 7,
+    "extraction_geometry": "exact group minus grid translation; paint unchanged",
+    "contact": {
+      "file": "contact.png",
+      "sha256": "8497c128da48313eb3fd41563a1f48c30f144674f0d31873e131137d5cf971b2",
+      "lossless_rgba_dimensions_alpha_color_verified": true
+    },
+    "native_compact_author_review": 6
+  }
+}
