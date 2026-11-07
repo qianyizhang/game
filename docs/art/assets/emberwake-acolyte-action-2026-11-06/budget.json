@@ -1,0 +1,29 @@
+{
+  "grant": "sprite-acolyte-motion-04",
+  "recorded_before_dispatch_utc": "2026-11-06T20:27:12.384326+00:00",
+  "reservation_usd": 4.2,
+  "calculated_bound_usd": 2.97134,
+  "components_usd": {
+    "author_max_922000_input_long_context_at_2_per_million": 1.844,
+    "author_max_128000_output_long_context_at_7_5_per_million": 0.96,
+    "reference_image_max_quality_3663_tokens_at_30_per_million": 0.10989,
+    "image_prompt_utf8_byte_token_upper_bound_at_5_per_million": 0.05745
+  },
+  "authority": "Exactly one compact native SVG call; existing inclusive pool allocation, not a new second hold. No second call or automatic retry.",
+  "pool_inclusive_before_dispatch_usd": 35.845626,
+  "pool_success_estimates_usd": 6.645626,
+  "pool_historical_unknown_holds_usd": 25,
+  "prior_brute_unknown_hold_usd": 3,
+  "prior_brute_hold_included_in_historical_unknowns": true,
+  "request_sha256": "49075e9a26a46acd96a4227de5b4461e95d4a0a67f8e00b610f91c8a67d1fdb5",
+  "client_request_id": "acolyte-motion-04-0deac55134114066bfe7b9b9ea939d9b",
+  "trace_semantics": "Trace only; not idempotency key or retrieval handle.",
+  "on_unknown": "Retain entire USD4.20 reservation; stop paid requests; no retry.",
+  "bound_basis": "Full author model input/output caps at long-context rates; reference output charged conservatively at max quality though high requested; prompt UTF-8 bytes upper-bound its input tokens. No reference image input, regional or fast-mode surcharge requested.",
+  "sources": [
+    "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+    "https://developers.openai.com/api/docs/guides/image-generation",
+    "https://developers.openai.com/api/reference/resources/images/methods/generate"
+  ]
+}

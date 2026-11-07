@@ -1,0 +1,46 @@
+[
+  {
+    "game": "battlegrounds",
+    "name": "Pack Caller",
+    "id": "leader-calling",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "before": {
+      "x": 29,
+      "y": 286.484375,
+      "width": 149,
+      "height": 104.296875
+    },
+    "after": {
+      "x": 29,
+      "y": 286.484375,
+      "width": 149,
+      "height": 104.296875
+    },
+    "evidence": "Ephemeral DOM-only artwork substitution for frame/text review. No runtime source or save changed. Candidate mockup, not integrated game acceptance."
+  },
+  {
+    "game": "spire",
+    "name": "Iron Wave",
+    "id": "ironWave-base",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "before": {
+      "x": 217,
+      "y": 326.15625,
+      "width": 141,
+      "height": 98.6875
+    },
+    "after": {
+      "x": 217,
+      "y": 326.15625,
+      "width": 141,
+      "height": 98.6875
+    },
+    "evidence": "Ephemeral DOM-only artwork substitution for frame/text review. No runtime source or save changed. Candidate mockup, not integrated game acceptance."
+  }
+]
