@@ -21,6 +21,78 @@ import {
 } from '../../packages/workshop-tools/art/history-store';
 import type { ArtHistory, HistoryState } from '../../packages/workshop-tools/art/history-types';
 
+test('retained refinement attempts expose originals, cells, held outcomes and linked lineage without changing defaults', async ({
+  page,
+}, info) => {
+  const root = process.cwd();
+  const selected = readFileSync(resolve(root, 'src/shared/art/selected-art.json'), 'utf8');
+  const { history } = readHistory(root);
+  const attempts = history.attempts.filter(
+    (attempt) => attempt.id.startsWith('refinement-2026-11-06:') && attempt.outcome === 'returned',
+  );
+  expect(attempts).toHaveLength(6);
+  await page.goto('/__art/');
+  await page.locator('#find').fill('Refinement 2026-11-06');
+  for (const attempt of attempts) {
+    await page.locator('#assets').getByRole('link', { name: attempt.title, exact: true }).click();
+    await expect(page.locator('#detail > h2')).toHaveText(attempt.title);
+    const revisions = history.revisions.filter((revision) => revision.attempt === attempt.id);
+    await expect(page.locator('#detail [data-revision]')).toHaveCount(revisions.length);
+    for (const revision of revisions) {
+      const card = page.locator(`[data-revision="${revision.id}"]`);
+      const image = card.locator('.revision-preview img').first();
+      expect(
+        await image.evaluate(async (node) => {
+          const image = node as HTMLImageElement;
+          await image.decode();
+          return image.naturalWidth;
+        }),
+      ).toBeGreaterThan(0);
+      if (!revision.runtimeFile)
+        await expect(card.getByRole('button', { name: 'Use in game', exact: true })).toBeDisabled();
+    }
+    const original = page.locator(`[data-revision="${attempt.id}:api-original"]`);
+    await original.getByText('Prompt, settings and outcome', { exact: true }).click();
+    await original.getByRole('button', { name: 'request.json', exact: true }).click();
+    await expect(original.locator('pre')).toContainText('gpt-image-2.6');
+    const sheet = page.locator(`[data-revision="${attempt.id}:sheet"]`);
+    await sheet.getByText('Lineage and files', { exact: true }).click();
+    await sheet.getByRole('link', { name: `${attempt.id}:api-original`, exact: true }).click();
+    await expect(original).toBeInViewport();
+    await page.locator('#browse').evaluate((node) => ((node as HTMLDetailsElement).open = true));
+  }
+  const attemptIds = new Set(attempts.map((attempt) => attempt.id));
+  const held = history.revisions.filter(
+    (revision) => attemptIds.has(revision.attempt) && revision.label.endsWith(' · HELD'),
+  );
+  expect(held).toHaveLength(4);
+  for (const revision of held) {
+    await page.goto('/__art/#revision=' + encodeURIComponent(revision.id));
+    const card = page.locator(`[data-revision="${revision.id}"]`);
+    await expect(card.getByRole('heading')).toContainText('HELD');
+    await expect(card.getByRole('button', { name: 'Use in game', exact: true })).toBeDisabled();
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.addStyleTag({ content: ':root { font-size: 20px; }' });
+  await page.goto('/__art/#attempt=refinement-2026-11-06%3Acartographer-relics');
+  await page.addStyleTag({ content: ':root { font-size: 20px; }' });
+  const compact = page
+    .locator(
+      '[data-revision="refinement-2026-11-06:cartographer-relics:chisel"] .revision-preview figure',
+    )
+    .nth(1)
+    .locator('img');
+  const box = await compact.boundingBox();
+  expect(box).not.toBeNull();
+  expect(Math.abs(box!.width - box!.height)).toBeLessThan(1);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: info.outputPath('refinement-history-phone.png') });
+  await page.setViewportSize({ width: 1440, height: 1080 });
+  await expect(page.locator('#browse')).toHaveAttribute('open', '');
+  await expect(page.locator('#find')).toBeVisible();
+  expect(readFileSync(resolve(root, 'src/shared/art/selected-art.json'), 'utf8')).toBe(selected);
+});
+
 test('gallery selections reach the real game, survive reload, and removal preserves the active choice', async ({
   page,
 }, info) => {
