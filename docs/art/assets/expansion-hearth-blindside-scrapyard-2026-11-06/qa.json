@@ -1,0 +1,101 @@
+{
+  "baseline": "f8cef09fea55b1f7bf0e083a22bdb9bac33138ae",
+  "scope": "Compact source metadata and canonical registration; no generation, artwork change, runtime adoption or aesthetic acceptance.",
+  "artwork": "All 6 SVGs and 4 PNGs byte-identical to baseline.",
+  "svg": {
+    "method": "Repository validateSvg + browser SVG getBBox on extracted cell contents, independent XML extraction parser; packed originals validated too",
+    "originals": 2,
+    "cells": 4,
+    "cell_dimensions": [800, 560],
+    "safety_and_bounds": "passed",
+    "bounds_columns": ["file", "left", "top", "right", "bottom"],
+    "bounds": [
+      ["hearth-heron/heron-normal.svg", 0, 0, 800, 526],
+      ["hearth-heron/heron-ascended.svg", 0, 0, 800, 527],
+      ["hearth-ram/ram-normal.svg", 62, 63.18745803833008, 702, 518],
+      ["hearth-ram/ram-ascended.svg", 55, 48.968658447265625, 734, 518]
+    ]
+  },
+  "native_raster": {
+    "method": "Chromium native-size RGBA render; compare extracted cells with original sheet crops. All dimensions 800\u00d7560, opaque alpha.",
+    "identical_cells": 3,
+    "exception": {
+      "cell": "hearth-heron/heron-ascended",
+      "different_color_channels": 130,
+      "peak_channel_delta_255": 5,
+      "alpha_equal": true,
+      "interpretation": "Sparse antialias difference, not pixel equality. Copied geometry/paint unchanged."
+    }
+  },
+  "png_evidence": {
+    "method": "Prior lossless candidate checks verified pixels/dimensions/mode/alpha and ICC/sRGB/gamma; no smaller candidate admitted. This cleanup preserves encoded PNG bytes too.",
+    "common": {
+      "mode": "RGB",
+      "alpha": [255, 255],
+      "icc_profile": false,
+      "srgb": null,
+      "gamma": null
+    },
+    "columns": ["file", "dimensions", "bytes", "sha256"],
+    "files": [
+      [
+        "contact-sheet.png",
+        [1200, 340],
+        169922,
+        "816899ca7c25094ab06becd423a93fd9cc9cc5731cf5f661851437daa280f5d8"
+      ],
+      [
+        "gallery-review.png",
+        [1200, 850],
+        179643,
+        "26141a442181dbd1d05513b05683ab1fda2a072cd7c081e6ef6cc72badb629f6"
+      ],
+      [
+        "hearth-heron/review.png",
+        [1200, 900],
+        177229,
+        "3e2e695ad7566d7ce510bf4826057a06008333ec4518601b96215f85a5efc998"
+      ],
+      [
+        "hearth-ram/review.png",
+        [1200, 900],
+        141988,
+        "ed2cbf7f25a9c6419cc8187210db79b9f1d4e8dc507a09f731df7024cfcd9bd8"
+      ]
+    ]
+  },
+  "gallery": {
+    "prior_browser": "154.0.8037.57",
+    "revisions": 6,
+    "actual_calls": 3,
+    "exact_prompt_settings_failure_and_lineage": "verified",
+    "adoption": "disabled",
+    "shared_registration": "registered in docs/art/iterations/library.json"
+  },
+  "isolated_import": {
+    "assets": 0,
+    "revisions": 6,
+    "selections": 0
+  },
+  "shared_history": {
+    "assets": 709,
+    "revisions": 98,
+    "registered_sources": 709,
+    "selections": 0
+  },
+  "registration": {
+    "handoff_head": "5ca6ab20256c4dc955fe57366531e7c97969d32f",
+    "browser": "Google Chrome 157.0.8103.38",
+    "runtime": "Node 24.21.0 / npm 11.19.0",
+    "live_gallery": "6 source SVG revisions decoded at native/compact sizes and inspected enlarged; all 3 exact call records, failure and parents visible; no page errors",
+    "layout": "1440px, 390px and 320px at 16px/20px text: no horizontal overflow",
+    "selections": "zero; selected-art.json and all source registrations unchanged",
+    "artwork": "All 6 SVGs and 4 PNGs byte-identical to handoff; opening ledger and 3 prepared request bytes unchanged",
+    "checks": {
+      "maintenance": "passed: formatting/inventory/links, history verify, lint/types, 19 Python tests, 202 tooling tests, 81 DCC contracts and production build",
+      "browser": "Initial normal-limit run: 11 passed, 3 failed (2 total-test timeouts and 1 initialization timeout). Normal-limit targeted rerun: 2 passed; per-game galleries timed out again. Same per-game assertions passed in 39.7s using explicit --timeout=120000, no CI flags or repository configuration changes. The default 30s limit remains unresolved.",
+      "scope": "All 14 affected browser journeys passed across these runs; this is not a clean normal-limit broad run. No application/simulation/geometry/native authoring suite claimed. Hosted CI is reported separately on the PR."
+    },
+    "bookkeeping": "Redundant prepared-history.json retired after exact canonical-record comparison and sole README consumer migration; no external consumer found in main/fetched PR refs. Continuation-pinned request files, ledger and admission heading preserved."
+  }
+}

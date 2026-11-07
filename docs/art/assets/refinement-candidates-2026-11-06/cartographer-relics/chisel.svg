@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" width="384" height="384" role="img" aria-label="chisel optional candidate"><g id="chisel" stroke="#14262d" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M262 49 Q277 34 295 43 L326 69 Q337 83 326 101 L306 121 L253 73 Z" fill="#889b91" />
+    <path d="M257 62 Q272 50 288 58 L318 83 Q325 93 317 108 L247 195 L190 150 Z" fill="#58493a" />
+    <path d="M232 90 Q268 93 300 126 M216 110 Q253 114 285 147 M200 130 Q237 134 269 168 M196 146 Q223 121 256 75 M224 174 Q249 148 283 102" fill="none" stroke="#14262d" />
+    <path d="M190 144 Q204 139 218 151 L250 177 Q259 186 251 198 L232 216 L179 170 Z" fill="#889b91" />
+    <path d="M181 168 Q201 171 230 201 L215 219 Q202 233 202 253 L136 328 L42 302 L111 219 Q151 210 181 168 Z" fill="#889b91" />
+    <path d="M111 219 Q150 210 181 168 Q191 169 201 175 Q181 200 178 218 Q176 237 187 251 L132 305 L63 290 Z" fill="#aeb9ac" stroke="none" />
+    <path d="M42 302 L63 280 L132 305 L136 328 Z" fill="#eadfc4" />
+    <path d="M132 305 L187 251 L202 253 L136 328 Z" fill="#62776f" stroke="none" />
+  </g>
+
+  </svg>

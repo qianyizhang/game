@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" width="448" height="448" role="img" aria-label="weapon optional candidate"><g id="weapon" stroke="#142325" stroke-width="11" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M162 246 L298 82 L399 46 L381 149 L229 296 Z" fill="#8b9890" />
+    <path d="M176 242 L302 87 L390 55 L211 253 Z" fill="#e1d8c5" stroke="none" />
+    <path d="M211 253 L390 55 L376 144 L228 282 Z" fill="#697971" stroke="none" />
+    <path d="M155 279 L195 310 L127 391 L88 358 Z" fill="#704743" />
+    <path d="M128 313 L171 326 M111 337 L150 351" fill="none" stroke="#142325" stroke-width="11" />
+    <path d="M80 350 Q92 352 111 369 Q129 384 134 395 Q132 407 99 418 Q84 414 67 395 Q62 367 80 350 Z" fill="#b59661" />
+    <path d="M137 219 L173 245 Q188 256 211 258 Q217 281 233 296 L262 324 Q255 345 240 359 L222 361 Q218 340 201 326 Q188 313 173 301 Q156 275 140 266 Q125 257 113 263 L107 247 Q119 231 137 219 Z" fill="#b59661" />
+    <path d="M137 226 L172 253 Q188 266 207 268 L174 296 Q154 269 139 261 L116 254 Z" fill="#e1d8c5" stroke="none" opacity=".45" />
+  </g>
+  </svg>
