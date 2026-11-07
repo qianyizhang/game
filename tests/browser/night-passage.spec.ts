@@ -36,8 +36,10 @@ for (const presentation of ['canvas', 'scene']) {
 
     await page.keyboard.down('Escape');
     await expect(paused).toBeVisible();
-    const tick = await arena.getAttribute('data-tick');
     const saved = await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY);
+    // The HUD refreshes less often than rules; confirm the saved frame before testing key repeat.
+    await expect(arena).toHaveAttribute('data-tick', String(restoreChronicle(saved!).state.tick));
+    const tick = await arena.getAttribute('data-tick');
     await page.keyboard.down('Escape');
     await page.clock.runFor(100);
     await expect(paused).toBeVisible();
