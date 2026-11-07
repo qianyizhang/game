@@ -28,12 +28,14 @@ Adaptation is preferable to another generation: the revised arm, wrist, fingers,
 handle and cloth are usable. Only seven path `d` attributes per scene change:
 four steel planes and three guard planes. The blade retains substantial width
 before a short terminal taper; the guard fits its root and the blade follows the
-handle axis. Base retains the raised ready pose; upgrade retains the downward
-chop. Palette, canvas, path order and every other path attribute are inherited.
+handle axis. Base retains the raised ready pose; upgrade retains a downward-ready
+angle, rather than proving a dynamic chop. Palette, canvas, path order and every other path attribute are inherited.
 No replacement of the live source is proposed here.
 
-The [additive handoff](registration-handoff.json) records the exact parent revision
-IDs and new output digests. Its parents already exist in the canonical library;
+The [canonical library](../../iterations/library.json) records the exact parent
+revision IDs and new output digests. The redundant handoff was retired only after
+exact record comparison and consumer tracing; its original remains in Git at
+`bc7dd806ff22b5bcf7f93419aea66845abe1fa1f`. Its parents already exist in the canonical library;
 no old request, prompt or image is copied. Existing originals, requests, reviews,
 registrations and selections match the rebased main across 107 protected files.
 The existing Spire art/history workflow owns any later integration. This bounded
@@ -58,8 +60,9 @@ repair needs no separate issue or new maintenance tooling.
 - Rendered in headless Chromium; the phone run reported no page errors or text
   overflow. No claim of gameplay integration or complete browser-suite coverage.
 
-Canonical registration is deliberately staged for the serial coordinator. The
-production library is untouched; neither candidate has a selectable runtime file.
+Canonical registration adds one manual attempt and three source revisions,
+including the comparison. Every new runtime field remains null, so neither
+candidate is selectable. All prior records, source bytes and defaults are preserved.
 Local checks passed with Node 24.21.0 / npm 11.19.0: formatting/inventory/links,
 16 owning history tests, production history verification (709 assets, 168
 revisions, 709 registered sources, zero selections) and production build. The
