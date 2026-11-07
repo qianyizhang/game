@@ -11,6 +11,7 @@ import {
   realpathSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
+import { gzipSync } from 'node:zlib';
 import { resolve, dirname } from 'node:path';
 import react from '@vitejs/plugin-react';
 import { createElement } from 'react';
@@ -29,11 +30,15 @@ import {
   removeAttempt,
   importHistory,
   historyState,
+  historyDocument,
+  historyPreview,
   validateSvg,
 } from './history-store.ts';
 import type { ArtHistory } from './history-types.ts';
 import { withBundle, repositoryRoot } from '../io.ts';
-import { verifySourceHistory, snapshotHistory } from './history.ts';
+import { verifySourceHistory, snapshotHistory, currentArtwork } from './history.ts';
+import { artHistoryPlugin } from './history-server.ts';
+import { createServer } from 'vite';
 
 function fixture() {
   const root = mkdtempSync(resolve(tmpdir(), 'art-history-'));
@@ -393,4 +398,301 @@ await test('binary reference inputs remain viewable in offline attempt records',
     url: 'data:image/png;base64,' + png.toString('base64'),
     animated: false,
   });
+});
+
+// Missing unrelated files distinguish metadata/scoped reads from eager preview loading.
+await test('large live history serves metadata and one checked preview without reading unrelated art', async (t) => {
+  const { root, file, svg, history } = fixture();
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const largeSvg = svg.replace('</svg>', `<!--${'x'.repeat(64 * 1024)}--></svg>`);
+  writeFileSync(resolve(root, file), largeSvg);
+  history.revisions[0].digest = history.revisions[0].runtimeDigest = digest(largeSvg);
+  for (let i = 0; i < 1000; i++)
+    history.revisions.push({
+      ...history.revisions[0],
+      id: `unrelated-${i}`,
+      asset: null,
+      file: `${MANAGED_PATH}/missing-${i}.svg`,
+      runtimeFile: null,
+      runtimeDigest: null,
+    });
+  writeFileSync(resolve(root, HISTORY_PATH), JSON.stringify(history));
+  const server = await createServer({
+    configFile: false,
+    root,
+    plugins: [artHistoryPlugin(root)],
+    server: { host: '127.0.0.1', port: 0, watch: null },
+  });
+  await server.listen();
+  t.after(() => server.close());
+  const address = server.httpServer!.address();
+  assert.ok(address && typeof address === 'object');
+  const base = `http://127.0.0.1:${address.port}/__art/api/`;
+  const response = await fetch(base + 'state');
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get('cache-control'), 'no-store');
+  const text = await response.text();
+  const state = historyState(root);
+  assert.deepEqual(JSON.parse(text), state);
+  assert.deepEqual(state.current, {});
+  assert.deepEqual(state.previews, {});
+  assert.doesNotMatch(text, /data:image/);
+  assert.ok(Buffer.byteLength(text) < 500_000);
+  const eagerPreviewBytes = Math.ceil(Buffer.byteLength(largeSvg) / 3) * 4 * 1001;
+  assert.ok(eagerPreviewBytes > Buffer.byteLength(text) * 200);
+  t.diagnostic(
+    `${history.revisions.length} revisions: metadata ${Buffer.byteLength(text)} bytes; equivalent embedded previews alone ${eagerPreviewBytes} bytes`,
+  );
+  const previewUrl = base + `artwork?revision=first&version=${state.version}`;
+  const preview = await fetch(previewUrl);
+  assert.equal(preview.status, 200);
+  const document = (await preview.json()) as { url: string };
+  assert.equal(Buffer.from(document.url.split(',')[1], 'base64').toString(), largeSvg);
+  assert.throws(() => historyPreview(root, state.version, 'unrelated-0'), /ENOENT/);
+  assert.throws(() => historyPreview(root, state.version, '../outside'), /Unknown revision/);
+  assert.equal((await fetch(base + 'artwork?revision=first&version=stale')).status, 409);
+  assert.equal((await fetch(base + `artwork?asset=unknown&version=${state.version}`)).status, 409);
+  writeFileSync(resolve(root, file), svg);
+  const changed = await fetch(previewUrl);
+  assert.equal(changed.status, 409);
+  assert.match(await changed.text(), /changed since registration/);
+  assert.equal((await fetch(base + 'state')).status, 200);
+  assert.throws(() => historyState(root, false), /changed since registration/);
+});
+
+await test('scoped editable-source reads return only the requested slot, with registered source bytes', async () => {
+  const current = await currentArtwork('hearth/cub');
+  assert.deepEqual(Object.keys(current), ['hearth/cub']);
+  const bytes = Buffer.from(current['hearth/cub'].split(',')[1], 'base64');
+  const asset = readHistory(repositoryRoot).history.assets.find(
+    (asset) => asset.id === 'hearth/cub',
+  )!;
+  assert.equal(digest(bytes), asset.sourceDigest);
+  await assert.rejects(currentArtwork('missing/source'), /source is unavailable/);
+});
+
+await test('scoped API and offline previews share the archived SVG and raster decoder without changing original bytes', async (t) => {
+  const { root, history, svg } = fixture();
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const original = svg + '   \n';
+  const jpeg = readFileSync(
+    resolve(repositoryRoot, 'docs/art/assets/creatures/wolf-evolutions-preview.jpg'),
+  );
+  const formats = [
+    {
+      extension: 'svg.gz',
+      mime: 'image/svg+xml',
+      bytes: gzipSync(original),
+      decoded: Buffer.from(original),
+    },
+    {
+      extension: 'png',
+      mime: 'image/png',
+      bytes: readFileSync(
+        resolve(
+          repositoryRoot,
+          'docs/art/assets/blindside-opening-jokers/context/baseline-shop-phone.png',
+        ),
+      ),
+    },
+    { extension: 'jpg', mime: 'image/jpeg', bytes: jpeg },
+    { extension: 'jpeg', mime: 'image/jpeg', bytes: jpeg },
+    {
+      extension: 'webp',
+      mime: 'image/webp',
+      bytes: readFileSync(
+        resolve(repositoryRoot, 'docs/art/assets/cartographer-map/before-threat.webp'),
+      ),
+    },
+    {
+      extension: 'gif',
+      mime: 'image/gif',
+      bytes: Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64'),
+    },
+    {
+      extension: 'GIF',
+      mime: 'image/gif',
+      bytes: Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64'),
+    },
+  ];
+  const revisions = formats.map((format) => {
+    const file = `${MANAGED_PATH}/preview.${format.extension}`;
+    writeFileSync(resolve(root, file), format.bytes);
+    return {
+      ...history.revisions[0],
+      id: format.extension,
+      file,
+      digest: digest(format.bytes),
+      asset: null,
+      runtimeFile: null,
+      runtimeDigest: null,
+    };
+  });
+  importHistory(root, readHistory(root).version, {
+    schema: 1,
+    assets: [],
+    attempts: [],
+    revisions,
+  });
+  const server = await createServer({
+    configFile: false,
+    root,
+    plugins: [artHistoryPlugin(root)],
+    server: { host: '127.0.0.1', port: 0, watch: null },
+  });
+  await server.listen();
+  t.after(() => server.close());
+  const address = server.httpServer!.address();
+  assert.ok(address && typeof address === 'object');
+  const base = `http://127.0.0.1:${address.port}/__art/api/`;
+  const state = historyState(root);
+  assert.deepEqual(state.previews, {});
+  const offline = historyState(root, false);
+  for (const [index, format] of formats.entries()) {
+    const revision = revisions[index];
+    const response = await fetch(base + `artwork?revision=${revision.id}&version=${state.version}`);
+    assert.equal(response.status, 200);
+    const preview = (await response.json()) as { kind: string; url: string; animated: boolean };
+    assert.equal(preview.kind, 'image');
+    assert.ok(preview.url.startsWith(`data:${format.mime};base64,`));
+    assert.deepEqual(
+      Buffer.from(preview.url.split(',')[1], 'base64'),
+      format.decoded ?? format.bytes,
+    );
+    assert.equal(preview.animated, format.extension.toLowerCase() === 'gif');
+    assert.equal(offline.previews[revision.id], preview.url);
+    assert.deepEqual(historyDocument(root, revision.file), preview);
+    assert.deepEqual(readFileSync(resolve(root, revision.file)), format.bytes);
+    assert.throws(
+      () => useRevision(root, state.version, 'hearth/cub', revision.id),
+      /no game-compatible/,
+    );
+    assert.throws(
+      () =>
+        importHistory(root, state.version, {
+          schema: 1,
+          assets: [],
+          attempts: [],
+          revisions: [
+            {
+              ...revision,
+              id: 'invalid-runtime',
+              asset: 'hearth/cub',
+              runtimeFile: revision.file,
+              runtimeDigest: revision.digest,
+            },
+          ],
+        }),
+      /static SVG/,
+    );
+  }
+  assert.equal(verifyHistory(root).revisions, formats.length + 1);
+  for (const revision of revisions) {
+    writeFileSync(resolve(root, revision.file), 'changed after registration');
+    const response = await fetch(base + `artwork?revision=${revision.id}&version=${state.version}`);
+    assert.equal(response.status, 409);
+    assert.match(await response.text(), /changed since registration/);
+    assert.throws(() => historyState(root, false), /changed since registration/);
+    writeFileSync(resolve(root, revision.file), formats[revisions.indexOf(revision)].bytes);
+  }
+});
+
+await test('corrupt, unsafe and oversized SVG archives fail scoped, attachment, import, verification and offline reads', async (t) => {
+  const { root, history, file: checkpoint } = fixture();
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const file = `${MANAGED_PATH}/unsafe.svg.gz`;
+  history.attempts[0].files = [checkpoint];
+  history.revisions[0] = { ...history.revisions[0], file, runtimeFile: null, runtimeDigest: null };
+  const server = await createServer({
+    configFile: false,
+    root,
+    plugins: [artHistoryPlugin(root)],
+    server: { host: '127.0.0.1', port: 0, watch: null },
+  });
+  await server.listen();
+  t.after(() => server.close());
+  const address = server.httpServer!.address();
+  assert.ok(address && typeof address === 'object');
+  const base = `http://127.0.0.1:${address.port}/__art/api/`;
+  for (const bytes of [
+    Buffer.from('invalid gzip'),
+    gzipSync('<svg viewBox="0 0 1 1"/>').subarray(0, -4),
+    gzipSync('<svg viewBox="0 0 1 1"><script/></svg>'),
+    gzipSync('<svg viewBox="0 0 1 1"><path>'),
+    gzipSync('<svg viewBox="0 0 1 1"><image href="https://example.com/x"/></svg>'),
+    gzipSync(' '.repeat(16 * 1024 * 1024 + 1)),
+  ]) {
+    writeFileSync(resolve(root, file), bytes);
+    history.revisions[0].digest = digest(bytes);
+    writeFileSync(resolve(root, HISTORY_PATH), JSON.stringify(history));
+    const state = historyState(root);
+    assert.deepEqual(state.previews, {});
+    const response = await fetch(base + `artwork?revision=first&version=${state.version}`);
+    assert.equal(response.status, 409);
+    assert.doesNotMatch(await response.text(), /data:image/);
+    assert.throws(() => historyDocument(root, file));
+    assert.throws(() => historyState(root, false));
+    assert.throws(() => verifyHistory(root));
+    assert.throws(() =>
+      importHistory(root, state.version, {
+        schema: 1,
+        assets: [],
+        attempts: [],
+        revisions: [{ ...history.revisions[0], id: 'invalid-import' }],
+      }),
+    );
+    assert.equal(readHistory(root).history.revisions.length, 1);
+  }
+});
+
+await test('archived SVG originals and raster revisions preview losslessly without changing stored bytes', (t) => {
+  const { root, history, svg, file: checkpoint } = fixture();
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const file = `${MANAGED_PATH}/original.svg.gz`;
+  const original = svg + '   \n';
+  const compressed = gzipSync(original);
+  writeFileSync(resolve(root, file), compressed);
+  history.revisions[0] = {
+    ...history.revisions[0],
+    file,
+    digest: digest(compressed),
+    runtimeFile: null,
+    runtimeDigest: null,
+  };
+  history.attempts[0].files.push(file, checkpoint);
+  writeFileSync(resolve(root, HISTORY_PATH), JSON.stringify(history));
+  const expected = 'data:image/svg+xml;base64,' + Buffer.from(original).toString('base64');
+  assert.equal(historyState(root, false).previews.first, expected);
+  assert.deepEqual(historyState(root, false).documents?.[file], {
+    kind: 'image',
+    url: expected,
+    animated: false,
+  });
+  assert.deepEqual(readFileSync(resolve(root, file)), compressed);
+  assert.equal(verifyHistory(root).revisions, 1);
+  assert.throws(
+    () => useRevision(root, readHistory(root).version, 'hearth/cub', 'first'),
+    /no game-compatible/,
+  );
+  for (const bytes of [
+    Buffer.from('invalid gzip'),
+    gzipSync('<svg viewBox="0 0 1 1"><script/></svg>'),
+    gzipSync(' '.repeat(16 * 1024 * 1024 + 1)),
+  ]) {
+    writeFileSync(resolve(root, file), bytes);
+    assert.throws(() => historyDocument(root, file));
+  }
+  const pngFile = `${MANAGED_PATH}/evidence.png`;
+  const png = Buffer.from(
+    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLbtAAAAABJRU5ErkJggg==',
+    'base64',
+  );
+  writeFileSync(resolve(root, pngFile), png);
+  history.revisions[0] = { ...history.revisions[0], file: pngFile, digest: digest(png) };
+  history.attempts[0].files = [pngFile];
+  writeFileSync(resolve(root, HISTORY_PATH), JSON.stringify(history));
+  assert.equal(
+    historyState(root, false).previews.first,
+    'data:image/png;base64,' + png.toString('base64'),
+  );
 });
