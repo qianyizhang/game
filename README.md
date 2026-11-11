@@ -41,6 +41,8 @@ interpolation and depth with inspectable calculations. Run `npm run dev:shader-l
 and open http://127.0.0.1:4178. It shares repository tooling while keeping its UI
 and rendering code separate from the games.
 
+[SVG Pose Lab](packages/svg-pose-lab/README.md) groups and transforms SVG objects, edits paths, and exports clean copies. Run `npm run build:svg-lab` to build its standalone offline page.
+
 ## Verification
 
 Choose checks by affected behavior using [verification contracts](docs/engineering/checks.md#gate-selection), the authoritative source for local gates, CI scope and browser/native prerequisites. Documentation-only edits use `npm run format:maintenance`; code and UI changes use the relevant application, browser, geometry or native checks.

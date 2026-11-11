@@ -21,6 +21,8 @@ frontend has no build step; `npm run build` continues to build the game frontend
 The browser harness starts the lab automatically on port 4179, leaving the local
 port 4178 development session separate.
 
+[SVG Pose Lab](../../packages/svg-pose-lab/README.md) uses `npm run test:svg-lab` for path geometry and `npm run test:browser:svg-lab` for the offline editor journey. Root `npm run check` includes the path tests; safety-core CI and the local changed-scope runner include both. The browser command builds and opens the single HTML file without a dev server.
+
 ## Gate selection
 
 Choose local checks by affected behavior and dependency risk, not change size alone.

@@ -24,6 +24,7 @@ export default [
       'packages/workshop-tools/*.mjs',
       'eslint.config.mjs',
       'packages/shader-pipeline-lab/**/*.js',
+      'packages/svg-pose-lab/**/*.js',
     ],
     languageOptions: { globals: globals.node },
     rules: {
@@ -39,6 +40,8 @@ export default [
     files: [
       'packages/shader-pipeline-lab/src/*.js',
       'packages/shader-pipeline-lab/tests/browser.spec.js',
+      'packages/svg-pose-lab/src/*.js',
+      'packages/svg-pose-lab/tests/browser.spec.js',
     ],
     languageOptions: { globals: globals.browser },
   },

@@ -25,9 +25,9 @@ jobs:
           - scope: simulations
             command: npm run playtest
           - scope: core-rules
-            command: npm run ci -- core && npm run test:shader-lab
+            command: npm run ci -- core && npm run test:shader-lab && npm run test:svg-lab
           - scope: smoke
-            command: npm run test:browser:smoke && npm run test:browser:shader-lab
+            command: npm run test:browser:smoke && npm run test:browser:shader-lab && npm run test:browser:svg-lab
     name: safety (${{ matrix.scope }})
     env:
       CI_PLAN: ${{ inputs.plan }}

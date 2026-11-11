@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"
+    />
+    <title>SVG Pose Lab</title>
+    <style>
+      /* LAB_CSS */
+    </style>
+  </head>
+  <body>
+    <main id="editor-view">
+      <header>
+        <div>
+          <p class="eyebrow">Card Workshop / SVG Pose Lab</p>
+          <h1 id="document-title">One Quiet Breath</h1>
+          <p id="document-meta">Spire story reference · merged in #158</p>
+        </div>
+        <div class="file-actions">
+          <input id="file" type="file" accept=".svg,image/svg+xml" hidden />
+          <button id="open" type="button">Open SVG</button>
+          <button id="export" class="primary" type="button">Export SVG</button>
+        </div>
+      </header>
+      <noscript><p>Enable JavaScript to open and edit SVGs.</p></noscript>
+      <p id="notice" role="status"></p>
+      <div class="workbench">
+        <section class="panel" aria-labelledby="canvas-title">
+          <div class="toolbar">
+            <h2 id="canvas-title">Canvas</h2>
+            <div class="modes" role="group" aria-label="Canvas tool">
+              <button id="tool-transform" type="button" aria-pressed="true">Transform</button>
+              <button id="tool-path" type="button" aria-pressed="false">Path</button>
+              <button id="tool-pose" type="button" aria-pressed="false">Pose</button>
+            </div>
+            <button id="multi" type="button" aria-pressed="false">Multi-select</button>
+            <button id="undo" type="button" disabled>Undo</button>
+            <button id="redo" type="button" disabled>Redo</button>
+            <label class="toggle"
+              ><input id="toggle-guides" type="checkbox" checked /> Guides</label
+            >
+          </div>
+          <div class="stage">
+            <div id="art-host"></div>
+            <svg id="guides" aria-hidden="true"></svg>
+          </div>
+          <p id="canvas-hint" class="hint"></p>
+        </section>
+        <aside class="panel" aria-label="SVG inspector">
+          <section class="section" aria-labelledby="selection-title">
+            <div class="section-head">
+              <h2 id="selection-title">Selection</h2>
+              <button id="reset-pose" type="button" disabled>Reset pose</button>
+            </div>
+            <p id="selected-name" aria-live="polite"></p>
+            <div id="object-controls" class="object-actions">
+              <button id="group" type="button" disabled>Group</button>
+              <button id="ungroup" type="button" disabled>Ungroup</button>
+            </div>
+            <div id="pose-controls" hidden>
+              <label class="angle"
+                >Angle <input id="angle" type="range" step="1" value="0" /><output
+                  id="angle-value"
+                  for="angle"
+                  >0°</output
+                ></label
+              >
+            </div>
+            <div id="path-controls" hidden>
+              <label for="point">Point or handle</label>
+              <select id="point"></select>
+              <div class="coordinates">
+                <label>X <input id="point-x" type="number" step="any" /></label>
+                <label>Y <input id="point-y" type="number" step="any" /></label>
+              </div>
+            </div>
+            <p id="selection-note" class="meta"></p>
+          </section>
+          <section class="section" aria-labelledby="layers-title">
+            <div class="section-head">
+              <h2 id="layers-title">Layers</h2>
+              <span class="meta" id="scene-count"></span>
+            </div>
+            <ul id="layers" aria-label="SVG layers"></ul>
+          </section>
+          <section class="section">
+            <details>
+              <summary id="show-source">SVG source</summary>
+              <pre tabindex="0" aria-label="Selected SVG markup"><code id="source"></code></pre>
+            </details>
+          </section>
+        </aside>
+      </div>
+      <footer>
+        <button type="button" id="example">Open example</button>
+        <a class="button-link" href="#shortcuts" id="open-shortcuts">Shortcuts <kbd>?</kbd></a>
+        <span>Local working copy. Export to keep your edits.</span>
+      </footer>
+    </main>
+    <main id="shortcuts-view" hidden>
+      <header>
+        <div>
+          <p class="eyebrow">Card Workshop / SVG Pose Lab</p>
+          <h1 id="shortcut-title" tabindex="-1">Keyboard shortcuts</h1>
+          <p class="meta">Your artwork and selection stay open while you read.</p>
+        </div>
+        <a class="button-link" href="#" id="back-to-editor">Back to editor</a>
+      </header>
+      <div id="shortcut-list"></div>
+    </main>
+    <script type="application/json" id="example-data">
+      /* LAB_EXAMPLE */
+    </script>
+    <script>
+      /* LAB_JS */
+    </script>
+  </body>
+</html>

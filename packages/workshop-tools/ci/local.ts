@@ -59,8 +59,10 @@ if (!args.includes('--plan')) {
       'build',
       'playtest',
       'test:shader-lab',
+      'test:svg-lab',
       'test:browser:smoke',
       'test:browser:shader-lab',
+      'test:browser:svg-lab',
     ])
       run(['npm', 'run', script]);
     const command = commandFor(plan, 'core');

@@ -138,6 +138,10 @@ that record with the candidate; proposals from the same batch share one copied r
 Keep generation inputs, usage and review limits in that owning record rather than
 adding another gallery receipt. Proposals without a trial do not imply generation.
 
+## Inspect and edit a scratch copy
+
+[SVG Pose Lab](../../packages/svg-pose-lab/README.md) opens static SVGs offline for layer inspection, object transforms, path edits, and clean SVG export. Export a copy for review before following the asset history workflow for a source change.
+
 ## Repeatable review
 
 Before changing approved assets, export a baseline. After editing, export the current version and select IDs to inspect:
