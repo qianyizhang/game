@@ -275,7 +275,7 @@ export default function DiabloApp() {
     const keydown = (event: KeyboardEvent) => {
       if (selecting || !current.current) return;
       const key = event.key.toLowerCase();
-      if (event.repeat && ['escape', 'i', 'k', 'j', 'f8', 'tab'].includes(key)) return;
+      if (event.repeat && ['escape', 'i', 'k', 'j', 'f8', 'm'].includes(key)) return;
       if (key === 'f8') {
         event.preventDefault();
         openPanel('developer');
@@ -300,7 +300,7 @@ export default function DiabloApp() {
         openPanel(key === 'i' ? 'inventory' : key === 'k' ? 'skills' : 'journal');
         return;
       }
-      if (key === 'tab' && !panel) {
+      if (key === 'm' && !panel && !event.ctrlKey && !event.metaKey && !event.altKey) {
         event.preventDefault();
         setMapVisible((v) => !v);
         return;
@@ -1010,7 +1010,9 @@ export default function DiabloApp() {
         <button onClick={() => send({ type: 'run', enabled: !p.running })}>
           Shift · {p.running ? 'Run' : 'Walk'} · {Math.floor(p.stamina)} stamina
         </button>
-        <button onClick={() => setMapVisible((v) => !v)}>Tab · map</button>
+        <button aria-pressed={mapVisible} onClick={() => setMapVisible((v) => !v)}>
+          M · map
+        </button>
       </div>
       <div className="ew-events">
         <p role="status" className="ew-message">

@@ -23,6 +23,31 @@ test.beforeEach(() => {
   mkdirSync(review, { recursive: true });
 });
 
+test('Tab navigation remains available outside panels and map uses M', async ({ page }) => {
+  await page.goto('/?game=diablo2');
+  await page.getByRole('button', { name: /Sorceress Mira/ }).click();
+  await page.getByRole('button', { name: 'Begin journey', exact: true }).click();
+  const map = page.getByRole('button', { name: /^(Tab|M) · map$/ });
+  await map.focus();
+  await page.keyboard.press('Shift+Tab');
+  await expect(map).not.toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(map).toBeFocused();
+  await expect(map).toHaveAccessibleName('M · map');
+  await expect(map).toHaveAttribute('aria-pressed', 'true');
+  await page.keyboard.press('m');
+  await expect(map).toHaveAttribute('aria-pressed', 'false');
+  await page.keyboard.press('Space');
+  await expect(map).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: '→ Briarfen Enter from the road', exact: true }).click();
+  const field = page.locator('.ew-canvas-wrap canvas');
+  await field.focus();
+  await page.keyboard.press('Tab');
+  await expect(field).not.toBeFocused();
+  await page.keyboard.press('Shift+Tab');
+  await expect(field).toBeFocused();
+});
+
 for (const control of ['keyboard', 'hotbar']) {
   test(`${control} casts follow a stationary cursor after camera movement`, async ({ page }) => {
     await page.clock.install({ time: new Date('2026-10-30T00:00:00Z') });
