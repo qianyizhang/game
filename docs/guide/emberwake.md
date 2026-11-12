@@ -44,16 +44,16 @@ Locate ward stones in outdoor region 2 and dungeon floor 2 to unlock floor 3 sta
 
 ## Controls
 
-| Action      | Control                                                                                  |
-| ----------- | ---------------------------------------------------------------------------------------- |
-| Move        | WASD / arrows / click reachable terrain                                                  |
-| Attack      | Click enemy or press Space for nearest target                                            |
-| Cast        | Q / E / R or right-click selected skill                                                  |
-| Interact    | F or on-screen Interact button beside objects                                            |
-| Potions     | 1 for Life, 2 for Mana; restores 60% max pool                                            |
-| Run / Walk  | Shift or Walk/Run toggle; running consumes stamina                                       |
-| Town Portal | T or Town Portal button (usable when no active foe is visible within 8 paces)            |
-| Panels      | I (Inventory), K (Skills), J (Journal), Tab (Minimap), Esc (Pause/Close), F8 (Dev tools) |
+| Action      | Control                                                                                |
+| ----------- | -------------------------------------------------------------------------------------- |
+| Move        | WASD / arrows / click reachable terrain                                                |
+| Attack      | Click enemy or press Space for nearest target                                          |
+| Cast        | Q / E / R or right-click selected skill                                                |
+| Interact    | F or on-screen Interact button beside objects                                          |
+| Potions     | 1 for Life, 2 for Mana; restores 60% max pool                                          |
+| Run / Walk  | Shift or Walk/Run toggle; running consumes stamina                                     |
+| Town Portal | T or Town Portal button (usable when no active foe is visible within 8 paces)          |
+| Panels      | I (Inventory), K (Skills), J (Journal), M (Minimap), Esc (Pause/Close), F8 (Dev tools) |
 
 ## Loot, inventory, and death
 

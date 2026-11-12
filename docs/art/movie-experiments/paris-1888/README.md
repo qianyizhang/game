@@ -1,6 +1,7 @@
 # Paris, 1888 — Iron Rising
 
-[Open the offline film](paris-1888.html) in a WebGL2 browser. This standalone
+Open either offline film variant: [Sol high](paris-1888-sol-high.html) or
+[Sol light](paris-1888-sol-light.html) in a WebGL2 browser. This standalone
 voxel study imagines the Eiffel Tower during construction. The scene, animation,
 Three.js runtime, and runtime license are embedded in the HTML. The existing
 Lantern Keep trial provided the offline delivery pattern; the Paris geometry is
