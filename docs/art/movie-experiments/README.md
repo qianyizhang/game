@@ -10,6 +10,7 @@ original briefs, techniques, review history, and technical results.
 | [Little Haunt](little-haunt/README.md)     | GIF                                                             | 15 seconds | Detailed ghost-hunt diorama; the export is retained without an editable scene.                                          |
 | [Lantern Keep](lantern-keep/README.md)     | Offline Three.js HTML and GIF                                   | 15 seconds | Pixel-art ghost hunt with depth outlines and deterministic capture.                                                     |
 | [Golden Claw](golden-claw/README.md)       | Offline HTML, character masters, GIF, MP4, and comparison views | 30 seconds | Reference-based 2.5D action animatic with contact-staging improvements; the original 3D cinematic target remains unmet. |
+| [Paris, 1888](paris-1888/README.md)        | Offline Three.js HTML                                           | 14 seconds | Voxel construction diorama with deterministic frame capture.                                                            |
 
 Original deliveries: [#53](https://github.com/qianyizhang/game/pull/53),
 [#54](https://github.com/qianyizhang/game/pull/54),
